@@ -20,8 +20,6 @@ I would like to thank the following people, without whom this project would not 
 
 * **Leathl** for the libWiiSharp library, and **[TheShadowEevee](https://github.com/TheShadowEevee)** for his [fork thereof](https://github.com/TheShadowEevee/libWiiSharp).
 * **[libertyernie](https://github.com/TheShadowEevee)** for forking [ccf-tools](https://github.com/libertyernie/ccf-tools) (original: **paulguy**) and [BrawlLib](https://github.com/libertyernie/brawllib-wit) (original: **soopercool101**).
-<!-- * **[SuperrSonic](https://github.com/SuperrSonic)** for reverse-engineering much of Wii software and official emulator code, and in particular, his [fork of RetroArch Wii](https://github.com/SuperrSonic/RA-SS). -->
 * **HowardC** for his tools (particularly, VCbrlyt).
-<!-- * **[SaulFabre](https://github.com/saulfabregwiivc)** for archiving several tools and aiding in research. -->
 
 This application is distributed and licensed under the **GNU General Public License v3.0** ([view in full](https://github.com/CatmanFan/FriishProduce/blob/main/LICENSE)).
