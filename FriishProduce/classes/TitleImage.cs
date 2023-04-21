@@ -1,36 +1,54 @@
 ﻿using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
 
 namespace FriishProduce
 {
     public class TitleImage
     {
-        internal Bitmap image;
-        internal string path;
+        public string path { get; set; }
 
-        internal Bitmap VCPic;
-        internal Bitmap IconVCPic;
-        internal Bitmap SaveBanner;
-        internal bool shrinkToFit;
-        internal int[] SaveImage_Position_Size;
+        public Bitmap VCPic { get; set; }
+        public Bitmap IconVCPic { get; set; }
+        public Bitmap SaveBanner { get; set; }
+        public bool shrinkToFit { get; set; }
+        public int[] SaveImage_Position_Size { get; set; }
 
 
         internal TitleImage()
         {
-            image = null;
             path = null;
             VCPic = null;
             IconVCPic = null;
             shrinkToFit = false;
         }
 
-        internal void Generate()
+        internal void Generate(InterpolationMode mode)
         {
-            image = new Bitmap(path);
-            path = null;
             VCPic = new Bitmap(256, 192);
             IconVCPic = new Bitmap(128, 96);
-            IconVCPic = new Bitmap(128, 96);
-            shrinkToFit = false;
+
+            using (Graphics g = Graphics.FromImage(VCPic))
+            {
+                Rectangle r = new Rectangle(0, 0, 256, 192);
+
+                g.CompositingMode = CompositingMode.SourceCopy;
+                g.CompositingQuality = CompositingQuality.HighQuality;
+                g.InterpolationMode = mode;
+
+                g.DrawImage(Image.FromFile(path), r, 0, 0, 256, 192, GraphicsUnit.Pixel);
+            }
+
+            using (Graphics g = Graphics.FromImage(IconVCPic))
+            {
+                Rectangle r = new Rectangle(0, 0, 128, 96);
+
+                g.CompositingMode = CompositingMode.SourceCopy;
+                g.CompositingQuality = CompositingQuality.HighQuality;
+                g.InterpolationMode = mode;
+
+                g.DrawImage(Image.FromFile(path), r, 0, 0, 128, 96, GraphicsUnit.Pixel);
+            }
         }
 
         internal void ModifySaveBanner(string inTPL, Bitmap image)
@@ -39,7 +57,6 @@ namespace FriishProduce
 
         internal void Dispose()
         {
-            image.Dispose();
             path = null;
             VCPic.Dispose();
             IconVCPic.Dispose();

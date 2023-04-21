@@ -2,17 +2,22 @@
 <!-- This is an XML database for handling base WADs -->
 <bases>
 	<nes>
-		<WAD title="Kirby's Adventure (USA)"                         id="FA8E"/>
+		<wad title="Kirby's Adventure (USA)"                         id="FA8E"/>
+		<wad title="Super Mario Bros. 3 (USA)"                       id="FCWE"/>
 	</nes>
 	<snes>
-		<WAD title="Donkey Kong Country 2: Diddy's Kong Quest (USA)" id="JBDE"/>
-		<WAD title="Mario's Super Picross (EUR)"                     id="JABL"/>
+		<wad title="Donkey Kong Country 2: Diddy's Kong Quest (USA)" id="JBDE"/>
+		<wad title="Mario's Super Picross (EUR)"                     id="JABL"/>
 	</snes>
 	<n64>
-		<WAD title="Super Mario 64 (USA)"                            id="NAAE" ver="1"/>
-		<WAD title="Star Fox 64 (USA)"                               id="NADE" ver="1"/>
-		<WAD title="Mario Golf (USA)"                                id="NAUE" ver="romc"/>
-		<WAD title="Bomberman Hero (USA)"                            id="NA3E" ver="romc"/>
-		<WAD title="Ogre Battle 64: Person of Lordly Caliber (USA)"  id="NAYE" ver="romc"/>
+		<wad title="Bomberman Hero (USA)"                            id="NA3E" ver="romc-hero"/>
+		<wad title="Bomberman Hero (EUR)"                            id="NA3P" ver="romc-hero"/>
+		<wad title="Mario Golf (USA)"                                id="NAUE" ver="romc"/>
+		<wad title="Mario Golf (EUR)"                                id="NAUP" ver="romc"/>
+		<wad title="Ogre Battle 64: Person of Lordly Caliber (USA)"  id="NAYE" ver="romc"/>
+		<wad title="Ogre Battle 64: Person of Lordly Caliber (EUR)"  id="NAYP" ver="romc"/>
+		<wad title="Star Fox 64 (USA)"                               id="NADE" ver="rev1"/>
+		<wad title="Star Fox 64 (USA)"                               id="NADE" ver="rev3"/>
+		<wad title="Super Mario 64 (USA)"                            id="NAAE" ver="rev1"/>
 	</n64>
 </bases>

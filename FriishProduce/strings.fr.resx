@@ -117,4 +117,30 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="browseROM_n64" xml:space="preserve">
+    <value>Fichiers ROM de Nintendo 64 (*.n64, *.v64, *.z64)|*.n64;*.v64;*.z64</value>
+  </data>
+  <data name="browseROM_nes" xml:space="preserve">
+    <value>Fichiers ROM de Nintendo (*.nes)|*.nes</value>
+  </data>
+  <data name="browseROM_snes" xml:space="preserve">
+    <value>Fichiers ROM de Super Nintendo (*.sfc;*.smc)|*.sfc;*.smc</value>
+  </data>
+  <data name="browse_AllFiles" xml:space="preserve">
+    <value>|Tous les fichiers (*.*)|*.*</value>
+  </data>
+  <data name="deleteWAD" xml:space="preserve">
+    <value>Voulez-vous supprimer cette chaîne ?</value>
+  </data>
+  <data name="error" xml:space="preserve">
+    <value>Arrêt</value>
+  </data>
+  <data name="errorInject" xml:space="preserve">
+    <value>Une erreur a été rencontré pendant l'injection.
+
+Message : {0}</value>
+  </data>
+  <data name="finished" xml:space="preserve">
+    <value>L'injection a terminé avec succès.</value>
+  </data>
 </root>

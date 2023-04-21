@@ -117,4 +117,33 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="browseROM_n64" xml:space="preserve">
+    <value>Nintendo 64 ROM files (*.n64, *.v64, *.z64)|*.n64;*.v64;*.z64</value>
+  </data>
+  <data name="browseROM_nes" xml:space="preserve">
+    <value>Nintendo Entertainment System/Famicom ROM files (*.nes)|*.nes</value>
+  </data>
+  <data name="browseROM_snes" xml:space="preserve">
+    <value>Super Nintendo Entertainment System/Super Famicom ROM files (*.sfc;*.smc)|*.sfc;*.smc</value>
+  </data>
+  <data name="browse_AllFiles" xml:space="preserve">
+    <value>|All files (*.*)|*.*</value>
+  </data>
+  <data name="deleteWAD" xml:space="preserve">
+    <value>Really delete this WAD?</value>
+  </data>
+  <data name="error" xml:space="preserve">
+    <value>Halt</value>
+  </data>
+  <data name="errorInject" xml:space="preserve">
+    <value>An undefined exception occured during the exportation process.
+
+Message: {0}</value>
+  </data>
+  <data name="finished" xml:space="preserve">
+    <value>Done.</value>
+  </data>
+  <data name="version" xml:space="preserve">
+    <value>beta 1</value>
+  </data>
 </root>

@@ -1,17 +1,17 @@
 ﻿namespace FriishProduce
 {
-    public enum Consoles
+    public enum Platforms
     {
-        NES = 0,
-        SNES = 1,
-        N64 = 2,
-        SMS = 3,
-        GenMD = 4,
-        TG16 = 5,
-        NeoGeo = 6,
-        C64 = 7,
-        MSX = 8,
-        Flash = 9,
+        nes = 0,
+        snes = 1,
+        n64 = 2,
+        sms = 3,
+        smd = 4,
+        pce = 5,
+        neogeo = 6,
+        c64 = 7,
+        msx = 8,
+        flash = 9,
     }
 
     public enum InjectionMethod

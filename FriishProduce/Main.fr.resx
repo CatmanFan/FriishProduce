@@ -117,4 +117,58 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>310, 45</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Bienvenue dans l'application FriishProduce ({0}) !
+
+Veuillez choisir votre console / platforme pour l'injection :</value>
+  </data>
+  <data name="back.Text" xml:space="preserve">
+    <value>&lt; Précédent</value>
+  </data>
+  <data name="finish.Text" xml:space="preserve">
+    <value>Sauvegarder</value>
+  </data>
+  <data name="next.Text" xml:space="preserve">
+    <value>Suivant &gt;</value>
+  </data>
+  <data name="openROM.Text" xml:space="preserve">
+    <value>Parcourir une ROM ...</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>261, 15</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Veuillez choisir une ROM et une chaîne à utiliser.</value>
+  </data>
+  <data name="customize.Text" xml:space="preserve">
+    <value>Personnaliser</value>
+  </data>
+  <data name="disableEmanual.Text" xml:space="preserve">
+    <value>Retirer l'option « Mode d'emploi » du Menu HOME</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Spécifier d'autres paramètres de contenu ici.</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Vous pouvez également spécifier une image et des détails personnalisées pour votre chaîne injectée dans le Menu Wii et sa Gestion des données, à moins que vous décidiez de passer cette étape.</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Palette :</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Code d'identification :</value>
+  </data>
+  <data name="NES_Palette.Items" xml:space="preserve">
+    <value>Par défaut</value>
+  </data>
+  <data name="NES_Palette.Items1" xml:space="preserve">
+    <value>Sans filtre sombre</value>
+  </data>
+  <data name="SaveWAD.Filter" xml:space="preserve">
+    <value>Chaînes Wii (*.wad)|*.wad|Tous les fichiers (*.*)|*.*</value>
+  </data>
 </root>
