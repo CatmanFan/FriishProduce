@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
 
-namespace FriishProduce.classes
+namespace FriishProduce
 {
     public class TitleImage
     {
@@ -16,7 +11,7 @@ namespace FriishProduce.classes
         internal Bitmap IconVCPic;
         internal Bitmap SaveBanner;
         internal bool shrinkToFit;
-        internal ;
+        internal int[] SaveImage_Position_Size;
 
 
         internal TitleImage()
@@ -36,6 +31,10 @@ namespace FriishProduce.classes
             IconVCPic = new Bitmap(128, 96);
             IconVCPic = new Bitmap(128, 96);
             shrinkToFit = false;
+        }
+
+        internal void ModifySaveBanner(string inTPL, Bitmap image)
+        { 
         }
 
         internal void Dispose()

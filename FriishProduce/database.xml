@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- This is an XML database for handling base WADs -->
+<bases>
+	<nes>
+		<WAD title="Kirby's Adventure (USA)"                         id="FA8E"/>
+	</nes>
+	<snes>
+		<WAD title="Donkey Kong Country 2: Diddy's Kong Quest (USA)" id="JBDE"/>
+		<WAD title="Mario's Super Picross (EUR)"                     id="JABL"/>
+	</snes>
+	<n64>
+		<WAD title="Super Mario 64 (USA)"                            id="NAAE" ver="1"/>
+		<WAD title="Star Fox 64 (USA)"                               id="NADE" ver="1"/>
+		<WAD title="Mario Golf (USA)"                                id="NAUE" ver="romc"/>
+		<WAD title="Bomberman Hero (USA)"                            id="NA3E" ver="romc"/>
+		<WAD title="Ogre Battle 64: Person of Lordly Caliber (USA)"  id="NAYE" ver="romc"/>
+	</n64>
+</bases>
