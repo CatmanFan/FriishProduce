@@ -24,6 +24,7 @@ I would like to thank the following people, without whom this project would not 
 * **[SuperrSonic](https://github.com/SuperrSonic)** for reverse-engineering much of Wii software and official emulator code, and in particular, his [fork of RetroArch Wii](https://github.com/SuperrSonic/RA-SS).
 * **HowardC** for his tools (particularly, VCbrlyt).
 * **alpha-0** for WWCXTool.
+* **[Alcaro](https://github.com/Alcaro)** for [Floating IPS](https://github.com/Alcaro/Flips) (Flips).
 * **Jurai** for developing the ROMC compressor (additionally with **Haruhiko Okumura**'s LZSS code)
 * **[SaulFabre](https://github.com/saulfabregwiivc)** for archiving several tools and aiding in research.
 

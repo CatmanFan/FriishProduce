@@ -37,9 +37,9 @@ namespace FriishProduce
             this.language = new System.Windows.Forms.ComboBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.enableWADtoHBC = new System.Windows.Forms.CheckBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.IP = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.enableWADtoHBC = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -104,22 +104,22 @@ namespace FriishProduce
             resources.ApplyResources(this.tabPage1, "tabPage1");
             this.tabPage1.Name = "tabPage1";
             // 
-            // enableWADtoHBC
+            // IP
             // 
-            resources.ApplyResources(this.enableWADtoHBC, "enableWADtoHBC");
-            this.enableWADtoHBC.Name = "enableWADtoHBC";
-            this.enableWADtoHBC.UseVisualStyleBackColor = true;
-            this.enableWADtoHBC.CheckedChanged += new System.EventHandler(this.EnableWADtoHBC_CheckedChanged);
+            resources.ApplyResources(this.IP, "IP");
+            this.IP.Name = "IP";
             // 
             // label2
             // 
             resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
             // 
-            // IP
+            // enableWADtoHBC
             // 
-            resources.ApplyResources(this.IP, "IP");
-            this.IP.Name = "IP";
+            resources.ApplyResources(this.enableWADtoHBC, "enableWADtoHBC");
+            this.enableWADtoHBC.Name = "enableWADtoHBC";
+            this.enableWADtoHBC.UseVisualStyleBackColor = true;
+            this.enableWADtoHBC.CheckedChanged += new System.EventHandler(this.EnableWADtoHBC_CheckedChanged);
             // 
             // Settings
             // 
