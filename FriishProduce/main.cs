@@ -175,7 +175,9 @@ namespace FriishProduce
                 if (File.Exists($"{Paths.Database}{currentConsole}\\{entry.Attributes["id"].Value}.wad"))
                     baseList_banner.Items.Add(entry.Attributes["title"].Value);
             }
+
             if (baseList_banner.Items.Count > 0) baseList_banner.SelectedIndex = 0;
+            DeleteBase.Enabled = baseList_banner.Items.Count > 0;
         }
 
         private void AddWAD(object sender, EventArgs e)
@@ -281,7 +283,7 @@ namespace FriishProduce
                     w.CreateNew(Paths.WorkingFolder);
                     w.FakeSign = true;
                     if (RegionFree.Checked) w.Region = libWiiSharp.Region.Free;
-                    if (customize.Enabled)  w.ChangeChannelTitles(ChannelTitle.Text);
+                    if (customize.Checked)  w.ChangeChannelTitles(ChannelTitle.Text);
                     w.ChangeTitleID(LowerTitleID.Channel, TitleID.Text);
                     w.Save(SaveWAD.FileName);
                     w.Dispose();

@@ -181,7 +181,7 @@ namespace FriishProduce {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to beta 1.
+        ///   Looks up a localized string similar to alpha build 1.
         /// </summary>
         internal static string version {
             get {
