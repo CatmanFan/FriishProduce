@@ -14,12 +14,15 @@ namespace FriishProduce
         [STAThread]
         static void Main()
         {
-            if (String.IsNullOrWhiteSpace(Properties.Settings.Default.language))
+            if (string.IsNullOrWhiteSpace(Default.language))
             {
-                Thread.CurrentThread.CurrentUICulture = CultureInfo.InstalledUICulture;
-                Default.language = Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName;
+                Default.language = "en";
                 Default.Save();
             }
+
+            var culture = new CultureInfo(Default.language);
+            culture.DateTimeFormat = new DateTimeFormatInfo() { DateSeparator = ".", ShortTimePattern = "HH:mm" };
+            Thread.CurrentThread.CurrentUICulture = culture;
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

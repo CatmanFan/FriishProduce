@@ -61,6 +61,15 @@ namespace FriishProduce {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Author: {0}.
+        /// </summary>
+        internal static string author {
+            get {
+                return ResourceManager.GetString("author", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to |All files (*.*)|*.*.
         /// </summary>
         internal static string browse_AllFiles {
@@ -115,8 +124,25 @@ namespace FriishProduce {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to An undefined exception occured during the exportation process.
-        ///
+        ///   Looks up a localized string similar to Failed to apply the patch ROM. Please disable the built-in patching feature and try again using a manually-patched version..
+        /// </summary>
+        internal static string error_patchFailed {
+            get {
+                return ResourceManager.GetString("error_patchFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The ROM to be injected is larger in filesize than the target ROM. Please choose a different base WAD..
+        /// </summary>
+        internal static string error_ROMtoobig {
+            get {
+                return ResourceManager.GetString("error_ROMtoobig", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An error occured during the exportation process.
         ///Message: {0}.
         /// </summary>
         internal static string errorInject {
@@ -126,11 +152,31 @@ namespace FriishProduce {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unable to transmit exported WAD to HBC because of the following exception:
+        ///
+        ///{0}.
+        /// </summary>
+        internal static string errorTransmitter {
+            get {
+                return ResourceManager.GetString("errorTransmitter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Done..
         /// </summary>
         internal static string finished {
             get {
                 return ResourceManager.GetString("finished", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Some of the changes you have made require you to restart the application before they can take effect..
+        /// </summary>
+        internal static string settings_Restart {
+            get {
+                return ResourceManager.GetString("settings_Restart", resourceCulture);
             }
         }
         

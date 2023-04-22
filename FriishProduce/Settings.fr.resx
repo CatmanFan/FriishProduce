@@ -117,85 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="cancel.Text" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>310, 45</value>
+    <value>52, 15</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
-    <value>Bienvenue dans l'application FriishProduce ({0}) !
-
-Pour commencer, veuillez spécifier votre plateforme cible :</value>
+    <value>Langue :</value>
   </data>
-  <data name="back.Text" xml:space="preserve">
-    <value>&lt; Précédent</value>
+  <data name="language.Location" type="System.Drawing.Point, System.Drawing">
+    <value>64, 8</value>
   </data>
-  <data name="finish.Text" xml:space="preserve">
-    <value>Sauvegarder</value>
+  <data name="language.Size" type="System.Drawing.Size, System.Drawing">
+    <value>393, 23</value>
   </data>
-  <data name="next.Text" xml:space="preserve">
-    <value>Suivant &gt;</value>
-  </data>
-  <data name="openROM.Text" xml:space="preserve">
-    <value>Parcourir une ROM ...</value>
-  </data>
-  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>261, 15</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Choisir une ROM et une chaîne à utiliser.</value>
-  </data>
-  <data name="BrowsePatch.Filter" xml:space="preserve">
-    <value>Fichiers patch (*.bps, *.ips)|*.bps;*.ips</value>
-  </data>
-  <data name="BrowseWAD.Filter" xml:space="preserve">
-    <value>Chaînes Wii (*.wad)|*.wad</value>
-  </data>
-  <data name="customize.Text" xml:space="preserve">
-    <value>Personnaliser</value>
-  </data>
-  <data name="disableEmanual.Text" xml:space="preserve">
-    <value>Retirer l'option « Mode d'emploi » du Menu HOME</value>
-  </data>
-  <data name="ImportBanner.Text" xml:space="preserve">
-    <value>Importer une autre bannière à modifier :</value>
-  </data>
-  <data name="label10.Text" xml:space="preserve">
-    <value>Année de publication :</value>
-  </data>
-  <data name="label11.Text" xml:space="preserve">
-    <value>Joueurs :</value>
-  </data>
-  <data name="label12.Text" xml:space="preserve">
-    <value>Titre des données de sauvegarde :</value>
-  </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>Spécifier d'autres paramètres de contenu ici.</value>
-  </data>
-  <data name="label5.Text" xml:space="preserve">
-    <value>Vous pouvez également spécifier une image et votre propre bannière personnalisée pour la chaîne injectée, qui s'affiche dans le Menu Wii et sa Gestion des données, à moins que vous décidiez de passer cette étape.</value>
-  </data>
-  <data name="label6.Text" xml:space="preserve">
-    <value>Palette :</value>
-  </data>
-  <data name="label7.Text" xml:space="preserve">
-    <value>Code d'identification :</value>
-  </data>
-  <data name="label8.Text" xml:space="preserve">
-    <value>Titre de la chaîne :</value>
-  </data>
-  <data name="label9.Text" xml:space="preserve">
-    <value>Titre complet :</value>
-  </data>
-  <data name="NES_Palette.Items" xml:space="preserve">
-    <value>Par défaut</value>
-  </data>
-  <data name="NES_Palette.Items1" xml:space="preserve">
-    <value>Sans filtre sombre</value>
-  </data>
-  <data name="Patch.Text" xml:space="preserve">
-    <value>Auto-patcher avec un fichier *.ips ou *.bps</value>
-  </data>
-  <data name="RegionFree.Text" xml:space="preserve">
-    <value>Dézoner</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Paramètres</value>
   </data>
 </root>

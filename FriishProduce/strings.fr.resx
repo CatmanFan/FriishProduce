@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="author" xml:space="preserve">
+    <value>Auteur(e) : {0}</value>
+  </data>
   <data name="browseROM_n64" xml:space="preserve">
     <value>Fichiers ROM de Nintendo 64 (*.n64, *.v64, *.z64)|*.n64;*.v64;*.z64</value>
   </data>
@@ -137,10 +140,18 @@
   </data>
   <data name="errorInject" xml:space="preserve">
     <value>Une erreur a été rencontré pendant l'injection.
-
 Message : {0}</value>
+  </data>
+  <data name="error_patchFailed" xml:space="preserve">
+    <value>Échec de l'application du patch. Vous pouvez réessayer avec une version patchée manuellement sans activer l'auto-patch de ce logiciel.</value>
+  </data>
+  <data name="error_ROMtoobig" xml:space="preserve">
+    <value>La ROM vous avez choisi est trop grande. Veuillez specifier une autre chaîne.</value>
   </data>
   <data name="finished" xml:space="preserve">
     <value>L'injection a terminé avec succès.</value>
+  </data>
+  <data name="settings_Restart" xml:space="preserve">
+    <value>Quelques modifications que vous avez effectués nécessitent un redémarrage du logiciel avant de prendre effet.</value>
   </data>
 </root>

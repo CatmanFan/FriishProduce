@@ -61,11 +61,11 @@ namespace FriishProduce.Injectors
                     throw new Exception("The ROMC compression process failed.");
 
                 // Check filesize
-                /* if (File.ReadAllBytes(compressedROM).Length > File.ReadAllBytes($"{Paths.WorkingFolder_Content5}romc").Length)
+                if (File.ReadAllBytes(compressedROM).Length > File.ReadAllBytes($"{Paths.WorkingFolder_Content5}romc").Length)
                 {
                     File.Delete(compressedROM);
-                    throw new Exception("The ROM to be injected is larger in filesize than the target ROM.");
-                } */
+                    throw new Exception(strings.error_ROMtoobig);
+                }
 
                 // Copy
                 File.Copy(compressedROM, $"{Paths.WorkingFolder_Content5}romc", true);
@@ -77,7 +77,7 @@ namespace FriishProduce.Injectors
                 if (File.ReadAllBytes(byteswappedROM).Length > File.ReadAllBytes($"{Paths.WorkingFolder_Content5}rom").Length)
                 {
                     File.Delete(byteswappedROM);
-                    throw new Exception("The ROM to be injected is larger in filesize than the target ROM.");
+                    throw new Exception(strings.error_ROMtoobig);
                 }
 
                 // Copy

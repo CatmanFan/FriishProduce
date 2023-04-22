@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="author" xml:space="preserve">
+    <value>Author: {0}</value>
+  </data>
   <data name="browseROM_n64" xml:space="preserve">
     <value>Nintendo 64 ROM files (*.n64, *.v64, *.z64)|*.n64;*.v64;*.z64</value>
   </data>
@@ -136,12 +139,25 @@
     <value>Halt</value>
   </data>
   <data name="errorInject" xml:space="preserve">
-    <value>An undefined exception occured during the exportation process.
-
+    <value>An error occured during the exportation process.
 Message: {0}</value>
+  </data>
+  <data name="errorTransmitter" xml:space="preserve">
+    <value>Unable to transmit exported WAD to HBC because of the following exception:
+
+{0}</value>
+  </data>
+  <data name="error_patchFailed" xml:space="preserve">
+    <value>Failed to apply the patch ROM. Please disable the built-in patching feature and try again using a manually-patched version.</value>
+  </data>
+  <data name="error_ROMtoobig" xml:space="preserve">
+    <value>The ROM to be injected is larger in filesize than the target ROM. Please choose a different base WAD.</value>
   </data>
   <data name="finished" xml:space="preserve">
     <value>Done.</value>
+  </data>
+  <data name="settings_Restart" xml:space="preserve">
+    <value>Some of the changes you have made require you to restart the application before they can take effect.</value>
   </data>
   <data name="version" xml:space="preserve">
     <value>beta 1</value>

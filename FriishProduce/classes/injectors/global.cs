@@ -6,6 +6,31 @@ namespace FriishProduce
 {
     public class Injector
     {
+        public static string ApplyPatch(string ROM, string patch = null)
+        {
+            if (patch != null)
+            {
+                string outROM = ROM + Paths.PatchedSuffix;
+                string batchScript = $"\"{Paths.Apps}flips.exe\" --apply \"{patch}\" \"{Path.GetFileName(ROM)}\" \"{Path.GetFileName(outROM)}\"";
+                string batchPath = Path.Combine(Path.GetDirectoryName(ROM), "patch.bat");
+
+                File.WriteAllText(batchPath, batchScript);
+                using (Process p = Process.Start(new ProcessStartInfo
+                {
+                    FileName = batchPath,
+                    WorkingDirectory = Path.GetDirectoryName(ROM),
+                    UseShellExecute = false,
+                    CreateNoWindow = true
+                }))
+                    p.WaitForExit();
+                File.Delete(batchPath);
+
+                if (!File.Exists(outROM)) throw new Exception(strings.error_patchFailed);
+                return outROM;
+            }
+            else return ROM;
+        }
+
         public static string DetermineContent1()
         {
             // Check for LZ77 compression
@@ -62,16 +87,18 @@ namespace FriishProduce
 
             string[] emanualFiles =
             {
+                "Opera.arc",
+                "Opera.ccf",
+                "Opera.ccf.zlib",
                 "emanual.arc",
                 "man.arc",
-                "manc.arc",
-                "Opera.arc",
+                "manc.arc"
             };
 
             foreach (var file in Directory.GetFiles(Paths.WorkingFolder_Content5, "*.*", SearchOption.AllDirectories))
             {
                 foreach (var item in emanualFiles)
-                    if (file == item) File.WriteAllText(file, string.Empty);
+                    if (file.EndsWith(item)) File.WriteAllText(file, string.Empty);
                 // It is important to empty the file instead of simply deleting it, because otherwise it will throw a "data corruption" error in some WADs
             }
         }

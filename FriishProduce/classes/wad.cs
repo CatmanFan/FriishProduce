@@ -2,31 +2,12 @@
 
 namespace FriishProduce
 {
-    public class WAD
+    public class HBC
     {
-        public static void Unpack(string input, string output)
+        public static void SendToHBC(string WADfile, string IP)
         {
-            using (libWiiSharp.WAD w = new libWiiSharp.WAD())
-            {
-                w.LoadFile(input);
-                w.Unpack(output);
-                w.Dispose();
-            }
-        }
-        public static void Pack(string input, string[] channelTitle, string TID, string output)
-        {
-            using (libWiiSharp.WAD w = new libWiiSharp.WAD())
-            {
-                w.CreateNew(input);
-                w.ChangeTitleID(LowerTitleID.Channel, TID);
-                w.FakeSign = true;
-                w.Region = Region.Free;
-                w.ChangeChannelTitles(channelTitle);
-
-                w.Save(output);
-                w.Dispose();
-                System.IO.Directory.Delete(input, true);
-            }
+            HbcTransmitter t = new HbcTransmitter(Protocol.HAXX, IP);
+            t.TransmitFile(WADfile);
         }
     }
     public class U8

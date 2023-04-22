@@ -19,7 +19,7 @@ Please see the [Wiki](https://github.com/CatmanFan/FriishProduce/wiki/Setup) for
 ## Credits
 I would like to thank the following people, without whom this project would not have been possible:
 
-* **Leathl** for the libWiiSharp library, and **[TheShadowEevee](https://github.com/TheShadowEevee)** for his [fork thereof](https://github.com/TheShadowEevee/libWiiSharp).
+* **Leathl** for the libWiiSharp library, and **[WiiDatabase](https://github.com/WiiDatabase)**/**[Larsenv](https://github.com/larsenv)** for the [fork used here](https://github.com/WiiDatabase/libWiiSharp/).
 * **[libertyernie](https://github.com/libertyernie)** for forking [ccf-tools](https://github.com/libertyernie/ccf-tools) (original: **paulguy**) and [BrawlLib](https://github.com/libertyernie/brawllib-wit) (original: **soopercool101**).
 * **[SuperrSonic](https://github.com/SuperrSonic)** for reverse-engineering much of Wii software and official emulator code, and in particular, his [fork of RetroArch Wii](https://github.com/SuperrSonic/RA-SS).
 * **HowardC** for his tools (particularly, VCbrlyt).

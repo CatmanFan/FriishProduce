@@ -25,13 +25,37 @@ namespace FriishProduce.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("en")]
         public string language {
             get {
                 return ((string)(this["language"]));
             }
             set {
                 this["language"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("192.168.x.x")]
+        public string wii_ip_address {
+            get {
+                return ((string)(this["wii_ip_address"]));
+            }
+            set {
+                this["wii_ip_address"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool enable_wad_to_hbc {
+            get {
+                return ((bool)(this["enable_wad_to_hbc"]));
+            }
+            set {
+                this["enable_wad_to_hbc"] = value;
             }
         }
     }

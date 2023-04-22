@@ -3,7 +3,13 @@
   <Profiles />
   <Settings>
     <Setting Name="language" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">en</Value>
+    </Setting>
+    <Setting Name="wii_ip_address" Type="System.String" Scope="User">
+      <Value Profile="(Default)">192.168.x.x</Value>
+    </Setting>
+    <Setting Name="enable_wad_to_hbc" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>
 </SettingsFile>
