@@ -7,6 +7,19 @@ This application is designed to streamline the process to as few third-party pro
 ## How-to
 Please see the [Wiki](https://github.com/CatmanFan/FriishProduce/wiki/Setup) for instructions on setup and usage.
 
+## Features
+This injector bypasses other third-party assets (such as Common-Key.bin, and autoinjectuwad) by handling many steps directly from the program's code. Some examples:
+* WAD/U8 handling using libWiiSharp
+* VC ROM injection using manual hex writing or file replacement
+* Additional content/emulator options for each platform
+
+### To-Do
+* HowardC's VCbrlyt
+* TPL/image generation & handling (incl. using libWiiSharp)
+* Automatic savedata text file editing (SEGA)
+* HowardC's SaveInject (NES)
+* Direct savedata hex handling (SNES/N64)
+
 ## Credits
 I would like to thank the following people, without whom this project would not have been possible:
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -20,6 +21,7 @@ namespace FriishProduce
                 /* Full path to ROM patch */ null,
                 /* Full path to WAD file  */ null
             };
+        TitleImage tImg = new TitleImage();
 
         public Main()
         {
@@ -121,19 +123,24 @@ namespace FriishProduce
             {
                 page2.Visible = true;
                 page3.Visible = false;
+                next.Enabled = (input[0] != null) && (input[2] != null);
             }
             else if (page4.Visible)
             {
                 page3.Visible = true;
                 page4.Visible = false;
                 next.Visible = true;
+                next.Enabled = checkBannerPage();
                 finish.Visible = false;
             }
         }
         private bool checkBannerPage()
         {
             if (customize.Checked)
-                return (ChannelTitle.Text != null) && (BannerTitle.Text != null) && (SaveDataTitle.Text != null);
+                return !(string.IsNullOrEmpty(ChannelTitle.Text)
+                      || string.IsNullOrEmpty(BannerTitle.Text)
+                      || string.IsNullOrEmpty(SaveDataTitle.Text)
+                      || tImg.path == null);
             return true;
         }
 
@@ -153,8 +160,15 @@ namespace FriishProduce
         {
             foreach (var item in Directory.GetFiles(Paths.Database, "*.*", SearchOption.AllDirectories))
                 if (File.Exists(item) && item.Contains(XML.SearchID(baseList.SelectedItem.ToString(), currentConsole)))
+                { 
                     input[2] = item;
+                    goto End;
+                }
 
+            MessageBox.Show("Unable to find WAD in database.");
+            baseList.Items.Remove(baseList.SelectedItem);
+
+            End:
             next.Enabled = (input[0] != null) && (input[2] != null);
         }
 
@@ -241,9 +255,99 @@ namespace FriishProduce
 
                     WAD w = WAD.Load(input[2]);
                     w.Unpack(Paths.WorkingFolder);
-                    U8.Unpack(Paths.WorkingFolder + "00000005.app", Paths.WorkingFolder_Content5);
 
+                    if (customize.Checked)
+                    {
+                        #region Banner
+                        if (ImportBanner.Checked)
+                        {
+                            foreach (var item in Directory.GetFiles(Paths.Database, "*.*", SearchOption.AllDirectories))
+                                if (File.Exists(item) && item.Contains(XML.SearchID(baseList_banner.SelectedItem.ToString(), currentConsole)))
+                                    WAD.Load(item).BannerApp.Save(Paths.WorkingFolder + "00000000.app");
+                        }
+
+                        // --------------------------------------------------------------------------- //
+
+                        // Get banner.brlyt and TPLs
+                        Directory.CreateDirectory(Paths.Images);
+
+                        libWiiSharp.U8 BannerApp = libWiiSharp.U8.Load(Paths.WorkingFolder + "00000000.app");
+                        libWiiSharp.U8 Banner = libWiiSharp.U8.Load(BannerApp.Data[BannerApp.GetNodeIndex("banner.bin")]);
+                        libWiiSharp.U8 Icon = libWiiSharp.U8.Load(BannerApp.Data[BannerApp.GetNodeIndex("icon.bin")]);
+
+                        File.WriteAllBytes(Paths.WorkingFolder + "banner.brlyt", Banner.Data[Banner.GetNodeIndex("banner.brlyt")]);
+                        File.WriteAllBytes(Paths.Images + "VCPic.tpl", Banner.Data[Banner.GetNodeIndex("VCPic.tpl")]);
+                        File.WriteAllBytes(Paths.Images + "IconVCPic.tpl", Icon.Data[Icon.GetNodeIndex("IconVCPic.tpl")]);
+
+                        // --------------------------------------------------------------------------- //
+
+                        // Copy VCbrlyt to working folder
+                        string path = Paths.Apps + "vcbrlyt\\";
+                        foreach (string dir in Directory.GetDirectories(path))
+                            Directory.CreateDirectory(dir.Replace(path, Paths.WorkingFolder + "vcbrlyt\\"));
+                        foreach (string file in Directory.GetFiles(path, "*.*", SearchOption.AllDirectories))
+                            File.Copy(file, file.Replace(path, Paths.WorkingFolder + "vcbrlyt\\"));
+
+                        using (Process p = Process.Start(new ProcessStartInfo
+                        {
+                            FileName = Paths.WorkingFolder + "vcbrlyt\\vcbrlyt.exe",
+                            Arguments = $"{Paths.WorkingFolder + "banner.brlyt"} -Title \"{BannerTitle.Text.Replace('-', '–').Replace(Environment.NewLine, "^")}\" -YEAR {ReleaseYear.Value.ToString()} -Play {Players.Value.ToString()}",
+                            UseShellExecute = false,
+                            CreateNoWindow = true
+                        }))
+                            p.WaitForExit();
+
+                        // --------------------------------------------------------------------------- //
+
+                        var Brlyt = File.ReadAllBytes(Paths.WorkingFolder + "banner.brlyt");
+                        if (Brlyt == Banner.Data[Banner.GetNodeIndex("banner.brlyt")])
+                            throw new Exception("Banner.brlyt has not been modified. Make sure you have set up HowardC Tools properly and try again.");
+                        Banner.ReplaceFile(Banner.GetNodeIndex("banner.brlyt"), Brlyt);
+
+                        // --------------------------------------------------------------------------- //
+
+                        TPL tpl = TPL.Load(Paths.Images + "VCPic.tpl");
+                        var tplTF = tpl.GetTextureFormat(0);
+                        var tplPF = tpl.GetPaletteFormat(0);
+                        tpl.RemoveTexture(0);
+                        tpl.AddTexture(tImg.VCPic, tplTF, tplPF);
+                        tpl.Save(Paths.Images + "VCPic.tpl");
+
+                        tpl = TPL.Load(Paths.Images + "IconVCPic.tpl");
+                        tplTF = tpl.GetTextureFormat(0);
+                        tplPF = tpl.GetPaletteFormat(0);
+                        tpl.RemoveTexture(0);
+                        tpl.AddTexture(tImg.IconVCPic, tplTF, tplPF);
+                        tpl.Save(Paths.Images + "IconVCPic.tpl");
+
+                        tpl.Dispose();
+
+                        Banner.ReplaceFile(Banner.GetNodeIndex("VCPic.tpl"), File.ReadAllBytes(Paths.Images + "VCPic.tpl"));
+                        Icon.ReplaceFile(Icon.GetNodeIndex("IconVCPic.tpl"), File.ReadAllBytes(Paths.Images + "IconVCPic.tpl"));
+
+                        Banner.AddHeaderImd5();
+                        Icon.AddHeaderImd5();
+                        BannerApp.ReplaceFile(BannerApp.GetNodeIndex("banner.bin"), Banner.ToByteArray());
+                        BannerApp.ReplaceFile(BannerApp.GetNodeIndex("icon.bin"), Icon.ToByteArray());
+                        BannerApp.AddHeaderImet(false, ChannelTitle.Text);
+                        BannerApp.Save(Paths.WorkingFolder + "00000000.app");
+
+                        BannerApp.Dispose();
+                        Banner.Dispose();
+                        Icon.Dispose();
+
+                        Directory.Delete(Paths.Images, true);
+                        File.Delete(Paths.WorkingFolder + "banner.brlyt");
+                        Directory.Delete(Paths.WorkingFolder + "vcbrlyt\\", true);
+                        #endregion
+
+                        #region SaveData
+                        #endregion
+                    }
+
+                    U8.Unpack(Paths.WorkingFolder + "00000005.app", Paths.WorkingFolder_Content5);
                     if (disableEmanual.Checked) Injector.RemoveEmanual();
+                    tImg.InsertSaveBanner(currentConsole);
 
                     switch (currentConsole)
                     {
@@ -273,6 +377,7 @@ namespace FriishProduce
                                             N64.emuVersion = entry.Attributes["ver"].Value;
                             }
                             N64.ReplaceROM();
+                            if (customize.Checked) N64.InsertSaveComments(SaveDataTitle.Lines);
                             break;
                     }
 
@@ -281,11 +386,22 @@ namespace FriishProduce
                     w.CreateNew(Paths.WorkingFolder);
                     w.FakeSign = true;
                     if (RegionFree.Checked) w.Region = libWiiSharp.Region.Free;
-                    if (customize.Enabled)  w.ChangeChannelTitles(ChannelTitle.Text);
                     w.ChangeTitleID(LowerTitleID.Channel, TitleID.Text);
                     w.Save(SaveWAD.FileName);
                     w.Dispose();
                     MessageBox.Show(strings.finished);
+
+                    if (Properties.Settings.Default.enable_wad_to_hbc)
+                    {
+                        try
+                        {
+                            HBC.SendToHBC(SaveWAD.FileName, Properties.Settings.Default.wii_ip_address);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(String.Format(strings.errorTransmitter, ex.Message));
+                        }
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -293,23 +409,14 @@ namespace FriishProduce
                 }
                 finally
                 {
-                    if (Directory.Exists(Paths.WorkingFolder)) Directory.Delete(Paths.WorkingFolder, true);
-                    if (File.Exists(input[0]) && input[0].EndsWith(Paths.PatchedSuffix))
+                    try { if (Directory.Exists(Paths.WorkingFolder)) Directory.Delete(Paths.WorkingFolder, true); }
+                    finally
                     {
-                        File.Delete(input[0]);
-                        input[0] = input[0].Remove(input[0].Length - Paths.PatchedSuffix.Length, Paths.PatchedSuffix.Length);
-                    }
-                }
-
-                if (Properties.Settings.Default.enable_wad_to_hbc)
-                {
-                    try
-                    {
-                        HBC.SendToHBC(SaveWAD.FileName, Properties.Settings.Default.wii_ip_address);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(String.Format(strings.errorTransmitter, ex.Message));
+                        if (File.Exists(input[0]) && input[0].EndsWith(Paths.PatchedSuffix))
+                        {
+                            File.Delete(input[0]);
+                            input[0] = input[0].Remove(input[0].Length - Paths.PatchedSuffix.Length, Paths.PatchedSuffix.Length);
+                        }
                     }
                 }
             }
@@ -331,8 +438,27 @@ namespace FriishProduce
 
         private void BannerText_Changed(object sender, EventArgs e)
         {
-            next.Enabled = checkBannerPage();
             if (currentConsole == Platforms.sms || currentConsole == Platforms.smd) SaveDataTitle.Text = ChannelTitle.Text;
+            if (SaveDataTitle.Lines.Length > 2) SaveDataTitle.Lines = new string[2] { SaveDataTitle.Lines[0], SaveDataTitle.Lines[1] };
+            if (BannerTitle.Lines.Length > 2) BannerTitle.Lines = new string[2] { BannerTitle.Lines[0], BannerTitle.Lines[1] };
+
+            next.Enabled = checkBannerPage();
+        }
+
+        private void BannerText_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            var item = sender as TextBox;
+
+            if (item.Multiline && !string.IsNullOrEmpty(item.Text))
+            {
+                int max = item.Name.Contains("Banner") ? 65 : 50;
+
+                if (item.Lines[item.GetLineFromCharIndex(item.SelectionStart)].Length >= max)
+                    e.Handled = !(e.KeyChar == (char)Keys.Enter || e.KeyChar == (char)Keys.Back);
+
+                if (e.KeyChar == (char)Keys.Enter && item.Lines.Length >= 2)
+                    e.Handled = true;
+            }
         }
 
         private void TitleID_Changed(object sender, EventArgs e) => finish.Enabled = (TitleID.Text.Length == 4) && Regex.IsMatch(TitleID.Text, "^[A-Z0-9]*$");
@@ -350,6 +476,52 @@ namespace FriishProduce
                 } 
             }
             else input[1] = null;
+        }
+
+        private void Customize_CheckedChanged(object sender, EventArgs e)
+        {
+            Banner.Enabled = customize.Checked;
+            next.Enabled = checkBannerPage();
+        }
+
+        private void ImportBanner_CheckedChanged(object sender, EventArgs e) => baseList_banner.Enabled = ImportBanner.Checked;
+
+        private void Image_Click(object sender, EventArgs e)
+        {
+            if (BrowseImage.ShowDialog() == DialogResult.OK)
+            {
+                tImg = new TitleImage();
+                tImg.path = BrowseImage.FileName;
+                tImg.shrinkToFit = (int)currentConsole <= 2;
+                if (Image_Stretch.SelectedIndex < 0)
+                {
+                    var resize = TitleImage.Resize.Stretch;
+                    Image_Stretch.SelectedIndex = (int)resize;
+                }
+
+                try
+                {
+                    tImg.Generate(System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic,
+                                  (TitleImage.Resize)Enum.ToObject(typeof(TitleImage.Resize), Image_Stretch.SelectedIndex));
+                    Image.Image = tImg.VCPic;
+                }
+                catch (Exception)
+                {
+                    tImg = new TitleImage();
+                }
+                finally
+                {
+                    next.Enabled = checkBannerPage();
+                }
+            }
+        }
+
+        private void Image_StretchChanged(object sender, EventArgs e)
+        {
+            tImg.Generate(System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic,
+                          (TitleImage.Resize)Enum.ToObject(typeof(TitleImage.Resize), Image_Stretch.SelectedIndex));
+            Image.Image = tImg.VCPic;
+            next.Enabled = checkBannerPage();
         }
     }
 }

@@ -52,6 +52,19 @@ namespace FriishProduce
             this.SaveWAD = new System.Windows.Forms.SaveFileDialog();
             this.page3 = new System.Windows.Forms.Panel();
             this.Banner = new System.Windows.Forms.Panel();
+            this.SaveDataTitle = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.baseList_banner = new System.Windows.Forms.ComboBox();
+            this.ImportBanner = new System.Windows.Forms.CheckBox();
+            this.Image = new System.Windows.Forms.PictureBox();
+            this.Players = new System.Windows.Forms.NumericUpDown();
+            this.label11 = new System.Windows.Forms.Label();
+            this.ReleaseYear = new System.Windows.Forms.NumericUpDown();
+            this.label10 = new System.Windows.Forms.Label();
+            this.BannerTitle = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.ChannelTitle = new System.Windows.Forms.TextBox();
             this.customize = new System.Windows.Forms.CheckBox();
             this.label5 = new System.Windows.Forms.Label();
             this.page4 = new System.Windows.Forms.Panel();
@@ -65,29 +78,19 @@ namespace FriishProduce
             this.label6 = new System.Windows.Forms.Label();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.BrowsePatch = new System.Windows.Forms.OpenFileDialog();
-            this.ChannelTitle = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.BannerTitle = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.ReleaseYear = new System.Windows.Forms.NumericUpDown();
-            this.Players = new System.Windows.Forms.NumericUpDown();
-            this.label11 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.ImportBanner = new System.Windows.Forms.CheckBox();
-            this.baseList_banner = new System.Windows.Forms.ComboBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.SaveDataTitle = new System.Windows.Forms.TextBox();
+            this.BrowseImage = new System.Windows.Forms.OpenFileDialog();
+            this.Image_Stretch = new System.Windows.Forms.ComboBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.page1.SuspendLayout();
             this.page2.SuspendLayout();
             this.page3.SuspendLayout();
             this.Banner.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Image)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Players)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReleaseYear)).BeginInit();
             this.page4.SuspendLayout();
             this.Options_NES.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ReleaseYear)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Players)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -108,7 +111,8 @@ namespace FriishProduce
             // settings
             // 
             this.settings.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.settings.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.settings.FlatAppearance.BorderSize = 0;
+            this.settings.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
             this.settings.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             resources.ApplyResources(this.settings, "settings");
             this.settings.Name = "settings";
@@ -119,7 +123,8 @@ namespace FriishProduce
             // 
             resources.ApplyResources(this.back, "back");
             this.back.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.back.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.back.FlatAppearance.BorderSize = 0;
+            this.back.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
             this.back.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.back.Name = "back";
             this.back.UseVisualStyleBackColor = true;
@@ -128,7 +133,8 @@ namespace FriishProduce
             // finish
             // 
             this.finish.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.finish.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.finish.FlatAppearance.BorderSize = 0;
+            this.finish.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
             this.finish.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             resources.ApplyResources(this.finish, "finish");
             this.finish.Name = "finish";
@@ -139,7 +145,8 @@ namespace FriishProduce
             // 
             resources.ApplyResources(this.next, "next");
             this.next.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.next.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.next.FlatAppearance.BorderSize = 0;
+            this.next.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
             this.next.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.next.Name = "next";
             this.next.UseVisualStyleBackColor = true;
@@ -242,11 +249,13 @@ namespace FriishProduce
             // Banner
             // 
             this.Banner.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Banner.Controls.Add(this.label13);
+            this.Banner.Controls.Add(this.Image_Stretch);
             this.Banner.Controls.Add(this.SaveDataTitle);
             this.Banner.Controls.Add(this.label12);
             this.Banner.Controls.Add(this.baseList_banner);
             this.Banner.Controls.Add(this.ImportBanner);
-            this.Banner.Controls.Add(this.pictureBox1);
+            this.Banner.Controls.Add(this.Image);
             this.Banner.Controls.Add(this.Players);
             this.Banner.Controls.Add(this.label11);
             this.Banner.Controls.Add(this.ReleaseYear);
@@ -258,11 +267,121 @@ namespace FriishProduce
             resources.ApplyResources(this.Banner, "Banner");
             this.Banner.Name = "Banner";
             // 
+            // SaveDataTitle
+            // 
+            resources.ApplyResources(this.SaveDataTitle, "SaveDataTitle");
+            this.SaveDataTitle.Name = "SaveDataTitle";
+            this.SaveDataTitle.TextChanged += new System.EventHandler(this.BannerText_Changed);
+            this.SaveDataTitle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.BannerText_KeyPress);
+            // 
+            // label12
+            // 
+            resources.ApplyResources(this.label12, "label12");
+            this.label12.Name = "label12";
+            // 
+            // baseList_banner
+            // 
+            this.baseList_banner.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.baseList_banner, "baseList_banner");
+            this.baseList_banner.FormattingEnabled = true;
+            this.baseList_banner.Name = "baseList_banner";
+            // 
+            // ImportBanner
+            // 
+            resources.ApplyResources(this.ImportBanner, "ImportBanner");
+            this.ImportBanner.Name = "ImportBanner";
+            this.ImportBanner.UseVisualStyleBackColor = true;
+            this.ImportBanner.CheckedChanged += new System.EventHandler(this.ImportBanner_CheckedChanged);
+            // 
+            // Image
+            // 
+            this.Image.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+            this.Image.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Image.Cursor = System.Windows.Forms.Cursors.Hand;
+            resources.ApplyResources(this.Image, "Image");
+            this.Image.Name = "Image";
+            this.Image.TabStop = false;
+            this.Image.Click += new System.EventHandler(this.Image_Click);
+            // 
+            // Players
+            // 
+            resources.ApplyResources(this.Players, "Players");
+            this.Players.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.Players.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.Players.Name = "Players";
+            this.Players.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            // 
+            // label11
+            // 
+            resources.ApplyResources(this.label11, "label11");
+            this.label11.Name = "label11";
+            // 
+            // ReleaseYear
+            // 
+            resources.ApplyResources(this.ReleaseYear, "ReleaseYear");
+            this.ReleaseYear.Maximum = new decimal(new int[] {
+            2029,
+            0,
+            0,
+            0});
+            this.ReleaseYear.Minimum = new decimal(new int[] {
+            1980,
+            0,
+            0,
+            0});
+            this.ReleaseYear.Name = "ReleaseYear";
+            this.ReleaseYear.Value = new decimal(new int[] {
+            1980,
+            0,
+            0,
+            0});
+            // 
+            // label10
+            // 
+            resources.ApplyResources(this.label10, "label10");
+            this.label10.Name = "label10";
+            // 
+            // BannerTitle
+            // 
+            resources.ApplyResources(this.BannerTitle, "BannerTitle");
+            this.BannerTitle.Name = "BannerTitle";
+            this.BannerTitle.TextChanged += new System.EventHandler(this.BannerText_Changed);
+            this.BannerTitle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.BannerText_KeyPress);
+            // 
+            // label9
+            // 
+            resources.ApplyResources(this.label9, "label9");
+            this.label9.Name = "label9";
+            // 
+            // label8
+            // 
+            resources.ApplyResources(this.label8, "label8");
+            this.label8.Name = "label8";
+            // 
+            // ChannelTitle
+            // 
+            resources.ApplyResources(this.ChannelTitle, "ChannelTitle");
+            this.ChannelTitle.Name = "ChannelTitle";
+            this.ChannelTitle.TextChanged += new System.EventHandler(this.BannerText_Changed);
+            // 
             // customize
             // 
             resources.ApplyResources(this.customize, "customize");
             this.customize.Name = "customize";
             this.customize.UseVisualStyleBackColor = true;
+            this.customize.CheckedChanged += new System.EventHandler(this.Customize_CheckedChanged);
             // 
             // label5
             // 
@@ -337,112 +456,25 @@ namespace FriishProduce
             // 
             resources.ApplyResources(this.BrowsePatch, "BrowsePatch");
             // 
-            // ChannelTitle
+            // BrowseImage
             // 
-            this.ChannelTitle.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            resources.ApplyResources(this.ChannelTitle, "ChannelTitle");
-            this.ChannelTitle.Name = "ChannelTitle";
-            this.ChannelTitle.TextChanged += new System.EventHandler(this.BannerText_Changed);
+            resources.ApplyResources(this.BrowseImage, "BrowseImage");
             // 
-            // label8
+            // Image_Stretch
             // 
-            resources.ApplyResources(this.label8, "label8");
-            this.label8.Name = "label8";
+            this.Image_Stretch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.Image_Stretch, "Image_Stretch");
+            this.Image_Stretch.FormattingEnabled = true;
+            this.Image_Stretch.Items.AddRange(new object[] {
+            resources.GetString("Image_Stretch.Items"),
+            resources.GetString("Image_Stretch.Items1")});
+            this.Image_Stretch.Name = "Image_Stretch";
+            this.Image_Stretch.SelectedIndexChanged += new System.EventHandler(this.Image_StretchChanged);
             // 
-            // label9
+            // label13
             // 
-            resources.ApplyResources(this.label9, "label9");
-            this.label9.Name = "label9";
-            // 
-            // BannerTitle
-            // 
-            this.BannerTitle.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            resources.ApplyResources(this.BannerTitle, "BannerTitle");
-            this.BannerTitle.Name = "BannerTitle";
-            this.BannerTitle.TextChanged += new System.EventHandler(this.BannerText_Changed);
-            // 
-            // label10
-            // 
-            resources.ApplyResources(this.label10, "label10");
-            this.label10.Name = "label10";
-            // 
-            // ReleaseYear
-            // 
-            resources.ApplyResources(this.ReleaseYear, "ReleaseYear");
-            this.ReleaseYear.Maximum = new decimal(new int[] {
-            2029,
-            0,
-            0,
-            0});
-            this.ReleaseYear.Minimum = new decimal(new int[] {
-            1980,
-            0,
-            0,
-            0});
-            this.ReleaseYear.Name = "ReleaseYear";
-            this.ReleaseYear.Value = new decimal(new int[] {
-            1980,
-            0,
-            0,
-            0});
-            // 
-            // Players
-            // 
-            resources.ApplyResources(this.Players, "Players");
-            this.Players.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.Players.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.Players.Name = "Players";
-            this.Players.Value = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            // 
-            // label11
-            // 
-            resources.ApplyResources(this.label11, "label11");
-            this.label11.Name = "label11";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            resources.ApplyResources(this.pictureBox1, "pictureBox1");
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.TabStop = false;
-            // 
-            // ImportBanner
-            // 
-            resources.ApplyResources(this.ImportBanner, "ImportBanner");
-            this.ImportBanner.Name = "ImportBanner";
-            this.ImportBanner.UseVisualStyleBackColor = true;
-            // 
-            // baseList_banner
-            // 
-            this.baseList_banner.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            resources.ApplyResources(this.baseList_banner, "baseList_banner");
-            this.baseList_banner.FormattingEnabled = true;
-            this.baseList_banner.Name = "baseList_banner";
-            // 
-            // label12
-            // 
-            resources.ApplyResources(this.label12, "label12");
-            this.label12.Name = "label12";
-            // 
-            // SaveDataTitle
-            // 
-            this.SaveDataTitle.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            resources.ApplyResources(this.SaveDataTitle, "SaveDataTitle");
-            this.SaveDataTitle.Name = "SaveDataTitle";
+            resources.ApplyResources(this.label13, "label13");
+            this.label13.Name = "label13";
             // 
             // Main
             // 
@@ -467,13 +499,13 @@ namespace FriishProduce
             this.page3.PerformLayout();
             this.Banner.ResumeLayout(false);
             this.Banner.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Image)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Players)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReleaseYear)).EndInit();
             this.page4.ResumeLayout(false);
             this.page4.PerformLayout();
             this.Options_NES.ResumeLayout(false);
             this.Options_NES.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ReleaseYear)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Players)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -522,11 +554,14 @@ namespace FriishProduce
         private System.Windows.Forms.NumericUpDown ReleaseYear;
         private System.Windows.Forms.NumericUpDown Players;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox Image;
         private System.Windows.Forms.CheckBox ImportBanner;
         private System.Windows.Forms.ComboBox baseList_banner;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox SaveDataTitle;
+        private System.Windows.Forms.OpenFileDialog BrowseImage;
+        private System.Windows.Forms.ComboBox Image_Stretch;
+        private System.Windows.Forms.Label label13;
     }
 }
 

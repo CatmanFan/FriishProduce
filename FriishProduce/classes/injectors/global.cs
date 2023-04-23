@@ -92,7 +92,9 @@ namespace FriishProduce
                 "Opera.ccf.zlib",
                 "emanual.arc",
                 "man.arc",
-                "manc.arc"
+                "manc.arc",
+                "html.arc",
+                "htmlc.arc"
             };
 
             foreach (var file in Directory.GetFiles(Paths.WorkingFolder_Content5, "*.*", SearchOption.AllDirectories))

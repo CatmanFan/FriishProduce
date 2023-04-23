@@ -22,7 +22,8 @@ namespace FriishProduce
         public static readonly string WorkingFolder_FlashSWF = WorkingFolder_Content2 + $"content\\menu.swf";
         public static readonly string WorkingFolder_FlashConfig = WorkingFolder_Content2 + $"config\\config.common.pcf";
 
-        // ROM paths
+        // Other
         public static readonly string PatchedSuffix = "-patched";
+        public static readonly string Images = WorkingFolder + "images\\";
     }
 }
