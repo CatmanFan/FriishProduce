@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 
 namespace FriishProduce.Injectors
 {
@@ -100,69 +101,79 @@ namespace FriishProduce.Injectors
             }
         }
 
-        public int[] DetermineSaveTPLOffsets()
-        {
-            byte[] content1 = File.ReadAllBytes(content1_file);
-            int[] offsets = new int[2];
+        // ---------- SAVEDATA-RELATED FUNCTIONS ---------- //
 
-            for (int i = content1.Length - 20; i > 0; i--)
+        public int[] DetermineSaveTPLOffsets(string content1_tmp)
+        {
+            if (content1_tmp == null) content1_tmp = content1_file;
+
+            if (File.Exists(content1_tmp))
             {
-                if (content1[i] == 0xA2
-                 && content1[i + 1] == 0xDB
-                 && content1[i + 2] == 0xA2
-                 && content1[i + 3] == 0xDB
-                 && content1[i + 4] == 0xA2
-                 && content1[i + 5] == 0xDB
-                 && content1[i + 6] == 0xA2
-                 && content1[i + 7] == 0xDB
-                 && content1[i + 8] == 0xA2
-                 && content1[i + 9] == 0xDB
-                 && content1[i + 10] == 0xA2
-                 && content1[i + 11] == 0xDB
-                 && content1[i + 12] == 0xA2
-                 && content1[i + 13] == 0xDB
-                 && content1[i + 14] == 0xA2
-                 && content1[i + 15] == 0xDB)
+                byte[] content1 = File.ReadAllBytes(content1_tmp);
+                int[] offsets = new int[2];
+
+                for (int i = content1.Length - 20; i > 0; i--)
                 {
-                    offsets[1] = i + 16;
-                    for (int x = offsets[1]; x > 0; x--)
+                    if (content1[i] == 0xA2
+                     && content1[i + 1] == 0xDB
+                     && content1[i + 2] == 0xA2
+                     && content1[i + 3] == 0xDB
+                     && content1[i + 4] == 0xA2
+                     && content1[i + 5] == 0xDB
+                     && content1[i + 6] == 0xA2
+                     && content1[i + 7] == 0xDB
+                     && content1[i + 8] == 0xA2
+                     && content1[i + 9] == 0xDB
+                     && content1[i + 10] == 0xA2
+                     && content1[i + 11] == 0xDB
+                     && content1[i + 12] == 0xA2
+                     && content1[i + 13] == 0xDB
+                     && content1[i + 14] == 0xA2
+                     && content1[i + 15] == 0xDB)
                     {
-                        if (content1[x] == 0x00
-                         && content1[x + 1] == 0x20
-                         && content1[x + 2] == 0xAF
-                         && content1[x + 3] == 0x30
-                         && content1[x + 4] == 0x00
-                         && content1[x + 5] == 0x00
-                         && content1[x + 6] == 0x00
-                         && content1[x + 7] == 0x05
-                         && content1[x + 8] == 0x00
-                         && content1[x + 9] == 0x00
-                         && content1[x + 10] == 0x00
-                         && content1[x + 11] == 0x0C
-                         && content1[x + 12] == 0x00
-                         && content1[x + 13] == 0x00
-                         && content1[x + 14] == 0x00
-                         && content1[x + 15] == 0x34)
-                            offsets[0] = x;
+                        offsets[1] = i + 16;
+                        for (int x = offsets[1]; x > 0; x--)
+                        {
+                            if (content1[x] == 0x00
+                             && content1[x + 1] == 0x20
+                             && content1[x + 2] == 0xAF
+                             && content1[x + 3] == 0x30
+                             && content1[x + 4] == 0x00
+                             && content1[x + 5] == 0x00
+                             && content1[x + 6] == 0x00
+                             && content1[x + 7] == 0x05
+                             && content1[x + 8] == 0x00
+                             && content1[x + 9] == 0x00
+                             && content1[x + 10] == 0x00
+                             && content1[x + 11] == 0x0C
+                             && content1[x + 12] == 0x00
+                             && content1[x + 13] == 0x00
+                             && content1[x + 14] == 0x00
+                             && content1[x + 15] == 0x34)
+                                offsets[0] = x;
+                        }
+                        break;
                     }
-                    break;
                 }
+
+                return offsets;
             }
 
-            return offsets;
+            return new int[2];
         }
 
-        public void ExtractSaveTPL(string out_file)
+        public bool ExtractSaveTPL(string out_file)
         {
-            byte[] content1 = File.ReadAllBytes(content1_file);
-            var tpl = new List<byte>();
-
             if (saveTPL_offsets[0] != 0 && saveTPL_offsets[1] != 0)
             {
+                byte[] content1 = File.ReadAllBytes(content1_file);
+                var tpl = new List<byte>();
                 for (int i = saveTPL_offsets[0]; i < saveTPL_offsets[1]; i++)
                     tpl.Add(content1[i]);
                 File.WriteAllBytes(out_file, tpl.ToArray());
+                return true;
             }
+            return false;
         }
 
         public void InsertSaveData(string text, string inputTPL)
@@ -170,8 +181,8 @@ namespace FriishProduce.Injectors
             // In the two WADs I've tested (SMB3 & Kirby's Adventure), the savedata text is found near
             // the string "VirtualIF.c MEM1 heap allocation error" within the content1 file
             // This function will try to read for the index of the string by going backwards from end-of-file
-
             byte[] content1 = File.ReadAllBytes(content1_file);
+
             int start = 0;
             int end = 0;
 
@@ -189,24 +200,30 @@ namespace FriishProduce.Injectors
                     end = i;
             }
 
-            if (end == 0) return;
+            // In both aforementioned WADs the savetitle text must not be bigger than what the content1 can contain.
+            // If trying to increase or decrease the filesize it breaks the WAD
 
-            for (int i = end; i > 0; i--)
-                if (content1[i - 1] == 0x00 && content1[i - 2] == 0xDB)
-                {
-                    start = i;
-                    break;
-                }
-
-            if (start != 0 && end != 0)
+            // Text addition format: UTF-16 (Little Endian)
+            if (end != 0)
             {
-                for (int i = start; i < end; i += 2)
+                for (int i = end; i > 0; i--)
+                    if (content1[i - 1] == 0x00 && content1[i - 2] == 0xDB)
+                    {
+                        start = i;
+                        break;
+                    }
+
+                if (start != 0)
                 {
-                    try { content1[i] = Convert.ToByte(text[(i - start) / 2]); }
-                    catch { content1[i] = 0x00; }
+                    for (int i = start; i < end; i += 2)
+                    {
+                        try { content1[i] = Encoding.Unicode.GetBytes(text)[(i - start)]; }
+                        catch { content1[i] = 0x00; }
+                    }
                 }
             }
 
+            // TPL replacement
             if (saveTPL_offsets[0] != 0 && File.Exists(inputTPL))
             {
                 var inputTPL_bytes = File.ReadAllBytes(inputTPL);

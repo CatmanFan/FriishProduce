@@ -37,12 +37,12 @@ namespace FriishProduce
             this.language = new System.Windows.Forms.ComboBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.HBC = new System.Windows.Forms.CheckBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.HBC_IP = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.HBC_Protocol = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.HBC = new System.Windows.Forms.CheckBox();
+            this.HBC_IP = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -106,23 +106,6 @@ namespace FriishProduce
             resources.ApplyResources(this.tabPage1, "tabPage1");
             this.tabPage1.Name = "tabPage1";
             // 
-            // HBC
-            // 
-            resources.ApplyResources(this.HBC, "HBC");
-            this.HBC.Name = "HBC";
-            this.HBC.UseVisualStyleBackColor = true;
-            this.HBC.CheckedChanged += new System.EventHandler(this.EnableWADtoHBC_CheckedChanged);
-            // 
-            // label2
-            // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
-            // 
-            // HBC_IP
-            // 
-            resources.ApplyResources(this.HBC_IP, "HBC_IP");
-            this.HBC_IP.Name = "HBC_IP";
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.HBC_Protocol);
@@ -134,11 +117,6 @@ namespace FriishProduce
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
-            // label3
-            // 
-            resources.ApplyResources(this.label3, "label3");
-            this.label3.Name = "label3";
-            // 
             // HBC_Protocol
             // 
             this.HBC_Protocol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -149,6 +127,28 @@ namespace FriishProduce
             resources.ApplyResources(this.HBC_Protocol, "HBC_Protocol");
             this.HBC_Protocol.Name = "HBC_Protocol";
             // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // HBC
+            // 
+            resources.ApplyResources(this.HBC, "HBC");
+            this.HBC.Name = "HBC";
+            this.HBC.UseVisualStyleBackColor = true;
+            this.HBC.CheckedChanged += new System.EventHandler(this.EnableWADtoHBC_CheckedChanged);
+            // 
+            // HBC_IP
+            // 
+            resources.ApplyResources(this.HBC_IP, "HBC_IP");
+            this.HBC_IP.Name = "HBC_IP";
+            // 
             // Settings
             // 
             this.AcceptButton = this.ok;
@@ -156,12 +156,12 @@ namespace FriishProduce
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             this.CancelButton = this.cancel;
-            this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.tabControl1);
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Settings";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;

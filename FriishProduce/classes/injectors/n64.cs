@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Text;
 using libWiiSharp;
 
 namespace FriishProduce.Injectors
@@ -12,7 +13,7 @@ namespace FriishProduce.Injectors
         public string emuVersion { get; set; }
 
         private readonly string byteswappedROM = $"{Paths.Apps}ucon64\\rom.z64";
-        private readonly string compressedROM = $"{Paths.Apps}ucon64\\romc";
+        private readonly string compressedROM = $"{Paths.WorkingFolder}romc";
 
 
         public void FixBrightness(string content1_file)
@@ -83,7 +84,7 @@ namespace FriishProduce.Injectors
             // These are formatted differently from other ROMC channels, mainly the title string starts at 0x40, and two null characters follow
             // instead of the regular separator, before a supposed second line string.
 
-            // Text addition is based on UTF-16 (Big Endian), with null spaces in between each character
+            // Text addition format: UTF-16 (Little Endian)
             foreach (var item in Directory.GetFiles(Paths.WorkingFolder_Content5))
             {
                 if (Path.GetFileName(item).Contains("saveComments_"))
@@ -96,11 +97,7 @@ namespace FriishProduce.Injectors
                         newSave.Add(byteArray[i]);
 
                     for (int i = 0; i < lines[0].Length; i++)
-                    {
-                        try { newSave.Add(Convert.ToByte(lines[0][i])); }
-                        catch { newSave.Add(0x00); }
-                        finally { if (emuVersion != "romc-crv2") newSave.Add(0x00); }
-                    }
+                        try { newSave.Add(Encoding.Unicode.GetBytes(lines[0])[i]); } catch { newSave.Add(0x00); }
 
                     if (emuVersion == "romc-crv2")
                         { newSave.Add(0x00); newSave.Add(0x00); }
@@ -117,20 +114,15 @@ namespace FriishProduce.Injectors
 
                     if (lines.Length == 2)
                         for (int i = 0; i < lines[1].Length; i++)
-                        {
-                            try { newSave.Add(Convert.ToByte(lines[1][i])); }
-                            catch { newSave.Add(0x00); }
-                            finally { if (emuVersion != "romc-crv2") newSave.Add(0x00); }
-                        }
+                            try { newSave.Add(Encoding.Unicode.GetBytes(lines[1])[i]); } catch { newSave.Add(0x00); }
 
                     foreach (var Byte in separator) newSave.Add(Byte);
 
                     // Character count determiner within savedata file
-                    var spacing = emuVersion != "romc-crv2" ? 2 : 1;
-                    newSave[45] = Convert.ToByte(lines[0].Length * spacing);
-                    newSave[47] = Convert.ToByte(lines[0].Length * spacing);
-                    newSave[61] = lines.Length == 2 ? Convert.ToByte(lines[1].Length * spacing) : (byte)0x00;
-                    newSave[63] = lines.Length == 2 ? Convert.ToByte(lines[1].Length * spacing) : (byte)0x00;
+                    newSave[45] = Convert.ToByte(Encoding.Unicode.GetBytes(lines[0]).Length);
+                    newSave[47] = Convert.ToByte(Encoding.Unicode.GetBytes(lines[0]).Length);
+                    newSave[61] = lines.Length == 2 ? Convert.ToByte(Encoding.Unicode.GetBytes(lines[1]).Length) : (byte)0x00;
+                    newSave[63] = lines.Length == 2 ? Convert.ToByte(Encoding.Unicode.GetBytes(lines[1]).Length) : (byte)0x00;
 
                     File.WriteAllBytes(item, newSave.ToArray());
                 }
@@ -170,16 +162,19 @@ namespace FriishProduce.Injectors
                     File.WriteAllBytes(byteswappedROM, ROMbytes);
                 }
 
+                string pPath = Paths.WorkingFolder + "romc.exe";
+                File.WriteAllBytes(pPath, Properties.Resources.ROMC);
                 using (Process p = Process.Start(new ProcessStartInfo
                 {
-                    FileName = $"{Paths.Apps}romc.exe",
-                    WorkingDirectory = Paths.Apps,
-                    Arguments = $"e ucon64\\rom.z64 ucon64\\romc",
+                    FileName = pPath,
+                    WorkingDirectory = Paths.WorkingFolder,
+                    Arguments = $"e \"{byteswappedROM}\" romc",
                     UseShellExecute = false,
                     CreateNoWindow = true
                 }))
                     p.WaitForExit();
                 File.Delete(byteswappedROM);
+                File.Delete(pPath);
 
                 if (!File.Exists(compressedROM))
                     throw new Exception("The ROMC compression process failed.");

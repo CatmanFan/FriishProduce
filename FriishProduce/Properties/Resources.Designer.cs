@@ -59,5 +59,65 @@ namespace FriishProduce.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] CCFarc {
+            get {
+                object obj = ResourceManager.GetObject("CCFarc", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] CCFarcraw {
+            get {
+                object obj = ResourceManager.GetObject("CCFarcraw", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] CCFex {
+            get {
+                object obj = ResourceManager.GetObject("CCFex", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] GBALZSS {
+            get {
+                object obj = ResourceManager.GetObject("GBALZSS", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] ROMC {
+            get {
+                object obj = ResourceManager.GetObject("ROMC", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] WWCXTool {
+            get {
+                object obj = ResourceManager.GetObject("WWCXTool", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }

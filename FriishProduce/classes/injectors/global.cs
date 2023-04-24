@@ -44,18 +44,22 @@ namespace FriishProduce
         public static string DetermineContent1()
         {
             // Check for LZ77 compression
-            if (File.ReadAllBytes(Paths.WorkingFolder + "00000001.app").Length < 1024)
+            if (File.ReadAllBytes(Paths.WorkingFolder + "00000001.app").Length < 1024000)
             {
                 if (!File.Exists(Paths.WorkingFolder + "00000001.app.dec"))
                 {
+                    string pPath = Paths.WorkingFolder + "wwcxtool.exe";
+                    File.WriteAllBytes(pPath, Properties.Resources.WWCXTool);
                     using (Process p = Process.Start(new ProcessStartInfo
                     {
-                        FileName = $"{Paths.Apps}wwcxtool.exe",
-                        Arguments = $"/u \"{Paths.WorkingFolder}00000001.app\" \"{Paths.WorkingFolder}00000001.app.dec\"",
+                        FileName = pPath,
+                        WorkingDirectory = Paths.WorkingFolder,
+                        Arguments = $"/u 00000001.app 00000001.app.dec",
                         UseShellExecute = false,
                         CreateNoWindow = true
                     }))
                         p.WaitForExit();
+                    File.Delete(pPath);
 
                     if (!File.Exists(Paths.WorkingFolder + "00000001.app.dec"))
                         throw new Exception("Unable to decompress the emulator file.");
@@ -71,14 +75,18 @@ namespace FriishProduce
         {
             if (file.EndsWith(".dec"))
             {
+                string pPath = Paths.WorkingFolder + "wwcxtool.exe";
+                File.WriteAllBytes(pPath, Properties.Resources.WWCXTool);
                 using (Process p = Process.Start(new ProcessStartInfo
                 {
-                    FileName = $"{Paths.Apps}wwcxtool.exe",
-                    Arguments = $"/cr \"{Paths.WorkingFolder}00000001.app\" \"{Paths.WorkingFolder}00000001.app.dec\" \"{Paths.WorkingFolder}00000001.app.rec\"",
+                    FileName = pPath,
+                    WorkingDirectory = Paths.WorkingFolder,
+                    Arguments = $"/cr 00000001.app 00000001.app.dec 00000001.app.rec",
                     UseShellExecute = false,
                     CreateNoWindow = true
                 }))
                     p.WaitForExit();
+                File.Delete(pPath);
 
                 if (!File.Exists(Paths.WorkingFolder + "00000001.app.rec"))
                     throw new Exception("Unable to recompress the emulator file.");

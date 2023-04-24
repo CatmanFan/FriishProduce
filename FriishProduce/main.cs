@@ -51,6 +51,7 @@ namespace FriishProduce
                 case Platforms.nes:
                     BrowseROM.Filter = strings.browseROM_nes;
                     Options_NES.Visible = true;
+                    SaveDataTitle.MaxLength = 20;
                     break;
                 case Platforms.snes:
                     BrowseROM.Filter = strings.browseROM_snes;
@@ -63,6 +64,7 @@ namespace FriishProduce
             BrowseROM.Filter += strings.browse_AllFiles;
             tImg.SetPlatform(currentConsole);
             SaveDataTitle.Enabled = !(currentConsole == Platforms.sms || currentConsole == Platforms.smd);
+            SaveDataTitle.MaxLength = 80;
 
             Reset();
             RefreshBases();
@@ -148,10 +150,12 @@ namespace FriishProduce
         private void OpenROM_Click(object sender, EventArgs e)
         {
             input[0] = null;
+            input[1] = null;
             if (BrowseROM.ShowDialog() == DialogResult.OK)
                 input[0] = BrowseROM.FileName;
                 label3.Text = input[0] != null ? Path.GetFileName(input[0]) : "N/A";
 
+            Patch.Checked = false;
             next.Enabled = (input[0] != null) && (input[2] != null);
         }
 
@@ -219,10 +223,12 @@ namespace FriishProduce
                             if (!File.Exists(dest)) File.Copy(BrowseWAD.FileName, dest);
                             RefreshBases();
                             baseList.SelectedItem = entry.Attributes["title"].Value;
+                            w.Dispose();
+                            return;
                         }
                     }
                     w.Dispose();
-                    return;
+                    goto Fail;
                 }
                 catch (Exception)
                 {
@@ -255,6 +261,7 @@ namespace FriishProduce
 
         private void Finish_Click(object sender, EventArgs e)
         {
+            SaveWAD.FileName = TitleID.Text;
             if (SaveWAD.ShowDialog() == DialogResult.OK)
             {
                 try { Directory.Delete(Paths.WorkingFolder, true); } catch { }
@@ -264,6 +271,7 @@ namespace FriishProduce
                     input[0] = Injector.ApplyPatch(input[0], input[1]);
 
                     WAD w = WAD.Load(input[2]);
+                    var ios = (int)w.StartupIOS;
                     w.Unpack(Paths.WorkingFolder);
 
                     #region Banner
@@ -366,16 +374,15 @@ namespace FriishProduce
                             {
                                 ROM = input[0],
                                 content1_file = Injector.DetermineContent1(),
+                                saveTPL_offsets = new Injectors.NES().DetermineSaveTPLOffsets(Injector.DetermineContent1())
                             };
-                            NES.saveTPL_offsets = NES.DetermineSaveTPLOffsets();
 
                             NES.InsertROM();
                             NES.InsertPalette(NES_Palette.SelectedIndex);
-
                             if (customize.Checked)
                             {
-                                NES.ExtractSaveTPL(Paths.WorkingFolder + "out.tpl");
-                                tImg.CreateSave(Platforms.nes);
+                                if (NES.ExtractSaveTPL(Paths.WorkingFolder + "out.tpl"))
+                                    tImg.CreateSave(Platforms.nes);
                                 NES.InsertSaveData(SaveDataTitle.Text, Paths.WorkingFolder + "out.tpl");
                             }
                             Injector.PrepareContent1(NES.content1_file);
@@ -385,7 +392,7 @@ namespace FriishProduce
                             Injectors.SNES SNES = new Injectors.SNES()
                             {
                                 ROM = input[0],
-                                ROMcode = XML.SearchID(baseList.SelectedItem.ToString(), currentConsole)
+                                ROMcode = new Injectors.SNES().ProduceID(XML.SearchID(baseList.SelectedItem.ToString(), currentConsole))
                             };
 
                             SNES.ReplaceROM();
@@ -411,13 +418,15 @@ namespace FriishProduce
 
                                 Injector.PrepareContent1(content1_file);
                             }
-                            // N64.ReplaceROM();
+                            N64.ReplaceROM();
 
                             if (customize.Checked) N64.InsertSaveComments(SaveDataTitle.Lines);
                             break;
                     }
 
                     U8.Pack(Paths.WorkingFolder_Content5, Paths.WorkingFolder + "00000005.app");
+
+                    // TO-DO: IOS video mode patching
 
                     w.CreateNew(Paths.WorkingFolder);
                     w.FakeSign = true;

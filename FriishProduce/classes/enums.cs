@@ -42,9 +42,6 @@ namespace FriishProduce
             };
         }
 
-        public Dictionary<string, string> Get()
-        {
-            return list;
-        }
+        public Dictionary<string, string> Get() => list;
     }
 }

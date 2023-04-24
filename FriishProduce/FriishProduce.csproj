@@ -150,6 +150,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="database.xml" />
+    <None Include="Resources\gbalzss.exe" />
+    <None Include="Resources\ccftools\ccfex.exe" />
+    <None Include="Resources\ccftools\ccfarcraw.exe" />
+    <None Include="Resources\ccftools\ccfarc.exe" />
+    <None Include="Resources\wwcxtool.exe" />
+    <None Include="Resources\romc.exe" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

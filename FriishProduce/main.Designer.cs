@@ -51,6 +51,7 @@ namespace FriishProduce
             this.BrowseWAD = new System.Windows.Forms.OpenFileDialog();
             this.SaveWAD = new System.Windows.Forms.SaveFileDialog();
             this.page3 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
             this.Banner = new System.Windows.Forms.Panel();
             this.label14 = new System.Windows.Forms.Label();
             this.Image_ModeI = new System.Windows.Forms.ComboBox();
@@ -70,21 +71,20 @@ namespace FriishProduce
             this.label8 = new System.Windows.Forms.Label();
             this.ChannelTitle = new System.Windows.Forms.TextBox();
             this.customize = new System.Windows.Forms.CheckBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.page4 = new System.Windows.Forms.Panel();
             this.RegionFree = new System.Windows.Forms.CheckBox();
             this.TitleID = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.disableEmanual = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.Options_N64 = new System.Windows.Forms.Panel();
+            this.N64_FixBrightness = new System.Windows.Forms.CheckBox();
             this.Options_NES = new System.Windows.Forms.Panel();
             this.NES_Palette = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.BrowsePatch = new System.Windows.Forms.OpenFileDialog();
             this.BrowseImage = new System.Windows.Forms.OpenFileDialog();
-            this.N64_FixBrightness = new System.Windows.Forms.CheckBox();
-            this.Options_N64 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.page1.SuspendLayout();
             this.page2.SuspendLayout();
@@ -94,8 +94,8 @@ namespace FriishProduce
             ((System.ComponentModel.ISupportInitialize)(this.Players)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReleaseYear)).BeginInit();
             this.page4.SuspendLayout();
-            this.Options_NES.SuspendLayout();
             this.Options_N64.SuspendLayout();
+            this.Options_NES.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -251,6 +251,11 @@ namespace FriishProduce
             this.page3.Controls.Add(this.customize);
             resources.ApplyResources(this.page3, "page3");
             this.page3.Name = "page3";
+            // 
+            // label5
+            // 
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.Name = "label5";
             // 
             // Banner
             // 
@@ -429,11 +434,6 @@ namespace FriishProduce
             this.customize.UseVisualStyleBackColor = true;
             this.customize.CheckedChanged += new System.EventHandler(this.Customize_CheckedChanged);
             // 
-            // label5
-            // 
-            resources.ApplyResources(this.label5, "label5");
-            this.label5.Name = "label5";
-            // 
             // page4
             // 
             this.page4.Controls.Add(this.RegionFree);
@@ -475,6 +475,19 @@ namespace FriishProduce
             resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
             // 
+            // Options_N64
+            // 
+            this.Options_N64.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Options_N64.Controls.Add(this.N64_FixBrightness);
+            resources.ApplyResources(this.Options_N64, "Options_N64");
+            this.Options_N64.Name = "Options_N64";
+            // 
+            // N64_FixBrightness
+            // 
+            resources.ApplyResources(this.N64_FixBrightness, "N64_FixBrightness");
+            this.N64_FixBrightness.Name = "N64_FixBrightness";
+            this.N64_FixBrightness.UseVisualStyleBackColor = true;
+            // 
             // Options_NES
             // 
             this.Options_NES.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -507,19 +520,6 @@ namespace FriishProduce
             // 
             resources.ApplyResources(this.BrowseImage, "BrowseImage");
             // 
-            // N64_FixBrightness
-            // 
-            resources.ApplyResources(this.N64_FixBrightness, "N64_FixBrightness");
-            this.N64_FixBrightness.Name = "N64_FixBrightness";
-            this.N64_FixBrightness.UseVisualStyleBackColor = true;
-            // 
-            // Options_N64
-            // 
-            this.Options_N64.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Options_N64.Controls.Add(this.N64_FixBrightness);
-            resources.ApplyResources(this.Options_N64, "Options_N64");
-            this.Options_N64.Name = "Options_N64";
-            // 
             // Main
             // 
             resources.ApplyResources(this, "$this");
@@ -548,10 +548,10 @@ namespace FriishProduce
             ((System.ComponentModel.ISupportInitialize)(this.ReleaseYear)).EndInit();
             this.page4.ResumeLayout(false);
             this.page4.PerformLayout();
-            this.Options_NES.ResumeLayout(false);
-            this.Options_NES.PerformLayout();
             this.Options_N64.ResumeLayout(false);
             this.Options_N64.PerformLayout();
+            this.Options_NES.ResumeLayout(false);
+            this.Options_NES.PerformLayout();
             this.ResumeLayout(false);
 
         }
