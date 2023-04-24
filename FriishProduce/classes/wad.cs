@@ -4,9 +4,10 @@ namespace FriishProduce
 {
     public class HBC
     {
-        public static void SendToHBC(string WADfile, string IP)
+        public static void SendToHBC(string WADfile)
         {
-            HbcTransmitter t = new HbcTransmitter(Protocol.HAXX, IP);
+            Protocol p = (Protocol)System.Enum.ToObject(typeof(Protocol), Properties.Settings.Default.hbc_protocol);
+            HbcTransmitter t = new HbcTransmitter(p, Properties.Settings.Default.hbc_ip);
             t.TransmitFile(WADfile);
         }
     }

@@ -14,23 +14,70 @@ namespace FriishProduce.Injectors
         private readonly string byteswappedROM = $"{Paths.Apps}ucon64\\rom.z64";
         private readonly string compressedROM = $"{Paths.Apps}ucon64\\romc";
 
-        public void RemoveDarkFilter()
+
+        public void FixBrightness(string content1_file)
         {
+            // Method originally reported by @NoobletCheese/@Maeson on GBAtemp:
             // Here is a magical string that should work for all N64 games.
             // 80 04 00 04 2C 00 00 FF 40 82 00 10 80 04 00 08 2C 00 00 FF
             // Then walk backwards until you find the
             // 94 21 FF E0
             // and replace with
             // 4E 80 00 20
+
+            byte[] content1 = File.ReadAllBytes(content1_file);
+
+            for (int i = 0; i < content1.Length - 20; i++)
+            {
+                if (content1[i] == 0x80
+                 && content1[i + 1] == 0x04
+                 && content1[i + 2] == 0x00
+                 && content1[i + 3] == 0x04
+                 && content1[i + 4] == 0x2C
+                 && content1[i + 5] == 0x00
+                 && content1[i + 6] == 0x00
+                 && content1[i + 7] == 0xFF
+                 && content1[i + 8] == 0x40
+                 && content1[i + 9] == 0x82
+                 && content1[i + 10] == 0x00
+                 && content1[i + 11] == 0x10
+                 && content1[i + 12] == 0x80
+                 && content1[i + 13] == 0x04
+                 && content1[i + 14] == 0x00
+                 && content1[i + 15] == 0x08
+                 && content1[i + 16] == 0x2C
+                 && content1[i + 17] == 0x00
+                 && content1[i + 18] == 0x00
+                 && content1[i + 19] == 0xFF)
+                {
+                    int offset = i;
+                    for (int x = offset; x > 0; x--)
+                    {
+                        if (content1[x] == 0x94
+                         && content1[x + 1] == 0x21
+                         && content1[x + 2] == 0xFF
+                         && content1[x + 3] == 0xE0)
+                        {
+                            content1[x] = 0x4E;
+                            content1[x + 1] = 0x80;
+                            content1[x + 2] = 0x00;
+                            content1[x + 3] = 0x20;
+
+                            File.WriteAllBytes(content1_file, content1);
+                        }
+                    }
+                }
+            }
         }
 
         public void InsertSaveComments(string[] lines)
         {
-            if (emuVersion == "romc-crv2") return; // NOT IMPLEMENTED yet for CRobov2
-
             // The separator byte array for double-lines.
             // This varies depending on the revision of the emulator, and the second separator is often cut off by end-of-file in earlier releases
-            byte[] separator = emuVersion == "rev1" ? new byte[] { 0x00, 0xBB, 0xBB, 0xBB } : new byte[] { 0x00, 0xBB, 0xBB };
+            byte[] separator =
+                emuVersion == "rev1" ? new byte[] { 0x00, 0xBB, 0xBB, 0xBB } :
+                emuVersion == "rev1-alt" ? new byte[] { 0x00, 0xBB } :
+                new byte[] { 0x00, 0xBB, 0xBB };
 
             // In Custom Robo v2, there is no difference between the present saveComments_jp and saveComments_en, aside from the language code.
             // These are formatted differently from other ROMC channels, mainly the title string starts at 0x40, and two null characters follow
@@ -43,7 +90,7 @@ namespace FriishProduce.Injectors
                 {
                     var byteArray = File.ReadAllBytes(item);
                     List<byte> newSave = new List<byte>();
-                    int headerEnd = emuVersion == "rev1" ? 64 : 65;
+                    int headerEnd = (emuVersion.StartsWith("rev1") || emuVersion == "romc-crv2") ? 64 : 65;
 
                     for (int i = 0; i < headerEnd; i++)
                         newSave.Add(byteArray[i]);

@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="classes\enums.cs" />
+    <Compile Include="classes\injectors\flash.cs" />
     <Compile Include="classes\injectors\global.cs" />
     <Compile Include="classes\injectors\n64.cs" />
     <Compile Include="classes\injectors\nes.cs" />

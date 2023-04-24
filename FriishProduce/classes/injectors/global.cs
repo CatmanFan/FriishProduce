@@ -10,6 +10,12 @@ namespace FriishProduce
         {
             if (patch != null)
             {
+                if (!File.Exists(Paths.Apps + "flips.exe"))
+                {
+                    System.Windows.Forms.MessageBox.Show(strings.error_Flips, strings.error, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                    return ROM;
+                }
+
                 string outROM = ROM + Paths.PatchedSuffix;
                 string batchScript = $"\"{Paths.Apps}flips.exe\" --apply \"{patch}\" \"{Path.GetFileName(ROM)}\" \"{Path.GetFileName(outROM)}\"";
                 string batchPath = Path.Combine(Path.GetDirectoryName(ROM), "patch.bat");
@@ -25,7 +31,11 @@ namespace FriishProduce
                     p.WaitForExit();
                 File.Delete(batchPath);
 
-                if (!File.Exists(outROM)) throw new Exception(strings.error_patchFailed);
+                if (!File.Exists(outROM))
+                {
+                    System.Windows.Forms.MessageBox.Show(strings.error_patchFailed, strings.error, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                    return ROM;
+                }
                 return outROM;
             }
             else return ROM;
@@ -36,17 +46,21 @@ namespace FriishProduce
             // Check for LZ77 compression
             if (File.ReadAllBytes(Paths.WorkingFolder + "00000001.app").Length < 1024)
             {
-                using (Process p = Process.Start(new ProcessStartInfo
-                {
-                    FileName = $"{Paths.Apps}wwcxtool.exe",
-                    Arguments = $"/u \"{Paths.WorkingFolder}00000001.app\" \"{Paths.WorkingFolder}00000001.app.dec\"",
-                    UseShellExecute = false,
-                    CreateNoWindow = true
-                }))
-                    p.WaitForExit();
-
                 if (!File.Exists(Paths.WorkingFolder + "00000001.app.dec"))
-                    throw new Exception("WWCXTool failed to decompress the .dol base.");
+                {
+                    using (Process p = Process.Start(new ProcessStartInfo
+                    {
+                        FileName = $"{Paths.Apps}wwcxtool.exe",
+                        Arguments = $"/u \"{Paths.WorkingFolder}00000001.app\" \"{Paths.WorkingFolder}00000001.app.dec\"",
+                        UseShellExecute = false,
+                        CreateNoWindow = true
+                    }))
+                        p.WaitForExit();
+
+                    if (!File.Exists(Paths.WorkingFolder + "00000001.app.dec"))
+                        throw new Exception("Unable to decompress the emulator file.");
+                }
+
                 return Paths.WorkingFolder + "00000001.app.dec";
             }
 
@@ -67,7 +81,7 @@ namespace FriishProduce
                     p.WaitForExit();
 
                 if (!File.Exists(Paths.WorkingFolder + "00000001.app.rec"))
-                    throw new Exception("WWCXTool failed to recompress the .dol base.");
+                    throw new Exception("Unable to recompress the emulator file.");
 
                 if (File.Exists(Paths.WorkingFolder + "00000001.app")) File.Delete(Paths.WorkingFolder + "00000001.app");
                 if (File.Exists(Paths.WorkingFolder + "00000001.app.dec")) File.Delete(Paths.WorkingFolder + "00000001.app.dec");

@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using System.IO;
 using libWiiSharp;
 
 namespace FriishProduce
@@ -9,13 +10,14 @@ namespace FriishProduce
     public class TitleImage
     {
         public string path { get; set; }
+        public InterpolationMode InterpolationMode { get; set; }
 
         public Bitmap VCPic { get; set; }
         public Bitmap IconVCPic { get; set; }
         public bool shrinkToFit { get; set; }
-        public Bitmap SaveBanner { get; set; }
-        public int[] SaveBannerL_xywh { get; set; }
-        public int[] SaveBannerS_xywh { get; set; }
+        public Bitmap SaveIcon { get; set; }
+        public int[] SaveIconL_xywh { get; set; }
+        public int[] SaveIconS_xywh { get; set; }
 
         public enum Resize
         { 
@@ -23,25 +25,34 @@ namespace FriishProduce
             Fit
         }
 
-
-        public TitleImage()
+        public TitleImage(Platforms platform = Platforms.nes)
         {
             path = null;
             VCPic = null;
             IconVCPic = null;
-            SaveBanner = null;
-            SaveBannerL_xywh = null;
-            SaveBannerS_xywh = null;
-            shrinkToFit = false;
+            SaveIcon = null;
+            SetPlatform(platform);
         }
 
-        public void Generate(InterpolationMode modeI, Resize modeR)
+        public void SetPlatform(Platforms platform)
+        {
+            shrinkToFit = (int)platform <= 2;
+            SaveIconL_xywh = new int[] { 10, 10, 58, 44 };
+            SaveIconS_xywh = new int[] { 4, 9, 40, 30 };
+        }
+
+        public void Generate(Resize modeR)
         {
             if (path == null) return;
 
             VCPic = new Bitmap(256, 192);
             IconVCPic = new Bitmap(128, 96);
+            SaveIcon = new Bitmap(SaveIconL_xywh[2], SaveIconL_xywh[3]);
             Bitmap tempBmp = new Bitmap(256, 192);
+
+            var PixelOffset = PixelOffsetMode.HighQuality;
+            var Smoothing = SmoothingMode.HighQuality;
+            var CompositingQ = CompositingQuality.HighQuality;
 
             using (Image pathImg = Image.FromFile(path))
             using (Graphics g = Graphics.FromImage(tempBmp))
@@ -51,11 +62,11 @@ namespace FriishProduce
                 VCPic.SetResolution(tempBmp.HorizontalResolution, tempBmp.VerticalResolution);
                 IconVCPic.SetResolution(tempBmp.HorizontalResolution, tempBmp.VerticalResolution);
 
-                g.InterpolationMode = modeI;
-                g.PixelOffsetMode = PixelOffsetMode.HighQuality;
-                g.SmoothingMode = SmoothingMode.HighQuality;
+                g.InterpolationMode = InterpolationMode;
+                g.PixelOffsetMode = PixelOffset;
+                g.SmoothingMode = Smoothing;
                 g.CompositingMode = CompositingMode.SourceOver;
-                g.CompositingQuality = CompositingQuality.HighQuality;
+                g.CompositingQuality = CompositingQ;
 
                 if (modeR == Resize.Stretch)
                     g.DrawImage(pathImg, 0, 0, 256, 192);
@@ -79,10 +90,10 @@ namespace FriishProduce
 
             using (Graphics g = Graphics.FromImage(IconVCPic))
             {
-                g.InterpolationMode = modeI;
-                g.PixelOffsetMode = PixelOffsetMode.HighQuality;
-                g.SmoothingMode = SmoothingMode.HighQuality;
-                g.CompositingQuality = CompositingQuality.HighQuality;
+                g.InterpolationMode = InterpolationMode;
+                g.PixelOffsetMode = PixelOffset;
+                g.SmoothingMode = Smoothing;
+                g.CompositingQuality = CompositingQ;
 
                 g.Clear(Color.White);
                 g.DrawImage(tempBmp, 0, 0, 128, 96);
@@ -98,26 +109,150 @@ namespace FriishProduce
                 
                 g.Dispose();
             }
-            
+
+            using (Graphics g = Graphics.FromImage(SaveIcon))
+            {
+                g.InterpolationMode = InterpolationMode;
+                g.PixelOffsetMode = PixelOffset;
+                g.SmoothingMode = Smoothing;
+                g.CompositingQuality = CompositingQ;
+
+                g.DrawImage(tempBmp, 0, 0, SaveIcon.Width, SaveIcon.Height);
+
+                g.Dispose();
+            }
+
             tempBmp.Dispose();
         }
 
-        public void InsertSaveBanner(Platforms platform)
+        public void CreateSave(Platforms platform)
         {
-            return;
+            Directory.CreateDirectory(Paths.Images);
+            bool embedded = false;
+            string tplPath = null;
+            bool usesWte = false;
 
-            // TO-DO
-            string path = Paths.WorkingFolder_Content5 + "save_banner.tpl";
             switch (platform)
             {
                 case Platforms.nes:
+                    tplPath = Paths.WorkingFolder + "out.tpl";
+                    embedded = true;
+                    break;
                 case Platforms.snes:
+                    tplPath = Paths.WorkingFolder_Content5 + "banner.tpl";
                     break;
                 case Platforms.n64:
+                    tplPath = Paths.WorkingFolder_Content5 + "save_banner.tpl";
+                    break;
+                case Platforms.sms:
+                case Platforms.smd:
+                    usesWte = true;
                     break;
             }
-            TPL tpl = TPL.Load(path);
-            ;
+            if (embedded && !File.Exists(tplPath)) return;
+            else if (tplPath == null && !usesWte) return;
+
+            if (!usesWte)
+            {
+                TPL tpl = TPL.Load(tplPath);
+                int numTextures = tpl.NumOfTextures;
+                TPL_TextureFormat[] formatsT = new TPL_TextureFormat[numTextures];
+                TPL_PaletteFormat[] formatsP = new TPL_PaletteFormat[numTextures];
+                for (int i = 0; i < numTextures; i++)
+                {
+                    formatsT[i] = tpl.GetTextureFormat(i);
+                    formatsP[i] = tpl.GetPaletteFormat(i);
+                }
+                tpl.ExtractAllTextures(Paths.Images);
+
+                // Declaration of Graphics/Imaging variables
+                var sFiles = new System.Collections.Generic.List<string>();
+                for (int i = 0; i < numTextures; i++)
+                    sFiles.Add(Paths.Images + $"Texture_0{i}.png");
+
+                Image sBanner = Image.FromFile(sFiles[0]);
+                Image sIcon1 = Image.FromFile(sFiles[1]);
+                Image sIcon2 = Image.FromFile(sFiles[numTextures - 1]);
+
+                using (Image img = (Image)sBanner.Clone())
+                using (Graphics g = Graphics.FromImage(img))
+                {
+                    g.DrawImage(SaveIcon, SaveIconL_xywh[0], SaveIconL_xywh[1], SaveIconL_xywh[2], SaveIconL_xywh[3]);
+                    sFiles[0] = Paths.Images + Path.GetFileNameWithoutExtension(sFiles[0]) + "_new.png";
+                    img.Save(sFiles[0]);
+
+                    img.Dispose();
+                    g.Dispose();
+                }
+
+                using (Image img = (Image)sIcon1.Clone())
+                using (Graphics g = Graphics.FromImage(img))
+                {
+                    g.InterpolationMode = InterpolationMode;
+                    g.DrawImage(SaveIcon, SaveIconS_xywh[0], SaveIconS_xywh[1], SaveIconS_xywh[2], SaveIconS_xywh[3]);
+                    sFiles[1] = Paths.Images + Path.GetFileNameWithoutExtension(sFiles[1]) + "_new.png";
+                    img.Save(sFiles[1]);
+
+                    img.Dispose();
+                    g.Dispose();
+                }
+
+                // Update sIcon1 to modified version
+                sIcon1.Dispose();
+                sIcon1 = Image.FromFile(sFiles[1]);
+
+                using (Image img1 = (Image)sIcon1.Clone())
+                using (Image img2 = (Image)sIcon2.Clone())
+                using (Graphics g = Graphics.FromImage(img1))
+                using (var a = new ImageAttributes())
+                {
+                    var w = img1.Width; var h = img1.Height;
+
+                    if (numTextures == 5)
+                    {
+                        a.SetColorMatrix(new ColorMatrix() { Matrix33 = 0.31F });
+                        g.DrawImage(img2, new Rectangle(0, 0, w, h), 0, 0, w, h, GraphicsUnit.Pixel, a);
+
+                        sFiles[2] = Paths.Images + Path.GetFileNameWithoutExtension(sFiles[2]) + "_new.png";
+                        img1.Save(sFiles[2]);
+
+                        g.DrawImage(img1, 0, 0);
+                        a.SetColorMatrix(new ColorMatrix() { Matrix33 = 0.65F });
+                        g.DrawImage(img2, new Rectangle(0, 0, w, h), 0, 0, w, h, GraphicsUnit.Pixel, a);
+
+                        sFiles[3] = Paths.Images + Path.GetFileNameWithoutExtension(sFiles[3]) + "_new.png";
+                        img1.Save(sFiles[3]);
+
+                    }
+
+                    g.Dispose();
+                    img1.Dispose();
+                    img2.Dispose();
+                }
+
+                // -------------------------------------------------------------- //
+
+                while (tpl.NumOfTextures > 0)
+                    tpl.RemoveTexture(0);
+
+                for (int i = 0; i < numTextures; i++)
+                    tpl.AddTexture(sFiles[i], formatsT[i], formatsP[i]);
+
+                tpl.Save(Paths.Images + "out.tpl");
+                if (File.Exists(tplPath))
+                {
+                    File.Delete(tplPath);
+                    File.Move(Paths.Images + "out.tpl", tplPath);
+                }
+
+                sBanner.Dispose();
+                sIcon1.Dispose();
+                sIcon2.Dispose();
+                tpl.Dispose();
+
+                foreach (var file in Directory.GetFiles(Paths.Images)) try { File.Delete(file); } catch { }
+                try { Directory.Delete(Paths.Images, true); } catch { }
+            }
         }
 
         public void Dispose()
@@ -125,10 +260,7 @@ namespace FriishProduce
             path = null;
             VCPic.Dispose();
             IconVCPic.Dispose();
-            if (SaveBanner != null) SaveBanner.Dispose();
-            SaveBannerL_xywh = null;
-            SaveBannerS_xywh = null;
-            shrinkToFit = false;
+            SaveIcon.Dispose();
         }
     }
 }

@@ -136,7 +136,7 @@
     <value>Voulez-vous supprimer cette chaîne ?</value>
   </data>
   <data name="error" xml:space="preserve">
-    <value>Arrêt</value>
+    <value>Erreur</value>
   </data>
   <data name="errorInject" xml:space="preserve">
     <value>Une erreur a été rencontré pendant l'injection.
@@ -149,7 +149,10 @@ Message : {0}</value>
     <value>La ROM vous avez choisi est trop grande. Veuillez specifier une autre chaîne.</value>
   </data>
   <data name="finished" xml:space="preserve">
-    <value>L'injection a terminé avec succès.</value>
+    <value>Injection effectué.</value>
+  </data>
+  <data name="halt" xml:space="preserve">
+    <value>Arrêt</value>
   </data>
   <data name="settings_Restart" xml:space="preserve">
     <value>Quelques modifications que vous avez effectués nécessitent un redémarrage du logiciel avant de prendre effet.</value>

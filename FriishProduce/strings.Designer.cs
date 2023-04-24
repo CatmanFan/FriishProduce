@@ -115,7 +115,7 @@ namespace FriishProduce {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Halt.
+        ///   Looks up a localized string similar to Error.
         /// </summary>
         internal static string error {
             get {
@@ -124,7 +124,18 @@ namespace FriishProduce {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed to apply the patch ROM. Please disable the built-in patching feature and try again using a manually-patched version..
+        ///   Looks up a localized string similar to Floating IPS was not found within the &quot;apps&quot; folder!
+        ///Using unpatched ROM..
+        /// </summary>
+        internal static string error_Flips {
+            get {
+                return ResourceManager.GetString("error_Flips", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to apply the patch. Please disable the built-in patching feature and try again using a manually-patched version.
+        ///Using unpatched ROM..
         /// </summary>
         internal static string error_patchFailed {
             get {
@@ -168,6 +179,15 @@ namespace FriishProduce {
         internal static string finished {
             get {
                 return ResourceManager.GetString("finished", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Halt.
+        /// </summary>
+        internal static string halt {
+            get {
+                return ResourceManager.GetString("halt", resourceCulture);
             }
         }
         

@@ -1,4 +1,6 @@
-﻿namespace FriishProduce
+﻿using System.Collections.Generic;
+
+namespace FriishProduce
 {
     public enum Platforms
     {
@@ -22,5 +24,27 @@
         VBAGX = 3,
         GenPlusGX = 4,
         LibRetro = 5
+    }
+
+    /// <summary>
+    /// The language used by the UI. Currently supported are added automatically
+    /// </summary>
+    public class Languages
+    {
+        readonly Dictionary<string, string> list;
+        public Languages()
+        {
+            list = new Dictionary<string, string>
+            {
+                { "[System]", "sys" },
+                { "English", "en" },
+                { "français", "fr" }
+            };
+        }
+
+        public Dictionary<string, string> Get()
+        {
+            return list;
+        }
     }
 }

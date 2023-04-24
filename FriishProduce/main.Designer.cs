@@ -52,6 +52,10 @@ namespace FriishProduce
             this.SaveWAD = new System.Windows.Forms.SaveFileDialog();
             this.page3 = new System.Windows.Forms.Panel();
             this.Banner = new System.Windows.Forms.Panel();
+            this.label14 = new System.Windows.Forms.Label();
+            this.Image_ModeI = new System.Windows.Forms.ComboBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.Image_Stretch = new System.Windows.Forms.ComboBox();
             this.SaveDataTitle = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.baseList_banner = new System.Windows.Forms.ComboBox();
@@ -79,8 +83,8 @@ namespace FriishProduce
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.BrowsePatch = new System.Windows.Forms.OpenFileDialog();
             this.BrowseImage = new System.Windows.Forms.OpenFileDialog();
-            this.Image_Stretch = new System.Windows.Forms.ComboBox();
-            this.label13 = new System.Windows.Forms.Label();
+            this.N64_FixBrightness = new System.Windows.Forms.CheckBox();
+            this.Options_N64 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.page1.SuspendLayout();
             this.page2.SuspendLayout();
@@ -91,6 +95,7 @@ namespace FriishProduce
             ((System.ComponentModel.ISupportInitialize)(this.ReleaseYear)).BeginInit();
             this.page4.SuspendLayout();
             this.Options_NES.SuspendLayout();
+            this.Options_N64.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -116,7 +121,8 @@ namespace FriishProduce
             this.settings.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             resources.ApplyResources(this.settings, "settings");
             this.settings.Name = "settings";
-            this.settings.UseVisualStyleBackColor = true;
+            this.settings.UseCompatibleTextRendering = true;
+            this.settings.UseVisualStyleBackColor = false;
             this.settings.Click += new System.EventHandler(this.Settings_Click);
             // 
             // back
@@ -240,15 +246,17 @@ namespace FriishProduce
             // 
             // page3
             // 
+            this.page3.Controls.Add(this.label5);
             this.page3.Controls.Add(this.Banner);
             this.page3.Controls.Add(this.customize);
-            this.page3.Controls.Add(this.label5);
             resources.ApplyResources(this.page3, "page3");
             this.page3.Name = "page3";
             // 
             // Banner
             // 
             this.Banner.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Banner.Controls.Add(this.label14);
+            this.Banner.Controls.Add(this.Image_ModeI);
             this.Banner.Controls.Add(this.label13);
             this.Banner.Controls.Add(this.Image_Stretch);
             this.Banner.Controls.Add(this.SaveDataTitle);
@@ -266,6 +274,44 @@ namespace FriishProduce
             this.Banner.Controls.Add(this.ChannelTitle);
             resources.ApplyResources(this.Banner, "Banner");
             this.Banner.Name = "Banner";
+            // 
+            // label14
+            // 
+            resources.ApplyResources(this.label14, "label14");
+            this.label14.Name = "label14";
+            // 
+            // Image_ModeI
+            // 
+            this.Image_ModeI.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.Image_ModeI, "Image_ModeI");
+            this.Image_ModeI.FormattingEnabled = true;
+            this.Image_ModeI.Items.AddRange(new object[] {
+            resources.GetString("Image_ModeI.Items"),
+            resources.GetString("Image_ModeI.Items1"),
+            resources.GetString("Image_ModeI.Items2"),
+            resources.GetString("Image_ModeI.Items3"),
+            resources.GetString("Image_ModeI.Items4"),
+            resources.GetString("Image_ModeI.Items5"),
+            resources.GetString("Image_ModeI.Items6"),
+            resources.GetString("Image_ModeI.Items7")});
+            this.Image_ModeI.Name = "Image_ModeI";
+            this.Image_ModeI.SelectedIndexChanged += new System.EventHandler(this.Image_ModeIChanged);
+            // 
+            // label13
+            // 
+            resources.ApplyResources(this.label13, "label13");
+            this.label13.Name = "label13";
+            // 
+            // Image_Stretch
+            // 
+            this.Image_Stretch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.Image_Stretch, "Image_Stretch");
+            this.Image_Stretch.FormattingEnabled = true;
+            this.Image_Stretch.Items.AddRange(new object[] {
+            resources.GetString("Image_Stretch.Items"),
+            resources.GetString("Image_Stretch.Items1")});
+            this.Image_Stretch.Name = "Image_Stretch";
+            this.Image_Stretch.SelectedIndexChanged += new System.EventHandler(this.Image_StretchChanged);
             // 
             // SaveDataTitle
             // 
@@ -318,7 +364,7 @@ namespace FriishProduce
             0});
             this.Players.Name = "Players";
             this.Players.Value = new decimal(new int[] {
-            10,
+            1,
             0,
             0,
             0});
@@ -395,6 +441,7 @@ namespace FriishProduce
             this.page4.Controls.Add(this.label7);
             this.page4.Controls.Add(this.disableEmanual);
             this.page4.Controls.Add(this.label4);
+            this.page4.Controls.Add(this.Options_N64);
             this.page4.Controls.Add(this.Options_NES);
             resources.ApplyResources(this.page4, "page4");
             this.page4.Name = "page4";
@@ -460,21 +507,18 @@ namespace FriishProduce
             // 
             resources.ApplyResources(this.BrowseImage, "BrowseImage");
             // 
-            // Image_Stretch
+            // N64_FixBrightness
             // 
-            this.Image_Stretch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            resources.ApplyResources(this.Image_Stretch, "Image_Stretch");
-            this.Image_Stretch.FormattingEnabled = true;
-            this.Image_Stretch.Items.AddRange(new object[] {
-            resources.GetString("Image_Stretch.Items"),
-            resources.GetString("Image_Stretch.Items1")});
-            this.Image_Stretch.Name = "Image_Stretch";
-            this.Image_Stretch.SelectedIndexChanged += new System.EventHandler(this.Image_StretchChanged);
+            resources.ApplyResources(this.N64_FixBrightness, "N64_FixBrightness");
+            this.N64_FixBrightness.Name = "N64_FixBrightness";
+            this.N64_FixBrightness.UseVisualStyleBackColor = true;
             // 
-            // label13
+            // Options_N64
             // 
-            resources.ApplyResources(this.label13, "label13");
-            this.label13.Name = "label13";
+            this.Options_N64.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Options_N64.Controls.Add(this.N64_FixBrightness);
+            resources.ApplyResources(this.Options_N64, "Options_N64");
+            this.Options_N64.Name = "Options_N64";
             // 
             // Main
             // 
@@ -506,6 +550,8 @@ namespace FriishProduce
             this.page4.PerformLayout();
             this.Options_NES.ResumeLayout(false);
             this.Options_NES.PerformLayout();
+            this.Options_N64.ResumeLayout(false);
+            this.Options_N64.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -562,6 +608,10 @@ namespace FriishProduce
         private System.Windows.Forms.OpenFileDialog BrowseImage;
         private System.Windows.Forms.ComboBox Image_Stretch;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.ComboBox Image_ModeI;
+        private System.Windows.Forms.Panel Options_N64;
+        private System.Windows.Forms.CheckBox N64_FixBrightness;
     }
 }
 

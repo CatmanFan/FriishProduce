@@ -136,4 +136,7 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Paramètres</value>
   </data>
+  <data name="tabPage1.Text" xml:space="preserve">
+    <value>Logiciel</value>
+  </data>
 </root>

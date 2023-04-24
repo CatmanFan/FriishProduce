@@ -25,7 +25,7 @@ namespace FriishProduce.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("en")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string language {
             get {
                 return ((string)(this["language"]));
@@ -38,24 +38,36 @@ namespace FriishProduce.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("192.168.x.x")]
-        public string wii_ip_address {
+        public string hbc_ip {
             get {
-                return ((string)(this["wii_ip_address"]));
+                return ((string)(this["hbc_ip"]));
             }
             set {
-                this["wii_ip_address"] = value;
+                this["hbc_ip"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool enable_wad_to_hbc {
+        public bool hbc {
             get {
-                return ((bool)(this["enable_wad_to_hbc"]));
+                return ((bool)(this["hbc"]));
             }
             set {
-                this["enable_wad_to_hbc"] = value;
+                this["hbc"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int hbc_protocol {
+            get {
+                return ((int)(this["hbc_protocol"]));
+            }
+            set {
+                this["hbc_protocol"] = value;
             }
         }
     }
