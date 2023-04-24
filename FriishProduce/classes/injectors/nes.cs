@@ -203,11 +203,11 @@ namespace FriishProduce.Injectors
             // In both aforementioned WADs the savetitle text must not be bigger than what the content1 can contain.
             // If trying to increase or decrease the filesize it breaks the WAD
 
-            // Text addition format: UTF-16 (Little Endian)
+            // Text addition format: UTF-16 (Big Endian)
             if (end != 0)
             {
                 for (int i = end; i > 0; i--)
-                    if (content1[i - 1] == 0x00 && content1[i - 2] == 0xDB)
+                    if (content1[i] == 0x00 && content1[i - 1] == 0xDB)
                     {
                         start = i;
                         break;
@@ -215,9 +215,9 @@ namespace FriishProduce.Injectors
 
                 if (start != 0)
                 {
-                    for (int i = start; i < end; i += 2)
+                    for (int i = start; i < end; i++)
                     {
-                        try { content1[i] = Encoding.Unicode.GetBytes(text)[(i - start)]; }
+                        try { content1[i] = Encoding.BigEndianUnicode.GetBytes(text.Replace(Environment.NewLine.ToString(), "\n"))[(i - start)]; }
                         catch { content1[i] = 0x00; }
                     }
                 }

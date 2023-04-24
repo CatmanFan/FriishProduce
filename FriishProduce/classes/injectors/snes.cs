@@ -76,9 +76,9 @@ namespace FriishProduce.Injectors
             if (ROMcode_index == 0)
                 goto End;
             
-            // Text addition format: UTF-16 (Big Endian)
-            var line1 = Encoding.BigEndianUnicode.GetBytes(lines[0]);
-            var line2 = lines.Length == 2 ? Encoding.BigEndianUnicode.GetBytes(lines[1]) : new byte[] { 0x00 };
+            // Text addition format: Shift-JIS
+            var line1 = Encoding.GetEncoding(932).GetBytes(lines[0]);
+            var line2 = lines.Length == 2 ? Encoding.GetEncoding(932).GetBytes(lines[1]) : new byte[] { 0x00 };
             var title = new byte[80];
             line1.CopyTo(title, 0);
             line2.CopyTo(title, 40);

@@ -127,13 +127,13 @@
 Pour commencer, veuillez spécifier votre plateforme cible :</value>
   </data>
   <data name="back.Text" xml:space="preserve">
-    <value>&lt; Précédent</value>
+    <value>&lt; &amp;Précédent</value>
   </data>
   <data name="finish.Text" xml:space="preserve">
-    <value>Sauvegarder</value>
+    <value>&amp;Sauvegarder</value>
   </data>
   <data name="next.Text" xml:space="preserve">
-    <value>Suivant &gt;</value>
+    <value>&amp;Suivant &gt;</value>
   </data>
   <data name="openROM.Text" xml:space="preserve">
     <value>Parcourir une ROM ...</value>
@@ -205,6 +205,9 @@ Pour commencer, veuillez spécifier votre plateforme cible :</value>
     <value>Conserver les proportions</value>
   </data>
   <data name="label13.Text" xml:space="preserve">
-    <value />
+    <value>Redimensionnement :</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>Mode d'interpolation :</value>
   </data>
 </root>

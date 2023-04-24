@@ -78,51 +78,49 @@ namespace FriishProduce.Injectors
             byte[] separator =
                 emuVersion == "rev1" ? new byte[] { 0x00, 0xBB, 0xBB, 0xBB } :
                 emuVersion == "rev1-alt" ? new byte[] { 0x00, 0xBB } :
-                new byte[] { 0x00, 0xBB, 0xBB };
+                new byte[] { 0x00, 0x00, 0xBB, 0xBB };
+
+            // Text addition format: UTF-16 (Little Endian) for Rev1, UTF-16 (Big Endian) for newer revisions
+            var encoding = emuVersion.Contains("rev1") ? Encoding.Unicode : Encoding.BigEndianUnicode;
 
             // In Custom Robo v2, there is no difference between the present saveComments_jp and saveComments_en, aside from the language code.
-            // These are formatted differently from other ROMC channels, mainly the title string starts at 0x40, and two null characters follow
-            // instead of the regular separator, before a supposed second line string.
+            // A null character follows instead of the regular separator, before a supposed second line string.
 
-            // Text addition format: UTF-16 (Little Endian)
             foreach (var item in Directory.GetFiles(Paths.WorkingFolder_Content5))
             {
                 if (Path.GetFileName(item).Contains("saveComments_"))
                 {
                     var byteArray = File.ReadAllBytes(item);
                     List<byte> newSave = new List<byte>();
-                    int headerEnd = (emuVersion.StartsWith("rev1") || emuVersion == "romc-crv2") ? 64 : 65;
 
-                    for (int i = 0; i < headerEnd; i++)
+                    // Add 64-byte header
+                    for (int i = 0; i < 64; i++)
                         newSave.Add(byteArray[i]);
 
-                    for (int i = 0; i < lines[0].Length; i++)
-                        try { newSave.Add(Encoding.Unicode.GetBytes(lines[0])[i]); } catch { newSave.Add(0x00); }
-
+                    for (int i = 0; i < encoding.GetBytes(lines[0]).Length; i++)
+                        try { newSave.Add(encoding.GetBytes(lines[0])[i]); } catch { newSave.Add(0x00); }
                     if (emuVersion == "romc-crv2")
-                        { newSave.Add(0x00); newSave.Add(0x00); }
+                        { newSave.Add(0x00); }
                     else foreach (var Byte in separator) newSave.Add(Byte);
 
+                    // Set first-line offset
                     newSave[55] = Convert.ToByte(newSave.Count);
                     newSave[59] = Convert.ToByte(newSave.Count);
 
                     // Also varying on revision, how the second line field is itself handled.
-                    // Where it is empty: In Star Fox 64 and Super Mario 64, it is a white space character, in others it is set to null.
-                    // In later revisions (e.g. S&P), a null byte also follows the first separator within the file, before the second line text's offset.
+                    // Where it is empty: In earlier revisions such as Star Fox 64 and Super Mario 64, it is a white space character, otherwise it is null.
                     if (lines.Length == 1 && emuVersion == "rev1") lines = new string[2] { lines[0], " " };
-                    if (emuVersion != "rev1") newSave.Add(0x00);
 
                     if (lines.Length == 2)
-                        for (int i = 0; i < lines[1].Length; i++)
-                            try { newSave.Add(Encoding.Unicode.GetBytes(lines[1])[i]); } catch { newSave.Add(0x00); }
-
+                        for (int i = 0; i < encoding.GetBytes(lines[1]).Length; i++)
+                            try { newSave.Add(encoding.GetBytes(lines[1])[i]); } catch { newSave.Add(0x00); }
                     foreach (var Byte in separator) newSave.Add(Byte);
 
                     // Character count determiner within savedata file
-                    newSave[45] = Convert.ToByte(Encoding.Unicode.GetBytes(lines[0]).Length);
-                    newSave[47] = Convert.ToByte(Encoding.Unicode.GetBytes(lines[0]).Length);
-                    newSave[61] = lines.Length == 2 ? Convert.ToByte(Encoding.Unicode.GetBytes(lines[1]).Length) : (byte)0x00;
-                    newSave[63] = lines.Length == 2 ? Convert.ToByte(Encoding.Unicode.GetBytes(lines[1]).Length) : (byte)0x00;
+                    newSave[45] = Convert.ToByte(encoding.GetBytes(lines[0]).Length);
+                    newSave[47] = Convert.ToByte(encoding.GetBytes(lines[0]).Length);
+                    newSave[61] = lines.Length == 2 ? Convert.ToByte(encoding.GetBytes(lines[1]).Length) : (byte)0x00;
+                    newSave[63] = lines.Length == 2 ? Convert.ToByte(encoding.GetBytes(lines[1]).Length) : (byte)0x00;
 
                     File.WriteAllBytes(item, newSave.ToArray());
                 }

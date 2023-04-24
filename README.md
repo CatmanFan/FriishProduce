@@ -17,6 +17,8 @@ This injector bypasses other third-party assets (such as Common-Key.bin, most of
 * Additional content/emulator options for each platform where supported
 
 ### To-Do
+<!-- - [ ] Fix rendering on Tokyo Ghoul xx (NES), null xx (SNES), Tokyoxx xx (N64) -->
+- [x] Fix encoding on NES/N64
 - [ ] "Fix brightness" crashes on loading certain WADs in N64 (may be related to WWCXTool?)
 - [ ] Add Ninja Gaiden (EUR) for NES baselist
 - [ ] Add SEGA, TG-16, NeoGeo, C64
