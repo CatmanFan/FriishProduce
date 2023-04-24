@@ -198,6 +198,9 @@ Pour commencer, veuillez spécifier votre plateforme cible :</value>
   <data name="label14.Text" xml:space="preserve">
     <value>Méthode d'interpolation :</value>
   </data>
+  <data name="BrowseImage.Filter" xml:space="preserve">
+    <value>Tous les formats sont pris en charge (*.bmp, *.jpg, *.jpeg, *.png)|*.bmp;*.jpg;*.jpeg;*.png|  Bitmap Windows (*.bmp)|*.bmp|  JPEG (*.jpg, *.jpeg)|*.jpg;*.jpeg|  PNG (*.png)|*.png</value>
+  </data>
   <data name="N64_8MBRAM.Text" xml:space="preserve">
     <value>Extension de mémoire à 8 Mo de RAM</value>
   </data>

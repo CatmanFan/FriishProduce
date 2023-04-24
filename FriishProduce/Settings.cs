@@ -51,7 +51,7 @@ namespace FriishProduce
             Properties.Settings.Default.hbc_ip = HBC_IP.Text;
             Properties.Settings.Default.hbc_protocol = HBC_Protocol.SelectedIndex;
 
-            if (showRestart) MessageBox.Show(strings.settings_Restart, Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (showRestart) MessageBox.Show(Strings.restart, Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             Properties.Settings.Default.Save();
             DialogResult = DialogResult.OK;

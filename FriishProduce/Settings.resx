@@ -119,7 +119,7 @@
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="ok.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
+    <value>System</value>
   </data>
   <data name="ok.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -151,7 +151,7 @@
     <value>0</value>
   </data>
   <data name="cancel.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
+    <value>System</value>
   </data>
   <data name="cancel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -259,10 +259,10 @@
     <value>JODI [HBC 1.0.5]</value>
   </data>
   <data name="HBC_Protocol.Location" type="System.Drawing.Point, System.Drawing">
-    <value>97, 22</value>
+    <value>110, 22</value>
   </data>
   <data name="HBC_Protocol.Size" type="System.Drawing.Size, System.Drawing">
-    <value>164, 23</value>
+    <value>330, 23</value>
   </data>
   <data name="HBC_Protocol.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -364,10 +364,10 @@
     <value>3</value>
   </data>
   <data name="HBC_IP.Location" type="System.Drawing.Point, System.Drawing">
-    <value>97, 51</value>
+    <value>110, 51</value>
   </data>
   <data name="HBC_IP.Size" type="System.Drawing.Size, System.Drawing">
-    <value>164, 23</value>
+    <value>330, 23</value>
   </data>
   <data name="HBC_IP.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -388,7 +388,7 @@
     <value>9, 40</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>269, 83</value>
+    <value>448, 83</value>
   </data>
   <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>

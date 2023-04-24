@@ -18,7 +18,7 @@ namespace FriishProduce.Injectors
             {
                 /* if (File.ReadAllBytes(ROM).Length >
                     File.ReadAllBytes(rom).Length)
-                    throw new Exception(strings.error_ROMtoobig); */
+                    throw new Exception(Strings.error_ROMtoobig); */
 
                 File.Copy(ROM, rom, true);
             }

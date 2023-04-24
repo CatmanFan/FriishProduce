@@ -12,7 +12,7 @@ namespace FriishProduce
             {
                 if (!File.Exists(Paths.Apps + "flips.exe"))
                 {
-                    System.Windows.Forms.MessageBox.Show(strings.error_Flips, strings.error, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                    System.Windows.Forms.MessageBox.Show(Strings.error_Flips, Strings.error, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
                     return ROM;
                 }
 
@@ -33,7 +33,7 @@ namespace FriishProduce
 
                 if (!File.Exists(outROM))
                 {
-                    System.Windows.Forms.MessageBox.Show(strings.error_patchFailed, strings.error, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                    System.Windows.Forms.MessageBox.Show(Strings.error_patchFailed, Strings.error, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
                     return ROM;
                 }
                 return outROM;

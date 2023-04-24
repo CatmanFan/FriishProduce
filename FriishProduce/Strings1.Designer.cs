@@ -22,14 +22,14 @@ namespace FriishProduce {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class strings {
+    internal class Strings {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal strings() {
+        internal Strings() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace FriishProduce {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FriishProduce.strings", typeof(strings).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FriishProduce.Strings", typeof(Strings).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -172,7 +172,7 @@ namespace FriishProduce {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unable to transmit exported WAD to HBC because of the following exception:
+        ///   Looks up a localized string similar to Unable to transmit exported WAD to console.
         ///
         ///{0}.
         /// </summary>
@@ -212,9 +212,9 @@ namespace FriishProduce {
         /// <summary>
         ///   Looks up a localized string similar to Some of the changes you have made require you to restart the application before they can take effect..
         /// </summary>
-        internal static string settings_Restart {
+        internal static string restart {
             get {
-                return ResourceManager.GetString("settings_Restart", resourceCulture);
+                return ResourceManager.GetString("restart", resourceCulture);
             }
         }
         

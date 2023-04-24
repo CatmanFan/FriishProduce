@@ -33,10 +33,10 @@ namespace FriishProduce
 
             InitializeComponent();
 
-            label1.Text = string.Format(label1.Text, strings.version);
+            label1.Text = string.Format(label1.Text, Strings.version);
             ToolTip.SetToolTip(settings, new Settings().Text);
-            BrowseWAD.Filter   += strings.browse_AllFiles;
-            BrowsePatch.Filter += strings.browse_AllFiles;
+            BrowseWAD.Filter   += Strings.browse_AllFiles;
+            BrowsePatch.Filter += Strings.browse_AllFiles;
             SaveWAD.Filter = BrowseWAD.Filter;
             Reset();
         }
@@ -49,19 +49,19 @@ namespace FriishProduce
             switch (currentConsole)
             {
                 case Platforms.nes:
-                    BrowseROM.Filter = strings.browseROM_nes;
+                    BrowseROM.Filter = Strings.browseROM_nes;
                     Options_NES.Visible = true;
                     SaveDataTitle.MaxLength = 20;
                     break;
                 case Platforms.snes:
-                    BrowseROM.Filter = strings.browseROM_snes;
+                    BrowseROM.Filter = Strings.browseROM_snes;
                     break;
                 case Platforms.n64:
-                    BrowseROM.Filter = strings.browseROM_n64;
+                    BrowseROM.Filter = Strings.browseROM_n64;
                     Options_N64.Visible = true;
                     break;
             }
-            BrowseROM.Filter += strings.browse_AllFiles;
+            BrowseROM.Filter += Strings.browse_AllFiles;
             tImg.SetPlatform(currentConsole);
             SaveDataTitle.Enabled = !(currentConsole == Platforms.sms || currentConsole == Platforms.smd);
             SaveDataTitle.MaxLength = 80;
@@ -242,7 +242,7 @@ namespace FriishProduce
         }
         private void DeleteWAD(object sender, EventArgs e)
         {
-            if (MessageBox.Show(strings.deleteWAD, Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show(Strings.deleteWAD, Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 foreach (var item in Directory.GetFiles(Paths.Database, "*.*", SearchOption.AllDirectories))
                     if (File.Exists(item) && item.Contains(XML.SearchID(baseList.SelectedItem.ToString(), currentConsole)))
@@ -436,23 +436,14 @@ namespace FriishProduce
                     w.ChangeTitleID(LowerTitleID.Channel, TitleID.Text);
                     w.Save(SaveWAD.FileName);
                     w.Dispose();
-                    MessageBox.Show(strings.finished);
+                    MessageBox.Show(Strings.finished);
 
                     if (Properties.Settings.Default.hbc)
-                    {
-                        try
-                        {
-                            HBC.SendToHBC(SaveWAD.FileName);
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show(String.Format(strings.errorTransmitter, ex.Message));
-                        }
-                    }
+                        new HBCtransmitter(SaveWAD.FileName).Show();
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(String.Format(strings.errorInject, ex.Message), strings.error, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show(String.Format(Strings.errorInject, ex.Message), Strings.error, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
                 finally
                 {
@@ -476,27 +467,27 @@ namespace FriishProduce
                     ToolTip.SetToolTip(NES_Palette, null);
                     break;
                 case 1:
-                    ToolTip.SetToolTip(NES_Palette, string.Format(strings.author, "SuperrSonic"));
+                    ToolTip.SetToolTip(NES_Palette, string.Format(Strings.author, "SuperrSonic"));
                     break;
                 case 2:
-                    ToolTip.SetToolTip(NES_Palette, string.Format(strings.author, "Nintendo / SuperrSonic"));
+                    ToolTip.SetToolTip(NES_Palette, string.Format(Strings.author, "Nintendo / SuperrSonic"));
                     break;
                 case 3:
-                    ToolTip.SetToolTip(NES_Palette, string.Format(strings.author, "Nintendo / FirebrandX"));
+                    ToolTip.SetToolTip(NES_Palette, string.Format(Strings.author, "Nintendo / FirebrandX"));
                     break;
                 case 4:
-                    ToolTip.SetToolTip(NES_Palette, string.Format(strings.author, "Nintendo / N-Mario"));
+                    ToolTip.SetToolTip(NES_Palette, string.Format(Strings.author, "Nintendo / N-Mario"));
                     break;
                 case 5:
                 case 6:
-                    ToolTip.SetToolTip(NES_Palette, string.Format(strings.author, "Nestopia"));
+                    ToolTip.SetToolTip(NES_Palette, string.Format(Strings.author, "Nestopia"));
                     break;
                 case 7:
-                    ToolTip.SetToolTip(NES_Palette, string.Format(strings.author, "FCEUX"));
+                    ToolTip.SetToolTip(NES_Palette, string.Format(Strings.author, "FCEUX"));
                     break;
                 case 8:
                 case 9:
-                    ToolTip.SetToolTip(NES_Palette, string.Format(strings.author, "FirebrandX"));
+                    ToolTip.SetToolTip(NES_Palette, string.Format(Strings.author, "FirebrandX"));
                     break;
             }
         }

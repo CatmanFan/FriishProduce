@@ -145,8 +145,18 @@
     <value>Une erreur a été rencontré pendant l'injection.
 Message : {0}</value>
   </data>
+  <data name="errorTransmitter" xml:space="preserve">
+    <value>Échec de transmission de la chaîne envers la console.
+
+{0}</value>
+  </data>
+  <data name="error_Flips" xml:space="preserve">
+    <value>L'application Floating IPS n'a pas été trouvée dans votre dossier d'applications.
+La ROM non patchée sera maintenant utilisée.</value>
+  </data>
   <data name="error_patchFailed" xml:space="preserve">
-    <value>Échec de l'application du patch. Vous pouvez réessayer avec une version patchée manuellement sans activer l'auto-patch de ce logiciel.</value>
+    <value>Échec de l'application du patch. Vous pouvez réessayer avec une version patchée manuellement sans activer l'auto-patch de ce logiciel.
+La ROM non patchée sera maintenant utilisée.</value>
   </data>
   <data name="error_ROMtoobig" xml:space="preserve">
     <value>La ROM vous avez choisi est trop grande. Veuillez specifier une autre chaîne.</value>
@@ -160,7 +170,7 @@ Message : {0}</value>
   <data name="openSWF" xml:space="preserve">
     <value>Parcourir un *.swf ...</value>
   </data>
-  <data name="settings_Restart" xml:space="preserve">
+  <data name="restart" xml:space="preserve">
     <value>Quelques modifications que vous avez effectués nécessitent un redémarrage du logiciel avant de prendre effet.</value>
   </data>
 </root>

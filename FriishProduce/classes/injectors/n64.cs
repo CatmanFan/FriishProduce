@@ -229,7 +229,7 @@ namespace FriishProduce.Injectors
                 if (File.ReadAllBytes(compressedROM).Length > File.ReadAllBytes($"{Paths.WorkingFolder_Content5}romc").Length)
                 {
                     File.Delete(compressedROM);
-                    throw new Exception(strings.error_ROMtoobig);
+                    throw new Exception(Strings.error_ROMtoobig);
                 }
 
                 // Copy
@@ -242,7 +242,7 @@ namespace FriishProduce.Injectors
                 if (File.ReadAllBytes(byteswappedROM).Length > File.ReadAllBytes($"{Paths.WorkingFolder_Content5}rom").Length)
                 {
                     File.Delete(byteswappedROM);
-                    throw new Exception(strings.error_ROMtoobig);
+                    throw new Exception(Strings.error_ROMtoobig);
                 }
 
                 // Copy

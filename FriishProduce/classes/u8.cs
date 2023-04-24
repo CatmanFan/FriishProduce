@@ -2,15 +2,6 @@
 
 namespace FriishProduce
 {
-    public class HBC
-    {
-        public static void SendToHBC(string WADfile)
-        {
-            Protocol p = (Protocol)System.Enum.ToObject(typeof(Protocol), Properties.Settings.Default.hbc_protocol);
-            HbcTransmitter t = new HbcTransmitter(p, Properties.Settings.Default.hbc_ip);
-            t.TransmitFile(WADfile);
-        }
-    }
     public class U8
     {
         public static void Unpack(string input, string output)

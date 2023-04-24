@@ -77,13 +77,13 @@ namespace FriishProduce
             this.label7 = new System.Windows.Forms.Label();
             this.disableEmanual = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.Options_NES = new System.Windows.Forms.Panel();
+            this.NES_Palette = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.Options_N64 = new System.Windows.Forms.Panel();
             this.N64_AllocateROM = new System.Windows.Forms.CheckBox();
             this.N64_8MBRAM = new System.Windows.Forms.CheckBox();
             this.N64_FixBrightness = new System.Windows.Forms.CheckBox();
-            this.Options_NES = new System.Windows.Forms.Panel();
-            this.NES_Palette = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.BrowsePatch = new System.Windows.Forms.OpenFileDialog();
             this.BrowseImage = new System.Windows.Forms.OpenFileDialog();
@@ -96,8 +96,8 @@ namespace FriishProduce
             ((System.ComponentModel.ISupportInitialize)(this.Players)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReleaseYear)).BeginInit();
             this.page4.SuspendLayout();
-            this.Options_N64.SuspendLayout();
             this.Options_NES.SuspendLayout();
+            this.Options_N64.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -477,33 +477,6 @@ namespace FriishProduce
             resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
             // 
-            // Options_N64
-            // 
-            this.Options_N64.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Options_N64.Controls.Add(this.N64_AllocateROM);
-            this.Options_N64.Controls.Add(this.N64_8MBRAM);
-            this.Options_N64.Controls.Add(this.N64_FixBrightness);
-            resources.ApplyResources(this.Options_N64, "Options_N64");
-            this.Options_N64.Name = "Options_N64";
-            // 
-            // N64_AllocateROM
-            // 
-            resources.ApplyResources(this.N64_AllocateROM, "N64_AllocateROM");
-            this.N64_AllocateROM.Name = "N64_AllocateROM";
-            this.N64_AllocateROM.UseVisualStyleBackColor = true;
-            // 
-            // N64_8MBRAM
-            // 
-            resources.ApplyResources(this.N64_8MBRAM, "N64_8MBRAM");
-            this.N64_8MBRAM.Name = "N64_8MBRAM";
-            this.N64_8MBRAM.UseVisualStyleBackColor = true;
-            // 
-            // N64_FixBrightness
-            // 
-            resources.ApplyResources(this.N64_FixBrightness, "N64_FixBrightness");
-            this.N64_FixBrightness.Name = "N64_FixBrightness";
-            this.N64_FixBrightness.UseVisualStyleBackColor = true;
-            // 
             // Options_NES
             // 
             this.Options_NES.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -535,6 +508,33 @@ namespace FriishProduce
             // 
             resources.ApplyResources(this.label6, "label6");
             this.label6.Name = "label6";
+            // 
+            // Options_N64
+            // 
+            this.Options_N64.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Options_N64.Controls.Add(this.N64_AllocateROM);
+            this.Options_N64.Controls.Add(this.N64_8MBRAM);
+            this.Options_N64.Controls.Add(this.N64_FixBrightness);
+            resources.ApplyResources(this.Options_N64, "Options_N64");
+            this.Options_N64.Name = "Options_N64";
+            // 
+            // N64_AllocateROM
+            // 
+            resources.ApplyResources(this.N64_AllocateROM, "N64_AllocateROM");
+            this.N64_AllocateROM.Name = "N64_AllocateROM";
+            this.N64_AllocateROM.UseVisualStyleBackColor = true;
+            // 
+            // N64_8MBRAM
+            // 
+            resources.ApplyResources(this.N64_8MBRAM, "N64_8MBRAM");
+            this.N64_8MBRAM.Name = "N64_8MBRAM";
+            this.N64_8MBRAM.UseVisualStyleBackColor = true;
+            // 
+            // N64_FixBrightness
+            // 
+            resources.ApplyResources(this.N64_FixBrightness, "N64_FixBrightness");
+            this.N64_FixBrightness.Name = "N64_FixBrightness";
+            this.N64_FixBrightness.UseVisualStyleBackColor = true;
             // 
             // BrowsePatch
             // 
@@ -572,10 +572,10 @@ namespace FriishProduce
             ((System.ComponentModel.ISupportInitialize)(this.ReleaseYear)).EndInit();
             this.page4.ResumeLayout(false);
             this.page4.PerformLayout();
-            this.Options_N64.ResumeLayout(false);
-            this.Options_N64.PerformLayout();
             this.Options_NES.ResumeLayout(false);
             this.Options_NES.PerformLayout();
+            this.Options_N64.ResumeLayout(false);
+            this.Options_N64.PerformLayout();
             this.ResumeLayout(false);
 
         }
