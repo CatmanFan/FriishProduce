@@ -106,6 +106,15 @@ namespace FriishProduce {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Adobe Flash files (*.swf)|*.swf.
+        /// </summary>
+        internal static string browseSWF {
+            get {
+                return ResourceManager.GetString("browseSWF", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Really delete this WAD?.
         /// </summary>
         internal static string deleteWAD {
@@ -188,6 +197,15 @@ namespace FriishProduce {
         internal static string halt {
             get {
                 return ResourceManager.GetString("halt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open SWF....
+        /// </summary>
+        internal static string openSWF {
+            get {
+                return ResourceManager.GetString("openSWF", resourceCulture);
             }
         }
         

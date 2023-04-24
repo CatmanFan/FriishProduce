@@ -44,7 +44,7 @@ namespace FriishProduce
         public static string DetermineContent1()
         {
             // Check for LZ77 compression
-            if (File.ReadAllBytes(Paths.WorkingFolder + "00000001.app").Length < 1024000)
+            if (File.ReadAllBytes(Paths.WorkingFolder + "00000001.app").Length < 1000)
             {
                 if (!File.Exists(Paths.WorkingFolder + "00000001.app.dec"))
                 {
@@ -71,9 +71,9 @@ namespace FriishProduce
             return Paths.WorkingFolder + "00000001.app";
         }
 
-        public static void PrepareContent1(string file)
+        public static void PrepareContent1()
         {
-            if (file.EndsWith(".dec"))
+            if (File.Exists(Paths.WorkingFolder + "00000001.app.dec"))
             {
                 string pPath = Paths.WorkingFolder + "wwcxtool.exe";
                 File.WriteAllBytes(pPath, Properties.Resources.WWCXTool);

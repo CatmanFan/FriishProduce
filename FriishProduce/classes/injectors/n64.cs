@@ -15,8 +15,9 @@ namespace FriishProduce.Injectors
         private readonly string byteswappedROM = $"{Paths.Apps}ucon64\\rom.z64";
         private readonly string compressedROM = $"{Paths.WorkingFolder}romc";
 
+        // ------------------------- CONTENT1 FUNCTIONS -------------------------- //
 
-        public void FixBrightness(string content1_file)
+        public byte[] FixBrightness(byte[] content1)
         {
             // Method originally reported by @NoobletCheese/@Maeson on GBAtemp:
             // Here is a magical string that should work for all N64 games.
@@ -25,9 +26,6 @@ namespace FriishProduce.Injectors
             // 94 21 FF E0
             // and replace with
             // 4E 80 00 20
-
-            byte[] content1 = File.ReadAllBytes(content1_file);
-
             for (int i = 0; i < content1.Length - 20; i++)
             {
                 if (content1[i] == 0x80
@@ -51,8 +49,7 @@ namespace FriishProduce.Injectors
                  && content1[i + 18] == 0x00
                  && content1[i + 19] == 0xFF)
                 {
-                    int offset = i;
-                    for (int x = offset; x > 0; x--)
+                    for (int x = i; x > 0; x--)
                     {
                         if (content1[x] == 0x94
                          && content1[x + 1] == 0x21
@@ -63,13 +60,64 @@ namespace FriishProduce.Injectors
                             content1[x + 1] = 0x80;
                             content1[x + 2] = 0x00;
                             content1[x + 3] = 0x20;
-
-                            File.WriteAllBytes(content1_file, content1);
+                            return content1;
                         }
                     }
                 }
             }
+            return content1;
         }
+
+        public byte[] ExpansionRAM(byte[] content1)
+        {
+            for (int i = 0; i < content1.Length - 8; i++)
+            {
+                if ((content1[i] == 0x41 && content1[i + 1] == 0x82 && content1[i + 2] == 0x00 && content1[i + 3] == 0x08)
+                 || (content1[i] == 0x48 && content1[i + 1] == 0x00 && content1[i + 2] == 0x00 && content1[i + 3] == 0x64)
+                 && content1[i + 4] == 0x3C
+                 && content1[i + 5] == 0x80
+                 && content1[i + 6] == 0x00
+                 && content1[i + 7] == 0x80)
+                {
+                    content1[i] = 0x60;
+                    content1[i + 1] = 0x00;
+                    content1[i + 2] = 0x00;
+                    content1[i + 3] = 0x00;
+                    return content1;
+                }
+            }
+            throw new Exception("Failed to enable extended memory.");
+        }
+
+        public byte[] AllocateROM(byte[] content1)
+        {
+            for (int i = 0; i < content1.Length - 20; i++)
+            {
+                if (content1[i] == 0x38
+                 && content1[i + 1] == 0xA0
+                 && content1[i + 2] == 0x00
+                 && content1[i + 3] == 0x00
+                 && content1[i + 4] == 0x48
+                 && content1[i + 5] == 0x00
+                 && content1[i + 6] == 0x00
+                 && content1[i + 7] == 0x44
+                 && content1[i + 8] == 0x38
+                 && content1[i + 9] == 0x7D
+                 && content1[i + 10] == 0x00
+                 && content1[i + 11] == 0x1C
+                 && content1[i + 12] == 0x3C
+                 && content1[i + 13] == 0x80)
+                {
+                    int offset = i + 14;
+                    content1[offset] = 0x72;
+                    content1[offset + 1] = 0x00;
+                    return content1;
+                }
+            }
+            throw new Exception ("Unable to carry out allocation of data.");
+        }
+
+        // ----------------------------------------------------------------------- //
 
         public void InsertSaveComments(string[] lines)
         {

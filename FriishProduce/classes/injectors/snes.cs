@@ -86,7 +86,7 @@ namespace FriishProduce.Injectors
             File.WriteAllBytes(content1_file, content1);
 
             End:
-            Injector.PrepareContent1(content1_file);
+            Injector.PrepareContent1();
         }
     }
 }

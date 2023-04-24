@@ -11,17 +11,16 @@ Please see the [Wiki](https://github.com/CatmanFan/FriishProduce/wiki/Setup) for
 ## Features
 This injector bypasses other third-party assets (such as Common-Key.bin, most of HowardC's tools, and autoinjectuwad) by handling many steps directly from the program's code. Some examples:
 * WAD/U8 handling using libWiiSharp
-* NES; SNES; N64: VC ROM injection using manual hex writing or file replacement
-* NES; SNES; N64: TPL/image generation & replacement
-* NES; SNES; N64: Automatic savetitle replacement
+* Automatic banner/icon TPL generation & replacement
+* NES; SNES; N64: VC ROM injection (hex writing & file replacement)
+* NES; SNES; N64: Direct image editing of original savedata TPL
+* NES; SNES; N64: Automatic savetitle replacement (hex writing)
 * Additional content/emulator options for each platform where supported
 
 ### To-Do
-<!-- - [ ] Fix rendering on Tokyo Ghoul xx (NES), null xx (SNES), Tokyoxx xx (N64) -->
-- [x] Fix encoding on NES/N64
-- [ ] "Fix brightness" crashes on loading certain WADs in N64 (may be related to WWCXTool?)
-- [ ] Add Ninja Gaiden (EUR) for NES baselist
+- [x] Test content1 emulator modifications on N64
 - [ ] Add SEGA, TG-16, NeoGeo, C64
+- [ ] SEGA: VC ROM injection (file replacement)
 - [ ] SEGA: WTE/image generation & replacement
 - [ ] SEGA: Automatic savetitle replacement using manual text writing
 - [ ] Add Adobe Flash

@@ -132,12 +132,6 @@ Pour commencer, veuillez spécifier votre plateforme cible :</value>
   <data name="finish.Text" xml:space="preserve">
     <value>&amp;Sauvegarder</value>
   </data>
-  <data name="next.Text" xml:space="preserve">
-    <value>&amp;Suivant &gt;</value>
-  </data>
-  <data name="openROM.Text" xml:space="preserve">
-    <value>Parcourir une ROM ...</value>
-  </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>261, 15</value>
   </data>
@@ -192,12 +186,6 @@ Pour commencer, veuillez spécifier votre plateforme cible :</value>
   <data name="NES_Palette.Items1" xml:space="preserve">
     <value>Sans filtre sombre</value>
   </data>
-  <data name="Patch.Text" xml:space="preserve">
-    <value>Auto-patcher avec un fichier *.ips ou *.bps</value>
-  </data>
-  <data name="RegionFree.Text" xml:space="preserve">
-    <value>Dézoner</value>
-  </data>
   <data name="Image_Stretch.Items" xml:space="preserve">
     <value>Étirer</value>
   </data>
@@ -208,6 +196,30 @@ Pour commencer, veuillez spécifier votre plateforme cible :</value>
     <value>Redimensionnement :</value>
   </data>
   <data name="label14.Text" xml:space="preserve">
-    <value>Mode d'interpolation :</value>
+    <value>Méthode d'interpolation :</value>
+  </data>
+  <data name="N64_8MBRAM.Text" xml:space="preserve">
+    <value>Extension de mémoire à 8 Mo de RAM</value>
+  </data>
+  <data name="N64_AllocateROM.Text" xml:space="preserve">
+    <value>Allouer 32 Mo pour la ROM</value>
+  </data>
+  <data name="N64_FixBrightness.Text" xml:space="preserve">
+    <value>Maximum luminosité</value>
+  </data>
+  <data name="NES_Palette.Items2" xml:space="preserve">
+    <value>Console virtuelle (Nintendo 3DS)</value>
+  </data>
+  <data name="next.Text" xml:space="preserve">
+    <value>&amp;Suivant &gt;</value>
+  </data>
+  <data name="openROM.Text" xml:space="preserve">
+    <value>Parcourir une ROM ...</value>
+  </data>
+  <data name="Patch.Text" xml:space="preserve">
+    <value>Auto-patcher avec un fichier *.ips ou *.bps</value>
+  </data>
+  <data name="RegionFree.Text" xml:space="preserve">
+    <value>Dézoner</value>
   </data>
 </root>

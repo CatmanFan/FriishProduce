@@ -3,7 +3,9 @@
 <bases>
 	<nes>
 		<wad title="Kirby's Adventure (USA)"                          id="FA8E"/>
+		<wad title="Kirby's Adventure (EUR)"                          id="FA8P"/>
 		<wad title="Super Mario Bros. 3 (USA)"                        id="FCWE"/>
+		<wad title="Ninja Gaiden (EUR)"                               id="E6PP"/>
 	</nes>
 	<snes>
 		<wad title="Donkey Kong Country 2: Diddy's Kong Quest (USA)"  id="JBDE"/>

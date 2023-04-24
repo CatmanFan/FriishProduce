@@ -129,6 +129,9 @@
   <data name="browseROM_snes" xml:space="preserve">
     <value>Fichiers ROM de Super Nintendo (*.sfc;*.smc)|*.sfc;*.smc</value>
   </data>
+  <data name="browseSWF" xml:space="preserve">
+    <value>Fichiers Adobe Flash (*.swf)|*.swf</value>
+  </data>
   <data name="browse_AllFiles" xml:space="preserve">
     <value>|Tous les fichiers (*.*)|*.*</value>
   </data>
@@ -153,6 +156,9 @@ Message : {0}</value>
   </data>
   <data name="halt" xml:space="preserve">
     <value>Arrêt</value>
+  </data>
+  <data name="openSWF" xml:space="preserve">
+    <value>Parcourir un *.swf ...</value>
   </data>
   <data name="settings_Restart" xml:space="preserve">
     <value>Quelques modifications que vous avez effectués nécessitent un redémarrage du logiciel avant de prendre effet.</value>

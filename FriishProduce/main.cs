@@ -385,7 +385,7 @@ namespace FriishProduce
                                     tImg.CreateSave(Platforms.nes);
                                 NES.InsertSaveData(SaveDataTitle.Text, Paths.WorkingFolder + "out.tpl");
                             }
-                            Injector.PrepareContent1(NES.content1_file);
+                            Injector.PrepareContent1();
                             break;
 
                         case Platforms.snes:
@@ -410,13 +410,15 @@ namespace FriishProduce
                                             N64.emuVersion = entry.Attributes["ver"].Value;
                             }
 
-                            if (N64_FixBrightness.Checked)
+                            if (N64_FixBrightness.Checked || N64_8MBRAM.Checked || N64_AllocateROM.Checked)
                             {
                                 string content1_file = Injector.DetermineContent1();
-
-                                if (N64_FixBrightness.Checked) N64.FixBrightness(content1_file);
-
-                                Injector.PrepareContent1(content1_file);
+                                var content1 = File.ReadAllBytes(content1_file);
+                                if (N64_FixBrightness.Checked) content1 = N64.FixBrightness(content1);
+                                if (N64_8MBRAM.Checked)        content1 = N64.ExpansionRAM(content1);
+                                if (N64_AllocateROM.Checked)   content1 = N64.AllocateROM(content1);
+                                File.WriteAllBytes(content1_file, content1);
+                                Injector.PrepareContent1();
                             }
                             N64.ReplaceROM();
 
@@ -475,6 +477,26 @@ namespace FriishProduce
                     break;
                 case 1:
                     ToolTip.SetToolTip(NES_Palette, string.Format(strings.author, "SuperrSonic"));
+                    break;
+                case 2:
+                    ToolTip.SetToolTip(NES_Palette, string.Format(strings.author, "Nintendo / SuperrSonic"));
+                    break;
+                case 3:
+                    ToolTip.SetToolTip(NES_Palette, string.Format(strings.author, "Nintendo / FirebrandX"));
+                    break;
+                case 4:
+                    ToolTip.SetToolTip(NES_Palette, string.Format(strings.author, "Nintendo / N-Mario"));
+                    break;
+                case 5:
+                case 6:
+                    ToolTip.SetToolTip(NES_Palette, string.Format(strings.author, "Nestopia"));
+                    break;
+                case 7:
+                    ToolTip.SetToolTip(NES_Palette, string.Format(strings.author, "FCEUX"));
+                    break;
+                case 8:
+                case 9:
+                    ToolTip.SetToolTip(NES_Palette, string.Format(strings.author, "FirebrandX"));
                     break;
             }
         }

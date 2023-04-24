@@ -129,6 +129,9 @@
   <data name="browseROM_snes" xml:space="preserve">
     <value>Super Nintendo Entertainment System/Super Famicom ROM files (*.sfc;*.smc)|*.sfc;*.smc</value>
   </data>
+  <data name="browseSWF" xml:space="preserve">
+    <value>Adobe Flash files (*.swf)|*.swf</value>
+  </data>
   <data name="browse_AllFiles" xml:space="preserve">
     <value>|All files (*.*)|*.*</value>
   </data>
@@ -163,6 +166,9 @@ Using unpatched ROM.</value>
   </data>
   <data name="halt" xml:space="preserve">
     <value>Halt</value>
+  </data>
+  <data name="openSWF" xml:space="preserve">
+    <value>Open SWF...</value>
   </data>
   <data name="settings_Restart" xml:space="preserve">
     <value>Some of the changes you have made require you to restart the application before they can take effect.</value>

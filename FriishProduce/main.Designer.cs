@@ -78,6 +78,8 @@ namespace FriishProduce
             this.disableEmanual = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
             this.Options_N64 = new System.Windows.Forms.Panel();
+            this.N64_AllocateROM = new System.Windows.Forms.CheckBox();
+            this.N64_8MBRAM = new System.Windows.Forms.CheckBox();
             this.N64_FixBrightness = new System.Windows.Forms.CheckBox();
             this.Options_NES = new System.Windows.Forms.Panel();
             this.NES_Palette = new System.Windows.Forms.ComboBox();
@@ -441,8 +443,8 @@ namespace FriishProduce
             this.page4.Controls.Add(this.label7);
             this.page4.Controls.Add(this.disableEmanual);
             this.page4.Controls.Add(this.label4);
-            this.page4.Controls.Add(this.Options_N64);
             this.page4.Controls.Add(this.Options_NES);
+            this.page4.Controls.Add(this.Options_N64);
             resources.ApplyResources(this.page4, "page4");
             this.page4.Name = "page4";
             // 
@@ -478,9 +480,23 @@ namespace FriishProduce
             // Options_N64
             // 
             this.Options_N64.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Options_N64.Controls.Add(this.N64_AllocateROM);
+            this.Options_N64.Controls.Add(this.N64_8MBRAM);
             this.Options_N64.Controls.Add(this.N64_FixBrightness);
             resources.ApplyResources(this.Options_N64, "Options_N64");
             this.Options_N64.Name = "Options_N64";
+            // 
+            // N64_AllocateROM
+            // 
+            resources.ApplyResources(this.N64_AllocateROM, "N64_AllocateROM");
+            this.N64_AllocateROM.Name = "N64_AllocateROM";
+            this.N64_AllocateROM.UseVisualStyleBackColor = true;
+            // 
+            // N64_8MBRAM
+            // 
+            resources.ApplyResources(this.N64_8MBRAM, "N64_8MBRAM");
+            this.N64_8MBRAM.Name = "N64_8MBRAM";
+            this.N64_8MBRAM.UseVisualStyleBackColor = true;
             // 
             // N64_FixBrightness
             // 
@@ -502,7 +518,15 @@ namespace FriishProduce
             this.NES_Palette.FormattingEnabled = true;
             this.NES_Palette.Items.AddRange(new object[] {
             resources.GetString("NES_Palette.Items"),
-            resources.GetString("NES_Palette.Items1")});
+            resources.GetString("NES_Palette.Items1"),
+            resources.GetString("NES_Palette.Items2"),
+            resources.GetString("NES_Palette.Items3"),
+            resources.GetString("NES_Palette.Items4"),
+            resources.GetString("NES_Palette.Items5"),
+            resources.GetString("NES_Palette.Items6"),
+            resources.GetString("NES_Palette.Items7"),
+            resources.GetString("NES_Palette.Items8"),
+            resources.GetString("NES_Palette.Items9")});
             resources.ApplyResources(this.NES_Palette, "NES_Palette");
             this.NES_Palette.Name = "NES_Palette";
             this.NES_Palette.SelectedIndexChanged += new System.EventHandler(this.NES_PaletteChanged);
@@ -526,10 +550,10 @@ namespace FriishProduce
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.page4);
             this.Controls.Add(this.page3);
             this.Controls.Add(this.page2);
             this.Controls.Add(this.page1);
-            this.Controls.Add(this.page4);
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
@@ -612,6 +636,8 @@ namespace FriishProduce
         private System.Windows.Forms.ComboBox Image_ModeI;
         private System.Windows.Forms.Panel Options_N64;
         private System.Windows.Forms.CheckBox N64_FixBrightness;
+        private System.Windows.Forms.CheckBox N64_8MBRAM;
+        private System.Windows.Forms.CheckBox N64_AllocateROM;
     }
 }
 
