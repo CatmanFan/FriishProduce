@@ -145,11 +145,6 @@
     <value>An error occured during the exportation process.
 Message: {0}</value>
   </data>
-  <data name="errorTransmitter" xml:space="preserve">
-    <value>Unable to transmit exported WAD to console.
-
-{0}</value>
-  </data>
   <data name="error_Flips" xml:space="preserve">
     <value>Floating IPS was not found within the "apps" folder!
 Using unpatched ROM.</value>

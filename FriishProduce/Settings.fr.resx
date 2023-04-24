@@ -136,12 +136,6 @@
   <data name="tabPage1.Text" xml:space="preserve">
     <value>Logiciel</value>
   </data>
-  <data name="HBC_Protocol.Items" xml:space="preserve">
-    <value>Chaîne Homebrew (-1.0.4) - HAXX</value>
-  </data>
-  <data name="HBC_Protocol.Items1" xml:space="preserve">
-    <value>Chaîne Homebrew (1.0.5+) - JODI</value>
-  </data>
   <data name="HBC_Protocol.Location" type="System.Drawing.Point, System.Drawing">
     <value>129, 22</value>
   </data>
@@ -151,20 +145,11 @@
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
     <value>64, 15</value>
   </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>Protocole :</value>
-  </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>115, 15</value>
   </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Adresse IP de la Wii :</value>
-  </data>
   <data name="HBC.Size" type="System.Drawing.Size, System.Drawing">
     <value>252, 19</value>
-  </data>
-  <data name="HBC.Text" xml:space="preserve">
-    <value>Transmettre la chaîne exportée à la console</value>
   </data>
   <data name="HBC_IP.Location" type="System.Drawing.Point, System.Drawing">
     <value>129, 51</value>

@@ -172,17 +172,6 @@ namespace FriishProduce {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unable to transmit exported WAD to console.
-        ///
-        ///{0}.
-        /// </summary>
-        internal static string errorTransmitter {
-            get {
-                return ResourceManager.GetString("errorTransmitter", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Done..
         /// </summary>
         internal static string finished {

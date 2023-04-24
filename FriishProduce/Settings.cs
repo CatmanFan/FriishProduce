@@ -28,11 +28,6 @@ namespace FriishProduce
             foreach (KeyValuePair<string, string> listing in langs)
                 if (listing.Value == Properties.Settings.Default.language) language.SelectedItem = listing.Key;
             // -----------------------------
-            HBC.Checked = Properties.Settings.Default.hbc;
-            HBC_IP.Enabled = Properties.Settings.Default.hbc;
-            HBC_IP.Text = Properties.Settings.Default.hbc_ip;
-            HBC_Protocol.Enabled = Properties.Settings.Default.hbc;
-            HBC_Protocol.SelectedIndex = Properties.Settings.Default.hbc_protocol;
         }
 
         private void OK_Click(object sender, EventArgs e)
@@ -47,16 +42,10 @@ namespace FriishProduce
                     break;
                 }
 
-            Properties.Settings.Default.hbc = HBC.Checked;
-            Properties.Settings.Default.hbc_ip = HBC_IP.Text;
-            Properties.Settings.Default.hbc_protocol = HBC_Protocol.SelectedIndex;
-
             if (showRestart) MessageBox.Show(Strings.restart, Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             Properties.Settings.Default.Save();
             DialogResult = DialogResult.OK;
         }
-
-        private void EnableWADtoHBC_CheckedChanged(object sender, EventArgs e) { HBC_IP.Enabled = HBC.Checked; HBC_Protocol.Enabled = HBC.Checked; }
     }
 }

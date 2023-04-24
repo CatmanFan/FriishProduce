@@ -76,12 +76,6 @@
     <Compile Include="classes\titleImage.cs" />
     <Compile Include="classes\u8.cs" />
     <Compile Include="classes\xml.cs" />
-    <Compile Include="HBCtransmitter.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="HBCtransmitter.Designer.cs">
-      <DependentUpon>HBCtransmitter.cs</DependentUpon>
-    </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,9 +95,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Strings.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="HBCtransmitter.resx">
-      <DependentUpon>HBCtransmitter.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Main.fr.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>

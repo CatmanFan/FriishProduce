@@ -3,16 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="language" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="hbc_ip" Type="System.String" Scope="User">
-      <Value Profile="(Default)">192.168.x.x</Value>
-    </Setting>
-    <Setting Name="hbc" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="hbc_protocol" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">0</Value>
+      <Value Profile="(Default)">sys</Value>
     </Setting>
   </Settings>
 </SettingsFile>

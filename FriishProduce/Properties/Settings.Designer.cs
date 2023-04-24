@@ -25,49 +25,13 @@ namespace FriishProduce.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("sys")]
         public string language {
             get {
                 return ((string)(this["language"]));
             }
             set {
                 this["language"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("192.168.x.x")]
-        public string hbc_ip {
-            get {
-                return ((string)(this["hbc_ip"]));
-            }
-            set {
-                this["hbc_ip"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool hbc {
-            get {
-                return ((bool)(this["hbc"]));
-            }
-            set {
-                this["hbc"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int hbc_protocol {
-            get {
-                return ((int)(this["hbc_protocol"]));
-            }
-            set {
-                this["hbc_protocol"] = value;
             }
         }
     }

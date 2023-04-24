@@ -437,9 +437,6 @@ namespace FriishProduce
                     w.Save(SaveWAD.FileName);
                     w.Dispose();
                     MessageBox.Show(Strings.finished);
-
-                    if (Properties.Settings.Default.hbc)
-                        new HBCtransmitter(SaveWAD.FileName).Show();
                 }
                 catch (Exception ex)
                 {

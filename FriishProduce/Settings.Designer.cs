@@ -37,16 +37,9 @@ namespace FriishProduce
             this.language = new System.Windows.Forms.ComboBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.HBC_Protocol = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.HBC = new System.Windows.Forms.CheckBox();
-            this.HBC_IP = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -99,55 +92,11 @@ namespace FriishProduce
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.SystemColors.Window;
-            this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Controls.Add(this.language);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.ForeColor = System.Drawing.SystemColors.ControlText;
             resources.ApplyResources(this.tabPage1, "tabPage1");
             this.tabPage1.Name = "tabPage1";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.HBC_Protocol);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.HBC);
-            this.groupBox1.Controls.Add(this.HBC_IP);
-            resources.ApplyResources(this.groupBox1, "groupBox1");
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.TabStop = false;
-            // 
-            // HBC_Protocol
-            // 
-            this.HBC_Protocol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.HBC_Protocol.FormattingEnabled = true;
-            this.HBC_Protocol.Items.AddRange(new object[] {
-            resources.GetString("HBC_Protocol.Items"),
-            resources.GetString("HBC_Protocol.Items1")});
-            resources.ApplyResources(this.HBC_Protocol, "HBC_Protocol");
-            this.HBC_Protocol.Name = "HBC_Protocol";
-            // 
-            // label3
-            // 
-            resources.ApplyResources(this.label3, "label3");
-            this.label3.Name = "label3";
-            // 
-            // label2
-            // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
-            // 
-            // HBC
-            // 
-            resources.ApplyResources(this.HBC, "HBC");
-            this.HBC.Name = "HBC";
-            this.HBC.UseVisualStyleBackColor = true;
-            this.HBC.CheckedChanged += new System.EventHandler(this.EnableWADtoHBC_CheckedChanged);
-            // 
-            // HBC_IP
-            // 
-            resources.ApplyResources(this.HBC_IP, "HBC_IP");
-            this.HBC_IP.Name = "HBC_IP";
             // 
             // Settings
             // 
@@ -170,8 +119,6 @@ namespace FriishProduce
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -185,11 +132,5 @@ namespace FriishProduce
         private System.Windows.Forms.ComboBox language;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox HBC_IP;
-        private System.Windows.Forms.CheckBox HBC;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ComboBox HBC_Protocol;
-        private System.Windows.Forms.Label label3;
     }
 }
