@@ -25,7 +25,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>0.0.1.%2a</ApplicationVersion>
+    <ApplicationVersion>0.0.2.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -47,6 +47,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Wiimote.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="libWiiSharp, Version=0.6.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -150,6 +153,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="database.xml" />
+    <Content Include="Wiimote.ico" />
     <None Include="Resources\gbalzss.exe" />
     <None Include="Resources\ccftools\ccfex.exe" />
     <None Include="Resources\ccftools\ccfarcraw.exe" />

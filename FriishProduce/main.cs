@@ -161,18 +161,23 @@ namespace FriishProduce
 
         private void BaseList_Changed(object sender, EventArgs e)
         {
-            foreach (var item in Directory.GetFiles(Paths.Database, "*.*", SearchOption.AllDirectories))
-                if (File.Exists(item) && item.Contains(XML.SearchID(baseList.SelectedItem.ToString(), currentConsole)))
-                { 
-                    input[2] = item;
-                    goto End;
-                }
+            if (baseList.SelectedIndex >= 0)
+            {
+                foreach (var item in Directory.GetFiles(Paths.Database, "*.*", SearchOption.AllDirectories))
+                    if (File.Exists(item) && item.Contains(XML.SearchID(baseList.SelectedItem.ToString(), currentConsole)))
+                    {
+                        input[2] = item;
+                        goto End;
+                    }
 
-            MessageBox.Show("Unable to find WAD in database.");
-            baseList.Items.Remove(baseList.SelectedItem);
+                MessageBox.Show("Unable to find WAD in database.");
+                baseList.Items.Remove(baseList.SelectedItem);
+                input[2] = null;
 
-            End:
-            RefreshBases(true);
+                End:
+                RefreshBases(true);
+            }
+
             next.Enabled = (input[0] != null) && (input[2] != null);
         }
 
@@ -180,18 +185,31 @@ namespace FriishProduce
         {
             if (!BannerOnly)
             {
+                DeleteBase.Enabled = false;
                 baseList.Items.Clear();
+                baseList_banner.SelectedIndex = -1;
                 baseList.DropDownHeight = 106;
                 foreach (System.Xml.XmlNode entry in XML.RetrieveList(currentConsole))
                 {
                     if (File.Exists($"{Paths.Database}{currentConsole}\\{entry.Attributes["id"].Value}.wad"))
+                    {
                         baseList.Items.Add(entry.Attributes["title"].Value);
+                    }
                 }
             }
 
-            baseList_banner.Items.Clear();
-            foreach (var item in baseList.Items)
-                if (item != baseList.SelectedItem) baseList_banner.Items.Add(item);
+            DeleteBase.Enabled = baseList_banner.SelectedIndex >= 0;
+
+            if (baseList.Items.Count > 0)
+            {
+                baseList_banner.Items.Clear();
+                foreach (var item in baseList.Items)
+                    if (item != baseList.SelectedItem)
+                    {
+                        baseList_banner.Items.Add(item);
+                        baseList_banner.SelectedIndex = 0;
+                    }
+            }
             if (baseList_banner.Items.Count == 0)
             {
                 ImportBanner.Checked = false;
@@ -244,16 +262,18 @@ namespace FriishProduce
         {
             if (MessageBox.Show(Strings.deleteWAD, Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                foreach (var item in Directory.GetFiles(Paths.Database, "*.*", SearchOption.AllDirectories))
-                    if (File.Exists(item) && item.Contains(XML.SearchID(baseList.SelectedItem.ToString(), currentConsole)))
+                foreach (var item in Directory.GetFiles(Paths.Database, "*.wad", SearchOption.AllDirectories))
+                    foreach (System.Xml.XmlNode entry in XML.RetrieveList(currentConsole))
                     {
-                        File.Delete(item);
-                        input[2] = null;
-                        baseList.Items.Remove(baseList.SelectedItem.ToString());
-                        baseList.SelectedIndex = 0;
+                        if (File.Exists(item) && entry.Attributes["id"].Value == Path.GetFileNameWithoutExtension(item))
+                        {
+                            File.Delete(item);
+                            input[2] = null;
+                            RefreshBases();
+                            next.Enabled = (input[0] != null) && (input[2] != null);
+                            return;
+                        }
                     }
-
-                next.Enabled = (input[0] != null) && (input[2] != null);
             }
         }
 

@@ -18,7 +18,7 @@ This injector bypasses other third-party assets (such as Common-Key.bin, most of
 * Additional content/emulator options for each platform where supported
 
 ### To-Do
-- [x] Test content1 emulator modifications on N64
+- [ ] Add option to leave banner images unedited
 - [ ] Add SEGA, TG-16, NeoGeo, C64
 - [ ] SEGA: VC ROM injection (file replacement)
 - [ ] SEGA: WTE/image generation & replacement

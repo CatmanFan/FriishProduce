@@ -33,13 +33,13 @@ namespace FriishProduce
             this.panel1 = new System.Windows.Forms.Panel();
             this.ok = new System.Windows.Forms.Button();
             this.cancel = new System.Windows.Forms.Button();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
             this.language = new System.Windows.Forms.ComboBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel1.SuspendLayout();
-            this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -70,6 +70,15 @@ namespace FriishProduce
             this.cancel.Name = "cancel";
             this.cancel.UseVisualStyleBackColor = true;
             // 
+            // tabPage1
+            // 
+            this.tabPage1.BackColor = System.Drawing.SystemColors.Window;
+            this.tabPage1.Controls.Add(this.language);
+            this.tabPage1.Controls.Add(this.label1);
+            this.tabPage1.ForeColor = System.Drawing.SystemColors.ControlText;
+            resources.ApplyResources(this.tabPage1, "tabPage1");
+            this.tabPage1.Name = "tabPage1";
+            // 
             // label1
             // 
             resources.ApplyResources(this.label1, "label1");
@@ -89,15 +98,6 @@ namespace FriishProduce
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             // 
-            // tabPage1
-            // 
-            this.tabPage1.BackColor = System.Drawing.SystemColors.Window;
-            this.tabPage1.Controls.Add(this.language);
-            this.tabPage1.Controls.Add(this.label1);
-            this.tabPage1.ForeColor = System.Drawing.SystemColors.ControlText;
-            resources.ApplyResources(this.tabPage1, "tabPage1");
-            this.tabPage1.Name = "tabPage1";
-            // 
             // Settings
             // 
             this.AcceptButton = this.ok;
@@ -116,9 +116,9 @@ namespace FriishProduce
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.panel1.ResumeLayout(false);
-            this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -128,9 +128,9 @@ namespace FriishProduce
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button ok;
         private System.Windows.Forms.Button cancel;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox language;
-        private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.ComboBox language;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TabControl tabControl1;
     }
 }

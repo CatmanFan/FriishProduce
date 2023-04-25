@@ -169,6 +169,6 @@ Using unpatched ROM.</value>
     <value>Some of the changes you have made require you to restart the application before they can take effect.</value>
   </data>
   <data name="version" xml:space="preserve">
-    <value>beta 1</value>
+    <value>alpha 2</value>
   </data>
 </root>
