@@ -4,15 +4,16 @@ using System.IO;
 
 namespace FriishProduce
 {
-    public class Injector
+    partial class Injector
     {
+        private static Localization lang = Program.lang;
         public static string ApplyPatch(string ROM, string patch = null)
         {
             if (patch != null)
             {
                 if (!File.Exists(Paths.Apps + "flips.exe"))
                 {
-                    System.Windows.Forms.MessageBox.Show(Strings.error_Flips, Strings.error, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                    System.Windows.Forms.MessageBox.Show(lang.Get("Error_FlipsMissing"), lang.Get("Error"), System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
                     return ROM;
                 }
 
@@ -33,7 +34,7 @@ namespace FriishProduce
 
                 if (!File.Exists(outROM))
                 {
-                    System.Windows.Forms.MessageBox.Show(Strings.error_patchFailed, Strings.error, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                    System.Windows.Forms.MessageBox.Show(lang.Get("Error_PatchFailed"), lang.Get("Error"), System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
                     return ROM;
                 }
                 return outROM;
@@ -62,7 +63,7 @@ namespace FriishProduce
                     File.Delete(pPath);
 
                     if (!File.Exists(Paths.WorkingFolder + "00000001.app.dec"))
-                        throw new Exception("Unable to decompress the emulator file.");
+                        throw new Exception(lang.Get("Error_EmulatorCompression"));
                 }
 
                 return Paths.WorkingFolder + "00000001.app.dec";
@@ -89,7 +90,7 @@ namespace FriishProduce
                 File.Delete(pPath);
 
                 if (!File.Exists(Paths.WorkingFolder + "00000001.app.rec"))
-                    throw new Exception("Unable to recompress the emulator file.");
+                    throw new Exception(lang.Get("Error_EmulatorCompression"));
 
                 if (File.Exists(Paths.WorkingFolder + "00000001.app")) File.Delete(Paths.WorkingFolder + "00000001.app");
                 if (File.Exists(Paths.WorkingFolder + "00000001.app.dec")) File.Delete(Paths.WorkingFolder + "00000001.app.dec");

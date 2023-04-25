@@ -38,7 +38,7 @@ namespace FriishProduce.Injectors
                 var targetROM = new byte[ROMsize];
                 var inputROM = File.ReadAllBytes(ROM);
                 if (inputROM.Length > ROMsize)
-                    throw new Exception(Strings.error_ROMtoobig);
+                    throw new Exception(new Localization().Get("Error_ROMSize"));
                 File.ReadAllBytes(ROM).CopyTo(targetROM, 0);
                 targetROM.CopyTo(content1, offset);
 

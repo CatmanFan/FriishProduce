@@ -127,6 +127,9 @@
   <data name="CCFex" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ccftools\ccfex.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="English" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\langs\en.csv;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
   <data name="GBALZSS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\gbalzss.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>

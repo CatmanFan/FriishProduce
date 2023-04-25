@@ -23,7 +23,7 @@ namespace FriishProduce.Injectors
                 File.Copy(ROM, rom, true);
             }
             else
-                throw new Exception("Unable to find injectable ROM.");
+                throw new Exception(Program.lang.Get("Error_FailedROMSearch"));
 
             foreach (string file in Directory.GetFiles(Paths.WorkingFolder_Content5))
             {

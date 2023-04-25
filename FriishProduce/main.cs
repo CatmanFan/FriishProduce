@@ -13,6 +13,7 @@ namespace FriishProduce
 {
     public partial class Main : Form
     {
+        Localization lang = Program.lang;
         Platforms currentConsole = 0;
 
         string[] input = new string[]
@@ -25,19 +26,18 @@ namespace FriishProduce
 
         public Main()
         {
-            ComponentResourceManager mang = new ComponentResourceManager(typeof(Main));
-            var lang = Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName;
-
-            foreach (Control child in Controls.OfType<Panel>())
-                mang.ApplyResources(child, child.Name, new CultureInfo(lang));
-
             InitializeComponent();
+            lang.ChangeFormLanguage(this);
 
-            label1.Text = string.Format(label1.Text, Strings.version);
-            ToolTip.SetToolTip(settings, new Settings().Text);
-            BrowseWAD.Filter   += Strings.browse_AllFiles;
-            BrowsePatch.Filter += Strings.browse_AllFiles;
+            this.Text = (lang.Get("AppTitle"));
+            label1.Text = string.Format(lang.Get("label1.Text"), Strings.version);
+            ToolTip.SetToolTip(Settings, lang.Get("Settings"));
+
+            BrowseWAD.Filter = lang.Get("BrowseWAD.Filter") + lang.Get("BrowseAll");
+            BrowseImage.Filter = lang.Get("BrowseImage.Filter") + lang.Get("BrowseAll");
+            BrowsePatch.Filter = lang.Get("BrowsePatch.Filter") + lang.Get("BrowseAll");
             SaveWAD.Filter = BrowseWAD.Filter;
+
             Reset();
         }
         private void Console_Changed(object sender, EventArgs e)
@@ -45,31 +45,28 @@ namespace FriishProduce
             foreach (var p in page4.Controls.OfType<Panel>())
                 if (p.Name.StartsWith("Options_")) p.Visible = false;
 
-            currentConsole = (Platforms)console.SelectedIndex;
+            currentConsole = (Platforms)Console.SelectedIndex;
             switch (currentConsole)
             {
                 case Platforms.nes:
-                    BrowseROM.Filter = Strings.browseROM_nes;
                     Options_NES.Visible = true;
                     SaveDataTitle.MaxLength = 20;
                     break;
                 case Platforms.snes:
-                    BrowseROM.Filter = Strings.browseROM_snes;
                     break;
                 case Platforms.n64:
-                    BrowseROM.Filter = Strings.browseROM_n64;
                     Options_N64.Visible = true;
                     break;
             }
-            BrowseROM.Filter += Strings.browse_AllFiles;
+            BrowseROM.Filter = lang.Get($"BrowseROM_{currentConsole.ToString().ToUpper()}") + lang.Get("BrowseAll");
+            Reset();
+            RefreshBases();
+
             tImg.SetPlatform(currentConsole);
             SaveDataTitle.Enabled = !(currentConsole == Platforms.sms || currentConsole == Platforms.smd);
             SaveDataTitle.MaxLength = 80;
 
-            Reset();
-            RefreshBases();
-
-            next.Enabled = true;
+            Next.Enabled = true;
         }
 
         /// <summary>
@@ -78,7 +75,7 @@ namespace FriishProduce
         private void Reset()
         {
             input = new string[input.Length];
-            NES_Palette.SelectedIndex = 0;
+            NES_PaletteList.SelectedIndex = 0;
             SaveDataTitle.Enabled = true;
         }
 
@@ -91,23 +88,23 @@ namespace FriishProduce
             {
                 page2.Visible = true;
                 page1.Visible = false;
-                back.Enabled = true;
-                next.Enabled = (input[0] != null) && (input[2] != null);
+                Back.Enabled = true;
+                Next.Enabled = (input[0] != null) && (input[2] != null);
                 label3.Text = input[0] != null ? Path.GetFileName(input[0]) : "N/A";
             }
             else if (page2.Visible)
             {
                 page3.Visible = true;
                 page2.Visible = false;
-                next.Enabled = checkBannerPage();
+                Next.Enabled = checkBannerPage();
             }
             else if (page3.Visible)
             {
                 page4.Visible = true;
                 page3.Visible = false;
-                finish.Visible = true;
-                finish.Enabled = (TitleID.Text.Length == 4) && Regex.IsMatch(TitleID.Text, "^[A-Z0-9]*$");
-                next.Visible = false;
+                Save.Visible = true;
+                Save.Enabled = (TitleID.Text.Length == 4) && Regex.IsMatch(TitleID.Text, "^[A-Z0-9]*$");
+                Next.Visible = false;
             }
         }
 
@@ -117,27 +114,27 @@ namespace FriishProduce
             {
                 page1.Visible = true;
                 page2.Visible = false;
-                back.Enabled = false;
-                next.Enabled = console.SelectedIndex >= 0;
+                Back.Enabled = false;
+                Next.Enabled = Console.SelectedIndex >= 0;
             }
             else if (page3.Visible)
             {
                 page2.Visible = true;
                 page3.Visible = false;
-                next.Enabled = (input[0] != null) && (input[2] != null);
+                Next.Enabled = (input[0] != null) && (input[2] != null);
             }
             else if (page4.Visible)
             {
                 page3.Visible = true;
                 page4.Visible = false;
-                next.Visible = true;
-                next.Enabled = checkBannerPage();
-                finish.Visible = false;
+                Next.Visible = true;
+                Next.Enabled = checkBannerPage();
+                Save.Visible = false;
             }
         }
         private bool checkBannerPage()
         {
-            if (customize.Checked)
+            if (Customize.Checked)
                 return !(string.IsNullOrEmpty(ChannelTitle.Text)
                       || string.IsNullOrEmpty(BannerTitle.Text)
                       || string.IsNullOrEmpty(SaveDataTitle.Text)
@@ -156,7 +153,7 @@ namespace FriishProduce
                 label3.Text = input[0] != null ? Path.GetFileName(input[0]) : "N/A";
 
             Patch.Checked = false;
-            next.Enabled = (input[0] != null) && (input[2] != null);
+            Next.Enabled = (input[0] != null) && (input[2] != null);
         }
 
         private void BaseList_Changed(object sender, EventArgs e)
@@ -178,7 +175,7 @@ namespace FriishProduce
                 RefreshBases(true);
             }
 
-            next.Enabled = (input[0] != null) && (input[2] != null);
+            Next.Enabled = (input[0] != null) && (input[2] != null);
         }
 
         private void RefreshBases(bool BannerOnly = false)
@@ -186,6 +183,7 @@ namespace FriishProduce
             if (!BannerOnly)
             {
                 DeleteBase.Enabled = false;
+                baseList.Enabled = false;
                 baseList.Items.Clear();
                 baseList_banner.SelectedIndex = -1;
                 baseList.DropDownHeight = 106;
@@ -198,7 +196,8 @@ namespace FriishProduce
                 }
             }
 
-            DeleteBase.Enabled = baseList_banner.SelectedIndex >= 0;
+            DeleteBase.Enabled = baseList.SelectedIndex >= 0;
+            baseList.Enabled = baseList.SelectedIndex >= 0;
 
             if (baseList.Items.Count > 0)
             {
@@ -260,7 +259,7 @@ namespace FriishProduce
         }
         private void DeleteWAD(object sender, EventArgs e)
         {
-            if (MessageBox.Show(Strings.deleteWAD, Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show(lang.Get("Message_DeleteWAD"), Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 foreach (var item in Directory.GetFiles(Paths.Database, "*.wad", SearchOption.AllDirectories))
                     foreach (System.Xml.XmlNode entry in XML.RetrieveList(currentConsole))
@@ -270,7 +269,7 @@ namespace FriishProduce
                             File.Delete(item);
                             input[2] = null;
                             RefreshBases();
-                            next.Enabled = (input[0] != null) && (input[2] != null);
+                            Next.Enabled = (input[0] != null) && (input[2] != null);
                             return;
                         }
                     }
@@ -295,7 +294,7 @@ namespace FriishProduce
                     w.Unpack(Paths.WorkingFolder);
 
                     #region Banner
-                    if (customize.Checked)
+                    if (Customize.Checked)
                     {
                         if (ImportBanner.Checked)
                         {
@@ -339,7 +338,7 @@ namespace FriishProduce
 
                         var Brlyt = File.ReadAllBytes(Paths.WorkingFolder + "banner.brlyt");
                         if (Brlyt == Banner.Data[Banner.GetNodeIndex("banner.brlyt")])
-                            throw new Exception("Banner.brlyt has not been modified. Make sure you have set up HowardC Tools properly and try again.");
+                            throw new Exception(lang.Get("Error_BannerBrlyt"));
                         Banner.ReplaceFile(Banner.GetNodeIndex("banner.brlyt"), Brlyt);
 
                         // --------------------------------------------------------------------------- //
@@ -381,8 +380,8 @@ namespace FriishProduce
                     #endregion
 
                     U8.Unpack(Paths.WorkingFolder + "00000005.app", Paths.WorkingFolder_Content5);
-                    if (disableEmanual.Checked) Injector.RemoveEmanual();
-                    if (customize.Checked) tImg.CreateSave(currentConsole);
+                    if (DisableEmanual.Checked) Injector.RemoveEmanual();
+                    if (Customize.Checked) tImg.CreateSave(currentConsole);
 
                     switch (currentConsole)
                     {
@@ -398,8 +397,8 @@ namespace FriishProduce
                             };
 
                             NES.InsertROM();
-                            NES.InsertPalette(NES_Palette.SelectedIndex);
-                            if (customize.Checked)
+                            NES.InsertPalette(NES_PaletteList.SelectedIndex);
+                            if (Customize.Checked)
                             {
                                 if (NES.ExtractSaveTPL(Paths.WorkingFolder + "out.tpl"))
                                     tImg.CreateSave(Platforms.nes);
@@ -417,7 +416,7 @@ namespace FriishProduce
 
                             SNES.ReplaceROM();
 
-                            if (customize.Checked) SNES.InsertSaveTitle(SaveDataTitle.Lines);
+                            if (Customize.Checked) SNES.InsertSaveTitle(SaveDataTitle.Lines);
                             break;
 
                         case Platforms.n64:
@@ -442,7 +441,7 @@ namespace FriishProduce
                             }
                             N64.ReplaceROM();
 
-                            if (customize.Checked) N64.InsertSaveComments(SaveDataTitle.Lines);
+                            if (Customize.Checked) N64.InsertSaveComments(SaveDataTitle.Lines);
                             break;
                     }
 
@@ -456,11 +455,11 @@ namespace FriishProduce
                     w.ChangeTitleID(LowerTitleID.Channel, TitleID.Text);
                     w.Save(SaveWAD.FileName);
                     w.Dispose();
-                    MessageBox.Show(Strings.finished);
+                    MessageBox.Show(lang.Get("Message_ExportFinished"));
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(String.Format(Strings.errorInject, ex.Message), Strings.error, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show(String.Format(lang.Get("Message_ExportError"), ex.Message), lang.Get("Halt"), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
                 finally
                 {
@@ -477,34 +476,34 @@ namespace FriishProduce
 
         private void NES_PaletteChanged(object sender, EventArgs e)
         {
-            switch (NES_Palette.SelectedIndex)
+            switch (NES_PaletteList.SelectedIndex)
             {
                 default:
                 case 0:
-                    ToolTip.SetToolTip(NES_Palette, null);
+                    ToolTip.SetToolTip(NES_PaletteList, null);
                     break;
                 case 1:
-                    ToolTip.SetToolTip(NES_Palette, string.Format(Strings.author, "SuperrSonic"));
+                    ToolTip.SetToolTip(NES_PaletteList, string.Format(lang.Get("NES_PaletteList_Author"), "SuperrSonic"));
                     break;
                 case 2:
-                    ToolTip.SetToolTip(NES_Palette, string.Format(Strings.author, "Nintendo / SuperrSonic"));
+                    ToolTip.SetToolTip(NES_PaletteList, string.Format(lang.Get("NES_PaletteList_Author"), "Nintendo / SuperrSonic"));
                     break;
                 case 3:
-                    ToolTip.SetToolTip(NES_Palette, string.Format(Strings.author, "Nintendo / FirebrandX"));
+                    ToolTip.SetToolTip(NES_PaletteList, string.Format(lang.Get("NES_PaletteList_Author"), "Nintendo / FirebrandX"));
                     break;
                 case 4:
-                    ToolTip.SetToolTip(NES_Palette, string.Format(Strings.author, "Nintendo / N-Mario"));
+                    ToolTip.SetToolTip(NES_PaletteList, string.Format(lang.Get("NES_PaletteList_Author"), "Nintendo / N-Mario"));
                     break;
                 case 5:
                 case 6:
-                    ToolTip.SetToolTip(NES_Palette, string.Format(Strings.author, "Nestopia"));
+                    ToolTip.SetToolTip(NES_PaletteList, string.Format(lang.Get("NES_PaletteList_Author"), "Nestopia"));
                     break;
                 case 7:
-                    ToolTip.SetToolTip(NES_Palette, string.Format(Strings.author, "FCEUX"));
+                    ToolTip.SetToolTip(NES_PaletteList, string.Format(lang.Get("NES_PaletteList_Author"), "FCEUX"));
                     break;
                 case 8:
                 case 9:
-                    ToolTip.SetToolTip(NES_Palette, string.Format(Strings.author, "FirebrandX"));
+                    ToolTip.SetToolTip(NES_PaletteList, string.Format(lang.Get("NES_PaletteList_Author"), "FirebrandX"));
                     break;
             }
         }
@@ -521,7 +520,7 @@ namespace FriishProduce
                 if (line2.Length > 65) line2.Remove(64);
             }
 
-            next.Enabled = checkBannerPage();
+            Next.Enabled = checkBannerPage();
         }
 
         private void BannerText_KeyPress(object sender, KeyPressEventArgs e)
@@ -540,7 +539,7 @@ namespace FriishProduce
             }
         }
 
-        private void TitleID_Changed(object sender, EventArgs e) => finish.Enabled = (TitleID.Text.Length == 4) && Regex.IsMatch(TitleID.Text, "^[A-Z0-9]*$");
+        private void TitleID_Changed(object sender, EventArgs e) => Save.Enabled = (TitleID.Text.Length == 4) && Regex.IsMatch(TitleID.Text, "^[A-Z0-9]*$");
 
         private void Patch_CheckedChanged(object sender, EventArgs e)
         {
@@ -559,8 +558,8 @@ namespace FriishProduce
 
         private void Customize_CheckedChanged(object sender, EventArgs e)
         {
-            Banner.Enabled = customize.Checked;
-            next.Enabled = checkBannerPage();
+            Banner.Enabled = Customize.Checked;
+            Next.Enabled = checkBannerPage();
         }
 
         private void ImportBanner_CheckedChanged(object sender, EventArgs e) => baseList_banner.Enabled = ImportBanner.Checked;
@@ -592,7 +591,7 @@ namespace FriishProduce
                 }
                 finally
                 {
-                    next.Enabled = checkBannerPage();
+                    Next.Enabled = checkBannerPage();
                 }
             }
         }
@@ -601,7 +600,7 @@ namespace FriishProduce
         {
             tImg.Generate((TitleImage.Resize)Enum.ToObject(typeof(TitleImage.Resize), Image_Stretch.SelectedIndex));
             Image.Image = tImg.VCPic;
-            next.Enabled = checkBannerPage();
+            Next.Enabled = checkBannerPage();
         }
 
         private void Image_ModeIChanged(object sender, EventArgs e)
@@ -609,7 +608,7 @@ namespace FriishProduce
             tImg.InterpolationMode = (System.Drawing.Drawing2D.InterpolationMode)Enum.ToObject(typeof(System.Drawing.Drawing2D.InterpolationMode), Image_ModeI.SelectedIndex);
             tImg.Generate((TitleImage.Resize)Enum.ToObject(typeof(TitleImage.Resize), Image_Stretch.SelectedIndex));
             Image.Image = tImg.VCPic;
-            next.Enabled = checkBannerPage();
+            Next.Enabled = checkBannerPage();
         }
     }
 }

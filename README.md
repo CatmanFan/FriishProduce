@@ -19,6 +19,8 @@ This injector bypasses other third-party assets (such as Common-Key.bin, most of
 
 ### To-Do
 - [ ] Add option to leave banner images unedited
+- [ ] Fix aspect-ratio for title image in saveicon
+- [ ] Use blank saveicon template(s) in Resources
 - [ ] Add SEGA, TG-16, NeoGeo, C64
 - [ ] SEGA: VC ROM injection (file replacement)
 - [ ] SEGA: WTE/image generation & replacement
@@ -35,6 +37,7 @@ This program uses the following third-party components and apps:
 * **gbalzss** by Andre Perrot, with additional LZSS code by Haruhiko Okumura.
 * **WWCXTool** by alpha-0.
 * **HowardC's Tools** (particularly, VCbrlyt).
+* **[SimpleTranslationSystem](https://github.com/Eldemarkki/SimpleTranslationSystem)** by [Eldemarkki](https://github.com/Eldemarkki).
 
 I would also like to thank the following people:
 * **[SuperrSonic](https://github.com/SuperrSonic)** for reverse-engineering much of Wii software and official emulator code, and in particular, his [fork of RetroArch Wii](https://github.com/SuperrSonic/RA-SS).

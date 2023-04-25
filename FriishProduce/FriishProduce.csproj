@@ -38,6 +38,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -47,6 +48,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>Wiimote.ico</ApplicationIcon>
@@ -57,6 +59,7 @@
       <HintPath>.\libWiiSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -69,16 +72,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="classes\enums.cs" />
-    <Compile Include="classes\injectors\flash.cs" />
-    <Compile Include="classes\injectors\global.cs" />
-    <Compile Include="classes\injectors\n64.cs" />
-    <Compile Include="classes\injectors\nes.cs" />
-    <Compile Include="classes\injectors\snes.cs" />
-    <Compile Include="classes\paths.cs" />
-    <Compile Include="classes\titleImage.cs" />
-    <Compile Include="classes\u8.cs" />
-    <Compile Include="classes\xml.cs" />
+    <Compile Include="_classes\enums.cs" />
+    <Compile Include="_classes\injectors\flash.cs" />
+    <Compile Include="_classes\injectors\global.cs" />
+    <Compile Include="_classes\injectors\n64.cs" />
+    <Compile Include="_classes\injectors\nes.cs" />
+    <Compile Include="_classes\injectors\snes.cs" />
+    <Compile Include="_classes\localization\localization.cs" />
+    <Compile Include="_classes\paths.cs" />
+    <Compile Include="_classes\localization\SimpleTranslationSystem\Language.cs" />
+    <Compile Include="_classes\localization\SimpleTranslationSystem\Translation.cs" />
+    <Compile Include="_classes\localization\SimpleTranslationSystem\TranslationFileReader.cs" />
+    <Compile Include="_classes\localization\SimpleTranslationSystem\TranslationSystem.cs" />
+    <Compile Include="_classes\titleImage.cs" />
+    <Compile Include="_classes\u8.cs" />
+    <Compile Include="_classes\xml.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,15 +106,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Strings.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Main.fr.resx">
-      <DependentUpon>Main.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Settings.fr.resx">
-      <DependentUpon>Settings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Settings.resx">
       <DependentUpon>Settings.cs</DependentUpon>
@@ -121,7 +123,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Strings.fr.resx" />
     <EmbeddedResource Include="Strings.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Strings1.Designer.cs</LastGenOutput>
@@ -135,6 +136,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="langs\fr.csv" />
+    <None Include="langs\en.csv" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -161,8 +164,15 @@
     <None Include="Resources\wwcxtool.exe" />
     <None Include="Resources\romc.exe" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\images\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy /y "$(ProjectDir)database.xml" "$(TargetDir)bases\database.xml"</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>del "$(TargetDir)langs\" /F/Q
+xcopy "$(ProjectDir)langs\" "$(TargetDir)langs\" /E/C/I</PreBuildEvent>
   </PropertyGroup>
 </Project>

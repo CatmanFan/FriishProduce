@@ -31,58 +31,53 @@ namespace FriishProduce
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Settings));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.ok = new System.Windows.Forms.Button();
-            this.cancel = new System.Windows.Forms.Button();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.label1 = new System.Windows.Forms.Label();
+            this.OK = new System.Windows.Forms.Button();
+            this.Cancel = new System.Windows.Forms.Button();
+            this.Application = new System.Windows.Forms.TabPage();
             this.language = new System.Windows.Forms.ComboBox();
+            this.label1_s = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.panel1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.Application.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.panel1.Controls.Add(this.ok);
-            this.panel1.Controls.Add(this.cancel);
+            this.panel1.Controls.Add(this.OK);
+            this.panel1.Controls.Add(this.Cancel);
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
             // 
-            // ok
+            // OK
             // 
-            this.ok.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.ok.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.ok.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            resources.ApplyResources(this.ok, "ok");
-            this.ok.Name = "ok";
-            this.ok.UseVisualStyleBackColor = true;
-            this.ok.Click += new System.EventHandler(this.OK_Click);
+            this.OK.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.OK.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.OK.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            resources.ApplyResources(this.OK, "OK");
+            this.OK.Name = "OK";
+            this.OK.UseVisualStyleBackColor = true;
+            this.OK.Click += new System.EventHandler(this.OK_Click);
             // 
-            // cancel
+            // Cancel
             // 
-            this.cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancel.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.cancel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.cancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            resources.ApplyResources(this.cancel, "cancel");
-            this.cancel.Name = "cancel";
-            this.cancel.UseVisualStyleBackColor = true;
+            this.Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.Cancel.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.Cancel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.Cancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            resources.ApplyResources(this.Cancel, "Cancel");
+            this.Cancel.Name = "Cancel";
+            this.Cancel.UseVisualStyleBackColor = true;
             // 
-            // tabPage1
+            // Application
             // 
-            this.tabPage1.BackColor = System.Drawing.SystemColors.Window;
-            this.tabPage1.Controls.Add(this.language);
-            this.tabPage1.Controls.Add(this.label1);
-            this.tabPage1.ForeColor = System.Drawing.SystemColors.ControlText;
-            resources.ApplyResources(this.tabPage1, "tabPage1");
-            this.tabPage1.Name = "tabPage1";
-            // 
-            // label1
-            // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
+            this.Application.BackColor = System.Drawing.SystemColors.Window;
+            this.Application.Controls.Add(this.language);
+            this.Application.Controls.Add(this.label1_s);
+            this.Application.ForeColor = System.Drawing.SystemColors.ControlText;
+            resources.ApplyResources(this.Application, "Application");
+            this.Application.Name = "Application";
             // 
             // language
             // 
@@ -91,20 +86,25 @@ namespace FriishProduce
             resources.ApplyResources(this.language, "language");
             this.language.Name = "language";
             // 
+            // label1_s
+            // 
+            resources.ApplyResources(this.label1_s, "label1_s");
+            this.label1_s.Name = "label1_s";
+            // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.Application);
             resources.ApplyResources(this.tabControl1, "tabControl1");
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             // 
             // Settings
             // 
-            this.AcceptButton = this.ok;
+            this.AcceptButton = this.OK;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
-            this.CancelButton = this.cancel;
+            this.CancelButton = this.Cancel;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.tabControl1);
             this.ForeColor = System.Drawing.Color.White;
@@ -116,8 +116,8 @@ namespace FriishProduce
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.panel1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
+            this.Application.ResumeLayout(false);
+            this.Application.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -126,11 +126,11 @@ namespace FriishProduce
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button ok;
-        private System.Windows.Forms.Button cancel;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.Button OK;
+        private System.Windows.Forms.Button Cancel;
+        private System.Windows.Forms.TabPage Application;
         private System.Windows.Forms.ComboBox language;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label1_s;
         private System.Windows.Forms.TabControl tabControl1;
     }
 }

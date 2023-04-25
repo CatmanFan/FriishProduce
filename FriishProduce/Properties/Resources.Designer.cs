@@ -91,6 +91,29 @@ namespace FriishProduce.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to id						⸽lang
+        ///------------------------⸽------------------------
+        ///DEFAULT SETTING         ⸽USE AS TEMPLATE
+        ///AppTitle                ⸽FriishProduce
+        ///Settings                ⸽Settings
+        ///Settings.Text           ⸽⚙
+        ///Console.Items           ⸽NES/Famicom
+        ///Console.Items1          ⸽SNES/Super Famicom
+        ///Console.Items2          ⸽Nintendo 64
+        ///Error                   ⸽Error
+        ///Halt                    ⸽Halt
+        ///OK.Text                 ⸽&amp;OK
+        ///Cancel.Text             ⸽&amp;Cancel
+        ///Application.Text        ⸽Application
+        ///label1_s.Text   [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string English {
+            get {
+                return ResourceManager.GetString("English", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         internal static byte[] GBALZSS {

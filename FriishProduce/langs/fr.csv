@@ -1,0 +1,77 @@
+﻿id                          ⸽lang
+----------------------------⸽----------------------------
+AppTitle                    ⸽FriishProduce
+Settings                    ⸽Paramètres
+Error                       ⸽Erreur
+Halt                        ⸽Arrêt
+OK.Text                     ⸽&OK
+Cancel.Text                 ⸽&Annuler
+Application.Text            ⸽Logiciel
+label1_s.Text               ⸽Langue :
+SystemDefault               ⸽Système
+Message_DeleteWAD           ⸽Voulez-vous supprimer cette chaîne ?
+Message_Restart             ⸽Quelques modifications que vous avez effectués nécessitent un redémarrage du logiciel avant de prendre effet.
+Message_ExportFinished      ⸽Injection effectué.
+Message_ExportError         ⸽Une erreur a été rencontré pendant l'injection.\nMessage : {0}
+Error_ROMSize               ⸽La ROM que vous avez choisi est trop grande. Veuillez specifier une autre chaîne.
+Error_PatchFailed           ⸽Échec de l'application du patch. Vous pouvez réessayer avec une version patchée manuellement sans activer l'auto-patch de ce logiciel.\nLa ROM non patchée sera utilisée.
+Error_FlipsMissing          ⸽L'application Floating IPS n'a pas été trouvée dans votre dossier d'applications.\nLa ROM non patchée sera utilisée.
+Error_BannerBrlyt           ⸽Échec de modification du fichier banner.brlyt. Réessayer avec une configuration propre de HowardCTools.
+Error_EmulatorCompression   ⸽Échec de (dé)compression de l'émulateur intégré.
+Error_FailedROMSearch       ⸽Échec de recherche d'une ROM injectable.
+Back.Text                   ⸽< &Précédent
+Next.Text                   ⸽&Suivant >
+Save.Text                   ⸽&Sauvegarder
+OpenROM.Text                ⸽Parcourir une ROM ...
+OpenSWF.Text                ⸽Parcourir un *.swf ...
+BrowseImage.Filter          ⸽Tous les formats sont pris en charge (*.bmp, *.jpg, *.jpeg, *.png)|*.bmp;*.jpg;*.jpeg;*.png|  Bitmap Windows (*.bmp)|*.bmp|  JPEG (*.jpg, *.jpeg)|*.jpg;*.jpeg|  PNG (*.png)|*.png
+BrowsePatch.Filter          ⸽Fichiers patch (*.bps, *.ips)|*.bps;*.ips
+BrowseWAD.Filter            ⸽Chaînes Wii (*.wad)|*.wad
+BrowseROM_NES               ⸽Fichiers ROM de Nintendo (*.nes)|*.nes
+BrowseROM_SNES              ⸽Fichiers ROM de Super Nintendo (*.sfc, *.smc)|*.sfc;*.smc
+BrowseROM_N64               ⸽Fichiers ROM de Nintendo 64 (*.n64, *.v64, *.z64)|*.n64;*.v64;*.z64
+BrowseSWF                   ⸽Fichiers Adobe Flash (*.swf)|*.swf
+BrowseAll                   ⸽|Tous les fichiers (*.*)|*.*
+Customize.Text              ⸽Personnaliser
+DisableEmanual.Text         ⸽Retirer l'option « Mode d'emploi » du Menu HOME
+ImportBanner.Text           ⸽Importer un autre banner à modifier :
+label1.Text                 ⸽Bienvenue dans l'application FriishProduce ({0}).\n\nPour commencer, veuillez choisir une plateforme cible :
+label2.Text                 ⸽Choisir une ROM et une chaîne à utiliser.
+label3.Text                 ⸽Aucun fichier sélectionné
+label4.Text                 ⸽Spécifier d'autres réglages de contenu ici.
+label5.Text                 ⸽Vous pouvez spécifier une image et un banner personnalisé pour votre chaîne injectée, qui s'affiche dans le Menu Wii et sa Gestion des données, à moins que vous décidiez de passer cette étape.
+label7.Text                 ⸽Code d'identification :
+label8.Text                 ⸽Titre de la chaîne :
+label9.Text                 ⸽Titre complet :
+label10.Text                ⸽Année de publication :
+label11.Text                ⸽Joueurs :
+label12.Text                ⸽Titre des données de sauvegarde :
+label13.Text                ⸽Redimensionnement :
+label14.Text                ⸽Méthode d'interpolation :
+Image_ModeI.Items           ⸽Default
+Image_ModeI.Items1          ⸽Low
+Image_ModeI.Items2          ⸽High
+Image_ModeI.Items3          ⸽Bicubic
+Image_ModeI.Items4          ⸽Bilinear
+Image_ModeI.Items5          ⸽Nearest Neighbor
+Image_ModeI.Items6          ⸽High-Quality Bicubic
+Image_ModeI.Items7          ⸽High-Quality Linear
+Image_Stretch.Items         ⸽Étirer
+Image_Stretch.Items1        ⸽Conserver les proportions
+Patch.Text                  ⸽Auto-patcher avec un fichier *.ips ou *.bps
+RegionFree.Text             ⸽Dézoner
+N64_FixBrightness.Text      ⸽Maximum luminosité
+N64_8MBRAM.Text             ⸽Extension de mémoire à 8 Mo de RAM
+N64_AllocateROM.Text        ⸽Allouer 32 Mo pour la ROM
+NES_Palette.Text            ⸽Palette :
+NES_PaletteList.Items       ⸽Par défaut
+NES_PaletteList.Items1      ⸽Sans filtre sombre
+NES_PaletteList.Items2      ⸽Console virtuelle (Nintendo 3DS)
+NES_PaletteList.Items3      ⸽NES Classic Mini (FBX)
+NES_PaletteList.Items4      ⸽NES Remix U
+NES_PaletteList.Items5      ⸽Nestopia YUV
+NES_PaletteList.Items6      ⸽Nestopia RGB
+NES_PaletteList.Items7      ⸽FCEUX
+NES_PaletteList.Items8      ⸽Wavebeam (FBX)
+NES_PaletteList.Items9      ⸽Composite Direct (FBX)
+NES_PaletteList_Author      ⸽Auteur(e) : {0}

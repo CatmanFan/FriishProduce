@@ -2,31 +2,44 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
+using static FriishProduce.Properties.Settings;
 
 namespace FriishProduce
 {
     public partial class Settings : Form
     {
-        readonly Dictionary<string, string> langs = new Languages().Get();
+        Localization lang = Program.lang;
+        List<string> langFiles = new List<string>();
+        // readonly Dictionary<string, string> langs = new Languages().Get();
 
         public Settings()
         {
-            ComponentResourceManager mang = new ComponentResourceManager(typeof(Main));
-            var lang = Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName;
-
-            foreach (Control child in Controls.OfType<Panel>())
-                mang.ApplyResources(child, child.Name, new CultureInfo(lang));
-
             InitializeComponent();
+            lang.ChangeFormLanguage(this);
 
             // -----------------------------
-            foreach (var langName in langs.Keys)
-                language.Items.Add(langName.ToString());
-            foreach (KeyValuePair<string, string> listing in langs)
-                if (listing.Value == Properties.Settings.Default.language) language.SelectedItem = listing.Key;
+            /* foreach (var langName in langs.Keys)
+                language.Items.Add(langName.ToString()); */
+
+            // Add system default
+            langFiles.Add("sys");
+            language.Items.Add("[" + lang.Get("SystemDefault") + "]");
+
+            // Add all languages
+            foreach (string file in Directory.GetFiles(Environment.CurrentDirectory + $"\\langs\\"))
+                if (lang.IsConvertable(file))
+                {
+                    language.Items.Add(new CultureInfo(Path.GetFileNameWithoutExtension(file)).NativeName);
+                    langFiles.Add(Path.GetFileNameWithoutExtension(file));
+                }
+
+            foreach (var name in langFiles)
+                if (name == Default.language) language.SelectedIndex = langFiles.IndexOf(name);
+            if (Default.language == "sys") language.SelectedIndex = 0;
             // -----------------------------
         }
 
@@ -34,17 +47,19 @@ namespace FriishProduce
         {
             bool showRestart = false;
 
-            foreach (KeyValuePair<string, string> listing in langs)
-                if (listing.Key == language.SelectedItem.ToString())
+            for (int i = 0; i < langFiles.Count; i++)
+            {
+                if (i == language.SelectedIndex)
                 {
-                    showRestart = listing.Value != Properties.Settings.Default.language;
-                    Properties.Settings.Default.language = listing.Value;
+                    showRestart = langFiles[i] != Default.language;
+                    Default.language = langFiles[i];
                     break;
                 }
+            }
 
-            if (showRestart) MessageBox.Show(Strings.restart, Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (showRestart) MessageBox.Show(lang.Get("Message_Restart"), Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            Properties.Settings.Default.Save();
+            Default.Save();
             DialogResult = DialogResult.OK;
         }
     }

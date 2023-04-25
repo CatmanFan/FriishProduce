@@ -126,15 +126,13 @@
     <value>20, 5</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>186, 45</value>
+    <value>39, 15</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
-    <value>Welcome to FriishProduce {0}.
-
-Please select your target platform:</value>
+    <value>page1</value>
   </data>
   <data name="&gt;&gt;label1.Name" xml:space="preserve">
     <value>label1</value>
@@ -149,124 +147,124 @@ Please select your target platform:</value>
     <value>1</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="settings.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+  <data name="Settings.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
-  <data name="settings.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="Settings.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 15pt</value>
   </data>
-  <data name="settings.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="Settings.Location" type="System.Drawing.Point, System.Drawing">
     <value>23, 12</value>
   </data>
-  <data name="settings.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="Settings.Size" type="System.Drawing.Size, System.Drawing">
     <value>38, 25</value>
   </data>
-  <data name="settings.TabIndex" type="System.Int32, mscorlib">
+  <data name="Settings.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="settings.Text" xml:space="preserve">
+  <data name="Settings.Text" xml:space="preserve">
     <value>⚙</value>
   </data>
-  <data name="&gt;&gt;settings.Name" xml:space="preserve">
-    <value>settings</value>
+  <data name="&gt;&gt;Settings.Name" xml:space="preserve">
+    <value>Settings</value>
   </data>
-  <data name="&gt;&gt;settings.Type" xml:space="preserve">
+  <data name="&gt;&gt;Settings.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;settings.Parent" xml:space="preserve">
+  <data name="&gt;&gt;Settings.Parent" xml:space="preserve">
     <value>panel1</value>
   </data>
-  <data name="&gt;&gt;settings.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;Settings.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="back.Enabled" type="System.Boolean, mscorlib">
+  <data name="Back.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="back.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+  <data name="Back.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>System</value>
   </data>
-  <data name="back.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="Back.Location" type="System.Drawing.Point, System.Drawing">
     <value>458, 12</value>
   </data>
-  <data name="back.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="Back.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 25</value>
   </data>
-  <data name="back.TabIndex" type="System.Int32, mscorlib">
+  <data name="Back.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="back.Text" xml:space="preserve">
-    <value>&lt; &amp;Back</value>
-  </data>
-  <data name="&gt;&gt;back.Name" xml:space="preserve">
+  <data name="Back.Text" xml:space="preserve">
     <value>back</value>
   </data>
-  <data name="&gt;&gt;back.Type" xml:space="preserve">
+  <data name="&gt;&gt;Back.Name" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="&gt;&gt;Back.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;back.Parent" xml:space="preserve">
+  <data name="&gt;&gt;Back.Parent" xml:space="preserve">
     <value>panel1</value>
   </data>
-  <data name="&gt;&gt;back.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;Back.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="finish.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+  <data name="Save.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>System</value>
   </data>
-  <data name="finish.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="Save.Location" type="System.Drawing.Point, System.Drawing">
     <value>564, 12</value>
   </data>
-  <data name="finish.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="Save.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 25</value>
   </data>
-  <data name="finish.TabIndex" type="System.Int32, mscorlib">
+  <data name="Save.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="finish.Text" xml:space="preserve">
-    <value>&amp;Finish</value>
+  <data name="Save.Text" xml:space="preserve">
+    <value>save</value>
   </data>
-  <data name="finish.Visible" type="System.Boolean, mscorlib">
+  <data name="Save.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="&gt;&gt;finish.Name" xml:space="preserve">
-    <value>finish</value>
+  <data name="&gt;&gt;Save.Name" xml:space="preserve">
+    <value>Save</value>
   </data>
-  <data name="&gt;&gt;finish.Type" xml:space="preserve">
+  <data name="&gt;&gt;Save.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;finish.Parent" xml:space="preserve">
+  <data name="&gt;&gt;Save.Parent" xml:space="preserve">
     <value>panel1</value>
   </data>
-  <data name="&gt;&gt;finish.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;Save.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="next.Enabled" type="System.Boolean, mscorlib">
+  <data name="Next.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="next.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+  <data name="Next.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>System</value>
   </data>
-  <data name="next.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="Next.Location" type="System.Drawing.Point, System.Drawing">
     <value>564, 12</value>
   </data>
-  <data name="next.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="Next.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 25</value>
   </data>
-  <data name="next.TabIndex" type="System.Int32, mscorlib">
+  <data name="Next.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="next.Text" xml:space="preserve">
-    <value>&amp;Next &gt;</value>
-  </data>
-  <data name="&gt;&gt;next.Name" xml:space="preserve">
+  <data name="Next.Text" xml:space="preserve">
     <value>next</value>
   </data>
-  <data name="&gt;&gt;next.Type" xml:space="preserve">
+  <data name="&gt;&gt;Next.Name" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="&gt;&gt;Next.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;next.Parent" xml:space="preserve">
+  <data name="&gt;&gt;Next.Parent" xml:space="preserve">
     <value>panel1</value>
   </data>
-  <data name="&gt;&gt;next.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;Next.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
   <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
@@ -293,37 +291,37 @@ Please select your target platform:</value>
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="console.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+  <data name="Console.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>System</value>
   </data>
-  <data name="console.Items" xml:space="preserve">
+  <data name="Console.Items" xml:space="preserve">
     <value>NES/Famicom</value>
   </data>
-  <data name="console.Items1" xml:space="preserve">
+  <data name="Console.Items1" xml:space="preserve">
     <value>SNES/Super Famicom</value>
   </data>
-  <data name="console.Items2" xml:space="preserve">
+  <data name="Console.Items2" xml:space="preserve">
     <value>Nintendo 64</value>
   </data>
-  <data name="console.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="Console.Location" type="System.Drawing.Point, System.Drawing">
     <value>23, 57</value>
   </data>
-  <data name="console.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="Console.Size" type="System.Drawing.Size, System.Drawing">
     <value>641, 23</value>
   </data>
-  <data name="console.TabIndex" type="System.Int32, mscorlib">
+  <data name="Console.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;console.Name" xml:space="preserve">
-    <value>console</value>
+  <data name="&gt;&gt;Console.Name" xml:space="preserve">
+    <value>Console</value>
   </data>
-  <data name="&gt;&gt;console.Type" xml:space="preserve">
+  <data name="&gt;&gt;Console.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;console.Parent" xml:space="preserve">
+  <data name="&gt;&gt;Console.Parent" xml:space="preserve">
     <value>page1</value>
   </data>
-  <data name="&gt;&gt;console.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;Console.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="page1.Location" type="System.Drawing.Point, System.Drawing">
@@ -345,7 +343,7 @@ Please select your target platform:</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;page1.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>1</value>
   </data>
   <data name="Patch.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -354,13 +352,13 @@ Please select your target platform:</value>
     <value>23, 85</value>
   </data>
   <data name="Patch.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 19</value>
+    <value>56, 19</value>
   </data>
   <data name="Patch.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
   <data name="Patch.Text" xml:space="preserve">
-    <value>Patch ROM before injection</value>
+    <value>patch</value>
   </data>
   <data name="&gt;&gt;Patch.Name" xml:space="preserve">
     <value>Patch</value>
@@ -470,6 +468,9 @@ Please select your target platform:</value>
   <data name="&gt;&gt;AddBase.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="baseList.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="baseList.Location" type="System.Drawing.Point, System.Drawing">
     <value>23, 115</value>
   </data>
@@ -491,31 +492,31 @@ Please select your target platform:</value>
   <data name="&gt;&gt;baseList.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="openROM.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+  <data name="OpenROM.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>System</value>
   </data>
-  <data name="openROM.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="OpenROM.Location" type="System.Drawing.Point, System.Drawing">
     <value>22, 56</value>
   </data>
-  <data name="openROM.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="OpenROM.Size" type="System.Drawing.Size, System.Drawing">
     <value>150, 25</value>
   </data>
-  <data name="openROM.TabIndex" type="System.Int32, mscorlib">
+  <data name="OpenROM.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="openROM.Text" xml:space="preserve">
-    <value>Open ROM...</value>
+  <data name="OpenROM.Text" xml:space="preserve">
+    <value>open</value>
   </data>
-  <data name="&gt;&gt;openROM.Name" xml:space="preserve">
-    <value>openROM</value>
+  <data name="&gt;&gt;OpenROM.Name" xml:space="preserve">
+    <value>OpenROM</value>
   </data>
-  <data name="&gt;&gt;openROM.Type" xml:space="preserve">
+  <data name="&gt;&gt;OpenROM.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;openROM.Parent" xml:space="preserve">
+  <data name="&gt;&gt;OpenROM.Parent" xml:space="preserve">
     <value>page2</value>
   </data>
-  <data name="&gt;&gt;openROM.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;OpenROM.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
@@ -525,13 +526,13 @@ Please select your target platform:</value>
     <value>20, 5</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>212, 15</value>
+    <value>39, 15</value>
   </data>
   <data name="label2.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
-    <value>Please choose a ROM and a base WAD.</value>
+    <value>page2</value>
   </data>
   <data name="&gt;&gt;label2.Name" xml:space="preserve">
     <value>label2</value>
@@ -567,7 +568,7 @@ Please select your target platform:</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;page2.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <metadata name="BrowseROM.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -576,7 +577,7 @@ Please select your target platform:</value>
     <value>157, 17</value>
   </metadata>
   <data name="BrowseWAD.Filter" xml:space="preserve">
-    <value>Wii Channels (*.wad)|*.wad</value>
+    <value>wad|*.wad</value>
   </data>
   <metadata name="SaveWAD.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>276, 17</value>
@@ -594,7 +595,7 @@ Please select your target platform:</value>
     <value>0</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
-    <value>You can also customize the banner and the image displayed on the Wii Menu and in Data Management, unless you choose to skip this step.</value>
+    <value>page3</value>
   </data>
   <data name="&gt;&gt;label5.Name" xml:space="preserve">
     <value>label5</value>
@@ -618,13 +619,13 @@ Please select your target platform:</value>
     <value>436, 208</value>
   </data>
   <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
-    <value>112, 15</value>
+    <value>38, 15</value>
   </data>
   <data name="label14.TabIndex" type="System.Int32, mscorlib">
     <value>24</value>
   </data>
   <data name="label14.Text" xml:space="preserve">
-    <value>Interpolation mode:</value>
+    <value>interp</value>
   </data>
   <data name="&gt;&gt;label14.Name" xml:space="preserve">
     <value>label14</value>
@@ -642,28 +643,7 @@ Please select your target platform:</value>
     <value>System</value>
   </data>
   <data name="Image_ModeI.Items" xml:space="preserve">
-    <value>Default</value>
-  </data>
-  <data name="Image_ModeI.Items1" xml:space="preserve">
-    <value>Low</value>
-  </data>
-  <data name="Image_ModeI.Items2" xml:space="preserve">
-    <value>High</value>
-  </data>
-  <data name="Image_ModeI.Items3" xml:space="preserve">
-    <value>Bicubic</value>
-  </data>
-  <data name="Image_ModeI.Items4" xml:space="preserve">
-    <value>Bilinear</value>
-  </data>
-  <data name="Image_ModeI.Items5" xml:space="preserve">
-    <value>Nearest Neighbor</value>
-  </data>
-  <data name="Image_ModeI.Items6" xml:space="preserve">
-    <value>High-Quality Bicubic</value>
-  </data>
-  <data name="Image_ModeI.Items7" xml:space="preserve">
-    <value>High-Quality Linear</value>
+    <value>null</value>
   </data>
   <data name="Image_ModeI.Location" type="System.Drawing.Point, System.Drawing">
     <value>439, 227</value>
@@ -696,13 +676,13 @@ Please select your target platform:</value>
     <value>436, 161</value>
   </data>
   <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>87, 15</value>
+    <value>36, 15</value>
   </data>
   <data name="label13.TabIndex" type="System.Int32, mscorlib">
     <value>22</value>
   </data>
   <data name="label13.Text" xml:space="preserve">
-    <value>Resizing mode:</value>
+    <value>resize</value>
   </data>
   <data name="&gt;&gt;label13.Name" xml:space="preserve">
     <value>label13</value>
@@ -720,10 +700,7 @@ Please select your target platform:</value>
     <value>System</value>
   </data>
   <data name="Image_Stretch.Items" xml:space="preserve">
-    <value>Stretch image</value>
-  </data>
-  <data name="Image_Stretch.Items1" xml:space="preserve">
-    <value>Fit to width/height</value>
+    <value>null</value>
   </data>
   <data name="Image_Stretch.Location" type="System.Drawing.Point, System.Drawing">
     <value>439, 180</value>
@@ -786,13 +763,13 @@ Please select your target platform:</value>
     <value>202, 77</value>
   </data>
   <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 15</value>
+    <value>53, 15</value>
   </data>
   <data name="label12.TabIndex" type="System.Int32, mscorlib">
     <value>19</value>
   </data>
   <data name="label12.Text" xml:space="preserve">
-    <value>Savedata title:</value>
+    <value>savedata</value>
   </data>
   <data name="&gt;&gt;label12.Name" xml:space="preserve">
     <value>label12</value>
@@ -843,13 +820,13 @@ Please select your target platform:</value>
     <value>13, 20</value>
   </data>
   <data name="ImportBanner.Size" type="System.Drawing.Size, System.Drawing">
-    <value>208, 19</value>
+    <value>62, 19</value>
   </data>
   <data name="ImportBanner.TabIndex" type="System.Int32, mscorlib">
     <value>17</value>
   </data>
   <data name="ImportBanner.Text" xml:space="preserve">
-    <value>Edit using banner from other base:</value>
+    <value>import</value>
   </data>
   <data name="&gt;&gt;ImportBanner.Name" xml:space="preserve">
     <value>ImportBanner</value>
@@ -927,7 +904,7 @@ Please select your target platform:</value>
     <value>14</value>
   </data>
   <data name="label11.Text" xml:space="preserve">
-    <value>Players:</value>
+    <value>players</value>
   </data>
   <data name="label11.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>TopRight</value>
@@ -972,13 +949,13 @@ Please select your target platform:</value>
     <value>9, 208</value>
   </data>
   <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 15</value>
+    <value>29, 15</value>
   </data>
   <data name="label10.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
   <data name="label10.Text" xml:space="preserve">
-    <value>Release year:</value>
+    <value>year</value>
   </data>
   <data name="&gt;&gt;label10.Name" xml:space="preserve">
     <value>label10</value>
@@ -1029,13 +1006,13 @@ Please select your target platform:</value>
     <value>10, 144</value>
   </data>
   <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>70, 15</value>
+    <value>44, 15</value>
   </data>
   <data name="label9.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
   <data name="label9.Text" xml:space="preserve">
-    <value>Banner title:</value>
+    <value>banner</value>
   </data>
   <data name="&gt;&gt;label9.Name" xml:space="preserve">
     <value>label9</value>
@@ -1056,13 +1033,13 @@ Please select your target platform:</value>
     <value>10, 77</value>
   </data>
   <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>77, 15</value>
+    <value>49, 15</value>
   </data>
   <data name="label8.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
   </data>
   <data name="label8.Text" xml:space="preserve">
-    <value>Channel title:</value>
+    <value>channel</value>
   </data>
   <data name="&gt;&gt;label8.Name" xml:space="preserve">
     <value>label8</value>
@@ -1130,34 +1107,34 @@ Please select your target platform:</value>
   <data name="&gt;&gt;Banner.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="customize.AutoSize" type="System.Boolean, mscorlib">
+  <data name="Customize.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="customize.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="Customize.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="customize.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="Customize.Location" type="System.Drawing.Point, System.Drawing">
     <value>23, 40</value>
   </data>
-  <data name="customize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>82, 19</value>
+  <data name="Customize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 19</value>
   </data>
-  <data name="customize.TabIndex" type="System.Int32, mscorlib">
+  <data name="Customize.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="customize.Text" xml:space="preserve">
+  <data name="Customize.Text" xml:space="preserve">
+    <value>custom</value>
+  </data>
+  <data name="&gt;&gt;Customize.Name" xml:space="preserve">
     <value>Customize</value>
   </data>
-  <data name="&gt;&gt;customize.Name" xml:space="preserve">
-    <value>customize</value>
-  </data>
-  <data name="&gt;&gt;customize.Type" xml:space="preserve">
+  <data name="&gt;&gt;Customize.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;customize.Parent" xml:space="preserve">
+  <data name="&gt;&gt;Customize.Parent" xml:space="preserve">
     <value>page3</value>
   </data>
-  <data name="&gt;&gt;customize.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;Customize.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <data name="page3.Location" type="System.Drawing.Point, System.Drawing">
@@ -1182,7 +1159,7 @@ Please select your target platform:</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;page3.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="RegionFree.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
@@ -1197,7 +1174,7 @@ Please select your target platform:</value>
     <value>5</value>
   </data>
   <data name="RegionFree.Text" xml:space="preserve">
-    <value>Region free</value>
+    <value>regionfree</value>
   </data>
   <data name="RegionFree.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
@@ -1251,7 +1228,7 @@ Please select your target platform:</value>
     <value>3</value>
   </data>
   <data name="label7.Text" xml:space="preserve">
-    <value>Title ID:</value>
+    <value>tid</value>
   </data>
   <data name="label7.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
@@ -1268,31 +1245,31 @@ Please select your target platform:</value>
   <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="disableEmanual.AutoSize" type="System.Boolean, mscorlib">
+  <data name="DisableEmanual.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="disableEmanual.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="DisableEmanual.Location" type="System.Drawing.Point, System.Drawing">
     <value>23, 40</value>
   </data>
-  <data name="disableEmanual.Size" type="System.Drawing.Size, System.Drawing">
-    <value>259, 19</value>
+  <data name="DisableEmanual.Size" type="System.Drawing.Size, System.Drawing">
+    <value>91, 19</value>
   </data>
-  <data name="disableEmanual.TabIndex" type="System.Int32, mscorlib">
+  <data name="DisableEmanual.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="disableEmanual.Text" xml:space="preserve">
-    <value>Remove "Operations Guide" in HOME Menu</value>
+  <data name="DisableEmanual.Text" xml:space="preserve">
+    <value>no_emanual</value>
   </data>
-  <data name="&gt;&gt;disableEmanual.Name" xml:space="preserve">
-    <value>disableEmanual</value>
+  <data name="&gt;&gt;DisableEmanual.Name" xml:space="preserve">
+    <value>DisableEmanual</value>
   </data>
-  <data name="&gt;&gt;disableEmanual.Type" xml:space="preserve">
+  <data name="&gt;&gt;DisableEmanual.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;disableEmanual.Parent" xml:space="preserve">
+  <data name="&gt;&gt;DisableEmanual.Parent" xml:space="preserve">
     <value>page4</value>
   </data>
-  <data name="&gt;&gt;disableEmanual.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;DisableEmanual.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
   <data name="label4.AutoSize" type="System.Boolean, mscorlib">
@@ -1305,13 +1282,13 @@ Please select your target platform:</value>
     <value>20, 5</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>217, 15</value>
+    <value>39, 15</value>
   </data>
   <data name="label4.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
-    <value>Set any additional content options here.</value>
+    <value>page4</value>
   </data>
   <data name="&gt;&gt;label4.Name" xml:space="preserve">
     <value>label4</value>
@@ -1325,82 +1302,58 @@ Please select your target platform:</value>
   <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="NES_Palette.Items" xml:space="preserve">
-    <value>Default</value>
+  <data name="NES_PaletteList.Items" xml:space="preserve">
+    <value>null</value>
   </data>
-  <data name="NES_Palette.Items1" xml:space="preserve">
-    <value>Remove dark filter</value>
-  </data>
-  <data name="NES_Palette.Items2" xml:space="preserve">
-    <value>3DS Virtual Console</value>
-  </data>
-  <data name="NES_Palette.Items3" xml:space="preserve">
-    <value>NES Classic Mini (FBX)</value>
-  </data>
-  <data name="NES_Palette.Items4" xml:space="preserve">
-    <value>NES Remix U</value>
-  </data>
-  <data name="NES_Palette.Items5" xml:space="preserve">
-    <value>Nestopia YUV</value>
-  </data>
-  <data name="NES_Palette.Items6" xml:space="preserve">
-    <value>Nestopia RGB</value>
-  </data>
-  <data name="NES_Palette.Items7" xml:space="preserve">
-    <value>FCEUX</value>
-  </data>
-  <data name="NES_Palette.Items8" xml:space="preserve">
-    <value>Wavebeam (FBX)</value>
-  </data>
-  <data name="NES_Palette.Items9" xml:space="preserve">
-    <value>Composite Direct (FBX)</value>
-  </data>
-  <data name="NES_Palette.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="NES_PaletteList.Location" type="System.Drawing.Point, System.Drawing">
     <value>61, 10</value>
   </data>
-  <data name="NES_Palette.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="NES_PaletteList.Size" type="System.Drawing.Size, System.Drawing">
     <value>568, 23</value>
   </data>
-  <data name="NES_Palette.TabIndex" type="System.Int32, mscorlib">
+  <data name="NES_PaletteList.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
+  </data>
+  <data name="&gt;&gt;NES_PaletteList.Name" xml:space="preserve">
+    <value>NES_PaletteList</value>
+  </data>
+  <data name="&gt;&gt;NES_PaletteList.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;NES_PaletteList.Parent" xml:space="preserve">
+    <value>Options_NES</value>
+  </data>
+  <data name="&gt;&gt;NES_PaletteList.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="NES_Palette.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="NES_Palette.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="NES_Palette.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 13</value>
+  </data>
+  <data name="NES_Palette.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 15</value>
+  </data>
+  <data name="NES_Palette.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="NES_Palette.Text" xml:space="preserve">
+    <value>nes_palette</value>
   </data>
   <data name="&gt;&gt;NES_Palette.Name" xml:space="preserve">
     <value>NES_Palette</value>
   </data>
   <data name="&gt;&gt;NES_Palette.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;NES_Palette.Parent" xml:space="preserve">
     <value>Options_NES</value>
   </data>
   <data name="&gt;&gt;NES_Palette.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="label6.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 13</value>
-  </data>
-  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 15</value>
-  </data>
-  <data name="label6.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="label6.Text" xml:space="preserve">
-    <value>Palette:</value>
-  </data>
-  <data name="&gt;&gt;label6.Name" xml:space="preserve">
-    <value>label6</value>
-  </data>
-  <data name="&gt;&gt;label6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
-    <value>Options_NES</value>
-  </data>
-  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="Options_NES.Location" type="System.Drawing.Point, System.Drawing">
@@ -1440,13 +1393,13 @@ Please select your target platform:</value>
     <value>13, 60</value>
   </data>
   <data name="N64_AllocateROM.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 19</value>
+    <value>121, 19</value>
   </data>
   <data name="N64_AllocateROM.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
   <data name="N64_AllocateROM.Text" xml:space="preserve">
-    <value>Allocate 32MB for ROM</value>
+    <value>n64_allocate32mb</value>
   </data>
   <data name="&gt;&gt;N64_AllocateROM.Name" xml:space="preserve">
     <value>N64_AllocateROM</value>
@@ -1470,13 +1423,13 @@ Please select your target platform:</value>
     <value>13, 36</value>
   </data>
   <data name="N64_8MBRAM.Size" type="System.Drawing.Size, System.Drawing">
-    <value>139, 19</value>
+    <value>95, 19</value>
   </data>
   <data name="N64_8MBRAM.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
   <data name="N64_8MBRAM.Text" xml:space="preserve">
-    <value>Extended RAM (8MB)</value>
+    <value>n64_8mbram</value>
   </data>
   <data name="&gt;&gt;N64_8MBRAM.Name" xml:space="preserve">
     <value>N64_8MBRAM</value>
@@ -1500,13 +1453,13 @@ Please select your target platform:</value>
     <value>13, 12</value>
   </data>
   <data name="N64_FixBrightness.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 19</value>
+    <value>105, 19</value>
   </data>
   <data name="N64_FixBrightness.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="N64_FixBrightness.Text" xml:space="preserve">
-    <value>Fix brightness</value>
+    <value>n64_brightness</value>
   </data>
   <data name="&gt;&gt;N64_FixBrightness.Name" xml:space="preserve">
     <value>N64_FixBrightness</value>
@@ -1569,7 +1522,7 @@ Please select your target platform:</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;page4.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <metadata name="ToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>381, 17</value>
@@ -1578,13 +1531,13 @@ Please select your target platform:</value>
     <value>17, 41</value>
   </metadata>
   <data name="BrowsePatch.Filter" xml:space="preserve">
-    <value>Patch files (*.bps, *.ips)|*.bps;*.ips</value>
+    <value>patch|*.bps;*.ips</value>
   </data>
   <metadata name="BrowseImage.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>157, 41</value>
   </metadata>
   <data name="BrowseImage.Filter" xml:space="preserve">
-    <value>Images (*.bmp, *.jpg, *.jpeg, *.png)|*.bmp;*.jpg;*.jpeg;*.png|  Bitmap (*.bmp)|*.bmp|  JPEG (*.jpg, *.jpeg)|*.jpg;*.jpeg|  PNG (*.png)|*.png</value>
+    <value>img|*.bmp;*.jpg;*.jpeg;*.png|bmp|*.bmp|jpeg|*.jpg;*.jpeg|png|*.png</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
