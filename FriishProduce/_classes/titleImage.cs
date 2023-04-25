@@ -25,7 +25,7 @@ namespace FriishProduce
             Fit
         }
 
-        public TitleImage(Platforms platform = Platforms.nes)
+        public TitleImage(Platforms platform = Platforms.NES)
         {
             path = null;
             VCPic = null;
@@ -134,18 +134,18 @@ namespace FriishProduce
 
             switch (platform)
             {
-                case Platforms.nes:
+                case Platforms.NES:
                     tplPath = Paths.WorkingFolder + "out.tpl";
                     embedded = true;
                     break;
-                case Platforms.snes:
+                case Platforms.SNES:
                     tplPath = Paths.WorkingFolder_Content5 + "banner.tpl";
                     break;
-                case Platforms.n64:
+                case Platforms.N64:
                     tplPath = Paths.WorkingFolder_Content5 + "save_banner.tpl";
                     break;
-                case Platforms.sms:
-                case Platforms.smd:
+                case Platforms.SMS:
+                case Platforms.SMD:
                     usesWte = true;
                     break;
             }

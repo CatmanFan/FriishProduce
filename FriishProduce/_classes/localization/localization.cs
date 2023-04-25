@@ -16,7 +16,7 @@ namespace FriishProduce
         private Language English { get; set; }
         public Localization()
         {
-            string code = Default.language;
+            string code = Default.Language;
             string csv1 = Paths.Languages + "en.csv";
             string csv2 = Paths.Languages + $"{code}.csv";
             char separator = '⸽';
@@ -31,9 +31,8 @@ namespace FriishProduce
 
             // Load English stringlist as backup
             English = TranslationFileReader.GetLanguagesFromCsvFile(csv1, separator, System.Text.Encoding.Default)[0];
-            Language = English;
 
-            if (string.IsNullOrWhiteSpace(code) || !IsConvertable(csv2))
+            if (string.IsNullOrWhiteSpace(code) || (!IsConvertable(csv2) && code != "sys"))
                 goto Reset;
 
             Main:
@@ -41,25 +40,35 @@ namespace FriishProduce
             if (code == "sys")
             {
                 foreach (string fn in Directory.GetFiles(Paths.Languages))
-                    if (Path.GetFileNameWithoutExtension(fn) == CultureInfo.InstalledUICulture.Name)
+                {
+                    string fn_code = Path.GetFileNameWithoutExtension(fn);
+                    if (fn_code == CultureInfo.InstalledUICulture.TwoLetterISOLanguageName
+                     || fn_code == CultureInfo.InstalledUICulture.Name)
                     {
-                        culture = new CultureInfo(Path.GetFileNameWithoutExtension(fn));
-                        csv2 = Paths.Languages + $"{culture.Name}.csv";
+                        culture = new CultureInfo(fn_code);
+                        csv2 = Paths.Languages + $"{fn_code}.csv";
                         Language = TranslationFileReader.GetLanguagesFromCsvFile(csv2, separator, System.Text.Encoding.Default)[0];
+                        culture.DateTimeFormat = new DateTimeFormatInfo() { DateSeparator = ".", ShortTimePattern = "HH:mm" };
+                        Thread.CurrentThread.CurrentUICulture = culture;
+                        return;
                     }
+                }
+                culture.DateTimeFormat = new DateTimeFormatInfo() { DateSeparator = ".", ShortTimePattern = "HH:mm" };
+                Thread.CurrentThread.CurrentUICulture = culture;
+                Language = English;
+                return;
             }
             else
             {
                 csv2 = Paths.Languages + $"{culture.Name}.csv";
                 Language = TranslationFileReader.GetLanguagesFromCsvFile(csv2, separator, System.Text.Encoding.Default)[0];
+                culture.DateTimeFormat = new DateTimeFormatInfo() { DateSeparator = ".", ShortTimePattern = "HH:mm" };
+                Thread.CurrentThread.CurrentUICulture = culture;
+                return;
             }
 
-            culture.DateTimeFormat = new DateTimeFormatInfo() { DateSeparator = ".", ShortTimePattern = "HH:mm" };
-            Thread.CurrentThread.CurrentUICulture = culture;
-            return;
-
             Reset:
-            Default.language = "sys";
+            Default.Language = "sys";
             Default.Save();
             code = "sys";
             goto Main;
@@ -114,7 +123,7 @@ namespace FriishProduce
                     ((ComboBox)c).Items.Clear();
                     ((ComboBox)c).Items.Add(Get(c.Name + ".Items"));
                     for (int i = 1; i < 20; i++)
-                        try { ((ComboBox)c).Items.Add(Get(c.Name + $".Items{i}")); } catch { }
+                        try { if (Get(c.Name + $".Items{i}") != "undefined") ((ComboBox)c).Items.Add(Get(c.Name + $".Items{i}")); } catch { }
                 }
             }
             catch

@@ -117,21 +117,69 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="&gt;&gt;OK.Name" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="&gt;&gt;OK.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;OK.Parent" xml:space="preserve">
+    <value>panel</value>
+  </data>
+  <data name="&gt;&gt;OK.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;Cancel.Name" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="&gt;&gt;Cancel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Cancel.Parent" xml:space="preserve">
+    <value>panel</value>
+  </data>
+  <data name="&gt;&gt;Cancel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="panel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="panel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 360</value>
+  </data>
+  <data name="panel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>512, 51</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="panel.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;panel.Name" xml:space="preserve">
+    <value>panel</value>
+  </data>
+  <data name="&gt;&gt;panel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="OK.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>System</value>
   </data>
   <data name="OK.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="OK.Location" type="System.Drawing.Point, System.Drawing">
     <value>288, 12</value>
   </data>
   <data name="OK.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 25</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="OK.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
@@ -145,7 +193,7 @@
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;OK.Parent" xml:space="preserve">
-    <value>panel1</value>
+    <value>panel</value>
   </data>
   <data name="&gt;&gt;OK.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -175,58 +223,58 @@
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;Cancel.Parent" xml:space="preserve">
-    <value>panel1</value>
+    <value>panel</value>
   </data>
   <data name="&gt;&gt;Cancel.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
+  <data name="&gt;&gt;Theme.Name" xml:space="preserve">
+    <value>Theme</value>
   </data>
-  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 360</value>
-  </data>
-  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>512, 51</value>
-  </data>
-  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;language.Name" xml:space="preserve">
-    <value>language</value>
-  </data>
-  <data name="&gt;&gt;language.Type" xml:space="preserve">
+  <data name="&gt;&gt;Theme.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;language.Parent" xml:space="preserve">
+  <data name="&gt;&gt;Theme.Parent" xml:space="preserve">
     <value>Application</value>
   </data>
-  <data name="&gt;&gt;language.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;Theme.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;label1_s.Name" xml:space="preserve">
-    <value>label1_s</value>
+  <data name="&gt;&gt;Settings_Theme.Name" xml:space="preserve">
+    <value>Settings_Theme</value>
   </data>
-  <data name="&gt;&gt;label1_s.Type" xml:space="preserve">
+  <data name="&gt;&gt;Settings_Theme.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label1_s.Parent" xml:space="preserve">
+  <data name="&gt;&gt;Settings_Theme.Parent" xml:space="preserve">
     <value>Application</value>
   </data>
-  <data name="&gt;&gt;label1_s.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;Settings_Theme.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="&gt;&gt;Language.Name" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="&gt;&gt;Language.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Language.Parent" xml:space="preserve">
+    <value>Application</value>
+  </data>
+  <data name="&gt;&gt;Language.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;Settings_Language.Name" xml:space="preserve">
+    <value>Settings_Language</value>
+  </data>
+  <data name="&gt;&gt;Settings_Language.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Settings_Language.Parent" xml:space="preserve">
+    <value>Application</value>
+  </data>
+  <data name="&gt;&gt;Settings_Language.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="Application.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 24</value>
@@ -255,32 +303,107 @@
   <data name="&gt;&gt;Application.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="language.Location" type="System.Drawing.Point, System.Drawing">
-    <value>95, 8</value>
+  <data name="Theme.Items" xml:space="preserve">
+    <value>null</value>
   </data>
-  <data name="language.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="Theme.Location" type="System.Drawing.Point, System.Drawing">
+    <value>95, 37</value>
+  </data>
+  <data name="Theme.Size" type="System.Drawing.Size, System.Drawing">
     <value>362, 23</value>
   </data>
-  <data name="language.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+  <data name="Theme.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
   </data>
-  <data name="label1_s.AutoSize" type="System.Boolean, mscorlib">
+  <data name="&gt;&gt;Theme.Name" xml:space="preserve">
+    <value>Theme</value>
+  </data>
+  <data name="&gt;&gt;Theme.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Theme.Parent" xml:space="preserve">
+    <value>Application</value>
+  </data>
+  <data name="&gt;&gt;Theme.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="Settings_Theme.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="label1_s.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="Settings_Theme.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 40</value>
+  </data>
+  <data name="Settings_Theme.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 15</value>
+  </data>
+  <data name="Settings_Theme.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="Settings_Theme.Text" xml:space="preserve">
+    <value>theme</value>
+  </data>
+  <data name="&gt;&gt;Settings_Theme.Name" xml:space="preserve">
+    <value>Settings_Theme</value>
+  </data>
+  <data name="&gt;&gt;Settings_Theme.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Settings_Theme.Parent" xml:space="preserve">
+    <value>Application</value>
+  </data>
+  <data name="&gt;&gt;Settings_Theme.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="Language.Location" type="System.Drawing.Point, System.Drawing">
+    <value>95, 8</value>
+  </data>
+  <data name="Language.Size" type="System.Drawing.Size, System.Drawing">
+    <value>362, 23</value>
+  </data>
+  <data name="Language.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;Language.Name" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="&gt;&gt;Language.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Language.Parent" xml:space="preserve">
+    <value>Application</value>
+  </data>
+  <data name="&gt;&gt;Language.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="Settings_Language.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Settings_Language.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="label1_s.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="Settings_Language.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 11</value>
   </data>
-  <data name="label1_s.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 15</value>
+  <data name="Settings_Language.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 15</value>
   </data>
-  <data name="label1_s.TabIndex" type="System.Int32, mscorlib">
+  <data name="Settings_Language.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="label1_s.Text" xml:space="preserve">
+  <data name="Settings_Language.Text" xml:space="preserve">
     <value>lang</value>
+  </data>
+  <data name="&gt;&gt;Settings_Language.Name" xml:space="preserve">
+    <value>Settings_Language</value>
+  </data>
+  <data name="&gt;&gt;Settings_Language.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Settings_Language.Parent" xml:space="preserve">
+    <value>Application</value>
+  </data>
+  <data name="&gt;&gt;Settings_Language.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
     <value>23, 18</value>
@@ -303,9 +426,9 @@
   <data name="&gt;&gt;tabControl1.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="$this.Localizable" type="System.Boolean, mscorlib">
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>7, 15</value>
   </data>

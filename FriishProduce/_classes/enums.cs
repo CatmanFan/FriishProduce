@@ -4,16 +4,16 @@ namespace FriishProduce
 {
     public enum Platforms
     {
-        nes = 0,
-        snes = 1,
-        n64 = 2,
-        sms = 3,
-        smd = 4,
-        pce = 5,
-        neogeo = 6,
-        c64 = 7,
-        msx = 8,
-        flash = 9,
+        NES = 0,
+        SNES = 1,
+        N64 = 2,
+        Flash = 3,
+        SMD = 4,
+        PCE = 5,
+        NeoGeo = 6,
+        C64 = 7,
+        MSX = 8,
+        SMS = 9
     }
 
     public enum InjectionMethod

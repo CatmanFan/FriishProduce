@@ -2,8 +2,11 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="FriishProduce.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="language" Type="System.String" Scope="User">
+    <Setting Name="Language" Type="System.String" Scope="User">
       <Value Profile="(Default)">sys</Value>
+    </Setting>
+    <Setting Name="LightTheme" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
     </Setting>
   </Settings>
 </SettingsFile>

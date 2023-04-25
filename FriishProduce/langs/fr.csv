@@ -7,16 +7,20 @@ Halt                        ⸽Arrêt
 OK.Text                     ⸽&OK
 Cancel.Text                 ⸽&Annuler
 Application.Text            ⸽Logiciel
-label1_s.Text               ⸽Langue :
+Settings_Language.Text      ⸽Langue :
 SystemDefault               ⸽Système
+Settings_Theme.Text         ⸽Theme :
+Theme.Items                 ⸽Sombre
+Theme.Items1                ⸽Blanc
 Message_DeleteWAD           ⸽Voulez-vous supprimer cette chaîne ?
 Message_Restart             ⸽Quelques modifications que vous avez effectués nécessitent un redémarrage du logiciel avant de prendre effet.
 Message_ExportFinished      ⸽Injection effectué.
 Message_ExportError         ⸽Une erreur a été rencontré pendant l'injection.\nMessage : {0}
-Error_ROMSize               ⸽La ROM que vous avez choisi est trop grande. Veuillez specifier une autre chaîne.
+Error_ROMSize               ⸽La ROM que vous avez précisé est trop grande. Veuillez specifier une autre chaîne.
 Error_PatchFailed           ⸽Échec de l'application du patch. Vous pouvez réessayer avec une version patchée manuellement sans activer l'auto-patch de ce logiciel.\nLa ROM non patchée sera utilisée.
-Error_FlipsMissing          ⸽L'application Floating IPS n'a pas été trouvée dans votre dossier d'applications.\nLa ROM non patchée sera utilisée.
+Error_FlipsMissing          ⸽L'application Floating IPS n'a pas pu être trouvée dans votre dossier d'applications.\nLa ROM non patchée sera utilisée.
 Error_BannerBrlyt           ⸽Échec de modification du fichier banner.brlyt. Réessayer avec une configuration propre de HowardCTools.
+Error_InvalidBanner         ⸽Le banner que vous avez précisé n'est pas valide. Veuillez choisir un banner au format « Console virtuelle », puis réessayer.
 Error_EmulatorCompression   ⸽Échec de (dé)compression de l'émulateur intégré.
 Error_FailedROMSearch       ⸽Échec de recherche d'une ROM injectable.
 Back.Text                   ⸽< &Précédent
@@ -75,3 +79,6 @@ NES_PaletteList.Items7      ⸽FCEUX
 NES_PaletteList.Items8      ⸽Wavebeam (FBX)
 NES_PaletteList.Items9      ⸽Composite Direct (FBX)
 NES_PaletteList_Author      ⸽Auteur(e) : {0}
+Flash_HBM_NoSave.Text       ⸽Activer le message des « données non sauvegardées » sur le Menu HOME
+Flash_SaveData.Text         ⸽Utiliser données de sauvegarde
+Flash_Total.Text            ⸽Taille (Ko) :

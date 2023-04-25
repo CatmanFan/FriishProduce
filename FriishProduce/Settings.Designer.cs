@@ -30,30 +30,32 @@ namespace FriishProduce
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Settings));
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel = new System.Windows.Forms.Panel();
             this.OK = new System.Windows.Forms.Button();
             this.Cancel = new System.Windows.Forms.Button();
             this.Application = new System.Windows.Forms.TabPage();
-            this.language = new System.Windows.Forms.ComboBox();
-            this.label1_s = new System.Windows.Forms.Label();
+            this.Theme = new System.Windows.Forms.ComboBox();
+            this.Settings_Theme = new System.Windows.Forms.Label();
+            this.Language = new System.Windows.Forms.ComboBox();
+            this.Settings_Language = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.panel1.SuspendLayout();
+            this.panel.SuspendLayout();
             this.Application.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel1
+            // panel
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.panel1.Controls.Add(this.OK);
-            this.panel1.Controls.Add(this.Cancel);
-            resources.ApplyResources(this.panel1, "panel1");
-            this.panel1.Name = "panel1";
+            this.panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.panel.Controls.Add(this.OK);
+            this.panel.Controls.Add(this.Cancel);
+            resources.ApplyResources(this.panel, "panel");
+            this.panel.Name = "panel";
             // 
             // OK
             // 
-            this.OK.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.OK.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.OK.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
+            this.OK.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
             this.OK.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             resources.ApplyResources(this.OK, "OK");
             this.OK.Name = "OK";
@@ -63,8 +65,8 @@ namespace FriishProduce
             // Cancel
             // 
             this.Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.Cancel.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.Cancel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.Cancel.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
+            this.Cancel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
             this.Cancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             resources.ApplyResources(this.Cancel, "Cancel");
             this.Cancel.Name = "Cancel";
@@ -73,23 +75,39 @@ namespace FriishProduce
             // Application
             // 
             this.Application.BackColor = System.Drawing.SystemColors.Window;
-            this.Application.Controls.Add(this.language);
-            this.Application.Controls.Add(this.label1_s);
+            this.Application.Controls.Add(this.Theme);
+            this.Application.Controls.Add(this.Settings_Theme);
+            this.Application.Controls.Add(this.Language);
+            this.Application.Controls.Add(this.Settings_Language);
             this.Application.ForeColor = System.Drawing.SystemColors.ControlText;
             resources.ApplyResources(this.Application, "Application");
             this.Application.Name = "Application";
             // 
-            // language
+            // Theme
             // 
-            this.language.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.language.FormattingEnabled = true;
-            resources.ApplyResources(this.language, "language");
-            this.language.Name = "language";
+            this.Theme.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Theme.FormattingEnabled = true;
+            this.Theme.Items.AddRange(new object[] {
+            resources.GetString("Theme.Items")});
+            resources.ApplyResources(this.Theme, "Theme");
+            this.Theme.Name = "Theme";
             // 
-            // label1_s
+            // Settings_Theme
             // 
-            resources.ApplyResources(this.label1_s, "label1_s");
-            this.label1_s.Name = "label1_s";
+            resources.ApplyResources(this.Settings_Theme, "Settings_Theme");
+            this.Settings_Theme.Name = "Settings_Theme";
+            // 
+            // Language
+            // 
+            this.Language.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Language.FormattingEnabled = true;
+            resources.ApplyResources(this.Language, "Language");
+            this.Language.Name = "Language";
+            // 
+            // Settings_Language
+            // 
+            resources.ApplyResources(this.Settings_Language, "Settings_Language");
+            this.Settings_Language.Name = "Settings_Language";
             // 
             // tabControl1
             // 
@@ -105,7 +123,7 @@ namespace FriishProduce
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             this.CancelButton = this.Cancel;
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel);
             this.Controls.Add(this.tabControl1);
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -115,7 +133,8 @@ namespace FriishProduce
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.panel1.ResumeLayout(false);
+            this.Load += new System.EventHandler(this.Settings_Load);
+            this.panel.ResumeLayout(false);
             this.Application.ResumeLayout(false);
             this.Application.PerformLayout();
             this.tabControl1.ResumeLayout(false);
@@ -125,12 +144,14 @@ namespace FriishProduce
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel;
         private System.Windows.Forms.Button OK;
         private System.Windows.Forms.Button Cancel;
         private System.Windows.Forms.TabPage Application;
-        private System.Windows.Forms.ComboBox language;
-        private System.Windows.Forms.Label label1_s;
+        private System.Windows.Forms.ComboBox Language;
+        private System.Windows.Forms.Label Settings_Language;
         private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.ComboBox Theme;
+        private System.Windows.Forms.Label Settings_Theme;
     }
 }

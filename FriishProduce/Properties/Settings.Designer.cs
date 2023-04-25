@@ -26,12 +26,24 @@ namespace FriishProduce.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("sys")]
-        public string language {
+        public string Language {
             get {
-                return ((string)(this["language"]));
+                return ((string)(this["Language"]));
             }
             set {
-                this["language"] = value;
+                this["Language"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool LightTheme {
+            get {
+                return ((bool)(this["LightTheme"]));
+            }
+            set {
+                this["LightTheme"] = value;
             }
         }
     }

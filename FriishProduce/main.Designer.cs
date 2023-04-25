@@ -32,7 +32,7 @@ namespace FriishProduce
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.label1 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel = new System.Windows.Forms.Panel();
             this.Settings = new System.Windows.Forms.Button();
             this.Back = new System.Windows.Forms.Button();
             this.Save = new System.Windows.Forms.Button();
@@ -77,17 +77,22 @@ namespace FriishProduce
             this.label7 = new System.Windows.Forms.Label();
             this.DisableEmanual = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.Options_NES = new System.Windows.Forms.Panel();
-            this.NES_PaletteList = new System.Windows.Forms.ComboBox();
-            this.NES_Palette = new System.Windows.Forms.Label();
+            this.Options_Flash = new System.Windows.Forms.Panel();
+            this.Flash_Total = new System.Windows.Forms.Label();
+            this.Flash_TotalSaveDataSize = new System.Windows.Forms.ComboBox();
+            this.Flash_HBM_NoSave = new System.Windows.Forms.CheckBox();
+            this.Flash_SaveData = new System.Windows.Forms.CheckBox();
             this.Options_N64 = new System.Windows.Forms.Panel();
             this.N64_AllocateROM = new System.Windows.Forms.CheckBox();
             this.N64_8MBRAM = new System.Windows.Forms.CheckBox();
             this.N64_FixBrightness = new System.Windows.Forms.CheckBox();
+            this.Options_NES = new System.Windows.Forms.Panel();
+            this.NES_PaletteList = new System.Windows.Forms.ComboBox();
+            this.NES_Palette = new System.Windows.Forms.Label();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.BrowsePatch = new System.Windows.Forms.OpenFileDialog();
             this.BrowseImage = new System.Windows.Forms.OpenFileDialog();
-            this.panel1.SuspendLayout();
+            this.panel.SuspendLayout();
             this.page1.SuspendLayout();
             this.page2.SuspendLayout();
             this.page3.SuspendLayout();
@@ -96,8 +101,9 @@ namespace FriishProduce
             ((System.ComponentModel.ISupportInitialize)(this.Players)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReleaseYear)).BeginInit();
             this.page4.SuspendLayout();
-            this.Options_NES.SuspendLayout();
+            this.Options_Flash.SuspendLayout();
             this.Options_N64.SuspendLayout();
+            this.Options_NES.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -105,21 +111,21 @@ namespace FriishProduce
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
             // 
-            // panel1
+            // panel
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.panel1.Controls.Add(this.Settings);
-            this.panel1.Controls.Add(this.Back);
-            this.panel1.Controls.Add(this.Save);
-            this.panel1.Controls.Add(this.Next);
-            resources.ApplyResources(this.panel1, "panel1");
-            this.panel1.Name = "panel1";
+            this.panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.panel.Controls.Add(this.Settings);
+            this.panel.Controls.Add(this.Back);
+            this.panel.Controls.Add(this.Save);
+            this.panel.Controls.Add(this.Next);
+            resources.ApplyResources(this.panel, "panel");
+            this.panel.Name = "panel";
             // 
             // Settings
             // 
-            this.Settings.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.Settings.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
             this.Settings.FlatAppearance.BorderSize = 0;
-            this.Settings.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.Settings.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
             this.Settings.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             resources.ApplyResources(this.Settings, "Settings");
             this.Settings.Name = "Settings";
@@ -130,9 +136,9 @@ namespace FriishProduce
             // Back
             // 
             resources.ApplyResources(this.Back, "Back");
-            this.Back.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.Back.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
             this.Back.FlatAppearance.BorderSize = 0;
-            this.Back.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.Back.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
             this.Back.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Back.Name = "Back";
             this.Back.UseVisualStyleBackColor = true;
@@ -140,9 +146,9 @@ namespace FriishProduce
             // 
             // Save
             // 
-            this.Save.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.Save.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
             this.Save.FlatAppearance.BorderSize = 0;
-            this.Save.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.Save.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
             this.Save.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             resources.ApplyResources(this.Save, "Save");
             this.Save.Name = "Save";
@@ -152,9 +158,9 @@ namespace FriishProduce
             // Next
             // 
             resources.ApplyResources(this.Next, "Next");
-            this.Next.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.Next.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
             this.Next.FlatAppearance.BorderSize = 0;
-            this.Next.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.Next.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
             this.Next.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Next.Name = "Next";
             this.Next.UseVisualStyleBackColor = true;
@@ -166,9 +172,7 @@ namespace FriishProduce
             resources.ApplyResources(this.Console, "Console");
             this.Console.FormattingEnabled = true;
             this.Console.Items.AddRange(new object[] {
-            resources.GetString("Console.Items"),
-            resources.GetString("Console.Items1"),
-            resources.GetString("Console.Items2")});
+            resources.GetString("Console.Items")});
             this.Console.Name = "Console";
             this.Console.SelectedIndexChanged += new System.EventHandler(this.Console_Changed);
             // 
@@ -435,8 +439,9 @@ namespace FriishProduce
             this.page4.Controls.Add(this.label7);
             this.page4.Controls.Add(this.DisableEmanual);
             this.page4.Controls.Add(this.label4);
-            this.page4.Controls.Add(this.Options_NES);
+            this.page4.Controls.Add(this.Options_Flash);
             this.page4.Controls.Add(this.Options_N64);
+            this.page4.Controls.Add(this.Options_NES);
             resources.ApplyResources(this.page4, "page4");
             this.page4.Name = "page4";
             // 
@@ -469,28 +474,45 @@ namespace FriishProduce
             resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
             // 
-            // Options_NES
+            // Options_Flash
             // 
-            this.Options_NES.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Options_NES.Controls.Add(this.NES_PaletteList);
-            this.Options_NES.Controls.Add(this.NES_Palette);
-            resources.ApplyResources(this.Options_NES, "Options_NES");
-            this.Options_NES.Name = "Options_NES";
+            this.Options_Flash.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Options_Flash.Controls.Add(this.Flash_Total);
+            this.Options_Flash.Controls.Add(this.Flash_TotalSaveDataSize);
+            this.Options_Flash.Controls.Add(this.Flash_HBM_NoSave);
+            this.Options_Flash.Controls.Add(this.Flash_SaveData);
+            resources.ApplyResources(this.Options_Flash, "Options_Flash");
+            this.Options_Flash.Name = "Options_Flash";
             // 
-            // NES_PaletteList
+            // Flash_Total
             // 
-            this.NES_PaletteList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.NES_PaletteList.FormattingEnabled = true;
-            this.NES_PaletteList.Items.AddRange(new object[] {
-            resources.GetString("NES_PaletteList.Items")});
-            resources.ApplyResources(this.NES_PaletteList, "NES_PaletteList");
-            this.NES_PaletteList.Name = "NES_PaletteList";
-            this.NES_PaletteList.SelectedIndexChanged += new System.EventHandler(this.NES_PaletteChanged);
+            resources.ApplyResources(this.Flash_Total, "Flash_Total");
+            this.Flash_Total.Name = "Flash_Total";
             // 
-            // NES_Palette
+            // Flash_TotalSaveDataSize
             // 
-            resources.ApplyResources(this.NES_Palette, "NES_Palette");
-            this.NES_Palette.Name = "NES_Palette";
+            this.Flash_TotalSaveDataSize.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Flash_TotalSaveDataSize.FormattingEnabled = true;
+            this.Flash_TotalSaveDataSize.Items.AddRange(new object[] {
+            resources.GetString("Flash_TotalSaveDataSize.Items"),
+            resources.GetString("Flash_TotalSaveDataSize.Items1"),
+            resources.GetString("Flash_TotalSaveDataSize.Items2"),
+            resources.GetString("Flash_TotalSaveDataSize.Items3"),
+            resources.GetString("Flash_TotalSaveDataSize.Items4")});
+            resources.ApplyResources(this.Flash_TotalSaveDataSize, "Flash_TotalSaveDataSize");
+            this.Flash_TotalSaveDataSize.Name = "Flash_TotalSaveDataSize";
+            // 
+            // Flash_HBM_NoSave
+            // 
+            resources.ApplyResources(this.Flash_HBM_NoSave, "Flash_HBM_NoSave");
+            this.Flash_HBM_NoSave.Name = "Flash_HBM_NoSave";
+            this.Flash_HBM_NoSave.UseVisualStyleBackColor = true;
+            // 
+            // Flash_SaveData
+            // 
+            resources.ApplyResources(this.Flash_SaveData, "Flash_SaveData");
+            this.Flash_SaveData.Name = "Flash_SaveData";
+            this.Flash_SaveData.UseVisualStyleBackColor = true;
             // 
             // Options_N64
             // 
@@ -519,6 +541,29 @@ namespace FriishProduce
             this.N64_FixBrightness.Name = "N64_FixBrightness";
             this.N64_FixBrightness.UseVisualStyleBackColor = true;
             // 
+            // Options_NES
+            // 
+            this.Options_NES.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Options_NES.Controls.Add(this.NES_PaletteList);
+            this.Options_NES.Controls.Add(this.NES_Palette);
+            resources.ApplyResources(this.Options_NES, "Options_NES");
+            this.Options_NES.Name = "Options_NES";
+            // 
+            // NES_PaletteList
+            // 
+            this.NES_PaletteList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.NES_PaletteList.FormattingEnabled = true;
+            this.NES_PaletteList.Items.AddRange(new object[] {
+            resources.GetString("NES_PaletteList.Items")});
+            resources.ApplyResources(this.NES_PaletteList, "NES_PaletteList");
+            this.NES_PaletteList.Name = "NES_PaletteList";
+            this.NES_PaletteList.SelectedIndexChanged += new System.EventHandler(this.NES_PaletteChanged);
+            // 
+            // NES_Palette
+            // 
+            resources.ApplyResources(this.NES_Palette, "NES_Palette");
+            this.NES_Palette.Name = "NES_Palette";
+            // 
             // BrowsePatch
             // 
             resources.ApplyResources(this.BrowsePatch, "BrowsePatch");
@@ -532,16 +577,16 @@ namespace FriishProduce
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.page1);
-            this.Controls.Add(this.page4);
+            this.Controls.Add(this.panel);
             this.Controls.Add(this.page3);
             this.Controls.Add(this.page2);
+            this.Controls.Add(this.page1);
+            this.Controls.Add(this.page4);
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "Main";
-            this.panel1.ResumeLayout(false);
+            this.panel.ResumeLayout(false);
             this.page1.ResumeLayout(false);
             this.page1.PerformLayout();
             this.page2.ResumeLayout(false);
@@ -555,10 +600,12 @@ namespace FriishProduce
             ((System.ComponentModel.ISupportInitialize)(this.ReleaseYear)).EndInit();
             this.page4.ResumeLayout(false);
             this.page4.PerformLayout();
-            this.Options_NES.ResumeLayout(false);
-            this.Options_NES.PerformLayout();
+            this.Options_Flash.ResumeLayout(false);
+            this.Options_Flash.PerformLayout();
             this.Options_N64.ResumeLayout(false);
             this.Options_N64.PerformLayout();
+            this.Options_NES.ResumeLayout(false);
+            this.Options_NES.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -566,7 +613,7 @@ namespace FriishProduce
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel1;
+        internal System.Windows.Forms.Panel panel;
         private System.Windows.Forms.ComboBox Console;
         private System.Windows.Forms.Button Next;
         private System.Windows.Forms.Button Settings;
@@ -621,6 +668,11 @@ namespace FriishProduce
         private System.Windows.Forms.CheckBox N64_FixBrightness;
         private System.Windows.Forms.CheckBox N64_8MBRAM;
         private System.Windows.Forms.CheckBox N64_AllocateROM;
+        private System.Windows.Forms.Panel Options_Flash;
+        private System.Windows.Forms.CheckBox Flash_HBM_NoSave;
+        private System.Windows.Forms.CheckBox Flash_SaveData;
+        private System.Windows.Forms.ComboBox Flash_TotalSaveDataSize;
+        private System.Windows.Forms.Label Flash_Total;
     }
 }
 

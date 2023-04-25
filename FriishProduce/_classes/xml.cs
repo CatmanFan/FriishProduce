@@ -1,15 +1,17 @@
-﻿using System.IO;
+﻿using System;
 using System.Xml;
 
 namespace FriishProduce
 {
     public class XML
     {
+        public static string CurrentFolder(Platforms platform) => Paths.Database + platform.ToString().ToLower() + "\\";
+
         public static XmlNodeList RetrieveList(Platforms platform)
         {
             XmlDocument file = new XmlDocument();
             file.Load(Paths.DatabaseXML);
-            return file.DocumentElement.SelectNodes($"/bases/{platform}/wad");
+            return file.DocumentElement.SelectNodes($"/bases/{platform}/wad".ToLower());
         }
 
         /// <summary>
@@ -19,7 +21,7 @@ namespace FriishProduce
         {
             foreach (XmlNode entry in XML.RetrieveList(platform))
                 if (entry.Attributes["title"].Value == title)
-                    return entry.Attributes["id"].Value;
+                    return entry.Attributes["id"].Value.ToUpper();
 
             return null;
         }

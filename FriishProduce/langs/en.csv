@@ -12,13 +12,18 @@ Settings                    ⸽Settings
 Console.Items               ⸽NES/Famicom
 Console.Items1              ⸽SNES/Super Famicom
 Console.Items2              ⸽Nintendo 64
+Console.Items3              ⸽Adobe Flash
 Error                       ⸽Error
 Halt                        ⸽Halt
 OK.Text                     ⸽&OK
 Cancel.Text                 ⸽&Cancel
+Forwarders.Text             ⸽&Forwarders
 Application.Text            ⸽Application
-label1_s.Text               ⸽Language:
+Settings_Language.Text      ⸽Language:
 SystemDefault               ⸽System default
+Settings_Theme.Text         ⸽Theme:
+Theme.Items                 ⸽Dark
+Theme.Items1                ⸽Light
 Message_DeleteWAD           ⸽Really delete this WAD?
 Message_Restart             ⸽Some of the changes you have made require you to restart the application before they can take effect.
 Message_ExportFinished      ⸽Done.
@@ -27,6 +32,7 @@ Error_ROMSize               ⸽The ROM to be injected is larger in filesize than
 Error_PatchFailed           ⸽Failed to apply the patch. Please disable the built-in patching feature and try again using a manually-patched version.\nUsing unpatched ROM.
 Error_FlipsMissing          ⸽Floating IPS was not found within the "apps" folder.\nUsing unpatched ROM.
 Error_BannerBrlyt           ⸽Banner.brlyt has not been modified. Make sure you have set up HowardC Tools properly and try again.
+Error_InvalidBanner         ⸽The banner you have selected is not a valid Virtual Console banner.
 Error_EmulatorCompression   ⸽Unable to (de)compress the emulator file.
 Error_FailedROMSearch       ⸽Unable to find injectable ROM.
 Back.Text                   ⸽< &Back
@@ -85,3 +91,6 @@ NES_PaletteList.Items7      ⸽FCEUX
 NES_PaletteList.Items8      ⸽Wavebeam (FBX)
 NES_PaletteList.Items9      ⸽Composite Direct (FBX)
 NES_PaletteList_Author      ⸽Author: {0}
+Flash_HBM_NoSave.Text       ⸽Enable "unsaved data" message on HOME Menu
+Flash_SaveData.Text         ⸽Use savedata
+Flash_Total.Text            ⸽Total size (KB):

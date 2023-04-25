@@ -30,4 +30,7 @@
 		<wad title="The Legend of Zelda: Ocarina of Time (USA)"       id="NACE" ver="rev1"/>
 		<wad title="The Legend of Zelda: Ocarina of Time (EUR)"       id="NACP" ver="rev1"/>
 	</n64>
+	<flash>
+		<wad title="Flash Placeholder / Back in Nature"               id="WNAP"/>
+	</flash>
 </bases>
