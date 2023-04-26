@@ -1,96 +1,106 @@
-﻿id							⸽lang
-----------------------------⸽----------------------------
- GLOBAL SYMBOL STRINGS      ⸽ USE THIS FILE AS TEMPLATE
-----------------------------⸽----------------------------
-AddBase.Text                ⸽+
-DeleteBase.Text             ⸽-
-Settings.Text               ⸽⚙
-----------------------------⸽----------------------------
+﻿id							⎸language_text
+lang_name                   ⎸English
 
-AppTitle                    ⸽FriishProduce
-Settings                    ⸽Settings
-Console.Items               ⸽NES/Famicom
-Console.Items1              ⸽SNES/Super Famicom
-Console.Items2              ⸽Nintendo 64
-Console.Items3              ⸽Adobe Flash
-Error                       ⸽Error
-Halt                        ⸽Halt
-OK.Text                     ⸽&OK
-Cancel.Text                 ⸽&Cancel
-Forwarders.Text             ⸽&Forwarders
-Application.Text            ⸽Application
-Settings_Language.Text      ⸽Language:
-SystemDefault               ⸽System default
-Settings_Theme.Text         ⸽Theme:
-Theme.Items                 ⸽Dark
-Theme.Items1                ⸽Light
-Message_DeleteWAD           ⸽Really delete this WAD?
-Message_Restart             ⸽Some of the changes you have made require you to restart the application before they can take effect.
-Message_ExportFinished      ⸽Done.
-Message_ExportError         ⸽An error occurred during the exportation process.\nMessage: {0}
-Error_ROMSize               ⸽The ROM to be injected is larger in filesize than the target ROM. Please choose a different base WAD.
-Error_PatchFailed           ⸽Failed to apply the patch. Please disable the built-in patching feature and try again using a manually-patched version.\nUsing unpatched ROM.
-Error_FlipsMissing          ⸽Floating IPS was not found within the "apps" folder.\nUsing unpatched ROM.
-Error_BannerBrlyt           ⸽Banner.brlyt has not been modified. Make sure you have set up HowardC Tools properly and try again.
-Error_InvalidBanner         ⸽The banner you have selected is not a valid Virtual Console banner.
-Error_EmulatorCompression   ⸽Unable to (de)compress the emulator file.
-Error_FailedROMSearch       ⸽Unable to find injectable ROM.
-Back.Text                   ⸽< &Back
-Next.Text                   ⸽&Next >
-Save.Text                   ⸽&Finish
-OpenROM.Text                ⸽Open ROM...
-OpenSWF.Text                ⸽Open SWF...
-BrowseImage.Filter          ⸽Images (*.bmp, *.jpg, *.jpeg, *.png)|*.bmp;*.jpg;*.jpeg;*.png|  Bitmap (*.bmp)|*.bmp|  JPEG (*.jpg, *.jpeg)|*.jpg;*.jpeg|  PNG (*.png)|*.png
-BrowsePatch.Filter          ⸽Patch files (*.bps, *.ips)|*.bps;*.ips
-BrowseWAD.Filter            ⸽Wii Channels (*.wad)|*.wad
-BrowseROM_NES               ⸽Nintendo Entertainment System/Famicom ROM files (*.nes)|*.nes
-BrowseROM_SNES              ⸽Super Nintendo Entertainment System/Super Famicom ROM files (*.sfc, *.smc)|*.sfc;*.smc
-BrowseROM_N64               ⸽Nintendo 64 ROM files (*.n64, *.v64, *.z64)|*.n64;*.v64;*.z64
-BrowseSWF                   ⸽Adobe Flash files (*.swf)|*.swf
-BrowseAll                   ⸽|All files (*.*)|*.*
-Customize.Text              ⸽Customize
-DisableEmanual.Text         ⸽Remove "Operations Guide" in HOME Menu
-ImportBanner.Text           ⸽Edit using banner from other base:
-label1.Text                 ⸽Welcome to FriishProduce {0}.\n\nPlease select your target platform:
-label2.Text                 ⸽Please choose a ROM and a base WAD.
-label3.Text                 ⸽N/A
-label4.Text                 ⸽Set any additional content options here.
-label5.Text                 ⸽You can customize the banner and the image displayed on the Wii Menu and in Data Management, unless you choose to skip this step.
-label7.Text                 ⸽Title ID:
-label8.Text                 ⸽Channel title:
-label9.Text                 ⸽Banner title:
-label10.Text                ⸽Release year:
-label11.Text                ⸽Players:
-label12.Text                ⸽Savedata title:
-label13.Text                ⸽Resizing mode:
-label14.Text                ⸽Interpolation mode:
-Image_ModeI.Items           ⸽Default
-Image_ModeI.Items1          ⸽Low
-Image_ModeI.Items2          ⸽High
-Image_ModeI.Items3          ⸽Bicubic
-Image_ModeI.Items4          ⸽Bilinear
-Image_ModeI.Items5          ⸽Nearest Neighbor
-Image_ModeI.Items6          ⸽High-Quality Bicubic
-Image_ModeI.Items7          ⸽High-Quality Linear
-Image_Stretch.Items         ⸽Stretch image
-Image_Stretch.Items1        ⸽Fit to width/height
-Patch.Text                  ⸽Patch ROM before injection
-RegionFree.Text             ⸽Region free
-N64_FixBrightness.Text      ⸽Fix brightness
-N64_8MBRAM.Text             ⸽Extended RAM (8MB)
-N64_AllocateROM.Text        ⸽Allocate 32MB for ROM
-NES_Palette.Text            ⸽Palette:
-NES_PaletteList.Items       ⸽Default
-NES_PaletteList.Items1      ⸽Remove dark filter
-NES_PaletteList.Items2      ⸽3DS Virtual Console
-NES_PaletteList.Items3      ⸽NES Classic Mini (FBX)
-NES_PaletteList.Items4      ⸽NES Remix U
-NES_PaletteList.Items5      ⸽Nestopia YUV
-NES_PaletteList.Items6      ⸽Nestopia RGB
-NES_PaletteList.Items7      ⸽FCEUX
-NES_PaletteList.Items8      ⸽Wavebeam (FBX)
-NES_PaletteList.Items9      ⸽Composite Direct (FBX)
-NES_PaletteList_Author      ⸽Author: {0}
-Flash_HBM_NoSave.Text       ⸽Enable "unsaved data" message on HOME Menu
-Flash_SaveData.Text         ⸽Use savedata
-Flash_Total.Text            ⸽Total size (KB):
+AppTitle                    ⎸FriishProduce
+
+Console.Items               ⎸NES/Famicom
+Console.Items1              ⎸SNES/Super Famicom
+Console.Items2              ⎸Nintendo 64
+Console.Items3              ⎸Adobe Flash
+
+Message_DeleteWAD           ⎸Really delete this WAD?
+Message_Restart             ⎸Some of the changes you have made require you to restart the application before they can take effect.
+Message_ExportFinished      ⎸Done.
+Message_ExportError         ⎸An error occurred during the exportation process.\nMessage: {0}
+Error_ROMSize               ⎸The ROM to be injected is larger in filesize than the target ROM. Please choose a different base WAD.
+Error_PatchFailed           ⎸Failed to apply the patch. Please disable the built-in patching feature and try again using a manually-patched version.\nUsing unpatched ROM.
+Error_FlipsMissing          ⎸Floating IPS was not found within the "apps" folder.\nUsing unpatched ROM.
+Error_BannerBrlyt           ⎸Banner.brlyt has not been modified. Make sure you have set up HowardC Tools properly and try again.
+Error_InvalidBanner         ⎸The banner you have selected is not a valid Virtual Console banner.
+Error_EmulatorCompression   ⎸Unable to (de)compress the emulator file.
+Error_FailedROMSearch       ⎸Unable to find injectable ROM.
+
+ForwarderMode               ⎸Forwarder mode
+Settings                    ⎸Settings
+Error                       ⎸Error
+Halt                        ⎸Halt
+OK.Text                     ⎸&OK
+Cancel.Text                 ⎸&Cancel
+Forwarders.Text             ⎸&Forwarders
+Application.Text            ⎸Application
+Settings_Language.Text      ⎸Language:
+SystemDefault               ⎸System default
+Settings_Theme.Text         ⎸Theme:
+Theme.Items                 ⎸Dark
+Theme.Items1                ⎸Light
+
+Back.Text                   ⎸< &Back
+Next.Text                   ⎸&Next >
+Save.Text                   ⎸&Finish
+OpenROM.Text                ⎸Open ROM...
+OpenSWF.Text                ⎸Open SWF...
+
+BrowseImage.Filter          ⎸Images (*.bmp, *.jpg, *.jpeg, *.png)|*.bmp;*.jpg;*.jpeg;*.png|  Bitmap (*.bmp)|*.bmp|  JPEG (*.jpg, *.jpeg)|*.jpg;*.jpeg|  PNG (*.png)|*.png
+BrowsePatch.Filter          ⎸Patch files (*.bps, *.ips)|*.bps;*.ips
+BrowseWAD.Filter            ⎸Wii Channels (*.wad)|*.wad
+BrowseROM_NES               ⎸Nintendo Entertainment System/Famicom ROM files (*.nes)|*.nes
+BrowseROM_SNES              ⎸Super Nintendo Entertainment System/Super Famicom ROM files (*.sfc, *.smc)|*.sfc;*.smc
+BrowseROM_N64               ⎸Nintendo 64 ROM files (*.n64, *.v64, *.z64)|*.n64;*.v64;*.z64
+BrowseROM_SMS               ⎸Master System ROM files (*.sms)|*.sms
+BrowseROM_SMD               ⎸Mega Drive/Genesis ROM files (*.bin, *.gen, *.mgd, *.md, *.smd)|*.bin;*.gen;*.mgd;*.md;*.smd
+BrowseROM_PCE               ⎸TurboGrafx-16/PC Engine ROM files (*.pce)|*.pce
+BrowseROM_C64               ⎸Commodore 64 ROM files (*.t64, *.d64)|*.t64;*.d64
+BrowseSWF                   ⎸Adobe Flash files (*.swf)|*.swf
+BrowseZIP                   ⎸.ZIP archives (*.zip)|*.zip
+BrowseISO                   ⎸Disc images (*.cue; *.iso)|*.cue;*.iso|  Cue Sheet files (*.cue)|*.cue|  ISO images (*.iso)|*.iso
+BrowseAll                   ⎸|All files (*.*)|*.*
+
+label1.Text                 ⎸Welcome to FriishProduce {0}.\n\nPlease select your target platform:
+label2.Text                 ⎸Please choose a ROM and a base WAD.
+label3.Text                 ⎸N/A
+label4.Text                 ⎸Set any additional content options here.
+label5.Text                 ⎸You can customize the banner and the image displayed on the Wii Menu and in Data Management, unless you choose to skip this step.
+label6.Text                 ⎸Title ID:
+label7.Text                 ⎸Channel title:
+label8.Text                 ⎸Banner title:
+label9.Text                 ⎸Release year:
+label10.Text                ⎸Players:
+label11.Text                ⎸Savedata title:
+label12.Text                ⎸Resizing mode:
+label13.Text                ⎸Interpolation mode:
+Image_ModeI.Items           ⎸Default
+Image_ModeI.Items1          ⎸Low
+Image_ModeI.Items2          ⎸High
+Image_ModeI.Items3          ⎸Bicubic
+Image_ModeI.Items4          ⎸Bilinear
+Image_ModeI.Items5          ⎸Nearest Neighbor
+Image_ModeI.Items6          ⎸High-Quality Bicubic
+Image_ModeI.Items7          ⎸High-Quality Bilinear
+Image_Stretch.Items         ⎸Stretch image
+Image_Stretch.Items1        ⎸Fit to width/height
+Customize.Text              ⎸Customize
+DisableEmanual.Text         ⎸Remove "Operations Guide" in HOME Menu
+ImportBanner.Text           ⎸Edit using banner from other base:
+Patch.Text                  ⎸Patch ROM before injection
+RegionFree.Text             ⎸Region free
+
+NES_Palette.Text            ⎸Palette:
+NES_PaletteList.Items       ⎸Default
+NES_PaletteList.Items1      ⎸Restored
+NES_PaletteList.Items2      ⎸3DS Virtual Console
+NES_PaletteList.Items3      ⎸NES Classic Mini (FBX)
+NES_PaletteList.Items4      ⎸NES Remix U
+NES_PaletteList.Items5      ⎸Nestopia YUV
+NES_PaletteList.Items6      ⎸Nestopia RGB
+NES_PaletteList.Items7      ⎸FCEUX
+NES_PaletteList.Items8      ⎸Wavebeam (FBX)
+NES_PaletteList.Items9      ⎸Composite Direct (FBX)
+NES_PaletteList_Author      ⎸Author: {0}
+
+N64_FixBrightness.Text      ⎸Fix brightness
+N64_8MBRAM.Text             ⎸Extended RAM (8MB)
+N64_AllocateROM.Text        ⎸Allocate 32MB for ROM
+
+Flash_HBM_NoSave.Text       ⎸Enable "unsaved data" message on HOME Menu
+Flash_SaveData.Text         ⎸Use savedata
+Flash_Total.Text            ⎸Total size (KB):

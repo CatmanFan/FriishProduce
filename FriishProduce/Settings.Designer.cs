@@ -55,6 +55,7 @@ namespace FriishProduce
             // OK
             // 
             this.OK.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
+            this.OK.FlatAppearance.BorderSize = 0;
             this.OK.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
             this.OK.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             resources.ApplyResources(this.OK, "OK");
@@ -66,6 +67,7 @@ namespace FriishProduce
             // 
             this.Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.Cancel.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
+            this.Cancel.FlatAppearance.BorderSize = 0;
             this.Cancel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
             this.Cancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             resources.ApplyResources(this.Cancel, "Cancel");

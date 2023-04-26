@@ -100,6 +100,7 @@ namespace FriishProduce
         {
             Settings SettingsForm = new Settings()
             {
+                Text = lang.Get("Settings"),
                 Owner = this
             };
             if (SettingsForm.ShowDialog(this) == DialogResult.OK) ChangeTheme();
@@ -361,7 +362,7 @@ namespace FriishProduce
 
                 try
                 {
-                    input[0] = Injector.ApplyPatch(input[0], input[1]);
+                    if (currentConsole != Platforms.Flash) input[0] = Injector.ApplyPatch(input[0], input[1]);
 
                     WAD w = WAD.Load(input[2]);
                     var ios = (int)w.StartupIOS;
@@ -464,86 +465,87 @@ namespace FriishProduce
                     {
                         U8.Unpack(Paths.WorkingFolder + "00000005.app", Paths.WorkingFolder_Content5);
                         if (DisableEmanual.Checked) Injector.RemoveEmanual();
+                        if (Customize.Checked) tImg.CreateSave(currentConsole);
+
+                        switch (currentConsole)
+                        {
+                            default:
+                                throw new Exception("Not implemented yet!");
+
+                            case Platforms.NES:
+                                Injectors.NES NES = new Injectors.NES
+                                {
+                                    ROM = input[0],
+                                    content1_file = Injector.DetermineContent1(),
+                                    saveTPL_offsets = new Injectors.NES().DetermineSaveTPLOffsets(Injector.DetermineContent1())
+                                };
+
+                                NES.InsertROM();
+                                NES.InsertPalette(NES_PaletteList.SelectedIndex);
+                                if (Customize.Checked)
+                                {
+                                    if (NES.ExtractSaveTPL(Paths.WorkingFolder + "out.tpl"))
+                                        tImg.CreateSave(Platforms.NES);
+                                    NES.InsertSaveData(SaveDataTitle.Text, Paths.WorkingFolder + "out.tpl");
+                                }
+                                Injector.PrepareContent1();
+                                break;
+
+                            case Platforms.SNES:
+                                Injectors.SNES SNES = new Injectors.SNES()
+                                {
+                                    ROM = input[0],
+                                    ROMcode = new Injectors.SNES().ProduceID(XML.SearchID(baseList.SelectedItem.ToString(), currentConsole))
+                                };
+
+                                SNES.ReplaceROM();
+
+                                if (Customize.Checked) SNES.InsertSaveTitle(SaveDataTitle.Lines);
+                                break;
+
+                            case Platforms.N64:
+                                Injectors.N64 N64 = new Injectors.N64() { ROM = input[0] };
+                                foreach (System.Xml.XmlNode entry in XML.RetrieveList(currentConsole))
+                                {
+                                    if (entry.Attributes["title"].Value == baseList.SelectedItem.ToString())
+                                        foreach (var item in Directory.GetFiles(Paths.Database, "*.*", SearchOption.AllDirectories))
+                                            if (item.Contains(entry.Attributes["id"].Value))
+                                                N64.emuVersion = entry.Attributes["ver"].Value;
+                                }
+
+                                if (N64_FixBrightness.Checked || N64_8MBRAM.Checked || N64_AllocateROM.Checked)
+                                {
+                                    string content1_file = Injector.DetermineContent1();
+                                    var content1 = File.ReadAllBytes(content1_file);
+                                    if (N64_FixBrightness.Checked) content1 = N64.FixBrightness(content1);
+                                    if (N64_8MBRAM.Checked) content1 = N64.ExpansionRAM(content1);
+                                    if (N64_AllocateROM.Checked) content1 = N64.AllocateROM(content1);
+                                    File.WriteAllBytes(content1_file, content1);
+                                    Injector.PrepareContent1();
+                                }
+                                N64.ReplaceROM();
+
+                                if (Customize.Checked) N64.InsertSaveComments(SaveDataTitle.Lines);
+                                break;
+                        }
+
+                        U8.Pack(Paths.WorkingFolder_Content5, Paths.WorkingFolder + "00000005.app");
                     }
                     else
                     {
                         U8.Unpack(Paths.WorkingFolder + "00000002.app", Paths.WorkingFolder_Content2);
-                        if (DisableEmanual.Checked) Injector.RemoveEmanual();
-                    }
-                    if (Customize.Checked) tImg.CreateSave(currentConsole);
 
-                    switch (currentConsole)
-                    {
-                        default:
-                            throw new Exception("Not implemented yet!");
+                        Injectors.Flash Flash = new Injectors.Flash() { SWF = input[0] };
+                        Flash.ReplaceSWF();
 
-                        case Platforms.NES:
-                            Injectors.NES NES = new Injectors.NES
-                            {
-                                ROM = input[0],
-                                content1_file = Injector.DetermineContent1(),
-                                saveTPL_offsets = new Injectors.NES().DetermineSaveTPLOffsets(Injector.DetermineContent1())
-                            };
+                        Flash.HomeMenuNoSave(Flash_HBM_NoSave.Checked);
+                        if (Flash_SaveData.Checked) Flash.EnableSaveData(Convert.ToInt32(Flash_TotalSaveDataSize.SelectedItem.ToString()));
+                        if (Customize.Checked) tImg.CreateSave(Platforms.Flash);
+                        if (Customize.Checked) Flash.InsertSaveData(SaveDataTitle.Lines);
 
-                            NES.InsertROM();
-                            NES.InsertPalette(NES_PaletteList.SelectedIndex);
-                            if (Customize.Checked)
-                            {
-                                if (NES.ExtractSaveTPL(Paths.WorkingFolder + "out.tpl"))
-                                    tImg.CreateSave(Platforms.NES);
-                                NES.InsertSaveData(SaveDataTitle.Text, Paths.WorkingFolder + "out.tpl");
-                            }
-                            Injector.PrepareContent1();
-                            break;
-
-                        case Platforms.SNES:
-                            Injectors.SNES SNES = new Injectors.SNES()
-                            {
-                                ROM = input[0],
-                                ROMcode = new Injectors.SNES().ProduceID(XML.SearchID(baseList.SelectedItem.ToString(), currentConsole))
-                            };
-
-                            SNES.ReplaceROM();
-
-                            if (Customize.Checked) SNES.InsertSaveTitle(SaveDataTitle.Lines);
-                            break;
-
-                        case Platforms.N64:
-                            Injectors.N64 N64 = new Injectors.N64() { ROM = input[0] };
-                            foreach (System.Xml.XmlNode entry in XML.RetrieveList(currentConsole))
-                            {
-                                if (entry.Attributes["title"].Value == baseList.SelectedItem.ToString())
-                                    foreach (var item in Directory.GetFiles(Paths.Database, "*.*", SearchOption.AllDirectories))
-                                        if (item.Contains(entry.Attributes["id"].Value))
-                                            N64.emuVersion = entry.Attributes["ver"].Value;
-                            }
-
-                            if (N64_FixBrightness.Checked || N64_8MBRAM.Checked || N64_AllocateROM.Checked)
-                            {
-                                string content1_file = Injector.DetermineContent1();
-                                var content1 = File.ReadAllBytes(content1_file);
-                                if (N64_FixBrightness.Checked) content1 = N64.FixBrightness(content1);
-                                if (N64_8MBRAM.Checked)        content1 = N64.ExpansionRAM(content1);
-                                if (N64_AllocateROM.Checked)   content1 = N64.AllocateROM(content1);
-                                File.WriteAllBytes(content1_file, content1);
-                                Injector.PrepareContent1();
-                            }
-                            N64.ReplaceROM();
-
-                            if (Customize.Checked) N64.InsertSaveComments(SaveDataTitle.Lines);
-                            break;
-
-                        case Platforms.Flash:
-                            Injectors.Flash Flash = new Injectors.Flash() { SWF = input[0] };
-                            Flash.ReplaceSWF();
-                            Flash.HomeMenuNoSave(Flash_HBM_NoSave.Checked);
-                            if (Flash_SaveData.Checked) Flash.EnableSaveData(Convert.ToInt32(Flash_TotalSaveDataSize.SelectedItem.ToString()));
-                            if (Customize.Checked) Flash.InsertSaveData(SaveDataTitle.Lines);
-                            break;
+                        U8.Pack(Paths.WorkingFolder_Content2, Paths.WorkingFolder + "00000002.app");
                     }
 
-                    if (Directory.Exists(Paths.WorkingFolder_Content5)) U8.Pack(Paths.WorkingFolder_Content5, Paths.WorkingFolder + "00000005.app");
-                    if (Directory.Exists(Paths.WorkingFolder_Content2)) U8.Pack(Paths.WorkingFolder_Content2, Paths.WorkingFolder + "00000002.app");
 
                     // TO-DO: IOS video mode patching
 
@@ -654,13 +656,26 @@ namespace FriishProduce
             else input[1] = null;
         }
 
-        private void Customize_CheckedChanged(object sender, EventArgs e)
+        /// <summary>
+        /// Function to store all actions in which toggling a checkbox also toggles other control(s)
+        /// </summary>
+        private void CheckedToggles(object sender, EventArgs e)
         {
-            Banner.Enabled = Customize.Checked;
-            Next.Enabled = checkBannerPage();
+            var s = sender as CheckBox;
+            switch (s.Name)
+            {
+                case "Customize":
+                    Banner.Enabled = s.Checked;
+                    Next.Enabled = checkBannerPage();
+                    break;
+                case "ImportBanner":
+                    baseList_banner.Enabled = s.Checked;
+                    break;
+                case "Flash_SaveData":
+                    Flash_TotalSaveDataSize.Enabled = s.Checked;
+                    break;
+            }
         }
-
-        private void ImportBanner_CheckedChanged(object sender, EventArgs e) => baseList_banner.Enabled = ImportBanner.Checked;
 
         private void Image_Click(object sender, EventArgs e)
         {
@@ -670,6 +685,7 @@ namespace FriishProduce
                 if (Image_Stretch.SelectedIndex < 0)
                 {
                     var resize = TitleImage.Resize.Stretch;
+                    tImg.ResizeMode = resize;
                     Image_Stretch.SelectedIndex = (int)resize;
                 }
                 if (Image_ModeI.SelectedIndex < 0)
@@ -680,7 +696,7 @@ namespace FriishProduce
 
                 try
                 {
-                    tImg.Generate((TitleImage.Resize)Enum.ToObject(typeof(TitleImage.Resize), Image_Stretch.SelectedIndex));
+                    tImg.Generate();
                     Image.Image = tImg.VCPic;
                 }
                 catch
@@ -696,7 +712,8 @@ namespace FriishProduce
 
         private void Image_StretchChanged(object sender, EventArgs e)
         {
-            tImg.Generate((TitleImage.Resize)Enum.ToObject(typeof(TitleImage.Resize), Image_Stretch.SelectedIndex));
+            tImg.ResizeMode = (TitleImage.Resize)Enum.ToObject(typeof(TitleImage.Resize), Image_Stretch.SelectedIndex);
+            tImg.Generate();
             Image.Image = tImg.VCPic;
             Next.Enabled = checkBannerPage();
         }
@@ -704,9 +721,15 @@ namespace FriishProduce
         private void Image_ModeIChanged(object sender, EventArgs e)
         {
             tImg.InterpolationMode = (System.Drawing.Drawing2D.InterpolationMode)Enum.ToObject(typeof(System.Drawing.Drawing2D.InterpolationMode), Image_ModeI.SelectedIndex);
-            tImg.Generate((TitleImage.Resize)Enum.ToObject(typeof(TitleImage.Resize), Image_Stretch.SelectedIndex));
+            tImg.Generate();
             Image.Image = tImg.VCPic;
             Next.Enabled = checkBannerPage();
+        }
+
+        private void Forwarders_Click(object sender, EventArgs e)
+        {
+            Lang lang1 = new Lang();
+            lang1.Set(Properties.Settings.Default.Language);
         }
     }
 }

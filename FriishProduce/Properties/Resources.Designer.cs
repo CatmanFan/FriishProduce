@@ -91,21 +91,20 @@ namespace FriishProduce.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to id						⸽lang
-        ///------------------------⸽------------------------
-        ///DEFAULT SETTING         ⸽USE AS TEMPLATE
-        ///AppTitle                ⸽FriishProduce
-        ///Settings                ⸽Settings
-        ///Settings.Text           ⸽⚙
-        ///Console.Items           ⸽NES/Famicom
-        ///Console.Items1          ⸽SNES/Super Famicom
-        ///Console.Items2          ⸽Nintendo 64
-        ///Error                   ⸽Error
-        ///Halt                    ⸽Halt
-        ///OK.Text                 ⸽&amp;OK
-        ///Cancel.Text             ⸽&amp;Cancel
-        ///Application.Text        ⸽Application
-        ///label1_s.Text   [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to id							⎸language_text
+        ///lang_name                   ⎸English
+        ///
+        ///AppTitle                    ⎸FriishProduce
+        ///
+        ///Console.Items               ⎸NES/Famicom
+        ///Console.Items1              ⎸SNES/Super Famicom
+        ///Console.Items2              ⎸Nintendo 64
+        ///Console.Items3              ⎸Adobe Flash
+        ///
+        ///Message_DeleteWAD           ⎸Really delete this WAD?
+        ///Message_Restart             ⎸Some of the changes you have made require you to restart the application before they can take effect.
+        ///Message_ExportFinished      ⎸Done.
+        ///Me [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string English {
             get {
@@ -130,6 +129,36 @@ namespace FriishProduce.Properties {
             get {
                 object obj = ResourceManager.GetObject("ROMC", resourceCulture);
                 return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SaveBannerFlash {
+            get {
+                object obj = ResourceManager.GetObject("SaveBannerFlash", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SaveIconFlash {
+            get {
+                object obj = ResourceManager.GetObject("SaveIconFlash", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SaveIconPlaceholder {
+            get {
+                object obj = ResourceManager.GetObject("SaveIconPlaceholder", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

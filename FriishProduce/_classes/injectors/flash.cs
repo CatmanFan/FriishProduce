@@ -12,11 +12,15 @@ namespace FriishProduce.Injectors
 
         public void ReplaceSWF() => File.Copy(SWF, Paths.WorkingFolder_Content2 + "content\\menu.swf", true);
 
+        /// <summary>
+        /// "Anything not saved will be lost" message toggle.
+        /// The config file enables this if "hbm_no_save" is set to no
+        /// </summary>
         public void HomeMenuNoSave(bool enabled)
         {
             string[] new_config = File.ReadAllLines(config);
             for (int i = 0; i < new_config.Length; i++)
-                if (new_config[i].StartsWith("hbm_no_save")) new_config[i] = $"hbm_no_save                     {(enabled ? "yes" : "no")}";
+                if (new_config[i].StartsWith("hbm_no_save")) new_config[i] = $"hbm_no_save                     {(enabled ? "no" : "yes")}";
             File.WriteAllLines(config, new_config);
         }
 
@@ -45,6 +49,7 @@ namespace FriishProduce.Injectors
             foreach (string configIni in Directory.GetFiles(Paths.WorkingFolder_Content2 + "banner\\", "*.ini", SearchOption.AllDirectories))
             {
                 string[] banner = File.ReadAllLines(configIni);
+                int icons_offset = 0;
                 for (int i = 0; i < banner.Length; i++)
                 {
                     if (banner[i].StartsWith("title_text"))   banner[i] = $"title_text      {Uri.EscapeUriString(lines[0])} # UTF-8/URL Encoded";

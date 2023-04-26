@@ -4,14 +4,15 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
 using libWiiSharp;
+using static FriishProduce.Properties.Resources;
 
 namespace FriishProduce
 {
     public class TitleImage
     {
         public string path { get; set; }
-        public InterpolationMode InterpolationMode { get; set; }
-
+        internal InterpolationMode InterpolationMode { get; set; }
+        internal Resize ResizeMode { get; set; }
         public Bitmap VCPic { get; set; }
         public Bitmap IconVCPic { get; set; }
         public bool shrinkToFit { get; set; }
@@ -39,9 +40,23 @@ namespace FriishProduce
             shrinkToFit = (int)platform <= 2;
             SaveIconL_xywh = new int[] { 10, 10, 58, 44 };
             SaveIconS_xywh = new int[] { 4, 9, 40, 30 };
+
+            if (ResizeMode == Resize.Fit)
+            {
+                Image pathImg = Image.FromFile(path);
+
+                float ratio = Math.Min(44 / pathImg.Width, 44 / pathImg.Height);
+
+                SaveIconS_xywh[2] = Convert.ToInt32(pathImg.Width * ratio);
+                SaveIconS_xywh[3] = Convert.ToInt32(pathImg.Height * ratio);
+                SaveIconS_xywh[0] = Convert.ToInt32((44 - SaveIconS_xywh[2]) / 2);
+                SaveIconS_xywh[1] = Convert.ToInt32((44 - SaveIconS_xywh[3]) / 2);
+
+                pathImg.Dispose();
+            }
         }
 
-        public void Generate(Resize modeR)
+        public void Generate()
         {
             if (path == null) return;
 
@@ -68,9 +83,9 @@ namespace FriishProduce
                 g.CompositingMode = CompositingMode.SourceOver;
                 g.CompositingQuality = CompositingQ;
 
-                if (modeR == Resize.Stretch)
+                if (ResizeMode == Resize.Stretch)
                     g.DrawImage(pathImg, 0, 0, 256, 192);
-                else if (modeR == Resize.Fit)
+                else if (ResizeMode == Resize.Fit)
                 {
                     float ratio = Math.Min(256F / pathImg.Width, 192F / pathImg.Height);
                     int W = Convert.ToInt32(pathImg.Width * ratio);
@@ -106,7 +121,7 @@ namespace FriishProduce
                     for (int i = 1; i <= 4; i++)
                         g.DrawImage(tempBmp, 4, i, 120, 96 - (i * 2));
                 }
-                
+
                 g.Dispose();
             }
 
@@ -117,7 +132,7 @@ namespace FriishProduce
                 g.SmoothingMode = Smoothing;
                 g.CompositingQuality = CompositingQ;
 
-                g.DrawImage(tempBmp, 0, 0, SaveIcon.Width, SaveIcon.Height);
+                g.DrawImage(Image.FromFile(path), 0, 0, SaveIcon.Width, SaveIcon.Height);
 
                 g.Dispose();
             }
@@ -125,60 +140,169 @@ namespace FriishProduce
             tempBmp.Dispose();
         }
 
+        private float[] opacity4 = { 0F, 0.31F, 0.65F, 1F };
+
         public void CreateSave(Platforms platform)
         {
             Directory.CreateDirectory(Paths.Images);
-            bool embedded = false;
-            string tplPath = null;
-            bool usesWte = false;
 
-            switch (platform)
+            if (platform != Platforms.Flash)
             {
-                case Platforms.NES:
-                    tplPath = Paths.WorkingFolder + "out.tpl";
-                    embedded = true;
-                    break;
-                case Platforms.SNES:
-                    tplPath = Paths.WorkingFolder_Content5 + "banner.tpl";
-                    break;
-                case Platforms.N64:
-                    tplPath = Paths.WorkingFolder_Content5 + "save_banner.tpl";
-                    break;
-                case Platforms.SMS:
-                case Platforms.SMD:
-                    usesWte = true;
-                    break;
-            }
-            if (embedded && !File.Exists(tplPath)) return;
-            else if (tplPath == null && !usesWte) return;
+                bool embedded = false;
+                string tplPath = null;
+                bool usesWte = false;
 
-            if (!usesWte)
-            {
-                TPL tpl = TPL.Load(tplPath);
-                int numTextures = tpl.NumOfTextures;
-                TPL_TextureFormat[] formatsT = new TPL_TextureFormat[numTextures];
-                TPL_PaletteFormat[] formatsP = new TPL_PaletteFormat[numTextures];
-                for (int i = 0; i < numTextures; i++)
+                switch (platform)
                 {
-                    formatsT[i] = tpl.GetTextureFormat(i);
-                    formatsP[i] = tpl.GetPaletteFormat(i);
+                    case Platforms.NES:
+                        tplPath = Paths.WorkingFolder + "out.tpl";
+                        embedded = true;
+                        break;
+                    case Platforms.SNES:
+                        tplPath = Paths.WorkingFolder_Content5 + "banner.tpl";
+                        break;
+                    case Platforms.N64:
+                        tplPath = Paths.WorkingFolder_Content5 + "save_banner.tpl";
+                        break;
+                    case Platforms.SMS:
+                    case Platforms.SMD:
+                        usesWte = true;
+                        break;
                 }
-                tpl.ExtractAllTextures(Paths.Images);
+                if (embedded && !File.Exists(tplPath)) return;
+                else if (tplPath == null && !usesWte) return;
+
+                // -----------------------------------------------------------------------------------------
+                // Save image generation for non-Flash TPLs (uses the source TPL embedded within the WAD)
+                // -----------------------------------------------------------------------------------------
+                if (!usesWte)
+                {
+                    TPL tpl = TPL.Load(tplPath);
+                    int numTextures = tpl.NumOfTextures;
+                    TPL_TextureFormat[] formatsT = new TPL_TextureFormat[numTextures];
+                    TPL_PaletteFormat[] formatsP = new TPL_PaletteFormat[numTextures];
+                    for (int i = 0; i < numTextures; i++)
+                    {
+                        formatsT[i] = tpl.GetTextureFormat(i);
+                        formatsP[i] = tpl.GetPaletteFormat(i);
+                    }
+                    tpl.ExtractAllTextures(Paths.Images);
+
+                    // Declaration of Graphics/Imaging variables
+                    var sFiles = new System.Collections.Generic.List<string>();
+                    for (int i = 0; i < numTextures; i++)
+                        sFiles.Add(Paths.Images + $"Texture_0{i}.png");
+
+                    Image sBanner = Image.FromFile(sFiles[0]);
+                    Image sIcon1 = SaveIconPlaceholder;
+                    Image sIcon2 = Image.FromFile(sFiles[numTextures - 1]);
+
+                    using (Image img = (Image)sBanner.Clone())
+                    using (Graphics g = Graphics.FromImage(img))
+                    {
+                        g.DrawImage(SaveIcon, SaveIconL_xywh[0], SaveIconL_xywh[1], SaveIconL_xywh[2], SaveIconL_xywh[3]);
+                        sFiles[0] = Paths.Images + Path.GetFileNameWithoutExtension(sFiles[0]) + "_new.png";
+                        img.Save(sFiles[0]);
+
+                        img.Dispose();
+                        g.Dispose();
+                    }
+
+                    using (Image img = (Image)sIcon1.Clone())
+                    using (Graphics g = Graphics.FromImage(img))
+                    {
+                        g.InterpolationMode = InterpolationMode;
+                        g.DrawImage(SaveIcon, SaveIconS_xywh[0], SaveIconS_xywh[1], SaveIconS_xywh[2], SaveIconS_xywh[3]);
+                        sFiles[1] = Paths.Images + Path.GetFileNameWithoutExtension(sFiles[1]) + "_new.png";
+                        img.Save(sFiles[1]);
+
+                        img.Dispose();
+                        g.Dispose();
+                    }
+
+                    // Update sIcon1 to modified version
+                    sIcon1.Dispose();
+                    sIcon1 = Image.FromFile(sFiles[1]);
+
+                    using (Image img1 = (Image)sIcon1.Clone())
+                    using (Image img2 = (Image)sIcon2.Clone())
+                    using (Graphics g = Graphics.FromImage(img1))
+                    using (var a = new ImageAttributes())
+                    {
+                        var w = img1.Width; var h = img1.Height;
+
+                        if (numTextures == 5)
+                        {
+                            a.SetColorMatrix(new ColorMatrix() { Matrix33 = opacity4[1] });
+                            g.DrawImage(img2, new Rectangle(0, 0, w, h), 0, 0, w, h, GraphicsUnit.Pixel, a);
+
+                            sFiles[2] = Paths.Images + Path.GetFileNameWithoutExtension(sFiles[2]) + "_new.png";
+                            img1.Save(sFiles[2]);
+
+                            g.DrawImage(img1, 0, 0);
+                            a.SetColorMatrix(new ColorMatrix() { Matrix33 = opacity4[2] });
+                            g.DrawImage(img2, new Rectangle(0, 0, w, h), 0, 0, w, h, GraphicsUnit.Pixel, a);
+
+                            sFiles[3] = Paths.Images + Path.GetFileNameWithoutExtension(sFiles[3]) + "_new.png";
+                            img1.Save(sFiles[3]);
+
+                        }
+
+                        g.Dispose();
+                        img1.Dispose();
+                        img2.Dispose();
+                    }
+
+                    // -------------------------------------------------------------- //
+
+                    while (tpl.NumOfTextures > 0)
+                        tpl.RemoveTexture(0);
+
+                    for (int i = 0; i < numTextures; i++)
+                        tpl.AddTexture(sFiles[i], formatsT[i], formatsP[i]);
+
+                    tpl.Save(Paths.Images + "out.tpl");
+                    if (File.Exists(tplPath))
+                    {
+                        File.Delete(tplPath);
+                        File.Move(Paths.Images + "out.tpl", tplPath);
+                    }
+
+                    sBanner.Dispose();
+                    sIcon1.Dispose();
+                    sIcon2.Dispose();
+                    tpl.Dispose();
+                }
+
+                // -------------------------------------------------------------------------------------
+                // Save image generation for WTEs (uses the source WTE files embedded within the WAD)
+                // -------------------------------------------------------------------------------------
+                else
+                {
+                }
+            }
+
+            // ------------------------------------------------------------------------------------------
+            // Save image generation for Flash TPLs (uses Properties.Resources.Save{Icon/Banner}Flash)
+            // ------------------------------------------------------------------------------------------
+            else
+            {
+                var bannerPath = Paths.WorkingFolder_Content2 + "00000002.app\\banner\\US\\banner.tpl";
+                var iconPath = Paths.WorkingFolder_Content2 + "00000002.app\\banner\\US\\icon.tpl";
 
                 // Declaration of Graphics/Imaging variables
                 var sFiles = new System.Collections.Generic.List<string>();
-                for (int i = 0; i < numTextures; i++)
+                for (int i = 0; i < 5; i++)
                     sFiles.Add(Paths.Images + $"Texture_0{i}.png");
 
-                Image sBanner = Image.FromFile(sFiles[0]);
-                Image sIcon1 = Image.FromFile(sFiles[1]);
-                Image sIcon2 = Image.FromFile(sFiles[numTextures - 1]);
+                Image sBanner = SaveBannerFlash;
+                Image sIcon1 = SaveIconPlaceholder;
+                Image sIcon2 = SaveIconFlash;
 
                 using (Image img = (Image)sBanner.Clone())
                 using (Graphics g = Graphics.FromImage(img))
                 {
                     g.DrawImage(SaveIcon, SaveIconL_xywh[0], SaveIconL_xywh[1], SaveIconL_xywh[2], SaveIconL_xywh[3]);
-                    sFiles[0] = Paths.Images + Path.GetFileNameWithoutExtension(sFiles[0]) + "_new.png";
                     img.Save(sFiles[0]);
 
                     img.Dispose();
@@ -190,7 +314,6 @@ namespace FriishProduce
                 {
                     g.InterpolationMode = InterpolationMode;
                     g.DrawImage(SaveIcon, SaveIconS_xywh[0], SaveIconS_xywh[1], SaveIconS_xywh[2], SaveIconS_xywh[3]);
-                    sFiles[1] = Paths.Images + Path.GetFileNameWithoutExtension(sFiles[1]) + "_new.png";
                     img.Save(sFiles[1]);
 
                     img.Dispose();
@@ -208,22 +331,16 @@ namespace FriishProduce
                 {
                     var w = img1.Width; var h = img1.Height;
 
-                    if (numTextures == 5)
-                    {
-                        a.SetColorMatrix(new ColorMatrix() { Matrix33 = 0.31F });
-                        g.DrawImage(img2, new Rectangle(0, 0, w, h), 0, 0, w, h, GraphicsUnit.Pixel, a);
+                    a.SetColorMatrix(new ColorMatrix() { Matrix33 = opacity4[1] });
+                    g.DrawImage(img2, new Rectangle(0, 0, w, h), 0, 0, w, h, GraphicsUnit.Pixel, a);
 
-                        sFiles[2] = Paths.Images + Path.GetFileNameWithoutExtension(sFiles[2]) + "_new.png";
-                        img1.Save(sFiles[2]);
+                    img1.Save(sFiles[2]);
 
-                        g.DrawImage(img1, 0, 0);
-                        a.SetColorMatrix(new ColorMatrix() { Matrix33 = 0.65F });
-                        g.DrawImage(img2, new Rectangle(0, 0, w, h), 0, 0, w, h, GraphicsUnit.Pixel, a);
+                    g.DrawImage(img1, 0, 0);
+                    a.SetColorMatrix(new ColorMatrix() { Matrix33 = opacity4[2] });
+                    g.DrawImage(img2, new Rectangle(0, 0, w, h), 0, 0, w, h, GraphicsUnit.Pixel, a);
 
-                        sFiles[3] = Paths.Images + Path.GetFileNameWithoutExtension(sFiles[3]) + "_new.png";
-                        img1.Save(sFiles[3]);
-
-                    }
+                    img1.Save(sFiles[3]);
 
                     g.Dispose();
                     img1.Dispose();
@@ -232,27 +349,42 @@ namespace FriishProduce
 
                 // -------------------------------------------------------------- //
 
-                while (tpl.NumOfTextures > 0)
-                    tpl.RemoveTexture(0);
+                TPL tpl = TPL.FromImage(sFiles[0], TPL.Load(bannerPath).GetTextureFormat(0), TPL.Load(bannerPath).GetPaletteFormat(0));
+                tpl.Save(bannerPath);
+                tpl.Save(bannerPath.Replace("banner\\US\\", "banner\\EU\\"));
+                tpl.Save(bannerPath.Replace("banner\\US\\", "banner\\JP\\"));
 
-                for (int i = 0; i < numTextures; i++)
-                    tpl.AddTexture(sFiles[i], formatsT[i], formatsP[i]);
-
-                tpl.Save(Paths.Images + "out.tpl");
-                if (File.Exists(tplPath))
-                {
-                    File.Delete(tplPath);
-                    File.Move(Paths.Images + "out.tpl", tplPath);
-                }
+                tpl = TPL.FromImages(new string[]
+                    {
+                    sFiles[1],
+                    sFiles[2],
+                    sFiles[3],
+                    sFiles[4]
+                    }, new TPL_TextureFormat[]
+                    {
+                    TPL.Load(iconPath).GetTextureFormat(0),
+                    TPL.Load(iconPath).GetTextureFormat(0),
+                    TPL.Load(iconPath).GetTextureFormat(0),
+                    TPL.Load(iconPath).GetTextureFormat(0)
+                    }, new TPL_PaletteFormat[]
+                    {
+                    TPL.Load(iconPath).GetPaletteFormat(0),
+                    TPL.Load(iconPath).GetPaletteFormat(0),
+                    TPL.Load(iconPath).GetPaletteFormat(0),
+                    TPL.Load(iconPath).GetPaletteFormat(0)
+                    });
+                tpl.Save(iconPath);
+                tpl.Save(iconPath.Replace("banner\\US\\", "banner\\EU\\"));
+                tpl.Save(iconPath.Replace("banner\\US\\", "banner\\JP\\"));
 
                 sBanner.Dispose();
                 sIcon1.Dispose();
                 sIcon2.Dispose();
                 tpl.Dispose();
-
-                foreach (var file in Directory.GetFiles(Paths.Images)) try { File.Delete(file); } catch { }
-                try { Directory.Delete(Paths.Images, true); } catch { }
             }
+
+            foreach (var file in Directory.GetFiles(Paths.Images)) try { File.Delete(file); } catch { }
+            try { Directory.Delete(Paths.Images, true); } catch { }
         }
 
         public void Dispose()

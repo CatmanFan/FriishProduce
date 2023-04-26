@@ -18,6 +18,7 @@ This injector bypasses other third-party assets (such as Common-Key.bin, most of
 * Additional content/emulator options for each platform where supported
 
 ### To-Do
+- [ ] Convert language CSVs to JSON
 - [ ] Add option to leave banner images unedited
 - [ ] Fix aspect-ratio for title image in saveicon
 - [ ] Use blank saveicon template(s) in Resources

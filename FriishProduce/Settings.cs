@@ -24,15 +24,21 @@ namespace FriishProduce
             // -----------------------------
             // Add system default
             langs.Add("sys");
-            Language.Items.Add("[" + lang.Get("SystemDefault") + "]");
+            Language.Items.Add($"<{lang.Get("SystemDefault")}>");
 
             // Add all languages
-            foreach (string file in Directory.GetFiles(Environment.CurrentDirectory + $"\\langs\\"))
-                if (lang.IsConvertable(file))
+            foreach (string file in Directory.GetFiles(Paths.Languages))
+                if (Lang.Read(file) != null)
                 {
-                    string name = new CultureInfo(Path.GetFileNameWithoutExtension(file)).NativeName;
-                    Language.Items.Add(name[0].ToString().ToUpper() + name.Substring(1));
+                    Language.Items.Add(lang.Get("name"));
                     langs.Add(Path.GetFileNameWithoutExtension(file));
+                    try
+                    {
+                        var Lang = SimpleTranslationSystem.TranslationFileReader.GetLanguagesFromCsvFile(file, lang.separator, System.Text.Encoding.Default)[0];
+                    }
+                    catch
+                    {
+                    }
                 }
 
             foreach (var name in langs)

@@ -97,6 +97,15 @@ namespace FriishProduce
                 File.Move(Paths.WorkingFolder + "00000001.app.rec", Paths.WorkingFolder + "00000001.app");
             }
         }
+        public static void ChangeVideoMode()
+        {
+            string content1_file = Injector.DetermineContent1();
+            var content1 = File.ReadAllBytes(content1_file);
+
+
+            File.WriteAllBytes(content1_file, content1);
+            Injector.PrepareContent1();
+        }
 
         public static void RemoveEmanual()
         {

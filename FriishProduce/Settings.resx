@@ -169,7 +169,10 @@
     <value>0</value>
   </data>
   <data name="OK.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>System</value>
+    <value>Flat</value>
+  </data>
+  <data name="OK.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.5pt</value>
   </data>
   <data name="OK.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -199,7 +202,10 @@
     <value>0</value>
   </data>
   <data name="Cancel.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>System</value>
+    <value>Flat</value>
+  </data>
+  <data name="Cancel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.5pt</value>
   </data>
   <data name="Cancel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>

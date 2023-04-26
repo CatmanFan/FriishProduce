@@ -10,16 +10,16 @@ using static FriishProduce.Properties.Settings;
 
 namespace FriishProduce
 {
-    public class Localization
+    public partial class Localization
     {
         private Language Language { get; set; }
         private Language English { get; set; }
+        internal char separator = '⎸';
         public Localization()
         {
             string code = Default.Language;
             string csv1 = Paths.Languages + "en.csv";
             string csv2 = Paths.Languages + $"{code}.csv";
-            char separator = '⸽';
 
             // Failsafe to prevent exceptions in case the English file is modified or the file/languages directory are missing
             if (!Directory.Exists(Paths.Languages))
@@ -108,6 +108,15 @@ namespace FriishProduce
             for (int i = 0; i < English.translations.Count; i++)
                 if (stringName.ToLower() == English.translations[i].identifier.Replace(" ", "").ToLower())
                     return TranslationSystem.GetText(English.translations[i].identifier, English).Replace(@"\n", Environment.NewLine);
+
+            return "undefined";
+        }
+
+        public string Get(string stringName, Language lang)
+        {
+            for (int i = 0; i < lang.translations.Count; i++)
+                if (stringName.ToLower() == lang.translations[i].identifier.Replace(" ", "").ToLower())
+                    return TranslationSystem.GetText(lang.translations[i].identifier, Language).Replace(@"\n", Environment.NewLine);
 
             return "undefined";
         }
