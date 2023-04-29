@@ -19,13 +19,7 @@ namespace FriishProduce.Injectors
 
         public byte[] FixBrightness(byte[] content1)
         {
-            // Method originally reported by @NoobletCheese/@Maeson on GBAtemp:
-            // Here is a magical string that should work for all N64 games.
-            // 80 04 00 04 2C 00 00 FF 40 82 00 10 80 04 00 08 2C 00 00 FF
-            // Then walk backwards until you find the
-            // 94 21 FF E0
-            // and replace with
-            // 4E 80 00 20
+            // Method originally reported by @NoobletCheese/@Maeson on GBAtemp.
             for (int i = 0; i < content1.Length - 20; i++)
             {
                 if (content1[i] == 0x80
@@ -86,7 +80,7 @@ namespace FriishProduce.Injectors
                     return content1;
                 }
             }
-            throw new Exception("Failed to enable extended memory.");
+            throw new Exception(Program.Language.Get("m012"));
         }
 
         public byte[] AllocateROM(byte[] content1)
@@ -114,7 +108,7 @@ namespace FriishProduce.Injectors
                     return content1;
                 }
             }
-            throw new Exception ("Unable to carry out allocation of data.");
+            throw new Exception(Program.Language.Get("m015"));
         }
 
         // ----------------------------------------------------------------------- //
@@ -178,7 +172,7 @@ namespace FriishProduce.Injectors
         public void ReplaceROM()
         {
             if (File.ReadAllBytes(ROM).Length % 4194304 != 0 && emuVersion.Contains("romc"))
-                throw new Exception("The ROM cannot be compressed because it is not a multiple of 4 MB (4194304 bytes).");
+                throw new Exception(Program.Language.Get("m013"));
 
             File.Copy(ROM, $"{Paths.Apps}ucon64\\rom");
             using (Process p = Process.Start(new ProcessStartInfo
@@ -194,7 +188,7 @@ namespace FriishProduce.Injectors
             if (File.Exists($"{Paths.Apps}ucon64\\rom.bak")) File.Delete($"{Paths.Apps}ucon64\\rom.bak");
 
             if (!File.Exists(byteswappedROM))
-                throw new Exception("The ROM byteswapping process failed.");
+                throw new Exception(Program.Language.Get("m011"));
 
             if (emuVersion.Contains("romc"))
             {
@@ -223,13 +217,13 @@ namespace FriishProduce.Injectors
                 File.Delete(pPath);
 
                 if (!File.Exists(compressedROM))
-                    throw new Exception("The ROMC compression process failed.");
+                    throw new Exception(Program.Language.Get("m014"));
 
                 // Check filesize
                 if (File.ReadAllBytes(compressedROM).Length > File.ReadAllBytes($"{Paths.WorkingFolder_Content5}romc").Length)
                 {
                     File.Delete(compressedROM);
-                    throw new Exception(new Localization().Get("Error_ROMSize"));
+                    throw new Exception(Program.Language.Get("m004"));
                 }
 
                 // Copy
@@ -242,7 +236,7 @@ namespace FriishProduce.Injectors
                 if (File.ReadAllBytes(byteswappedROM).Length > File.ReadAllBytes($"{Paths.WorkingFolder_Content5}rom").Length)
                 {
                     File.Delete(byteswappedROM);
-                    throw new Exception(new Localization().Get("Error_ROMSize"));
+                    throw new Exception(Program.Language.Get("m004"));
                 }
 
                 // Copy

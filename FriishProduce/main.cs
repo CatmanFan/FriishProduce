@@ -1,8 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -14,8 +14,9 @@ namespace FriishProduce
 {
     public partial class Main : Form
     {
-        Localization lang = Program.lang;
+        Lang x = Program.Language;
         Platforms currentConsole = 0;
+        Database db;
 
         string[] input = new string[]
             {
@@ -23,21 +24,36 @@ namespace FriishProduce
                 /* Full path to ROM patch */ null,
                 /* Full path to WAD file  */ null
             };
+        Dictionary<string, string> btns = new Dictionary<string, string>();
         TitleImage tImg = new TitleImage();
 
         public Main()
         {
             InitializeComponent();
-            lang.ChangeFormLanguage(this);
             ChangeTheme();
 
-            this.Text = (lang.Get("AppTitle"));
-            label1.Text = string.Format(lang.Get("label1.Text"), Strings.version);
-            ToolTip.SetToolTip(Settings, lang.Get("Settings"));
+            string[] consoles = new string[]
+            {
+                x.Get("NES"),
+                x.Get("SNES"),
+                x.Get("N64"),
+                x.Get("Flash")
+            };
+            foreach (var console in consoles) Console.Items.Add(console);
 
-            BrowseWAD.Filter = lang.Get("BrowseWAD.Filter") + lang.Get("BrowseAll");
-            BrowseImage.Filter = lang.Get("BrowseImage.Filter") + lang.Get("BrowseAll");
-            BrowsePatch.Filter = lang.Get("BrowsePatch.Filter") + lang.Get("BrowseAll");
+            x.Localize(this);
+
+            var assembly = System.Reflection.Assembly.GetExecutingAssembly();
+            var fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
+            string ver = $"beta {fvi.FileVersion}";
+
+            Text = (x.Get("g000"));
+            a000.Text = string.Format(x.Get("a000"), ver);
+            ToolTip.SetToolTip(Settings, x.Get("g001"));
+
+            BrowseWAD.Filter   = x.Get("f_wad") + x.Get("f_all");
+            BrowseImage.Filter = x.Get("f_img") + x.Get("f_all");
+            BrowsePatch.Filter = x.Get("f_bps") + x.Get("f_all");
             SaveWAD.Filter = BrowseWAD.Filter;
 
             Reset();
@@ -45,36 +61,41 @@ namespace FriishProduce
 
         private void Console_Changed(object sender, EventArgs e)
         {
+            a001.Text = x.Get("a001");
+            OpenROM.Text = x.Get("g003");
             foreach (var p in page4.Controls.OfType<Panel>())
                 if (p.Name.StartsWith("Options_")) p.Visible = false;
 
             currentConsole = (Platforms)Console.SelectedIndex;
-            OpenROM.Text = lang.Get("OpenROM.Text");
+            db = new Database((int)currentConsole);
+
             switch (currentConsole)
             {
                 case Platforms.NES:
-                    BrowseROM.Filter = lang.Get("BrowseROM_NES");
+                    BrowseROM.Filter = x.Get("f_nes");
                     Options_NES.Visible = true;
                     SaveDataTitle.MaxLength = 20;
                     break;
                 case Platforms.SNES:
-                    BrowseROM.Filter = lang.Get("BrowseROM_SNES");
+                    BrowseROM.Filter = x.Get("f_sfc");
                     break;
                 case Platforms.N64:
-                    BrowseROM.Filter = lang.Get("BrowseROM_N64");
+                    BrowseROM.Filter = x.Get("f_n64");
                     Options_N64.Visible = true;
                     break;
                 case Platforms.Flash:
-                    OpenROM.Text = lang.Get("OpenSWF.Text");
-                    BrowseROM.Filter = lang.Get("BrowseSWF");
+                    a001.Text = x.Get("a001_swf");
+                    OpenROM.Text = x.Get("g004");
+                    BrowseROM.Filter = x.Get("f_swf");
                     Options_Flash.Visible = true;
                     break;
             }
-            BrowseROM.Filter += lang.Get("BrowseAll");
+
+            BrowseROM.Filter += x.Get("f_all");
             Reset();
             RefreshBases();
 
-            tImg.SetPlatform(currentConsole);
+            Image.Image = tImg.Generate(currentConsole);
             SaveDataTitle.Enabled = !(currentConsole == Platforms.SMS || currentConsole == Platforms.SMD);
             SaveDataTitle.MaxLength = 80;
 
@@ -90,19 +111,19 @@ namespace FriishProduce
         private void Reset()
         {
             input = new string[input.Length];
-            NES_PaletteList.SelectedIndex = 0;
+            NES_Palette.SelectedIndex = 0;
             Flash_TotalSaveDataSize.SelectedIndex = 0;
+            Flash_FPS.SelectedIndex = 0;
+            Flash_StrapReminder.SelectedIndex = 0;
             SaveDataTitle.Enabled = true;
+            btns = new Dictionary<string, string>();
         }
 
         // ***************************************************************************************************************** //
         private void Settings_Click(object sender, EventArgs e)
         {
-            Settings SettingsForm = new Settings()
-            {
-                Text = lang.Get("Settings"),
-                Owner = this
-            };
+            Settings SettingsForm = new Settings() { Text = x.Get("g001"), };
+            ChangeTheme(SettingsForm);
             if (SettingsForm.ShowDialog(this) == DialogResult.OK) ChangeTheme();
         }
 
@@ -151,6 +172,47 @@ namespace FriishProduce
             }
         }
 
+        private void ChangeTheme(Form f)
+        {
+            f.BackColor = BackColor;
+            f.ForeColor = ForeColor;
+            foreach (var item in f.Controls.OfType<Panel>())
+                if (item.Tag.ToString() == "panel") item.BackColor = panel.BackColor;
+            foreach (var item in f.Controls.OfType<ComboBox>())
+                if (item.Name.StartsWith("btns"))   item.BackColor = BackColor;
+
+            if (Properties.Settings.Default.LightTheme)
+            {
+                foreach (var panel in f.Controls.OfType<Panel>())
+                {
+                    foreach (var cb in panel.Controls.OfType<CheckBox>()) cb.FlatStyle = FlatStyle.System;
+                    foreach (var c1 in panel.Controls.OfType<Panel>())
+                        foreach (var cb in c1.Controls.OfType<CheckBox>()) cb.FlatStyle = FlatStyle.System;
+                    foreach (var button in panel.Controls.OfType<Button>())
+                    {
+                        button.FlatAppearance.BorderColor = Color.LightGray;
+                        button.FlatAppearance.MouseDownBackColor = Color.Silver;
+                        button.FlatAppearance.MouseOverBackColor = button.FlatAppearance.BorderColor;
+                    }
+                }
+            }
+            else
+            {
+                foreach (var panel in f.Controls.OfType<Panel>())
+                {
+                    foreach (var cb in panel.Controls.OfType<CheckBox>()) cb.FlatStyle = FlatStyle.Standard;
+                    foreach (var c2 in panel.Controls.OfType<Panel>())
+                        foreach (var cb in c2.Controls.OfType<CheckBox>()) cb.FlatStyle = FlatStyle.Standard;
+                    foreach (var button in panel.Controls.OfType<Button>())
+                    {
+                        button.FlatAppearance.BorderColor = Color.FromArgb(64, 64, 64);
+                        button.FlatAppearance.MouseDownBackColor = Color.FromArgb(50, 50, 50);
+                        button.FlatAppearance.MouseOverBackColor = button.FlatAppearance.BorderColor;
+                    }
+                }
+            }
+        }
+
         private void Next_Click(object sender, EventArgs e)
         {
             if (page1.Visible)
@@ -160,7 +222,7 @@ namespace FriishProduce
                 Back.Visible = true;
                 Back.Enabled = true;
                 Next.Enabled = (input[0] != null) && (input[2] != null);
-                label3.Text = input[0] != null ? Path.GetFileName(input[0]) : lang.Get("label3.Text");
+                ROMPath.Text = input[0] != null ? Path.GetFileName(input[0]) : x.Get("a002");
             }
             else if (page2.Visible)
             {
@@ -205,11 +267,10 @@ namespace FriishProduce
         }
         private bool checkBannerPage()
         {
-            if (Customize.Checked)
+            if (Custom.Checked)
                 return !(string.IsNullOrEmpty(ChannelTitle.Text)
                       || string.IsNullOrEmpty(BannerTitle.Text)
-                      || string.IsNullOrEmpty(SaveDataTitle.Text)
-                      || tImg.path == null);
+                      || string.IsNullOrEmpty(SaveDataTitle.Text));
             return true;
         }
 
@@ -221,7 +282,7 @@ namespace FriishProduce
             input[1] = null;
             if (BrowseROM.ShowDialog() == DialogResult.OK)
                 input[0] = BrowseROM.FileName;
-                label3.Text = input[0] != null ? Path.GetFileName(input[0]) : lang.Get("label3.Text");
+                ROMPath.Text = input[0] != null ? Path.GetFileName(input[0]) : x.Get("a002");
 
             Patch.Checked = false;
             Next.Enabled = (input[0] != null) && (input[2] != null);
@@ -229,17 +290,17 @@ namespace FriishProduce
 
         private void BaseList_Changed(object sender, EventArgs e)
         {
-            if (baseList.SelectedIndex >= 0)
+            if (Bases.SelectedIndex >= 0)
             {
-                foreach (var item in Directory.GetFiles(Paths.Database, "*.*", SearchOption.AllDirectories))
-                    if (File.Exists(item) && item.Contains(XML.SearchID(baseList.SelectedItem.ToString(), currentConsole)))
+                foreach (var item in Directory.GetFiles(Paths.Database, "*.wad", SearchOption.AllDirectories))
+                    if (File.Exists(item) && item.Contains(db.SearchID(Bases.SelectedItem.ToString())))
                     {
                         input[2] = item;
                         goto End;
                     }
 
                 MessageBox.Show("Unable to find WAD in database.");
-                baseList.Items.Remove(baseList.SelectedItem);
+                Bases.Items.Remove(Bases.SelectedItem);
                 input[2] = null;
 
                 End:
@@ -254,43 +315,43 @@ namespace FriishProduce
             if (!BannerOnly)
             {
                 DeleteBase.Enabled = false;
-                baseList.Enabled = false;
-                baseList.Items.Clear();
-                baseList_banner.SelectedIndex = -1;
-                baseList.DropDownHeight = 106;
-                foreach (System.Xml.XmlNode entry in XML.RetrieveList(currentConsole))
-                    if (File.Exists($"{XML.CurrentFolder(currentConsole)}{entry.Attributes["id"].Value.ToUpper()}.wad"))
+                Bases.Enabled = false;
+                Bases.Items.Clear();
+                ImportBases.SelectedIndex = -1;
+                Bases.DropDownHeight = 106;
+                foreach (var entry in db.GetList())
+                    if (File.Exists($"{db.CurrentFolder(currentConsole)}{entry["id"].ToString().ToUpper()}.wad"))
                     {
-                        baseList.Items.Add(entry.Attributes["title"].Value);
-                        baseList.Enabled = baseList.Items.Count >= 2;
+                        Bases.Items.Add(entry["title"].ToString());
+                        Bases.Enabled = Bases.Items.Count >= 2;
                     }
 
-                baseList.SelectedIndex = baseList.Items.Count < 1 ? -1 : 0;
+                Bases.SelectedIndex = Bases.Items.Count < 1 ? -1 : 0;
             }
 
-            DeleteBase.Enabled = baseList.SelectedIndex >= 0;
+            DeleteBase.Enabled = Bases.SelectedIndex >= 0;
 
-            if (baseList.Items.Count > 0)
+            if (Bases.Items.Count > 0)
             {
-                baseList_banner.Items.Clear();
-                foreach (var item in baseList.Items)
-                    if (item != baseList.SelectedItem)
+                ImportBases.Items.Clear();
+                foreach (var item in Bases.Items)
+                    if (item != Bases.SelectedItem)
                     {
-                        baseList_banner.Items.Add(item);
-                        baseList_banner.SelectedIndex = 0;
+                        ImportBases.Items.Add(item);
+                        ImportBases.SelectedIndex = 0;
                     }
             }
-            if (baseList_banner.Items.Count == 0)
+            if (ImportBases.Items.Count == 0)
             {
-                ImportBanner.Checked = false;
-                ImportBanner.Enabled = false;
-                baseList_banner.Enabled = false;
+                Import.Checked = false;
+                Import.Enabled = false;
+                ImportBases.Enabled = false;
             }
             else
             {
-                ImportBanner.Enabled = true;
-                baseList_banner.Enabled = ImportBanner.Checked;
-                baseList_banner.SelectedIndex = 0;
+                Import.Enabled = true;
+                ImportBases.Enabled = Import.Checked;
+                ImportBases.SelectedIndex = 0;
             }
 
             checkBannerPage();
@@ -305,16 +366,16 @@ namespace FriishProduce
                     WAD w = WAD.Load(BrowseWAD.FileName);
                     if (!w.HasBanner) goto Fail;
 
-                    foreach (System.Xml.XmlNode entry in XML.RetrieveList(currentConsole))
+                    foreach (var entry in db.GetList())
                     {
-                        if (entry.Attributes["id"].Value == w.UpperTitleID)
+                        if (entry["id"].ToString().ToUpper() == w.UpperTitleID)
                         {
-                            string dest = $"{XML.CurrentFolder(currentConsole)}{w.UpperTitleID}.wad";
+                            string dest = $"{db.CurrentFolder(currentConsole)}{w.UpperTitleID}.wad";
                             if (!Directory.Exists(Path.GetDirectoryName(dest)))
                                 Directory.CreateDirectory(Path.GetDirectoryName(dest));
                             File.Copy(BrowseWAD.FileName, dest, true);
                             RefreshBases();
-                            baseList.SelectedItem = entry.Attributes["title"].Value;
+                            Bases.SelectedItem = entry["title"].ToString();
                             w.Dispose();
                             return;
                         }
@@ -334,12 +395,12 @@ namespace FriishProduce
         }
         private void DeleteWAD(object sender, EventArgs e)
         {
-            if (MessageBox.Show(lang.Get("Message_DeleteWAD"), Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show(x.Get("m000"), MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 foreach (var item in Directory.GetFiles(Paths.Database, "*.wad", SearchOption.AllDirectories))
-                    foreach (System.Xml.XmlNode entry in XML.RetrieveList(currentConsole))
+                    foreach (var entry in db.GetList())
                     {
-                        if (File.Exists(item) && entry.Attributes["id"].Value == Path.GetFileNameWithoutExtension(item))
+                        if (File.Exists(item) && entry["id"].ToString().ToUpper() == Path.GetFileNameWithoutExtension(item))
                         {
                             File.Delete(item);
                             input[2] = null;
@@ -362,19 +423,19 @@ namespace FriishProduce
 
                 try
                 {
-                    if (currentConsole != Platforms.Flash) input[0] = Injector.ApplyPatch(input[0], input[1]);
+                    if (currentConsole != Platforms.Flash) input[0] = Global.ApplyPatch(input[0], input[1]);
 
                     WAD w = WAD.Load(input[2]);
                     var ios = (int)w.StartupIOS;
                     w.Unpack(Paths.WorkingFolder);
 
                     #region Banner
-                    if (Customize.Checked)
+                    if (Custom.Checked)
                     {
-                        if (ImportBanner.Checked)
+                        if (Import.Checked)
                         {
                             foreach (var item in Directory.GetFiles(Paths.Database, "*.*", SearchOption.AllDirectories))
-                                if (File.Exists(item) && item.Contains(XML.SearchID(baseList_banner.SelectedItem.ToString(), currentConsole)))
+                                if (File.Exists(item) && item.Contains(db.SearchID(ImportBases.SelectedItem.ToString())))
                                     WAD.Load(item).BannerApp.Save(Paths.WorkingFolder + "00000000.app");
                         }
 
@@ -390,12 +451,16 @@ namespace FriishProduce
                         try
                         {
                             File.WriteAllBytes(Paths.WorkingFolder + "banner.brlyt", Banner.Data[Banner.GetNodeIndex("banner.brlyt")]);
-                            File.WriteAllBytes(Paths.Images + "VCPic.tpl", Banner.Data[Banner.GetNodeIndex("VCPic.tpl")]);
-                            File.WriteAllBytes(Paths.Images + "IconVCPic.tpl", Icon.Data[Icon.GetNodeIndex("IconVCPic.tpl")]);
+
+                            if (tImg.path != null)
+                            {
+                                File.WriteAllBytes(Paths.Images + "VCPic.tpl", Banner.Data[Banner.GetNodeIndex("VCPic.tpl")]);
+                                File.WriteAllBytes(Paths.Images + "IconVCPic.tpl", Icon.Data[Icon.GetNodeIndex("IconVCPic.tpl")]);
+                            }
                         }
                         catch
                         {
-                            throw new Exception(lang.Get("Error_InvalidBanner"));
+                            throw new Exception(x.Get("m008"));
                         }
 
                         // --------------------------------------------------------------------------- //
@@ -420,34 +485,38 @@ namespace FriishProduce
 
                         var Brlyt = File.ReadAllBytes(Paths.WorkingFolder + "banner.brlyt");
                         if (Brlyt == Banner.Data[Banner.GetNodeIndex("banner.brlyt")])
-                            throw new Exception(lang.Get("Error_BannerBrlyt"));
+                            throw new Exception(x.Get("m007"));
                         Banner.ReplaceFile(Banner.GetNodeIndex("banner.brlyt"), Brlyt);
 
                         // --------------------------------------------------------------------------- //
 
-                        TPL tpl = TPL.Load(Paths.Images + "VCPic.tpl");
-                        var tplTF = tpl.GetTextureFormat(0);
-                        var tplPF = tpl.GetPaletteFormat(0);
-                        tpl.RemoveTexture(0);
-                        tpl.AddTexture(tImg.VCPic, tplTF, tplPF);
-                        tpl.Save(Paths.Images + "VCPic.tpl");
+                        if (tImg.path != null)
+                        {
+                            TPL tpl = TPL.Load(Paths.Images + "VCPic.tpl");
+                            var tplTF = tpl.GetTextureFormat(0);
+                            var tplPF = tpl.GetPaletteFormat(0);
+                            tpl.RemoveTexture(0);
+                            tpl.AddTexture(tImg.VCPic, tplTF, tplPF);
+                            tpl.Save(Paths.Images + "VCPic.tpl");
 
-                        tpl = TPL.Load(Paths.Images + "IconVCPic.tpl");
-                        tplTF = tpl.GetTextureFormat(0);
-                        tplPF = tpl.GetPaletteFormat(0);
-                        tpl.RemoveTexture(0);
-                        tpl.AddTexture(tImg.IconVCPic, tplTF, tplPF);
-                        tpl.Save(Paths.Images + "IconVCPic.tpl");
+                            tpl = TPL.Load(Paths.Images + "IconVCPic.tpl");
+                            tplTF = tpl.GetTextureFormat(0);
+                            tplPF = tpl.GetPaletteFormat(0);
+                            tpl.RemoveTexture(0);
+                            tpl.AddTexture(tImg.IconVCPic, tplTF, tplPF);
+                            tpl.Save(Paths.Images + "IconVCPic.tpl");
 
-                        tpl.Dispose();
+                            tpl.Dispose();
 
-                        Banner.ReplaceFile(Banner.GetNodeIndex("VCPic.tpl"), File.ReadAllBytes(Paths.Images + "VCPic.tpl"));
-                        Icon.ReplaceFile(Icon.GetNodeIndex("IconVCPic.tpl"), File.ReadAllBytes(Paths.Images + "IconVCPic.tpl"));
+                            Banner.ReplaceFile(Banner.GetNodeIndex("VCPic.tpl"), File.ReadAllBytes(Paths.Images + "VCPic.tpl"));
+                            Icon.ReplaceFile(Icon.GetNodeIndex("IconVCPic.tpl"), File.ReadAllBytes(Paths.Images + "IconVCPic.tpl"));
+
+                            Icon.AddHeaderImd5();
+                            BannerApp.ReplaceFile(BannerApp.GetNodeIndex("icon.bin"), Icon.ToByteArray());
+                        }
 
                         Banner.AddHeaderImd5();
-                        Icon.AddHeaderImd5();
                         BannerApp.ReplaceFile(BannerApp.GetNodeIndex("banner.bin"), Banner.ToByteArray());
-                        BannerApp.ReplaceFile(BannerApp.GetNodeIndex("icon.bin"), Icon.ToByteArray());
                         BannerApp.AddHeaderImet(false, ChannelTitle.Text);
                         BannerApp.Save(Paths.WorkingFolder + "00000000.app");
 
@@ -464,8 +533,8 @@ namespace FriishProduce
                     if (currentConsole != Platforms.Flash)
                     {
                         U8.Unpack(Paths.WorkingFolder + "00000005.app", Paths.WorkingFolder_Content5);
-                        if (DisableEmanual.Checked) Injector.RemoveEmanual();
-                        if (Customize.Checked) tImg.CreateSave(currentConsole);
+                        if (DisableEmanual.Checked) Global.RemoveEmanual();
+                        if (Custom.Checked && tImg.path != null) tImg.CreateSave(currentConsole);
 
                         switch (currentConsole)
                         {
@@ -476,56 +545,60 @@ namespace FriishProduce
                                 Injectors.NES NES = new Injectors.NES
                                 {
                                     ROM = input[0],
-                                    content1_file = Injector.DetermineContent1(),
-                                    saveTPL_offsets = new Injectors.NES().DetermineSaveTPLOffsets(Injector.DetermineContent1())
+                                    content1_file = Global.DetermineContent1(),
+                                    saveTPL_offsets = new Injectors.NES().DetermineSaveTPLOffsets(Global.DetermineContent1())
                                 };
 
                                 NES.InsertROM();
-                                NES.InsertPalette(NES_PaletteList.SelectedIndex);
-                                if (Customize.Checked)
+                                NES.InsertPalette(NES_Palette.SelectedIndex);
+                                if (Custom.Checked)
                                 {
-                                    if (NES.ExtractSaveTPL(Paths.WorkingFolder + "out.tpl"))
-                                        tImg.CreateSave(Platforms.NES);
+                                    if (tImg.path != null)
+                                    {
+                                        if (NES.ExtractSaveTPL(Paths.WorkingFolder + "out.tpl"))
+                                            tImg.CreateSave(Platforms.NES);
+                                    }
+
                                     NES.InsertSaveData(SaveDataTitle.Text, Paths.WorkingFolder + "out.tpl");
                                 }
-                                Injector.PrepareContent1();
+                                Global.PrepareContent1();
                                 break;
 
                             case Platforms.SNES:
                                 Injectors.SNES SNES = new Injectors.SNES()
                                 {
                                     ROM = input[0],
-                                    ROMcode = new Injectors.SNES().ProduceID(XML.SearchID(baseList.SelectedItem.ToString(), currentConsole))
+                                    ROMcode = new Injectors.SNES().ProduceID(db.SearchID(Bases.SelectedItem.ToString()))
                                 };
 
                                 SNES.ReplaceROM();
 
-                                if (Customize.Checked) SNES.InsertSaveTitle(SaveDataTitle.Lines);
+                                if (Custom.Checked) SNES.InsertSaveTitle(SaveDataTitle.Lines);
                                 break;
 
                             case Platforms.N64:
                                 Injectors.N64 N64 = new Injectors.N64() { ROM = input[0] };
-                                foreach (System.Xml.XmlNode entry in XML.RetrieveList(currentConsole))
+                                foreach (var entry in db.GetList())
                                 {
-                                    if (entry.Attributes["title"].Value == baseList.SelectedItem.ToString())
+                                    if (entry["title"].ToString() == Bases.SelectedItem.ToString())
                                         foreach (var item in Directory.GetFiles(Paths.Database, "*.*", SearchOption.AllDirectories))
-                                            if (item.Contains(entry.Attributes["id"].Value))
-                                                N64.emuVersion = entry.Attributes["ver"].Value;
+                                            if (item.Contains(entry["id"].ToString().ToUpper()))
+                                                N64.emuVersion = entry["ver"].ToString();
                                 }
 
-                                if (N64_FixBrightness.Checked || N64_8MBRAM.Checked || N64_AllocateROM.Checked)
+                                if (N64_FixBrightness.Checked || N64_UseExpansionPak.Checked || N64_Allocation.Checked)
                                 {
-                                    string content1_file = Injector.DetermineContent1();
+                                    string content1_file = Global.DetermineContent1();
                                     var content1 = File.ReadAllBytes(content1_file);
                                     if (N64_FixBrightness.Checked) content1 = N64.FixBrightness(content1);
-                                    if (N64_8MBRAM.Checked) content1 = N64.ExpansionRAM(content1);
-                                    if (N64_AllocateROM.Checked) content1 = N64.AllocateROM(content1);
+                                    if (N64_UseExpansionPak.Checked) content1 = N64.ExpansionRAM(content1);
+                                    if (N64_Allocation.Checked) content1 = N64.AllocateROM(content1);
                                     File.WriteAllBytes(content1_file, content1);
-                                    Injector.PrepareContent1();
+                                    Global.PrepareContent1();
                                 }
                                 N64.ReplaceROM();
 
-                                if (Customize.Checked) N64.InsertSaveComments(SaveDataTitle.Lines);
+                                if (Custom.Checked) N64.InsertSaveComments(SaveDataTitle.Lines);
                                 break;
                         }
 
@@ -538,14 +611,16 @@ namespace FriishProduce
                         Injectors.Flash Flash = new Injectors.Flash() { SWF = input[0] };
                         Flash.ReplaceSWF();
 
-                        Flash.HomeMenuNoSave(Flash_HBM_NoSave.Checked);
-                        if (Flash_SaveData.Checked) Flash.EnableSaveData(Convert.ToInt32(Flash_TotalSaveDataSize.SelectedItem.ToString()));
-                        if (Customize.Checked) tImg.CreateSave(Platforms.Flash);
-                        if (Customize.Checked) Flash.InsertSaveData(SaveDataTitle.Lines);
+                        Flash.HomeMenuNoSave(Flash_HBMNoSave.Checked);
+                        Flash.SetStrapReminder(Flash_StrapReminder.SelectedIndex);
+                        if (Flash_UseSaveData.Checked) Flash.EnableSaveData(Convert.ToInt32(Flash_TotalSaveDataSize.SelectedItem.ToString()));
+                        if (Flash_CustomFPS.Checked) Flash.SetFPS(Flash_FPS.SelectedItem.ToString());
+                        if (Flash_Controller.Checked) Flash.SetController(btns);
+                        if (Custom.Checked && tImg.path != null) tImg.CreateSave(Platforms.Flash);
+                        if (Custom.Checked) Flash.InsertSaveData(SaveDataTitle.Lines);
 
                         U8.Pack(Paths.WorkingFolder_Content2, Paths.WorkingFolder + "00000002.app");
                     }
-
 
                     // TO-DO: IOS video mode patching
 
@@ -555,11 +630,11 @@ namespace FriishProduce
                     w.ChangeTitleID(LowerTitleID.Channel, TitleID.Text);
                     w.Save(SaveWAD.FileName);
                     w.Dispose();
-                    MessageBox.Show(lang.Get("Message_ExportFinished"));
+                    MessageBox.Show(x.Get("m002"));
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(String.Format(lang.Get("Message_ExportError"), ex.Message), lang.Get("Halt"), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show(String.Format(x.Get("m003"), ex.Message), x.Get("halt"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 finally
                 {
@@ -576,34 +651,34 @@ namespace FriishProduce
 
         private void NES_PaletteChanged(object sender, EventArgs e)
         {
-            switch (NES_PaletteList.SelectedIndex)
+            switch (NES_Palette.SelectedIndex)
             {
                 default:
                 case 0:
-                    ToolTip.SetToolTip(NES_PaletteList, null);
+                    ToolTip.SetToolTip(NES_Palette, null);
                     break;
                 case 1:
-                    ToolTip.SetToolTip(NES_PaletteList, string.Format(lang.Get("NES_PaletteList_Author"), "SuperrSonic"));
+                    ToolTip.SetToolTip(NES_Palette, string.Format(x.Get("g005"), "SuperrSonic"));
                     break;
                 case 2:
-                    ToolTip.SetToolTip(NES_PaletteList, string.Format(lang.Get("NES_PaletteList_Author"), "Nintendo / SuperrSonic"));
+                    ToolTip.SetToolTip(NES_Palette, string.Format(x.Get("g005"), "Nintendo / SuperrSonic"));
                     break;
                 case 3:
-                    ToolTip.SetToolTip(NES_PaletteList, string.Format(lang.Get("NES_PaletteList_Author"), "Nintendo / FirebrandX"));
+                    ToolTip.SetToolTip(NES_Palette, string.Format(x.Get("g005"), "Nintendo / FirebrandX"));
                     break;
                 case 4:
-                    ToolTip.SetToolTip(NES_PaletteList, string.Format(lang.Get("NES_PaletteList_Author"), "Nintendo / N-Mario"));
+                    ToolTip.SetToolTip(NES_Palette, string.Format(x.Get("g005"), "Nintendo / N-Mario"));
                     break;
                 case 5:
                 case 6:
-                    ToolTip.SetToolTip(NES_PaletteList, string.Format(lang.Get("NES_PaletteList_Author"), "Nestopia"));
+                    ToolTip.SetToolTip(NES_Palette, string.Format(x.Get("g005"), "Nestopia"));
                     break;
                 case 7:
-                    ToolTip.SetToolTip(NES_PaletteList, string.Format(lang.Get("NES_PaletteList_Author"), "FCEUX"));
+                    ToolTip.SetToolTip(NES_Palette, string.Format(x.Get("g005"), "FCEUX"));
                     break;
                 case 8:
                 case 9:
-                    ToolTip.SetToolTip(NES_PaletteList, string.Format(lang.Get("NES_PaletteList_Author"), "FirebrandX"));
+                    ToolTip.SetToolTip(NES_Palette, string.Format(x.Get("g005"), "FirebrandX"));
                     break;
             }
         }
@@ -664,15 +739,18 @@ namespace FriishProduce
             var s = sender as CheckBox;
             switch (s.Name)
             {
-                case "Customize":
+                case "Custom":
                     Banner.Enabled = s.Checked;
                     Next.Enabled = checkBannerPage();
                     break;
-                case "ImportBanner":
-                    baseList_banner.Enabled = s.Checked;
+                case "Import":
+                    ImportBases.Enabled = s.Checked;
                     break;
-                case "Flash_SaveData":
+                case "Flash_UseSaveData":
                     Flash_TotalSaveDataSize.Enabled = s.Checked;
+                    break;
+                case "Flash_CustomFPS":
+                    Flash_FPS.Enabled = s.Checked;
                     break;
             }
         }
@@ -681,26 +759,26 @@ namespace FriishProduce
         {
             if (BrowseImage.ShowDialog() == DialogResult.OK)
             {
-                tImg = new TitleImage(currentConsole) { path = BrowseImage.FileName };
-                if (Image_Stretch.SelectedIndex < 0)
+                tImg = new TitleImage(currentConsole)
                 {
-                    var resize = TitleImage.Resize.Stretch;
-                    tImg.ResizeMode = resize;
-                    Image_Stretch.SelectedIndex = (int)resize;
-                }
-                if (Image_ModeI.SelectedIndex < 0)
-                {
-                    tImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.Default;
-                    Image_ModeI.SelectedIndex = 0;
-                }
+                    path = BrowseImage.FileName,
+                    ResizeMode = ImgResize.SelectedIndex < 0 ?
+                                 TitleImage.Resize.Stretch :
+                                 (TitleImage.Resize)ImgResize.SelectedIndex,
+                    InterpolationMode = ImgInterp.SelectedIndex < 0 ?
+                                        System.Drawing.Drawing2D.InterpolationMode.Default :
+                                        (System.Drawing.Drawing2D.InterpolationMode)ImgInterp.SelectedIndex
+                };
+                if (ImgResize.SelectedIndex < 0) ImgResize.SelectedIndex = 0;
+                if (ImgInterp.SelectedIndex < 0) ImgInterp.SelectedIndex = 0;
 
                 try
                 {
-                    tImg.Generate();
-                    Image.Image = tImg.VCPic;
+                    Image.Image = tImg.Generate(currentConsole);
                 }
                 catch
                 {
+                    Image.Image = null;
                     tImg = new TitleImage(currentConsole);
                 }
                 finally
@@ -708,28 +786,45 @@ namespace FriishProduce
                     Next.Enabled = checkBannerPage();
                 }
             }
+            else
+            {
+                Image.Image = null;
+                tImg = new TitleImage(currentConsole);
+                Next.Enabled = checkBannerPage();
+            }
         }
 
         private void Image_StretchChanged(object sender, EventArgs e)
         {
-            tImg.ResizeMode = (TitleImage.Resize)Enum.ToObject(typeof(TitleImage.Resize), Image_Stretch.SelectedIndex);
-            tImg.Generate();
-            Image.Image = tImg.VCPic;
+            tImg.ResizeMode = (TitleImage.Resize)ImgResize.SelectedIndex;
+            Image.Image = tImg.Generate(currentConsole);
             Next.Enabled = checkBannerPage();
         }
 
         private void Image_ModeIChanged(object sender, EventArgs e)
         {
-            tImg.InterpolationMode = (System.Drawing.Drawing2D.InterpolationMode)Enum.ToObject(typeof(System.Drawing.Drawing2D.InterpolationMode), Image_ModeI.SelectedIndex);
-            tImg.Generate();
-            Image.Image = tImg.VCPic;
+            tImg.InterpolationMode = (System.Drawing.Drawing2D.InterpolationMode)ImgInterp.SelectedIndex;
+            Image.Image = tImg.Generate(currentConsole);
             Next.Enabled = checkBannerPage();
         }
 
         private void Forwarders_Click(object sender, EventArgs e)
         {
             Lang lang1 = new Lang();
-            lang1.Set(Properties.Settings.Default.Language);
+        }
+
+        private void Flash_ControllerChanged(object sender, EventArgs e)
+        {
+            if (Flash_Controller.Checked)
+            {
+                Views.Flash_Controller ControllerForm = new Views.Flash_Controller(btns) { Text = x.Get("g006"), };
+                ChangeTheme(ControllerForm);
+
+                if (ControllerForm.ShowDialog(this) == DialogResult.OK)
+                    btns = ControllerForm.Config;
+                else
+                    Flash_Controller.Checked = false;
+            }
         }
     }
 }

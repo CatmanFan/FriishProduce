@@ -14,6 +14,7 @@
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <TargetFrameworkProfile />
+    <Deterministic>false</Deterministic>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -25,7 +26,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>0.0.2.%2a</ApplicationVersion>
+    <ApplicationVersion>0.1.0.0</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -58,40 +59,13 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>.\libWiiSharp.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Buffers.4.5.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
-    </Reference>
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Memory.4.5.3\lib\netstandard2.0\System.Memory.dll</HintPath>
-    </Reference>
     <Reference Include="System.Numerics" />
-    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.7.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Text.Encodings.Web, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Text.Encodings.Web.4.7.0\lib\netstandard2.0\System.Text.Encodings.Web.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Text.Json, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Text.Json.4.7.0\lib\net461\System.Text.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.2\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -103,47 +77,53 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="views\msg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\msg.Designer.cs">
+      <DependentUpon>msg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\platforms\flash_controller.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\platforms\flash_controller.Designer.cs">
+      <DependentUpon>flash_controller.cs</DependentUpon>
+    </Compile>
     <Compile Include="_classes\enums.cs" />
     <Compile Include="_classes\injectors\flash.cs" />
-    <Compile Include="_classes\injectors\global.cs" />
+    <Compile Include="_classes\global.cs" />
     <Compile Include="_classes\injectors\n64.cs" />
     <Compile Include="_classes\injectors\nes.cs" />
     <Compile Include="_classes\injectors\snes.cs" />
+    <Compile Include="_classes\injectors\vbagx.cs" />
     <Compile Include="_classes\lang.cs" />
-    <Compile Include="_classes\localization\localization.cs" />
     <Compile Include="_classes\paths.cs" />
-    <Compile Include="_classes\localization\SimpleTranslationSystem\Language.cs" />
-    <Compile Include="_classes\localization\SimpleTranslationSystem\Translation.cs" />
-    <Compile Include="_classes\localization\SimpleTranslationSystem\TranslationFileReader.cs" />
-    <Compile Include="_classes\localization\SimpleTranslationSystem\TranslationSystem.cs" />
     <Compile Include="_classes\titleImage.cs" />
     <Compile Include="_classes\u8.cs" />
-    <Compile Include="_classes\xml.cs" />
+    <Compile Include="_classes\db.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="Settings.cs">
+    <Compile Include="views\settings.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Settings.Designer.cs">
-      <DependentUpon>Settings.cs</DependentUpon>
+    <Compile Include="views\settings.Designer.cs">
+      <DependentUpon>settings.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Strings1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Strings.resx</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Settings.resx">
-      <DependentUpon>Settings.cs</DependentUpon>
+    <EmbeddedResource Include="views\msg.resx">
+      <DependentUpon>msg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\settings.resx">
+      <DependentUpon>settings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -155,13 +135,13 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Strings.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Strings1.Designer.cs</LastGenOutput>
+    <EmbeddedResource Include="views\platforms\flash_controller.resx">
+      <DependentUpon>flash_controller.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="database.json" />
+    <None Include="langs\es.json" />
     <None Include="langs\fr.json" />
     <None Include="langs\en.json" />
-    <None Include="langs\es.csv" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -172,8 +152,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="langs\fr.csv" />
-    <None Include="langs\en.csv" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -191,10 +169,13 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="database.xml" />
     <None Include="Resources\images\savebanner_flash.png" />
     <None Include="Resources\images\saveicon_flash.png" />
     <None Include="Resources\images\saveicon_placeholder.png" />
+    <None Include="Resources\images\wiimote.png" />
+    <None Include="Resources\images\wiimote_nunchuk.png" />
+    <None Include="Resources\images\wiimote_classic.png" />
+    <None Include="Resources\images\gamecube.png" />
     <Content Include="Wiimote.ico" />
     <None Include="Resources\gbalzss.exe" />
     <None Include="Resources\ccftools\ccfex.exe" />
@@ -203,10 +184,12 @@
     <None Include="Resources\wwcxtool.exe" />
     <None Include="Resources\romc.exe" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="_classes\forwarders\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy /y "$(ProjectDir)database.xml" "$(TargetDir)bases\database.xml"</PostBuildEvent>
+    <PostBuildEvent>copy /y "$(ProjectDir)database.json" "$(TargetDir)bases\database.json"</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PreBuildEvent>del "$(TargetDir)langs\" /F/Q

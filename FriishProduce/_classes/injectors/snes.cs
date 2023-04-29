@@ -18,12 +18,12 @@ namespace FriishProduce.Injectors
             {
                 /* if (File.ReadAllBytes(ROM).Length >
                     File.ReadAllBytes(rom).Length)
-                    throw new Exception(Strings.error_ROMtoobig); */
+                    throw new Exception(Program.Language.Get("m004")); */
 
                 File.Copy(ROM, rom, true);
             }
             else
-                throw new Exception(Program.lang.Get("Error_FailedROMSearch"));
+                throw new Exception(Program.Language.Get("m010"));
 
             foreach (string file in Directory.GetFiles(Paths.WorkingFolder_Content5))
             {
@@ -51,7 +51,7 @@ namespace FriishProduce.Injectors
 
         internal void InsertSaveTitle(string[] lines)
         {
-            string content1_file = Injector.DetermineContent1();
+            string content1_file = Global.DetermineContent1();
             byte[] content1 = File.ReadAllBytes(content1_file);
             int ROMcode_index = 0;
 
@@ -86,7 +86,7 @@ namespace FriishProduce.Injectors
             File.WriteAllBytes(content1_file, content1);
 
             End:
-            Injector.PrepareContent1();
+            Global.PrepareContent1();
         }
     }
 }

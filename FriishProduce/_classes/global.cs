@@ -4,16 +4,16 @@ using System.IO;
 
 namespace FriishProduce
 {
-    partial class Injector
+    partial class Global
     {
-        private static Localization lang = Program.lang;
+        private static Lang x = Program.Language;
         public static string ApplyPatch(string ROM, string patch = null)
         {
             if (patch != null)
             {
                 if (!File.Exists(Paths.Apps + "flips.exe"))
                 {
-                    System.Windows.Forms.MessageBox.Show(lang.Get("Error_FlipsMissing"), lang.Get("Error"), System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                    MessageBox.Show(x.Get("m006"), x.Get("error"), System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
                     return ROM;
                 }
 
@@ -34,7 +34,7 @@ namespace FriishProduce
 
                 if (!File.Exists(outROM))
                 {
-                    System.Windows.Forms.MessageBox.Show(lang.Get("Error_PatchFailed"), lang.Get("Error"), System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                    MessageBox.Show(x.Get("m005"), x.Get("error"), System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
                     return ROM;
                 }
                 return outROM;
@@ -63,7 +63,7 @@ namespace FriishProduce
                     File.Delete(pPath);
 
                     if (!File.Exists(Paths.WorkingFolder + "00000001.app.dec"))
-                        throw new Exception(lang.Get("Error_EmulatorCompression"));
+                        throw new Exception(x.Get("m009"));
                 }
 
                 return Paths.WorkingFolder + "00000001.app.dec";
@@ -90,7 +90,7 @@ namespace FriishProduce
                 File.Delete(pPath);
 
                 if (!File.Exists(Paths.WorkingFolder + "00000001.app.rec"))
-                    throw new Exception(lang.Get("Error_EmulatorCompression"));
+                    throw new Exception(x.Get("m009"));
 
                 if (File.Exists(Paths.WorkingFolder + "00000001.app")) File.Delete(Paths.WorkingFolder + "00000001.app");
                 if (File.Exists(Paths.WorkingFolder + "00000001.app.dec")) File.Delete(Paths.WorkingFolder + "00000001.app.dec");
@@ -99,12 +99,12 @@ namespace FriishProduce
         }
         public static void ChangeVideoMode()
         {
-            string content1_file = Injector.DetermineContent1();
+            string content1_file = Global.DetermineContent1();
             var content1 = File.ReadAllBytes(content1_file);
 
 
             File.WriteAllBytes(content1_file, content1);
-            Injector.PrepareContent1();
+            Global.PrepareContent1();
         }
 
         public static void RemoveEmanual()

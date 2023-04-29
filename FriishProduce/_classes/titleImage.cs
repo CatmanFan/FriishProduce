@@ -32,34 +32,38 @@ namespace FriishProduce
             VCPic = null;
             IconVCPic = null;
             SaveIcon = null;
-            SetPlatform(platform);
+            Generate(platform);
         }
 
-        public void SetPlatform(Platforms platform)
+        public Image Generate(Platforms platform)
         {
-            shrinkToFit = (int)platform <= 2;
+            // --------------------------------------------------
+            // Console defined options
+            // --------------------------------------------------
+            shrinkToFit = (int)platform <= 2 || platform == Platforms.Flash;
             SaveIconL_xywh = new int[] { 10, 10, 58, 44 };
             SaveIconS_xywh = new int[] { 4, 9, 40, 30 };
+
+            if (path == null) return null;
 
             if (ResizeMode == Resize.Fit)
             {
                 Image pathImg = Image.FromFile(path);
 
-                float ratio = Math.Min(44 / pathImg.Width, 44 / pathImg.Height);
+                float maxWidth = SaveIconS_xywh[2];
+                float ratio = Math.Min(maxWidth / pathImg.Width, maxWidth / pathImg.Height);
 
                 SaveIconS_xywh[2] = Convert.ToInt32(pathImg.Width * ratio);
                 SaveIconS_xywh[3] = Convert.ToInt32(pathImg.Height * ratio);
-                SaveIconS_xywh[0] = Convert.ToInt32((44 - SaveIconS_xywh[2]) / 2);
-                SaveIconS_xywh[1] = Convert.ToInt32((44 - SaveIconS_xywh[3]) / 2);
+                SaveIconS_xywh[0] = Convert.ToInt32((maxWidth - SaveIconS_xywh[2]) / 2) + Convert.ToInt32((48 - maxWidth) / 2);
+                SaveIconS_xywh[1] = Convert.ToInt32((maxWidth - SaveIconS_xywh[3]) / 2) + Convert.ToInt32((48 - maxWidth) / 2);
 
                 pathImg.Dispose();
             }
-        }
 
-        public void Generate()
-        {
-            if (path == null) return;
-
+            // --------------------------------------------------
+            // Actual image generation
+            // --------------------------------------------------
             VCPic = new Bitmap(256, 192);
             IconVCPic = new Bitmap(128, 96);
             SaveIcon = new Bitmap(SaveIconL_xywh[2], SaveIconL_xywh[3]);
@@ -138,6 +142,7 @@ namespace FriishProduce
             }
 
             tempBmp.Dispose();
+            return IconVCPic;
         }
 
         private float[] opacity4 = { 0F, 0.31F, 0.65F, 1F };
@@ -193,8 +198,9 @@ namespace FriishProduce
                     for (int i = 0; i < numTextures; i++)
                         sFiles.Add(Paths.Images + $"Texture_0{i}.png");
 
+                    SaveIconPlaceholder.Save(sFiles[1]);
                     Image sBanner = Image.FromFile(sFiles[0]);
-                    Image sIcon1 = SaveIconPlaceholder;
+                    Image sIcon1 = Image.FromFile(sFiles[1]);
                     Image sIcon2 = Image.FromFile(sFiles[numTextures - 1]);
 
                     using (Image img = (Image)sBanner.Clone())
@@ -211,6 +217,7 @@ namespace FriishProduce
                     using (Image img = (Image)sIcon1.Clone())
                     using (Graphics g = Graphics.FromImage(img))
                     {
+                        g.DrawImage(SaveIconPlaceholder, new Point(0,0));
                         g.InterpolationMode = InterpolationMode;
                         g.DrawImage(SaveIcon, SaveIconS_xywh[0], SaveIconS_xywh[1], SaveIconS_xywh[2], SaveIconS_xywh[3]);
                         sFiles[1] = Paths.Images + Path.GetFileNameWithoutExtension(sFiles[1]) + "_new.png";
@@ -287,21 +294,22 @@ namespace FriishProduce
             // ------------------------------------------------------------------------------------------
             else
             {
-                var bannerPath = Paths.WorkingFolder_Content2 + "00000002.app\\banner\\US\\banner.tpl";
-                var iconPath = Paths.WorkingFolder_Content2 + "00000002.app\\banner\\US\\icon.tpl";
+                var bannerPath = Paths.WorkingFolder_Content2 + "banner\\US\\banner.tpl";
+                var iconPath = Paths.WorkingFolder_Content2 + "banner\\US\\icons.tpl";
 
                 // Declaration of Graphics/Imaging variables
                 var sFiles = new System.Collections.Generic.List<string>();
                 for (int i = 0; i < 5; i++)
                     sFiles.Add(Paths.Images + $"Texture_0{i}.png");
 
-                Image sBanner = SaveBannerFlash;
-                Image sIcon1 = SaveIconPlaceholder;
-                Image sIcon2 = SaveIconFlash;
+                Bitmap sBanner = new Bitmap(SaveBannerFlash.Width, SaveBannerFlash.Height);
+                Bitmap sIcon1 = new Bitmap(48, 48);
+                Bitmap sIcon2 = new Bitmap(48, 48);
 
                 using (Image img = (Image)sBanner.Clone())
                 using (Graphics g = Graphics.FromImage(img))
                 {
+                    g.DrawImage(SaveBannerFlash, new Point(0,0));
                     g.DrawImage(SaveIcon, SaveIconL_xywh[0], SaveIconL_xywh[1], SaveIconL_xywh[2], SaveIconL_xywh[3]);
                     img.Save(sFiles[0]);
 
@@ -312,6 +320,7 @@ namespace FriishProduce
                 using (Image img = (Image)sIcon1.Clone())
                 using (Graphics g = Graphics.FromImage(img))
                 {
+                    g.DrawImage(SaveIconPlaceholder, new Point(0, 0));
                     g.InterpolationMode = InterpolationMode;
                     g.DrawImage(SaveIcon, SaveIconS_xywh[0], SaveIconS_xywh[1], SaveIconS_xywh[2], SaveIconS_xywh[3]);
                     img.Save(sFiles[1]);
@@ -322,30 +331,30 @@ namespace FriishProduce
 
                 // Update sIcon1 to modified version
                 sIcon1.Dispose();
-                sIcon1 = Image.FromFile(sFiles[1]);
+                sIcon1 = (Bitmap)Image.FromFile(sFiles[1]);
 
-                using (Image img1 = (Image)sIcon1.Clone())
-                using (Image img2 = (Image)sIcon2.Clone())
-                using (Graphics g = Graphics.FromImage(img1))
+                using (Image img = (Image)sIcon1.Clone())
+                using (Graphics g = Graphics.FromImage(img))
                 using (var a = new ImageAttributes())
                 {
-                    var w = img1.Width; var h = img1.Height;
+                    var w = img.Width; var h = img.Height;
 
                     a.SetColorMatrix(new ColorMatrix() { Matrix33 = opacity4[1] });
-                    g.DrawImage(img2, new Rectangle(0, 0, w, h), 0, 0, w, h, GraphicsUnit.Pixel, a);
+                    g.DrawImage(SaveIconFlash, new Rectangle(0, 0, w, h), 0, 0, w, h, GraphicsUnit.Pixel, a);
 
-                    img1.Save(sFiles[2]);
+                    img.Save(sFiles[2]);
 
-                    g.DrawImage(img1, 0, 0);
+                    g.DrawImage(img, 0, 0);
                     a.SetColorMatrix(new ColorMatrix() { Matrix33 = opacity4[2] });
-                    g.DrawImage(img2, new Rectangle(0, 0, w, h), 0, 0, w, h, GraphicsUnit.Pixel, a);
+                    g.DrawImage(SaveIconFlash, new Rectangle(0, 0, w, h), 0, 0, w, h, GraphicsUnit.Pixel, a);
 
-                    img1.Save(sFiles[3]);
+                    img.Save(sFiles[3]);
 
                     g.Dispose();
-                    img1.Dispose();
-                    img2.Dispose();
+                    img.Dispose();
                 }
+
+                SaveIconFlash.Save(sFiles[4]);
 
                 // -------------------------------------------------------------- //
 
@@ -354,24 +363,36 @@ namespace FriishProduce
                 tpl.Save(bannerPath.Replace("banner\\US\\", "banner\\EU\\"));
                 tpl.Save(bannerPath.Replace("banner\\US\\", "banner\\JP\\"));
 
-                tpl = TPL.FromImages(new string[]
+                tpl = TPL.FromImages(new string[8]
                     {
-                    sFiles[1],
-                    sFiles[2],
-                    sFiles[3],
-                    sFiles[4]
-                    }, new TPL_TextureFormat[]
+                        sFiles[1],
+                        sFiles[1],
+                        sFiles[1],
+                        sFiles[2],
+                        sFiles[3],
+                        sFiles[4],
+                        sFiles[4],
+                        sFiles[4]
+                    }, new TPL_TextureFormat[8]
                     {
-                    TPL.Load(iconPath).GetTextureFormat(0),
-                    TPL.Load(iconPath).GetTextureFormat(0),
-                    TPL.Load(iconPath).GetTextureFormat(0),
-                    TPL.Load(iconPath).GetTextureFormat(0)
-                    }, new TPL_PaletteFormat[]
+                        TPL.Load(iconPath).GetTextureFormat(0),
+                        TPL.Load(iconPath).GetTextureFormat(0),
+                        TPL.Load(iconPath).GetTextureFormat(0),
+                        TPL.Load(iconPath).GetTextureFormat(0),
+                        TPL.Load(iconPath).GetTextureFormat(0),
+                        TPL.Load(iconPath).GetTextureFormat(0),
+                        TPL.Load(iconPath).GetTextureFormat(0),
+                        TPL.Load(iconPath).GetTextureFormat(0)
+                    }, new TPL_PaletteFormat[8]
                     {
-                    TPL.Load(iconPath).GetPaletteFormat(0),
-                    TPL.Load(iconPath).GetPaletteFormat(0),
-                    TPL.Load(iconPath).GetPaletteFormat(0),
-                    TPL.Load(iconPath).GetPaletteFormat(0)
+                        TPL.Load(iconPath).GetPaletteFormat(0),
+                        TPL.Load(iconPath).GetPaletteFormat(0),
+                        TPL.Load(iconPath).GetPaletteFormat(0),
+                        TPL.Load(iconPath).GetPaletteFormat(0),
+                        TPL.Load(iconPath).GetPaletteFormat(0),
+                        TPL.Load(iconPath).GetPaletteFormat(0),
+                        TPL.Load(iconPath).GetPaletteFormat(0),
+                        TPL.Load(iconPath).GetPaletteFormat(0)
                     });
                 tpl.Save(iconPath);
                 tpl.Save(iconPath.Replace("banner\\US\\", "banner\\EU\\"));

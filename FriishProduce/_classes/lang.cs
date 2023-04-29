@@ -12,43 +12,18 @@ using static FriishProduce.Properties.Settings;
 
 namespace FriishProduce
 {
-    public partial class Lang
+    public class Lang
     {
         private static Dictionary<string, string> English { get; set; }
         internal static Dictionary<string, string> Current { get; set; }
-        public Lang()
-        {
-            // Set up English
-
-            if (!Directory.Exists(Paths.Languages))
-                Directory.CreateDirectory(Paths.Languages);
-
-            if (!File.Exists(Paths.Languages + "en.json"))
-                File.WriteAllText(Paths.Languages + "en.json", Properties.Resources.English);
-
-            try
-            {
-                var jsonReader = JsonConvert.DeserializeObject<JObject>(File.ReadAllText(Paths.Languages + "en.json"));
-
-                English = new Dictionary<string, string>();
-                foreach (JObject category in jsonReader.Children<JToken>().Children<JToken>())
-                    foreach (JProperty key in category.Properties())
-                        English.Add(key.Name, key.Value.ToString());
-            }
-            catch
-            {
-                throw new Exception("Unable to setup language!");
-            }
-
-        }
 
         internal static Dictionary<string, string> Read(string jsonFile)
         {
             try
             {
                 var jsonReader = JsonConvert.DeserializeObject<JObject>(File.ReadAllText(jsonFile));
-                var jsonCode = jsonReader["meta"]["code"].ToString();
-                var jsonName = jsonReader["meta"]["name"].ToString();
+                var jsonCode = jsonReader["metadata"]["code"].ToString();
+                var jsonName = jsonReader["metadata"]["name"].ToString();
 
                 var target = new Dictionary<string, string>();
 
@@ -64,11 +39,38 @@ namespace FriishProduce
             }
         }
 
-        public void Set(string code)
+        public Lang()
         {
+            string code = Default.Language;
             string json_en = Paths.Languages + "en.json";
             string json = Paths.Languages + $"{code}.json";
 
+            // --------------------------
+            // Set up English
+            // --------------------------
+            if (!Directory.Exists(Paths.Languages))
+                Directory.CreateDirectory(Paths.Languages);
+
+            if (!File.Exists(json_en) || File.ReadAllText(json_en) != Properties.Resources.English)
+                File.WriteAllText(json_en, Properties.Resources.English);
+
+            try
+            {
+                var jsonReader = JsonConvert.DeserializeObject<JObject>(File.ReadAllText(json_en));
+
+                English = new Dictionary<string, string>();
+                foreach (JObject category in jsonReader.Children<JToken>().Children<JToken>())
+                    foreach (JProperty key in category.Properties())
+                        English.Add(key.Name, key.Value.ToString());
+            }
+            catch
+            {
+                throw new Exception("Unable to setup language!");
+            }
+
+            // --------------------------
+            // Localization process
+            // --------------------------
             if (string.IsNullOrWhiteSpace(code) || ((Read(json) == null) && code != "sys"))
             {
                 code = "sys";
@@ -100,38 +102,74 @@ namespace FriishProduce
                 Current = Read(json);
             }
 
-            EndOfFunction:
+        EndOfFunction:
             culture.DateTimeFormat = new DateTimeFormatInfo() { DateSeparator = ".", ShortTimePattern = "HH:mm" };
             Thread.CurrentThread.CurrentUICulture = culture;
-            Get("a000");
-            Get("m011");
         }
+
         public void Localize(Control f)
         {
             foreach (Control c in f.Controls)
-            {
-                c.Text = Get(c.Name) == "undefined" ? c.Text : Get(c.Name);
-                if (c.GetType() == typeof(ComboBox) && ((ComboBox)c).Items.Contains("null"))
+            {   
+                Get(c);
+                foreach (Control d in c.Controls)
                 {
-                    ((ComboBox)c).Items.Clear();
-                    for (int i = 0; i < 20; i++)
-                        try { if (Get(c.Name + $"__l{i}") != "undefined") ((ComboBox)c).Items.Add(Get(c.Name + $"__l{i}")); } catch { }
+                    Get(d);
+                    foreach (Control e in d.Controls)
+                        Get(e);
                 }
-
-                foreach (Control d in c.Controls) Localize(d);
             }
-        }
-        public static string Get(string id)
+        } 
+
+        /// <summary>
+        /// First check in case-sensitive format, then use ToLower() if no result has been returned.
+        /// Returns English by default if no corresponding localized string is found.
+        /// </summary>
+        public string Get(string id)
         {
             foreach (KeyValuePair<string, string> translation in Current)
                 if (translation.Key == id)
-                    return translation.Value;
+                    return translation.Value.Replace(@"\n", Environment.NewLine).Replace('\"', '"');
+                else if (translation.Key.ToLower() == id.ToLower())
+                    return translation.Value.Replace(@"\n", Environment.NewLine).Replace('\"', '"');
 
             foreach (KeyValuePair<string, string> default_string in English)
                 if (default_string.Key == id)
-                    return default_string.Value;
+                    return default_string.Value.Replace(@"\n", Environment.NewLine).Replace('\"', '"');
+                else if (default_string.Key.ToLower() == id.ToLower())
+                    return default_string.Value.Replace(@"\n", Environment.NewLine).Replace('\"', '"');
 
             return "undefined";
+        }
+
+        public void Get(Control c)
+        {
+            try
+            {
+                c.Text = Get(c.Tag.ToString()) != "undefined" ? Get(c.Tag.ToString()) : Get(c.Name.ToString());
+            }
+            catch
+            {
+                c.Text = Get(c.Name.ToString()) != "undefined" ? Get(c.Name.ToString()) : c.Text;
+            }
+
+            if (c.GetType() == typeof(ComboBox) && ((ComboBox)c).Items.Contains("null"))
+            {
+                ((ComboBox)c).Items.Remove("null");
+                for (int i = 0; i < 20; i++)
+                    if (Get(c.Tag + $"__l{i}") != "undefined")
+                        try { ((ComboBox)c).Items.Add(Get(c.Tag + $"__l{i}")); } catch { }
+                    else if (Get(c.Name + $"__l{i}") != "undefined")
+                        try { ((ComboBox)c).Items.Add(Get(c.Name + $"__l{i}")); } catch { }
+            }
+
+            if (Current.First().Value == "ar") c.RightToLeft = RightToLeft.Yes;
+        }
+
+        public string[] LangInfo(string code)
+        {
+            var jsonReader = JsonConvert.DeserializeObject<JObject>(File.ReadAllText(Paths.Languages + $"{code}.json"));
+            return new string[] { jsonReader["metadata"]["name"].ToString(), jsonReader["metadata"]["author"].ToString() };
         }
     }
 }

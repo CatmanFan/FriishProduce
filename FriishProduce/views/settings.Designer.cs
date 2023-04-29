@@ -29,16 +29,18 @@ namespace FriishProduce
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Settings));
             this.panel = new System.Windows.Forms.Panel();
             this.OK = new System.Windows.Forms.Button();
             this.Cancel = new System.Windows.Forms.Button();
             this.Application = new System.Windows.Forms.TabPage();
             this.Theme = new System.Windows.Forms.ComboBox();
-            this.Settings_Theme = new System.Windows.Forms.Label();
+            this.s003 = new System.Windows.Forms.Label();
             this.Language = new System.Windows.Forms.ComboBox();
-            this.Settings_Language = new System.Windows.Forms.Label();
+            this.s001 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.panel.SuspendLayout();
             this.Application.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -51,6 +53,7 @@ namespace FriishProduce
             this.panel.Controls.Add(this.Cancel);
             resources.ApplyResources(this.panel, "panel");
             this.panel.Name = "panel";
+            this.panel.Tag = "panel";
             // 
             // OK
             // 
@@ -78,12 +81,13 @@ namespace FriishProduce
             // 
             this.Application.BackColor = System.Drawing.SystemColors.Window;
             this.Application.Controls.Add(this.Theme);
-            this.Application.Controls.Add(this.Settings_Theme);
+            this.Application.Controls.Add(this.s003);
             this.Application.Controls.Add(this.Language);
-            this.Application.Controls.Add(this.Settings_Language);
+            this.Application.Controls.Add(this.s001);
             this.Application.ForeColor = System.Drawing.SystemColors.ControlText;
             resources.ApplyResources(this.Application, "Application");
             this.Application.Name = "Application";
+            this.Application.Tag = "s000";
             // 
             // Theme
             // 
@@ -94,10 +98,10 @@ namespace FriishProduce
             resources.ApplyResources(this.Theme, "Theme");
             this.Theme.Name = "Theme";
             // 
-            // Settings_Theme
+            // s003
             // 
-            resources.ApplyResources(this.Settings_Theme, "Settings_Theme");
-            this.Settings_Theme.Name = "Settings_Theme";
+            resources.ApplyResources(this.s003, "s003");
+            this.s003.Name = "s003";
             // 
             // Language
             // 
@@ -105,11 +109,13 @@ namespace FriishProduce
             this.Language.FormattingEnabled = true;
             resources.ApplyResources(this.Language, "Language");
             this.Language.Name = "Language";
+            this.Language.Sorted = true;
+            this.Language.SelectedIndexChanged += new System.EventHandler(this.Language_SelectedIndexChanged);
             // 
-            // Settings_Language
+            // s001
             // 
-            resources.ApplyResources(this.Settings_Language, "Settings_Language");
-            this.Settings_Language.Name = "Settings_Language";
+            resources.ApplyResources(this.s001, "s001");
+            this.s001.Name = "s001";
             // 
             // tabControl1
             // 
@@ -117,6 +123,14 @@ namespace FriishProduce
             resources.ApplyResources(this.tabControl1, "tabControl1");
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
+            // 
+            // ToolTip
+            // 
+            this.ToolTip.AutoPopDelay = 5000;
+            this.ToolTip.BackColor = System.Drawing.Color.LemonChiffon;
+            this.ToolTip.ForeColor = System.Drawing.Color.Black;
+            this.ToolTip.InitialDelay = 300;
+            this.ToolTip.ReshowDelay = 100;
             // 
             // Settings
             // 
@@ -135,7 +149,6 @@ namespace FriishProduce
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.Load += new System.EventHandler(this.Settings_Load);
             this.panel.ResumeLayout(false);
             this.Application.ResumeLayout(false);
             this.Application.PerformLayout();
@@ -151,9 +164,10 @@ namespace FriishProduce
         private System.Windows.Forms.Button Cancel;
         private System.Windows.Forms.TabPage Application;
         private System.Windows.Forms.ComboBox Language;
-        private System.Windows.Forms.Label Settings_Language;
+        private System.Windows.Forms.Label s001;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.ComboBox Theme;
-        private System.Windows.Forms.Label Settings_Theme;
+        private System.Windows.Forms.Label s003;
+        private System.Windows.Forms.ToolTip ToolTip;
     }
 }

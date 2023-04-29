@@ -91,20 +91,68 @@ namespace FriishProduce.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to id							⎸language_text
-        ///lang_name                   ⎸English
-        ///
-        ///AppTitle                    ⎸FriishProduce
-        ///
-        ///Console.Items               ⎸NES/Famicom
-        ///Console.Items1              ⎸SNES/Super Famicom
-        ///Console.Items2              ⎸Nintendo 64
-        ///Console.Items3              ⎸Adobe Flash
-        ///
-        ///Message_DeleteWAD           ⎸Really delete this WAD?
-        ///Message_Restart             ⎸Some of the changes you have made require you to restart the application before they can take effect.
-        ///Message_ExportFinished      ⎸Done.
-        ///Me [rest of string was truncated]&quot;;.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Controllers_Classic {
+            get {
+                object obj = ResourceManager.GetObject("Controllers_Classic", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Controllers_GameCube {
+            get {
+                object obj = ResourceManager.GetObject("Controllers_GameCube", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Controllers_Nunchuk {
+            get {
+                object obj = ResourceManager.GetObject("Controllers_Nunchuk", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Controllers_Wiimote {
+            get {
+                object obj = ResourceManager.GetObject("Controllers_Wiimote", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;metadata&quot;: {
+        ///    &quot;code&quot;: &quot;en&quot;,
+        ///    &quot;name&quot;: &quot;English&quot;,
+        ///    &quot;author&quot;: &quot;CatmanFan&quot;
+        ///  },
+        ///  &quot;consoles&quot;: {
+        ///    &quot;NES&quot;: &quot;NES/Famicom&quot;,
+        ///    &quot;SNES&quot;: &quot;SNES/Super Famicom&quot;,
+        ///    &quot;N64&quot;: &quot;Nintendo 64&quot;,
+        ///    &quot;SMS&quot;: &quot;Master System&quot;,
+        ///    &quot;SMD&quot;: &quot;Mega Drive/Genesis&quot;,
+        ///    &quot;PCE&quot;: &quot;TurboGrafx-16/PC Engine&quot;,
+        ///    &quot;PCECD&quot;: &quot;TurboGrafx-16 CD/PC Engine CD&quot;,
+        ///    &quot;NeoGeo&quot;: &quot;NEO-GEO&quot;,
+        ///    &quot;C64&quot;: &quot;Commodore 64&quot;,
+        ///    &quot;MSX&quot;: &quot;Microsoft MSX/MSX2&quot;,
+        ///    &quot;Flash&quot;: &quot;Adobe Flash&quot;
+        ///  },
+        ///  &quot;global&quot;: {
+        ///    &quot;g000&quot;: &quot;FriishProduce&quot;,
+        ///    &quot;g001&quot;: &quot;Se [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string English {
             get {

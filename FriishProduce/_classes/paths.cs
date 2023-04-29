@@ -8,7 +8,6 @@ namespace FriishProduce
         public static readonly string EnvironmentFolder = Environment.CurrentDirectory;
         public static readonly string Apps = Path.Combine(Environment.CurrentDirectory, "apps\\");
         public static readonly string Database = Path.Combine(Environment.CurrentDirectory, "bases\\");
-        public static readonly string DatabaseXML = Path.Combine(Environment.CurrentDirectory, "bases\\database.xml");
         public static readonly string Languages = Path.Combine(Environment.CurrentDirectory, "langs\\");
 
         // VC paths

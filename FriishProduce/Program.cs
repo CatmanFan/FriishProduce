@@ -8,7 +8,7 @@ namespace FriishProduce
 {
     static class Program
     {
-        public static Localization lang = new Localization();
+        public static Lang Language = new Lang();
 
         /// <summary>
         /// The main entry point for the application.
