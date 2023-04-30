@@ -6,6 +6,7 @@ This application is designed to streamline the process to as few third-party pro
 
 ## How-to
 Please see the [Wiki](https://github.com/CatmanFan/FriishProduce/wiki/Setup) for instructions on setup and usage.
+
 **Make sure you have a (v)Wii NAND backup in case anything goes wrong!**
 
 ## Features
@@ -15,14 +16,11 @@ This injector bypasses other third-party assets (such as Common-Key.bin, most of
 * Automatic banner/icon editing
 * Automatic editing of source WAD's savedata where available
 * Additional content/emulator options for each platform where supported
-<<<<<<< HEAD
 
 See [here](https://github.com/CatmanFan/FriishProduce/wiki/Translation) for a how-to on translating the app.
-=======
->>>>>>> parent of 9a73388 (Update README.md)
 
 ### Platforms
-The following target platforms are currently available as of the latest release:
+Currently supported:
 * **Nintendo Entertainment System (NES) / Famicom** (Virtual Console)
 * **Super Nintendo Entertainment System (SNES) / Super Famicom** (Virtual Console)
 * **Nintendo 64** (Virtual Console)
