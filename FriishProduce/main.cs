@@ -16,6 +16,7 @@ namespace FriishProduce
     {
         Lang x = Program.Language;
         Platforms currentConsole = 0;
+        bool ForwarderMode = false;
         Database db;
 
         string[] input = new string[]
@@ -37,7 +38,8 @@ namespace FriishProduce
                 x.Get("NES"),
                 x.Get("SNES"),
                 x.Get("N64"),
-                x.Get("Flash")
+                x.Get("Flash"),
+                x.Get("FRWD")
             };
             foreach (var console in consoles) Console.Items.Add(console);
 
@@ -66,8 +68,16 @@ namespace FriishProduce
             foreach (var p in page4.Controls.OfType<Panel>())
                 if (p.Name.StartsWith("Options_")) p.Visible = false;
 
+            ForwarderMode = false;
+            InjectionMethod.Items.Clear();
+            InjectionMethod.Items.Add(x.Get("VC"));
+            InjectionMethod.SelectedIndex = 0;
+            InjectionMethod.Visible = false;
+
             currentConsole = (Platforms)Console.SelectedIndex;
             db = new Database((int)currentConsole);
+            DisableEmanual.Visible = true;
+            RegionFree.Visible = true;
 
             switch (currentConsole)
             {
@@ -76,18 +86,24 @@ namespace FriishProduce
                     Options_NES.Visible = true;
                     SaveDataTitle.MaxLength = 20;
                     break;
+
                 case Platforms.SNES:
                     BrowseROM.Filter = x.Get("f_sfc");
+                    InjectionMethod.Items.Add(x.Get("Snes9xGX"));
                     break;
+
                 case Platforms.N64:
                     BrowseROM.Filter = x.Get("f_n64");
                     Options_N64.Visible = true;
                     break;
+
                 case Platforms.Flash:
                     a001.Text = x.Get("a001_swf");
                     OpenROM.Text = x.Get("g004");
                     BrowseROM.Filter = x.Get("f_swf");
                     Options_Flash.Visible = true;
+
+                    DisableEmanual.Visible = false;
                     break;
             }
 
@@ -98,9 +114,10 @@ namespace FriishProduce
             Image.Image = tImg.Generate(currentConsole);
             SaveDataTitle.Enabled = !(currentConsole == Platforms.SMS || currentConsole == Platforms.SMD);
             SaveDataTitle.MaxLength = 80;
-
             Patch.Visible = currentConsole != Platforms.Flash;
-            DisableEmanual.Visible = currentConsole != Platforms.Flash;
+            vWii.Visible = ForwarderMode;
+            InjectionMethod.Visible = InjectionMethod.Items.Count > 1;
+            g002.Visible = InjectionMethod.Visible;
 
             Next.Enabled = true;
         }
@@ -530,7 +547,7 @@ namespace FriishProduce
                     }
                     #endregion
 
-                    if (currentConsole != Platforms.Flash)
+                    if (!ForwarderMode && currentConsole != Platforms.Flash)
                     {
                         U8.Unpack(Paths.WorkingFolder + "00000005.app", Paths.WorkingFolder_Content5);
                         if (DisableEmanual.Checked) Global.RemoveEmanual();
@@ -604,7 +621,7 @@ namespace FriishProduce
 
                         U8.Pack(Paths.WorkingFolder_Content5, Paths.WorkingFolder + "00000005.app");
                     }
-                    else
+                    else if (currentConsole == Platforms.Flash)
                     {
                         U8.Unpack(Paths.WorkingFolder + "00000002.app", Paths.WorkingFolder_Content2);
 
@@ -621,12 +638,42 @@ namespace FriishProduce
 
                         U8.Pack(Paths.WorkingFolder_Content2, Paths.WorkingFolder + "00000002.app");
                     }
+                    else if (ForwarderMode)
+                    {
+                        switch (currentConsole)
+                        {
+                            case Platforms.NES:
+                                break;
+
+                            case Platforms.SNES:
+                                switch (InjectionMethod.SelectedItem.ToString().ToLower())
+                                {
+                                    case "snes9x-gx":
+                                        Forwarders.Snes9xGX f0 = new Forwarders.Snes9xGX { ROM = input[0] };
+                                        // f0.Generate("test", Path.Combine(Path.GetDirectoryName(SaveWAD.FileName), "copy_to_sd.zip"));
+
+                                        File.Copy(Paths.Forwarders + "snes9xgx.dol", Paths.WorkingFolder + "00000001.app");
+                                        File.Copy(input[0], Paths.WorkingFolder + $"00000002.app");
+                                        break;
+                                }
+                                break;
+                            case Platforms.N64:
+                                break;
+                            case Platforms.SMS:
+                            case Platforms.SMD:
+                                break;
+                        }
+                    }
 
                     // TO-DO: IOS video mode patching
 
                     w.CreateNew(Paths.WorkingFolder);
+                    if (!ForwarderMode)
+                        if (RegionFree.Checked) w.Region = libWiiSharp.Region.Free;
+                    else
+                        w.Region = libWiiSharp.Region.Free;
+
                     w.FakeSign = true;
-                    if (RegionFree.Checked) w.Region = libWiiSharp.Region.Free;
                     w.ChangeTitleID(LowerTitleID.Channel, TitleID.Text);
                     w.Save(SaveWAD.FileName);
                     w.Dispose();
@@ -808,12 +855,6 @@ namespace FriishProduce
             Next.Enabled = checkBannerPage();
         }
 
-        private void Forwarders_Click(object sender, EventArgs e)
-        {
-            /* new ForwarderMode().Show();
-            this.Hide(); */
-        }
-
         private void Flash_ControllerChanged(object sender, EventArgs e)
         {
             if (Flash_Controller.Checked)
@@ -826,6 +867,16 @@ namespace FriishProduce
                 else
                     Flash_Controller.Checked = false;
             }
+        }
+
+        private void InjectionMethod_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ForwarderMode = InjectionMethod.SelectedItem.ToString() != x.Get("VC");
+            DisableEmanual.Visible = !ForwarderMode;
+            RegionFree.Visible = !ForwarderMode;
+
+            vWii.Visible = ForwarderMode;
+            g002.Visible = InjectionMethod.Visible;
         }
     }
 }

@@ -18,10 +18,18 @@
     "Flash": "Adobe Flash",
     "FRWD": "<Emulator forwarders>"
   },
+  "methods": {
+    "VC": "Virtual Console",
+    "FCEUGX": "FCE Ultra GX",
+    "Snes9XGX": "Snes9x-GX",
+    "VBAGX": "VBA-GX",
+    "RA-SS": "RetroArch-SS",
+    "vWii": "vWii-compatible",
+  },
   "global": {
     "g000": "FriishProduce",
     "g001": "Settings",
-    "g002": "Forwarder mode",
+    "g002": "Injection method:",
     "g003": "Open ROM...",
     "g004": "Open SWF...",
     "g005": "Author: {0}",
@@ -35,9 +43,7 @@
     "No": "&No",
     "Back": "< &Back",
     "Next": "&Next >",
-    "Save": "&Save",
-    "FMode": "&Forwarders",
-    "NMode": "&Normal mode"
+    "Save": "&Save"
   },
   "settings": {
     "s000": "Application",
@@ -77,7 +83,8 @@
     "f_iso": "Disc images (*.cue; *.iso)|*.cue;*.iso|  Cue Sheet files (*.cue)|*.cue|  ISO images (*.iso)|*.iso",
     "f_nes": "Nintendo Entertainment System/Famicom ROM files (*.nes)|*.nes",
     "f_sfc": "Super Nintendo Entertainment System/Super Famicom ROM files (*.sfc, *.smc)|*.sfc;*.smc",
-    "f_n64": "Nintendo 64 ROM files (*.n64, *.v64, *.z64)|*.n64;*.v64;*.z64"
+    "f_n64": "Nintendo 64 ROM files (*.n64, *.v64, *.z64)|*.n64;*.v64;*.z64",
+    "f_vba": "AGame Boy/Game Boy Color/Game Boy Advance ROM files (*.gb, *.gbc, *.gba)|*.gb;*.gbc;*.gba"
   },
   "main": {
     "a000": "Welcome to FriishProduce {0}.\n\nPlease select your target platform:",

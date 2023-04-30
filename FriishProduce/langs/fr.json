@@ -10,7 +10,7 @@
   "global": {
     "g000": "FriishProduce",
     "g001": "Réglages",
-    "g002": "Mode forwarder",
+    "g002": "Méthode d'injection :",
     "g003": "Parcourir une ROM...",
     "g004": "Parcourir un *.swf...",
     "g005": "Auteur(e) : {0}",
@@ -24,9 +24,7 @@
     "No": "&Non",
     "Back": "< &Précédent",
     "Next": "&Suivant >",
-    "Save": "&Enregistrer",
-    "FMode": "&Forwarders",
-    "NMode": "&Accueil"
+    "Save": "&Enregistrer"
   },
   "settings": {
     "s000": "Logiciel",

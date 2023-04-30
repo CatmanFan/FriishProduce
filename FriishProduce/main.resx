@@ -146,18 +146,6 @@
   <data name="&gt;&gt;a000.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;FMode.Name" xml:space="preserve">
-    <value>FMode</value>
-  </data>
-  <data name="&gt;&gt;FMode.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;FMode.Parent" xml:space="preserve">
-    <value>panel</value>
-  </data>
-  <data name="&gt;&gt;FMode.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="&gt;&gt;Settings.Name" xml:space="preserve">
     <value>Settings</value>
   </data>
@@ -168,7 +156,7 @@
     <value>panel</value>
   </data>
   <data name="&gt;&gt;Settings.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;Back.Name" xml:space="preserve">
     <value>Back</value>
@@ -180,7 +168,7 @@
     <value>panel</value>
   </data>
   <data name="&gt;&gt;Back.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;Save.Name" xml:space="preserve">
     <value>Save</value>
@@ -192,7 +180,7 @@
     <value>panel</value>
   </data>
   <data name="&gt;&gt;Save.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;Next.Name" xml:space="preserve">
     <value>Next</value>
@@ -204,7 +192,7 @@
     <value>panel</value>
   </data>
   <data name="&gt;&gt;Next.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>3</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="panel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
@@ -229,36 +217,6 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panel.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="FMode.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>System</value>
-  </data>
-  <data name="FMode.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="FMode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>67, 12</value>
-  </data>
-  <data name="FMode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 25</value>
-  </data>
-  <data name="FMode.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="FMode.Text" xml:space="preserve">
-    <value>forwarder_mode</value>
-  </data>
-  <data name="&gt;&gt;FMode.Name" xml:space="preserve">
-    <value>FMode</value>
-  </data>
-  <data name="&gt;&gt;FMode.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;FMode.Parent" xml:space="preserve">
-    <value>panel</value>
-  </data>
-  <data name="&gt;&gt;FMode.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="Settings.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
@@ -292,7 +250,7 @@
     <value>panel</value>
   </data>
   <data name="&gt;&gt;Settings.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="Back.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -325,7 +283,7 @@
     <value>panel</value>
   </data>
   <data name="&gt;&gt;Back.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="Save.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>System</value>
@@ -355,7 +313,7 @@
     <value>panel</value>
   </data>
   <data name="&gt;&gt;Save.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="Next.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -385,7 +343,7 @@
     <value>panel</value>
   </data>
   <data name="&gt;&gt;Next.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>3</value>
   </data>
   <data name="Console.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>System</value>
@@ -430,115 +388,55 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;page1.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;Patch.Name" xml:space="preserve">
-    <value>Patch</value>
-  </data>
-  <data name="&gt;&gt;Patch.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Patch.Parent" xml:space="preserve">
-    <value>page2</value>
-  </data>
-  <data name="&gt;&gt;Patch.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;ROMPath.Name" xml:space="preserve">
-    <value>ROMPath</value>
-  </data>
-  <data name="&gt;&gt;ROMPath.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ROMPath.Parent" xml:space="preserve">
-    <value>page2</value>
-  </data>
-  <data name="&gt;&gt;ROMPath.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;DeleteBase.Name" xml:space="preserve">
-    <value>DeleteBase</value>
-  </data>
-  <data name="&gt;&gt;DeleteBase.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;DeleteBase.Parent" xml:space="preserve">
-    <value>page2</value>
-  </data>
-  <data name="&gt;&gt;DeleteBase.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;AddBase.Name" xml:space="preserve">
-    <value>AddBase</value>
+  <data name="InjectionMethod.Location" type="System.Drawing.Point, System.Drawing">
+    <value>22, 171</value>
   </data>
-  <data name="&gt;&gt;AddBase.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="InjectionMethod.Size" type="System.Drawing.Size, System.Drawing">
+    <value>642, 23</value>
   </data>
-  <data name="&gt;&gt;AddBase.Parent" xml:space="preserve">
-    <value>page2</value>
+  <data name="InjectionMethod.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
   </data>
-  <data name="&gt;&gt;AddBase.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="&gt;&gt;InjectionMethod.Name" xml:space="preserve">
+    <value>InjectionMethod</value>
   </data>
-  <data name="&gt;&gt;Bases.Name" xml:space="preserve">
-    <value>Bases</value>
-  </data>
-  <data name="&gt;&gt;Bases.Type" xml:space="preserve">
+  <data name="&gt;&gt;InjectionMethod.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;Bases.Parent" xml:space="preserve">
+  <data name="&gt;&gt;InjectionMethod.Parent" xml:space="preserve">
     <value>page2</value>
   </data>
-  <data name="&gt;&gt;Bases.ZOrder" xml:space="preserve">
-    <value>4</value>
+  <data name="&gt;&gt;InjectionMethod.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="&gt;&gt;OpenROM.Name" xml:space="preserve">
-    <value>OpenROM</value>
+  <data name="g002.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="&gt;&gt;OpenROM.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="g002.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 150</value>
   </data>
-  <data name="&gt;&gt;OpenROM.Parent" xml:space="preserve">
-    <value>page2</value>
+  <data name="g002.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 15</value>
   </data>
-  <data name="&gt;&gt;OpenROM.ZOrder" xml:space="preserve">
-    <value>5</value>
+  <data name="g002.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
   </data>
-  <data name="&gt;&gt;a001.Name" xml:space="preserve">
-    <value>a001</value>
+  <data name="g002.Text" xml:space="preserve">
+    <value>injection_method</value>
   </data>
-  <data name="&gt;&gt;a001.Type" xml:space="preserve">
+  <data name="&gt;&gt;g002.Name" xml:space="preserve">
+    <value>g002</value>
+  </data>
+  <data name="&gt;&gt;g002.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;a001.Parent" xml:space="preserve">
+  <data name="&gt;&gt;g002.Parent" xml:space="preserve">
     <value>page2</value>
   </data>
-  <data name="&gt;&gt;a001.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="page2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 25</value>
-  </data>
-  <data name="page2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>684, 359</value>
-  </data>
-  <data name="page2.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="page2.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;page2.Name" xml:space="preserve">
-    <value>page2</value>
-  </data>
-  <data name="&gt;&gt;page2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;page2.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;page2.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="&gt;&gt;g002.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="Patch.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -565,7 +463,7 @@
     <value>page2</value>
   </data>
   <data name="&gt;&gt;Patch.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="ROMPath.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -592,7 +490,7 @@
     <value>page2</value>
   </data>
   <data name="&gt;&gt;ROMPath.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="DeleteBase.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>System</value>
@@ -628,7 +526,7 @@
     <value>page2</value>
   </data>
   <data name="&gt;&gt;DeleteBase.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="AddBase.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>System</value>
@@ -661,7 +559,7 @@
     <value>page2</value>
   </data>
   <data name="&gt;&gt;AddBase.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="Bases.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -685,7 +583,7 @@
     <value>page2</value>
   </data>
   <data name="&gt;&gt;Bases.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="OpenROM.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>System</value>
@@ -712,7 +610,7 @@
     <value>page2</value>
   </data>
   <data name="&gt;&gt;OpenROM.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="a001.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -739,7 +637,31 @@
     <value>page2</value>
   </data>
   <data name="&gt;&gt;a001.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
+  </data>
+  <data name="page2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 25</value>
+  </data>
+  <data name="page2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>684, 359</value>
+  </data>
+  <data name="page2.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="page2.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;page2.Name" xml:space="preserve">
+    <value>page2</value>
+  </data>
+  <data name="&gt;&gt;page2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;page2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;page2.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <metadata name="BrowseROM.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -811,7 +733,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;page3.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="a003.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1668,6 +1590,18 @@
   <data name="&gt;&gt;Options_NES.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
+  <data name="&gt;&gt;vWii.Name" xml:space="preserve">
+    <value>vWii</value>
+  </data>
+  <data name="&gt;&gt;vWii.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;vWii.Parent" xml:space="preserve">
+    <value>page4</value>
+  </data>
+  <data name="&gt;&gt;vWii.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
   <data name="page4.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 25</value>
   </data>
@@ -1690,7 +1624,37 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;page4.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
+  </data>
+  <data name="vWii.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="vWii.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="vWii.Location" type="System.Drawing.Point, System.Drawing">
+    <value>23, 40</value>
+  </data>
+  <data name="vWii.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 19</value>
+  </data>
+  <data name="vWii.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="vWii.Text" xml:space="preserve">
+    <value>vWii</value>
+  </data>
+  <data name="&gt;&gt;vWii.Name" xml:space="preserve">
+    <value>vWii</value>
+  </data>
+  <data name="&gt;&gt;vWii.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;vWii.Parent" xml:space="preserve">
+    <value>page4</value>
+  </data>
+  <data name="&gt;&gt;vWii.ZOrder" xml:space="preserve">
+    <value>8</value>
   </data>
   <data name="RegionFree.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>

@@ -14,7 +14,7 @@
   "global": {
     "g000": "FriishProduce",
     "g001": "Configuración",
-    "g002": "Actualmente en modo forwarder",
+    "g002": "Método de inyección:",
     "g003": "Buscar una ROM...",
     "g004": "Buscar un SWF...",
     "g005": "Autor(a): {0}",
@@ -28,9 +28,7 @@
     "No": "&No",
     "Back": "< &Atrás",
     "Next": "&Siguiente >",
-    "Save": "&Guardar",
-    "FMode": "&Modo forwarder",
-    "NMode": "&Modo principal"
+    "Save": "&Guardar"
   },
   "settings": {
     "s000": "Programa",
@@ -70,7 +68,8 @@
     "f_iso": "Imágenes de disco (*.cue; *.iso)|*.cue;*.iso|  Archivos Cue Sheet (*.cue)|*.cue|  Imágenes ISO (*.iso)|*.iso",
     "f_nes": "Archivos ROM de Nintendo NES (*.nes)|*.nes",
     "f_sfc": "Archivos ROM de Super Nintendo (*.sfc, *.smc)|*.sfc;*.smc",
-    "f_n64": "Archivos ROM de Nintendo 64 (*.n64, *.v64, *.z64)|*.n64;*.v64;*.z64"
+    "f_n64": "Archivos ROM de Nintendo 64 (*.n64, *.v64, *.z64)|*.n64;*.v64;*.z64",
+    "f_vba": "Archivos ROM de Game Boy/Game Boy Color/Game Boy Advance (*.gb, *.gbc, *.gba)|*.gb;*.gbc;*.gba"
   },
   "main": {
     "a000": "Bienvenido en el programa FriishProduce versión {0}.\n\nPara comenzar, selecciona una plataforma:",
