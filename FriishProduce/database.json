@@ -3,7 +3,7 @@
     { "title": "Kirby's Adventure (USA)", "id": "FA8E" },
     { "title": "Kirby's Adventure (EUR)", "id": "FA8P" },
     { "title": "Super Mario Bros. 3 (USA)", "id": "FCWE" },
-    { "title": "Ninja Gaiden (EUR/PAL60)", "id": "E6PP" }
+    { "title": "Ninja Gaiden (EUR/PAL60)", "id": "FBNM" }
   ],
   "snes": [
     { "title": "Donkey Kong Country 2: Diddy's Kong Quest (USA)", "id": "JBDE" },
@@ -32,7 +32,7 @@
   "flash": [
     { "title": "Flash Placeholder / Back in Nature", "id": "WNAP" }
   ],
-  "vbagx": [
+  "forwarders": [
     { "title": "Mario and Luigi: Superstar Saga - 0RANGECHiCKEN", "id": "G000" }
   ]
 }

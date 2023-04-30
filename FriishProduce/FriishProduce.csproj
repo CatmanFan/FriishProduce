@@ -77,6 +77,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
     <Compile Include="views\msg.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,15 +104,10 @@
     <Compile Include="_classes\injectors\vbagx.cs" />
     <Compile Include="_classes\lang.cs" />
     <Compile Include="_classes\paths.cs" />
+    <Compile Include="_classes\themes.cs" />
     <Compile Include="_classes\titleImage.cs" />
     <Compile Include="_classes\u8.cs" />
     <Compile Include="_classes\db.cs" />
-    <Compile Include="Main.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Main.Designer.cs">
-      <DependentUpon>Main.cs</DependentUpon>
-    </Compile>
     <Compile Include="views\settings.cs">
       <SubType>Form</SubType>
     </Compile>

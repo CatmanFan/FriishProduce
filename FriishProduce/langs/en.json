@@ -15,7 +15,8 @@
     "NeoGeo": "NEO-GEO",
     "C64": "Commodore 64",
     "MSX": "Microsoft MSX/MSX2",
-    "Flash": "Adobe Flash"
+    "Flash": "Adobe Flash",
+    "FRWD": "<Emulator forwarders>"
   },
   "global": {
     "g000": "FriishProduce",
@@ -94,7 +95,7 @@
     "a011": "Resizing mode:",
     "a012": "Interpolation mode:",
     "a013": "Force video mode:",
-    "a014": "Patch ROM before injection",
+    "a014": "Browse for an *.bps/*.ips patch",
     "a015": "Customize",
     "a016": "Edit using banner from other base:",
     "a017": "Remove \"Operations Guide\" in HOME Menu",

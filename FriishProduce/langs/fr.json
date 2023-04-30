@@ -4,6 +4,9 @@
     "name": "Français",
     "author": "CatmanFan"
   },
+  "consoles": {
+    "FRWD": "<Forwarders des emulateurs>"
+  },
   "global": {
     "g000": "FriishProduce",
     "g001": "Réglages",

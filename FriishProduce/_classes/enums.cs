@@ -13,7 +13,10 @@ namespace FriishProduce
         NeoGeo = 6,
         C64 = 7,
         MSX = 8,
-        SMS = 9
+        SMS = 9,
+
+        /* FORWARDERS */
+        Forwarders = 10
     }
 
     public enum InjectionMethod

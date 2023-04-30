@@ -8,7 +8,8 @@
     "NES": "Nintendo NES (Famicom)",
     "SNES": "Super Nintendo (Super Famicom)",
     "N64": "Nintendo 64",
-    "Flash": "Shockwave Flash"
+    "Flash": "Shockwave Flash",
+    "FRWD": "<Forwarders>"
   },
   "global": {
     "g000": "FriishProduce",
@@ -87,7 +88,7 @@
     "a011": "Cambio de tamaño:",
     "a012": "Método de interpolación:",
     "a013": "Cambiar modo de vídeo:",
-    "a014": "Auto-parche",
+    "a014": "Auto-parche con un archivo *.bps/*.ips",
     "a015": "Personalizar",
     "a016": "Importar un banner del otra canal:",
     "a017": "Desactivar el \"Manual electrónico\" en el Menú HOME",
