@@ -358,7 +358,7 @@ namespace FriishProduce
             resources.ApplyResources(this.Image, "Image");
             this.Image.Name = "Image";
             this.Image.TabStop = false;
-            this.Image.Click += new System.EventHandler(this.Image_Click);
+            this.Image.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Image_Click);
             // 
             // Players
             // 
@@ -443,10 +443,10 @@ namespace FriishProduce
             // 
             // page4
             // 
+            this.page4.Controls.Add(this.DisableEmanual);
             this.page4.Controls.Add(this.RegionFree);
             this.page4.Controls.Add(this.TitleID);
             this.page4.Controls.Add(this.a005);
-            this.page4.Controls.Add(this.DisableEmanual);
             this.page4.Controls.Add(this.a004);
             this.page4.Controls.Add(this.Options_Flash);
             this.page4.Controls.Add(this.Options_N64);
@@ -667,10 +667,10 @@ namespace FriishProduce
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             resources.ApplyResources(this, "$this");
             this.Controls.Add(this.panel);
+            this.Controls.Add(this.page3);
             this.Controls.Add(this.page2);
             this.Controls.Add(this.page1);
             this.Controls.Add(this.page4);
-            this.Controls.Add(this.page3);
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;

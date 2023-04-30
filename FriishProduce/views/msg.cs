@@ -102,40 +102,64 @@ namespace FriishProduce
 
     public static class MessageBox
     {
+        [STAThread]
         public static DialogResult Show(string msg, MessageBoxButtons buttons, MessageBoxIcon icon)
         {
+            DialogResult r = DialogResult.None;
+
             using (var msgBox = new Msg(msg, Program.Language.Get("g000"), buttons, icon))
             {
                 msgBox.ShowDialog();
-                return msgBox.DialogResult;
+                r = msgBox.DialogResult;
+                msgBox.Dispose();
             }
+
+            return r;
         }
 
+        [STAThread]
         public static DialogResult Show(string msg, string title, MessageBoxButtons buttons, MessageBoxIcon icon)
         {
+            DialogResult r = DialogResult.None;
+
             using (var msgBox = new Msg(msg, title, buttons, icon))
             {
                 msgBox.ShowDialog();
-                return msgBox.DialogResult;
+                r = msgBox.DialogResult;
+                msgBox.Dispose();
             }
+
+            return r;
         }
 
+        [STAThread]
         public static DialogResult Show(string msg)
         {
+            DialogResult r = DialogResult.None;
+
             using (var msgBox = new Msg(msg, Program.Language.Get("g000")))
             {
                 msgBox.ShowDialog();
-                return msgBox.DialogResult;
+                r = msgBox.DialogResult;
+                msgBox.Dispose();
             }
+
+            return r;
         }
 
+        [STAThread]
         public static DialogResult Show(string msg, string title)
         {
+            DialogResult r = DialogResult.None;
+
             using (var msgBox = new Msg(msg, title))
             {
                 msgBox.ShowDialog();
-                return msgBox.DialogResult;
+                r = msgBox.DialogResult;
+                msgBox.Dispose();
             }
+
+            return r;
         }
     }
 }

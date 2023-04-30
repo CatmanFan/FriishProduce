@@ -145,7 +145,7 @@ namespace FriishProduce
             return IconVCPic;
         }
 
-        private float[] opacity4 = { 0F, 0.31F, 0.65F, 1F };
+        private float[] opacity4 = { 0F, 0.32F, 0.64F, 1F };
 
         public void CreateSave(Platforms platform)
         {
@@ -198,9 +198,8 @@ namespace FriishProduce
                     for (int i = 0; i < numTextures; i++)
                         sFiles.Add(Paths.Images + $"Texture_0{i}.png");
 
-                    SaveIconPlaceholder.Save(sFiles[1]);
                     Image sBanner = Image.FromFile(sFiles[0]);
-                    Image sIcon1 = Image.FromFile(sFiles[1]);
+                    Bitmap sIcon1 = new Bitmap(48, 48);
                     Image sIcon2 = Image.FromFile(sFiles[numTextures - 1]);
 
                     using (Image img = (Image)sBanner.Clone())
@@ -217,7 +216,7 @@ namespace FriishProduce
                     using (Image img = (Image)sIcon1.Clone())
                     using (Graphics g = Graphics.FromImage(img))
                     {
-                        g.DrawImage(SaveIconPlaceholder, new Point(0,0));
+                        g.DrawImage(SaveIconPlaceholder, new Point(0, 0));
                         g.InterpolationMode = InterpolationMode;
                         g.DrawImage(SaveIcon, SaveIconS_xywh[0], SaveIconS_xywh[1], SaveIconS_xywh[2], SaveIconS_xywh[3]);
                         sFiles[1] = Paths.Images + Path.GetFileNameWithoutExtension(sFiles[1]) + "_new.png";
@@ -229,7 +228,7 @@ namespace FriishProduce
 
                     // Update sIcon1 to modified version
                     sIcon1.Dispose();
-                    sIcon1 = Image.FromFile(sFiles[1]);
+                    sIcon1 = (Bitmap)Image.FromFile(sFiles[1]);
 
                     using (Image img1 = (Image)sIcon1.Clone())
                     using (Image img2 = (Image)sIcon2.Clone())

@@ -115,6 +115,7 @@ namespace FriishProduce
         private void Reset()
         {
             input = new string[input.Length];
+            Patch.Checked = false;
             NES_Palette.SelectedIndex = 0;
             Flash_TotalSaveDataSize.SelectedIndex = 0;
             Flash_FPS.SelectedIndex = 0;
@@ -634,6 +635,7 @@ namespace FriishProduce
                     w.ChangeTitleID(LowerTitleID.Channel, TitleID.Text);
                     w.Save(SaveWAD.FileName);
                     w.Dispose();
+
                     MessageBox.Show(x.Get("m002"));
                 }
                 catch (Exception ex)
@@ -759,43 +761,53 @@ namespace FriishProduce
             }
         }
 
-        private void Image_Click(object sender, EventArgs e)
+        private void Image_Click(object sender, MouseEventArgs e)
         {
-            if (BrowseImage.ShowDialog() == DialogResult.OK)
+            if (e.Button == MouseButtons.Left)
             {
-                tImg = new TitleImage(currentConsole)
+                if (BrowseImage.ShowDialog() == DialogResult.OK)
                 {
-                    path = BrowseImage.FileName,
-                    ResizeMode = ImgResize.SelectedIndex < 0 ?
-                                 TitleImage.Resize.Stretch :
-                                 (TitleImage.Resize)ImgResize.SelectedIndex,
-                    InterpolationMode = ImgInterp.SelectedIndex < 0 ?
-                                        System.Drawing.Drawing2D.InterpolationMode.Default :
-                                        (System.Drawing.Drawing2D.InterpolationMode)ImgInterp.SelectedIndex
-                };
-                if (ImgResize.SelectedIndex < 0) ImgResize.SelectedIndex = 0;
-                if (ImgInterp.SelectedIndex < 0) ImgInterp.SelectedIndex = 0;
+                    tImg = new TitleImage(currentConsole)
+                    {
+                        path = BrowseImage.FileName,
+                        ResizeMode = ImgResize.SelectedIndex < 0 ?
+                                     (currentConsole == Platforms.Flash ? TitleImage.Resize.Fit : TitleImage.Resize.Stretch)
+                                     : (TitleImage.Resize)ImgResize.SelectedIndex,
+                        InterpolationMode = ImgInterp.SelectedIndex < 0 ?
+                                            System.Drawing.Drawing2D.InterpolationMode.Default :
+                                            (System.Drawing.Drawing2D.InterpolationMode)ImgInterp.SelectedIndex
+                    };
+                    if (ImgResize.SelectedIndex < 0) ImgResize.SelectedIndex = (int)tImg.ResizeMode;
+                    if (ImgInterp.SelectedIndex < 0) ImgInterp.SelectedIndex = (int)tImg.InterpolationMode;
 
-                try
-                {
-                    Image.Image = tImg.Generate(currentConsole);
+                    try
+                    {
+                        Image.Image = tImg.Generate(currentConsole);
+                    }
+                    catch
+                    {
+                        goto Clear;
+                    }
+                    finally
+                    {
+                        Next.Enabled = checkBannerPage();
+                    }
+                    return;
                 }
-                catch
+                else
                 {
-                    Image.Image = null;
-                    tImg = new TitleImage(currentConsole);
-                }
-                finally
-                {
-                    Next.Enabled = checkBannerPage();
+                    goto Clear;
                 }
             }
             else
             {
-                Image.Image = null;
-                tImg = new TitleImage(currentConsole);
-                Next.Enabled = checkBannerPage();
+                goto Clear;
             }
+
+            Clear:
+            Image.Image = null;
+            tImg = new TitleImage(currentConsole);
+            Next.Enabled = checkBannerPage();
         }
 
         private void Image_StretchChanged(object sender, EventArgs e)

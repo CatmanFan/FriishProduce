@@ -25,8 +25,6 @@ Currently supported:
 * **Super Nintendo Entertainment System (SNES) / Super Famicom** (Virtual Console)
 * **Nintendo 64** (Virtual Console)
 * **Shockwave/Adobe Flash**
-<!-- ### To-Do
-- [ ] SEGA: Use blank saveicon template(s) in Resources -->
 
 ## Credits
 This program uses the following third-party components and apps:
