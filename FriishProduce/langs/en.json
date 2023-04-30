@@ -15,8 +15,7 @@
     "NeoGeo": "NEO-GEO",
     "C64": "Commodore 64",
     "MSX": "Microsoft MSX/MSX2",
-    "Flash": "Adobe Flash",
-    "FRWD": "<Emulator forwarders>"
+    "Flash": "Adobe Flash"
   },
   "methods": {
     "VC": "Virtual Console",

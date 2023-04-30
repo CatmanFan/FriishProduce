@@ -8,8 +8,7 @@
     "NES": "Nintendo NES (Famicom)",
     "SNES": "Super Nintendo (Super Famicom)",
     "N64": "Nintendo 64",
-    "Flash": "Shockwave Flash",
-    "FRWD": "<Forwarders>"
+    "Flash": "Shockwave Flash"
   },
   "global": {
     "g000": "FriishProduce",

@@ -40,8 +40,6 @@ namespace FriishProduce
             this.Console = new System.Windows.Forms.ComboBox();
             this.page1 = new System.Windows.Forms.Panel();
             this.page2 = new System.Windows.Forms.Panel();
-            this.InjectionMethod = new System.Windows.Forms.ComboBox();
-            this.g002 = new System.Windows.Forms.Label();
             this.Patch = new System.Windows.Forms.CheckBox();
             this.ROMPath = new System.Windows.Forms.Label();
             this.DeleteBase = new System.Windows.Forms.Button();
@@ -74,7 +72,6 @@ namespace FriishProduce
             this.ChannelTitle = new System.Windows.Forms.TextBox();
             this.Custom = new System.Windows.Forms.CheckBox();
             this.page4 = new System.Windows.Forms.Panel();
-            this.vWii = new System.Windows.Forms.CheckBox();
             this.RegionFree = new System.Windows.Forms.CheckBox();
             this.TitleID = new System.Windows.Forms.TextBox();
             this.a005 = new System.Windows.Forms.Label();
@@ -97,6 +94,7 @@ namespace FriishProduce
             this.Options_NES = new System.Windows.Forms.Panel();
             this.NES_Palette = new System.Windows.Forms.ComboBox();
             this.NES__000 = new System.Windows.Forms.Label();
+            this.vWii = new System.Windows.Forms.CheckBox();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.BrowsePatch = new System.Windows.Forms.OpenFileDialog();
             this.BrowseImage = new System.Windows.Forms.OpenFileDialog();
@@ -192,8 +190,6 @@ namespace FriishProduce
             // 
             // page2
             // 
-            this.page2.Controls.Add(this.InjectionMethod);
-            this.page2.Controls.Add(this.g002);
             this.page2.Controls.Add(this.Patch);
             this.page2.Controls.Add(this.ROMPath);
             this.page2.Controls.Add(this.DeleteBase);
@@ -203,20 +199,6 @@ namespace FriishProduce
             this.page2.Controls.Add(this.a001);
             resources.ApplyResources(this.page2, "page2");
             this.page2.Name = "page2";
-            // 
-            // InjectionMethod
-            // 
-            this.InjectionMethod.DisplayMember = "Base";
-            this.InjectionMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.InjectionMethod.FormattingEnabled = true;
-            resources.ApplyResources(this.InjectionMethod, "InjectionMethod");
-            this.InjectionMethod.Name = "InjectionMethod";
-            this.InjectionMethod.SelectedIndexChanged += new System.EventHandler(this.InjectionMethod_SelectedIndexChanged);
-            // 
-            // g002
-            // 
-            resources.ApplyResources(this.g002, "g002");
-            this.g002.Name = "g002";
             // 
             // Patch
             // 
@@ -473,13 +455,6 @@ namespace FriishProduce
             resources.ApplyResources(this.page4, "page4");
             this.page4.Name = "page4";
             // 
-            // vWii
-            // 
-            resources.ApplyResources(this.vWii, "vWii");
-            this.vWii.Name = "vWii";
-            this.vWii.Tag = "";
-            this.vWii.UseVisualStyleBackColor = true;
-            // 
             // RegionFree
             // 
             resources.ApplyResources(this.RegionFree, "RegionFree");
@@ -663,6 +638,13 @@ namespace FriishProduce
             this.NES__000.Name = "NES__000";
             this.NES__000.Tag = "";
             // 
+            // vWii
+            // 
+            resources.ApplyResources(this.vWii, "vWii");
+            this.vWii.Name = "vWii";
+            this.vWii.Tag = "";
+            this.vWii.UseVisualStyleBackColor = true;
+            // 
             // ToolTip
             // 
             this.ToolTip.AutoPopDelay = 5000;
@@ -785,8 +767,6 @@ namespace FriishProduce
         private System.Windows.Forms.CheckBox Flash_Controller;
         private System.Windows.Forms.ComboBox Flash_StrapReminder;
         private System.Windows.Forms.Label Flash__005;
-        private System.Windows.Forms.ComboBox InjectionMethod;
-        private System.Windows.Forms.Label g002;
         private System.Windows.Forms.CheckBox vWii;
     }
 }
