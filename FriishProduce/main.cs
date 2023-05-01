@@ -910,7 +910,8 @@ namespace FriishProduce
                     w.Save(SaveWAD.FileName);
                     w.Dispose();
 
-                    MessageBox.Show(x.Get("m002"));
+                    Focus();
+                    System.Media.SystemSounds.Beep.Play();
                 }
                 catch (Exception ex)
                 {

@@ -155,6 +155,7 @@
     <None Include="langs\es.json" />
     <None Include="langs\fr.json" />
     <None Include="langs\en.json" />
+    <None Include="langs\ko.json" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

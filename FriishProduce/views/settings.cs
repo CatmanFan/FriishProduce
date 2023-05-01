@@ -34,9 +34,8 @@ namespace FriishProduce
                     langs.Add(Path.GetFileNameWithoutExtension(file));
                 }
 
-            foreach (var name in langs)
-                if (name == Default.Language) Language.SelectedIndex = langs.IndexOf(name);
             if (Default.Language == "sys") Language.SelectedIndex = 0;
+            else Language.SelectedIndex = Language.Items.IndexOf(x.LangInfo(Default.Language)[0]);
             // -----------------------------
 
             Theme.SelectedIndex = Default.LightTheme ? 1 : 0;
@@ -46,12 +45,15 @@ namespace FriishProduce
         {
             bool showRestart = false;
 
-            for (int i = 0; i < langs.Count; i++)
-                if (i == Language.SelectedIndex)
+            foreach (string file in Directory.GetFiles(Paths.Languages))
+                if (Lang.Read(file) != null)
                 {
-                    showRestart = langs[i] != Default.Language;
-                    Default.Language = langs[i];
-                    break;
+                    if (x.LangInfo(Path.GetFileNameWithoutExtension(file))[0] == Language.SelectedItem.ToString())
+                    {
+                        showRestart = Path.GetFileNameWithoutExtension(file) != Default.Language;
+                        Default.Language = Path.GetFileNameWithoutExtension(file);
+                        break;
+                    }
                 }
 
             if (showRestart) MessageBox.Show(x.Get("m001"), Text);

@@ -95,8 +95,8 @@ namespace FriishProduce.Injectors
                 FileName = pPath,
                 WorkingDirectory = Paths.WorkingFolder_MiscCCF,
                 Arguments = arg.Remove(0, 1),
-                UseShellExecute = true,
-                WindowStyle = ProcessWindowStyle.Minimized
+                UseShellExecute = false,
+                CreateNoWindow = true
             };
             using (Process p = Process.Start(pInfo))
                 p.WaitForExit();
