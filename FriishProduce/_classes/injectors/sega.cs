@@ -136,8 +136,8 @@ namespace FriishProduce.Injectors
                     if (File.ReadAllBytes(ROM).Length > File.ReadAllBytes(item).Length)
                         throw new Exception(Program.Language.Get("m004"));
 
-                    targetROM = item;
                     File.Delete(item);
+                    targetROM = Paths.WorkingFolder_DataCCF + "ROM" + (SMS ? ".SMS" : ".SGD");
 
                     if (!SMS)
                     {
@@ -162,8 +162,7 @@ namespace FriishProduce.Injectors
                         File.Copy(ROM, targetROM);
                     }
 
-                    string ROMfile = Path.GetFileNameWithoutExtension(targetROM).Replace(".SGD", "").Replace(".SMS", "") + (SMS ? ".SMS" : ".SGD");
-                    config.Add($"romfile=\"{ROMfile}\"");
+                    config.Add($"romfile=\"{Path.GetFileName(targetROM)}\"");
                     return;
                 }
             }
@@ -180,6 +179,7 @@ namespace FriishProduce.Injectors
                         config.Add(item);
 
             config.Sort();
+            config.Add("");
             File.WriteAllLines(Paths.WorkingFolder_DataCCF + "config", config.ToArray());
         }
 
