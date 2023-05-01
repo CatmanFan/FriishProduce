@@ -45,16 +45,24 @@ namespace FriishProduce
         {
             bool showRestart = false;
 
-            foreach (string file in Directory.GetFiles(Paths.Languages))
-                if (Lang.Read(file) != null)
-                {
-                    if (x.LangInfo(Path.GetFileNameWithoutExtension(file))[0] == Language.SelectedItem.ToString())
+            if (Language.SelectedIndex == 0)
+            {
+                showRestart = Default.Language != "sys";
+                Default.Language = "sys";
+            }
+            else
+            {
+                foreach (string file in Directory.GetFiles(Paths.Languages))
+                    if (Lang.Read(file) != null)
                     {
-                        showRestart = Path.GetFileNameWithoutExtension(file) != Default.Language;
-                        Default.Language = Path.GetFileNameWithoutExtension(file);
-                        break;
+                        if (x.LangInfo(Path.GetFileNameWithoutExtension(file))[0] == Language.SelectedItem.ToString())
+                        {
+                            showRestart = Path.GetFileNameWithoutExtension(file) != Default.Language;
+                            Default.Language = Path.GetFileNameWithoutExtension(file);
+                            break;
+                        }
                     }
-                }
+            }
 
             if (showRestart) MessageBox.Show(x.Get("m001"), Text);
 

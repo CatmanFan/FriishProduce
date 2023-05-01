@@ -77,7 +77,7 @@
     "f_img": "Images (*.bmp, *.jpg, *.jpeg, *.png)|*.bmp;*.jpg;*.jpeg;*.png|  Bitmap (*.bmp)|*.bmp|  JPEG (*.jpg, *.jpeg)|*.jpg;*.jpeg|  PNG (*.png)|*.png",
     "f_bps": "Patch files (*.bps, *.ips)|*.bps;*.ips",
     "f_wad": "Wii Channels (*.wad)|*.wad",
-    "f_swf": "Fichiers Adobe Flash (*.swf)|*.swf",
+    "f_swf": "SWF files (*.swf)|*.swf",
     "f_zip": "ZIP archives (*.zip)|*.zip",
     "f_iso": "Disc images (*.cue; *.iso)|*.cue;*.iso|  Cue Sheet files (*.cue)|*.cue|  ISO images (*.iso)|*.iso",
     "f_nes": "Nintendo Entertainment System/Famicom ROM files (*.nes)|*.nes",

@@ -2,48 +2,60 @@
   "nes": [
     { "title": "Kirby's Adventure (USA)", "id": "FA8E" },
     { "title": "Kirby's Adventure (EUR)", "id": "FA8P" },
+    { "title": "星のカービィ 夢の泉の物語 (JPN)", "id": "FA8J" },
+    { "title": "별의 커비 꿈의 샘 이야기 (KOR; En/Ko)", "id": "FA8T" },
     { "title": "Super Mario Bros. 3 (USA)", "id": "FCWE" },
+    { "title": "Super Mario Bros. 3 (EUR)", "id": "FCWP" },
+    { "title": "スーパーマリオブラザーズ3 (JPN)", "id": "FCWJ" },
+    { "title": "슈퍼 마리오 브라더스 3 (KOR; Ja/Ko)", "id": "FCWQ" },
     { "title": "Ninja Gaiden (EUR/PAL60)", "id": "FBNM" }
   ],
   "snes": [
     { "title": "Donkey Kong Country 2: Diddy's Kong Quest (USA)", "id": "JBDE" },
     { "title": "Donkey Kong Country 2: Diddy's Kong Quest (EUR)", "id": "JBDP" },
-    { "title": "Super Donkey Kong 2 (JPN)", "id": "JBDJ" },
+    { "title": "SUPER DONKEY KONG 2 (JPN)", "id": "JBDJ" },
+    { "title": "동키콩 컨트리 2 (KOR; En/Ko)", "id": "JBDT" },
     { "title": "Mario's Super Picross (EUR/PAL60)", "id": "JABL" }
   ],
   "n64": [
     { "title": "Bomberman Hero (USA)", "id": "NA3E", "ver": "romc-hero" },
-    { "title": "Bomberman Hero (USA)", "id": "NA3P", "ver": "romc-hero" },
-    { "title": "Custom Robo V2 (JPN)", "id": "NAPJ", "ver": "romc-crv2" },
+    { "title": "Bomberman Hero (EUR)", "id": "NA3P", "ver": "romc-hero" },
+    { "title": "CUSTOM ROBO V2 (JPN)", "id": "NAPJ", "ver": "romc-crv2" },
     { "title": "Mario Golf (USA)", "id": "NAUE", "ver": "romc" },
     { "title": "Mario Golf (EUR)", "id": "NAUP", "ver": "romc" },
     { "title": "Mario Kart 64 (USA)", "id": "NABE", "ver": "rev1-alt" },
     { "title": "Mario Kart 64 (EUR)", "id": "NABP", "ver": "rev1-alt" },
+    { "title": "マリオカート64 (JPN)", "id": "NABJ", "ver": "rev1-alt" },
+    { "title": "마리오 카트 64 (KOR; En/Ko)", "id": "NABT", "ver": "rev1-alt" },
     { "title": "Ogre Battle 64: Person of Lordly Caliber (USA)", "id": "NAYE", "ver": "romc" },
     { "title": "Ogre Battle 64: Person of Lordly Caliber (EUR)", "id": "NAYM", "ver": "romc" },
     { "title": "Sin and Punishment (USA)", "id": "NAJN", "ver": "rev2" },
     { "title": "Sin and Punishment (EUR)", "id": "NAJL", "ver": "rev2" },
+    { "title": "罪と罰 地球の継承者 (JPN)", "id": "NAJJ", "ver": "rev2" },
     { "title": "Star Fox 64 (USA)", "id": "NADE", "ver": "rev1-alt" },
     { "title": "Lylat Wars (EUR)", "id": "NADP", "ver": "rev1-alt" },
     { "title": "Super Mario 64 (USA)", "id": "NAAE", "ver": "rev1" },
-    { "title": "The Legend of Zelda: Ocarina of Time (USA)", "id": "NACE", "ver": "rev1" },
-    { "title": "The Legend of Zelda: Ocarina of Time (EUR)", "id": "NACP", "ver": "rev1" }
+    { "title": "Super Mario 64 (EUR)", "id": "NAAP", "ver": "rev1" },
+    { "title": "スーパーマリオ64 (JPN)", "id": "NAAJ", "ver": "rev1" },
+    { "title": "The Legend of Zelda: Ocarina of Time (USA)", "id": "NACE", "ver": "rev1-alt" },
+    { "title": "The Legend of Zelda: Ocarina of Time (EUR)", "id": "NACP", "ver": "rev1-alt" },
+    { "title": "ゼルダの伝説 時のオカリナ (JPN)", "id": "NACJ", "ver": "rev1-alt" }
   ],
   "sms": [
     { "title": "Sonic the Hedgehog (USA)", "id": "LAGE", "ver": "1" },
     { "title": "Sonic the Hedgehog (EUR)", "id": "LAGP", "ver": "1" },
-    { "title": "Sonic the Hedgehog (JPN)", "id": "LAGJ", "ver": "1" },
+    { "title": "ソニック・ザ・ヘッジホッグ (JPN)", "id": "LAGJ", "ver": "1" },
     { "title": "Phantasy Star (USA)", "id": "LADE", "ver": "3" },
     { "title": "Phantasy Star (EUR)", "id": "LADP", "ver": "3" },
-    { "title": "Phantasy Star (JPN)", "id": "LADJ", "ver": "3" }
+    { "title": "ファンタシースター (JPN)", "id": "LADJ", "ver": "3" }
   ],
   "smd": [
     { "title": "Comix Zone (USA)", "id": "MAPE", "ver": "1" },
     { "title": "Comix Zone (EUR)", "id": "MAPP", "ver": "1" },
-    { "title": "Comix Zone (JPN)", "id": "MAPJ", "ver": "1" },
+    { "title": "コミックスゾーン (JPN)", "id": "MAPJ", "ver": "1" },
     { "title": "Sonic the Hedgehog 3 (USA)", "id": "MBME", "ver": "2" },
     { "title": "Sonic the Hedgehog 3 (EUR)", "id": "MBMP", "ver": "2" },
-    { "title": "Sonic the Hedgehog 3 (JPN)", "id": "MBMJ", "ver": "2" }
+    { "title": "ソニック・ザ・ヘッジホッグ3 (JPN)", "id": "MBMJ", "ver": "2" }
   ],
   "flash": [
     { "title": "Flash Placeholder / Back in Nature", "id": "WNAP" }

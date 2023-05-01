@@ -230,13 +230,7 @@ namespace FriishProduce.Injectors
             // Text addition format: UTF-16 (Big Endian)
             if (end != 0)
             {
-                for (int i = end; i > 0; i--)
-                    if (content1[i] == 0x00 && content1[i - 1] == 0xDB)
-                    {
-                        start = i;
-                        break;
-                    }
-
+                start = end - 32;
                 if (start != 0)
                 {
                     for (int i = start; i < end; i++)
