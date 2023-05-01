@@ -146,7 +146,8 @@ namespace FriishProduce
         {
             try
             {
-                c.Text = Get(c.Tag.ToString()) != "undefined" ? Get(c.Tag.ToString()) : Get(c.Name.ToString());
+                c.Text = Get(c.Tag.ToString()) != "undefined" ? Get(c.Tag.ToString()) :
+                    Get(c.Name.ToString()) != "undefined" ? Get(c.Name.ToString()) : c.Text;
             }
             catch
             {
@@ -163,7 +164,8 @@ namespace FriishProduce
                         try { ((ComboBox)c).Items.Add(Get(c.Name + $"__l{i}")); } catch { }
             }
 
-            if (Current.First().Value == "ar") c.RightToLeft = RightToLeft.Yes;
+            if (Current.First().Value.StartsWith("ar") || Current.First().Value.StartsWith("fa") || Current.First().Value.StartsWith("he"))
+                c.RightToLeft = RightToLeft.Yes;
         }
 
         public string[] LangInfo(string code)

@@ -120,10 +120,10 @@ namespace FriishProduce
             string[] emanualFiles =
             {
                 "Opera.arc",
-                "Opera.ccf",
-                "Opera.ccf.zlib",
+                "Opera.arc.zlib",
                 "emanual.arc",
                 "man.arc",
+                "man.arc.zlib",
                 "manc.arc",
                 "html.arc",
                 "htmlc.arc"

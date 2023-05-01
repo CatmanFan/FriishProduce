@@ -29,6 +29,22 @@
     { "title": "The Legend of Zelda: Ocarina of Time (USA)", "id": "NACE", "ver": "rev1" },
     { "title": "The Legend of Zelda: Ocarina of Time (EUR)", "id": "NACP", "ver": "rev1" }
   ],
+  "sms": [
+    { "title": "Sonic the Hedgehog (USA)", "id": "LAGE", "ver": "1" },
+    { "title": "Sonic the Hedgehog (EUR)", "id": "LAGP", "ver": "1" },
+    { "title": "Sonic the Hedgehog (JPN)", "id": "LAGJ", "ver": "1" },
+    { "title": "Phantasy Star (USA)", "id": "LADE", "ver": "3" },
+    { "title": "Phantasy Star (EUR)", "id": "LADP", "ver": "3" },
+    { "title": "Phantasy Star (JPN)", "id": "LADJ", "ver": "3" }
+  ],
+  "smd": [
+    { "title": "Comix Zone (USA)", "id": "MAPE", "ver": "1" },
+    { "title": "Comix Zone (EUR)", "id": "MAPP", "ver": "1" },
+    { "title": "Comix Zone (JPN)", "id": "MAPJ", "ver": "1" },
+    { "title": "Sonic the Hedgehog 3 (USA)", "id": "MBME", "ver": "2" },
+    { "title": "Sonic the Hedgehog 3 (EUR)", "id": "MBMP", "ver": "2" },
+    { "title": "Sonic the Hedgehog 3 (JPN)", "id": "MBMJ", "ver": "2" }
+  ],
   "flash": [
     { "title": "Flash Placeholder / Back in Nature", "id": "WNAP" }
   ],

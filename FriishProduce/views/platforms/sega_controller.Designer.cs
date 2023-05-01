@@ -1,7 +1,7 @@
 ﻿
 namespace FriishProduce.Views
 {
-    partial class Flash_Controller
+    partial class SEGA_Controller
     {
         /// <summary>
         /// Required designer variable.
@@ -40,9 +40,6 @@ namespace FriishProduce.Views
             this.btn_core_2 = new System.Windows.Forms.ComboBox();
             this.pictureBox27 = new System.Windows.Forms.PictureBox();
             this.pictureBox26 = new System.Windows.Forms.PictureBox();
-            this.btn_core_home = new System.Windows.Forms.ComboBox();
-            this.pictureBox24 = new System.Windows.Forms.PictureBox();
-            this.pictureBox25 = new System.Windows.Forms.PictureBox();
             this.pictureBox21 = new System.Windows.Forms.PictureBox();
             this.pictureBox22 = new System.Windows.Forms.PictureBox();
             this.pictureBox23 = new System.Windows.Forms.PictureBox();
@@ -65,14 +62,7 @@ namespace FriishProduce.Views
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.btn_nunchuk_z = new System.Windows.Forms.ComboBox();
-            this.btn_nunchuk_c = new System.Windows.Forms.ComboBox();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.ClassicController = new System.Windows.Forms.TabPage();
             this.btn_classic_zr = new System.Windows.Forms.ComboBox();
             this.btn_classic_zl = new System.Windows.Forms.ComboBox();
@@ -86,8 +76,6 @@ namespace FriishProduce.Views
             this.pictureBox48 = new System.Windows.Forms.PictureBox();
             this.btn_classic_select = new System.Windows.Forms.ComboBox();
             this.btn_classic_start = new System.Windows.Forms.ComboBox();
-            this.btn_classic_home = new System.Windows.Forms.ComboBox();
-            this.pictureBox46 = new System.Windows.Forms.PictureBox();
             this.pictureBox45 = new System.Windows.Forms.PictureBox();
             this.pictureBox44 = new System.Windows.Forms.PictureBox();
             this.btn_classic_b = new System.Windows.Forms.ComboBox();
@@ -115,13 +103,47 @@ namespace FriishProduce.Views
             this.pictureBox29 = new System.Windows.Forms.PictureBox();
             this.btn_classic_y = new System.Windows.Forms.ComboBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.GameCube = new System.Windows.Forms.TabPage();
+            this.pictureBox73 = new System.Windows.Forms.PictureBox();
+            this.pictureBox72 = new System.Windows.Forms.PictureBox();
+            this.btn_gc_right = new System.Windows.Forms.ComboBox();
+            this.btn_gc_down = new System.Windows.Forms.ComboBox();
+            this.pictureBox71 = new System.Windows.Forms.PictureBox();
+            this.pictureBox70 = new System.Windows.Forms.PictureBox();
+            this.pictureBox63 = new System.Windows.Forms.PictureBox();
+            this.pictureBox68 = new System.Windows.Forms.PictureBox();
+            this.pictureBox69 = new System.Windows.Forms.PictureBox();
+            this.pictureBox67 = new System.Windows.Forms.PictureBox();
+            this.pictureBox66 = new System.Windows.Forms.PictureBox();
+            this.btn_gc_y = new System.Windows.Forms.ComboBox();
+            this.btn_gc_r = new System.Windows.Forms.ComboBox();
+            this.btn_gc_z = new System.Windows.Forms.ComboBox();
+            this.btn_gc_l = new System.Windows.Forms.ComboBox();
+            this.pictureBox54 = new System.Windows.Forms.PictureBox();
+            this.pictureBox55 = new System.Windows.Forms.PictureBox();
+            this.pictureBox56 = new System.Windows.Forms.PictureBox();
+            this.btn_gc_start = new System.Windows.Forms.ComboBox();
+            this.pictureBox57 = new System.Windows.Forms.PictureBox();
+            this.btn_gc_b = new System.Windows.Forms.ComboBox();
+            this.btn_gc_a = new System.Windows.Forms.ComboBox();
+            this.pictureBox58 = new System.Windows.Forms.PictureBox();
+            this.pictureBox59 = new System.Windows.Forms.PictureBox();
+            this.btn_gc_x = new System.Windows.Forms.ComboBox();
+            this.pictureBox60 = new System.Windows.Forms.PictureBox();
+            this.pictureBox61 = new System.Windows.Forms.PictureBox();
+            this.btn_gc_left = new System.Windows.Forms.ComboBox();
+            this.btn_gc_up = new System.Windows.Forms.ComboBox();
+            this.pictureBox62 = new System.Windows.Forms.PictureBox();
+            this.pictureBox64 = new System.Windows.Forms.PictureBox();
+            this.pictureBox65 = new System.Windows.Forms.PictureBox();
+            this.pictureBox53 = new System.Windows.Forms.PictureBox();
+            this.btn_gc_c = new System.Windows.Forms.ComboBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.WiiRemote.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox27)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox26)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox24)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox25)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox21)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox22)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox23)).BeginInit();
@@ -138,12 +160,7 @@ namespace FriishProduce.Views
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.ClassicController.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox52)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox51)).BeginInit();
@@ -151,7 +168,6 @@ namespace FriishProduce.Views
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox50)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox47)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox48)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox46)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox45)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox44)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox42)).BeginInit();
@@ -171,6 +187,29 @@ namespace FriishProduce.Views
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox28)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox29)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.GameCube.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox73)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox72)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox71)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox70)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox63)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox68)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox69)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox67)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox66)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox54)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox55)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox56)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox57)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox58)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox59)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox60)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox61)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox62)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox64)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox65)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox53)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // panel
@@ -227,17 +266,18 @@ namespace FriishProduce.Views
             this.btn_core_a.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.btn_core_a.ForeColor = System.Drawing.Color.Black;
             this.btn_core_a.FormattingEnabled = true;
-            this.btn_core_a.Location = new System.Drawing.Point(457, 58);
+            this.btn_core_a.Location = new System.Drawing.Point(361, 58);
             this.btn_core_a.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.btn_core_a.Name = "btn_core_a";
             this.btn_core_a.Size = new System.Drawing.Size(120, 21);
             this.btn_core_a.TabIndex = 6;
-            this.btn_core_a.Tag = "KEY_BUTTON_A";
+            this.btn_core_a.Tag = "core_a";
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.WiiRemote);
             this.tabControl1.Controls.Add(this.ClassicController);
+            this.tabControl1.Controls.Add(this.GameCube);
             this.tabControl1.Location = new System.Drawing.Point(19, 15);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.tabControl1.Name = "tabControl1";
@@ -253,9 +293,6 @@ namespace FriishProduce.Views
             this.WiiRemote.Controls.Add(this.btn_core_2);
             this.WiiRemote.Controls.Add(this.pictureBox27);
             this.WiiRemote.Controls.Add(this.pictureBox26);
-            this.WiiRemote.Controls.Add(this.btn_core_home);
-            this.WiiRemote.Controls.Add(this.pictureBox24);
-            this.WiiRemote.Controls.Add(this.pictureBox25);
             this.WiiRemote.Controls.Add(this.pictureBox21);
             this.WiiRemote.Controls.Add(this.pictureBox22);
             this.WiiRemote.Controls.Add(this.pictureBox23);
@@ -278,15 +315,8 @@ namespace FriishProduce.Views
             this.WiiRemote.Controls.Add(this.pictureBox10);
             this.WiiRemote.Controls.Add(this.pictureBox9);
             this.WiiRemote.Controls.Add(this.pictureBox8);
-            this.WiiRemote.Controls.Add(this.btn_nunchuk_z);
-            this.WiiRemote.Controls.Add(this.btn_nunchuk_c);
-            this.WiiRemote.Controls.Add(this.pictureBox6);
-            this.WiiRemote.Controls.Add(this.pictureBox7);
-            this.WiiRemote.Controls.Add(this.pictureBox5);
-            this.WiiRemote.Controls.Add(this.pictureBox4);
             this.WiiRemote.Controls.Add(this.btn_core_a);
             this.WiiRemote.Controls.Add(this.pictureBox1);
-            this.WiiRemote.Controls.Add(this.pictureBox2);
             this.WiiRemote.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.WiiRemote.ForeColor = System.Drawing.SystemColors.ControlText;
             this.WiiRemote.Location = new System.Drawing.Point(4, 24);
@@ -305,12 +335,12 @@ namespace FriishProduce.Views
             this.btn_core_down.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.btn_core_down.ForeColor = System.Drawing.Color.Black;
             this.btn_core_down.FormattingEnabled = true;
-            this.btn_core_down.Location = new System.Drawing.Point(207, 79);
+            this.btn_core_down.Location = new System.Drawing.Point(111, 79);
             this.btn_core_down.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.btn_core_down.Name = "btn_core_down";
             this.btn_core_down.Size = new System.Drawing.Size(120, 21);
             this.btn_core_down.TabIndex = 31;
-            this.btn_core_down.Tag = "KEY_BUTTON_DOWN";
+            this.btn_core_down.Tag = "core_down";
             // 
             // btn_core_1
             // 
@@ -319,12 +349,12 @@ namespace FriishProduce.Views
             this.btn_core_1.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.btn_core_1.ForeColor = System.Drawing.Color.Black;
             this.btn_core_1.FormattingEnabled = true;
-            this.btn_core_1.Location = new System.Drawing.Point(457, 206);
+            this.btn_core_1.Location = new System.Drawing.Point(361, 206);
             this.btn_core_1.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.btn_core_1.Name = "btn_core_1";
             this.btn_core_1.Size = new System.Drawing.Size(120, 21);
             this.btn_core_1.TabIndex = 10;
-            this.btn_core_1.Tag = "KEY_BUTTON_1";
+            this.btn_core_1.Tag = "core_1";
             // 
             // btn_core_2
             // 
@@ -333,17 +363,17 @@ namespace FriishProduce.Views
             this.btn_core_2.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.btn_core_2.ForeColor = System.Drawing.Color.Black;
             this.btn_core_2.FormattingEnabled = true;
-            this.btn_core_2.Location = new System.Drawing.Point(457, 230);
+            this.btn_core_2.Location = new System.Drawing.Point(361, 230);
             this.btn_core_2.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.btn_core_2.Name = "btn_core_2";
             this.btn_core_2.Size = new System.Drawing.Size(120, 21);
             this.btn_core_2.TabIndex = 12;
-            this.btn_core_2.Tag = "KEY_BUTTON_2";
+            this.btn_core_2.Tag = "core_2";
             // 
             // pictureBox27
             // 
             this.pictureBox27.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox27.Location = new System.Drawing.Point(392, 240);
+            this.pictureBox27.Location = new System.Drawing.Point(296, 240);
             this.pictureBox27.Name = "pictureBox27";
             this.pictureBox27.Size = new System.Drawing.Size(95, 1);
             this.pictureBox27.TabIndex = 62;
@@ -352,48 +382,16 @@ namespace FriishProduce.Views
             // pictureBox26
             // 
             this.pictureBox26.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox26.Location = new System.Drawing.Point(392, 216);
+            this.pictureBox26.Location = new System.Drawing.Point(296, 216);
             this.pictureBox26.Name = "pictureBox26";
             this.pictureBox26.Size = new System.Drawing.Size(68, 1);
             this.pictureBox26.TabIndex = 61;
             this.pictureBox26.TabStop = false;
             // 
-            // btn_core_home
-            // 
-            this.btn_core_home.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.btn_core_home.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btn_core_home.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.btn_core_home.ForeColor = System.Drawing.Color.Black;
-            this.btn_core_home.FormattingEnabled = true;
-            this.btn_core_home.Location = new System.Drawing.Point(457, 154);
-            this.btn_core_home.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.btn_core_home.Name = "btn_core_home";
-            this.btn_core_home.Size = new System.Drawing.Size(120, 21);
-            this.btn_core_home.TabIndex = 22;
-            this.btn_core_home.Tag = "KEY_BUTTON_HOME";
-            // 
-            // pictureBox24
-            // 
-            this.pictureBox24.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox24.Location = new System.Drawing.Point(392, 154);
-            this.pictureBox24.Name = "pictureBox24";
-            this.pictureBox24.Size = new System.Drawing.Size(1, 10);
-            this.pictureBox24.TabIndex = 60;
-            this.pictureBox24.TabStop = false;
-            // 
-            // pictureBox25
-            // 
-            this.pictureBox25.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox25.Location = new System.Drawing.Point(392, 164);
-            this.pictureBox25.Name = "pictureBox25";
-            this.pictureBox25.Size = new System.Drawing.Size(95, 1);
-            this.pictureBox25.TabIndex = 59;
-            this.pictureBox25.TabStop = false;
-            // 
             // pictureBox21
             // 
             this.pictureBox21.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox21.Location = new System.Drawing.Point(440, 68);
+            this.pictureBox21.Location = new System.Drawing.Point(344, 68);
             this.pictureBox21.Name = "pictureBox21";
             this.pictureBox21.Size = new System.Drawing.Size(1, 47);
             this.pictureBox21.TabIndex = 58;
@@ -402,7 +400,7 @@ namespace FriishProduce.Views
             // pictureBox22
             // 
             this.pictureBox22.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox22.Location = new System.Drawing.Point(392, 114);
+            this.pictureBox22.Location = new System.Drawing.Point(296, 114);
             this.pictureBox22.Name = "pictureBox22";
             this.pictureBox22.Size = new System.Drawing.Size(48, 1);
             this.pictureBox22.TabIndex = 57;
@@ -411,7 +409,7 @@ namespace FriishProduce.Views
             // pictureBox23
             // 
             this.pictureBox23.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox23.Location = new System.Drawing.Point(440, 68);
+            this.pictureBox23.Location = new System.Drawing.Point(344, 68);
             this.pictureBox23.Name = "pictureBox23";
             this.pictureBox23.Size = new System.Drawing.Size(18, 1);
             this.pictureBox23.TabIndex = 56;
@@ -424,17 +422,17 @@ namespace FriishProduce.Views
             this.btn_core_up.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.btn_core_up.ForeColor = System.Drawing.Color.Black;
             this.btn_core_up.FormattingEnabled = true;
-            this.btn_core_up.Location = new System.Drawing.Point(207, 103);
+            this.btn_core_up.Location = new System.Drawing.Point(111, 103);
             this.btn_core_up.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.btn_core_up.Name = "btn_core_up";
             this.btn_core_up.Size = new System.Drawing.Size(120, 21);
             this.btn_core_up.TabIndex = 29;
-            this.btn_core_up.Tag = "KEY_BUTTON_UP";
+            this.btn_core_up.Tag = "core_up";
             // 
             // pictureBox20
             // 
             this.pictureBox20.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox20.Location = new System.Drawing.Point(375, 69);
+            this.pictureBox20.Location = new System.Drawing.Point(279, 69);
             this.pictureBox20.Name = "pictureBox20";
             this.pictureBox20.Size = new System.Drawing.Size(1, 45);
             this.pictureBox20.TabIndex = 55;
@@ -443,7 +441,7 @@ namespace FriishProduce.Views
             // pictureBox19
             // 
             this.pictureBox19.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox19.Location = new System.Drawing.Point(302, 113);
+            this.pictureBox19.Location = new System.Drawing.Point(206, 113);
             this.pictureBox19.Name = "pictureBox19";
             this.pictureBox19.Size = new System.Drawing.Size(73, 1);
             this.pictureBox19.TabIndex = 54;
@@ -452,7 +450,7 @@ namespace FriishProduce.Views
             // pictureBox18
             // 
             this.pictureBox18.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox18.Location = new System.Drawing.Point(375, 69);
+            this.pictureBox18.Location = new System.Drawing.Point(279, 69);
             this.pictureBox18.Name = "pictureBox18";
             this.pictureBox18.Size = new System.Drawing.Size(18, 1);
             this.pictureBox18.TabIndex = 53;
@@ -461,7 +459,7 @@ namespace FriishProduce.Views
             // pictureBox17
             // 
             this.pictureBox17.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox17.Location = new System.Drawing.Point(288, 89);
+            this.pictureBox17.Location = new System.Drawing.Point(192, 89);
             this.pictureBox17.Name = "pictureBox17";
             this.pictureBox17.Size = new System.Drawing.Size(105, 1);
             this.pictureBox17.TabIndex = 52;
@@ -474,12 +472,12 @@ namespace FriishProduce.Views
             this.btn_core_right.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.btn_core_right.ForeColor = System.Drawing.Color.Black;
             this.btn_core_right.FormattingEnabled = true;
-            this.btn_core_right.Location = new System.Drawing.Point(207, 55);
+            this.btn_core_right.Location = new System.Drawing.Point(111, 55);
             this.btn_core_right.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.btn_core_right.Name = "btn_core_right";
             this.btn_core_right.Size = new System.Drawing.Size(120, 21);
             this.btn_core_right.TabIndex = 35;
-            this.btn_core_right.Tag = "KEY_BUTTON_RIGHT";
+            this.btn_core_right.Tag = "core_right";
             // 
             // btn_core_minus
             // 
@@ -488,17 +486,17 @@ namespace FriishProduce.Views
             this.btn_core_minus.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.btn_core_minus.ForeColor = System.Drawing.Color.Black;
             this.btn_core_minus.FormattingEnabled = true;
-            this.btn_core_minus.Location = new System.Drawing.Point(457, 130);
+            this.btn_core_minus.Location = new System.Drawing.Point(361, 130);
             this.btn_core_minus.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.btn_core_minus.Name = "btn_core_minus";
             this.btn_core_minus.Size = new System.Drawing.Size(120, 21);
             this.btn_core_minus.TabIndex = 16;
-            this.btn_core_minus.Tag = "KEY_BUTTON_MINUS";
+            this.btn_core_minus.Tag = "core_-";
             // 
             // pictureBox15
             // 
             this.pictureBox15.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox15.Location = new System.Drawing.Point(375, 141);
+            this.pictureBox15.Location = new System.Drawing.Point(279, 141);
             this.pictureBox15.Name = "pictureBox15";
             this.pictureBox15.Size = new System.Drawing.Size(1, 13);
             this.pictureBox15.TabIndex = 51;
@@ -507,7 +505,7 @@ namespace FriishProduce.Views
             // pictureBox16
             // 
             this.pictureBox16.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox16.Location = new System.Drawing.Point(375, 140);
+            this.pictureBox16.Location = new System.Drawing.Point(279, 140);
             this.pictureBox16.Name = "pictureBox16";
             this.pictureBox16.Size = new System.Drawing.Size(96, 1);
             this.pictureBox16.TabIndex = 50;
@@ -520,17 +518,17 @@ namespace FriishProduce.Views
             this.btn_core_plus.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.btn_core_plus.ForeColor = System.Drawing.Color.Black;
             this.btn_core_plus.FormattingEnabled = true;
-            this.btn_core_plus.Location = new System.Drawing.Point(457, 106);
+            this.btn_core_plus.Location = new System.Drawing.Point(361, 106);
             this.btn_core_plus.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.btn_core_plus.Name = "btn_core_plus";
             this.btn_core_plus.Size = new System.Drawing.Size(120, 21);
             this.btn_core_plus.TabIndex = 14;
-            this.btn_core_plus.Tag = "KEY_BUTTON_PLUS";
+            this.btn_core_plus.Tag = "core_+";
             // 
             // pictureBox13
             // 
             this.pictureBox13.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox13.Location = new System.Drawing.Point(408, 117);
+            this.pictureBox13.Location = new System.Drawing.Point(312, 117);
             this.pictureBox13.Name = "pictureBox13";
             this.pictureBox13.Size = new System.Drawing.Size(1, 37);
             this.pictureBox13.TabIndex = 49;
@@ -539,7 +537,7 @@ namespace FriishProduce.Views
             // pictureBox14
             // 
             this.pictureBox14.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox14.Location = new System.Drawing.Point(408, 116);
+            this.pictureBox14.Location = new System.Drawing.Point(312, 116);
             this.pictureBox14.Name = "pictureBox14";
             this.pictureBox14.Size = new System.Drawing.Size(95, 1);
             this.pictureBox14.TabIndex = 48;
@@ -552,17 +550,17 @@ namespace FriishProduce.Views
             this.btn_core_b.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.btn_core_b.ForeColor = System.Drawing.Color.Black;
             this.btn_core_b.FormattingEnabled = true;
-            this.btn_core_b.Location = new System.Drawing.Point(457, 82);
+            this.btn_core_b.Location = new System.Drawing.Point(361, 82);
             this.btn_core_b.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.btn_core_b.Name = "btn_core_b";
             this.btn_core_b.Size = new System.Drawing.Size(120, 21);
             this.btn_core_b.TabIndex = 8;
-            this.btn_core_b.Tag = "KEY_BUTTON_B";
+            this.btn_core_b.Tag = "core_b";
             // 
             // pictureBox12
             // 
             this.pictureBox12.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox12.Location = new System.Drawing.Point(431, 92);
+            this.pictureBox12.Location = new System.Drawing.Point(335, 92);
             this.pictureBox12.Name = "pictureBox12";
             this.pictureBox12.Size = new System.Drawing.Size(105, 1);
             this.pictureBox12.TabIndex = 47;
@@ -575,17 +573,17 @@ namespace FriishProduce.Views
             this.btn_core_left.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.btn_core_left.ForeColor = System.Drawing.Color.Black;
             this.btn_core_left.FormattingEnabled = true;
-            this.btn_core_left.Location = new System.Drawing.Point(207, 31);
+            this.btn_core_left.Location = new System.Drawing.Point(111, 31);
             this.btn_core_left.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.btn_core_left.Name = "btn_core_left";
             this.btn_core_left.Size = new System.Drawing.Size(120, 21);
             this.btn_core_left.TabIndex = 33;
-            this.btn_core_left.Tag = "KEY_BUTTON_LEFT";
+            this.btn_core_left.Tag = "core_left";
             // 
             // pictureBox11
             // 
             this.pictureBox11.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox11.Location = new System.Drawing.Point(401, 65);
+            this.pictureBox11.Location = new System.Drawing.Point(305, 65);
             this.pictureBox11.Name = "pictureBox11";
             this.pictureBox11.Size = new System.Drawing.Size(1, 12);
             this.pictureBox11.TabIndex = 46;
@@ -594,7 +592,7 @@ namespace FriishProduce.Views
             // pictureBox10
             // 
             this.pictureBox10.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox10.Location = new System.Drawing.Point(382, 42);
+            this.pictureBox10.Location = new System.Drawing.Point(286, 42);
             this.pictureBox10.Name = "pictureBox10";
             this.pictureBox10.Size = new System.Drawing.Size(1, 35);
             this.pictureBox10.TabIndex = 45;
@@ -603,7 +601,7 @@ namespace FriishProduce.Views
             // pictureBox9
             // 
             this.pictureBox9.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox9.Location = new System.Drawing.Point(297, 65);
+            this.pictureBox9.Location = new System.Drawing.Point(201, 65);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(105, 1);
             this.pictureBox9.TabIndex = 44;
@@ -612,95 +610,21 @@ namespace FriishProduce.Views
             // pictureBox8
             // 
             this.pictureBox8.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox8.Location = new System.Drawing.Point(288, 41);
+            this.pictureBox8.Location = new System.Drawing.Point(192, 41);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(95, 1);
             this.pictureBox8.TabIndex = 43;
             this.pictureBox8.TabStop = false;
             // 
-            // btn_nunchuk_z
-            // 
-            this.btn_nunchuk_z.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.btn_nunchuk_z.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btn_nunchuk_z.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.btn_nunchuk_z.ForeColor = System.Drawing.Color.Black;
-            this.btn_nunchuk_z.FormattingEnabled = true;
-            this.btn_nunchuk_z.Location = new System.Drawing.Point(30, 168);
-            this.btn_nunchuk_z.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.btn_nunchuk_z.Name = "btn_nunchuk_z";
-            this.btn_nunchuk_z.Size = new System.Drawing.Size(120, 21);
-            this.btn_nunchuk_z.TabIndex = 20;
-            this.btn_nunchuk_z.Tag = "KEY_BUTTON_Z";
-            // 
-            // btn_nunchuk_c
-            // 
-            this.btn_nunchuk_c.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.btn_nunchuk_c.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btn_nunchuk_c.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.btn_nunchuk_c.ForeColor = System.Drawing.Color.Black;
-            this.btn_nunchuk_c.FormattingEnabled = true;
-            this.btn_nunchuk_c.Location = new System.Drawing.Point(52, 144);
-            this.btn_nunchuk_c.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.btn_nunchuk_c.Name = "btn_nunchuk_c";
-            this.btn_nunchuk_c.Size = new System.Drawing.Size(120, 21);
-            this.btn_nunchuk_c.TabIndex = 18;
-            this.btn_nunchuk_c.Tag = "KEY_BUTTON_C";
-            // 
-            // pictureBox6
-            // 
-            this.pictureBox6.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox6.Location = new System.Drawing.Point(60, 78);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(1, 68);
-            this.pictureBox6.TabIndex = 42;
-            this.pictureBox6.TabStop = false;
-            // 
-            // pictureBox7
-            // 
-            this.pictureBox7.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox7.Location = new System.Drawing.Point(60, 78);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(68, 1);
-            this.pictureBox7.TabIndex = 41;
-            this.pictureBox7.TabStop = false;
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox5.Location = new System.Drawing.Point(38, 92);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(1, 80);
-            this.pictureBox5.TabIndex = 40;
-            this.pictureBox5.TabStop = false;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox4.Location = new System.Drawing.Point(38, 92);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(79, 1);
-            this.pictureBox4.TabIndex = 39;
-            this.pictureBox4.TabStop = false;
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::FriishProduce.Properties.Resources.Controllers_Wiimote;
-            this.pictureBox1.Location = new System.Drawing.Point(349, 24);
+            this.pictureBox1.Location = new System.Drawing.Point(253, 24);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(86, 265);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 37;
             this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::FriishProduce.Properties.Resources.Controllers_Nunchuk;
-            this.pictureBox2.Location = new System.Drawing.Point(112, 54);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(80, 250);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 38;
-            this.pictureBox2.TabStop = false;
             // 
             // ClassicController
             // 
@@ -716,8 +640,6 @@ namespace FriishProduce.Views
             this.ClassicController.Controls.Add(this.pictureBox48);
             this.ClassicController.Controls.Add(this.btn_classic_select);
             this.ClassicController.Controls.Add(this.btn_classic_start);
-            this.ClassicController.Controls.Add(this.btn_classic_home);
-            this.ClassicController.Controls.Add(this.pictureBox46);
             this.ClassicController.Controls.Add(this.pictureBox45);
             this.ClassicController.Controls.Add(this.pictureBox44);
             this.ClassicController.Controls.Add(this.btn_classic_b);
@@ -761,12 +683,12 @@ namespace FriishProduce.Views
             this.btn_classic_zr.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.btn_classic_zr.ForeColor = System.Drawing.Color.Black;
             this.btn_classic_zr.FormattingEnabled = true;
-            this.btn_classic_zr.Location = new System.Drawing.Point(328, 20);
+            this.btn_classic_zr.Location = new System.Drawing.Point(328, 30);
             this.btn_classic_zr.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.btn_classic_zr.Name = "btn_classic_zr";
             this.btn_classic_zr.Size = new System.Drawing.Size(120, 21);
             this.btn_classic_zr.TabIndex = 66;
-            this.btn_classic_zr.Tag = "KEY_CL_TRIGGER_ZR";
+            this.btn_classic_zr.Tag = "cl_zr";
             // 
             // btn_classic_zl
             // 
@@ -775,12 +697,12 @@ namespace FriishProduce.Views
             this.btn_classic_zl.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.btn_classic_zl.ForeColor = System.Drawing.Color.Black;
             this.btn_classic_zl.FormattingEnabled = true;
-            this.btn_classic_zl.Location = new System.Drawing.Point(144, 20);
+            this.btn_classic_zl.Location = new System.Drawing.Point(144, 30);
             this.btn_classic_zl.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.btn_classic_zl.Name = "btn_classic_zl";
             this.btn_classic_zl.Size = new System.Drawing.Size(120, 21);
             this.btn_classic_zl.TabIndex = 64;
-            this.btn_classic_zl.Tag = "KEY_CL_TRIGGER_ZL";
+            this.btn_classic_zl.Tag = "cl_zl";
             // 
             // btn_classic_r
             // 
@@ -789,12 +711,12 @@ namespace FriishProduce.Views
             this.btn_classic_r.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.btn_classic_r.ForeColor = System.Drawing.Color.Black;
             this.btn_classic_r.FormattingEnabled = true;
-            this.btn_classic_r.Location = new System.Drawing.Point(457, 20);
+            this.btn_classic_r.Location = new System.Drawing.Point(457, 30);
             this.btn_classic_r.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.btn_classic_r.Name = "btn_classic_r";
             this.btn_classic_r.Size = new System.Drawing.Size(120, 21);
             this.btn_classic_r.TabIndex = 44;
-            this.btn_classic_r.Tag = "KEY_CL_TRIGGER_R";
+            this.btn_classic_r.Tag = "cl_r";
             // 
             // btn_classic_l
             // 
@@ -803,17 +725,17 @@ namespace FriishProduce.Views
             this.btn_classic_l.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.btn_classic_l.ForeColor = System.Drawing.Color.Black;
             this.btn_classic_l.FormattingEnabled = true;
-            this.btn_classic_l.Location = new System.Drawing.Point(15, 20);
+            this.btn_classic_l.Location = new System.Drawing.Point(15, 30);
             this.btn_classic_l.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.btn_classic_l.Name = "btn_classic_l";
             this.btn_classic_l.Size = new System.Drawing.Size(120, 21);
             this.btn_classic_l.TabIndex = 42;
-            this.btn_classic_l.Tag = "KEY_CL_TRIGGER_L";
+            this.btn_classic_l.Tag = "cl_l";
             // 
             // pictureBox52
             // 
             this.pictureBox52.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox52.Location = new System.Drawing.Point(334, 27);
+            this.pictureBox52.Location = new System.Drawing.Point(334, 37);
             this.pictureBox52.Name = "pictureBox52";
             this.pictureBox52.Size = new System.Drawing.Size(1, 24);
             this.pictureBox52.TabIndex = 92;
@@ -822,7 +744,7 @@ namespace FriishProduce.Views
             // pictureBox51
             // 
             this.pictureBox51.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox51.Location = new System.Drawing.Point(257, 27);
+            this.pictureBox51.Location = new System.Drawing.Point(257, 37);
             this.pictureBox51.Name = "pictureBox51";
             this.pictureBox51.Size = new System.Drawing.Size(1, 24);
             this.pictureBox51.TabIndex = 91;
@@ -831,7 +753,7 @@ namespace FriishProduce.Views
             // pictureBox49
             // 
             this.pictureBox49.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox49.Location = new System.Drawing.Point(100, 57);
+            this.pictureBox49.Location = new System.Drawing.Point(100, 67);
             this.pictureBox49.Name = "pictureBox49";
             this.pictureBox49.Size = new System.Drawing.Size(81, 1);
             this.pictureBox49.TabIndex = 90;
@@ -840,7 +762,7 @@ namespace FriishProduce.Views
             // pictureBox50
             // 
             this.pictureBox50.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox50.Location = new System.Drawing.Point(100, 34);
+            this.pictureBox50.Location = new System.Drawing.Point(100, 44);
             this.pictureBox50.Name = "pictureBox50";
             this.pictureBox50.Size = new System.Drawing.Size(1, 24);
             this.pictureBox50.TabIndex = 89;
@@ -849,7 +771,7 @@ namespace FriishProduce.Views
             // pictureBox47
             // 
             this.pictureBox47.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox47.Location = new System.Drawing.Point(410, 57);
+            this.pictureBox47.Location = new System.Drawing.Point(410, 67);
             this.pictureBox47.Name = "pictureBox47";
             this.pictureBox47.Size = new System.Drawing.Size(81, 1);
             this.pictureBox47.TabIndex = 88;
@@ -858,7 +780,7 @@ namespace FriishProduce.Views
             // pictureBox48
             // 
             this.pictureBox48.BackColor = System.Drawing.Color.DarkGray;
-            this.pictureBox48.Location = new System.Drawing.Point(490, 34);
+            this.pictureBox48.Location = new System.Drawing.Point(490, 44);
             this.pictureBox48.Name = "pictureBox48";
             this.pictureBox48.Size = new System.Drawing.Size(1, 24);
             this.pictureBox48.TabIndex = 87;
@@ -871,12 +793,12 @@ namespace FriishProduce.Views
             this.btn_classic_select.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.btn_classic_select.ForeColor = System.Drawing.Color.Black;
             this.btn_classic_select.FormattingEnabled = true;
-            this.btn_classic_select.Location = new System.Drawing.Point(156, 248);
+            this.btn_classic_select.Location = new System.Drawing.Point(166, 258);
             this.btn_classic_select.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.btn_classic_select.Name = "btn_classic_select";
             this.btn_classic_select.Size = new System.Drawing.Size(120, 21);
             this.btn_classic_select.TabIndex = 48;
-            this.btn_classic_select.Tag = "KEY_CL_BUTTON_MINUS";
+            this.btn_classic_select.Tag = "cl_-";
             // 
             // btn_classic_start
             // 
@@ -885,40 +807,17 @@ namespace FriishProduce.Views
             this.btn_classic_start.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.btn_classic_start.ForeColor = System.Drawing.Color.Black;
             this.btn_classic_start.FormattingEnabled = true;
-            this.btn_classic_start.Location = new System.Drawing.Point(317, 248);
+            this.btn_classic_start.Location = new System.Drawing.Point(307, 258);
             this.btn_classic_start.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.btn_classic_start.Name = "btn_classic_start";
             this.btn_classic_start.Size = new System.Drawing.Size(120, 21);
             this.btn_classic_start.TabIndex = 46;
-            this.btn_classic_start.Tag = "KEY_CL_BUTTON_PLUS";
-            // 
-            // btn_classic_home
-            // 
-            this.btn_classic_home.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.btn_classic_home.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btn_classic_home.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.btn_classic_home.ForeColor = System.Drawing.Color.Black;
-            this.btn_classic_home.FormattingEnabled = true;
-            this.btn_classic_home.Location = new System.Drawing.Point(234, 275);
-            this.btn_classic_home.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.btn_classic_home.Name = "btn_classic_home";
-            this.btn_classic_home.Size = new System.Drawing.Size(120, 21);
-            this.btn_classic_home.TabIndex = 54;
-            this.btn_classic_home.Tag = "KEY_CL_BUTTON_HOME";
-            // 
-            // pictureBox46
-            // 
-            this.pictureBox46.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox46.Location = new System.Drawing.Point(296, 125);
-            this.pictureBox46.Name = "pictureBox46";
-            this.pictureBox46.Size = new System.Drawing.Size(1, 158);
-            this.pictureBox46.TabIndex = 86;
-            this.pictureBox46.TabStop = false;
+            this.btn_classic_start.Tag = "cl_+";
             // 
             // pictureBox45
             // 
             this.pictureBox45.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox45.Location = new System.Drawing.Point(319, 125);
+            this.pictureBox45.Location = new System.Drawing.Point(319, 135);
             this.pictureBox45.Name = "pictureBox45";
             this.pictureBox45.Size = new System.Drawing.Size(1, 140);
             this.pictureBox45.TabIndex = 85;
@@ -927,7 +826,7 @@ namespace FriishProduce.Views
             // pictureBox44
             // 
             this.pictureBox44.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox44.Location = new System.Drawing.Point(273, 125);
+            this.pictureBox44.Location = new System.Drawing.Point(273, 135);
             this.pictureBox44.Name = "pictureBox44";
             this.pictureBox44.Size = new System.Drawing.Size(1, 140);
             this.pictureBox44.TabIndex = 84;
@@ -940,12 +839,12 @@ namespace FriishProduce.Views
             this.btn_classic_b.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.btn_classic_b.ForeColor = System.Drawing.Color.Black;
             this.btn_classic_b.FormattingEnabled = true;
-            this.btn_classic_b.Location = new System.Drawing.Point(457, 173);
+            this.btn_classic_b.Location = new System.Drawing.Point(457, 183);
             this.btn_classic_b.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.btn_classic_b.Name = "btn_classic_b";
             this.btn_classic_b.Size = new System.Drawing.Size(120, 21);
             this.btn_classic_b.TabIndex = 40;
-            this.btn_classic_b.Tag = "KEY_CL_BUTTON_B";
+            this.btn_classic_b.Tag = "cl_b";
             // 
             // btn_classic_a
             // 
@@ -954,17 +853,17 @@ namespace FriishProduce.Views
             this.btn_classic_a.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.btn_classic_a.ForeColor = System.Drawing.Color.Black;
             this.btn_classic_a.FormattingEnabled = true;
-            this.btn_classic_a.Location = new System.Drawing.Point(457, 146);
+            this.btn_classic_a.Location = new System.Drawing.Point(457, 156);
             this.btn_classic_a.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.btn_classic_a.Name = "btn_classic_a";
             this.btn_classic_a.Size = new System.Drawing.Size(120, 21);
             this.btn_classic_a.TabIndex = 38;
-            this.btn_classic_a.Tag = "KEY_CL_BUTTON_A";
+            this.btn_classic_a.Tag = "cl_a";
             // 
             // pictureBox42
             // 
             this.pictureBox42.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox42.Location = new System.Drawing.Point(391, 145);
+            this.pictureBox42.Location = new System.Drawing.Point(391, 155);
             this.pictureBox42.Name = "pictureBox42";
             this.pictureBox42.Size = new System.Drawing.Size(1, 40);
             this.pictureBox42.TabIndex = 83;
@@ -973,7 +872,7 @@ namespace FriishProduce.Views
             // pictureBox43
             // 
             this.pictureBox43.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox43.Location = new System.Drawing.Point(392, 184);
+            this.pictureBox43.Location = new System.Drawing.Point(392, 194);
             this.pictureBox43.Name = "pictureBox43";
             this.pictureBox43.Size = new System.Drawing.Size(95, 1);
             this.pictureBox43.TabIndex = 82;
@@ -982,7 +881,7 @@ namespace FriishProduce.Views
             // pictureBox40
             // 
             this.pictureBox40.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox40.Location = new System.Drawing.Point(423, 125);
+            this.pictureBox40.Location = new System.Drawing.Point(423, 135);
             this.pictureBox40.Name = "pictureBox40";
             this.pictureBox40.Size = new System.Drawing.Size(1, 33);
             this.pictureBox40.TabIndex = 81;
@@ -991,7 +890,7 @@ namespace FriishProduce.Views
             // pictureBox41
             // 
             this.pictureBox41.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox41.Location = new System.Drawing.Point(424, 157);
+            this.pictureBox41.Location = new System.Drawing.Point(424, 167);
             this.pictureBox41.Name = "pictureBox41";
             this.pictureBox41.Size = new System.Drawing.Size(95, 1);
             this.pictureBox41.TabIndex = 80;
@@ -1004,17 +903,17 @@ namespace FriishProduce.Views
             this.btn_classic_x.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.btn_classic_x.ForeColor = System.Drawing.Color.Black;
             this.btn_classic_x.FormattingEnabled = true;
-            this.btn_classic_x.Location = new System.Drawing.Point(457, 119);
+            this.btn_classic_x.Location = new System.Drawing.Point(457, 129);
             this.btn_classic_x.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.btn_classic_x.Name = "btn_classic_x";
             this.btn_classic_x.Size = new System.Drawing.Size(120, 21);
             this.btn_classic_x.TabIndex = 50;
-            this.btn_classic_x.Tag = "KEY_CL_BUTTON_X";
+            this.btn_classic_x.Tag = "cl_x";
             // 
             // pictureBox38
             // 
             this.pictureBox38.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox38.Location = new System.Drawing.Point(393, 107);
+            this.pictureBox38.Location = new System.Drawing.Point(393, 117);
             this.pictureBox38.Name = "pictureBox38";
             this.pictureBox38.Size = new System.Drawing.Size(1, 23);
             this.pictureBox38.TabIndex = 79;
@@ -1023,7 +922,7 @@ namespace FriishProduce.Views
             // pictureBox39
             // 
             this.pictureBox39.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox39.Location = new System.Drawing.Point(394, 129);
+            this.pictureBox39.Location = new System.Drawing.Point(394, 139);
             this.pictureBox39.Name = "pictureBox39";
             this.pictureBox39.Size = new System.Drawing.Size(95, 1);
             this.pictureBox39.TabIndex = 78;
@@ -1032,7 +931,7 @@ namespace FriishProduce.Views
             // pictureBox37
             // 
             this.pictureBox37.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox37.Location = new System.Drawing.Point(362, 102);
+            this.pictureBox37.Location = new System.Drawing.Point(362, 112);
             this.pictureBox37.Name = "pictureBox37";
             this.pictureBox37.Size = new System.Drawing.Size(1, 23);
             this.pictureBox37.TabIndex = 77;
@@ -1041,7 +940,7 @@ namespace FriishProduce.Views
             // pictureBox36
             // 
             this.pictureBox36.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox36.Location = new System.Drawing.Point(362, 102);
+            this.pictureBox36.Location = new System.Drawing.Point(362, 112);
             this.pictureBox36.Name = "pictureBox36";
             this.pictureBox36.Size = new System.Drawing.Size(95, 1);
             this.pictureBox36.TabIndex = 76;
@@ -1054,12 +953,12 @@ namespace FriishProduce.Views
             this.btn_classic_right.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.btn_classic_right.ForeColor = System.Drawing.Color.Black;
             this.btn_classic_right.FormattingEnabled = true;
-            this.btn_classic_right.Location = new System.Drawing.Point(15, 119);
+            this.btn_classic_right.Location = new System.Drawing.Point(15, 129);
             this.btn_classic_right.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.btn_classic_right.Name = "btn_classic_right";
             this.btn_classic_right.Size = new System.Drawing.Size(120, 21);
             this.btn_classic_right.TabIndex = 61;
-            this.btn_classic_right.Tag = "KEY_CL_BUTTON_RIGHT";
+            this.btn_classic_right.Tag = "cl_right";
             // 
             // btn_classic_left
             // 
@@ -1068,12 +967,12 @@ namespace FriishProduce.Views
             this.btn_classic_left.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.btn_classic_left.ForeColor = System.Drawing.Color.Black;
             this.btn_classic_left.FormattingEnabled = true;
-            this.btn_classic_left.Location = new System.Drawing.Point(15, 92);
+            this.btn_classic_left.Location = new System.Drawing.Point(15, 102);
             this.btn_classic_left.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.btn_classic_left.Name = "btn_classic_left";
             this.btn_classic_left.Size = new System.Drawing.Size(120, 21);
             this.btn_classic_left.TabIndex = 59;
-            this.btn_classic_left.Tag = "KEY_CL_BUTTON_LEFT";
+            this.btn_classic_left.Tag = "cl_left";
             // 
             // btn_classic_down
             // 
@@ -1082,12 +981,12 @@ namespace FriishProduce.Views
             this.btn_classic_down.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.btn_classic_down.ForeColor = System.Drawing.Color.Black;
             this.btn_classic_down.FormattingEnabled = true;
-            this.btn_classic_down.Location = new System.Drawing.Point(15, 146);
+            this.btn_classic_down.Location = new System.Drawing.Point(15, 156);
             this.btn_classic_down.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.btn_classic_down.Name = "btn_classic_down";
             this.btn_classic_down.Size = new System.Drawing.Size(120, 21);
             this.btn_classic_down.TabIndex = 57;
-            this.btn_classic_down.Tag = "KEY_CL_BUTTON_DOWN";
+            this.btn_classic_down.Tag = "cl_down";
             // 
             // btn_classic_up
             // 
@@ -1096,17 +995,17 @@ namespace FriishProduce.Views
             this.btn_classic_up.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.btn_classic_up.ForeColor = System.Drawing.Color.Black;
             this.btn_classic_up.FormattingEnabled = true;
-            this.btn_classic_up.Location = new System.Drawing.Point(15, 173);
+            this.btn_classic_up.Location = new System.Drawing.Point(15, 183);
             this.btn_classic_up.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.btn_classic_up.Name = "btn_classic_up";
             this.btn_classic_up.Size = new System.Drawing.Size(120, 21);
             this.btn_classic_up.TabIndex = 55;
-            this.btn_classic_up.Tag = "KEY_CL_BUTTON_UP";
+            this.btn_classic_up.Tag = "cl_up";
             // 
             // pictureBox35
             // 
             this.pictureBox35.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox35.Location = new System.Drawing.Point(215, 125);
+            this.pictureBox35.Location = new System.Drawing.Point(215, 135);
             this.pictureBox35.Name = "pictureBox35";
             this.pictureBox35.Size = new System.Drawing.Size(1, 5);
             this.pictureBox35.TabIndex = 75;
@@ -1115,7 +1014,7 @@ namespace FriishProduce.Views
             // pictureBox34
             // 
             this.pictureBox34.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox34.Location = new System.Drawing.Point(183, 102);
+            this.pictureBox34.Location = new System.Drawing.Point(183, 112);
             this.pictureBox34.Name = "pictureBox34";
             this.pictureBox34.Size = new System.Drawing.Size(1, 23);
             this.pictureBox34.TabIndex = 74;
@@ -1124,7 +1023,7 @@ namespace FriishProduce.Views
             // pictureBox33
             // 
             this.pictureBox33.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox33.Location = new System.Drawing.Point(88, 102);
+            this.pictureBox33.Location = new System.Drawing.Point(88, 112);
             this.pictureBox33.Name = "pictureBox33";
             this.pictureBox33.Size = new System.Drawing.Size(95, 1);
             this.pictureBox33.TabIndex = 73;
@@ -1133,7 +1032,7 @@ namespace FriishProduce.Views
             // pictureBox31
             // 
             this.pictureBox31.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox31.Location = new System.Drawing.Point(121, 183);
+            this.pictureBox31.Location = new System.Drawing.Point(121, 193);
             this.pictureBox31.Name = "pictureBox31";
             this.pictureBox31.Size = new System.Drawing.Size(81, 1);
             this.pictureBox31.TabIndex = 72;
@@ -1142,7 +1041,7 @@ namespace FriishProduce.Views
             // pictureBox32
             // 
             this.pictureBox32.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox32.Location = new System.Drawing.Point(201, 110);
+            this.pictureBox32.Location = new System.Drawing.Point(201, 120);
             this.pictureBox32.Name = "pictureBox32";
             this.pictureBox32.Size = new System.Drawing.Size(1, 74);
             this.pictureBox32.TabIndex = 71;
@@ -1151,7 +1050,7 @@ namespace FriishProduce.Views
             // pictureBox30
             // 
             this.pictureBox30.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox30.Location = new System.Drawing.Point(115, 156);
+            this.pictureBox30.Location = new System.Drawing.Point(115, 166);
             this.pictureBox30.Name = "pictureBox30";
             this.pictureBox30.Size = new System.Drawing.Size(81, 1);
             this.pictureBox30.TabIndex = 70;
@@ -1160,7 +1059,7 @@ namespace FriishProduce.Views
             // pictureBox28
             // 
             this.pictureBox28.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox28.Location = new System.Drawing.Point(195, 143);
+            this.pictureBox28.Location = new System.Drawing.Point(195, 153);
             this.pictureBox28.Name = "pictureBox28";
             this.pictureBox28.Size = new System.Drawing.Size(1, 14);
             this.pictureBox28.TabIndex = 69;
@@ -1169,7 +1068,7 @@ namespace FriishProduce.Views
             // pictureBox29
             // 
             this.pictureBox29.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox29.Location = new System.Drawing.Point(120, 129);
+            this.pictureBox29.Location = new System.Drawing.Point(120, 139);
             this.pictureBox29.Name = "pictureBox29";
             this.pictureBox29.Size = new System.Drawing.Size(95, 1);
             this.pictureBox29.TabIndex = 68;
@@ -1182,24 +1081,450 @@ namespace FriishProduce.Views
             this.btn_classic_y.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.btn_classic_y.ForeColor = System.Drawing.Color.Black;
             this.btn_classic_y.FormattingEnabled = true;
-            this.btn_classic_y.Location = new System.Drawing.Point(457, 92);
+            this.btn_classic_y.Location = new System.Drawing.Point(457, 102);
             this.btn_classic_y.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.btn_classic_y.Name = "btn_classic_y";
             this.btn_classic_y.Size = new System.Drawing.Size(120, 21);
             this.btn_classic_y.TabIndex = 52;
-            this.btn_classic_y.Tag = "KEY_CL_BUTTON_Y";
+            this.btn_classic_y.Tag = "cl_y";
             // 
             // pictureBox3
             // 
             this.pictureBox3.Image = global::FriishProduce.Properties.Resources.Controllers_Classic;
-            this.pictureBox3.Location = new System.Drawing.Point(139, 48);
+            this.pictureBox3.Location = new System.Drawing.Point(139, 58);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(314, 331);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 67;
             this.pictureBox3.TabStop = false;
             // 
-            // Flash_Controller
+            // GameCube
+            // 
+            this.GameCube.Controls.Add(this.pictureBox2);
+            this.GameCube.Controls.Add(this.btn_gc_c);
+            this.GameCube.Controls.Add(this.pictureBox73);
+            this.GameCube.Controls.Add(this.pictureBox72);
+            this.GameCube.Controls.Add(this.btn_gc_right);
+            this.GameCube.Controls.Add(this.btn_gc_down);
+            this.GameCube.Controls.Add(this.pictureBox71);
+            this.GameCube.Controls.Add(this.pictureBox70);
+            this.GameCube.Controls.Add(this.pictureBox63);
+            this.GameCube.Controls.Add(this.pictureBox68);
+            this.GameCube.Controls.Add(this.pictureBox69);
+            this.GameCube.Controls.Add(this.pictureBox67);
+            this.GameCube.Controls.Add(this.pictureBox66);
+            this.GameCube.Controls.Add(this.btn_gc_y);
+            this.GameCube.Controls.Add(this.btn_gc_r);
+            this.GameCube.Controls.Add(this.btn_gc_z);
+            this.GameCube.Controls.Add(this.btn_gc_l);
+            this.GameCube.Controls.Add(this.pictureBox54);
+            this.GameCube.Controls.Add(this.pictureBox55);
+            this.GameCube.Controls.Add(this.pictureBox56);
+            this.GameCube.Controls.Add(this.btn_gc_start);
+            this.GameCube.Controls.Add(this.pictureBox57);
+            this.GameCube.Controls.Add(this.btn_gc_b);
+            this.GameCube.Controls.Add(this.btn_gc_a);
+            this.GameCube.Controls.Add(this.pictureBox58);
+            this.GameCube.Controls.Add(this.pictureBox59);
+            this.GameCube.Controls.Add(this.btn_gc_x);
+            this.GameCube.Controls.Add(this.pictureBox60);
+            this.GameCube.Controls.Add(this.pictureBox61);
+            this.GameCube.Controls.Add(this.btn_gc_left);
+            this.GameCube.Controls.Add(this.btn_gc_up);
+            this.GameCube.Controls.Add(this.pictureBox62);
+            this.GameCube.Controls.Add(this.pictureBox64);
+            this.GameCube.Controls.Add(this.pictureBox65);
+            this.GameCube.Controls.Add(this.pictureBox53);
+            this.GameCube.Location = new System.Drawing.Point(4, 24);
+            this.GameCube.Name = "GameCube";
+            this.GameCube.Size = new System.Drawing.Size(592, 312);
+            this.GameCube.TabIndex = 2;
+            this.GameCube.Tag = "g009";
+            this.GameCube.Text = "gc";
+            this.GameCube.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox73
+            // 
+            this.pictureBox73.BackColor = System.Drawing.Color.Gray;
+            this.pictureBox73.Location = new System.Drawing.Point(387, 144);
+            this.pictureBox73.Name = "pictureBox73";
+            this.pictureBox73.Size = new System.Drawing.Size(1, 17);
+            this.pictureBox73.TabIndex = 124;
+            this.pictureBox73.TabStop = false;
+            // 
+            // pictureBox72
+            // 
+            this.pictureBox72.BackColor = System.Drawing.Color.Gray;
+            this.pictureBox72.Location = new System.Drawing.Point(355, 160);
+            this.pictureBox72.Name = "pictureBox72";
+            this.pictureBox72.Size = new System.Drawing.Size(1, 25);
+            this.pictureBox72.TabIndex = 123;
+            this.pictureBox72.TabStop = false;
+            // 
+            // btn_gc_right
+            // 
+            this.btn_gc_right.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.btn_gc_right.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btn_gc_right.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.btn_gc_right.ForeColor = System.Drawing.Color.Black;
+            this.btn_gc_right.FormattingEnabled = true;
+            this.btn_gc_right.Location = new System.Drawing.Point(15, 237);
+            this.btn_gc_right.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.btn_gc_right.Name = "btn_gc_right";
+            this.btn_gc_right.Size = new System.Drawing.Size(120, 21);
+            this.btn_gc_right.TabIndex = 100;
+            this.btn_gc_right.Tag = "gc_right";
+            // 
+            // btn_gc_down
+            // 
+            this.btn_gc_down.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.btn_gc_down.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btn_gc_down.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.btn_gc_down.ForeColor = System.Drawing.Color.Black;
+            this.btn_gc_down.FormattingEnabled = true;
+            this.btn_gc_down.Location = new System.Drawing.Point(15, 263);
+            this.btn_gc_down.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.btn_gc_down.Name = "btn_gc_down";
+            this.btn_gc_down.Size = new System.Drawing.Size(120, 21);
+            this.btn_gc_down.TabIndex = 99;
+            this.btn_gc_down.Tag = "gc_down";
+            // 
+            // pictureBox71
+            // 
+            this.pictureBox71.BackColor = System.Drawing.Color.Gray;
+            this.pictureBox71.Location = new System.Drawing.Point(207, 219);
+            this.pictureBox71.Name = "pictureBox71";
+            this.pictureBox71.Size = new System.Drawing.Size(41, 1);
+            this.pictureBox71.TabIndex = 122;
+            this.pictureBox71.TabStop = false;
+            // 
+            // pictureBox70
+            // 
+            this.pictureBox70.BackColor = System.Drawing.Color.Gray;
+            this.pictureBox70.Location = new System.Drawing.Point(207, 219);
+            this.pictureBox70.Name = "pictureBox70";
+            this.pictureBox70.Size = new System.Drawing.Size(1, 55);
+            this.pictureBox70.TabIndex = 121;
+            this.pictureBox70.TabStop = false;
+            // 
+            // pictureBox63
+            // 
+            this.pictureBox63.BackColor = System.Drawing.Color.Gray;
+            this.pictureBox63.Location = new System.Drawing.Point(119, 273);
+            this.pictureBox63.Name = "pictureBox63";
+            this.pictureBox63.Size = new System.Drawing.Size(88, 1);
+            this.pictureBox63.TabIndex = 107;
+            this.pictureBox63.TabStop = false;
+            // 
+            // pictureBox68
+            // 
+            this.pictureBox68.BackColor = System.Drawing.Color.Gray;
+            this.pictureBox68.Location = new System.Drawing.Point(260, 208);
+            this.pictureBox68.Name = "pictureBox68";
+            this.pictureBox68.Size = new System.Drawing.Size(1, 40);
+            this.pictureBox68.TabIndex = 120;
+            this.pictureBox68.TabStop = false;
+            // 
+            // pictureBox69
+            // 
+            this.pictureBox69.BackColor = System.Drawing.Color.Gray;
+            this.pictureBox69.Location = new System.Drawing.Point(119, 247);
+            this.pictureBox69.Name = "pictureBox69";
+            this.pictureBox69.Size = new System.Drawing.Size(142, 1);
+            this.pictureBox69.TabIndex = 119;
+            this.pictureBox69.TabStop = false;
+            // 
+            // pictureBox67
+            // 
+            this.pictureBox67.BackColor = System.Drawing.Color.Gray;
+            this.pictureBox67.Location = new System.Drawing.Point(100, 70);
+            this.pictureBox67.Name = "pictureBox67";
+            this.pictureBox67.Size = new System.Drawing.Size(86, 1);
+            this.pictureBox67.TabIndex = 118;
+            this.pictureBox67.TabStop = false;
+            // 
+            // pictureBox66
+            // 
+            this.pictureBox66.BackColor = System.Drawing.Color.Gray;
+            this.pictureBox66.Location = new System.Drawing.Point(401, 68);
+            this.pictureBox66.Name = "pictureBox66";
+            this.pictureBox66.Size = new System.Drawing.Size(66, 1);
+            this.pictureBox66.TabIndex = 117;
+            this.pictureBox66.TabStop = false;
+            // 
+            // btn_gc_y
+            // 
+            this.btn_gc_y.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.btn_gc_y.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btn_gc_y.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.btn_gc_y.ForeColor = System.Drawing.Color.Black;
+            this.btn_gc_y.FormattingEnabled = true;
+            this.btn_gc_y.Location = new System.Drawing.Point(457, 100);
+            this.btn_gc_y.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.btn_gc_y.Name = "btn_gc_y";
+            this.btn_gc_y.Size = new System.Drawing.Size(120, 21);
+            this.btn_gc_y.TabIndex = 98;
+            this.btn_gc_y.Tag = "gc_y";
+            // 
+            // btn_gc_r
+            // 
+            this.btn_gc_r.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.btn_gc_r.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btn_gc_r.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.btn_gc_r.ForeColor = System.Drawing.Color.Black;
+            this.btn_gc_r.FormattingEnabled = true;
+            this.btn_gc_r.Location = new System.Drawing.Point(457, 30);
+            this.btn_gc_r.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.btn_gc_r.Name = "btn_gc_r";
+            this.btn_gc_r.Size = new System.Drawing.Size(120, 21);
+            this.btn_gc_r.TabIndex = 104;
+            this.btn_gc_r.Tag = "gc_r";
+            // 
+            // btn_gc_z
+            // 
+            this.btn_gc_z.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.btn_gc_z.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btn_gc_z.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.btn_gc_z.ForeColor = System.Drawing.Color.Black;
+            this.btn_gc_z.FormattingEnabled = true;
+            this.btn_gc_z.Location = new System.Drawing.Point(317, 30);
+            this.btn_gc_z.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.btn_gc_z.Name = "btn_gc_z";
+            this.btn_gc_z.Size = new System.Drawing.Size(120, 21);
+            this.btn_gc_z.TabIndex = 103;
+            this.btn_gc_z.Tag = "gc_z";
+            // 
+            // btn_gc_l
+            // 
+            this.btn_gc_l.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.btn_gc_l.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btn_gc_l.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.btn_gc_l.ForeColor = System.Drawing.Color.Black;
+            this.btn_gc_l.FormattingEnabled = true;
+            this.btn_gc_l.Location = new System.Drawing.Point(15, 30);
+            this.btn_gc_l.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.btn_gc_l.Name = "btn_gc_l";
+            this.btn_gc_l.Size = new System.Drawing.Size(120, 21);
+            this.btn_gc_l.TabIndex = 95;
+            this.btn_gc_l.Tag = "gc_l";
+            // 
+            // pictureBox54
+            // 
+            this.pictureBox54.BackColor = System.Drawing.Color.Gray;
+            this.pictureBox54.Location = new System.Drawing.Point(466, 45);
+            this.pictureBox54.Name = "pictureBox54";
+            this.pictureBox54.Size = new System.Drawing.Size(1, 24);
+            this.pictureBox54.TabIndex = 116;
+            this.pictureBox54.TabStop = false;
+            // 
+            // pictureBox55
+            // 
+            this.pictureBox55.BackColor = System.Drawing.Color.Gray;
+            this.pictureBox55.Location = new System.Drawing.Point(374, 46);
+            this.pictureBox55.Name = "pictureBox55";
+            this.pictureBox55.Size = new System.Drawing.Size(1, 24);
+            this.pictureBox55.TabIndex = 115;
+            this.pictureBox55.TabStop = false;
+            // 
+            // pictureBox56
+            // 
+            this.pictureBox56.BackColor = System.Drawing.Color.Gray;
+            this.pictureBox56.Location = new System.Drawing.Point(100, 47);
+            this.pictureBox56.Name = "pictureBox56";
+            this.pictureBox56.Size = new System.Drawing.Size(1, 24);
+            this.pictureBox56.TabIndex = 114;
+            this.pictureBox56.TabStop = false;
+            // 
+            // btn_gc_start
+            // 
+            this.btn_gc_start.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.btn_gc_start.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btn_gc_start.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.btn_gc_start.ForeColor = System.Drawing.Color.Black;
+            this.btn_gc_start.FormattingEnabled = true;
+            this.btn_gc_start.Location = new System.Drawing.Point(235, 263);
+            this.btn_gc_start.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.btn_gc_start.Name = "btn_gc_start";
+            this.btn_gc_start.Size = new System.Drawing.Size(120, 21);
+            this.btn_gc_start.TabIndex = 96;
+            this.btn_gc_start.Tag = "gc_start";
+            // 
+            // pictureBox57
+            // 
+            this.pictureBox57.BackColor = System.Drawing.Color.Gray;
+            this.pictureBox57.Location = new System.Drawing.Point(296, 144);
+            this.pictureBox57.Name = "pictureBox57";
+            this.pictureBox57.Size = new System.Drawing.Size(1, 140);
+            this.pictureBox57.TabIndex = 113;
+            this.pictureBox57.TabStop = false;
+            // 
+            // btn_gc_b
+            // 
+            this.btn_gc_b.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.btn_gc_b.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btn_gc_b.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.btn_gc_b.ForeColor = System.Drawing.Color.Black;
+            this.btn_gc_b.FormattingEnabled = true;
+            this.btn_gc_b.Location = new System.Drawing.Point(457, 175);
+            this.btn_gc_b.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.btn_gc_b.Name = "btn_gc_b";
+            this.btn_gc_b.Size = new System.Drawing.Size(120, 21);
+            this.btn_gc_b.TabIndex = 94;
+            this.btn_gc_b.Tag = "gc_b";
+            // 
+            // btn_gc_a
+            // 
+            this.btn_gc_a.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.btn_gc_a.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btn_gc_a.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.btn_gc_a.ForeColor = System.Drawing.Color.Black;
+            this.btn_gc_a.FormattingEnabled = true;
+            this.btn_gc_a.Location = new System.Drawing.Point(457, 150);
+            this.btn_gc_a.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.btn_gc_a.Name = "btn_gc_a";
+            this.btn_gc_a.Size = new System.Drawing.Size(120, 21);
+            this.btn_gc_a.TabIndex = 93;
+            this.btn_gc_a.Tag = "gc_a";
+            // 
+            // pictureBox58
+            // 
+            this.pictureBox58.BackColor = System.Drawing.Color.Gray;
+            this.pictureBox58.Location = new System.Drawing.Point(355, 185);
+            this.pictureBox58.Name = "pictureBox58";
+            this.pictureBox58.Size = new System.Drawing.Size(111, 1);
+            this.pictureBox58.TabIndex = 112;
+            this.pictureBox58.TabStop = false;
+            // 
+            // pictureBox59
+            // 
+            this.pictureBox59.BackColor = System.Drawing.Color.Gray;
+            this.pictureBox59.Location = new System.Drawing.Point(387, 160);
+            this.pictureBox59.Name = "pictureBox59";
+            this.pictureBox59.Size = new System.Drawing.Size(132, 1);
+            this.pictureBox59.TabIndex = 111;
+            this.pictureBox59.TabStop = false;
+            // 
+            // btn_gc_x
+            // 
+            this.btn_gc_x.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.btn_gc_x.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btn_gc_x.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.btn_gc_x.ForeColor = System.Drawing.Color.Black;
+            this.btn_gc_x.FormattingEnabled = true;
+            this.btn_gc_x.Location = new System.Drawing.Point(457, 125);
+            this.btn_gc_x.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.btn_gc_x.Name = "btn_gc_x";
+            this.btn_gc_x.Size = new System.Drawing.Size(120, 21);
+            this.btn_gc_x.TabIndex = 97;
+            this.btn_gc_x.Tag = "gc_x";
+            // 
+            // pictureBox60
+            // 
+            this.pictureBox60.BackColor = System.Drawing.Color.Gray;
+            this.pictureBox60.Location = new System.Drawing.Point(422, 135);
+            this.pictureBox60.Name = "pictureBox60";
+            this.pictureBox60.Size = new System.Drawing.Size(95, 1);
+            this.pictureBox60.TabIndex = 110;
+            this.pictureBox60.TabStop = false;
+            // 
+            // pictureBox61
+            // 
+            this.pictureBox61.BackColor = System.Drawing.Color.Gray;
+            this.pictureBox61.Location = new System.Drawing.Point(381, 110);
+            this.pictureBox61.Name = "pictureBox61";
+            this.pictureBox61.Size = new System.Drawing.Size(95, 1);
+            this.pictureBox61.TabIndex = 109;
+            this.pictureBox61.TabStop = false;
+            // 
+            // btn_gc_left
+            // 
+            this.btn_gc_left.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.btn_gc_left.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btn_gc_left.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.btn_gc_left.ForeColor = System.Drawing.Color.Black;
+            this.btn_gc_left.FormattingEnabled = true;
+            this.btn_gc_left.Location = new System.Drawing.Point(15, 211);
+            this.btn_gc_left.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.btn_gc_left.Name = "btn_gc_left";
+            this.btn_gc_left.Size = new System.Drawing.Size(120, 21);
+            this.btn_gc_left.TabIndex = 102;
+            this.btn_gc_left.Tag = "gc_left";
+            // 
+            // btn_gc_up
+            // 
+            this.btn_gc_up.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.btn_gc_up.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btn_gc_up.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.btn_gc_up.ForeColor = System.Drawing.Color.Black;
+            this.btn_gc_up.FormattingEnabled = true;
+            this.btn_gc_up.Location = new System.Drawing.Point(15, 185);
+            this.btn_gc_up.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.btn_gc_up.Name = "btn_gc_up";
+            this.btn_gc_up.Size = new System.Drawing.Size(120, 21);
+            this.btn_gc_up.TabIndex = 101;
+            this.btn_gc_up.Tag = "gc_up";
+            // 
+            // pictureBox62
+            // 
+            this.pictureBox62.BackColor = System.Drawing.Color.Gray;
+            this.pictureBox62.Location = new System.Drawing.Point(88, 195);
+            this.pictureBox62.Name = "pictureBox62";
+            this.pictureBox62.Size = new System.Drawing.Size(160, 1);
+            this.pictureBox62.TabIndex = 108;
+            this.pictureBox62.TabStop = false;
+            // 
+            // pictureBox64
+            // 
+            this.pictureBox64.BackColor = System.Drawing.Color.Gray;
+            this.pictureBox64.Location = new System.Drawing.Point(235, 208);
+            this.pictureBox64.Name = "pictureBox64";
+            this.pictureBox64.Size = new System.Drawing.Size(1, 14);
+            this.pictureBox64.TabIndex = 106;
+            this.pictureBox64.TabStop = false;
+            // 
+            // pictureBox65
+            // 
+            this.pictureBox65.BackColor = System.Drawing.Color.Gray;
+            this.pictureBox65.Location = new System.Drawing.Point(119, 221);
+            this.pictureBox65.Name = "pictureBox65";
+            this.pictureBox65.Size = new System.Drawing.Size(117, 1);
+            this.pictureBox65.TabIndex = 105;
+            this.pictureBox65.TabStop = false;
+            // 
+            // pictureBox53
+            // 
+            this.pictureBox53.Image = global::FriishProduce.Properties.Resources.Controllers_GameCube;
+            this.pictureBox53.Location = new System.Drawing.Point(151, 30);
+            this.pictureBox53.Name = "pictureBox53";
+            this.pictureBox53.Size = new System.Drawing.Size(291, 234);
+            this.pictureBox53.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox53.TabIndex = 0;
+            this.pictureBox53.TabStop = false;
+            // 
+            // btn_gc_c
+            // 
+            this.btn_gc_c.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.btn_gc_c.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btn_gc_c.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.btn_gc_c.ForeColor = System.Drawing.Color.Black;
+            this.btn_gc_c.FormattingEnabled = true;
+            this.btn_gc_c.Location = new System.Drawing.Point(457, 201);
+            this.btn_gc_c.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.btn_gc_c.Name = "btn_gc_c";
+            this.btn_gc_c.Size = new System.Drawing.Size(120, 21);
+            this.btn_gc_c.TabIndex = 125;
+            this.btn_gc_c.Tag = "gc_c";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Gray;
+            this.pictureBox2.Location = new System.Drawing.Point(345, 211);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(112, 1);
+            this.pictureBox2.TabIndex = 126;
+            this.pictureBox2.TabStop = false;
+            // 
+            // SEGA_Controller
             // 
             this.AcceptButton = this.OK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1214,7 +1539,7 @@ namespace FriishProduce.Views
             this.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "Flash_Controller";
+            this.Name = "SEGA_Controller";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Load += new System.EventHandler(this.Page_Load);
             this.panel.ResumeLayout(false);
@@ -1222,8 +1547,6 @@ namespace FriishProduce.Views
             this.WiiRemote.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox27)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox26)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox24)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox25)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox21)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox22)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox23)).EndInit();
@@ -1240,12 +1563,7 @@ namespace FriishProduce.Views
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ClassicController.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox52)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox51)).EndInit();
@@ -1253,7 +1571,6 @@ namespace FriishProduce.Views
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox50)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox47)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox48)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox46)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox45)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox44)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox42)).EndInit();
@@ -1273,6 +1590,29 @@ namespace FriishProduce.Views
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox28)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox29)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            this.GameCube.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox73)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox72)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox71)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox70)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox63)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox68)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox69)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox67)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox66)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox54)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox55)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox56)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox57)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox58)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox59)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox60)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox61)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox62)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox64)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox65)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox53)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1291,9 +1631,6 @@ namespace FriishProduce.Views
         private System.Windows.Forms.ComboBox btn_core_2;
         private System.Windows.Forms.ComboBox btn_core_1;
         private System.Windows.Forms.ComboBox btn_core_b;
-        private System.Windows.Forms.ComboBox btn_nunchuk_c;
-        private System.Windows.Forms.ComboBox btn_core_home;
-        private System.Windows.Forms.ComboBox btn_nunchuk_z;
         private System.Windows.Forms.ComboBox btn_core_right;
         private System.Windows.Forms.ComboBox btn_core_left;
         private System.Windows.Forms.ComboBox btn_core_down;
@@ -1302,7 +1639,6 @@ namespace FriishProduce.Views
         private System.Windows.Forms.ComboBox btn_classic_left;
         private System.Windows.Forms.ComboBox btn_classic_down;
         private System.Windows.Forms.ComboBox btn_classic_up;
-        private System.Windows.Forms.ComboBox btn_classic_home;
         private System.Windows.Forms.ComboBox btn_classic_y;
         private System.Windows.Forms.ComboBox btn_classic_x;
         private System.Windows.Forms.ComboBox btn_classic_select;
@@ -1314,12 +1650,7 @@ namespace FriishProduce.Views
         private System.Windows.Forms.ComboBox btn_classic_zr;
         private System.Windows.Forms.ComboBox btn_classic_zl;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pictureBox6;
-        private System.Windows.Forms.PictureBox pictureBox7;
-        private System.Windows.Forms.PictureBox pictureBox5;
-        private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.PictureBox pictureBox10;
         private System.Windows.Forms.PictureBox pictureBox9;
@@ -1338,8 +1669,6 @@ namespace FriishProduce.Views
         private System.Windows.Forms.PictureBox pictureBox18;
         private System.Windows.Forms.PictureBox pictureBox27;
         private System.Windows.Forms.PictureBox pictureBox26;
-        private System.Windows.Forms.PictureBox pictureBox24;
-        private System.Windows.Forms.PictureBox pictureBox25;
         private System.Windows.Forms.PictureBox pictureBox34;
         private System.Windows.Forms.PictureBox pictureBox33;
         private System.Windows.Forms.PictureBox pictureBox31;
@@ -1358,12 +1687,47 @@ namespace FriishProduce.Views
         private System.Windows.Forms.PictureBox pictureBox36;
         private System.Windows.Forms.PictureBox pictureBox45;
         private System.Windows.Forms.PictureBox pictureBox44;
-        private System.Windows.Forms.PictureBox pictureBox46;
         private System.Windows.Forms.PictureBox pictureBox52;
         private System.Windows.Forms.PictureBox pictureBox51;
         private System.Windows.Forms.PictureBox pictureBox49;
         private System.Windows.Forms.PictureBox pictureBox50;
         private System.Windows.Forms.PictureBox pictureBox47;
         private System.Windows.Forms.PictureBox pictureBox48;
+        private System.Windows.Forms.TabPage GameCube;
+        private System.Windows.Forms.PictureBox pictureBox53;
+        private System.Windows.Forms.ComboBox btn_gc_y;
+        private System.Windows.Forms.ComboBox btn_gc_r;
+        private System.Windows.Forms.ComboBox btn_gc_z;
+        private System.Windows.Forms.ComboBox btn_gc_l;
+        private System.Windows.Forms.PictureBox pictureBox54;
+        private System.Windows.Forms.PictureBox pictureBox55;
+        private System.Windows.Forms.PictureBox pictureBox56;
+        private System.Windows.Forms.ComboBox btn_gc_start;
+        private System.Windows.Forms.PictureBox pictureBox57;
+        private System.Windows.Forms.ComboBox btn_gc_b;
+        private System.Windows.Forms.ComboBox btn_gc_a;
+        private System.Windows.Forms.PictureBox pictureBox58;
+        private System.Windows.Forms.PictureBox pictureBox59;
+        private System.Windows.Forms.ComboBox btn_gc_x;
+        private System.Windows.Forms.PictureBox pictureBox60;
+        private System.Windows.Forms.PictureBox pictureBox61;
+        private System.Windows.Forms.ComboBox btn_gc_left;
+        private System.Windows.Forms.ComboBox btn_gc_up;
+        private System.Windows.Forms.ComboBox btn_gc_right;
+        private System.Windows.Forms.ComboBox btn_gc_down;
+        private System.Windows.Forms.PictureBox pictureBox62;
+        private System.Windows.Forms.PictureBox pictureBox63;
+        private System.Windows.Forms.PictureBox pictureBox64;
+        private System.Windows.Forms.PictureBox pictureBox65;
+        private System.Windows.Forms.PictureBox pictureBox67;
+        private System.Windows.Forms.PictureBox pictureBox66;
+        private System.Windows.Forms.PictureBox pictureBox73;
+        private System.Windows.Forms.PictureBox pictureBox72;
+        private System.Windows.Forms.PictureBox pictureBox71;
+        private System.Windows.Forms.PictureBox pictureBox70;
+        private System.Windows.Forms.PictureBox pictureBox68;
+        private System.Windows.Forms.PictureBox pictureBox69;
+        private System.Windows.Forms.ComboBox btn_gc_c;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

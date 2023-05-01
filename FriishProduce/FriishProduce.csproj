@@ -97,11 +97,18 @@
     <Compile Include="views\platforms\flash_controller.Designer.cs">
       <DependentUpon>flash_controller.cs</DependentUpon>
     </Compile>
+    <Compile Include="views\platforms\sega_controller.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\platforms\sega_controller.Designer.cs">
+      <DependentUpon>sega_controller.cs</DependentUpon>
+    </Compile>
     <Compile Include="_classes\enums.cs" />
     <Compile Include="_classes\injectors\flash.cs" />
     <Compile Include="_classes\global.cs" />
     <Compile Include="_classes\injectors\n64.cs" />
     <Compile Include="_classes\injectors\nes.cs" />
+    <Compile Include="_classes\injectors\sega.cs" />
     <Compile Include="_classes\injectors\snes.cs" />
     <Compile Include="_classes\injectors\forwarders.cs" />
     <Compile Include="_classes\lang.cs" />
@@ -125,6 +132,12 @@
     <EmbeddedResource Include="views\msg.resx">
       <DependentUpon>msg.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="views\platforms\flash_controller.resx">
+      <DependentUpon>flash_controller.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\platforms\sega_controller.resx">
+      <DependentUpon>sega_controller.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="views\settings.resx">
       <DependentUpon>settings.cs</DependentUpon>
     </EmbeddedResource>
@@ -138,9 +151,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="views\platforms\flash_controller.resx">
-      <DependentUpon>flash_controller.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="database.json" />
     <None Include="langs\es.json" />
     <None Include="langs\fr.json" />
@@ -192,9 +202,7 @@
     <None Include="Resources\wwcxtool.exe" />
     <None Include="Resources\romc.exe" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="_classes\forwarders\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy /y "$(ProjectDir)database.json" "$(TargetDir)bases\database.json"</PostBuildEvent>

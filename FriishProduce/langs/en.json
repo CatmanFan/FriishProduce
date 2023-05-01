@@ -83,7 +83,9 @@
     "f_nes": "Nintendo Entertainment System/Famicom ROM files (*.nes)|*.nes",
     "f_sfc": "Super Nintendo Entertainment System/Super Famicom ROM files (*.sfc, *.smc)|*.sfc;*.smc",
     "f_n64": "Nintendo 64 ROM files (*.n64, *.v64, *.z64)|*.n64;*.v64;*.z64",
-    "f_vba": "AGame Boy/Game Boy Color/Game Boy Advance ROM files (*.gb, *.gbc, *.gba)|*.gb;*.gbc;*.gba"
+    "f_sms": "Master System ROM files (*.sms)|*.sms",
+    "f_smd": "Mega Drive/Genesis ROM files (*.bin, *.gen, *.smd)|*.bin;*.gen;*.smd",
+    "f_vba": "Game Boy/Game Boy Color/Game Boy Advance ROM files (*.gb, *.gbc, *.gba)|*.gb;*.gbc;*.gba"
   },
   "main": {
     "a000": "Welcome to FriishProduce {0}.\n\nPlease select your target platform:",

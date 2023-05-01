@@ -55,9 +55,9 @@ namespace FriishProduce
             this.panel.Controls.Add(this.OK);
             this.panel.Controls.Add(this.Cancel);
             this.panel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel.Location = new System.Drawing.Point(0, 46);
+            this.panel.Location = new System.Drawing.Point(0, 42);
             this.panel.Name = "panel";
-            this.panel.Size = new System.Drawing.Size(402, 40);
+            this.panel.Size = new System.Drawing.Size(398, 40);
             this.panel.TabIndex = 7;
             this.panel.Tag = "panel";
             // 
@@ -115,7 +115,7 @@ namespace FriishProduce
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
-            this.ClientSize = new System.Drawing.Size(402, 86);
+            this.ClientSize = new System.Drawing.Size(398, 82);
             this.ControlBox = false;
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.border);
@@ -123,7 +123,7 @@ namespace FriishProduce
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.ForeColor = System.Drawing.Color.White;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "Msg";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;

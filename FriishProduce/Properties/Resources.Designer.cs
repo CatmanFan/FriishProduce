@@ -63,9 +63,9 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] CCFarc {
+        internal static byte[] CCFArc {
             get {
-                object obj = ResourceManager.GetObject("CCFarc", resourceCulture);
+                object obj = ResourceManager.GetObject("CCFArc", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] CCFarcraw {
+        internal static byte[] CCFArcRaw {
             get {
-                object obj = ResourceManager.GetObject("CCFarcraw", resourceCulture);
+                object obj = ResourceManager.GetObject("CCFArcRaw", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] CCFex {
+        internal static byte[] CCFEx {
             get {
-                object obj = ResourceManager.GetObject("CCFex", resourceCulture);
+                object obj = ResourceManager.GetObject("CCFEx", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -150,9 +150,9 @@ namespace FriishProduce.Properties {
         ///    &quot;MSX&quot;: &quot;Microsoft MSX/MSX2&quot;,
         ///    &quot;Flash&quot;: &quot;Adobe Flash&quot;
         ///  },
-        ///  &quot;global&quot;: {
-        ///    &quot;g000&quot;: &quot;FriishProduce&quot;,
-        ///    &quot;g001&quot;: &quot;Se [rest of string was truncated]&quot;;.
+        ///  &quot;methods&quot;: {
+        ///    &quot;VC&quot;: &quot;Virtual Console&quot;,
+        ///    &quot;FCEUGX&quot;:  [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string English {
             get {

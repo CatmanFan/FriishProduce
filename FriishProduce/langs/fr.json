@@ -23,6 +23,10 @@
     "Next": "&Suivant >",
     "Save": "&Enregistrer"
   },
+  "consoles": {
+    "SMS": "Sega Master System",
+    "SMD": "Sega Mega Drive / Genesis",
+  },
   "settings": {
     "s000": "Logiciel",
     "s001": "Langue :",
@@ -61,7 +65,9 @@
     "f_iso": "Fichiers de format disque (*.cue; *.iso)|*.cue;*.iso|  Fichiers CUE Sheet (*.cue)|*.cue|  Images ISO (*.iso)|*.iso",
     "f_nes": "Fichiers ROM de Nintendo (*.nes)|*.nes",
     "f_sfc": "Fichiers ROM de Super Nintendo (*.sfc, *.smc)|*.sfc;*.smc",
-    "f_n64": "Fichiers ROM de Nintendo 64 (*.n64, *.v64, *.z64)|*.n64;*.v64;*.z64"
+    "f_n64": "Fichiers ROM de Nintendo 64 (*.n64, *.v64, *.z64)|*.n64;*.v64;*.z64",
+    "f_sms": "Fichiers ROM de Sega Master System (*.sms)|*.sms",
+    "f_smd": "Fichiers ROM de Sega Mega Drive / Genesis (*.bin, *.gen, *.smd)|*.bin;*.gen;*.smd",
   },
   "main": {
     "a000": "Bienvenue dans l'application FriishProduce (version {0}).\n\nPour commencer, sélectionner une platforme cible :",

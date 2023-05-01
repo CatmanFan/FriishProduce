@@ -37,6 +37,8 @@ namespace FriishProduce
                 x.Get("NES"),
                 x.Get("SNES"),
                 x.Get("N64"),
+                x.Get("SMS"),
+                x.Get("SMD"),
                 x.Get("Flash")
             };
             foreach (var console in consoles) Console.Items.Add(console);
@@ -87,6 +89,16 @@ namespace FriishProduce
                     Options_N64.Visible = true;
                     break;
 
+                case Platforms.SMS:
+                    BrowseROM.Filter = x.Get("f_sms");
+                    Options_SEGA.Visible = true;
+                    break;
+
+                case Platforms.SMD:
+                    BrowseROM.Filter = x.Get("f_smd");
+                    Options_SEGA.Visible = true;
+                    break;
+
                 case Platforms.Flash:
                     a001.Text = x.Get("a001_swf");
                     OpenROM.Text = x.Get("g004");
@@ -117,6 +129,8 @@ namespace FriishProduce
             input = new string[input.Length];
             Patch.Checked = false;
             NES_Palette.SelectedIndex = 0;
+            SEGA_Region.SelectedIndex = 0;
+            SEGA_MDPad6B.Enabled = currentConsole == Platforms.SMD;
             Flash_TotalSaveDataSize.SelectedIndex = 0;
             Flash_FPS.SelectedIndex = 0;
             Flash_StrapReminder.SelectedIndex = 0;
@@ -419,242 +433,6 @@ namespace FriishProduce
 
         // ***************************************************************************************************************** //
 
-        private void Finish_Click(object sender, EventArgs e)
-        {
-            SaveWAD.FileName = TitleID.Text;
-            if (SaveWAD.ShowDialog() == DialogResult.OK)
-            {
-                try { Directory.Delete(Paths.WorkingFolder, true); } catch { }
-
-                try
-                {
-                    if (currentConsole != Platforms.Flash) input[0] = Global.ApplyPatch(input[0], input[1]);
-
-                    WAD w = WAD.Load(input[2]);
-                    var ios = (int)w.StartupIOS;
-                    w.Unpack(Paths.WorkingFolder);
-
-                    #region Banner
-                    if (Custom.Checked)
-                    {
-                        if (Import.Checked)
-                        {
-                            foreach (var item in Directory.GetFiles(Paths.Database, "*.*", SearchOption.AllDirectories))
-                                if (File.Exists(item) && item.Contains(db.SearchID(ImportBases.SelectedItem.ToString())))
-                                    WAD.Load(item).BannerApp.Save(Paths.WorkingFolder + "00000000.app");
-                        }
-
-                        // --------------------------------------------------------------------------- //
-
-                        // Get banner.brlyt and TPLs
-                        Directory.CreateDirectory(Paths.Images);
-
-                        libWiiSharp.U8 BannerApp = libWiiSharp.U8.Load(Paths.WorkingFolder + "00000000.app");
-                        libWiiSharp.U8 Banner = libWiiSharp.U8.Load(BannerApp.Data[BannerApp.GetNodeIndex("banner.bin")]);
-                        libWiiSharp.U8 Icon = libWiiSharp.U8.Load(BannerApp.Data[BannerApp.GetNodeIndex("icon.bin")]);
-
-                        try
-                        {
-                            File.WriteAllBytes(Paths.WorkingFolder + "banner.brlyt", Banner.Data[Banner.GetNodeIndex("banner.brlyt")]);
-
-                            if (tImg.path != null)
-                            {
-                                File.WriteAllBytes(Paths.Images + "VCPic.tpl", Banner.Data[Banner.GetNodeIndex("VCPic.tpl")]);
-                                File.WriteAllBytes(Paths.Images + "IconVCPic.tpl", Icon.Data[Icon.GetNodeIndex("IconVCPic.tpl")]);
-                            }
-                        }
-                        catch
-                        {
-                            throw new Exception(x.Get("m008"));
-                        }
-
-                        // --------------------------------------------------------------------------- //
-
-                        // Copy VCbrlyt to working folder
-                        string path = Paths.Apps + "vcbrlyt\\";
-                        foreach (string dir in Directory.GetDirectories(path))
-                            Directory.CreateDirectory(dir.Replace(path, Paths.WorkingFolder + "vcbrlyt\\"));
-                        foreach (string file in Directory.GetFiles(path, "*.*", SearchOption.AllDirectories))
-                            File.Copy(file, file.Replace(path, Paths.WorkingFolder + "vcbrlyt\\"));
-
-                        using (Process p = Process.Start(new ProcessStartInfo
-                        {
-                            FileName = Paths.WorkingFolder + "vcbrlyt\\vcbrlyt.exe",
-                            Arguments = $"{Paths.WorkingFolder + "banner.brlyt"} -Title \"{BannerTitle.Text.Replace('-', '–').Replace(Environment.NewLine, "^")}\" -YEAR {ReleaseYear.Value} -Play {Players.Value}",
-                            UseShellExecute = false,
-                            CreateNoWindow = true
-                        }))
-                            p.WaitForExit();
-
-                        // --------------------------------------------------------------------------- //
-
-                        var Brlyt = File.ReadAllBytes(Paths.WorkingFolder + "banner.brlyt");
-                        if (Brlyt == Banner.Data[Banner.GetNodeIndex("banner.brlyt")])
-                            throw new Exception(x.Get("m007"));
-                        Banner.ReplaceFile(Banner.GetNodeIndex("banner.brlyt"), Brlyt);
-
-                        // --------------------------------------------------------------------------- //
-
-                        if (tImg.path != null)
-                        {
-                            TPL tpl = TPL.Load(Paths.Images + "VCPic.tpl");
-                            var tplTF = tpl.GetTextureFormat(0);
-                            var tplPF = tpl.GetPaletteFormat(0);
-                            tpl.RemoveTexture(0);
-                            tpl.AddTexture(tImg.VCPic, tplTF, tplPF);
-                            tpl.Save(Paths.Images + "VCPic.tpl");
-
-                            tpl = TPL.Load(Paths.Images + "IconVCPic.tpl");
-                            tplTF = tpl.GetTextureFormat(0);
-                            tplPF = tpl.GetPaletteFormat(0);
-                            tpl.RemoveTexture(0);
-                            tpl.AddTexture(tImg.IconVCPic, tplTF, tplPF);
-                            tpl.Save(Paths.Images + "IconVCPic.tpl");
-
-                            tpl.Dispose();
-
-                            Banner.ReplaceFile(Banner.GetNodeIndex("VCPic.tpl"), File.ReadAllBytes(Paths.Images + "VCPic.tpl"));
-                            Icon.ReplaceFile(Icon.GetNodeIndex("IconVCPic.tpl"), File.ReadAllBytes(Paths.Images + "IconVCPic.tpl"));
-
-                            Icon.AddHeaderImd5();
-                            BannerApp.ReplaceFile(BannerApp.GetNodeIndex("icon.bin"), Icon.ToByteArray());
-                        }
-
-                        Banner.AddHeaderImd5();
-                        BannerApp.ReplaceFile(BannerApp.GetNodeIndex("banner.bin"), Banner.ToByteArray());
-                        BannerApp.AddHeaderImet(false, ChannelTitle.Text);
-                        BannerApp.Save(Paths.WorkingFolder + "00000000.app");
-
-                        BannerApp.Dispose();
-                        Banner.Dispose();
-                        Icon.Dispose();
-
-                        Directory.Delete(Paths.Images, true);
-                        File.Delete(Paths.WorkingFolder + "banner.brlyt");
-                        Directory.Delete(Paths.WorkingFolder + "vcbrlyt\\", true);
-                    }
-                    #endregion
-
-                    if (currentConsole != Platforms.Flash)
-                    {
-                        U8.Unpack(Paths.WorkingFolder + "00000005.app", Paths.WorkingFolder_Content5);
-                        if (DisableEmanual.Checked) Global.RemoveEmanual();
-                        if (Custom.Checked && tImg.path != null) tImg.CreateSave(currentConsole);
-
-                        switch (currentConsole)
-                        {
-                            default:
-                                throw new Exception("Not implemented yet!");
-
-                            case Platforms.NES:
-                                Injectors.NES NES = new Injectors.NES
-                                {
-                                    ROM = input[0],
-                                    content1_file = Global.DetermineContent1(),
-                                    saveTPL_offsets = new Injectors.NES().DetermineSaveTPLOffsets(Global.DetermineContent1())
-                                };
-
-                                NES.InsertROM();
-                                NES.InsertPalette(NES_Palette.SelectedIndex);
-                                if (Custom.Checked)
-                                {
-                                    if (tImg.path != null)
-                                    {
-                                        if (NES.ExtractSaveTPL(Paths.WorkingFolder + "out.tpl"))
-                                            tImg.CreateSave(Platforms.NES);
-                                    }
-
-                                    NES.InsertSaveData(SaveDataTitle.Text, Paths.WorkingFolder + "out.tpl");
-                                }
-                                Global.PrepareContent1();
-                                break;
-
-                            case Platforms.SNES:
-                                Injectors.SNES SNES = new Injectors.SNES()
-                                {
-                                    ROM = input[0],
-                                    ROMcode = new Injectors.SNES().ProduceID(db.SearchID(Bases.SelectedItem.ToString()))
-                                };
-
-                                SNES.ReplaceROM();
-
-                                if (Custom.Checked) SNES.InsertSaveTitle(SaveDataTitle.Lines);
-                                break;
-
-                            case Platforms.N64:
-                                Injectors.N64 N64 = new Injectors.N64() { ROM = input[0] };
-                                foreach (var entry in db.GetList())
-                                {
-                                    if (entry["title"].ToString() == Bases.SelectedItem.ToString())
-                                        foreach (var item in Directory.GetFiles(Paths.Database, "*.*", SearchOption.AllDirectories))
-                                            if (item.Contains(entry["id"].ToString().ToUpper()))
-                                                N64.emuVersion = entry["ver"].ToString();
-                                }
-
-                                if (N64_FixBrightness.Checked || N64_UseExpansionPak.Checked || N64_Allocation.Checked)
-                                {
-                                    string content1_file = Global.DetermineContent1();
-                                    var content1 = File.ReadAllBytes(content1_file);
-                                    if (N64_FixBrightness.Checked) content1 = N64.FixBrightness(content1);
-                                    if (N64_UseExpansionPak.Checked) content1 = N64.ExpansionRAM(content1);
-                                    if (N64_Allocation.Checked) content1 = N64.AllocateROM(content1);
-                                    File.WriteAllBytes(content1_file, content1);
-                                    Global.PrepareContent1();
-                                }
-                                N64.ReplaceROM();
-
-                                if (Custom.Checked) N64.InsertSaveComments(SaveDataTitle.Lines);
-                                break;
-                        }
-
-                        U8.Pack(Paths.WorkingFolder_Content5, Paths.WorkingFolder + "00000005.app");
-                    }
-                    else if (currentConsole == Platforms.Flash)
-                    {
-                        U8.Unpack(Paths.WorkingFolder + "00000002.app", Paths.WorkingFolder_Content2);
-
-                        Injectors.Flash Flash = new Injectors.Flash() { SWF = input[0] };
-                        Flash.ReplaceSWF();
-
-                        Flash.HomeMenuNoSave(Flash_HBMNoSave.Checked);
-                        Flash.SetStrapReminder(Flash_StrapReminder.SelectedIndex);
-                        if (Flash_UseSaveData.Checked) Flash.EnableSaveData(Convert.ToInt32(Flash_TotalSaveDataSize.SelectedItem.ToString()));
-                        if (Flash_CustomFPS.Checked) Flash.SetFPS(Flash_FPS.SelectedItem.ToString());
-                        if (Flash_Controller.Checked) Flash.SetController(btns);
-                        if (Custom.Checked && tImg.path != null) tImg.CreateSave(Platforms.Flash);
-                        if (Custom.Checked) Flash.InsertSaveData(SaveDataTitle.Lines);
-
-                        U8.Pack(Paths.WorkingFolder_Content2, Paths.WorkingFolder + "00000002.app");
-                    }
-
-                    // TO-DO: IOS video mode patching
-
-                    w.CreateNew(Paths.WorkingFolder);
-                    if (RegionFree.Checked) w.Region = libWiiSharp.Region.Free;
-                    w.FakeSign = true;
-                    w.ChangeTitleID(LowerTitleID.Channel, TitleID.Text);
-                    w.Save(SaveWAD.FileName);
-                    w.Dispose();
-
-                    MessageBox.Show(x.Get("m002"));
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(String.Format(x.Get("m003"), ex.Message), x.Get("halt"), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                finally
-                {
-                    try { Directory.Delete(Paths.WorkingFolder, true); } catch { }
-
-                    if (File.Exists(input[0]) && input[0].EndsWith(Paths.PatchedSuffix))
-                    {
-                        File.Delete(input[0]);
-                        input[0] = input[0].Remove(input[0].Length - Paths.PatchedSuffix.Length, Paths.PatchedSuffix.Length);
-                    }
-                }
-            }
-        }
-
         private void NES_PaletteChanged(object sender, EventArgs e)
         {
             switch (NES_Palette.SelectedIndex)
@@ -835,6 +613,319 @@ namespace FriishProduce
                     btns = ControllerForm.Config;
                 else
                     Flash_Controller.Checked = false;
+            }
+        }
+
+        private void SEGA_ControllerChanged(object sender, EventArgs e)
+        {
+            if (SEGA_Controller.Checked)
+            {
+                Views.SEGA_Controller ControllerForm = new Views.SEGA_Controller(btns) { Text = x.Get("g006"), };
+                ChangeTheme(ControllerForm);
+
+                if (ControllerForm.ShowDialog(this) == DialogResult.OK)
+                    btns = ControllerForm.Config;
+                else
+                    SEGA_Controller.Checked = false;
+            }
+        }
+
+        // ***************************************************************************************************************** //
+
+        private void Finish_Click(object sender, EventArgs e)
+        {
+            SaveWAD.FileName = TitleID.Text;
+            if (SaveWAD.ShowDialog() == DialogResult.OK)
+            {
+                try { Directory.Delete(Paths.WorkingFolder, true); } catch { }
+
+                try
+                {
+                    if (currentConsole != Platforms.Flash) input[0] = Global.ApplyPatch(input[0], input[1]);
+
+                    WAD w = WAD.Load(input[2]);
+                    var ios = (int)w.StartupIOS;
+                    w.Unpack(Paths.WorkingFolder);
+
+                    #region Banner
+                    if (Custom.Checked)
+                    {
+                        if (Import.Checked)
+                        {
+                            foreach (var item in Directory.GetFiles(Paths.Database, "*.*", SearchOption.AllDirectories))
+                                if (File.Exists(item) && item.Contains(db.SearchID(ImportBases.SelectedItem.ToString())))
+                                    WAD.Load(item).BannerApp.Save(Paths.WorkingFolder + "00000000.app");
+                        }
+
+                        // --------------------------------------------------------------------------- //
+
+                        // Get banner.brlyt and TPLs
+                        Directory.CreateDirectory(Paths.Images);
+
+                        libWiiSharp.U8 BannerApp = libWiiSharp.U8.Load(Paths.WorkingFolder + "00000000.app");
+                        libWiiSharp.U8 Banner = libWiiSharp.U8.Load(BannerApp.Data[BannerApp.GetNodeIndex("banner.bin")]);
+                        libWiiSharp.U8 Icon = libWiiSharp.U8.Load(BannerApp.Data[BannerApp.GetNodeIndex("icon.bin")]);
+
+                        try
+                        {
+                            File.WriteAllBytes(Paths.WorkingFolder + "banner.brlyt", Banner.Data[Banner.GetNodeIndex("banner.brlyt")]);
+
+                            if (tImg.path != null)
+                            {
+                                File.WriteAllBytes(Paths.Images + "VCPic.tpl", Banner.Data[Banner.GetNodeIndex("VCPic.tpl")]);
+                                File.WriteAllBytes(Paths.Images + "IconVCPic.tpl", Icon.Data[Icon.GetNodeIndex("IconVCPic.tpl")]);
+                            }
+                        }
+                        catch
+                        {
+                            throw new Exception(x.Get("m008"));
+                        }
+
+                        // --------------------------------------------------------------------------- //
+
+                        // Copy VCbrlyt to working folder
+                        string path = Paths.Apps + "vcbrlyt\\";
+                        foreach (string dir in Directory.GetDirectories(path))
+                            Directory.CreateDirectory(dir.Replace(path, Paths.WorkingFolder + "vcbrlyt\\"));
+                        foreach (string file in Directory.GetFiles(path, "*.*", SearchOption.AllDirectories))
+                            File.Copy(file, file.Replace(path, Paths.WorkingFolder + "vcbrlyt\\"));
+
+                        using (Process p = Process.Start(new ProcessStartInfo
+                        {
+                            FileName = Paths.WorkingFolder + "vcbrlyt\\vcbrlyt.exe",
+                            Arguments = $"{Paths.WorkingFolder + "banner.brlyt"} -Title \"{BannerTitle.Text.Replace('-', '–').Replace(Environment.NewLine, "^")}\" -YEAR {ReleaseYear.Value} -Play {Players.Value}",
+                            UseShellExecute = false,
+                            CreateNoWindow = true
+                        }))
+                            p.WaitForExit();
+
+                        // --------------------------------------------------------------------------- //
+
+                        var Brlyt = File.ReadAllBytes(Paths.WorkingFolder + "banner.brlyt");
+                        if (Brlyt == Banner.Data[Banner.GetNodeIndex("banner.brlyt")])
+                            throw new Exception(x.Get("m007"));
+                        Banner.ReplaceFile(Banner.GetNodeIndex("banner.brlyt"), Brlyt);
+
+                        // --------------------------------------------------------------------------- //
+
+                        if (tImg.path != null)
+                        {
+                            TPL tpl = TPL.Load(Paths.Images + "VCPic.tpl");
+                            var tplTF = tpl.GetTextureFormat(0);
+                            var tplPF = tpl.GetPaletteFormat(0);
+                            tpl.RemoveTexture(0);
+                            tpl.AddTexture(tImg.VCPic, tplTF, tplPF);
+                            tpl.Save(Paths.Images + "VCPic.tpl");
+
+                            tpl = TPL.Load(Paths.Images + "IconVCPic.tpl");
+                            tplTF = tpl.GetTextureFormat(0);
+                            tplPF = tpl.GetPaletteFormat(0);
+                            tpl.RemoveTexture(0);
+                            tpl.AddTexture(tImg.IconVCPic, tplTF, tplPF);
+                            tpl.Save(Paths.Images + "IconVCPic.tpl");
+
+                            tpl.Dispose();
+
+                            Banner.ReplaceFile(Banner.GetNodeIndex("VCPic.tpl"), File.ReadAllBytes(Paths.Images + "VCPic.tpl"));
+                            Icon.ReplaceFile(Icon.GetNodeIndex("IconVCPic.tpl"), File.ReadAllBytes(Paths.Images + "IconVCPic.tpl"));
+
+                            Icon.AddHeaderImd5();
+                            BannerApp.ReplaceFile(BannerApp.GetNodeIndex("icon.bin"), Icon.ToByteArray());
+                        }
+
+                        Banner.AddHeaderImd5();
+                        BannerApp.ReplaceFile(BannerApp.GetNodeIndex("banner.bin"), Banner.ToByteArray());
+                        BannerApp.AddHeaderImet(false, ChannelTitle.Text);
+                        BannerApp.Save(Paths.WorkingFolder + "00000000.app");
+
+                        BannerApp.Dispose();
+                        Banner.Dispose();
+                        Icon.Dispose();
+
+                        Directory.Delete(Paths.Images, true);
+                        File.Delete(Paths.WorkingFolder + "banner.brlyt");
+                        Directory.Delete(Paths.WorkingFolder + "vcbrlyt\\", true);
+                    }
+                    #endregion
+
+                    if (currentConsole != Platforms.Flash)
+                    {
+                        if (!(currentConsole == Platforms.SMS || currentConsole == Platforms.SMD))
+                            U8.Unpack(Paths.WorkingFolder + "00000005.app", Paths.WorkingFolder_Content5);
+                        else
+                        {
+                            Directory.CreateDirectory(Paths.WorkingFolder_Content5);
+
+                            // Write data.ccf directly from U8 loader
+                            libWiiSharp.U8 u = libWiiSharp.U8.Load(Paths.WorkingFolder + "00000005.app");
+                            File.WriteAllBytes(Paths.WorkingFolder_Content5 + "data.ccf", u.Data[u.GetNodeIndex("data.ccf")]);
+                            u.Dispose();
+
+                            // Extract CCF files
+                            new Injectors.SEGA().GetCCF();
+                        }
+
+                        if (DisableEmanual.Checked) Global.RemoveEmanual();
+                        if (Custom.Checked && tImg.path != null) tImg.CreateSave(currentConsole);
+
+                        switch (currentConsole)
+                        {
+                            default:
+                                throw new Exception("Not implemented yet!");
+
+                            case Platforms.NES:
+                            {
+                                Injectors.NES NES = new Injectors.NES
+                                {
+                                    ROM = input[0],
+                                    content1_file = Global.DetermineContent1(),
+                                    saveTPL_offsets = new Injectors.NES().DetermineSaveTPLOffsets(Global.DetermineContent1())
+                                };
+
+                                NES.InsertROM();
+                                NES.InsertPalette(NES_Palette.SelectedIndex);
+                                if (Custom.Checked)
+                                {
+                                    if (tImg.path != null)
+                                    {
+                                        if (NES.ExtractSaveTPL(Paths.WorkingFolder + "out.tpl"))
+                                            tImg.CreateSave(Platforms.NES);
+                                    }
+
+                                    NES.InsertSaveData(SaveDataTitle.Text, Paths.WorkingFolder + "out.tpl");
+                                }
+                                Global.PrepareContent1();
+                                break;
+                            }
+
+                            case Platforms.SNES:
+                            {
+                                Injectors.SNES SNES = new Injectors.SNES()
+                                {
+                                    ROM = input[0],
+                                    ROMcode = new Injectors.SNES().ProduceID(db.SearchID(Bases.SelectedItem.ToString()))
+                                };
+
+                                SNES.ReplaceROM();
+
+                                if (Custom.Checked) SNES.InsertSaveTitle(SaveDataTitle.Lines);
+                                break;
+                            }
+
+                            case Platforms.N64:
+                            {
+                                Injectors.N64 N64 = new Injectors.N64() { ROM = input[0] };
+                                foreach (var entry in db.GetList())
+                                {
+                                    if (entry["title"].ToString() == Bases.SelectedItem.ToString())
+                                        foreach (var item in Directory.GetFiles(Paths.Database, "*.*", SearchOption.AllDirectories))
+                                            if (item.Contains(entry["id"].ToString().ToUpper()))
+                                                N64.emuVersion = entry["ver"].ToString();
+                                }
+
+                                if (N64_FixBrightness.Checked || N64_UseExpansionPak.Checked || N64_Allocation.Checked)
+                                {
+                                    string content1_file = Global.DetermineContent1();
+                                    var content1 = File.ReadAllBytes(content1_file);
+                                    if (N64_FixBrightness.Checked) content1 = N64.FixBrightness(content1);
+                                    if (N64_UseExpansionPak.Checked) content1 = N64.ExpansionRAM(content1);
+                                    if (N64_Allocation.Checked) content1 = N64.AllocateROM(content1);
+                                    File.WriteAllBytes(content1_file, content1);
+                                    Global.PrepareContent1();
+                                }
+                                N64.ReplaceROM();
+
+                                if (Custom.Checked) N64.InsertSaveComments(SaveDataTitle.Lines);
+                                break;
+                            }
+
+                            case Platforms.SMS:
+                            case Platforms.SMD:
+                            {
+                                Injectors.SEGA SEGA = new Injectors.SEGA() { ROM = input[0], SMS = currentConsole == Platforms.SMS };
+                                foreach (var entry in db.GetList())
+                                {
+                                    if (entry["title"].ToString() == Bases.SelectedItem.ToString())
+                                        foreach (var item in Directory.GetFiles(Paths.Database, "*.*", SearchOption.AllDirectories))
+                                            if (item.Contains(entry["id"].ToString().ToUpper()))
+                                                SEGA.ver = int.Parse(entry["ver"].ToString());
+                                }
+                                
+                                SEGA.ReplaceROM();
+
+                                // Config parameters
+                                SEGA.SetRegion(SEGA_Region.SelectedItem.ToString());
+                                if (SEGA_SaveSRAM.Checked) SEGA.SRAM();
+                                if (SEGA_MDPad6B.Checked && !SEGA.SMS) SEGA.MDPad_6B();
+                                if (SEGA_Controller.Checked) SEGA.SetController(btns);
+
+                                SEGA.ReplaceConfig();
+                                SEGA.PackCCF();
+                                break;
+                            }
+                        }
+
+                        if (!(currentConsole == Platforms.SMS || currentConsole == Platforms.SMD))
+                            U8.Pack(Paths.WorkingFolder_Content5, Paths.WorkingFolder + "00000005.app");
+                        else
+                        {
+                            // Write data.ccf directly to U8 loader, and save
+                            libWiiSharp.U8 u = libWiiSharp.U8.Load(Paths.WorkingFolder + "00000005.app");
+                            u.ReplaceFile(u.GetNodeIndex("data.ccf"), File.ReadAllBytes(Paths.WorkingFolder_Content5 + "data.ccf"));
+                            u.Save(Paths.WorkingFolder + "00000005.app");
+                            u.Dispose();
+
+                            Directory.Delete(Paths.WorkingFolder_Content5, true);
+                        }
+                    }
+                    else if (currentConsole == Platforms.Flash)
+                    {
+                        U8.Unpack(Paths.WorkingFolder + "00000002.app", Paths.WorkingFolder_Content2);
+
+                        Injectors.Flash Flash = new Injectors.Flash() { SWF = input[0] };
+                        Flash.ReplaceSWF();
+
+                        Flash.HomeMenuNoSave(Flash_HBMNoSave.Checked);
+                        Flash.SetStrapReminder(Flash_StrapReminder.SelectedIndex);
+                        if (Flash_UseSaveData.Checked) Flash.EnableSaveData(Convert.ToInt32(Flash_TotalSaveDataSize.SelectedItem.ToString()));
+                        if (Flash_CustomFPS.Checked) Flash.SetFPS(Flash_FPS.SelectedItem.ToString());
+                        if (Flash_Controller.Checked) Flash.SetController(btns);
+                        if (Custom.Checked && tImg.path != null) tImg.CreateSave(Platforms.Flash);
+                        if (Custom.Checked) Flash.InsertSaveData(SaveDataTitle.Lines);
+
+                        U8.Pack(Paths.WorkingFolder_Content2, Paths.WorkingFolder + "00000002.app");
+                    }
+
+                    // TO-DO: IOS video mode patching
+
+                    var subdirectories = Directory.EnumerateDirectories(Paths.WorkingFolder);
+                    if (subdirectories != null)
+                        foreach (var item in subdirectories)
+                            Directory.Delete(item, true);
+
+                    w.CreateNew(Paths.WorkingFolder);
+                    if (RegionFree.Checked) w.Region = libWiiSharp.Region.Free;
+                    w.FakeSign = true;
+                    w.ChangeTitleID(LowerTitleID.Channel, TitleID.Text);
+                    w.Save(SaveWAD.FileName);
+                    w.Dispose();
+
+                    MessageBox.Show(x.Get("m002"));
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(String.Format(x.Get("m003"), ex.Message), x.Get("halt"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    try { Directory.Delete(Paths.WorkingFolder, true); } catch { }
+
+                    if (File.Exists(input[0]) && input[0].EndsWith(Paths.PatchedSuffix))
+                    {
+                        File.Delete(input[0]);
+                        input[0] = input[0].Remove(input[0].Length - Paths.PatchedSuffix.Length, Paths.PatchedSuffix.Length);
+                    }
+                }
             }
         }
     }

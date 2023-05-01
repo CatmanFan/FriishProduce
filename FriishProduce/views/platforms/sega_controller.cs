@@ -10,38 +10,46 @@ using System.Windows.Forms;
 
 namespace FriishProduce.Views
 {
-    public partial class Flash_Controller : Form
+    public partial class SEGA_Controller : Form
     {
         internal readonly string[] WiiBtns =
         {
-            "KEY_BUTTON_LEFT",
-            "KEY_BUTTON_RIGHT",
-            "KEY_BUTTON_DOWN",
-            "KEY_BUTTON_UP",
-            "KEY_BUTTON_A",
-            "KEY_BUTTON_B",
-            "KEY_BUTTON_1",
-            "KEY_BUTTON_2",
-            "KEY_BUTTON_PLUS",
-            "KEY_BUTTON_MINUS",
-            "KEY_BUTTON_HOME",
-            "KEY_BUTTON_C",
-            "KEY_BUTTON_Z",
-            "KEY_CL_BUTTON_LEFT",
-            "KEY_CL_BUTTON_RIGHT",
-            "KEY_CL_BUTTON_DOWN",
-            "KEY_CL_BUTTON_UP",
-            "KEY_CL_BUTTON_A",
-            "KEY_CL_BUTTON_B",
-            "KEY_CL_BUTTON_X",
-            "KEY_CL_BUTTON_Y",
-            "KEY_CL_BUTTON_PLUS",
-            "KEY_CL_BUTTON_MINUS",
-            "KEY_CL_BUTTON_HOME",
-            "KEY_CL_TRIGGER_L",
-            "KEY_CL_TRIGGER_R",
-            "KEY_CL_TRIGGER_ZL",
-            "KEY_CL_TRIGGER_ZR",
+            "cl_up",
+            "cl_down",
+            "cl_left",
+            "cl_right",
+            "cl_+",
+            "cl_-",
+            "cl_y",
+            "cl_b",
+            "cl_a",
+            "cl_l",
+            "cl_x",
+            "cl_r",
+            "cl_zr",
+            "cl_zl",
+            "core_up",
+            "core_down",
+            "core_left",
+            "core_right",
+            "core_+",
+            "core_a",
+            "core_1",
+            "core_2",
+            "core_b",
+            "gc_up",
+            "gc_down",
+            "gc_left",
+            "gc_right",
+            "gc_start",
+            "gc_b",
+            "gc_a",
+            "gc_x",
+            "gc_l",
+            "gc_y",
+            "gc_r",
+            "gc_z",
+            "gc_c"
         };
         internal string[] SrcBtns
         {
@@ -49,27 +57,24 @@ namespace FriishProduce.Views
             {
                 List<string> List = new List<string>();
                 List.Add("—");
-                List.Add("KEY_LEFT");
-                List.Add("KEY_RIGHT");
-                List.Add("KEY_DOWN");
-                List.Add("KEY_UP");
-                List.Add("KEY_ENTER");
-                List.Add("KEY_SPACE");
-                List.Add("KEY_SHIFT");
-                List.Add("KEY_CTRL");
-                List.Add("KEY_DELETE");
-                List.Add("KEY_ESCAPE");
-                List.Add("KEY_BACKSPACE");
-                for (int i = 0; i <= 'Z' - 'A'; i++)
-                    List.Add($"{(char)(i + 'A')}");
-                for (int i = 1; i <= 10; i++)
-                    List.Add($"{i - 1}");
+                List.Add("U");
+                List.Add("D");
+                List.Add("L");
+                List.Add("R");
+                List.Add("Start");
+                List.Add("A");
+                List.Add("B");
+                List.Add("C");
+                List.Add("X");
+                List.Add("Y");
+                List.Add("Z");
+                List.Add("Mode");
                 return List.ToArray();
             }
         }
         internal Dictionary<string, string> Config { get; set; }
 
-        public Flash_Controller(Dictionary<string, string> srcConfig)
+        public SEGA_Controller(Dictionary<string, string> srcConfig)
         {
             InitializeComponent();
             Program.Language.Localize(this);
