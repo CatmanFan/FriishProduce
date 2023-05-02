@@ -10,7 +10,7 @@ namespace FriishProduce.Injectors
 {
     public class SEGA
     {
-        /* What is currently working: 
+        /* What is currently working:
            [X] CCF (de)compression
            [X] ROM replacement & detection
            [X] Config writing 
@@ -88,7 +88,7 @@ namespace FriishProduce.Injectors
         {
             // Copy application to target dir
             string pPath = dir + "ccfex.exe";
-            File.WriteAllBytes(pPath, Properties.Resources.CCFEx);
+            // File.WriteAllBytes(pPath, Properties.Resources.CCFEx);
 
             // Start application
             var pInfo = new ProcessStartInfo
@@ -116,7 +116,7 @@ namespace FriishProduce.Injectors
             arg = arg.Remove(0, 1);
 
             // Copy application to target dir
-            File.WriteAllBytes(pPath, Properties.Resources.CCFArc);
+            // File.WriteAllBytes(pPath, Properties.Resources.CCFArc);
 
             // Start application
             var pInfo = new ProcessStartInfo

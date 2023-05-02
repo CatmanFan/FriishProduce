@@ -151,13 +151,4 @@
   <data name="Controllers_GameCube" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\images\gamecube.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="CCFArc" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ccftools\ccfarc.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="CCFArcRaw" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ccftools\ccfarcraw.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="CCFEx" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ccftools\ccfex.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
 </root>

@@ -61,36 +61,6 @@ namespace FriishProduce.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] CCFArc {
-            get {
-                object obj = ResourceManager.GetObject("CCFArc", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] CCFArcRaw {
-            get {
-                object obj = ResourceManager.GetObject("CCFArcRaw", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] CCFEx {
-            get {
-                object obj = ResourceManager.GetObject("CCFEx", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Controllers_Classic {
@@ -151,8 +121,7 @@ namespace FriishProduce.Properties {
         ///    &quot;Flash&quot;: &quot;Adobe Flash&quot;
         ///  },
         ///  &quot;methods&quot;: {
-        ///    &quot;VC&quot;: &quot;Virtual Console&quot;,
-        ///    &quot;FCEUGX&quot;:  [rest of string was truncated]&quot;;.
+        ///    &quot;VC&quot;: &quot;Virtual Cons [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string English {
             get {
