@@ -48,26 +48,17 @@ namespace FriishProduce.Injectors
         public int ver { get; set; }
         private List<string> config = new List<string>();
         public bool SMS { get; set; }
-        public bool compressedData { get; set; }
 
         public void GetCCF(bool GetMisc)
         {
             Directory.CreateDirectory(Paths.WorkingFolder_DataCCF);
             CCFEx(Paths.WorkingFolder_Content5 + "data.ccf", Paths.WorkingFolder_DataCCF);
 
-            // Check for compressed data.ccf
-            string recomp = CCFArc(Paths.WorkingFolder_DataCCF, true);
-            int rB = File.ReadAllBytes(recomp).Length;
-            int oB = File.ReadAllBytes(Paths.WorkingFolder_Content5 + "data.ccf").Length;
-            compressedData = ((rB + 50) / 100 * 100) != ((oB + 50) / 100 * 100);
-            File.Delete(recomp);
-
             if (GetMisc)
             {
                 Directory.CreateDirectory(Paths.WorkingFolder_MiscCCF);
                 CCFEx(Paths.WorkingFolder_DataCCF + "misc.ccf", Paths.WorkingFolder_MiscCCF);
             }
-
         }
 
         public void PackCCF(bool PackMisc)
@@ -79,8 +70,8 @@ namespace FriishProduce.Injectors
                 Directory.Delete(Paths.WorkingFolder_MiscCCF, true);
             }
 
-            string newData = CCFArc(Paths.WorkingFolder_DataCCF, compressedData);
-            File.Copy(newData, Paths.WorkingFolder_Content5 + "data.ccf", true);
+            string newData = CCFArc(Paths.WorkingFolder_DataCCF, true);
+            File.Copy(newData, Paths.WorkingFolder_Content5 + "data.ccf", ver != 3);
             Directory.Delete(Paths.WorkingFolder_DataCCF, true);
         }
 
@@ -88,7 +79,7 @@ namespace FriishProduce.Injectors
         {
             // Copy application to target dir
             string pPath = dir + "ccfex.exe";
-            // File.WriteAllBytes(pPath, Properties.Resources.CCFEx);
+            File.WriteAllBytes(pPath, Properties.Resources.CCFEx);
 
             // Start application
             var pInfo = new ProcessStartInfo
@@ -107,32 +98,33 @@ namespace FriishProduce.Injectors
 
         private string CCFArc(string dir, bool raw)
         {
-            string arg = "";
-            string pPath = dir + (raw ? "ccfarcraw.exe" : "ccfarc.exe");
-
-            // Define files
-            foreach (string file in Directory.EnumerateFiles(dir))
-                arg += $" {Path.GetFileName(file)}";
-            arg = arg.Remove(0, 1);
-
             // Copy application to target dir
-            // File.WriteAllBytes(pPath, Properties.Resources.CCFArc);
+            string pPath = dir + (raw ? "ccfarcraw.exe" : "ccfarc.exe");
+            if (raw) File.WriteAllBytes(pPath, Properties.Resources.CCFArcRaw);
+            else File.WriteAllBytes(pPath, Properties.Resources.CCFArc);
 
             // Start application
             var pInfo = new ProcessStartInfo
             {
                 FileName = pPath,
-                WorkingDirectory = dir,
-                Arguments = arg,
+                WorkingDirectory = dir == Paths.WorkingFolder_DataCCF ? dir : dir.Remove(0, 1),
+                Arguments = "Opera.arc ComixZone_Europe.SGD__ config man.arc misc.ccf",
                 UseShellExecute = false,
                 CreateNoWindow = true
             };
             using (Process p = Process.Start(pInfo))
                 p.WaitForExit();
 
+            if (dir == Paths.WorkingFolder_DataCCF)
+            {
+                pInfo.Arguments = "ComixZone_Europe.SGD__ Opera.arc config man.arc misc.ccf";
+                using (Process p = Process.Start(pInfo))
+                    p.WaitForExit();
+            }
+
             File.Delete(pPath);
 
-            if (File.Exists(dir + "out.ccf"))
+            if (File.Exists(dir + "out.ccf") && File.ReadAllBytes(dir + "out.ccf").Length > 0)
                 return dir + "out.ccf";
             else throw new Exception("Unable to compress CCF file!");
         }
@@ -142,7 +134,7 @@ namespace FriishProduce.Injectors
             string targetROM = "";
             foreach (var item in Directory.EnumerateFiles(Paths.WorkingFolder_DataCCF))
             {
-                if (item.Contains(".SGD") || item.Contains(".SMS"))
+                if (Path.GetExtension(item).StartsWith(".SGD") || Path.GetExtension(item).StartsWith(".SMS"))
                 {
                     if (File.ReadAllBytes(ROM).Length > File.ReadAllBytes(item).Length)
                         throw new Exception(Program.Language.Get("m004"));
@@ -308,6 +300,32 @@ namespace FriishProduce.Injectors
             config.Add(coreBtns);
             config.Add(clBtns);
             config.Add(gcBtns);
+        }
+
+        internal void InsertSaveTitle(string title)
+        {
+            if (File.Exists(Paths.WorkingFolder_MiscCCF + "banner.cfg.txt"))
+            {
+                var new_banner = File.ReadAllLines(Paths.WorkingFolder_MiscCCF + "banner.cfg.txt");
+                for (int i = 0; i < new_banner.Length; i++)
+                {
+                    if (new_banner[i].StartsWith("JP:")) new_banner[i] = $"JP:{title}";
+                    if (new_banner[i].StartsWith("EN:")) new_banner[i] = $"EN:{title}";
+                    if (new_banner[i].StartsWith("GE:")) new_banner[i] = $"GE:{title}";
+                    if (new_banner[i].StartsWith("FR:")) new_banner[i] = $"FR:{title}";
+                    if (new_banner[i].StartsWith("SP:")) new_banner[i] = $"SP:{title}";
+                    if (new_banner[i].StartsWith("IT:")) new_banner[i] = $"IT:{title}";
+                    if (new_banner[i].StartsWith("DU:")) new_banner[i] = $"DU:{title}";
+                }
+                File.WriteAllText(Paths.WorkingFolder_MiscCCF + "banner.cfg.txt", String.Join("\n", new_banner), Encoding.BigEndianUnicode);
+            }
+
+            else if (File.Exists(Paths.WorkingFolder_MiscCCF + "comment"))
+            {
+                var new_banner = File.ReadAllLines(Paths.WorkingFolder_MiscCCF + "comment");
+                new_banner[0] = title;
+                File.WriteAllLines(Paths.WorkingFolder_MiscCCF + "comment", new_banner);
+            }
         }
     }
 }

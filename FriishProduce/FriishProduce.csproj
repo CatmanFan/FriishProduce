@@ -195,11 +195,11 @@
     <Content Include="Resources\brawllib\texextract.exe" />
     <Content Include="Resources\brawllib\texreplace.exe" />
     <Content Include="Resources\brawllib\wteconvert.exe" />
-    <Content Include="Wiimote.ico" />
-    <None Include="Resources\gbalzss.exe" />
+    <None Include="Resources\ccftools\ccfarc.exe" />
     <None Include="Resources\ccftools\ccfex.exe" />
     <None Include="Resources\ccftools\ccfarcraw.exe" />
-    <None Include="Resources\ccftools\ccfarc.exe" />
+    <Content Include="Wiimote.ico" />
+    <None Include="Resources\gbalzss.exe" />
     <None Include="Resources\wwcxtool.exe" />
     <None Include="Resources\romc.exe" />
   </ItemGroup>

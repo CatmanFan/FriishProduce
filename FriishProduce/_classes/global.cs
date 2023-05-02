@@ -11,14 +11,14 @@ namespace FriishProduce
         {
             if (patch != null)
             {
-                if (!File.Exists(Paths.Apps + "flips.exe"))
+                if (!File.Exists(Paths.Apps + "flips\\flips.exe"))
                 {
                     MessageBox.Show(x.Get("m006"), x.Get("error"), System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
                     return ROM;
                 }
 
                 string outROM = ROM + Paths.PatchedSuffix;
-                string batchScript = $"\"{Paths.Apps}flips.exe\" --apply \"{patch}\" \"{Path.GetFileName(ROM)}\" \"{Path.GetFileName(outROM)}\"";
+                string batchScript = $"\"{Paths.Apps}flips\\flips.exe\" --apply \"{patch}\" \"{Path.GetFileName(ROM)}\" \"{Path.GetFileName(outROM)}\"";
                 string batchPath = Path.Combine(Path.GetDirectoryName(ROM), "patch.bat");
 
                 File.WriteAllText(batchPath, batchScript);

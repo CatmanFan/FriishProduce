@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
@@ -174,7 +175,7 @@ namespace FriishProduce
                         usesWte = true;
                         break;
                 }
-                if (embedded && !File.Exists(tplPath)) return;
+                if (embedded && !File.Exists(tplPath) && !usesWte) return;
                 else if (tplPath == null && !usesWte) return;
 
                 // -----------------------------------------------------------------------------------------
@@ -286,6 +287,55 @@ namespace FriishProduce
                 // -------------------------------------------------------------------------------------
                 else
                 {
+                    foreach (var item in Directory.EnumerateFiles(Paths.WorkingFolder_MiscCCF))
+                    {
+                        if (Path.GetExtension(item) == ".wte")
+                        {
+                            using (Process p = Process.Start(new ProcessStartInfo
+                            {
+                                FileName = Paths.Apps + "brawllib\\wteconvert.exe",
+                                Arguments = $"\"{item}\" \"{Paths.Images}{Path.GetFileNameWithoutExtension(item)}.tex0\"",
+                                UseShellExecute = false,
+                                CreateNoWindow = true
+                            }))
+                                p.WaitForExit();
+                            using (Process p = Process.Start(new ProcessStartInfo
+                            {
+                                FileName = Paths.Apps + "brawllib\\texextract.exe",
+                                Arguments = $"\"{Paths.Images}{Path.GetFileNameWithoutExtension(item)}.tex0\" \"{Paths.Images}{Path.GetFileNameWithoutExtension(item)}.png\"",
+                                UseShellExecute = false,
+                                CreateNoWindow = true
+                            }))
+                                p.WaitForExit();
+                        }
+                    }
+
+                    // 01 is icon
+                    // 06 is end
+                    // banner_[xx] is savebanner
+
+                    foreach (var item in Directory.EnumerateFiles(Paths.Images))
+                    {
+                        if (Path.GetExtension(item) == ".tex0")
+                        {
+                            using (Process p = Process.Start(new ProcessStartInfo
+                            {
+                                FileName = Paths.Apps + "brawllib\\texreplace.exe",
+                                Arguments = $"\"{item}\" \"{Paths.Images}{Path.GetFileNameWithoutExtension(item)}.png\"",
+                                UseShellExecute = false,
+                                CreateNoWindow = true
+                            }))
+                                p.WaitForExit();
+                            using (Process p = Process.Start(new ProcessStartInfo
+                            {
+                                FileName = Paths.Apps + "brawllib\\wteconvert.exe",
+                                Arguments = $"\"{item}\" \"{Paths.WorkingFolder_MiscCCF}{Path.GetFileNameWithoutExtension(item)}.wte\"",
+                                UseShellExecute = false,
+                                CreateNoWindow = true
+                            }))
+                                p.WaitForExit();
+                        }
+                    }
                 }
             }
 

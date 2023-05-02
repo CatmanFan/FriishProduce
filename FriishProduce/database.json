@@ -45,6 +45,9 @@
     { "title": "Sonic the Hedgehog (USA)", "id": "LAGE", "ver": "1" },
     { "title": "Sonic the Hedgehog (EUR)", "id": "LAGP", "ver": "1" },
     { "title": "Sonic the Hedgehog (JPN)", "id": "LAGJ", "ver": "1" },
+    { "title": "Fantasy Zone (USA)", "id": "LABE", "ver": "1" },
+    { "title": "Fantasy Zone (EUR)", "id": "LABP", "ver": "1" },
+    { "title": "Fantasy Zone (JPN)", "id": "LABJ", "ver": "1" },
     { "title": "Phantasy Star (USA)", "id": "LADE", "ver": "3" },
     { "title": "Phantasy Star (EUR)", "id": "LADP", "ver": "3" },
     { "title": "Phantasy Star (JPN)", "id": "LADJ", "ver": "3" }

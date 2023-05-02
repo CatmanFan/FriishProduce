@@ -1,4 +1,5 @@
 ﻿using libWiiSharp;
+using System.Diagnostics;
 
 namespace FriishProduce
 {
@@ -13,6 +14,7 @@ namespace FriishProduce
                 u.Dispose();
             }
         }
+
         public static void Pack(string input, string output)
         {
             using (libWiiSharp.U8 u = new libWiiSharp.U8())
@@ -20,8 +22,9 @@ namespace FriishProduce
                 u.CreateFromDirectory(input);
                 u.Save(output);
                 u.Dispose();
-                System.IO.Directory.Delete(input, true);
             }
+
+            System.IO.Directory.Delete(input, true);
         }
     }
 }

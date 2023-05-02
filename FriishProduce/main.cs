@@ -37,6 +37,8 @@ namespace FriishProduce
                 x.Get("NES"),
                 x.Get("SNES"),
                 x.Get("N64"),
+                x.Get("SMS"),
+                x.Get("SMD"),
                 x.Get("Flash")
             };
             foreach (var console in consoles) Console.Items.Add(console);
@@ -863,26 +865,17 @@ namespace FriishProduce
                                 SEGA.SetRegion(SEGA_Region.SelectedItem.ToString());
                                 if (SEGA_SaveSRAM.Checked) SEGA.SRAM();
                                 if (SEGA_MDPad6B.Checked && !SEGA.SMS) SEGA.MDPad_6B();
-                                if (SEGA_Controller.Checked) SEGA.SetController(btns); */
+                                if (SEGA_Controller.Checked && SEGA.ver == 3) SEGA.SetController(btns);
 
-                                // SEGA.ReplaceConfig();
+                                if (Custom.Checked) SEGA.InsertSaveTitle(ChannelTitle.Text);
+
+                                SEGA.ReplaceConfig(); */
                                 SEGA.PackCCF(Custom.Checked);
                                 break;
                             }
                         }
 
-                        if (!(currentConsole == Platforms.SMS || currentConsole == Platforms.SMD))
-                            U8.Pack(Paths.WorkingFolder_Content5, Paths.WorkingFolder + "00000005.app");
-                        else
-                        {
-                            // Write data.ccf directly to U8 loader, and save
-                            libWiiSharp.U8 u = libWiiSharp.U8.Load(Paths.WorkingFolder + "00000005.app");
-                            u.ReplaceFile(u.GetNodeIndex("data.ccf"), File.ReadAllBytes(Paths.WorkingFolder_Content5 + "data.ccf"));
-                            u.Save(Paths.WorkingFolder + "00000005.app");
-                            u.Dispose();
-
-                            Directory.Delete(Paths.WorkingFolder_Content5, true);
-                        }
+                        U8.Pack(Paths.WorkingFolder_Content5, Paths.WorkingFolder + "00000005.app");
                     }
                     else if (currentConsole == Platforms.Flash)
                     {
