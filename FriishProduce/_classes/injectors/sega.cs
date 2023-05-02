@@ -48,53 +48,82 @@ namespace FriishProduce.Injectors
         public int ver { get; set; }
         private List<string> config = new List<string>();
         public bool SMS { get; set; }
+        public bool compressedData { get; set; }
 
-        public void GetCCF()
+        public void GetCCF(bool GetMisc)
         {
-            Directory.CreateDirectory(Paths.WorkingFolder_MiscCCF);
+            Directory.CreateDirectory(Paths.WorkingFolder_DataCCF);
+            CCFEx(Paths.WorkingFolder_Content5 + "data.ccf", Paths.WorkingFolder_DataCCF);
 
+            // Check for compressed data.ccf
+            string recomp = CCFArc(Paths.WorkingFolder_DataCCF, true);
+            int rB = File.ReadAllBytes(recomp).Length;
+            int oB = File.ReadAllBytes(Paths.WorkingFolder_Content5 + "data.ccf").Length;
+            compressedData = ((rB + 50) / 100 * 100) != ((oB + 50) / 100 * 100);
+            File.Delete(recomp);
+
+            if (GetMisc)
+            {
+                Directory.CreateDirectory(Paths.WorkingFolder_MiscCCF);
+                CCFEx(Paths.WorkingFolder_DataCCF + "misc.ccf", Paths.WorkingFolder_MiscCCF);
+            }
+
+        }
+
+        public void PackCCF(bool PackMisc)
+        {
+            if (PackMisc)
+            {
+                string newMisc = CCFArc(Paths.WorkingFolder_MiscCCF, true);
+                File.Copy(newMisc, Paths.WorkingFolder_DataCCF + "misc.ccf", true);
+                Directory.Delete(Paths.WorkingFolder_MiscCCF, true);
+            }
+
+            string newData = CCFArc(Paths.WorkingFolder_DataCCF, compressedData);
+            File.Copy(newData, Paths.WorkingFolder_Content5 + "data.ccf", true);
+            Directory.Delete(Paths.WorkingFolder_DataCCF, true);
+        }
+
+        private void CCFEx(string file, string dir)
+        {
             // Copy application to target dir
-            string pPath = Paths.WorkingFolder_DataCCF + "ccfex.exe";
+            string pPath = dir + "ccfex.exe";
             File.WriteAllBytes(pPath, Properties.Resources.CCFEx);
 
             // Start application
             var pInfo = new ProcessStartInfo
             {
                 FileName = pPath,
-                WorkingDirectory = Paths.WorkingFolder_DataCCF,
-                Arguments = $"{Paths.WorkingFolder_Content5}data.ccf",
+                WorkingDirectory = dir,
+                Arguments = $"\"{file}\"",
                 UseShellExecute = false,
                 CreateNoWindow = true
             };
-            using (Process p = Process.Start(pInfo))
-                p.WaitForExit();
-
-            // Start application again
-            pInfo.WorkingDirectory = Paths.WorkingFolder_MiscCCF;
-            pInfo.Arguments = $"{Paths.WorkingFolder_DataCCF}misc.ccf";
             using (Process p = Process.Start(pInfo))
                 p.WaitForExit();
 
             File.Delete(pPath);
         }
 
-        public void PackCCF()
+        private string CCFArc(string dir, bool raw)
         {
-            // Define files
             string arg = "";
-            foreach (string file in Directory.EnumerateFiles(Paths.WorkingFolder_MiscCCF))
+            string pPath = dir + (raw ? "ccfarcraw.exe" : "ccfarc.exe");
+
+            // Define files
+            foreach (string file in Directory.EnumerateFiles(dir))
                 arg += $" {Path.GetFileName(file)}";
+            arg = arg.Remove(0, 1);
 
             // Copy application to target dir
-            string pPath = Paths.WorkingFolder_MiscCCF + "ccfarcraw.exe";
-            File.WriteAllBytes(pPath, Properties.Resources.CCFArcRaw);
+            File.WriteAllBytes(pPath, Properties.Resources.CCFArc);
 
             // Start application
             var pInfo = new ProcessStartInfo
             {
                 FileName = pPath,
-                WorkingDirectory = Paths.WorkingFolder_MiscCCF,
-                Arguments = arg.Remove(0, 1),
+                WorkingDirectory = dir,
+                Arguments = arg,
                 UseShellExecute = false,
                 CreateNoWindow = true
             };
@@ -102,28 +131,10 @@ namespace FriishProduce.Injectors
                 p.WaitForExit();
 
             File.Delete(pPath);
-            File.Copy(Paths.WorkingFolder_MiscCCF + "out.ccf", Paths.WorkingFolder_DataCCF + "misc.ccf", true);
-            Directory.Delete(Paths.WorkingFolder_MiscCCF, true);
 
-            // Define files
-            arg = "";
-            foreach (string file in Directory.EnumerateFiles(Paths.WorkingFolder_DataCCF))
-                arg += $" {Path.GetFileName(file)}";
-
-            // Copy application to target dir
-            pPath = Paths.WorkingFolder_DataCCF + "ccfarc.exe";
-            File.WriteAllBytes(pPath, Properties.Resources.CCFArc);
-
-            // Start application
-            pInfo.FileName = pPath;
-            pInfo.WorkingDirectory = Paths.WorkingFolder_DataCCF;
-            pInfo.Arguments = arg.Remove(0, 1);
-            using (Process p = Process.Start(pInfo))
-                p.WaitForExit();
-
-            File.Delete(pPath);
-            File.Copy(Paths.WorkingFolder_DataCCF + "out.ccf", Paths.WorkingFolder_Content5 + "data.ccf", true);
-            Directory.Delete(Paths.WorkingFolder_DataCCF, true);
+            if (File.Exists(dir + "out.ccf"))
+                return dir + "out.ccf";
+            else throw new Exception("Unable to compress CCF file!");
         }
 
         public void ReplaceROM()
@@ -179,8 +190,13 @@ namespace FriishProduce.Injectors
                         config.Add(item);
 
             config.Sort();
-            config.Add("");
-            File.WriteAllLines(Paths.WorkingFolder_DataCCF + "config", config.ToArray());
+            
+            using (TextWriter t = new StreamWriter(Paths.WorkingFolder_DataCCF + "config", false))
+            {
+                t.NewLine = "\n";
+                for (int i = 0; i < config.Count; i++)
+                    t.WriteLine(config.ToArray()[i]);
+            }
         }
 
         public void SetRegion(string reg) => config.Add(ver == 1 ? $"country=\"{reg}\"" : $"console.machine_country=\"{reg}\"");

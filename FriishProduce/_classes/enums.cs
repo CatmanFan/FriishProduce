@@ -7,13 +7,13 @@ namespace FriishProduce
         NES = 0,
         SNES = 1,
         N64 = 2,
-        SMS = 3,
-        SMD = 4,
+        SMS = 4,
+        SMD = 5,
         PCE = 10,
         NeoGeo = 6,
         C64 = 7,
         MSX = 8,
-        Flash = 5,
+        Flash = 3,
     }
 
     public enum InjectionMethod

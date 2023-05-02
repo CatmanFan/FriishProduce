@@ -37,8 +37,6 @@ namespace FriishProduce
                 x.Get("NES"),
                 x.Get("SNES"),
                 x.Get("N64"),
-                x.Get("SMS"),
-                x.Get("SMD"),
                 x.Get("Flash")
             };
             foreach (var console in consoles) Console.Items.Add(console);
@@ -390,9 +388,17 @@ namespace FriishProduce
                         if (entry["id"].ToString().ToUpper() == w.UpperTitleID)
                         {
                             string dest = $"{db.CurrentFolder(currentConsole)}{w.UpperTitleID}.wad";
-                            if (!Directory.Exists(Path.GetDirectoryName(dest)))
-                                Directory.CreateDirectory(Path.GetDirectoryName(dest));
-                            File.Copy(BrowseWAD.FileName, dest, true);
+                            if (!File.Exists(dest))
+                            {
+                                if (!Directory.Exists(Path.GetDirectoryName(dest)))
+                                    Directory.CreateDirectory(Path.GetDirectoryName(dest));
+                                File.Copy(BrowseWAD.FileName, dest, true);
+                            }
+                            else if (File.ReadAllBytes(dest) != File.ReadAllBytes(BrowseWAD.FileName))
+                            {
+                                w.Dispose();
+                                goto Fail;
+                            }
                             RefreshBases();
                             Bases.SelectedItem = entry["title"].ToString();
                             w.Dispose();
@@ -762,7 +768,7 @@ namespace FriishProduce
                             u.Dispose();
 
                             // Extract CCF files
-                            new Injectors.SEGA().GetCCF();
+                            new Injectors.SEGA().GetCCF(Custom.Checked);
                         }
 
                         if (DisableEmanual.Checked) Global.RemoveEmanual();
@@ -851,16 +857,16 @@ namespace FriishProduce
                                                 SEGA.ver = int.Parse(entry["ver"].ToString());
                                 }
                                 
-                                SEGA.ReplaceROM();
+                                /* SEGA.ReplaceROM();
 
                                 // Config parameters
                                 SEGA.SetRegion(SEGA_Region.SelectedItem.ToString());
                                 if (SEGA_SaveSRAM.Checked) SEGA.SRAM();
                                 if (SEGA_MDPad6B.Checked && !SEGA.SMS) SEGA.MDPad_6B();
-                                if (SEGA_Controller.Checked) SEGA.SetController(btns);
+                                if (SEGA_Controller.Checked) SEGA.SetController(btns); */
 
-                                SEGA.ReplaceConfig();
-                                SEGA.PackCCF();
+                                // SEGA.ReplaceConfig();
+                                SEGA.PackCCF(Custom.Checked);
                                 break;
                             }
                         }
@@ -897,11 +903,6 @@ namespace FriishProduce
                     }
 
                     // TO-DO: IOS video mode patching
-
-                    var subdirectories = Directory.EnumerateDirectories(Paths.WorkingFolder);
-                    if (subdirectories != null)
-                        foreach (var item in subdirectories)
-                            Directory.Delete(item, true);
 
                     w.CreateNew(Paths.WorkingFolder);
                     if (RegionFree.Checked) w.Region = libWiiSharp.Region.Free;

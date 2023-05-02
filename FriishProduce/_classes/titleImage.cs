@@ -198,13 +198,14 @@ namespace FriishProduce
                     for (int i = 0; i < numTextures; i++)
                         sFiles.Add(Paths.Images + $"Texture_0{i}.png");
 
-                    Image sBanner = Image.FromFile(sFiles[0]);
+                    Bitmap sBanner = new Bitmap(192, 64);
                     Bitmap sIcon1 = new Bitmap(48, 48);
                     Image sIcon2 = Image.FromFile(sFiles[numTextures - 1]);
 
                     using (Image img = (Image)sBanner.Clone())
                     using (Graphics g = Graphics.FromImage(img))
                     {
+                        g.DrawImage(Image.FromFile(sFiles[0]), new Point(0, 0));
                         g.DrawImage(SaveIcon, SaveIconL_xywh[0], SaveIconL_xywh[1], SaveIconL_xywh[2], SaveIconL_xywh[3]);
                         sFiles[0] = Paths.Images + Path.GetFileNameWithoutExtension(sFiles[0]) + "_new.png";
                         img.Save(sFiles[0]);

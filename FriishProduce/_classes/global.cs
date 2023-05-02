@@ -109,17 +109,24 @@ namespace FriishProduce
 
         public static void RemoveEmanual()
         {
+            // There is a bug in Korean NES WADs (tested Kirby's Adventure only) where the following error is produced:
+            // "Wii 본체 저장 메모리가 소삼되머 다. 자세한 내용은 Wii 본체 사용설명서를 읽어 주십시오."
+            // This is related to the "Opera.arc" failing to be detected when it is overwritten
+
             U8.Unpack(Paths.WorkingFolder + "00000004.app", Paths.WorkingFolder_Content4);
-            if (Directory.Exists(Paths.WorkingFolder_Content4 + "HomeButton2") && Directory.Exists(Paths.WorkingFolder_Content4 + "HomeButton3"))
+            if (Directory.Exists(Paths.WorkingFolder_Content4 + "HomeButton2"))
             {
-                foreach (var file in Directory.GetFiles(Paths.WorkingFolder_Content4 + "HomeButton3"))
+                string targetDir = Paths.WorkingFolder_Content4 + "HomeButton3";
+                if (Directory.Exists(Paths.WorkingFolder_Content4 + "Homebutton3"))
+                    targetDir = Paths.WorkingFolder_Content4 + "Homebutton3";
+
+                foreach (var file in Directory.GetFiles(targetDir))
                     File.Copy($"{Paths.WorkingFolder_Content4}HomeButton2\\{Path.GetFileName(file)}", file, true);
             }
             U8.Pack(Paths.WorkingFolder_Content4, Paths.WorkingFolder + "00000004.app");
 
             string[] emanualFiles =
             {
-                "Opera.arc",
                 "Opera.arc.zlib",
                 "emanual.arc",
                 "man.arc",
