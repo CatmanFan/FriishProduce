@@ -43,18 +43,3 @@ I would also like to thank the following people:
 * And of course, the team at the 0RANGECHiCKEN release group, including [lolsjoel](https://gbatemp.net/members/lolsjoel.18721/), and the late [G0dLiKe](https://gbatemp.net/members/g0dlike.190457/), without whose work this project would not have been possible.
 
 This application is distributed and licensed under the **GNU General Public License v3.0** ([view in full](https://github.com/CatmanFan/FriishProduce/blob/main/LICENSE)).
-
-<!-- Beta 0.11 release.
-
-**Full Changelog**: https://github.com/CatmanFan/FriishProduce/compare/v0.10-beta...v0.11-beta
-
-### Added
-* New language: **Korean** (credits to **DDinghoya**)
-* New platforms: **Master System**, **Mega Drive/Genesis**
-* Updated database.json
-  * Add certain Japanese/Korean versions of existing WADs (may not be fully compatible depending on revision)
-### Other changes
-* Removed "injection done" message prompt as it occassionally caused the application to stop responding even after a WAD has been generated. A simple "ding" sound is now played instead.
-### Fixes
-* Fixed NES savedata title generation in non-Latin writing systems
-* Language selection may not work correctly if list is not alphabetically ordered -->
