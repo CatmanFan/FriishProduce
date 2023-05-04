@@ -125,7 +125,7 @@ namespace FriishProduce.Injectors
             // Text addition format: UTF-16 (Little Endian) for Rev1, UTF-16 (Big Endian) for newer revisions
             var encoding = emuVersion.Contains("rev1") ? Encoding.Unicode : Encoding.BigEndianUnicode;
 
-            // In Custom Robo V2 & Mario Kart 64 (KOR), anull character follows instead of the regular separator, before a supposed second line string.
+            // In Custom Robo V2 & Mario Kart 64 (KOR), a null character follows instead of the regular separator, before a supposed second line string.
 
             foreach (var item in Directory.GetFiles(Paths.WorkingFolder_Content5))
             {

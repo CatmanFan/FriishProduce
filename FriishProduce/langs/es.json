@@ -55,7 +55,8 @@
     "m012": "No fue activo la RAM extendida.",
     "m013": "El ROM no ha puede comprimir porque su tamaño no es un múltiplo de 4 MB (4,194,304 bytes).",
     "m014": "Error al comprimir la ROM en formato ROMC.",
-    "m015": "Error de alocución de memoria."
+    "m015": "Error de alocución de memoria.",
+    "m016": "Error al comprimir el archivo(s) de CCF."
   },
   "filters": {
     "f_all": "|Todos los archivos (*.*)|*.*",

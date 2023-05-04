@@ -10,6 +10,7 @@ namespace FriishProduce
         public Msg(string msg, string title, MessageBoxButtons buttons = MessageBoxButtons.OK, MessageBoxIcon icon = MessageBoxIcon.Information)
         {
             InitializeComponent();
+            TopMost = true;
             Text = title;
             label1.Text = msg;
             label1.AutoSize = true;
@@ -97,6 +98,8 @@ namespace FriishProduce
                     SystemSounds.Asterisk.Play();
                     break;
             }
+
+            Focus();
         }
     }
 

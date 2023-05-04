@@ -70,7 +70,8 @@
     "m012": "Failed to enable extended memory.",
     "m013": "The ROM cannot be compressed because it is not a multiple of 4 MB (4194304 bytes).",
     "m014": "The ROMC compression process failed.",
-    "m015": "Unable to carry out allocation of data."
+    "m015": "Unable to carry out allocation of data.",
+    "m016": "Unable to compress CCF file(s)."
   },
   "filters": {
     "f_all": "|All files (*.*)|*.*",

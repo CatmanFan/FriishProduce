@@ -131,6 +131,7 @@ namespace FriishProduce
             NES_Palette.SelectedIndex = 0;
             SEGA_Region.SelectedIndex = 0;
             SEGA_MDPad6B.Enabled = currentConsole == Platforms.SMD;
+            if (currentConsole == Platforms.SMS) SEGA_MDPad6B.Checked = false;
             Flash_TotalSaveDataSize.SelectedIndex = 0;
             Flash_FPS.SelectedIndex = 0;
             Flash_StrapReminder.SelectedIndex = 0;
@@ -321,8 +322,9 @@ namespace FriishProduce
                 MessageBox.Show("Unable to find WAD in database.");
                 Bases.Items.Remove(Bases.SelectedItem);
                 input[2] = null;
+                RefreshBases();
 
-                End:
+            End:
                 RefreshBases(true);
             }
 
@@ -347,6 +349,17 @@ namespace FriishProduce
 
                 Bases.SelectedIndex = Bases.Items.Count < 1 ? -1 : 0;
             }
+
+            try
+            {
+                throw new Exception("I don't know what I'm doing");
+                foreach (var entry in db.GetList())
+                    if (entry["title"].ToString() == Bases.SelectedItem.ToString() && Bases.SelectedIndex >= 0)
+                    {
+                        SEGA_Controller.Visible = entry["ver"].ToString() == "3";
+                    }
+            }
+            catch { /* none */ }
 
             DeleteBase.Enabled = Bases.SelectedIndex >= 0;
 
@@ -543,6 +556,9 @@ namespace FriishProduce
                     break;
                 case "Flash_CustomFPS":
                     Flash_FPS.Enabled = s.Checked;
+                    break;
+                case "SEGA_Brightness":
+                    SEGA_BrightnessValue.Enabled = SEGA_Brightness.Checked;
                     break;
             }
         }
@@ -758,7 +774,7 @@ namespace FriishProduce
 
                     if (currentConsole != Platforms.Flash)
                     {
-                        if (!(currentConsole == Platforms.SMS || currentConsole == Platforms.SMD))
+                        if (currentConsole != Platforms.SMS && currentConsole != Platforms.SMD)
                             U8.Unpack(Paths.WorkingFolder + "00000005.app", Paths.WorkingFolder_Content5);
                         else
                         {
@@ -770,7 +786,7 @@ namespace FriishProduce
                             u.Dispose();
 
                             // Extract CCF files
-                            new Injectors.SEGA().GetCCF(Custom.Checked);
+                            new Injectors.SEGA().GetCCF();
                         }
 
                         if (DisableEmanual.Checked) Global.RemoveEmanual();
@@ -856,26 +872,42 @@ namespace FriishProduce
                                     if (entry["title"].ToString() == Bases.SelectedItem.ToString())
                                         foreach (var item in Directory.GetFiles(Paths.Database, "*.*", SearchOption.AllDirectories))
                                             if (item.Contains(entry["id"].ToString().ToUpper()))
+                                            {
                                                 SEGA.ver = int.Parse(entry["ver"].ToString());
+                                                SEGA.origROM = entry["ROM"].ToString();
+                                            }
                                 }
                                 
-                                /* SEGA.ReplaceROM();
+                                SEGA.ReplaceROM();
 
                                 // Config parameters
                                 SEGA.SetRegion(SEGA_Region.SelectedItem.ToString());
                                 if (SEGA_SaveSRAM.Checked) SEGA.SRAM();
                                 if (SEGA_MDPad6B.Checked && !SEGA.SMS) SEGA.MDPad_6B();
-                                if (SEGA_Controller.Checked && SEGA.ver == 3) SEGA.SetController(btns);
+                                if (SEGA_Controller.Checked) SEGA.SetController(btns);
+                                if (SEGA.ver == 3)
+                                {
+                                    // if (SEGA_SelectMenu.Checked) SEGA.DisableSelectMenu();
+                                }
+                                if (SEGA_Brightness.Checked) SEGA.SetBrightness(SEGA_BrightnessValue.Value);
 
-                                if (Custom.Checked) SEGA.InsertSaveTitle(ChannelTitle.Text);
-
-                                SEGA.ReplaceConfig(); */
-                                SEGA.PackCCF(Custom.Checked);
+                                SEGA.InsertSaveTitle(ChannelTitle.Text);
+                                SEGA.ReplaceConfig();
+                                SEGA.PackCCF();
                                 break;
                             }
                         }
 
-                        U8.Pack(Paths.WorkingFolder_Content5, Paths.WorkingFolder + "00000005.app");
+                        if (currentConsole != Platforms.SMS && currentConsole != Platforms.SMD)
+                            U8.Pack(Paths.WorkingFolder_Content5, Paths.WorkingFolder + "00000005.app");
+                        else
+                        {
+                            // Write data.ccf directly to U8 loader
+                            libWiiSharp.U8 u2 = libWiiSharp.U8.Load(Paths.WorkingFolder + "00000005.app");
+                            u2.ReplaceFile(u2.GetNodeIndex("data.ccf"), Paths.WorkingFolder_Content5 + "data.ccf");
+                            u2.Save(Paths.WorkingFolder + "00000005.app");
+                            u2.Dispose();
+                        }
                     }
                     else if (currentConsole == Platforms.Flash)
                     {

@@ -195,9 +195,7 @@
     <Content Include="Resources\brawllib\texextract.exe" />
     <Content Include="Resources\brawllib\texreplace.exe" />
     <Content Include="Resources\brawllib\wteconvert.exe" />
-    <None Include="Resources\ccftools\ccfarc.exe" />
-    <None Include="Resources\ccftools\ccfex.exe" />
-    <None Include="Resources\ccftools\ccfarcraw.exe" />
+    <None Include="Resources\images\saveicon_placeholder_s.png" />
     <Content Include="Wiimote.ico" />
     <None Include="Resources\gbalzss.exe" />
     <None Include="Resources\wwcxtool.exe" />

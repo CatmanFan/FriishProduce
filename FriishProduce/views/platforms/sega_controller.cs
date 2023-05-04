@@ -101,6 +101,15 @@ namespace FriishProduce.Views
                     if (c.Tag.ToString() == item.Key)
                         c.SelectedItem = item.Value;
             }
+            foreach (ComboBox c in GameCube.Controls.OfType<ComboBox>())
+            {
+                c.Items.AddRange(SrcBtns);
+                c.SelectedIndex = 0;
+
+                foreach (KeyValuePair<string, string> item in Config)
+                    if (c.Tag.ToString() == item.Key)
+                        c.SelectedItem = item.Value;
+            }
         }
 
         private void OK_Click(object sender, EventArgs e)
@@ -122,6 +131,15 @@ namespace FriishProduce.Views
                 {
                     if (button.Tag.ToString() == btnName && button.SelectedIndex > 0)
                             Config.Add(button.Tag.ToString(), SrcBtns[button.SelectedIndex]);
+                }
+            }
+
+            foreach (var button in GameCube.Controls.OfType<ComboBox>())
+            {
+                foreach (string btnName in WiiBtns)
+                {
+                    if (button.Tag.ToString() == btnName && button.SelectedIndex > 0)
+                        Config.Add(button.Tag.ToString(), SrcBtns[button.SelectedIndex]);
                 }
             }
 

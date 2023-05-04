@@ -54,6 +54,7 @@
     "m013": "La ROM n'a pas pu être compressée car sa taille n'est pas un multiple de 4 Mo (4,194,304 octets).",
     "m014": "Échec de compression en format ROMC.",
     "m015": "Échec de l'allocation de mémoire.",
+    "m016": "Échec de compression des fichiers CCF."
   },
   "filters": {
     "f_all": "|Tous les fichiers (*.*)|*.*",
