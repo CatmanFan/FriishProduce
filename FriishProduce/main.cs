@@ -128,15 +128,19 @@ namespace FriishProduce
         {
             input = new string[input.Length];
             Patch.Checked = false;
+            SaveDataTitle.Enabled = true;
+            btns = new Dictionary<string, string>();
+
+            // Consoles
             NES_Palette.SelectedIndex = 0;
-            SEGA_Region.SelectedIndex = 0;
-            SEGA_MDPad6B.Enabled = currentConsole == Platforms.SMD;
+
+            if (SEGA_Region.SelectedIndex < 0) SEGA_Region.SelectedIndex = 0;
             if (currentConsole == Platforms.SMS) SEGA_MDPad6B.Checked = false;
+            SEGA_MDPad6B.Enabled = currentConsole == Platforms.SMD;
+
             Flash_TotalSaveDataSize.SelectedIndex = 0;
             Flash_FPS.SelectedIndex = 0;
             Flash_StrapReminder.SelectedIndex = 0;
-            SaveDataTitle.Enabled = true;
-            btns = new Dictionary<string, string>();
         }
 
         // ***************************************************************************************************************** //
@@ -352,7 +356,6 @@ namespace FriishProduce
 
             try
             {
-                throw new Exception("I don't know what I'm doing");
                 foreach (var entry in db.GetList())
                     if (entry["title"].ToString() == Bases.SelectedItem.ToString() && Bases.SelectedIndex >= 0)
                     {
@@ -658,9 +661,11 @@ namespace FriishProduce
 
         private void Finish_Click(object sender, EventArgs e)
         {
-            SaveWAD.FileName = TitleID.Text;
+            SaveWAD.FileName = !string.IsNullOrWhiteSpace(ChannelTitle.Text) && Custom.Checked ? $"{TitleID.Text} - {ChannelTitle.Text}" : TitleID.Text;
             if (SaveWAD.ShowDialog() == DialogResult.OK)
             {
+                Save.Enabled = false;
+
                 try { Directory.Delete(Paths.WorkingFolder, true); } catch { }
 
                 try
@@ -670,6 +675,11 @@ namespace FriishProduce
                     WAD w = WAD.Load(input[2]);
                     var ios = (int)w.StartupIOS;
                     w.Unpack(Paths.WorkingFolder);
+
+                    var RunningP_List = Process.GetProcessesByName("texreplace");
+                    if (RunningP_List != null || RunningP_List.Length > 0)
+                        foreach (var RunningP in RunningP_List)
+                            RunningP.Kill();
 
                     #region Banner
                     if (Custom.Checked)
@@ -717,7 +727,7 @@ namespace FriishProduce
                         using (Process p = Process.Start(new ProcessStartInfo
                         {
                             FileName = Paths.WorkingFolder + "vcbrlyt\\vcbrlyt.exe",
-                            Arguments = $"{Paths.WorkingFolder + "banner.brlyt"} -Title \"{BannerTitle.Text.Replace('-', '–').Replace(Environment.NewLine, "^")}\" -YEAR {ReleaseYear.Value} -Play {Players.Value}",
+                            Arguments = $"{Paths.WorkingFolder + "banner.brlyt"} -Title \"{BannerTitle.Text.Replace('-', '–').Replace(Environment.NewLine, "^").Replace("\"", "''")}\" -YEAR {ReleaseYear.Value} -Play {Players.Value}",
                             UseShellExecute = false,
                             CreateNoWindow = true
                         }))
@@ -786,7 +796,7 @@ namespace FriishProduce
                             u.Dispose();
 
                             // Extract CCF files
-                            new Injectors.SEGA().GetCCF();
+                            new Injectors.SEGA().GetCCF(Custom.Checked);
                         }
 
                         if (DisableEmanual.Checked) Global.RemoveEmanual();
@@ -884,16 +894,16 @@ namespace FriishProduce
                                 SEGA.SetRegion(SEGA_Region.SelectedItem.ToString());
                                 if (SEGA_SaveSRAM.Checked) SEGA.SRAM();
                                 if (SEGA_MDPad6B.Checked && !SEGA.SMS) SEGA.MDPad_6B();
-                                if (SEGA_Controller.Checked) SEGA.SetController(btns);
                                 if (SEGA.ver == 3)
                                 {
+                                    SEGA.SetController(btns, !SEGA_Controller.Checked);
                                     // if (SEGA_SelectMenu.Checked) SEGA.DisableSelectMenu();
                                 }
                                 if (SEGA_Brightness.Checked) SEGA.SetBrightness(SEGA_BrightnessValue.Value);
 
-                                SEGA.InsertSaveTitle(ChannelTitle.Text);
+                                if (Custom.Checked) SEGA.InsertSaveTitle(ChannelTitle.Text);
                                 SEGA.ReplaceConfig();
-                                SEGA.PackCCF();
+                                SEGA.PackCCF(Custom.Checked);
                                 break;
                             }
                         }
@@ -953,6 +963,8 @@ namespace FriishProduce
                         input[0] = input[0].Remove(input[0].Length - Paths.PatchedSuffix.Length, Paths.PatchedSuffix.Length);
                     }
                 }
+
+                Save.Enabled = true;
             }
         }
     }

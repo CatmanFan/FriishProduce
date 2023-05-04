@@ -24,6 +24,8 @@
     "Save": "&Enregistrer"
   },
   "consoles": {
+    "NES": "NES / Famicom",
+    "SNES": "SNES / Super Famicom",
     "SMS": "Sega Master System",
     "SMD": "Sega Mega Drive / Genesis",
   },

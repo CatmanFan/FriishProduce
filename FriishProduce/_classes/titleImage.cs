@@ -412,11 +412,21 @@ namespace FriishProduce
                                 CreateNoWindow = true
                             }))
                             {
-                                // Attempts waiting for a period of time until the texreplace dialog has already been opened, then presses Enter
-                                System.Threading.Thread.Sleep(1150);
-                                SetForegroundWindow(p.MainWindowHandle);
-                                System.Windows.Forms.SendKeys.SendWait("{ENTER}");
-                                p.WaitForExit();
+                                System.Threading.Thread.Sleep(1145);
+
+                                Load:
+                                // Code to auto-wait for a period of time until the texreplace dialog has already been opened, then presses Enter.
+                                // Better to leave this out as it may likely cause problems with apps or with a slow PC
+                                /* SetForegroundWindow(p.MainWindowHandle);
+                                SwitchToThisWindow(p.MainWindowHandle, true);
+                                System.Threading.Thread.Sleep(15);
+                                System.Windows.Forms.SendKeys.SendWait("{ENTER}"); */
+
+                                if (!p.WaitForExit(5000))
+                                {
+                                    p.Kill();
+                                    goto Load;
+                                }
                             }
                             File.Delete(Paths.WorkingFolder_MiscCCF + Path.GetFileNameWithoutExtension(item) + ".wte");
                             using (Process p = Process.Start(new ProcessStartInfo
@@ -559,7 +569,10 @@ namespace FriishProduce
         }
 
         [System.Runtime.InteropServices.DllImport("user32.dll")]
-        static extern int SetForegroundWindow(IntPtr point);
+        private static extern int SetForegroundWindow(IntPtr point);
+
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        private static extern int SwitchToThisWindow(IntPtr point, bool on);
 
         public void Dispose()
         {

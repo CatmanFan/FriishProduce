@@ -11,9 +11,20 @@ namespace FriishProduce.Injectors
     public class SEGA
     {
         /* What is needed:
-           [ ] Relevant version functions */
-        // Blackscreen when Customize is not enabled
-        // If SaveData title is edited, then the WAD functions with no blackscreen
+           [ ] Relevant version functions
+           Working:
+           [X] Phantasy Star (v3) (customized)
+           [X] Sonic the Hedgehog SMS (v2) (customized)
+           [X] Phantasy Star (v3)
+           [X] Sonic the Hedgehog SMS (v2)
+        -----------------------------------
+           [X] Comix Zone (v1) (customized)
+           [X] Pulseman (v3) (customized)
+           [ ] Comix Zone (v1)
+           [X] Pulseman (v3) */
+
+        // There is an issue with Ver 1 emulator, where if savedata is not customized, it will display a blank banner for savedata.
+        // Unless savedata title is edited somehow, the WAD lands on a blackscreen.
 
         /*  Per RadioShadow on GBATemp:
          *  Version 1 [Sonic The Hedgehog]:
@@ -56,41 +67,51 @@ namespace FriishProduce.Injectors
         private List<string> config = new List<string>();
         public bool SMS { get; set; }
         public string origROM { get; set; }
-        private bool CompressData = false;
 
-        public void GetCCF()
+        public void GetCCF(bool includeMisc)
         {
+            Directory.CreateDirectory(Paths.WorkingFolder_DataCCF);
+
             // Data.CCF
-            Directory.CreateDirectory(Paths.WorkingFolder_MiscCCF);
-            CCFEx(Paths.WorkingFolder_Content5 + "data.ccf", Paths.WorkingFolder_DataCCF);
+            CCFEx(Paths.WorkingFolder_Content5 + "data.ccf", Paths.WorkingFolder_DataCCF, false);
+            if (Directory.EnumerateFiles(Paths.WorkingFolder_DataCCF).Count() < 3 ||
+                (File.Exists(Paths.WorkingFolder_DataCCF + "Opera.arc") && File.ReadAllBytes(Paths.WorkingFolder_DataCCF + "Opera.arc").Length == 0))
+            {
+                Directory.Delete(Paths.WorkingFolder_DataCCF, true);
+                Directory.CreateDirectory(Paths.WorkingFolder_DataCCF);
+                CCFEx(Paths.WorkingFolder_Content5 + "data.ccf", Paths.WorkingFolder_DataCCF);
+            }
 
-            // Repack in raw format and compare filesize to original
-            string recomp = CCFArc(Paths.WorkingFolder_DataCCF, true);
-            CompressData = Math.Round(File.ReadAllBytes(recomp).Length / 100d, 0) * 100
-                > Math.Round(File.ReadAllBytes(Paths.WorkingFolder_Content5 + "data.ccf").Length / 100d, 0);
-            File.Delete(recomp);
+            if (includeMisc)
+            {
+                Directory.CreateDirectory(Paths.WorkingFolder_MiscCCF);
 
-            // Misc.CCF
-            CCFEx(Paths.WorkingFolder_DataCCF + "misc.ccf", Paths.WorkingFolder_MiscCCF);
+                // Misc.CCF
+                CCFEx(Paths.WorkingFolder_DataCCF + "misc.ccf", Paths.WorkingFolder_MiscCCF, false);
+            }
         }
 
-        public void PackCCF()
+        public void PackCCF(bool includeMisc)
         {
-            // Misc.CCF
-            string newMisc = CCFArc(Paths.WorkingFolder_MiscCCF, true);
-            File.Copy(newMisc, Paths.WorkingFolder_DataCCF + "misc.ccf", true);
-            Directory.Delete(Paths.WorkingFolder_MiscCCF, true);
+            if (includeMisc)
+            {
+                // Misc.CCF
+                string newMisc = CCFArc(Paths.WorkingFolder_MiscCCF, true);
+                File.Copy(newMisc, Paths.WorkingFolder_DataCCF + "misc.ccf", true);
+                Directory.Delete(Paths.WorkingFolder_MiscCCF, true);
+            }
 
             // Data.CCF
-            string newData = CCFArc(Paths.WorkingFolder_DataCCF, CompressData);
+            string newData = CCFArc(Paths.WorkingFolder_DataCCF, false);
             File.Copy(newData, Paths.WorkingFolder_Content5 + "data.ccf", true);
             Directory.Delete(Paths.WorkingFolder_DataCCF, true);
         }
 
-        private void CCFEx(string file, string dir)
+        /// <param name="legacy">Defaults to legacy app by default, since the forked version does relatively bad with SMS WADs</param>
+        internal void CCFEx(string file, string dir, bool legacy = true)
         {
             // Copy application to target dir
-            string pPath = Paths.Apps + "ccftools\\ccfex.exe";
+            string pPath = Paths.Apps + "ccftools\\" + (legacy ? "ccfex.exe" : "ccfex2021.exe");
 
             // Start application
             var pInfo = new ProcessStartInfo
@@ -105,7 +126,9 @@ namespace FriishProduce.Injectors
                 p.WaitForExit();
         }
 
-        private string CCFArc(string dir, bool raw)
+        /// <param name="raw">Determines whether to use ccfarcraw.exe (needed for misc.ccf)</param>
+        /// <returns>Path to an out.ccf file if it was created.</returns>
+        internal string CCFArc(string dir, bool raw)
         {
             string pPath = Paths.Apps + "ccftools\\" + (raw ? "ccfarcraw.exe" : "ccfarc2021.exe");
 
@@ -115,6 +138,7 @@ namespace FriishProduce.Injectors
                 foreach (var item in Directory.EnumerateFiles(dir))
                     if (!files.Contains(Path.GetFileName(item)))
                         files += $" {Path.GetFileName(item)}";
+
 
                 // Start application
                 var pInfo = new ProcessStartInfo
@@ -126,12 +150,18 @@ namespace FriishProduce.Injectors
                     CreateNoWindow = true
                 };
 
-                if (!SMS)
+                if (!SMS && ver < 3)
                 {
                     using (Process p = Process.Start(pInfo))
                         p.WaitForExit();
                     pInfo.Arguments = files.Replace($"Opera.arc {origROM} ", $"{origROM} Opera.arc ");
                 }
+                else if (SMS && ver == 3)
+                {
+                    // This configuration appears to fix a halt error screen when loading the WAD ("/data/selectmenu.rso: read_rsofile failed")
+                    pInfo.Arguments = pInfo.Arguments.Replace("selectmenu.cat selectmenu.conf selectmenu.rso se_vc.rso", "se_vc.rso selectmenu.cat selectmenu.conf selectmenu.rso");
+                }
+
                 using (Process p = Process.Start(pInfo))
                     p.WaitForExit();
             }
@@ -219,6 +249,7 @@ namespace FriishProduce.Injectors
                      || item.Contains(".rapidfire")
                      || item.Contains(".volume"))
                         config.Add(item);
+            if (SMS && ver == 3) config.Add("disable_selectmenu=\"1\"");
 
             config.Sort();
 

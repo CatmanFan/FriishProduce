@@ -25,7 +25,7 @@ namespace FriishProduce.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("sys")]
+        [global::System.Configuration.DefaultSettingValueAttribute("en")]
         public string Language {
             get {
                 return ((string)(this["Language"]));
@@ -37,7 +37,7 @@ namespace FriishProduce.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool LightTheme {
             get {
                 return ((bool)(this["LightTheme"]));
