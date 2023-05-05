@@ -101,6 +101,16 @@ namespace FriishProduce.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Controllers_WiimoteS {
+            get {
+                object obj = ResourceManager.GetObject("Controllers_WiimoteS", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;metadata&quot;: {
         ///    &quot;code&quot;: &quot;en&quot;,

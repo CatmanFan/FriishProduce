@@ -97,6 +97,12 @@
     <Compile Include="views\platforms\flash_controller.Designer.cs">
       <DependentUpon>flash_controller.cs</DependentUpon>
     </Compile>
+    <Compile Include="views\platforms\sega_config.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\platforms\sega_config.Designer.cs">
+      <DependentUpon>sega_config.cs</DependentUpon>
+    </Compile>
     <Compile Include="views\platforms\sega_controller.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -134,6 +140,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="views\platforms\flash_controller.resx">
       <DependentUpon>flash_controller.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\platforms\sega_config.resx">
+      <DependentUpon>sega_config.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="views\platforms\sega_controller.resx">
       <DependentUpon>sega_controller.cs</DependentUpon>
@@ -196,6 +205,7 @@
     <Content Include="Resources\brawllib\texreplace.exe" />
     <Content Include="Resources\brawllib\wteconvert.exe" />
     <None Include="Resources\images\saveicon_placeholder_s.png" />
+    <None Include="Resources\images\wiimote_sideways.png" />
     <Content Include="Wiimote.ico" />
     <None Include="Resources\gbalzss.exe" />
     <None Include="Resources\wwcxtool.exe" />

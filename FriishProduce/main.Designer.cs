@@ -73,11 +73,7 @@ namespace FriishProduce
             this.Custom = new System.Windows.Forms.CheckBox();
             this.page4 = new System.Windows.Forms.Panel();
             this.Options_SEGA = new System.Windows.Forms.Panel();
-            this.SEGA_Region = new System.Windows.Forms.ComboBox();
-            this.SEGA_Country = new System.Windows.Forms.Label();
-            this.SEGA_MDPad6B = new System.Windows.Forms.CheckBox();
-            this.SEGA_SaveSRAM = new System.Windows.Forms.CheckBox();
-            this.SEGA_Controller = new System.Windows.Forms.CheckBox();
+            this.SEGA_SetConfig = new System.Windows.Forms.CheckBox();
             this.DisableEmanual = new System.Windows.Forms.CheckBox();
             this.RegionFree = new System.Windows.Forms.CheckBox();
             this.TitleID = new System.Windows.Forms.TextBox();
@@ -104,8 +100,6 @@ namespace FriishProduce
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.BrowsePatch = new System.Windows.Forms.OpenFileDialog();
             this.BrowseImage = new System.Windows.Forms.OpenFileDialog();
-            this.SEGA_Brightness = new System.Windows.Forms.CheckBox();
-            this.SEGA_BrightnessValue = new System.Windows.Forms.TrackBar();
             this.panel.SuspendLayout();
             this.page1.SuspendLayout();
             this.page2.SuspendLayout();
@@ -119,7 +113,6 @@ namespace FriishProduce
             this.Options_Flash.SuspendLayout();
             this.Options_N64.SuspendLayout();
             this.Options_NES.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SEGA_BrightnessValue)).BeginInit();
             this.SuspendLayout();
             // 
             // a000
@@ -469,53 +462,17 @@ namespace FriishProduce
             // Options_SEGA
             // 
             this.Options_SEGA.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Options_SEGA.Controls.Add(this.SEGA_BrightnessValue);
-            this.Options_SEGA.Controls.Add(this.SEGA_Brightness);
-            this.Options_SEGA.Controls.Add(this.SEGA_Region);
-            this.Options_SEGA.Controls.Add(this.SEGA_Country);
-            this.Options_SEGA.Controls.Add(this.SEGA_MDPad6B);
-            this.Options_SEGA.Controls.Add(this.SEGA_SaveSRAM);
-            this.Options_SEGA.Controls.Add(this.SEGA_Controller);
+            this.Options_SEGA.Controls.Add(this.SEGA_SetConfig);
             resources.ApplyResources(this.Options_SEGA, "Options_SEGA");
             this.Options_SEGA.Name = "Options_SEGA";
             // 
-            // SEGA_Region
+            // SEGA_SetConfig
             // 
-            this.SEGA_Region.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.SEGA_Region.FormattingEnabled = true;
-            this.SEGA_Region.Items.AddRange(new object[] {
-            resources.GetString("SEGA_Region.Items"),
-            resources.GetString("SEGA_Region.Items1"),
-            resources.GetString("SEGA_Region.Items2")});
-            resources.ApplyResources(this.SEGA_Region, "SEGA_Region");
-            this.SEGA_Region.Name = "SEGA_Region";
-            // 
-            // SEGA_Country
-            // 
-            resources.ApplyResources(this.SEGA_Country, "SEGA_Country");
-            this.SEGA_Country.Name = "SEGA_Country";
-            // 
-            // SEGA_MDPad6B
-            // 
-            resources.ApplyResources(this.SEGA_MDPad6B, "SEGA_MDPad6B");
-            this.SEGA_MDPad6B.Name = "SEGA_MDPad6B";
-            this.SEGA_MDPad6B.Tag = "";
-            this.SEGA_MDPad6B.UseVisualStyleBackColor = true;
-            // 
-            // SEGA_SaveSRAM
-            // 
-            resources.ApplyResources(this.SEGA_SaveSRAM, "SEGA_SaveSRAM");
-            this.SEGA_SaveSRAM.Name = "SEGA_SaveSRAM";
-            this.SEGA_SaveSRAM.Tag = "";
-            this.SEGA_SaveSRAM.UseVisualStyleBackColor = true;
-            // 
-            // SEGA_Controller
-            // 
-            resources.ApplyResources(this.SEGA_Controller, "SEGA_Controller");
-            this.SEGA_Controller.Name = "SEGA_Controller";
-            this.SEGA_Controller.Tag = "Flash__004";
-            this.SEGA_Controller.UseVisualStyleBackColor = true;
-            this.SEGA_Controller.CheckedChanged += new System.EventHandler(this.SEGA_ControllerChanged);
+            resources.ApplyResources(this.SEGA_SetConfig, "SEGA_SetConfig");
+            this.SEGA_SetConfig.Name = "SEGA_SetConfig";
+            this.SEGA_SetConfig.Tag = "g010";
+            this.SEGA_SetConfig.UseVisualStyleBackColor = true;
+            this.SEGA_SetConfig.CheckedChanged += new System.EventHandler(this.SEGA_ConfigChanged);
             // 
             // DisableEmanual
             // 
@@ -723,22 +680,6 @@ namespace FriishProduce
             // 
             resources.ApplyResources(this.BrowseImage, "BrowseImage");
             // 
-            // SEGA_Brightness
-            // 
-            resources.ApplyResources(this.SEGA_Brightness, "SEGA_Brightness");
-            this.SEGA_Brightness.Name = "SEGA_Brightness";
-            this.SEGA_Brightness.Tag = "";
-            this.SEGA_Brightness.UseVisualStyleBackColor = true;
-            this.SEGA_Brightness.CheckedChanged += new System.EventHandler(this.CheckedToggles);
-            // 
-            // SEGA_BrightnessValue
-            // 
-            resources.ApplyResources(this.SEGA_BrightnessValue, "SEGA_BrightnessValue");
-            this.SEGA_BrightnessValue.Maximum = 100;
-            this.SEGA_BrightnessValue.Name = "SEGA_BrightnessValue";
-            this.SEGA_BrightnessValue.TickFrequency = 10;
-            this.SEGA_BrightnessValue.Value = 87;
-            // 
             // Main
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -775,7 +716,6 @@ namespace FriishProduce
             this.Options_N64.PerformLayout();
             this.Options_NES.ResumeLayout(false);
             this.Options_NES.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SEGA_BrightnessValue)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -850,13 +790,7 @@ namespace FriishProduce
         private System.Windows.Forms.Label Flash__005;
         private System.Windows.Forms.CheckBox vWii;
         private System.Windows.Forms.Panel Options_SEGA;
-        private System.Windows.Forms.CheckBox SEGA_Controller;
-        private System.Windows.Forms.CheckBox SEGA_SaveSRAM;
-        private System.Windows.Forms.CheckBox SEGA_MDPad6B;
-        private System.Windows.Forms.ComboBox SEGA_Region;
-        private System.Windows.Forms.Label SEGA_Country;
-        private System.Windows.Forms.TrackBar SEGA_BrightnessValue;
-        private System.Windows.Forms.CheckBox SEGA_Brightness;
+        private System.Windows.Forms.CheckBox SEGA_SetConfig;
     }
 }
 

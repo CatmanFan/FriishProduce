@@ -27,6 +27,8 @@ namespace FriishProduce
         Dictionary<string, string> btns = new Dictionary<string, string>();
         TitleImage tImg = new TitleImage();
 
+        Views.SEGA_Config ConfigForm_SEGA;
+
         public Main()
         {
             InitializeComponent();
@@ -134,10 +136,6 @@ namespace FriishProduce
             // Consoles
             NES_Palette.SelectedIndex = 0;
 
-            if (SEGA_Region.SelectedIndex < 0) SEGA_Region.SelectedIndex = 0;
-            if (currentConsole == Platforms.SMS) SEGA_MDPad6B.Checked = false;
-            SEGA_MDPad6B.Enabled = currentConsole == Platforms.SMD;
-
             Flash_TotalSaveDataSize.SelectedIndex = 0;
             Flash_FPS.SelectedIndex = 0;
             Flash_StrapReminder.SelectedIndex = 0;
@@ -201,7 +199,10 @@ namespace FriishProduce
             f.BackColor = BackColor;
             f.ForeColor = ForeColor;
             foreach (var item in f.Controls.OfType<Panel>())
+            {
                 if (item.Tag.ToString() == "panel") item.BackColor = panel.BackColor;
+                else if (item.Tag.ToString() == "page") item.BackColor = Color.FromArgb((panel.BackColor.R + BackColor.R) / 2, (panel.BackColor.G + BackColor.G) / 2, (panel.BackColor.B + BackColor.B) / 2);
+            }
             foreach (var item in f.Controls.OfType<ComboBox>())
                 if (item.Name.StartsWith("btns"))   item.BackColor = BackColor;
 
@@ -209,9 +210,11 @@ namespace FriishProduce
             {
                 foreach (var panel in f.Controls.OfType<Panel>())
                 {
-                    foreach (var cb in panel.Controls.OfType<CheckBox>()) cb.FlatStyle = FlatStyle.System;
+                    foreach (var cb in panel.Controls.OfType<CheckBox>())
+                        if (cb.Tag != null && cb.Tag.ToString() != "section") cb.FlatStyle = FlatStyle.System;
                     foreach (var c1 in panel.Controls.OfType<Panel>())
-                        foreach (var cb in c1.Controls.OfType<CheckBox>()) cb.FlatStyle = FlatStyle.System;
+                        foreach (var cb in c1.Controls.OfType<CheckBox>())
+                            if (cb.Tag != null && cb.Tag.ToString() != "section") cb.FlatStyle = FlatStyle.System;
                     foreach (var button in panel.Controls.OfType<Button>())
                     {
                         button.FlatAppearance.BorderColor = Themes.Light.ButtonBorder;
@@ -224,9 +227,11 @@ namespace FriishProduce
             {
                 foreach (var panel in f.Controls.OfType<Panel>())
                 {
-                    foreach (var cb in panel.Controls.OfType<CheckBox>()) cb.FlatStyle = FlatStyle.Standard;
-                    foreach (var c2 in panel.Controls.OfType<Panel>())
-                        foreach (var cb in c2.Controls.OfType<CheckBox>()) cb.FlatStyle = FlatStyle.Standard;
+                    foreach (var cb in panel.Controls.OfType<CheckBox>())
+                        if (cb.Tag != null && cb.Tag.ToString() != "section") cb.FlatStyle = FlatStyle.Standard;
+                    foreach (var c1 in panel.Controls.OfType<Panel>())
+                        foreach (var cb in c1.Controls.OfType<CheckBox>())
+                            if (cb.Tag != null && cb.Tag.ToString() != "section") cb.FlatStyle = FlatStyle.Standard;
                     foreach (var button in panel.Controls.OfType<Button>())
                     {
                         button.FlatAppearance.BorderColor = Themes.Dark.ButtonBorder;
@@ -353,16 +358,6 @@ namespace FriishProduce
 
                 Bases.SelectedIndex = Bases.Items.Count < 1 ? -1 : 0;
             }
-
-            try
-            {
-                foreach (var entry in db.GetList())
-                    if (entry["title"].ToString() == Bases.SelectedItem.ToString() && Bases.SelectedIndex >= 0)
-                    {
-                        SEGA_Controller.Visible = entry["ver"].ToString() == "3";
-                    }
-            }
-            catch { /* none */ }
 
             DeleteBase.Enabled = Bases.SelectedIndex >= 0;
 
@@ -560,9 +555,6 @@ namespace FriishProduce
                 case "Flash_CustomFPS":
                     Flash_FPS.Enabled = s.Checked;
                     break;
-                case "SEGA_Brightness":
-                    SEGA_BrightnessValue.Enabled = SEGA_Brightness.Checked;
-                    break;
             }
         }
 
@@ -643,17 +635,20 @@ namespace FriishProduce
             }
         }
 
-        private void SEGA_ControllerChanged(object sender, EventArgs e)
+        private void SEGA_ConfigChanged(object sender, EventArgs e)
         {
-            if (SEGA_Controller.Checked)
+            if (SEGA_SetConfig.Checked)
             {
-                Views.SEGA_Controller ControllerForm = new Views.SEGA_Controller(btns) { Text = x.Get("g006"), };
-                ChangeTheme(ControllerForm);
+                ConfigForm_SEGA = new Views.SEGA_Config(currentConsole == Platforms.SMS) { Text = x.Get("g011") };
+                ChangeTheme(ConfigForm_SEGA);
 
-                if (ControllerForm.ShowDialog(this) == DialogResult.OK)
-                    btns = ControllerForm.Config;
-                else
-                    SEGA_Controller.Checked = false;
+                if (ConfigForm_SEGA.ShowDialog(this) != DialogResult.OK)
+                    SEGA_SetConfig.Checked = false;
+            }
+            else
+            {
+                ConfigForm_SEGA.config = new List<string>();
+                ConfigForm_SEGA.Dispose();
             }
         }
 
@@ -891,18 +886,14 @@ namespace FriishProduce
                                 SEGA.ReplaceROM();
 
                                 // Config parameters
-                                SEGA.SetRegion(SEGA_Region.SelectedItem.ToString());
-                                if (SEGA_SaveSRAM.Checked) SEGA.SRAM();
-                                if (SEGA_MDPad6B.Checked && !SEGA.SMS) SEGA.MDPad_6B();
-                                if (SEGA.ver == 3)
+                                if (SEGA_SetConfig.Checked)
                                 {
-                                    SEGA.SetController(btns, !SEGA_Controller.Checked);
-                                    // if (SEGA_SelectMenu.Checked) SEGA.DisableSelectMenu();
+                                    var new_config = new string[ConfigForm_SEGA.config.Count];
+                                    ConfigForm_SEGA.config.CopyTo(new_config);
+                                    SEGA.ReplaceConfig(new_config);
                                 }
-                                if (SEGA_Brightness.Checked) SEGA.SetBrightness(SEGA_BrightnessValue.Value);
 
                                 if (Custom.Checked) SEGA.InsertSaveTitle(ChannelTitle.Text);
-                                SEGA.ReplaceConfig();
                                 SEGA.PackCCF(Custom.Checked);
                                 break;
                             }

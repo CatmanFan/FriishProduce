@@ -64,7 +64,6 @@ namespace FriishProduce.Injectors
 
         public string ROM { get; set; }
         public int ver { get; set; }
-        private List<string> config = new List<string>();
         public bool SMS { get; set; }
         public string origROM { get; set; }
 
@@ -227,8 +226,6 @@ namespace FriishProduce.Injectors
                     {
                         File.Copy(ROM, file, true);
                     }
-
-                    config.Add($"romfile=\"{origROM}\"");
                     return;
                 }
             }
@@ -236,8 +233,20 @@ namespace FriishProduce.Injectors
             throw new Exception(Program.Language.Get("m010"));
         }
 
-        public void ReplaceConfig()
+        public void ReplaceConfig(string[] config)
         {
+            var c = new List<string>();
+            foreach (var item in config)
+                c.Add(item);
+            c.Add($"romfile=\"{origROM}\"");
+
+            // Automatically determines which string to add depending on revision
+            foreach (var item in File.ReadAllLines(Paths.WorkingFolder_DataCCF + "config"))
+                if (item.StartsWith("country="))
+                    for (int i = 0; i < c.Count; i++)
+                        if (c[i].Contains("console.machine_country"))
+                            c[i] = c[i].Replace("console.machine_country", "country");
+
             // Determine version 3 and add modules used to avoid any possible issues otherwise
             if (ver == 3)
                 foreach (var item in File.ReadAllLines(Paths.WorkingFolder_DataCCF + "config"))
@@ -248,148 +257,17 @@ namespace FriishProduce.Injectors
                      || item.Contains(".master_volume")
                      || item.Contains(".rapidfire")
                      || item.Contains(".volume"))
-                        config.Add(item);
-            if (SMS && ver == 3) config.Add("disable_selectmenu=\"1\"");
+                        c.Add(item);
+            if (SMS && ver == 3) c.Add("disable_selectmenu=\"1\"");
 
-            config.Sort();
+            c.Sort();
 
             using (TextWriter t = new StreamWriter(Paths.WorkingFolder_DataCCF + "config", false))
             {
                 t.NewLine = "\n";
-                for (int i = 0; i < config.Count; i++)
-                    t.WriteLine(config.ToArray()[i]);
+                for (int i = 0; i < c.Count; i++)
+                    t.WriteLine(c.ToArray()[i]);
             }
-        }
-
-        public void SetRegion(string reg)
-        {
-            // Automatically determines which string to add depending on revision
-            foreach (var item in File.ReadAllLines(Paths.WorkingFolder_DataCCF + "config"))
-                if (item.StartsWith("country="))
-                {
-                    config.Add($"country=\"{reg}\"");
-                    return;
-                }
-
-            config.Add($"console.machine_country=\"{reg}\"");
-        }
-
-        public void SRAM() => config.Add("save_sram=\"1\"");
-
-        public void MDPad_6B() => config.Add("dev.mdpad.enable_6b=\"1\"");
-
-        public void SetBrightness(int value) => config.Add($"console.brightness=\"{value}\"");
-
-        /// <summary>
-        /// Version 3 functions
-        /// </summary>
-        public void SetController(Dictionary<string, string> btns, bool retainOrig = false)
-        {
-            if (retainOrig)
-            {
-                foreach (var item in File.ReadAllLines(Paths.WorkingFolder_DataCCF + "config"))
-                    if (item.Contains("_bindings="))
-                        config.Add(item);
-                return;
-            }
-
-            string coreBtns = "console.core_bindings=\"up=:down=:left=:right=:+=:-=:a=:1=:2=:b=\"";
-            string clBtns = "console.cl_bindings=\"up=:down=:left=:right=:+=:-=:y=:b=:a=:l=:x=:r=:zr=:zl=\"";
-            string gcBtns = "console.gc_bindings=\"up=:down=:left=:right=:start=:b=:a=:x=:l=:y=:r=:z=:c=\"";
-
-            List<string> keymap = new List<string>();
-            foreach (KeyValuePair<string, string> item in btns)
-            {
-                // --------------------------------------------------
-                // Wii Remote Configurations
-                // --------------------------------------------------
-                if (item.Key == "core_up" && item.Value != "—")
-                    coreBtns = coreBtns.Replace("up=", $"up={item.Value[0]}");
-                if (item.Key == "core_down" && item.Value != "—")
-                    coreBtns = coreBtns.Replace("down=", $"down={item.Value[0]}");
-                if (item.Key == "core_left" && item.Value != "—")
-                    coreBtns = coreBtns.Replace("left=", $"left={item.Value[0]}");
-                if (item.Key == "core_right" && item.Value != "—")
-                    coreBtns = coreBtns.Replace("right=", $"right={item.Value[0]}");
-                if (item.Key == "core_+" && item.Value != "—")
-                    coreBtns = coreBtns.Replace("+=", $"+={item.Value[0]}");
-                if (item.Key == "core_-" && item.Value != "—")
-                    coreBtns = coreBtns.Replace("-=", $"-={item.Value[0]}");
-                if (item.Key == "core_a" && item.Value != "—")
-                    coreBtns = coreBtns.Replace("a=", $"a={item.Value[0]}");
-                if (item.Key == "core_1" && item.Value != "—")
-                    coreBtns = coreBtns.Replace("1=", $"1={item.Value[0]}");
-                if (item.Key == "core_2" && item.Value != "—")
-                    coreBtns = coreBtns.Replace("2=", $"2={item.Value[0]}");
-                if (item.Key == "core_b" && item.Value != "—")
-                    coreBtns = coreBtns.Replace("b=", $"b={item.Value[0]}");
-
-                // --------------------------------------------------
-                // Wii Classic Controller Configurations
-                // --------------------------------------------------
-                if (item.Key == "cl_up" && item.Value != "—")
-                    clBtns = clBtns.Replace("up=", $"up={item.Value[0]}");
-                if (item.Key == "cl_down" && item.Value != "—")
-                    clBtns = clBtns.Replace("down=", $"down={item.Value[0]}");
-                if (item.Key == "cl_left" && item.Value != "—")
-                    clBtns = clBtns.Replace("left=", $"left={item.Value[0]}");
-                if (item.Key == "cl_right" && item.Value != "—")
-                    clBtns = clBtns.Replace("right=", $"right={item.Value[0]}");
-                if (item.Key == "cl_+" && item.Value != "—")
-                    clBtns = clBtns.Replace("+=", $"+={item.Value[0]}");
-                if (item.Key == "cl_-" && item.Value != "—")
-                    clBtns = clBtns.Replace("-=", $"-={item.Value[0]}");
-                if (item.Key == "cl_y" && item.Value != "—")
-                    clBtns = clBtns.Replace("y=", $"y={item.Value[0]}");
-                if (item.Key == "cl_b" && item.Value != "—")
-                    clBtns = clBtns.Replace("b=", $"b={item.Value[0]}");
-                if (item.Key == "cl_a" && item.Value != "—")
-                    clBtns = clBtns.Replace("a=", $"a={item.Value[0]}");
-                if (item.Key == "cl_l" && item.Value != "—")
-                    clBtns = clBtns.Replace("l=", $"l={item.Value[0]}");
-                if (item.Key == "cl_x" && item.Value != "—")
-                    clBtns = clBtns.Replace("x=", $"x={item.Value[0]}");
-                if (item.Key == "cl_r" && item.Value != "—")
-                    clBtns = clBtns.Replace("r=", $"r={item.Value[0]}");
-                if (item.Key == "cl_zl" && item.Value != "—")
-                    clBtns = clBtns.Replace("zl=", $"zl={item.Value[0]}");
-                if (item.Key == "cl_zr" && item.Value != "—")
-                    clBtns = clBtns.Replace("zr=", $"zr={item.Value[0]}");
-
-                // --------------------------------------------------
-                // Nintendo GameCube Controller Configurations
-                // --------------------------------------------------
-                if (item.Key == "gc_up" && item.Value != "—")
-                    gcBtns = gcBtns.Replace("up=", $"up={item.Value[0]}");
-                if (item.Key == "gc_down" && item.Value != "—")
-                    gcBtns = gcBtns.Replace("down=", $"down={item.Value[0]}");
-                if (item.Key == "gc_left" && item.Value != "—")
-                    gcBtns = gcBtns.Replace("left=", $"left={item.Value[0]}");
-                if (item.Key == "gc_right" && item.Value != "—")
-                    gcBtns = gcBtns.Replace("right=", $"right={item.Value[0]}");
-                if (item.Key == "gc_start" && item.Value != "—")
-                    gcBtns = gcBtns.Replace("start=", $"start={item.Value[0]}");
-                if (item.Key == "gc_b" && item.Value != "—")
-                    gcBtns = gcBtns.Replace("b=", $"b={item.Value[0]}");
-                if (item.Key == "gc_a" && item.Value != "—")
-                    gcBtns = gcBtns.Replace("a=", $"a={item.Value[0]}");
-                if (item.Key == "gc_x" && item.Value != "—")
-                    gcBtns = gcBtns.Replace("x=", $"x={item.Value[0]}");
-                if (item.Key == "gc_l" && item.Value != "—")
-                    gcBtns = gcBtns.Replace("l=", $"l={item.Value[0]}");
-                if (item.Key == "gc_y" && item.Value != "—")
-                    gcBtns = gcBtns.Replace("y=", $"y={item.Value[0]}");
-                if (item.Key == "gc_r" && item.Value != "—")
-                    gcBtns = gcBtns.Replace("r=", $"r={item.Value[0]}");
-                if (item.Key == "gc_z" && item.Value != "—")
-                    gcBtns = gcBtns.Replace("z=", $"z={item.Value[0]}");
-                if (item.Key == "gc_c" && item.Value != "—")
-                    gcBtns = gcBtns.Replace("c=", $"c={item.Value[0]}");
-            }
-
-            config.Add(coreBtns);
-            config.Add(clBtns);
-            config.Add(gcBtns);
         }
 
         // ************************************************************************************************ //

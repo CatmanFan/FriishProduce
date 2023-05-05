@@ -36,6 +36,8 @@
     "g007": "Core",
     "g008": "Classic Controller",
     "g009": "GameCube Controller",
+    "g010": "Modify emulator configuration",
+    "g011": "Emulator configuration",
     "OK": "&OK",
     "Cancel": "&Cancel",
     "Yes": "&Yes",
