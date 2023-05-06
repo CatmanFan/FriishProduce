@@ -29,19 +29,21 @@ namespace FriishProduce.Views
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel = new System.Windows.Forms.Panel();
             this.OK = new System.Windows.Forms.Button();
             this.Cancel = new System.Windows.Forms.Button();
             this.console = new System.Windows.Forms.CheckBox();
             this.p_console = new System.Windows.Forms.Panel();
-            this.controller = new System.Windows.Forms.CheckBox();
+            this.console_disable_resetbutton = new System.Windows.Forms.CheckBox();
             this.console_brightness_value = new System.Windows.Forms.TrackBar();
             this.console_brightness = new System.Windows.Forms.CheckBox();
             this.console_country = new System.Windows.Forms.ComboBox();
             this.SEGA_Country = new System.Windows.Forms.Label();
             this.mdpad_6b = new System.Windows.Forms.CheckBox();
             this.console_savesram = new System.Windows.Forms.CheckBox();
-            this.console_disable_resetbutton = new System.Windows.Forms.CheckBox();
+            this.controller = new System.Windows.Forms.CheckBox();
+            this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.panel.SuspendLayout();
             this.p_console.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.console_brightness_value)).BeginInit();
@@ -132,18 +134,18 @@ namespace FriishProduce.Views
             this.p_console.TabIndex = 6;
             this.p_console.Tag = "page";
             // 
-            // controller
+            // console_disable_resetbutton
             // 
-            this.controller.AutoSize = true;
-            this.controller.CheckAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.controller.Location = new System.Drawing.Point(21, 305);
-            this.controller.Name = "controller";
-            this.controller.Size = new System.Drawing.Size(100, 49);
-            this.controller.TabIndex = 0;
-            this.controller.Text = "core_bindings\r\ncl_bindings\r\ngc_bindings";
-            this.controller.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.controller.UseVisualStyleBackColor = true;
-            this.controller.CheckedChanged += new System.EventHandler(this.ControllerChecked);
+            this.console_disable_resetbutton.AutoSize = true;
+            this.console_disable_resetbutton.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.console_disable_resetbutton.Location = new System.Drawing.Point(21, 91);
+            this.console_disable_resetbutton.Name = "console_disable_resetbutton";
+            this.console_disable_resetbutton.Size = new System.Drawing.Size(129, 19);
+            this.console_disable_resetbutton.TabIndex = 19;
+            this.console_disable_resetbutton.Tag = "";
+            this.console_disable_resetbutton.Text = "disable_resetbutton";
+            this.ToolTip.SetToolTip(this.console_disable_resetbutton, "☐ = Disabled | ☑ = Enabled");
+            this.console_disable_resetbutton.UseVisualStyleBackColor = true;
             // 
             // console_brightness_value
             // 
@@ -168,6 +170,7 @@ namespace FriishProduce.Views
             this.console_brightness.TabIndex = 17;
             this.console_brightness.Tag = "";
             this.console_brightness.Text = "console.brightness";
+            this.ToolTip.SetToolTip(this.console_brightness, "☐ = Disabled | ☑ = Enabled\r\nSets screen brightness (HOME Menu is not affected).");
             this.console_brightness.UseVisualStyleBackColor = true;
             this.console_brightness.CheckedChanged += new System.EventHandler(this.BrightnessToggled);
             // 
@@ -183,6 +186,8 @@ namespace FriishProduce.Views
             this.console_country.Name = "console_country";
             this.console_country.Size = new System.Drawing.Size(81, 23);
             this.console_country.TabIndex = 16;
+            this.ToolTip.SetToolTip(this.console_country, "[us] = USA/North America\r\n[eu] = Europe\r\n[jp] = Japan\r\nSets region of emulated co" +
+        "nsole.");
             // 
             // SEGA_Country
             // 
@@ -204,6 +209,8 @@ namespace FriishProduce.Views
             this.mdpad_6b.TabIndex = 14;
             this.mdpad_6b.Tag = "";
             this.mdpad_6b.Text = "dev.mdpad.enable_6b";
+            this.ToolTip.SetToolTip(this.mdpad_6b, "☐ = Disabled | ☑ = Enabled for Comix Zone\r\nToggles 6 button use in Mega Drive/Gen" +
+        "esis.\r\n");
             this.mdpad_6b.UseVisualStyleBackColor = true;
             // 
             // console_savesram
@@ -216,19 +223,30 @@ namespace FriishProduce.Views
             this.console_savesram.TabIndex = 13;
             this.console_savesram.Tag = "";
             this.console_savesram.Text = "save_sram";
+            this.ToolTip.SetToolTip(this.console_savesram, "☐ = Disabled | ☑ = Enabled for Phantasy Star, Sonic 3\r\nToggles SRAM.");
             this.console_savesram.UseVisualStyleBackColor = true;
             // 
-            // console_disable_resetbutton
+            // controller
             // 
-            this.console_disable_resetbutton.AutoSize = true;
-            this.console_disable_resetbutton.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.console_disable_resetbutton.Location = new System.Drawing.Point(21, 91);
-            this.console_disable_resetbutton.Name = "console_disable_resetbutton";
-            this.console_disable_resetbutton.Size = new System.Drawing.Size(129, 19);
-            this.console_disable_resetbutton.TabIndex = 19;
-            this.console_disable_resetbutton.Tag = "";
-            this.console_disable_resetbutton.Text = "disable_resetbutton";
-            this.console_disable_resetbutton.UseVisualStyleBackColor = true;
+            this.controller.AutoSize = true;
+            this.controller.CheckAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.controller.Location = new System.Drawing.Point(21, 305);
+            this.controller.Name = "controller";
+            this.controller.Size = new System.Drawing.Size(100, 49);
+            this.controller.TabIndex = 0;
+            this.controller.Text = "core_bindings\r\ncl_bindings\r\ngc_bindings";
+            this.controller.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.ToolTip.SetToolTip(this.controller, "Change controller bindings.");
+            this.controller.UseVisualStyleBackColor = true;
+            this.controller.CheckedChanged += new System.EventHandler(this.ControllerChecked);
+            // 
+            // ToolTip
+            // 
+            this.ToolTip.AutoPopDelay = 5000;
+            this.ToolTip.BackColor = System.Drawing.Color.LemonChiffon;
+            this.ToolTip.ForeColor = System.Drawing.Color.Black;
+            this.ToolTip.InitialDelay = 300;
+            this.ToolTip.ReshowDelay = 100;
             // 
             // SEGA_Config
             // 
@@ -271,5 +289,6 @@ namespace FriishProduce.Views
         private System.Windows.Forms.CheckBox mdpad_6b;
         private System.Windows.Forms.CheckBox console_savesram;
         private System.Windows.Forms.CheckBox console_disable_resetbutton;
+        private System.Windows.Forms.ToolTip ToolTip;
     }
 }
