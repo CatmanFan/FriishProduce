@@ -11,10 +11,6 @@ namespace FriishProduce.Injectors
     {
         public string ROM { get; set; }
         public string emuVersion { get; set; }
-        private byte[] content1 { get; set; }
-
-        private readonly string byteswappedROM = $"{Paths.Apps}ucon64\\rom.z64";
-        private readonly string compressedROM = $"{Paths.WorkingFolder}romc";
 
         private enum Buttons
         {
@@ -38,26 +34,11 @@ namespace FriishProduce.Injectors
 
         // ------------------------- EMULATOR FUNCTIONS -------------------------- //
 
-        private string content1_file;
-
-        public void LoadContent1()
-        {
-            content1_file = Global.DetermineContent1();
-            content1 = File.ReadAllBytes(content1_file);
-        }
-
-        public void SaveContent1()
-        {
-            File.WriteAllBytes(content1_file, content1);
-            Global.PrepareContent1();
-        }
-
-        public void Op_FixCrashes()
+        public void Op_FixCrashes(byte[] content1)
         {
             for (int i = 0; i < content1.Length - 24; i++)
             {
-                {
-                    /* 
+                /* {
                     if (content1[i] == 0x38
                      && content1[i + 1] == 0x21
                      && content1[i + 2] == 0x00
@@ -69,10 +50,8 @@ namespace FriishProduce.Injectors
                      && content1[i + 8] == 0x94
                      && content1[i + 9] == 0x21
                      && content1[i + 10] == 0xFF
-                     && content1[i + 11] == 0xF0)*/
-                }
-
-                // 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23
+                     && content1[i + 11] == 0xF0)
+                } */
 
                 if (content1[i] == 0x4E
                  && content1[i + 1] == 0x80
@@ -94,7 +73,7 @@ namespace FriishProduce.Injectors
                 }
             }
 
-            for (int i = 0; i < content1.Length - 14; i++)
+            for (int i = 1; i < content1.Length - 14; i++)
             {
                 if (content1[i - 1] == 0x21
                  && content1[i] == 0x38
@@ -127,7 +106,7 @@ namespace FriishProduce.Injectors
             }
         }
 
-        public void Op_FixBrightness()
+        public void Op_FixBrightness(byte[] content1)
         {
             // Method originally reported by @NoobletCheese/@Maeson on GBAtemp.
             for (int i = 0; i < content1.Length - 20; i++)
@@ -173,7 +152,7 @@ namespace FriishProduce.Injectors
         /// <summary>
         /// Alternative method of fixing brightness, may not work with some WADs or result in excess brightness
         /// </summary>
-        public void Op_FixBrightness_Alt()
+        public void Op_FixBrightness_Alt(byte[] content1)
         {
             for (int i = 0; i < content1.Length - 20; i++)
             {
@@ -201,27 +180,34 @@ namespace FriishProduce.Injectors
             }
         }
 
-        public void Op_ExpansionRAM()
+        public void Op_ExpansionRAM(byte[] content1)
         {
             for (int i = 0; i < content1.Length - 8; i++)
             {
-                if ((content1[i] == 0x41 && content1[i + 1] == 0x82 && content1[i + 2] == 0x00 && content1[i + 3] == 0x08)
-                 || (content1[i] == 0x48 && content1[i + 1] == 0x00 && content1[i + 2] == 0x00 && content1[i + 3] == 0x64)
-                 && content1[i + 4] == 0x3C
+                if (((content1[i] == 0x41
+                 && content1[i + 1] == 0x82
+                 && content1[i + 2] == 0x00
+                 && content1[i + 3] == 0x08)
+                 || (content1[i] == 0x48
+                 && content1[i + 1] == 0x00
+                 && content1[i + 2] == 0x00
+                 && content1[i + 3] == 0x64))
+                 && (content1[i + 4] == 0x3C
                  && content1[i + 5] == 0x80
                  && content1[i + 6] == 0x00
-                 && content1[i + 7] == 0x80)
+                 && content1[i + 7] == 0x80))
                 {
                     content1[i] = 0x60;
                     content1[i + 1] = 0x00;
                     content1[i + 2] = 0x00;
                     content1[i + 3] = 0x00;
+                    return;
                 }
             }
-            throw new Exception(Program.Language.Get("m012"));
+            // throw new Exception(Program.Language.Get("m012"));
         }
 
-        public void Op_AllocateROM()
+        public void Op_AllocateROM(byte[] content1)
         {
             for (int i = 0; i < content1.Length - 10; i++)
             {
@@ -238,67 +224,16 @@ namespace FriishProduce.Injectors
                     content1[offset + 3] = 0x10;
                     content1[offset + 6] = 0x03;
                     content1[offset + 7] = 0x10;
+                    return;
                 }
             }
-            throw new Exception(Program.Language.Get("m015"));
+            // throw new Exception(Program.Language.Get("m015"));
         }
 
         // ----------------------------------------------------------------------- //
 
-        public void InsertSaveComments(string[] lines)
-        {
-            // The separator byte array for double-lines.
-            // This varies depending on the revision of the emulator, and the second separator is often cut off by end-of-file in earlier releases
-            byte[] separator =
-                emuVersion == "rev1" ? new byte[] { 0x00, 0xBB, 0xBB, 0xBB } :
-                emuVersion == "rev1-alt" ? new byte[] { 0x00, 0xBB } :
-                new byte[] { 0x00, 0x00, 0xBB, 0xBB };
-
-            // Text addition format: UTF-16 (Little Endian) for Rev1, UTF-16 (Big Endian) for newer revisions
-            var encoding = emuVersion.Contains("rev1") ? Encoding.Unicode : Encoding.BigEndianUnicode;
-
-            // In Custom Robo V2 & Mario Kart 64 (KOR), a null character follows instead of the regular separator, before a supposed second line string.
-
-            foreach (var item in Directory.GetFiles(Paths.WorkingFolder_Content5))
-            {
-                if (Path.GetFileName(item).Contains("saveComments_"))
-                {
-                    var byteArray = File.ReadAllBytes(item);
-                    List<byte> newSave = new List<byte>();
-
-                    // Add 64-byte header
-                    for (int i = 0; i < 64; i++)
-                        newSave.Add(byteArray[i]);
-
-                    for (int i = 0; i < encoding.GetBytes(lines[0]).Length; i++)
-                        try { newSave.Add(encoding.GetBytes(lines[0])[i]); } catch { newSave.Add(0x00); }
-                    if (emuVersion == "romc-alt")
-                        { newSave.Add(0x00); }
-                    else foreach (var Byte in separator) newSave.Add(Byte);
-
-                    // Set first-line offset
-                    newSave[55] = Convert.ToByte(newSave.Count);
-                    newSave[59] = Convert.ToByte(newSave.Count);
-
-                    // Also varying on revision, how the second line field is itself handled.
-                    // Where it is empty: In earlier revisions such as Star Fox 64 and Super Mario 64, it is a white space character, otherwise it is null.
-                    if (lines.Length == 1 && emuVersion == "rev1") lines = new string[2] { lines[0], " " };
-
-                    if (lines.Length == 2)
-                        for (int i = 0; i < encoding.GetBytes(lines[1]).Length; i++)
-                            try { newSave.Add(encoding.GetBytes(lines[1])[i]); } catch { newSave.Add(0x00); }
-                    foreach (var Byte in separator) newSave.Add(Byte);
-
-                    // Character count determiner within savedata file
-                    newSave[45] = Convert.ToByte(encoding.GetBytes(lines[0]).Length);
-                    newSave[47] = Convert.ToByte(encoding.GetBytes(lines[0]).Length);
-                    newSave[61] = lines.Length == 2 ? Convert.ToByte(encoding.GetBytes(lines[1]).Length) : (byte)0x00;
-                    newSave[63] = lines.Length == 2 ? Convert.ToByte(encoding.GetBytes(lines[1]).Length) : (byte)0x00;
-
-                    File.WriteAllBytes(item, newSave.ToArray());
-                }
-            }
-        }
+        private readonly string byteswappedROM = $"{Paths.Apps}ucon64\\rom.z64";
+        private readonly string compressedROM = $"{Paths.WorkingFolder}romc";
 
         public void ReplaceROM()
         {
@@ -358,7 +293,7 @@ namespace FriishProduce.Injectors
                 }
 
                 // Copy
-                File.Copy(compressedROM, $"{Paths.WorkingFolder_Content5}romc", true);
+                File.WriteAllBytes($"{Paths.WorkingFolder_Content5}romc", File.ReadAllBytes(compressedROM));
                 File.Delete(compressedROM);
             }
             else
@@ -371,8 +306,65 @@ namespace FriishProduce.Injectors
                 }
 
                 // Copy
-                File.Copy(byteswappedROM, $"{Paths.WorkingFolder_Content5}rom", true);
+                File.WriteAllBytes($"{Paths.WorkingFolder_Content5}rom", File.ReadAllBytes(byteswappedROM));
                 File.Delete(byteswappedROM);
+            }
+        }
+
+        // ----------------------------------------------------------------------- //
+
+        public void InsertSaveComments(string[] lines)
+        {
+            // The separator byte array for double-lines.
+            // This varies depending on the revision of the emulator, and the second separator is often cut off by end-of-file in earlier releases
+            byte[] separator =
+                emuVersion == "rev1" ? new byte[] { 0x00, 0xBB, 0xBB, 0xBB } :
+                emuVersion == "rev1-alt" ? new byte[] { 0x00, 0xBB } :
+                new byte[] { 0x00, 0x00, 0xBB, 0xBB };
+
+            // Text addition format: UTF-16 (Little Endian) for Rev1, UTF-16 (Big Endian) for newer revisions
+            var encoding = emuVersion.Contains("rev1") ? Encoding.Unicode : Encoding.BigEndianUnicode;
+
+            // In Custom Robo V2 & Mario Kart 64 (KOR), a null character follows instead of the regular separator, before a supposed second line string.
+
+            foreach (var item in Directory.GetFiles(Paths.WorkingFolder_Content5))
+            {
+                if (Path.GetFileName(item).Contains("saveComments_"))
+                {
+                    var byteArray = File.ReadAllBytes(item);
+                    List<byte> newSave = new List<byte>();
+
+                    // Add 64-byte header
+                    for (int i = 0; i < 64; i++)
+                        newSave.Add(byteArray[i]);
+
+                    for (int i = 0; i < encoding.GetBytes(lines[0]).Length; i++)
+                        try { newSave.Add(encoding.GetBytes(lines[0])[i]); } catch { newSave.Add(0x00); }
+                    if (emuVersion == "romc-alt")
+                        { newSave.Add(0x00); }
+                    else foreach (var Byte in separator) newSave.Add(Byte);
+
+                    // Set first-line offset
+                    newSave[55] = Convert.ToByte(newSave.Count);
+                    newSave[59] = Convert.ToByte(newSave.Count);
+
+                    // Also varying on revision, how the second line field is itself handled.
+                    // Where it is empty: In earlier revisions such as Star Fox 64 and Super Mario 64, it is a white space character, otherwise it is null.
+                    if (lines.Length == 1 && emuVersion == "rev1") lines = new string[2] { lines[0], " " };
+
+                    if (lines.Length == 2)
+                        for (int i = 0; i < encoding.GetBytes(lines[1]).Length; i++)
+                            try { newSave.Add(encoding.GetBytes(lines[1])[i]); } catch { newSave.Add(0x00); }
+                    foreach (var Byte in separator) newSave.Add(Byte);
+
+                    // Character count determiner within savedata file
+                    newSave[45] = Convert.ToByte(encoding.GetBytes(lines[0]).Length);
+                    newSave[47] = Convert.ToByte(encoding.GetBytes(lines[0]).Length);
+                    newSave[61] = lines.Length == 2 ? Convert.ToByte(encoding.GetBytes(lines[1]).Length) : (byte)0x00;
+                    newSave[63] = lines.Length == 2 ? Convert.ToByte(encoding.GetBytes(lines[1]).Length) : (byte)0x00;
+
+                    File.WriteAllBytes(item, newSave.ToArray());
+                }
             }
         }
     }

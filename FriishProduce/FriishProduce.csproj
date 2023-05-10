@@ -217,7 +217,7 @@
     <PostBuildEvent>copy /y "$(ProjectDir)database.json" "$(TargetDir)bases\database.json"</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PreBuildEvent>del "$(TargetDir)langs\" /F/Q
-xcopy "$(ProjectDir)langs\" "$(TargetDir)langs\" /E/C/I</PreBuildEvent>
+    <PreBuildEvent>del "$(TargetDir)locales\" /F/Q
+xcopy "$(ProjectDir)langs\" "$(TargetDir)locales\" /E/C/I</PreBuildEvent>
   </PropertyGroup>
 </Project>

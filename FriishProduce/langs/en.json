@@ -135,7 +135,7 @@
     "N64__000": "Fix brightness",
     "N64__001": "Fix crashes",
     "N64__002": "Extended RAM (8MB)",
-    "N64__003": "Allocate 32MB for ROM",
+    "N64__003": "Allocate 33MB for ROM",
     "Flash__000": "Enable \"unsaved data\" message in HOME Menu",
     "Flash__001": "Use savedata",
     "Flash__002": "Total size (KB):",

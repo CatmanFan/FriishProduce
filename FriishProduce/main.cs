@@ -852,19 +852,23 @@ namespace FriishProduce
                                                 N64.emuVersion = entry["ver"].ToString();
                                 }
                                 
-                                N64.ReplaceROM();
                                 if (N64_FixBrightness.Checked
                                  || N64_UseExpansionPak.Checked
                                  || N64_Allocation.Checked
                                  || N64_FixCrash.Checked)
                                 {
-                                    N64.LoadContent1();
-                                    if (N64_FixCrash.Checked)           N64.Op_FixCrashes();
-                                    if (N64_FixBrightness.Checked)   N64.Op_FixBrightness();
-                                    if (N64_UseExpansionPak.Checked) N64.Op_ExpansionRAM();
-                                    if (N64_Allocation.Checked)      N64.Op_AllocateROM();
-                                    N64.SaveContent1();
+                                    string emulator_file = Global.DetermineContent1();
+                                    var emulator = File.ReadAllBytes(emulator_file);
+
+                                    if (N64_UseExpansionPak.Checked) N64.Op_ExpansionRAM(emulator);
+                                    if (N64_FixBrightness.Checked)   N64.Op_FixBrightness(emulator);
+                                    if (N64_Allocation.Checked)      N64.Op_AllocateROM(emulator);
+                                    if (N64_FixCrash.Checked)        N64.Op_FixCrashes(emulator);
+                                    
+                                    File.WriteAllBytes(emulator_file, emulator);
+                                    Global.PrepareContent1();
                                 }
+                                N64.ReplaceROM();
 
                                 if (Custom.Checked) N64.InsertSaveComments(SaveDataTitle.Lines);
                                 break;
