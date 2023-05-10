@@ -160,6 +160,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include=".gitignore" />
     <None Include="database.json" />
     <None Include="langs\es.json" />
     <None Include="langs\fr.json" />
