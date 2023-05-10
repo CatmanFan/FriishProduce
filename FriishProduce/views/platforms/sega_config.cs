@@ -21,9 +21,13 @@ namespace FriishProduce.Views
             InitializeComponent();
             x.Localize(this);
 
-            if (console_country.SelectedIndex < 0) console_country.SelectedIndex = 0;
-            if (SMS) mdpad_6b.Checked = false;
+            if (country_l.SelectedIndex < 0) country_l.SelectedIndex = 0;
+            if (nplayers_l.SelectedIndex < 0) nplayers_l.SelectedIndex = 0;
+            if (use_4ptap_l.SelectedIndex < 0) use_4ptap_l.SelectedIndex = 0;
             mdpad_6b.Enabled = !SMS;
+            use_4ptap.Enabled = !SMS;
+            nplayers.Enabled = !SMS;
+            smsui_opll.Enabled = SMS;
 
             if (Properties.Settings.Default.LightTheme)
             {
@@ -45,6 +49,19 @@ namespace FriishProduce.Views
                     cb.FlatAppearance.MouseOverBackColor = Themes.Dark.ButtonBorder;
                 }
             }
+
+            controller.FlatStyle = FlatStyle.System;
+            controller.ForeColor = Color.Black;
+        }
+
+        private void SwitchPanel(object sender, EventArgs e)
+        {
+            console.Checked = ((CheckBox)sender).Text == console.Text;
+            control.Checked = ((CheckBox)sender).Text == control.Text;
+            etc.Checked = ((CheckBox)sender).Text == etc.Text;
+            p_console.Visible = console.Checked;
+            p_control.Visible = control.Checked;
+            p_etc.Visible = etc.Checked;
         }
 
         private void ChangeTheme(Form f)
@@ -55,6 +72,13 @@ namespace FriishProduce.Views
                 if (item.Tag.ToString() == "panel") item.BackColor = panel.BackColor;
             foreach (var item in f.Controls.OfType<ComboBox>())
                 if (item.Name.StartsWith("btns")) item.BackColor = BackColor;
+            foreach (var panel in f.Controls.OfType<Panel>())
+            {
+                foreach (var cb in panel.Controls.OfType<CheckBox>())
+                    cb.ForeColor = ForeColor;
+                foreach (var c1 in panel.Controls.OfType<Panel>())
+                    foreach (var cb in c1.Controls.OfType<CheckBox>()) cb.ForeColor = ForeColor;
+            }
 
             if (Properties.Settings.Default.LightTheme)
             {
@@ -90,24 +114,36 @@ namespace FriishProduce.Views
 
         private void ControllerChecked(object sender, EventArgs e)
         {
-            Views.SEGA_Controller ControllerForm = new Views.SEGA_Controller(btns) { Text = x.Get("g006"), };
-            ChangeTheme(ControllerForm);
+            if (controller.Checked)
+            {
+                SEGA_Controller ControllerForm = new SEGA_Controller(btns) { Text = x.Get("g006"), };
+                ChangeTheme(ControllerForm);
 
-            if (ControllerForm.ShowDialog(this) == DialogResult.OK)
-                btns = ControllerForm.Config;
+                if (ControllerForm.ShowDialog(this) == DialogResult.OK)
+                    btns = ControllerForm.Config;
+                else
+                    controller.Checked = false;
+            }
             else
+            {
+                btns = new Dictionary<string, string>();
                 controller.Checked = false;
+            }
         }
 
         private void OK_Click(object sender, EventArgs e)
         {
             config = new List<string>();
-            config.Add($"console.machine_country=\"{console_country.SelectedItem}\"");
-            if (console_disable_resetbutton.Checked)   config.Add("console.disable_resetbutton=\"1\"");
-            if (console_savesram.Checked)              config.Add("save_sram=\"1\"");
-            if (mdpad_6b.Checked && mdpad_6b.Enabled)  config.Add("dev.mdpad.enable_6b=\"1\"");
-            if (console_brightness.Checked)            config.Add($"console.brightness=\"{console_brightness_value.Value}\"");
-            if (controller.Checked)                    SetController();
+            config.Add($"console.machine_country=\"{country_l.SelectedItem}\"");
+            if (console_disable_resetbutton.Checked) config.Add("console.disable_resetbutton=\"1\"");
+            if (console_savesram.Checked) config.Add("save_sram=\"1\"");
+            if (mdpad_6b.Checked && mdpad_6b.Enabled) config.Add("dev.mdpad.enable_6b=\"1\"");
+            if (console_brightness.Checked) config.Add($"console.brightness=\"{console_brightness_value.Value}\"");
+            if (controller.Checked) SetController();
+            if (use_4ptap.Checked) config.Add($"machine_md.use_4ptap=\"{use_4ptap_l.SelectedItem}\"");
+            if (nplayers.Checked) config.Add($"nplayers=\"{nplayers_l.SelectedItem}\"");
+            if (disable_selectmenu.Checked) config.Add("disable_selectmenu=\"1\"");
+            if (smsui_opll.Checked) config.Add("smsui.has_opll=\"1\"");
             config.Sort();
 
             DialogResult = DialogResult.OK;
@@ -219,13 +255,8 @@ namespace FriishProduce.Views
 
         private void BrightnessToggled(object sender, EventArgs e) => console_brightness_value.Enabled = console_brightness.Checked;
 
-        /* 
-            if (SEGA.ver == 3)
-            {
-                SEGA.SetController(btns, !SEGA_SetConfig.Checked);
-                // if (SEGA_SelectMenu.Checked) SEGA.DisableSelectMenu();
-            }
+        private void NPlayersToggled(object sender, EventArgs e) => nplayers_l.Enabled = nplayers.Checked;
 
-             */
+        private void Use4PTapToggled(object sender, EventArgs e) => use_4ptap_l.Enabled = use_4ptap.Checked;
     }
 }

@@ -55,12 +55,9 @@ namespace FriishProduce.Injectors
             - Also in the "data_ccf" is a "tsdevp.rso" file. No idea what it does but the config say it is something to do with the "snd.snddrv". */
 
         /* 
-        console.disable_resetbutton="1"
         console.master_volume="+11.0"
         console.rapidfire="10"
-        console.volume="10"
-        disable_selectmenu="1"
-        smsui.has_opll="1"*/
+        console.volume="10"*/
 
         public string ROM { get; set; }
         public int ver { get; set; }
@@ -253,12 +250,10 @@ namespace FriishProduce.Injectors
                     if (item.StartsWith("modules=")
                      || item.StartsWith("snd.snddrv=")
                      || item.StartsWith("console.machine_arch=")
-                     || item.Contains("has_opll")
                      || item.Contains(".master_volume")
                      || item.Contains(".rapidfire")
                      || item.Contains(".volume"))
                         c.Add(item);
-            if (SMS && ver == 3) c.Add("disable_selectmenu=\"1\"");
 
             c.Sort();
 

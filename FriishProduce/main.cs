@@ -851,18 +851,20 @@ namespace FriishProduce
                                             if (item.Contains(entry["id"].ToString().ToUpper()))
                                                 N64.emuVersion = entry["ver"].ToString();
                                 }
-
-                                if (N64_FixBrightness.Checked || N64_UseExpansionPak.Checked || N64_Allocation.Checked)
-                                {
-                                    string content1_file = Global.DetermineContent1();
-                                    var content1 = File.ReadAllBytes(content1_file);
-                                    if (N64_FixBrightness.Checked) content1 = N64.FixBrightness(content1);
-                                    if (N64_UseExpansionPak.Checked) content1 = N64.ExpansionRAM(content1);
-                                    if (N64_Allocation.Checked) content1 = N64.AllocateROM(content1);
-                                    File.WriteAllBytes(content1_file, content1);
-                                    Global.PrepareContent1();
-                                }
+                                
                                 N64.ReplaceROM();
+                                if (N64_FixBrightness.Checked
+                                 || N64_UseExpansionPak.Checked
+                                 || N64_Allocation.Checked
+                                 || N64_FixCrash.Checked)
+                                {
+                                    N64.LoadContent1();
+                                    if (N64_FixCrash.Checked)           N64.Op_FixCrashes();
+                                    if (N64_FixBrightness.Checked)   N64.Op_FixBrightness();
+                                    if (N64_UseExpansionPak.Checked) N64.Op_ExpansionRAM();
+                                    if (N64_Allocation.Checked)      N64.Op_AllocateROM();
+                                    N64.SaveContent1();
+                                }
 
                                 if (Custom.Checked) N64.InsertSaveComments(SaveDataTitle.Lines);
                                 break;

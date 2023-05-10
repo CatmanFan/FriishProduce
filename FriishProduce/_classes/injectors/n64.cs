@@ -11,13 +11,123 @@ namespace FriishProduce.Injectors
     {
         public string ROM { get; set; }
         public string emuVersion { get; set; }
+        private byte[] content1 { get; set; }
 
         private readonly string byteswappedROM = $"{Paths.Apps}ucon64\\rom.z64";
         private readonly string compressedROM = $"{Paths.WorkingFolder}romc";
 
-        // ------------------------- CONTENT1 FUNCTIONS -------------------------- //
+        private enum Buttons
+        {
+            A = 0x8000,
+            B = 0x4000,
+            Z = 0x2000,
+            Start = 0x1000,
+            DUp = 0x0800,
+            DDown = 0x0400,
+            DLeft = 0x0200,
+            DRight = 0x0100,
+            X = 0x0080, //unused
+            Y = 0x0040, //unused
+            L = 0x0020,
+            R = 0x0010,
+            CUp = 0x0008,
+            CDown = 0x0004,
+            CLeft = 0x0002,
+            CRight = 0x0001,
+        }
 
-        public byte[] FixBrightness(byte[] content1)
+        // ------------------------- EMULATOR FUNCTIONS -------------------------- //
+
+        private string content1_file;
+
+        public void LoadContent1()
+        {
+            content1_file = Global.DetermineContent1();
+            content1 = File.ReadAllBytes(content1_file);
+        }
+
+        public void SaveContent1()
+        {
+            File.WriteAllBytes(content1_file, content1);
+            Global.PrepareContent1();
+        }
+
+        public void Op_FixCrashes()
+        {
+            for (int i = 0; i < content1.Length - 24; i++)
+            {
+                {
+                    /* 
+                    if (content1[i] == 0x38
+                     && content1[i + 1] == 0x21
+                     && content1[i + 2] == 0x00
+                     && content1[i + 3] == 0x10
+                     && content1[i + 4] == 0x4E
+                     && content1[i + 5] == 0x80
+                     && content1[i + 6] == 0x00
+                     && content1[i + 7] == 0x20
+                     && content1[i + 8] == 0x94
+                     && content1[i + 9] == 0x21
+                     && content1[i + 10] == 0xFF
+                     && content1[i + 11] == 0xF0)*/
+                }
+
+                // 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23
+
+                if (content1[i] == 0x4E
+                 && content1[i + 1] == 0x80
+                 && content1[i + 2] == 0x00
+                 && content1[i + 3] == 0x20
+                 && content1[i + 4] == 0x94
+                 && content1[i + 5] == 0x21
+                 && content1[i + 6] == 0xFF
+                 && content1[i + 7] == 0xF0
+                 && content1[i + 20] == 0x93
+                 && content1[i + 21] == 0xE1
+                 && content1[i + 22] == 0x00
+                 && content1[i + 23] == 0x0C)
+                {
+                    content1[i] = 0x48;
+                    content1[i + 1] = 0x00;
+                    content1[i + 2] = 0xD2;
+                    content1[i + 3] = 0xF0;
+                }
+            }
+
+            for (int i = 0; i < content1.Length - 14; i++)
+            {
+                if (content1[i - 1] == 0x21
+                 && content1[i] == 0x38
+                 && content1[i + 1] == 0x00
+                 && content1[i + 2] == 0x00
+                 && content1[i + 3] == 0x01
+                 && content1[i + 4] == 0x38
+                 && content1[i + 5] == 0x63
+                 && content1[i + 6] == 0xB9
+                 && content1[i + 7] == 0xC0
+                 && content1[i + 8] == 0x98
+                 && content1[i + 9] == 0x03
+                 && content1[i + 10] == 0x00
+                 && content1[i + 11] == 0x0C
+                 && content1[i + 12] == 0x4E)
+                {
+                    content1[i] = 0x3C;
+                    content1[i + 1] = 0x80;
+                    content1[i + 2] = 0x81;
+                    content1[i + 3] = 0x09;
+                    content1[i + 4] = 0x38;
+                    content1[i + 5] = 0xA0;
+                    content1[i + 6] = 0x00;
+                    content1[i + 7] = 0x7F;
+                    content1[i + 8] = 0x90;
+                    content1[i + 9] = 0xA4;
+                    content1[i + 10] = 0x0D;
+                    content1[i + 11] = 0x00;
+                }
+            }
+        }
+
+        public void Op_FixBrightness()
         {
             // Method originally reported by @NoobletCheese/@Maeson on GBAtemp.
             for (int i = 0; i < content1.Length - 20; i++)
@@ -54,15 +164,44 @@ namespace FriishProduce.Injectors
                             content1[x + 1] = 0x80;
                             content1[x + 2] = 0x00;
                             content1[x + 3] = 0x20;
-                            return content1;
                         }
                     }
                 }
             }
-            return content1;
         }
 
-        public byte[] ExpansionRAM(byte[] content1)
+        /// <summary>
+        /// Alternative method of fixing brightness, may not work with some WADs or result in excess brightness
+        /// </summary>
+        public void Op_FixBrightness_Alt()
+        {
+            for (int i = 0; i < content1.Length - 20; i++)
+            {
+                if (content1[i] == 0x00
+                 && content1[i + 1] == 0x00
+                 && content1[i + 2] == 0x00
+                 && content1[i + 3] == 0x07
+                 && content1[i + 4] == 0x00
+                 && content1[i + 5] == 0x00
+                 && content1[i + 6] == 0x00
+                 && content1[i + 7] == 0xBE
+                 && content1[i + 8] == 0x00
+                 && content1[i + 9] == 0x00
+                 && content1[i + 10] == 0x00
+                 && content1[i + 11] == 0xBE
+                 && content1[i + 12] == 0x00
+                 && content1[i + 13] == 0x00
+                 && content1[i + 14] == 0x00
+                 && content1[i + 15] == 0xBE)
+                {
+                    content1[i + 7] = 0xFF;
+                    content1[i + 11] = 0xFF;
+                    content1[i + 15] = 0xFF;
+                }
+            }
+        }
+
+        public void Op_ExpansionRAM()
         {
             for (int i = 0; i < content1.Length - 8; i++)
             {
@@ -77,35 +216,28 @@ namespace FriishProduce.Injectors
                     content1[i + 1] = 0x00;
                     content1[i + 2] = 0x00;
                     content1[i + 3] = 0x00;
-                    return content1;
                 }
             }
             throw new Exception(Program.Language.Get("m012"));
         }
 
-        public byte[] AllocateROM(byte[] content1)
+        public void Op_AllocateROM()
         {
-            for (int i = 0; i < content1.Length - 20; i++)
+            for (int i = 0; i < content1.Length - 10; i++)
             {
-                if (content1[i] == 0x38
-                 && content1[i + 1] == 0xA0
-                 && content1[i + 2] == 0x00
+                if (content1[i] == 0x44
+                 && content1[i + 1] == 0x38
+                 && content1[i + 2] == 0x7D
                  && content1[i + 3] == 0x00
-                 && content1[i + 4] == 0x48
-                 && content1[i + 5] == 0x00
-                 && content1[i + 6] == 0x00
-                 && content1[i + 7] == 0x44
-                 && content1[i + 8] == 0x38
-                 && content1[i + 9] == 0x7D
-                 && content1[i + 10] == 0x00
-                 && content1[i + 11] == 0x1C
-                 && content1[i + 12] == 0x3C
-                 && content1[i + 13] == 0x80)
+                 && content1[i + 4] == 0x1C
+                 && content1[i + 5] == 0x3C
+                 && content1[i + 6] == 0x80)
                 {
-                    int offset = i + 14;
-                    content1[offset] = 0x72;
-                    content1[offset + 1] = 0x00;
-                    return content1;
+                    int offset = i + 5;
+                    content1[offset + 2] = 0x73;
+                    content1[offset + 3] = 0x10;
+                    content1[offset + 6] = 0x03;
+                    content1[offset + 7] = 0x10;
                 }
             }
             throw new Exception(Program.Language.Get("m015"));

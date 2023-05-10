@@ -100,6 +100,7 @@ namespace FriishProduce
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.BrowsePatch = new System.Windows.Forms.OpenFileDialog();
             this.BrowseImage = new System.Windows.Forms.OpenFileDialog();
+            this.N64_FixCrash = new System.Windows.Forms.CheckBox();
             this.panel.SuspendLayout();
             this.page1.SuspendLayout();
             this.page2.SuspendLayout();
@@ -446,16 +447,16 @@ namespace FriishProduce
             // 
             // page4
             // 
-            this.page4.Controls.Add(this.Options_SEGA);
             this.page4.Controls.Add(this.DisableEmanual);
             this.page4.Controls.Add(this.RegionFree);
             this.page4.Controls.Add(this.TitleID);
             this.page4.Controls.Add(this.a005);
             this.page4.Controls.Add(this.a004);
-            this.page4.Controls.Add(this.Options_Flash);
             this.page4.Controls.Add(this.Options_N64);
             this.page4.Controls.Add(this.Options_NES);
             this.page4.Controls.Add(this.vWii);
+            this.page4.Controls.Add(this.Options_SEGA);
+            this.page4.Controls.Add(this.Options_Flash);
             resources.ApplyResources(this.page4, "page4");
             this.page4.Name = "page4";
             // 
@@ -605,9 +606,10 @@ namespace FriishProduce
             // Options_N64
             // 
             this.Options_N64.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Options_N64.Controls.Add(this.N64_Allocation);
-            this.Options_N64.Controls.Add(this.N64_UseExpansionPak);
             this.Options_N64.Controls.Add(this.N64_FixBrightness);
+            this.Options_N64.Controls.Add(this.N64_Allocation);
+            this.Options_N64.Controls.Add(this.N64_FixCrash);
+            this.Options_N64.Controls.Add(this.N64_UseExpansionPak);
             resources.ApplyResources(this.Options_N64, "Options_N64");
             this.Options_N64.Name = "Options_N64";
             // 
@@ -679,6 +681,13 @@ namespace FriishProduce
             // BrowseImage
             // 
             resources.ApplyResources(this.BrowseImage, "BrowseImage");
+            // 
+            // N64_FixCrash
+            // 
+            resources.ApplyResources(this.N64_FixCrash, "N64_FixCrash");
+            this.N64_FixCrash.Name = "N64_FixCrash";
+            this.N64_FixCrash.Tag = "N64__001";
+            this.N64_FixCrash.UseVisualStyleBackColor = true;
             // 
             // Main
             // 
@@ -791,6 +800,7 @@ namespace FriishProduce
         private System.Windows.Forms.CheckBox vWii;
         private System.Windows.Forms.Panel Options_SEGA;
         private System.Windows.Forms.CheckBox SEGA_SetConfig;
+        private System.Windows.Forms.CheckBox N64_FixCrash;
     }
 }
 

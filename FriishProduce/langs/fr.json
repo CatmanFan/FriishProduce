@@ -11,7 +11,7 @@
     "g003": "Parcourir une ROM...",
     "g004": "Parcourir un *.swf...",
     "g005": "Auteur(e) : {0}",
-    "g006": "Manettes",
+    "g006": "Contrôles",
     "g007": "Télécommande Wii",
     "g008": "Manette classique Wii",
     "g009": "Manette GameCube",
@@ -110,10 +110,11 @@
     "Flash__001": "Activer données de sauvegarde",
     "Flash__002": "Taille en Ko :",
     "Flash__003": "Nombre de FPS fixe",
-    "Flash__004": "Modifier la configuration des manettes",
+    "Flash__004": "Modification des contrôles",
     "Flash__005": "Écran d'avertissement de dragonne :",
     "Flash__006__l0": "Désactivée",
     "Flash__006__l1": "Activée",
-    "Flash__006__l2": "Activée (écran additionnel de connecteur)"
+    "Flash__006__l2": "Activée (écran additionnel de connecteur)",
+    "SEGA__ConWarn": "Avertissement : Certains paramètres peuvent ne pas fonctionner sur la révision actuelle de l'émulateur, la modification des contrôles (ver 3 uniquement) compris."
   }
 }
