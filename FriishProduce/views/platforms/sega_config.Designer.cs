@@ -35,11 +35,11 @@ namespace FriishProduce.Views
             this.Cancel = new System.Windows.Forms.Button();
             this.console = new System.Windows.Forms.CheckBox();
             this.p_console = new System.Windows.Forms.Panel();
-            this.console_brightness_value = new System.Windows.Forms.TrackBar();
             this.console_disable_resetbutton = new System.Windows.Forms.CheckBox();
             this.console_brightness = new System.Windows.Forms.CheckBox();
             this.country_l = new System.Windows.Forms.ComboBox();
             this.country = new System.Windows.Forms.Label();
+            this.console_brightness_value = new System.Windows.Forms.TrackBar();
             this.mdpad_6b = new System.Windows.Forms.CheckBox();
             this.console_savesram = new System.Windows.Forms.CheckBox();
             this.controller = new System.Windows.Forms.CheckBox();
@@ -68,10 +68,10 @@ namespace FriishProduce.Views
             this.panel.Controls.Add(this.OK);
             this.panel.Controls.Add(this.Cancel);
             this.panel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel.Location = new System.Drawing.Point(0, 356);
+            this.panel.Location = new System.Drawing.Point(0, 361);
             this.panel.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.panel.Name = "panel";
-            this.panel.Size = new System.Drawing.Size(554, 50);
+            this.panel.Size = new System.Drawing.Size(554, 45);
             this.panel.TabIndex = 4;
             this.panel.Tag = "panel";
             // 
@@ -83,7 +83,7 @@ namespace FriishProduce.Views
             this.OK.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.OK.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.OK.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.OK.Location = new System.Drawing.Point(330, 12);
+            this.OK.Location = new System.Drawing.Point(339, 10);
             this.OK.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.OK.Name = "OK";
             this.OK.Size = new System.Drawing.Size(98, 25);
@@ -101,7 +101,7 @@ namespace FriishProduce.Views
             this.Cancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Cancel.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.Cancel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.Cancel.Location = new System.Drawing.Point(435, 12);
+            this.Cancel.Location = new System.Drawing.Point(444, 10);
             this.Cancel.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.Cancel.Name = "Cancel";
             this.Cancel.Size = new System.Drawing.Size(98, 25);
@@ -143,19 +143,6 @@ namespace FriishProduce.Views
             this.p_console.Size = new System.Drawing.Size(517, 360);
             this.p_console.TabIndex = 6;
             this.p_console.Tag = "page";
-            // 
-            // console_brightness_value
-            // 
-            this.console_brightness_value.AutoSize = false;
-            this.console_brightness_value.Enabled = false;
-            this.console_brightness_value.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.console_brightness_value.Location = new System.Drawing.Point(34, 91);
-            this.console_brightness_value.Maximum = 100;
-            this.console_brightness_value.Name = "console_brightness_value";
-            this.console_brightness_value.Size = new System.Drawing.Size(248, 24);
-            this.console_brightness_value.TabIndex = 18;
-            this.console_brightness_value.TickFrequency = 5;
-            this.console_brightness_value.Value = 87;
             // 
             // console_disable_resetbutton
             // 
@@ -210,11 +197,24 @@ namespace FriishProduce.Views
             this.country.TabIndex = 15;
             this.country.Text = "country:";
             // 
+            // console_brightness_value
+            // 
+            this.console_brightness_value.AutoSize = false;
+            this.console_brightness_value.Enabled = false;
+            this.console_brightness_value.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.console_brightness_value.Location = new System.Drawing.Point(34, 91);
+            this.console_brightness_value.Maximum = 100;
+            this.console_brightness_value.Name = "console_brightness_value";
+            this.console_brightness_value.Size = new System.Drawing.Size(248, 24);
+            this.console_brightness_value.TabIndex = 18;
+            this.console_brightness_value.TickFrequency = 5;
+            this.console_brightness_value.Value = 87;
+            // 
             // mdpad_6b
             // 
             this.mdpad_6b.AutoSize = true;
             this.mdpad_6b.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.mdpad_6b.Location = new System.Drawing.Point(20, 45);
+            this.mdpad_6b.Location = new System.Drawing.Point(14, 45);
             this.mdpad_6b.Name = "mdpad_6b";
             this.mdpad_6b.Size = new System.Drawing.Size(142, 19);
             this.mdpad_6b.TabIndex = 14;
@@ -242,9 +242,9 @@ namespace FriishProduce.Views
             this.controller.Appearance = System.Windows.Forms.Appearance.Button;
             this.controller.CheckAlign = System.Drawing.ContentAlignment.TopLeft;
             this.controller.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.controller.Location = new System.Drawing.Point(20, 12);
+            this.controller.Location = new System.Drawing.Point(14, 12);
             this.controller.Name = "controller";
-            this.controller.Size = new System.Drawing.Size(391, 25);
+            this.controller.Size = new System.Drawing.Size(406, 25);
             this.controller.TabIndex = 0;
             this.controller.Tag = "Flash__004";
             this.controller.Text = "controllers";
@@ -264,7 +264,7 @@ namespace FriishProduce.Views
             // 
             this.nplayers.AutoSize = true;
             this.nplayers.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.nplayers.Location = new System.Drawing.Point(20, 95);
+            this.nplayers.Location = new System.Drawing.Point(14, 95);
             this.nplayers.Name = "nplayers";
             this.nplayers.Size = new System.Drawing.Size(70, 19);
             this.nplayers.TabIndex = 20;
@@ -279,7 +279,7 @@ namespace FriishProduce.Views
             // 
             this.use_4ptap.AutoSize = true;
             this.use_4ptap.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.use_4ptap.Location = new System.Drawing.Point(20, 70);
+            this.use_4ptap.Location = new System.Drawing.Point(14, 70);
             this.use_4ptap.Name = "use_4ptap";
             this.use_4ptap.Size = new System.Drawing.Size(151, 19);
             this.use_4ptap.TabIndex = 21;
@@ -349,7 +349,7 @@ namespace FriishProduce.Views
             this.p_control.Controls.Add(this.mdpad_6b);
             this.p_control.Location = new System.Drawing.Point(122, 0);
             this.p_control.Name = "p_control";
-            this.p_control.Size = new System.Drawing.Size(517, 360);
+            this.p_control.Size = new System.Drawing.Size(517, 362);
             this.p_control.TabIndex = 20;
             this.p_control.Tag = "page";
             this.p_control.Visible = false;
@@ -364,7 +364,7 @@ namespace FriishProduce.Views
             "1",
             "2",
             "3"});
-            this.use_4ptap_l.Location = new System.Drawing.Point(189, 69);
+            this.use_4ptap_l.Location = new System.Drawing.Point(183, 69);
             this.use_4ptap_l.Name = "use_4ptap_l";
             this.use_4ptap_l.Size = new System.Drawing.Size(75, 21);
             this.use_4ptap_l.TabIndex = 23;
@@ -385,7 +385,7 @@ namespace FriishProduce.Views
             "6",
             "7",
             "8"});
-            this.nplayers_l.Location = new System.Drawing.Point(189, 94);
+            this.nplayers_l.Location = new System.Drawing.Point(183, 94);
             this.nplayers_l.Name = "nplayers_l";
             this.nplayers_l.Size = new System.Drawing.Size(75, 21);
             this.nplayers_l.TabIndex = 22;
@@ -426,9 +426,9 @@ namespace FriishProduce.Views
             // 
             this.warning.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.warning.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(65)))), ((int)(((byte)(45)))));
-            this.warning.Location = new System.Drawing.Point(9, 175);
+            this.warning.Location = new System.Drawing.Point(9, 173);
             this.warning.Name = "warning";
-            this.warning.Size = new System.Drawing.Size(107, 170);
+            this.warning.Size = new System.Drawing.Size(107, 181);
             this.warning.TabIndex = 22;
             this.warning.Tag = "SEGA__ConWarn";
             this.warning.Text = "label1";

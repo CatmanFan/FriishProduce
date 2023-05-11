@@ -179,10 +179,10 @@ namespace FriishProduce.Views
             this.panel.Controls.Add(this.OK);
             this.panel.Controls.Add(this.Cancel);
             this.panel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel.Location = new System.Drawing.Point(0, 371);
+            this.panel.Location = new System.Drawing.Point(0, 376);
             this.panel.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.panel.Name = "panel";
-            this.panel.Size = new System.Drawing.Size(639, 50);
+            this.panel.Size = new System.Drawing.Size(639, 45);
             this.panel.TabIndex = 4;
             this.panel.Tag = "panel";
             // 
@@ -194,7 +194,7 @@ namespace FriishProduce.Views
             this.OK.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.OK.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.OK.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.OK.Location = new System.Drawing.Point(415, 12);
+            this.OK.Location = new System.Drawing.Point(424, 10);
             this.OK.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.OK.Name = "OK";
             this.OK.Size = new System.Drawing.Size(98, 25);
@@ -212,7 +212,7 @@ namespace FriishProduce.Views
             this.Cancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Cancel.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.Cancel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.Cancel.Location = new System.Drawing.Point(520, 12);
+            this.Cancel.Location = new System.Drawing.Point(529, 10);
             this.Cancel.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.Cancel.Name = "Cancel";
             this.Cancel.Size = new System.Drawing.Size(98, 25);
@@ -227,7 +227,7 @@ namespace FriishProduce.Views
             this.btn_core_a.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.btn_core_a.ForeColor = System.Drawing.Color.Black;
             this.btn_core_a.FormattingEnabled = true;
-            this.btn_core_a.Location = new System.Drawing.Point(457, 58);
+            this.btn_core_a.Location = new System.Drawing.Point(456, 58);
             this.btn_core_a.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.btn_core_a.Name = "btn_core_a";
             this.btn_core_a.Size = new System.Drawing.Size(120, 21);
@@ -238,11 +238,11 @@ namespace FriishProduce.Views
             // 
             this.tabControl1.Controls.Add(this.WiiRemote);
             this.tabControl1.Controls.Add(this.ClassicController);
-            this.tabControl1.Location = new System.Drawing.Point(19, 15);
+            this.tabControl1.Location = new System.Drawing.Point(14, 13);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(600, 340);
+            this.tabControl1.Size = new System.Drawing.Size(613, 351);
             this.tabControl1.TabIndex = 7;
             // 
             // WiiRemote
@@ -293,7 +293,7 @@ namespace FriishProduce.Views
             this.WiiRemote.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.WiiRemote.Name = "WiiRemote";
             this.WiiRemote.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.WiiRemote.Size = new System.Drawing.Size(592, 312);
+            this.WiiRemote.Size = new System.Drawing.Size(605, 323);
             this.WiiRemote.TabIndex = 0;
             this.WiiRemote.Tag = "g007";
             this.WiiRemote.Text = "core";
@@ -305,7 +305,7 @@ namespace FriishProduce.Views
             this.btn_core_down.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.btn_core_down.ForeColor = System.Drawing.Color.Black;
             this.btn_core_down.FormattingEnabled = true;
-            this.btn_core_down.Location = new System.Drawing.Point(207, 79);
+            this.btn_core_down.Location = new System.Drawing.Point(206, 79);
             this.btn_core_down.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.btn_core_down.Name = "btn_core_down";
             this.btn_core_down.Size = new System.Drawing.Size(120, 21);
@@ -319,7 +319,7 @@ namespace FriishProduce.Views
             this.btn_core_1.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.btn_core_1.ForeColor = System.Drawing.Color.Black;
             this.btn_core_1.FormattingEnabled = true;
-            this.btn_core_1.Location = new System.Drawing.Point(457, 206);
+            this.btn_core_1.Location = new System.Drawing.Point(456, 206);
             this.btn_core_1.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.btn_core_1.Name = "btn_core_1";
             this.btn_core_1.Size = new System.Drawing.Size(120, 21);
@@ -333,7 +333,7 @@ namespace FriishProduce.Views
             this.btn_core_2.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.btn_core_2.ForeColor = System.Drawing.Color.Black;
             this.btn_core_2.FormattingEnabled = true;
-            this.btn_core_2.Location = new System.Drawing.Point(457, 230);
+            this.btn_core_2.Location = new System.Drawing.Point(456, 230);
             this.btn_core_2.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.btn_core_2.Name = "btn_core_2";
             this.btn_core_2.Size = new System.Drawing.Size(120, 21);
@@ -343,7 +343,7 @@ namespace FriishProduce.Views
             // pictureBox27
             // 
             this.pictureBox27.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox27.Location = new System.Drawing.Point(392, 240);
+            this.pictureBox27.Location = new System.Drawing.Point(391, 240);
             this.pictureBox27.Name = "pictureBox27";
             this.pictureBox27.Size = new System.Drawing.Size(95, 1);
             this.pictureBox27.TabIndex = 62;
@@ -352,7 +352,7 @@ namespace FriishProduce.Views
             // pictureBox26
             // 
             this.pictureBox26.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox26.Location = new System.Drawing.Point(392, 216);
+            this.pictureBox26.Location = new System.Drawing.Point(391, 216);
             this.pictureBox26.Name = "pictureBox26";
             this.pictureBox26.Size = new System.Drawing.Size(68, 1);
             this.pictureBox26.TabIndex = 61;
@@ -365,7 +365,7 @@ namespace FriishProduce.Views
             this.btn_core_home.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.btn_core_home.ForeColor = System.Drawing.Color.Black;
             this.btn_core_home.FormattingEnabled = true;
-            this.btn_core_home.Location = new System.Drawing.Point(457, 154);
+            this.btn_core_home.Location = new System.Drawing.Point(456, 154);
             this.btn_core_home.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.btn_core_home.Name = "btn_core_home";
             this.btn_core_home.Size = new System.Drawing.Size(120, 21);
@@ -375,7 +375,7 @@ namespace FriishProduce.Views
             // pictureBox24
             // 
             this.pictureBox24.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox24.Location = new System.Drawing.Point(392, 154);
+            this.pictureBox24.Location = new System.Drawing.Point(391, 154);
             this.pictureBox24.Name = "pictureBox24";
             this.pictureBox24.Size = new System.Drawing.Size(1, 10);
             this.pictureBox24.TabIndex = 60;
@@ -384,7 +384,7 @@ namespace FriishProduce.Views
             // pictureBox25
             // 
             this.pictureBox25.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox25.Location = new System.Drawing.Point(392, 164);
+            this.pictureBox25.Location = new System.Drawing.Point(391, 164);
             this.pictureBox25.Name = "pictureBox25";
             this.pictureBox25.Size = new System.Drawing.Size(95, 1);
             this.pictureBox25.TabIndex = 59;
@@ -393,7 +393,7 @@ namespace FriishProduce.Views
             // pictureBox21
             // 
             this.pictureBox21.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox21.Location = new System.Drawing.Point(440, 68);
+            this.pictureBox21.Location = new System.Drawing.Point(439, 68);
             this.pictureBox21.Name = "pictureBox21";
             this.pictureBox21.Size = new System.Drawing.Size(1, 47);
             this.pictureBox21.TabIndex = 58;
@@ -402,7 +402,7 @@ namespace FriishProduce.Views
             // pictureBox22
             // 
             this.pictureBox22.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox22.Location = new System.Drawing.Point(392, 114);
+            this.pictureBox22.Location = new System.Drawing.Point(391, 114);
             this.pictureBox22.Name = "pictureBox22";
             this.pictureBox22.Size = new System.Drawing.Size(48, 1);
             this.pictureBox22.TabIndex = 57;
@@ -411,7 +411,7 @@ namespace FriishProduce.Views
             // pictureBox23
             // 
             this.pictureBox23.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox23.Location = new System.Drawing.Point(440, 68);
+            this.pictureBox23.Location = new System.Drawing.Point(439, 68);
             this.pictureBox23.Name = "pictureBox23";
             this.pictureBox23.Size = new System.Drawing.Size(18, 1);
             this.pictureBox23.TabIndex = 56;
@@ -424,7 +424,7 @@ namespace FriishProduce.Views
             this.btn_core_up.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.btn_core_up.ForeColor = System.Drawing.Color.Black;
             this.btn_core_up.FormattingEnabled = true;
-            this.btn_core_up.Location = new System.Drawing.Point(207, 103);
+            this.btn_core_up.Location = new System.Drawing.Point(206, 103);
             this.btn_core_up.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.btn_core_up.Name = "btn_core_up";
             this.btn_core_up.Size = new System.Drawing.Size(120, 21);
@@ -434,7 +434,7 @@ namespace FriishProduce.Views
             // pictureBox20
             // 
             this.pictureBox20.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox20.Location = new System.Drawing.Point(375, 69);
+            this.pictureBox20.Location = new System.Drawing.Point(374, 69);
             this.pictureBox20.Name = "pictureBox20";
             this.pictureBox20.Size = new System.Drawing.Size(1, 45);
             this.pictureBox20.TabIndex = 55;
@@ -443,7 +443,7 @@ namespace FriishProduce.Views
             // pictureBox19
             // 
             this.pictureBox19.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox19.Location = new System.Drawing.Point(302, 113);
+            this.pictureBox19.Location = new System.Drawing.Point(301, 113);
             this.pictureBox19.Name = "pictureBox19";
             this.pictureBox19.Size = new System.Drawing.Size(73, 1);
             this.pictureBox19.TabIndex = 54;
@@ -452,7 +452,7 @@ namespace FriishProduce.Views
             // pictureBox18
             // 
             this.pictureBox18.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox18.Location = new System.Drawing.Point(375, 69);
+            this.pictureBox18.Location = new System.Drawing.Point(374, 69);
             this.pictureBox18.Name = "pictureBox18";
             this.pictureBox18.Size = new System.Drawing.Size(18, 1);
             this.pictureBox18.TabIndex = 53;
@@ -461,7 +461,7 @@ namespace FriishProduce.Views
             // pictureBox17
             // 
             this.pictureBox17.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox17.Location = new System.Drawing.Point(288, 89);
+            this.pictureBox17.Location = new System.Drawing.Point(287, 89);
             this.pictureBox17.Name = "pictureBox17";
             this.pictureBox17.Size = new System.Drawing.Size(105, 1);
             this.pictureBox17.TabIndex = 52;
@@ -474,7 +474,7 @@ namespace FriishProduce.Views
             this.btn_core_right.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.btn_core_right.ForeColor = System.Drawing.Color.Black;
             this.btn_core_right.FormattingEnabled = true;
-            this.btn_core_right.Location = new System.Drawing.Point(207, 55);
+            this.btn_core_right.Location = new System.Drawing.Point(206, 55);
             this.btn_core_right.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.btn_core_right.Name = "btn_core_right";
             this.btn_core_right.Size = new System.Drawing.Size(120, 21);
@@ -488,7 +488,7 @@ namespace FriishProduce.Views
             this.btn_core_minus.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.btn_core_minus.ForeColor = System.Drawing.Color.Black;
             this.btn_core_minus.FormattingEnabled = true;
-            this.btn_core_minus.Location = new System.Drawing.Point(457, 130);
+            this.btn_core_minus.Location = new System.Drawing.Point(456, 130);
             this.btn_core_minus.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.btn_core_minus.Name = "btn_core_minus";
             this.btn_core_minus.Size = new System.Drawing.Size(120, 21);
@@ -498,7 +498,7 @@ namespace FriishProduce.Views
             // pictureBox15
             // 
             this.pictureBox15.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox15.Location = new System.Drawing.Point(375, 141);
+            this.pictureBox15.Location = new System.Drawing.Point(374, 141);
             this.pictureBox15.Name = "pictureBox15";
             this.pictureBox15.Size = new System.Drawing.Size(1, 13);
             this.pictureBox15.TabIndex = 51;
@@ -507,7 +507,7 @@ namespace FriishProduce.Views
             // pictureBox16
             // 
             this.pictureBox16.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox16.Location = new System.Drawing.Point(375, 140);
+            this.pictureBox16.Location = new System.Drawing.Point(374, 140);
             this.pictureBox16.Name = "pictureBox16";
             this.pictureBox16.Size = new System.Drawing.Size(96, 1);
             this.pictureBox16.TabIndex = 50;
@@ -520,7 +520,7 @@ namespace FriishProduce.Views
             this.btn_core_plus.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.btn_core_plus.ForeColor = System.Drawing.Color.Black;
             this.btn_core_plus.FormattingEnabled = true;
-            this.btn_core_plus.Location = new System.Drawing.Point(457, 106);
+            this.btn_core_plus.Location = new System.Drawing.Point(456, 106);
             this.btn_core_plus.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.btn_core_plus.Name = "btn_core_plus";
             this.btn_core_plus.Size = new System.Drawing.Size(120, 21);
@@ -530,7 +530,7 @@ namespace FriishProduce.Views
             // pictureBox13
             // 
             this.pictureBox13.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox13.Location = new System.Drawing.Point(408, 117);
+            this.pictureBox13.Location = new System.Drawing.Point(407, 117);
             this.pictureBox13.Name = "pictureBox13";
             this.pictureBox13.Size = new System.Drawing.Size(1, 37);
             this.pictureBox13.TabIndex = 49;
@@ -539,7 +539,7 @@ namespace FriishProduce.Views
             // pictureBox14
             // 
             this.pictureBox14.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox14.Location = new System.Drawing.Point(408, 116);
+            this.pictureBox14.Location = new System.Drawing.Point(407, 116);
             this.pictureBox14.Name = "pictureBox14";
             this.pictureBox14.Size = new System.Drawing.Size(95, 1);
             this.pictureBox14.TabIndex = 48;
@@ -552,7 +552,7 @@ namespace FriishProduce.Views
             this.btn_core_b.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.btn_core_b.ForeColor = System.Drawing.Color.Black;
             this.btn_core_b.FormattingEnabled = true;
-            this.btn_core_b.Location = new System.Drawing.Point(457, 82);
+            this.btn_core_b.Location = new System.Drawing.Point(456, 82);
             this.btn_core_b.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.btn_core_b.Name = "btn_core_b";
             this.btn_core_b.Size = new System.Drawing.Size(120, 21);
@@ -562,7 +562,7 @@ namespace FriishProduce.Views
             // pictureBox12
             // 
             this.pictureBox12.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox12.Location = new System.Drawing.Point(431, 92);
+            this.pictureBox12.Location = new System.Drawing.Point(430, 92);
             this.pictureBox12.Name = "pictureBox12";
             this.pictureBox12.Size = new System.Drawing.Size(105, 1);
             this.pictureBox12.TabIndex = 47;
@@ -575,7 +575,7 @@ namespace FriishProduce.Views
             this.btn_core_left.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.btn_core_left.ForeColor = System.Drawing.Color.Black;
             this.btn_core_left.FormattingEnabled = true;
-            this.btn_core_left.Location = new System.Drawing.Point(207, 31);
+            this.btn_core_left.Location = new System.Drawing.Point(206, 31);
             this.btn_core_left.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.btn_core_left.Name = "btn_core_left";
             this.btn_core_left.Size = new System.Drawing.Size(120, 21);
@@ -585,7 +585,7 @@ namespace FriishProduce.Views
             // pictureBox11
             // 
             this.pictureBox11.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox11.Location = new System.Drawing.Point(401, 65);
+            this.pictureBox11.Location = new System.Drawing.Point(400, 65);
             this.pictureBox11.Name = "pictureBox11";
             this.pictureBox11.Size = new System.Drawing.Size(1, 12);
             this.pictureBox11.TabIndex = 46;
@@ -594,7 +594,7 @@ namespace FriishProduce.Views
             // pictureBox10
             // 
             this.pictureBox10.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox10.Location = new System.Drawing.Point(382, 42);
+            this.pictureBox10.Location = new System.Drawing.Point(381, 42);
             this.pictureBox10.Name = "pictureBox10";
             this.pictureBox10.Size = new System.Drawing.Size(1, 35);
             this.pictureBox10.TabIndex = 45;
@@ -603,7 +603,7 @@ namespace FriishProduce.Views
             // pictureBox9
             // 
             this.pictureBox9.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox9.Location = new System.Drawing.Point(297, 65);
+            this.pictureBox9.Location = new System.Drawing.Point(296, 65);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(105, 1);
             this.pictureBox9.TabIndex = 44;
@@ -612,7 +612,7 @@ namespace FriishProduce.Views
             // pictureBox8
             // 
             this.pictureBox8.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox8.Location = new System.Drawing.Point(288, 41);
+            this.pictureBox8.Location = new System.Drawing.Point(287, 41);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(95, 1);
             this.pictureBox8.TabIndex = 43;
@@ -625,7 +625,7 @@ namespace FriishProduce.Views
             this.btn_nunchuk_z.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.btn_nunchuk_z.ForeColor = System.Drawing.Color.Black;
             this.btn_nunchuk_z.FormattingEnabled = true;
-            this.btn_nunchuk_z.Location = new System.Drawing.Point(30, 168);
+            this.btn_nunchuk_z.Location = new System.Drawing.Point(28, 168);
             this.btn_nunchuk_z.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.btn_nunchuk_z.Name = "btn_nunchuk_z";
             this.btn_nunchuk_z.Size = new System.Drawing.Size(120, 21);
@@ -639,7 +639,7 @@ namespace FriishProduce.Views
             this.btn_nunchuk_c.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.btn_nunchuk_c.ForeColor = System.Drawing.Color.Black;
             this.btn_nunchuk_c.FormattingEnabled = true;
-            this.btn_nunchuk_c.Location = new System.Drawing.Point(52, 144);
+            this.btn_nunchuk_c.Location = new System.Drawing.Point(50, 144);
             this.btn_nunchuk_c.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.btn_nunchuk_c.Name = "btn_nunchuk_c";
             this.btn_nunchuk_c.Size = new System.Drawing.Size(120, 21);
@@ -649,7 +649,7 @@ namespace FriishProduce.Views
             // pictureBox6
             // 
             this.pictureBox6.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox6.Location = new System.Drawing.Point(60, 78);
+            this.pictureBox6.Location = new System.Drawing.Point(58, 78);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(1, 68);
             this.pictureBox6.TabIndex = 42;
@@ -658,7 +658,7 @@ namespace FriishProduce.Views
             // pictureBox7
             // 
             this.pictureBox7.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox7.Location = new System.Drawing.Point(60, 78);
+            this.pictureBox7.Location = new System.Drawing.Point(58, 78);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(68, 1);
             this.pictureBox7.TabIndex = 41;
@@ -676,7 +676,7 @@ namespace FriishProduce.Views
             // pictureBox4
             // 
             this.pictureBox4.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox4.Location = new System.Drawing.Point(38, 92);
+            this.pictureBox4.Location = new System.Drawing.Point(36, 92);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(79, 1);
             this.pictureBox4.TabIndex = 39;
@@ -685,7 +685,7 @@ namespace FriishProduce.Views
             // pictureBox1
             // 
             this.pictureBox1.Image = global::FriishProduce.Properties.Resources.Controllers_Wiimote;
-            this.pictureBox1.Location = new System.Drawing.Point(349, 24);
+            this.pictureBox1.Location = new System.Drawing.Point(348, 24);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(86, 265);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -695,7 +695,7 @@ namespace FriishProduce.Views
             // pictureBox2
             // 
             this.pictureBox2.Image = global::FriishProduce.Properties.Resources.Controllers_Nunchuk;
-            this.pictureBox2.Location = new System.Drawing.Point(112, 54);
+            this.pictureBox2.Location = new System.Drawing.Point(110, 54);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(80, 250);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -748,7 +748,7 @@ namespace FriishProduce.Views
             this.ClassicController.Location = new System.Drawing.Point(4, 24);
             this.ClassicController.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.ClassicController.Name = "ClassicController";
-            this.ClassicController.Size = new System.Drawing.Size(592, 312);
+            this.ClassicController.Size = new System.Drawing.Size(605, 323);
             this.ClassicController.TabIndex = 1;
             this.ClassicController.Tag = "g008";
             this.ClassicController.Text = "classic";
@@ -761,7 +761,7 @@ namespace FriishProduce.Views
             this.btn_classic_zr.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.btn_classic_zr.ForeColor = System.Drawing.Color.Black;
             this.btn_classic_zr.FormattingEnabled = true;
-            this.btn_classic_zr.Location = new System.Drawing.Point(328, 20);
+            this.btn_classic_zr.Location = new System.Drawing.Point(334, 20);
             this.btn_classic_zr.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.btn_classic_zr.Name = "btn_classic_zr";
             this.btn_classic_zr.Size = new System.Drawing.Size(120, 21);
@@ -775,7 +775,7 @@ namespace FriishProduce.Views
             this.btn_classic_zl.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.btn_classic_zl.ForeColor = System.Drawing.Color.Black;
             this.btn_classic_zl.FormattingEnabled = true;
-            this.btn_classic_zl.Location = new System.Drawing.Point(144, 20);
+            this.btn_classic_zl.Location = new System.Drawing.Point(150, 20);
             this.btn_classic_zl.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.btn_classic_zl.Name = "btn_classic_zl";
             this.btn_classic_zl.Size = new System.Drawing.Size(120, 21);
@@ -789,7 +789,7 @@ namespace FriishProduce.Views
             this.btn_classic_r.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.btn_classic_r.ForeColor = System.Drawing.Color.Black;
             this.btn_classic_r.FormattingEnabled = true;
-            this.btn_classic_r.Location = new System.Drawing.Point(457, 20);
+            this.btn_classic_r.Location = new System.Drawing.Point(463, 20);
             this.btn_classic_r.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.btn_classic_r.Name = "btn_classic_r";
             this.btn_classic_r.Size = new System.Drawing.Size(120, 21);
@@ -803,7 +803,7 @@ namespace FriishProduce.Views
             this.btn_classic_l.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.btn_classic_l.ForeColor = System.Drawing.Color.Black;
             this.btn_classic_l.FormattingEnabled = true;
-            this.btn_classic_l.Location = new System.Drawing.Point(15, 20);
+            this.btn_classic_l.Location = new System.Drawing.Point(21, 20);
             this.btn_classic_l.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.btn_classic_l.Name = "btn_classic_l";
             this.btn_classic_l.Size = new System.Drawing.Size(120, 21);
@@ -813,7 +813,7 @@ namespace FriishProduce.Views
             // pictureBox52
             // 
             this.pictureBox52.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox52.Location = new System.Drawing.Point(334, 27);
+            this.pictureBox52.Location = new System.Drawing.Point(340, 27);
             this.pictureBox52.Name = "pictureBox52";
             this.pictureBox52.Size = new System.Drawing.Size(1, 24);
             this.pictureBox52.TabIndex = 92;
@@ -822,7 +822,7 @@ namespace FriishProduce.Views
             // pictureBox51
             // 
             this.pictureBox51.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox51.Location = new System.Drawing.Point(257, 27);
+            this.pictureBox51.Location = new System.Drawing.Point(263, 27);
             this.pictureBox51.Name = "pictureBox51";
             this.pictureBox51.Size = new System.Drawing.Size(1, 24);
             this.pictureBox51.TabIndex = 91;
@@ -831,7 +831,7 @@ namespace FriishProduce.Views
             // pictureBox49
             // 
             this.pictureBox49.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox49.Location = new System.Drawing.Point(100, 57);
+            this.pictureBox49.Location = new System.Drawing.Point(106, 57);
             this.pictureBox49.Name = "pictureBox49";
             this.pictureBox49.Size = new System.Drawing.Size(81, 1);
             this.pictureBox49.TabIndex = 90;
@@ -840,7 +840,7 @@ namespace FriishProduce.Views
             // pictureBox50
             // 
             this.pictureBox50.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox50.Location = new System.Drawing.Point(100, 34);
+            this.pictureBox50.Location = new System.Drawing.Point(106, 34);
             this.pictureBox50.Name = "pictureBox50";
             this.pictureBox50.Size = new System.Drawing.Size(1, 24);
             this.pictureBox50.TabIndex = 89;
@@ -849,7 +849,7 @@ namespace FriishProduce.Views
             // pictureBox47
             // 
             this.pictureBox47.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox47.Location = new System.Drawing.Point(410, 57);
+            this.pictureBox47.Location = new System.Drawing.Point(416, 57);
             this.pictureBox47.Name = "pictureBox47";
             this.pictureBox47.Size = new System.Drawing.Size(81, 1);
             this.pictureBox47.TabIndex = 88;
@@ -858,7 +858,7 @@ namespace FriishProduce.Views
             // pictureBox48
             // 
             this.pictureBox48.BackColor = System.Drawing.Color.DarkGray;
-            this.pictureBox48.Location = new System.Drawing.Point(490, 34);
+            this.pictureBox48.Location = new System.Drawing.Point(496, 34);
             this.pictureBox48.Name = "pictureBox48";
             this.pictureBox48.Size = new System.Drawing.Size(1, 24);
             this.pictureBox48.TabIndex = 87;
@@ -871,7 +871,7 @@ namespace FriishProduce.Views
             this.btn_classic_select.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.btn_classic_select.ForeColor = System.Drawing.Color.Black;
             this.btn_classic_select.FormattingEnabled = true;
-            this.btn_classic_select.Location = new System.Drawing.Point(156, 248);
+            this.btn_classic_select.Location = new System.Drawing.Point(162, 248);
             this.btn_classic_select.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.btn_classic_select.Name = "btn_classic_select";
             this.btn_classic_select.Size = new System.Drawing.Size(120, 21);
@@ -885,7 +885,7 @@ namespace FriishProduce.Views
             this.btn_classic_start.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.btn_classic_start.ForeColor = System.Drawing.Color.Black;
             this.btn_classic_start.FormattingEnabled = true;
-            this.btn_classic_start.Location = new System.Drawing.Point(317, 248);
+            this.btn_classic_start.Location = new System.Drawing.Point(323, 248);
             this.btn_classic_start.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.btn_classic_start.Name = "btn_classic_start";
             this.btn_classic_start.Size = new System.Drawing.Size(120, 21);
@@ -899,7 +899,7 @@ namespace FriishProduce.Views
             this.btn_classic_home.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.btn_classic_home.ForeColor = System.Drawing.Color.Black;
             this.btn_classic_home.FormattingEnabled = true;
-            this.btn_classic_home.Location = new System.Drawing.Point(234, 275);
+            this.btn_classic_home.Location = new System.Drawing.Point(240, 275);
             this.btn_classic_home.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.btn_classic_home.Name = "btn_classic_home";
             this.btn_classic_home.Size = new System.Drawing.Size(120, 21);
@@ -909,7 +909,7 @@ namespace FriishProduce.Views
             // pictureBox46
             // 
             this.pictureBox46.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox46.Location = new System.Drawing.Point(296, 125);
+            this.pictureBox46.Location = new System.Drawing.Point(302, 125);
             this.pictureBox46.Name = "pictureBox46";
             this.pictureBox46.Size = new System.Drawing.Size(1, 158);
             this.pictureBox46.TabIndex = 86;
@@ -918,7 +918,7 @@ namespace FriishProduce.Views
             // pictureBox45
             // 
             this.pictureBox45.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox45.Location = new System.Drawing.Point(319, 125);
+            this.pictureBox45.Location = new System.Drawing.Point(325, 125);
             this.pictureBox45.Name = "pictureBox45";
             this.pictureBox45.Size = new System.Drawing.Size(1, 140);
             this.pictureBox45.TabIndex = 85;
@@ -927,7 +927,7 @@ namespace FriishProduce.Views
             // pictureBox44
             // 
             this.pictureBox44.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox44.Location = new System.Drawing.Point(273, 125);
+            this.pictureBox44.Location = new System.Drawing.Point(279, 125);
             this.pictureBox44.Name = "pictureBox44";
             this.pictureBox44.Size = new System.Drawing.Size(1, 140);
             this.pictureBox44.TabIndex = 84;
@@ -940,7 +940,7 @@ namespace FriishProduce.Views
             this.btn_classic_b.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.btn_classic_b.ForeColor = System.Drawing.Color.Black;
             this.btn_classic_b.FormattingEnabled = true;
-            this.btn_classic_b.Location = new System.Drawing.Point(457, 173);
+            this.btn_classic_b.Location = new System.Drawing.Point(463, 173);
             this.btn_classic_b.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.btn_classic_b.Name = "btn_classic_b";
             this.btn_classic_b.Size = new System.Drawing.Size(120, 21);
@@ -954,7 +954,7 @@ namespace FriishProduce.Views
             this.btn_classic_a.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.btn_classic_a.ForeColor = System.Drawing.Color.Black;
             this.btn_classic_a.FormattingEnabled = true;
-            this.btn_classic_a.Location = new System.Drawing.Point(457, 146);
+            this.btn_classic_a.Location = new System.Drawing.Point(463, 146);
             this.btn_classic_a.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.btn_classic_a.Name = "btn_classic_a";
             this.btn_classic_a.Size = new System.Drawing.Size(120, 21);
@@ -964,7 +964,7 @@ namespace FriishProduce.Views
             // pictureBox42
             // 
             this.pictureBox42.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox42.Location = new System.Drawing.Point(391, 145);
+            this.pictureBox42.Location = new System.Drawing.Point(397, 145);
             this.pictureBox42.Name = "pictureBox42";
             this.pictureBox42.Size = new System.Drawing.Size(1, 40);
             this.pictureBox42.TabIndex = 83;
@@ -973,7 +973,7 @@ namespace FriishProduce.Views
             // pictureBox43
             // 
             this.pictureBox43.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox43.Location = new System.Drawing.Point(392, 184);
+            this.pictureBox43.Location = new System.Drawing.Point(398, 184);
             this.pictureBox43.Name = "pictureBox43";
             this.pictureBox43.Size = new System.Drawing.Size(95, 1);
             this.pictureBox43.TabIndex = 82;
@@ -982,7 +982,7 @@ namespace FriishProduce.Views
             // pictureBox40
             // 
             this.pictureBox40.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox40.Location = new System.Drawing.Point(423, 125);
+            this.pictureBox40.Location = new System.Drawing.Point(429, 125);
             this.pictureBox40.Name = "pictureBox40";
             this.pictureBox40.Size = new System.Drawing.Size(1, 33);
             this.pictureBox40.TabIndex = 81;
@@ -991,7 +991,7 @@ namespace FriishProduce.Views
             // pictureBox41
             // 
             this.pictureBox41.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox41.Location = new System.Drawing.Point(424, 157);
+            this.pictureBox41.Location = new System.Drawing.Point(430, 157);
             this.pictureBox41.Name = "pictureBox41";
             this.pictureBox41.Size = new System.Drawing.Size(95, 1);
             this.pictureBox41.TabIndex = 80;
@@ -1004,7 +1004,7 @@ namespace FriishProduce.Views
             this.btn_classic_x.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.btn_classic_x.ForeColor = System.Drawing.Color.Black;
             this.btn_classic_x.FormattingEnabled = true;
-            this.btn_classic_x.Location = new System.Drawing.Point(457, 119);
+            this.btn_classic_x.Location = new System.Drawing.Point(463, 119);
             this.btn_classic_x.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.btn_classic_x.Name = "btn_classic_x";
             this.btn_classic_x.Size = new System.Drawing.Size(120, 21);
@@ -1014,7 +1014,7 @@ namespace FriishProduce.Views
             // pictureBox38
             // 
             this.pictureBox38.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox38.Location = new System.Drawing.Point(393, 107);
+            this.pictureBox38.Location = new System.Drawing.Point(399, 107);
             this.pictureBox38.Name = "pictureBox38";
             this.pictureBox38.Size = new System.Drawing.Size(1, 23);
             this.pictureBox38.TabIndex = 79;
@@ -1023,7 +1023,7 @@ namespace FriishProduce.Views
             // pictureBox39
             // 
             this.pictureBox39.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox39.Location = new System.Drawing.Point(394, 129);
+            this.pictureBox39.Location = new System.Drawing.Point(400, 129);
             this.pictureBox39.Name = "pictureBox39";
             this.pictureBox39.Size = new System.Drawing.Size(95, 1);
             this.pictureBox39.TabIndex = 78;
@@ -1032,7 +1032,7 @@ namespace FriishProduce.Views
             // pictureBox37
             // 
             this.pictureBox37.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox37.Location = new System.Drawing.Point(362, 102);
+            this.pictureBox37.Location = new System.Drawing.Point(368, 102);
             this.pictureBox37.Name = "pictureBox37";
             this.pictureBox37.Size = new System.Drawing.Size(1, 23);
             this.pictureBox37.TabIndex = 77;
@@ -1041,7 +1041,7 @@ namespace FriishProduce.Views
             // pictureBox36
             // 
             this.pictureBox36.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox36.Location = new System.Drawing.Point(362, 102);
+            this.pictureBox36.Location = new System.Drawing.Point(368, 102);
             this.pictureBox36.Name = "pictureBox36";
             this.pictureBox36.Size = new System.Drawing.Size(95, 1);
             this.pictureBox36.TabIndex = 76;
@@ -1054,7 +1054,7 @@ namespace FriishProduce.Views
             this.btn_classic_right.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.btn_classic_right.ForeColor = System.Drawing.Color.Black;
             this.btn_classic_right.FormattingEnabled = true;
-            this.btn_classic_right.Location = new System.Drawing.Point(15, 119);
+            this.btn_classic_right.Location = new System.Drawing.Point(21, 119);
             this.btn_classic_right.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.btn_classic_right.Name = "btn_classic_right";
             this.btn_classic_right.Size = new System.Drawing.Size(120, 21);
@@ -1068,7 +1068,7 @@ namespace FriishProduce.Views
             this.btn_classic_left.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.btn_classic_left.ForeColor = System.Drawing.Color.Black;
             this.btn_classic_left.FormattingEnabled = true;
-            this.btn_classic_left.Location = new System.Drawing.Point(15, 92);
+            this.btn_classic_left.Location = new System.Drawing.Point(21, 92);
             this.btn_classic_left.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.btn_classic_left.Name = "btn_classic_left";
             this.btn_classic_left.Size = new System.Drawing.Size(120, 21);
@@ -1082,7 +1082,7 @@ namespace FriishProduce.Views
             this.btn_classic_down.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.btn_classic_down.ForeColor = System.Drawing.Color.Black;
             this.btn_classic_down.FormattingEnabled = true;
-            this.btn_classic_down.Location = new System.Drawing.Point(15, 146);
+            this.btn_classic_down.Location = new System.Drawing.Point(21, 146);
             this.btn_classic_down.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.btn_classic_down.Name = "btn_classic_down";
             this.btn_classic_down.Size = new System.Drawing.Size(120, 21);
@@ -1096,7 +1096,7 @@ namespace FriishProduce.Views
             this.btn_classic_up.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.btn_classic_up.ForeColor = System.Drawing.Color.Black;
             this.btn_classic_up.FormattingEnabled = true;
-            this.btn_classic_up.Location = new System.Drawing.Point(15, 173);
+            this.btn_classic_up.Location = new System.Drawing.Point(21, 173);
             this.btn_classic_up.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.btn_classic_up.Name = "btn_classic_up";
             this.btn_classic_up.Size = new System.Drawing.Size(120, 21);
@@ -1106,7 +1106,7 @@ namespace FriishProduce.Views
             // pictureBox35
             // 
             this.pictureBox35.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox35.Location = new System.Drawing.Point(215, 125);
+            this.pictureBox35.Location = new System.Drawing.Point(221, 125);
             this.pictureBox35.Name = "pictureBox35";
             this.pictureBox35.Size = new System.Drawing.Size(1, 5);
             this.pictureBox35.TabIndex = 75;
@@ -1115,7 +1115,7 @@ namespace FriishProduce.Views
             // pictureBox34
             // 
             this.pictureBox34.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox34.Location = new System.Drawing.Point(183, 102);
+            this.pictureBox34.Location = new System.Drawing.Point(189, 102);
             this.pictureBox34.Name = "pictureBox34";
             this.pictureBox34.Size = new System.Drawing.Size(1, 23);
             this.pictureBox34.TabIndex = 74;
@@ -1124,7 +1124,7 @@ namespace FriishProduce.Views
             // pictureBox33
             // 
             this.pictureBox33.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox33.Location = new System.Drawing.Point(88, 102);
+            this.pictureBox33.Location = new System.Drawing.Point(94, 102);
             this.pictureBox33.Name = "pictureBox33";
             this.pictureBox33.Size = new System.Drawing.Size(95, 1);
             this.pictureBox33.TabIndex = 73;
@@ -1133,7 +1133,7 @@ namespace FriishProduce.Views
             // pictureBox31
             // 
             this.pictureBox31.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox31.Location = new System.Drawing.Point(121, 183);
+            this.pictureBox31.Location = new System.Drawing.Point(127, 183);
             this.pictureBox31.Name = "pictureBox31";
             this.pictureBox31.Size = new System.Drawing.Size(81, 1);
             this.pictureBox31.TabIndex = 72;
@@ -1142,7 +1142,7 @@ namespace FriishProduce.Views
             // pictureBox32
             // 
             this.pictureBox32.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox32.Location = new System.Drawing.Point(201, 110);
+            this.pictureBox32.Location = new System.Drawing.Point(207, 110);
             this.pictureBox32.Name = "pictureBox32";
             this.pictureBox32.Size = new System.Drawing.Size(1, 74);
             this.pictureBox32.TabIndex = 71;
@@ -1151,7 +1151,7 @@ namespace FriishProduce.Views
             // pictureBox30
             // 
             this.pictureBox30.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox30.Location = new System.Drawing.Point(115, 156);
+            this.pictureBox30.Location = new System.Drawing.Point(121, 156);
             this.pictureBox30.Name = "pictureBox30";
             this.pictureBox30.Size = new System.Drawing.Size(81, 1);
             this.pictureBox30.TabIndex = 70;
@@ -1160,7 +1160,7 @@ namespace FriishProduce.Views
             // pictureBox28
             // 
             this.pictureBox28.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox28.Location = new System.Drawing.Point(195, 143);
+            this.pictureBox28.Location = new System.Drawing.Point(201, 143);
             this.pictureBox28.Name = "pictureBox28";
             this.pictureBox28.Size = new System.Drawing.Size(1, 14);
             this.pictureBox28.TabIndex = 69;
@@ -1169,7 +1169,7 @@ namespace FriishProduce.Views
             // pictureBox29
             // 
             this.pictureBox29.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox29.Location = new System.Drawing.Point(120, 129);
+            this.pictureBox29.Location = new System.Drawing.Point(126, 129);
             this.pictureBox29.Name = "pictureBox29";
             this.pictureBox29.Size = new System.Drawing.Size(95, 1);
             this.pictureBox29.TabIndex = 68;
@@ -1182,7 +1182,7 @@ namespace FriishProduce.Views
             this.btn_classic_y.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.btn_classic_y.ForeColor = System.Drawing.Color.Black;
             this.btn_classic_y.FormattingEnabled = true;
-            this.btn_classic_y.Location = new System.Drawing.Point(457, 92);
+            this.btn_classic_y.Location = new System.Drawing.Point(463, 92);
             this.btn_classic_y.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.btn_classic_y.Name = "btn_classic_y";
             this.btn_classic_y.Size = new System.Drawing.Size(120, 21);
@@ -1192,7 +1192,7 @@ namespace FriishProduce.Views
             // pictureBox3
             // 
             this.pictureBox3.Image = global::FriishProduce.Properties.Resources.Controllers_Classic;
-            this.pictureBox3.Location = new System.Drawing.Point(139, 48);
+            this.pictureBox3.Location = new System.Drawing.Point(145, 48);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(314, 331);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
