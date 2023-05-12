@@ -47,19 +47,21 @@ namespace FriishProduce.Views
         {
             get
             {
-                List<string> List = new List<string>();
-                List.Add("—");
-                List.Add("KEY_LEFT");
-                List.Add("KEY_RIGHT");
-                List.Add("KEY_DOWN");
-                List.Add("KEY_UP");
-                List.Add("KEY_ENTER");
-                List.Add("KEY_SPACE");
-                List.Add("KEY_SHIFT");
-                List.Add("KEY_CTRL");
-                List.Add("KEY_DELETE");
-                List.Add("KEY_ESCAPE");
-                List.Add("KEY_BACKSPACE");
+                List<string> List = new List<string>
+                {
+                    "—",
+                    "KEY_LEFT",
+                    "KEY_RIGHT",
+                    "KEY_DOWN",
+                    "KEY_UP",
+                    "KEY_ENTER",
+                    "KEY_SPACE",
+                    "KEY_SHIFT",
+                    "KEY_CTRL",
+                    "KEY_DELETE",
+                    "KEY_ESCAPE",
+                    "KEY_BACKSPACE"
+                };
                 for (int i = 0; i <= 'Z' - 'A'; i++)
                     List.Add($"{(char)(i + 'A')}");
                 for (int i = 1; i <= 10; i++)
@@ -73,7 +75,7 @@ namespace FriishProduce.Views
         {
             InitializeComponent();
             Program.Language.Localize(this);
-            Config = srcConfig != null ? srcConfig : new Dictionary<string, string>();
+            Config = srcConfig ?? new Dictionary<string, string>();
         }
 
         private void Page_Load(object sender, EventArgs e)

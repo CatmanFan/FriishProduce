@@ -12,7 +12,7 @@ namespace FriishProduce.Views
 {
     public partial class SEGA_Config : Form
     {
-        Lang x = Program.Language;
+        readonly Lang x = Program.Language;
         private Dictionary<string, string> btns = new Dictionary<string, string>();
         public List<string> config { get; set; }
 
@@ -133,8 +133,7 @@ namespace FriishProduce.Views
 
         private void OK_Click(object sender, EventArgs e)
         {
-            config = new List<string>();
-            config.Add($"console.machine_country=\"{country_l.SelectedItem}\"");
+            config = new List<string> { $"console.machine_country=\"{country_l.SelectedItem}\"" };
             if (console_disable_resetbutton.Checked) config.Add("console.disable_resetbutton=\"1\"");
             if (console_savesram.Checked) config.Add("save_sram=\"1\"");
             if (mdpad_6b.Checked && mdpad_6b.Enabled) config.Add("dev.mdpad.enable_6b=\"1\"");

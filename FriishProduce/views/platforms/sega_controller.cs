@@ -55,20 +55,22 @@ namespace FriishProduce.Views
         {
             get
             {
-                List<string> List = new List<string>();
-                List.Add("—");
-                List.Add("U");
-                List.Add("D");
-                List.Add("L");
-                List.Add("R");
-                List.Add("Start");
-                List.Add("A");
-                List.Add("B");
-                List.Add("C");
-                List.Add("X");
-                List.Add("Y");
-                List.Add("Z");
-                List.Add("Mode");
+                List<string> List = new List<string>
+                {
+                    "—",
+                    "U",
+                    "D",
+                    "L",
+                    "R",
+                    "Start",
+                    "A",
+                    "B",
+                    "C",
+                    "X",
+                    "Y",
+                    "Z",
+                    "Mode"
+                };
                 return List.ToArray();
             }
         }
@@ -78,7 +80,7 @@ namespace FriishProduce.Views
         {
             InitializeComponent();
             Program.Language.Localize(this);
-            Config = srcConfig != null ? srcConfig : new Dictionary<string, string>();
+            Config = srcConfig ?? new Dictionary<string, string>();
         }
 
         private void Page_Load(object sender, EventArgs e)

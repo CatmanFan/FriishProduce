@@ -111,6 +111,26 @@ namespace FriishProduce.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] DOL_GenPlusGx {
+            get {
+                object obj = ResourceManager.GetObject("DOL_GenPlusGx", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] DOL_Snes9xGx {
+            get {
+                object obj = ResourceManager.GetObject("DOL_Snes9xGx", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;metadata&quot;: {
         ///    &quot;code&quot;: &quot;en&quot;,
@@ -145,6 +165,26 @@ namespace FriishProduce.Properties {
         internal static byte[] GBALZSS {
             get {
                 object obj = ResourceManager.GetObject("GBALZSS", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] NANDLoader_Comex {
+            get {
+                object obj = ResourceManager.GetObject("NANDLoader_Comex", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] NANDLoader_vWii {
+            get {
+                object obj = ResourceManager.GetObject("NANDLoader_vWii", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -196,6 +236,16 @@ namespace FriishProduce.Properties {
             get {
                 object obj = ResourceManager.GetObject("SaveIconPlaceholder_SEGA", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] SD_Forwarder {
+            get {
+                object obj = ResourceManager.GetObject("SD_Forwarder", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         

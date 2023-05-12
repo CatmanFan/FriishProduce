@@ -14,16 +14,27 @@ namespace FriishProduce
 {
     public partial class Main : Form
     {
-        Lang x = Program.Language;
+        readonly Lang x = Program.Language;
         Platforms currentConsole = 0;
         Database db;
 
+        bool ForwarderMode = false;
+        readonly string[] Forwarders = new string[]
+        {
+            "FCEUmm-GX",
+            "Snes9x-GX",
+            "VBA-GX",
+            "Genesis Plus GX",
+            "Wii64",
+            "WiiSX",
+        };
+
         string[] input = new string[]
-            {
-                /* Full path to ROM       */ null,
-                /* Full path to ROM patch */ null,
-                /* Full path to WAD file  */ null
-            };
+        {
+            /* Full path to ROM       */ null,
+            /* Full path to ROM patch */ null,
+            /* Full path to WAD file  */ null
+        };
         Dictionary<string, string> btns = new Dictionary<string, string>();
         TitleImage tImg = new TitleImage();
 
@@ -67,8 +78,6 @@ namespace FriishProduce
         {
             a001.Text = x.Get("a001");
             OpenROM.Text = x.Get("g003");
-            foreach (var p in page4.Controls.OfType<Panel>())
-                if (p.Name.StartsWith("Options_")) p.Visible = false;
 
             currentConsole = (Platforms)Console.SelectedIndex;
             db = new Database((int)currentConsole);
@@ -78,8 +87,6 @@ namespace FriishProduce
             {
                 case Platforms.NES:
                     BrowseROM.Filter = x.Get("f_nes");
-                    Options_NES.Visible = true;
-                    SaveDataTitle.MaxLength = 20;
                     break;
 
                 case Platforms.SNES:
@@ -88,31 +95,27 @@ namespace FriishProduce
 
                 case Platforms.N64:
                     BrowseROM.Filter = x.Get("f_n64");
-                    Options_N64.Visible = true;
                     break;
 
                 case Platforms.SMS:
                     BrowseROM.Filter = x.Get("f_sms");
-                    Options_SEGA.Visible = true;
                     break;
 
                 case Platforms.SMD:
                     BrowseROM.Filter = x.Get("f_smd");
-                    Options_SEGA.Visible = true;
                     break;
 
                 case Platforms.Flash:
                     a001.Text = x.Get("a001_swf");
                     OpenROM.Text = x.Get("g004");
                     BrowseROM.Filter = x.Get("f_swf");
-                    Options_Flash.Visible = true;
-
-                    DisableEmanual.Visible = false;
                     break;
             }
 
             BrowseROM.Filter += x.Get("f_all");
+
             Reset();
+            CheckForForwarder();
             RefreshBases();
 
             Image.Image = tImg.Generate(currentConsole);
@@ -121,6 +124,42 @@ namespace FriishProduce
             Patch.Visible = currentConsole != Platforms.Flash;
 
             Next.Enabled = true;
+        }
+
+        private void CheckForForwarder()
+        {
+            // TO-DO:
+            // Check for each console using switch loop, and toggle relevant panel+vWii depending on selected injection method
+
+            ForwarderMode = InjectionMethod.SelectedIndex > 0;
+            vWii.Visible = ForwarderMode;
+            DisableEmanual.Visible = !ForwarderMode;
+            SaveDataTitle.MaxLength = 80;
+
+            foreach (var p in page4.Controls.OfType<Panel>())
+                if (p.Name.StartsWith("Options_")) p.Visible = false;
+            if (InjectionMethod.SelectedIndex == 0)
+                switch (currentConsole)
+                {
+                    case Platforms.NES:
+                        Options_NES.Visible = true;
+                        SaveDataTitle.MaxLength = 20;
+                        break;
+
+                    case Platforms.N64:
+                        Options_N64.Visible = true;
+                        break;
+
+                    case Platforms.SMS:
+                    case Platforms.SMD:
+                        Options_SEGA.Visible = true;
+                        break;
+
+                    case Platforms.Flash:
+                        DisableEmanual.Visible = false;
+                        Options_Flash.Visible = true;
+                        break;
+                }
         }
 
         /// <summary>
@@ -139,34 +178,91 @@ namespace FriishProduce
             Flash_TotalSaveDataSize.SelectedIndex = 0;
             Flash_FPS.SelectedIndex = 0;
             Flash_StrapReminder.SelectedIndex = 0;
+
+            InjectionMethod.Items.Clear();
+            InjectionMethod.Items.Add(x.Get("g012"));
+            switch (currentConsole)
+            {
+                case Platforms.NES:
+                    InjectionMethod.Items.Add(Forwarders[0]);
+                    break;
+                case Platforms.SNES:
+                    InjectionMethod.Items.Add(Forwarders[1]);
+                    break;
+                case Platforms.N64:
+                    InjectionMethod.Items.Add(Forwarders[2]);
+                    break;
+                case Platforms.SMS:
+                case Platforms.SMD:
+                    InjectionMethod.Items.Add(Forwarders[3]);
+                    break;
+                case Platforms.PCE:
+                    break;
+                case Platforms.NeoGeo:
+                    break;
+                case Platforms.C64:
+                    break;
+                case Platforms.MSX:
+                    break;
+                case Platforms.Flash:
+                    break;
+                default:
+                    break;
+            }
+            InjectionMethod.SelectedIndex = 0;
+            InjectionMethod.Enabled = InjectionMethod.Items.Count > 1;
+            InjectionMethod.Visible = currentConsole != Platforms.Flash;
+            g002.Visible = InjectionMethod.Visible;
         }
 
         // ***************************************************************************************************************** //
-        private void Settings_Click(object sender, EventArgs e)
-        {
-            Settings SettingsForm = new Settings() { Text = x.Get("g001"), };
-            ChangeTheme(SettingsForm);
-            if (SettingsForm.ShowDialog(this) == DialogResult.OK) ChangeTheme();
-        }
 
         /// <summary>
         /// Sets the theme to light or dark mode
         /// </summary>
         private void ChangeTheme()
         {
+
             if (Properties.Settings.Default.LightTheme)
             {
                 BackColor = Themes.Light.BG;
                 ForeColor = Themes.Light.FG;
                 panel.BackColor = Themes.Light.BG_Secondary;
-                Image.BackColor = Themes.Light.BG_Image;
+                Image.BackColor = Themes.Light.BG_Secondary;
                 foreach (var panel in Controls.OfType<Panel>())
                 {
+                    foreach (var item in panel.Controls.OfType<ComboBox>())
+                    {
+                        item.FlatStyle = FlatStyle.System;
+                        item.BackColor = Themes.Light.BG_Secondary;
+                        item.ForeColor = Themes.Light.FG;
+                    }
                     foreach (var cb in panel.Controls.OfType<CheckBox>()) cb.FlatStyle = FlatStyle.System;
-                    foreach (var c1 in panel.Controls.OfType<Panel>())
-                        foreach (var cb in c1.Controls.OfType<CheckBox>()) cb.FlatStyle = FlatStyle.System;
+                    foreach (var cP in panel.Controls.OfType<Panel>())
+                    {
+                        foreach (var cb in cP.Controls.OfType<CheckBox>()) cb.FlatStyle = FlatStyle.Standard;
+                        foreach (var item in cP.Controls.OfType<TextBox>())
+                        {
+                            item.BorderStyle = BorderStyle.None;
+                            item.BackColor = Themes.Light.BG_Secondary;
+                            item.ForeColor = Themes.Light.FG;
+                        }
+                        foreach (var item in cP.Controls.OfType<NumericUpDown>())
+                        {
+                            item.BorderStyle = BorderStyle.None;
+                            item.BackColor = Themes.Light.BG_Secondary;
+                            item.ForeColor = Themes.Light.FG;
+                        }
+                        foreach (var item in cP.Controls.OfType<ComboBox>())
+                        {
+                            item.FlatStyle = FlatStyle.System;
+                            item.BackColor = Themes.Light.BG_Secondary;
+                            item.ForeColor = Themes.Light.FG;
+                        }
+                    }
                     foreach (var button in panel.Controls.OfType<Button>())
                     {
+                        button.BackColor = Themes.Light.BG_Secondary;
                         button.FlatAppearance.BorderColor = Themes.Light.ButtonBorder;
                         button.FlatAppearance.MouseDownBackColor = Themes.Light.ButtonDown;
                         button.FlatAppearance.MouseOverBackColor = button.FlatAppearance.BorderColor;
@@ -178,14 +274,41 @@ namespace FriishProduce
                 BackColor = Themes.Dark.BG;
                 ForeColor = Themes.Dark.FG;
                 panel.BackColor = Themes.Dark.BG_Secondary;
-                Image.BackColor = Themes.Dark.BG_Image;
+                Image.BackColor = Themes.Dark.BG_Secondary;
                 foreach (var panel in Controls.OfType<Panel>())
                 {
+                    foreach (var item in panel.Controls.OfType<ComboBox>())
+                    {
+                        item.FlatStyle = FlatStyle.System;
+                        item.BackColor = Themes.Dark.BG_Secondary;
+                        item.ForeColor = Themes.Dark.FG;
+                    }
                     foreach (var cb in panel.Controls.OfType<CheckBox>()) cb.FlatStyle = FlatStyle.Standard;
-                    foreach (var c2 in panel.Controls.OfType<Panel>())
-                        foreach (var cb in c2.Controls.OfType<CheckBox>()) cb.FlatStyle = FlatStyle.Standard;
+                    foreach (var cP in panel.Controls.OfType<Panel>())
+                    {
+                        foreach (var cb in cP.Controls.OfType<CheckBox>()) cb.FlatStyle = FlatStyle.Standard;
+                        foreach (var item in cP.Controls.OfType<TextBox>())
+                        {
+                            item.BorderStyle = BorderStyle.None;
+                            item.BackColor = Themes.Dark.BG_Secondary;
+                            item.ForeColor = Themes.Dark.FG;
+                        }
+                        foreach (var item in cP.Controls.OfType<NumericUpDown>())
+                        {
+                            item.BorderStyle = BorderStyle.None;
+                            item.BackColor = Themes.Dark.BG_Secondary;
+                            item.ForeColor = Themes.Dark.FG;
+                        }
+                        foreach (var item in cP.Controls.OfType<ComboBox>())
+                        {
+                            item.FlatStyle = FlatStyle.System;
+                            item.BackColor = Themes.Dark.BG_Secondary;
+                            item.ForeColor = Themes.Dark.FG;
+                        }
+                    }
                     foreach (var button in panel.Controls.OfType<Button>())
                     {
+                        button.BackColor = Themes.Dark.BG_Secondary;
                         button.FlatAppearance.BorderColor = Themes.Dark.ButtonBorder;
                         button.FlatAppearance.MouseDownBackColor = Themes.Dark.ButtonDown;
                         button.FlatAppearance.MouseOverBackColor = button.FlatAppearance.BorderColor;
@@ -200,11 +323,28 @@ namespace FriishProduce
             f.ForeColor = ForeColor;
             foreach (var item in f.Controls.OfType<Panel>())
             {
-                if (item.Tag.ToString() == "panel") item.BackColor = panel.BackColor;
+                if (item.Tag.ToString() == "panel") item.BackColor = Settings.BackColor;
                 else if (item.Tag.ToString() == "page") item.BackColor = Color.FromArgb((panel.BackColor.R + BackColor.R) / 2, (panel.BackColor.G + BackColor.G) / 2, (panel.BackColor.B + BackColor.B) / 2);
             }
+
             foreach (var item in f.Controls.OfType<ComboBox>())
-                if (item.Name.StartsWith("btns"))   item.BackColor = BackColor;
+            {
+                item.FlatStyle = Console.FlatStyle;
+                item.BackColor = Console.BackColor;
+                item.ForeColor = Console.ForeColor;
+            }
+            foreach (var tC in f.Controls.OfType<TabControl>())
+            {
+                foreach (var tP in tC.Controls.OfType<TabPage>())
+                {
+                    foreach (var item in tP.Controls.OfType<ComboBox>())
+                    {
+                        item.FlatStyle = Console.FlatStyle;
+                        item.BackColor = Console.BackColor;
+                        item.ForeColor = Console.ForeColor;
+                    }
+                }
+            }
 
             if (Properties.Settings.Default.LightTheme)
             {
@@ -240,6 +380,15 @@ namespace FriishProduce
                     }
                 }
             }
+        }
+
+        // ***************************************************************************************************************** //
+
+        private void Settings_Click(object sender, EventArgs e)
+        {
+            Settings SettingsForm = new Settings() { Text = x.Get("g001"), };
+            ChangeTheme(SettingsForm);
+            if (SettingsForm.ShowDialog(this) == DialogResult.OK) ChangeTheme();
         }
 
         private void Next_Click(object sender, EventArgs e)
@@ -294,6 +443,7 @@ namespace FriishProduce
                 Save.Visible = false;
             }
         }
+
         private bool checkBannerPage()
         {
             if (Custom.Checked)
@@ -431,6 +581,7 @@ namespace FriishProduce
                 return;
             }
         }
+
         private void DeleteWAD(object sender, EventArgs e)
         {
             if (MessageBox.Show(x.Get("m000"), MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -486,6 +637,39 @@ namespace FriishProduce
             }
         }
 
+        private void Flash_ControllerChanged(object sender, EventArgs e)
+        {
+            if (Flash_Controller.Checked)
+            {
+                Views.Flash_Controller ControllerForm = new Views.Flash_Controller(btns) { Text = x.Get("g006"), };
+                ChangeTheme(ControllerForm);
+
+                if (ControllerForm.ShowDialog(this) == DialogResult.OK)
+                    btns = ControllerForm.Config;
+                else
+                    Flash_Controller.Checked = false;
+            }
+        }
+
+        private void SEGA_ConfigChanged(object sender, EventArgs e)
+        {
+            if (SEGA_SetConfig.Checked)
+            {
+                ConfigForm_SEGA = new Views.SEGA_Config(currentConsole == Platforms.SMS) { Text = x.Get("g011") };
+                ChangeTheme(ConfigForm_SEGA);
+
+                if (ConfigForm_SEGA.ShowDialog(this) != DialogResult.OK)
+                    SEGA_SetConfig.Checked = false;
+            }
+            else
+            {
+                ConfigForm_SEGA.config = new List<string>();
+                ConfigForm_SEGA.Dispose();
+            }
+        }
+
+        // ***************************************************************************************************************** //
+
         private void BannerText_Changed(object sender, EventArgs e)
         {
             if (currentConsole == Platforms.SMS || currentConsole == Platforms.SMD) SaveDataTitle.Text = ChannelTitle.Text;
@@ -518,45 +702,6 @@ namespace FriishProduce
         }
 
         private void TitleID_Changed(object sender, EventArgs e) => Save.Enabled = (TitleID.Text.Length == 4) && Regex.IsMatch(TitleID.Text, "^[A-Z0-9]*$");
-
-        private void Patch_CheckedChanged(object sender, EventArgs e)
-        {
-            if (Patch.Checked)
-            {
-                if (BrowsePatch.ShowDialog() == DialogResult.OK)
-                    input[1] = BrowsePatch.FileName;
-                else
-                {
-                    input[1] = null;
-                    Patch.Checked = false;
-                } 
-            }
-            else input[1] = null;
-        }
-
-        /// <summary>
-        /// Function to store all actions in which toggling a checkbox also toggles other control(s)
-        /// </summary>
-        private void CheckedToggles(object sender, EventArgs e)
-        {
-            var s = sender as CheckBox;
-            switch (s.Name)
-            {
-                case "Custom":
-                    Banner.Enabled = s.Checked;
-                    Next.Enabled = checkBannerPage();
-                    break;
-                case "Import":
-                    ImportBases.Enabled = s.Checked;
-                    break;
-                case "Flash_UseSaveData":
-                    Flash_TotalSaveDataSize.Enabled = s.Checked;
-                    break;
-                case "Flash_CustomFPS":
-                    Flash_FPS.Enabled = s.Checked;
-                    break;
-            }
-        }
 
         private void Image_Click(object sender, MouseEventArgs e)
         {
@@ -621,36 +766,46 @@ namespace FriishProduce
             Next.Enabled = checkBannerPage();
         }
 
-        private void Flash_ControllerChanged(object sender, EventArgs e)
+        private void Patch_CheckedChanged(object sender, EventArgs e)
         {
-            if (Flash_Controller.Checked)
+            if (Patch.Checked)
             {
-                Views.Flash_Controller ControllerForm = new Views.Flash_Controller(btns) { Text = x.Get("g006"), };
-                ChangeTheme(ControllerForm);
-
-                if (ControllerForm.ShowDialog(this) == DialogResult.OK)
-                    btns = ControllerForm.Config;
+                if (BrowsePatch.ShowDialog() == DialogResult.OK)
+                    input[1] = BrowsePatch.FileName;
                 else
-                    Flash_Controller.Checked = false;
+                {
+                    input[1] = null;
+                    Patch.Checked = false;
+                }
             }
+            else input[1] = null;
         }
 
-        private void SEGA_ConfigChanged(object sender, EventArgs e)
+        /// <summary>
+        /// Function to store all actions in which toggling a checkbox also toggles other control(s)
+        /// </summary>
+        private void CheckedToggles(object sender, EventArgs e)
         {
-            if (SEGA_SetConfig.Checked)
+            var s = sender as CheckBox;
+            switch (s.Name)
             {
-                ConfigForm_SEGA = new Views.SEGA_Config(currentConsole == Platforms.SMS) { Text = x.Get("g011") };
-                ChangeTheme(ConfigForm_SEGA);
-
-                if (ConfigForm_SEGA.ShowDialog(this) != DialogResult.OK)
-                    SEGA_SetConfig.Checked = false;
-            }
-            else
-            {
-                ConfigForm_SEGA.config = new List<string>();
-                ConfigForm_SEGA.Dispose();
+                case "Custom":
+                    Banner.Enabled = s.Checked;
+                    Next.Enabled = checkBannerPage();
+                    break;
+                case "Import":
+                    ImportBases.Enabled = s.Checked;
+                    break;
+                case "Flash_UseSaveData":
+                    Flash_TotalSaveDataSize.Enabled = s.Checked;
+                    break;
+                case "Flash_CustomFPS":
+                    Flash_FPS.Enabled = s.Checked;
+                    break;
             }
         }
+
+        private void InjectionMethod_Changed(object sender, EventArgs e) => CheckForForwarder();
 
         // ***************************************************************************************************************** //
 
@@ -777,7 +932,10 @@ namespace FriishProduce
                     }
                     #endregion
 
-                    if (currentConsole != Platforms.Flash)
+                    // ----------------------------------------------------
+                    // Virtual Console injection
+                    // ----------------------------------------------------
+                    if (currentConsole != Platforms.Flash && !ForwarderMode)
                     {
                         if (currentConsole != Platforms.SMS && currentConsole != Platforms.SMD)
                             U8.Unpack(Paths.WorkingFolder + "00000005.app", Paths.WorkingFolder_Content5);
@@ -916,6 +1074,10 @@ namespace FriishProduce
                             u2.Dispose();
                         }
                     }
+
+                    // ----------------------------------------------------
+                    // Adobe Flash
+                    // ----------------------------------------------------
                     else if (currentConsole == Platforms.Flash)
                     {
                         U8.Unpack(Paths.WorkingFolder + "00000002.app", Paths.WorkingFolder_Content2);
@@ -934,9 +1096,44 @@ namespace FriishProduce
                         U8.Pack(Paths.WorkingFolder_Content2, Paths.WorkingFolder + "00000002.app");
                     }
 
+                    // ----------------------------------------------------
+                    // Forwarder creator
+                    // ----------------------------------------------------
+                    else if (currentConsole != Platforms.Flash && ForwarderMode)
+                    {
+                        int appIndex = 0;
+                        appIndex = w.BootIndex == 2 ? 1 : 2;
+                        if (appIndex == 0) throw new Exception("Not valid WAD!");
+                        w.RemoveAllContents();
+                        w.BannerApp = libWiiSharp.U8.Load(Paths.WorkingFolder + $"00000000.app");
+
+                        w.BootIndex = 1;
+
+                        // Add relevant NANDLoader
+                        // Needs to be replaced? (Comex NANDLoader)
+
+                        // Have no idea if supplying raw .app file is legally permitted, although this app was also included within ShowMiiWads repo
+                        if (vWii.Checked)
+                        {
+                            w.ChangeStartupIOS(58);
+                            w.AddContent(Properties.Resources.NANDLoader_vWii, 2, 2);
+                        }
+                        else
+                        {
+                            w.ChangeStartupIOS(53);
+                            w.AddContent(Properties.Resources.NANDLoader_Comex, 2, 2);
+                        }
+
+                        // Create forwarder .app
+                        var forwarder = Properties.Resources.SD_Forwarder;
+                        var id = System.Text.Encoding.ASCII.GetBytes(TitleID.Text);
+                        id.CopyTo(forwarder, 197076);
+                        w.AddContent(forwarder, 1, 1);
+                    }
+
                     // TO-DO: IOS video mode patching
 
-                    w.CreateNew(Paths.WorkingFolder);
+                    if (!ForwarderMode) w.CreateNew(Paths.WorkingFolder);
                     if (RegionFree.Checked) w.Region = libWiiSharp.Region.Free;
                     w.FakeSign = true;
                     w.ChangeTitleID(LowerTitleID.Channel, TitleID.Text);

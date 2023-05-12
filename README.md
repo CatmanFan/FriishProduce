@@ -35,6 +35,7 @@ This program uses the following third-party components and apps:
 * **gbalzss** by Andre Perrot, with additional LZSS code by Haruhiko Okumura.
 * **WWCXTool** by alpha-0.
 * **HowardC's Tools** (particularly, VCbrlyt).
+* **[Additional credits](https://github.com/CatmanFan/FriishProduce/tree/main/FriishProduce/Resources/forwarders/README.md) for forwarder components and emulators**
 
 I would also like to thank the following people:
 * **[SuperrSonic](https://github.com/SuperrSonic)** for reverse-engineering much of Wii software and official emulator code, and in particular, his [fork of RetroArch Wii](https://github.com/SuperrSonic/RA-SS).

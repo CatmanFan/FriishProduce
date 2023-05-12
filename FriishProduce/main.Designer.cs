@@ -40,6 +40,8 @@ namespace FriishProduce
             this.Console = new System.Windows.Forms.ComboBox();
             this.page1 = new System.Windows.Forms.Panel();
             this.page2 = new System.Windows.Forms.Panel();
+            this.g002 = new System.Windows.Forms.Label();
+            this.InjectionMethod = new System.Windows.Forms.ComboBox();
             this.Patch = new System.Windows.Forms.CheckBox();
             this.ROMPath = new System.Windows.Forms.Label();
             this.DeleteBase = new System.Windows.Forms.Button();
@@ -77,6 +79,7 @@ namespace FriishProduce
             this.TitleID = new System.Windows.Forms.TextBox();
             this.a005 = new System.Windows.Forms.Label();
             this.a004 = new System.Windows.Forms.Label();
+            this.vWii = new System.Windows.Forms.CheckBox();
             this.Options_N64 = new System.Windows.Forms.Panel();
             this.N64_FixBrightness = new System.Windows.Forms.CheckBox();
             this.N64_Allocation = new System.Windows.Forms.CheckBox();
@@ -85,7 +88,6 @@ namespace FriishProduce
             this.Options_NES = new System.Windows.Forms.Panel();
             this.NES_Palette = new System.Windows.Forms.ComboBox();
             this.NES__000 = new System.Windows.Forms.Label();
-            this.vWii = new System.Windows.Forms.CheckBox();
             this.Options_SEGA = new System.Windows.Forms.Panel();
             this.SEGA_SetConfig = new System.Windows.Forms.CheckBox();
             this.Options_Flash = new System.Windows.Forms.Panel();
@@ -194,6 +196,8 @@ namespace FriishProduce
             // 
             // page2
             // 
+            this.page2.Controls.Add(this.g002);
+            this.page2.Controls.Add(this.InjectionMethod);
             this.page2.Controls.Add(this.Patch);
             this.page2.Controls.Add(this.ROMPath);
             this.page2.Controls.Add(this.DeleteBase);
@@ -203,6 +207,21 @@ namespace FriishProduce
             this.page2.Controls.Add(this.a001);
             resources.ApplyResources(this.page2, "page2");
             this.page2.Name = "page2";
+            // 
+            // g002
+            // 
+            resources.ApplyResources(this.g002, "g002");
+            this.g002.Name = "g002";
+            this.g002.Tag = "g002";
+            // 
+            // InjectionMethod
+            // 
+            this.InjectionMethod.DisplayMember = "Base";
+            this.InjectionMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.InjectionMethod, "InjectionMethod");
+            this.InjectionMethod.FormattingEnabled = true;
+            this.InjectionMethod.Name = "InjectionMethod";
+            this.InjectionMethod.SelectedIndexChanged += new System.EventHandler(this.InjectionMethod_Changed);
             // 
             // Patch
             // 
@@ -336,6 +355,7 @@ namespace FriishProduce
             // 
             // SaveDataTitle
             // 
+            this.SaveDataTitle.BorderStyle = System.Windows.Forms.BorderStyle.None;
             resources.ApplyResources(this.SaveDataTitle, "SaveDataTitle");
             this.SaveDataTitle.Name = "SaveDataTitle";
             this.SaveDataTitle.TextChanged += new System.EventHandler(this.BannerText_Changed);
@@ -364,7 +384,6 @@ namespace FriishProduce
             // Image
             // 
             this.Image.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
-            this.Image.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Image.Cursor = System.Windows.Forms.Cursors.Hand;
             resources.ApplyResources(this.Image, "Image");
             this.Image.Name = "Image";
@@ -373,6 +392,7 @@ namespace FriishProduce
             // 
             // Players
             // 
+            this.Players.BorderStyle = System.Windows.Forms.BorderStyle.None;
             resources.ApplyResources(this.Players, "Players");
             this.Players.Maximum = new decimal(new int[] {
             10,
@@ -398,6 +418,7 @@ namespace FriishProduce
             // 
             // ReleaseYear
             // 
+            this.ReleaseYear.BorderStyle = System.Windows.Forms.BorderStyle.None;
             resources.ApplyResources(this.ReleaseYear, "ReleaseYear");
             this.ReleaseYear.Maximum = new decimal(new int[] {
             2029,
@@ -423,6 +444,7 @@ namespace FriishProduce
             // 
             // BannerTitle
             // 
+            this.BannerTitle.BorderStyle = System.Windows.Forms.BorderStyle.None;
             resources.ApplyResources(this.BannerTitle, "BannerTitle");
             this.BannerTitle.Name = "BannerTitle";
             this.BannerTitle.TextChanged += new System.EventHandler(this.BannerText_Changed);
@@ -440,6 +462,7 @@ namespace FriishProduce
             // 
             // ChannelTitle
             // 
+            this.ChannelTitle.BorderStyle = System.Windows.Forms.BorderStyle.None;
             resources.ApplyResources(this.ChannelTitle, "ChannelTitle");
             this.ChannelTitle.Name = "ChannelTitle";
             this.ChannelTitle.TextChanged += new System.EventHandler(this.BannerText_Changed);
@@ -454,7 +477,6 @@ namespace FriishProduce
             // 
             // page4
             // 
-            this.page4.Controls.Add(this.DisableEmanual);
             this.page4.Controls.Add(this.RegionFree);
             this.page4.Controls.Add(this.TitleID);
             this.page4.Controls.Add(this.a005);
@@ -464,6 +486,7 @@ namespace FriishProduce
             this.page4.Controls.Add(this.Options_NES);
             this.page4.Controls.Add(this.Options_SEGA);
             this.page4.Controls.Add(this.Options_Flash);
+            this.page4.Controls.Add(this.DisableEmanual);
             resources.ApplyResources(this.page4, "page4");
             this.page4.Name = "page4";
             // 
@@ -498,6 +521,13 @@ namespace FriishProduce
             // 
             resources.ApplyResources(this.a004, "a004");
             this.a004.Name = "a004";
+            // 
+            // vWii
+            // 
+            resources.ApplyResources(this.vWii, "vWii");
+            this.vWii.Name = "vWii";
+            this.vWii.Tag = "";
+            this.vWii.UseVisualStyleBackColor = true;
             // 
             // Options_N64
             // 
@@ -559,13 +589,6 @@ namespace FriishProduce
             resources.ApplyResources(this.NES__000, "NES__000");
             this.NES__000.Name = "NES__000";
             this.NES__000.Tag = "";
-            // 
-            // vWii
-            // 
-            resources.ApplyResources(this.vWii, "vWii");
-            this.vWii.Name = "vWii";
-            this.vWii.Tag = "";
-            this.vWii.UseVisualStyleBackColor = true;
             // 
             // Options_SEGA
             // 
@@ -804,6 +827,8 @@ namespace FriishProduce
         private System.Windows.Forms.Panel Options_SEGA;
         private System.Windows.Forms.CheckBox SEGA_SetConfig;
         private System.Windows.Forms.CheckBox N64_FixCrash;
+        private System.Windows.Forms.Label g002;
+        private System.Windows.Forms.ComboBox InjectionMethod;
     }
 }
 

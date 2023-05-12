@@ -152,7 +152,7 @@ namespace FriishProduce
             }
 
             tempBmp.Dispose();
-            return IconVCPic;
+            return VCPic;
         }
 
         private float[] opacity4 = { 0F, 0.32F, 0.64F, 1F };

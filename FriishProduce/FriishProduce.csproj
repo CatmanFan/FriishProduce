@@ -192,6 +192,12 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\forwarders\genplus-gx.dol" />
+    <None Include="Resources\forwarders\nandloader_comex.app" />
+    <None Include="Resources\forwarders\nandloader_vwii.app" />
+    <None Include="Resources\forwarders\README.md" />
+    <None Include="Resources\forwarders\sd_forwarder.app" />
+    <None Include="Resources\forwarders\snes9xgx.dol" />
     <None Include="Resources\images\savebanner_flash.png" />
     <None Include="Resources\images\saveicon_flash.png" />
     <None Include="Resources\images\saveicon_placeholder.png" />
