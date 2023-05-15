@@ -829,8 +829,7 @@ namespace FriishProduce
         private async void AutoFill_Click(object sender, EventArgs e)
         {
             Wait.Show();
-            AutoFill.Enabled = false;
-            Banner.Enabled = false;
+            page3.Enabled = false;
             Back.Enabled = false;
             Next.Enabled = false;
 
@@ -860,8 +859,7 @@ namespace FriishProduce
             });
 
             Wait.Hide();
-            AutoFill.Enabled = true;
-            Banner.Enabled = true;
+            page4.Enabled = false;
             Back.Enabled = true;
             Next.Enabled = CheckBannerPage();
         }
