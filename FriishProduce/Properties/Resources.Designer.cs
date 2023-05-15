@@ -111,26 +111,6 @@ namespace FriishProduce.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] DOL_GenPlusGx {
-            get {
-                object obj = ResourceManager.GetObject("DOL_GenPlusGx", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] DOL_Snes9xGx {
-            get {
-                object obj = ResourceManager.GetObject("DOL_Snes9xGx", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;metadata&quot;: {
         ///    &quot;code&quot;: &quot;en&quot;,
@@ -148,14 +128,23 @@ namespace FriishProduce.Properties {
         ///    &quot;NeoGeo&quot;: &quot;NEO-GEO&quot;,
         ///    &quot;C64&quot;: &quot;Commodore 64&quot;,
         ///    &quot;MSX&quot;: &quot;Microsoft MSX/MSX2&quot;,
-        ///    &quot;Flash&quot;: &quot;Adobe Flash&quot;
-        ///  },
-        ///  &quot;methods&quot;: {
-        ///    &quot;VC&quot;: &quot;Virtual Cons [rest of string was truncated]&quot;;.
+        ///    &quot;Flash&quot;: &quot;Adobe Flash&quot;,
+        ///    &quot;SMCD&quot;: &quot;SEGA/MEGA CD&quot;,
+        ///    &quot;S32X&quot;: &quot;SE [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string English {
             get {
                 return ResourceManager.GetString("English", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Forwarder {
+            get {
+                object obj = ResourceManager.GetObject("Forwarder", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         
@@ -172,9 +161,39 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] NANDLoader_Comex {
+        internal static byte[] NANDLoader_NTSC {
             get {
-                object obj = ResourceManager.GetObject("NANDLoader_Comex", resourceCulture);
+                object obj = ResourceManager.GetObject("NANDLoader_NTSC", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] NANDLoader_NTSC_53 {
+            get {
+                object obj = ResourceManager.GetObject("NANDLoader_NTSC_53", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] NANDLoader_NTSC_55 {
+            get {
+                object obj = ResourceManager.GetObject("NANDLoader_NTSC_55", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] NANDLoader_NTSC_56 {
+            get {
+                object obj = ResourceManager.GetObject("NANDLoader_NTSC_56", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -185,6 +204,16 @@ namespace FriishProduce.Properties {
         internal static byte[] NANDLoader_vWii {
             get {
                 object obj = ResourceManager.GetObject("NANDLoader_vWii", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] NANDLoader_Wii {
+            get {
+                object obj = ResourceManager.GetObject("NANDLoader_Wii", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -236,16 +265,6 @@ namespace FriishProduce.Properties {
             get {
                 object obj = ResourceManager.GetObject("SaveIconPlaceholder_SEGA", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] SD_Forwarder {
-            get {
-                object obj = ResourceManager.GetObject("SD_Forwarder", resourceCulture);
-                return ((byte[])(obj));
             }
         }
         

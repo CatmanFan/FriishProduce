@@ -15,7 +15,10 @@
     "NeoGeo": "NEO-GEO",
     "C64": "Commodore 64",
     "MSX": "Microsoft MSX/MSX2",
-    "Flash": "Adobe Flash"
+    "Flash": "Adobe Flash",
+    "SMCD": "SEGA/MEGA CD",
+    "S32X": "SEGA/MEGA 32X",
+    "PSX": "PlayStation"
   },
   "methods": {
     "VC": "Virtual Console",
@@ -39,6 +42,8 @@
     "g010": "Modify emulator configuration",
     "g011": "Emulator configuration",
     "g012": "Virtual Console",
+    "g013": "Load from USB storage device instead of SD",
+    "g014": "Force NTSC mode",
     "OK": "&OK",
     "Cancel": "&Cancel",
     "Yes": "&Yes",
@@ -52,6 +57,7 @@
     "s001": "Language:",
     "s002": "System default",
     "s003": "Theme:",
+    "s004": "Open output directory when done",
     "Theme__l0": "Dark",
     "Theme__l1": "Light"
   },

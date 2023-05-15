@@ -11,13 +11,32 @@ namespace FriishProduce
 
         private static JToken dbReader;
 
+        internal int Selected;
+
         public Database(int platform = -1)
         {
             dbReader = JsonConvert.DeserializeObject<JObject>(File.ReadAllText(Paths.Database + "database.json"));
-            if (platform >= 0) dbReader = dbReader[$"{((Platforms)platform).ToString().ToLower()}"];
+            if (platform >= 0)
+            {
+                dbReader = dbReader[$"{((Platforms)platform).ToString().ToLower()}"];
+                Selected = platform;
+            }
         }
 
-        public JEnumerable<JToken> GetList() => dbReader.Children<JToken>();
+        public JEnumerable<JToken> GetList()
+        {
+            try
+            {
+                return dbReader.Children<JToken>();
+            }
+            catch (System.NullReferenceException)
+            {
+                dbReader = JsonConvert.DeserializeObject<JObject>(File.ReadAllText(Paths.Database + "database.json"));
+                dbReader = dbReader[Platforms.Flash.ToString().ToLower()];
+                Selected = (int)Platforms.Flash;
+                return dbReader.Children<JToken>();
+            }
+        }
 
         /// <summary>
         /// Searches for an entry with the title parameter (game name & region) and if found, returns its upper ID, otherwise null

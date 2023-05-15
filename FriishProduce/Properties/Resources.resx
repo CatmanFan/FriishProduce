@@ -157,19 +157,25 @@
   <data name="Controllers_WiimoteS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\images\wiimote_sideways.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="DOL_Snes9xGx" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\forwarders\snes9xgx.dol;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="DOL_GenPlusGx" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\forwarders\genplus-gx.dol;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="NANDLoader_Comex" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\forwarders\nandloader_comex.app;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="NANDLoader_vWii" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\forwarders\nandloader_vwii.app;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="SD_Forwarder" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\forwarders\sd_forwarder.app;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="NANDLoader_Wii" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\forwarders\nandloader_wii.app;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Forwarder" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\forwarders\forwarder.dol;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NANDLoader_NTSC" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\custom-nand-loader\forceNTSC_loader.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NANDLoader_NTSC_53" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\custom-nand-loader\IOS53_forceNTSC_loader.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NANDLoader_NTSC_55" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\custom-nand-loader\IOS55_forceNTSC_loader.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NANDLoader_NTSC_56" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\custom-nand-loader\IOS56_forceNTSC_loader.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

@@ -13,7 +13,7 @@ namespace FriishProduce
 
         // VC paths
         public static readonly string WorkingFolder = $"C:\\FriishProduce\\";
-        public static readonly string WorkingFolder_SD = $"C:\\FriishProduce\\SD\\apps\\vc\\";
+        public static readonly string WorkingFolder_SD = $"C:\\FriishProduce\\SD\\";
         public static readonly string WorkingFolder_Content4 = WorkingFolder + $"content4\\";
         public static readonly string WorkingFolder_Content5 = WorkingFolder + $"content5\\";
         public static readonly string WorkingFolder_DataCCF = WorkingFolder_Content5 + "data\\";

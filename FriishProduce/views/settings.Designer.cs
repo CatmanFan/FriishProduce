@@ -41,6 +41,7 @@ namespace FriishProduce
             this.s001 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.OpenWhenDone = new System.Windows.Forms.CheckBox();
             this.panel.SuspendLayout();
             this.Application.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -80,6 +81,7 @@ namespace FriishProduce
             // Application
             // 
             this.Application.BackColor = System.Drawing.SystemColors.Window;
+            this.Application.Controls.Add(this.OpenWhenDone);
             this.Application.Controls.Add(this.Theme);
             this.Application.Controls.Add(this.s003);
             this.Application.Controls.Add(this.Language);
@@ -132,6 +134,13 @@ namespace FriishProduce
             this.ToolTip.InitialDelay = 300;
             this.ToolTip.ReshowDelay = 100;
             // 
+            // OpenWhenDone
+            // 
+            resources.ApplyResources(this.OpenWhenDone, "OpenWhenDone");
+            this.OpenWhenDone.Name = "OpenWhenDone";
+            this.OpenWhenDone.Tag = "s004";
+            this.OpenWhenDone.UseVisualStyleBackColor = true;
+            // 
             // Settings
             // 
             this.AcceptButton = this.OK;
@@ -169,5 +178,6 @@ namespace FriishProduce
         private System.Windows.Forms.ComboBox Theme;
         private System.Windows.Forms.Label s003;
         private System.Windows.Forms.ToolTip ToolTip;
+        private System.Windows.Forms.CheckBox OpenWhenDone;
     }
 }

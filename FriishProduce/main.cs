@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -19,15 +20,6 @@ namespace FriishProduce
         Database db;
 
         bool ForwarderMode = false;
-        readonly string[] Forwarders = new string[]
-        {
-            "FCEUmm-GX",
-            "Snes9x-GX",
-            "VBA-GX",
-            "Genesis Plus GX",
-            "Wii64",
-            "WiiSX",
-        };
 
         string[] input = new string[]
         {
@@ -110,6 +102,14 @@ namespace FriishProduce
                     OpenROM.Text = x.Get("g004");
                     BrowseROM.Filter = x.Get("f_swf");
                     break;
+
+                case Platforms.SMCD:
+                    BrowseROM.Filter = x.Get("f_iso");
+                    break;
+
+                case Platforms.GBA:
+                    BrowseROM.Filter = x.Get("f_vba");
+                    break;
             }
 
             BrowseROM.Filter += x.Get("f_all");
@@ -131,14 +131,17 @@ namespace FriishProduce
             // TO-DO:
             // Check for each console using switch loop, and toggle relevant panel+vWii depending on selected injection method
 
-            ForwarderMode = InjectionMethod.SelectedIndex > 0;
+            ForwarderMode = InjectionMethod.SelectedItem.ToString() != x.Get("g012");
             vWii.Visible = ForwarderMode;
             DisableEmanual.Visible = !ForwarderMode;
             SaveDataTitle.MaxLength = 80;
 
+            AltCheckbox.Text = ForwarderMode ? x.Get("g013") : x.Get("g014");
+            AltCheckbox.Checked = false;
+
             foreach (var p in page4.Controls.OfType<Panel>())
                 if (p.Name.StartsWith("Options_")) p.Visible = false;
-            if (InjectionMethod.SelectedIndex == 0)
+            if (!ForwarderMode)
                 switch (currentConsole)
                 {
                     case Platforms.NES:
@@ -184,17 +187,17 @@ namespace FriishProduce
             switch (currentConsole)
             {
                 case Platforms.NES:
-                    InjectionMethod.Items.Add(Forwarders[0]);
+                    InjectionMethod.Items.Add(new Forwarders.Generic().List[0]);
                     break;
                 case Platforms.SNES:
-                    InjectionMethod.Items.Add(Forwarders[1]);
+                    InjectionMethod.Items.Add(new Forwarders.Generic().List[1]);
                     break;
                 case Platforms.N64:
-                    InjectionMethod.Items.Add(Forwarders[2]);
+                    InjectionMethod.Items.Add(new Forwarders.Generic().List[4]);
                     break;
                 case Platforms.SMS:
                 case Platforms.SMD:
-                    InjectionMethod.Items.Add(Forwarders[3]);
+                    InjectionMethod.Items.Add(new Forwarders.Generic().List[3]);
                     break;
                 case Platforms.PCE:
                     break;
@@ -206,13 +209,23 @@ namespace FriishProduce
                     break;
                 case Platforms.Flash:
                     break;
+                case Platforms.GBA:
+                    InjectionMethod.Items.RemoveAt(0);
+                    InjectionMethod.Items.Add(new Forwarders.Generic().List[2]);
+                    break;
+                case Platforms.SMCD:
+                    InjectionMethod.Items.RemoveAt(0);
+                    InjectionMethod.Items.Add(new Forwarders.Generic().List[3]);
+                    break;
                 default:
                     break;
             }
+
             InjectionMethod.SelectedIndex = 0;
             InjectionMethod.Enabled = InjectionMethod.Items.Count > 1;
-            InjectionMethod.Visible = currentConsole != Platforms.Flash;
-            g002.Visible = InjectionMethod.Visible;
+            InjectionMethod.Visible = InjectionMethod.Items.Count > 1;
+            g002.Visible = InjectionMethod.Items.Count > 1;
+            CheckForForwarder();
         }
 
         // ***************************************************************************************************************** //
@@ -406,7 +419,7 @@ namespace FriishProduce
             {
                 page3.Visible = true;
                 page2.Visible = false;
-                Next.Enabled = checkBannerPage();
+                Next.Enabled = CheckBannerPage();
             }
             else if (page3.Visible)
             {
@@ -439,12 +452,12 @@ namespace FriishProduce
                 page3.Visible = true;
                 page4.Visible = false;
                 Next.Visible = true;
-                Next.Enabled = checkBannerPage();
+                Next.Enabled = CheckBannerPage();
                 Save.Visible = false;
             }
         }
 
-        private bool checkBannerPage()
+        private bool CheckBannerPage()
         {
             if (Custom.Checked)
                 return !(string.IsNullOrEmpty(ChannelTitle.Text)
@@ -500,7 +513,7 @@ namespace FriishProduce
                 ImportBases.SelectedIndex = -1;
                 Bases.DropDownHeight = 106;
                 foreach (var entry in db.GetList())
-                    if (File.Exists($"{db.CurrentFolder(currentConsole)}{entry["id"].ToString().ToUpper()}.wad"))
+                    if (File.Exists($"{db.CurrentFolder((Platforms)db.Selected)}{entry["id"].ToString().ToUpper()}.wad"))
                     {
                         Bases.Items.Add(entry["title"].ToString());
                         Bases.Enabled = Bases.Items.Count >= 2;
@@ -534,7 +547,7 @@ namespace FriishProduce
                 ImportBases.SelectedIndex = 0;
             }
 
-            checkBannerPage();
+            CheckBannerPage();
         }
 
         private void AddWAD(object sender, EventArgs e)
@@ -682,7 +695,7 @@ namespace FriishProduce
                 if (line2.Length > 65) line2.Remove(64);
             }
 
-            Next.Enabled = checkBannerPage();
+            Next.Enabled = CheckBannerPage();
         }
 
         private void BannerText_KeyPress(object sender, KeyPressEventArgs e)
@@ -732,7 +745,7 @@ namespace FriishProduce
                     }
                     finally
                     {
-                        Next.Enabled = checkBannerPage();
+                        Next.Enabled = CheckBannerPage();
                     }
                     return;
                 }
@@ -749,21 +762,21 @@ namespace FriishProduce
             Clear:
             Image.Image = null;
             tImg = new TitleImage(currentConsole);
-            Next.Enabled = checkBannerPage();
+            Next.Enabled = CheckBannerPage();
         }
 
         private void Image_StretchChanged(object sender, EventArgs e)
         {
             tImg.ResizeMode = (TitleImage.Resize)ImgResize.SelectedIndex;
             Image.Image = tImg.Generate(currentConsole);
-            Next.Enabled = checkBannerPage();
+            Next.Enabled = CheckBannerPage();
         }
 
         private void Image_ModeIChanged(object sender, EventArgs e)
         {
             tImg.InterpolationMode = (System.Drawing.Drawing2D.InterpolationMode)ImgInterp.SelectedIndex;
             Image.Image = tImg.Generate(currentConsole);
-            Next.Enabled = checkBannerPage();
+            Next.Enabled = CheckBannerPage();
         }
 
         private void Patch_CheckedChanged(object sender, EventArgs e)
@@ -791,7 +804,7 @@ namespace FriishProduce
             {
                 case "Custom":
                     Banner.Enabled = s.Checked;
-                    Next.Enabled = checkBannerPage();
+                    Next.Enabled = CheckBannerPage();
                     break;
                 case "Import":
                     ImportBases.Enabled = s.Checked;
@@ -823,13 +836,14 @@ namespace FriishProduce
                     if (currentConsole != Platforms.Flash) input[0] = Global.ApplyPatch(input[0], input[1]);
 
                     WAD w = WAD.Load(input[2]);
-                    var ios = (int)w.StartupIOS;
                     w.Unpack(Paths.WorkingFolder);
 
+                    #region [Kill texreplace process]
                     var RunningP_List = Process.GetProcessesByName("texreplace");
                     if (RunningP_List != null || RunningP_List.Length > 0)
                         foreach (var RunningP in RunningP_List)
                             RunningP.Kill();
+                    #endregion
 
                     #region Banner
                     if (Custom.Checked)
@@ -1101,39 +1115,37 @@ namespace FriishProduce
                     // ----------------------------------------------------
                     else if (currentConsole != Platforms.Flash && ForwarderMode)
                     {
-                        int appIndex = 0;
-                        appIndex = w.BootIndex == 2 ? 1 : 2;
-                        if (appIndex == 0) throw new Exception("Not valid WAD!");
-                        w.RemoveAllContents();
-                        w.BannerApp = libWiiSharp.U8.Load(Paths.WorkingFolder + $"00000000.app");
-
-                        w.BootIndex = 1;
-
-                        // Add relevant NANDLoader
-                        // Needs to be replaced? (Comex NANDLoader)
-
-                        // Have no idea if supplying raw .app file is legally permitted, although this app was also included within ShowMiiWads repo
-                        if (vWii.Checked)
+                        Forwarders.Generic f = new Forwarders.Generic
                         {
-                            w.ChangeStartupIOS(58);
-                            w.AddContent(Properties.Resources.NANDLoader_vWii, 2, 2);
-                        }
-                        else
-                        {
-                            w.ChangeStartupIOS(53);
-                            w.AddContent(Properties.Resources.NANDLoader_Comex, 2, 2);
-                        }
+                            ROM = input[0],
+                            IsISO = currentConsole == Platforms.SMCD,
+                            UseUSBStorage = AltCheckbox.Checked
+                        };
 
-                        // Create forwarder .app
-                        var forwarder = Properties.Resources.SD_Forwarder;
-                        var id = System.Text.Encoding.ASCII.GetBytes(TitleID.Text);
-                        id.CopyTo(forwarder, 197076);
-                        w.AddContent(forwarder, 1, 1);
+                        f.Generate
+                        (
+                            TitleID.Text.ToUpper(),
+                            f.UseUSBStorage ?
+                                Path.Combine(Path.GetDirectoryName(SaveWAD.FileName), $"{TitleID.Text}_USBRoot.zip") :
+                                Path.Combine(Path.GetDirectoryName(SaveWAD.FileName), $"{TitleID.Text}_SDRoot.zip"),
+                            InjectionMethod.SelectedItem.ToString()
+                        );
+                        w = f.ConvertWAD(w, vWii.Checked, TitleID.Text.ToUpper());
                     }
 
-                    // TO-DO: IOS video mode patching
-
                     if (!ForwarderMode) w.CreateNew(Paths.WorkingFolder);
+
+                    // TO-DO: IOS video mode patching
+                    if (!ForwarderMode && AltCheckbox.Checked)
+                    {
+                        var ios = (int)w.StartupIOS;
+                        if (ios == 53) w.AddContent(Properties.Resources.NANDLoader_NTSC_53, w.BootIndex, w.BootIndex);
+                        else if (ios == 55) w.AddContent(Properties.Resources.NANDLoader_NTSC_55, w.BootIndex, w.BootIndex);
+                        else if (ios == 56) w.AddContent(Properties.Resources.NANDLoader_NTSC_56, w.BootIndex, w.BootIndex);
+                        else w.AddContent(Properties.Resources.NANDLoader_NTSC, w.BootIndex, w.BootIndex);
+                        w.RemoveContent(w.BootIndex);
+                    }
+
                     if (RegionFree.Checked) w.Region = libWiiSharp.Region.Free;
                     w.FakeSign = true;
                     w.ChangeTitleID(LowerTitleID.Channel, TitleID.Text);
@@ -1142,6 +1154,7 @@ namespace FriishProduce
 
                     Focus();
                     System.Media.SystemSounds.Beep.Play();
+                    if (Properties.Settings.Default.OpenWhenDone) Process.Start("explorer.exe", "/select, \"" + SaveWAD.FileName + "\"");
                 }
                 catch (Exception ex)
                 {

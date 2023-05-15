@@ -13,8 +13,8 @@ namespace FriishProduce
 {
     public partial class Settings : Form
     {
-        Lang x = Program.Language;
-        List<string> langs = new List<string>();
+        readonly Lang x = Program.Language;
+        readonly List<string> langs = new List<string>();
 
         public Settings()
         {
@@ -38,6 +38,7 @@ namespace FriishProduce
             else Language.SelectedIndex = Language.Items.IndexOf(x.LangInfo(Default.Language)[0]);
             // -----------------------------
 
+            OpenWhenDone.Checked = Default.OpenWhenDone;
             Theme.SelectedIndex = Default.LightTheme ? 1 : 0;
         }
 
@@ -66,6 +67,7 @@ namespace FriishProduce
 
             if (showRestart) MessageBox.Show(x.Get("m001"), Text);
 
+            Default.OpenWhenDone = OpenWhenDone.Checked;
             Default.LightTheme = Theme.SelectedIndex == 1;
             Default.Save();
             DialogResult = DialogResult.OK;

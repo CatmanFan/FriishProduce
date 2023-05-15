@@ -110,6 +110,7 @@
       <DependentUpon>sega_controller.cs</DependentUpon>
     </Compile>
     <Compile Include="_classes\enums.cs" />
+    <Compile Include="_classes\image.cs" />
     <Compile Include="_classes\injectors\flash.cs" />
     <Compile Include="_classes\global.cs" />
     <Compile Include="_classes\injectors\n64.cs" />
@@ -192,12 +193,14 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\forwarders\genplus-gx.dol" />
-    <None Include="Resources\forwarders\nandloader_comex.app" />
+    <None Include="Resources\custom-nand-loader\forceNTSC_loader.bin" />
+    <None Include="Resources\custom-nand-loader\IOS53_forceNTSC_loader.bin" />
+    <None Include="Resources\custom-nand-loader\IOS55_forceNTSC_loader.bin" />
+    <None Include="Resources\custom-nand-loader\IOS56_forceNTSC_loader.bin" />
+    <None Include="Resources\forwarders\forwarder.dol" />
     <None Include="Resources\forwarders\nandloader_vwii.app" />
+    <None Include="Resources\forwarders\nandloader_wii.app" />
     <None Include="Resources\forwarders\README.md" />
-    <None Include="Resources\forwarders\sd_forwarder.app" />
-    <None Include="Resources\forwarders\snes9xgx.dol" />
     <None Include="Resources\images\savebanner_flash.png" />
     <None Include="Resources\images\saveicon_flash.png" />
     <None Include="Resources\images\saveicon_placeholder.png" />

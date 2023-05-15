@@ -46,5 +46,17 @@ namespace FriishProduce.Properties {
                 this["LightTheme"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool OpenWhenDone {
+            get {
+                return ((bool)(this["OpenWhenDone"]));
+            }
+            set {
+                this["OpenWhenDone"] = value;
+            }
+        }
     }
 }

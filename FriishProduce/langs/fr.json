@@ -18,6 +18,8 @@
     "g010": "Modifier la configuration de l'émulateur",
     "g011": "Émulateur",
     "g012": "Console virtuelle",
+    "g013": "Charger la ROM à partir d'un appareil USB",
+    "g014": "Forcer le mode vidéo NTSC",
     "OK": "&OK",
     "Cancel": "&Annuler",
     "Yes": "&Oui",
@@ -31,12 +33,14 @@
     "SNES": "SNES / Super Famicom",
     "SMS": "Sega Master System",
     "SMD": "Sega Mega Drive / Genesis",
+    "SMCD": "Sega Mega CD / Sega CD",
   },
   "settings": {
     "s000": "Logiciel",
     "s001": "Langue :",
     "s002": "Système",
     "s003": "Thème :",
+    "s004": "Ouvrir le dossier de sortie lorsque l'exportation est terminée",
     "Theme__l0": "Noir classique",
     "Theme__l1": "Blanc classique"
   },

@@ -15,6 +15,7 @@ namespace FriishProduce
             label1.Text = msg;
             label1.AutoSize = true;
 
+
             var minWidth = 256;
             var minHeight = 137;
             MinimumSize = new Size(minWidth, minHeight);
@@ -23,7 +24,6 @@ namespace FriishProduce
             int maxWidth = label1.MaximumSize.Width;
             if (label1.Width < maxWidth)
             {
-                var oldWidth = Width;
                 newWidth = label1.Width + 90;
 
                 if (newWidth > minWidth)
@@ -43,18 +43,9 @@ namespace FriishProduce
             border.Location = new Point(border.Location.X, panel.Location.Y - 1);
 
             #region Themes
-            if (Properties.Settings.Default.LightTheme)
-            {
-                BackColor = Color.FromArgb(248, 248, 248);
-                ForeColor = Color.Black;
-                panel.BackColor = Color.FromArgb(232, 232, 232);
-            }
-            else
-            {
-                BackColor = Color.FromArgb(55, 55, 55);
-                ForeColor = Color.White;
-                panel.BackColor = Color.FromArgb(75, 75, 75);
-            }
+            BackColor = Properties.Settings.Default.LightTheme ? Themes.Light.BG : Themes.Dark.BG;
+            ForeColor = Properties.Settings.Default.LightTheme ? Themes.Light.FG : Themes.Dark.FG;
+            panel.BackColor = Properties.Settings.Default.LightTheme ? Themes.Light.BG_Secondary : Themes.Dark.BG_Secondary;
             #endregion
 
             switch (buttons)

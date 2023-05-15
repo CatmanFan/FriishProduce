@@ -146,79 +146,7 @@
   <data name="&gt;&gt;a000.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;Settings.Name" xml:space="preserve">
-    <value>Settings</value>
-  </data>
-  <data name="&gt;&gt;Settings.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Settings.Parent" xml:space="preserve">
-    <value>panel</value>
-  </data>
-  <data name="&gt;&gt;Settings.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;Back.Name" xml:space="preserve">
-    <value>Back</value>
-  </data>
-  <data name="&gt;&gt;Back.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Back.Parent" xml:space="preserve">
-    <value>panel</value>
-  </data>
-  <data name="&gt;&gt;Back.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;Save.Name" xml:space="preserve">
-    <value>Save</value>
-  </data>
-  <data name="&gt;&gt;Save.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Save.Parent" xml:space="preserve">
-    <value>panel</value>
-  </data>
-  <data name="&gt;&gt;Save.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;Next.Name" xml:space="preserve">
-    <value>Next</value>
-  </data>
-  <data name="&gt;&gt;Next.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Next.Parent" xml:space="preserve">
-    <value>panel</value>
-  </data>
-  <data name="&gt;&gt;Next.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="panel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="panel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 371</value>
-  </data>
-  <data name="panel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>684, 50</value>
-  </data>
-  <data name="panel.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;panel.Name" xml:space="preserve">
-    <value>panel</value>
-  </data>
-  <data name="&gt;&gt;panel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;panel.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="Settings.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
@@ -354,6 +282,30 @@
   <data name="&gt;&gt;Next.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="panel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="panel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 396</value>
+  </data>
+  <data name="panel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>684, 50</value>
+  </data>
+  <data name="panel.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;panel.Name" xml:space="preserve">
+    <value>panel</value>
+  </data>
+  <data name="&gt;&gt;panel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="Console.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>System</value>
   </data>
@@ -379,7 +331,7 @@
     <value>0</value>
   </data>
   <data name="page1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 24</value>
+    <value>0, 28</value>
   </data>
   <data name="page1.Size" type="System.Drawing.Size, System.Drawing">
     <value>684, 359</value>
@@ -397,7 +349,139 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;page1.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;g002.Name" xml:space="preserve">
+    <value>g002</value>
+  </data>
+  <data name="&gt;&gt;g002.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;g002.Parent" xml:space="preserve">
+    <value>page2</value>
+  </data>
+  <data name="&gt;&gt;g002.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;InjectionMethod.Name" xml:space="preserve">
+    <value>InjectionMethod</value>
+  </data>
+  <data name="&gt;&gt;InjectionMethod.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;InjectionMethod.Parent" xml:space="preserve">
+    <value>page2</value>
+  </data>
+  <data name="&gt;&gt;InjectionMethod.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;Patch.Name" xml:space="preserve">
+    <value>Patch</value>
+  </data>
+  <data name="&gt;&gt;Patch.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Patch.Parent" xml:space="preserve">
+    <value>page2</value>
+  </data>
+  <data name="&gt;&gt;Patch.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="&gt;&gt;ROMPath.Name" xml:space="preserve">
+    <value>ROMPath</value>
+  </data>
+  <data name="&gt;&gt;ROMPath.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ROMPath.Parent" xml:space="preserve">
+    <value>page2</value>
+  </data>
+  <data name="&gt;&gt;ROMPath.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;DeleteBase.Name" xml:space="preserve">
+    <value>DeleteBase</value>
+  </data>
+  <data name="&gt;&gt;DeleteBase.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DeleteBase.Parent" xml:space="preserve">
+    <value>page2</value>
+  </data>
+  <data name="&gt;&gt;DeleteBase.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;AddBase.Name" xml:space="preserve">
+    <value>AddBase</value>
+  </data>
+  <data name="&gt;&gt;AddBase.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;AddBase.Parent" xml:space="preserve">
+    <value>page2</value>
+  </data>
+  <data name="&gt;&gt;AddBase.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;Bases.Name" xml:space="preserve">
+    <value>Bases</value>
+  </data>
+  <data name="&gt;&gt;Bases.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Bases.Parent" xml:space="preserve">
+    <value>page2</value>
+  </data>
+  <data name="&gt;&gt;Bases.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;OpenROM.Name" xml:space="preserve">
+    <value>OpenROM</value>
+  </data>
+  <data name="&gt;&gt;OpenROM.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;OpenROM.Parent" xml:space="preserve">
+    <value>page2</value>
+  </data>
+  <data name="&gt;&gt;OpenROM.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;a001.Name" xml:space="preserve">
+    <value>a001</value>
+  </data>
+  <data name="&gt;&gt;a001.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;a001.Parent" xml:space="preserve">
+    <value>page2</value>
+  </data>
+  <data name="&gt;&gt;a001.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="page2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 28</value>
+  </data>
+  <data name="page2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>684, 359</value>
+  </data>
+  <data name="page2.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="page2.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;page2.Name" xml:space="preserve">
+    <value>page2</value>
+  </data>
+  <data name="&gt;&gt;page2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;page2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;page2.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="g002.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -406,7 +490,7 @@
     <value>NoControl</value>
   </data>
   <data name="g002.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 158</value>
+    <value>22, 290</value>
   </data>
   <data name="g002.Size" type="System.Drawing.Size, System.Drawing">
     <value>49, 15</value>
@@ -433,7 +517,7 @@
     <value>False</value>
   </data>
   <data name="InjectionMethod.Location" type="System.Drawing.Point, System.Drawing">
-    <value>27, 180</value>
+    <value>26, 310</value>
   </data>
   <data name="InjectionMethod.Size" type="System.Drawing.Size, System.Drawing">
     <value>629, 23</value>
@@ -457,7 +541,7 @@
     <value>True</value>
   </data>
   <data name="Patch.Location" type="System.Drawing.Point, System.Drawing">
-    <value>27, 122</value>
+    <value>27, 137</value>
   </data>
   <data name="Patch.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 19</value>
@@ -484,7 +568,7 @@
     <value>True</value>
   </data>
   <data name="ROMPath.Location" type="System.Drawing.Point, System.Drawing">
-    <value>182, 98</value>
+    <value>182, 113</value>
   </data>
   <data name="ROMPath.Size" type="System.Drawing.Size, System.Drawing">
     <value>29, 15</value>
@@ -517,7 +601,7 @@
     <value>NoControl</value>
   </data>
   <data name="DeleteBase.Location" type="System.Drawing.Point, System.Drawing">
-    <value>619, 45</value>
+    <value>619, 60</value>
   </data>
   <data name="DeleteBase.Size" type="System.Drawing.Size, System.Drawing">
     <value>38, 23</value>
@@ -547,7 +631,7 @@
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="AddBase.Location" type="System.Drawing.Point, System.Drawing">
-    <value>575, 45</value>
+    <value>575, 60</value>
   </data>
   <data name="AddBase.Size" type="System.Drawing.Size, System.Drawing">
     <value>38, 23</value>
@@ -574,7 +658,7 @@
     <value>False</value>
   </data>
   <data name="Bases.Location" type="System.Drawing.Point, System.Drawing">
-    <value>27, 45</value>
+    <value>27, 60</value>
   </data>
   <data name="Bases.Size" type="System.Drawing.Size, System.Drawing">
     <value>542, 23</value>
@@ -598,7 +682,7 @@
     <value>System</value>
   </data>
   <data name="OpenROM.Location" type="System.Drawing.Point, System.Drawing">
-    <value>26, 93</value>
+    <value>26, 108</value>
   </data>
   <data name="OpenROM.Size" type="System.Drawing.Size, System.Drawing">
     <value>150, 25</value>
@@ -647,30 +731,6 @@
   </data>
   <data name="&gt;&gt;a001.ZOrder" xml:space="preserve">
     <value>8</value>
-  </data>
-  <data name="page2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 24</value>
-  </data>
-  <data name="page2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>684, 359</value>
-  </data>
-  <data name="page2.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="page2.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;page2.Name" xml:space="preserve">
-    <value>page2</value>
-  </data>
-  <data name="&gt;&gt;page2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;page2.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;page2.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <metadata name="BrowseROM.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -721,7 +781,7 @@
     <value>2</value>
   </data>
   <data name="page3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 24</value>
+    <value>0, 28</value>
   </data>
   <data name="page3.Size" type="System.Drawing.Size, System.Drawing">
     <value>684, 359</value>
@@ -742,7 +802,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;page3.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>2</value>
   </data>
   <data name="a003.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -979,7 +1039,7 @@
     <value>False</value>
   </data>
   <data name="Banner.Location" type="System.Drawing.Point, System.Drawing">
-    <value>27, 90</value>
+    <value>27, 105</value>
   </data>
   <data name="Banner.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>6, 6, 6, 6</value>
@@ -1269,9 +1329,6 @@
   <data name="Players.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
   </data>
-  <data name="Players.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
   <data name="&gt;&gt;Players.Name" xml:space="preserve">
     <value>Players</value>
   </data>
@@ -1480,7 +1537,7 @@
     <value>NoControl</value>
   </data>
   <data name="Custom.Location" type="System.Drawing.Point, System.Drawing">
-    <value>27, 48</value>
+    <value>27, 63</value>
   </data>
   <data name="Custom.Size" type="System.Drawing.Size, System.Drawing">
     <value>66, 19</value>
@@ -1563,17 +1620,29 @@
   <data name="&gt;&gt;vWii.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="&gt;&gt;Options_N64.Name" xml:space="preserve">
-    <value>Options_N64</value>
+  <data name="&gt;&gt;DisableEmanual.Name" xml:space="preserve">
+    <value>DisableEmanual</value>
   </data>
-  <data name="&gt;&gt;Options_N64.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;DisableEmanual.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;Options_N64.Parent" xml:space="preserve">
+  <data name="&gt;&gt;DisableEmanual.Parent" xml:space="preserve">
     <value>page4</value>
   </data>
-  <data name="&gt;&gt;Options_N64.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;DisableEmanual.ZOrder" xml:space="preserve">
     <value>5</value>
+  </data>
+  <data name="&gt;&gt;AltCheckbox.Name" xml:space="preserve">
+    <value>AltCheckbox</value>
+  </data>
+  <data name="&gt;&gt;AltCheckbox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;AltCheckbox.Parent" xml:space="preserve">
+    <value>page4</value>
+  </data>
+  <data name="&gt;&gt;AltCheckbox.ZOrder" xml:space="preserve">
+    <value>6</value>
   </data>
   <data name="&gt;&gt;Options_NES.Name" xml:space="preserve">
     <value>Options_NES</value>
@@ -1585,7 +1654,7 @@
     <value>page4</value>
   </data>
   <data name="&gt;&gt;Options_NES.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="&gt;&gt;Options_SEGA.Name" xml:space="preserve">
     <value>Options_SEGA</value>
@@ -1597,7 +1666,7 @@
     <value>page4</value>
   </data>
   <data name="&gt;&gt;Options_SEGA.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="&gt;&gt;Options_Flash.Name" xml:space="preserve">
     <value>Options_Flash</value>
@@ -1609,22 +1678,22 @@
     <value>page4</value>
   </data>
   <data name="&gt;&gt;Options_Flash.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;DisableEmanual.Name" xml:space="preserve">
-    <value>DisableEmanual</value>
-  </data>
-  <data name="&gt;&gt;DisableEmanual.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;DisableEmanual.Parent" xml:space="preserve">
-    <value>page4</value>
-  </data>
-  <data name="&gt;&gt;DisableEmanual.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
+  <data name="&gt;&gt;Options_N64.Name" xml:space="preserve">
+    <value>Options_N64</value>
+  </data>
+  <data name="&gt;&gt;Options_N64.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Options_N64.Parent" xml:space="preserve">
+    <value>page4</value>
+  </data>
+  <data name="&gt;&gt;Options_N64.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
   <data name="page4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 24</value>
+    <value>0, 28</value>
   </data>
   <data name="page4.Size" type="System.Drawing.Size, System.Drawing">
     <value>684, 359</value>
@@ -1645,40 +1714,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;page4.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="DisableEmanual.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="DisableEmanual.Location" type="System.Drawing.Point, System.Drawing">
-    <value>27, 48</value>
-  </data>
-  <data name="DisableEmanual.Size" type="System.Drawing.Size, System.Drawing">
-    <value>91, 19</value>
-  </data>
-  <data name="DisableEmanual.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
-  </data>
-  <data name="DisableEmanual.Text" xml:space="preserve">
-    <value>no_emanual</value>
-  </data>
-  <data name="&gt;&gt;DisableEmanual.Name" xml:space="preserve">
-    <value>DisableEmanual</value>
-  </data>
-  <data name="&gt;&gt;DisableEmanual.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;DisableEmanual.Parent" xml:space="preserve">
-    <value>page4</value>
-  </data>
-  <data name="&gt;&gt;DisableEmanual.ZOrder" xml:space="preserve">
-    <value>9</value>
   </data>
   <data name="RegionFree.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
   </data>
   <data name="RegionFree.Location" type="System.Drawing.Point, System.Drawing">
-    <value>558, 47</value>
+    <value>558, 62</value>
   </data>
   <data name="RegionFree.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 21</value>
@@ -1798,7 +1840,7 @@
     <value>NoControl</value>
   </data>
   <data name="vWii.Location" type="System.Drawing.Point, System.Drawing">
-    <value>27, 48</value>
+    <value>27, 63</value>
   </data>
   <data name="vWii.Size" type="System.Drawing.Size, System.Drawing">
     <value>49, 19</value>
@@ -1824,200 +1866,62 @@
   <data name="&gt;&gt;vWii.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="&gt;&gt;N64_FixBrightness.Name" xml:space="preserve">
-    <value>N64_FixBrightness</value>
-  </data>
-  <data name="&gt;&gt;N64_FixBrightness.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;N64_FixBrightness.Parent" xml:space="preserve">
-    <value>Options_N64</value>
-  </data>
-  <data name="&gt;&gt;N64_FixBrightness.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;N64_Allocation.Name" xml:space="preserve">
-    <value>N64_Allocation</value>
-  </data>
-  <data name="&gt;&gt;N64_Allocation.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;N64_Allocation.Parent" xml:space="preserve">
-    <value>Options_N64</value>
-  </data>
-  <data name="&gt;&gt;N64_Allocation.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;N64_FixCrash.Name" xml:space="preserve">
-    <value>N64_FixCrash</value>
-  </data>
-  <data name="&gt;&gt;N64_FixCrash.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;N64_FixCrash.Parent" xml:space="preserve">
-    <value>Options_N64</value>
-  </data>
-  <data name="&gt;&gt;N64_FixCrash.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;N64_UseExpansionPak.Name" xml:space="preserve">
-    <value>N64_UseExpansionPak</value>
-  </data>
-  <data name="&gt;&gt;N64_UseExpansionPak.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;N64_UseExpansionPak.Parent" xml:space="preserve">
-    <value>Options_N64</value>
-  </data>
-  <data name="&gt;&gt;N64_UseExpansionPak.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="Options_N64.Location" type="System.Drawing.Point, System.Drawing">
-    <value>27, 73</value>
-  </data>
-  <data name="Options_N64.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
-  </data>
-  <data name="Options_N64.Size" type="System.Drawing.Size, System.Drawing">
-    <value>630, 252</value>
-  </data>
-  <data name="Options_N64.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="Options_N64.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;Options_N64.Name" xml:space="preserve">
-    <value>Options_N64</value>
-  </data>
-  <data name="&gt;&gt;Options_N64.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Options_N64.Parent" xml:space="preserve">
-    <value>page4</value>
-  </data>
-  <data name="&gt;&gt;Options_N64.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="N64_FixBrightness.AutoSize" type="System.Boolean, mscorlib">
+  <data name="DisableEmanual.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="N64_FixBrightness.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="DisableEmanual.Location" type="System.Drawing.Point, System.Drawing">
+    <value>27, 63</value>
   </data>
-  <data name="N64_FixBrightness.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 12</value>
-  </data>
-  <data name="N64_FixBrightness.Size" type="System.Drawing.Size, System.Drawing">
-    <value>105, 19</value>
-  </data>
-  <data name="N64_FixBrightness.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="N64_FixBrightness.Text" xml:space="preserve">
-    <value>n64_brightness</value>
-  </data>
-  <data name="&gt;&gt;N64_FixBrightness.Name" xml:space="preserve">
-    <value>N64_FixBrightness</value>
-  </data>
-  <data name="&gt;&gt;N64_FixBrightness.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;N64_FixBrightness.Parent" xml:space="preserve">
-    <value>Options_N64</value>
-  </data>
-  <data name="&gt;&gt;N64_FixBrightness.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="N64_Allocation.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="N64_Allocation.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="N64_Allocation.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 84</value>
-  </data>
-  <data name="N64_Allocation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 19</value>
-  </data>
-  <data name="N64_Allocation.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="N64_Allocation.Text" xml:space="preserve">
-    <value>n64_allocate32mb</value>
-  </data>
-  <data name="&gt;&gt;N64_Allocation.Name" xml:space="preserve">
-    <value>N64_Allocation</value>
-  </data>
-  <data name="&gt;&gt;N64_Allocation.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;N64_Allocation.Parent" xml:space="preserve">
-    <value>Options_N64</value>
-  </data>
-  <data name="&gt;&gt;N64_Allocation.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="N64_FixCrash.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="N64_FixCrash.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="N64_FixCrash.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 36</value>
-  </data>
-  <data name="N64_FixCrash.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="DisableEmanual.Size" type="System.Drawing.Size, System.Drawing">
     <value>91, 19</value>
   </data>
-  <data name="N64_FixCrash.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="N64_FixCrash.Text" xml:space="preserve">
-    <value>n64_fixcrash</value>
-  </data>
-  <data name="&gt;&gt;N64_FixCrash.Name" xml:space="preserve">
-    <value>N64_FixCrash</value>
-  </data>
-  <data name="&gt;&gt;N64_FixCrash.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;N64_FixCrash.Parent" xml:space="preserve">
-    <value>Options_N64</value>
-  </data>
-  <data name="&gt;&gt;N64_FixCrash.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="N64_UseExpansionPak.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="N64_UseExpansionPak.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="N64_UseExpansionPak.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 60</value>
-  </data>
-  <data name="N64_UseExpansionPak.Size" type="System.Drawing.Size, System.Drawing">
-    <value>95, 19</value>
-  </data>
-  <data name="N64_UseExpansionPak.TabIndex" type="System.Int32, mscorlib">
+  <data name="DisableEmanual.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="N64_UseExpansionPak.Text" xml:space="preserve">
-    <value>n64_8mbram</value>
+  <data name="DisableEmanual.Text" xml:space="preserve">
+    <value>no_emanual</value>
   </data>
-  <data name="&gt;&gt;N64_UseExpansionPak.Name" xml:space="preserve">
-    <value>N64_UseExpansionPak</value>
+  <data name="&gt;&gt;DisableEmanual.Name" xml:space="preserve">
+    <value>DisableEmanual</value>
   </data>
-  <data name="&gt;&gt;N64_UseExpansionPak.Type" xml:space="preserve">
+  <data name="&gt;&gt;DisableEmanual.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;N64_UseExpansionPak.Parent" xml:space="preserve">
-    <value>Options_N64</value>
+  <data name="&gt;&gt;DisableEmanual.Parent" xml:space="preserve">
+    <value>page4</value>
   </data>
-  <data name="&gt;&gt;N64_UseExpansionPak.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="&gt;&gt;DisableEmanual.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="AltCheckbox.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="AltCheckbox.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="AltCheckbox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>27, 87</value>
+  </data>
+  <data name="AltCheckbox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>39, 19</value>
+  </data>
+  <data name="AltCheckbox.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="AltCheckbox.Text" xml:space="preserve">
+    <value>alt</value>
+  </data>
+  <data name="&gt;&gt;AltCheckbox.Name" xml:space="preserve">
+    <value>AltCheckbox</value>
+  </data>
+  <data name="&gt;&gt;AltCheckbox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;AltCheckbox.Parent" xml:space="preserve">
+    <value>page4</value>
+  </data>
+  <data name="&gt;&gt;AltCheckbox.ZOrder" xml:space="preserve">
+    <value>6</value>
   </data>
   <data name="&gt;&gt;NES_Palette.Name" xml:space="preserve">
     <value>NES_Palette</value>
@@ -2044,13 +1948,13 @@
     <value>1</value>
   </data>
   <data name="Options_NES.Location" type="System.Drawing.Point, System.Drawing">
-    <value>27, 73</value>
+    <value>27, 113</value>
   </data>
   <data name="Options_NES.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>6, 6, 6, 6</value>
   </data>
   <data name="Options_NES.Size" type="System.Drawing.Size, System.Drawing">
-    <value>630, 252</value>
+    <value>630, 230</value>
   </data>
   <data name="Options_NES.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -2068,7 +1972,7 @@
     <value>page4</value>
   </data>
   <data name="&gt;&gt;Options_NES.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="NES_Palette.Items" xml:space="preserve">
     <value>null</value>
@@ -2137,13 +2041,13 @@
     <value>0</value>
   </data>
   <data name="Options_SEGA.Location" type="System.Drawing.Point, System.Drawing">
-    <value>27, 73</value>
+    <value>27, 113</value>
   </data>
   <data name="Options_SEGA.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>6, 6, 6, 6</value>
   </data>
   <data name="Options_SEGA.Size" type="System.Drawing.Size, System.Drawing">
-    <value>630, 252</value>
+    <value>630, 230</value>
   </data>
   <data name="Options_SEGA.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -2161,7 +2065,7 @@
     <value>page4</value>
   </data>
   <data name="&gt;&gt;Options_SEGA.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="SEGA_SetConfig.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2302,13 +2206,13 @@
     <value>8</value>
   </data>
   <data name="Options_Flash.Location" type="System.Drawing.Point, System.Drawing">
-    <value>27, 73</value>
+    <value>27, 113</value>
   </data>
   <data name="Options_Flash.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>6, 6, 6, 6</value>
   </data>
   <data name="Options_Flash.Size" type="System.Drawing.Size, System.Drawing">
-    <value>630, 252</value>
+    <value>630, 230</value>
   </data>
   <data name="Options_Flash.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -2326,7 +2230,7 @@
     <value>page4</value>
   </data>
   <data name="&gt;&gt;Options_Flash.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="Flash__005.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2386,7 +2290,7 @@
     <value>NoControl</value>
   </data>
   <data name="Flash_Controller.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 222</value>
+    <value>13, 199</value>
   </data>
   <data name="Flash_Controller.Size" type="System.Drawing.Size, System.Drawing">
     <value>97, 19</value>
@@ -2616,6 +2520,201 @@
   <data name="&gt;&gt;Flash_HBMNoSave.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
+  <data name="&gt;&gt;N64_FixBrightness.Name" xml:space="preserve">
+    <value>N64_FixBrightness</value>
+  </data>
+  <data name="&gt;&gt;N64_FixBrightness.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;N64_FixBrightness.Parent" xml:space="preserve">
+    <value>Options_N64</value>
+  </data>
+  <data name="&gt;&gt;N64_FixBrightness.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;N64_Allocation.Name" xml:space="preserve">
+    <value>N64_Allocation</value>
+  </data>
+  <data name="&gt;&gt;N64_Allocation.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;N64_Allocation.Parent" xml:space="preserve">
+    <value>Options_N64</value>
+  </data>
+  <data name="&gt;&gt;N64_Allocation.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;N64_FixCrash.Name" xml:space="preserve">
+    <value>N64_FixCrash</value>
+  </data>
+  <data name="&gt;&gt;N64_FixCrash.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;N64_FixCrash.Parent" xml:space="preserve">
+    <value>Options_N64</value>
+  </data>
+  <data name="&gt;&gt;N64_FixCrash.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;N64_UseExpansionPak.Name" xml:space="preserve">
+    <value>N64_UseExpansionPak</value>
+  </data>
+  <data name="&gt;&gt;N64_UseExpansionPak.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;N64_UseExpansionPak.Parent" xml:space="preserve">
+    <value>Options_N64</value>
+  </data>
+  <data name="&gt;&gt;N64_UseExpansionPak.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="Options_N64.Location" type="System.Drawing.Point, System.Drawing">
+    <value>27, 113</value>
+  </data>
+  <data name="Options_N64.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 6, 6, 6</value>
+  </data>
+  <data name="Options_N64.Size" type="System.Drawing.Size, System.Drawing">
+    <value>630, 230</value>
+  </data>
+  <data name="Options_N64.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="Options_N64.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;Options_N64.Name" xml:space="preserve">
+    <value>Options_N64</value>
+  </data>
+  <data name="&gt;&gt;Options_N64.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Options_N64.Parent" xml:space="preserve">
+    <value>page4</value>
+  </data>
+  <data name="&gt;&gt;Options_N64.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="N64_FixBrightness.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="N64_FixBrightness.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="N64_FixBrightness.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 12</value>
+  </data>
+  <data name="N64_FixBrightness.Size" type="System.Drawing.Size, System.Drawing">
+    <value>105, 19</value>
+  </data>
+  <data name="N64_FixBrightness.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="N64_FixBrightness.Text" xml:space="preserve">
+    <value>n64_brightness</value>
+  </data>
+  <data name="&gt;&gt;N64_FixBrightness.Name" xml:space="preserve">
+    <value>N64_FixBrightness</value>
+  </data>
+  <data name="&gt;&gt;N64_FixBrightness.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;N64_FixBrightness.Parent" xml:space="preserve">
+    <value>Options_N64</value>
+  </data>
+  <data name="&gt;&gt;N64_FixBrightness.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="N64_Allocation.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="N64_Allocation.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="N64_Allocation.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 84</value>
+  </data>
+  <data name="N64_Allocation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 19</value>
+  </data>
+  <data name="N64_Allocation.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="N64_Allocation.Text" xml:space="preserve">
+    <value>n64_allocate32mb</value>
+  </data>
+  <data name="&gt;&gt;N64_Allocation.Name" xml:space="preserve">
+    <value>N64_Allocation</value>
+  </data>
+  <data name="&gt;&gt;N64_Allocation.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;N64_Allocation.Parent" xml:space="preserve">
+    <value>Options_N64</value>
+  </data>
+  <data name="&gt;&gt;N64_Allocation.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="N64_FixCrash.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="N64_FixCrash.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="N64_FixCrash.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 36</value>
+  </data>
+  <data name="N64_FixCrash.Size" type="System.Drawing.Size, System.Drawing">
+    <value>91, 19</value>
+  </data>
+  <data name="N64_FixCrash.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="N64_FixCrash.Text" xml:space="preserve">
+    <value>n64_fixcrash</value>
+  </data>
+  <data name="&gt;&gt;N64_FixCrash.Name" xml:space="preserve">
+    <value>N64_FixCrash</value>
+  </data>
+  <data name="&gt;&gt;N64_FixCrash.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;N64_FixCrash.Parent" xml:space="preserve">
+    <value>Options_N64</value>
+  </data>
+  <data name="&gt;&gt;N64_FixCrash.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="N64_UseExpansionPak.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="N64_UseExpansionPak.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="N64_UseExpansionPak.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 60</value>
+  </data>
+  <data name="N64_UseExpansionPak.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 19</value>
+  </data>
+  <data name="N64_UseExpansionPak.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="N64_UseExpansionPak.Text" xml:space="preserve">
+    <value>n64_8mbram</value>
+  </data>
+  <data name="&gt;&gt;N64_UseExpansionPak.Name" xml:space="preserve">
+    <value>N64_UseExpansionPak</value>
+  </data>
+  <data name="&gt;&gt;N64_UseExpansionPak.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;N64_UseExpansionPak.Parent" xml:space="preserve">
+    <value>Options_N64</value>
+  </data>
+  <data name="&gt;&gt;N64_UseExpansionPak.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <metadata name="ToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>381, 17</value>
   </metadata>
@@ -2635,7 +2734,7 @@
     <value>True</value>
   </metadata>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>684, 421</value>
+    <value>684, 446</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
