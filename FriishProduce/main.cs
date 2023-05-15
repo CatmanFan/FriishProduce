@@ -4,10 +4,9 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.IO.Compression;
 using System.Linq;
 using System.Text.RegularExpressions;
-using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using libWiiSharp;
 
@@ -833,7 +832,7 @@ namespace FriishProduce
             Back.Enabled = false;
             Next.Enabled = false;
 
-            await System.Threading.Tasks.Task.Run(() =>
+            await Task.Run(() =>
             {
                 DBEntry d = new DBEntry();
                 d.Get(input[0]);
@@ -881,7 +880,7 @@ namespace FriishProduce
         {
             try
             {
-                await System.Threading.Tasks.Task.Run(() =>
+                await Task.Run(() =>
                 {
                     try { Directory.Delete(Paths.WorkingFolder, true); } catch { }
                     var RunningP_List = Process.GetProcessesByName("texreplace");
@@ -939,7 +938,7 @@ namespace FriishProduce
                         File.Copy(file, file.Replace(path, Paths.WorkingFolder + "vcbrlyt\\"));
 
                     string arg = $"{Paths.WorkingFolder + "banner.brlyt"} -Title \"{BannerTitle.Text.Replace('-', '–').Replace(Environment.NewLine, "^").Replace("\"", "''")}\" -YEAR {ReleaseYear.Value} -Play {Players.Value}";
-                    await System.Threading.Tasks.Task.Run(() => {
+                    await Task.Run(() => {
                         using (Process p = Process.Start(new ProcessStartInfo
                         {
                             FileName = Paths.WorkingFolder + "vcbrlyt\\vcbrlyt.exe",
@@ -1093,7 +1092,7 @@ namespace FriishProduce
                                     File.WriteAllBytes(emulator_file, emulator);
                                     Global.PrepareContent1();
                                 }
-                                await System.Threading.Tasks.Task.Run(() => { N64.ReplaceROM(); });
+                                await Task.Run(() => { N64.ReplaceROM(); });
 
                                 if (Custom.Checked) N64.InsertSaveComments(SaveDataTitle.Lines);
                                 break;
@@ -1114,7 +1113,7 @@ namespace FriishProduce
                                             }
                                 }
 
-                                await System.Threading.Tasks.Task.Run(() => { SEGA.ReplaceROM(); });
+                                await Task.Run(() => { SEGA.ReplaceROM(); });
 
                                 // Config parameters
                                 if (SEGA_SetConfig.Checked)
@@ -1130,7 +1129,7 @@ namespace FriishProduce
                             }
                     }
 
-                    await System.Threading.Tasks.Task.Run(() =>
+                    await Task.Run(() =>
                     {
                         if (currentConsole != Platforms.SMS && currentConsole != Platforms.SMD)
                             U8.Pack(Paths.WorkingFolder_Content5, Paths.WorkingFolder + "00000005.app");
