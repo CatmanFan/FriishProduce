@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Net;
 using libWiiSharp;
 using static FriishProduce.Properties.Resources;
 
@@ -11,15 +12,16 @@ namespace FriishProduce
 {
     public class TitleImage
     {
-        public string path { get; set; }
+        public string Path { get; set; }
         internal InterpolationMode InterpolationMode { get; set; }
         internal Resize ResizeMode { get; set; }
         public Bitmap VCPic { get; set; }
         public Bitmap IconVCPic { get; set; }
-        public bool shrinkToFit { get; set; }
+        public bool ShrinkToFit { get; set; }
         public Bitmap SaveIcon { get; set; }
         public int[] SaveIconL_xywh { get; set; }
         public int[] SaveIconS_xywh { get; set; }
+        private Bitmap Temp { get; set; }
 
         public enum Resize
         { 
@@ -29,7 +31,8 @@ namespace FriishProduce
 
         public TitleImage(Platforms platform = Platforms.NES)
         {
-            path = null;
+            Temp = null;
+            Path = null;
             VCPic = null;
             IconVCPic = null;
             SaveIcon = null;
@@ -40,12 +43,37 @@ namespace FriishProduce
         private SmoothingMode Smoothing;
         private CompositingQuality CompositingQ;
 
+        public bool FromURL(string url)
+        {
+            try
+            {
+                WebClient c = new WebClient();
+                Stream s = c.OpenRead(url);
+                Bitmap b = new Bitmap(s);
+
+                if (b != null)
+                {
+                    Temp = b;
+                    Path = null;
+                    return true;
+                }
+                else
+                {
+                    throw new FileNotFoundException();
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         public Image Generate(Platforms platform)
         {
             // --------------------------------------------------
             // Console defined options
             // --------------------------------------------------
-            shrinkToFit = (int)platform <= 2 || platform == Platforms.Flash;
+            ShrinkToFit = (int)platform <= 2 || platform == Platforms.Flash;
             SaveIconL_xywh = new int[] { 10, 10, 58, 44 };
             SaveIconS_xywh = new int[] { 4, 9, 40, 30 };
             if (platform == Platforms.SMS || platform == Platforms.SMD)
@@ -54,7 +82,8 @@ namespace FriishProduce
                 SaveIconS_xywh = new int[] { 2, new Random().Next(8, 9), 44, 31 };
             }
 
-            if (path == null) return null;
+            if (Temp == null && Path == null) return null;
+            else if (Temp == null && Path != null) Temp = (Bitmap)Image.FromFile(Path);
 
             PixelOffset = PixelOffsetMode.HighQuality;
             Smoothing = SmoothingMode.HighQuality;
@@ -62,17 +91,13 @@ namespace FriishProduce
 
             if (ResizeMode == Resize.Fit)
             {
-                Image pathImg = Image.FromFile(path);
-
                 float maxWidth = SaveIconS_xywh[2];
-                float ratio = Math.Min(maxWidth / pathImg.Width, maxWidth / pathImg.Height);
+                float ratio = Math.Min(maxWidth / Temp.Width, maxWidth / Temp.Height);
 
-                SaveIconS_xywh[2] = Convert.ToInt32(pathImg.Width * ratio);
-                SaveIconS_xywh[3] = Convert.ToInt32(pathImg.Height * ratio);
+                SaveIconS_xywh[2] = Convert.ToInt32(Temp.Width * ratio);
+                SaveIconS_xywh[3] = Convert.ToInt32(Temp.Height * ratio);
                 SaveIconS_xywh[0] = Convert.ToInt32((maxWidth - SaveIconS_xywh[2]) / 2) + Convert.ToInt32((48 - maxWidth) / 2);
                 SaveIconS_xywh[1] = Convert.ToInt32((maxWidth - SaveIconS_xywh[3]) / 2) + Convert.ToInt32((48 - maxWidth) / 2);
-
-                pathImg.Dispose();
             }
 
             // --------------------------------------------------
@@ -83,13 +108,12 @@ namespace FriishProduce
             SaveIcon = new Bitmap(SaveIconL_xywh[2], SaveIconL_xywh[3]);
             Bitmap tempBmp = new Bitmap(256, 192);
 
-            using (Image pathImg = Image.FromFile(path))
             using (Graphics g = Graphics.FromImage(tempBmp))
             {
                 g.Clear(Color.Black);
-                tempBmp.SetResolution(pathImg.HorizontalResolution, pathImg.VerticalResolution);
-                VCPic.SetResolution(tempBmp.HorizontalResolution, tempBmp.VerticalResolution);
-                IconVCPic.SetResolution(tempBmp.HorizontalResolution, tempBmp.VerticalResolution);
+                tempBmp.SetResolution(Temp.HorizontalResolution, Temp.VerticalResolution);
+                VCPic.SetResolution(tempBmp.HorizontalResolution, Temp.VerticalResolution);
+                IconVCPic.SetResolution(tempBmp.HorizontalResolution, Temp.VerticalResolution);
 
                 g.InterpolationMode = InterpolationMode;
                 g.PixelOffsetMode = PixelOffset;
@@ -98,14 +122,14 @@ namespace FriishProduce
                 g.CompositingQuality = CompositingQ;
 
                 if (ResizeMode == Resize.Stretch)
-                    g.DrawImage(pathImg, 0, 0, 256, 192);
+                    g.DrawImage(Temp, 0, 0, 256, 192);
                 else if (ResizeMode == Resize.Fit)
                 {
-                    float ratio = Math.Min(256F / pathImg.Width, 192F / pathImg.Height);
-                    int W = Convert.ToInt32(pathImg.Width * ratio);
-                    int H = Convert.ToInt32(pathImg.Height * ratio);
+                    float ratio = Math.Min(256F / Temp.Width, 192F / Temp.Height);
+                    int W = Convert.ToInt32(Temp.Width * ratio);
+                    int H = Convert.ToInt32(Temp.Height * ratio);
 
-                    g.DrawImage(pathImg, (256 - W) / 2, (192 - H) / 2, W, H);
+                    g.DrawImage(Temp, (256 - W) / 2, (192 - H) / 2, W, H);
                 }
 
                 g.Dispose();
@@ -127,7 +151,7 @@ namespace FriishProduce
                 g.Clear(Color.White);
                 g.DrawImage(tempBmp, 0, 0, 128, 96);
 
-                if (shrinkToFit)
+                if (ShrinkToFit)
                 {
                     for (int a = 0; a <= 4; a++)
                         for (int b = 0; b <= 4; b++)
@@ -146,7 +170,7 @@ namespace FriishProduce
                 g.SmoothingMode = Smoothing;
                 g.CompositingQuality = CompositingQ;
 
-                g.DrawImage(Image.FromFile(path), 0, 0, SaveIcon.Width, SaveIcon.Height);
+                g.DrawImage(Temp, 0, 0, SaveIcon.Width, SaveIcon.Height);
 
                 g.Dispose();
             }
@@ -155,8 +179,8 @@ namespace FriishProduce
             return VCPic;
         }
 
-        private float[] opacity4 = { 0F, 0.32F, 0.64F, 1F };
-        private float[] opacity6 = { 0F, 0.20F, 0.40F, 0.60F, 0.80F, 1F };
+        private readonly float[] opacity4 = { 0F, 0.32F, 0.64F, 1F };
+        private readonly float[] opacity6 = { 0F, 0.20F, 0.40F, 0.60F, 0.80F, 1F };
 
         public void CreateSave(Platforms platform)
         {
@@ -218,7 +242,7 @@ namespace FriishProduce
                     {
                         g.DrawImage(Image.FromFile(sFiles[0]), new Point(0, 0));
                         g.DrawImage(SaveIcon, SaveIconL_xywh[0], SaveIconL_xywh[1], SaveIconL_xywh[2], SaveIconL_xywh[3]);
-                        sFiles[0] = Paths.Images + Path.GetFileNameWithoutExtension(sFiles[0]) + "_new.png";
+                        sFiles[0] = Paths.Images + System.IO.Path.GetFileNameWithoutExtension(sFiles[0]) + "_new.png";
                         img.Save(sFiles[0]);
 
                         img.Dispose();
@@ -234,7 +258,7 @@ namespace FriishProduce
                         g.SmoothingMode = Smoothing;
                         g.CompositingQuality = CompositingQ;
                         g.DrawImage(SaveIcon, SaveIconS_xywh[0], SaveIconS_xywh[1], SaveIconS_xywh[2], SaveIconS_xywh[3]);
-                        sFiles[1] = Paths.Images + Path.GetFileNameWithoutExtension(sFiles[1]) + "_new.png";
+                        sFiles[1] = Paths.Images + System.IO.Path.GetFileNameWithoutExtension(sFiles[1]) + "_new.png";
                         img.Save(sFiles[1]);
 
                         img.Dispose();
@@ -257,14 +281,14 @@ namespace FriishProduce
                             a.SetColorMatrix(new ColorMatrix() { Matrix33 = opacity4[1] });
                             g.DrawImage(img2, new Rectangle(0, 0, w, h), 0, 0, w, h, GraphicsUnit.Pixel, a);
 
-                            sFiles[2] = Paths.Images + Path.GetFileNameWithoutExtension(sFiles[2]) + "_new.png";
+                            sFiles[2] = Paths.Images + System.IO.Path.GetFileNameWithoutExtension(sFiles[2]) + "_new.png";
                             img1.Save(sFiles[2]);
 
                             g.DrawImage(img1, 0, 0);
                             a.SetColorMatrix(new ColorMatrix() { Matrix33 = opacity4[2] });
                             g.DrawImage(img2, new Rectangle(0, 0, w, h), 0, 0, w, h, GraphicsUnit.Pixel, a);
 
-                            sFiles[3] = Paths.Images + Path.GetFileNameWithoutExtension(sFiles[3]) + "_new.png";
+                            sFiles[3] = Paths.Images + System.IO.Path.GetFileNameWithoutExtension(sFiles[3]) + "_new.png";
                             img1.Save(sFiles[3]);
 
                         }
@@ -302,12 +326,12 @@ namespace FriishProduce
                 {
                     foreach (var item in Directory.EnumerateFiles(Paths.WorkingFolder_MiscCCF))
                     {
-                        if (Path.GetExtension(item) == ".wte")
+                        if (System.IO.Path.GetExtension(item) == ".wte")
                         {
                             using (Process p = Process.Start(new ProcessStartInfo
                             {
                                 FileName = Paths.Apps + "brawllib\\wteconvert.exe",
-                                Arguments = $"\"{item}\" \"{Paths.Images}{Path.GetFileNameWithoutExtension(item)}.tex0\"",
+                                Arguments = $"\"{item}\" \"{Paths.Images}{System.IO.Path.GetFileNameWithoutExtension(item)}.tex0\"",
                                 UseShellExecute = false,
                                 CreateNoWindow = true
                             }))
@@ -315,7 +339,7 @@ namespace FriishProduce
                             using (Process p = Process.Start(new ProcessStartInfo
                             {
                                 FileName = Paths.Apps + "brawllib\\texextract.exe",
-                                Arguments = $"\"{Paths.Images}{Path.GetFileNameWithoutExtension(item)}.tex0\" \"{Paths.Images}{Path.GetFileNameWithoutExtension(item)}.png\"",
+                                Arguments = $"\"{Paths.Images}{System.IO.Path.GetFileNameWithoutExtension(item)}.tex0\" \"{Paths.Images}{System.IO.Path.GetFileNameWithoutExtension(item)}.png\"",
                                 UseShellExecute = false,
                                 CreateNoWindow = true
                             }))
@@ -339,7 +363,7 @@ namespace FriishProduce
                     {
                         g.DrawImage(Image.FromFile(bannerImage), new Point(0, 0));
                         g.DrawImage(SaveIcon, SaveIconL_xywh[0], SaveIconL_xywh[1], SaveIconL_xywh[2], SaveIconL_xywh[3]);
-                        img.Save(Paths.Images + Path.GetFileNameWithoutExtension(bannerImage) + "_new.png");
+                        img.Save(Paths.Images + System.IO.Path.GetFileNameWithoutExtension(bannerImage) + "_new.png");
 
                         img.Dispose();
                         g.Dispose();
@@ -402,12 +426,12 @@ namespace FriishProduce
 
                     foreach (var item in Directory.EnumerateFiles(Paths.Images))
                     {
-                        if (Path.GetExtension(item) == ".tex0" && File.Exists(Paths.Images + Path.GetFileNameWithoutExtension(item) + "_new.png"))
+                        if (System.IO.Path.GetExtension(item) == ".tex0" && File.Exists(Paths.Images + System.IO.Path.GetFileNameWithoutExtension(item) + "_new.png"))
                         {
                             using (Process p = Process.Start(new ProcessStartInfo
                             {
                                 FileName = Paths.Apps + "brawllib\\texreplace.exe",
-                                Arguments = $"\"{item}\" \"{Paths.Images}{Path.GetFileNameWithoutExtension(item)}_new.png\"",
+                                Arguments = $"\"{item}\" \"{Paths.Images}{System.IO.Path.GetFileNameWithoutExtension(item)}_new.png\"",
                                 UseShellExecute = false,
                                 CreateNoWindow = true
                             }))
@@ -428,11 +452,11 @@ namespace FriishProduce
                                     goto Load;
                                 }
                             }
-                            File.Delete(Paths.WorkingFolder_MiscCCF + Path.GetFileNameWithoutExtension(item) + ".wte");
+                            File.Delete(Paths.WorkingFolder_MiscCCF + System.IO.Path.GetFileNameWithoutExtension(item) + ".wte");
                             using (Process p = Process.Start(new ProcessStartInfo
                             {
                                 FileName = Paths.Apps + "brawllib\\wteconvert.exe",
-                                Arguments = $"\"{item}\" \"{Paths.WorkingFolder_MiscCCF}{Path.GetFileNameWithoutExtension(item)}.wte\"",
+                                Arguments = $"\"{item}\" \"{Paths.WorkingFolder_MiscCCF}{System.IO.Path.GetFileNameWithoutExtension(item)}.wte\"",
                                 UseShellExecute = false,
                                 CreateNoWindow = true
                             }))
@@ -576,7 +600,7 @@ namespace FriishProduce
 
         public void Dispose()
         {
-            path = null;
+            Path = null;
             VCPic.Dispose();
             IconVCPic.Dispose();
             SaveIcon.Dispose();

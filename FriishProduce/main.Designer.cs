@@ -33,6 +33,7 @@ namespace FriishProduce
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.a000 = new System.Windows.Forms.Label();
             this.panel = new System.Windows.Forms.Panel();
+            this.Wait = new System.Windows.Forms.PictureBox();
             this.Settings = new System.Windows.Forms.Button();
             this.Back = new System.Windows.Forms.Button();
             this.Save = new System.Windows.Forms.Button();
@@ -53,6 +54,7 @@ namespace FriishProduce
             this.BrowseWAD = new System.Windows.Forms.OpenFileDialog();
             this.SaveWAD = new System.Windows.Forms.SaveFileDialog();
             this.page3 = new System.Windows.Forms.Panel();
+            this.AutoFill = new System.Windows.Forms.Button();
             this.a003 = new System.Windows.Forms.Label();
             this.Banner = new System.Windows.Forms.Panel();
             this.a012 = new System.Windows.Forms.Label();
@@ -104,7 +106,9 @@ namespace FriishProduce
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.BrowsePatch = new System.Windows.Forms.OpenFileDialog();
             this.BrowseImage = new System.Windows.Forms.OpenFileDialog();
+            this.BackgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Wait)).BeginInit();
             this.page1.SuspendLayout();
             this.page2.SuspendLayout();
             this.page3.SuspendLayout();
@@ -127,6 +131,7 @@ namespace FriishProduce
             // panel
             // 
             this.panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.panel.Controls.Add(this.Wait);
             this.panel.Controls.Add(this.Settings);
             this.panel.Controls.Add(this.Back);
             this.panel.Controls.Add(this.Save);
@@ -134,6 +139,12 @@ namespace FriishProduce
             resources.ApplyResources(this.panel, "panel");
             this.panel.Name = "panel";
             this.panel.Tag = "panel";
+            // 
+            // Wait
+            // 
+            resources.ApplyResources(this.Wait, "Wait");
+            this.Wait.Name = "Wait";
+            this.Wait.TabStop = false;
             // 
             // Settings
             // 
@@ -291,11 +302,21 @@ namespace FriishProduce
             // 
             // page3
             // 
+            this.page3.Controls.Add(this.AutoFill);
             this.page3.Controls.Add(this.a003);
             this.page3.Controls.Add(this.Banner);
             this.page3.Controls.Add(this.Custom);
             resources.ApplyResources(this.page3, "page3");
             this.page3.Name = "page3";
+            // 
+            // AutoFill
+            // 
+            resources.ApplyResources(this.AutoFill, "AutoFill");
+            this.AutoFill.FlatAppearance.BorderSize = 0;
+            this.AutoFill.Name = "AutoFill";
+            this.AutoFill.Tag = "a021";
+            this.AutoFill.UseVisualStyleBackColor = true;
+            this.AutoFill.Click += new System.EventHandler(this.AutoFill_Click);
             // 
             // a003
             // 
@@ -730,15 +751,18 @@ namespace FriishProduce
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             resources.ApplyResources(this, "$this");
             this.Controls.Add(this.panel);
-            this.Controls.Add(this.page4);
-            this.Controls.Add(this.page3);
             this.Controls.Add(this.page2);
             this.Controls.Add(this.page1);
+            this.Controls.Add(this.page4);
+            this.Controls.Add(this.page3);
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "Main";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
             this.panel.ResumeLayout(false);
+            this.panel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Wait)).EndInit();
             this.page1.ResumeLayout(false);
             this.page1.PerformLayout();
             this.page2.ResumeLayout(false);
@@ -839,6 +863,9 @@ namespace FriishProduce
         private System.Windows.Forms.Label g002;
         private System.Windows.Forms.ComboBox InjectionMethod;
         private System.Windows.Forms.CheckBox AltCheckbox;
+        private System.Windows.Forms.Button AutoFill;
+        private System.Windows.Forms.PictureBox Wait;
+        private System.ComponentModel.BackgroundWorker BackgroundWorker;
     }
 }
 

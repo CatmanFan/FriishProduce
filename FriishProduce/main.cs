@@ -136,7 +136,7 @@ namespace FriishProduce
             DisableEmanual.Visible = !ForwarderMode;
             SaveDataTitle.MaxLength = 80;
 
-            AltCheckbox.Text = ForwarderMode ? x.Get("g013") : x.Get("g014");
+            AltCheckbox.Text = ForwarderMode ? x.Get("a019") : x.Get("a020");
             AltCheckbox.Checked = false;
 
             foreach (var p in page4.Controls.OfType<Panel>())
@@ -173,6 +173,7 @@ namespace FriishProduce
             input = new string[input.Length];
             Patch.Checked = false;
             SaveDataTitle.Enabled = true;
+            AutoFill.Visible = true;
             btns = new Dictionary<string, string>();
 
             // Consoles
@@ -208,6 +209,7 @@ namespace FriishProduce
                 case Platforms.MSX:
                     break;
                 case Platforms.Flash:
+                    AutoFill.Visible = false;
                     break;
                 case Platforms.GBA:
                     InjectionMethod.Items.RemoveAt(0);
@@ -459,7 +461,7 @@ namespace FriishProduce
 
         private bool CheckBannerPage()
         {
-            if (Custom.Checked)
+            if (Custom.Checked && page3.Visible)
                 return !(string.IsNullOrEmpty(ChannelTitle.Text)
                       || string.IsNullOrEmpty(BannerTitle.Text)
                       || string.IsNullOrEmpty(SaveDataTitle.Text));
@@ -716,24 +718,32 @@ namespace FriishProduce
 
         private void TitleID_Changed(object sender, EventArgs e) => Save.Enabled = (TitleID.Text.Length == 4) && Regex.IsMatch(TitleID.Text, "^[A-Z0-9]*$");
 
+        /// <summary>
+        /// Placeholder function for autosetting interpolation mode/resizing values if these aren't already defined
+        /// </summary>
+        private void ResetImage()
+        {
+            tImg = new TitleImage(currentConsole)
+            {
+                ResizeMode = ImgResize.SelectedIndex < 0 ?
+                             (currentConsole == Platforms.Flash ? TitleImage.Resize.Fit : TitleImage.Resize.Stretch)
+                             : (TitleImage.Resize)ImgResize.SelectedIndex,
+                InterpolationMode = ImgInterp.SelectedIndex < 0 ?
+                                    System.Drawing.Drawing2D.InterpolationMode.Default :
+                                    (System.Drawing.Drawing2D.InterpolationMode)ImgInterp.SelectedIndex
+            };
+            if (ImgResize.SelectedIndex < 0) ImgResize.SelectedIndex = (int)tImg.ResizeMode;
+            if (ImgInterp.SelectedIndex < 0) ImgInterp.SelectedIndex = (int)tImg.InterpolationMode;
+        }
+
         private void Image_Click(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
                 if (BrowseImage.ShowDialog() == DialogResult.OK)
                 {
-                    tImg = new TitleImage(currentConsole)
-                    {
-                        path = BrowseImage.FileName,
-                        ResizeMode = ImgResize.SelectedIndex < 0 ?
-                                     (currentConsole == Platforms.Flash ? TitleImage.Resize.Fit : TitleImage.Resize.Stretch)
-                                     : (TitleImage.Resize)ImgResize.SelectedIndex,
-                        InterpolationMode = ImgInterp.SelectedIndex < 0 ?
-                                            System.Drawing.Drawing2D.InterpolationMode.Default :
-                                            (System.Drawing.Drawing2D.InterpolationMode)ImgInterp.SelectedIndex
-                    };
-                    if (ImgResize.SelectedIndex < 0) ImgResize.SelectedIndex = (int)tImg.ResizeMode;
-                    if (ImgInterp.SelectedIndex < 0) ImgInterp.SelectedIndex = (int)tImg.InterpolationMode;
+                    ResetImage();
+                    tImg.Path = BrowseImage.FileName;
 
                     try
                     {
@@ -747,17 +757,12 @@ namespace FriishProduce
                     {
                         Next.Enabled = CheckBannerPage();
                     }
+
                     return;
                 }
-                else
-                {
-                    goto Clear;
-                }
+                else goto Clear;
             }
-            else
-            {
-                goto Clear;
-            }
+            else goto Clear;
 
             Clear:
             Image.Image = null;
@@ -804,6 +809,7 @@ namespace FriishProduce
             {
                 case "Custom":
                     Banner.Enabled = s.Checked;
+                    AutoFill.Enabled = s.Checked;
                     Next.Enabled = CheckBannerPage();
                     break;
                 case "Import":
@@ -820,78 +826,126 @@ namespace FriishProduce
 
         private void InjectionMethod_Changed(object sender, EventArgs e) => CheckForForwarder();
 
-        // ***************************************************************************************************************** //
+        private async void AutoFill_Click(object sender, EventArgs e)
+        {
+            Wait.Show();
+            AutoFill.Enabled = false;
+            Banner.Enabled = false;
+            Back.Enabled = false;
+            Next.Enabled = false;
+
+            await System.Threading.Tasks.Task.Run(() =>
+            {
+                DBEntry d = new DBEntry();
+                d.Get(input[0]);
+
+                if (d.GetYear() != null) Invoke((Action)delegate { ReleaseYear.Value = int.Parse(d.GetYear()); });
+                if (d.GetImgURL() != null)
+                {
+                    if (tImg.FromURL(d.GetImgURL()))
+                    {
+                        try
+                        {
+                            Invoke((Action)delegate { ResetImage(); });
+                            tImg.FromURL(d.GetImgURL());
+                            Invoke((Action)delegate { Image.Image = tImg.Generate(currentConsole); });
+                        }
+                        catch
+                        {
+                            Invoke((Action)delegate { Image.Image = null; });
+                            tImg = new TitleImage(currentConsole);
+                        }
+                    }
+                }
+            });
+
+            Wait.Hide();
+            AutoFill.Enabled = true;
+            Banner.Enabled = true;
+            Back.Enabled = true;
+            Next.Enabled = CheckBannerPage();
+        }
 
         private void Finish_Click(object sender, EventArgs e)
         {
             SaveWAD.FileName = !string.IsNullOrWhiteSpace(ChannelTitle.Text) && Custom.Checked ? $"{TitleID.Text} - {ChannelTitle.Text}" : TitleID.Text;
             if (SaveWAD.ShowDialog() == DialogResult.OK)
             {
+                Wait.Show();
+                page4.Enabled = false;
+                Back.Enabled = false;
                 Save.Enabled = false;
+                ExportWAD();
+            }
+        }
 
-                try { Directory.Delete(Paths.WorkingFolder, true); } catch { }
-
-                try
+        private async void ExportWAD()
+        {
+            try
+            {
+                await System.Threading.Tasks.Task.Run(() =>
                 {
-                    if (currentConsole != Platforms.Flash) input[0] = Global.ApplyPatch(input[0], input[1]);
-
-                    WAD w = WAD.Load(input[2]);
-                    w.Unpack(Paths.WorkingFolder);
-
-                    #region [Kill texreplace process]
+                    try { Directory.Delete(Paths.WorkingFolder, true); } catch { }
                     var RunningP_List = Process.GetProcessesByName("texreplace");
                     if (RunningP_List != null || RunningP_List.Length > 0)
                         foreach (var RunningP in RunningP_List)
                             RunningP.Kill();
-                    #endregion
 
-                    #region Banner
-                    if (Custom.Checked)
+                    if (currentConsole != Platforms.Flash) input[0] = Global.ApplyPatch(input[0], input[1]);
+                });
+
+                WAD w = WAD.Load(input[2]);
+                w.Unpack(Paths.WorkingFolder);
+
+                #region Banner
+                if (Custom.Checked)
+                {
+                    if (Import.Checked)
                     {
-                        if (Import.Checked)
+                        foreach (var item in Directory.GetFiles(Paths.Database, "*.*", SearchOption.AllDirectories))
+                            if (File.Exists(item) && item.Contains(db.SearchID(ImportBases.SelectedItem.ToString())))
+                                WAD.Load(item).BannerApp.Save(Paths.WorkingFolder + "00000000.app");
+                    }
+
+                    // --------------------------------------------------------------------------- //
+
+                    // Get banner.brlyt and TPLs
+                    Directory.CreateDirectory(Paths.Images);
+
+                    libWiiSharp.U8 BannerApp = libWiiSharp.U8.Load(Paths.WorkingFolder + "00000000.app");
+                    libWiiSharp.U8 Banner = libWiiSharp.U8.Load(BannerApp.Data[BannerApp.GetNodeIndex("banner.bin")]);
+                    libWiiSharp.U8 Icon = libWiiSharp.U8.Load(BannerApp.Data[BannerApp.GetNodeIndex("icon.bin")]);
+
+                    try
+                    {
+                        File.WriteAllBytes(Paths.WorkingFolder + "banner.brlyt", Banner.Data[Banner.GetNodeIndex("banner.brlyt")]);
+
+                        if (tImg.Path != null)
                         {
-                            foreach (var item in Directory.GetFiles(Paths.Database, "*.*", SearchOption.AllDirectories))
-                                if (File.Exists(item) && item.Contains(db.SearchID(ImportBases.SelectedItem.ToString())))
-                                    WAD.Load(item).BannerApp.Save(Paths.WorkingFolder + "00000000.app");
+                            File.WriteAllBytes(Paths.Images + "VCPic.tpl", Banner.Data[Banner.GetNodeIndex("VCPic.tpl")]);
+                            File.WriteAllBytes(Paths.Images + "IconVCPic.tpl", Icon.Data[Icon.GetNodeIndex("IconVCPic.tpl")]);
                         }
+                    }
+                    catch
+                    {
+                        throw new Exception(x.Get("m008"));
+                    }
 
-                        // --------------------------------------------------------------------------- //
+                    // --------------------------------------------------------------------------- //
 
-                        // Get banner.brlyt and TPLs
-                        Directory.CreateDirectory(Paths.Images);
+                    // Copy VCbrlyt to working folder
+                    string path = Paths.Apps + "vcbrlyt\\";
+                    foreach (string dir in Directory.GetDirectories(path))
+                        Directory.CreateDirectory(dir.Replace(path, Paths.WorkingFolder + "vcbrlyt\\"));
+                    foreach (string file in Directory.GetFiles(path, "*.*", SearchOption.AllDirectories))
+                        File.Copy(file, file.Replace(path, Paths.WorkingFolder + "vcbrlyt\\"));
 
-                        libWiiSharp.U8 BannerApp = libWiiSharp.U8.Load(Paths.WorkingFolder + "00000000.app");
-                        libWiiSharp.U8 Banner = libWiiSharp.U8.Load(BannerApp.Data[BannerApp.GetNodeIndex("banner.bin")]);
-                        libWiiSharp.U8 Icon = libWiiSharp.U8.Load(BannerApp.Data[BannerApp.GetNodeIndex("icon.bin")]);
-
-                        try
-                        {
-                            File.WriteAllBytes(Paths.WorkingFolder + "banner.brlyt", Banner.Data[Banner.GetNodeIndex("banner.brlyt")]);
-
-                            if (tImg.path != null)
-                            {
-                                File.WriteAllBytes(Paths.Images + "VCPic.tpl", Banner.Data[Banner.GetNodeIndex("VCPic.tpl")]);
-                                File.WriteAllBytes(Paths.Images + "IconVCPic.tpl", Icon.Data[Icon.GetNodeIndex("IconVCPic.tpl")]);
-                            }
-                        }
-                        catch
-                        {
-                            throw new Exception(x.Get("m008"));
-                        }
-
-                        // --------------------------------------------------------------------------- //
-
-                        // Copy VCbrlyt to working folder
-                        string path = Paths.Apps + "vcbrlyt\\";
-                        foreach (string dir in Directory.GetDirectories(path))
-                            Directory.CreateDirectory(dir.Replace(path, Paths.WorkingFolder + "vcbrlyt\\"));
-                        foreach (string file in Directory.GetFiles(path, "*.*", SearchOption.AllDirectories))
-                            File.Copy(file, file.Replace(path, Paths.WorkingFolder + "vcbrlyt\\"));
-
+                    string arg = $"{Paths.WorkingFolder + "banner.brlyt"} -Title \"{BannerTitle.Text.Replace('-', '–').Replace(Environment.NewLine, "^").Replace("\"", "''")}\" -YEAR {ReleaseYear.Value} -Play {Players.Value}";
+                    await System.Threading.Tasks.Task.Run(() => {
                         using (Process p = Process.Start(new ProcessStartInfo
                         {
                             FileName = Paths.WorkingFolder + "vcbrlyt\\vcbrlyt.exe",
-                            Arguments = $"{Paths.WorkingFolder + "banner.brlyt"} -Title \"{BannerTitle.Text.Replace('-', '–').Replace(Environment.NewLine, "^").Replace("\"", "''")}\" -YEAR {ReleaseYear.Value} -Play {Players.Value}",
+                            Arguments = arg,
                             UseShellExecute = false,
                             CreateNoWindow = true
                         }))
@@ -906,7 +960,7 @@ namespace FriishProduce
 
                         // --------------------------------------------------------------------------- //
 
-                        if (tImg.path != null)
+                        if (tImg.Path != null)
                         {
                             TPL tpl = TPL.Load(Paths.Images + "VCPic.tpl");
                             var tplTF = tpl.GetTextureFormat(0);
@@ -930,51 +984,52 @@ namespace FriishProduce
                             Icon.AddHeaderImd5();
                             BannerApp.ReplaceFile(BannerApp.GetNodeIndex("icon.bin"), Icon.ToByteArray());
                         }
+                    });
 
-                        Banner.AddHeaderImd5();
-                        BannerApp.ReplaceFile(BannerApp.GetNodeIndex("banner.bin"), Banner.ToByteArray());
-                        BannerApp.AddHeaderImet(false, ChannelTitle.Text);
-                        BannerApp.Save(Paths.WorkingFolder + "00000000.app");
+                    Banner.AddHeaderImd5();
+                    BannerApp.ReplaceFile(BannerApp.GetNodeIndex("banner.bin"), Banner.ToByteArray());
+                    BannerApp.AddHeaderImet(false, ChannelTitle.Text);
+                    BannerApp.Save(Paths.WorkingFolder + "00000000.app");
 
-                        BannerApp.Dispose();
-                        Banner.Dispose();
-                        Icon.Dispose();
+                    BannerApp.Dispose();
+                    Banner.Dispose();
+                    Icon.Dispose();
 
-                        Directory.Delete(Paths.Images, true);
-                        File.Delete(Paths.WorkingFolder + "banner.brlyt");
-                        Directory.Delete(Paths.WorkingFolder + "vcbrlyt\\", true);
-                    }
-                    #endregion
+                    Directory.Delete(Paths.Images, true);
+                    File.Delete(Paths.WorkingFolder + "banner.brlyt");
+                    Directory.Delete(Paths.WorkingFolder + "vcbrlyt\\", true);
+                }
+                #endregion
 
-                    // ----------------------------------------------------
-                    // Virtual Console injection
-                    // ----------------------------------------------------
-                    if (currentConsole != Platforms.Flash && !ForwarderMode)
+                // ----------------------------------------------------
+                // Virtual Console injection
+                // ----------------------------------------------------
+                if (currentConsole != Platforms.Flash && !ForwarderMode)
+                {
+                    if (currentConsole != Platforms.SMS && currentConsole != Platforms.SMD)
+                        U8.Unpack(Paths.WorkingFolder + "00000005.app", Paths.WorkingFolder_Content5);
+                    else
                     {
-                        if (currentConsole != Platforms.SMS && currentConsole != Platforms.SMD)
-                            U8.Unpack(Paths.WorkingFolder + "00000005.app", Paths.WorkingFolder_Content5);
-                        else
-                        {
-                            Directory.CreateDirectory(Paths.WorkingFolder_Content5);
+                        Directory.CreateDirectory(Paths.WorkingFolder_Content5);
 
-                            // Write data.ccf directly from U8 loader
-                            libWiiSharp.U8 u = libWiiSharp.U8.Load(Paths.WorkingFolder + "00000005.app");
-                            File.WriteAllBytes(Paths.WorkingFolder_Content5 + "data.ccf", u.Data[u.GetNodeIndex("data.ccf")]);
-                            u.Dispose();
+                        // Write data.ccf directly from U8 loader
+                        libWiiSharp.U8 u = libWiiSharp.U8.Load(Paths.WorkingFolder + "00000005.app");
+                        File.WriteAllBytes(Paths.WorkingFolder_Content5 + "data.ccf", u.Data[u.GetNodeIndex("data.ccf")]);
+                        u.Dispose();
 
-                            // Extract CCF files
-                            new Injectors.SEGA().GetCCF(Custom.Checked);
-                        }
+                        // Extract CCF files
+                        new Injectors.SEGA().GetCCF(Custom.Checked);
+                    }
 
-                        if (DisableEmanual.Checked) Global.RemoveEmanual();
-                        if (Custom.Checked && tImg.path != null) tImg.CreateSave(currentConsole);
+                    if (DisableEmanual.Checked) Global.RemoveEmanual();
+                    if (Custom.Checked && tImg.Path != null) tImg.CreateSave(currentConsole);
 
-                        switch (currentConsole)
-                        {
-                            default:
-                                throw new Exception("Not implemented yet!");
+                    switch (currentConsole)
+                    {
+                        default:
+                            throw new Exception("Not implemented yet!");
 
-                            case Platforms.NES:
+                        case Platforms.NES:
                             {
                                 Injectors.NES NES = new Injectors.NES
                                 {
@@ -987,7 +1042,7 @@ namespace FriishProduce
                                 NES.InsertPalette(NES_Palette.SelectedIndex);
                                 if (Custom.Checked)
                                 {
-                                    if (tImg.path != null)
+                                    if (tImg.Path != null)
                                     {
                                         if (NES.ExtractSaveTPL(Paths.WorkingFolder + "out.tpl"))
                                             tImg.CreateSave(Platforms.NES);
@@ -999,7 +1054,7 @@ namespace FriishProduce
                                 break;
                             }
 
-                            case Platforms.SNES:
+                        case Platforms.SNES:
                             {
                                 Injectors.SNES SNES = new Injectors.SNES()
                                 {
@@ -1013,7 +1068,7 @@ namespace FriishProduce
                                 break;
                             }
 
-                            case Platforms.N64:
+                        case Platforms.N64:
                             {
                                 Injectors.N64 N64 = new Injectors.N64() { ROM = input[0] };
                                 foreach (var entry in db.GetList())
@@ -1023,31 +1078,31 @@ namespace FriishProduce
                                             if (item.Contains(entry["id"].ToString().ToUpper()))
                                                 N64.emuVersion = entry["ver"].ToString();
                                 }
-                                
+
                                 if (N64_FixBrightness.Checked
-                                 || N64_UseExpansionPak.Checked
-                                 || N64_Allocation.Checked
-                                 || N64_FixCrash.Checked)
+                                    || N64_UseExpansionPak.Checked
+                                    || N64_Allocation.Checked
+                                    || N64_FixCrash.Checked)
                                 {
                                     string emulator_file = Global.DetermineContent1();
                                     var emulator = File.ReadAllBytes(emulator_file);
 
                                     if (N64_UseExpansionPak.Checked) N64.Op_ExpansionRAM(emulator);
-                                    if (N64_FixBrightness.Checked)   N64.Op_FixBrightness(emulator);
-                                    if (N64_Allocation.Checked)      N64.Op_AllocateROM(emulator);
-                                    if (N64_FixCrash.Checked)        N64.Op_FixCrashes(emulator);
-                                    
+                                    if (N64_FixBrightness.Checked) N64.Op_FixBrightness(emulator);
+                                    if (N64_Allocation.Checked) N64.Op_AllocateROM(emulator);
+                                    if (N64_FixCrash.Checked) N64.Op_FixCrashes(emulator);
+
                                     File.WriteAllBytes(emulator_file, emulator);
                                     Global.PrepareContent1();
                                 }
-                                N64.ReplaceROM();
+                                await System.Threading.Tasks.Task.Run(() => { N64.ReplaceROM(); });
 
                                 if (Custom.Checked) N64.InsertSaveComments(SaveDataTitle.Lines);
                                 break;
                             }
 
-                            case Platforms.SMS:
-                            case Platforms.SMD:
+                        case Platforms.SMS:
+                        case Platforms.SMD:
                             {
                                 Injectors.SEGA SEGA = new Injectors.SEGA() { ROM = input[0], SMS = currentConsole == Platforms.SMS };
                                 foreach (var entry in db.GetList())
@@ -1060,8 +1115,8 @@ namespace FriishProduce
                                                 SEGA.origROM = entry["ROM"].ToString();
                                             }
                                 }
-                                
-                                SEGA.ReplaceROM();
+
+                                await System.Threading.Tasks.Task.Run(() => { SEGA.ReplaceROM(); });
 
                                 // Config parameters
                                 if (SEGA_SetConfig.Checked)
@@ -1075,8 +1130,10 @@ namespace FriishProduce
                                 SEGA.PackCCF(Custom.Checked);
                                 break;
                             }
-                        }
+                    }
 
+                    await System.Threading.Tasks.Task.Run(() =>
+                    {
                         if (currentConsole != Platforms.SMS && currentConsole != Platforms.SMD)
                             U8.Pack(Paths.WorkingFolder_Content5, Paths.WorkingFolder + "00000005.app");
                         else
@@ -1087,92 +1144,102 @@ namespace FriishProduce
                             u2.Save(Paths.WorkingFolder + "00000005.app");
                             u2.Dispose();
                         }
-                    }
-
-                    // ----------------------------------------------------
-                    // Adobe Flash
-                    // ----------------------------------------------------
-                    else if (currentConsole == Platforms.Flash)
-                    {
-                        U8.Unpack(Paths.WorkingFolder + "00000002.app", Paths.WorkingFolder_Content2);
-
-                        Injectors.Flash Flash = new Injectors.Flash() { SWF = input[0] };
-                        Flash.ReplaceSWF();
-
-                        Flash.HomeMenuNoSave(Flash_HBMNoSave.Checked);
-                        Flash.SetStrapReminder(Flash_StrapReminder.SelectedIndex);
-                        if (Flash_UseSaveData.Checked) Flash.EnableSaveData(Convert.ToInt32(Flash_TotalSaveDataSize.SelectedItem.ToString()));
-                        if (Flash_CustomFPS.Checked) Flash.SetFPS(Flash_FPS.SelectedItem.ToString());
-                        if (Flash_Controller.Checked) Flash.SetController(btns);
-                        if (Custom.Checked && tImg.path != null) tImg.CreateSave(Platforms.Flash);
-                        if (Custom.Checked) Flash.InsertSaveData(SaveDataTitle.Lines);
-
-                        U8.Pack(Paths.WorkingFolder_Content2, Paths.WorkingFolder + "00000002.app");
-                    }
-
-                    // ----------------------------------------------------
-                    // Forwarder creator
-                    // ----------------------------------------------------
-                    else if (currentConsole != Platforms.Flash && ForwarderMode)
-                    {
-                        Forwarders.Generic f = new Forwarders.Generic
-                        {
-                            ROM = input[0],
-                            IsISO = currentConsole == Platforms.SMCD,
-                            UseUSBStorage = AltCheckbox.Checked
-                        };
-
-                        f.Generate
-                        (
-                            TitleID.Text.ToUpper(),
-                            f.UseUSBStorage ?
-                                Path.Combine(Path.GetDirectoryName(SaveWAD.FileName), $"{TitleID.Text}_USBRoot.zip") :
-                                Path.Combine(Path.GetDirectoryName(SaveWAD.FileName), $"{TitleID.Text}_SDRoot.zip"),
-                            InjectionMethod.SelectedItem.ToString()
-                        );
-                        w = f.ConvertWAD(w, vWii.Checked, TitleID.Text.ToUpper());
-                    }
-
-                    if (!ForwarderMode) w.CreateNew(Paths.WorkingFolder);
-
-                    // TO-DO: IOS video mode patching
-                    if (!ForwarderMode && AltCheckbox.Checked)
-                    {
-                        var ios = (int)w.StartupIOS;
-                        if (ios == 53) w.AddContent(Properties.Resources.NANDLoader_NTSC_53, w.BootIndex, w.BootIndex);
-                        else if (ios == 55) w.AddContent(Properties.Resources.NANDLoader_NTSC_55, w.BootIndex, w.BootIndex);
-                        else if (ios == 56) w.AddContent(Properties.Resources.NANDLoader_NTSC_56, w.BootIndex, w.BootIndex);
-                        else w.AddContent(Properties.Resources.NANDLoader_NTSC, w.BootIndex, w.BootIndex);
-                        w.RemoveContent(w.BootIndex);
-                    }
-
-                    if (RegionFree.Checked) w.Region = libWiiSharp.Region.Free;
-                    w.FakeSign = true;
-                    w.ChangeTitleID(LowerTitleID.Channel, TitleID.Text);
-                    w.Save(SaveWAD.FileName);
-                    w.Dispose();
-
-                    Focus();
-                    System.Media.SystemSounds.Beep.Play();
-                    if (Properties.Settings.Default.OpenWhenDone) Process.Start("explorer.exe", "/select, \"" + SaveWAD.FileName + "\"");
+                    });
                 }
-                catch (Exception ex)
+
+                // ----------------------------------------------------
+                // Adobe Flash
+                // ----------------------------------------------------
+                else if (currentConsole == Platforms.Flash)
                 {
-                    MessageBox.Show(String.Format(x.Get("m003"), ex.Message), x.Get("halt"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    U8.Unpack(Paths.WorkingFolder + "00000002.app", Paths.WorkingFolder_Content2);
+
+                    Injectors.Flash Flash = new Injectors.Flash() { SWF = input[0] };
+                    Flash.ReplaceSWF();
+
+                    Flash.HomeMenuNoSave(Flash_HBMNoSave.Checked);
+                    Flash.SetStrapReminder(Flash_StrapReminder.SelectedIndex);
+                    if (Flash_UseSaveData.Checked) Flash.EnableSaveData(Convert.ToInt32(Flash_TotalSaveDataSize.SelectedItem.ToString()));
+                    if (Flash_CustomFPS.Checked) Flash.SetFPS(Flash_FPS.SelectedItem.ToString());
+                    if (Flash_Controller.Checked) Flash.SetController(btns);
+                    if (Custom.Checked && tImg.Path != null) tImg.CreateSave(Platforms.Flash);
+                    if (Custom.Checked) Flash.InsertSaveData(SaveDataTitle.Lines);
+
+                    U8.Pack(Paths.WorkingFolder_Content2, Paths.WorkingFolder + "00000002.app");
                 }
-                finally
+
+                // ----------------------------------------------------
+                // Forwarder creator
+                // ----------------------------------------------------
+                else if (currentConsole != Platforms.Flash && ForwarderMode)
                 {
-                    try { Directory.Delete(Paths.WorkingFolder, true); } catch { }
-
-                    if (File.Exists(input[0]) && input[0].EndsWith(Paths.PatchedSuffix))
+                    Forwarders.Generic f = new Forwarders.Generic
                     {
-                        File.Delete(input[0]);
-                        input[0] = input[0].Remove(input[0].Length - Paths.PatchedSuffix.Length, Paths.PatchedSuffix.Length);
-                    }
+                        ROM = input[0],
+                        IsISO = currentConsole == Platforms.SMCD,
+                        UseUSBStorage = AltCheckbox.Checked
+                    };
+
+                    f.Generate
+                    (
+                        TitleID.Text.ToUpper(),
+                        f.UseUSBStorage ?
+                            Path.Combine(Path.GetDirectoryName(SaveWAD.FileName), $"{TitleID.Text}_USBRoot.zip") :
+                            Path.Combine(Path.GetDirectoryName(SaveWAD.FileName), $"{TitleID.Text}_SDRoot.zip"),
+                        InjectionMethod.SelectedItem.ToString()
+                    );
+                    w = f.ConvertWAD(w, vWii.Checked, TitleID.Text.ToUpper());
                 }
 
+                if (!ForwarderMode) w.CreateNew(Paths.WorkingFolder);
+
+                // TO-DO: IOS video mode patching
+                if (!ForwarderMode && AltCheckbox.Checked)
+                {
+                    var ios = (int)w.StartupIOS;
+                    if (ios == 53) w.AddContent(Properties.Resources.NANDLoader_NTSC_53, w.BootIndex, w.BootIndex);
+                    else if (ios == 55) w.AddContent(Properties.Resources.NANDLoader_NTSC_55, w.BootIndex, w.BootIndex);
+                    else if (ios == 56) w.AddContent(Properties.Resources.NANDLoader_NTSC_56, w.BootIndex, w.BootIndex);
+                    else w.AddContent(Properties.Resources.NANDLoader_NTSC, w.BootIndex, w.BootIndex);
+                    w.RemoveContent(w.BootIndex);
+                }
+
+                if (RegionFree.Checked) w.Region = libWiiSharp.Region.Free;
+                w.FakeSign = true;
+                w.ChangeTitleID(LowerTitleID.Channel, TitleID.Text);
+                w.Save(SaveWAD.FileName);
+                w.Dispose();
+
+                Focus();
+                System.Media.SystemSounds.Beep.Play();
+                if (Properties.Settings.Default.OpenWhenDone) Process.Start("explorer.exe", "/select, \"" + SaveWAD.FileName + "\"");
+            }
+            catch (Exception ex)
+            {
+                Wait.Hide();
+                page4.Enabled = true;
+                Back.Enabled = true;
                 Save.Enabled = true;
+
+                MessageBox.Show(String.Format(x.Get("m003"), ex.Message), x.Get("halt"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                Wait.Hide();
+                page4.Enabled = true;
+                Back.Enabled = true;
+                Save.Enabled = true;
+
+                try { Directory.Delete(Paths.WorkingFolder, true); } catch { }
+
+                if (File.Exists(input[0]) && input[0].EndsWith(Paths.PatchedSuffix))
+                {
+                    File.Delete(input[0]);
+                    input[0] = input[0].Remove(input[0].Length - Paths.PatchedSuffix.Length, Paths.PatchedSuffix.Length);
+                }
             }
         }
+
+        private void Main_FormClosing(object sender, FormClosingEventArgs e) => e.Cancel = Wait.Visible;
     }
 }
