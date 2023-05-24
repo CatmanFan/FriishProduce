@@ -1,4 +1,8 @@
 # FriishProduce
+<div align=center><a href=""><img src="https://raw.githubusercontent.com/CatmanFan/FriishProduce/main/FriishProduce/Resources/images/icon.png" width="172" height="125" /></a><br>
+<a href="https://gbatemp.net/threads/friishproduce-multiplatform-wad-injector.632028/"><img src="https://img.shields.io/badge/GBAtemp-thread-blue" /></a>
+</div>
+
 **FriishProduce** is a WAD injector for Wii/vWii, which allows for automated ROM replacement in Wii channels.
 This application is designed to streamline the process to as few third-party programs as possible.
 
