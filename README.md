@@ -27,7 +27,7 @@ See [here](https://github.com/CatmanFan/FriishProduce/wiki/Translation) for a ho
 ### Platforms
 Currently supported:
 * Virtual Console
-  * **Nintendo Entertainment System (NES) / Famicom*
+  * **Nintendo Entertainment System (NES) / Famicom**
   * **Super Nintendo Entertainment System (SNES) / Super Famicom**
   * **Nintendo 64**
   * **Master System**
@@ -37,27 +37,11 @@ Currently supported:
   * **[FCE Ultra GX](https://github.com/dborth/fceugx)** (dborth et al.)
   * **[Snes9x-GX](https://github.com/dborth/snes9xgx)** (dborth et al.)
   <!-- * **[Visual Boy Advance GX](https://github.com/dborth/vbagx)** (dborth et al.) -->
-  * **[Genesis Plus GX](https://github.com/ekeeke/Genesis-Plus-GX)** (ekeeke)
   * **[mupen64gc-fix94](https://github.com/FIX94/mupen64gc-fix94)** (Wii64 Team, forked by FIX94)
   <!-- * **[WiiSXRX](https://github.com/niuus/WiiSXRX)** (niuus, forked from Mystro256's WiiSXR) -->
 
 * Other
   * **Shockwave/Adobe Flash**
-
-<!--
-### WORKING
-* Virtual Console: (working by default)
-  [ ] NES
-  [ ] SNES
-  [ ] N64
-  [ ] SMS
-  [ ] SMD
-* Emulators:
-  [yes] FCEUGX
-  [yes] SNES9XGX
-  [yes] Mupen64GC
-  [no] Genesis Plus GX (throws Exception (DSI) when loaded; ROM: Mario 4)
--->
 
 ## Credits
 This program uses the following third-party components and apps:
