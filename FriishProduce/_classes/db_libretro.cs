@@ -132,9 +132,9 @@ namespace FriishProduce
 
                     goto NotFound;
 
-                    // --------------------------------------------------------------------- //
+                // --------------------------------------------------------------------- //
 
-                    GetPlayers:
+                GetPlayers:
                     // "maxusers" contains maximum number of players supported
                     using (WebClient c = new WebClient())
                         db_bytes = c.DownloadData(db_base + "maxusers/" + Uri.EscapeUriString(item.Value) + ".dat");
@@ -153,7 +153,7 @@ namespace FriishProduce
                 }
             }
 
-            NotFound:
+        NotFound:
             System.Media.SystemSounds.Beep.Play();
             return;
         }

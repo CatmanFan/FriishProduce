@@ -3,38 +3,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
-using libWiiSharp;
 
 namespace FriishProduce.Injectors
 {
-    // TO-DO:
-    // When doing supposed patch using NTSC Loader:
-    // [X] No patches
-    // [ ] FixBrightness = black screen
-    // [ ] FixCrashes    = black screen
-    // [X] ExpansionPak
-    // [ ] Allocation    = black screen
-
-    // Without patch:
-    // [X] No patches
-    // [ ] FixBrightness = black screen
-    // [ ] FixCrashes    = black screen
-    // [X] ExpansionPak
-    // [ ] Allocation    = black screen
-
-    // After converting hex search/editing method & ditching WWCXTool:
-    // (NTSC patch & NoEmanual enabled, all patches enabled)
-    // [X] StarFox 64
-    // [X] Ogre Battle 64
-    // [ ] CustomRobo V2 (crashes after CC screen if ExpansionPak is enabled)
-
-    // Working with all checkboxes enabled:
-    // [X] rev1
-    // [X] rev1-alt
-    // [ ] rev2/romc
-    // [ ] romc-hero
-    // [ ] romc-alt
-
     public class N64
     {
         public string ROM { get; set; }
@@ -81,8 +52,6 @@ namespace FriishProduce.Injectors
 
         public void Op_FixBrightness()
         {
-            // index = Bytes.Search(content1, "94 21 FF E0 7C 08 02 A6 3C 80 80 17 90 01 00 24 93 E1 00 1C");
-
             // Method originally reported by @NoobletCheese/@Maeson on GBAtemp.
             int index = Bytes.Search(content1, "80 04 00 04 2C 00 00 FF 40 82 00 10 80 04 00 08 2C 00 00 FF");
             if (index != -1)
@@ -297,7 +266,7 @@ namespace FriishProduce.Injectors
                     for (int i = 0; i < encoding.GetBytes(lines[0]).Length; i++)
                         try { newSave.Add(encoding.GetBytes(lines[0])[i]); } catch { newSave.Add(0x00); }
                     if (byteArray[28] == 0x6A || (byteArray[28] == 0x6B && byteArray[29] == 0x72)) // JP/KO
-                        { newSave.Add(0x00); }
+                    { newSave.Add(0x00); }
                     else foreach (var Byte in separator) newSave.Add(Byte);
 
                     // Set first-line offset

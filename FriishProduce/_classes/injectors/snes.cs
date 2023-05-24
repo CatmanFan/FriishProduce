@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.IO;
 using System.Text;
 
@@ -75,7 +74,7 @@ namespace FriishProduce.Injectors
 
             if (ROMcode_index == 0)
                 goto End;
-            
+
             // Text addition format: Shift-JIS
             var line1 = Encoding.GetEncoding(932).GetBytes(lines[0]);
             var line2 = lines.Length == 2 ? Encoding.GetEncoding(932).GetBytes(lines[1]) : new byte[] { 0x00 };
@@ -85,7 +84,7 @@ namespace FriishProduce.Injectors
             title.CopyTo(content1, ROMcode_index + 64);
             File.WriteAllBytes(content1_file, content1);
 
-            End:
+        End:
             Global.PrepareContent1(content1_file);
         }
     }

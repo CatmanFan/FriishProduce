@@ -1,11 +1,11 @@
-﻿using System;
+﻿using libWiiSharp;
+using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Net;
-using libWiiSharp;
 using static FriishProduce.Properties.Resources;
 
 namespace FriishProduce
@@ -25,7 +25,7 @@ namespace FriishProduce
         public bool Get() => Temp != null;
 
         public enum Resize
-        { 
+        {
             Stretch,
             Fit
         }
@@ -395,7 +395,7 @@ namespace FriishProduce
                     using (var a = new ImageAttributes())
                     {
                         var w = img1.Width; var h = img1.Height;
-                        
+
                         a.SetColorMatrix(new ColorMatrix() { Matrix33 = opacity6[1] });
                         g.DrawImage(img2, new Rectangle(0, 0, w, h), 0, 0, w, h, GraphicsUnit.Pixel, a);
 
@@ -492,7 +492,7 @@ namespace FriishProduce
                 using (Image img = (Image)sBanner.Clone())
                 using (Graphics g = Graphics.FromImage(img))
                 {
-                    g.DrawImage(SaveBannerFlash, new Point(0,0));
+                    g.DrawImage(SaveBannerFlash, new Point(0, 0));
                     g.DrawImage(SaveIcon, SaveIconL_xywh[0], SaveIconL_xywh[1], SaveIconL_xywh[2], SaveIconL_xywh[3]);
                     img.Save(sFiles[0]);
 

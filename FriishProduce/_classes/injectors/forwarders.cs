@@ -1,8 +1,7 @@
-﻿using System;
+﻿using libWiiSharp;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
-using libWiiSharp;
 
 namespace FriishProduce.Forwarders
 {
@@ -19,7 +18,7 @@ namespace FriishProduce.Forwarders
         };
 
         public string ROM { get; set; }
-        
+
         public bool IsISO { get; set; }
 
         private readonly string AppFolder = "sd:/private/vc/";

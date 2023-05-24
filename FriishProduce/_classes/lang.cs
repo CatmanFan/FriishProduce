@@ -1,13 +1,12 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Windows.Forms;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using static FriishProduce.Properties.Settings;
 
 namespace FriishProduce
@@ -113,7 +112,7 @@ namespace FriishProduce
         public void Localize(Control f)
         {
             foreach (Control c in f.Controls)
-            {   
+            {
                 Get(c);
                 foreach (Control d in c.Controls)
                 {
@@ -122,7 +121,7 @@ namespace FriishProduce
                         Get(e);
                 }
             }
-        } 
+        }
 
         /// <summary>
         /// First check in case-sensitive format, then use ToLower() if no result has been returned.

@@ -6,7 +6,7 @@ namespace FriishProduce
 {
     partial class Global
     {
-        private static Lang x = Program.Language;
+        private static readonly Lang x = Program.Language;
 
         public static string ApplyPatch(string ROM, string patch = null)
         {

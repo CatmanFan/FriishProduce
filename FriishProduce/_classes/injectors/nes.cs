@@ -90,16 +90,16 @@ namespace FriishProduce.Injectors
                 // Search for palette header identifier
                 for (int i = 0; i < content1.Length; i++)
                 {
-                    if (content1[i]      == 0x42
-                     && content1[i + 1]  == 0x59
-                     && content1[i + 2]  == 0x21
-                     && content1[i + 3]  == 0xC8
-                     && content1[i + 4]  == 0x0D
-                     && content1[i + 5]  == 0x53
-                     && content1[i + 6]  == 0x41
-                     && content1[i + 7]  == 0x54
-                     && content1[i + 8]  == 0x00
-                     && content1[i + 9]  == 0x00
+                    if (content1[i] == 0x42
+                     && content1[i + 1] == 0x59
+                     && content1[i + 2] == 0x21
+                     && content1[i + 3] == 0xC8
+                     && content1[i + 4] == 0x0D
+                     && content1[i + 5] == 0x53
+                     && content1[i + 6] == 0x41
+                     && content1[i + 7] == 0x54
+                     && content1[i + 8] == 0x00
+                     && content1[i + 9] == 0x00
                      && content1[i + 10] == 0x00
                      && content1[i + 11] == 0x00
                      && content1[i + 12] == 0x00
@@ -209,7 +209,7 @@ namespace FriishProduce.Injectors
             // This function will try to read for the index of the string by going backwards from end-of-file
             byte[] content1 = File.ReadAllBytes(content1_file);
 
-            int start = 0;
+            int start;
             int end = 0;
 
             for (int i = content1.Length - 1; i > 0; i--)

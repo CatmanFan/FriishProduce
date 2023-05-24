@@ -72,8 +72,8 @@ namespace FriishProduce.Injectors
             string[] new_config = File.ReadAllLines(config);
             for (int i = 0; i < new_config.Length; i++)
             {
-                if (new_config[i].StartsWith("shared_object_capability"))     new_config[i] = "shared_object_capability        on";
-                if (new_config[i].StartsWith("persistent_storage_total"))     new_config[i] = $"persistent_storage_total        {total_storage}";
+                if (new_config[i].StartsWith("shared_object_capability")) new_config[i] = "shared_object_capability        on";
+                if (new_config[i].StartsWith("persistent_storage_total")) new_config[i] = $"persistent_storage_total        {total_storage}";
                 if (new_config[i].StartsWith("persistent_storage_per_movie")) new_config[i] = $"persistent_storage_per_movie    {total_storage / 2}";
                 // if (new_config[i].StartsWith("vff_cache_size"))               new_config[i] = $"vff_cache_size                  {total_storage}";
             }
@@ -91,11 +91,11 @@ namespace FriishProduce.Injectors
                     // Probably sets the animation to play in reverse and back as in other VC titles (no)
                     if (banner[i].StartsWith("anim_type")) banner[i] = "anim_type       bounce            # loop / bounce";
 
-                    if (banner[i].StartsWith("title_text"))   banner[i] = $"title_text      {Uri.EscapeUriString(lines[0])} # UTF-8/URL Encoded";
+                    if (banner[i].StartsWith("title_text")) banner[i] = $"title_text      {Uri.EscapeUriString(lines[0])} # UTF-8/URL Encoded";
                     if (banner[i].StartsWith("comment_text")) banner[i] = $"comment_text    {(lines.Length == 2 ? Uri.EscapeUriString(lines[1]) : "%20")} # UTF-8/URL Encoded";
                     if (banner[i].StartsWith("icon_count")) icons_offset = i;
                 }
-                
+
                 System.Collections.Generic.List<string> new_banner = new System.Collections.Generic.List<string>();
                 for (int i = 0; i < icons_offset; i++)
                     new_banner.Add(banner[i]);

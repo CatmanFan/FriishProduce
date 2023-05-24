@@ -4,7 +4,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace FriishProduce.Injectors
 {
@@ -192,7 +191,7 @@ namespace FriishProduce.Injectors
             foreach (var item in Directory.EnumerateFiles(Paths.WorkingFolder_DataCCF))
             {
                 if (Path.GetFileName(item).Contains(".SGD") || Path.GetFileName(item).Contains(".SMS") ||
-                    (Path.GetFileName(item).Contains(origROM.Substring(0,10)) && !string.IsNullOrWhiteSpace(origROM)))
+                    (Path.GetFileName(item).Contains(origROM.Substring(0, 10)) && !string.IsNullOrWhiteSpace(origROM)))
                 {
                     if (File.ReadAllBytes(ROM).Length > File.ReadAllBytes(item).Length)
                         throw new Exception(Program.Language.Get("m004"));

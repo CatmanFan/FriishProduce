@@ -1,6 +1,6 @@
-﻿using System;
+﻿using libWiiSharp;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
@@ -8,7 +8,6 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using libWiiSharp;
 
 namespace FriishProduce
 {
@@ -58,18 +57,13 @@ namespace FriishProduce
             ToolTip.SetToolTip(Settings, x.Get("g001"));
             ToolTip.SetToolTip(RandomTID, x.Get("a022"));
 
-            BrowseWAD.Filter   = x.Get("f_wad") + x.Get("f_all");
+            BrowseWAD.Filter = x.Get("f_wad") + x.Get("f_all");
             BrowseImage.Filter = x.Get("f_img") + x.Get("f_all");
             BrowsePatch.Filter = x.Get("f_bps") + x.Get("f_all");
             SaveWAD.Filter = BrowseWAD.Filter;
 
             Reset();
-
-            // SendMessage(this.Handle, 0x80u, 0, new Bitmap(1, 1).GetHicon());
         }
-
-        [System.Runtime.InteropServices.DllImport("user32.dll", CharSet = System.Runtime.InteropServices.CharSet.Auto)]
-        private static extern IntPtr SendMessage(IntPtr hWnd, uint Msg, int wParam, IntPtr lParam);
 
         // ***************************************************************************************************************** //
 
@@ -530,7 +524,7 @@ namespace FriishProduce
             input[1] = null;
             if (BrowseROM.ShowDialog() == DialogResult.OK)
                 input[0] = BrowseROM.FileName;
-                ROMPath.Text = input[0] != null ? Path.GetFileName(input[0]) : x.Get("a002");
+            ROMPath.Text = input[0] != null ? Path.GetFileName(input[0]) : x.Get("a002");
 
             Patch.Checked = false;
             Next.Enabled = (input[0] != null) && (input[2] != null);
@@ -658,7 +652,7 @@ namespace FriishProduce
                             }
                         }
 
-                        Next:
+                    Next:
                         w.Dispose();
                     }
                     goto End;
@@ -668,7 +662,7 @@ namespace FriishProduce
                     goto End;
                 }
 
-                End:
+            End:
                 if (listNum == Bases.Items.Count || !set) System.Media.SystemSounds.Beep.Play();
                 return;
             }
@@ -768,11 +762,11 @@ namespace FriishProduce
             if (SaveDataTitle.Lines.Length > 2) SaveDataTitle.Lines = new string[2] { SaveDataTitle.Lines[0], SaveDataTitle.Lines[1] };
             if (BannerTitle.Lines.Length > 2) BannerTitle.Lines = new string[2] { BannerTitle.Lines[0], BannerTitle.Lines[1] };
             foreach (string line1 in SaveDataTitle.Lines)
-            foreach (string line2 in BannerTitle.Lines)
-            {
-                if (line1.Length > 40) line1.Remove(39);
-                if (line2.Length > 65) line2.Remove(64);
-            }
+                foreach (string line2 in BannerTitle.Lines)
+                {
+                    if (line1.Length > 40) line1.Remove(39);
+                    if (line2.Length > 65) line2.Remove(64);
+                }
 
             Next.Enabled = CheckBannerPage();
         }
@@ -999,13 +993,11 @@ namespace FriishProduce
                 });
 
                 // ----------------------------------------------------
-                // TO-DO: IOS video mode patching
-                // ----------------------------------------------------
                 if (AltCheckbox.Checked && !ForwarderMode)
                 {
                     int mode = VideoMode.SelectedIndex;
                     await Task.Run(() => { Global.ChangeVideoMode(mode); });
-                } 
+                }
                 // ----------------------------------------------------
 
                 #region Banner
@@ -1052,24 +1044,25 @@ namespace FriishProduce
                         File.Copy(file, file.Replace(path, Paths.WorkingFolder + "vcbrlyt\\"));
 
                     string arg = $"{Paths.WorkingFolder + "banner.brlyt"} -Title \"{BannerTitle.Text.Replace('-', '–').Replace(Environment.NewLine, "^").Replace("\"", "''")}\" -YEAR {ReleaseYear.Value} -Play {Players.Value}";
-        
-                await Task.Run(() => {
-                    using (Process p = Process.Start(new ProcessStartInfo
+
+                    await Task.Run(() =>
                     {
-                        FileName = Paths.WorkingFolder + "vcbrlyt\\vcbrlyt.exe",
-                        Arguments = arg,
-                        UseShellExecute = false,
-                        CreateNoWindow = true
-                    }))
-                        p.WaitForExit();
+                        using (Process p = Process.Start(new ProcessStartInfo
+                        {
+                            FileName = Paths.WorkingFolder + "vcbrlyt\\vcbrlyt.exe",
+                            Arguments = arg,
+                            UseShellExecute = false,
+                            CreateNoWindow = true
+                        }))
+                            p.WaitForExit();
 
-                    // --------------------------------------------------------------------------- //
+                        // --------------------------------------------------------------------------- //
 
-                    var Brlyt = File.ReadAllBytes(Paths.WorkingFolder + "banner.brlyt");
-                    if (Brlyt == Banner.Data[Banner.GetNodeIndex("banner.brlyt")])
-                        throw new Exception(x.Get("m007"));
-                    Banner.ReplaceFile(Banner.GetNodeIndex("banner.brlyt"), Brlyt);
-                });
+                        var Brlyt = File.ReadAllBytes(Paths.WorkingFolder + "banner.brlyt");
+                        if (Brlyt == Banner.Data[Banner.GetNodeIndex("banner.brlyt")])
+                            throw new Exception(x.Get("m007"));
+                        Banner.ReplaceFile(Banner.GetNodeIndex("banner.brlyt"), Brlyt);
+                    });
 
                     // --------------------------------------------------------------------------- //
 
@@ -1124,7 +1117,8 @@ namespace FriishProduce
                     {
                         bool Custom = this.Custom.Checked;
 
-                        await Task.Run(() => {
+                        await Task.Run(() =>
+                        {
                             Directory.CreateDirectory(Paths.WorkingFolder_Content5);
 
                             // Write data.ccf directly from U8 loader
@@ -1137,7 +1131,7 @@ namespace FriishProduce
                         });
                     }
 
-                    if (DisableEmanual.Checked)              await Task.Run(() => { Global.RemoveEmanual(); });
+                    if (DisableEmanual.Checked) await Task.Run(() => { Global.RemoveEmanual(); });
                     if (Custom.Checked && tImg.Get()) await Task.Run(() => { tImg.CreateSave(currentConsole); });
 
                     switch (currentConsole)
@@ -1229,14 +1223,15 @@ namespace FriishProduce
                                 {
                                     string title = Bases.SelectedItem.ToString();
 
-                                await Task.Run(() => {
-                                    if (entry["title"].ToString() == title)
-                                        foreach (var item in Directory.GetFiles(Paths.Database, "*.*", SearchOption.AllDirectories))
-                                            if (item.Contains(entry["id"].ToString().ToUpper()))
-                                            {
-                                                SEGA.ver = int.Parse(entry["ver"].ToString());
-                                                SEGA.origROM = entry["ROM"].ToString();
-                                            }
+                                    await Task.Run(() =>
+                                    {
+                                        if (entry["title"].ToString() == title)
+                                            foreach (var item in Directory.GetFiles(Paths.Database, "*.*", SearchOption.AllDirectories))
+                                                if (item.Contains(entry["id"].ToString().ToUpper()))
+                                                {
+                                                    SEGA.ver = int.Parse(entry["ver"].ToString());
+                                                    SEGA.origROM = entry["ROM"].ToString();
+                                                }
                                     });
                                 }
 
@@ -1258,7 +1253,8 @@ namespace FriishProduce
                             }
                     }
 
-                    await Task.Run(() => {
+                    await Task.Run(() =>
+                    {
                         if (currentConsole != Platforms.SMS && currentConsole != Platforms.SMD)
                             U8.Pack(Paths.WorkingFolder_Content5, Paths.WorkingFolder + "00000005.app");
                         else
@@ -1284,11 +1280,11 @@ namespace FriishProduce
 
                     Flash.HomeMenuNoSave(Flash_HBMNoSave.Checked);
                     Flash.SetStrapReminder(Flash_StrapReminder.SelectedIndex);
-                    if (Flash_UseSaveData.Checked)    Flash.EnableSaveData(Convert.ToInt32(Flash_TotalSaveDataSize.SelectedItem.ToString()));
-                    if (Flash_CustomFPS.Checked)      Flash.SetFPS(Flash_FPS.SelectedItem.ToString());
-                    if (Flash_Controller.Checked)     Flash.SetController(btns);
+                    if (Flash_UseSaveData.Checked) Flash.EnableSaveData(Convert.ToInt32(Flash_TotalSaveDataSize.SelectedItem.ToString()));
+                    if (Flash_CustomFPS.Checked) Flash.SetFPS(Flash_FPS.SelectedItem.ToString());
+                    if (Flash_Controller.Checked) Flash.SetController(btns);
                     if (Custom.Checked && tImg.Get()) tImg.CreateSave(Platforms.Flash);
-                    if (Custom.Checked)               Flash.InsertSaveData(SaveDataTitle.Lines);
+                    if (Custom.Checked) Flash.InsertSaveData(SaveDataTitle.Lines);
 
                     await Task.Run(() => { U8.Pack(Paths.WorkingFolder_Content2, Paths.WorkingFolder + "00000002.app"); });
                 }
@@ -1321,7 +1317,7 @@ namespace FriishProduce
                 if (RegionFree.Checked) w.Region = libWiiSharp.Region.Free;
                 w.FakeSign = true;
                 w.ChangeTitleID(LowerTitleID.Channel, TitleID.Text);
-                
+
                 string Out = SaveWAD.FileName;
                 await Task.Run(() => { w.Save(Out); w.Dispose(); });
 

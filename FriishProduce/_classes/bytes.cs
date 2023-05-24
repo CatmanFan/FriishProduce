@@ -19,7 +19,7 @@ namespace FriishProduce
                     if (x == 1) return i;
                 }
             }
-            
+
             return -1;
         }
 
@@ -51,7 +51,7 @@ namespace FriishProduce
             var sBytes = new byte[sArray.Length];
             for (int i = 0; i < sArray.Length; i++)
                 sBytes[i] = Convert.ToByte(sArray[i], 16);
-            
+
             var pArray = pattern.Split(' ');
             var pBytes = new byte[pArray.Length];
             for (int i = 0; i < pArray.Length; i++)
@@ -66,7 +66,7 @@ namespace FriishProduce
             var sBytes = new byte[sArray.Length];
             for (int i = 0; i < sArray.Length; i++)
                 sBytes[i] = Convert.ToByte(sArray[i], 16);
-            
+
             var pArray = pattern.Split(' ');
             var pBytes = new byte[pArray.Length];
             for (int i = 0; i < pArray.Length; i++)
