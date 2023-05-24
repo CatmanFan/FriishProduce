@@ -161,6 +161,16 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Icon {
+            get {
+                object obj = ResourceManager.GetObject("Icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Loading {
             get {
                 object obj = ResourceManager.GetObject("Loading", resourceCulture);
@@ -171,39 +181,9 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] NANDLoader_NTSC {
+        internal static byte[] LZSS {
             get {
-                object obj = ResourceManager.GetObject("NANDLoader_NTSC", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] NANDLoader_NTSC_53 {
-            get {
-                object obj = ResourceManager.GetObject("NANDLoader_NTSC_53", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] NANDLoader_NTSC_55 {
-            get {
-                object obj = ResourceManager.GetObject("NANDLoader_NTSC_55", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] NANDLoader_NTSC_56 {
-            get {
-                object obj = ResourceManager.GetObject("NANDLoader_NTSC_56", resourceCulture);
+                object obj = ResourceManager.GetObject("LZSS", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -275,16 +255,6 @@ namespace FriishProduce.Properties {
             get {
                 object obj = ResourceManager.GetObject("SaveIconPlaceholder_SEGA", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] WWCXTool {
-            get {
-                object obj = ResourceManager.GetObject("WWCXTool", resourceCulture);
-                return ((byte[])(obj));
             }
         }
     }

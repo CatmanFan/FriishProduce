@@ -132,7 +132,7 @@ namespace FriishProduce.Views
                 foreach (string btnName in WiiBtns)
                 {
                     if (button.Tag.ToString() == btnName && button.SelectedIndex > 0)
-                            Config.Add(button.Tag.ToString(), SrcBtns[button.SelectedIndex]);
+                        Config.Add(button.Tag.ToString(), SrcBtns[button.SelectedIndex]);
                 }
             }
 

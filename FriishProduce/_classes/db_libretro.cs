@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.IO.Hashing;
 using System.Net;
-using System.Threading.Tasks;
+using System.Net.NetworkInformation;
 
 namespace FriishProduce
 {
@@ -11,12 +12,14 @@ namespace FriishProduce
         private string Title;
         private string Year;
         private string ImgURL;
+        private string Players;
 
         public DBEntry()
         {
             Title = null;
             Year = null;
             ImgURL = null;
+            Players = null;
         }
 
         public string GetYear() => Year;
@@ -25,7 +28,9 @@ namespace FriishProduce
 
         public string GetImgURL() => ImgURL;
 
-        public void Get(string gamePath)
+        public string GetPlayers() => Players;
+
+        public void Get(string gamePath, Platforms platform)
         {
             var crc = new Crc32();
             using (var file = File.OpenRead(gamePath))
@@ -35,43 +40,122 @@ namespace FriishProduce
             Array.Reverse(hash_array);
             string hash = BitConverter.ToString(hash_array).Replace("-", "").ToLower();
 
-            string db_base = "https://github.com/libretro/libretro-database/raw/master/metadat/releaseyear/";
-            string[] db_platforms =
+            string db_base = "https://github.com/libretro/libretro-database/raw/master/metadat/";
+            Dictionary<Platforms, string> db_platforms = new Dictionary<Platforms, string>
             {
-                "Nintendo - Nintendo Entertainment System",
-                "Nintendo - Super Nintendo Entertainment System",
-                "Nintendo - Nintendo 64"
+                { Platforms.NES, "Nintendo - Nintendo Entertainment System" },
+                { Platforms.SNES, "Nintendo - Super Nintendo Entertainment System" },
+                { Platforms.N64, "Nintendo - Nintendo 64" },
+                // { Platforms.GBA, "Nintendo - Game Boy" },
+                { Platforms.GBA, "Nintendo - Game Boy Advance" },
+                // { Platforms.GBA, "Nintendo - Game Boy Color" },
+                { Platforms.SMS, "Sega - Master System - Mark III" },
+                { Platforms.SMD, "Sega - Mega Drive - Genesis" },
+                { Platforms.PCE, "NEC - PC Engine - TurboGrafx 16" },
+                { Platforms.NeoGeo, "SNK - Neo Geo" },
             };
 
-            try
+            foreach (KeyValuePair<Platforms, string> item in db_platforms)
             {
-                foreach (var item in db_platforms)
+                if (item.Key == platform)
                 {
-                    string db = db_base + Uri.EscapeUriString(item) + ".dat";
+                    byte[] db_bytes = { 0x00 };
 
-                    WebClient c = new WebClient();
-                    var db_txt = c.DownloadString(db);
-                    c.Dispose();
+                    using (Ping p = new Ping())
+                    {
+                        try
+                        {
+                            PingReply r = p.Send("google.com", 3000);
+                            if (r.Status != IPStatus.Success || r == null) throw new WebException(Program.Language.Get("m017"), WebExceptionStatus.Timeout);
+                        }
+                        catch
+                        {
+                            throw new WebException(Program.Language.Get("m017"), WebExceptionStatus.ConnectFailure);
+                        }
+                    }
 
-                    var db_lines = db_txt.Split(Environment.NewLine.ToCharArray());
+                    // --------------------------------------------------------------------- //
+
+                    // Search in "releaseyear" repository
+                    using (WebClient c = new WebClient())
+                        db_bytes = c.DownloadData(db_base + "releaseyear/" + Uri.EscapeUriString(item.Value) + ".dat");
+
+                    // Scan retrieved database
+                    string[] db_lines = System.Text.Encoding.UTF8.GetString(db_bytes).Split(Environment.NewLine.ToCharArray());
 
                     for (int i = 5; i < db_lines.Length; i++)
                         if (db_lines[i].ToLower().Contains(hash))
                         {
-                            Title = db_lines[i - 2].Replace("\t", "").Replace("comment \"", "").Replace("\"", "");
-                            Year = db_lines[i - 1].Trim().Replace("releaseyear \"", "").Replace("\"", "");
-                            ImgURL = "https://github.com/libretro-thumbnails/" + item.Replace(" ", "_") + "/raw/master/Named_Titles/" + Uri.EscapeUriString(Title) + ".png";
-                            return;
+                            for (int x = i; x > i - 10; x--)
+                                if (db_lines[x].Contains("comment \""))
+                                {
+                                    Title = db_lines[x].Replace("\t", "").Replace("comment \"", "").Replace("\"", "");
+                                    goto GetYear;
+                                }
+
+                            GetYear:
+                            for (int x = i; x > i - 10; x--)
+                                if (db_lines[x].Contains("releaseyear \""))
+                                {
+                                    Year = db_lines[x].Trim().Replace("releaseyear \"", "").Replace("\"", "");
+                                    goto GetImgURL;
+                                }
+
+                            GetImgURL:
+                            ImgURL = "https://thumbnails.libretro.com/" + Uri.EscapeUriString(item.Value) + "/Named_Titles/" + Uri.EscapeUriString(Title) + ".png";
+                            goto GetPlayers;
                         }
+
+                    // --------------------------------------------------------------------- //
+
+                    // If not found, search in "developer" repository, which happens to be more complete
+                    using (WebClient c = new WebClient())
+                        db_bytes = c.DownloadData(db_base + "developer/" + Uri.EscapeUriString(item.Value) + ".dat");
+
+                    // Scan retrieved database
+                    db_lines = System.Text.Encoding.UTF8.GetString(db_bytes).Split(Environment.NewLine.ToCharArray());
+
+                    for (int i = 5; i < db_lines.Length; i++)
+                        if (db_lines[i].ToLower().Contains(hash))
+                        {
+                            for (int x = i; x > i - 10; x--)
+                                if (db_lines[x].Contains("comment \""))
+                                {
+                                    Title = db_lines[x].Replace("\t", "").Replace("comment \"", "").Replace("\"", "");
+                                    goto GetImgURL;
+                                }
+
+                            GetImgURL:
+                            ImgURL = "https://thumbnails.libretro.com/" + Uri.EscapeUriString(item.Value) + "/Named_Titles/" + Uri.EscapeUriString(Title) + ".png";
+                            goto GetPlayers;
+                        }
+
+                    goto NotFound;
+
+                    // --------------------------------------------------------------------- //
+
+                    GetPlayers:
+                    // "maxusers" contains maximum number of players supported
+                    using (WebClient c = new WebClient())
+                        db_bytes = c.DownloadData(db_base + "maxusers/" + Uri.EscapeUriString(item.Value) + ".dat");
+
+                    // Scan retrieved database
+                    db_lines = System.Text.Encoding.UTF8.GetString(db_bytes).Split(Environment.NewLine.ToCharArray());
+
+                    for (int i = 5; i < db_lines.Length; i++)
+                        if (db_lines[i].Contains(Title))
+                        {
+                            for (int x = i; x < i + 5; x++)
+                                if (db_lines[x].Contains("users "))
+                                    Players = db_lines[x].Replace("\t", "").Replace("users ", "");
+                        }
+                    return;
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, Program.Language.Get("error"), System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
-                return;
-            }
 
+            NotFound:
             System.Media.SystemSounds.Beep.Play();
+            return;
         }
     }
 }

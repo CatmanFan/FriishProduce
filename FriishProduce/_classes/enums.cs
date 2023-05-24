@@ -15,6 +15,8 @@ namespace FriishProduce
         MSX = 9,
         Flash = 5,
         GBA = 10,
-        SMCD = 6
+        SMCD = 6,
+        // S32X = 7,
+        // PSX = 8,
     }
 }

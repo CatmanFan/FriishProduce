@@ -74,18 +74,22 @@ namespace FriishProduce
             {
                 case (MessageBoxIcon)16:
                     pictureBox1.Image = SystemIcons.Hand.ToBitmap();
+                    Icon = SystemIcons.Hand;
                     SystemSounds.Hand.Play();
                     break;
                 case (MessageBoxIcon)32:
                     pictureBox1.Image = SystemIcons.Question.ToBitmap();
+                    Icon = SystemIcons.Question;
                     SystemSounds.Question.Play();
                     break;
                 case (MessageBoxIcon)48:
                     pictureBox1.Image = SystemIcons.Exclamation.ToBitmap();
+                    Icon = SystemIcons.Exclamation;
                     SystemSounds.Exclamation.Play();
                     break;
                 case (MessageBoxIcon)64:
                     pictureBox1.Image = SystemIcons.Information.ToBitmap();
+                    Icon = SystemIcons.Information;
                     SystemSounds.Asterisk.Play();
                     break;
             }

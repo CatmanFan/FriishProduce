@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<file app="Snes9x GX" version="4.5.3">
+	<section name="File" description="File Settings">
+		<setting name="AutoLoad" value="2" description="Auto Load" />
+		<setting name="AutoSave" value="2" description="Auto Save" />
+		<setting name="LoadMethod" value="" description="Load Method" />
+		<setting name="SaveMethod" value="" description="Save Method" />
+		<setting name="LoadFolder" value="private/vc/TitleIDHere/" description="Load Folder" />
+	<!--<setting name="LastFileLoaded" value="" description="Last File Loaded" />-->
+		<setting name="SaveFolder" value="private/vc/TitleIDHere/saves" description="Save Folder" />
+	<!--<setting name="AppendAuto" value="0" description="Append Auto to .SAV Files" />
+		<setting name="CheatFolder" value="snes9xgx/cheats" description="Cheats Folder" />
+		<setting name="ScreenshotsFolder" value="snes9xgx/screenshots" description="Screenshots Folder" />
+		<setting name="CoverFolder" value="snes9xgx/covers" description="Covers Folder" />
+		<setting name="ArtworkFolder" value="snes9xgx/artwork" description="Artwork Folder" />-->
+	</section>
+		<!--
+	<section name="Network" description="Network Settings">
+		<setting name="smbip" value="" description="Share Computer IP" />
+		<setting name="smbshare" value="" description="Share Name" />
+		<setting name="smbuser" value="" description="Share Username" />
+		<setting name="smbpwd" value="" description="Share Password" />
+	</section>
+	-->
+	<section name="Video" description="Video Settings">
+		<setting name="videomode" value="0" description="Video Mode" />
+		<setting name="zoomHor" value="1.00" description="Horizontal Zoom Level" />
+		<setting name="zoomVert" value="1.00" description="Vertical Zoom Level" />
+		<setting name="render" value="2" description="Video Filtering" />
+		<setting name="widescreen" value="0" description="Aspect Ratio Correction" />
+		<setting name="crosshair" value="1" description="Crosshair" />
+		<setting name="FilterMethod" value="0" description="Filter Method" />
+		<setting name="xshift" value="0" description="Horizontal Video Shift" />
+		<setting name="yshift" value="0" description="Vertical Video Shift" />
+		<setting name="sfxOverclock" value="0" description="SuperFX Overclock" />
+		<setting name="Interpolation" value="0" description="Interpolation" />
+		<setting name="TurboModeEnabled" value="1" description="Turbo Mode Enabled" />
+		<setting name="TurboModeButton" value="0" description="Turbo Mode Button" />
+	</section>
+		<!--
+	<section name="Menu" description="Menu Settings">
+		<setting name="WiimoteOrientation" value="0" description="Wiimote Orientation" />
+		<setting name="ExitAction" value="0" description="Exit Action" />
+		<setting name="MusicVolume" value="20" description="Music Volume" />
+		<setting name="SFXVolume" value="40" description="Sound Effects Volume" />
+		<setting name="Rumble" value="1" description="Rumble" />
+		<setting name="language" value="1" description="Language" />
+		<setting name="PreviewImage" value="0" description="Preview Image" />
+		<setting name="HideSRAMSaving" value="0" description="Hide SRAM Saving" />
+	</section>
+	-->
+	<section name="Controller" description="Controller Settings">
+		<setting name="Controller" value="4" description="Controller" />
+		<controller name="btnmap_pad_gcpad" description="SNES Pad - GameCube Controller">
+			<button number="0" assignment="256" />
+			<button number="1" assignment="512" />
+			<button number="2" assignment="1024" />
+			<button number="3" assignment="2048" />
+			<button number="4" assignment="64" />
+			<button number="5" assignment="32" />
+			<button number="6" assignment="4096" />
+			<button number="7" assignment="16" />
+			<button number="8" assignment="8" />
+			<button number="9" assignment="4" />
+			<button number="10" assignment="1" />
+			<button number="11" assignment="2" />
+		</controller>
+		<setting name="WiiControls" value="1" description="Match Wii Game" />
+		<controller name="btnmap_pad_wiimote" description="SNES Pad - Wiimote">
+			<button number="0" assignment="4" />
+			<button number="1" assignment="1" />
+			<button number="2" assignment="2" />
+			<button number="3" assignment="8" />
+			<button number="4" assignment="0" />
+			<button number="5" assignment="0" />
+			<button number="6" assignment="4096" />
+			<button number="7" assignment="16" />
+			<button number="8" assignment="512" />
+			<button number="9" assignment="256" />
+			<button number="10" assignment="2048" />
+			<button number="11" assignment="1024" />
+		</controller>
+		<controller name="btnmap_pad_classic" description="SNES Pad - Classic Controller">
+			<button number="0" assignment="1048576" />
+			<button number="1" assignment="4194304" />
+			<button number="2" assignment="524288" />
+			<button number="3" assignment="2097152" />
+			<button number="4" assignment="536870912" />
+			<button number="5" assignment="33554432" />
+			<button number="6" assignment="67108864" />
+			<button number="7" assignment="268435456" />
+			<button number="8" assignment="65536" />
+			<button number="9" assignment="1073741824" />
+			<button number="10" assignment="131072" />
+			<button number="11" assignment="-2147483648" />
+		</controller>
+		<controller name="btnmap_pad_wupc" description="SNES Pad - Wii U Pro Controller">
+			<button number="0" assignment="1048576" />
+			<button number="1" assignment="4194304" />
+			<button number="2" assignment="524288" />
+			<button number="3" assignment="2097152" />
+			<button number="4" assignment="536870912" />
+			<button number="5" assignment="33554432" />
+			<button number="6" assignment="67108864" />
+			<button number="7" assignment="268435456" />
+			<button number="8" assignment="65536" />
+			<button number="9" assignment="1073741824" />
+			<button number="10" assignment="131072" />
+			<button number="11" assignment="-2147483648" />
+		</controller>
+		<controller name="btnmap_pad_wiidrc" description="SNES Pad - Wii U Gamepad">
+			<button number="0" assignment="32768" />
+			<button number="1" assignment="16384" />
+			<button number="2" assignment="8192" />
+			<button number="3" assignment="4096" />
+			<button number="4" assignment="32" />
+			<button number="5" assignment="16" />
+			<button number="6" assignment="8" />
+			<button number="7" assignment="4" />
+			<button number="8" assignment="512" />
+			<button number="9" assignment="256" />
+			<button number="10" assignment="2048" />
+			<button number="11" assignment="1024" />
+		</controller>
+		<controller name="btnmap_pad_nunchuk" description="SNES Pad - Nunchuk + Wiimote">
+			<button number="0" assignment="8" />
+			<button number="1" assignment="4" />
+			<button number="2" assignment="131072" />
+			<button number="3" assignment="65536" />
+			<button number="4" assignment="1" />
+			<button number="5" assignment="2" />
+			<button number="6" assignment="4096" />
+			<button number="7" assignment="16" />
+			<button number="8" assignment="2048" />
+			<button number="9" assignment="1024" />
+			<button number="10" assignment="256" />
+			<button number="11" assignment="512" />
+		</controller>
+		<controller name="btnmap_scope_gcpad" description="Superscope - GameCube Controller">
+			<button number="0" assignment="256" />
+			<button number="1" assignment="512" />
+			<button number="2" assignment="16" />
+			<button number="3" assignment="2048" />
+			<button number="4" assignment="1024" />
+			<button number="5" assignment="4096" />
+			<button number="6" assignment="0" />
+			<button number="7" assignment="0" />
+			<button number="8" assignment="0" />
+			<button number="9" assignment="0" />
+			<button number="10" assignment="0" />
+			<button number="11" assignment="0" />
+		</controller>
+		<controller name="btnmap_scope_wiimote" description="Superscope - Wiimote">
+			<button number="0" assignment="4" />
+			<button number="1" assignment="8" />
+			<button number="2" assignment="16" />
+			<button number="3" assignment="2048" />
+			<button number="4" assignment="1024" />
+			<button number="5" assignment="4096" />
+			<button number="6" assignment="0" />
+			<button number="7" assignment="0" />
+			<button number="8" assignment="0" />
+			<button number="9" assignment="0" />
+			<button number="10" assignment="0" />
+			<button number="11" assignment="0" />
+		</controller>
+		<controller name="btnmap_mouse_gcpad" description="Mouse - GameCube Controller">
+			<button number="0" assignment="256" />
+			<button number="1" assignment="512" />
+			<button number="2" assignment="0" />
+			<button number="3" assignment="0" />
+			<button number="4" assignment="0" />
+			<button number="5" assignment="0" />
+			<button number="6" assignment="0" />
+			<button number="7" assignment="0" />
+			<button number="8" assignment="0" />
+			<button number="9" assignment="0" />
+			<button number="10" assignment="0" />
+			<button number="11" assignment="0" />
+		</controller>
+		<controller name="btnmap_mouse_wiimote" description="Mouse - Wiimote">
+			<button number="0" assignment="8" />
+			<button number="1" assignment="4" />
+			<button number="2" assignment="0" />
+			<button number="3" assignment="0" />
+			<button number="4" assignment="0" />
+			<button number="5" assignment="0" />
+			<button number="6" assignment="0" />
+			<button number="7" assignment="0" />
+			<button number="8" assignment="0" />
+			<button number="9" assignment="0" />
+			<button number="10" assignment="0" />
+			<button number="11" assignment="0" />
+		</controller>
+		<controller name="btnmap_just_gcpad" description="Justifier - GameCube Controller">
+			<button number="0" assignment="512" />
+			<button number="1" assignment="256" />
+			<button number="2" assignment="4096" />
+			<button number="3" assignment="0" />
+			<button number="4" assignment="0" />
+			<button number="5" assignment="0" />
+			<button number="6" assignment="0" />
+			<button number="7" assignment="0" />
+			<button number="8" assignment="0" />
+			<button number="9" assignment="0" />
+			<button number="10" assignment="0" />
+			<button number="11" assignment="0" />
+		</controller>
+		<controller name="btnmap_just_wiimote" description="Justifier - Wiimote">
+			<button number="0" assignment="4" />
+			<button number="1" assignment="8" />
+			<button number="2" assignment="4096" />
+			<button number="3" assignment="0" />
+			<button number="4" assignment="0" />
+			<button number="5" assignment="0" />
+			<button number="6" assignment="0" />
+			<button number="7" assignment="0" />
+			<button number="8" assignment="0" />
+			<button number="9" assignment="0" />
+			<button number="10" assignment="0" />
+			<button number="11" assignment="0" />
+		</controller>
+	</section>
+</file>

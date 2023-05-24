@@ -16,15 +16,44 @@ This injector bypasses other third-party assets (such as Common-Key.bin, most of
 * Automatic banner/icon editing
 * Automatic editing of source WAD's savedata where available
 * Additional content/emulator options for each platform where supported
+* Replace WAD contents with forwarder to auto-load specific emulator core and ROM
 
 See [here](https://github.com/CatmanFan/FriishProduce/wiki/Translation) for a how-to on translating the app.
 
 ### Platforms
 Currently supported:
-* **Nintendo Entertainment System (NES) / Famicom** (Virtual Console)
-* **Super Nintendo Entertainment System (SNES) / Super Famicom** (Virtual Console)
-* **Nintendo 64** (Virtual Console)
-* **Shockwave/Adobe Flash**
+* Virtual Console
+  * **Nintendo Entertainment System (NES) / Famicom*
+  * **Super Nintendo Entertainment System (SNES) / Super Famicom**
+  * **Nintendo 64**
+  * **Master System**
+  * **Mega Drive / Genesis**
+
+* Emulator forwarders
+  * **[FCE Ultra GX](https://github.com/dborth/fceugx)** (dborth et al.)
+  * **[Snes9x-GX](https://github.com/dborth/snes9xgx)** (dborth et al.)
+  <!-- * **[Visual Boy Advance GX](https://github.com/dborth/vbagx)** (dborth et al.) -->
+  * **[Genesis Plus GX](https://github.com/ekeeke/Genesis-Plus-GX)** (ekeeke)
+  * **[mupen64gc-fix94](https://github.com/FIX94/mupen64gc-fix94)** (Wii64 Team, forked by FIX94)
+  <!-- * **[WiiSXRX](https://github.com/niuus/WiiSXRX)** (niuus, forked from Mystro256's WiiSXR) -->
+
+* Other
+  * **Shockwave/Adobe Flash**
+
+<!--
+### WORKING
+* Virtual Console: (working by default)
+  [ ] NES
+  [ ] SNES
+  [ ] N64
+  [ ] SMS
+  [ ] SMD
+* Emulators:
+  [yes] FCEUGX
+  [yes] SNES9XGX
+  [yes] Mupen64GC
+  [no] Genesis Plus GX (throws Exception (DSI) when loaded; ROM: Mario 4)
+-->
 
 ## Credits
 This program uses the following third-party components and apps:
@@ -33,9 +62,12 @@ This program uses the following third-party components and apps:
 * **[ccf-tools](https://github.com/libertyernie/ccf-tools)** (orig. author: paulguy) and **[BrawlLib](https://github.com/libertyernie/brawllib-wit)** (orig. author: soopercool101), both forked by **[libertyernie](https://github.com/libertyernie)**.
 * **ROMC compressor** by Jurai, with additional LZSS code by Haruhiko Okumura.
 * **gbalzss** by Andre Perrot, with additional LZSS code by Haruhiko Okumura.
-* **WWCXTool** by alpha-0.
+* **[LZSS](https://www.romhacking.net/utilities/826/)** by CUE.
 * **HowardC's Tools** (particularly, VCbrlyt).
-* **[Additional credits](https://github.com/CatmanFan/FriishProduce/tree/main/FriishProduce/Resources/forwarders/README.md) for forwarder components and emulators**
+* For homebrew emulators compatiblity:
+  * **Waninkoko**'s NAND loader, retrieved from ShowMiiWads repo. *(file renamed as "nandloader_wii.app")*
+  * **FIX94**'s **[tiny-vwii-nand-loader](https://github.com/FIX94/tiny-vwii-nand-loader)**. *(file renamed as "nandloader_vwii.app")*
+  * Forwarder DOL generated from **ModMii Classic** (application author: XFlak) *(file renamed as "forwarder.dol")*
 
 I would also like to thank the following people:
 * **[SuperrSonic](https://github.com/SuperrSonic)** for reverse-engineering much of Wii software and official emulator code, and in particular, his [fork of RetroArch Wii](https://github.com/SuperrSonic/RA-SS).

@@ -23,10 +23,20 @@ namespace FriishProduce.Forwarders
         public bool IsISO { get; set; }
 
         private readonly string AppFolder = "sd:/private/vc/";
+
         public bool UseUSBStorage { get; set; }
 
         public void Generate(string name, string outZip, string emuName)
         {
+            // Set dolIndex to current selected emulator
+            int dolIndex = -1;
+            for (int i = 0; i < List.Length; i++)
+                if (List[i] == emuName)
+                    dolIndex = i;
+            if (dolIndex == -1) throw new FileNotFoundException();
+
+            string romFile = (dolIndex >= 3 ? "rom" : "HOME Menu") + Path.GetExtension(ROM).Replace(Paths.PatchedSuffix, "");
+
             List<string> meta = new List<string>
             {
                 "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>",
@@ -39,7 +49,7 @@ namespace FriishProduce.Forwarders
                 "  <long_description>This is a sample placeholder for auto-running an emulator using a ROM path argument.</long_description>",
                 "  <arguments>",
                 $"    <arg>{AppFolder}{name}</arg>",
-                $"    <arg>rom{Path.GetExtension(ROM).Replace(Paths.PatchedSuffix, "")}</arg>"
+                $"    <arg>{romFile}</arg>"
             };
 
             // Create SD folder
@@ -47,20 +57,13 @@ namespace FriishProduce.Forwarders
             Directory.CreateDirectory(dir);
 
             // Copy ROM/ISO/CUE to SD folder
-            File.Copy(ROM, dir + $"rom{Path.GetExtension(ROM).Replace(Paths.PatchedSuffix, "")}");
+            File.Copy(ROM, dir + romFile);
 
             // Copy BIN if it is paired with CUE
             if (IsISO)
                 foreach (var item in Directory.EnumerateFiles(Path.GetDirectoryName(ROM)))
                     if (Path.GetExtension(item) == ".bin" && Path.GetFileNameWithoutExtension(item) == Path.GetFileNameWithoutExtension(ROM))
-                        File.Copy(item, dir + $"rom.bin", true);
-
-            int dolIndex = -1;
-            for (int i = 0; i < List.Length; i++)
-                if (List[i] == emuName)
-                    dolIndex = i;
-
-            if (dolIndex == -1) throw new FileNotFoundException();
+                        File.Copy(item, dir + $"{Path.GetFileNameWithoutExtension(romFile)}.bin", true);
 
             // Write relevant emulator .dol
             switch (dolIndex)

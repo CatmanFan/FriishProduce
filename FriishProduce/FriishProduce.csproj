@@ -52,7 +52,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Wiimote.ico</ApplicationIcon>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="libWiiSharp, Version=0.6.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -124,6 +124,7 @@
     <Compile Include="views\platforms\sega_controller.Designer.cs">
       <DependentUpon>sega_controller.cs</DependentUpon>
     </Compile>
+    <Compile Include="_classes\bytes.cs" />
     <Compile Include="_classes\enums.cs" />
     <Compile Include="_classes\db_libretro.cs" />
     <Compile Include="_classes\injectors\flash.cs" />
@@ -136,7 +137,7 @@
     <Compile Include="_classes\lang.cs" />
     <Compile Include="_classes\paths.cs" />
     <Compile Include="_classes\themes.cs" />
-    <Compile Include="_classes\titleImage.cs" />
+    <Compile Include="_classes\timg.cs" />
     <Compile Include="_classes\u8.cs" />
     <Compile Include="_classes\db.cs" />
     <Compile Include="views\settings.cs">
@@ -147,7 +148,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="_classes\worker.cs" />
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -209,14 +209,15 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\custom-nand-loader\forceNTSC_loader.bin" />
-    <None Include="Resources\custom-nand-loader\IOS53_forceNTSC_loader.bin" />
-    <None Include="Resources\custom-nand-loader\IOS55_forceNTSC_loader.bin" />
-    <None Include="Resources\custom-nand-loader\IOS56_forceNTSC_loader.bin" />
+    <Content Include="libWiiSharp.dll" />
+    <None Include="Resources\lzss.exe" />
+    <None Include="Resources\forwarders\settings\snes9xgx.xml" />
+    <None Include="Resources\forwarders\settings\vbagx.xml" />
+    <None Include="Resources\forwarders\settings\fceugx.xml" />
+    <None Include="Resources\images\icon.png" />
     <None Include="Resources\forwarders\forwarder.dol" />
     <None Include="Resources\forwarders\nandloader_vwii.app" />
     <None Include="Resources\forwarders\nandloader_wii.app" />
-    <None Include="Resources\forwarders\README.md" />
     <None Include="Resources\images\savebanner_flash.png" />
     <None Include="Resources\images\saveicon_flash.png" />
     <None Include="Resources\images\saveicon_placeholder.png" />
@@ -224,23 +225,23 @@
     <None Include="Resources\images\wiimote_nunchuk.png" />
     <None Include="Resources\images\wiimote_classic.png" />
     <None Include="Resources\images\gamecube.png" />
-    <Content Include="Resources\brawllib\BrawlLib.dll" />
-    <Content Include="Resources\brawllib\OpenTK.dll" />
-    <Content Include="Resources\brawllib\texextract.exe" />
-    <Content Include="Resources\brawllib\texreplace.exe" />
-    <Content Include="Resources\brawllib\wteconvert.exe" />
+    <Content Include="icon.ico" />
     <None Include="Resources\images\saveicon_placeholder_s.png" />
     <None Include="Resources\images\wiimote_sideways.png" />
     <None Include="Resources\images\loading.gif" />
-    <Content Include="Wiimote.ico" />
     <None Include="Resources\gbalzss.exe" />
-    <None Include="Resources\wwcxtool.exe" />
     <None Include="Resources\romc.exe" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy /y "$(ProjectDir)database.json" "$(TargetDir)bases\database.json"</PostBuildEvent>
+    <PostBuildEvent>copy /y "$(ProjectDir)database.json" "$(TargetDir)bases\database.json"
+del "$(TargetDir)Newtonsoft.Json.xml"
+del "$(TargetDir)System.Buffers.xml"
+del "$(TargetDir)System.IO.Hashing.xml"
+del "$(TargetDir)System.Memory.xml"
+del "$(TargetDir)System.Numerics.Vectors.xml"
+del "$(TargetDir)System.Runtime.CompilerServices.Unsafe.xml"</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PreBuildEvent>del "$(TargetDir)locales\" /F/Q

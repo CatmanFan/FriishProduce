@@ -71,7 +71,7 @@ namespace FriishProduce.Views
             foreach (var item in f.Controls.OfType<Panel>())
                 if (item.Tag.ToString() == "panel") item.BackColor = panel.BackColor;
             foreach (var item in f.Controls.OfType<ComboBox>())
-                if (item.Name.StartsWith("btns")) item.BackColor = BackColor;
+                if (item.Name.StartsWith("btns")) item.BackColor = use_4ptap_l.BackColor;
             foreach (var panel in f.Controls.OfType<Panel>())
             {
                 foreach (var cb in panel.Controls.OfType<CheckBox>())
@@ -89,6 +89,7 @@ namespace FriishProduce.Views
                         foreach (var cb in c1.Controls.OfType<CheckBox>()) cb.FlatStyle = FlatStyle.System;
                     foreach (var button in panel.Controls.OfType<Button>())
                     {
+                        button.BackColor = Themes.Light.Button;
                         button.FlatAppearance.BorderColor = Themes.Light.ButtonBorder;
                         button.FlatAppearance.MouseDownBackColor = Themes.Light.ButtonDown;
                         button.FlatAppearance.MouseOverBackColor = button.FlatAppearance.BorderColor;
@@ -104,6 +105,7 @@ namespace FriishProduce.Views
                         foreach (var cb in c2.Controls.OfType<CheckBox>()) cb.FlatStyle = FlatStyle.Standard;
                     foreach (var button in panel.Controls.OfType<Button>())
                     {
+                        button.BackColor = Themes.Dark.Button;
                         button.FlatAppearance.BorderColor = Themes.Dark.ButtonBorder;
                         button.FlatAppearance.MouseDownBackColor = Themes.Dark.ButtonDown;
                         button.FlatAppearance.MouseOverBackColor = button.FlatAppearance.BorderColor;
@@ -157,7 +159,6 @@ namespace FriishProduce.Views
             string clBtns = "console.cl_bindings=\"up=:down=:left=:right=:+=:-=:y=:b=:a=:l=:x=:r=:zr=:zl=\"";
             string gcBtns = "console.gc_bindings=\"up=:down=:left=:right=:start=:b=:a=:x=:l=:y=:r=:z=:c=\"";
 
-            List<string> keymap = new List<string>();
             foreach (KeyValuePair<string, string> item in btns)
             {
                 // --------------------------------------------------

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<file app="Visual Boy Advance GX" version="2.4.6">
+	<section name="File" description="File Settings">
+		<setting name="AutoLoad" value="2" description="Auto Load" />
+		<setting name="AutoSave" value="2" description="Auto Save" />
+		<setting name="LoadMethod" value="" description="Load Method" />
+		<setting name="SaveMethod" value="" description="Save Method" />
+		<setting name="LoadFolder" value="private/vc/TitleIDHere/" description="Load Folder" />
+	<!--<setting name="LastFileLoaded" value="" description="Last File Loaded" />-->
+		<setting name="SaveFolder" value="private/vc/TitleIDHere/saves" description="Save Folder" />
+		<setting name="AppendAuto" value="1" description="Append Auto to .SAV Files" />
+	<!--<setting name="ScreenshotsFolder" value="vbagx/screenshots" description="Screenshots Folder" />
+		<setting name="BorderFolder" value="vbagx/borders" description="SGB Borders Folder" />
+		<setting name="CoverFolder" value="vbagx/covers" description="Covers Folder" />
+		<setting name="ArtworkFolder" value="vbagx/artwork" description="Artwork Folder" />-->
+	</section>
+		<!--
+	<section name="Network" description="Network Settings">
+		<setting name="smbip" value="" description="Share Computer IP" />
+		<setting name="smbshare" value="" description="Share Name" />
+		<setting name="smbuser" value="" description="Share Username" />
+		<setting name="smbpwd" value="" description="Share Password" />
+	</section>
+	-->
+	<section name="Video" description="Video Settings">
+		<setting name="videomode" value="0" description="Video Mode" />
+		<setting name="gbaZoomHor" value="1.00" description="GBA Horizontal Zoom Level" />
+		<setting name="gbaZoomVert" value="0.95" description="GBA Vertical Zoom Level" />
+		<setting name="gbZoomHor" value="1.00" description="GB Horizontal Zoom Level" />
+		<setting name="gbZoomVert" value="1.00" description="GB Vertical Zoom Level" />
+		<setting name="gbFixed" value="0" description="GB Fixed Pixel Ratio" />
+		<setting name="gbaFixed" value="0" description="GBA Fixed Pixel Ratio" />
+		<setting name="render" value="1" description="Video Filtering" />
+		<setting name="scaling" value="0" description="Aspect Ratio Correction" />
+		<setting name="xshift" value="0" description="Horizontal Video Shift" />
+		<setting name="yshift" value="0" description="Vertical Video Shift" />
+		<setting name="colorize" value="0" description="Colorize Mono Gameboy" />
+		<setting name="gbaFrameskip" value="1" description="GBA Frameskip" />
+		<setting name="TurboModeEnabled" value="1" description="Turbo Mode Enabled" />
+	</section>
+		<!--
+	<section name="Menu" description="Menu Settings">
+		<setting name="WiimoteOrientation" value="0" description="Wiimote Orientation" />
+		<setting name="ExitAction" value="0" description="Exit Action" />
+		<setting name="MusicVolume" value="20" description="Music Volume" />
+		<setting name="SFXVolume" value="40" description="Sound Effects Volume" />
+		<setting name="Rumble" value="1" description="Rumble" />
+		<setting name="language" value="1" description="Language" />
+		<setting name="PreviewImage" value="0" description="Preview Image" />
+	</section>
+	-->
+	<section name="Emulation" description="Emulation Settings">
+		<setting name="BasicPalette" value="0" description="Basic Color Palette for GB" />
+	</section>
+
+	<section name="Controller" description="Controller Settings">
+		<controller name="gcpadmap" description="GameCube Pad">
+			<button number="0" assignment="512" />
+			<button number="1" assignment="256" />
+			<button number="2" assignment="16" />
+			<button number="3" assignment="4096" />
+			<button number="4" assignment="8" />
+			<button number="5" assignment="4" />
+			<button number="6" assignment="1" />
+			<button number="7" assignment="2" />
+			<button number="8" assignment="64" />
+			<button number="9" assignment="32" />
+		</controller>
+		<setting name="WiiControls" value="1" description="Match Wii Game" />
+		<controller name="wmpadmap" description="Wiimote">
+			<button number="0" assignment="2" />
+			<button number="1" assignment="1" />
+			<button number="2" assignment="16" />
+			<button number="3" assignment="4096" />
+			<button number="4" assignment="512" />
+			<button number="5" assignment="256" />
+			<button number="6" assignment="2048" />
+			<button number="7" assignment="1024" />
+			<button number="8" assignment="4" />
+			<button number="9" assignment="8" />
+		</controller>
+		<controller name="ccpadmap" description="Classic Controller">
+			<button number="0" assignment="2097152" />
+			<button number="1" assignment="4194304" />
+			<button number="2" assignment="268435456" />
+			<button number="3" assignment="67108864" />
+			<button number="4" assignment="65536" />
+			<button number="5" assignment="1073741824" />
+			<button number="6" assignment="131072" />
+			<button number="7" assignment="-2147483648" />
+			<button number="8" assignment="536870912" />
+			<button number="9" assignment="33554432" />
+		</controller>
+		<controller name="ncpadmap" description="Nunchuk">
+			<button number="0" assignment="131072" />
+			<button number="1" assignment="65536" />
+			<button number="2" assignment="16" />
+			<button number="3" assignment="4096" />
+			<button number="4" assignment="2048" />
+			<button number="5" assignment="1024" />
+			<button number="6" assignment="256" />
+			<button number="7" assignment="512" />
+			<button number="8" assignment="1" />
+			<button number="9" assignment="2" />
+		</controller>
+		<controller name="wupcpadmap" description="Wii U Pro Controller">
+			<button number="0" assignment="2097152" />
+			<button number="1" assignment="4194304" />
+			<button number="2" assignment="268435456" />
+			<button number="3" assignment="67108864" />
+			<button number="4" assignment="65536" />
+			<button number="5" assignment="1073741824" />
+			<button number="6" assignment="131072" />
+			<button number="7" assignment="-2147483648" />
+			<button number="8" assignment="536870912" />
+			<button number="9" assignment="33554432" />
+		</controller>
+		<controller name="drcpadmap" description="Wii U Gamepad">
+			<button number="0" assignment="4096" />
+			<button number="1" assignment="16384" />
+			<button number="2" assignment="4" />
+			<button number="3" assignment="8" />
+			<button number="4" assignment="512" />
+			<button number="5" assignment="256" />
+			<button number="6" assignment="2048" />
+			<button number="7" assignment="1024" />
+			<button number="8" assignment="32" />
+			<button number="9" assignment="16" />
+		</controller>
+	</section>
+
+	<section name="Emulation" description="Emulation Settings">
+		<setting name="OffsetMinutesUTC" value="0" description="Offset from UTC (minutes)" />
+		<setting name="GBHardware" value="0" description="Hardware (GB/GBC)" />
+		<setting name="SGBBorder" value="0" description="Border (GB/GBC)" />
+	</section>
+</file>

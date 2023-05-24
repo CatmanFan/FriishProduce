@@ -59,8 +59,9 @@
     "m012": "No se pudo activar la RAM extendida.",
     "m013": "El ROM no ha puede comprimir porque su tamaño no es un múltiplo de 4 MB (4,194,304 bytes).",
     "m014": "No se pudo comprimir la ROM en formato ROMC.",
-    "m015": "Error de alocución de memoria.",
-    "m016": "No se pudo comprimir el archivo(s) de CCF."
+    "m015": "Error de alocución. Comprobar si el tamaño de su ROM no es más de 56 MB o si estás usando una canal suportada.",
+    "m016": "No se pudo comprimir el archivo(s) de CCF.",
+    "m017": "No se pudo conectar al Internet."
   },
   "filters": {
     "f_all": "|Todos los archivos (*.*)|*.*",
@@ -99,8 +100,9 @@
     "a017": "Desactivar el \"Manual electrónico\" en el Menú HOME",
     "a018": "Region free",
     "a019": "En lugar de SD, cargar la ROM desde una unidad USB",
-    "a020": "Parche de modo de video NTSC",
+    "a020": "Parche de modo de video:",
     "a021": "Descargar desde las base de datos de LibRetro",
+    "a022": "ID aleatoria",
     "ImgResize__l0": "Estirar la imagen",
     "ImgResize__l1": "Mantener relación de aspecto",
     "ImgInterp__l0": "Por defecto",
@@ -108,10 +110,11 @@
     "NES__001__l0": "Por defecto",
     "NES__001__l1": "Colores restaurados",
     "NES__001__l2": "Consola Virtual (Nintendo 3DS)",
-    "N64__000": "Deshabilita el filtro oscuro",
-    "N64__001": "Parche anti-crash",
+    "N64__000": "Deshabilitación del filtro oscuro",
+    "N64__001": "Anti-crash",
     "N64__002": "RAM extendida (8 MB)",
-    "N64__003": "Aloca 33 MB para la ROM",
+    "N64__003": "Asignar por tamaño de la ROM",
+    "N64__004": "Borrar todos las texturas *.T64 de la canal",
     "Flash__000": "Habilita el mensaje de \"datos no guardados\" en el Menú HOME",
     "Flash__001": "Habilito datos guardados",
     "Flash__002": "Tamaño en KB:",
@@ -121,6 +124,6 @@
     "Flash__006__l0": "Deshabilitada",
     "Flash__006__l1": "Habilitada",
     "Flash__006__l2": "Habilitada (con mando complementario)",
-    "SEGA__ConWarn": "Recuerda que algunas opciones pueden no funcionar en la versión actual del emulador (por ejemplo: configuración de controles)."
+    "SEGA__ConWarn": "Recuerda que algunas opciones pueden no funcionar en la versión actual del emulador (p. ej. configuración de controles)."
   }
 }

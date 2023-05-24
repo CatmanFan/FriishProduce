@@ -315,8 +315,8 @@ namespace FriishProduce.Views
             this.smsui_opll.TabIndex = 15;
             this.smsui_opll.Tag = "";
             this.smsui_opll.Text = "smsui.has_opll";
-            this.ToolTip.SetToolTip(this.smsui_opll, "☐ = Disabled | ☑ = Enabled\r\nToggles \"Select Menu\" (only has options for FM Sound " +
-        "Unit).");
+            this.ToolTip.SetToolTip(this.smsui_opll, "☐ = Disabled | ☑ = Enabled\r\nNo idea what this does, likely has something to\r\ndo w" +
+        "ith the SMS emulator interface.");
             this.smsui_opll.UseVisualStyleBackColor = true;
             // 
             // control
@@ -426,7 +426,7 @@ namespace FriishProduce.Views
             // 
             this.warning.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.warning.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(65)))), ((int)(((byte)(45)))));
-            this.warning.Location = new System.Drawing.Point(9, 173);
+            this.warning.Location = new System.Drawing.Point(9, 172);
             this.warning.Name = "warning";
             this.warning.Size = new System.Drawing.Size(107, 181);
             this.warning.TabIndex = 22;
@@ -446,9 +446,9 @@ namespace FriishProduce.Views
             this.Controls.Add(this.control);
             this.Controls.Add(this.console);
             this.Controls.Add(this.panel);
-            this.Controls.Add(this.p_control);
             this.Controls.Add(this.p_etc);
             this.Controls.Add(this.p_console);
+            this.Controls.Add(this.p_control);
             this.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;

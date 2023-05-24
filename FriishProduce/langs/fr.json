@@ -60,8 +60,9 @@
     "m012": "Échec de l'activation de la mémoire étendue.",
     "m013": "La ROM n'a pas pu être compressée car sa taille n'est pas un multiple de 4 Mo (4,194,304 octets).",
     "m014": "Échec de compression en format ROMC.",
-    "m015": "Échec de l'allocation de mémoire.",
-    "m016": "Échec de compression des fichiers CCF."
+    "m015": "Échec de l'allocation. Vérifier si la taille de votre ROM n'excède pas 56 Mo ou si vous utilisez une chaîne de base compatible.",
+    "m016": "Échec de compression des fichiers CCF.",
+    "m017": "Échec de connexion Internet."
   },
   "filters": {
     "f_all": "|Tous les fichiers (*.*)|*.*",
@@ -83,7 +84,7 @@
     "a001_swf": "Choisir un SWF et une chaîne à utiliser pour le base.",
     "a002": "Aucun fichier sélectionné",
     "a003": "Vous pouvez additionnellement spécifier une image et un banner personnalisé pour votre chaîne à prévisualiser dans le Menu Wii et sa Gestion des données.",
-    "a004": "Spécifier les autres paramètres de contenu ici.",
+    "a004": "Spécifiez les autres paramètres du contenu ici.",
     "a005": "Title ID :",
     "a006": "Titre court (chaîne) :",
     "a007": "Titre complet (banner) :",
@@ -99,8 +100,9 @@
     "a017": "Retirer l'option « Mode d'emploi » sur le menu HOME",
     "a018": "Dézonage",
     "a019": "Charger la ROM à partir d'un appareil USB",
-    "a020": "Forcer le mode vidéo NTSC",
+    "a020": "Forcer le mode vidéo :",
     "a021": "Remplir les formes d'après la base de données Libretro",
+    "a022": "Au hasard",
     "ImgResize__l0": "Étirer l'image",
     "ImgResize__l1": "Conserver les proportions",
     "ImgInterp__l0": "Par défaut",
@@ -111,7 +113,8 @@
     "N64__000": "Anti-filtre sombre",
     "N64__001": "Anti-plantage",
     "N64__002": "Étendre la mémoire interne à 8 Mo",
-    "N64__003": "Allouer 33 Mo pour la ROM",
+    "N64__003": "Allocation de taille de la ROM",
+    "N64__004": "Supprimer toutes les textures T64 préinstallées de la chaîne",
     "Flash__000": "Activer le message \"données non sauvegardées\" sur le menu HOME",
     "Flash__001": "Activer données de sauvegarde",
     "Flash__002": "Taille en Ko :",
@@ -120,7 +123,7 @@
     "Flash__005": "Écran d'avertissement de dragonne :",
     "Flash__006__l0": "Désactivée",
     "Flash__006__l1": "Activée",
-    "Flash__006__l2": "Activée (écran additionnel de connecteur)",
+    "Flash__006__l2": "Activée (avec écran de connecteur)",
     "SEGA__ConWarn": "Avertissement : Certains paramètres peuvent ne pas fonctionner sur la révision actuelle de l'émulateur, la modification des contrôles (ver 3 uniquement) compris."
   }
 }

@@ -7,6 +7,7 @@ namespace FriishProduce
     partial class Global
     {
         private static Lang x = Program.Language;
+
         public static string ApplyPatch(string ROM, string patch = null)
         {
             if (patch != null)
@@ -44,67 +45,173 @@ namespace FriishProduce
 
         public static string DetermineContent1()
         {
-            // Check for LZ77 compression
-            if (File.ReadAllBytes(Paths.WorkingFolder + "00000001.app").Length < 1000)
+            // Check for LZSS compression
+            long filesize = new FileInfo(Paths.WorkingFolder + "00000001.app").Length / 1024 / 1024;
+            if (filesize == 0)
             {
-                if (!File.Exists(Paths.WorkingFolder + "00000001.app.dec"))
-                {
-                    string pPath = Paths.WorkingFolder + "wwcxtool.exe";
-                    File.WriteAllBytes(pPath, Properties.Resources.WWCXTool);
-                    using (Process p = Process.Start(new ProcessStartInfo
-                    {
-                        FileName = pPath,
-                        WorkingDirectory = Paths.WorkingFolder,
-                        Arguments = $"/u 00000001.app 00000001.app.dec",
-                        UseShellExecute = false,
-                        CreateNoWindow = true
-                    }))
-                        p.WaitForExit();
-                    File.Delete(pPath);
-
-                    if (!File.Exists(Paths.WorkingFolder + "00000001.app.dec"))
-                        throw new Exception(x.Get("m009"));
-                }
-
-                return Paths.WorkingFolder + "00000001.app.dec";
-            }
-
-            return Paths.WorkingFolder + "00000001.app";
-        }
-
-        public static void PrepareContent1()
-        {
-            if (File.Exists(Paths.WorkingFolder + "00000001.app.dec"))
-            {
-                string pPath = Paths.WorkingFolder + "wwcxtool.exe";
-                File.WriteAllBytes(pPath, Properties.Resources.WWCXTool);
+                // Run process
+                string pPath = Paths.WorkingFolder + "lzss.exe";
+                File.WriteAllBytes(pPath, Properties.Resources.LZSS);
                 using (Process p = Process.Start(new ProcessStartInfo
                 {
                     FileName = pPath,
                     WorkingDirectory = Paths.WorkingFolder,
-                    Arguments = $"/cr 00000001.app 00000001.app.dec 00000001.app.rec",
+                    Arguments = $"-d 00000001.app",
                     UseShellExecute = false,
                     CreateNoWindow = true
                 }))
                     p.WaitForExit();
                 File.Delete(pPath);
 
-                if (!File.Exists(Paths.WorkingFolder + "00000001.app.rec"))
+                // Failsafe
+                if (new FileInfo(Paths.WorkingFolder + "00000001.app").Length / 1024 / 1024 == filesize)
                     throw new Exception(x.Get("m009"));
 
-                if (File.Exists(Paths.WorkingFolder + "00000001.app")) File.Delete(Paths.WorkingFolder + "00000001.app");
-                if (File.Exists(Paths.WorkingFolder + "00000001.app.dec")) File.Delete(Paths.WorkingFolder + "00000001.app.dec");
-                File.Move(Paths.WorkingFolder + "00000001.app.rec", Paths.WorkingFolder + "00000001.app");
+                // Return decompressed file path
+                File.Move(Paths.WorkingFolder + "00000001.app", Paths.WorkingFolder + "00000001.app.raw");
+                return Paths.WorkingFolder + "00000001.app.raw";
+            }
+
+            // There is nothing to do
+            return Paths.WorkingFolder + "00000001.app";
+        }
+
+        public static void PrepareContent1(string path)
+        {
+            if (path == Paths.WorkingFolder + "00000001.app.raw")
+            {
+                File.Move(Paths.WorkingFolder + "00000001.app.raw", Paths.WorkingFolder + "00000001.app");
+
+                var filesize = new FileInfo(Paths.WorkingFolder + "00000001.app").Length / 1024 / 1024;
+
+                // Run process
+                string pPath = Paths.WorkingFolder + "lzss.exe";
+                File.WriteAllBytes(pPath, Properties.Resources.LZSS);
+                using (Process p = Process.Start(new ProcessStartInfo
+                {
+                    FileName = pPath,
+                    WorkingDirectory = Paths.WorkingFolder,
+                    Arguments = $"-evn 00000001.app",
+                    UseShellExecute = false,
+                    CreateNoWindow = true
+                }))
+                    p.WaitForExit();
+                File.Delete(pPath);
+
+                // Check for compressed filesize length
+                if (new FileInfo(Paths.WorkingFolder + "00000001.app").Length / 1024 / 1024 == filesize)
+                    throw new Exception(x.Get("m009"));
             }
         }
-        public static void ChangeVideoMode()
+
+        public static void ChangeVideoMode(int mode)
         {
-            string content1_file = Global.DetermineContent1();
+            string content1_file = DetermineContent1();
             var content1 = File.ReadAllBytes(content1_file);
 
+            int index;
+            // List of byte patterns and corresponding video modes:
+            // NTSC (interlaced)   / 480i = 00 02 80 01 E0 01 E0 00 28 00 00 02 80 01 E0
+            // NTSC (non interlaced)      = 01 02 80 01 E0 01 E0 00 28 00 0B 02 80 01 E0
+            // NTSC (progressive)  / 480p = 02 02 80 01 E0 01 E0 00 28 00 00 02 80 01 E0
+            // MPAL (interlaced)          = 08 02 80 01 E0 01 E0 00 28 00 00 02 80 01 E0
+            // MPAL (non interlaced)      = 09 02 80 01 E0 01 E0 00 28 00 00 02 80 01 E0
+            // MPAL (progressive)         = 0A 02 80 01 E0 01 E0 00 28 00 00 02 80 01 E0
+            // PAL60 (interlaced)  / 480i = 14 02 80 01 E0 01 E0 00 28 00 00 02 80 01 E0
+            // PAL60 (non interlaced)     = 15 02 80 01 E0 01 E0 00 28 00 00 02 80 01 E0
+            // PAL60 (progressive) / 480p = 16 02 80 01 E0 01 E0 00 28 00 00 02 80 01 E0
+            // PAL: replace 01 at end with 02
+            // PAL (interlaced)    / 576i = 04 02 80 02 10 02 10 00 28 00 17 02 80 02 10
+            // PAL (non interlaced)       = 05 02 80 01 08 01 08 00 28 00 0B 02 80 02 10
+            // PAL (progressive)          = 06 02 80 02 10 02 10 00 28 00 17 02 80 02 10
+            //                                                            ^
+            // ONLY PAL50 is different in byte composition !     //  This byte seems to vary
+            // PAL (progressive/alt)          = 06 02 80 01 08 02 0C 00 28 00 17 02 80 02 0C
+
+            int start = 0x14F000;
+            int end = 0x1FFFFF;
+
+            // 0-2: NTSC/PAL
+            // 3-5: MPAL/PAL
+            // 6: Backup for PAL (progressive)
+            System.Collections.Generic.Dictionary<int, string> list = new System.Collections.Generic.Dictionary<int, string>
+            {
+                // NTSC
+                { 0, "00 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
+                { 1, "01 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
+                { 2, "02 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
+                // MPAL
+                { 3, "08 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
+                { 4, "09 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
+                { 5, "0A 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
+                // PAL60
+                { 6, "14 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
+                { 7, "15 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
+                { 8, "16 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
+                // PAL50
+                { 9, "04 02 80 02 10 02 10 00 28 00 xx 02 80 02 10" },
+                { 10, "05 02 80 01 08 01 08 00 28 00 xx 02 80 02 10" },
+                { 11, "06 02 80 02 10 02 10 00 28 00 xx 02 80 02 10" },
+            };
+
+            // 0 = NTSC
+            // 1 = PAL50
+            // 2 = PAL60
+            // 3 = NTSC/PAL60
+            // 4 = NTSC/MPAL
+            // 5 = PAL60/50
+            if (mode >= 4)
+            {
+                for (int i = 6; i < list.Count; i++)
+                {
+                    while (Bytes.Search(content1, list[mode == 5 ? i - 6 : i].Substring(0, 23), start, end) != -1)
+                    {
+                        index = Bytes.Search(content1, list[mode == 5 ? i - 6 : i].Substring(0, 23), start, end);
+                        var Array = list[mode == 5 ? i : i - 6].Split(' ');
+                        for (int x = 0; x < 15; x++)
+                            if (Array[x].ToLower() != "xx") content1[index + x] = Convert.ToByte(Array[x], 16);
+                        break;
+                    }
+                }
+            }
+            else if (mode == 3)
+            {
+                for (int i = 0; i < list.Count; i++)
+                {
+                    if (i >= 9 || (i >= 3 && i <= 5))
+                    {
+                        while (Bytes.Search(content1, list[i].Substring(0, 23), start, end) != -1)
+                        {
+                            index = Bytes.Search(content1, list[i].Substring(0, 23), start, end);
+                            var Array = i == 9 ? list[6].Split(' ') : i == 10 ? list[7].Split(' ') : i == 11 ? list[8].Split(' ') :
+                                i == 3 ? list[0].Split(' ') : i == 4 ? list[1].Split(' ') : list[2].Split(' ');
+                            for (int x = 0; x < 15; x++)
+                                if (Array[x].ToLower() != "xx") content1[index + x] = Convert.ToByte(Array[x], 16);
+                            break;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                int mode_offset = mode == 1 ? 9 : mode == 2 ? 6 : 0;
+                for (int i = 0; i < list.Count; i++)
+                {
+                    while (Bytes.Search(content1, list[i].Substring(0, 23), start, end) != -1)
+                    {
+                        index = Bytes.Search(content1, list[i].Substring(0, 23), start, end);
+                        var Array = i == 0 || i == 3 || i == 6 || i == 9 ? list[mode_offset + 0].Split(' ') :
+                            i == 1 || i == 4 || i == 7 || i == 10 ? list[mode_offset + 1].Split(' ') :
+                            list[mode_offset + 2].Split(' ');
+                        for (int x = 0; x < 15; x++)
+                            if (Array[x].ToLower() != "xx") content1[index + x] = Convert.ToByte(Array[x], 16);
+                        break;
+                    }
+                }
+            }
 
             File.WriteAllBytes(content1_file, content1);
-            Global.PrepareContent1();
+            PrepareContent1(content1_file);
         }
 
         public static void RemoveEmanual()

@@ -7,10 +7,41 @@ using libWiiSharp;
 
 namespace FriishProduce.Injectors
 {
+    // TO-DO:
+    // When doing supposed patch using NTSC Loader:
+    // [X] No patches
+    // [ ] FixBrightness = black screen
+    // [ ] FixCrashes    = black screen
+    // [X] ExpansionPak
+    // [ ] Allocation    = black screen
+
+    // Without patch:
+    // [X] No patches
+    // [ ] FixBrightness = black screen
+    // [ ] FixCrashes    = black screen
+    // [X] ExpansionPak
+    // [ ] Allocation    = black screen
+
+    // After converting hex search/editing method & ditching WWCXTool:
+    // (NTSC patch & NoEmanual enabled, all patches enabled)
+    // [X] StarFox 64
+    // [X] Ogre Battle 64
+    // [ ] CustomRobo V2 (crashes after CC screen if ExpansionPak is enabled)
+
+    // Working with all checkboxes enabled:
+    // [X] rev1
+    // [X] rev1-alt
+    // [ ] rev2/romc
+    // [ ] romc-hero
+    // [ ] romc-alt
+
     public class N64
     {
         public string ROM { get; set; }
         public string emuVersion { get; set; }
+        private byte[] content1 { get; set; }
+        private string content1_file = Paths.WorkingFolder + "00000001.app";
+        private bool IsAllocated = false;
 
         private enum Buttons
         {
@@ -32,202 +63,123 @@ namespace FriishProduce.Injectors
             CRight = 0x0001,
         }
 
-        // ------------------------- EMULATOR FUNCTIONS -------------------------- //
+        // --------------------------------------------------------------------------------------- //
+        // Global functions & patches
+        // --------------------------------------------------------------------------------------- //
 
-        public void Op_FixCrashes(byte[] content1)
+        public void LoadContent1()
         {
-            for (int i = 0; i < content1.Length - 24; i++)
-            {
-                /* {
-                    if (content1[i] == 0x38
-                     && content1[i + 1] == 0x21
-                     && content1[i + 2] == 0x00
-                     && content1[i + 3] == 0x10
-                     && content1[i + 4] == 0x4E
-                     && content1[i + 5] == 0x80
-                     && content1[i + 6] == 0x00
-                     && content1[i + 7] == 0x20
-                     && content1[i + 8] == 0x94
-                     && content1[i + 9] == 0x21
-                     && content1[i + 10] == 0xFF
-                     && content1[i + 11] == 0xF0)
-                } */
-
-                if (content1[i] == 0x4E
-                 && content1[i + 1] == 0x80
-                 && content1[i + 2] == 0x00
-                 && content1[i + 3] == 0x20
-                 && content1[i + 4] == 0x94
-                 && content1[i + 5] == 0x21
-                 && content1[i + 6] == 0xFF
-                 && content1[i + 7] == 0xF0
-                 && content1[i + 20] == 0x93
-                 && content1[i + 21] == 0xE1
-                 && content1[i + 22] == 0x00
-                 && content1[i + 23] == 0x0C)
-                {
-                    content1[i] = 0x48;
-                    content1[i + 1] = 0x00;
-                    content1[i + 2] = 0xD2;
-                    content1[i + 3] = 0xF0;
-                }
-            }
-
-            for (int i = 1; i < content1.Length - 14; i++)
-            {
-                if (content1[i - 1] == 0x21
-                 && content1[i] == 0x38
-                 && content1[i + 1] == 0x00
-                 && content1[i + 2] == 0x00
-                 && content1[i + 3] == 0x01
-                 && content1[i + 4] == 0x38
-                 && content1[i + 5] == 0x63
-                 && content1[i + 6] == 0xB9
-                 && content1[i + 7] == 0xC0
-                 && content1[i + 8] == 0x98
-                 && content1[i + 9] == 0x03
-                 && content1[i + 10] == 0x00
-                 && content1[i + 11] == 0x0C
-                 && content1[i + 12] == 0x4E)
-                {
-                    content1[i] = 0x3C;
-                    content1[i + 1] = 0x80;
-                    content1[i + 2] = 0x81;
-                    content1[i + 3] = 0x09;
-                    content1[i + 4] = 0x38;
-                    content1[i + 5] = 0xA0;
-                    content1[i + 6] = 0x00;
-                    content1[i + 7] = 0x7F;
-                    content1[i + 8] = 0x90;
-                    content1[i + 9] = 0xA4;
-                    content1[i + 10] = 0x0D;
-                    content1[i + 11] = 0x00;
-                }
-            }
+            content1_file = Global.DetermineContent1();
+            content1 = File.ReadAllBytes(content1_file);
         }
 
-        public void Op_FixBrightness(byte[] content1)
+        public void SaveContent1()
         {
+            File.WriteAllBytes(content1_file, content1);
+            Global.PrepareContent1(content1_file);
+        }
+
+        public void Op_FixBrightness()
+        {
+            // index = Bytes.Search(content1, "94 21 FF E0 7C 08 02 A6 3C 80 80 17 90 01 00 24 93 E1 00 1C");
+
             // Method originally reported by @NoobletCheese/@Maeson on GBAtemp.
-            for (int i = 0; i < content1.Length - 20; i++)
+            int index = Bytes.Search(content1, "80 04 00 04 2C 00 00 FF 40 82 00 10 80 04 00 08 2C 00 00 FF");
+            if (index != -1)
             {
-                if (content1[i] == 0x80
-                 && content1[i + 1] == 0x04
-                 && content1[i + 2] == 0x00
-                 && content1[i + 3] == 0x04
-                 && content1[i + 4] == 0x2C
-                 && content1[i + 5] == 0x00
-                 && content1[i + 6] == 0x00
-                 && content1[i + 7] == 0xFF
-                 && content1[i + 8] == 0x40
-                 && content1[i + 9] == 0x82
-                 && content1[i + 10] == 0x00
-                 && content1[i + 11] == 0x10
-                 && content1[i + 12] == 0x80
-                 && content1[i + 13] == 0x04
-                 && content1[i + 14] == 0x00
-                 && content1[i + 15] == 0x08
-                 && content1[i + 16] == 0x2C
-                 && content1[i + 17] == 0x00
-                 && content1[i + 18] == 0x00
-                 && content1[i + 19] == 0xFF)
+                for (int i = index; i > 200; i--)
                 {
-                    for (int x = i; x > 0; x--)
+                    if (content1[i] == 0x94
+                     && content1[i + 1] == 0x21
+                     && content1[i + 2] == 0xFF
+                     && content1[i + 3] == 0xE0)
                     {
-                        if (content1[x] == 0x94
-                         && content1[x + 1] == 0x21
-                         && content1[x + 2] == 0xFF
-                         && content1[x + 3] == 0xE0)
-                        {
-                            content1[x] = 0x4E;
-                            content1[x + 1] = 0x80;
-                            content1[x + 2] = 0x00;
-                            content1[x + 3] = 0x20;
-                        }
+                        new byte[] { 0x4E, 0x80, 0x00, 0x20 }.CopyTo(content1, i);
+                        return;
                     }
                 }
             }
         }
 
         /// <summary>
-        /// Alternative method of fixing brightness, may not work with some WADs or result in excess brightness
+        /// Alternative method of fixing dark filter, may not work with some WADs or result in excess brightness
         /// </summary>
-        public void Op_FixBrightness_Alt(byte[] content1)
+        public void Op_FixBrightness_Alt()
         {
-            for (int i = 0; i < content1.Length - 20; i++)
+            int index = Bytes.Search(content1, "00 00 00 07 00 00 00 BE 00 00 00 BE 00 00 00 BE");
+            if (index != -1)
             {
-                if (content1[i] == 0x00
-                 && content1[i + 1] == 0x00
-                 && content1[i + 2] == 0x00
-                 && content1[i + 3] == 0x07
-                 && content1[i + 4] == 0x00
-                 && content1[i + 5] == 0x00
-                 && content1[i + 6] == 0x00
-                 && content1[i + 7] == 0xBE
-                 && content1[i + 8] == 0x00
-                 && content1[i + 9] == 0x00
-                 && content1[i + 10] == 0x00
-                 && content1[i + 11] == 0xBE
-                 && content1[i + 12] == 0x00
-                 && content1[i + 13] == 0x00
-                 && content1[i + 14] == 0x00
-                 && content1[i + 15] == 0xBE)
-                {
-                    content1[i + 7] = 0xFF;
-                    content1[i + 11] = 0xFF;
-                    content1[i + 15] = 0xFF;
-                }
+                content1[index + 7] = 0xFF;
+                content1[index + 11] = 0xFF;
+                content1[index + 15] = 0xFF;
             }
         }
 
-        public void Op_ExpansionRAM(byte[] content1)
+        public void Op_ExpansionRAM()
         {
-            for (int i = 0; i < content1.Length - 8; i++)
+            int index = Bytes.Search(content1, "41 82 00 08 3C 80 00 80", 2000, 9999);
+            if (index == -1)
             {
-                if (((content1[i] == 0x41
-                 && content1[i + 1] == 0x82
-                 && content1[i + 2] == 0x00
-                 && content1[i + 3] == 0x08)
-                 || (content1[i] == 0x48
-                 && content1[i + 1] == 0x00
-                 && content1[i + 2] == 0x00
-                 && content1[i + 3] == 0x64))
-                 && (content1[i + 4] == 0x3C
-                 && content1[i + 5] == 0x80
-                 && content1[i + 6] == 0x00
-                 && content1[i + 7] == 0x80))
-                {
-                    content1[i] = 0x60;
-                    content1[i + 1] = 0x00;
-                    content1[i + 2] = 0x00;
-                    content1[i + 3] = 0x00;
-                    return;
-                }
+                index = Bytes.Search(content1, "48 00 00 64 3C 80 00 80");
+                if (index == -1) throw new Exception(Program.Language.Get("m012"));
+                else goto Set;
             }
-            // throw new Exception(Program.Language.Get("m012"));
+            else goto Set;
+
+            Set:
+            new byte[] { 0x60, 0x00, 0x00, 0x00 }.CopyTo(content1, index);
         }
 
-        public void Op_AllocateROM(byte[] content1)
+        // --------------------------------------------------------------------------------------- //
+        // The following patches seems to be supported by only ver.1 revisions (i.e. not ROMC)
+        // --------------------------------------------------------------------------------------- //
+
+        public void Op_FixCrashes()
         {
-            for (int i = 0; i < content1.Length - 10; i++)
+            byte[] insert = { 0x48, 0x00, 0xD2, 0xF0 };
+            int index = Bytes.Search(content1, "4E 80 00 20 94 21 FF F0 7C 08 02 A6 3C A0 80 18 90 01 00 14 93 E1 00 0C 7C 7F 1B 78 38 65 74 B8");
+            if (index != -1)
             {
-                if (content1[i] == 0x44
-                 && content1[i + 1] == 0x38
-                 && content1[i + 2] == 0x7D
-                 && content1[i + 3] == 0x00
-                 && content1[i + 4] == 0x1C
-                 && content1[i + 5] == 0x3C
-                 && content1[i + 6] == 0x80)
-                {
-                    int offset = i + 5;
-                    content1[offset + 2] = 0x73;
-                    content1[offset + 3] = 0x10;
-                    content1[offset + 6] = 0x03;
-                    content1[offset + 7] = 0x10;
-                    return;
-                }
+                insert.CopyTo(content1, index);
+
+                insert = new byte[] { 0x3C, 0x80, 0x81, 0x09, 0x38, 0xA0, 0x00, 0x7F, 0x90, 0xA4, 0x0D, 0x00 };
+                index = Bytes.Search(content1, "38 00 00 01 38 63 B9 C0 98 03 00 0C 4E", 0xC0000, 0xCA000);
+                if (index != -1) insert.CopyTo(content1, index);
+
+                return;
             }
-            // throw new Exception(Program.Language.Get("m015"));
+        }
+
+        public void Op_AllocateROM()
+        {
+            // Fix based on SM64Wii (aglab2)
+            // https://github.com/aglab2/sm64wii/blob/master/usamune.gzi
+            // https://github.com/aglab2/sm64wii/blob/master/kit/Main.cs
+            // ---------------------------------------------------------
+            var size_ROM = 1 + new FileInfo(ROM).Length / 1024 / 1024;
+            if (size_ROM > 56) throw new Exception(Program.Language.Get("m015"));
+
+            int index = Bytes.Search(content1, "44 38 7D 00 1C 3C 80", 0x5A000, 0x5E000);
+            if (index != -1)
+            {
+                var size = size_ROM.ToString("X2");
+                var size_array = new byte[4];
+
+                size_array[0] = Convert.ToByte($"7{size[0]}", 16);
+                size_array[1] = Convert.ToByte($"{size[1]}0", 16);
+                size_array[2] = Convert.ToByte($"0{size[0]}", 16);
+                size_array[3] = Convert.ToByte($"{size[1]}0", 16);
+
+                int offset = index + 7;
+                content1[offset] = size_array[0];
+                content1[offset + 1] = size_array[1];
+
+                IsAllocated = true;
+                return;
+            }
+
+            // Not found
+            throw new Exception(Program.Language.Get("m015"));
         }
 
         // ----------------------------------------------------------------------- //
@@ -235,9 +187,11 @@ namespace FriishProduce.Injectors
         private readonly string byteswappedROM = $"{Paths.Apps}ucon64\\rom.z64";
         private readonly string compressedROM = $"{Paths.WorkingFolder}romc";
 
-        public void ReplaceROM()
+        public bool CheckForROMC() => emuVersion.Contains("romc");
+
+        public void ByteswapROM()
         {
-            if (File.ReadAllBytes(ROM).Length % 4194304 != 0 && emuVersion.Contains("romc"))
+            if (File.ReadAllBytes(ROM).Length % 4194304 != 0 && CheckForROMC())
                 throw new Exception(Program.Language.Get("m013"));
 
             File.Copy(ROM, $"{Paths.Apps}ucon64\\rom");
@@ -255,8 +209,11 @@ namespace FriishProduce.Injectors
 
             if (!File.Exists(byteswappedROM))
                 throw new Exception(Program.Language.Get("m011"));
+        }
 
-            if (emuVersion.Contains("romc"))
+        public void ReplaceROM(bool romc)
+        {
+            if (romc)
             {
                 if (emuVersion.Contains("hero"))
                 {
@@ -293,13 +250,13 @@ namespace FriishProduce.Injectors
                 }
 
                 // Copy
-                File.WriteAllBytes($"{Paths.WorkingFolder_Content5}romc", File.ReadAllBytes(compressedROM));
+                File.Copy(compressedROM, $"{Paths.WorkingFolder_Content5}romc", true);
                 File.Delete(compressedROM);
             }
             else
             {
                 // Check filesize
-                if (File.ReadAllBytes(byteswappedROM).Length > File.ReadAllBytes($"{Paths.WorkingFolder_Content5}rom").Length)
+                if (File.ReadAllBytes(byteswappedROM).Length > File.ReadAllBytes($"{Paths.WorkingFolder_Content5}rom").Length && !IsAllocated)
                 {
                     File.Delete(byteswappedROM);
                     throw new Exception(Program.Language.Get("m004"));
@@ -325,8 +282,6 @@ namespace FriishProduce.Injectors
             // Text addition format: UTF-16 (Little Endian) for Rev1, UTF-16 (Big Endian) for newer revisions
             var encoding = emuVersion.Contains("rev1") ? Encoding.Unicode : Encoding.BigEndianUnicode;
 
-            // In Custom Robo V2 & Mario Kart 64 (KOR), a null character follows instead of the regular separator, before a supposed second line string.
-
             foreach (var item in Directory.GetFiles(Paths.WorkingFolder_Content5))
             {
                 if (Path.GetFileName(item).Contains("saveComments_"))
@@ -338,9 +293,10 @@ namespace FriishProduce.Injectors
                     for (int i = 0; i < 64; i++)
                         newSave.Add(byteArray[i]);
 
+                    // First savetext line
                     for (int i = 0; i < encoding.GetBytes(lines[0]).Length; i++)
                         try { newSave.Add(encoding.GetBytes(lines[0])[i]); } catch { newSave.Add(0x00); }
-                    if (emuVersion == "romc-alt")
+                    if (byteArray[28] == 0x6A || (byteArray[28] == 0x6B && byteArray[29] == 0x72)) // JP/KO
                         { newSave.Add(0x00); }
                     else foreach (var Byte in separator) newSave.Add(Byte);
 
@@ -349,9 +305,10 @@ namespace FriishProduce.Injectors
                     newSave[59] = Convert.ToByte(newSave.Count);
 
                     // Also varying on revision, how the second line field is itself handled.
-                    // Where it is empty: In earlier revisions such as Star Fox 64 and Super Mario 64, it is a white space character, otherwise it is null.
+                    // Where it is empty: In earlier revisions such as F-Zero X and Super Mario 64, it is a white space character, otherwise it is null.
                     if (lines.Length == 1 && emuVersion == "rev1") lines = new string[2] { lines[0], " " };
 
+                    // Second savetext line (optional)
                     if (lines.Length == 2)
                         for (int i = 0; i < encoding.GetBytes(lines[1]).Length; i++)
                             try { newSave.Add(encoding.GetBytes(lines[1])[i]); } catch { newSave.Add(0x00); }
@@ -366,6 +323,13 @@ namespace FriishProduce.Injectors
                     File.WriteAllBytes(item, newSave.ToArray());
                 }
             }
+        }
+
+        public void CleanT64(bool delete = true)
+        {
+            foreach (var item in Directory.GetFiles(Paths.WorkingFolder_Content5))
+                if (Path.GetExtension(item).ToLower() == ".t64")
+                    if (delete) File.Delete(item); else File.WriteAllText(item, string.Empty);
         }
     }
 }

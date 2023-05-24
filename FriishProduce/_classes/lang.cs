@@ -95,16 +95,19 @@ namespace FriishProduce
                 }
 
                 Current = English;
+                goto EndOfFunction;
             }
             else
             {
                 json = Paths.Languages + $"{culture.Name}.json";
                 Current = Read(json);
+                goto EndOfFunction;
             }
 
         EndOfFunction:
             culture.DateTimeFormat = new DateTimeFormatInfo() { DateSeparator = ".", ShortTimePattern = "HH:mm" };
             Thread.CurrentThread.CurrentUICulture = culture;
+            Thread.CurrentThread.CurrentCulture = culture;
         }
 
         public void Localize(Control f)

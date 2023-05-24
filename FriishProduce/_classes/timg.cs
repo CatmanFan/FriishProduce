@@ -22,6 +22,7 @@ namespace FriishProduce
         public int[] SaveIconL_xywh { get; set; }
         public int[] SaveIconS_xywh { get; set; }
         private Bitmap Temp { get; set; }
+        public bool Get() => Temp != null;
 
         public enum Resize
         { 
@@ -438,7 +439,7 @@ namespace FriishProduce
                             {
                                 System.Threading.Thread.Sleep(1145);
 
-                                Load:
+                                // Load:
                                 // Code to auto-wait for a period of time until the texreplace dialog has already been opened, then presses Enter.
                                 // Better to leave this out as it may likely cause problems with apps or with a slow PC
                                 /* SetForegroundWindow(p.MainWindowHandle);
@@ -446,11 +447,12 @@ namespace FriishProduce
                                 System.Threading.Thread.Sleep(15);
                                 System.Windows.Forms.SendKeys.SendWait("{ENTER}"); */
 
-                                if (!p.WaitForExit(5000))
+                                /* if (!p.WaitForExit(5000))
                                 {
                                     p.Kill();
                                     goto Load;
-                                }
+                                } */
+                                p.WaitForExit();
                             }
                             File.Delete(Paths.WorkingFolder_MiscCCF + System.IO.Path.GetFileNameWithoutExtension(item) + ".wte");
                             using (Process p = Process.Start(new ProcessStartInfo

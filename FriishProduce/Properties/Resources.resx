@@ -127,9 +127,6 @@
   <data name="GBALZSS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\gbalzss.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="WWCXTool" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\wwcxtool.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="Controllers_Nunchuk" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\images\wiimote_nunchuk.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -166,19 +163,13 @@
   <data name="Forwarder" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\forwarders\forwarder.dol;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="NANDLoader_NTSC" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\custom-nand-loader\forceNTSC_loader.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="NANDLoader_NTSC_53" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\custom-nand-loader\IOS53_forceNTSC_loader.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="NANDLoader_NTSC_55" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\custom-nand-loader\IOS55_forceNTSC_loader.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="NANDLoader_NTSC_56" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\custom-nand-loader\IOS56_forceNTSC_loader.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="Loading" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\images\loading.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\images\icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LZSS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lzss.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

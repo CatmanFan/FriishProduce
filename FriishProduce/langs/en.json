@@ -77,8 +77,9 @@
     "m012": "Failed to enable extended memory.",
     "m013": "The ROM cannot be compressed because it is not a multiple of 4 MB (4194304 bytes).",
     "m014": "The ROMC compression process failed.",
-    "m015": "Unable to carry out allocation of data.",
-    "m016": "Unable to compress CCF file(s)."
+    "m015": "Unable to allocate ROM size. Please check to see if your ROM size is not over 56 MB or if you're using a supported base WAD.",
+    "m016": "Unable to compress CCF file(s).",
+    "m017": "Failed to connect to the Internet."
   },
   "filters": {
     "f_all": "|All files (*.*)|*.*",
@@ -117,8 +118,9 @@
     "a017": "Remove \"Operations Guide\" in HOME Menu",
     "a018": "Region free",
     "a019": "Load from USB storage device instead of SD",
-    "a020": "Force NTSC mode",
+    "a020": "Force video mode:",
     "a021": "Get from LibRetro database",
+    "a022": "Random title ID",
     "ImgResize__l0": "Stretch image",
     "ImgResize__l1": "Retain aspect ratio",
     "ImgInterp__l0": "Default",
@@ -143,7 +145,8 @@
     "N64__000": "Fix brightness",
     "N64__001": "Fix crashes",
     "N64__002": "Extended RAM (8MB)",
-    "N64__003": "Allocate 33MB for ROM",
+    "N64__003": "Allocate ROM size",
+    "N64__004": "Clear all preinstalled VC textures (*.T64)",
     "Flash__000": "Enable \"unsaved data\" message in HOME Menu",
     "Flash__001": "Use savedata",
     "Flash__002": "Total size (KB):",
