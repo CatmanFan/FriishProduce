@@ -569,7 +569,7 @@ namespace FriishProduce
                         Bases.Enabled = Bases.Items.Count >= 2;
                     }
 
-                Bases.SelectedIndex = Bases.Items.Count < 1 ? -1 : 0;
+                Bases.SelectedIndex = Bases.Items.Count == 0 ? -1 : 0;
             }
 
             DeleteBase.Enabled = Bases.SelectedIndex >= 0;
@@ -604,7 +604,7 @@ namespace FriishProduce
             // ---------------------- //
             if (currentConsole == Platforms.N64)
                 foreach (var entry in db.GetList())
-                    if (Bases.SelectedItem.ToString() == entry["title"].ToString())
+                    if (Bases.SelectedIndex != -1 && Bases.SelectedItem.ToString() == entry["title"].ToString())
                     {
                         N64_Allocation.Visible = entry["ver"].ToString().Contains("rev1");
                         N64_FixCrash.Visible = entry["ver"].ToString().Contains("rev1");
