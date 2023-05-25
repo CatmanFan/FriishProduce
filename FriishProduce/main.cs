@@ -174,6 +174,10 @@ namespace FriishProduce
                         Options_SEGA.Visible = true;
                         break;
 
+                    case Platforms.PCE:
+                        Options_PCE.Visible = true;
+                        break;
+
                     case Platforms.Flash:
                         DisableEmanual.Visible = false;
                         Options_Flash.Visible = true;
@@ -209,16 +213,18 @@ namespace FriishProduce
             {
                 case Platforms.NES:
                     InjectionMethod.Items.Add(new Forwarders.Generic().List[0]);
-                    break;
-                case Platforms.SNES:
                     InjectionMethod.Items.Add(new Forwarders.Generic().List[1]);
                     break;
+                case Platforms.SNES:
+                    InjectionMethod.Items.Add(new Forwarders.Generic().List[2]);
+                    InjectionMethod.Items.Add(new Forwarders.Generic().List[3]);
+                    break;
                 case Platforms.N64:
-                    InjectionMethod.Items.Add(new Forwarders.Generic().List[4]);
+                    InjectionMethod.Items.Add(new Forwarders.Generic().List[6]);
                     break;
                 case Platforms.SMS:
                 case Platforms.SMD:
-                    // InjectionMethod.Items.Add(new Forwarders.Generic().List[3]);
+                    // InjectionMethod.Items.Add(new Forwarders.Generic().List[5]);
                     break;
                 case Platforms.PCE:
                     break;
@@ -233,11 +239,11 @@ namespace FriishProduce
                     break;
                 case Platforms.GBA:
                     InjectionMethod.Items.RemoveAt(0);
-                    InjectionMethod.Items.Add(new Forwarders.Generic().List[2]);
+                    InjectionMethod.Items.Add(new Forwarders.Generic().List[4]);
                     break;
                 case Platforms.SMCD:
                     InjectionMethod.Items.RemoveAt(0);
-                    InjectionMethod.Items.Add(new Forwarders.Generic().List[3]);
+                    InjectionMethod.Items.Add(new Forwarders.Generic().List[5]);
                     break;
                 default:
                     break;
@@ -1263,6 +1269,13 @@ namespace FriishProduce
                                 Injectors.PCE PCE = new Injectors.PCE { ROM = input[0] };
 
                                 PCE.ReplaceROM();
+                                PCE.SetConfig
+                                    (PCE_Multitap.Checked,
+                                     PCE_Pad5.Checked,
+                                     PCE_BackupRAM.Checked,
+                                     PCE_HideOverscan.Checked,
+                                     PCE_Raster.Checked,
+                                     PCE_NoFPA.Checked);
 
                                 if (Custom.Checked) PCE.InsertSaveTitle(ChannelTitle.Text);
                                 break;

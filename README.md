@@ -8,10 +8,7 @@ This application is designed to streamline the process to as few third-party pro
 
 ***The project and readme are currently under work-in-progress and will be updated over the course of time.***
 
-## How-to
-Please see the [Wiki](https://github.com/CatmanFan/FriishProduce/wiki/Setup) for instructions on setup and usage.
-
-**Make sure you have a (v)Wii NAND backup in case anything goes wrong!**
+---
 
 ## Features
 This injector bypasses other third-party assets (such as Common-Key.bin, most of HowardC's tools, and Autoinjectuwad/Devilken's VC) by handling many steps directly from the program's code. Some examples:
@@ -22,7 +19,14 @@ This injector bypasses other third-party assets (such as Common-Key.bin, most of
 * Additional content/emulator options for each platform where supported
 * Replace WAD contents with forwarder to auto-load specific emulator core and ROM
 
+## How-to
+Please see the [Wiki](https://github.com/CatmanFan/FriishProduce/wiki/Setup) for instructions on setup and usage.
+
+**Make sure you have a (v)Wii NAND backup in case anything goes wrong!**
+
 See [here](https://github.com/CatmanFan/FriishProduce/wiki/Translation) for a how-to on translating the app.
+
+---
 
 ### Platforms
 Currently supported:
@@ -43,6 +47,8 @@ Currently supported:
 
 * Other
   * **Shockwave/Adobe Flash**
+
+ ---
 
 ## Credits
 This program uses the following third-party components and apps:

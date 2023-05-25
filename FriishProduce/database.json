@@ -74,6 +74,18 @@
     { "title": "Bomberman'93 (USA)", "id": "PAAE" },
     { "title": "Bomberman'93 (EUR)", "id": "PAAP" }
   ],
+  "pcecd": [
+    { "title": "Castlevania: Rondo of Blood (USA)", "id": "QAPN" },
+    { "title": "Castlevania: Rondo of Blood (EUR)", "id": "QAPL" }
+  ],
+  "neogeo": [
+    { "title": "The King of Fighters '94 (USA)", "id": "EAGE" },
+    { "title": "The King of Fighters '94 (EUR)", "id": "EAGP" },
+    { "title": "THE KING OF FIGHTERS '94 (JPN)", "id": "EAGJ" },
+    { "title": "Metal Slug (USA)", "id": "EAJE" },
+    { "title": "Metal Slug (EUR)", "id": "EAJP" },
+    { "title": "METAL SLUG (JPN)", "id": "EAJJ" }
+  ],
   "flash": [
     { "title": "Flash Placeholder / Back in Nature", "id": "WNAP" }
   ]

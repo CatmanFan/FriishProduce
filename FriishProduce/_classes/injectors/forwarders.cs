@@ -10,7 +10,9 @@ namespace FriishProduce.Forwarders
         public string[] List = new string[]
         {
             "FCE Ultra GX",
-            "Snes9xGX",
+            "FCEUX TX",
+            "Snes9x GX",
+            "Snes9x TX",
             "Visual Boy Advance GX",
             "Genesis Plus GX",
             "Mupen64GC",
@@ -34,7 +36,7 @@ namespace FriishProduce.Forwarders
                     dolIndex = i;
             if (dolIndex == -1) throw new FileNotFoundException();
 
-            string romFile = (dolIndex >= 3 ? "rom" : "HOME Menu") + Path.GetExtension(ROM).Replace(Paths.PatchedSuffix, "");
+            string romFile = (dolIndex >= 5 ? "rom" : "HOME Menu") + Path.GetExtension(ROM).Replace(Paths.PatchedSuffix, "");
 
             List<string> meta = new List<string>
             {
@@ -71,24 +73,30 @@ namespace FriishProduce.Forwarders
                     File.Copy(Paths.Database + "dol\\fceugx.dol", dir + "boot.dol");
                     break;
                 case 1:
-                    File.Copy(Paths.Database + "dol\\snes9xgx.dol", dir + "boot.dol");
+                    File.Copy(Paths.Database + "dol\\fceuxtx.dol", dir + "boot.dol");
                     break;
                 case 2:
-                    File.Copy(Paths.Database + "dol\\vbagx.dol", dir + "boot.dol");
+                    File.Copy(Paths.Database + "dol\\snes9xgx.dol", dir + "boot.dol");
                     break;
                 case 3:
-                    meta[9] = meta[9].Replace("</arg>", "/</arg>");
-                    File.Copy(Paths.Database + "dol\\genplusgx.dol", dir + "boot.dol");
+                    File.Copy(Paths.Database + "dol\\snes9xtx.dol", dir + "boot.dol");
                     break;
                 case 4:
-                    meta.Add("    <arg>SkipMenu = 1</arg>");
-                    meta.Add("    <arg>ScreenMode = 0</arg>");
-                    File.Copy(Paths.Database + "dol\\mupen64gc.dol", dir + "boot.dol");
+                    File.Copy(Paths.Database + "dol\\vbagx.dol", dir + "boot.dol");
                     break;
                 case 5:
+                    File.Copy(Paths.Database + "dol\\genplusgx.dol", dir + "boot.dol");
+                    meta[9] = meta[9].Replace("</arg>", "/</arg>");
+                    break;
+                case 6:
+                    File.Copy(Paths.Database + "dol\\mupen64gc.dol", dir + "boot.dol");
+                    meta.Add("    <arg>SkipMenu = 1</arg>");
+                    meta.Add("    <arg>ScreenMode = 0</arg>");
+                    break;
+                case 7:
+                    File.Copy(Paths.Database + "dol\\wiisxrx.dol", dir + "boot.dol");
                     meta.Add("    <arg>SkipMenu = 1</arg>");
                     meta.Add("    <arg>VideoMode = 0</arg>");
-                    File.Copy(Paths.Database + "dol\\wiisxrx.dol", dir + "boot.dol");
                     break;
             }
             if (UseUSBStorage) meta[9] = meta[9].Replace("sd:/", "usb:/");

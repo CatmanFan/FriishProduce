@@ -86,6 +86,13 @@ namespace FriishProduce
             this.vWii = new System.Windows.Forms.CheckBox();
             this.DisableEmanual = new System.Windows.Forms.CheckBox();
             this.AltCheckbox = new System.Windows.Forms.CheckBox();
+            this.Options_PCE = new System.Windows.Forms.Panel();
+            this.PCE_NoFPA = new System.Windows.Forms.CheckBox();
+            this.PCE_Multitap = new System.Windows.Forms.CheckBox();
+            this.PCE_Pad5 = new System.Windows.Forms.CheckBox();
+            this.PCE_HideOverscan = new System.Windows.Forms.CheckBox();
+            this.PCE_Raster = new System.Windows.Forms.CheckBox();
+            this.PCE_BackupRAM = new System.Windows.Forms.CheckBox();
             this.Options_N64 = new System.Windows.Forms.Panel();
             this.N64_RemoveT64 = new System.Windows.Forms.CheckBox();
             this.N64_FixBrightness = new System.Windows.Forms.CheckBox();
@@ -122,6 +129,7 @@ namespace FriishProduce
             ((System.ComponentModel.ISupportInitialize)(this.Players)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReleaseYear)).BeginInit();
             this.page4.SuspendLayout();
+            this.Options_PCE.SuspendLayout();
             this.Options_N64.SuspendLayout();
             this.Options_NES.SuspendLayout();
             this.Options_SEGA.SuspendLayout();
@@ -524,6 +532,7 @@ namespace FriishProduce
             this.page4.Controls.Add(this.vWii);
             this.page4.Controls.Add(this.DisableEmanual);
             this.page4.Controls.Add(this.AltCheckbox);
+            this.page4.Controls.Add(this.Options_PCE);
             this.page4.Controls.Add(this.Options_N64);
             this.page4.Controls.Add(this.Options_NES);
             this.page4.Controls.Add(this.Options_SEGA);
@@ -601,6 +610,67 @@ namespace FriishProduce
             this.AltCheckbox.Tag = "";
             this.AltCheckbox.UseVisualStyleBackColor = true;
             this.AltCheckbox.CheckedChanged += new System.EventHandler(this.CheckedToggles);
+            // 
+            // Options_PCE
+            // 
+            this.Options_PCE.Controls.Add(this.PCE_NoFPA);
+            this.Options_PCE.Controls.Add(this.PCE_Multitap);
+            this.Options_PCE.Controls.Add(this.PCE_Pad5);
+            this.Options_PCE.Controls.Add(this.PCE_HideOverscan);
+            this.Options_PCE.Controls.Add(this.PCE_Raster);
+            this.Options_PCE.Controls.Add(this.PCE_BackupRAM);
+            resources.ApplyResources(this.Options_PCE, "Options_PCE");
+            this.Options_PCE.Name = "Options_PCE";
+            // 
+            // PCE_NoFPA
+            // 
+            resources.ApplyResources(this.PCE_NoFPA, "PCE_NoFPA");
+            this.PCE_NoFPA.Checked = true;
+            this.PCE_NoFPA.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.PCE_NoFPA.Name = "PCE_NoFPA";
+            this.PCE_NoFPA.Tag = "";
+            this.PCE_NoFPA.UseVisualStyleBackColor = true;
+            // 
+            // PCE_Multitap
+            // 
+            resources.ApplyResources(this.PCE_Multitap, "PCE_Multitap");
+            this.PCE_Multitap.Checked = true;
+            this.PCE_Multitap.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.PCE_Multitap.Name = "PCE_Multitap";
+            this.PCE_Multitap.Tag = "";
+            this.PCE_Multitap.UseVisualStyleBackColor = true;
+            // 
+            // PCE_Pad5
+            // 
+            resources.ApplyResources(this.PCE_Pad5, "PCE_Pad5");
+            this.PCE_Pad5.Checked = true;
+            this.PCE_Pad5.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.PCE_Pad5.Name = "PCE_Pad5";
+            this.PCE_Pad5.Tag = "";
+            this.PCE_Pad5.UseVisualStyleBackColor = true;
+            // 
+            // PCE_HideOverscan
+            // 
+            resources.ApplyResources(this.PCE_HideOverscan, "PCE_HideOverscan");
+            this.PCE_HideOverscan.Name = "PCE_HideOverscan";
+            this.PCE_HideOverscan.Tag = "";
+            this.PCE_HideOverscan.UseVisualStyleBackColor = true;
+            // 
+            // PCE_Raster
+            // 
+            resources.ApplyResources(this.PCE_Raster, "PCE_Raster");
+            this.PCE_Raster.Name = "PCE_Raster";
+            this.PCE_Raster.Tag = "";
+            this.PCE_Raster.UseVisualStyleBackColor = true;
+            // 
+            // PCE_BackupRAM
+            // 
+            resources.ApplyResources(this.PCE_BackupRAM, "PCE_BackupRAM");
+            this.PCE_BackupRAM.Checked = true;
+            this.PCE_BackupRAM.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.PCE_BackupRAM.Name = "PCE_BackupRAM";
+            this.PCE_BackupRAM.Tag = "";
+            this.PCE_BackupRAM.UseVisualStyleBackColor = true;
             // 
             // Options_N64
             // 
@@ -830,6 +900,8 @@ namespace FriishProduce
             ((System.ComponentModel.ISupportInitialize)(this.ReleaseYear)).EndInit();
             this.page4.ResumeLayout(false);
             this.page4.PerformLayout();
+            this.Options_PCE.ResumeLayout(false);
+            this.Options_PCE.PerformLayout();
             this.Options_N64.ResumeLayout(false);
             this.Options_N64.PerformLayout();
             this.Options_NES.ResumeLayout(false);
@@ -925,6 +997,13 @@ namespace FriishProduce
         private System.Windows.Forms.ComboBox VideoMode;
         private System.Windows.Forms.CheckBox N64_RemoveT64;
         private System.Windows.Forms.Button RandomTID;
+        private System.Windows.Forms.Panel Options_PCE;
+        private System.Windows.Forms.CheckBox PCE_Multitap;
+        private System.Windows.Forms.CheckBox PCE_Pad5;
+        private System.Windows.Forms.CheckBox PCE_HideOverscan;
+        private System.Windows.Forms.CheckBox PCE_Raster;
+        private System.Windows.Forms.CheckBox PCE_BackupRAM;
+        private System.Windows.Forms.CheckBox PCE_NoFPA;
     }
 }
 
