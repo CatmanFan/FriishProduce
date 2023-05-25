@@ -94,6 +94,7 @@
     "f_n64": "Nintendo 64 ROM files (*.n64, *.v64, *.z64)|*.n64;*.v64;*.z64",
     "f_sms": "Master System ROM files (*.sms)|*.sms",
     "f_smd": "Mega Drive/Genesis ROM files (*.bin, *.gen, *.smd)|*.bin;*.gen;*.smd",
+    "f_pce": "TurboGrafx-16/PC Engine ROM files (*.pce)|*.pce",
     "f_vba": "Game Boy/Game Boy Color/Game Boy Advance ROM files (*.gb, *.gbc, *.gba)|*.gb;*.gbc;*.gba"
   },
   "main": {

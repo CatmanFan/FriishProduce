@@ -42,6 +42,7 @@ namespace FriishProduce
                 x.Get("N64"),
                 x.Get("SMS"),
                 x.Get("SMD"),
+                x.Get("PCE"),
                 x.Get("Flash")
             };
             foreach (var console in consoles) Console.Items.Add(console);
@@ -106,6 +107,10 @@ namespace FriishProduce
                         BrowseROM.Filter = x.Get("f_swf");
                         break;
 
+                    case Platforms.PCE:
+                        BrowseROM.Filter = x.Get("f_pce");
+                        break;
+
                     case Platforms.SMCD:
                         BrowseROM.Filter = x.Get("f_iso");
                         break;
@@ -122,7 +127,7 @@ namespace FriishProduce
                 RefreshBases();
 
                 Image.Image = tImg.Generate(currentConsole);
-                SaveDataTitle.Enabled = !(currentConsole == Platforms.SMS || currentConsole == Platforms.SMD);
+                SaveDataTitle.Enabled = !(currentConsole == Platforms.SMS || currentConsole == Platforms.SMD || currentConsole == Platforms.PCE);
                 SaveDataTitle.MaxLength = 80;
                 Patch.Visible = currentConsole != Platforms.Flash;
 
@@ -758,7 +763,8 @@ namespace FriishProduce
 
         private void BannerText_Changed(object sender, EventArgs e)
         {
-            if (currentConsole == Platforms.SMS || currentConsole == Platforms.SMD) SaveDataTitle.Text = ChannelTitle.Text;
+            if (currentConsole == Platforms.SMS || currentConsole == Platforms.SMD || currentConsole == Platforms.PCE)
+                SaveDataTitle.Text = ChannelTitle.Text;
             if (SaveDataTitle.Lines.Length > 2) SaveDataTitle.Lines = new string[2] { SaveDataTitle.Lines[0], SaveDataTitle.Lines[1] };
             if (BannerTitle.Lines.Length > 2) BannerTitle.Lines = new string[2] { BannerTitle.Lines[0], BannerTitle.Lines[1] };
             foreach (string line1 in SaveDataTitle.Lines)
@@ -1249,6 +1255,16 @@ namespace FriishProduce
                                 if (Custom.Checked) await Task.Run(() => { SEGA.InsertSaveTitle(shortTitle); });
 
                                 SEGA.PackCCF(Custom.Checked);
+                                break;
+                            }
+
+                        case Platforms.PCE:
+                            {
+                                Injectors.PCE PCE = new Injectors.PCE { ROM = input[0] };
+
+                                PCE.ReplaceROM();
+
+                                if (Custom.Checked) PCE.InsertSaveTitle(ChannelTitle.Text);
                                 break;
                             }
                     }

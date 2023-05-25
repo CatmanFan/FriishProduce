@@ -82,6 +82,10 @@ namespace FriishProduce
                 SaveIconL_xywh = new int[] { 8, 8, 69, 48 };
                 SaveIconS_xywh = new int[] { 2, new Random().Next(8, 9), 44, 31 };
             }
+            if (platform == Platforms.PCE)
+            {
+                SaveIconS_xywh = new int[] { 6, 9, 36, 30 };
+            }
 
             if (Temp == null && Path == null) return null;
             else if (Temp == null && Path != null) Temp = (Bitmap)Image.FromFile(Path);
@@ -208,6 +212,9 @@ namespace FriishProduce
                     case Platforms.SMS:
                     case Platforms.SMD:
                         usesWte = true;
+                        break;
+                    case Platforms.PCE:
+                        tplPath = Paths.WorkingFolder_Content5 + "savedata.tpl";
                         break;
                 }
                 if (embedded && !File.Exists(tplPath) && !usesWte) return;

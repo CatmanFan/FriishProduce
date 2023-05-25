@@ -32,6 +32,8 @@
     "SMS": "Sega Master System",
     "SMD": "Sega Mega Drive / Genesis",
     "SMCD": "Sega Mega CD / Sega CD",
+    "PCE": "PC Engine / TurboGrafx-16",
+    "PCECD": "PC Engine CD / TurboGrafx-16 CD",
   },
   "settings": {
     "s000": "Logiciel",
@@ -77,6 +79,7 @@
     "f_n64": "Fichiers ROM de Nintendo 64 (*.n64, *.v64, *.z64)|*.n64;*.v64;*.z64",
     "f_sms": "Fichiers ROM de Sega Master System (*.sms)|*.sms",
     "f_smd": "Fichiers ROM de Sega Mega Drive / Genesis (*.bin, *.gen, *.smd)|*.bin;*.gen;*.smd",
+    "f_pce": "Fichiers ROM de PC Engine / TurboGrafx-16 (*.pce)|*.pce",
   },
   "main": {
     "a000": "Bienvenue dans l'application FriishProduce (version {0}).\n\nPour commencer, sélectionner une platforme cible :",

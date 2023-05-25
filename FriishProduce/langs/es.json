@@ -76,6 +76,7 @@
     "f_n64": "Archivos ROM de Nintendo 64 (*.n64, *.v64, *.z64)|*.n64;*.v64;*.z64",
     "f_sms": "Archivos ROM de Master System (*.sms)|*.sms",
     "f_smd": "Archivos ROM de Mega Drive/Genesis (*.bin, *.gen, *.smd)|*.bin;*.gen;*.smd",
+    "f_pce": "Archivos ROM de TurboGrafx-16/PC Engine (*.pce)|*.pce",
     "f_vba": "Archivos ROM de Game Boy/Game Boy Color/Game Boy Advance (*.gb, *.gbc, *.gba)|*.gb;*.gbc;*.gba"
   },
   "main": {

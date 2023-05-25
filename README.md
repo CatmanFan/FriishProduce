@@ -32,6 +32,7 @@ Currently supported:
   * **Nintendo 64**
   * **Master System**
   * **Mega Drive / Genesis**
+<!-- * **TurboGrafx-16 / PC Engine** -->
 
 * Emulator forwarders
   * **[FCE Ultra GX](https://github.com/dborth/fceugx)** (dborth et al.)

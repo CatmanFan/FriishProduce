@@ -131,6 +131,7 @@
     <Compile Include="_classes\global.cs" />
     <Compile Include="_classes\injectors\n64.cs" />
     <Compile Include="_classes\injectors\nes.cs" />
+    <Compile Include="_classes\injectors\pce.cs" />
     <Compile Include="_classes\injectors\sega.cs" />
     <Compile Include="_classes\injectors\snes.cs" />
     <Compile Include="_classes\injectors\forwarders.cs" />

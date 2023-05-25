@@ -70,6 +70,10 @@
     { "title": "Sonic the Hedgehog 3 (EUR)", "id": "MBMP", "ver": "2", "ROM": "Sonic3_Europe.SGD" },
     { "title": "Sonic the Hedgehog 3 (JPN)", "id": "MBMJ", "ver": "2", "ROM": "Sonic3.SGD" }
   ],
+  "pce": [
+    { "title": "Bomberman'93 (USA)", "id": "PAAE" },
+    { "title": "Bomberman'93 (EUR)", "id": "PAAP" }
+  ],
   "flash": [
     { "title": "Flash Placeholder / Back in Nature", "id": "WNAP" }
   ]
