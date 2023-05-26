@@ -6,34 +6,7 @@ namespace FriishProduce.Injectors
 {
     class PCE
     {
-        // CONFIG from Bomberman'93:
-        /* NAME=N43406YP
-           ROM=N43406YP.PCE
-           BACKUPRAM=1
-           CHASEHQ=0
-           MULTITAP=1
-           HDS=0
-           RASTER=0
-           POPULUS=0
-           SPRLINE=0
-           PAD5=1 */
-
-        // CONFIG from Castlevania Rondo of Blood:
-        /* NAME=KMCD3005
-           ROM=KMCD3005.hcd
-           BACKUPRAM=1
-           MULTITAP=1
-           HDS=0
-           RASTER=0
-           SPRLINE=0
-           NOFPA=1
-           IRQMODE=0
-           EUROPE=1
-           HIDEOVERSCAN=1
-           YOFFSET=8 */
-
         public string ROM { get; set; }
-        public string ROMcode { get; set; }
 
         public void ReplaceROM()
         {
@@ -43,8 +16,9 @@ namespace FriishProduce.Injectors
             
             if (rom == null) throw new Exception(Program.Language.Get("m010"));
 
-            if (File.ReadAllBytes(ROM).Length > File.ReadAllBytes(rom).Length)
-                throw new Exception(Program.Language.Get("m004"));
+            // Maximum ROM limit allowed: ~2.5 MB
+            if (File.ReadAllBytes(ROM).Length > 1048576 * 2.5)
+                throw new Exception(Program.Language.Get("m018"));
 
             File.Copy(ROM, rom, true);
         }
@@ -92,5 +66,32 @@ namespace FriishProduce.Injectors
 
             File.WriteAllLines(Paths.WorkingFolder_Content5 + "config.ini", config.ToArray());
         }
+
+        // CONFIG from Bomberman'93:
+        /* NAME=N43406YP
+           ROM=N43406YP.PCE
+           BACKUPRAM=1
+           CHASEHQ=0
+           MULTITAP=1
+           HDS=0
+           RASTER=0
+           POPULUS=0
+           SPRLINE=0
+           PAD5=1
+           NOFPA=1 */
+
+        // CONFIG from Castlevania Rondo of Blood:
+        /* NAME=KMCD3005
+           ROM=KMCD3005.hcd
+           BACKUPRAM=1
+           MULTITAP=1
+           HDS=0
+           RASTER=0
+           SPRLINE=0
+           NOFPA=1
+           IRQMODE=0
+           EUROPE=1
+           HIDEOVERSCAN=1
+           YOFFSET=8 */
     }
 }

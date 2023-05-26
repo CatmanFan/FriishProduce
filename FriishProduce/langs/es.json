@@ -8,6 +8,7 @@
     "NES": "Nintendo NES (Famicom)",
     "SNES": "Super Nintendo (Super Famicom)",
     "N64": "Nintendo 64",
+    "NeoGeo": "SNK Neo-Geo",
     "Flash": "Shockwave Flash"
   },
   "global": {
@@ -61,7 +62,9 @@
     "m014": "No se pudo comprimir la ROM en formato ROMC.",
     "m015": "Error de alocución. Comprobar si el tamaño de su ROM no es más de 56 MB o si estás usando una canal suportada.",
     "m016": "No se pudo comprimir el archivo(s) de CCF.",
-    "m017": "No se pudo conectar al Internet."
+    "m017": "No se pudo conectar al Internet.",
+    "m018": "El tamaño de su ROM supera el límite máximo permitido. Vuelve a probar con una versión comprimida o elija otra ROM.",
+    "m019": "Formato inválido de archivo ROM o imagen de disco."
   },
   "filters": {
     "f_all": "|Todos los archivos (*.*)|*.*",
@@ -125,6 +128,7 @@
     "Flash__006__l0": "Deshabilitada",
     "Flash__006__l1": "Habilitada",
     "Flash__006__l2": "Habilitada (con mando complementario)",
-    "SEGA__ConWarn": "Recuerda que algunas opciones pueden no funcionar en la versión actual del emulador (p. ej. configuración de controles)."
+    "SEGA__ConWarn": "Recuerda que algunas opciones pueden no funcionar en la versión actual del emulador (p. ej. configuración de controles).",
+    "NeoGeo__000": "Utilizar una BIOS personalizada"
   }
 }

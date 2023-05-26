@@ -86,6 +86,10 @@
     { "title": "Metal Slug (EUR)", "id": "EAJP" },
     { "title": "METAL SLUG (JPN)", "id": "EAJJ" }
   ],
+  "c64": [
+    { "title": "International Karate (USA)", "id": "C9YE" },
+    { "title": "International Karate (EUR)", "id": "C9YP" }
+  ],
   "flash": [
     { "title": "Flash Placeholder / Back in Nature", "id": "WNAP" }
   ]

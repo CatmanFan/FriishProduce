@@ -79,7 +79,9 @@
     "m014": "The ROMC compression process failed.",
     "m015": "Unable to allocate ROM size. Please check to see if your ROM size is not over 56 MB or if you're using a supported base WAD.",
     "m016": "Unable to compress CCF file(s).",
-    "m017": "Failed to connect to the Internet."
+    "m017": "Failed to connect to the Internet.",
+    "m018": "The ROM to be injected is larger in filesize than the maximum allowed limit by the emulator. Please try again using a compressed version or choose a different ROM.",
+    "m019": "Invalid ROM/disc image format."
   },
   "filters": {
     "f_all": "|All files (*.*)|*.*",
@@ -157,6 +159,7 @@
     "Flash__006__l0": "Disabled",
     "Flash__006__l1": "Enabled",
     "Flash__006__l2": "Enabled (w/ extension controller image)",
-    "SEGA__ConWarn": "Some options (such as controller bindings) may not be supported by the selected emulator version or emulated console."
+    "SEGA__ConWarn": "Some options (such as controller bindings) may not be supported by the selected emulator version or emulated console.",
+    "NeoGeo__000": "Use custom BIOS"
   }
 }

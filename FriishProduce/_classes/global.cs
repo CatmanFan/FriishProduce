@@ -249,6 +249,15 @@ namespace FriishProduce
                     if (file.EndsWith(item)) File.WriteAllText(file, string.Empty);
                 // It is important to empty the file instead of simply deleting it, because otherwise it will throw a "data corruption" error in some WADs
             }
+
+            if (Directory.Exists(Paths.WorkingFolder_Content6))
+            {
+                foreach (var file in Directory.GetFiles(Paths.WorkingFolder_Content6, "*.*", SearchOption.AllDirectories))
+                {
+                    foreach (var item in emanualFiles)
+                        if (file.EndsWith(item)) File.WriteAllBytes(file, new byte[16]);
+                }
+            }
         }
     }
 }

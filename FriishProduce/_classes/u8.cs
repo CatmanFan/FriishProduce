@@ -12,7 +12,7 @@
             }
         }
 
-        public static void Pack(string input, string output)
+        public static void Pack(string input, string output, bool deleteInput = true)
         {
             using (libWiiSharp.U8 u = new libWiiSharp.U8())
             {
@@ -21,7 +21,7 @@
                 u.Dispose();
             }
 
-            System.IO.Directory.Delete(input, true);
+            if (deleteInput) System.IO.Directory.Delete(input, true);
         }
     }
 }

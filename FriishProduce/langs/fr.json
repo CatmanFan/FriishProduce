@@ -34,6 +34,7 @@
     "SMCD": "Sega Mega CD / Sega CD",
     "PCE": "PC Engine / TurboGrafx-16",
     "PCECD": "PC Engine CD / TurboGrafx-16 CD",
+    "NeoGeo": "SNK NEO-GEO",
   },
   "settings": {
     "s000": "Logiciel",
@@ -64,7 +65,9 @@
     "m014": "Échec de compression en format ROMC.",
     "m015": "Échec de l'allocation. Vérifier si la taille de votre ROM n'excède pas 56 Mo ou si vous utilisez une chaîne de base compatible.",
     "m016": "Échec de compression des fichiers CCF.",
-    "m017": "Échec de connexion Internet."
+    "m017": "Échec de connexion Internet.",
+    "m018": "La taille de la ROM que vous avez précisé dépasse la limite maximale autorisée. Veuillez réessayer avec une version compressée de votre ROM ou choisir une autre ROM.",
+    "m019": "Format invalide ou non pris en charge du fichier ROM/disque."
   },
   "filters": {
     "f_all": "|Tous les fichiers (*.*)|*.*",
@@ -127,6 +130,7 @@
     "Flash__006__l0": "Désactivée",
     "Flash__006__l1": "Activée",
     "Flash__006__l2": "Activée (avec écran de connecteur)",
-    "SEGA__ConWarn": "Avertissement : Certains paramètres peuvent ne pas fonctionner sur la révision actuelle de l'émulateur, la modification des contrôles (ver 3 uniquement) compris."
+    "SEGA__ConWarn": "Avertissement : Certains paramètres peuvent ne pas fonctionner sur la révision actuelle de l'émulateur, la modification des contrôles (ver 3 uniquement) compris.",
+    "NeoGeo__000": "Utiliser une BIOS personalisée"
   }
 }

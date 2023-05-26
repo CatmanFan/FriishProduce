@@ -212,10 +212,11 @@ namespace FriishProduce.Injectors
                     throw new Exception(Program.Language.Get("m014"));
 
                 // Check filesize
-                if (File.ReadAllBytes(compressedROM).Length > File.ReadAllBytes($"{Paths.WorkingFolder_Content5}romc").Length)
+                // Maximum ROM limit allowed: 32 MB
+                if (File.ReadAllBytes(compressedROM).Length > 4194304 * 8)
                 {
                     File.Delete(compressedROM);
-                    throw new Exception(Program.Language.Get("m004"));
+                    throw new Exception(Program.Language.Get("m018"));
                 }
 
                 // Copy
@@ -225,10 +226,11 @@ namespace FriishProduce.Injectors
             else
             {
                 // Check filesize
-                if (File.ReadAllBytes(byteswappedROM).Length > File.ReadAllBytes($"{Paths.WorkingFolder_Content5}rom").Length && !IsAllocated)
+                // Maximum ROM limit allowed: 32 MB unless allocated in main.dol (maximum possible: ~56 MB)
+                if (File.ReadAllBytes(byteswappedROM).Length > 4194304 * 8 && !IsAllocated)
                 {
                     File.Delete(byteswappedROM);
-                    throw new Exception(Program.Language.Get("m004"));
+                    throw new Exception(Program.Language.Get("m018"));
                 }
 
                 // Copy

@@ -77,6 +77,8 @@ namespace FriishProduce
             this.a006 = new System.Windows.Forms.Label();
             this.ChannelTitle = new System.Windows.Forms.TextBox();
             this.page4 = new System.Windows.Forms.Panel();
+            this.Options_NeoGeo = new System.Windows.Forms.Panel();
+            this.NeoGeo_BIOS = new System.Windows.Forms.CheckBox();
             this.RandomTID = new System.Windows.Forms.Button();
             this.VideoMode = new System.Windows.Forms.ComboBox();
             this.RegionFree = new System.Windows.Forms.CheckBox();
@@ -129,6 +131,7 @@ namespace FriishProduce
             ((System.ComponentModel.ISupportInitialize)(this.Players)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReleaseYear)).BeginInit();
             this.page4.SuspendLayout();
+            this.Options_NeoGeo.SuspendLayout();
             this.Options_PCE.SuspendLayout();
             this.Options_N64.SuspendLayout();
             this.Options_NES.SuspendLayout();
@@ -523,6 +526,7 @@ namespace FriishProduce
             // 
             // page4
             // 
+            this.page4.Controls.Add(this.Options_NeoGeo);
             this.page4.Controls.Add(this.RandomTID);
             this.page4.Controls.Add(this.VideoMode);
             this.page4.Controls.Add(this.RegionFree);
@@ -539,6 +543,20 @@ namespace FriishProduce
             this.page4.Controls.Add(this.Options_Flash);
             resources.ApplyResources(this.page4, "page4");
             this.page4.Name = "page4";
+            // 
+            // Options_NeoGeo
+            // 
+            this.Options_NeoGeo.Controls.Add(this.NeoGeo_BIOS);
+            resources.ApplyResources(this.Options_NeoGeo, "Options_NeoGeo");
+            this.Options_NeoGeo.Name = "Options_NeoGeo";
+            // 
+            // NeoGeo_BIOS
+            // 
+            resources.ApplyResources(this.NeoGeo_BIOS, "NeoGeo_BIOS");
+            this.NeoGeo_BIOS.Name = "NeoGeo_BIOS";
+            this.NeoGeo_BIOS.Tag = "NeoGeo__000";
+            this.NeoGeo_BIOS.UseVisualStyleBackColor = true;
+            this.NeoGeo_BIOS.CheckedChanged += new System.EventHandler(this.NeoGeo_BIOS_CheckedChanged);
             // 
             // RandomTID
             // 
@@ -873,10 +891,10 @@ namespace FriishProduce
             resources.ApplyResources(this, "$this");
             this.Controls.Add(this.Wait);
             this.Controls.Add(this.panel);
-            this.Controls.Add(this.page4);
-            this.Controls.Add(this.page3);
             this.Controls.Add(this.page2);
             this.Controls.Add(this.page1);
+            this.Controls.Add(this.page4);
+            this.Controls.Add(this.page3);
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
@@ -900,6 +918,8 @@ namespace FriishProduce
             ((System.ComponentModel.ISupportInitialize)(this.ReleaseYear)).EndInit();
             this.page4.ResumeLayout(false);
             this.page4.PerformLayout();
+            this.Options_NeoGeo.ResumeLayout(false);
+            this.Options_NeoGeo.PerformLayout();
             this.Options_PCE.ResumeLayout(false);
             this.Options_PCE.PerformLayout();
             this.Options_N64.ResumeLayout(false);
@@ -1004,6 +1024,8 @@ namespace FriishProduce
         private System.Windows.Forms.CheckBox PCE_Raster;
         private System.Windows.Forms.CheckBox PCE_BackupRAM;
         private System.Windows.Forms.CheckBox PCE_NoFPA;
+        private System.Windows.Forms.Panel Options_NeoGeo;
+        private System.Windows.Forms.CheckBox NeoGeo_BIOS;
     }
 }
 

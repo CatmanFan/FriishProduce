@@ -15,9 +15,9 @@ namespace FriishProduce.Injectors
 
             if (File.Exists(rom))
             {
-                /* if (File.ReadAllBytes(ROM).Length >
-                    File.ReadAllBytes(rom).Length)
-                    throw new Exception(Program.Language.Get("m004")); */
+                // Maximum ROM limit allowed: 4 MB
+                if (File.ReadAllBytes(ROM).Length > 4194304)
+                    throw new Exception(Program.Language.Get("m018"));
 
                 File.Copy(ROM, rom, true);
             }

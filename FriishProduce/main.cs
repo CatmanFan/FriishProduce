@@ -43,6 +43,7 @@ namespace FriishProduce
                 x.Get("SMS"),
                 x.Get("SMD"),
                 x.Get("PCE"),
+                x.Get("NeoGeo"),
                 x.Get("Flash")
             };
             foreach (var console in consoles) Console.Items.Add(console);
@@ -111,6 +112,10 @@ namespace FriishProduce
                         BrowseROM.Filter = x.Get("f_pce");
                         break;
 
+                    case Platforms.NeoGeo:
+                        BrowseROM.Filter = x.Get("f_zip");
+                        break;
+
                     case Platforms.SMCD:
                         BrowseROM.Filter = x.Get("f_iso");
                         break;
@@ -129,7 +134,7 @@ namespace FriishProduce
                 Image.Image = tImg.Generate(currentConsole);
                 SaveDataTitle.Enabled = !(currentConsole == Platforms.SMS || currentConsole == Platforms.SMD || currentConsole == Platforms.PCE);
                 SaveDataTitle.MaxLength = 80;
-                Patch.Visible = currentConsole != Platforms.Flash;
+                Patch.Visible = currentConsole != Platforms.NeoGeo && currentConsole != Platforms.Flash;
 
                 Next.Visible = true;
                 Next.Enabled = true;
@@ -176,6 +181,10 @@ namespace FriishProduce
 
                     case Platforms.PCE:
                         Options_PCE.Visible = true;
+                        break;
+
+                    case Platforms.NeoGeo:
+                        Options_NeoGeo.Visible = true;
                         break;
 
                     case Platforms.Flash:
@@ -765,6 +774,23 @@ namespace FriishProduce
             }
         }
 
+        private void NeoGeo_BIOS_CheckedChanged(object sender, EventArgs e)
+        {
+            if (NeoGeo_BIOS.Checked)
+            {
+                OpenFileDialog BrowseBIOS = new OpenFileDialog() { Filter = x.Get("f_zip") };
+
+                if (BrowseBIOS.ShowDialog() == DialogResult.OK)
+                    input[1] = BrowseBIOS.FileName;
+                else
+                {
+                    NeoGeo_BIOS.Checked = false;
+                    input[1] = "";
+                }
+            }
+            else input[1] = "";
+        }
+
         // ***************************************************************************************************************** //
 
         private void BannerText_Changed(object sender, EventArgs e)
@@ -998,7 +1024,7 @@ namespace FriishProduce
                         foreach (var RunningP in RunningP_List)
                             RunningP.Kill();
 
-                    if (currentConsole != Platforms.Flash) input[0] = Global.ApplyPatch(input[0], input[1]);
+                    if (Patch.Visible) input[0] = Global.ApplyPatch(input[0], input[1]);
 
                     w = WAD.Load(input[2]);
                     w.Unpack(Paths.WorkingFolder);
@@ -1278,6 +1304,42 @@ namespace FriishProduce
                                      PCE_NoFPA.Checked);
 
                                 if (Custom.Checked) PCE.InsertSaveTitle(ChannelTitle.Text);
+                                break;
+                            }
+
+                        case Platforms.NeoGeo:
+                            {
+                                Injectors.NeoGeo NeoGeo = new Injectors.NeoGeo
+                                {
+                                    ZIP = input[0],
+                                    BIOSPath = string.IsNullOrWhiteSpace(input[1]) ? "" : input[1],
+                                    Target = File.ReadAllBytes(Paths.WorkingFolder + "00000007.app").Length
+                                           > File.ReadAllBytes(Paths.WorkingFolder + "00000005.app").Length ?
+                                           Paths.WorkingFolder + "00000007.app" :
+                                           File.ReadAllBytes(Paths.WorkingFolder + "00000006.app").Length
+                                           > File.ReadAllBytes(Paths.WorkingFolder + "00000005.app").Length ?
+                                           Paths.WorkingFolder + "00000006.app" :
+                                           Paths.WorkingFolder + "00000005.app"
+                                };
+
+                                await Task.Run(() => { U8.Unpack(NeoGeo.Target, Paths.WorkingFolder_Content6); });
+
+                                NeoGeo.InsertROM(File.Exists(Paths.WorkingFolder_Content6 + "game.bin.z"));
+                                /*
+                                if (Custom.Checked && File.Exists(Paths.WorkingFolder_Content5 + "banner.bin"))
+                                {
+                                    
+                                    if (tImg.Get() && NeoGeo.ExtractSaveTPL(Paths.WorkingFolder + "out.tpl"))
+                                        tImg.CreateSave(Platforms.NeoGeo);
+
+                                    string saveTitle = SaveDataTitle.Text;
+                                    await Task.Run(() => { NeoGeo.InsertSaveTitle(saveTitle, Paths.WorkingFolder + "out.tpl"); });
+                                    
+                                }*/
+
+                                await Task.Run(() => { Global.RemoveEmanual(); });
+                                await Task.Run(() => { U8.Pack(Paths.WorkingFolder_Content5, Paths.WorkingFolder + "00000005.app", false); });
+                                await Task.Run(() => { U8.Pack(Paths.WorkingFolder_Content6, NeoGeo.Target); });
                                 break;
                             }
                     }

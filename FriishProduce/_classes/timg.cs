@@ -216,6 +216,10 @@ namespace FriishProduce
                     case Platforms.PCE:
                         tplPath = Paths.WorkingFolder_Content5 + "savedata.tpl";
                         break;
+                    case Platforms.NeoGeo:
+                        tplPath = Paths.WorkingFolder + "out.tpl";
+                        embedded = true;
+                        break;
                 }
                 if (embedded && !File.Exists(tplPath) && !usesWte) return;
                 else if (tplPath == null && !usesWte) return;
