@@ -83,8 +83,20 @@
     { "title": "Sonic the Hedgehog 3 (JPN)", "id": "MBMJ", "ver": "2", "ROM": "Sonic3.SGD" }
   ],
   "pce": [
-    { "title": "Bomberman'93 (USA)", "id": "PAAE" },
-    { "title": "Bomberman'93 (EUR)", "id": "PAAP" }
+    { "title": "Bomberman '93 (USA)", "id": "PAAE" },
+    { "title": "Bomberman '93 (EUR)", "id": "PAAP" },
+    { "title": "Chase H.Q. (USA)", "id": "PC2E" },
+    { "title": "Chase H.Q. (EUR)", "id": "PC2P" },
+    { "title": "TAITO Chase H.Q. (JPN)", "id": "PC2J" },
+    { "title": "Dungeon Explorer (USA)", "id": "PACE" },
+    { "title": "Dungeon Explorer (EUR)", "id": "PACP" },
+    { "title": "Dungeon Explorer (JPN)", "id": "PACJ" },
+    { "title": "Moto Roader (USA)", "id": "PBEE" },
+    { "title": "Moto Roader (EUR)", "id": "PBEP" },
+    { "title": "Moto Roader (JPN)", "id": "PBEJ" },
+    { "title": "Super Star Soldier (USA)", "id": "PAEE" },
+    { "title": "Super Star Soldier (EUR)", "id": "PAEP" },
+    { "title": "Super Star Soldier (JPN)", "id": "PAEJ" }
   ],
   "pcecd": [
     { "title": "Castlevania: Rondo of Blood (USA)", "id": "QAPN" },
