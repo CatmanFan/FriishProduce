@@ -28,6 +28,7 @@ namespace FriishProduce.Injectors
             // First do a check to see if valid archive
             foreach (var file in Directory.EnumerateFiles(Paths.WorkingFolder_ROM))
                 if (Path.GetFileName(file).EndsWith("c1.bin")
+                 || Path.GetFileName(file).EndsWith("c2.bin") // C files always go in pairs (C1-C2, C3-C4, etc.)
                  || Path.GetFileName(file).EndsWith("m1.bin")
                  || Path.GetFileName(file).EndsWith("p1.bin")
                  || Path.GetFileName(file).EndsWith("s1.bin")
@@ -39,7 +40,7 @@ namespace FriishProduce.Injectors
             // ------------------------- //
 
             // TO-DO:
-            // "game.bin.z" (found in KOF95 WAD) is the game compressed in ZLIB format.
+            // "game.bin.z" (found in KOF '95 WAD) is the game compressed in ZLIB format.
             // This should be decrypted to "game.bin" to avoid any IO exception then recompressed afterwards
 
             // ------------------------- //
@@ -98,9 +99,9 @@ namespace FriishProduce.Injectors
             // ------------------------- //
 
             // Documentation from Corsario
-            // "There are some games with an none standard C file order, and after reorganize bytes its necessary to do a unknown puzzle
-            // with that files and find the suitable order, each estrange game have a custom combination.
-            // Ex Fatal Fury 2, Kizuna Encounter, kof96"
+            // "There are some games with an non-standard C file order, and after reorganizing the bytes it's necessary to do a unknown puzzle
+            // with that files and find the suitable order, each strange game have a custom combination."
+            // Ex.: Fatal Fury 2, Kizuna Encounter, KOF '96"
 
             var C1 = new byte[] { 0x00 };
             var C2 = new byte[] { 0x00 };
