@@ -8,6 +8,14 @@
     { "title": "Super Mario Bros. 3 (EUR)", "id": "FCWP" },
     { "title": "Super Mario Bros. 3 (JPN)", "id": "FCWJ" },
     { "title": "Super Mario Bros. 3 (KOR)", "id": "FCWQ" },
+    { "title": "Double Dragon (USA)", "id": "FD2E" },
+    { "title": "Double Dragon (EUR)", "id": "FD2P" },
+    { "title": "Double Dragon (JPN)", "id": "FD2J" },
+    { "title": "River City Ransom (USA)", "id": "FDVE" },
+    { "title": "Street Gangs (EUR)", "id": "FDVP" },
+    { "title": "Downtown Nekketsu Monogatari (JPN)", "id": "FDVJ" },
+    { "title": "NES Play Action Football (USA)", "id": "FC7E" },
+    { "title": "Metal Slader Glory (JPN)", "id": "FC9J" },
     { "title": "Ninja Gaiden (EUR/PAL60)", "id": "FBNM" }
   ],
   "snes": [
