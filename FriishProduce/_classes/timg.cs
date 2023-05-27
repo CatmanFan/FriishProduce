@@ -186,6 +186,7 @@ namespace FriishProduce
 
         private readonly float[] opacity4 = { 0F, 0.32F, 0.64F, 1F };
         private readonly float[] opacity6 = { 0F, 0.20F, 0.40F, 0.60F, 0.80F, 1F };
+        private readonly float[] opacity8 = { 0F, 0F, 0F, 0.32F, 0.64F, 1F, 1F, 1F };
 
         public void CreateSave(Platforms platform)
         {
@@ -302,7 +303,27 @@ namespace FriishProduce
 
                             sFiles[3] = Paths.Images + System.IO.Path.GetFileNameWithoutExtension(sFiles[3]) + "_new.png";
                             img1.Save(sFiles[3]);
+                        }
 
+                        else if (platform == Platforms.NeoGeo)
+                        {
+                            a.SetColorMatrix(new ColorMatrix() { Matrix33 = opacity4[1] });
+                            g.DrawImage(img2, new Rectangle(0, 0, w, h), 0, 0, w, h, GraphicsUnit.Pixel, a);
+
+                            sFiles[4] = Paths.Images + System.IO.Path.GetFileNameWithoutExtension(sFiles[4]) + "_new.png";
+                            img1.Save(sFiles[4]);
+
+                            g.DrawImage(img1, 0, 0);
+                            a.SetColorMatrix(new ColorMatrix() { Matrix33 = opacity4[2] });
+                            g.DrawImage(img2, new Rectangle(0, 0, w, h), 0, 0, w, h, GraphicsUnit.Pixel, a);
+
+                            sFiles[5] = Paths.Images + System.IO.Path.GetFileNameWithoutExtension(sFiles[5]) + "_new.png";
+                            img1.Save(sFiles[5]);
+
+                            File.Copy(sFiles[1], Paths.Images + System.IO.Path.GetFileNameWithoutExtension(sFiles[2]) + "_new.png");
+                            File.Copy(sFiles[1], Paths.Images + System.IO.Path.GetFileNameWithoutExtension(sFiles[3]) + "_new.png");
+                            sFiles[2] = Paths.Images + System.IO.Path.GetFileNameWithoutExtension(sFiles[2]) + "_new.png";
+                            sFiles[3] = Paths.Images + System.IO.Path.GetFileNameWithoutExtension(sFiles[3]) + "_new.png";
                         }
 
                         g.Dispose();

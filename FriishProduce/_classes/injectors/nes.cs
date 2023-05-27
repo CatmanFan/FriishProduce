@@ -237,7 +237,7 @@ namespace FriishProduce.Injectors
                 {
                     for (int i = start; i < end; i++)
                     {
-                        try { content1[i] = Encoding.BigEndianUnicode.GetBytes(text.Replace(Environment.NewLine.ToString(), "\n"))[(i - start)]; }
+                        try { content1[i] = Encoding.BigEndianUnicode.GetBytes(text.Replace(Environment.NewLine, "\n"))[(i - start)]; }
                         catch { content1[i] = 0x00; }
                     }
                 }

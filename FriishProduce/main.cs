@@ -148,9 +148,9 @@ namespace FriishProduce
 
             // Switch relevant options based on mode & selected platform
             vWii.Visible = ForwarderMode;
+            a010.Visible = !ForwarderMode;
             DisableEmanual.Visible = !ForwarderMode;
             SaveDataTitle.Visible = !ForwarderMode;
-            a010.Visible = !ForwarderMode;
             SaveDataTitle.MaxLength = 80;
 
             AltCheckbox.Text = ForwarderMode ? x.Get("a019") : x.Get("a020");
@@ -185,6 +185,7 @@ namespace FriishProduce
 
                     case Platforms.NeoGeo:
                         Options_NeoGeo.Visible = true;
+                        SaveDataTitle.MaxLength = 64;
                         break;
 
                     case Platforms.Flash:
@@ -238,6 +239,7 @@ namespace FriishProduce
                 case Platforms.PCE:
                     break;
                 case Platforms.NeoGeo:
+                    AutoFill.Visible = false;
                     break;
                 case Platforms.C64:
                     break;
@@ -795,8 +797,7 @@ namespace FriishProduce
 
         private void BannerText_Changed(object sender, EventArgs e)
         {
-            if (currentConsole == Platforms.SMS || currentConsole == Platforms.SMD || currentConsole == Platforms.PCE)
-                SaveDataTitle.Text = ChannelTitle.Text;
+            if (!SaveDataTitle.Enabled) SaveDataTitle.Text = ChannelTitle.Text;
             if (SaveDataTitle.Lines.Length > 2) SaveDataTitle.Lines = new string[2] { SaveDataTitle.Lines[0], SaveDataTitle.Lines[1] };
             if (BannerTitle.Lines.Length > 2) BannerTitle.Lines = new string[2] { BannerTitle.Lines[0], BannerTitle.Lines[1] };
             foreach (string line1 in SaveDataTitle.Lines)
@@ -1325,17 +1326,17 @@ namespace FriishProduce
                                 await Task.Run(() => { U8.Unpack(NeoGeo.Target, Paths.WorkingFolder_Content6); });
 
                                 NeoGeo.InsertROM(File.Exists(Paths.WorkingFolder_Content6 + "game.bin.z"));
-                                /*
-                                if (Custom.Checked && File.Exists(Paths.WorkingFolder_Content5 + "banner.bin"))
+
+                                if (Custom.Checked && NeoGeo.GetSaveFile() != null)
                                 {
-                                    
-                                    if (tImg.Get() && NeoGeo.ExtractSaveTPL(Paths.WorkingFolder + "out.tpl"))
+                                    string target = NeoGeo.GetSaveFile();
+
+                                    if (tImg.Get() && NeoGeo.ExtractSaveTPL(target, Paths.WorkingFolder + "out.tpl"))
                                         tImg.CreateSave(Platforms.NeoGeo);
 
                                     string saveTitle = SaveDataTitle.Text;
-                                    await Task.Run(() => { NeoGeo.InsertSaveTitle(saveTitle, Paths.WorkingFolder + "out.tpl"); });
-                                    
-                                }*/
+                                    await Task.Run(() => { NeoGeo.InsertSaveTitle(target, saveTitle, Paths.WorkingFolder + "out.tpl"); });
+                                }
 
                                 await Task.Run(() => { Global.RemoveEmanual(); });
                                 await Task.Run(() => { U8.Pack(Paths.WorkingFolder_Content5, Paths.WorkingFolder + "00000005.app", false); });
