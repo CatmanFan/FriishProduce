@@ -100,7 +100,14 @@
   ],
   "pcecd": [
     { "title": "Castlevania: Rondo of Blood (USA)", "id": "QAPN" },
-    { "title": "Castlevania: Rondo of Blood (EUR)", "id": "QAPL" }
+    { "title": "Castlevania: Rondo of Blood (EUR)", "id": "QAPL" },
+    { "title": "Akumajou Dracula X: Chi no Rondo (JPN)", "id": "QAPJ" },
+    { "title": "Gradius II: Gofer no Yabou (USA)", "id": "QADN" },
+    { "title": "Gradius II: Gofer no Yabou (EUR)", "id": "QADL" },
+    { "title": "Gradius II: Gofer no Yabou (JPN)", "id": "QADJ" },
+    { "title": "Super Air Zonk: Rockabilly-Paradise (USA)", "id": "QAAE" },
+    { "title": "Super Air Zonk: Rockabilly-Paradise (EUR)", "id": "QAAP" },
+    { "title": "CD Denjin: Rockabilly Tengoku (JPN)", "id": "QAAJ" }
   ],
   "neogeo": [
     { "title": "Art of Fighting (USA)", "id": "EADE" },
