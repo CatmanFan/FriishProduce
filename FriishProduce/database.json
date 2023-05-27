@@ -103,6 +103,15 @@
     { "title": "Castlevania: Rondo of Blood (EUR)", "id": "QAPL" }
   ],
   "neogeo": [
+    { "title": "Art of Fighting (USA)", "id": "EADE" },
+    { "title": "Art of Fighting (EUR)", "id": "EADP" },
+    { "title": "Ryuuko no Ken (JPN)", "id": "EADJ" },
+    { "title": "Baseball Stars 2 (USA)", "id": "EAHE" },
+    { "title": "Baseball Stars 2 (EUR)", "id": "EAHP" },
+    { "title": "BASEBALL STARS 2 (JPN)", "id": "EAHJ" },
+    { "title": "Fatal Fury 2 (USA)", "id": "EANE" },
+    { "title": "Fatal Fury 2 (EUR)", "id": "EANP" },
+    { "title": "GAROU DENSETSU 2: ARATANARU TATAKAI (JPN)", "id": "EANJ" },
     { "title": "The King of Fighters '94 (USA)", "id": "EAGE" },
     { "title": "The King of Fighters '94 (EUR)", "id": "EAGP" },
     { "title": "THE KING OF FIGHTERS '94 (JPN)", "id": "EAGJ" },
