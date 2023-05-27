@@ -1,9 +1,17 @@
 ﻿{
   "nes": [
+    { "title": "Double Dragon (USA)", "id": "FD2E" },
+    { "title": "Double Dragon (EUR)", "id": "FD2P" },
+    { "title": "Double Dragon (JPN)", "id": "FD2J" },
     { "title": "Kirby's Adventure (USA)", "id": "FA8E" },
     { "title": "Kirby's Adventure (EUR)", "id": "FA8P" },
     { "title": "Hoshi no Kābyi: Yume no Izumi no Monogatari (JPN)", "id": "FA8J" },
     { "title": "Byeorui Keobi: Kkumui Saem Iyagi (KOR)", "id": "FA8T" },
+    { "title": "Metal Slader Glory (JPN)", "id": "FC9J" },
+    { "title": "NES Play Action Football (USA)", "id": "FC7E" },
+    { "title": "River City Ransom (USA)", "id": "FDVE" },
+    { "title": "Street Gangs (EUR)", "id": "FDVP" },
+    { "title": "Downtown Nekketsu Monogatari (JPN)", "id": "FDVJ" },
     { "title": "Super Mario Bros. 3 (USA)", "id": "FCWE" },
     { "title": "Super Mario Bros. 3 (EUR)", "id": "FCWP" },
     { "title": "Super Mario Bros. 3 (JPN)", "id": "FCWJ" },
@@ -15,7 +23,11 @@
     { "title": "Donkey Kong Country 2: Diddy's Kong Quest (EUR)", "id": "JBDP" },
     { "title": "SUPER DONKEY KONG 2 (JPN)", "id": "JBDJ" },
     { "title": "Donkey Kong Country 2 (KOR)", "id": "JBDT" },
-    { "title": "Mario's Super Picross (EUR/PAL60)", "id": "JABL" }
+    { "title": "Mario's Super Picross (EUR/PAL60)", "id": "JABL" },
+    { "title": "Super Metroid (USA)", "id": "JAVE" },
+    { "title": "Super Metroid (EUR)", "id": "JAVP" },
+    { "title": "Super Metroid (JPN)", "id": "JAVJ" },
+    { "title": "Super Metroid (KOR)", "id": "JAVT" }
   ],
   "n64": [
     { "title": "Bomberman Hero (USA)", "id": "NA3E", "ver": "romc-hero" },
@@ -38,9 +50,9 @@
     { "title": "Mario Party 2 (USA)", "id": "NAZE", "ver": "romc" },
     { "title": "Mario Party 2 (EUR)", "id": "NAZP", "ver": "romc" },
     { "title": "Ogre Battle 64: Person of Lordly Caliber (USA)", "id": "NAYE", "ver": "romc" },
-    { "title": "Ogre Battle 64: Person of Lordly Caliber (EUR)", "id": "NAYM", "ver": "romc" },
+    { "title": "Ogre Battle 64: Person of Lordly Caliber (EUR/PAL60)", "id": "NAYM", "ver": "romc" },
     { "title": "Sin and Punishment (USA)", "id": "NAJN", "ver": "rev2" },
-    { "title": "Sin and Punishment (EUR)", "id": "NAJL", "ver": "rev2" },
+    { "title": "Sin and Punishment (EUR/PAL60)", "id": "NAJL", "ver": "rev2" },
     { "title": "Tsumi to Batsu: Hoshi no Keishōsha (JPN)", "id": "NAJJ", "ver": "rev2" },
     { "title": "Star Fox 64 (USA)", "id": "NADE", "ver": "rev1-alt" },
     { "title": "Lylat Wars (EUR)", "id": "NADP", "ver": "rev1-alt" },
@@ -71,14 +83,42 @@
     { "title": "Sonic the Hedgehog 3 (JPN)", "id": "MBMJ", "ver": "2", "ROM": "Sonic3.SGD" }
   ],
   "pce": [
-    { "title": "Bomberman'93 (USA)", "id": "PAAE" },
-    { "title": "Bomberman'93 (EUR)", "id": "PAAP" }
+    { "title": "Bomberman '93 (USA)", "id": "PAAE" },
+    { "title": "Bomberman '93 (EUR)", "id": "PAAP" },
+    { "title": "Chase H.Q. (USA)", "id": "PC2E" },
+    { "title": "Chase H.Q. (EUR)", "id": "PC2P" },
+    { "title": "TAITO Chase H.Q. (JPN)", "id": "PC2J" },
+    { "title": "Dungeon Explorer (USA)", "id": "PACE" },
+    { "title": "Dungeon Explorer (EUR)", "id": "PACP" },
+    { "title": "Dungeon Explorer (JPN)", "id": "PACJ" },
+    { "title": "Moto Roader (USA)", "id": "PBEE" },
+    { "title": "Moto Roader (EUR)", "id": "PBEP" },
+    { "title": "Moto Roader (JPN)", "id": "PBEJ" },
+    { "title": "Super Star Soldier (USA)", "id": "PAEE" },
+    { "title": "Super Star Soldier (EUR)", "id": "PAEP" },
+    { "title": "Super Star Soldier (JPN)", "id": "PAEJ" }
   ],
   "pcecd": [
     { "title": "Castlevania: Rondo of Blood (USA)", "id": "QAPN" },
-    { "title": "Castlevania: Rondo of Blood (EUR)", "id": "QAPL" }
+    { "title": "Castlevania: Rondo of Blood (EUR)", "id": "QAPL" },
+    { "title": "Akumajou Dracula X: Chi no Rondo (JPN)", "id": "QAPJ" },
+    { "title": "Gradius II: Gofer no Yabou (USA)", "id": "QADN" },
+    { "title": "Gradius II: Gofer no Yabou (EUR)", "id": "QADL" },
+    { "title": "Gradius II: Gofer no Yabou (JPN)", "id": "QADJ" },
+    { "title": "Super Air Zonk: Rockabilly-Paradise (USA)", "id": "QAAE" },
+    { "title": "Super Air Zonk: Rockabilly-Paradise (EUR)", "id": "QAAP" },
+    { "title": "CD Denjin: Rockabilly Tengoku (JPN)", "id": "QAAJ" }
   ],
   "neogeo": [
+    { "title": "Art of Fighting (USA)", "id": "EADE" },
+    { "title": "Art of Fighting (EUR)", "id": "EADP" },
+    { "title": "Ryuuko no Ken (JPN)", "id": "EADJ" },
+    { "title": "Baseball Stars 2 (USA)", "id": "EAHE" },
+    { "title": "Baseball Stars 2 (EUR)", "id": "EAHP" },
+    { "title": "BASEBALL STARS 2 (JPN)", "id": "EAHJ" },
+    { "title": "Fatal Fury 2 (USA)", "id": "EANE" },
+    { "title": "Fatal Fury 2 (EUR)", "id": "EANP" },
+    { "title": "GAROU DENSETSU 2: ARATANARU TATAKAI (JPN)", "id": "EANJ" },
     { "title": "The King of Fighters '94 (USA)", "id": "EAGE" },
     { "title": "The King of Fighters '94 (EUR)", "id": "EAGP" },
     { "title": "THE KING OF FIGHTERS '94 (JPN)", "id": "EAGJ" },
