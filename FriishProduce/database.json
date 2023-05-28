@@ -66,11 +66,21 @@
     { "title": "Yoshi's Story (JPN)", "id": "NAHJ", "ver": "rev2" }
   ],
   "sms": [
+    { "title": "Alex Kidd: The Lost Stars (USA)", "id": "LANE", "ver": "3", "ROM": "AlexKiddTheLostStars_JUE.SMS" },
+    { "title": "Alex Kidd: The Lost Stars (EUR)", "id": "LANP", "ver": "3", "ROM": "AlexKiddTheLostStars_JUE.SMS" },
+    { "title": "Alex Kidd: The Lost Stars (JPN)", "id": "LANJ", "ver": "3", "ROM": "AlexKiddTheLostStars_JUE.SMS" },
     { "title": "Phantasy Star (USA)", "id": "LADE", "ver": "3", "ROM": "PhantasyStar1_UE.SMS" },
     { "title": "Phantasy Star (EUR)", "id": "LADP", "ver": "3", "ROM": "PhantasyStar1_UE.SMS" },
+    { "title": "Phantasy Star (JPN)", "id": "LADJ", "ver": "3", "ROM": "PhantasyStar1_J_01.SMS" },
     { "title": "Sonic the Hedgehog (USA)", "id": "LAGE", "ver": "2", "ROM": "Sonic1_UE.SMS" },
     { "title": "Sonic the Hedgehog (EUR)", "id": "LAGP", "ver": "2", "ROM": "Sonic1_UE.SMS" },
-    { "title": "Sonic the Hedgehog (JPN)", "id": "LAGJ", "ver": "2", "ROM": "Sonic1_UE.SMS" }
+    { "title": "Sonic the Hedgehog (JPN)", "id": "LAGJ", "ver": "2", "ROM": "Sonic1_UE.SMS" },
+    { "title": "Sonic the Hedgehog 2 (USA)", "id": "LAJE", "ver": "2", "ROM": "Sonic2_UE_01.SMS" },
+    { "title": "Sonic the Hedgehog 2 (EUR)", "id": "LAJP", "ver": "2", "ROM": "Sonic2_UE_01.SMS" },
+    { "title": "Sonic the Hedgehog 2 (JPN)", "id": "LAJJ", "ver": "2", "ROM": "Sonic2_UE_01.SMS" },
+    { "title": "Wonder Boy in Monster Land (USA)", "id": "LAKE", "ver": "3", "ROM": "MonsterWorld1_UE_01.SMS" },
+    { "title": "Wonder Boy in Monster Land (EUR)", "id": "LAKE", "ver": "3", "ROM": "MonsterWorld1_UE_01.SMS" },
+    { "title": "Super Wonder Boy: Monster World (JPN)", "id": "LAKE", "ver": "3", "ROM": "MonsterWorld1_J.SMS" }
   ],
   "smd": [
     { "title": "Columns III: Revenge of Columns (USA)", "id": "MBWE", "ver": "2", "ROM": "Columns3_USA.SGD" },
