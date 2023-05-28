@@ -85,9 +85,6 @@
   "pce": [
     { "title": "Bomberman '93 (USA)", "id": "PAAE" },
     { "title": "Bomberman '93 (EUR)", "id": "PAAP" },
-    { "title": "Chase H.Q. (USA)", "id": "PC2E" },
-    { "title": "Chase H.Q. (EUR)", "id": "PC2P" },
-    { "title": "TAITO Chase H.Q. (JPN)", "id": "PC2J" },
     { "title": "Dungeon Explorer (USA)", "id": "PACE" },
     { "title": "Dungeon Explorer (EUR)", "id": "PACP" },
     { "title": "Dungeon Explorer (JPN)", "id": "PACJ" },
