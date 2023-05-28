@@ -82,8 +82,8 @@
     { "title": "Sonic the Hedgehog 2 (EUR)", "id": "LAJP", "ver": "2", "ROM": "Sonic2_UE_01.SMS" },
     { "title": "Sonic the Hedgehog 2 (JPN)", "id": "LAJJ", "ver": "2", "ROM": "Sonic2_UE_01.SMS" },
     { "title": "Wonder Boy in Monster Land (USA)", "id": "LAKE", "ver": "3", "ROM": "MonsterWorld1_UE_01.SMS" },
-    { "title": "Wonder Boy in Monster Land (EUR)", "id": "LAKE", "ver": "3", "ROM": "MonsterWorld1_UE_01.SMS" },
-    { "title": "Super Wonder Boy: Monster World (JPN)", "id": "LAKE", "ver": "3", "ROM": "MonsterWorld1_J.SMS" }
+    { "title": "Wonder Boy in Monster Land (EUR)", "id": "LAKP", "ver": "3", "ROM": "MonsterWorld1_UE_01.SMS" },
+    { "title": "Super Wonder Boy: Monster World (JPN)", "id": "LAKJ", "ver": "3", "ROM": "MonsterWorld1_J.SMS" }
   ],
   "smd": [
     { "title": "Columns III: Revenge of Columns (USA)", "id": "MBWE", "ver": "2", "ROM": "Columns3_USA.SGD" },
