@@ -86,11 +86,19 @@
     { "title": "Sonic the Hedgehog 3 (JPN)", "id": "MBMJ", "ver": "2", "ROM": "Sonic3.SGD" }
   ],
   "pce": [
+    { "title": "Bomberman '93 (USA)", "id": "PAAE" },
+    { "title": "Bomberman '93 (EUR)", "id": "PAAP" },
+    { "title": "Dungeon Explorer (USA)", "id": "PACE" },
+    { "title": "Dungeon Explorer (EUR)", "id": "PACP" },
+    { "title": "Dungeon Explorer (JPN)", "id": "PACJ" },
+    { "title": "Moto Roader (USA)", "id": "PBEE" },
+    { "title": "Moto Roader (EUR)", "id": "PBEP" },
+    { "title": "Moto Roader (JPN)", "id": "PBEJ" },
+    { "title": "Super Star Soldier (USA)", "id": "PAEE" },
+    { "title": "Super Star Soldier (EUR)", "id": "PAEP" },
+    { "title": "Super Star Soldier (JPN)", "id": "PAEJ" }
     { "title": "Bomberman '93 (USA)", "id": "PAAE", "LZ77": "no" },
     { "title": "Bomberman '93 (EUR)", "id": "PAAP", "LZ77": "no" },
-    { "title": "Chase H.Q. (USA)", "id": "PC2E", "LZ77": "no" },
-    { "title": "Chase H.Q. (EUR)", "id": "PC2P", "LZ77": "no" },
-    { "title": "TAITO Chase H.Q. (JPN)", "id": "PC2J", "LZ77": "no" },
     { "title": "Dungeon Explorer (USA)", "id": "PACE", "LZ77": "no" },
     { "title": "Dungeon Explorer (EUR)", "id": "PACP", "LZ77": "no" },
     { "title": "Dungeon Explorer (JPN)", "id": "PACJ", "LZ77": "no" },
