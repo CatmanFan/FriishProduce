@@ -2,14 +2,13 @@
   "metadata": {
     "code": "es",
     "name": "Español",
-    "author": "CatmanFan"
+    "author": "CatmanFan / saulfabreg"
   },
   "consoles": {
     "NES": "Nintendo NES (Famicom)",
     "SNES": "Super Nintendo (Super Famicom)",
     "N64": "Nintendo 64",
     "NeoGeo": "SNK Neo-Geo",
-    "Flash": "Adobe Flash"
   },
   "global": {
     "g000": "FriishProduce",
