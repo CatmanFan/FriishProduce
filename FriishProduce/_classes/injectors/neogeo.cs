@@ -113,7 +113,7 @@ namespace FriishProduce.Injectors
                 if (char.ToLower(file[file.Length - 6]) == 'c') C_count++;
 
             // Loop
-            for (int x = 1; x <= C_count; x += 2)
+            for (int x = 0; x <= C_count / 2; x++)
             {
                 foreach (var file in Directory.EnumerateFiles(Paths.WorkingFolder_ROM))
                 {
