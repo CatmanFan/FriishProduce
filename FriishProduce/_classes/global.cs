@@ -33,8 +33,9 @@ namespace FriishProduce
                     p.WaitForExit();
                 File.Delete(batchPath);
 
-                if (!File.Exists(outROM))
+                if (!File.Exists(outROM) || File.Exists(outROM) && (File.ReadAllBytes(outROM).Length == File.ReadAllBytes(ROM).Length))
                 {
+                    if (File.Exists(outROM)) File.Delete(outROM);
                     MessageBox.Show(x.Get("m005"), x.Get("error"), System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
                     return ROM;
                 }

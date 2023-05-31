@@ -1001,7 +1001,7 @@ namespace FriishProduce
 
         private void Finish_Click(object sender, EventArgs e)
         {
-            SaveWAD.FileName = !string.IsNullOrWhiteSpace(ChannelTitle.Text) && Custom.Checked ? $"{TitleID.Text} - {ChannelTitle.Text}" : TitleID.Text;
+            SaveWAD.FileName = !string.IsNullOrWhiteSpace(ChannelTitle.Text) && Custom.Checked ? $"{TitleID.Text} - {ChannelTitle.Text.Replace(":", " - ").Replace("?", "")}" : TitleID.Text;
             if (SaveWAD.ShowDialog() == DialogResult.OK)
             {
                 ToggleWaitingIcon(true);
