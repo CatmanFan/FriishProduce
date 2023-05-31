@@ -77,6 +77,7 @@ namespace FriishProduce
             this.a006 = new System.Windows.Forms.Label();
             this.ChannelTitle = new System.Windows.Forms.TextBox();
             this.page4 = new System.Windows.Forms.Panel();
+            this.NANDLoader = new System.Windows.Forms.ComboBox();
             this.Options_NeoGeo = new System.Windows.Forms.Panel();
             this.NeoGeo_BIOS = new System.Windows.Forms.CheckBox();
             this.RandomTID = new System.Windows.Forms.Button();
@@ -85,7 +86,6 @@ namespace FriishProduce
             this.TitleID = new System.Windows.Forms.TextBox();
             this.a005 = new System.Windows.Forms.Label();
             this.a004 = new System.Windows.Forms.Label();
-            this.vWii = new System.Windows.Forms.CheckBox();
             this.DisableEmanual = new System.Windows.Forms.CheckBox();
             this.AltCheckbox = new System.Windows.Forms.CheckBox();
             this.Options_PCE = new System.Windows.Forms.Panel();
@@ -526,6 +526,7 @@ namespace FriishProduce
             // 
             // page4
             // 
+            this.page4.Controls.Add(this.NANDLoader);
             this.page4.Controls.Add(this.Options_NeoGeo);
             this.page4.Controls.Add(this.RandomTID);
             this.page4.Controls.Add(this.VideoMode);
@@ -533,7 +534,6 @@ namespace FriishProduce
             this.page4.Controls.Add(this.TitleID);
             this.page4.Controls.Add(this.a005);
             this.page4.Controls.Add(this.a004);
-            this.page4.Controls.Add(this.vWii);
             this.page4.Controls.Add(this.DisableEmanual);
             this.page4.Controls.Add(this.AltCheckbox);
             this.page4.Controls.Add(this.Options_PCE);
@@ -543,6 +543,16 @@ namespace FriishProduce
             this.page4.Controls.Add(this.Options_Flash);
             resources.ApplyResources(this.page4, "page4");
             this.page4.Name = "page4";
+            // 
+            // NANDLoader
+            // 
+            this.NANDLoader.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.NANDLoader.FormattingEnabled = true;
+            this.NANDLoader.Items.AddRange(new object[] {
+            resources.GetString("NANDLoader.Items"),
+            resources.GetString("NANDLoader.Items1")});
+            resources.ApplyResources(this.NANDLoader, "NANDLoader");
+            this.NANDLoader.Name = "NANDLoader";
             // 
             // Options_NeoGeo
             // 
@@ -606,13 +616,6 @@ namespace FriishProduce
             // 
             resources.ApplyResources(this.a004, "a004");
             this.a004.Name = "a004";
-            // 
-            // vWii
-            // 
-            resources.ApplyResources(this.vWii, "vWii");
-            this.vWii.Name = "vWii";
-            this.vWii.Tag = "";
-            this.vWii.UseVisualStyleBackColor = true;
             // 
             // DisableEmanual
             // 
@@ -891,10 +894,10 @@ namespace FriishProduce
             resources.ApplyResources(this, "$this");
             this.Controls.Add(this.Wait);
             this.Controls.Add(this.panel);
-            this.Controls.Add(this.page2);
-            this.Controls.Add(this.page1);
             this.Controls.Add(this.page4);
             this.Controls.Add(this.page3);
+            this.Controls.Add(this.page2);
+            this.Controls.Add(this.page1);
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
@@ -1003,7 +1006,6 @@ namespace FriishProduce
         private System.Windows.Forms.CheckBox Flash_Controller;
         private System.Windows.Forms.ComboBox Flash_StrapReminder;
         private System.Windows.Forms.Label Flash__005;
-        private System.Windows.Forms.CheckBox vWii;
         private System.Windows.Forms.Panel Options_SEGA;
         private System.Windows.Forms.CheckBox SEGA_SetConfig;
         private System.Windows.Forms.CheckBox N64_FixCrash;
@@ -1026,6 +1028,7 @@ namespace FriishProduce
         private System.Windows.Forms.CheckBox PCE_NoFPA;
         private System.Windows.Forms.Panel Options_NeoGeo;
         private System.Windows.Forms.CheckBox NeoGeo_BIOS;
+        private System.Windows.Forms.ComboBox NANDLoader;
     }
 }
 

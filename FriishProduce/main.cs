@@ -58,6 +58,7 @@ namespace FriishProduce
             a000.Text = string.Format(x.Get("a000"), ver);
             ToolTip.SetToolTip(Settings, x.Get("g001"));
             ToolTip.SetToolTip(RandomTID, x.Get("a022"));
+            NANDLoader.Items.Add(x.Get("vWii"));
 
             BrowseWAD.Filter = x.Get("f_wad") + x.Get("f_all");
             BrowseImage.Filter = x.Get("f_img") + x.Get("f_all");
@@ -147,7 +148,7 @@ namespace FriishProduce
             ForwarderMode = InjectionMethod.SelectedItem.ToString() != x.Get("g012");
 
             // Switch relevant options based on mode & selected platform
-            vWii.Visible = ForwarderMode;
+            NANDLoader.Visible = ForwarderMode;
             a010.Visible = !ForwarderMode;
             DisableEmanual.Visible = !ForwarderMode;
             SaveDataTitle.Visible = !ForwarderMode;
@@ -215,6 +216,8 @@ namespace FriishProduce
                 Flash_TotalSaveDataSize.SelectedIndex = 0;
                 Flash_FPS.SelectedIndex = 0;
                 Flash_StrapReminder.SelectedIndex = 0;
+
+                NANDLoader.SelectedIndex = 0;
             }
 
             InjectionMethod.Items.Clear();
@@ -1402,7 +1405,7 @@ namespace FriishProduce
                         InjectionMethod.SelectedItem.ToString()
                     );
 
-                    w = f.ConvertWAD(w, vWii.Checked, TitleID.Text.ToUpper());
+                    w = f.ConvertWAD(w, NANDLoader.SelectedIndex, TitleID.Text.ToUpper());
                 }
 
                 if (!ForwarderMode) w.CreateNew(Paths.WorkingFolder);

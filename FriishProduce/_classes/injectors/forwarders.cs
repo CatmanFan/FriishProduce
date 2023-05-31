@@ -113,7 +113,7 @@ namespace FriishProduce.Forwarders
             Directory.Delete(Paths.WorkingFolder_SD, true);
         }
 
-        public WAD ConvertWAD(WAD w, bool vWii, string tid)
+        public WAD ConvertWAD(WAD w, int NANDloader_type, string tid)
         {
             // Determine app index & reload contents
             w.BootIndex = 1;
@@ -122,7 +122,17 @@ namespace FriishProduce.Forwarders
 
             // Add bootloader
             w.ChangeStartupIOS(58);
-            w.AddContent(vWii ? Properties.Resources.NANDLoader_vWii : Properties.Resources.NANDLoader_Wii, w.BootIndex, w.BootIndex);
+            byte[] NANDloader = Properties.Resources.NANDLoader_vWii;
+            switch (NANDloader_type)
+            {
+                case 0:
+                    NANDloader = Properties.Resources.NANDLoader_Comex;
+                    break;
+                case 1:
+                    NANDloader = Properties.Resources.NANDLoader_Waninkoko;
+                    break;
+            };
+            w.AddContent(NANDloader, w.BootIndex, w.BootIndex);
 
             // Create forwarder .app
             var forwarder = Properties.Resources.Forwarder;

@@ -157,9 +157,6 @@
   <data name="NANDLoader_vWii" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\forwarders\nandloader_vwii.app;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="NANDLoader_Wii" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\forwarders\nandloader_wii.app;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="Forwarder" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\forwarders\forwarder.dol;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -171,5 +168,11 @@
   </data>
   <data name="LZSS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\lzss.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NANDLoader_Comex" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\forwarders\nandloader_wii_comex.app;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NANDLoader_Waninkoko" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\forwarders\nandloader_wii_waninkoko.app;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

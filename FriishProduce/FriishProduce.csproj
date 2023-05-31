@@ -212,6 +212,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="libWiiSharp.dll" />
+    <None Include="Resources\forwarders\nandloader_wii_comex.app" />
     <None Include="Resources\lzss.exe" />
     <None Include="Resources\forwarders\settings\snes9xgx.xml" />
     <None Include="Resources\forwarders\settings\vbagx.xml" />
@@ -219,7 +220,7 @@
     <None Include="Resources\images\icon.png" />
     <None Include="Resources\forwarders\forwarder.dol" />
     <None Include="Resources\forwarders\nandloader_vwii.app" />
-    <None Include="Resources\forwarders\nandloader_wii.app" />
+    <None Include="Resources\forwarders\nandloader_wii_waninkoko.app" />
     <None Include="Resources\images\savebanner_flash.png" />
     <None Include="Resources\images\saveicon_flash.png" />
     <None Include="Resources\images\saveicon_placeholder.png" />
