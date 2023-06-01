@@ -181,6 +181,26 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] LZH8 {
+            get {
+                object obj = ResourceManager.GetObject("LZH8", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] LZH8_NonStrict {
+            get {
+                object obj = ResourceManager.GetObject("LZH8_NonStrict", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] LZSS {
             get {
                 object obj = ResourceManager.GetObject("LZSS", resourceCulture);

@@ -59,6 +59,7 @@ This program uses the following third-party components and apps:
 * **ROMC compressor** by Jurai, with additional LZSS code by Haruhiko Okumura.
 * **gbalzss** by Andre Perrot, with additional LZSS code by Haruhiko Okumura.
 * **[LZSS](https://www.romhacking.net/utilities/826/)** by CUE.
+* **[lzh8_cmpdec](https://www.hcs64.com/vgm_ripping.html)** by [hcs](http://hcs64.com/).
 * **HowardC's Tools** (particularly, VCbrlyt).
 * For homebrew emulators compatiblity:
   * **Waninkoko**'s NAND loader, retrieved from ShowMiiWads repo. *(file renamed as "nandloader_wii.app")*

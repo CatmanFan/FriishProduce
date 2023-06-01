@@ -175,4 +175,10 @@
   <data name="NANDLoader_Waninkoko" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\forwarders\nandloader_wii_waninkoko.app;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="LZH8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lzh8_cmp.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="LZH8_NonStrict" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lzh8_cmp_nonstrict.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>
