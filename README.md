@@ -51,6 +51,17 @@ Currently supported:
 
  ---
 
+## To Do List
+- [x] SNES VC LZH8 compression support.
+- [x] Nintendo 64 'romc' compression support.
+- [ ] LZ77 compression on SNES VC and TG-16 HuCARD VC.
+- [ ] NeoGeo VC injection support.
+- [ ] MSX / MSX2 VC injection support.
+- [ ] Commodore 64 VC injection support.
+- [ ] Support for more systems and homebrew emulators in emulator forwarder mode.
+- [ ] Multiple SWF support for Adobe Flash.
+- [ ] TurboGrafx-16 CD VC injection support.
+
 ## Credits
 This program uses the following third-party components and apps:
 * **libWiiSharp** (orig. author: Leathl), [forked](https://github.com/WiiDatabase/libWiiSharp/) by **[WiiDatabase](https://github.com/WiiDatabase)**.
