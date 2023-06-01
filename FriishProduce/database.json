@@ -178,6 +178,15 @@
     { "title": "International Karate (USA)", "id": "C9YE" },
     { "title": "International Karate (EUR)", "id": "C9YP" }
   ],
+  "msx": [
+    { "title": "Aleste (JPN)", "id": "XABJ", "sysarch": "MSX2", "type": "ccf" },
+    { "title": "Eggy (JPN)", "id": "XAAJ", "sysarch": "MSX1", "type": "ccf" },
+    { "title": "Metal Gear (JPN)", "id": "XAFJ", "sysarch": "MSX2", "type": "raw" },
+    { "title": "Metal Gear 2: Solid Snake (JPN)", "id": "XAPJ", "sysarch": "MSX2", "type": "raw" },
+    { "title": "Road Fighter (JPN)", "id": "XAGJ", "sysarch": "MSX1", "type": "raw" },
+    { "title": "Space Manbow (JPN)", "id": "XAEJ", "sysarch": "MSX2", "type": "raw" },
+    { "title": "Yie-Gah-koutei no Gyakush: Yie Ar Kung-Fu 2 (JPN)", "id": "XADJ", "sysarch": "MSX1", "type": "raw" }
+  ],
   "flash": [
     { "title": "Flash Placeholder / Back in Nature", "id": "WNAP" }
   ]
