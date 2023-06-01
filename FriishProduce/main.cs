@@ -58,6 +58,7 @@ namespace FriishProduce
             a000.Text = string.Format(x.Get("a000"), ver);
             ToolTip.SetToolTip(Settings, x.Get("g001"));
             ToolTip.SetToolTip(RandomTID, x.Get("a022"));
+            NANDLoader.Items.Add(x.Get("vWii"));
 
             BrowseWAD.Filter = x.Get("f_wad") + x.Get("f_all");
             BrowseImage.Filter = x.Get("f_img") + x.Get("f_all");
@@ -147,7 +148,7 @@ namespace FriishProduce
             ForwarderMode = InjectionMethod.SelectedItem.ToString() != x.Get("g012");
 
             // Switch relevant options based on mode & selected platform
-            vWii.Visible = ForwarderMode;
+            NANDLoader.Visible = ForwarderMode;
             a010.Visible = !ForwarderMode;
             DisableEmanual.Visible = !ForwarderMode;
             SaveDataTitle.Visible = !ForwarderMode;
@@ -215,6 +216,8 @@ namespace FriishProduce
                 Flash_TotalSaveDataSize.SelectedIndex = 0;
                 Flash_FPS.SelectedIndex = 0;
                 Flash_StrapReminder.SelectedIndex = 0;
+
+                NANDLoader.SelectedIndex = 0;
             }
 
             InjectionMethod.Items.Clear();
@@ -998,7 +1001,7 @@ namespace FriishProduce
 
         private void Finish_Click(object sender, EventArgs e)
         {
-            SaveWAD.FileName = !string.IsNullOrWhiteSpace(ChannelTitle.Text) && Custom.Checked ? $"{TitleID.Text} - {ChannelTitle.Text}" : TitleID.Text;
+            SaveWAD.FileName = !string.IsNullOrWhiteSpace(ChannelTitle.Text) && Custom.Checked ? $"{TitleID.Text} - {ChannelTitle.Text.Replace(":", " - ").Replace("?", "")}" : TitleID.Text;
             if (SaveWAD.ShowDialog() == DialogResult.OK)
             {
                 ToggleWaitingIcon(true);
@@ -1209,8 +1212,15 @@ namespace FriishProduce
                                     ROM = input[0],
                                     ROMcode = new Injectors.SNES().ProduceID(db.SearchID(Bases.SelectedItem.ToString()))
                                 };
+                                foreach (var entry in db.GetList())
+                                {
+                                    if (entry["title"].ToString() == Bases.SelectedItem.ToString())
+                                        foreach (var item in Directory.GetFiles(Paths.Database, "*.*", SearchOption.AllDirectories))
+                                            if (item.Contains(entry["id"].ToString().ToUpper()))
+                                                SNES.type = entry["type"].ToString().ToUpper();
+                                }
 
-                                SNES.ReplaceROM();
+                                await Task.Run(() => { SNES.ReplaceROM(); });
 
                                 if (Custom.Checked) SNES.InsertSaveTitle(SaveDataTitle.Lines);
                                 break;
@@ -1402,7 +1412,7 @@ namespace FriishProduce
                         InjectionMethod.SelectedItem.ToString()
                     );
 
-                    w = f.ConvertWAD(w, vWii.Checked, TitleID.Text.ToUpper());
+                    w = f.ConvertWAD(w, NANDLoader.SelectedIndex, TitleID.Text.ToUpper());
                 }
 
                 if (!ForwarderMode) w.CreateNew(Paths.WorkingFolder);

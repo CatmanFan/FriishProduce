@@ -15,7 +15,7 @@ namespace FriishProduce
 
                 for (int x = pattern.Length - 1; x >= 1; x--)
                 {
-                    if (source[i + x] != pattern[x]) break;
+                    try { if (source[i + x] != pattern[x]) break; } catch { }
                     if (x == 1) return i;
                 }
             }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Text;
 
@@ -8,26 +9,54 @@ namespace FriishProduce.Injectors
     {
         public string ROM { get; set; }
         public string ROMcode { get; set; }
+        public string type { get; set; }
 
         public void ReplaceROM()
         {
+            // Maximum ROM limit allowed: 4 MB
+            if (File.ReadAllBytes(ROM).Length > 4194304)
+                throw new Exception(Program.Language.Get("m018"));
+
             string rom = Paths.WorkingFolder_Content5 + $"{ROMcode}.rom";
 
-            if (File.Exists(rom))
+            if (type == "LZH8")
             {
-                // Maximum ROM limit allowed: 4 MB
-                if (File.ReadAllBytes(ROM).Length > 4194304)
-                    throw new Exception(Program.Language.Get("m018"));
+                rom = Paths.WorkingFolder_Content5 + $"LZH8{ROMcode}.rom";
 
-                File.Copy(ROM, rom, true);
+                if (File.Exists(rom))
+                {
+                    File.Delete(rom);
+
+                    string pPath = Paths.WorkingFolder + "lzh8.exe";
+                    File.WriteAllBytes(pPath, Properties.Resources.LZH8);
+                    using (Process p = Process.Start(new ProcessStartInfo
+                    {
+                        FileName = pPath,
+                        WorkingDirectory = Paths.WorkingFolder,
+                        Arguments = $"\"{ROM}\" \"{rom}\"",
+                        UseShellExecute = false,
+                        CreateNoWindow = true
+                    }))
+                        p.WaitForExit();
+                    File.Delete(pPath);
+                }
+                else
+                    throw new Exception(Program.Language.Get("m010"));
+
+                // xxxx.pcm must NOT be replaced in this instance, because otherwise it will display a "Wii System Memory is damaged" error and halt
             }
             else
-                throw new Exception(Program.Language.Get("m010"));
-
-            foreach (string file in Directory.GetFiles(Paths.WorkingFolder_Content5))
             {
-                if (Path.GetExtension(file) == ".pcm" || Path.GetExtension(file) == ".var") File.WriteAllText(file, String.Empty);
-                // xxxx.pcm is the digital audio file. It is not usually needed in most cases
+                if (File.Exists(rom))
+                    File.Copy(ROM, rom, true);
+                else
+                    throw new Exception(Program.Language.Get("m010"));
+
+                foreach (string file in Directory.GetFiles(Paths.WorkingFolder_Content5))
+                {
+                    if (Path.GetExtension(file) == ".pcm" || Path.GetExtension(file) == ".var") File.WriteAllText(file, String.Empty);
+                    // xxxx.pcm is the digital audio file. It is not usually needed in most cases
+                }
             }
         }
 

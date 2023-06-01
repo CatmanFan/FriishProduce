@@ -217,9 +217,17 @@ namespace FriishProduce.Injectors
                         if (File.Exists($"{Paths.Apps}ucon64\\rom.bak")) File.Delete($"{Paths.Apps}ucon64\\rom.bak");
 
                         File.Move($"{Paths.Apps}ucon64\\rom.bin", file);
+
+                        // Check filesize limit
+                        if (File.ReadAllBytes(file).Length > 5.25 * 1024 * 1024)
+                            throw new Exception(Program.Language.Get("m018"));
                     }
                     else
                     {
+                        // Check filesize limit
+                        if (File.ReadAllBytes(ROM).Length > 524288)
+                            throw new Exception(Program.Language.Get("m018"));
+
                         File.Copy(ROM, file, true);
                     }
                     return;
