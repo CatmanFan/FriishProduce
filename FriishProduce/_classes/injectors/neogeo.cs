@@ -29,7 +29,7 @@ namespace FriishProduce.Injectors
             // First do a check to see if valid archive
             foreach (var file in Directory.EnumerateFiles(Paths.WorkingFolder_ROM))
                 if (Path.GetFileName(file).EndsWith("c1.bin")
-                 || Path.GetFileName(file).EndsWith("c2.bin") // C files always go in pairs (C1-C2, C3-C4, etc.)
+                 || Path.GetFileName(file).EndsWith("c2.bin")
                  || Path.GetFileName(file).EndsWith("m1.bin")
                  || Path.GetFileName(file).EndsWith("p1.bin")
                  || Path.GetFileName(file).EndsWith("s1.bin")
@@ -113,11 +113,11 @@ namespace FriishProduce.Injectors
                 if (char.ToLower(file[file.Length - 6]) == 'c') C_count++;
 
             // Loop
-            for (int x = 0; x <= C_count / 2; x++)
+            for (int x = 0; x <= C_count; x += 2)
             {
                 foreach (var file in Directory.EnumerateFiles(Paths.WorkingFolder_ROM))
                 {
-                    if (Path.GetFileName(file).ToLower().Contains($"c{x}.bin"))
+                    if (Path.GetFileName(file).ToLower().Contains($"c{x + 1}.bin"))
                     {
                         C1 = File.ReadAllBytes(file);
                         for (int i = 1; i < C1.Length; i += 2)
@@ -129,7 +129,7 @@ namespace FriishProduce.Injectors
 
                 foreach (var file in Directory.EnumerateFiles(Paths.WorkingFolder_ROM))
                 {
-                    if (Path.GetFileName(file).ToLower().Contains($"c{x + 1}.bin"))
+                    if (Path.GetFileName(file).ToLower().Contains($"c{x + 2}.bin"))
                     {
                         C2 = File.ReadAllBytes(file);
                         for (int i = 1; i < C2.Length; i += 2)
