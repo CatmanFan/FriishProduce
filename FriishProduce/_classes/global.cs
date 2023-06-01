@@ -238,6 +238,7 @@ namespace FriishProduce
                 "Opera.arc.zlib",
                 "emanual.arc",
                 "LZH8emanual.arc",
+                "LZ77emanual.arc",
                 "man.arc",
                 "man.arc.zlib",
                 "manc.arc",
