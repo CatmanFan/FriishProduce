@@ -3137,24 +3137,21 @@
     <value>False</value>
   </data>
   <data name="Flash_TotalSaveDataSize.Items" xml:space="preserve">
-    <value>16384</value>
-  </data>
-  <data name="Flash_TotalSaveDataSize.Items1" xml:space="preserve">
     <value>8192</value>
   </data>
-  <data name="Flash_TotalSaveDataSize.Items2" xml:space="preserve">
+  <data name="Flash_TotalSaveDataSize.Items1" xml:space="preserve">
     <value>4096</value>
   </data>
-  <data name="Flash_TotalSaveDataSize.Items3" xml:space="preserve">
+  <data name="Flash_TotalSaveDataSize.Items2" xml:space="preserve">
     <value>2048</value>
   </data>
-  <data name="Flash_TotalSaveDataSize.Items4" xml:space="preserve">
+  <data name="Flash_TotalSaveDataSize.Items3" xml:space="preserve">
     <value>1024</value>
   </data>
-  <data name="Flash_TotalSaveDataSize.Items5" xml:space="preserve">
+  <data name="Flash_TotalSaveDataSize.Items4" xml:space="preserve">
     <value>512</value>
   </data>
-  <data name="Flash_TotalSaveDataSize.Items6" xml:space="preserve">
+  <data name="Flash_TotalSaveDataSize.Items5" xml:space="preserve">
     <value>256</value>
   </data>
   <data name="Flash_TotalSaveDataSize.Location" type="System.Drawing.Point, System.Drawing">
