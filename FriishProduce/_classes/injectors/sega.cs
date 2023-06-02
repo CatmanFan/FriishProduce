@@ -193,9 +193,6 @@ namespace FriishProduce.Injectors
                 if (Path.GetFileName(item).Contains(".SGD") || Path.GetFileName(item).Contains(".SMS") ||
                     (Path.GetFileName(item).Contains(origROM.Substring(0, 10)) && !string.IsNullOrWhiteSpace(origROM)))
                 {
-                    if (File.ReadAllBytes(ROM).Length > File.ReadAllBytes(item).Length)
-                        throw new Exception(Program.Language.Get("m004"));
-
                     File.Delete(item);
                     string file = item;
                     if (!(file.Contains(".SGD") || file.Contains(".SMS"))) file = Paths.WorkingFolder_DataCCF + origROM;
