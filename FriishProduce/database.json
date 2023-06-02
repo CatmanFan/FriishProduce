@@ -19,18 +19,18 @@
     { "title": "Ninja Gaiden (EUR/PAL60)", "id": "FBNM" }
   ],
   "snes": [
-    { "title": "Donkey Kong Country 2: Diddy's Kong Quest (USA)", "id": "JBDE", "type": "raw" },
-    { "title": "Donkey Kong Country 2: Diddy's Kong Quest (EUR)", "id": "JBDP", "type": "raw" },
-    { "title": "SUPER DONKEY KONG 2 (JPN)", "id": "JBDJ", "type": "raw" },
-    { "title": "Donkey Kong Country 2 (KOR)", "id": "JBDT", "type": "raw" },
-    { "title": "Mario's Super Picross (EUR/PAL60)", "id": "JABL", "type": "raw" },
-    { "title": "Natsume Championship Wrestling (USA)", "id": "JEAE", "type": "lzh8" },
-    { "title": "Natsume Championship Wrestling (EUR/PAL60)", "id": "JEAM", "type": "lzh8" },
-    { "title": "Zen-Nippon Pro Wrestling Dash: Sekai Saikyou Tag (JPN)", "id": "JEAJ", "type": "lzh8" },
-    { "title": "Super Metroid (USA)", "id": "JAVE", "type": "raw" },
-    { "title": "Super Metroid (EUR)", "id": "JAVP", "type": "raw" },
-    { "title": "Super Metroid (JPN)", "id": "JAVJ", "type": "raw" },
-    { "title": "Super Metroid (KOR)", "id": "JAVT", "type": "raw" }
+    { "title": "Donkey Kong Country 2: Diddy's Kong Quest (USA)", "id": "JBDE" },
+    { "title": "Donkey Kong Country 2: Diddy's Kong Quest (EUR)", "id": "JBDP" },
+    { "title": "SUPER DONKEY KONG 2 (JPN)", "id": "JBDJ" },
+    { "title": "Donkey Kong Country 2 (KOR)", "id": "JBDT" },
+    { "title": "Mario's Super Picross (EUR/PAL60)", "id": "JABL" },
+    { "title": "Natsume Championship Wrestling (USA)", "id": "JEAE" },
+    { "title": "Natsume Championship Wrestling (EUR/PAL60)", "id": "JEAM" },
+    { "title": "Zen-Nippon Pro Wrestling Dash: Sekai Saikyou Tag (JPN)", "id": "JEAJ" },
+    { "title": "Super Metroid (USA)", "id": "JAVE" },
+    { "title": "Super Metroid (EUR)", "id": "JAVP" },
+    { "title": "Super Metroid (JPN)", "id": "JAVJ" },
+    { "title": "Super Metroid (KOR)", "id": "JAVT" }
   ],
   "n64": [
     { "title": "Bomberman Hero (USA)", "id": "NA3E", "ver": "romc-hero" },

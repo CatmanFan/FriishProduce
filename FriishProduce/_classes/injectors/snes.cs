@@ -11,6 +11,9 @@ namespace FriishProduce.Injectors
         public string ROMcode { get; set; }
         public string type { get; set; }
 
+        /// <summary>
+        /// Replaces ROM within extracted content5 directory. ROM type is automatically determined.
+        /// </summary>
         public void ReplaceROM()
         {
             // Maximum ROM limit allowed: 4 MB
@@ -19,7 +22,17 @@ namespace FriishProduce.Injectors
 
             string rom = Paths.WorkingFolder_Content5 + $"{ROMcode}.rom";
 
-            if (type == "LZH8")
+            if (File.Exists(rom))
+            {
+                File.Copy(ROM, rom, true);
+
+                foreach (string file in Directory.GetFiles(Paths.WorkingFolder_Content5))
+                {
+                    if (Path.GetExtension(file) == ".pcm" || Path.GetExtension(file) == ".var") File.WriteAllText(file, String.Empty);
+                    // xxxx.pcm is the digital audio file. It is not usually needed in most cases
+                }
+            }
+            else
             {
                 rom = Paths.WorkingFolder_Content5 + $"LZH8{ROMcode}.rom";
 
@@ -39,24 +52,11 @@ namespace FriishProduce.Injectors
                     }))
                         p.WaitForExit();
                     File.Delete(pPath);
+
+                    // xxxx.pcm must NOT be replaced in this instance, because otherwise it will display a "Wii System Memory is damaged" error and halt
                 }
                 else
                     throw new Exception(Program.Language.Get("m010"));
-
-                // xxxx.pcm must NOT be replaced in this instance, because otherwise it will display a "Wii System Memory is damaged" error and halt
-            }
-            else
-            {
-                if (File.Exists(rom))
-                    File.Copy(ROM, rom, true);
-                else
-                    throw new Exception(Program.Language.Get("m010"));
-
-                foreach (string file in Directory.GetFiles(Paths.WorkingFolder_Content5))
-                {
-                    if (Path.GetExtension(file) == ".pcm" || Path.GetExtension(file) == ".var") File.WriteAllText(file, String.Empty);
-                    // xxxx.pcm is the digital audio file. It is not usually needed in most cases
-                }
             }
         }
 

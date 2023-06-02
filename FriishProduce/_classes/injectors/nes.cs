@@ -11,6 +11,10 @@ namespace FriishProduce.Injectors
         public string content1_file { get; set; }
         public int[] saveTPL_offsets { get; set; }
 
+        /// <summary>
+        /// Inserts ROM into main.dol.
+        /// WADs with compressed ROM format are not supported yet!
+        /// </summary>
         public void InsertROM()
         {
             int offset = 0;
@@ -46,6 +50,9 @@ namespace FriishProduce.Injectors
             }
         }
 
+        /// <summary>
+        /// Inserts palette into main.dol.
+        /// </summary>
         public void InsertPalette(int index)
         {
             int offset = 0;
@@ -129,6 +136,9 @@ namespace FriishProduce.Injectors
 
         // ---------- SAVEDATA-RELATED FUNCTIONS ---------- //
 
+        /// <summary>
+        /// Searches for offsets of the TPL embedded within main.dol so it is able to be extracted properly.
+        /// </summary>
         public int[] DetermineSaveTPLOffsets(string content1_tmp)
         {
             if (content1_tmp == null) content1_tmp = content1_file;
@@ -188,6 +198,10 @@ namespace FriishProduce.Injectors
             return new int[2];
         }
 
+        /// <summary>
+        /// Extracts savedata TPL from main.dol if offsets have been found.
+        /// </summary>
+        /// <param name="out_file">Output file path</param>
         public bool ExtractSaveTPL(string out_file)
         {
             if (saveTPL_offsets[0] != 0 && saveTPL_offsets[1] != 0)
@@ -202,6 +216,11 @@ namespace FriishProduce.Injectors
             return false;
         }
 
+        /// <summary>
+        /// Inserts custom savedata text string & TPL file into main.dol. The function skips TPL replacement if the file doesn't exist or the offsets are not set properly.
+        /// </summary>
+        /// <param name="text">Text string</param>
+        /// <param name="inputTPL">Input TPL's file path</param>
         public void InsertSaveData(string text, string inputTPL)
         {
             // In the two WADs I've tested (SMB3 & Kirby's Adventure), the savedata text is found near
