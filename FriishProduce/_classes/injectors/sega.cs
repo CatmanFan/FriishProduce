@@ -215,13 +215,15 @@ namespace FriishProduce.Injectors
 
                         File.Move($"{Paths.Apps}ucon64\\rom.bin", file);
 
-                        // Check filesize limit
+                        // Check filesize limit on SEGA Genesis / Mega Drive VC
+                        // Maximum ROM limit allowed: 5.25 MB
                         if (File.ReadAllBytes(file).Length > 5.25 * 1024 * 1024)
                             throw new Exception(Program.Language.Get("m018"));
                     }
                     else
                     {
-                        // Check filesize limit
+                        // Check filesize limit on SEGA Master System VC
+                        // Maximum ROM limit allowed: 512 kB
                         if (File.ReadAllBytes(ROM).Length > 524288)
                             throw new Exception(Program.Language.Get("m018"));
 
