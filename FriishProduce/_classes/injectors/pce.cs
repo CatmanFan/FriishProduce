@@ -107,6 +107,7 @@ namespace FriishProduce.Injectors
            DISCLAIMER: Games that doesn't support raster might slowdown! (ex. Rainbow Islands)
            (0 = raster disabled, 1 = raster enabled)
            EUROPE - disable if installing on a Japan Wii, activate if installing on an American or Europe Wii.
+           (0 = disabled, 1 = enabled)
            HIDEOVERSCAN - enables black borders to be displayed on the game. It is officially enabled on "Castlevania: Rondo of Blood".
            (0 = disabled, 1 = enabled)
            SGENABLE - enables SuperGrafx emulation for some games which required that hardware.
@@ -115,7 +116,7 @@ namespace FriishProduce.Injectors
            SPRLINE - not 100% sure but i think is for disable sprite limit on some games.
            (0 = disable sprite limit, 1 = enable sprite limit)
            PADBUTTON - adjust what number of buttons need to have the emulated PCE controller.
-           It is officially set to "6" on the VC release "Street Fighter II': Championship Edition".
+           It is officially set to "6" on the VC release "Street Fighter II': Champion Edition".
            DISCLAIMER: Many PCE/TG games doesn't support 6-button controller and if enabled, it will result in input issues!
            If any input issue occurs on 6-button controller, please enable default 2-button controller instead.
            (6 = use 6-button controller, 2 = use default 2-button controller)
