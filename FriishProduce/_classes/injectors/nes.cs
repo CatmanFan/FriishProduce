@@ -250,14 +250,11 @@ namespace FriishProduce.Injectors
             // Text addition format: UTF-16 (Big Endian)
             if (end != 0)
             {
-                start = end - 32;
-                if (start != 0)
+                start = saveTPL_offsets[1] > 100 ? saveTPL_offsets[1] : end - 40;
+                for (int i = start; i < end; i++)
                 {
-                    for (int i = start; i < end; i++)
-                    {
-                        try { content1[i] = Encoding.BigEndianUnicode.GetBytes(text.Replace(Environment.NewLine, "\n"))[(i - start)]; }
-                        catch { content1[i] = 0x00; }
-                    }
+                    try { content1[i] = Encoding.BigEndianUnicode.GetBytes(text.Replace(Environment.NewLine, "\n"))[(i - start)]; }
+                    catch { content1[i] = 0x00; }
                 }
             }
 
