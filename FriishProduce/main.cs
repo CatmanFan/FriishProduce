@@ -1212,13 +1212,6 @@ namespace FriishProduce
                                     ROM = input[0],
                                     ROMcode = new Injectors.SNES().ProduceID(db.SearchID(Bases.SelectedItem.ToString()))
                                 };
-                                foreach (var entry in db.GetList())
-                                {
-                                    if (entry["title"].ToString() == Bases.SelectedItem.ToString())
-                                        foreach (var item in Directory.GetFiles(Paths.Database, "*.*", SearchOption.AllDirectories))
-                                            if (item.Contains(entry["id"].ToString().ToUpper()))
-                                                SNES.type = entry["type"].ToString().ToUpper();
-                                }
 
                                 await Task.Run(() => { SNES.ReplaceROM(); });
 

@@ -55,6 +55,7 @@ Currently supported:
 - [ ] MSX / MSX2 VC injection support.
 - [ ] Commodore 64 VC injection support.
 - [ ] Support for more systems and homebrew emulators in emulator forwarder mode.
+  - [ ] Game Boy/Game Boy Color/Game Boy Advance (need to implement custom banner and determine what type of WADs should be used)
 - [ ] Multiple SWF support for Adobe Flash.
 - [ ] TurboGrafx-16 CD VC injection support. -->
 

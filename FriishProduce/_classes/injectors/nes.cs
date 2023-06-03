@@ -13,7 +13,6 @@ namespace FriishProduce.Injectors
 
         /// <summary>
         /// Inserts ROM into main.dol.
-        /// WADs with compressed ROM format are not supported yet!
         /// </summary>
         public void InsertROM()
         {

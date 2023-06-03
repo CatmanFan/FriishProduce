@@ -17,4 +17,9 @@
         // S32X = 7,
         // PSX = 8,
     }
+
+    public class PlatformsGet
+    {
+        public bool All { get; set; }
+    }
 }

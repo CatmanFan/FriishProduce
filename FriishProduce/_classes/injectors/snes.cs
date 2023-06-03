@@ -22,6 +22,9 @@ namespace FriishProduce.Injectors
 
             string rom = Paths.WorkingFolder_Content5 + $"{ROMcode}.rom";
 
+            // -----------------------
+            // Check if raw ROM exists
+            // -----------------------
             if (File.Exists(rom))
             {
                 File.Copy(ROM, rom, true);
@@ -31,11 +34,16 @@ namespace FriishProduce.Injectors
                     if (Path.GetExtension(file) == ".pcm" || Path.GetExtension(file) == ".var") File.WriteAllText(file, String.Empty);
                     // xxxx.pcm is the digital audio file. It is not usually needed in most cases
                 }
+
+                return;
             }
             else
             {
                 rom = Paths.WorkingFolder_Content5 + $"LZH8{ROMcode}.rom";
 
+                // ------------------------
+                // Check if LZH8 ROM exists
+                // ------------------------
                 if (File.Exists(rom))
                 {
                     File.Delete(rom);
@@ -54,6 +62,7 @@ namespace FriishProduce.Injectors
                     File.Delete(pPath);
 
                     // xxxx.pcm must NOT be replaced in this instance, because otherwise it will display a "Wii System Memory is damaged" error and halt
+                    return;
                 }
                 else
                     throw new Exception(Program.Language.Get("m010"));

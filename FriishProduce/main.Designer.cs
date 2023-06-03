@@ -147,6 +147,7 @@ namespace FriishProduce
             // panel
             // 
             this.panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.panel.Controls.Add(this.Wait);
             this.panel.Controls.Add(this.Back);
             this.panel.Controls.Add(this.Settings);
             this.panel.Controls.Add(this.Save);
@@ -330,9 +331,9 @@ namespace FriishProduce
             // page3
             // 
             this.page3.Controls.Add(this.AutoFill);
-            this.page3.Controls.Add(this.a003);
             this.page3.Controls.Add(this.Custom);
             this.page3.Controls.Add(this.Banner);
+            this.page3.Controls.Add(this.a003);
             resources.ApplyResources(this.page3, "page3");
             this.page3.Name = "page3";
             // 
@@ -894,7 +895,6 @@ namespace FriishProduce
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             resources.ApplyResources(this, "$this");
-            this.Controls.Add(this.Wait);
             this.Controls.Add(this.panel);
             this.Controls.Add(this.page4);
             this.Controls.Add(this.page3);
@@ -908,6 +908,7 @@ namespace FriishProduce
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
             this.panel.ResumeLayout(false);
+            this.panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Wait)).EndInit();
             this.page1.ResumeLayout(false);
             this.page1.PerformLayout();
@@ -936,7 +937,6 @@ namespace FriishProduce
             this.Options_Flash.ResumeLayout(false);
             this.Options_Flash.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
