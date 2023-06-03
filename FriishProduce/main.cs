@@ -14,6 +14,7 @@ namespace FriishProduce
     public partial class Main : Form
     {
         readonly Lang x = Program.Language;
+        bool SaveVisible = false;
 
         Platforms currentConsole = 0;
         TitleImage tImg = new TitleImage();
@@ -53,6 +54,7 @@ namespace FriishProduce
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
             var fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
             string ver = $"beta {fvi.FileVersion}";
+            Wait.BackColor = panel.BackColor;
 
             Text = x.Get("g000");
             a000.Text = string.Format(x.Get("a000"), ver);
@@ -280,12 +282,19 @@ namespace FriishProduce
             {
                 case true:
                     Wait.Show();
+                    Settings.Visible = false;
+                    Back.Visible = false;
+                    Next.Visible = false;
+                    Save.Visible = false;
                     page3.Enabled = false;
                     page4.Enabled = false;
                     panel.Enabled = false;
                     break;
                 case false:
                     Wait.Hide();
+                    Settings.Visible = true;
+                    Back.Visible = true;
+                    if (SaveVisible) Save.Visible = true; else Next.Visible = true;
                     page3.Enabled = true;
                     page4.Enabled = true;
                     panel.Enabled = true;
@@ -500,6 +509,7 @@ namespace FriishProduce
                 Save.Enabled = (TitleID.Text.Length == 4) && Regex.IsMatch(TitleID.Text, "^[A-Z0-9]*$");
                 Next.Visible = false;
             }
+            SaveVisible = Save.Visible;
         }
 
         private void Back_Click(object sender, EventArgs e)
@@ -527,6 +537,7 @@ namespace FriishProduce
                 Next.Enabled = CheckBannerPage();
                 Save.Visible = false;
             }
+            SaveVisible = Save.Visible;
         }
 
         private bool CheckBannerPage()
