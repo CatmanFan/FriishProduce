@@ -7,7 +7,7 @@ namespace FriishProduce
         public static int Search(byte[] source, byte[] pattern, int start, int end)
         {
             if (start < 0) start = 0;
-            if (end > source.Length) end = source.Length;
+            if (end > source.Length) end = source.Length - pattern.Length;
 
             for (int i = start; i < end; i++)
             {

@@ -212,6 +212,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="libWiiSharp.dll" />
+    <None Include="Resources\wwcxtool.exe" />
     <None Include="Resources\lzh8_cmp.exe" />
     <None Include="Resources\lzh8_cmp_nonstrict.exe" />
     <None Include="Resources\forwarders\nandloader_wii_comex.app" />

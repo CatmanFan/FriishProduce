@@ -169,18 +169,30 @@ namespace FriishProduce.Injectors
             else
             {
                 var newBIOS = new List<byte>();
-                Directory.CreateDirectory(Paths.WorkingFolder_ROM + "bios\\");
-                ZipFile.ExtractToDirectory(BIOSPath, Paths.WorkingFolder_ROM + "bios\\");
 
-                foreach (var file in Directory.EnumerateFiles(Paths.WorkingFolder_ROM + "bios\\"))
+                if (Path.GetExtension(BIOSPath).ToLower() == ".rom")
                 {
-                    if (Path.GetExtension(file).ToLower() == ".rom")
-                    {
-                        newBIOS.AddRange(File.ReadAllBytes(file));
-                    }
+                    newBIOS.AddRange(File.ReadAllBytes(BIOSPath));
                 }
+                else if (Path.GetExtension(BIOSPath).ToLower() == ".zip")
+                {
+                    Directory.CreateDirectory(Paths.WorkingFolder_ROM + "bios\\");
+                    ZipFile.ExtractToDirectory(BIOSPath, Paths.WorkingFolder_ROM + "bios\\");
 
-                if (newBIOS.Count < 5) goto RetrieveOrig;
+                    foreach (var file in Directory.EnumerateFiles(Paths.WorkingFolder_ROM + "bios\\"))
+                    {
+                        if (Path.GetExtension(file).ToLower() == ".rom")
+                        {
+                            newBIOS.AddRange(File.ReadAllBytes(file));
+                        }
+                    }
+
+                    if (newBIOS.Count < 10) goto RetrieveOrig;
+                }
+                else
+                {
+                    goto RetrieveOrig;
+                }
 
                 for (int i = 1; i < newBIOS.Count; i += 2)
                 {

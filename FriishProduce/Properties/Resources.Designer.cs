@@ -191,16 +191,6 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] LZSS {
-            get {
-                object obj = ResourceManager.GetObject("LZSS", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
         internal static byte[] NANDLoader_Comex {
             get {
                 object obj = ResourceManager.GetObject("NANDLoader_Comex", resourceCulture);
@@ -275,6 +265,16 @@ namespace FriishProduce.Properties {
             get {
                 object obj = ResourceManager.GetObject("SaveIconPlaceholder_SEGA", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] WWCXTool {
+            get {
+                object obj = ResourceManager.GetObject("WWCXTool", resourceCulture);
+                return ((byte[])(obj));
             }
         }
     }

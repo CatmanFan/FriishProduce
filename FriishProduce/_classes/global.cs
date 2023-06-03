@@ -51,13 +51,13 @@ namespace FriishProduce
             if (filesize == 0)
             {
                 // Run process
-                string pPath = Paths.WorkingFolder + "lzss.exe";
-                File.WriteAllBytes(pPath, Properties.Resources.LZSS);
+                string pPath = Paths.WorkingFolder + "wwcxtool.exe";
+                File.WriteAllBytes(pPath, Properties.Resources.WWCXTool);
                 using (Process p = Process.Start(new ProcessStartInfo
                 {
                     FileName = pPath,
                     WorkingDirectory = Paths.WorkingFolder,
-                    Arguments = $"-d 00000001.app",
+                    Arguments = $"/u 00000001.app 00000001.app.raw",
                     UseShellExecute = false,
                     CreateNoWindow = true
                 }))
@@ -65,11 +65,10 @@ namespace FriishProduce
                 File.Delete(pPath);
 
                 // Failsafe
-                if (new FileInfo(Paths.WorkingFolder + "00000001.app").Length / 1024 / 1024 == filesize)
+                if (!File.Exists(Paths.WorkingFolder + "00000001.app.raw"))
                     throw new Exception(x.Get("m009"));
 
                 // Return decompressed file path
-                File.Move(Paths.WorkingFolder + "00000001.app", Paths.WorkingFolder + "00000001.app.raw");
                 return Paths.WorkingFolder + "00000001.app.raw";
             }
 
@@ -81,27 +80,26 @@ namespace FriishProduce
         {
             if (path == Paths.WorkingFolder + "00000001.app.raw")
             {
-                File.Move(Paths.WorkingFolder + "00000001.app.raw", Paths.WorkingFolder + "00000001.app");
-
-                var filesize = new FileInfo(Paths.WorkingFolder + "00000001.app").Length / 1024 / 1024;
-
                 // Run process
-                string pPath = Paths.WorkingFolder + "lzss.exe";
-                File.WriteAllBytes(pPath, Properties.Resources.LZSS);
+                string pPath = Paths.WorkingFolder + "wwcxtool.exe";
+                File.WriteAllBytes(pPath, Properties.Resources.WWCXTool);
                 using (Process p = Process.Start(new ProcessStartInfo
                 {
                     FileName = pPath,
                     WorkingDirectory = Paths.WorkingFolder,
-                    Arguments = $"-evn 00000001.app",
+                    Arguments = $"/cr 00000001.app 00000001.app.raw 00000001.app.mod",
                     UseShellExecute = false,
                     CreateNoWindow = true
                 }))
                     p.WaitForExit();
                 File.Delete(pPath);
 
-                // Check for compressed filesize length
-                if (new FileInfo(Paths.WorkingFolder + "00000001.app").Length / 1024 / 1024 == filesize)
+                if (!File.Exists(Paths.WorkingFolder + "00000001.app.mod"))
                     throw new Exception(x.Get("m009"));
+
+                File.Delete(Paths.WorkingFolder + "00000001.app.raw");
+                File.Delete(Paths.WorkingFolder + "00000001.app");
+                File.Move(Paths.WorkingFolder + "00000001.app.mod", Paths.WorkingFolder + "00000001.app");
             }
         }
 
@@ -129,7 +127,7 @@ namespace FriishProduce
             // ONLY PAL50 is different in byte composition !     //  This byte seems to vary
             // PAL (progressive/alt)          = 06 02 80 01 08 02 0C 00 28 00 17 02 80 02 0C
 
-            int start = 0x14F000;
+            int start = 0x13F000;
             int end = 0x1FFFFF;
 
             // 0-2: NTSC/PAL

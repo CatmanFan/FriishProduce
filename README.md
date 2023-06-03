@@ -66,7 +66,7 @@ This program uses the following third-party components and apps:
 * **[ccf-tools](https://github.com/libertyernie/ccf-tools)** (orig. author: paulguy) and **[BrawlLib](https://github.com/libertyernie/brawllib-wit)** (orig. author: soopercool101), both forked by **[libertyernie](https://github.com/libertyernie)**.
 * **ROMC compressor** by Jurai, with additional LZSS code by Haruhiko Okumura.
 * **gbalzss** by Andre Perrot, with additional LZSS code by Haruhiko Okumura.
-* **[LZSS](https://www.romhacking.net/utilities/826/)** by CUE.
+* **WWCXTool** by alpha-0.
 * **[lzh8_cmpdec](https://www.hcs64.com/vgm_ripping.html)** by [hcs](http://hcs64.com/).
 * **HowardC's Tools** (particularly, VCbrlyt).
 * For homebrew emulators compatiblity:

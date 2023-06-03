@@ -307,7 +307,6 @@ namespace FriishProduce
         /// </summary>
         private void ChangeTheme()
         {
-
             if (Properties.Settings.Default.LightTheme)
             {
                 BackColor = Themes.Light.BG;
@@ -406,6 +405,8 @@ namespace FriishProduce
                     }
                 }
             }
+
+            Wait.BackColor = panel.BackColor;
         }
 
         private void ChangeTheme(Form f)
@@ -794,7 +795,7 @@ namespace FriishProduce
         {
             if (NeoGeo_BIOS.Checked)
             {
-                OpenFileDialog BrowseBIOS = new OpenFileDialog() { Filter = x.Get("f_zip") };
+                OpenFileDialog BrowseBIOS = new OpenFileDialog() { Filter = "NEO-GEO BIOS (*.rom)|*.rom|" + x.Get("f_zip") + x.Get("f_all") };
 
                 if (BrowseBIOS.ShowDialog() == DialogResult.OK)
                     input[1] = BrowseBIOS.FileName;
