@@ -854,8 +854,7 @@ namespace FriishProduce
             resources.GetString("Flash_TotalSaveDataSize.Items2"),
             resources.GetString("Flash_TotalSaveDataSize.Items3"),
             resources.GetString("Flash_TotalSaveDataSize.Items4"),
-            resources.GetString("Flash_TotalSaveDataSize.Items5"),
-            resources.GetString("Flash_TotalSaveDataSize.Items6")});
+            resources.GetString("Flash_TotalSaveDataSize.Items5")});
             this.Flash_TotalSaveDataSize.Name = "Flash_TotalSaveDataSize";
             // 
             // Flash_UseSaveData
