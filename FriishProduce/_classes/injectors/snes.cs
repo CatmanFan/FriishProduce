@@ -9,7 +9,7 @@ namespace FriishProduce.Injectors
     {
         public string ROM { get; set; }
         public string ROMcode { get; set; }
-        public string type { get; set; }
+        public int type { get; set; }
 
         /// <summary>
         /// Replaces ROM within extracted content5 directory. ROM type is automatically determined.
@@ -21,10 +21,12 @@ namespace FriishProduce.Injectors
                 throw new Exception(Program.Language.Get("m018"));
 
             string rom = Paths.WorkingFolder_Content5 + $"{ROMcode}.rom";
+            type = 0;
 
             // -----------------------
             // Check if raw ROM exists
             // -----------------------
+
             if (File.Exists(rom))
             {
                 File.Copy(ROM, rom, true);
@@ -37,22 +39,27 @@ namespace FriishProduce.Injectors
 
                 return;
             }
+
             else
             {
-                rom = Paths.WorkingFolder_Content5 + $"LZ77{ROMcode}.rom";
+                // ------------------------
+                // Check if LZH8 ROM exists
+                // ------------------------
 
-                // -----------------------------
-                // Check if LZ77 0x11 ROM exists
-                // -----------------------------
+                rom = Paths.WorkingFolder_Content5 + $"LZH8{ROMcode}.rom";
+                type = 1;
+
                 if (File.Exists(rom))
                 {
-                    string pPath = Paths.WorkingFolder + "wwcxtool.exe";
-                    File.WriteAllBytes(pPath, Properties.Resources.WWCXTool);
+                    File.Delete(rom);
+
+                    string pPath = Paths.WorkingFolder + "lzh8.exe";
+                    File.WriteAllBytes(pPath, Properties.Resources.LZH8);
                     using (Process p = Process.Start(new ProcessStartInfo
                     {
                         FileName = pPath,
                         WorkingDirectory = Paths.WorkingFolder,
-                        Arguments = $"/cr \"{rom}\" \"{ROM}\" \"{rom}\"",
+                        Arguments = $"\"{ROM}\" \"{rom}\"",
                         UseShellExecute = false,
                         CreateNoWindow = true
                     }))
@@ -62,33 +69,34 @@ namespace FriishProduce.Injectors
                     // xxxx.pcm must NOT be replaced in this instance, because otherwise it will display a "Wii System Memory is damaged" error and halt
                     return;
                 }
+
                 else
                 {
-                    rom = Paths.WorkingFolder_Content5 + $"LZH8{ROMcode}.rom";
+                    // -----------------------------
+                    // Check if LZ77 ROM exists
+                    // -----------------------------
 
-                    // ------------------------
-                    // Check if LZH8 ROM exists
-                    // ------------------------
+                    rom = Paths.WorkingFolder_Content5 + $"LZ77{ROMcode}.rom";
+                    type = 2;
+
                     if (File.Exists(rom))
                     {
-                        File.Delete(rom);
-
-                        string pPath = Paths.WorkingFolder + "lzh8.exe";
-                        File.WriteAllBytes(pPath, Properties.Resources.LZH8);
+                        string pPath = Paths.WorkingFolder + "wwcxtool.exe";
+                        File.WriteAllBytes(pPath, Properties.Resources.WWCXTool);
                         using (Process p = Process.Start(new ProcessStartInfo
                         {
                             FileName = pPath,
                             WorkingDirectory = Paths.WorkingFolder,
-                            Arguments = $"\"{ROM}\" \"{rom}\"",
+                            Arguments = $"/cr \"{rom}\" \"{ROM}\" \"{rom}\"",
                             UseShellExecute = false,
                             CreateNoWindow = true
                         }))
                             p.WaitForExit();
                         File.Delete(pPath);
 
-                        // xxxx.pcm must NOT be replaced in this instance, because otherwise it will display a "Wii System Memory is damaged" error and halt
                         return;
                     }
+
                     else
                         throw new Exception(Program.Language.Get("m010"));
                 }
@@ -114,7 +122,7 @@ namespace FriishProduce.Injectors
 
         internal void InsertSaveTitle(string[] lines)
         {
-            string content1_file = Global.DetermineContent1();
+            string content1_file = Global.DetermineContent1(type == 2);
             byte[] content1 = File.ReadAllBytes(content1_file);
             int ROMcode_index = 0;
 

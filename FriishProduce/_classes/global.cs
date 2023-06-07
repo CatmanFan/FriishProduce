@@ -44,11 +44,10 @@ namespace FriishProduce
             else return ROM;
         }
 
-        public static string DetermineContent1()
+        public static string DetermineContent1(bool ForceCompress = false)
         {
             // Check for LZSS compression
-            long filesize = new FileInfo(Paths.WorkingFolder + "00000001.app").Length / 1024 / 1024;
-            if (filesize == 0)
+            if (File.ReadAllBytes(Paths.WorkingFolder + "00000001.app").Length < 1024 * 1024 || ForceCompress == true)
             {
                 // Run process
                 string pPath = Paths.WorkingFolder + "wwcxtool.exe";

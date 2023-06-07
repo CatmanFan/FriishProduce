@@ -102,7 +102,7 @@ namespace FriishProduce
                         break;
 
                     case Platforms.SMD:
-                        BrowseROM.Filter = x.Get("f_smd");
+                        BrowseROM.Filter = x.Get("f_smd").Replace("*.bin;*.gen", "*.bin;*.gen;*.md").Replace("*.gen, ", "*.gen, *.md, ");
                         break;
 
                     case Platforms.Flash:

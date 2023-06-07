@@ -11,6 +11,7 @@ namespace FriishProduce.Injectors
     {
         /* What is needed:
            [ ] Relevant version functions
+
            Working:
            [X] Phantasy Star (v3) (customized)
            [X] Sonic the Hedgehog SMS (v2) (customized)
@@ -68,13 +69,17 @@ namespace FriishProduce.Injectors
             Directory.CreateDirectory(Paths.WorkingFolder_DataCCF);
 
             // Data.CCF
-            CCFEx(Paths.WorkingFolder_Content5 + "data.ccf", Paths.WorkingFolder_DataCCF, false);
+            bool LegacyApp = /* SMS*/ SMS ? true : /* SMD */ false;
+
+            CCFEx(Paths.WorkingFolder_Content5 + "data.ccf", Paths.WorkingFolder_DataCCF, LegacyApp);
+
+            // Failsafe
             if (Directory.EnumerateFiles(Paths.WorkingFolder_DataCCF).Count() < 3 ||
                 (File.Exists(Paths.WorkingFolder_DataCCF + "Opera.arc") && File.ReadAllBytes(Paths.WorkingFolder_DataCCF + "Opera.arc").Length == 0))
             {
                 Directory.Delete(Paths.WorkingFolder_DataCCF, true);
                 Directory.CreateDirectory(Paths.WorkingFolder_DataCCF);
-                CCFEx(Paths.WorkingFolder_Content5 + "data.ccf", Paths.WorkingFolder_DataCCF);
+                CCFEx(Paths.WorkingFolder_Content5 + "data.ccf", Paths.WorkingFolder_DataCCF, true);
             }
 
             if (includeMisc)
@@ -92,12 +97,14 @@ namespace FriishProduce.Injectors
             {
                 // Misc.CCF
                 string newMisc = CCFArc(Paths.WorkingFolder_MiscCCF, true);
+
                 File.Copy(newMisc, Paths.WorkingFolder_DataCCF + "misc.ccf", true);
                 Directory.Delete(Paths.WorkingFolder_MiscCCF, true);
             }
 
             // Data.CCF
-            string newData = CCFArc(Paths.WorkingFolder_DataCCF, false);
+            string newData = CCFArc(Paths.WorkingFolder_DataCCF, false, false);
+
             File.Copy(newData, Paths.WorkingFolder_Content5 + "data.ccf", true);
             Directory.Delete(Paths.WorkingFolder_DataCCF, true);
         }
@@ -123,9 +130,9 @@ namespace FriishProduce.Injectors
 
         /// <param name="raw">Determines whether to use ccfarcraw.exe (needed for misc.ccf)</param>
         /// <returns>Path to an out.ccf file if it was created.</returns>
-        internal string CCFArc(string dir, bool raw)
+        internal string CCFArc(string dir, bool raw, bool legacy = false)
         {
-            string pPath = Paths.Apps + "ccftools\\" + (raw ? "ccfarcraw.exe" : "ccfarc2021.exe");
+            string pPath = Paths.Apps + "ccftools\\" + (raw ? "ccfarcraw.exe" : legacy ? "ccfarc.exe" : "ccfarc2021.exe");
 
             if (dir == Paths.WorkingFolder_DataCCF)
             {
