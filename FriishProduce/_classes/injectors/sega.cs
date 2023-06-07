@@ -172,7 +172,8 @@ namespace FriishProduce.Injectors
                         "WBMonsterWorld",
                         "EarthwormJim2",
                         "MonsterWorld4",
-                        "SonicKnuckles"
+                        "SonicKnuckles",
+                        "Sonic3"
                     };
                     foreach (var item in ChangeROMs)
                         if (origROM.Contains(item))
@@ -180,6 +181,7 @@ namespace FriishProduce.Injectors
                             pInfo.Arguments =
                                 item == "SonicKnuckles" ? $"Opera.arc config emu_m68kbase.rso home.csv man.arc md.rso misc.ccf patch {origROM} sandkui.rso se_vc.rso selectmenu.cat selectmenu.conf selectmenu.rso tsdevp.rso wii_vc.sel"
                                 : item == "EarthwormJim2" || item == "MonsterWorld4" ? $"{origROM} Opera.arc config emu_m68kbase.rso home.csv man.arc md.rso misc.ccf patch se_vc.rso selectmenu.cat selectmenu.conf tsdevp.rso wii_vc.sel"
+                                : item == "Sonic3" ? $"Opera.arc {origROM} config home.csv man.arc misc.ccf"
                                 : files.Replace($"Opera.arc {origROM} ", $"{origROM} Opera.arc ");
                         }
                 }
