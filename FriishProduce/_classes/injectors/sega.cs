@@ -69,7 +69,7 @@ namespace FriishProduce.Injectors
             Directory.CreateDirectory(Paths.WorkingFolder_DataCCF);
 
             // Data.CCF
-            bool LegacyApp = /* SMS*/ SMS ? true : /* SMD */ true;
+            bool LegacyApp = /* SMS*/ SMS ? true : /* SMD */ false;
 
             CCFEx(Paths.WorkingFolder_Content5 + "data.ccf", Paths.WorkingFolder_DataCCF, LegacyApp);
 
@@ -103,7 +103,7 @@ namespace FriishProduce.Injectors
             }
 
             // Data.CCF
-            bool LegacyApp = /* SMS*/ SMS ? false : /* SMD */ true;
+            bool LegacyApp = /* SMS*/ SMS ? false : /* SMD */ false;
             string newData = CCFArc(Paths.WorkingFolder_DataCCF, false, LegacyApp);
 
             File.Copy(newData, Paths.WorkingFolder_Content5 + "data.ccf", true);
@@ -153,16 +153,39 @@ namespace FriishProduce.Injectors
                     CreateNoWindow = true
                 };
 
-                if (!SMS && ver < 3 || origROM.Contains("Columns3"))
+                if (!SMS)
                 {
+                    if (ver == 3)
+                    {
+                        pInfo.Arguments = pInfo.Arguments.Replace("selectmenu.cat selectmenu.conf se_vc.rso", "se_vc.rso selectmenu.cat selectmenu.conf");
+                        pInfo.Arguments = files.Replace($"Opera.arc {origROM} ", $"{origROM} Opera.arc ");
+                    }
                     using (Process p = Process.Start(pInfo))
                         p.WaitForExit();
 
-                    pInfo.Arguments = files.Replace($"Opera.arc {origROM} ", $"{origROM} Opera.arc ");
+                    string[] ChangeROMs =
+                    {
+                        "Columns",
+                        "StreetsRage",
+                        "DynamiteHeaddy",
+                        "ComixZone",
+                        "WBMonsterWorld",
+                        "EarthwormJim2",
+                        "MonsterWorld4",
+                        "SonicKnuckles"
+                    };
+                    foreach (var item in ChangeROMs)
+                        if (origROM.Contains(item))
+                        {
+                            pInfo.Arguments =
+                                item == "SonicKnuckles" ? $"Opera.arc config emu_m68kbase.rso home.csv man.arc md.rso misc.ccf patch {origROM} sandkui.rso se_vc.rso selectmenu.cat selectmenu.conf selectmenu.rso tsdevp.rso wii_vc.sel"
+                                : item == "EarthwormJim2" || item == "MonsterWorld4" ? $"{origROM} Opera.arc config emu_m68kbase.rso home.csv man.arc md.rso misc.ccf patch se_vc.rso selectmenu.cat selectmenu.conf tsdevp.rso wii_vc.sel"
+                                : files.Replace($"Opera.arc {origROM} ", $"{origROM} Opera.arc ");
+                        }
                 }
-                else if (ver == 3)
+                else if (SMS && ver == 3)
                 {
-                    // This configuration may fix a halt error screen when loading the WAD ("/data/selectmenu.rso: read_rsofile failed" or "/data/se_vc.rso: read_rsofile failed")
+                    // This configuration may fix a halt error screen when loading the WAD ("/data/selectmenu.rso: read_rsofile failed")
                     pInfo.Arguments = pInfo.Arguments.Replace("selectmenu.cat selectmenu.conf selectmenu.rso se_vc.rso", "se_vc.rso selectmenu.cat selectmenu.conf selectmenu.rso");
                 }
 
