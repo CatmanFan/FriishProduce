@@ -461,6 +461,9 @@ namespace FriishProduce
                     {
                         if (System.IO.Path.GetExtension(item) == ".tex0" && File.Exists(Paths.Images + System.IO.Path.GetFileNameWithoutExtension(item) + "_new.png"))
                         {
+                            // --------------------------------------------
+                            // TEX0 conversion
+                            // --------------------------------------------
                             using (Process p = Process.Start(new ProcessStartInfo
                             {
                                 FileName = Paths.Apps + "brawllib\\texreplace.exe",
@@ -486,6 +489,45 @@ namespace FriishProduce
                                 } */
                                 p.WaitForExit();
                             }
+
+                            // --------------------------------------------
+                            // Check if operation has been cancelled
+                            // --------------------------------------------
+                            using (Process p = Process.Start(new ProcessStartInfo
+                            {
+                                FileName = Paths.Apps + "brawllib\\texextract.exe",
+                                Arguments = $"\"{item}\" \"{Paths.Images}{System.IO.Path.GetFileNameWithoutExtension(item)}_ext.png\"",
+                                UseShellExecute = false,
+                                CreateNoWindow = true
+                            }))
+                                p.WaitForExit();
+                            using (Bitmap ext = (Bitmap)Image.FromFile($"{Paths.Images}{System.IO.Path.GetFileNameWithoutExtension(item)}_ext.png"))
+                            using (Bitmap src = (Bitmap)Image.FromFile($"{Paths.Images}{System.IO.Path.GetFileNameWithoutExtension(item)}.png"))
+                            {
+                                bool same = true;
+                                for (int x = 0; x < ext.Width; ++x)
+                                    for (int y = 0; y < src.Height; ++y)
+                                        if (ext.GetPixel(x, y) != src.GetPixel(x, y))
+                                            same = false;
+
+                                if (same && !System.IO.Path.GetFileNameWithoutExtension(item).Contains("06"))
+                                {
+                                    ext.Dispose();
+                                    src.Dispose();
+                                    sBanner.Dispose();
+                                    sIcon1.Dispose();
+                                    sIcon2.Dispose();
+                                    throw new OperationCanceledException();
+                                }
+
+                                ext.Dispose();
+                                src.Dispose();
+                            }
+                            File.Delete($"{Paths.Images}{System.IO.Path.GetFileNameWithoutExtension(item)}_ext.png");
+
+                            // --------------------------------------------
+                            // WTE conversion
+                            // --------------------------------------------
                             File.Delete(Paths.WorkingFolder_MiscCCF + System.IO.Path.GetFileNameWithoutExtension(item) + ".wte");
                             using (Process p = Process.Start(new ProcessStartInfo
                             {

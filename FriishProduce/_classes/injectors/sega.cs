@@ -69,7 +69,7 @@ namespace FriishProduce.Injectors
             Directory.CreateDirectory(Paths.WorkingFolder_DataCCF);
 
             // Data.CCF
-            bool LegacyApp = /* SMS*/ SMS ? true : /* SMD */ false;
+            bool LegacyApp = /* SMS*/ SMS ? true : /* SMD */ true;
 
             CCFEx(Paths.WorkingFolder_Content5 + "data.ccf", Paths.WorkingFolder_DataCCF, LegacyApp);
 
@@ -103,7 +103,8 @@ namespace FriishProduce.Injectors
             }
 
             // Data.CCF
-            string newData = CCFArc(Paths.WorkingFolder_DataCCF, false, false);
+            bool LegacyApp = /* SMS*/ SMS ? false : /* SMD */ true;
+            string newData = CCFArc(Paths.WorkingFolder_DataCCF, false, LegacyApp);
 
             File.Copy(newData, Paths.WorkingFolder_Content5 + "data.ccf", true);
             Directory.Delete(Paths.WorkingFolder_DataCCF, true);
@@ -152,15 +153,16 @@ namespace FriishProduce.Injectors
                     CreateNoWindow = true
                 };
 
-                if (!SMS && ver < 3)
+                if (!SMS && ver < 3 || origROM.Contains("Columns3"))
                 {
                     using (Process p = Process.Start(pInfo))
                         p.WaitForExit();
+
                     pInfo.Arguments = files.Replace($"Opera.arc {origROM} ", $"{origROM} Opera.arc ");
                 }
-                else if (SMS && ver == 3)
+                else if (ver == 3)
                 {
-                    // This configuration appears to fix a halt error screen when loading the WAD ("/data/selectmenu.rso: read_rsofile failed")
+                    // This configuration may fix a halt error screen when loading the WAD ("/data/selectmenu.rso: read_rsofile failed" or "/data/se_vc.rso: read_rsofile failed")
                     pInfo.Arguments = pInfo.Arguments.Replace("selectmenu.cat selectmenu.conf selectmenu.rso se_vc.rso", "se_vc.rso selectmenu.cat selectmenu.conf selectmenu.rso");
                 }
 
