@@ -1283,7 +1283,7 @@ namespace FriishProduce
                                             foreach (var item in Directory.GetFiles(Paths.Database, "*.*", SearchOption.AllDirectories))
                                                 if (item.Contains(entry["id"].ToString().ToUpper()))
                                                 {
-                                                    SEGA.ver = int.Parse(entry["ver"].ToString());
+                                                    SEGA.ver = SEGA.SMS ? entry["ver"].ToString() : entry["ord"].ToString();
                                                     SEGA.origROM = entry["ROM"].ToString();
                                                 }
                                     });

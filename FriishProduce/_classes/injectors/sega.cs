@@ -60,7 +60,7 @@ namespace FriishProduce.Injectors
         console.volume="10"*/
 
         public string ROM { get; set; }
-        public int ver { get; set; }
+        public string ver { get; set; }
         public bool SMS { get; set; }
         public string origROM { get; set; }
 
@@ -155,37 +155,40 @@ namespace FriishProduce.Injectors
 
                 if (!SMS)
                 {
-                    if (ver == 3)
+                    switch (ver)
                     {
-                        pInfo.Arguments = pInfo.Arguments.Replace("selectmenu.cat selectmenu.conf se_vc.rso", "se_vc.rso selectmenu.cat selectmenu.conf");
-                        pInfo.Arguments = files.Replace($"Opera.arc {origROM} ", $"{origROM} Opera.arc ");
+                        case "v1":
+                            files = $"{origROM} Opera.arc config man.arc misc.ccf";
+                            break;
+                        case "v1-alt":
+                            files = $"Opera.arc {origROM} config man.arc misc.ccf";
+                            break;
+                        case "v2":
+                            files = $"Opera.arc {origROM} config home.csv man.arc misc.ccf patch";
+                            break;
+                        case "v2-alt":
+                            files = $"{origROM} Opera.arc config home.csv man.arc misc.ccf patch";
+                            break;
+                        case "v3":
+                            files = $"Opera.arc {origROM} config emu_m68kbase.rso home.csv man.arc md.rso misc.ccf patch se_vc.rso tsdevp.rso wii_vc.sel";
+                            break;
+                        case "v3-alt":
+                            files = $"{origROM} Opera.arc config emu_m68kbase.rso home.csv man.arc md.rso misc.ccf patch se_vc.rso selectmenu.cat selectmenu.conf tsdevp.rso wii_vc.sel";
+                            break;
+                        case "v3-sandk":
+                            files = $"Opera.arc config emu_m68kbase.rso home.csv man.arc md.rso misc.ccf patch {origROM} sandkui.rso se_vc.rso selectmenu.cat selectmenu.conf selectmenu.rso tsdevp.rso wii_vc.sel";
+                            break;
                     }
-                    using (Process p = Process.Start(pInfo))
-                        p.WaitForExit();
 
-                    string[] ChangeROMs =
-                    {
-                        "Columns",
-                        "StreetsRage",
-                        "DynamiteHeaddy",
-                        "ComixZone",
-                        "WBMonsterWorld",
-                        "EarthwormJim2",
-                        "MonsterWorld4",
-                        "SonicKnuckles",
-                        "Sonic3"
-                    };
-                    foreach (var item in ChangeROMs)
-                        if (origROM.Contains(item))
-                        {
-                            pInfo.Arguments =
-                                item == "SonicKnuckles" ? $"Opera.arc config emu_m68kbase.rso home.csv man.arc md.rso misc.ccf patch {origROM} sandkui.rso se_vc.rso selectmenu.cat selectmenu.conf selectmenu.rso tsdevp.rso wii_vc.sel"
-                                : item == "EarthwormJim2" || item == "MonsterWorld4" ? $"{origROM} Opera.arc config emu_m68kbase.rso home.csv man.arc md.rso misc.ccf patch se_vc.rso selectmenu.cat selectmenu.conf tsdevp.rso wii_vc.sel"
-                                : item == "Sonic3" ? $"Opera.arc {origROM} config home.csv man.arc misc.ccf"
-                                : files.Replace($"Opera.arc {origROM} ", $"{origROM} Opera.arc ");
-                        }
+                    bool patch = false;
+                    foreach (var item in Directory.EnumerateFiles(dir))
+                        if (Path.GetFileName(item).Contains("patch"))
+                            patch = true;
+                    if (!patch)
+                        files = files.Replace(" patch", "");
+                    pInfo.Arguments = files;
                 }
-                else if (SMS && ver == 3)
+                else if (SMS && ver == "3")
                 {
                     // This configuration may fix a halt error screen when loading the WAD ("/data/selectmenu.rso: read_rsofile failed")
                     pInfo.Arguments = pInfo.Arguments.Replace("selectmenu.cat selectmenu.conf selectmenu.rso se_vc.rso", "se_vc.rso selectmenu.cat selectmenu.conf selectmenu.rso");
@@ -285,7 +288,7 @@ namespace FriishProduce.Injectors
                             c[i] = c[i].Replace("console.machine_country", "country");
 
             // Determine version 3 and add modules used to avoid any possible issues otherwise
-            if (ver == 3)
+            if (ver == "3" || ver.Contains("v3"))
                 foreach (var item in File.ReadAllLines(Paths.WorkingFolder_DataCCF + "config"))
                     if (item.StartsWith("modules=")
                      || item.StartsWith("snd.snddrv=")
