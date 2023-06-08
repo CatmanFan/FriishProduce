@@ -1360,19 +1360,7 @@ namespace FriishProduce
                             }
                     }
 
-                    await Task.Run(() =>
-                    {
-                        if (currentConsole != Platforms.SMS && currentConsole != Platforms.SMD)
-                            U8.Pack(Paths.WorkingFolder_Content5, Paths.WorkingFolder + "00000005.app");
-                        else
-                        {
-                            // Write data.ccf directly to U8 loader
-                            libWiiSharp.U8 u2 = libWiiSharp.U8.Load(Paths.WorkingFolder + "00000005.app");
-                            u2.ReplaceFile(u2.GetNodeIndex("data.ccf"), Paths.WorkingFolder_Content5 + "data.ccf");
-                            u2.Save(Paths.WorkingFolder + "00000005.app");
-                            u2.Dispose();
-                        }
-                    });
+                    await Task.Run(() => { U8.Pack(Paths.WorkingFolder_Content5, Paths.WorkingFolder + "00000005.app"); });
                 }
 
                 // ----------------------------------------------------
