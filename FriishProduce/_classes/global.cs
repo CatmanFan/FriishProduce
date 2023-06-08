@@ -240,6 +240,10 @@ namespace FriishProduce
             var dummy = new byte[] { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
             // It is important to replace the file with a dummy byte array instead of simply deleting it, because otherwise it will break some WADs
 
+            // NOTE:
+            // Opera.arc is the Opera software environment needed to display emanual files (https://wiibrew.org/wiki//tmp/opera.arc)
+            // Deleting or modifying it will also break certain WADs, so it is left as it is
+
             foreach (var file in Directory.GetFiles(Paths.WorkingFolder_Content5, "*.*", SearchOption.AllDirectories))
             {
                 foreach (var item in emanualFiles)

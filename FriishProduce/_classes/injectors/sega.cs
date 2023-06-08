@@ -59,6 +59,26 @@ namespace FriishProduce.Injectors
         console.rapidfire="10"
         console.volume="10"*/
 
+        /* 
+         * S&K:
+        console.cl_bindings="up=U:down=D:left=L:right=R:+=S:y=A:b=B:a=C:l=X:x=Y:r=Z:zr=M:zl="
+        console.core_bindings="up=U:down=D:left=L:right=R:+=S:a=A:1=B:2=C:b="
+        console.disable_resetbutton="1"
+        console.gc_bindings="up=U:down=D:left=L:right=R:start=S:b=A:a=B:x=C:l=X:y=Y:r=Z:z=M:c="
+        console.machine_arch="md"
+        console.machine_country="eu"
+        console.master_volume="+6.0"
+        console.volume="10"
+        machine_md.snd_strict_sync="1"
+        modules="emu_m68kbase tsdevp md se_vc selectmenu sandkui"
+        romfile="sandk_composite.sgd"
+        save_sram="1"
+        selectmenu="sandk"
+        snd.snddrv="tsdev+"
+        vdp.disable_gamma="0"
+        vdp_md.gamma_curve ="0x00,0x1a,0x31,0x42,0x54,0x66,0x78,0x80,0x8f,0x9e,0xad,0xc1,0xd5,0xea,0xff"
+         */
+
         public string ROM { get; set; }
         public string ver { get; set; }
         public bool SMS { get; set; }
@@ -164,19 +184,19 @@ namespace FriishProduce.Injectors
                             files = $"Opera.arc {origROM} config man.arc misc.ccf";
                             break;
                         case "v2":
-                            files = $"Opera.arc {origROM} config home.csv man.arc misc.ccf patch";
+                            files = $"Opera.arc {origROM} config home.csv man.arc misc.ccf";
                             break;
                         case "v2-alt":
-                            files = $"{origROM} Opera.arc config home.csv man.arc misc.ccf patch";
+                            files = $"{origROM} Opera.arc config home.csv man.arc misc.ccf";
                             break;
                         case "v3":
-                            files = $"Opera.arc {origROM} config emu_m68kbase.rso home.csv man.arc md.rso misc.ccf patch se_vc.rso tsdevp.rso wii_vc.sel";
+                            files = $"Opera.arc {origROM} config emu_m68kbase.rso home.csv man.arc md.rso misc.cc se_vc.rso tsdevp.rso wii_vc.sel";
                             break;
                         case "v3-alt":
-                            files = $"{origROM} Opera.arc config emu_m68kbase.rso home.csv man.arc md.rso misc.ccf patch se_vc.rso selectmenu.cat selectmenu.conf tsdevp.rso wii_vc.sel";
+                            files = $"{origROM} Opera.arc config emu_m68kbase.rso home.csv man.arc md.rso misc.ccf se_vc.rso selectmenu.cat selectmenu.conf tsdevp.rso wii_vc.sel";
                             break;
                         case "v3-sandk":
-                            files = $"Opera.arc config emu_m68kbase.rso home.csv man.arc md.rso misc.ccf patch {origROM} sandkui.rso se_vc.rso selectmenu.cat selectmenu.conf selectmenu.rso tsdevp.rso wii_vc.sel";
+                            files = $"Opera.arc config emu_m68kbase.rso home.csv man.arc md.rso misc.ccf {origROM} sandkui.rso se_vc.rso selectmenu.cat selectmenu.conf selectmenu.rso tsdevp.rso wii_vc.sel";
                             break;
                     }
 
@@ -185,7 +205,7 @@ namespace FriishProduce.Injectors
                         if (Path.GetFileName(item).Contains("patch"))
                             patch = true;
 
-                    pInfo.Arguments = !patch ? files.Replace(" patch", string.Empty) : files;
+                    pInfo.Arguments = patch ? files.Replace("misc.ccf", "misc.ccf patch") : files;
                 }
                 else if (SMS && ver == "3")
                 {
