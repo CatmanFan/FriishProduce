@@ -214,10 +214,6 @@ namespace FriishProduce
 
         public static void RemoveEmanual()
         {
-            // There is a bug in Korean NES WADs (tested Kirby's Adventure only) where the following error is produced:
-            // "Wii 본체 저장 메모리가 소삼되머 다. 자세한 내용은 Wii 본체 사용설명서를 읽어 주십시오."
-            // This is related to the "Opera.arc" failing to be detected when it is overwritten
-
             U8.Unpack(Paths.WorkingFolder + "00000004.app", Paths.WorkingFolder_Content4);
             if (Directory.Exists(Paths.WorkingFolder_Content4 + "HomeButton2"))
             {
@@ -232,7 +228,6 @@ namespace FriishProduce
 
             string[] emanualFiles =
             {
-                "Opera.arc.zlib",
                 "emanual.arc",
                 "LZH8emanual.arc",
                 "LZ77emanual.arc",
@@ -242,12 +237,13 @@ namespace FriishProduce
                 "html.arc",
                 "htmlc.arc"
             };
+            var dummy = new byte[] { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
+            // It is important to replace the file with a dummy byte array instead of simply deleting it, because otherwise it will break some WADs
 
             foreach (var file in Directory.GetFiles(Paths.WorkingFolder_Content5, "*.*", SearchOption.AllDirectories))
             {
                 foreach (var item in emanualFiles)
-                    if (file.EndsWith(item)) File.WriteAllText(file, string.Empty);
-                // It is important to empty the file instead of simply deleting it, because otherwise it will throw a "data corruption" error in some WADs
+                    if (file.EndsWith(item)) File.WriteAllBytes(file, dummy);
             }
 
             if (Directory.Exists(Paths.WorkingFolder_Content6))
@@ -255,7 +251,7 @@ namespace FriishProduce
                 foreach (var file in Directory.GetFiles(Paths.WorkingFolder_Content6, "*.*", SearchOption.AllDirectories))
                 {
                     foreach (var item in emanualFiles)
-                        if (file.EndsWith(item)) File.WriteAllBytes(file, new byte[16]);
+                        if (file.EndsWith(item)) File.WriteAllBytes(file, dummy);
                 }
             }
         }

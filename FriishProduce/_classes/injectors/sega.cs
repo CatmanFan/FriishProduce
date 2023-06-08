@@ -184,9 +184,8 @@ namespace FriishProduce.Injectors
                     foreach (var item in Directory.EnumerateFiles(dir))
                         if (Path.GetFileName(item).Contains("patch"))
                             patch = true;
-                    if (!patch)
-                        files = files.Replace(" patch", "");
-                    pInfo.Arguments = files;
+
+                    pInfo.Arguments = !patch ? files.Replace(" patch", string.Empty) : files;
                 }
                 else if (SMS && ver == "3")
                 {
