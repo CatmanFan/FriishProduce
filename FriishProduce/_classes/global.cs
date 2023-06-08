@@ -232,7 +232,6 @@ namespace FriishProduce
 
             string[] emanualFiles =
             {
-                "Opera.arc.zlib",
                 "emanual.arc",
                 "LZH8emanual.arc",
                 "LZ77emanual.arc",
