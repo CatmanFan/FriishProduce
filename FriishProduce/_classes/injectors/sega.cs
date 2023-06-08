@@ -190,7 +190,7 @@ namespace FriishProduce.Injectors
                             files = $"{origROM} Opera.arc config home.csv man.arc misc.ccf";
                             break;
                         case "v3":
-                            files = $"Opera.arc {origROM} config emu_m68kbase.rso home.csv man.arc md.rso misc.cc se_vc.rso tsdevp.rso wii_vc.sel";
+                            files = $"Opera.arc {origROM} config emu_m68kbase.rso home.csv man.arc md.rso misc.ccf se_vc.rso tsdevp.rso wii_vc.sel";
                             break;
                         case "v3-alt":
                             files = $"{origROM} Opera.arc config emu_m68kbase.rso home.csv man.arc md.rso misc.ccf se_vc.rso selectmenu.cat selectmenu.conf tsdevp.rso wii_vc.sel";
