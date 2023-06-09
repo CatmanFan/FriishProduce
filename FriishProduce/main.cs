@@ -1406,7 +1406,8 @@ namespace FriishProduce
                     w = f.ConvertWAD(w, NANDLoader.SelectedIndex, TitleID.Text.ToUpper());
                 }
 
-                if (!ForwarderMode) w.CreateNew(Paths.WorkingFolder);
+                if (!ForwarderMode) WADs.Pack(Paths.WorkingFolder, Paths.WorkingFolder + "out.wad");
+                if (!ForwarderMode) w.LoadFile(Paths.WorkingFolder + "out.wad");
                 if (RegionFree.Checked) w.Region = libWiiSharp.Region.Free;
                 w.FakeSign = true;
                 w.ChangeTitleID(LowerTitleID.Channel, TitleID.Text);
