@@ -1034,7 +1034,6 @@ namespace FriishProduce
 
                 await Task.Run(() =>
                 {
-                    try { Directory.Delete(Paths.WorkingFolder, true); } catch { }
                     var RunningP_List = Process.GetProcessesByName("texreplace");
                     if (RunningP_List != null || RunningP_List.Length > 0)
                         foreach (var RunningP in RunningP_List)
@@ -1042,8 +1041,7 @@ namespace FriishProduce
 
                     if (Patch.Visible) input[0] = Global.ApplyPatch(input[0], input[1]);
 
-                    w = WAD.Load(input[2]);
-                    w.Unpack(Paths.WorkingFolder);
+                    WADs.Unpack(input[2], Paths.WorkingFolder);
                 });
 
                 // ----------------------------------------------------

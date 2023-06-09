@@ -1,4 +1,7 @@
-﻿namespace FriishProduce
+﻿using System.IO;
+using System.Windows.Forms;
+
+namespace FriishProduce
 {
     public class U8
     {
@@ -16,6 +19,32 @@
             Wii.Tools.SaveFileFromByteArray(u, output);
 
             if (deleteInput) System.IO.Directory.Delete(input, true);
+        }
+    }
+
+    public class WADs
+    {
+        public static void Unpack(string input, string output)
+        {
+            try { Directory.Delete(output, true); } catch { }
+            Directory.CreateDirectory(output);
+            
+            File.WriteAllBytes(Application.StartupPath + "\\key.bin",
+                Path.GetFileNameWithoutExtension(input).EndsWith("T") || Path.GetFileNameWithoutExtension(input).EndsWith("Q") ?
+                libWiiSharp.CommonKey.GetKoreanKey() : libWiiSharp.CommonKey.GetStandardKey());
+            Wii.WadUnpack.UnpackWad(input, output);
+            File.Delete(Application.StartupPath + "\\key.bin");
+        }
+
+        public static void Pack(string input, string output)
+        {
+            if (File.Exists(output)) File.Delete(output);
+
+            File.WriteAllBytes(Application.StartupPath + "\\key.bin",
+                Path.GetFileNameWithoutExtension(input).EndsWith("T") || Path.GetFileNameWithoutExtension(input).EndsWith("Q") ?
+                libWiiSharp.CommonKey.GetKoreanKey() : libWiiSharp.CommonKey.GetStandardKey());
+            Wii.WadPack.PackWad(input, output);
+            File.Delete(Application.StartupPath + "\\key.bin");
         }
     }
 }
