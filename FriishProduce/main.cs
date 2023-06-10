@@ -1034,6 +1034,7 @@ namespace FriishProduce
 
                 await Task.Run(() =>
                 {
+                    try { Directory.Delete(Paths.WorkingFolder, true); } catch { }
                     var RunningP_List = Process.GetProcessesByName("texreplace");
                     if (RunningP_List != null || RunningP_List.Length > 0)
                         foreach (var RunningP in RunningP_List)
@@ -1041,7 +1042,8 @@ namespace FriishProduce
 
                     if (Patch.Visible) input[0] = Global.ApplyPatch(input[0], input[1]);
 
-                    WADs.Unpack(input[2], Paths.WorkingFolder);
+                    w = WAD.Load(input[2]);
+                    w.Unpack(Paths.WorkingFolder);
                 });
 
                 // ----------------------------------------------------
@@ -1406,8 +1408,7 @@ namespace FriishProduce
                     w = f.ConvertWAD(w, NANDLoader.SelectedIndex, TitleID.Text.ToUpper());
                 }
 
-                if (!ForwarderMode) WADs.Pack(Paths.WorkingFolder, Paths.WorkingFolder + "out.wad");
-                if (!ForwarderMode) w.LoadFile(Paths.WorkingFolder + "out.wad");
+                if (!ForwarderMode) w.CreateNew(Paths.WorkingFolder);
                 if (RegionFree.Checked) w.Region = libWiiSharp.Region.Free;
                 w.FakeSign = true;
                 w.ChangeTitleID(LowerTitleID.Channel, TitleID.Text);
