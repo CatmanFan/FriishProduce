@@ -84,8 +84,8 @@ namespace FriishProduce.Injectors
             File.WriteAllLines(Paths.WorkingFolder_Content5 + "config.ini", config.ToArray());
         }
 
-        // Documentation
-        // All bool options can be enabled or disabled using 0/1
+        // Documentation for available settings:
+        // All bool options can be enabled or disabled using "0"/"1"
         // ---------------------------------------------------------
         // Name         | Type
         // ---------------------------------------------------------
@@ -94,10 +94,23 @@ namespace FriishProduce.Injectors
         // EUROPE         Bool. Probably sets region, disable if installing on Japanese Wii.
         // SGENABLE       Bool. Toggles SuperGrafx use (Daimakaimura & Darius Plus use it by default)
         // PADBUTTON      Either 6 or 2. Sets controller type by no. of buttons. If 6-button input does not work, use default 2-button pad.
+        // MULTITAP       Bool. Toggles virtual multitap for 4 player mode
+        // PAD5           Bool. Toggles controller #5 (with at least GC controller). MULTITAP must be enabled & RLmessages.bin must be present except when using Bomberman '93 as base
         // HIDEOVERSCAN   Bool. Enables black borders on screen (Castlevania: RoB uses it by default)
         // YOFFSET        Whole positive integer (0; 3; 7; ..). Centers screen down by number specified
+        // RASTER         Bool. Enables raster for scrolling BG fix but may slow down some games.
+        // SPRLINE        Bool. Probably a function which enables sprite limit if set to 1.
         // ---------------------------------------------------------
-        // NOFPA          Always enabled on official VC channels, but no idea what it does otherwise
+        // CD_VOLUME      Decimal value (min 0.1, max 1.0). Sets CD (.ogg) audio volume. TG/PCE-CD only
+        // PSG_VOLUME     Decimal value (min 0.1, max 1.0). Sets PSG (.bin) volume. TG/PCE-CD only
+        // ADPCM_VOLUME   Decimal value (min 0.1, max 1.0). Sets ADPCM volume. TG/PCE-CD only
+        // ---------------------------------------------------------
+        // ARCADE         Bool. Unknown use.
+        // IRQMODE        Bool. Unknown use. Enabled on Gradius II
+        // PATCH          Bool. Unknown use. Enabled on Gradius II (EUR)
+        // HDS            Unknown.
+        // WDITH320OVER   Unknown.
+        // NOFPA          Bool. Always enabled on official VC channels, but no idea what it does otherwise
         // ---------------------------------------------------------
         // DUNGEXPE       Enabled by default on Dungeon Explorer, Moto Roader. DO NOT TOUCH
         // POPULUS        Probably enabled by default on Populous, DO NOT TOUCH
@@ -133,31 +146,5 @@ namespace FriishProduce.Injectors
            EUROPE=1
            HIDEOVERSCAN=1
            YOFFSET=8 */
-
-        // docs for the different settings on CONFIG on TG-16 / PCE HuCard / CD VC: (by saulfabreg)
-        /* MULTITAP - connects virtual Multitap which also connect 4 controllers (players).
-           (0 = disabled, 1 = enabled)
-           PAD5 - allows to use Pad 5 (5th controller) on VC, with at least a GameCube controller.
-           Needs to set MULTITAP=1 and the RLmessages.bin must be present on the 00000005.app for use Pad 5 (except Bomberman '93).
-           (0 = disabled, 1 = enabled)
-           RASTER - enables raster affect for make scrolling backgrounds to work correctly on some games.
-           DISCLAIMER: Games that doesn't support raster might slowdown! (ex. Rainbow Islands)
-           (0 = raster disabled, 1 = raster enabled)
-           SPRLINE - not 100% sure but i think is for disable sprite limit on some games.
-           (0 = disable sprite limit, 1 = enable sprite limit)
-           
-           Only on PCE / TG-16 CD games:
-           CD_VOLUME, ADPCM_VOLUME, PSG_VOLUME - these adjusts the CD (.ogg) music, PSG (music playing from the .bin files) and ADPCM volume.
-           Used on "Gradius II: Gofer no Yabou".
-           Use 1 decimal point for the volume value, for example: 0.8, 0.6, 1.0, etc. (min 0.1, max 1.0)
-           
-          
-           
-           Some settings i don't know its use:
-           ARCADE - ?¿
-           IRQMODE - ?¿ (it's enabled on "Gradius II: Gofer no Yabou")
-           PATCH - ?¿ (it's enabled on "Gradius II: Gofer no Yabou" (EUR/PAL60))
-           HDS - ?¿
-           WDITH320OVER - ?¿ */
     }
 }
