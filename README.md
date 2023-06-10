@@ -36,8 +36,8 @@ Currently supported:
   * **Nintendo 64**
   * **Master System**
   * **Mega Drive / Genesis**
-<!-- * **TurboGrafx-16 / PC Engine** -->
-<!-- * **SNK NEO-GEO** -->
+  * **TurboGrafx-16 / PC Engine**
+  * **SNK NEO-GEO**
 
 * Emulator forwarders
   * **[FCE Ultra GX](https://github.com/dborth/fceugx)** (dborth et al.)
@@ -50,18 +50,17 @@ Currently supported:
   * **Shockwave/Adobe Flash**
 
 <!-- ## To-Do
-- [ ] LZ77 compression on SNES VC and TG-16 HuCARD VC.
-- [X] NeoGeo VC injection support.
-- [ ] MSX / MSX2 VC injection support.
-- [ ] Commodore 64 VC injection support.
-- [ ] Support for more systems and homebrew emulators in emulator forwarder mode.
-  - [ ] Game Boy/Game Boy Color/Game Boy Advance (need to implement custom banner and determine what type of WADs should be used)
+- [ ] MSX+C64
+- [ ] Add emulators and platforms for use in forwarders:
+  - [ ] Game Boy/Game Boy Color/Game Boy Advance
+  * (need to implement custom banner and determine what type of WADs should be used)
 - [ ] Multiple SWF support for Adobe Flash.
 - [ ] TurboGrafx-16 CD VC injection support. -->
 
 ## Credits
 This program uses the following third-party components and apps:
 * **libWiiSharp** (orig. author: Leathl), [forked](https://github.com/WiiDatabase/libWiiSharp/) by **[WiiDatabase](https://github.com/WiiDatabase)**.
+* **[Wii.cs](https://github.com/dnasdw/showmiiwads/blob/Wii.cs_Tools/U8Mii/Wii.cs)** library (part of Leathl's ShowMiiWads).
 * **[Floating IPS](https://github.com/Alcaro/Flips)** (Flips) by [Alcaro](https://github.com/Alcaro).
 * **[ccf-tools](https://github.com/libertyernie/ccf-tools)** (orig. author: paulguy) and **[BrawlLib](https://github.com/libertyernie/brawllib-wit)** (orig. author: soopercool101), both forked by **[libertyernie](https://github.com/libertyernie)**.
 * **ROMC compressor** by Jurai, with additional LZSS code by Haruhiko Okumura.

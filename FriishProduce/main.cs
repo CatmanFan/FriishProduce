@@ -1031,6 +1031,7 @@ namespace FriishProduce
             try
             {
                 WAD w = new WAD();
+                bool usePatch = Patch.Visible;
 
                 await Task.Run(() =>
                 {
@@ -1039,9 +1040,14 @@ namespace FriishProduce
                         foreach (var RunningP in RunningP_List)
                             RunningP.Kill();
 
-                    if (Patch.Visible) input[0] = Global.ApplyPatch(input[0], input[1]);
+                    if (usePatch) input[0] = Global.ApplyPatch(input[0], input[1]);
 
-                    WADs.Unpack(input[2], Paths.WorkingFolder);
+                    if (currentConsole == Platforms.Flash)
+                    {
+                        w.LoadFile(input[2]);
+                        w.Unpack(Paths.WorkingFolder);
+                    }
+                    else WiiCS.UnpackWAD(input[2], Paths.WorkingFolder);
                 });
 
                 // ----------------------------------------------------
@@ -1307,6 +1313,13 @@ namespace FriishProduce
                         case Platforms.PCE:
                             {
                                 Injectors.PCE PCE = new Injectors.PCE { ROM = input[0] };
+                                foreach (var entry in db.GetList())
+                                {
+                                    if (entry["title"].ToString() == Bases.SelectedItem.ToString())
+                                        foreach (var item in Directory.GetFiles(Paths.Database, "*.*", SearchOption.AllDirectories))
+                                            if (item.Contains(entry["id"].ToString().ToUpper()))
+                                                PCE.LZ77 = entry["lz77"].ToString() == "yes";
+                                }
 
                                 PCE.ReplaceROM();
                                 PCE.SetConfig
@@ -1406,8 +1419,7 @@ namespace FriishProduce
                     w = f.ConvertWAD(w, NANDLoader.SelectedIndex, TitleID.Text.ToUpper());
                 }
 
-                if (!ForwarderMode) WADs.Pack(Paths.WorkingFolder, Paths.WorkingFolder + "out.wad");
-                if (!ForwarderMode) w.LoadFile(Paths.WorkingFolder + "out.wad");
+                if (!ForwarderMode) w.CreateNew(Paths.WorkingFolder);
                 if (RegionFree.Checked) w.Region = libWiiSharp.Region.Free;
                 w.FakeSign = true;
                 w.ChangeTitleID(LowerTitleID.Channel, TitleID.Text);

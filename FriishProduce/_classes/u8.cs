@@ -3,15 +3,15 @@ using System.Windows.Forms;
 
 namespace FriishProduce
 {
-    public class U8
+    public class WiiCS
     {
-        public static void Unpack(string input, string output)
+        public static void UnpackU8(string input, string output)
         {
             if (!System.IO.Directory.Exists(output)) System.IO.Directory.CreateDirectory(output);
             Wii.U8.UnpackU8(input, output);
         }
 
-        public static void Pack(string input, string output, bool deleteInput = true)
+        public static void PackU8(string input, string output, bool deleteInput = true)
         {
             if (System.IO.File.Exists(output)) System.IO.File.Delete(output);
             var s = new int[3];
@@ -20,11 +20,8 @@ namespace FriishProduce
 
             if (deleteInput) System.IO.Directory.Delete(input, true);
         }
-    }
 
-    public class WADs
-    {
-        public static void Unpack(string input, string output)
+        public static void UnpackWAD(string input, string output)
         {
             try { Directory.Delete(output, true); } catch { }
             Directory.CreateDirectory(output);
@@ -36,7 +33,7 @@ namespace FriishProduce
             File.Delete(Application.StartupPath + "\\key.bin");
         }
 
-        public static void Pack(string input, string output)
+        public static void PackWAD(string input, string output)
         {
             if (File.Exists(output)) File.Delete(output);
 
@@ -45,6 +42,25 @@ namespace FriishProduce
                 libWiiSharp.CommonKey.GetKoreanKey() : libWiiSharp.CommonKey.GetStandardKey());
             Wii.WadPack.PackWad(input, output);
             File.Delete(Application.StartupPath + "\\key.bin");
+        }
+    }
+
+    public class U8
+    {
+        public static void Unpack(string input, string output)
+        {
+            libWiiSharp.U8 u = new libWiiSharp.U8();
+            u.LoadFile(input);
+            u.Extract(output);
+        }
+
+        public static void Pack(string input, string output, bool deleteInput = true)
+        {
+            libWiiSharp.U8 u = libWiiSharp.U8.FromDirectory(input);
+            u.Lz77Compress = false;
+            u.Save(output);
+
+            if (deleteInput) System.IO.Directory.Delete(input, true);
         }
     }
 }
