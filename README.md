@@ -12,7 +12,7 @@ This application is designed to streamline the process to as few third-party pro
 
 ## Features
 This injector bypasses other third-party assets (such as Common-Key.bin, most of HowardC's tools, and Autoinjectuwad/Devilken's VC) by handling many steps directly from the program's code. Some examples:
-* WAD/U8 handling using libWiiSharp
+* Automatic WAD/U8 handling
 * VC ROM injection through hex writing and/or file replacement
 * Automatic banner/icon editing
 * Automatic editing of source WAD's savedata where available
@@ -60,22 +60,23 @@ Currently supported:
 ## Credits
 This program uses the following third-party components and apps:
 * **libWiiSharp** (orig. author: Leathl), [forked](https://github.com/WiiDatabase/libWiiSharp/) by **[WiiDatabase](https://github.com/WiiDatabase)**.
-* **[Wii.cs](https://github.com/dnasdw/showmiiwads/blob/Wii.cs_Tools/U8Mii/Wii.cs)** library (part of Leathl's ShowMiiWads).
+* **[Wii.cs](https://github.com/dnasdw/showmiiwads/blob/Wii.cs_Tools/U8Mii/Wii.cs)** library (part of Leathl's [ShowMiiWads](https://code.google.com/archive/p/showmiiwads/source)).
 * **[Floating IPS](https://github.com/Alcaro/Flips)** (Flips) by [Alcaro](https://github.com/Alcaro).
 * **[ccf-tools](https://github.com/libertyernie/ccf-tools)** (orig. author: paulguy) and **[BrawlLib](https://github.com/libertyernie/brawllib-wit)** (orig. author: soopercool101), both forked by **[libertyernie](https://github.com/libertyernie)**.
 * **ROMC compressor** by Jurai, with additional LZSS code by Haruhiko Okumura.
-* **gbalzss** by Andre Perrot, with additional LZSS code by Haruhiko Okumura.
+* **[gbalzss](https://gbadev.org/tools.php?showinfo=56)** by Andre Perrot, with additional LZSS code by Haruhiko Okumura.
 * **WWCXTool** by alpha-0.
 * **[lzh8_cmpdec](https://www.hcs64.com/vgm_ripping.html)** by [hcs](http://hcs64.com/).
-* **HowardC's Tools** (particularly, VCbrlyt).
+* **[HowardC's Tools](https://gbatemp.net/threads/vcfe-wip.100556/)** (particularly, VCbrlyt).
 * For homebrew emulators compatiblity:
+  <!-- * **comex**'s NAND loader. *(file renamed as "nandloader_wii_comex.app")* -->
   * **Waninkoko**'s NAND loader, retrieved from ShowMiiWads repo. *(file renamed as "nandloader_wii.app")*
   * **FIX94**'s **[tiny-vwii-nand-loader](https://github.com/FIX94/tiny-vwii-nand-loader)**. *(file renamed as "nandloader_vwii.app")*
   * Forwarder DOL generated from **ModMii Classic** (application author: XFlak) *(file renamed as "forwarder.dol")*
 
 I would also like to thank the following people:
 * **[SuperrSonic](https://github.com/SuperrSonic)** for reverse-engineering much of Wii software and official emulator code, and in particular, his [fork of RetroArch Wii](https://github.com/SuperrSonic/RA-SS).
-* **[SaulFabre](https://github.com/saulfabregwiivc)** for archiving several tools and aiding in research & documentation.
+* **[saulfabreg](https://github.com/saulfabregwiivc)** for archiving several tools and aiding in research & documentation.
 * **[sr_corsario](https://gbatemp.net/members/sr_corsario.128473/)** for his work in disclosing NEO-GEO ROM injection methods.
 * **[Larsenv](https://github.com/Larsenv)** for his astounding work in the Wii homebrew community, and for originally disclosing a method for Flash WAD injection ([GBAtemp thread](https://gbatemp.net/threads/how-to-make-flash-game-wad-injects.561406/)).
 * And of course, the team at the 0RANGECHiCKEN release group, including [lolsjoel](https://gbatemp.net/members/lolsjoel.18721/), and the late [G0dLiKe](https://gbatemp.net/members/g0dlike.190457/), without whose work this project would not have been possible.
