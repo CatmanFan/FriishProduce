@@ -1368,7 +1368,8 @@ namespace FriishProduce
                 // ----------------------------------------------------
                 else if (currentConsole == Platforms.Flash)
                 {
-                    await Task.Run(() => { U8.Unpack(Paths.WorkingFolder + "00000002.app", Paths.WorkingFolder_Content2); });
+                    // we're using libWiiSharp for unpack the U8 files on Flash WADs because Wii.cs breaks them...
+                    await Task.Run(() => { U8.libWiiSharpUnpack(Paths.WorkingFolder + "00000002.app", Paths.WorkingFolder_Content2); });
 
                     Injectors.Flash Flash = new Injectors.Flash() { SWF = input[0] };
                     Flash.ReplaceSWF();
@@ -1381,7 +1382,8 @@ namespace FriishProduce
                     if (Custom.Checked && tImg.Get()) tImg.CreateSave(Platforms.Flash);
                     if (Custom.Checked) Flash.InsertSaveData(SaveDataTitle.Lines);
 
-                    await Task.Run(() => { U8.Pack(Paths.WorkingFolder_Content2, Paths.WorkingFolder + "00000002.app"); });
+                    // we're using once again libWiiSharp for repack the U8 files on Flash WADs because Wii.cs breaks them...
+                    await Task.Run(() => { U8.libWiiSharpPack(Paths.WorkingFolder_Content2, Paths.WorkingFolder + "00000002.app"); });
                 }
 
                 // ----------------------------------------------------
