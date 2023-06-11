@@ -29,14 +29,18 @@ namespace FriishProduce.Injectors
                 {
                     FileName = pPath,
                     WorkingDirectory = Paths.WorkingFolder,
-                    Arguments = $"/cr \"{rom}\" \"{ROM}\" \"{rom}\"",
+                    Arguments = $"/cr \"{Paths.WorkingFolder_Content5 + rom}\" \"{Path.GetFullPath(ROM)}\" \"{Paths.WorkingFolder_Content5}LZ77.pce\"",
                     UseShellExecute = false,
                     CreateNoWindow = true
                 }))
                     p.WaitForExit();
                 File.Delete(pPath);
+
+                if (!File.Exists(Paths.WorkingFolder_Content5 + "LZ77.pce")) throw new Exception("LZ77 fatal error");
+                File.Delete(Paths.WorkingFolder_Content5 + rom);
+                File.Move(Paths.WorkingFolder_Content5 + "LZ77.pce", Paths.WorkingFolder_Content5 + rom);
             }
-            else File.Copy(ROM, rom, true);
+            else File.Copy(ROM, Paths.WorkingFolder_Content5 + rom, true);
         }
 
         internal void InsertSaveTitle(string title)
