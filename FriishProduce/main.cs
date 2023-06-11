@@ -1169,25 +1169,7 @@ namespace FriishProduce
                 // ----------------------------------------------------
                 if (currentConsole != Platforms.Flash && !ForwarderMode)
                 {
-                    if (currentConsole != Platforms.SMS && currentConsole != Platforms.SMD)
-                        await Task.Run(() => { U8.Unpack(Paths.WorkingFolder + "00000005.app", Paths.WorkingFolder_Content5); });
-                    else
-                    {
-                        bool Custom = this.Custom.Checked;
-
-                        await Task.Run(() =>
-                        {
-                            Directory.CreateDirectory(Paths.WorkingFolder_Content5);
-
-                            // Write data.ccf directly from U8 loader
-                            libWiiSharp.U8 u = libWiiSharp.U8.Load(Paths.WorkingFolder + "00000005.app");
-                            File.WriteAllBytes(Paths.WorkingFolder_Content5 + "data.ccf", u.Data[u.GetNodeIndex("data.ccf")]);
-                            u.Dispose();
-
-                            // Extract CCF files
-                            new Injectors.SEGA().GetCCF(Custom);
-                        });
-                    }
+                    await Task.Run(() => { WiiCS.UnpackU8(Paths.WorkingFolder + "00000005.app", Paths.WorkingFolder_Content5); });
 
                     if (DisableEmanual.Checked) await Task.Run(() => { Global.RemoveEmanual(); });
                     if (Custom.Checked && tImg.Get()) await Task.Run(() => { tImg.CreateSave(currentConsole); });
@@ -1277,6 +1259,7 @@ namespace FriishProduce
                         case Platforms.SMD:
                             {
                                 Injectors.SEGA SEGA = new Injectors.SEGA() { ROM = input[0], SMS = currentConsole == Platforms.SMS };
+                                SEGA.GetCCF(Custom.Checked);
                                 foreach (var entry in db.GetList())
                                 {
                                     string title = Bases.SelectedItem.ToString();
@@ -1371,7 +1354,7 @@ namespace FriishProduce
                             }
                     }
 
-                    await Task.Run(() => { U8.Pack(Paths.WorkingFolder_Content5, Paths.WorkingFolder + "00000005.app"); });
+                    await Task.Run(() => { WiiCS.PackU8(Paths.WorkingFolder_Content5, Paths.WorkingFolder + "00000005.app"); });
                 }
 
                 // ----------------------------------------------------

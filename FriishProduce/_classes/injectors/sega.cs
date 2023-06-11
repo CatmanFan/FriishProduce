@@ -116,7 +116,7 @@ namespace FriishProduce.Injectors
             if (includeMisc)
             {
                 // Misc.CCF
-                string newMisc = CCFArc(Paths.WorkingFolder_MiscCCF, true);
+                string newMisc = CCFArc(Paths.WorkingFolder_MiscCCF, true, false);
 
                 File.Copy(newMisc, Paths.WorkingFolder_DataCCF + "misc.ccf", true);
                 Directory.Delete(Paths.WorkingFolder_MiscCCF, true);
@@ -157,13 +157,7 @@ namespace FriishProduce.Injectors
 
             if (dir == Paths.WorkingFolder_DataCCF)
             {
-                string files = origROM != null ? $"Opera.arc {origROM}" : "Opera.arc";
-                foreach (var item in Directory.EnumerateFiles(dir))
-                    if (!files.Contains(Path.GetFileName(item)))
-                        files += $" {Path.GetFileName(item)}";
-
-
-                // Start application
+                string files = "Opera.arc";
                 var pInfo = new ProcessStartInfo
                 {
                     FileName = pPath,
@@ -177,26 +171,33 @@ namespace FriishProduce.Injectors
                 {
                     switch (ver)
                     {
+                        default:
                         case "v1":
-                            files = $"{origROM} Opera.arc config man.arc misc.ccf";
-                            break;
-                        case "v1-alt":
                             files = $"Opera.arc {origROM} config man.arc misc.ccf";
                             break;
+
+                        case "v1-alt":
+                            files = $"{origROM} Opera.arc config man.arc misc.ccf";
+                            break;
+
                         case "v2":
-                            files = $"Opera.arc {origROM} config home.csv man.arc misc.ccf";
+                            files = $"Opera.arc {origROM} config home.csv man.arc misc.ccf patch";
                             break;
+
                         case "v2-alt":
-                            files = $"{origROM} Opera.arc config home.csv man.arc misc.ccf";
+                            files = $"{origROM} Opera.arc config home.csv man.arc misc.ccf patch";
                             break;
+
                         case "v3":
-                            files = $"Opera.arc {origROM} config emu_m68kbase.rso home.csv man.arc md.rso misc.ccf se_vc.rso tsdevp.rso wii_vc.sel";
+                            files = $"Opera.arc {origROM} config emu_m68kbase.rso home.csv man.arc md.rso misc.ccf patch se_vc.rso tsdevp.rso wii_vc.sel";
                             break;
+
                         case "v3-alt":
-                            files = $"{origROM} Opera.arc config emu_m68kbase.rso home.csv man.arc md.rso misc.ccf se_vc.rso selectmenu.cat selectmenu.conf tsdevp.rso wii_vc.sel";
+                            files = $"{origROM} Opera.arc config emu_m68kbase.rso home.csv man.arc md.rso misc.ccf patch se_vc.rso selectmenu.cat selectmenu.conf tsdevp.rso wii_vc.sel";
                             break;
+
                         case "v3-sandk":
-                            files = $"Opera.arc config emu_m68kbase.rso home.csv man.arc md.rso misc.ccf {origROM} sandkui.rso se_vc.rso selectmenu.cat selectmenu.conf selectmenu.rso tsdevp.rso wii_vc.sel";
+                            files = $"Opera.arc config emu_m68kbase.rso home.csv man.arc md.rso misc.ccf patch {origROM} sandkui.rso se_vc.rso selectmenu.cat selectmenu.conf selectmenu.rso tsdevp.rso wii_vc.sel";
                             break;
                     }
 
@@ -205,7 +206,8 @@ namespace FriishProduce.Injectors
                         if (Path.GetFileName(item).Contains("patch"))
                             patch = true;
 
-                    pInfo.Arguments = patch ? files.Replace("misc.ccf", "misc.ccf patch") : files;
+                    if (!patch) files = files.Replace("misc.ccf patch", "misc.ccf");
+                    pInfo.Arguments = files;
                 }
                 else if (SMS && ver == "3")
                 {
@@ -213,6 +215,7 @@ namespace FriishProduce.Injectors
                     pInfo.Arguments = pInfo.Arguments.Replace("selectmenu.cat selectmenu.conf selectmenu.rso se_vc.rso", "se_vc.rso selectmenu.cat selectmenu.conf selectmenu.rso");
                 }
 
+                // Start application
                 using (Process p = Process.Start(pInfo))
                     p.WaitForExit();
             }
