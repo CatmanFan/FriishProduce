@@ -1296,13 +1296,6 @@ namespace FriishProduce
                         case Platforms.PCE:
                             {
                                 Injectors.PCE PCE = new Injectors.PCE { ROM = input[0] };
-                                foreach (var entry in db.GetList())
-                                {
-                                    if (entry["title"].ToString() == Bases.SelectedItem.ToString())
-                                        foreach (var item in Directory.GetFiles(Paths.Database, "*.*", SearchOption.AllDirectories))
-                                            if (item.Contains(entry["id"].ToString().ToUpper()))
-                                                PCE.LZ77 = entry["lz77"].ToString() == "yes";
-                                }
 
                                 PCE.ReplaceROM();
                                 PCE.SetConfig

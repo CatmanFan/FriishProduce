@@ -8,21 +8,20 @@ namespace FriishProduce.Injectors
     class PCE
     {
         public string ROM { get; set; }
-        public bool LZ77 { get; set; }
 
         public void ReplaceROM()
         {
             string rom = null;
-            foreach (string file in Directory.GetFiles(Paths.WorkingFolder_Content5))
-                if (Path.GetExtension(file).ToLower() == ".pce") rom = file;
+            foreach (string line in File.ReadAllLines(Paths.WorkingFolder_Content5 + "config.ini"))
+                if (line.Contains("ROM=")) rom = line.Replace("ROM=/", string.Empty).Replace("ROM=", string.Empty);
             
-            if (rom == null) throw new Exception(Program.Language.Get("m010"));
+            if (rom == null || !File.Exists(Paths.WorkingFolder_Content5 + rom)) throw new Exception(Program.Language.Get("m010"));
 
             // Maximum ROM limit allowed: ~2.5 MB
             if (File.ReadAllBytes(ROM).Length > 1048576 * 2.5)
                 throw new Exception(Program.Language.Get("m018"));
 
-            if (LZ77)
+            if (rom.Contains("LZ77"))
             {
                 string pPath = Paths.WorkingFolder + "wwcxtool.exe";
                 File.WriteAllBytes(pPath, Properties.Resources.WWCXTool);
@@ -60,14 +59,17 @@ namespace FriishProduce.Injectors
                                  bool Raster = false,
                                  bool NoFPA = true)
         {
-            string romcode = null;
-            foreach (string file in Directory.GetFiles(Paths.WorkingFolder_Content5))
-                if (Path.GetExtension(file).ToLower() == ".pce") romcode = Path.GetFileNameWithoutExtension(file);
+            string name = null;
+            string rom = null;
+            foreach (string line in File.ReadAllLines(Paths.WorkingFolder_Content5 + "config.ini"))
+                if (line.Contains("NAME=")) name = line;
+            foreach (string line in File.ReadAllLines(Paths.WorkingFolder_Content5 + "config.ini"))
+                if (line.Contains("ROM=")) rom = line;
 
             List<string> config = new List<string>()
             {
-                $"NAME={romcode}",
-                $"ROM={romcode}.PCE",
+                name,
+                rom,
                 $"BACKUPRAM={(BackupRAM ? "1" : "0")}",
                 "CHASEHQ=0",
                 $"MULTITAP={(Multitap ? "1" : "0")}",
