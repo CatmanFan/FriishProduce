@@ -1340,7 +1340,7 @@ namespace FriishProduce
                                     await Task.Run(() => { NeoGeo.InsertSaveTitle(target, saveTitle, Paths.WorkingFolder + "out.tpl"); });
                                 }
 
-                                await Task.Run(() => { Global.RemoveEmanual(); });
+                                if (DisableEmanual.Checked) await Task.Run(() => { Global.RemoveEmanual(); });
                                 await Task.Run(() => { U8.Pack(Paths.WorkingFolder_Content5, Paths.WorkingFolder + "00000005.app", false); });
                                 await Task.Run(() => { U8.Pack(Paths.WorkingFolder_Content6, NeoGeo.Target); });
                                 break;
