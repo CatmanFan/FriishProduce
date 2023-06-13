@@ -45,6 +45,7 @@ namespace FriishProduce
                 x.Get("SMD"),
                 x.Get("PCE"),
                 x.Get("NeoGeo"),
+                x.Get("MSX"),
                 x.Get("Flash")
             };
             foreach (var console in consoles) Console.Items.Add(console);
@@ -119,6 +120,10 @@ namespace FriishProduce
                         BrowseROM.Filter = x.Get("f_zip");
                         break;
 
+                    case Platforms.MSX:
+                        BrowseROM.Filter = x.Get("f_msx");
+                        break;
+
                     case Platforms.SMCD:
                         BrowseROM.Filter = x.Get("f_iso");
                         break;
@@ -188,6 +193,10 @@ namespace FriishProduce
 
                     case Platforms.NeoGeo:
                         Options_NeoGeo.Visible = true;
+                        SaveDataTitle.MaxLength = 64;
+                        break;
+
+                    case Platforms.MSX:
                         SaveDataTitle.MaxLength = 64;
                         break;
 
@@ -1343,6 +1352,27 @@ namespace FriishProduce
                                 if (DisableEmanual.Checked) await Task.Run(() => { Global.RemoveEmanual(); });
                                 await Task.Run(() => { U8.Pack(Paths.WorkingFolder_Content5, Paths.WorkingFolder + "00000005.app", false); });
                                 await Task.Run(() => { U8.Pack(Paths.WorkingFolder_Content6, NeoGeo.Target); });
+                                break;
+                            }
+
+                        case Platforms.MSX:
+                            {
+                                Injectors.MSX MSX = new Injectors.MSX { ROM = input[0] };
+
+                                MSX.ReplaceROM();
+
+                                if (Custom.Checked && MSX.GetSaveFile() != null)
+                                {
+                                    string target = MSX.GetSaveFile();
+
+                                    if (tImg.Get() && MSX.ExtractSaveTPL(target, Paths.WorkingFolder + "out.tpl"))
+                                        tImg.CreateSave(Platforms.MSX);
+
+                                    string saveTitle = SaveDataTitle.Text;
+                                    await Task.Run(() => { MSX.InsertSaveTitle(target, saveTitle, Paths.WorkingFolder + "out.tpl"); });
+                                }
+
+                                if (DisableEmanual.Checked) await Task.Run(() => { Global.RemoveEmanual(); });
                                 break;
                             }
                     }

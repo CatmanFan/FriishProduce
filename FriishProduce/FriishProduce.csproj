@@ -129,6 +129,7 @@
     <Compile Include="_classes\db_libretro.cs" />
     <Compile Include="_classes\injectors\flash.cs" />
     <Compile Include="_classes\global.cs" />
+    <Compile Include="_classes\injectors\msx.cs" />
     <Compile Include="_classes\injectors\n64.cs" />
     <Compile Include="_classes\injectors\neogeo.cs" />
     <Compile Include="_classes\injectors\nes.cs" />

@@ -218,11 +218,11 @@
     { "title": "International Karate (EUR)", "id": "C9YP" }
   ],
   "msx": [
-    { "title": "Metal Gear (JPN)", "id": "XAFJ", "sysarch": "MSX2" },
-    { "title": "Metal Gear 2: Solid Snake (JPN)", "id": "XAPJ", "sysarch": "MSX2" },
-    { "title": "Road Fighter (JPN)", "id": "XAGJ", "sysarch": "MSX1" },
-    { "title": "Space Manbow (JPN)", "id": "XAEJ", "sysarch": "MSX2" },
-    { "title": "Yie-Gah-koutei no Gyakush: Yie Ar Kung-Fu 2 (JPN)", "id": "XADJ", "sysarch": "MSX1" }
+    { "title": "Metal Gear (JPN)", "id": "XAFJ" },
+    { "title": "Metal Gear 2: Solid Snake (JPN)", "id": "XAPJ" },
+    { "title": "Road Fighter (JPN)", "id": "XAGJ" },
+    { "title": "Space Manbow (JPN)", "id": "XAEJ" },
+    { "title": "Yie-Gah-koutei no Gyakush: Yie Ar Kung-Fu 2 (JPN)", "id": "XADJ" }
   ],
   "flash": [
     { "title": "Flash Placeholder / Back in Nature", "id": "WNAP" }

@@ -235,7 +235,12 @@ namespace FriishProduce
                 "man.arc.zlib",
                 "manc.arc",
                 "html.arc",
-                "htmlc.arc"
+                "htmlc.arc",
+                "CHN.arc",
+                "EUR.arc",
+                "JPN.arc",
+                "KOR.arc",
+                "USA.arc"
             };
             var dummy = new byte[] { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
             // It is important to replace the file with a dummy byte array instead of simply deleting it, because otherwise it will break some WADs

@@ -83,6 +83,7 @@
     "f_sms": "Fichiers ROM de Sega Master System (*.sms)|*.sms",
     "f_smd": "Fichiers ROM de Sega Mega Drive / Genesis (*.bin, *.gen, *.smd)|*.bin;*.gen;*.smd",
     "f_pce": "Fichiers ROM de PC Engine / TurboGrafx-16 (*.pce)|*.pce",
+    "f_msx": "Fichiers ROM de MSX / MSX2 (*.rom, *.mx1, *.mx2)|*.rom;*.mx1;*.mx2",
   },
   "main": {
     "a000": "Bienvenue dans l'application FriishProduce (version {0}).\n\nPour commencer, sélectionner une platforme cible :",
