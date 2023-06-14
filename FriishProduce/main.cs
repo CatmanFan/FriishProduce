@@ -45,6 +45,7 @@ namespace FriishProduce
                 x.Get("SMD"),
                 x.Get("PCE"),
                 x.Get("NeoGeo"),
+                x.Get("MSX"),
                 x.Get("Flash")
             };
             foreach (var console in consoles) Console.Items.Add(console);
@@ -119,6 +120,10 @@ namespace FriishProduce
                         BrowseROM.Filter = x.Get("f_zip");
                         break;
 
+                    case Platforms.MSX:
+                        BrowseROM.Filter = x.Get("f_msx");
+                        break;
+
                     case Platforms.SMCD:
                         BrowseROM.Filter = x.Get("f_iso");
                         break;
@@ -191,6 +196,10 @@ namespace FriishProduce
                         SaveDataTitle.MaxLength = 64;
                         break;
 
+                    case Platforms.MSX:
+                        SaveDataTitle.MaxLength = 64;
+                        break;
+
                     case Platforms.Flash:
                         DisableEmanual.Visible = false;
                         Options_Flash.Visible = true;
@@ -214,6 +223,9 @@ namespace FriishProduce
                 NES_Palette.SelectedIndex = 0;
 
                 SEGA_SetConfig.Checked = false;
+
+                PCE_SetConfig.Checked = false;
+                PCE_CustomOptions.Enabled = false;
 
                 Flash_TotalSaveDataSize.SelectedIndex = 0;
                 Flash_FPS.SelectedIndex = 0;
@@ -956,6 +968,9 @@ namespace FriishProduce
                 case "AltCheckbox":
                     if (!ForwarderMode) VideoMode.Enabled = s.Checked;
                     break;
+                case "PCE_SetConfig":
+                    PCE_CustomOptions.Enabled = s.Checked;
+                    break;
             }
         }
 
@@ -1296,9 +1311,16 @@ namespace FriishProduce
                         case Platforms.PCE:
                             {
                                 Injectors.PCE PCE = new Injectors.PCE { ROM = input[0] };
+                                foreach (var entry in db.GetList())
+                                {
+                                    if (entry["title"].ToString() == Bases.SelectedItem.ToString())
+                                        foreach (var item in Directory.GetFiles(Paths.Database, "*.*", SearchOption.AllDirectories))
+                                            if (item.Contains(entry["id"].ToString().ToUpper()))
+                                                PCE.WAD_ID = entry["id"].ToString();
+                                }
 
                                 PCE.ReplaceROM();
-                                PCE.SetConfig
+                                if (PCE_SetConfig.Checked) PCE.SetConfig
                                     (PCE_Multitap.Checked,
                                      PCE_Pad5.Checked,
                                      PCE_BackupRAM.Checked,
@@ -1325,9 +1347,9 @@ namespace FriishProduce
                                            Paths.WorkingFolder + "00000005.app"
                                 };
 
-                                await Task.Run(() => { U8.Unpack(NeoGeo.Target, Paths.WorkingFolder_Content6); });
+                                await Task.Run(() => { U8.Unpack(NeoGeo.Target, Paths.WorkingFolder_Contents); });
 
-                                NeoGeo.InsertROM(File.Exists(Paths.WorkingFolder_Content6 + "game.bin.z"));
+                                NeoGeo.InsertROM(File.Exists(Paths.WorkingFolder_Contents + "game.bin.z"));
 
                                 if (Custom.Checked && NeoGeo.GetSaveFile() != null)
                                 {
@@ -1341,8 +1363,29 @@ namespace FriishProduce
                                 }
 
                                 if (DisableEmanual.Checked) await Task.Run(() => { Global.RemoveEmanual(); });
-                                await Task.Run(() => { U8.Pack(Paths.WorkingFolder_Content5, Paths.WorkingFolder + "00000005.app", false); });
-                                await Task.Run(() => { U8.Pack(Paths.WorkingFolder_Content6, NeoGeo.Target); });
+                                if (!NeoGeo.Target.Contains("00000005.app")) await Task.Run(() => { U8.Pack(Paths.WorkingFolder_Content5, Paths.WorkingFolder + "00000005.app", false); });
+                                await Task.Run(() => { U8.Pack(Paths.WorkingFolder_Contents, NeoGeo.Target); });
+                                break;
+                            }
+
+                        case Platforms.MSX:
+                            {
+                                Injectors.MSX MSX = new Injectors.MSX { ROM = input[0] };
+
+                                MSX.ReplaceROM();
+
+                                if (Custom.Checked && MSX.GetSaveFile() != null)
+                                {
+                                    string target = MSX.GetSaveFile();
+
+                                    if (tImg.Get() && MSX.ExtractSaveTPL(target, Paths.WorkingFolder + "out.tpl"))
+                                        tImg.CreateSave(Platforms.MSX);
+
+                                    string saveTitle = SaveDataTitle.Text;
+                                    await Task.Run(() => { MSX.InsertSaveTitle(target, saveTitle, Paths.WorkingFolder + "out.tpl"); });
+                                }
+
+                                if (DisableEmanual.Checked) await Task.Run(() => { Global.RemoveEmanual(); });
                                 break;
                             }
                     }

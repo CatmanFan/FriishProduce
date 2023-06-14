@@ -96,7 +96,8 @@
     "f_n64": "닌텐도 64 ROM 파일 (*.n64, *.v64, *.z64)|*.n64;*.v64;*.z64",
     "f_sms": "마스터 시스템 ROM 파일 (*.sms)|*.sms",
     "f_smd": "메가드라이브/제네시스 ROM 파일 (*.bin, *.gen, *.smd)|*.bin;*.gen;*.smd",
-    "f_pce": "TurboGrafx-16/PC 엔진 ROM 파일 (*.pce)|*.pce",   
+    "f_pce": "TurboGrafx-16/PC 엔진 ROM 파일 (*.pce)|*.pce",
+    "f_n64": "MSX1/MSX2 ROM 파일 (*.rom, *.mx1, *.mx2)|*.rom;*.mx1;*.mx2",
     "f_vba": "게임보이/게임보이 컬러/게임보이 어드밴스 ROM 파일 (*.gb, *.gbc, *.gba)|*.gb;*.gbc;*.gba"
   },
   "main": {

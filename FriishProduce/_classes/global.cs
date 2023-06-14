@@ -235,7 +235,12 @@ namespace FriishProduce
                 "man.arc.zlib",
                 "manc.arc",
                 "html.arc",
-                "htmlc.arc"
+                "htmlc.arc",
+                "CHN.arc",
+                "EUR.arc",
+                "JPN.arc",
+                "KOR.arc",
+                "USA.arc"
             };
             var dummy = new byte[] { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
             // It is important to replace the file with a dummy byte array instead of simply deleting it, because otherwise it will break some WADs
@@ -250,9 +255,9 @@ namespace FriishProduce
                     if (file.EndsWith(item)) File.WriteAllBytes(file, dummy);
             }
 
-            if (Directory.Exists(Paths.WorkingFolder_Content6))
+            if (Directory.Exists(Paths.WorkingFolder_Contents))
             {
-                foreach (var file in Directory.GetFiles(Paths.WorkingFolder_Content6, "*.*", SearchOption.AllDirectories))
+                foreach (var file in Directory.GetFiles(Paths.WorkingFolder_Contents, "*.*", SearchOption.AllDirectories))
                 {
                     foreach (var item in emanualFiles)
                         if (file.EndsWith(item)) File.WriteAllBytes(file, dummy);

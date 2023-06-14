@@ -33,11 +33,11 @@ namespace FriishProduce
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.a000 = new System.Windows.Forms.Label();
             this.panel = new System.Windows.Forms.Panel();
-            this.Wait = new System.Windows.Forms.PictureBox();
             this.Back = new System.Windows.Forms.Button();
             this.Settings = new System.Windows.Forms.Button();
             this.Save = new System.Windows.Forms.Button();
             this.Next = new System.Windows.Forms.Button();
+            this.Wait = new System.Windows.Forms.PictureBox();
             this.Console = new System.Windows.Forms.ComboBox();
             this.page1 = new System.Windows.Forms.Panel();
             this.icon = new System.Windows.Forms.PictureBox();
@@ -120,6 +120,8 @@ namespace FriishProduce
             this.BrowsePatch = new System.Windows.Forms.OpenFileDialog();
             this.BrowseImage = new System.Windows.Forms.OpenFileDialog();
             this.BackgroundWorker = new System.ComponentModel.BackgroundWorker();
+            this.PCE_CustomOptions = new System.Windows.Forms.Panel();
+            this.PCE_SetConfig = new System.Windows.Forms.CheckBox();
             this.panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Wait)).BeginInit();
             this.page1.SuspendLayout();
@@ -137,6 +139,7 @@ namespace FriishProduce
             this.Options_NES.SuspendLayout();
             this.Options_SEGA.SuspendLayout();
             this.Options_Flash.SuspendLayout();
+            this.PCE_CustomOptions.SuspendLayout();
             this.SuspendLayout();
             // 
             // a000
@@ -154,12 +157,6 @@ namespace FriishProduce
             resources.ApplyResources(this.panel, "panel");
             this.panel.Name = "panel";
             this.panel.Tag = "panel";
-            // 
-            // Wait
-            // 
-            resources.ApplyResources(this.Wait, "Wait");
-            this.Wait.Name = "Wait";
-            this.Wait.TabStop = false;
             // 
             // Back
             // 
@@ -205,6 +202,12 @@ namespace FriishProduce
             this.Next.Name = "Next";
             this.Next.UseVisualStyleBackColor = true;
             this.Next.Click += new System.EventHandler(this.Next_Click);
+            // 
+            // Wait
+            // 
+            resources.ApplyResources(this.Wait, "Wait");
+            this.Wait.Name = "Wait";
+            this.Wait.TabStop = false;
             // 
             // Console
             // 
@@ -527,7 +530,6 @@ namespace FriishProduce
             // page4
             // 
             this.page4.Controls.Add(this.NANDLoader);
-            this.page4.Controls.Add(this.Options_NeoGeo);
             this.page4.Controls.Add(this.RandomTID);
             this.page4.Controls.Add(this.VideoMode);
             this.page4.Controls.Add(this.RegionFree);
@@ -541,6 +543,7 @@ namespace FriishProduce
             this.page4.Controls.Add(this.Options_NES);
             this.page4.Controls.Add(this.Options_SEGA);
             this.page4.Controls.Add(this.Options_Flash);
+            this.page4.Controls.Add(this.Options_NeoGeo);
             resources.ApplyResources(this.page4, "page4");
             this.page4.Name = "page4";
             // 
@@ -634,12 +637,8 @@ namespace FriishProduce
             // 
             // Options_PCE
             // 
-            this.Options_PCE.Controls.Add(this.PCE_NoFPA);
-            this.Options_PCE.Controls.Add(this.PCE_Multitap);
-            this.Options_PCE.Controls.Add(this.PCE_Pad5);
-            this.Options_PCE.Controls.Add(this.PCE_HideOverscan);
-            this.Options_PCE.Controls.Add(this.PCE_Raster);
-            this.Options_PCE.Controls.Add(this.PCE_BackupRAM);
+            this.Options_PCE.Controls.Add(this.PCE_SetConfig);
+            this.Options_PCE.Controls.Add(this.PCE_CustomOptions);
             resources.ApplyResources(this.Options_PCE, "Options_PCE");
             this.Options_PCE.Name = "Options_PCE";
             // 
@@ -888,6 +887,25 @@ namespace FriishProduce
             // 
             resources.ApplyResources(this.BrowseImage, "BrowseImage");
             // 
+            // PCE_CustomOptions
+            // 
+            this.PCE_CustomOptions.Controls.Add(this.PCE_NoFPA);
+            this.PCE_CustomOptions.Controls.Add(this.PCE_Multitap);
+            this.PCE_CustomOptions.Controls.Add(this.PCE_Pad5);
+            this.PCE_CustomOptions.Controls.Add(this.PCE_HideOverscan);
+            this.PCE_CustomOptions.Controls.Add(this.PCE_BackupRAM);
+            this.PCE_CustomOptions.Controls.Add(this.PCE_Raster);
+            resources.ApplyResources(this.PCE_CustomOptions, "PCE_CustomOptions");
+            this.PCE_CustomOptions.Name = "PCE_CustomOptions";
+            // 
+            // PCE_SetConfig
+            // 
+            resources.ApplyResources(this.PCE_SetConfig, "PCE_SetConfig");
+            this.PCE_SetConfig.Name = "PCE_SetConfig";
+            this.PCE_SetConfig.Tag = "g010";
+            this.PCE_SetConfig.UseVisualStyleBackColor = true;
+            this.PCE_SetConfig.CheckedChanged += new System.EventHandler(this.CheckedToggles);
+            // 
             // Main
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -895,10 +913,10 @@ namespace FriishProduce
             resources.ApplyResources(this, "$this");
             this.Controls.Add(this.Wait);
             this.Controls.Add(this.panel);
+            this.Controls.Add(this.page4);
             this.Controls.Add(this.page3);
             this.Controls.Add(this.page2);
             this.Controls.Add(this.page1);
-            this.Controls.Add(this.page4);
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
@@ -934,6 +952,8 @@ namespace FriishProduce
             this.Options_SEGA.PerformLayout();
             this.Options_Flash.ResumeLayout(false);
             this.Options_Flash.PerformLayout();
+            this.PCE_CustomOptions.ResumeLayout(false);
+            this.PCE_CustomOptions.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1030,6 +1050,8 @@ namespace FriishProduce
         private System.Windows.Forms.Panel Options_NeoGeo;
         private System.Windows.Forms.CheckBox NeoGeo_BIOS;
         private System.Windows.Forms.ComboBox NANDLoader;
+        private System.Windows.Forms.CheckBox PCE_SetConfig;
+        private System.Windows.Forms.Panel PCE_CustomOptions;
     }
 }
 

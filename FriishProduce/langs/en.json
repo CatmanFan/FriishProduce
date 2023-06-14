@@ -97,6 +97,7 @@
     "f_sms": "Master System ROM files (*.sms)|*.sms",
     "f_smd": "Mega Drive/Genesis ROM files (*.bin, *.gen, *.smd)|*.bin;*.gen;*.smd",
     "f_pce": "TurboGrafx-16/PC Engine ROM files (*.pce)|*.pce",
+    "f_msx": "MSX1/MSX2 ROM files (*.rom, *.mx1, *.mx2)|*.rom;*.mx1;*.mx2",
     "f_vba": "Game Boy/Game Boy Color/Game Boy Advance ROM files (*.gb, *.gbc, *.gba)|*.gb;*.gbc;*.gba"
   },
   "main": {

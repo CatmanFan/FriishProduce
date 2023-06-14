@@ -34,7 +34,8 @@
     "SMCD": "Sega Mega CD / Sega CD",
     "PCE": "PC Engine / TurboGrafx-16",
     "PCECD": "PC Engine CD / TurboGrafx-16 CD",
-    "NeoGeo": "SNK NEO-GEO",
+    "NeoGeo": "SNK Neo-Geo",
+    "MSX": "MSX / MSX2",
   },
   "settings": {
     "s000": "Logiciel",
@@ -83,6 +84,7 @@
     "f_sms": "Fichiers ROM de Sega Master System (*.sms)|*.sms",
     "f_smd": "Fichiers ROM de Sega Mega Drive / Genesis (*.bin, *.gen, *.smd)|*.bin;*.gen;*.smd",
     "f_pce": "Fichiers ROM de PC Engine / TurboGrafx-16 (*.pce)|*.pce",
+    "f_msx": "Fichiers ROM de MSX / MSX2 (*.rom, *.mx1, *.mx2)|*.rom;*.mx1;*.mx2",
   },
   "main": {
     "a000": "Bienvenue dans l'application FriishProduce (version {0}).\n\nPour commencer, sélectionner une platforme cible :",

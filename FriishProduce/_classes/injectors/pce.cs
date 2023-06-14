@@ -8,6 +8,7 @@ namespace FriishProduce.Injectors
     class PCE
     {
         public string ROM { get; set; }
+        public string WAD_ID { get; set; }
 
         public void ReplaceROM()
         {
@@ -75,17 +76,17 @@ namespace FriishProduce.Injectors
                 name,
                 rom,
                 $"BACKUPRAM={(BackupRAM ? "1" : "0")}",
-                "CHASEHQ=0",
                 $"MULTITAP={(Multitap ? "1" : "0")}",
                 "HDS=0",
                 $"RASTER={(Raster ? "1" : "0")}",
-                "POPULUS=0",
                 "SPRLINE=0",
                 $"PAD5={(Pad5 ? "1" : "0")}",
-                $"NOFPA={(NoFPA ? "1" : "0")}",
+                $"NOFPA={(NoFPA ? "1" : "0")}"
             };
             
             if (HideOverscan) config.Add("HIDEOVERSCAN=1");
+            if (WAD_ID.ToUpper().StartsWith("PAC") || WAD_ID.ToUpper().StartsWith("PBE")) config.Add("DUNGEXPE=1");
+            if (WAD_ID.ToUpper().StartsWith("PC2")) config.Add("CHASEHQ=1");
 
             File.WriteAllLines(Paths.WorkingFolder_Content5 + "config.ini", config.ToArray());
         }

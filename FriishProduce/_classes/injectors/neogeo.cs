@@ -207,7 +207,7 @@ namespace FriishProduce.Injectors
             BIOS.Clear();
 
             // Get BIOS directly from game.bin
-            var orig = File.ReadAllBytes(Paths.WorkingFolder_Content6 + "game.bin");
+            var orig = File.ReadAllBytes(Paths.WorkingFolder_Contents + "game.bin");
             var origBIOS = orig.Skip(orig.Length - 131072).Take(131072);
 
             BIOS.AddRange(origBIOS);
@@ -254,7 +254,7 @@ namespace FriishProduce.Injectors
                 GameBin.AddRange(M);
             }
 
-            File.WriteAllBytes(Paths.WorkingFolder_Content6 + "game.bin", GameBin.ToArray());
+            File.WriteAllBytes(Paths.WorkingFolder_Contents + "game.bin", GameBin.ToArray());
 
             // ------------------------- //
 
@@ -270,7 +270,7 @@ namespace FriishProduce.Injectors
 
         public string GetSaveFile()
         {
-            return File.Exists(Paths.WorkingFolder_Content6 + "banner.bin") ? Paths.WorkingFolder_Content6 + "banner.bin" :
+            return File.Exists(Paths.WorkingFolder_Contents + "banner.bin") ? Paths.WorkingFolder_Contents + "banner.bin" :
                 File.Exists(Paths.WorkingFolder_Content5 + "banner.bin") ? Paths.WorkingFolder_Content5 + "banner.bin" : null;
         }
 

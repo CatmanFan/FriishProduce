@@ -218,6 +218,7 @@ namespace FriishProduce
                         tplPath = Paths.WorkingFolder_Content5 + "savedata.tpl";
                         break;
                     case Platforms.NeoGeo:
+                    case Platforms.MSX:
                         tplPath = Paths.WorkingFolder + "out.tpl";
                         embedded = true;
                         break;
@@ -305,7 +306,7 @@ namespace FriishProduce
                             img1.Save(sFiles[3]);
                         }
 
-                        else if (platform == Platforms.NeoGeo)
+                        else if (platform == Platforms.NeoGeo || platform == Platforms.MSX)
                         {
                             a.SetColorMatrix(new ColorMatrix() { Matrix33 = opacity4[1] });
                             g.DrawImage(img2, new Rectangle(0, 0, w, h), 0, 0, w, h, GraphicsUnit.Pixel, a);
