@@ -86,7 +86,8 @@ namespace FriishProduce.Injectors
             
             if (HideOverscan) config.Add("HIDEOVERSCAN=1");
             if (WAD_ID.ToUpper().StartsWith("PAC") || WAD_ID.ToUpper().StartsWith("PBE")) config.Add("DUNGEXPE=1");
-            if (WAD_ID.ToUpper().StartsWith("PC2")) config.Add("CHASEHQ=1");
+            else if (WAD_ID.ToUpper().StartsWith("PC3") || WAD_ID.ToUpper().StartsWith("PDC")) config.Add("SGENABLE=1");
+            else if (WAD_ID.ToUpper().StartsWith("PC2")) config.Add("CHASEHQ=1");
 
             File.WriteAllLines(Paths.WorkingFolder_Content5 + "config.ini", config.ToArray());
         }

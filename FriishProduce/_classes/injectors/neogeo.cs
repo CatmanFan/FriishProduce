@@ -20,6 +20,30 @@ namespace FriishProduce.Injectors
         private List<byte> C { get; set; }
         private List<byte> BIOS { get; set; }
 
+        public static string CheckTarget()
+        {
+            var files = new List<string>
+            {
+                Paths.WorkingFolder + "00000005.app",
+                Paths.WorkingFolder + "00000006.app",
+                Paths.WorkingFolder + "00000007.app"
+            };
+            var filesize = new List<int>();
+
+            foreach (var item in files) if (!File.Exists(item)) files.Remove(item);
+            foreach (var item in files) filesize.Add(File.ReadAllBytes(item).Length);
+
+            if (filesize.Count == 3)
+            {
+                if (filesize[0] > filesize[1] && filesize[0] > filesize[2]) return files[0];
+                else if (filesize[1] > filesize[0] && filesize[1] > filesize[2]) return files[1];
+                else return files[2];
+            }
+            else if (filesize.Count == 2)
+                if (filesize[0] > filesize[1]) return files[0]; else return files[1];
+            else return files[0];
+        }
+
         public void InsertROM(bool ZLIB = false)
         {
             Directory.CreateDirectory(Paths.WorkingFolder_ROM);

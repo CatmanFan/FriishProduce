@@ -1338,19 +1338,14 @@ namespace FriishProduce
                                 {
                                     ZIP = input[0],
                                     BIOSPath = string.IsNullOrWhiteSpace(input[1]) ? "" : input[1],
-                                    Target = File.ReadAllBytes(Paths.WorkingFolder + "00000007.app").Length
-                                           > File.ReadAllBytes(Paths.WorkingFolder + "00000005.app").Length ?
-                                           Paths.WorkingFolder + "00000007.app" :
-                                           File.ReadAllBytes(Paths.WorkingFolder + "00000006.app").Length
-                                           > File.ReadAllBytes(Paths.WorkingFolder + "00000005.app").Length ?
-                                           Paths.WorkingFolder + "00000006.app" :
-                                           Paths.WorkingFolder + "00000005.app"
+                                    Target = Injectors.NeoGeo.CheckTarget()
                                 };
 
                                 await Task.Run(() => { U8.Unpack(NeoGeo.Target, Paths.WorkingFolder_Contents); });
 
                                 NeoGeo.InsertROM(File.Exists(Paths.WorkingFolder_Contents + "game.bin.z"));
 
+                                if (Custom.Checked && !File.Exists(Paths.WorkingFolder_Contents + "banner.bin")) await Task.Run(() => { U8.Pack(Paths.WorkingFolder_Content5, Paths.WorkingFolder + "00000005.app", false); });
                                 if (Custom.Checked && NeoGeo.GetSaveFile() != null)
                                 {
                                     string target = NeoGeo.GetSaveFile();
@@ -1363,7 +1358,7 @@ namespace FriishProduce
                                 }
 
                                 if (DisableEmanual.Checked) await Task.Run(() => { Global.RemoveEmanual(); });
-                                if (!NeoGeo.Target.Contains("00000005.app")) await Task.Run(() => { U8.Pack(Paths.WorkingFolder_Content5, Paths.WorkingFolder + "00000005.app", false); });
+                                if (!NeoGeo.Target.Contains("00000005.app") && Custom.Checked) await Task.Run(() => { U8.Pack(Paths.WorkingFolder_Content5, Paths.WorkingFolder + "00000005.app", false); });
                                 await Task.Run(() => { U8.Pack(Paths.WorkingFolder_Contents, NeoGeo.Target); });
                                 break;
                             }
