@@ -249,10 +249,13 @@ namespace FriishProduce
             // Opera.arc is the Opera software environment needed to display emanual files (https://wiibrew.org/wiki//tmp/opera.arc)
             // Deleting or modifying it will also break certain WADs, so it is left as it is
 
-            foreach (var file in Directory.GetFiles(Paths.WorkingFolder_Content5, "*.*", SearchOption.AllDirectories))
+            if (Directory.Exists(Paths.WorkingFolder_Content5))
             {
-                foreach (var item in emanualFiles)
-                    if (file.EndsWith(item)) File.WriteAllBytes(file, dummy);
+                foreach (var file in Directory.GetFiles(Paths.WorkingFolder_Content5, "*.*", SearchOption.AllDirectories))
+                {
+                    foreach (var item in emanualFiles)
+                        if (file.EndsWith(item)) File.WriteAllBytes(file, dummy);
+                }
             }
 
             if (Directory.Exists(Paths.WorkingFolder_Contents))
