@@ -1184,7 +1184,7 @@ namespace FriishProduce
                 // ----------------------------------------------------
                 if (currentConsole != Platforms.Flash && !ForwarderMode)
                 {
-                    await Task.Run(() => { WiiCS.UnpackU8(Paths.WorkingFolder + "00000005.app", Paths.WorkingFolder_Content5); });
+                    if (currentConsole != Platforms.NeoGeo) await Task.Run(() => { WiiCS.UnpackU8(Paths.WorkingFolder + "00000005.app", Paths.WorkingFolder_Content5); });
 
                     if (DisableEmanual.Checked) await Task.Run(() => { Global.RemoveEmanual(); });
                     if (Custom.Checked && tImg.Get()) await Task.Run(() => { tImg.CreateSave(currentConsole); });
@@ -1345,7 +1345,7 @@ namespace FriishProduce
 
                                 NeoGeo.InsertROM(File.Exists(Paths.WorkingFolder_Contents + "game.bin.z"));
 
-                                if (Custom.Checked && !File.Exists(Paths.WorkingFolder_Contents + "banner.bin")) await Task.Run(() => { U8.Pack(Paths.WorkingFolder_Content5, Paths.WorkingFolder + "00000005.app", false); });
+                                if (Custom.Checked && !File.Exists(Paths.WorkingFolder_Contents + "banner.bin")) await Task.Run(() => { WiiCS.UnpackU8(Paths.WorkingFolder + "00000005.app", Paths.WorkingFolder_Content5); });
                                 if (Custom.Checked && NeoGeo.GetSaveFile() != null)
                                 {
                                     string target = NeoGeo.GetSaveFile();
@@ -1356,9 +1356,9 @@ namespace FriishProduce
                                     string saveTitle = SaveDataTitle.Text;
                                     await Task.Run(() => { NeoGeo.InsertSaveTitle(target, saveTitle, Paths.WorkingFolder + "out.tpl"); });
                                 }
-
                                 if (DisableEmanual.Checked) await Task.Run(() => { Global.RemoveEmanual(); });
-                                if (!NeoGeo.Target.Contains("00000005.app") && Custom.Checked) await Task.Run(() => { U8.Pack(Paths.WorkingFolder_Content5, Paths.WorkingFolder + "00000005.app", false); });
+                                if (!NeoGeo.Target.Contains("00000005.app") && Custom.Checked) await Task.Run(() => { WiiCS.PackU8(Paths.WorkingFolder_Content5, Paths.WorkingFolder + "00000005.app"); });
+
                                 await Task.Run(() => { U8.Pack(Paths.WorkingFolder_Contents, NeoGeo.Target); });
                                 break;
                             }
@@ -1385,7 +1385,7 @@ namespace FriishProduce
                             }
                     }
 
-                    await Task.Run(() => { WiiCS.PackU8(Paths.WorkingFolder_Content5, Paths.WorkingFolder + "00000005.app"); });
+                    if (currentConsole != Platforms.NeoGeo) await Task.Run(() => { WiiCS.PackU8(Paths.WorkingFolder_Content5, Paths.WorkingFolder + "00000005.app"); });
                 }
 
                 // ----------------------------------------------------
