@@ -13,7 +13,7 @@ namespace FriishProduce.Injectors
         public string BIOSPath { get; set; }
         public string Target { get; set; }
 
-        private List<byte> P { get; set; }
+        private byte[] P { get; set; }
         private List<byte> M { get; set; }
         private List<byte> V { get; set; }
         private List<byte> S { get; set; }
@@ -72,120 +72,6 @@ namespace FriishProduce.Injectors
 
             // ------------------------- //
 
-            var P1 = new List<byte>();
-            P = new List<byte>();
-
-            foreach (var file in Directory.EnumerateFiles(Paths.WorkingFolder_ROM))
-            {
-                if (char.ToLower(file[file.Length - 6]) == 'p')
-                    P1.AddRange(File.ReadAllBytes(file));
-            }
-
-            if (P1.Count >= 2097152)
-            {
-                var P_temp = P1.ToArray();
-                for (int i = 1; i < P_temp.Length; i += 2)
-                {
-                    (P_temp[i - 1], P_temp[i]) = (P_temp[i], P_temp[i - 1]);
-                }
-                P.AddRange(P_temp);
-            }
-
-            else P.AddRange(P1);
-
-            // ------------------------- //
-
-            M = new List<byte>();
-
-            foreach (var file in Directory.EnumerateFiles(Paths.WorkingFolder_ROM))
-            {
-                if (char.ToLower(file[file.Length - 6]) == 'm')
-                    M.AddRange(File.ReadAllBytes(file));
-            }
-
-            // ------------------------- //
-
-            V = new List<byte>();
-
-            foreach (var file in Directory.EnumerateFiles(Paths.WorkingFolder_ROM))
-            {
-                if (char.ToLower(file[file.Length - 6]) == 'v')
-                    V.AddRange(File.ReadAllBytes(file));
-            }
-
-            // ------------------------- //
-
-            S = new List<byte>();
-
-            foreach (var file in Directory.EnumerateFiles(Paths.WorkingFolder_ROM))
-            {
-                if (char.ToLower(file[file.Length - 6]) == 's')
-                    S.AddRange(File.ReadAllBytes(file));
-            }
-
-            // ------------------------- //
-
-            // Documentation from Corsario
-            // "There are some games with an non-standard C file order, and after reorganizing the bytes it's necessary to do a unknown puzzle
-            // with that files and find the suitable order, each strange game have a custom combination."
-            // Ex.: Fatal Fury 2, Kizuna Encounter, KOF '96"
-
-            var C1 = new byte[] { 0x00 };
-            var C2 = new byte[] { 0x00 };
-            C = new List<byte>();
-            int C_count = 0;
-
-            foreach (var file in Directory.EnumerateFiles(Paths.WorkingFolder_ROM))
-                if (char.ToLower(file[file.Length - 6]) == 'c') C_count++;
-
-            // Loop
-            for (int x = 0; x <= C_count; x += 2)
-            {
-                foreach (var file in Directory.EnumerateFiles(Paths.WorkingFolder_ROM))
-                {
-                    if (Path.GetFileName(file).ToLower().Contains($"c{x + 1}.bin"))
-                    {
-                        C1 = File.ReadAllBytes(file);
-                        for (int i = 1; i < C1.Length; i += 2)
-                        {
-                            (C1[i - 1], C1[i]) = (C1[i], C1[i - 1]);
-                        }
-                    }
-                }
-
-                foreach (var file in Directory.EnumerateFiles(Paths.WorkingFolder_ROM))
-                {
-                    if (Path.GetFileName(file).ToLower().Contains($"c{x + 2}.bin"))
-                    {
-                        C2 = File.ReadAllBytes(file);
-                        for (int i = 1; i < C2.Length; i += 2)
-                        {
-                            (C2[i - 1], C2[i]) = (C2[i], C2[i - 1]);
-                        }
-                    }
-                }
-
-                if (C1.Length > 5 && C2.Length > 5)
-                {
-                    var C_temp = new byte[C1.Length + C2.Length];
-                    for (int i = 0; i < C_temp.Length / 2; i += 2)
-                    {
-                        C_temp[2 * i] = C1[i];
-                        C_temp[2 * i + 1] = C1[i + 1];
-                        C_temp[2 * i + 2] = C2[i];
-                        C_temp[2 * i + 3] = C2[i + 1];
-                    }
-
-                    C.AddRange(C_temp);
-                }
-            }
-
-            var C_swap = C.ToArray();
-            for (int i = 3; i < C_swap.Length; i += 4)
-            {
-                (C_swap[i - 3], C_swap[i - 2], C_swap[i - 1], C_swap[i]) = (C_swap[i - 2], C_swap[i], C_swap[i - 3], C_swap[i - 1]);
-            }
-
             // TO-DO: Do byteswap for each byte with BIOS
             BIOS = new List<byte>();
             if (string.IsNullOrWhiteSpace(BIOSPath) || !File.Exists(BIOSPath))
@@ -226,31 +112,150 @@ namespace FriishProduce.Injectors
                 }
 
                 BIOS.AddRange(newBIOS);
-                goto Header;
+                goto Next;
             }
 
-        RetrieveOrig:
-            BIOS.Clear();
+            RetrieveOrig:
+                BIOS.Clear();
 
-            // Get BIOS directly from game.bin
-            var orig = File.ReadAllBytes(Paths.WorkingFolder_Contents + "game.bin");
-            var origBIOS = orig.Skip(orig.Length - 131072).Take(131072);
+                // Get BIOS directly from game.bin
+                if (!ZLIB)
+                {
+                    var orig = File.ReadAllBytes(Paths.WorkingFolder_Contents + "game.bin");
+                    var origBIOS = orig.Skip(orig.Length - 131072).Take(131072);
+                    BIOS.AddRange(origBIOS);
+                }
+                else throw new FileNotFoundException();
 
-            BIOS.AddRange(origBIOS);
-            goto Header;
+                goto Next;
+            
+            Next:
+            // ------------------------- //
 
-        Header:
+            var P1 = new List<byte>();
+            P = new byte[1];
+
+            foreach (var file in Directory.EnumerateFiles(Paths.WorkingFolder_ROM))
+            {
+                if (char.ToLower(file[file.Length - 6]) == 'p')
+                    P1.AddRange(File.ReadAllBytes(file));
+            }
+
+            if (P1.Count > 2000000)
+            {
+                var P_temp = P1.ToArray();
+                for (int i = 1; i < P_temp.Length; i += 2)
+                    (P_temp[i - 1], P_temp[i]) = (P_temp[i], P_temp[i - 1]);
+
+                P = P_temp;
+            }
+            else
+                P = P1.ToArray();
+
+            // ------------------------- //
+
+            M = new List<byte>();
+
+            foreach (var file in Directory.EnumerateFiles(Paths.WorkingFolder_ROM))
+            {
+                if (char.ToLower(file[file.Length - 6]) == 'm')
+                    M.AddRange(File.ReadAllBytes(file));
+            }
+
+            // ------------------------- //
+
+            V = new List<byte>();
+
+            foreach (var file in Directory.EnumerateFiles(Paths.WorkingFolder_ROM))
+            {
+                if (char.ToLower(file[file.Length - 6]) == 'v')
+                    V.AddRange(File.ReadAllBytes(file));
+            }
+
+            // ------------------------- //
+
+            S = new List<byte>();
+
+            foreach (var file in Directory.EnumerateFiles(Paths.WorkingFolder_ROM))
+            {
+                if (char.ToLower(file[file.Length - 6]) == 's')
+                    S.AddRange(File.ReadAllBytes(file));
+            }
+
+            // ------------------------- //
+
+            C = new List<byte>();
+            int C_count = 0;
+
+            foreach (var file in Directory.EnumerateFiles(Paths.WorkingFolder_ROM))
+                if (char.ToLower(file[file.Length - 6]) == 'c') C_count++;
+
+            // Documentation from Corsario
+            // "There are some games with an non-standard C file order, and after reorganizing the bytes it's necessary to do a unknown puzzle
+            // with that files and find the suitable order, each strange game have a custom combination."
+            // Ex.: Fatal Fury 2, Kizuna Encounter, KOF '96"
+
+            // Loop
+            for (int x = 0; x <= C_count; x += 2)
+            {
+                var C1 = new byte[1];
+                var C2 = new byte[1];
+
+                foreach (var file in Directory.EnumerateFiles(Paths.WorkingFolder_ROM))
+                    if (Path.GetFileName(file).ToLower().Contains($"c{x + 1}.bin"))
+                    {
+                        C1 = File.ReadAllBytes(file);
+
+                        // Byteswap
+                        for (int i = 1; i < C1.Length; i += 2)
+                            (C1[i - 1], C1[i]) = (C1[i], C1[i - 1]);
+                    }
+
+                foreach (var file in Directory.EnumerateFiles(Paths.WorkingFolder_ROM))
+                    if (Path.GetFileName(file).ToLower().Contains($"c{x + 2}.bin"))
+                    {
+                        C2 = File.ReadAllBytes(file);
+
+                        // Byteswap
+                        for (int i = 1; i < C2.Length; i += 2)
+                            (C2[i - 1], C2[i]) = (C2[i], C2[i - 1]);
+                    }
+
+                if (C1.Length > 5 && C2.Length > 5)
+                {
+                    var C_temp = new byte[C1.Length + C2.Length];
+                    for (int i = 0; i < C_temp.Length / 2; i += 2)
+                    {
+                        C_temp[2 * i] = C1[i];
+                        C_temp[2 * i + 1] = C1[i + 1];
+                        C_temp[2 * i + 2] = C2[i];
+                        C_temp[2 * i + 3] = C2[i + 1];
+                    }
+
+                    C.AddRange(C_temp);
+                }
+            }
+
+            var C_swap = C.ToArray();
+            for (int i = 3; i < C_swap.Length; i += 4)
+            {
+                (C_swap[i - 3], C_swap[i - 2], C_swap[i - 1], C_swap[i]) = (C_swap[i - 2], C_swap[i], C_swap[i - 3], C_swap[i - 1]);
+            }
+
+            // ------------------------- //
+
+            // Header
             string h = "00000040"
-                + P.Count.ToString("X8")
-                + (P.Count + 64).ToString("X8")
+                + P.Length.ToString("X8")
+                + (P.Length + 64).ToString("X8")
                 + M.Count.ToString("X8")
-                + (P.Count + M.Count + 64).ToString("X8")
+                + (P.Length + M.Count + 64).ToString("X8")
                 + V.Count.ToString("X8") + "00000000000000000000000000000000"
-                + (P.Count + M.Count + V.Count + 64).ToString("X8")
+                + (P.Length + M.Count + V.Count + 64).ToString("X8")
                 + S.Count.ToString("X8")
-                + (P.Count + M.Count + V.Count + S.Count + 64).ToString("X8")
+                + (P.Length + M.Count + V.Count + S.Count + 64).ToString("X8")
                 + C.Count.ToString("X8")
-                + (P.Count + M.Count + V.Count + S.Count + C.Count + 64).ToString("X8")
+                + (P.Length + M.Count + V.Count + S.Count + C.Count + 64).ToString("X8")
                 + BIOS.Count.ToString("X8");
             var Header = new List<byte>();
             
