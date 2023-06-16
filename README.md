@@ -50,10 +50,11 @@ Currently supported:
   * **Shockwave/Adobe Flash**
 
 <!-- ## To-Do
-- [ ] MSX+C64
+- [ ] C64
 - [ ] Add emulators and platforms for use in forwarders:
   - [ ] Game Boy/Game Boy Color/Game Boy Advance
   * (need to implement custom banner and determine what type of WADs should be used)
+- [ ] Fix reported Neo-Geo injection errors
 - [ ] Multiple SWF support for Adobe Flash.
 - [ ] TurboGrafx-16 CD VC injection support. -->
 

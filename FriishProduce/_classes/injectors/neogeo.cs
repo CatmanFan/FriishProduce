@@ -46,6 +46,8 @@ namespace FriishProduce.Injectors
 
         public void InsertROM(bool ZLIB = false)
         {
+            if (ZLIB) throw new Exception("ZLIB not supported yet!");
+
             Directory.CreateDirectory(Paths.WorkingFolder_ROM);
             ZipFile.ExtractToDirectory(ZIP, Paths.WorkingFolder_ROM);
             bool IsNG = false;

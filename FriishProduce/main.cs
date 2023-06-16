@@ -1345,19 +1345,21 @@ namespace FriishProduce
 
                                 NeoGeo.InsertROM(File.Exists(Paths.WorkingFolder_Contents + "game.bin.z"));
 
-                                if (Custom.Checked && !File.Exists(Paths.WorkingFolder_Contents + "banner.bin")) await Task.Run(() => { WiiCS.UnpackU8(Paths.WorkingFolder + "00000005.app", Paths.WorkingFolder_Content5); });
-                                if (Custom.Checked && NeoGeo.GetSaveFile() != null)
+                                if (Custom.Checked)
                                 {
+                                    bool SepBanner = !File.Exists(Paths.WorkingFolder_Contents + "banner.bin");
+                                    if (SepBanner) await Task.Run(() => { WiiCS.UnpackU8(Paths.WorkingFolder + "00000005.app", Paths.WorkingFolder_Content5); });
+                                    
                                     string target = NeoGeo.GetSaveFile();
+                                    if (target != null)
+                                    {
+                                        if (tImg.Get() && NeoGeo.ExtractSaveTPL(target, Paths.WorkingFolder + "out.tpl")) tImg.CreateSave(Platforms.NeoGeo);
+                                        NeoGeo.InsertSaveTitle(target, SaveDataTitle.Text, Paths.WorkingFolder + "out.tpl");
+                                    }
 
-                                    if (tImg.Get() && NeoGeo.ExtractSaveTPL(target, Paths.WorkingFolder + "out.tpl"))
-                                        tImg.CreateSave(Platforms.NeoGeo);
-
-                                    string saveTitle = SaveDataTitle.Text;
-                                    await Task.Run(() => { NeoGeo.InsertSaveTitle(target, saveTitle, Paths.WorkingFolder + "out.tpl"); });
+                                    if (SepBanner && Directory.Exists(Paths.WorkingFolder_Content5)) await Task.Run(() => { WiiCS.PackU8(Paths.WorkingFolder_Content5, Paths.WorkingFolder + "00000005.app"); });
                                 }
                                 if (DisableEmanual.Checked) await Task.Run(() => { Global.RemoveEmanual(); });
-                                if (!NeoGeo.Target.Contains("00000005.app") && Custom.Checked) await Task.Run(() => { WiiCS.PackU8(Paths.WorkingFolder_Content5, Paths.WorkingFolder + "00000005.app"); });
 
                                 await Task.Run(() => { U8.Pack(Paths.WorkingFolder_Contents, NeoGeo.Target); });
                                 break;
@@ -1368,19 +1370,20 @@ namespace FriishProduce
                                 Injectors.MSX MSX = new Injectors.MSX { ROM = input[0] };
 
                                 MSX.ReplaceROM();
-
-                                if (Custom.Checked && MSX.GetSaveFile() != null)
-                                {
-                                    string target = MSX.GetSaveFile();
-
-                                    if (tImg.Get() && MSX.ExtractSaveTPL(target, Paths.WorkingFolder + "out.tpl"))
-                                        tImg.CreateSave(Platforms.MSX);
-
-                                    string saveTitle = SaveDataTitle.Text;
-                                    await Task.Run(() => { MSX.InsertSaveTitle(target, saveTitle, Paths.WorkingFolder + "out.tpl"); });
-                                }
-
                                 if (DisableEmanual.Checked) await Task.Run(() => { Global.RemoveEmanual(); });
+
+                                if (Custom.Checked)
+                                { 
+                                    string target = MSX.GetSaveFile();
+                                    if (target != null)
+                                    {
+                                        if (tImg.Get() && MSX.ExtractSaveTPL(target, Paths.WorkingFolder + "out.tpl"))
+                                            tImg.CreateSave(Platforms.MSX);
+
+                                        string saveTitle = SaveDataTitle.Text;
+                                        await Task.Run(() => { MSX.InsertSaveTitle(target, saveTitle, Paths.WorkingFolder + "out.tpl"); });
+                                    }
+                                }
                                 break;
                             }
                     }
