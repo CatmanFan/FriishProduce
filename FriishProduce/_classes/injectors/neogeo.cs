@@ -138,19 +138,19 @@ namespace FriishProduce.Injectors
             foreach (var file in Directory.EnumerateFiles(Paths.WorkingFolder_ROM))
             {
                 if (char.ToLower(file[file.Length - 6]) == 'p')
-                    P1.AddRange(File.ReadAllBytes(file));
+                {
+                    var b = File.ReadAllBytes(file);
+                    bool P1BinIs2MB = b.Length == 2097152 && Path.GetFileNameWithoutExtension(file).ToLower().Contains("p1");
+
+                    P1.AddRange(b);
+                    P = P1.ToArray();
+
+                    if (P1BinIs2MB)
+                        for (int i = 0; i < P.Length / 2; i++) (P[i + (P.Length / 2)], P[i]) = (P[i], P[i + (P.Length / 2)]);
+                }
             }
 
-            if (P1.Count > 2000000)
-            {
-                var P_temp = P1.ToArray();
-                for (int i = 1; i < P_temp.Length; i += 2)
-                    (P_temp[i - 1], P_temp[i]) = (P_temp[i], P_temp[i - 1]);
-
-                P = P_temp;
-            }
-            else
-                P = P1.ToArray();
+            for (int i = 1; i < P.Length; i += 2) (P[i - 1], P[i]) = (P[i], P[i - 1]);
 
             // ------------------------- //
 
