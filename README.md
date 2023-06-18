@@ -43,7 +43,9 @@ Currently supported:
   * **[FCE Ultra GX](https://github.com/dborth/fceugx)** (dborth et al.)
   * **[Snes9x-GX](https://github.com/dborth/snes9xgx)** (dborth et al.)
   <!-- * **[Visual Boy Advance GX](https://github.com/dborth/vbagx)** (dborth et al.) -->
-  * **[mupen64gc-fix94](https://github.com/FIX94/mupen64gc-fix94)** (Wii64 Team, forked by FIX94)
+  <!-- * **[mGBA Wii](https://github.com/mgba-emu/mgba)** (endrift et al.) -->
+  * **[Mupen64GC-FIX94](https://github.com/FIX94/mupen64gc-fix94)** (Wii64 Team, forked by FIX94)
+  <!-- * **[Genesis Plus GX](https://github.com/ekeeke/Genesis-Plus-GX)** (eke-eke) -->
   <!-- * **[WiiSXRX](https://github.com/niuus/WiiSXRX)** (niuus, forked from Mystro256's WiiSXR) -->
 
 * Other
@@ -54,7 +56,7 @@ Currently supported:
 - [ ] Add emulators and platforms for use in forwarders:
   - [ ] Game Boy/Game Boy Color/Game Boy Advance
   * (need to implement custom banner and determine what type of WADs should be used)
-- [ ] Fix reported Neo-Geo injection errors
+- [X] Fix reported Neo-Geo injection errors
 - [ ] Multiple SWF support for Adobe Flash.
 - [ ] TurboGrafx-16 CD VC injection support. -->
 
