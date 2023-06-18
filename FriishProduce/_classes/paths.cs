@@ -12,20 +12,20 @@ namespace FriishProduce
 
         // VC paths
         public static readonly string WorkingFolder = $"C:\\FriishProduce\\";
-        public static readonly string WorkingFolder_ROM = $"C:\\FriishProduce\\rom\\";
-        public static readonly string WorkingFolder_SD = $"C:\\FriishProduce\\SD\\";
         public static readonly string WorkingFolder_Contents = WorkingFolder + $"contents\\";
         public static readonly string WorkingFolder_Content4 = WorkingFolder + $"content4\\";
         public static readonly string WorkingFolder_Content5 = WorkingFolder + $"content5\\";
         public static readonly string WorkingFolder_DataCCF = WorkingFolder_Content5 + "data\\";
         public static readonly string WorkingFolder_MiscCCF = WorkingFolder_Content5 + "data\\misc\\";
 
-        // Forwarder/Flash paths
+        // Flash paths
         public static readonly string WorkingFolder_Content2 = WorkingFolder + $"content2\\";
         public static readonly string WorkingFolder_FlashSWF = WorkingFolder_Content2 + $"content\\menu.swf";
         public static readonly string WorkingFolder_FlashConfig = WorkingFolder_Content2 + $"config\\config.common.pcf";
 
         // Other
+        public static readonly string WorkingFolder_ROM = WorkingFolder + "rom\\";
+        public static readonly string WorkingFolder_SD = WorkingFolder + "SD\\";
         public static readonly string PatchedSuffix = "-patched";
         public static readonly string Images = WorkingFolder + "images\\";
     }

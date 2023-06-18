@@ -117,7 +117,7 @@ namespace FriishProduce.Forwarders
         {
             // Determine app index & reload contents
             w.BootIndex = 1;
-            w.RemoveAllContents();
+            if (w.NumOfContents > 0) w.RemoveAllContents();
             w.BannerApp = libWiiSharp.U8.Load(Paths.WorkingFolder + "00000000.app");
 
             // Add bootloader

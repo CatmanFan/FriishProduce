@@ -1184,7 +1184,9 @@ namespace FriishProduce
                 // ----------------------------------------------------
                 if (currentConsole != Platforms.Flash && !ForwarderMode)
                 {
+                    // Extract content5.app & relevant CCFs where needed
                     if (currentConsole != Platforms.NeoGeo) await Task.Run(() => { WiiCS.UnpackU8(Paths.WorkingFolder + "00000005.app", Paths.WorkingFolder_Content5); });
+                    if (currentConsole == Platforms.SMS || currentConsole == Platforms.SMD) new Injectors.SEGA().GetCCF(Custom.Checked);
 
                     if (DisableEmanual.Checked) await Task.Run(() => { Global.RemoveEmanual(); });
                     if (Custom.Checked && tImg.Get()) await Task.Run(() => { tImg.CreateSave(currentConsole); });
@@ -1274,7 +1276,6 @@ namespace FriishProduce
                         case Platforms.SMD:
                             {
                                 Injectors.SEGA SEGA = new Injectors.SEGA() { ROM = input[0], SMS = currentConsole == Platforms.SMS };
-                                SEGA.GetCCF(Custom.Checked);
                                 foreach (var entry in db.GetList())
                                 {
                                     string title = Bases.SelectedItem.ToString();
@@ -1433,6 +1434,7 @@ namespace FriishProduce
                         InjectionMethod.SelectedItem.ToString()
                     );
 
+                    w.CreateNew(Paths.WorkingFolder);
                     w = f.ConvertWAD(w, NANDLoader.SelectedIndex, TitleID.Text.ToUpper());
                 }
 
