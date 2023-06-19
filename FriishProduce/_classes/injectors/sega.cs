@@ -116,15 +116,15 @@ namespace FriishProduce.Injectors
             if (includeMisc)
             {
                 // Misc.CCF
-                string newMisc = CCFArc(Paths.WorkingFolder_MiscCCF, true, false);
+                string newMisc = CCFArc(Paths.WorkingFolder_MiscCCF, false, true);
 
                 File.Copy(newMisc, Paths.WorkingFolder_DataCCF + "misc.ccf", true);
                 Directory.Delete(Paths.WorkingFolder_MiscCCF, true);
             }
 
             // Data.CCF
-            bool LegacyApp = /* SMS*/ SMS ? false : /* SMD */ false;
-            string newData = CCFArc(Paths.WorkingFolder_DataCCF, false, LegacyApp);
+            bool LegacyApp = false;
+            string newData = CCFArc(Paths.WorkingFolder_DataCCF, LegacyApp);
 
             File.Copy(newData, Paths.WorkingFolder_Content5 + "data.ccf", true);
             Directory.Delete(Paths.WorkingFolder_DataCCF, true);
@@ -151,7 +151,7 @@ namespace FriishProduce.Injectors
 
         /// <param name="raw">Determines whether to use ccfarcraw.exe (needed for misc.ccf)</param>
         /// <returns>Path to an out.ccf file if it was created.</returns>
-        internal string CCFArc(string dir, bool raw, bool legacy = false)
+        internal string CCFArc(string dir, bool legacy = false, bool raw = false)
         {
             string pPath = Paths.Apps + "ccftools\\" + (raw ? "ccfarcraw.exe" : legacy ? "ccfarc.exe" : "ccfarc2021.exe");
 
@@ -209,10 +209,46 @@ namespace FriishProduce.Injectors
                     if (!patch) files = files.Replace("misc.ccf patch", "misc.ccf");
                     pInfo.Arguments = files;
                 }
-                else if (SMS && ver == "3")
+                else
                 {
-                    // This configuration may fix a halt error screen when loading the WAD ("/data/selectmenu.rso: read_rsofile failed")
-                    pInfo.Arguments = pInfo.Arguments.Replace("selectmenu.cat selectmenu.conf selectmenu.rso se_vc.rso", "se_vc.rso selectmenu.cat selectmenu.conf selectmenu.rso");
+                    switch (ver)
+                    {
+                        default:
+                        case "v1": // Wonder Boy, Sonic the Hedgehog 1, Sonic the Hedgehog 2
+                            files = $"Opera.arc {origROM} config home.csv man.arc misc.ccf patch";
+                            break;
+
+                        case "v2": // Alex Kidd: The Lost Stars, Wonder Boy in Monster Land
+                            files = $"{origROM} Opera.arc config emu_m68kbase.rso home.csv man.arc misc.ccf patch se_vc.rso sms.rso tsdevp.rso wii_vc.sel";
+                            break;
+
+                        case "v2-alt": // Phantasy Star (JPN)
+                            files = $"Opera.arc {origROM} config emu_m68kbase.rso home.csv man.arc misc.ccf patch se_vc.rso sms.rso tsdevp.rso wii_vc.sel";
+                            break;
+
+                        case "v3": // Phantasy Star (USA)
+                            files = origROM != null ? $"Opera.arc {origROM}" : "Opera.arc";
+
+                            foreach (var item in Directory.EnumerateFiles(dir))
+                                if (!files.Contains(Path.GetFileName(item)))
+                                    files += $" {Path.GetFileName(item)}";
+                            
+                            // This configuration may fix a halt error screen when loading the WAD ("/data/selectmenu.rso: read_rsofile failed")
+                            files = files.Replace("selectmenu.cat selectmenu.conf selectmenu.rso se_vc.rso", "se_vc.rso selectmenu.cat selectmenu.conf selectmenu.rso");
+                            break;
+                    }
+
+                    if (ver != "v3")
+                    {
+                        bool patch = false;
+                        foreach (var item in Directory.EnumerateFiles(dir))
+                            if (Path.GetFileName(item).Contains("patch"))
+                                patch = true;
+
+                        if (!patch) files = files.Replace("misc.ccf patch", "misc.ccf");
+                    }
+
+                    pInfo.Arguments = files;
                 }
 
                 // Start application
@@ -308,7 +344,7 @@ namespace FriishProduce.Injectors
                             c[i] = c[i].Replace("console.machine_country", "country");
 
             // Determine version 3 and add modules used to avoid any possible issues otherwise
-            if (ver == "3" || ver.Contains("v3"))
+            if (ver.Contains("v3"))
                 foreach (var item in File.ReadAllLines(Paths.WorkingFolder_DataCCF + "config"))
                     if (item.StartsWith("modules=")
                      || item.StartsWith("snd.snddrv=")
