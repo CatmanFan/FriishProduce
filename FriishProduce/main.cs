@@ -81,7 +81,7 @@ namespace FriishProduce
                 OpenROM.Text = x.Get("g003");
 
                 currentConsole = (Platforms)Console.SelectedIndex;
-                db = new Database((int)currentConsole);
+                db = new Database(currentConsole.ToString().ToLower());
                 DisableEmanual.Visible = true;
 
                 switch (currentConsole)
@@ -611,12 +611,17 @@ namespace FriishProduce
                 Bases.Items.Clear();
                 ImportBases.SelectedIndex = -1;
                 Bases.DropDownHeight = 106;
+
                 foreach (var entry in db.GetList())
-                    if (File.Exists($"{db.CurrentFolder((Platforms)db.Selected)}{entry["id"].ToString().ToUpper()}.wad"))
+                {
+                    string selectedPlatform = db.Selected == "all" ? entry["platform"].ToString() : db.Selected;
+
+                    if (File.Exists($"{db.CurrentFolder(selectedPlatform)}{entry["id"].ToString().ToUpper()}.wad"))
                     {
                         Bases.Items.Add(entry["title"].ToString());
                         Bases.Enabled = Bases.Items.Count >= 2;
                     }
+                }
 
                 Bases.SelectedIndex = Bases.Items.Count == 0 ? -1 : 0;
             }
@@ -679,9 +684,11 @@ namespace FriishProduce
 
                         foreach (var entry in db.GetList())
                         {
+                            string selectedPlatform = db.Selected == "all" ? entry["platform"].ToString() : db.Selected;
+
                             if (entry["id"].ToString().ToUpper() == w.UpperTitleID)
                             {
-                                string dest = $"{db.CurrentFolder(currentConsole)}{w.UpperTitleID}.wad";
+                                string dest = $"{db.CurrentFolder(selectedPlatform)}{w.UpperTitleID}.wad";
                                 if (!File.Exists(dest))
                                 {
                                     if (!Directory.Exists(Path.GetDirectoryName(dest)))

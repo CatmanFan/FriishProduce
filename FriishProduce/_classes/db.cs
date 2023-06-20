@@ -1,39 +1,60 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Collections.Generic;
 using System.IO;
 
 namespace FriishProduce
 {
     public class Database
     {
-        public string CurrentFolder(Platforms platform) => Paths.Database + platform.ToString().ToLower() + "\\";
+        public string CurrentFolder(string platform) => Paths.Database + platform + "\\";
 
         private static JToken dbReader;
+        private static List<JToken> list;
 
-        internal int Selected;
+        internal string Selected;
 
-        public Database(int platform = -1)
+        public Database(string platform)
         {
-            dbReader = JsonConvert.DeserializeObject<JObject>(File.ReadAllText(Paths.Database + "database.json"));
-            if (platform >= 0)
+            bool found = false;
+            list = new List<JToken>();
+            dbReader = JsonConvert.DeserializeObject<JObject>(File.ReadAllText(Paths.Database + "database.json"))["database"];
+
+            if (!string.IsNullOrWhiteSpace(platform))
             {
-                dbReader = dbReader[$"{((Platforms)platform).ToString().ToLower()}"];
-                Selected = platform;
+                foreach (JObject entry in dbReader.Children())
+                    if (entry["platform"].ToString() == platform)
+                    {
+                        found = true;
+                        list.Add(entry);
+                    }
+
+                if (!found) goto All; else { Selected = platform; return; }
             }
+            else
+            {
+                goto All;
+            }
+
+            All:
+            foreach (JObject entry in dbReader.Children()) list.Add(entry);
+            Selected = "all";
         }
 
-        public JEnumerable<JToken> GetList()
+        public List<JToken> GetList()
         {
             try
             {
-                return dbReader.Children<JToken>();
+                return list;
             }
             catch (System.NullReferenceException)
             {
-                dbReader = JsonConvert.DeserializeObject<JObject>(File.ReadAllText(Paths.Database + "database.json"));
-                dbReader = dbReader[Platforms.Flash.ToString().ToLower()];
-                Selected = (int)Platforms.Flash;
-                return dbReader.Children<JToken>();
+                list = new List<JToken>();
+                dbReader = JsonConvert.DeserializeObject<JObject>(File.ReadAllText(Paths.Database + "database.json"))["database"];
+                Selected = "all";
+                var allList = new List<JToken>();
+                foreach (JObject entry in dbReader.Children()) allList.Add(entry);
+                return allList;
             }
         }
 
@@ -42,7 +63,7 @@ namespace FriishProduce
         /// </summary>
         public string SearchID(string title)
         {
-            foreach (JObject entry in dbReader.Children<JToken>())
+            foreach (JObject entry in GetList())
                 if (entry["title"].ToString() == title)
                     return entry["id"].ToString().ToUpper();
 
