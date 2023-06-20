@@ -1188,7 +1188,7 @@ namespace FriishProduce
                     if (currentConsole != Platforms.NeoGeo) await Task.Run(() => { WiiCS.UnpackU8(Paths.WorkingFolder + "00000005.app", Paths.WorkingFolder_Content5); });
                     if (currentConsole == Platforms.SMS || currentConsole == Platforms.SMD) new Injectors.SEGA().GetCCF(Custom.Checked);
 
-                    if (DisableEmanual.Checked) await Task.Run(() => { Global.RemoveEmanual(currentConsole == Platforms.SMS || currentConsole == Platforms.SMD); });
+                    if (DisableEmanual.Checked) await Task.Run(() => { Global.RemoveEmanual(); });
                     if (Custom.Checked && tImg.Get()) await Task.Run(() => { tImg.CreateSave(currentConsole); });
 
                     switch (currentConsole)
