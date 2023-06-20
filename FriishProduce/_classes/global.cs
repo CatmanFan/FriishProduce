@@ -47,7 +47,7 @@ namespace FriishProduce
 
         public static string DetermineContent1(bool ForceCompress = false)
         {
-            // Check for LZSS compression
+            // Check for LZ77 0x11 compression
             if (File.ReadAllBytes(Paths.WorkingFolder + "00000001.app").Length < 1024 * 1024 || ForceCompress == true)
             {
                 // Run process
@@ -215,7 +215,7 @@ namespace FriishProduce
 
         public static void RemoveEmanual(bool CleanEmanualFiles = true)
         {
-            U8.Unpack(Paths.WorkingFolder + "00000004.app", Paths.WorkingFolder_Content4);
+            WiiCS.UnpackU8(Paths.WorkingFolder + "00000004.app", Paths.WorkingFolder_Content4);
             string sourceDir = Paths.WorkingFolder_Content4 + "HomeButton2";
             if (Directory.Exists(sourceDir))
             {
@@ -235,7 +235,7 @@ namespace FriishProduce
                 foreach (var file in targetFiles)
                     File.Copy($"{Paths.WorkingFolder_Content4}HomeButton2\\{Path.GetFileName(file)}", file, true);
             }
-            U8.Pack(Paths.WorkingFolder_Content4, Paths.WorkingFolder + "00000004.app");
+            WiiCS.PackU8(Paths.WorkingFolder_Content4, Paths.WorkingFolder + "00000004.app");
 
             if (CleanEmanualFiles)
             {
