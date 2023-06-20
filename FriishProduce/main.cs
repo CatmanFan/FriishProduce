@@ -1188,13 +1188,15 @@ namespace FriishProduce
                     if (currentConsole != Platforms.NeoGeo) await Task.Run(() => { WiiCS.UnpackU8(Paths.WorkingFolder + "00000005.app", Paths.WorkingFolder_Content5); });
                     if (currentConsole == Platforms.SMS || currentConsole == Platforms.SMD) new Injectors.SEGA().GetCCF(Custom.Checked);
 
-                    if (DisableEmanual.Checked) await Task.Run(() => { Global.RemoveEmanual(); });
+                    if (DisableEmanual.Checked) await Task.Run(() => { Global.RemoveEmanual(currentConsole == Platforms.SMS || currentConsole == Platforms.SMD); });
                     if (Custom.Checked && tImg.Get()) await Task.Run(() => { tImg.CreateSave(currentConsole); });
 
                     switch (currentConsole)
                     {
                         default:
                             throw new Exception("Not implemented yet!");
+
+                        // ----------------------------------------------------
 
                         case Platforms.NES:
                             {
@@ -1220,6 +1222,8 @@ namespace FriishProduce
                                 break;
                             }
 
+                        // ----------------------------------------------------
+
                         case Platforms.SNES:
                             {
                                 Injectors.SNES SNES = new Injectors.SNES()
@@ -1233,6 +1237,8 @@ namespace FriishProduce
                                 if (Custom.Checked) SNES.InsertSaveTitle(SaveDataTitle.Lines);
                                 break;
                             }
+
+                        // ----------------------------------------------------
 
                         case Platforms.N64:
                             {
@@ -1272,6 +1278,8 @@ namespace FriishProduce
                                 break;
                             }
 
+                        // ----------------------------------------------------
+
                         case Platforms.SMS:
                         case Platforms.SMD:
                             {
@@ -1309,6 +1317,8 @@ namespace FriishProduce
                                 break;
                             }
 
+                        // ----------------------------------------------------
+
                         case Platforms.PCE:
                             {
                                 Injectors.PCE PCE = new Injectors.PCE { ROM = input[0] };
@@ -1332,6 +1342,8 @@ namespace FriishProduce
                                 if (Custom.Checked) PCE.InsertSaveTitle(ChannelTitle.Text);
                                 break;
                             }
+
+                        // ----------------------------------------------------
 
                         case Platforms.NeoGeo:
                             {
@@ -1365,6 +1377,8 @@ namespace FriishProduce
                                 await Task.Run(() => { U8.Pack(Paths.WorkingFolder_Contents, NeoGeo.Target); });
                                 break;
                             }
+
+                        // ----------------------------------------------------
 
                         case Platforms.MSX:
                             {
@@ -1438,7 +1452,9 @@ namespace FriishProduce
                     w = f.ConvertWAD(w, NANDLoader.SelectedIndex, TitleID.Text.ToUpper());
                 }
 
+                // ----------------------------------------------------
                 // Create WAD
+                // ----------------------------------------------------
                 if (!ForwarderMode) w.CreateNew(Paths.WorkingFolder);
 
                 if (RegionFree.Checked) w.Region = libWiiSharp.Region.Free;
@@ -1448,10 +1464,16 @@ namespace FriishProduce
                 string Out = SaveWAD.FileName;
                 await Task.Run(() => { w.Save(Out); w.Dispose(); });
 
+                // ----------------------------------------------------
+                // Ending operations
+                // ----------------------------------------------------
                 ToggleWaitingIcon(false);
-
                 Focus();
                 System.Media.SystemSounds.Beep.Play();
+
+                // ----------------------------------------------------
+                // Open Explorer if needed
+                // ----------------------------------------------------
                 if (Properties.Settings.Default.OpenWhenDone) Process.Start("explorer.exe", "/select, \"" + SaveWAD.FileName + "\"");
             }
             catch (Exception ex)

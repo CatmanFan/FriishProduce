@@ -200,58 +200,44 @@ namespace FriishProduce.Injectors
                             files = $"Opera.arc config emu_m68kbase.rso home.csv man.arc md.rso misc.ccf patch {origROM} sandkui.rso se_vc.rso selectmenu.cat selectmenu.conf selectmenu.rso tsdevp.rso wii_vc.sel";
                             break;
                     }
-
-                    bool patch = false;
-                    foreach (var item in Directory.EnumerateFiles(dir))
-                        if (Path.GetFileName(item).Contains("patch"))
-                            patch = true;
-
-                    if (!patch) files = files.Replace("misc.ccf patch", "misc.ccf");
-                    pInfo.Arguments = files;
                 }
                 else
                 {
                     switch (ver)
                     {
                         default:
-                        case "v1": // Wonder Boy, Sonic the Hedgehog 1, Sonic the Hedgehog 2
+                        case "v1":
                             files = $"Opera.arc {origROM} config home.csv man.arc misc.ccf patch";
                             break;
 
-                        case "v2": // Alex Kidd: The Lost Stars, Wonder Boy in Monster Land
+                        case "v2":
                             files = $"{origROM} Opera.arc config emu_m68kbase.rso home.csv man.arc misc.ccf patch se_vc.rso sms.rso tsdevp.rso wii_vc.sel";
                             break;
 
-                        case "v2-alt": // Phantasy Star (JPN)
+                        case "v2-alt":
                             files = $"Opera.arc {origROM} config emu_m68kbase.rso home.csv man.arc misc.ccf patch se_vc.rso sms.rso tsdevp.rso wii_vc.sel";
                             break;
 
-                        case "v3": // Phantasy Star (USA)
-                            files = origROM != null ? $"Opera.arc {origROM}" : "Opera.arc";
-
-                            foreach (var item in Directory.EnumerateFiles(dir))
-                                if (!files.Contains(Path.GetFileName(item)))
-                                    files += $" {Path.GetFileName(item)}";
-                            
-                            // This configuration may fix a halt error screen when loading the WAD ("/data/selectmenu.rso: read_rsofile failed")
-                            files = files.Replace("selectmenu.cat selectmenu.conf selectmenu.rso se_vc.rso", "se_vc.rso selectmenu.cat selectmenu.conf selectmenu.rso");
+                        case "v3":
+                            files = $"Opera.arc {origROM} config emu_m68kbase.rso home.csv man.arc misc.ccf patch se_vc.rso selectmenu.cat selectmenu.conf selectmenu.rso sms.rso smsui.rso tsdevp.rso wii_vc.sel";
                             break;
                     }
-
-                    if (ver != "v3")
-                    {
-                        bool patch = false;
-                        foreach (var item in Directory.EnumerateFiles(dir))
-                            if (Path.GetFileName(item).Contains("patch"))
-                                patch = true;
-
-                        if (!patch) files = files.Replace("misc.ccf patch", "misc.ccf");
-                    }
-
-                    pInfo.Arguments = files;
                 }
 
+                // Check for "patch"
+                bool additionalFiles = false;
+                foreach (var item in Directory.EnumerateFiles(dir)) if (Path.GetFileName(item).ToLower().Contains("patch"))
+                        additionalFiles = true;
+                if (!additionalFiles) files = files.Replace("misc.ccf patch", "misc.ccf");
+
+                // Check for "smsui.rso"
+                additionalFiles = false;
+                foreach (var item in Directory.EnumerateFiles(dir)) if (Path.GetFileName(item).ToLower().Contains("smsui"))
+                        additionalFiles = true;
+                if (!additionalFiles) files = files.Replace("sms.rso smsui.rso", "sms.rso");
+
                 // Start application
+                pInfo.Arguments = files;
                 using (Process p = Process.Start(pInfo))
                     p.WaitForExit();
             }

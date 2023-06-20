@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 
@@ -212,58 +213,71 @@ namespace FriishProduce
             PrepareContent1(content1_file);
         }
 
-        public static void RemoveEmanual()
+        public static void RemoveEmanual(bool CleanEmanualFiles = true)
         {
             U8.Unpack(Paths.WorkingFolder + "00000004.app", Paths.WorkingFolder_Content4);
-            if (Directory.Exists(Paths.WorkingFolder_Content4 + "HomeButton2"))
+            string sourceDir = Paths.WorkingFolder_Content4 + "HomeButton2";
+            if (Directory.Exists(sourceDir))
             {
-                string targetDir = Paths.WorkingFolder_Content4 + "HomeButton3";
-                if (Directory.Exists(Paths.WorkingFolder_Content4 + "Homebutton3"))
-                    targetDir = Paths.WorkingFolder_Content4 + "Homebutton3";
+                string targetDir = Directory.Exists(Paths.WorkingFolder_Content4 + "Homebutton3") ?
+                    Paths.WorkingFolder_Content4 + "Homebutton3" : Paths.WorkingFolder_Content4 + "HomeButton3";
 
+                // Get files from target dir
+                var targetFiles = new List<string>();
                 foreach (var file in Directory.GetFiles(targetDir))
+                    targetFiles.Add(file);
+
+                // Delete & recreate folder
+                Directory.Delete(targetDir, true);
+                Directory.CreateDirectory(targetDir);
+
+                // Copy files to new folder
+                foreach (var file in targetFiles)
                     File.Copy($"{Paths.WorkingFolder_Content4}HomeButton2\\{Path.GetFileName(file)}", file, true);
             }
             U8.Pack(Paths.WorkingFolder_Content4, Paths.WorkingFolder + "00000004.app");
 
-            string[] emanualFiles =
+            if (CleanEmanualFiles)
             {
-                "emanual.arc",
-                "LZH8emanual.arc",
-                "LZ77emanual.arc",
-                "man.arc",
-                "man.arc.zlib",
-                "manc.arc",
-                "html.arc",
-                "htmlc.arc",
-                "CHN.arc",
-                "EUR.arc",
-                "JPN.arc",
-                "KOR.arc",
-                "USA.arc"
-            };
-            var dummy = new byte[] { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
-            // It is important to replace the file with a dummy byte array instead of simply deleting it, because otherwise it will break some WADs
-
-            // NOTE:
-            // Opera.arc is the Opera software environment needed to display emanual files (https://wiibrew.org/wiki//tmp/opera.arc)
-            // Deleting or modifying it will also break certain WADs, so it is left as it is
-
-            if (Directory.Exists(Paths.WorkingFolder_Content5))
-            {
-                foreach (var file in Directory.GetFiles(Paths.WorkingFolder_Content5, "*.*", SearchOption.AllDirectories))
+                string[] emanualFiles =
                 {
-                    foreach (var item in emanualFiles)
-                        if (file.EndsWith(item)) File.WriteAllBytes(file, dummy);
+                    "emanual.arc",
+                    "LZH8emanual.arc",
+                    "LZ77emanual.arc",
+                    "man.arc",
+                    "man.arc.zlib",
+                    "manc.arc",
+                    "html.arc",
+                    "htmlc.arc",
+                    "CHN.arc",
+                    "EUR.arc",
+                    "JPN.arc",
+                    "KOR.arc",
+                    "USA.arc"
+                };
+                var dummy = new byte[] { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
+                // It is important to replace the file with a dummy byte array instead of simply deleting it, because otherwise it will break some WADs
+
+                // NOTE:
+                // Opera.arc is the Opera software environment needed to display emanual files (https://wiibrew.org/wiki//tmp/opera.arc)
+                // Deleting or modifying it will also break certain WADs, so it is left as it is
+
+                if (Directory.Exists(Paths.WorkingFolder_Content5))
+                {
+                    foreach (var file in Directory.GetFiles(Paths.WorkingFolder_Content5, "*.*", SearchOption.AllDirectories))
+                    {
+                        foreach (var item in emanualFiles)
+                            if (Path.GetFileName(file) == item) File.WriteAllBytes(file, dummy);
+                    }
                 }
-            }
 
-            if (Directory.Exists(Paths.WorkingFolder_Contents))
-            {
-                foreach (var file in Directory.GetFiles(Paths.WorkingFolder_Contents, "*.*", SearchOption.AllDirectories))
+                if (Directory.Exists(Paths.WorkingFolder_Contents))
                 {
-                    foreach (var item in emanualFiles)
-                        if (file.EndsWith(item)) File.WriteAllBytes(file, dummy);
+                    foreach (var file in Directory.GetFiles(Paths.WorkingFolder_Contents, "*.*", SearchOption.AllDirectories))
+                    {
+                        foreach (var item in emanualFiles)
+                            if (Path.GetFileName(file) == item) File.WriteAllBytes(file, dummy);
+                    }
                 }
             }
         }
