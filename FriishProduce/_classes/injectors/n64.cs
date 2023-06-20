@@ -86,10 +86,10 @@ namespace FriishProduce.Injectors
 
         public void Op_ExpansionRAM()
         {
-            int index = Bytes.Search(content1, "41 82 00 08 3C 80 00 80", 2000, 9999);
+            int index = Bytes.Search(content1, "41 82 00 08 3C 80 00 80", 0x2000, 0x9999);
             if (index == -1)
             {
-                index = Bytes.Search(content1, "48 00 00 64 3C 80 00 80");
+                index = Bytes.Search(content1, "48 00 00 64 3C 80 00 80", 0x2000, 0x9999);
                 if (index == -1) throw new Exception(Program.Language.Get("m012"));
                 else goto Set;
             }
