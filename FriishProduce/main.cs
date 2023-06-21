@@ -1469,7 +1469,7 @@ namespace FriishProduce
 
                 if (currentConsole != Platforms.Flash)
                 {
-                    Global.ChangeTitleID(TitleID.Text.ToUpper(), LowerTitleID.Channel);
+                    Global.ChangeTitleID(TitleID.Text.ToUpper(), LowerTitleID.Channel, ForwarderMode);
 
                     // Generate Wii Common Key
                     var key = Path.GetFileNameWithoutExtension(input[2]).ToUpper().EndsWith("T") || Path.GetFileNameWithoutExtension(input[2]).ToUpper().EndsWith("Q") ?
@@ -1478,6 +1478,7 @@ namespace FriishProduce
 
                     // Pack WAD
                     string Out = SaveWAD.FileName;
+                    if (File.Exists(Out)) File.Delete(Out);
                     await Task.Run(() => { Wii.WadPack.PackWad(Paths.WorkingFolder, Out); });
 
                     // Edit
@@ -1492,6 +1493,14 @@ namespace FriishProduce
 
                     // Delete Wii Common Key
                     File.Delete(key_path);
+
+                    if (ForwarderMode)
+                    {
+                        w.LoadFile(Out);
+                        w.BootIndex = 2;
+                        w.ChangeTitleID(LowerTitleID.Channel, TitleID.Text);
+                        w.Save(Out);
+                    }
                 }
                 else
                 {

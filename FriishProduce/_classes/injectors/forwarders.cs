@@ -134,22 +134,6 @@ namespace FriishProduce.Forwarders
 
         public void ConvertWAD(int NANDloader_type, string tid)
         {
-            foreach (var item in Directory.EnumerateFiles(Paths.WorkingFolder))
-                if (Path.GetExtension(item).ToLower() == ".app" && Path.GetFileName(item).ToLower() != "00000000.app")
-                    File.WriteAllBytes(item, new byte[] { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF });
-
-            // Determine app index & reload contents
-            foreach (var item in Directory.EnumerateFiles(Paths.WorkingFolder))
-            {
-                if (Path.GetExtension(item).ToLower() == ".tmd")
-                {
-                    var tmd = File.ReadAllBytes(item);
-                    Wii.WadEdit.ChangeTmdBootIndex(tmd, 2);
-                    File.WriteAllBytes(item, tmd);
-                    Wii.WadEdit.UpdateTmdContents(item);
-                }
-            }
-
             // Add bootloader
             byte[] NANDloader = Properties.Resources.NANDLoader_vWii;
             switch (NANDloader_type)
