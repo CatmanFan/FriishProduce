@@ -10,11 +10,15 @@ namespace FriishProduce.Forwarders
         public string[] List = new string[]
         {
             "FCE Ultra GX",
+            "FCE Ultra RX",
             "FCEUX TX",
             "Snes9x GX",
+            "Snes9x RX",
             "Snes9x TX",
             "Visual Boy Advance GX",
             "Genesis Plus GX",
+            "Wii64 (WiiFlow)",
+            "Not64",
             "Mupen64GC",
             "WiiSXRX"
         };
@@ -73,27 +77,42 @@ namespace FriishProduce.Forwarders
                     File.Copy(Paths.Database + "dol\\fceugx.dol", dir + "boot.dol");
                     break;
                 case 1:
-                    File.Copy(Paths.Database + "dol\\fceuxtx.dol", dir + "boot.dol");
+                    File.Copy(Paths.Database + "dol\\fceurx.dol", dir + "boot.dol");
                     break;
                 case 2:
-                    File.Copy(Paths.Database + "dol\\snes9xgx.dol", dir + "boot.dol");
+                    File.Copy(Paths.Database + "dol\\fceuxtx.dol", dir + "boot.dol");
                     break;
                 case 3:
-                    File.Copy(Paths.Database + "dol\\snes9xtx.dol", dir + "boot.dol");
+                    File.Copy(Paths.Database + "dol\\snes9xgx.dol", dir + "boot.dol");
                     break;
                 case 4:
-                    File.Copy(Paths.Database + "dol\\vbagx.dol", dir + "boot.dol");
+                    File.Copy(Paths.Database + "dol\\snes9xrx.dol", dir + "boot.dol");
                     break;
                 case 5:
+                    File.Copy(Paths.Database + "dol\\snes9xtx.dol", dir + "boot.dol");
+                    break;
+                case 6:
+                    File.Copy(Paths.Database + "dol\\vbagx.dol", dir + "boot.dol");
+                    break;
+                case 7:
                     File.Copy(Paths.Database + "dol\\genplusgx.dol", dir + "boot.dol");
                     meta[9] = meta[9].Replace("</arg>", "/</arg>");
                     break;
-                case 6:
+                case 8:
+                    File.Copy(Paths.Database + "dol\\wii64_wf.dol", dir + "boot.dol");
+                    break;
+                case 9:
+                    File.Copy(Paths.Database + "dol\\not64.dol", dir + "boot.dol");
+                    meta[9] =  $"    <arg>rompath=\"{AppFolder}{name}/{romFile}\"</arg>";
+                    meta[10] = $"    <arg>SkipMenu=1</arg>";
+                    meta.Add("    <arg>ScreenMode=0</arg>");
+                    break;
+                case 10:
                     File.Copy(Paths.Database + "dol\\mupen64gc.dol", dir + "boot.dol");
                     meta.Add("    <arg>SkipMenu = 1</arg>");
                     meta.Add("    <arg>ScreenMode = 0</arg>");
                     break;
-                case 7:
+                case 11:
                     File.Copy(Paths.Database + "dol\\wiisxrx.dol", dir + "boot.dol");
                     meta.Add("    <arg>SkipMenu = 1</arg>");
                     meta.Add("    <arg>VideoMode = 0</arg>");

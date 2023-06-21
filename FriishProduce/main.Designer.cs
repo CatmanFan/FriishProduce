@@ -78,8 +78,6 @@ namespace FriishProduce
             this.a003 = new System.Windows.Forms.Label();
             this.page4 = new System.Windows.Forms.Panel();
             this.NANDLoader = new System.Windows.Forms.ComboBox();
-            this.Options_NeoGeo = new System.Windows.Forms.Panel();
-            this.NeoGeo_BIOS = new System.Windows.Forms.CheckBox();
             this.RandomTID = new System.Windows.Forms.Button();
             this.VideoMode = new System.Windows.Forms.ComboBox();
             this.RegionFree = new System.Windows.Forms.CheckBox();
@@ -89,12 +87,14 @@ namespace FriishProduce
             this.DisableEmanual = new System.Windows.Forms.CheckBox();
             this.AltCheckbox = new System.Windows.Forms.CheckBox();
             this.Options_PCE = new System.Windows.Forms.Panel();
+            this.PCE_SetConfig = new System.Windows.Forms.CheckBox();
+            this.PCE_CustomOptions = new System.Windows.Forms.Panel();
             this.PCE_NoFPA = new System.Windows.Forms.CheckBox();
             this.PCE_Multitap = new System.Windows.Forms.CheckBox();
             this.PCE_Pad5 = new System.Windows.Forms.CheckBox();
             this.PCE_HideOverscan = new System.Windows.Forms.CheckBox();
-            this.PCE_Raster = new System.Windows.Forms.CheckBox();
             this.PCE_BackupRAM = new System.Windows.Forms.CheckBox();
+            this.PCE_Raster = new System.Windows.Forms.CheckBox();
             this.Options_N64 = new System.Windows.Forms.Panel();
             this.N64_RemoveT64 = new System.Windows.Forms.CheckBox();
             this.N64_FixBrightness = new System.Windows.Forms.CheckBox();
@@ -116,12 +116,12 @@ namespace FriishProduce
             this.Flash_TotalSaveDataSize = new System.Windows.Forms.ComboBox();
             this.Flash_UseSaveData = new System.Windows.Forms.CheckBox();
             this.Flash_HBMNoSave = new System.Windows.Forms.CheckBox();
+            this.Options_NeoGeo = new System.Windows.Forms.Panel();
+            this.NeoGeo_BIOS = new System.Windows.Forms.CheckBox();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.BrowsePatch = new System.Windows.Forms.OpenFileDialog();
             this.BrowseImage = new System.Windows.Forms.OpenFileDialog();
             this.BackgroundWorker = new System.ComponentModel.BackgroundWorker();
-            this.PCE_CustomOptions = new System.Windows.Forms.Panel();
-            this.PCE_SetConfig = new System.Windows.Forms.CheckBox();
             this.panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Wait)).BeginInit();
             this.page1.SuspendLayout();
@@ -133,13 +133,13 @@ namespace FriishProduce
             ((System.ComponentModel.ISupportInitialize)(this.Players)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReleaseYear)).BeginInit();
             this.page4.SuspendLayout();
-            this.Options_NeoGeo.SuspendLayout();
             this.Options_PCE.SuspendLayout();
+            this.PCE_CustomOptions.SuspendLayout();
             this.Options_N64.SuspendLayout();
             this.Options_NES.SuspendLayout();
             this.Options_SEGA.SuspendLayout();
             this.Options_Flash.SuspendLayout();
-            this.PCE_CustomOptions.SuspendLayout();
+            this.Options_NeoGeo.SuspendLayout();
             this.SuspendLayout();
             // 
             // a000
@@ -557,20 +557,6 @@ namespace FriishProduce
             resources.ApplyResources(this.NANDLoader, "NANDLoader");
             this.NANDLoader.Name = "NANDLoader";
             // 
-            // Options_NeoGeo
-            // 
-            this.Options_NeoGeo.Controls.Add(this.NeoGeo_BIOS);
-            resources.ApplyResources(this.Options_NeoGeo, "Options_NeoGeo");
-            this.Options_NeoGeo.Name = "Options_NeoGeo";
-            // 
-            // NeoGeo_BIOS
-            // 
-            resources.ApplyResources(this.NeoGeo_BIOS, "NeoGeo_BIOS");
-            this.NeoGeo_BIOS.Name = "NeoGeo_BIOS";
-            this.NeoGeo_BIOS.Tag = "NeoGeo__000";
-            this.NeoGeo_BIOS.UseVisualStyleBackColor = true;
-            this.NeoGeo_BIOS.CheckedChanged += new System.EventHandler(this.NeoGeo_BIOS_CheckedChanged);
-            // 
             // RandomTID
             // 
             this.RandomTID.FlatAppearance.BorderSize = 0;
@@ -642,6 +628,25 @@ namespace FriishProduce
             resources.ApplyResources(this.Options_PCE, "Options_PCE");
             this.Options_PCE.Name = "Options_PCE";
             // 
+            // PCE_SetConfig
+            // 
+            resources.ApplyResources(this.PCE_SetConfig, "PCE_SetConfig");
+            this.PCE_SetConfig.Name = "PCE_SetConfig";
+            this.PCE_SetConfig.Tag = "g010";
+            this.PCE_SetConfig.UseVisualStyleBackColor = true;
+            this.PCE_SetConfig.CheckedChanged += new System.EventHandler(this.CheckedToggles);
+            // 
+            // PCE_CustomOptions
+            // 
+            this.PCE_CustomOptions.Controls.Add(this.PCE_NoFPA);
+            this.PCE_CustomOptions.Controls.Add(this.PCE_Multitap);
+            this.PCE_CustomOptions.Controls.Add(this.PCE_Pad5);
+            this.PCE_CustomOptions.Controls.Add(this.PCE_HideOverscan);
+            this.PCE_CustomOptions.Controls.Add(this.PCE_BackupRAM);
+            this.PCE_CustomOptions.Controls.Add(this.PCE_Raster);
+            resources.ApplyResources(this.PCE_CustomOptions, "PCE_CustomOptions");
+            this.PCE_CustomOptions.Name = "PCE_CustomOptions";
+            // 
             // PCE_NoFPA
             // 
             resources.ApplyResources(this.PCE_NoFPA, "PCE_NoFPA");
@@ -676,13 +681,6 @@ namespace FriishProduce
             this.PCE_HideOverscan.Tag = "";
             this.PCE_HideOverscan.UseVisualStyleBackColor = true;
             // 
-            // PCE_Raster
-            // 
-            resources.ApplyResources(this.PCE_Raster, "PCE_Raster");
-            this.PCE_Raster.Name = "PCE_Raster";
-            this.PCE_Raster.Tag = "";
-            this.PCE_Raster.UseVisualStyleBackColor = true;
-            // 
             // PCE_BackupRAM
             // 
             resources.ApplyResources(this.PCE_BackupRAM, "PCE_BackupRAM");
@@ -691,6 +689,13 @@ namespace FriishProduce
             this.PCE_BackupRAM.Name = "PCE_BackupRAM";
             this.PCE_BackupRAM.Tag = "";
             this.PCE_BackupRAM.UseVisualStyleBackColor = true;
+            // 
+            // PCE_Raster
+            // 
+            resources.ApplyResources(this.PCE_Raster, "PCE_Raster");
+            this.PCE_Raster.Name = "PCE_Raster";
+            this.PCE_Raster.Tag = "";
+            this.PCE_Raster.UseVisualStyleBackColor = true;
             // 
             // Options_N64
             // 
@@ -871,6 +876,20 @@ namespace FriishProduce
             this.Flash_HBMNoSave.Tag = "Flash__000";
             this.Flash_HBMNoSave.UseVisualStyleBackColor = true;
             // 
+            // Options_NeoGeo
+            // 
+            this.Options_NeoGeo.Controls.Add(this.NeoGeo_BIOS);
+            resources.ApplyResources(this.Options_NeoGeo, "Options_NeoGeo");
+            this.Options_NeoGeo.Name = "Options_NeoGeo";
+            // 
+            // NeoGeo_BIOS
+            // 
+            resources.ApplyResources(this.NeoGeo_BIOS, "NeoGeo_BIOS");
+            this.NeoGeo_BIOS.Name = "NeoGeo_BIOS";
+            this.NeoGeo_BIOS.Tag = "NeoGeo__000";
+            this.NeoGeo_BIOS.UseVisualStyleBackColor = true;
+            this.NeoGeo_BIOS.CheckedChanged += new System.EventHandler(this.NeoGeo_BIOS_CheckedChanged);
+            // 
             // ToolTip
             // 
             this.ToolTip.AutoPopDelay = 5000;
@@ -886,25 +905,6 @@ namespace FriishProduce
             // BrowseImage
             // 
             resources.ApplyResources(this.BrowseImage, "BrowseImage");
-            // 
-            // PCE_CustomOptions
-            // 
-            this.PCE_CustomOptions.Controls.Add(this.PCE_NoFPA);
-            this.PCE_CustomOptions.Controls.Add(this.PCE_Multitap);
-            this.PCE_CustomOptions.Controls.Add(this.PCE_Pad5);
-            this.PCE_CustomOptions.Controls.Add(this.PCE_HideOverscan);
-            this.PCE_CustomOptions.Controls.Add(this.PCE_BackupRAM);
-            this.PCE_CustomOptions.Controls.Add(this.PCE_Raster);
-            resources.ApplyResources(this.PCE_CustomOptions, "PCE_CustomOptions");
-            this.PCE_CustomOptions.Name = "PCE_CustomOptions";
-            // 
-            // PCE_SetConfig
-            // 
-            resources.ApplyResources(this.PCE_SetConfig, "PCE_SetConfig");
-            this.PCE_SetConfig.Name = "PCE_SetConfig";
-            this.PCE_SetConfig.Tag = "g010";
-            this.PCE_SetConfig.UseVisualStyleBackColor = true;
-            this.PCE_SetConfig.CheckedChanged += new System.EventHandler(this.CheckedToggles);
             // 
             // Main
             // 
@@ -940,10 +940,10 @@ namespace FriishProduce
             ((System.ComponentModel.ISupportInitialize)(this.ReleaseYear)).EndInit();
             this.page4.ResumeLayout(false);
             this.page4.PerformLayout();
-            this.Options_NeoGeo.ResumeLayout(false);
-            this.Options_NeoGeo.PerformLayout();
             this.Options_PCE.ResumeLayout(false);
             this.Options_PCE.PerformLayout();
+            this.PCE_CustomOptions.ResumeLayout(false);
+            this.PCE_CustomOptions.PerformLayout();
             this.Options_N64.ResumeLayout(false);
             this.Options_N64.PerformLayout();
             this.Options_NES.ResumeLayout(false);
@@ -952,8 +952,8 @@ namespace FriishProduce
             this.Options_SEGA.PerformLayout();
             this.Options_Flash.ResumeLayout(false);
             this.Options_Flash.PerformLayout();
-            this.PCE_CustomOptions.ResumeLayout(false);
-            this.PCE_CustomOptions.PerformLayout();
+            this.Options_NeoGeo.ResumeLayout(false);
+            this.Options_NeoGeo.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

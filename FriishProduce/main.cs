@@ -241,17 +241,23 @@ namespace FriishProduce
                 case Platforms.NES:
                     InjectionMethod.Items.Add(new Forwarders.Generic().List[0]);
                     InjectionMethod.Items.Add(new Forwarders.Generic().List[1]);
+                    InjectionMethod.Items.Add(new Forwarders.Generic().List[2]);
                     break;
                 case Platforms.SNES:
-                    InjectionMethod.Items.Add(new Forwarders.Generic().List[2]);
                     InjectionMethod.Items.Add(new Forwarders.Generic().List[3]);
+                    InjectionMethod.Items.Add(new Forwarders.Generic().List[4]);
+                    InjectionMethod.Items.Add(new Forwarders.Generic().List[5]);
                     break;
                 case Platforms.N64:
-                    InjectionMethod.Items.Add(new Forwarders.Generic().List[6]);
+                    InjectionMethod.Items.Add(new Forwarders.Generic().List[8]);
+                    InjectionMethod.Items.Add(new Forwarders.Generic().List[9]);
+                    InjectionMethod.Items.Add(new Forwarders.Generic().List[10]);
                     break;
                 case Platforms.SMS:
                 case Platforms.SMD:
-                    // InjectionMethod.Items.Add(new Forwarders.Generic().List[5]);
+                case Platforms.SMCD:
+                    if (currentConsole == Platforms.SMCD) InjectionMethod.Items.RemoveAt(0);
+                    InjectionMethod.Items.Add(new Forwarders.Generic().List[7]);
                     break;
                 case Platforms.PCE:
                     break;
@@ -267,11 +273,7 @@ namespace FriishProduce
                     break;
                 case Platforms.GBA:
                     InjectionMethod.Items.RemoveAt(0);
-                    InjectionMethod.Items.Add(new Forwarders.Generic().List[4]);
-                    break;
-                case Platforms.SMCD:
-                    InjectionMethod.Items.RemoveAt(0);
-                    InjectionMethod.Items.Add(new Forwarders.Generic().List[5]);
+                    InjectionMethod.Items.Add(new Forwarders.Generic().List[6]);
                     break;
                 default:
                     break;
