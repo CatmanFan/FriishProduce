@@ -1467,7 +1467,7 @@ namespace FriishProduce
                 // Create WAD
                 // ----------------------------------------------------
 
-                if (currentConsole != Platforms.Flash)
+                if (ForwarderMode)
                 {
                     var key = Path.GetFileNameWithoutExtension(input[2]).ToUpper().EndsWith("T") || Path.GetFileNameWithoutExtension(input[2]).ToUpper().EndsWith("Q") ?
                         CommonKey.GetKoreanKey() : CommonKey.GetStandardKey();
