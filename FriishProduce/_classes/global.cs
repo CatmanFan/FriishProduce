@@ -281,5 +281,27 @@ namespace FriishProduce
                 }
             }
         }
+
+        public static void ChangeTitleID(string upperTID, libWiiSharp.LowerTitleID lowerTID)
+        {
+            ulong num2 = (ulong)lowerTID << 32 | BitConverter.ToUInt32(new byte[4] { (byte)upperTID[3], (byte)upperTID[2], (byte)upperTID[1], (byte)upperTID[0] }, 0);
+
+            foreach (var item in Directory.EnumerateFiles(Paths.WorkingFolder))
+            {
+                if (Path.GetExtension(item).ToLower() == ".tik")
+                {
+                    var tik = libWiiSharp.Ticket.Load(item);
+                    tik.TitleID = num2;
+                    tik.Save(item);
+                }
+                if (Path.GetExtension(item).ToLower() == ".tmd")
+                {
+                    var tmd = libWiiSharp.TMD.Load(item);
+                    tmd.TitleID = num2;
+                    tmd.Save(item);
+                    Wii.WadEdit.UpdateTmdContents(item);
+                }
+            }
+        }
     }
 }
