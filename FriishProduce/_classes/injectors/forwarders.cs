@@ -132,25 +132,15 @@ namespace FriishProduce.Forwarders
             Directory.Delete(Paths.WorkingFolder_SD, true);
         }
 
-        public void ConvertWAD(int NANDloader_type, string tid)
+        public WAD ConvertWAD(WAD w, int NANDloader_type, string tid)
         {
-            foreach (var item in Directory.EnumerateFiles(Paths.WorkingFolder))
-                if (Path.GetExtension(item).ToLower() == ".app" && Path.GetFileName(item).ToLower() != "00000000.app")
-                    File.WriteAllBytes(item, new byte[] { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF });
-
             // Determine app index & reload contents
-            foreach (var item in Directory.EnumerateFiles(Paths.WorkingFolder))
-            {
-                if (Path.GetExtension(item).ToLower() == ".tmd")
-                {
-                    var tmd = File.ReadAllBytes(item);
-                    Wii.WadEdit.ChangeTmdBootIndex(tmd, 2);
-                    File.WriteAllBytes(item, tmd);
-                    Wii.WadEdit.UpdateTmdContents(item);
-                }
-            }
+            w.BootIndex = 1;
+            if (w.NumOfContents > 0) w.RemoveAllContents();
+            w.BannerApp = libWiiSharp.U8.Load(Paths.WorkingFolder + "00000000.app");
 
             // Add bootloader
+            w.ChangeStartupIOS(58);
             byte[] NANDloader = Properties.Resources.NANDLoader_vWii;
             switch (NANDloader_type)
             {
@@ -161,13 +151,15 @@ namespace FriishProduce.Forwarders
                     NANDloader = Properties.Resources.NANDLoader_Waninkoko;
                     break;
             };
-            File.WriteAllBytes(Paths.WorkingFolder + "00000002.app", NANDloader);
+            w.AddContent(NANDloader, w.BootIndex, w.BootIndex);
 
             // Create forwarder .app
             var forwarder = Properties.Resources.Forwarder;
             var id = System.Text.Encoding.ASCII.GetBytes(tid);
             id.CopyTo(forwarder, 522628);
-            File.WriteAllBytes(Paths.WorkingFolder + "00000001.app", forwarder);
+            w.AddContent(forwarder, w.BootIndex == 2 ? 1 : 2, w.BootIndex == 2 ? 1 : 2);
+
+            return w;
         }
     }
 
