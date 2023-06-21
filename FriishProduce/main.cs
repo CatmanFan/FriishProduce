@@ -1479,7 +1479,10 @@ namespace FriishProduce
                     byte[] Out_B = File.ReadAllBytes(Out);
 
                     if (RegionFree.Checked) Wii.WadEdit.ChangeRegion(Out_B, 3);
-                    Wii.WadEdit.ChangeTitleID(Out_B, TitleID.Text);
+
+                    bool useLWSforTitleId = false;
+                    try { Wii.WadEdit.ChangeTitleID(Out_B, TitleID.Text); }
+                    catch { useLWSforTitleId = true; }
                     if (ForwarderMode) Wii.WadEdit.ChangeIosSlot(Out_B, 58);
 
                     File.WriteAllBytes(Out, Out_B);
@@ -1488,6 +1491,13 @@ namespace FriishProduce
                     Wii.WadEdit.TruchaSign(Out, 1);
 
                     File.Delete(key_path);
+
+                    if (useLWSforTitleId)
+                    {
+                        w.LoadFile(Out);
+                        w.ChangeTitleID(LowerTitleID.Channel, TitleID.Text);
+                        await Task.Run(() => { w.Save(Out); });
+                    }
                 }
                 else
                 {
@@ -1519,6 +1529,7 @@ namespace FriishProduce
             }
             finally
             {
+                if (File.Exists(key_path)) File.Delete(key_path);
                 try { Directory.Delete(Paths.WorkingFolder, true); } catch { }
 
                 if (File.Exists(input[0]) && input[0].EndsWith(Paths.PatchedSuffix))
