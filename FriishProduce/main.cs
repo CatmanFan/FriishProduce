@@ -21,6 +21,8 @@ namespace FriishProduce
         bool ForwarderMode = false;
         Database db;
 
+        readonly string key_path = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "key.bin");
+
         string[] input = new string[]
         {
             /* Full path to ROM       */ null,
@@ -35,6 +37,7 @@ namespace FriishProduce
         {
             InitializeComponent();
             ChangeTheme();
+            if (File.Exists(key_path)) File.Delete(key_path);
 
             string[] consoles = new string[]
             {
@@ -1457,21 +1460,45 @@ namespace FriishProduce
                         InjectionMethod.SelectedItem.ToString()
                     );
 
-                    w.CreateNew(Paths.WorkingFolder);
-                    w = f.ConvertWAD(w, NANDLoader.SelectedIndex, TitleID.Text.ToUpper());
+                    f.ConvertWAD(NANDLoader.SelectedIndex, TitleID.Text.ToUpper());
                 }
 
                 // ----------------------------------------------------
                 // Create WAD
                 // ----------------------------------------------------
-                if (!ForwarderMode) w.CreateNew(Paths.WorkingFolder);
 
-                if (RegionFree.Checked) w.Region = libWiiSharp.Region.Free;
-                w.FakeSign = true;
-                w.ChangeTitleID(LowerTitleID.Channel, TitleID.Text);
+                if (currentConsole != Platforms.Flash)
+                {
+                    var key = Path.GetFileNameWithoutExtension(input[2]).ToUpper().EndsWith("T") || Path.GetFileNameWithoutExtension(input[2]).ToUpper().EndsWith("Q") ?
+                        CommonKey.GetKoreanKey() : CommonKey.GetStandardKey();
+                    File.WriteAllBytes(key_path, key);
 
-                string Out = SaveWAD.FileName;
-                await Task.Run(() => { w.Save(Out); w.Dispose(); });
+                    string Out = SaveWAD.FileName;
+                    await Task.Run(() => { Wii.WadPack.PackWad(Paths.WorkingFolder, Out); });
+
+                    byte[] Out_B = File.ReadAllBytes(Out);
+
+                    if (RegionFree.Checked) Wii.WadEdit.ChangeRegion(Out_B, 3);
+                    Wii.WadEdit.ChangeTitleID(Out_B, TitleID.Text);
+                    if (ForwarderMode) Wii.WadEdit.ChangeIosSlot(Out_B, 58);
+
+                    File.WriteAllBytes(Out, Out_B);
+
+                    Wii.WadEdit.TruchaSign(Out, 0);
+                    Wii.WadEdit.TruchaSign(Out, 1);
+
+                    File.Delete(key_path);
+                }
+                else
+                {
+                    w.CreateNew(Paths.WorkingFolder);
+                    w.FakeSign = true;
+                    if (RegionFree.Checked) w.Region = libWiiSharp.Region.Free;
+                    w.ChangeTitleID(LowerTitleID.Channel, TitleID.Text);
+
+                    string Out = SaveWAD.FileName;
+                    await Task.Run(() => { w.Save(Out); });
+                }
 
                 // ----------------------------------------------------
                 // Ending operations
