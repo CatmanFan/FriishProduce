@@ -23,10 +23,10 @@
   "methods": {
     "VC": "Virtual Console",
     "FCEUGX": "FCE Ultra GX",
-    "Snes9XGX": "Snes9x-GX",
-    "VBAGX": "VBA-GX",
+    "Snes9XGX": "Snes9x GX",
+    "VBAGX": "VBA GX",
     "RA-SS": "RetroArch-SS",
-    "vWii": "vWii-compatible",
+    "vWii": "vWii compatible",
   },
   "global": {
     "g000": "FriishProduce",
