@@ -77,6 +77,7 @@ namespace FriishProduce
             this.ChannelTitle = new System.Windows.Forms.TextBox();
             this.a003 = new System.Windows.Forms.Label();
             this.page4 = new System.Windows.Forms.Panel();
+            this.vWii = new System.Windows.Forms.CheckBox();
             this.NANDLoader = new System.Windows.Forms.ComboBox();
             this.RandomTID = new System.Windows.Forms.Button();
             this.VideoMode = new System.Windows.Forms.ComboBox();
@@ -86,6 +87,18 @@ namespace FriishProduce
             this.a004 = new System.Windows.Forms.Label();
             this.DisableEmanual = new System.Windows.Forms.CheckBox();
             this.AltCheckbox = new System.Windows.Forms.CheckBox();
+            this.Options_Flash = new System.Windows.Forms.Panel();
+            this.Flash__005 = new System.Windows.Forms.Label();
+            this.Flash_StrapReminder = new System.Windows.Forms.ComboBox();
+            this.Flash_Controller = new System.Windows.Forms.CheckBox();
+            this.Flash_FPS = new System.Windows.Forms.ComboBox();
+            this.Flash_CustomFPS = new System.Windows.Forms.CheckBox();
+            this.Flash__002 = new System.Windows.Forms.Label();
+            this.Flash_TotalSaveDataSize = new System.Windows.Forms.ComboBox();
+            this.Flash_UseSaveData = new System.Windows.Forms.CheckBox();
+            this.Flash_HBMNoSave = new System.Windows.Forms.CheckBox();
+            this.Options_NeoGeo = new System.Windows.Forms.Panel();
+            this.NeoGeo_BIOS = new System.Windows.Forms.CheckBox();
             this.Options_PCE = new System.Windows.Forms.Panel();
             this.PCE_SetConfig = new System.Windows.Forms.CheckBox();
             this.PCE_CustomOptions = new System.Windows.Forms.Panel();
@@ -106,23 +119,10 @@ namespace FriishProduce
             this.NES__000 = new System.Windows.Forms.Label();
             this.Options_SEGA = new System.Windows.Forms.Panel();
             this.SEGA_SetConfig = new System.Windows.Forms.CheckBox();
-            this.Options_Flash = new System.Windows.Forms.Panel();
-            this.Flash__005 = new System.Windows.Forms.Label();
-            this.Flash_StrapReminder = new System.Windows.Forms.ComboBox();
-            this.Flash_Controller = new System.Windows.Forms.CheckBox();
-            this.Flash_FPS = new System.Windows.Forms.ComboBox();
-            this.Flash_CustomFPS = new System.Windows.Forms.CheckBox();
-            this.Flash__002 = new System.Windows.Forms.Label();
-            this.Flash_TotalSaveDataSize = new System.Windows.Forms.ComboBox();
-            this.Flash_UseSaveData = new System.Windows.Forms.CheckBox();
-            this.Flash_HBMNoSave = new System.Windows.Forms.CheckBox();
-            this.Options_NeoGeo = new System.Windows.Forms.Panel();
-            this.NeoGeo_BIOS = new System.Windows.Forms.CheckBox();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.BrowsePatch = new System.Windows.Forms.OpenFileDialog();
             this.BrowseImage = new System.Windows.Forms.OpenFileDialog();
             this.BackgroundWorker = new System.ComponentModel.BackgroundWorker();
-            this.vWii = new System.Windows.Forms.CheckBox();
             this.panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Wait)).BeginInit();
             this.page1.SuspendLayout();
@@ -134,13 +134,13 @@ namespace FriishProduce
             ((System.ComponentModel.ISupportInitialize)(this.Players)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReleaseYear)).BeginInit();
             this.page4.SuspendLayout();
+            this.Options_Flash.SuspendLayout();
+            this.Options_NeoGeo.SuspendLayout();
             this.Options_PCE.SuspendLayout();
             this.PCE_CustomOptions.SuspendLayout();
             this.Options_N64.SuspendLayout();
             this.Options_NES.SuspendLayout();
             this.Options_SEGA.SuspendLayout();
-            this.Options_Flash.SuspendLayout();
-            this.Options_NeoGeo.SuspendLayout();
             this.SuspendLayout();
             // 
             // a000
@@ -549,13 +549,22 @@ namespace FriishProduce
             resources.ApplyResources(this.page4, "page4");
             this.page4.Name = "page4";
             // 
+            // vWii
+            // 
+            resources.ApplyResources(this.vWii, "vWii");
+            this.vWii.Name = "vWii";
+            this.vWii.Tag = "";
+            this.vWii.UseVisualStyleBackColor = true;
+            // 
             // NANDLoader
             // 
             this.NANDLoader.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.NANDLoader.FormattingEnabled = true;
             this.NANDLoader.Items.AddRange(new object[] {
             resources.GetString("NANDLoader.Items"),
-            resources.GetString("NANDLoader.Items1")});
+            resources.GetString("NANDLoader.Items1"),
+            resources.GetString("NANDLoader.Items2"),
+            resources.GetString("NANDLoader.Items3")});
             resources.ApplyResources(this.NANDLoader, "NANDLoader");
             this.NANDLoader.Name = "NANDLoader";
             // 
@@ -622,6 +631,116 @@ namespace FriishProduce
             this.AltCheckbox.Tag = "";
             this.AltCheckbox.UseVisualStyleBackColor = true;
             this.AltCheckbox.CheckedChanged += new System.EventHandler(this.CheckedToggles);
+            // 
+            // Options_Flash
+            // 
+            this.Options_Flash.Controls.Add(this.Flash__005);
+            this.Options_Flash.Controls.Add(this.Flash_StrapReminder);
+            this.Options_Flash.Controls.Add(this.Flash_Controller);
+            this.Options_Flash.Controls.Add(this.Flash_FPS);
+            this.Options_Flash.Controls.Add(this.Flash_CustomFPS);
+            this.Options_Flash.Controls.Add(this.Flash__002);
+            this.Options_Flash.Controls.Add(this.Flash_TotalSaveDataSize);
+            this.Options_Flash.Controls.Add(this.Flash_UseSaveData);
+            this.Options_Flash.Controls.Add(this.Flash_HBMNoSave);
+            resources.ApplyResources(this.Options_Flash, "Options_Flash");
+            this.Options_Flash.Name = "Options_Flash";
+            // 
+            // Flash__005
+            // 
+            resources.ApplyResources(this.Flash__005, "Flash__005");
+            this.Flash__005.Name = "Flash__005";
+            // 
+            // Flash_StrapReminder
+            // 
+            this.Flash_StrapReminder.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Flash_StrapReminder.FormattingEnabled = true;
+            this.Flash_StrapReminder.Items.AddRange(new object[] {
+            resources.GetString("Flash_StrapReminder.Items")});
+            resources.ApplyResources(this.Flash_StrapReminder, "Flash_StrapReminder");
+            this.Flash_StrapReminder.Name = "Flash_StrapReminder";
+            this.Flash_StrapReminder.Tag = "Flash__006";
+            // 
+            // Flash_Controller
+            // 
+            resources.ApplyResources(this.Flash_Controller, "Flash_Controller");
+            this.Flash_Controller.Name = "Flash_Controller";
+            this.Flash_Controller.Tag = "Flash__004";
+            this.Flash_Controller.UseVisualStyleBackColor = true;
+            this.Flash_Controller.CheckedChanged += new System.EventHandler(this.Flash_ControllerChanged);
+            // 
+            // Flash_FPS
+            // 
+            this.Flash_FPS.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.Flash_FPS, "Flash_FPS");
+            this.Flash_FPS.FormattingEnabled = true;
+            this.Flash_FPS.Items.AddRange(new object[] {
+            resources.GetString("Flash_FPS.Items"),
+            resources.GetString("Flash_FPS.Items1"),
+            resources.GetString("Flash_FPS.Items2"),
+            resources.GetString("Flash_FPS.Items3"),
+            resources.GetString("Flash_FPS.Items4"),
+            resources.GetString("Flash_FPS.Items5"),
+            resources.GetString("Flash_FPS.Items6"),
+            resources.GetString("Flash_FPS.Items7")});
+            this.Flash_FPS.Name = "Flash_FPS";
+            // 
+            // Flash_CustomFPS
+            // 
+            resources.ApplyResources(this.Flash_CustomFPS, "Flash_CustomFPS");
+            this.Flash_CustomFPS.Name = "Flash_CustomFPS";
+            this.Flash_CustomFPS.Tag = "Flash__003";
+            this.Flash_CustomFPS.UseVisualStyleBackColor = true;
+            this.Flash_CustomFPS.CheckedChanged += new System.EventHandler(this.CheckedToggles);
+            // 
+            // Flash__002
+            // 
+            resources.ApplyResources(this.Flash__002, "Flash__002");
+            this.Flash__002.Name = "Flash__002";
+            this.Flash__002.Tag = "";
+            // 
+            // Flash_TotalSaveDataSize
+            // 
+            this.Flash_TotalSaveDataSize.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.Flash_TotalSaveDataSize, "Flash_TotalSaveDataSize");
+            this.Flash_TotalSaveDataSize.FormattingEnabled = true;
+            this.Flash_TotalSaveDataSize.Items.AddRange(new object[] {
+            resources.GetString("Flash_TotalSaveDataSize.Items"),
+            resources.GetString("Flash_TotalSaveDataSize.Items1"),
+            resources.GetString("Flash_TotalSaveDataSize.Items2"),
+            resources.GetString("Flash_TotalSaveDataSize.Items3"),
+            resources.GetString("Flash_TotalSaveDataSize.Items4"),
+            resources.GetString("Flash_TotalSaveDataSize.Items5")});
+            this.Flash_TotalSaveDataSize.Name = "Flash_TotalSaveDataSize";
+            // 
+            // Flash_UseSaveData
+            // 
+            resources.ApplyResources(this.Flash_UseSaveData, "Flash_UseSaveData");
+            this.Flash_UseSaveData.Name = "Flash_UseSaveData";
+            this.Flash_UseSaveData.Tag = "Flash__001";
+            this.Flash_UseSaveData.UseVisualStyleBackColor = true;
+            this.Flash_UseSaveData.CheckedChanged += new System.EventHandler(this.CheckedToggles);
+            // 
+            // Flash_HBMNoSave
+            // 
+            resources.ApplyResources(this.Flash_HBMNoSave, "Flash_HBMNoSave");
+            this.Flash_HBMNoSave.Name = "Flash_HBMNoSave";
+            this.Flash_HBMNoSave.Tag = "Flash__000";
+            this.Flash_HBMNoSave.UseVisualStyleBackColor = true;
+            // 
+            // Options_NeoGeo
+            // 
+            this.Options_NeoGeo.Controls.Add(this.NeoGeo_BIOS);
+            resources.ApplyResources(this.Options_NeoGeo, "Options_NeoGeo");
+            this.Options_NeoGeo.Name = "Options_NeoGeo";
+            // 
+            // NeoGeo_BIOS
+            // 
+            resources.ApplyResources(this.NeoGeo_BIOS, "NeoGeo_BIOS");
+            this.NeoGeo_BIOS.Name = "NeoGeo_BIOS";
+            this.NeoGeo_BIOS.Tag = "NeoGeo__000";
+            this.NeoGeo_BIOS.UseVisualStyleBackColor = true;
+            this.NeoGeo_BIOS.CheckedChanged += new System.EventHandler(this.NeoGeo_BIOS_CheckedChanged);
             // 
             // Options_PCE
             // 
@@ -782,116 +901,6 @@ namespace FriishProduce
             this.SEGA_SetConfig.UseVisualStyleBackColor = true;
             this.SEGA_SetConfig.CheckedChanged += new System.EventHandler(this.SEGA_ConfigChanged);
             // 
-            // Options_Flash
-            // 
-            this.Options_Flash.Controls.Add(this.Flash__005);
-            this.Options_Flash.Controls.Add(this.Flash_StrapReminder);
-            this.Options_Flash.Controls.Add(this.Flash_Controller);
-            this.Options_Flash.Controls.Add(this.Flash_FPS);
-            this.Options_Flash.Controls.Add(this.Flash_CustomFPS);
-            this.Options_Flash.Controls.Add(this.Flash__002);
-            this.Options_Flash.Controls.Add(this.Flash_TotalSaveDataSize);
-            this.Options_Flash.Controls.Add(this.Flash_UseSaveData);
-            this.Options_Flash.Controls.Add(this.Flash_HBMNoSave);
-            resources.ApplyResources(this.Options_Flash, "Options_Flash");
-            this.Options_Flash.Name = "Options_Flash";
-            // 
-            // Flash__005
-            // 
-            resources.ApplyResources(this.Flash__005, "Flash__005");
-            this.Flash__005.Name = "Flash__005";
-            // 
-            // Flash_StrapReminder
-            // 
-            this.Flash_StrapReminder.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Flash_StrapReminder.FormattingEnabled = true;
-            this.Flash_StrapReminder.Items.AddRange(new object[] {
-            resources.GetString("Flash_StrapReminder.Items")});
-            resources.ApplyResources(this.Flash_StrapReminder, "Flash_StrapReminder");
-            this.Flash_StrapReminder.Name = "Flash_StrapReminder";
-            this.Flash_StrapReminder.Tag = "Flash__006";
-            // 
-            // Flash_Controller
-            // 
-            resources.ApplyResources(this.Flash_Controller, "Flash_Controller");
-            this.Flash_Controller.Name = "Flash_Controller";
-            this.Flash_Controller.Tag = "Flash__004";
-            this.Flash_Controller.UseVisualStyleBackColor = true;
-            this.Flash_Controller.CheckedChanged += new System.EventHandler(this.Flash_ControllerChanged);
-            // 
-            // Flash_FPS
-            // 
-            this.Flash_FPS.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            resources.ApplyResources(this.Flash_FPS, "Flash_FPS");
-            this.Flash_FPS.FormattingEnabled = true;
-            this.Flash_FPS.Items.AddRange(new object[] {
-            resources.GetString("Flash_FPS.Items"),
-            resources.GetString("Flash_FPS.Items1"),
-            resources.GetString("Flash_FPS.Items2"),
-            resources.GetString("Flash_FPS.Items3"),
-            resources.GetString("Flash_FPS.Items4"),
-            resources.GetString("Flash_FPS.Items5"),
-            resources.GetString("Flash_FPS.Items6"),
-            resources.GetString("Flash_FPS.Items7")});
-            this.Flash_FPS.Name = "Flash_FPS";
-            // 
-            // Flash_CustomFPS
-            // 
-            resources.ApplyResources(this.Flash_CustomFPS, "Flash_CustomFPS");
-            this.Flash_CustomFPS.Name = "Flash_CustomFPS";
-            this.Flash_CustomFPS.Tag = "Flash__003";
-            this.Flash_CustomFPS.UseVisualStyleBackColor = true;
-            this.Flash_CustomFPS.CheckedChanged += new System.EventHandler(this.CheckedToggles);
-            // 
-            // Flash__002
-            // 
-            resources.ApplyResources(this.Flash__002, "Flash__002");
-            this.Flash__002.Name = "Flash__002";
-            this.Flash__002.Tag = "";
-            // 
-            // Flash_TotalSaveDataSize
-            // 
-            this.Flash_TotalSaveDataSize.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            resources.ApplyResources(this.Flash_TotalSaveDataSize, "Flash_TotalSaveDataSize");
-            this.Flash_TotalSaveDataSize.FormattingEnabled = true;
-            this.Flash_TotalSaveDataSize.Items.AddRange(new object[] {
-            resources.GetString("Flash_TotalSaveDataSize.Items"),
-            resources.GetString("Flash_TotalSaveDataSize.Items1"),
-            resources.GetString("Flash_TotalSaveDataSize.Items2"),
-            resources.GetString("Flash_TotalSaveDataSize.Items3"),
-            resources.GetString("Flash_TotalSaveDataSize.Items4"),
-            resources.GetString("Flash_TotalSaveDataSize.Items5")});
-            this.Flash_TotalSaveDataSize.Name = "Flash_TotalSaveDataSize";
-            // 
-            // Flash_UseSaveData
-            // 
-            resources.ApplyResources(this.Flash_UseSaveData, "Flash_UseSaveData");
-            this.Flash_UseSaveData.Name = "Flash_UseSaveData";
-            this.Flash_UseSaveData.Tag = "Flash__001";
-            this.Flash_UseSaveData.UseVisualStyleBackColor = true;
-            this.Flash_UseSaveData.CheckedChanged += new System.EventHandler(this.CheckedToggles);
-            // 
-            // Flash_HBMNoSave
-            // 
-            resources.ApplyResources(this.Flash_HBMNoSave, "Flash_HBMNoSave");
-            this.Flash_HBMNoSave.Name = "Flash_HBMNoSave";
-            this.Flash_HBMNoSave.Tag = "Flash__000";
-            this.Flash_HBMNoSave.UseVisualStyleBackColor = true;
-            // 
-            // Options_NeoGeo
-            // 
-            this.Options_NeoGeo.Controls.Add(this.NeoGeo_BIOS);
-            resources.ApplyResources(this.Options_NeoGeo, "Options_NeoGeo");
-            this.Options_NeoGeo.Name = "Options_NeoGeo";
-            // 
-            // NeoGeo_BIOS
-            // 
-            resources.ApplyResources(this.NeoGeo_BIOS, "NeoGeo_BIOS");
-            this.NeoGeo_BIOS.Name = "NeoGeo_BIOS";
-            this.NeoGeo_BIOS.Tag = "NeoGeo__000";
-            this.NeoGeo_BIOS.UseVisualStyleBackColor = true;
-            this.NeoGeo_BIOS.CheckedChanged += new System.EventHandler(this.NeoGeo_BIOS_CheckedChanged);
-            // 
             // ToolTip
             // 
             this.ToolTip.AutoPopDelay = 5000;
@@ -907,13 +916,6 @@ namespace FriishProduce
             // BrowseImage
             // 
             resources.ApplyResources(this.BrowseImage, "BrowseImage");
-            // 
-            // vWii
-            // 
-            resources.ApplyResources(this.vWii, "vWii");
-            this.vWii.Name = "vWii";
-            this.vWii.Tag = "";
-            this.vWii.UseVisualStyleBackColor = true;
             // 
             // Main
             // 
@@ -949,6 +951,10 @@ namespace FriishProduce
             ((System.ComponentModel.ISupportInitialize)(this.ReleaseYear)).EndInit();
             this.page4.ResumeLayout(false);
             this.page4.PerformLayout();
+            this.Options_Flash.ResumeLayout(false);
+            this.Options_Flash.PerformLayout();
+            this.Options_NeoGeo.ResumeLayout(false);
+            this.Options_NeoGeo.PerformLayout();
             this.Options_PCE.ResumeLayout(false);
             this.Options_PCE.PerformLayout();
             this.PCE_CustomOptions.ResumeLayout(false);
@@ -959,10 +965,6 @@ namespace FriishProduce
             this.Options_NES.PerformLayout();
             this.Options_SEGA.ResumeLayout(false);
             this.Options_SEGA.PerformLayout();
-            this.Options_Flash.ResumeLayout(false);
-            this.Options_Flash.PerformLayout();
-            this.Options_NeoGeo.ResumeLayout(false);
-            this.Options_NeoGeo.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

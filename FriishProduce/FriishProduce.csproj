@@ -214,6 +214,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="libWiiSharp.dll" />
+    <None Include="Resources\forwarders\forwarder_v12.dol" />
+    <None Include="Resources\forwarders\forwarder_v14.dol" />
     <None Include="Resources\wwcxtool.exe" />
     <None Include="Resources\lzh8_cmp.exe" />
     <None Include="Resources\lzh8_cmp_nonstrict.exe" />
@@ -222,7 +224,6 @@
     <None Include="Resources\forwarders\settings\vbagx.xml" />
     <None Include="Resources\forwarders\settings\fceugx.xml" />
     <None Include="Resources\images\icon.png" />
-    <None Include="Resources\forwarders\forwarder.dol" />
     <None Include="Resources\forwarders\nandloader_vwii.app" />
     <None Include="Resources\images\savebanner_flash.png" />
     <None Include="Resources\images\saveicon_flash.png" />

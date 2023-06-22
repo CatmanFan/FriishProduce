@@ -141,9 +141,19 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] Forwarder {
+        internal static byte[] Forwarder_v12 {
             get {
-                object obj = ResourceManager.GetObject("Forwarder", resourceCulture);
+                object obj = ResourceManager.GetObject("Forwarder_v12", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Forwarder_v14 {
+            get {
+                object obj = ResourceManager.GetObject("Forwarder_v14", resourceCulture);
                 return ((byte[])(obj));
             }
         }

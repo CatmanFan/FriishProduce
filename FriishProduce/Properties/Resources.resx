@@ -157,9 +157,6 @@
   <data name="NANDLoader_vWii" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\forwarders\nandloader_vwii.app;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="Forwarder" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\forwarders\forwarder.dol;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="Loading" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\images\loading.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -171,5 +168,11 @@
   </data>
   <data name="WWCXTool" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\wwcxtool.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Forwarder_v12" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\forwarders\forwarder_v12.dol;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Forwarder_v14" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\forwarders\forwarder_v14.dol;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

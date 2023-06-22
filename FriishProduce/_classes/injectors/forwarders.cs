@@ -132,26 +132,28 @@ namespace FriishProduce.Forwarders
             Directory.Delete(Paths.WorkingFolder_SD, true);
         }
 
-        public void ConvertWAD(int NANDloader_type, string tid, bool vWii = false)
+        public void ConvertWAD(int type, string tid, bool vWii = false)
         {
-            string forwarderTarget = NANDloader_type == 0 ? "00000002.app" : "00000001.app";
-            WAD x = NANDloader_type == 0 ? WAD.Load(Paths.Database + "dol\\COMX.wad") : WAD.Load(Paths.Database + "dol\\WNKO.wad");
+            string forwarderTarget = type <= 1 ? "00000002.app" : "00000001.app";
+            WAD x = type <= 1 ? WAD.Load(Paths.Database + "dol\\COMX.wad") : WAD.Load(Paths.Database + "dol\\WNKO.wad");
             x.Unpack(Paths.WorkingFolder_Forwarder);
             x.Dispose();
 
             // Copy banner from original WAD
             File.Copy(Paths.WorkingFolder + "00000000.app", Paths.WorkingFolder_Forwarder + "00000000.app", true);
-            
+
             // Create forwarder .app
-            var forwarder = Properties.Resources.Forwarder;
+            bool v12 = type == 1 || type >= 3;
+            var forwarder = v12 ? Properties.Resources.Forwarder_v12 : Properties.Resources.Forwarder_v14;
+            var offset = v12 ? 488501 : 522628;
             var id = System.Text.Encoding.ASCII.GetBytes(tid);
-            id.CopyTo(forwarder, 522628);
+            id.CopyTo(forwarder, offset);
             File.WriteAllBytes(Paths.WorkingFolder_Forwarder + forwarderTarget, forwarder);
 
             // vWii
             if (vWii)
             {
-                string NANDloader = NANDloader_type == 0 ? "00000001.app" : "00000002.app";
+                string NANDloader = type <= 1 ? "00000001.app" : "00000002.app";
                 File.WriteAllBytes(Paths.WorkingFolder_Forwarder + NANDloader, Properties.Resources.NANDLoader_vWii);
             }
 
