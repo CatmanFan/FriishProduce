@@ -134,8 +134,12 @@ namespace FriishProduce.Forwarders
 
         public void ConvertWAD(int type, string tid, bool vWii = false)
         {
-            string forwarderTarget = type <= 1 ? "00000002.app" : "00000001.app";
-            WAD x = type <= 1 ? WAD.Load(Paths.Database + "dol\\COMX.wad") : WAD.Load(Paths.Database + "dol\\WNKO.wad");
+            bool COMX = type <= 1;
+            bool v12  = type == 1 || type >= 3;
+
+            var forwarderTarget = COMX ? "00000002.app"                             : "00000001.app";
+            var NANDloader      = COMX ? "00000001.app"                             : "00000002.app";
+            var x               = COMX ? WAD.Load(Paths.Database + "dol\\COMX.wad") : WAD.Load(Paths.Database + "dol\\WNKO.wad");
             x.Unpack(Paths.WorkingFolder_Forwarder);
             x.Dispose();
 
@@ -143,19 +147,14 @@ namespace FriishProduce.Forwarders
             File.Copy(Paths.WorkingFolder + "00000000.app", Paths.WorkingFolder_Forwarder + "00000000.app", true);
 
             // Create forwarder .app
-            bool v12 = type == 1 || type >= 3;
             var forwarder = v12 ? Properties.Resources.Forwarder_v12 : Properties.Resources.Forwarder_v14;
-            var offset = v12 ? 488501 : 522628;
-            var id = System.Text.Encoding.ASCII.GetBytes(tid);
+            var offset    = v12 ? 488501                             : 522628;
+            var id        = System.Text.Encoding.ASCII.GetBytes(tid);
             id.CopyTo(forwarder, offset);
             File.WriteAllBytes(Paths.WorkingFolder_Forwarder + forwarderTarget, forwarder);
 
             // vWii
-            if (vWii)
-            {
-                string NANDloader = type <= 1 ? "00000001.app" : "00000002.app";
-                File.WriteAllBytes(Paths.WorkingFolder_Forwarder + NANDloader, Properties.Resources.NANDLoader_vWii);
-            }
+            if (vWii) File.WriteAllBytes(Paths.WorkingFolder_Forwarder + NANDloader, Properties.Resources.NANDLoader_vWii);
 
             // Replace original WAD
             foreach (var item in Directory.EnumerateFiles(Paths.WorkingFolder, "*.*", SearchOption.TopDirectoryOnly))
