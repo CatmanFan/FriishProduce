@@ -175,4 +175,10 @@
   <data name="Forwarder_v14" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\forwarders\forwarder_v14.dol;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="Forwarder_COMX" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\forwarders\COMX.wad;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Forwarder_WNKO" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\forwarders\WNKO.wad;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

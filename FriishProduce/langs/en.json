@@ -20,14 +20,6 @@
     "S32X": "SEGA/MEGA 32X",
     "PSX": "PlayStation"
   },
-  "methods": {
-    "VC": "Virtual Console",
-    "FCEUGX": "FCE Ultra GX",
-    "Snes9XGX": "Snes9x GX",
-    "VBAGX": "VBA GX",
-    "RA-SS": "RetroArch-SS",
-    "vWii": "vWii compatible",
-  },
   "global": {
     "g000": "FriishProduce",
     "g001": "Settings",
@@ -42,6 +34,7 @@
     "g010": "Modify emulator configuration",
     "g011": "Emulator configuration",
     "g012": "Virtual Console",
+    "vWii": "vWii compatibility",
     "OK": "&OK",
     "Cancel": "&Cancel",
     "Yes": "&Yes",

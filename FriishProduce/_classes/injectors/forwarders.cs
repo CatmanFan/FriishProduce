@@ -17,7 +17,7 @@ namespace FriishProduce.Forwarders
             "Snes9x TX",
             "Visual Boy Advance GX",
             "Genesis Plus GX",
-            "Wii64 (glN64 GFX)",
+            "Wii64 (GLideN64 GFX)",
             "Wii64 (Rice GFX)",
             "Not64",
             "Mupen64GC-FIX94",
@@ -142,7 +142,7 @@ namespace FriishProduce.Forwarders
 
             var forwarderTarget = COMX ? "00000002.app"                             : "00000001.app";
             var NANDloader      = COMX ? "00000001.app"                             : "00000002.app";
-            var x               = COMX ? WAD.Load(Paths.Database + "dol\\COMX.wad") : WAD.Load(Paths.Database + "dol\\WNKO.wad");
+            var x               = COMX ? WAD.Load(Properties.Resources.Forwarder_COMX) : WAD.Load(Properties.Resources.Forwarder_WNKO);
             x.Unpack(Paths.WorkingFolder_Forwarder);
             x.Dispose();
 

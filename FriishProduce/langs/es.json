@@ -10,10 +10,6 @@
     "N64": "Nintendo 64",
     "NeoGeo": "SNK Neo-Geo",
   },
-  "methods": {
-    "VC": "Consola Virtual",
-    "vWii": "Compatible con vWii",
-  },
   "global": {
     "g000": "FriishProduce",
     "g001": "Configuración",
@@ -28,13 +24,14 @@
     "g010": "Modificar la configuración del emulador",
     "g011": "Configuración del emulador",
     "g012": "Consola Virtual",
+    "vWii": "Compatible con vWii",
     "OK": "&Aceptar",
     "Cancel": "&Cancelar",
     "Yes": "&Sí",
     "No": "&No",
     "Back": "< &Atrás",
     "Next": "&Siguiente >",
-    "Save": "&Guardar"
+    "Save": "&Guardar",
   },
   "settings": {
     "s000": "Programa",

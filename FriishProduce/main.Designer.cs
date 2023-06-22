@@ -77,7 +77,6 @@ namespace FriishProduce
             this.ChannelTitle = new System.Windows.Forms.TextBox();
             this.a003 = new System.Windows.Forms.Label();
             this.page4 = new System.Windows.Forms.Panel();
-            this.vWii = new System.Windows.Forms.CheckBox();
             this.NANDLoader = new System.Windows.Forms.ComboBox();
             this.RandomTID = new System.Windows.Forms.Button();
             this.VideoMode = new System.Windows.Forms.ComboBox();
@@ -119,6 +118,7 @@ namespace FriishProduce
             this.NES__000 = new System.Windows.Forms.Label();
             this.Options_SEGA = new System.Windows.Forms.Panel();
             this.SEGA_SetConfig = new System.Windows.Forms.CheckBox();
+            this.vWii = new System.Windows.Forms.CheckBox();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.BrowsePatch = new System.Windows.Forms.OpenFileDialog();
             this.BrowseImage = new System.Windows.Forms.OpenFileDialog();
@@ -530,7 +530,6 @@ namespace FriishProduce
             // 
             // page4
             // 
-            this.page4.Controls.Add(this.vWii);
             this.page4.Controls.Add(this.NANDLoader);
             this.page4.Controls.Add(this.RandomTID);
             this.page4.Controls.Add(this.VideoMode);
@@ -546,15 +545,9 @@ namespace FriishProduce
             this.page4.Controls.Add(this.Options_N64);
             this.page4.Controls.Add(this.Options_NES);
             this.page4.Controls.Add(this.Options_SEGA);
+            this.page4.Controls.Add(this.vWii);
             resources.ApplyResources(this.page4, "page4");
             this.page4.Name = "page4";
-            // 
-            // vWii
-            // 
-            resources.ApplyResources(this.vWii, "vWii");
-            this.vWii.Name = "vWii";
-            this.vWii.Tag = "";
-            this.vWii.UseVisualStyleBackColor = true;
             // 
             // NANDLoader
             // 
@@ -900,6 +893,13 @@ namespace FriishProduce
             this.SEGA_SetConfig.Tag = "g010";
             this.SEGA_SetConfig.UseVisualStyleBackColor = true;
             this.SEGA_SetConfig.CheckedChanged += new System.EventHandler(this.SEGA_ConfigChanged);
+            // 
+            // vWii
+            // 
+            resources.ApplyResources(this.vWii, "vWii");
+            this.vWii.Name = "vWii";
+            this.vWii.Tag = "";
+            this.vWii.UseVisualStyleBackColor = true;
             // 
             // ToolTip
             // 

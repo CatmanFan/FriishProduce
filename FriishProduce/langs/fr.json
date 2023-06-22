@@ -4,6 +4,17 @@
     "name": "Français",
     "author": "CatmanFan"
   },
+  "consoles": {
+    "NES": "NES / Famicom",
+    "SNES": "SNES / Super Famicom",
+    "SMS": "Sega Master System",
+    "SMD": "Sega Mega Drive / Genesis",
+    "SMCD": "Sega Mega CD / Sega CD",
+    "PCE": "PC Engine / TurboGrafx-16",
+    "PCECD": "PC Engine CD / TurboGrafx-16 CD",
+    "NeoGeo": "SNK Neo-Geo",
+    "MSX": "MSX / MSX2",
+  },
   "global": {
     "g000": "FriishProduce",
     "g001": "Réglages",
@@ -18,6 +29,7 @@
     "g010": "Modifier la configuration de l'émulateur",
     "g011": "Émulateur",
     "g012": "Console virtuelle",
+    "vWii": "Compatible avec le vWii (Wii U)",
     "OK": "&OK",
     "Cancel": "&Annuler",
     "Yes": "&Oui",
@@ -26,23 +38,12 @@
     "Next": "&Suivant >",
     "Save": "&Enregistrer"
   },
-  "consoles": {
-    "NES": "NES / Famicom",
-    "SNES": "SNES / Super Famicom",
-    "SMS": "Sega Master System",
-    "SMD": "Sega Mega Drive / Genesis",
-    "SMCD": "Sega Mega CD / Sega CD",
-    "PCE": "PC Engine / TurboGrafx-16",
-    "PCECD": "PC Engine CD / TurboGrafx-16 CD",
-    "NeoGeo": "SNK Neo-Geo",
-    "MSX": "MSX / MSX2",
-  },
   "settings": {
     "s000": "Logiciel",
     "s001": "Langue :",
     "s002": "Système",
     "s003": "Thème :",
-    "s004": "Ouvrir le dossier de sortie lorsque l'exportation est terminée",
+    "s004": "Ouvrir le dossier de sortie à la fin de l'exportation",
     "Theme__l0": "Noir classique",
     "Theme__l1": "Blanc classique"
   },

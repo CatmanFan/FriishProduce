@@ -214,8 +214,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="libWiiSharp.dll" />
+    <None Include="Resources\forwarders\COMX.wad" />
     <None Include="Resources\forwarders\forwarder_v12.dol" />
     <None Include="Resources\forwarders\forwarder_v14.dol" />
+    <None Include="Resources\forwarders\WNKO.wad" />
     <None Include="Resources\wwcxtool.exe" />
     <None Include="Resources\lzh8_cmp.exe" />
     <None Include="Resources\lzh8_cmp_nonstrict.exe" />
