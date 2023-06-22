@@ -100,6 +100,11 @@
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="views\msg.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -173,14 +178,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="database.json" />
     <None Include="langs\es.json" />
     <None Include="langs\fr.json" />
@@ -217,7 +217,6 @@
     <None Include="Resources\wwcxtool.exe" />
     <None Include="Resources\lzh8_cmp.exe" />
     <None Include="Resources\lzh8_cmp_nonstrict.exe" />
-    <None Include="Resources\forwarders\nandloader_wii_comex.app" />
     <None Include="Resources\lzss.exe" />
     <None Include="Resources\forwarders\settings\snes9xgx.xml" />
     <None Include="Resources\forwarders\settings\vbagx.xml" />
@@ -225,7 +224,6 @@
     <None Include="Resources\images\icon.png" />
     <None Include="Resources\forwarders\forwarder.dol" />
     <None Include="Resources\forwarders\nandloader_vwii.app" />
-    <None Include="Resources\forwarders\nandloader_wii_waninkoko.app" />
     <None Include="Resources\images\savebanner_flash.png" />
     <None Include="Resources\images\saveicon_flash.png" />
     <None Include="Resources\images\saveicon_placeholder.png" />

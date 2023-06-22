@@ -166,12 +166,6 @@
   <data name="Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\images\icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="NANDLoader_Comex" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\forwarders\nandloader_wii_comex.app;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="NANDLoader_Waninkoko" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\forwarders\nandloader_wii_waninkoko.app;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="LZH8" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\lzh8_cmp.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>

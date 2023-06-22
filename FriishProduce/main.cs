@@ -64,7 +64,6 @@ namespace FriishProduce
             a000.Text = string.Format(x.Get("a000"), ver);
             ToolTip.SetToolTip(Settings, x.Get("g001"));
             ToolTip.SetToolTip(RandomTID, x.Get("a022"));
-            NANDLoader.Items.Add(x.Get("vWii"));
 
             BrowseWAD.Filter = x.Get("f_wad") + x.Get("f_all");
             BrowseImage.Filter = x.Get("f_img") + x.Get("f_all");
@@ -159,6 +158,7 @@ namespace FriishProduce
 
             // Switch relevant options based on mode & selected platform
             NANDLoader.Visible = ForwarderMode;
+            vWii.Visible = ForwarderMode;
             a010.Visible = !ForwarderMode;
             DisableEmanual.Visible = !ForwarderMode;
             SaveDataTitle.Visible = !ForwarderMode;
@@ -1460,16 +1460,16 @@ namespace FriishProduce
                         InjectionMethod.SelectedItem.ToString()
                     );
 
-                    f.ConvertWAD(NANDLoader.SelectedIndex, TitleID.Text.ToUpper());
+                    f.ConvertWAD(NANDLoader.SelectedIndex, TitleID.Text.ToUpper(), vWii.Checked);
                 }
 
                 // ----------------------------------------------------
                 // Create WAD
                 // ----------------------------------------------------
 
-                if (currentConsole != Platforms.Flash)
+                if (currentConsole != Platforms.Flash && !ForwarderMode)
                 {
-                    Global.ChangeTitleID(TitleID.Text.ToUpper(), LowerTitleID.Channel, ForwarderMode);
+                    Global.ChangeTitleID(TitleID.Text.ToUpper(), LowerTitleID.Channel);
 
                     // Generate Wii Common Key
                     var key = Path.GetFileNameWithoutExtension(input[2]).ToUpper().EndsWith("T") || Path.GetFileNameWithoutExtension(input[2]).ToUpper().EndsWith("Q") ?
@@ -1493,20 +1493,14 @@ namespace FriishProduce
 
                     // Delete Wii Common Key
                     File.Delete(key_path);
-
-                    if (ForwarderMode)
-                    {
-                        w.LoadFile(Out);
-                        w.BootIndex = 2;
-                        w.ChangeTitleID(LowerTitleID.Channel, TitleID.Text);
-                        w.Save(Out);
-                    }
                 }
                 else
                 {
+                    w.LoadFile(input[2]);
+                    libWiiSharp.Region r = RegionFree.Checked ? libWiiSharp.Region.Free : w.Region;
                     w.CreateNew(Paths.WorkingFolder);
                     w.FakeSign = true;
-                    if (RegionFree.Checked) w.Region = libWiiSharp.Region.Free;
+                    w.Region = r;
                     w.ChangeTitleID(LowerTitleID.Channel, TitleID.Text);
 
                     string Out = SaveWAD.FileName;

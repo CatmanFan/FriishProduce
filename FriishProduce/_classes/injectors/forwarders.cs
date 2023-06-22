@@ -132,26 +132,36 @@ namespace FriishProduce.Forwarders
             Directory.Delete(Paths.WorkingFolder_SD, true);
         }
 
-        public void ConvertWAD(int NANDloader_type, string tid)
+        public void ConvertWAD(int NANDloader_type, string tid, bool vWii = false)
         {
-            // Add bootloader
-            byte[] NANDloader = Properties.Resources.NANDLoader_vWii;
-            switch (NANDloader_type)
-            {
-                case 0:
-                    NANDloader = Properties.Resources.NANDLoader_Comex;
-                    break;
-                case 1:
-                    NANDloader = Properties.Resources.NANDLoader_Waninkoko;
-                    break;
-            };
-            File.WriteAllBytes(Paths.WorkingFolder + "00000002.app", NANDloader);
+            string forwarderTarget = NANDloader_type == 0 ? "00000002.app" : "00000001.app";
+            WAD x = NANDloader_type == 0 ? WAD.Load(Paths.Database + "dol\\COMX.wad") : WAD.Load(Paths.Database + "dol\\WNKO.wad");
+            x.Unpack(Paths.WorkingFolder_Forwarder);
+            x.Dispose();
 
+            // Copy banner from original WAD
+            File.Copy(Paths.WorkingFolder + "00000000.app", Paths.WorkingFolder_Forwarder + "00000000.app", true);
+            
             // Create forwarder .app
             var forwarder = Properties.Resources.Forwarder;
             var id = System.Text.Encoding.ASCII.GetBytes(tid);
             id.CopyTo(forwarder, 522628);
-            File.WriteAllBytes(Paths.WorkingFolder + "00000001.app", forwarder);
+            File.WriteAllBytes(Paths.WorkingFolder_Forwarder + forwarderTarget, forwarder);
+
+            // vWii
+            if (vWii)
+            {
+                string NANDloader = NANDloader_type == 0 ? "00000001.app" : "00000002.app";
+                File.WriteAllBytes(Paths.WorkingFolder_Forwarder + NANDloader, Properties.Resources.NANDLoader_vWii);
+            }
+
+            // Replace original WAD
+            foreach (var item in Directory.EnumerateFiles(Paths.WorkingFolder, "*.*", SearchOption.TopDirectoryOnly))
+                File.Delete(item);
+            foreach (var item in Directory.EnumerateFiles(Paths.WorkingFolder_Forwarder, "*.*", SearchOption.TopDirectoryOnly))
+                File.Copy(item, item.Replace(Paths.WorkingFolder_Forwarder, Paths.WorkingFolder), true);
+
+            Directory.Delete(Paths.WorkingFolder_Forwarder, true);
         }
     }
 

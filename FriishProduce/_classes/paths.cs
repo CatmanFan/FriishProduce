@@ -27,6 +27,7 @@ namespace FriishProduce
         // Other
         public static readonly string WorkingFolder_ROM = WorkingFolder + "rom\\";
         public static readonly string WorkingFolder_SD = WorkingFolder + "SD\\";
+        public static readonly string WorkingFolder_Forwarder = WorkingFolder + "forwarder\\";
         public static readonly string PatchedSuffix = "-patched";
         public static readonly string Images = WorkingFolder + "images\\";
     }

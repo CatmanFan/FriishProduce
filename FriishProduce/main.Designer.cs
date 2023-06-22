@@ -122,6 +122,7 @@ namespace FriishProduce
             this.BrowsePatch = new System.Windows.Forms.OpenFileDialog();
             this.BrowseImage = new System.Windows.Forms.OpenFileDialog();
             this.BackgroundWorker = new System.ComponentModel.BackgroundWorker();
+            this.vWii = new System.Windows.Forms.CheckBox();
             this.panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Wait)).BeginInit();
             this.page1.SuspendLayout();
@@ -529,6 +530,7 @@ namespace FriishProduce
             // 
             // page4
             // 
+            this.page4.Controls.Add(this.vWii);
             this.page4.Controls.Add(this.NANDLoader);
             this.page4.Controls.Add(this.RandomTID);
             this.page4.Controls.Add(this.VideoMode);
@@ -538,12 +540,12 @@ namespace FriishProduce
             this.page4.Controls.Add(this.a004);
             this.page4.Controls.Add(this.DisableEmanual);
             this.page4.Controls.Add(this.AltCheckbox);
+            this.page4.Controls.Add(this.Options_Flash);
+            this.page4.Controls.Add(this.Options_NeoGeo);
             this.page4.Controls.Add(this.Options_PCE);
             this.page4.Controls.Add(this.Options_N64);
             this.page4.Controls.Add(this.Options_NES);
             this.page4.Controls.Add(this.Options_SEGA);
-            this.page4.Controls.Add(this.Options_Flash);
-            this.page4.Controls.Add(this.Options_NeoGeo);
             resources.ApplyResources(this.page4, "page4");
             this.page4.Name = "page4";
             // 
@@ -906,6 +908,13 @@ namespace FriishProduce
             // 
             resources.ApplyResources(this.BrowseImage, "BrowseImage");
             // 
+            // vWii
+            // 
+            resources.ApplyResources(this.vWii, "vWii");
+            this.vWii.Name = "vWii";
+            this.vWii.Tag = "";
+            this.vWii.UseVisualStyleBackColor = true;
+            // 
             // Main
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1052,6 +1061,7 @@ namespace FriishProduce
         private System.Windows.Forms.ComboBox NANDLoader;
         private System.Windows.Forms.CheckBox PCE_SetConfig;
         private System.Windows.Forms.Panel PCE_CustomOptions;
+        private System.Windows.Forms.CheckBox vWii;
     }
 }
 

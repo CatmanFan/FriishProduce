@@ -282,7 +282,7 @@ namespace FriishProduce
             }
         }
 
-        public static void ChangeTitleID(string upperTID, libWiiSharp.LowerTitleID lowerTID, bool isForwarder = false)
+        public static void ChangeTitleID(string upperTID, libWiiSharp.LowerTitleID lowerTID)
         {
             uint upperID = BitConverter.ToUInt32(new byte[4]
             {
@@ -304,18 +304,6 @@ namespace FriishProduce
                 if (Path.GetExtension(item).ToLower() == ".tmd")
                 {
                     var tmd = libWiiSharp.TMD.Load(item);
-
-                    if (isForwarder)
-                    {
-                        tmd.StartupIOS = 58;
-                        tmd.UpdateContents(Paths.WorkingFolder);
-                        for (int i = tmd.NumOfContents; i > 2; i--)
-                        {
-                            try { tmd.RemoveContent(i); }
-                            catch { break; }
-                        }
-                    }
-
                     tmd.TitleID = lowerID;
                     tmd.Save(item);
                     Wii.WadEdit.UpdateTmdContents(item);
