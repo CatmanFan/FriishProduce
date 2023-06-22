@@ -41,18 +41,18 @@ Currently supported:
 
 * Emulator forwarders
   * **[FCE Ultra GX](https://github.com/dborth/fceugx)** (dborth et al.)
-  * **[FCE Ultra RX](https://github.com/niuus/FCEUltraRX)** (niuus et al.)
+  * **[FCE Ultra RX](https://github.com/niuus/FCEUltraRX)** (NiuuS et al.)
   * **[FCEUX TX / FCEUGX-1UP](https://gbatemp.net/threads/fceugx-1up.558023/)** (Tanooki16)
-  * **[Snes9x-GX](https://github.com/dborth/snes9xgx)** (dborth et al.)
-  * **[Snes9x-RX](https://github.com/niuus/Snes9xRX)** (niuus et al.)
-  * **[Snes9x-TX / Snes9xGX-Mushroom](https://gbatemp.net/threads/snes9xgx-mushroom.558500/)** (Tanooki16)
+  * **[Snes9x GX](https://github.com/dborth/snes9xgx)** (dborth et al.)
+  * **[Snes9x RX](https://github.com/niuus/Snes9xRX)** (NiuuS et al.)
+  * **[Snes9x TX / Snes9xGX-Mushroom](https://gbatemp.net/threads/snes9xgx-mushroom.558500/)** (Tanooki16)
   <!-- * **[Visual Boy Advance GX](https://github.com/dborth/vbagx)** (dborth et al.) -->
   <!-- * **[mGBA Wii](https://github.com/mgba-emu/mgba)** (endrift et al.) -->
-  * **[Wii64 1.3 mod](https://github.com/saulfabregwiivc/Wii64/tree/wii64-wiiflow)** by saulfabreg (original author: emu_kidid)
-  * **[Not64](https://github.com/extremscorner/not64)** (extremscorner)
+  * **[Wii64 1.3 MOD](https://github.com/saulfabregwiivc/Wii64/tree/wii64-wiiflow)** forked by saulfabreg (original author: Wii64 Team)
+  * **[Not64](https://github.com/extremscorner/not64)** (Extrems)
   * **[Mupen64GC-FIX94](https://github.com/FIX94/mupen64gc-fix94)** (Wii64 Team, forked by FIX94)
-  * **[Genesis Plus GX](https://github.com/ekeeke/Genesis-Plus-GX)** (eke-eke)
-  <!-- * **[WiiSXRX](https://github.com/niuus/WiiSXRX)** (niuus, forked from Mystro256's WiiSXR) -->
+  * **[Genesis Plus GX](https://github.com/ekeeke/Genesis-Plus-GX)** (eke-eke et al.)
+  <!-- * **[WiiSXRX](https://github.com/niuus/WiiSXRX)** (NiuuS, forked from Mystro256's WiiSXR) -->
 
 * Other
   * **Shockwave/Adobe Flash**
@@ -80,7 +80,7 @@ This program uses the following third-party components and apps:
   * **comex**'s NAND loader. *(file renamed as "nandloader_wii_comex.app")*
   * **Waninkoko**'s NAND loader, retrieved from ShowMiiWads repo. *(file renamed as "nandloader_wii.app")*
   * **FIX94**'s **[tiny-vwii-nand-loader](https://github.com/FIX94/tiny-vwii-nand-loader)**. *(file renamed as "nandloader_vwii.app")*
-  * Forwarder DOL generated from **ModMii Classic** (application author: XFlak) *(file renamed as "forwarder.dol")*
+  * Forwarder DOL generated from **[ModMii Classic](https://modmii.github.io)** (application author: XFlak) *(file renamed as "forwarder.dol")*
 
 I would also like to thank the following people:
 * **[SuperrSonic](https://github.com/SuperrSonic)** for reverse-engineering much of Wii software and official emulator code, and in particular, his [fork of RetroArch Wii](https://github.com/SuperrSonic/RA-SS).
