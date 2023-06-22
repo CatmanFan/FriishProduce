@@ -255,6 +255,7 @@ namespace FriishProduce
                     InjectionMethod.Items.Add(new Forwarders.Generic().List[8]);
                     InjectionMethod.Items.Add(new Forwarders.Generic().List[9]);
                     InjectionMethod.Items.Add(new Forwarders.Generic().List[10]);
+                    InjectionMethod.Items.Add(new Forwarders.Generic().List[11]);
                     break;
                 case Platforms.SMS:
                 case Platforms.SMD:

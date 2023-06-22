@@ -10,6 +10,10 @@
     "N64": "Nintendo 64",
     "NeoGeo": "SNK Neo-Geo",
   },
+  "methods": {
+    "VC": "Consola Virtual",
+    "vWii": "Compatible con vWii",
+  },
   "global": {
     "g000": "FriishProduce",
     "g001": "Configuración",

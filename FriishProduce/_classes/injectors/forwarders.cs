@@ -17,9 +17,10 @@ namespace FriishProduce.Forwarders
             "Snes9x TX",
             "Visual Boy Advance GX",
             "Genesis Plus GX",
-            "Wii64 (WiiFlow)",
+            "Wii64 (glN64 GFX)",
+            "Wii64 (Rice GFX)",
             "Not64",
-            "Mupen64GC",
+            "Mupen64GC-FIX94",
             "WiiSXRX"
         };
 
@@ -40,7 +41,7 @@ namespace FriishProduce.Forwarders
                     dolIndex = i;
             if (dolIndex == -1) throw new FileNotFoundException();
 
-            string romFile = (dolIndex >= 5 ? "rom" : "HOME Menu") + Path.GetExtension(ROM).Replace(Paths.PatchedSuffix, "");
+            string romFile = (dolIndex >= 7 ? "rom" : "HOME Menu") + Path.GetExtension(ROM).Replace(Paths.PatchedSuffix, "");
 
             List<string> meta = new List<string>
             {
@@ -99,22 +100,24 @@ namespace FriishProduce.Forwarders
                     meta[9] = meta[9].Replace("</arg>", "/</arg>");
                     break;
                 case 8:
-                    File.Copy(Paths.Database + "dol\\wii64_wf.dol", dir + "boot.dol");
+                    File.Copy(Paths.Database + "dol\\wii64_gln64_wf.dol", dir + "boot.dol");
                     break;
                 case 9:
+                    File.Copy(Paths.Database + "dol\\wii64_rice_wf.dol", dir + "boot.dol");
+                    break;
+                case 10:
                     File.Copy(Paths.Database + "dol\\not64.dol", dir + "boot.dol");
                     meta[9] =  $"    <arg>rompath=\"{AppFolder}{name}/{romFile}\"</arg>";
                     meta[10] = $"    <arg>SkipMenu=1</arg>";
                     meta.Add("    <arg>ScreenMode=0</arg>");
                     break;
-                case 10:
-                    File.Copy(Paths.Database + "dol\\mupen64gc.dol", dir + "boot.dol");
-                    meta.Add("    <arg>SkipMenu = 1</arg>");
+                case 11:
+                    File.Copy(Paths.Database + "dol\\mupen64gc-fix94.dol", dir + "boot.dol");
+                    meta.Add("    <arg>loader</arg>"); // Mupen64GC-FIX94 needs at least a third argument for be able to autoboot
                     meta.Add("    <arg>ScreenMode = 0</arg>");
                     break;
-                case 11:
+                case 12:
                     File.Copy(Paths.Database + "dol\\wiisxrx.dol", dir + "boot.dol");
-                    meta.Add("    <arg>SkipMenu = 1</arg>");
                     meta.Add("    <arg>VideoMode = 0</arg>");
                     break;
             }
