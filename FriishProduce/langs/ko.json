@@ -20,14 +20,6 @@
     "S32X": "세가/메가 32X",
     "PSX": "플레이스테이션"	
   },
-  "methods": {
-    "VC": "가상 콘솔",
-    "FCEUGX": "FCE 울트라 GX",
-    "Snes9XGX": "Snes9x-GX",
-    "VBAGX": "VBA-GX",
-    "RA-SS": "레트로아크-SS",
-    "vWii": "vWii-호환 가능",
-  },
   "global": {
     "g000": "FriishProduce",
     "g001": "설정",
@@ -42,7 +34,8 @@
 	"g010": "에뮬레이터 구성 수정",
     "g011": "에뮬레이터 구성",
     "g012": "가상 콘솔",
-    "OK": "확인(&O)",	
+	"vWii": "vWii 호환성",
+    "OK": "확인(&O)",
     "Cancel": "취소(&C)",
     "Yes": "예(&Y)",
     "No": "아니오(&N)",
