@@ -4,13 +4,13 @@ namespace FriishProduce.Themes
 {
     public static class Dark
     {
-        public static Color BG = Color.FromArgb(76, 76, 76);
-        public static Color BG_Secondary = Color.FromArgb(68, 68, 68);
+        public static Color BG = Color.FromArgb(46, 46, 46);
+        public static Color BG_Secondary = Color.FromArgb(53, 53, 53);
         public static Color FG = Color.White;
 
         public static Color Button = BG_Secondary;
-        public static Color ButtonBorder = Color.FromArgb(85, 85, 85);
-        public static Color ButtonDown = Color.FromArgb(75, 75, 75);
+        public static Color ButtonBorder = Color.FromArgb(60, 60, 60);
+        public static Color ButtonDown = Color.FromArgb(65, 65, 65);
         public static Color ComboBox = BG_Secondary;
     }
 

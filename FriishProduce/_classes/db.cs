@@ -37,7 +37,8 @@ namespace FriishProduce
             }
 
             All:
-            foreach (JObject entry in dbReader.Children()) list.Add(entry);
+            foreach (JObject entry in dbReader.Children())
+                if (entry["platform"].ToString().ToLower() != "msx") list.Add(entry);
             Selected = "all";
         }
 
@@ -53,7 +54,8 @@ namespace FriishProduce
                 dbReader = JsonConvert.DeserializeObject<JObject>(File.ReadAllText(Paths.Database + "database.json"))["database"];
                 Selected = "all";
                 var allList = new List<JToken>();
-                foreach (JObject entry in dbReader.Children()) allList.Add(entry);
+                foreach (JObject entry in dbReader.Children())
+                    if (entry["platform"].ToString().ToLower() != "msx") list.Add(entry);
                 return allList;
             }
         }

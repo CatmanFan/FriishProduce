@@ -46,11 +46,12 @@ namespace FriishProduce
                 { Platforms.NES, "Nintendo - Nintendo Entertainment System" },
                 { Platforms.SNES, "Nintendo - Super Nintendo Entertainment System" },
                 { Platforms.N64, "Nintendo - Nintendo 64" },
-                // { Platforms.GBA, "Nintendo - Game Boy" },
+                { Platforms.GB, "Nintendo - Game Boy" },
+                { Platforms.GBC, "Nintendo - Game Boy Color" },
                 { Platforms.GBA, "Nintendo - Game Boy Advance" },
-                // { Platforms.GBA, "Nintendo - Game Boy Color" },
                 { Platforms.SMS, "Sega - Master System - Mark III" },
                 { Platforms.SMD, "Sega - Mega Drive - Genesis" },
+                { Platforms.S32X, "Sega - 32X" },
                 { Platforms.PCE, "NEC - PC Engine - TurboGrafx 16" },
                 { Platforms.NeoGeo, "SNK - Neo Geo" },
                 { Platforms.MSX, "Microsoft - MSX" },
@@ -78,38 +79,48 @@ namespace FriishProduce
 
                     // --------------------------------------------------------------------- //
 
-                    // Search in "releaseyear" repository
-                    using (WebClient c = new WebClient())
-                        db_bytes = c.DownloadData(db_base + "releaseyear/" + Uri.EscapeUriString(item.Value) + ".dat");
+                    string[] db_lines = new string[1];
 
-                    // Scan retrieved database
-                    string[] db_lines = System.Text.Encoding.UTF8.GetString(db_bytes).Split(Environment.NewLine.ToCharArray());
+                    try
+                    {
+                        // Search in "releaseyear" repository
+                        using (WebClient c = new WebClient())
+                            db_bytes = c.DownloadData(db_base + "releaseyear/" + Uri.EscapeUriString(item.Value) + ".dat");
 
-                    for (int i = 5; i < db_lines.Length; i++)
-                        if (db_lines[i].ToLower().Contains(hash))
-                        {
-                            for (int x = i; x > i - 10; x--)
-                                if (db_lines[x].Contains("comment \""))
-                                {
-                                    Title = db_lines[x].Replace("\t", "").Replace("comment \"", "").Replace("\"", "");
-                                    goto GetYear;
-                                }
+                        db_lines = System.Text.Encoding.UTF8.GetString(db_bytes).Split(Environment.NewLine.ToCharArray());
 
-                            GetYear:
-                            for (int x = i; x > i - 10; x--)
-                                if (db_lines[x].Contains("releaseyear \""))
-                                {
-                                    Year = db_lines[x].Trim().Replace("releaseyear \"", "").Replace("\"", "");
-                                    goto GetImgURL;
-                                }
+                        // Scan retrieved database
+                        for (int i = 5; i < db_lines.Length; i++)
+                            if (db_lines[i].ToLower().Contains(hash))
+                            {
+                                for (int x = i; x > i - 10; x--)
+                                    if (db_lines[x].Contains("comment \""))
+                                    {
+                                        Title = db_lines[x].Replace("\t", "").Replace("comment \"", "").Replace("\"", "");
+                                        goto GetYear;
+                                    }
 
-                            GetImgURL:
-                            ImgURL = "https://thumbnails.libretro.com/" + Uri.EscapeUriString(item.Value) + "/Named_Titles/" + Uri.EscapeUriString(Title) + ".png";
-                            goto GetPlayers;
-                        }
+                                GetYear:
+                                for (int x = i; x > i - 10; x--)
+                                    if (db_lines[x].Contains("releaseyear \""))
+                                    {
+                                        Year = db_lines[x].Trim().Replace("releaseyear \"", "").Replace("\"", "");
+                                        goto GetImgURL;
+                                    }
+
+                                GetImgURL:
+                                ImgURL = "https://thumbnails.libretro.com/" + Uri.EscapeUriString(item.Value) + "/Named_Titles/" + Uri.EscapeUriString(Title) + ".png";
+                                goto GetPlayers;
+                            }
+                    }
+                    catch
+                    {
+                        goto Dev;
+                    }
 
                     // --------------------------------------------------------------------- //
 
+                    Dev:
                     // If not found, search in "developer" repository, which happens to be more complete
                     using (WebClient c = new WebClient())
                         db_bytes = c.DownloadData(db_base + "developer/" + Uri.EscapeUriString(item.Value) + ".dat");

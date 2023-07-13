@@ -289,7 +289,7 @@
     <value>Bottom</value>
   </data>
   <data name="panel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 436</value>
+    <value>0, 431</value>
   </data>
   <data name="panel.Size" type="System.Drawing.Size, System.Drawing">
     <value>684, 50</value>
@@ -328,7 +328,7 @@
 </value>
   </data>
   <data name="Wait.Location" type="System.Drawing.Point, System.Drawing">
-    <value>333, 451</value>
+    <value>333, 446</value>
   </data>
   <data name="Wait.Size" type="System.Drawing.Size, System.Drawing">
     <value>19, 19</value>
@@ -390,9 +390,6 @@
   <data name="icon.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="icon.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="&gt;&gt;icon.Name" xml:space="preserve">
     <value>icon</value>
   </data>
@@ -406,7 +403,7 @@
     <value>0</value>
   </data>
   <data name="page1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 32</value>
+    <value>0, 30</value>
   </data>
   <data name="page1.Size" type="System.Drawing.Size, System.Drawing">
     <value>684, 380</value>
@@ -682,7 +679,7 @@
     <value>8</value>
   </data>
   <data name="page2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 32</value>
+    <value>0, 30</value>
   </data>
   <data name="page2.Size" type="System.Drawing.Size, System.Drawing">
     <value>684, 380</value>
@@ -1304,7 +1301,7 @@
     <value>3</value>
   </data>
   <data name="page3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 32</value>
+    <value>0, 30</value>
   </data>
   <data name="page3.Size" type="System.Drawing.Size, System.Drawing">
     <value>684, 380</value>
@@ -1328,22 +1325,25 @@
     <value>3</value>
   </data>
   <data name="NANDLoader.Items" xml:space="preserve">
-    <value>Comex NAND Loader (v14)</value>
+    <value>Auto-detect</value>
   </data>
   <data name="NANDLoader.Items1" xml:space="preserve">
-    <value>Comex NAND Loader (v12)</value>
+    <value>Comex - forwarder v14</value>
   </data>
   <data name="NANDLoader.Items2" xml:space="preserve">
-    <value>Waninkoko NAND Loader (v14)</value>
+    <value>Comex - forwarder v12</value>
   </data>
   <data name="NANDLoader.Items3" xml:space="preserve">
-    <value>Waninkoko NAND Loader (v12)</value>
+    <value>Waninkoko - forwarder v14</value>
+  </data>
+  <data name="NANDLoader.Items4" xml:space="preserve">
+    <value>Waninkoko - forwarder v12</value>
   </data>
   <data name="NANDLoader.Location" type="System.Drawing.Point, System.Drawing">
     <value>27, 58</value>
   </data>
   <data name="NANDLoader.Size" type="System.Drawing.Size, System.Drawing">
-    <value>229, 23</value>
+    <value>250, 23</value>
   </data>
   <data name="NANDLoader.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -2606,7 +2606,7 @@
     <value>15</value>
   </data>
   <data name="page4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 32</value>
+    <value>0, 30</value>
   </data>
   <data name="page4.Size" type="System.Drawing.Size, System.Drawing">
     <value>684, 380</value>
@@ -2651,7 +2651,7 @@
     <value>True</value>
   </metadata>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>684, 486</value>
+    <value>684, 481</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>

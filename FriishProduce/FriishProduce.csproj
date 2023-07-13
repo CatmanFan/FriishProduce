@@ -129,6 +129,7 @@
     <Compile Include="views\platforms\sega_controller.Designer.cs">
       <DependentUpon>sega_controller.cs</DependentUpon>
     </Compile>
+    <Compile Include="_classes\banner.cs" />
     <Compile Include="_classes\bytes.cs" />
     <Compile Include="_classes\enums.cs" />
     <Compile Include="_classes\db_libretro.cs" />
@@ -214,6 +215,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="libWiiSharp.dll" />
+    <None Include="Resources\images\VC\gbc_icon.png" />
+    <None Include="Resources\images\VC\gba_icon.png" />
+    <None Include="Resources\images\VC\psx_banner.tpl" />
+    <None Include="Resources\images\VC\psx_icon.png" />
     <None Include="Resources\forwarders\COMX.wad" />
     <None Include="Resources\forwarders\forwarder_v12.dol" />
     <None Include="Resources\forwarders\forwarder_v14.dol" />

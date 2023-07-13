@@ -10,12 +10,14 @@
         PCE = 5,
         NeoGeo = 6,
         MSX = 7,
+        C64 = 109,
         Flash = 8,
-        C64 = 9,
-        GBA = 10,
-        SMCD = 20,
-        // S32X = 7,
-        // PSX = 8,
+        GB = 12,
+        GBC = 10,
+        GBA = 11,
+        PSX = 9,
+        S32X = 13,
+        SMCD = 14,
     }
 
     public class PlatformsGet

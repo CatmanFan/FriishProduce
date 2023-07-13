@@ -15,6 +15,7 @@ namespace FriishProduce
     {
         readonly Lang x = Program.Language;
         bool SaveVisible = false;
+        bool Retrieving = false;
 
         Platforms currentConsole = 0;
         TitleImage tImg = new TitleImage();
@@ -49,7 +50,8 @@ namespace FriishProduce
                 x.Get("PCE"),
                 x.Get("NeoGeo"),
                 x.Get("MSX"),
-                x.Get("Flash")
+                x.Get("Flash"),
+                x.Get("PSX")
             };
             foreach (var console in consoles) Console.Items.Add(console);
 
@@ -64,6 +66,7 @@ namespace FriishProduce
             a000.Text = string.Format(x.Get("a000"), ver);
             ToolTip.SetToolTip(Settings, x.Get("g001"));
             ToolTip.SetToolTip(RandomTID, x.Get("a022"));
+            NANDLoader.Items[0] = x.Get("g013");
 
             BrowseWAD.Filter = x.Get("f_wad") + x.Get("f_all");
             BrowseImage.Filter = x.Get("f_img") + x.Get("f_all");
@@ -110,7 +113,7 @@ namespace FriishProduce
 
                     case Platforms.Flash:
                         a001.Text = x.Get("a001_swf");
-                        OpenROM.Text = x.Get("g004");
+                        OpenROM.Text = x.Get("g004") != "undefined" ? x.Get("g004") : x.Get("g003");
                         BrowseROM.Filter = x.Get("f_swf");
                         break;
 
@@ -126,10 +129,13 @@ namespace FriishProduce
                         BrowseROM.Filter = x.Get("f_msx");
                         break;
 
+                    case Platforms.PSX:
                     case Platforms.SMCD:
                         BrowseROM.Filter = x.Get("f_iso");
                         break;
 
+                    case Platforms.GB:
+                    case Platforms.GBC:
                     case Platforms.GBA:
                         BrowseROM.Filter = x.Get("f_vba");
                         break;
@@ -242,26 +248,28 @@ namespace FriishProduce
             switch (currentConsole)
             {
                 case Platforms.NES:
-                    InjectionMethod.Items.Add(new Forwarders.Generic().List[0]);
-                    InjectionMethod.Items.Add(new Forwarders.Generic().List[1]);
-                    InjectionMethod.Items.Add(new Forwarders.Generic().List[2]);
+                    InjectionMethod.Items.Add(new Injectors.Forwarders().List[0]);
+                    InjectionMethod.Items.Add(new Injectors.Forwarders().List[1]);
+                    InjectionMethod.Items.Add(new Injectors.Forwarders().List[2]);
                     break;
                 case Platforms.SNES:
-                    InjectionMethod.Items.Add(new Forwarders.Generic().List[3]);
-                    InjectionMethod.Items.Add(new Forwarders.Generic().List[4]);
-                    InjectionMethod.Items.Add(new Forwarders.Generic().List[5]);
+                    InjectionMethod.Items.Add(new Injectors.Forwarders().List[3]);
+                    InjectionMethod.Items.Add(new Injectors.Forwarders().List[4]);
+                    InjectionMethod.Items.Add(new Injectors.Forwarders().List[5]);
                     break;
                 case Platforms.N64:
-                    InjectionMethod.Items.Add(new Forwarders.Generic().List[8]);
-                    InjectionMethod.Items.Add(new Forwarders.Generic().List[9]);
-                    InjectionMethod.Items.Add(new Forwarders.Generic().List[10]);
-                    InjectionMethod.Items.Add(new Forwarders.Generic().List[11]);
+                    InjectionMethod.Items.Add(new Injectors.Forwarders().List[8]);
+                    InjectionMethod.Items.Add(new Injectors.Forwarders().List[9]);
+                    InjectionMethod.Items.Add(new Injectors.Forwarders().List[10]);
+                    InjectionMethod.Items.Add(new Injectors.Forwarders().List[11]);
                     break;
                 case Platforms.SMS:
                 case Platforms.SMD:
+                case Platforms.S32X:
                 case Platforms.SMCD:
                     if (currentConsole == Platforms.SMCD) InjectionMethod.Items.RemoveAt(0);
-                    InjectionMethod.Items.Add(new Forwarders.Generic().List[7]);
+                    if (currentConsole == Platforms.SMCD) AutoFill.Visible = false;
+                    InjectionMethod.Items.Add(new Injectors.Forwarders().List[7]);
                     break;
                 case Platforms.PCE:
                     break;
@@ -275,9 +283,17 @@ namespace FriishProduce
                 case Platforms.Flash:
                     AutoFill.Visible = false;
                     break;
+                case Platforms.GB:
+                case Platforms.GBC:
                 case Platforms.GBA:
                     InjectionMethod.Items.RemoveAt(0);
-                    InjectionMethod.Items.Add(new Forwarders.Generic().List[6]);
+                    InjectionMethod.Items.Add(new Injectors.Forwarders().List[6]);
+                    break;
+                case Platforms.PSX:
+                    AutoFill.Visible = false;
+                    InjectionMethod.Items.RemoveAt(0);
+                    InjectionMethod.Items.Add(new Injectors.Forwarders().List[12]);
+                    InjectionMethod.Items.Add(new Injectors.Forwarders().List[13]);
                     break;
                 default:
                     break;
@@ -837,7 +853,7 @@ namespace FriishProduce
 
         private void BannerText_Changed(object sender, EventArgs e)
         {
-            if (!SaveDataTitle.Enabled) SaveDataTitle.Text = ChannelTitle.Text;
+            if (!SaveDataTitle.Enabled && !Retrieving) SaveDataTitle.Text = ChannelTitle.Text;
             if (SaveDataTitle.Lines.Length > 2) SaveDataTitle.Lines = new string[2] { SaveDataTitle.Lines[0], SaveDataTitle.Lines[1] };
             if (BannerTitle.Lines.Length > 2) BannerTitle.Lines = new string[2] { BannerTitle.Lines[0], BannerTitle.Lines[1] };
             foreach (string line1 in SaveDataTitle.Lines)
@@ -993,6 +1009,7 @@ namespace FriishProduce
 
         private async void AutoFill_Click(object sender, EventArgs e)
         {
+            Retrieving = true;
             ToggleWaitingIcon(true);
 
             await Task.Run(() =>
@@ -1004,6 +1021,7 @@ namespace FriishProduce
                 }
                 catch (Exception ex)
                 {
+                    Retrieving = false;
                     Invoke((Action)delegate { ToggleWaitingIcon(false); });
                     MessageBox.Show(ex.Message, Program.Language.Get("error"), System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
                     return;
@@ -1015,6 +1033,7 @@ namespace FriishProduce
                 {
                     string title = Regex.Replace(d.GetTitle().Replace(": ", Environment.NewLine).Replace(" - ", Environment.NewLine), @"\((.*?)\)", "");
                     Invoke((Action)delegate { BannerTitle.Text = title.Trim(); });
+                    Invoke((Action)delegate { SaveDataTitle.Text = title.Trim(); });
                 }
                 if (d.GetImgURL() != null)
                 {
@@ -1035,13 +1054,30 @@ namespace FriishProduce
                 }
             });
 
+            Retrieving = false;
             ToggleWaitingIcon(false);
             Next.Enabled = CheckBannerPage();
         }
 
         private void Finish_Click(object sender, EventArgs e)
         {
-            SaveWAD.FileName = !string.IsNullOrWhiteSpace(ChannelTitle.Text) && Custom.Checked ? $"{TitleID.Text} - {ChannelTitle.Text.Replace(":", " - ").Replace("?", "")}" : TitleID.Text;
+            bool custom = !string.IsNullOrWhiteSpace(ChannelTitle.Text) && Custom.Checked;
+            string fileName = custom ? Properties.Settings.Default.WADNameCustom : Properties.Settings.Default.WADNameSimple;
+
+            string name = ChannelTitle.Text;
+            string titleID = TitleID.Text;
+            string platform = currentConsole.ToString();
+            string type = ForwarderMode ? "fwdr"
+                : !ForwarderMode && currentConsole != Platforms.Flash ? "VC"
+                : "injected";
+            if (vWii.Checked) type += "+vWii";
+
+            if (custom) fileName = fileName.Replace("{name}", name);
+            fileName = fileName.Replace("{titleID}", titleID);
+            fileName = fileName.Replace("{platform}", platform);
+            fileName = fileName.Replace("{type}", type);
+
+            SaveWAD.FileName = fileName.Replace(": ", " - ").Replace("?", "");
             if (SaveWAD.ShowDialog() == DialogResult.OK)
             {
                 ToggleWaitingIcon(true);
@@ -1087,9 +1123,13 @@ namespace FriishProduce
                 // ----------------------------------------------------
 
                 #region Banner
-                if (Custom.Checked)
+                bool IsCustomConsole = (int)currentConsole > (int)Platforms.Flash;
+                if (Custom.Checked || IsCustomConsole)
                 {
-                    if (Import.Checked)
+                    // ----------------------------------------
+                    // Import respective banners
+                    // ----------------------------------------
+                    if (Custom.Checked && Import.Checked)
                     {
                         foreach (var item in Directory.GetFiles(Paths.Database, "*.*", SearchOption.AllDirectories))
                             if (File.Exists(item) && item.Contains(db.SearchID(ImportBases.SelectedItem.ToString())))
@@ -1098,22 +1138,29 @@ namespace FriishProduce
 
                     // --------------------------------------------------------------------------- //
 
-                    // Get banner.brlyt and TPLs
-                    Directory.CreateDirectory(Paths.Images);
+                    Banner b = new Banner()
+                    {
+                        UsingImage = tImg.Get(),
+                        Custom = currentConsole == Platforms.PSX ? 1 : 0
+                    };
 
+                    // ----------------------------------------
+                    // Load banner
+                    // ----------------------------------------
                     libWiiSharp.U8 BannerApp = libWiiSharp.U8.Load(Paths.WorkingFolder + "00000000.app");
-                    libWiiSharp.U8 Banner = libWiiSharp.U8.Load(BannerApp.Data[BannerApp.GetNodeIndex("banner.bin")]);
-                    libWiiSharp.U8 Icon = libWiiSharp.U8.Load(BannerApp.Data[BannerApp.GetNodeIndex("icon.bin")]);
+
+                    // ----------------------------------------
+                    // Unpack banner & icon .bin files
+                    // ----------------------------------------
+                    libWiiSharp.U8 Banner = new libWiiSharp.U8();
+                    libWiiSharp.U8 Icon = new libWiiSharp.U8();
 
                     try
                     {
-                        File.WriteAllBytes(Paths.WorkingFolder + "banner.brlyt", Banner.Data[Banner.GetNodeIndex("banner.brlyt")]);
+                        Banner.LoadFile(BannerApp.Data[BannerApp.GetNodeIndex("banner.bin")]);
+                        Icon.LoadFile(BannerApp.Data[BannerApp.GetNodeIndex("icon.bin")]);
 
-                        if (tImg.Get())
-                        {
-                            File.WriteAllBytes(Paths.Images + "VCPic.tpl", Banner.Data[Banner.GetNodeIndex("VCPic.tpl")]);
-                            File.WriteAllBytes(Paths.Images + "IconVCPic.tpl", Icon.Data[Icon.GetNodeIndex("IconVCPic.tpl")]);
-                        }
+                        b.ExtractFiles(Banner, Icon);
                     }
                     catch
                     {
@@ -1122,73 +1169,67 @@ namespace FriishProduce
 
                     // --------------------------------------------------------------------------- //
 
-                    // Copy VCbrlyt to working folder
-                    string path = Paths.Apps + "vcbrlyt\\";
-                    foreach (string dir in Directory.GetDirectories(path))
-                        Directory.CreateDirectory(dir.Replace(path, Paths.WorkingFolder + "vcbrlyt\\"));
-                    foreach (string file in Directory.GetFiles(path, "*.*", SearchOption.AllDirectories))
-                        File.Copy(file, file.Replace(path, Paths.WorkingFolder + "vcbrlyt\\"));
+                    b.SetupVCBrlyt();
 
-                    string arg = $"{Paths.WorkingFolder + "banner.brlyt"} -Title \"{BannerTitle.Text.Replace('-', '–').Replace(Environment.NewLine, "^").Replace("\"", "''")}\" -YEAR {ReleaseYear.Value} -Play {Players.Value}";
-
-                    await Task.Run(() =>
+                    if (Custom.Checked)
                     {
-                        using (Process p = Process.Start(new ProcessStartInfo
-                        {
-                            FileName = Paths.WorkingFolder + "vcbrlyt\\vcbrlyt.exe",
-                            Arguments = arg,
-                            UseShellExecute = false,
-                            CreateNoWindow = true
-                        }))
-                            p.WaitForExit();
+                        string arg = $"-Title \"{BannerTitle.Text.Replace('-', '–').Replace(Environment.NewLine, "^").Replace("\"", "''")}\" -YEAR {ReleaseYear.Value} -Play {Players.Value}";
+                        await Task.Run(() => { b.RunVCBrlyt(arg); });
+                    }
 
-                        // --------------------------------------------------------------------------- //
+                    if (IsCustomConsole)
+                    {
+                        await Task.Run(() => { b.CustomizeConsole(Banner, Icon,
+                            currentConsole == Platforms.PSX  ? BannerTypes.PSX  :
+                            currentConsole == Platforms.GB   ? BannerTypes.GB   :
+                            currentConsole == Platforms.GBC  ? BannerTypes.GBC  :
+                            currentConsole == Platforms.GBA  ? BannerTypes.GBA  :
+                            currentConsole == Platforms.S32X ? BannerTypes.S32X :
+                            currentConsole == Platforms.SMCD ? BannerTypes.SMCD :
+                            BannerTypes.Normal, w.Region); });
+                    }
 
-                        var Brlyt = File.ReadAllBytes(Paths.WorkingFolder + "banner.brlyt");
-                        if (Brlyt == Banner.Data[Banner.GetNodeIndex("banner.brlyt")])
-                            throw new Exception(x.Get("m007"));
-                        Banner.ReplaceFile(Banner.GetNodeIndex("banner.brlyt"), Brlyt);
-                    });
+                    b.ReplaceBrlyt(Banner);
 
                     // --------------------------------------------------------------------------- //
 
-                    if (tImg.Get())
+                    if (b.UsingImage)
                     {
-                        TPL tpl = TPL.Load(Paths.Images + "VCPic.tpl");
-                        var tplTF = tpl.GetTextureFormat(0);
-                        var tplPF = tpl.GetPaletteFormat(0);
-                        tpl.RemoveTexture(0);
-                        tpl.AddTexture(tImg.VCPic, tplTF, tplPF);
-                        tpl.Save(Paths.Images + "VCPic.tpl");
-
-                        tpl = TPL.Load(Paths.Images + "IconVCPic.tpl");
-                        tplTF = tpl.GetTextureFormat(0);
-                        tplPF = tpl.GetPaletteFormat(0);
-                        tpl.RemoveTexture(0);
-                        tpl.AddTexture(tImg.IconVCPic, tplTF, tplPF);
-                        tpl.Save(Paths.Images + "IconVCPic.tpl");
-
-                        tpl.Dispose();
-
-                        Banner.ReplaceFile(Banner.GetNodeIndex("VCPic.tpl"), File.ReadAllBytes(Paths.Images + "VCPic.tpl"));
-                        Icon.ReplaceFile(Icon.GetNodeIndex("IconVCPic.tpl"), File.ReadAllBytes(Paths.Images + "IconVCPic.tpl"));
-
-                        Icon.AddHeaderImd5();
-                        BannerApp.ReplaceFile(BannerApp.GetNodeIndex("icon.bin"), Icon.ToByteArray());
+                        b.ReplaceVCPic(Banner, Icon, Paths.Images + "VCPic.tpl", Paths.Images + "IconVCPic.tpl", tImg);
+                        Directory.Delete(Paths.Images, true);
                     }
 
-                    Banner.AddHeaderImd5();
-                    BannerApp.ReplaceFile(BannerApp.GetNodeIndex("banner.bin"), Banner.ToByteArray());
-                    BannerApp.AddHeaderImet(false, ChannelTitle.Text);
-                    BannerApp.Save(Paths.WorkingFolder + "00000000.app");
+                    // --------------------------------------------------------------------------- //
 
+                    var origTitles = w.ChannelTitles;
+                    b.PackBanner(Banner, Icon, BannerApp, Custom.Checked ? new string[]
+                    {
+                        ChannelTitle.Text, // JPN
+                        ChannelTitle.Text, // ENG
+                        ChannelTitle.Text, // DEU
+                        ChannelTitle.Text, // FRA
+                        ChannelTitle.Text, // ESP
+                        ChannelTitle.Text, // ITA
+                        ChannelTitle.Text, // NED
+                        ChannelTitle.Text  // KOR
+                    } : origTitles.Length > 0 ? origTitles : new string[]
+                    {
+                        "undefined",
+                        "undefined",
+                        "undefined",
+                        "undefined",
+                        "undefined",
+                        "undefined",
+                        "undefined",
+                        "undefined"
+                    });
+
+                    // ----------------------------------------
+                    // Cleanup everything else
+                    // ----------------------------------------
                     BannerApp.Dispose();
                     Banner.Dispose();
                     Icon.Dispose();
-
-                    Directory.Delete(Paths.Images, true);
-                    File.Delete(Paths.WorkingFolder + "banner.brlyt");
-                    Directory.Delete(Paths.WorkingFolder + "vcbrlyt\\", true);
                 }
                 #endregion
 
@@ -1375,7 +1416,7 @@ namespace FriishProduce
                                 {
                                     bool SepBanner = !File.Exists(Paths.WorkingFolder_Contents + "banner.bin");
                                     if (SepBanner) await Task.Run(() => { WiiCS.UnpackU8(Paths.WorkingFolder + "00000005.app", Paths.WorkingFolder_Content5); });
-                                    
+
                                     string target = NeoGeo.GetSaveFile();
                                     if (target != null)
                                     {
@@ -1401,7 +1442,7 @@ namespace FriishProduce
                                 if (DisableEmanual.Checked) await Task.Run(() => { Global.RemoveEmanual(); });
 
                                 if (Custom.Checked)
-                                { 
+                                {
                                     string target = MSX.GetSaveFile();
                                     if (target != null)
                                     {
@@ -1445,23 +1486,33 @@ namespace FriishProduce
                 // ----------------------------------------------------
                 else if (currentConsole != Platforms.Flash && ForwarderMode)
                 {
-                    Forwarders.Generic f = new Forwarders.Generic
+                    var extension = Path.GetExtension(input[0]).ToLower();
+                    Injectors.Forwarders f = new Injectors.Forwarders
                     {
                         ROM = input[0],
-                        IsISO = currentConsole == Platforms.SMCD,
+                        IsDisc = extension == ".cue" || extension == ".iso" || extension == ".chd",
                         UseUSBStorage = AltCheckbox.Checked
                     };
 
-                    f.Generate
-                    (
-                        TitleID.Text.ToUpper(),
-                        f.UseUSBStorage ?
-                            Path.Combine(Path.GetDirectoryName(SaveWAD.FileName), $"{TitleID.Text}_USBRoot.zip") :
-                            Path.Combine(Path.GetDirectoryName(SaveWAD.FileName), $"{TitleID.Text}_SDRoot.zip"),
-                        InjectionMethod.SelectedItem.ToString()
-                    );
+                    string[] parameters = { TitleID.Text.ToUpper(), InjectionMethod.SelectedItem.ToString(), SaveWAD.FileName };
+                    f.SetDOLIndex(parameters[1]);
 
-                    f.ConvertWAD(NANDLoader.SelectedIndex, TitleID.Text.ToUpper(), vWii.Checked);
+                    await Task.Run(() => { f.Generate
+                    (
+                        parameters[0],
+                        f.UseUSBStorage ?
+                            Path.Combine(Path.GetDirectoryName(parameters[2]), $"{parameters[0]}_USBRoot.zip") :
+                            Path.Combine(Path.GetDirectoryName(parameters[2]), $"{parameters[0]}_SDRoot.zip")
+                    ); });
+
+                    // Default for auto-selection: Waninkoko NANDloader + v14
+                    int type = NANDLoader.SelectedIndex <= 0 ? 2 : NANDLoader.SelectedIndex - 1;
+
+                    // AUTO-SELECTION METHOD:
+                    //   => For GenPlus & all emulators based on Wii64 Team's code (e.g. Wii64, WiiSX and forks), use Comex NANDloader
+                    if (f.DolIndex >= 8 && f.DolIndex <= 13) type = 1;
+
+                    f.ConvertWAD(type, TitleID.Text.ToUpper(), vWii.Checked);
                 }
 
                 // ----------------------------------------------------

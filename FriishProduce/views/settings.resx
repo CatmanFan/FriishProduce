@@ -204,8 +204,14 @@
   <data name="&gt;&gt;panel.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <metadata name="ToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <data name="OpenWhenDone.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="OpenWhenDone.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="OpenWhenDone.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 69</value>
@@ -257,6 +263,9 @@
   </data>
   <data name="s003.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="s003.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="s003.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 40</value>
@@ -360,6 +369,207 @@
   <data name="&gt;&gt;Application.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="s009.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="s009.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 8pt</value>
+  </data>
+  <data name="s009.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="s009.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 140</value>
+  </data>
+  <data name="s009.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 13</value>
+  </data>
+  <data name="s009.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="s009.Text" xml:space="preserve">
+    <value>s009</value>
+  </data>
+  <data name="&gt;&gt;s009.Name" xml:space="preserve">
+    <value>s009</value>
+  </data>
+  <data name="&gt;&gt;s009.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;s009.Parent" xml:space="preserve">
+    <value>s005</value>
+  </data>
+  <data name="&gt;&gt;s009.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="s008.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="s008.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt, style=Bold</value>
+  </data>
+  <data name="s008.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="s008.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 121</value>
+  </data>
+  <data name="s008.Size" type="System.Drawing.Size, System.Drawing">
+    <value>31, 15</value>
+  </data>
+  <data name="s008.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="s008.Text" xml:space="preserve">
+    <value>help</value>
+  </data>
+  <data name="&gt;&gt;s008.Name" xml:space="preserve">
+    <value>s008</value>
+  </data>
+  <data name="&gt;&gt;s008.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;s008.Parent" xml:space="preserve">
+    <value>s005</value>
+  </data>
+  <data name="&gt;&gt;s008.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="FileNameCustom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 83</value>
+  </data>
+  <data name="FileNameCustom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>448, 23</value>
+  </data>
+  <data name="FileNameCustom.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="&gt;&gt;FileNameCustom.Name" xml:space="preserve">
+    <value>FileNameCustom</value>
+  </data>
+  <data name="&gt;&gt;FileNameCustom.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;FileNameCustom.Parent" xml:space="preserve">
+    <value>s005</value>
+  </data>
+  <data name="&gt;&gt;FileNameCustom.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="s007.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="s007.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt, style=Bold</value>
+  </data>
+  <data name="s007.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="s007.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 65</value>
+  </data>
+  <data name="s007.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 15</value>
+  </data>
+  <data name="s007.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="s007.Text" xml:space="preserve">
+    <value>sfilename_b</value>
+  </data>
+  <data name="&gt;&gt;s007.Name" xml:space="preserve">
+    <value>s007</value>
+  </data>
+  <data name="&gt;&gt;s007.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;s007.Parent" xml:space="preserve">
+    <value>s005</value>
+  </data>
+  <data name="&gt;&gt;s007.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="FileNameSimple.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 30</value>
+  </data>
+  <data name="FileNameSimple.Size" type="System.Drawing.Size, System.Drawing">
+    <value>448, 23</value>
+  </data>
+  <data name="FileNameSimple.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;FileNameSimple.Name" xml:space="preserve">
+    <value>FileNameSimple</value>
+  </data>
+  <data name="&gt;&gt;FileNameSimple.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;FileNameSimple.Parent" xml:space="preserve">
+    <value>s005</value>
+  </data>
+  <data name="&gt;&gt;FileNameSimple.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="s006.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="s006.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt, style=Bold</value>
+  </data>
+  <data name="s006.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="s006.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 11</value>
+  </data>
+  <data name="s006.Size" type="System.Drawing.Size, System.Drawing">
+    <value>61, 15</value>
+  </data>
+  <data name="s006.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="s006.Text" xml:space="preserve">
+    <value>sfilename</value>
+  </data>
+  <data name="&gt;&gt;s006.Name" xml:space="preserve">
+    <value>s006</value>
+  </data>
+  <data name="&gt;&gt;s006.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;s006.Parent" xml:space="preserve">
+    <value>s005</value>
+  </data>
+  <data name="&gt;&gt;s006.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="s005.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 24</value>
+  </data>
+  <data name="s005.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="s005.Size" type="System.Drawing.Size, System.Drawing">
+    <value>463, 292</value>
+  </data>
+  <data name="s005.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="s005.Text" xml:space="preserve">
+    <value>save_as</value>
+  </data>
+  <data name="&gt;&gt;s005.Name" xml:space="preserve">
+    <value>s005</value>
+  </data>
+  <data name="&gt;&gt;s005.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;s005.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;s005.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
     <value>21, 18</value>
   </data>
@@ -381,9 +591,6 @@
   <data name="&gt;&gt;tabControl1.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <metadata name="ToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>

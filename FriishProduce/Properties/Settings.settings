@@ -11,5 +11,11 @@
     <Setting Name="OpenWhenDone" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="WADNameSimple" Type="System.String" Scope="User">
+      <Value Profile="(Default)">{platform} ({type}) - {titleID}</Value>
+    </Setting>
+    <Setting Name="WADNameCustom" Type="System.String" Scope="User">
+      <Value Profile="(Default)">{platform} ({type}) - {name} - {titleID}</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

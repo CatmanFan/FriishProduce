@@ -52,7 +52,8 @@ Currently supported:
   * **[Not64](https://github.com/extremscorner/not64)** (Extrems)
   * **[Mupen64GC-FIX94](https://github.com/FIX94/mupen64gc-fix94)** (Wii64 Team, forked by FIX94)
   * **[Genesis Plus GX](https://github.com/ekeeke/Genesis-Plus-GX)** (eke-eke et al.)
-  <!-- * **[WiiSXRX](https://github.com/niuus/WiiSXRX)** (NiuuS, forked from Mystro256's WiiSXR) -->
+  * **[WiiSX](https://wiibrew.org/wiki/WiiSX)** (Wii64 Team)
+  * **[WiiStation / WiiSXRX_2022](https://github.com/xjsxjs197/WiiSXRX_2022)** (xjsxjs197, forked from NiuuS's WiiSXRX)
 
 * Other
   * **Shockwave/Adobe Flash**
@@ -80,7 +81,7 @@ This program uses the following third-party components and apps:
   * **comex**'s NAND loader. *(file renamed as "nandloader_wii_comex.app")*
   * **Waninkoko**'s NAND loader, retrieved from ShowMiiWads repo. *(file renamed as "nandloader_wii.app")*
   * **FIX94**'s **[tiny-vwii-nand-loader](https://github.com/FIX94/tiny-vwii-nand-loader)**. *(file renamed as "nandloader_vwii.app")*
-  * Forwarder DOL generated from **[ModMii Classic](https://modmii.github.io)** (application author: XFlak) *(file renamed as "forwarder.dol")*
+  * Forwarder DOLs generated from **[ModMii Classic](https://modmii.github.io)** (application author: XFlak) *(files renamed as "forwarder_v[XX].dol")*
 
 I would also like to thank the following people:
 * **[SuperrSonic](https://github.com/SuperrSonic)** for reverse-engineering much of Wii software and official emulator code, and in particular, his [fork of RetroArch Wii](https://github.com/SuperrSonic/RA-SS).

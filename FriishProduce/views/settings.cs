@@ -35,6 +35,8 @@ namespace FriishProduce
 
             OpenWhenDone.Checked = Default.OpenWhenDone;
             Theme.SelectedIndex = Default.LightTheme ? 1 : 0;
+            FileNameSimple.Text = Default.WADNameSimple;
+            FileNameCustom.Text = Default.WADNameCustom;
         }
 
         private void OK_Click(object sender, EventArgs e)
@@ -64,6 +66,8 @@ namespace FriishProduce
 
             Default.OpenWhenDone = OpenWhenDone.Checked;
             Default.LightTheme = Theme.SelectedIndex == 1;
+            Default.WADNameSimple = FileNameSimple.Text;
+            Default.WADNameCustom = FileNameCustom.Text;
             Default.Save();
             DialogResult = DialogResult.OK;
         }

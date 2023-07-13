@@ -557,7 +557,8 @@ namespace FriishProduce
             resources.GetString("NANDLoader.Items"),
             resources.GetString("NANDLoader.Items1"),
             resources.GetString("NANDLoader.Items2"),
-            resources.GetString("NANDLoader.Items3")});
+            resources.GetString("NANDLoader.Items3"),
+            resources.GetString("NANDLoader.Items4")});
             resources.ApplyResources(this.NANDLoader, "NANDLoader");
             this.NANDLoader.Name = "NANDLoader";
             // 

@@ -58,5 +58,29 @@ namespace FriishProduce.Properties {
                 this["OpenWhenDone"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("{platform} ({type}) - {titleID}")]
+        public string WADNameSimple {
+            get {
+                return ((string)(this["WADNameSimple"]));
+            }
+            set {
+                this["WADNameSimple"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("{platform} ({type}) - {name} - {titleID}")]
+        public string WADNameCustom {
+            get {
+                return ((string)(this["WADNameCustom"]));
+            }
+            set {
+                this["WADNameCustom"] = value;
+            }
+        }
     }
 }

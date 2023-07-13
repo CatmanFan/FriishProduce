@@ -18,14 +18,16 @@
     "Flash": "Adobe Flash",
     "SMCD": "SEGA/MEGA CD",
     "S32X": "SEGA/MEGA 32X",
+    "GB": "Game Boy",
+    "GBC": "Game Boy Color",
+    "GBA": "Game Boy Advance",
     "PSX": "PlayStation"
   },
   "global": {
     "g000": "FriishProduce",
     "g001": "Settings",
     "g002": "Injection method:",
-    "g003": "Open ROM...",
-    "g004": "Open SWF...",
+    "g003": "Browse...",
     "g005": "Author: {0}",
     "g006": "Controller configuration",
     "g007": "Core",
@@ -34,6 +36,7 @@
     "g010": "Modify emulator configuration",
     "g011": "Emulator configuration",
     "g012": "Virtual Console",
+    "g013": "Auto-detect NAND loader",
     "vWii": "vWii compatibility",
     "OK": "&OK",
     "Cancel": "&Cancel",
@@ -49,6 +52,11 @@
     "s002": "System default",
     "s003": "Theme:",
     "s004": "Open output directory when done",
+    "s005": "Save as",
+    "s006": "Default filename:",
+    "s007": "Default filename (when using customized banner):",
+    "s008": "Help:",
+    "s009": "{name} - Channel title\n\n{titleID} - Title ID\n\n{console} - Selected console/platform\n\n{type} - WAD type, can be either one of the following:\n  \"injected\" - Value by default\n  \"VC\" - Virtual Console backend\n  \"fwdr[+vWii]\" - Forwarder channel",
     "Theme__l0": "Dark",
     "Theme__l1": "Light"
   },
@@ -74,7 +82,9 @@
     "m016": "Unable to compress CCF file(s).",
     "m017": "Failed to connect to the Internet.",
     "m018": "The ROM to be injected is larger in filesize than the maximum allowed limit by the emulator. Please try again using a compressed version or choose a different ROM.",
-    "m019": "Invalid ROM/disc image format."
+    "m019": "Invalid ROM/disc image format.",
+    "m020": "Failed to find replaceable banner images.",
+    "m021": "Required BIOS not found.\nPlease make sure that the following files are in the \"{App Directory}/bases/fwdr_bios\" folder:\n"
   },
   "filters": {
     "f_all": "|All files (*.*)|*.*",
@@ -83,7 +93,7 @@
     "f_wad": "Wii Channels (*.wad)|*.wad",
     "f_swf": "SWF files (*.swf)|*.swf",
     "f_zip": "ZIP archives (*.zip)|*.zip",
-    "f_iso": "Disc images (*.cue; *.iso)|*.cue;*.iso|  Cue Sheet files (*.cue)|*.cue|  ISO images (*.iso)|*.iso",
+    "f_iso": "Disc images (*.cue, *.iso, *.chd)|*.cue;*.iso;*.chd|  Cue Sheet files (*.cue)|*.cue|  ISO images (*.iso)|*.iso|  Compressed Hunks of Data (*.chd)|*.chd",
     "f_nes": "Nintendo Entertainment System/Famicom ROM files (*.nes)|*.nes",
     "f_sfc": "Super Nintendo Entertainment System/Super Famicom ROM files (*.sfc, *.smc)|*.sfc;*.smc",
     "f_n64": "Nintendo 64 ROM files (*.n64, *.v64, *.z64)|*.n64;*.v64;*.z64",
