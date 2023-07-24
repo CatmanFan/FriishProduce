@@ -51,14 +51,16 @@ namespace FriishProduce
                 x.Get("NeoGeo"),
                 x.Get("MSX"),
                 x.Get("Flash"),
+                x.Get("GB"),
+                x.Get("GBC"),
+                x.Get("GBA"),
                 x.Get("PSX")
             };
             foreach (var console in consoles) Console.Items.Add(console);
 
             x.Localize(this);
 
-            var assembly = System.Reflection.Assembly.GetExecutingAssembly();
-            var fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
+            var fvi = FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetExecutingAssembly().Location);
             string ver = $"beta {fvi.FileVersion}";
             Wait.BackColor = panel.BackColor;
 
@@ -150,7 +152,17 @@ namespace FriishProduce
                 Image.Image = tImg.Generate(currentConsole);
                 SaveDataTitle.Enabled = !(currentConsole == Platforms.SMS || currentConsole == Platforms.SMD || currentConsole == Platforms.PCE);
                 SaveDataTitle.MaxLength = 80;
-                Patch.Visible = currentConsole != Platforms.NeoGeo && currentConsole != Platforms.Flash;
+
+                Patch.Visible = true;
+                var PatchBlacklist = new Platforms[]
+                    {
+                        Platforms.NeoGeo,
+                        Platforms.Flash,
+                        Platforms.SMCD,
+                        Platforms.PSX
+                    };
+                foreach (var item in PatchBlacklist)
+                    if (currentConsole == item) Patch.Visible = false;
 
                 Next.Visible = true;
                 Next.Enabled = true;
@@ -241,6 +253,9 @@ namespace FriishProduce
                 Flash_StrapReminder.SelectedIndex = 0;
 
                 NANDLoader.SelectedIndex = 0;
+                BIOS__000.Visible = false;
+                BIOS__001.Visible = false;
+                BIOS__000.Enabled = true;
             }
 
             InjectionMethod.Items.Clear();
@@ -267,8 +282,13 @@ namespace FriishProduce
                 case Platforms.SMD:
                 case Platforms.S32X:
                 case Platforms.SMCD:
-                    if (currentConsole == Platforms.SMCD) InjectionMethod.Items.RemoveAt(0);
-                    if (currentConsole == Platforms.SMCD) AutoFill.Visible = false;
+                    if (currentConsole == Platforms.SMCD)
+                    {
+                        BIOS__000.Visible = true;
+                        // BIOS__001.Visible = true;
+                        InjectionMethod.Items.RemoveAt(0);
+                        AutoFill.Visible = false;
+                    }
                     InjectionMethod.Items.Add(new Injectors.Forwarders().List[7]);
                     break;
                 case Platforms.PCE:
@@ -288,12 +308,17 @@ namespace FriishProduce
                 case Platforms.GBA:
                     InjectionMethod.Items.RemoveAt(0);
                     InjectionMethod.Items.Add(new Injectors.Forwarders().List[6]);
+                    // BIOS__000.Enabled = false;
+                    // BIOS__000.Visible = true;
+                    // BIOS__001.Visible = true;
                     break;
                 case Platforms.PSX:
                     AutoFill.Visible = false;
                     InjectionMethod.Items.RemoveAt(0);
                     InjectionMethod.Items.Add(new Injectors.Forwarders().List[12]);
                     InjectionMethod.Items.Add(new Injectors.Forwarders().List[13]);
+                    BIOS__000.Visible = true;
+                    BIOS__001.Visible = true;
                     break;
                 default:
                     break;
@@ -308,27 +333,27 @@ namespace FriishProduce
 
         // ***************************************************************************************************************** //
 
-        private void Main_FormClosing(object sender, FormClosingEventArgs e) => e.Cancel = Wait.Visible;
+        private void Main_FormClosing(object sender, FormClosingEventArgs e) => e.Cancel = !panel.Visible;
 
         private void ToggleWaitingIcon(bool t)
         {
             switch (t)
             {
                 case true:
-                    Wait.Show();
-                    Settings.Visible = false;
+                    panel.Hide();
+                    /*Settings.Visible = false;
                     Back.Visible = false;
                     Next.Visible = false;
-                    Save.Visible = false;
+                    Save.Visible = false;*/
                     page3.Enabled = false;
                     page4.Enabled = false;
                     panel.Enabled = false;
                     break;
                 case false:
-                    Wait.Hide();
-                    Settings.Visible = true;
+                    panel.Show();
+                    /*Settings.Visible = true;
                     Back.Visible = true;
-                    if (SaveVisible) Save.Visible = true; else Next.Visible = true;
+                    if (SaveVisible) Save.Visible = true; else Next.Visible = true;*/
                     page3.Enabled = true;
                     page4.Enabled = true;
                     panel.Enabled = true;
@@ -899,7 +924,11 @@ namespace FriishProduce
             tImg = new TitleImage(currentConsole)
             {
                 ResizeMode = ImgResize.SelectedIndex < 0 ?
-                             (currentConsole == Platforms.Flash ? TitleImage.Resize.Fit : TitleImage.Resize.Stretch)
+                             (currentConsole == Platforms.Flash
+                             || currentConsole == Platforms.GB
+                             || currentConsole == Platforms.GBC
+                             || currentConsole == Platforms.GBA
+                             ? TitleImage.Resize.Fit : TitleImage.Resize.Stretch)
                              : (TitleImage.Resize)ImgResize.SelectedIndex,
                 InterpolationMode = ImgInterp.SelectedIndex < 0 ?
                                     System.Drawing.Drawing2D.InterpolationMode.Default :
@@ -1000,6 +1029,9 @@ namespace FriishProduce
                 case "PCE_SetConfig":
                     PCE_CustomOptions.Enabled = s.Checked;
                     break;
+                case "BIOS__001":
+                    if (currentConsole == Platforms.GB || currentConsole == Platforms.GBC || currentConsole == Platforms.GBA) BIOS__000.Enabled = s.Checked;
+                    break;
             }
         }
 
@@ -1023,7 +1055,7 @@ namespace FriishProduce
                 {
                     Retrieving = false;
                     Invoke((Action)delegate { ToggleWaitingIcon(false); });
-                    MessageBox.Show(ex.Message, Program.Language.Get("error"), System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                    MessageBox.Show(ex.Message, Program.Language.Get("error"), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return;
                 }
 
@@ -1061,20 +1093,16 @@ namespace FriishProduce
 
         private void Finish_Click(object sender, EventArgs e)
         {
-            bool custom = !string.IsNullOrWhiteSpace(ChannelTitle.Text) && Custom.Checked;
-            string fileName = custom ? Properties.Settings.Default.WADNameCustom : Properties.Settings.Default.WADNameSimple;
+            string fileName = Properties.Settings.Default.WadName;
 
-            string name = ChannelTitle.Text;
-            string titleID = TitleID.Text;
-            string platform = currentConsole.ToString();
             string type = ForwarderMode ? "fwdr"
                 : !ForwarderMode && currentConsole != Platforms.Flash ? "VC"
                 : "injected";
             if (vWii.Checked) type += "+vWii";
 
-            if (custom) fileName = fileName.Replace("{name}", name);
-            fileName = fileName.Replace("{titleID}", titleID);
-            fileName = fileName.Replace("{platform}", platform);
+            fileName = fileName.Replace("{name}", string.IsNullOrWhiteSpace(ChannelTitle.Text) ? "(null)" : ChannelTitle.Text);
+            fileName = fileName.Replace("{titleID}", TitleID.Text);
+            fileName = fileName.Replace("{platform}", currentConsole.ToString());
             fileName = fileName.Replace("{type}", type);
 
             SaveWAD.FileName = fileName.Replace(": ", " - ").Replace("?", "");
@@ -1180,12 +1208,7 @@ namespace FriishProduce
                     if (IsCustomConsole)
                     {
                         await Task.Run(() => { b.CustomizeConsole(Banner, Icon,
-                            currentConsole == Platforms.PSX  ? BannerTypes.PSX  :
-                            currentConsole == Platforms.GB   ? BannerTypes.GB   :
-                            currentConsole == Platforms.GBC  ? BannerTypes.GBC  :
-                            currentConsole == Platforms.GBA  ? BannerTypes.GBA  :
-                            currentConsole == Platforms.S32X ? BannerTypes.S32X :
-                            currentConsole == Platforms.SMCD ? BannerTypes.SMCD :
+                            currentConsole > Platforms.Flash ? (BannerTypes)currentConsole :
                             BannerTypes.Normal, w.Region); });
                     }
 
@@ -1497,12 +1520,25 @@ namespace FriishProduce
                     string[] parameters = { TitleID.Text.ToUpper(), InjectionMethod.SelectedItem.ToString(), SaveWAD.FileName };
                     f.SetDOLIndex(parameters[1]);
 
+                    // Generate ZIP name
+                    string zipName = Properties.Settings.Default.ZipName;
+                    string WADtype = ForwarderMode ? "fwdr"
+                        : !ForwarderMode && currentConsole != Platforms.Flash ? "VC"
+                        : "injected";
+                    if (vWii.Checked) WADtype += "+vWii";
+                    zipName = zipName.Replace("{name}", string.IsNullOrWhiteSpace(ChannelTitle.Text) ? "(null)" : ChannelTitle.Text);
+                    zipName = zipName.Replace("{titleID}", TitleID.Text);
+                    zipName = zipName.Replace("{platform}", currentConsole.ToString());
+                    zipName = zipName.Replace("{type}", WADtype).Replace("{storage}", f.UseUSBStorage ? "USB" : "SD");
+                    zipName = Path.Combine(Path.GetDirectoryName(SaveWAD.FileName), zipName + ".zip");
+
+                    bool usesBIOS = BIOS__000.Visible;
+                    bool bootBIOS = BIOS__001.Checked;
                     await Task.Run(() => { f.Generate
                     (
                         parameters[0],
-                        f.UseUSBStorage ?
-                            Path.Combine(Path.GetDirectoryName(parameters[2]), $"{parameters[0]}_USBRoot.zip") :
-                            Path.Combine(Path.GetDirectoryName(parameters[2]), $"{parameters[0]}_SDRoot.zip")
+                        zipName,
+                        usesBIOS, bootBIOS
                     ); });
 
                     // Default for auto-selection: Waninkoko NANDloader + v14

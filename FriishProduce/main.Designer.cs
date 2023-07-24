@@ -33,11 +33,11 @@ namespace FriishProduce
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.a000 = new System.Windows.Forms.Label();
             this.panel = new System.Windows.Forms.Panel();
+            this.Wait = new System.Windows.Forms.PictureBox();
             this.Back = new System.Windows.Forms.Button();
             this.Settings = new System.Windows.Forms.Button();
             this.Save = new System.Windows.Forms.Button();
             this.Next = new System.Windows.Forms.Button();
-            this.Wait = new System.Windows.Forms.PictureBox();
             this.Console = new System.Windows.Forms.ComboBox();
             this.page1 = new System.Windows.Forms.Panel();
             this.icon = new System.Windows.Forms.PictureBox();
@@ -77,6 +77,8 @@ namespace FriishProduce
             this.ChannelTitle = new System.Windows.Forms.TextBox();
             this.a003 = new System.Windows.Forms.Label();
             this.page4 = new System.Windows.Forms.Panel();
+            this.BIOS__001 = new System.Windows.Forms.CheckBox();
+            this.BIOS__000 = new System.Windows.Forms.CheckBox();
             this.NANDLoader = new System.Windows.Forms.ComboBox();
             this.RandomTID = new System.Windows.Forms.Button();
             this.VideoMode = new System.Windows.Forms.ComboBox();
@@ -86,6 +88,7 @@ namespace FriishProduce
             this.a004 = new System.Windows.Forms.Label();
             this.DisableEmanual = new System.Windows.Forms.CheckBox();
             this.AltCheckbox = new System.Windows.Forms.CheckBox();
+            this.vWii = new System.Windows.Forms.CheckBox();
             this.Options_Flash = new System.Windows.Forms.Panel();
             this.Flash__005 = new System.Windows.Forms.Label();
             this.Flash_StrapReminder = new System.Windows.Forms.ComboBox();
@@ -118,7 +121,6 @@ namespace FriishProduce
             this.NES__000 = new System.Windows.Forms.Label();
             this.Options_SEGA = new System.Windows.Forms.Panel();
             this.SEGA_SetConfig = new System.Windows.Forms.CheckBox();
-            this.vWii = new System.Windows.Forms.CheckBox();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.BrowsePatch = new System.Windows.Forms.OpenFileDialog();
             this.BrowseImage = new System.Windows.Forms.OpenFileDialog();
@@ -158,6 +160,12 @@ namespace FriishProduce
             resources.ApplyResources(this.panel, "panel");
             this.panel.Name = "panel";
             this.panel.Tag = "panel";
+            // 
+            // Wait
+            // 
+            resources.ApplyResources(this.Wait, "Wait");
+            this.Wait.Name = "Wait";
+            this.Wait.TabStop = false;
             // 
             // Back
             // 
@@ -203,12 +211,6 @@ namespace FriishProduce
             this.Next.Name = "Next";
             this.Next.UseVisualStyleBackColor = true;
             this.Next.Click += new System.EventHandler(this.Next_Click);
-            // 
-            // Wait
-            // 
-            resources.ApplyResources(this.Wait, "Wait");
-            this.Wait.Name = "Wait";
-            this.Wait.TabStop = false;
             // 
             // Console
             // 
@@ -530,6 +532,8 @@ namespace FriishProduce
             // 
             // page4
             // 
+            this.page4.Controls.Add(this.BIOS__001);
+            this.page4.Controls.Add(this.BIOS__000);
             this.page4.Controls.Add(this.NANDLoader);
             this.page4.Controls.Add(this.RandomTID);
             this.page4.Controls.Add(this.VideoMode);
@@ -539,15 +543,30 @@ namespace FriishProduce
             this.page4.Controls.Add(this.a004);
             this.page4.Controls.Add(this.DisableEmanual);
             this.page4.Controls.Add(this.AltCheckbox);
+            this.page4.Controls.Add(this.vWii);
             this.page4.Controls.Add(this.Options_Flash);
             this.page4.Controls.Add(this.Options_NeoGeo);
             this.page4.Controls.Add(this.Options_PCE);
             this.page4.Controls.Add(this.Options_N64);
             this.page4.Controls.Add(this.Options_NES);
             this.page4.Controls.Add(this.Options_SEGA);
-            this.page4.Controls.Add(this.vWii);
             resources.ApplyResources(this.page4, "page4");
             this.page4.Name = "page4";
+            // 
+            // BIOS__001
+            // 
+            resources.ApplyResources(this.BIOS__001, "BIOS__001");
+            this.BIOS__001.Name = "BIOS__001";
+            this.BIOS__001.Tag = "";
+            this.BIOS__001.UseVisualStyleBackColor = true;
+            this.BIOS__001.CheckedChanged += new System.EventHandler(this.CheckedToggles);
+            // 
+            // BIOS__000
+            // 
+            resources.ApplyResources(this.BIOS__000, "BIOS__000");
+            this.BIOS__000.Name = "BIOS__000";
+            this.BIOS__000.Tag = "";
+            this.BIOS__000.UseVisualStyleBackColor = true;
             // 
             // NANDLoader
             // 
@@ -625,6 +644,13 @@ namespace FriishProduce
             this.AltCheckbox.Tag = "";
             this.AltCheckbox.UseVisualStyleBackColor = true;
             this.AltCheckbox.CheckedChanged += new System.EventHandler(this.CheckedToggles);
+            // 
+            // vWii
+            // 
+            resources.ApplyResources(this.vWii, "vWii");
+            this.vWii.Name = "vWii";
+            this.vWii.Tag = "";
+            this.vWii.UseVisualStyleBackColor = true;
             // 
             // Options_Flash
             // 
@@ -895,13 +921,6 @@ namespace FriishProduce
             this.SEGA_SetConfig.UseVisualStyleBackColor = true;
             this.SEGA_SetConfig.CheckedChanged += new System.EventHandler(this.SEGA_ConfigChanged);
             // 
-            // vWii
-            // 
-            resources.ApplyResources(this.vWii, "vWii");
-            this.vWii.Name = "vWii";
-            this.vWii.Tag = "";
-            this.vWii.UseVisualStyleBackColor = true;
-            // 
             // ToolTip
             // 
             this.ToolTip.AutoPopDelay = 5000;
@@ -923,12 +942,12 @@ namespace FriishProduce
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             resources.ApplyResources(this, "$this");
-            this.Controls.Add(this.Wait);
             this.Controls.Add(this.panel);
-            this.Controls.Add(this.page4);
             this.Controls.Add(this.page3);
             this.Controls.Add(this.page2);
             this.Controls.Add(this.page1);
+            this.Controls.Add(this.page4);
+            this.Controls.Add(this.Wait);
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
@@ -1065,6 +1084,8 @@ namespace FriishProduce
         private System.Windows.Forms.CheckBox PCE_SetConfig;
         private System.Windows.Forms.Panel PCE_CustomOptions;
         private System.Windows.Forms.CheckBox vWii;
+        private System.Windows.Forms.CheckBox BIOS__000;
+        private System.Windows.Forms.CheckBox BIOS__001;
     }
 }
 

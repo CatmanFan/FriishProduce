@@ -279,12 +279,52 @@ namespace FriishProduce.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] VC_GB_Banner {
+            get {
+                object obj = ResourceManager.GetObject("VC_GB_Banner", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap VC_GB_Icon {
+            get {
+                object obj = ResourceManager.GetObject("VC_GB_Icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] VC_GBA_Banner {
+            get {
+                object obj = ResourceManager.GetObject("VC_GBA_Banner", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap VC_GBA_Icon {
             get {
                 object obj = ResourceManager.GetObject("VC_GBA_Icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] VC_GBC_Banner {
+            get {
+                object obj = ResourceManager.GetObject("VC_GBC_Banner", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         

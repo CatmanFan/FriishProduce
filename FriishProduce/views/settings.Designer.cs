@@ -42,17 +42,17 @@ namespace FriishProduce
             this.Language = new System.Windows.Forms.ComboBox();
             this.s001 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.s005 = new System.Windows.Forms.TabPage();
-            this.s008 = new System.Windows.Forms.Label();
-            this.FileNameCustom = new System.Windows.Forms.TextBox();
+            this.SaveAs = new System.Windows.Forms.TabPage();
+            this.s008_b = new System.Windows.Forms.RichTextBox();
             this.s007 = new System.Windows.Forms.Label();
-            this.FileNameSimple = new System.Windows.Forms.TextBox();
+            this.s008_a = new System.Windows.Forms.Label();
+            this.FileName = new System.Windows.Forms.TextBox();
             this.s006 = new System.Windows.Forms.Label();
-            this.s009 = new System.Windows.Forms.Label();
+            this.FileNameZIP = new System.Windows.Forms.TextBox();
             this.panel.SuspendLayout();
             this.Application.SuspendLayout();
             this.tabControl1.SuspendLayout();
-            this.s005.SuspendLayout();
+            this.SaveAs.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel
@@ -145,55 +145,59 @@ namespace FriishProduce
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.Application);
-            this.tabControl1.Controls.Add(this.s005);
+            this.tabControl1.Controls.Add(this.SaveAs);
             resources.ApplyResources(this.tabControl1, "tabControl1");
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             // 
-            // s005
+            // SaveAs
             // 
-            this.s005.BackColor = System.Drawing.SystemColors.Window;
-            this.s005.Controls.Add(this.s009);
-            this.s005.Controls.Add(this.s008);
-            this.s005.Controls.Add(this.FileNameCustom);
-            this.s005.Controls.Add(this.s007);
-            this.s005.Controls.Add(this.FileNameSimple);
-            this.s005.Controls.Add(this.s006);
-            this.s005.ForeColor = System.Drawing.SystemColors.ControlText;
-            resources.ApplyResources(this.s005, "s005");
-            this.s005.Name = "s005";
+            this.SaveAs.BackColor = System.Drawing.SystemColors.Window;
+            this.SaveAs.Controls.Add(this.s008_b);
+            this.SaveAs.Controls.Add(this.s007);
+            this.SaveAs.Controls.Add(this.s008_a);
+            this.SaveAs.Controls.Add(this.FileName);
+            this.SaveAs.Controls.Add(this.s006);
+            this.SaveAs.Controls.Add(this.FileNameZIP);
+            this.SaveAs.ForeColor = System.Drawing.SystemColors.ControlText;
+            resources.ApplyResources(this.SaveAs, "SaveAs");
+            this.SaveAs.Name = "SaveAs";
+            this.SaveAs.Tag = "s005";
             // 
-            // s008
+            // s008_b
             // 
-            resources.ApplyResources(this.s008, "s008");
-            this.s008.ForeColor = System.Drawing.Color.Gray;
-            this.s008.Name = "s008";
-            // 
-            // FileNameCustom
-            // 
-            resources.ApplyResources(this.FileNameCustom, "FileNameCustom");
-            this.FileNameCustom.Name = "FileNameCustom";
+            this.s008_b.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.s008_b.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.s008_b.Cursor = System.Windows.Forms.Cursors.Default;
+            this.s008_b.ForeColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.s008_b, "s008_b");
+            this.s008_b.Name = "s008_b";
+            this.s008_b.ReadOnly = true;
             // 
             // s007
             // 
             resources.ApplyResources(this.s007, "s007");
             this.s007.Name = "s007";
             // 
-            // FileNameSimple
+            // s008_a
             // 
-            resources.ApplyResources(this.FileNameSimple, "FileNameSimple");
-            this.FileNameSimple.Name = "FileNameSimple";
+            resources.ApplyResources(this.s008_a, "s008_a");
+            this.s008_a.Name = "s008_a";
+            // 
+            // FileName
+            // 
+            resources.ApplyResources(this.FileName, "FileName");
+            this.FileName.Name = "FileName";
             // 
             // s006
             // 
             resources.ApplyResources(this.s006, "s006");
             this.s006.Name = "s006";
             // 
-            // s009
+            // FileNameZIP
             // 
-            resources.ApplyResources(this.s009, "s009");
-            this.s009.ForeColor = System.Drawing.Color.Gray;
-            this.s009.Name = "s009";
+            resources.ApplyResources(this.FileNameZIP, "FileNameZIP");
+            this.FileNameZIP.Name = "FileNameZIP";
             // 
             // Settings
             // 
@@ -212,12 +216,13 @@ namespace FriishProduce
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Settings_FormClosing);
             this.panel.ResumeLayout(false);
             this.Application.ResumeLayout(false);
             this.Application.PerformLayout();
             this.tabControl1.ResumeLayout(false);
-            this.s005.ResumeLayout(false);
-            this.s005.PerformLayout();
+            this.SaveAs.ResumeLayout(false);
+            this.SaveAs.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -235,12 +240,12 @@ namespace FriishProduce
         private System.Windows.Forms.ComboBox Language;
         private System.Windows.Forms.Label s001;
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage s005;
-        private System.Windows.Forms.TextBox FileNameCustom;
-        private System.Windows.Forms.Label s007;
-        private System.Windows.Forms.TextBox FileNameSimple;
+        private System.Windows.Forms.TabPage SaveAs;
+        private System.Windows.Forms.TextBox FileName;
         private System.Windows.Forms.Label s006;
-        private System.Windows.Forms.Label s008;
-        private System.Windows.Forms.Label s009;
+        private System.Windows.Forms.Label s008_a;
+        private System.Windows.Forms.Label s007;
+        private System.Windows.Forms.TextBox FileNameZIP;
+        private System.Windows.Forms.RichTextBox s008_b;
     }
 }

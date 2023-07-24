@@ -2,20 +2,20 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="FriishProduce.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="Language" Type="System.String" Scope="User">
-      <Value Profile="(Default)">sys</Value>
-    </Setting>
     <Setting Name="LightTheme" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="OpenWhenDone" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="WADNameSimple" Type="System.String" Scope="User">
-      <Value Profile="(Default)">{platform} ({type}) - {titleID}</Value>
+    <Setting Name="WadName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">{platform} - {name} - {titleID} ({type})</Value>
     </Setting>
-    <Setting Name="WADNameCustom" Type="System.String" Scope="User">
-      <Value Profile="(Default)">{platform} ({type}) - {name} - {titleID}</Value>
+    <Setting Name="ZipName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">{platform} - {titleID} ({storage})</Value>
+    </Setting>
+    <Setting Name="Language" Type="System.String" Scope="User">
+      <Value Profile="(Default)">sys</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -74,7 +74,11 @@ namespace FriishProduce
             // --------------------------------------------------
             // Console defined options
             // --------------------------------------------------
-            ShrinkToFit = (int)platform <= 2 || platform == Platforms.Flash;
+            ShrinkToFit = (int)platform <= 2
+                       || platform == Platforms.Flash
+                       || platform == Platforms.GB
+                       || platform == Platforms.GBC
+                       || platform == Platforms.GBA;
             SaveIconL_xywh = new int[] { 10, 10, 58, 44 };
             SaveIconS_xywh = new int[] { 4, 9, 40, 30 };
             if (platform == Platforms.SMS || platform == Platforms.SMD)

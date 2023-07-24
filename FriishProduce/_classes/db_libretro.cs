@@ -57,6 +57,7 @@ namespace FriishProduce
                 { Platforms.MSX, "Microsoft - MSX" },
                 // { Platforms.MSX, "Microsoft - MSX2" },
             };
+            bool TitleIsSet = false;
 
             foreach (KeyValuePair<Platforms, string> item in db_platforms)
             {
@@ -90,26 +91,23 @@ namespace FriishProduce
                         db_lines = System.Text.Encoding.UTF8.GetString(db_bytes).Split(Environment.NewLine.ToCharArray());
 
                         // Scan retrieved database
-                        for (int i = 5; i < db_lines.Length; i++)
+                        for (int i = 10; i < db_lines.Length; i++)
                             if (db_lines[i].ToLower().Contains(hash))
                             {
                                 for (int x = i; x > i - 10; x--)
-                                    if (db_lines[x].Contains("comment \""))
+                                {
+                                    if (db_lines[x].Contains("comment \"") && !TitleIsSet)
                                     {
                                         Title = db_lines[x].Replace("\t", "").Replace("comment \"", "").Replace("\"", "");
-                                        goto GetYear;
+                                        ImgURL = "https://thumbnails.libretro.com/" + Uri.EscapeUriString(item.Value) + "/Named_Titles/" + Uri.EscapeUriString(Title) + ".png";
+                                        TitleIsSet = true;
                                     }
-
-                                GetYear:
-                                for (int x = i; x > i - 10; x--)
-                                    if (db_lines[x].Contains("releaseyear \""))
+                                    if (db_lines[x].Contains("releaseyear"))
                                     {
                                         Year = db_lines[x].Trim().Replace("releaseyear \"", "").Replace("\"", "");
-                                        goto GetImgURL;
                                     }
+                                }
 
-                                GetImgURL:
-                                ImgURL = "https://thumbnails.libretro.com/" + Uri.EscapeUriString(item.Value) + "/Named_Titles/" + Uri.EscapeUriString(Title) + ".png";
                                 goto GetPlayers;
                             }
                     }
@@ -135,12 +133,9 @@ namespace FriishProduce
                                 if (db_lines[x].Contains("comment \""))
                                 {
                                     Title = db_lines[x].Replace("\t", "").Replace("comment \"", "").Replace("\"", "");
-                                    goto GetImgURL;
+                                    ImgURL = "https://thumbnails.libretro.com/" + Uri.EscapeUriString(item.Value) + "/Named_Titles/" + Uri.EscapeUriString(Title) + ".png";
+                                    goto GetPlayers;
                                 }
-
-                            GetImgURL:
-                            ImgURL = "https://thumbnails.libretro.com/" + Uri.EscapeUriString(item.Value) + "/Named_Titles/" + Uri.EscapeUriString(Title) + ".png";
-                            goto GetPlayers;
                         }
 
                     goto NotFound;

@@ -12,12 +12,12 @@ namespace FriishProduce
     public enum BannerTypes
     {
         Normal = 0,
-        PSX = 1,
-        GB = 2,
-        GBC = 3,
-        GBA = 4,
-        S32X = 5,
-        SMCD = 6
+        PSX = Platforms.PSX,
+        GB = Platforms.GB,
+        GBC = Platforms.GBC,
+        GBA = Platforms.GBA,
+        S32X = Platforms.S32X,
+        SMCD = Platforms.SMCD
     }
 
     public class Banner
@@ -105,7 +105,6 @@ namespace FriishProduce
         /// </summary>
         public void ReplaceBrlyt(libWiiSharp.U8 Banner)
         {
-
             // ---------------------------------------------------------------------------------------- //
             Banner.ReplaceFile(Banner.GetNodeIndex("banner.brlyt"), Paths.WorkingFolder + "banner.brlyt");
             // ---------------------------------------------------------------------------------------- //
@@ -154,10 +153,11 @@ namespace FriishProduce
             // ----------------------------------------
             // Define target parameters & images
             // ----------------------------------------
-            byte[] targetBannerImage = Properties.Resources.VC_PSX_Banner;
+            var targetBannerImage = new byte[0];
             var targetBannerX = new byte[] { 0xC3, 0xB4, 0x73, 0x33 };
             var targetIconImage = Properties.Resources.VC_PSX_Icon;
             var targetIconSize = new byte[] { 0x42, 0x70, 0x00, 0x00, 0x42, 0x70, 0x00, 0x00 };
+            bool forceTransparent = false;
             var consoleName = "Undefined";
             var consoleCode = "SFC";
             switch (type)
@@ -171,28 +171,38 @@ namespace FriishProduce
                     consoleCode = "PSX";
                     break;
                 case BannerTypes.GB:
+                    targetBannerImage = Properties.Resources.VC_GB_Banner;
+                    targetIconImage = Properties.Resources.VC_GB_Icon;
+                    targetIconSize = new byte[] { 0x42, 0xEC, 0x00, 0x00, 0x41, 0xA8, 0x00, 0x00 };
                     consoleName = "Game Boy";
                     consoleCode = "GB";
+                    forceTransparent = true;
                     break;
                 case BannerTypes.GBC:
+                    targetBannerImage = Properties.Resources.VC_GBC_Banner;
                     targetIconImage = Properties.Resources.VC_GBC_Icon;
                     targetIconSize = new byte[] { 0x42, 0xC0, 0x00, 0x00, 0x42, 0x1C, 0x00, 0x00 };
                     consoleName = "Game Boy Color";
                     consoleCode = "GBC";
+                    forceTransparent = true;
                     break;
                 case BannerTypes.GBA:
+                    targetBannerImage = Properties.Resources.VC_GBA_Banner;
                     targetIconImage = Properties.Resources.VC_GBA_Icon;
                     targetIconSize = new byte[] { 0x42, 0xC0, 0x00, 0x00, 0x42, 0x08, 0x00, 0x00 };
                     consoleName = "Game Boy Advance";
                     consoleCode = "GBA";
+                    forceTransparent = true;
                     break;
                 case BannerTypes.S32X:
                     consoleName = region == Region.USA ? "Sega 32X" : "Mega 32X";
                     consoleCode = region == Region.Japan ? "MDJ" : "Gen";
+                    forceTransparent = true;
                     break;
                 case BannerTypes.SMCD:
                     consoleName = region == Region.USA ? "Sega CD" : "Mega CD";
                     consoleCode = region == Region.Japan ? "MDJ" : "Gen";
+                    forceTransparent = true;
                     break;
             }
 
@@ -215,30 +225,34 @@ namespace FriishProduce
             // ----------------------------------------
             // Replace banner
             // ----------------------------------------
-            Banner.ReplaceFile(Banner.GetNodeIndex(LogoB), targetBannerImage);
+            if (targetBannerImage.Length > 0) Banner.ReplaceFile(Banner.GetNodeIndex(LogoB), targetBannerImage);
             RunVCBrlyt($"-H_T_PF {consoleName.ToUpper()} -Color {consoleCode}");
             RunVCBrlyt($"-H_PF {consoleName.ToUpper()} -Color {consoleCode}");
 
             // ----------------------------------------
-            // Replace logo image
+            // Replace icon
             // ----------------------------------------
+
+            // Replace logo image
+
             TPL tpl = TPL.Load(Icon.Data[Icon.GetNodeIndex(LogoI)]);
-            var tplTF = tpl.GetTextureFormat(0);
-            var tplPF = tpl.GetPaletteFormat(0);
+            var tplTF = !forceTransparent ? tpl.GetTextureFormat(0) : TPL_TextureFormat.RGB5A3;
+            var tplPF = !forceTransparent ? tpl.GetPaletteFormat(0) : TPL_PaletteFormat.RGB5A3;
             tpl.RemoveTexture(0);
             tpl.AddTexture(targetIconImage, tplTF, tplPF);
             Icon.ReplaceFile(Icon.GetNodeIndex(LogoI), tpl.ToByteArray());
             tpl.Dispose();
 
-            // ----------------------------------------
             // Resize logo in icon.brlyt to proper pixel dimensions
-            // ----------------------------------------
+
             var BrlytI = Icon.Data[Icon.GetNodeIndex("icon.brlyt")];
             int index = Bytes.Search(BrlytI, "49 63 6F 6E 31 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 3F 80 00 00 3F 80 00 00");
             if (index == -1) throw new Exception(Program.Language.Get("m020"));
             targetIconSize.CopyTo(BrlytI, index + 56);
             Icon.ReplaceFile(Icon.GetNodeIndex("icon.brlyt"), BrlytI);
             // NES: 120x32 / N64: 70x64
+
+            // ----------------------------------------
 
             // ----------------------------------------
             // TO-DO: Resize top header for console name in banner.brlyt

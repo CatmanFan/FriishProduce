@@ -307,7 +307,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panel.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="Wait.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -327,6 +327,9 @@
         OZ81XMhVWmJaI44UlVUNp93Kl0tKAAA7
 </value>
   </data>
+  <data name="Wait.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="Wait.Location" type="System.Drawing.Point, System.Drawing">
     <value>333, 446</value>
   </data>
@@ -339,9 +342,6 @@
   <data name="Wait.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="Wait.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="&gt;&gt;Wait.Name" xml:space="preserve">
     <value>Wait</value>
   </data>
@@ -352,7 +352,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;Wait.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>5</value>
   </data>
   <data name="Console.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>System</value>
@@ -421,7 +421,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;page1.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>3</value>
   </data>
   <data name="g002.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -700,7 +700,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;page2.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>2</value>
   </data>
   <metadata name="BrowseROM.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -1322,7 +1322,79 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;page3.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>1</value>
+  </data>
+  <data name="BIOS__001.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="BIOS__001.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopLeft</value>
+  </data>
+  <data name="BIOS__001.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="BIOS__001.Location" type="System.Drawing.Point, System.Drawing">
+    <value>26, 327</value>
+  </data>
+  <data name="BIOS__001.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 19</value>
+  </data>
+  <data name="BIOS__001.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="BIOS__001.Text" xml:space="preserve">
+    <value>bios_1</value>
+  </data>
+  <data name="BIOS__001.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopLeft</value>
+  </data>
+  <data name="&gt;&gt;BIOS__001.Name" xml:space="preserve">
+    <value>BIOS__001</value>
+  </data>
+  <data name="&gt;&gt;BIOS__001.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;BIOS__001.Parent" xml:space="preserve">
+    <value>page4</value>
+  </data>
+  <data name="&gt;&gt;BIOS__001.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="BIOS__000.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="BIOS__000.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopLeft</value>
+  </data>
+  <data name="BIOS__000.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="BIOS__000.Location" type="System.Drawing.Point, System.Drawing">
+    <value>26, 305</value>
+  </data>
+  <data name="BIOS__000.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 19</value>
+  </data>
+  <data name="BIOS__000.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="BIOS__000.Text" xml:space="preserve">
+    <value>bios_0</value>
+  </data>
+  <data name="BIOS__000.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopLeft</value>
+  </data>
+  <data name="&gt;&gt;BIOS__000.Name" xml:space="preserve">
+    <value>BIOS__000</value>
+  </data>
+  <data name="&gt;&gt;BIOS__000.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;BIOS__000.Parent" xml:space="preserve">
+    <value>page4</value>
+  </data>
+  <data name="&gt;&gt;BIOS__000.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="NANDLoader.Items" xml:space="preserve">
     <value>Auto-detect</value>
@@ -1358,7 +1430,7 @@
     <value>page4</value>
   </data>
   <data name="&gt;&gt;NANDLoader.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="RandomTID.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -1370,7 +1442,7 @@
     <value>NoControl</value>
   </data>
   <data name="RandomTID.Location" type="System.Drawing.Point, System.Drawing">
-    <value>636, 86</value>
+    <value>636, 87</value>
   </data>
   <data name="RandomTID.Size" type="System.Drawing.Size, System.Drawing">
     <value>22, 22</value>
@@ -1391,7 +1463,7 @@
     <value>page4</value>
   </data>
   <data name="&gt;&gt;RandomTID.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="VideoMode.Items" xml:space="preserve">
     <value>NTSC</value>
@@ -1412,7 +1484,7 @@
     <value>PAL60/50</value>
   </data>
   <data name="VideoMode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>74, 86</value>
+    <value>74, 87</value>
   </data>
   <data name="VideoMode.Size" type="System.Drawing.Size, System.Drawing">
     <value>95, 23</value>
@@ -1430,7 +1502,7 @@
     <value>page4</value>
   </data>
   <data name="&gt;&gt;VideoMode.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="RegionFree.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>TopRight</value>
@@ -1463,13 +1535,13 @@
     <value>page4</value>
   </data>
   <data name="&gt;&gt;RegionFree.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="TitleID.Font" type="System.Drawing.Font, System.Drawing">
     <value>Lucida Sans, 9pt</value>
   </data>
   <data name="TitleID.Location" type="System.Drawing.Point, System.Drawing">
-    <value>570, 86</value>
+    <value>570, 87</value>
   </data>
   <data name="TitleID.MaxLength" type="System.Int32, mscorlib">
     <value>4</value>
@@ -1490,13 +1562,13 @@
     <value>page4</value>
   </data>
   <data name="&gt;&gt;TitleID.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="a005.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="a005.Location" type="System.Drawing.Point, System.Drawing">
-    <value>412, 89</value>
+    <value>412, 90</value>
   </data>
   <data name="a005.Size" type="System.Drawing.Size, System.Drawing">
     <value>153, 20</value>
@@ -1520,7 +1592,7 @@
     <value>page4</value>
   </data>
   <data name="&gt;&gt;a005.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="a004.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1550,7 +1622,7 @@
     <value>page4</value>
   </data>
   <data name="&gt;&gt;a004.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="DisableEmanual.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1577,7 +1649,7 @@
     <value>page4</value>
   </data>
   <data name="&gt;&gt;DisableEmanual.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="AltCheckbox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1589,7 +1661,7 @@
     <value>NoControl</value>
   </data>
   <data name="AltCheckbox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>27, 88</value>
+    <value>27, 89</value>
   </data>
   <data name="AltCheckbox.Size" type="System.Drawing.Size, System.Drawing">
     <value>39, 19</value>
@@ -1613,7 +1685,43 @@
     <value>page4</value>
   </data>
   <data name="&gt;&gt;AltCheckbox.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
+  </data>
+  <data name="vWii.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="vWii.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopLeft</value>
+  </data>
+  <data name="vWii.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="vWii.Location" type="System.Drawing.Point, System.Drawing">
+    <value>27, 111</value>
+  </data>
+  <data name="vWii.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 19</value>
+  </data>
+  <data name="vWii.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="vWii.Text" xml:space="preserve">
+    <value>vWii</value>
+  </data>
+  <data name="vWii.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopLeft</value>
+  </data>
+  <data name="&gt;&gt;vWii.Name" xml:space="preserve">
+    <value>vWii</value>
+  </data>
+  <data name="&gt;&gt;vWii.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;vWii.Parent" xml:space="preserve">
+    <value>page4</value>
+  </data>
+  <data name="&gt;&gt;vWii.ZOrder" xml:space="preserve">
+    <value>11</value>
   </data>
   <data name="Flash__005.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1931,7 +2039,7 @@
     <value>page4</value>
   </data>
   <data name="&gt;&gt;Options_Flash.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>12</value>
   </data>
   <data name="NeoGeo_BIOS.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1988,7 +2096,7 @@
     <value>page4</value>
   </data>
   <data name="&gt;&gt;Options_NeoGeo.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>13</value>
   </data>
   <data name="PCE_SetConfig.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2252,7 +2360,7 @@
     <value>page4</value>
   </data>
   <data name="&gt;&gt;Options_PCE.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>14</value>
   </data>
   <data name="N64_RemoveT64.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2429,7 +2537,7 @@
     <value>page4</value>
   </data>
   <data name="&gt;&gt;Options_N64.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>15</value>
   </data>
   <data name="NES_Palette.Items" xml:space="preserve">
     <value>null</value>
@@ -2510,7 +2618,7 @@
     <value>page4</value>
   </data>
   <data name="&gt;&gt;Options_NES.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>16</value>
   </data>
   <data name="SEGA_SetConfig.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2567,43 +2675,7 @@
     <value>page4</value>
   </data>
   <data name="&gt;&gt;Options_SEGA.ZOrder" xml:space="preserve">
-    <value>14</value>
-  </data>
-  <data name="vWii.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="vWii.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>TopLeft</value>
-  </data>
-  <data name="vWii.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="vWii.Location" type="System.Drawing.Point, System.Drawing">
-    <value>27, 111</value>
-  </data>
-  <data name="vWii.Size" type="System.Drawing.Size, System.Drawing">
-    <value>49, 19</value>
-  </data>
-  <data name="vWii.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
-  </data>
-  <data name="vWii.Text" xml:space="preserve">
-    <value>vWii</value>
-  </data>
-  <data name="vWii.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>TopLeft</value>
-  </data>
-  <data name="&gt;&gt;vWii.Name" xml:space="preserve">
-    <value>vWii</value>
-  </data>
-  <data name="&gt;&gt;vWii.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;vWii.Parent" xml:space="preserve">
-    <value>page4</value>
-  </data>
-  <data name="&gt;&gt;vWii.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>17</value>
   </data>
   <data name="page4.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 30</value>
@@ -2627,7 +2699,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;page4.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <metadata name="ToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>381, 17</value>
@@ -2649,6 +2721,9 @@
   </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>62</value>
   </metadata>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>684, 481</value>

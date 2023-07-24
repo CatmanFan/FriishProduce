@@ -38,7 +38,15 @@ namespace FriishProduce
 
             All:
             foreach (JObject entry in dbReader.Children())
-                if (entry["platform"].ToString().ToLower() != "msx") list.Add(entry);
+            {
+                string name = entry["platform"].ToString().ToLower();
+                if (name != "msx" && name != "snes" && name != "pce") list.Add(entry);
+                
+                // Notes:
+                // MSX WADs use a different icon with blue background
+                // If using SNES/PCE, custom banner logos used for forwarders (see banner.cs) will end up stretched due to the different size of the original TPL.
+                // This is embedded in the banner (.brlyt) and so would need extensive hard-coding to modify, so it is excluded.
+            }
             Selected = "all";
         }
 

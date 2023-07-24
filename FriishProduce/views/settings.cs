@@ -10,6 +10,7 @@ namespace FriishProduce
     {
         readonly Lang x = Program.Language;
         readonly List<string> langs = new List<string>();
+        bool showRestart = false;
 
         public Settings()
         {
@@ -35,39 +36,40 @@ namespace FriishProduce
 
             OpenWhenDone.Checked = Default.OpenWhenDone;
             Theme.SelectedIndex = Default.LightTheme ? 1 : 0;
-            FileNameSimple.Text = Default.WADNameSimple;
-            FileNameCustom.Text = Default.WADNameCustom;
+            FileName.Text = Default.WadName;
+            FileNameZIP.Text = Default.ZipName;
         }
 
         private void OK_Click(object sender, EventArgs e)
         {
-            bool showRestart = false;
-
-            if (Language.SelectedIndex == 0)
+            if (!showRestart)
             {
-                showRestart = Default.Language != "sys";
-                Default.Language = "sys";
-            }
-            else
-            {
-                foreach (string file in Directory.GetFiles(Paths.Languages))
-                    if (Lang.Read(file) != null)
-                    {
-                        if (x.LangInfo(Path.GetFileNameWithoutExtension(file))[0] == Language.SelectedItem.ToString())
+                if (Language.SelectedIndex == 0)
+                {
+                    showRestart = Default.Language != "sys";
+                    Default.Language = "sys";
+                }
+                else
+                {
+                    foreach (string file in Directory.GetFiles(Paths.Languages))
+                        if (Lang.Read(file) != null)
                         {
-                            showRestart = Path.GetFileNameWithoutExtension(file) != Default.Language;
-                            Default.Language = Path.GetFileNameWithoutExtension(file);
-                            break;
+                            if (x.LangInfo(Path.GetFileNameWithoutExtension(file))[0] == Language.SelectedItem.ToString())
+                            {
+                                showRestart = Path.GetFileNameWithoutExtension(file) != Default.Language;
+                                Default.Language = Path.GetFileNameWithoutExtension(file);
+                                break;
+                            }
                         }
-                    }
+                }
             }
 
             if (showRestart) MessageBox.Show(x.Get("m001"), Text);
 
             Default.OpenWhenDone = OpenWhenDone.Checked;
             Default.LightTheme = Theme.SelectedIndex == 1;
-            Default.WADNameSimple = FileNameSimple.Text;
-            Default.WADNameCustom = FileNameCustom.Text;
+            Default.WadName = FileName.Text;
+            Default.ZipName = FileNameZIP.Text;
             Default.Save();
             DialogResult = DialogResult.OK;
         }
@@ -79,5 +81,7 @@ namespace FriishProduce
             else
                 ToolTip.SetToolTip(Language, null);
         }
+
+        private void Settings_FormClosing(object sender, FormClosingEventArgs e) => e.Cancel = OK.Enabled == false && Cancel.Enabled == false;
     }
 }

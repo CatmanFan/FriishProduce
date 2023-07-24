@@ -45,7 +45,7 @@ namespace FriishProduce.Injectors
             if (DolIndex == -1) throw new System.InvalidOperationException();
         }
 
-        public void Generate(string name, string outZip, bool UseBios = false)
+        public void Generate(string name, string outZip, bool UseBios = false, bool BootBios = false)
         {
             // Set filename
             string romFile = (DolIndex >= 7 ? "title" : "HOME Menu") + Path.GetExtension(ROM).Replace(Paths.PatchedSuffix, string.Empty);
@@ -198,7 +198,7 @@ namespace FriishProduce.Injectors
                     meta.Add("    <arg>ScreenMode = 0</arg>");
                     meta.Add("    <arg>VideoMode = 0</arg>");
                     meta.Add($"    <arg>BiosDevice = {(UseUSBStorage ? '2' : '1')}</arg>");
-                    if (UseBios) meta.Add("    <arg>BootThruBios = 1</arg>");
+                    if (BootBios) meta.Add("    <arg>BootThruBios = 1</arg>");
                     if (DolIndex == 13) meta.Add("    <arg>FPS = 0</arg>");
                     break;
             }

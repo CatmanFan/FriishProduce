@@ -25,18 +25,6 @@ namespace FriishProduce.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("sys")]
-        public string Language {
-            get {
-                return ((string)(this["Language"]));
-            }
-            set {
-                this["Language"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool LightTheme {
             get {
@@ -61,25 +49,37 @@ namespace FriishProduce.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("{platform} ({type}) - {titleID}")]
-        public string WADNameSimple {
+        [global::System.Configuration.DefaultSettingValueAttribute("{platform} - {name} - {titleID} ({type})")]
+        public string WadName {
             get {
-                return ((string)(this["WADNameSimple"]));
+                return ((string)(this["WadName"]));
             }
             set {
-                this["WADNameSimple"] = value;
+                this["WadName"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("{platform} ({type}) - {name} - {titleID}")]
-        public string WADNameCustom {
+        [global::System.Configuration.DefaultSettingValueAttribute("{platform} - {titleID} ({storage})")]
+        public string ZipName {
             get {
-                return ((string)(this["WADNameCustom"]));
+                return ((string)(this["ZipName"]));
             }
             set {
-                this["WADNameCustom"] = value;
+                this["ZipName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("sys")]
+        public string Language {
+            get {
+                return ((string)(this["Language"]));
+            }
+            set {
+                this["Language"] = value;
             }
         }
     }

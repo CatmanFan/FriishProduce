@@ -13,7 +13,7 @@ namespace FriishProduce
 {
     public class Lang
     {
-        private static Dictionary<string, string> English { get; set; }
+        internal static Dictionary<string, string> English { get; set; }
         internal static Dictionary<string, string> Current { get; set; }
 
         internal static Dictionary<string, string> Read(string jsonFile)
@@ -100,6 +100,9 @@ namespace FriishProduce
             {
                 json = Paths.Languages + $"{culture.Name}.json";
                 Current = Read(json);
+
+                if (Current == null) Current = English;
+
                 goto EndOfFunction;
             }
 
@@ -129,12 +132,20 @@ namespace FriishProduce
         /// </summary>
         public string Get(string id)
         {
-            foreach (KeyValuePair<string, string> translation in Current)
-                if (translation.Key == id)
-                    return translation.Value.Replace(@"\n", Environment.NewLine).Replace('\"', '"');
-                else if (translation.Key.ToLower() == id.ToLower())
-                    return translation.Value.Replace(@"\n", Environment.NewLine).Replace('\"', '"');
+            try
+            {
+                foreach (KeyValuePair<string, string> translation in Current)
+                    if (translation.Key == id)
+                        return translation.Value.Replace(@"\n", Environment.NewLine).Replace('\"', '"');
+                    else if (translation.Key.ToLower() == id.ToLower())
+                        return translation.Value.Replace(@"\n", Environment.NewLine).Replace('\"', '"');
+            }
+            catch (Exception)
+            {
+                goto End;
+            }
 
+            End:
             foreach (KeyValuePair<string, string> default_string in English)
                 if (default_string.Key == id)
                     return default_string.Value.Replace(@"\n", Environment.NewLine).Replace('\"', '"');
