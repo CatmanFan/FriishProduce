@@ -54,6 +54,7 @@ Currently supported:
   * **[Genesis Plus GX](https://github.com/ekeeke/Genesis-Plus-GX)** (eke-eke et al.)
   * **[WiiSX](https://wiibrew.org/wiki/WiiSX)** (Wii64 Team)
   * **[WiiStation / WiiSXRX_2022](https://github.com/xjsxjs197/WiiSXRX_2022)** (xjsxjs197, forked from NiuuS's WiiSXRX)
+  * **[WiiMednafen](https://github.com/raz0red/wii-mednafen)** (raz0red)
 
 * Other
   * **Shockwave/Adobe Flash**

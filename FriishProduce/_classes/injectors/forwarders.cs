@@ -22,7 +22,8 @@ namespace FriishProduce.Injectors
             /* 10 */ "Not64",
             /* 11 */ "Mupen64GC-FIX94",
             /* 12 */ "WiiSX",
-            /* 13 */ "WiiStation"
+            /* 13 */ "WiiStation",
+            /* 14 */ "WiiMednafen"
         };
 
         public int DolIndex { get; set; }
@@ -200,6 +201,9 @@ namespace FriishProduce.Injectors
                     meta.Add($"    <arg>BiosDevice = {(UseUSBStorage ? '2' : '1')}</arg>");
                     if (BootBios) meta.Add("    <arg>BootThruBios = 1</arg>");
                     if (DolIndex == 13) meta.Add("    <arg>FPS = 0</arg>");
+                    break;
+                case 14:
+                    File.Copy(Paths.DOL + "wiimednafen.dol", dir + "boot.dol");
                     break;
             }
             meta.Add("  </arguments>");

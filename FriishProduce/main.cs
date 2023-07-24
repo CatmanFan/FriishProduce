@@ -1546,7 +1546,9 @@ namespace FriishProduce
 
                     // AUTO-SELECTION METHOD:
                     //   => For GenPlus & all emulators based on Wii64 Team's code (e.g. Wii64, WiiSX and forks), use Comex NANDloader
+                    //   => For WiiMednafen, use Waninkoko NANDloader
                     if (f.DolIndex >= 8 && f.DolIndex <= 13) type = 1;
+                    if (f.DolIndex == 14) type = 3;
 
                     f.ConvertWAD(type, TitleID.Text.ToUpper(), vWii.Checked);
                 }
