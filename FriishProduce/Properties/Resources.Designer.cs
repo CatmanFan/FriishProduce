@@ -281,6 +281,16 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] SM64Compress {
+            get {
+                object obj = ResourceManager.GetObject("SM64Compress", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] VC_GB_Banner {
             get {
                 object obj = ResourceManager.GetObject("VC_GB_Banner", resourceCulture);
@@ -364,6 +374,16 @@ namespace FriishProduce.Properties {
         internal static byte[] WWCXTool {
             get {
                 object obj = ResourceManager.GetObject("WWCXTool", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Z64Compress {
+            get {
+                object obj = ResourceManager.GetObject("Z64Compress", resourceCulture);
                 return ((byte[])(obj));
             }
         }

@@ -242,6 +242,7 @@ namespace FriishProduce
             // Consoles
             {
                 NES_Palette.SelectedIndex = 0;
+                N64_CompressionType.SelectedIndex = 0;
 
                 SEGA_SetConfig.Checked = false;
 
@@ -1328,6 +1329,12 @@ namespace FriishProduce
                                                 N64.emuVersion = entry["ver"].ToString();
                                 }
 
+                                int compressionType = N64_CompressionType.SelectedIndex;
+                                await Task.Run(() => { N64.ByteswapROM(); });
+                                await Task.Run(() => { N64.CompressROM(compressionType); });
+                                await Task.Run(() => { N64.ReplaceROM(N64.CheckForROMC()); });
+                                if (N64_RemoveT64.Checked) N64.CleanT64();
+
                                 bool needsEmuEdit = false;
                                 foreach (var item in Options_N64.Controls.OfType<CheckBox>())
                                     if (item.Checked) needsEmuEdit = true;
@@ -1346,10 +1353,6 @@ namespace FriishProduce
 
                                     N64.SaveContent1();
                                 }
-
-                                await Task.Run(() => { N64.ByteswapROM(); });
-                                await Task.Run(() => { N64.ReplaceROM(N64.CheckForROMC()); });
-                                if (N64_RemoveT64.Checked) N64.CleanT64();
 
                                 if (Custom.Checked) N64.InsertSaveComments(SaveDataTitle.Lines);
                                 break;

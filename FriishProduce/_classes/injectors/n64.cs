@@ -125,7 +125,8 @@ namespace FriishProduce.Injectors
             // https://github.com/aglab2/sm64wii/blob/master/usamune.gzi
             // https://github.com/aglab2/sm64wii/blob/master/kit/Main.cs
             // ---------------------------------------------------------
-            var size_ROM = 1 + new FileInfo(ROM).Length / 1024 / 1024;
+            var size_ROM = 1 + new FileInfo(File.Exists($"{Paths.WorkingFolder_Content5}romc") ? $"{Paths.WorkingFolder_Content5}romc" : $"{Paths.WorkingFolder_Content5}rom").Length
+                / 1024 / 1024;
             if (size_ROM > 56) throw new Exception(Program.Language.Get("m015"));
 
             int index = Bytes.Search(content1, "44 38 7D 00 1C 3C 80", 0x5A000, 0x5E000);
@@ -154,15 +155,13 @@ namespace FriishProduce.Injectors
         // ----------------------------------------------------------------------- //
 
         private readonly string byteswappedROM = $"{Paths.Apps}ucon64\\rom.z64";
-        private readonly string compressedROM = $"{Paths.WorkingFolder}romc";
+        private readonly string compressedROM = $"{Paths.Apps}ucon64\\rom_comp.z64";
+        private readonly string ROMC = $"{Paths.WorkingFolder}romc";
 
         public bool CheckForROMC() => emuVersion.Contains("romc");
 
         public void ByteswapROM()
         {
-            if (File.ReadAllBytes(ROM).Length % 4194304 != 0 && CheckForROMC())
-                throw new Exception(Program.Language.Get("m013"));
-
             File.Copy(ROM, $"{Paths.Apps}ucon64\\rom");
             using (Process p = Process.Start(new ProcessStartInfo
             {
@@ -178,50 +177,123 @@ namespace FriishProduce.Injectors
 
             if (!File.Exists(byteswappedROM))
                 throw new Exception(Program.Language.Get("m011"));
+
+            if (emuVersion.Contains("hero")) FixBHeroCrash(byteswappedROM);
+        }
+
+        private void FixBHeroCrash(string ROMpath)
+        {
+            // Set title ID to NBDx to prevent crashing
+            var ROMbytes = File.ReadAllBytes(ROMpath);
+            ROMbytes[0x3B] = 0x4E;
+            ROMbytes[0x3C] = 0x42;
+            ROMbytes[0x3D] = 0x44;
+            File.WriteAllBytes(ROMpath, ROMbytes);
+        }
+
+        public void CompressROM(int type)
+        {
+            if (type <= 0) return;
+
+            switch (type)
+            {
+                case 1: // SM64compress
+                {
+                    // Checksum fix (ASM)
+                    /* var ROMbytes = File.ReadAllBytes(byteswappedROM);
+                    new byte[] { 0x14, 0xE8, 0x00, 0x06 }.CopyTo(ROMbytes, 0x66C);
+                    new byte[] { 0x16, 0x08, 0x00, 0x03 }.CopyTo(ROMbytes, 0x678);
+                    File.WriteAllBytes(byteswappedROM, ROMbytes); */
+
+                    // Run process
+                    string pPath = $"{Paths.Apps}ucon64\\sm64compress.exe";
+                    File.WriteAllBytes(pPath, Properties.Resources.SM64Compress);
+                    using (Process p = Process.Start(new ProcessStartInfo
+                    {
+                        FileName = pPath,
+                        WorkingDirectory = $"{Paths.Apps}ucon64\\",
+                        Arguments = "rom.z64 rom_comp.z64",
+                        UseShellExecute = false,
+                        CreateNoWindow = true
+                    }))
+                        p.WaitForExit();
+                    File.Delete(pPath);
+                    break;
+                }
+
+                case 2: // Zelda64compress
+                {
+                    string arg = "--in rom.z64 --out rom_comp.z64 --mb 32 --codec yaz";
+                    /* if      (type == 2) arg += " --dma \"0x12F70,1548\" --compress \"9-14,28-END\"";
+                    else if (type == 3) arg += " --dma \"0x7430,1526\" --compress \"10-14,27-END\"";
+                    else if (type == 4) arg += " --dma \"0x1A500,1568\" --compress \"10-14,23,24,31-END\" --skip \"1127\" --repack \"15-20,22\""; */
+
+                    // Run process
+                    string pPath = $"{Paths.Apps}ucon64\\z64compress.exe";
+                    File.WriteAllBytes(pPath, Properties.Resources.Z64Compress);
+                    using (Process p = Process.Start(new ProcessStartInfo
+                    {
+                        FileName = pPath,
+                        WorkingDirectory = $"{Paths.Apps}ucon64\\",
+                        Arguments = arg,
+                        UseShellExecute = true,
+                        CreateNoWindow = false
+                    }))
+                        p.WaitForExit();
+                    File.Delete(pPath);
+                    break;
+                }
+            }
+
+            File.Delete(byteswappedROM);
+            if (!File.Exists(compressedROM))
+                throw new Exception(Program.Language.Get("m011"));
+            else File.Move(compressedROM, byteswappedROM);
         }
 
         public void ReplaceROM(bool romc)
         {
             if (romc)
             {
-                if (emuVersion.Contains("hero"))
-                {
-                    // Set title ID to NBDx to prevent crashing
-                    var ROMbytes = File.ReadAllBytes(byteswappedROM);
-                    ROMbytes[0x3B] = 0x4E;
-                    ROMbytes[0x3C] = 0x42;
-                    ROMbytes[0x3D] = 0x44;
-                    File.WriteAllBytes(byteswappedROM, ROMbytes);
-                }
-
-                string pPath = Paths.WorkingFolder + "romc.exe";
-                File.WriteAllBytes(pPath, Properties.Resources.ROMC);
-                using (Process p = Process.Start(new ProcessStartInfo
-                {
-                    FileName = pPath,
-                    WorkingDirectory = Paths.WorkingFolder,
-                    Arguments = $"e \"{byteswappedROM}\" romc",
-                    UseShellExecute = false,
-                    CreateNoWindow = true
-                }))
-                    p.WaitForExit();
-                File.Delete(byteswappedROM);
-                File.Delete(pPath);
-
-                if (!File.Exists(compressedROM))
-                    throw new Exception(Program.Language.Get("m014"));
-
                 // Check filesize
-                // Maximum ROM limit allowed: 32 MB
-                if (File.ReadAllBytes(compressedROM).Length > 4194304 * 8)
+                // Maximum ROM limit allowed: 32 MB (uncompressed)
+                // Crashes on black screen if tested with an originally 64 MB .z64 ROM (not compressed beforehand)
+                if (File.ReadAllBytes(byteswappedROM).Length > 4194304 * 8)
                 {
-                    File.Delete(compressedROM);
+                    File.Delete(byteswappedROM);
                     throw new Exception(Program.Language.Get("m018"));
                 }
 
-                // Copy
-                File.Copy(compressedROM, $"{Paths.WorkingFolder_Content5}romc", true);
-                File.Delete(compressedROM);
+                // ROMs not in multiple of 4MB are not supported by the ROMC.exe
+                else if (File.ReadAllBytes(ROM).Length % 4194304 != 0)
+                {
+                    File.Delete(byteswappedROM);
+                    throw new Exception(Program.Language.Get("m013"));
+                }
+
+                else
+                {
+                    string pPath = Paths.WorkingFolder + "romc.exe";
+                    File.WriteAllBytes(pPath, Properties.Resources.ROMC);
+                    using (Process p = Process.Start(new ProcessStartInfo
+                    {
+                        FileName = pPath,
+                        WorkingDirectory = Paths.WorkingFolder,
+                        Arguments = $"e \"{byteswappedROM}\" romc",
+                        UseShellExecute = false,
+                        CreateNoWindow = true
+                    }))
+                        p.WaitForExit();
+                    File.Delete(byteswappedROM);
+                    File.Delete(pPath);
+
+                    if (!File.Exists(ROMC))
+                        throw new Exception(Program.Language.Get("m014"));
+
+                    // Copy
+                    File.Copy(ROMC, $"{Paths.WorkingFolder_Content5}romc", true);
+                    File.Delete(ROMC);
+                }
             }
             else
             {

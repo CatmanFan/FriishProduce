@@ -78,6 +78,8 @@ This program uses the following third-party components and apps:
 * **WWCXTool** by alpha-0.
 * **[lzh8_cmpdec](https://www.hcs64.com/vgm_ripping.html)** by [hcs](http://hcs64.com/).
 * **[HowardC's Tools](https://gbatemp.net/threads/vcfe-wip.100556/)** (particularly, VCbrlyt).
+* **[sm64tools](https://github.com/queueRAM/sm64tools)** by [queueRAM](https://github.com/queueRAM).
+* **[z64compress](https://github.com/z64tools/z64compress)** by [z64tools](https://github.com/z64tools).
 * For homebrew emulators compatiblity:
   * **comex**'s NAND loader. *(file renamed as "nandloader_wii_comex.app")*
   * **Waninkoko**'s NAND loader, retrieved from ShowMiiWads repo. *(file renamed as "nandloader_wii.app")*
