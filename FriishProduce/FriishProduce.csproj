@@ -216,6 +216,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="libWiiSharp.dll" />
+    <None Include="Resources\xdelta.exe" />
     <None Include="Resources\z64compress.exe" />
     <None Include="Resources\sm64compress.exe" />
     <None Include="Resources\images\VC\gba_banner.tpl" />

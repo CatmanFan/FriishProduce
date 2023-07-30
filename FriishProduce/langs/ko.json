@@ -89,7 +89,7 @@
   "filters": {
     "f_all": "|모든 파일 (*.*)|*.*",
     "f_img": "이미지 (*.bmp, *.jpg, *.jpeg, *.png)|*.bmp;*.jpg;*.jpeg;*.png|  Bitmap (*.bmp)|*.bmp|  JPEG (*.jpg, *.jpeg)|*.jpg;*.jpeg|  PNG (*.png)|*.png",
-    "f_bps": "패치 파일 (*.bps, *.ips)|*.bps;*.ips",
+    "f_bps": "패치 파일 (*.bps, *.ips, *.xdelta)|*.bps;*.ips;*.xdelta",
     "f_wad": "Wii 채널 (*.wad)|*.wad",
     "f_swf": "어도브 플래시 파일 (*.swf)|*.swf",
     "f_zip": "ZIP 파일 (*.zip)|*.zip",
@@ -119,7 +119,7 @@
     "a011": "크기 조정 모드:",
     "a012": "보간 모드:",
     "a013": "강제 비디오 모드:",
-    "a014": "*.bps/*.ips 패치 찾아보기",
+    "a014": "*.bps/*.ips/*.xdelta 패치 찾아보기",
     "a015": "사용자 지정",
     "a016": "다른 베이스의 배너를 사용하여 편집합:",
     "a017": "홈 메뉴에서 \"작동 가이드\" 제거",

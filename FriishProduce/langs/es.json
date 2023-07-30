@@ -76,7 +76,7 @@
   "filters": {
     "f_all": "|Todos los archivos (*.*)|*.*",
     "f_img": "Imágenes (*.bmp, *.jpg, *.jpeg, *.png)|*.bmp;*.jpg;*.jpeg;*.png|  Bitmap (*.bmp)|*.bmp|  JPEG (*.jpg, *.jpeg)|*.jpg;*.jpeg|  PNG (*.png)|*.png",
-    "f_bps": "Parches (*.bps, *.ips)|*.bps;*.ips",
+    "f_bps": "Parches (*.bps, *.ips, *.xdelta)|*.bps;*.ips;*.xdelta",
     "f_wad": "Canales Wii (*.wad)|*.wad",
     "f_swf": "Archivos Adobe Flash (*.swf)|*.swf",
     "f_zip": "Archivos comprimidos ZIP (*.zip)|*.zip",
@@ -106,7 +106,7 @@
     "a011": "Cambio de tamaño:",
     "a012": "Método de interpolación:",
     "a013": "Cambiar modo de vídeo:",
-    "a014": "Auto-parche con un archivo *.bps/*.ips",
+    "a014": "Auto-parche con un archivo *.bps/*.ips/*.xdelta",
     "a015": "Personalizar",
     "a016": "Importar un banner del otra canal:",
     "a017": "Desactivar el \"Manual electrónico\" en el Menú HOME",

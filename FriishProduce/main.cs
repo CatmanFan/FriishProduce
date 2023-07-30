@@ -62,7 +62,7 @@ namespace FriishProduce
 
             var fvi = FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetExecutingAssembly().Location);
             string ver = $"beta {fvi.FileVersion}";
-            Wait.BackColor = panel.BackColor;
+            Wait.BackColor = BackColor;
 
             Text = x.Get("g000");
             a000.Text = string.Format(x.Get("a000"), ver);
@@ -172,7 +172,8 @@ namespace FriishProduce
 
         private void CheckForForwarder()
         {
-            ForwarderMode = InjectionMethod.SelectedItem.ToString() != x.Get("g012");
+            ForwarderMode = false;
+            if (InjectionMethod.SelectedIndex >= 0) ForwarderMode = InjectionMethod.SelectedItem.ToString() != x.Get("g012");
 
             // Switch relevant options based on mode & selected platform
             NANDLoader.Visible = ForwarderMode;
@@ -181,6 +182,9 @@ namespace FriishProduce
             DisableEmanual.Visible = !ForwarderMode;
             SaveDataTitle.Visible = !ForwarderMode;
             SaveDataTitle.MaxLength = 80;
+
+            // Cosmetic
+            InjectionMethod.Enabled = InjectionMethod.Items.Count > 1;
 
             AltCheckbox.Text = ForwarderMode ? x.Get("a019") : x.Get("a020");
             AltCheckbox.Checked = false;
@@ -260,75 +264,78 @@ namespace FriishProduce
             }
 
             InjectionMethod.Items.Clear();
-            InjectionMethod.Items.Add(x.Get("g012"));
-            switch (currentConsole)
+            if (Console.SelectedIndex >= 0)
             {
-                case Platforms.NES:
-                    InjectionMethod.Items.Add(new Injectors.Forwarders().List[0]);
-                    InjectionMethod.Items.Add(new Injectors.Forwarders().List[1]);
-                    InjectionMethod.Items.Add(new Injectors.Forwarders().List[2]);
-                    break;
-                case Platforms.SNES:
-                    InjectionMethod.Items.Add(new Injectors.Forwarders().List[3]);
-                    InjectionMethod.Items.Add(new Injectors.Forwarders().List[4]);
-                    InjectionMethod.Items.Add(new Injectors.Forwarders().List[5]);
-                    break;
-                case Platforms.N64:
-                    InjectionMethod.Items.Add(new Injectors.Forwarders().List[8]);
-                    InjectionMethod.Items.Add(new Injectors.Forwarders().List[9]);
-                    InjectionMethod.Items.Add(new Injectors.Forwarders().List[10]);
-                    InjectionMethod.Items.Add(new Injectors.Forwarders().List[11]);
-                    break;
-                case Platforms.SMS:
-                case Platforms.SMD:
-                case Platforms.S32X:
-                case Platforms.SMCD:
-                    if (currentConsole == Platforms.SMCD)
-                    {
-                        BIOS__000.Visible = true;
-                        // BIOS__001.Visible = true;
-                        InjectionMethod.Items.RemoveAt(0);
+                InjectionMethod.Items.Add(x.Get("g012"));
+                switch (currentConsole)
+                {
+                    case Platforms.NES:
+                        InjectionMethod.Items.Add(new Injectors.Forwarders().List[0]);
+                        InjectionMethod.Items.Add(new Injectors.Forwarders().List[1]);
+                        InjectionMethod.Items.Add(new Injectors.Forwarders().List[2]);
+                        break;
+                    case Platforms.SNES:
+                        InjectionMethod.Items.Add(new Injectors.Forwarders().List[3]);
+                        InjectionMethod.Items.Add(new Injectors.Forwarders().List[4]);
+                        InjectionMethod.Items.Add(new Injectors.Forwarders().List[5]);
+                        break;
+                    case Platforms.N64:
+                        InjectionMethod.Items.Add(new Injectors.Forwarders().List[8]);
+                        InjectionMethod.Items.Add(new Injectors.Forwarders().List[9]);
+                        InjectionMethod.Items.Add(new Injectors.Forwarders().List[10]);
+                        InjectionMethod.Items.Add(new Injectors.Forwarders().List[11]);
+                        break;
+                    case Platforms.SMS:
+                    case Platforms.SMD:
+                    case Platforms.S32X:
+                    case Platforms.SMCD:
+                        if (currentConsole == Platforms.SMCD)
+                        {
+                            BIOS__000.Visible = true;
+                            // BIOS__001.Visible = true;
+                            InjectionMethod.Items.RemoveAt(0);
+                            AutoFill.Visible = false;
+                        }
+                        InjectionMethod.Items.Add(new Injectors.Forwarders().List[7]);
+                        break;
+                    case Platforms.PCE:
+                        break;
+                    case Platforms.NeoGeo:
                         AutoFill.Visible = false;
-                    }
-                    InjectionMethod.Items.Add(new Injectors.Forwarders().List[7]);
-                    break;
-                case Platforms.PCE:
-                    break;
-                case Platforms.NeoGeo:
-                    AutoFill.Visible = false;
-                    break;
-                case Platforms.C64:
-                    break;
-                case Platforms.MSX:
-                    break;
-                case Platforms.Flash:
-                    AutoFill.Visible = false;
-                    break;
-                case Platforms.GB:
-                case Platforms.GBC:
-                case Platforms.GBA:
-                    InjectionMethod.Items.RemoveAt(0);
-                    InjectionMethod.Items.Add(new Injectors.Forwarders().List[6]);
-                    // BIOS__000.Enabled = false;
-                    // BIOS__000.Visible = true;
-                    // BIOS__001.Visible = true;
-                    break;
-                case Platforms.PSX:
-                    AutoFill.Visible = false;
-                    InjectionMethod.Items.RemoveAt(0);
-                    InjectionMethod.Items.Add(new Injectors.Forwarders().List[12]);
-                    InjectionMethod.Items.Add(new Injectors.Forwarders().List[13]);
-                    BIOS__000.Visible = true;
-                    BIOS__001.Visible = true;
-                    break;
-                default:
-                    break;
+                        break;
+                    case Platforms.C64:
+                        break;
+                    case Platforms.MSX:
+                        break;
+                    case Platforms.Flash:
+                        InjectionMethod.Items[0] = x.Get("Flash");
+                        AutoFill.Visible = false;
+                        break;
+                    case Platforms.GB:
+                    case Platforms.GBC:
+                    case Platforms.GBA:
+                        InjectionMethod.Items.RemoveAt(0);
+                        InjectionMethod.Items.Add(new Injectors.Forwarders().List[6]);
+                        InjectionMethod.Items.Add(new Injectors.Forwarders().List[14]);
+                        // BIOS__000.Enabled = false;
+                        // BIOS__000.Visible = true;
+                        // BIOS__001.Visible = true;
+                        break;
+                    case Platforms.PSX:
+                        AutoFill.Visible = false;
+                        InjectionMethod.Items.RemoveAt(0);
+                        InjectionMethod.Items.Add(new Injectors.Forwarders().List[12]);
+                        InjectionMethod.Items.Add(new Injectors.Forwarders().List[13]);
+                        BIOS__000.Visible = true;
+                        BIOS__001.Visible = true;
+                        break;
+                    default:
+                        break;
+                }
+
+                InjectionMethod.SelectedIndex = 0;
             }
 
-            InjectionMethod.SelectedIndex = 0;
-            InjectionMethod.Enabled = InjectionMethod.Items.Count > 1;
-            InjectionMethod.Visible = InjectionMethod.Items.Count > 1;
-            g002.Visible = InjectionMethod.Items.Count > 1;
             CheckForForwarder();
         }
 
@@ -618,12 +625,14 @@ namespace FriishProduce
         private void OpenROM_Click(object sender, EventArgs e)
         {
             input[0] = null;
-            input[1] = null;
             if (BrowseROM.ShowDialog() == DialogResult.OK)
                 input[0] = BrowseROM.FileName;
             ROMPath.Text = input[0] != null ? Path.GetFileName(input[0]) : x.Get("a002");
 
-            Patch.Checked = false;
+            // input[1] = null;
+            // Patch.Checked = input[1] != null;
+            AutoFill.Enabled = input[0] != null;
+
             Next.Enabled = (input[0] != null) && (input[2] != null);
         }
 
@@ -1124,7 +1133,7 @@ namespace FriishProduce
             try
             {
                 WAD w = new WAD();
-                bool usePatch = Patch.Visible;
+                bool usePatch = Patch.Checked;
 
                 await Task.Run(() =>
                 {

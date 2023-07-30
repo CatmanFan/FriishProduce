@@ -82,7 +82,7 @@
   "filters": {
     "f_all": "|Tous les fichiers (*.*)|*.*",
     "f_img": "Tous les formats sont pris en charge (*.bmp, *.jpg, *.jpeg, *.png)|*.bmp;*.jpg;*.jpeg;*.png|  Bitmap Windows (*.bmp)|*.bmp|  JPEG (*.jpg, *.jpeg)|*.jpg;*.jpeg|  PNG (*.png)|*.png",
-    "f_bps": "Fichiers patch (*.bps, *.ips)|*.bps;*.ips",
+    "f_bps": "Fichiers patch (*.bps, *.ips, *.xdelta)|*.bps;*.ips;*.xdelta",
     "f_wad": "Chaînes Wii (*.wad)|*.wad",
     "f_swf": "Fichiers Adobe Flash (*.swf)|*.swf",
     "f_zip": "Archives *.zip (*.zip)|*.zip",
@@ -112,7 +112,7 @@
     "a011": "Redimensionnement :",
     "a012": "Méthode d'interpolation :",
     "a013": "Mode vidéo forcé :",
-    "a014": "Appliquer un patch *.ips ou *.bps",
+    "a014": "Appliquer un patch (*.ips / *.bps / *.xdelta)",
     "a015": "Personnaliser",
     "a016": "Importer un autre banner à modifier :",
     "a017": "Retirer l'option « Mode d'emploi » sur le menu HOME",

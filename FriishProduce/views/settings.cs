@@ -26,18 +26,35 @@ namespace FriishProduce
             foreach (string file in Directory.GetFiles(Paths.Languages))
                 if (Lang.Read(file) != null)
                 {
-                    Language.Items.Add(x.LangInfo(Path.GetFileNameWithoutExtension(file))[0]);
+                    Language.Items.Add(LanguageName(file));
                     langs.Add(Path.GetFileNameWithoutExtension(file));
                 }
 
             if (Default.Language == "sys") Language.SelectedIndex = 0;
-            else Language.SelectedIndex = Language.Items.IndexOf(x.LangInfo(Default.Language)[0]);
+            else Language.SelectedIndex = Language.Items.IndexOf(LanguageName(Default.Language, false));
             // -----------------------------
 
             OpenWhenDone.Checked = Default.OpenWhenDone;
             Theme.SelectedIndex = Default.LightTheme ? 1 : 0;
             FileName.Text = Default.WadName;
             FileNameZIP.Text = Default.ZipName;
+        }
+
+        private string LanguageName(string fileName, bool isFilePath = true)
+        {
+            // For using name from .json file:
+            //   x.LangInfo(Path.GetFileNameWithoutExtension(file))[0] (for certain file)    //
+            //   x.LangInfo(Default.Language)[0]                       (for selected).       //
+
+            // Should not be removed so as to not break the language functions, this is merely a cosmetic edit for now
+
+            string var = isFilePath ? Path.GetFileNameWithoutExtension(fileName) : fileName;
+            string langName = new System.Globalization.CultureInfo(var).NativeName;
+
+            // Capitalize first letter
+            langName = langName.Substring(0, 1).ToUpper() + langName.Substring(1, langName.Length - 1);
+
+            return langName;
         }
 
         private void OK_Click(object sender, EventArgs e)
@@ -54,7 +71,7 @@ namespace FriishProduce
                     foreach (string file in Directory.GetFiles(Paths.Languages))
                         if (Lang.Read(file) != null)
                         {
-                            if (x.LangInfo(Path.GetFileNameWithoutExtension(file))[0] == Language.SelectedItem.ToString())
+                            if (LanguageName(file) == Language.SelectedItem.ToString())
                             {
                                 showRestart = Path.GetFileNameWithoutExtension(file) != Default.Language;
                                 Default.Language = Path.GetFileNameWithoutExtension(file);

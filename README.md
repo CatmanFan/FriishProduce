@@ -59,19 +59,19 @@ Currently supported:
 * Other
   * **Shockwave/Adobe Flash**
 
-<!-- ## To-Do
-- [ ] C64
-- [ ] Add emulators and platforms for use in forwarders:
-  - [ ] Game Boy/Game Boy Color/Game Boy Advance
-  * (need to implement custom banner and determine what type of WADs should be used)
+## To-Do
+- [ ] Try redirecting foreign language *.json files in [main/FriishProduce/langs](https://github.com/CatmanFan/FriishProduce/tree/main/FriishProduce/langs) to a separate location/repo
+* Other VC injection support:
+  - [ ] Commodore 64
+  - [ ] TurboGrafx-16 CD
 - [ ] Multiple SWF support for Adobe Flash.
-- [ ] TurboGrafx-16 CD VC injection support. -->
 
 ## Credits
 This program uses the following third-party components and apps:
 * **libWiiSharp** (orig. author: Leathl), [forked](https://github.com/WiiDatabase/libWiiSharp/) by **[WiiDatabase](https://github.com/WiiDatabase)**.
 * **[Wii.cs](https://github.com/dnasdw/showmiiwads/blob/Wii.cs_Tools/U8Mii/Wii.cs)** library (part of Leathl's [ShowMiiWads](https://code.google.com/archive/p/showmiiwads/source)).
 * **[Floating IPS](https://github.com/Alcaro/Flips)** (Flips) by [Alcaro](https://github.com/Alcaro).
+* **[Xdelta](https://github.com/jmacd/xdelta)** by [jmacd](https://github.com/jmacd).
 * **[ccf-tools](https://github.com/libertyernie/ccf-tools)** (orig. author: paulguy) and **[BrawlLib](https://github.com/libertyernie/brawllib-wit)** (orig. author: soopercool101), both forked by **[libertyernie](https://github.com/libertyernie)**.
 * **ROMC compressor** by Jurai, with additional LZSS code by Haruhiko Okumura.
 * **[gbalzss](https://gbadev.org/tools.php?showinfo=56)** by Andre Perrot, with additional LZSS code by Haruhiko Okumura.

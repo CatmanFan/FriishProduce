@@ -381,6 +381,16 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] Xdelta {
+            get {
+                object obj = ResourceManager.GetObject("Xdelta", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] Z64Compress {
             get {
                 object obj = ResourceManager.GetObject("Z64Compress", resourceCulture);

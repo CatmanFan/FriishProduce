@@ -11,36 +11,72 @@ namespace FriishProduce
 
         public static string ApplyPatch(string ROM, string patch = null)
         {
+            string outROM = ROM + Paths.PatchedSuffix;
             if (patch != null)
             {
-                if (!File.Exists(Paths.Apps + "flips\\flips.exe"))
+                if (Path.GetExtension(patch).ToLower() == ".xdelta")
                 {
-                    MessageBox.Show(x.Get("m006"), x.Get("error"), System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
-                    return ROM;
+                    string newOutROM = Paths.WorkingFolder + "patched" + Path.GetExtension(ROM);
+
+                    if (!Directory.Exists(Paths.WorkingFolder)) Directory.CreateDirectory(Paths.WorkingFolder);
+                    File.Copy(ROM, Paths.WorkingFolder + "rom");
+                    File.Copy(patch, Paths.WorkingFolder + "xdelta");
+
+                    // Run process
+                    string pPath = Paths.WorkingFolder + "xdelta.exe";
+                    File.WriteAllBytes(pPath, Properties.Resources.Xdelta);
+                    using (Process p = Process.Start(new ProcessStartInfo
+                    {
+                        FileName = pPath,
+                        WorkingDirectory = Paths.WorkingFolder,
+                        Arguments = "-d -s rom xdelta patched" + Path.GetExtension(ROM),
+                        UseShellExecute = false,
+                        CreateNoWindow = true
+                    }))
+                        p.WaitForExit();
+                    File.Delete(pPath);
+
+                    File.Delete(Paths.WorkingFolder + "rom");
+                    File.Delete(Paths.WorkingFolder + "xdelta");
+                    File.Move(newOutROM, outROM);
+
+                    if (!File.Exists(outROM))
+                    {
+                        MessageBox.Show(x.Get("m005"), x.Get("error"), System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                        return ROM;
+                    }
+                    return outROM;
                 }
-
-                string outROM = ROM + Paths.PatchedSuffix;
-                string batchScript = $"\"{Paths.Apps}flips\\flips.exe\" --apply \"{patch}\" \"{Path.GetFileName(ROM)}\" \"{Path.GetFileName(outROM)}\"";
-                string batchPath = Path.Combine(Path.GetDirectoryName(ROM), "patch.bat");
-
-                File.WriteAllText(batchPath, batchScript);
-                using (Process p = Process.Start(new ProcessStartInfo
+                else
                 {
-                    FileName = batchPath,
-                    WorkingDirectory = Path.GetDirectoryName(ROM),
-                    UseShellExecute = false,
-                    CreateNoWindow = true
-                }))
-                    p.WaitForExit();
-                File.Delete(batchPath);
+                    if (!File.Exists(Paths.Apps + "flips\\flips.exe"))
+                    {
+                        MessageBox.Show(x.Get("m006"), x.Get("error"), System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                        return ROM;
+                    }
 
-                if (!File.Exists(outROM) || File.Exists(outROM) && (File.ReadAllBytes(outROM).Length == File.ReadAllBytes(ROM).Length))
-                {
-                    if (File.Exists(outROM)) File.Delete(outROM);
-                    MessageBox.Show(x.Get("m005"), x.Get("error"), System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
-                    return ROM;
+                    string batchScript = $"\"{Paths.Apps}flips\\flips.exe\" --apply \"{patch}\" \"{Path.GetFileName(ROM)}\" \"{Path.GetFileName(outROM)}\"";
+                    string batchPath = Path.Combine(Path.GetDirectoryName(ROM), "patch.bat");
+
+                    File.WriteAllText(batchPath, batchScript);
+                    using (Process p = Process.Start(new ProcessStartInfo
+                    {
+                        FileName = batchPath,
+                        WorkingDirectory = Path.GetDirectoryName(ROM),
+                        UseShellExecute = false,
+                        CreateNoWindow = true
+                    }))
+                        p.WaitForExit();
+                    File.Delete(batchPath);
+
+                    if (!File.Exists(outROM) || File.Exists(outROM) && (File.ReadAllBytes(outROM).Length == File.ReadAllBytes(ROM).Length))
+                    {
+                        if (File.Exists(outROM)) File.Delete(outROM);
+                        MessageBox.Show(x.Get("m005"), x.Get("error"), System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Exclamation);
+                        return ROM;
+                    }
+                    return outROM;
                 }
-                return outROM;
             }
             else return ROM;
         }

@@ -40,10 +40,10 @@ namespace FriishProduce
             this.Wait = new System.Windows.Forms.PictureBox();
             this.Console = new System.Windows.Forms.ComboBox();
             this.page1 = new System.Windows.Forms.Panel();
-            this.icon = new System.Windows.Forms.PictureBox();
-            this.page2 = new System.Windows.Forms.Panel();
             this.g002 = new System.Windows.Forms.Label();
             this.InjectionMethod = new System.Windows.Forms.ComboBox();
+            this.icon = new System.Windows.Forms.PictureBox();
+            this.page2 = new System.Windows.Forms.Panel();
             this.Patch = new System.Windows.Forms.CheckBox();
             this.ROMPath = new System.Windows.Forms.Label();
             this.DeleteBase = new System.Windows.Forms.Button();
@@ -224,32 +224,13 @@ namespace FriishProduce
             // 
             // page1
             // 
+            this.page1.Controls.Add(this.g002);
+            this.page1.Controls.Add(this.InjectionMethod);
             this.page1.Controls.Add(this.icon);
             this.page1.Controls.Add(this.Console);
             this.page1.Controls.Add(this.a000);
             resources.ApplyResources(this.page1, "page1");
             this.page1.Name = "page1";
-            // 
-            // icon
-            // 
-            this.icon.Image = global::FriishProduce.Properties.Resources.Icon;
-            resources.ApplyResources(this.icon, "icon");
-            this.icon.Name = "icon";
-            this.icon.TabStop = false;
-            // 
-            // page2
-            // 
-            this.page2.Controls.Add(this.g002);
-            this.page2.Controls.Add(this.InjectionMethod);
-            this.page2.Controls.Add(this.Patch);
-            this.page2.Controls.Add(this.ROMPath);
-            this.page2.Controls.Add(this.DeleteBase);
-            this.page2.Controls.Add(this.AddBase);
-            this.page2.Controls.Add(this.Bases);
-            this.page2.Controls.Add(this.OpenROM);
-            this.page2.Controls.Add(this.a001);
-            resources.ApplyResources(this.page2, "page2");
-            this.page2.Name = "page2";
             // 
             // g002
             // 
@@ -265,6 +246,25 @@ namespace FriishProduce
             this.InjectionMethod.FormattingEnabled = true;
             this.InjectionMethod.Name = "InjectionMethod";
             this.InjectionMethod.SelectedIndexChanged += new System.EventHandler(this.InjectionMethod_Changed);
+            // 
+            // icon
+            // 
+            this.icon.Image = global::FriishProduce.Properties.Resources.Icon;
+            resources.ApplyResources(this.icon, "icon");
+            this.icon.Name = "icon";
+            this.icon.TabStop = false;
+            // 
+            // page2
+            // 
+            this.page2.Controls.Add(this.Patch);
+            this.page2.Controls.Add(this.ROMPath);
+            this.page2.Controls.Add(this.DeleteBase);
+            this.page2.Controls.Add(this.AddBase);
+            this.page2.Controls.Add(this.Bases);
+            this.page2.Controls.Add(this.OpenROM);
+            this.page2.Controls.Add(this.a001);
+            resources.ApplyResources(this.page2, "page2");
+            this.page2.Name = "page2";
             // 
             // Patch
             // 
@@ -962,12 +962,12 @@ namespace FriishProduce
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.page2);
             this.Controls.Add(this.panel);
             this.Controls.Add(this.Wait);
+            this.Controls.Add(this.page1);
             this.Controls.Add(this.page4);
             this.Controls.Add(this.page3);
-            this.Controls.Add(this.page2);
-            this.Controls.Add(this.page1);
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
