@@ -30,6 +30,7 @@ namespace FriishProduce
             /* Full path to ROM patch */ null,
             /* Full path to WAD file  */ null
         };
+        string[] multiFileInput = new string[0];
         Dictionary<string, string> btns = new Dictionary<string, string>();
 
         Views.SEGA_Config ConfigForm_SEGA;
@@ -263,6 +264,7 @@ namespace FriishProduce
                 BIOS__000.Enabled = true;
             }
 
+            BrowseROM.Multiselect = currentConsole == Platforms.Flash;
             InjectionMethod.Items.Clear();
             if (Console.SelectedIndex >= 0)
             {
@@ -625,15 +627,31 @@ namespace FriishProduce
         private void OpenROM_Click(object sender, EventArgs e)
         {
             input[0] = null;
+            multiFileInput = new string[0];
             if (BrowseROM.ShowDialog() == DialogResult.OK)
                 input[0] = BrowseROM.FileName;
-            ROMPath.Text = input[0] != null ? Path.GetFileName(input[0]) : x.Get("a002");
+                multiFileInput = BrowseROM.FileNames;
 
             // input[1] = null;
             // Patch.Checked = input[1] != null;
             AutoFill.Enabled = input[0] != null;
 
-            Next.Enabled = (input[0] != null) && (input[2] != null);
+            if (currentConsole == Platforms.Flash)
+            {
+                Next.Enabled = (multiFileInput[0] != null) && (input[2] != null);
+                ROMPath.Text = multiFileInput[0] != null ? Path.GetFileName(multiFileInput[0]) : x.Get("a002");
+
+                if (multiFileInput.Length > 1)
+                    for (int i = 1; i < multiFileInput.Length; i++)
+                        ROMPath.Text += ", " + Path.GetFileName(multiFileInput[i]);
+            }
+            else
+            {
+                Next.Enabled = (input[0] != null) && (input[2] != null);
+                ROMPath.Text = input[0] != null ? Path.GetFileName(input[0]) : x.Get("a002");
+            }
+
+
         }
 
         private void BaseList_Changed(object sender, EventArgs e)
@@ -1502,7 +1520,7 @@ namespace FriishProduce
                 {
                     await Task.Run(() => { U8.Unpack(Paths.WorkingFolder + "00000002.app", Paths.WorkingFolder_Content2); });
 
-                    Injectors.Flash Flash = new Injectors.Flash() { SWF = input[0] };
+                    Injectors.Flash Flash = new Injectors.Flash() { SWF = multiFileInput };
                     Flash.ReplaceSWF();
 
                     Flash.HomeMenuNoSave(Flash_HBMNoSave.Checked);

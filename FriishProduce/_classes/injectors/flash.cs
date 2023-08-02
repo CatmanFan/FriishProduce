@@ -6,11 +6,22 @@ namespace FriishProduce.Injectors
 {
     public class Flash
     {
-        public string SWF { get; set; }
+        public string[] SWF { get; set; }
 
         internal string config = Paths.WorkingFolder_Content2 + "config\\config.common.pcf";
 
-        public void ReplaceSWF() => File.Copy(SWF, Paths.WorkingFolder_Content2 + "content\\menu.swf", true);
+        public void ReplaceSWF()
+        {
+            // Main SWF
+            File.Copy(SWF[0], Paths.WorkingFolder_Content2 + "content\\menu.swf", true);
+
+            if (SWF.Length > 1)
+            {
+                // Supplementary SWFs
+                for (int i = 1; i < SWF.Length; i++)
+                    File.Copy(SWF[i], Paths.WorkingFolder_Content2 + "content\\" + Path.GetFileName(SWF[i]), true);
+            }
+        }
 
         internal void SetController(Dictionary<string, string> btns)
         {
