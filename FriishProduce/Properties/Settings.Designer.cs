@@ -86,12 +86,24 @@ namespace FriishProduce.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool AutoRetrieveROMData {
+        public bool D_Custom_AutoRetrieveROMData {
             get {
-                return ((bool)(this["AutoRetrieveROMData"]));
+                return ((bool)(this["D_Custom_AutoRetrieveROMData"]));
             }
             set {
-                this["AutoRetrieveROMData"] = value;
+                this["D_Custom_AutoRetrieveROMData"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int D_Custom_InterpolationMode {
+            get {
+                return ((int)(this["D_Custom_InterpolationMode"]));
+            }
+            set {
+                this["D_Custom_InterpolationMode"] = value;
             }
         }
     }

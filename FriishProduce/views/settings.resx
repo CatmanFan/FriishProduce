@@ -117,21 +117,69 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="&gt;&gt;OK.Name" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="&gt;&gt;OK.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;OK.Parent" xml:space="preserve">
+    <value>panel</value>
+  </data>
+  <data name="&gt;&gt;OK.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;Cancel.Name" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="&gt;&gt;Cancel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Cancel.Parent" xml:space="preserve">
+    <value>panel</value>
+  </data>
+  <data name="&gt;&gt;Cancel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="panel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="panel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 361</value>
+  </data>
+  <data name="panel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>512, 50</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="panel.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;panel.Name" xml:space="preserve">
+    <value>panel</value>
+  </data>
+  <data name="&gt;&gt;panel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="OK.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>System</value>
   </data>
   <data name="OK.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="OK.Location" type="System.Drawing.Point, System.Drawing">
     <value>286, 12</value>
   </data>
   <data name="OK.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 25</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="OK.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
@@ -180,63 +228,9 @@
   <data name="&gt;&gt;Cancel.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="panel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="panel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 361</value>
-  </data>
-  <data name="panel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>512, 50</value>
-  </data>
-  <data name="panel.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;panel.Name" xml:space="preserve">
-    <value>panel</value>
-  </data>
-  <data name="&gt;&gt;panel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;panel.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <metadata name="ToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <data name="AutoRetrieve.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="AutoRetrieve.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="AutoRetrieve.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 93</value>
-  </data>
-  <data name="AutoRetrieve.Size" type="System.Drawing.Size, System.Drawing">
-    <value>94, 19</value>
-  </data>
-  <data name="AutoRetrieve.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="AutoRetrieve.Text" xml:space="preserve">
-    <value>auto_retrieve</value>
-  </data>
-  <data name="&gt;&gt;AutoRetrieve.Name" xml:space="preserve">
-    <value>AutoRetrieve</value>
-  </data>
-  <data name="&gt;&gt;AutoRetrieve.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;AutoRetrieve.Parent" xml:space="preserve">
-    <value>Application</value>
-  </data>
-  <data name="&gt;&gt;AutoRetrieve.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="OpenWhenDone.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -265,7 +259,7 @@
     <value>Application</value>
   </data>
   <data name="&gt;&gt;OpenWhenDone.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="Theme.Items" xml:space="preserve">
     <value>null</value>
@@ -289,7 +283,7 @@
     <value>Application</value>
   </data>
   <data name="&gt;&gt;Theme.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="s003.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -319,7 +313,7 @@
     <value>Application</value>
   </data>
   <data name="&gt;&gt;s003.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="Language.Location" type="System.Drawing.Point, System.Drawing">
     <value>95, 8</value>
@@ -340,7 +334,7 @@
     <value>Application</value>
   </data>
   <data name="&gt;&gt;Language.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>3</value>
   </data>
   <data name="s001.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -370,7 +364,7 @@
     <value>Application</value>
   </data>
   <data name="&gt;&gt;s001.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>4</value>
   </data>
   <data name="Application.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 24</value>
@@ -593,6 +587,117 @@
   </data>
   <data name="&gt;&gt;SaveAs.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="ImgInterp.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>System</value>
+  </data>
+  <data name="ImgInterp.Items" xml:space="preserve">
+    <value>null</value>
+  </data>
+  <data name="ImgInterp.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 55</value>
+  </data>
+  <data name="ImgInterp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>449, 23</value>
+  </data>
+  <data name="ImgInterp.TabIndex" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
+  <data name="&gt;&gt;ImgInterp.Name" xml:space="preserve">
+    <value>ImgInterp</value>
+  </data>
+  <data name="&gt;&gt;ImgInterp.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ImgInterp.Parent" xml:space="preserve">
+    <value>Customization</value>
+  </data>
+  <data name="&gt;&gt;ImgInterp.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="a012.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="a012.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="a012.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 36</value>
+  </data>
+  <data name="a012.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 15</value>
+  </data>
+  <data name="a012.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="a012.Text" xml:space="preserve">
+    <value>interp_mode:</value>
+  </data>
+  <data name="&gt;&gt;a012.Name" xml:space="preserve">
+    <value>a012</value>
+  </data>
+  <data name="&gt;&gt;a012.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;a012.Parent" xml:space="preserve">
+    <value>Customization</value>
+  </data>
+  <data name="&gt;&gt;a012.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="AutoRetrieve.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="AutoRetrieve.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="AutoRetrieve.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 10</value>
+  </data>
+  <data name="AutoRetrieve.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 19</value>
+  </data>
+  <data name="AutoRetrieve.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="AutoRetrieve.Text" xml:space="preserve">
+    <value>auto_retrieve</value>
+  </data>
+  <data name="&gt;&gt;AutoRetrieve.Name" xml:space="preserve">
+    <value>AutoRetrieve</value>
+  </data>
+  <data name="&gt;&gt;AutoRetrieve.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;AutoRetrieve.Parent" xml:space="preserve">
+    <value>Customization</value>
+  </data>
+  <data name="&gt;&gt;AutoRetrieve.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="Customization.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 24</value>
+  </data>
+  <data name="Customization.Size" type="System.Drawing.Size, System.Drawing">
+    <value>463, 292</value>
+  </data>
+  <data name="Customization.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="Customization.Text" xml:space="preserve">
+    <value>custom</value>
+  </data>
+  <data name="&gt;&gt;Customization.Name" xml:space="preserve">
+    <value>Customization</value>
+  </data>
+  <data name="&gt;&gt;Customization.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Customization.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;Customization.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
     <value>21, 18</value>

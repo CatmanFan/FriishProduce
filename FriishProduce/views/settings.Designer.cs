@@ -36,7 +36,6 @@ namespace FriishProduce
             this.Cancel = new System.Windows.Forms.Button();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.Application = new System.Windows.Forms.TabPage();
-            this.AutoRetrieve = new System.Windows.Forms.CheckBox();
             this.OpenWhenDone = new System.Windows.Forms.CheckBox();
             this.Theme = new System.Windows.Forms.ComboBox();
             this.s003 = new System.Windows.Forms.Label();
@@ -50,10 +49,15 @@ namespace FriishProduce
             this.FileName = new System.Windows.Forms.TextBox();
             this.s006 = new System.Windows.Forms.Label();
             this.FileNameZIP = new System.Windows.Forms.TextBox();
+            this.Customization = new System.Windows.Forms.TabPage();
+            this.AutoRetrieve = new System.Windows.Forms.CheckBox();
+            this.a012 = new System.Windows.Forms.Label();
+            this.ImgInterp = new System.Windows.Forms.ComboBox();
             this.panel.SuspendLayout();
             this.Application.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.SaveAs.SuspendLayout();
+            this.Customization.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel
@@ -98,7 +102,6 @@ namespace FriishProduce
             // Application
             // 
             this.Application.BackColor = System.Drawing.SystemColors.Window;
-            this.Application.Controls.Add(this.AutoRetrieve);
             this.Application.Controls.Add(this.OpenWhenDone);
             this.Application.Controls.Add(this.Theme);
             this.Application.Controls.Add(this.s003);
@@ -108,13 +111,6 @@ namespace FriishProduce
             resources.ApplyResources(this.Application, "Application");
             this.Application.Name = "Application";
             this.Application.Tag = "s000";
-            // 
-            // AutoRetrieve
-            // 
-            resources.ApplyResources(this.AutoRetrieve, "AutoRetrieve");
-            this.AutoRetrieve.Name = "AutoRetrieve";
-            this.AutoRetrieve.Tag = "s009";
-            this.AutoRetrieve.UseVisualStyleBackColor = true;
             // 
             // OpenWhenDone
             // 
@@ -155,9 +151,11 @@ namespace FriishProduce
             // 
             this.tabControl1.Controls.Add(this.Application);
             this.tabControl1.Controls.Add(this.SaveAs);
+            this.tabControl1.Controls.Add(this.Customization);
             resources.ApplyResources(this.tabControl1, "tabControl1");
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Tag = "s010";
             // 
             // SaveAs
             // 
@@ -208,6 +206,38 @@ namespace FriishProduce
             resources.ApplyResources(this.FileNameZIP, "FileNameZIP");
             this.FileNameZIP.Name = "FileNameZIP";
             // 
+            // Customization
+            // 
+            this.Customization.BackColor = System.Drawing.SystemColors.Window;
+            this.Customization.Controls.Add(this.ImgInterp);
+            this.Customization.Controls.Add(this.a012);
+            this.Customization.Controls.Add(this.AutoRetrieve);
+            this.Customization.ForeColor = System.Drawing.SystemColors.ControlText;
+            resources.ApplyResources(this.Customization, "Customization");
+            this.Customization.Name = "Customization";
+            this.Customization.Tag = "s010";
+            // 
+            // AutoRetrieve
+            // 
+            resources.ApplyResources(this.AutoRetrieve, "AutoRetrieve");
+            this.AutoRetrieve.Name = "AutoRetrieve";
+            this.AutoRetrieve.Tag = "s009";
+            this.AutoRetrieve.UseVisualStyleBackColor = true;
+            // 
+            // a012
+            // 
+            resources.ApplyResources(this.a012, "a012");
+            this.a012.Name = "a012";
+            // 
+            // ImgInterp
+            // 
+            this.ImgInterp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.ImgInterp, "ImgInterp");
+            this.ImgInterp.FormattingEnabled = true;
+            this.ImgInterp.Items.AddRange(new object[] {
+            resources.GetString("ImgInterp.Items")});
+            this.ImgInterp.Name = "ImgInterp";
+            // 
             // Settings
             // 
             this.AcceptButton = this.OK;
@@ -232,6 +262,8 @@ namespace FriishProduce
             this.tabControl1.ResumeLayout(false);
             this.SaveAs.ResumeLayout(false);
             this.SaveAs.PerformLayout();
+            this.Customization.ResumeLayout(false);
+            this.Customization.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -256,6 +288,9 @@ namespace FriishProduce
         private System.Windows.Forms.Label s007;
         private System.Windows.Forms.TextBox FileNameZIP;
         private System.Windows.Forms.RichTextBox s008_b;
+        private System.Windows.Forms.TabPage Customization;
         private System.Windows.Forms.CheckBox AutoRetrieve;
+        private System.Windows.Forms.Label a012;
+        private System.Windows.Forms.ComboBox ImgInterp;
     }
 }

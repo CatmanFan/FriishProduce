@@ -654,7 +654,7 @@ namespace FriishProduce
                 ROMPath.Text = input[0] != null ? Path.GetFileName(input[0]) : x.Get("a002");
             }
 
-            if (SupportsAutoFill && Properties.Settings.Default.AutoRetrieveROMData)
+            if (SupportsAutoFill && Properties.Settings.Default.D_Custom_AutoRetrieveROMData)
                 AutoFiller();
         }
 
@@ -997,7 +997,7 @@ namespace FriishProduce
                              ? TitleImage.Resize.Fit : TitleImage.Resize.Stretch)
                              : (TitleImage.Resize)ImgResize.SelectedIndex,
                 InterpolationMode = ImgInterp.SelectedIndex < 0 ?
-                                    System.Drawing.Drawing2D.InterpolationMode.Default :
+                                    (System.Drawing.Drawing2D.InterpolationMode)Properties.Settings.Default.D_Custom_InterpolationMode :
                                     (System.Drawing.Drawing2D.InterpolationMode)ImgInterp.SelectedIndex
             };
             if (ImgResize.SelectedIndex < 0) ImgResize.SelectedIndex = (int)tImg.ResizeMode;
@@ -1164,7 +1164,7 @@ namespace FriishProduce
             if (page3.Visible) Next.Enabled = CheckBannerPage();
             if (Retrieved && !Custom.Checked) Custom.Checked = true;
 
-            if (page2.Visible && Properties.Settings.Default.AutoRetrieveROMData)
+            if (page2.Visible && Properties.Settings.Default.D_Custom_AutoRetrieveROMData)
             {
                 if (Retrieved) MessageBox.Show(x.Get("m022"));
                 else System.Media.SystemSounds.Beep.Play();
