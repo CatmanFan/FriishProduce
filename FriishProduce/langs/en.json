@@ -57,6 +57,7 @@
     "s007": "Default ZIP filename:",
     "s008_a": "Help:",
     "s008_b": "{name} - Channel title\n\n{titleID} - Title ID\n\n{console} - Selected console/platform\n\n{type} - WAD type, can be either one of the following:\n  \"injected\" - Value by default\n  \"VC\" - Virtual Console backend\n  \"fwdr[+vWii]\" - Forwarder channel",
+    "s009": "Auto-retrieve data from LibRetro database",
     "Theme__l0": "Dark",
     "Theme__l1": "Light"
   },
@@ -84,7 +85,8 @@
     "m018": "The ROM to be injected is larger in filesize than the maximum allowed limit by the emulator. Please try again using a compressed version or choose a different ROM.",
     "m019": "Invalid ROM/disc image format.",
     "m020": "Failed to find replaceable banner images.",
-    "m021": "Required BIOS not found.\nPlease make sure that the following files are in the \"{App Directory}/bases/fwdr_bios\" folder:\n"
+    "m021": "Required BIOS not found.\nPlease make sure that the following files are in the \"{App Directory}/bases/fwdr_bios\" folder:\n",
+    "m022": "Some customization fields for this software (e.g. name, image, release year or no. of players) have been automatically filled based from the online LibRetro database."
   },
   "filters": {
     "f_all": "|All files (*.*)|*.*",

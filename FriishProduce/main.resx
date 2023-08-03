@@ -217,7 +217,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panel.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="Back.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -400,7 +400,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;Wait.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="Console.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>System</value>
@@ -481,7 +481,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;page1.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="g002.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -667,13 +667,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;page2.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>3</value>
   </data>
   <data name="Patch.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="Patch.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopLeft</value>
+  </data>
   <data name="Patch.Location" type="System.Drawing.Point, System.Drawing">
-    <value>27, 143</value>
+    <value>27, 89</value>
   </data>
   <data name="Patch.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 19</value>
@@ -683,6 +686,9 @@
   </data>
   <data name="Patch.Text" xml:space="preserve">
     <value>patch</value>
+  </data>
+  <data name="Patch.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopLeft</value>
   </data>
   <data name="&gt;&gt;Patch.Name" xml:space="preserve">
     <value>Patch</value>
@@ -696,14 +702,11 @@
   <data name="&gt;&gt;Patch.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="ROMPath.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="ROMPath.Location" type="System.Drawing.Point, System.Drawing">
-    <value>182, 117</value>
+    <value>180, 117</value>
   </data>
   <data name="ROMPath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 15</value>
+    <value>477, 173</value>
   </data>
   <data name="ROMPath.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -823,7 +826,7 @@
     <value>26, 112</value>
   </data>
   <data name="OpenROM.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 25</value>
+    <value>149, 25</value>
   </data>
   <data name="OpenROM.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -952,7 +955,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;page3.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>2</value>
   </data>
   <data name="AutoFill.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -1982,7 +1985,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;page4.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="BIOS__001.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>

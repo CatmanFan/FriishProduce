@@ -44,6 +44,7 @@
     "s006": "Nombre de archivo comprimido ZIP por defecto:",
     "s008_a": "Ayuda:",
     "s008_b": "{name} - Título corto de la canal\n\n{titleID} - Title ID\n\n{console} - Plataforma o consola seleccionada\n\n{type} - Tipo de canal, que puede ser uno de los siguientes:\n  \"injected\" - Valor por defecto\n  \"VC\" - Canal de Consola Virtual\n  \"fwdr[+vWii]\" - Canal forwarder",
+    "s009": "Rellenar formularios automáticamente desde la base de datos de LibRetro",
     "Theme__l0": "Tema oscuro",
     "Theme__l1": "Tema claro"
   },
@@ -71,7 +72,8 @@
     "m018": "El tamaño de su ROM supera el límite máximo permitido. Vuelve a probar con una versión comprimida o elija otra ROM.",
     "m019": "Formato inválido de archivo ROM o imagen de disco.",
     "m020": "No fue modificado las imágenes del banner.",
-    "m021": "No se encontró el BIOS.\nPor favor compruebe que los archivos siguientes están en la carpeta \"{aplicación}/bases/fwdr_bios\":\n"
+    "m021": "No se encontró el BIOS.\nPor favor compruebe que los archivos siguientes están en la carpeta \"{aplicación}/bases/fwdr_bios\":\n",
+    "m022": "Algunos formularios por la personalización del canal (p. ej. título, imagen, año de publicación y/o número de jugadores) se han rellenado automáticamente desde la base de datos en línea de LibRetro."
   },
   "filters": {
     "f_all": "|Todos los archivos (*.*)|*.*",
@@ -113,7 +115,7 @@
     "a018": "Region Free",
     "a019": "En lugar de SD, cargar la ROM desde una unidad USB",
     "a020": "Parche de modo de vídeo:",
-    "a021": "Descargar desde las base de datos de LibRetro",
+    "a021": "Rellenar formularios desde la base de datos de LibRetro",
     "a022": "ID aleatoria",
     "ImgResize__l0": "Estirar la imagen",
     "ImgResize__l1": "Mantener relación de aspecto",

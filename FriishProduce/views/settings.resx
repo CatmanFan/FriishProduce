@@ -207,6 +207,36 @@
   <metadata name="ToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="AutoRetrieve.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="AutoRetrieve.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="AutoRetrieve.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 93</value>
+  </data>
+  <data name="AutoRetrieve.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 19</value>
+  </data>
+  <data name="AutoRetrieve.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="AutoRetrieve.Text" xml:space="preserve">
+    <value>auto_retrieve</value>
+  </data>
+  <data name="&gt;&gt;AutoRetrieve.Name" xml:space="preserve">
+    <value>AutoRetrieve</value>
+  </data>
+  <data name="&gt;&gt;AutoRetrieve.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;AutoRetrieve.Parent" xml:space="preserve">
+    <value>Application</value>
+  </data>
+  <data name="&gt;&gt;AutoRetrieve.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="OpenWhenDone.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -235,7 +265,7 @@
     <value>Application</value>
   </data>
   <data name="&gt;&gt;OpenWhenDone.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="Theme.Items" xml:space="preserve">
     <value>null</value>
@@ -259,7 +289,7 @@
     <value>Application</value>
   </data>
   <data name="&gt;&gt;Theme.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="s003.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -289,7 +319,7 @@
     <value>Application</value>
   </data>
   <data name="&gt;&gt;s003.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="Language.Location" type="System.Drawing.Point, System.Drawing">
     <value>95, 8</value>
@@ -310,7 +340,7 @@
     <value>Application</value>
   </data>
   <data name="&gt;&gt;Language.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="s001.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -340,7 +370,7 @@
     <value>Application</value>
   </data>
   <data name="&gt;&gt;s001.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="Application.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 24</value>

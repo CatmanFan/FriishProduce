@@ -36,6 +36,7 @@ namespace FriishProduce
             this.Cancel = new System.Windows.Forms.Button();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.Application = new System.Windows.Forms.TabPage();
+            this.AutoRetrieve = new System.Windows.Forms.CheckBox();
             this.OpenWhenDone = new System.Windows.Forms.CheckBox();
             this.Theme = new System.Windows.Forms.ComboBox();
             this.s003 = new System.Windows.Forms.Label();
@@ -97,6 +98,7 @@ namespace FriishProduce
             // Application
             // 
             this.Application.BackColor = System.Drawing.SystemColors.Window;
+            this.Application.Controls.Add(this.AutoRetrieve);
             this.Application.Controls.Add(this.OpenWhenDone);
             this.Application.Controls.Add(this.Theme);
             this.Application.Controls.Add(this.s003);
@@ -106,6 +108,13 @@ namespace FriishProduce
             resources.ApplyResources(this.Application, "Application");
             this.Application.Name = "Application";
             this.Application.Tag = "s000";
+            // 
+            // AutoRetrieve
+            // 
+            resources.ApplyResources(this.AutoRetrieve, "AutoRetrieve");
+            this.AutoRetrieve.Name = "AutoRetrieve";
+            this.AutoRetrieve.Tag = "s009";
+            this.AutoRetrieve.UseVisualStyleBackColor = true;
             // 
             // OpenWhenDone
             // 
@@ -166,8 +175,8 @@ namespace FriishProduce
             // 
             // s008_b
             // 
-            this.s008_b.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.s008_b.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.s008_b.BackColor = System.Drawing.SystemColors.Window;
+            this.s008_b.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.s008_b.Cursor = System.Windows.Forms.Cursors.Default;
             this.s008_b.ForeColor = System.Drawing.Color.Black;
             resources.ApplyResources(this.s008_b, "s008_b");
@@ -247,5 +256,6 @@ namespace FriishProduce
         private System.Windows.Forms.Label s007;
         private System.Windows.Forms.TextBox FileNameZIP;
         private System.Windows.Forms.RichTextBox s008_b;
+        private System.Windows.Forms.CheckBox AutoRetrieve;
     }
 }

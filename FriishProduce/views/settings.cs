@@ -35,6 +35,7 @@ namespace FriishProduce
             // -----------------------------
 
             OpenWhenDone.Checked = Default.OpenWhenDone;
+            AutoRetrieve.Checked = Default.AutoRetrieveROMData;
             Theme.SelectedIndex = Default.LightTheme ? 1 : 0;
             FileName.Text = Default.WadName;
             FileNameZIP.Text = Default.ZipName;
@@ -84,6 +85,7 @@ namespace FriishProduce
             if (showRestart) MessageBox.Show(x.Get("m001"), Text);
 
             Default.OpenWhenDone = OpenWhenDone.Checked;
+            Default.AutoRetrieveROMData = AutoRetrieve.Checked;
             Default.LightTheme = Theme.SelectedIndex == 1;
             Default.WadName = FileName.Text;
             Default.ZipName = FileNameZIP.Text;

@@ -64,7 +64,6 @@ Currently supported:
 * Other VC injection support:
   - [ ] Commodore 64
   - [ ] TurboGrafx-16 CD
-- [X] Multiple SWF support for Adobe Flash.
 
 ## Credits
 This program uses the following third-party components and apps:

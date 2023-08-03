@@ -146,6 +146,7 @@ namespace FriishProduce
 
                 BrowseROM.Filter += x.Get("f_all");
 
+                GenerateTitleID();
                 Reset();
                 CheckForForwarder();
                 RefreshBases();
@@ -233,6 +234,8 @@ namespace FriishProduce
                 }
         }
 
+        bool SupportsAutoFill = true;
+
         /// <summary>
         /// Resets all input values and content option parameters
         /// </summary>
@@ -241,7 +244,7 @@ namespace FriishProduce
             input = new string[input.Length];
             Patch.Checked = false;
             SaveDataTitle.Enabled = true;
-            AutoFill.Visible = true;
+            SupportsAutoFill = true;
             btns = new Dictionary<string, string>();
 
             // Consoles
@@ -296,14 +299,14 @@ namespace FriishProduce
                             BIOS__000.Visible = true;
                             // BIOS__001.Visible = true;
                             InjectionMethod.Items.RemoveAt(0);
-                            AutoFill.Visible = false;
+                            SupportsAutoFill = false;
                         }
                         InjectionMethod.Items.Add(new Injectors.Forwarders().List[7]);
                         break;
                     case Platforms.PCE:
                         break;
                     case Platforms.NeoGeo:
-                        AutoFill.Visible = false;
+                        SupportsAutoFill = false;
                         break;
                     case Platforms.C64:
                         break;
@@ -311,7 +314,7 @@ namespace FriishProduce
                         break;
                     case Platforms.Flash:
                         InjectionMethod.Items[0] = x.Get("Flash");
-                        AutoFill.Visible = false;
+                        SupportsAutoFill = false;
                         break;
                     case Platforms.GB:
                     case Platforms.GBC:
@@ -324,7 +327,7 @@ namespace FriishProduce
                         // BIOS__001.Visible = true;
                         break;
                     case Platforms.PSX:
-                        AutoFill.Visible = false;
+                        SupportsAutoFill = false;
                         InjectionMethod.Items.RemoveAt(0);
                         InjectionMethod.Items.Add(new Injectors.Forwarders().List[12]);
                         InjectionMethod.Items.Add(new Injectors.Forwarders().List[13]);
@@ -336,6 +339,7 @@ namespace FriishProduce
                 }
 
                 InjectionMethod.SelectedIndex = 0;
+                AutoFill.Visible = SupportsAutoFill;
             }
 
             CheckForForwarder();
@@ -350,25 +354,22 @@ namespace FriishProduce
             switch (t)
             {
                 case true:
-                    panel.Hide();
                     /*Settings.Visible = false;
                     Back.Visible = false;
                     Next.Visible = false;
                     Save.Visible = false;*/
-                    page3.Enabled = false;
-                    page4.Enabled = false;
-                    panel.Enabled = false;
                     break;
                 case false:
-                    panel.Show();
                     /*Settings.Visible = true;
                     Back.Visible = true;
                     if (SaveVisible) Save.Visible = true; else Next.Visible = true;*/
-                    page3.Enabled = true;
-                    page4.Enabled = true;
-                    panel.Enabled = true;
                     break;
             }
+
+            page2.Enabled = !t;
+            page3.Enabled = !t;
+            page4.Enabled = !t;
+            panel.Visible = !t;
         }
 
         /// <summary>
@@ -629,12 +630,14 @@ namespace FriishProduce
             input[0] = null;
             multiFileInput = new string[0];
             if (BrowseROM.ShowDialog() == DialogResult.OK)
+            {
                 input[0] = BrowseROM.FileName;
                 multiFileInput = BrowseROM.FileNames;
+            }
 
             // input[1] = null;
             // Patch.Checked = input[1] != null;
-            AutoFill.Enabled = input[0] != null;
+            // AutoFill.Enabled = input[0] != null;
 
             if (currentConsole == Platforms.Flash)
             {
@@ -651,7 +654,8 @@ namespace FriishProduce
                 ROMPath.Text = input[0] != null ? Path.GetFileName(input[0]) : x.Get("a002");
             }
 
-
+            if (SupportsAutoFill && Properties.Settings.Default.AutoRetrieveROMData)
+                AutoFiller();
         }
 
         private void BaseList_Changed(object sender, EventArgs e)
@@ -904,17 +908,46 @@ namespace FriishProduce
 
         // ***************************************************************************************************************** //
 
+        // ----------------------------------------------------------------------------------------
+        // Set maximum value for each line in both text boxes
+        // ----------------------------------------------------------------------------------------
+        int maxBanner = 38;
+        int maxSaveData = 40;
+
         private void BannerText_Changed(object sender, EventArgs e)
         {
-            if (!SaveDataTitle.Enabled && !Retrieving) SaveDataTitle.Text = ChannelTitle.Text;
+            // ----------------------------------------------------------------------------------------
+            // Remove excess lines
+            // ----------------------------------------------------------------------------------------
             if (SaveDataTitle.Lines.Length > 2) SaveDataTitle.Lines = new string[2] { SaveDataTitle.Lines[0], SaveDataTitle.Lines[1] };
             if (BannerTitle.Lines.Length > 2) BannerTitle.Lines = new string[2] { BannerTitle.Lines[0], BannerTitle.Lines[1] };
-            foreach (string line1 in SaveDataTitle.Lines)
-                foreach (string line2 in BannerTitle.Lines)
-                {
-                    if (line1.Length > 40) line1.Remove(39);
-                    if (line2.Length > 65) line2.Remove(64);
-                }
+
+            // ----------------------------------------------------------------------------------------
+            // If save data editing uses only one line, set automatically to channel title text
+            // ----------------------------------------------------------------------------------------
+            if (!SaveDataTitle.Enabled && !Retrieving) SaveDataTitle.Text = ChannelTitle.Text;
+
+            // ----------------------------------------------------------------------------------------
+            // Split a single line if it's longer than maximum character value
+            // ----------------------------------------------------------------------------------------
+            if (BannerTitle.Text.Length > maxBanner && BannerTitle.Lines.Length == 1)
+                BannerTitle.Text = BannerTitle.Text.Substring(0, maxBanner) + Environment.NewLine + BannerTitle.Text.Substring(maxBanner);
+            if (SaveDataTitle.Text.Length > maxSaveData && SaveDataTitle.Lines.Length == 1)
+                SaveDataTitle.Text = SaveDataTitle.Text.Substring(0, maxSaveData) + Environment.NewLine + SaveDataTitle.Text.Substring(maxSaveData);
+
+            // ----------------------------------------------------------------------------------------
+            // Remove excess characters
+            // ----------------------------------------------------------------------------------------
+            string[] bannerLines = BannerTitle.Lines;
+            string[] saveDataLines = SaveDataTitle.Lines;
+
+            for (int i = 0; i < BannerTitle.Lines.Length; i++)
+                if (bannerLines[i].Length >= maxBanner) bannerLines[i] = bannerLines[i].Substring(0, maxBanner);
+            for (int i = 0; i < SaveDataTitle.Lines.Length; i++)
+                if (saveDataLines[i].Length >= maxSaveData) saveDataLines[i] = saveDataLines[i].Substring(0, maxSaveData);
+
+            BannerTitle.Lines = bannerLines;
+            SaveDataTitle.Lines = saveDataLines;
 
             Next.Enabled = CheckBannerPage();
         }
@@ -925,7 +958,7 @@ namespace FriishProduce
 
             if (item.Multiline && !string.IsNullOrEmpty(item.Text))
             {
-                int max = item.Name.Contains("Banner") ? 65 : 40;
+                int max = item.Name.Contains("Banner") ? maxBanner : maxSaveData;
 
                 if (item.Lines[item.GetLineFromCharIndex(item.SelectionStart)].Length >= max)
                     e.Handled = !(e.KeyChar == (char)Keys.Enter || e.KeyChar == (char)Keys.Back);
@@ -936,6 +969,11 @@ namespace FriishProduce
         }
 
         private void RandomTID_Click(object sender, EventArgs e)
+        {
+            GenerateTitleID();
+        }
+
+        private void GenerateTitleID()
         {
             var r = new Random();
             string allowed = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -1067,10 +1105,11 @@ namespace FriishProduce
 
         // ***************************************************************************************************************** //
 
-        private async void AutoFill_Click(object sender, EventArgs e)
+        private async void AutoFiller()
         {
             Retrieving = true;
             ToggleWaitingIcon(true);
+            bool Retrieved = false;
 
             await Task.Run(() =>
             {
@@ -1087,13 +1126,18 @@ namespace FriishProduce
                     return;
                 }
 
-                if (d.GetPlayers() != null) Invoke((Action)delegate { Players.Value = int.Parse(d.GetPlayers()); });
-                if (d.GetYear() != null) Invoke((Action)delegate { ReleaseYear.Value = int.Parse(d.GetYear()); });
+                if (d.GetPlayers() != null) Invoke((Action)delegate { Players.Value = int.Parse(d.GetPlayers()); Retrieved = true; });
+                if (d.GetYear() != null) Invoke((Action)delegate { ReleaseYear.Value = int.Parse(d.GetYear()); Retrieved = true; });
                 if (d.GetTitle() != null)
                 {
+
                     string title = Regex.Replace(d.GetTitle().Replace(": ", Environment.NewLine).Replace(" - ", Environment.NewLine), @"\((.*?)\)", "");
+                    if (title.Contains(", The")) title = "The " + title.Replace(", The", string.Empty);
+
                     Invoke((Action)delegate { BannerTitle.Text = title.Trim(); });
                     Invoke((Action)delegate { SaveDataTitle.Text = title.Trim(); });
+                    Invoke((Action)delegate { ChannelTitle.Text = title.Trim().Length <= ChannelTitle.MaxLength ? title.Trim() : string.Empty; });
+                    Retrieved = true;
                 }
                 if (d.GetImgURL() != null)
                 {
@@ -1104,6 +1148,7 @@ namespace FriishProduce
                             Invoke((Action)delegate { ResetImage(); });
                             tImg.FromURL(d.GetImgURL());
                             Invoke((Action)delegate { Image.Image = tImg.Generate(currentConsole); });
+                            Retrieved = true;
                         }
                         catch
                         {
@@ -1116,8 +1161,17 @@ namespace FriishProduce
 
             Retrieving = false;
             ToggleWaitingIcon(false);
-            Next.Enabled = CheckBannerPage();
+            if (page3.Visible) Next.Enabled = CheckBannerPage();
+            if (Retrieved && !Custom.Checked) Custom.Checked = true;
+
+            if (page2.Visible && Properties.Settings.Default.AutoRetrieveROMData)
+            {
+                if (Retrieved) MessageBox.Show(x.Get("m022"));
+                else System.Media.SystemSounds.Beep.Play();
+            }
         }
+
+        private void AutoFill_Click(object sender, EventArgs e) => AutoFiller();
 
         private void Finish_Click(object sender, EventArgs e)
         {

@@ -25,7 +25,7 @@ namespace FriishProduce.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool LightTheme {
             get {
                 return ((bool)(this["LightTheme"]));
@@ -73,13 +73,25 @@ namespace FriishProduce.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("en")]
+        [global::System.Configuration.DefaultSettingValueAttribute("sys")]
         public string Language {
             get {
                 return ((string)(this["Language"]));
             }
             set {
                 this["Language"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool AutoRetrieveROMData {
+            get {
+                return ((bool)(this["AutoRetrieveROMData"]));
+            }
+            set {
+                this["AutoRetrieveROMData"] = value;
             }
         }
     }

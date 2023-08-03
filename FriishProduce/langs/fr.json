@@ -50,6 +50,7 @@
     "s007": "Nom du fichier ZIP par défaut :",
     "s008_a": "Aide :",
     "s008_b": "{name} - Titre court de la chaîne\n{titleID} - Title ID de la chaîne\n{console} - Platforme ou console cible\n\n{type} - Genre de la chaîne. Il peut s'agir des valeurs suivantes :\n  « injected » - Valeur par défaut\n  « VC » - Console virtuelle\n  « fwdr[-vWii] » - Chaîne forwarder",
+    "s009": "Remplissage automatique des formes d'après la base de données Libretro",
     "Theme__l0": "Noir classique",
     "Theme__l1": "Blanc classique"
   },
@@ -77,7 +78,8 @@
     "m018": "La taille de la ROM que vous avez précisé dépasse la limite maximale autorisée. Veuillez réessayer avec une version compressée de votre ROM ou choisir une autre ROM.",
     "m019": "Format invalide ou non pris en charge du fichier ROM/disque.",
     "m020": "Échec de modification des images du banner.",
-    "m021": "Le BIOS requis par l'émulateur n'est pas disponible.\nVeuillez vérifier que les fichiers suivants se trouvent au dossier « {application}/bases/fwdr_bios » :\n"
+    "m021": "Le BIOS requis par l'émulateur n'est pas disponible.\nVeuillez vérifier que les fichiers suivants se trouvent au dossier « {application}/bases/fwdr_bios » :\n",
+    "m022": "Certaines formes pour cette ROM (titre, image, année de publication ou nombre de joueurs) ont été remplis automatiquement depuis la base de données en ligne de Libretro."
   },
   "filters": {
     "f_all": "|Tous les fichiers (*.*)|*.*",
