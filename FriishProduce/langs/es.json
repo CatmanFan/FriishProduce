@@ -141,6 +141,8 @@
     "Flash__006__l1": "Habilitada",
     "Flash__006__l2": "Habilitada (con mando complementario)",
     "SEGA__ConWarn": "Recuerda que algunas opciones pueden no funcionar en la versión actual del emulador (p. ej. configuración de controles).",
-    "NeoGeo__000": "Utilizar una BIOS personalizada"
+    "NeoGeo__000": "Utilizar una BIOS personalizada",
+    "BIOS__000": "En lugar de SD, cargar la BIOS desde una unidad USB",
+    "BIOS__001": "Mostrar la pantalla de inicio de la consola"
   }
 }

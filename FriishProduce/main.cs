@@ -63,7 +63,6 @@ namespace FriishProduce
 
             var fvi = FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetExecutingAssembly().Location);
             string ver = $"beta {fvi.FileVersion}";
-            Wait.BackColor = BackColor;
 
             Text = x.Get("g000");
             a000.Text = string.Format(x.Get("a000"), ver);
@@ -476,7 +475,7 @@ namespace FriishProduce
                 }
             }
 
-            Wait.BackColor = panel.BackColor;
+            Wait.BackColor = BackColor;
         }
 
         private void ChangeTheme(Form f)
@@ -1620,8 +1619,7 @@ namespace FriishProduce
                     bool bootBIOS = BIOS__001.Checked;
                     await Task.Run(() => { f.Generate
                     (
-                        parameters[0],
-                        zipName,
+                        parameters[0], zipName,
                         usesBIOS, bootBIOS
                     ); });
 

@@ -147,6 +147,8 @@
     "Flash__006__l1": "Activée",
     "Flash__006__l2": "Activée (avec écran de connecteur)",
     "SEGA__ConWarn": "Avertissement : Certains paramètres peuvent ne pas fonctionner sur la révision actuelle de l'émulateur, la modification des contrôles (ver 3 uniquement) compris.",
-    "NeoGeo__000": "Utiliser une BIOS personalisée"
+    "NeoGeo__000": "Utiliser une BIOS personalisée",
+    "BIOS__000": "Charger la BIOS à partir d'un appareil USB",
+    "BIOS__001": "Afficher l'écran de démarrage de la BIOS"
   }
 }

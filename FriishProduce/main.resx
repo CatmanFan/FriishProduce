@@ -475,7 +475,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;page1.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="Patch.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -703,7 +703,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;page2.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <metadata name="BrowseROM.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -1325,7 +1325,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;page3.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="BIOS__001.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2762,7 +2762,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;page4.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>2</value>
   </data>
   <metadata name="ToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>381, 17</value>
