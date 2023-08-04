@@ -60,8 +60,7 @@ namespace FriishProduce.Injectors
             // Copy ROM/ISO/CUE to SD folder
             File.Copy(ROM, dir + romFile);
 
-            // ISO functions
-            if (IsDisc)
+            if (UseBios)
             {
                 // Check for BIOS
                 string[] BIOSfiles = new string[] { "skip" };
@@ -100,11 +99,11 @@ namespace FriishProduce.Injectors
 
                             // Alternate filename checks
                             else if (File.Exists($"{Paths.BIOS}{fileName}{fileExtension.ToLower()}"))
-                                       File.Copy($"{Paths.BIOS}{fileName}{fileExtension.ToLower()}", Paths.WorkingFolder_SD + target + item, true);
+                                File.Copy($"{Paths.BIOS}{fileName}{fileExtension.ToLower()}", Paths.WorkingFolder_SD + target + item, true);
                             else if (File.Exists($"{Paths.BIOS}{fileName.ToLower()}{fileExtension}"))
-                                       File.Copy($"{Paths.BIOS}{fileName.ToLower()}{fileExtension}", Paths.WorkingFolder_SD + target + item, true);
+                                File.Copy($"{Paths.BIOS}{fileName.ToLower()}{fileExtension}", Paths.WorkingFolder_SD + target + item, true);
                             else if (File.Exists($"{Paths.BIOS}{fileName.ToLower()}{fileExtension.ToLower()}"))
-                                       File.Copy($"{Paths.BIOS}{fileName.ToLower()}{fileExtension.ToLower()}", Paths.WorkingFolder_SD + target + item, true);
+                                File.Copy($"{Paths.BIOS}{fileName.ToLower()}{fileExtension.ToLower()}", Paths.WorkingFolder_SD + target + item, true);
 
                             if (!File.Exists(Paths.WorkingFolder_SD + target + item)) missedFiles++;
                         }
@@ -120,7 +119,11 @@ namespace FriishProduce.Injectors
                         throw new System.Exception(msg);
                     }
                 }
+            }
 
+            // ISO functions
+            if (IsDisc)
+            {
                 //  Copy BIN/ISO if it is paired with CUE
                 foreach (var item in Directory.EnumerateFiles(Path.GetDirectoryName(ROM)))
                     if ((Path.GetExtension(item).ToLower() == ".bin" && Path.GetFileNameWithoutExtension(item).Contains(Path.GetFileNameWithoutExtension(ROM)))

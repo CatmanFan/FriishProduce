@@ -77,8 +77,7 @@ namespace FriishProduce
             this.ChannelTitle = new System.Windows.Forms.TextBox();
             this.a003 = new System.Windows.Forms.Label();
             this.page4 = new System.Windows.Forms.Panel();
-            this.BIOS__001 = new System.Windows.Forms.CheckBox();
-            this.BIOS__000 = new System.Windows.Forms.CheckBox();
+            this.a023 = new System.Windows.Forms.CheckBox();
             this.NANDLoader = new System.Windows.Forms.ComboBox();
             this.RandomTID = new System.Windows.Forms.Button();
             this.VideoMode = new System.Windows.Forms.ComboBox();
@@ -534,8 +533,7 @@ namespace FriishProduce
             // 
             // page4
             // 
-            this.page4.Controls.Add(this.BIOS__001);
-            this.page4.Controls.Add(this.BIOS__000);
+            this.page4.Controls.Add(this.a023);
             this.page4.Controls.Add(this.NANDLoader);
             this.page4.Controls.Add(this.RandomTID);
             this.page4.Controls.Add(this.VideoMode);
@@ -555,20 +553,13 @@ namespace FriishProduce
             resources.ApplyResources(this.page4, "page4");
             this.page4.Name = "page4";
             // 
-            // BIOS__001
+            // a023
             // 
-            resources.ApplyResources(this.BIOS__001, "BIOS__001");
-            this.BIOS__001.Name = "BIOS__001";
-            this.BIOS__001.Tag = "";
-            this.BIOS__001.UseVisualStyleBackColor = true;
-            this.BIOS__001.CheckedChanged += new System.EventHandler(this.CheckedToggles);
-            // 
-            // BIOS__000
-            // 
-            resources.ApplyResources(this.BIOS__000, "BIOS__000");
-            this.BIOS__000.Name = "BIOS__000";
-            this.BIOS__000.Tag = "";
-            this.BIOS__000.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.a023, "a023");
+            this.a023.Name = "a023";
+            this.a023.Tag = "";
+            this.a023.UseVisualStyleBackColor = true;
+            this.a023.CheckedChanged += new System.EventHandler(this.CheckedToggles);
             // 
             // NANDLoader
             // 
@@ -1104,8 +1095,7 @@ namespace FriishProduce
         private System.Windows.Forms.CheckBox PCE_SetConfig;
         private System.Windows.Forms.Panel PCE_CustomOptions;
         private System.Windows.Forms.CheckBox vWii;
-        private System.Windows.Forms.CheckBox BIOS__000;
-        private System.Windows.Forms.CheckBox BIOS__001;
+        private System.Windows.Forms.CheckBox a023;
         private System.Windows.Forms.Label N64__005;
         private System.Windows.Forms.ComboBox N64_CompressionType;
     }

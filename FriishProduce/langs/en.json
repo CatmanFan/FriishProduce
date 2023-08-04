@@ -127,10 +127,11 @@
     "a016": "Edit using banner from other base:",
     "a017": "Remove \"Operations Guide\" in HOME Menu",
     "a018": "Region free",
-    "a019": "Load from USB storage device instead of SD",
+    "a019": "Load emulator files from USB storage device instead of SD",
     "a020": "Force video mode:",
     "a021": "Get from LibRetro database",
     "a022": "Random title ID",
+    "a023": "Show console boot screen",
     "ImgResize__l0": "Stretch image",
     "ImgResize__l1": "Retain aspect ratio",
     "ImgInterp__l0": "Default",
@@ -168,8 +169,6 @@
     "Flash__006__l1": "Enabled",
     "Flash__006__l2": "Enabled (w/ extension controller image)",
     "SEGA__ConWarn": "Some options (such as controller bindings) may not be supported by the selected emulator version or emulated console.",
-    "NeoGeo__000": "Use custom BIOS",
-    "BIOS__000": "Load BIOS from USB storage device instead of SD",
-    "BIOS__001": "Show console boot screen"
+    "NeoGeo__000": "Use custom BIOS"
   }
 }

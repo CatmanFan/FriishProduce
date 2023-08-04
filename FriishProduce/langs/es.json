@@ -114,10 +114,11 @@
     "a016": "Importar un banner del otra canal:",
     "a017": "Desactivar el \"Manual electrónico\" en el Menú HOME",
     "a018": "Region Free",
-    "a019": "En lugar de SD, cargar la ROM desde una unidad USB",
+    "a019": "En lugar de SD, cargar los archivos del emulador desde una unidad USB",
     "a020": "Parche de modo de vídeo:",
     "a021": "Rellenar formularios desde la base de datos de LibRetro",
     "a022": "ID aleatoria",
+    "a023": "Mostrar la pantalla de inicio de la consola",
     "ImgResize__l0": "Estirar la imagen",
     "ImgResize__l1": "Mantener relación de aspecto",
     "ImgInterp__l0": "Por defecto",
@@ -141,8 +142,6 @@
     "Flash__006__l1": "Habilitada",
     "Flash__006__l2": "Habilitada (con mando complementario)",
     "SEGA__ConWarn": "Recuerda que algunas opciones pueden no funcionar en la versión actual del emulador (p. ej. configuración de controles).",
-    "NeoGeo__000": "Utilizar una BIOS personalizada",
-    "BIOS__000": "En lugar de SD, cargar la BIOS desde una unidad USB",
-    "BIOS__001": "Mostrar la pantalla de inicio de la consola"
+    "NeoGeo__000": "Utilizar una BIOS personalizada"
   }
 }

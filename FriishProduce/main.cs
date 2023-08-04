@@ -261,9 +261,7 @@ namespace FriishProduce
                 Flash_StrapReminder.SelectedIndex = 0;
 
                 NANDLoader.SelectedIndex = 0;
-                BIOS__000.Visible = false;
-                BIOS__001.Visible = false;
-                BIOS__000.Enabled = true;
+                a023.Visible = false;
             }
 
             BrowseROM.Multiselect = currentConsole == Platforms.Flash;
@@ -295,10 +293,9 @@ namespace FriishProduce
                     case Platforms.SMCD:
                         if (currentConsole == Platforms.SMCD)
                         {
-                            BIOS__000.Visible = true;
-                            // BIOS__001.Visible = true;
                             InjectionMethod.Items.RemoveAt(0);
                             SupportsAutoFill = false;
+                            a023.Visible = true;
                         }
                         InjectionMethod.Items.Add(new Injectors.Forwarders().List[7]);
                         break;
@@ -321,17 +318,14 @@ namespace FriishProduce
                         InjectionMethod.Items.RemoveAt(0);
                         InjectionMethod.Items.Add(new Injectors.Forwarders().List[6]);
                         InjectionMethod.Items.Add(new Injectors.Forwarders().List[14]);
-                        // BIOS__000.Enabled = false;
-                        // BIOS__000.Visible = true;
-                        // BIOS__001.Visible = true;
+                        // a023.Visible = true;
                         break;
                     case Platforms.PSX:
                         SupportsAutoFill = false;
                         InjectionMethod.Items.RemoveAt(0);
                         InjectionMethod.Items.Add(new Injectors.Forwarders().List[12]);
                         InjectionMethod.Items.Add(new Injectors.Forwarders().List[13]);
-                        BIOS__000.Visible = true;
-                        BIOS__001.Visible = true;
+                        a023.Visible = true;
                         break;
                     default:
                         break;
@@ -1095,7 +1089,6 @@ namespace FriishProduce
                     PCE_CustomOptions.Enabled = s.Checked;
                     break;
                 case "BIOS__001":
-                    if (currentConsole == Platforms.GB || currentConsole == Platforms.GBC || currentConsole == Platforms.GBA) BIOS__000.Enabled = s.Checked;
                     break;
             }
         }
@@ -1615,8 +1608,8 @@ namespace FriishProduce
                     zipName = zipName.Replace("{type}", WADtype).Replace("{storage}", f.UseUSBStorage ? "USB" : "SD");
                     zipName = Path.Combine(Path.GetDirectoryName(SaveWAD.FileName), zipName + ".zip");
 
-                    bool usesBIOS = BIOS__000.Visible;
-                    bool bootBIOS = BIOS__001.Checked;
+                    bool usesBIOS = f.IsDisc || a023.Checked;
+                    bool bootBIOS = a023.Checked;
                     await Task.Run(() => { f.Generate
                     (
                         parameters[0], zipName,
