@@ -174,7 +174,7 @@ namespace FriishProduce
         private void CheckForForwarder()
         {
             ForwarderMode = false;
-            if (InjectionMethod.SelectedIndex >= 0) ForwarderMode = InjectionMethod.SelectedItem.ToString() != x.Get("g012");
+            if (InjectionMethod.SelectedIndex >= 0) ForwarderMode = InjectionMethod.SelectedItem.ToString() != x.Get("g012") && currentConsole != Platforms.Flash;
 
             // Switch relevant options based on mode & selected platform
             NANDLoader.Visible = ForwarderMode;
