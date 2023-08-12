@@ -953,12 +953,12 @@ namespace FriishProduce
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             resources.ApplyResources(this, "$this");
-            this.Controls.Add(this.panel);
             this.Controls.Add(this.Wait);
             this.Controls.Add(this.page4);
             this.Controls.Add(this.page3);
             this.Controls.Add(this.page2);
             this.Controls.Add(this.page1);
+            this.Controls.Add(this.panel);
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;

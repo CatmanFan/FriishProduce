@@ -340,29 +340,20 @@ namespace FriishProduce
 
         // ***************************************************************************************************************** //
 
-        private void Main_FormClosing(object sender, FormClosingEventArgs e) => e.Cancel = !panel.Visible;
+        private void Main_FormClosing(object sender, FormClosingEventArgs e) => e.Cancel = Wait.Visible;
 
-        private void ToggleWaitingIcon(bool t)
+        private void ToggleWaitingIcon(bool show)
         {
-            switch (t)
-            {
-                case true:
-                    /*Settings.Visible = false;
-                    Back.Visible = false;
-                    Next.Visible = false;
-                    Save.Visible = false;*/
-                    break;
-                case false:
-                    /*Settings.Visible = true;
-                    Back.Visible = true;
-                    if (SaveVisible) Save.Visible = true; else Next.Visible = true;*/
-                    break;
-            }
+            page1.Enabled = !show;
+            page2.Enabled = !show;
+            page3.Enabled = !show;
+            page4.Enabled = !show;
 
-            page2.Enabled = !t;
-            page3.Enabled = !t;
-            page4.Enabled = !t;
-            panel.Visible = !t;
+            Wait.Visible = show;
+            Settings.Enabled = !show;
+            if (!page1.Visible) Back.Visible = !show;
+            if (!show) { if (SaveVisible) Save.Visible = true; else Next.Visible = true; }
+            else { Save.Visible = !show; Next.Visible = !show; }
         }
 
         /// <summary>
@@ -469,7 +460,7 @@ namespace FriishProduce
                 }
             }
 
-            Wait.BackColor = BackColor;
+            Wait.BackColor = panel.BackColor;
         }
 
         private void ChangeTheme(Form f)
@@ -1128,7 +1119,7 @@ namespace FriishProduce
 
                     Invoke((Action)delegate { BannerTitle.Text = title.Trim(); });
                     Invoke((Action)delegate { SaveDataTitle.Text = title.Trim(); });
-                    Invoke((Action)delegate { ChannelTitle.Text = title.Trim().Length <= ChannelTitle.MaxLength ? title.Trim() : string.Empty; });
+                    Invoke((Action)delegate { ChannelTitle.Text = /* title.Trim().Length <= ChannelTitle.MaxLength ? title.Trim() : */ string.Empty; });
                     Retrieved = true;
                 }
                 if (d.GetImgURL() != null)
