@@ -68,7 +68,7 @@
     "m000": "Really delete this WAD?",
     "m001": "Some of the changes you have made require you to restart the application before they can take effect.",
     "m002": "Done.",
-    "m003": "An error occurred during the exportation process.\nMessage: {0}",
+    "m003": "An error occurred during the exportation process. Message:\n{0}",
     "m004": "The ROM to be injected is larger in filesize than the target ROM. Please choose a different base WAD.",
     "m005": "Could not apply the patch. Please disable the built-in patching feature and try again using a manually-patched version.\nUsing unpatched ROM.",
     "m006": "Floating IPS was not found within the \"apps\" folder.\nUsing unpatched ROM.",
@@ -104,7 +104,7 @@
     "f_smd": "Mega Drive/Genesis ROM files (*.bin, *.gen, *.smd)|*.bin;*.gen;*.smd",
     "f_pce": "TurboGrafx-16/PC Engine ROM files (*.pce)|*.pce",
     "f_msx": "MSX1/MSX2 ROM files (*.rom, *.mx1, *.mx2)|*.rom;*.mx1;*.mx2",
-    "f_vba": "Game Boy/Game Boy Color/Game Boy Advance ROM files (*.gb, *.gbc, *.gba)|*.gb;*.gbc;*.gba"
+    "f_vba": "{0} ROM files (*.gb, *.gbc, *.gba)|*.gb;*.gbc;*.gba"
   },
   "main": {
     "a000": "Welcome to FriishProduce {0}.\n\nPlease select your target platform:",

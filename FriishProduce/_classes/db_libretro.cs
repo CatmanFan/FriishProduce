@@ -40,7 +40,8 @@ namespace FriishProduce
             Array.Reverse(hash_array);
             string hash = BitConverter.ToString(hash_array).Replace("-", "").ToLower();
 
-            string db_base = "https://github.com/libretro/libretro-database/raw/master/metadat/";
+            // Original: https://github.com/libretro/libretro-database/raw/master/metadat/
+            string db_base = "https://raw.githubusercontent.com/libretro/libretro-database/master/metadat/";
             Dictionary<Platforms, string> db_platforms = new Dictionary<Platforms, string>
             {
                 { Platforms.NES, "Nintendo - Nintendo Entertainment System" },
@@ -58,6 +59,7 @@ namespace FriishProduce
                 // { Platforms.MSX, "Microsoft - MSX2" },
             };
             bool TitleIsSet = false;
+            bool YearIsSet = false;
 
             foreach (KeyValuePair<Platforms, string> item in db_platforms)
             {
@@ -94,7 +96,7 @@ namespace FriishProduce
                         for (int i = 10; i < db_lines.Length; i++)
                             if (db_lines[i].ToLower().Contains(hash))
                             {
-                                for (int x = i; x > i - 10; x--)
+                                for (int x = i + 1; x > i - 11; x--)
                                 {
                                     if (db_lines[x].Contains("comment \"") && !TitleIsSet)
                                     {
@@ -102,9 +104,10 @@ namespace FriishProduce
                                         ImgURL = "https://thumbnails.libretro.com/" + Uri.EscapeUriString(item.Value) + "/Named_Titles/" + Uri.EscapeUriString(Title) + ".png";
                                         TitleIsSet = true;
                                     }
-                                    if (db_lines[x].Contains("releaseyear"))
+                                    if (db_lines[x].Contains("releaseyear") && !YearIsSet)
                                     {
                                         Year = db_lines[x].Trim().Replace("releaseyear \"", "").Replace("\"", "");
+                                        YearIsSet = true;
                                     }
                                 }
 

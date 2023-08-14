@@ -55,7 +55,7 @@
     "m000": "¿Quieres borrar este canal?",
     "m001": "Algunos cambios necesitan que se reinicie el programa para que tengan efecto.",
     "m002": "La exportación ha terminado con éxito.",
-    "m003": "Ha ocurrido un error durante la exportación del canal.\nMensaje: {0}",
+    "m003": "Ha ocurrido un error durante la exportación del canal. Mensaje:\n{0}",
     "m004": "Su ROM es muy grande para el canal de origen. Por favor, elija otro canal.",
     "m005": "No se pudo aplicar el parche. Puedes desactivar la función auto-parche y volver a probar con una versión parcheada manualmente.\nSe utilizar la ROM sin parche.",
     "m006": "La herramienta Floating IPS no fue encontrado en la carpeta \"apps\".\nSe utilizar la ROM sin parche.",
@@ -91,7 +91,7 @@
     "f_smd": "Archivos ROM de Mega Drive/Genesis (*.bin, *.gen, *.smd)|*.bin;*.gen;*.smd",
     "f_pce": "Archivos ROM de TurboGrafx-16/PC Engine (*.pce)|*.pce",
     "f_msx": "Archivos ROM de MSX/MSX2 (*.rom, *.mx1, *.mx2)|*.rom;*.mx1;*.mx2",
-    "f_vba": "Archivos ROM de Game Boy/Game Boy Color/Game Boy Advance (*.gb, *.gbc, *.gba)|*.gb;*.gbc;*.gba"
+    "f_vba": "Archivos ROM de {0} (*.gb, *.gbc, *.gba)|*.gb;*.gbc;*.gba"
   },
   "main": {
     "a000": "Bienvenido(a) al programa FriishProduce versión {0}.\n\nPara comenzar, selecciona una plataforma:",

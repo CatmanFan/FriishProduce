@@ -137,9 +137,15 @@ namespace FriishProduce
                         break;
 
                     case Platforms.GB:
+                        BrowseROM.Filter = string.Format(x.Get("f_vba"), Console.SelectedItem.ToString()).Replace("*.gb;*.gbc;*.gba", "*.gb").Replace("*.gb, *.gbc, *.gba", "*.gb");
+                        break;
+
                     case Platforms.GBC:
+                        BrowseROM.Filter = string.Format(x.Get("f_vba"), Console.SelectedItem.ToString()).Replace("*.gb;*.gbc;*.gba", "*.gbc").Replace("*.gb, *.gbc, *.gba", "*.gbc");
+                        break;
+
                     case Platforms.GBA:
-                        BrowseROM.Filter = x.Get("f_vba");
+                        BrowseROM.Filter = string.Format(x.Get("f_vba"), Console.SelectedItem.ToString()).Replace("*.gb;*.gbc;*.gba", "*.gba").Replace("*.gb, *.gbc, *.gba", "*.gba");
                         break;
                 }
 
@@ -193,6 +199,10 @@ namespace FriishProduce
             VideoMode.Visible = !ForwarderMode;
             VideoMode.Enabled = AltCheckbox.Checked;
             VideoMode.Location = new Point(AltCheckbox.Location.X + AltCheckbox.Width + 1, AltCheckbox.Location.Y - 3);
+
+            // BIOS-related
+            if (ForwarderMode && currentConsole == Platforms.GBA)
+                BIOS_Boot.Visible = InjectionMethod.SelectedItem.ToString() == new Injectors.Forwarders().List[14];
 
             foreach (var p in page4.Controls.OfType<Panel>())
                 if (p.Name.StartsWith("Options_")) p.Visible = false;
@@ -261,7 +271,7 @@ namespace FriishProduce
                 Flash_StrapReminder.SelectedIndex = 0;
 
                 NANDLoader.SelectedIndex = 0;
-                a023.Visible = false;
+                BIOS_Boot.Visible = false;
             }
 
             BrowseROM.Multiselect = currentConsole == Platforms.Flash;
@@ -295,7 +305,7 @@ namespace FriishProduce
                         {
                             InjectionMethod.Items.RemoveAt(0);
                             SupportsAutoFill = false;
-                            a023.Visible = true;
+                            BIOS_Boot.Visible = true;
                         }
                         InjectionMethod.Items.Add(new Injectors.Forwarders().List[7]);
                         break;
@@ -318,14 +328,14 @@ namespace FriishProduce
                         InjectionMethod.Items.RemoveAt(0);
                         InjectionMethod.Items.Add(new Injectors.Forwarders().List[6]);
                         InjectionMethod.Items.Add(new Injectors.Forwarders().List[14]);
-                        // a023.Visible = true;
+                        // BIOS_Boot.Visible = true;
                         break;
                     case Platforms.PSX:
                         SupportsAutoFill = false;
                         InjectionMethod.Items.RemoveAt(0);
                         InjectionMethod.Items.Add(new Injectors.Forwarders().List[12]);
                         InjectionMethod.Items.Add(new Injectors.Forwarders().List[13]);
-                        a023.Visible = true;
+                        BIOS_Boot.Visible = true;
                         break;
                     default:
                         break;
@@ -1599,22 +1609,22 @@ namespace FriishProduce
                     zipName = zipName.Replace("{type}", WADtype).Replace("{storage}", f.UseUSBStorage ? "USB" : "SD");
                     zipName = Path.Combine(Path.GetDirectoryName(SaveWAD.FileName), zipName + ".zip");
 
-                    bool usesBIOS = f.IsDisc || a023.Checked;
-                    bool bootBIOS = a023.Checked;
+                    bool bootBIOS = BIOS_Boot.Checked && BIOS_Boot.Visible;
+                    bool usesBIOS = f.IsDisc || bootBIOS;
                     await Task.Run(() => { f.Generate
                     (
                         parameters[0], zipName,
-                        usesBIOS, bootBIOS
+                        usesBIOS, bootBIOS, currentConsole
                     ); });
 
                     // Default for auto-selection: Waninkoko NANDloader + v14
                     int type = NANDLoader.SelectedIndex <= 0 ? 2 : NANDLoader.SelectedIndex - 1;
 
                     // AUTO-SELECTION METHOD:
-                    //   => For GenPlus & all emulators based on Wii64 Team's code (e.g. Wii64, WiiSX and forks), use Comex NANDloader
-                    //   => For WiiMednafen, use Waninkoko NANDloader
-                    if (f.DolIndex >= 8 && f.DolIndex <= 13) type = 1;
-                    if (f.DolIndex == 14) type = 3;
+                    //   => For GenPlus & all emulators based on Wii64 Team's code (e.g. Wii64, WiiSX and forks), use Comex NANDloader (type = 1)
+                    //   => For WiiMednafen, use Waninkoko NANDloader (type = 3)
+                    if (f.DolIndex >= 8 && f.DolIndex <= 14) type = 1;
+                    // Issue: mGBA crashes if using vWii forwarder
 
                     f.ConvertWAD(type, TitleID.Text.ToUpper(), vWii.Checked);
                 }

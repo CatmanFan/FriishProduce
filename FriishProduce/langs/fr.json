@@ -61,7 +61,7 @@
     "m000": "Voulez-vous supprimer cette chaîne ?",
     "m001": "Certaines modifications nécessitent un redémarrage de l'application avant de prendre effet.",
     "m002": "L'exportation a été effectuée avec succès.",
-    "m003": "Une erreur a été rencontrée pendant le procès d'exportation.\nMessage : {0}",
+    "m003": "Une erreur a été rencontrée pendant le procès d'exportation.\n\nMessage :\n{0}",
     "m004": "La ROM que vous avez précisé est trop grande. Veuillez choisir une autre chaîne de base.",
     "m005": "Échec de l'application automatique du patch. Vous pouvez réessayer avec une version patchée manuellement.\nLa ROM non patchée sera utilisée.",
     "m006": "L'application Floating IPS n'a pas pu être trouvée dans votre dossier d'applications.\nLa ROM non patchée sera utilisée.",
@@ -97,7 +97,7 @@
     "f_smd": "Fichiers ROM de Sega Mega Drive / Genesis (*.bin, *.gen, *.smd)|*.bin;*.gen;*.smd",
     "f_pce": "Fichiers ROM de PC Engine / TurboGrafx-16 (*.pce)|*.pce",
     "f_msx": "Fichiers ROM de MSX / MSX2 (*.rom, *.mx1, *.mx2)|*.rom;*.mx1;*.mx2",
-    "f_vba": "Fichiers ROM de Game Boy / Game Boy Color / Game Boy Advance (*.gb, *.gbc, *.gba)|*.gb;*.gbc;*.gba"
+    "f_vba": "Fichiers ROM de {0} (*.gb, *.gbc, *.gba)|*.gb;*.gbc;*.gba"
   },
   "main": {
     "a000": "Bienvenue dans l'application FriishProduce (version {0}).\n\nPour commencer, sélectionner une platforme cible :",

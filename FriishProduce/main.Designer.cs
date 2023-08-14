@@ -77,7 +77,7 @@ namespace FriishProduce
             this.ChannelTitle = new System.Windows.Forms.TextBox();
             this.a003 = new System.Windows.Forms.Label();
             this.page4 = new System.Windows.Forms.Panel();
-            this.a023 = new System.Windows.Forms.CheckBox();
+            this.BIOS_Boot = new System.Windows.Forms.CheckBox();
             this.NANDLoader = new System.Windows.Forms.ComboBox();
             this.RandomTID = new System.Windows.Forms.Button();
             this.VideoMode = new System.Windows.Forms.ComboBox();
@@ -533,7 +533,7 @@ namespace FriishProduce
             // 
             // page4
             // 
-            this.page4.Controls.Add(this.a023);
+            this.page4.Controls.Add(this.BIOS_Boot);
             this.page4.Controls.Add(this.NANDLoader);
             this.page4.Controls.Add(this.RandomTID);
             this.page4.Controls.Add(this.VideoMode);
@@ -553,13 +553,13 @@ namespace FriishProduce
             resources.ApplyResources(this.page4, "page4");
             this.page4.Name = "page4";
             // 
-            // a023
+            // BIOS_Boot
             // 
-            resources.ApplyResources(this.a023, "a023");
-            this.a023.Name = "a023";
-            this.a023.Tag = "";
-            this.a023.UseVisualStyleBackColor = true;
-            this.a023.CheckedChanged += new System.EventHandler(this.CheckedToggles);
+            resources.ApplyResources(this.BIOS_Boot, "BIOS_Boot");
+            this.BIOS_Boot.Name = "BIOS_Boot";
+            this.BIOS_Boot.Tag = "a023";
+            this.BIOS_Boot.UseVisualStyleBackColor = true;
+            this.BIOS_Boot.CheckedChanged += new System.EventHandler(this.CheckedToggles);
             // 
             // NANDLoader
             // 
@@ -954,11 +954,11 @@ namespace FriishProduce
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             resources.ApplyResources(this, "$this");
             this.Controls.Add(this.Wait);
+            this.Controls.Add(this.page1);
+            this.Controls.Add(this.panel);
             this.Controls.Add(this.page4);
             this.Controls.Add(this.page3);
             this.Controls.Add(this.page2);
-            this.Controls.Add(this.page1);
-            this.Controls.Add(this.panel);
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
@@ -1095,7 +1095,7 @@ namespace FriishProduce
         private System.Windows.Forms.CheckBox PCE_SetConfig;
         private System.Windows.Forms.Panel PCE_CustomOptions;
         private System.Windows.Forms.CheckBox vWii;
-        private System.Windows.Forms.CheckBox a023;
+        private System.Windows.Forms.CheckBox BIOS_Boot;
         private System.Windows.Forms.Label N64__005;
         private System.Windows.Forms.ComboBox N64_CompressionType;
     }

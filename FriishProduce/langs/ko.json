@@ -104,7 +104,7 @@
     "f_smd": "메가드라이브/제네시스 ROM 파일 (*.bin, *.gen, *.smd)|*.bin;*.gen;*.smd",
     "f_pce": "TurboGrafx-16/PC 엔진 ROM 파일 (*.pce)|*.pce",
     "f_msx": "MSX1/MSX2 ROM 파일 (*.rom, *.mx1, *.mx2)|*.rom;*.mx1;*.mx2",
-    "f_vba": "게임보이/게임보이 컬러/게임보이 어드밴스 ROM 파일 (*.gb, *.gbc, *.gba)|*.gb;*.gbc;*.gba"
+    "f_vba": "{0} ROM 파일 (*.gb, *.gbc, *.gba)|*.gb;*.gbc;*.gba"
   },
   "main": {
     "a000": "FriishProduce {0}에 오신 것을 환영합니다.\n\n대상 플랫폼을 선택해 주세요:",

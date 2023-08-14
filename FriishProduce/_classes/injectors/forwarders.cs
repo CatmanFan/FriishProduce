@@ -23,7 +23,7 @@ namespace FriishProduce.Injectors
             /* 11 */ "Mupen64GC-FIX94",
             /* 12 */ "WiiSX",
             /* 13 */ "WiiStation",
-            /* 14 */ "WiiMednafen"
+            /* 14 */ "mGBA"
         };
 
         public int DolIndex { get; set; }
@@ -46,7 +46,7 @@ namespace FriishProduce.Injectors
             if (DolIndex == -1) throw new System.InvalidOperationException();
         }
 
-        public void Generate(string name, string outZip, bool UseBios = false, bool BootBios = false)
+        public void Generate(string name, string outZip, bool UseBios = false, bool BootBios = false, Platforms Platform = 0)
         {
             // Set filename
             string romFile = (DolIndex >= 7 ? "title" : "HOME Menu") + Path.GetExtension(ROM).Replace(Paths.PatchedSuffix, string.Empty);
@@ -69,15 +69,22 @@ namespace FriishProduce.Injectors
                 switch (DolIndex)
                 {
                     case 7:
-                        BIOSfiles = new string[] { "bios_CD_E.bin", "bios_CD_U.bin", "bios_CD_J.bin" };
                         target = "genplus\\bios\\";
+                        BIOSfiles = new string[] { "bios_CD_E.bin", "bios_CD_U.bin", "bios_CD_J.bin" };
                         break;
+
                     case 12:
                     case 13:
-                        BIOSfiles = new string[] { "SCPH1000.BIN", "SCPH1001.BIN", "SCPH1002.BIN" };
                         string def = List[DolIndex].ToLower();
                         if (def.ToLower() == "wiistation") def = "wiisxrx";
                         target = $"{def}\\bios\\";
+
+                        BIOSfiles = new string[] { "SCPH1000.BIN", "SCPH1001.BIN", "SCPH1002.BIN" };
+                        break;
+
+                    case 14:
+                        target = "private\\vc\\_bios\\";
+                        BIOSfiles = new string[] { "gba_bios.bin" };
                         break;
                 }
 
@@ -206,7 +213,9 @@ namespace FriishProduce.Injectors
                     if (DolIndex == 13) meta.Add("    <arg>FPS = 0</arg>");
                     break;
                 case 14:
-                    File.Copy(Paths.DOL + "wiimednafen.dol", dir + "boot.dol");
+                    File.Copy(Paths.DOL + "mgba.dol", dir + "boot.dol");
+                    meta[9] = $"    <arg>{root}{name}/{romFile}</arg>";
+                    meta.RemoveAt(10);
                     break;
             }
             meta.Add("  </arguments>");
@@ -226,7 +235,9 @@ namespace FriishProduce.Injectors
         {
             bool COMX = type <= 1;
             bool v12  = type == 1 || type >= 3;
-            
+           
+                                  // Comex .app fileorder // Waninkoko fileorder
+                                  // -------------------- // -------------------
             var forwarderTarget = COMX ? "00000002.app"   : "00000001.app";
             var NANDloader      = COMX ? "00000001.app"   : "00000002.app";
             var x               = COMX ? WAD.Load(Properties.Resources.Forwarder_COMX) : WAD.Load(Properties.Resources.Forwarder_WNKO);
