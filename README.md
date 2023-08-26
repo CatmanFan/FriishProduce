@@ -52,8 +52,8 @@ Currently supported:
   * **[Not64](https://github.com/extremscorner/not64)** (Extrems)
   * **[Mupen64GC-FIX94](https://github.com/FIX94/mupen64gc-fix94)** (Wii64 Team, forked by FIX94)
   * **[Genesis Plus GX](https://github.com/ekeeke/Genesis-Plus-GX)** (eke-eke et al.)
-  * **[WiiSX](https://wiibrew.org/wiki/WiiSX)** (Wii64 Team)
-  * **[WiiStation / WiiSXRX_2022](https://github.com/xjsxjs197/WiiSXRX_2022)** (xjsxjs197, forked from NiuuS's WiiSXRX)
+  * **[WiiSX](https://github.com/emukidid/pcsxgc)** (Wii64 Team)
+  * **[WiiStation / WiiSXRX_2022](https://github.com/xjsxjs197/WiiSXRX_2022)** (xjsxjs197, forked from NiuuS' WiiSX RX)
   * **[WiiMednafen](https://github.com/raz0red/wii-mednafen)** (raz0red)
 
 * Other
