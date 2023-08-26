@@ -200,10 +200,22 @@ namespace FriishProduce
             VideoMode.Enabled = AltCheckbox.Checked;
             VideoMode.Location = new Point(AltCheckbox.Location.X + AltCheckbox.Width + 1, AltCheckbox.Location.Y - 3);
 
-            // BIOS-related
-            if (ForwarderMode && currentConsole == Platforms.GBA)
-                BIOS_Boot.Visible = InjectionMethod.SelectedItem.ToString() == new Injectors.Forwarders().List[14];
+            // Set forwarder options based on user configuration
+            if (ForwarderMode)
+            {
+                // COMING SOON
+            }
 
+            // Emulator-specific options
+            if (ForwarderMode && currentConsole == Platforms.GBA)
+                if (InjectionMethod.SelectedItem.ToString() == new Injectors.Forwarders().List[14])
+                {
+                    BIOS_Boot.Visible = true;
+                    vWii.Checked = false;
+                    vWii.Visible = false;
+                }
+
+            // Show relevant options panel
             foreach (var p in page4.Controls.OfType<Panel>())
                 if (p.Name.StartsWith("Options_")) p.Visible = false;
             if (!ForwarderMode)
@@ -258,6 +270,7 @@ namespace FriishProduce
 
             // Consoles
             {
+                // Set forwarder options based on user configuration (coming soon)
                 NES_Palette.SelectedIndex = 0;
                 N64_CompressionType.SelectedIndex = 0;
 
@@ -327,7 +340,7 @@ namespace FriishProduce
                     case Platforms.GBA:
                         InjectionMethod.Items.RemoveAt(0);
                         InjectionMethod.Items.Add(new Injectors.Forwarders().List[6]);
-                        InjectionMethod.Items.Add(new Injectors.Forwarders().List[14]);
+                        // InjectionMethod.Items.Add(new Injectors.Forwarders().List[14]);
                         // BIOS_Boot.Visible = true;
                         break;
                     case Platforms.PSX:
@@ -1173,7 +1186,7 @@ namespace FriishProduce
             string type = ForwarderMode ? "fwdr"
                 : !ForwarderMode && currentConsole != Platforms.Flash ? "VC"
                 : "injected";
-            if (vWii.Checked) type += "+vWii";
+            if (vWii.Checked && vWii.Visible) type += "+vWii";
 
             fileName = fileName.Replace("{name}", string.IsNullOrWhiteSpace(ChannelTitle.Text) ? "(null)" : ChannelTitle.Text);
             fileName = fileName.Replace("{titleID}", TitleID.Text);
@@ -1597,12 +1610,14 @@ namespace FriishProduce
                     string[] parameters = { TitleID.Text.ToUpper(), InjectionMethod.SelectedItem.ToString(), SaveWAD.FileName };
                     f.SetDOLIndex(parameters[1]);
 
+                    bool UsesVWii = vWii.Checked && vWii.Visible;
+
                     // Generate ZIP name
                     string zipName = Properties.Settings.Default.ZipName;
                     string WADtype = ForwarderMode ? "fwdr"
                         : !ForwarderMode && currentConsole != Platforms.Flash ? "VC"
                         : "injected";
-                    if (vWii.Checked) WADtype += "+vWii";
+                    if (UsesVWii) WADtype += "+vWii";
                     zipName = zipName.Replace("{name}", string.IsNullOrWhiteSpace(ChannelTitle.Text) ? "(null)" : ChannelTitle.Text);
                     zipName = zipName.Replace("{titleID}", TitleID.Text);
                     zipName = zipName.Replace("{platform}", currentConsole.ToString());
@@ -1626,7 +1641,7 @@ namespace FriishProduce
                     if (f.DolIndex >= 8 && f.DolIndex <= 14) type = 1;
                     // Issue: mGBA crashes if using vWii forwarder
 
-                    f.ConvertWAD(type, TitleID.Text.ToUpper(), vWii.Checked);
+                    f.ConvertWAD(type, TitleID.Text.ToUpper(), UsesVWii);
                 }
 
                 // ----------------------------------------------------
