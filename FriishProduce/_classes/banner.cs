@@ -248,6 +248,7 @@ namespace FriishProduce
             var BrlytI = Icon.Data[Icon.GetNodeIndex("icon.brlyt")];
             int index = Bytes.Search(BrlytI, "49 63 6F 6E 31 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 3F 80 00 00 3F 80 00 00");
             if (index == -1) throw new Exception(Program.Language.Get("m020"));
+
             targetIconSize.CopyTo(BrlytI, index + 56);
             Icon.ReplaceFile(Icon.GetNodeIndex("icon.brlyt"), BrlytI);
             // NES: 120x32 / N64: 70x64
@@ -260,6 +261,7 @@ namespace FriishProduce
             /* var BrlytB = Banner.Data[Banner.GetNodeIndex("banner.brlyt")];
             index = Bytes.Search(BrlytB, "70 69 63 31 00 00 00 80 01 04 FF 00 50 46 4C 69 6E 65 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00");
             if (index == -1) throw new Exception(Program.Language.Get("m020"));
+
             targetBannerX.CopyTo(BrlytB, index + 36);
             Banner.ReplaceFile(Banner.GetNodeIndex("banner.brlyt"), BrlytB); */
             // SNES: -365,5027 / N64: -361,001

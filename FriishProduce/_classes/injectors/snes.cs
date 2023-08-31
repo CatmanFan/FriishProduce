@@ -120,6 +120,27 @@ namespace FriishProduce.Injectors
             return s.ToString();
         }
 
+        /// <summary>
+        /// This happens to increase the screen brightness, including in the HOME Menu, so it remains hidden
+        /// </summary>
+        /// <param name="c1">Content1 file</param>
+        public void RemoveFilter(string c1)
+        {
+            byte[] content1 = File.ReadAllBytes(c1);
+            int index = Bytes.Search(content1, "2C 05 00 00 38 80 00 53 39 60 00 00 90 09 80 00 38 00 00 54 39 80 00 00 50 8B C0 0E 99 49 80 00 50 0C C0 0E 90 69 80 00 99 49 80 00 90 E9 80 00 99 49 80 00 91 09 80 00 41 82 00 40 88 86 00 00 88 06 00 04 50 8B 06 BE 88 66 00 01 50 0C 06 BE 88 A6 00 02 50 6B 35 32 88 66 00 05 88 86 00 03 50 AB 63 A6 88 06 00 06 50 6C 35 32 50 8B 92 1A 50 0C 63 A6 48 00 00 20");
+            if (index == -1) throw new Exception(Program.Language.Get("m020"));
+
+            string antiFilter = "38 80 00 AA 38 00 00 EE 50 8B 06 BE 38 60 00 BB 50 0C 06 BE 38 A0 00 CC 50 6B 35 32 38 60 00 FF 38 80 00 DD 50 AB 63 A6 38 00 00 GG 50 6C 35 32 50 8B 92 1A 50 0C 63 A6 48 00 00 20";
+                   antiFilter = "38 80 00 00 38 00 00 15 50 8B 06 BE 38 60 00 00 50 0C 06 BE 38 A0 00 15 50 6B 35 32 38 60 00 00 38 80 00 30 50 AB 63 A6 38 00 00 00 50 6C 35 32 50 8B 92 1A 50 0C 63 A6 48 00 00 20";
+            var pArray = antiFilter.Split(' ');
+            var pBytes = new byte[pArray.Length];
+            for (int i = 0; i < pArray.Length; i++)
+                pBytes[i] = Convert.ToByte(pArray[i], 16);
+
+            pBytes.CopyTo(content1, index + 60);
+            File.WriteAllBytes(c1, content1);
+        }
+
         internal void InsertSaveTitle(string[] lines)
         {
             string content1_file = Global.DetermineContent1(type == 2);

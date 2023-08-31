@@ -226,6 +226,10 @@ namespace FriishProduce
                         SaveDataTitle.MaxLength = 20;
                         break;
 
+                    case Platforms.SNES:
+                        Options_SNES.Visible = true;
+                        break;
+
                     case Platforms.N64:
                         Options_N64.Visible = true;
                         break;
@@ -1398,6 +1402,8 @@ namespace FriishProduce
                                 };
 
                                 await Task.Run(() => { SNES.ReplaceROM(); });
+
+                                if (SNES_FixBrightness.Checked) await Task.Run(() => { string c1 = Global.DetermineContent1(SNES.type == 2); SNES.RemoveFilter(c1); Global.PrepareContent1(c1); });
 
                                 if (Custom.Checked) SNES.InsertSaveTitle(SaveDataTitle.Lines);
                                 break;

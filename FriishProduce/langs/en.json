@@ -87,7 +87,8 @@
     "m019": "Invalid ROM/disc image format.",
     "m020": "Failed to find replaceable banner images.",
     "m021": "Required BIOS not found.\nPlease make sure that the following files are in the \"{App Directory}/bases/fwdr_bios\" folder:\n",
-    "m022": "Some customization fields for this software (e.g. name, image, release year or no. of players) have been automatically filled based from the online LibRetro database."
+    "m022": "Some customization fields for this software (e.g. name, image, release year or no. of players) have been automatically filled based from the online LibRetro database.",
+    "m023": "Failed to modify the emulator file."
   },
   "filters": {
     "f_all": "|All files (*.*)|*.*",

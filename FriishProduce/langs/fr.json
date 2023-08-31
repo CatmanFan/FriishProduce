@@ -80,7 +80,8 @@
     "m019": "Format invalide ou non pris en charge du fichier ROM/disque.",
     "m020": "Échec de modification des images du banner.",
     "m021": "Le BIOS requis par l'émulateur n'est pas disponible.\nVeuillez vérifier que les fichiers suivants se trouvent au dossier « {application}/bases/fwdr_bios » :\n",
-    "m022": "Certaines formes pour cette ROM (titre, image, année de publication ou nombre de joueurs) ont été remplis automatiquement depuis la base de données en ligne de Libretro."
+    "m022": "Certaines formes pour cette ROM (titre, image, année de publication ou nombre de joueurs) ont été remplis automatiquement depuis la base de données en ligne de Libretro.",
+    "m023": "Échec de modification de l'émulateur."
   },
   "filters": {
     "f_all": "|Tous les fichiers (*.*)|*.*",

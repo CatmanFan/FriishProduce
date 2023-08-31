@@ -74,7 +74,8 @@
     "m019": "Formato inválido de archivo ROM o imagen de disco.",
     "m020": "No fue modificado las imágenes del banner.",
     "m021": "No se encontró el BIOS.\nPor favor compruebe que los archivos siguientes están en la carpeta \"{aplicación}/bases/fwdr_bios\":\n",
-    "m022": "Se han rellenado automáticamente algunos formularios por la personalización del canal (p. ej. título, imagen, año de publicación y/o número de jugadores) desde la base de datos en línea de LibRetro."
+    "m022": "Se han rellenado automáticamente algunos formularios por la personalización del canal (p. ej. título, imagen, año de publicación y/o número de jugadores) desde la base de datos en línea de LibRetro.",
+    "m023": "No se pudo modificar el archivo del emulador."
   },
   "filters": {
     "f_all": "|Todos los archivos (*.*)|*.*",
