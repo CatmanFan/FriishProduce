@@ -235,8 +235,8 @@ namespace FriishProduce.Injectors
                         FileName = pPath,
                         WorkingDirectory = $"{Paths.Apps}ucon64\\",
                         Arguments = arg,
-                        UseShellExecute = true,
-                        CreateNoWindow = false
+                        UseShellExecute = false,
+                        CreateNoWindow = true
                     }))
                         p.WaitForExit();
                     File.Delete(pPath);
