@@ -1413,7 +1413,7 @@ namespace FriishProduce
 
                         case Platforms.N64:
                             {
-                                Injectors.N64 N64 = new Injectors.N64() { ROM = input[0] };
+                                Injectors.N64 N64 = new Injectors.N64() { ROM = input[0], AllocateSize = N64_Allocation.Checked && N64_Allocation.Visible };
                                 foreach (var entry in db.GetList())
                                 {
                                     if (entry["title"].ToString() == Bases.SelectedItem.ToString())
@@ -1439,7 +1439,7 @@ namespace FriishProduce
                                         N64.Op_FixBrightness();
                                     if (N64_UseExpansionPak.Checked)
                                         N64.Op_ExpansionRAM();
-                                    if (N64_Allocation.Checked && N64_Allocation.Visible)
+                                    if (N64.AllocateSize)
                                         N64.Op_AllocateROM();
                                     if (N64_FixCrash.Checked && N64_FixCrash.Visible)
                                         N64.Op_FixCrashes();

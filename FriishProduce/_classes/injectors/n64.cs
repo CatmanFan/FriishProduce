@@ -12,7 +12,7 @@ namespace FriishProduce.Injectors
         public string emuVersion { get; set; }
         private byte[] content1 { get; set; }
         private string content1_file = Paths.WorkingFolder + "00000001.app";
-        private bool IsAllocated = false;
+        public bool AllocateSize { get; set; }
 
         private enum Buttons
         {
@@ -144,7 +144,6 @@ namespace FriishProduce.Injectors
                 content1[offset] = size_array[0];
                 content1[offset + 1] = size_array[1];
 
-                IsAllocated = true;
                 return;
             }
 
@@ -299,7 +298,7 @@ namespace FriishProduce.Injectors
             {
                 // Check filesize
                 // Maximum ROM limit allowed: 32 MB unless allocated in main.dol (maximum possible: ~56 MB)
-                if (File.ReadAllBytes(byteswappedROM).Length > 4194304 * 8 && !IsAllocated)
+                if (File.ReadAllBytes(byteswappedROM).Length > 4194304 * 8 && !AllocateSize)
                 {
                     File.Delete(byteswappedROM);
                     throw new Exception(Program.Language.Get("m018"));
