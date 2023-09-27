@@ -139,6 +139,7 @@
     "N64__003": "Allocation de taille de la ROM",
     "N64__004": "Supprimer toutes les textures T64 préinstallées de la chaîne",
     "N64__005": "Méthode de compression pour les ROMs ayant une taille excédant 32 Mo :",
+    "N64__006": "Type de ROM :",
     "Flash__000": "Activer le message « données non sauvegardées » sur le menu HOME",
     "Flash__001": "Activer données de sauvegarde",
     "Flash__002": "Taille en Ko :",

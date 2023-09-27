@@ -133,6 +133,7 @@
     "N64__003": "Asignar por tamaño de la ROM",
     "N64__004": "Borrar todas las texturas *.T64 del canal",
     "N64__005": "Método de compresión para ROM de más de 32 MB:",
+    "N64__006": "Tipo de ROM:",
     "Flash__000": "Habilitar el mensaje de \"datos no guardados\" en el Menú HOME",
     "Flash__001": "Habilitar datos guardados",
     "Flash__002": "Tamaño en KB:",

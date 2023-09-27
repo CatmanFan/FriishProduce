@@ -160,6 +160,7 @@
     "N64__003": "Allocate ROM size",
     "N64__004": "Clear all preinstalled VC textures (*.T64)",
     "N64__005": "Compression method for +32MB ROM:",
+    "N64__006": "Type de ROM :",
     "Flash__000": "Enable \"unsaved data\" message in HOME Menu",
     "Flash__001": "Use savedata",
     "Flash__002": "Total size (KB):",

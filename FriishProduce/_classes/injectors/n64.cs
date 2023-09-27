@@ -159,14 +159,14 @@ namespace FriishProduce.Injectors
 
         public bool CheckForROMC() => emuVersion.Contains("romc");
 
-        public void ByteswapROM()
+        public void ByteswapROM(bool v64)
         {
             File.Copy(ROM, $"{Paths.Apps}ucon64\\rom");
             using (Process p = Process.Start(new ProcessStartInfo
             {
                 FileName = $"{Paths.Apps}ucon64\\ucon64.exe",
                 WorkingDirectory = $"{Paths.Apps}ucon64\\",
-                Arguments = $"--z64 \"{Paths.Apps}ucon64\\rom\" \"{byteswappedROM}\"",
+                Arguments = $"{(v64? "--v64" : "--z64")} \"{Paths.Apps}ucon64\\rom\" \"{byteswappedROM}\"",
                 UseShellExecute = false,
                 CreateNoWindow = true
             }))

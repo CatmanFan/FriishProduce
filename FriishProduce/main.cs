@@ -1423,7 +1423,8 @@ namespace FriishProduce
                                 }
 
                                 int compressionType = N64_CompressionType.SelectedIndex;
-                                await Task.Run(() => { N64.ByteswapROM(); });
+                                int romType = N64_ROMType.SelectedIndex;
+                                await Task.Run(() => { N64.ByteswapROM(romType == 1); });
                                 await Task.Run(() => { N64.CompressROM(compressionType); });
                                 await Task.Run(() => { N64.ReplaceROM(N64.CheckForROMC()); });
                                 if (N64_RemoveT64.Checked) N64.CleanT64();

@@ -88,6 +88,16 @@ namespace FriishProduce
             this.DisableEmanual = new System.Windows.Forms.CheckBox();
             this.AltCheckbox = new System.Windows.Forms.CheckBox();
             this.vWii = new System.Windows.Forms.CheckBox();
+            this.Options_N64 = new System.Windows.Forms.Panel();
+            this.N64_CompressionType = new System.Windows.Forms.ComboBox();
+            this.N64__005 = new System.Windows.Forms.Label();
+            this.N64_RemoveT64 = new System.Windows.Forms.CheckBox();
+            this.N64_FixBrightness = new System.Windows.Forms.CheckBox();
+            this.N64_Allocation = new System.Windows.Forms.CheckBox();
+            this.N64_FixCrash = new System.Windows.Forms.CheckBox();
+            this.N64_UseExpansionPak = new System.Windows.Forms.CheckBox();
+            this.Options_SNES = new System.Windows.Forms.Panel();
+            this.SNES_FixBrightness = new System.Windows.Forms.CheckBox();
             this.Options_NES = new System.Windows.Forms.Panel();
             this.NES_Palette = new System.Windows.Forms.ComboBox();
             this.NES__000 = new System.Windows.Forms.Label();
@@ -114,20 +124,12 @@ namespace FriishProduce
             this.PCE_HideOverscan = new System.Windows.Forms.CheckBox();
             this.PCE_BackupRAM = new System.Windows.Forms.CheckBox();
             this.PCE_Raster = new System.Windows.Forms.CheckBox();
-            this.Options_N64 = new System.Windows.Forms.Panel();
-            this.N64_CompressionType = new System.Windows.Forms.ComboBox();
-            this.N64__005 = new System.Windows.Forms.Label();
-            this.N64_RemoveT64 = new System.Windows.Forms.CheckBox();
-            this.N64_FixBrightness = new System.Windows.Forms.CheckBox();
-            this.N64_Allocation = new System.Windows.Forms.CheckBox();
-            this.N64_FixCrash = new System.Windows.Forms.CheckBox();
-            this.N64_UseExpansionPak = new System.Windows.Forms.CheckBox();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.BrowsePatch = new System.Windows.Forms.OpenFileDialog();
             this.BrowseImage = new System.Windows.Forms.OpenFileDialog();
             this.BackgroundWorker = new System.ComponentModel.BackgroundWorker();
-            this.Options_SNES = new System.Windows.Forms.Panel();
-            this.SNES_FixBrightness = new System.Windows.Forms.CheckBox();
+            this.N64__006 = new System.Windows.Forms.Label();
+            this.N64_ROMType = new System.Windows.Forms.ComboBox();
             this.panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Wait)).BeginInit();
             this.page1.SuspendLayout();
@@ -139,14 +141,14 @@ namespace FriishProduce
             ((System.ComponentModel.ISupportInitialize)(this.Players)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReleaseYear)).BeginInit();
             this.page4.SuspendLayout();
+            this.Options_N64.SuspendLayout();
+            this.Options_SNES.SuspendLayout();
             this.Options_NES.SuspendLayout();
             this.Options_SEGA.SuspendLayout();
             this.Options_Flash.SuspendLayout();
             this.Options_NeoGeo.SuspendLayout();
             this.Options_PCE.SuspendLayout();
             this.PCE_CustomOptions.SuspendLayout();
-            this.Options_N64.SuspendLayout();
-            this.Options_SNES.SuspendLayout();
             this.SuspendLayout();
             // 
             // a000
@@ -547,13 +549,13 @@ namespace FriishProduce
             this.page4.Controls.Add(this.DisableEmanual);
             this.page4.Controls.Add(this.AltCheckbox);
             this.page4.Controls.Add(this.vWii);
+            this.page4.Controls.Add(this.Options_N64);
             this.page4.Controls.Add(this.Options_SNES);
             this.page4.Controls.Add(this.Options_NES);
             this.page4.Controls.Add(this.Options_SEGA);
             this.page4.Controls.Add(this.Options_Flash);
             this.page4.Controls.Add(this.Options_NeoGeo);
             this.page4.Controls.Add(this.Options_PCE);
-            this.page4.Controls.Add(this.Options_N64);
             resources.ApplyResources(this.page4, "page4");
             this.page4.Name = "page4";
             // 
@@ -648,6 +650,84 @@ namespace FriishProduce
             this.vWii.Name = "vWii";
             this.vWii.Tag = "";
             this.vWii.UseVisualStyleBackColor = true;
+            // 
+            // Options_N64
+            // 
+            this.Options_N64.Controls.Add(this.N64_ROMType);
+            this.Options_N64.Controls.Add(this.N64__006);
+            this.Options_N64.Controls.Add(this.N64_CompressionType);
+            this.Options_N64.Controls.Add(this.N64__005);
+            this.Options_N64.Controls.Add(this.N64_RemoveT64);
+            this.Options_N64.Controls.Add(this.N64_FixBrightness);
+            this.Options_N64.Controls.Add(this.N64_Allocation);
+            this.Options_N64.Controls.Add(this.N64_FixCrash);
+            this.Options_N64.Controls.Add(this.N64_UseExpansionPak);
+            resources.ApplyResources(this.Options_N64, "Options_N64");
+            this.Options_N64.Name = "Options_N64";
+            // 
+            // N64_CompressionType
+            // 
+            this.N64_CompressionType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.N64_CompressionType.FormattingEnabled = true;
+            this.N64_CompressionType.Items.AddRange(new object[] {
+            resources.GetString("N64_CompressionType.Items"),
+            resources.GetString("N64_CompressionType.Items1"),
+            resources.GetString("N64_CompressionType.Items2")});
+            resources.ApplyResources(this.N64_CompressionType, "N64_CompressionType");
+            this.N64_CompressionType.Name = "N64_CompressionType";
+            // 
+            // N64__005
+            // 
+            resources.ApplyResources(this.N64__005, "N64__005");
+            this.N64__005.Name = "N64__005";
+            // 
+            // N64_RemoveT64
+            // 
+            resources.ApplyResources(this.N64_RemoveT64, "N64_RemoveT64");
+            this.N64_RemoveT64.Name = "N64_RemoveT64";
+            this.N64_RemoveT64.Tag = "N64__004";
+            this.N64_RemoveT64.UseVisualStyleBackColor = true;
+            // 
+            // N64_FixBrightness
+            // 
+            resources.ApplyResources(this.N64_FixBrightness, "N64_FixBrightness");
+            this.N64_FixBrightness.Name = "N64_FixBrightness";
+            this.N64_FixBrightness.Tag = "N64__000";
+            this.N64_FixBrightness.UseVisualStyleBackColor = true;
+            // 
+            // N64_Allocation
+            // 
+            resources.ApplyResources(this.N64_Allocation, "N64_Allocation");
+            this.N64_Allocation.Name = "N64_Allocation";
+            this.N64_Allocation.Tag = "N64__003";
+            this.N64_Allocation.UseVisualStyleBackColor = true;
+            // 
+            // N64_FixCrash
+            // 
+            resources.ApplyResources(this.N64_FixCrash, "N64_FixCrash");
+            this.N64_FixCrash.Name = "N64_FixCrash";
+            this.N64_FixCrash.Tag = "N64__001";
+            this.N64_FixCrash.UseVisualStyleBackColor = true;
+            // 
+            // N64_UseExpansionPak
+            // 
+            resources.ApplyResources(this.N64_UseExpansionPak, "N64_UseExpansionPak");
+            this.N64_UseExpansionPak.Name = "N64_UseExpansionPak";
+            this.N64_UseExpansionPak.Tag = "N64__002";
+            this.N64_UseExpansionPak.UseVisualStyleBackColor = true;
+            // 
+            // Options_SNES
+            // 
+            this.Options_SNES.Controls.Add(this.SNES_FixBrightness);
+            resources.ApplyResources(this.Options_SNES, "Options_SNES");
+            this.Options_SNES.Name = "Options_SNES";
+            // 
+            // SNES_FixBrightness
+            // 
+            resources.ApplyResources(this.SNES_FixBrightness, "SNES_FixBrightness");
+            this.SNES_FixBrightness.Name = "SNES_FixBrightness";
+            this.SNES_FixBrightness.Tag = "N64__000";
+            this.SNES_FixBrightness.UseVisualStyleBackColor = true;
             // 
             // Options_NES
             // 
@@ -873,69 +953,6 @@ namespace FriishProduce
             this.PCE_Raster.Tag = "";
             this.PCE_Raster.UseVisualStyleBackColor = true;
             // 
-            // Options_N64
-            // 
-            this.Options_N64.Controls.Add(this.N64_CompressionType);
-            this.Options_N64.Controls.Add(this.N64__005);
-            this.Options_N64.Controls.Add(this.N64_RemoveT64);
-            this.Options_N64.Controls.Add(this.N64_FixBrightness);
-            this.Options_N64.Controls.Add(this.N64_Allocation);
-            this.Options_N64.Controls.Add(this.N64_FixCrash);
-            this.Options_N64.Controls.Add(this.N64_UseExpansionPak);
-            resources.ApplyResources(this.Options_N64, "Options_N64");
-            this.Options_N64.Name = "Options_N64";
-            // 
-            // N64_CompressionType
-            // 
-            this.N64_CompressionType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.N64_CompressionType.FormattingEnabled = true;
-            this.N64_CompressionType.Items.AddRange(new object[] {
-            resources.GetString("N64_CompressionType.Items"),
-            resources.GetString("N64_CompressionType.Items1"),
-            resources.GetString("N64_CompressionType.Items2")});
-            resources.ApplyResources(this.N64_CompressionType, "N64_CompressionType");
-            this.N64_CompressionType.Name = "N64_CompressionType";
-            // 
-            // N64__005
-            // 
-            resources.ApplyResources(this.N64__005, "N64__005");
-            this.N64__005.Name = "N64__005";
-            // 
-            // N64_RemoveT64
-            // 
-            resources.ApplyResources(this.N64_RemoveT64, "N64_RemoveT64");
-            this.N64_RemoveT64.Name = "N64_RemoveT64";
-            this.N64_RemoveT64.Tag = "N64__004";
-            this.N64_RemoveT64.UseVisualStyleBackColor = true;
-            // 
-            // N64_FixBrightness
-            // 
-            resources.ApplyResources(this.N64_FixBrightness, "N64_FixBrightness");
-            this.N64_FixBrightness.Name = "N64_FixBrightness";
-            this.N64_FixBrightness.Tag = "N64__000";
-            this.N64_FixBrightness.UseVisualStyleBackColor = true;
-            // 
-            // N64_Allocation
-            // 
-            resources.ApplyResources(this.N64_Allocation, "N64_Allocation");
-            this.N64_Allocation.Name = "N64_Allocation";
-            this.N64_Allocation.Tag = "N64__003";
-            this.N64_Allocation.UseVisualStyleBackColor = true;
-            // 
-            // N64_FixCrash
-            // 
-            resources.ApplyResources(this.N64_FixCrash, "N64_FixCrash");
-            this.N64_FixCrash.Name = "N64_FixCrash";
-            this.N64_FixCrash.Tag = "N64__001";
-            this.N64_FixCrash.UseVisualStyleBackColor = true;
-            // 
-            // N64_UseExpansionPak
-            // 
-            resources.ApplyResources(this.N64_UseExpansionPak, "N64_UseExpansionPak");
-            this.N64_UseExpansionPak.Name = "N64_UseExpansionPak";
-            this.N64_UseExpansionPak.Tag = "N64__002";
-            this.N64_UseExpansionPak.UseVisualStyleBackColor = true;
-            // 
             // ToolTip
             // 
             this.ToolTip.AutoPopDelay = 5000;
@@ -952,18 +969,20 @@ namespace FriishProduce
             // 
             resources.ApplyResources(this.BrowseImage, "BrowseImage");
             // 
-            // Options_SNES
+            // N64__006
             // 
-            this.Options_SNES.Controls.Add(this.SNES_FixBrightness);
-            resources.ApplyResources(this.Options_SNES, "Options_SNES");
-            this.Options_SNES.Name = "Options_SNES";
+            resources.ApplyResources(this.N64__006, "N64__006");
+            this.N64__006.Name = "N64__006";
             // 
-            // SNES_FixBrightness
+            // N64_ROMType
             // 
-            resources.ApplyResources(this.SNES_FixBrightness, "SNES_FixBrightness");
-            this.SNES_FixBrightness.Name = "SNES_FixBrightness";
-            this.SNES_FixBrightness.Tag = "N64__000";
-            this.SNES_FixBrightness.UseVisualStyleBackColor = true;
+            this.N64_ROMType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.N64_ROMType.FormattingEnabled = true;
+            this.N64_ROMType.Items.AddRange(new object[] {
+            resources.GetString("N64_ROMType.Items"),
+            resources.GetString("N64_ROMType.Items1")});
+            resources.ApplyResources(this.N64_ROMType, "N64_ROMType");
+            this.N64_ROMType.Name = "N64_ROMType";
             // 
             // Main
             // 
@@ -999,6 +1018,10 @@ namespace FriishProduce
             ((System.ComponentModel.ISupportInitialize)(this.ReleaseYear)).EndInit();
             this.page4.ResumeLayout(false);
             this.page4.PerformLayout();
+            this.Options_N64.ResumeLayout(false);
+            this.Options_N64.PerformLayout();
+            this.Options_SNES.ResumeLayout(false);
+            this.Options_SNES.PerformLayout();
             this.Options_NES.ResumeLayout(false);
             this.Options_NES.PerformLayout();
             this.Options_SEGA.ResumeLayout(false);
@@ -1011,10 +1034,6 @@ namespace FriishProduce
             this.Options_PCE.PerformLayout();
             this.PCE_CustomOptions.ResumeLayout(false);
             this.PCE_CustomOptions.PerformLayout();
-            this.Options_N64.ResumeLayout(false);
-            this.Options_N64.PerformLayout();
-            this.Options_SNES.ResumeLayout(false);
-            this.Options_SNES.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1119,6 +1138,8 @@ namespace FriishProduce
         private System.Windows.Forms.ComboBox N64_CompressionType;
         private System.Windows.Forms.Panel Options_SNES;
         private System.Windows.Forms.CheckBox SNES_FixBrightness;
+        private System.Windows.Forms.ComboBox N64_ROMType;
+        private System.Windows.Forms.Label N64__006;
     }
 }
 
