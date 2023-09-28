@@ -159,14 +159,14 @@ namespace FriishProduce.Injectors
 
         public bool CheckForROMC() => emuVersion.Contains("romc");
 
-        public void ByteswapROM()
+        public void ByteswapROM(bool v64 = false)
         {
             File.Copy(ROM, $"{Paths.Apps}ucon64\\rom");
             using (Process p = Process.Start(new ProcessStartInfo
             {
                 FileName = $"{Paths.Apps}ucon64\\ucon64.exe",
                 WorkingDirectory = $"{Paths.Apps}ucon64\\",
-                Arguments = $"--z64 \"{Paths.Apps}ucon64\\rom\" \"{byteswappedROM}\"",
+                Arguments = (v64 ? "--v64 " : "--z64 ") + " rom",
                 UseShellExecute = false,
                 CreateNoWindow = true
             }))
@@ -174,13 +174,17 @@ namespace FriishProduce.Injectors
             File.Delete($"{Paths.Apps}ucon64\\rom");
             if (File.Exists($"{Paths.Apps}ucon64\\rom.bak")) File.Delete($"{Paths.Apps}ucon64\\rom.bak");
 
-            if (!File.Exists(byteswappedROM))
+            if (!File.Exists($"{Paths.Apps}ucon64\\rom.z64") && !File.Exists($"{Paths.Apps}ucon64\\rom.v64"))
                 throw new Exception(Program.Language.Get("m011"));
+
+            string outROM = File.Exists($"{Paths.Apps}ucon64\\rom.v64") ? $"{Paths.Apps}ucon64\\rom.v64" : $"{Paths.Apps}ucon64\\rom.z64";
+
+            File.Move(outROM, byteswappedROM);
 
             if (emuVersion.Contains("hero")) FixBHeroCrash(byteswappedROM);
         }
 
-        public void FixROM(bool Byteswap = false)
+        /* public void FixROM(bool Byteswap = false)
         {
             if (Byteswap)
             {
@@ -208,7 +212,7 @@ namespace FriishProduce.Injectors
 
             if (File.Exists(ROM + ".new")) File.Move(ROM + ".new", byteswappedROM);
             else File.Copy(ROM, byteswappedROM);
-        }
+        } */
 
         private void FixBHeroCrash(string ROMpath)
         {

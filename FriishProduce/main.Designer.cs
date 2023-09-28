@@ -89,6 +89,8 @@ namespace FriishProduce
             this.AltCheckbox = new System.Windows.Forms.CheckBox();
             this.vWii = new System.Windows.Forms.CheckBox();
             this.Options_N64 = new System.Windows.Forms.Panel();
+            this.N64_ROMType = new System.Windows.Forms.ComboBox();
+            this.N64__006 = new System.Windows.Forms.Label();
             this.N64_CompressionType = new System.Windows.Forms.ComboBox();
             this.N64__005 = new System.Windows.Forms.Label();
             this.N64_RemoveT64 = new System.Windows.Forms.CheckBox();
@@ -651,6 +653,8 @@ namespace FriishProduce
             // 
             // Options_N64
             // 
+            this.Options_N64.Controls.Add(this.N64_ROMType);
+            this.Options_N64.Controls.Add(this.N64__006);
             this.Options_N64.Controls.Add(this.N64_CompressionType);
             this.Options_N64.Controls.Add(this.N64__005);
             this.Options_N64.Controls.Add(this.N64_RemoveT64);
@@ -660,6 +664,21 @@ namespace FriishProduce
             this.Options_N64.Controls.Add(this.N64_UseExpansionPak);
             resources.ApplyResources(this.Options_N64, "Options_N64");
             this.Options_N64.Name = "Options_N64";
+            // 
+            // N64_ROMType
+            // 
+            this.N64_ROMType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.N64_ROMType.FormattingEnabled = true;
+            this.N64_ROMType.Items.AddRange(new object[] {
+            resources.GetString("N64_ROMType.Items"),
+            resources.GetString("N64_ROMType.Items1")});
+            resources.ApplyResources(this.N64_ROMType, "N64_ROMType");
+            this.N64_ROMType.Name = "N64_ROMType";
+            // 
+            // N64__006
+            // 
+            resources.ApplyResources(this.N64__006, "N64__006");
+            this.N64__006.Name = "N64__006";
             // 
             // N64_CompressionType
             // 
@@ -1119,6 +1138,8 @@ namespace FriishProduce
         private System.Windows.Forms.ComboBox N64_CompressionType;
         private System.Windows.Forms.Panel Options_SNES;
         private System.Windows.Forms.CheckBox SNES_FixBrightness;
+        private System.Windows.Forms.ComboBox N64_ROMType;
+        private System.Windows.Forms.Label N64__006;
     }
 }
 

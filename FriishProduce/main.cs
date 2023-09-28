@@ -1299,9 +1299,11 @@ namespace FriishProduce
 
                     if (IsCustomConsole)
                     {
-                        await Task.Run(() => { b.CustomizeConsole(Banner, Icon,
-                            currentConsole > Platforms.Flash ? (BannerTypes)currentConsole :
-                            BannerTypes.Normal, w.Region); });
+                        await Task.Run(() => {
+                            b.CustomizeConsole(Banner, Icon,
+         currentConsole > Platforms.Flash ? (BannerTypes)currentConsole :
+         BannerTypes.Normal, w.Region);
+                        });
                     }
 
                     b.ReplaceBrlyt(Banner);
@@ -1423,15 +1425,8 @@ namespace FriishProduce
                                 }
 
                                 int compressionType = N64_CompressionType.SelectedIndex;
-
-                                bool Byteswap = false;
-                                if (MessageBox.Show(x.Get("N64__006"), MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                                {
-                                    MessageBox.Show(x.Get("N64__007"), MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    Byteswap = true;
-                                }
-
-                                await Task.Run(() => { N64.FixROM(Byteswap); });
+                                int romType = N64_ROMType.SelectedIndex;
+                                await Task.Run(() => { N64.ByteswapROM(romType == 1); });
                                 await Task.Run(() => { N64.CompressROM(compressionType); });
                                 await Task.Run(() => { N64.ReplaceROM(N64.CheckForROMC()); });
                                 if (N64_RemoveT64.Checked) N64.CleanT64();
@@ -1640,11 +1635,13 @@ namespace FriishProduce
 
                     bool bootBIOS = BIOS_Boot.Checked && BIOS_Boot.Visible;
                     bool usesBIOS = f.IsDisc || bootBIOS;
-                    await Task.Run(() => { f.Generate
-                    (
-                        parameters[0], zipName,
-                        usesBIOS, bootBIOS, currentConsole
-                    ); });
+                    await Task.Run(() => {
+                        f.Generate
+ (
+     parameters[0], zipName,
+     usesBIOS, bootBIOS, currentConsole
+ );
+                    });
 
                     // Default for auto-selection: Waninkoko NANDloader + v14
                     int type = NANDLoader.SelectedIndex <= 0 ? 2 : NANDLoader.SelectedIndex - 1;
@@ -1678,8 +1675,8 @@ namespace FriishProduce
 
                     // Edit
                     byte[] Out_B = File.ReadAllBytes(Out);
-                        if (ForwarderMode) Wii.WadEdit.ChangeIosSlot(Out_B, 58);
-                        if (RegionFree.Checked) Wii.WadEdit.ChangeRegion(Out_B, 3);
+                    if (ForwarderMode) Wii.WadEdit.ChangeIosSlot(Out_B, 58);
+                    if (RegionFree.Checked) Wii.WadEdit.ChangeRegion(Out_B, 3);
                     File.WriteAllBytes(Out, Out_B);
 
                     // Trucha Sign
