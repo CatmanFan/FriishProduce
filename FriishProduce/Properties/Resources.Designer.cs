@@ -221,6 +221,16 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] N64WiiRomfixer {
+            get {
+                object obj = ResourceManager.GetObject("N64WiiRomfixer", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] NANDLoader_vWii {
             get {
                 object obj = ResourceManager.GetObject("NANDLoader_vWii", resourceCulture);

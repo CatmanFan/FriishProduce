@@ -153,20 +153,20 @@ namespace FriishProduce.Injectors
 
         // ----------------------------------------------------------------------- //
 
-        private readonly string byteswappedROM = $"{Paths.Apps}ucon64\\rom.z64";
-        private readonly string compressedROM = $"{Paths.Apps}ucon64\\rom_comp.z64";
+        private readonly string byteswappedROM = $"{Paths.WorkingFolder}rom";
+        private readonly string compressedROM = $"{Paths.WorkingFolder}rom_comp";
         private readonly string ROMC = $"{Paths.WorkingFolder}romc";
 
         public bool CheckForROMC() => emuVersion.Contains("romc");
 
-        public void ByteswapROM(bool v64)
+        public void ByteswapROM()
         {
             File.Copy(ROM, $"{Paths.Apps}ucon64\\rom");
             using (Process p = Process.Start(new ProcessStartInfo
             {
                 FileName = $"{Paths.Apps}ucon64\\ucon64.exe",
                 WorkingDirectory = $"{Paths.Apps}ucon64\\",
-                Arguments = $"{(v64? "--v64" : "--z64")} \"{Paths.Apps}ucon64\\rom\" \"{byteswappedROM}\"",
+                Arguments = $"--z64 \"{Paths.Apps}ucon64\\rom\" \"{byteswappedROM}\"",
                 UseShellExecute = false,
                 CreateNoWindow = true
             }))
@@ -178,6 +178,36 @@ namespace FriishProduce.Injectors
                 throw new Exception(Program.Language.Get("m011"));
 
             if (emuVersion.Contains("hero")) FixBHeroCrash(byteswappedROM);
+        }
+
+        public void FixROM(bool Byteswap = false)
+        {
+            if (Byteswap)
+            {
+                string pPath = Paths.WorkingFolder + "romfix.exe";
+                File.WriteAllBytes(pPath, Properties.Resources.N64WiiRomfixer);
+                using (Process p = Process.Start(new ProcessStartInfo
+                {
+                    FileName = pPath,
+                    WorkingDirectory = Path.GetDirectoryName(ROM),
+                }))
+                    p.WaitForExit();
+                File.Delete(pPath);
+
+               if (!File.Exists(ROM + ".new"))
+                    throw new Exception(Program.Language.Get("m011"));
+
+            }
+
+            if (emuVersion.Contains("hero"))
+            {
+                if (!Byteswap) File.WriteAllBytes(ROM + ".new", File.ReadAllBytes(ROM));
+                FixBHeroCrash(ROM + ".new");
+                
+            }
+
+            if (File.Exists(ROM + ".new")) File.Move(ROM + ".new", byteswappedROM);
+            else File.Copy(ROM, byteswappedROM);
         }
 
         private void FixBHeroCrash(string ROMpath)
@@ -211,7 +241,7 @@ namespace FriishProduce.Injectors
                     {
                         FileName = pPath,
                         WorkingDirectory = $"{Paths.Apps}ucon64\\",
-                        Arguments = "rom.z64 rom_comp.z64",
+                        Arguments = $"{Paths.WorkingFolder + "rom"} rom_comp",
                         UseShellExecute = false,
                         CreateNoWindow = true
                     }))
@@ -222,7 +252,7 @@ namespace FriishProduce.Injectors
 
                 case 2: // Zelda64compress
                 {
-                    string arg = "--in rom.z64 --out rom_comp.z64 --mb 32 --codec yaz";
+                    string arg = $"--in {Paths.WorkingFolder + "rom"} --out rom_comp --mb 32 --codec yaz";
                     /* if      (type == 2) arg += " --dma \"0x12F70,1548\" --compress \"9-14,28-END\"";
                     else if (type == 3) arg += " --dma \"0x7430,1526\" --compress \"10-14,27-END\"";
                     else if (type == 4) arg += " --dma \"0x1A500,1568\" --compress \"10-14,23,24,31-END\" --skip \"1127\" --repack \"15-20,22\""; */

@@ -1423,8 +1423,15 @@ namespace FriishProduce
                                 }
 
                                 int compressionType = N64_CompressionType.SelectedIndex;
-                                int romType = N64_ROMType.SelectedIndex;
-                                await Task.Run(() => { N64.ByteswapROM(romType == 1); });
+
+                                bool Byteswap = false;
+                                if (MessageBox.Show(x.Get("N64__006"), MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                                {
+                                    MessageBox.Show(x.Get("N64__007"), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    Byteswap = true;
+                                }
+
+                                await Task.Run(() => { N64.FixROM(Byteswap); });
                                 await Task.Run(() => { N64.CompressROM(compressionType); });
                                 await Task.Run(() => { N64.ReplaceROM(N64.CheckForROMC()); });
                                 if (N64_RemoveT64.Checked) N64.CleanT64();

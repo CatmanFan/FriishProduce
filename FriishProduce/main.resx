@@ -1693,63 +1693,6 @@
   <data name="&gt;&gt;vWii.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
-  <data name="N64_ROMType.Items" xml:space="preserve">
-    <value>Big Endian (*.z64)</value>
-  </data>
-  <data name="N64_ROMType.Items1" xml:space="preserve">
-    <value>Doctor V64 (*.v64)</value>
-  </data>
-  <data name="N64_ROMType.Location" type="System.Drawing.Point, System.Drawing">
-    <value>330, 203</value>
-  </data>
-  <data name="N64_ROMType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>290, 23</value>
-  </data>
-  <data name="N64_ROMType.TabIndex" type="System.Int32, mscorlib">
-    <value>20</value>
-  </data>
-  <data name="&gt;&gt;N64_ROMType.Name" xml:space="preserve">
-    <value>N64_ROMType</value>
-  </data>
-  <data name="&gt;&gt;N64_ROMType.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;N64_ROMType.Parent" xml:space="preserve">
-    <value>Options_N64</value>
-  </data>
-  <data name="&gt;&gt;N64_ROMType.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="N64__006.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="N64__006.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="N64__006.Location" type="System.Drawing.Point, System.Drawing">
-    <value>327, 181</value>
-  </data>
-  <data name="N64__006.Size" type="System.Drawing.Size, System.Drawing">
-    <value>76, 15</value>
-  </data>
-  <data name="N64__006.TabIndex" type="System.Int32, mscorlib">
-    <value>19</value>
-  </data>
-  <data name="N64__006.Text" xml:space="preserve">
-    <value>n64_romtype</value>
-  </data>
-  <data name="&gt;&gt;N64__006.Name" xml:space="preserve">
-    <value>N64__006</value>
-  </data>
-  <data name="&gt;&gt;N64__006.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;N64__006.Parent" xml:space="preserve">
-    <value>Options_N64</value>
-  </data>
-  <data name="&gt;&gt;N64__006.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="N64_CompressionType.Items" xml:space="preserve">
     <value>N/A</value>
   </data>
@@ -1763,7 +1706,7 @@
     <value>13, 203</value>
   </data>
   <data name="N64_CompressionType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>290, 23</value>
+    <value>606, 23</value>
   </data>
   <data name="N64_CompressionType.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
@@ -1778,7 +1721,7 @@
     <value>Options_N64</value>
   </data>
   <data name="&gt;&gt;N64_CompressionType.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>0</value>
   </data>
   <data name="N64__005.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1808,7 +1751,7 @@
     <value>Options_N64</value>
   </data>
   <data name="&gt;&gt;N64__005.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>1</value>
   </data>
   <data name="N64_RemoveT64.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1838,7 +1781,7 @@
     <value>Options_N64</value>
   </data>
   <data name="&gt;&gt;N64_RemoveT64.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>2</value>
   </data>
   <data name="N64_FixBrightness.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1868,7 +1811,7 @@
     <value>Options_N64</value>
   </data>
   <data name="&gt;&gt;N64_FixBrightness.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>3</value>
   </data>
   <data name="N64_Allocation.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1898,7 +1841,7 @@
     <value>Options_N64</value>
   </data>
   <data name="&gt;&gt;N64_Allocation.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>4</value>
   </data>
   <data name="N64_FixCrash.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1928,7 +1871,7 @@
     <value>Options_N64</value>
   </data>
   <data name="&gt;&gt;N64_FixCrash.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>5</value>
   </data>
   <data name="N64_UseExpansionPak.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1958,7 +1901,7 @@
     <value>Options_N64</value>
   </data>
   <data name="&gt;&gt;N64_UseExpansionPak.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>6</value>
   </data>
   <data name="Options_N64.Location" type="System.Drawing.Point, System.Drawing">
     <value>27, 113</value>
