@@ -277,6 +277,7 @@ namespace FriishProduce
                 // Set forwarder options based on user configuration (coming soon)
                 NES_Palette.SelectedIndex = 0;
                 N64_CompressionType.SelectedIndex = 0;
+                N64_ROMType.SelectedIndex = 0;
 
                 SEGA_SetConfig.Checked = false;
 
