@@ -146,82 +146,10 @@
   <data name="&gt;&gt;a000.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="&gt;&gt;Back.Name" xml:space="preserve">
-    <value>Back</value>
-  </data>
-  <data name="&gt;&gt;Back.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Back.Parent" xml:space="preserve">
-    <value>panel</value>
-  </data>
-  <data name="&gt;&gt;Back.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;Settings.Name" xml:space="preserve">
-    <value>Settings</value>
-  </data>
-  <data name="&gt;&gt;Settings.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Settings.Parent" xml:space="preserve">
-    <value>panel</value>
-  </data>
-  <data name="&gt;&gt;Settings.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;Save.Name" xml:space="preserve">
-    <value>Save</value>
-  </data>
-  <data name="&gt;&gt;Save.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Save.Parent" xml:space="preserve">
-    <value>panel</value>
-  </data>
-  <data name="&gt;&gt;Save.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;Next.Name" xml:space="preserve">
-    <value>Next</value>
-  </data>
-  <data name="&gt;&gt;Next.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Next.Parent" xml:space="preserve">
-    <value>panel</value>
-  </data>
-  <data name="&gt;&gt;Next.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="panel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="panel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 431</value>
-  </data>
-  <data name="panel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>684, 50</value>
-  </data>
-  <data name="panel.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;panel.Name" xml:space="preserve">
-    <value>panel</value>
-  </data>
-  <data name="&gt;&gt;panel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;panel.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="Back.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="Back.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
@@ -357,6 +285,30 @@
   <data name="&gt;&gt;Next.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="panel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="panel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 431</value>
+  </data>
+  <data name="panel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>684, 50</value>
+  </data>
+  <data name="panel.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;panel.Name" xml:space="preserve">
+    <value>panel</value>
+  </data>
+  <data name="&gt;&gt;panel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="Wait.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         R0lGODlhEwATAMIEAFBPT2BoalyQpUHJ8s7W1s7W1s7W1s7W1iH/C05FVFNDQVBFMi4wAwEAAAAh+QQJ
@@ -428,63 +380,6 @@
   </data>
   <data name="&gt;&gt;Console.ZOrder" xml:space="preserve">
     <value>3</value>
-  </data>
-  <data name="&gt;&gt;g002.Name" xml:space="preserve">
-    <value>g002</value>
-  </data>
-  <data name="&gt;&gt;g002.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;g002.Parent" xml:space="preserve">
-    <value>page1</value>
-  </data>
-  <data name="&gt;&gt;g002.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;InjectionMethod.Name" xml:space="preserve">
-    <value>InjectionMethod</value>
-  </data>
-  <data name="&gt;&gt;InjectionMethod.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;InjectionMethod.Parent" xml:space="preserve">
-    <value>page1</value>
-  </data>
-  <data name="&gt;&gt;InjectionMethod.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;icon.Name" xml:space="preserve">
-    <value>icon</value>
-  </data>
-  <data name="&gt;&gt;icon.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;icon.Parent" xml:space="preserve">
-    <value>page1</value>
-  </data>
-  <data name="&gt;&gt;icon.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="page1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 31</value>
-  </data>
-  <data name="page1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>684, 380</value>
-  </data>
-  <data name="page1.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;page1.Name" xml:space="preserve">
-    <value>page1</value>
-  </data>
-  <data name="&gt;&gt;page1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;page1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;page1.ZOrder" xml:space="preserve">
-    <value>5</value>
   </data>
   <data name="g002.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -564,113 +459,26 @@
   <data name="&gt;&gt;icon.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;Patch.Name" xml:space="preserve">
-    <value>Patch</value>
-  </data>
-  <data name="&gt;&gt;Patch.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Patch.Parent" xml:space="preserve">
-    <value>page2</value>
-  </data>
-  <data name="&gt;&gt;Patch.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;ROMPath.Name" xml:space="preserve">
-    <value>ROMPath</value>
-  </data>
-  <data name="&gt;&gt;ROMPath.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ROMPath.Parent" xml:space="preserve">
-    <value>page2</value>
-  </data>
-  <data name="&gt;&gt;ROMPath.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;DeleteBase.Name" xml:space="preserve">
-    <value>DeleteBase</value>
-  </data>
-  <data name="&gt;&gt;DeleteBase.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;DeleteBase.Parent" xml:space="preserve">
-    <value>page2</value>
-  </data>
-  <data name="&gt;&gt;DeleteBase.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;AddBase.Name" xml:space="preserve">
-    <value>AddBase</value>
-  </data>
-  <data name="&gt;&gt;AddBase.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;AddBase.Parent" xml:space="preserve">
-    <value>page2</value>
-  </data>
-  <data name="&gt;&gt;AddBase.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;Bases.Name" xml:space="preserve">
-    <value>Bases</value>
-  </data>
-  <data name="&gt;&gt;Bases.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Bases.Parent" xml:space="preserve">
-    <value>page2</value>
-  </data>
-  <data name="&gt;&gt;Bases.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;OpenROM.Name" xml:space="preserve">
-    <value>OpenROM</value>
-  </data>
-  <data name="&gt;&gt;OpenROM.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;OpenROM.Parent" xml:space="preserve">
-    <value>page2</value>
-  </data>
-  <data name="&gt;&gt;OpenROM.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;a001.Name" xml:space="preserve">
-    <value>a001</value>
-  </data>
-  <data name="&gt;&gt;a001.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;a001.Parent" xml:space="preserve">
-    <value>page2</value>
-  </data>
-  <data name="&gt;&gt;a001.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="page2.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="page1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 31</value>
   </data>
-  <data name="page2.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="page1.Size" type="System.Drawing.Size, System.Drawing">
     <value>684, 380</value>
   </data>
-  <data name="page2.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+  <data name="page1.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
-  <data name="page2.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="&gt;&gt;page1.Name" xml:space="preserve">
+    <value>page1</value>
   </data>
-  <data name="&gt;&gt;page2.Name" xml:space="preserve">
-    <value>page2</value>
-  </data>
-  <data name="&gt;&gt;page2.Type" xml:space="preserve">
+  <data name="&gt;&gt;page1.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;page2.Parent" xml:space="preserve">
+  <data name="&gt;&gt;page1.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;page2.ZOrder" xml:space="preserve">
-    <value>4</value>
+  <data name="&gt;&gt;page1.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
   <data name="Patch.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -876,6 +684,30 @@
   <data name="&gt;&gt;a001.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
+  <data name="page2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 31</value>
+  </data>
+  <data name="page2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>684, 380</value>
+  </data>
+  <data name="page2.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="page2.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;page2.Name" xml:space="preserve">
+    <value>page2</value>
+  </data>
+  <data name="&gt;&gt;page2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;page2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;page2.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
   <metadata name="BrowseROM.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
@@ -888,78 +720,6 @@
   <metadata name="SaveWAD.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>276, 17</value>
   </metadata>
-  <data name="&gt;&gt;AutoFill.Name" xml:space="preserve">
-    <value>AutoFill</value>
-  </data>
-  <data name="&gt;&gt;AutoFill.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;AutoFill.Parent" xml:space="preserve">
-    <value>page3</value>
-  </data>
-  <data name="&gt;&gt;AutoFill.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;Custom.Name" xml:space="preserve">
-    <value>Custom</value>
-  </data>
-  <data name="&gt;&gt;Custom.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Custom.Parent" xml:space="preserve">
-    <value>page3</value>
-  </data>
-  <data name="&gt;&gt;Custom.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;Banner.Name" xml:space="preserve">
-    <value>Banner</value>
-  </data>
-  <data name="&gt;&gt;Banner.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Banner.Parent" xml:space="preserve">
-    <value>page3</value>
-  </data>
-  <data name="&gt;&gt;Banner.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;a003.Name" xml:space="preserve">
-    <value>a003</value>
-  </data>
-  <data name="&gt;&gt;a003.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;a003.Parent" xml:space="preserve">
-    <value>page3</value>
-  </data>
-  <data name="&gt;&gt;a003.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="page3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 31</value>
-  </data>
-  <data name="page3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>684, 380</value>
-  </data>
-  <data name="page3.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="page3.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;page3.Name" xml:space="preserve">
-    <value>page3</value>
-  </data>
-  <data name="&gt;&gt;page3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;page3.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;page3.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <data name="AutoFill.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -1020,237 +780,6 @@
   </data>
   <data name="&gt;&gt;Custom.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="&gt;&gt;a012.Name" xml:space="preserve">
-    <value>a012</value>
-  </data>
-  <data name="&gt;&gt;a012.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;a012.Parent" xml:space="preserve">
-    <value>Banner</value>
-  </data>
-  <data name="&gt;&gt;a012.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;ImgInterp.Name" xml:space="preserve">
-    <value>ImgInterp</value>
-  </data>
-  <data name="&gt;&gt;ImgInterp.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ImgInterp.Parent" xml:space="preserve">
-    <value>Banner</value>
-  </data>
-  <data name="&gt;&gt;ImgInterp.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;a011.Name" xml:space="preserve">
-    <value>a011</value>
-  </data>
-  <data name="&gt;&gt;a011.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;a011.Parent" xml:space="preserve">
-    <value>Banner</value>
-  </data>
-  <data name="&gt;&gt;a011.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;ImgResize.Name" xml:space="preserve">
-    <value>ImgResize</value>
-  </data>
-  <data name="&gt;&gt;ImgResize.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ImgResize.Parent" xml:space="preserve">
-    <value>Banner</value>
-  </data>
-  <data name="&gt;&gt;ImgResize.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;SaveDataTitle.Name" xml:space="preserve">
-    <value>SaveDataTitle</value>
-  </data>
-  <data name="&gt;&gt;SaveDataTitle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;SaveDataTitle.Parent" xml:space="preserve">
-    <value>Banner</value>
-  </data>
-  <data name="&gt;&gt;SaveDataTitle.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;a010.Name" xml:space="preserve">
-    <value>a010</value>
-  </data>
-  <data name="&gt;&gt;a010.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;a010.Parent" xml:space="preserve">
-    <value>Banner</value>
-  </data>
-  <data name="&gt;&gt;a010.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;ImportBases.Name" xml:space="preserve">
-    <value>ImportBases</value>
-  </data>
-  <data name="&gt;&gt;ImportBases.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ImportBases.Parent" xml:space="preserve">
-    <value>Banner</value>
-  </data>
-  <data name="&gt;&gt;ImportBases.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;Import.Name" xml:space="preserve">
-    <value>Import</value>
-  </data>
-  <data name="&gt;&gt;Import.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Import.Parent" xml:space="preserve">
-    <value>Banner</value>
-  </data>
-  <data name="&gt;&gt;Import.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;Image.Name" xml:space="preserve">
-    <value>Image</value>
-  </data>
-  <data name="&gt;&gt;Image.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Image.Parent" xml:space="preserve">
-    <value>Banner</value>
-  </data>
-  <data name="&gt;&gt;Image.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;Players.Name" xml:space="preserve">
-    <value>Players</value>
-  </data>
-  <data name="&gt;&gt;Players.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Players.Parent" xml:space="preserve">
-    <value>Banner</value>
-  </data>
-  <data name="&gt;&gt;Players.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;a009.Name" xml:space="preserve">
-    <value>a009</value>
-  </data>
-  <data name="&gt;&gt;a009.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;a009.Parent" xml:space="preserve">
-    <value>Banner</value>
-  </data>
-  <data name="&gt;&gt;a009.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;ReleaseYear.Name" xml:space="preserve">
-    <value>ReleaseYear</value>
-  </data>
-  <data name="&gt;&gt;ReleaseYear.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ReleaseYear.Parent" xml:space="preserve">
-    <value>Banner</value>
-  </data>
-  <data name="&gt;&gt;ReleaseYear.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="&gt;&gt;a008.Name" xml:space="preserve">
-    <value>a008</value>
-  </data>
-  <data name="&gt;&gt;a008.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;a008.Parent" xml:space="preserve">
-    <value>Banner</value>
-  </data>
-  <data name="&gt;&gt;a008.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="&gt;&gt;BannerTitle.Name" xml:space="preserve">
-    <value>BannerTitle</value>
-  </data>
-  <data name="&gt;&gt;BannerTitle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;BannerTitle.Parent" xml:space="preserve">
-    <value>Banner</value>
-  </data>
-  <data name="&gt;&gt;BannerTitle.ZOrder" xml:space="preserve">
-    <value>13</value>
-  </data>
-  <data name="&gt;&gt;a007.Name" xml:space="preserve">
-    <value>a007</value>
-  </data>
-  <data name="&gt;&gt;a007.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;a007.Parent" xml:space="preserve">
-    <value>Banner</value>
-  </data>
-  <data name="&gt;&gt;a007.ZOrder" xml:space="preserve">
-    <value>14</value>
-  </data>
-  <data name="&gt;&gt;a006.Name" xml:space="preserve">
-    <value>a006</value>
-  </data>
-  <data name="&gt;&gt;a006.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;a006.Parent" xml:space="preserve">
-    <value>Banner</value>
-  </data>
-  <data name="&gt;&gt;a006.ZOrder" xml:space="preserve">
-    <value>15</value>
-  </data>
-  <data name="&gt;&gt;ChannelTitle.Name" xml:space="preserve">
-    <value>ChannelTitle</value>
-  </data>
-  <data name="&gt;&gt;ChannelTitle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ChannelTitle.Parent" xml:space="preserve">
-    <value>Banner</value>
-  </data>
-  <data name="&gt;&gt;ChannelTitle.ZOrder" xml:space="preserve">
-    <value>16</value>
-  </data>
-  <data name="Banner.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="Banner.Location" type="System.Drawing.Point, System.Drawing">
-    <value>27, 93</value>
-  </data>
-  <data name="Banner.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
-  </data>
-  <data name="Banner.Size" type="System.Drawing.Size, System.Drawing">
-    <value>631, 244</value>
-  </data>
-  <data name="Banner.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;Banner.Name" xml:space="preserve">
-    <value>Banner</value>
-  </data>
-  <data name="&gt;&gt;Banner.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Banner.Parent" xml:space="preserve">
-    <value>page3</value>
-  </data>
-  <data name="&gt;&gt;Banner.ZOrder" xml:space="preserve">
-    <value>2</value>
   </data>
   <data name="a012.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1723,6 +1252,33 @@
   <data name="&gt;&gt;ChannelTitle.ZOrder" xml:space="preserve">
     <value>16</value>
   </data>
+  <data name="Banner.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="Banner.Location" type="System.Drawing.Point, System.Drawing">
+    <value>27, 93</value>
+  </data>
+  <data name="Banner.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 6, 6, 6</value>
+  </data>
+  <data name="Banner.Size" type="System.Drawing.Size, System.Drawing">
+    <value>631, 244</value>
+  </data>
+  <data name="Banner.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;Banner.Name" xml:space="preserve">
+    <value>Banner</value>
+  </data>
+  <data name="&gt;&gt;Banner.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Banner.Parent" xml:space="preserve">
+    <value>page3</value>
+  </data>
+  <data name="&gt;&gt;Banner.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <data name="a003.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -1750,245 +1306,29 @@
   <data name="&gt;&gt;a003.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="&gt;&gt;BIOS_Boot.Name" xml:space="preserve">
-    <value>BIOS_Boot</value>
-  </data>
-  <data name="&gt;&gt;BIOS_Boot.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;BIOS_Boot.Parent" xml:space="preserve">
-    <value>page4</value>
-  </data>
-  <data name="&gt;&gt;BIOS_Boot.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;NANDLoader.Name" xml:space="preserve">
-    <value>NANDLoader</value>
-  </data>
-  <data name="&gt;&gt;NANDLoader.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;NANDLoader.Parent" xml:space="preserve">
-    <value>page4</value>
-  </data>
-  <data name="&gt;&gt;NANDLoader.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;RandomTID.Name" xml:space="preserve">
-    <value>RandomTID</value>
-  </data>
-  <data name="&gt;&gt;RandomTID.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RandomTID.Parent" xml:space="preserve">
-    <value>page4</value>
-  </data>
-  <data name="&gt;&gt;RandomTID.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;VideoMode.Name" xml:space="preserve">
-    <value>VideoMode</value>
-  </data>
-  <data name="&gt;&gt;VideoMode.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;VideoMode.Parent" xml:space="preserve">
-    <value>page4</value>
-  </data>
-  <data name="&gt;&gt;VideoMode.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;RegionFree.Name" xml:space="preserve">
-    <value>RegionFree</value>
-  </data>
-  <data name="&gt;&gt;RegionFree.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;RegionFree.Parent" xml:space="preserve">
-    <value>page4</value>
-  </data>
-  <data name="&gt;&gt;RegionFree.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;TitleID.Name" xml:space="preserve">
-    <value>TitleID</value>
-  </data>
-  <data name="&gt;&gt;TitleID.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TitleID.Parent" xml:space="preserve">
-    <value>page4</value>
-  </data>
-  <data name="&gt;&gt;TitleID.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;a005.Name" xml:space="preserve">
-    <value>a005</value>
-  </data>
-  <data name="&gt;&gt;a005.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;a005.Parent" xml:space="preserve">
-    <value>page4</value>
-  </data>
-  <data name="&gt;&gt;a005.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;a004.Name" xml:space="preserve">
-    <value>a004</value>
-  </data>
-  <data name="&gt;&gt;a004.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;a004.Parent" xml:space="preserve">
-    <value>page4</value>
-  </data>
-  <data name="&gt;&gt;a004.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;DisableEmanual.Name" xml:space="preserve">
-    <value>DisableEmanual</value>
-  </data>
-  <data name="&gt;&gt;DisableEmanual.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;DisableEmanual.Parent" xml:space="preserve">
-    <value>page4</value>
-  </data>
-  <data name="&gt;&gt;DisableEmanual.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;AltCheckbox.Name" xml:space="preserve">
-    <value>AltCheckbox</value>
-  </data>
-  <data name="&gt;&gt;AltCheckbox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;AltCheckbox.Parent" xml:space="preserve">
-    <value>page4</value>
-  </data>
-  <data name="&gt;&gt;AltCheckbox.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;vWii.Name" xml:space="preserve">
-    <value>vWii</value>
-  </data>
-  <data name="&gt;&gt;vWii.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;vWii.Parent" xml:space="preserve">
-    <value>page4</value>
-  </data>
-  <data name="&gt;&gt;vWii.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;Options_N64.Name" xml:space="preserve">
-    <value>Options_N64</value>
-  </data>
-  <data name="&gt;&gt;Options_N64.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Options_N64.Parent" xml:space="preserve">
-    <value>page4</value>
-  </data>
-  <data name="&gt;&gt;Options_N64.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="&gt;&gt;Options_SNES.Name" xml:space="preserve">
-    <value>Options_SNES</value>
-  </data>
-  <data name="&gt;&gt;Options_SNES.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Options_SNES.Parent" xml:space="preserve">
-    <value>page4</value>
-  </data>
-  <data name="&gt;&gt;Options_SNES.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="&gt;&gt;Options_NES.Name" xml:space="preserve">
-    <value>Options_NES</value>
-  </data>
-  <data name="&gt;&gt;Options_NES.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Options_NES.Parent" xml:space="preserve">
-    <value>page4</value>
-  </data>
-  <data name="&gt;&gt;Options_NES.ZOrder" xml:space="preserve">
-    <value>13</value>
-  </data>
-  <data name="&gt;&gt;Options_SEGA.Name" xml:space="preserve">
-    <value>Options_SEGA</value>
-  </data>
-  <data name="&gt;&gt;Options_SEGA.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Options_SEGA.Parent" xml:space="preserve">
-    <value>page4</value>
-  </data>
-  <data name="&gt;&gt;Options_SEGA.ZOrder" xml:space="preserve">
-    <value>14</value>
-  </data>
-  <data name="&gt;&gt;Options_Flash.Name" xml:space="preserve">
-    <value>Options_Flash</value>
-  </data>
-  <data name="&gt;&gt;Options_Flash.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Options_Flash.Parent" xml:space="preserve">
-    <value>page4</value>
-  </data>
-  <data name="&gt;&gt;Options_Flash.ZOrder" xml:space="preserve">
-    <value>15</value>
-  </data>
-  <data name="&gt;&gt;Options_NeoGeo.Name" xml:space="preserve">
-    <value>Options_NeoGeo</value>
-  </data>
-  <data name="&gt;&gt;Options_NeoGeo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Options_NeoGeo.Parent" xml:space="preserve">
-    <value>page4</value>
-  </data>
-  <data name="&gt;&gt;Options_NeoGeo.ZOrder" xml:space="preserve">
-    <value>16</value>
-  </data>
-  <data name="&gt;&gt;Options_PCE.Name" xml:space="preserve">
-    <value>Options_PCE</value>
-  </data>
-  <data name="&gt;&gt;Options_PCE.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Options_PCE.Parent" xml:space="preserve">
-    <value>page4</value>
-  </data>
-  <data name="&gt;&gt;Options_PCE.ZOrder" xml:space="preserve">
-    <value>17</value>
-  </data>
-  <data name="page4.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="page3.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 31</value>
   </data>
-  <data name="page4.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="page3.Size" type="System.Drawing.Size, System.Drawing">
     <value>684, 380</value>
   </data>
-  <data name="page4.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+  <data name="page3.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
   </data>
-  <data name="page4.Visible" type="System.Boolean, mscorlib">
+  <data name="page3.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="&gt;&gt;page4.Name" xml:space="preserve">
-    <value>page4</value>
+  <data name="&gt;&gt;page3.Name" xml:space="preserve">
+    <value>page3</value>
   </data>
-  <data name="&gt;&gt;page4.Type" xml:space="preserve">
+  <data name="&gt;&gt;page3.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;page4.Parent" xml:space="preserve">
+  <data name="&gt;&gt;page3.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;page4.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;page3.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="BIOS_Boot.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2353,141 +1693,6 @@
   <data name="&gt;&gt;vWii.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
-  <data name="&gt;&gt;N64_ROMType.Name" xml:space="preserve">
-    <value>N64_ROMType</value>
-  </data>
-  <data name="&gt;&gt;N64_ROMType.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;N64_ROMType.Parent" xml:space="preserve">
-    <value>Options_N64</value>
-  </data>
-  <data name="&gt;&gt;N64_ROMType.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;N64__006.Name" xml:space="preserve">
-    <value>N64__006</value>
-  </data>
-  <data name="&gt;&gt;N64__006.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;N64__006.Parent" xml:space="preserve">
-    <value>Options_N64</value>
-  </data>
-  <data name="&gt;&gt;N64__006.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;N64_CompressionType.Name" xml:space="preserve">
-    <value>N64_CompressionType</value>
-  </data>
-  <data name="&gt;&gt;N64_CompressionType.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;N64_CompressionType.Parent" xml:space="preserve">
-    <value>Options_N64</value>
-  </data>
-  <data name="&gt;&gt;N64_CompressionType.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;N64__005.Name" xml:space="preserve">
-    <value>N64__005</value>
-  </data>
-  <data name="&gt;&gt;N64__005.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;N64__005.Parent" xml:space="preserve">
-    <value>Options_N64</value>
-  </data>
-  <data name="&gt;&gt;N64__005.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;N64_RemoveT64.Name" xml:space="preserve">
-    <value>N64_RemoveT64</value>
-  </data>
-  <data name="&gt;&gt;N64_RemoveT64.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;N64_RemoveT64.Parent" xml:space="preserve">
-    <value>Options_N64</value>
-  </data>
-  <data name="&gt;&gt;N64_RemoveT64.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;N64_FixBrightness.Name" xml:space="preserve">
-    <value>N64_FixBrightness</value>
-  </data>
-  <data name="&gt;&gt;N64_FixBrightness.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;N64_FixBrightness.Parent" xml:space="preserve">
-    <value>Options_N64</value>
-  </data>
-  <data name="&gt;&gt;N64_FixBrightness.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;N64_Allocation.Name" xml:space="preserve">
-    <value>N64_Allocation</value>
-  </data>
-  <data name="&gt;&gt;N64_Allocation.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;N64_Allocation.Parent" xml:space="preserve">
-    <value>Options_N64</value>
-  </data>
-  <data name="&gt;&gt;N64_Allocation.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;N64_FixCrash.Name" xml:space="preserve">
-    <value>N64_FixCrash</value>
-  </data>
-  <data name="&gt;&gt;N64_FixCrash.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;N64_FixCrash.Parent" xml:space="preserve">
-    <value>Options_N64</value>
-  </data>
-  <data name="&gt;&gt;N64_FixCrash.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;N64_UseExpansionPak.Name" xml:space="preserve">
-    <value>N64_UseExpansionPak</value>
-  </data>
-  <data name="&gt;&gt;N64_UseExpansionPak.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;N64_UseExpansionPak.Parent" xml:space="preserve">
-    <value>Options_N64</value>
-  </data>
-  <data name="&gt;&gt;N64_UseExpansionPak.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="Options_N64.Location" type="System.Drawing.Point, System.Drawing">
-    <value>27, 113</value>
-  </data>
-  <data name="Options_N64.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
-  </data>
-  <data name="Options_N64.Size" type="System.Drawing.Size, System.Drawing">
-    <value>630, 230</value>
-  </data>
-  <data name="Options_N64.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="Options_N64.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;Options_N64.Name" xml:space="preserve">
-    <value>Options_N64</value>
-  </data>
-  <data name="&gt;&gt;Options_N64.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Options_N64.Parent" xml:space="preserve">
-    <value>page4</value>
-  </data>
-  <data name="&gt;&gt;Options_N64.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
   <data name="N64_ROMType.Items" xml:space="preserve">
     <value>Big Endian (*.z64)</value>
   </data>
@@ -2755,6 +1960,54 @@
   <data name="&gt;&gt;N64_UseExpansionPak.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
+  <data name="Options_N64.Location" type="System.Drawing.Point, System.Drawing">
+    <value>27, 113</value>
+  </data>
+  <data name="Options_N64.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 6, 6, 6</value>
+  </data>
+  <data name="Options_N64.Size" type="System.Drawing.Size, System.Drawing">
+    <value>630, 230</value>
+  </data>
+  <data name="Options_N64.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="Options_N64.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;Options_N64.Name" xml:space="preserve">
+    <value>Options_N64</value>
+  </data>
+  <data name="&gt;&gt;Options_N64.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Options_N64.Parent" xml:space="preserve">
+    <value>page4</value>
+  </data>
+  <data name="&gt;&gt;Options_N64.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="SNES_FixBrightness.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="SNES_FixBrightness.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="SNES_FixBrightness.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 12</value>
+  </data>
+  <data name="SNES_FixBrightness.Size" type="System.Drawing.Size, System.Drawing">
+    <value>109, 19</value>
+  </data>
+  <data name="SNES_FixBrightness.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="SNES_FixBrightness.Text" xml:space="preserve">
+    <value>snes_brightness</value>
+  </data>
+  <data name="SNES_FixBrightness.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="&gt;&gt;SNES_FixBrightness.Name" xml:space="preserve">
     <value>SNES_FixBrightness</value>
   </data>
@@ -2793,90 +2046,6 @@
   </data>
   <data name="&gt;&gt;Options_SNES.ZOrder" xml:space="preserve">
     <value>12</value>
-  </data>
-  <data name="SNES_FixBrightness.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="SNES_FixBrightness.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="SNES_FixBrightness.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 12</value>
-  </data>
-  <data name="SNES_FixBrightness.Size" type="System.Drawing.Size, System.Drawing">
-    <value>109, 19</value>
-  </data>
-  <data name="SNES_FixBrightness.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="SNES_FixBrightness.Text" xml:space="preserve">
-    <value>snes_brightness</value>
-  </data>
-  <data name="SNES_FixBrightness.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;SNES_FixBrightness.Name" xml:space="preserve">
-    <value>SNES_FixBrightness</value>
-  </data>
-  <data name="&gt;&gt;SNES_FixBrightness.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;SNES_FixBrightness.Parent" xml:space="preserve">
-    <value>Options_SNES</value>
-  </data>
-  <data name="&gt;&gt;SNES_FixBrightness.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;NES_Palette.Name" xml:space="preserve">
-    <value>NES_Palette</value>
-  </data>
-  <data name="&gt;&gt;NES_Palette.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;NES_Palette.Parent" xml:space="preserve">
-    <value>Options_NES</value>
-  </data>
-  <data name="&gt;&gt;NES_Palette.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;NES__000.Name" xml:space="preserve">
-    <value>NES__000</value>
-  </data>
-  <data name="&gt;&gt;NES__000.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;NES__000.Parent" xml:space="preserve">
-    <value>Options_NES</value>
-  </data>
-  <data name="&gt;&gt;NES__000.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="Options_NES.Location" type="System.Drawing.Point, System.Drawing">
-    <value>27, 113</value>
-  </data>
-  <data name="Options_NES.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
-  </data>
-  <data name="Options_NES.Size" type="System.Drawing.Size, System.Drawing">
-    <value>630, 230</value>
-  </data>
-  <data name="Options_NES.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="Options_NES.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;Options_NES.Name" xml:space="preserve">
-    <value>Options_NES</value>
-  </data>
-  <data name="&gt;&gt;Options_NES.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Options_NES.Parent" xml:space="preserve">
-    <value>page4</value>
-  </data>
-  <data name="&gt;&gt;Options_NES.ZOrder" xml:space="preserve">
-    <value>13</value>
   </data>
   <data name="NES_Palette.Items" xml:space="preserve">
     <value>null</value>
@@ -2932,6 +2101,51 @@
   <data name="&gt;&gt;NES__000.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="Options_NES.Location" type="System.Drawing.Point, System.Drawing">
+    <value>27, 113</value>
+  </data>
+  <data name="Options_NES.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 6, 6, 6</value>
+  </data>
+  <data name="Options_NES.Size" type="System.Drawing.Size, System.Drawing">
+    <value>630, 230</value>
+  </data>
+  <data name="Options_NES.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="Options_NES.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;Options_NES.Name" xml:space="preserve">
+    <value>Options_NES</value>
+  </data>
+  <data name="&gt;&gt;Options_NES.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Options_NES.Parent" xml:space="preserve">
+    <value>page4</value>
+  </data>
+  <data name="&gt;&gt;Options_NES.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="SEGA_SetConfig.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="SEGA_SetConfig.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="SEGA_SetConfig.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
+  </data>
+  <data name="SEGA_SetConfig.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 19</value>
+  </data>
+  <data name="SEGA_SetConfig.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="SEGA_SetConfig.Text" xml:space="preserve">
+    <value>set_config</value>
+  </data>
   <data name="&gt;&gt;SEGA_SetConfig.Name" xml:space="preserve">
     <value>SEGA_SetConfig</value>
   </data>
@@ -2970,171 +2184,6 @@
   </data>
   <data name="&gt;&gt;Options_SEGA.ZOrder" xml:space="preserve">
     <value>14</value>
-  </data>
-  <data name="SEGA_SetConfig.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="SEGA_SetConfig.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="SEGA_SetConfig.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 12</value>
-  </data>
-  <data name="SEGA_SetConfig.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 19</value>
-  </data>
-  <data name="SEGA_SetConfig.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="SEGA_SetConfig.Text" xml:space="preserve">
-    <value>set_config</value>
-  </data>
-  <data name="&gt;&gt;SEGA_SetConfig.Name" xml:space="preserve">
-    <value>SEGA_SetConfig</value>
-  </data>
-  <data name="&gt;&gt;SEGA_SetConfig.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;SEGA_SetConfig.Parent" xml:space="preserve">
-    <value>Options_SEGA</value>
-  </data>
-  <data name="&gt;&gt;SEGA_SetConfig.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;Flash__005.Name" xml:space="preserve">
-    <value>Flash__005</value>
-  </data>
-  <data name="&gt;&gt;Flash__005.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Flash__005.Parent" xml:space="preserve">
-    <value>Options_Flash</value>
-  </data>
-  <data name="&gt;&gt;Flash__005.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;Flash_StrapReminder.Name" xml:space="preserve">
-    <value>Flash_StrapReminder</value>
-  </data>
-  <data name="&gt;&gt;Flash_StrapReminder.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Flash_StrapReminder.Parent" xml:space="preserve">
-    <value>Options_Flash</value>
-  </data>
-  <data name="&gt;&gt;Flash_StrapReminder.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;Flash_Controller.Name" xml:space="preserve">
-    <value>Flash_Controller</value>
-  </data>
-  <data name="&gt;&gt;Flash_Controller.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Flash_Controller.Parent" xml:space="preserve">
-    <value>Options_Flash</value>
-  </data>
-  <data name="&gt;&gt;Flash_Controller.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;Flash_FPS.Name" xml:space="preserve">
-    <value>Flash_FPS</value>
-  </data>
-  <data name="&gt;&gt;Flash_FPS.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Flash_FPS.Parent" xml:space="preserve">
-    <value>Options_Flash</value>
-  </data>
-  <data name="&gt;&gt;Flash_FPS.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;Flash_CustomFPS.Name" xml:space="preserve">
-    <value>Flash_CustomFPS</value>
-  </data>
-  <data name="&gt;&gt;Flash_CustomFPS.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Flash_CustomFPS.Parent" xml:space="preserve">
-    <value>Options_Flash</value>
-  </data>
-  <data name="&gt;&gt;Flash_CustomFPS.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;Flash__002.Name" xml:space="preserve">
-    <value>Flash__002</value>
-  </data>
-  <data name="&gt;&gt;Flash__002.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Flash__002.Parent" xml:space="preserve">
-    <value>Options_Flash</value>
-  </data>
-  <data name="&gt;&gt;Flash__002.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;Flash_TotalSaveDataSize.Name" xml:space="preserve">
-    <value>Flash_TotalSaveDataSize</value>
-  </data>
-  <data name="&gt;&gt;Flash_TotalSaveDataSize.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Flash_TotalSaveDataSize.Parent" xml:space="preserve">
-    <value>Options_Flash</value>
-  </data>
-  <data name="&gt;&gt;Flash_TotalSaveDataSize.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;Flash_UseSaveData.Name" xml:space="preserve">
-    <value>Flash_UseSaveData</value>
-  </data>
-  <data name="&gt;&gt;Flash_UseSaveData.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Flash_UseSaveData.Parent" xml:space="preserve">
-    <value>Options_Flash</value>
-  </data>
-  <data name="&gt;&gt;Flash_UseSaveData.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;Flash_HBMNoSave.Name" xml:space="preserve">
-    <value>Flash_HBMNoSave</value>
-  </data>
-  <data name="&gt;&gt;Flash_HBMNoSave.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Flash_HBMNoSave.Parent" xml:space="preserve">
-    <value>Options_Flash</value>
-  </data>
-  <data name="&gt;&gt;Flash_HBMNoSave.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="Options_Flash.Location" type="System.Drawing.Point, System.Drawing">
-    <value>27, 113</value>
-  </data>
-  <data name="Options_Flash.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
-  </data>
-  <data name="Options_Flash.Size" type="System.Drawing.Size, System.Drawing">
-    <value>630, 230</value>
-  </data>
-  <data name="Options_Flash.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="Options_Flash.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;Options_Flash.Name" xml:space="preserve">
-    <value>Options_Flash</value>
-  </data>
-  <data name="&gt;&gt;Options_Flash.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Options_Flash.Parent" xml:space="preserve">
-    <value>page4</value>
-  </data>
-  <data name="&gt;&gt;Options_Flash.ZOrder" xml:space="preserve">
-    <value>15</value>
   </data>
   <data name="Flash__005.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3427,6 +2476,51 @@
   <data name="&gt;&gt;Flash_HBMNoSave.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
+  <data name="Options_Flash.Location" type="System.Drawing.Point, System.Drawing">
+    <value>27, 113</value>
+  </data>
+  <data name="Options_Flash.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 6, 6, 6</value>
+  </data>
+  <data name="Options_Flash.Size" type="System.Drawing.Size, System.Drawing">
+    <value>630, 230</value>
+  </data>
+  <data name="Options_Flash.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="Options_Flash.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;Options_Flash.Name" xml:space="preserve">
+    <value>Options_Flash</value>
+  </data>
+  <data name="&gt;&gt;Options_Flash.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Options_Flash.Parent" xml:space="preserve">
+    <value>page4</value>
+  </data>
+  <data name="&gt;&gt;Options_Flash.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="NeoGeo_BIOS.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="NeoGeo_BIOS.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="NeoGeo_BIOS.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 12</value>
+  </data>
+  <data name="NeoGeo_BIOS.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 19</value>
+  </data>
+  <data name="NeoGeo_BIOS.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="NeoGeo_BIOS.Text" xml:space="preserve">
+    <value>bios</value>
+  </data>
   <data name="&gt;&gt;NeoGeo_BIOS.Name" xml:space="preserve">
     <value>NeoGeo_BIOS</value>
   </data>
@@ -3466,87 +2560,6 @@
   <data name="&gt;&gt;Options_NeoGeo.ZOrder" xml:space="preserve">
     <value>16</value>
   </data>
-  <data name="NeoGeo_BIOS.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="NeoGeo_BIOS.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="NeoGeo_BIOS.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 12</value>
-  </data>
-  <data name="NeoGeo_BIOS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 19</value>
-  </data>
-  <data name="NeoGeo_BIOS.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="NeoGeo_BIOS.Text" xml:space="preserve">
-    <value>bios</value>
-  </data>
-  <data name="&gt;&gt;NeoGeo_BIOS.Name" xml:space="preserve">
-    <value>NeoGeo_BIOS</value>
-  </data>
-  <data name="&gt;&gt;NeoGeo_BIOS.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;NeoGeo_BIOS.Parent" xml:space="preserve">
-    <value>Options_NeoGeo</value>
-  </data>
-  <data name="&gt;&gt;NeoGeo_BIOS.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;PCE_SetConfig.Name" xml:space="preserve">
-    <value>PCE_SetConfig</value>
-  </data>
-  <data name="&gt;&gt;PCE_SetConfig.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PCE_SetConfig.Parent" xml:space="preserve">
-    <value>Options_PCE</value>
-  </data>
-  <data name="&gt;&gt;PCE_SetConfig.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;PCE_CustomOptions.Name" xml:space="preserve">
-    <value>PCE_CustomOptions</value>
-  </data>
-  <data name="&gt;&gt;PCE_CustomOptions.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PCE_CustomOptions.Parent" xml:space="preserve">
-    <value>Options_PCE</value>
-  </data>
-  <data name="&gt;&gt;PCE_CustomOptions.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="Options_PCE.Location" type="System.Drawing.Point, System.Drawing">
-    <value>27, 113</value>
-  </data>
-  <data name="Options_PCE.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
-  </data>
-  <data name="Options_PCE.Size" type="System.Drawing.Size, System.Drawing">
-    <value>630, 230</value>
-  </data>
-  <data name="Options_PCE.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="Options_PCE.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;Options_PCE.Name" xml:space="preserve">
-    <value>Options_PCE</value>
-  </data>
-  <data name="&gt;&gt;Options_PCE.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Options_PCE.Parent" xml:space="preserve">
-    <value>page4</value>
-  </data>
-  <data name="&gt;&gt;Options_PCE.ZOrder" xml:space="preserve">
-    <value>17</value>
-  </data>
   <data name="PCE_SetConfig.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3576,105 +2589,6 @@
   </data>
   <data name="&gt;&gt;PCE_SetConfig.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="&gt;&gt;PCE_NoFPA.Name" xml:space="preserve">
-    <value>PCE_NoFPA</value>
-  </data>
-  <data name="&gt;&gt;PCE_NoFPA.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PCE_NoFPA.Parent" xml:space="preserve">
-    <value>PCE_CustomOptions</value>
-  </data>
-  <data name="&gt;&gt;PCE_NoFPA.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;PCE_Multitap.Name" xml:space="preserve">
-    <value>PCE_Multitap</value>
-  </data>
-  <data name="&gt;&gt;PCE_Multitap.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PCE_Multitap.Parent" xml:space="preserve">
-    <value>PCE_CustomOptions</value>
-  </data>
-  <data name="&gt;&gt;PCE_Multitap.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;PCE_Pad5.Name" xml:space="preserve">
-    <value>PCE_Pad5</value>
-  </data>
-  <data name="&gt;&gt;PCE_Pad5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PCE_Pad5.Parent" xml:space="preserve">
-    <value>PCE_CustomOptions</value>
-  </data>
-  <data name="&gt;&gt;PCE_Pad5.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;PCE_HideOverscan.Name" xml:space="preserve">
-    <value>PCE_HideOverscan</value>
-  </data>
-  <data name="&gt;&gt;PCE_HideOverscan.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PCE_HideOverscan.Parent" xml:space="preserve">
-    <value>PCE_CustomOptions</value>
-  </data>
-  <data name="&gt;&gt;PCE_HideOverscan.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;PCE_BackupRAM.Name" xml:space="preserve">
-    <value>PCE_BackupRAM</value>
-  </data>
-  <data name="&gt;&gt;PCE_BackupRAM.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PCE_BackupRAM.Parent" xml:space="preserve">
-    <value>PCE_CustomOptions</value>
-  </data>
-  <data name="&gt;&gt;PCE_BackupRAM.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;PCE_Raster.Name" xml:space="preserve">
-    <value>PCE_Raster</value>
-  </data>
-  <data name="&gt;&gt;PCE_Raster.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PCE_Raster.Parent" xml:space="preserve">
-    <value>PCE_CustomOptions</value>
-  </data>
-  <data name="&gt;&gt;PCE_Raster.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="PCE_CustomOptions.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="PCE_CustomOptions.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="PCE_CustomOptions.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 45</value>
-  </data>
-  <data name="PCE_CustomOptions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>618, 179</value>
-  </data>
-  <data name="PCE_CustomOptions.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;PCE_CustomOptions.Name" xml:space="preserve">
-    <value>PCE_CustomOptions</value>
-  </data>
-  <data name="&gt;&gt;PCE_CustomOptions.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PCE_CustomOptions.Parent" xml:space="preserve">
-    <value>Options_PCE</value>
-  </data>
-  <data name="&gt;&gt;PCE_CustomOptions.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="PCE_NoFPA.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3855,6 +2769,84 @@
   </data>
   <data name="&gt;&gt;PCE_Raster.ZOrder" xml:space="preserve">
     <value>5</value>
+  </data>
+  <data name="PCE_CustomOptions.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="PCE_CustomOptions.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="PCE_CustomOptions.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 45</value>
+  </data>
+  <data name="PCE_CustomOptions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>618, 179</value>
+  </data>
+  <data name="PCE_CustomOptions.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;PCE_CustomOptions.Name" xml:space="preserve">
+    <value>PCE_CustomOptions</value>
+  </data>
+  <data name="&gt;&gt;PCE_CustomOptions.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PCE_CustomOptions.Parent" xml:space="preserve">
+    <value>Options_PCE</value>
+  </data>
+  <data name="&gt;&gt;PCE_CustomOptions.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="Options_PCE.Location" type="System.Drawing.Point, System.Drawing">
+    <value>27, 113</value>
+  </data>
+  <data name="Options_PCE.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 6, 6, 6</value>
+  </data>
+  <data name="Options_PCE.Size" type="System.Drawing.Size, System.Drawing">
+    <value>630, 230</value>
+  </data>
+  <data name="Options_PCE.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="Options_PCE.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;Options_PCE.Name" xml:space="preserve">
+    <value>Options_PCE</value>
+  </data>
+  <data name="&gt;&gt;Options_PCE.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Options_PCE.Parent" xml:space="preserve">
+    <value>page4</value>
+  </data>
+  <data name="&gt;&gt;Options_PCE.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="page4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 31</value>
+  </data>
+  <data name="page4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>684, 380</value>
+  </data>
+  <data name="page4.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="page4.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;page4.Name" xml:space="preserve">
+    <value>page4</value>
+  </data>
+  <data name="&gt;&gt;page4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;page4.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;page4.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <metadata name="ToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>381, 17</value>
