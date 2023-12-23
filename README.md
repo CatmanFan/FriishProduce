@@ -60,10 +60,15 @@ Currently supported:
   * **Shockwave/Adobe Flash**
 
 ## To-Do
-- [ ] Try redirecting foreign language *.json files in [main/FriishProduce/langs](https://github.com/CatmanFan/FriishProduce/tree/main/FriishProduce/langs) to a separate location/repo
+* New interface design to be implemented
+* Try redirecting foreign language *.json files in [main/FriishProduce/langs](https://github.com/CatmanFan/FriishProduce/tree/main/FriishProduce/langs) to a separate location/repo
 * Other VC injection support:
-  - [ ] Commodore 64
-  - [ ] TurboGrafx-16 CD
+  * Commodore 64
+  * TurboGrafx-16 CD
+* Other forwarders support:
+  * Game Boy
+  * Game Boy Color
+  * Game Boy Advance
 
 ## Credits
 This program uses the following third-party components and apps:
