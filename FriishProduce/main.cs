@@ -52,9 +52,9 @@ namespace FriishProduce
                 x.Get("NeoGeo"),
                 x.Get("MSX"),
                 x.Get("Flash"),
-                x.Get("GB"),
+                /* x.Get("GB"),
                 x.Get("GBC"),
-                x.Get("GBA"),
+                x.Get("GBA"), */
                 x.Get("PSX")
             };
             foreach (var console in consoles) Console.Items.Add(console);

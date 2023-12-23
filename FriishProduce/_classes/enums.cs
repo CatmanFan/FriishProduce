@@ -12,10 +12,10 @@
         MSX = 7,
         C64 = 109,
         Flash = 8,
-        GB = 9,
+        GB = 12,
         GBC = 10,
         GBA = 11,
-        PSX = 12,
+        PSX = 9,
         S32X = 13,
         SMCD = 14,
     }
