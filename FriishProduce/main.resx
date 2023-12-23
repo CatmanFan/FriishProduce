@@ -1357,9 +1357,6 @@
   <data name="BIOS_Boot.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>TopLeft</value>
   </data>
-  <data name="BIOS_Boot.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="&gt;&gt;BIOS_Boot.Name" xml:space="preserve">
     <value>BIOS_Boot</value>
   </data>

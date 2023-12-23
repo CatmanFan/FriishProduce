@@ -210,7 +210,7 @@ namespace FriishProduce
             if (ForwarderMode && currentConsole == Platforms.GBA)
                 if (InjectionMethod.SelectedItem.ToString() == new Injectors.Forwarders().List[14])
                 {
-                    BIOS_Boot.Visible = true;
+                    // BIOS_Boot.Visible = true;
                     vWii.Checked = false;
                     vWii.Visible = false;
                 }
