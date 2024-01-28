@@ -6,7 +6,7 @@
 **FriishProduce** is a WAD injector for Wii/vWii, which allows for automated ROM replacement in Wii channels.
 This application is designed to streamline the process to as few third-party programs as possible.
 
-***The project and readme are currently under work-in-progress and will be updated over the course of time.***
+***Currently under work-in-progress.***
 
 ---
 
