@@ -21,6 +21,8 @@ This injector bypasses other third-party assets (such as Common-Key.bin, HowardC
 
 ## How-to
 *Coming soon*
+
+---
 For information on how to use the [legacy edition](https://github.com/CatmanFan/FriishProduce/tree/main/legacy) (versions 0.0.1.0-alpha to 0.26-beta), see the [Wiki](https://github.com/CatmanFan/FriishProduce/wiki/Setup).
 
 **Make sure you have a (v)Wii NAND backup in case anything goes wrong!**
