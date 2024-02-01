@@ -3,7 +3,6 @@
         "code": "fr",
         "author": "CatmanFan"
     },
-
     "consoles": {
         "NES": "NES / Famicom",
         "SNES": "SNES / Super Famicom",
@@ -16,7 +15,6 @@
         "MSX": "MSX / MSX2",
         "PSX": "Sony PlayStation"
     },
-
     "filters": {
         "f_all": "|Tous les fichiers (*.*)|*.*",
         "f_img": "Tous les formats sont pris en charge (*.bmp, *.jpg, *.jpeg, *.png)|*.bmp;*.jpg;*.jpeg;*.png|    Bitmap Windows (*.bmp)|*.bmp|    JPEG (*.jpg, *.jpeg)|*.jpg;*.jpeg|    PNG (*.png)|*.png",
@@ -33,7 +31,6 @@
         "f_pce": "Fichiers ROM de PC Engine / TurboGrafx-16 (*.pce)|*.pce",
         "f_msx": "Fichiers ROM de MSX / MSX2 (*.rom, *.mx1, *.mx2)|*.rom;*.mx1;*.mx2"
     },
-
     "messages": {
         "m000": "Un redémarrage de l'application est nécessaire pour que les changements aux paramètres prennent effet.\nRedémarrer maintenant ?",
         "m001": "Ignorer les modifications non enregistrées dans « {0} » ?",
@@ -46,7 +43,6 @@
         "error002": "Unable to replace data.",
         "error003": "La ROM à injecter est trop grande, car son taille est plus de {0} {1}."
     },
-
     "settings": {
         "s000": "Application",
         "s001": "Langue :",
@@ -55,7 +51,6 @@
         "s004": "Réglages par défaut",
         "s005": "Méthode d'interpolation des images :"
     },
-
     "ribbon": {
         "r000": "Fichier",
         "r001": "Accueil",
@@ -72,7 +67,6 @@
         "r012": "Nouveau...",
         "r013": "Chaîne {0}"
     },
-
     "global": {
         "g000": "FriishProduce",
         "g001": "Paramètres",
@@ -84,7 +78,6 @@
         "OK": "&OK",
         "Cancel": "&Annuler"
     },
-
     "forms": {
         "gbox000": "Information sur la ROM",
         "gbox001": "Métadonnées de la chaîne",

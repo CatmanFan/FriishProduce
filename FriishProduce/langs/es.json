@@ -3,13 +3,11 @@
         "code": "es",
         "author": "CatmanFan"
     },
-
     "consoles": {
         "NES": "NES (Famicom)",
         "SNES": "Super NES (Super Famicom)",
         "NeoGeo": "SNK Neo-Geo"
     },
-
     "filters": {
         "f_all": "|Todos los archivos (*.*)|*.*",
         "f_img": "Imágenes (*.bmp, *.jpg, *.jpeg, *.png)|*.bmp;*.jpg;*.jpeg;*.png|    Bitmap (*.bmp)|*.bmp|    JPEG (*.jpg, *.jpeg)|*.jpg;*.jpeg|    PNG (*.png)|*.png",
@@ -26,7 +24,6 @@
         "f_pce": "Archivos ROM de TurboGrafx-16/PC Engine (*.pce)|*.pce",
         "f_msx": "Archivos ROM de MSX/MSX2 (*.rom, *.mx1, *.mx2)|*.rom;*.mx1;*.mx2"
     },
-    
     "messages": {
         "m000": "Algunos cambios necesitan que se reinicie el programa para que tengan efecto.\n¿Reiniciar ahora?",
         "m001": "¿Desea descartar los cambios no guardados en \"{0}\"?",
@@ -36,7 +33,6 @@
         "error": "Ha encontrado un error",
         "error000": "No se pudo conectar al Internet."
     },
-
     "settings": {
         "s000": "Programa",
         "s001": "Idioma:",
@@ -46,7 +42,6 @@
         "s005": "Método de interpolación de imágenes:",
         "s006": "Cargar automáticamente datos desde LibRetro para la ROM\nseleccionada"
     },
-
     "ribbon": {
         "r000": "Archivo",
         "r001": "Inicio",
@@ -63,7 +58,6 @@
         "r012": "Nuevo...",
         "r013": "Canal {0}",
     },
-
     "global": {
         "g000": "FriishProduce",
         "g001": "Opciones",
@@ -73,7 +67,6 @@
         "OK": "&Aceptar",
         "Cancel": "&Cancelar",
     },
-
     "forms": {
         "gbox000": "ROM information",
         "gbox001": "Cabecera del canal",

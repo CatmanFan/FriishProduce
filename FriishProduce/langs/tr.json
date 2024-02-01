@@ -3,7 +3,6 @@
         "code": "tr",
         "author": "CatmanFan"
     },
-
     "consoles": {
         "NES": "NES/Famicom",
         "SNES": "SNES/Super Famicom",
@@ -17,7 +16,6 @@
         "MSX": "Microsoft MSX/MSX2",
         "Flash": "Adobe Flash"
     },
-
     "filters": {
         "f_all": "|Tüm Dosyalar (*.*)|*.*",
         "f_img": "Tüm Resimler (*.bmp, *.jpg, *.jpeg, *.png)|*.bmp;*.jpg;*.jpeg;*.png|    BMP Dosyası (*.bmp)|*.bmp|    JPEG Dosyası (*.jpg, *.jpeg)|*.jpg;*.jpeg|    PNG Dosyası (*.png)|*.png",
@@ -34,7 +32,6 @@
         "f_pce": "TurboGrafx-16/PC Engine ROM Dosyası (*.pce)|*.pce",
         "f_msx": "MSX1/MSX2 ROM Dosyası (*.rom, *.mx1, *.mx2)|*.rom;*.mx1;*.mx2"
     },
-
     "messages": {
         "m001": "\"{0}\" projesinin kaydedilmemiş değişiklikleri silinsin mi?",
         "m002": "Kaydedilmemiş tüm değişiklikler silinsin mi?",
@@ -42,7 +39,6 @@
         "error000": "İnternet bağlantısı yok.",
         "error001": "Resim oluşturma başarısız oldu."
     },
-
     "settings": {
         "s000": "Uygulama",
         "s001": "Dil:",
@@ -50,7 +46,6 @@
         "s004": "Varsayılan Ayarları",
         "s005": "Resim Enterpolasyonu:"
     },
-
     "ribbon": {
         "r000": "Dosya",
         "r001": "Giriş",
@@ -67,7 +62,6 @@
         "r012": "Yeni...",
         "r013": "{0} Kanalı"
     },
-
     "global": {
         "g001": "Ayarlar",
         "g002": "{0} Hakkında",
@@ -76,7 +70,6 @@
         "OK": "&Tamam",
         "Cancel": "&İptal",
     },
-
     "forms": {
         "gbox000": "ROM Bilgisi",
         "gbox001": "Kanal Başlığı",
