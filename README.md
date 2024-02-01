@@ -1,6 +1,6 @@
 # FriishProduce
 <div align=center><a href=""><img src="https://raw.githubusercontent.com/CatmanFan/FriishProduce/main/legacy/FriishProduce/Resources/images/icon.png" width="105" height="75" /></a><br>
-![FriishProduce_t1](https://github.com/CatmanFan/FriishProduce/assets/30674270/41e75431-dd12-4279-b9a2-d3639655cb97)<br>
+<img src="https://github-production-user-asset-6210df.s3.amazonaws.com/30674270/301394080-41e75431-dd12-4279-b9a2-d3639655cb97.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240201%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240201T052141Z&X-Amz-Expires=300&X-Amz-Signature=ef1c65ed0333380ac9e02f54bea6dce0d45ec301b2b0a893195d26bb8de0c074&X-Amz-SignedHeaders=host&actor_id=30674270&key_id=0&repo_id=625060006" width="600" height="394"/><br>
 <a href="https://gbatemp.net/threads/friishproduce-multiplatform-wad-injector.632028/"><img src="https://img.shields.io/badge/GBAtemp-thread-informational?style=plastic" /></a>
 </div>
 
