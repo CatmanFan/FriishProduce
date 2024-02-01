@@ -37,7 +37,7 @@ namespace FriishProduce
             // Options
             // *******
             nespl.SelectedIndex = int.Parse(Settings[0]);
-            nes002.Checked = Settings[1] == "1";
+            nes001.Checked = Settings[1] == "1";
             // *******
         }
 
@@ -46,7 +46,7 @@ namespace FriishProduce
             // Options
             // *******
             Settings[0] = nespl.SelectedIndex.ToString();
-            Settings[1] = nes002.Checked ? "1" : "0";
+            Settings[1] = nes001.Checked ? "1" : "0";
             // *******
 
             DialogResult = DialogResult.OK;
@@ -259,28 +259,28 @@ namespace FriishProduce
             switch (nespl.SelectedIndex)
             {
                 case 0:
-                    nes001.Text = string.Format(Strings.Get("nes001"), "Nintendo");
+                    g005.Text = string.Format(Strings.Get("nes001"), "Nintendo");
                     break;
                 case 1:
                 case 2:
-                    nes001.Text = string.Format(Strings.Get("nes001"), "Nintendo / SuperrSonic");
+                    g005.Text = string.Format(Strings.Get("nes001"), "Nintendo / SuperrSonic");
                     break;
                 case 3:
-                    nes001.Text = string.Format(Strings.Get("nes001"), "Nintendo / FirebrandX");
+                    g005.Text = string.Format(Strings.Get("nes001"), "Nintendo / FirebrandX");
                     break;
                 case 4:
-                    nes001.Text = string.Format(Strings.Get("nes001"), "Nintendo / N-Mario");
+                    g005.Text = string.Format(Strings.Get("nes001"), "Nintendo / N-Mario");
                     break;
                 case 5:
                 case 6:
-                    nes001.Text = string.Format(Strings.Get("nes001"), "Nestopia");
+                    g005.Text = string.Format(Strings.Get("nes001"), "Nestopia");
                     break;
                 case 7:
-                    nes001.Text = string.Format(Strings.Get("nes001"), "FCEUX");
+                    g005.Text = string.Format(Strings.Get("nes001"), "FCEUX");
                     break;
                 case 8:
                 case 9:
-                    nes001.Text = string.Format(Strings.Get("nes001"), "FirebrandX");
+                    g005.Text = string.Format(Strings.Get("nes001"), "FirebrandX");
                     break;
             }
         }

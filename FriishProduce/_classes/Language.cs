@@ -22,28 +22,47 @@ namespace FriishProduce
 
         internal static Dictionary<string, string> Read(string jsonFile)
         {
+            if (Path.GetExtension(jsonFile).ToLower() != ".json") return null;
+
             try
             {
-                var jsonReader = JsonConvert.DeserializeObject<JObject>(File.ReadAllText(jsonFile));
-                var jsonCode = jsonReader["key"].ToString();
-                var jsonName = new CultureInfo(Path.GetFileNameWithoutExtension(jsonFile)).DisplayName;
+                JObject jsonReader = new JObject();
 
-                var target = new Dictionary<string, string>();
+                try { jsonReader = JsonConvert.DeserializeObject<JObject>(File.ReadAllText(jsonFile)); }
+                catch { throw new Exception($"File \"{Path.GetFileName(jsonFile)}\" was not found."); }
 
+                int index = 0;
                 try
                 {
-                    foreach (JProperty element in jsonReader.Children<JToken>())
-                        target.Add(element.Name, element.Value.ToString());
+                    var jsonCode = jsonReader["key"].ToString();
+                    var jsonName = new CultureInfo(Path.GetFileNameWithoutExtension(jsonFile)).DisplayName;
+
+                    var target = new Dictionary<string, string>() { { "key", jsonReader["key"].ToString() }, { "author", jsonReader["author"].ToString() } };
+
+                    for (int i = 2; i < jsonReader.Children<JToken>().Count(); i++)
+                    {
+                        foreach (JObject category in jsonReader.Children<JToken>().ElementAt(i).Children())
+                            foreach (JProperty element in category.Properties())
+                            {
+                                index++;
+                                target.Add(element.Name, element.Value.ToString());
+                            }
+                    }
+
+                    return target;
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception("Failed at " + (target.Count - 1).ToString() + "." + Environment.NewLine + ex.Message);
+                    string msg = "Failed to collect language data at index " + index.ToString() + "." + Environment.NewLine + Environment.NewLine + "Exception name: " + ex.GetType().Name + Environment.NewLine + "Exception message: " + ex.Message;
+                    if (ex.GetType().Name != "InvalidCastException") msg += Environment.NewLine + Environment.NewLine + $"Please check the value \"key\" in langs\\{Path.GetFileName(jsonFile)} and make sure it matches the filename.";
+                    throw new Exception(msg);
                 }
 
-                return target;
             }
-            catch
+            catch (Exception ex)
             {
+                MessageBox.Show(ex.Message + Environment.NewLine + Environment.NewLine + "The application will now shut down.", "Halt", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                Environment.FailFast(ex.Message);
                 return null;
             }
         }
@@ -183,7 +202,11 @@ namespace FriishProduce
             if (c.GetType() == typeof(ComboBox) && ((ComboBox)c).Items.Contains("null"))
             {
                 ((ComboBox)c).Items.Remove("null");
-                for (int i = 0; i < 20; i++)
+
+                int x = Get(c.Tag + $"_{0}") != "undefined" ? 0 : 1;
+                if (x == 1) try { ((ComboBox)c).Items.Add(Get("g006")); } catch { } // "Default" item
+
+                for (int i = x; i < 20; i++)
                     if (Get(c.Tag + $"_{i}") != "undefined")
                         try { ((ComboBox)c).Items.Add(Get(c.Tag + $"_{i}")); } catch { }
                     else if (Get(c.Name + $"_{i}") != "undefined")

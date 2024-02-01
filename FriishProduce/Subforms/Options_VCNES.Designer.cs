@@ -35,9 +35,9 @@ namespace FriishProduce
             this.nespl = new System.Windows.Forms.ComboBox();
             this.nes000 = new System.Windows.Forms.Label();
             this.gbox007 = new System.Windows.Forms.GroupBox();
-            this.nes001 = new System.Windows.Forms.Label();
+            this.g005 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.nes002 = new System.Windows.Forms.CheckBox();
+            this.nes001 = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.gbox007.SuspendLayout();
@@ -101,11 +101,11 @@ namespace FriishProduce
             // 
             // gbox007
             // 
-            this.gbox007.Controls.Add(this.nes001);
+            this.gbox007.Controls.Add(this.g005);
             this.gbox007.Controls.Add(this.pictureBox1);
             this.gbox007.Controls.Add(this.nespl);
             this.gbox007.Controls.Add(this.nes000);
-            this.gbox007.Controls.Add(this.nes002);
+            this.gbox007.Controls.Add(this.nes001);
             this.gbox007.Location = new System.Drawing.Point(19, 17);
             this.gbox007.Name = "gbox007";
             this.gbox007.Size = new System.Drawing.Size(390, 335);
@@ -113,16 +113,16 @@ namespace FriishProduce
             this.gbox007.TabStop = false;
             this.gbox007.Text = "screen";
             // 
-            // nes001
+            // g005
             // 
-            this.nes001.AutoSize = true;
-            this.nes001.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.nes001.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.nes001.Location = new System.Drawing.Point(93, 307);
-            this.nes001.Name = "nes001";
-            this.nes001.Size = new System.Drawing.Size(47, 13);
-            this.nes001.TabIndex = 11;
-            this.nes001.Text = "author:";
+            this.g005.AutoSize = true;
+            this.g005.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.g005.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.g005.Location = new System.Drawing.Point(93, 307);
+            this.g005.Name = "g005";
+            this.g005.Size = new System.Drawing.Size(47, 13);
+            this.g005.TabIndex = 11;
+            this.g005.Text = "author:";
             // 
             // pictureBox1
             // 
@@ -135,15 +135,15 @@ namespace FriishProduce
             this.pictureBox1.TabIndex = 10;
             this.pictureBox1.TabStop = false;
             // 
-            // nes002
+            // nes001
             // 
-            this.nes002.AutoSize = true;
-            this.nes002.Location = new System.Drawing.Point(96, 283);
-            this.nes002.Name = "nes002";
-            this.nes002.Size = new System.Drawing.Size(80, 17);
-            this.nes002.TabIndex = 12;
-            this.nes002.Text = "checkBox1";
-            this.nes002.UseVisualStyleBackColor = true;
+            this.nes001.AutoSize = true;
+            this.nes001.Location = new System.Drawing.Point(96, 283);
+            this.nes001.Name = "nes001";
+            this.nes001.Size = new System.Drawing.Size(80, 17);
+            this.nes001.TabIndex = 12;
+            this.nes001.Text = "checkBox1";
+            this.nes001.UseVisualStyleBackColor = true;
             // 
             // panel2
             // 
@@ -191,9 +191,9 @@ namespace FriishProduce
         private System.Windows.Forms.GroupBox gbox007;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label nes001;
+        private System.Windows.Forms.Label g005;
         private System.Windows.Forms.Button Cancel;
         private System.Windows.Forms.Button OK;
-        private System.Windows.Forms.CheckBox nes002;
+        private System.Windows.Forms.CheckBox nes001;
     }
 }
