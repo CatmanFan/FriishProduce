@@ -37,8 +37,8 @@ Planned:
 * Adobe Flash
 
 ## How-to
-### *Coming soon*
-For information on how to use the legacy beta version, see **[here](https://github.com/CatmanFan/FriishProduce/wiki/FriishProduce-Legacy)**.
+* For information on how to use the new interface (v1.0 and above), see **[here](https://github.com/CatmanFan/FriishProduce/wiki/FriishProduce-v1.0)**.
+* For information on how to use the legacy beta versions (v0.26-beta and earlier), see **[here](https://github.com/CatmanFan/FriishProduce/wiki/FriishProduce-Legacy)** (*recommended*).
 
 **Make sure you have a (v)Wii NAND backup in case anything goes wrong!**
 

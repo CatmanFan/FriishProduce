@@ -40,7 +40,7 @@ namespace FriishProduce
                         Paths.WorkingFolder,
                         "/u content1.app content1.dec"
                     );
-                    if (!File.Exists(Paths.WorkingFolder + "content1.dec")) throw new Exception(Strings.Get("error003"));
+                    if (!File.Exists(Paths.WorkingFolder + "content1.dec")) throw new Exception(Strings.Get("error002"));
 
                     Content1 = File.ReadAllBytes(Paths.WorkingFolder + "content1.dec");
                     CompressedContent1 = true;
@@ -75,7 +75,7 @@ namespace FriishProduce
                         Paths.WorkingFolder,
                         "/cr content1.app content1.dec content1.rec"
                     );
-                    if (!File.Exists(Paths.WorkingFolder + "content1.rec")) throw new Exception(Strings.Get("error003"));
+                    if (!File.Exists(Paths.WorkingFolder + "content1.rec")) throw new Exception(Strings.Get("error002"));
 
                     byte[] Recompressed = File.ReadAllBytes(Paths.WorkingFolder + "content1.rec");
 

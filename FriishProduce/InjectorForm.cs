@@ -349,11 +349,19 @@ namespace FriishProduce
             ROMLoaded = true;
 
             label1.Text = Path.GetFileName(i.ROM);
-            if (!UseLibRetro) label2.Text = Strings.Get("g004");
+            if (!UseLibRetro) label3.Text = label2.Text = Strings.Get("g004");
 
             if (i.ROM != null && UseLibRetro) LoadLibRetroData();
 
-            Random.Visible = gbox000.Enabled = gbox001.Enabled = gbox002.Enabled = gbox003.Enabled = gbox004.Enabled = gbox005.Enabled = gbox006.Enabled = true;
+            Random.Visible =
+            gbox000.Enabled =
+            gbox001.Enabled =
+            gbox002.Enabled =
+            gbox003.Enabled =
+            gbox004.Enabled =
+            gbox005.Enabled =
+            gbox006.Enabled =
+            gbox007.Enabled = true;
 
             BannerPreview_Panel.BackColor = BannerPreview_BG.BackColor;
             BannerPreview_Line1.Refresh();

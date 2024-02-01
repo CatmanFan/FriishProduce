@@ -12,39 +12,6 @@ namespace FriishProduce
 {
     public class Banner
     {
-        public static void EditBRLYT(WAD w, string title, string year, string players)
-        {
-            if (!w.HasBanner) return;
-
-            U8[] Banner = GetBanner(w);
-            Banner[1].Dispose();
-
-            // VCBrlyt and create temporary .brlyt file
-            // ****************
-            string BRLYTPath = Path.Combine(Paths.WorkingFolder, "banner.brlyt");
-            File.WriteAllBytes(BRLYTPath, Banner[0].Data[Banner[0].GetNodeIndex("banner.brlyt")]);
-
-            Process.Run
-            (
-                Paths.Tools + "vcbrlyt\\vcbrlyt.exe",
-                $"..\\..\\temp\\banner.brlyt -Title \"{title}\" -YEAR {year} -Play {players}"
-            );
-
-            byte[] BRLYT = File.ReadAllBytes(BRLYTPath);
-            File.Delete(BRLYTPath);
-
-            // Check if modified
-            // ****************
-            if (BRLYT == Banner[0].Data[Banner[0].GetNodeIndex("banner.brlyt")])
-                throw new Exception(Program.Language.Get("error002"));
-
-            // Replace
-            // ****************
-            Banner[0].ReplaceFile(Banner[0].GetNodeIndex("banner.brlyt"), BRLYT);
-            w.BannerApp.ReplaceFile(w.BannerApp.GetNodeIndex("banner.bin"), Banner[0].ToByteArray());
-            Banner[0].Dispose();
-        }
-
         public static U8[] GetBanner(WAD w)
         {
             if (w != null)
@@ -74,9 +41,8 @@ namespace FriishProduce
             return new U8[] { Banner, Icon };
         }
 
-        #region *** EXPERIMENTAL ***
         /// <summary>
-        /// Modifies banner directly, without use of VCBrlyt.
+        /// EXPERIMENTAL: Modifies banner directly, without use of VCBrlyt.
         /// </summary>
         /// <param name="w">WAD data to edit</param>
         /// <param name="c">Console type of VC WAD</param>
@@ -294,6 +260,44 @@ namespace FriishProduce
             Banner.Dispose();
         }
 
+        #region *** Using VCBrlyt ***
+
+        public static void VCBRLYT(WAD w, string title, string year, string players)
+        {
+            if (!w.HasBanner) return;
+
+            U8[] Banner = GetBanner(w);
+            Banner[1].Dispose();
+
+            // VCBrlyt and create temporary .brlyt file
+            // ****************
+            string BRLYTPath = Path.Combine(Paths.WorkingFolder, "banner.brlyt");
+            File.WriteAllBytes(BRLYTPath, Banner[0].Data[Banner[0].GetNodeIndex("banner.brlyt")]);
+
+            Process.Run
+            (
+                Paths.Tools + "vcbrlyt\\vcbrlyt.exe",
+                $"..\\..\\temp\\banner.brlyt -Title \"{title}\" -YEAR {year} -Play {players}"
+            );
+
+            byte[] BRLYT = File.ReadAllBytes(BRLYTPath);
+            File.Delete(BRLYTPath);
+
+            // Check if modified
+            // ****************
+            if (BRLYT == Banner[0].Data[Banner[0].GetNodeIndex("banner.brlyt")])
+            {
+                Banner[0].Dispose();
+                return;
+            }
+
+            // Replace
+            // ****************
+            Banner[0].ReplaceFile(Banner[0].GetNodeIndex("banner.brlyt"), BRLYT);
+            w.BannerApp.ReplaceFile(w.BannerApp.GetNodeIndex("banner.bin"), Banner[0].ToByteArray());
+            Banner[0].Dispose();
+        }
+
         /// <summary>
         /// Temporary debug function
         /// </summary>
@@ -333,7 +337,10 @@ namespace FriishProduce
                 // Check if modified
                 // ****************
                 if (BRLYT == Banner[0].Data[Banner[0].GetNodeIndex("banner.brlyt")])
-                    throw new Exception(Program.Language.Get("error002"));
+                {
+                    Banner[0].Dispose();
+                    return;
+                }
 
                 // Replace
                 // ****************
@@ -349,6 +356,7 @@ namespace FriishProduce
                 System.Windows.Forms.MessageBox.Show(ex.Message, Program.Language.Get("error"), System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Hand);
             }
         }
+
         #endregion
     }
 }

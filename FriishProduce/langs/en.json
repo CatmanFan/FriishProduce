@@ -44,11 +44,10 @@
         "error": "An error has occurred",
         "error000": "Failed to connect to the Internet.",
         "error001": "Failed to generate image. This may be due to an issue with GDI+.",
-        "error002": "Error creating \"banner.brlyt\".",
-        "error003": "Unable to replace data.",
-        "error004": "The ROM provided is too large (>{0}{1}).",
-        "error005": "Failed to modify all content options. Injection will continue as intended.",
-        "error006": "The application needed ({0}) was not found in the resources\tools subdirectory."
+        "error002": "Unable to replace data.",
+        "error003": "The ROM provided is too large (>{0}{1}).",
+        "error004": "Failed to modify the following content options:\n{0}\nInjection will continue as intended.",
+        "error005": "The application needed ({0}) was not found in the resources\tools subdirectory."
     },
 
     "settings": {

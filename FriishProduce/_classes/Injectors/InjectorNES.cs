@@ -58,7 +58,7 @@ namespace FriishProduce
             // -----------------------
             var inputROM = File.ReadAllBytes(ROM);
             if (inputROM.Length > ROMsize)
-                throw new Exception(string.Format(Strings.Get("error004"), Math.Round((double)ROMsize / 1024).ToString(), Strings.Get("kilobytes")));
+                throw new Exception(string.Format(Strings.Get("error003"), Math.Round((double)ROMsize / 1024).ToString(), Strings.Get("kilobytes")));
 
             // -----------------------
             // Replace original ROM

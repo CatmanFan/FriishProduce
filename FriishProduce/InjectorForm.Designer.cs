@@ -657,6 +657,7 @@ namespace FriishProduce
             this.splitContainer1.Panel1.Controls.Add(this.gbox001);
             this.splitContainer1.Panel1.Controls.Add(this.gbox000);
             this.splitContainer1.Panel1.Controls.Add(this.gbox006);
+            this.splitContainer1.Panel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             // 
             // splitContainer1.Panel2
             // 
@@ -664,6 +665,7 @@ namespace FriishProduce
             this.splitContainer1.Panel2.Controls.Add(this.gbox002);
             this.splitContainer1.Panel2.Controls.Add(this.gbox003);
             this.splitContainer1.Panel2.Controls.Add(this.gbox004);
+            this.splitContainer1.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.splitContainer1.Size = new System.Drawing.Size(1110, 510);
             this.splitContainer1.SplitterDistance = 422;
             this.splitContainer1.TabIndex = 42;

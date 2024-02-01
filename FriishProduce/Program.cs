@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.IO;
 using System.Globalization;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FriishProduce
@@ -20,7 +18,15 @@ namespace FriishProduce
             CultureInfo.CurrentCulture = new CultureInfo(Language.LangInfo()[0]);
             CultureInfo.CurrentUICulture = CultureInfo.CurrentUICulture;
 
-            // try { System.IO.Directory.Delete(Paths.WorkingFolder, true); } catch { }
+            try
+            {
+                foreach (var item in Directory.GetFiles(Paths.WorkingFolder, "*.*", SearchOption.AllDirectories))
+                    if (!Path.GetFileName(item).ToLower().Contains("readme.md")) File.Delete(item);
+                foreach (var item in Directory.GetDirectories(Paths.WorkingFolder))
+                    Directory.Delete(item, true);
+            }
+            catch { }
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());

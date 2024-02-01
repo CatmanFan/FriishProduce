@@ -43,9 +43,8 @@
         "error": "Erreur rencontrée",
         "error000": "Échec de connexion à l'Internet.",
         "error001": "Échec de création des images. Cette problème peut être en raison du GDI+.",
-        "error002": "Échec de création du fichier « banner.brlyt ».",
-        "error003": "Unable to replace data.",
-        "error004": "La ROM à injecter est trop grande, car son taille est plus de {0} {1}."
+        "error002": "Unable to replace data.",
+        "error003": "La ROM à injecter est trop grande, car son taille est plus de {0} {1}."
     },
 
     "settings": {

@@ -40,8 +40,7 @@
         "m002": "Kaydedilmemiş tüm değişiklikler silinsin mi?",
         "error": "Bir hata oluştu",
         "error000": "İnternet bağlantısı yok.",
-        "error001": "Resim oluşturma başarısız oldu.",
-        "error002": "\"Banner.brlyt\" oluşturma başarısız oldu."
+        "error001": "Resim oluşturma başarısız oldu."
     },
 
     "settings": {

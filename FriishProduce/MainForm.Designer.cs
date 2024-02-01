@@ -90,7 +90,7 @@ namespace FriishProduce
             this.ribbon1.OrbDropDown.Name = "";
             this.ribbon1.OrbDropDown.Size = new System.Drawing.Size(527, 254);
             this.ribbon1.OrbDropDown.TabIndex = 0;
-            this.ribbon1.OrbStyle = System.Windows.Forms.RibbonOrbStyle.Office_2010;
+            this.ribbon1.OrbStyle = System.Windows.Forms.RibbonOrbStyle.Office_2010_Extended;
             this.ribbon1.OrbText = "File";
             // 
             // 
@@ -108,6 +108,7 @@ namespace FriishProduce
             this.ribbon1.Tabs.Add(this.ribbonTab_Home);
             this.ribbon1.TabSpacing = 3;
             this.ribbon1.Text = "FriishProduce";
+            this.ribbon1.ThemeColor = System.Windows.Forms.RibbonTheme.Blue_2010;
             this.ribbon1.UseAlwaysStandardTheme = true;
             // 
             // NewProject
