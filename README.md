@@ -1,17 +1,17 @@
 # FriishProduce
-<div align=center><a href=""><img src="https://raw.githubusercontent.com/CatmanFan/FriishProduce/main/FriishProduce/Resources/images/icon.png" width="172" height="125" /></a><br>
+<div align=center><a href=""><img src="https://raw.githubusercontent.com/CatmanFan/FriishProduce/main/legacy/FriishProduce/Resources/images/icon.png" width="172" height="125" /></a><br>
 <a href="https://gbatemp.net/threads/friishproduce-multiplatform-wad-injector.632028/"><img src="https://img.shields.io/badge/GBAtemp-thread-informational?style=plastic" /></a>
 </div>
 
 **FriishProduce** is a WAD injector for Wii/vWii, which allows for automated ROM replacement in Wii channels.
 This application is designed to streamline the process to as few third-party programs as possible.
 
-***Currently under work-in-progress.***
+***This repository has been updated by way of a new MDI version and is currently under work-in-progress. Most consoles may not be supported by this edition yet. For the legacy edition, go [here](https://github.com/CatmanFan/FriishProduce/tree/main/legacy).***
 
 ---
 
 ## Features
-This injector bypasses other third-party assets (such as Common-Key.bin, most of HowardC's tools, and Autoinjectuwad/Devilken's VC) by handling many steps directly from the program's code. Some examples:
+This injector bypasses other third-party assets (such as Common-Key.bin, HowardC's tools, and Autoinjectuwad/Devilken's VC) by handling many steps directly from the program's code. Some examples:
 * Automatic WAD/U8 handling
 * VC ROM injection through hex writing and/or file replacement
 * Automatic banner/icon editing
@@ -20,7 +20,8 @@ This injector bypasses other third-party assets (such as Common-Key.bin, most of
 * Replace WAD contents with forwarder to auto-load specific emulator core and ROM
 
 ## How-to
-Please see the [Wiki](https://github.com/CatmanFan/FriishProduce/wiki/Setup) for instructions on setup and usage.
+*Coming soon*
+For information on how to use the [legacy edition](https://github.com/CatmanFan/FriishProduce/tree/main/legacy) (versions 0.0.1.0-alpha to 0.26-beta), see the [Wiki](https://github.com/CatmanFan/FriishProduce/wiki/Setup).
 
 **Make sure you have a (v)Wii NAND backup in case anything goes wrong!**
 
@@ -28,67 +29,40 @@ See [here](https://github.com/CatmanFan/FriishProduce/wiki/Translation) for a ho
 
 ---
 
-### Platforms
+### Platforms (legacy version)
 Currently supported:
 * Virtual Console
   * **Nintendo Entertainment System (NES) / Famicom**
   * **Super Nintendo Entertainment System (SNES) / Super Famicom**
   * **Nintendo 64**
-  * **Master System**
-  * **Mega Drive / Genesis**
-  * **TurboGrafx-16 / PC Engine**
-  * **SNK NEO-GEO**
-
-* Emulator forwarders
-  * **[FCE Ultra GX](https://github.com/dborth/fceugx)** (dborth et al.)
-  * **[FCE Ultra RX](https://github.com/niuus/FCEUltraRX)** (NiuuS et al.)
-  * **[FCEUX TX / FCEUGX-1UP](https://gbatemp.net/threads/fceugx-1up.558023/)** (Tanooki16)
-  * **[Snes9x GX](https://github.com/dborth/snes9xgx)** (dborth et al.)
-  * **[Snes9x RX](https://github.com/niuus/Snes9xRX)** (NiuuS et al.)
-  * **[Snes9x TX / Snes9xGX-Mushroom](https://gbatemp.net/threads/snes9xgx-mushroom.558500/)** (Tanooki16)
-  <!-- * **[Visual Boy Advance GX](https://github.com/dborth/vbagx)** (dborth et al.) -->
-  <!-- * **[mGBA Wii](https://github.com/mgba-emu/mgba)** (endrift et al.) -->
-  * **[Wii64 1.3 MOD](https://github.com/saulfabregwiivc/Wii64/tree/wii64-wiiflow)** forked by saulfabreg (original author: Wii64 Team)
-  * **[Not64](https://github.com/extremscorner/not64)** (Extrems)
-  * **[Mupen64GC-FIX94](https://github.com/FIX94/mupen64gc-fix94)** (Wii64 Team, forked by FIX94)
-  * **[Genesis Plus GX](https://github.com/ekeeke/Genesis-Plus-GX)** (eke-eke et al.)
-  * **[WiiSX](https://github.com/emukidid/pcsxgc)** (Wii64 Team)
-  * **[WiiStation / WiiSXRX_2022](https://github.com/xjsxjs197/WiiSXRX_2022)** (xjsxjs197, forked from NiuuS' WiiSX RX)
-  <!-- * **[WiiMednafen](https://github.com/raz0red/wii-mednafen)** (raz0red) -->
-
-* Other
-  * **Shockwave/Adobe Flash**
 
 ## To-Do
-* New interface design to be implemented
+* ***Before releasing v1.0:***
+  * Add support for the following:
+    * Genesis/Mega Drive
+    * Master System
+    * TurboGrafx-16/PC Engine
+    * NEO-GEO
+    * MSX
+    * Adobe Flash
+  * Check for additional bugs that need to be fixed and streamline code to make it more readable.
 * Try redirecting foreign language *.json files in [main/FriishProduce/langs](https://github.com/CatmanFan/FriishProduce/tree/main/FriishProduce/langs) to a separate location/repo
 * Other VC injection support:
-  * Commodore 64
-  * TurboGrafx-16 CD
-* Other forwarders support:
-  * Game Boy
-  * Game Boy Color
-  * Game Boy Advance
+  * Commodore 64 (needs [Custom Frodo](https://gbatemp.net/threads/custom-frodo-for-c64-vc-injection.102356/))
+  * TurboGrafx-16 CD (needs several programs to convert ISO to injectable format)
 
 ## Credits
 This program uses the following third-party components and apps:
 * **libWiiSharp** (orig. author: Leathl), [forked](https://github.com/WiiDatabase/libWiiSharp/) by **[WiiDatabase](https://github.com/WiiDatabase)**.
-* **[Wii.cs](https://github.com/dnasdw/showmiiwads/blob/Wii.cs_Tools/U8Mii/Wii.cs)** library (part of Leathl's [ShowMiiWads](https://code.google.com/archive/p/showmiiwads/source)).
-* **[Floating IPS](https://github.com/Alcaro/Flips)** (Flips) by [Alcaro](https://github.com/Alcaro).
-* **[Xdelta](https://github.com/jmacd/xdelta)** by [jmacd](https://github.com/jmacd).
-* **[ccf-tools](https://github.com/libertyernie/ccf-tools)** (orig. author: paulguy) and **[BrawlLib](https://github.com/libertyernie/brawllib-wit)** (orig. author: soopercool101), both forked by **[libertyernie](https://github.com/libertyernie)**.
-* **ROMC compressor** by Jurai, with additional LZSS code by Haruhiko Okumura.
-* **[gbalzss](https://gbadev.org/tools.php?showinfo=56)** by Andre Perrot, with additional LZSS code by Haruhiko Okumura.
 * **WWCXTool** by alpha-0.
-* **[lzh8_cmpdec](https://www.hcs64.com/vgm_ripping.html)** by [hcs](http://hcs64.com/).
-* **[HowardC's Tools](https://gbatemp.net/threads/vcfe-wip.100556/)** (particularly, VCbrlyt).
-* **[sm64tools](https://github.com/queueRAM/sm64tools)** by [queueRAM](https://github.com/queueRAM).
-* **[z64compress](https://github.com/z64tools/z64compress)** by [z64tools](https://github.com/z64tools).
-* For homebrew emulators compatiblity:
-  * **comex**'s NAND loader. *(file renamed as "nandloader_wii_comex.app")*
-  * **Waninkoko**'s NAND loader, retrieved from ShowMiiWads repo. *(file renamed as "nandloader_wii.app")*
-  * **FIX94**'s **[tiny-vwii-nand-loader](https://github.com/FIX94/tiny-vwii-nand-loader)**. *(file renamed as "nandloader_vwii.app")*
-  * Forwarder DOLs generated from **[ModMii Classic](https://modmii.github.io)** (application author: XFlak) *(files renamed as "forwarder_v[XX].dol")*
+* * **ROMC compressor** by Jurai, with additional LZSS code by Haruhiko Okumura.
+* **[ccf-tools](https://github.com/libertyernie/ccf-tools)** (orig. author: paulguy) and **[BrawlLib](https://github.com/libertyernie/brawllib-wit)** (orig. author: soopercool101), both forked by **[libertyernie](https://github.com/libertyernie)**.
+
+For icons and interface:
+* **[RibbonWinForms](https://github.com/ribbonwinforms/ribbonwinforms)**.
+* **[MdiTabCtrl](https://github.com/JacksiroKe/MdiTabCtrl)** by Jack Siro.
+* **[Fugue Icons](https://p.yusukekamiyamane.com/)** by Yusuke Kamiyamane (Creative Commons Attribution 3.0 License).
+* **[Farm Fresh Icons](https://github.com/gammasoft/fatcow)** by Fatcow Web Hosting (Creative Commons Attribution 3.0 License).
 
 I would also like to thank the following people:
 * **[SuperrSonic](https://github.com/SuperrSonic)** for reverse-engineering much of Wii software and official emulator code, and in particular, his [fork of RetroArch Wii](https://github.com/SuperrSonic/RA-SS).
