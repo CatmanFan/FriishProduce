@@ -27,34 +27,40 @@ namespace FriishProduce
             try
             {
                 JObject jsonReader = new JObject();
+                var jsonCode = "";
 
                 try { jsonReader = JsonConvert.DeserializeObject<JObject>(File.ReadAllText(jsonFile)); }
                 catch { throw new Exception($"File \"{Path.GetFileName(jsonFile)}\" was not found."); }
 
                 int index = 0;
+                try { jsonCode = jsonReader["key"].ToString(); }
+                catch { throw new Exception("Failed to get \"key\" value." + Environment.NewLine + $"Please check that the value \"key\" is included in langs\\{Path.GetFileName(jsonFile)}."); }
+
                 try
                 {
-                    var jsonCode = jsonReader["code"].ToString();
                     var jsonName = new CultureInfo(Path.GetFileNameWithoutExtension(jsonFile)).DisplayName;
+                    var target = new Dictionary<string, string>();
 
-                    var target = new Dictionary<string, string>() { { "key", jsonReader["code"].ToString() }, { "author", jsonReader["author"].ToString() } };
+                    foreach (JProperty element in jsonReader.Children<JToken>())
+                        target.Add(element.Name, element.Value.ToString());
 
+                    // Multi-array function
+                    /* var target = new Dictionary<string, string>() { { "key", jsonReader["key"].ToString() }, { "author", jsonReader["author"].ToString() } };
+                    
                     for (int i = 2; i < jsonReader.Children<JToken>().Count(); i++)
-                    {
-                        foreach (JObject category in jsonReader.Children<JToken>().ElementAt(i).Children())
+                        foreach (JObject category in jsonReader.Children<JToken>().ElementAt(i).Children<JToken>())
                             foreach (JProperty element in category.Properties())
                             {
                                 index++;
                                 target.Add(element.Name, element.Value.ToString());
-                            }
-                    }
+                            } */
 
                     return target;
                 }
                 catch (Exception ex)
                 {
                     string msg = "Failed to collect language data at index " + index.ToString() + "." + Environment.NewLine + Environment.NewLine + "Exception name: " + ex.GetType().Name + Environment.NewLine + "Exception message: " + ex.Message;
-                    if (ex.GetType().Name != "InvalidCastException") msg += Environment.NewLine + Environment.NewLine + $"Please check the value \"key\" in langs\\{Path.GetFileName(jsonFile)} and make sure it matches the filename.";
+                    if (ex.GetType().Name != "InvalidCastException" && ex.GetType().Name != "ArgumentException") msg += Environment.NewLine + Environment.NewLine + $"Please check the value \"key\" in langs\\{Path.GetFileName(jsonFile)} and make sure it matches the filename.";
                     throw new Exception(msg);
                 }
 
@@ -220,7 +226,7 @@ namespace FriishProduce
         public string[] LangInfo(string code)
         {
             var jsonReader = JsonConvert.DeserializeObject<JObject>(File.ReadAllText(Paths.Languages + $"{code}.json"));
-            return new string[] { jsonReader["code"].ToString(), jsonReader["author"].ToString() };
+            return new string[] { jsonReader["key"].ToString(), jsonReader["author"].ToString() };
         }
 
         public string[] LangInfo() => LangInfo(CurrentCode);

@@ -240,28 +240,28 @@ namespace FriishProduce
 
         private void UpdateBannerPreview()
         {
-            BannerPreview_Year.Tag    = Strings.Get("code") == "ja" || isJapanRegion ? "{0}年発売"
-                                      : Strings.Get("code") == "ko" || i.isKorea ? "일본판 발매년도\r\n{0}년"
-                                      : Strings.Get("code") == "nl" ? "Release: {0}"
-                                      : Strings.Get("code") == "es" ? "Año: {0}"
-                                      : Strings.Get("code") == "it" ? "Pubblicato: {0}"
-                                      : Strings.Get("code") == "fr" ? "Publié en {0}"
-                                      : Strings.Get("code") == "de" ? "Erschienen: {0}"
+            BannerPreview_Year.Tag    = Strings.Get("key") == "ja" || isJapanRegion ? "{0}年発売"
+                                      : Strings.Get("key") == "ko" || i.isKorea ? "일본판 발매년도\r\n{0}년"
+                                      : Strings.Get("key") == "nl" ? "Release: {0}"
+                                      : Strings.Get("key") == "es" ? "Año: {0}"
+                                      : Strings.Get("key") == "it" ? "Pubblicato: {0}"
+                                      : Strings.Get("key") == "fr" ? "Publié en {0}"
+                                      : Strings.Get("key") == "de" ? "Erschienen: {0}"
                                       : "Released: {0}";
 
-            BannerPreview_Players.Tag = Strings.Get("code") == "ja" || isJapanRegion ? "プレイ人数\r\n{0}人"
-                                      : Strings.Get("code") == "ko" || i.isKorea ? "플레이 인원수\r\n{0}명"
-                                      : Strings.Get("code") == "nl" ? "{0} speler(s)"
-                                      : Strings.Get("code") == "es" ? "Jugadores: {0}"
-                                      : Strings.Get("code") == "it" ? "Giocatori: {0}"
-                                      : Strings.Get("code") == "fr" ? "Joueurs: {0}"
-                                      : Strings.Get("code") == "de" ? "{0} Spieler"
+            BannerPreview_Players.Tag = Strings.Get("key") == "ja" || isJapanRegion ? "プレイ人数\r\n{0}人"
+                                      : Strings.Get("key") == "ko" || i.isKorea ? "플레이 인원수\r\n{0}명"
+                                      : Strings.Get("key") == "nl" ? "{0} speler(s)"
+                                      : Strings.Get("key") == "es" ? "Jugadores: {0}"
+                                      : Strings.Get("key") == "it" ? "Giocatori: {0}"
+                                      : Strings.Get("key") == "fr" ? "Joueurs: {0}"
+                                      : Strings.Get("key") == "de" ? "{0} Spieler"
                                       : "Players: {0}";
 
             BannerPreview_Label.Text = BannerTitle.Text;
             BannerPreview_Year.Text = string.Format(BannerPreview_Year.Tag.ToString(), ReleaseYear.Value.ToString());
             BannerPreview_Players.Text = string.Format(BannerPreview_Players.Tag.ToString(), $"{1}{(Players.Value <= 1 ? null : "-" + Players.Value)}");
-            if (Strings.Get("code") == "ja" || isJapanRegion) BannerPreview_Players.Text = BannerPreview_Players.Text.Replace("-", "～");
+            if (Strings.Get("key") == "ja" || isJapanRegion) BannerPreview_Players.Text = BannerPreview_Players.Text.Replace("-", "～");
         }
 
         #region Load Data Functions
