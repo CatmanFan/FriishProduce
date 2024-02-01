@@ -1,8 +1,7 @@
 ﻿{
-  "metadata": {
-    "code": "en",
-    "author": "CatmanFan"
-  },
+  "key": "en",
+  "author": "CatmanFan",
+
   "consoles": {
     "NES": "NES/Famicom",
     "SNES": "SNES/Super Famicom",
