@@ -266,7 +266,7 @@ del "$(TargetDir)System.Numerics.Vectors.xml"
 del "$(TargetDir)System.Runtime.CompilerServices.Unsafe.xml"</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PreBuildEvent>del "$(TargetDir)locales\" /F/Q
-xcopy "$(ProjectDir)langs\" "$(TargetDir)locales\" /E/C/I</PreBuildEvent>
+    <PreBuildEvent>
+    </PreBuildEvent>
   </PropertyGroup>
 </Project>

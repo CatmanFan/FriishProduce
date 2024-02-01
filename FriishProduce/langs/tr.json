@@ -4,6 +4,20 @@
         "author": "CatmanFan"
     },
 
+    "consoles": {
+        "NES": "NES/Famicom",
+        "SNES": "SNES/Super Famicom",
+        "N64": "Nintendo 64",
+        "SMS": "Master System",
+        "SMDGEN": "Mega Drive/Genesis",
+        "PCE": "TurboGrafx-16/PC Engine",
+        "PCECD": "TurboGrafx-16 CD/PC Engine CD",
+        "NeoGeo": "NEO-GEO",
+        "C64": "Commodore 64",
+        "MSX": "Microsoft MSX/MSX2",
+        "Flash": "Adobe Flash"
+    },
+
     "filters": {
         "f_all": "|Tüm Dosyalar (*.*)|*.*",
         "f_img": "Tüm Resimler (*.bmp, *.jpg, *.jpeg, *.png)|*.bmp;*.jpg;*.jpeg;*.png|    BMP Dosyası (*.bmp)|*.bmp|    JPEG Dosyası (*.jpg, *.jpeg)|*.jpg;*.jpeg|    PNG Dosyası (*.png)|*.png",
