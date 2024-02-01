@@ -25,14 +25,19 @@ namespace FriishProduce
             try
             {
                 var jsonReader = JsonConvert.DeserializeObject<JObject>(File.ReadAllText(jsonFile));
-                var jsonCode = jsonReader["metadata"]["code"].ToString();
+                var jsonCode = jsonReader["key"].ToString();
                 var jsonName = new CultureInfo(Path.GetFileNameWithoutExtension(jsonFile)).DisplayName;
 
                 var target = new Dictionary<string, string>();
-
-                foreach (JObject category in jsonReader.Children<JToken>().Children<JToken>())
-                    foreach (JProperty key in category.Properties())
-                        target.Add(key.Name, key.Value.ToString());
+                target.Add("key", jsonReader["key"].ToString());
+                target.Add("author", jsonReader["author"].ToString());
+                
+                for (int i = 2; i < jsonReader.Children().Count(); i++)
+                {
+                    foreach (JObject category in jsonReader.Children().ElementAt(i).Children<JToken>())
+                        foreach (JProperty key in category.Properties())
+                            target.Add(key.Name, key.Value.ToString());
+                }
 
                 return target;
             }
@@ -59,12 +64,7 @@ namespace FriishProduce
 
             try
             {
-                var jsonReader = JsonConvert.DeserializeObject<JObject>(File.ReadAllText(json_en));
-
-                English = new Dictionary<string, string>();
-                foreach (JObject category in jsonReader.Children<JToken>().Children<JToken>())
-                    foreach (JProperty key in category.Properties())
-                        English.Add(key.Name, key.Value.ToString());
+                English = Read(json_en);
             }
             catch
             {
@@ -196,7 +196,7 @@ namespace FriishProduce
         public string[] LangInfo(string code)
         {
             var jsonReader = JsonConvert.DeserializeObject<JObject>(File.ReadAllText(Paths.Languages + $"{code}.json"));
-            return new string[] { jsonReader["metadata"]["code"].ToString(), jsonReader["metadata"]["author"].ToString() };
+            return new string[] { jsonReader["key"].ToString(), jsonReader["author"].ToString() };
         }
 
         public string[] LangInfo() => LangInfo(CurrentCode);
