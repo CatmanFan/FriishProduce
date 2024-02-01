@@ -29,14 +29,15 @@ namespace FriishProduce
                 var jsonName = new CultureInfo(Path.GetFileNameWithoutExtension(jsonFile)).DisplayName;
 
                 var target = new Dictionary<string, string>();
-                target.Add("key", jsonReader["key"].ToString());
-                target.Add("author", jsonReader["author"].ToString());
-                
-                for (int i = 2; i < jsonReader.Children().Count(); i++)
+
+                try
                 {
-                    foreach (JObject category in jsonReader.Children().ElementAt(i).Children<JToken>())
-                        foreach (JProperty key in category.Properties())
-                            target.Add(key.Name, key.Value.ToString());
+                    foreach (JProperty element in jsonReader.Children<JToken>())
+                        target.Add(element.Name, element.Value.ToString());
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Failed at " + (target.Count - 1).ToString() + "." + Environment.NewLine + ex.Message);
                 }
 
                 return target;
@@ -74,7 +75,7 @@ namespace FriishProduce
             // --------------------------
             // Localization process
             // --------------------------
-            if (string.IsNullOrWhiteSpace(code) || ((Read(json) == null) && code != "sys"))
+            if (code != "sys" && (string.IsNullOrWhiteSpace(code) || ((Read(json) == null))))
             {
                 code = "sys";
                 Default.UI_Language = "sys";
