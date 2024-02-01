@@ -58,7 +58,7 @@ Currently supported:
 This program uses the following third-party components and apps:
 * **libWiiSharp** (orig. author: Leathl), [forked](https://github.com/WiiDatabase/libWiiSharp/) by **[WiiDatabase](https://github.com/WiiDatabase)**.
 * **WWCXTool** by alpha-0.
-* * **ROMC compressor** by Jurai, with additional LZSS code by Haruhiko Okumura.
+* **ROMC compressor** by Jurai, with additional LZSS code by Haruhiko Okumura.
 * **[ccf-tools](https://github.com/libertyernie/ccf-tools)** (orig. author: paulguy) and **[BrawlLib](https://github.com/libertyernie/brawllib-wit)** (orig. author: soopercool101), both forked by **[libertyernie](https://github.com/libertyernie)**.
 
 For icons and interface:
