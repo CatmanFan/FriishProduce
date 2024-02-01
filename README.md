@@ -21,15 +21,13 @@ This injector bypasses other third-party assets (such as Common-Key.bin, HowardC
 * Replace WAD contents with forwarder to auto-load specific emulator core and ROM
 
 ## How-to
-*Coming soon*
-
----
-For information on how to use the [legacy edition](https://github.com/CatmanFan/FriishProduce/tree/main/legacy) (versions 0.0.1.0-alpha to 0.26-beta), see the [Wiki](https://github.com/CatmanFan/FriishProduce/wiki/Setup).
-
+*Coming soon*<br>
 **Make sure you have a (v)Wii NAND backup in case anything goes wrong!**
 
 See [here](https://github.com/CatmanFan/FriishProduce/wiki/Translation) for a how-to on translating the app.
 
+---
+For information on how to use the [legacy edition](https://github.com/CatmanFan/FriishProduce/tree/main/legacy) (versions 0.0.1.0-alpha to 0.26-beta), see the [Wiki](https://github.com/CatmanFan/FriishProduce/wiki).
 ---
 
 ### Platforms
