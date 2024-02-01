@@ -23,10 +23,11 @@ See [here](https://github.com/CatmanFan/FriishProduce/wiki/Translation) for a ho
   * **Nintendo Entertainment System (NES) / Famicom**
   * **Super Nintendo Entertainment System (SNES) / Super Famicom**
   * **Nintendo 64**
-  * **Master System**
-  * **Mega Drive / Genesis**
-  * **TurboGrafx-16 / PC Engine**
+  * **SEGA Master System**
+  * **SEGA Mega Drive / Genesis**
+  * **NEC TurboGrafx-16 / PC Engine**
   * **SNK NEO-GEO**
+  * **Microsoft MSX / MSX2**
 
 * Emulator forwarders
   * **[FCE Ultra GX](https://github.com/dborth/fceugx)** (dborth et al.)
