@@ -29,7 +29,7 @@ Currently supported:
 
 ## How-to
 ### *Coming soon*
-For information on how to use the [legacy edition](https://github.com/CatmanFan/FriishProduce/tree/main/legacy), see [here](https://github.com/CatmanFan/FriishProduce/wiki/FriishProduce-Legacy).
+For information on how to use the legacy beta version, see **[here](https://github.com/CatmanFan/FriishProduce/wiki/FriishProduce-Legacy)**.
 
 **Make sure you have a (v)Wii NAND backup in case anything goes wrong!**
 
