@@ -34,10 +34,10 @@ namespace FriishProduce
                 int index = 0;
                 try
                 {
-                    var jsonCode = jsonReader["key"].ToString();
+                    var jsonCode = jsonReader["code"].ToString();
                     var jsonName = new CultureInfo(Path.GetFileNameWithoutExtension(jsonFile)).DisplayName;
 
-                    var target = new Dictionary<string, string>() { { "key", jsonReader["key"].ToString() }, { "author", jsonReader["author"].ToString() } };
+                    var target = new Dictionary<string, string>() { { "key", jsonReader["code"].ToString() }, { "author", jsonReader["author"].ToString() } };
 
                     for (int i = 2; i < jsonReader.Children<JToken>().Count(); i++)
                     {
@@ -220,7 +220,7 @@ namespace FriishProduce
         public string[] LangInfo(string code)
         {
             var jsonReader = JsonConvert.DeserializeObject<JObject>(File.ReadAllText(Paths.Languages + $"{code}.json"));
-            return new string[] { jsonReader["key"].ToString(), jsonReader["author"].ToString() };
+            return new string[] { jsonReader["code"].ToString(), jsonReader["author"].ToString() };
         }
 
         public string[] LangInfo() => LangInfo(CurrentCode);

@@ -45,7 +45,8 @@ Planned:
 ---
 
 ## Translation
-*See [here](https://github.com/CatmanFan/FriishProduce/wiki/Translation) for a how-to on translating the app.*
+For help on translating the GUI, check out the Crowdin project **[here](https://crowdin.com/project/friishproduce)**.
+<!-- *See [here](https://github.com/CatmanFan/FriishProduce/wiki/Translation) for a how-to on translating the app.* -->
 
 ---
 
