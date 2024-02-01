@@ -402,3 +402,5 @@ FodyWeavers.xsd
 
 # Others
 IconPacks/
+bin/Debug/resources/temp/README.md
+Resources/bg.pdn
