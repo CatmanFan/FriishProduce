@@ -21,11 +21,20 @@ This injector bypasses other third-party assets (such as Common-Key.bin, HowardC
 * Replace WAD contents with forwarder to auto-load specific emulator core and ROM
 
 ### Platforms
-Currently supported:
+**Currently supported:**
 * Virtual Console
   * **Nintendo Entertainment System (NES) / Famicom**
   * **Super Nintendo Entertainment System (SNES) / Super Famicom**
   * **Nintendo 64**
+ 
+Planned:
+* Virtual Console
+  * SEGA Mega Drive / Genesis
+  * SEGA Master System
+  * NEC TurboGrafx-16 / PC Engine
+  * SNK NEO-GEO
+  * Microsoft MSX / MSX2
+* Adobe Flash
 
 ## How-to
 ### *Coming soon*
@@ -42,18 +51,11 @@ For information on how to use the legacy beta version, see **[here](https://gith
 
 ## To-Do
 * ***Before releasing v1.0:***
-  * Add support for the following:
-    * Genesis/Mega Drive
-    * Master System
-    * TurboGrafx-16/PC Engine
-    * NEO-GEO
-    * MSX
-    * Adobe Flash
   * Check for additional bugs that need to be fixed and streamline code to make it more readable.
-* Try redirecting foreign language *.json files in [main/FriishProduce/langs](https://github.com/CatmanFan/FriishProduce/tree/main/FriishProduce/langs) to a separate location/repo
 * Other VC injection support to be done later:
   * Commodore 64 (needs [Custom Frodo](https://gbatemp.net/threads/custom-frodo-for-c64-vc-injection.102356/))
   * TurboGrafx-16 CD (needs several programs to convert ISO to injectable format)
+* Try redirecting foreign language *.json files in [main/FriishProduce/langs](https://github.com/CatmanFan/FriishProduce/tree/main/FriishProduce/langs) to a separate location/repo
 
 ## Credits
 This program uses the following third-party components and apps:
