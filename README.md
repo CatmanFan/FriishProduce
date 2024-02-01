@@ -20,22 +20,23 @@ This injector bypasses other third-party assets (such as Common-Key.bin, HowardC
 * Additional content/emulator options for each platform where supported
 * Replace WAD contents with forwarder to auto-load specific emulator core and ROM
 
-## How-to
-*Coming soon*<br>For information on how to use the [legacy edition](https://github.com/CatmanFan/FriishProduce/tree/main/legacy), see [here](https://github.com/CatmanFan/FriishProduce/wiki/FriishProduce-Legacy).
-
-**Make sure you have a (v)Wii NAND backup in case anything goes wrong!**
-
-### Translation
-*See [here](https://github.com/CatmanFan/FriishProduce/wiki/Translation) for a how-to on translating the app.*
-
----
-
 ### Platforms
 Currently supported:
 * Virtual Console
   * **Nintendo Entertainment System (NES) / Famicom**
   * **Super Nintendo Entertainment System (SNES) / Super Famicom**
   * **Nintendo 64**
+
+## How-to
+### *Coming soon*
+For information on how to use the [legacy edition](https://github.com/CatmanFan/FriishProduce/tree/main/legacy), see [here](https://github.com/CatmanFan/FriishProduce/wiki/FriishProduce-Legacy).
+
+**Make sure you have a (v)Wii NAND backup in case anything goes wrong!**
+
+---
+
+## Translation
+*See [here](https://github.com/CatmanFan/FriishProduce/wiki/Translation) for a how-to on translating the app.*
 
 ---
 
@@ -53,8 +54,6 @@ Currently supported:
 * Other VC injection support to be done later:
   * Commodore 64 (needs [Custom Frodo](https://gbatemp.net/threads/custom-frodo-for-c64-vc-injection.102356/))
   * TurboGrafx-16 CD (needs several programs to convert ISO to injectable format)
-
----
 
 ## Credits
 This program uses the following third-party components and apps:
