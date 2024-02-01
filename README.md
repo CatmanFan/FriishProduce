@@ -29,7 +29,7 @@ See [here](https://github.com/CatmanFan/FriishProduce/wiki/Translation) for a ho
 
 ---
 
-### Platforms (legacy version)
+### Platforms
 Currently supported:
 * Virtual Console
   * **Nintendo Entertainment System (NES) / Famicom**
