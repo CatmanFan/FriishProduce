@@ -70,15 +70,15 @@
       "r013": "Canal {0}"
    },
    "global": {
+      "kilobytes": "KB",
+      "megabytes": "MB",
+      "OK": "&Aceptar",
+      "Cancel": "&Cancelar",
       "g000": "FriishProduce",
       "g001": "Opciones",
       "g002": "Acerca de {0}",
       "g003": "Canal {0} sin título",
       "g004": "Desconocido",
-      "kilobytes": "KB",
-      "megabytes": "MB",
-      "OK": "&Aceptar",
-      "Cancel": "&Cancelar",
       "g005": "Autor(a): {0}",
       "g006": "Por defecto"
    },

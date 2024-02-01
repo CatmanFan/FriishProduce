@@ -70,15 +70,15 @@
       "r013": "{0} Kanalı"
    },
    "global": {
+      "kilobytes": "KB",
+      "megabytes": "MB",
+      "OK": "&Tamam",
+      "Cancel": "&İptal",
       "g000": "FriishProduce",
       "g001": "Ayarlar",
       "g002": "{0} Hakkında",
       "g003": "Başlıksız {0} Kanalı",
       "g004": "Bilinmeyen",
-      "kilobytes": "KB",
-      "megabytes": "MB",
-      "OK": "&Tamam",
-      "Cancel": "&İptal",
       "g005": "Yazar(lar): {0}",
       "g006": "Varsayılan"
    },

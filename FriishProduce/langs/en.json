@@ -70,17 +70,17 @@
       "r013": "{0} WAD"
    },
    "global": {
+      "kilobytes": "KB",
+      "megabytes": "MB",
+      "OK": "&OK",
+      "Cancel": "&Cancel",
       "g000": "FriishProduce",
       "g001": "Settings",
       "g002": "About {0}",
       "g003": "Untitled {0} WAD",
       "g004": "Unknown",
-      "kilobytes": "KB",
-      "megabytes": "MB",
-      "OK": "&OK",
-      "Cancel": "&Cancel",
       "g005": "Author(s): {0}",
-      "g006": "Default"
+      "g006": "Default",
    },
    "forms": {
       "gbox000": "ROM information",

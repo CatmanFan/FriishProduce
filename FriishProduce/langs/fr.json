@@ -70,15 +70,15 @@
       "r013": "Chaîne {0}"
    },
    "global": {
+      "kilobytes": "ko",
+      "megabytes": "Mo",
+      "OK": "&OK",
+      "Cancel": "&Annuler",
       "g000": "FriishProduce",
       "g001": "Paramètres",
       "g002": "À propos de {0}",
       "g003": "Chaîne {0} sans titre",
       "g004": "Inconnu",
-      "kilobytes": "ko",
-      "megabytes": "Mo",
-      "OK": "&OK",
-      "Cancel": "&Annuler",
       "g005": "Auteur(e) : {0}",
       "g006": "Par défaut"
    },
