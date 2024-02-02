@@ -22,6 +22,7 @@ namespace FriishProduce
 
             Language.AutoSetForm(this);
             Text = Language.Get("Settings");
+            LanguageList.Items[0] = "<" + LanguageList.Items[0].ToString() + ">";
 
             // Add all languages
             foreach (var item in Language.List)

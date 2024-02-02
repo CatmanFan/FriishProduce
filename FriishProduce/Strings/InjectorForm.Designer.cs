@@ -61,24 +61,6 @@ namespace Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Players:.
-        /// </summary>
-        internal static string BannerPreview_Players_Text {
-            get {
-                return ResourceManager.GetString("BannerPreview_Players.Text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Released:.
-        /// </summary>
-        internal static string BannerPreview_Year_Text {
-            get {
-                return ResourceManager.GetString("BannerPreview_Year.Text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Injection method options....
         /// </summary>
         internal static string button1_Text {

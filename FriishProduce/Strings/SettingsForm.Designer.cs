@@ -88,7 +88,7 @@ namespace Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;System default&gt;.
+        ///   Looks up a localized string similar to System default.
         /// </summary>
         internal static string LanguageList_Items {
             get {

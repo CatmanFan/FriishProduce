@@ -283,7 +283,7 @@
     <value>1</value>
   </data>
   <data name="LanguageList.Items" xml:space="preserve">
-    <value>&lt;System default&gt;</value>
+    <value>System default</value>
   </data>
   <data name="AutoLibRetro.Text" xml:space="preserve">
     <value>Automatically download from LibRetro database</value>
@@ -459,7 +459,7 @@
   <data name="&gt;&gt;OK.Parent" xml:space="preserve">
     <value>panel1</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="$this.Localizable" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
+  </data>
 </root>

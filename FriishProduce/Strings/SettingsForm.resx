@@ -127,7 +127,7 @@
     <value>Image interpolation:</value>
   </data>
   <data name="LanguageList.Items" xml:space="preserve">
-    <value>&lt;System default&gt;</value>
+    <value>System default</value>
   </data>
   <data name="tabPage1.Text" xml:space="preserve">
     <value>Application</value>
