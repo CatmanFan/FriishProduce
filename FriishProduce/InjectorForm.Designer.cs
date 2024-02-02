@@ -32,33 +32,33 @@ namespace FriishProduce
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InjectorForm));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.gbox005 = new System.Windows.Forms.GroupBox();
-            this.x006 = new System.Windows.Forms.Button();
-            this.gbox001 = new System.Windows.Forms.GroupBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.Random = new System.Windows.Forms.PictureBox();
-            this.x002 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.ChannelTitle = new System.Windows.Forms.TextBox();
             this.RegionFree = new System.Windows.Forms.CheckBox();
             this.TitleID = new System.Windows.Forms.TextBox();
-            this.x004 = new System.Windows.Forms.Label();
-            this.gbox000 = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.SerialCode = new System.Windows.Forms.Label();
+            this.SoftwareName = new System.Windows.Forms.Label();
+            this.ROMPath = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.x001 = new System.Windows.Forms.Label();
-            this.x000 = new System.Windows.Forms.Label();
-            this.x011 = new System.Windows.Forms.Label();
-            this.gbox006 = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.BaseName = new System.Windows.Forms.Label();
             this.baseID = new System.Windows.Forms.Label();
             this.WADRegion = new System.Windows.Forms.PictureBox();
             this.WADRegionList = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.Base = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.x010 = new System.Windows.Forms.Label();
-            this.gbox007 = new System.Windows.Forms.GroupBox();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.imageintpl = new System.Windows.Forms.ComboBox();
-            this.gbox002 = new System.Windows.Forms.GroupBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.BannerPreview_Panel = new System.Windows.Forms.Panel();
             this.BannerPreview_Label = new System.Windows.Forms.Label();
             this.BannerPreview_Players = new System.Windows.Forms.Label();
@@ -68,14 +68,14 @@ namespace FriishProduce
             this.Image = new System.Windows.Forms.PictureBox();
             this.BannerPreview_BG = new System.Windows.Forms.PictureBox();
             this.ExportBanner = new System.Windows.Forms.Button();
-            this.gbox003 = new System.Windows.Forms.GroupBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.Players = new System.Windows.Forms.NumericUpDown();
             this.ReleaseYear = new System.Windows.Forms.NumericUpDown();
-            this.x007 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.BannerTitle = new System.Windows.Forms.TextBox();
-            this.x003 = new System.Windows.Forms.Label();
-            this.x008 = new System.Windows.Forms.Label();
-            this.gbox004 = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.SaveIcon_Panel = new System.Windows.Forms.Panel();
             this.SaveIcon_Image = new System.Windows.Forms.PictureBox();
             this.SaveDataTitle = new System.Windows.Forms.TextBox();
@@ -83,23 +83,23 @@ namespace FriishProduce
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.gbox005.SuspendLayout();
-            this.gbox001.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Random)).BeginInit();
-            this.gbox000.SuspendLayout();
-            this.gbox006.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WADRegion)).BeginInit();
-            this.gbox007.SuspendLayout();
-            this.gbox002.SuspendLayout();
+            this.groupBox8.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.BannerPreview_Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BannerPreview_Line2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BannerPreview_Line1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Image)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BannerPreview_BG)).BeginInit();
-            this.gbox003.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Players)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReleaseYear)).BeginInit();
-            this.gbox004.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.SaveIcon_Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SaveIcon_Image)).BeginInit();
             this.SuspendLayout();
@@ -111,45 +111,45 @@ namespace FriishProduce
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.gbox005);
-            this.splitContainer1.Panel1.Controls.Add(this.gbox001);
-            this.splitContainer1.Panel1.Controls.Add(this.gbox000);
-            this.splitContainer1.Panel1.Controls.Add(this.gbox006);
+            this.splitContainer1.Panel1.Controls.Add(this.groupBox4);
+            this.splitContainer1.Panel1.Controls.Add(this.groupBox3);
+            this.splitContainer1.Panel1.Controls.Add(this.groupBox1);
+            this.splitContainer1.Panel1.Controls.Add(this.groupBox2);
             resources.ApplyResources(this.splitContainer1.Panel1, "splitContainer1.Panel1");
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.gbox007);
-            this.splitContainer1.Panel2.Controls.Add(this.gbox002);
-            this.splitContainer1.Panel2.Controls.Add(this.gbox003);
-            this.splitContainer1.Panel2.Controls.Add(this.gbox004);
+            this.splitContainer1.Panel2.Controls.Add(this.groupBox8);
+            this.splitContainer1.Panel2.Controls.Add(this.groupBox5);
+            this.splitContainer1.Panel2.Controls.Add(this.groupBox6);
+            this.splitContainer1.Panel2.Controls.Add(this.groupBox7);
             resources.ApplyResources(this.splitContainer1.Panel2, "splitContainer1.Panel2");
             // 
-            // gbox005
+            // groupBox4
             // 
-            this.gbox005.Controls.Add(this.x006);
-            resources.ApplyResources(this.gbox005, "gbox005");
-            this.gbox005.Name = "gbox005";
-            this.gbox005.TabStop = false;
+            this.groupBox4.Controls.Add(this.button1);
+            resources.ApplyResources(this.groupBox4, "groupBox4");
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.TabStop = false;
             // 
-            // x006
+            // button1
             // 
-            resources.ApplyResources(this.x006, "x006");
-            this.x006.Name = "x006";
-            this.x006.UseVisualStyleBackColor = true;
-            this.x006.Click += new System.EventHandler(this.OpenInjectorOptions);
+            resources.ApplyResources(this.button1, "button1");
+            this.button1.Name = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.OpenInjectorOptions);
             // 
-            // gbox001
+            // groupBox3
             // 
-            this.gbox001.Controls.Add(this.Random);
-            this.gbox001.Controls.Add(this.x002);
-            this.gbox001.Controls.Add(this.ChannelTitle);
-            this.gbox001.Controls.Add(this.RegionFree);
-            this.gbox001.Controls.Add(this.TitleID);
-            this.gbox001.Controls.Add(this.x004);
-            resources.ApplyResources(this.gbox001, "gbox001");
-            this.gbox001.Name = "gbox001";
-            this.gbox001.TabStop = false;
+            this.groupBox3.Controls.Add(this.Random);
+            this.groupBox3.Controls.Add(this.label6);
+            this.groupBox3.Controls.Add(this.ChannelTitle);
+            this.groupBox3.Controls.Add(this.RegionFree);
+            this.groupBox3.Controls.Add(this.TitleID);
+            this.groupBox3.Controls.Add(this.label7);
+            resources.ApplyResources(this.groupBox3, "groupBox3");
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.TabStop = false;
             // 
             // Random
             // 
@@ -160,10 +160,10 @@ namespace FriishProduce
             this.Random.TabStop = false;
             this.Random.Click += new System.EventHandler(this.Random_Click);
             // 
-            // x002
+            // label6
             // 
-            resources.ApplyResources(this.x002, "x002");
-            this.x002.Name = "x002";
+            resources.ApplyResources(this.label6, "label6");
+            this.label6.Name = "label6";
             // 
             // ChannelTitle
             // 
@@ -185,72 +185,72 @@ namespace FriishProduce
             this.TitleID.Name = "TitleID";
             this.TitleID.TextChanged += new System.EventHandler(this.TextBox_Changed);
             // 
-            // x004
+            // label7
             // 
-            resources.ApplyResources(this.x004, "x004");
-            this.x004.Name = "x004";
+            resources.ApplyResources(this.label7, "label7");
+            this.label7.Name = "label7";
             // 
-            // gbox000
+            // groupBox1
             // 
-            this.gbox000.Controls.Add(this.label3);
-            this.gbox000.Controls.Add(this.label2);
-            this.gbox000.Controls.Add(this.label1);
-            this.gbox000.Controls.Add(this.x001);
-            this.gbox000.Controls.Add(this.x000);
-            this.gbox000.Controls.Add(this.x011);
-            resources.ApplyResources(this.gbox000, "gbox000");
-            this.gbox000.Name = "gbox000";
-            this.gbox000.TabStop = false;
+            this.groupBox1.Controls.Add(this.SerialCode);
+            this.groupBox1.Controls.Add(this.SoftwareName);
+            this.groupBox1.Controls.Add(this.ROMPath);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label2);
+            resources.ApplyResources(this.groupBox1, "groupBox1");
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.TabStop = false;
             // 
-            // label3
+            // SerialCode
             // 
-            resources.ApplyResources(this.label3, "label3");
-            this.label3.Name = "label3";
-            this.label3.Tag = "";
+            resources.ApplyResources(this.SerialCode, "SerialCode");
+            this.SerialCode.Name = "SerialCode";
+            this.SerialCode.Tag = "";
             // 
-            // label2
+            // SoftwareName
             // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
-            this.label2.Tag = "";
+            resources.ApplyResources(this.SoftwareName, "SoftwareName");
+            this.SoftwareName.Name = "SoftwareName";
+            this.SoftwareName.Tag = "";
+            // 
+            // ROMPath
+            // 
+            resources.ApplyResources(this.ROMPath, "ROMPath");
+            this.ROMPath.Name = "ROMPath";
+            this.ROMPath.Tag = "";
             // 
             // label1
             // 
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Tag = "";
             // 
-            // x001
+            // label3
             // 
-            resources.ApplyResources(this.x001, "x001");
-            this.x001.Name = "x001";
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
             // 
-            // x000
+            // label2
             // 
-            resources.ApplyResources(this.x000, "x000");
-            this.x000.Name = "x000";
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
             // 
-            // x011
+            // groupBox2
             // 
-            resources.ApplyResources(this.x011, "x011");
-            this.x011.Name = "x011";
+            this.groupBox2.Controls.Add(this.BaseName);
+            this.groupBox2.Controls.Add(this.baseID);
+            this.groupBox2.Controls.Add(this.WADRegion);
+            this.groupBox2.Controls.Add(this.Base);
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.label4);
+            resources.ApplyResources(this.groupBox2, "groupBox2");
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.TabStop = false;
             // 
-            // gbox006
+            // BaseName
             // 
-            this.gbox006.Controls.Add(this.label5);
-            this.gbox006.Controls.Add(this.baseID);
-            this.gbox006.Controls.Add(this.WADRegion);
-            this.gbox006.Controls.Add(this.Base);
-            this.gbox006.Controls.Add(this.label4);
-            this.gbox006.Controls.Add(this.x010);
-            resources.ApplyResources(this.gbox006, "gbox006");
-            this.gbox006.Name = "gbox006";
-            this.gbox006.TabStop = false;
-            // 
-            // label5
-            // 
-            resources.ApplyResources(this.label5, "label5");
-            this.label5.Name = "label5";
+            resources.ApplyResources(this.BaseName, "BaseName");
+            this.BaseName.Name = "BaseName";
             // 
             // baseID
             // 
@@ -282,24 +282,24 @@ namespace FriishProduce
             this.Base.Name = "Base";
             this.Base.SelectedIndexChanged += new System.EventHandler(this.Base_SelectedIndexChanged);
             // 
+            // label5
+            // 
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.Name = "label5";
+            this.label5.Tag = "";
+            // 
             // label4
             // 
             resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
-            this.label4.Tag = "x004";
             // 
-            // x010
+            // groupBox8
             // 
-            resources.ApplyResources(this.x010, "x010");
-            this.x010.Name = "x010";
-            // 
-            // gbox007
-            // 
-            this.gbox007.Controls.Add(this.imageintpl);
-            resources.ApplyResources(this.gbox007, "gbox007");
-            this.gbox007.Name = "gbox007";
-            this.gbox007.TabStop = false;
-            this.gbox007.Tag = "";
+            this.groupBox8.Controls.Add(this.imageintpl);
+            resources.ApplyResources(this.groupBox8, "groupBox8");
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Tag = "";
             // 
             // imageintpl
             // 
@@ -311,13 +311,13 @@ namespace FriishProduce
             this.imageintpl.Name = "imageintpl";
             this.imageintpl.SelectedIndexChanged += new System.EventHandler(this.InterpolationChanged);
             // 
-            // gbox002
+            // groupBox5
             // 
-            this.gbox002.Controls.Add(this.BannerPreview_Panel);
-            resources.ApplyResources(this.gbox002, "gbox002");
-            this.gbox002.Name = "gbox002";
-            this.gbox002.TabStop = false;
-            this.gbox002.Tag = "";
+            this.groupBox5.Controls.Add(this.BannerPreview_Panel);
+            resources.ApplyResources(this.groupBox5, "groupBox5");
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Tag = "";
             // 
             // BannerPreview_Panel
             // 
@@ -389,18 +389,18 @@ namespace FriishProduce
             this.ExportBanner.UseVisualStyleBackColor = true;
             this.ExportBanner.Click += new System.EventHandler(this.ExportBanner_Click);
             // 
-            // gbox003
+            // groupBox6
             // 
-            this.gbox003.Controls.Add(this.Players);
-            this.gbox003.Controls.Add(this.ReleaseYear);
-            this.gbox003.Controls.Add(this.x007);
-            this.gbox003.Controls.Add(this.BannerTitle);
-            this.gbox003.Controls.Add(this.x003);
-            this.gbox003.Controls.Add(this.x008);
-            resources.ApplyResources(this.gbox003, "gbox003");
-            this.gbox003.Name = "gbox003";
-            this.gbox003.TabStop = false;
-            this.gbox003.Tag = "";
+            this.groupBox6.Controls.Add(this.Players);
+            this.groupBox6.Controls.Add(this.ReleaseYear);
+            this.groupBox6.Controls.Add(this.label9);
+            this.groupBox6.Controls.Add(this.BannerTitle);
+            this.groupBox6.Controls.Add(this.label8);
+            this.groupBox6.Controls.Add(this.label10);
+            resources.ApplyResources(this.groupBox6, "groupBox6");
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Tag = "";
             // 
             // Players
             // 
@@ -444,10 +444,10 @@ namespace FriishProduce
             0});
             this.ReleaseYear.ValueChanged += new System.EventHandler(this.Value_Changed);
             // 
-            // x007
+            // label9
             // 
-            resources.ApplyResources(this.x007, "x007");
-            this.x007.Name = "x007";
+            resources.ApplyResources(this.label9, "label9");
+            this.label9.Name = "label9";
             // 
             // BannerTitle
             // 
@@ -456,24 +456,24 @@ namespace FriishProduce
             this.BannerTitle.TextChanged += new System.EventHandler(this.TextBox_Changed);
             this.BannerTitle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_Handle);
             // 
-            // x003
+            // label8
             // 
-            resources.ApplyResources(this.x003, "x003");
-            this.x003.Name = "x003";
+            resources.ApplyResources(this.label8, "label8");
+            this.label8.Name = "label8";
             // 
-            // x008
+            // label10
             // 
-            resources.ApplyResources(this.x008, "x008");
-            this.x008.Name = "x008";
+            resources.ApplyResources(this.label10, "label10");
+            this.label10.Name = "label10";
             // 
-            // gbox004
+            // groupBox7
             // 
-            this.gbox004.Controls.Add(this.SaveIcon_Panel);
-            this.gbox004.Controls.Add(this.SaveDataTitle);
-            resources.ApplyResources(this.gbox004, "gbox004");
-            this.gbox004.Name = "gbox004";
-            this.gbox004.TabStop = false;
-            this.gbox004.Tag = "";
+            this.groupBox7.Controls.Add(this.SaveIcon_Panel);
+            this.groupBox7.Controls.Add(this.SaveDataTitle);
+            resources.ApplyResources(this.groupBox7, "groupBox7");
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Tag = "";
             // 
             // SaveIcon_Panel
             // 
@@ -511,28 +511,28 @@ namespace FriishProduce
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.gbox005.ResumeLayout(false);
-            this.gbox001.ResumeLayout(false);
-            this.gbox001.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Random)).EndInit();
-            this.gbox000.ResumeLayout(false);
-            this.gbox000.PerformLayout();
-            this.gbox006.ResumeLayout(false);
-            this.gbox006.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WADRegion)).EndInit();
-            this.gbox007.ResumeLayout(false);
-            this.gbox002.ResumeLayout(false);
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
             this.BannerPreview_Panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.BannerPreview_Line2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BannerPreview_Line1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Image)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BannerPreview_BG)).EndInit();
-            this.gbox003.ResumeLayout(false);
-            this.gbox003.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Players)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReleaseYear)).EndInit();
-            this.gbox004.ResumeLayout(false);
-            this.gbox004.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             this.SaveIcon_Panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.SaveIcon_Image)).EndInit();
             this.ResumeLayout(false);
@@ -542,49 +542,49 @@ namespace FriishProduce
         #endregion
 
         private System.Windows.Forms.TextBox SaveDataTitle;
-        private System.Windows.Forms.Label x008;
-        private System.Windows.Forms.Label x007;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox BannerTitle;
-        private System.Windows.Forms.Label x003;
-        private System.Windows.Forms.Label x002;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox ChannelTitle;
-        private System.Windows.Forms.GroupBox gbox002;
+        private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.PictureBox Image;
-        private System.Windows.Forms.GroupBox gbox003;
-        private System.Windows.Forms.GroupBox gbox000;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label ROMPath;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Label SoftwareName;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label x000;
-        private System.Windows.Forms.GroupBox gbox005;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label x001;
-        private System.Windows.Forms.Label x004;
+        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox TitleID;
         private System.Windows.Forms.Panel SaveIcon_Panel;
         private System.Windows.Forms.PictureBox SaveIcon_Image;
-        private System.Windows.Forms.GroupBox gbox004;
+        private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.ComboBox imageintpl;
-        private System.Windows.Forms.GroupBox gbox001;
+        private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.CheckBox RegionFree;
         private System.Windows.Forms.PictureBox Random;
         private System.Windows.Forms.ComboBox Base;
-        private System.Windows.Forms.Button x006;
-        private System.Windows.Forms.GroupBox gbox006;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.PictureBox WADRegion;
         private System.Windows.Forms.ContextMenuStrip WADRegionList;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label BaseName;
         private System.Windows.Forms.Label baseID;
+        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label x010;
         private System.Windows.Forms.Button ExportBanner;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label x011;
+        private System.Windows.Forms.Label SerialCode;
+        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel BannerPreview_Panel;
         private System.Windows.Forms.PictureBox BannerPreview_BG;
         private System.Windows.Forms.Label BannerPreview_Label;
         private System.Windows.Forms.NumericUpDown ReleaseYear;
         private System.Windows.Forms.NumericUpDown Players;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.GroupBox gbox007;
+        private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.PictureBox BannerPreview_Line1;
         private System.Windows.Forms.PictureBox BannerPreview_Line2;
         private System.Windows.Forms.Label BannerPreview_Year;

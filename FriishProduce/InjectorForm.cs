@@ -48,6 +48,7 @@ namespace FriishProduce
         {
             Console = c;
             InitializeComponent();
+            Language.AutoSetForm(this);
 
             // Declare injector
             // ********
@@ -62,7 +63,7 @@ namespace FriishProduce
                     break;
 
                 case Console.SNES:
-                    x006.Enabled = false;
+                    button1.Enabled = false;
                     Icon = Properties.Resources.nintendo_super_nes;
                     TIDCode = "J";
                     break;
@@ -84,7 +85,7 @@ namespace FriishProduce
                     break;
 
                 case Console.PCE:
-                    x006.Enabled = false;
+                    button1.Enabled = false;
                     Icon = Properties.Resources.nec_turbografx_16;
                     TIDCode = "P"; // Q for CD games
                     break;
@@ -95,7 +96,7 @@ namespace FriishProduce
                     break;
 
                 case Console.MSX:
-                    x006.Enabled = false;
+                    button1.Enabled = false;
                     TIDCode = "X";
                     break;
 
@@ -114,7 +115,7 @@ namespace FriishProduce
             Text = Untitled;
 
             // Selected index properties
-            imageintpl.Items[0] = Properties.Strings.ByDefault;
+            imageintpl.Items[0] = Language.Get("ByDefault");
             imageintpl.Items.AddRange(Language.GetArray("List_ImageInterpolation"));
             imageintpl.SelectedIndex = Properties.Settings.Default.ImageInterpolation;
 
@@ -157,7 +158,7 @@ namespace FriishProduce
         private void isClosing(object sender, FormClosingEventArgs e)
         {
             if (Tag != null && Tag.ToString() == "dirty")
-                if (MessageBox.Show(string.Format(Language.Get("Message001"), Text), Language.Get("ApplicationName"), MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
+                if (MessageBox.Show(string.Format(Language.Get("Message001"), Text), Parent.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
                     e.Cancel = true;
         }
 
@@ -306,7 +307,7 @@ namespace FriishProduce
             {
                 Bitmap img = (Bitmap)src.Clone();
 
-                gbox002.Enabled = true;
+                groupBox5.Enabled = true;
                 i.tImg.Interpolation = (InterpolationMode)imageintpl.SelectedIndex;
 
                 // Additional functions for modification of image palette/brightness, used only for LibRetro images
@@ -336,7 +337,7 @@ namespace FriishProduce
             }
             catch
             {
-                MessageBox.Show(Language.Get("Error001"), Language.Get("ApplicationName"));
+                MessageBox.Show(Language.Get("Error001"), Parent.Text);
                 return false;
             }
         }
@@ -348,20 +349,20 @@ namespace FriishProduce
             i.ROM = Parent.BrowseROM.FileName;
             ROMLoaded = true;
 
-            label1.Text = Path.GetFileName(i.ROM);
-            if (!UseLibRetro) label3.Text = label2.Text = Language.Get("Unknown");
+            ROMPath.Text = Path.GetFileName(i.ROM);
+            if (!UseLibRetro) SerialCode.Text = SoftwareName.Text = Language.Get("Unknown");
 
             if (i.ROM != null && UseLibRetro) LoadLibRetroData();
 
             Random.Visible =
-            gbox000.Enabled =
-            gbox001.Enabled =
-            gbox002.Enabled =
-            gbox003.Enabled =
-            gbox004.Enabled =
-            gbox005.Enabled =
-            gbox006.Enabled =
-            gbox007.Enabled = true;
+            groupBox1.Enabled =
+            groupBox3.Enabled =
+            groupBox5.Enabled =
+            groupBox6.Enabled =
+            groupBox7.Enabled =
+            groupBox4.Enabled =
+            groupBox2.Enabled =
+            groupBox8.Enabled = true;
 
             BannerPreview_Panel.BackColor = BannerPreview_BG.BackColor;
             BannerPreview_Line1.Refresh();
@@ -405,12 +406,12 @@ namespace FriishProduce
                 }
 
                 // Set ROM name & serial text
-                label2.Text = LibRetro.GetTitle() ?? Language.Get("Unknown");
-                label3.Text = LibRetro.GetSerial() ?? Language.Get("Unknown");
+                SoftwareName.Text = LibRetro.GetTitle() ?? Language.Get("Unknown");
+                SerialCode.Text = LibRetro.GetSerial() ?? Language.Get("Unknown");
 
                 // Show message if partially failed to retrieve data
                 if (Retrieved && (LibRetro.GetTitle() == null || LibRetro.GetPlayers() == null || LibRetro.GetYear() == null || LibRetro.GetImgURL() == null))
-                    MessageBox.Show(Language.Get("Message004"), Language.Get("ApplicationName"));
+                    MessageBox.Show(Language.Get("Message004"), Parent.Text);
                 else if (!Retrieved) System.Media.SystemSounds.Beep.Play();
             }
             catch (Exception ex)
@@ -667,7 +668,7 @@ namespace FriishProduce
             Set:
             // Native name & Title ID
             // ********
-            label5.Text = CurrentBase.ElementAt(index).Value;
+            BaseName.Text = CurrentBase.ElementAt(index).Value;
             baseID.Text = CurrentBase.ElementAt(index).Key;
 
             // Flag

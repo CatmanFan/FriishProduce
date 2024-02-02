@@ -117,18 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ribbonTab_Home.Text" xml:space="preserve">
-    <value>Accueil</value>
-  </data>
-  <data name="NewProject.Text" xml:space="preserve">
-    <value>Nouveau ...</value>
-  </data>
-  <data name="MenuItem_About.Text" xml:space="preserve">
-    <value>À propos</value>
-  </data>
-  <data name="MenuItem_Exit.Text" xml:space="preserve">
-    <value>Quitter</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="RibbonButton_Settings.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -171,35 +159,17 @@
         RK5CYII=
 </value>
   </data>
-  <data name="ribbonPanel_Import.Text" xml:space="preserve">
-    <value>Importer</value>
-  </data>
-  <data name="OpenROM.Text" xml:space="preserve">
-    <value>Ouvrir une ROM ...</value>
-  </data>
-  <data name="OpenImage.Text" xml:space="preserve">
-    <value>Ouvrir une image ...</value>
-  </data>
   <data name="UseLibRetro.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAAABNJREFUOE9jGAWjYBSMAjBgYAAABBAAAadEfGMAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="UseLibRetro.Text" xml:space="preserve">
-    <value>Remplir dès LibRetro</value>
-  </data>
-  <data name="ribbonPanel_Export.Text" xml:space="preserve">
-    <value>Exporter</value>
-  </data>
   <data name="ExportWAD.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAAABNJREFUOE9jGAWjYBSMAjBgYAAABBAAAadEfGMAAAAASUVORK5CYII=
 </value>
-  </data>
-  <data name="ExportWAD.Text" xml:space="preserve">
-    <value>Sauvegarder comme WAD ...</value>
   </data>
   <data name="Strip_ExportWAD.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2618,7 +2588,34 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAhAAAAIQBAAD8HwAA//8AAP//AAA=
 </value>
   </data>
-  <data name="ribbon1.OrbText" xml:space="preserve">
-    <value>Fichier</value>
+  <data name="ExportWAD.Text" xml:space="preserve">
+    <value>Save as WAD</value>
+  </data>
+  <data name="MenuItem_About.Text" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="MenuItem_Exit.Text" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <data name="NewProject.Text" xml:space="preserve">
+    <value>New...</value>
+  </data>
+  <data name="OpenImage.Text" xml:space="preserve">
+    <value>Open Image</value>
+  </data>
+  <data name="OpenROM.Text" xml:space="preserve">
+    <value>Open ROM</value>
+  </data>
+  <data name="ribbonPanel_Export.Text" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="ribbonPanel_Import.Text" xml:space="preserve">
+    <value>Import</value>
+  </data>
+  <data name="ribbonTab_Home.Text" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="UseLibRetro.Text" xml:space="preserve">
+    <value>Use LibRetro data</value>
   </data>
 </root>

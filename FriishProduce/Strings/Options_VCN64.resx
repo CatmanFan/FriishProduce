@@ -117,13 +117,31 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="x001.Text" xml:space="preserve">
-    <value>Nom du logiciel :</value>
+  <data name="gbox008.Text" xml:space="preserve">
+    <value>Patches</value>
   </data>
-  <data name="x000.Text" xml:space="preserve">
-    <value>Nom du fichier ROM actuel :</value>
+  <data name="n64000.Text" xml:space="preserve">
+    <value>Screen brightness fix</value>
   </data>
-  <data name="x011.Text" xml:space="preserve">
-    <value>Code de distribution :</value>
+  <data name="n64001.Text" xml:space="preserve">
+    <value>Crashes fix</value>
+  </data>
+  <data name="n64002.Text" xml:space="preserve">
+    <value>Extended RAM patch</value>
+  </data>
+  <data name="n64003.Text" xml:space="preserve">
+    <value>Allocate for ROM size</value>
+  </data>
+  <data name="n64004.Text" xml:space="preserve">
+    <value>ROM compression type</value>
+  </data>
+  <data name="ROMCType.Items" xml:space="preserve">
+    <value>ROMC Type 0</value>
+  </data>
+  <data name="ROMCType.Items1" xml:space="preserve">
+    <value>ROMC Type 1</value>
+  </data>
+  <data name="x009.Text" xml:space="preserve">
+    <value>Please note that these options may not work for all base WADs.</value>
   </data>
 </root>

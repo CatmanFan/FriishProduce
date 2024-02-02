@@ -377,7 +377,7 @@ namespace FriishProduce
                     foreach (var item in failed)
                         failedList += "- " + item + Environment.NewLine;
 
-                    System.Windows.Forms.MessageBox.Show(string.Format(Language.Get("Error004"), failedList), Language.Get("ApplicationName"));
+                    System.Windows.Forms.MessageBox.Show(string.Format(Language.Get("Error004"), failedList), Language.Get("_AppTitle"));
                 }
             }
             catch (Exception ex)

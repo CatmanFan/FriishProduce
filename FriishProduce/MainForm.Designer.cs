@@ -119,7 +119,7 @@ namespace FriishProduce
             this.NewProject.Name = "NewProject";
             this.NewProject.SmallImage = global::FriishProduce.Properties.Resources.document_empty_large;
             this.NewProject.Style = System.Windows.Forms.RibbonButtonStyle.DropDown;
-            this.NewProject.Tag = "Projet {0}";
+            this.NewProject.Tag = "";
             resources.ApplyResources(this.NewProject, "NewProject");
             // 
             // CreateProject_List1
@@ -221,7 +221,7 @@ namespace FriishProduce
             this.ribbonTab_Home.Name = "ribbonTab_Home";
             this.ribbonTab_Home.Panels.Add(this.ribbonPanel_Import);
             this.ribbonTab_Home.Panels.Add(this.ribbonPanel_Export);
-            this.ribbonTab_Home.Tag = "r001";
+            this.ribbonTab_Home.Tag = "";
             resources.ApplyResources(this.ribbonTab_Home, "ribbonTab_Home");
             // 
             // ribbonPanel_Import

@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="UI_Language" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">sys</Value>
     </Setting>
     <Setting Name="ImageInterpolation" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>

@@ -15,17 +15,50 @@ namespace FriishProduce
     {
         internal LibRetroDB LibRetro { get; set; }
 
+        private void AutoSetRibbon()
+        {
+            ribbon1.OrbText = Language.Get("File");
+            string text = null;
+
+            foreach (RibbonTab tab in ribbon1.Tabs)
+            {
+                text = Language.Get(tab.Name, this);
+                if (text != "undefined") tab.Text = text;
+
+                foreach (RibbonPanel panel in tab.Panels)
+                {
+                    text = Language.Get(panel.Name, this);
+                    if (text != "undefined") panel.Text = text;
+
+                    foreach (RibbonButton button in panel.Items.OfType<RibbonButton>())
+                    {
+                        text = Language.Get(button.Name, this);
+                        if (text != "undefined") button.Text = text;
+                    }
+                }
+            }
+
+            foreach (RibbonButton button in ribbon1.OrbDropDown.MenuItems.OfType<RibbonButton>())
+            {
+                text = Language.Get(button.Name, this);
+                if (text != "undefined") button.Text = text;
+            }
+
+            foreach (RibbonButton item in NewProject.DropDownItems.OfType<RibbonButton>())
+            {
+                item.Text = string.Format(Language.Get("ProjectType"), Language.Get($"Platform_{item.Text.Replace("CreateProject", "")}"));
+                item.Click += CreateProject_Click;
+            }
+        }
+
         public MainForm()
         {
             InitializeComponent();
+            AutoSetRibbon();
+            Language.AutoSetForm(this);
 
-            Text = Language.Get("ApplicationName");
+            Text = Language.Get("_AppTitle");
             MenuItem_Settings.Text = Language.Get("Settings");
-            foreach (RibbonButton item in NewProject.DropDownItems.OfType<RibbonButton>())
-            {
-                item.Text = string.Format(NewProject.Tag.ToString(), Language.Get($"Platform_{item.Text.Replace("CreateProject", "")}"));
-                item.Click += CreateProject_Click;
-            }
 
             Strip_OpenROM.Image = OpenROM.SmallImage;
             Strip_OpenImage.Image = OpenImage.SmallImage;
@@ -88,7 +121,7 @@ namespace FriishProduce
 
             if (isUnsaved)
             {
-                if (MessageBox.Show(string.Format(Language.Get("Message002"), Text), Language.Get("ApplicationName"), MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
+                if (MessageBox.Show(Language.Get("Message002"), Text, MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
                     e.Cancel = true;
                 else
                     foreach (MdiTabControl.TabPage tabPage in tabControl.TabPages)

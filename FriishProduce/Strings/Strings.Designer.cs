@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FriishProduce.Properties {
+namespace Strings {
     using System;
     
     
@@ -22,7 +22,7 @@ namespace FriishProduce.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Strings {
+    public class Strings {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,10 +36,10 @@ namespace FriishProduce.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FriishProduce.Properties.Strings", typeof(Strings).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FriishProduce.Strings.Strings", typeof(Strings).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,7 +51,7 @@ namespace FriishProduce.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,9 +61,18 @@ namespace FriishProduce.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Replace this string with your username or multiple usernames.
+        ///   Looks up a localized string similar to FriishProduce.
         /// </summary>
-        internal static string _TranslationAuthor {
+        public static string _AppTitle {
+            get {
+                return ResourceManager.GetString("_AppTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [Translation Author(s)].
+        /// </summary>
+        public static string _TranslationAuthor {
             get {
                 return ResourceManager.GetString("_TranslationAuthor", resourceCulture);
             }
@@ -72,7 +81,7 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized string similar to KB.
         /// </summary>
-        internal static string Abbreviation_Kilobytes {
+        public static string Abbreviation_Kilobytes {
             get {
                 return ResourceManager.GetString("Abbreviation_Kilobytes", resourceCulture);
             }
@@ -81,7 +90,7 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized string similar to MB.
         /// </summary>
-        internal static string Abbreviation_Megabytes {
+        public static string Abbreviation_Megabytes {
             get {
                 return ResourceManager.GetString("Abbreviation_Megabytes", resourceCulture);
             }
@@ -90,25 +99,16 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized string similar to About {0}.
         /// </summary>
-        internal static string About {
+        public static string About {
             get {
                 return ResourceManager.GetString("About", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to FriishProduce.
-        /// </summary>
-        internal static string ApplicationName {
-            get {
-                return ResourceManager.GetString("ApplicationName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Author(s): {0}.
         /// </summary>
-        internal static string Author {
+        public static string Author {
             get {
                 return ResourceManager.GetString("Author", resourceCulture);
             }
@@ -117,7 +117,7 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized string similar to &amp;Cancel.
         /// </summary>
-        internal static string Button_Cancel {
+        public static string Button_Cancel {
             get {
                 return ResourceManager.GetString("Button_Cancel", resourceCulture);
             }
@@ -126,7 +126,7 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized string similar to &amp;OK.
         /// </summary>
-        internal static string Button_OK {
+        public static string Button_OK {
             get {
                 return ResourceManager.GetString("Button_OK", resourceCulture);
             }
@@ -135,7 +135,7 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Default.
         /// </summary>
-        internal static string ByDefault {
+        public static string ByDefault {
             get {
                 return ResourceManager.GetString("ByDefault", resourceCulture);
             }
@@ -144,7 +144,7 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized string similar to An error has occurred.
         /// </summary>
-        internal static string Error {
+        public static string Error {
             get {
                 return ResourceManager.GetString("Error", resourceCulture);
             }
@@ -153,7 +153,7 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Failed to connect to the Internet..
         /// </summary>
-        internal static string Error000 {
+        public static string Error000 {
             get {
                 return ResourceManager.GetString("Error000", resourceCulture);
             }
@@ -162,7 +162,7 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Failed to generate image. This may be due to an issue with GDI+..
         /// </summary>
-        internal static string Error001 {
+        public static string Error001 {
             get {
                 return ResourceManager.GetString("Error001", resourceCulture);
             }
@@ -171,7 +171,7 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Unable to replace data..
         /// </summary>
-        internal static string Error002 {
+        public static string Error002 {
             get {
                 return ResourceManager.GetString("Error002", resourceCulture);
             }
@@ -180,7 +180,7 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The ROM provided is too large (over {0} {1} in size)..
         /// </summary>
-        internal static string Error003 {
+        public static string Error003 {
             get {
                 return ResourceManager.GetString("Error003", resourceCulture);
             }
@@ -191,7 +191,7 @@ namespace FriishProduce.Properties {
         ///{0}
         ///Injection will continue as intended..
         /// </summary>
-        internal static string Error004 {
+        public static string Error004 {
             get {
                 return ResourceManager.GetString("Error004", resourceCulture);
             }
@@ -200,16 +200,25 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The application needed ({0}) was not found in the resources\tools subdirectory..
         /// </summary>
-        internal static string Error005 {
+        public static string Error005 {
             get {
                 return ResourceManager.GetString("Error005", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to File.
+        /// </summary>
+        public static string File {
+            get {
+                return ResourceManager.GetString("File", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to |All files (*.*)|*.*.
         /// </summary>
-        internal static string Filter_All {
+        public static string Filter_All {
             get {
                 return ResourceManager.GetString("Filter_All", resourceCulture);
             }
@@ -218,7 +227,7 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Disc Images (*.cue, *.iso, *.chd)|*.cue;*.iso;*.chd|  Cue Sheet files (*.cue)|*.cue|  ISO images (*.iso)|*.iso|  Compressed Hunks of Data (*.chd)|*.chd.
         /// </summary>
-        internal static string Filter_Disc {
+        public static string Filter_Disc {
             get {
                 return ResourceManager.GetString("Filter_Disc", resourceCulture);
             }
@@ -227,7 +236,7 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Images (*.bmp, *.jpg, *.jpeg, *.png)|*.bmp;*.jpg;*.jpeg;*.png|  Bitmap (*.bmp)|*.bmp|  JPEG (*.jpg, *.jpeg)|*.jpg;*.jpeg|  PNG (*.png)|*.png.
         /// </summary>
-        internal static string Filter_Img {
+        public static string Filter_Img {
             get {
                 return ResourceManager.GetString("Filter_Img", resourceCulture);
             }
@@ -236,7 +245,7 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Patch files (*.bps, *.ips, *.xdelta)|*.bps;*.ips;*.xdelta.
         /// </summary>
-        internal static string Filter_Patch {
+        public static string Filter_Patch {
             get {
                 return ResourceManager.GetString("Filter_Patch", resourceCulture);
             }
@@ -245,7 +254,7 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized string similar to MSX1/MSX2 ROM files (*.rom, *.mx1, *.mx2)|*.rom;*.mx1;*.mx2.
         /// </summary>
-        internal static string Filter_ROM_MSX {
+        public static string Filter_ROM_MSX {
             get {
                 return ResourceManager.GetString("Filter_ROM_MSX", resourceCulture);
             }
@@ -254,7 +263,7 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Nintendo 64 ROM files (*.n64, *.v64, *.z64)|*.n64;*.v64;*.z64.
         /// </summary>
-        internal static string Filter_ROM_N64 {
+        public static string Filter_ROM_N64 {
             get {
                 return ResourceManager.GetString("Filter_ROM_N64", resourceCulture);
             }
@@ -263,7 +272,7 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized string similar to NES/Famicom ROM files (*.nes)|*.nes.
         /// </summary>
-        internal static string Filter_ROM_NES {
+        public static string Filter_ROM_NES {
             get {
                 return ResourceManager.GetString("Filter_ROM_NES", resourceCulture);
             }
@@ -272,7 +281,7 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized string similar to TurboGrafx-16/PC Engine ROM files (*.pce)|*.pce.
         /// </summary>
-        internal static string Filter_ROM_PCE {
+        public static string Filter_ROM_PCE {
             get {
                 return ResourceManager.GetString("Filter_ROM_PCE", resourceCulture);
             }
@@ -281,7 +290,7 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Mega Drive/Genesis ROM files (*.bin, *.gen, *.smd, *.md)|*.bin;*.gen;*.smd;*.md.
         /// </summary>
-        internal static string Filter_ROM_SMDGEN {
+        public static string Filter_ROM_SMDGEN {
             get {
                 return ResourceManager.GetString("Filter_ROM_SMDGEN", resourceCulture);
             }
@@ -290,7 +299,7 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Master System ROM files (*.sms)|*.sms.
         /// </summary>
-        internal static string Filter_ROM_SMS {
+        public static string Filter_ROM_SMS {
             get {
                 return ResourceManager.GetString("Filter_ROM_SMS", resourceCulture);
             }
@@ -299,7 +308,7 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized string similar to SNES/Super Famicom ROM files (*.sfc, *.smc)|*.sfc;*.smc.
         /// </summary>
-        internal static string Filter_ROM_SNES {
+        public static string Filter_ROM_SNES {
             get {
                 return ResourceManager.GetString("Filter_ROM_SNES", resourceCulture);
             }
@@ -308,7 +317,7 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized string similar to SWF files (*.swf)|*.swf.
         /// </summary>
-        internal static string Filter_SWF {
+        public static string Filter_SWF {
             get {
                 return ResourceManager.GetString("Filter_SWF", resourceCulture);
             }
@@ -317,7 +326,7 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Wii Channels (*.wad)|*.wad.
         /// </summary>
-        internal static string Filter_WAD {
+        public static string Filter_WAD {
             get {
                 return ResourceManager.GetString("Filter_WAD", resourceCulture);
             }
@@ -326,7 +335,7 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized string similar to ZIP archives (*.zip)|*.zip.
         /// </summary>
-        internal static string Filter_ZIP {
+        public static string Filter_ZIP {
             get {
                 return ResourceManager.GetString("Filter_ZIP", resourceCulture);
             }
@@ -335,7 +344,7 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Injection method options.
         /// </summary>
-        internal static string InjectionMethodOptions {
+        public static string InjectionMethodOptions {
             get {
                 return ResourceManager.GetString("InjectionMethodOptions", resourceCulture);
             }
@@ -350,7 +359,7 @@ namespace FriishProduce.Properties {
         ///High Quality Bilinear
         ///High Quality Bicubic.
         /// </summary>
-        internal static string List_ImageInterpolation {
+        public static string List_ImageInterpolation {
             get {
                 return ResourceManager.GetString("List_ImageInterpolation", resourceCulture);
             }
@@ -360,9 +369,9 @@ namespace FriishProduce.Properties {
         ///   Looks up a localized string similar to Screen brightness fix
         ///Crashes fix
         ///Extended ROM patch
-        ///Allocate for ROM size.
+        ///Allocation for ROM size.
         /// </summary>
-        internal static string List_N64Options {
+        public static string List_N64Options {
             get {
                 return ResourceManager.GetString("List_N64Options", resourceCulture);
             }
@@ -372,7 +381,7 @@ namespace FriishProduce.Properties {
         ///   Looks up a localized string similar to An application restart is needed in order for changes to take effect.
         ///Restart now?.
         /// </summary>
-        internal static string Message000 {
+        public static string Message000 {
             get {
                 return ResourceManager.GetString("Message000", resourceCulture);
             }
@@ -381,7 +390,7 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Discard unsaved changes to &quot;{0}&quot;?.
         /// </summary>
-        internal static string Message001 {
+        public static string Message001 {
             get {
                 return ResourceManager.GetString("Message001", resourceCulture);
             }
@@ -390,7 +399,7 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Discard all unsaved changes?.
         /// </summary>
-        internal static string Message002 {
+        public static string Message002 {
             get {
                 return ResourceManager.GetString("Message002", resourceCulture);
             }
@@ -400,7 +409,7 @@ namespace FriishProduce.Properties {
         ///   Looks up a localized string similar to Successfully exported to WAD:
         ///{0}.
         /// </summary>
-        internal static string Message003 {
+        public static string Message003 {
             get {
                 return ResourceManager.GetString("Message003", resourceCulture);
             }
@@ -409,7 +418,7 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Unable to retrieve all LibRetro data for the selected software. Some fields may need to be filled manually..
         /// </summary>
-        internal static string Message004 {
+        public static string Message004 {
             get {
                 return ResourceManager.GetString("Message004", resourceCulture);
             }
@@ -418,7 +427,7 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Commodore 64.
         /// </summary>
-        internal static string Platform_C64 {
+        public static string Platform_C64 {
             get {
                 return ResourceManager.GetString("Platform_C64", resourceCulture);
             }
@@ -427,7 +436,7 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Flash.
         /// </summary>
-        internal static string Platform_Flash {
+        public static string Platform_Flash {
             get {
                 return ResourceManager.GetString("Platform_Flash", resourceCulture);
             }
@@ -436,7 +445,7 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized string similar to MSX/MSX2.
         /// </summary>
-        internal static string Platform_MSX {
+        public static string Platform_MSX {
             get {
                 return ResourceManager.GetString("Platform_MSX", resourceCulture);
             }
@@ -445,7 +454,7 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Nintendo 64.
         /// </summary>
-        internal static string Platform_N64 {
+        public static string Platform_N64 {
             get {
                 return ResourceManager.GetString("Platform_N64", resourceCulture);
             }
@@ -454,7 +463,7 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized string similar to NEO-GEO.
         /// </summary>
-        internal static string Platform_NeoGeo {
+        public static string Platform_NeoGeo {
             get {
                 return ResourceManager.GetString("Platform_NeoGeo", resourceCulture);
             }
@@ -463,7 +472,7 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized string similar to NES/Famicom.
         /// </summary>
-        internal static string Platform_NES {
+        public static string Platform_NES {
             get {
                 return ResourceManager.GetString("Platform_NES", resourceCulture);
             }
@@ -472,7 +481,7 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized string similar to TurboGrafx-16/PC Engine.
         /// </summary>
-        internal static string Platform_PCE {
+        public static string Platform_PCE {
             get {
                 return ResourceManager.GetString("Platform_PCE", resourceCulture);
             }
@@ -481,7 +490,7 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized string similar to TurboGrafx-16 CD/PC Engine CD.
         /// </summary>
-        internal static string Platform_PCECD {
+        public static string Platform_PCECD {
             get {
                 return ResourceManager.GetString("Platform_PCECD", resourceCulture);
             }
@@ -490,7 +499,7 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Mega Drive/Genesis.
         /// </summary>
-        internal static string Platform_SMDGEN {
+        public static string Platform_SMDGEN {
             get {
                 return ResourceManager.GetString("Platform_SMDGEN", resourceCulture);
             }
@@ -499,7 +508,7 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Master System.
         /// </summary>
-        internal static string Platform_SMS {
+        public static string Platform_SMS {
             get {
                 return ResourceManager.GetString("Platform_SMS", resourceCulture);
             }
@@ -508,7 +517,7 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized string similar to SNES/Super Famicom.
         /// </summary>
-        internal static string Platform_SNES {
+        public static string Platform_SNES {
             get {
                 return ResourceManager.GetString("Platform_SNES", resourceCulture);
             }
@@ -517,7 +526,7 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Nintendo.
         /// </summary>
-        internal static string PlatformGroup_0 {
+        public static string PlatformGroup_0 {
             get {
                 return ResourceManager.GetString("PlatformGroup_0", resourceCulture);
             }
@@ -526,7 +535,7 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized string similar to SEGA.
         /// </summary>
-        internal static string PlatformGroup_1 {
+        public static string PlatformGroup_1 {
             get {
                 return ResourceManager.GetString("PlatformGroup_1", resourceCulture);
             }
@@ -535,7 +544,7 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized string similar to NEC.
         /// </summary>
-        internal static string PlatformGroup_2 {
+        public static string PlatformGroup_2 {
             get {
                 return ResourceManager.GetString("PlatformGroup_2", resourceCulture);
             }
@@ -544,7 +553,7 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized string similar to SNK.
         /// </summary>
-        internal static string PlatformGroup_3 {
+        public static string PlatformGroup_3 {
             get {
                 return ResourceManager.GetString("PlatformGroup_3", resourceCulture);
             }
@@ -553,7 +562,7 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Commodore.
         /// </summary>
-        internal static string PlatformGroup_4 {
+        public static string PlatformGroup_4 {
             get {
                 return ResourceManager.GetString("PlatformGroup_4", resourceCulture);
             }
@@ -562,7 +571,7 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Microsoft.
         /// </summary>
-        internal static string PlatformGroup_5 {
+        public static string PlatformGroup_5 {
             get {
                 return ResourceManager.GetString("PlatformGroup_5", resourceCulture);
             }
@@ -571,16 +580,25 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Macromedia/Adobe.
         /// </summary>
-        internal static string PlatformGroup_6 {
+        public static string PlatformGroup_6 {
             get {
                 return ResourceManager.GetString("PlatformGroup_6", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} Project.
+        /// </summary>
+        public static string ProjectType {
+            get {
+                return ResourceManager.GetString("ProjectType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Europe.
         /// </summary>
-        internal static string Region_E {
+        public static string Region_E {
             get {
                 return ResourceManager.GetString("Region_E", resourceCulture);
             }
@@ -589,7 +607,7 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Japan.
         /// </summary>
-        internal static string Region_J {
+        public static string Region_J {
             get {
                 return ResourceManager.GetString("Region_J", resourceCulture);
             }
@@ -598,7 +616,7 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Korea.
         /// </summary>
-        internal static string Region_K {
+        public static string Region_K {
             get {
                 return ResourceManager.GetString("Region_K", resourceCulture);
             }
@@ -607,7 +625,7 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized string similar to USA.
         /// </summary>
-        internal static string Region_U {
+        public static string Region_U {
             get {
                 return ResourceManager.GetString("Region_U", resourceCulture);
             }
@@ -616,7 +634,7 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Settings.
         /// </summary>
-        internal static string Settings {
+        public static string Settings {
             get {
                 return ResourceManager.GetString("Settings", resourceCulture);
             }
@@ -625,7 +643,7 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Unknown.
         /// </summary>
-        internal static string Unknown {
+        public static string Unknown {
             get {
                 return ResourceManager.GetString("Unknown", resourceCulture);
             }
@@ -634,7 +652,7 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Untitled {0} WAD.
         /// </summary>
-        internal static string Untitled {
+        public static string Untitled {
             get {
                 return ResourceManager.GetString("Untitled", resourceCulture);
             }

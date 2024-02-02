@@ -29,14 +29,14 @@ namespace FriishProduce
             InitializeComponent();
             Language.AutoSetForm(this);
 
-            nespl.Items[0] = Properties.Strings.ByDefault;
+            PaletteList.Items[0] = Language.Get("ByDefault");
         }
 
         private void Form_Load(object sender, EventArgs e)
         {
             // Options
             // *******
-            nespl.SelectedIndex = int.Parse(Settings[0]);
+            PaletteList.SelectedIndex = int.Parse(Settings[0]);
             checkBox1.Checked = Settings[1] == "1";
             // *******
         }
@@ -45,7 +45,7 @@ namespace FriishProduce
         {
             // Options
             // *******
-            Settings[0] = nespl.SelectedIndex.ToString();
+            Settings[0] = PaletteList.SelectedIndex.ToString();
             Settings[1] = checkBox1.Checked ? "1" : "0";
             // *******
 
@@ -253,10 +253,10 @@ namespace FriishProduce
         {
             pictureBox1.Image = Properties.Resources.screen_nes;
 
-            try   { if (nespl.SelectedIndex > 0) pictureBox1.Image = SwapColors(Properties.Resources.screen_nes, Palettes[0], Palettes[nespl.SelectedIndex]); }
+            try   { if (PaletteList.SelectedIndex > 0) pictureBox1.Image = SwapColors(Properties.Resources.screen_nes, Palettes[0], Palettes[PaletteList.SelectedIndex]); }
             catch { }
 
-            switch (nespl.SelectedIndex)
+            switch (PaletteList.SelectedIndex)
             {
                 case 0:
                     label2.Text = string.Format(Language.Get("Author"), "Nintendo");

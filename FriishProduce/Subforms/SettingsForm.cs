@@ -27,14 +27,15 @@ namespace FriishProduce
             foreach (var item in Language.List)
                 LanguageList.Items.Add(item.Value);
             LanguageList.Sorted = true;
+            var x = Default.UI_Language;
 
             if (Default.UI_Language == "sys") LanguageList.SelectedIndex = 0;
             else LanguageList.SelectedIndex = LanguageList.Items.IndexOf(LanguageName(Default.UI_Language));
             // -----------------------------
-            imageintpl.Items[0] = Properties.Strings.ByDefault;
-            imageintpl.Items.AddRange(Language.GetArray("List_ImageInterpolation"));
-            imageintpl.SelectedIndex = Default.ImageInterpolation;
-            s006.Checked = Default.AutoLibRetro;
+            DefaultImageInterpolation.Items[0] = Language.Get("ByDefault");
+            DefaultImageInterpolation.Items.AddRange(Language.GetArray("List_ImageInterpolation"));
+            DefaultImageInterpolation.SelectedIndex = Default.ImageInterpolation;
+            AutoLibRetro.Checked = Default.AutoLibRetro;
         }
 
         private string LanguageName(string code)
@@ -71,8 +72,8 @@ namespace FriishProduce
             // -------------------------------------------
             // Other settings
             // -------------------------------------------
-            Default.ImageInterpolation = imageintpl.SelectedIndex;
-            Default.AutoLibRetro = s006.Checked;
+            Default.ImageInterpolation = DefaultImageInterpolation.SelectedIndex;
+            Default.AutoLibRetro = AutoLibRetro.Checked;
 
             // -------------------------------------------
             // Restart message box & save changes

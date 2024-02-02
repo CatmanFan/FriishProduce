@@ -33,15 +33,15 @@ namespace FriishProduce
             this.panel1 = new System.Windows.Forms.Panel();
             this.Cancel = new System.Windows.Forms.Button();
             this.OK = new System.Windows.Forms.Button();
-            this.nespl = new System.Windows.Forms.ComboBox();
+            this.PaletteList = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.gbox007 = new System.Windows.Forms.GroupBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
-            this.gbox007.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -70,45 +70,45 @@ namespace FriishProduce
             this.OK.UseVisualStyleBackColor = true;
             this.OK.Click += new System.EventHandler(this.OK_Click);
             // 
-            // nespl
+            // PaletteList
             // 
-            this.nespl.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.nespl.FormattingEnabled = true;
-            this.nespl.Items.AddRange(new object[] {
-            resources.GetString("nespl.Items"),
-            resources.GetString("nespl.Items1"),
-            resources.GetString("nespl.Items2"),
-            resources.GetString("nespl.Items3"),
-            resources.GetString("nespl.Items4"),
-            resources.GetString("nespl.Items5"),
-            resources.GetString("nespl.Items6"),
-            resources.GetString("nespl.Items7"),
-            resources.GetString("nespl.Items8"),
-            resources.GetString("nespl.Items9")});
-            resources.ApplyResources(this.nespl, "nespl");
-            this.nespl.Name = "nespl";
-            this.nespl.SelectedIndexChanged += new System.EventHandler(this.PaletteChanged);
+            this.PaletteList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.PaletteList.FormattingEnabled = true;
+            this.PaletteList.Items.AddRange(new object[] {
+            resources.GetString("PaletteList.Items"),
+            resources.GetString("PaletteList.Items1"),
+            resources.GetString("PaletteList.Items2"),
+            resources.GetString("PaletteList.Items3"),
+            resources.GetString("PaletteList.Items4"),
+            resources.GetString("PaletteList.Items5"),
+            resources.GetString("PaletteList.Items6"),
+            resources.GetString("PaletteList.Items7"),
+            resources.GetString("PaletteList.Items8"),
+            resources.GetString("PaletteList.Items9")});
+            resources.ApplyResources(this.PaletteList, "PaletteList");
+            this.PaletteList.Name = "PaletteList";
+            this.PaletteList.SelectedIndexChanged += new System.EventHandler(this.PaletteChanged);
             // 
             // label1
             // 
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
             // 
-            // gbox007
+            // groupBox1
             // 
-            this.gbox007.Controls.Add(this.label2);
-            this.gbox007.Controls.Add(this.pictureBox1);
-            this.gbox007.Controls.Add(this.nespl);
-            this.gbox007.Controls.Add(this.label1);
-            this.gbox007.Controls.Add(this.checkBox1);
-            resources.ApplyResources(this.gbox007, "gbox007");
-            this.gbox007.Name = "gbox007";
-            this.gbox007.TabStop = false;
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.pictureBox1);
+            this.groupBox1.Controls.Add(this.PaletteList);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.checkBox1);
+            resources.ApplyResources(this.groupBox1, "groupBox1");
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.TabStop = false;
             // 
             // label2
             // 
             resources.ApplyResources(this.label2, "label2");
-            this.label2.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label2.ForeColor = System.Drawing.Color.SteelBlue;
             this.label2.Name = "label2";
             // 
             // pictureBox1
@@ -139,7 +139,7 @@ namespace FriishProduce
             this.CancelButton = this.Cancel;
             resources.ApplyResources(this, "$this");
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.gbox007);
+            this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -150,8 +150,8 @@ namespace FriishProduce
             this.Tag = "";
             this.Load += new System.EventHandler(this.Form_Load);
             this.panel1.ResumeLayout(false);
-            this.gbox007.ResumeLayout(false);
-            this.gbox007.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -161,9 +161,9 @@ namespace FriishProduce
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.ComboBox nespl;
+        private System.Windows.Forms.ComboBox PaletteList;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.GroupBox gbox007;
+        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label2;
