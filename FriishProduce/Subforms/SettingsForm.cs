@@ -14,51 +14,34 @@ namespace FriishProduce
 {
     public partial class SettingsForm : Form
     {
-        private readonly Language Strings = Program.Language;
-        private readonly List<string> langs = new List<string>();
         bool isDirty = false;
 
         public SettingsForm()
         {
             InitializeComponent();
-            Strings.Localize(this);
 
-            // -----------------------------
-            // Add system default
-            langs.Add("sys");
-            LanguageList.Items.Add($"<{Strings.Get("s002")}>");
+            Language.AutoSetForm(this);
+            Text = Language.Get("Settings");
 
             // Add all languages
-            foreach (string file in Directory.GetFiles(Paths.Languages))
-                if (Language.Read(file) != null)
-                {
-                    langs.Add(Path.GetFileNameWithoutExtension(file));
-                    LanguageList.Items.Add(LanguageName(file));
-                }
+            foreach (var item in Language.List)
+                LanguageList.Items.Add(item.Value);
             LanguageList.Sorted = true;
 
             if (Default.UI_Language == "sys") LanguageList.SelectedIndex = 0;
-            else LanguageList.SelectedIndex = LanguageList.Items.IndexOf(LanguageName(Default.UI_Language, false));
+            else LanguageList.SelectedIndex = LanguageList.Items.IndexOf(LanguageName(Default.UI_Language));
             // -----------------------------
+            imageintpl.Items[0] = Properties.Strings.ByDefault;
+            imageintpl.Items.AddRange(Language.GetArray("List_ImageInterpolation"));
             imageintpl.SelectedIndex = Default.ImageInterpolation;
             s006.Checked = Default.AutoLibRetro;
         }
 
-        private string LanguageName(string fileName, bool isFilePath = true)
+        private string LanguageName(string code)
         {
-            // For using name from .json file:
-            //   x.LangInfo(Path.GetFileNameWithoutExtension(file))[0] (for certain file)    //
-            //   x.LangInfo(Default.Language)[0]                       (for selected).       //
-
-            // Should not be removed so as to not break the language functions, this is merely a cosmetic edit for now
-
-            string var = isFilePath ? Path.GetFileNameWithoutExtension(fileName) : fileName;
-            string langName = new System.Globalization.CultureInfo(var).NativeName;
-
-            // Capitalize first letter
-            langName = langName.Substring(0, 1).ToUpper() + langName.Substring(1, langName.Length - 1);
-
-            return langName;
+            foreach (var item in Language.List)
+                if (item.Key.ToLower() == code.ToLower()) return item.Value;
+            return null;
         }
 
         private void OK_Click(object sender, EventArgs e)
@@ -75,15 +58,12 @@ namespace FriishProduce
                 }
                 else
                 {
-                    foreach (string file in Directory.GetFiles(Paths.Languages))
-                        if (Language.Read(file) != null)
+                    foreach (var item in Language.List)
+                        if (item.Value == LanguageList.SelectedItem.ToString())
                         {
-                            if (LanguageName(file) == LanguageList.SelectedItem.ToString())
-                            {
-                                isDirty = Path.GetFileNameWithoutExtension(file) != Default.UI_Language;
-                                Default.UI_Language = Path.GetFileNameWithoutExtension(file);
-                                break;
-                            }
+                            isDirty = item.Value != Default.UI_Language;
+                            Default.UI_Language = item.Key;
+                            break;
                         }
                 }
             }
@@ -99,7 +79,7 @@ namespace FriishProduce
             // -------------------------------------------
             if (isDirty)
             {
-                if (MessageBox.Show(Strings.Get("m000"), ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show(Language.Get("Message000"), ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     Default.Save();
                     Application.Restart();

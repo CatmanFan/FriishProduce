@@ -49,7 +49,6 @@ namespace FriishProduce
             this.ribbonTab_Home = new System.Windows.Forms.RibbonTab();
             this.ribbonPanel_Import = new System.Windows.Forms.RibbonPanel();
             this.OpenROM = new System.Windows.Forms.RibbonButton();
-            this.ribbonButtonList1 = new System.Windows.Forms.RibbonButtonList();
             this.OpenImage = new System.Windows.Forms.RibbonButton();
             this.ribbonSeparator1 = new System.Windows.Forms.RibbonSeparator();
             this.UseLibRetro = new System.Windows.Forms.RibbonButton();
@@ -71,16 +70,15 @@ namespace FriishProduce
             // 
             // ribbon1
             // 
-            this.ribbon1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            resources.ApplyResources(this.ribbon1, "ribbon1");
             this.ribbon1.HideSingleTabIfTextEmpty = false;
-            this.ribbon1.Location = new System.Drawing.Point(0, 0);
             this.ribbon1.Minimized = false;
             this.ribbon1.Name = "ribbon1";
             // 
             // 
             // 
             this.ribbon1.OrbDropDown.BorderRoundness = 8;
-            this.ribbon1.OrbDropDown.Location = new System.Drawing.Point(0, 0);
+            this.ribbon1.OrbDropDown.Location = ((System.Drawing.Point)(resources.GetObject("ribbon1.OrbDropDown.Location")));
             this.ribbon1.OrbDropDown.MenuItems.Add(this.NewProject);
             this.ribbon1.OrbDropDown.MenuItems.Add(this.orbMenuSeparator1);
             this.ribbon1.OrbDropDown.MenuItems.Add(this.MenuItem_Settings);
@@ -88,8 +86,8 @@ namespace FriishProduce
             this.ribbon1.OrbDropDown.MenuItems.Add(this.MenuItem_About);
             this.ribbon1.OrbDropDown.MenuItems.Add(this.MenuItem_Exit);
             this.ribbon1.OrbDropDown.Name = "";
-            this.ribbon1.OrbDropDown.Size = new System.Drawing.Size(527, 254);
-            this.ribbon1.OrbDropDown.TabIndex = 0;
+            this.ribbon1.OrbDropDown.Size = ((System.Drawing.Size)(resources.GetObject("ribbon1.OrbDropDown.Size")));
+            this.ribbon1.OrbDropDown.TabIndex = ((int)(resources.GetObject("ribbon1.OrbDropDown.TabIndex")));
             this.ribbon1.OrbStyle = System.Windows.Forms.RibbonOrbStyle.Office_2010_Extended;
             this.ribbon1.OrbText = "File";
             // 
@@ -103,11 +101,8 @@ namespace FriishProduce
             this.ribbon1.QuickAccessToolbar.TextAlignment = System.Windows.Forms.RibbonItem.RibbonItemTextAlignment.Center;
             this.ribbon1.QuickAccessToolbar.Visible = false;
             this.ribbon1.RibbonTabFont = new System.Drawing.Font("Segoe UI", 9F);
-            this.ribbon1.Size = new System.Drawing.Size(1114, 130);
-            this.ribbon1.TabIndex = 1;
             this.ribbon1.Tabs.Add(this.ribbonTab_Home);
             this.ribbon1.TabSpacing = 3;
-            this.ribbon1.Text = "FriishProduce";
             this.ribbon1.ThemeColor = System.Windows.Forms.RibbonTheme.Blue_2010;
             this.ribbon1.UseAlwaysStandardTheme = true;
             // 
@@ -124,13 +119,13 @@ namespace FriishProduce
             this.NewProject.Name = "NewProject";
             this.NewProject.SmallImage = global::FriishProduce.Properties.Resources.document_empty_large;
             this.NewProject.Style = System.Windows.Forms.RibbonButtonStyle.DropDown;
-            this.NewProject.Tag = "r012";
-            this.NewProject.Text = "New...";
+            this.NewProject.Tag = "Projet {0}";
+            resources.ApplyResources(this.NewProject, "NewProject");
             // 
             // CreateProject_List1
             // 
             this.CreateProject_List1.Name = "CreateProject_List1";
-            this.CreateProject_List1.Text = "Nintendo";
+            resources.ApplyResources(this.CreateProject_List1, "CreateProject_List1");
             // 
             // CreateProject_NES
             // 
@@ -139,8 +134,8 @@ namespace FriishProduce
             this.CreateProject_NES.LargeImage = global::FriishProduce.Properties.Resources.icon_16x16_nes;
             this.CreateProject_NES.Name = "CreateProject_NES";
             this.CreateProject_NES.SmallImage = global::FriishProduce.Properties.Resources.icon_16x16_nes;
-            this.CreateProject_NES.Tag = "NES";
-            this.CreateProject_NES.Text = "NES";
+            this.CreateProject_NES.Tag = "";
+            resources.ApplyResources(this.CreateProject_NES, "CreateProject_NES");
             // 
             // CreateProject_SNES
             // 
@@ -149,8 +144,8 @@ namespace FriishProduce
             this.CreateProject_SNES.LargeImage = global::FriishProduce.Properties.Resources.icon_16x16_snes;
             this.CreateProject_SNES.Name = "CreateProject_SNES";
             this.CreateProject_SNES.SmallImage = global::FriishProduce.Properties.Resources.icon_16x16_snes;
-            this.CreateProject_SNES.Tag = "SNES";
-            this.CreateProject_SNES.Text = "SNES";
+            this.CreateProject_SNES.Tag = "";
+            resources.ApplyResources(this.CreateProject_SNES, "CreateProject_SNES");
             // 
             // CreateProject_N64
             // 
@@ -159,8 +154,8 @@ namespace FriishProduce
             this.CreateProject_N64.LargeImage = global::FriishProduce.Properties.Resources.icon_16x16_n64;
             this.CreateProject_N64.Name = "CreateProject_N64";
             this.CreateProject_N64.SmallImage = global::FriishProduce.Properties.Resources.icon_16x16_n64;
-            this.CreateProject_N64.Tag = "N64";
-            this.CreateProject_N64.Text = "N64";
+            this.CreateProject_N64.Tag = "";
+            resources.ApplyResources(this.CreateProject_N64, "CreateProject_N64");
             // 
             // orbMenuSeparator1
             // 
@@ -173,8 +168,8 @@ namespace FriishProduce
             this.MenuItem_Settings.LargeImage = global::FriishProduce.Properties.Resources.wrench_orange_large;
             this.MenuItem_Settings.Name = "MenuItem_Settings";
             this.MenuItem_Settings.SmallImage = global::FriishProduce.Properties.Resources.wrench_orange_large;
-            this.MenuItem_Settings.Tag = "g001";
-            this.MenuItem_Settings.Text = "Settings";
+            this.MenuItem_Settings.Tag = "";
+            resources.ApplyResources(this.MenuItem_Settings, "MenuItem_Settings");
             this.MenuItem_Settings.Click += new System.EventHandler(this.Settings_Click);
             // 
             // orbMenuSeparator2
@@ -189,7 +184,7 @@ namespace FriishProduce
             this.MenuItem_About.Name = "MenuItem_About";
             this.MenuItem_About.SmallImage = global::FriishProduce.Properties.Resources.mario_large;
             this.MenuItem_About.Tag = "r002";
-            this.MenuItem_About.Text = "About";
+            resources.ApplyResources(this.MenuItem_About, "MenuItem_About");
             // 
             // MenuItem_Exit
             // 
@@ -199,7 +194,7 @@ namespace FriishProduce
             this.MenuItem_Exit.Name = "MenuItem_Exit";
             this.MenuItem_Exit.SmallImage = global::FriishProduce.Properties.Resources.door_open;
             this.MenuItem_Exit.Tag = "r003";
-            this.MenuItem_Exit.Text = "Exit";
+            resources.ApplyResources(this.MenuItem_Exit, "MenuItem_Exit");
             this.MenuItem_Exit.Click += new System.EventHandler(this.MenuItem_Exit_Click);
             // 
             // RibbonButton_Settings
@@ -227,7 +222,7 @@ namespace FriishProduce
             this.ribbonTab_Home.Panels.Add(this.ribbonPanel_Import);
             this.ribbonTab_Home.Panels.Add(this.ribbonPanel_Export);
             this.ribbonTab_Home.Tag = "r001";
-            this.ribbonTab_Home.Text = "Home";
+            resources.ApplyResources(this.ribbonTab_Home, "ribbonTab_Home");
             // 
             // ribbonPanel_Import
             // 
@@ -238,11 +233,10 @@ namespace FriishProduce
             this.ribbonPanel_Import.Items.Add(this.UseLibRetro);
             this.ribbonPanel_Import.Name = "ribbonPanel_Import";
             this.ribbonPanel_Import.Tag = "r004";
-            this.ribbonPanel_Import.Text = "Import";
+            resources.ApplyResources(this.ribbonPanel_Import, "ribbonPanel_Import");
             // 
             // OpenROM
             // 
-            this.OpenROM.DropDownItems.Add(this.ribbonButtonList1);
             this.OpenROM.Enabled = false;
             this.OpenROM.Image = global::FriishProduce.Properties.Resources.joystick_add_large;
             this.OpenROM.LargeImage = global::FriishProduce.Properties.Resources.joystick_add_large;
@@ -252,16 +246,8 @@ namespace FriishProduce
             this.OpenROM.Name = "OpenROM";
             this.OpenROM.SmallImage = global::FriishProduce.Properties.Resources.joystick_add;
             this.OpenROM.Tag = "r005";
-            this.OpenROM.Text = "Open ROM";
+            resources.ApplyResources(this.OpenROM, "OpenROM");
             this.OpenROM.Click += new System.EventHandler(this.OpenROM_Click);
-            // 
-            // ribbonButtonList1
-            // 
-            this.ribbonButtonList1.ButtonsSizeMode = System.Windows.Forms.RibbonElementSizeMode.Large;
-            this.ribbonButtonList1.FlowToBottom = false;
-            this.ribbonButtonList1.ItemsSizeInDropwDownMode = new System.Drawing.Size(7, 5);
-            this.ribbonButtonList1.Name = "ribbonButtonList1";
-            this.ribbonButtonList1.Text = "ribbonButtonList1";
             // 
             // OpenImage
             // 
@@ -274,7 +260,7 @@ namespace FriishProduce
             this.OpenImage.Name = "OpenImage";
             this.OpenImage.SmallImage = global::FriishProduce.Properties.Resources.image_add;
             this.OpenImage.Tag = "r006";
-            this.OpenImage.Text = "Open Image";
+            resources.ApplyResources(this.OpenImage, "OpenImage");
             this.OpenImage.Click += new System.EventHandler(this.OpenImage_Click);
             // 
             // ribbonSeparator1
@@ -290,7 +276,7 @@ namespace FriishProduce
             this.UseLibRetro.Name = "UseLibRetro";
             this.UseLibRetro.SmallImage = ((System.Drawing.Image)(resources.GetObject("UseLibRetro.SmallImage")));
             this.UseLibRetro.Tag = "r010";
-            this.UseLibRetro.Text = "Use LibRetro data";
+            resources.ApplyResources(this.UseLibRetro, "UseLibRetro");
             this.UseLibRetro.Click += new System.EventHandler(this.UseLibRetro_Click);
             // 
             // ribbonPanel_Export
@@ -299,7 +285,7 @@ namespace FriishProduce
             this.ribbonPanel_Export.Items.Add(this.ExportWAD);
             this.ribbonPanel_Export.Name = "ribbonPanel_Export";
             this.ribbonPanel_Export.Tag = "r007";
-            this.ribbonPanel_Export.Text = "Export";
+            resources.ApplyResources(this.ribbonPanel_Export, "ribbonPanel_Export");
             // 
             // ExportWAD
             // 
@@ -310,18 +296,15 @@ namespace FriishProduce
             this.ExportWAD.Name = "ExportWAD";
             this.ExportWAD.SmallImage = ((System.Drawing.Image)(resources.GetObject("ExportWAD.SmallImage")));
             this.ExportWAD.Tag = "r008";
-            this.ExportWAD.Text = "Save as WAD";
+            resources.ApplyResources(this.ExportWAD, "ExportWAD");
             this.ExportWAD.Click += new System.EventHandler(this.ExportWAD_Click);
             // 
             // tabControl
             // 
             this.tabControl.BackgroundImage = global::FriishProduce.Properties.Resources.bg;
-            this.tabControl.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl.Location = new System.Drawing.Point(0, 130);
+            resources.ApplyResources(this.tabControl, "tabControl");
             this.tabControl.MenuRenderer = null;
             this.tabControl.Name = "tabControl";
-            this.tabControl.Size = new System.Drawing.Size(1114, 531);
             this.tabControl.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.tabControl.TabBorderEnhanced = true;
             this.tabControl.TabBorderEnhanceWeight = MdiTabControl.TabControl.Weight.Soft;
@@ -330,9 +313,7 @@ namespace FriishProduce
             this.tabControl.TabCloseButtonImageHot = null;
             this.tabControl.TabCloseButtonSize = new System.Drawing.Size(14, 14);
             this.tabControl.TabHeight = 25;
-            this.tabControl.TabIndex = 3;
             this.tabControl.TabMaximumWidth = 300;
-            this.tabControl.Visible = false;
             this.tabControl.SelectedTabChanged += new System.EventHandler(this.TabChanged);
             this.tabControl.TabIndexChanged += new System.EventHandler(this.TabChanged);
             // 
@@ -342,7 +323,7 @@ namespace FriishProduce
             // 
             // BrowseImage
             // 
-            this.BrowseImage.Filter = "img|*.bmp;*.jpg;*.jpeg;*.png|bmp|*.bmp|jpeg|*.jpg;*.jpeg|png|*.png";
+            resources.ApplyResources(this.BrowseImage, "BrowseImage");
             // 
             // TabContextMenu
             // 
@@ -355,74 +336,60 @@ namespace FriishProduce
             this.Strip_ExportWAD});
             this.TabContextMenu.Name = "contextMenuStrip1";
             this.TabContextMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.TabContextMenu.Size = new System.Drawing.Size(166, 104);
+            resources.ApplyResources(this.TabContextMenu, "TabContextMenu");
             // 
             // Strip_OpenROM
             // 
-            this.Strip_OpenROM.Enabled = false;
+            resources.ApplyResources(this.Strip_OpenROM, "Strip_OpenROM");
             this.Strip_OpenROM.Image = global::FriishProduce.Properties.Resources.joystick_add;
             this.Strip_OpenROM.Name = "Strip_OpenROM";
-            this.Strip_OpenROM.Size = new System.Drawing.Size(165, 22);
             this.Strip_OpenROM.Tag = "r005";
-            this.Strip_OpenROM.Text = "Open ROM";
             this.Strip_OpenROM.Click += new System.EventHandler(this.OpenROM_Click);
             // 
             // Strip_OpenImage
             // 
-            this.Strip_OpenImage.Enabled = false;
+            resources.ApplyResources(this.Strip_OpenImage, "Strip_OpenImage");
             this.Strip_OpenImage.Image = global::FriishProduce.Properties.Resources.image_add;
             this.Strip_OpenImage.Name = "Strip_OpenImage";
-            this.Strip_OpenImage.Size = new System.Drawing.Size(165, 22);
             this.Strip_OpenImage.Tag = "r006";
-            this.Strip_OpenImage.Text = "Open Image";
             this.Strip_OpenImage.Click += new System.EventHandler(this.OpenImage_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(162, 6);
+            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
             // 
             // Strip_UseLibRetro
             // 
-            this.Strip_UseLibRetro.Enabled = false;
+            resources.ApplyResources(this.Strip_UseLibRetro, "Strip_UseLibRetro");
             this.Strip_UseLibRetro.Name = "Strip_UseLibRetro";
-            this.Strip_UseLibRetro.Size = new System.Drawing.Size(165, 22);
             this.Strip_UseLibRetro.Tag = "r010";
-            this.Strip_UseLibRetro.Text = "Get LibRetro data";
             this.Strip_UseLibRetro.Click += new System.EventHandler(this.UseLibRetro_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(162, 6);
+            resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
             // 
             // Strip_ExportWAD
             // 
-            this.Strip_ExportWAD.Enabled = false;
-            this.Strip_ExportWAD.Image = ((System.Drawing.Image)(resources.GetObject("Strip_ExportWAD.Image")));
+            resources.ApplyResources(this.Strip_ExportWAD, "Strip_ExportWAD");
             this.Strip_ExportWAD.Name = "Strip_ExportWAD";
-            this.Strip_ExportWAD.Size = new System.Drawing.Size(165, 22);
             this.Strip_ExportWAD.Tag = "r008";
-            this.Strip_ExportWAD.Text = "Save as WAD";
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::FriishProduce.Properties.Resources.bg;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1114, 661);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.ribbon1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "MainForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Tag = "g000";
-            this.Text = "g000";
+            this.Tag = "";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_Closing);
             this.TabContextMenu.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -442,7 +409,6 @@ namespace FriishProduce
         private System.Windows.Forms.RibbonButton ExportWAD;
         internal System.Windows.Forms.OpenFileDialog BrowseROM;
         internal System.Windows.Forms.SaveFileDialog SaveWAD;
-        private System.Windows.Forms.RibbonButtonList ribbonButtonList1;
         private System.Windows.Forms.RibbonButton OpenImage;
         private System.Windows.Forms.OpenFileDialog BrowseImage;
         private System.Windows.Forms.RibbonButton RibbonButton_Settings;

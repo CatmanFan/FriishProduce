@@ -121,7 +121,7 @@ namespace FriishProduce
             // -----------------------
             double maxSize = isAllocated ? 56623104 : 33554432;
             if (ROMbytes.Length > maxSize)
-                throw new Exception(string.Format(Strings.Get("error003"), Math.Round(maxSize / 1048576).ToString(), Strings.Get("megabytes")));
+                throw new Exception(string.Format(Language.Get("Error003"), Math.Round(maxSize / 1048576).ToString(), Language.Get("Abbreviation_Megabytes")));
 
             // -----------------------
             // Actually replace original ROM
@@ -167,7 +167,7 @@ namespace FriishProduce
                     // Check if converted file exists
                     // ****************
                     File.Delete(Paths.WorkingFolder + "rom");
-                    if (!File.Exists(Paths.WorkingFolder + "romc")) throw new Exception(Strings.Get("error002"));
+                    if (!File.Exists(Paths.WorkingFolder + "romc")) throw new Exception(Language.Get("Error002"));
 
                     // Convert to bytes and replace at "romc"
                     // ****************
@@ -272,7 +272,7 @@ namespace FriishProduce
                     // ****************
                     int index = Byte.IndexOf(Content1, "80 04 00 04 2C 00 00 FF 40 82 00 10 80 04 00 08 2C 00 00 FF");
 
-                    if (index == -1) failed.Add(Strings.Get("n64000"));
+                    if (index == -1) failed.Add(Language.GetArray("List_N64Options")[0]);
                     else
                     {
                         for (int i = index; i > 200; i--)
@@ -300,7 +300,7 @@ namespace FriishProduce
                     // ****************
                     int index = Byte.IndexOf(Content1, "4E 80 00 20 94 21 FF F0 7C 08 02 A6 3C A0 80 18 90 01 00 14 93 E1 00 0C 7C 7F 1B 78 38 65 74 B8");
 
-                    if (index == -1) failed.Add(Strings.Get("n64001"));
+                    if (index == -1) failed.Add(Language.GetArray("List_N64Options")[1]);
                     else
                     {
                         insert.CopyTo(Content1, index);
@@ -311,7 +311,7 @@ namespace FriishProduce
 
                         index = Byte.IndexOf(Content1, "38 00 00 01 38 63 B9 C0 98 03 00 0C 4E", 0xC0000, 0xCA000);
 
-                        if (index == -1) failed.Add(Strings.Get("n64001"));
+                        if (index == -1) failed.Add(Language.GetArray("List_N64Options")[1]);
                         else insert.CopyTo(Content1, index);
                     }
                 }
@@ -326,7 +326,7 @@ namespace FriishProduce
                     {
                         index = Byte.IndexOf(Content1, "48 00 00 64 3C 80 00 80", 0x2000, 0x9999);
 
-                        if (index == -1) failed.Add(Strings.Get("n64002"));
+                        if (index == -1) failed.Add(Language.GetArray("List_N64Options")[2]);
                         else new byte[] { 0x60, 0x00, 0x00, 0x00 }.CopyTo(Content1, index);
                     }
 
@@ -342,13 +342,13 @@ namespace FriishProduce
                     // Check ROM size
                     // ****************
                     int size_ROM = 1 + ROM.Length / 1024 / 1024;
-                    // if (size_ROM > 56) throw new Exception(string.Format(Strings.Get("error003"), "56", Strings.Get("megabytes")));
+                    // if (size_ROM > 56) throw new Exception(string.Format(Language.Get("Error003"), "56", Language.Get("Abbreviation_Megabytes")));
 
                     // Check for offset
                     // ****************
                     int index = Byte.IndexOf(Content1, "44 38 7D 00 1C 3C 80", 0x5A000, 0x5E000);
 
-                    if (index == -1) failed.Add(Strings.Get("n64003"));
+                    if (index == -1) failed.Add(Language.GetArray("List_N64Options")[3]);
                     else
                     {
                         // Set size value in bytes
@@ -377,7 +377,7 @@ namespace FriishProduce
                     foreach (var item in failed)
                         failedList += "- " + item + Environment.NewLine;
 
-                    System.Windows.Forms.MessageBox.Show(string.Format(Strings.Get("error004"), failedList), Strings.Get("g000"));
+                    System.Windows.Forms.MessageBox.Show(string.Format(Language.Get("Error004"), failedList), Language.Get("ApplicationName"));
                 }
             }
             catch (Exception ex)

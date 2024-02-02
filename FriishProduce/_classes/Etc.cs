@@ -23,7 +23,7 @@ namespace FriishProduce
             {
                 // If replacing the U8 is recommended to continue, throw an exception, otherwise if it's not needed return the original WAD
                 // ****************
-                if (obligatory) throw new Exception(Program.Language.Get("error002"));
+                if (obligatory) throw new Exception(Language.Get("Error002"));
                 else return w;
             }
 

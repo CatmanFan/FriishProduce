@@ -7,16 +7,13 @@ namespace FriishProduce
 {
     static class Program
     {
-        public static Language Language = new Language();
-
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
         static void Main()
         {
-            CultureInfo.CurrentCulture = new CultureInfo(Language.LangInfo()[0]);
-            CultureInfo.CurrentUICulture = CultureInfo.CurrentUICulture;
+            Language.Load();
 
             try
             {

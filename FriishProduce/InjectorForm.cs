@@ -16,7 +16,6 @@ namespace FriishProduce
 {
     public partial class InjectorForm : Form
     {
-        protected readonly Language Strings = Program.Language;
         public Console Console;
         protected string TIDCode;
         protected string Untitled;
@@ -49,7 +48,6 @@ namespace FriishProduce
         {
             Console = c;
             InitializeComponent();
-            Strings.Localize(this);
 
             // Declare injector
             // ********
@@ -109,15 +107,17 @@ namespace FriishProduce
 
             // Cosmetic
             // ********
-            gbox007.Text = Strings.Get("s005").Remove(Strings.Get("s005").Length - 1).Trim();
             UpdateBannerPreview();
 
             // Change title text to untitled string
-            Untitled = string.Format(Strings.Get("g003"), Strings.Get(Enum.GetName(typeof(Console), Console)));
+            Untitled = string.Format(Language.Get("Untitled"), Language.Get($"Platform_{Enum.GetName(typeof(Console), Console)}"));
             Text = Untitled;
 
             // Selected index properties
+            imageintpl.Items[0] = Properties.Strings.ByDefault;
+            imageintpl.Items.AddRange(Language.GetArray("List_ImageInterpolation"));
             imageintpl.SelectedIndex = Properties.Settings.Default.ImageInterpolation;
+
             i.BannerYear = (int)ReleaseYear.Value;
             i.BannerPlayers = (int)Players.Value;
             AddBases();
@@ -157,7 +157,7 @@ namespace FriishProduce
         private void isClosing(object sender, FormClosingEventArgs e)
         {
             if (Tag != null && Tag.ToString() == "dirty")
-                if (MessageBox.Show(string.Format(Strings.Get("m001"), Text), Strings.Get("g000"), MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
+                if (MessageBox.Show(string.Format(Language.Get("Message001"), Text), Language.Get("ApplicationName"), MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
                     e.Cancel = true;
         }
 
@@ -240,28 +240,28 @@ namespace FriishProduce
 
         private void UpdateBannerPreview()
         {
-            BannerPreview_Year.Tag    = Strings.Get("key") == "ja" || isJapanRegion ? "{0}年発売"
-                                      : Strings.Get("key") == "ko" || i.isKorea ? "일본판 발매년도\r\n{0}년"
-                                      : Strings.Get("key") == "nl" ? "Release: {0}"
-                                      : Strings.Get("key") == "es" ? "Año: {0}"
-                                      : Strings.Get("key") == "it" ? "Pubblicato: {0}"
-                                      : Strings.Get("key") == "fr" ? "Publié en {0}"
-                                      : Strings.Get("key") == "de" ? "Erschienen: {0}"
+            BannerPreview_Year.Tag    = Language.Current.TwoLetterISOLanguageName == "ja" || isJapanRegion ? "{0}年発売"
+                                      : Language.Current.TwoLetterISOLanguageName == "ko" || i.isKorea ? "일본판 발매년도\r\n{0}년"
+                                      : Language.Current.TwoLetterISOLanguageName == "nl" ? "Release: {0}"
+                                      : Language.Current.TwoLetterISOLanguageName == "es" ? "Año: {0}"
+                                      : Language.Current.TwoLetterISOLanguageName == "it" ? "Pubblicato: {0}"
+                                      : Language.Current.TwoLetterISOLanguageName == "fr" ? "Publié en {0}"
+                                      : Language.Current.TwoLetterISOLanguageName == "de" ? "Erschienen: {0}"
                                       : "Released: {0}";
 
-            BannerPreview_Players.Tag = Strings.Get("key") == "ja" || isJapanRegion ? "プレイ人数\r\n{0}人"
-                                      : Strings.Get("key") == "ko" || i.isKorea ? "플레이 인원수\r\n{0}명"
-                                      : Strings.Get("key") == "nl" ? "{0} speler(s)"
-                                      : Strings.Get("key") == "es" ? "Jugadores: {0}"
-                                      : Strings.Get("key") == "it" ? "Giocatori: {0}"
-                                      : Strings.Get("key") == "fr" ? "Joueurs: {0}"
-                                      : Strings.Get("key") == "de" ? "{0} Spieler"
+            BannerPreview_Players.Tag = Language.Current.TwoLetterISOLanguageName == "ja" || isJapanRegion ? "プレイ人数\r\n{0}人"
+                                      : Language.Current.TwoLetterISOLanguageName == "ko" || i.isKorea ? "플레이 인원수\r\n{0}명"
+                                      : Language.Current.TwoLetterISOLanguageName == "nl" ? "{0} speler(s)"
+                                      : Language.Current.TwoLetterISOLanguageName == "es" ? "Jugadores: {0}"
+                                      : Language.Current.TwoLetterISOLanguageName == "it" ? "Giocatori: {0}"
+                                      : Language.Current.TwoLetterISOLanguageName == "fr" ? "Joueurs: {0}"
+                                      : Language.Current.TwoLetterISOLanguageName == "de" ? "{0} Spieler"
                                       : "Players: {0}";
 
             BannerPreview_Label.Text = BannerTitle.Text;
             BannerPreview_Year.Text = string.Format(BannerPreview_Year.Tag.ToString(), ReleaseYear.Value.ToString());
             BannerPreview_Players.Text = string.Format(BannerPreview_Players.Tag.ToString(), $"{1}{(Players.Value <= 1 ? null : "-" + Players.Value)}");
-            if (Strings.Get("key") == "ja" || isJapanRegion) BannerPreview_Players.Text = BannerPreview_Players.Text.Replace("-", "～");
+            if (Language.Current.TwoLetterISOLanguageName == "ja" || isJapanRegion) BannerPreview_Players.Text = BannerPreview_Players.Text.Replace("-", "～");
         }
 
         #region Load Data Functions
@@ -336,7 +336,7 @@ namespace FriishProduce
             }
             catch
             {
-                MessageBox.Show(Strings.Get("error001"), Strings.Get("g000"));
+                MessageBox.Show(Language.Get("Error001"), Language.Get("ApplicationName"));
                 return false;
             }
         }
@@ -349,7 +349,7 @@ namespace FriishProduce
             ROMLoaded = true;
 
             label1.Text = Path.GetFileName(i.ROM);
-            if (!UseLibRetro) label3.Text = label2.Text = Strings.Get("g004");
+            if (!UseLibRetro) label3.Text = label2.Text = Language.Get("Unknown");
 
             if (i.ROM != null && UseLibRetro) LoadLibRetroData();
 
@@ -405,17 +405,17 @@ namespace FriishProduce
                 }
 
                 // Set ROM name & serial text
-                label2.Text = LibRetro.GetTitle() ?? Strings.Get("g004");
-                label3.Text = LibRetro.GetSerial() ?? Strings.Get("g004");
+                label2.Text = LibRetro.GetTitle() ?? Language.Get("Unknown");
+                label3.Text = LibRetro.GetSerial() ?? Language.Get("Unknown");
 
                 // Show message if partially failed to retrieve data
                 if (Retrieved && (LibRetro.GetTitle() == null || LibRetro.GetPlayers() == null || LibRetro.GetYear() == null || LibRetro.GetImgURL() == null))
-                    MessageBox.Show(Strings.Get("m004"), Strings.Get("g000"));
+                    MessageBox.Show(Language.Get("Message004"), Language.Get("ApplicationName"));
                 else if (!Retrieved) System.Media.SystemSounds.Beep.Play();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, Strings.Get("error"), MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                MessageBox.Show(ex.Message, Language.Get("Error"), MessageBoxButtons.OK, MessageBoxIcon.Hand);
             }
         }
         #endregion
@@ -560,21 +560,21 @@ namespace FriishProduce
                 switch (Database.GetRegion(x))
                 {
                     case Database.Region.USA:
-                        WADRegionList.Items.Add(Strings.Get("reg0"), null, WADRegionList_Click);
+                        WADRegionList.Items.Add(Language.Get("Region_U"), null, WADRegionList_Click);
                         break;
 
                     case Database.Region.PAL50:
                     case Database.Region.PAL60:
-                        WADRegionList.Items.Add(Strings.Get("reg1"), null, WADRegionList_Click);
+                        WADRegionList.Items.Add(Language.Get("Region_E"), null, WADRegionList_Click);
                         break;
 
                     case Database.Region.JPN:
-                        WADRegionList.Items.Add(Strings.Get("reg2"), null, WADRegionList_Click);
+                        WADRegionList.Items.Add(Language.Get("Region_J"), null, WADRegionList_Click);
                         break;
 
                     case Database.Region.KOR_Ja:
                     case Database.Region.KOR_En:
-                        WADRegionList.Items.Add(Strings.Get("reg3"), null, WADRegionList_Click);
+                        WADRegionList.Items.Add(Language.Get("Region_K"), null, WADRegionList_Click);
                         break;
 
                     default:
@@ -587,10 +587,10 @@ namespace FriishProduce
             // Check if language is set to Japanese or Korean
             // If so, make Japan/Korea region item the first in the WAD region context list
             // ********
-            string langCode = Strings.LangInfo()[0];
+            string langCode = Language.Current.TwoLetterISOLanguageName;
             if (langCode == "ja" || langCode == "ko")
             {
-                string target = langCode == "ja" ? Strings.Get("reg2") : Strings.Get("reg3");
+                string target = langCode == "ja" ? Language.Get("Region_J") : Language.Get("Region_K");
 
                 for (int i = 0; i < WADRegionList.Items.Count; i++)
                     if ((WADRegionList.Items[i] as ToolStripMenuItem).Text == target)

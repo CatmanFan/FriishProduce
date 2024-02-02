@@ -13,8 +13,6 @@ namespace FriishProduce
 {
     public partial class Options_VCNES : Form
     {
-        private readonly Language Strings = Program.Language;
-
         // Options
         // *******
         public IDictionary<int, string> Settings = new Dictionary<int, string>
@@ -29,7 +27,9 @@ namespace FriishProduce
         public Options_VCNES()
         {
             InitializeComponent();
-            Strings.Localize(this);
+            Language.AutoSetForm(this);
+
+            nespl.Items[0] = Properties.Strings.ByDefault;
         }
 
         private void Form_Load(object sender, EventArgs e)
@@ -37,7 +37,7 @@ namespace FriishProduce
             // Options
             // *******
             nespl.SelectedIndex = int.Parse(Settings[0]);
-            nes001.Checked = Settings[1] == "1";
+            checkBox1.Checked = Settings[1] == "1";
             // *******
         }
 
@@ -46,7 +46,7 @@ namespace FriishProduce
             // Options
             // *******
             Settings[0] = nespl.SelectedIndex.ToString();
-            Settings[1] = nes001.Checked ? "1" : "0";
+            Settings[1] = checkBox1.Checked ? "1" : "0";
             // *******
 
             DialogResult = DialogResult.OK;
@@ -259,28 +259,28 @@ namespace FriishProduce
             switch (nespl.SelectedIndex)
             {
                 case 0:
-                    g005.Text = string.Format(Strings.Get("nes001"), "Nintendo");
+                    label2.Text = string.Format(Language.Get("Author"), "Nintendo");
                     break;
                 case 1:
                 case 2:
-                    g005.Text = string.Format(Strings.Get("nes001"), "Nintendo / SuperrSonic");
+                    label2.Text = string.Format(Language.Get("Author"), "Nintendo / SuperrSonic");
                     break;
                 case 3:
-                    g005.Text = string.Format(Strings.Get("nes001"), "Nintendo / FirebrandX");
+                    label2.Text = string.Format(Language.Get("Author"), "Nintendo / FirebrandX");
                     break;
                 case 4:
-                    g005.Text = string.Format(Strings.Get("nes001"), "Nintendo / N-Mario");
+                    label2.Text = string.Format(Language.Get("Author"), "Nintendo / N-Mario");
                     break;
                 case 5:
                 case 6:
-                    g005.Text = string.Format(Strings.Get("nes001"), "Nestopia");
+                    label2.Text = string.Format(Language.Get("Author"), "Nestopia");
                     break;
                 case 7:
-                    g005.Text = string.Format(Strings.Get("nes001"), "FCEUX");
+                    label2.Text = string.Format(Language.Get("Author"), "FCEUX");
                     break;
                 case 8:
                 case 9:
-                    g005.Text = string.Format(Strings.Get("nes001"), "FirebrandX");
+                    label2.Text = string.Format(Language.Get("Author"), "FirebrandX");
                     break;
             }
         }

@@ -38,7 +38,7 @@ namespace FriishProduce
             // Maximum ROM limit allowed: 4 MB
             // -----------------------
             if (File.ReadAllBytes(ROM).Length > 4194304)
-                throw new Exception(string.Format(Strings.Get("error003"), "4", Strings.Get("megabytes")));
+                throw new Exception(string.Format(Language.Get("Error003"), "4", Language.Get("Abbreviation_Megabytes")));
 
             // -----------------------
             // Replace original ROM
@@ -61,7 +61,7 @@ namespace FriishProduce
                     Paths.WorkingFolder,
                     "/cr LZ77orig.rom rom LZ77out.rom"
                 );
-                if (!File.Exists(Paths.WorkingFolder + "LZ77out.rom")) throw new Exception(Strings.Get("error002"));
+                if (!File.Exists(Paths.WorkingFolder + "LZ77out.rom")) throw new Exception(Language.Get("Error002"));
 
                 Content5.ReplaceFile(Content5.GetNodeIndex(Target), Paths.WorkingFolder + "LZ77out.rom");
 

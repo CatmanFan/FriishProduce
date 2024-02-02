@@ -11,8 +11,6 @@ namespace FriishProduce
 {
     public class Injector
     {
-        private readonly Language Strings = Program.Language;
-
         // -----------------------------------
         // Public variables
         // -----------------------------------
@@ -45,7 +43,7 @@ namespace FriishProduce
             WAD.Dispose();
             if (File.Exists(outputFile) && File.ReadAllBytes(outputFile).Length < 10) throw new IOException();
 
-            MessageBox.Show(string.Format(Strings.Get("m003"), outputFile), Strings.Get("g000"), MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(string.Format(Language.Get("Message003"), outputFile), Language.Get("ApplicationName"), MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         public void RemoveManual()
@@ -79,6 +77,6 @@ namespace FriishProduce
             }
         }
 
-        public void ShowErrorMessage(Exception ex) => MessageBox.Show(ex.Message, Strings.Get("error"), MessageBoxButtons.OK, MessageBoxIcon.Hand);
+        public void ShowErrorMessage(Exception ex) => MessageBox.Show(ex.Message, Language.Get("Error"), MessageBoxButtons.OK, MessageBoxIcon.Hand);
     }
 }

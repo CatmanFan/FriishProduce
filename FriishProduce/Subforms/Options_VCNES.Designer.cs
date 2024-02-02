@@ -29,15 +29,16 @@ namespace FriishProduce
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Options_VCNES));
             this.panel1 = new System.Windows.Forms.Panel();
             this.Cancel = new System.Windows.Forms.Button();
             this.OK = new System.Windows.Forms.Button();
             this.nespl = new System.Windows.Forms.ComboBox();
-            this.nes000 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.gbox007 = new System.Windows.Forms.GroupBox();
-            this.g005 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.nes001 = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.gbox007.SuspendLayout();
@@ -50,31 +51,22 @@ namespace FriishProduce
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.panel1.Controls.Add(this.Cancel);
             this.panel1.Controls.Add(this.OK);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 1);
+            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(429, 47);
-            this.panel1.TabIndex = 4;
             // 
             // Cancel
             // 
             this.Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.Cancel.Location = new System.Drawing.Point(312, 12);
+            resources.ApplyResources(this.Cancel, "Cancel");
             this.Cancel.Name = "Cancel";
-            this.Cancel.Size = new System.Drawing.Size(100, 23);
-            this.Cancel.TabIndex = 4;
             this.Cancel.Tag = "";
-            this.Cancel.Text = "Cancel";
             this.Cancel.UseVisualStyleBackColor = true;
             // 
             // OK
             // 
-            this.OK.Location = new System.Drawing.Point(202, 12);
+            resources.ApplyResources(this.OK, "OK");
             this.OK.Name = "OK";
-            this.OK.Size = new System.Drawing.Size(100, 23);
-            this.OK.TabIndex = 3;
             this.OK.Tag = "";
-            this.OK.Text = "OK";
             this.OK.UseVisualStyleBackColor = true;
             this.OK.Click += new System.EventHandler(this.OK_Click);
             // 
@@ -83,84 +75,69 @@ namespace FriishProduce
             this.nespl.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.nespl.FormattingEnabled = true;
             this.nespl.Items.AddRange(new object[] {
-            "null"});
-            this.nespl.Location = new System.Drawing.Point(96, 256);
+            resources.GetString("nespl.Items"),
+            resources.GetString("nespl.Items1"),
+            resources.GetString("nespl.Items2"),
+            resources.GetString("nespl.Items3"),
+            resources.GetString("nespl.Items4"),
+            resources.GetString("nespl.Items5"),
+            resources.GetString("nespl.Items6"),
+            resources.GetString("nespl.Items7"),
+            resources.GetString("nespl.Items8"),
+            resources.GetString("nespl.Items9")});
+            resources.ApplyResources(this.nespl, "nespl");
             this.nespl.Name = "nespl";
-            this.nespl.Size = new System.Drawing.Size(266, 21);
-            this.nespl.TabIndex = 9;
             this.nespl.SelectedIndexChanged += new System.EventHandler(this.PaletteChanged);
             // 
-            // nes000
+            // label1
             // 
-            this.nes000.Location = new System.Drawing.Point(6, 260);
-            this.nes000.Name = "nes000";
-            this.nes000.Size = new System.Drawing.Size(88, 18);
-            this.nes000.TabIndex = 8;
-            this.nes000.Text = "palette:";
-            this.nes000.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
             // 
             // gbox007
             // 
-            this.gbox007.Controls.Add(this.g005);
+            this.gbox007.Controls.Add(this.label2);
             this.gbox007.Controls.Add(this.pictureBox1);
             this.gbox007.Controls.Add(this.nespl);
-            this.gbox007.Controls.Add(this.nes000);
-            this.gbox007.Controls.Add(this.nes001);
-            this.gbox007.Location = new System.Drawing.Point(19, 17);
+            this.gbox007.Controls.Add(this.label1);
+            this.gbox007.Controls.Add(this.checkBox1);
+            resources.ApplyResources(this.gbox007, "gbox007");
             this.gbox007.Name = "gbox007";
-            this.gbox007.Size = new System.Drawing.Size(390, 335);
-            this.gbox007.TabIndex = 10;
             this.gbox007.TabStop = false;
-            this.gbox007.Text = "screen";
             // 
-            // g005
+            // label2
             // 
-            this.g005.AutoSize = true;
-            this.g005.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.g005.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.g005.Location = new System.Drawing.Point(93, 307);
-            this.g005.Name = "g005";
-            this.g005.Size = new System.Drawing.Size(47, 13);
-            this.g005.TabIndex = 11;
-            this.g005.Text = "author:";
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label2.Name = "label2";
             // 
             // pictureBox1
             // 
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox1.Image = global::FriishProduce.Properties.Resources.screen_nes;
-            this.pictureBox1.Location = new System.Drawing.Point(61, 18);
+            resources.ApplyResources(this.pictureBox1, "pictureBox1");
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(268, 226);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 10;
             this.pictureBox1.TabStop = false;
             // 
-            // nes001
+            // checkBox1
             // 
-            this.nes001.AutoSize = true;
-            this.nes001.Location = new System.Drawing.Point(96, 283);
-            this.nes001.Name = "nes001";
-            this.nes001.Size = new System.Drawing.Size(80, 17);
-            this.nes001.TabIndex = 12;
-            this.nes001.Text = "checkBox1";
-            this.nes001.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.checkBox1, "checkBox1");
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ControlDark;
             this.panel2.Controls.Add(this.panel1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 373);
+            resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(429, 48);
-            this.panel2.TabIndex = 11;
             // 
             // Options_VCNES
             // 
             this.AcceptButton = this.OK;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.CancelButton = this.Cancel;
-            this.ClientSize = new System.Drawing.Size(429, 421);
+            resources.ApplyResources(this, "$this");
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.gbox007);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -170,9 +147,7 @@ namespace FriishProduce
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Tag = "x006";
-            this.Text = "options";
+            this.Tag = "";
             this.Load += new System.EventHandler(this.Form_Load);
             this.panel1.ResumeLayout(false);
             this.gbox007.ResumeLayout(false);
@@ -187,13 +162,13 @@ namespace FriishProduce
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ComboBox nespl;
-        private System.Windows.Forms.Label nes000;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox gbox007;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label g005;
+        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button Cancel;
         private System.Windows.Forms.Button OK;
-        private System.Windows.Forms.CheckBox nes001;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

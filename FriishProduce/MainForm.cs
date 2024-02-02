@@ -13,60 +13,29 @@ namespace FriishProduce
 {
     public partial class MainForm : RibbonForm
     {
-        private readonly Language Strings = Program.Language;
         internal LibRetroDB LibRetro { get; set; }
-
-        private void LocalizeMe(RibbonButton c)
-        {
-            if (c.Tag != null) c.Text = Strings.Get(c.Tag.ToString());
-            else c.Text = Strings.Get(c.Name);
-        }
-
-        private void LocalizeMe(RibbonPanel c)
-        {
-            if (c.Tag != null) c.Text = Strings.Get(c.Tag.ToString());
-            else c.Text = Strings.Get(c.Name);
-        }
-
-        private void LocalizeMe(RibbonTab c)
-        {
-            if (c.Tag != null) c.Text = Strings.Get(c.Tag.ToString());
-            else c.Text = Strings.Get(c.Name);
-        }
-
 
         public MainForm()
         {
             InitializeComponent();
-            Strings.Localize(this);
 
-            LocalizeMe(ribbonTab_Home);
-            LocalizeMe(NewProject);
-            LocalizeMe(MenuItem_Settings);
-            LocalizeMe(MenuItem_About);
-            LocalizeMe(MenuItem_Exit);
-            LocalizeMe(ribbonPanel_Import);
-            LocalizeMe(OpenROM);
-            LocalizeMe(OpenImage);
-            LocalizeMe(UseLibRetro);
-            LocalizeMe(ribbonPanel_Export);
-            LocalizeMe(ExportWAD);
-
-            ribbon1.OrbText = Strings.Get("r000");
+            Text = Language.Get("ApplicationName");
+            MenuItem_Settings.Text = Language.Get("Settings");
             foreach (RibbonButton item in NewProject.DropDownItems.OfType<RibbonButton>())
             {
-                item.Text = string.Format(Strings.Get("r013"), Strings.Get(item.Tag.ToString()));
+                item.Text = string.Format(NewProject.Tag.ToString(), Language.Get($"Platform_{item.Text.Replace("CreateProject", "")}"));
                 item.Click += CreateProject_Click;
             }
 
             Strip_OpenROM.Image = OpenROM.SmallImage;
             Strip_OpenImage.Image = OpenImage.SmallImage;
             Strip_OpenROM.Text = OpenROM.Text;
+            Strip_UseLibRetro.Text = UseLibRetro.Text;
             BrowseImage.Title = Strip_OpenImage.Text = OpenImage.Text;
             SaveWAD.Title = Strip_ExportWAD.Text = ExportWAD.Text;
 
-            BrowseImage.Filter = Strings.Get("f_img");
-            SaveWAD.Filter = Strings.Get("f_wad");
+            BrowseImage.Filter = Language.Get("Filter_Img");
+            SaveWAD.Filter = Language.Get("Filter_WAD");
         }
 
         private void Settings_Click(object sender, EventArgs e)
@@ -119,7 +88,7 @@ namespace FriishProduce
 
             if (isUnsaved)
             {
-                if (MessageBox.Show(string.Format(Strings.Get("m002"), Text), Strings.Get("g000"), MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
+                if (MessageBox.Show(string.Format(Language.Get("Message002"), Text), Language.Get("ApplicationName"), MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
                     e.Cancel = true;
                 else
                     foreach (MdiTabControl.TabPage tabPage in tabControl.TabPages)
@@ -133,7 +102,8 @@ namespace FriishProduce
         private void CreateProject_Click(object sender, EventArgs e)
         {
             Console console;
-            if (!Enum.TryParse((sender as RibbonButton).Tag.ToString(), out console)) return;
+            if (!Enum.TryParse((sender as RibbonButton).Name.Replace("CreateProject_", ""), out console))
+                return;
 
             tabControl.Visible = true;
 
@@ -148,25 +118,16 @@ namespace FriishProduce
             switch ((tabControl.SelectedForm as InjectorForm).Console)
             {
                 default:
-                    BrowseROM.Filter = Strings.Get("f_iso") + "|" + Strings.Get("f_zip") + Strings.Get("f_all");
+                    BrowseROM.Filter = Language.Get("Filter_Disc") + "|" + Language.Get("Filter_ZIP") + Language.Get("Filter_All");
                     break;
+
                 case Console.NES:
-                    BrowseROM.Filter = Strings.Get("f_nes");
-                    break;
                 case Console.SNES:
-                    BrowseROM.Filter = Strings.Get("f_sfc");
-                    break;
                 case Console.N64:
-                    BrowseROM.Filter = Strings.Get("f_n64");
-                    break;
                 case Console.SMS:
-                    BrowseROM.Filter = Strings.Get("f_sms");
-                    break;
                 case Console.SMDGEN:
-                    BrowseROM.Filter = Strings.Get("f_smd");
-                    break;
                 case Console.PCE:
-                    BrowseROM.Filter = Strings.Get("f_pce");
+                    BrowseROM.Filter = Language.Get("Filter_ROM_" + Enum.GetName(typeof(Console), (int)(tabControl.SelectedForm as InjectorForm).Console));
                     break;
             }
 

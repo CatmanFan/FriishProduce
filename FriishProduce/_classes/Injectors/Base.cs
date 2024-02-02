@@ -8,8 +8,6 @@ namespace FriishProduce
 {
     public class InjectorBase
     {
-        protected readonly Language Strings = Program.Language;
-
         protected WAD WAD { get; set; }
         protected byte[] Content1 { get; set; }
         protected U8 Content4 { get; set; }
@@ -40,7 +38,7 @@ namespace FriishProduce
                         Paths.WorkingFolder,
                         "/u content1.app content1.dec"
                     );
-                    if (!File.Exists(Paths.WorkingFolder + "content1.dec")) throw new Exception(Strings.Get("error002"));
+                    if (!File.Exists(Paths.WorkingFolder + "content1.dec")) throw new Exception(Language.Get("Error002"));
 
                     Content1 = File.ReadAllBytes(Paths.WorkingFolder + "content1.dec");
                     CompressedContent1 = true;
@@ -75,7 +73,7 @@ namespace FriishProduce
                         Paths.WorkingFolder,
                         "/cr content1.app content1.dec content1.rec"
                     );
-                    if (!File.Exists(Paths.WorkingFolder + "content1.rec")) throw new Exception(Strings.Get("error002"));
+                    if (!File.Exists(Paths.WorkingFolder + "content1.rec")) throw new Exception(Language.Get("Error002"));
 
                     byte[] Recompressed = File.ReadAllBytes(Paths.WorkingFolder + "content1.rec");
 

@@ -79,6 +79,8 @@ namespace FriishProduce
             // 
             this.LanguageList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.LanguageList.FormattingEnabled = true;
+            this.LanguageList.Items.AddRange(new object[] {
+            "<System default>"});
             this.LanguageList.Location = new System.Drawing.Point(81, 11);
             this.LanguageList.Name = "LanguageList";
             this.LanguageList.Size = new System.Drawing.Size(300, 21);

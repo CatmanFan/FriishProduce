@@ -19,11 +19,11 @@ namespace FriishProduce
                 try
                 {
                     PingReply r = p.Send("google.com", 3000);
-                    if (r.Status != IPStatus.Success || r == null) throw new WebException(Program.Language.Get("error000"), WebExceptionStatus.Timeout);
+                    if (r.Status != IPStatus.Success || r == null) throw new WebException(Language.Get("Error000"), WebExceptionStatus.Timeout);
                 }
                 catch
                 {
-                    throw new WebException(Program.Language.Get("error000"), WebExceptionStatus.ConnectFailure);
+                    throw new WebException(Language.Get("Error000"), WebExceptionStatus.ConnectFailure);
                 }
             }
         }

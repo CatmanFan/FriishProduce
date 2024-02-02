@@ -101,9 +101,9 @@ namespace FriishProduce
             this.n64000.Location = new System.Drawing.Point(14, 23);
             this.n64000.MaximumSize = new System.Drawing.Size(203, 27);
             this.n64000.Name = "n64000";
-            this.n64000.Size = new System.Drawing.Size(74, 17);
+            this.n64000.Size = new System.Drawing.Size(124, 17);
             this.n64000.TabIndex = 13;
-            this.n64000.Text = "brightness";
+            this.n64000.Text = "Screen brightness fix";
             this.n64000.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.n64000.UseVisualStyleBackColor = true;
             // 
@@ -119,7 +119,7 @@ namespace FriishProduce
             this.gbox008.Size = new System.Drawing.Size(430, 140);
             this.gbox008.TabIndex = 14;
             this.gbox008.TabStop = false;
-            this.gbox008.Text = "patches";
+            this.gbox008.Text = "Patches";
             // 
             // n64003
             // 
@@ -128,9 +128,9 @@ namespace FriishProduce
             this.n64003.Location = new System.Drawing.Point(14, 107);
             this.n64003.MaximumSize = new System.Drawing.Size(203, 27);
             this.n64003.Name = "n64003";
-            this.n64003.Size = new System.Drawing.Size(63, 17);
+            this.n64003.Size = new System.Drawing.Size(128, 17);
             this.n64003.TabIndex = 16;
-            this.n64003.Text = "allocate";
+            this.n64003.Text = "Allocate for ROM size";
             this.n64003.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.n64003.UseVisualStyleBackColor = true;
             // 
@@ -141,9 +141,9 @@ namespace FriishProduce
             this.n64002.Location = new System.Drawing.Point(14, 79);
             this.n64002.MaximumSize = new System.Drawing.Size(203, 27);
             this.n64002.Name = "n64002";
-            this.n64002.Size = new System.Drawing.Size(92, 17);
+            this.n64002.Size = new System.Drawing.Size(128, 17);
             this.n64002.TabIndex = 15;
-            this.n64002.Text = "expansionpak";
+            this.n64002.Text = "Extended RAM patch";
             this.n64002.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.n64002.UseVisualStyleBackColor = true;
             // 
@@ -154,9 +154,9 @@ namespace FriishProduce
             this.n64001.Location = new System.Drawing.Point(14, 51);
             this.n64001.MaximumSize = new System.Drawing.Size(203, 27);
             this.n64001.Name = "n64001";
-            this.n64001.Size = new System.Drawing.Size(63, 17);
+            this.n64001.Size = new System.Drawing.Size(77, 17);
             this.n64001.TabIndex = 14;
-            this.n64001.Text = "crashes";
+            this.n64001.Text = "Crashes fix";
             this.n64001.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.n64001.UseVisualStyleBackColor = true;
             // 
@@ -173,13 +173,13 @@ namespace FriishProduce
             // x009
             // 
             this.x009.AutoSize = true;
-            this.x009.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.x009.Font = new System.Drawing.Font("Arial", 8.25F);
             this.x009.Location = new System.Drawing.Point(42, 6);
-            this.x009.MaximumSize = new System.Drawing.Size(145, 75);
+            this.x009.MaximumSize = new System.Drawing.Size(146, 75);
             this.x009.Name = "x009";
-            this.x009.Size = new System.Drawing.Size(31, 13);
+            this.x009.Size = new System.Drawing.Size(144, 42);
             this.x009.TabIndex = 18;
-            this.x009.Text = "note";
+            this.x009.Text = "Please note that these options may not work for all base WADs.";
             // 
             // pictureBox1
             // 
@@ -199,7 +199,7 @@ namespace FriishProduce
             this.n64004.Size = new System.Drawing.Size(430, 55);
             this.n64004.TabIndex = 15;
             this.n64004.TabStop = false;
-            this.n64004.Text = "compression";
+            this.n64004.Text = "ROM compression type";
             // 
             // ROMCType
             // 

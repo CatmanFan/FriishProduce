@@ -12,8 +12,6 @@ namespace FriishProduce
 {
     public partial class Options_VCN64 : Form
     {
-        private readonly Language Strings = Program.Language;
-
         // Options
         // *******
         public IDictionary<int, bool> Settings = new Dictionary<int, bool>
@@ -30,7 +28,7 @@ namespace FriishProduce
         public Options_VCN64()
         {
             InitializeComponent();
-            Strings.Localize(this);
+            Language.AutoSetForm(this);
         }
 
         private void Form_Load(object sender, EventArgs e)

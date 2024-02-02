@@ -1,234 +1,194 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Globalization;
-using System.IO;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using static FriishProduce.Properties.Settings;
+using FriishProduce.Properties;
+using System.Globalization;
+using System.Resources;
 using System.Threading;
+using System.Windows.Forms;
 
 namespace FriishProduce
 {
-    public class Language
+    public static class Language
     {
-        internal static Dictionary<string, string> English { get; set; }
-        internal static Dictionary<string, string> Current { get; set; }
-
-        private static string CurrentCode { get; set; }
-
-        internal static Dictionary<string, string> Read(string jsonFile)
+        public static CultureInfo English { get => new CultureInfo(9); }
+        public static CultureInfo Current
         {
-            if (Path.GetExtension(jsonFile).ToLower() != ".json") return null;
+            get => CultureInfo.CurrentCulture;
+            set => CultureInfo.CurrentCulture = CultureInfo.CurrentUICulture = new CultureInfo(value.ToString()) { DateTimeFormat = new DateTimeFormatInfo() { DateSeparator = ".", ShortTimePattern = "HH:mm" } };
+        }
 
-            try
+        private static Dictionary<string, string> _list;
+        public static Dictionary<string, string> List
+        {
+            get
             {
-                JObject jsonReader = new JObject();
-                var jsonCode = "";
+                _list = new Dictionary<string, string>() { { "en", "English" } };
 
-                try { jsonReader = JsonConvert.DeserializeObject<JObject>(File.ReadAllText(jsonFile)); }
-                catch { throw new Exception($"File \"{Path.GetFileName(jsonFile)}\" was not found."); }
+                // Pass the class name of your resources as a parameter e.g. MyResources for MyResources.resx
+                ResourceManager rm = new ResourceManager(typeof(Strings));
 
-                int index = 0;
-                try { jsonCode = jsonReader["key"].ToString(); }
-                catch { throw new Exception("Failed to get \"key\" value." + Environment.NewLine + $"Please check that the value \"key\" is included in langs\\{Path.GetFileName(jsonFile)}."); }
-
-                try
+                CultureInfo[] cultures = CultureInfo.GetCultures(CultureTypes.AllCultures);
+                foreach (CultureInfo culture in cultures)
                 {
-                    var jsonName = new CultureInfo(Path.GetFileNameWithoutExtension(jsonFile)).DisplayName;
-                    var target = new Dictionary<string, string>();
+                    try
+                    {
+                        ResourceSet rs = rm.GetResourceSet(culture, true, false);
+                        if (rs != null)
+                        {
+                            string langName = culture.NativeName;
 
-                    foreach (JProperty element in jsonReader.Children<JToken>())
-                        target.Add(element.Name, element.Value.ToString());
-
-                    // Multi-array function
-                    /* var target = new Dictionary<string, string>() { { "key", jsonReader["key"].ToString() }, { "author", jsonReader["author"].ToString() } };
-                    
-                    for (int i = 2; i < jsonReader.Children<JToken>().Count(); i++)
-                        foreach (JObject category in jsonReader.Children<JToken>().ElementAt(i).Children<JToken>())
-                            foreach (JProperty element in category.Properties())
-                            {
-                                index++;
-                                target.Add(element.Name, element.Value.ToString());
-                            } */
-
-                    return target;
-                }
-                catch (Exception ex)
-                {
-                    string msg = "Failed to collect language data at index " + index.ToString() + "." + Environment.NewLine + Environment.NewLine + "Exception name: " + ex.GetType().Name + Environment.NewLine + "Exception message: " + ex.Message;
-                    if (ex.GetType().Name != "InvalidCastException" && ex.GetType().Name != "ArgumentException") msg += Environment.NewLine + Environment.NewLine + $"Please check the value \"key\" in langs\\{Path.GetFileName(jsonFile)} and make sure it matches the filename.";
-                    throw new Exception(msg);
+                            // Capitalize first letter
+                            langName = langName.Substring(0, 1).ToUpper() + langName.Substring(1, langName.Length - 1); ;
+                            _list.Add(culture.Name, langName);
+                        }
+                    }
+                    catch /* (CultureNotFoundException ex) */ { }
                 }
 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message + Environment.NewLine + Environment.NewLine + "The application will now shut down.", "Halt", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-                Environment.FailFast(ex.Message);
-                return null;
+                _list.Remove(""); // the "Invariant Language (Invariant Country)" item
+                return _list;
             }
         }
-        public Language()
+        
+        public static void Load()
         {
-            CurrentCode = Default.UI_Language;
-            string code = Default.UI_Language;
-            string json_en = Paths.Languages + "en.json";
-            string json = Paths.Languages + $"{code}.json";
-
-            // --------------------------
-            // Set up English
-            // --------------------------
-            if (!Directory.Exists(Paths.Languages))
-                Directory.CreateDirectory(Paths.Languages);
-
-            if (!File.Exists(json_en) || File.ReadAllBytes(json_en) != Properties.Resources.English)
-                File.WriteAllBytes(json_en, Properties.Resources.English);
-
-            try
+            var code = Settings.Default.UI_Language;
+            if (string.IsNullOrWhiteSpace(code))
             {
-                English = Read(json_en);
+                code = "sys";
+                Settings.Default.UI_Language = "sys";
+                Settings.Default.Save();
             }
-            catch
-            {
-                throw new Exception("Unable to setup language!");
-            }
-
+            
             // --------------------------
             // Localization process
             // --------------------------
-            if (code != "sys" && (string.IsNullOrWhiteSpace(code) || ((Read(json) == null))))
+            Set:
+            if (code.ToLower() != "sys")
             {
-                code = "sys";
-                Default.UI_Language = "sys";
-                Default.Save();
-            }
+                bool set = false;
 
-            var culture = new CultureInfo(code == "sys" ? "en" : code);
-            if (code == "sys")
-            {
-                foreach (string fn in Directory.GetFiles(Paths.Languages))
+                foreach (var item in List)
                 {
-                    string fn_code = Path.GetFileNameWithoutExtension(fn);
-
-                    if (fn_code == CultureInfo.InstalledUICulture.TwoLetterISOLanguageName || fn_code == CultureInfo.InstalledUICulture.Name)
-                    {
-                        CurrentCode = fn_code;
-                        json = Paths.Languages + $"{fn_code}.json";
-                        culture = new CultureInfo(fn_code);
-                        Current = Read(json);
-                        goto EndOfFunction;
-                    }
+                    if (item.Key.ToLower() == code.ToLower()) Current = new CultureInfo(item.Key);
+                    set = true;
                 }
 
-                Current = English;
-                goto EndOfFunction;
+                if (!set)
+                {
+                    code = "sys";
+                    Settings.Default.UI_Language = "sys";
+                    Settings.Default.Save();
+                    goto Set; // Loop back
+                }
             }
+
             else
             {
-                CurrentCode = culture.Name;
-                json = Paths.Languages + $"{culture.Name}.json";
-                Current = Read(json);
+                bool set = false;
 
-                if (Current == null)
+                foreach (var item in List)
                 {
-                    CurrentCode = "en";
-                    Current = English;
+                    if (item.Key.ToLower() == CultureInfo.InstalledUICulture.Name.ToLower()) Current = CultureInfo.InstalledUICulture;
+                    set = true;
                 }
 
-                goto EndOfFunction;
-            }
-
-            EndOfFunction:
-                culture.DateTimeFormat = new DateTimeFormatInfo() { DateSeparator = ".", ShortTimePattern = "HH:mm" };
-                Thread.CurrentThread.CurrentUICulture = culture;
-                Thread.CurrentThread.CurrentCulture = culture;
-        }
-
-        public void Localize(Control main)
-        {
-            Get(main);
-            foreach (Control c in main.Controls)
-            {
-                Get(c);
-                foreach (Control d in c.Controls)
+                if (!set) foreach (var item in List)
                 {
-                    Get(d);
-                    foreach (Control e in d.Controls)
-                    {
-                        Get(e);
-                        foreach (Control f in e.Controls)
-                        {
-                            Get(f);
-                            foreach (Control g in f.Controls)
-                                Get(g);
-                        }
-                    }
+                    if (item.Key.ToLower() == CultureInfo.InstalledUICulture.TwoLetterISOLanguageName.ToLower()) Current = new CultureInfo(item.Key);
+                    set = true;
                 }
+
+                if (!set) Current = English.Parent;
             }
+
+            Thread.CurrentThread.CurrentCulture = Thread.CurrentThread.CurrentUICulture = Current;
         }
 
         /// <summary>
-        /// First check in case-sensitive format, then use ToLower() if no result has been returned.
-        /// Returns English by default if no corresponding localized string is found.
+        /// Gets a string from Strings.resx corresponding to the CultureInfo given.
         /// </summary>
-        public string Get(string id)
+        /// <param name="name">Key name within Strings.resx</param>
+        /// <param name="ci">CultureInfo name</param>
+        /// <returns>English version by default if no corresponding localized string is found, and "undefined" if all methods fail.</returns>
+        public static string Get(string name, CultureInfo ci)
         {
-            try
-            {
-                foreach (KeyValuePair<string, string> translation in Current)
-                    if (translation.Key == id)
-                        return translation.Value.Replace(@"\n", Environment.NewLine).Replace('\"', '"');
-                    else if (translation.Key.ToLower() == id.ToLower())
-                        return translation.Value.Replace(@"\n", Environment.NewLine).Replace('\"', '"');
-            }
-            catch (Exception)
-            {
-                goto End;
-            }
+            const string undefined = "undefined";
+            var Object = undefined;
 
-            End:
-                foreach (KeyValuePair<string, string> default_string in English)
-                    if (default_string.Key == id)
-                        return default_string.Value.Replace(@"\n", Environment.NewLine).Replace('\"', '"');
-                    else if (default_string.Key.ToLower() == id.ToLower())
-                        return default_string.Value.Replace(@"\n", Environment.NewLine).Replace('\"', '"');
+            try { Object = Strings.ResourceManager.GetObject(name, ci).ToString(); } catch { }
+            if (Object == undefined) try { Object = Strings.ResourceManager.GetObject(name, English).ToString(); } catch { }
 
-                return "undefined";
+            Object = Object.Replace("\r\n", "[[NL]]").Replace("\n", "[[NL]]").Replace("[[NL]]", Environment.NewLine);
+
+            return Object;
         }
 
-        public void Get(Control c)
-        {
-            c.Text = Get(c.Name.ToString()) != "undefined" ? Get(c.Name.ToString()) : c.Text;
-            if (c.Tag != null) c.Text = Get(c.Tag.ToString()) != "undefined" ? Get(c.Tag.ToString()) : c.Text;
+        /// <summary>
+        /// Gets a localized string from Strings.resx.
+        /// </summary>
+        /// <param name="name">Key name within Strings.resx</param>
+        /// <returns>English version by default if no corresponding localized string is found, and "undefined" if all methods fail.</returns>
+        public static string Get(string name) => Get(name, Current);
 
-            if (c.GetType() == typeof(ComboBox) && ((ComboBox)c).Items.Contains("null"))
+        /// <summary>
+        /// Gets a string array from Strings.resx corresponding to the CultureInfo given.
+        /// </summary>
+        /// <param name="name">Key name within Strings.resx</param>
+        /// <param name="ci">CultureInfo name</param>
+        /// <returns>English version by default if no corresponding localized string array is found, and "undefined" if all methods fail.</returns>
+        public static string[] GetArray(string name, CultureInfo ci)
+        {
+            List<string> undefined = new List<string>() { "undefined", "undefined", "undefined", "undefined", "undefined", "undefined", "undefined", "undefined", "undefined", "undefined" };
+            var Object = undefined;
+
+            try { Object = Strings.ResourceManager.GetObject(name, ci).ToString().Split(Environment.NewLine.ToCharArray()).ToList(); } catch { }
+            if (Object == undefined) try { Object = Strings.ResourceManager.GetObject(name, English).ToString().Split(Environment.NewLine.ToCharArray()).ToList(); } catch { }
+
+            for (int i = 0; i < Object.Count; i++)
+                if (string.IsNullOrEmpty(Object[i])) Object.RemoveAt(i);
+
+            return Object.ToArray();
+        }
+
+        /// <summary>
+        /// Gets a localized string array from Strings.resx.
+        /// </summary>
+        /// <param name="name">Key name within Strings.resx</param>
+        /// <returns>English version by default if no corresponding localized string array is found, and "undefined" if all methods fail.</returns>
+        public static string[] GetArray(string name) => GetArray(name, Current);
+
+        public static void AutoSetForm(Control c)
+        {
+            if (c.GetType() == typeof(Form) && c.Name.ToLower().StartsWith("options_vc")) c.Text = Get("InjectionMethodOptions");
+
+            Get(c);
+            foreach (Control d in c.Controls)
             {
-                ((ComboBox)c).Items.Remove("null");
-
-                int x = Get(c.Tag + $"_{0}") != "undefined" ? 0 : 1;
-                if (x == 1) try { ((ComboBox)c).Items.Add(Get("g006")); } catch { } // "Default" item
-
-                for (int i = x; i < 20; i++)
-                    if (Get(c.Tag + $"_{i}") != "undefined")
-                        try { ((ComboBox)c).Items.Add(Get(c.Tag + $"_{i}")); } catch { }
-                    else if (Get(c.Name + $"_{i}") != "undefined")
-                        try { ((ComboBox)c).Items.Add(Get(c.Name + $"_{i}")); } catch { }
+                Get(d);
+                foreach (Control e in d.Controls)
+                {
+                    Get(e);
+                    foreach (Control f in e.Controls)
+                    {
+                        Get(f);
+                        foreach (Control g in f.Controls)
+                            Get(g);
+                    }
+                }
             }
-
-            if (Current.First().Value.StartsWith("ar") || Current.First().Value.StartsWith("fa") || Current.First().Value.StartsWith("he"))
-                c.RightToLeft = RightToLeft.Yes;
         }
 
-        public string[] LangInfo(string code)
+        private static void Get(Control x)
         {
-            var jsonReader = JsonConvert.DeserializeObject<JObject>(File.ReadAllText(Paths.Languages + $"{code}.json"));
-            return new string[] { jsonReader["key"].ToString(), jsonReader["author"].ToString() };
+            if (x.GetType() == typeof(Button))
+            {
+                if (x.Name.ToLower() == "ok") x.Text = Get("Button_OK");
+                if (x.Name.ToLower() == "cancel") x.Text = Get("Button_Cancel");
+            }
         }
-
-        public string[] LangInfo() => LangInfo(CurrentCode);
     }
 }
