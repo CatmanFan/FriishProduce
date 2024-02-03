@@ -45,7 +45,7 @@ Planned:
 ---
 
 ## Translation
-For help on translating the current GUI, check out the Crowdin project **[here](https://crowdin.com/project/friishproduce)**.
+For help on translating the current GUI, please see **[here](https://github.com/CatmanFan/FriishProduce/wiki/Translation)**.
 
 ---
 
