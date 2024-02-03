@@ -6,7 +6,7 @@
 
 "files": [
   {
-    "source": "FriishProduce/Strings/**",                                           #source files filter
+    "source": "FriishProduce/Strings/*.*",                                           #source files filter
     "translation": "FriishProduce/Strings/%locale%/%original_file_name%",           #where translations are stored
     "languages_mapping": {
         "locale": {
