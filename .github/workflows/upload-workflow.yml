@@ -1,10 +1,10 @@
 name: Crowdin Action
 
 on:
-  workflow-dispatch:
+  workflow_dispatch:
     paths: [ 'FriishProduce/Strings/**' ]
     branches: [ main ]
-
+    
 jobs:
   crowdin:
     runs-on: ubuntu-latest
@@ -16,7 +16,7 @@ jobs:
         uses: crowdin/github-action@v1
         with:
           upload_sources: true
-          upload_translations: true
+          upload_translations: false
           download_translations: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
