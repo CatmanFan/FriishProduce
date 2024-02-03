@@ -7,6 +7,6 @@
 "files": [
   {
     "source": "FriishProduce/Strings/*.resx",                                       #source files filter
-    "translation": "strings/%original_file_name%"                                   #where translations are stored
+    "translation": "FriishProduce/Strings/%osx_locale%/%original_file_name%"        #where translations are stored
   }
 ]
