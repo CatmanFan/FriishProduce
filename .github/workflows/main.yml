@@ -2,7 +2,7 @@ name: Crowdin Action
 
 on:
   push:
-    paths: [ 'FriishProduce/Strings/**' ]
+    paths: [ 'strings/**' ]
     branches: [ main ]
 
 jobs:
