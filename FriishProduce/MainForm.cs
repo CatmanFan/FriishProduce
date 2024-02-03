@@ -73,6 +73,7 @@ namespace FriishProduce
 
         public MainForm()
         {
+            var x = Language.Get("Filter_Img");
             InitializeComponent();
             RefreshForm();
 
