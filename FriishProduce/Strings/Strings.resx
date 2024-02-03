@@ -163,7 +163,7 @@ Injection will continue as intended.</value>
     <value>The application needed ({0}) was not found in the resources\tools subdirectory.</value>
   </data>
   <data name="Error006" xml:space="preserve">
-    <value>Failed to export to WAD.</value>
+    <value>Failed to save to WAD.</value>
   </data>
   <data name="File" xml:space="preserve">
     <value>File</value>
