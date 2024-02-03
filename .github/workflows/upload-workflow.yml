@@ -1,7 +1,7 @@
 name: Crowdin Action
 
 on:
-  push:
+  workflow-dispatch:
     paths: [ 'FriishProduce/Strings/**' ]
     branches: [ main ]
 
@@ -16,8 +16,9 @@ jobs:
         uses: crowdin/github-action@v1
         with:
           upload_sources: true
-          upload_translations: false
+          upload_translations: true
           download_translations: false
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CROWDIN_PROJECT_ID: ${{ secrets.CROWDIN_PROJECT_ID }}
           CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
