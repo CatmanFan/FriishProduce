@@ -113,37 +113,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Strings\InjectorForm.Designer.cs">
-      <DependentUpon>InjectorForm.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-    </Compile>
-    <Compile Include="Strings\MainForm.Designer.cs">
-      <DependentUpon>MainForm.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <CustomToolNamespace>Strings</CustomToolNamespace>
-    </Compile>
-    <Compile Include="Strings\Options_VCN64.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Options_VCN64.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Strings\Options_VCNES.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Options_VCNES.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Strings\SettingsForm.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SettingsForm.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Strings\Strings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Strings.resx</DependentUpon>
-    </Compile>
     <Compile Include="Subforms\Options_VCN64.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -183,54 +152,24 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Strings\InjectorForm.es-ES.resx" />
-    <EmbeddedResource Include="Strings\InjectorForm.fr.resx" />
     <EmbeddedResource Include="Strings\InjectorForm.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>InjectorForm.Designer.cs</LastGenOutput>
       <CustomToolNamespace>Strings</CustomToolNamespace>
     </EmbeddedResource>
-    <EmbeddedResource Include="Strings\InjectorForm.tr.resx" />
-    <EmbeddedResource Include="Strings\MainForm.es-ES.resx" />
-    <EmbeddedResource Include="Strings\MainForm.fr.resx" />
     <EmbeddedResource Include="Strings\MainForm.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>MainForm.Designer.cs</LastGenOutput>
       <CustomToolNamespace>Strings</CustomToolNamespace>
     </EmbeddedResource>
-    <EmbeddedResource Include="Strings\MainForm.tr.resx" />
-    <EmbeddedResource Include="Strings\Options_VCN64.es-ES.resx" />
-    <EmbeddedResource Include="Strings\Options_VCN64.fr.resx" />
     <EmbeddedResource Include="Strings\Options_VCN64.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Options_VCN64.Designer.cs</LastGenOutput>
       <CustomToolNamespace>Strings</CustomToolNamespace>
     </EmbeddedResource>
-    <EmbeddedResource Include="Strings\Options_VCN64.tr.resx" />
-    <EmbeddedResource Include="Strings\Options_VCNES.es-ES.resx" />
-    <EmbeddedResource Include="Strings\Options_VCNES.fr.resx" />
     <EmbeddedResource Include="Strings\Options_VCNES.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Options_VCNES.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Strings\Options_VCNES.tr.resx" />
-    <EmbeddedResource Include="Strings\SettingsForm.es-ES.resx" />
-    <EmbeddedResource Include="Strings\SettingsForm.fr.resx" />
-    <EmbeddedResource Include="Strings\SettingsForm.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>SettingsForm.Designer.cs</LastGenOutput>
       <CustomToolNamespace>Strings</CustomToolNamespace>
     </EmbeddedResource>
-    <EmbeddedResource Include="Strings\SettingsForm.tr.resx" />
-    <EmbeddedResource Include="Strings\Strings.es-ES.resx" />
-    <EmbeddedResource Include="Strings\Strings.fr.resx" />
-    <EmbeddedResource Include="Strings\Strings.ja.resx" />
+    <EmbeddedResource Include="Strings\SettingsForm.resx">
+      <CustomToolNamespace>Strings</CustomToolNamespace>
+    </EmbeddedResource>
     <EmbeddedResource Include="Strings\Strings.resx">
       <CustomToolNamespace>Strings</CustomToolNamespace>
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Strings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Strings\Strings.tr.resx" />
     <EmbeddedResource Include="Subforms\Options_VCN64.resx">
       <DependentUpon>Options_VCN64.cs</DependentUpon>
     </EmbeddedResource>

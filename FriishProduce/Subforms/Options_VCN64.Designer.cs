@@ -35,7 +35,7 @@ namespace FriishProduce
             this.Cancel = new System.Windows.Forms.Button();
             this.OK = new System.Windows.Forms.Button();
             this.n64000 = new System.Windows.Forms.CheckBox();
-            this.gbox008 = new System.Windows.Forms.GroupBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.n64003 = new System.Windows.Forms.CheckBox();
             this.n64002 = new System.Windows.Forms.CheckBox();
             this.n64001 = new System.Windows.Forms.CheckBox();
@@ -46,7 +46,7 @@ namespace FriishProduce
             this.ROMCType = new System.Windows.Forms.ComboBox();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.gbox008.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.n64004.SuspendLayout();
@@ -87,16 +87,16 @@ namespace FriishProduce
             this.n64000.Name = "n64000";
             this.n64000.UseVisualStyleBackColor = true;
             // 
-            // gbox008
+            // groupBox1
             // 
-            this.gbox008.Controls.Add(this.n64003);
-            this.gbox008.Controls.Add(this.n64002);
-            this.gbox008.Controls.Add(this.n64001);
-            this.gbox008.Controls.Add(this.n64000);
-            this.gbox008.Controls.Add(this.panel3);
-            resources.ApplyResources(this.gbox008, "gbox008");
-            this.gbox008.Name = "gbox008";
-            this.gbox008.TabStop = false;
+            this.groupBox1.Controls.Add(this.n64003);
+            this.groupBox1.Controls.Add(this.n64002);
+            this.groupBox1.Controls.Add(this.n64001);
+            this.groupBox1.Controls.Add(this.n64000);
+            this.groupBox1.Controls.Add(this.panel3);
+            resources.ApplyResources(this.groupBox1, "groupBox1");
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.TabStop = false;
             // 
             // n64003
             // 
@@ -159,7 +159,7 @@ namespace FriishProduce
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.CancelButton = this.Cancel;
             resources.ApplyResources(this, "$this");
-            this.Controls.Add(this.gbox008);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.n64004);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -172,8 +172,8 @@ namespace FriishProduce
             this.Load += new System.EventHandler(this.Form_Load);
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            this.gbox008.ResumeLayout(false);
-            this.gbox008.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -189,7 +189,7 @@ namespace FriishProduce
         private System.Windows.Forms.Button Cancel;
         private System.Windows.Forms.Button OK;
         private System.Windows.Forms.CheckBox n64000;
-        private System.Windows.Forms.GroupBox gbox008;
+        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.CheckBox n64003;
         private System.Windows.Forms.CheckBox n64002;
         private System.Windows.Forms.CheckBox n64001;
