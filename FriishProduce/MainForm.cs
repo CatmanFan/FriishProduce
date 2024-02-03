@@ -45,36 +45,52 @@ namespace FriishProduce
             }
 
             foreach (RibbonButton item in NewProject.DropDownItems.OfType<RibbonButton>())
+                item.Text = string.Format(Language.Get("ProjectType"), Language.Get($"Platform_{item.Name.Replace("CreateProject_", "")}"));
+        }
+
+        /// <summary>
+        /// Changes language of this form and all tab pages
+        /// </summary>
+        private void RefreshForm()
+        {
+            AutoSetRibbon();
+            Language.AutoSetForm(this);
+
+            Text = Language.Get("_AppTitle");
+            MenuItem_Settings.Text = Language.Get("Settings");
+            BrowseROM.Title = BrowseImage.Title = ribbonPanel_Open.Text;
+            SaveWAD.Title = Strip_ExportWAD.Text = ExportWAD.Text;
+
+            BrowseImage.Filter = Language.Get("Filter_Img");
+            SaveWAD.Filter = Language.Get("Filter_WAD");
+
+            foreach (MdiTabControl.TabPage tabPage in tabControl.TabPages)
             {
-                item.Text = string.Format(Language.Get("ProjectType"), Language.Get($"Platform_{item.Text.Replace("CreateProject", "")}"));
-                item.Click += CreateProject_Click;
+                if (tabPage.Form.GetType() == typeof(InjectorForm))
+                    (tabPage.Form as InjectorForm).RefreshForm();
             }
         }
 
         public MainForm()
         {
             InitializeComponent();
-            AutoSetRibbon();
-            Language.AutoSetForm(this);
-
-            Text = Language.Get("_AppTitle");
-            MenuItem_Settings.Text = Language.Get("Settings");
+            RefreshForm();
 
             Strip_OpenROM.Image = OpenROM.SmallImage;
             Strip_OpenImage.Image = OpenImage.SmallImage;
-            Strip_OpenROM.Text = OpenROM.Text;
-            Strip_UseLibRetro.Text = UseLibRetro.Text;
-            BrowseImage.Title = Strip_OpenImage.Text = OpenImage.Text;
-            SaveWAD.Title = Strip_ExportWAD.Text = ExportWAD.Text;
 
-            BrowseImage.Filter = Language.Get("Filter_Img");
-            SaveWAD.Filter = Language.Get("Filter_WAD");
+            foreach (RibbonButton item in NewProject.DropDownItems.OfType<RibbonButton>())
+                item.Click += CreateProject_Click;
         }
 
         private void Settings_Click(object sender, EventArgs e)
         {
+            string lang = Properties.Settings.Default.UI_Language;
+
             SettingsForm s = new SettingsForm();
             s.ShowDialog(this);
+
+            if (lang != Properties.Settings.Default.UI_Language) RefreshForm();
         }
 
         public void TabChanged(object sender, EventArgs e)

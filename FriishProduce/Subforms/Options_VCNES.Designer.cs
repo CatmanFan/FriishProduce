@@ -59,14 +59,12 @@ namespace FriishProduce
             this.Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             resources.ApplyResources(this.Cancel, "Cancel");
             this.Cancel.Name = "Cancel";
-            this.Cancel.Tag = "";
             this.Cancel.UseVisualStyleBackColor = true;
             // 
             // OK
             // 
             resources.ApplyResources(this.OK, "OK");
             this.OK.Name = "OK";
-            this.OK.Tag = "";
             this.OK.UseVisualStyleBackColor = true;
             this.OK.Click += new System.EventHandler(this.OK_Click);
             // 
@@ -147,7 +145,6 @@ namespace FriishProduce
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.Tag = "";
             this.Load += new System.EventHandler(this.Form_Load);
             this.panel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);

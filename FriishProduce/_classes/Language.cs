@@ -22,12 +22,12 @@ namespace FriishProduce
             set => CultureInfo.CurrentCulture = CultureInfo.CurrentUICulture = new CultureInfo(value.ToString()) { DateTimeFormat = new DateTimeFormatInfo() { DateSeparator = ".", ShortTimePattern = "HH:mm" } };
         }
 
-        private static Dictionary<string, string> _list;
-        public static Dictionary<string, string> List
+        private static SortedDictionary<string, string> _list;
+        public static SortedDictionary<string, string> List
         {
             get
             {
-                _list = new Dictionary<string, string>() { { "en", "English" } };
+                _list = new SortedDictionary<string, string>() { { "en", "English" } };
 
                 // Pass the class name of your resources as a parameter e.g. MyResources for MyResources.resx
                 ResourceManager rm = new ResourceManager("FriishProduce.Strings.Strings", Assembly.GetExecutingAssembly());
@@ -40,10 +40,20 @@ namespace FriishProduce
                         ResourceSet rs = rm.GetResourceSet(culture, true, false);
                         if (rs != null)
                         {
-                            string langName = culture.NativeName;
+                            // Create neutral cultures to be displayed instead of local ones
+                            // ****************
+                            var displayCulture = culture;
+                            if (culture.Name == "es-ES") displayCulture = new CultureInfo("es");
+                            if (culture.Name == "ru-RU") displayCulture = new CultureInfo("ru");
+                            if (culture.Name == "ja-JP") displayCulture = new CultureInfo("ja");
+                            if (culture.Name == "fr-FR") displayCulture = new CultureInfo("fr");
+                            if (culture.Name == "pt-PT") displayCulture = new CultureInfo("pt");
 
-                            // Capitalize first letter
+                            // Get native name & capitalize first letter
+                            // ****************
+                            string langName = displayCulture.NativeName;
                             langName = langName.Substring(0, 1).ToUpper() + langName.Substring(1, langName.Length - 1); ;
+
                             _list.Add(culture.Name, langName);
                         }
                     }
@@ -52,6 +62,8 @@ namespace FriishProduce
 
                 _list.Remove(""); // the "Invariant Language (Invariant Country)" item
                 _list.Remove("en-001"); // "English (World)"
+
+
                 return _list;
             }
         }
@@ -102,26 +114,20 @@ namespace FriishProduce
                 }
             }
 
-            else
-            {
-                bool set = false;
-
-                foreach (var item in List)
-                {
-                    if (item.Key.ToLower() == CultureInfo.InstalledUICulture.Name.ToLower()) Current = CultureInfo.InstalledUICulture;
-                    set = true;
-                }
-
-                if (!set) foreach (var item in List)
-                {
-                    if (item.Key.ToLower() == CultureInfo.InstalledUICulture.TwoLetterISOLanguageName.ToLower()) Current = new CultureInfo(item.Key);
-                    set = true;
-                }
-
-                if (!set) Current = English.Parent;
-            }
+            else Current = GetSystemLanguage();
 
             Thread.CurrentThread.CurrentCulture = Thread.CurrentThread.CurrentUICulture = Current;
+        }
+
+        public static CultureInfo GetSystemLanguage()
+        {
+            foreach (var item in List)
+                if (item.Key.ToLower() == CultureInfo.InstalledUICulture.Name.ToLower()) return CultureInfo.InstalledUICulture;
+
+            foreach (var item in List)
+                if (item.Key.ToLower() == CultureInfo.InstalledUICulture.TwoLetterISOLanguageName.ToLower()) return new CultureInfo(item.Key);
+
+            return English.Parent;
         }
 
         private static ResourceManager LoadResources(string pathName)
@@ -186,9 +192,10 @@ namespace FriishProduce
             }
         }
 
-        public static string Get(string name, string source) => Get(name, source, Current != null ? Current : English);
-        public static string Get(string name) => Get(name, "Strings", Current);
+        public static string Get(string name, string source) => Get(name, source, Current);
         public static string Get(string name, Control source) => Get(name + ".Text", source.Name);
+        public static string Get(string name, CultureInfo ci) => Get(name, "Strings", ci);
+        public static string Get(string name) => Get(name, "Strings", Current);
         #endregion Get
 
         #region GetArray
@@ -216,6 +223,7 @@ namespace FriishProduce
             return Object.ToArray();
         }
 
+        public static string[] GetArray(string name, CultureInfo ci) => GetArray(name, "Strings", ci);
         public static string[] GetArray(string name) => GetArray(name, "Strings", Current);
         #endregion
 
@@ -249,7 +257,10 @@ namespace FriishProduce
 
         private static void GetControl(Control x, string parent, bool customStrings = true)
         {
-            if (!string.IsNullOrWhiteSpace(x.Name) && !string.IsNullOrWhiteSpace(x.Text))
+            if      (x.GetType() == typeof(Form) && x.Name != parent)                                                            return;
+            else if (x.GetType() == typeof(MdiTabControl.TabPage) && (x as MdiTabControl.TabPage).Form.GetType().Name != parent) return;
+
+            if (!string.IsNullOrWhiteSpace(x.Name) && Get(x.Name + ".Text", parent) != "undefined")
             {
                 x.Text = Get(x.Name + ".Text", parent);
             }

@@ -44,11 +44,25 @@ namespace FriishProduce
 
         // -----------------------------------
 
+        public void RefreshForm()
+        {
+            Language.AutoSetForm(this);
+
+            // Change title text to untitled string
+            Untitled = string.Format(Language.Get("Untitled"), Language.Get($"Platform_{Enum.GetName(typeof(Console), Console)}"));
+            Text = i.ChannelTitle ?? Untitled;
+
+            // Selected index properties
+            imageintpl.Items.Clear();
+            imageintpl.Items.Add(Language.Get("ByDefault"));
+            imageintpl.Items.AddRange(Language.GetArray("List_ImageInterpolation"));
+            imageintpl.SelectedIndex = Properties.Settings.Default.ImageInterpolation;
+        }
+
         public InjectorForm(Console c)
         {
             Console = c;
             InitializeComponent();
-            Language.AutoSetForm(this);
 
             // Declare injector
             // ********
@@ -109,15 +123,7 @@ namespace FriishProduce
             // Cosmetic
             // ********
             UpdateBannerPreview();
-
-            // Change title text to untitled string
-            Untitled = string.Format(Language.Get("Untitled"), Language.Get($"Platform_{Enum.GetName(typeof(Console), Console)}"));
-            Text = Untitled;
-
-            // Selected index properties
-            imageintpl.Items[0] = Language.Get("ByDefault");
-            imageintpl.Items.AddRange(Language.GetArray("List_ImageInterpolation"));
-            imageintpl.SelectedIndex = Properties.Settings.Default.ImageInterpolation;
+            RefreshForm();
 
             i.BannerYear = (int)ReleaseYear.Value;
             i.BannerPlayers = (int)Players.Value;
@@ -668,7 +674,7 @@ namespace FriishProduce
             Set:
             // Native name & Title ID
             // ********
-            BaseName.Text = CurrentBase.ElementAt(index).Value;
+            baseName.Text = CurrentBase.ElementAt(index).Value;
             baseID.Text = CurrentBase.ElementAt(index).Key;
 
             // Flag

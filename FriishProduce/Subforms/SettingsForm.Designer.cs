@@ -68,7 +68,6 @@ namespace FriishProduce
             this.tabPage1.Controls.Add(this.panel2);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Tag = "";
             // 
             // LanguageList
             // 
@@ -95,7 +94,6 @@ namespace FriishProduce
             // 
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Tag = "";
             // 
             // tabPage2
             // 
@@ -118,13 +116,11 @@ namespace FriishProduce
             // 
             resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            this.label2.Tag = "";
             // 
             // OK
             // 
             resources.ApplyResources(this.OK, "OK");
             this.OK.Name = "OK";
-            this.OK.Tag = "";
             this.OK.UseVisualStyleBackColor = true;
             this.OK.Click += new System.EventHandler(this.OK_Click);
             // 
@@ -133,7 +129,6 @@ namespace FriishProduce
             resources.ApplyResources(this.Cancel, "Cancel");
             this.Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.Cancel.Name = "Cancel";
-            this.Cancel.Tag = "";
             this.Cancel.UseVisualStyleBackColor = true;
             // 
             // panel1
@@ -166,7 +161,6 @@ namespace FriishProduce
             this.Name = "SettingsForm";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.Tag = "g001";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();

@@ -451,7 +451,7 @@
     <value>NoControl</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 20</value>
+    <value>1, 20</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>119, 25</value>
@@ -478,7 +478,7 @@
     <value>3</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 86</value>
+    <value>1, 86</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
     <value>119, 25</value>
@@ -505,7 +505,7 @@
     <value>4</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 51</value>
+    <value>1, 51</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>119, 25</value>
@@ -558,28 +558,28 @@
   <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="BaseName.AutoSize" type="System.Boolean, mscorlib">
+  <data name="baseName.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="BaseName.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="baseName.Location" type="System.Drawing.Point, System.Drawing">
     <value>123, 24</value>
   </data>
-  <data name="BaseName.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="baseName.Size" type="System.Drawing.Size, System.Drawing">
     <value>0, 13</value>
   </data>
-  <data name="BaseName.TabIndex" type="System.Int32, mscorlib">
+  <data name="baseName.TabIndex" type="System.Int32, mscorlib">
     <value>33</value>
   </data>
-  <data name="&gt;&gt;BaseName.Name" xml:space="preserve">
-    <value>BaseName</value>
+  <data name="&gt;&gt;baseName.Name" xml:space="preserve">
+    <value>baseName</value>
   </data>
-  <data name="&gt;&gt;BaseName.Type" xml:space="preserve">
+  <data name="&gt;&gt;baseName.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;BaseName.Parent" xml:space="preserve">
+  <data name="&gt;&gt;baseName.Parent" xml:space="preserve">
     <value>groupBox2</value>
   </data>
-  <data name="&gt;&gt;BaseName.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;baseName.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="baseID.AutoSize" type="System.Boolean, mscorlib">
@@ -673,7 +673,7 @@
     <value>3</value>
   </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 46</value>
+    <value>15, 46</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
     <value>102, 20</value>
@@ -700,7 +700,7 @@
     <value>4</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 24</value>
+    <value>15, 24</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
     <value>102, 20</value>

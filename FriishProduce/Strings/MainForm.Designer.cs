@@ -107,7 +107,7 @@ namespace Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Open Image.
+        ///   Looks up a localized string similar to Image.
         /// </summary>
         public static string OpenImage_Text {
             get {
@@ -116,7 +116,7 @@ namespace Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Open ROM.
+        ///   Looks up a localized string similar to ROM.
         /// </summary>
         public static string OpenROM_Text {
             get {
@@ -184,11 +184,11 @@ namespace Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Import.
+        ///   Looks up a localized string similar to Open.
         /// </summary>
-        public static string ribbonPanel_Import_Text {
+        public static string ribbonPanel_Open_Text {
             get {
-                return ResourceManager.GetString("ribbonPanel_Import.Text", resourceCulture);
+                return ResourceManager.GetString("ribbonPanel_Open.Text", resourceCulture);
             }
         }
         
@@ -208,6 +208,24 @@ namespace Strings {
             get {
                 object obj = ResourceManager.GetObject("Strip_ExportWAD.Image", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open image....
+        /// </summary>
+        public static string Strip_OpenImage_Text {
+            get {
+                return ResourceManager.GetString("Strip_OpenImage.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open ROM....
+        /// </summary>
+        public static string Strip_OpenROM_Text {
+            get {
+                return ResourceManager.GetString("Strip_OpenROM.Text", resourceCulture);
             }
         }
         

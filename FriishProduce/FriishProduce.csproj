@@ -12,6 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,7 +25,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -183,35 +183,54 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Strings\InjectorForm.es-ES.resx" />
+    <EmbeddedResource Include="Strings\InjectorForm.fr.resx" />
     <EmbeddedResource Include="Strings\InjectorForm.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>InjectorForm.Designer.cs</LastGenOutput>
       <CustomToolNamespace>Strings</CustomToolNamespace>
     </EmbeddedResource>
+    <EmbeddedResource Include="Strings\InjectorForm.tr.resx" />
+    <EmbeddedResource Include="Strings\MainForm.es-ES.resx" />
+    <EmbeddedResource Include="Strings\MainForm.fr.resx" />
     <EmbeddedResource Include="Strings\MainForm.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>MainForm.Designer.cs</LastGenOutput>
       <CustomToolNamespace>Strings</CustomToolNamespace>
     </EmbeddedResource>
+    <EmbeddedResource Include="Strings\MainForm.tr.resx" />
+    <EmbeddedResource Include="Strings\Options_VCN64.es-ES.resx" />
+    <EmbeddedResource Include="Strings\Options_VCN64.fr.resx" />
     <EmbeddedResource Include="Strings\Options_VCN64.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Options_VCN64.Designer.cs</LastGenOutput>
       <CustomToolNamespace>Strings</CustomToolNamespace>
     </EmbeddedResource>
+    <EmbeddedResource Include="Strings\Options_VCN64.tr.resx" />
+    <EmbeddedResource Include="Strings\Options_VCNES.es-ES.resx" />
+    <EmbeddedResource Include="Strings\Options_VCNES.fr.resx" />
     <EmbeddedResource Include="Strings\Options_VCNES.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Options_VCNES.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Strings\Options_VCNES.tr.resx" />
+    <EmbeddedResource Include="Strings\SettingsForm.es-ES.resx" />
+    <EmbeddedResource Include="Strings\SettingsForm.fr.resx" />
     <EmbeddedResource Include="Strings\SettingsForm.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>SettingsForm.Designer.cs</LastGenOutput>
       <CustomToolNamespace>Strings</CustomToolNamespace>
     </EmbeddedResource>
+    <EmbeddedResource Include="Strings\SettingsForm.tr.resx" />
+    <EmbeddedResource Include="Strings\Strings.es-ES.resx" />
+    <EmbeddedResource Include="Strings\Strings.fr.resx" />
+    <EmbeddedResource Include="Strings\Strings.ja.resx" />
     <EmbeddedResource Include="Strings\Strings.resx">
       <CustomToolNamespace>Strings</CustomToolNamespace>
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Strings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Strings\Strings.tr.resx" />
     <EmbeddedResource Include="Subforms\Options_VCN64.resx">
       <DependentUpon>Options_VCN64.cs</DependentUpon>
     </EmbeddedResource>

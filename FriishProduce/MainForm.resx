@@ -200,7 +200,7 @@
 </value>
   </data>
   <data name="ribbon1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1114, 130</value>
+    <value>1114, 140</value>
   </data>
   <data name="ribbon1.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -220,8 +220,8 @@
   <data name="UseLibRetro.Text" xml:space="preserve">
     <value>Use LibRetro data</value>
   </data>
-  <data name="ribbonPanel_Import.Text" xml:space="preserve">
-    <value>Import</value>
+  <data name="ribbonPanel_Open.Text" xml:space="preserve">
+    <value>Open</value>
   </data>
   <data name="ExportWAD.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -258,7 +258,7 @@
     <value>Fill</value>
   </data>
   <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 130</value>
+    <value>0, 140</value>
   </data>
   <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>1114, 531</value>
@@ -363,7 +363,7 @@
     <value>Stretch</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1114, 661</value>
+    <value>1114, 671</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2848,10 +2848,10 @@
   <data name="&gt;&gt;ribbonTab_Home.Type" xml:space="preserve">
     <value>System.Windows.Forms.RibbonTab, System.Windows.Forms.Ribbon, Version=2.0.0.0, Culture=neutral, PublicKeyToken=928736e248aa81f9</value>
   </data>
-  <data name="&gt;&gt;ribbonPanel_Import.Name" xml:space="preserve">
-    <value>ribbonPanel_Import</value>
+  <data name="&gt;&gt;ribbonPanel_Open.Name" xml:space="preserve">
+    <value>ribbonPanel_Open</value>
   </data>
-  <data name="&gt;&gt;ribbonPanel_Import.Type" xml:space="preserve">
+  <data name="&gt;&gt;ribbonPanel_Open.Type" xml:space="preserve">
     <value>System.Windows.Forms.RibbonPanel, System.Windows.Forms.Ribbon, Version=2.0.0.0, Culture=neutral, PublicKeyToken=928736e248aa81f9</value>
   </data>
   <data name="&gt;&gt;OpenROM.Name" xml:space="preserve">

@@ -27,11 +27,10 @@ namespace FriishProduce
             // Add all languages
             foreach (var item in Language.List)
                 LanguageList.Items.Add(item.Value);
-            LanguageList.Sorted = true;
             var x = Default.UI_Language;
 
             if (Default.UI_Language == "sys") LanguageList.SelectedIndex = 0;
-            else LanguageList.SelectedIndex = LanguageList.Items.IndexOf(LanguageName(Default.UI_Language));
+            else LanguageList.SelectedIndex = Language.List.Keys.ToList().IndexOf(Default.UI_Language) + 1;
             // -----------------------------
             DefaultImageInterpolation.Items[0] = Language.Get("ByDefault");
             DefaultImageInterpolation.Items.AddRange(Language.GetArray("List_ImageInterpolation"));
@@ -51,24 +50,14 @@ namespace FriishProduce
             // -------------------------------------------
             // Language setting
             // -------------------------------------------
-            if (!isDirty)
-            {
-                if (LanguageList.SelectedIndex == 0)
-                {
-                    isDirty = Default.UI_Language != "sys";
-                    Default.UI_Language = "sys";
-                }
-                else
-                {
-                    foreach (var item in Language.List)
-                        if (item.Value == LanguageList.SelectedItem.ToString())
-                        {
-                            isDirty = item.Value != Default.UI_Language;
-                            Default.UI_Language = item.Key;
-                            break;
-                        }
-                }
-            }
+            if (LanguageList.SelectedIndex == 0)
+                Default.UI_Language = "sys";
+            else
+                foreach (var item in Language.List)
+                    if (item.Value == LanguageList.SelectedItem.ToString())
+                        Default.UI_Language = item.Key;
+
+            Language.Current = LanguageList.SelectedIndex == 0 ? Language.GetSystemLanguage() : new System.Globalization.CultureInfo(Default.UI_Language);
 
             // -------------------------------------------
             // Other settings
@@ -79,7 +68,7 @@ namespace FriishProduce
             // -------------------------------------------
             // Restart message box & save changes
             // -------------------------------------------
-            if (isDirty)
+            /*if (isDirty)
             {
                 if (MessageBox.Show(Language.Get("Message000"), ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
@@ -87,11 +76,10 @@ namespace FriishProduce
                     Application.Restart();
                 }
             }
-            else
-            {
-                Default.Save();
-                DialogResult = DialogResult.OK;
-            }
+            else*/
+
+            Default.Save();
+            DialogResult = DialogResult.OK;
         }
 
         private void Cancel_Click(object sender, EventArgs e) => DialogResult = DialogResult.Cancel;

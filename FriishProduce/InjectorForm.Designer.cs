@@ -49,7 +49,7 @@ namespace FriishProduce
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.BaseName = new System.Windows.Forms.Label();
+            this.baseName = new System.Windows.Forms.Label();
             this.baseID = new System.Windows.Forms.Label();
             this.WADRegion = new System.Windows.Forms.PictureBox();
             this.WADRegionList = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -175,7 +175,6 @@ namespace FriishProduce
             // 
             resources.ApplyResources(this.RegionFree, "RegionFree");
             this.RegionFree.Name = "RegionFree";
-            this.RegionFree.Tag = "x005";
             this.RegionFree.UseVisualStyleBackColor = true;
             // 
             // TitleID
@@ -206,19 +205,16 @@ namespace FriishProduce
             // 
             resources.ApplyResources(this.SerialCode, "SerialCode");
             this.SerialCode.Name = "SerialCode";
-            this.SerialCode.Tag = "";
             // 
             // SoftwareName
             // 
             resources.ApplyResources(this.SoftwareName, "SoftwareName");
             this.SoftwareName.Name = "SoftwareName";
-            this.SoftwareName.Tag = "";
             // 
             // ROMPath
             // 
             resources.ApplyResources(this.ROMPath, "ROMPath");
             this.ROMPath.Name = "ROMPath";
-            this.ROMPath.Tag = "";
             // 
             // label1
             // 
@@ -237,7 +233,7 @@ namespace FriishProduce
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.BaseName);
+            this.groupBox2.Controls.Add(this.baseName);
             this.groupBox2.Controls.Add(this.baseID);
             this.groupBox2.Controls.Add(this.WADRegion);
             this.groupBox2.Controls.Add(this.Base);
@@ -247,10 +243,10 @@ namespace FriishProduce
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
             // 
-            // BaseName
+            // baseName
             // 
-            resources.ApplyResources(this.BaseName, "BaseName");
-            this.BaseName.Name = "BaseName";
+            resources.ApplyResources(this.baseName, "baseName");
+            this.baseName.Name = "baseName";
             // 
             // baseID
             // 
@@ -286,7 +282,6 @@ namespace FriishProduce
             // 
             resources.ApplyResources(this.label5, "label5");
             this.label5.Name = "label5";
-            this.label5.Tag = "";
             // 
             // label4
             // 
@@ -299,7 +294,6 @@ namespace FriishProduce
             resources.ApplyResources(this.groupBox8, "groupBox8");
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.TabStop = false;
-            this.groupBox8.Tag = "";
             // 
             // imageintpl
             // 
@@ -317,7 +311,6 @@ namespace FriishProduce
             resources.ApplyResources(this.groupBox5, "groupBox5");
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.TabStop = false;
-            this.groupBox5.Tag = "";
             // 
             // BannerPreview_Panel
             // 
@@ -400,7 +393,6 @@ namespace FriishProduce
             resources.ApplyResources(this.groupBox6, "groupBox6");
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.TabStop = false;
-            this.groupBox6.Tag = "";
             // 
             // Players
             // 
@@ -473,7 +465,6 @@ namespace FriishProduce
             resources.ApplyResources(this.groupBox7, "groupBox7");
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.TabStop = false;
-            this.groupBox7.Tag = "";
             // 
             // SaveIcon_Panel
             // 
@@ -571,7 +562,7 @@ namespace FriishProduce
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.PictureBox WADRegion;
         private System.Windows.Forms.ContextMenuStrip WADRegionList;
-        private System.Windows.Forms.Label BaseName;
+        private System.Windows.Forms.Label baseName;
         private System.Windows.Forms.Label baseID;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
