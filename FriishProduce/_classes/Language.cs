@@ -141,7 +141,7 @@ namespace FriishProduce
         {
             if (code == "en") return English_Dictionary;
 
-            string currentPath = (Path.GetDirectoryName(Assembly.GetExecutingAssembly().GetName().CodeBase) + $"\\strings\\{code}\\").Replace("file:\\", "");
+            string currentPath = Path.GetDirectoryName(Paths.Languages + $"{code}\\").Replace("file:\\", "");
 
             IDictionary<string, string>[] res = new Dictionary<string, string>[Directory.GetFiles(currentPath).Length];
             try
