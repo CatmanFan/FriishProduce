@@ -213,7 +213,18 @@ namespace FriishProduce
 
                 i.RemoveManual();
                 i.Create(outputFile);
-                return true;
+
+                if (File.Exists(outputFile))
+                {
+                    System.Media.SystemSounds.Beep.Play();
+
+                    if (Properties.Settings.Default.AutoOpenFolder)
+                        System.Diagnostics.Process.Start("explorer.exe", $"/select, \"{outputFile}\"");
+                    else
+                        MessageBox.Show(string.Format(Language.Get("Message003"), outputFile), Language.Get("_AppTitle"), MessageBoxButtons.OK);
+                    return true;
+                }
+                else throw new Exception(Language.Get("Error006"));
             }
             catch (Exception ex)
             {

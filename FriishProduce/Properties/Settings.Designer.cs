@@ -58,5 +58,17 @@ namespace FriishProduce.Properties {
                 this["AutoLibRetro"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool AutoOpenFolder {
+            get {
+                return ((bool)(this["AutoOpenFolder"]));
+            }
+            set {
+                this["AutoOpenFolder"] = value;
+            }
+        }
     }
 }

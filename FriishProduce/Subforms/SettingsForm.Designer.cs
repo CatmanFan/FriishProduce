@@ -43,6 +43,7 @@ namespace FriishProduce
             this.Cancel = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.AutoOpenFolder = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -52,30 +53,31 @@ namespace FriishProduce
             // 
             // tabControl1
             // 
-            resources.ApplyResources(this.tabControl1, "tabControl1");
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            resources.ApplyResources(this.tabControl1, "tabControl1");
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             // 
             // tabPage1
             // 
-            resources.ApplyResources(this.tabPage1, "tabPage1");
             this.tabPage1.BackColor = System.Drawing.SystemColors.Window;
+            this.tabPage1.Controls.Add(this.AutoOpenFolder);
             this.tabPage1.Controls.Add(this.LanguageList);
             this.tabPage1.Controls.Add(this.AutoLibRetro);
             this.tabPage1.Controls.Add(this.panel2);
             this.tabPage1.Controls.Add(this.label1);
+            resources.ApplyResources(this.tabPage1, "tabPage1");
             this.tabPage1.Name = "tabPage1";
             // 
             // LanguageList
             // 
-            resources.ApplyResources(this.LanguageList, "LanguageList");
             this.LanguageList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.LanguageList.FormattingEnabled = true;
             this.LanguageList.Items.AddRange(new object[] {
             resources.GetString("LanguageList.Items")});
+            resources.ApplyResources(this.LanguageList, "LanguageList");
             this.LanguageList.Name = "LanguageList";
             // 
             // AutoLibRetro
@@ -86,8 +88,8 @@ namespace FriishProduce
             // 
             // panel2
             // 
-            resources.ApplyResources(this.panel2, "panel2");
             this.panel2.BackColor = System.Drawing.SystemColors.ControlDark;
+            resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
             // 
             // label1
@@ -97,19 +99,19 @@ namespace FriishProduce
             // 
             // tabPage2
             // 
-            resources.ApplyResources(this.tabPage2, "tabPage2");
             this.tabPage2.BackColor = System.Drawing.SystemColors.Window;
             this.tabPage2.Controls.Add(this.DefaultImageInterpolation);
             this.tabPage2.Controls.Add(this.label2);
+            resources.ApplyResources(this.tabPage2, "tabPage2");
             this.tabPage2.Name = "tabPage2";
             // 
             // DefaultImageInterpolation
             // 
-            resources.ApplyResources(this.DefaultImageInterpolation, "DefaultImageInterpolation");
             this.DefaultImageInterpolation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.DefaultImageInterpolation.FormattingEnabled = true;
             this.DefaultImageInterpolation.Items.AddRange(new object[] {
             resources.GetString("DefaultImageInterpolation.Items")});
+            resources.ApplyResources(this.DefaultImageInterpolation, "DefaultImageInterpolation");
             this.DefaultImageInterpolation.Name = "DefaultImageInterpolation";
             // 
             // label2
@@ -126,25 +128,31 @@ namespace FriishProduce
             // 
             // Cancel
             // 
-            resources.ApplyResources(this.Cancel, "Cancel");
             this.Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            resources.ApplyResources(this.Cancel, "Cancel");
             this.Cancel.Name = "Cancel";
             this.Cancel.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
-            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.panel1.Controls.Add(this.Cancel);
             this.panel1.Controls.Add(this.OK);
+            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
             // 
             // panel3
             // 
-            resources.ApplyResources(this.panel3, "panel3");
             this.panel3.BackColor = System.Drawing.SystemColors.ControlDark;
             this.panel3.Controls.Add(this.panel1);
+            resources.ApplyResources(this.panel3, "panel3");
             this.panel3.Name = "panel3";
+            // 
+            // AutoOpenFolder
+            // 
+            resources.ApplyResources(this.AutoOpenFolder, "AutoOpenFolder");
+            this.AutoOpenFolder.Name = "AutoOpenFolder";
+            this.AutoOpenFolder.UseVisualStyleBackColor = true;
             // 
             // SettingsForm
             // 
@@ -187,5 +195,6 @@ namespace FriishProduce
         private System.Windows.Forms.CheckBox AutoLibRetro;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.ComboBox LanguageList;
+        private System.Windows.Forms.CheckBox AutoOpenFolder;
     }
 }

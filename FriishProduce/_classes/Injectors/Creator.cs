@@ -42,8 +42,6 @@ namespace FriishProduce
             WAD.Save(outputFile);
             WAD.Dispose();
             if (File.Exists(outputFile) && File.ReadAllBytes(outputFile).Length < 10) throw new IOException();
-
-            MessageBox.Show(string.Format(Language.Get("Message003"), outputFile), Language.Get("_AppTitle"), MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         public void RemoveManual()

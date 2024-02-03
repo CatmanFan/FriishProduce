@@ -36,6 +36,7 @@ namespace FriishProduce
             DefaultImageInterpolation.Items.AddRange(Language.GetArray("List_ImageInterpolation"));
             DefaultImageInterpolation.SelectedIndex = Default.ImageInterpolation;
             AutoLibRetro.Checked = Default.AutoLibRetro;
+            AutoOpenFolder.Checked = Default.AutoOpenFolder;
         }
 
         private string LanguageName(string code)
@@ -64,6 +65,7 @@ namespace FriishProduce
             // -------------------------------------------
             Default.ImageInterpolation = DefaultImageInterpolation.SelectedIndex;
             Default.AutoLibRetro = AutoLibRetro.Checked;
+            Default.AutoOpenFolder = AutoOpenFolder.Checked;
 
             // -------------------------------------------
             // Restart message box & save changes
