@@ -11,7 +11,7 @@ namespace FriishProduce
 
         // Application paths
         public static readonly string Tools = Path.Combine(EnvironmentFolder, "resources\\tools\\");
-        public static readonly string Languages = Path.Combine(EnvironmentFolder, "Strings\\");
+        public static readonly string Languages = Path.Combine(EnvironmentFolder, "strings\\");
 
         // SEGA VC paths
         public static readonly string CCF = WorkingFolder + "CCF\\";

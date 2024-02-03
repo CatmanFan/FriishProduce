@@ -345,7 +345,14 @@
     </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>cd "$(ProjectDir)Strings\"
+for /R "%25cd%25" %25%25f in (.) do (call :copy %25%25f %25cd%25)
+goto :eof
+
+:copy
+if NOT %25~n1 == %25~n2 robocopy %251 $(TargetDir)strings\%25~n1\ 1&gt;nul
+exit /b
+
+:eof</PostBuildEvent>
   </PropertyGroup>
 </Project>

@@ -229,7 +229,7 @@ namespace FriishProduce
 
         #region Get
         /// <summary>
-        /// Gets a string from Strings.resx corresponding to the CultureInfo given.
+        /// Gets a string corresponding to the CultureInfo given.
         /// </summary>
         /// <param name="name">Key name within the resource file</param>
         /// <param name="className">The name of the resource file</param>
@@ -288,21 +288,21 @@ namespace FriishProduce
 
             foreach (Control d in c.Controls)
             {
-                GetControl(d, c.Name);
+                GetControl(d, c);
                 foreach (Control e in d.Controls)
                 {
-                    GetControl(e, c.Name);
+                    GetControl(e, c);
                     foreach (Control f in e.Controls)
                     {
-                        GetControl(f, c.Name);
+                        GetControl(f, c);
                         foreach (Control g in f.Controls)
                         {
-                            GetControl(g, c.Name);
+                            GetControl(g, c);
                             foreach (Control h in g.Controls)
                             {
-                                GetControl(h, c.Name);
+                                GetControl(h, c);
                                 foreach (Control i in h.Controls)
-                                    GetControl(i, c.Name);
+                                    GetControl(i, c);
                             }
                         }
                     }
@@ -310,15 +310,13 @@ namespace FriishProduce
             }
         }
 
-        private static void GetControl(Control x, string parent, bool customStrings = true)
+        private static void GetControl(Control x, Control parent, bool customStrings = true)
         {
-            if      (x.GetType() == typeof(Form) && x.Name != parent)                                                            return;
-            else if (x.GetType() == typeof(MdiTabControl.TabPage) && (x as MdiTabControl.TabPage).Form.GetType().Name != parent) return;
+            if      (x.GetType() == typeof(Form) && x.Name != parent.Name)                                                            return;
+            else if (x.GetType() == typeof(MdiTabControl.TabPage) && (x as MdiTabControl.TabPage).Form.GetType().Name != parent.Name) return;
 
-            if (!string.IsNullOrWhiteSpace(x.Name) && Get(x.Name + ".Text") != "undefined")
-            {
-                x.Text = Get(x.Name + ".Text");
-            }
+            if (!string.IsNullOrWhiteSpace(x.Name) && Get(x.Name, parent) != "undefined")
+                x.Text = Get(x.Name, parent);
 
             // Custom strings (e.g. for buttons)
             // ****************
