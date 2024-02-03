@@ -1,7 +1,7 @@
-name: Crowdin > Upload strings
+name: Upload to Crowdin
 
 on:
-  workflow_dispatch:
+  push:
     paths: [ 'FriishProduce/Strings/**' ]
     branches: [ main ]
     
@@ -16,7 +16,7 @@ jobs:
         uses: crowdin/github-action@v1
         with:
           upload_sources: true
-          upload_translations: false
+          upload_translations: true
           download_translations: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
