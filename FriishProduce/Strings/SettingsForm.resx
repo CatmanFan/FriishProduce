@@ -121,7 +121,7 @@
     <value>Automatically download from LibRetro database</value>
   </data>
   <data name="AutoOpenFolder.Text" xml:space="preserve">
-    <value>Open output folder after exporting WADxxx</value>
+    <value>Open output folder after exporting WAD</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Language:</value>
