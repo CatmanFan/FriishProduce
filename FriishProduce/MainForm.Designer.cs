@@ -50,6 +50,7 @@ namespace FriishProduce
             this.ribbonPanel_Open = new System.Windows.Forms.RibbonPanel();
             this.OpenROM = new System.Windows.Forms.RibbonButton();
             this.OpenImage = new System.Windows.Forms.RibbonButton();
+            this.OpenWAD = new System.Windows.Forms.RibbonButton();
             this.ribbonSeparator1 = new System.Windows.Forms.RibbonSeparator();
             this.UseLibRetro = new System.Windows.Forms.RibbonButton();
             this.ribbonPanel_Export = new System.Windows.Forms.RibbonPanel();
@@ -221,6 +222,7 @@ namespace FriishProduce
             this.ribbonPanel_Open.ButtonMoreVisible = false;
             this.ribbonPanel_Open.Items.Add(this.OpenROM);
             this.ribbonPanel_Open.Items.Add(this.OpenImage);
+            this.ribbonPanel_Open.Items.Add(this.OpenWAD);
             this.ribbonPanel_Open.Items.Add(this.ribbonSeparator1);
             this.ribbonPanel_Open.Items.Add(this.UseLibRetro);
             this.ribbonPanel_Open.Name = "ribbonPanel_Open";
@@ -251,6 +253,16 @@ namespace FriishProduce
             this.OpenImage.SmallImage = global::FriishProduce.Properties.Resources.image_add;
             resources.ApplyResources(this.OpenImage, "OpenImage");
             this.OpenImage.Click += new System.EventHandler(this.OpenImage_Click);
+            // 
+            // OpenWAD
+            // 
+            this.OpenWAD.Enabled = false;
+            this.OpenWAD.Image = global::FriishProduce.Properties.Resources.lcd_tv_large;
+            this.OpenWAD.LargeImage = global::FriishProduce.Properties.Resources.lcd_tv_large;
+            this.OpenWAD.MinimumSize = new System.Drawing.Size(70, 0);
+            this.OpenWAD.Name = "OpenWAD";
+            this.OpenWAD.SmallImage = global::FriishProduce.Properties.Resources.lcd_tv;
+            resources.ApplyResources(this.OpenWAD, "OpenWAD");
             // 
             // ribbonSeparator1
             // 
@@ -411,6 +423,7 @@ namespace FriishProduce
         private System.Windows.Forms.RibbonSeparator CreateProject_List1;
         private System.Windows.Forms.RibbonButton CreateProject_SNES;
         private System.Windows.Forms.RibbonButton CreateProject_N64;
+        private System.Windows.Forms.RibbonButton OpenWAD;
     }
 }
 

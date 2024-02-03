@@ -153,4 +153,7 @@
   <data name="Strip_OpenROM.Text" xml:space="preserve">
     <value>Open ROM...</value>
   </data>
+  <data name="OpenWAD.Text" xml:space="preserve">
+    <value>WAD</value>
+  </data>
 </root>

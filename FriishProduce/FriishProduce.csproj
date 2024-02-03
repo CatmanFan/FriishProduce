@@ -276,6 +276,8 @@
     <None Include="Resources\icons\wrench_orange_large.png" />
     <None Include="Resources\icons\mario_large.png" />
     <None Include="Resources\icons\information_large.png" />
+    <None Include="Resources\icons\lcd_tv.png" />
+    <None Include="Resources\icons\lcd_tv_large.png" />
     <Content Include="Resources\savebanner_flash.png" />
     <None Include="Resources\saveicon_placeholder_s.png" />
     <None Include="Resources\saveicon_placeholder.png" />
