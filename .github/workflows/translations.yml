@@ -1,4 +1,4 @@
-name: Crowdin Action
+name: Crowdin > New PR request
 
 on:
   workflow_dispatch:
