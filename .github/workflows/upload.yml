@@ -2,7 +2,7 @@ name: Upload to Crowdin
 
 on:
   workflow_dispatch:
-    paths: [ 'FriishProduce/Strings/*.resx' ]
+    paths: [ 'FriishProduce/Strings/**' ]
     branches: [ main ]
     
 jobs:
