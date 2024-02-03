@@ -48,11 +48,10 @@ namespace FriishProduce
                             // Create neutral cultures to be displayed instead of local ones
                             // ****************
                             var displayCulture = culture;
-                            if (culture.Name == "es-ES") displayCulture = new CultureInfo("es");
-                            if (culture.Name == "ru-RU") displayCulture = new CultureInfo("ru");
                             if (culture.Name == "ja-JP") displayCulture = new CultureInfo("ja");
-                            if (culture.Name == "fr-FR") displayCulture = new CultureInfo("fr");
-                            if (culture.Name == "pt-PT") displayCulture = new CultureInfo("pt");
+
+                            else if (culture.Name.Length == 5 && culture.Name.Substring(0, 2).ToLower() == culture.Name.Substring(3).ToLower()) // e.g. es-ES, fr-FR, pt-PT
+                                displayCulture = new CultureInfo(culture.Name.Substring(0, 2).ToLower());
 
                             // Get native name & capitalize first letter
                             // ****************
