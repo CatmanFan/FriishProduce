@@ -14,9 +14,8 @@ namespace FriishProduce
         public static readonly string Languages = Path.Combine(EnvironmentFolder, "strings\\");
 
         // SEGA VC paths
-        public static readonly string CCF = WorkingFolder + "CCF\\";
-        public static readonly string DataCCF = CCF + "data\\";
-        public static readonly string MiscCCF = DataCCF + "misc\\";
+        public static readonly string DataCCF = WorkingFolder + "data_ccf\\";
+        public static readonly string MiscCCF = DataCCF + "misc_ccf\\";
         public static readonly string Images = WorkingFolder + "images\\";
 
         // Flash paths

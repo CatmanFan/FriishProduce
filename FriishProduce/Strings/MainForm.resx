@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ExportWAD.Text" xml:space="preserve">
-    <value>Save as WAD</value>
+    <value>Save as WAD...</value>
   </data>
   <data name="MenuItem_About.Text" xml:space="preserve">
     <value>About</value>

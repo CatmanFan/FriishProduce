@@ -213,6 +213,16 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap icon_16x16_smd {
+            get {
+                object obj = ResourceManager.GetObject("icon_16x16_smd", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap icon_16x16_snes {
             get {
                 object obj = ResourceManager.GetObject("icon_16x16_snes", resourceCulture);

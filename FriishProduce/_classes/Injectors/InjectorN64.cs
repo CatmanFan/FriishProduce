@@ -62,7 +62,6 @@ namespace FriishProduce
                     EmuType = Type.Rev3;
                     break;
             }
-
         }
 
         /// <summary>
@@ -85,8 +84,8 @@ namespace FriishProduce
         /// Injection of ROM from byte array
         /// </summary>
         /// <param name="ROM">ROM in bytes</param>
-        /// <param name="type">Type of ROMC compression (0 = none; 1 = ROMC type 0; 2 = ROMC type 1)</param>
-        public void ReplaceROM(byte[] ROMbytes, int type = 0)
+        /// <param name="compression">Type of ROMC compression (0 = none; 1 = ROMC type 0; 2 = ROMC type 1)</param>
+        public void ReplaceROM(byte[] ROMbytes, int compression = 0)
         {
             // -----------------------
             // Byteswap ROM first
@@ -148,7 +147,7 @@ namespace FriishProduce
 
                     // Compress using ROMC type
                     // ****************
-                    if (type == 1) // Type 0
+                    if (compression == 1) // Type 0
                         Process.Run
                         (
                             Paths.Tools + "romc0.exe",

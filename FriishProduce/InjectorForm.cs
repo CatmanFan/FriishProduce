@@ -145,7 +145,7 @@ namespace FriishProduce
             i.BannerPlayers = (int)Players.Value;
             i.SaveDataTitle = SaveDataTitle.Text;
 
-            ReadyToExport =    (!string.IsNullOrEmpty(i.TitleID) && i.TitleID.Length == 4)
+            ReadyToExport =    !string.IsNullOrEmpty(i.TitleID) && i.TitleID.Length == 4
                             && !string.IsNullOrEmpty(i.ChannelTitle)
                             && !string.IsNullOrEmpty(i.BannerTitle)
                             && !string.IsNullOrEmpty(i.SaveDataTitle)
@@ -216,6 +216,7 @@ namespace FriishProduce
 
                 if (File.Exists(outputFile))
                 {
+                    Parent.CleanTemp();
                     System.Media.SystemSounds.Beep.Play();
 
                     if (Properties.Settings.Default.AutoOpenFolder)
@@ -228,6 +229,7 @@ namespace FriishProduce
             }
             catch (Exception ex)
             {
+                Parent.CleanTemp();
                 if (i.WAD != null) i.WAD.Dispose();
                 i.ShowErrorMessage(ex);
                 return false;
@@ -408,9 +410,10 @@ namespace FriishProduce
                     BannerTitle.Text = i.BannerTitle = LibRetro.GetCleanTitle() ?? i.BannerTitle;
 
                     // Set channel title text
-                    if (LibRetro.GetCleanTitle() != null && LibRetro.GetCleanTitle().Length <= ChannelTitle.MaxLength)
+                    if (LibRetro.GetCleanTitle() != null)
                     {
-                        ChannelTitle.Text = i.ChannelTitle = LibRetro.GetCleanTitle();
+                        var text = LibRetro.GetCleanTitle().Replace("\r", "").Split('\n');
+                        if (text[0].Length <= ChannelTitle.MaxLength) ChannelTitle.Text = i.ChannelTitle = text[0];
                         if (ChannelTitle.TextLength <= SaveDataTitle.MaxLength / 2) SaveDataTitle.Text = ChannelTitle.Text;
                     }
 
@@ -515,6 +518,14 @@ namespace FriishProduce
 
                 case Console.SMS:
                 case Console.SMDGEN:
+                    InjectorSEGA SEGA = new InjectorSEGA(i.WAD) { IsSMS = Console == Console.SMS };
+                    bool legacyCCFApp = SEGA.GetCCF(SEGA.IsSMS);
+                    SEGA.ReplaceROM(i.ROM);
+                    SEGA.InsertSaveData(i.SaveDataTitle, i.tImg);
+                    SEGA.PackCCF(legacyCCFApp);
+                    i.WAD = SEGA.Write();
+                    break;
+
                 case Console.PCE:
                 case Console.NeoGeo:
                 case Console.MSX:
@@ -757,14 +768,16 @@ namespace FriishProduce
                     SaveDataTitle.Clear();
 
             End:
-            UpdateBaseConsole();
+            foreach (var item in Database.List)
+                foreach (var key in CurrentBase.Keys)
+                    if (item.TitleID.ToUpper() == key.ToUpper()) UpdateBaseConsole(item.emuRev);
             UpdateBannerPreview();
         }
 
         /// <summary>
         /// Changes injector settings based on selected base/console
         /// </summary>
-        private void UpdateBaseConsole()
+        private void UpdateBaseConsole(int emuVer)
         {
             // ******************
             // CONSOLE-SPECIFIC
@@ -776,13 +789,10 @@ namespace FriishProduce
                     break;
 
                 case Console.N64:
-                    int t = i.isKorea ? 3 : Base.SelectedIndex < 2 ? 0 : Base.SelectedIndex < 4 ? 1 : Base.SelectedIndex < 5 ? 2 : 3;
-                    o3.EmuType = (InjectorN64.Type)Enum.Parse(typeof(InjectorN64.Type), t.ToString());
+                    o3.EmuType = (InjectorN64.Type)(i.isKorea ? 3 : emuVer);
                     break;
 
                 case Console.SMS:
-                    break;
-
                 case Console.SMDGEN:
                     break;
 

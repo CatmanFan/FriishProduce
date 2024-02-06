@@ -127,18 +127,6 @@
   <data name="ribbon1.OrbDropDown.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="CreateProject_List1.Text" xml:space="preserve">
-    <value>Nintendo</value>
-  </data>
-  <data name="CreateProject_NES.Text" xml:space="preserve">
-    <value>NES</value>
-  </data>
-  <data name="CreateProject_SNES.Text" xml:space="preserve">
-    <value>SNES</value>
-  </data>
-  <data name="CreateProject_N64.Text" xml:space="preserve">
-    <value>N64</value>
-  </data>
   <data name="NewProject.Text" xml:space="preserve">
     <value>New...</value>
   </data>
@@ -2767,9 +2755,6 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAhAAAAIQBAAD8HwAA//8AAP//AAA=
 </value>
   </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>
   </data>
@@ -2781,30 +2766,6 @@
   </data>
   <data name="&gt;&gt;NewProject.Type" xml:space="preserve">
     <value>System.Windows.Forms.RibbonOrbMenuItem, System.Windows.Forms.Ribbon, Version=2.0.0.0, Culture=neutral, PublicKeyToken=928736e248aa81f9</value>
-  </data>
-  <data name="&gt;&gt;CreateProject_List1.Name" xml:space="preserve">
-    <value>CreateProject_List1</value>
-  </data>
-  <data name="&gt;&gt;CreateProject_List1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RibbonSeparator, System.Windows.Forms.Ribbon, Version=2.0.0.0, Culture=neutral, PublicKeyToken=928736e248aa81f9</value>
-  </data>
-  <data name="&gt;&gt;CreateProject_NES.Name" xml:space="preserve">
-    <value>CreateProject_NES</value>
-  </data>
-  <data name="&gt;&gt;CreateProject_NES.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon, Version=2.0.0.0, Culture=neutral, PublicKeyToken=928736e248aa81f9</value>
-  </data>
-  <data name="&gt;&gt;CreateProject_SNES.Name" xml:space="preserve">
-    <value>CreateProject_SNES</value>
-  </data>
-  <data name="&gt;&gt;CreateProject_SNES.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon, Version=2.0.0.0, Culture=neutral, PublicKeyToken=928736e248aa81f9</value>
-  </data>
-  <data name="&gt;&gt;CreateProject_N64.Name" xml:space="preserve">
-    <value>CreateProject_N64</value>
-  </data>
-  <data name="&gt;&gt;CreateProject_N64.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon, Version=2.0.0.0, Culture=neutral, PublicKeyToken=928736e248aa81f9</value>
   </data>
   <data name="&gt;&gt;orbMenuSeparator1.Name" xml:space="preserve">
     <value>orbMenuSeparator1</value>

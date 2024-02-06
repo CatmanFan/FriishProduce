@@ -168,12 +168,13 @@
     <Compile Include="_classes\Injectors\Base.cs" />
     <Compile Include="_classes\Injectors\InjectorN64.cs" />
     <Compile Include="_classes\Injectors\InjectorNES.cs" />
+    <Compile Include="_classes\Injectors\InjectorSEGA.cs" />
     <Compile Include="_classes\Injectors\InjectorSNES.cs" />
     <Compile Include="_classes\Etc.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="_classes\LibRetroDB.cs" />
     <Compile Include="_classes\Language.cs" />
+    <Compile Include="_classes\LibRetroDB.cs" />
     <Compile Include="_classes\Paths.cs" />
     <Compile Include="_classes\TitleImage.cs" />
     <Compile Include="_classes\Banner.cs" />
@@ -256,6 +257,7 @@
     <None Include="Resources\flag_us.png" />
     <None Include="Resources\flag_jp.png" />
     <None Include="Resources\flag_kr.png" />
+    <None Include="Resources\icons\consoles\icon_16x16_smd.png" />
     <Content Include="Resources\icons\consoles\sega master system.ico" />
     <None Include="Resources\icons\logo.png" />
     <None Include="Resources\icons\information.png" />
@@ -278,6 +280,11 @@
     <None Include="Resources\icons\information_large.png" />
     <None Include="Resources\icons\lcd_tv.png" />
     <None Include="Resources\icons\lcd_tv_large.png" />
+    <Content Include="Resources\icons\information.png" />
+    <Content Include="Resources\icons\info_rhombus_large.png" />
+    <Content Include="Resources\icons\joystick_add_large.png" />
+    <Content Include="Resources\icons\mario_large.png" />
+    <Content Include="Resources\icons\wrench_orange_large.png" />
     <Content Include="Resources\savebanner_flash.png" />
     <None Include="Resources\saveicon_placeholder_s.png" />
     <None Include="Resources\saveicon_placeholder.png" />

@@ -18,6 +18,20 @@ namespace FriishProduce
         private void AutoSetRibbon()
         {
             ribbon1.OrbText = Language.Get("File");
+
+            NewProject.DropDownItems.Clear();
+            NewProject.DropDownItems.Add(new RibbonSeparator(Language.Get("PlatformGroup_0")));
+            NewProject.DropDownItems.Add(new RibbonButton(Properties.Resources.icon_16x16_nes) { Tag = Console.NES.ToString() });
+            NewProject.DropDownItems.Add(new RibbonButton(Properties.Resources.icon_16x16_snes) { Tag = Console.SNES.ToString() });
+            NewProject.DropDownItems.Add(new RibbonButton(Properties.Resources.icon_16x16_n64) { Tag = Console.N64.ToString() });
+            NewProject.DropDownItems.Add(new RibbonSeparator(Language.Get("PlatformGroup_1")));
+            NewProject.DropDownItems.Add(new RibbonButton() { Tag = Console.SMS.ToString() });
+            NewProject.DropDownItems.Add(new RibbonButton(Properties.Resources.icon_16x16_smd) { Tag = Console.SMDGEN.ToString() });
+            foreach (RibbonButton item in NewProject.DropDownItems.OfType<RibbonButton>())
+            {
+                item.Text = string.Format(Language.Get("ProjectType"), Language.Get($"Platform_{item.Tag}"));
+            }
+
             string text = null;
 
             foreach (RibbonTab tab in ribbon1.Tabs)
@@ -44,8 +58,6 @@ namespace FriishProduce
                 if (text != "undefined") button.Text = text;
             }
 
-            foreach (RibbonButton item in NewProject.DropDownItems.OfType<RibbonButton>())
-                item.Text = string.Format(Language.Get("ProjectType"), Language.Get($"Platform_{item.Name.Replace("CreateProject_", "")}"));
         }
 
         /// <summary>
@@ -60,6 +72,9 @@ namespace FriishProduce
             MenuItem_Settings.Text = Language.Get("Settings");
             BrowseROM.Title = BrowseImage.Title = ribbonPanel_Open.Text;
             SaveWAD.Title = Strip_ExportWAD.Text = ExportWAD.Text;
+            Strip_UseLibRetro.Text = UseLibRetro.Text;
+            Strip_OpenROM.Text = Language.Get("Strip_OpenROM", this);
+            Strip_OpenImage.Text = Language.Get("Strip_OpenImage", this);
 
             BrowseImage.Filter = Language.Get("Filter_Img");
             SaveWAD.Filter = Language.Get("Filter_WAD");
@@ -81,7 +96,7 @@ namespace FriishProduce
             Strip_OpenImage.Image = OpenImage.SmallImage;
 
             foreach (RibbonButton item in NewProject.DropDownItems.OfType<RibbonButton>())
-                item.Click += CreateProject_Click;
+                item.Click += AddProject;
         }
 
         private void Settings_Click(object sender, EventArgs e)
@@ -149,10 +164,10 @@ namespace FriishProduce
         /// <summary>
         /// Adds a new project to the Main Form.
         /// </summary>
-        private void CreateProject_Click(object sender, EventArgs e)
+        private void AddProject(object sender, EventArgs e)
         {
             Console console;
-            if (!Enum.TryParse((sender as RibbonButton).Name.Replace("CreateProject_", ""), out console))
+            if (!Enum.TryParse((sender as RibbonButton).Tag.ToString(), out console))
                 return;
 
             tabControl.Visible = true;
@@ -191,15 +206,7 @@ namespace FriishProduce
 
         private void ExportWAD_Click(object sender, EventArgs e)
         {
-            try
-            {
-                foreach (var item in Directory.GetFiles(Paths.WorkingFolder, "*.*", SearchOption.AllDirectories))
-                    if (!Path.GetFileName(item).ToLower().Contains("readme.md")) File.Delete(item);
-                foreach (var item in Directory.GetDirectories(Paths.WorkingFolder))
-                    Directory.Delete(item, true);
-            }
-            catch { }
-
+            CleanTemp();
             var currentForm = tabControl.SelectedForm as InjectorForm;
 
             SaveWAD.FileName = currentForm.GetName();
@@ -213,6 +220,18 @@ namespace FriishProduce
                 var currentForm = tabControl.SelectedForm as InjectorForm;
                 currentForm.LoadImage(BrowseImage.FileName);
             }
+        }
+
+        public void CleanTemp()
+        {
+            try
+            {
+                foreach (var item in Directory.GetFiles(Paths.WorkingFolder, "*.*", SearchOption.AllDirectories))
+                    if (!Path.GetFileName(item).ToLower().Contains("readme.md")) File.Delete(item);
+                foreach (var item in Directory.GetDirectories(Paths.WorkingFolder))
+                    Directory.Delete(item, true);
+            }
+            catch { }
         }
 
         private void MenuItem_Exit_Click(object sender, EventArgs e) => Application.Exit();

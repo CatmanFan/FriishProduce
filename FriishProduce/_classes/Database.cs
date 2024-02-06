@@ -13,6 +13,7 @@ namespace FriishProduce
         protected string tID;
         protected string nName;
         protected string dbName;
+        protected int version;
 
         public string TitleID
         {
@@ -32,7 +33,13 @@ namespace FriishProduce
             set { dbName = value; }
         }
 
-        public DatabaseEntry(string TitleID, string NativeName, string Name) { tID = TitleID; nName = NativeName; dbName = Name; }
+        public int emuRev
+        {
+            get { return version; }
+            set { version = value; }
+        }
+
+        public DatabaseEntry(string TitleID, string NativeName, string Name, int EmuRev = -1) { tID = TitleID; nName = NativeName; dbName = Name; emuRev = EmuRev; }
     }
 
     public class Database
@@ -95,53 +102,65 @@ namespace FriishProduce
                 case Console.N64:
                     List = new DatabaseEntry[]
                     {
-                            new DatabaseEntry("NAAE",   "Super Mario 64",                                "Super Mario 64"),
-                            new DatabaseEntry("NAAP",   "Super Mario 64",                                "Super Mario 64"),
-                            new DatabaseEntry("NAAJ",   "スーパーマリオ64",                                "Super Mario 64"),
+                            new DatabaseEntry("NAAE",   "Super Mario 64",                                "Super Mario 64", 0),
+                            new DatabaseEntry("NAAP",   "Super Mario 64",                                "Super Mario 64", 0),
+                            new DatabaseEntry("NAAJ",   "スーパーマリオ64",                                "Super Mario 64", 0),
 
-                            new DatabaseEntry("NAFE",   "F-Zero X",                                      "F-Zero X"),
-                            new DatabaseEntry("NAFP",   "F-Zero X",                                      "F-Zero X"),
-                            new DatabaseEntry("NAFJ",   "F-ZERO X",                                      "F-Zero X"),
+                            new DatabaseEntry("NAFE",   "F-Zero X",                                      "F-Zero X", 0),
+                            new DatabaseEntry("NAFP",   "F-Zero X",                                      "F-Zero X", 0),
+                            new DatabaseEntry("NAFJ",   "F-ZERO X",                                      "F-Zero X", 0),
 
-                            new DatabaseEntry("NADE",   "Star Fox 64",                                   "Star Fox 64"),
-                            new DatabaseEntry("NADP",   "Lylat Wars",                                    "Lylat Wars"),
-                            new DatabaseEntry("NADJ",   "スターフォックス64",                              "Star Fox 64"),
-                         // new DatabaseEntry("NADT",   "스타폭스 64",                                    "Star Fox 64"),
+                            new DatabaseEntry("NADE",   "Star Fox 64",                                   "Star Fox 64", 1),
+                            new DatabaseEntry("NADP",   "Lylat Wars",                                    "Lylat Wars", 1),
+                            new DatabaseEntry("NADJ",   "スターフォックス64",                              "Star Fox 64", 1),
+                         // new DatabaseEntry("NADT",   "스타폭스 64",                                    "Star Fox 64", 3),
                          
-                            new DatabaseEntry("NABE",   "Mario Kart 64",                                 "Mario Kart 64"),
-                            new DatabaseEntry("NABP",   "Mario Kart 64",                                 "Mario Kart 64"),
-                            new DatabaseEntry("NABJ",   "マリオカート64",                                 "Mario Kart 64"),
-                            new DatabaseEntry("NABT",   "마리오 카트 64",                                 "Mario Kart 64"),
+                            new DatabaseEntry("NABE",   "Mario Kart 64",                                 "Mario Kart 64", 1),
+                            new DatabaseEntry("NABP",   "Mario Kart 64",                                 "Mario Kart 64", 1),
+                            new DatabaseEntry("NABJ",   "マリオカート64",                                 "Mario Kart 64", 1),
+                            new DatabaseEntry("NABT",   "마리오 카트 64",                                 "Mario Kart 64", 3),
 
-                            new DatabaseEntry("NACE",   "The Legend of Zelda: Ocarina of Time",          "Legend of Zelda, The - Ocarina of Time"),
-                            new DatabaseEntry("NACP",   "The Legend of Zelda: Ocarina of Time",          "Legend of Zelda, The - Ocarina of Time"),
-                            new DatabaseEntry("NACJ",   "ゼルダの伝説 時のオカリナ",                       "Zelda no Densetsu - Toki no Okarina"),
+                            new DatabaseEntry("NACE",   "The Legend of Zelda: Ocarina of Time",          "Legend of Zelda, The - Ocarina of Time", 1),
+                            new DatabaseEntry("NACP",   "The Legend of Zelda: Ocarina of Time",          "Legend of Zelda, The - Ocarina of Time", 1),
+                            new DatabaseEntry("NACJ",   "ゼルダの伝説 時のオカリナ",                       "Zelda no Densetsu - Toki no Okarina", 1),
 
-                            new DatabaseEntry("NAJN",   "Sin and Punishment",                            "Sin & Punishment"),
-                            new DatabaseEntry("NAJL",   "Sin and Punishment",                            "Sin & Punishment"), // PAL60
-                            new DatabaseEntry("NAJJ",   "罪と罰 〜地球の継承者〜",                         "Tsumi to Batsu - Hoshi no Keishousha"),
+                            new DatabaseEntry("NAJN",   "Sin and Punishment",                            "Sin & Punishment", 2),
+                            new DatabaseEntry("NAJL",   "Sin and Punishment",                            "Sin & Punishment", 2), // PAL60
+                            new DatabaseEntry("NAJJ",   "罪と罰 〜地球の継承者〜",                         "Tsumi to Batsu - Hoshi no Keishousha", 2),
 
-                            new DatabaseEntry("NAUE",   "Mario Golf",                                    "Mario Golf"),
-                            new DatabaseEntry("NAUP",   "Mario Golf",                                    "Mario Golf"),
-                            new DatabaseEntry("NAUJ",   "マリオゴルフ64",                                 "Mario Golf 64"),
+                            new DatabaseEntry("NAUE",   "Mario Golf",                                    "Mario Golf", 3),
+                            new DatabaseEntry("NAUP",   "Mario Golf",                                    "Mario Golf", 3),
+                            new DatabaseEntry("NAUJ",   "マリオゴルフ64",                                 "Mario Golf 64", 3),
                     };
                     break;
 
                 case Console.SMS:
                     List = new DatabaseEntry[]
                     {
-                            new DatabaseEntry("LAGE",   "Sonic the Hedgehog",                            "Sonic The Hedgehog"),
-                            new DatabaseEntry("LAGP",   "Sonic the Hedgehog",                            "Sonic The Hedgehog"),
-                            new DatabaseEntry("LAGJ",   "ソニック・ザ・ヘッジホッグ",                       "Sonic The Hedgehog")
+                            new DatabaseEntry("LAGE",   "Sonic the Hedgehog",                            "Sonic The Hedgehog", 2),
+                            new DatabaseEntry("LAGP",   "Sonic the Hedgehog",                            "Sonic The Hedgehog", 2),
+                            new DatabaseEntry("LAGJ",   "ソニック・ザ・ヘッジホッグ",                       "Sonic The Hedgehog", 2),
+
+                            new DatabaseEntry("LADE",   "Phantasy Star",                                 "Phantasy Star", 3),
+                            new DatabaseEntry("LADP",   "Phantasy Star",                                 "Phantasy Star", 3),
+                            new DatabaseEntry("LADJ",   "ファンタシースター",                              "Phantasy Star", 3)
                     };
                     break;
 
                 case Console.SMDGEN:
                     List = new DatabaseEntry[]
                     {
-                            new DatabaseEntry("MAPE",   "Comix Zone",                                    "Comix Zone"),
-                            new DatabaseEntry("MAPP",   "Comix Zone",                                    "Comix Zone"),
-                            new DatabaseEntry("MAPJ",   "コミックスゾーン",                               "Comix Zone")
+                            new DatabaseEntry("MAPE",   "Comix Zone",                                    "Comix Zone", 1),
+                            new DatabaseEntry("MAPP",   "Comix Zone",                                    "Comix Zone", 1),
+                            new DatabaseEntry("MAPJ",   "コミックスゾーン",                               "Comix Zone", 1),
+
+                            new DatabaseEntry("MA6E",   "Streets of Rage 2",                             "Streets of Rage 2", 2),
+                            new DatabaseEntry("MA6P",   "Streets of Rage 2",                             "Streets of Rage 2", 2),
+                            new DatabaseEntry("MA6J",   "ベア・ナックルII 死闘への鎮魂歌",                  "Streets of Rage 2", 2),
+
+                            new DatabaseEntry("MBAN",   "Pulseman",                                      "Pulseman", 3),
+                            new DatabaseEntry("MBAL",   "Pulseman",                                      "Pulseman", 3),
+                            new DatabaseEntry("MBAJ",   "パルスマン",                                     "Pulseman", 3)
                     };
                     break;
 

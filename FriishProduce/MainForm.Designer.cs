@@ -35,10 +35,6 @@ namespace FriishProduce
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.ribbon1 = new System.Windows.Forms.Ribbon();
             this.NewProject = new System.Windows.Forms.RibbonOrbMenuItem();
-            this.CreateProject_List1 = new System.Windows.Forms.RibbonSeparator();
-            this.CreateProject_NES = new System.Windows.Forms.RibbonButton();
-            this.CreateProject_SNES = new System.Windows.Forms.RibbonButton();
-            this.CreateProject_N64 = new System.Windows.Forms.RibbonButton();
             this.orbMenuSeparator1 = new System.Windows.Forms.RibbonSeparator();
             this.MenuItem_Settings = new System.Windows.Forms.RibbonOrbMenuItem();
             this.orbMenuSeparator2 = new System.Windows.Forms.RibbonSeparator();
@@ -110,10 +106,6 @@ namespace FriishProduce
             // NewProject
             // 
             this.NewProject.DropDownArrowDirection = System.Windows.Forms.RibbonArrowDirection.Left;
-            this.NewProject.DropDownItems.Add(this.CreateProject_List1);
-            this.NewProject.DropDownItems.Add(this.CreateProject_NES);
-            this.NewProject.DropDownItems.Add(this.CreateProject_SNES);
-            this.NewProject.DropDownItems.Add(this.CreateProject_N64);
             this.NewProject.DropDownResizable = true;
             this.NewProject.Image = global::FriishProduce.Properties.Resources.document_empty_large;
             this.NewProject.LargeImage = global::FriishProduce.Properties.Resources.document_empty_large;
@@ -121,38 +113,6 @@ namespace FriishProduce
             this.NewProject.SmallImage = global::FriishProduce.Properties.Resources.document_empty_large;
             this.NewProject.Style = System.Windows.Forms.RibbonButtonStyle.DropDown;
             resources.ApplyResources(this.NewProject, "NewProject");
-            // 
-            // CreateProject_List1
-            // 
-            this.CreateProject_List1.Name = "CreateProject_List1";
-            resources.ApplyResources(this.CreateProject_List1, "CreateProject_List1");
-            // 
-            // CreateProject_NES
-            // 
-            this.CreateProject_NES.DropDownArrowDirection = System.Windows.Forms.RibbonArrowDirection.Left;
-            this.CreateProject_NES.Image = global::FriishProduce.Properties.Resources.icon_16x16_nes;
-            this.CreateProject_NES.LargeImage = global::FriishProduce.Properties.Resources.icon_16x16_nes;
-            this.CreateProject_NES.Name = "CreateProject_NES";
-            this.CreateProject_NES.SmallImage = global::FriishProduce.Properties.Resources.icon_16x16_nes;
-            resources.ApplyResources(this.CreateProject_NES, "CreateProject_NES");
-            // 
-            // CreateProject_SNES
-            // 
-            this.CreateProject_SNES.DropDownArrowDirection = System.Windows.Forms.RibbonArrowDirection.Left;
-            this.CreateProject_SNES.Image = global::FriishProduce.Properties.Resources.icon_16x16_snes;
-            this.CreateProject_SNES.LargeImage = global::FriishProduce.Properties.Resources.icon_16x16_snes;
-            this.CreateProject_SNES.Name = "CreateProject_SNES";
-            this.CreateProject_SNES.SmallImage = global::FriishProduce.Properties.Resources.icon_16x16_snes;
-            resources.ApplyResources(this.CreateProject_SNES, "CreateProject_SNES");
-            // 
-            // CreateProject_N64
-            // 
-            this.CreateProject_N64.DropDownArrowDirection = System.Windows.Forms.RibbonArrowDirection.Left;
-            this.CreateProject_N64.Image = global::FriishProduce.Properties.Resources.icon_16x16_n64;
-            this.CreateProject_N64.LargeImage = global::FriishProduce.Properties.Resources.icon_16x16_n64;
-            this.CreateProject_N64.Name = "CreateProject_N64";
-            this.CreateProject_N64.SmallImage = global::FriishProduce.Properties.Resources.icon_16x16_n64;
-            resources.ApplyResources(this.CreateProject_N64, "CreateProject_N64");
             // 
             // orbMenuSeparator1
             // 
@@ -419,10 +379,6 @@ namespace FriishProduce
         private System.Windows.Forms.RibbonSeparator ribbonSeparator1;
         private System.Windows.Forms.RibbonOrbMenuItem NewProject;
         private System.Windows.Forms.RibbonSeparator orbMenuSeparator2;
-        private System.Windows.Forms.RibbonButton CreateProject_NES;
-        private System.Windows.Forms.RibbonSeparator CreateProject_List1;
-        private System.Windows.Forms.RibbonButton CreateProject_SNES;
-        private System.Windows.Forms.RibbonButton CreateProject_N64;
         private System.Windows.Forms.RibbonButton OpenWAD;
     }
 }

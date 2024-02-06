@@ -57,7 +57,7 @@ namespace FriishProduce
 
         public WAD Write()
         {
-            if (WAD.Contents[1] != Content1 || UsesContent1)
+            if (WAD.Contents[1] != Content1 && Content1 != null)
             {
                 if (!CompressedContent1)
                 {
