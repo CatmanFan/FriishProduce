@@ -297,7 +297,7 @@ namespace Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mega Drive/Genesis ROM files (*.bin, *.gen, *.smd, *.md)|*.bin;*.gen;*.smd;*.md.
+        ///   Looks up a localized string similar to Mega Drive/Genesis ROM files (*.bin, *.gen, *.md)|*.bin;*.gen;*.md.
         /// </summary>
         public static string Filter_ROM_SMDGEN {
             get {

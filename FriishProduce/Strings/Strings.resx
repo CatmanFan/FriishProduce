@@ -193,7 +193,7 @@ Injection will continue as intended.</value>
     <value>TurboGrafx-16/PC Engine ROM files (*.pce)|*.pce</value>
   </data>
   <data name="Filter_ROM_SMDGEN" xml:space="preserve">
-    <value>Mega Drive/Genesis ROM files (*.bin, *.gen, *.smd, *.md)|*.bin;*.gen;*.smd;*.md</value>
+    <value>Mega Drive/Genesis ROM files (*.bin, *.gen, *.md)|*.bin;*.gen;*.md</value>
   </data>
   <data name="Filter_ROM_SMS" xml:space="preserve">
     <value>Master System ROM files (*.sms)|*.sms</value>

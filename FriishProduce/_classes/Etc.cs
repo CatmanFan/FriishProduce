@@ -55,6 +55,7 @@ namespace FriishProduce
             using (System.Diagnostics.Process p = System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
             {
                 FileName = app,
+                WorkingDirectory = System.IO.Path.GetDirectoryName(app),
                 Arguments = arguments,
                 UseShellExecute = false,
                 CreateNoWindow = true

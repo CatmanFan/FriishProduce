@@ -519,10 +519,10 @@ namespace FriishProduce
                 case Console.SMS:
                 case Console.SMDGEN:
                     InjectorSEGA SEGA = new InjectorSEGA(i.WAD) { IsSMS = Console == Console.SMS };
-                    bool legacyCCFApp = SEGA.GetCCF(SEGA.IsSMS);
+                    SEGA.GetCCF();
                     SEGA.ReplaceROM(i.ROM);
                     SEGA.InsertSaveData(i.SaveDataTitle, i.tImg);
-                    SEGA.PackCCF(legacyCCFApp);
+                    SEGA.PackCCF();
                     i.WAD = SEGA.Write();
                     break;
 

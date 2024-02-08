@@ -14,11 +14,12 @@ namespace FriishProduce
 {
     public partial class SettingsForm : Form
     {
-        bool isDirty = false;
+        private bool isDirty { get; set; }
 
         public SettingsForm()
         {
             InitializeComponent();
+            isDirty = false;
 
             Language.AutoSetForm(this);
             Text = Language.Get("Settings");
@@ -37,13 +38,6 @@ namespace FriishProduce
             DefaultImageInterpolation.SelectedIndex = Default.ImageInterpolation;
             AutoLibRetro.Checked = Default.AutoLibRetro;
             AutoOpenFolder.Checked = Default.AutoOpenFolder;
-        }
-
-        private string LanguageName(string code)
-        {
-            foreach (var item in Language.List)
-                if (item.Key.ToLower() == code.ToLower()) return item.Value;
-            return null;
         }
 
         private void OK_Click(object sender, EventArgs e)
@@ -70,7 +64,7 @@ namespace FriishProduce
             // -------------------------------------------
             // Restart message box & save changes
             // -------------------------------------------
-            /*if (isDirty)
+            if (isDirty)
             {
                 if (MessageBox.Show(Language.Get("Message000"), ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
@@ -78,10 +72,11 @@ namespace FriishProduce
                     Application.Restart();
                 }
             }
-            else*/
-
-            Default.Save();
-            DialogResult = DialogResult.OK;
+            else
+            {
+                Default.Save();
+                DialogResult = DialogResult.OK;
+            }
         }
 
         private void Cancel_Click(object sender, EventArgs e) => DialogResult = DialogResult.Cancel;

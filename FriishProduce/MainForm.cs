@@ -30,6 +30,7 @@ namespace FriishProduce
             foreach (RibbonButton item in NewProject.DropDownItems.OfType<RibbonButton>())
             {
                 item.Text = string.Format(Language.Get("ProjectType"), Language.Get($"Platform_{item.Tag}"));
+                item.Click += AddProject;
             }
 
             string text = null;
@@ -94,9 +95,6 @@ namespace FriishProduce
 
             Strip_OpenROM.Image = OpenROM.SmallImage;
             Strip_OpenImage.Image = OpenImage.SmallImage;
-
-            foreach (RibbonButton item in NewProject.DropDownItems.OfType<RibbonButton>())
-                item.Click += AddProject;
         }
 
         private void Settings_Click(object sender, EventArgs e)
