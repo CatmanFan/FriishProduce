@@ -143,24 +143,20 @@ namespace FriishProduce
 
                             new DatabaseEntry("LADE",   "Phantasy Star",                                 "Phantasy Star", 3),
                             new DatabaseEntry("LADP",   "Phantasy Star",                                 "Phantasy Star", 3),
-                            new DatabaseEntry("LADJ",   "ファンタシースター",                              "Phantasy Star", 3)
+                            new DatabaseEntry("LADJ",   "ファンタシースター",                              "Phantasy Star", 2)
                     };
                     break;
 
                 case Console.SMDGEN:
                     List = new DatabaseEntry[]
                     {
-                            new DatabaseEntry("MAPE",   "Comix Zone",                                    "Comix Zone", 1),
-                            new DatabaseEntry("MAPP",   "Comix Zone",                                    "Comix Zone", 1),
-                            new DatabaseEntry("MAPJ",   "コミックスゾーン",                               "Comix Zone", 1),
-
                             new DatabaseEntry("MA6E",   "Streets of Rage 2",                             "Streets of Rage 2", 2),
                             new DatabaseEntry("MA6P",   "Streets of Rage 2",                             "Streets of Rage 2", 2),
-                            new DatabaseEntry("MA6J",   "ベア・ナックルII 死闘への鎮魂歌",                  "Streets of Rage 2", 2),
+                            new DatabaseEntry("MA6J",   "ベア・ナックルII 死闘への鎮魂歌",                  "Bare Knuckle II - Shitou he no Requiem", 2),
 
                             new DatabaseEntry("MBAN",   "Pulseman",                                      "Pulseman", 3),
                             new DatabaseEntry("MBAL",   "Pulseman",                                      "Pulseman", 3),
-                            new DatabaseEntry("MBAJ",   "パルスマン",                                     "Pulseman", 3)
+                            new DatabaseEntry("MBAJ",   "パルスマン",                                     "Pulseman", 2)
                     };
                     break;
 

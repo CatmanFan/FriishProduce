@@ -63,20 +63,16 @@ namespace FriishProduce
             - Also in the "data_ccf" is a "tsdevp.rso" file. No idea what it does but the config say it is something to do with the "snd.snddrv". */
         }
 
-        private enum CCFEx
+        private readonly string[] CCFApps = new string[]
         {
-            Normal,
-            Legacy
-        }
+            "ccfex",
+            "ccfex2009",
+            "ccfarc",
+            "ccfarc2009",
+            "ccfarcraw"
+        };
 
-        private enum CCFArc
-        {
-            Normal,
-            Legacy,
-            Raw
-        }
-
-        private bool UseLegacyCCFApp { get; set; }
+        private int CCFApp { get; set; }
 
         public Type EmuType { get; set; }
         public bool IsSMS { get; set; }
@@ -111,6 +107,17 @@ namespace FriishProduce
         vdp_md.gamma_curve ="0x00,0x1a,0x31,0x42,0x54,0x66,0x78,0x80,0x8f,0x9e,0xad,0xc1,0xd5,0xea,0xff"
          */
 
+        // The trick to actually getting the CCF to work is this:
+        // ****************
+        // 1. Use the old CCFex to extract (https://www.romhacking.net/utilities/651/)
+        // 2. Pack using the new CCFarc (no raw) (https://github.com/libertyernie/ccf-tools)
+        //
+        // - A specific file order is needed, the Opera.arc and/or ROM file first, then all other files in alphabetical order
+        // - If se_vc.rso is listed after Select Menu files, it will display an error screen and crash, so I used OrderBy to return the correct file order
+        // ****************
+        // Anything else, and it will just do a black screen, or it will work for Master System only
+        // ****************
+
         public InjectorSEGA(WAD w) : base(w)
         {
             UsesContent5 = true;
@@ -140,7 +147,8 @@ namespace FriishProduce
                     break;
             }
 
-            UseLegacyCCFApp = IsSMS;
+            CCFApp = 1;
+            GetCCF();
         }
 
         #region External Tools
@@ -148,24 +156,19 @@ namespace FriishProduce
         /// Extracts CCF to a specified location.
         /// </summary>
         /// <param name="legacy">Defaults to legacy app by default, since the forked version does relatively bad with SMS WADs</param>
-        private void RunCCFEx(string file, string dir, CCFEx type)
+        private void RunCCFEx(string file, string dir, int type)
         {
+            if (Directory.Exists(dir)) Directory.Delete(dir, true);
             if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
-
-            // Copy application to target dir
-            // ****************
-            if (!File.Exists(Path.Combine(dir, "runme.exe")))
-                File.Copy
-                (
-                    Paths.Tools + "sega\\" + (type == CCFEx.Normal ? "ccfex.exe" : "ccfex_2009.exe"),
-                    Path.Combine(dir, "runme.exe")
-                );
 
             // Start application
             // ****************
-            Process.Run(Path.Combine(dir, "runme.exe"), $"\"{file}\"");
-            if (File.Exists(Path.Combine(dir, "runme.exe")))
-                File.Delete(Path.Combine(dir, "runme.exe"));
+            Process.Run
+            (
+                Paths.Tools + $"sega\\{CCFApps[type]}.exe",
+                dir,
+                $"\"{file}\""
+            );
         }
 
         /// <summary>
@@ -173,13 +176,63 @@ namespace FriishProduce
         /// </summary>
         /// <param name="raw">Determines whether to use ccfarcraw.exe (needed for misc.ccf)</param>
         /// <returns>Path to an out.ccf file if it was created.</returns>
-        private byte[] RunCCFArc(string dir, CCFArc type)
+        private byte[] RunCCFArc(string dir, int type)
         {
+            bool Failsafe = false;
             string files = "";
 
             if (dir == Paths.DataCCF)
             {
                 files = $"Opera.arc {ROMName}";
+                List<string> filesList = new List<string>();
+
+                // Use alternative order if the following bases are encountered
+                // ****************
+                string[] order_ROMNameFirst = new string[]
+                {
+                    // --* SMS *-- //
+                    "FantasyZone2",
+                    "WBMonsterLand",
+                    "PhantasyStar1_J_01",
+
+                    // --* SMD *-- //
+                    "Columns1",
+                    "ComixZone",
+                    "WBMonsterWorld",
+                    "Columns3",
+                    "BareKnuckle2",
+                    "StreetsRage2",
+                    "StreetsRage3",
+                    "DynamiteHeaddy",
+                    "MonsterWorld4"
+                };
+                foreach (var item in order_ROMNameFirst)
+                    if (ROMName.Contains(item)) files = $"{ROMName} Opera.arc";
+
+                string[] order_noROM = new string[]
+                {
+                    // --* SMS *-- //
+                    "SecretComm",
+
+                    // --* SMD *-- //
+                    "sandk_composite"
+                };
+                foreach (var item in order_noROM)
+                    if (ROMName.Contains(item)) files = "Opera.arc";
+
+                // Add other files by alphabetical order
+                // ****************
+                foreach (var item in Directory.EnumerateFiles(dir))
+                    if (!files.Contains(Path.GetFileName(item).Replace("__", "")))
+                        filesList.Add(Path.GetFileName(item));
+
+                filesList = filesList.OrderBy(st => st.Replace('_', ' ')).ToList();
+                foreach (var item in filesList)
+                    files += " " + item;
+
+                #region [Alternative method if the above does not work]
+                /* /!\ Uses specific strings for bases /!\
+                 -----------------------------------------------
                 switch (EmuType)
                 {
                     case Type.Rev1:
@@ -189,9 +242,9 @@ namespace FriishProduce
 
                     case Type.Rev3:
                         if (IsSMS)
-                            files = $"Opera.arc {ROMName} config emu_m68kbase.rso home.csv man.arc misc.ccf patch se_vc.rso selectmenu.cat selectmenu.conf selectmenu.rso sms.rso smsui.rso tsdevp.rso wii_vc.sel";
+                            files = $"Opera.arc {ROMName} config emu_m68kbase.rso home.csv man.arc misc.ccf patch se_vc.rso sms.rso tsdevp.rso wii_vc.sel";
                         else
-                            files = $"{ROMName} Opera.arc config emu_m68kbase.rso home.csv man.arc md.rso misc.ccf patch se_vc.rso selectmenu.cat selectmenu.conf tsdevp.rso wii_vc.sel";
+                            files = $"Opera.arc {ROMName} config emu_m68kbase.rso home.csv man.arc md.rso misc.ccf patch se_vc.rso tsdevp.rso wii_vc.sel";
                         break;
                 }
 
@@ -199,10 +252,26 @@ namespace FriishProduce
                 // ****************
                 foreach (var item in Directory.EnumerateFiles(dir))
                 {
+                    // General
+                    // ****************
                     if (Path.GetFileName(item).ToLower() == "patch" && !files.Contains(" patch"))
                         files = files.Replace("misc.ccf", "misc.ccf patch");
-                    else if (Path.GetFileName(item).ToLower() == "home.csv" && !files.Contains("home.csv"))
+                    if (Path.GetFileName(item).ToLower() == "home.csv" && !files.Contains("home.csv"))
                         files = files.Replace("man.arc", "home.csv man.arc");
+
+                    // Specific console files
+                    // ****************
+                    if (Path.GetFileName(item).ToLower() == "smsui.rso" && !files.Contains("smsui.rso"))
+                        files = files.Replace("sms.rso", "sms.rso smsui.rso");
+
+                    // Select Menu
+                    // ****************
+                    if (Path.GetFileName(item).ToLower() == "selectmenu.cat" && !files.Contains("selectmenu.cat") && files.Contains("se_vc.rso"))
+                        files = files.Replace("se_vc.rso", "se_vc.rso selectmenu.cat");
+                    if (Path.GetFileName(item).ToLower() == "selectmenu.conf" && files.Contains("selectmenu.cat"))
+                        files = files.Replace("selectmenu.cat", "selectmenu.cat selectmenu.conf");
+                    if (Path.GetFileName(item).ToLower() == "selectmenu.rso" && files.Contains("selectmenu.conf"))
+                        files = files.Replace("selectmenu.conf", "selectmenu.conf selectmenu.rso");
                 }
 
                 IDictionary<string, string> FilesLists = new Dictionary<string, string>()
@@ -211,6 +280,7 @@ namespace FriishProduce
                     { "ComixZone",      $"{ROMName} Opera.arc config man.arc misc.ccf" },
                     { "WBMonsterWorld", $"{ROMName} Opera.arc config man.arc misc.ccf" },
                     { "Columns3",       $"{ROMName} Opera.arc config home.csv man.arc misc.ccf patch"},
+                    { "BareKnuckle2",   $"{ROMName} Opera.arc config home.csv man.arc misc.ccf" },
                     { "StreetsRage2",   $"{ROMName} Opera.arc config home.csv man.arc misc.ccf" },
                     { "StreetsRage3",   $"{ROMName} Opera.arc config home.csv man.arc misc.ccf" },
                     { "DynamiteHeaddy", $"{ROMName} Opera.arc config home.csv man.arc misc.ccf" },
@@ -220,6 +290,10 @@ namespace FriishProduce
 
                 foreach (var item in FilesLists)
                     if (ROMName.Contains(item.Key)) files = item.Value;
+                
+                if (ROMName.Contains("SonicKnuckles") || ROMName.Contains("sandk_"))
+                    files = $"Opera.arc config emu_m68kbase.rso home.csv man.arc md.rso misc.ccf patch {ROMName} sandkui.rso se_vc.rso selectmenu.cat selectmenu.conf selectmenu.rso tsdevp.rso wii_vc.sel"; */
+                #endregion
 
                 // Check if ROM filename contains underscores
                 // ****************
@@ -228,90 +302,6 @@ namespace FriishProduce
                     if (Path.GetFileName(item).Contains(ROMName))
                         files = files.Replace(ROMName, Path.GetFileName(item));
                 }
-
-                #region Old method
-                // Rearrange file order for some WADs
-                // ****************
-                /*if (ROMName.Contains("Columns.") || ROMName.Contains("ComixZone") || ROMName.Contains("MonsterWorld3")              // Rev1
-                    || ROMName.Contains("AlexKiddTheLostStars") || ROMName.Contains("MonsterWorld1")                                // Rev2 (SMS)
-                    || ROMName.Contains("Columns3") || ROMName.Contains("EarthwormJim1")                                            // Rev2 (SMD)
-                    || ROMName.Contains("EarthwormJim2"))                                                                           // Rev3
-                    files = $"{ROMName} Opera.arc";
-
-                foreach (var item in Directory.EnumerateFiles(dir))
-                    if (Path.GetFileName(item).ToLower() != "opera.arc" && Path.GetFileName(item) != ROMName)
-                        files += $" {Path.GetFileName(item)}";
-
-                if (ROMName.Contains("sandk_composite"))
-                    files = $"Opera.arc config emu_m68kbase.rso man.arc md.rso misc.ccf {ROMName} sandkui.rso se_vc.rso selectmenu.cat selectmenu.conf selectmenu.rso tsdevp.rso wii_vc.sel";*/
-                #endregion
-
-                #region ALTERNATIVE CODE IF THE ABOVE METHOD DOES NOT WORK
-                /*files = "Opera.arc";
-
-                if (!IsSMS)
-                {
-                    switch (EmuType)
-                    {
-                        default:
-                        case Type.Rev1:
-                        case Type.Rev2:
-                            files = $"Opera.arc {ROMName} config man.arc misc.ccf";
-                            break;
-
-                        case Type.Rev3:
-                            files = $"Opera.arc {ROMName} config emu_m68kbase.rso man.arc md.rso misc.ccf se_vc.rso tsdevp.rso wii_vc.sel";
-
-                            // Extra files needed
-                            // ****************
-                            if (ROMName.Contains("EarthwormJim2"))
-                                files = $"{ROMName} Opera.arc config emu_m68kbase.rso man.arc md.rso misc.ccf se_vc.rso selectmenu.cat selectmenu.conf tsdevp.rso wii_vc.sel";
-                            else if (ROMName.Contains("sandk_composite"))
-                                files = $"Opera.arc config emu_m68kbase.rso man.arc md.rso misc.ccf {ROMName} sandkui.rso se_vc.rso selectmenu.cat selectmenu.conf selectmenu.rso tsdevp.rso wii_vc.sel";
-                            break;
-                    }
-                }
-                else
-                {
-                    switch (EmuType)
-                    {
-                        default:
-                        case Type.Rev1:
-                            files = $"Opera.arc {ROMName} config man.arc misc.ccf";
-                            break;
-
-                        case Type.Rev2:
-                            files = $"Opera.arc {ROMName} config emu_m68kbase.rso man.arc misc.ccf se_vc.rso sms.rso tsdevp.rso wii_vc.sel";
-                            break;
-
-                        case Type.Rev3:
-                            files = $"Opera.arc {ROMName} config emu_m68kbase.rso man.arc misc.ccf se_vc.rso selectmenu.cat selectmenu.conf selectmenu.rso sms.rso tsdevp.rso wii_vc.sel";
-                            break;
-                    }
-                }
-
-                // Check for "patch" and other additional files
-                // ****************
-                foreach (var item in Directory.EnumerateFiles(dir))
-                {
-                    if (Path.GetFileName(item).ToLower() == "patch")
-                        files = files.Replace("misc.ccf", "misc.ccf patch");
-
-                    else if (Path.GetFileName(item).ToLower() == "smsui.rso")
-                        files.Replace("sms.rso", "sms.rso smsui.rso");
-
-                    else if (Path.GetFileName(item).ToLower() == "home.csv")
-                        files = files.Replace("man.arc", "home.csv man.arc");
-                }
-
-                // Rearrange file order for some WADs
-                // ****************
-                if (ROMName.Contains("Columns.") || ROMName.Contains("ComixZone") || ROMName.Contains("MonsterWorld3")             // Rev1
-                    || ROMName.Contains("AlexKiddTheLostStars") || ROMName.Contains("MonsterWorld1")                                // Rev2 (SMS)
-                    || ROMName.Contains("Columns3") || ROMName.Contains("EarthwormJim1")                                            // Rev2 (SMD)
-                    || ROMName.Contains("EarthwormJim2"))                                                                           // Rev3
-                    files = files.Replace($"Opera.arc {ROMName}", $"{ROMName} Opera.arc");*/
-                #endregion
             }
             else
             {
@@ -321,90 +311,56 @@ namespace FriishProduce
                 files = files.Remove(0, 1);
             }
 
-            // Copy application to target dir
+            RunApp:
+            // If not data.ccf or already using legacy app, there is no other option
             // ****************
-            if (!File.Exists(Path.Combine(dir, "runme.exe")))
-                File.Copy
-                (
-                    Paths.Tools + "sega\\" + (type == CCFArc.Raw ? "ccfarcraw.exe" : type == CCFArc.Legacy ? "ccfarc_2009.exe" : "ccfarc.exe"),
-                    Path.Combine(dir, "runme.exe")
-                );
+            if (type != 0 && Failsafe) throw new Exception(Language.Get("Error002"));
 
             // Start application
             // ****************
-            Process.Run(Path.Combine(dir, "runme.exe"), files);
-            if (File.Exists(Path.Combine(dir, "runme.exe")))
-                File.Delete(Path.Combine(dir, "runme.exe"));
+            Process.Run
+            (
+                Paths.Tools + $"sega\\{CCFApps[type + 2]}.exe",
+                dir,
+                files
+            );
 
             // Failsafe
             // ****************
             if (File.Exists(dir + "out.ccf") && File.ReadAllBytes(dir + "out.ccf").Length > 0)
             {
                 var bytes = File.ReadAllBytes(dir + "out.ccf");
-                if (File.Exists(dir + "out.ccf")) File.Delete(dir + "out.ccf");
+                File.Delete(dir + "out.ccf");
+                if (Directory.Exists(dir)) Directory.Delete(dir, true);
                 return bytes;
             }
-            else
-            {
-                // If not data.ccf or already using legacy app, there is no other option
-                // ****************
-                if (type != CCFArc.Normal) throw new Exception(Language.Get("Error002"));
 
-                // Otherwise, do it again, but with legacy app
-                // ****************
-                if (File.Exists(Path.Combine(dir, "runme.exe")))
-                    File.Delete(Path.Combine(dir, "runme.exe"));
-                if (!File.Exists(Path.Combine(dir, "runme.exe")))
-                    File.Copy
-                    (
-                        Paths.Tools + "sega\\" + "ccfarc_2009.exe",
-                        Path.Combine(dir, "runme.exe")
-                    );
-
-                // Run it
-                // ****************
-                Process.Run(Path.Combine(dir, "runme.exe"), files);
-                if (File.Exists(Path.Combine(dir, "runme.exe")))
-                    File.Delete(Path.Combine(dir, "runme.exe"));
-
-                // Second failsafe check
-                // ****************
-                if (File.Exists(dir + "out.ccf") && File.ReadAllBytes(dir + "out.ccf").Length > 0)
-                {
-                    var bytes = File.ReadAllBytes(dir + "out.ccf");
-                    if (File.Exists(dir + "out.ccf")) File.Delete(dir + "out.ccf");
-                    return bytes;
-                }
-
-                throw new Exception(Language.Get("Error002"));
-            }
+            if (!Failsafe) { Failsafe = true; goto RunApp; }
+            else throw new Exception(Language.Get("Error002"));
         }
         #endregion
 
-        public void GetCCF()
+        private void GetCCF()
         {
             // Get Data.ccf first
             // ****************
             File.WriteAllBytes(Paths.WorkingFolder + "data.ccf", Content5.Data[Content5.GetNodeIndex("data.ccf")]);
 
-            RunCCFEx(Paths.WorkingFolder + "data.ccf", Paths.DataCCF, UseLegacyCCFApp ? CCFEx.Legacy : CCFEx.Normal);
+            RunApp:
+            RunCCFEx(Paths.WorkingFolder + "data.ccf", Paths.DataCCF, CCFApp);
 
             // Failsafe
             // ****************
-            if (Directory.EnumerateFiles(Paths.DataCCF).Count() < 3 ||
-               (File.Exists(Paths.DataCCF + "Opera.arc") && File.ReadAllBytes(Paths.DataCCF + "Opera.arc").Length == 0))
+            if ((Directory.EnumerateFiles(Paths.DataCCF).Count() < 3 ||
+               (File.Exists(Paths.DataCCF + "Opera.arc") && File.ReadAllBytes(Paths.DataCCF + "Opera.arc").Length == 0)))
             {
-                UseLegacyCCFApp = true;
-                RunCCFEx(Paths.WorkingFolder + "data.ccf", Paths.DataCCF, CCFEx.Legacy);
-
-                if (Directory.EnumerateFiles(Paths.DataCCF).Count() < 3 ||
-                   (File.Exists(Paths.DataCCF + "Opera.arc") && File.ReadAllBytes(Paths.DataCCF + "Opera.arc").Length == 0))
-                    throw new Exception(Language.Get("Error002"));
+                if (CCFApp != 1) { CCFApp = 1; goto RunApp; }
+                else throw new Exception(Language.Get("Error002"));
             }
 
             // Get Misc.ccf
             // ****************
-            RunCCFEx(Paths.DataCCF + "misc.ccf", Paths.MiscCCF, CCFEx.Normal);
+            RunCCFEx(Paths.DataCCF + "misc.ccf", Paths.MiscCCF, 0);
 
             // Get ROM filename
             // ****************
@@ -413,21 +369,19 @@ namespace FriishProduce
                     ROMName = Path.GetFileName(item).Replace("__", "");
         }
 
-        public void PackCCF()
+        public void WriteCCF()
         {
-            if (ROMName.Contains("MonsterWorld4")) UseLegacyCCFApp = true;
+            if (ROMName.Contains("MonsterWorld4")) CCFApp = 1;
+            else CCFApp = 0;
 
             // Misc.ccf
             // ****************
-            File.WriteAllBytes(Paths.DataCCF + "misc.ccf", RunCCFArc(Paths.MiscCCF, CCFArc.Raw));
-
-            if (Directory.Exists(Paths.MiscCCF)) Directory.Delete(Paths.MiscCCF, true);
+            File.WriteAllBytes(Paths.DataCCF + "misc.ccf", RunCCFArc(Paths.MiscCCF, 2));
 
             // Data.ccf
             // ****************
-            Content5.ReplaceFile(Content5.GetNodeIndex("data.ccf"), RunCCFArc(Paths.DataCCF, CCFArc.Legacy));
+            Content5.ReplaceFile(Content5.GetNodeIndex("data.ccf"), RunCCFArc(Paths.DataCCF, CCFApp));
 
-            if (Directory.Exists(Paths.DataCCF)) Directory.Delete(Paths.DataCCF, true);
             if (File.Exists(Paths.WorkingFolder + "data.ccf")) File.Delete(Paths.WorkingFolder + "data.ccf");
         }
 
@@ -444,11 +398,19 @@ namespace FriishProduce
 
         public void ReplaceROM(byte[] ROMbytes)
         {
+            // -----------------------
+            // Check filesize of input ROM
+            // Maximum ROM limit allowed: 5.25 MB for Gen/MD or 512 KB for Master System
+            // -----------------------
+            var maxSize = IsSMS ? 524288 : 5.25 * 1024 * 1024;
+            if (ROMbytes.Length > maxSize)
+                throw new Exception(string.Format(Language.Get("Error003"), IsSMS ? "512" : "5.25", IsSMS ? Language.Get("Abbreviation_Kilobytes") : Language.Get("Abbreviation_Megabytes")));
+
             foreach (var item in Directory.EnumerateFiles(Paths.DataCCF))
-                if (Path.GetExtension(item).ToLower() == ".sgd" || Path.GetExtension(item).ToLower() == ".sms")
-                {
-                    File.WriteAllBytes(item, ROMbytes);
-                }
+            if (Path.GetExtension(item).ToLower().StartsWith(".sgd") || Path.GetExtension(item).ToLower().StartsWith(".sms"))
+            {
+                File.WriteAllBytes(item, ROMbytes);
+            }
         }
 
         public void InsertSaveData(string text, TitleImage img)
@@ -457,11 +419,19 @@ namespace FriishProduce
             {
                 if (Path.GetFileName(item).ToLower().Contains("banner.cfg"))
                 {
-                    string[] newBanner = File.ReadAllLines(item, Encoding.BigEndianUnicode);
+                    string[] newBanner = File.ReadAllLines(item);
                     for (int i = 4; i < newBanner.Length; i++)
-                        if (newBanner[i][2] == ':') newBanner[i] = newBanner[i].Substring(0, 3) + text;
+                    {
+                        if (newBanner[i].StartsWith("JP:")) newBanner[i] = $"JP:{text}";
+                        if (newBanner[i].StartsWith("EN:")) newBanner[i] = $"EN:{text}";
+                        if (newBanner[i].StartsWith("GE:")) newBanner[i] = $"GE:{text}";
+                        if (newBanner[i].StartsWith("FR:")) newBanner[i] = $"FR:{text}";
+                        if (newBanner[i].StartsWith("SP:")) newBanner[i] = $"SP:{text}";
+                        if (newBanner[i].StartsWith("IT:")) newBanner[i] = $"IT:{text}";
+                        if (newBanner[i].StartsWith("DU:")) newBanner[i] = $"DU:{text}";
+                    }
 
-                    File.WriteAllLines(item, newBanner, Encoding.BigEndianUnicode);
+                    File.WriteAllText(item, string.Join("\n", newBanner), Encoding.BigEndianUnicode);
                 }
 
                 else if (Path.GetFileName(item).ToLower().Contains("comment"))
@@ -469,7 +439,12 @@ namespace FriishProduce
                     string[] newComment = File.ReadAllLines(item, Encoding.UTF8);
                     newComment[0] = text;
 
-                    File.WriteAllLines(item, newComment, Encoding.UTF8);
+                    using (TextWriter t = new StreamWriter(item, false))
+                    {
+                        t.NewLine = "\n";
+                        for (int i = 0; i < newComment.Length; i++)
+                            t.WriteLine(newComment[i]);
+                    }
                 }
             }
         }

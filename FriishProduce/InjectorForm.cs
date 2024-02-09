@@ -132,6 +132,12 @@ namespace FriishProduce
             // ******************
             // CONSOLE-SPECIFIC
             // ******************
+            if (Console == Console.SMS || Console == Console.SMDGEN)
+            {
+                SaveIcon_Panel.BackgroundImage = Properties.Resources.SaveIconPlaceholder_SEGA;
+                SaveIcon_Image.Size = new Size(44, 31);
+                SaveIcon_Image.Location = new Point(2, 8);
+            }
         }
 
         // -----------------------------------
@@ -211,7 +217,6 @@ namespace FriishProduce
                 // *******
                 ConsoleInjector();
 
-                i.RemoveManual();
                 i.Create(outputFile);
 
                 if (File.Exists(outputFile))
@@ -482,7 +487,7 @@ namespace FriishProduce
                 // *******
                 case Console.NES:
                     // Create injector and insert ROM
-                    InjectorNES NES = new InjectorNES(i.WAD);
+                    InjectorNES NES = new InjectorNES(i.WAD) { NoManual = true };
                     NES.InsertROM(i.ROM);
                     NES.InsertPalette(int.Parse(o1.Settings[0]));
                     NES.InsertSaveData(i.SaveDataTitle, i.tImg);
@@ -494,7 +499,7 @@ namespace FriishProduce
                 case Console.SNES:
 
                     // Create injector and insert ROM
-                    InjectorSNES SNES = new InjectorSNES(i.WAD);
+                    InjectorSNES SNES = new InjectorSNES(i.WAD) { NoManual = true };
                     SNES.ReplaceROM(i.ROM);
                     SNES.InsertSaveData(i.SaveDataTitle.Split(Environment.NewLine.ToCharArray()), i.tImg);
                     i.WAD = SNES.Write();
@@ -505,7 +510,7 @@ namespace FriishProduce
                 case Console.N64:
 
                     // Create injector and insert ROM
-                    InjectorN64 N64 = new InjectorN64(i.WAD);
+                    InjectorN64 N64 = new InjectorN64(i.WAD) { NoManual = true };
                     N64.ReplaceROM
                     (
                         i.ROM,
@@ -518,11 +523,10 @@ namespace FriishProduce
 
                 case Console.SMS:
                 case Console.SMDGEN:
-                    InjectorSEGA SEGA = new InjectorSEGA(i.WAD) { IsSMS = Console == Console.SMS };
-                    SEGA.GetCCF();
+                    InjectorSEGA SEGA = new InjectorSEGA(i.WAD) { IsSMS = Console == Console.SMS, NoManual = true };
                     SEGA.ReplaceROM(i.ROM);
                     SEGA.InsertSaveData(i.SaveDataTitle, i.tImg);
-                    SEGA.PackCCF();
+                    SEGA.WriteCCF();
                     i.WAD = SEGA.Write();
                     break;
 
