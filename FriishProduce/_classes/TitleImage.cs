@@ -14,11 +14,12 @@ namespace FriishProduce
     {
         private Console platform { get; set; }
 
-        private Bitmap Source { get; set; }
-        public string SourcePath { get; set; }
+        public Bitmap Source { get; set; }
+        private string SourcePath { get; set; }
         public Bitmap VCPic { get; set; }
         public Bitmap IconVCPic { get; set; }
         public Bitmap SaveIcon { get; set; }
+        private Bitmap SaveIconPic { get; set; }
         
         internal InterpolationMode Interpolation { get; set; }
         private int[] SaveIconL_xywh { get; set; }
@@ -26,13 +27,20 @@ namespace FriishProduce
 
         public TitleImage(Console console, string path)
         {
+            SourcePath = null;
+            Create(console, path);
+        }
+
+        public void Create(Console console, string path)
+        {
             platform = console;
-            Source = null;
-            SourcePath = path;
+            if (SourcePath == null) Source = null;
+            if (path != null) LoadToSource(path);
 
             VCPic = null;
             IconVCPic = null;
             SaveIcon = null;
+            SaveIconPic = null;
         }
 
         private PixelOffsetMode PixelOffset;
@@ -43,13 +51,16 @@ namespace FriishProduce
         /// Gets source based on path given to URL or disk file
         /// </summary>
         /// <returns>Image file if successful, blank if otherwise</returns>
-        public Bitmap GetSource()
+        public Bitmap LoadToSource(string path)
         {
+            if (path == SourcePath && Source != null) return Source;
+
             try
             {
-                if (SourcePath.ToLower().StartsWith("http"))
+                if (path.ToLower().StartsWith("http"))
                 {
                     // Prevent certificate error (LibRetro thumbnails website certificate is currently expired and will throw an exception by default)
+                    // ****************
                     ServicePointManager.ServerCertificateValidationCallback = delegate
                         (object sender,
                         System.Security.Cryptography.X509Certificates.X509Certificate certificate,
@@ -58,14 +69,18 @@ namespace FriishProduce
                     { return true; };
 
                     using (WebClient c = new WebClient())
-                    using (Stream s = c.OpenRead(SourcePath))
+                    using (Stream s = c.OpenRead(path))
                     {
-                        return new Bitmap(s);
+                        Source = new Bitmap(s);
+                        SourcePath = path;
+                        return Source;
                     }
                 }
                 else
                 {
-                    return (Bitmap)Image.FromFile(SourcePath);
+                    Source = (Bitmap)Image.FromFile(path);
+                    SourcePath = path;
+                    return Source;
                 }
             }
             catch (Exception ex)
@@ -80,7 +95,7 @@ namespace FriishProduce
         /// </summary>
         public void Generate(Bitmap src)
         {
-            if (src == null) return;
+            if (src == null) src = Source;
 
             bool ShrinkToFit  = platform == Console.NES || platform == Console.SNES || platform == Console.N64 || platform == Console.Flash;
             bool DoNotStretch = platform == Console.Flash;
@@ -101,9 +116,9 @@ namespace FriishProduce
             }
             // --------------------------------------------------
 
-            PixelOffset = PixelOffsetMode.HighQuality;
+            PixelOffset = PixelOffsetMode.Half;
             Smoothing = SmoothingMode.HighQuality;
-            CompositingQ = CompositingQuality.Default;
+            CompositingQ = CompositingQuality.AssumeLinear;
 
             // --------------------------------------------------
             // SAVEICON : Fit by width/height variables
@@ -125,7 +140,7 @@ namespace FriishProduce
             // --------------------------------------------------
             VCPic = new Bitmap(256, 192);
             IconVCPic = new Bitmap(128, 96);
-            SaveIcon = new Bitmap(SaveIconL_xywh[2], SaveIconL_xywh[3]);
+            SaveIconPic = new Bitmap(SaveIconL_xywh[2], SaveIconL_xywh[3]);
 
             using (Bitmap Working = new Bitmap(256, 192, PixelFormat.Format32bppRgb))
             {
@@ -177,7 +192,7 @@ namespace FriishProduce
                     g.CompositingQuality = CompositingQ;
 
                     g.Clear(Color.White);
-                    g.DrawImage(Working, 0, 0, 128, 96);
+                    g.DrawImage(src, 0, 0, 128, 96);
 
                     if (ShrinkToFit)
                     {
@@ -191,21 +206,23 @@ namespace FriishProduce
                     g.Dispose();
                 }
 
-                using (Graphics g = Graphics.FromImage(SaveIcon))
-                {
-                    g.InterpolationMode = Interpolation;
-                    g.PixelOffsetMode = PixelOffset;
-                    g.SmoothingMode = Smoothing;
-                    g.CompositingQuality = CompositingQ;
-
-                    g.DrawImage(src, 0, 0, SaveIcon.Width, SaveIcon.Height);
-
-                    g.Dispose();
-                }
-
                 Working.Dispose();
             }
+
+            using (Graphics g = Graphics.FromImage(SaveIconPic))
+            {
+                g.InterpolationMode = Interpolation;
+                g.PixelOffsetMode = PixelOffsetMode.Half;
+                g.SmoothingMode = SmoothingMode.AntiAlias;
+
+                g.Clear(src.GetPixel(0, 0));
+                g.DrawImage(src, 0, 0, SaveIconPic.Width, SaveIconPic.Height);
+                g.Dispose();
+            }
+
+            NewSaveIcon();
         }
+
         public void Generate() => Generate(Source);
 
         private readonly float[] opacity4 = { 0F, 0.32F, 0.64F, 1F };
@@ -220,28 +237,49 @@ namespace FriishProduce
             t.AddTexture(bmp, tplTF, tplPF);
         }
 
+        public void NewSaveIcon()
+        {
+            SaveIcon = new Bitmap(48, 48);
+
+            using (Graphics g = Graphics.FromImage(SaveIcon))
+            {
+                g.DrawImage(platform == Console.SMS || platform == Console.SMDGEN ? SaveIconPlaceholder_SEGA : SaveIconPlaceholder, 0, 0, 48, 48);
+
+                g.InterpolationMode = InterpolationMode.Bilinear;
+                g.PixelOffsetMode = PixelOffsetMode.Half;
+                g.SmoothingMode = SmoothingMode.HighSpeed;
+
+                g.DrawImage(SaveIconPic, SaveIconS_xywh[0], SaveIconS_xywh[1], SaveIconS_xywh[2], SaveIconS_xywh[3]);
+                g.Dispose();
+            }
+        }
+
         public void ReplaceBanner(WAD w)
         {
             if (!w.HasBanner) return;
 
             U8[] BannerSet = Banner.GetBanner(w);
-            
+
             // VCPic.tpl
+            // ****************
             TPL tpl = TPL.Load(BannerSet[0].Data[BannerSet[0].GetNodeIndex("VCPic.tpl")]);
             ReplaceTPL(tpl, VCPic);
             BannerSet[0].ReplaceFile(BannerSet[0].GetNodeIndex("VCPic.tpl"), tpl.ToByteArray());
 
             // IconVCPic.tpl
+            // ****************
             tpl = TPL.Load(BannerSet[1].Data[BannerSet[1].GetNodeIndex("IconVCPic.tpl")]);
             ReplaceTPL(tpl, IconVCPic);
             BannerSet[1].ReplaceFile(BannerSet[1].GetNodeIndex("IconVCPic.tpl"), tpl.ToByteArray());
             tpl.Dispose();
 
             // Replace banner.bin
+            // ****************
             w.BannerApp.ReplaceFile(w.BannerApp.GetNodeIndex("banner.bin"), BannerSet[0].ToByteArray());
             BannerSet[0].Dispose();
 
             // Replace icon.bin
+            // ****************
             w.BannerApp.ReplaceFile(w.BannerApp.GetNodeIndex("icon.bin"), BannerSet[1].ToByteArray());
             BannerSet[1].Dispose();
         }
@@ -275,7 +313,6 @@ namespace FriishProduce
             }
 
             Image sBanner = tpl.ExtractTexture(0);
-            Image sIcon1 = tpl.ExtractTexture(1);
             Image sIconEnd = tpl.ExtractTexture(numTextures - 1);
 
             // Clean TPL textures
@@ -286,7 +323,7 @@ namespace FriishProduce
             // -------------------------
             using (Graphics g = Graphics.FromImage(sBanner))
             {
-                g.DrawImage(SaveIcon, SaveIconL_xywh[0], SaveIconL_xywh[1], SaveIconL_xywh[2], SaveIconL_xywh[3]);
+                g.DrawImage(SaveIconPic, SaveIconL_xywh[0], SaveIconL_xywh[1], SaveIconL_xywh[2], SaveIconL_xywh[3]);
 
                 tpl.AddTexture(sBanner, formatsT[0], formatsP[0]);
 
@@ -298,70 +335,67 @@ namespace FriishProduce
             // Savedata icon
             // -------------------------
             // 1ST FRAME
-            using (Graphics g = Graphics.FromImage(sIcon1))
-            {
-                g.DrawImage(SaveIconPlaceholder, new Point(0, 0));
-                g.InterpolationMode = Interpolation;
-                g.PixelOffsetMode = PixelOffset;
-                g.SmoothingMode = Smoothing;
-                g.CompositingQuality = CompositingQ;
-                g.DrawImage(SaveIcon, SaveIconS_xywh[0], SaveIconS_xywh[1], SaveIconS_xywh[2], SaveIconS_xywh[3]);
-
-                tpl.AddTexture(sIcon1, formatsT[1], formatsP[1]);
-
-                g.Dispose();
-            }
+            // ****************
+            NewSaveIcon();
+            tpl.AddTexture(SaveIcon, formatsT[1], formatsP[1]);
 
 
             // ANIMATION AND END FRAMES
-            using (Image sIcon2 = (Image)sIcon1.Clone())
-            using (Graphics g = Graphics.FromImage(sIcon2))
+            // ****************
+            using (Image sIcon = (Image)SaveIcon.Clone())
+            using (Graphics g = Graphics.FromImage(sIcon))
             using (var a = new ImageAttributes())
             {
-                var w = sIcon2.Width; var h = sIcon2.Height;
+                var w = sIcon.Width; var h = sIcon.Height;
 
                 if (numTextures == 5)
                 {
                     // 2ND FRAME
+                    // ****************
                     a.SetColorMatrix(new ColorMatrix() { Matrix33 = opacity4[1] });
                     g.DrawImage(sIconEnd, new Rectangle(0, 0, w, h), 0, 0, w, h, GraphicsUnit.Pixel, a);
 
-                    tpl.AddTexture(sIcon2, formatsT[2], formatsP[2]);
+                    tpl.AddTexture(sIcon, formatsT[2], formatsP[2]);
 
                     // 3RD FRAME
-                    g.DrawImage(sIcon1, 0, 0);
+                    // ****************
+                    g.DrawImage(SaveIcon, 0, 0);
                     a.SetColorMatrix(new ColorMatrix() { Matrix33 = opacity4[2] });
                     g.DrawImage(sIconEnd, new Rectangle(0, 0, w, h), 0, 0, w, h, GraphicsUnit.Pixel, a);
 
-                    tpl.AddTexture(sIcon2, formatsT[3], formatsP[3]);
+                    tpl.AddTexture(sIcon, formatsT[3], formatsP[3]);
                 }
 
                 else if (platform == Console.NeoGeo || platform == Console.MSX)
                 {
                     // 2ND/3RD FRAMES
-                    tpl.AddTexture(sIcon1, formatsT[2], formatsP[2]);
-                    tpl.AddTexture(sIcon1, formatsT[3], formatsP[3]);
+                    // ****************
+                    tpl.AddTexture(SaveIcon, formatsT[2], formatsP[2]);
+                    tpl.AddTexture(SaveIcon, formatsT[3], formatsP[3]);
 
                     // 4TH FRAME
+                    // ****************
                     a.SetColorMatrix(new ColorMatrix() { Matrix33 = opacity4[1] });
                     g.DrawImage(sIconEnd, new Rectangle(0, 0, w, h), 0, 0, w, h, GraphicsUnit.Pixel, a);
 
-                    tpl.AddTexture(sIcon2, formatsT[4], formatsP[4]);
+                    tpl.AddTexture(sIcon, formatsT[4], formatsP[4]);
 
                     // 5TH FRAME
-                    g.DrawImage(sIcon1, 0, 0);
+                    // ****************
+                    g.DrawImage(SaveIcon, 0, 0);
                     a.SetColorMatrix(new ColorMatrix() { Matrix33 = opacity4[2] });
                     g.DrawImage(sIconEnd, new Rectangle(0, 0, w, h), 0, 0, w, h, GraphicsUnit.Pixel, a);
 
-                    tpl.AddTexture(sIcon2, formatsT[5], formatsP[5]);
+                    tpl.AddTexture(sIcon, formatsT[5], formatsP[5]);
                 }
 
                 // END FRAME
+                // ****************
                 tpl.AddTexture(sIconEnd, formatsT[numTextures - 1], formatsP[numTextures - 1]);
 
                 g.Dispose();
-                sIcon1.Dispose();
-                sIcon2.Dispose();
+                SaveIcon.Dispose();
+                sIcon.Dispose();
                 sIconEnd.Dispose();
             }
 
@@ -374,17 +408,195 @@ namespace FriishProduce
         /// <param name="platform">Target console</param>
         /// <param name="tplArray">misc.wte in bytes</param>
         /// <returns>Modified WTE files in byte array format</returns>
-        public byte[][] CreateSaveWTE(Console platform, byte[] miscWTE)
+        public void ReplaceSaveWTE()
         {
-            // INCOMPLETE
-            return new byte[1][];
+            string ImagesPath = Paths.MiscCCF + "images\\";
+            if (!Directory.Exists(ImagesPath)) Directory.CreateDirectory(ImagesPath);
+
+            foreach (var item in Directory.EnumerateFiles(Paths.MiscCCF))
+            {
+                if (Path.GetExtension(item) == ".wte")
+                {
+                    // Convert first to tex0, then to PNG
+                    // ****************
+                    Process.Run
+                    (
+                        Paths.Tools + "sega\\wteconvert.exe",
+                        $"\"{item}\" \"{ImagesPath}{Path.GetFileNameWithoutExtension(item)}.tex0\""
+                    );
+                    Process.Run
+                    (
+                        Paths.Tools + "sega\\texextract.exe",
+                        $"\"{ImagesPath}{Path.GetFileNameWithoutExtension(item)}.tex0\" \"{ImagesPath}{Path.GetFileNameWithoutExtension(item)}.png\""
+                    );
+                }
+            }
+
+            // 01 is icon
+            // 06 is end
+            // banner_[xx] is savebanner
+            // ****************
+            string sBannerPath = File.Exists(ImagesPath + "banner_eu.png") ? ImagesPath + "banner_eu.png"
+                               : File.Exists(ImagesPath + "banner_us.png") ? ImagesPath + "banner_us.png"
+                               : File.Exists(ImagesPath + "banner_jp.png") ? ImagesPath + "banner_jp.png"
+                               : ImagesPath + "banner.png";
+
+            try
+            {
+                // -------------------------
+                // Savedata banner
+                // -------------------------
+                using (Image img = Image.FromFile(sBannerPath))
+                using (Graphics g = Graphics.FromImage(img))
+                {
+                    g.DrawImage(SaveIconPic, SaveIconL_xywh[0], SaveIconL_xywh[1], SaveIconL_xywh[2], SaveIconL_xywh[3]);
+                    img.Save(ImagesPath + Path.GetFileNameWithoutExtension(sBannerPath) + ".new.png");
+
+                    img.Dispose();
+                    g.Dispose();
+                }
+
+                // -------------------------
+                // Savedata icon
+                // -------------------------
+                // 1ST FRAME
+                // ****************
+                if (File.Exists(ImagesPath + "01.png")) File.Delete(ImagesPath + "01.png");
+                SaveIcon.Save(ImagesPath + "01.png");
+
+
+                // OTHER FRAMES
+                // ****************
+                using (Image img1 = Image.FromFile(ImagesPath + "01.png"))
+                using (Image img2 = Image.FromFile(ImagesPath + "06.png"))
+                using (Graphics g = Graphics.FromImage(img1))
+                using (var a = new ImageAttributes())
+                {
+                    var w = img1.Width; var h = img1.Height;
+
+                    a.SetColorMatrix(new ColorMatrix() { Matrix33 = opacity6[1] });
+                    g.DrawImage(img2, new Rectangle(0, 0, w, h), 0, 0, w, h, GraphicsUnit.Pixel, a);
+
+                    img1.Save(ImagesPath + "02.new.png");
+
+                    g.DrawImage(img1, 0, 0);
+                    a.SetColorMatrix(new ColorMatrix() { Matrix33 = opacity6[2] });
+                    g.DrawImage(img2, new Rectangle(0, 0, w, h), 0, 0, w, h, GraphicsUnit.Pixel, a);
+
+                    img1.Save(ImagesPath + "03.new.png");
+
+                    g.DrawImage(img1, 0, 0);
+                    a.SetColorMatrix(new ColorMatrix() { Matrix33 = opacity6[3] });
+                    g.DrawImage(img2, new Rectangle(0, 0, w, h), 0, 0, w, h, GraphicsUnit.Pixel, a);
+
+                    img1.Save(ImagesPath + "04.new.png");
+
+                    g.DrawImage(img1, 0, 0);
+                    a.SetColorMatrix(new ColorMatrix() { Matrix33 = opacity6[4] });
+                    g.DrawImage(img2, new Rectangle(0, 0, w, h), 0, 0, w, h, GraphicsUnit.Pixel, a);
+
+                    img1.Save(ImagesPath + "05.new.png");
+
+                    g.Dispose();
+                    img1.Dispose();
+                    img2.Dispose();
+                }
+            }
+            catch
+            {
+                throw new Exception(Language.Get("Error002"));
+            }
+
+            // Cleanup
+            // ****************
+            if (File.Exists(ImagesPath + "06.png")) File.Delete(ImagesPath + "06.png");
+            if (File.Exists(ImagesPath + "06.tex0")) File.Delete(ImagesPath + "06.tex0");
+
+            foreach (var item in Directory.EnumerateFiles(ImagesPath))
+            {
+                if (Path.GetExtension(item) == ".tex0" && File.Exists(ImagesPath + Path.GetFileNameWithoutExtension(item) + ".new.png"))
+                {
+                    if (File.Exists(ImagesPath + Path.GetFileNameWithoutExtension(item) + ".png")) File.Delete(ImagesPath + Path.GetFileNameWithoutExtension(item) + ".png");
+                    File.Move(ImagesPath + Path.GetFileNameWithoutExtension(item) + ".new.png", ImagesPath + Path.GetFileNameWithoutExtension(item) + ".png");
+                }
+            }
+
+            foreach (var item in Directory.EnumerateFiles(ImagesPath))
+            {
+                if (Path.GetExtension(item) == ".tex0" && File.Exists(ImagesPath + Path.GetFileNameWithoutExtension(item) + ".png"))
+                {
+                    // Extracts original image to use in failsafe
+                    // ****************
+                    Process.Run
+                    (
+                        Paths.Tools + "sega\\texextract.exe",
+                        $"\"{item}\" \"{ImagesPath}{Path.GetFileNameWithoutExtension(item)}.ext1.png\""
+                    );
+
+                    // --------------------------------------------
+                    // TEX0 conversion
+                    // --------------------------------------------
+                    Process.Run
+                    (
+                        Paths.Tools + "sega\\texreplace.exe",
+                        $"\"{item}\" \"{ImagesPath}{Path.GetFileNameWithoutExtension(item)}.png\"",
+                        true
+                    );
+
+                    // --------------------------------------------
+                    // Check if operation has been cancelled
+                    // --------------------------------------------
+                    // First failsafe, checks directly for process cancellation
+                    // ****************
+                    if (!File.Exists($"{ImagesPath}{Path.GetFileNameWithoutExtension(item)}.png")) throw new OperationCanceledException();
+
+                    // Second failsafe, checks extracted image for similarities if Cancel was clicked on the GUI
+                    // ****************
+                    Process.Run
+                    (
+                        Paths.Tools + "sega\\texextract.exe",
+                        $"\"{item}\" \"{ImagesPath}{Path.GetFileNameWithoutExtension(item)}.ext2.png\""
+                    );
+                    using (Bitmap ext = (Bitmap)Image.FromFile($"{ImagesPath}{Path.GetFileNameWithoutExtension(item)}.ext1.png"))
+                    using (Bitmap src = (Bitmap)Image.FromFile($"{ImagesPath}{Path.GetFileNameWithoutExtension(item)}.ext2.png"))
+                    {
+                        bool same = true;
+                        for (int x = 0; x < ext.Width; ++x)
+                            for (int y = 0; y < src.Height; ++y)
+                                if (ext.GetPixel(x, y) != src.GetPixel(x, y))
+                                {
+                                    same = false;
+                                    break;
+                                }
+
+                        ext.Dispose();
+                        src.Dispose();
+
+                        if (same) throw new OperationCanceledException();
+                    }
+
+                    try { File.Delete(ImagesPath + Path.GetFileNameWithoutExtension(item) + ".ext1.png"); } catch { }
+                    try { File.Delete(ImagesPath + Path.GetFileNameWithoutExtension(item) + ".ext2.png"); } catch { }
+                    try { File.Delete(ImagesPath + Path.GetFileNameWithoutExtension(item) + ".png"); } catch { }
+
+                    // --------------------------------------------
+                    // WTE conversion
+                    // --------------------------------------------
+                    try { File.Delete(Paths.MiscCCF + Path.GetFileNameWithoutExtension(item) + ".wte"); } catch { }
+                    Process.Run
+                    (
+                        Paths.Tools + "sega\\wteconvert.exe",
+                        $"\"{item}\" \"{Paths.MiscCCF}{Path.GetFileNameWithoutExtension(item)}.wte\""
+                    );
+                }
+            }
+
+            if (Directory.Exists(ImagesPath)) Directory.Delete(ImagesPath, true);
         }
 
         /* TO-DO!!!!!!!!!!!!!! */
         public void CreateSave(Console platform)
         {
-            Directory.CreateDirectory(Paths.Images);
-
             if (platform != Console.Flash)
             {
                 bool embedded = false;
@@ -407,172 +619,6 @@ namespace FriishProduce
                 }
                 if (embedded && !File.Exists(tplPath) && !usesWte) return;
                 else if (tplPath == null && !usesWte) return;
-
-                // -------------------------------------------------------------------------------------
-                // Save image generation for WTEs (uses the source WTE files embedded within the WAD)
-                // -------------------------------------------------------------------------------------
-                {
-                    foreach (var item in Directory.EnumerateFiles(Paths.MiscCCF))
-                    {
-                        if (System.IO.Path.GetExtension(item) == ".wte")
-                        {
-                            Process.Run
-                            (
-                                Paths.Tools + "brawllib\\wteconvert.exe",
-                                $"\"{item}\" \"{Paths.Images}{Path.GetFileNameWithoutExtension(item)}.tex0\""
-                            );
-                            Process.Run
-                            (
-                                Paths.Tools + "brawllib\\texextract.exe",
-                                $"\"{Paths.Images}{Path.GetFileNameWithoutExtension(item)}.tex0\" \"{Paths.Images}{Path.GetFileNameWithoutExtension(item)}.png\""
-                            );
-                        }
-                    }
-
-                    // 01 is icon
-                    // 06 is end
-                    // banner_[xx] is savebanner
-                    Bitmap sBanner = new Bitmap(192, 64);
-                    Bitmap sIcon1 = new Bitmap(48, 48);
-                    Image sIcon2 = Image.FromFile(Paths.Images + "06.png");
-                    string bannerImage = File.Exists(Paths.Images + "banner_eu.png") ? Paths.Images + "banner_eu.png"
-                                       : File.Exists(Paths.Images + "banner_us.png") ? Paths.Images + "banner_us.png"
-                                       : File.Exists(Paths.Images + "banner_jp.png") ? Paths.Images + "banner_jp.png"
-                                       : Paths.Images + "banner.png";
-
-                    using (Image img = (Image)sBanner.Clone())
-                    using (Graphics g = Graphics.FromImage(img))
-                    {
-                        g.DrawImage(Image.FromFile(bannerImage), new Point(0, 0));
-                        g.DrawImage(SaveIcon, SaveIconL_xywh[0], SaveIconL_xywh[1], SaveIconL_xywh[2], SaveIconL_xywh[3]);
-                        img.Save(Paths.Images + System.IO.Path.GetFileNameWithoutExtension(bannerImage) + "_new.png");
-
-                        img.Dispose();
-                        g.Dispose();
-                    }
-
-                    using (Image img = (Image)sIcon1.Clone())
-                    using (Graphics g = Graphics.FromImage(img))
-                    {
-                        g.DrawImage(SaveIconPlaceholder_SEGA, 0, 0, SaveIconPlaceholder_SEGA.Width, SaveIconPlaceholder_SEGA.Height);
-                        g.InterpolationMode = Interpolation;
-                        g.PixelOffsetMode = PixelOffset;
-                        g.SmoothingMode = Smoothing;
-                        g.CompositingQuality = CompositingQ;
-                        g.DrawImage(SaveIcon, SaveIconS_xywh[0], SaveIconS_xywh[1], SaveIconS_xywh[2], SaveIconS_xywh[3]);
-                        img.Save(Paths.Images + "01_new.png");
-
-                        img.Dispose();
-                        g.Dispose();
-                    }
-
-                    // Update sIcon1 to modified version
-                    sIcon1.Dispose();
-                    sIcon1 = (Bitmap)Image.FromFile(Paths.Images + "01_new.png");
-
-                    using (Image img1 = (Image)sIcon1.Clone())
-                    using (Image img2 = (Image)sIcon2.Clone())
-                    using (Graphics g = Graphics.FromImage(img1))
-                    using (var a = new ImageAttributes())
-                    {
-                        var w = img1.Width; var h = img1.Height;
-
-                        a.SetColorMatrix(new ColorMatrix() { Matrix33 = opacity6[1] });
-                        g.DrawImage(img2, new Rectangle(0, 0, w, h), 0, 0, w, h, GraphicsUnit.Pixel, a);
-
-                        img1.Save(Paths.Images + "02_new.png");
-
-                        g.DrawImage(img1, 0, 0);
-                        a.SetColorMatrix(new ColorMatrix() { Matrix33 = opacity6[2] });
-                        g.DrawImage(img2, new Rectangle(0, 0, w, h), 0, 0, w, h, GraphicsUnit.Pixel, a);
-
-                        img1.Save(Paths.Images + "03_new.png");
-
-                        g.DrawImage(img1, 0, 0);
-                        a.SetColorMatrix(new ColorMatrix() { Matrix33 = opacity6[3] });
-                        g.DrawImage(img2, new Rectangle(0, 0, w, h), 0, 0, w, h, GraphicsUnit.Pixel, a);
-
-                        img1.Save(Paths.Images + "04_new.png");
-
-                        g.DrawImage(img1, 0, 0);
-                        a.SetColorMatrix(new ColorMatrix() { Matrix33 = opacity6[4] });
-                        g.DrawImage(img2, new Rectangle(0, 0, w, h), 0, 0, w, h, GraphicsUnit.Pixel, a);
-
-                        img1.Save(Paths.Images + "05_new.png");
-
-                        g.Dispose();
-                        img1.Dispose();
-                        img2.Dispose();
-                        sIcon1.Dispose();
-                    }
-
-                    foreach (var item in Directory.EnumerateFiles(Paths.Images))
-                    {
-                        if (Path.GetExtension(item) == ".tex0" && File.Exists(Paths.Images + Path.GetFileNameWithoutExtension(item) + "_new.png"))
-                        {
-                            // --------------------------------------------
-                            // TEX0 conversion
-                            // --------------------------------------------
-                            Process.Run
-                            (
-                                Paths.Tools + "brawllib\\texreplace.exe",
-                                $"\"{item}\" \"{Paths.Images}{Path.GetFileNameWithoutExtension(item)}_new.png\""
-                            );
-
-                            // --------------------------------------------
-                            // Check if operation has been cancelled
-                            // --------------------------------------------
-                            if (!File.Exists($"{Paths.Images}{Path.GetFileNameWithoutExtension(item)}_new.png")) throw new OperationCanceledException();
-
-                            Process.Run
-                            (
-                                Paths.Tools + "brawllib\\texextract.exe",
-                                $"\"{item}\" \"{Paths.Images}{System.IO.Path.GetFileNameWithoutExtension(item)}_ext.png\""
-                            );
-
-                            // --------------------------------------------
-                            // TEX0 conversion
-                            // --------------------------------------------
-                            using (Bitmap ext = (Bitmap)Image.FromFile($"{Paths.Images}{Path.GetFileNameWithoutExtension(item)}_ext.png"))
-                            using (Bitmap src = (Bitmap)Image.FromFile($"{Paths.Images}{Path.GetFileNameWithoutExtension(item)}.png"))
-                            {
-                                bool same = true;
-                                for (int x = 0; x < ext.Width; ++x)
-                                    for (int y = 0; y < src.Height; ++y)
-                                        if (ext.GetPixel(x, y) != src.GetPixel(x, y))
-                                            same = false;
-
-                                if (same && !Path.GetFileNameWithoutExtension(item).Contains("06"))
-                                {
-                                    ext.Dispose();
-                                    src.Dispose();
-                                    sBanner.Dispose();
-                                    sIcon1.Dispose();
-                                    sIcon2.Dispose();
-                                    throw new OperationCanceledException();
-                                }
-
-                                ext.Dispose();
-                                src.Dispose();
-                            }
-                            File.Delete($"{Paths.Images}{System.IO.Path.GetFileNameWithoutExtension(item)}_ext.png");
-
-                            // --------------------------------------------
-                            // WTE conversion
-                            // --------------------------------------------
-                            File.Delete(Paths.MiscCCF + System.IO.Path.GetFileNameWithoutExtension(item) + ".wte");
-                            Process.Run
-                            (
-                                Paths.Tools + "brawllib\\wteconvert.exe",
-                                $"\"{item}\" \"{Paths.MiscCCF}{System.IO.Path.GetFileNameWithoutExtension(item)}.wte\""
-                            );
-                        }
-                    }
-
-                    sBanner.Dispose();
-                    sIcon1.Dispose();
-                    sIcon2.Dispose();
-                }
             }
 
             // ------------------------------------------------------------------------------------------
@@ -586,43 +632,43 @@ namespace FriishProduce
                 // Declaration of Graphics/Imaging variables
                 var sFiles = new System.Collections.Generic.List<string>();
                 for (int i = 0; i < 5; i++)
-                    sFiles.Add(Paths.Images + $"Texture_0{i}.png");
+                    sFiles.Add(/* ImagesPath + */ $"Texture_0{i}.png");
 
                 Bitmap sBanner = new Bitmap(SaveBannerFlash.Width, SaveBannerFlash.Height);
-                Bitmap sIcon1 = new Bitmap(48, 48);
-                Bitmap sIcon2 = new Bitmap(48, 48);
+                Bitmap sIcon = new Bitmap(48, 48);
 
                 using (Image img = (Image)sBanner.Clone())
                 using (Graphics g = Graphics.FromImage(img))
                 {
                     g.DrawImage(SaveBannerFlash, new Point(0, 0));
-                    g.DrawImage(SaveIcon, SaveIconL_xywh[0], SaveIconL_xywh[1], SaveIconL_xywh[2], SaveIconL_xywh[3]);
+                    g.DrawImage(SaveIconPic, SaveIconL_xywh[0], SaveIconL_xywh[1], SaveIconL_xywh[2], SaveIconL_xywh[3]);
                     img.Save(sFiles[0]);
 
                     img.Dispose();
                     g.Dispose();
                 }
 
-                using (Image img = (Image)sIcon1.Clone())
+                using (Image img = (Image)SaveIcon.Clone())
                 using (Graphics g = Graphics.FromImage(img))
                 {
                     g.DrawImage(SaveIconPlaceholder, new Point(0, 0));
+
                     g.InterpolationMode = Interpolation;
                     g.PixelOffsetMode = PixelOffset;
                     g.SmoothingMode = Smoothing;
                     g.CompositingQuality = CompositingQ;
-                    g.DrawImage(SaveIcon, SaveIconS_xywh[0], SaveIconS_xywh[1], SaveIconS_xywh[2], SaveIconS_xywh[3]);
+                    g.DrawImage(SaveIconPic, SaveIconS_xywh[0], SaveIconS_xywh[1], SaveIconS_xywh[2], SaveIconS_xywh[3]);
                     img.Save(sFiles[1]);
 
                     img.Dispose();
                     g.Dispose();
                 }
 
-                // Update sIcon1 to modified version
-                sIcon1.Dispose();
-                sIcon1 = (Bitmap)Image.FromFile(sFiles[1]);
+                // Update SaveIcon to modified version
+                SaveIcon.Dispose();
+                SaveIcon = (Bitmap)Image.FromFile(sFiles[1]);
 
-                using (Image img = (Image)sIcon1.Clone())
+                using (Image img = (Image)SaveIcon.Clone())
                 using (Graphics g = Graphics.FromImage(img))
                 using (var a = new ImageAttributes())
                 {
@@ -688,13 +734,12 @@ namespace FriishProduce
                 tpl.Save(iconPath.Replace("banner\\US\\", "banner\\JP\\"));
 
                 sBanner.Dispose();
-                sIcon1.Dispose();
-                sIcon2.Dispose();
+                SaveIcon.Dispose();
+                sIcon.Dispose();
                 tpl.Dispose();
             }
 
-            foreach (var file in Directory.GetFiles(Paths.Images)) try { File.Delete(file); } catch { }
-            try { Directory.Delete(Paths.Images, true); } catch { }
+            // Delete images directory
         }
 
         [System.Runtime.InteropServices.DllImport("user32.dll")]
@@ -708,6 +753,7 @@ namespace FriishProduce
             VCPic.Dispose();
             IconVCPic.Dispose();
             SaveIcon.Dispose();
+            SaveIconPic.Dispose();
         }
     }
 }

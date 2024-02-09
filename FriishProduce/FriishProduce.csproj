@@ -284,6 +284,7 @@
     <Content Include="Resources\icons\info_rhombus_large.png" />
     <Content Include="Resources\icons\joystick_add_large.png" />
     <Content Include="Resources\icons\mario_large.png" />
+    <None Include="Resources\icons\retroarch_large.png" />
     <Content Include="Resources\icons\wrench_orange_large.png" />
     <Content Include="Resources\savebanner_flash.png" />
     <None Include="Resources\saveicon_placeholder_s.png" />

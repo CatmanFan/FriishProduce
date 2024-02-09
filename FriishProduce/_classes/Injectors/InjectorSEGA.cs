@@ -415,6 +415,10 @@ namespace FriishProduce
 
         public void InsertSaveData(string text, TitleImage img)
         {
+            // -----------------------
+            // COMMENT
+            // -----------------------
+
             foreach (var item in Directory.EnumerateFiles(Paths.MiscCCF))
             {
                 if (Path.GetFileName(item).ToLower().Contains("banner.cfg"))
@@ -447,6 +451,12 @@ namespace FriishProduce
                     }
                 }
             }
+
+            // -----------------------
+            // IMAGE
+            // -----------------------
+
+            img.ReplaceSaveWTE();
         }
     }
 }

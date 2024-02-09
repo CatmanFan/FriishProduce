@@ -62,6 +62,18 @@ namespace FriishProduce
             }))
                 p.WaitForExit();
         }
+        public static void Run(string app, string arguments, bool showWindow = false)
+        {
+            using (System.Diagnostics.Process p = System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
+            {
+                FileName = app,
+                WorkingDirectory = System.IO.Path.GetDirectoryName(app),
+                Arguments = arguments,
+                UseShellExecute = false,
+                CreateNoWindow = !showWindow
+            }))
+                p.WaitForExit();
+        }
 
         public static void Run(string app, string workingFolder, string arguments)
         {

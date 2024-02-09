@@ -16,7 +16,6 @@ namespace FriishProduce
         // SEGA VC paths
         public static readonly string DataCCF = WorkingFolder + "data_ccf\\";
         public static readonly string MiscCCF = DataCCF + "misc_ccf\\";
-        public static readonly string Images = WorkingFolder + "images\\";
 
         // Flash paths
         public static readonly string WorkingFolder_Content2 = WorkingFolder + "content2\\";

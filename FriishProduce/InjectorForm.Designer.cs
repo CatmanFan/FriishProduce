@@ -77,7 +77,6 @@ namespace FriishProduce
             this.label10 = new System.Windows.Forms.Label();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.SaveIcon_Panel = new System.Windows.Forms.Panel();
-            this.SaveIcon_Image = new System.Windows.Forms.PictureBox();
             this.SaveDataTitle = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -100,8 +99,6 @@ namespace FriishProduce
             ((System.ComponentModel.ISupportInitialize)(this.Players)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReleaseYear)).BeginInit();
             this.groupBox7.SuspendLayout();
-            this.SaveIcon_Panel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SaveIcon_Image)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -470,15 +467,7 @@ namespace FriishProduce
             // 
             this.SaveIcon_Panel.BackgroundImage = global::FriishProduce.Properties.Resources.SaveIconPlaceholder;
             resources.ApplyResources(this.SaveIcon_Panel, "SaveIcon_Panel");
-            this.SaveIcon_Panel.Controls.Add(this.SaveIcon_Image);
             this.SaveIcon_Panel.Name = "SaveIcon_Panel";
-            // 
-            // SaveIcon_Image
-            // 
-            this.SaveIcon_Image.BackColor = System.Drawing.SystemColors.ControlLight;
-            resources.ApplyResources(this.SaveIcon_Image, "SaveIcon_Image");
-            this.SaveIcon_Image.Name = "SaveIcon_Image";
-            this.SaveIcon_Image.TabStop = false;
             // 
             // SaveDataTitle
             // 
@@ -498,6 +487,7 @@ namespace FriishProduce
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.isClosing);
+            this.Shown += new System.EventHandler(this.Form_Shown);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
@@ -524,8 +514,6 @@ namespace FriishProduce
             ((System.ComponentModel.ISupportInitialize)(this.ReleaseYear)).EndInit();
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
-            this.SaveIcon_Panel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.SaveIcon_Image)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -551,7 +539,6 @@ namespace FriishProduce
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox TitleID;
         private System.Windows.Forms.Panel SaveIcon_Panel;
-        private System.Windows.Forms.PictureBox SaveIcon_Image;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.ComboBox imageintpl;
         private System.Windows.Forms.GroupBox groupBox3;

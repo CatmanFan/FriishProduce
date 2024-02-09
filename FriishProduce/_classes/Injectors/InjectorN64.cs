@@ -22,7 +22,6 @@ namespace FriishProduce
         }
 
         public Type EmuType { get; set; }
-        private bool isAllocated { get; set; }
 
         private byte[] ROM { get; set; }
 
@@ -30,7 +29,6 @@ namespace FriishProduce
         {
             UsesContent1 = true;
             UsesContent5 = true;
-            isAllocated = false;
             Load();
 
             if (WAD.Region == Region.Korea) EmuType = Type.Rev3;
@@ -69,7 +67,7 @@ namespace FriishProduce
         /// </summary>
         /// <param name="ROM">Path to ROM</param>
         /// <param name="type">Type of ROMC compression (0 = none; 1 = ROMC type 0; 2 = ROMC type 1)</param>
-        public void ReplaceROM(string ROM, int type = 0)
+        public void ReplaceROM(string ROM, int compression = 0, bool isAllocated = false)
         {
             // -----------------------
             // Check if raw ROM exists
@@ -77,7 +75,7 @@ namespace FriishProduce
             if (!File.Exists(ROM))
                 throw new FileNotFoundException(new FileNotFoundException().Message, ROM);
 
-            ReplaceROM(File.ReadAllBytes(ROM), type);
+            ReplaceROM(File.ReadAllBytes(ROM), compression, isAllocated);
         }
 
         /// <summary>
@@ -85,7 +83,7 @@ namespace FriishProduce
         /// </summary>
         /// <param name="ROM">ROM in bytes</param>
         /// <param name="compression">Type of ROMC compression (0 = none; 1 = ROMC type 0; 2 = ROMC type 1)</param>
-        public void ReplaceROM(byte[] ROMbytes, int compression = 0)
+        public void ReplaceROM(byte[] ROMbytes, int compression = 0, bool isAllocated = false)
         {
             // -----------------------
             // Byteswap ROM first
@@ -365,8 +363,6 @@ namespace FriishProduce
                         // ****************
                         Content1[index + 7] = size_array[0];
                         Content1[index + 8] = size_array[1];
-
-                        isAllocated = true;
                     }
                 }
 

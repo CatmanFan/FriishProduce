@@ -20,13 +20,20 @@ namespace FriishProduce
             ribbon1.OrbText = Language.Get("File");
 
             NewProject.DropDownItems.Clear();
-            NewProject.DropDownItems.Add(new RibbonSeparator(Language.Get("PlatformGroup_0")));
-            NewProject.DropDownItems.Add(new RibbonButton(Properties.Resources.icon_16x16_nes) { Tag = Console.NES.ToString() });
-            NewProject.DropDownItems.Add(new RibbonButton(Properties.Resources.icon_16x16_snes) { Tag = Console.SNES.ToString() });
-            NewProject.DropDownItems.Add(new RibbonButton(Properties.Resources.icon_16x16_n64) { Tag = Console.N64.ToString() });
-            NewProject.DropDownItems.Add(new RibbonSeparator(Language.Get("PlatformGroup_1")));
-            NewProject.DropDownItems.Add(new RibbonButton() { Tag = Console.SMS.ToString() });
-            NewProject.DropDownItems.Add(new RibbonButton(Properties.Resources.icon_16x16_smd) { Tag = Console.SMDGEN.ToString() });
+            NewProject.DropDownItems.AddRange(new List<RibbonItem>
+            {
+                new RibbonSeparator(Language.Get("PlatformGroup_0")),
+
+                new RibbonButton(new Icon(Properties.Resources.nintendo_nes, 16, 16).ToBitmap())          { Tag = Console.NES.ToString() },
+                new RibbonButton(new Icon(Properties.Resources.nintendo_super_nes, 16, 16).ToBitmap())    { Tag = Console.SNES.ToString() },
+                new RibbonButton(new Icon(Properties.Resources.nintendo_nintendo64, 16, 16).ToBitmap())   { Tag = Console.N64.ToString() },
+
+                new RibbonSeparator(Language.Get("PlatformGroup_1")),
+
+                new RibbonButton(new Icon(Properties.Resources.sega_master_system, 16, 16).ToBitmap())    { Tag = Console.SMS.ToString() },
+                new RibbonButton(new Icon(Properties.Resources.sega_genesis, 16, 16).ToBitmap())          { Tag = Console.SMDGEN.ToString() }
+            });
+
             foreach (RibbonButton item in NewProject.DropDownItems.OfType<RibbonButton>())
             {
                 item.Text = string.Format(Language.Get("ProjectType"), Language.Get($"Platform_{item.Tag}"));
@@ -49,6 +56,8 @@ namespace FriishProduce
                     {
                         text = Language.Get(button.Name, this);
                         if (text != "undefined") button.Text = text;
+                        button.MinimumSize = new Size(45 + (button.Text.Length * 4), 0);
+                        button.MaximumSize = button.MaximumSize;
                     }
                 }
             }
@@ -170,15 +179,19 @@ namespace FriishProduce
 
             tabControl.Visible = true;
 
-            InjectorForm Tab = new InjectorForm(console) { Parent = this };
+            InjectorForm Tab = new InjectorForm(console, null) { Parent = this };
             Tab.FormClosed += TabChanged;
             Tab.ExportCheck += ExportCheck;
             tabControl.TabPages.Add(Tab);
+
+            BrowseROMDialog(console, Tab);
         }
 
-        private void OpenROM_Click(object sender, EventArgs e)
+        private void OpenROM_Click(object sender, EventArgs e) => BrowseROMDialog((tabControl.SelectedForm as InjectorForm).Console, tabControl.SelectedForm as InjectorForm);
+
+        private void BrowseROMDialog(Console c, InjectorForm currentForm)
         {
-            switch ((tabControl.SelectedForm as InjectorForm).Console)
+            switch (c)
             {
                 default:
                     BrowseROM.Filter = Language.Get("Filter_Disc") + "|" + Language.Get("Filter_ZIP") + Language.Get("Filter_All");
@@ -190,16 +203,17 @@ namespace FriishProduce
                 case Console.SMS:
                 case Console.SMDGEN:
                 case Console.PCE:
-                    BrowseROM.Filter = Language.Get("Filter_ROM_" + Enum.GetName(typeof(Console), (int)(tabControl.SelectedForm as InjectorForm).Console));
+                    BrowseROM.Filter = Language.Get($"Filter_ROM_{c}");
                     break;
             }
 
             if (BrowseROM.ShowDialog() == DialogResult.OK)
             {
-                (tabControl.SelectedForm as InjectorForm).LoadROM(Properties.Settings.Default.AutoLibRetro);
+                currentForm.LoadROM(Properties.Settings.Default.AutoLibRetro);
                 Strip_UseLibRetro.Enabled = UseLibRetro.Enabled = true;
             }
         }
+
         private void UseLibRetro_Click(object sender, EventArgs e) => (tabControl.SelectedForm as InjectorForm).LoadLibRetroData();
 
         private void ExportWAD_Click(object sender, EventArgs e)

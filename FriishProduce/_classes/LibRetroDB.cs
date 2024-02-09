@@ -74,6 +74,7 @@ namespace FriishProduce
             string hash = BitConverter.ToString(hash_array).Replace("-", "").ToLower();
 
             // Original: https://github.com/libretro/libretro-database/raw/master/metadat/
+            // ****************
             string db_base = "https://raw.githubusercontent.com/libretro/libretro-database/master/metadat/";
             Dictionary<Console, string> db_platforms = new Dictionary<Console, string>
             {
@@ -99,12 +100,14 @@ namespace FriishProduce
                     try
                     {
                         // Search in "releaseyear" repository
+                        // ****************
                         using (WebClient c = new WebClient())
                             db_bytes = c.DownloadData(db_base + "releaseyear/" + Uri.EscapeUriString(item.Value) + ".dat");
 
                         db_lines = Encoding.UTF8.GetString(db_bytes).Split(Environment.NewLine.ToCharArray());
 
                         // Scan retrieved database
+                        // ****************
                         for (int i = 10; i < db_lines.Length; i++)
                             if (db_lines[i].ToLower().Contains(hash))
                             {
@@ -135,10 +138,12 @@ namespace FriishProduce
 
                     Dev:
                     // If not found, search in "developer" repository, which happens to be more complete
+                    // ****************
                     using (WebClient c = new WebClient())
                         db_bytes = c.DownloadData(db_base + "developer/" + Uri.EscapeUriString(item.Value) + ".dat");
 
                     // Scan retrieved database
+                    // ****************
                     db_lines = Encoding.UTF8.GetString(db_bytes).Split(Environment.NewLine.ToCharArray());
 
                     for (int i = 5; i < db_lines.Length; i++)
@@ -159,10 +164,12 @@ namespace FriishProduce
 
                     GetPlayers:
                     // "maxusers" contains maximum number of players supported
+                    // ****************
                     using (WebClient c = new WebClient())
                         db_bytes = c.DownloadData(db_base + "maxusers/" + Uri.EscapeUriString(item.Value) + ".dat");
 
                     // Scan retrieved database
+                    // ****************
                     db_lines = Encoding.UTF8.GetString(db_bytes).Split(Environment.NewLine.ToCharArray());
 
                     for (int i = 5; i < db_lines.Length; i++)
@@ -176,10 +183,12 @@ namespace FriishProduce
                     // --------------------------------------------------------------------- //
 
                     // Get original serial (title or content ID) of game
+                    // ****************
                     using (WebClient c = new WebClient())
                         db_bytes = c.DownloadData(db_base + "serial/" + Uri.EscapeUriString(item.Value) + ".dat");
 
                     // Scan retrieved database
+                    // ****************
                     db_lines = Encoding.UTF8.GetString(db_bytes).Split(Environment.NewLine.ToCharArray());
 
                     for (int i = 5; i < db_lines.Length; i++)

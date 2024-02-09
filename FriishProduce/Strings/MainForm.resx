@@ -156,4 +156,7 @@
   <data name="OpenWAD.Text" xml:space="preserve">
     <value>WAD</value>
   </data>
+  <data name="ribbonPanel_Project.Text" xml:space="preserve">
+    <value>Project</value>
+  </data>
 </root>

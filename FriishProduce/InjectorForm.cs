@@ -20,6 +20,7 @@ namespace FriishProduce
         protected string TIDCode;
         protected string Untitled;
         protected string oldImgPath = "null";
+        protected string newImgPath = "null";
 
         public bool ReadyToExport = false;
         public bool ROMLoaded = false;
@@ -59,14 +60,14 @@ namespace FriishProduce
             imageintpl.SelectedIndex = Properties.Settings.Default.ImageInterpolation;
         }
 
-        public InjectorForm(Console c)
+        public InjectorForm(Console c, string ROM)
         {
             Console = c;
             InitializeComponent();
 
             // Declare injector
             // ********
-            i = new Injector() { Console = Console };
+            i = new Injector() { Console = Console, ROM = ROM };
 
             switch (Console)
             {
@@ -122,22 +123,18 @@ namespace FriishProduce
 
             // Cosmetic
             // ********
+            if (Console == Console.SMS || Console == Console.SMDGEN) SaveIcon_Panel.BackgroundImage = Properties.Resources.SaveIconPlaceholder_SEGA;
             UpdateBannerPreview();
             RefreshForm();
 
             i.BannerYear = (int)ReleaseYear.Value;
             i.BannerPlayers = (int)Players.Value;
             AddBases();
+        }
 
-            // ******************
-            // CONSOLE-SPECIFIC
-            // ******************
-            if (Console == Console.SMS || Console == Console.SMDGEN)
-            {
-                SaveIcon_Panel.BackgroundImage = Properties.Resources.SaveIconPlaceholder_SEGA;
-                SaveIcon_Image.Size = new Size(44, 31);
-                SaveIcon_Image.Location = new Point(2, 8);
-            }
+        private void Form_Shown(object sender, EventArgs e)
+        {
+            if (i.ROM != null) LoadROM(i.ROM, Properties.Settings.Default.AutoLibRetro);
         }
 
         // -----------------------------------
@@ -198,12 +195,6 @@ namespace FriishProduce
             if (!string.IsNullOrEmpty(currentSender.Text)
                 && currentSender.Lines[currentIndex].Length >= lineMaxLength
                 && e.KeyChar != (char)Keys.Delete && e.KeyChar != (char)8 && e.KeyChar != (char)Keys.Enter) { System.Media.SystemSounds.Beep.Play(); e.Handled = true; }
-        }
-
-        private void InterpolationChanged(object sender, EventArgs e)
-        {
-            if (imageintpl.SelectedIndex != Properties.Settings.Default.ImageInterpolation) Tag = "dirty";
-            if (i != null && i.tImg != null) LoadImage();
         }
 
         public bool CreateInject(string outputFile)
@@ -306,9 +297,6 @@ namespace FriishProduce
                 { "NAAP", Console.N64 }, // SM64
                 { "NAAJ", Console.N64 },
                 { "NABT", Console.N64 }, // MK64 */
-                { "LAGE", Console.SMS }, // Comix Zone
-                { "LAGP", Console.SMS },
-                { "LAGJ", Console.SMS },
             };
 
             foreach (var item in WADs)
@@ -317,12 +305,27 @@ namespace FriishProduce
             System.Media.SystemSounds.Beep.Play();
         }
 
+        private void InterpolationChanged(object sender, EventArgs e)
+        {
+            if (imageintpl.SelectedIndex != Properties.Settings.Default.ImageInterpolation) Tag = "dirty";
+            if (i != null && i.tImg != null) LoadImage();
+        }
+
+        public void LoadImage()
+        {
+            if (i.tImg != null) LoadImage(i.tImg.Source);
+            else CheckExport();
+        }
+
         public void LoadImage(string path)
         {
-            if (i.tImg != null) oldImgPath = i.tImg.SourcePath;
+            if (i.tImg != null) oldImgPath = newImgPath;
+            newImgPath = path;
 
-            i.tImg = new TitleImage(Console, path);
-            if (i.tImg.SourcePath != null) LoadImage();
+            if (i.tImg == null) i.tImg = new TitleImage(Console, path);
+            else i.tImg.Create(Console, path);
+
+            LoadImage(i.tImg.Source);
         }
 
         public bool LoadImage(Bitmap src)
@@ -334,17 +337,21 @@ namespace FriishProduce
                 groupBox5.Enabled = true;
                 i.tImg.Interpolation = (InterpolationMode)imageintpl.SelectedIndex;
 
-                // Additional functions for modification of image palette/brightness, used only for LibRetro images
+                // Additionally edit image before generating files, e.g. with modification of image palette/brightness, used only for images with exact resolution of original screen size
                 // ********
                 switch (Console)
                 {
+                    default:
+                        break;
+
                     case Console.NES:
                         if (src.Width == 256 && (src.Height == 224 || src.Height == 240) && o1.Settings[1] == "1")
                         {
-                            if (o1.ImgPaletteIndex == -1 || oldImgPath != i.tImg.SourcePath) o1.ImgPaletteIndex = o1.CheckPalette(img);
-                            img = o1.SwapColors(img, o1.Palettes[o1.ImgPaletteIndex], o1.Palettes[int.Parse(o1.Settings[0])]);
+                            if (o1.ImgPaletteIndex == -1 || oldImgPath != newImgPath) o1.ImgPaletteIndex = o1.CheckPalette(img);
+                                img = o1.SwapColors(img, o1.Palettes[o1.ImgPaletteIndex], o1.Palettes[int.Parse(o1.Settings[0])]);
                         }
                         break;
+
                     case Console.SMS:
                     case Console.SMDGEN:
                         break;
@@ -354,7 +361,7 @@ namespace FriishProduce
                 img.Dispose();
 
                 if (i.tImg.VCPic != null) Image.Image = i.tImg.VCPic;
-                if (i.tImg.SaveIcon != null) SaveIcon_Image.Image = i.tImg.SaveIcon;
+                if (i.tImg.SaveIcon != null) SaveIcon_Panel.BackgroundImage = i.tImg.SaveIcon;
 
                 CheckExport();
                 return true;
@@ -366,11 +373,11 @@ namespace FriishProduce
             }
         }
 
-        public void LoadImage() => LoadImage(i.tImg.GetSource());
+        public void LoadROM(bool UseLibRetro = true) => LoadROM(Parent.BrowseROM.FileName, UseLibRetro);
 
-        public void LoadROM(bool UseLibRetro = true)
+        public void LoadROM(string ROM, bool UseLibRetro = true)
         {
-            i.ROM = Parent.BrowseROM.FileName;
+            i.ROM = ROM;
             ROMLoaded = true;
 
             ROMPath.Text = Path.GetFileName(i.ROM);
@@ -399,6 +406,8 @@ namespace FriishProduce
 
             RandomTID();
             CheckExport();
+
+            Parent.tabControl.Visible = true;
         }
 
         public void LoadLibRetroData()
@@ -423,7 +432,7 @@ namespace FriishProduce
                     }
 
                     // Set image
-                    if (LibRetro.GetImgURL() != null) LoadImage(LibRetro.GetImgURL());
+                    if (LibRetro.GetImgURL() != null) { LoadImage(LibRetro.GetImgURL()); }
 
                     // Set year and players
                     ReleaseYear.Value = i.BannerYear    = !string.IsNullOrEmpty(LibRetro.GetYear())    ? int.Parse(LibRetro.GetYear())    : i.BannerYear;
@@ -514,7 +523,8 @@ namespace FriishProduce
                     N64.ReplaceROM
                     (
                         i.ROM,
-                        o3.Settings[4] && N64.EmuType == InjectorN64.Type.Rev3 ? 1 : !o3.Settings[4] && N64.EmuType == InjectorN64.Type.Rev3 ? 2 : 0
+                        N64.EmuType == InjectorN64.Type.Rev3 ? (o3.Settings[4] ? 1 : 2) : 0,
+                        o3.Settings[3] && (N64.EmuType == InjectorN64.Type.Rev1 || N64.EmuType == InjectorN64.Type.Rev1_Alt)
                     );
                     N64.ModifyEmulator(o3.Settings[0], o3.Settings[1], o3.Settings[2], o3.Settings[3]);
                     N64.InsertSaveData(i.SaveDataTitle.Split(Environment.NewLine.ToCharArray()), i.tImg);

@@ -163,6 +163,7 @@ namespace FriishProduce
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.n64004);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Options_VCN64";

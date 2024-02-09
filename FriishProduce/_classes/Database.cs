@@ -134,6 +134,12 @@ namespace FriishProduce
                     };
                     break;
 
+                // SEGA
+                // ****************
+                // NOTE FROM THE AUTHOR: Only Revision 2 and Revision 3 SEGA WADs are accepted currently, because CCF modification does not work with Revision 1 WADs (such as Comix Zone).
+                //                       They also have more customizable options anyway, such as brightness (which can be adjusted to 100%), sound, 6-button, etc.
+                // ****************
+
                 case Console.SMS:
                     List = new DatabaseEntry[]
                     {
@@ -159,6 +165,9 @@ namespace FriishProduce
                             new DatabaseEntry("MBAJ",   "パルスマン",                                     "Pulseman", 2)
                     };
                     break;
+
+                // Other
+                // ****************
 
                 default:
                 case Console.PCE:
