@@ -21,6 +21,7 @@ namespace FriishProduce
         protected string Untitled;
         protected string oldImgPath = "null";
         protected string newImgPath = "null";
+        protected string WADPath = null;
 
         public bool ReadyToExport = false;
         public bool ROMLoaded = false;
@@ -31,7 +32,7 @@ namespace FriishProduce
         // -----------------------------------
         protected Database                      Database    { get; set; }
         protected IDictionary<string, string>   CurrentBase { get; set; }
-        protected Injector                      i           { get; set; }
+        protected WiiVCModifier                 i           { get; set; }
         protected Options_VCNES                 o1          { get; set; }
         protected Options_VCN64                 o3          { get; set; }
 
@@ -65,9 +66,9 @@ namespace FriishProduce
             Console = c;
             InitializeComponent();
 
-            // Declare injector
+            // Declare WAD metadata modifier
             // ********
-            i = new Injector() { Console = Console, ROM = ROM };
+            i = new WiiVCModifier() { Console = Console, ROM = ROM };
 
             switch (Console)
             {
@@ -146,12 +147,15 @@ namespace FriishProduce
             i.BannerTitle = BannerTitle.Text;
             i.BannerYear = (int)ReleaseYear.Value;
             i.BannerPlayers = (int)Players.Value;
-            i.SaveDataTitle = SaveDataTitle.Text;
+            i.SaveDataTitle =
+                SaveDataTitle.Lines.Length == 1 ? new string[] { SaveDataTitle.Text } :
+                SaveDataTitle.Lines.Length == 0 ? new string[] { "" } :
+                SaveDataTitle.Lines;
 
             ReadyToExport =    !string.IsNullOrEmpty(i.TitleID) && i.TitleID.Length == 4
                             && !string.IsNullOrEmpty(i.ChannelTitle)
                             && !string.IsNullOrEmpty(i.BannerTitle)
-                            && !string.IsNullOrEmpty(i.SaveDataTitle)
+                            && !string.IsNullOrEmpty(i.SaveDataTitle[0])
                             && (i.tImg != null)
                             && i.ROM != null;
             Tag = "dirty";
@@ -160,7 +164,7 @@ namespace FriishProduce
             UpdateBannerPreview();
         }
 
-        private void RandomTID() => TitleID.Text = i.TitleID = TIDCode != null ? TIDCode + WADKit.GenerateTitleID().Substring(0, 3) : WADKit.GenerateTitleID();
+        private void RandomTID() => TitleID.Text = i.TitleID = TIDCode != null ? TIDCode + GenerateTitleID().Substring(0, 3) : GenerateTitleID();
 
         public string GetName() => $"{ChannelTitle.Text} [{TitleID.Text.ToUpper()}]";
 
@@ -195,41 +199,6 @@ namespace FriishProduce
             if (!string.IsNullOrEmpty(currentSender.Text)
                 && currentSender.Lines[currentIndex].Length >= lineMaxLength
                 && e.KeyChar != (char)Keys.Delete && e.KeyChar != (char)8 && e.KeyChar != (char)Keys.Enter) { System.Media.SystemSounds.Beep.Play(); e.Handled = true; }
-        }
-
-        public bool CreateInject(string outputFile)
-        {
-            try
-            {
-                for (int x = 0; x < Database.List.Length; x++)
-                    if (Database.List[x].TitleID.ToUpper() == baseID.Text.ToUpper()) i.WAD = Database.Load(x);
-
-                // Create injector and insert ROM & savedata
-                // *******
-                ConsoleInjector();
-
-                i.Create(outputFile);
-
-                if (File.Exists(outputFile))
-                {
-                    Parent.CleanTemp();
-                    System.Media.SystemSounds.Beep.Play();
-
-                    if (Properties.Settings.Default.AutoOpenFolder)
-                        System.Diagnostics.Process.Start("explorer.exe", $"/select, \"{outputFile}\"");
-                    else
-                        MessageBox.Show(string.Format(Language.Get("Message003"), outputFile), Language.Get("_AppTitle"), MessageBoxButtons.OK);
-                    return true;
-                }
-                else throw new Exception(Language.Get("Error006"));
-            }
-            catch (Exception ex)
-            {
-                Parent.CleanTemp();
-                if (i.WAD != null) i.WAD.Dispose();
-                i.ShowErrorMessage(ex);
-                return false;
-            }
         }
 
         private void BannerPreview_Paint(object sender, PaintEventArgs e)
@@ -281,7 +250,6 @@ namespace FriishProduce
         }
 
         #region Load Data Functions
-
         private void ExportBanner_Click(object sender, EventArgs e)
         {
             System.Media.SystemSounds.Beep.Play();
@@ -303,6 +271,67 @@ namespace FriishProduce
                 Banner.ExportBanner(item.Key, item.Value);
 
             System.Media.SystemSounds.Beep.Play();
+        }
+
+        private string GenerateTitleID()
+        {
+            var r = new Random();
+            string allowed = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            return new string(Enumerable.Repeat(allowed, 4).Select(s => s[r.Next(s.Length)]).ToArray());
+        }
+
+        private void OpenWAD_CheckedChanged(object sender, EventArgs e)
+        {
+            Base.Enabled = WADRegion.Enabled = !OpenWAD.Checked;
+            if (Base.Enabled)
+            {
+                if (i.WAD != null) i.WAD.Dispose();
+                AddBases();
+            }
+            else
+            {
+                Base.Items.Clear();
+                WADRegion.Image = null;
+            }
+
+            if (OpenWAD.Checked && WADPath == null)
+            {
+                BrowseWAD.Title = Language.Get("ribbonPanel_Open", Parent);
+                BrowseWAD.Filter = Language.Get("Filter_WAD");
+                var result = BrowseWAD.ShowDialog();
+
+                if (result == DialogResult.OK && !LoadWAD(BrowseWAD.FileName)) OpenWAD.Checked = false;
+                else if (result == DialogResult.Cancel) OpenWAD.Checked = false;
+            }
+            else
+            {
+                WADPath = null;
+            }
+        }
+
+        public bool LoadWAD(string path)
+        {
+            try { i.WAD = WAD.Load(path); } catch { goto Failed; }
+
+            for (int x = 0; x < Database.List.Length; x++)
+                if (Database.List[x].TitleID.ToUpper() == i.WAD.UpperTitleID.ToUpper())
+                {
+                    WADPath = path;
+
+                    CurrentBase.Clear();
+                    CurrentBase.Add(Database.List[x].TitleID, Database.List[x].NativeName);
+                    baseName.Text = Database.List[x].NativeName;
+                    baseID.Text = Database.List[x].TitleID;
+                    UpdateBaseGeneral(0);
+                    return true;
+                }
+
+            i.WAD.Dispose();
+
+            Failed:
+            System.Media.SystemSounds.Beep.Play();
+            MessageBox.Show(string.Format(Language.Get("Message005"), i.WAD.UpperTitleID), Parent.Text);
+            return false;
         }
 
         private void InterpolationChanged(object sender, EventArgs e)
@@ -361,7 +390,7 @@ namespace FriishProduce
                 img.Dispose();
 
                 if (i.tImg.VCPic != null) Image.Image = i.tImg.VCPic;
-                if (i.tImg.SaveIcon != null) SaveIcon_Panel.BackgroundImage = i.tImg.SaveIcon;
+                if (i.tImg.Source != null) SaveIcon_Panel.BackgroundImage = i.tImg.SaveIcon();
 
                 CheckExport();
                 return true;
@@ -383,8 +412,6 @@ namespace FriishProduce
             ROMPath.Text = Path.GetFileName(i.ROM);
             if (!UseLibRetro) SerialCode.Text = SoftwareName.Text = Language.Get("Unknown");
 
-            if (i.ROM != null && UseLibRetro) LoadLibRetroData();
-
             Random.Visible =
             groupBox1.Enabled =
             groupBox3.Enabled =
@@ -395,19 +422,21 @@ namespace FriishProduce
             groupBox2.Enabled =
             groupBox8.Enabled = true;
 
-            BannerPreview_Panel.BackColor = BannerPreview_BG.BackColor;
-            BannerPreview_Line1.Refresh();
-            BannerPreview_Line2.Refresh();
-            BannerPreview_BG.Refresh();
-            foreach (Control item in BannerPreview_Panel.Controls)
-                if (item != ExportBanner) item.Visible = true;
-
             UpdateBaseForm();
 
             RandomTID();
             CheckExport();
 
             Parent.tabControl.Visible = true;
+
+            if (i.ROM != null && UseLibRetro) LoadLibRetroData();
+
+            BannerPreview_Panel.BackColor = BannerPreview_BG.BackColor;
+            BannerPreview_Line1.Refresh();
+            BannerPreview_Line2.Refresh();
+            BannerPreview_BG.Refresh();
+            foreach (Control item in BannerPreview_Panel.Controls)
+                if (item != ExportBanner) item.Visible = true;
         }
 
         public void LoadLibRetroData()
@@ -428,7 +457,7 @@ namespace FriishProduce
                     {
                         var text = LibRetro.GetCleanTitle().Replace("\r", "").Split('\n');
                         if (text[0].Length <= ChannelTitle.MaxLength) ChannelTitle.Text = i.ChannelTitle = text[0];
-                        if (ChannelTitle.TextLength <= SaveDataTitle.MaxLength / 2) SaveDataTitle.Text = ChannelTitle.Text;
+                        if (ChannelTitle.TextLength <= SaveDataTitle.MaxLength) SaveDataTitle.Text = ChannelTitle.Text;
                     }
 
                     // Set image
@@ -450,11 +479,142 @@ namespace FriishProduce
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, Language.Get("Error"), MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                MessageBox.Show(ex.Message, Language.Get("Error"), MessageBoxButtons.OK);
+            }
+        }
+
+        public bool CreateInject(string outputFile)
+        {
+            try
+            {
+                if (WADPath != null) i.WAD = WAD.Load(WADPath);
+                else
+                    for (int x = 0; x < Database.List.Length; x++)
+                        if (Database.List[x].TitleID.ToUpper() == baseID.Text.ToUpper()) i.WAD = Database.Load(x);
+
+                // Create injector and insert ROM & savedata
+                // *******
+                switch (Console)
+                {
+                    // NES
+                    // *******
+                    case Console.NES:
+
+                        // Create injector and insert ROM
+
+                        // Problem with WADs crashing
+                        // [X] ROM (DING DING DING!!!!!!!!!!!!!!!!!!!)
+                        // Kirby's Adventure (USA), only ++++++++ Ninja Gaiden, Kirby's Adventure Europe & Korea working as normal
+                        // [] SaveData
+                        // [] Palette
+                        // [] Manual
+
+                        var i_NES = new InjectorNES(i.WAD, i.ROM);
+                        i_NES.ReplaceSaveData(i.SaveDataTitle, i.tImg);
+                        i_NES.InsertPalette(int.Parse(o1.Settings[0]));
+                        i_NES.ReplaceROM();
+                        i_NES.ReplaceManual(null);
+                        i.WAD = i_NES.Write();
+                        break;
+
+                    // SNES
+                    // *******
+                    case Console.SNES:
+
+                        // Create injector and insert ROM
+                        var i_SNES = new InjectorSNES(i.WAD, i.ROM);
+                        i_SNES.ReplaceROM();
+                        i_SNES.ReplaceSaveData(i.SaveDataTitle, i.tImg);
+                        i_SNES.ReplaceManual(null);
+                        i.WAD = i_SNES.Write();
+                        break;
+
+                    // N64
+                    // *******
+                    case Console.N64:
+
+                        // Create injector and insert ROM
+
+                        // Problem with WADs crashing
+                        // [] ROM
+                        // [X] Settings (DING DING DING!!!!!!!!!!!!!!!!!!!)
+                        // [] SaveData
+                        // [] Manual
+
+                        // Likely Content1 is the cause of the problem ????
+
+                        var i_N64 = new InjectorN64(i.WAD, i.ROM)
+                        {
+                            Settings = new bool[] { o3.Settings[0], o3.Settings[1], o3.Settings[2], o3.Settings[3] },
+                            CompressionType = o3.EmuType == 3 ? (o3.Settings[3] ? 1 : 2) : 0,
+                            Allocate = o3.Settings[3] && (o3.EmuType <= 1),
+                        };
+                        i_N64.ReplaceROM();
+                        i_N64.ModifyEmulator();
+                        i_N64.ReplaceSaveData(i.SaveDataTitle, i.tImg);
+                        i_N64.ReplaceManual(null);
+                        i.WAD = i_N64.Write();
+                        break;
+
+                    // SEGA
+                    // *******
+                    case Console.SMS:
+                    case Console.SMDGEN:
+
+                        // Create injector and insert ROM
+                        var i_SEGA = new InjectorSEGA(i.WAD, i.ROM)
+                        {
+                            IsSMS = Console == Console.SMS
+                        };
+                        i_SEGA.ReplaceROM();
+                        i_SEGA.ReplaceSaveData(i.SaveDataTitle, i.tImg);
+                        i_SEGA.ReplaceManual(null);
+                        i_SEGA.WriteCCF();
+                        i.WAD = i_SEGA.Write();
+                        break;
+
+                    case Console.PCE:
+                    case Console.NeoGeo:
+                    case Console.MSX:
+                    case Console.Flash:
+                    default:
+                        throw new NotImplementedException();
+                }
+
+                i.Modify();
+                i.WAD.Save(outputFile);
+
+                // Check new WAD file
+                // *******
+                if (File.Exists(outputFile) && File.ReadAllBytes(outputFile).Length > 10)
+                {
+                    Parent.CleanTemp();
+                    System.Media.SystemSounds.Beep.Play();
+                    Tag = null;
+
+                    if (Properties.Settings.Default.AutoOpenFolder)
+                        System.Diagnostics.Process.Start("explorer.exe", $"/select, \"{outputFile}\"");
+                    else
+                        MessageBox.Show(string.Format(Language.Get("Message003"), outputFile), Language.Get("_AppTitle"), MessageBoxButtons.OK);
+                    return true;
+                }
+                else throw new Exception(Language.Get("Error006"));
+            }
+
+            catch (Exception ex)
+            {
+                Parent.CleanTemp();
+                i.ShowErrorMessage(ex);
+                return false;
+            }
+
+            finally
+            {
+                if (WADPath == null) i.WAD.Dispose();
             }
         }
         #endregion
-        
+
         #region **Console-Specific Functions**
         // ******************
         // CONSOLE-SPECIFIC
@@ -485,67 +645,6 @@ namespace FriishProduce
                     break;
                 default:
                     break;
-            }
-        }
-
-        protected void ConsoleInjector()
-        {
-            switch (Console)
-            {
-                // NES
-                // *******
-                case Console.NES:
-                    // Create injector and insert ROM
-                    InjectorNES NES = new InjectorNES(i.WAD) { NoManual = true };
-                    NES.InsertROM(i.ROM);
-                    NES.InsertPalette(int.Parse(o1.Settings[0]));
-                    NES.InsertSaveData(i.SaveDataTitle, i.tImg);
-                    i.WAD = NES.Write();
-                    break;
-
-                // SNES
-                // *******
-                case Console.SNES:
-
-                    // Create injector and insert ROM
-                    InjectorSNES SNES = new InjectorSNES(i.WAD) { NoManual = true };
-                    SNES.ReplaceROM(i.ROM);
-                    SNES.InsertSaveData(i.SaveDataTitle.Split(Environment.NewLine.ToCharArray()), i.tImg);
-                    i.WAD = SNES.Write();
-                    break;
-
-                // N64
-                // *******
-                case Console.N64:
-
-                    // Create injector and insert ROM
-                    InjectorN64 N64 = new InjectorN64(i.WAD) { NoManual = true };
-                    N64.ReplaceROM
-                    (
-                        i.ROM,
-                        N64.EmuType == InjectorN64.Type.Rev3 ? (o3.Settings[4] ? 1 : 2) : 0,
-                        o3.Settings[3] && (N64.EmuType == InjectorN64.Type.Rev1 || N64.EmuType == InjectorN64.Type.Rev1_Alt)
-                    );
-                    N64.ModifyEmulator(o3.Settings[0], o3.Settings[1], o3.Settings[2], o3.Settings[3]);
-                    N64.InsertSaveData(i.SaveDataTitle.Split(Environment.NewLine.ToCharArray()), i.tImg);
-                    i.WAD = N64.Write();
-                    break;
-
-                case Console.SMS:
-                case Console.SMDGEN:
-                    InjectorSEGA SEGA = new InjectorSEGA(i.WAD) { IsSMS = Console == Console.SMS, NoManual = true };
-                    SEGA.ReplaceROM(i.ROM);
-                    SEGA.InsertSaveData(i.SaveDataTitle, i.tImg);
-                    SEGA.WriteCCF();
-                    i.WAD = SEGA.Write();
-                    break;
-
-                case Console.PCE:
-                case Console.NeoGeo:
-                case Console.MSX:
-                case Console.Flash:
-                default:
-                    throw new NotImplementedException();
             }
         }
         #endregion
@@ -743,13 +842,18 @@ namespace FriishProduce
                     break;
             }
 
+            UpdateBaseGeneral(index);
+        }
+
+        private void UpdateBaseGeneral(int index)
+        {
             // Changing SaveDataTitle max length & clearing text field when needed
             // ----------------------
-            if      (Console == Console.NES)    SaveDataTitle.MaxLength = i.isKorea ? 30 : 40;
-            else if (Console == Console.SNES)   SaveDataTitle.MaxLength = 80;
-            else if (Console == Console.N64)    SaveDataTitle.MaxLength = 100;
+            if (Console == Console.NES) SaveDataTitle.MaxLength = i.isKorea ? 30 : 40;
+            else if (Console == Console.SNES) SaveDataTitle.MaxLength = 80;
+            else if (Console == Console.N64) SaveDataTitle.MaxLength = 100;
             else if (Console == Console.NeoGeo
-                  || Console == Console.MSX)    SaveDataTitle.MaxLength = 64;
+                  || Console == Console.MSX) SaveDataTitle.MaxLength = 64;
             else SaveDataTitle.MaxLength = 80;
 
             // Korean WADs use different encoding format & using two lines or going over max limit cause visual bugs
@@ -758,7 +862,7 @@ namespace FriishProduce
                      || CurrentBase.ElementAt(index).Key[3] == 'T'
                      || CurrentBase.ElementAt(index).Key[3] == 'K';
             isJapanRegion = CurrentBase.ElementAt(index).Key[3] == 'J';
-            if (i.isKorea) SaveDataTitle.MaxLength = SaveDataTitle.MaxLength / 2; // Applies to both NES/FC & SNES/SFC
+            if (i.isKorea) SaveDataTitle.MaxLength /= 2; // Applies to both NES/FC & SNES/SFC
 
             // Also, some consoles only support a single line anyway
             // ********
@@ -803,11 +907,12 @@ namespace FriishProduce
                     break;
 
                 case Console.N64:
-                    o3.EmuType = (InjectorN64.Type)(i.isKorea ? 3 : emuVer);
+                    o3.EmuType = i.isKorea ? 3 : emuVer;
                     break;
 
                 case Console.SMS:
                 case Console.SMDGEN:
+                    // o4.EmuType = emuVer;
                     break;
 
                 case Console.PCE:

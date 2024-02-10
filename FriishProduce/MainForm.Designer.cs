@@ -215,7 +215,6 @@ namespace FriishProduce
             // 
             // OpenWAD
             // 
-            this.OpenWAD.Enabled = false;
             this.OpenWAD.Image = global::FriishProduce.Properties.Resources.lcd_tv;
             this.OpenWAD.LargeImage = global::FriishProduce.Properties.Resources.lcd_tv;
             this.OpenWAD.MaxSizeMode = System.Windows.Forms.RibbonElementSizeMode.Medium;
@@ -255,13 +254,19 @@ namespace FriishProduce
             resources.ApplyResources(this.ExportWAD, "ExportWAD");
             this.ExportWAD.Click += new System.EventHandler(this.ExportWAD_Click);
             // 
+            // BrowseROM
+            // 
+            this.BrowseROM.RestoreDirectory = true;
+            // 
             // SaveWAD
             // 
             this.SaveWAD.DefaultExt = "wad";
+            this.SaveWAD.RestoreDirectory = true;
             // 
             // BrowseImage
             // 
             resources.ApplyResources(this.BrowseImage, "BrowseImage");
+            this.BrowseImage.RestoreDirectory = true;
             // 
             // TabContextMenu
             // 

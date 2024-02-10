@@ -6,11 +6,11 @@ using libWiiSharp;
 
 namespace FriishProduce
 {
-    public class InjectorNES : InjectorBase
+    public class InjectorNES : WiiVCInjector
     {
         public int[] saveTPL_offsets { get; set; }
 
-        public InjectorNES(WAD w) : base(w)
+        public InjectorNES(WAD w, string ROM) : base(w, ROM)
         {
             UsesContent1 = true;
             Load();
@@ -19,14 +19,8 @@ namespace FriishProduce
         /// <summary>
         /// Inserts ROM into main.dol.
         /// </summary>
-        public void InsertROM(string ROM)
+        public override void ReplaceROM()
         {
-            // -----------------------
-            // Check if raw ROM exists
-            // -----------------------
-            if (!File.Exists(ROM))
-                throw new FileNotFoundException(new FileNotFoundException().Message, ROM);
-
             // -----------------------
             // Check for "NES" header
             // -----------------------
@@ -48,23 +42,22 @@ namespace FriishProduce
             // -----------------------
             // Check filesize of original ROM and set to variable
             // -----------------------
-            int ROMsize = 16;
-            ROMsize += 16 * 1024 * Content1[offset + 4]; // PRG
-            ROMsize += 8 * 1024 * Content1[offset + 5]; // CHR
+            int PRG = 16384 * Content1[offset + 4];
+            int CHR = 8192 * Content1[offset + 5];
+            int ROMsize = PRG + CHR + 16;
 
             // -----------------------
             // Check filesize of input ROM
             // Maximum ROM limit allowed: 4 MB
             // -----------------------
-            var inputROM = File.ReadAllBytes(ROM);
-            if (inputROM.Length > ROMsize)
+            if (ROM.Length > ROMsize)
                 throw new Exception(string.Format(Language.Get("Error003"), Math.Round((double)ROMsize / 1024).ToString(), Language.Get("Abbreviation_Kilobytes")));
 
             // -----------------------
             // Replace original ROM
             // -----------------------
             var targetROM = new byte[ROMsize];
-            inputROM.CopyTo(targetROM, 0);
+            ROM.CopyTo(targetROM, 0);
             targetROM.CopyTo(Content1, offset);
         }
 
@@ -206,13 +199,18 @@ namespace FriishProduce
         }
 
         /// <summary>
-        /// Inserts custom savedata text string into main.dol.
+        /// Inserts custom savedata text string & TPL file into main.dol. The function skips TPL replacement if the file doesn't exist or the offsets are not set properly.
         /// </summary>
-        /// <param name="text">Text string</param>
-        public void InsertSaveData(string text)
+        /// <param name="lines">Text string array</param>
+        /// <param name="tImg">Input title image</param>
+        public override void ReplaceSaveData(string[] lines, TitleImage tImg)
         {
+            // -----------------------
+            // TEXT
+            // -----------------------
+
             saveTPL_offsets = DetermineSaveTPLOffsets();
-            text = text.Replace(Environment.NewLine, "\n");
+            string text = lines.Length > 1 ? string.Join("\n", lines) : lines[0];
 
             // In the two WADs I've tested (SMB3 & Kirby's Adventure), the savedata text is found near
             // the string "VirtualIF.c MEM1 heap allocation error" within the content1 file
@@ -247,31 +245,11 @@ namespace FriishProduce
                     catch { Content1[i] = 0x00; }
                 }
             }
-        }
 
-        /// <summary>
-        /// Inserts custom savedata text string & TPL file into main.dol. The function skips TPL replacement if the file doesn't exist or the offsets are not set properly.
-        /// </summary>
-        /// <param name="text">Text string</param>
-        /// <param name="inputTPL">Input TPL's file path</param>
-        public void InsertSaveData(string text, string inputTPL)
-        {
-            InsertSaveData(text);
+            // -----------------------
+            // IMAGE
+            // -----------------------
 
-            // TPL replacement
-            if (saveTPL_offsets[0] != 0 && File.Exists(inputTPL))
-            {
-                var inputTPL_bytes = File.ReadAllBytes(inputTPL);
-                for (int i = saveTPL_offsets[0]; i < saveTPL_offsets[1]; i++)
-                    Content1[i] = inputTPL_bytes[i - saveTPL_offsets[0]];
-                File.Delete(inputTPL);
-            }
-        }
-        public void InsertSaveData(string text, TitleImage img)
-        {
-            InsertSaveData(text);
-
-            // TPL replacement
             if (saveTPL_offsets[0] != 0)
             {
                 var TPL = new byte[1];
@@ -291,7 +269,7 @@ namespace FriishProduce
                 // ----------------------------------------------------------------
                 // Replace TPL
                 // ----------------------------------------------------------------
-                var TPLnew = img.CreateSaveTPL(Console.NES, TPL).ToByteArray();
+                var TPLnew = tImg.CreateSaveTPL(Console.NES, TPL).ToByteArray();
 
                 for (int i = saveTPL_offsets[0]; i < saveTPL_offsets[1]; i++)
                     Content1[i] = TPLnew[i - saveTPL_offsets[0]];

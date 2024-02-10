@@ -27,6 +27,8 @@ namespace FriishProduce
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
+
+            { System.Threading.Thread.CurrentThread.CurrentUICulture = Language.Current; }
         }
     }
 }

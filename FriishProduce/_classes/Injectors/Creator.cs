@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace FriishProduce
 {
-    public class Injector
+    public class WiiVCModifier
     {
         // -----------------------------------
         // Public variables
@@ -24,10 +24,10 @@ namespace FriishProduce
         public string BannerTitle { get; set; }
         public int BannerYear { get; set; }
         public int BannerPlayers { get; set; }
-        public string SaveDataTitle { get; set; }
+        public string[] SaveDataTitle { get; set; }
         public string ROM { get; set; }
 
-        public void Create(string outputFile)
+        public void Modify()
         {
             // Banner metadata
             WAD.ChangeChannelTitles(ChannelTitle);
@@ -37,11 +37,6 @@ namespace FriishProduce
             // WAD metadata
             WAD.ChangeTitleID(LowerTitleID.Channel, TitleID.ToUpper());
             WAD.FakeSign = true;
-
-            // Save WAD
-            WAD.Save(outputFile);
-            WAD.Dispose();
-            if (File.Exists(outputFile) && File.ReadAllBytes(outputFile).Length < 10) throw new IOException();
         }
 
         public void ShowErrorMessage(Exception ex) => MessageBox.Show(ex.Message, Language.Get("Error"), MessageBoxButtons.OK, MessageBoxIcon.Hand);

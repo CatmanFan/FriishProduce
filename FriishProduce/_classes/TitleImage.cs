@@ -18,7 +18,6 @@ namespace FriishProduce
         private string SourcePath { get; set; }
         public Bitmap VCPic { get; set; }
         public Bitmap IconVCPic { get; set; }
-        public Bitmap SaveIcon { get; set; }
         private Bitmap SaveIconPic { get; set; }
         
         internal InterpolationMode Interpolation { get; set; }
@@ -39,7 +38,6 @@ namespace FriishProduce
 
             VCPic = null;
             IconVCPic = null;
-            SaveIcon = null;
             SaveIconPic = null;
         }
 
@@ -220,7 +218,7 @@ namespace FriishProduce
                 g.Dispose();
             }
 
-            NewSaveIcon();
+            SaveIcon();
         }
 
         public void Generate() => Generate(Source);
@@ -237,13 +235,13 @@ namespace FriishProduce
             t.AddTexture(bmp, tplTF, tplPF);
         }
 
-        public void NewSaveIcon()
+        public Bitmap SaveIcon()
         {
-            SaveIcon = new Bitmap(48, 48);
+            Bitmap bmp = new Bitmap(SaveIconPlaceholder.Width, SaveIconPlaceholder.Height);
 
-            using (Graphics g = Graphics.FromImage(SaveIcon))
+            using (Graphics g = Graphics.FromImage(bmp))
             {
-                g.DrawImage(platform == Console.SMS || platform == Console.SMDGEN ? SaveIconPlaceholder_SEGA : SaveIconPlaceholder, 0, 0, 48, 48);
+                g.DrawImage(platform == Console.SMS || platform == Console.SMDGEN ? SaveIconPlaceholder_SEGA : SaveIconPlaceholder, 0, 0, bmp.Width, bmp.Height);
 
                 g.InterpolationMode = InterpolationMode.Bilinear;
                 g.PixelOffsetMode = PixelOffsetMode.Half;
@@ -252,6 +250,8 @@ namespace FriishProduce
                 g.DrawImage(SaveIconPic, SaveIconS_xywh[0], SaveIconS_xywh[1], SaveIconS_xywh[2], SaveIconS_xywh[3]);
                 g.Dispose();
             }
+
+            return bmp;
         }
 
         public void ReplaceBanner(WAD w)
@@ -313,6 +313,7 @@ namespace FriishProduce
             }
 
             Image sBanner = tpl.ExtractTexture(0);
+            Image sIconBegin = tpl.ExtractTexture(1);
             Image sIconEnd = tpl.ExtractTexture(numTextures - 1);
 
             // Clean TPL textures
@@ -336,13 +337,25 @@ namespace FriishProduce
             // -------------------------
             // 1ST FRAME
             // ****************
-            NewSaveIcon();
-            tpl.AddTexture(SaveIcon, formatsT[1], formatsP[1]);
+            using (Graphics g = Graphics.FromImage(sIconBegin))
+            {
+                g.DrawImage(SaveIconPlaceholder, 0, 0, sIconBegin.Width, sIconBegin.Height);
 
+                g.InterpolationMode = InterpolationMode.Bilinear;
+                g.PixelOffsetMode = PixelOffsetMode.Half;
+                g.SmoothingMode = SmoothingMode.HighSpeed;
+
+                g.DrawImage(SaveIconPic, SaveIconS_xywh[0], SaveIconS_xywh[1], SaveIconS_xywh[2], SaveIconS_xywh[3]);
+                g.Dispose();
+
+                tpl.AddTexture(sIconBegin, formatsT[1], formatsP[1]);
+
+                g.Dispose();
+            }
 
             // ANIMATION AND END FRAMES
             // ****************
-            using (Image sIcon = (Image)SaveIcon.Clone())
+            using (Image sIcon = (Image)sIconBegin.Clone())
             using (Graphics g = Graphics.FromImage(sIcon))
             using (var a = new ImageAttributes())
             {
@@ -359,7 +372,7 @@ namespace FriishProduce
 
                     // 3RD FRAME
                     // ****************
-                    g.DrawImage(SaveIcon, 0, 0);
+                    g.DrawImage(sIconBegin, 0, 0);
                     a.SetColorMatrix(new ColorMatrix() { Matrix33 = opacity4[2] });
                     g.DrawImage(sIconEnd, new Rectangle(0, 0, w, h), 0, 0, w, h, GraphicsUnit.Pixel, a);
 
@@ -370,8 +383,8 @@ namespace FriishProduce
                 {
                     // 2ND/3RD FRAMES
                     // ****************
-                    tpl.AddTexture(SaveIcon, formatsT[2], formatsP[2]);
-                    tpl.AddTexture(SaveIcon, formatsT[3], formatsP[3]);
+                    tpl.AddTexture(sIconBegin, formatsT[2], formatsP[2]);
+                    tpl.AddTexture(sIconBegin, formatsT[3], formatsP[3]);
 
                     // 4TH FRAME
                     // ****************
@@ -382,7 +395,7 @@ namespace FriishProduce
 
                     // 5TH FRAME
                     // ****************
-                    g.DrawImage(SaveIcon, 0, 0);
+                    g.DrawImage(sIconBegin, 0, 0);
                     a.SetColorMatrix(new ColorMatrix() { Matrix33 = opacity4[2] });
                     g.DrawImage(sIconEnd, new Rectangle(0, 0, w, h), 0, 0, w, h, GraphicsUnit.Pixel, a);
 
@@ -394,7 +407,7 @@ namespace FriishProduce
                 tpl.AddTexture(sIconEnd, formatsT[numTextures - 1], formatsP[numTextures - 1]);
 
                 g.Dispose();
-                SaveIcon.Dispose();
+                sIconBegin.Dispose();
                 sIcon.Dispose();
                 sIconEnd.Dispose();
             }
@@ -461,13 +474,28 @@ namespace FriishProduce
                 // -------------------------
                 // 1ST FRAME
                 // ****************
-                if (File.Exists(ImagesPath + "01.png")) File.Delete(ImagesPath + "01.png");
-                SaveIcon.Save(ImagesPath + "01.png");
 
+                using (Image sIconBegin = Image.FromFile(ImagesPath + "01.png"))
+                using (Graphics g = Graphics.FromImage(sIconBegin))
+                {
+                    g.DrawImage(SaveIconPlaceholder, 0, 0, sIconBegin.Width, sIconBegin.Height);
+
+                    g.InterpolationMode = InterpolationMode.Bilinear;
+                    g.PixelOffsetMode = PixelOffsetMode.Half;
+                    g.SmoothingMode = SmoothingMode.HighSpeed;
+
+                    g.DrawImage(SaveIconPic, SaveIconS_xywh[0], SaveIconS_xywh[1], SaveIconS_xywh[2], SaveIconS_xywh[3]);
+                    g.Dispose();
+                    g.DrawImage(SaveIconPlaceholder, new Point(0, 0));
+
+                    sIconBegin.Save(ImagesPath + "01.new.png");
+
+                    g.Dispose();
+                }
 
                 // OTHER FRAMES
                 // ****************
-                using (Image img1 = Image.FromFile(ImagesPath + "01.png"))
+                using (Image img1 = Image.FromFile(ImagesPath + "01.new.png"))
                 using (Image img2 = Image.FromFile(ImagesPath + "06.png"))
                 using (Graphics g = Graphics.FromImage(img1))
                 using (var a = new ImageAttributes())
@@ -625,14 +653,14 @@ namespace FriishProduce
             // Save image generation for Flash TPLs (uses Properties.Resources.Save{Icon/Banner}Flash)
             // ------------------------------------------------------------------------------------------
             else
-            {
+            {/*
                 var bannerPath = Paths.WorkingFolder_Content2 + "banner\\US\\banner.tpl";
                 var iconPath = Paths.WorkingFolder_Content2 + "banner\\US\\icons.tpl";
 
                 // Declaration of Graphics/Imaging variables
                 var sFiles = new System.Collections.Generic.List<string>();
                 for (int i = 0; i < 5; i++)
-                    sFiles.Add(/* ImagesPath + */ $"Texture_0{i}.png");
+                    sFiles.Add(// ImagesPath + // $"Texture_0{i}.png");
 
                 Bitmap sBanner = new Bitmap(SaveBannerFlash.Width, SaveBannerFlash.Height);
                 Bitmap sIcon = new Bitmap(48, 48);
@@ -736,7 +764,7 @@ namespace FriishProduce
                 sBanner.Dispose();
                 SaveIcon.Dispose();
                 sIcon.Dispose();
-                tpl.Dispose();
+                tpl.Dispose();*/
             }
 
             // Delete images directory
@@ -752,7 +780,6 @@ namespace FriishProduce
         {
             VCPic.Dispose();
             IconVCPic.Dispose();
-            SaveIcon.Dispose();
             SaveIconPic.Dispose();
         }
     }

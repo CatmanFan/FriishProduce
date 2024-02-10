@@ -260,19 +260,9 @@ namespace FriishProduce
             string name = List[i].Name + Region + ConsoleType;
             string URL = "https://repo.mariocube.com/WADs/_WiiWare,%20VC,%20DLC,%20Channels%20&%20IOS/" + name[0].ToString().ToUpper() + "/" + Uri.EscapeDataString(name + " (Virtual Console)") + ".wad";
 
-            Web.InternetTest();;
-            byte[] y = new byte[1];
-
-            using (WebClient x = new WebClient())
-            using (System.IO.Stream webS = x.OpenRead(URL))
-            using (System.IO.MemoryStream ms = new System.IO.MemoryStream())
-            {
-                webS.CopyTo(ms);
-                y = ms.ToArray();
-            }
-
-            WAD w = new WAD();
-            w.LoadFile(y);
+            Web.InternetTest();
+            
+            WAD w = WAD.Load(Web.Get(URL));
 
             // Title ID check
             // ****************

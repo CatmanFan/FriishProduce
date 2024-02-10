@@ -150,7 +150,7 @@
     <value>False</value>
   </data>
   <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 396</value>
+    <value>14, 416</value>
   </data>
   <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
     <value>395, 104</value>
@@ -285,9 +285,6 @@
   <data name="&gt;&gt;RegionFree.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="TitleID.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 9pt</value>
-  </data>
   <data name="TitleID.Location" type="System.Drawing.Point, System.Drawing">
     <value>159, 55</value>
   </data>
@@ -295,7 +292,7 @@
     <value>4</value>
   </data>
   <data name="TitleID.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 21</value>
+    <value>55, 20</value>
   </data>
   <data name="TitleID.TabIndex" type="System.Int32, mscorlib">
     <value>36</value>
@@ -349,7 +346,7 @@
     <value>False</value>
   </data>
   <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 269</value>
+    <value>14, 279</value>
   </data>
   <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
     <value>395, 120</value>
@@ -558,11 +555,38 @@
   <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="OpenWAD.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="OpenWAD.Location" type="System.Drawing.Point, System.Drawing">
+    <value>53, 91</value>
+  </data>
+  <data name="OpenWAD.Size" type="System.Drawing.Size, System.Drawing">
+    <value>189, 17</value>
+  </data>
+  <data name="OpenWAD.TabIndex" type="System.Int32, mscorlib">
+    <value>34</value>
+  </data>
+  <data name="OpenWAD.Text" xml:space="preserve">
+    <value>Use offline WAD file (experimental)</value>
+  </data>
+  <data name="&gt;&gt;OpenWAD.Name" xml:space="preserve">
+    <value>OpenWAD</value>
+  </data>
+  <data name="&gt;&gt;OpenWAD.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;OpenWAD.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;OpenWAD.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="baseName.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="baseName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>123, 24</value>
+    <value>123, 19</value>
   </data>
   <data name="baseName.Size" type="System.Drawing.Size, System.Drawing">
     <value>0, 13</value>
@@ -580,13 +604,13 @@
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;baseName.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="baseID.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="baseID.Location" type="System.Drawing.Point, System.Drawing">
-    <value>123, 46</value>
+    <value>123, 40</value>
   </data>
   <data name="baseID.Size" type="System.Drawing.Size, System.Drawing">
     <value>0, 13</value>
@@ -604,7 +628,7 @@
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;baseID.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="WADRegion.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
@@ -625,7 +649,7 @@
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="WADRegion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>307, 74</value>
+    <value>307, 62</value>
   </data>
   <data name="WADRegion.Size" type="System.Drawing.Size, System.Drawing">
     <value>34, 24</value>
@@ -646,13 +670,13 @@
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;WADRegion.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="Base.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9pt</value>
   </data>
   <data name="Base.Location" type="System.Drawing.Point, System.Drawing">
-    <value>54, 74</value>
+    <value>54, 62</value>
   </data>
   <data name="Base.Size" type="System.Drawing.Size, System.Drawing">
     <value>244, 23</value>
@@ -670,10 +694,10 @@
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;Base.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 46</value>
+    <value>15, 40</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
     <value>102, 20</value>
@@ -697,10 +721,10 @@
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 24</value>
+    <value>15, 19</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
     <value>102, 20</value>
@@ -724,13 +748,13 @@
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="groupBox2.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 140</value>
+    <value>14, 145</value>
   </data>
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
     <value>395, 117</value>
@@ -796,7 +820,7 @@
     <value>False</value>
   </data>
   <data name="groupBox8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>368, 445</value>
+    <value>368, 465</value>
   </data>
   <data name="groupBox8.Size" type="System.Drawing.Size, System.Drawing">
     <value>306, 55</value>
@@ -1164,9 +1188,6 @@
   <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="BannerTitle.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 10pt</value>
-  </data>
   <data name="BannerTitle.Location" type="System.Drawing.Point, System.Drawing">
     <value>32, 42</value>
   </data>
@@ -1261,7 +1282,7 @@
     <value>False</value>
   </data>
   <data name="groupBox6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 350</value>
+    <value>12, 370</value>
   </data>
   <data name="groupBox6.Size" type="System.Drawing.Size, System.Drawing">
     <value>338, 150</value>
@@ -1308,11 +1329,8 @@
   <data name="&gt;&gt;SaveIcon_Panel.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="SaveDataTitle.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 10pt</value>
-  </data>
   <data name="SaveDataTitle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>82, 22</value>
+    <value>82, 26</value>
   </data>
   <data name="SaveDataTitle.MaxLength" type="System.Int32, mscorlib">
     <value>80</value>
@@ -1321,7 +1339,7 @@
     <value>True</value>
   </data>
   <data name="SaveDataTitle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>201, 45</value>
+    <value>201, 35</value>
   </data>
   <data name="SaveDataTitle.TabIndex" type="System.Int32, mscorlib">
     <value>30</value>
@@ -1345,7 +1363,7 @@
     <value>False</value>
   </data>
   <data name="groupBox7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>368, 350</value>
+    <value>368, 370</value>
   </data>
   <data name="groupBox7.Size" type="System.Drawing.Size, System.Drawing">
     <value>306, 80</value>
@@ -1384,7 +1402,7 @@
     <value>1</value>
   </data>
   <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1110, 510</value>
+    <value>1110, 530</value>
   </data>
   <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
     <value>422</value>
@@ -1404,14 +1422,26 @@
   <data name="&gt;&gt;splitContainer1.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <metadata name="BrowseWAD.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>19, 45</value>
+  </metadata>
+  <data name="BrowseWAD.Filter" xml:space="preserve">
+    <value>WAD|*.wad</value>
+  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1110, 530</value>
+    <value>1110, 550</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>NES</value>
+  </data>
+  <data name="&gt;&gt;BrowseWAD.Name" xml:space="preserve">
+    <value>BrowseWAD</value>
+  </data>
+  <data name="&gt;&gt;BrowseWAD.Type" xml:space="preserve">
+    <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>InjectorForm</value>

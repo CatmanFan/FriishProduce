@@ -7,49 +7,49 @@ using libWiiSharp;
 
 namespace FriishProduce
 {
-    public class InjectorN64 : InjectorBase
+    public class InjectorN64 : WiiVCInjector
     {
         public enum Type
         {
-            Rev1,           // F-Zero X, Super Mario 64
+            Rev1 = 0,       // F-Zero X, Super Mario 64
 
-            Rev1_Alt,       // Star Fox 64, Mario Kart 64, Zelda: Ocarina
+            Rev1_Alt = 1,   // Star Fox 64, Mario Kart 64, Zelda: Ocarina
 
-            Rev2,           // Pokémon Snap, Sin & Punishment, Yoshi's Story
+            Rev2 = 2,       // Pokémon Snap, Sin & Punishment, Yoshi's Story
 
-            Rev3            // Bomberman Hero, Custom Robo V2, Mario Golf, Mario Party 2, Ogre Battle 64, Paper Mario + KOREA: Star Fox 64, Mario Kart 64
+            Rev3 = 3        // Bomberman Hero, Custom Robo V2, Mario Golf, Mario Party 2, Ogre Battle 64, Paper Mario + KOREA: Star Fox 64, Mario Kart 64
                             // This is the one which uses the ROMC compressed format
         }
 
-        public Type EmuType { get; set; }
+        public bool[] Settings { get; set; }
+        public int CompressionType { get; set; }    // Type of ROMC compression (0 = none; 1 = ROMC type 0; 2 = ROMC type 1)
+        public bool Allocate { get; set; }          // Determines whether to allocate ROM size (rev. 1 WADs only)
 
-        private byte[] ROM { get; set; }
-
-        public InjectorN64(WAD w) : base(w)
+        public InjectorN64(WAD w, string ROM) : base(w, ROM)
         {
             UsesContent1 = true;
             UsesContent5 = true;
             Load();
 
-            if (WAD.Region == Region.Korea) EmuType = Type.Rev3;
+            if (WAD.Region == Region.Korea) EmuType = 3;
             else switch (WAD.UpperTitleID.Substring(0, 3).ToUpper())
             {
                 default:
                 case "NAA":
                 case "NAF":
-                    EmuType = Type.Rev1;
+                    EmuType = 0;
                     break;
 
                 case "NAB":
                 case "NAC":
                 case "NAD":
-                    EmuType = Type.Rev1_Alt;
+                    EmuType = 1;
                     break;
 
                 case "NAK":
                 case "NAJ":
                 case "NAH":
-                    EmuType = Type.Rev2;
+                    EmuType = 2;
                     break;
 
                 case "NA3":
@@ -57,7 +57,7 @@ namespace FriishProduce
                 case "NAU":
                 case "NAY":
                 case "NAZ":
-                    EmuType = Type.Rev3;
+                    EmuType = 3;
                     break;
             }
         }
@@ -66,24 +66,7 @@ namespace FriishProduce
         /// Injection of ROM from base file
         /// </summary>
         /// <param name="ROM">Path to ROM</param>
-        /// <param name="type">Type of ROMC compression (0 = none; 1 = ROMC type 0; 2 = ROMC type 1)</param>
-        public void ReplaceROM(string ROM, int compression = 0, bool isAllocated = false)
-        {
-            // -----------------------
-            // Check if raw ROM exists
-            // -----------------------
-            if (!File.Exists(ROM))
-                throw new FileNotFoundException(new FileNotFoundException().Message, ROM);
-
-            ReplaceROM(File.ReadAllBytes(ROM), compression, isAllocated);
-        }
-
-        /// <summary>
-        /// Injection of ROM from byte array
-        /// </summary>
-        /// <param name="ROM">ROM in bytes</param>
-        /// <param name="compression">Type of ROMC compression (0 = none; 1 = ROMC type 0; 2 = ROMC type 1)</param>
-        public void ReplaceROM(byte[] ROMbytes, int compression = 0, bool isAllocated = false)
+        public override void ReplaceROM()
         {
             // -----------------------
             // Byteswap ROM first
@@ -96,28 +79,28 @@ namespace FriishProduce
 
             // Byte Swapped to Big Endian
             // ****************
-            if ((ROMbytes[56] == 0x4E && ROMbytes[57] == 0x00 && ROMbytes[58] == 0x00 && ROMbytes[59] == 0x00)
-                || (ROMbytes[0] == 0x40 && ROMbytes[1] == 0x12 && ROMbytes[2] == 0x37 && ROMbytes[3] == 0x80))
+            if ((ROM[56] == 0x4E && ROM[57] == 0x00 && ROM[58] == 0x00 && ROM[59] == 0x00)
+                || (ROM[0] == 0x40 && ROM[1] == 0x12 && ROM[2] == 0x37 && ROM[3] == 0x80))
             {
-                for (int i = 0; i < ROMbytes.Length; i += 4)
-                    (ROMbytes[i], ROMbytes[i + 1], ROMbytes[i + 2], ROMbytes[i + 3]) = (ROMbytes[i + 3], ROMbytes[i + 2], ROMbytes[i + 1], ROMbytes[i]);
+                for (int i = 0; i < ROM.Length; i += 4)
+                    (ROM[i], ROM[i + 1], ROM[i + 2], ROM[i + 3]) = (ROM[i + 3], ROM[i + 2], ROM[i + 1], ROM[i]);
             }
 
             // Little Endian to Big Endian
             // ****************
-            else if ((ROMbytes[56] == 0x00 && ROMbytes[57] == 0x00 && ROMbytes[58] == 0x4E && ROMbytes[59] == 0x00)
-                || (ROMbytes[0] == 0x37 && ROMbytes[1] == 0x80 && ROMbytes[2] == 0x40 && ROMbytes[3] == 0x12))
+            else if ((ROM[56] == 0x00 && ROM[57] == 0x00 && ROM[58] == 0x4E && ROM[59] == 0x00)
+                || (ROM[0] == 0x37 && ROM[1] == 0x80 && ROM[2] == 0x40 && ROM[3] == 0x12))
             {
-                for (int i = 0; i < ROMbytes.Length; i += 2)
-                    (ROMbytes[i], ROMbytes[i + 1])                                   = (ROMbytes[i + 1], ROMbytes[i]);
+                for (int i = 0; i < ROM.Length; i += 2)
+                    (ROM[i], ROM[i + 1]) = (ROM[i + 1], ROM[i]);
             }
 
             // -----------------------
             // Check filesize
             // Maximum ROM limit allowed: 32 MB unless allocated in main.dol (maximum possible: ~56 MB)
             // -----------------------
-            double maxSize = isAllocated ? 56623104 : 33554432;
-            if (ROMbytes.Length > maxSize)
+            double maxSize = Allocate ? 56623104 : 33554432;
+            if (ROM.Length > maxSize)
                 throw new Exception(string.Format(Language.Get("Error003"), Math.Round(maxSize / 1048576).ToString(), Language.Get("Abbreviation_Megabytes")));
 
             // -----------------------
@@ -126,26 +109,26 @@ namespace FriishProduce
             switch (EmuType)
             {
                 default:
-                    Content5.ReplaceFile(Content5.GetNodeIndex("rom"), ROMbytes);
+                    Content5.ReplaceFile(Content5.GetNodeIndex("rom"), ROM);
                     break;
 
-                case Type.Rev3:
+                case 3:
                     // Set title ID to NBDx to prevent crashing on Bomberman Hero
                     // ****************
                     if (WAD.UpperTitleID.ToUpper().StartsWith("NBD"))
                     {
-                        ROMbytes[0x3B] = 0x4E;
-                        ROMbytes[0x3C] = 0x42;
-                        ROMbytes[0x3D] = 0x44;
+                        ROM[0x3B] = 0x4E;
+                        ROM[0x3C] = 0x42;
+                        ROM[0x3D] = 0x44;
                     }
 
                     // Temporary ROM file at working folder
                     // ****************
-                    File.WriteAllBytes(Paths.WorkingFolder + "rom", ROMbytes);
+                    File.WriteAllBytes(Paths.WorkingFolder + "rom", ROM);
 
                     // Compress using ROMC type
                     // ****************
-                    if (compression == 1) // Type 0
+                    if (CompressionType == 1) // Type 0
                         Process.Run
                         (
                             Paths.Tools + "romc0.exe",
@@ -168,17 +151,15 @@ namespace FriishProduce
 
                     // Convert to bytes and replace at "romc"
                     // ****************
-                    ROMbytes = File.ReadAllBytes(Paths.WorkingFolder + "romc");
+                    ROM = File.ReadAllBytes(Paths.WorkingFolder + "romc");
                     File.Delete(Paths.WorkingFolder + "romc");
 
-                    Content5.ReplaceFile(Content5.GetNodeIndex("romc"), ROMbytes);
+                    Content5.ReplaceFile(Content5.GetNodeIndex("romc"), ROM);
                     break;
             }
-
-            ROM = ROMbytes;
         }
 
-        public void InsertSaveData(string[] lines, TitleImage tImg)
+        public override void ReplaceSaveData(string[] lines, TitleImage tImg)
         {
             // -----------------------
             // TEXT
@@ -187,13 +168,13 @@ namespace FriishProduce
             // The separator byte array for double-lines.
             // This varies depending on the revision of the emulator, and the second separator is often cut off by end-of-file in earlier releases
             // ****************
-            byte[] separator = EmuType == Type.Rev1     ? new byte[] { 0x00, 0xBB, 0xBB, 0xBB }
-                             : EmuType == Type.Rev1_Alt ? new byte[] { 0x00, 0xBB }
+            byte[] separator = EmuType == 0 ? new byte[] { 0x00, 0xBB, 0xBB, 0xBB }
+                             : EmuType == 1 ? new byte[] { 0x00, 0xBB }
                              : new byte[] { 0x00, 0x00, 0xBB, 0xBB };
 
             // Text addition format: UTF-16 (Little Endian) for Rev1, UTF-16 (Big Endian) for newer revisions
             // ****************
-            var encoding = EmuType == Type.Rev1 || EmuType == Type.Rev1_Alt ? Encoding.Unicode : Encoding.BigEndianUnicode;
+            var encoding = EmuType == 0 || EmuType == 1 ? Encoding.Unicode : Encoding.BigEndianUnicode;
 
             foreach (var item in Content5.StringTable)
             {
@@ -224,7 +205,7 @@ namespace FriishProduce
                     // Also varying on revision, how the second line field is itself handled.
                     // Where it is empty: In earlier revisions such as F-Zero X and Super Mario 64, it is a white space character, otherwise it is null.
                     // ****************
-                    if (lines.Length == 1 && EmuType == Type.Rev1) lines = new string[2] { lines[0], " " };
+                    if (lines.Length == 1 && EmuType == 0) lines = new string[2] { lines[0], " " };
 
                     // Second savetext line (optional)
                     // ****************
@@ -254,16 +235,15 @@ namespace FriishProduce
         
         // *****************************************************************************************************
         #region SETTINGS
-        public void ModifyEmulator(bool BrightnessFix, bool CrashFix, bool RAMExpansion, bool AllocateROMSize)
+        public void ModifyEmulator()
         {
             List<string> failed = new List<string>();
 
             try
             {
-                if (BrightnessFix)
+                if (Settings[0])
                 {
                     // Method originally reported by @NoobletCheese/@Maeson on GBAtemp.
-
 
                     // Check for offset
                     // ****************
@@ -287,7 +267,7 @@ namespace FriishProduce
                     }
                 }
 
-                if (CrashFix && (EmuType == Type.Rev1 || EmuType == Type.Rev1_Alt))
+                if (Settings[1] && (EmuType <= 1))
                 {
                     // Declare changed value
                     // ****************
@@ -313,7 +293,7 @@ namespace FriishProduce
                     }
                 }
 
-                if (RAMExpansion)
+                if (Settings[2])
                 {
                     // Check for offset and set RAM memory if found
                     // ****************
@@ -330,7 +310,7 @@ namespace FriishProduce
                     else new byte[] { 0x60, 0x00, 0x00, 0x00 }.CopyTo(Content1, index);
                 }
 
-                if (AllocateROMSize && (EmuType == Type.Rev1 || EmuType == Type.Rev1_Alt))
+                if (Settings[3] && (EmuType <= 1))
                 {
                     // Fix based on SM64Wii (aglab2)
                     // https://github.com/aglab2/sm64wii/blob/master/usamune.gzi
@@ -339,15 +319,17 @@ namespace FriishProduce
                     // Check ROM size
                     // ****************
                     int size_ROM = 1 + ROM.Length / 1024 / 1024;
-                    // if (size_ROM > 56) throw new Exception(string.Format(Language.Get("Error003"), "56", Language.Get("Abbreviation_Megabytes")));
+                    if (size_ROM > 56) throw new Exception(string.Format(Language.Get("Error003"), "56", Language.Get("Abbreviation_Megabytes")));
 
                     // Check for offset
                     // ****************
                     int index = Byte.IndexOf(Content1, "44 38 7D 00 1C 3C 80", 0x5A000, 0x5E000);
 
-                    if (index == -1) failed.Add(Language.GetArray("List_N64Options")[3]);
+                    if (index == -1) { failed.Add(Language.GetArray("List_N64Options")[3]); Allocate = false; }
                     else
                     {
+                        index += 7;
+
                         // Set size value in bytes
                         // ****************
                         var size = size_ROM.ToString("X2");
@@ -361,8 +343,15 @@ namespace FriishProduce
 
                         // Copy
                         // ****************
-                        Content1[index + 7] = size_array[0];
-                        Content1[index + 8] = size_array[1];
+                        Content1[index] = size_array[0];
+                        Content1[index + 1] = size_array[1];
+                        
+                        var second = BitConverter.ToString(new byte[] { Content1[index + 36], Content1[index + 37] }).Replace("-", "");
+                        if (second[0] == '0' && second[3] == '0')
+                        {
+                            Content1[index + 36] = size_array[2];
+                            Content1[index + 37] = size_array[3];
+                        }
                     }
                 }
 

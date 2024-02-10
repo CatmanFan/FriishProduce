@@ -8,9 +8,8 @@ using System.Threading.Tasks;
 
 namespace FriishProduce
 {
-    class InjectorSEGA : InjectorBase
+    public class InjectorSEGA : WiiVCInjector
     {
-        public string ROM { get; set; }
         public enum Type
         {
             Rev1 = 1,       // Comix Zone (SMD)
@@ -74,7 +73,6 @@ namespace FriishProduce
 
         private int CCFApp { get; set; }
 
-        public Type EmuType { get; set; }
         public bool IsSMS { get; set; }
         private string ROMName { get; set; }
 
@@ -118,7 +116,7 @@ namespace FriishProduce
         // Anything else, and it will just do a black screen, or it will work for Master System only
         // ****************
 
-        public InjectorSEGA(WAD w) : base(w)
+        public InjectorSEGA(WAD w, string ROM) : base(w, ROM)
         {
             UsesContent5 = true;
             Load();
@@ -127,23 +125,23 @@ namespace FriishProduce
             {
                 default:
                 case "MAP": // SMD
-                    EmuType = Type.Rev1;
+                    EmuType = 1;
                     break;
 
                 case "LAG": // SMS
                 // ---------------
                 case "MA6": // SMD
                 case "MCP":
-                    EmuType = Type.Rev2;
+                    EmuType = 2;
                     break;
 
                 case "LAD": // SMS - Phantasy Star uses rev2 in Japanese region
-                    EmuType = WAD.UpperTitleID.ToUpper()[3] == 'J' ? Type.Rev2 : Type.Rev3;
+                    EmuType = WAD.UpperTitleID.ToUpper()[3] == 'J' ? 2 : 3;
                     break;
 
                 case "MBA": // SMD
                 case "MC2":
-                    EmuType = Type.Rev3;
+                    EmuType = 3;
                     break;
             }
 
@@ -367,10 +365,20 @@ namespace FriishProduce
             foreach (var item in Directory.EnumerateFiles(Paths.DataCCF))
                 if (Path.GetExtension(item).ToLower().StartsWith(".sgd") || Path.GetExtension(item).ToLower().StartsWith(".sms"))
                     ROMName = Path.GetFileName(item).Replace("__", "");
+
+            // Read emanual
+            // ****************
+            if (File.Exists(Paths.DataCCF + "man.arc"))
+            {
+                ManualPath = Paths.DataCCF + "man.arc";
+                Manual = File.ReadAllBytes(ManualPath);
+            }
         }
 
         public void WriteCCF()
         {
+            if (!Directory.Exists(Paths.DataCCF)) return;
+
             if (ROMName.Contains("MonsterWorld4")) CCFApp = 1;
             else CCFApp = 0;
 
@@ -385,35 +393,22 @@ namespace FriishProduce
             if (File.Exists(Paths.WorkingFolder + "data.ccf")) File.Delete(Paths.WorkingFolder + "data.ccf");
         }
 
-        public void ReplaceROM(string ROM)
-        {
-            // -----------------------
-            // Check if raw ROM exists
-            // -----------------------
-            if (!File.Exists(ROM))
-                throw new FileNotFoundException(new FileNotFoundException().Message, ROM);
-
-            ReplaceROM(File.ReadAllBytes(ROM));
-        }
-
-        public void ReplaceROM(byte[] ROMbytes)
+        public override void ReplaceROM()
         {
             // -----------------------
             // Check filesize of input ROM
             // Maximum ROM limit allowed: 5.25 MB for Gen/MD or 512 KB for Master System
             // -----------------------
             var maxSize = IsSMS ? 524288 : 5.25 * 1024 * 1024;
-            if (ROMbytes.Length > maxSize)
+            if (ROM.Length > maxSize)
                 throw new Exception(string.Format(Language.Get("Error003"), IsSMS ? "512" : "5.25", IsSMS ? Language.Get("Abbreviation_Kilobytes") : Language.Get("Abbreviation_Megabytes")));
 
             foreach (var item in Directory.EnumerateFiles(Paths.DataCCF))
-            if (Path.GetExtension(item).ToLower().StartsWith(".sgd") || Path.GetExtension(item).ToLower().StartsWith(".sms"))
-            {
-                File.WriteAllBytes(item, ROMbytes);
-            }
+                if (Path.GetExtension(item).ToLower().StartsWith(".sgd") || Path.GetExtension(item).ToLower().StartsWith(".sms"))
+                    File.WriteAllBytes(item, ROM);
         }
 
-        public void InsertSaveData(string text, TitleImage img)
+        public override void ReplaceSaveData(string[] lines, TitleImage tImg)
         {
             // -----------------------
             // COMMENT
@@ -426,13 +421,13 @@ namespace FriishProduce
                     string[] newBanner = File.ReadAllLines(item);
                     for (int i = 4; i < newBanner.Length; i++)
                     {
-                        if (newBanner[i].StartsWith("JP:")) newBanner[i] = $"JP:{text}";
-                        if (newBanner[i].StartsWith("EN:")) newBanner[i] = $"EN:{text}";
-                        if (newBanner[i].StartsWith("GE:")) newBanner[i] = $"GE:{text}";
-                        if (newBanner[i].StartsWith("FR:")) newBanner[i] = $"FR:{text}";
-                        if (newBanner[i].StartsWith("SP:")) newBanner[i] = $"SP:{text}";
-                        if (newBanner[i].StartsWith("IT:")) newBanner[i] = $"IT:{text}";
-                        if (newBanner[i].StartsWith("DU:")) newBanner[i] = $"DU:{text}";
+                        if (newBanner[i].StartsWith("JP:")) newBanner[i] = $"JP:{lines[0]}";
+                        if (newBanner[i].StartsWith("EN:")) newBanner[i] = $"EN:{lines[0]}";
+                        if (newBanner[i].StartsWith("GE:")) newBanner[i] = $"GE:{lines[0]}";
+                        if (newBanner[i].StartsWith("FR:")) newBanner[i] = $"FR:{lines[0]}";
+                        if (newBanner[i].StartsWith("SP:")) newBanner[i] = $"SP:{lines[0]}";
+                        if (newBanner[i].StartsWith("IT:")) newBanner[i] = $"IT:{lines[0]}";
+                        if (newBanner[i].StartsWith("DU:")) newBanner[i] = $"DU:{lines[0]}";
                     }
 
                     File.WriteAllText(item, string.Join("\n", newBanner), Encoding.BigEndianUnicode);
@@ -441,7 +436,7 @@ namespace FriishProduce
                 else if (Path.GetFileName(item).ToLower().Contains("comment"))
                 {
                     string[] newComment = File.ReadAllLines(item, Encoding.UTF8);
-                    newComment[0] = text;
+                    newComment[0] = lines[0];
 
                     using (TextWriter t = new StreamWriter(item, false))
                     {
@@ -456,7 +451,7 @@ namespace FriishProduce
             // IMAGE
             // -----------------------
 
-            img.ReplaceSaveWTE();
+            tImg.ReplaceSaveWTE();
         }
     }
 }

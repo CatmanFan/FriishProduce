@@ -8,12 +8,12 @@ using libWiiSharp;
 
 namespace FriishProduce
 {
-    public class InjectorSNES : InjectorBase
+    public class InjectorSNES : WiiVCInjector
     {
         private string ID { get; set; }
         private string Target { get; set; }
 
-        public InjectorSNES(WAD w) : base(w)
+        public InjectorSNES(WAD w, string ROM) : base(w, ROM)
         {
             UsesContent1 = true;
             UsesContent5 = true;
@@ -25,19 +25,13 @@ namespace FriishProduce
         /// <summary>
         /// Replaces ROM within extracted content5 directory. (compressed formats not supported yet)
         /// </summary>
-        public void ReplaceROM(string ROM)
+        public override void ReplaceROM()
         {
-            // -----------------------
-            // Check if raw ROM exists
-            // -----------------------
-            if (!File.Exists(ROM))
-                throw new FileNotFoundException(new FileNotFoundException().Message, ROM);
-
             // -----------------------
             // Check filesize
             // Maximum ROM limit allowed: 4 MB
             // -----------------------
-            if (File.ReadAllBytes(ROM).Length > 4194304)
+            if (ROM.Length > 4194304)
                 throw new Exception(string.Format(Language.Get("Error003"), "4", Language.Get("Abbreviation_Megabytes")));
 
             // -----------------------
@@ -52,7 +46,7 @@ namespace FriishProduce
             // ****************
             else if (Target.ToUpper().StartsWith("LZ77"))
             {
-                File.Copy(ROM, Paths.WorkingFolder + "rom");
+                File.WriteAllBytes(Paths.WorkingFolder + "rom", ROM);
                 File.WriteAllBytes(Paths.WorkingFolder + "LZ77orig.rom", Content5.Data[Content5.GetNodeIndex(Target)]);
 
                 Process.Run
@@ -80,17 +74,14 @@ namespace FriishProduce
             }
         }
 
-        public void InsertSaveData(string[] lines, TitleImage tImg)
+        public override void ReplaceSaveData(string[] lines, TitleImage tImg)
         {
             // -----------------------
             // TEXT
             // -----------------------
 
-            List<string> convertedLines = new List<string>();
-            foreach (var line in lines)
-                if (!string.IsNullOrWhiteSpace(line)) convertedLines.Add(line.Replace("\r\n", "\n"));
-            lines = convertedLines.ToArray();
-
+            // Search for entry points
+            // ****************
             List<int> ID_indexes = new List<int>();
             for (int i = 0; i < Content1.Length; i++)
                 if (Content1[i] == Convert.ToByte(ID[0])

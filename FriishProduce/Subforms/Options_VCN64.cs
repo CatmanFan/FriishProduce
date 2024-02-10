@@ -16,14 +16,14 @@ namespace FriishProduce
         // *******
         public IDictionary<int, bool> Settings = new Dictionary<int, bool>
         {
-            /* Brightness fix */        { 0, true },
-            /* Crashes fix */           { 1, true },
+            /* Brightness fix */        { 0, false },
+            /* Crashes fix */           { 1, false },
             /* Extended RAM */          { 2, false },
             /* Allocate for ROM size */ { 3, false },
             /* Use ROMC type 0 */       { 4, false }
         };
 
-        public InjectorN64.Type EmuType { get; set; }
+        public int EmuType { get; set; }
 
         public Options_VCN64()
         {
@@ -35,8 +35,8 @@ namespace FriishProduce
         {
             // Options
             // *******
-            n64003.Enabled = n64001.Enabled = EmuType == InjectorN64.Type.Rev1 || EmuType == InjectorN64.Type.Rev1_Alt;
-            n64004.Visible = n64004.Enabled = EmuType == InjectorN64.Type.Rev3;
+            n64003.Enabled = n64001.Enabled = EmuType <= 1;
+            n64004.Visible = n64004.Enabled = EmuType == 3;
             n64000.Checked = Settings[0];
             n64001.Checked = Settings[1];
             n64002.Checked = Settings[2];
@@ -45,7 +45,7 @@ namespace FriishProduce
             // *******
 
             panel3.Height = 6 + Math.Max(x009.Height, pictureBox1.Height) + 7;
-            Height = EmuType == InjectorN64.Type.Rev3 ? 320 : 260;
+            Height = EmuType == 3 ? 320 : 260;
 
             CenterToParent();
         }

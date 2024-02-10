@@ -12,19 +12,48 @@ namespace FriishProduce
 {
     public class Web
     {
+        private static bool IsConnected = false;
+
         public static void InternetTest()
         {
-            using (Ping p = new Ping())
+            if (IsConnected) return;
+
+            try
             {
-                try
+                var request = (HttpWebRequest)WebRequest.Create
+                (
+                    System.Globalization.CultureInfo.InstalledUICulture.Name.StartsWith("fa") ? "https://www.aparat.com/" :
+                    System.Globalization.CultureInfo.InstalledUICulture.Name.Contains("zh-CN") ? "http://www.baidu.com/" :
+                    "https://gbatemp.net/"
+                );
+                request.Method = "HEAD";
+                request.KeepAlive = false;
+                request.Timeout = 15000;
+                var response = request.GetResponse();
+
+                for (int i = 0; i < 2; i++)
                 {
-                    PingReply r = p.Send("google.com", 3000);
-                    if (r.Status != IPStatus.Success || r == null) throw new WebException(Language.Get("Error000"), WebExceptionStatus.Timeout);
+                    char x = response.ResponseUri.ToString()[i];
                 }
-                catch
-                {
-                    throw new WebException(Language.Get("Error000"), WebExceptionStatus.ConnectFailure);
-                }
+
+                IsConnected = true;
+            }
+            catch (WebException ex)
+            {
+                throw new Exception(Language.Get("Error000") + Environment.NewLine + ex.Message + (ex.Message[ex.Message.Length - 1] != '.' ? "." : string.Empty));
+            }
+        }
+
+        public static byte[] Get(string URL)
+        {
+            using (WebClient x = new WebClient())
+            using (Stream webS = x.OpenRead(URL))
+            using (MemoryStream ms = new MemoryStream())
+            {
+                webS.ReadTimeout = 45000;
+                webS.CopyTo(ms); // Actual web connection is done here
+                if (ms.ToArray().Length > 75) return ms.ToArray();
+                throw new WebException();
             }
         }
     }
@@ -102,7 +131,7 @@ namespace FriishProduce
                         // Search in "releaseyear" repository
                         // ****************
                         using (WebClient c = new WebClient())
-                            db_bytes = c.DownloadData(db_base + "releaseyear/" + Uri.EscapeUriString(item.Value) + ".dat");
+                            db_bytes = Web.Get(db_base + "releaseyear/" + Uri.EscapeUriString(item.Value) + ".dat");
 
                         db_lines = Encoding.UTF8.GetString(db_bytes).Split(Environment.NewLine.ToCharArray());
 
@@ -140,7 +169,7 @@ namespace FriishProduce
                     // If not found, search in "developer" repository, which happens to be more complete
                     // ****************
                     using (WebClient c = new WebClient())
-                        db_bytes = c.DownloadData(db_base + "developer/" + Uri.EscapeUriString(item.Value) + ".dat");
+                        db_bytes = Web.Get(db_base + "developer/" + Uri.EscapeUriString(item.Value) + ".dat");
 
                     // Scan retrieved database
                     // ****************
@@ -166,7 +195,7 @@ namespace FriishProduce
                     // "maxusers" contains maximum number of players supported
                     // ****************
                     using (WebClient c = new WebClient())
-                        db_bytes = c.DownloadData(db_base + "maxusers/" + Uri.EscapeUriString(item.Value) + ".dat");
+                        db_bytes = Web.Get(db_base + "maxusers/" + Uri.EscapeUriString(item.Value) + ".dat");
 
                     // Scan retrieved database
                     // ****************
@@ -185,7 +214,7 @@ namespace FriishProduce
                     // Get original serial (title or content ID) of game
                     // ****************
                     using (WebClient c = new WebClient())
-                        db_bytes = c.DownloadData(db_base + "serial/" + Uri.EscapeUriString(item.Value) + ".dat");
+                        db_bytes = Web.Get(db_base + "serial/" + Uri.EscapeUriString(item.Value) + ".dat");
 
                     // Scan retrieved database
                     // ****************

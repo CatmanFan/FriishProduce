@@ -165,6 +165,11 @@ Injection will continue as intended.</value>
   <data name="Error006" xml:space="preserve">
     <value>Failed to export to WAD.</value>
   </data>
+  <data name="Error007" xml:space="preserve">
+    <value>Not a valid emanual contents folder.
+
+Injection will continue as intended.</value>
+  </data>
   <data name="File" xml:space="preserve">
     <value>File</value>
   </data>
@@ -244,6 +249,10 @@ Restart now?</value>
   </data>
   <data name="Message004" xml:space="preserve">
     <value>Unable to retrieve all LibRetro data for the selected software. Some fields may need to be filled manually.</value>
+  </data>
+  <data name="Message005" xml:space="preserve">
+    <value>The selected WAD ({0}) is not valid.
+Either it is not yet available in the database, or it is of the incorrect console.</value>
   </data>
   <data name="PlatformGroup_0" xml:space="preserve">
     <value>Nintendo</value>

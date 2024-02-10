@@ -78,6 +78,8 @@ namespace FriishProduce
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.SaveIcon_Panel = new System.Windows.Forms.Panel();
             this.SaveDataTitle = new System.Windows.Forms.TextBox();
+            this.BrowseWAD = new System.Windows.Forms.OpenFileDialog();
+            this.OpenWAD = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -230,6 +232,7 @@ namespace FriishProduce
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.OpenWAD);
             this.groupBox2.Controls.Add(this.baseName);
             this.groupBox2.Controls.Add(this.baseID);
             this.groupBox2.Controls.Add(this.WADRegion);
@@ -476,6 +479,18 @@ namespace FriishProduce
             this.SaveDataTitle.TextChanged += new System.EventHandler(this.TextBox_Changed);
             this.SaveDataTitle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_Handle);
             // 
+            // BrowseWAD
+            // 
+            resources.ApplyResources(this.BrowseWAD, "BrowseWAD");
+            this.BrowseWAD.RestoreDirectory = true;
+            // 
+            // OpenWAD
+            // 
+            resources.ApplyResources(this.OpenWAD, "OpenWAD");
+            this.OpenWAD.Name = "OpenWAD";
+            this.OpenWAD.UseVisualStyleBackColor = true;
+            this.OpenWAD.CheckedChanged += new System.EventHandler(this.OpenWAD_CheckedChanged);
+            // 
             // InjectorForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
@@ -567,5 +582,7 @@ namespace FriishProduce
         private System.Windows.Forms.PictureBox BannerPreview_Line2;
         private System.Windows.Forms.Label BannerPreview_Year;
         private System.Windows.Forms.Label BannerPreview_Players;
+        internal System.Windows.Forms.OpenFileDialog BrowseWAD;
+        private System.Windows.Forms.CheckBox OpenWAD;
     }
 }

@@ -98,7 +98,6 @@ namespace FriishProduce
 
         public MainForm()
         {
-            var x = Language.Get("Filter_Img");
             InitializeComponent();
             RefreshForm();
 
@@ -173,8 +172,7 @@ namespace FriishProduce
         /// </summary>
         private void AddProject(object sender, EventArgs e)
         {
-            Console console;
-            if (!Enum.TryParse((sender as RibbonButton).Tag.ToString(), out console))
+            if (!Enum.TryParse((sender as RibbonButton).Tag.ToString(), out Console console))
                 return;
 
             tabControl.Visible = true;

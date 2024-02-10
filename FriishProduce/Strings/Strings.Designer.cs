@@ -216,6 +216,17 @@ namespace Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Not a valid emanual contents folder.
+        ///
+        ///Injection will continue as intended..
+        /// </summary>
+        public static string Error007 {
+            get {
+                return ResourceManager.GetString("Error007", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to File.
         /// </summary>
         public static string File {
@@ -430,6 +441,16 @@ namespace Strings {
         public static string Message004 {
             get {
                 return ResourceManager.GetString("Message004", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The selected WAD ({0}) is not valid.
+        ///Either it is not yet available in the database, or it is of the incorrect console..
+        /// </summary>
+        public static string Message005 {
+            get {
+                return ResourceManager.GetString("Message005", resourceCulture);
             }
         }
         
