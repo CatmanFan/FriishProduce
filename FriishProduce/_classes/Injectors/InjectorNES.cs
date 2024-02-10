@@ -12,8 +12,9 @@ namespace FriishProduce
 
         public InjectorNES(WAD w, string ROM) : base(w, ROM)
         {
-            UsesContent1 = true;
+            NeedsMainDOL = true;
             Load();
+            ReplaceManual();
         }
 
         /// <summary>
@@ -25,12 +26,12 @@ namespace FriishProduce
             // Check for "NES" header
             // -----------------------
             int offset = 0;
-            for (int i = 0; i < Content1.Length; i++)
+            for (int i = 0; i < Contents[1].Length; i++)
             {
-                if (Content1[i] == 0x4E
-                && Content1[i + 1] == 0x45
-                && Content1[i + 2] == 0x53
-                && Content1[i + 3] == 0x1A)
+                if (Contents[1][i] == 0x4E
+                && Contents[1][i + 1] == 0x45
+                && Contents[1][i + 2] == 0x53
+                && Contents[1][i + 3] == 0x1A)
                 {
                     offset = i;
                     break;
@@ -42,8 +43,8 @@ namespace FriishProduce
             // -----------------------
             // Check filesize of original ROM and set to variable
             // -----------------------
-            int PRG = 16384 * Content1[offset + 4];
-            int CHR = 8192 * Content1[offset + 5];
+            int PRG = 16384 * Contents[1][offset + 4];
+            int CHR = 8192 * Contents[1][offset + 5];
             int ROMsize = PRG + CHR + 16;
 
             // -----------------------
@@ -58,7 +59,7 @@ namespace FriishProduce
             // -----------------------
             var targetROM = new byte[ROMsize];
             ROM.CopyTo(targetROM, 0);
-            targetROM.CopyTo(Content1, offset);
+            targetROM.CopyTo(Contents[1], offset);
         }
 
         /// <summary>
@@ -105,24 +106,24 @@ namespace FriishProduce
             if (pal != null)
             {
                 // Search for palette header identifier
-                for (int i = 0; i < Content1.Length; i++)
+                for (int i = 0; i < Contents[1].Length; i++)
                 {
-                    if (Content1[i] == 0x42
-                     && Content1[i + 1] == 0x59
-                     && Content1[i + 2] == 0x21
-                     && Content1[i + 3] == 0xC8
-                     && Content1[i + 4] == 0x0D
-                     && Content1[i + 5] == 0x53
-                     && Content1[i + 6] == 0x41
-                     && Content1[i + 7] == 0x54
-                     && Content1[i + 8] == 0x00
-                     && Content1[i + 9] == 0x00
-                     && Content1[i + 10] == 0x00
-                     && Content1[i + 11] == 0x00
-                     && Content1[i + 12] == 0x00
-                     && Content1[i + 13] == 0x00
-                     && Content1[i + 14] == 0x00
-                     && Content1[i + 15] == 0x00)
+                    if (Contents[1][i] == 0x42
+                     && Contents[1][i + 1] == 0x59
+                     && Contents[1][i + 2] == 0x21
+                     && Contents[1][i + 3] == 0xC8
+                     && Contents[1][i + 4] == 0x0D
+                     && Contents[1][i + 5] == 0x53
+                     && Contents[1][i + 6] == 0x41
+                     && Contents[1][i + 7] == 0x54
+                     && Contents[1][i + 8] == 0x00
+                     && Contents[1][i + 9] == 0x00
+                     && Contents[1][i + 10] == 0x00
+                     && Contents[1][i + 11] == 0x00
+                     && Contents[1][i + 12] == 0x00
+                     && Contents[1][i + 13] == 0x00
+                     && Contents[1][i + 14] == 0x00
+                     && Contents[1][i + 15] == 0x00)
                     {
                         offset = i + 16;
                         break;
@@ -137,7 +138,7 @@ namespace FriishProduce
                     for (int i = 0; i < 128; i++)
                         palBytes[i] = Convert.ToByte(palStringArray[i], 16);
 
-                    palBytes.CopyTo(Content1, offset);
+                    palBytes.CopyTo(Contents[1], offset);
                 }
             }
         }
@@ -151,44 +152,44 @@ namespace FriishProduce
         {
             int[] offsets = new int[2];
 
-            for (int i = Content1.Length - 20; i > 0; i--)
+            for (int i = Contents[1].Length - 20; i > 0; i--)
             {
-                if (Content1[i] == 0xA2
-                    && Content1[i + 1] == 0xDB
-                    && Content1[i + 2] == 0xA2
-                    && Content1[i + 3] == 0xDB
-                    && Content1[i + 4] == 0xA2
-                    && Content1[i + 5] == 0xDB
-                    && Content1[i + 6] == 0xA2
-                    && Content1[i + 7] == 0xDB
-                    && Content1[i + 8] == 0xA2
-                    && Content1[i + 9] == 0xDB
-                    && Content1[i + 10] == 0xA2
-                    && Content1[i + 11] == 0xDB
-                    && Content1[i + 12] == 0xA2
-                    && Content1[i + 13] == 0xDB
-                    && Content1[i + 14] == 0xA2
-                    && Content1[i + 15] == 0xDB)
+                if (Contents[1][i] == 0xA2
+                    && Contents[1][i + 1] == 0xDB
+                    && Contents[1][i + 2] == 0xA2
+                    && Contents[1][i + 3] == 0xDB
+                    && Contents[1][i + 4] == 0xA2
+                    && Contents[1][i + 5] == 0xDB
+                    && Contents[1][i + 6] == 0xA2
+                    && Contents[1][i + 7] == 0xDB
+                    && Contents[1][i + 8] == 0xA2
+                    && Contents[1][i + 9] == 0xDB
+                    && Contents[1][i + 10] == 0xA2
+                    && Contents[1][i + 11] == 0xDB
+                    && Contents[1][i + 12] == 0xA2
+                    && Contents[1][i + 13] == 0xDB
+                    && Contents[1][i + 14] == 0xA2
+                    && Contents[1][i + 15] == 0xDB)
                 {
                     offsets[1] = i + 16;
                     for (int x = offsets[1]; x > 0; x--)
                     {
-                        if (Content1[x] == 0x00
-                            && Content1[x + 1] == 0x20
-                            && Content1[x + 2] == 0xAF
-                            && Content1[x + 3] == 0x30
-                            && Content1[x + 4] == 0x00
-                            && Content1[x + 5] == 0x00
-                            && Content1[x + 6] == 0x00
-                            && Content1[x + 7] == 0x05
-                            && Content1[x + 8] == 0x00
-                            && Content1[x + 9] == 0x00
-                            && Content1[x + 10] == 0x00
-                            && Content1[x + 11] == 0x0C
-                            && Content1[x + 12] == 0x00
-                            && Content1[x + 13] == 0x00
-                            && Content1[x + 14] == 0x00
-                            && Content1[x + 15] == 0x34)
+                        if (Contents[1][x] == 0x00
+                            && Contents[1][x + 1] == 0x20
+                            && Contents[1][x + 2] == 0xAF
+                            && Contents[1][x + 3] == 0x30
+                            && Contents[1][x + 4] == 0x00
+                            && Contents[1][x + 5] == 0x00
+                            && Contents[1][x + 6] == 0x00
+                            && Contents[1][x + 7] == 0x05
+                            && Contents[1][x + 8] == 0x00
+                            && Contents[1][x + 9] == 0x00
+                            && Contents[1][x + 10] == 0x00
+                            && Contents[1][x + 11] == 0x0C
+                            && Contents[1][x + 12] == 0x00
+                            && Contents[1][x + 13] == 0x00
+                            && Contents[1][x + 14] == 0x00
+                            && Contents[1][x + 15] == 0x34)
                             offsets[0] = x;
                     }
                     break;
@@ -218,17 +219,17 @@ namespace FriishProduce
             int start;
             int end = 0;
 
-            for (int i = Content1.Length - 1; i > 0; i--)
+            for (int i = Contents[1].Length - 1; i > 0; i--)
             {
-                if (Content1[i] == 0x56
-                 && Content1[i + 1] == 0x69
-                 && Content1[i + 2] == 0x72
-                 && Content1[i + 3] == 0x74
-                 && Content1[i + 4] == 0x75
-                 && Content1[i + 5] == 0x61
-                 && Content1[i + 6] == 0x6C
-                 && Content1[i + 7] == 0x49
-                 && Content1[i + 8] == 0x46)
+                if (Contents[1][i] == 0x56
+                 && Contents[1][i + 1] == 0x69
+                 && Contents[1][i + 2] == 0x72
+                 && Contents[1][i + 3] == 0x74
+                 && Contents[1][i + 4] == 0x75
+                 && Contents[1][i + 5] == 0x61
+                 && Contents[1][i + 6] == 0x6C
+                 && Contents[1][i + 7] == 0x49
+                 && Contents[1][i + 8] == 0x46)
                     end = i;
             }
 
@@ -241,8 +242,8 @@ namespace FriishProduce
                 start = saveTPL_offsets[1] > 100 ? saveTPL_offsets[1] : end - 40;
                 for (int i = start; i < end; i++)
                 {
-                    try { Content1[i] = Encoding.BigEndianUnicode.GetBytes(text)[i - start]; }
-                    catch { Content1[i] = 0x00; }
+                    try { Contents[1][i] = Encoding.BigEndianUnicode.GetBytes(text)[i - start]; }
+                    catch { Contents[1][i] = 0x00; }
                 }
             }
 
@@ -261,7 +262,7 @@ namespace FriishProduce
                 {
                     var tplList = new List<byte>();
                     for (int i = saveTPL_offsets[0]; i < saveTPL_offsets[1]; i++)
-                        tplList.Add(Content1[i]);
+                        tplList.Add(Contents[1][i]);
                     TPL = tplList.ToArray();
                 }
                 if (TPL.Length < 5) return;
@@ -272,7 +273,7 @@ namespace FriishProduce
                 var TPLnew = tImg.CreateSaveTPL(Console.NES, TPL).ToByteArray();
 
                 for (int i = saveTPL_offsets[0]; i < saveTPL_offsets[1]; i++)
-                    Content1[i] = TPLnew[i - saveTPL_offsets[0]];
+                    Contents[1][i] = TPLnew[i - saveTPL_offsets[0]];
             }
         }
     }

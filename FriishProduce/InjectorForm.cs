@@ -513,7 +513,6 @@ namespace FriishProduce
                         i_NES.ReplaceSaveData(i.SaveDataTitle, i.tImg);
                         i_NES.InsertPalette(int.Parse(o1.Settings[0]));
                         i_NES.ReplaceROM();
-                        i_NES.ReplaceManual(null);
                         i.WAD = i_NES.Write();
                         break;
 
@@ -525,7 +524,6 @@ namespace FriishProduce
                         var i_SNES = new InjectorSNES(i.WAD, i.ROM);
                         i_SNES.ReplaceROM();
                         i_SNES.ReplaceSaveData(i.SaveDataTitle, i.tImg);
-                        i_SNES.ReplaceManual(null);
                         i.WAD = i_SNES.Write();
                         break;
 
@@ -552,7 +550,6 @@ namespace FriishProduce
                         i_N64.ReplaceROM();
                         i_N64.ModifyEmulator();
                         i_N64.ReplaceSaveData(i.SaveDataTitle, i.tImg);
-                        i_N64.ReplaceManual(null);
                         i.WAD = i_N64.Write();
                         break;
 
@@ -568,7 +565,6 @@ namespace FriishProduce
                         };
                         i_SEGA.ReplaceROM();
                         i_SEGA.ReplaceSaveData(i.SaveDataTitle, i.tImg);
-                        i_SEGA.ReplaceManual(null);
                         i_SEGA.WriteCCF();
                         i.WAD = i_SEGA.Write();
                         break;
@@ -849,7 +845,7 @@ namespace FriishProduce
         {
             // Changing SaveDataTitle max length & clearing text field when needed
             // ----------------------
-            if (Console == Console.NES) SaveDataTitle.MaxLength = i.isKorea ? 30 : 40;
+            if (Console == Console.NES) SaveDataTitle.MaxLength = i.isKorea ? 30 : 20;
             else if (Console == Console.SNES) SaveDataTitle.MaxLength = 80;
             else if (Console == Console.N64) SaveDataTitle.MaxLength = 100;
             else if (Console == Console.NeoGeo

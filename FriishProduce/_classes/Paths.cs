@@ -13,7 +13,8 @@ namespace FriishProduce
         public static readonly string Tools = Path.Combine(EnvironmentFolder, "resources\\tools\\");
         public static readonly string Languages = Path.Combine(EnvironmentFolder, "strings\\");
 
-        // SEGA VC paths
+        // Extracted paths
+        public static readonly string WAD = WorkingFolder + "wad\\";
         public static readonly string DataCCF = WorkingFolder + "data_ccf\\";
         public static readonly string MiscCCF = DataCCF + "misc_ccf\\";
 

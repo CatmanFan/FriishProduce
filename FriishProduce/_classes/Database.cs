@@ -69,15 +69,15 @@ namespace FriishProduce
                 case Console.NES:
                     List = new DatabaseEntry[]
                     {
+                            new DatabaseEntry("FCWE",   "Super Mario Bros. 3",                           "Super Mario Bros. 3"),
+                            new DatabaseEntry("FCWP",   "Super Mario Bros. 3",                           "Super Mario Bros. 3"),
+                            new DatabaseEntry("FCWJ",   "スーパーマリオブラザーズ3",                       "Super Mario Bros. 3"),
+                         // new DatabaseEntry("FCWQ",   "슈퍼 마리오브라더스 3",                           "Super Mario Bros. 3"),
+
                             new DatabaseEntry("FA8E",   "Kirby's Adventure",                             "Kirby's Adventure"),
                             new DatabaseEntry("FA8P",   "Kirby's Adventure",                             "Kirby's Adventure"),
                             new DatabaseEntry("FA8J",   "星のカービィ 夢の泉の物語",                       "Hoshi no Kirby - Yume no Izumi no Monogatari"),
                             new DatabaseEntry("FA8T",   "별의 커비 꿈의 샘 이야기",                        "Kirby's Adventure"),
-
-                            // new DatabaseEntry("FCWE",   "Super Mario Bros. 3",                           "Super Mario Bros. 3"),
-                            // new DatabaseEntry("FCWP",   "Super Mario Bros. 3",                           "Super Mario Bros. 3"),
-                            // new DatabaseEntry("FCWJ",   "スーパーマリオブラザーズ3",                       "Super Mario Bros. 3"),
-                            // new DatabaseEntry("FCWQ",   "슈퍼 마리오브라더스 3",                           "Super Mario Bros. 3"),
 
                             new DatabaseEntry("FBNM",   "Ninja Gaiden",                                  "Ninja Gaiden"), // PAL60
                     };

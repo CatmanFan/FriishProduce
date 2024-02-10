@@ -49,6 +49,7 @@ namespace FriishProduce
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.OpenWAD = new System.Windows.Forms.CheckBox();
             this.baseName = new System.Windows.Forms.Label();
             this.baseID = new System.Windows.Forms.Label();
             this.WADRegion = new System.Windows.Forms.PictureBox();
@@ -79,7 +80,6 @@ namespace FriishProduce
             this.SaveIcon_Panel = new System.Windows.Forms.Panel();
             this.SaveDataTitle = new System.Windows.Forms.TextBox();
             this.BrowseWAD = new System.Windows.Forms.OpenFileDialog();
-            this.OpenWAD = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -242,6 +242,13 @@ namespace FriishProduce
             resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
+            // 
+            // OpenWAD
+            // 
+            resources.ApplyResources(this.OpenWAD, "OpenWAD");
+            this.OpenWAD.Name = "OpenWAD";
+            this.OpenWAD.UseVisualStyleBackColor = true;
+            this.OpenWAD.CheckedChanged += new System.EventHandler(this.OpenWAD_CheckedChanged);
             // 
             // baseName
             // 
@@ -483,13 +490,6 @@ namespace FriishProduce
             // 
             resources.ApplyResources(this.BrowseWAD, "BrowseWAD");
             this.BrowseWAD.RestoreDirectory = true;
-            // 
-            // OpenWAD
-            // 
-            resources.ApplyResources(this.OpenWAD, "OpenWAD");
-            this.OpenWAD.Name = "OpenWAD";
-            this.OpenWAD.UseVisualStyleBackColor = true;
-            this.OpenWAD.CheckedChanged += new System.EventHandler(this.OpenWAD_CheckedChanged);
             // 
             // InjectorForm
             // 

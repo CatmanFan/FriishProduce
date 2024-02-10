@@ -185,7 +185,7 @@
 </value>
   </data>
   <data name="ribbon1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1114, 145</value>
+    <value>1114, 140</value>
   </data>
   <data name="ribbon1.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -201,9 +201,6 @@
   </data>
   <data name="OpenImage.Text" xml:space="preserve">
     <value>Image</value>
-  </data>
-  <data name="OpenWAD.Text" xml:space="preserve">
-    <value>WAD</value>
   </data>
   <data name="UseLibRetro.Text" xml:space="preserve">
     <value>LibRetro</value>
@@ -312,7 +309,7 @@
     <value>Fill</value>
   </data>
   <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 145</value>
+    <value>0, 140</value>
   </data>
   <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>1114, 552</value>
@@ -339,7 +336,7 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1114, 697</value>
+    <value>1114, 692</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2816,12 +2813,6 @@
     <value>OpenImage</value>
   </data>
   <data name="&gt;&gt;OpenImage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon, Version=2.0.0.0, Culture=neutral, PublicKeyToken=928736e248aa81f9</value>
-  </data>
-  <data name="&gt;&gt;OpenWAD.Name" xml:space="preserve">
-    <value>OpenWAD</value>
-  </data>
-  <data name="&gt;&gt;OpenWAD.Type" xml:space="preserve">
     <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon, Version=2.0.0.0, Culture=neutral, PublicKeyToken=928736e248aa81f9</value>
   </data>
   <data name="&gt;&gt;ribbonSeparator1.Name" xml:space="preserve">

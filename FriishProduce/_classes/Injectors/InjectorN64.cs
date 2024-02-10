@@ -27,7 +27,7 @@ namespace FriishProduce
 
         public InjectorN64(WAD w, string ROM) : base(w, ROM)
         {
-            UsesContent1 = true;
+            NeedsMainDOL = true;
             UsesContent5 = true;
             Load();
 
@@ -60,6 +60,8 @@ namespace FriishProduce
                     EmuType = 3;
                     break;
             }
+
+            ReplaceManual();
         }
 
         /// <summary>
@@ -247,21 +249,21 @@ namespace FriishProduce
 
                     // Check for offset
                     // ****************
-                    int index = Byte.IndexOf(Content1, "80 04 00 04 2C 00 00 FF 40 82 00 10 80 04 00 08 2C 00 00 FF");
+                    int index = Byte.IndexOf(Contents[1], "80 04 00 04 2C 00 00 FF 40 82 00 10 80 04 00 08 2C 00 00 FF");
 
                     if (index == -1) failed.Add(Language.GetArray("List_N64Options")[0]);
                     else
                     {
                         for (int i = index; i > 200; i--)
                         {
-                            if (Content1[i] == 0x94
-                             && Content1[i + 1] == 0x21
-                             && Content1[i + 2] == 0xFF
-                             && Content1[i + 3] == 0xE0)
+                            if (Contents[1][i] == 0x94
+                             && Contents[1][i + 1] == 0x21
+                             && Contents[1][i + 2] == 0xFF
+                             && Contents[1][i + 3] == 0xE0)
                             {
                                 // Set brightness
                                 // ****************
-                                new byte[] { 0x4E, 0x80, 0x00, 0x20 }.CopyTo(Content1, i);
+                                new byte[] { 0x4E, 0x80, 0x00, 0x20 }.CopyTo(Contents[1], i);
                             }
                         }
                     }
@@ -275,21 +277,21 @@ namespace FriishProduce
 
                     // Search for offset and copy
                     // ****************
-                    int index = Byte.IndexOf(Content1, "4E 80 00 20 94 21 FF F0 7C 08 02 A6 3C A0 80 18 90 01 00 14 93 E1 00 0C 7C 7F 1B 78 38 65 74 B8");
+                    int index = Byte.IndexOf(Contents[1], "4E 80 00 20 94 21 FF F0 7C 08 02 A6 3C A0 80 18 90 01 00 14 93 E1 00 0C 7C 7F 1B 78 38 65 74 B8");
 
                     if (index == -1) failed.Add(Language.GetArray("List_N64Options")[1]);
                     else
                     {
-                        insert.CopyTo(Content1, index);
+                        insert.CopyTo(Contents[1], index);
 
                         // Do same with new values
                         // ****************
                         insert = new byte[] { 0x3C, 0x80, 0x81, 0x09, 0x38, 0xA0, 0x00, 0x7F, 0x90, 0xA4, 0x0D, 0x00 };
 
-                        index = Byte.IndexOf(Content1, "38 00 00 01 38 63 B9 C0 98 03 00 0C 4E", 0xC0000, 0xCA000);
+                        index = Byte.IndexOf(Contents[1], "38 00 00 01 38 63 B9 C0 98 03 00 0C 4E", 0xC0000, 0xCA000);
 
                         if (index == -1) failed.Add(Language.GetArray("List_N64Options")[1]);
-                        else insert.CopyTo(Content1, index);
+                        else insert.CopyTo(Contents[1], index);
                     }
                 }
 
@@ -297,17 +299,17 @@ namespace FriishProduce
                 {
                     // Check for offset and set RAM memory if found
                     // ****************
-                    int index = Byte.IndexOf(Content1, "41 82 00 08 3C 80 00 80", 0x2000, 0x9999);
+                    int index = Byte.IndexOf(Contents[1], "41 82 00 08 3C 80 00 80", 0x2000, 0x9999);
 
                     if (index == -1)
                     {
-                        index = Byte.IndexOf(Content1, "48 00 00 64 3C 80 00 80", 0x2000, 0x9999);
+                        index = Byte.IndexOf(Contents[1], "48 00 00 64 3C 80 00 80", 0x2000, 0x9999);
 
                         if (index == -1) failed.Add(Language.GetArray("List_N64Options")[2]);
-                        else new byte[] { 0x60, 0x00, 0x00, 0x00 }.CopyTo(Content1, index);
+                        else new byte[] { 0x60, 0x00, 0x00, 0x00 }.CopyTo(Contents[1], index);
                     }
 
-                    else new byte[] { 0x60, 0x00, 0x00, 0x00 }.CopyTo(Content1, index);
+                    else new byte[] { 0x60, 0x00, 0x00, 0x00 }.CopyTo(Contents[1], index);
                 }
 
                 if (Settings[3] && (EmuType <= 1))
@@ -323,7 +325,7 @@ namespace FriishProduce
 
                     // Check for offset
                     // ****************
-                    int index = Byte.IndexOf(Content1, "44 38 7D 00 1C 3C 80", 0x5A000, 0x5E000);
+                    int index = Byte.IndexOf(Contents[1], "44 38 7D 00 1C 3C 80", 0x5A000, 0x5E000);
 
                     if (index == -1) { failed.Add(Language.GetArray("List_N64Options")[3]); Allocate = false; }
                     else
@@ -343,14 +345,14 @@ namespace FriishProduce
 
                         // Copy
                         // ****************
-                        Content1[index] = size_array[0];
-                        Content1[index + 1] = size_array[1];
+                        Contents[1][index] = size_array[0];
+                        Contents[1][index + 1] = size_array[1];
                         
-                        var second = BitConverter.ToString(new byte[] { Content1[index + 36], Content1[index + 37] }).Replace("-", "");
+                        var second = BitConverter.ToString(new byte[] { Contents[1][index + 36], Contents[1][index + 37] }).Replace("-", "");
                         if (second[0] == '0' && second[3] == '0')
                         {
-                            Content1[index + 36] = size_array[2];
-                            Content1[index + 37] = size_array[3];
+                            Contents[1][index + 36] = size_array[2];
+                            Contents[1][index + 37] = size_array[3];
                         }
                     }
                 }
@@ -366,7 +368,7 @@ namespace FriishProduce
             }
             catch (Exception ex)
             {
-                // Dispose Content1
+                // Dispose Contents[1]
                 throw ex;
             }
         }

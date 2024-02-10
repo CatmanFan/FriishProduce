@@ -147,6 +147,7 @@ namespace FriishProduce
 
             CCFApp = 1;
             GetCCF();
+            ReplaceManual();
         }
 
         #region External Tools

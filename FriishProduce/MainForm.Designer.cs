@@ -46,7 +46,6 @@ namespace FriishProduce
             this.ribbonPanel_Open = new System.Windows.Forms.RibbonPanel();
             this.OpenROM = new System.Windows.Forms.RibbonButton();
             this.OpenImage = new System.Windows.Forms.RibbonButton();
-            this.OpenWAD = new System.Windows.Forms.RibbonButton();
             this.ribbonSeparator1 = new System.Windows.Forms.RibbonSeparator();
             this.UseLibRetro = new System.Windows.Forms.RibbonButton();
             this.ribbonPanel_Export = new System.Windows.Forms.RibbonPanel();
@@ -183,7 +182,6 @@ namespace FriishProduce
             this.ribbonPanel_Open.ButtonMoreVisible = false;
             this.ribbonPanel_Open.Items.Add(this.OpenROM);
             this.ribbonPanel_Open.Items.Add(this.OpenImage);
-            this.ribbonPanel_Open.Items.Add(this.OpenWAD);
             this.ribbonPanel_Open.Items.Add(this.ribbonSeparator1);
             this.ribbonPanel_Open.Items.Add(this.UseLibRetro);
             this.ribbonPanel_Open.Name = "ribbonPanel_Open";
@@ -192,10 +190,8 @@ namespace FriishProduce
             // OpenROM
             // 
             this.OpenROM.Enabled = false;
-            this.OpenROM.Image = global::FriishProduce.Properties.Resources.joystick_add;
-            this.OpenROM.LargeImage = global::FriishProduce.Properties.Resources.joystick_add;
-            this.OpenROM.MaxSizeMode = System.Windows.Forms.RibbonElementSizeMode.Medium;
-            this.OpenROM.MinSizeMode = System.Windows.Forms.RibbonElementSizeMode.Medium;
+            this.OpenROM.Image = global::FriishProduce.Properties.Resources.joystick_add_large;
+            this.OpenROM.LargeImage = global::FriishProduce.Properties.Resources.joystick_add_large;
             this.OpenROM.Name = "OpenROM";
             this.OpenROM.SmallImage = global::FriishProduce.Properties.Resources.joystick_add;
             resources.ApplyResources(this.OpenROM, "OpenROM");
@@ -204,24 +200,12 @@ namespace FriishProduce
             // OpenImage
             // 
             this.OpenImage.Enabled = false;
-            this.OpenImage.Image = global::FriishProduce.Properties.Resources.image_add;
-            this.OpenImage.LargeImage = global::FriishProduce.Properties.Resources.image_add;
-            this.OpenImage.MaxSizeMode = System.Windows.Forms.RibbonElementSizeMode.Medium;
-            this.OpenImage.MinSizeMode = System.Windows.Forms.RibbonElementSizeMode.Medium;
+            this.OpenImage.Image = global::FriishProduce.Properties.Resources.image_add_large;
+            this.OpenImage.LargeImage = global::FriishProduce.Properties.Resources.image_add_large;
             this.OpenImage.Name = "OpenImage";
             this.OpenImage.SmallImage = global::FriishProduce.Properties.Resources.image_add;
             resources.ApplyResources(this.OpenImage, "OpenImage");
             this.OpenImage.Click += new System.EventHandler(this.OpenImage_Click);
-            // 
-            // OpenWAD
-            // 
-            this.OpenWAD.Image = global::FriishProduce.Properties.Resources.lcd_tv;
-            this.OpenWAD.LargeImage = global::FriishProduce.Properties.Resources.lcd_tv;
-            this.OpenWAD.MaxSizeMode = System.Windows.Forms.RibbonElementSizeMode.Medium;
-            this.OpenWAD.MinSizeMode = System.Windows.Forms.RibbonElementSizeMode.Medium;
-            this.OpenWAD.Name = "OpenWAD";
-            this.OpenWAD.SmallImage = global::FriishProduce.Properties.Resources.lcd_tv;
-            resources.ApplyResources(this.OpenWAD, "OpenWAD");
             // 
             // ribbonSeparator1
             // 
@@ -378,7 +362,6 @@ namespace FriishProduce
         private System.Windows.Forms.RibbonOrbMenuItem MenuItem_Exit;
         private System.Windows.Forms.RibbonSeparator ribbonSeparator1;
         private System.Windows.Forms.RibbonSeparator orbMenuSeparator1;
-        private System.Windows.Forms.RibbonButton OpenWAD;
         internal MdiTabControl.TabControl tabControl;
         private System.Windows.Forms.RibbonPanel ribbonPanel_Project;
         private System.Windows.Forms.RibbonButton NewProject;

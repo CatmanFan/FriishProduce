@@ -15,9 +15,10 @@ namespace FriishProduce
 
         public InjectorSNES(WAD w, string ROM) : base(w, ROM)
         {
-            UsesContent1 = true;
+            NeedsMainDOL = true;
             UsesContent5 = true;
             Load();
+            ReplaceManual();
 
             GetID();
         }
@@ -83,19 +84,19 @@ namespace FriishProduce
             // Search for entry points
             // ****************
             List<int> ID_indexes = new List<int>();
-            for (int i = 0; i < Content1.Length; i++)
-                if (Content1[i] == Convert.ToByte(ID[0])
-                 && Content1[i + 1] == Convert.ToByte(ID[1])
-                 && Content1[i + 2] == Convert.ToByte(ID[2])
-                 && Content1[i + 3] == Convert.ToByte(ID[3])
-                 && Content1[i + 4] == 0x00
-                 && Content1[i + 5] == 0x00
-                 && Content1[i + 6] == 0x00
-                 && Content1[i + 7] == 0x00
-                 && Content1[i + 8] == 0x00
-                 && Content1[i + 9] == 0x00
-                 && Content1[i + 10] == 0x00
-                 && Content1[i + 11] == 0x00)
+            for (int i = 0; i < Contents[1].Length; i++)
+                if (Contents[1][i] == Convert.ToByte(ID[0])
+                 && Contents[1][i + 1] == Convert.ToByte(ID[1])
+                 && Contents[1][i + 2] == Convert.ToByte(ID[2])
+                 && Contents[1][i + 3] == Convert.ToByte(ID[3])
+                 && Contents[1][i + 4] == 0x00
+                 && Contents[1][i + 5] == 0x00
+                 && Contents[1][i + 6] == 0x00
+                 && Contents[1][i + 7] == 0x00
+                 && Contents[1][i + 8] == 0x00
+                 && Contents[1][i + 9] == 0x00
+                 && Contents[1][i + 10] == 0x00
+                 && Contents[1][i + 11] == 0x00)
                     ID_indexes.Add(i);
 
             if (ID_indexes.Count > 0)
@@ -117,7 +118,7 @@ namespace FriishProduce
                     for (int i = 0; i < 40; i++)
                         try { title[i + 40] = line2[i]; } catch { title[i + 40] = 0x00; }
 
-                    title.CopyTo(Content1, index + 64);
+                    title.CopyTo(Contents[1], index + 64);
                 }
             }
 

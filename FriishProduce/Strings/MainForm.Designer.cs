@@ -115,15 +115,6 @@ namespace Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to WAD.
-        /// </summary>
-        public static string OpenWAD_Text {
-            get {
-                return ResourceManager.GetString("OpenWAD.Text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Export.
         /// </summary>
         public static string ribbonPanel_Export_Text {
