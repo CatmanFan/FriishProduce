@@ -30,8 +30,10 @@ namespace FriishProduce
         // -----------------------------------
         // Public variables
         // -----------------------------------
+        protected string                        ROM         { get; set; }
         protected Database                      Database    { get; set; }
         protected IDictionary<string, string>   CurrentBase { get; set; }
+        protected WiiVCInjector                 WiiVC       { get; set; }
         protected WiiVCModifier                 i           { get; set; }
         protected Options_VCNES                 o1          { get; set; }
         protected Options_VCN64                 o3          { get; set; }
@@ -68,7 +70,7 @@ namespace FriishProduce
 
             // Declare WAD metadata modifier
             // ********
-            i = new WiiVCModifier() { Console = Console, ROM = ROM };
+            i = new WiiVCModifier(Console);
 
             switch (Console)
             {
@@ -135,7 +137,7 @@ namespace FriishProduce
 
         private void Form_Shown(object sender, EventArgs e)
         {
-            if (i.ROM != null) LoadROM(i.ROM, Properties.Settings.Default.AutoLibRetro);
+            if (ROM != null) LoadROM(ROM, Properties.Settings.Default.AutoLibRetro);
         }
 
         // -----------------------------------
@@ -157,7 +159,7 @@ namespace FriishProduce
                             && !string.IsNullOrEmpty(i.BannerTitle)
                             && !string.IsNullOrEmpty(i.SaveDataTitle[0])
                             && (i.tImg != null)
-                            && i.ROM != null;
+                            && ROM != null;
             Tag = "dirty";
             ExportCheck.Invoke(this, EventArgs.Empty);
 
@@ -194,7 +196,7 @@ namespace FriishProduce
         {
             var currentSender = sender as TextBox;
             var currentIndex = currentSender.GetLineFromCharIndex(currentSender.SelectionStart);
-            var lineMaxLength = Math.Round((double)currentSender.MaxLength / 2);
+            var lineMaxLength = currentSender.Multiline ? Math.Round((double)currentSender.MaxLength / 2) : currentSender.MaxLength;
 
             if (!string.IsNullOrEmpty(currentSender.Text)
                 && currentSender.Lines[currentIndex].Length >= lineMaxLength
@@ -285,7 +287,6 @@ namespace FriishProduce
             Base.Enabled = WADRegion.Enabled = !OpenWAD.Checked;
             if (Base.Enabled)
             {
-                if (i.WAD != null) i.WAD.Dispose();
                 AddBases();
             }
             else
@@ -311,10 +312,11 @@ namespace FriishProduce
 
         public bool LoadWAD(string path)
         {
-            try { i.WAD = WAD.Load(path); } catch { goto Failed; }
+            WAD Reader = new WAD();
+            try { Reader = WAD.Load(path); } catch { goto Failed; }
 
             for (int x = 0; x < Database.List.Length; x++)
-                if (Database.List[x].TitleID.ToUpper() == i.WAD.UpperTitleID.ToUpper())
+                if (Database.List[x].TitleID.ToUpper() == Reader.UpperTitleID.ToUpper())
                 {
                     WADPath = path;
 
@@ -323,14 +325,15 @@ namespace FriishProduce
                     baseName.Text = Database.List[x].NativeName;
                     baseID.Text = Database.List[x].TitleID;
                     UpdateBaseGeneral(0);
+                    Reader.Dispose();
                     return true;
                 }
 
-            i.WAD.Dispose();
+            Reader.Dispose();
 
             Failed:
             System.Media.SystemSounds.Beep.Play();
-            MessageBox.Show(string.Format(Language.Get("Message005"), i.WAD.UpperTitleID), Parent.Text);
+            MessageBox.Show(string.Format(Language.Get("Message005"), Reader.UpperTitleID), Parent.Text);
             return false;
         }
 
@@ -404,12 +407,12 @@ namespace FriishProduce
 
         public void LoadROM(bool UseLibRetro = true) => LoadROM(Parent.BrowseROM.FileName, UseLibRetro);
 
-        public void LoadROM(string ROM, bool UseLibRetro = true)
+        public void LoadROM(string ROMpath, bool UseLibRetro = true)
         {
-            i.ROM = ROM;
+            ROM = ROMpath;
             ROMLoaded = true;
 
-            ROMPath.Text = Path.GetFileName(i.ROM);
+            ROMPath.Text = Path.GetFileName(ROM);
             if (!UseLibRetro) SerialCode.Text = SoftwareName.Text = Language.Get("Unknown");
 
             Random.Visible =
@@ -429,7 +432,7 @@ namespace FriishProduce
 
             Parent.tabControl.Visible = true;
 
-            if (i.ROM != null && UseLibRetro) LoadLibRetroData();
+            if (ROM != null && UseLibRetro) LoadLibRetroData();
 
             BannerPreview_Panel.BackColor = BannerPreview_BG.BackColor;
             BannerPreview_Line1.Refresh();
@@ -444,7 +447,7 @@ namespace FriishProduce
             try
             {
                 var LibRetro = Parent.LibRetro;
-                LibRetro = new LibRetroDB { SoftwarePath = i.ROM };
+                LibRetro = new LibRetroDB { SoftwarePath = ROM };
 
                 bool Retrieved = LibRetro.GetData(Console);
                 if (Retrieved)
@@ -487,98 +490,64 @@ namespace FriishProduce
         {
             try
             {
-                if (WADPath != null) i.WAD = WAD.Load(WADPath);
-                else
-                    for (int x = 0; x < Database.List.Length; x++)
-                        if (Database.List[x].TitleID.ToUpper() == baseID.Text.ToUpper()) i.WAD = Database.Load(x);
-
-                // Create injector and insert ROM & savedata
+                // Create injector and insert
                 // *******
                 switch (Console)
                 {
                     // NES
                     // *******
                     case Console.NES:
-
-                        // Create injector and insert ROM
-
-                        // Problem with WADs crashing
-                        // [X] ROM (DING DING DING!!!!!!!!!!!!!!!!!!!)
-                        // Kirby's Adventure (USA), only ++++++++ Ninja Gaiden, Kirby's Adventure Europe & Korea working as normal
-                        // [] SaveData
-                        // [] Palette
-                        // [] Manual
-
-                        var i_NES = new InjectorNES(i.WAD, i.ROM);
-                        i_NES.ReplaceSaveData(i.SaveDataTitle, i.tImg);
-                        i_NES.InsertPalette(int.Parse(o1.Settings[0]));
-                        i_NES.ReplaceROM();
-                        i.WAD = i_NES.Write();
+                        WiiVC = new InjectorNES() { Settings = o1.Settings };
                         break;
+
 
                     // SNES
                     // *******
                     case Console.SNES:
-
-                        // Create injector and insert ROM
-                        var i_SNES = new InjectorSNES(i.WAD, i.ROM);
-                        i_SNES.ReplaceROM();
-                        i_SNES.ReplaceSaveData(i.SaveDataTitle, i.tImg);
-                        i.WAD = i_SNES.Write();
+                        WiiVC = new InjectorSNES();
                         break;
+
 
                     // N64
                     // *******
                     case Console.N64:
-
-                        // Create injector and insert ROM
-
-                        // Problem with WADs crashing
-                        // [] ROM
-                        // [X] Settings (DING DING DING!!!!!!!!!!!!!!!!!!!)
-                        // [] SaveData
-                        // [] Manual
-
-                        // Likely Content1 is the cause of the problem ????
-
-                        var i_N64 = new InjectorN64(i.WAD, i.ROM)
+                        WiiVC = new InjectorN64()
                         {
-                            Settings = new bool[] { o3.Settings[0], o3.Settings[1], o3.Settings[2], o3.Settings[3] },
-                            CompressionType = o3.EmuType == 3 ? (o3.Settings[3] ? 1 : 2) : 0,
-                            Allocate = o3.Settings[3] && (o3.EmuType <= 1),
+                            Settings = o3.Settings,
+
+                            CompressionType = o3.EmuType == 3 ? (o3.Settings[3] == "True" ? 1 : 2) : 0,
+                            Allocate = o3.Settings[3] == "True" && (o3.EmuType <= 1),
                         };
-                        i_N64.ReplaceROM();
-                        i_N64.ModifyEmulator();
-                        i_N64.ReplaceSaveData(i.SaveDataTitle, i.tImg);
-                        i.WAD = i_N64.Write();
                         break;
+
 
                     // SEGA
                     // *******
                     case Console.SMS:
                     case Console.SMDGEN:
-
-                        // Create injector and insert ROM
-                        var i_SEGA = new InjectorSEGA(i.WAD, i.ROM)
+                        WiiVC = new InjectorSEGA()
                         {
                             IsSMS = Console == Console.SMS
                         };
-                        i_SEGA.ReplaceROM();
-                        i_SEGA.ReplaceSaveData(i.SaveDataTitle, i.tImg);
-                        i_SEGA.WriteCCF();
-                        i.WAD = i_SEGA.Write();
                         break;
-
-                    case Console.PCE:
-                    case Console.NeoGeo:
-                    case Console.MSX:
-                    case Console.Flash:
-                    default:
-                        throw new NotImplementedException();
                 }
 
-                i.Modify();
-                i.WAD.Save(outputFile);
+                if (WADPath != null) WiiVC.WAD = WAD.Load(WADPath);
+                else
+                    for (int x = 0; x < Database.List.Length; x++)
+                        if (Database.List[x].TitleID.ToUpper() == baseID.Text.ToUpper()) WiiVC.WAD = Database.Load(x);
+
+                WiiVC.ROMPath = ROM;
+                WiiVC.ManualPath = null;
+
+                WiiVC.Load();
+                WiiVC.ReplaceROM();
+                WiiVC.ModifyEmulatorSettings();
+                WiiVC.ReplaceSaveData(i.SaveDataTitle, i.tImg);
+
+                WAD Out = i.Modify(WiiVC.Write());
+                Out.Save(outputFile);
+                Out.Dispose();
 
                 // Check new WAD file
                 // *******
@@ -606,7 +575,7 @@ namespace FriishProduce
 
             finally
             {
-                if (WADPath == null) i.WAD.Dispose();
+                WiiVC.Dispose();
             }
         }
         #endregion
@@ -843,6 +812,8 @@ namespace FriishProduce
 
         private void UpdateBaseGeneral(int index)
         {
+            int oldSaveLength = SaveDataTitle.MaxLength;
+
             // Changing SaveDataTitle max length & clearing text field when needed
             // ----------------------
             if (Console == Console.NES) SaveDataTitle.MaxLength = i.isKorea ? 30 : 20;
@@ -858,11 +829,11 @@ namespace FriishProduce
                      || CurrentBase.ElementAt(index).Key[3] == 'T'
                      || CurrentBase.ElementAt(index).Key[3] == 'K';
             isJapanRegion = CurrentBase.ElementAt(index).Key[3] == 'J';
-            if (i.isKorea) SaveDataTitle.MaxLength /= 2; // Applies to both NES/FC & SNES/SFC
 
             // Also, some consoles only support a single line anyway
             // ********
             bool isSingleLine = i.isKorea
+                             || Console == Console.NES
                              || Console == Console.SMS
                              || Console == Console.SMDGEN;
 
@@ -874,11 +845,13 @@ namespace FriishProduce
                 SaveDataTitle.Clear();
                 goto End;
             }
+            if (i.isKorea && SaveDataTitle.Multiline) SaveDataTitle.MaxLength /= 2; // Applies to both NES/FC & SNES/SFC
 
             // Clear text field if at least one line is longer than the maximum limit allowed
             // ********
+            double max = SaveDataTitle.Multiline ? Math.Round((double)SaveDataTitle.MaxLength / 2) : SaveDataTitle.MaxLength;
             foreach (var line in SaveDataTitle.Lines)
-                if (line.Length > Math.Round((double)SaveDataTitle.MaxLength / 2))
+                if (line.Length > max && SaveDataTitle.MaxLength != oldSaveLength)
                     SaveDataTitle.Clear();
 
             End:

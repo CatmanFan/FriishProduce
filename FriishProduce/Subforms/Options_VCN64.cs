@@ -14,13 +14,13 @@ namespace FriishProduce
     {
         // Options
         // *******
-        public IDictionary<int, bool> Settings = new Dictionary<int, bool>
+        public IDictionary<int, string> Settings = new Dictionary<int, string>
         {
-            /* Brightness fix */        { 0, false },
-            /* Crashes fix */           { 1, false },
-            /* Extended RAM */          { 2, false },
-            /* Allocate for ROM size */ { 3, false },
-            /* Use ROMC type 0 */       { 4, false }
+            /* Brightness fix */        { 0, "False" },
+            /* Crashes fix */           { 1, "False" },
+            /* Extended RAM */          { 2, "False" },
+            /* Allocate for ROM size */ { 3, "False" },
+            /* Use ROMC type 0 */       { 4, "False" }
         };
 
         public int EmuType { get; set; }
@@ -37,11 +37,11 @@ namespace FriishProduce
             // *******
             n64003.Enabled = n64001.Enabled = EmuType <= 1;
             n64004.Visible = n64004.Enabled = EmuType == 3;
-            n64000.Checked = Settings[0];
-            n64001.Checked = Settings[1];
-            n64002.Checked = Settings[2];
-            n64003.Checked = Settings[3];
-            ROMCType.SelectedIndex = Settings[4] ? 0 : 1;
+            n64000.Checked = bool.Parse(Settings[0]);
+            n64001.Checked = bool.Parse(Settings[1]);
+            n64002.Checked = bool.Parse(Settings[2]);
+            n64003.Checked = bool.Parse(Settings[3]);
+            ROMCType.SelectedIndex = bool.Parse(Settings[4]) ? 0 : 1;
             // *******
 
             panel3.Height = 6 + Math.Max(x009.Height, pictureBox1.Height) + 7;
@@ -54,11 +54,11 @@ namespace FriishProduce
         {
             // Options
             // *******
-            Settings[0] = n64000.Checked;
-            Settings[1] = n64001.Checked;
-            Settings[2] = n64002.Checked;
-            Settings[3] = n64003.Checked;
-            Settings[4] = ROMCType.SelectedIndex == 0;
+            Settings[0] = n64000.Checked.ToString();
+            Settings[1] = n64001.Checked.ToString();
+            Settings[2] = n64002.Checked.ToString();
+            Settings[3] = n64003.Checked.ToString();
+            Settings[4] = (ROMCType.SelectedIndex == 0).ToString();
             // *******
 
             DialogResult = DialogResult.OK;

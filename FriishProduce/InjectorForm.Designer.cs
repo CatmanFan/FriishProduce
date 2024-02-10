@@ -110,16 +110,16 @@ namespace FriishProduce
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.groupBox8);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox4);
-            this.splitContainer1.Panel1.Controls.Add(this.groupBox3);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox1);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox2);
             resources.ApplyResources(this.splitContainer1.Panel1, "splitContainer1.Panel1");
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.groupBox8);
             this.splitContainer1.Panel2.Controls.Add(this.groupBox5);
+            this.splitContainer1.Panel2.Controls.Add(this.groupBox3);
             this.splitContainer1.Panel2.Controls.Add(this.groupBox6);
             this.splitContainer1.Panel2.Controls.Add(this.groupBox7);
             resources.ApplyResources(this.splitContainer1.Panel2, "splitContainer1.Panel2");
@@ -166,6 +166,7 @@ namespace FriishProduce
             // 
             // ChannelTitle
             // 
+            this.ChannelTitle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             resources.ApplyResources(this.ChannelTitle, "ChannelTitle");
             this.ChannelTitle.Name = "ChannelTitle";
             this.ChannelTitle.TextChanged += new System.EventHandler(this.TextBox_Changed);
@@ -178,6 +179,7 @@ namespace FriishProduce
             // 
             // TitleID
             // 
+            this.TitleID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TitleID.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             resources.ApplyResources(this.TitleID, "TitleID");
             this.TitleID.Name = "TitleID";
@@ -204,41 +206,47 @@ namespace FriishProduce
             // 
             resources.ApplyResources(this.SerialCode, "SerialCode");
             this.SerialCode.Name = "SerialCode";
+            this.SerialCode.UseMnemonic = false;
             // 
             // SoftwareName
             // 
             resources.ApplyResources(this.SoftwareName, "SoftwareName");
             this.SoftwareName.Name = "SoftwareName";
+            this.SoftwareName.UseMnemonic = false;
             // 
             // ROMPath
             // 
             resources.ApplyResources(this.ROMPath, "ROMPath");
             this.ROMPath.Name = "ROMPath";
+            this.ROMPath.UseMnemonic = false;
             // 
             // label1
             // 
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
+            this.label1.UseMnemonic = false;
             // 
             // label3
             // 
             resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
+            this.label3.UseMnemonic = false;
             // 
             // label2
             // 
             resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
+            this.label2.UseMnemonic = false;
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.OpenWAD);
             this.groupBox2.Controls.Add(this.baseName);
             this.groupBox2.Controls.Add(this.baseID);
-            this.groupBox2.Controls.Add(this.WADRegion);
-            this.groupBox2.Controls.Add(this.Base);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Controls.Add(this.OpenWAD);
+            this.groupBox2.Controls.Add(this.WADRegion);
+            this.groupBox2.Controls.Add(this.Base);
             resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
@@ -254,17 +262,19 @@ namespace FriishProduce
             // 
             resources.ApplyResources(this.baseName, "baseName");
             this.baseName.Name = "baseName";
+            this.baseName.UseMnemonic = false;
             // 
             // baseID
             // 
             resources.ApplyResources(this.baseID, "baseID");
             this.baseID.Name = "baseID";
+            this.baseID.UseMnemonic = false;
             // 
             // WADRegion
             // 
             this.WADRegion.BackColor = System.Drawing.SystemColors.ControlLight;
             resources.ApplyResources(this.WADRegion, "WADRegion");
-            this.WADRegion.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.WADRegion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.WADRegion.ContextMenuStrip = this.WADRegionList;
             this.WADRegion.Name = "WADRegion";
             this.WADRegion.TabStop = false;
@@ -289,11 +299,13 @@ namespace FriishProduce
             // 
             resources.ApplyResources(this.label5, "label5");
             this.label5.Name = "label5";
+            this.label5.UseMnemonic = false;
             // 
             // label4
             // 
             resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
+            this.label4.UseMnemonic = false;
             // 
             // groupBox8
             // 
@@ -305,10 +317,10 @@ namespace FriishProduce
             // imageintpl
             // 
             this.imageintpl.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.imageintpl, "imageintpl");
             this.imageintpl.FormattingEnabled = true;
             this.imageintpl.Items.AddRange(new object[] {
             resources.GetString("imageintpl.Items")});
-            resources.ApplyResources(this.imageintpl, "imageintpl");
             this.imageintpl.Name = "imageintpl";
             this.imageintpl.SelectedIndexChanged += new System.EventHandler(this.InterpolationChanged);
             // 
@@ -339,16 +351,19 @@ namespace FriishProduce
             this.BannerPreview_Label.BackColor = System.Drawing.Color.Gainsboro;
             resources.ApplyResources(this.BannerPreview_Label, "BannerPreview_Label");
             this.BannerPreview_Label.Name = "BannerPreview_Label";
+            this.BannerPreview_Label.UseMnemonic = false;
             // 
             // BannerPreview_Players
             // 
             resources.ApplyResources(this.BannerPreview_Players, "BannerPreview_Players");
             this.BannerPreview_Players.Name = "BannerPreview_Players";
+            this.BannerPreview_Players.UseMnemonic = false;
             // 
             // BannerPreview_Year
             // 
             resources.ApplyResources(this.BannerPreview_Year, "BannerPreview_Year");
             this.BannerPreview_Year.Name = "BannerPreview_Year";
+            this.BannerPreview_Year.UseMnemonic = false;
             // 
             // BannerPreview_Line2
             // 
@@ -393,9 +408,9 @@ namespace FriishProduce
             // 
             this.groupBox6.Controls.Add(this.Players);
             this.groupBox6.Controls.Add(this.ReleaseYear);
-            this.groupBox6.Controls.Add(this.label9);
             this.groupBox6.Controls.Add(this.BannerTitle);
             this.groupBox6.Controls.Add(this.label8);
+            this.groupBox6.Controls.Add(this.label9);
             this.groupBox6.Controls.Add(this.label10);
             resources.ApplyResources(this.groupBox6, "groupBox6");
             this.groupBox6.Name = "groupBox6";
@@ -403,6 +418,7 @@ namespace FriishProduce
             // 
             // Players
             // 
+            this.Players.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             resources.ApplyResources(this.Players, "Players");
             this.Players.Maximum = new decimal(new int[] {
             9,
@@ -424,6 +440,7 @@ namespace FriishProduce
             // 
             // ReleaseYear
             // 
+            this.ReleaseYear.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             resources.ApplyResources(this.ReleaseYear, "ReleaseYear");
             this.ReleaseYear.Maximum = new decimal(new int[] {
             2029,
@@ -450,6 +467,7 @@ namespace FriishProduce
             // 
             // BannerTitle
             // 
+            this.BannerTitle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             resources.ApplyResources(this.BannerTitle, "BannerTitle");
             this.BannerTitle.Name = "BannerTitle";
             this.BannerTitle.TextChanged += new System.EventHandler(this.TextBox_Changed);
@@ -481,6 +499,7 @@ namespace FriishProduce
             // 
             // SaveDataTitle
             // 
+            this.SaveDataTitle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             resources.ApplyResources(this.SaveDataTitle, "SaveDataTitle");
             this.SaveDataTitle.Name = "SaveDataTitle";
             this.SaveDataTitle.TextChanged += new System.EventHandler(this.TextBox_Changed);

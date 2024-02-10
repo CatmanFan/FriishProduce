@@ -14,9 +14,8 @@ namespace FriishProduce
         // -----------------------------------
         // Public variables
         // -----------------------------------
-        public WAD WAD { get; set; }
         public bool isKorea { get; set; }
-        public Console Console { get; set; }
+        private Console Console { get; set; }
         public TitleImage tImg { get; set; }
 
         public string TitleID { get; set; }
@@ -25,18 +24,21 @@ namespace FriishProduce
         public int BannerYear { get; set; }
         public int BannerPlayers { get; set; }
         public string[] SaveDataTitle { get; set; }
-        public string ROM { get; set; }
 
-        public void Modify()
+        public WiiVCModifier(Console c) { Console = c; }
+
+        public WAD Modify(WAD w)
         {
             // Banner metadata
-            WAD.ChangeChannelTitles(ChannelTitle);
-            Banner.EditBanner(WAD, Console, WAD.Region, BannerTitle, BannerYear, BannerPlayers);
-            if (tImg.VCPic != null) tImg.ReplaceBanner(WAD);
+            w.ChangeChannelTitles(ChannelTitle);
+            Banner.EditBanner(w, Console, w.Region, BannerTitle, BannerYear, BannerPlayers);
+            if (tImg.VCPic != null) tImg.ReplaceBanner(w);
 
             // WAD metadata
-            WAD.ChangeTitleID(LowerTitleID.Channel, TitleID.ToUpper());
-            WAD.FakeSign = true;
+            w.ChangeTitleID(LowerTitleID.Channel, TitleID.ToUpper());
+            w.FakeSign = true;
+
+            return w;
         }
 
         public void ShowErrorMessage(Exception ex) => MessageBox.Show(ex.Message, Language.Get("Error"), MessageBoxButtons.OK, MessageBoxIcon.Hand);

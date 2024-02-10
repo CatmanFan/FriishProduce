@@ -66,7 +66,6 @@ namespace FriishProduce
                 _list.Remove(""); // the "Invariant Language (Invariant Country)" item
                 _list.Remove("en-001"); // "English (World)"
 
-
                 return _list;
             }
         }

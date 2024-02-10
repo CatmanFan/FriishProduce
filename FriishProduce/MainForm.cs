@@ -56,7 +56,7 @@ namespace FriishProduce
                     {
                         text = Language.Get(button.Name, this);
                         if (text != "undefined") button.Text = text;
-                        button.MinimumSize = new Size(45 + (button.Text.Length * 4), 0);
+                        button.MinimumSize = new Size((int)Math.Round(50 + (button.Text.Length * 4.25)), 0);
                         button.MaximumSize = button.MaximumSize;
                     }
                 }
@@ -220,7 +220,7 @@ namespace FriishProduce
             var currentForm = tabControl.SelectedForm as InjectorForm;
 
             SaveWAD.FileName = currentForm.GetName();
-            if (SaveWAD.ShowDialog() == DialogResult.OK) currentForm.CreateInject(SaveWAD.FileName);
+            if (SaveWAD.ShowDialog() == DialogResult.OK && currentForm.CreateInject(SaveWAD.FileName)) currentForm.Close();
         }
 
         private void OpenImage_Click(object sender, EventArgs e)

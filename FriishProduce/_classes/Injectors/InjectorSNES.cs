@@ -13,12 +13,12 @@ namespace FriishProduce
         private string ID { get; set; }
         private string Target { get; set; }
 
-        public InjectorSNES(WAD w, string ROM) : base(w, ROM)
+        public override void Load()
         {
             NeedsMainDOL = true;
             UsesContent5 = true;
-            Load();
-            ReplaceManual();
+            NeedsManualLoaded = true;
+            base.Load();
 
             GetID();
         }
@@ -142,6 +142,12 @@ namespace FriishProduce
                     ID = file.Substring(file.Length - 8, 4);
                 }
             }
+        }
+
+        public override void ModifyEmulatorSettings()
+        {
+            // Not exists
+            return;
         }
     }
 }

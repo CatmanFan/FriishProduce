@@ -21,15 +21,16 @@ namespace FriishProduce
                             // This is the one which uses the ROMC compressed format
         }
 
-        public bool[] Settings { get; set; }
         public int CompressionType { get; set; }    // Type of ROMC compression (0 = none; 1 = ROMC type 0; 2 = ROMC type 1)
         public bool Allocate { get; set; }          // Determines whether to allocate ROM size (rev. 1 WADs only)
 
-        public InjectorN64(WAD w, string ROM) : base(w, ROM)
+        public override void Load()
         {
             NeedsMainDOL = true;
             UsesContent5 = true;
-            Load();
+            NeedsManualLoaded = true;
+
+            base.Load();
 
             if (WAD.Region == Region.Korea) EmuType = 3;
             else switch (WAD.UpperTitleID.Substring(0, 3).ToUpper())
@@ -60,8 +61,6 @@ namespace FriishProduce
                     EmuType = 3;
                     break;
             }
-
-            ReplaceManual();
         }
 
         /// <summary>
@@ -153,10 +152,8 @@ namespace FriishProduce
 
                     // Convert to bytes and replace at "romc"
                     // ****************
-                    ROM = File.ReadAllBytes(Paths.WorkingFolder + "romc");
+                    Content5.ReplaceFile(Content5.GetNodeIndex("romc"), File.ReadAllBytes(Paths.WorkingFolder + "romc"));
                     File.Delete(Paths.WorkingFolder + "romc");
-
-                    Content5.ReplaceFile(Content5.GetNodeIndex("romc"), ROM);
                     break;
             }
         }
@@ -237,13 +234,13 @@ namespace FriishProduce
         
         // *****************************************************************************************************
         #region SETTINGS
-        public void ModifyEmulator()
+        public override void ModifyEmulatorSettings()
         {
             List<string> failed = new List<string>();
 
             try
             {
-                if (Settings[0])
+                if (SettingParse(0))
                 {
                     // Method originally reported by @NoobletCheese/@Maeson on GBAtemp.
 
@@ -269,7 +266,7 @@ namespace FriishProduce
                     }
                 }
 
-                if (Settings[1] && (EmuType <= 1))
+                if (SettingParse(1) && (EmuType <= 1))
                 {
                     // Declare changed value
                     // ****************
@@ -295,7 +292,7 @@ namespace FriishProduce
                     }
                 }
 
-                if (Settings[2])
+                if (SettingParse(2))
                 {
                     // Check for offset and set RAM memory if found
                     // ****************
@@ -312,7 +309,7 @@ namespace FriishProduce
                     else new byte[] { 0x60, 0x00, 0x00, 0x00 }.CopyTo(Contents[1], index);
                 }
 
-                if (Settings[3] && (EmuType <= 1))
+                if (SettingParse(3) && (EmuType <= 1))
                 {
                     // Fix based on SM64Wii (aglab2)
                     // https://github.com/aglab2/sm64wii/blob/master/usamune.gzi

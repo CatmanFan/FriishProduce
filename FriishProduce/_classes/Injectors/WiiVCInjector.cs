@@ -9,37 +9,52 @@ namespace FriishProduce
 {
     public abstract class WiiVCInjector
     {
-        protected WAD WAD { get; set; }
-        protected byte[] ROM { get; set; }
-        protected string NewManual { get; set; }
-        protected string ManualPath { get; set; }
+        public WAD WAD { get; set; }
+
+        protected byte[] ROM { get; private set; }
+
+        private string _rompath;
+        public string ROMPath
+        {
+            get => _rompath;
+            set
+            {
+                _rompath = value;
+                if (_rompath == null) return;
+
+                // -----------------------
+                // Check if raw ROM exists
+                // -----------------------
+                if (!File.Exists(_rompath))
+                    throw new FileNotFoundException(new FileNotFoundException().Message, _rompath);
+
+                ROM = File.ReadAllBytes(_rompath);
+            }
+        }
+
+        public int EmuType { get; set; }
+        public IDictionary<int, string> Settings { get; set; }
+
+        public string ManualPath { get; set; }
+        protected string OrigManual { get; set; }
         protected byte[] Manual { get; set; }
+        protected bool NeedsManualLoaded { get; set; }
 
         protected List<byte[]> Contents { get; set; }
         protected U8 Content5 { get; set; }
-        public int EmuType { get; set; }
-
-        protected bool NeedsMainDOL { get; set; }
         protected bool UsesContent5 { get; set; }
+        protected bool NeedsMainDOL { get; set; }
 
-        public WiiVCInjector(WAD w, string ROM)
+
+
+        public WiiVCInjector() { }
+
+        public virtual void Load()
         {
-            WAD = w;
             Contents = new List<byte[]>();
             for (int i = 0; i < WAD.Contents.Length; i++)
                 Contents.Add(new byte[0]);
 
-            // -----------------------
-            // Check if raw ROM exists
-            // -----------------------
-            if (!File.Exists(ROM))
-                throw new FileNotFoundException(new FileNotFoundException().Message, ROM);
-
-            this.ROM = File.ReadAllBytes(ROM);
-        }
-
-        protected void Load()
-        {
             if (NeedsMainDOL)
             {
                 Contents[1] = WAD.Contents[1];
@@ -60,30 +75,19 @@ namespace FriishProduce
                 }
             }
 
-            if (WAD.Contents.Length > 5 || UsesContent5)
-            {
-                Content5 = new U8();
-                Content5.LoadFile(WAD.Contents[5]);
+            if (WAD.Contents.Length > 5)
+                Content5 = U8.Load(WAD.Contents[5]);
 
-                // Get and read emanual
-                // ****************
-                foreach (var item in Content5.StringTable)
-                    if (item.ToLower().Contains("emanual.arc"))
-                    {
-                        ManualPath = item;
-                        Manual = Content5.Data[Content5.GetNodeIndex(ManualPath)];
-                    }
-            }
+            if (NeedsManualLoaded) ReplaceManual();
         }
 
-        public void ReplaceManual()
+        protected void ReplaceManual()
         {
-            if (NewManual == null)
+            if (ManualPath == null)
             {
                 // Dispose of "Operations Guide" button on HOME Menu
                 // ****************
-                U8 Content4 = new U8();
-                Content4.LoadFile(WAD.Contents[4]);
+                U8 Content4 = U8.Load(WAD.Contents[4]);
 
                 int start = -1;
                 int end = -1;
@@ -103,25 +107,38 @@ namespace FriishProduce
                             Content4.ReplaceFile(i + end, Content4.Data[i + start]);
 
                         Contents[4] = Content4.ToByteArray();
+                        if (Content4 != null) Content4.Dispose();
                     }
                 }
-                finally
-                {
-                    Content4.Dispose();
-                }
+                catch { if (Content4 != null) Content4.Dispose(); }
             }
 
             else
             {
-                if (Manual == null) return;
+                if (ManualPath == null) return;
 
-                U8 ManualArc = U8.Load(Manual);
+                // Get and read emanual
+                // ****************
+                if (File.Exists(Paths.DataCCF + "man.arc"))
+                {
+                    OrigManual = Paths.DataCCF + "man.arc";
+                    Manual = File.ReadAllBytes(OrigManual);
+                }
+                else
+                {
+                    foreach (var item in Content5.StringTable)
+                        if (item.ToLower().Contains("emanual.arc"))
+                        {
+                            OrigManual = item;
+                            Manual = Content5.Data[Content5.GetNodeIndex(OrigManual)];
+                        }
+                }
 
                 // Check if is a valid emanual contents folder
                 // ****************
                 int validFiles = 0;
-                if (Directory.Exists(Path.Combine(NewManual, "emanual")))
-                    foreach (var item in Directory.EnumerateFiles(Path.Combine(NewManual, "emanual")))
+                if (Directory.Exists(Path.Combine(ManualPath, "emanual")))
+                    foreach (var item in Directory.EnumerateFiles(Path.Combine(ManualPath, "emanual")))
                     {
                         if ((Path.GetFileNameWithoutExtension(item).StartsWith("startup") && Path.GetExtension(item) == ".html")
                          || Path.GetFileName(item) == "standard.css") validFiles++;
@@ -129,24 +146,27 @@ namespace FriishProduce
 
                 if (validFiles < 2)
                 {
-                    ManualArc.Dispose();
                     System.Windows.Forms.MessageBox.Show(Language.Get("Error007"));
                     return;
                 }
 
                 // Replace
                 // ****************
-                ManualArc.CreateFromDirectory(Path.Combine(NewManual));
+                U8 ManualArc = U8.Load(Manual);
+                ManualArc.CreateFromDirectory(Path.Combine(ManualPath));
                 Manual = ManualArc.ToByteArray();
+                ManualArc.Dispose();
 
-                if (File.Exists(ManualPath)) File.WriteAllBytes(ManualPath, Manual);
-                else Content5.ReplaceFile(Content5.GetNodeIndex(ManualPath), Manual);
+                if (File.Exists(OrigManual))
+                    File.WriteAllBytes(OrigManual, Manual);
+                else
+                    Content5.ReplaceFile(Content5.GetNodeIndex(OrigManual), Manual);
 
-                Manual = null;
+                ManualPath = null;
             }
         }
 
-        public WAD Write()
+        public virtual WAD Write()
         {
             if (!WAD.Contents[1].SequenceEqual(Contents[1]) || NeedsMainDOL)
             {
@@ -171,8 +191,9 @@ namespace FriishProduce
                 }
             }
 
-            if (WAD.Contents.Length > 5 && (!WAD.Contents[5].SequenceEqual(Contents[5]) || UsesContent5))
+            if (Manual != null || UsesContent5)
                 Contents[5] = Content5.ToByteArray();
+            Content5.Dispose();
 
             // Temporary workaround for crashes
             // WAD needs to be repacked using proper tik/tmd/cert from scratch using modified files.
@@ -195,5 +216,26 @@ namespace FriishProduce
         public abstract void ReplaceROM();
 
         public abstract void ReplaceSaveData(string[] lines, TitleImage tImg);
+
+        public abstract void ModifyEmulatorSettings();
+
+        protected bool SettingParse(int i)
+        {
+            if (bool.TryParse(Settings[i], out bool value))
+                value = bool.Parse(Settings[i]);
+            return value;
+        }
+
+        public void Dispose()
+        {
+            WAD.Dispose();
+            ROM = null;
+            ROMPath = null;
+            Settings.Clear();
+            ManualPath = null;
+            OrigManual = null;
+            Manual = null;
+            Contents.Clear();
+        }
     }
 }

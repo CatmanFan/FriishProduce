@@ -10,11 +10,11 @@ namespace FriishProduce
     {
         public int[] saveTPL_offsets { get; set; }
 
-        public InjectorNES(WAD w, string ROM) : base(w, ROM)
+        public override void Load()
         {
             NeedsMainDOL = true;
-            Load();
-            ReplaceManual();
+            NeedsManualLoaded = true;
+            base.Load();
         }
 
         /// <summary>
@@ -60,6 +60,11 @@ namespace FriishProduce
             var targetROM = new byte[ROMsize];
             ROM.CopyTo(targetROM, 0);
             targetROM.CopyTo(Contents[1], offset);
+        }
+
+        public override void ModifyEmulatorSettings()
+        {
+            InsertPalette(int.Parse(Settings[0]));
         }
 
         /// <summary>

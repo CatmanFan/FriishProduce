@@ -71,8 +71,6 @@ namespace FriishProduce
             "ccfarcraw"
         };
 
-        private int CCFApp { get; set; }
-
         public bool IsSMS { get; set; }
         private string ROMName { get; set; }
 
@@ -116,11 +114,15 @@ namespace FriishProduce
         // Anything else, and it will just do a black screen, or it will work for Master System only
         // ****************
 
-        public InjectorSEGA(WAD w, string ROM) : base(w, ROM)
+        public override void Load()
         {
             UsesContent5 = true;
-            Load();
-            
+            NeedsManualLoaded = false;
+            base.Load();
+
+            GetCCF(1);
+            ReplaceManual();
+
             switch (WAD.UpperTitleID.Substring(0, 3).ToUpper())
             {
                 default:
@@ -144,10 +146,6 @@ namespace FriishProduce
                     EmuType = 3;
                     break;
             }
-
-            CCFApp = 1;
-            GetCCF();
-            ReplaceManual();
         }
 
         #region External Tools
@@ -339,7 +337,7 @@ namespace FriishProduce
         }
         #endregion
 
-        private void GetCCF()
+        private void GetCCF(int CCFApp)
         {
             // Get Data.ccf first
             // ****************
@@ -366,22 +364,11 @@ namespace FriishProduce
             foreach (var item in Directory.EnumerateFiles(Paths.DataCCF))
                 if (Path.GetExtension(item).ToLower().StartsWith(".sgd") || Path.GetExtension(item).ToLower().StartsWith(".sms"))
                     ROMName = Path.GetFileName(item).Replace("__", "");
-
-            // Read emanual
-            // ****************
-            if (File.Exists(Paths.DataCCF + "man.arc"))
-            {
-                ManualPath = Paths.DataCCF + "man.arc";
-                Manual = File.ReadAllBytes(ManualPath);
-            }
         }
 
-        public void WriteCCF()
+        public override WAD Write()
         {
-            if (!Directory.Exists(Paths.DataCCF)) return;
-
-            if (ROMName.Contains("MonsterWorld4")) CCFApp = 1;
-            else CCFApp = 0;
+            if (!Directory.Exists(Paths.DataCCF)) return WAD;
 
             // Misc.ccf
             // ****************
@@ -389,9 +376,11 @@ namespace FriishProduce
 
             // Data.ccf
             // ****************
-            Content5.ReplaceFile(Content5.GetNodeIndex("data.ccf"), RunCCFArc(Paths.DataCCF, CCFApp));
+            Content5.ReplaceFile(Content5.GetNodeIndex("data.ccf"), RunCCFArc(Paths.DataCCF, ROMName.Contains("MonsterWorld4") ? 1 : 0));
 
             if (File.Exists(Paths.WorkingFolder + "data.ccf")) File.Delete(Paths.WorkingFolder + "data.ccf");
+
+            return base.Write();
         }
 
         public override void ReplaceROM()
@@ -453,6 +442,11 @@ namespace FriishProduce
             // -----------------------
 
             tImg.ReplaceSaveWTE();
+        }
+
+        public override void ModifyEmulatorSettings()
+        {
+            throw new NotImplementedException();
         }
     }
 }

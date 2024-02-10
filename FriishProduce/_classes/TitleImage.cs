@@ -14,10 +14,10 @@ namespace FriishProduce
     {
         private Console platform { get; set; }
 
-        public Bitmap Source { get; set; }
+        public Bitmap Source { get; protected set; }
         private string SourcePath { get; set; }
-        public Bitmap VCPic { get; set; }
-        public Bitmap IconVCPic { get; set; }
+        public Bitmap VCPic { get; protected set; }
+        public Bitmap IconVCPic { get; protected set; }
         private Bitmap SaveIconPic { get; set; }
         
         internal InterpolationMode Interpolation { get; set; }

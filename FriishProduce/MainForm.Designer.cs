@@ -84,6 +84,7 @@ namespace FriishProduce
             this.ribbon1.OrbDropDown.TabIndex = ((int)(resources.GetObject("ribbon1.OrbDropDown.TabIndex")));
             this.ribbon1.OrbStyle = System.Windows.Forms.RibbonOrbStyle.Office_2010_Extended;
             this.ribbon1.OrbText = "File";
+            this.ribbon1.PanelCaptionHeight = 16;
             // 
             // 
             // 
@@ -97,8 +98,7 @@ namespace FriishProduce
             this.ribbon1.RibbonTabFont = new System.Drawing.Font("Segoe UI", 9F);
             this.ribbon1.Tabs.Add(this.ribbonTab_Home);
             this.ribbon1.TabSpacing = 3;
-            this.ribbon1.ThemeColor = System.Windows.Forms.RibbonTheme.Blue;
-            this.ribbon1.UseAlwaysStandardTheme = true;
+            this.ribbon1.ThemeColor = System.Windows.Forms.RibbonTheme.Halloween;
             // 
             // MenuItem_Settings
             // 
@@ -302,19 +302,23 @@ namespace FriishProduce
             // 
             // tabControl
             // 
-            this.tabControl.BackgroundImage = global::FriishProduce.Properties.Resources.bg;
+            this.tabControl.CloseButtonVisible = true;
             resources.ApplyResources(this.tabControl, "tabControl");
             this.tabControl.MenuRenderer = null;
             this.tabControl.Name = "tabControl";
+            this.tabControl.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.tabControl.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.tabControl.TabBorderEnhanced = true;
-            this.tabControl.TabBorderEnhanceWeight = MdiTabControl.TabControl.Weight.Soft;
             this.tabControl.TabCloseButtonImage = null;
             this.tabControl.TabCloseButtonImageDisabled = null;
             this.tabControl.TabCloseButtonImageHot = null;
             this.tabControl.TabCloseButtonSize = new System.Drawing.Size(14, 14);
+            this.tabControl.TabCloseButtonVisible = false;
             this.tabControl.TabHeight = 25;
-            this.tabControl.TabMaximumWidth = 300;
+            this.tabControl.TabMaximumWidth = 350;
+            this.tabControl.TabOffset = 5;
+            this.tabControl.TabPadLeft = 7;
+            this.tabControl.TabPadRight = 7;
             this.tabControl.SelectedTabChanged += new System.EventHandler(this.TabChanged);
             this.tabControl.TabIndexChanged += new System.EventHandler(this.TabChanged);
             // 

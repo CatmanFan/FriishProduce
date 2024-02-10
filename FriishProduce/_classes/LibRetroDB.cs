@@ -12,12 +12,8 @@ namespace FriishProduce
 {
     public class Web
     {
-        private static bool IsConnected = false;
-
         public static void InternetTest()
         {
-            if (IsConnected) return;
-
             try
             {
                 var request = (HttpWebRequest)WebRequest.Create
@@ -35,8 +31,6 @@ namespace FriishProduce
                 {
                     char x = response.ResponseUri.ToString()[i];
                 }
-
-                IsConnected = true;
             }
             catch (WebException ex)
             {
@@ -50,7 +44,6 @@ namespace FriishProduce
             using (Stream webS = x.OpenRead(URL))
             using (MemoryStream ms = new MemoryStream())
             {
-                webS.ReadTimeout = 45000;
                 webS.CopyTo(ms); // Actual web connection is done here
                 if (ms.ToArray().Length > 75) return ms.ToArray();
                 throw new WebException();
