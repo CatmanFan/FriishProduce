@@ -92,9 +92,6 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="VistaMenu">
-      <HintPath>.\VistaMenu.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BannerPreview.cs">
@@ -259,10 +256,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\savebanner_flash.png" />
     <None Include="Resources\x.png" />
     <None Include="Resources\subforms\screen_nes.png" />
     <None Include="Resources\bg.png" />
-    <None Include="Resources\icons\arrow_repeat.png" />
     <Content Include="packages\Newtonsoft.Json.13.0.3\lib\net6.0\Newtonsoft.Json.xml" />
     <None Include="Resources\flag_eu.png" />
     <None Include="Resources\flag_eu50.png" />
@@ -270,7 +267,6 @@
     <None Include="Resources\flag_us.png" />
     <None Include="Resources\flag_jp.png" />
     <None Include="Resources\flag_kr.png" />
-    <None Include="Resources\icons\consoles\icon_16x16_smd.png" />
     <None Include="Resources\icons\arrow-circle-double.png" />
     <None Include="Resources\icons\box-label.png" />
     <None Include="Resources\icons\box-label_large.png" />
@@ -278,28 +274,11 @@
     <None Include="Resources\icons\book_large.png" />
     <None Include="Resources\icons\arrow-curve.png" />
     <None Include="Resources\icons\arrow-curve_large.png" />
-    <Content Include="Resources\icons\consoles\sega master system.ico" />
     <None Include="Resources\icons\logo.png" />
     <None Include="Resources\icons\information.png" />
     <None Include="Resources\icons\retroarch.png" />
-    <None Include="Resources\icons\document_empty.png" />
-    <None Include="Resources\icons\document_empty_large.png" />
     <None Include="Resources\icons\door_open.png" />
-    <None Include="Resources\icons\info_rhombus.png" />
-    <None Include="Resources\icons\wrench_orange.png" />
-    <None Include="Resources\icons\image_add.png" />
-    <None Include="Resources\icons\image_add_large.png" />
-    <None Include="Resources\icons\joystick_add_large.png" />
-    <None Include="Resources\icons\joystick_add.png" />
-    <None Include="Resources\icons\factory.png" />
-    <None Include="Resources\icons\mario.png" />
-    <None Include="Resources\icons\info_rhombus_large.png" />
-    <None Include="Resources\icons\factory_large.png" />
-    <None Include="Resources\icons\wrench_orange_large.png" />
-    <None Include="Resources\icons\mario_large.png" />
     <None Include="Resources\icons\information_large.png" />
-    <None Include="Resources\icons\lcd_tv.png" />
-    <None Include="Resources\icons\lcd_tv_large.png" />
     <None Include="Resources\icons\document.png" />
     <None Include="Resources\icons\document_large.png" />
     <None Include="Resources\icons\disc-blue.png" />
@@ -309,21 +288,11 @@
     <None Include="Resources\icons\gear.png" />
     <None Include="Resources\icons\gear_large.png" />
     <None Include="Resources\icons\image-share.png" />
-    <Content Include="Resources\icons\information.png" />
-    <Content Include="Resources\icons\info_rhombus_large.png" />
-    <Content Include="Resources\icons\joystick_add_large.png" />
     <None Include="Resources\icons\lakitu-smw2.png" />
-    <Content Include="Resources\icons\mario_large.png" />
     <None Include="Resources\icons\retroarch_large.png" />
-    <Content Include="Resources\icons\wrench_orange_large.png" />
-    <Content Include="Resources\savebanner_flash.png" />
     <None Include="Resources\saveicon_placeholder_s.png" />
     <None Include="Resources\saveicon_placeholder.png" />
     <None Include="Resources\saveicon_flash.png" />
-    <None Include="Resources\savebanner_flash.png" />
-    <None Include="Resources\icons\consoles\icon_16x16_snes.png" />
-    <None Include="Resources\icons\consoles\icon_16x16_nes.png" />
-    <None Include="Resources\icons\consoles\icon_16x16_n64.png" />
     <None Include="Resources\icons\consoles\sega genesis.ico" />
     <None Include="Resources\icons\consoles\snk neo geo aes.ico" />
     <None Include="Resources\icons\consoles\sega master system.ico" />
@@ -343,7 +312,7 @@
       <IncludeHash>True</IncludeHash>
       <FileType>File</FileType>
     </PublishFile>
-    <PublishFile Include="Resources\icons\consoles\sega master system.ico">
+    <PublishFile Include="VistaMenu">
       <Visible>False</Visible>
       <Group>
       </Group>
@@ -351,17 +320,7 @@
       </TargetPath>
       <PublishState>Exclude</PublishState>
       <IncludeHash>True</IncludeHash>
-      <FileType>File</FileType>
-    </PublishFile>
-    <PublishFile Include="Resources\savebanner_flash.png">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>File</FileType>
+      <FileType>Assembly</FileType>
     </PublishFile>
   </ItemGroup>
   <ItemGroup>
