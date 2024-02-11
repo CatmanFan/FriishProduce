@@ -9,14 +9,14 @@ using System.Windows.Forms;
 
 namespace FriishProduce
 {
-    public class WiiVCModifier
+    public class Injector
     {
         // -----------------------------------
         // Public variables
         // -----------------------------------
+        public bool isJapan { get; set; }
         public bool isKorea { get; set; }
         private Console Console { get; set; }
-        public TitleImage tImg { get; set; }
 
         public string TitleID { get; set; }
         public string ChannelTitle { get; set; }
@@ -24,10 +24,11 @@ namespace FriishProduce
         public int BannerYear { get; set; }
         public int BannerPlayers { get; set; }
         public string[] SaveDataTitle { get; set; }
+        public string Out { get; set; }
 
-        public WiiVCModifier(Console c) { Console = c; }
+        public Injector(Console c) { Console = c; }
 
-        public WAD Modify(WAD w)
+        public void Create(WAD w, TitleImage tImg)
         {
             // Banner metadata
             w.ChangeChannelTitles(ChannelTitle);
@@ -38,7 +39,7 @@ namespace FriishProduce
             w.ChangeTitleID(LowerTitleID.Channel, TitleID.ToUpper());
             w.FakeSign = true;
 
-            return w;
+            w.Save(Out);
         }
 
         public void ShowErrorMessage(Exception ex) => MessageBox.Show(ex.Message, Language.Get("Error"), MessageBoxButtons.OK, MessageBoxIcon.Hand);

@@ -118,9 +118,10 @@ namespace FriishProduce
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(224)))), ((int)(((byte)(234)))));
-            this.panel3.Controls.Add(this.x009);
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(222)))), ((int)(((byte)(255)))));
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.pictureBox1);
+            this.panel3.Controls.Add(this.x009);
             resources.ApplyResources(this.panel3, "panel3");
             this.panel3.Name = "panel3";
             // 
@@ -131,7 +132,7 @@ namespace FriishProduce
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::FriishProduce.Properties.Resources.info_rhombus_large;
+            this.pictureBox1.Image = global::FriishProduce.Properties.Resources.information_large;
             resources.ApplyResources(this.pictureBox1, "pictureBox1");
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.TabStop = false;

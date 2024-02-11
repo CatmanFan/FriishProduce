@@ -32,6 +32,7 @@ namespace FriishProduce
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsForm));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.AutoOpenFolder = new System.Windows.Forms.CheckBox();
             this.LanguageList = new System.Windows.Forms.ComboBox();
             this.AutoLibRetro = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -43,7 +44,6 @@ namespace FriishProduce
             this.Cancel = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.AutoOpenFolder = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -70,6 +70,12 @@ namespace FriishProduce
             this.tabPage1.Controls.Add(this.label1);
             resources.ApplyResources(this.tabPage1, "tabPage1");
             this.tabPage1.Name = "tabPage1";
+            // 
+            // AutoOpenFolder
+            // 
+            resources.ApplyResources(this.AutoOpenFolder, "AutoOpenFolder");
+            this.AutoOpenFolder.Name = "AutoOpenFolder";
+            this.AutoOpenFolder.UseVisualStyleBackColor = true;
             // 
             // LanguageList
             // 
@@ -147,12 +153,6 @@ namespace FriishProduce
             this.panel3.Controls.Add(this.panel1);
             resources.ApplyResources(this.panel3, "panel3");
             this.panel3.Name = "panel3";
-            // 
-            // AutoOpenFolder
-            // 
-            resources.ApplyResources(this.AutoOpenFolder, "AutoOpenFolder");
-            this.AutoOpenFolder.Name = "AutoOpenFolder";
-            this.AutoOpenFolder.UseVisualStyleBackColor = true;
             // 
             // SettingsForm
             // 

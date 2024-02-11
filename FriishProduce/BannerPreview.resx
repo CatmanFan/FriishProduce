@@ -117,46 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="button1.Text" xml:space="preserve">
-    <value>VC Emülatör ayarları...</value>
-  </data>
-  <data name="button2.Text" xml:space="preserve">
-    <value>Banner önizlemesini göster</value>
-  </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>ROM Bilgisi</value>
-  </data>
-  <data name="groupBox3.Text" xml:space="preserve">
-    <value>Kanal Başlığı</value>
-  </data>
-  <data name="groupBox4.Text" xml:space="preserve">
-    <value>Yazılım Ayarları</value>
-  </data>
-  <data name="groupBox8.Text" xml:space="preserve">
-    <value>Resim Enterpolasyonu</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Geçerli ROM Dosyası: </value>
-  </data>
-  <data name="label10.Text" xml:space="preserve">
-    <value>Oyuncular:</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Yazılım Adı: </value>
-  </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>Seri Kodu: </value>
-  </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>Oyun Başlığı:</value>
-  </data>
-  <data name="label6.Text" xml:space="preserve">
-    <value>Kısa ad:</value>
-  </data>
-  <data name="label8.Text" xml:space="preserve">
-    <value>Tam ad:</value>
-  </data>
-  <data name="label9.Text" xml:space="preserve">
-    <value>Yıl:</value>
-  </data>
+  <metadata name="Animation1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
 </root>

@@ -25,7 +25,6 @@ namespace FriishProduce
 
         public bool ReadyToExport = false;
         public bool ROMLoaded = false;
-        protected bool isJapanRegion = false;
 
         // -----------------------------------
         // Public variables
@@ -33,10 +32,17 @@ namespace FriishProduce
         protected string                        ROM         { get; set; }
         protected Database                      Database    { get; set; }
         protected IDictionary<string, string>   CurrentBase { get; set; }
-        protected WiiVCInjector                 WiiVC       { get; set; }
-        protected WiiVCModifier                 i           { get; set; }
+        protected TitleImage                    tImg        { get; set; }
+        protected Injector                      i           { get; set; }
+        protected InjectorWiiVC                 WiiVC       { get; set; }
+
+        // -----------------------------------
+        // Options
+        // -----------------------------------
         protected Options_VCNES                 o1          { get; set; }
+     // protected Options_VCSNES                o2          { get; set; }
         protected Options_VCN64                 o3          { get; set; }
+     // protected Options_VCSEGA                o4          { get; set; }
 
         // -----------------------------------
         // Connection with parent form
@@ -54,7 +60,7 @@ namespace FriishProduce
 
             // Change title text to untitled string
             Untitled = string.Format(Language.Get("Untitled"), Language.Get($"Platform_{Enum.GetName(typeof(Console), Console)}"));
-            Text = i.ChannelTitle ?? Untitled;
+            Text = string.IsNullOrWhiteSpace(i.ChannelTitle) ? Untitled : i.ChannelTitle;
 
             // Selected index properties
             imageintpl.Items.Clear();
@@ -70,7 +76,7 @@ namespace FriishProduce
 
             // Declare WAD metadata modifier
             // ********
-            i = new WiiVCModifier(Console);
+            i = new Injector(Console);
 
             switch (Console)
             {
@@ -127,7 +133,6 @@ namespace FriishProduce
             // Cosmetic
             // ********
             if (Console == Console.SMS || Console == Console.SMDGEN) SaveIcon_Panel.BackgroundImage = Properties.Resources.SaveIconPlaceholder_SEGA;
-            UpdateBannerPreview();
             RefreshForm();
 
             i.BannerYear = (int)ReleaseYear.Value;
@@ -154,16 +159,16 @@ namespace FriishProduce
                 SaveDataTitle.Lines.Length == 0 ? new string[] { "" } :
                 SaveDataTitle.Lines;
 
+            button2.Enabled = tImg != null && !string.IsNullOrEmpty(i.BannerTitle);
+
             ReadyToExport =    !string.IsNullOrEmpty(i.TitleID) && i.TitleID.Length == 4
-                            && !string.IsNullOrEmpty(i.ChannelTitle)
+                            && !string.IsNullOrWhiteSpace(i.ChannelTitle)
                             && !string.IsNullOrEmpty(i.BannerTitle)
                             && !string.IsNullOrEmpty(i.SaveDataTitle[0])
-                            && (i.tImg != null)
+                            && (tImg != null)
                             && ROM != null;
             Tag = "dirty";
             ExportCheck.Invoke(this, EventArgs.Empty);
-
-            UpdateBannerPreview();
         }
 
         private void RandomTID() => TitleID.Text = i.TitleID = TIDCode != null ? TIDCode + GenerateTitleID().Substring(0, 3) : GenerateTitleID();
@@ -189,6 +194,9 @@ namespace FriishProduce
                 if (ChannelTitle.TextLength <= SaveDataTitle.MaxLength) SaveDataTitle.Text = ChannelTitle.Text;
             }
 
+            var currentSender = sender as TextBox;
+            if (currentSender.Multiline && currentSender.Lines.Length > 2) currentSender.Lines = new string[] { currentSender.Lines[0], currentSender.Lines[1] };
+
             CheckExport();
         }
 
@@ -200,79 +208,25 @@ namespace FriishProduce
 
             if (!string.IsNullOrEmpty(currentSender.Text)
                 && currentSender.Lines[currentIndex].Length >= lineMaxLength
-                && e.KeyChar != (char)Keys.Delete && e.KeyChar != (char)8 && e.KeyChar != (char)Keys.Enter) { System.Media.SystemSounds.Beep.Play(); e.Handled = true; }
-        }
+                && e.KeyChar != (char)Keys.Delete && e.KeyChar != (char)8 && e.KeyChar != (char)Keys.Enter)
+                goto Handled;
 
-        private void BannerPreview_Paint(object sender, PaintEventArgs e)
-        {
-            if (BannerPreview_Panel.Enabled)
-            {
-                if (sender == BannerPreview_BG)
-                    using (LinearGradientBrush b = new LinearGradientBrush(new PointF(0, 0), new PointF(0, (sender as Control).Height),
-                        BannerPreview_Panel.BackColor,
-                        BannerPreview_Label.BackColor))
-                    {
-                        e.Graphics.FillRectangle(b, (sender as Control).ClientRectangle);
-                    }
+            if (currentSender.Multiline && currentSender.Lines.Length == 2 && e.KeyChar == (char)Keys.Enter) goto Handled;
 
-                else
-                    using (LinearGradientBrush b = new LinearGradientBrush(new PointF((sender as Control).Width, 0), new PointF(0, 0),
-                        BannerPreview_Panel.BackColor,
-                        (sender as Control).BackColor))
-                    {
-                        e.Graphics.FillRectangle(b, (sender as Control).ClientRectangle);
-                    }
-            }
-        }
+            return;
 
-        private void UpdateBannerPreview()
-        {
-            BannerPreview_Year.Tag    = Language.Current.TwoLetterISOLanguageName == "ja" || isJapanRegion ? "{0}年発売"
-                                      : Language.Current.TwoLetterISOLanguageName == "ko" || i.isKorea ? "일본판 발매년도\r\n{0}년"
-                                      : Language.Current.TwoLetterISOLanguageName == "nl" ? "Release: {0}"
-                                      : Language.Current.TwoLetterISOLanguageName == "es" ? "Año: {0}"
-                                      : Language.Current.TwoLetterISOLanguageName == "it" ? "Pubblicato: {0}"
-                                      : Language.Current.TwoLetterISOLanguageName == "fr" ? "Publié en {0}"
-                                      : Language.Current.TwoLetterISOLanguageName == "de" ? "Erschienen: {0}"
-                                      : "Released: {0}";
-
-            BannerPreview_Players.Tag = Language.Current.TwoLetterISOLanguageName == "ja" || isJapanRegion ? "プレイ人数\r\n{0}人"
-                                      : Language.Current.TwoLetterISOLanguageName == "ko" || i.isKorea ? "플레이 인원수\r\n{0}명"
-                                      : Language.Current.TwoLetterISOLanguageName == "nl" ? "{0} speler(s)"
-                                      : Language.Current.TwoLetterISOLanguageName == "es" ? "Jugadores: {0}"
-                                      : Language.Current.TwoLetterISOLanguageName == "it" ? "Giocatori: {0}"
-                                      : Language.Current.TwoLetterISOLanguageName == "fr" ? "Joueurs: {0}"
-                                      : Language.Current.TwoLetterISOLanguageName == "de" ? "{0} Spieler"
-                                      : "Players: {0}";
-
-            BannerPreview_Label.Text = BannerTitle.Text;
-            BannerPreview_Year.Text = string.Format(BannerPreview_Year.Tag.ToString(), ReleaseYear.Value.ToString());
-            BannerPreview_Players.Text = string.Format(BannerPreview_Players.Tag.ToString(), $"{1}{(Players.Value <= 1 ? null : "-" + Players.Value)}");
-            if (Language.Current.TwoLetterISOLanguageName == "ja" || isJapanRegion) BannerPreview_Players.Text = BannerPreview_Players.Text.Replace("-", "～");
+            Handled:
+            System.Media.SystemSounds.Beep.Play();
+            e.Handled = true;
         }
 
         #region Load Data Functions
-        private void ExportBanner_Click(object sender, EventArgs e)
+        private void ShowBanner_Click(object sender, EventArgs e)
         {
-            System.Media.SystemSounds.Beep.Play();
-
-            var WADs = new Dictionary<string, Console>()
-            {
-                /* { "FCWP", Console.NES }, // SMB3
-                { "FCWJ", Console.NES },
-                { "FCWQ", Console.NES },
-                { "JBDP", Console.SNES }, // DKC2
-                { "JBDJ", Console.SNES },
-                { "JBDT", Console.SNES },
-                { "NAAP", Console.N64 }, // SM64
-                { "NAAJ", Console.N64 },
-                { "NABT", Console.N64 }, // MK64 */
-            };
-
-            foreach (var item in WADs)
-                Banner.ExportBanner(item.Key, item.Value);
-
-            System.Media.SystemSounds.Beep.Play();
+            BannerPreview preview = new BannerPreview(i.BannerTitle, i.BannerYear, i.BannerPlayers, tImg.VCPic, i.isJapan ? 1 : i.isKorea ? 2 : 0);
+            preview.Text = string.Join(" - ", BannerTitle.Lines);
+            preview.ShowDialog(this);
+            preview.Dispose();
         }
 
         private string GenerateTitleID()
@@ -340,24 +294,24 @@ namespace FriishProduce
         private void InterpolationChanged(object sender, EventArgs e)
         {
             if (imageintpl.SelectedIndex != Properties.Settings.Default.ImageInterpolation) Tag = "dirty";
-            if (i != null && i.tImg != null) LoadImage();
+            if (i != null && tImg != null) LoadImage();
         }
 
         public void LoadImage()
         {
-            if (i.tImg != null) LoadImage(i.tImg.Source);
+            if (tImg != null) LoadImage(tImg.Source);
             else CheckExport();
         }
 
         public void LoadImage(string path)
         {
-            if (i.tImg != null) oldImgPath = newImgPath;
+            if (tImg != null) oldImgPath = newImgPath;
             newImgPath = path;
 
-            if (i.tImg == null) i.tImg = new TitleImage(Console, path);
-            else i.tImg.Create(Console, path);
+            if (tImg == null) tImg = new TitleImage(Console, path);
+            else tImg.Create(Console, path);
 
-            LoadImage(i.tImg.Source);
+            LoadImage(tImg.Source);
         }
 
         public bool LoadImage(Bitmap src)
@@ -366,8 +320,7 @@ namespace FriishProduce
             {
                 Bitmap img = (Bitmap)src.Clone();
 
-                groupBox5.Enabled = true;
-                i.tImg.Interpolation = (InterpolationMode)imageintpl.SelectedIndex;
+                tImg.Interpolation = (InterpolationMode)imageintpl.SelectedIndex;
 
                 // Additionally edit image before generating files, e.g. with modification of image palette/brightness, used only for images with exact resolution of original screen size
                 // ********
@@ -389,11 +342,10 @@ namespace FriishProduce
                         break;
                 }
 
-                i.tImg.Generate(img);
+                tImg.Generate(img);
                 img.Dispose();
 
-                if (i.tImg.VCPic != null) Image.Image = i.tImg.VCPic;
-                if (i.tImg.Source != null) SaveIcon_Panel.BackgroundImage = i.tImg.SaveIcon();
+                if (tImg.Source != null) SaveIcon_Panel.BackgroundImage = tImg.SaveIcon();
 
                 CheckExport();
                 return true;
@@ -412,17 +364,22 @@ namespace FriishProduce
             ROM = ROMpath;
             ROMLoaded = true;
 
-            ROMPath.Text = Path.GetFileName(ROM);
-            if (!UseLibRetro) SerialCode.Text = SoftwareName.Text = Language.Get("Unknown");
+            // Set ROM name & serial text
+            label1.Text = Language.Get("label1", this);
+            label1.Text += Path.GetFileName(ROM);
+
+            if (!UseLibRetro)
+            {
+                label2.Text = Language.Get("label2", this) + Language.Get("Unknown");
+                label3.Text = Language.Get("label3", this) + Language.Get("Unknown");
+            }
 
             Random.Visible =
             groupBox1.Enabled =
-            groupBox3.Enabled =
-            groupBox5.Enabled =
-            groupBox6.Enabled =
-            groupBox7.Enabled =
-            groupBox4.Enabled =
             groupBox2.Enabled =
+            groupBox3.Enabled =
+            groupBox4.Enabled =
+            groupBox6.Enabled =
             groupBox8.Enabled = true;
 
             UpdateBaseForm();
@@ -433,13 +390,6 @@ namespace FriishProduce
             Parent.tabControl.Visible = true;
 
             if (ROM != null && UseLibRetro) LoadLibRetroData();
-
-            BannerPreview_Panel.BackColor = BannerPreview_BG.BackColor;
-            BannerPreview_Line1.Refresh();
-            BannerPreview_Line2.Refresh();
-            BannerPreview_BG.Refresh();
-            foreach (Control item in BannerPreview_Panel.Controls)
-                if (item != ExportBanner) item.Visible = true;
         }
 
         public void LoadLibRetroData()
@@ -472,8 +422,10 @@ namespace FriishProduce
                 }
 
                 // Set ROM name & serial text
-                SoftwareName.Text = LibRetro.GetTitle() ?? Language.Get("Unknown");
-                SerialCode.Text = LibRetro.GetSerial() ?? Language.Get("Unknown");
+                label2.Text = Language.Get("label2", this);
+                label2.Text += LibRetro.GetTitle() ?? Language.Get("Unknown");
+                label3.Text = Language.Get("label3", this);
+                label3.Text += LibRetro.GetSerial() ?? Language.Get("Unknown");
 
                 // Show message if partially failed to retrieve data
                 if (Retrieved && (LibRetro.GetTitle() == null || LibRetro.GetPlayers() == null || LibRetro.GetYear() == null || LibRetro.GetImgURL() == null))
@@ -486,81 +438,42 @@ namespace FriishProduce
             }
         }
 
-        public bool CreateInject(string outputFile)
+        public bool CreateInject()
         {
+            i.Out = Parent.SaveWAD.FileName;
+
             try
             {
-                // Create injector and insert
-                // *******
                 switch (Console)
                 {
-                    // NES
-                    // *******
                     case Console.NES:
-                        WiiVC = new InjectorNES() { Settings = o1.Settings };
-                        break;
-
-
-                    // SNES
-                    // *******
                     case Console.SNES:
-                        WiiVC = new InjectorSNES();
-                        break;
-
-
-                    // N64
-                    // *******
                     case Console.N64:
-                        WiiVC = new InjectorN64()
-                        {
-                            Settings = o3.Settings,
-
-                            CompressionType = o3.EmuType == 3 ? (o3.Settings[3] == "True" ? 1 : 2) : 0,
-                            Allocate = o3.Settings[3] == "True" && (o3.EmuType <= 1),
-                        };
-                        break;
-
-
-                    // SEGA
-                    // *******
                     case Console.SMS:
                     case Console.SMDGEN:
-                        WiiVC = new InjectorSEGA()
-                        {
-                            IsSMS = Console == Console.SMS
-                        };
+                    case Console.PCE:
+                    case Console.NeoGeo:
+                    case Console.MSX:
+                        WiiVCInject(); // To-Do: Consider forwarder function
                         break;
+
+                    default:
+                    case Console.Flash:
+                        throw new NotImplementedException();
                 }
-
-                if (WADPath != null) WiiVC.WAD = WAD.Load(WADPath);
-                else
-                    for (int x = 0; x < Database.List.Length; x++)
-                        if (Database.List[x].TitleID.ToUpper() == baseID.Text.ToUpper()) WiiVC.WAD = Database.Load(x);
-
-                WiiVC.ROMPath = ROM;
-                WiiVC.ManualPath = null;
-
-                WiiVC.Load();
-                WiiVC.ReplaceROM();
-                WiiVC.ModifyEmulatorSettings();
-                WiiVC.ReplaceSaveData(i.SaveDataTitle, i.tImg);
-
-                WAD Out = i.Modify(WiiVC.Write());
-                Out.Save(outputFile);
-                Out.Dispose();
 
                 // Check new WAD file
                 // *******
-                if (File.Exists(outputFile) && File.ReadAllBytes(outputFile).Length > 10)
+                if (File.Exists(i.Out) && File.ReadAllBytes(i.Out).Length > 10)
                 {
-                    Parent.CleanTemp();
                     System.Media.SystemSounds.Beep.Play();
                     Tag = null;
 
                     if (Properties.Settings.Default.AutoOpenFolder)
-                        System.Diagnostics.Process.Start("explorer.exe", $"/select, \"{outputFile}\"");
+                        System.Diagnostics.Process.Start("explorer.exe", $"/select, \"{i.Out}\"");
                     else
-                        MessageBox.Show(string.Format(Language.Get("Message003"), outputFile), Language.Get("_AppTitle"), MessageBoxButtons.OK);
+                        MessageBox.Show(string.Format(Language.Get("Message003"), i.Out), Language.Get("_AppTitle"), MessageBoxButtons.OK);
+
                     return true;
                 }
                 else throw new Exception(Language.Get("Error006"));
@@ -568,15 +481,74 @@ namespace FriishProduce
 
             catch (Exception ex)
             {
-                Parent.CleanTemp();
                 i.ShowErrorMessage(ex);
                 return false;
             }
 
             finally
             {
-                WiiVC.Dispose();
+                Parent.CleanTemp();
+                if (WiiVC != null) WiiVC.Dispose();
             }
+        }
+
+        public void WiiVCInject()
+        {
+            // Create Wii VC injector to use
+            // *******
+            switch (Console)
+            {
+                default:
+                    throw new NotImplementedException();
+
+                // NES
+                // *******
+                case Console.NES:
+                    WiiVC = new WiiVC.NES() { Settings = o1.Settings };
+                    break;
+
+
+                // SNES
+                // *******
+                case Console.SNES:
+                    WiiVC = new WiiVC.SNES();
+                    break;
+
+
+                // N64
+                // *******
+                case Console.N64:
+                    WiiVC = new WiiVC.N64()
+                    {
+                        Settings = o3.Settings,
+
+                        CompressionType = o3.EmuType == 3 ? (o3.Settings[3] == "True" ? 1 : 2) : 0,
+                        Allocate = o3.Settings[3] == "True" && (o3.EmuType <= 1),
+                    };
+                    break;
+
+
+                // SEGA
+                // *******
+                case Console.SMS:
+                case Console.SMDGEN:
+                    WiiVC = new WiiVC.SEGA()
+                    {
+                        IsSMS = Console == Console.SMS
+                    };
+                    break;
+            }
+
+            // Set path to manual folder (if it exists) and load WAD
+            // *******
+            WiiVC.ManualPath = null;
+            if (WADPath != null) WiiVC.WAD = WAD.Load(WADPath);
+            else for (int x = 0; x < Database.List.Length; x++)
+                if (Database.List[x].TitleID.ToUpper() == baseID.Text.ToUpper()) WiiVC.WAD = Database.Load(x);
+
+            // Actually inject everything
+            // *******
+            i.Create(WiiVC.Inject(ROM, i.SaveDataTitle, tImg), tImg);
         }
         #endregion
 
@@ -828,7 +800,7 @@ namespace FriishProduce
             i.isKorea = CurrentBase.ElementAt(index).Key[3] == 'Q'
                      || CurrentBase.ElementAt(index).Key[3] == 'T'
                      || CurrentBase.ElementAt(index).Key[3] == 'K';
-            isJapanRegion = CurrentBase.ElementAt(index).Key[3] == 'J';
+            i.isJapan = CurrentBase.ElementAt(index).Key[3] == 'J';
 
             // Also, some consoles only support a single line anyway
             // ********
@@ -842,6 +814,8 @@ namespace FriishProduce
             if (SaveDataTitle.Multiline == isSingleLine)
             {
                 SaveDataTitle.Multiline = !isSingleLine;
+                SaveDataTitle.Location = SaveDataTitle.Multiline ? new Point(SaveDataTitle.Location.X, 115) : new Point(SaveDataTitle.Location.X, 122);
+                label11.Location = new Point(SaveDataTitle.Location.X - 107, SaveDataTitle.Location.Y + 2);
                 SaveDataTitle.Clear();
                 goto End;
             }
@@ -858,7 +832,6 @@ namespace FriishProduce
             foreach (var item in Database.List)
                 foreach (var key in CurrentBase.Keys)
                     if (item.TitleID.ToUpper() == key.ToUpper()) UpdateBaseConsole(item.emuRev);
-            UpdateBannerPreview();
         }
 
         /// <summary>

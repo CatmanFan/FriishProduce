@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FriishProduce
+namespace FriishProduce.WiiVC
 {
-    public class InjectorSEGA : WiiVCInjector
+    public class SEGA : InjectorWiiVC
     {
         public enum Type
         {
@@ -114,7 +114,7 @@ namespace FriishProduce
         // Anything else, and it will just do a black screen, or it will work for Master System only
         // ****************
 
-        public override void Load()
+        protected override void Load()
         {
             UsesContent5 = true;
             NeedsManualLoaded = false;
@@ -383,7 +383,7 @@ namespace FriishProduce
             return base.Write();
         }
 
-        public override void ReplaceROM()
+        protected override void ReplaceROM()
         {
             // -----------------------
             // Check filesize of input ROM
@@ -398,7 +398,7 @@ namespace FriishProduce
                     File.WriteAllBytes(item, ROM);
         }
 
-        public override void ReplaceSaveData(string[] lines, TitleImage tImg)
+        protected override void ReplaceSaveData(string[] lines, TitleImage tImg)
         {
             // -----------------------
             // COMMENT
@@ -444,7 +444,7 @@ namespace FriishProduce
             tImg.ReplaceSaveWTE();
         }
 
-        public override void ModifyEmulatorSettings()
+        protected override void ModifyEmulatorSettings()
         {
             throw new NotImplementedException();
         }

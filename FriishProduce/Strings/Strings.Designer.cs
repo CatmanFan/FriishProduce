@@ -446,7 +446,11 @@ namespace Strings {
         
         /// <summary>
         ///   Looks up a localized string similar to The selected WAD ({0}) is not valid.
-        ///Either it is not yet available in the database, or it is of the incorrect console..
+        ///
+        ///This could be for any of the following reasons:
+        ///- The currently-selected console does not match that of the WAD.
+        ///- The WAD is not yet available in the database.
+        ///- The WAD is already modified (i.e. injected or converted to a forwarder)..
         /// </summary>
         public static string Message005 {
             get {

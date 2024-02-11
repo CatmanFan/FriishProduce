@@ -120,6 +120,9 @@
   <data name="button1.Text" xml:space="preserve">
     <value>Options de méthode d'injection ...</value>
   </data>
+  <data name="button2.Text" xml:space="preserve">
+    <value>Afficher l'aperçu du banner</value>
+  </data>
   <data name="groupBox1.Text" xml:space="preserve">
     <value>Informations de la ROM</value>
   </data>
@@ -132,29 +135,26 @@
   <data name="groupBox4.Text" xml:space="preserve">
     <value>Options de contenu</value>
   </data>
-  <data name="groupBox5.Text" xml:space="preserve">
-    <value>Aperçu du banner</value>
-  </data>
   <data name="groupBox6.Text" xml:space="preserve">
     <value>Détails du banner</value>
-  </data>
-  <data name="groupBox7.Text" xml:space="preserve">
-    <value>Données de sauvegarde</value>
   </data>
   <data name="groupBox8.Text" xml:space="preserve">
     <value>Méthode d'interpolation des images</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
-    <value>Nom du logiciel :</value>
+    <value>ROM actuelle : </value>
   </data>
   <data name="label10.Text" xml:space="preserve">
     <value>Joueurs :</value>
   </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>Données de sauvegarde :</value>
+  </data>
   <data name="label2.Text" xml:space="preserve">
-    <value>Code de distribution :</value>
+    <value>Nom du logiciel : </value>
   </data>
   <data name="label3.Text" xml:space="preserve">
-    <value>ROM actuelle :</value>
+    <value>Code de distribution : </value>
   </data>
   <data name="label4.Text" xml:space="preserve">
     <value>Nom du jeu :</value>

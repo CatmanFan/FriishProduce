@@ -323,8 +323,8 @@ namespace FriishProduce
             {
                 if (x.GetType() == typeof(Button))
                 {
-                    if (x.Name.ToLower() == "ok") x.Text = Get("Button_OK");
-                    if (x.Name.ToLower() == "cancel") x.Text = Get("Button_Cancel");
+                    if (x.Name.ToLower() == "ok")       { x.Text = Get("Button_OK"); (x as Button).UseMnemonic = true; }
+                    if (x.Name.ToLower() == "cancel")   { x.Text = Get("Button_Cancel"); (x as Button).UseMnemonic = true; }
                 }
             }
         }

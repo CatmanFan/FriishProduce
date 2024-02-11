@@ -63,9 +63,29 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap arrow_repeat {
+        public static System.Drawing.Bitmap arrow_circle_double {
             get {
-                object obj = ResourceManager.GetObject("arrow_repeat", resourceCulture);
+                object obj = ResourceManager.GetObject("arrow_circle_double", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap arrow_curve {
+            get {
+                object obj = ResourceManager.GetObject("arrow-curve", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap arrow_curve_large {
+            get {
+                object obj = ResourceManager.GetObject("arrow-curve_large", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +103,9 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap document_empty {
+        public static System.Drawing.Bitmap book {
             get {
-                object obj = ResourceManager.GetObject("document_empty", resourceCulture);
+                object obj = ResourceManager.GetObject("book", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +113,9 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap document_empty_large {
+        public static System.Drawing.Bitmap book_large {
             get {
-                object obj = ResourceManager.GetObject("document_empty_large", resourceCulture);
+                object obj = ResourceManager.GetObject("book_large", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +123,9 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap door_open {
+        public static System.Drawing.Bitmap box_label {
             get {
-                object obj = ResourceManager.GetObject("door_open", resourceCulture);
+                object obj = ResourceManager.GetObject("box_label", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,9 +133,9 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap factory {
+        public static System.Drawing.Bitmap box_label_large {
             get {
-                object obj = ResourceManager.GetObject("factory", resourceCulture);
+                object obj = ResourceManager.GetObject("box_label_large", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,9 +143,39 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap factory_large {
+        public static System.Drawing.Bitmap disc_blue {
             get {
-                object obj = ResourceManager.GetObject("factory_large", resourceCulture);
+                object obj = ResourceManager.GetObject("disc_blue", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap disc_blue_large {
+            get {
+                object obj = ResourceManager.GetObject("disc_blue_large", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap document {
+            get {
+                object obj = ResourceManager.GetObject("document", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap document_large {
+            get {
+                object obj = ResourceManager.GetObject("document_large", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -193,9 +243,9 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap icon_16x16_n64 {
+        public static System.Drawing.Bitmap gear {
             get {
-                object obj = ResourceManager.GetObject("icon_16x16_n64", resourceCulture);
+                object obj = ResourceManager.GetObject("gear", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -203,9 +253,9 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap icon_16x16_nes {
+        public static System.Drawing.Bitmap gear_large {
             get {
-                object obj = ResourceManager.GetObject("icon_16x16_nes", resourceCulture);
+                object obj = ResourceManager.GetObject("gear_large", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -213,9 +263,9 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap icon_16x16_smd {
+        public static System.Drawing.Bitmap image_share {
             get {
-                object obj = ResourceManager.GetObject("icon_16x16_smd", resourceCulture);
+                object obj = ResourceManager.GetObject("image-share", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -223,9 +273,9 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap icon_16x16_snes {
+        public static System.Drawing.Bitmap image_sunset {
             get {
-                object obj = ResourceManager.GetObject("icon_16x16_snes", resourceCulture);
+                object obj = ResourceManager.GetObject("image-sunset", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -233,39 +283,9 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap image_add {
+        public static System.Drawing.Bitmap image_sunset_large {
             get {
-                object obj = ResourceManager.GetObject("image_add", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap image_add_large {
-            get {
-                object obj = ResourceManager.GetObject("image_add_large", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap info_rhombus {
-            get {
-                object obj = ResourceManager.GetObject("info_rhombus", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap info_rhombus_large {
-            get {
-                object obj = ResourceManager.GetObject("info_rhombus_large", resourceCulture);
+                object obj = ResourceManager.GetObject("image_sunset_large", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -293,39 +313,9 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap joystick_add {
+        public static System.Drawing.Bitmap lakitu_smw2 {
             get {
-                object obj = ResourceManager.GetObject("joystick_add", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap joystick_add_large {
-            get {
-                object obj = ResourceManager.GetObject("joystick_add_large", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap lcd_tv {
-            get {
-                object obj = ResourceManager.GetObject("lcd_tv", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap lcd_tv_large {
-            get {
-                object obj = ResourceManager.GetObject("lcd_tv_large", resourceCulture);
+                object obj = ResourceManager.GetObject("lakitu-smw2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -336,26 +326,6 @@ namespace FriishProduce.Properties {
         public static System.Drawing.Bitmap logo {
             get {
                 object obj = ResourceManager.GetObject("logo", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap mario {
-            get {
-                object obj = ResourceManager.GetObject("mario", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap mario_large {
-            get {
-                object obj = ResourceManager.GetObject("mario_large", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -513,19 +483,9 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap wrench_orange {
+        public static System.Drawing.Bitmap x {
             get {
-                object obj = ResourceManager.GetObject("wrench_orange", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap wrench_orange_large {
-            get {
-                object obj = ResourceManager.GetObject("wrench_orange_large", resourceCulture);
+                object obj = ResourceManager.GetObject("x", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

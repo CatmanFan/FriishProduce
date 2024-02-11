@@ -7,30 +7,11 @@ using libWiiSharp;
 
 namespace FriishProduce
 {
-    public abstract class WiiVCInjector
+    public abstract class InjectorWiiVC
     {
         public WAD WAD { get; set; }
 
         protected byte[] ROM { get; private set; }
-
-        private string _rompath;
-        public string ROMPath
-        {
-            get => _rompath;
-            set
-            {
-                _rompath = value;
-                if (_rompath == null) return;
-
-                // -----------------------
-                // Check if raw ROM exists
-                // -----------------------
-                if (!File.Exists(_rompath))
-                    throw new FileNotFoundException(new FileNotFoundException().Message, _rompath);
-
-                ROM = File.ReadAllBytes(_rompath);
-            }
-        }
 
         public int EmuType { get; set; }
         public IDictionary<int, string> Settings { get; set; }
@@ -47,9 +28,9 @@ namespace FriishProduce
 
 
 
-        public WiiVCInjector() { }
+        public InjectorWiiVC() { }
 
-        public virtual void Load()
+        protected virtual void Load()
         {
             Contents = new List<byte[]>();
             for (int i = 0; i < WAD.Contents.Length; i++)
@@ -213,11 +194,28 @@ namespace FriishProduce
             return WAD;
         }
 
-        public abstract void ReplaceROM();
+        public WAD Inject(string ROM, string[] SaveDataTitle, TitleImage Img)
+        {
+            // -----------------------
+            // Check if raw ROM exists
+            // -----------------------
+            if (!File.Exists(ROM))
+                throw new FileNotFoundException(new FileNotFoundException().Message, ROM);
 
-        public abstract void ReplaceSaveData(string[] lines, TitleImage tImg);
+            this.ROM = File.ReadAllBytes(ROM);
 
-        public abstract void ModifyEmulatorSettings();
+            Load();
+            ReplaceROM();
+            ReplaceSaveData(SaveDataTitle, Img);
+            ModifyEmulatorSettings();
+            return Write();
+        }
+
+        protected abstract void ReplaceROM();
+
+        protected abstract void ReplaceSaveData(string[] lines, TitleImage tImg);
+
+        protected abstract void ModifyEmulatorSettings();
 
         protected bool SettingParse(int i)
         {
@@ -230,7 +228,6 @@ namespace FriishProduce
         {
             WAD.Dispose();
             ROM = null;
-            ROMPath = null;
             Settings.Clear();
             ManualPath = null;
             OrigManual = null;

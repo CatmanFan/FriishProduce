@@ -55,9 +55,12 @@ namespace FriishProduce
                     foreach (RibbonButton button in panel.Items.OfType<RibbonButton>())
                     {
                         text = Language.Get(button.Name, this);
-                        if (text != "undefined") button.Text = text;
-                        button.MinimumSize = new Size((int)Math.Round(50 + (button.Text.Length * 4.25)), 0);
-                        button.MaximumSize = button.MaximumSize;
+                        if (text != "undefined")
+                        {
+                            button.Text = text;
+                            button.MinimumSize = new Size(15 + (button.Text.Length * 6), 0);
+                            button.MaximumSize = button.MaximumSize;
+                        }
                     }
                 }
             }
@@ -82,9 +85,15 @@ namespace FriishProduce
             MenuItem_Settings.Text = Language.Get("Settings");
             BrowseROM.Title = BrowseImage.Title = ribbonPanel_Open.Text;
             SaveWAD.Title = Strip_ExportWAD.Text = ExportWAD.Text;
+
             Strip_UseLibRetro.Text = UseLibRetro.Text;
             Strip_OpenROM.Text = Language.Get("Strip_OpenROM", this);
             Strip_OpenImage.Text = Language.Get("Strip_OpenImage", this);
+
+            Strip_OpenROM.Image = OpenROM.SmallImage;
+            Strip_OpenImage.Image = OpenImage.SmallImage;
+            Strip_UseLibRetro.Image = UseLibRetro.SmallImage;
+            Strip_ExportWAD.Image = ExportWAD.SmallImage;
 
             BrowseImage.Filter = Language.Get("Filter_Img");
             SaveWAD.Filter = Language.Get("Filter_WAD");
@@ -182,7 +191,7 @@ namespace FriishProduce
             Tab.ExportCheck += ExportCheck;
             tabControl.TabPages.Add(Tab);
 
-            BrowseROMDialog(console, Tab);
+            // BrowseROMDialog(console, Tab);
         }
 
         private void OpenROM_Click(object sender, EventArgs e) => BrowseROMDialog((tabControl.SelectedForm as InjectorForm).Console, tabControl.SelectedForm as InjectorForm);
@@ -220,7 +229,9 @@ namespace FriishProduce
             var currentForm = tabControl.SelectedForm as InjectorForm;
 
             SaveWAD.FileName = currentForm.GetName();
-            if (SaveWAD.ShowDialog() == DialogResult.OK && currentForm.CreateInject(SaveWAD.FileName)) currentForm.Close();
+            if (SaveWAD.ShowDialog() == DialogResult.OK)
+                if (currentForm.CreateInject())
+                    currentForm.Close();
         }
 
         private void OpenImage_Click(object sender, EventArgs e)

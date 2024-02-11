@@ -385,7 +385,7 @@
     <value>1</value>
   </data>
   <data name="OK.Text" xml:space="preserve">
-    <value>OK</value>
+    <value>&amp;OK</value>
   </data>
   <data name="&gt;&gt;OK.Name" xml:space="preserve">
     <value>OK</value>
@@ -409,7 +409,7 @@
     <value>2</value>
   </data>
   <data name="Cancel.Text" xml:space="preserve">
-    <value>Cancel</value>
+    <value>&amp;Cancel</value>
   </data>
   <data name="&gt;&gt;Cancel.Name" xml:space="preserve">
     <value>Cancel</value>

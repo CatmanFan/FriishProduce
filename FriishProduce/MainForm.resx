@@ -119,7 +119,7 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="ribbon1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 8pt</value>
+    <value>Segoe UI, 8.5pt</value>
   </data>
   <data name="ribbon1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -127,42 +127,21 @@
   <data name="ribbon1.OrbDropDown.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="ribbon1.OrbDropDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>527, 207</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="ribbon1.OrbDropDown.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="ribbon1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1114, 130</value>
-  </data>
-  <data name="ribbon1.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="ribbonTab_Home.Text" xml:space="preserve">
-    <value>Home</value>
-  </data>
-  <data name="&gt;&gt;ribbon1.Name" xml:space="preserve">
-    <value>ribbon1</value>
-  </data>
-  <data name="&gt;&gt;ribbon1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Ribbon, System.Windows.Forms.Ribbon, Version=2.0.0.0, Culture=neutral, PublicKeyToken=928736e248aa81f9</value>
-  </data>
-  <data name="&gt;&gt;ribbon1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;ribbon1.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="MenuItem_Settings.Text" xml:space="preserve">
-    <value />
+    <value> </value>
   </data>
   <data name="MenuItem_About.Text" xml:space="preserve">
     <value>About</value>
   </data>
   <data name="MenuItem_Exit.Text" xml:space="preserve">
     <value>Exit</value>
+  </data>
+  <data name="ribbon1.OrbDropDown.Size" type="System.Drawing.Size, System.Drawing">
+    <value>527, 207</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="ribbon1.OrbDropDown.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="RibbonButton_Settings.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -174,6 +153,12 @@
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAAABpJREFUWEftwQEBAAAAgiD/r25IQAAAAMC5GhAgAAGdeElDAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="RibbonButton_Settings.SmallImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAABNJREFUOE9jGAWjYBSMAjBgYAAABBAAAadEfGMAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="RibbonButton_About.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -205,14 +190,20 @@
         RK5CYII=
 </value>
   </data>
-  <data name="ribbonPanel_Project.Text" xml:space="preserve">
-    <value>Project</value>
+  <data name="ribbon1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>815, 115</value>
+  </data>
+  <data name="ribbon1.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
   <data name="NewProject.Text" xml:space="preserve">
     <value>New...</value>
   </data>
-  <data name="ribbonPanel_Open.Text" xml:space="preserve">
-    <value>Open</value>
+  <data name="UseLibRetro.Text" xml:space="preserve">
+    <value>LibRetro</value>
+  </data>
+  <data name="ribbonPanel_Project.Text" xml:space="preserve">
+    <value>Project</value>
   </data>
   <data name="OpenROM.Text" xml:space="preserve">
     <value>ROM</value>
@@ -220,14 +211,29 @@
   <data name="OpenImage.Text" xml:space="preserve">
     <value>Image</value>
   </data>
-  <data name="UseLibRetro.Text" xml:space="preserve">
-    <value>LibRetro</value>
+  <data name="ribbonPanel_Open.Text" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="ExportWAD.Text" xml:space="preserve">
+    <value>Save</value>
   </data>
   <data name="ribbonPanel_Export.Text" xml:space="preserve">
     <value>Export</value>
   </data>
-  <data name="ExportWAD.Text" xml:space="preserve">
-    <value>Save</value>
+  <data name="ribbonTab_Home.Text" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="&gt;&gt;ribbon1.Name" xml:space="preserve">
+    <value>ribbon1</value>
+  </data>
+  <data name="&gt;&gt;ribbon1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Ribbon, System.Windows.Forms.Ribbon, Version=2.0.0.0, Culture=neutral, PublicKeyToken=928736e248aa81f9</value>
+  </data>
+  <data name="&gt;&gt;ribbon1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ribbon1.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <metadata name="BrowseROM.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -244,15 +250,6 @@
   <metadata name="TabContextMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>407, 41</value>
   </metadata>
-  <data name="TabContextMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 104</value>
-  </data>
-  <data name="&gt;&gt;TabContextMenu.Name" xml:space="preserve">
-    <value>TabContextMenu</value>
-  </data>
-  <data name="&gt;&gt;TabContextMenu.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="Strip_OpenROM.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -280,36 +277,27 @@
   <data name="Strip_ExportWAD.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="Strip_ExportWAD.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAKmSURBVDhPnZJrSFNhGMcf+1B96SLmbdpVKk3Nlk7n
-        ZHNn5+zMTEo0wTQK5yqMvkwT0z4YXTBSCSvn+haaEKRFEFn5wWUIXbBiasPSefmin9y8bJG3f+/xQhgk
-        2IH/+z/vn+f5vc95OZTBqUkvGkgUxRXiDSmUmayizwoZdcSFUNthGbXKZfRGHkwtMYHo10bi0/7N+CdA
-        MBgoW6OkpJRUihOPUHdZAX0oOU8dxefIVpgPr+01HLkpqwNy1QkLk2j1IsXrBOoqOUvvL5nIZs6Dt60F
-        jhzD6oBTDCC5wPZaQU+xOj21R/pSS/gW9Cn34OPuDSsBeqlRr2dizjJpgmWAjuXxvEBf2BTthUY2was/
-        E0gFPDtBw/MnVRw/k6QTkMwgOQzAMdfwgjyR47titDw62T28KzLh59ulOziuVZOaF7ITtJzHbDyNrspy
-        zN+/iTSVgjJUCk7B8Z1m4xnYq67CU1sBiy9R66EgDHNR+BqxFSQma2A25aGr+hpcty7Dma7CgBANTWI8
-        Lubnwb6U96cnoVcfg7t+hHuS/Ak1Mp9hqtyxEZ7qcgyyAvveTbBH+KInyh/fo7bBdfsKnMcSYd/H8kg/
-        dLOTx+rr4HpYi8kGK6zBBHrASG5rFdzPGuFqaoDraSPGXzShJzoA488fw/WkHq7mR3C/bMY3xU44lGFw
-        KHbBzSB1gQxgCSCMVZQB078w55nEvNcDzM2iN3Y7MDuDOe8UE8vm5/FDHY4+IQb9umi4a27AEiQB2OIu
-        N2OA/ZrO5Ag4tQcwwAoGRPmCS/uFjD+IwVQFhtKUGDqaAPf1YlikT5CWidICjGZqMbKsExxGsnSL/neW
-        xWOU+UTphUWANXQdpouMmDJlrElSj9RLd0LX26QXS4jPmiT1SL3EnjCm2P8Thf0GoRbQeA88eU8AAAAA
-        SUVORK5CYII=
-</value>
-  </data>
   <data name="Strip_ExportWAD.Size" type="System.Drawing.Size, System.Drawing">
     <value>67, 22</value>
+  </data>
+  <data name="TabContextMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>68, 104</value>
+  </data>
+  <data name="&gt;&gt;TabContextMenu.Name" xml:space="preserve">
+    <value>TabContextMenu</value>
+  </data>
+  <data name="&gt;&gt;TabContextMenu.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="tabControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
   <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 130</value>
+    <value>0, 115</value>
   </data>
   <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1114, 562</value>
+    <value>815, 415</value>
   </data>
   <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -333,7 +321,7 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1114, 692</value>
+    <value>815, 530</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2794,6 +2782,12 @@
   <data name="&gt;&gt;NewProject.Type" xml:space="preserve">
     <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon, Version=2.0.0.0, Culture=neutral, PublicKeyToken=928736e248aa81f9</value>
   </data>
+  <data name="&gt;&gt;UseLibRetro.Name" xml:space="preserve">
+    <value>UseLibRetro</value>
+  </data>
+  <data name="&gt;&gt;UseLibRetro.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon, Version=2.0.0.0, Culture=neutral, PublicKeyToken=928736e248aa81f9</value>
+  </data>
   <data name="&gt;&gt;ribbonPanel_Open.Name" xml:space="preserve">
     <value>ribbonPanel_Open</value>
   </data>
@@ -2810,18 +2804,6 @@
     <value>OpenImage</value>
   </data>
   <data name="&gt;&gt;OpenImage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon, Version=2.0.0.0, Culture=neutral, PublicKeyToken=928736e248aa81f9</value>
-  </data>
-  <data name="&gt;&gt;ribbonSeparator1.Name" xml:space="preserve">
-    <value>ribbonSeparator1</value>
-  </data>
-  <data name="&gt;&gt;ribbonSeparator1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RibbonSeparator, System.Windows.Forms.Ribbon, Version=2.0.0.0, Culture=neutral, PublicKeyToken=928736e248aa81f9</value>
-  </data>
-  <data name="&gt;&gt;UseLibRetro.Name" xml:space="preserve">
-    <value>UseLibRetro</value>
-  </data>
-  <data name="&gt;&gt;UseLibRetro.Type" xml:space="preserve">
     <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon, Version=2.0.0.0, Culture=neutral, PublicKeyToken=928736e248aa81f9</value>
   </data>
   <data name="&gt;&gt;ribbonPanel_Export.Name" xml:space="preserve">

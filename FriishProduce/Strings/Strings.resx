@@ -252,7 +252,11 @@ Restart now?</value>
   </data>
   <data name="Message005" xml:space="preserve">
     <value>The selected WAD ({0}) is not valid.
-Either it is not yet available in the database, or it is of the incorrect console.</value>
+
+This could be for any of the following reasons:
+- The currently-selected console does not match that of the WAD.
+- The WAD is not yet available in the database.
+- The WAD is already modified (i.e. injected or converted to a forwarder).</value>
   </data>
   <data name="PlatformGroup_0" xml:space="preserve">
     <value>Nintendo</value>

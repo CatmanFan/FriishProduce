@@ -70,6 +70,15 @@ namespace Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Show banner preview.
+        /// </summary>
+        public static string button2_Text {
+            get {
+                return ResourceManager.GetString("button2.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ROM information.
         /// </summary>
         public static string groupBox1_Text {
@@ -106,29 +115,11 @@ namespace Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Banner preview.
-        /// </summary>
-        public static string groupBox5_Text {
-            get {
-                return ResourceManager.GetString("groupBox5.Text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Banner details.
         /// </summary>
         public static string groupBox6_Text {
             get {
                 return ResourceManager.GetString("groupBox6.Text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Save Data.
-        /// </summary>
-        public static string groupBox7_Text {
-            get {
-                return ResourceManager.GetString("groupBox7.Text", resourceCulture);
             }
         }
         
@@ -142,7 +133,7 @@ namespace Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Software name:.
+        ///   Looks up a localized string similar to Current ROM: .
         /// </summary>
         public static string label1_Text {
             get {
@@ -160,7 +151,16 @@ namespace Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Serial code:.
+        ///   Looks up a localized string similar to Savedata:.
+        /// </summary>
+        public static string label11_Text {
+            get {
+                return ResourceManager.GetString("label11.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Software name:.
         /// </summary>
         public static string label2_Text {
             get {
@@ -169,7 +169,7 @@ namespace Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Current ROM:.
+        ///   Looks up a localized string similar to Serial code: .
         /// </summary>
         public static string label3_Text {
             get {
@@ -178,7 +178,7 @@ namespace Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Base name:.
+        ///   Looks up a localized string similar to Base name: .
         /// </summary>
         public static string label4_Text {
             get {

@@ -77,8 +77,8 @@
     <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
     </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="System.Windows.Forms.Ribbon, Version=2.0.0.0, Culture=neutral, PublicKeyToken=928736e248aa81f9, processorArchitecture=MSIL">
       <HintPath>..\packages\RibbonWinForms.5.0.1.1\lib\net472\System.Windows.Forms.Ribbon.dll</HintPath>
@@ -92,14 +92,26 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="VistaMenu">
+      <HintPath>.\VistaMenu.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BannerPreview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BannerPreview.Designer.cs">
+      <DependentUpon>BannerPreview.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="BannerPreview.resx">
+      <DependentUpon>BannerPreview.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -164,12 +176,12 @@
     <Compile Include="_classes\Byte.cs" />
     <Compile Include="_classes\Consoles.cs" />
     <Compile Include="_classes\Database.cs" />
-    <Compile Include="_classes\Injectors\WiiVCModifier.cs" />
-    <Compile Include="_classes\Injectors\WiiVCInjector.cs" />
-    <Compile Include="_classes\Injectors\InjectorN64.cs" />
-    <Compile Include="_classes\Injectors\InjectorNES.cs" />
-    <Compile Include="_classes\Injectors\InjectorSEGA.cs" />
-    <Compile Include="_classes\Injectors\InjectorSNES.cs" />
+    <Compile Include="_classes\Injectors\WAD.cs" />
+    <Compile Include="_classes\Injectors\WiiVC.cs" />
+    <Compile Include="_classes\Injectors\WiiVC\N64.cs" />
+    <Compile Include="_classes\Injectors\WiiVC\NES.cs" />
+    <Compile Include="_classes\Injectors\WiiVC\SEGA.cs" />
+    <Compile Include="_classes\Injectors\WiiVC\SNES.cs" />
     <Compile Include="_classes\Process.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -247,6 +259,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\x.png" />
     <None Include="Resources\subforms\screen_nes.png" />
     <None Include="Resources\bg.png" />
     <None Include="Resources\icons\arrow_repeat.png" />
@@ -258,6 +271,13 @@
     <None Include="Resources\flag_jp.png" />
     <None Include="Resources\flag_kr.png" />
     <None Include="Resources\icons\consoles\icon_16x16_smd.png" />
+    <None Include="Resources\icons\arrow-circle-double.png" />
+    <None Include="Resources\icons\box-label.png" />
+    <None Include="Resources\icons\box-label_large.png" />
+    <None Include="Resources\icons\book.png" />
+    <None Include="Resources\icons\book_large.png" />
+    <None Include="Resources\icons\arrow-curve.png" />
+    <None Include="Resources\icons\arrow-curve_large.png" />
     <Content Include="Resources\icons\consoles\sega master system.ico" />
     <None Include="Resources\icons\logo.png" />
     <None Include="Resources\icons\information.png" />
@@ -280,9 +300,19 @@
     <None Include="Resources\icons\information_large.png" />
     <None Include="Resources\icons\lcd_tv.png" />
     <None Include="Resources\icons\lcd_tv_large.png" />
+    <None Include="Resources\icons\document.png" />
+    <None Include="Resources\icons\document_large.png" />
+    <None Include="Resources\icons\disc-blue.png" />
+    <None Include="Resources\icons\disc-blue_large.png" />
+    <None Include="Resources\icons\image-sunset_large.png" />
+    <None Include="Resources\icons\image-sunset.png" />
+    <None Include="Resources\icons\gear.png" />
+    <None Include="Resources\icons\gear_large.png" />
+    <None Include="Resources\icons\image-share.png" />
     <Content Include="Resources\icons\information.png" />
     <Content Include="Resources\icons\info_rhombus_large.png" />
     <Content Include="Resources\icons\joystick_add_large.png" />
+    <None Include="Resources\icons\lakitu-smw2.png" />
     <Content Include="Resources\icons\mario_large.png" />
     <None Include="Resources\icons\retroarch_large.png" />
     <Content Include="Resources\icons\wrench_orange_large.png" />
