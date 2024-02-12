@@ -301,7 +301,11 @@ namespace FriishProduce
                             {
                                 GetControl(h, c);
                                 foreach (Control i in h.Controls)
+                                {
                                     GetControl(i, c);
+                                    foreach (Control j in i.Controls)
+                                        GetControl(j, c);
+                                }
                             }
                         }
                     }

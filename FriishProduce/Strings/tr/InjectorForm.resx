@@ -159,4 +159,7 @@
   <data name="label9.Text" xml:space="preserve">
     <value>Yıl:</value>
   </data>
+  <data name="RegionFree.Text" xml:space="preserve">
+    <value>Bolgesiz</value>
+  </data>
 </root>

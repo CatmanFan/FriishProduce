@@ -58,7 +58,7 @@ namespace FriishProduce
                         if (text != "undefined")
                         {
                             button.Text = text;
-                            button.MinimumSize = new Size(15 + (button.Text.Length * 6), 0);
+                            button.MinimumSize = new Size(20 + (button.Text.Length * 5), 0);
                             button.MaximumSize = button.MaximumSize;
                         }
                     }
@@ -87,8 +87,9 @@ namespace FriishProduce
             SaveWAD.Title = Strip_ExportWAD.Text = ExportWAD.Text;
 
             Strip_UseLibRetro.Text = UseLibRetro.Text;
-            Strip_OpenROM.Text = Language.Get("Strip_OpenROM", this);
-            Strip_OpenImage.Text = Language.Get("Strip_OpenImage", this);
+            Strip_OpenROM.Text = Language.Get(Strip_OpenROM.Name, this);
+            Strip_OpenImage.Text = Language.Get(Strip_OpenImage.Name, this);
+            CloseTab.Text = Language.Get(CloseTab.Name, this);
 
             Strip_OpenROM.Image = OpenROM.SmallImage;
             Strip_OpenImage.Image = OpenImage.SmallImage;
@@ -254,6 +255,8 @@ namespace FriishProduce
             }
             catch { }
         }
+
+        private void CloseTab_Click(object sender, EventArgs e) => (tabControl.SelectedForm as Form).Close();
 
         private void MenuItem_Exit_Click(object sender, EventArgs e) => Application.Exit();
     }

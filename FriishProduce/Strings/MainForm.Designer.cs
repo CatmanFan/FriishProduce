@@ -61,6 +61,15 @@ namespace Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Close.
+        /// </summary>
+        public static string CloseTab_Text {
+            get {
+                return ResourceManager.GetString("CloseTab.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Save as WAD....
         /// </summary>
         public static string ExportWAD_Text {

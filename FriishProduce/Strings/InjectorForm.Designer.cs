@@ -115,6 +115,15 @@ namespace Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Savedata.
+        /// </summary>
+        public static string groupBox5_Text {
+            get {
+                return ResourceManager.GetString("groupBox5.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Banner details.
         /// </summary>
         public static string groupBox6_Text {
@@ -147,15 +156,6 @@ namespace Strings {
         public static string label10_Text {
             get {
                 return ResourceManager.GetString("label10.Text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Savedata:.
-        /// </summary>
-        public static string label11_Text {
-            get {
-                return ResourceManager.GetString("label11.Text", resourceCulture);
             }
         }
         
@@ -228,6 +228,15 @@ namespace Strings {
         public static string label9_Text {
             get {
                 return ResourceManager.GetString("label9.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use offline WAD file.
+        /// </summary>
+        public static string OpenWAD_Text {
+            get {
+                return ResourceManager.GetString("OpenWAD.Text", resourceCulture);
             }
         }
         

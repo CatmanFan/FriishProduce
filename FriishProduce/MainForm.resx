@@ -119,13 +119,23 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="ribbon1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 8.5pt</value>
+    <value>Segoe UI, 8pt</value>
   </data>
   <data name="ribbon1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
+  <data name="ribbon1.OrbDropDown.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 8pt</value>
+  </data>
   <data name="ribbon1.OrbDropDown.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="ribbon1.OrbDropDown.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 0, 3</value>
+  </data>
+  <data name="NewProject.Text" xml:space="preserve">
+    <value>New...</value>
   </data>
   <data name="MenuItem_Settings.Text" xml:space="preserve">
     <value> </value>
@@ -137,7 +147,7 @@
     <value>Exit</value>
   </data>
   <data name="ribbon1.OrbDropDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>527, 207</value>
+    <value>527, 254</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="ribbon1.OrbDropDown.TabIndex" type="System.Int32, mscorlib">
@@ -191,13 +201,10 @@
 </value>
   </data>
   <data name="ribbon1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>815, 115</value>
+    <value>859, 115</value>
   </data>
   <data name="ribbon1.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
-  </data>
-  <data name="NewProject.Text" xml:space="preserve">
-    <value>New...</value>
   </data>
   <data name="UseLibRetro.Text" xml:space="preserve">
     <value>LibRetro</value>
@@ -280,8 +287,14 @@
   <data name="Strip_ExportWAD.Size" type="System.Drawing.Size, System.Drawing">
     <value>67, 22</value>
   </data>
+  <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 6</value>
+  </data>
+  <data name="CloseTab.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 22</value>
+  </data>
   <data name="TabContextMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 104</value>
+    <value>68, 132</value>
   </data>
   <data name="&gt;&gt;TabContextMenu.Name" xml:space="preserve">
     <value>TabContextMenu</value>
@@ -289,7 +302,6 @@
   <data name="&gt;&gt;TabContextMenu.Type" xml:space="preserve">
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="tabControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -297,7 +309,7 @@
     <value>0, 115</value>
   </data>
   <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>815, 415</value>
+    <value>859, 472</value>
   </data>
   <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -321,7 +333,7 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>815, 530</value>
+    <value>859, 587</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2728,16 +2740,28 @@
   <data name="$this.Text" xml:space="preserve">
     <value>FriishProduce</value>
   </data>
-  <data name="&gt;&gt;MenuItem_Settings.Name" xml:space="preserve">
-    <value>MenuItem_Settings</value>
+  <data name="&gt;&gt;NewProject.Name" xml:space="preserve">
+    <value>NewProject</value>
   </data>
-  <data name="&gt;&gt;MenuItem_Settings.Type" xml:space="preserve">
+  <data name="&gt;&gt;NewProject.Type" xml:space="preserve">
     <value>System.Windows.Forms.RibbonOrbMenuItem, System.Windows.Forms.Ribbon, Version=2.0.0.0, Culture=neutral, PublicKeyToken=928736e248aa81f9</value>
   </data>
   <data name="&gt;&gt;orbMenuSeparator1.Name" xml:space="preserve">
     <value>orbMenuSeparator1</value>
   </data>
   <data name="&gt;&gt;orbMenuSeparator1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RibbonSeparator, System.Windows.Forms.Ribbon, Version=2.0.0.0, Culture=neutral, PublicKeyToken=928736e248aa81f9</value>
+  </data>
+  <data name="&gt;&gt;MenuItem_Settings.Name" xml:space="preserve">
+    <value>MenuItem_Settings</value>
+  </data>
+  <data name="&gt;&gt;MenuItem_Settings.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RibbonOrbMenuItem, System.Windows.Forms.Ribbon, Version=2.0.0.0, Culture=neutral, PublicKeyToken=928736e248aa81f9</value>
+  </data>
+  <data name="&gt;&gt;orbMenuSeparator2.Name" xml:space="preserve">
+    <value>orbMenuSeparator2</value>
+  </data>
+  <data name="&gt;&gt;orbMenuSeparator2.Type" xml:space="preserve">
     <value>System.Windows.Forms.RibbonSeparator, System.Windows.Forms.Ribbon, Version=2.0.0.0, Culture=neutral, PublicKeyToken=928736e248aa81f9</value>
   </data>
   <data name="&gt;&gt;MenuItem_About.Name" xml:space="preserve">
@@ -2775,12 +2799,6 @@
   </data>
   <data name="&gt;&gt;ribbonPanel_Project.Type" xml:space="preserve">
     <value>System.Windows.Forms.RibbonPanel, System.Windows.Forms.Ribbon, Version=2.0.0.0, Culture=neutral, PublicKeyToken=928736e248aa81f9</value>
-  </data>
-  <data name="&gt;&gt;NewProject.Name" xml:space="preserve">
-    <value>NewProject</value>
-  </data>
-  <data name="&gt;&gt;NewProject.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon, Version=2.0.0.0, Culture=neutral, PublicKeyToken=928736e248aa81f9</value>
   </data>
   <data name="&gt;&gt;UseLibRetro.Name" xml:space="preserve">
     <value>UseLibRetro</value>
@@ -2870,6 +2888,18 @@
     <value>Strip_ExportWAD</value>
   </data>
   <data name="&gt;&gt;Strip_ExportWAD.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator3.Name" xml:space="preserve">
+    <value>toolStripSeparator3</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CloseTab.Name" xml:space="preserve">
+    <value>CloseTab</value>
+  </data>
+  <data name="&gt;&gt;CloseTab.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

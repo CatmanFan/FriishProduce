@@ -61,6 +61,9 @@ namespace FriishProduce
             // Change title text to untitled string
             Untitled = string.Format(Language.Get("Untitled"), Language.Get($"Platform_{Enum.GetName(typeof(Console), Console)}"));
             Text = string.IsNullOrWhiteSpace(i.ChannelTitle) ? Untitled : i.ChannelTitle;
+            SoftwareName.Location = new Point(label2.Location.X + label2.Width - 4, label2.Location.Y);
+            baseName.Location = new Point(label4.Location.X + label4.Width - 4, label4.Location.Y);
+            baseID.Location = new Point(label5.Location.X + label5.Width - 4, label5.Location.Y);
 
             // Selected index properties
             imageintpl.Items.Clear();
@@ -345,7 +348,11 @@ namespace FriishProduce
                 tImg.Generate(img);
                 img.Dispose();
 
-                if (tImg.Source != null) SaveIcon_Panel.BackgroundImage = tImg.SaveIcon();
+                if (tImg.Source != null)
+                {
+                    Preview.Image = tImg.IconVCPic;
+                    SaveIcon_Panel.BackgroundImage = tImg.SaveIcon();
+                }
 
                 CheckExport();
                 return true;
@@ -370,7 +377,8 @@ namespace FriishProduce
 
             if (!UseLibRetro)
             {
-                label2.Text = Language.Get("label2", this) + Language.Get("Unknown");
+                SoftwareName.Text = Language.Get("Unknown");
+                SoftwareName.Font = new Font(SoftwareName.Font, FontStyle.Regular);
                 label3.Text = Language.Get("label3", this) + Language.Get("Unknown");
             }
 
@@ -379,6 +387,7 @@ namespace FriishProduce
             groupBox2.Enabled =
             groupBox3.Enabled =
             groupBox4.Enabled =
+            groupBox5.Enabled =
             groupBox6.Enabled =
             groupBox8.Enabled = true;
 
@@ -422,8 +431,8 @@ namespace FriishProduce
                 }
 
                 // Set ROM name & serial text
-                label2.Text = Language.Get("label2", this);
-                label2.Text += LibRetro.GetTitle() ?? Language.Get("Unknown");
+                SoftwareName.Text = LibRetro.GetTitle() ?? Language.Get("Unknown");
+                SoftwareName.Font = SoftwareName.Text != Language.Get("Unknown") ? new Font(SoftwareName.Font, FontStyle.Bold) : new Font(SoftwareName.Font, FontStyle.Regular);
                 label3.Text = Language.Get("label3", this);
                 label3.Text += LibRetro.GetSerial() ?? Language.Get("Unknown");
 
@@ -814,8 +823,7 @@ namespace FriishProduce
             if (SaveDataTitle.Multiline == isSingleLine)
             {
                 SaveDataTitle.Multiline = !isSingleLine;
-                SaveDataTitle.Location = SaveDataTitle.Multiline ? new Point(SaveDataTitle.Location.X, 115) : new Point(SaveDataTitle.Location.X, 122);
-                label11.Location = new Point(SaveDataTitle.Location.X - 107, SaveDataTitle.Location.Y + 2);
+                SaveDataTitle.Location = SaveDataTitle.Multiline ? new Point(SaveDataTitle.Location.X, 26) : new Point(SaveDataTitle.Location.X, 26 + 7);
                 SaveDataTitle.Clear();
                 goto End;
             }

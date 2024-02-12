@@ -135,6 +135,9 @@
   <data name="groupBox4.Text" xml:space="preserve">
     <value>WAD content options</value>
   </data>
+  <data name="groupBox5.Text" xml:space="preserve">
+    <value>Savedata</value>
+  </data>
   <data name="groupBox6.Text" xml:space="preserve">
     <value>Banner details</value>
   </data>
@@ -146,9 +149,6 @@
   </data>
   <data name="label10.Text" xml:space="preserve">
     <value>Players:</value>
-  </data>
-  <data name="label11.Text" xml:space="preserve">
-    <value>Savedata:</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>Software name:</value>
@@ -173,6 +173,9 @@
   </data>
   <data name="label9.Text" xml:space="preserve">
     <value>Year:</value>
+  </data>
+  <data name="OpenWAD.Text" xml:space="preserve">
+    <value>Use offline WAD file</value>
   </data>
   <data name="RegionFree.Text" xml:space="preserve">
     <value>Region Free</value>

@@ -135,6 +135,9 @@
   <data name="groupBox4.Text" xml:space="preserve">
     <value>Opciones de contenido del canal</value>
   </data>
+  <data name="groupBox5.Text" xml:space="preserve">
+    <value>Datos guardados</value>
+  </data>
   <data name="groupBox6.Text" xml:space="preserve">
     <value>Detalles del banner</value>
   </data>
@@ -146,9 +149,6 @@
   </data>
   <data name="label10.Text" xml:space="preserve">
     <value>Jugadores:</value>
-  </data>
-  <data name="label11.Text" xml:space="preserve">
-    <value>Datos guardados:</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>Nombre del software: </value>
@@ -167,6 +167,9 @@
   </data>
   <data name="label9.Text" xml:space="preserve">
     <value>Año:</value>
+  </data>
+  <data name="OpenWAD.Text" xml:space="preserve">
+    <value>Utilizar un archivo WAD del disco duro</value>
   </data>
   <data name="RegionFree.Text" xml:space="preserve">
     <value>Eliminar bloqueo regional</value>

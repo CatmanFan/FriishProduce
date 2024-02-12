@@ -135,6 +135,9 @@
   <data name="groupBox4.Text" xml:space="preserve">
     <value>Options de contenu</value>
   </data>
+  <data name="groupBox5.Text" xml:space="preserve">
+    <value>Données de sauvegarde</value>
+  </data>
   <data name="groupBox6.Text" xml:space="preserve">
     <value>Détails du banner</value>
   </data>
@@ -146,9 +149,6 @@
   </data>
   <data name="label10.Text" xml:space="preserve">
     <value>Joueurs :</value>
-  </data>
-  <data name="label11.Text" xml:space="preserve">
-    <value>Données de sauvegarde :</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>Nom du logiciel : </value>
@@ -173,6 +173,9 @@
   </data>
   <data name="label9.Text" xml:space="preserve">
     <value>Année :</value>
+  </data>
+  <data name="OpenWAD.Text" xml:space="preserve">
+    <value>Utiliser un fichier WAD hors ligne</value>
   </data>
   <data name="RegionFree.Text" xml:space="preserve">
     <value>Déverrouillage de région</value>

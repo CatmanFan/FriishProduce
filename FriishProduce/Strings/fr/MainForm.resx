@@ -156,4 +156,7 @@
   <data name="ribbonPanel_Project.Text" xml:space="preserve">
     <value>Projet</value>
   </data>
+  <data name="CloseTab.Text" xml:space="preserve">
+    <value>Fermer</value>
+  </data>
 </root>
