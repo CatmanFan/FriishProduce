@@ -39,7 +39,7 @@ namespace FriishProduce
             // Default options
             // *******
             PaletteList.SelectedIndex = int.Parse(Settings["palette"]);
-            checkBox1.Checked = Settings["use_tImg"] == "1";
+            checkBox1.Checked = Settings["use_tImg"] == "0";
             // *******
         }
 

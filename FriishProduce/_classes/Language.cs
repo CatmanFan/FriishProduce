@@ -103,6 +103,8 @@ namespace FriishProduce
 
                 if (Sources == null) throw new Exception("No source string files were found.");
 
+                Sources.Sort();
+
                 IDictionary<string, string>[] Dict = new Dictionary<string, string>[Sources.Count];
 
                 for (int i = 0; i < Sources.Count; i++)
@@ -163,7 +165,7 @@ namespace FriishProduce
                 return res;
             }
 
-            catch (Exception ex)
+            catch
             {
                 return English_Dictionary;
             }

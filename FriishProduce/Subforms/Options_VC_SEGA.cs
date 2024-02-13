@@ -10,7 +10,7 @@ namespace FriishProduce
 {
     public partial class Options_VC_SEGA : ContentOptions
     {
-        public Options_VC_SEGA()
+        public Options_VC_SEGA() : base()
         {
             InitializeComponent();
 

@@ -20,13 +20,6 @@ namespace FriishProduce
         public ContentOptions()
         {
             InitializeComponent();
-
-            // Cosmetic
-            // *******
-            if (!DesignMode)
-            {
-                // Language.AutoSetForm(this);
-            }
         }
 
         // ---------------------------------------------------------------------------------------------------------------
@@ -44,6 +37,13 @@ namespace FriishProduce
             // *******
             // Code logic in derived Form
             // *******
+
+            // Cosmetic
+            // *******
+            if (!DesignMode)
+            {
+                // Language.AutoSetForm(this);
+            }
         }
 
         protected virtual bool SaveOptions()
