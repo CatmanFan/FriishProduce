@@ -144,7 +144,10 @@ namespace FriishProduce
             IDictionary<string, string>[] res = new Dictionary<string, string>[Directory.GetFiles(currentPath).Length];
             try
             {
-                if (!(Directory.GetFiles(currentPath).Contains("Strings.resx") || res.Length == English_Dictionary.Length)) return English_Dictionary;
+                bool found = false;
+                foreach (var file in Directory.GetFiles(currentPath))
+                    if (Path.GetFileName(file) == "Strings.resx") found = true;
+                if (!found || res.Length != English_Dictionary.Length) throw new Exception("Language folder is not valid.");
 
                 for (int i = 0; i < Directory.GetFiles(currentPath).Length; i++)
                 {
@@ -159,7 +162,11 @@ namespace FriishProduce
 
                 return res;
             }
-            catch { return English_Dictionary; }
+
+            catch (Exception ex)
+            {
+                return English_Dictionary;
+            }
         }
 
         public static void Load()
@@ -213,7 +220,8 @@ namespace FriishProduce
             English_Dictionary = GetEnglish();
             Current_Dictionary = null;
 
-            if (Settings.Default.UI_Language == "en" || Current == English || Current.EnglishName == English.EnglishName) Current_Dictionary = English_Dictionary;
+            if (Settings.Default.UI_Language == "en" || Current == English || Current.EnglishName == English.EnglishName)
+                Current_Dictionary = English_Dictionary;
             else
             {
                 Current_Dictionary = GetDictionary(Current.Name);

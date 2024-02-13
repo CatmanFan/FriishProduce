@@ -22,14 +22,14 @@ namespace Strings {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Options_VCNES {
+    public class Options_VC_NES {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Options_VCNES() {
+        internal Options_VC_NES() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Strings {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FriishProduce.Strings.Options_VCNES", typeof(Options_VCNES).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FriishProduce.Strings.Options_VC_NES", typeof(Options_VC_NES).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

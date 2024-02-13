@@ -251,6 +251,8 @@ namespace FriishProduce
 
         private void PaletteChanged(object sender, EventArgs e)
         {
+            if (DesignMode) return;
+
             pictureBox1.Image = Properties.Resources.screen_nes;
 
             try   { if (PaletteList.SelectedIndex > 0) pictureBox1.Image = SwapColors(Properties.Resources.screen_nes, Palettes[0], Palettes[PaletteList.SelectedIndex]); }

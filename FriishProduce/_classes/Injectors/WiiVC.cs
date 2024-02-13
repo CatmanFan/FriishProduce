@@ -14,7 +14,7 @@ namespace FriishProduce
         protected byte[] ROM { get; private set; }
 
         public int EmuType { get; set; }
-        public IDictionary<int, string> Settings { get; set; }
+        public IDictionary<string, string> Settings { get; set; }
 
         public string ManualPath { get; set; }
         protected string OrigManual { get; set; }
@@ -219,8 +219,8 @@ namespace FriishProduce
 
         protected bool SettingParse(int i)
         {
-            if (bool.TryParse(Settings[i], out bool value))
-                value = bool.Parse(Settings[i]);
+            if (bool.TryParse(Settings.ElementAt(i).Value, out bool value))
+                value = bool.Parse(Settings.ElementAt(i).Value);
             return value;
         }
 

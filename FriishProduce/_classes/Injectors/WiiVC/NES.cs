@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using libWiiSharp;
 
@@ -64,7 +65,7 @@ namespace FriishProduce.WiiVC
 
         protected override void ModifyEmulatorSettings()
         {
-            InsertPalette(int.Parse(Settings[0]));
+            InsertPalette(int.Parse(Settings.ElementAt(0).Value));
         }
 
         /// <summary>

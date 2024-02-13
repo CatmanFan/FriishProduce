@@ -39,10 +39,7 @@ namespace FriishProduce
         // -----------------------------------
         // Options
         // -----------------------------------
-        protected Options_VCNES                 o1          { get; set; }
-     // protected Options_VCSNES                o2          { get; set; }
-        protected Options_VCN64                 o3          { get; set; }
-     // protected Options_VCSEGA                o4          { get; set; }
+        protected ContentOptions                CO { get; set; }
 
         // -----------------------------------
         // Connection with parent form
@@ -86,11 +83,10 @@ namespace FriishProduce
                 case Console.NES:
                     Icon = Properties.Resources.nintendo_nes;
                     TIDCode = "F";
-                    o1 = new Options_VCNES();
+                    CO = new Options_VC_NES();
                     break;
 
                 case Console.SNES:
-                    button1.Enabled = false;
                     Icon = Properties.Resources.nintendo_super_nes;
                     TIDCode = "J";
                     break;
@@ -98,21 +94,22 @@ namespace FriishProduce
                 case Console.N64:
                     Icon = Properties.Resources.nintendo_nintendo64;
                     TIDCode = "N";
-                    o3 = new Options_VCN64();
+                    CO = new Options_VC_N64();
                     break;
 
                 case Console.SMS:
                     Icon = Properties.Resources.sega_master_system;
                     TIDCode = "L";
+                    CO = new Options_VC_SEGA();
                     break;
 
                 case Console.SMDGEN:
                     Icon = Properties.Resources.sega_genesis;
                     TIDCode = "M";
+                    CO = new Options_VC_SEGA();
                     break;
 
                 case Console.PCE:
-                    button1.Enabled = false;
                     Icon = Properties.Resources.nec_turbografx_16;
                     TIDCode = "P"; // Q for CD games
                     break;
@@ -123,7 +120,6 @@ namespace FriishProduce
                     break;
 
                 case Console.MSX:
-                    button1.Enabled = false;
                     TIDCode = "X";
                     break;
 
@@ -136,6 +132,7 @@ namespace FriishProduce
             // Cosmetic
             // ********
             if (Console == Console.SMS || Console == Console.SMDGEN) SaveIcon_Panel.BackgroundImage = Properties.Resources.SaveIconPlaceholder_SEGA;
+            button1.Enabled = CO != null;
             RefreshForm();
 
             i.BannerYear = (int)ReleaseYear.Value;
@@ -333,10 +330,11 @@ namespace FriishProduce
                         break;
 
                     case Console.NES:
-                        if (src.Width == 256 && (src.Height == 224 || src.Height == 240) && o1.Settings[1] == "1")
+                        if (src.Width == 256 && (src.Height == 224 || src.Height == 240) && CO.Settings != null && CO.Settings["use_tImg"] == "1")
                         {
-                            if (o1.ImgPaletteIndex == -1 || oldImgPath != newImgPath) o1.ImgPaletteIndex = o1.CheckPalette(img);
-                                img = o1.SwapColors(img, o1.Palettes[o1.ImgPaletteIndex], o1.Palettes[int.Parse(o1.Settings[0])]);
+                            var CO_NES = CO as Options_VC_NES;
+                            if (CO_NES.ImgPaletteIndex == -1 || oldImgPath != newImgPath) CO_NES.ImgPaletteIndex = CO_NES.CheckPalette(img);
+                                img = CO_NES.SwapColors(img, CO_NES.Palettes[CO_NES.ImgPaletteIndex], CO_NES.Palettes[int.Parse(CO_NES.Settings["palette"])]);
                         }
                         break;
 
@@ -513,7 +511,7 @@ namespace FriishProduce
                 // NES
                 // *******
                 case Console.NES:
-                    WiiVC = new WiiVC.NES() { Settings = o1.Settings };
+                    WiiVC = new WiiVC.NES();
                     break;
 
 
@@ -529,10 +527,8 @@ namespace FriishProduce
                 case Console.N64:
                     WiiVC = new WiiVC.N64()
                     {
-                        Settings = o3.Settings,
-
-                        CompressionType = o3.EmuType == 3 ? (o3.Settings[3] == "True" ? 1 : 2) : 0,
-                        Allocate = o3.Settings[3] == "True" && (o3.EmuType <= 1),
+                        CompressionType = CO.EmuType == 3 ? (CO.Settings.ElementAt(3).Value == "True" ? 1 : 2) : 0,
+                        Allocate = CO.Settings.ElementAt(3).Value == "True" && (CO.EmuType <= 1),
                     };
                     break;
 
@@ -550,6 +546,7 @@ namespace FriishProduce
 
             // Set path to manual folder (if it exists) and load WAD
             // *******
+            WiiVC.Settings = CO.Settings;
             WiiVC.ManualPath = null;
             if (WADPath != null) WiiVC.WAD = WAD.Load(WADPath);
             else for (int x = 0; x < Database.List.Length; x++)
@@ -567,15 +564,17 @@ namespace FriishProduce
         // ******************
         private void OpenInjectorOptions(object sender, EventArgs e)
         {
+            var result = CO.ShowDialog(this) == DialogResult.OK;
+
             switch (Console)
             {
                 case Console.NES:
-                    if (o1.ShowDialog(this) == DialogResult.OK) { LoadImage(); }
+                    if (result) { LoadImage(); }
                     break;
                 case Console.SNES:
                     break;
                 case Console.N64:
-                    if (o3.ShowDialog(this) == DialogResult.OK) { CheckExport(); }
+                    if (result) { CheckExport(); }
                     break;
                 case Console.SMS:
                     break;
@@ -857,7 +856,7 @@ namespace FriishProduce
                     break;
 
                 case Console.N64:
-                    o3.EmuType = i.isKorea ? 3 : emuVer;
+                    CO.EmuType = i.isKorea ? 3 : emuVer;
                     break;
 
                 case Console.SMS:

@@ -132,15 +132,20 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MainForm.resx</DependentUpon>
     </Compile>
-    <Compile Include="Strings\Options_VCN64.Designer.cs">
+    <Compile Include="Strings\Options_VC_N64.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Options_VCN64.resx</DependentUpon>
+      <DependentUpon>Options_VC_N64.resx</DependentUpon>
     </Compile>
-    <Compile Include="Strings\Options_VCNES.Designer.cs">
+    <Compile Include="Strings\Options_VC_SEGA.Designer.cs">
+      <DependentUpon>Options_VC_SEGA.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Options_VCNES.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Strings\Options_VC_NES.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Options_VC_NES.resx</DependentUpon>
     </Compile>
     <Compile Include="Strings\SettingsForm.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -152,17 +157,29 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Strings.resx</DependentUpon>
     </Compile>
-    <Compile Include="Subforms\Options_VCN64.cs">
+    <Compile Include="Subforms\ContentOptions.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Subforms\Options_VCN64.Designer.cs">
-      <DependentUpon>Options_VCN64.cs</DependentUpon>
+    <Compile Include="Subforms\ContentOptions.Designer.cs">
+      <DependentUpon>ContentOptions.cs</DependentUpon>
     </Compile>
-    <Compile Include="Subforms\Options_VCNES.cs">
+    <Compile Include="Subforms\Options_VC_SEGA.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Subforms\Options_VCNES.Designer.cs">
-      <DependentUpon>Options_VCNES.cs</DependentUpon>
+    <Compile Include="Subforms\Options_VC_SEGA.Designer.cs">
+      <DependentUpon>Options_VC_SEGA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Subforms\Options_VC_N64.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Subforms\Options_VC_N64.Designer.cs">
+      <DependentUpon>Options_VC_N64.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Subforms\Options_VC_NES.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Subforms\Options_VC_NES.Designer.cs">
+      <DependentUpon>Options_VC_NES.cs</DependentUpon>
     </Compile>
     <Compile Include="Subforms\SettingsForm.cs">
       <SubType>Form</SubType>
@@ -202,15 +219,20 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>MainForm.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Strings\Options_VCN64.resx">
+    <EmbeddedResource Include="Strings\Options_VC_N64.resx">
       <CustomToolNamespace>Strings</CustomToolNamespace>
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Options_VCN64.Designer.cs</LastGenOutput>
+      <LastGenOutput>Options_VC_N64.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Strings\Options_VCNES.resx">
+    <EmbeddedResource Include="Strings\Options_VC_SEGA.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Options_VC_SEGA.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Strings</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Strings\Options_VC_NES.resx">
       <CustomToolNamespace>Strings</CustomToolNamespace>
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Options_VCNES.Designer.cs</LastGenOutput>
+      <LastGenOutput>Options_VC_NES.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Strings\SettingsForm.resx">
       <CustomToolNamespace>Strings</CustomToolNamespace>
@@ -222,11 +244,17 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Strings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Subforms\Options_VCN64.resx">
-      <DependentUpon>Options_VCN64.cs</DependentUpon>
+    <EmbeddedResource Include="Subforms\ContentOptions.resx">
+      <DependentUpon>ContentOptions.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Subforms\Options_VCNES.resx">
-      <DependentUpon>Options_VCNES.cs</DependentUpon>
+    <EmbeddedResource Include="Subforms\Options_VC_SEGA.resx">
+      <DependentUpon>Options_VC_SEGA.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Subforms\Options_VC_N64.resx">
+      <DependentUpon>Options_VC_N64.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Subforms\Options_VC_NES.resx">
+      <DependentUpon>Options_VC_NES.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InjectorForm.resx">
       <DependentUpon>InjectorForm.cs</DependentUpon>
@@ -335,7 +363,11 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Strings\es\" />
+    <Folder Include="Strings\fr\" />
+    <Folder Include="Strings\tr\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>
@@ -347,6 +379,8 @@ for /R "%25cd%25" %25%25f in (.) do (call :copy %25%25f %25cd%25)
 goto :eof
 
 :copy
+if NOT %25~n1 == %25~n2 rmdir /s /q "$(TargetDir)strings\%25~n1\"
+if NOT %25~n1 == %25~n2 mkdir "$(TargetDir)strings\%25~n1\"
 if NOT %25~n1 == %25~n2 robocopy %251 $(TargetDir)strings\%25~n1\ 1&gt;nul
 exit /b
 
