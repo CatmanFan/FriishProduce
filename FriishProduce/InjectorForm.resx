@@ -129,7 +129,7 @@
     <value>NoControl</value>
   </data>
   <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 50</value>
+    <value>13, 29</value>
   </data>
   <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
     <value>370, 26</value>
@@ -319,7 +319,7 @@
     <value>NoControl</value>
   </data>
   <data name="baseID.Location" type="System.Drawing.Point, System.Drawing">
-    <value>62, 47</value>
+    <value>60, 41</value>
   </data>
   <data name="baseID.Size" type="System.Drawing.Size, System.Drawing">
     <value>54, 13</value>
@@ -349,7 +349,7 @@
     <value>Segoe UI, 9pt, style=Bold</value>
   </data>
   <data name="baseName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>83, 25</value>
+    <value>79, 20</value>
   </data>
   <data name="baseName.Size" type="System.Drawing.Size, System.Drawing">
     <value>64, 15</value>
@@ -376,7 +376,7 @@
     <value>True</value>
   </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 47</value>
+    <value>10, 41</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
     <value>44, 13</value>
@@ -406,7 +406,7 @@
     <value>True</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 25</value>
+    <value>10, 21</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
     <value>63, 13</value>
@@ -442,7 +442,7 @@
     <value>NoControl</value>
   </data>
   <data name="OpenWAD.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 100</value>
+    <value>13, 88</value>
   </data>
   <data name="OpenWAD.Size" type="System.Drawing.Size, System.Drawing">
     <value>195, 18</value>
@@ -484,7 +484,7 @@
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="WADRegion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>355, 73</value>
+    <value>355, 64</value>
   </data>
   <data name="WADRegion.Size" type="System.Drawing.Size, System.Drawing">
     <value>32, 22</value>
@@ -511,7 +511,7 @@
     <value>System</value>
   </data>
   <data name="Base.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 73</value>
+    <value>13, 64</value>
   </data>
   <data name="Base.Size" type="System.Drawing.Size, System.Drawing">
     <value>336, 21</value>
@@ -538,7 +538,7 @@
     <value>7, 147</value>
   </data>
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>400, 135</value>
+    <value>400, 115</value>
   </data>
   <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
     <value>40</value>
@@ -577,10 +577,10 @@
     <value>Stretch</value>
   </data>
   <data name="SaveIcon_Panel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>66, 22</value>
+    <value>64, 21</value>
   </data>
   <data name="SaveIcon_Panel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 48</value>
+    <value>52, 52</value>
   </data>
   <data name="SaveIcon_Panel.TabIndex" type="System.Int32, mscorlib">
     <value>37</value>
@@ -654,38 +654,41 @@
   <data name="&gt;&gt;groupBox5.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="Preview.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>Stretch</value>
+  <data name="ChannelTitle_Locale.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
-  <data name="Preview.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="ChannelTitle_Locale.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="Preview.Location" type="System.Drawing.Point, System.Drawing">
-    <value>289, 29</value>
+  <data name="ChannelTitle_Locale.Location" type="System.Drawing.Point, System.Drawing">
+    <value>275, 27</value>
   </data>
-  <data name="Preview.Size" type="System.Drawing.Size, System.Drawing">
-    <value>85, 64</value>
+  <data name="ChannelTitle_Locale.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 16</value>
   </data>
-  <data name="Preview.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
-    <value>StretchImage</value>
+  <data name="ChannelTitle_Locale.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>AutoSize</value>
   </data>
-  <data name="Preview.TabIndex" type="System.Int32, mscorlib">
-    <value>41</value>
+  <data name="ChannelTitle_Locale.TabIndex" type="System.Int32, mscorlib">
+    <value>39</value>
   </data>
-  <data name="&gt;&gt;Preview.Name" xml:space="preserve">
-    <value>Preview</value>
+  <data name="ChannelTitle_Locale.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
-  <data name="&gt;&gt;Preview.Type" xml:space="preserve">
+  <data name="&gt;&gt;ChannelTitle_Locale.Name" xml:space="preserve">
+    <value>ChannelTitle_Locale</value>
+  </data>
+  <data name="&gt;&gt;ChannelTitle_Locale.Type" xml:space="preserve">
     <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;Preview.Parent" xml:space="preserve">
+  <data name="&gt;&gt;ChannelTitle_Locale.Parent" xml:space="preserve">
     <value>groupBox3</value>
   </data>
-  <data name="&gt;&gt;Preview.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;ChannelTitle_Locale.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="Random.Location" type="System.Drawing.Point, System.Drawing">
-    <value>174, 56</value>
+    <value>173, 56</value>
   </data>
   <data name="Random.Size" type="System.Drawing.Size, System.Drawing">
     <value>16, 16</value>
@@ -1168,7 +1171,37 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;splitContainer1.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
+  </data>
+  <data name="Preview.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Stretch</value>
+  </data>
+  <data name="Preview.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="Preview.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1077, 203</value>
+  </data>
+  <data name="Preview.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 64</value>
+  </data>
+  <data name="Preview.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>StretchImage</value>
+  </data>
+  <data name="Preview.TabIndex" type="System.Int32, mscorlib">
+    <value>41</value>
+  </data>
+  <data name="&gt;&gt;Preview.Name" xml:space="preserve">
+    <value>Preview</value>
+  </data>
+  <data name="&gt;&gt;Preview.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Preview.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;Preview.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="imageintpl.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>System</value>
@@ -1225,7 +1258,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;groupBox8.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <metadata name="BrowseWAD.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>153, 17</value>
@@ -1240,7 +1273,7 @@
     <value>True</value>
   </metadata>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>860, 460</value>
+    <value>1368, 614</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>NES</value>

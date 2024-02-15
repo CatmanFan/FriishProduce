@@ -73,6 +73,7 @@
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
     </Reference>
     <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.IO.Hashing, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.IO.Hashing.8.0.0\lib\net462\System.IO.Hashing.dll</HintPath>
     </Reference>
@@ -199,6 +200,7 @@
     <Compile Include="_classes\Injectors\WAD.cs" />
     <Compile Include="_classes\Injectors\WiiVC.cs" />
     <Compile Include="_classes\Injectors\WiiVC\N64.cs" />
+    <Compile Include="_classes\Injectors\WiiVC\NeoGeo.cs" />
     <Compile Include="_classes\Injectors\WiiVC\NES.cs" />
     <Compile Include="_classes\Injectors\WiiVC\SEGA.cs" />
     <Compile Include="_classes\Injectors\WiiVC\SNES.cs" />
@@ -290,6 +292,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\icons\locale.png" />
     <None Include="Resources\subforms\screen_smd.png" />
     <None Include="Resources\savebanner_flash.png" />
     <None Include="Resources\x.png" />

@@ -159,4 +159,7 @@
   <data name="CloseTab.Text" xml:space="preserve">
     <value>Fermer</value>
   </data>
+  <data name="OpenManual.Text" xml:space="preserve">
+    <value>Mode d'emploi</value>
+  </data>
 </root>

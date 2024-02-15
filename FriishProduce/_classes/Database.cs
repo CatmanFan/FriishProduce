@@ -166,12 +166,26 @@ namespace FriishProduce
                     };
                     break;
 
+                // NEO-GEO
+                // ********
+                case Console.NeoGeo:
+                    List = new DatabaseEntry[]
+                    {
+                            new DatabaseEntry("EAGE",   "The King of Fighters '94",                      "King of Fighters '94, The", 0),
+                            new DatabaseEntry("EAGP",   "The King of Fighters '94",                      "King of Fighters '94, The", 0),
+                            new DatabaseEntry("EAGJ",   "THE KING OF FIGHTERS '94",                      "King of Fighters '94, The", 0),
+
+                            new DatabaseEntry("EAJE",   "Metal Slug",                                    "Metal Slug", 0),
+                            new DatabaseEntry("EAJP",   "Metal Slug",                                    "Metal Slug", 0),
+                            new DatabaseEntry("EAJJ",   "メタルスラッグ",                                  "Metal Slug", 0)
+                    };
+                    break;
+
                 // Other
                 // ****************
 
                 default:
                 case Console.PCE:
-                case Console.NeoGeo:
                 case Console.MSX:
                 case Console.Flash:
                     throw new NotImplementedException();
@@ -216,18 +230,6 @@ namespace FriishProduce
         /// <returns>libWiiSharp WAD variable with loaded WAD data</returns>
         public WAD Load(int i)
         {
-            Ticket t = new Ticket();
-            string tid_Hex = BitConverter.ToString(Encoding.Default.GetBytes(List[i].TitleID)).Replace("-", "");
-            t.SetTitleKey("00010001" + tid_Hex);
-            var y = Convert.ToInt64("00010001" + tid_Hex, 16);
-
-            t.TitleID = (ulong)y;
-            t.TicketID = 471578341952616;
-            t.CommonKeyIndex = GetRegionCode(i) == 'Q' || GetRegionCode(i) == 'T' ? CommonKeyType.Korean : CommonKeyType.Standard;
-            t.FakeSign = false;
-
-            string x = t.GetUpperTitleID();
-
             string Region = null;
 
             switch (GetRegionCode(i))
@@ -268,9 +270,10 @@ namespace FriishProduce
 
             if (Region == null || ConsoleType == null) throw new ArgumentException();
 
-            // Load WAD from MarioCube
-            // (no direct links!! unmodified WAD is loaded to application memory and is not downloaded to disk!!)
-            // (Not sure if this is copyright-friendly..)
+            // Load WAD from MarioCube.
+            // ------------------------------------------------
+            // Sadly, as the NUS downloader cannot decrypt VC/Wii Shop titles on its own without needing the ticket file, I have done a less copyright-friendly workaround solution for now
+            // Direct link is not included, for obvious reasons!
             // ****************
             string name = List[i].Name + Region + ConsoleType;
             string URL = "https://repo.mariocube.com/WADs/_WiiWare,%20VC,%20DLC,%20Channels%20&%20IOS/" + name[0].ToString().ToUpper() + "/" + Uri.EscapeDataString(name + " (Virtual Console)") + ".wad";

@@ -528,7 +528,7 @@ namespace FriishProduce
                     img2.Dispose();
                 }
             }
-            catch (Exception ex)
+            catch
             {
                 throw new Exception(Language.Get("Error002"));
             }

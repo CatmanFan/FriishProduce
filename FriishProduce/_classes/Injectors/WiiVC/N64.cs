@@ -27,7 +27,7 @@ namespace FriishProduce.WiiVC
         protected override void Load()
         {
             NeedsMainDOL = true;
-            UsesContent5 = true;
+            MainContentIndex = 5;
             NeedsManualLoaded = true;
 
             base.Load();
@@ -110,7 +110,7 @@ namespace FriishProduce.WiiVC
             switch (EmuType)
             {
                 default:
-                    Content5.ReplaceFile(Content5.GetNodeIndex("rom"), ROM);
+                    MainContent.ReplaceFile(MainContent.GetNodeIndex("rom"), ROM);
                     break;
 
                 case 3:
@@ -152,7 +152,7 @@ namespace FriishProduce.WiiVC
 
                     // Convert to bytes and replace at "romc"
                     // ****************
-                    Content5.ReplaceFile(Content5.GetNodeIndex("romc"), File.ReadAllBytes(Paths.WorkingFolder + "romc"));
+                    MainContent.ReplaceFile(MainContent.GetNodeIndex("romc"), File.ReadAllBytes(Paths.WorkingFolder + "romc"));
                     File.Delete(Paths.WorkingFolder + "romc");
                     break;
             }
@@ -175,11 +175,11 @@ namespace FriishProduce.WiiVC
             // ****************
             var encoding = EmuType == 0 || EmuType == 1 ? Encoding.Unicode : Encoding.BigEndianUnicode;
 
-            foreach (var item in Content5.StringTable)
+            foreach (var item in MainContent.StringTable)
             {
                 if (item.Contains("saveComments_"))
                 {
-                    var byteArray = Content5.Data[Content5.GetNodeIndex(item)];
+                    var byteArray = MainContent.Data[MainContent.GetNodeIndex(item)];
 
                     List<byte> newSave = new List<byte>();
 
@@ -220,7 +220,7 @@ namespace FriishProduce.WiiVC
                     newSave[61] = lines.Length == 2 ? Convert.ToByte(encoding.GetBytes(lines[1]).Length) : (byte)0x00;
                     newSave[63] = lines.Length == 2 ? Convert.ToByte(encoding.GetBytes(lines[1]).Length) : (byte)0x00;
 
-                    Content5.ReplaceFile(Content5.GetNodeIndex(item), newSave.ToArray());
+                    MainContent.ReplaceFile(MainContent.GetNodeIndex(item), newSave.ToArray());
                 }
 
                 // -----------------------
@@ -228,7 +228,7 @@ namespace FriishProduce.WiiVC
                 // -----------------------
 
                 else if (item.ToLower().Contains("banner.tpl"))
-                    Content5.ReplaceFile(Content5.GetNodeIndex(item), tImg.CreateSaveTPL(Console.N64, Content5.Data[Content5.GetNodeIndex(item)]).ToByteArray());
+                    MainContent.ReplaceFile(MainContent.GetNodeIndex(item), tImg.CreateSaveTPL(Console.N64, MainContent.Data[MainContent.GetNodeIndex(item)]).ToByteArray());
             }
         }
 

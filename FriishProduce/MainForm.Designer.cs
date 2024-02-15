@@ -48,6 +48,7 @@ namespace FriishProduce
             this.ribbonPanel_Open = new System.Windows.Forms.RibbonPanel();
             this.OpenROM = new System.Windows.Forms.RibbonButton();
             this.OpenImage = new System.Windows.Forms.RibbonButton();
+            this.OpenManual = new System.Windows.Forms.RibbonButton();
             this.ribbonPanel_Export = new System.Windows.Forms.RibbonPanel();
             this.ExportWAD = new System.Windows.Forms.RibbonButton();
             this.BrowseROM = new System.Windows.Forms.OpenFileDialog();
@@ -206,6 +207,7 @@ namespace FriishProduce
             this.ribbonPanel_Open.ButtonMoreVisible = false;
             this.ribbonPanel_Open.Items.Add(this.OpenROM);
             this.ribbonPanel_Open.Items.Add(this.OpenImage);
+            this.ribbonPanel_Open.Items.Add(this.OpenManual);
             this.ribbonPanel_Open.Name = "ribbonPanel_Open";
             resources.ApplyResources(this.ribbonPanel_Open, "ribbonPanel_Open");
             // 
@@ -232,6 +234,17 @@ namespace FriishProduce
             this.OpenImage.SmallImage = global::FriishProduce.Properties.Resources.image_sunset;
             resources.ApplyResources(this.OpenImage, "OpenImage");
             this.OpenImage.Click += new System.EventHandler(this.OpenImage_Click);
+            // 
+            // OpenManual
+            // 
+            this.OpenManual.Enabled = false;
+            this.OpenManual.Image = global::FriishProduce.Properties.Resources.book_large;
+            this.OpenManual.LargeImage = global::FriishProduce.Properties.Resources.book_large;
+            this.OpenManual.MaxSizeMode = System.Windows.Forms.RibbonElementSizeMode.Medium;
+            this.OpenManual.MinSizeMode = System.Windows.Forms.RibbonElementSizeMode.Medium;
+            this.OpenManual.Name = "OpenManual";
+            this.OpenManual.SmallImage = global::FriishProduce.Properties.Resources.book;
+            resources.ApplyResources(this.OpenManual, "OpenManual");
             // 
             // ribbonPanel_Export
             // 
@@ -401,6 +414,7 @@ namespace FriishProduce
         private System.Windows.Forms.ToolStripMenuItem CloseTab;
         private System.Windows.Forms.RibbonOrbMenuItem NewProject;
         private System.Windows.Forms.RibbonSeparator orbMenuSeparator2;
+        private System.Windows.Forms.RibbonButton OpenManual;
     }
 }
 

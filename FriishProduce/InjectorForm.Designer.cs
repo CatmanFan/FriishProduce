@@ -52,7 +52,7 @@ namespace FriishProduce
             this.SaveIcon_Panel = new System.Windows.Forms.Panel();
             this.SaveDataTitle = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.Preview = new System.Windows.Forms.PictureBox();
+            this.ChannelTitle_Locale = new System.Windows.Forms.PictureBox();
             this.Random = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.ChannelTitle = new System.Windows.Forms.TextBox();
@@ -68,6 +68,7 @@ namespace FriishProduce
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.Preview = new System.Windows.Forms.PictureBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.imageintpl = new System.Windows.Forms.ComboBox();
             this.BrowseWAD = new System.Windows.Forms.OpenFileDialog();
@@ -81,12 +82,13 @@ namespace FriishProduce
             ((System.ComponentModel.ISupportInitialize)(this.WADRegion)).BeginInit();
             this.groupBox5.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Preview)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ChannelTitle_Locale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Random)).BeginInit();
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Players)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReleaseYear)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Preview)).BeginInit();
             this.groupBox8.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -243,6 +245,7 @@ namespace FriishProduce
             // 
             this.SaveIcon_Panel.BackgroundImage = global::FriishProduce.Properties.Resources.SaveIconPlaceholder;
             resources.ApplyResources(this.SaveIcon_Panel, "SaveIcon_Panel");
+            this.SaveIcon_Panel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.SaveIcon_Panel.Name = "SaveIcon_Panel";
             // 
             // SaveDataTitle
@@ -255,7 +258,7 @@ namespace FriishProduce
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.Preview);
+            this.groupBox3.Controls.Add(this.ChannelTitle_Locale);
             this.groupBox3.Controls.Add(this.Random);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.ChannelTitle);
@@ -267,13 +270,13 @@ namespace FriishProduce
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.TabStop = false;
             // 
-            // Preview
+            // ChannelTitle_Locale
             // 
-            this.Preview.BackgroundImage = global::FriishProduce.Properties.Resources.x;
-            resources.ApplyResources(this.Preview, "Preview");
-            this.Preview.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Preview.Name = "Preview";
-            this.Preview.TabStop = false;
+            this.ChannelTitle_Locale.Cursor = System.Windows.Forms.Cursors.Hand;
+            resources.ApplyResources(this.ChannelTitle_Locale, "ChannelTitle_Locale");
+            this.ChannelTitle_Locale.Image = global::FriishProduce.Properties.Resources.locale;
+            this.ChannelTitle_Locale.Name = "ChannelTitle_Locale";
+            this.ChannelTitle_Locale.TabStop = false;
             // 
             // Random
             // 
@@ -412,6 +415,14 @@ namespace FriishProduce
             resources.ApplyResources(this.label10, "label10");
             this.label10.Name = "label10";
             // 
+            // Preview
+            // 
+            this.Preview.BackgroundImage = global::FriishProduce.Properties.Resources.x;
+            resources.ApplyResources(this.Preview, "Preview");
+            this.Preview.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Preview.Name = "Preview";
+            this.Preview.TabStop = false;
+            // 
             // groupBox8
             // 
             this.groupBox8.Controls.Add(this.imageintpl);
@@ -439,6 +450,7 @@ namespace FriishProduce
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.Preview);
             this.Controls.Add(this.groupBox8);
             this.Controls.Add(this.splitContainer1);
             this.DoubleBuffered = true;
@@ -462,13 +474,14 @@ namespace FriishProduce
             this.groupBox5.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Preview)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ChannelTitle_Locale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Random)).EndInit();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Players)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReleaseYear)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Preview)).EndInit();
             this.groupBox8.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -516,5 +529,6 @@ namespace FriishProduce
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox Preview;
         private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.PictureBox ChannelTitle_Locale;
     }
 }

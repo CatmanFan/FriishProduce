@@ -1,11 +1,10 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 
 namespace FriishProduce
 {
     public class Paths
     {
-        public static readonly string EnvironmentFolder = Environment.CurrentDirectory;
+        public static readonly string EnvironmentFolder = System.Windows.Forms.Application.StartupPath;
         public static readonly string WorkingFolder = Path.Combine(EnvironmentFolder, "resources\\temp\\");
         public static readonly string Banners = Path.Combine(EnvironmentFolder, "resources\\tools\\banners\\");
 

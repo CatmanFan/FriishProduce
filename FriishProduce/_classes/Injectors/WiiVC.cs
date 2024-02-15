@@ -21,12 +21,14 @@ namespace FriishProduce
         protected byte[] Manual { get; set; }
         protected bool NeedsManualLoaded { get; set; }
 
-        protected List<byte[]> Contents { get; set; }
-        protected U8 Content5 { get; set; }
-        protected bool UsesContent5 { get; set; }
         protected bool NeedsMainDOL { get; set; }
+        protected List<byte[]> Contents { get; set; }
 
-
+        // This is the main U8 archive which contains the emanual, ROM, savebanner, or other needed files, stored in either 00000005.app, 00000006.app or 00000007.app (depending on the console).
+        // It needs to be set manually for each console (normally, it is the 5th index)
+        // ****************
+        protected int MainContentIndex { get; set; }
+        protected U8 MainContent { get; set; }
 
         public InjectorWiiVC() { }
 
@@ -56,8 +58,10 @@ namespace FriishProduce
                 }
             }
 
-            if (WAD.Contents.Length > 5)
-                Content5 = U8.Load(WAD.Contents[5]);
+            if (NeedsManualLoaded && (MainContentIndex <= 1)) MainContentIndex = 5;
+
+            if (MainContentIndex > 1 && WAD.Contents.Length > MainContentIndex)
+                MainContent = U8.Load(WAD.Contents[MainContentIndex]);
 
             if (NeedsManualLoaded) ReplaceManual();
         }
@@ -98,6 +102,32 @@ namespace FriishProduce
             {
                 if (ManualPath == null) return;
 
+                /* For reference: copied from "vcromclaim": https://github.com/JanErikGunnar/vcromclaim/blob/master/wiimetadata.py
+
+                if u8arc.findfile('emanual.arc'):
+                    man = U8Archive(u8arc.getfile(u8arc.findfile('emanual.arc')))
+
+                elif u8arc.findfile('html.arc'):
+                    man = U8Archive(u8arc.getfile(u8arc.findfile('html.arc')))
+
+                elif u8arc.findfile('man.arc'):
+                    man = U8Archive(u8arc.getfile(u8arc.findfile('man.arc')))
+
+                elif u8arc.findfile('data.ccf'):
+                    ccf = CCFArchive(u8arc.getfile(u8arc.findfile('data.ccf')))
+                    man = U8Archive(ccf.getfile('man.arc'))
+
+                elif u8arc.findfile('htmlc.arc'):
+                    manc = u8arc.getfile(u8arc.findfile('htmlc.arc'))
+                    print('Decompressing manual: htmlc.arc')
+                    man = U8Archive(BytesIO(lz77.decompress_n64(manc)))
+
+                elif u8arc.findfilebyregex('.+_manual_.+\\.arc\\.lz77$'):
+                    # E.g. makaimura_manual_usa.arc.lz77 (Arcade Ghosts n Goblins)
+                    manc = u8arc.getfile(u8arc.findfilebyregex('.+_manual_.+\\.arc\\.lz77$'))
+                    man = U8Archive(BytesIO(lz77.decompress_nonN64(manc)))
+                    manc.close() */
+
                 // Get and read emanual
                 // ****************
                 if (File.Exists(Paths.DataCCF + "man.arc"))
@@ -107,11 +137,15 @@ namespace FriishProduce
                 }
                 else
                 {
-                    foreach (var item in Content5.StringTable)
-                        if (item.ToLower().Contains("emanual.arc"))
+                    foreach (var item in MainContent.StringTable)
+                        if (item.ToLower().Contains("emanual.arc") || item.ToLower().Contains("html.arc") || item.ToLower().Contains("man.arc"))
                         {
                             OrigManual = item;
-                            Manual = Content5.Data[Content5.GetNodeIndex(OrigManual)];
+                            Manual = MainContent.Data[MainContent.GetNodeIndex(OrigManual)];
+                        }
+                        else if (item.ToLower().Contains("htmlc.arc"))
+                        {
+                            /* TO-DO: Handle using LZ77 compression (WWCXtool again?) */
                         }
                 }
 
@@ -141,7 +175,7 @@ namespace FriishProduce
                 if (File.Exists(OrigManual))
                     File.WriteAllBytes(OrigManual, Manual);
                 else
-                    Content5.ReplaceFile(Content5.GetNodeIndex(OrigManual), Manual);
+                    MainContent.ReplaceFile(MainContent.GetNodeIndex(OrigManual), Manual);
 
                 ManualPath = null;
             }
@@ -172,9 +206,9 @@ namespace FriishProduce
                 }
             }
 
-            if (Manual != null || UsesContent5)
-                Contents[5] = Content5.ToByteArray();
-            Content5.Dispose();
+            if (Manual != null || MainContent != null)
+                Contents[MainContentIndex] = MainContent.ToByteArray();
+            MainContent.Dispose();
 
             // Temporary workaround for crashes
             // WAD needs to be repacked using proper tik/tmd/cert from scratch using modified files.

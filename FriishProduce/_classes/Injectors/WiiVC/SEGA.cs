@@ -76,7 +76,7 @@ namespace FriishProduce.WiiVC
 
         protected override void Load()
         {
-            UsesContent5 = true;
+            MainContentIndex = 5;
             NeedsManualLoaded = false;
             base.Load();
 
@@ -124,7 +124,7 @@ namespace FriishProduce.WiiVC
         {
             // Get Data.ccf first
             // ****************
-            File.WriteAllBytes(Paths.WorkingFolder + "data.ccf", Content5.Data[Content5.GetNodeIndex("data.ccf")]);
+            File.WriteAllBytes(Paths.WorkingFolder + "data.ccf", MainContent.Data[MainContent.GetNodeIndex("data.ccf")]);
 
             RunApp:
             RunCCFEx(Paths.WorkingFolder + "data.ccf", Paths.DataCCF, CCFApp);
@@ -348,7 +348,7 @@ namespace FriishProduce.WiiVC
 
             // Data.ccf
             // ****************
-            Content5.ReplaceFile(Content5.GetNodeIndex("data.ccf"), RunCCFArc(Paths.DataCCF, ROMName.Contains("MonsterWorld4") ? 1 : 0));
+            MainContent.ReplaceFile(MainContent.GetNodeIndex("data.ccf"), RunCCFArc(Paths.DataCCF, ROMName.Contains("MonsterWorld4") ? 1 : 0));
 
             if (File.Exists(Paths.WorkingFolder + "data.ccf")) File.Delete(Paths.WorkingFolder + "data.ccf");
 

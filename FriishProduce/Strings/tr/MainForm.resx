@@ -132,6 +132,9 @@
   <data name="OpenImage.Text" xml:space="preserve">
     <value>Resim</value>
   </data>
+  <data name="OpenManual.Text" xml:space="preserve">
+    <value>Kılavuz Klasörü</value>
+  </data>
   <data name="ribbonPanel_Export.Text" xml:space="preserve">
     <value>Kaydet</value>
   </data>

@@ -16,7 +16,7 @@ namespace FriishProduce.WiiVC
         protected override void Load()
         {
             NeedsMainDOL = true;
-            UsesContent5 = true;
+            MainContentIndex = 5;
             NeedsManualLoaded = true;
             base.Load();
 
@@ -41,14 +41,14 @@ namespace FriishProduce.WiiVC
 
             // Normal
             // ****************
-            if (Target.Length == 8) Content5.ReplaceFile(Content5.GetNodeIndex(Target), ROM);
+            if (Target.Length == 8) MainContent.ReplaceFile(MainContent.GetNodeIndex(Target), ROM);
 
             // LZ77 compression
             // ****************
             else if (Target.ToUpper().StartsWith("LZ77"))
             {
                 File.WriteAllBytes(Paths.WorkingFolder + "rom", ROM);
-                File.WriteAllBytes(Paths.WorkingFolder + "LZ77orig.rom", Content5.Data[Content5.GetNodeIndex(Target)]);
+                File.WriteAllBytes(Paths.WorkingFolder + "LZ77orig.rom", MainContent.Data[MainContent.GetNodeIndex(Target)]);
 
                 Process.Run
                 (
@@ -58,7 +58,7 @@ namespace FriishProduce.WiiVC
                 );
                 if (!File.Exists(Paths.WorkingFolder + "LZ77out.rom")) throw new Exception(Language.Get("Error002"));
 
-                Content5.ReplaceFile(Content5.GetNodeIndex(Target), Paths.WorkingFolder + "LZ77out.rom");
+                MainContent.ReplaceFile(MainContent.GetNodeIndex(Target), Paths.WorkingFolder + "LZ77out.rom");
 
                 File.Delete(Paths.WorkingFolder + "LZ77out.rom");
                 if (File.Exists(Paths.WorkingFolder + "rom")) File.Delete(Paths.WorkingFolder + "rom");
@@ -67,10 +67,10 @@ namespace FriishProduce.WiiVC
 
             // Dummify unused files
             // ****************
-            foreach (string file in Content5.StringTable)
+            foreach (string file in MainContent.StringTable)
             {
                 if (file.ToLower().EndsWith(".pcm") || file.ToLower().EndsWith(".var"))
-                    Content5.ReplaceFile(Content5.GetNodeIndex(file), Byte.Dummy);
+                    MainContent.ReplaceFile(MainContent.GetNodeIndex(file), Byte.Dummy);
                 // xxxx.pcm is the digital audio file. It is not usually needed in most cases
             }
         }
@@ -126,7 +126,7 @@ namespace FriishProduce.WiiVC
             // IMAGE
             // -----------------------
 
-            Content5.ReplaceFile(Content5.GetNodeIndex("banner.tpl"), tImg.CreateSaveTPL(Console.SNES, Content5.Data[Content5.GetNodeIndex("banner.tpl")]).ToByteArray());
+            MainContent.ReplaceFile(MainContent.GetNodeIndex("banner.tpl"), tImg.CreateSaveTPL(Console.SNES, MainContent.Data[MainContent.GetNodeIndex("banner.tpl")]).ToByteArray());
         }
 
         /// <summary>
@@ -134,7 +134,7 @@ namespace FriishProduce.WiiVC
         /// </summary>
         private void GetID()
         {
-            foreach (string file in Content5.StringTable)
+            foreach (string file in MainContent.StringTable)
             {
                 if (file.ToLower().EndsWith(".rom"))
                 {

@@ -115,6 +115,15 @@ namespace Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Manual.
+        /// </summary>
+        public static string OpenManual_Text {
+            get {
+                return ResourceManager.GetString("OpenManual.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ROM.
         /// </summary>
         public static string OpenROM_Text {
