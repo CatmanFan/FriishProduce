@@ -74,46 +74,6 @@ namespace FriishProduce.WiiVC
         public bool IsSMS { get; set; }
         private string ROMName { get; set; }
 
-        public Dictionary<string, string> Config { get; set; }
-        // CONFIG Encoding: Unix (LF) - UTF-8 (new empty line at bottom)
-        // Savedata Encoding: Windows (CRLF) - UTF-16 Big Endian ("banner.cfg")
-        // Savedata Encoding: Windows (CRLF) - UTF-8 ("comment", ver3 only)
-        /* 
-        console.master_volume="+11.0"
-        console.rapidfire="10"
-        console.volume="10"*/
-
-        /* 
-         * S&K CONFIG:
-        console.cl_bindings="up=U:down=D:left=L:right=R:+=S:y=A:b=B:a=C:l=X:x=Y:r=Z:zr=M:zl="
-        console.core_bindings="up=U:down=D:left=L:right=R:+=S:a=A:1=B:2=C:b="
-        console.disable_resetbutton="1"
-        console.gc_bindings="up=U:down=D:left=L:right=R:start=S:b=A:a=B:x=C:l=X:y=Y:r=Z:z=M:c="
-        console.machine_arch="md"
-        console.machine_country="eu"
-        console.master_volume="+6.0"
-        console.volume="10"
-        machine_md.snd_strict_sync="1"
-        modules="emu_m68kbase tsdevp md se_vc selectmenu sandkui"
-        romfile="sandk_composite.sgd"
-        save_sram="1"
-        selectmenu="sandk"
-        snd.snddrv="tsdev+"
-        vdp.disable_gamma="0"
-        vdp_md.gamma_curve ="0x00,0x1a,0x31,0x42,0x54,0x66,0x78,0x80,0x8f,0x9e,0xad,0xc1,0xd5,0xea,0xff"
-         */
-
-        // The trick to actually getting the CCF to work is this:
-        // ****************
-        // 1. Use the old CCFex to extract (https://www.romhacking.net/utilities/651/)
-        // 2. Pack using the new CCFarc (no raw) (https://github.com/libertyernie/ccf-tools)
-        //
-        // - A specific file order is needed, the Opera.arc and/or ROM file first, then all other files in alphabetical order
-        // - If se_vc.rso is listed after Select Menu files, it will display an error screen and crash, so I used OrderBy to return the correct file order
-        // ****************
-        // Anything else, and it will just do a black screen, or it will work for Master System only
-        // ****************
-
         protected override void Load()
         {
             UsesContent5 = true;
@@ -148,7 +108,47 @@ namespace FriishProduce.WiiVC
             }
         }
 
-        #region External Tools
+        #region CCF Tools
+        // The trick to actually getting the CCF to work is this:
+        // ****************
+        // 1. Use the old CCFex to extract (https://www.romhacking.net/utilities/651/)
+        // 2. Pack using the new CCFarc (no raw) (https://github.com/libertyernie/ccf-tools)
+        //
+        // - A specific file order is needed, the Opera.arc and/or ROM file first, then all other files in alphabetical order
+        // - If se_vc.rso is listed after Select Menu files, it will display an error screen and crash, so I used OrderBy to return the correct file order
+        // ****************
+        // Anything else, and it will just do a black screen, or it will work for Master System only
+        // ****************
+
+        private void GetCCF(int CCFApp)
+        {
+            // Get Data.ccf first
+            // ****************
+            File.WriteAllBytes(Paths.WorkingFolder + "data.ccf", Content5.Data[Content5.GetNodeIndex("data.ccf")]);
+
+            RunApp:
+            RunCCFEx(Paths.WorkingFolder + "data.ccf", Paths.DataCCF, CCFApp);
+
+            // Failsafe
+            // ****************
+            if ((Directory.EnumerateFiles(Paths.DataCCF).Count() < 3 ||
+               (File.Exists(Paths.DataCCF + "Opera.arc") && File.ReadAllBytes(Paths.DataCCF + "Opera.arc").Length == 0)))
+            {
+                if (CCFApp != 1) { CCFApp = 1; goto RunApp; }
+                else throw new Exception(Language.Get("Error002"));
+            }
+
+            // Get Misc.ccf
+            // ****************
+            RunCCFEx(Paths.DataCCF + "misc.ccf", Paths.MiscCCF, 0);
+
+            // Get ROM filename
+            // ****************
+            foreach (var item in Directory.EnumerateFiles(Paths.DataCCF))
+                if (Path.GetExtension(item).ToLower().StartsWith(".sgd") || Path.GetExtension(item).ToLower().StartsWith(".sms"))
+                    ROMName = Path.GetFileName(item).Replace("__", "");
+        }
+
         /// <summary>
         /// Extracts CCF to a specified location.
         /// </summary>
@@ -337,34 +337,6 @@ namespace FriishProduce.WiiVC
         }
         #endregion
 
-        private void GetCCF(int CCFApp)
-        {
-            // Get Data.ccf first
-            // ****************
-            File.WriteAllBytes(Paths.WorkingFolder + "data.ccf", Content5.Data[Content5.GetNodeIndex("data.ccf")]);
-
-            RunApp:
-            RunCCFEx(Paths.WorkingFolder + "data.ccf", Paths.DataCCF, CCFApp);
-
-            // Failsafe
-            // ****************
-            if ((Directory.EnumerateFiles(Paths.DataCCF).Count() < 3 ||
-               (File.Exists(Paths.DataCCF + "Opera.arc") && File.ReadAllBytes(Paths.DataCCF + "Opera.arc").Length == 0)))
-            {
-                if (CCFApp != 1) { CCFApp = 1; goto RunApp; }
-                else throw new Exception(Language.Get("Error002"));
-            }
-
-            // Get Misc.ccf
-            // ****************
-            RunCCFEx(Paths.DataCCF + "misc.ccf", Paths.MiscCCF, 0);
-
-            // Get ROM filename
-            // ****************
-            foreach (var item in Directory.EnumerateFiles(Paths.DataCCF))
-                if (Path.GetExtension(item).ToLower().StartsWith(".sgd") || Path.GetExtension(item).ToLower().StartsWith(".sms"))
-                    ROMName = Path.GetFileName(item).Replace("__", "");
-        }
 
         public override WAD Write()
         {
@@ -446,7 +418,91 @@ namespace FriishProduce.WiiVC
 
         protected override void ModifyEmulatorSettings()
         {
-            throw new NotImplementedException();
+            // CONFIG Encoding: Unix (LF) - UTF-8 (new empty line at bottom)
+            // Savedata Encoding: Windows (CRLF) - UTF-16 Big Endian ("banner.cfg")
+            // Savedata Encoding: Windows (CRLF) - UTF-8 ("comment", ver3 only)
+            /* 
+            console.master_volume="+11.0"
+            console.rapidfire="10"
+            console.volume="10"*/
+
+            /* 
+             * S&K CONFIG:
+            console.cl_bindings="up=U:down=D:left=L:right=R:+=S:y=A:b=B:a=C:l=X:x=Y:r=Z:zr=M:zl="
+            console.core_bindings="up=U:down=D:left=L:right=R:+=S:a=A:1=B:2=C:b="
+            console.disable_resetbutton="1"
+            console.gc_bindings="up=U:down=D:left=L:right=R:start=S:b=A:a=B:x=C:l=X:y=Y:r=Z:z=M:c="
+            console.machine_arch="md"
+            console.machine_country="eu"
+            console.master_volume="+6.0"
+            console.volume="10"
+            machine_md.snd_strict_sync="1"
+            modules="emu_m68kbase tsdevp md se_vc selectmenu sandkui"
+            romfile="sandk_composite.sgd"
+            save_sram="1"
+            selectmenu="sandk"
+            snd.snddrv="tsdev+"
+            vdp.disable_gamma="0"
+            vdp_md.gamma_curve ="0x00,0x1a,0x31,0x42,0x54,0x66,0x78,0x80,0x8f,0x9e,0xad,0xc1,0xd5,0xea,0xff"
+             */
+
+            foreach (var item in Directory.EnumerateFiles(Paths.DataCCF))
+            {
+                if (Path.GetFileName(item).ToLower() == "config")
+                {
+                    List<string> newConfig = new List<string>();
+                    List<string> alreadyAdded = new List<string>();
+                    var oldConfig = File.ReadAllLines(item);
+
+                    Dictionary<string, string> Alt = new Dictionary<string, string>
+                        {
+                            // Settings that are known by alternative names in newer revisions (old name on left):
+                            { "country", "console.machine_country" },
+                            { "console.volume", "console.master_volume" }
+                        };
+
+                    for (int i = 0; i < Alt.Count; i++)
+                        foreach (var newLine in Settings)
+                            if (newLine.Key == Alt.ElementAt(i).Key)
+                                foreach (var line in oldConfig)
+                                    if (line.StartsWith(Alt.ElementAt(i).Value) && Alt.ElementAt(i).Value != newLine.Key && Settings.ContainsKey(newLine.Key))
+                                    {
+                                        newConfig.Add($"{newLine.Key}=\"{newLine.Value}\"");
+                                        alreadyAdded.Add(Alt.ElementAt(i).Value);
+                                    }
+
+                    foreach (var line in oldConfig)
+                        foreach (var name in new string[]
+                        {
+                            // Settings that should NOT be changed:
+                            "console.machine_arch",
+                            "console.volume",
+                            "console.cl_bindings",
+                            "console.core_bindings",
+                            "console.gc_bindings",
+                            "modules",
+                            "romfile",
+                            "snd.snddrv",
+                            "smsui.has_opll",
+                        })
+                            if (line.StartsWith(name)) { newConfig.Add(line); alreadyAdded.Add(line); }
+
+                    foreach (var newLine in Settings)
+                    {
+                        bool doNotAdd = false;
+                        foreach (var added in alreadyAdded.ToArray())
+                            if (newLine.Key == added) { doNotAdd = true; break; }
+
+                        if (!doNotAdd)
+                        {
+                            newConfig.Add($"{newLine.Key}=\"{newLine.Value}\"");
+                            alreadyAdded.Add(newLine.Key);
+                        }
+                    }
+
+                    File.WriteAllLines(item, newConfig);
+                }
+            }
         }
     }
 }

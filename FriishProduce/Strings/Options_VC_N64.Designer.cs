@@ -88,7 +88,7 @@ namespace Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Extended RAM patch.
+        ///   Looks up a localized string similar to Extended RAM.
         /// </summary>
         public static string n64002_Text {
             get {
@@ -97,7 +97,7 @@ namespace Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Allocate for ROM size.
+        ///   Looks up a localized string similar to Allocate ROM size.
         /// </summary>
         public static string n64003_Text {
             get {

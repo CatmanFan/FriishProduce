@@ -33,8 +33,9 @@ namespace FriishProduce
         protected Database                      Database    { get; set; }
         protected IDictionary<string, string>   CurrentBase { get; set; }
         protected TitleImage                    tImg        { get; set; }
-        protected Injector                      i           { get; set; }
-        protected InjectorWiiVC                 WiiVC       { get; set; }
+        protected Creator                       Creator     { get; set; }
+
+        protected InjectorWiiVC                 VC       { get; set; }
 
         // -----------------------------------
         // Options
@@ -57,7 +58,7 @@ namespace FriishProduce
 
             // Change title text to untitled string
             Untitled = string.Format(Language.Get("Untitled"), Language.Get($"Platform_{Enum.GetName(typeof(Console), Console)}"));
-            Text = string.IsNullOrWhiteSpace(i.ChannelTitle) ? Untitled : i.ChannelTitle;
+            Text = string.IsNullOrWhiteSpace(Creator.ChannelTitle) ? Untitled : Creator.ChannelTitle;
             SoftwareName.Location = new Point(label2.Location.X + label2.Width - 4, label2.Location.Y);
             baseName.Location = new Point(label4.Location.X + label4.Width - 4, label4.Location.Y);
             baseID.Location = new Point(label5.Location.X + label5.Width - 4, label5.Location.Y);
@@ -69,14 +70,22 @@ namespace FriishProduce
             imageintpl.SelectedIndex = Properties.Settings.Default.ImageInterpolation;
         }
 
-        public InjectorForm(Console c, string ROM)
+        public InjectorForm(Console c, string ROM = null)
         {
             Console = c;
+            this.ROM = ROM;
             InitializeComponent();
+        }
+
+        private void Form_Shown(object sender, EventArgs e)
+        {
+            // ----------------------------
+            if (DesignMode) return;
+            // ----------------------------
 
             // Declare WAD metadata modifier
             // ********
-            i = new Injector(Console);
+            Creator = new Creator(Console);
 
             switch (Console)
             {
@@ -135,13 +144,10 @@ namespace FriishProduce
             button1.Enabled = CO != null;
             RefreshForm();
 
-            i.BannerYear = (int)ReleaseYear.Value;
-            i.BannerPlayers = (int)Players.Value;
+            Creator.BannerYear = (int)ReleaseYear.Value;
+            Creator.BannerPlayers = (int)Players.Value;
             AddBases();
-        }
 
-        private void Form_Shown(object sender, EventArgs e)
-        {
             if (ROM != null) LoadROM(ROM, Properties.Settings.Default.AutoLibRetro);
         }
 
@@ -149,34 +155,42 @@ namespace FriishProduce
 
         protected virtual void CheckExport()
         {
-            i.TitleID = TitleID.Text;
-            i.ChannelTitle = ChannelTitle.Text;
-            i.BannerTitle = BannerTitle.Text;
-            i.BannerYear = (int)ReleaseYear.Value;
-            i.BannerPlayers = (int)Players.Value;
-            i.SaveDataTitle =
+            // ----------------------------
+            if (DesignMode) return;
+            // ----------------------------
+
+            Creator.TitleID = TitleID.Text;
+            Creator.ChannelTitle = ChannelTitle.Text;
+            Creator.BannerTitle = BannerTitle.Text;
+            Creator.BannerYear = (int)ReleaseYear.Value;
+            Creator.BannerPlayers = (int)Players.Value;
+            Creator.SaveDataTitle =
                 SaveDataTitle.Lines.Length == 1 ? new string[] { SaveDataTitle.Text } :
                 SaveDataTitle.Lines.Length == 0 ? new string[] { "" } :
                 SaveDataTitle.Lines;
 
-            button2.Enabled = tImg != null && !string.IsNullOrEmpty(i.BannerTitle);
+            button2.Enabled = tImg != null && !string.IsNullOrEmpty(Creator.BannerTitle);
 
-            ReadyToExport =    !string.IsNullOrEmpty(i.TitleID) && i.TitleID.Length == 4
-                            && !string.IsNullOrWhiteSpace(i.ChannelTitle)
-                            && !string.IsNullOrEmpty(i.BannerTitle)
-                            && !string.IsNullOrEmpty(i.SaveDataTitle[0])
+            ReadyToExport =    !string.IsNullOrEmpty(Creator.TitleID) && Creator.TitleID.Length == 4
+                            && !string.IsNullOrWhiteSpace(Creator.ChannelTitle)
+                            && !string.IsNullOrEmpty(Creator.BannerTitle)
+                            && !string.IsNullOrEmpty(Creator.SaveDataTitle[0])
                             && (tImg != null)
                             && ROM != null;
             Tag = "dirty";
             ExportCheck.Invoke(this, EventArgs.Empty);
         }
 
-        private void RandomTID() => TitleID.Text = i.TitleID = TIDCode != null ? TIDCode + GenerateTitleID().Substring(0, 3) : GenerateTitleID();
+        private void RandomTID() => TitleID.Text = Creator.TitleID = TIDCode != null ? TIDCode + GenerateTitleID().Substring(0, 3) : GenerateTitleID();
 
-        public string GetName() => $"{ChannelTitle.Text} [{TitleID.Text.ToUpper()}]";
+        public string GetName() => $"[{Console}] {TitleID.Text.ToUpper()} - {ChannelTitle.Text}";
 
         private void isClosing(object sender, FormClosingEventArgs e)
         {
+            // ----------------------------
+            if (DesignMode) return;
+            // ----------------------------
+
             if (Tag != null && Tag.ToString() == "dirty")
                 if (MessageBox.Show(string.Format(Language.Get("Message001"), Text), Parent.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
                     e.Cancel = true;
@@ -220,24 +234,12 @@ namespace FriishProduce
             e.Handled = true;
         }
 
-        #region Load Data Functions
-        private void ShowBanner_Click(object sender, EventArgs e)
-        {
-            BannerPreview preview = new BannerPreview(i.BannerTitle, i.BannerYear, i.BannerPlayers, tImg.VCPic, i.isJapan ? 1 : i.isKorea ? 2 : 0);
-            preview.Text = string.Join(" - ", BannerTitle.Lines);
-            preview.ShowDialog(this);
-            preview.Dispose();
-        }
-
-        private string GenerateTitleID()
-        {
-            var r = new Random();
-            string allowed = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-            return new string(Enumerable.Repeat(allowed, 4).Select(s => s[r.Next(s.Length)]).ToArray());
-        }
-
         private void OpenWAD_CheckedChanged(object sender, EventArgs e)
         {
+            // ----------------------------
+            if (DesignMode) return;
+            // ----------------------------
+
             Base.Enabled = WADRegion.Enabled = !OpenWAD.Checked;
             if (Base.Enabled)
             {
@@ -262,6 +264,34 @@ namespace FriishProduce
             {
                 WADPath = null;
             }
+        }
+
+        private void InterpolationChanged(object sender, EventArgs e)
+        {
+            // ----------------------------
+            if (DesignMode) return;
+            // ----------------------------
+
+            if (imageintpl.SelectedIndex != Properties.Settings.Default.ImageInterpolation) Tag = "dirty";
+            if (Creator != null && tImg != null) LoadImage();
+        }
+
+        private void ShowBanner_Click(object sender, EventArgs e)
+        {
+            BannerPreview preview = new BannerPreview(Creator.BannerTitle, Creator.BannerYear, Creator.BannerPlayers, tImg.VCPic, Creator.isJapan ? 1 : Creator.isKorea ? 2 : 0)
+            {
+                Text = string.Join(" - ", BannerTitle.Lines)
+            };
+            preview.ShowDialog(this);
+            preview.Dispose();
+        }
+
+        #region Load Data Functions
+        private string GenerateTitleID()
+        {
+            var r = new Random();
+            string allowed = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            return new string(Enumerable.Repeat(allowed, 4).Select(s => s[r.Next(s.Length)]).ToArray());
         }
 
         public bool LoadWAD(string path)
@@ -289,12 +319,6 @@ namespace FriishProduce
             System.Media.SystemSounds.Beep.Play();
             MessageBox.Show(string.Format(Language.Get("Message005"), Reader.UpperTitleID), Parent.Text);
             return false;
-        }
-
-        private void InterpolationChanged(object sender, EventArgs e)
-        {
-            if (imageintpl.SelectedIndex != Properties.Settings.Default.ImageInterpolation) Tag = "dirty";
-            if (i != null && tImg != null) LoadImage();
         }
 
         public void LoadImage()
@@ -333,8 +357,11 @@ namespace FriishProduce
                         if (src.Width == 256 && (src.Height == 224 || src.Height == 240) && CO.Settings != null && CO.Settings["use_tImg"] == "1")
                         {
                             var CO_NES = CO as Options_VC_NES;
-                            if (CO_NES.ImgPaletteIndex == -1 || oldImgPath != newImgPath) CO_NES.ImgPaletteIndex = CO_NES.CheckPalette(img);
-                                img = CO_NES.SwapColors(img, CO_NES.Palettes[CO_NES.ImgPaletteIndex], CO_NES.Palettes[int.Parse(CO_NES.Settings["palette"])]);
+
+                            if (CO_NES.ImgPaletteIndex == -1 || oldImgPath != newImgPath)
+                                CO_NES.ImgPaletteIndex = CO_NES.CheckPalette(img);
+
+                            img = CO_NES.SwapColors(img, CO_NES.Palettes[CO_NES.ImgPaletteIndex], CO_NES.Palettes[int.Parse(CO_NES.Settings["palette"])]);
                         }
                         break;
 
@@ -410,13 +437,13 @@ namespace FriishProduce
                 if (Retrieved)
                 {
                     // Set banner title
-                    BannerTitle.Text = i.BannerTitle = LibRetro.GetCleanTitle() ?? i.BannerTitle;
+                    BannerTitle.Text = Creator.BannerTitle = LibRetro.GetCleanTitle() ?? Creator.BannerTitle;
 
                     // Set channel title text
                     if (LibRetro.GetCleanTitle() != null)
                     {
                         var text = LibRetro.GetCleanTitle().Replace("\r", "").Split('\n');
-                        if (text[0].Length <= ChannelTitle.MaxLength) ChannelTitle.Text = i.ChannelTitle = text[0];
+                        if (text[0].Length <= ChannelTitle.MaxLength) ChannelTitle.Text = Creator.ChannelTitle = text[0];
                         if (ChannelTitle.TextLength <= SaveDataTitle.MaxLength) SaveDataTitle.Text = ChannelTitle.Text;
                     }
 
@@ -424,8 +451,8 @@ namespace FriishProduce
                     if (LibRetro.GetImgURL() != null) { LoadImage(LibRetro.GetImgURL()); }
 
                     // Set year and players
-                    ReleaseYear.Value = i.BannerYear    = !string.IsNullOrEmpty(LibRetro.GetYear())    ? int.Parse(LibRetro.GetYear())    : i.BannerYear;
-                    Players.Value     = i.BannerPlayers = !string.IsNullOrEmpty(LibRetro.GetPlayers()) ? int.Parse(LibRetro.GetPlayers()) : i.BannerPlayers;
+                    ReleaseYear.Value = Creator.BannerYear    = !string.IsNullOrEmpty(LibRetro.GetYear())    ? int.Parse(LibRetro.GetYear())    : Creator.BannerYear;
+                    Players.Value     = Creator.BannerPlayers = !string.IsNullOrEmpty(LibRetro.GetPlayers()) ? int.Parse(LibRetro.GetPlayers()) : Creator.BannerPlayers;
                 }
 
                 // Set ROM name & serial text
@@ -447,7 +474,7 @@ namespace FriishProduce
 
         public bool CreateInject()
         {
-            i.Out = Parent.SaveWAD.FileName;
+            Creator.Out = Parent.SaveWAD.FileName;
 
             try
             {
@@ -471,15 +498,15 @@ namespace FriishProduce
 
                 // Check new WAD file
                 // *******
-                if (File.Exists(i.Out) && File.ReadAllBytes(i.Out).Length > 10)
+                if (File.Exists(Creator.Out) && File.ReadAllBytes(Creator.Out).Length > 10)
                 {
                     System.Media.SystemSounds.Beep.Play();
                     Tag = null;
 
                     if (Properties.Settings.Default.AutoOpenFolder)
-                        System.Diagnostics.Process.Start("explorer.exe", $"/select, \"{i.Out}\"");
+                        System.Diagnostics.Process.Start("explorer.exe", $"/select, \"{Creator.Out}\"");
                     else
-                        MessageBox.Show(string.Format(Language.Get("Message003"), i.Out), Language.Get("_AppTitle"), MessageBoxButtons.OK);
+                        MessageBox.Show(string.Format(Language.Get("Message003"), Creator.Out), Language.Get("_AppTitle"), MessageBoxButtons.OK);
 
                     return true;
                 }
@@ -488,14 +515,14 @@ namespace FriishProduce
 
             catch (Exception ex)
             {
-                i.ShowErrorMessage(ex);
+                Creator.ShowErrorMessage(ex);
                 return false;
             }
 
             finally
             {
                 Parent.CleanTemp();
-                if (WiiVC != null) WiiVC.Dispose();
+                if (VC != null) VC.Dispose();
             }
         }
 
@@ -511,22 +538,24 @@ namespace FriishProduce
                 // NES
                 // *******
                 case Console.NES:
-                    WiiVC = new WiiVC.NES();
+                    VC = new WiiVC.NES();
                     break;
 
 
                 // SNES
                 // *******
                 case Console.SNES:
-                    WiiVC = new WiiVC.SNES();
+                    VC = new WiiVC.SNES();
                     break;
 
 
                 // N64
                 // *******
                 case Console.N64:
-                    WiiVC = new WiiVC.N64()
+                    VC = new WiiVC.N64()
                     {
+                        Settings = CO.Settings,
+
                         CompressionType = CO.EmuType == 3 ? (CO.Settings.ElementAt(3).Value == "True" ? 1 : 2) : 0,
                         Allocate = CO.Settings.ElementAt(3).Value == "True" && (CO.EmuType <= 1),
                     };
@@ -537,7 +566,7 @@ namespace FriishProduce
                 // *******
                 case Console.SMS:
                 case Console.SMDGEN:
-                    WiiVC = new WiiVC.SEGA()
+                    VC = new WiiVC.SEGA()
                     {
                         IsSMS = Console == Console.SMS
                     };
@@ -546,15 +575,15 @@ namespace FriishProduce
 
             // Set path to manual folder (if it exists) and load WAD
             // *******
-            WiiVC.Settings = CO.Settings;
-            WiiVC.ManualPath = null;
-            if (WADPath != null) WiiVC.WAD = WAD.Load(WADPath);
+            VC.Settings = CO.Settings;
+            VC.ManualPath = null;
+            if (WADPath != null) VC.WAD = WAD.Load(WADPath);
             else for (int x = 0; x < Database.List.Length; x++)
-                if (Database.List[x].TitleID.ToUpper() == baseID.Text.ToUpper()) WiiVC.WAD = Database.Load(x);
+                if (Database.List[x].TitleID.ToUpper() == baseID.Text.ToUpper()) VC.WAD = Database.Load(x);
 
             // Actually inject everything
             // *******
-            i.Create(WiiVC.Inject(ROM, i.SaveDataTitle, tImg), tImg);
+            Creator.MakeWAD(VC.Inject(ROM, Creator.SaveDataTitle, tImg), tImg);
         }
         #endregion
 
@@ -617,6 +646,10 @@ namespace FriishProduce
 
         private void Base_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // ----------------------------
+            if (DesignMode) return;
+            // ----------------------------
+
             // Reset currently-selected base info
             // ********
             CurrentBase = new Dictionary<string, string>();
@@ -796,7 +829,7 @@ namespace FriishProduce
 
             // Changing SaveDataTitle max length & clearing text field when needed
             // ----------------------
-            if (Console == Console.NES) SaveDataTitle.MaxLength = i.isKorea ? 30 : 20;
+            if (Console == Console.NES) SaveDataTitle.MaxLength = Creator.isKorea ? 30 : 20;
             else if (Console == Console.SNES) SaveDataTitle.MaxLength = 80;
             else if (Console == Console.N64) SaveDataTitle.MaxLength = 100;
             else if (Console == Console.NeoGeo
@@ -805,14 +838,14 @@ namespace FriishProduce
 
             // Korean WADs use different encoding format & using two lines or going over max limit cause visual bugs
             // ********
-            i.isKorea = CurrentBase.ElementAt(index).Key[3] == 'Q'
+            Creator.isKorea = CurrentBase.ElementAt(index).Key[3] == 'Q'
                      || CurrentBase.ElementAt(index).Key[3] == 'T'
                      || CurrentBase.ElementAt(index).Key[3] == 'K';
-            i.isJapan = CurrentBase.ElementAt(index).Key[3] == 'J';
+            Creator.isJapan = CurrentBase.ElementAt(index).Key[3] == 'J';
 
             // Also, some consoles only support a single line anyway
             // ********
-            bool isSingleLine = i.isKorea
+            bool isSingleLine = Creator.isKorea
                              || Console == Console.NES
                              || Console == Console.SMS
                              || Console == Console.SMDGEN;
@@ -826,7 +859,7 @@ namespace FriishProduce
                 SaveDataTitle.Clear();
                 goto End;
             }
-            if (i.isKorea && SaveDataTitle.Multiline) SaveDataTitle.MaxLength /= 2; // Applies to both NES/FC & SNES/SFC
+            if (Creator.isKorea && SaveDataTitle.Multiline) SaveDataTitle.MaxLength /= 2; // Applies to both NES/FC & SNES/SFC
 
             // Clear text field if at least one line is longer than the maximum limit allowed
             // ********
@@ -856,7 +889,7 @@ namespace FriishProduce
                     break;
 
                 case Console.N64:
-                    CO.EmuType = i.isKorea ? 3 : emuVer;
+                    CO.EmuType = Creator.isKorea ? 3 : emuVer;
                     break;
 
                 case Console.SMS:

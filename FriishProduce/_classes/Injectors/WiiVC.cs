@@ -226,13 +226,12 @@ namespace FriishProduce
 
         public void Dispose()
         {
-            WAD.Dispose();
+            if (WAD != null) WAD.Dispose();
+            if (Contents != null) Contents.Clear();
             ROM = null;
-            Settings.Clear();
             ManualPath = null;
             OrigManual = null;
             Manual = null;
-            Contents.Clear();
         }
     }
 }

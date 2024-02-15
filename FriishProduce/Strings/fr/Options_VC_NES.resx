@@ -121,10 +121,7 @@
     <value>Utiliser également la palette pour les images d'aperçu</value>
   </data>
   <data name="groupBox1.Text" xml:space="preserve">
-    <value>Écran</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Palette :</value>
+    <value>Palette</value>
   </data>
   <data name="PaletteList.Items1" xml:space="preserve">
     <value>Couleurs restaurées</value>

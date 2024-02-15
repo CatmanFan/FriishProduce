@@ -53,6 +53,12 @@
     <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="HtmlRenderer, Version=1.5.0.5, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlRenderer.Core.1.5.0.5\lib\net45\HtmlRenderer.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlRenderer.WinForms, Version=1.5.0.6, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlRenderer.WinForms.1.5.0.6\lib\net45\HtmlRenderer.WinForms.dll</HintPath>
+    </Reference>
     <Reference Include="libWiiSharp">
       <HintPath>.\libWiiSharp.dll</HintPath>
     </Reference>
@@ -284,6 +290,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\subforms\screen_smd.png" />
     <None Include="Resources\savebanner_flash.png" />
     <None Include="Resources\x.png" />
     <None Include="Resources\subforms\screen_nes.png" />

@@ -190,7 +190,7 @@
     <value>10, 74</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>89, 15</value>
+    <value>81, 13</value>
   </data>
   <data name="label2.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -238,7 +238,7 @@
     <value>10, 51</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 15</value>
+    <value>63, 13</value>
   </data>
   <data name="label3.TabIndex" type="System.Int32, mscorlib">
     <value>42</value>
@@ -265,7 +265,7 @@
     <value>10, 27</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 15</value>
+    <value>72, 13</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -322,7 +322,7 @@
     <value>62, 47</value>
   </data>
   <data name="baseID.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 15</value>
+    <value>54, 13</value>
   </data>
   <data name="baseID.TabIndex" type="System.Int32, mscorlib">
     <value>33</value>
@@ -379,7 +379,7 @@
     <value>10, 47</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 15</value>
+    <value>44, 13</value>
   </data>
   <data name="label5.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -409,7 +409,7 @@
     <value>10, 25</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 15</value>
+    <value>63, 13</value>
   </data>
   <data name="label4.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -445,7 +445,7 @@
     <value>13, 100</value>
   </data>
   <data name="OpenWAD.Size" type="System.Drawing.Size, System.Drawing">
-    <value>217, 20</value>
+    <value>195, 18</value>
   </data>
   <data name="OpenWAD.TabIndex" type="System.Int32, mscorlib">
     <value>34</value>
@@ -514,7 +514,7 @@
     <value>13, 73</value>
   </data>
   <data name="Base.Size" type="System.Drawing.Size, System.Drawing">
-    <value>336, 23</value>
+    <value>336, 21</value>
   </data>
   <data name="Base.TabIndex" type="System.Int32, mscorlib">
     <value>31</value>
@@ -748,7 +748,7 @@
     <value>20</value>
   </data>
   <data name="ChannelTitle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>160, 23</value>
+    <value>160, 20</value>
   </data>
   <data name="ChannelTitle.TabIndex" type="System.Int32, mscorlib">
     <value>21</value>
@@ -778,7 +778,7 @@
     <value>109, 83</value>
   </data>
   <data name="RegionFree.Size" type="System.Drawing.Size, System.Drawing">
-    <value>94, 20</value>
+    <value>90, 18</value>
   </data>
   <data name="RegionFree.TabIndex" type="System.Int32, mscorlib">
     <value>37</value>
@@ -946,7 +946,7 @@
     <value>271, 114</value>
   </data>
   <data name="Players.Size" type="System.Drawing.Size, System.Drawing">
-    <value>76, 23</value>
+    <value>76, 20</value>
   </data>
   <data name="Players.TabIndex" type="System.Int32, mscorlib">
     <value>43</value>
@@ -970,7 +970,7 @@
     <value>41, 114</value>
   </data>
   <data name="ReleaseYear.Size" type="System.Drawing.Size, System.Drawing">
-    <value>76, 23</value>
+    <value>76, 20</value>
   </data>
   <data name="ReleaseYear.TabIndex" type="System.Int32, mscorlib">
     <value>42</value>
@@ -1027,7 +1027,7 @@
     <value>38, 25</value>
   </data>
   <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 15</value>
+    <value>55, 13</value>
   </data>
   <data name="label8.TabIndex" type="System.Int32, mscorlib">
     <value>23</value>
@@ -1180,7 +1180,7 @@
     <value>14, 24</value>
   </data>
   <data name="imageintpl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>431, 23</value>
+    <value>431, 21</value>
   </data>
   <data name="imageintpl.TabIndex" type="System.Int32, mscorlib">
     <value>41</value>
@@ -1241,9 +1241,6 @@
   </metadata>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>860, 460</value>
-  </data>
-  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>NES</value>

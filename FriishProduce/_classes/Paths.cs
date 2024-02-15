@@ -12,6 +12,7 @@ namespace FriishProduce
         // Application paths
         public static readonly string Tools = Path.Combine(EnvironmentFolder, "resources\\tools\\");
         public static readonly string Languages = Path.Combine(EnvironmentFolder, "strings\\");
+        public static readonly string Out = Path.Combine(EnvironmentFolder, "out\\");
 
         // Extracted paths
         public static readonly string WAD = WorkingFolder + "wad\\";

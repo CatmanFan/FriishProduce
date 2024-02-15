@@ -18,6 +18,7 @@ namespace FriishProduce
             // *******
             if (!DesignMode)
             {
+                ResetOptions(false);
                 Language.AutoSetForm(this);
                 panel3.Height = 6 + Math.Max(x009.Height, pictureBox1.Height) + 7;
                 Height = EmuType == 3 ? 320 : 260;
@@ -26,7 +27,7 @@ namespace FriishProduce
 
         // ---------------------------------------------------------------------------------------------------------------
 
-        protected override void ResetOptions()
+        protected override void ResetOptions(bool NoDesign = true)
         {
             if (Settings == null || Settings.Count == 0)
             {
@@ -40,15 +41,18 @@ namespace FriishProduce
                 };
             }
 
-            // Default options
+            // Form control
             // *******
-            n64003.Enabled = n64001.Enabled = EmuType <= 1;
-            n64004.Visible = n64004.Enabled = EmuType == 3;
-            n64000.Checked = bool.Parse(Settings["brightness"]);
-            n64001.Checked = bool.Parse(Settings["crash"]);
-            n64002.Checked = bool.Parse(Settings["expansion"]);
-            n64003.Checked = bool.Parse(Settings["rom_autosize"]);
-            ROMCType.SelectedIndex = bool.Parse(Settings["romc_0"]) ? 0 : 1;
+            if (!NoDesign)
+            {
+                n64003.Enabled = n64001.Enabled = EmuType <= 1;
+                n64004.Visible = n64004.Enabled = EmuType == 3;
+                n64000.Checked = bool.Parse(Settings["brightness"]);
+                n64001.Checked = bool.Parse(Settings["crash"]);
+                n64002.Checked = bool.Parse(Settings["expansion"]);
+                n64003.Checked = bool.Parse(Settings["rom_autosize"]);
+                ROMCType.SelectedIndex = bool.Parse(Settings["romc_0"]) ? 0 : 1;
+            }
             // *******
         }
 

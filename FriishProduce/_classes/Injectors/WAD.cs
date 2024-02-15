@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace FriishProduce
 {
-    public class Injector
+    public class Creator
     {
         // -----------------------------------
         // Public variables
@@ -26,9 +26,9 @@ namespace FriishProduce
         public string[] SaveDataTitle { get; set; }
         public string Out { get; set; }
 
-        public Injector(Console c) { Console = c; }
+        public Creator(Console c) { Console = c; }
 
-        public void Create(WAD w, TitleImage tImg)
+        public void MakeWAD(WAD w, TitleImage tImg)
         {
             // Banner metadata
             w.ChangeChannelTitles(ChannelTitle);

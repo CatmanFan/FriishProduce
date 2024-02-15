@@ -127,10 +127,10 @@
     <value>Crashes fix</value>
   </data>
   <data name="n64002.Text" xml:space="preserve">
-    <value>Extended RAM patch</value>
+    <value>Extended RAM</value>
   </data>
   <data name="n64003.Text" xml:space="preserve">
-    <value>Allocate for ROM size</value>
+    <value>Allocate ROM size</value>
   </data>
   <data name="n64004.Text" xml:space="preserve">
     <value>ROM compression type</value>

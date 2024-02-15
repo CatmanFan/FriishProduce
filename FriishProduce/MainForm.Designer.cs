@@ -258,6 +258,7 @@ namespace FriishProduce
             // 
             this.SaveWAD.DefaultExt = "wad";
             this.SaveWAD.RestoreDirectory = true;
+            this.SaveWAD.SupportMultiDottedExtensions = true;
             // 
             // BrowseImage
             // 

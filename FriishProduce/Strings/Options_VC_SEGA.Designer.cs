@@ -61,7 +61,7 @@ namespace Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Configuración del emulador VC.
+        ///   Looks up a localized string similar to Brillo.
         /// </summary>
         public static string groupBox1_Text {
             get {

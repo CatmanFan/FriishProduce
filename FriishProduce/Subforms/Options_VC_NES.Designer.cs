@@ -30,11 +30,9 @@ namespace FriishProduce
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.PaletteList = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.PaletteList = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -42,53 +40,50 @@ namespace FriishProduce
             // 
             // Cancel
             // 
-            this.Cancel.Location = new System.Drawing.Point(322, 12);
+            this.Cancel.Location = new System.Drawing.Point(198, 12);
             // 
             // OK
             // 
-            this.OK.Location = new System.Drawing.Point(226, 12);
+            this.OK.Location = new System.Drawing.Point(102, 12);
             // 
             // panel1
             // 
-            this.panel1.Size = new System.Drawing.Size(424, 47);
+            this.panel1.Size = new System.Drawing.Size(299, 47);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.pictureBox1);
-            this.groupBox1.Controls.Add(this.PaletteList);
-            this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.checkBox1);
-            this.groupBox1.Location = new System.Drawing.Point(17, 13);
+            this.groupBox1.Controls.Add(this.PaletteList);
+            this.groupBox1.Location = new System.Drawing.Point(12, 10);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(390, 335);
+            this.groupBox1.Size = new System.Drawing.Size(275, 270);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Screen";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label2.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label2.Location = new System.Drawing.Point(93, 307);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(37, 13);
-            this.label2.TabIndex = 11;
-            this.label2.Text = "author";
             // 
             // pictureBox1
             // 
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox1.Image = global::FriishProduce.Properties.Resources.screen_nes;
             this.pictureBox1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.pictureBox1.Location = new System.Drawing.Point(61, 18);
+            this.pictureBox1.Location = new System.Drawing.Point(9, 17);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(268, 226);
+            this.pictureBox1.Size = new System.Drawing.Size(256, 192);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 10;
             this.pictureBox1.TabStop = false;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.checkBox1.Location = new System.Drawing.Point(9, 244);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(183, 17);
+            this.checkBox1.TabIndex = 12;
+            this.checkBox1.Text = "Also use palette for banner image";
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // PaletteList
             // 
@@ -105,36 +100,15 @@ namespace FriishProduce
             "FCEUX",
             "Wavebeam (FBX)",
             "Composite Direct (FBX)"});
-            this.PaletteList.Location = new System.Drawing.Point(96, 256);
+            this.PaletteList.Location = new System.Drawing.Point(9, 218);
             this.PaletteList.Name = "PaletteList";
-            this.PaletteList.Size = new System.Drawing.Size(266, 21);
+            this.PaletteList.Size = new System.Drawing.Size(256, 21);
             this.PaletteList.TabIndex = 9;
             this.PaletteList.SelectedIndexChanged += new System.EventHandler(this.PaletteChanged);
             // 
-            // label1
-            // 
-            this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label1.Location = new System.Drawing.Point(6, 260);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(88, 18);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Palette:";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.checkBox1.Location = new System.Drawing.Point(96, 283);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(183, 17);
-            this.checkBox1.TabIndex = 12;
-            this.checkBox1.Text = "Also use palette for banner image";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
             // Options_VC_NES
             // 
-            this.ClientSize = new System.Drawing.Size(424, 412);
+            this.ClientSize = new System.Drawing.Size(299, 342);
             this.Controls.Add(this.groupBox1);
             this.Name = "Options_VC_NES";
             this.Controls.SetChildIndex(this.groupBox1, 0);
@@ -149,10 +123,8 @@ namespace FriishProduce
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ComboBox PaletteList;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox checkBox1;
     }
 }

@@ -436,7 +436,7 @@ namespace FriishProduce
             // 
             // InjectorForm
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             resources.ApplyResources(this, "$this");
             this.Controls.Add(this.groupBox8);

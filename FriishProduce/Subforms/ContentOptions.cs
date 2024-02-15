@@ -19,12 +19,20 @@ namespace FriishProduce
 
         public ContentOptions()
         {
+            ResetOptions();
             InitializeComponent();
+
+            // Cosmetic
+            // *******
+            if (!DesignMode)
+            {
+                // Language.AutoSetForm(this);
+            }
         }
 
         // ---------------------------------------------------------------------------------------------------------------
 
-        protected virtual void ResetOptions()
+        protected virtual void ResetOptions(bool NoDesign = true)
         {
             if (Settings == null || Settings.Count == 0)
             {
@@ -33,17 +41,13 @@ namespace FriishProduce
                 };
             }
 
-            // Default options
+            // Form control
             // *******
-            // Code logic in derived Form
-            // *******
-
-            // Cosmetic
-            // *******
-            if (!DesignMode)
+            if (!NoDesign)
             {
-                // Language.AutoSetForm(this);
+                // Code logic in derived Form
             }
+            // *******
         }
 
         protected virtual bool SaveOptions()

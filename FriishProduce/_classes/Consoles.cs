@@ -16,11 +16,11 @@ namespace FriishProduce
         PCE,
         NeoGeo,
         MSX,
+        C64,
         Flash
 
         /* TO-DO:
          * PCECD,
-         * C64,
          * GB,
          * GBC,
          * GBA,

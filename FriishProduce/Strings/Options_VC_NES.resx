@@ -121,10 +121,7 @@
     <value>Also use palette for banner image</value>
   </data>
   <data name="groupBox1.Text" xml:space="preserve">
-    <value>Screen</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Palette:</value>
+    <value>Palette</value>
   </data>
   <data name="PaletteList.Items1" xml:space="preserve">
     <value>Restored</value>

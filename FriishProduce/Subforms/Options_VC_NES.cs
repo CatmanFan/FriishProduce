@@ -11,21 +11,26 @@ namespace FriishProduce
 {
     public partial class Options_VC_NES : ContentOptions
     {
+        readonly ToolTip t = new ToolTip();
+
         public Options_VC_NES() : base()
         {
+            ResetOptions();
             InitializeComponent();
 
             // Cosmetic
             // *******
             if (!DesignMode)
             {
+                ResetOptions(false);
                 Language.AutoSetForm(this);
+                t.ToolTipTitle = Language.Get("Author").Replace("{0}", "").Trim();
             }
         }
 
         // ---------------------------------------------------------------------------------------------------------------
 
-        protected override void ResetOptions()
+        protected override void ResetOptions(bool NoDesign = true)
         {
             if (Settings == null || Settings.Count == 0)
             {
@@ -36,10 +41,13 @@ namespace FriishProduce
                 };
             }
 
-            // Default options
+            // Form control
             // *******
-            PaletteList.SelectedIndex = int.Parse(Settings["palette"]);
-            checkBox1.Checked = Settings["use_tImg"] == "0";
+            if (!NoDesign)
+            {
+                PaletteList.SelectedIndex = int.Parse(Settings["palette"]);
+                checkBox1.Checked = Settings["use_tImg"] == "0";
+            }
             // *******
         }
 
@@ -62,33 +70,33 @@ namespace FriishProduce
             try { if (PaletteList.SelectedIndex > 0) pictureBox1.Image = SwapColors(Properties.Resources.screen_nes, Palettes[0], Palettes[PaletteList.SelectedIndex]); }
             catch { }
 
+            string author = "Nintendo";
             switch (PaletteList.SelectedIndex)
             {
-                case 0:
-                    label2.Text = string.Format(Language.Get("Author"), "Nintendo");
-                    break;
                 case 1:
                 case 2:
-                    label2.Text = string.Format(Language.Get("Author"), "Nintendo / SuperrSonic");
+                    author = "Nintendo / SuperrSonic";
                     break;
                 case 3:
-                    label2.Text = string.Format(Language.Get("Author"), "Nintendo / FirebrandX");
+                    author = "Nintendo / FirebrandX";
                     break;
                 case 4:
-                    label2.Text = string.Format(Language.Get("Author"), "Nintendo / N-Mario");
+                    author = "Nintendo / N-Mario";
                     break;
                 case 5:
                 case 6:
-                    label2.Text = string.Format(Language.Get("Author"), "Nestopia");
+                    author = "Nestopia";
                     break;
                 case 7:
-                    label2.Text = string.Format(Language.Get("Author"), "FCEUX");
+                    author = "FCEUX";
                     break;
                 case 8:
                 case 9:
-                    label2.Text = string.Format(Language.Get("Author"), "FirebrandX");
+                    author = "FirebrandX";
                     break;
             }
+
+            t.SetToolTip(PaletteList, author);
         }
 
         #region Palettes handler

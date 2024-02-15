@@ -216,6 +216,18 @@ namespace FriishProduce
         /// <returns>libWiiSharp WAD variable with loaded WAD data</returns>
         public WAD Load(int i)
         {
+            Ticket t = new Ticket();
+            string tid_Hex = BitConverter.ToString(Encoding.Default.GetBytes(List[i].TitleID)).Replace("-", "");
+            t.SetTitleKey("00010001" + tid_Hex);
+            var y = Convert.ToInt64("00010001" + tid_Hex, 16);
+
+            t.TitleID = (ulong)y;
+            t.TicketID = 471578341952616;
+            t.CommonKeyIndex = GetRegionCode(i) == 'Q' || GetRegionCode(i) == 'T' ? CommonKeyType.Korean : CommonKeyType.Standard;
+            t.FakeSign = false;
+
+            string x = t.GetUpperTitleID();
+
             string Region = null;
 
             switch (GetRegionCode(i))
@@ -249,6 +261,9 @@ namespace FriishProduce
                                : Console == Console.N64 ? " (N64)"
                                : Console == Console.SMS ? " (SMS)"
                                : Console == Console.SMDGEN ? " (SMD)"
+                               : Console == Console.PCE ? " (TGX)"
+                               : Console == Console.NeoGeo ? " (NG)"
+                               : Console == Console.C64 ? " (C64)"
                                : null;
 
             if (Region == null || ConsoleType == null) throw new ArgumentException();

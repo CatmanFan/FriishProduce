@@ -70,20 +70,11 @@ namespace Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Screen.
+        ///   Looks up a localized string similar to Palette.
         /// </summary>
         public static string groupBox1_Text {
             get {
                 return ResourceManager.GetString("groupBox1.Text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Palette:.
-        /// </summary>
-        public static string label1_Text {
-            get {
-                return ResourceManager.GetString("label1.Text", resourceCulture);
             }
         }
         

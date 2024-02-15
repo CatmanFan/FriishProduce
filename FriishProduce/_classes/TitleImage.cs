@@ -478,15 +478,13 @@ namespace FriishProduce
                 using (Image sIconBegin = Image.FromFile(ImagesPath + "01.png"))
                 using (Graphics g = Graphics.FromImage(sIconBegin))
                 {
-                    g.DrawImage(SaveIconPlaceholder, 0, 0, sIconBegin.Width, sIconBegin.Height);
+                    g.DrawImage(SaveIconPlaceholder_SEGA, 0, 0, sIconBegin.Width, sIconBegin.Height);
 
                     g.InterpolationMode = InterpolationMode.Bilinear;
                     g.PixelOffsetMode = PixelOffsetMode.Half;
                     g.SmoothingMode = SmoothingMode.HighSpeed;
 
                     g.DrawImage(SaveIconPic, SaveIconS_xywh[0], SaveIconS_xywh[1], SaveIconS_xywh[2], SaveIconS_xywh[3]);
-                    g.Dispose();
-                    g.DrawImage(SaveIconPlaceholder, new Point(0, 0));
 
                     sIconBegin.Save(ImagesPath + "01.new.png");
 
@@ -530,7 +528,7 @@ namespace FriishProduce
                     img2.Dispose();
                 }
             }
-            catch
+            catch (Exception ex)
             {
                 throw new Exception(Language.Get("Error002"));
             }

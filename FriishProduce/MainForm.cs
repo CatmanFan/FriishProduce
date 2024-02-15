@@ -187,7 +187,7 @@ namespace FriishProduce
 
             tabControl.Visible = true;
 
-            InjectorForm Tab = new InjectorForm(console, null) { Parent = this };
+            InjectorForm Tab = new InjectorForm(console) { Parent = this };
             Tab.FormClosed += TabChanged;
             Tab.ExportCheck += ExportCheck;
             tabControl.TabPages.Add(Tab);
