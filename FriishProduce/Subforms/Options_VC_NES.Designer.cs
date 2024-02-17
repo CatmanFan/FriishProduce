@@ -38,13 +38,9 @@ namespace FriishProduce
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // Cancel
-            // 
-            this.Cancel.Location = new System.Drawing.Point(198, 12);
-            // 
             // OK
             // 
-            this.OK.Location = new System.Drawing.Point(102, 12);
+            this.OK.Location = new System.Drawing.Point(197, 12);
             // 
             // panel1
             // 

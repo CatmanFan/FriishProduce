@@ -32,7 +32,6 @@ namespace FriishProduce
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ContentOptions));
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.Cancel = new System.Windows.Forms.Button();
             this.OK = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -48,17 +47,9 @@ namespace FriishProduce
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel1.Controls.Add(this.Cancel);
             this.panel1.Controls.Add(this.OK);
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
-            // 
-            // Cancel
-            // 
-            this.Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            resources.ApplyResources(this.Cancel, "Cancel");
-            this.Cancel.Name = "Cancel";
-            this.Cancel.UseVisualStyleBackColor = true;
             // 
             // OK
             // 
@@ -71,10 +62,10 @@ namespace FriishProduce
             // 
             this.AcceptButton = this.OK;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.CancelButton = this.Cancel;
             resources.ApplyResources(this, "$this");
+            this.ControlBox = false;
             this.Controls.Add(this.panel2);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -93,7 +84,6 @@ namespace FriishProduce
         #endregion
 
         private System.Windows.Forms.Panel panel2;
-        protected System.Windows.Forms.Button Cancel;
         protected System.Windows.Forms.Button OK;
         protected System.Windows.Forms.Panel panel1;
     }

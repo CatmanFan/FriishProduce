@@ -46,13 +46,9 @@ namespace FriishProduce
             this.n64004.SuspendLayout();
             this.SuspendLayout();
             // 
-            // Cancel
-            // 
-            this.Cancel.Location = new System.Drawing.Point(357, 12);
-            // 
             // OK
             // 
-            this.OK.Location = new System.Drawing.Point(261, 12);
+            this.OK.Location = new System.Drawing.Point(357, 12);
             // 
             // panel1
             // 

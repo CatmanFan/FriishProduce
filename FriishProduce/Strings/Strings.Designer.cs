@@ -216,17 +216,6 @@ namespace Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Not a valid emanual contents folder.
-        ///
-        ///Injection will continue as intended..
-        /// </summary>
-        public static string Error007 {
-            get {
-                return ResourceManager.GetString("Error007", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to File.
         /// </summary>
         public static string File {
@@ -455,6 +444,17 @@ namespace Strings {
         public static string Message005 {
             get {
                 return ResourceManager.GetString("Message005", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not a valid emanual contents folder.
+        ///
+        ///Please make sure the directory you selected contains a subfolder &quot;emanual&quot;, including the extracted contents of a manual .arc from a VC WAD..
+        /// </summary>
+        public static string Message006 {
+            get {
+                return ResourceManager.GetString("Message006", resourceCulture);
             }
         }
         

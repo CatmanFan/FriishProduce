@@ -15,6 +15,7 @@ namespace FriishProduce
 
         // Extracted paths
         public static readonly string WAD = WorkingFolder + "wad\\";
+        public static readonly string Manual = WorkingFolder + "manual\\";
         public static readonly string DataCCF = WorkingFolder + "data_ccf\\";
         public static readonly string MiscCCF = DataCCF + "misc_ccf\\";
 

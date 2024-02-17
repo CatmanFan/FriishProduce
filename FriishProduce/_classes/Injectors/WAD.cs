@@ -19,7 +19,7 @@ namespace FriishProduce
         private Console Console { get; set; }
 
         public string TitleID { get; set; }
-        public string ChannelTitle { get; set; }
+        public string[] ChannelTitles { get; set; }
         public string BannerTitle { get; set; }
         public int BannerYear { get; set; }
         public int BannerPlayers { get; set; }
@@ -31,7 +31,7 @@ namespace FriishProduce
         public void MakeWAD(WAD w, TitleImage tImg)
         {
             // Banner metadata
-            w.ChangeChannelTitles(ChannelTitle);
+            w.ChangeChannelTitles(ChannelTitles);
             Banner.EditBanner(w, Console, w.Region, BannerTitle, BannerYear, BannerPlayers);
             if (tImg.VCPic != null) tImg.ReplaceBanner(w);
 

@@ -79,7 +79,7 @@ namespace Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ROM information.
+        ///   Looks up a localized string similar to Current information.
         /// </summary>
         public static string groupBox1_Text {
             get {
@@ -142,7 +142,7 @@ namespace Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Current ROM: .
+        ///   Looks up a localized string similar to ROM name: {0}.
         /// </summary>
         public static string label1_Text {
             get {
@@ -160,7 +160,16 @@ namespace Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Software name:.
+        ///   Looks up a localized string similar to Custom manual.
+        /// </summary>
+        public static string label11_Text {
+            get {
+                return ResourceManager.GetString("label11.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Software name: {0}.
         /// </summary>
         public static string label2_Text {
             get {
@@ -169,7 +178,7 @@ namespace Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Serial code: .
+        ///   Looks up a localized string similar to Serial code: {0}.
         /// </summary>
         public static string label3_Text {
             get {

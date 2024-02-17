@@ -30,6 +30,8 @@ namespace FriishProduce
         // Public variables
         // -----------------------------------
         protected string                        ROM         { get; set; }
+        protected string                        Manual      { get; set; }
+        protected LibRetroDB                    LibRetro    { get; set; }
         protected Database                      Database    { get; set; }
         protected IDictionary<string, string>   CurrentBase { get; set; }
         protected TitleImage                    tImg        { get; set; }
@@ -58,8 +60,10 @@ namespace FriishProduce
 
             // Change title text to untitled string
             Untitled = string.Format(Language.Get("Untitled"), Language.Get($"Platform_{Enum.GetName(typeof(Console), Console)}"));
-            Text = string.IsNullOrWhiteSpace(Creator.ChannelTitle) ? Untitled : Creator.ChannelTitle;
-            SoftwareName.Location = new Point(label2.Location.X + label2.Width - 4, label2.Location.Y);
+            Text = string.IsNullOrWhiteSpace(ChannelTitle.Text) ? Untitled : ChannelTitle.Text;
+
+            SetROMDataText();
+
             baseName.Location = new Point(label4.Location.X + label4.Width - 4, label4.Location.Y);
             baseID.Location = new Point(label5.Location.X + label5.Width - 4, label5.Location.Y);
 
@@ -138,6 +142,8 @@ namespace FriishProduce
                     break;
             }
 
+            LibRetro = Parent.LibRetro;
+
             // Cosmetic
             // ********
             if (Console == Console.SMS || Console == Console.SMDGEN) SaveIcon_Panel.BackgroundImage = Properties.Resources.SaveIconPlaceholder_SEGA;
@@ -160,7 +166,6 @@ namespace FriishProduce
             // ----------------------------
 
             Creator.TitleID = TitleID.Text;
-            Creator.ChannelTitle = ChannelTitle.Text;
             Creator.BannerTitle = BannerTitle.Text;
             Creator.BannerYear = (int)ReleaseYear.Value;
             Creator.BannerPlayers = (int)Players.Value;
@@ -171,14 +176,32 @@ namespace FriishProduce
 
             button2.Enabled = tImg != null && !string.IsNullOrEmpty(Creator.BannerTitle);
 
+            SetROMDataText();
+
             ReadyToExport =    !string.IsNullOrEmpty(Creator.TitleID) && Creator.TitleID.Length == 4
-                            && !string.IsNullOrWhiteSpace(Creator.ChannelTitle)
+                            && !string.IsNullOrWhiteSpace(ChannelTitle.Text)
                             && !string.IsNullOrEmpty(Creator.BannerTitle)
                             && !string.IsNullOrEmpty(Creator.SaveDataTitle[0])
                             && (tImg != null)
                             && ROM != null;
             Tag = "dirty";
             ExportCheck.Invoke(this, EventArgs.Empty);
+        }
+
+        protected virtual void SetROMDataText()
+        {
+            label1.Text = string.Format(Language.Get(label1.Name, this), ROM != null ? Path.GetFileName(ROM) : Language.Get("Unknown"));
+
+            if (LibRetro == null)
+            {
+                label2.Text = string.Format(Language.Get(label2.Name, this), Language.Get("Unknown"));
+                label3.Text = string.Format(Language.Get(label3.Name, this), Language.Get("Unknown"));
+            }
+            else
+            {
+                label2.Text = string.Format(Language.Get(label2.Name, this), LibRetro.GetCleanTitle() ?? Language.Get("Unknown"));
+                label3.Text = string.Format(Language.Get(label3.Name, this), LibRetro.GetSerial() ?? Language.Get("Unknown"));
+            }
         }
 
         private void RandomTID() => TitleID.Text = Creator.TitleID = TIDCode != null ? TIDCode + GenerateTitleID().Substring(0, 3) : GenerateTitleID();
@@ -206,6 +229,12 @@ namespace FriishProduce
             {
                 Text = string.IsNullOrWhiteSpace(ChannelTitle.Text) ? Untitled : ChannelTitle.Text;
                 if (ChannelTitle.TextLength <= SaveDataTitle.MaxLength) SaveDataTitle.Text = ChannelTitle.Text;
+
+                if (!ChannelTitle_Locale.Checked)
+                {
+                    ChannelTitle_Locale.Enabled = !string.IsNullOrWhiteSpace(ChannelTitle.Text);
+                    Creator.ChannelTitles = new string[8] { ChannelTitle.Text, ChannelTitle.Text, ChannelTitle.Text, ChannelTitle.Text, ChannelTitle.Text, ChannelTitle.Text, ChannelTitle.Text, ChannelTitle.Text };
+                }
             }
 
             var currentSender = sender as TextBox;
@@ -321,6 +350,40 @@ namespace FriishProduce
             return false;
         }
 
+        public void LoadManual(string path)
+        {
+            if (path != null)
+            {
+                // Check if is a valid emanual contents folder
+                // ****************
+                string folder = null;
+                if (Directory.Exists(Path.Combine(path, "emanual")))
+                    folder = Path.Combine(path, "emanual");
+                else if (Directory.Exists(Path.Combine(path, "html")))
+                    folder = Path.Combine(path, "html");
+
+                int validFiles = 0;
+                if (folder != null)
+                    foreach (var item in Directory.EnumerateFiles(folder))
+                        {
+                            if ((Path.GetFileNameWithoutExtension(item).StartsWith("startup") && Path.GetExtension(item) == ".html")
+                             || Path.GetFileName(item) == "standard.css"
+                             || Path.GetFileName(item) == "contents.css"
+                             || Path.GetFileName(item) == "vsscript.css") validFiles++;
+                        }
+
+                if (validFiles < 2)
+                {
+                    MessageBox.Show(Language.Get("Message006"), Language.Get("_AppTitle"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    Manual = null;
+                    return;
+                }
+            }
+
+            Manual = path;
+            StatusImage2.Image = Manual != null ? Properties.Resources.tick : Properties.Resources.cross;
+        }
+
         public void LoadImage()
         {
             if (tImg != null) LoadImage(tImg.Source);
@@ -396,17 +459,6 @@ namespace FriishProduce
             ROM = ROMpath;
             ROMLoaded = true;
 
-            // Set ROM name & serial text
-            label1.Text = Language.Get("label1", this);
-            label1.Text += Path.GetFileName(ROM);
-
-            if (!UseLibRetro)
-            {
-                SoftwareName.Text = Language.Get("Unknown");
-                SoftwareName.Font = new Font(SoftwareName.Font, FontStyle.Regular);
-                label3.Text = Language.Get("label3", this) + Language.Get("Unknown");
-            }
-
             Random.Visible =
             groupBox1.Enabled =
             groupBox2.Enabled =
@@ -416,9 +468,8 @@ namespace FriishProduce
             groupBox6.Enabled =
             groupBox8.Enabled = true;
 
-            UpdateBaseForm();
-
             RandomTID();
+            UpdateBaseForm();
             CheckExport();
 
             Parent.tabControl.Visible = true;
@@ -430,7 +481,6 @@ namespace FriishProduce
         {
             try
             {
-                var LibRetro = Parent.LibRetro;
                 LibRetro = new LibRetroDB { SoftwarePath = ROM };
 
                 bool Retrieved = LibRetro.GetData(Console);
@@ -443,7 +493,7 @@ namespace FriishProduce
                     if (LibRetro.GetCleanTitle() != null)
                     {
                         var text = LibRetro.GetCleanTitle().Replace("\r", "").Split('\n');
-                        if (text[0].Length <= ChannelTitle.MaxLength) ChannelTitle.Text = Creator.ChannelTitle = text[0];
+                        if (text[0].Length <= ChannelTitle.MaxLength) { ChannelTitle_Locale.Checked = false; ChannelTitle.Text = text[0]; }
                         if (ChannelTitle.TextLength <= SaveDataTitle.MaxLength) SaveDataTitle.Text = ChannelTitle.Text;
                     }
 
@@ -455,16 +505,13 @@ namespace FriishProduce
                     Players.Value     = Creator.BannerPlayers = !string.IsNullOrEmpty(LibRetro.GetPlayers()) ? int.Parse(LibRetro.GetPlayers()) : Creator.BannerPlayers;
                 }
 
-                // Set ROM name & serial text
-                SoftwareName.Text = LibRetro.GetTitle() ?? Language.Get("Unknown");
-                SoftwareName.Font = SoftwareName.Text != Language.Get("Unknown") ? new Font(SoftwareName.Font, FontStyle.Bold) : new Font(SoftwareName.Font, FontStyle.Regular);
-                label3.Text = Language.Get("label3", this);
-                label3.Text += LibRetro.GetSerial() ?? Language.Get("Unknown");
+                if (Retrieved) CheckExport();
 
                 // Show message if partially failed to retrieve data
                 if (Retrieved && (LibRetro.GetTitle() == null || LibRetro.GetPlayers() == null || LibRetro.GetYear() == null || LibRetro.GetImgURL() == null))
                     MessageBox.Show(Language.Get("Message004"), Parent.Text);
                 else if (!Retrieved) System.Media.SystemSounds.Beep.Play();
+
             }
             catch (Exception ex)
             {
@@ -575,8 +622,8 @@ namespace FriishProduce
 
             // Set path to manual folder (if it exists) and load WAD
             // *******
-            VC.Settings = CO.Settings;
-            VC.ManualPath = null;
+            try { VC.Settings = CO.Settings; } catch { VC.Settings = new Dictionary<string, string> { { "N/A", "N/A" } }; }
+            VC.ManualPath = Manual;
             if (WADPath != null) VC.WAD = WAD.Load(WADPath);
             else for (int x = 0; x < Database.List.Length; x++)
                 if (Database.List[x].TitleID.ToUpper() == baseID.Text.ToUpper()) VC.WAD = Database.Load(x);
@@ -855,7 +902,7 @@ namespace FriishProduce
             if (SaveDataTitle.Multiline == isSingleLine)
             {
                 SaveDataTitle.Multiline = !isSingleLine;
-                SaveDataTitle.Location = SaveDataTitle.Multiline ? new Point(SaveDataTitle.Location.X, 26) : new Point(SaveDataTitle.Location.X, 26 + 7);
+                SaveDataTitle.Location = SaveDataTitle.Multiline ? new Point(SaveDataTitle.Location.X, 25) : new Point(SaveDataTitle.Location.X, 34);
                 SaveDataTitle.Clear();
                 goto End;
             }
@@ -911,5 +958,39 @@ namespace FriishProduce
             }
         }
         #endregion
+
+        private void ChannelTitle_Locale_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ChannelTitle_Locale.Checked)
+            {
+                ChannelTitles titles = new ChannelTitles(ChannelTitle.Text);
+                if (titles.ShowDialog() == DialogResult.OK)
+                {
+                    Creator.ChannelTitles = new string[8]
+                        {
+                        titles.Japanese.Text,
+                        titles.English.Text,
+                        titles.German.Text,
+                        titles.French.Text,
+                        titles.Spanish.Text,
+                        titles.Italian.Text,
+                        titles.Dutch.Text,
+                        titles.Korean.Text,
+                        };
+                    ChannelTitle.Text = Language.Current.TwoLetterISOLanguageName == "ja" ? titles.Japanese.Text
+                                          : Language.Current.TwoLetterISOLanguageName == "ko" ? titles.Korean.Text
+                                          : Language.Current.TwoLetterISOLanguageName == "nl" ? titles.Dutch.Text
+                                          : Language.Current.TwoLetterISOLanguageName == "es" ? titles.Spanish.Text
+                                          : Language.Current.TwoLetterISOLanguageName == "it" ? titles.Italian.Text
+                                          : Language.Current.TwoLetterISOLanguageName == "fr" ? titles.French.Text
+                                          : Language.Current.TwoLetterISOLanguageName == "de" ? titles.English.Text
+                                          : titles.English.Text;
+                }
+            }
+
+            else Creator.ChannelTitles = new string[8] { ChannelTitle.Text, ChannelTitle.Text, ChannelTitle.Text, ChannelTitle.Text, ChannelTitle.Text, ChannelTitle.Text, ChannelTitle.Text, ChannelTitle.Text };
+
+            ChannelTitle.Enabled = !ChannelTitle_Locale.Checked;
+        }
     }
 }

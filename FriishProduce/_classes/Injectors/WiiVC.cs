@@ -10,11 +10,28 @@ namespace FriishProduce
     public abstract class InjectorWiiVC
     {
         public WAD WAD { get; set; }
-
-        protected byte[] ROM { get; private set; }
-
         public int EmuType { get; set; }
         public IDictionary<string, string> Settings { get; set; }
+
+        private string _rom;
+        private string ROMPath
+        {
+            get => _rom;
+
+            set
+            {
+                // -----------------------
+                // Check if raw ROM exists
+                // -----------------------
+                if (!File.Exists(value))
+                    throw new FileNotFoundException(new FileNotFoundException().Message, value);
+
+                _rom = value;
+                ROM = File.ReadAllBytes(_rom);
+            }
+        }
+
+        protected byte[] ROM { get; private set; }
 
         public string ManualPath { get; set; }
         protected string OrigManual { get; set; }
@@ -100,8 +117,6 @@ namespace FriishProduce
 
             else
             {
-                if (ManualPath == null) return;
-
                 /* For reference: copied from "vcromclaim": https://github.com/JanErikGunnar/vcromclaim/blob/master/wiimetadata.py
 
                 if u8arc.findfile('emanual.arc'):
@@ -149,35 +164,30 @@ namespace FriishProduce
                         }
                 }
 
-                // Check if is a valid emanual contents folder
-                // ****************
-                int validFiles = 0;
-                if (Directory.Exists(Path.Combine(ManualPath, "emanual")))
-                    foreach (var item in Directory.EnumerateFiles(Path.Combine(ManualPath, "emanual")))
-                    {
-                        if ((Path.GetFileNameWithoutExtension(item).StartsWith("startup") && Path.GetExtension(item) == ".html")
-                         || Path.GetFileName(item) == "standard.css") validFiles++;
-                    }
-
-                if (validFiles < 2)
-                {
-                    System.Windows.Forms.MessageBox.Show(Language.Get("Error007"));
-                    return;
-                }
-
                 // Replace
                 // ****************
                 U8 ManualArc = U8.Load(Manual);
-                ManualArc.CreateFromDirectory(Path.Combine(ManualPath));
-                Manual = ManualArc.ToByteArray();
-                ManualArc.Dispose();
+
+                string newFolder = Path.Combine(Paths.Manual, Path.GetFileNameWithoutExtension(OrigManual).Replace("htmlc", "html"));
+                string oldFolder = Directory.Exists(Path.Combine(ManualPath, "emanual")) ? Path.Combine(ManualPath, "emanual")
+                                 : Directory.Exists(Path.Combine(ManualPath, "man")) ? Path.Combine(ManualPath, "man")
+                                 : Path.Combine(ManualPath, "html");
+
+                Directory.CreateDirectory(newFolder);
+                foreach (string dir in Directory.GetDirectories(oldFolder, "*", SearchOption.AllDirectories))
+                    Directory.CreateDirectory(dir.Replace(oldFolder, newFolder));
+                foreach (string path in Directory.GetFiles(oldFolder, "*.*", SearchOption.AllDirectories))
+                    File.Copy(path, path.Replace(oldFolder, newFolder), true);
+
+                ManualArc.CreateFromDirectory(Paths.Manual);
 
                 if (File.Exists(OrigManual))
-                    File.WriteAllBytes(OrigManual, Manual);
+                    File.WriteAllBytes(OrigManual, ManualArc.ToByteArray());
                 else
-                    MainContent.ReplaceFile(MainContent.GetNodeIndex(OrigManual), Manual);
+                    MainContent.ReplaceFile(MainContent.GetNodeIndex(OrigManual), ManualArc.ToByteArray());
 
-                ManualPath = null;
+                ManualArc.Dispose();
+                Directory.Delete(Paths.Manual, true);
             }
         }
 
@@ -230,13 +240,7 @@ namespace FriishProduce
 
         public WAD Inject(string ROM, string[] SaveDataTitle, TitleImage Img)
         {
-            // -----------------------
-            // Check if raw ROM exists
-            // -----------------------
-            if (!File.Exists(ROM))
-                throw new FileNotFoundException(new FileNotFoundException().Message, ROM);
-
-            this.ROM = File.ReadAllBytes(ROM);
+            ROMPath = ROM;
 
             Load();
             ReplaceROM();

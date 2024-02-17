@@ -59,9 +59,6 @@
     <Reference Include="HtmlRenderer.WinForms, Version=1.5.0.6, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\HtmlRenderer.WinForms.1.5.0.6\lib\net45\HtmlRenderer.WinForms.dll</HintPath>
     </Reference>
-    <Reference Include="libWiiSharp">
-      <HintPath>.\libWiiSharp.dll</HintPath>
-    </Reference>
     <Reference Include="MdiTabControl">
       <HintPath>.\MdiTabControl.dll</HintPath>
     </Reference>
@@ -73,7 +70,17 @@
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
     </Reference>
     <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Compression.4.3.0\lib\net46\System.IO.Compression.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.IO.Compression.ZipFile, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Compression.ZipFile.4.3.0\lib\net46\System.IO.Compression.ZipFile.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.IO.Hashing, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.IO.Hashing.8.0.0\lib\net462\System.IO.Hashing.dll</HintPath>
     </Reference>
@@ -119,6 +126,26 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
+    <Compile Include="packages\libWiiSharp\BNS.cs" />
+    <Compile Include="packages\libWiiSharp\Brlan.cs" />
+    <Compile Include="packages\libWiiSharp\Brlyt.cs" />
+    <Compile Include="packages\libWiiSharp\CertificateChain.cs" />
+    <Compile Include="packages\libWiiSharp\CommonKey.cs" />
+    <Compile Include="packages\libWiiSharp\ContentIndices.cs" />
+    <Compile Include="packages\libWiiSharp\HbcTransmitter.cs" />
+    <Compile Include="packages\libWiiSharp\Headers.cs" />
+    <Compile Include="packages\libWiiSharp\HexView.cs" />
+    <Compile Include="packages\libWiiSharp\IosPatcher.cs" />
+    <Compile Include="packages\libWiiSharp\Lz77.cs" />
+    <Compile Include="packages\libWiiSharp\MessageEventArgs.cs" />
+    <Compile Include="packages\libWiiSharp\NusClient.cs" />
+    <Compile Include="packages\libWiiSharp\Shared.cs" />
+    <Compile Include="packages\libWiiSharp\Ticket.cs" />
+    <Compile Include="packages\libWiiSharp\TMD.cs" />
+    <Compile Include="packages\libWiiSharp\TPL.cs" />
+    <Compile Include="packages\libWiiSharp\U8.cs" />
+    <Compile Include="packages\libWiiSharp\WAD.cs" />
+    <Compile Include="packages\libWiiSharp\Wave.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -163,6 +190,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Strings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Subforms\ChannelTitles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Subforms\ChannelTitles.Designer.cs">
+      <DependentUpon>ChannelTitles.cs</DependentUpon>
     </Compile>
     <Compile Include="Subforms\ContentOptions.cs">
       <SubType>Form</SubType>
@@ -252,6 +285,9 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Strings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Subforms\ChannelTitles.resx">
+      <DependentUpon>ChannelTitles.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Subforms\ContentOptions.resx">
       <DependentUpon>ContentOptions.cs</DependentUpon>
     </EmbeddedResource>
@@ -292,6 +328,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\icons\tick.png" />
+    <None Include="Resources\icons\cross.png" />
     <None Include="Resources\icons\locale.png" />
     <None Include="Resources\subforms\screen_smd.png" />
     <None Include="Resources\savebanner_flash.png" />

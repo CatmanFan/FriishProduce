@@ -165,11 +165,6 @@ Injection will continue as intended.</value>
   <data name="Error006" xml:space="preserve">
     <value>Failed to export to WAD.</value>
   </data>
-  <data name="Error007" xml:space="preserve">
-    <value>Not a valid emanual contents folder.
-
-Injection will continue as intended.</value>
-  </data>
   <data name="File" xml:space="preserve">
     <value>File</value>
   </data>
@@ -257,6 +252,11 @@ This could be for any of the following reasons:
 - The currently-selected console does not match that of the WAD.
 - The WAD is not yet available in the database.
 - The WAD is already modified (i.e. injected or converted to a forwarder).</value>
+  </data>
+  <data name="Message006" xml:space="preserve">
+    <value>Not a valid emanual contents folder.
+
+Please make sure the directory you selected contains a subfolder "emanual", including the extracted contents of a manual .arc from a VC WAD.</value>
   </data>
   <data name="PlatformGroup_0" xml:space="preserve">
     <value>Nintendo</value>

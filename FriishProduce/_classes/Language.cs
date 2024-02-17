@@ -250,6 +250,8 @@ namespace FriishProduce
             for (int i = 0; i < Sources.Count; i++)
                 if (Sources[i] == source) index = i;
 
+            if (index == -1) return "undefined";
+
             foreach (var item in Current_Dictionary[index])
                 if (item.Key == name) return item.Value;
 

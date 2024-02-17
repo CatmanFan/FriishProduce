@@ -124,7 +124,7 @@
     <value>Show banner preview</value>
   </data>
   <data name="groupBox1.Text" xml:space="preserve">
-    <value>ROM information</value>
+    <value>Current information</value>
   </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>Base information</value>
@@ -145,16 +145,19 @@
     <value>Image interpolation</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
-    <value>Current ROM: </value>
+    <value>ROM name: {0}</value>
   </data>
   <data name="label10.Text" xml:space="preserve">
     <value>Players:</value>
   </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>Custom manual</value>
+  </data>
   <data name="label2.Text" xml:space="preserve">
-    <value>Software name:</value>
+    <value>Software name: {0}</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
-    <value>Serial code: </value>
+    <value>Serial code: {0}</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
     <value>Base name: </value>

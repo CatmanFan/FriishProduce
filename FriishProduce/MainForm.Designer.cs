@@ -64,6 +64,7 @@ namespace FriishProduce
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.CloseTab = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl = new MdiTabControl.TabControl();
+            this.BrowseManual = new System.Windows.Forms.FolderBrowserDialog();
             this.TabContextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -245,6 +246,7 @@ namespace FriishProduce
             this.OpenManual.Name = "OpenManual";
             this.OpenManual.SmallImage = global::FriishProduce.Properties.Resources.book;
             resources.ApplyResources(this.OpenManual, "OpenManual");
+            this.OpenManual.Click += new System.EventHandler(this.OpenManual_Click);
             // 
             // ribbonPanel_Export
             // 
@@ -365,6 +367,11 @@ namespace FriishProduce
             this.tabControl.SelectedTabChanged += new System.EventHandler(this.TabChanged);
             this.tabControl.TabIndexChanged += new System.EventHandler(this.TabChanged);
             // 
+            // BrowseManual
+            // 
+            resources.ApplyResources(this.BrowseManual, "BrowseManual");
+            this.BrowseManual.ShowNewFolderButton = false;
+            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
@@ -415,6 +422,7 @@ namespace FriishProduce
         private System.Windows.Forms.RibbonOrbMenuItem NewProject;
         private System.Windows.Forms.RibbonSeparator orbMenuSeparator2;
         private System.Windows.Forms.RibbonButton OpenManual;
+        private System.Windows.Forms.FolderBrowserDialog BrowseManual;
     }
 }
 

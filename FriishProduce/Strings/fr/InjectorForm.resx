@@ -124,7 +124,7 @@
     <value>Afficher l'aperçu du banner</value>
   </data>
   <data name="groupBox1.Text" xml:space="preserve">
-    <value>Informations de la ROM</value>
+    <value>Informations actuelles</value>
   </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>Informations de la chaîne d'origine</value>
@@ -145,16 +145,19 @@
     <value>Méthode d'interpolation des images</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
-    <value>ROM actuelle : </value>
+    <value>Nom de la ROM : {0}</value>
   </data>
   <data name="label10.Text" xml:space="preserve">
     <value>Joueurs :</value>
   </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>Mode d'emploi personnalisé</value>
+  </data>
   <data name="label2.Text" xml:space="preserve">
-    <value>Nom du logiciel : </value>
+    <value>Nom officiel du logiciel : {0}</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
-    <value>Code de distribution : </value>
+    <value>Code de distribution : {0}</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
     <value>Nom du jeu :</value>

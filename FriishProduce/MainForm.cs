@@ -31,7 +31,11 @@ namespace FriishProduce
                 new RibbonSeparator(Language.Get("PlatformGroup_1")),
 
                 new RibbonButton(new Icon(Properties.Resources.sega_master_system, 16, 16).ToBitmap())    { Tag = Console.SMS.ToString() },
-                new RibbonButton(new Icon(Properties.Resources.sega_genesis, 16, 16).ToBitmap())          { Tag = Console.SMDGEN.ToString() }
+                new RibbonButton(new Icon(Properties.Resources.sega_genesis, 16, 16).ToBitmap())          { Tag = Console.SMDGEN.ToString() },
+
+                new RibbonSeparator(Language.Get("PlatformGroup_2")),
+
+                new RibbonButton(new Icon(Properties.Resources.snk_neo_geo_aes, 16, 16).ToBitmap())    { Tag = Console.NeoGeo.ToString() },
             });
 
             foreach (RibbonButton item in NewProject.DropDownItems.OfType<RibbonButton>())
@@ -113,6 +117,11 @@ namespace FriishProduce
 
             Strip_OpenROM.Image = OpenROM.SmallImage;
             Strip_OpenImage.Image = OpenImage.SmallImage;
+
+            // Automatically set defined initial directories for each browse/save file dialog
+            // ********
+            BrowseManual.SelectedPath = BrowseImage.InitialDirectory = BrowseROM.InitialDirectory = Paths.EnvironmentFolder;
+            SaveWAD.InitialDirectory = Paths.Out;
         }
 
         private void Settings_Click(object sender, EventArgs e)
@@ -131,18 +140,18 @@ namespace FriishProduce
             // ********
             if (sender != tabControl.TabPages[0]) OpenROM.Enabled = tabControl.TabPages.Count > 1;
             else OpenROM.Enabled = true;
-            Strip_OpenROM.Enabled = OpenROM.Enabled;
-            Strip_OpenImage.Enabled = OpenImage.Enabled = OpenROM.Enabled;
-            tabControl.Visible = OpenROM.Enabled;
+            tabControl.Visible = OpenManual.Enabled = Strip_OpenImage.Enabled = OpenImage.Enabled = Strip_OpenROM.Enabled = OpenROM.Enabled;
 
             // Toggle visibility of Export WAD button
-            // ********
-            if (!OpenROM.Enabled) { Strip_ExportWAD.Enabled = ExportWAD.Enabled = false; }
-            else ExportCheck(sender, e);
-
             // Toggle visibility of Download LibRetro data button
             // ********
-            if (!OpenROM.Enabled) { Strip_UseLibRetro.Enabled = UseLibRetro.Enabled = false; }
+            if (!OpenROM.Enabled)
+            {
+                Strip_ExportWAD.Enabled = ExportWAD.Enabled = false;
+                Strip_UseLibRetro.Enabled = UseLibRetro.Enabled = false;
+            }
+
+            else ExportCheck(sender, e);
 
             // Context menu
             // ********
@@ -213,6 +222,10 @@ namespace FriishProduce
                 case Console.PCE:
                     BrowseROM.Filter = Language.Get($"Filter_ROM_{c}");
                     break;
+
+                case Console.NeoGeo:
+                    BrowseROM.Filter = Language.Get("Filter_ZIP");
+                    break;
             }
 
             if (BrowseROM.ShowDialog() == DialogResult.OK)
@@ -243,6 +256,8 @@ namespace FriishProduce
                 currentForm.LoadImage(BrowseImage.FileName);
             }
         }
+
+        private void OpenManual_Click(object sender, EventArgs e) => (tabControl.SelectedForm as InjectorForm).LoadManual(BrowseManual.ShowDialog() == DialogResult.OK ? BrowseManual.SelectedPath : null);
 
         public void CleanTemp()
         {

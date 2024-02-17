@@ -11,9 +11,7 @@ namespace FriishProduce.WiiVC
 {
     public class NeoGeo : InjectorWiiVC
     {
-        public string ZIP { get; set; }
         public string BIOSPath { get; set; }
-        public bool IsZLIB { get; set; }
 
         private byte[] P { get; set; }
         private List<byte> M { get; set; }
@@ -38,34 +36,43 @@ namespace FriishProduce.WiiVC
             else MainContent = U8.Load(Contents[5]);
         }
 
+        public bool IsValidROM()
+        {
+            MemoryStream stream = new MemoryStream(ROM);
+            ZipArchive zip = new ZipArchive(stream);
+            bool applicable = false;
+
+            foreach (ZipArchiveEntry item in zip.Entries)
+            {
+                // First do a check to see if valid
+                // ****************
+                if (item.Name.EndsWith("c1.bin")
+                 || item.Name.EndsWith("c2.bin")
+                 || item.Name.EndsWith("m1.bin")
+                 || item.Name.EndsWith("p1.bin")
+                 || item.Name.EndsWith("s1.bin")
+                 || item.Name.EndsWith("v1.bin"))
+                {
+                    applicable = true;
+                }
+            }
+
+            zip.Dispose();
+            stream.Dispose();
+            return applicable;
+        }
+
         /// <summary>
         /// Replaces ROM within extracted content5 directory. (compressed formats not supported yet)
         /// </summary>
         protected override void ReplaceROM()
         {
-            if (IsZLIB) throw new Exception("ZLIB WADs not supported yet!");
+            if (EmuType == 1) throw new Exception("ZLIB WADs not supported yet!");
 
-            // Extract to ZIP archive
+            // Check if ZIP archive is of valid format
             // ****************
-            Directory.CreateDirectory(Paths.WorkingFolder_ROM);
-            ZipFile.ExtractToDirectory(ZIP, Paths.WorkingFolder_ROM);
+            if (!IsValidROM()) throw new InvalidDataException();
 
-            // First do a check to see if valid
-            // ****************
-            {
-                bool IsNG = false;
-
-                foreach (var file in Directory.EnumerateFiles(Paths.WorkingFolder_ROM))
-                    if (Path.GetFileName(file).EndsWith("c1.bin")
-                     || Path.GetFileName(file).EndsWith("c2.bin")
-                     || Path.GetFileName(file).EndsWith("m1.bin")
-                     || Path.GetFileName(file).EndsWith("p1.bin")
-                     || Path.GetFileName(file).EndsWith("s1.bin")
-                     || Path.GetFileName(file).EndsWith("v1.bin"))
-                        IsNG = true;
-
-                if (!IsNG) throw new InvalidDataException();
-            }
 
             // ------------------------- //
 
@@ -84,37 +91,37 @@ namespace FriishProduce.WiiVC
             }
             else
             {
-                var newBIOS = new List<byte>();
-
                 if (Path.GetExtension(BIOSPath).ToLower() == ".rom")
                 {
-                    newBIOS.AddRange(File.ReadAllBytes(BIOSPath));
+                    BIOS.AddRange(File.ReadAllBytes(BIOSPath));
                 }
 
                 else if (Path.GetExtension(BIOSPath).ToLower() == ".zip")
                 {
-                    Directory.CreateDirectory(Paths.WorkingFolder_ROM + "bios\\");
-                    ZipFile.ExtractToDirectory(BIOSPath, Paths.WorkingFolder_ROM + "bios\\");
-
-                    foreach (var file in Directory.EnumerateFiles(Paths.WorkingFolder_ROM + "bios\\"))
+                    using (MemoryStream stream = new MemoryStream(ROM))
+                    using (ZipArchive zip = new ZipArchive(stream))
+                    using (MemoryStream target = new MemoryStream())
                     {
-                        if (Path.GetExtension(file).ToLower() == ".rom")
+                        foreach (ZipArchiveEntry item in zip.Entries)
                         {
-                            newBIOS.AddRange(File.ReadAllBytes(file));
+                            if (Path.GetExtension(item.Name).ToLower() == ".rom")
+                            {
+                                item.Open().CopyTo(target);
+                                BIOS.AddRange(target.ToArray());
+                            }
                         }
                     }
 
-                    if (newBIOS.Count < 10) goto RetrieveOrigBIOS;
+                    if (BIOS.Count < 10) goto RetrieveOrigBIOS;
                 }
 
                 else goto RetrieveOrigBIOS;
 
-                for (int i = 1; i < newBIOS.Count; i += 2)
+                for (int i = 1; i < BIOS.Count; i += 2)
                 {
-                    (newBIOS[i - 1], newBIOS[i]) = (newBIOS[i], newBIOS[i - 1]);
+                    (BIOS[i - 1], BIOS[i]) = (BIOS[i], BIOS[i - 1]);
                 }
 
-                BIOS.AddRange(newBIOS);
                 goto Next;
             }
 
@@ -123,11 +130,10 @@ namespace FriishProduce.WiiVC
 
             // Get BIOS directly from game.bin
             // ****************
-            if (!IsZLIB)
+            if (EmuType < 1) // i.e. not Zlib
             {
                 var orig = MainContent.Data[MainContent.GetNodeIndex("game.bin")];
-                var origBIOS = orig.Skip(orig.Length - 131072).Take(131072);
-                BIOS.AddRange(origBIOS);
+                BIOS.AddRange(orig.Skip(orig.Length - 131072).Take(131072));
             }
             else throw new FileNotFoundException();
 
@@ -138,119 +144,143 @@ namespace FriishProduce.WiiVC
 
             var P1 = new List<byte>();
             P = new byte[1];
-
-            foreach (var file in Directory.EnumerateFiles(Paths.WorkingFolder_ROM))
-            {
-                if (char.ToLower(file[file.Length - 6]) == 'p')
-                {
-                    var b = File.ReadAllBytes(file);
-                    bool P1BinIs2MB = b.Length == 2097152 && Path.GetFileNameWithoutExtension(file).ToLower().Contains("p1");
-
-                    P1.AddRange(b);
-                    P = P1.ToArray();
-
-                    if (P1BinIs2MB)
-                        for (int i = 0; i < P.Length / 2; i++) (P[i + (P.Length / 2)], P[i]) = (P[i], P[i + (P.Length / 2)]);
-                }
-            }
-
-            for (int i = 1; i < P.Length; i += 2) (P[i - 1], P[i]) = (P[i], P[i - 1]);
-
-            // ------------------------- //
-
             M = new List<byte>();
-
-            foreach (var file in Directory.EnumerateFiles(Paths.WorkingFolder_ROM))
-            {
-                if (char.ToLower(file[file.Length - 6]) == 'm')
-                    M.AddRange(File.ReadAllBytes(file));
-            }
-
-            // ------------------------- //
-
             V = new List<byte>();
-
-            foreach (var file in Directory.EnumerateFiles(Paths.WorkingFolder_ROM))
-            {
-                if (char.ToLower(file[file.Length - 6]) == 'v')
-                    V.AddRange(File.ReadAllBytes(file));
-            }
-
-            // ------------------------- //
-
             S = new List<byte>();
-
-            foreach (var file in Directory.EnumerateFiles(Paths.WorkingFolder_ROM))
-            {
-                if (char.ToLower(file[file.Length - 6]) == 's')
-                    S.AddRange(File.ReadAllBytes(file));
-            }
-
-            // ------------------------- //
-
             C = new List<byte>();
-            int C_count = 0;
 
-            foreach (var file in Directory.EnumerateFiles(Paths.WorkingFolder_ROM))
-                if (char.ToLower(file[file.Length - 6]) == 'c') C_count++;
-
-            // Documentation from Corsario
-            // "There are some games with an non-standard C file order, and after reorganizing the bytes it's necessary to do a unknown puzzle
-            // with that files and find the suitable order, each strange game have a custom combination."
-            // Ex.: Fatal Fury 2, Kizuna Encounter, KOF '96"
-
-            // Loop
-            // ****************
-            for (int x = 0; x <= C_count; x += 2)
+            using (MemoryStream stream = new MemoryStream(ROM))
+            using (ZipArchive zip = new ZipArchive(stream))
+            using (MemoryStream target = new MemoryStream())
             {
-                var C1 = new byte[1];
-                var C2 = new byte[1];
-
-                foreach (var file in Directory.EnumerateFiles(Paths.WorkingFolder_ROM))
-                    if (Path.GetFileName(file).ToLower().Contains($"c{x + 1}.bin"))
-                    {
-                        C1 = File.ReadAllBytes(file);
-
-                        // Byteswap
-                        for (int i = 1; i < C1.Length; i += 2)
-                            (C1[i - 1], C1[i]) = (C1[i], C1[i - 1]);
-                    }
-
-                foreach (var file in Directory.EnumerateFiles(Paths.WorkingFolder_ROM))
-                    if (Path.GetFileName(file).ToLower().Contains($"c{x + 2}.bin"))
-                    {
-                        C2 = File.ReadAllBytes(file);
-
-                        // Byteswap
-                        for (int i = 1; i < C2.Length; i += 2)
-                            (C2[i - 1], C2[i]) = (C2[i], C2[i - 1]);
-                    }
-
-                if (C1.Length > 5 && C2.Length > 5)
+                foreach (ZipArchiveEntry item in zip.Entries)
                 {
-                    var C_temp = new byte[C1.Length + C2.Length];
-                    for (int i = 0; i < C_temp.Length / 2; i += 2)
+                    if (char.ToLower(item.Name[item.Name.Length - 6]) == 'p')
                     {
-                        C_temp[2 * i] = C1[i];
-                        C_temp[2 * i + 1] = C1[i + 1];
-                        C_temp[2 * i + 2] = C2[i];
-                        C_temp[2 * i + 3] = C2[i + 1];
-                    }
+                        item.Open().CopyTo(target);
 
-                    C.AddRange(C_temp);
+                        var b = target.ToArray();
+                        bool P1BinIs2MB = b.Length == 2097152 && Path.GetFileNameWithoutExtension(item.Name).ToLower().Contains("p1");
+
+                        P1.AddRange(b);
+                        P = P1.ToArray();
+
+                        if (P1BinIs2MB)
+                            for (int i = 0; i < P.Length / 2; i++) (P[i + (P.Length / 2)], P[i]) = (P[i], P[i + (P.Length / 2)]);
+                    }
+                }
+
+                for (int i = 1; i < P.Length; i += 2) (P[i - 1], P[i]) = (P[i], P[i - 1]);
+
+                // ------------------------- //
+                target.Close();
+                // ------------------------- //
+
+                foreach (ZipArchiveEntry item in zip.Entries)
+                {
+                    if (char.ToLower(item.Name[item.Name.Length - 6]) == 'm')
+                    {
+                        item.Open().CopyTo(target);
+                        M.AddRange(target.ToArray());
+                    }
+                }
+
+                // ------------------------- //
+                target.Close();
+                // ------------------------- //
+
+                foreach (ZipArchiveEntry item in zip.Entries)
+                {
+                    if (char.ToLower(item.Name[item.Name.Length - 6]) == 'v')
+                    {
+                        item.Open().CopyTo(target);
+                        V.AddRange(target.ToArray());
+                    }
+                }
+
+                // ------------------------- //
+                target.Close();
+                // ------------------------- //
+
+                foreach (ZipArchiveEntry item in zip.Entries)
+                {
+                    if (char.ToLower(item.Name[item.Name.Length - 6]) == 's')
+                    {
+                        item.Open().CopyTo(target);
+                        S.AddRange(target.ToArray());
+                    }
+                }
+
+                // ------------------------- //
+                target.Close();
+                // ------------------------- //
+
+                int C_count = 0;
+
+                foreach (ZipArchiveEntry item in zip.Entries)
+                    if (char.ToLower(item.Name[item.Name.Length - 6]) == 'c') C_count++;
+
+                // Documentation from Corsario
+                // "There are some games with an non-standard C file order, and after reorganizing the bytes it's necessary to do a unknown puzzle
+                // with that files and find the suitable order, each strange game have a custom combination."
+                // Ex.: Fatal Fury 2, Kizuna Encounter, KOF '96"
+
+                // Loop
+                // ****************
+                for (int x = 0; x <= C_count; x += 2)
+                {
+                    var C1 = new byte[1];
+                    var C2 = new byte[1];
+
+                    foreach (ZipArchiveEntry item in zip.Entries)
+                        if (item.Name.ToLower().Contains($"c{x + 1}.bin"))
+                        {
+                            item.Open().CopyTo(target);
+                            C1 = target.ToArray();
+
+                            // Byteswap
+                            for (int i = 1; i < C1.Length; i += 2)
+                                (C1[i - 1], C1[i]) = (C1[i], C1[i - 1]);
+                        }
+
+                    foreach (ZipArchiveEntry item in zip.Entries)
+                        if (item.Name.ToLower().Contains($"c{x + 2}.bin"))
+                        {
+                            item.Open().CopyTo(target);
+                            C2 = target.ToArray();
+
+                            // Byteswap
+                            for (int i = 1; i < C2.Length; i += 2)
+                                (C2[i - 1], C2[i]) = (C2[i], C2[i - 1]);
+                        }
+
+                    if (C1.Length > 5 && C2.Length > 5)
+                    {
+                        var C_temp = new byte[C1.Length + C2.Length];
+                        for (int i = 0; i < C_temp.Length / 2; i += 2)
+                        {
+                            C_temp[2 * i] = C1[i];
+                            C_temp[2 * i + 1] = C1[i + 1];
+                            C_temp[2 * i + 2] = C2[i];
+                            C_temp[2 * i + 3] = C2[i + 1];
+                        }
+
+                        C.AddRange(C_temp);
+                    }
                 }
             }
+
+            // ------------------------- //
 
             var C_swap = C.ToArray();
             for (int i = 3; i < C_swap.Length; i += 4)
-            {
                 (C_swap[i - 3], C_swap[i - 2], C_swap[i - 1], C_swap[i]) = (C_swap[i - 2], C_swap[i], C_swap[i - 3], C_swap[i - 1]);
-            }
 
             // ------------------------- //
 
             // Header
             // ****************
+            var Header = new List<byte>();
             string h = "00000040"
                 + P.Length.ToString("X8")
                 + (P.Length + 64).ToString("X8")
@@ -263,14 +293,13 @@ namespace FriishProduce.WiiVC
                 + C.Count.ToString("X8")
                 + (P.Length + M.Count + V.Count + S.Count + C.Count + 64).ToString("X8")
                 + BIOS.Count.ToString("X8");
-            var Header = new List<byte>();
 
             for (int i = 0; i < h.Length; i += 2)
                 Header.Add(Convert.ToByte(h.Substring(i, 2), 16));
 
             var GameBin = new List<byte>();
 
-            if (!IsZLIB)
+            if (EmuType < 1) // i.e. not Zlib
             {
                 GameBin.AddRange(Header);
                 GameBin.AddRange(P);
@@ -280,6 +309,7 @@ namespace FriishProduce.WiiVC
                 GameBin.AddRange(C_swap);
                 GameBin.AddRange(BIOS);
             }
+
             else
             {
                 GameBin.AddRange(Header);

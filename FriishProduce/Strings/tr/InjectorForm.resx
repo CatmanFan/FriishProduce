@@ -123,9 +123,6 @@
   <data name="button2.Text" xml:space="preserve">
     <value>Banner önizlemesini göster</value>
   </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>ROM Bilgisi</value>
-  </data>
   <data name="groupBox3.Text" xml:space="preserve">
     <value>Kanal Başlığı</value>
   </data>
@@ -136,19 +133,19 @@
     <value>Resim Enterpolasyonu</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
-    <value>Geçerli ROM Dosyası: </value>
+    <value>ROM dosya adı: {0}</value>
   </data>
   <data name="label10.Text" xml:space="preserve">
     <value>Oyuncular:</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
-    <value>Yazılım Adı: </value>
+    <value>Yazılımın resmi adı: {0}</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
-    <value>Seri Kodu: </value>
+    <value>Seri kodu: {0}</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
-    <value>Oyun Başlığı:</value>
+    <value>Oyun başlığı:</value>
   </data>
   <data name="label6.Text" xml:space="preserve">
     <value>Kısa ad:</value>
