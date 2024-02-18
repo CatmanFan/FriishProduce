@@ -134,6 +134,34 @@
   <data name="ribbon1.OrbDropDown.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 0, 0, 3</value>
   </data>
+  <data name="ribbon1.OrbDropDown.Size" type="System.Drawing.Size, System.Drawing">
+    <value>527, 254</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="ribbon1.OrbDropDown.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="ribbon1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>859, 119</value>
+  </data>
+  <data name="ribbon1.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="ribbonTab_Home.Text" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="&gt;&gt;ribbon1.Name" xml:space="preserve">
+    <value>ribbon1</value>
+  </data>
+  <data name="&gt;&gt;ribbon1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Ribbon, System.Windows.Forms.Ribbon, Version=2.0.0.0, Culture=neutral, PublicKeyToken=928736e248aa81f9</value>
+  </data>
+  <data name="&gt;&gt;ribbon1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ribbon1.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <data name="NewProject.Text" xml:space="preserve">
     <value>New...</value>
   </data>
@@ -145,13 +173,6 @@
   </data>
   <data name="MenuItem_Exit.Text" xml:space="preserve">
     <value>Exit</value>
-  </data>
-  <data name="ribbon1.OrbDropDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>527, 254</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="ribbon1.OrbDropDown.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
   </data>
   <data name="RibbonButton_Settings.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -200,17 +221,14 @@
         RK5CYII=
 </value>
   </data>
-  <data name="ribbon1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>859, 115</value>
-  </data>
-  <data name="ribbon1.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="ribbonPanel_Project.Text" xml:space="preserve">
+    <value>Project</value>
   </data>
   <data name="UseLibRetro.Text" xml:space="preserve">
     <value>LibRetro</value>
   </data>
-  <data name="ribbonPanel_Project.Text" xml:space="preserve">
-    <value>Project</value>
+  <data name="ribbonPanel_Open.Text" xml:space="preserve">
+    <value>Open</value>
   </data>
   <data name="OpenROM.Text" xml:space="preserve">
     <value>ROM</value>
@@ -221,29 +239,11 @@
   <data name="OpenManual.Text" xml:space="preserve">
     <value>Manual</value>
   </data>
-  <data name="ribbonPanel_Open.Text" xml:space="preserve">
-    <value>Open</value>
-  </data>
-  <data name="ExportWAD.Text" xml:space="preserve">
-    <value>Save</value>
-  </data>
   <data name="ribbonPanel_Export.Text" xml:space="preserve">
     <value>Export</value>
   </data>
-  <data name="ribbonTab_Home.Text" xml:space="preserve">
-    <value>Home</value>
-  </data>
-  <data name="&gt;&gt;ribbon1.Name" xml:space="preserve">
-    <value>ribbon1</value>
-  </data>
-  <data name="&gt;&gt;ribbon1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Ribbon, System.Windows.Forms.Ribbon, Version=2.0.0.0, Culture=neutral, PublicKeyToken=928736e248aa81f9</value>
-  </data>
-  <data name="&gt;&gt;ribbon1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;ribbon1.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="ExportWAD.Text" xml:space="preserve">
+    <value>Save</value>
   </data>
   <metadata name="BrowseROM.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -264,40 +264,40 @@
     <value>False</value>
   </data>
   <data name="Strip_OpenROM.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="Strip_OpenImage.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="Strip_OpenImage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 6</value>
+    <value>177, 6</value>
   </data>
   <data name="Strip_UseLibRetro.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="Strip_UseLibRetro.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 6</value>
+    <value>177, 6</value>
   </data>
   <data name="Strip_ExportWAD.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="Strip_ExportWAD.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 6</value>
+    <value>177, 6</value>
   </data>
   <data name="CloseTab.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="TabContextMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 132</value>
+    <value>181, 154</value>
   </data>
   <data name="&gt;&gt;TabContextMenu.Name" xml:space="preserve">
     <value>TabContextMenu</value>
@@ -309,10 +309,10 @@
     <value>Fill</value>
   </data>
   <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 115</value>
+    <value>0, 119</value>
   </data>
   <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>859, 472</value>
+    <value>859, 468</value>
   </data>
   <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -349,6 +349,9 @@
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>859, 587</value>
+  </data>
+  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8.25pt</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2838,6 +2841,12 @@
   </data>
   <data name="&gt;&gt;OpenImage.Type" xml:space="preserve">
     <value>System.Windows.Forms.RibbonButton, System.Windows.Forms.Ribbon, Version=2.0.0.0, Culture=neutral, PublicKeyToken=928736e248aa81f9</value>
+  </data>
+  <data name="&gt;&gt;ribbonSeparator1.Name" xml:space="preserve">
+    <value>ribbonSeparator1</value>
+  </data>
+  <data name="&gt;&gt;ribbonSeparator1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RibbonSeparator, System.Windows.Forms.Ribbon, Version=2.0.0.0, Culture=neutral, PublicKeyToken=928736e248aa81f9</value>
   </data>
   <data name="&gt;&gt;OpenManual.Name" xml:space="preserve">
     <value>OpenManual</value>

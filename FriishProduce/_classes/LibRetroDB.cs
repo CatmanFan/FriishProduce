@@ -34,7 +34,7 @@ namespace FriishProduce
             }
             catch (WebException ex)
             {
-                throw new Exception(Language.Get("Error000") + Environment.NewLine + ex.Message + (ex.Message[ex.Message.Length - 1] != '.' ? "." : string.Empty));
+                throw new Exception(string.Format(Language.Get("Error000"), ex.Message + (ex.Message[ex.Message.Length - 1] != '.' ? "." : string.Empty)));
             }
         }
 

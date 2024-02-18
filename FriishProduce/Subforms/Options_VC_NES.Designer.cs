@@ -40,11 +40,15 @@ namespace FriishProduce
             // 
             // OK
             // 
-            this.OK.Location = new System.Drawing.Point(197, 12);
+            this.OK.Location = new System.Drawing.Point(101, 12);
             // 
             // panel1
             // 
             this.panel1.Size = new System.Drawing.Size(299, 47);
+            // 
+            // Cancel
+            // 
+            this.Cancel.Location = new System.Drawing.Point(197, 12);
             // 
             // groupBox1
             // 
@@ -76,7 +80,7 @@ namespace FriishProduce
             this.checkBox1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.checkBox1.Location = new System.Drawing.Point(9, 244);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(183, 17);
+            this.checkBox1.Size = new System.Drawing.Size(188, 17);
             this.checkBox1.TabIndex = 12;
             this.checkBox1.Text = "Also use palette for banner image";
             this.checkBox1.UseVisualStyleBackColor = true;

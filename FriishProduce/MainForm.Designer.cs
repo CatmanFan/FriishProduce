@@ -48,6 +48,7 @@ namespace FriishProduce
             this.ribbonPanel_Open = new System.Windows.Forms.RibbonPanel();
             this.OpenROM = new System.Windows.Forms.RibbonButton();
             this.OpenImage = new System.Windows.Forms.RibbonButton();
+            this.ribbonSeparator1 = new System.Windows.Forms.RibbonSeparator();
             this.OpenManual = new System.Windows.Forms.RibbonButton();
             this.ribbonPanel_Export = new System.Windows.Forms.RibbonPanel();
             this.ExportWAD = new System.Windows.Forms.RibbonButton();
@@ -108,7 +109,7 @@ namespace FriishProduce
             this.ribbon1.RibbonTabFont = new System.Drawing.Font("Segoe UI", 8F);
             this.ribbon1.Tabs.Add(this.ribbonTab_Home);
             this.ribbon1.TabSpacing = 3;
-            this.ribbon1.ThemeColor = System.Windows.Forms.RibbonTheme.Blue_2010;
+            this.ribbon1.ThemeColor = System.Windows.Forms.RibbonTheme.Blue;
             this.ribbon1.UseAlwaysStandardTheme = true;
             // 
             // NewProject
@@ -147,6 +148,7 @@ namespace FriishProduce
             this.MenuItem_About.Name = "MenuItem_About";
             this.MenuItem_About.SmallImage = global::FriishProduce.Properties.Resources.lakitu_smw2;
             resources.ApplyResources(this.MenuItem_About, "MenuItem_About");
+            this.MenuItem_About.Click += new System.EventHandler(this.About_Click);
             // 
             // MenuItem_Exit
             // 
@@ -208,6 +210,7 @@ namespace FriishProduce
             this.ribbonPanel_Open.ButtonMoreVisible = false;
             this.ribbonPanel_Open.Items.Add(this.OpenROM);
             this.ribbonPanel_Open.Items.Add(this.OpenImage);
+            this.ribbonPanel_Open.Items.Add(this.ribbonSeparator1);
             this.ribbonPanel_Open.Items.Add(this.OpenManual);
             this.ribbonPanel_Open.Name = "ribbonPanel_Open";
             resources.ApplyResources(this.ribbonPanel_Open, "ribbonPanel_Open");
@@ -217,8 +220,6 @@ namespace FriishProduce
             this.OpenROM.Enabled = false;
             this.OpenROM.Image = global::FriishProduce.Properties.Resources.disc_blue_large;
             this.OpenROM.LargeImage = global::FriishProduce.Properties.Resources.disc_blue_large;
-            this.OpenROM.MaxSizeMode = System.Windows.Forms.RibbonElementSizeMode.Medium;
-            this.OpenROM.MinSizeMode = System.Windows.Forms.RibbonElementSizeMode.Medium;
             this.OpenROM.Name = "OpenROM";
             this.OpenROM.SmallImage = global::FriishProduce.Properties.Resources.disc_blue;
             resources.ApplyResources(this.OpenROM, "OpenROM");
@@ -229,20 +230,20 @@ namespace FriishProduce
             this.OpenImage.Enabled = false;
             this.OpenImage.Image = global::FriishProduce.Properties.Resources.image_sunset_large;
             this.OpenImage.LargeImage = global::FriishProduce.Properties.Resources.image_sunset_large;
-            this.OpenImage.MaxSizeMode = System.Windows.Forms.RibbonElementSizeMode.Medium;
-            this.OpenImage.MinSizeMode = System.Windows.Forms.RibbonElementSizeMode.Medium;
             this.OpenImage.Name = "OpenImage";
             this.OpenImage.SmallImage = global::FriishProduce.Properties.Resources.image_sunset;
             resources.ApplyResources(this.OpenImage, "OpenImage");
             this.OpenImage.Click += new System.EventHandler(this.OpenImage_Click);
+            // 
+            // ribbonSeparator1
+            // 
+            this.ribbonSeparator1.Name = "ribbonSeparator1";
             // 
             // OpenManual
             // 
             this.OpenManual.Enabled = false;
             this.OpenManual.Image = global::FriishProduce.Properties.Resources.book_large;
             this.OpenManual.LargeImage = global::FriishProduce.Properties.Resources.book_large;
-            this.OpenManual.MaxSizeMode = System.Windows.Forms.RibbonElementSizeMode.Medium;
-            this.OpenManual.MinSizeMode = System.Windows.Forms.RibbonElementSizeMode.Medium;
             this.OpenManual.Name = "OpenManual";
             this.OpenManual.SmallImage = global::FriishProduce.Properties.Resources.book;
             resources.ApplyResources(this.OpenManual, "OpenManual");
@@ -294,6 +295,7 @@ namespace FriishProduce
             this.TabContextMenu.Name = "contextMenuStrip1";
             this.TabContextMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             resources.ApplyResources(this.TabContextMenu, "TabContextMenu");
+            this.TabContextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.TabContextMenu_Opening);
             // 
             // Strip_OpenROM
             // 
@@ -327,6 +329,7 @@ namespace FriishProduce
             // 
             resources.ApplyResources(this.Strip_ExportWAD, "Strip_ExportWAD");
             this.Strip_ExportWAD.Name = "Strip_ExportWAD";
+            this.Strip_ExportWAD.Click += new System.EventHandler(this.ExportWAD_Click);
             // 
             // toolStripSeparator3
             // 
@@ -423,6 +426,7 @@ namespace FriishProduce
         private System.Windows.Forms.RibbonSeparator orbMenuSeparator2;
         private System.Windows.Forms.RibbonButton OpenManual;
         private System.Windows.Forms.FolderBrowserDialog BrowseManual;
+        private System.Windows.Forms.RibbonSeparator ribbonSeparator1;
     }
 }
 

@@ -48,11 +48,15 @@ namespace FriishProduce
             // 
             // OK
             // 
-            this.OK.Location = new System.Drawing.Point(357, 12);
+            this.OK.Location = new System.Drawing.Point(261, 12);
             // 
             // panel1
             // 
             this.panel1.Size = new System.Drawing.Size(459, 47);
+            // 
+            // Cancel
+            // 
+            this.Cancel.Location = new System.Drawing.Point(357, 12);
             // 
             // groupBox1
             // 
@@ -72,10 +76,10 @@ namespace FriishProduce
             this.n64003.AutoSize = true;
             this.n64003.CheckAlign = System.Drawing.ContentAlignment.TopLeft;
             this.n64003.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.n64003.Location = new System.Drawing.Point(10, 64);
+            this.n64003.Location = new System.Drawing.Point(10, 62);
             this.n64003.MaximumSize = new System.Drawing.Size(203, 27);
             this.n64003.Name = "n64003";
-            this.n64003.Size = new System.Drawing.Size(113, 17);
+            this.n64003.Size = new System.Drawing.Size(111, 17);
             this.n64003.TabIndex = 16;
             this.n64003.Text = "Allocate ROM size";
             this.n64003.TextAlign = System.Drawing.ContentAlignment.TopLeft;
@@ -86,10 +90,10 @@ namespace FriishProduce
             this.n64002.AutoSize = true;
             this.n64002.CheckAlign = System.Drawing.ContentAlignment.TopLeft;
             this.n64002.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.n64002.Location = new System.Drawing.Point(10, 41);
+            this.n64002.Location = new System.Drawing.Point(10, 40);
             this.n64002.MaximumSize = new System.Drawing.Size(203, 27);
             this.n64002.Name = "n64002";
-            this.n64002.Size = new System.Drawing.Size(98, 17);
+            this.n64002.Size = new System.Drawing.Size(97, 17);
             this.n64002.TabIndex = 15;
             this.n64002.Text = "Extended RAM";
             this.n64002.TextAlign = System.Drawing.ContentAlignment.TopLeft;
@@ -100,10 +104,10 @@ namespace FriishProduce
             this.n64001.AutoSize = true;
             this.n64001.CheckAlign = System.Drawing.ContentAlignment.TopLeft;
             this.n64001.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.n64001.Location = new System.Drawing.Point(10, 85);
+            this.n64001.Location = new System.Drawing.Point(10, 84);
             this.n64001.MaximumSize = new System.Drawing.Size(203, 27);
             this.n64001.Name = "n64001";
-            this.n64001.Size = new System.Drawing.Size(77, 17);
+            this.n64001.Size = new System.Drawing.Size(80, 17);
             this.n64001.TabIndex = 14;
             this.n64001.Text = "Crashes fix";
             this.n64001.TextAlign = System.Drawing.ContentAlignment.TopLeft;
@@ -117,7 +121,7 @@ namespace FriishProduce
             this.n64000.Location = new System.Drawing.Point(10, 18);
             this.n64000.MaximumSize = new System.Drawing.Size(203, 27);
             this.n64000.Name = "n64000";
-            this.n64000.Size = new System.Drawing.Size(124, 17);
+            this.n64000.Size = new System.Drawing.Size(127, 17);
             this.n64000.TabIndex = 13;
             this.n64000.Text = "Screen brightness fix";
             this.n64000.TextAlign = System.Drawing.ContentAlignment.TopLeft;
@@ -153,7 +157,7 @@ namespace FriishProduce
             this.x009.Location = new System.Drawing.Point(32, 5);
             this.x009.MaximumSize = new System.Drawing.Size(155, 100);
             this.x009.Name = "x009";
-            this.x009.Size = new System.Drawing.Size(153, 39);
+            this.x009.Size = new System.Drawing.Size(154, 39);
             this.x009.TabIndex = 18;
             this.x009.Text = "Please note that these options may not work for all base WADs.";
             // 

@@ -126,6 +126,9 @@
   <data name="Button_Cancel" xml:space="preserve">
     <value>&amp;Cancelar</value>
   </data>
+  <data name="Button_Close" xml:space="preserve">
+    <value>&amp;Cerrar</value>
+  </data>
   <data name="Button_OK" xml:space="preserve">
     <value>&amp;Aceptar</value>
   </data>
@@ -137,10 +140,12 @@
     <value>Se ha producido un error</value>
   </data>
   <data name="Error000" xml:space="preserve">
-    <value>No se pudo conectar a Internet.</value>
+    <value>No se pudo conectar a Internet.
+Descripción : {0}</value>
   </data>
   <data name="Error001" xml:space="preserve">
-    <value>No se pudo generar la imagen. Esto puede deberse a un problema con GDI+.</value>
+    <value>No se pudo generar la imagen.
+Esto puede deberse a un problema con GDI+.</value>
   </data>
   <data name="Error002" xml:space="preserve">
     <value>No se pueden reemplazar los datos internos.</value>
@@ -216,10 +221,10 @@ Asignación de tamaño de ROM</value>
   </data>
   <data name="Message000" xml:space="preserve">
     <value>Algunos cambios necesitan que se reinicie el programa para que tengan efecto.
-¿Reiniciar ahora?</value>
+¿Reiniciar esta aplicación ahora?</value>
   </data>
   <data name="Message001" xml:space="preserve">
-    <value>¿Desea descartar los cambios no guardados en "{0}"?</value>
+    <value>¿Desea descartar los cambios no guardados en este proyecto?</value>
   </data>
   <data name="Message002" xml:space="preserve">
     <value>¿Desea descartar todos los cambios no guardados?</value>

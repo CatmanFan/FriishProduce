@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static FriishProduce.Properties.Settings;
 
 namespace FriishProduce
 {
@@ -19,63 +20,60 @@ namespace FriishProduce
 
         public ContentOptions()
         {
-            ResetOptions();
             InitializeComponent();
+
+            Settings = new Dictionary<string, string>
+            {
+            };
 
             // Cosmetic
             // *******
             if (!DesignMode)
             {
+                OK.Click += OK_Click;
+                Cancel.Click += Cancel_Click;
+                Load += Form_Load;
+
                 // Language.AutoSetForm(this);
             }
         }
 
         // ---------------------------------------------------------------------------------------------------------------
 
-        protected virtual void ResetOptions(bool NoDesign = true)
+        protected virtual void ResetOptions()
         {
-            if (Settings == null || Settings.Count == 0)
-            {
-                Settings = new Dictionary<string, string>
-                {
-                };
-            }
-
             // Form control
             // *******
-            if (!NoDesign)
+            if (Settings != null)
             {
                 // Code logic in derived Form
             }
             // *******
         }
 
-        protected virtual bool SaveOptions()
+        protected virtual void SaveOptions()
         {
             // Code logic in derived Form
-            return true;
         }
 
         // ---------------------------------------------------------------------------------------------------------------
 
-        private void OK_Click(object sender, EventArgs e)
+        protected void OK_Click(object sender, EventArgs e)
         {
             if (DesignMode) return;
 
             SaveOptions();
-
             DialogResult = DialogResult.OK;
         }
 
-        private void Form_Closing(object sender, FormClosingEventArgs e)
+        protected void Cancel_Click(object sender, EventArgs e)
         {
             if (DesignMode) return;
 
-            if (!e.Cancel && (DialogResult == DialogResult.OK))
-            e.Cancel = !SaveOptions();
+            DialogResult = DialogResult.Cancel;
         }
 
-        private void Form_Load(object sender, EventArgs e)
+        protected void Form_Load(object sender, EventArgs e)
         {
             if (DesignMode) return;
 

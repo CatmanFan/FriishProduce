@@ -136,6 +136,7 @@
     <value>Application</value>
   </data>
   <data name="tabPage2.Text" xml:space="preserve">
-    <value>Default settings</value>
+    <value>Default settings
+[{0}]</value>
   </data>
 </root>

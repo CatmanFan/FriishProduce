@@ -53,14 +53,17 @@
     <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="HtmlRenderer, Version=1.5.0.5, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\HtmlRenderer.Core.1.5.0.5\lib\net45\HtmlRenderer.dll</HintPath>
+    <Reference Include="HtmlRenderer, Version=1.5.0.6, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlRenderer.Core.1.5.0.6\lib\net45\HtmlRenderer.dll</HintPath>
     </Reference>
     <Reference Include="HtmlRenderer.WinForms, Version=1.5.0.6, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\HtmlRenderer.WinForms.1.5.0.6\lib\net45\HtmlRenderer.WinForms.dll</HintPath>
     </Reference>
     <Reference Include="MdiTabControl">
       <HintPath>.\MdiTabControl.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.5.0, Culture=neutral, PublicKeyToken=8985beaab7ea3f04, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft-WindowsAPICodePack-Core.1.1.5\lib\net472\Microsoft.WindowsAPICodePack.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -126,6 +129,9 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
+    <Compile Include="packages\DotNetBarTabControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="packages\libWiiSharp\BNS.cs" />
     <Compile Include="packages\libWiiSharp\Brlan.cs" />
     <Compile Include="packages\libWiiSharp\Brlyt.cs" />
@@ -191,6 +197,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Strings.resx</DependentUpon>
     </Compile>
+    <Compile Include="Subforms\About.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Subforms\About.Designer.cs">
+      <DependentUpon>About.cs</DependentUpon>
+    </Compile>
     <Compile Include="Subforms\ChannelTitles.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -237,6 +249,7 @@
     <Compile Include="_classes\Injectors\WiiVC\NES.cs" />
     <Compile Include="_classes\Injectors\WiiVC\SEGA.cs" />
     <Compile Include="_classes\Injectors\WiiVC\SNES.cs" />
+    <Compile Include="_classes\MessageBox.cs" />
     <Compile Include="_classes\Process.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -285,6 +298,9 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Strings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Subforms\About.resx">
+      <DependentUpon>About.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Subforms\ChannelTitles.resx">
       <DependentUpon>ChannelTitles.cs</DependentUpon>
     </EmbeddedResource>
@@ -328,6 +344,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\icon.png" />
     <None Include="Resources\icons\tick.png" />
     <None Include="Resources\icons\cross.png" />
     <None Include="Resources\icons\locale.png" />

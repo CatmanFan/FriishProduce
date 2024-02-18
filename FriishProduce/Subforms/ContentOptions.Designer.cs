@@ -32,6 +32,7 @@ namespace FriishProduce
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ContentOptions));
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.Cancel = new System.Windows.Forms.Button();
             this.OK = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -47,25 +48,33 @@ namespace FriishProduce
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel1.Controls.Add(this.Cancel);
             this.panel1.Controls.Add(this.OK);
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
+            // 
+            // Cancel
+            // 
+            this.Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            resources.ApplyResources(this.Cancel, "Cancel");
+            this.Cancel.Name = "Cancel";
+            this.Cancel.UseVisualStyleBackColor = true;
             // 
             // OK
             // 
             resources.ApplyResources(this.OK, "OK");
             this.OK.Name = "OK";
             this.OK.UseVisualStyleBackColor = true;
-            this.OK.Click += new System.EventHandler(this.OK_Click);
             // 
             // ContentOptions
             // 
             this.AcceptButton = this.OK;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.CancelButton = this.Cancel;
             resources.ApplyResources(this, "$this");
             this.ControlBox = false;
             this.Controls.Add(this.panel2);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -73,7 +82,6 @@ namespace FriishProduce
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_Closing);
             this.Load += new System.EventHandler(this.Form_Load);
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
@@ -86,5 +94,6 @@ namespace FriishProduce
         private System.Windows.Forms.Panel panel2;
         protected System.Windows.Forms.Button OK;
         protected System.Windows.Forms.Panel panel1;
+        protected System.Windows.Forms.Button Cancel;
     }
 }

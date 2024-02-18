@@ -115,7 +115,8 @@ namespace Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Default settings.
+        ///   Looks up a localized string similar to Default settings
+        ///[{0}].
         /// </summary>
         public static string tabPage2_Text {
             get {

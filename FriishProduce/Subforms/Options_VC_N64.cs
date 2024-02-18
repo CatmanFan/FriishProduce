@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using static FriishProduce.Properties.Settings;
 
 namespace FriishProduce
 {
@@ -14,12 +15,21 @@ namespace FriishProduce
         {
             InitializeComponent();
 
+            Settings = new Dictionary<string, string>
+            {
+                { "brightness", Default.Default_N64_FixBrightness.ToString() },
+                { "crash",  Default.Default_N64_FixCrashes.ToString() },
+                { "expansion",  Default.Default_N64_ExtendedRAM.ToString() },
+                { "rom_autosize",  Default.Default_N64_AllocateROM.ToString() },
+                { "romc_0",  Default.Default_N64_ROMC0.ToString() }
+            };
+
             // Cosmetic
             // *******
             if (!DesignMode)
             {
-                ResetOptions(false);
                 Language.AutoSetForm(this);
+
                 panel3.Height = 6 + Math.Max(x009.Height, pictureBox1.Height) + 7;
                 Height = EmuType == 3 ? 320 : 260;
             }
@@ -27,23 +37,11 @@ namespace FriishProduce
 
         // ---------------------------------------------------------------------------------------------------------------
 
-        protected override void ResetOptions(bool NoDesign = true)
+        protected override void ResetOptions()
         {
-            if (Settings == null || Settings.Count == 0)
-            {
-                Settings = new Dictionary<string, string>
-                {
-                    { "brightness", "False" },
-                    { "crash", "False" },
-                    { "expansion", "False"},
-                    { "rom_autosize", "False" },
-                    { "romc_0", "False" }
-                };
-            }
-
             // Form control
             // *******
-            if (!NoDesign)
+            if (Settings != null)
             {
                 n64003.Enabled = n64001.Enabled = EmuType <= 1;
                 n64004.Visible = n64004.Enabled = EmuType == 3;
@@ -56,15 +54,13 @@ namespace FriishProduce
             // *******
         }
 
-        protected override bool SaveOptions()
+        protected override void SaveOptions()
         {
             Settings["brightness"] = n64000.Checked.ToString();
             Settings["crash"] = n64001.Checked.ToString();
             Settings["expansion"] = n64002.Checked.ToString();
             Settings["rom_autosize"] = n64003.Checked.ToString();
             Settings["romc_0"] = (ROMCType.SelectedIndex == 0).ToString();
-
-            return true;
         }
 
         // ---------------------------------------------------------------------------------------------------------------

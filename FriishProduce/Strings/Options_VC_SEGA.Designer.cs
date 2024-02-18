@@ -61,7 +61,16 @@ namespace Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Brillo.
+        ///   Looks up a localized string similar to Use Six Button Control Pad.
+        /// </summary>
+        public static string checkBox1_Text {
+            get {
+                return ResourceManager.GetString("checkBox1.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Brightness.
         /// </summary>
         public static string groupBox1_Text {
             get {

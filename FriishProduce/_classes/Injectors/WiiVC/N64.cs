@@ -266,7 +266,7 @@ namespace FriishProduce.WiiVC
                     foreach (var item in failed)
                         failedList += "- " + item + Environment.NewLine;
 
-                    System.Windows.Forms.MessageBox.Show(string.Format(Language.Get("Error004"), failedList), Language.Get("_AppTitle"));
+                    System.Windows.Forms.MessageBox.Show(string.Format(Language.Get("Error004"), failedList));
                 }
             }
             catch (Exception ex)

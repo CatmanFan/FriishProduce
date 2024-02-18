@@ -215,7 +215,7 @@ namespace FriishProduce
             // ----------------------------
 
             if (Tag != null && Tag.ToString() == "dirty")
-                if (MessageBox.Show(string.Format(Language.Get("Message001"), Text), Parent.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
+                if (MessageBox.Show(Text, Language.Get("Message001"), MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
                     e.Cancel = true;
         }
 
@@ -346,7 +346,7 @@ namespace FriishProduce
 
             Failed:
             System.Media.SystemSounds.Beep.Play();
-            MessageBox.Show(string.Format(Language.Get("Message005"), Reader.UpperTitleID), Parent.Text);
+            MessageBox.Show(string.Format(Language.Get("Message005"), Reader.UpperTitleID));
             return false;
         }
 
@@ -374,7 +374,7 @@ namespace FriishProduce
 
                 if (validFiles < 2)
                 {
-                    MessageBox.Show(Language.Get("Message006"), Language.Get("_AppTitle"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(Language.Get("Message006"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     Manual = null;
                     return;
                 }
@@ -447,7 +447,7 @@ namespace FriishProduce
             }
             catch
             {
-                MessageBox.Show(Language.Get("Error001"), Parent.Text);
+                MessageBox.Show(Language.Get("Error001"));
                 return false;
             }
         }
@@ -509,13 +509,13 @@ namespace FriishProduce
 
                 // Show message if partially failed to retrieve data
                 if (Retrieved && (LibRetro.GetTitle() == null || LibRetro.GetPlayers() == null || LibRetro.GetYear() == null || LibRetro.GetImgURL() == null))
-                    MessageBox.Show(Language.Get("Message004"), Parent.Text);
+                    MessageBox.Show(Language.Get("Message004"));
                 else if (!Retrieved) System.Media.SystemSounds.Beep.Play();
 
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, Language.Get("Error"), MessageBoxButtons.OK);
+                MessageBox.Show(ex.Message, Language.Get("Error"), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
 
@@ -553,7 +553,7 @@ namespace FriishProduce
                     if (Properties.Settings.Default.AutoOpenFolder)
                         System.Diagnostics.Process.Start("explorer.exe", $"/select, \"{Creator.Out}\"");
                     else
-                        MessageBox.Show(string.Format(Language.Get("Message003"), Creator.Out), Language.Get("_AppTitle"), MessageBoxButtons.OK);
+                        MessageBox.Show(string.Format(Language.Get("Message003"), Creator.Out), MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     return true;
                 }

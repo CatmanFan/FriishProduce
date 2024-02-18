@@ -115,12 +115,13 @@ namespace FriishProduce
             InitializeComponent();
             RefreshForm();
 
+            Program.Handle = Handle;
+
             Strip_OpenROM.Image = OpenROM.SmallImage;
             Strip_OpenImage.Image = OpenImage.SmallImage;
 
-            // Automatically set defined initial directories for each browse/save file dialog
+            // Automatically set defined initial directory for save file dialog
             // ********
-            BrowseManual.SelectedPath = BrowseImage.InitialDirectory = BrowseROM.InitialDirectory = Paths.EnvironmentFolder;
             SaveWAD.InitialDirectory = Paths.Out;
         }
 
@@ -157,9 +158,6 @@ namespace FriishProduce
             // ********
             if (tabControl.TabPages.Count >= 1)
             {
-                foreach (MdiTabControl.TabPage tabPage in tabControl.TabPages)
-                    tabPage.ContextMenuStrip = null;
-                tabControl.TabPages.SelectedTab().ContextMenuStrip = TabContextMenu;
 
                 if (sender == tabControl.TabPages[0]) Strip_UseLibRetro.Enabled = UseLibRetro.Enabled = (tabControl.SelectedForm as InjectorForm).ROMLoaded;
             }
@@ -178,7 +176,7 @@ namespace FriishProduce
 
             if (isUnsaved)
             {
-                if (MessageBox.Show(Language.Get("Message002"), Text, MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
+                if (MessageBox.Show(Language.Get("Message002"), MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
                     e.Cancel = true;
                 else
                     foreach (MdiTabControl.TabPage tabPage in tabControl.TabPages)
@@ -196,10 +194,16 @@ namespace FriishProduce
 
             tabControl.Visible = true;
 
-            InjectorForm Tab = new InjectorForm(console) { Parent = this };
+            InjectorForm Tab = new InjectorForm(console) { Parent = this, ContextMenuStrip = TabContextMenu };
             Tab.FormClosed += TabChanged;
             Tab.ExportCheck += ExportCheck;
             tabControl.TabPages.Add(Tab);
+
+            foreach (MdiTabControl.TabPage tabPage in tabControl.TabPages)
+            {
+                tabPage.ContextMenuStrip = null;
+                tabPage.ContextMenuStrip = TabContextMenu;
+            }
 
             // BrowseROMDialog(console, Tab);
         }
@@ -271,7 +275,15 @@ namespace FriishProduce
             catch { }
         }
 
+        private void TabContextMenu_Opening(object sender, CancelEventArgs e)
+        {
+            var page = (sender as ContextMenuStrip).SourceControl;
+            tabControl.TabPages[tabControl.TabPages.get_IndexOf(page as MdiTabControl.TabPage)].Select();
+        }
+
         private void CloseTab_Click(object sender, EventArgs e) => (tabControl.SelectedForm as Form).Close();
+
+        private void About_Click(object sender, EventArgs e) => new About().ShowDialog();
 
         private void MenuItem_Exit_Click(object sender, EventArgs e) => Application.Exit();
     }

@@ -29,13 +29,12 @@ namespace FriishProduce
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.BrightnessValue = new System.Windows.Forms.TrackBar();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BrightnessValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -43,21 +42,15 @@ namespace FriishProduce
             // 
             // OK
             // 
-            this.OK.Location = new System.Drawing.Point(324, 12);
+            this.OK.Location = new System.Drawing.Point(231, 12);
             // 
             // panel1
             // 
             this.panel1.Size = new System.Drawing.Size(429, 47);
             // 
-            // dataGridView1
+            // Cancel
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(409, 34);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
-            this.dataGridView1.Size = new System.Drawing.Size(371, 262);
-            this.dataGridView1.TabIndex = 13;
+            this.Cancel.Location = new System.Drawing.Point(327, 12);
             // 
             // groupBox1
             // 
@@ -85,13 +78,13 @@ namespace FriishProduce
             // BrightnessValue
             // 
             this.BrightnessValue.AutoSize = false;
-            this.BrightnessValue.Location = new System.Drawing.Point(9, 218);
+            this.BrightnessValue.Location = new System.Drawing.Point(9, 216);
             this.BrightnessValue.Maximum = 100;
             this.BrightnessValue.Name = "BrightnessValue";
-            this.BrightnessValue.Size = new System.Drawing.Size(223, 15);
+            this.BrightnessValue.Size = new System.Drawing.Size(223, 20);
             this.BrightnessValue.TabIndex = 15;
             this.BrightnessValue.TickFrequency = 5;
-            this.BrightnessValue.Value = 68;
+            this.BrightnessValue.Value = 100;
             this.BrightnessValue.Scroll += new System.EventHandler(this.BrightnessValue_Set);
             // 
             // pictureBox1
@@ -107,30 +100,39 @@ namespace FriishProduce
             this.pictureBox1.TabIndex = 14;
             this.pictureBox1.TabStop = false;
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(14, 267);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(155, 17);
+            this.checkBox1.TabIndex = 15;
+            this.checkBox1.Text = "Use Six Button Control Pad";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // Options_VC_SEGA
             // 
             this.ClientSize = new System.Drawing.Size(429, 388);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.dataGridView1);
             this.Name = "Options_VC_SEGA";
-            this.Controls.SetChildIndex(this.dataGridView1, 0);
             this.Controls.SetChildIndex(this.groupBox1, 0);
+            this.Controls.SetChildIndex(this.checkBox1, 0);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BrightnessValue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TrackBar BrightnessValue;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

@@ -450,6 +450,21 @@ namespace FriishProduce.WiiVC
             {
                 if (Path.GetFileName(item).ToLower() == "config")
                 {
+                    IDictionary<string, string> Settings = this.Settings;
+
+                    switch (IsSMS)
+                    {
+                        case true:
+                            foreach (var line in Settings.Keys.ToArray())
+                                if (line == "dev.mdpad.enable_6b") Settings.Remove(line);
+                            break;
+
+                        case false:
+                            foreach (var line in Settings.Keys.ToArray())
+                                if (line == "smsui.has_opll") Settings.Remove(line);
+                            break;
+                    }
+
                     List<string> newConfig = new List<string>();
                     List<string> alreadyAdded = new List<string>();
                     var oldConfig = File.ReadAllLines(item);

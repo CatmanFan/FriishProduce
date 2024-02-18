@@ -117,27 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AutoLibRetro.Text" xml:space="preserve">
-    <value>Cargar automáticamente datos desde LibRetro para la ROM
-seleccionada</value>
-  </data>
-  <data name="AutoOpenFolder.Text" xml:space="preserve">
-    <value>Abrir carpeta de salida tras la exportación de WAD</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Idioma:</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Método de interpolación de imágenes:</value>
-  </data>
-  <data name="LanguageList.Items" xml:space="preserve">
-    <value>Idioma del sistema</value>
-  </data>
-  <data name="tabPage1.Text" xml:space="preserve">
-    <value>Programa</value>
-  </data>
-  <data name="tabPage2.Text" xml:space="preserve">
-    <value>Ajustes por defecto
-[{0}]</value>
-  </data>
 </root>

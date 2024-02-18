@@ -68,7 +68,7 @@ For icons and interface:
 * **[RibbonWinForms](https://github.com/ribbonwinforms/ribbonwinforms)**.
 * **[MdiTabCtrl](https://github.com/JacksiroKe/MdiTabCtrl)** by Jack Siro.
 * **[Fugue Icons](https://p.yusukekamiyamane.com/)** by Yusuke Kamiyamane (Creative Commons Attribution 3.0 License).
-<!-- * **[VistaMenu](https://wyday.com/vistamenu/)** by wyDay. -->
+* **DotNetBarTabControl.cs** (see [this thread](https://stackoverflow.com/questions/7498413/vertical-tab-control-with-horizontal-text-in-winforms) on Stack Overflow).
 
 I would also like to thank the following people:
 * **[SuperrSonic](https://github.com/SuperrSonic)** for reverse-engineering much of Wii software and official emulator code, and in particular, his [fork of RetroArch Wii](https://github.com/SuperrSonic/RA-SS).

@@ -451,7 +451,6 @@ namespace FriishProduce
             // BrowseWAD
             // 
             resources.ApplyResources(this.BrowseWAD, "BrowseWAD");
-            this.BrowseWAD.RestoreDirectory = true;
             // 
             // InjectorForm
             // 

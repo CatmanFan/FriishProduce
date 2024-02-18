@@ -184,7 +184,7 @@ namespace FriishProduce
             this.ClientSize = new System.Drawing.Size(833, 354);
             this.Controls.Add(this.BannerPreview_Panel);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "BannerPreview";

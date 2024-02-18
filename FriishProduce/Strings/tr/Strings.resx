@@ -126,6 +126,9 @@
   <data name="Button_Cancel" xml:space="preserve">
     <value>&amp;İptal</value>
   </data>
+  <data name="Button_Close" xml:space="preserve">
+    <value>&amp;Kapat</value>
+  </data>
   <data name="Button_OK" xml:space="preserve">
     <value>&amp;Tamam</value>
   </data>
@@ -137,7 +140,8 @@
     <value>Bir hata oluştu</value>
   </data>
   <data name="Error000" xml:space="preserve">
-    <value>İnternet'e bağlanılamıyor.</value>
+    <value>İnternet'e bağlanılamıyor.
+Hata mesajı: {0}</value>
   </data>
   <data name="Error001" xml:space="preserve">
     <value>Resim oluşturma başarısız oldu.</value>

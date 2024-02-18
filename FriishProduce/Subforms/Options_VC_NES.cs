@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static FriishProduce.Properties.Settings;
 
 namespace FriishProduce
 {
@@ -15,48 +16,42 @@ namespace FriishProduce
 
         public Options_VC_NES() : base()
         {
-            ResetOptions();
             InitializeComponent();
+
+            Settings = new Dictionary<string, string>
+            {
+                { "palette", "0" },
+                { "use_tImg", "0" }
+            };
 
             // Cosmetic
             // *******
             if (!DesignMode)
             {
-                ResetOptions(false);
                 Language.AutoSetForm(this);
+
                 t.ToolTipTitle = Language.Get("Author").Replace("{0}", "").Trim();
             }
         }
 
         // ---------------------------------------------------------------------------------------------------------------
 
-        protected override void ResetOptions(bool NoDesign = true)
+        protected override void ResetOptions()
         {
-            if (Settings == null || Settings.Count == 0)
-            {
-                Settings = new Dictionary<string, string>
-                {
-                    { "palette", "0" },
-                    { "use_tImg", "0" }
-                };
-            }
-
             // Form control
             // *******
-            if (!NoDesign)
+            if (Settings != null)
             {
                 PaletteList.SelectedIndex = int.Parse(Settings["palette"]);
-                checkBox1.Checked = Settings["use_tImg"] == "0";
+                checkBox1.Checked = Settings["use_tImg"] == "1";
             }
             // *******
         }
 
-        protected override bool SaveOptions()
+        protected override void SaveOptions()
         {
             Settings["palette"] = PaletteList.SelectedIndex.ToString();
             Settings["use_tImg"] = checkBox1.Checked ? "1" : "0";
-
-            return true;
         }
 
         // ---------------------------------------------------------------------------------------------------------------

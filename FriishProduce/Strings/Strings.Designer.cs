@@ -124,6 +124,15 @@ namespace Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &amp;Close.
+        /// </summary>
+        public static string Button_Close {
+            get {
+                return ResourceManager.GetString("Button_Close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &amp;OK.
         /// </summary>
         public static string Button_OK {
@@ -151,7 +160,8 @@ namespace Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed to connect to the Internet..
+        ///   Looks up a localized string similar to Failed to connect to the Internet.
+        ///Message: {0}.
         /// </summary>
         public static string Error000 {
             get {
@@ -160,7 +170,8 @@ namespace Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed to generate image. This may be due to an issue with GDI+..
+        ///   Looks up a localized string similar to Failed to generate images.
+        ///This may be due to an issue with GDI+..
         /// </summary>
         public static string Error001 {
             get {
@@ -387,6 +398,15 @@ namespace Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Message {
+            get {
+                return ResourceManager.GetString("Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to An application restart is needed in order for changes to take effect.
         ///Restart now?.
         /// </summary>
@@ -397,7 +417,7 @@ namespace Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Discard unsaved changes to &quot;{0}&quot;?.
+        ///   Looks up a localized string similar to Discard unsaved changes to this project?.
         /// </summary>
         public static string Message001 {
             get {
@@ -425,7 +445,8 @@ namespace Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unable to retrieve all LibRetro data for the selected software. Some fields may need to be filled manually..
+        ///   Looks up a localized string similar to Unable to retrieve all LibRetro data for the selected software.
+        ///Some fields may need to be filled manually..
         /// </summary>
         public static string Message004 {
             get {
@@ -435,7 +456,6 @@ namespace Strings {
         
         /// <summary>
         ///   Looks up a localized string similar to The selected WAD ({0}) is not valid.
-        ///
         ///This could be for any of the following reasons:
         ///- The currently-selected console does not match that of the WAD.
         ///- The WAD is not yet available in the database.
@@ -449,7 +469,6 @@ namespace Strings {
         
         /// <summary>
         ///   Looks up a localized string similar to Not a valid emanual contents folder.
-        ///
         ///Please make sure the directory you selected contains a subfolder &quot;emanual&quot;, including the extracted contents of a manual .arc from a VC WAD..
         /// </summary>
         public static string Message006 {

@@ -7,6 +7,8 @@ namespace FriishProduce
 {
     static class Program
     {
+        public static IntPtr Handle { get; set; }
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>

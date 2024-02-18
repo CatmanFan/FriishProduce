@@ -70,5 +70,65 @@ namespace FriishProduce.Properties {
                 this["AutoOpenFolder"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool Default_N64_FixBrightness {
+            get {
+                return ((bool)(this["Default_N64_FixBrightness"]));
+            }
+            set {
+                this["Default_N64_FixBrightness"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool Default_N64_FixCrashes {
+            get {
+                return ((bool)(this["Default_N64_FixCrashes"]));
+            }
+            set {
+                this["Default_N64_FixCrashes"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool Default_N64_ExtendedRAM {
+            get {
+                return ((bool)(this["Default_N64_ExtendedRAM"]));
+            }
+            set {
+                this["Default_N64_ExtendedRAM"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool Default_N64_AllocateROM {
+            get {
+                return ((bool)(this["Default_N64_AllocateROM"]));
+            }
+            set {
+                this["Default_N64_AllocateROM"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool Default_N64_ROMC0 {
+            get {
+                return ((bool)(this["Default_N64_ROMC0"]));
+            }
+            set {
+                this["Default_N64_ROMC0"] = value;
+            }
+        }
     }
 }

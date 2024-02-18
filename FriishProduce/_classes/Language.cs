@@ -127,7 +127,7 @@ namespace FriishProduce
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"A fatal error occured while trying to read the English language resource files.\nKey name: {KeyName}\n{ResourceFileName} (index: {ResourceFileNumber}).\n\n" +
+                System.Windows.Forms.MessageBox.Show($"A fatal error occured while trying to read the English language resource files.\nKey name: {KeyName}\n{ResourceFileName} (index: {ResourceFileNumber}).\n\n" +
                     $"Exception: {ex.GetType()}\nMessage: {ex.Message}\n\nStack trace:" + Environment.NewLine + ex.StackTrace + Environment.NewLine + Environment.NewLine +
                     "The application will now shut down.", "Halt", MessageBoxButtons.OK, MessageBoxIcon.Hand);
                 Environment.FailFast(ex.Message);
@@ -244,8 +244,10 @@ namespace FriishProduce
         /// <param name="className">The name of the resource file</param>
         /// <param name="ci">CultureInfo name</param>
         /// <returns>English version by default if no corresponding localized string is found, and "undefined" if all methods fail.</returns>
-        public static string Get(string name, string source)
+        public static string Get(string name, string source, bool isControl = false)
         {
+            if (isControl) name += ".Text";
+
             int index = -1;
             for (int i = 0; i < Sources.Count; i++)
                 if (Sources[i] == source) index = i;
@@ -262,7 +264,9 @@ namespace FriishProduce
         }
 
         public static string Get(string name) => Get(name, "Strings");
-        public static string Get(string name, Control x) => Get(name + ".Text", x.Name);
+        public static string Get(string name, Control x) => Get(name, x.Name, true);
+        public static string Get(Control name, Control x) => Get(name.Name, x.Name, true);
+        public static string Get(Control name, string source) => Get(name.Name, source, true);
         #endregion Get
 
         #region GetArray

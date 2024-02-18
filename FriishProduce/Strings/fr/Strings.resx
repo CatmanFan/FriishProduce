@@ -132,6 +132,9 @@
   <data name="Button_Cancel" xml:space="preserve">
     <value>&amp;Annuler</value>
   </data>
+  <data name="Button_Close" xml:space="preserve">
+    <value>&amp;Fermer</value>
+  </data>
   <data name="Button_OK" xml:space="preserve">
     <value>&amp;OK</value>
   </data>
@@ -143,10 +146,12 @@
     <value>Une erreur est survenue</value>
   </data>
   <data name="Error000" xml:space="preserve">
-    <value>Échec de la connexion à Internet.</value>
+    <value>Échec de la connexion à Internet.
+Message : {0}</value>
   </data>
   <data name="Error001" xml:space="preserve">
-    <value>Échec de la génération de l'image. Cela peut être dû à un problème avec GDI+.</value>
+    <value>Échec de la génération de l'image.
+Cela peut être dû à un problème avec GDI+.</value>
   </data>
   <data name="Error002" xml:space="preserve">
     <value>Échec du replacement des données internes.</value>
@@ -233,7 +238,7 @@ Allocation pour la taille de la ROM</value>
 Redémarrer maintenant ?</value>
   </data>
   <data name="Message001" xml:space="preserve">
-    <value>Ignorer les modifications non enregistrées à « {0} » ?</value>
+    <value>Ignorer les modifications non enregistrées à ce projet ?</value>
   </data>
   <data name="Message002" xml:space="preserve">
     <value>Ignorer toutes les modifications non enregistrées ?</value>

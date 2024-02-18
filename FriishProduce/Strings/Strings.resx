@@ -132,6 +132,9 @@
   <data name="Button_Cancel" xml:space="preserve">
     <value>&amp;Cancel</value>
   </data>
+  <data name="Button_Close" xml:space="preserve">
+    <value>&amp;Close</value>
+  </data>
   <data name="Button_OK" xml:space="preserve">
     <value>&amp;OK</value>
   </data>
@@ -143,10 +146,12 @@
     <value>An error has occurred</value>
   </data>
   <data name="Error000" xml:space="preserve">
-    <value>Failed to connect to the Internet.</value>
+    <value>Failed to connect to the Internet.
+Message: {0}</value>
   </data>
   <data name="Error001" xml:space="preserve">
-    <value>Failed to generate image. This may be due to an issue with GDI+.</value>
+    <value>Failed to generate images.
+This may be due to an issue with GDI+.</value>
   </data>
   <data name="Error002" xml:space="preserve">
     <value>Unable to replace data.</value>
@@ -228,12 +233,15 @@ Crashes fix
 Extended ROM patch
 Allocation for ROM size</value>
   </data>
+  <data name="Message" xml:space="preserve">
+    <value />
+  </data>
   <data name="Message000" xml:space="preserve">
     <value>An application restart is needed in order for changes to take effect.
 Restart now?</value>
   </data>
   <data name="Message001" xml:space="preserve">
-    <value>Discard unsaved changes to "{0}"?</value>
+    <value>Discard unsaved changes to this project?</value>
   </data>
   <data name="Message002" xml:space="preserve">
     <value>Discard all unsaved changes?</value>
@@ -243,11 +251,11 @@ Restart now?</value>
 {0}</value>
   </data>
   <data name="Message004" xml:space="preserve">
-    <value>Unable to retrieve all LibRetro data for the selected software. Some fields may need to be filled manually.</value>
+    <value>Unable to retrieve all LibRetro data for the selected software.
+Some fields may need to be filled manually.</value>
   </data>
   <data name="Message005" xml:space="preserve">
     <value>The selected WAD ({0}) is not valid.
-
 This could be for any of the following reasons:
 - The currently-selected console does not match that of the WAD.
 - The WAD is not yet available in the database.
@@ -255,7 +263,6 @@ This could be for any of the following reasons:
   </data>
   <data name="Message006" xml:space="preserve">
     <value>Not a valid emanual contents folder.
-
 Please make sure the directory you selected contains a subfolder "emanual", including the extracted contents of a manual .arc from a VC WAD.</value>
   </data>
   <data name="PlatformGroup_0" xml:space="preserve">
