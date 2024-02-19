@@ -181,6 +181,16 @@ namespace FriishProduce
                     };
                     break;
 
+                // C64
+                // ********
+                case Console.C64:
+                    List = new DatabaseEntry[]
+                    {
+                            new DatabaseEntry("C9YE",   "International Karate",                         "International Karate", 0),
+                            new DatabaseEntry("C9YP",   "International Karate",                         "International Karate", 0)
+                    };
+                    break;
+
                 // Other
                 // ****************
 

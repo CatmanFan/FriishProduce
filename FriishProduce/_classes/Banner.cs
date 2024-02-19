@@ -83,18 +83,25 @@ namespace FriishProduce
                     bannerPath += region == Region.Japan ? "jp_smd.bnr" : region == Region.Europe ? "smd.bnr" : "gen.bnr";
                     break;
 
-                /* case Console.PCE:
+                case Console.PCE:
                     bannerPath += region == Region.Japan ? "jp_pce.bnr" : "tg16.bnr";
                     break;
 
                 case Console.NeoGeo:
+                    bannerPath += region == Region.Japan ? "jp_neogeo.bnr" : "neogeo.bnr";
                     break;
 
-                case Console.MSX:
+                case Console.C64:
+                    bannerPath += region == Region.Europe ? "c64_eu.bnr" : "c64_us.bnr";
                     break;
 
-                case Console.Flash:
-                    break; */
+                /* case Console.MSX:
+                     bannerPath += "jp_msx.bnr";
+                     break;
+
+                 case Console.Flash:
+                     bannerPath += "flash.bnr";
+                     break; */
 
                 default:
                     throw new NotImplementedException();
@@ -353,7 +360,7 @@ namespace FriishProduce
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message, Language.Get("Error"), System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Hand);
+                MessageBox.Show(Language.Get("Error"), ex.Message, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Hand);
             }
         }
 

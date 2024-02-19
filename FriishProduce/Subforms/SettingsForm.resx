@@ -663,6 +663,57 @@
   <data name="&gt;&gt;tabPage4.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="DownloadBanners.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 9</value>
+  </data>
+  <data name="DownloadBanners.Size" type="System.Drawing.Size, System.Drawing">
+    <value>421, 23</value>
+  </data>
+  <data name="DownloadBanners.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="DownloadBanners.Text" xml:space="preserve">
+    <value>Download VC banner files</value>
+  </data>
+  <data name="&gt;&gt;DownloadBanners.Name" xml:space="preserve">
+    <value>DownloadBanners</value>
+  </data>
+  <data name="&gt;&gt;DownloadBanners.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DownloadBanners.Parent" xml:space="preserve">
+    <value>DebugTab</value>
+  </data>
+  <data name="&gt;&gt;DownloadBanners.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="DebugTab.Location" type="System.Drawing.Point, System.Drawing">
+    <value>159, 4</value>
+  </data>
+  <data name="DebugTab.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="DebugTab.Size" type="System.Drawing.Size, System.Drawing">
+    <value>445, 454</value>
+  </data>
+  <data name="DebugTab.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="DebugTab.Text" xml:space="preserve">
+    <value>Debug</value>
+  </data>
+  <data name="&gt;&gt;DebugTab.Name" xml:space="preserve">
+    <value>DebugTab</value>
+  </data>
+  <data name="&gt;&gt;DebugTab.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DebugTab.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;DebugTab.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
   <data name="tabControl1.ItemSize" type="System.Drawing.Size, System.Drawing">
     <value>35, 155</value>
   </data>

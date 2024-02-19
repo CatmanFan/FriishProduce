@@ -95,7 +95,6 @@ namespace FriishProduce
             this.ribbon1.OrbDropDown.TabIndex = ((int)(resources.GetObject("ribbon1.OrbDropDown.TabIndex")));
             this.ribbon1.OrbStyle = System.Windows.Forms.RibbonOrbStyle.Office_2010_Extended;
             this.ribbon1.OrbText = "File";
-            this.ribbon1.PanelCaptionHeight = 14;
             // 
             // 
             // 

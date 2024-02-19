@@ -63,6 +63,7 @@ namespace FriishProduce
             Text = string.IsNullOrWhiteSpace(ChannelTitle.Text) ? Untitled : ChannelTitle.Text;
 
             SetROMDataText();
+            bannerPreview1.Update(BannerTitle.Text, (int)ReleaseYear.Value, (int)Players.Value, tImg != null ? tImg.VCPic : null, Creator.isJapan ? 1 : Creator.isKorea ? 2 : 0);
 
             baseName.Location = new Point(label4.Location.X + label4.Width - 4, label4.Location.Y);
             baseID.Location = new Point(label5.Location.X + label5.Width - 4, label5.Location.Y);
@@ -177,6 +178,7 @@ namespace FriishProduce
             button2.Enabled = tImg != null && !string.IsNullOrEmpty(Creator.BannerTitle);
 
             SetROMDataText();
+            bannerPreview1.Update(BannerTitle.Text, (int)ReleaseYear.Value, (int)Players.Value, tImg != null ? tImg.VCPic : null, Creator.isJapan ? 1 : Creator.isKorea ? 2 : 0);
 
             ReadyToExport =    !string.IsNullOrEmpty(Creator.TitleID) && Creator.TitleID.Length == 4
                             && !string.IsNullOrWhiteSpace(ChannelTitle.Text)
@@ -215,7 +217,7 @@ namespace FriishProduce
             // ----------------------------
 
             if (Tag != null && Tag.ToString() == "dirty")
-                if (MessageBox.Show(Text, Language.Get("Message001"), MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
+                if (MessageBox.Show(Text, Language.Get("Message001"), MessageBoxButtons.YesNo) == DialogResult.No)
                     e.Cancel = true;
         }
 
@@ -303,16 +305,6 @@ namespace FriishProduce
 
             if (imageintpl.SelectedIndex != Properties.Settings.Default.ImageInterpolation) Tag = "dirty";
             if (Creator != null && tImg != null) LoadImage();
-        }
-
-        private void ShowBanner_Click(object sender, EventArgs e)
-        {
-            BannerPreview preview = new BannerPreview(Creator.BannerTitle, Creator.BannerYear, Creator.BannerPlayers, tImg.VCPic, Creator.isJapan ? 1 : Creator.isKorea ? 2 : 0)
-            {
-                Text = string.Join(" - ", BannerTitle.Lines)
-            };
-            preview.ShowDialog(this);
-            preview.Dispose();
         }
 
         #region Load Data Functions
@@ -456,6 +448,54 @@ namespace FriishProduce
 
         public void LoadROM(string ROMpath, bool UseLibRetro = true)
         {
+            switch (Console)
+            {
+                default:
+                case Console.NES:
+                case Console.SNES:
+                case Console.N64:
+                case Console.SMS:
+                case Console.SMDGEN:
+                case Console.PCE:
+                    break;
+
+                case Console.NeoGeo:
+                    // Check if ZIP archive is of valid format
+                    // ****************
+                    var ZIP = Ionic.Zip.ZipFile.Read(ROMpath);
+                    int applicable = 0;
+
+                    foreach (var item in ZIP.Entries)
+                    {
+                        // First do a check to see if valid
+                        // ****************
+                        string[] allowed = new string[] { "c1", "c2", "m1", "p1", "s1", "v1" };
+
+                        foreach (string line in allowed)
+                            if (item.FileName.ToLower().EndsWith(line) || Path.GetFileNameWithoutExtension(item.FileName).ToLower().EndsWith(line))
+                                applicable++;
+                    }
+
+                    ZIP.Dispose();
+
+                    if (applicable < 6)
+                    {
+                        MessageBox.Show(Language.Get("Message007"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                    break;
+
+                case Console.MSX:
+                    break;
+
+                case Console.C64:
+                    break;
+
+                case Console.Flash:
+                    break;
+            }
+
+
             ROM = ROMpath;
             ROMLoaded = true;
 
@@ -515,7 +555,7 @@ namespace FriishProduce
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, Language.Get("Error"), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(Language.Get("Error"), ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Hand);
             }
         }
 
@@ -562,7 +602,7 @@ namespace FriishProduce
 
             catch (Exception ex)
             {
-                Creator.ShowErrorMessage(ex);
+                MessageBox.Show(Language.Get("Error"), ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Hand);
                 return false;
             }
 
@@ -618,11 +658,21 @@ namespace FriishProduce
                         IsSMS = Console == Console.SMS
                     };
                     break;
+
+
+                // NEOGEO
+                // *******
+                case Console.NeoGeo:
+                    VC = new WiiVC.NeoGeo()
+                    {
+                        BIOSPath = null
+                    };
+                    break;
             }
 
             // Set path to manual folder (if it exists) and load WAD
             // *******
-            try { VC.Settings = CO.Settings; } catch { VC.Settings = new Dictionary<string, string> { { "N/A", "N/A" } }; }
+            if (CO != null) { VC.Settings = CO.Settings; } else { VC.Settings = new Dictionary<string, string> { { "N/A", "N/A" } }; }
             VC.ManualPath = Manual;
             if (WADPath != null) VC.WAD = WAD.Load(WADPath);
             else for (int x = 0; x < Database.List.Length; x++)

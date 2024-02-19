@@ -135,8 +135,14 @@
   <data name="Button_Close" xml:space="preserve">
     <value>&amp;Close</value>
   </data>
+  <data name="Button_No" xml:space="preserve">
+    <value>&amp;No</value>
+  </data>
   <data name="Button_OK" xml:space="preserve">
     <value>&amp;OK</value>
+  </data>
+  <data name="Button_Yes" xml:space="preserve">
+    <value>&amp;Yes</value>
   </data>
   <data name="ByDefault" xml:space="preserve">
     <value>Default</value>
@@ -255,15 +261,18 @@ Restart now?</value>
 Some fields may need to be filled manually.</value>
   </data>
   <data name="Message005" xml:space="preserve">
-    <value>The selected WAD ({0}) is not valid.
+    <value>The WAD you have selected (title ID: {0}) is is not valid.
 This could be for any of the following reasons:
-- The currently-selected console does not match that of the WAD.
+- The currently-selected console does not match that used by the WAD.
 - The WAD is not yet available in the database.
-- The WAD is already modified (i.e. injected or converted to a forwarder).</value>
+- The WAD has already been modified (i.e. injected or converted to a forwarder).</value>
   </data>
   <data name="Message006" xml:space="preserve">
     <value>Not a valid emanual contents folder.
 Please make sure the directory you selected contains a subfolder "emanual", including the extracted contents of a manual .arc from a VC WAD.</value>
+  </data>
+  <data name="Message007" xml:space="preserve">
+    <value>The ZIP archive you have selected is not valid.</value>
   </data>
   <data name="PlatformGroup_0" xml:space="preserve">
     <value>Nintendo</value>

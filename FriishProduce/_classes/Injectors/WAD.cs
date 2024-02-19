@@ -41,7 +41,5 @@ namespace FriishProduce
 
             w.Save(Out);
         }
-
-        public void ShowErrorMessage(Exception ex) => MessageBox.Show(ex.Message, Language.Get("Error"), MessageBoxButtons.OK, MessageBoxIcon.Hand);
     }
 }

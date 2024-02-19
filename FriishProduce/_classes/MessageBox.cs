@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.WindowsAPICodePack.Dialogs;
+using Ookii.Dialogs.WinForms;
 
 namespace FriishProduce
 {
@@ -14,11 +14,10 @@ namespace FriishProduce
         {
             TaskDialog t = new TaskDialog()
             {
-                Caption = Language.Get("_AppTitle"),
-                InstructionText = mainText,
-                Text = description,
-                Cancelable = false,
-                OwnerWindowHandle = Program.Handle,
+                WindowTitle = Language.Get("_AppTitle"),
+                MainInstruction = mainText,
+                Content = description,
+                AllowDialogCancellation = false
             };
 
             var lines = mainText.Replace("\r\n", "\n").Split('\n');
@@ -29,9 +28,14 @@ namespace FriishProduce
                 for (int i = 1; i < lines.Length; i++)
                     secondary.Add(lines[i]);
 
-                t.InstructionText = lines[0];
-                t.Text = string.Join("\n", secondary.ToArray());
+                t.MainInstruction = lines[0];
+                t.Content = string.Join("\n", secondary.ToArray());
             }
+
+            var O = new TaskDialogButton { Text = Language.Get("Button_OK") };
+            var C = new TaskDialogButton { Text = Language.Get("Button_Cancel") };
+            var Y = new TaskDialogButton { Text = Language.Get("Button_Yes") };
+            var N = new TaskDialogButton { Text = Language.Get("Button_No") };
 
             switch (buttons)
             {
@@ -39,19 +43,23 @@ namespace FriishProduce
                 case MessageBoxButtons.OK:
                 case MessageBoxButtons.AbortRetryIgnore:
                 case MessageBoxButtons.RetryCancel:
-                    t.StandardButtons = TaskDialogStandardButtons.Ok;
+                    t.Buttons.Add(O);
                     break;
 
                 case MessageBoxButtons.OKCancel:
-                    t.StandardButtons = TaskDialogStandardButtons.Ok | TaskDialogStandardButtons.Cancel;
+                    t.Buttons.Add(O);
+                    t.Buttons.Add(C);
                     break;
 
                 case MessageBoxButtons.YesNo:
-                    t.StandardButtons = TaskDialogStandardButtons.Yes | TaskDialogStandardButtons.No;
+                    t.Buttons.Add(Y);
+                    t.Buttons.Add(N);
                     break;
 
                 case MessageBoxButtons.YesNoCancel:
-                    t.StandardButtons = TaskDialogStandardButtons.Yes | TaskDialogStandardButtons.No | TaskDialogStandardButtons.Cancel;
+                    t.Buttons.Add(Y);
+                    t.Buttons.Add(N);
+                    t.Buttons.Add(C);
                     break;
             }
 
@@ -59,40 +67,33 @@ namespace FriishProduce
             {
                 case MessageBoxIcon.None:
                 case MessageBoxIcon.Question:
-                    t.Icon = TaskDialogStandardIcon.None;
-
                     break;
+
                 case MessageBoxIcon.Hand:
-                    t.Icon = TaskDialogStandardIcon.Error;
+                    t.MainIcon = TaskDialogIcon.Error;
                     break;
 
                 case MessageBoxIcon.Exclamation:
-                    t.Icon = TaskDialogStandardIcon.Warning;
+                    t.MainIcon = TaskDialogIcon.Warning;
                     break;
 
                 case MessageBoxIcon.Asterisk:
-                    t.Icon = TaskDialogStandardIcon.Information;
+                    t.MainIcon = TaskDialogIcon.Information;
                     break;
             }
 
-            switch (t.Show())
-            {
-                default:
-                case TaskDialogResult.Ok:
-                    return DialogResult.OK;
-
-                case TaskDialogResult.Yes:
-                    return DialogResult.Yes;
-
-                case TaskDialogResult.No:
-                    return DialogResult.No;
-
-                case TaskDialogResult.Cancel:
-                    return DialogResult.Cancel;
-            }
+            var text = t.ShowDialog().Text;
+            if (text == Language.Get("Button_Cancel")) return DialogResult.Cancel;
+            if (text == Language.Get("Button_Yes")) return DialogResult.Yes;
+            if (text == Language.Get("Button_No")) return DialogResult.No;
+            return DialogResult.OK;
         }
 
         public static DialogResult Show(string mainText, MessageBoxButtons buttons, MessageBoxIcon icon) => Show(mainText, null, buttons, icon);
+
+        public static DialogResult Show(string mainText, string description, MessageBoxButtons buttons) => Show(mainText, description, buttons, MessageBoxIcon.None);
+
+        public static DialogResult Show(string mainText, MessageBoxButtons buttons) => Show(mainText, null, buttons, MessageBoxIcon.None);
 
         public static void Show(string mainText, string description = null) => Show(mainText, description, MessageBoxButtons.OK, MessageBoxIcon.None);
     }

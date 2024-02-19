@@ -81,7 +81,7 @@ namespace FriishProduce.WiiVC
             base.Load();
 
             GetCCF(1);
-            ReplaceManual();
+            ReplaceManual(MainContent);
 
             switch (WAD.UpperTitleID.Substring(0, 3).ToUpper())
             {
@@ -173,20 +173,22 @@ namespace FriishProduce.WiiVC
         /// </summary>
         /// <param name="raw">Determines whether to use ccfarcraw.exe (needed for misc.ccf)</param>
         /// <returns>Path to an out.ccf file if it was created.</returns>
-        private byte[] RunCCFArc(string dir, int type)
+        private byte[] RunCCFArc(string dir, int type, bool AlternateMethod = true)
         {
             bool Failsafe = false;
             string files = "";
 
             if (dir == Paths.DataCCF)
             {
-                files = $"Opera.arc {ROMName}";
-                List<string> filesList = new List<string>();
-
-                // Use alternative order if the following bases are encountered
-                // ****************
-                string[] order_ROMNameFirst = new string[]
+                if (!AlternateMethod)
                 {
+                    files = $"Opera.arc {ROMName}";
+                    List<string> filesList = new List<string>();
+
+                    // Use alternative order if the following bases are encountered
+                    // ****************
+                    string[] order_ROMNameFirst = new string[]
+                    {
                     // --* SMS *-- //
                     "FantasyZone2",
                     "WBMonsterLand",
@@ -202,95 +204,99 @@ namespace FriishProduce.WiiVC
                     "StreetsRage3",
                     "DynamiteHeaddy",
                     "MonsterWorld4"
-                };
-                foreach (var item in order_ROMNameFirst)
-                    if (ROMName.Contains(item)) files = $"{ROMName} Opera.arc";
+                    };
+                    foreach (var item in order_ROMNameFirst)
+                        if (ROMName.Contains(item)) files = $"{ROMName} Opera.arc";
 
-                string[] order_noROM = new string[]
-                {
+                    string[] order_noROM = new string[]
+                    {
                     // --* SMS *-- //
                     "SecretComm",
 
                     // --* SMD *-- //
                     "sandk_composite"
-                };
-                foreach (var item in order_noROM)
-                    if (ROMName.Contains(item)) files = "Opera.arc";
+                    };
+                    foreach (var item in order_noROM)
+                        if (ROMName.Contains(item)) files = "Opera.arc";
 
-                // Add other files by alphabetical order
-                // ****************
-                foreach (var item in Directory.EnumerateFiles(dir))
-                    if (!files.Contains(Path.GetFileName(item).Replace("__", "")))
-                        filesList.Add(Path.GetFileName(item));
+                    // Add other files by alphabetical order
+                    // ****************
+                    foreach (var item in Directory.EnumerateFiles(dir))
+                        if (!files.Contains(Path.GetFileName(item).Replace("__", "")))
+                            filesList.Add(Path.GetFileName(item));
 
-                filesList = filesList.OrderBy(st => st.Replace('_', ' ')).ToList();
-                foreach (var item in filesList)
-                    files += " " + item;
-
-                #region [Alternative method if the above does not work]
-                /* /!\ Uses specific strings for bases /!\
-                 -----------------------------------------------
-                switch (EmuType)
-                {
-                    case Type.Rev1:
-                    case Type.Rev2:
-                        files = $"Opera.arc {ROMName} config man.arc misc.ccf";
-                        break;
-
-                    case Type.Rev3:
-                        if (IsSMS)
-                            files = $"Opera.arc {ROMName} config emu_m68kbase.rso home.csv man.arc misc.ccf patch se_vc.rso sms.rso tsdevp.rso wii_vc.sel";
-                        else
-                            files = $"Opera.arc {ROMName} config emu_m68kbase.rso home.csv man.arc md.rso misc.ccf patch se_vc.rso tsdevp.rso wii_vc.sel";
-                        break;
+                    filesList = filesList.OrderBy(st => st.Replace('_', ' ')).ToList();
+                    foreach (var item in filesList)
+                        files += " " + item;
                 }
 
-                // Check for missing files
-                // ****************
-                foreach (var item in Directory.EnumerateFiles(dir))
+                else
                 {
-                    // General
-                    // ****************
-                    if (Path.GetFileName(item).ToLower() == "patch" && !files.Contains(" patch"))
-                        files = files.Replace("misc.ccf", "misc.ccf patch");
-                    if (Path.GetFileName(item).ToLower() == "home.csv" && !files.Contains("home.csv"))
-                        files = files.Replace("man.arc", "home.csv man.arc");
+                    #region [Alternative method if the above does not work]
+                    // /!\ Uses specific strings for bases /!\ //
+                    // -----------------------------------------------
+                    switch (EmuType)
+                    {
+                        case 1:
+                        case 2:
+                            files = $"Opera.arc {ROMName} config man.arc misc.ccf";
+                            break;
 
-                    // Specific console files
-                    // ****************
-                    if (Path.GetFileName(item).ToLower() == "smsui.rso" && !files.Contains("smsui.rso"))
-                        files = files.Replace("sms.rso", "sms.rso smsui.rso");
+                        case 3:
+                            if (IsSMS)
+                                files = $"Opera.arc {ROMName} config emu_m68kbase.rso home.csv man.arc misc.ccf patch se_vc.rso sms.rso tsdevp.rso wii_vc.sel";
+                            else
+                                files = $"Opera.arc {ROMName} config emu_m68kbase.rso home.csv man.arc md.rso misc.ccf patch se_vc.rso tsdevp.rso wii_vc.sel";
+                            break;
+                    }
 
-                    // Select Menu
+                    // Check for missing files
                     // ****************
-                    if (Path.GetFileName(item).ToLower() == "selectmenu.cat" && !files.Contains("selectmenu.cat") && files.Contains("se_vc.rso"))
-                        files = files.Replace("se_vc.rso", "se_vc.rso selectmenu.cat");
-                    if (Path.GetFileName(item).ToLower() == "selectmenu.conf" && files.Contains("selectmenu.cat"))
-                        files = files.Replace("selectmenu.cat", "selectmenu.cat selectmenu.conf");
-                    if (Path.GetFileName(item).ToLower() == "selectmenu.rso" && files.Contains("selectmenu.conf"))
-                        files = files.Replace("selectmenu.conf", "selectmenu.conf selectmenu.rso");
+                    foreach (var item in Directory.EnumerateFiles(dir))
+                    {
+                        // General
+                        // ****************
+                        if (Path.GetFileName(item).ToLower() == "patch" && !files.Contains(" patch"))
+                            files = files.Replace("misc.ccf", "misc.ccf patch");
+                        if (Path.GetFileName(item).ToLower() == "home.csv" && !files.Contains("home.csv"))
+                            files = files.Replace("man.arc", "home.csv man.arc");
+
+                        // Specific console files
+                        // ****************
+                        if (Path.GetFileName(item).ToLower() == "smsui.rso" && !files.Contains("smsui.rso"))
+                            files = files.Replace("sms.rso", "sms.rso smsui.rso");
+
+                        // Select Menu
+                        // ****************
+                        if (Path.GetFileName(item).ToLower() == "selectmenu.cat" && !files.Contains("selectmenu.cat") && files.Contains("se_vc.rso"))
+                            files = files.Replace("se_vc.rso", "se_vc.rso selectmenu.cat");
+                        if (Path.GetFileName(item).ToLower() == "selectmenu.conf" && files.Contains("selectmenu.cat"))
+                            files = files.Replace("selectmenu.cat", "selectmenu.cat selectmenu.conf");
+                        if (Path.GetFileName(item).ToLower() == "selectmenu.rso" && files.Contains("selectmenu.conf"))
+                            files = files.Replace("selectmenu.conf", "selectmenu.conf selectmenu.rso");
+                    }
+
+                    IDictionary<string, string> FilesLists = new Dictionary<string, string>()
+                    {
+                        { "Columns1",       $"{ROMName} Opera.arc config man.arc misc.ccf" },
+                        { "ComixZone",      $"{ROMName} Opera.arc config man.arc misc.ccf" },
+                        { "WBMonsterWorld", $"{ROMName} Opera.arc config man.arc misc.ccf" },
+                        { "Columns3",       $"{ROMName} Opera.arc config home.csv man.arc misc.ccf patch"},
+                        { "BareKnuckle2",   $"{ROMName} Opera.arc config home.csv man.arc misc.ccf" },
+                        { "StreetsRage2",   $"{ROMName} Opera.arc config home.csv man.arc misc.ccf" },
+                        { "StreetsRage3",   $"{ROMName} Opera.arc config home.csv man.arc misc.ccf" },
+                        { "DynamiteHeaddy", $"{ROMName} Opera.arc config home.csv man.arc misc.ccf" },
+                        { "MonsterWorld4",  $"{ROMName} Opera.arc config emu_m68kbase.rso home.csv man.arc md.rso misc.ccf patch se_vc.rso selectmenu.cat selectmenu.conf tsdevp.rso wii_vc.sel" },
+                        { "SonicKnuckles",  $"Opera.arc config emu_m68kbase.rso home.csv man.arc md.rso misc.ccf patch {ROMName} sandkui.rso se_vc.rso selectmenu.cat selectmenu.conf selectmenu.rso tsdevp.rso wii_vc.sel" }
+                    };
+
+                    foreach (var item in FilesLists)
+                        if (ROMName.Contains(item.Key)) files = item.Value;
+
+                    if (ROMName.Contains("SonicKnuckles") || ROMName.Contains("sandk_"))
+                        files = $"Opera.arc config emu_m68kbase.rso home.csv man.arc md.rso misc.ccf patch {ROMName} sandkui.rso se_vc.rso selectmenu.cat selectmenu.conf selectmenu.rso tsdevp.rso wii_vc.sel";
+                    #endregion
                 }
-
-                IDictionary<string, string> FilesLists = new Dictionary<string, string>()
-                {
-                    { "Columns1",       $"{ROMName} Opera.arc config man.arc misc.ccf" },
-                    { "ComixZone",      $"{ROMName} Opera.arc config man.arc misc.ccf" },
-                    { "WBMonsterWorld", $"{ROMName} Opera.arc config man.arc misc.ccf" },
-                    { "Columns3",       $"{ROMName} Opera.arc config home.csv man.arc misc.ccf patch"},
-                    { "BareKnuckle2",   $"{ROMName} Opera.arc config home.csv man.arc misc.ccf" },
-                    { "StreetsRage2",   $"{ROMName} Opera.arc config home.csv man.arc misc.ccf" },
-                    { "StreetsRage3",   $"{ROMName} Opera.arc config home.csv man.arc misc.ccf" },
-                    { "DynamiteHeaddy", $"{ROMName} Opera.arc config home.csv man.arc misc.ccf" },
-                    { "MonsterWorld4",  $"{ROMName} Opera.arc config emu_m68kbase.rso home.csv man.arc md.rso misc.ccf patch se_vc.rso selectmenu.cat selectmenu.conf tsdevp.rso wii_vc.sel" },
-                    { "SonicKnuckles",  $"Opera.arc config emu_m68kbase.rso home.csv man.arc md.rso misc.ccf patch {ROMName} sandkui.rso se_vc.rso selectmenu.cat selectmenu.conf selectmenu.rso tsdevp.rso wii_vc.sel" }
-                };
-
-                foreach (var item in FilesLists)
-                    if (ROMName.Contains(item.Key)) files = item.Value;
-                
-                if (ROMName.Contains("SonicKnuckles") || ROMName.Contains("sandk_"))
-                    files = $"Opera.arc config emu_m68kbase.rso home.csv man.arc md.rso misc.ccf patch {ROMName} sandkui.rso se_vc.rso selectmenu.cat selectmenu.conf selectmenu.rso tsdevp.rso wii_vc.sel"; */
-                #endregion
 
                 // Check if ROM filename contains underscores
                 // ****************

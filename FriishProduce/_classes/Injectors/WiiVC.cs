@@ -48,7 +48,6 @@ namespace FriishProduce
         protected U8 MainContent { get; set; }
 
         public InjectorWiiVC() { }
-
         protected virtual void Load()
         {
             Contents = new List<byte[]>();
@@ -80,10 +79,10 @@ namespace FriishProduce
             if (MainContentIndex > 1 && WAD.Contents.Length > MainContentIndex)
                 MainContent = U8.Load(WAD.Contents[MainContentIndex]);
 
-            if (NeedsManualLoaded) ReplaceManual();
+            if (NeedsManualLoaded) ReplaceManual(MainContent);
         }
 
-        protected void ReplaceManual()
+        protected void ReplaceManual(U8 target)
         {
             if (ManualPath == null)
             {
@@ -152,11 +151,11 @@ namespace FriishProduce
                 }
                 else
                 {
-                    foreach (var item in MainContent.StringTable)
+                    foreach (var item in target.StringTable)
                         if (item.ToLower().Contains("emanual.arc") || item.ToLower().Contains("html.arc") || item.ToLower().Contains("man.arc"))
                         {
                             OrigManual = item;
-                            Manual = MainContent.Data[MainContent.GetNodeIndex(OrigManual)];
+                            Manual = target.Data[target.GetNodeIndex(OrigManual)];
                         }
                         else if (item.ToLower().Contains("htmlc.arc"))
                         {
@@ -184,7 +183,7 @@ namespace FriishProduce
                 if (File.Exists(OrigManual))
                     File.WriteAllBytes(OrigManual, ManualArc.ToByteArray());
                 else
-                    MainContent.ReplaceFile(MainContent.GetNodeIndex(OrigManual), ManualArc.ToByteArray());
+                    target.ReplaceFile(target.GetNodeIndex(OrigManual), ManualArc.ToByteArray());
 
                 ManualArc.Dispose();
                 Directory.Delete(Paths.Manual, true);

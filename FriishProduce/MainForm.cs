@@ -278,7 +278,8 @@ namespace FriishProduce
         private void TabContextMenu_Opening(object sender, CancelEventArgs e)
         {
             var page = (sender as ContextMenuStrip).SourceControl;
-            tabControl.TabPages[tabControl.TabPages.get_IndexOf(page as MdiTabControl.TabPage)].Select();
+            var index = tabControl.TabPages.get_IndexOf(page as MdiTabControl.TabPage);
+            tabControl.TabPages[index].Select();
         }
 
         private void CloseTab_Click(object sender, EventArgs e) => (tabControl.SelectedForm as Form).Close();

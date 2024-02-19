@@ -11,9 +11,11 @@ using System.Windows.Forms;
 
 namespace FriishProduce
 {
-    public partial class BannerPreview : Form
+    public partial class BannerPreview : UserControl
     {
-        public BannerPreview(string title, int year, int players, Image img, int altRegion = 0)
+        public BannerPreview() => InitializeComponent();
+
+        public BannerPreview(string title, int year, int players, Image img, int altRegion = 0, bool animation = false)
         {
             InitializeComponent();
 
@@ -23,6 +25,24 @@ namespace FriishProduce
             BannerPreview_Line2.Refresh();
             BannerPreview_BG.Refresh();
 
+            Update(title, year, players, img, altRegion);
+
+            if (animation)
+            {
+                var dif = 50;
+                Image.Location = new Point(Image.Location.X, Image.Location.Y - dif);
+                BannerPreview_Label.Location = new Point(BannerPreview_Label.Location.X, BannerPreview_Label.Location.Y + dif);
+                BannerPreview_Year.Location = new Point(BannerPreview_Year.Location.X - (dif * 6), BannerPreview_Year.Location.Y);
+                BannerPreview_Players.Location = new Point(BannerPreview_Year.Location.X, BannerPreview_Players.Location.Y);
+                BannerPreview_Line1.Location = new Point(BannerPreview_Line1.Location.X - (dif * 3), BannerPreview_Line1.Location.Y);
+                BannerPreview_Line2.Location = new Point(BannerPreview_Line1.Location.X, BannerPreview_Line2.Location.Y);
+                Animation1.Enabled = true;
+                Animation1.Start();
+            }
+        }
+
+        public void Update(string title, int year, int players, Image img, int altRegion = 0)
+        {
             BannerPreview_Year.Tag = Language.Current.TwoLetterISOLanguageName == "ja" || altRegion == 1 ? "{0}年発売"
                                       : Language.Current.TwoLetterISOLanguageName == "ko" || altRegion == 2 ? "일본판 발매년도\r\n{0}년"
                                       : Language.Current.TwoLetterISOLanguageName == "nl" ? "Release: {0}"
@@ -46,16 +66,6 @@ namespace FriishProduce
             BannerPreview_Year.Text = string.Format(BannerPreview_Year.Tag.ToString(), year);
             BannerPreview_Players.Text = string.Format(BannerPreview_Players.Tag.ToString(), $"{1}{(players <= 1 ? null : "-" + players)}");
             if (Language.Current.TwoLetterISOLanguageName == "ja" || altRegion == 1) BannerPreview_Players.Text = BannerPreview_Players.Text.Replace("-", "～");
-
-            var dif = 50;
-            Image.Location = new Point(Image.Location.X, Image.Location.Y - dif);
-            BannerPreview_Label.Location = new Point(BannerPreview_Label.Location.X, BannerPreview_Label.Location.Y + dif);
-            BannerPreview_Year.Location = new Point(BannerPreview_Year.Location.X - (dif * 6), BannerPreview_Year.Location.Y);
-            BannerPreview_Players.Location = new Point(BannerPreview_Year.Location.X, BannerPreview_Players.Location.Y);
-            BannerPreview_Line1.Location = new Point(BannerPreview_Line1.Location.X - (dif * 3), BannerPreview_Line1.Location.Y);
-            BannerPreview_Line2.Location = new Point(BannerPreview_Line1.Location.X, BannerPreview_Line2.Location.Y);
-            Animation1.Enabled = true;
-            Animation1.Start();
         }
 
         private void BannerPreview_Paint(object sender, PaintEventArgs e)
@@ -78,29 +88,6 @@ namespace FriishProduce
                         e.Graphics.FillRectangle(b, (sender as Control).ClientRectangle);
                     }
             }
-        }
-
-        private void ExportBanner_Click(object sender, EventArgs e)
-        {
-            System.Media.SystemSounds.Beep.Play();
-
-            var WADs = new Dictionary<string, Console>()
-            {
-                /* { "FCWP", Console.NES }, // SMB3
-                { "FCWJ", Console.NES },
-                { "FCWQ", Console.NES },
-                { "JBDP", Console.SNES }, // DKC2
-                { "JBDJ", Console.SNES },
-                { "JBDT", Console.SNES },
-                { "NAAP", Console.N64 }, // SM64
-                { "NAAJ", Console.N64 },
-                { "NABT", Console.N64 }, // MK64 */
-            };
-
-            foreach (var item in WADs)
-                Banner.ExportBanner(item.Key, item.Value);
-
-            System.Media.SystemSounds.Beep.Play();
         }
 
         private void Animation1_Tick(object sender, EventArgs e)

@@ -110,5 +110,32 @@ namespace FriishProduce
         }
 
         private void Cancel_Click(object sender, EventArgs e) => DialogResult = DialogResult.Cancel;
+
+        private void DownloadBanners_Click(object sender, EventArgs e)
+        {
+            System.Media.SystemSounds.Beep.Play();
+
+            var WADs = new Dictionary<string, Console>()
+            {
+                /* { "FCWP", Console.NES }, // SMB3
+                { "FCWJ", Console.NES },
+                { "FCWQ", Console.NES },
+                { "JBDP", Console.SNES }, // DKC2
+                { "JBDJ", Console.SNES },
+                { "JBDT", Console.SNES },
+                { "NAAP", Console.N64 }, // SM64
+                { "NAAJ", Console.N64 },
+                { "NABT", Console.N64 }, // MK64
+                { "EAJP", Console.NeoGeo },
+                { "EAJJ", Console.NeoGeo }, */
+                { "C9YE", Console.C64 },
+                { "C9YP", Console.C64 }
+            };
+
+            foreach (var item in WADs)
+                Banner.ExportBanner(item.Key, item.Value);
+
+            System.Media.SystemSounds.Beep.Play();
+        }
     }
 }

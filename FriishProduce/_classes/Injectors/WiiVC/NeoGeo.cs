@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.IO.Compression;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using libWiiSharp;
+using Ionic.Zip;
 
 namespace FriishProduce.WiiVC
 {
@@ -13,54 +13,49 @@ namespace FriishProduce.WiiVC
     {
         public string BIOSPath { get; set; }
 
-        private byte[] P { get; set; }
+        private List<byte> P { get; set; }
         private List<byte> M { get; set; }
         private List<byte> V { get; set; }
         private List<byte> S { get; set; }
         private List<byte> C { get; set; }
         private List<byte> BIOS { get; set; }
 
+        private ZipFile ZIP { get; set; }
+
+        private U8 ManualIndex { get; set; }
+
         protected override void Load()
         {
             NeedsManualLoaded = false;
             base.Load();
 
-            if (Contents.Count >= 8)
-            {
-                if (Contents[5].Length > Contents[6].Length && Contents[5].Length > Contents[7].Length)         MainContent = U8.Load(Contents[5]);
-                else if (Contents[6].Length > Contents[5].Length && Contents[6].Length > Contents[7].Length)    MainContent = U8.Load(Contents[6]);
-                else MainContent = U8.Load(Contents[7]);
-            }
-            else if (Contents.Count == 7)
-                MainContent = Contents[6].Length > Contents[5].Length ? U8.Load(Contents[6]) : U8.Load(Contents[5]);
-            else MainContent = U8.Load(Contents[5]);
+            // Game.bin may be stored on either 00000006.app or 00000005.app.
+            // In all cases the manual files are stored also on 00000005.app.
+            // ****************
+            if (Contents.Count >= 7)
+                MainContentIndex = WAD.Contents[6].Length > WAD.Contents[5].Length ? 6 : 5;
+            else MainContentIndex = 5;
+
+            MainContent = U8.Load(WAD.Contents[MainContentIndex]);
+
+            if (Contents.Count >= 7) ManualIndex = U8.Load(WAD.Contents[5]);
+            ReplaceManual(Contents.Count >= 7 ? ManualIndex : MainContent);
+
+            ZIP = ZipFile.Read(new MemoryStream(ROM));
         }
 
-        public bool IsValidROM()
+        /// <summary>
+        /// Gets a specific file from the archive and extracts it to a byte array via a memory stream.
+        /// </summary>
+        private byte[] ExtractToByteArray(string file)
         {
-            MemoryStream stream = new MemoryStream(ROM);
-            ZipArchive zip = new ZipArchive(stream);
-            bool applicable = false;
-
-            foreach (ZipArchiveEntry item in zip.Entries)
-            {
-                // First do a check to see if valid
-                // ****************
-                if (item.Name.EndsWith("c1.bin")
-                 || item.Name.EndsWith("c2.bin")
-                 || item.Name.EndsWith("m1.bin")
-                 || item.Name.EndsWith("p1.bin")
-                 || item.Name.EndsWith("s1.bin")
-                 || item.Name.EndsWith("v1.bin"))
-                {
-                    applicable = true;
-                }
-            }
-
-            zip.Dispose();
-            stream.Dispose();
-            return applicable;
+            MemoryStream data = new MemoryStream();
+            ZIP[file].Extract(data);
+            data.Seek(0, SeekOrigin.Begin);
+            return data.ToArray();
         }
+
+        private byte[] ExtractToByteArray(ZipEntry item) => ExtractToByteArray(item.FileName);
 
         /// <summary>
         /// Replaces ROM within extracted content5 directory. (compressed formats not supported yet)
@@ -68,11 +63,6 @@ namespace FriishProduce.WiiVC
         protected override void ReplaceROM()
         {
             if (EmuType == 1) throw new Exception("ZLIB WADs not supported yet!");
-
-            // Check if ZIP archive is of valid format
-            // ****************
-            if (!IsValidROM()) throw new InvalidDataException();
-
 
             // ------------------------- //
 
@@ -85,10 +75,12 @@ namespace FriishProduce.WiiVC
             // TO-DO: Do byteswap for each byte with BIOS
             // ****************
             BIOS = new List<byte>();
+
             if (string.IsNullOrWhiteSpace(BIOSPath) || !File.Exists(BIOSPath))
             {
                 goto RetrieveOrigBIOS;
             }
+
             else
             {
                 if (Path.GetExtension(BIOSPath).ToLower() == ".rom")
@@ -98,19 +90,9 @@ namespace FriishProduce.WiiVC
 
                 else if (Path.GetExtension(BIOSPath).ToLower() == ".zip")
                 {
-                    using (MemoryStream stream = new MemoryStream(ROM))
-                    using (ZipArchive zip = new ZipArchive(stream))
-                    using (MemoryStream target = new MemoryStream())
-                    {
-                        foreach (ZipArchiveEntry item in zip.Entries)
-                        {
-                            if (Path.GetExtension(item.Name).ToLower() == ".rom")
-                            {
-                                item.Open().CopyTo(target);
-                                BIOS.AddRange(target.ToArray());
-                            }
-                        }
-                    }
+                    foreach (ZipEntry item in ZIP.Entries)
+                        if (Path.GetExtension(item.FileName).ToLower() == ".rom")
+                            BIOS.AddRange(ExtractToByteArray(item));
 
                     if (BIOS.Count < 10) goto RetrieveOrigBIOS;
                 }
@@ -143,120 +125,149 @@ namespace FriishProduce.WiiVC
             // ------------------------- //
 
             var P1 = new List<byte>();
-            P = new byte[1];
+            P = new List<byte>();
             M = new List<byte>();
             V = new List<byte>();
             S = new List<byte>();
             C = new List<byte>();
 
-            using (MemoryStream stream = new MemoryStream(ROM))
-            using (ZipArchive zip = new ZipArchive(stream))
-            using (MemoryStream target = new MemoryStream())
+            List<string> FileList = new List<string>();
+            
+            foreach (ZipEntry item in ZIP.Entries)
             {
-                foreach (ZipArchiveEntry item in zip.Entries)
+                string filename1 = Path.GetFileNameWithoutExtension(item.FileName).ToLower();
+                string filename2 = item.FileName.ToLower();
+
+                if (filename1[filename1.Length - 2] == 'p')
+                    FileList.Add(filename1);
+
+                if (filename2[filename2.Length - 2] == 'p')
+                    FileList.Add(filename2);
+            }
+
+            FileList = FileList.Distinct().ToList();
+
+            foreach (var item in FileList)
+            {
+                var b = ExtractToByteArray(item);
+
+                bool P1_2MB = b.Length == 2097152 && item.Contains("p1");
+                if (P1_2MB)
+                    for (int i = 0; i < b.Length / 2; i++) (b[i + (b.Length / 2)], b[i]) = (b[i], b[i + (b.Length / 2)]);
+
+                P.AddRange(b);
+            }
+
+            for (int i = 1; i < P.Count; i += 2) (P[i - 1], P[i]) = (P[i], P[i - 1]);
+
+            // ------------------------- //
+
+            foreach (ZipEntry item in ZIP.Entries)
+            {
+                string filename = item.FileName.ToLower();
+                if (filename[filename.Length - 2] == 'm')
+                    M.AddRange(ExtractToByteArray(item));
+            }
+
+            if (M.Count == 0)
+                foreach (ZipEntry item in ZIP.Entries)
                 {
-                    if (char.ToLower(item.Name[item.Name.Length - 6]) == 'p')
-                    {
-                        item.Open().CopyTo(target);
-
-                        var b = target.ToArray();
-                        bool P1BinIs2MB = b.Length == 2097152 && Path.GetFileNameWithoutExtension(item.Name).ToLower().Contains("p1");
-
-                        P1.AddRange(b);
-                        P = P1.ToArray();
-
-                        if (P1BinIs2MB)
-                            for (int i = 0; i < P.Length / 2; i++) (P[i + (P.Length / 2)], P[i]) = (P[i], P[i + (P.Length / 2)]);
-                    }
+                    string filename = Path.GetFileNameWithoutExtension(item.FileName).ToLower();
+                    if (filename[filename.Length - 2] == 'm')
+                        M.AddRange(ExtractToByteArray(item));
                 }
 
-                for (int i = 1; i < P.Length; i += 2) (P[i - 1], P[i]) = (P[i], P[i - 1]);
+            // ------------------------- //
 
-                // ------------------------- //
-                target.Close();
-                // ------------------------- //
+            foreach (ZipEntry item in ZIP.Entries)
+            {
+                string filename = item.FileName.ToLower();
+                if (filename[filename.Length - 2] == 'v')
+                    V.AddRange(ExtractToByteArray(item));
+            }
 
-                foreach (ZipArchiveEntry item in zip.Entries)
+            if (V.Count == 0)
+                foreach (ZipEntry item in ZIP.Entries)
                 {
-                    if (char.ToLower(item.Name[item.Name.Length - 6]) == 'm')
-                    {
-                        item.Open().CopyTo(target);
-                        M.AddRange(target.ToArray());
-                    }
+                    string filename = Path.GetFileNameWithoutExtension(item.FileName).ToLower();
+                    if (filename[filename.Length - 2] == 'v')
+                        V.AddRange(ExtractToByteArray(item));
                 }
 
-                // ------------------------- //
-                target.Close();
-                // ------------------------- //
+            // ------------------------- //
 
-                foreach (ZipArchiveEntry item in zip.Entries)
+            foreach (ZipEntry item in ZIP.Entries)
+            {
+                string filename = item.FileName.ToLower();
+                if (filename[filename.Length - 2] == 's')
+                    S.AddRange(ExtractToByteArray(item));
+            }
+
+            if (S.Count == 0)
+                foreach (ZipEntry item in ZIP.Entries)
                 {
-                    if (char.ToLower(item.Name[item.Name.Length - 6]) == 'v')
-                    {
-                        item.Open().CopyTo(target);
-                        V.AddRange(target.ToArray());
-                    }
+                    string filename = Path.GetFileNameWithoutExtension(item.FileName).ToLower();
+                    if (filename[filename.Length - 2] == 's')
+                        S.AddRange(ExtractToByteArray(item));
                 }
 
-                // ------------------------- //
-                target.Close();
-                // ------------------------- //
+            // ------------------------- //
 
-                foreach (ZipArchiveEntry item in zip.Entries)
+            int C_count = 0;
+
+            foreach (ZipEntry item in ZIP.Entries)
+            {
+                string filename = item.FileName.ToLower();
+                if (filename[filename.Length - 2] == 'c')
+                    C_count++;
+            }
+
+            if (C_count == 0)
+                foreach (ZipEntry item in ZIP.Entries)
                 {
-                    if (char.ToLower(item.Name[item.Name.Length - 6]) == 's')
-                    {
-                        item.Open().CopyTo(target);
-                        S.AddRange(target.ToArray());
-                    }
+                    string filename = Path.GetFileNameWithoutExtension(item.FileName).ToLower();
+                    if (filename[filename.Length - 2] == 'c')
+                        C_count++;
                 }
 
-                // ------------------------- //
-                target.Close();
-                // ------------------------- //
+            // Documentation from Corsario
+            // "There are some games with an non-standard C file order, and after reorganizing the bytes it's necessary to do a unknown puzzle
+            // with that files and find the suitable order, each strange game have a custom combination."
+            // Ex.: Fatal Fury 2, Kizuna Encounter, KOF '96"
 
-                int C_count = 0;
+            // Loop
+            // ****************
+            for (int x = 0; x <= C_count; x += 2)
+            {
+                var C1 = new byte[1];
+                var C2 = new byte[1];
 
-                foreach (ZipArchiveEntry item in zip.Entries)
-                    if (char.ToLower(item.Name[item.Name.Length - 6]) == 'c') C_count++;
+                foreach (ZipEntry item in ZIP.Entries)
+                    if (item.FileName.ToLower().EndsWith($"c{x + 1}") || Path.GetFileNameWithoutExtension(item.FileName).ToLower().EndsWith($"c{x + 1}"))
+                    {
+                        C1 = ExtractToByteArray(item);
 
-                // Documentation from Corsario
-                // "There are some games with an non-standard C file order, and after reorganizing the bytes it's necessary to do a unknown puzzle
-                // with that files and find the suitable order, each strange game have a custom combination."
-                // Ex.: Fatal Fury 2, Kizuna Encounter, KOF '96"
+                        // Byteswap
+                        for (int i = 1; i < C1.Length; i += 2)
+                            (C1[i - 1], C1[i]) = (C1[i], C1[i - 1]);
+                    }
 
-                // Loop
-                // ****************
-                for (int x = 0; x <= C_count; x += 2)
+                foreach (ZipEntry item in ZIP.Entries)
+                    if (item.FileName.ToLower().EndsWith($"c{x + 2}") || Path.GetFileNameWithoutExtension(item.FileName).ToLower().EndsWith($"c{x + 2}"))
+                    {
+                        C2 = ExtractToByteArray(item);
+
+                        // Byteswap
+                        for (int i = 1; i < C2.Length; i += 2)
+                            (C2[i - 1], C2[i]) = (C2[i], C2[i - 1]);
+                    }
+
+                if (C1.Length > 5 && C2.Length > 5)
                 {
-                    var C1 = new byte[1];
-                    var C2 = new byte[1];
-
-                    foreach (ZipArchiveEntry item in zip.Entries)
-                        if (item.Name.ToLower().Contains($"c{x + 1}.bin"))
-                        {
-                            item.Open().CopyTo(target);
-                            C1 = target.ToArray();
-
-                            // Byteswap
-                            for (int i = 1; i < C1.Length; i += 2)
-                                (C1[i - 1], C1[i]) = (C1[i], C1[i - 1]);
-                        }
-
-                    foreach (ZipArchiveEntry item in zip.Entries)
-                        if (item.Name.ToLower().Contains($"c{x + 2}.bin"))
-                        {
-                            item.Open().CopyTo(target);
-                            C2 = target.ToArray();
-
-                            // Byteswap
-                            for (int i = 1; i < C2.Length; i += 2)
-                                (C2[i - 1], C2[i]) = (C2[i], C2[i - 1]);
-                        }
-
-                    if (C1.Length > 5 && C2.Length > 5)
+                    try
                     {
                         var C_temp = new byte[C1.Length + C2.Length];
+
                         for (int i = 0; i < C_temp.Length / 2; i += 2)
                         {
                             C_temp[2 * i] = C1[i];
@@ -267,8 +278,10 @@ namespace FriishProduce.WiiVC
 
                         C.AddRange(C_temp);
                     }
+                    catch { }
                 }
             }
+
 
             // ------------------------- //
 
@@ -282,16 +295,16 @@ namespace FriishProduce.WiiVC
             // ****************
             var Header = new List<byte>();
             string h = "00000040"
-                + P.Length.ToString("X8")
-                + (P.Length + 64).ToString("X8")
+                + P.Count.ToString("X8")
+                + (P.Count + 64).ToString("X8")
                 + M.Count.ToString("X8")
-                + (P.Length + M.Count + 64).ToString("X8")
+                + (P.Count + M.Count + 64).ToString("X8")
                 + V.Count.ToString("X8") + "00000000000000000000000000000000"
-                + (P.Length + M.Count + V.Count + 64).ToString("X8")
+                + (P.Count + M.Count + V.Count + 64).ToString("X8")
                 + S.Count.ToString("X8")
-                + (P.Length + M.Count + V.Count + S.Count + 64).ToString("X8")
+                + (P.Count + M.Count + V.Count + S.Count + 64).ToString("X8")
                 + C.Count.ToString("X8")
-                + (P.Length + M.Count + V.Count + S.Count + C.Count + 64).ToString("X8")
+                + (P.Count + M.Count + V.Count + S.Count + C.Count + 64).ToString("X8")
                 + BIOS.Count.ToString("X8");
 
             for (int i = 0; i < h.Length; i += 2)
@@ -322,6 +335,8 @@ namespace FriishProduce.WiiVC
             }
 
             MainContent.ReplaceFile(MainContent.GetNodeIndex("game.bin"), GameBin.ToArray());
+
+            ZIP.Dispose();
 
             // ------------------------- //
 
@@ -362,14 +377,28 @@ namespace FriishProduce.WiiVC
 
             // TPL contents in banner.bin does not have TPL header, so it has to be manually added
             // ****************
-            const string header = "0020AF30000000090000000C000000540000000000000078000000000000009C00000000000000C000000000000000E40000000000000108000000000000012C0000000000000150000000000000017400000000004000C000000005000001A00000000000000000000000010000000100000000000000000030003000000005000061A00000000000000000000000010000000100000000000000000030003000000005000073A00000000000000000000000010000000100000000000000000030003000000005000085A00000000000000000000000010000000100000000000000000030003000000005000097A000000000000000000000000100000001000000000000000000300030000000050000A9A000000000000000000000000100000001000000000000000000300030000000050000BBA000000000000000000000000100000001000000000000000000300030000000050000CDA000000000000000000000000100000001000000000000000000300030000000050000DFA00000000000000000000000010000000100000000000000000000000000000000";
+            var header = new byte[] { 0x00, 0x20, 0xAF, 0x30, 0x00, 0x00, 0x00, 0x09, 0x00, 0x00, 0x00, 0x0C, 0x00, 0x00, 0x00, 0x54, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x78, 0x00, 0x00,
+                                      0x00, 0x00, 0x00, 0x00, 0x00, 0x9C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xC0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xE4, 0x00, 0x00, 0x00, 0x00,
+                                      0x00, 0x00, 0x01, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x2C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x50, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                                      0x01, 0x74, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0xC0, 0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0x01, 0xA0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                                      0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x30, 0x00, 0x30, 0x00, 0x00, 0x00, 0x05, 0x00, 0x00,
+                                      0x61, 0xA0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                                      0x00, 0x30, 0x00, 0x30, 0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0x73, 0xA0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00,
+                                      0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x30, 0x00, 0x30, 0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0x85, 0xA0, 0x00, 0x00, 0x00, 0x00,
+                                      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x30, 0x00, 0x30, 0x00, 0x00,
+                                      0x00, 0x05, 0x00, 0x00, 0x97, 0xA0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00,
+                                      0x00, 0x00, 0x00, 0x00, 0x00, 0x30, 0x00, 0x30, 0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0xA9, 0xA0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                                      0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x30, 0x00, 0x30, 0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0xBB, 0xA0,
+                                      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x30,
+                                      0x00, 0x30, 0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0xCD, 0xA0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01,
+                                      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x30, 0x00, 0x30, 0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0xDF, 0xA0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                                      0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
 
             var tpl = new List<byte>();
 
-            // Extract TPL
+            // Create TPL byte array
             // ****************
-            for (int i = 0; i < header.Length; i += 2)
-                tpl.Add(Convert.ToByte(header.Substring(i, 2), 16));
+            tpl.AddRange(header);
             tpl.AddRange(contents.Skip(160).Take(contents.Length - 160));
 
             // Inject new TPL

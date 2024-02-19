@@ -133,11 +133,29 @@ namespace Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &amp;No.
+        /// </summary>
+        public static string Button_No {
+            get {
+                return ResourceManager.GetString("Button_No", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &amp;OK.
         /// </summary>
         public static string Button_OK {
             get {
                 return ResourceManager.GetString("Button_OK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Yes.
+        /// </summary>
+        public static string Button_Yes {
+            get {
+                return ResourceManager.GetString("Button_Yes", resourceCulture);
             }
         }
         
@@ -455,11 +473,11 @@ namespace Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The selected WAD ({0}) is not valid.
+        ///   Looks up a localized string similar to The WAD you have selected (title ID: {0}) is is not valid.
         ///This could be for any of the following reasons:
-        ///- The currently-selected console does not match that of the WAD.
+        ///- The currently-selected console does not match that used by the WAD.
         ///- The WAD is not yet available in the database.
-        ///- The WAD is already modified (i.e. injected or converted to a forwarder)..
+        ///- The WAD has already been modified (i.e. injected or converted to a forwarder)..
         /// </summary>
         public static string Message005 {
             get {
@@ -474,6 +492,15 @@ namespace Strings {
         public static string Message006 {
             get {
                 return ResourceManager.GetString("Message006", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The ZIP archive you have selected is not valid..
+        /// </summary>
+        public static string Message007 {
+            get {
+                return ResourceManager.GetString("Message007", resourceCulture);
             }
         }
         

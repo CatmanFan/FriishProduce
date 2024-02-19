@@ -129,8 +129,14 @@
   <data name="Button_Close" xml:space="preserve">
     <value>&amp;Cerrar</value>
   </data>
+  <data name="Button_No" xml:space="preserve">
+    <value>&amp;No</value>
+  </data>
   <data name="Button_OK" xml:space="preserve">
     <value>&amp;Aceptar</value>
+  </data>
+  <data name="Button_Yes" xml:space="preserve">
+    <value>&amp;Sí</value>
   </data>
   <data name="ByDefault" xml:space="preserve">
     <value>Por defecto</value>
