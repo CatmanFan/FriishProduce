@@ -183,4 +183,10 @@
   <data name="RegionFree.Text" xml:space="preserve">
     <value>Déverrouillage de région</value>
   </data>
+  <data name="tabPage1.Text" xml:space="preserve">
+    <value>Détails</value>
+  </data>
+  <data name="tabPage2.Text" xml:space="preserve">
+    <value>Aperçu</value>
+  </data>
 </root>

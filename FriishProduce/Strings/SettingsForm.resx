@@ -132,11 +132,10 @@
   <data name="LanguageList.Items" xml:space="preserve">
     <value>System default</value>
   </data>
-  <data name="tabPage1.Text" xml:space="preserve">
+  <data name="Node0.Text" xml:space="preserve">
     <value>Application</value>
   </data>
-  <data name="tabPage2.Text" xml:space="preserve">
-    <value>Default settings
-[{0}]</value>
+  <data name="Node1.Text" xml:space="preserve">
+    <value>Default settings</value>
   </data>
 </root>

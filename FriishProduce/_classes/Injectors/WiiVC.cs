@@ -13,25 +13,7 @@ namespace FriishProduce
         public int EmuType { get; set; }
         public IDictionary<string, string> Settings { get; set; }
 
-        private string _rom;
-        private string ROMPath
-        {
-            get => _rom;
-
-            set
-            {
-                // -----------------------
-                // Check if raw ROM exists
-                // -----------------------
-                if (!File.Exists(value))
-                    throw new FileNotFoundException(new FileNotFoundException().Message, value);
-
-                _rom = value;
-                ROM = File.ReadAllBytes(_rom);
-            }
-        }
-
-        protected byte[] ROM { get; private set; }
+        protected ROM ROM { get; set; }
 
         public string ManualPath { get; set; }
         protected string OrigManual { get; set; }
@@ -48,6 +30,7 @@ namespace FriishProduce
         protected U8 MainContent { get; set; }
 
         public InjectorWiiVC() { }
+
         protected virtual void Load()
         {
             Contents = new List<byte[]>();
@@ -237,9 +220,9 @@ namespace FriishProduce
             return WAD;
         }
 
-        public WAD Inject(string ROM, string[] SaveDataTitle, TitleImage Img)
+        public WAD Inject(ROM ROM, string[] SaveDataTitle, TitleImage Img)
         {
-            ROMPath = ROM;
+            this.ROM = ROM;
 
             Load();
             ReplaceROM();

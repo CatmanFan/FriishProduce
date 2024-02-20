@@ -30,28 +30,28 @@ namespace FriishProduce
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ContentOptions));
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.bottomPanel2 = new System.Windows.Forms.Panel();
+            this.bottomPanel1 = new System.Windows.Forms.Panel();
             this.Cancel = new System.Windows.Forms.Button();
             this.OK = new System.Windows.Forms.Button();
-            this.panel2.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.bottomPanel2.SuspendLayout();
+            this.bottomPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel2
+            // bottomPanel2
             // 
-            this.panel2.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.panel2.Controls.Add(this.panel1);
-            resources.ApplyResources(this.panel2, "panel2");
-            this.panel2.Name = "panel2";
+            this.bottomPanel2.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.bottomPanel2.Controls.Add(this.bottomPanel1);
+            resources.ApplyResources(this.bottomPanel2, "bottomPanel2");
+            this.bottomPanel2.Name = "bottomPanel2";
             // 
-            // panel1
+            // bottomPanel1
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel1.Controls.Add(this.Cancel);
-            this.panel1.Controls.Add(this.OK);
-            resources.ApplyResources(this.panel1, "panel1");
-            this.panel1.Name = "panel1";
+            this.bottomPanel1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.bottomPanel1.Controls.Add(this.Cancel);
+            this.bottomPanel1.Controls.Add(this.OK);
+            resources.ApplyResources(this.bottomPanel1, "bottomPanel1");
+            this.bottomPanel1.Name = "bottomPanel1";
             // 
             // Cancel
             // 
@@ -69,11 +69,11 @@ namespace FriishProduce
             // ContentOptions
             // 
             this.AcceptButton = this.OK;
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.CancelButton = this.Cancel;
             resources.ApplyResources(this, "$this");
             this.ControlBox = false;
-            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.bottomPanel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
             this.MaximizeBox = false;
@@ -83,17 +83,17 @@ namespace FriishProduce
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Load += new System.EventHandler(this.Form_Load);
-            this.panel2.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
+            this.bottomPanel2.ResumeLayout(false);
+            this.bottomPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel bottomPanel2;
         protected System.Windows.Forms.Button OK;
-        protected System.Windows.Forms.Panel panel1;
+        protected System.Windows.Forms.Panel bottomPanel1;
         protected System.Windows.Forms.Button Cancel;
     }
 }

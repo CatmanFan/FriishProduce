@@ -35,13 +35,13 @@ namespace FriishProduce
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.imageintpl = new System.Windows.Forms.ComboBox();
             this.BrowseWAD = new System.Windows.Forms.OpenFileDialog();
-            this.tabControl1 = new TabControls.DotNetBarTabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.SaveIcon_Panel = new System.Windows.Forms.Panel();
             this.SaveDataTitle = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.StatusImage2 = new System.Windows.Forms.PictureBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.ChannelTitle_Locale = new System.Windows.Forms.CheckBox();
             this.Random = new System.Windows.Forms.PictureBox();
@@ -52,13 +52,9 @@ namespace FriishProduce
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.StatusImage2 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button2 = new System.Windows.Forms.Button();
             this.Players = new System.Windows.Forms.NumericUpDown();
             this.ReleaseYear = new System.Windows.Forms.NumericUpDown();
             this.BannerTitle = new System.Windows.Forms.TextBox();
@@ -73,26 +69,23 @@ namespace FriishProduce
             this.OpenWAD = new System.Windows.Forms.CheckBox();
             this.WADRegion = new System.Windows.Forms.PictureBox();
             this.Base = new System.Windows.Forms.ComboBox();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.Preview = new System.Windows.Forms.PictureBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.tabPage1 = new System.Windows.Forms.CheckBox();
             this.bannerPreview1 = new FriishProduce.BannerPreview();
+            this.tabPage2 = new System.Windows.Forms.CheckBox();
             this.groupBox8.SuspendLayout();
-            this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.StatusImage2)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Random)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.StatusImage2)).BeginInit();
             this.groupBox6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Players)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReleaseYear)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WADRegion)).BeginInit();
-            this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Preview)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // WADRegionList
@@ -123,29 +116,6 @@ namespace FriishProduce
             // 
             resources.ApplyResources(this.BrowseWAD, "BrowseWAD");
             // 
-            // tabControl1
-            // 
-            resources.ApplyResources(this.tabControl1, "tabControl1");
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
-            this.tabControl1.Multiline = true;
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage1.Controls.Add(this.groupBox5);
-            this.tabPage1.Controls.Add(this.groupBox4);
-            this.tabPage1.Controls.Add(this.groupBox3);
-            this.tabPage1.Controls.Add(this.groupBox1);
-            this.tabPage1.Controls.Add(this.groupBox6);
-            this.tabPage1.Controls.Add(this.groupBox2);
-            resources.ApplyResources(this.tabPage1, "tabPage1");
-            this.tabPage1.Name = "tabPage1";
-            // 
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.SaveIcon_Panel);
@@ -172,6 +142,8 @@ namespace FriishProduce
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.button1);
+            this.groupBox4.Controls.Add(this.StatusImage2);
+            this.groupBox4.Controls.Add(this.label11);
             resources.ApplyResources(this.groupBox4, "groupBox4");
             this.groupBox4.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.groupBox4.Name = "groupBox4";
@@ -183,6 +155,18 @@ namespace FriishProduce
             this.button1.Name = "button1";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.OpenInjectorOptions);
+            // 
+            // StatusImage2
+            // 
+            this.StatusImage2.Image = global::FriishProduce.Properties.Resources.cross;
+            resources.ApplyResources(this.StatusImage2, "StatusImage2");
+            this.StatusImage2.Name = "StatusImage2";
+            this.StatusImage2.TabStop = false;
+            // 
+            // label11
+            // 
+            resources.ApplyResources(this.label11, "label11");
+            this.label11.Name = "label11";
             // 
             // groupBox3
             // 
@@ -249,9 +233,7 @@ namespace FriishProduce
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.StatusImage2);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.label1);
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
@@ -263,23 +245,11 @@ namespace FriishProduce
             resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
             // 
-            // StatusImage2
-            // 
-            this.StatusImage2.Image = global::FriishProduce.Properties.Resources.cross;
-            resources.ApplyResources(this.StatusImage2, "StatusImage2");
-            this.StatusImage2.Name = "StatusImage2";
-            this.StatusImage2.TabStop = false;
-            // 
             // label3
             // 
             resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
             this.label3.UseMnemonic = false;
-            // 
-            // label11
-            // 
-            resources.ApplyResources(this.label11, "label11");
-            this.label11.Name = "label11";
             // 
             // label1
             // 
@@ -289,8 +259,6 @@ namespace FriishProduce
             // 
             // groupBox6
             // 
-            this.groupBox6.Controls.Add(this.pictureBox1);
-            this.groupBox6.Controls.Add(this.button2);
             this.groupBox6.Controls.Add(this.Players);
             this.groupBox6.Controls.Add(this.ReleaseYear);
             this.groupBox6.Controls.Add(this.BannerTitle);
@@ -301,20 +269,6 @@ namespace FriishProduce
             this.groupBox6.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Silver;
-            resources.ApplyResources(this.pictureBox1, "pictureBox1");
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.TabStop = false;
-            // 
-            // button2
-            // 
-            resources.ApplyResources(this.button2, "button2");
-            this.button2.Image = global::FriishProduce.Properties.Resources.image_share;
-            this.button2.Name = "button2";
-            this.button2.UseVisualStyleBackColor = true;
             // 
             // Players
             // 
@@ -449,21 +403,25 @@ namespace FriishProduce
             this.Base.Name = "Base";
             this.Base.SelectedIndexChanged += new System.EventHandler(this.Base_SelectedIndexChanged);
             // 
-            // tabPage2
+            // panel1
             // 
-            this.tabPage2.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage2.Controls.Add(this.Preview);
-            this.tabPage2.Controls.Add(this.bannerPreview1);
-            resources.ApplyResources(this.tabPage2, "tabPage2");
-            this.tabPage2.Name = "tabPage2";
+            this.panel1.Controls.Add(this.groupBox1);
+            this.panel1.Controls.Add(this.groupBox5);
+            this.panel1.Controls.Add(this.groupBox2);
+            this.panel1.Controls.Add(this.groupBox4);
+            this.panel1.Controls.Add(this.groupBox6);
+            this.panel1.Controls.Add(this.groupBox3);
+            resources.ApplyResources(this.panel1, "panel1");
+            this.panel1.Name = "panel1";
             // 
-            // Preview
+            // tabPage1
             // 
-            this.Preview.BackgroundImage = global::FriishProduce.Properties.Resources.x;
-            resources.ApplyResources(this.Preview, "Preview");
-            this.Preview.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Preview.Name = "Preview";
-            this.Preview.TabStop = false;
+            resources.ApplyResources(this.tabPage1, "tabPage1");
+            this.tabPage1.Checked = true;
+            this.tabPage1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabPage1.Click += new System.EventHandler(this.TabPageClick);
             // 
             // bannerPreview1
             // 
@@ -471,13 +429,23 @@ namespace FriishProduce
             resources.ApplyResources(this.bannerPreview1, "bannerPreview1");
             this.bannerPreview1.Name = "bannerPreview1";
             // 
+            // tabPage2
+            // 
+            resources.ApplyResources(this.tabPage2, "tabPage2");
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabPage2.Click += new System.EventHandler(this.TabPageClick);
+            // 
             // InjectorForm
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.BackColor = System.Drawing.Color.White;
             resources.ApplyResources(this, "$this");
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tabPage2);
+            this.Controls.Add(this.tabPage1);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox8);
+            this.Controls.Add(this.bannerPreview1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "InjectorForm";
@@ -486,27 +454,24 @@ namespace FriishProduce
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.isClosing);
             this.Shown += new System.EventHandler(this.Form_Shown);
             this.groupBox8.ResumeLayout(false);
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.StatusImage2)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Random)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.StatusImage2)).EndInit();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Players)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReleaseYear)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WADRegion)).EndInit();
-            this.tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Preview)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -546,17 +511,14 @@ namespace FriishProduce
         private System.Windows.Forms.GroupBox groupBox8;
         internal System.Windows.Forms.OpenFileDialog BrowseWAD;
         private System.Windows.Forms.CheckBox OpenWAD;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox Preview;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.CheckBox ChannelTitle_Locale;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.PictureBox StatusImage2;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TabPage tabPage1;
-        private TabControls.DotNetBarTabControl tabControl1;
         private BannerPreview bannerPreview1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.CheckBox tabPage1;
+        private System.Windows.Forms.CheckBox tabPage2;
     }
 }

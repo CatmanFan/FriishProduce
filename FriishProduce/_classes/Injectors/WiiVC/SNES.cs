@@ -15,9 +15,15 @@ namespace FriishProduce.WiiVC
 
         protected override void Load()
         {
+            // -----------------------
+            // Maximum ROM limit allowed: 4 MB
+            // -----------------------
+
             NeedsMainDOL = true;
             MainContentIndex = 5;
             NeedsManualLoaded = true;
+            ROM.MaxSize = 4194304;
+
             base.Load();
 
             GetID();
@@ -28,12 +34,7 @@ namespace FriishProduce.WiiVC
         /// </summary>
         protected override void ReplaceROM()
         {
-            // -----------------------
-            // Check filesize
-            // Maximum ROM limit allowed: 4 MB
-            // -----------------------
-            if (ROM.Length > 4194304)
-                throw new Exception(string.Format(Language.Get("Error003"), "4", Language.Get("Abbreviation_Megabytes")));
+            ROM.CheckSize();
 
             // -----------------------
             // Replace original ROM
@@ -41,13 +42,13 @@ namespace FriishProduce.WiiVC
 
             // Normal
             // ****************
-            if (Target.Length == 8) MainContent.ReplaceFile(MainContent.GetNodeIndex(Target), ROM);
+            if (Target.Length == 8) MainContent.ReplaceFile(MainContent.GetNodeIndex(Target), ROM.Bytes);
 
             // LZ77 compression
             // ****************
             else if (Target.ToUpper().StartsWith("LZ77"))
             {
-                File.WriteAllBytes(Paths.WorkingFolder + "rom", ROM);
+                File.WriteAllBytes(Paths.WorkingFolder + "rom", ROM.Bytes);
                 File.WriteAllBytes(Paths.WorkingFolder + "LZ77orig.rom", MainContent.Data[MainContent.GetNodeIndex(Target)]);
 
                 Process.Run

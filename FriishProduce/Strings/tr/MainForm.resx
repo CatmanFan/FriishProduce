@@ -120,6 +120,9 @@
   <data name="CloseTab.Text" xml:space="preserve">
     <value>Kapat</value>
   </data>
+  <data name="ExportWAD.Text" xml:space="preserve">
+    <value>WAD Olarak Kaydet</value>
+  </data>
   <data name="MenuItem_About.Text" xml:space="preserve">
     <value>Hakkında</value>
   </data>
@@ -133,7 +136,7 @@
     <value>Resim</value>
   </data>
   <data name="OpenManual.Text" xml:space="preserve">
-    <value>Kılavuz Klasörü</value>
+    <value>Kılavuz</value>
   </data>
   <data name="ribbonPanel_Export.Text" xml:space="preserve">
     <value>Kaydet</value>
@@ -148,10 +151,10 @@
     <value>Giriş</value>
   </data>
   <data name="Strip_OpenImage.Text" xml:space="preserve">
-    <value>Resmi Aç...</value>
+    <value>Resmi aç...</value>
   </data>
   <data name="Strip_OpenROM.Text" xml:space="preserve">
-    <value>ROM Dosyasını Aç...</value>
+    <value>ROM dosyasını aç...</value>
   </data>
   <data name="UseLibRetro.Text" xml:space="preserve">
     <value>LibRetro'dan Veri Alma</value>

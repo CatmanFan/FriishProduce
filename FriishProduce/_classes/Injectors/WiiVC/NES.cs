@@ -46,20 +46,15 @@ namespace FriishProduce.WiiVC
             // -----------------------
             int PRG = 16384 * Contents[1][offset + 4];
             int CHR = 8192 * Contents[1][offset + 5];
-            int ROMsize = PRG + CHR + 16;
+            ROM.MaxSize = PRG + CHR + 16;
 
-            // -----------------------
-            // Check filesize of input ROM
-            // Maximum ROM limit allowed: 4 MB
-            // -----------------------
-            if (ROM.Length > ROMsize)
-                throw new Exception(string.Format(Language.Get("Error003"), Math.Round((double)ROMsize / 1024).ToString(), Language.Get("Abbreviation_Kilobytes")));
+            ROM.CheckSize();
 
             // -----------------------
             // Replace original ROM
             // -----------------------
-            var targetROM = new byte[ROMsize];
-            ROM.CopyTo(targetROM, 0);
+            var targetROM = new byte[ROM.MaxSize];
+            ROM.Bytes.CopyTo(targetROM, 0);
             targetROM.CopyTo(Contents[1], offset);
         }
 

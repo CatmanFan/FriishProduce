@@ -108,19 +108,18 @@ namespace Strings {
         /// <summary>
         ///   Looks up a localized string similar to Application.
         /// </summary>
-        public static string tabPage1_Text {
+        public static string Node0_Text {
             get {
-                return ResourceManager.GetString("tabPage1.Text", resourceCulture);
+                return ResourceManager.GetString("Node0.Text", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Default settings
-        ///[{0}].
+        ///   Looks up a localized string similar to Default settings.
         /// </summary>
-        public static string tabPage2_Text {
+        public static string Node1_Text {
             get {
-                return ResourceManager.GetString("tabPage2.Text", resourceCulture);
+                return ResourceManager.GetString("Node1.Text", resourceCulture);
             }
         }
     }

@@ -169,6 +169,15 @@ namespace Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Do not show this again.
+        /// </summary>
+        public static string DoNotShow {
+            get {
+                return ResourceManager.GetString("DoNotShow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to An error has occurred.
         /// </summary>
         public static string Error {
@@ -473,7 +482,7 @@ namespace Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The WAD you have selected (title ID: {0}) is is not valid.
+        ///   Looks up a localized string similar to The WAD you have selected (title ID: {0}) is invalid.
         ///This could be for any of the following reasons:
         ///- The currently-selected console does not match that used by the WAD.
         ///- The WAD is not yet available in the database.
@@ -486,8 +495,10 @@ namespace Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Not a valid emanual contents folder.
-        ///Please make sure the directory you selected contains a subfolder &quot;emanual&quot;, including the extracted contents of a manual .arc from a VC WAD..
+        ///   Looks up a localized string similar to Importing a custom manual
+        ///This can be used to replace the original Operations Guide for the VC title with one modified for the needs of the injected ROM.
+        ///
+        ///Before proceeding, please make sure the directory you are choosing contains a subfolder &quot;emanual&quot;, including the extracted contents of a manual .arc from a VC WAD..
         /// </summary>
         public static string Message006 {
             get {
@@ -496,11 +507,20 @@ namespace Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The ZIP archive you have selected is not valid..
+        ///   Looks up a localized string similar to Not a valid emanual contents folder..
         /// </summary>
         public static string Message007 {
             get {
                 return ResourceManager.GetString("Message007", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The ZIP archive you have selected is invalid..
+        /// </summary>
+        public static string Message008 {
+            get {
+                return ResourceManager.GetString("Message008", resourceCulture);
             }
         }
         

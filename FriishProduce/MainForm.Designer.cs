@@ -65,7 +65,7 @@ namespace FriishProduce
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.CloseTab = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl = new MdiTabControl.TabControl();
-            this.BrowseManual = new System.Windows.Forms.FolderBrowserDialog();
+            this.BrowseManual = new Ookii.Dialogs.WinForms.VistaFolderBrowserDialog();
             this.TabContextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -95,6 +95,7 @@ namespace FriishProduce
             this.ribbon1.OrbDropDown.TabIndex = ((int)(resources.GetObject("ribbon1.OrbDropDown.TabIndex")));
             this.ribbon1.OrbStyle = System.Windows.Forms.RibbonOrbStyle.Office_2010_Extended;
             this.ribbon1.OrbText = "File";
+            this.ribbon1.PanelCaptionHeight = 14;
             // 
             // 
             // 
@@ -108,7 +109,7 @@ namespace FriishProduce
             this.ribbon1.RibbonTabFont = new System.Drawing.Font("Segoe UI", 8F);
             this.ribbon1.Tabs.Add(this.ribbonTab_Home);
             this.ribbon1.TabSpacing = 3;
-            this.ribbon1.ThemeColor = System.Windows.Forms.RibbonTheme.Blue;
+            this.ribbon1.ThemeColor = System.Windows.Forms.RibbonTheme.Halloween;
             this.ribbon1.UseAlwaysStandardTheme = true;
             // 
             // NewProject
@@ -349,11 +350,12 @@ namespace FriishProduce
             resources.ApplyResources(this.tabControl, "tabControl");
             this.tabControl.MenuRenderer = null;
             this.tabControl.Name = "tabControl";
+            this.tabControl.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.tabControl.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.tabControl.TabBackHighColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(241)))), ((int)(((byte)(255)))));
-            this.tabControl.TabBackHighColorDisabled = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(241)))), ((int)(((byte)(255)))));
-            this.tabControl.TabBackLowColor = System.Drawing.Color.WhiteSmoke;
-            this.tabControl.TabBackLowColorDisabled = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(217)))), ((int)(((byte)(235)))));
+            this.tabControl.TabBackHighColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(217)))), ((int)(((byte)(237)))));
+            this.tabControl.TabBackHighColorDisabled = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(250)))), ((int)(((byte)(255)))));
+            this.tabControl.TabBackLowColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(217)))), ((int)(((byte)(237)))));
+            this.tabControl.TabBackLowColorDisabled = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
             this.tabControl.TabBorderEnhanced = true;
             this.tabControl.TabBorderEnhanceWeight = MdiTabControl.TabControl.Weight.Soft;
             this.tabControl.TabCloseButtonImage = null;
@@ -361,23 +363,26 @@ namespace FriishProduce
             this.tabControl.TabCloseButtonImageHot = null;
             this.tabControl.TabCloseButtonSize = new System.Drawing.Size(14, 14);
             this.tabControl.TabCloseButtonVisible = false;
+            this.tabControl.TabGlassGradient = true;
             this.tabControl.TabHeight = 25;
             this.tabControl.TabMaximumWidth = 350;
             this.tabControl.TabOffset = 5;
             this.tabControl.TabPadLeft = 7;
             this.tabControl.TabPadRight = 7;
+            this.tabControl.TopSeparator = false;
             this.tabControl.SelectedTabChanged += new System.EventHandler(this.TabChanged);
             this.tabControl.TabIndexChanged += new System.EventHandler(this.TabChanged);
             // 
             // BrowseManual
             // 
-            resources.ApplyResources(this.BrowseManual, "BrowseManual");
+            this.BrowseManual.RootFolder = System.Environment.SpecialFolder.MyComputer;
             this.BrowseManual.ShowNewFolderButton = false;
             // 
             // MainForm
             // 
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.BackColor = System.Drawing.Color.White;
             resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.ribbon1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -424,8 +429,8 @@ namespace FriishProduce
         private System.Windows.Forms.RibbonOrbMenuItem NewProject;
         private System.Windows.Forms.RibbonSeparator orbMenuSeparator2;
         private System.Windows.Forms.RibbonButton OpenManual;
-        private System.Windows.Forms.FolderBrowserDialog BrowseManual;
         private System.Windows.Forms.RibbonSeparator ribbonSeparator1;
+        private Ookii.Dialogs.WinForms.VistaFolderBrowserDialog BrowseManual;
     }
 }
 

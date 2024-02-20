@@ -34,7 +34,7 @@ namespace FriishProduce
             this.BrightnessValue = new System.Windows.Forms.TrackBar();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.panel1.SuspendLayout();
+            this.bottomPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BrightnessValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -46,7 +46,7 @@ namespace FriishProduce
             // 
             // panel1
             // 
-            this.panel1.Size = new System.Drawing.Size(429, 47);
+            this.bottomPanel1.Size = new System.Drawing.Size(429, 47);
             // 
             // Cancel
             // 
@@ -118,7 +118,7 @@ namespace FriishProduce
             this.Name = "Options_VC_SEGA";
             this.Controls.SetChildIndex(this.groupBox1, 0);
             this.Controls.SetChildIndex(this.checkBox1, 0);
-            this.panel1.ResumeLayout(false);
+            this.bottomPanel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BrightnessValue)).EndInit();

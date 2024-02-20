@@ -33,7 +33,7 @@ namespace FriishProduce
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.PaletteList = new System.Windows.Forms.ComboBox();
-            this.panel1.SuspendLayout();
+            this.bottomPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -44,7 +44,7 @@ namespace FriishProduce
             // 
             // panel1
             // 
-            this.panel1.Size = new System.Drawing.Size(299, 47);
+            this.bottomPanel1.Size = new System.Drawing.Size(299, 47);
             // 
             // Cancel
             // 
@@ -112,7 +112,7 @@ namespace FriishProduce
             this.Controls.Add(this.groupBox1);
             this.Name = "Options_VC_NES";
             this.Controls.SetChildIndex(this.groupBox1, 0);
-            this.panel1.ResumeLayout(false);
+            this.bottomPanel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

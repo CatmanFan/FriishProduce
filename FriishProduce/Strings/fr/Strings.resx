@@ -148,6 +148,9 @@
     <value>Par défaut</value>
     <comment>The "by default" value</comment>
   </data>
+  <data name="DoNotShow" xml:space="preserve">
+    <value>Ne plus afficher ce message</value>
+  </data>
   <data name="Error" xml:space="preserve">
     <value>Une erreur est survenue</value>
   </data>

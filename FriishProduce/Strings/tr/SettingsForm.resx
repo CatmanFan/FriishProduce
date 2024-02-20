@@ -126,11 +126,10 @@
   <data name="LanguageList.Items" xml:space="preserve">
     <value>Sistem Dili</value>
   </data>
-  <data name="tabPage1.Text" xml:space="preserve">
+  <data name="Node0.Text" xml:space="preserve">
     <value>Uygulama</value>
   </data>
-  <data name="tabPage2.Text" xml:space="preserve">
-    <value>Varsayılan ayarları
-[{0}]</value>
+  <data name="Node1.Text" xml:space="preserve">
+    <value>Varsayılan ayarları</value>
   </data>
 </root>

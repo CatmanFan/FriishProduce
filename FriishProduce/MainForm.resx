@@ -142,7 +142,7 @@
     <value>0</value>
   </data>
   <data name="ribbon1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>984, 124</value>
+    <value>870, 120</value>
   </data>
   <data name="ribbon1.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -308,11 +308,14 @@
   <data name="tabControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
+  <data name="tabControl.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 8pt</value>
+  </data>
   <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 124</value>
+    <value>0, 120</value>
   </data>
   <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>984, 488</value>
+    <value>870, 492</value>
   </data>
   <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -332,9 +335,6 @@
   <metadata name="BrowseManual.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>447, 17</value>
   </metadata>
-  <data name="BrowseManual.Description" xml:space="preserve">
-    <value>Needs to contain an "emanual"/"html"/"man" subfolder with extracted contents of the corresponding .arc.</value>
-  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -344,11 +344,8 @@
   <metadata name="$this.TrayLargeIcon" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
-  </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>984, 612</value>
+    <value>870, 612</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8.25pt</value>
@@ -2752,9 +2749,6 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAhAAAAIQBAAD8HwAA//8AAP//AAA=
 </value>
   </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>
   </data>
@@ -2939,7 +2933,7 @@
     <value>BrowseManual</value>
   </data>
   <data name="&gt;&gt;BrowseManual.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FolderBrowserDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>Ookii.Dialogs.WinForms.VistaFolderBrowserDialog, Ookii.Dialogs.WinForms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=66aa232afad40158</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>

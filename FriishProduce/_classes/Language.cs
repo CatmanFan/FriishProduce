@@ -246,7 +246,7 @@ namespace FriishProduce
         /// <returns>English version by default if no corresponding localized string is found, and "undefined" if all methods fail.</returns>
         public static string Get(string name, string source, bool isControl = false)
         {
-            if (isControl) name += ".Text";
+            if (isControl && !name.EndsWith(".Text")) name += ".Text";
 
             int index = -1;
             for (int i = 0; i < Sources.Count; i++)
@@ -327,12 +327,34 @@ namespace FriishProduce
                     }
                 }
             }
+
         }
 
         private static void GetControl(Control x, Control parent, bool customStrings = true)
         {
             if      (x.GetType() == typeof(Form) && x.Name != parent.Name)                                                            return;
             else if (x.GetType() == typeof(MdiTabControl.TabPage) && (x as MdiTabControl.TabPage).Form.GetType().Name != parent.Name) return;
+            else if (x.GetType() == typeof(TreeView))
+            {
+                foreach (TreeNode d in (x as TreeView).Nodes)
+                {
+                    if (!string.IsNullOrWhiteSpace(d.Name) && Get(d.Name, parent) != "undefined")
+                        d.Text = Get(d.Name, parent);
+
+                    foreach (TreeNode e in d.Nodes)
+                    {
+                        if (!string.IsNullOrWhiteSpace(e.Name) && Get(e.Name, parent) != "undefined")
+                            e.Text = Get(e.Name, parent);
+
+                        foreach (TreeNode f in e.Nodes)
+                        {
+                            if (!string.IsNullOrWhiteSpace(f.Name) && Get(f.Name, parent) != "undefined")
+                                f.Text = Get(f.Name, parent);
+                        }
+                    }
+                }
+            }
+
 
             if (!string.IsNullOrWhiteSpace(x.Name) && Get(x.Name, parent) != "undefined")
                 x.Text = Get(x.Name, parent);

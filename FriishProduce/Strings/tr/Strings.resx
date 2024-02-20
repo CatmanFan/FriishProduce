@@ -142,6 +142,9 @@
     <value>Varsayılan</value>
     <comment>The "by default" value</comment>
   </data>
+  <data name="DoNotShow" xml:space="preserve">
+    <value>Bu mesajı bir daha gösterme</value>
+  </data>
   <data name="Error" xml:space="preserve">
     <value>Bir hata oluştu</value>
   </data>

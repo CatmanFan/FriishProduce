@@ -30,8 +30,8 @@ namespace FriishProduce
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChannelTitles));
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.bottomPanel2 = new System.Windows.Forms.Panel();
+            this.bottomPanel1 = new System.Windows.Forms.Panel();
             this.OK = new System.Windows.Forms.Button();
             this.English = new System.Windows.Forms.TextBox();
             this.French = new System.Windows.Forms.TextBox();
@@ -49,23 +49,23 @@ namespace FriishProduce
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.panel2.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.bottomPanel2.SuspendLayout();
+            this.bottomPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel2
+            // bottomPanel2
             // 
-            this.panel2.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.panel2.Controls.Add(this.panel1);
-            resources.ApplyResources(this.panel2, "panel2");
-            this.panel2.Name = "panel2";
+            this.bottomPanel2.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.bottomPanel2.Controls.Add(this.bottomPanel1);
+            resources.ApplyResources(this.bottomPanel2, "bottomPanel2");
+            this.bottomPanel2.Name = "bottomPanel2";
             // 
-            // panel1
+            // bottomPanel1
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel1.Controls.Add(this.OK);
-            resources.ApplyResources(this.panel1, "panel1");
-            this.panel1.Name = "panel1";
+            this.bottomPanel1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.bottomPanel1.Controls.Add(this.OK);
+            resources.ApplyResources(this.bottomPanel1, "bottomPanel1");
+            this.bottomPanel1.Name = "bottomPanel1";
             // 
             // OK
             // 
@@ -173,8 +173,8 @@ namespace FriishProduce
             // ChannelTitles
             // 
             this.AcceptButton = this.OK;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ControlBox = false;
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
@@ -192,7 +192,7 @@ namespace FriishProduce
             this.Controls.Add(this.German);
             this.Controls.Add(this.French);
             this.Controls.Add(this.English);
-            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.bottomPanel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -201,8 +201,8 @@ namespace FriishProduce
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.TopMost = true;
-            this.panel2.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
+            this.bottomPanel2.ResumeLayout(false);
+            this.bottomPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -210,8 +210,8 @@ namespace FriishProduce
 
         #endregion
 
-        private System.Windows.Forms.Panel panel2;
-        protected System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel bottomPanel2;
+        protected System.Windows.Forms.Panel bottomPanel1;
         protected System.Windows.Forms.Button OK;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;

@@ -21,11 +21,40 @@ namespace FriishProduce
             InitializeComponent();
             isDirty = false;
 
+            // -------------------------------------------
+            // Add all languages
+            // -------------------------------------------
+            LanguageList.Items[0] = "<" + LanguageList.Items[0].ToString() + ">";
+            foreach (var item in Language.List)
+                LanguageList.Items.Add(item.Value);
+
+            RefreshForm();
+        }
+
+        public void RefreshForm()
+        {
             Language.AutoSetForm(this);
             Text = Language.Get("Settings");
-            tabPage4.Text = string.Format(tabPage2.Text, Language.Get("PlatformGroup_1"));
-            tabPage3.Text = string.Format(tabPage2.Text, Language.Get("Platform_N64"));
-            tabPage2.Text = string.Format(tabPage2.Text, Language.Get("Platform_NES"));
+            TreeView.Nodes[1].Nodes[0].Text = Language.Get("Platform_NES");
+            TreeView.Nodes[1].Nodes[1].Text = Language.Get("Platform_N64");
+            TreeView.Nodes[1].Nodes[2].Text = Language.Get("PlatformGroup_1");
+            TreeView.SelectedNode = TreeView.Nodes[0];
+
+            // -----------------------------
+
+            if (Default.UI_Language == "sys") LanguageList.SelectedIndex = 0;
+            else LanguageList.SelectedIndex = Language.List.Keys.ToList().IndexOf(Default.UI_Language) + 1;
+
+            DefaultImageInterpolation.Items.Clear();
+            DefaultImageInterpolation.Items.Add(Language.Get("ByDefault"));
+            DefaultImageInterpolation.Items.AddRange(Language.GetArray("List_ImageInterpolation"));
+            DefaultImageInterpolation.SelectedIndex = Default.ImageInterpolation;
+
+            AutoLibRetro.Checked = Default.AutoLibRetro;
+            AutoOpenFolder.Checked = Default.AutoOpenFolder;
+            checkBox1.Checked = false;
+
+            // -----------------------------
 
             const string Name_N64 = "Options_VC_N64";
             n64000.Text = Language.Get(n64000, Name_N64);
@@ -34,35 +63,19 @@ namespace FriishProduce
             n64003.Text = Language.Get(n64003, Name_N64);
             n64004.Text = Language.Get(n64004, Name_N64);
             groupBox1.Text = Language.Get(groupBox1, Name_N64);
+            ROMCType.Items.Clear();
             ROMCType.Items.AddRange(new string[] { Language.Get($"{ROMCType.Name}.Items", Name_N64), Language.Get($"{ROMCType.Name}.Items1", Name_N64) });
+
+            // -----------------------------
 
             n64000.Checked = Default.Default_N64_FixBrightness;
             n64001.Checked = Default.Default_N64_FixCrashes;
             n64002.Checked = Default.Default_N64_ExtendedRAM;
             n64003.Checked = Default.Default_N64_AllocateROM;
             ROMCType.SelectedIndex = Default.Default_N64_ROMC0 ? 0 : 1;
-
-            // -----------------------------
-
-            // -------------------------------------------
-            // Add all languages
-            // -------------------------------------------
-            LanguageList.Items[0] = "<" + LanguageList.Items[0].ToString() + ">";
-            foreach (var item in Language.List)
-                LanguageList.Items.Add(item.Value);
-            var x = Default.UI_Language;
-
-            if (Default.UI_Language == "sys") LanguageList.SelectedIndex = 0;
-            else LanguageList.SelectedIndex = Language.List.Keys.ToList().IndexOf(Default.UI_Language) + 1;
-
-            // -----------------------------
-
-            DefaultImageInterpolation.Items[0] = Language.Get("ByDefault");
-            DefaultImageInterpolation.Items.AddRange(Language.GetArray("List_ImageInterpolation"));
-            DefaultImageInterpolation.SelectedIndex = Default.ImageInterpolation;
-            AutoLibRetro.Checked = Default.AutoLibRetro;
-            AutoOpenFolder.Checked = Default.AutoOpenFolder;
         }
+
+        private void Loading(object sender, EventArgs e) { TreeView.Select(); RefreshForm(); }
 
         private void OK_Click(object sender, EventArgs e)
         {
@@ -92,11 +105,18 @@ namespace FriishProduce
             Default.Default_N64_ROMC0 = ROMCType.SelectedIndex == 0;
 
             // -------------------------------------------
+
+            if (checkBox1.Checked)
+            {
+                Default.DoNotShow_000 = false;
+            }
+
+            // -------------------------------------------
             // Restart message box & save changes
             // -------------------------------------------
             if (isDirty)
             {
-                if (MessageBox.Show(Language.Get("Message000"), ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show(Language.Get("Message000"), ProductName, MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     Default.Save();
                     Application.Restart();
@@ -109,7 +129,12 @@ namespace FriishProduce
             }
         }
 
-        private void Cancel_Click(object sender, EventArgs e) => DialogResult = DialogResult.Cancel;
+        private void Cancel_Click(object sender, EventArgs e)
+        {
+            Default.Reload();
+            Language.Current = Default.UI_Language.ToLower() == "sys" ? Language.GetSystemLanguage() : new System.Globalization.CultureInfo(Default.UI_Language);
+            DialogResult = DialogResult.Cancel;
+        }
 
         private void DownloadBanners_Click(object sender, EventArgs e)
         {
@@ -136,6 +161,52 @@ namespace FriishProduce
                 Banner.ExportBanner(item.Key, item.Value);
 
             System.Media.SystemSounds.Beep.Play();
+        }
+
+        private void TreeView_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            panel1.Hide();
+            panel2.Hide();
+            panel4.Hide();
+
+            switch (e.Node.Name.Substring(4))
+            {
+                default:
+                case "0":
+                    panel1.Show();
+                    break;
+
+                case "1":
+                    panel2.Show();
+                    break;
+
+                case "NES":
+                    break;
+
+                case "N64":
+                    panel4.Show();
+                    break;
+
+                case "SEGA":
+                    break;
+            };
+        }
+
+        private void LanguageList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // -------------------------------------------
+            // Language setting
+            // -------------------------------------------
+            if (LanguageList.SelectedIndex == 0)
+                Default.UI_Language = "sys";
+            else
+                foreach (var item in Language.List)
+                    if (item.Value == LanguageList.SelectedItem.ToString())
+                        Default.UI_Language = item.Key;
+
+            Language.Current = LanguageList.SelectedIndex == 0 ? Language.GetSystemLanguage() : new System.Globalization.CultureInfo(Default.UI_Language);
+
+            RefreshForm();
         }
     }
 }

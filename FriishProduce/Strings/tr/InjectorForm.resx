@@ -148,15 +148,21 @@
     <value>Oyun başlığı:</value>
   </data>
   <data name="label6.Text" xml:space="preserve">
-    <value>Kısa ad:</value>
+    <value>Kısa başlık:</value>
   </data>
   <data name="label8.Text" xml:space="preserve">
-    <value>Tam ad:</value>
+    <value>Tam başlık:</value>
   </data>
   <data name="label9.Text" xml:space="preserve">
     <value>Yıl:</value>
   </data>
   <data name="RegionFree.Text" xml:space="preserve">
     <value>Bolgesiz</value>
+  </data>
+  <data name="tabPage1.Text" xml:space="preserve">
+    <value>Detaylar</value>
+  </data>
+  <data name="tabPage2.Text" xml:space="preserve">
+    <value>Önizleme</value>
   </data>
 </root>

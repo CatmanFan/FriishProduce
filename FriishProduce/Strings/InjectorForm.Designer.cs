@@ -257,5 +257,23 @@ namespace Strings {
                 return ResourceManager.GetString("RegionFree.Text", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Details.
+        /// </summary>
+        public static string tabPage1_Text {
+            get {
+                return ResourceManager.GetString("tabPage1.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Preview.
+        /// </summary>
+        public static string tabPage2_Text {
+            get {
+                return ResourceManager.GetString("tabPage2.Text", resourceCulture);
+            }
+        }
     }
 }

@@ -130,5 +130,17 @@ namespace FriishProduce.Properties {
                 this["Default_N64_ROMC0"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool DoNotShow_000 {
+            get {
+                return ((bool)(this["DoNotShow_000"]));
+            }
+            set {
+                this["DoNotShow_000"] = value;
+            }
+        }
     }
 }

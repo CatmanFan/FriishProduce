@@ -29,7 +29,7 @@ namespace FriishProduce
         // -----------------------------------
         // Public variables
         // -----------------------------------
-        protected string                        ROM         { get; set; }
+        protected ROM                           ROM         { get; set; }
         protected string                        Manual      { get; set; }
         protected LibRetroDB                    LibRetro    { get; set; }
         protected Database                      Database    { get; set; }
@@ -64,6 +64,7 @@ namespace FriishProduce
 
             SetROMDataText();
             bannerPreview1.Update(BannerTitle.Text, (int)ReleaseYear.Value, (int)Players.Value, tImg != null ? tImg.VCPic : null, Creator.isJapan ? 1 : Creator.isKorea ? 2 : 0);
+            Parent.SetTitle();
 
             baseName.Location = new Point(label4.Location.X + label4.Width - 4, label4.Location.Y);
             baseID.Location = new Point(label5.Location.X + label5.Width - 4, label5.Location.Y);
@@ -75,11 +76,11 @@ namespace FriishProduce
             imageintpl.SelectedIndex = Properties.Settings.Default.ImageInterpolation;
         }
 
-        public InjectorForm(Console c, string ROM = null)
+        public InjectorForm(Console c, string ROMpath = null)
         {
             Console = c;
-            this.ROM = ROM;
             InitializeComponent();
+            if (ROMpath != null) ROM = new ROM(ROMpath);
         }
 
         private void Form_Shown(object sender, EventArgs e)
@@ -155,7 +156,7 @@ namespace FriishProduce
             Creator.BannerPlayers = (int)Players.Value;
             AddBases();
 
-            if (ROM != null) LoadROM(ROM, Properties.Settings.Default.AutoLibRetro);
+            if (ROM != null) LoadROM(ROM.Path, Properties.Settings.Default.AutoLibRetro);
         }
 
         // -----------------------------------
@@ -175,10 +176,9 @@ namespace FriishProduce
                 SaveDataTitle.Lines.Length == 0 ? new string[] { "" } :
                 SaveDataTitle.Lines;
 
-            button2.Enabled = tImg != null && !string.IsNullOrEmpty(Creator.BannerTitle);
-
             SetROMDataText();
             bannerPreview1.Update(BannerTitle.Text, (int)ReleaseYear.Value, (int)Players.Value, tImg != null ? tImg.VCPic : null, Creator.isJapan ? 1 : Creator.isKorea ? 2 : 0);
+            Parent.SetTitle();
 
             ReadyToExport =    !string.IsNullOrEmpty(Creator.TitleID) && Creator.TitleID.Length == 4
                             && !string.IsNullOrWhiteSpace(ChannelTitle.Text)
@@ -192,7 +192,7 @@ namespace FriishProduce
 
         protected virtual void SetROMDataText()
         {
-            label1.Text = string.Format(Language.Get(label1.Name, this), ROM != null ? Path.GetFileName(ROM) : Language.Get("Unknown"));
+            label1.Text = string.Format(Language.Get(label1.Name, this), ROM != null ? Path.GetFileName(ROM.Path) : Language.Get("Unknown"));
 
             if (LibRetro == null)
             {
@@ -366,7 +366,7 @@ namespace FriishProduce
 
                 if (validFiles < 2)
                 {
-                    MessageBox.Show(Language.Get("Message006"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(Language.Get("Message007"), MessageBoxButtons.OK, Ookii.Dialogs.WinForms.TaskDialogIcon.Warning);
                     Manual = null;
                     return;
                 }
@@ -430,7 +430,6 @@ namespace FriishProduce
 
                 if (tImg.Source != null)
                 {
-                    Preview.Image = tImg.IconVCPic;
                     SaveIcon_Panel.BackgroundImage = tImg.SaveIcon();
                 }
 
@@ -480,7 +479,7 @@ namespace FriishProduce
 
                     if (applicable < 6)
                     {
-                        MessageBox.Show(Language.Get("Message007"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show(Language.Get("Message008"), MessageBoxButtons.OK, Ookii.Dialogs.WinForms.TaskDialogIcon.Warning);
                         return;
                     }
                     break;
@@ -496,7 +495,7 @@ namespace FriishProduce
             }
 
 
-            ROM = ROMpath;
+            ROM = new ROM(ROMpath);
             ROMLoaded = true;
 
             Random.Visible =
@@ -521,7 +520,7 @@ namespace FriishProduce
         {
             try
             {
-                LibRetro = new LibRetroDB { SoftwarePath = ROM };
+                LibRetro = new LibRetroDB { SoftwarePath = ROM.Path };
 
                 bool Retrieved = LibRetro.GetData(Console);
                 if (Retrieved)
@@ -555,7 +554,7 @@ namespace FriishProduce
             }
             catch (Exception ex)
             {
-                MessageBox.Show(Language.Get("Error"), ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                MessageBox.Show(Language.Get("Error"), ex.Message, MessageBoxButtons.OK, Ookii.Dialogs.WinForms.TaskDialogIcon.Error);
             }
         }
 
@@ -593,7 +592,7 @@ namespace FriishProduce
                     if (Properties.Settings.Default.AutoOpenFolder)
                         System.Diagnostics.Process.Start("explorer.exe", $"/select, \"{Creator.Out}\"");
                     else
-                        MessageBox.Show(string.Format(Language.Get("Message003"), Creator.Out), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show(string.Format(Language.Get("Message003"), Creator.Out), MessageBoxButtons.OK, Ookii.Dialogs.WinForms.TaskDialogIcon.Information);
 
                     return true;
                 }
@@ -602,7 +601,7 @@ namespace FriishProduce
 
             catch (Exception ex)
             {
-                MessageBox.Show(Language.Get("Error"), ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                MessageBox.Show(Language.Get("Error"), ex.Message, MessageBoxButtons.OK, Ookii.Dialogs.WinForms.TaskDialogIcon.Error);
                 return false;
             }
 
@@ -969,6 +968,8 @@ namespace FriishProduce
             foreach (var item in Database.List)
                 foreach (var key in CurrentBase.Keys)
                     if (item.TitleID.ToUpper() == key.ToUpper()) UpdateBaseConsole(item.emuRev);
+
+            bannerPreview1.Update(BannerTitle.Text, (int)ReleaseYear.Value, (int)Players.Value, tImg != null ? tImg.VCPic : null, Creator.isJapan ? 1 : Creator.isKorea ? 2 : 0);
         }
 
         /// <summary>
@@ -1041,6 +1042,28 @@ namespace FriishProduce
             else Creator.ChannelTitles = new string[8] { ChannelTitle.Text, ChannelTitle.Text, ChannelTitle.Text, ChannelTitle.Text, ChannelTitle.Text, ChannelTitle.Text, ChannelTitle.Text, ChannelTitle.Text };
 
             ChannelTitle.Enabled = !ChannelTitle_Locale.Checked;
+        }
+
+        private void TabPageClick(object sender, EventArgs e)
+        {
+            panel1.Hide();
+            bannerPreview1.Hide();
+
+            tabPage1.Checked = (sender as CheckBox).Name == tabPage1.Name;
+            tabPage2.Checked = (sender as CheckBox).Name == tabPage2.Name;
+
+            tabPage1.Enabled = !tabPage1.Checked;
+            tabPage2.Enabled = !tabPage2.Checked;
+
+            if (tabPage1.Checked)
+            {
+                panel1.Show();
+            }
+
+            else if (tabPage2.Checked)
+            {
+                bannerPreview1.Show();
+            }
         }
     }
 }

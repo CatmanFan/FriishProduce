@@ -39,7 +39,7 @@ namespace FriishProduce
             this.x009 = new System.Windows.Forms.Label();
             this.n64004 = new System.Windows.Forms.GroupBox();
             this.ROMCType = new System.Windows.Forms.ComboBox();
-            this.panel1.SuspendLayout();
+            this.bottomPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -52,7 +52,7 @@ namespace FriishProduce
             // 
             // panel1
             // 
-            this.panel1.Size = new System.Drawing.Size(459, 47);
+            this.bottomPanel1.Size = new System.Drawing.Size(459, 47);
             // 
             // Cancel
             // 
@@ -193,7 +193,7 @@ namespace FriishProduce
             this.Controls.SetChildIndex(this.panel3, 0);
             this.Controls.SetChildIndex(this.n64004, 0);
             this.Controls.SetChildIndex(this.groupBox1, 0);
-            this.panel1.ResumeLayout(false);
+            this.bottomPanel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel3.ResumeLayout(false);

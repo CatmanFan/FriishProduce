@@ -142,6 +142,9 @@
     <value>Por defecto</value>
     <comment>The "by default" value</comment>
   </data>
+  <data name="DoNotShow" xml:space="preserve">
+    <value>No volver a mostrar este mensaje</value>
+  </data>
   <data name="Error" xml:space="preserve">
     <value>Se ha producido un error</value>
   </data>

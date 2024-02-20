@@ -177,4 +177,10 @@
   <data name="RegionFree.Text" xml:space="preserve">
     <value>Eliminar bloqueo regional</value>
   </data>
+  <data name="tabPage1.Text" xml:space="preserve">
+    <value>Detalles</value>
+  </data>
+  <data name="tabPage2.Text" xml:space="preserve">
+    <value>Vista previa</value>
+  </data>
 </root>

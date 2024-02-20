@@ -80,20 +80,20 @@ namespace FriishProduce.WiiVC
 
             // Byte Swapped to Big Endian
             // ****************
-            if ((ROM[56] == 0x4E && ROM[57] == 0x00 && ROM[58] == 0x00 && ROM[59] == 0x00)
-                || (ROM[0] == 0x40 && ROM[1] == 0x12 && ROM[2] == 0x37 && ROM[3] == 0x80))
+            if ((ROM.Bytes[56] == 0x4E && ROM.Bytes[57] == 0x00 && ROM.Bytes[58] == 0x00 && ROM.Bytes[59] == 0x00)
+                || (ROM.Bytes[0] == 0x40 && ROM.Bytes[1] == 0x12 && ROM.Bytes[2] == 0x37 && ROM.Bytes[3] == 0x80))
             {
-                for (int i = 0; i < ROM.Length; i += 4)
-                    (ROM[i], ROM[i + 1], ROM[i + 2], ROM[i + 3]) = (ROM[i + 3], ROM[i + 2], ROM[i + 1], ROM[i]);
+                for (int i = 0; i < ROM.Bytes.Length; i += 4)
+                    (ROM.Bytes[i], ROM.Bytes[i + 1], ROM.Bytes[i + 2], ROM.Bytes[i + 3]) = (ROM.Bytes[i + 3], ROM.Bytes[i + 2], ROM.Bytes[i + 1], ROM.Bytes[i]);
             }
 
             // Little Endian to Big Endian
             // ****************
-            else if ((ROM[56] == 0x00 && ROM[57] == 0x00 && ROM[58] == 0x4E && ROM[59] == 0x00)
-                || (ROM[0] == 0x37 && ROM[1] == 0x80 && ROM[2] == 0x40 && ROM[3] == 0x12))
+            else if ((ROM.Bytes[56] == 0x00 && ROM.Bytes[57] == 0x00 && ROM.Bytes[58] == 0x4E && ROM.Bytes[59] == 0x00)
+                || (ROM.Bytes[0] == 0x37 && ROM.Bytes[1] == 0x80 && ROM.Bytes[2] == 0x40 && ROM.Bytes[3] == 0x12))
             {
-                for (int i = 0; i < ROM.Length; i += 2)
-                    (ROM[i], ROM[i + 1]) = (ROM[i + 1], ROM[i]);
+                for (int i = 0; i < ROM.Bytes.Length; i += 2)
+                    (ROM.Bytes[i], ROM.Bytes[i + 1]) = (ROM.Bytes[i + 1], ROM.Bytes[i]);
             }
 
             // -----------------------
@@ -101,7 +101,7 @@ namespace FriishProduce.WiiVC
             // Maximum ROM limit allowed: 32 MB unless allocated in main.dol (maximum possible: ~56 MB)
             // -----------------------
             double maxSize = Allocate ? 56623104 : 33554432;
-            if (ROM.Length > maxSize)
+            if (ROM.Bytes.Length > maxSize)
                 throw new Exception(string.Format(Language.Get("Error003"), Math.Round(maxSize / 1048576).ToString(), Language.Get("Abbreviation_Megabytes")));
 
             // -----------------------
@@ -110,7 +110,7 @@ namespace FriishProduce.WiiVC
             switch (EmuType)
             {
                 default:
-                    MainContent.ReplaceFile(MainContent.GetNodeIndex("rom"), ROM);
+                    MainContent.ReplaceFile(MainContent.GetNodeIndex("rom"), ROM.Bytes);
                     break;
 
                 case 3:
@@ -118,14 +118,14 @@ namespace FriishProduce.WiiVC
                     // ****************
                     if (WAD.UpperTitleID.ToUpper().StartsWith("NBD"))
                     {
-                        ROM[0x3B] = 0x4E;
-                        ROM[0x3C] = 0x42;
-                        ROM[0x3D] = 0x44;
+                        ROM.Bytes[0x3B] = 0x4E;
+                        ROM.Bytes[0x3C] = 0x42;
+                        ROM.Bytes[0x3D] = 0x44;
                     }
 
                     // Temporary ROM file at working folder
                     // ****************
-                    File.WriteAllBytes(Paths.WorkingFolder + "rom", ROM);
+                    File.WriteAllBytes(Paths.WorkingFolder + "rom", ROM.Bytes);
 
                     // Compress using ROMC type
                     // ****************
@@ -355,8 +355,8 @@ namespace FriishProduce.WiiVC
             // ---------------------------------------------------------
             // Check ROM size
             // ****************
-            int size_ROM = 1 + ROM.Length / 1024 / 1024;
-            if (size_ROM > 56) throw new Exception(string.Format(Language.Get("Error003"), "56", Language.Get("Abbreviation_Megabytes")));
+            int NewSize = (1 + (ROM.Bytes.Length / 1048576)) * 1048576;
+            ROM.CheckSize(NewSize);
 
             // Check for offset
             // ****************
@@ -369,7 +369,7 @@ namespace FriishProduce.WiiVC
 
                 // Set size value in bytes
                 // ****************
-                var size = size_ROM.ToString("X2");
+                var size = NewSize.ToString("X2");
                 var size_array = new byte[]
                 {
                         Convert.ToByte($"7{size[0]}", 16),

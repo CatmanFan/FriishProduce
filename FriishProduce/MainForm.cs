@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ookii.Dialogs.WinForms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +14,8 @@ namespace FriishProduce
 {
     public partial class MainForm : RibbonForm
     {
+        private SettingsForm s = new SettingsForm();
+
         internal LibRetroDB LibRetro { get; set; }
 
         private void AutoSetRibbon()
@@ -85,7 +88,7 @@ namespace FriishProduce
             AutoSetRibbon();
             Language.AutoSetForm(this);
 
-            Text = Language.Get("_AppTitle");
+            SetTitle();
             MenuItem_Settings.Text = Language.Get("Settings");
             BrowseROM.Title = BrowseImage.Title = ribbonPanel_Open.Text;
             SaveWAD.Title = Strip_ExportWAD.Text = ExportWAD.Text;
@@ -123,13 +126,21 @@ namespace FriishProduce
             // Automatically set defined initial directory for save file dialog
             // ********
             SaveWAD.InitialDirectory = Paths.Out;
+
+            // FriishProduce.Update.GetLatest();
+        }
+
+        public void SetTitle(bool isNull = false)
+        {
+            if (tabControl.SelectedForm == null || tabControl.TabPages.Count == 0 || isNull) Text = Language.Get("_AppTitle");
+            else if (!string.IsNullOrWhiteSpace((tabControl.SelectedForm as InjectorForm).Text))
+                Text = Language.Get("_AppTitle") + " - " + (tabControl.SelectedForm as InjectorForm).Text;
         }
 
         private void Settings_Click(object sender, EventArgs e)
         {
             string lang = Properties.Settings.Default.UI_Language;
 
-            SettingsForm s = new SettingsForm();
             s.ShowDialog(this);
 
             if (lang != Properties.Settings.Default.UI_Language) RefreshForm();
@@ -154,11 +165,12 @@ namespace FriishProduce
 
             else ExportCheck(sender, e);
 
+            SetTitle(!OpenROM.Enabled);
+
             // Context menu
             // ********
             if (tabControl.TabPages.Count >= 1)
             {
-
                 if (sender == tabControl.TabPages[0]) Strip_UseLibRetro.Enabled = UseLibRetro.Enabled = (tabControl.SelectedForm as InjectorForm).ROMLoaded;
             }
         }
@@ -176,7 +188,7 @@ namespace FriishProduce
 
             if (isUnsaved)
             {
-                if (MessageBox.Show(Language.Get("Message002"), MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
+                if (MessageBox.Show(Language.Get("Message002"), MessageBoxButtons.YesNo, Ookii.Dialogs.WinForms.TaskDialogIcon.Warning) == DialogResult.No)
                     e.Cancel = true;
                 else
                     foreach (MdiTabControl.TabPage tabPage in tabControl.TabPages)
@@ -197,6 +209,7 @@ namespace FriishProduce
             InjectorForm Tab = new InjectorForm(console) { Parent = this, ContextMenuStrip = TabContextMenu };
             Tab.FormClosed += TabChanged;
             Tab.ExportCheck += ExportCheck;
+            tabControl.TabBackHighColor = Tab.BackColor;
             tabControl.TabPages.Add(Tab);
 
             foreach (MdiTabControl.TabPage tabPage in tabControl.TabPages)
@@ -261,7 +274,11 @@ namespace FriishProduce
             }
         }
 
-        private void OpenManual_Click(object sender, EventArgs e) => (tabControl.SelectedForm as InjectorForm).LoadManual(BrowseManual.ShowDialog() == DialogResult.OK ? BrowseManual.SelectedPath : null);
+        private void OpenManual_Click(object sender, EventArgs e)
+        {
+            if (!Properties.Settings.Default.DoNotShow_000) MessageBox.Show(Language.Get("Message006"), 0);
+            (tabControl.SelectedForm as InjectorForm).LoadManual(BrowseManual.ShowDialog() == DialogResult.OK ? BrowseManual.SelectedPath : null);
+        }
 
         public void CleanTemp()
         {
@@ -277,9 +294,12 @@ namespace FriishProduce
 
         private void TabContextMenu_Opening(object sender, CancelEventArgs e)
         {
-            var page = (sender as ContextMenuStrip).SourceControl;
-            var index = tabControl.TabPages.get_IndexOf(page as MdiTabControl.TabPage);
-            tabControl.TabPages[index].Select();
+            if (tabControl.TabPages.Count > 1)
+            {
+                var page = (sender as ContextMenuStrip).SourceControl;
+                var index = tabControl.TabPages.get_IndexOf(page as MdiTabControl.TabPage);
+                tabControl.TabPages[index].Select();
+            }
         }
 
         private void CloseTab_Click(object sender, EventArgs e) => (tabControl.SelectedForm as Form).Close();

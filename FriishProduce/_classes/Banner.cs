@@ -360,7 +360,7 @@ namespace FriishProduce
             }
             catch (Exception ex)
             {
-                MessageBox.Show(Language.Get("Error"), ex.Message, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Hand);
+                MessageBox.Show(Language.Get("Error"), ex.Message, System.Windows.Forms.MessageBoxButtons.OK, Ookii.Dialogs.WinForms.TaskDialogIcon.Error);
             }
         }
 
