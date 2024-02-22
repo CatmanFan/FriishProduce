@@ -65,10 +65,8 @@ This program uses the following third-party components and apps:
 * **[ccf-tools](https://github.com/libertyernie/ccf-tools)** (orig. author: paulguy) and **[BrawlLib](https://github.com/libertyernie/brawllib-wit)** (orig. author: soopercool101), both forked by **[libertyernie](https://github.com/libertyernie)**.
 
 For icons and interface:
-* **[RibbonWinForms](https://github.com/ribbonwinforms/ribbonwinforms)**.
 * **[MdiTabCtrl](https://github.com/JacksiroKe/MdiTabCtrl)** by Jack Siro.
 * **[Fugue Icons](https://p.yusukekamiyamane.com/)** by Yusuke Kamiyamane (Creative Commons Attribution 3.0 License).
-* **DotNetBarTabControl.cs** (see [this thread](https://stackoverflow.com/questions/7498413/vertical-tab-control-with-horizontal-text-in-winforms) on Stack Overflow).
 
 I would also like to thank the following people:
 * **[SuperrSonic](https://github.com/SuperrSonic)** for reverse-engineering much of Wii software and official emulator code, and in particular, his [fork of RetroArch Wii](https://github.com/SuperrSonic/RA-SS).

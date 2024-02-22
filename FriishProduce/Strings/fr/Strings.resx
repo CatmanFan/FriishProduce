@@ -267,19 +267,7 @@ Certaines formes peuvent avoir besoin d'être remplis manuellement.</value>
     <value>Sega</value>
   </data>
   <data name="PlatformGroup_2" xml:space="preserve">
-    <value>NEC</value>
-  </data>
-  <data name="PlatformGroup_3" xml:space="preserve">
-    <value>SNK</value>
-  </data>
-  <data name="PlatformGroup_4" xml:space="preserve">
-    <value>Commodore</value>
-  </data>
-  <data name="PlatformGroup_5" xml:space="preserve">
-    <value>Microsoft</value>
-  </data>
-  <data name="PlatformGroup_6" xml:space="preserve">
-    <value>Macromedia / Adobe</value>
+    <value>Autres</value>
   </data>
   <data name="Platform_C64" xml:space="preserve">
     <value>Commodore 64</value>

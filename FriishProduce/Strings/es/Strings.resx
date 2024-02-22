@@ -246,6 +246,9 @@ Asignación de tamaño de ROM</value>
     <value>No se pueden recuperar todos los datos de LibRetro para la ROM seleccionada.
 Por esta razón deberá completar manualmente algunos formularios.</value>
   </data>
+  <data name="PlatformGroup_2" xml:space="preserve">
+    <value>Otros</value>
+  </data>
   <data name="Platform_NeoGeo" xml:space="preserve">
     <value>Neo-Geo</value>
   </data>

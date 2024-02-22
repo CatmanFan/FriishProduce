@@ -194,10 +194,17 @@ namespace FriishProduce
                 // Other
                 // ****************
 
+                case Console.Flash:
+                    List = new DatabaseEntry[]
+                    {
+                            new DatabaseEntry("WNAE",   "Flash Placeholder",                            "Flash Placeholder", 0),
+                            new DatabaseEntry("WNAP",   "Flash Placeholder",                            "Flash Placeholder", 0)
+                    };
+                    break;
+
                 default:
                 case Console.PCE:
                 case Console.MSX:
-                case Console.Flash:
                     throw new NotImplementedException();
             }
         }
@@ -278,7 +285,7 @@ namespace FriishProduce
                                : Console == Console.C64 ? " (C64)"
                                : null;
 
-            if (Region == null || ConsoleType == null) throw new ArgumentException();
+            if (Region == null) throw new ArgumentException();
 
             // Load WAD from MarioCube.
             // ------------------------------------------------
@@ -287,6 +294,7 @@ namespace FriishProduce
             // ****************
             string name = List[i].Name + Region + ConsoleType;
             string URL = "https://repo.mariocube.com/WADs/_WiiWare,%20VC,%20DLC,%20Channels%20&%20IOS/" + name[0].ToString().ToUpper() + "/" + Uri.EscapeDataString(name + " (Virtual Console)") + ".wad";
+            if (Console == Console.Flash) URL = "https://repo.mariocube.com/WADs/Flash%20Injects/Base/" + Uri.EscapeDataString(name) + ".wad";
 
             Web.InternetTest();
             
@@ -294,7 +302,7 @@ namespace FriishProduce
 
             // Title ID check
             // ****************
-            if (w.UpperTitleID.ToUpper() != List[i].TitleID.ToUpper()) throw new ArgumentException();
+            if (w.UpperTitleID.ToUpper() != List[i].TitleID.ToUpper() && Console != Console.Flash) throw new ArgumentException();
             return w;
         }
 

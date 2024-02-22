@@ -642,47 +642,11 @@ namespace Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to NEC.
+        ///   Looks up a localized string similar to Other.
         /// </summary>
         public static string PlatformGroup_2 {
             get {
                 return ResourceManager.GetString("PlatformGroup_2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to SNK.
-        /// </summary>
-        public static string PlatformGroup_3 {
-            get {
-                return ResourceManager.GetString("PlatformGroup_3", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Commodore.
-        /// </summary>
-        public static string PlatformGroup_4 {
-            get {
-                return ResourceManager.GetString("PlatformGroup_4", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Microsoft.
-        /// </summary>
-        public static string PlatformGroup_5 {
-            get {
-                return ResourceManager.GetString("PlatformGroup_5", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Macromedia/Adobe.
-        /// </summary>
-        public static string PlatformGroup_6 {
-            get {
-                return ResourceManager.GetString("PlatformGroup_6", resourceCulture);
             }
         }
         

@@ -97,6 +97,33 @@ namespace Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &amp;File.
+        /// </summary>
+        public static string MenuItem_File_Text {
+            get {
+                return ResourceManager.GetString("MenuItem_File.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Help.
+        /// </summary>
+        public static string MenuItem_Help_Text {
+            get {
+                return ResourceManager.GetString("MenuItem_Help.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Project.
+        /// </summary>
+        public static string MenuItem_Project_Text {
+            get {
+                return ResourceManager.GetString("MenuItem_Project.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New....
         /// </summary>
         public static string NewProject_Text {
@@ -106,7 +133,7 @@ namespace Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Image.
+        ///   Looks up a localized string similar to Open image....
         /// </summary>
         public static string OpenImage_Text {
             get {
@@ -115,7 +142,7 @@ namespace Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Manual.
+        ///   Looks up a localized string similar to Add custom manual....
         /// </summary>
         public static string OpenManual_Text {
             get {
@@ -124,65 +151,11 @@ namespace Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ROM.
+        ///   Looks up a localized string similar to Open ROM....
         /// </summary>
         public static string OpenROM_Text {
             get {
                 return ResourceManager.GetString("OpenROM.Text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Export.
-        /// </summary>
-        public static string ribbonPanel_Export_Text {
-            get {
-                return ResourceManager.GetString("ribbonPanel_Export.Text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Open.
-        /// </summary>
-        public static string ribbonPanel_Open_Text {
-            get {
-                return ResourceManager.GetString("ribbonPanel_Open.Text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Project.
-        /// </summary>
-        public static string ribbonPanel_Project_Text {
-            get {
-                return ResourceManager.GetString("ribbonPanel_Project.Text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Home.
-        /// </summary>
-        public static string ribbonTab_Home_Text {
-            get {
-                return ResourceManager.GetString("ribbonTab_Home.Text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Open image....
-        /// </summary>
-        public static string Strip_OpenImage_Text {
-            get {
-                return ResourceManager.GetString("Strip_OpenImage.Text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Open ROM....
-        /// </summary>
-        public static string Strip_OpenROM_Text {
-            get {
-                return ResourceManager.GetString("Strip_OpenROM.Text", resourceCulture);
             }
         }
         

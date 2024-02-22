@@ -130,36 +130,27 @@
     <value>New...</value>
   </data>
   <data name="OpenImage.Text" xml:space="preserve">
-    <value>Image</value>
+    <value>Open image...</value>
   </data>
   <data name="OpenROM.Text" xml:space="preserve">
-    <value>ROM</value>
-  </data>
-  <data name="ribbonPanel_Export.Text" xml:space="preserve">
-    <value>Export</value>
-  </data>
-  <data name="ribbonPanel_Open.Text" xml:space="preserve">
-    <value>Open</value>
-  </data>
-  <data name="ribbonTab_Home.Text" xml:space="preserve">
-    <value>Home</value>
+    <value>Open ROM...</value>
   </data>
   <data name="UseLibRetro.Text" xml:space="preserve">
     <value>Use LibRetro data</value>
-  </data>
-  <data name="Strip_OpenImage.Text" xml:space="preserve">
-    <value>Open image...</value>
-  </data>
-  <data name="Strip_OpenROM.Text" xml:space="preserve">
-    <value>Open ROM...</value>
-  </data>
-  <data name="ribbonPanel_Project.Text" xml:space="preserve">
-    <value>Project</value>
   </data>
   <data name="CloseTab.Text" xml:space="preserve">
     <value>Close</value>
   </data>
   <data name="OpenManual.Text" xml:space="preserve">
-    <value>Manual</value>
+    <value>Add custom manual...</value>
+  </data>
+  <data name="MenuItem_File.Text" xml:space="preserve">
+    <value>&amp;File</value>
+  </data>
+  <data name="MenuItem_Help.Text" xml:space="preserve">
+    <value>&amp;Help</value>
+  </data>
+  <data name="MenuItem_Project.Text" xml:space="preserve">
+    <value>&amp;Project</value>
   </data>
 </root>

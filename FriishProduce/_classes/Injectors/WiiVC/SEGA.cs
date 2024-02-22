@@ -367,9 +367,7 @@ namespace FriishProduce.WiiVC
             // Check filesize of input ROM
             // Maximum ROM limit allowed: 5.25 MB for Gen/MD or 512 KB for Master System
             // -----------------------
-            var maxSize = IsSMS ? 524288 : 5.25 * 1024 * 1024;
-            if (ROM.Bytes.Length > maxSize)
-                throw new Exception(string.Format(Language.Get("Error003"), IsSMS ? "512" : "5.25", IsSMS ? Language.Get("Abbreviation_Kilobytes") : Language.Get("Abbreviation_Megabytes")));
+            ROM.CheckSize();
 
             foreach (var item in Directory.EnumerateFiles(Paths.DataCCF))
                 if (Path.GetExtension(item).ToLower().StartsWith(".sgd") || Path.GetExtension(item).ToLower().StartsWith(".sms"))

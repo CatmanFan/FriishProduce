@@ -129,31 +129,25 @@
   <data name="MenuItem_Exit.Text" xml:space="preserve">
     <value>Çıkış</value>
   </data>
+  <data name="MenuItem_File.Text" xml:space="preserve">
+    <value>&amp;Dosya</value>
+  </data>
+  <data name="MenuItem_Help.Text" xml:space="preserve">
+    <value>&amp;Yardım</value>
+  </data>
+  <data name="MenuItem_Project.Text" xml:space="preserve">
+    <value>&amp;Proje</value>
+  </data>
   <data name="NewProject.Text" xml:space="preserve">
     <value>Yeni...</value>
   </data>
   <data name="OpenImage.Text" xml:space="preserve">
-    <value>Resim</value>
+    <value>Resmi aç...</value>
   </data>
   <data name="OpenManual.Text" xml:space="preserve">
     <value>Kılavuz</value>
   </data>
-  <data name="ribbonPanel_Export.Text" xml:space="preserve">
-    <value>Kaydet</value>
-  </data>
-  <data name="ribbonPanel_Open.Text" xml:space="preserve">
-    <value>Aç</value>
-  </data>
-  <data name="ribbonPanel_Project.Text" xml:space="preserve">
-    <value>Proje</value>
-  </data>
-  <data name="ribbonTab_Home.Text" xml:space="preserve">
-    <value>Giriş</value>
-  </data>
-  <data name="Strip_OpenImage.Text" xml:space="preserve">
-    <value>Resmi aç...</value>
-  </data>
-  <data name="Strip_OpenROM.Text" xml:space="preserve">
+  <data name="OpenROM.Text" xml:space="preserve">
     <value>ROM dosyasını aç...</value>
   </data>
   <data name="UseLibRetro.Text" xml:space="preserve">

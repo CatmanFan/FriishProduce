@@ -22,7 +22,6 @@ namespace FriishProduce.WiiVC
             NeedsMainDOL = true;
             MainContentIndex = 5;
             NeedsManualLoaded = true;
-            ROM.MaxSize = 4194304;
 
             base.Load();
 

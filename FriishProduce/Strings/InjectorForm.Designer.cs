@@ -106,7 +106,7 @@ namespace Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to WAD content options.
+        ///   Looks up a localized string similar to Content options.
         /// </summary>
         public static string groupBox4_Text {
             get {

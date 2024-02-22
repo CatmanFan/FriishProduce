@@ -20,7 +20,6 @@ namespace FriishProduce
 
             Version latest = new Version(releases[0].TagName.Substring(1).Replace("-beta", ""));
             Version current = new Version(fvi.FileVersion.Substring(0, 3));
-            var diff = current.CompareTo(latest);
 
             if (current.CompareTo(latest) < 0)
             {

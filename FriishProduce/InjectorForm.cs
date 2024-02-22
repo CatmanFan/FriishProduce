@@ -63,11 +63,12 @@ namespace FriishProduce
             Text = string.IsNullOrWhiteSpace(ChannelTitle.Text) ? Untitled : ChannelTitle.Text;
 
             SetROMDataText();
-            bannerPreview1.Update(BannerTitle.Text, (int)ReleaseYear.Value, (int)Players.Value, tImg != null ? tImg.VCPic : null, Creator.isJapan ? 1 : Creator.isKorea ? 2 : 0);
+            bannerPreview1.Update(BannerTitle.Text, (int)ReleaseYear.Value, (int)Players.Value, tImg?.VCPic, Creator.isJapan ? 1 : Creator.isKorea ? 2 : 0);
             Parent.SetTitle();
 
-            baseName.Location = new Point(label4.Location.X + label4.Width - 4, label4.Location.Y);
-            baseID.Location = new Point(label5.Location.X + label5.Width - 4, label5.Location.Y);
+            var baseMax = Math.Max(label4.Location.X + label4.Width - 4, label5.Location.X + label5.Width - 4);
+            baseName.Location = new Point(baseMax, label4.Location.Y);
+            baseID.Location = new Point(baseMax, label5.Location.Y);
 
             // Selected index properties
             imageintpl.Items.Clear();
@@ -80,7 +81,7 @@ namespace FriishProduce
         {
             Console = c;
             InitializeComponent();
-            if (ROMpath != null) ROM = new ROM(ROMpath);
+            if (ROMpath != null) ROM.Path = ROMpath;
         }
 
         private void Form_Shown(object sender, EventArgs e)
@@ -98,29 +99,34 @@ namespace FriishProduce
                 case Console.NES:
                     Icon = Properties.Resources.nintendo_nes;
                     TIDCode = "F";
+                    ROM = new ROM_NES();
                     CO = new Options_VC_NES();
                     break;
 
                 case Console.SNES:
                     Icon = Properties.Resources.nintendo_super_nes;
                     TIDCode = "J";
+                    ROM = new ROM_SNES();
                     break;
 
                 case Console.N64:
                     Icon = Properties.Resources.nintendo_nintendo64;
                     TIDCode = "N";
+                    ROM = new ROM_N64();
                     CO = new Options_VC_N64();
                     break;
 
                 case Console.SMS:
                     Icon = Properties.Resources.sega_master_system;
                     TIDCode = "L";
+                    ROM = new ROM_SEGA() { IsSMS = true };
                     CO = new Options_VC_SEGA();
                     break;
 
                 case Console.SMDGEN:
                     Icon = Properties.Resources.sega_genesis;
                     TIDCode = "M";
+                    ROM = new ROM_SEGA() { IsSMS = false };
                     CO = new Options_VC_SEGA();
                     break;
 
@@ -132,6 +138,7 @@ namespace FriishProduce
                 case Console.NeoGeo:
                     Icon = Properties.Resources.snk_neo_geo_aes;
                     TIDCode = "E";
+                    ROM = new ROM_NeoGeo();
                     break;
 
                 case Console.MSX:
@@ -140,6 +147,7 @@ namespace FriishProduce
 
                 default:
                 case Console.Flash:
+                    Icon = Icon.FromHandle(Properties.Resources.flash.GetHicon());
                     TIDCode = null;
                     break;
             }
@@ -149,14 +157,13 @@ namespace FriishProduce
             // Cosmetic
             // ********
             if (Console == Console.SMS || Console == Console.SMDGEN) SaveIcon_Panel.BackgroundImage = Properties.Resources.SaveIconPlaceholder_SEGA;
-            button1.Enabled = CO != null;
             RefreshForm();
 
             Creator.BannerYear = (int)ReleaseYear.Value;
             Creator.BannerPlayers = (int)Players.Value;
             AddBases();
 
-            if (ROM != null) LoadROM(ROM.Path, Properties.Settings.Default.AutoLibRetro);
+            if (ROM != null && ROM.Path != null) LoadROM(ROM.Path, Properties.Settings.Default.AutoLibRetro);
         }
 
         // -----------------------------------
@@ -177,8 +184,9 @@ namespace FriishProduce
                 SaveDataTitle.Lines;
 
             SetROMDataText();
-            bannerPreview1.Update(BannerTitle.Text, (int)ReleaseYear.Value, (int)Players.Value, tImg != null ? tImg.VCPic : null, Creator.isJapan ? 1 : Creator.isKorea ? 2 : 0);
+            bannerPreview1.Update(BannerTitle.Text, (int)ReleaseYear.Value, (int)Players.Value, tImg?.VCPic, Creator.isJapan ? 1 : Creator.isKorea ? 2 : 0);
             Parent.SetTitle();
+            button1.Enabled = CO != null;
 
             ReadyToExport =    !string.IsNullOrEmpty(Creator.TitleID) && Creator.TitleID.Length == 4
                             && !string.IsNullOrWhiteSpace(ChannelTitle.Text)
@@ -195,15 +203,9 @@ namespace FriishProduce
             label1.Text = string.Format(Language.Get(label1.Name, this), ROM != null ? Path.GetFileName(ROM.Path) : Language.Get("Unknown"));
 
             if (LibRetro == null)
-            {
                 label2.Text = string.Format(Language.Get(label2.Name, this), Language.Get("Unknown"));
-                label3.Text = string.Format(Language.Get(label3.Name, this), Language.Get("Unknown"));
-            }
             else
-            {
                 label2.Text = string.Format(Language.Get(label2.Name, this), LibRetro.GetCleanTitle() ?? Language.Get("Unknown"));
-                label3.Text = string.Format(Language.Get(label3.Name, this), LibRetro.GetSerial() ?? Language.Get("Unknown"));
-            }
         }
 
         private void RandomTID() => TitleID.Text = Creator.TitleID = TIDCode != null ? TIDCode + GenerateTitleID().Substring(0, 3) : GenerateTitleID();
@@ -216,9 +218,15 @@ namespace FriishProduce
             if (DesignMode) return;
             // ----------------------------
 
+            e.Cancel = !CheckUnsaved();
+        }
+
+        public bool CheckUnsaved()
+        {
             if (Tag != null && Tag.ToString() == "dirty")
                 if (MessageBox.Show(Text, Language.Get("Message001"), MessageBoxButtons.YesNo) == DialogResult.No)
-                    e.Cancel = true;
+                    return false;
+            return true;
         }
 
         private void Random_Click(object sender, EventArgs e) => RandomTID();
@@ -461,27 +469,7 @@ namespace FriishProduce
                 case Console.NeoGeo:
                     // Check if ZIP archive is of valid format
                     // ****************
-                    var ZIP = Ionic.Zip.ZipFile.Read(ROMpath);
-                    int applicable = 0;
-
-                    foreach (var item in ZIP.Entries)
-                    {
-                        // First do a check to see if valid
-                        // ****************
-                        string[] allowed = new string[] { "c1", "c2", "m1", "p1", "s1", "v1" };
-
-                        foreach (string line in allowed)
-                            if (item.FileName.ToLower().EndsWith(line) || Path.GetFileNameWithoutExtension(item.FileName).ToLower().EndsWith(line))
-                                applicable++;
-                    }
-
-                    ZIP.Dispose();
-
-                    if (applicable < 6)
-                    {
-                        MessageBox.Show(Language.Get("Message008"), MessageBoxButtons.OK, Ookii.Dialogs.WinForms.TaskDialogIcon.Warning);
-                        return;
-                    }
+                    if (!ROM.CheckZIPValidity(ROMpath, new string[] { "c1", "c2", "m1", "p1", "s1", "v1" }, true, true)) return;
                     break;
 
                 case Console.MSX:
@@ -494,8 +482,7 @@ namespace FriishProduce
                     break;
             }
 
-
-            ROM = new ROM(ROMpath);
+            ROM.Path = ROMpath;
             ROMLoaded = true;
 
             Random.Visible =
@@ -516,13 +503,14 @@ namespace FriishProduce
             if (ROM != null && UseLibRetro) LoadLibRetroData();
         }
 
-        public void LoadLibRetroData()
+        public async void LoadLibRetroData()
         {
+            if (ROM == null || ROM.Path == null) return;
+
             try
             {
                 LibRetro = new LibRetroDB { SoftwarePath = ROM.Path };
-
-                bool Retrieved = LibRetro.GetData(Console);
+                var Retrieved = await Task.FromResult(LibRetro.Get(Console));
                 if (Retrieved)
                 {
                     // Set banner title
@@ -969,7 +957,7 @@ namespace FriishProduce
                 foreach (var key in CurrentBase.Keys)
                     if (item.TitleID.ToUpper() == key.ToUpper()) UpdateBaseConsole(item.emuRev);
 
-            bannerPreview1.Update(BannerTitle.Text, (int)ReleaseYear.Value, (int)Players.Value, tImg != null ? tImg.VCPic : null, Creator.isJapan ? 1 : Creator.isKorea ? 2 : 0);
+            bannerPreview1.Update(BannerTitle.Text, (int)ReleaseYear.Value, (int)Players.Value, tImg?.VCPic, Creator.isJapan ? 1 : Creator.isKorea ? 2 : 0);
         }
 
         /// <summary>
@@ -1042,28 +1030,6 @@ namespace FriishProduce
             else Creator.ChannelTitles = new string[8] { ChannelTitle.Text, ChannelTitle.Text, ChannelTitle.Text, ChannelTitle.Text, ChannelTitle.Text, ChannelTitle.Text, ChannelTitle.Text, ChannelTitle.Text };
 
             ChannelTitle.Enabled = !ChannelTitle_Locale.Checked;
-        }
-
-        private void TabPageClick(object sender, EventArgs e)
-        {
-            panel1.Hide();
-            bannerPreview1.Hide();
-
-            tabPage1.Checked = (sender as CheckBox).Name == tabPage1.Name;
-            tabPage2.Checked = (sender as CheckBox).Name == tabPage2.Name;
-
-            tabPage1.Enabled = !tabPage1.Checked;
-            tabPage2.Enabled = !tabPage2.Checked;
-
-            if (tabPage1.Checked)
-            {
-                panel1.Show();
-            }
-
-            else if (tabPage2.Checked)
-            {
-                bannerPreview1.Show();
-            }
         }
     }
 }

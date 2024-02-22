@@ -70,39 +70,11 @@ namespace FriishProduce.WiiVC
         protected override void ReplaceROM()
         {
             // -----------------------
-            // Byteswap ROM first
-            // ****************
-            // Comparison of byte formats:
-            // Big Endian:    SUPER MARIO 64
-            // Byte Swapped:  USEP RAMIR O46 (each 2 bytes in reverse)
-            // Little Endian: EPUSAM R OIR46 (each 4 bytes in reverse)
-            // -----------------------
-
-            // Byte Swapped to Big Endian
-            // ****************
-            if ((ROM.Bytes[56] == 0x4E && ROM.Bytes[57] == 0x00 && ROM.Bytes[58] == 0x00 && ROM.Bytes[59] == 0x00)
-                || (ROM.Bytes[0] == 0x40 && ROM.Bytes[1] == 0x12 && ROM.Bytes[2] == 0x37 && ROM.Bytes[3] == 0x80))
-            {
-                for (int i = 0; i < ROM.Bytes.Length; i += 4)
-                    (ROM.Bytes[i], ROM.Bytes[i + 1], ROM.Bytes[i + 2], ROM.Bytes[i + 3]) = (ROM.Bytes[i + 3], ROM.Bytes[i + 2], ROM.Bytes[i + 1], ROM.Bytes[i]);
-            }
-
-            // Little Endian to Big Endian
-            // ****************
-            else if ((ROM.Bytes[56] == 0x00 && ROM.Bytes[57] == 0x00 && ROM.Bytes[58] == 0x4E && ROM.Bytes[59] == 0x00)
-                || (ROM.Bytes[0] == 0x37 && ROM.Bytes[1] == 0x80 && ROM.Bytes[2] == 0x40 && ROM.Bytes[3] == 0x12))
-            {
-                for (int i = 0; i < ROM.Bytes.Length; i += 2)
-                    (ROM.Bytes[i], ROM.Bytes[i + 1]) = (ROM.Bytes[i + 1], ROM.Bytes[i]);
-            }
-
-            // -----------------------
             // Check filesize
             // Maximum ROM limit allowed: 32 MB unless allocated in main.dol (maximum possible: ~56 MB)
             // -----------------------
-            double maxSize = Allocate ? 56623104 : 33554432;
-            if (ROM.Bytes.Length > maxSize)
-                throw new Exception(string.Format(Language.Get("Error003"), Math.Round(maxSize / 1048576).ToString(), Language.Get("Abbreviation_Megabytes")));
+            ROM.MaxSize = Allocate ? 56623104 : 33554432;
+            ROM.CheckSize();
 
             // -----------------------
             // Actually replace original ROM

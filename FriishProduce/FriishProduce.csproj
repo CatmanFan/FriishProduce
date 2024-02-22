@@ -109,9 +109,6 @@
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
-    <Reference Include="System.Windows.Forms.Ribbon, Version=2.0.0.0, Culture=neutral, PublicKeyToken=928736e248aa81f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\RibbonWinForms.5.0.1.1\lib\net472\System.Windows.Forms.Ribbon.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -141,6 +138,11 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="_classes\ROM\N64.cs" />
+    <Compile Include="_classes\ROM\NeoGeo.cs" />
+    <Compile Include="_classes\ROM\NES.cs" />
+    <Compile Include="_classes\ROM\SEGA.cs" />
+    <Compile Include="_classes\ROM\SNES.cs" />
     <Compile Include="_classes\Update.cs" />
     <EmbeddedResource Include="BannerPreview.resx">
       <DependentUpon>BannerPreview.cs</DependentUpon>
@@ -151,9 +153,6 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <Compile Include="packages\DotNetBarTabControl.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="packages\libWiiSharp\BNS.cs" />
     <Compile Include="packages\libWiiSharp\Brlan.cs" />
     <Compile Include="packages\libWiiSharp\Brlyt.cs" />
@@ -367,6 +366,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\icons\wrench.png" />
+    <None Include="Resources\icons\door-open.png" />
+    <None Include="Resources\icons\flash.png" />
     <None Include="Resources\icon.png" />
     <None Include="Resources\icons\tick.png" />
     <None Include="Resources\icons\cross.png" />

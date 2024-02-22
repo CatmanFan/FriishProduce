@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace FriishProduce
@@ -58,15 +59,16 @@ namespace FriishProduce
         private string Year;
         private string ImgURL;
         private string Players;
-        private string Serial;
 
         public string GetYear() => Year;
 
         public string GetTitle() => Title;
 
-        public string GetCleanTitle()
+        public string GetCleanTitle(bool isMultiline = false)
         {
-            string title = System.Text.RegularExpressions.Regex.Replace(Title.Replace(": ", Environment.NewLine).Replace(" - ", Environment.NewLine), @"\((.*?)\)", "");
+            if (Title == null) return null;
+
+            string title = Regex.Replace(Title?.Replace(": ", Environment.NewLine).Replace(" - ", Environment.NewLine), @"\((.*?)\)", "");
             if (title.Contains(", The")) title = "The " + title.Replace(", The", string.Empty);
             return title.Trim();
         }
@@ -75,15 +77,12 @@ namespace FriishProduce
 
         public string GetPlayers() => Players;
 
-        public string GetSerial() => Serial;
-
-        public bool GetData(Console platform)
+        public bool Get(Console platform)
         {
             Title = null;
             Year = null;
             ImgURL = null;
             Players = null;
-            Serial = null;
 
             Web.InternetTest();
 
@@ -206,7 +205,7 @@ namespace FriishProduce
 
                     // Get original serial (title or content ID) of game
                     // ****************
-                    using (WebClient c = new WebClient())
+                    /* using (WebClient c = new WebClient())
                         db_bytes = Web.Get(db_base + "serial/" + Uri.EscapeUriString(item.Value) + ".dat");
 
                     // Scan retrieved database
@@ -219,7 +218,8 @@ namespace FriishProduce
                             for (int x = i; x < i + 5; x++)
                                 if (db_lines[x].Contains("serial "))
                                     Serial = db_lines[x].Replace("\t", "").Replace("serial ", "").Replace("\"", "");
-                        }
+                        } */
+
                     return true;
                 }
             }

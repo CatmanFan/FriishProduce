@@ -124,7 +124,6 @@ namespace FriishProduce.WiiVC
         Next:
             // ------------------------- //
 
-            var P1 = new List<byte>();
             P = new List<byte>();
             M = new List<byte>();
             V = new List<byte>();

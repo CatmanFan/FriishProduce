@@ -12,72 +12,65 @@ using System.Windows.Forms;
 
 namespace FriishProduce
 {
-    public partial class MainForm : RibbonForm
+    public partial class MainForm : Form
     {
-        private SettingsForm s = new SettingsForm();
+        private readonly SettingsForm s = new SettingsForm();
 
         internal LibRetroDB LibRetro { get; set; }
 
-        private void AutoSetRibbon()
+        private void AutoSetStrip()
         {
-            ribbon1.OrbText = Language.Get("File");
-
             NewProject.DropDownItems.Clear();
-            NewProject.DropDownItems.AddRange(new List<RibbonItem>
+
+            var items = new ToolStripItem[][]
             {
-                new RibbonSeparator(Language.Get("PlatformGroup_0")),
-
-                new RibbonButton(new Icon(Properties.Resources.nintendo_nes, 16, 16).ToBitmap())          { Tag = Console.NES.ToString() },
-                new RibbonButton(new Icon(Properties.Resources.nintendo_super_nes, 16, 16).ToBitmap())    { Tag = Console.SNES.ToString() },
-                new RibbonButton(new Icon(Properties.Resources.nintendo_nintendo64, 16, 16).ToBitmap())   { Tag = Console.N64.ToString() },
-
-                new RibbonSeparator(Language.Get("PlatformGroup_1")),
-
-                new RibbonButton(new Icon(Properties.Resources.sega_master_system, 16, 16).ToBitmap())    { Tag = Console.SMS.ToString() },
-                new RibbonButton(new Icon(Properties.Resources.sega_genesis, 16, 16).ToBitmap())          { Tag = Console.SMDGEN.ToString() },
-
-                new RibbonSeparator(Language.Get("PlatformGroup_2")),
-
-                new RibbonButton(new Icon(Properties.Resources.snk_neo_geo_aes, 16, 16).ToBitmap())    { Tag = Console.NeoGeo.ToString() },
-            });
-
-            foreach (RibbonButton item in NewProject.DropDownItems.OfType<RibbonButton>())
-            {
-                item.Text = string.Format(Language.Get("ProjectType"), Language.Get($"Platform_{item.Tag}"));
-                item.Click += AddProject;
-            }
-
-            string text = null;
-
-            foreach (RibbonTab tab in ribbon1.Tabs)
-            {
-                text = Language.Get(tab.Name, this);
-                if (text != "undefined") tab.Text = text;
-
-                foreach (RibbonPanel panel in tab.Panels)
+                new ToolStripItem[]
                 {
-                    text = Language.Get(panel.Name, this);
-                    if (text != "undefined") panel.Text = text;
+                    new ToolStripMenuItem(null, new Icon(Properties.Resources.nintendo_nes, 16, 16).ToBitmap(), AddProject, Console.NES.ToString()),
+                    new ToolStripMenuItem(null, new Icon(Properties.Resources.nintendo_super_nes, 16, 16).ToBitmap(), AddProject, Console.SNES.ToString()),
+                    new ToolStripMenuItem(null, new Icon(Properties.Resources.nintendo_nintendo64, 16, 16).ToBitmap(), AddProject, Console.N64.ToString()),
+                    new ToolStripSeparator(),
+                },
 
-                    foreach (RibbonButton button in panel.Items.OfType<RibbonButton>())
-                    {
-                        text = Language.Get(button.Name, this);
-                        if (text != "undefined")
-                        {
-                            button.Text = text;
-                            button.MinimumSize = new Size(20 + (button.Text.Length * 5), 0);
-                            button.MaximumSize = button.MaximumSize;
-                        }
-                    }
+                new ToolStripItem[]
+                {
+                    new ToolStripMenuItem(null, new Icon(Properties.Resources.sega_master_system, 16, 16).ToBitmap(), AddProject, Console.SMS.ToString()),
+                    new ToolStripMenuItem(null, new Icon(Properties.Resources.sega_genesis__model_2_, 16, 16).ToBitmap(), AddProject, Console.SMDGEN.ToString()),
+                    new ToolStripSeparator(),
+                },
+
+                new ToolStripItem[]
+                {
+                    new ToolStripMenuItem(null, new Icon(Properties.Resources.snk_neo_geo_aes, 16, 16).ToBitmap(), AddProject, Console.NeoGeo.ToString()),
+                    new ToolStripSeparator(),
                 }
-            }
+            };
 
-            foreach (RibbonButton button in ribbon1.OrbDropDown.MenuItems.OfType<RibbonButton>())
-            {
-                text = Language.Get(button.Name, this);
-                if (text != "undefined") button.Text = text;
-            }
+            foreach (var section in items)
+                foreach (ToolStripItem item in section)
+                    item.Text = string.Format(Language.Get("ProjectType"), Language.Get($"Platform_{item.Name}"));
 
+            NewProject.DropDownItems.AddRange(new ToolStripItem[]
+                {
+                    new ToolStripMenuItem(Language.Get("PlatformGroup_0"), null, items[0]),
+                    new ToolStripMenuItem(Language.Get("PlatformGroup_1"), null, items[1]),
+                    new ToolStripMenuItem(Language.Get("PlatformGroup_2"), null, items[2])
+                });
+
+            MenuItem_Settings.Text = Language.Get("Settings");
+            foreach (ToolStripMenuItem section in MenuStrip.Items.OfType<ToolStripMenuItem>())
+                foreach (ToolStripMenuItem item in section.DropDownItems.OfType<ToolStripMenuItem>())
+                    item.Text = Language.Get(item.Name, this) != "undefined" ? Language.Get(item.Name, this) : item.Text;
+
+            MenuItem_File.Text = Language.Get(MenuItem_File.Name, this);
+            MenuItem_Project.Text = Language.Get(MenuItem_Project.Name, this);
+            // MenuItem_Help.Text = Language.Get(MenuItem_Help.Name, this);
+            OpenROM.Text = Language.Get(OpenROM.Name, this);
+            OpenImage.Text = Language.Get(OpenImage.Name, this);
+            OpenManual.Text = Language.Get(OpenManual.Name, this);
+            UseLibRetro.Text = Language.Get(UseLibRetro.Name, this);
+            ExportWAD.Text = Language.Get(ExportWAD.Name, this);
+            CloseTab.Text = Language.Get(CloseTab.Name, this);
         }
 
         /// <summary>
@@ -85,23 +78,13 @@ namespace FriishProduce
         /// </summary>
         private void RefreshForm()
         {
-            AutoSetRibbon();
+            AutoSetStrip();
             Language.AutoSetForm(this);
 
             SetTitle();
-            MenuItem_Settings.Text = Language.Get("Settings");
-            BrowseROM.Title = BrowseImage.Title = ribbonPanel_Open.Text;
-            SaveWAD.Title = Strip_ExportWAD.Text = ExportWAD.Text;
-
-            Strip_UseLibRetro.Text = UseLibRetro.Text;
-            Strip_OpenROM.Text = Language.Get(Strip_OpenROM.Name, this);
-            Strip_OpenImage.Text = Language.Get(Strip_OpenImage.Name, this);
-            CloseTab.Text = Language.Get(CloseTab.Name, this);
-
-            Strip_OpenROM.Image = OpenROM.SmallImage;
-            Strip_OpenImage.Image = OpenImage.SmallImage;
-            Strip_UseLibRetro.Image = UseLibRetro.SmallImage;
-            Strip_ExportWAD.Image = ExportWAD.SmallImage;
+            BrowseROM.Title = OpenROM.Text;
+            BrowseImage.Title = OpenImage.Text;
+            SaveWAD.Title = ExportWAD.Text;
 
             BrowseImage.Filter = Language.Get("Filter_Img");
             SaveWAD.Filter = Language.Get("Filter_WAD");
@@ -119,9 +102,6 @@ namespace FriishProduce
             RefreshForm();
 
             Program.Handle = Handle;
-
-            Strip_OpenROM.Image = OpenROM.SmallImage;
-            Strip_OpenImage.Image = OpenImage.SmallImage;
 
             // Automatically set defined initial directory for save file dialog
             // ********
@@ -152,18 +132,20 @@ namespace FriishProduce
             // ********
             if (sender != tabControl.TabPages[0]) OpenROM.Enabled = tabControl.TabPages.Count > 1;
             else OpenROM.Enabled = true;
-            tabControl.Visible = OpenManual.Enabled = Strip_OpenImage.Enabled = OpenImage.Enabled = Strip_OpenROM.Enabled = OpenROM.Enabled;
 
             // Toggle visibility of Export WAD button
             // Toggle visibility of Download LibRetro data button
             // ********
             if (!OpenROM.Enabled)
             {
-                Strip_ExportWAD.Enabled = ExportWAD.Enabled = false;
-                Strip_UseLibRetro.Enabled = UseLibRetro.Enabled = false;
+                ExportWAD.Enabled = false;
+                UseLibRetro.Enabled = false;
+                tabControl.Visible = false;
             }
 
             else ExportCheck(sender, e);
+
+            CloseTab.Enabled = OpenManual.Enabled = OpenImage.Enabled = OpenROM.Enabled;
 
             SetTitle(!OpenROM.Enabled);
 
@@ -171,28 +153,38 @@ namespace FriishProduce
             // ********
             if (tabControl.TabPages.Count >= 1)
             {
-                if (sender == tabControl.TabPages[0]) Strip_UseLibRetro.Enabled = UseLibRetro.Enabled = (tabControl.SelectedForm as InjectorForm).ROMLoaded;
+                if (sender == tabControl.TabPages[0]) UseLibRetro.Enabled = (tabControl.SelectedForm as InjectorForm).ROMLoaded;
             }
         }
 
-        private void ExportCheck(object sender, EventArgs e) => Strip_ExportWAD.Enabled = ExportWAD.Enabled = (tabControl.SelectedForm as InjectorForm).ReadyToExport;
+        private void ExportCheck(object sender, EventArgs e) => ExportWAD.Enabled = ExportWAD.Enabled = (tabControl.SelectedForm as InjectorForm).ReadyToExport;
 
         private void MainForm_Closing(object sender, FormClosingEventArgs e)
         {
-            bool isUnsaved = false;
-            foreach (MdiTabControl.TabPage tabPage in tabControl.TabPages)
+            var collection = tabControl.TabPages;
+
+            for (int i = 0; i < collection.Count; i++)
             {
-                var x = tabPage.Form as Form;
-                if (x.Tag != null && x.Tag.ToString() == "dirty") isUnsaved = true;
+                var tabPage = tabControl.TabPages[i];
+
+                InjectorForm x = tabPage?.Form as InjectorForm;
+                if (x?.Tag?.ToString() == "dirty")
+                {
+                    tabControl.TabPages[tabControl.TabPages.get_IndexOf(tabPage)].Select();
+                    bool Cancelled = !x.CheckUnsaved();
+
+                    if (Cancelled)
+                    { e.Cancel = true; return; }
+                }
             }
 
-            if (isUnsaved)
+            foreach (MdiTabControl.TabPage tabPage in collection)
             {
-                if (MessageBox.Show(Language.Get("Message002"), MessageBoxButtons.YesNo, Ookii.Dialogs.WinForms.TaskDialogIcon.Warning) == DialogResult.No)
-                    e.Cancel = true;
-                else
-                    foreach (MdiTabControl.TabPage tabPage in tabControl.TabPages)
-                        (tabPage.Form as Form).Tag = null;
+                try
+                {
+                    (tabPage.Form as Form).Tag = null;
+                }
+                catch { }
             }
         }
 
@@ -201,22 +193,16 @@ namespace FriishProduce
         /// </summary>
         private void AddProject(object sender, EventArgs e)
         {
-            if (!Enum.TryParse((sender as RibbonButton).Tag.ToString(), out Console console))
+            if (!Enum.TryParse((sender as ToolStripMenuItem).Name.ToString(), out Console console))
                 return;
 
-            tabControl.Visible = true;
-
-            InjectorForm Tab = new InjectorForm(console) { Parent = this, ContextMenuStrip = TabContextMenu };
+            InjectorForm Tab = new InjectorForm(console) { Parent = this };
             Tab.FormClosed += TabChanged;
             Tab.ExportCheck += ExportCheck;
             tabControl.TabBackHighColor = Tab.BackColor;
             tabControl.TabPages.Add(Tab);
 
-            foreach (MdiTabControl.TabPage tabPage in tabControl.TabPages)
-            {
-                tabPage.ContextMenuStrip = null;
-                tabPage.ContextMenuStrip = TabContextMenu;
-            }
+            tabControl.Visible = true;
 
             // BrowseROMDialog(console, Tab);
         }
@@ -248,7 +234,7 @@ namespace FriishProduce
             if (BrowseROM.ShowDialog() == DialogResult.OK)
             {
                 currentForm.LoadROM(Properties.Settings.Default.AutoLibRetro);
-                Strip_UseLibRetro.Enabled = UseLibRetro.Enabled = true;
+                UseLibRetro.Enabled = true;
             }
         }
 
@@ -294,12 +280,9 @@ namespace FriishProduce
 
         private void TabContextMenu_Opening(object sender, CancelEventArgs e)
         {
-            if (tabControl.TabPages.Count > 1)
-            {
-                var page = (sender as ContextMenuStrip).SourceControl;
-                var index = tabControl.TabPages.get_IndexOf(page as MdiTabControl.TabPage);
-                tabControl.TabPages[index].Select();
-            }
+            var page = (sender as ContextMenuStrip).SourceControl;
+            var index = tabControl.TabPages.get_IndexOf(page as MdiTabControl.TabPage);
+            if (index != -1) tabControl.TabPages[index].Select();
         }
 
         private void CloseTab_Click(object sender, EventArgs e) => (tabControl.SelectedForm as Form).Close();

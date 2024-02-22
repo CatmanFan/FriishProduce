@@ -130,36 +130,27 @@
     <value>Nouveau ...</value>
   </data>
   <data name="OpenImage.Text" xml:space="preserve">
-    <value>Image</value>
+    <value>Ouvrir une image ...</value>
   </data>
   <data name="OpenROM.Text" xml:space="preserve">
-    <value>Fichier ROM</value>
-  </data>
-  <data name="ribbonPanel_Export.Text" xml:space="preserve">
-    <value>Exporter</value>
-  </data>
-  <data name="ribbonPanel_Open.Text" xml:space="preserve">
-    <value>Ouvrir</value>
-  </data>
-  <data name="ribbonTab_Home.Text" xml:space="preserve">
-    <value>Accueil</value>
+    <value>Ouvrir une ROM ...</value>
   </data>
   <data name="UseLibRetro.Text" xml:space="preserve">
     <value>Remplir dès LibRetro</value>
-  </data>
-  <data name="Strip_OpenImage.Text" xml:space="preserve">
-    <value>Ouvrir une image ...</value>
-  </data>
-  <data name="Strip_OpenROM.Text" xml:space="preserve">
-    <value>Ouvrir une ROM ...</value>
-  </data>
-  <data name="ribbonPanel_Project.Text" xml:space="preserve">
-    <value>Projet</value>
   </data>
   <data name="CloseTab.Text" xml:space="preserve">
     <value>Fermer</value>
   </data>
   <data name="OpenManual.Text" xml:space="preserve">
-    <value>Mode d'emploi</value>
+    <value>Ajouter un mode d'emploi personnalisé ...</value>
+  </data>
+  <data name="MenuItem_File.Text" xml:space="preserve">
+    <value>&amp;Fichier</value>
+  </data>
+  <data name="MenuItem_Help.Text" xml:space="preserve">
+    <value>&amp;Aide</value>
+  </data>
+  <data name="MenuItem_Project.Text" xml:space="preserve">
+    <value>&amp;Projet</value>
   </data>
 </root>
