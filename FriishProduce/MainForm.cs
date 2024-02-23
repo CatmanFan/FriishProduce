@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -20,57 +21,46 @@ namespace FriishProduce
 
         private void AutoSetStrip()
         {
-            NewProject.DropDownItems.Clear();
+            foreach (ToolStripMenuItem section in MenuStrip.Items.OfType<ToolStripMenuItem>())
+                foreach (ToolStripItem item in section.DropDownItems.OfType<ToolStripItem>())
+                    if (Language.Get(item.Name, this) != "undefined") item.Text = Language.Get(item.Name, this);
 
-            var items = new ToolStripItem[][]
-            {
-                new ToolStripItem[]
+            var Consoles = new ToolStripItem[]
                 {
-                    new ToolStripMenuItem(null, new Icon(Properties.Resources.nintendo_nes, 16, 16).ToBitmap(), AddProject, Console.NES.ToString()),
-                    new ToolStripMenuItem(null, new Icon(Properties.Resources.nintendo_super_nes, 16, 16).ToBitmap(), AddProject, Console.SNES.ToString()),
-                    new ToolStripMenuItem(null, new Icon(Properties.Resources.nintendo_nintendo64, 16, 16).ToBitmap(), AddProject, Console.N64.ToString()),
-                    new ToolStripSeparator(),
-                },
+                    new ToolStripMenuItem(
+                        Language.Get("PlatformGroup_0"), null,
+                        new ToolStripItem[]
+                        {
+                            new ToolStripMenuItem(null, new Icon(Properties.Resources.nintendo_nes, 16, 16).ToBitmap(), AddProject, Console.NES.ToString()),
+                            new ToolStripMenuItem(null, new Icon(Properties.Resources.nintendo_super_nes, 16, 16).ToBitmap(), AddProject, Console.SNES.ToString()),
+                            new ToolStripMenuItem(null, new Icon(Properties.Resources.nintendo_nintendo64, 16, 16).ToBitmap(), AddProject, Console.N64.ToString()),
+                            new ToolStripSeparator(),
+                        }),
 
-                new ToolStripItem[]
-                {
-                    new ToolStripMenuItem(null, new Icon(Properties.Resources.sega_master_system, 16, 16).ToBitmap(), AddProject, Console.SMS.ToString()),
-                    new ToolStripMenuItem(null, new Icon(Properties.Resources.sega_genesis__model_2_, 16, 16).ToBitmap(), AddProject, Console.SMDGEN.ToString()),
-                    new ToolStripSeparator(),
-                },
+                    new ToolStripMenuItem(
+                        Language.Get("PlatformGroup_1"), null,
+                        new ToolStripItem[]
+                        {
+                            new ToolStripMenuItem(null, new Icon(Properties.Resources.sega_master_system, 16, 16).ToBitmap(), AddProject, Console.SMS.ToString()),
+                            new ToolStripMenuItem(null, new Icon(Properties.Resources.sega_genesis__model_2_, 16, 16).ToBitmap(), AddProject, Console.SMDGEN.ToString()),
+                            new ToolStripSeparator(),
+                        }),
 
-                new ToolStripItem[]
-                {
-                    new ToolStripMenuItem(null, new Icon(Properties.Resources.snk_neo_geo_aes, 16, 16).ToBitmap(), AddProject, Console.NeoGeo.ToString()),
-                    new ToolStripSeparator(),
-                }
-            };
+                    new ToolStripMenuItem(
+                        Language.Get("PlatformGroup_2"), null,
+                        new ToolStripItem[]
+                        {
+                            new ToolStripMenuItem(null, new Icon(Properties.Resources.snk_neo_geo_aes, 16, 16).ToBitmap(), AddProject, Console.NeoGeo.ToString()),
+                            new ToolStripSeparator(),
+                        })
+                };
 
-            foreach (var section in items)
-                foreach (ToolStripItem item in section)
+            foreach (ToolStripMenuItem section in Consoles)
+                foreach (ToolStripMenuItem item in section.DropDownItems.OfType<ToolStripMenuItem>())
                     item.Text = string.Format(Language.Get("ProjectType"), Language.Get($"Platform_{item.Name}"));
 
-            NewProject.DropDownItems.AddRange(new ToolStripItem[]
-                {
-                    new ToolStripMenuItem(Language.Get("PlatformGroup_0"), null, items[0]),
-                    new ToolStripMenuItem(Language.Get("PlatformGroup_1"), null, items[1]),
-                    new ToolStripMenuItem(Language.Get("PlatformGroup_2"), null, items[2])
-                });
-
-            MenuItem_Settings.Text = Language.Get("Settings");
-            foreach (ToolStripMenuItem section in MenuStrip.Items.OfType<ToolStripMenuItem>())
-                foreach (ToolStripMenuItem item in section.DropDownItems.OfType<ToolStripMenuItem>())
-                    item.Text = Language.Get(item.Name, this) != "undefined" ? Language.Get(item.Name, this) : item.Text;
-
-            MenuItem_File.Text = Language.Get(MenuItem_File.Name, this);
-            MenuItem_Project.Text = Language.Get(MenuItem_Project.Name, this);
-            // MenuItem_Help.Text = Language.Get(MenuItem_Help.Name, this);
-            OpenROM.Text = Language.Get(OpenROM.Name, this);
-            OpenImage.Text = Language.Get(OpenImage.Name, this);
-            OpenManual.Text = Language.Get(OpenManual.Name, this);
-            UseLibRetro.Text = Language.Get(UseLibRetro.Name, this);
-            ExportWAD.Text = Language.Get(ExportWAD.Name, this);
-            CloseTab.Text = Language.Get(CloseTab.Name, this);
+            NewProject.DropDownItems.Clear();
+            NewProject.DropDownItems.AddRange(Consoles);
         }
 
         /// <summary>
@@ -82,6 +72,19 @@ namespace FriishProduce
             Language.AutoSetForm(this);
 
             SetTitle();
+            MenuItem_File.Text = Language.Get(MenuItem_File.Name, this);
+            MenuItem_Project.Text = Language.Get(MenuItem_Project.Name, this);
+            MenuItem_Help.Text = Language.Get(MenuItem_Help.Name, this);
+            ToolStrip_Tutorial.Text = MenuItem_Tutorial.Text;
+            ToolStrip_Tutorial.Image = MenuItem_Tutorial.Image;
+            ToolStrip_Settings.Text = MenuItem_Settings.Text = Language.Get("Settings");
+            ToolStrip_OpenROM.Text = OpenROM.Text = Language.Get(OpenROM.Name, this);
+            ToolStrip_OpenImage.Text = OpenImage.Text = Language.Get(OpenImage.Name, this);
+            ToolStrip_OpenManual.Text = OpenManual.Text = Language.Get(OpenManual.Name, this);
+            ToolStrip_UseLibRetro.Text = UseLibRetro.Text = Language.Get(UseLibRetro.Name, this);
+            ToolStrip_ExportWAD.Text = ExportWAD.Text = Language.Get(ExportWAD.Name, this);
+            ToolStrip_CloseTab.Text = CloseTab.Text = Language.Get(CloseTab.Name, this);
+
             BrowseROM.Title = OpenROM.Text;
             BrowseImage.Title = OpenImage.Text;
             SaveWAD.Title = ExportWAD.Text;
@@ -94,6 +97,21 @@ namespace FriishProduce
                 if (tabPage.Form.GetType() == typeof(InjectorForm))
                     (tabPage.Form as InjectorForm).RefreshForm();
             }
+
+            CustomToolStripRenderer r = new CustomToolStripRenderer() { RoundedEdges = false };
+            /* MenuStrip.Renderer = */ ToolStrip.Renderer = r;
+            Refresh();
+        }
+
+        private class CustomToolStripRenderer : ToolStripProfessionalRenderer
+        {
+            public CustomToolStripRenderer() { }
+
+            protected override void OnRenderToolStripBackground(ToolStripRenderEventArgs e)
+            {
+                using (LinearGradientBrush b = new LinearGradientBrush(e.AffectedBounds, Color.WhiteSmoke, Color.White, LinearGradientMode.Vertical))
+                    e.Graphics.FillRectangle(b, b.Rectangle);
+            }
         }
 
         public MainForm()
@@ -102,6 +120,14 @@ namespace FriishProduce
             RefreshForm();
 
             Program.Handle = Handle;
+            tabControl.Location = MainPanel.Location;
+            tabControl.Size = new Size(MainPanel.Width, 1000);
+            Size = new Size
+            (
+                MainPanel.Width + (ToolStrip.Dock == DockStyle.Right || ToolStrip.Dock == DockStyle.Left ? ToolStrip.Width - 8 : 16),
+                MainPanel.Location.Y + MainPanel.Height + 38
+            );
+            CenterToScreen();
 
             // Automatically set defined initial directory for save file dialog
             // ********
@@ -138,26 +164,39 @@ namespace FriishProduce
             // ********
             if (!OpenROM.Enabled)
             {
-                ExportWAD.Enabled = false;
+                ToolStrip_ExportWAD.Enabled = ExportWAD.Enabled = false;
                 UseLibRetro.Enabled = false;
                 tabControl.Visible = false;
+                MainPanel.Visible = true;
             }
 
             else ExportCheck(sender, e);
 
-            CloseTab.Enabled = OpenManual.Enabled = OpenImage.Enabled = OpenROM.Enabled;
+            ToolStrip_CloseTab.Enabled = CloseTab.Enabled
+             = ToolStrip_OpenManual.Enabled = OpenManual.Enabled
+             = ToolStrip_OpenImage.Enabled = OpenImage.Enabled
+             = ToolStrip_OpenROM.Enabled = OpenROM.Enabled;
 
             SetTitle(!OpenROM.Enabled);
 
             // Context menu
             // ********
             if (tabControl.TabPages.Count >= 1)
-            {
-                if (sender == tabControl.TabPages[0]) UseLibRetro.Enabled = (tabControl.SelectedForm as InjectorForm).ROMLoaded;
-            }
+                if (sender == tabControl.TabPages[0])
+                {
+                    UseLibRetro.Enabled = (tabControl.SelectedForm as InjectorForm).CheckToolStripButtons()[0];
+                    OpenManual.Enabled = (tabControl.SelectedForm as InjectorForm).CheckToolStripButtons()[1];
+                }
+
+            ToolStrip_UseLibRetro.Enabled = UseLibRetro.Enabled;
+            ToolStrip_OpenManual.Enabled = OpenManual.Enabled;
         }
 
-        private void ExportCheck(object sender, EventArgs e) => ExportWAD.Enabled = ExportWAD.Enabled = (tabControl.SelectedForm as InjectorForm).ReadyToExport;
+        private void ExportCheck(object sender, EventArgs e)
+        {
+            ToolStrip_ExportWAD.Enabled = ExportWAD.Enabled = (tabControl.SelectedForm as InjectorForm).ReadyToExport;
+            ToolStrip_UseLibRetro.Enabled = UseLibRetro.Enabled = (tabControl.SelectedForm as InjectorForm).CheckToolStripButtons()[0];
+        }
 
         private void MainForm_Closing(object sender, FormClosingEventArgs e)
         {
@@ -193,16 +232,19 @@ namespace FriishProduce
         /// </summary>
         private void AddProject(object sender, EventArgs e)
         {
-            if (!Enum.TryParse((sender as ToolStripMenuItem).Name.ToString(), out Console console))
+            var source = sender as ToolStripMenuItem;
+
+            if (!Enum.TryParse(source.Name.ToString(), out Console console))
                 return;
 
-            InjectorForm Tab = new InjectorForm(console) { Parent = this };
+            InjectorForm Tab = new InjectorForm(console) { Parent = this, Icon = source.Image != null ? Icon.FromHandle((source.Image as Bitmap).GetHicon()) : null };
             Tab.FormClosed += TabChanged;
             Tab.ExportCheck += ExportCheck;
             tabControl.TabBackHighColor = Tab.BackColor;
             tabControl.TabPages.Add(Tab);
 
             tabControl.Visible = true;
+            Welcome.Visible = MainPanel.Visible = false;
 
             // BrowseROMDialog(console, Tab);
         }
@@ -233,8 +275,10 @@ namespace FriishProduce
 
             if (BrowseROM.ShowDialog() == DialogResult.OK)
             {
-                currentForm.LoadROM(Properties.Settings.Default.AutoLibRetro);
-                UseLibRetro.Enabled = true;
+                ToolStrip_UseLibRetro.Enabled = UseLibRetro.Enabled = currentForm.CheckToolStripButtons()[0];
+                ToolStrip_OpenManual.Enabled = OpenManual.Enabled = currentForm.CheckToolStripButtons()[1];
+
+                currentForm.LoadROM(UseLibRetro.Enabled ? Properties.Settings.Default.AutoLibRetro : false);
             }
         }
 
@@ -264,6 +308,11 @@ namespace FriishProduce
         {
             if (!Properties.Settings.Default.DoNotShow_000) MessageBox.Show(Language.Get("Message006"), 0);
             (tabControl.SelectedForm as InjectorForm).LoadManual(BrowseManual.ShowDialog() == DialogResult.OK ? BrowseManual.SelectedPath : null);
+        }
+
+        private void Tutorial_Click(object sender, EventArgs e)
+        {
+
         }
 
         public void CleanTemp()

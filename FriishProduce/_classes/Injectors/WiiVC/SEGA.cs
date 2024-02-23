@@ -160,7 +160,7 @@ namespace FriishProduce.WiiVC
 
             // Start application
             // ****************
-            Process.Run
+            ProcessHelper.Run
             (
                 Paths.Tools + $"sega\\{CCFApps[type]}.exe",
                 dir,
@@ -321,7 +321,7 @@ namespace FriishProduce.WiiVC
 
             // Start application
             // ****************
-            Process.Run
+            ProcessHelper.Run
             (
                 Paths.Tools + $"sega\\{CCFApps[type + 2]}.exe",
                 dir,

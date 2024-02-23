@@ -15,6 +15,13 @@ namespace FriishProduce
         [STAThread]
         static void Main()
         {
+            if (Environment.OSVersion.Version.Major < 6 || (Environment.OSVersion.Version.Major == 6 && Environment.OSVersion.Version.Minor == 0))
+            {
+                System.Windows.Forms.MessageBox.Show($"This program is not supported for the current Windows version you are running ({Environment.OSVersion.Version.Major}.{Environment.OSVersion.Version.Minor}). Please use Windows 7 or a newer version to run this program.", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                Environment.Exit(-1);
+                return;
+            }
+
             Language.Load();
 
             try

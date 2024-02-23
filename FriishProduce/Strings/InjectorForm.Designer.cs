@@ -133,7 +133,7 @@ namespace Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Image interpolation.
+        ///   Looks up a localized string similar to Image.
         /// </summary>
         public static string groupBox8_Text {
             get {
@@ -169,20 +169,20 @@ namespace Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Interpolation mode:.
+        /// </summary>
+        public static string label12_Text {
+            get {
+                return ResourceManager.GetString("label12.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Software name: {0}.
         /// </summary>
         public static string label2_Text {
             get {
                 return ResourceManager.GetString("label2.Text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Serial code: {0}.
-        /// </summary>
-        public static string label3_Text {
-            get {
-                return ResourceManager.GetString("label3.Text", resourceCulture);
             }
         }
         
@@ -246,6 +246,24 @@ namespace Strings {
         public static string OpenWAD_Text {
             get {
                 return ResourceManager.GetString("OpenWAD.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stretch image.
+        /// </summary>
+        public static string radioButton1_Text {
+            get {
+                return ResourceManager.GetString("radioButton1.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fit aspect ratio.
+        /// </summary>
+        public static string radioButton2_Text {
+            get {
+                return ResourceManager.GetString("radioButton2.Text", resourceCulture);
             }
         }
         

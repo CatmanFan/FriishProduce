@@ -281,7 +281,7 @@ namespace FriishProduce
             string BRLYTPath = Path.Combine(Paths.WorkingFolder, "banner.brlyt");
             File.WriteAllBytes(BRLYTPath, Banner[0].Data[Banner[0].GetNodeIndex("banner.brlyt")]);
 
-            Process.Run
+            ProcessHelper.Run
             (
                 Paths.Tools + "vcbrlyt\\vcbrlyt.exe",
                 $"..\\..\\temp\\banner.brlyt -Title \"{title}\" -YEAR {year} -Play {players}"
@@ -323,7 +323,7 @@ namespace FriishProduce
 
                 if (tID.ToUpper().EndsWith("Q") || tID.ToUpper().EndsWith("T"))
                 {
-                    Process.Run
+                    ProcessHelper.Run
                     (
                         Paths.Tools + "vcbrlyt\\vcbrlyt.exe",
                         $"..\\..\\temp\\banner.brlyt -H_T_VCTitle_KOR \"VC................................................................................................................................\""
@@ -331,7 +331,7 @@ namespace FriishProduce
                 }
                 else
                 {
-                    Process.Run
+                    ProcessHelper.Run
                     (
                         Paths.Tools + "vcbrlyt\\vcbrlyt.exe",
                         $"..\\..\\temp\\banner.brlyt -Title \"VC................................................................................................................................\" -YEAR VCVC -Play 4"

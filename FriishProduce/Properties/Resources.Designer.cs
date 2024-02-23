@@ -353,16 +353,6 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap lakitu_smw2 {
-            get {
-                object obj = ResourceManager.GetObject("lakitu-smw2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         public static System.Drawing.Bitmap locale {
             get {
                 object obj = ResourceManager.GetObject("locale", resourceCulture);
@@ -376,6 +366,16 @@ namespace FriishProduce.Properties {
         public static System.Drawing.Bitmap logo {
             get {
                 object obj = ResourceManager.GetObject("logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap mr_saturn {
+            get {
+                object obj = ResourceManager.GetObject("mr-saturn", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -527,6 +527,26 @@ namespace FriishProduce.Properties {
             get {
                 object obj = ResourceManager.GetObject("sega_master_system", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap smw_note_block {
+            get {
+                object obj = ResourceManager.GetObject("smw_note-block", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap smw_question_block {
+            get {
+                object obj = ResourceManager.GetObject("smw_question-block", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

@@ -45,7 +45,7 @@ namespace FriishProduce
                     // Temporary 00000001.app at working folder
                     // ****************
                     File.WriteAllBytes(Paths.WorkingFolder + "content1.app", Contents[1]);
-                    Process.Run
+                    ProcessHelper.Run
                     (
                         Paths.Tools + "wwcxtool.exe",
                         Paths.WorkingFolder,
@@ -180,7 +180,7 @@ namespace FriishProduce
                 if (File.Exists(Paths.WorkingFolder + "content1.dec"))
                 {
                     File.WriteAllBytes(Paths.WorkingFolder + "content1.dec", Contents[1]);
-                    Process.Run
+                    ProcessHelper.Run
                     (
                         Paths.Tools + "wwcxtool.exe",
                         Paths.WorkingFolder,

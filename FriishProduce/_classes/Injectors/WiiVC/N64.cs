@@ -102,7 +102,7 @@ namespace FriishProduce.WiiVC
                     // Compress using ROMC type
                     // ****************
                     if (CompressionType == 1) // Type 0
-                        Process.Run
+                        ProcessHelper.Run
                         (
                             Paths.Tools + "romc0.exe",
                             Paths.WorkingFolder,
@@ -110,7 +110,7 @@ namespace FriishProduce.WiiVC
                         );
 
                     else // Type 1
-                        Process.Run
+                        ProcessHelper.Run
                         (
                             Paths.Tools + "romc.exe",
                             Paths.WorkingFolder,

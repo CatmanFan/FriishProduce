@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace FriishProduce
 {
-    public class Process
+    public class ProcessHelper
     {
         public static void Run(string app, string arguments)
         {
-            using (System.Diagnostics.Process p = System.Diagnostics.Process.Start(new ProcessStartInfo
+            using (Process p = Process.Start(new ProcessStartInfo
             {
                 FileName = app,
                 WorkingDirectory = System.IO.Path.GetDirectoryName(app),
@@ -24,7 +24,7 @@ namespace FriishProduce
 
         public static void Run(string app, string arguments, bool showWindow = false)
         {
-            using (System.Diagnostics.Process p = System.Diagnostics.Process.Start(new ProcessStartInfo
+            using (Process p = Process.Start(new ProcessStartInfo
             {
                 FileName = app,
                 WorkingDirectory = System.IO.Path.GetDirectoryName(app),
@@ -37,7 +37,7 @@ namespace FriishProduce
 
         public static void Run(string app, string workingFolder, string arguments)
         {
-            using (System.Diagnostics.Process p = System.Diagnostics.Process.Start(new ProcessStartInfo
+            using (Process p = Process.Start(new ProcessStartInfo
             {
                 FileName = app,
                 WorkingDirectory = workingFolder,

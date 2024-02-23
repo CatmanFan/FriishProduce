@@ -33,6 +33,9 @@ namespace FriishProduce
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InjectorForm));
             this.WADRegionList = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.label12 = new System.Windows.Forms.Label();
             this.imageintpl = new System.Windows.Forms.ComboBox();
             this.BrowseWAD = new System.Windows.Forms.OpenFileDialog();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -92,10 +95,32 @@ namespace FriishProduce
             // 
             // groupBox8
             // 
+            this.groupBox8.Controls.Add(this.radioButton2);
+            this.groupBox8.Controls.Add(this.radioButton1);
+            this.groupBox8.Controls.Add(this.label12);
             this.groupBox8.Controls.Add(this.imageintpl);
             resources.ApplyResources(this.groupBox8, "groupBox8");
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.TabStop = false;
+            // 
+            // radioButton2
+            // 
+            resources.ApplyResources(this.radioButton2, "radioButton2");
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.SwitchAspectRatio);
+            // 
+            // radioButton1
+            // 
+            resources.ApplyResources(this.radioButton1, "radioButton1");
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.SwitchAspectRatio);
+            // 
+            // label12
+            // 
+            resources.ApplyResources(this.label12, "label12");
+            this.label12.Name = "label12";
             // 
             // imageintpl
             // 
@@ -412,6 +437,7 @@ namespace FriishProduce
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.isClosing);
             this.Shown += new System.EventHandler(this.Form_Shown);
             this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -473,5 +499,8 @@ namespace FriishProduce
         private System.Windows.Forms.PictureBox StatusImage2;
         private System.Windows.Forms.Label label2;
         private BannerPreview bannerPreview1;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton radioButton2;
     }
 }

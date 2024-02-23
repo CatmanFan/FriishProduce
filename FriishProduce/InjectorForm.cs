@@ -75,6 +75,8 @@ namespace FriishProduce
             imageintpl.Items.Add(Language.Get("ByDefault"));
             imageintpl.Items.AddRange(Language.GetArray("List_ImageInterpolation"));
             imageintpl.SelectedIndex = Properties.Settings.Default.ImageInterpolation;
+
+            if (Properties.Settings.Default.ImageFitAspectRatio) radioButton2.Checked = true; else radioButton1.Checked = true;
         }
 
         public InjectorForm(Console c, string ROMpath = null)
@@ -97,46 +99,39 @@ namespace FriishProduce
             switch (Console)
             {
                 case Console.NES:
-                    Icon = Properties.Resources.nintendo_nes;
                     TIDCode = "F";
                     ROM = new ROM_NES();
                     CO = new Options_VC_NES();
                     break;
 
                 case Console.SNES:
-                    Icon = Properties.Resources.nintendo_super_nes;
                     TIDCode = "J";
                     ROM = new ROM_SNES();
                     break;
 
                 case Console.N64:
-                    Icon = Properties.Resources.nintendo_nintendo64;
                     TIDCode = "N";
                     ROM = new ROM_N64();
                     CO = new Options_VC_N64();
                     break;
 
                 case Console.SMS:
-                    Icon = Properties.Resources.sega_master_system;
                     TIDCode = "L";
                     ROM = new ROM_SEGA() { IsSMS = true };
                     CO = new Options_VC_SEGA();
                     break;
 
                 case Console.SMDGEN:
-                    Icon = Properties.Resources.sega_genesis;
                     TIDCode = "M";
                     ROM = new ROM_SEGA() { IsSMS = false };
                     CO = new Options_VC_SEGA();
                     break;
 
                 case Console.PCE:
-                    Icon = Properties.Resources.nec_turbografx_16;
                     TIDCode = "P"; // Q for CD games
                     break;
 
                 case Console.NeoGeo:
-                    Icon = Properties.Resources.snk_neo_geo_aes;
                     TIDCode = "E";
                     ROM = new ROM_NeoGeo();
                     break;
@@ -147,7 +142,6 @@ namespace FriishProduce
 
                 default:
                 case Console.Flash:
-                    Icon = Icon.FromHandle(Properties.Resources.flash.GetHicon());
                     TIDCode = null;
                     break;
             }
@@ -193,10 +187,16 @@ namespace FriishProduce
                             && !string.IsNullOrEmpty(Creator.BannerTitle)
                             && !string.IsNullOrEmpty(Creator.SaveDataTitle[0])
                             && (tImg != null)
-                            && ROM != null;
+                            && (ROM != null && ROM?.Path != null);
             Tag = "dirty";
             ExportCheck.Invoke(this, EventArgs.Empty);
         }
+
+        public bool[] CheckToolStripButtons() => new bool[]
+            {
+                Console != Console.NeoGeo && Console != Console.Flash, // LibRetro
+                Console != Console.Flash, // Browse manual
+            };
 
         protected virtual void SetROMDataText()
         {
@@ -224,7 +224,7 @@ namespace FriishProduce
         public bool CheckUnsaved()
         {
             if (Tag != null && Tag.ToString() == "dirty")
-                if (MessageBox.Show(Text, Language.Get("Message001"), MessageBoxButtons.YesNo) == DialogResult.No)
+                if (MessageBox.Show(Text, Language.Get("Message001"), MessageBoxButtons.YesNo, 0, true) == DialogResult.No)
                     return false;
             return true;
         }
@@ -312,6 +312,27 @@ namespace FriishProduce
             // ----------------------------
 
             if (imageintpl.SelectedIndex != Properties.Settings.Default.ImageInterpolation) Tag = "dirty";
+            if (Creator != null && tImg != null) LoadImage();
+        }
+
+        private void SwitchAspectRatio(object sender, EventArgs e)
+        {
+            // ----------------------------
+            if (DesignMode) return;
+            // ----------------------------
+
+            if (sender == radioButton1 && radioButton2.Checked)
+            {
+                Tag = "dirty";
+                radioButton2.Checked = !radioButton1.Checked;
+            }
+
+            else if (sender == radioButton2 && radioButton1.Checked)
+            {
+                Tag = "dirty";
+                radioButton1.Checked = !radioButton2.Checked;
+            }
+
             if (Creator != null && tImg != null) LoadImage();
         }
 
@@ -408,6 +429,7 @@ namespace FriishProduce
                 Bitmap img = (Bitmap)src.Clone();
 
                 tImg.Interpolation = (InterpolationMode)imageintpl.SelectedIndex;
+                tImg.FitAspectRatio = radioButton2.Checked;
 
                 // Additionally edit image before generating files, e.g. with modification of image palette/brightness, used only for images with exact resolution of original screen size
                 // ********
@@ -941,7 +963,7 @@ namespace FriishProduce
                 SaveDataTitle.Multiline = !isSingleLine;
                 SaveDataTitle.Location = SaveDataTitle.Multiline ? new Point(SaveDataTitle.Location.X, 25) : new Point(SaveDataTitle.Location.X, 34);
                 SaveDataTitle.Clear();
-                goto End;
+                goto SetEmuRev;
             }
             if (Creator.isKorea && SaveDataTitle.Multiline) SaveDataTitle.MaxLength /= 2; // Applies to both NES/FC & SNES/SFC
 
@@ -952,11 +974,16 @@ namespace FriishProduce
                 if (line.Length > max && SaveDataTitle.MaxLength != oldSaveLength)
                     SaveDataTitle.Clear();
 
-            End:
+            SetEmuRev:
             foreach (var item in Database.List)
                 foreach (var key in CurrentBase.Keys)
-                    if (item.TitleID.ToUpper() == key.ToUpper()) UpdateBaseConsole(item.emuRev);
+                    if (key.ToUpper() == item.TitleID.ToUpper())
+                    {
+                        UpdateBaseConsole(item.emuRev);
+                        goto End;
+                    }
 
+            End:
             bannerPreview1.Update(BannerTitle.Text, (int)ReleaseYear.Value, (int)Players.Value, tImg?.VCPic, Creator.isJapan ? 1 : Creator.isKorea ? 2 : 0);
         }
 

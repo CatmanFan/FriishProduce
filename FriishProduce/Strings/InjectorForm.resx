@@ -142,7 +142,7 @@
     <value>Banner details</value>
   </data>
   <data name="groupBox8.Text" xml:space="preserve">
-    <value>Image interpolation</value>
+    <value>Image</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>ROM name: {0}</value>
@@ -153,11 +153,11 @@
   <data name="label11.Text" xml:space="preserve">
     <value>Custom manual</value>
   </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>Interpolation mode:</value>
+  </data>
   <data name="label2.Text" xml:space="preserve">
     <value>Software name: {0}</value>
-  </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>Serial code: {0}</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
     <value>Base name: </value>
@@ -179,6 +179,12 @@
   </data>
   <data name="OpenWAD.Text" xml:space="preserve">
     <value>Use offline WAD file</value>
+  </data>
+  <data name="radioButton1.Text" xml:space="preserve">
+    <value>Stretch image</value>
+  </data>
+  <data name="radioButton2.Text" xml:space="preserve">
+    <value>Fit aspect ratio</value>
   </data>
   <data name="RegionFree.Text" xml:space="preserve">
     <value>Region Free</value>

@@ -34,23 +34,21 @@ namespace FriishProduce
             this.n64002 = new System.Windows.Forms.CheckBox();
             this.n64001 = new System.Windows.Forms.CheckBox();
             this.n64000 = new System.Windows.Forms.CheckBox();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.x009 = new System.Windows.Forms.Label();
             this.n64004 = new System.Windows.Forms.GroupBox();
             this.ROMCType = new System.Windows.Forms.ComboBox();
+            this.x009 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.bottomPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.n64004.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // OK
             // 
             this.OK.Location = new System.Drawing.Point(261, 12);
             // 
-            // panel1
+            // bottomPanel1
             // 
             this.bottomPanel1.Size = new System.Drawing.Size(459, 47);
             // 
@@ -64,7 +62,7 @@ namespace FriishProduce
             this.groupBox1.Controls.Add(this.n64002);
             this.groupBox1.Controls.Add(this.n64001);
             this.groupBox1.Controls.Add(this.n64000);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(12, 11);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(235, 110);
             this.groupBox1.TabIndex = 16;
@@ -127,40 +125,6 @@ namespace FriishProduce
             this.n64000.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.n64000.UseVisualStyleBackColor = true;
             // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(202)))), ((int)(((byte)(227)))), ((int)(((byte)(255)))));
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.pictureBox1);
-            this.panel3.Controls.Add(this.x009);
-            this.panel3.Location = new System.Drawing.Point(253, 17);
-            this.panel3.MaximumSize = new System.Drawing.Size(194, 105);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(194, 105);
-            this.panel3.TabIndex = 19;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::FriishProduce.Properties.Resources.information_large;
-            this.pictureBox1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(24, 24);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 17;
-            this.pictureBox1.TabStop = false;
-            // 
-            // x009
-            // 
-            this.x009.AutoSize = true;
-            this.x009.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.x009.Location = new System.Drawing.Point(32, 5);
-            this.x009.MaximumSize = new System.Drawing.Size(155, 100);
-            this.x009.Name = "x009";
-            this.x009.Size = new System.Drawing.Size(154, 39);
-            this.x009.TabIndex = 18;
-            this.x009.Text = "Please note that these options may not work for all base WADs.";
-            // 
             // n64004
             // 
             this.n64004.Controls.Add(this.ROMCType);
@@ -183,24 +147,48 @@ namespace FriishProduce
             this.ROMCType.Size = new System.Drawing.Size(415, 21);
             this.ROMCType.TabIndex = 0;
             // 
+            // x009
+            // 
+            this.x009.AutoSize = true;
+            this.x009.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.x009.Location = new System.Drawing.Point(289, 19);
+            this.x009.MaximumSize = new System.Drawing.Size(155, 100);
+            this.x009.Name = "x009";
+            this.x009.Size = new System.Drawing.Size(154, 39);
+            this.x009.TabIndex = 18;
+            this.x009.Text = "Please note that these options may not work for all base WADs.";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::FriishProduce.Properties.Resources.information_large;
+            this.pictureBox1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.pictureBox1.Location = new System.Drawing.Point(260, 18);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(24, 24);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 17;
+            this.pictureBox1.TabStop = false;
+            // 
             // Options_VC_N64
             // 
             this.ClientSize = new System.Drawing.Size(459, 242);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.x009);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.n64004);
-            this.Controls.Add(this.panel3);
             this.Name = "Options_VC_N64";
-            this.Controls.SetChildIndex(this.panel3, 0);
+            this.Shown += new System.EventHandler(this.Form_IsShown);
             this.Controls.SetChildIndex(this.n64004, 0);
             this.Controls.SetChildIndex(this.groupBox1, 0);
+            this.Controls.SetChildIndex(this.x009, 0);
+            this.Controls.SetChildIndex(this.pictureBox1, 0);
             this.bottomPanel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.n64004.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -211,10 +199,9 @@ namespace FriishProduce
         private System.Windows.Forms.CheckBox n64002;
         private System.Windows.Forms.CheckBox n64001;
         private System.Windows.Forms.CheckBox n64000;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label x009;
         private System.Windows.Forms.GroupBox n64004;
         private System.Windows.Forms.ComboBox ROMCType;
+        private System.Windows.Forms.Label x009;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

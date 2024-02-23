@@ -30,7 +30,6 @@ namespace FriishProduce
             {
                 Language.AutoSetForm(this);
 
-                panel3.Height = 6 + Math.Max(x009.Height, pictureBox1.Height) + 7;
                 Height = EmuType == 3 ? 320 : 260;
             }
         }
@@ -64,5 +63,11 @@ namespace FriishProduce
         }
 
         // ---------------------------------------------------------------------------------------------------------------
+
+        private void Form_IsShown(object sender, EventArgs e)
+        {
+            Size = n64004.Visible ? new Size(475, 280) : new Size(475, 280 - 55);
+            CenterToParent();
+        }
     }
 }

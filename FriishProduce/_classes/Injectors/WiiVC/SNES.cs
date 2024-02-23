@@ -50,7 +50,7 @@ namespace FriishProduce.WiiVC
                 File.WriteAllBytes(Paths.WorkingFolder + "rom", ROM.Bytes);
                 File.WriteAllBytes(Paths.WorkingFolder + "LZ77orig.rom", MainContent.Data[MainContent.GetNodeIndex(Target)]);
 
-                Process.Run
+                ProcessHelper.Run
                 (
                     Paths.Tools + "wwcxtool.exe",
                     Paths.WorkingFolder,

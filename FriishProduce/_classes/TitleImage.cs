@@ -21,6 +21,7 @@ namespace FriishProduce
         private Bitmap SaveIconPic { get; set; }
         
         internal InterpolationMode Interpolation { get; set; }
+        internal bool FitAspectRatio { get; set; }
         private int[] SaveIconL_xywh { get; set; }
         private int[] SaveIconS_xywh { get; set; }
 
@@ -96,7 +97,6 @@ namespace FriishProduce
             if (src == null) src = Source;
 
             bool ShrinkToFit  = platform == Console.NES || platform == Console.SNES || platform == Console.N64 || platform == Console.Flash;
-            bool DoNotStretch = platform == Console.Flash;
 
             // --------------------------------------------------
             // SAVEICON : DEFINE POSITION AND SIZE VARIABLES
@@ -122,7 +122,7 @@ namespace FriishProduce
             // SAVEICON : Fit by width/height variables
             // --------------------------------------------------
 
-            if (DoNotStretch)
+            if (FitAspectRatio)
             {
                 float maxWidth = SaveIconS_xywh[2];
                 float ratio = Math.Min(maxWidth / src.Width, maxWidth / src.Height);
@@ -155,7 +155,7 @@ namespace FriishProduce
                     g.CompositingMode = CompositingMode.SourceOver;
                     g.CompositingQuality = CompositingQ;
 
-                    if (DoNotStretch)
+                    if (FitAspectRatio)
                     {
                         // --------------------------------------------------
                         // Fit by width/height
@@ -432,12 +432,12 @@ namespace FriishProduce
                 {
                     // Convert first to tex0, then to PNG
                     // ****************
-                    Process.Run
+                    ProcessHelper.Run
                     (
                         Paths.Tools + "sega\\wteconvert.exe",
                         $"\"{item}\" \"{ImagesPath}{Path.GetFileNameWithoutExtension(item)}.tex0\""
                     );
-                    Process.Run
+                    ProcessHelper.Run
                     (
                         Paths.Tools + "sega\\texextract.exe",
                         $"\"{ImagesPath}{Path.GetFileNameWithoutExtension(item)}.tex0\" \"{ImagesPath}{Path.GetFileNameWithoutExtension(item)}.png\""
@@ -553,7 +553,7 @@ namespace FriishProduce
                 {
                     // Extracts original image to use in failsafe
                     // ****************
-                    Process.Run
+                    ProcessHelper.Run
                     (
                         Paths.Tools + "sega\\texextract.exe",
                         $"\"{item}\" \"{ImagesPath}{Path.GetFileNameWithoutExtension(item)}.ext1.png\""
@@ -562,12 +562,34 @@ namespace FriishProduce
                     // --------------------------------------------
                     // TEX0 conversion
                     // --------------------------------------------
-                    Process.Run
-                    (
-                        Paths.Tools + "sega\\texreplace.exe",
-                        $"\"{item}\" \"{ImagesPath}{Path.GetFileNameWithoutExtension(item)}.png\"",
-                        true
-                    );
+                    using (Process p = Process.Start(new ProcessStartInfo
+                    {
+                        FileName = Paths.Tools + "sega\\texreplace.exe",
+                        WorkingDirectory = Paths.Tools + "sega\\",
+                        Arguments = $"\"{item}\" \"{ImagesPath}{Path.GetFileNameWithoutExtension(item)}.png\"",
+                        UseShellExecute = false,
+                        CreateNoWindow = false
+                    }))
+                    {
+                        while (!p.HasExited)
+                        {
+                            System.Threading.Thread.Sleep(200);
+
+                            IntPtr zero = IntPtr.Zero;
+
+                            for (int i = 0; (i < 60) && (zero == IntPtr.Zero); i++)
+                            {
+                                zero = FindWindow(null, "Advanced Texture Converter");
+                            }
+
+                            if (zero != IntPtr.Zero)
+                            {
+                                SetForegroundWindow(zero);
+                                System.Windows.Forms.SendKeys.SendWait("{ENTER}");
+                                System.Windows.Forms.SendKeys.Flush();
+                            }
+                        }
+                    }
 
                     // --------------------------------------------
                     // Check if operation has been cancelled
@@ -578,7 +600,7 @@ namespace FriishProduce
 
                     // Second failsafe, checks extracted image for similarities if Cancel was clicked on the GUI
                     // ****************
-                    Process.Run
+                    ProcessHelper.Run
                     (
                         Paths.Tools + "sega\\texextract.exe",
                         $"\"{item}\" \"{ImagesPath}{Path.GetFileNameWithoutExtension(item)}.ext2.png\""
@@ -609,7 +631,7 @@ namespace FriishProduce
                     // WTE conversion
                     // --------------------------------------------
                     try { File.Delete(Paths.MiscCCF + Path.GetFileNameWithoutExtension(item) + ".wte"); } catch { }
-                    Process.Run
+                    ProcessHelper.Run
                     (
                         Paths.Tools + "sega\\wteconvert.exe",
                         $"\"{item}\" \"{Paths.MiscCCF}{Path.GetFileNameWithoutExtension(item)}.wte\""
@@ -768,11 +790,17 @@ namespace FriishProduce
             // Delete images directory
         }
 
-        [System.Runtime.InteropServices.DllImport("user32.dll")]
-        private static extern int SetForegroundWindow(IntPtr point);
+        const UInt32 WM_KEYDOWN = 0x0100;
+        const int VK_RETURN = 0x0D;
 
         [System.Runtime.InteropServices.DllImport("user32.dll")]
-        private static extern int SwitchToThisWindow(IntPtr point, bool on);
+        static extern bool PostMessage(IntPtr hWnd, UInt32 Msg, int wParam, int lParam);
+
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        private static extern int SetForegroundWindow(IntPtr point);
+        
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        private static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
 
         public void Dispose()
         {

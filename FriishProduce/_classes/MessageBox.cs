@@ -10,13 +10,14 @@ namespace FriishProduce
 {
     public static class MessageBox
     {
-        public static DialogResult Show(string mainText, string description, MessageBoxButtons buttons, TaskDialogIcon icon = 0, int dontShow = -1)
+        public static DialogResult Show(string mainText, string description, MessageBoxButtons buttons, TaskDialogIcon icon = 0, int dontShow = -1, bool isLinkStyle = false)
         {
             using (TaskDialog t = new TaskDialog()
             {
                 WindowTitle = Language.Get("_AppTitle"),
                 MainInstruction = mainText,
                 Content = description,
+                ButtonStyle = isLinkStyle ? TaskDialogButtonStyle.CommandLinks : TaskDialogButtonStyle.Standard,
                 AllowDialogCancellation = false
             })
             {
@@ -85,6 +86,10 @@ namespace FriishProduce
                 return DialogResult.OK;
             }
         }
+
+        public static DialogResult Show(string mainText, string description, MessageBoxButtons buttons, TaskDialogIcon icon, bool isLinkStyle) => Show(mainText, description, buttons, icon, -1, isLinkStyle);
+
+        public static DialogResult Show(string mainText, MessageBoxButtons buttons, TaskDialogIcon icon, bool isLinkStyle) => Show(mainText, null, buttons, icon, -1, isLinkStyle);
 
         public static DialogResult Show(string mainText, MessageBoxButtons buttons = MessageBoxButtons.OK, TaskDialogIcon icon = 0, int dontShow = -1) => Show(mainText, null, buttons, icon, dontShow);
 

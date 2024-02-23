@@ -142,7 +142,7 @@
     <value>Detalles del banner</value>
   </data>
   <data name="groupBox8.Text" xml:space="preserve">
-    <value>Método de interpolación de imágenes</value>
+    <value>Imagen</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Nombre de la ROM: {0}</value>
@@ -153,11 +153,11 @@
   <data name="label11.Text" xml:space="preserve">
     <value>Manual electrónico personalizado</value>
   </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>Método de interpolación:</value>
+  </data>
   <data name="label2.Text" xml:space="preserve">
     <value>Nombre oficial: {0}</value>
-  </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>Código interno: {0}</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
     <value>Nombre del juego:</value>
@@ -173,6 +173,12 @@
   </data>
   <data name="OpenWAD.Text" xml:space="preserve">
     <value>Utilizar un archivo WAD del disco duro</value>
+  </data>
+  <data name="radioButton1.Text" xml:space="preserve">
+    <value>Estirar la imagen</value>
+  </data>
+  <data name="radioButton2.Text" xml:space="preserve">
+    <value>Mantener relación de aspecto</value>
   </data>
   <data name="RegionFree.Text" xml:space="preserve">
     <value>Eliminar bloqueo regional</value>

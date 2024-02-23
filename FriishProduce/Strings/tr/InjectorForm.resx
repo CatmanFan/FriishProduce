@@ -127,7 +127,7 @@
     <value>Yazılım Ayarları</value>
   </data>
   <data name="groupBox8.Text" xml:space="preserve">
-    <value>Resim Enterpolasyonu</value>
+    <value>Resim</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>ROM dosya adı: {0}</value>
@@ -137,9 +137,6 @@
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>Yazılımın resmi adı: {0}</value>
-  </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>Seri kodu: {0}</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
     <value>Oyun başlığı:</value>
@@ -152,6 +149,12 @@
   </data>
   <data name="label9.Text" xml:space="preserve">
     <value>Yıl:</value>
+  </data>
+  <data name="radioButton1.Text" xml:space="preserve">
+    <value>Stretch image</value>
+  </data>
+  <data name="radioButton2.Text" xml:space="preserve">
+    <value>Fit aspect ratio</value>
   </data>
   <data name="RegionFree.Text" xml:space="preserve">
     <value>Bolgesiz</value>

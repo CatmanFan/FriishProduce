@@ -74,7 +74,7 @@ namespace FriishProduce
             // BannerPreview_Label
             // 
             this.BannerPreview_Label.BackColor = System.Drawing.Color.Gainsboro;
-            this.BannerPreview_Label.Font = new System.Drawing.Font("Arial", 17F);
+            this.BannerPreview_Label.Font = new System.Drawing.Font("Arial", 16.5F);
             this.BannerPreview_Label.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.BannerPreview_Label.Location = new System.Drawing.Point(-45, 196);
             this.BannerPreview_Label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -110,13 +110,14 @@ namespace FriishProduce
             // 
             // Image
             // 
-            this.Image.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.Image.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Image.BackColor = System.Drawing.SystemColors.Control;
+            this.Image.BackgroundImage = global::FriishProduce.Properties.Resources.x;
+            this.Image.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Image.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.Image.Location = new System.Drawing.Point(232, 54);
+            this.Image.Location = new System.Drawing.Point(230, 54);
             this.Image.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Image.Name = "Image";
-            this.Image.Size = new System.Drawing.Size(160, 133);
+            this.Image.Size = new System.Drawing.Size(165, 132);
             this.Image.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Image.TabIndex = 32;
             this.Image.TabStop = false;
