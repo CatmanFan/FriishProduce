@@ -414,6 +414,7 @@ namespace FriishProduce
             // 
             // bannerPreview1
             // 
+            this.bannerPreview1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             resources.ApplyResources(this.bannerPreview1, "bannerPreview1");
             this.bannerPreview1.Name = "bannerPreview1";
             // 

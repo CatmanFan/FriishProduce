@@ -108,6 +108,7 @@ namespace FriishProduce
 
             if (checkBox1.Checked)
             {
+                Default.DoNotShow_Welcome = false;
                 Default.DoNotShow_000 = false;
             }
 

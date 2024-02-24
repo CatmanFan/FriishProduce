@@ -154,5 +154,17 @@ namespace FriishProduce.Properties {
                 this["ImageFitAspectRatio"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool DoNotShow_Welcome {
+            get {
+                return ((bool)(this["DoNotShow_Welcome"]));
+            }
+            set {
+                this["DoNotShow_Welcome"] = value;
+            }
+        }
     }
 }

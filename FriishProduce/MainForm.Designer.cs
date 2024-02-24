@@ -57,6 +57,8 @@ namespace FriishProduce
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.MenuItem_About = new System.Windows.Forms.ToolStripMenuItem();
             this.MainPanel = new System.Windows.Forms.Panel();
+            this.Welcome_DoNotShow = new System.Windows.Forms.Button();
+            this.PointToTutorial = new System.Windows.Forms.Label();
             this.Welcome = new System.Windows.Forms.Label();
             this.ToolStrip = new System.Windows.Forms.ToolStrip();
             this.ToolStrip_OpenROM = new System.Windows.Forms.ToolStripButton();
@@ -273,9 +275,25 @@ namespace FriishProduce
             // MainPanel
             // 
             this.MainPanel.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.MainPanel.Controls.Add(this.Welcome_DoNotShow);
+            this.MainPanel.Controls.Add(this.PointToTutorial);
             this.MainPanel.Controls.Add(this.Welcome);
             resources.ApplyResources(this.MainPanel, "MainPanel");
             this.MainPanel.Name = "MainPanel";
+            // 
+            // Welcome_DoNotShow
+            // 
+            this.Welcome_DoNotShow.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.Welcome_DoNotShow, "Welcome_DoNotShow");
+            this.Welcome_DoNotShow.Name = "Welcome_DoNotShow";
+            this.Welcome_DoNotShow.UseVisualStyleBackColor = false;
+            this.Welcome_DoNotShow.Click += new System.EventHandler(this.Welcome_DoNotShow_Click);
+            // 
+            // PointToTutorial
+            // 
+            resources.ApplyResources(this.PointToTutorial, "PointToTutorial");
+            this.PointToTutorial.ForeColor = System.Drawing.Color.White;
+            this.PointToTutorial.Name = "PointToTutorial";
             // 
             // Welcome
             // 
@@ -400,6 +418,7 @@ namespace FriishProduce
             this.MenuStrip.ResumeLayout(false);
             this.MenuStrip.PerformLayout();
             this.MainPanel.ResumeLayout(false);
+            this.MainPanel.PerformLayout();
             this.ToolStrip.ResumeLayout(false);
             this.ToolStrip.PerformLayout();
             this.ResumeLayout(false);
@@ -446,6 +465,8 @@ namespace FriishProduce
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
         private System.Windows.Forms.ToolStripButton ToolStrip_Settings;
         private System.Windows.Forms.ToolStripButton ToolStrip_Tutorial;
+        private System.Windows.Forms.Label PointToTutorial;
+        private System.Windows.Forms.Button Welcome_DoNotShow;
     }
 }
 

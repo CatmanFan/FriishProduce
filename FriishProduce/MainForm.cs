@@ -92,6 +92,8 @@ namespace FriishProduce
             BrowseImage.Filter = Language.Get("Filter_Img");
             SaveWAD.Filter = Language.Get("Filter_WAD");
 
+            Welcome_DoNotShow.Text = Language.Get("DoNotShow");
+
             foreach (MdiTabControl.TabPage tabPage in tabControl.TabPages)
             {
                 if (tabPage.Form.GetType() == typeof(InjectorForm))
@@ -118,6 +120,8 @@ namespace FriishProduce
         {
             InitializeComponent();
             RefreshForm();
+
+            Welcome_DoNotShow.Visible = PointToTutorial.Visible = Welcome.Visible = !Properties.Settings.Default.DoNotShow_Welcome;
 
             Program.Handle = Handle;
             tabControl.Location = MainPanel.Location;
@@ -244,7 +248,7 @@ namespace FriishProduce
             tabControl.TabPages.Add(Tab);
 
             tabControl.Visible = true;
-            Welcome.Visible = MainPanel.Visible = false;
+            Welcome_DoNotShow.Visible = PointToTutorial.Visible = Welcome.Visible = MainPanel.Visible = false;
 
             // BrowseROMDialog(console, Tab);
         }
@@ -313,6 +317,13 @@ namespace FriishProduce
         private void Tutorial_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Welcome_DoNotShow_Click(object sender, EventArgs e)
+        {
+            Welcome_DoNotShow.Visible = PointToTutorial.Visible = Welcome.Visible = false;
+            Properties.Settings.Default.DoNotShow_Welcome = true;
+            Properties.Settings.Default.Save();
         }
 
         public void CleanTemp()

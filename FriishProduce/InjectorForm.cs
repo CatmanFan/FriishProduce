@@ -63,7 +63,7 @@ namespace FriishProduce
             Text = string.IsNullOrWhiteSpace(ChannelTitle.Text) ? Untitled : ChannelTitle.Text;
 
             SetROMDataText();
-            bannerPreview1.Update(BannerTitle.Text, (int)ReleaseYear.Value, (int)Players.Value, tImg?.VCPic, Creator.isJapan ? 1 : Creator.isKorea ? 2 : 0);
+            bannerPreview1.Update(Console, BannerTitle.Text, (int)ReleaseYear.Value, (int)Players.Value, tImg?.VCPic, Creator.isJapan ? 1 : Creator.isKorea ? 2 : 0);
             Parent.SetTitle();
 
             var baseMax = Math.Max(label4.Location.X + label4.Width - 4, label5.Location.X + label5.Width - 4);
@@ -178,7 +178,7 @@ namespace FriishProduce
                 SaveDataTitle.Lines;
 
             SetROMDataText();
-            bannerPreview1.Update(BannerTitle.Text, (int)ReleaseYear.Value, (int)Players.Value, tImg?.VCPic, Creator.isJapan ? 1 : Creator.isKorea ? 2 : 0);
+            bannerPreview1.Update(Console, BannerTitle.Text, (int)ReleaseYear.Value, (int)Players.Value, tImg?.VCPic, Creator.isJapan ? 1 : Creator.isKorea ? 2 : 0);
             Parent.SetTitle();
             button1.Enabled = CO != null;
 
@@ -984,7 +984,7 @@ namespace FriishProduce
                     }
 
             End:
-            bannerPreview1.Update(BannerTitle.Text, (int)ReleaseYear.Value, (int)Players.Value, tImg?.VCPic, Creator.isJapan ? 1 : Creator.isKorea ? 2 : 0);
+            bannerPreview1.Update(Console, BannerTitle.Text, (int)ReleaseYear.Value, (int)Players.Value, tImg?.VCPic, Creator.isJapan ? 1 : Creator.isKorea ? 2 : 0);
         }
 
         /// <summary>

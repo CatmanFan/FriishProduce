@@ -142,7 +142,7 @@
     <value>Cerrar</value>
   </data>
   <data name="OpenManual.Text" xml:space="preserve">
-    <value>Manual electrónico</value>
+    <value>Añadir un manual electrónico...</value>
   </data>
   <data name="MenuItem_File.Text" xml:space="preserve">
     <value>&amp;Archivo</value>
