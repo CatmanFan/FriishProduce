@@ -64,11 +64,11 @@ namespace FriishProduce.WiiVC
 
         private readonly string[] CCFApps = new string[]
         {
-            "ccfex",
-            "ccfex2009",
-            "ccfarc",
-            "ccfarc2009",
-            "ccfarcraw"
+            "ccfex",        // 0 = New CCF ext
+            "ccfex2009",    // 1 = Old CCF ext
+            "ccfarc",       // 2 = New CCF arc
+            "ccfarc2009",   // 3 = Old CCF arc
+            "ccfarcraw"     // 4 = Raw CCF arc
         };
 
         public bool IsSMS { get; set; }
@@ -80,7 +80,7 @@ namespace FriishProduce.WiiVC
             NeedsManualLoaded = false;
             base.Load();
 
-            GetCCF(1);
+            GetCCF();
             ReplaceManual(MainContent);
 
             switch (WAD.UpperTitleID.Substring(0, 3).ToUpper())
@@ -120,8 +120,10 @@ namespace FriishProduce.WiiVC
         // Anything else, and it will just do a black screen, or it will work for Master System only
         // ****************
 
-        private void GetCCF(int CCFApp)
+        private void GetCCF(int CCFApp = 1)
         {
+            if (IsSMS) CCFApp = 1;
+
             // Get Data.ccf first
             // ****************
             File.WriteAllBytes(Paths.WorkingFolder + "data.ccf", MainContent.Data[MainContent.GetNodeIndex("data.ccf")]);
@@ -173,7 +175,7 @@ namespace FriishProduce.WiiVC
         /// </summary>
         /// <param name="raw">Determines whether to use ccfarcraw.exe (needed for misc.ccf)</param>
         /// <returns>Path to an out.ccf file if it was created.</returns>
-        private byte[] RunCCFArc(string dir, int type, bool AlternateMethod = true)
+        private byte[] RunCCFArc(string dir, int type, bool AlternateMethod = false)
         {
             bool Failsafe = false;
             string files = "";
@@ -189,33 +191,36 @@ namespace FriishProduce.WiiVC
                     // ****************
                     string[] order_ROMNameFirst = new string[]
                     {
-                    // --* SMS *-- //
-                    "FantasyZone2",
-                    "WBMonsterLand",
-                    "PhantasyStar1_J_01",
+                        // --* SMS *-- //
+                        "FantasyZone2",
+                        "WBMonsterLand",
+                        "PhantasyStar1_J_01",
 
-                    // --* SMD *-- //
-                    "Columns1",
-                    "ComixZone",
-                    "WBMonsterWorld",
-                    "Columns3",
-                    "BareKnuckle2",
-                    "StreetsRage2",
-                    "StreetsRage3",
-                    "DynamiteHeaddy",
-                    "MonsterWorld4"
+                        // --* SMD *-- //
+                        "Columns1",
+                        "ComixZone",
+                        "WBMonsterWorld",
+                        "Columns3",
+                        "StreetsRage2",
+                        "StreetsRage3",
+                        "DynamiteHeaddy",
+                        "MonsterWorld4"
                     };
+
                     foreach (var item in order_ROMNameFirst)
                         if (ROMName.Contains(item)) files = $"{ROMName} Opera.arc";
 
+                    // -----------------------------------------------------------------
+
                     string[] order_noROM = new string[]
                     {
-                    // --* SMS *-- //
-                    "SecretComm",
+                        // --* SMS *-- //
+                        "SecretComm",
 
-                    // --* SMD *-- //
-                    "sandk_composite"
+                        // --* SMD *-- //
+                        "sandk_composite"
                     };
+
                     foreach (var item in order_noROM)
                         if (ROMName.Contains(item)) files = "Opera.arc";
 
@@ -317,13 +322,14 @@ namespace FriishProduce.WiiVC
             RunApp:
             // If not data.ccf or already using legacy app, there is no other option
             // ****************
-            if (type != 0 && Failsafe) throw new Exception(Language.Get("Error002"));
+            if (type < 2) throw new InvalidOperationException();
+            else if (type >= 3 && Failsafe) throw new Exception(Language.Get("Error002"));
 
             // Start application
             // ****************
             ProcessHelper.Run
             (
-                Paths.Tools + $"sega\\{CCFApps[type + 2]}.exe",
+                Paths.Tools + $"sega\\{CCFApps[type]}.exe",
                 dir,
                 files
             );
@@ -350,11 +356,12 @@ namespace FriishProduce.WiiVC
 
             // Misc.ccf
             // ****************
-            File.WriteAllBytes(Paths.DataCCF + "misc.ccf", RunCCFArc(Paths.MiscCCF, 2));
+            File.WriteAllBytes(Paths.DataCCF + "misc.ccf", RunCCFArc(Paths.MiscCCF, 4));
 
             // Data.ccf
             // ****************
-            MainContent.ReplaceFile(MainContent.GetNodeIndex("data.ccf"), RunCCFArc(Paths.DataCCF, ROMName.Contains("MonsterWorld4") ? 1 : 0));
+            var NewData = RunCCFArc(Paths.DataCCF, ROMName.Contains("MonsterWorld4") ? 3 : 2);
+            MainContent.ReplaceFile(MainContent.GetNodeIndex("data.ccf"), NewData);
 
             if (File.Exists(Paths.WorkingFolder + "data.ccf")) File.Delete(Paths.WorkingFolder + "data.ccf");
 
