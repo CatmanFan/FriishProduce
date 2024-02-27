@@ -254,15 +254,6 @@ namespace Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to File.
-        /// </summary>
-        public static string File {
-            get {
-                return ResourceManager.GetString("File", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to |All files (*.*)|*.*.
         /// </summary>
         public static string Filter_All {
@@ -516,7 +507,7 @@ namespace Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The ZIP archive you have selected is invalid..
+        ///   Looks up a localized string similar to The file you have selected is invalid..
         /// </summary>
         public static string Message008 {
             get {

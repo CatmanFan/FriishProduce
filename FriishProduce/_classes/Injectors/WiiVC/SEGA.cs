@@ -14,14 +14,6 @@ namespace FriishProduce.WiiVC
         {
             Rev1 = 1,       // Comix Zone (SMD)
 
-            /*  Per RadioShadow on GBATemp:
-            Version 1 [Sonic The Hedgehog]:
-            - Analogue Stick doesn't work on Classic Controller/Gamecube.
-            - Don't support PAL Component Fix.
-            - Not all have 6 button controller support.
-            - The Save Banner is called "banner_xx.wte" (xx = region)
-            - In the "misc_ccf_zlib" folder is a file calleed "wii_vc.txt". The necessary text messages for the necessary languages. */
-
             // There is an issue with Ver 1 emulator, where if savedata is not customized, it will display a blank banner for savedata.
             // Unless savedata title is edited somehow, the WAD lands on a blackscreen. This GUI skips the bug since the savedata will be modified in every scenario
 
@@ -33,14 +25,6 @@ namespace FriishProduce.WiiVC
 
             Rev2,           // Sonic (SMS); Earthworm Jim, Sonic 3D Blast (SMD)
 
-            /* Version 2 [Streets of Rage 2] (the one this guide refers to):
-            - Analogue Stick works on Classic Controller/Gamecube.
-            - Supports PAL Component Fix.
-            - All have 6 button controller support.
-            - The Save Banner is now just called "banner.wte"
-            - No "wii_vc.txt" file in the "misc_ccf_zlib" folder. The text message is in the emulator instead.
-            - Some contain a "patch" file (may or may not have data in). If a certain rom is detected, then changes are made to the emulator (like skipping the checksum). An injected rom won't use the patch. */
-
             // EXAMPLE Config:
             // **********************
             /* country="us"
@@ -48,18 +32,6 @@ namespace FriishProduce.WiiVC
              * dev.mdpad.enable_6b="1" */
 
             Rev3            // Phantasy Star (SMS); Pulseman (SMD); Sonic & Knuckles (special edition)
-
-            /* Version 3 [Pulseman] (US/EU):
-            - Analogue Stick works on Classic Controller/Gamecube.
-            - Supports PAL Component Fix.
-            - All have 6 button controller support.
-            - In the config file, some contain an option to adjust the brightness.
-            - In the config file, the volume can increased. Default is set to +6.5.
-            - In the config file, Machine Country can be set to Japan, USA or Europe.
-            - In the config file is a "console.machine_arch" option set to "md". No idea what this option does.
-            - In the "misc_ccf_zlib" folder, there is a "comment" file. Contains the text for both lines which can easily be edited (before only the first line of text could be edited and the second line text was determined on what country was set in the config file). Seems to only support ASCII (let to try UNICODE).
-            - In the "data_ccf" folder are three files: "emu_m68kbase.rso", "tsdevp.rso", "md.rso" & "se_vc.sel". No idea what they do but the "config" file says it is something to do with the "modules" (my guess is it modifies the emulator).
-            - Also in the "data_ccf" is a "tsdevp.rso" file. No idea what it does but the config say it is something to do with the "snd.snddrv". */
         }
 
         private readonly string[] CCFApps = new string[]

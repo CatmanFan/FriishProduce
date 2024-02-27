@@ -98,7 +98,7 @@ namespace FriishProduce
                 var list = A.GetManifestResourceNames();
 
                 foreach (var listEntry in list)
-                    if (listEntry.StartsWith("FriishProduce.Strings."))
+                    if (listEntry.StartsWith("FriishProduce.Strings.") && !listEntry.Contains(".xml"))
                         Sources.Add(listEntry);
 
                 if (Sources == null) throw new Exception("No source string files were found.");
@@ -127,7 +127,7 @@ namespace FriishProduce
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show($"A fatal error occured while trying to read the English language resource files.\nKey name: {KeyName}\n{ResourceFileName} (index: {ResourceFileNumber}).\n\n" +
+                System.Windows.Forms.MessageBox.Show($"A fatal error occurred while trying to read the English language resource files.\nKey name: {KeyName}\n{ResourceFileName} (index: {ResourceFileNumber}).\n\n" +
                     $"Exception: {ex.GetType()}\nMessage: {ex.Message}\n\nStack trace:" + Environment.NewLine + ex.StackTrace + Environment.NewLine + Environment.NewLine +
                     "The application will now shut down.", "Halt", MessageBoxButtons.OK, MessageBoxIcon.Hand);
                 Environment.FailFast(ex.Message);

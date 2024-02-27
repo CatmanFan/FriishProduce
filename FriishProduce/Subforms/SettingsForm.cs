@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 using static FriishProduce.Properties.Settings;
 
 namespace FriishProduce
@@ -153,9 +154,10 @@ namespace FriishProduce
                 { "NAAJ", Console.N64 },
                 { "NABT", Console.N64 }, // MK64
                 { "EAJP", Console.NeoGeo },
-                { "EAJJ", Console.NeoGeo }, */
+                { "EAJJ", Console.NeoGeo },
                 { "C9YE", Console.C64 },
-                { "C9YP", Console.C64 }
+                { "C9YP", Console.C64 },
+                { "WNAP", Console.Flash } */
             };
 
             foreach (var item in WADs)
@@ -208,6 +210,33 @@ namespace FriishProduce
             Language.Current = LanguageList.SelectedIndex == 0 ? Language.GetSystemLanguage() : new System.Globalization.CultureInfo(Default.UI_Language);
 
             RefreshForm();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            XmlDocument doc = new XmlDocument();
+            doc.PreserveWhitespace = false;
+            doc.Load(System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("FriishProduce.Strings.en.xml"));
+
+            XmlNode collection = null;
+            foreach (XmlNode item in doc.ChildNodes)
+                if (item.Name.ToLower() == "language") collection = item;
+
+            if (collection == null) return;
+
+            foreach (XmlNode section in collection.SelectNodes("global"))
+                foreach (XmlNode item in section.ChildNodes)
+                {
+                    var l = section.SelectNodes(".");
+
+                    if (item.Name == "Message.000")
+                    {
+                        string x = item.InnerText;
+                        MessageBox.Show(x);
+                    }
+                }
+
+            LanguageXML.Get("N64");
         }
     }
 }

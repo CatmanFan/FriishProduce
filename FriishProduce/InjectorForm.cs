@@ -32,7 +32,7 @@ namespace FriishProduce
         protected ROM                           ROM         { get; set; }
         protected string                        Manual      { get; set; }
         protected LibRetroDB                    LibRetro    { get; set; }
-        protected Database                      Database    { get; set; }
+        protected DatabaseEntry[]               Database    { get; set; }
         protected IDictionary<string, string>   CurrentBase { get; set; }
         protected TitleImage                    tImg        { get; set; }
         protected Creator                       Creator     { get; set; }
@@ -64,7 +64,6 @@ namespace FriishProduce
 
             SetROMDataText();
             bannerPreview1.Update(Console, BannerTitle.Text, (int)ReleaseYear.Value, (int)Players.Value, tImg?.VCPic, Creator.isJapan ? 1 : Creator.isKorea ? 2 : 0);
-            Parent.SetTitle();
 
             var baseMax = Math.Max(label4.Location.X + label4.Width - 4, label5.Location.X + label5.Width - 4);
             baseName.Location = new Point(baseMax, label4.Location.Y);
@@ -179,7 +178,6 @@ namespace FriishProduce
 
             SetROMDataText();
             bannerPreview1.Update(Console, BannerTitle.Text, (int)ReleaseYear.Value, (int)Players.Value, tImg?.VCPic, Creator.isJapan ? 1 : Creator.isKorea ? 2 : 0);
-            Parent.SetTitle();
             button1.Enabled = CO != null;
 
             ReadyToExport =    !string.IsNullOrEmpty(Creator.TitleID) && Creator.TitleID.Length == 4
@@ -349,15 +347,15 @@ namespace FriishProduce
             WAD Reader = new WAD();
             try { Reader = WAD.Load(path); } catch { goto Failed; }
 
-            for (int x = 0; x < Database.List.Length; x++)
-                if (Database.List[x].TitleID.ToUpper() == Reader.UpperTitleID.ToUpper())
+            for (int x = 0; x < Database.Length; x++)
+                if (Database[x].TitleID.ToUpper() == Reader.UpperTitleID.ToUpper())
                 {
                     WADPath = path;
 
                     CurrentBase.Clear();
-                    CurrentBase.Add(Database.List[x].TitleID, Database.List[x].NativeName);
-                    baseName.Text = Database.List[x].NativeName;
-                    baseID.Text = Database.List[x].TitleID;
+                    CurrentBase.Add(Database[x].TitleID, Database[x].DisplayName);
+                    baseName.Text = Database[x].DisplayName;
+                    baseID.Text = Database[x].TitleID;
                     UpdateBaseGeneral(0);
                     Reader.Dispose();
                     return true;
@@ -486,12 +484,21 @@ namespace FriishProduce
                 case Console.SMS:
                 case Console.SMDGEN:
                 case Console.PCE:
+                    if (!ROM.CheckValidity(File.ReadAllBytes(ROMpath)))
+                    {
+                        MessageBox.Show(Language.Get("Message008"), 0, Ookii.Dialogs.WinForms.TaskDialogIcon.Warning);
+                        return;
+                    }
                     break;
 
                 case Console.NeoGeo:
                     // Check if ZIP archive is of valid format
                     // ****************
-                    if (!ROM.CheckZIPValidity(ROMpath, new string[] { "c1", "c2", "m1", "p1", "s1", "v1" }, true, true)) return;
+                    if (!ROM.CheckZIPValidity(ROMpath, new string[] { "c1", "c2", "m1", "p1", "s1", "v1" }, true, true))
+                    {
+                        MessageBox.Show(Language.Get("Message008"), 0, Ookii.Dialogs.WinForms.TaskDialogIcon.Warning);
+                        return;
+                    }
                     break;
 
                 case Console.MSX:
@@ -683,9 +690,10 @@ namespace FriishProduce
             // *******
             if (CO != null) { VC.Settings = CO.Settings; } else { VC.Settings = new Dictionary<string, string> { { "N/A", "N/A" } }; }
             VC.ManualPath = Manual;
+
             if (WADPath != null) VC.WAD = WAD.Load(WADPath);
-            else for (int x = 0; x < Database.List.Length; x++)
-                if (Database.List[x].TitleID.ToUpper() == baseID.Text.ToUpper()) VC.WAD = Database.Load(x);
+            else for (int x = 0; x < Database.Length; x++)
+                if (Database[x].TitleID.ToUpper() == baseID.Text.ToUpper()) VC.WAD = Database[x].Load();
 
             // Actually inject everything
             // *******
@@ -732,15 +740,15 @@ namespace FriishProduce
         #region Base WAD Management/Visual
         private void AddBases()
         {
-            Database = new Database(Console);
+            Database = DatabaseHelper.Get(Console);
             string ID = null;
 
-            for (int x = 0; x < Database.List.Length; x++)
+            for (int x = 0; x < Database.Length; x++)
             {
-                if (Database.List[x].TitleID.Substring(0, 3) != ID)
+                if (Database[x].TitleID.Substring(0, 3) != ID)
                 {
-                    Base.Items.Add(Database.List[x].NativeName);
-                    ID = Database.List[x].TitleID.Substring(0, 3);
+                    Base.Items.Add(Database[x].DisplayName);
+                    ID = Database[x].TitleID.Substring(0, 3);
                 }
             }
 
@@ -765,41 +773,42 @@ namespace FriishProduce
             // ********
             var tempList = new List<string>();
             var tempIDs = new List<string>();
-            for (int x = 0; x < Database.List.Length; x++) tempList.Add(Database.List[x].NativeName);
-            for (int x = 0; x < Database.List.Length; x++) tempIDs.Add(Database.List[x].TitleID.Substring(0, 3));
+            for (int x = 0; x < Database.Length; x++) tempList.Add(Database[x].DisplayName);
+            for (int x = 0; x < Database.Length; x++) tempIDs.Add(Database[x].TitleID.Substring(0, 3));
 
-            string oldID = null;
+
+            int start = tempList.IndexOf(Base.SelectedItem.ToString());
+            int end = start == Database.Length - 1 ? Database.Length : start;
+
+            for (int x = start; x < Database.Length; x++)
+            {
+                if (Database[x].TitleID.Substring(0, 3) != Database[start].TitleID.Substring(0, 3) && end == start)
+                    end = x;
+            }
 
             // Add regions to WAD region context list
             // ********
-            for (int x = tempList.IndexOf(Base.SelectedItem.ToString()); x < Database.List.Length; x++)
+            for (int x = start; x < end; x++)
             {
-                // If base Title ID code is no longer identical, break loop
-                // Update oldID variable
-                // ********
-                if (oldID == null) oldID = Database.List[x].TitleID.Substring(0, 3);
-                else if (oldID != Database.List[x].TitleID.Substring(0, 3))
-                    break;
-
                 // Add region of entry to context list
                 // ********
-                switch (Database.GetRegion(x))
+                switch (Database[x].Region())
                 {
-                    case Database.Region.USA:
+                    case 0:
                         WADRegionList.Items.Add(Language.Get("Region_U"), null, WADRegionList_Click);
                         break;
 
-                    case Database.Region.PAL50:
-                    case Database.Region.PAL60:
+                    case 1:
+                    case 2:
                         WADRegionList.Items.Add(Language.Get("Region_E"), null, WADRegionList_Click);
                         break;
 
-                    case Database.Region.JPN:
+                    case 3:
                         WADRegionList.Items.Add(Language.Get("Region_J"), null, WADRegionList_Click);
                         break;
 
-                    case Database.Region.KOR_Ja:
-                    case Database.Region.KOR_En:
+                    case 4:
+                    case 5:
                         WADRegionList.Items.Add(Language.Get("Region_K"), null, WADRegionList_Click);
                         break;
 
@@ -807,7 +816,7 @@ namespace FriishProduce
                         break;
                 }
 
-                CurrentBase.Add(Database.List[x].TitleID, Database.List[x].NativeName);
+                CurrentBase.Add(Database[x].TitleID, Database[x].DisplayName);
             }
 
             // Check if language is set to Japanese or Korean
@@ -963,7 +972,7 @@ namespace FriishProduce
                 SaveDataTitle.Multiline = !isSingleLine;
                 SaveDataTitle.Location = SaveDataTitle.Multiline ? new Point(SaveDataTitle.Location.X, 25) : new Point(SaveDataTitle.Location.X, 34);
                 SaveDataTitle.Clear();
-                goto SetEmuRev;
+                goto End;
             }
             if (Creator.isKorea && SaveDataTitle.Multiline) SaveDataTitle.MaxLength /= 2; // Applies to both NES/FC & SNES/SFC
 
@@ -974,16 +983,8 @@ namespace FriishProduce
                 if (line.Length > max && SaveDataTitle.MaxLength != oldSaveLength)
                     SaveDataTitle.Clear();
 
-            SetEmuRev:
-            foreach (var item in Database.List)
-                foreach (var key in CurrentBase.Keys)
-                    if (key.ToUpper() == item.TitleID.ToUpper())
-                    {
-                        UpdateBaseConsole(item.emuRev);
-                        goto End;
-                    }
-
             End:
+            UpdateBaseConsole(index);
             bannerPreview1.Update(Console, BannerTitle.Text, (int)ReleaseYear.Value, (int)Players.Value, tImg?.VCPic, Creator.isJapan ? 1 : Creator.isKorea ? 2 : 0);
         }
 

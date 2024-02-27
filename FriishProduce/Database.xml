@@ -1,0 +1,518 @@
+<Databases>
+	<!-- INFORMATION ON ADDING NEW DATABASE ENTRIES -->
+	
+	<!-- <name> = WAD name as found on MarioCube database (game title ONLY, do not include any parentheses!) -->
+	<!-- <displayName> = Game's native title in English, Japanese or Korean -->
+	<!-- <emuVersion> = determines the emulator type, if it exists. This can either be one that uses a compressed ROM, or a different frontend. -->
+	<!--		  Settings are explained in each console database -->
+
+	<Database Type="NES">
+		<!-- [Emulator types:] -->
+		<!-- <emuVersion>0</emuVersion> = Original -->
+		<!-- <emuVersion>1</emuVersion> = LZ77 ROM -->
+		
+		<Entry>
+			<tid>FCWE</tid>
+			<name>Super Mario Bros. 3</name>
+			<displayName>Super Mario Bros. 3</displayName>
+			<emuVersion>0</emuVersion>
+		</Entry>
+
+		<Entry>
+			<tid>FCWP</tid>
+			<name>Super Mario Bros. 3</name>
+			<displayName>Super Mario Bros. 3</displayName>
+			<emuVersion>0</emuVersion>
+		</Entry>
+
+		<Entry>
+			<tid>FCWJ</tid>
+			<name>Super Mario Bros. 3</name>
+			<displayName>スーパーマリオブラザーズ3</displayName>
+			<emuVersion>0</emuVersion>
+		</Entry>
+
+		<Entry>
+			<tid>FCWQ</tid>
+			<name>Super Mario Bros. 3</name>
+			<displayName>슈퍼 마리오브라더스 3</displayName>
+			<emuVersion>0</emuVersion>
+		</Entry>
+
+		<Entry>
+			<tid>FA8E</tid>
+			<name>Kirby's Adventure</name>
+			<displayName>Kirby's Adventure</displayName>
+			<emuVersion>0</emuVersion>
+		</Entry>
+
+		<Entry>
+			<tid>FA8P</tid>
+			<name>Kirby's Adventure</name>
+			<displayName>Kirby's Adventure</displayName>
+			<emuVersion>0</emuVersion>
+		</Entry>
+
+		<Entry>
+			<tid>FA8J</tid>
+			<name>Hoshi no Kirby - Yume no Izumi no Monogatari</name>
+			<displayName>星のカービィ 夢の泉の物語</displayName>
+			<emuVersion>0</emuVersion>
+		</Entry>
+
+		<Entry>
+			<tid>FA8T</tid>
+			<name>Kirby's Adventure</name>
+			<displayName>별의 커비 꿈의 샘 이야기</displayName>
+			<emuVersion>0</emuVersion>
+		</Entry>
+
+		<Entry>
+			<tid>FBNM</tid>
+			<name>Ninja Gaiden</name>
+			<displayName>Ninja Gaiden</displayName>
+			<emuVersion>0</emuVersion>
+		</Entry>
+	</Database>
+
+	<Database Type="SNES">
+		<!-- [Emulator types:] -->
+		<!-- <emuVersion>0</emuVersion> = Original -->
+		<!-- <emuVersion>1</emuVersion> = LZ77 ROM -->
+		
+		<Entry>
+			<tid>JBDE</tid>
+			<name>Donkey Kong Country 2 - Diddy's Kong Quest</name>
+			<displayName>Donkey Kong Country 2</displayName>
+			<emuVersion>0</emuVersion>
+		</Entry>
+		
+		<Entry>
+			<tid>JBDP</tid>
+			<name>Donkey Kong Country 2 - Diddy's Kong Quest</name>
+			<displayName>Donkey Kong Country 2</displayName>
+			<emuVersion>0</emuVersion>
+		</Entry>
+		
+		<Entry>
+			<tid>JBDJ</tid>
+			<name>Super Donkey Kong 2 - Dixie &amp; Diddy</name>
+			<displayName>スーパードンキーコング2</displayName>
+			<emuVersion>0</emuVersion>
+		</Entry>
+		
+		<Entry>
+			<tid>JBDT</tid>
+			<name>Donkey Kong Country 2 - Diddy's Kong Quest</name>
+			<displayName>동키콩 컨트리 2</displayName>
+			<emuVersion>0</emuVersion>
+		</Entry>
+		
+		<Entry>
+			<tid>JABL</tid>
+			<name>Mario's Super Picross</name>
+			<displayName>Mario's Super Picross</displayName>
+			<emuVersion>0</emuVersion>
+		</Entry>
+	</Database>
+
+	<Database Type="N64">
+		<!-- [Emulator types:] -->
+		<!-- <emuVersion>0</emuVersion> = emuVersion 1 (original) -->
+		<!-- <emuVersion>1</emuVersion> = emuVersion 1 (alternative save data format) -->
+		<!-- <emuVersion>2</emuVersion> = emuVersion 2 (new revision) -->
+		<!-- <emuVersion>3</emuVersion> = ROMC-compressed format -->
+
+		<Entry>
+			<tid>NAAE</tid>
+			<name>Super Mario 64</name>
+			<displayName>Super Mario 64</displayName>
+			<emuVersion>0</emuVersion>
+		</Entry>
+
+		<Entry>
+			<tid>NAAP</tid>
+			<name>Super Mario 64</name>
+			<displayName>Super Mario 64</displayName>
+			<emuVersion>0</emuVersion>
+		</Entry>
+
+		<Entry>
+			<tid>NAAJ</tid>
+			<name>Super Mario 64</name>
+			<displayName>スーパーマリオ64</displayName>
+			<emuVersion>0</emuVersion>
+		</Entry>
+
+		<Entry>
+			<tid>NAFE</tid>
+			<name>F-Zero X</name>
+			<displayName>F-Zero X</displayName>
+			<emuVersion>0</emuVersion>
+		</Entry>
+
+		<Entry>
+			<tid>NAFP</tid>
+			<name>F-Zero X</name>
+			<displayName>F-Zero X</displayName>
+			<emuVersion>0</emuVersion>
+		</Entry>
+
+		<Entry>
+			<tid>NAFJ</tid>
+			<name>F-Zero X</name>
+			<displayName>F-ZERO X</displayName>
+			<emuVersion>0</emuVersion>
+		</Entry>
+
+		<Entry>
+			<tid>NADE</tid>
+			<name>Star Fox 64</name>
+			<displayName>Star Fox 64</displayName>
+			<emuVersion>1</emuVersion>
+		</Entry>
+
+		<Entry>
+			<tid>NADP</tid>
+			<name>Lylat Wars</name>
+			<displayName>Lylat Wars</displayName>
+			<emuVersion>1</emuVersion>
+		</Entry>
+
+		<Entry>
+			<tid>NADJ</tid>
+			<name>Star Fox 64</name>
+			<displayName>スターフォックス64</displayName>
+			<emuVersion>1</emuVersion>
+		</Entry>
+
+		<Entry>
+			<tid>NADT</tid>
+			<name>Star Fox 64</name>
+			<displayName>스타폭스 64</displayName>
+			<emuVersion>3</emuVersion>
+		</Entry>
+
+		<Entry>
+			<tid>NABE</tid>
+			<name>Mario Kart 64</name>
+			<displayName>Mario Kart 64</displayName>
+			<emuVersion>1</emuVersion>
+		</Entry>
+
+		<Entry>
+			<tid>NABP</tid>
+			<name>Mario Kart 64</name>
+			<displayName>Mario Kart 64</displayName>
+			<emuVersion>1</emuVersion>
+		</Entry>
+
+		<Entry>
+			<tid>NABJ</tid>
+			<name>Mario Kart 64</name>
+			<displayName>マリオカート64</displayName>
+			<emuVersion>1</emuVersion>
+		</Entry>
+
+		<Entry>
+			<tid>NABT</tid>
+			<name>Mario Kart 64</name>
+			<displayName>마리오 카트 64</displayName>
+			<emuVersion>3</emuVersion>
+		</Entry>
+
+		<Entry>
+			<tid>NACE</tid>
+			<name>Legend of Zelda, The - Ocarina of Time</name>
+			<displayName>The Legend of Zelda: Ocarina of Time</displayName>
+			<emuVersion>1</emuVersion>
+		</Entry>
+
+		<Entry>
+			<tid>NACP</tid>
+			<name>Legend of Zelda, The - Ocarina of Time</name>
+			<displayName>The Legend of Zelda: Ocarina of Time</displayName>
+			<emuVersion>1</emuVersion>
+		</Entry>
+
+		<Entry>
+			<tid>NACJ</tid>
+			<name>Zelda no Densetsu - Toki no Okarina</name>
+			<displayName>ゼルダの伝説 時のオカリナ</displayName>
+			<emuVersion>1</emuVersion>
+		</Entry>
+
+		<Entry>
+			<tid>NAJN</tid>
+			<name>Sin &amp; Punishment</name>
+			<displayName>Sin and Punishment</displayName>
+			<emuVersion>2</emuVersion>
+		</Entry>
+
+		<Entry>
+			<tid>NAJL</tid>
+			<name>Sin &amp; Punishment</name>
+			<displayName>Sin and Punishment</displayName>
+			<emuVersion>2</emuVersion>
+		</Entry>
+
+		<Entry>
+			<tid>NAJJ</tid>
+			<name>Tsumi to Batsu - Hoshi no Keishousha</name>
+			<displayName>罪と罰 〜地球の継承者〜</displayName>
+			<emuVersion>2</emuVersion>
+		</Entry>
+
+		<Entry>
+			<tid>NAUE</tid>
+			<name>Mario Golf</name>
+			<displayName>Mario Golf</displayName>
+			<emuVersion>3</emuVersion>
+		</Entry>
+
+		<Entry>
+			<tid>NAUP</tid>
+			<name>Mario Golf</name>
+			<displayName>Mario Golf</displayName>
+			<emuVersion>3</emuVersion>
+		</Entry>
+
+		<Entry>
+			<tid>NAUJ</tid>
+			<name>Mario Golf 64</name>
+			<displayName>マリオゴルフ64</displayName>
+			<emuVersion>3</emuVersion>
+		</Entry>
+
+		<Entry>
+			<tid>NAYE</tid>
+			<name>Ogre Battle 64 - Person of Lordly Caliber</name>
+			<displayName>Ogre Battle 64: Person of Lordly Caliber</displayName>
+			<emuVersion>3</emuVersion>
+		</Entry>
+
+		<Entry>
+			<tid>NAYP</tid>
+			<name>Ogre Battle 64 - Person of Lordly Caliber</name>
+			<displayName>Ogre Battle 64: Person of Lordly Caliber</displayName>
+			<emuVersion>3</emuVersion>
+		</Entry>
+
+		<Entry>
+			<tid>NAYJ</tid>
+			<name>Ogre Battle 64 - Person of Lordly Caliber</name>
+			<displayName>オウガバトル64 Person of Lordly Caliber</displayName>
+			<emuVersion>3</emuVersion>
+		</Entry>
+
+		<Entry>
+			<tid>NA3J</tid>
+			<name>Bomberman Hero</name>
+			<displayName>Bomberman Hero - ボンバーマンヒーロー ミリアン王女を救え!</displayName>
+			<emuVersion>3</emuVersion>
+		</Entry>
+	</Database>
+
+	<!-- Information about SEGA VC emulator revisions (Per RadioShadow on GBATemp: https://gbatemp.net/threads/virtual-console-mega-drive-genesis-rom-injection-guide.137539/post-2103740):
+		
+            emuVersion 1 [Sonic The Hedgehog]:
+            - Analogue Stick doesn't work on Classic Controller/Gamecube.
+            - Don't support PAL Component Fix.
+            - Not all have 6 button controller support.
+            - The Save Banner is called "banner_xx.wte" (xx = region)
+            - In the "misc_ccf_zlib" folder is a file calleed "wii_vc.txt". The necessary text messages for the necessary languages.
+			
+			emuVersion 2 [Streets of Rage 2] (the one this guide refers to):
+            - Analogue Stick works on Classic Controller/Gamecube.
+            - Supports PAL Component Fix.
+            - All have 6 button controller support.
+            - The Save Banner is now just called "banner.wte"
+            - No "wii_vc.txt" file in the "misc_ccf_zlib" folder. The text message is in the emulator instead.
+            - Some contain a "patch" file (may or may not have data in). If a certain rom is detected, then changes are made to the emulator (like skipping the checksum). An injected rom won't use the patch. 
+			
+			emuVersion 3 [Pulseman] (US/EU):
+            - Analogue Stick works on Classic Controller/Gamecube.
+            - Supports PAL Component Fix.
+            - All have 6 button controller support.
+            - In the config file, some contain an option to adjust the brightness.
+            - In the config file, the volume can increased. Default is set to +6.5.
+            - In the config file, Machine Country can be set to Japan, USA or Europe.
+            - In the config file is a "console.machine_arch" option set to "md". No idea what this option does.
+            - In the "misc_ccf_zlib" folder, there is a "comment" file. Contains the text for both lines which can easily be edited (before only the first line of text could be edited and the second line text was determined on what country was set in the config file). Seems to only support ASCII (let to try UNICODE).
+            - In the "data_ccf" folder are three files: "emu_m68kbase.rso", "tsdevp.rso", "md.rso" & "se_vc.sel". No idea what they do but the "config" file says it is something to do with the "modules" (my guess is it modifies the emulator).
+            - Also in the "data_ccf" is a "tsdevp.rso" file. No idea what it does but the config say it is something to do with the "snd.snddrv". -->
+
+	<Database Type="SMS">
+		<!-- [Emulator types:] -->
+		<!-- <emuVersion>1</emuVersion> = emuVersion 1 (original) -->
+		<!-- <emuVersion>2</emuVersion> = emuVersion 2 (banner.wte instead of banner_**.wte) -->
+		<!-- <emuVersion>3</emuVersion> = emuVersion 3 (includes modules) -->
+		
+		<Entry>
+			<tid>LAGE</tid>
+			<name>Sonic The Hedgehog</name>
+			<displayName>Sonic the Hedgehog</displayName>
+			<emuVersion>2</emuVersion>
+		</Entry>
+		
+		<Entry>
+			<tid>LAGP</tid>
+			<name>Sonic The Hedgehog</name>
+			<displayName>Sonic the Hedgehog</displayName>
+			<emuVersion>2</emuVersion>
+		</Entry>
+		
+		<Entry>
+			<tid>LAGJ</tid>
+			<name>Sonic The Hedgehog</name>
+			<displayName>ソニック・ザ・ヘッジホッグ</displayName>
+			<emuVersion>2</emuVersion>
+		</Entry>
+
+		<Entry>
+			<tid>LADE</tid>
+			<name>Phantasy Star</name>
+			<displayName>Phantasy Star</displayName>
+			<emuVersion>3</emuVersion>
+		</Entry>
+
+		<Entry>
+			<tid>LADP</tid>
+			<name>Phantasy Star</name>
+			<displayName>Phantasy Star</displayName>
+			<emuVersion>3</emuVersion>
+		</Entry>
+
+		<Entry>
+			<tid>LADJ</tid>
+			<name>Phantasy Star</name>
+			<displayName>ファンタシースター</displayName>
+			<emuVersion>2</emuVersion>
+		</Entry>
+	</Database>
+
+	<Database Type="SMDGEN">
+		<!-- [Emulator types:] -->
+		<!-- <emuVersion>1</emuVersion> = emuVersion 1 (original) -->
+		<!-- <emuVersion>2</emuVersion> = emuVersion 2 (banner.wte instead of banner_**.wte) -->
+		<!-- <emuVersion>3</emuVersion> = emuVersion 3 (includes modules) -->
+		
+		<Entry>
+			<tid>MA6E</tid>
+			<name>Streets of Rage 2</name>
+			<displayName>Streets of Rage 2</displayName>
+			<emuVersion>2</emuVersion>
+		</Entry>
+		
+		<Entry>
+			<tid>MA6P</tid>
+			<name>Streets of Rage 2</name>
+			<displayName>Streets of Rage 2</displayName>
+			<emuVersion>2</emuVersion>
+		</Entry>
+		
+		<Entry>
+			<tid>MA6J</tid>
+			<name>Bare Knuckle II - Shitou he no Requiem</name>
+			<displayName>ベア・ナックルII 死闘への鎮魂歌</displayName>
+			<emuVersion>2</emuVersion>
+		</Entry>
+
+		<Entry>
+			<tid>MBAN</tid>
+			<name>Pulseman</name>
+			<displayName>Pulseman</displayName>
+			<emuVersion>3</emuVersion>
+		</Entry>
+
+		<Entry>
+			<tid>MBAL</tid>
+			<name>Pulseman</name>
+			<displayName>Pulseman</displayName>
+			<emuVersion>3</emuVersion>
+		</Entry>
+
+		<Entry>
+			<tid>MBAJ</tid>
+			<name>Pulseman</name>
+			<displayName>パルスマン</displayName>
+			<emuVersion>2</emuVersion>
+		</Entry>
+	</Database>
+
+	<Database Type="NeoGeo">
+		<Entry>
+			<tid>EAGE</tid>
+			<name>King of Fighters '94, The</name>
+			<displayName>The King of Fighters '94</displayName>
+			<emuVersion>0</emuVersion>
+		</Entry>
+		
+		<Entry>
+			<tid>EAGP</tid>
+			<name>King of Fighters '94, The</name>
+			<displayName>The King of Fighters '94</displayName>
+			<emuVersion>0</emuVersion>
+		</Entry>
+		
+		<Entry>
+			<tid>EAGJ</tid>
+			<name>King of Fighters '94, The</name>
+			<displayName>THE KING OF FIGHTERS '94</displayName>
+			<emuVersion>0</emuVersion>
+		</Entry>
+
+		<Entry>
+			<tid>EAJE</tid>
+			<name>Metal Slug</name>
+			<displayName>Metal Slug</displayName>
+			<emuVersion>0</emuVersion>
+		</Entry>
+
+		<Entry>
+			<tid>EAJP</tid>
+			<name>Metal Slug</name>
+			<displayName>Metal Slug</displayName>
+			<emuVersion>0</emuVersion>
+		</Entry>
+
+		<Entry>
+			<tid>EAJJ</tid>
+			<name>Metal Slug</name>
+			<displayName>メタルスラッグ</displayName>
+			<emuVersion>0</emuVersion>
+		</Entry>
+	</Database>
+
+	<Database Type="C64">
+		<Entry>
+			<tid>C9YE</tid>
+			<name>International Karate</name>
+			<displayName>International Karate</displayName>
+			<emuVersion>0</emuVersion>
+		</Entry>
+		
+		<Entry>
+			<tid>C9YP</tid>
+			<name>International Karate</name>
+			<displayName>International Karate</displayName>
+			<emuVersion>0</emuVersion>
+		</Entry>
+	</Database>
+
+	<Database Type="Flash">
+		<Entry>
+			<tid>WNAE</tid>
+			<name>Flash Placeholder</name>
+			<displayName>Flash Placeholder</displayName>
+			<emuVersion>0</emuVersion>
+		</Entry>
+		
+		<Entry>
+			<tid>WNAP</tid>
+			<name>Flash Placeholder</name>
+			<displayName>Flash Placeholder</displayName>
+			<emuVersion>0</emuVersion>
+		</Entry>
+	</Database>
+</Databases>

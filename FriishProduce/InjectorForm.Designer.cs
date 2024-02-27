@@ -396,7 +396,6 @@ namespace FriishProduce
             this.WADRegion.BackColor = System.Drawing.SystemColors.ControlLight;
             this.WADRegion.BackgroundImage = global::FriishProduce.Properties.Resources.x;
             resources.ApplyResources(this.WADRegion, "WADRegion");
-            this.WADRegion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.WADRegion.ContextMenuStrip = this.WADRegionList;
             this.WADRegion.Cursor = System.Windows.Forms.Cursors.Hand;
             this.WADRegion.Name = "WADRegion";
@@ -407,6 +406,8 @@ namespace FriishProduce
             // 
             this.Base.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.Base.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.Base.DropDownHeight = 150;
+            this.Base.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(this.Base, "Base");
             this.Base.FormattingEnabled = true;
             this.Base.Name = "Base";

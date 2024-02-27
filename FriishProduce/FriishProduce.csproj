@@ -141,6 +141,7 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="_classes\LanguageXML.cs" />
     <Compile Include="_classes\ROM\N64.cs" />
     <Compile Include="_classes\ROM\NeoGeo.cs" />
     <Compile Include="_classes\ROM\NES.cs" />
@@ -368,7 +369,9 @@
     <None Include="Resources\icons\consoles\nintendo nes.ico" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Database.xml" />
     <Content Include="icon.ico" />
+    <EmbeddedResource Include="Strings\en.xml" />
     <None Include="Resources\icons\mr-saturn.png" />
     <None Include="Resources\icons\smw_question-block.png" />
     <None Include="Resources\icons\smw_note-block.png" />

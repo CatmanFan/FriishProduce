@@ -97,11 +97,11 @@ namespace FriishProduce
 
                 /* case Console.MSX:
                      bannerPath += "jp_msx.bnr";
-                     break;
+                     break; */
 
                  case Console.Flash:
                      bannerPath += "flash.bnr";
-                     break; */
+                     break;
 
                 default:
                     throw new NotImplementedException();
@@ -312,7 +312,7 @@ namespace FriishProduce
         {
             try
             {
-                WAD w = new Database(c).Load(tID);
+                WAD w = DatabaseHelper.Get(tID).Load();
                 U8[] Banner = GetBanner(w);
                 Banner[1].Dispose();
 

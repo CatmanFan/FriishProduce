@@ -23,6 +23,7 @@ namespace FriishProduce
             }
 
             Language.Load();
+            LanguageXML.Run();
 
             try
             {

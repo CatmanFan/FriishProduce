@@ -32,7 +32,6 @@ namespace FriishProduce
             }
         }
         public byte[] Bytes { get; set; }
-        public string TitleID { get => Bytes != null && _rom != null ? TID() : null; }
 
         public int MaxSize { get; set; }
 
@@ -47,6 +46,11 @@ namespace FriishProduce
         }
 
         protected virtual void Load() { }
+
+        public virtual bool CheckValidity(byte[] ROM)
+        {
+            return true;
+        }
 
         public virtual bool CheckZIPValidity(string path, string[] strings, bool SearchEndingOnly, bool ForceLowercase)
         {
@@ -65,7 +69,6 @@ namespace FriishProduce
 
                 if (applicable < strings.Length)
                 {
-                    MessageBox.Show(Language.Get("Message008"), 0, Ookii.Dialogs.WinForms.TaskDialogIcon.Warning);
                     return false;
                 }
 
@@ -74,8 +77,6 @@ namespace FriishProduce
         }
 
         public virtual bool CheckZIPValidity(string[] strings, bool SearchEndingOnly, bool ForceLowercase) => CheckZIPValidity(Path, strings, SearchEndingOnly, ForceLowercase);
-
-        protected virtual string TID() { return null; }
 
         public bool CheckSize(int length)
         {

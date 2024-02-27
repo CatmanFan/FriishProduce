@@ -56,6 +56,7 @@ namespace FriishProduce
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.leftSeparator = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.n64004.SuspendLayout();
             this.bottomPanel1.SuspendLayout();
@@ -217,6 +218,7 @@ namespace FriishProduce
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.checkBox1);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.DownloadBanners);
@@ -253,6 +255,13 @@ namespace FriishProduce
             this.leftSeparator.BackColor = System.Drawing.SystemColors.ControlDark;
             resources.ApplyResources(this.leftSeparator, "leftSeparator");
             this.leftSeparator.Name = "leftSeparator";
+            // 
+            // button1
+            // 
+            resources.ApplyResources(this.button1, "button1");
+            this.button1.Name = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // SettingsForm
             // 
@@ -316,5 +325,6 @@ namespace FriishProduce
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel leftSeparator;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Button button1;
     }
 }

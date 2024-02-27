@@ -179,9 +179,6 @@ Injection will continue as intended.</value>
   <data name="Error006" xml:space="preserve">
     <value>Failed to export to WAD.</value>
   </data>
-  <data name="File" xml:space="preserve">
-    <value>File</value>
-  </data>
   <data name="Filter_All" xml:space="preserve">
     <value>|All files (*.*)|*.*</value>
   </data>
@@ -280,7 +277,7 @@ Before proceeding, please make sure the directory you are choosing contains a su
     <value>Not a valid emanual contents folder.</value>
   </data>
   <data name="Message008" xml:space="preserve">
-    <value>The ZIP archive you have selected is invalid.</value>
+    <value>The file you have selected is invalid.</value>
   </data>
   <data name="PlatformGroup_0" xml:space="preserve">
     <value>Nintendo</value>

@@ -71,7 +71,6 @@ namespace FriishProduce
             AutoSetStrip();
             Language.AutoSetForm(this);
 
-            SetTitle();
             MenuItem_File.Text = Language.Get(MenuItem_File.Name, this);
             MenuItem_Project.Text = Language.Get(MenuItem_Project.Name, this);
             MenuItem_Help.Text = Language.Get(MenuItem_Help.Name, this);
@@ -140,13 +139,6 @@ namespace FriishProduce
             // FriishProduce.Update.GetLatest();
         }
 
-        public void SetTitle(bool isNull = false)
-        {
-            if (tabControl.SelectedForm == null || tabControl.TabPages.Count == 0 || isNull) Text = Language.Get("_AppTitle");
-            else if (!string.IsNullOrWhiteSpace((tabControl.SelectedForm as InjectorForm).Text))
-                Text = Language.Get("_AppTitle") + " - " + (tabControl.SelectedForm as InjectorForm).Text;
-        }
-
         private void Settings_Click(object sender, EventArgs e)
         {
             string lang = Properties.Settings.Default.UI_Language;
@@ -180,8 +172,6 @@ namespace FriishProduce
              = ToolStrip_OpenManual.Enabled = OpenManual.Enabled
              = ToolStrip_OpenImage.Enabled = OpenImage.Enabled
              = ToolStrip_OpenROM.Enabled = OpenROM.Enabled;
-
-            SetTitle(!OpenROM.Enabled);
 
             // Context menu
             // ********

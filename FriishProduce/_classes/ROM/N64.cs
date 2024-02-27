@@ -8,6 +8,17 @@ namespace FriishProduce
 
         protected override void Load()
         {
+            Bytes = Byteswap(Bytes);
+        }
+
+        public override bool CheckValidity(byte[] ROM)
+        {
+            var Byteswapped = Byteswap(ROM);
+            return Byteswapped[0] == 0x80 && Byteswapped[1] == 0x37 && Byteswapped[2] == 0x12 && Byteswapped[3] == 0x40 && Byteswapped[4] == 0x00 && Byteswapped[5] == 0x00 && Byteswapped[6] == 0x00 && Byteswapped[7] == 0x0F;
+        }
+
+        private byte[] Byteswap(byte[] ROM)
+        {
             // -----------------------
             // Byteswap ROM first
             // ****************
@@ -19,31 +30,23 @@ namespace FriishProduce
 
             // Byte Swapped to Big Endian
             // ****************
-            if ((Bytes[56] == 0x4E && Bytes[57] == 0x00 && Bytes[58] == 0x00 && Bytes[59] == 0x00)
-                || (Bytes[0] == 0x40 && Bytes[1] == 0x12 && Bytes[2] == 0x37 && Bytes[3] == 0x80))
+            if ((ROM[56] == 0x4E && ROM[57] == 0x00 && ROM[58] == 0x00 && ROM[59] == 0x00)
+                || (ROM[0] == 0x40 && ROM[1] == 0x12 && ROM[2] == 0x37 && ROM[3] == 0x80))
             {
-                for (int i = 0; i < Bytes.Length; i += 4)
-                    (Bytes[i], Bytes[i + 1], Bytes[i + 2], Bytes[i + 3]) = (Bytes[i + 3], Bytes[i + 2], Bytes[i + 1], Bytes[i]);
+                for (int i = 0; i < ROM.Length; i += 4)
+                    (ROM[i], ROM[i + 1], ROM[i + 2], ROM[i + 3]) = (ROM[i + 3], ROM[i + 2], ROM[i + 1], ROM[i]);
             }
 
             // Little Endian to Big Endian
             // ****************
-            else if ((Bytes[56] == 0x00 && Bytes[57] == 0x00 && Bytes[58] == 0x4E && Bytes[59] == 0x00)
-                || (Bytes[0] == 0x37 && Bytes[1] == 0x80 && Bytes[2] == 0x40 && Bytes[3] == 0x12))
+            else if ((ROM[56] == 0x00 && ROM[57] == 0x00 && ROM[58] == 0x4E && ROM[59] == 0x00)
+                || (ROM[0] == 0x37 && ROM[1] == 0x80 && ROM[2] == 0x40 && ROM[3] == 0x12))
             {
-                for (int i = 0; i < Bytes.Length; i += 2)
-                    (Bytes[i], Bytes[i + 1]) = (Bytes[i + 1], Bytes[i]);
-            }
-        }
-
-        protected override string TID()
-        {
-            try
-            {
-                return Encoding.ASCII.GetString(new byte[] { Bytes[0x3B], Bytes[0x3C], Bytes[0x3D], Bytes[0x3E] }).Trim();
+                for (int i = 0; i < ROM.Length; i += 2)
+                    (ROM[i], ROM[i + 1]) = (ROM[i + 1], ROM[i]);
             }
 
-            catch { return null; }
+            return ROM;
         }
     }
 }

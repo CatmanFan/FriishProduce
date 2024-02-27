@@ -1180,10 +1180,10 @@
     <value>NoControl</value>
   </data>
   <data name="WADRegion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>332, 81</value>
+    <value>334, 83</value>
   </data>
   <data name="WADRegion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 22</value>
+    <value>30, 20</value>
   </data>
   <data name="WADRegion.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>StretchImage</value>
@@ -1206,14 +1206,17 @@
   <data name="Base.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>System</value>
   </data>
-  <data name="Base.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 9pt</value>
+  <data name="Base.IntegralHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="Base.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 81</value>
+    <value>11, 82</value>
+  </data>
+  <data name="Base.MaxDropDownItems" type="System.Int32, mscorlib">
+    <value>10</value>
   </data>
   <data name="Base.Size" type="System.Drawing.Size, System.Drawing">
-    <value>315, 22</value>
+    <value>317, 21</value>
   </data>
   <data name="Base.TabIndex" type="System.Int32, mscorlib">
     <value>31</value>
@@ -1237,7 +1240,7 @@
     <value>14, 101</value>
   </data>
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>375, 125</value>
+    <value>375, 120</value>
   </data>
   <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
     <value>40</value>

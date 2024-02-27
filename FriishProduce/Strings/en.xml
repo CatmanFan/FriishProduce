@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<language>
+	<global name="Metadata">
+		<Author>CatmanFan</Author>
+		<AppTitle>FriishProduce</AppTitle>
+	</global>
+
+	<global name="Platforms">
+		<PlatformGroup0>Nintendo</PlatformGroup0>
+		<PlatformGroup1>SEGA</PlatformGroup1>
+		<C64>Commodore 64</C64>
+		<Flash>Macromedia/Adobe Flash</Flash>
+		<GBA>Game Boy Advance</GBA>
+		<MSX>Microsoft MSX/MSX2</MSX>
+		<N64>Nintendo 64</N64>
+		<NeoGeo>SNK NEO-GEO</NeoGeo>
+		<PCE>TurboGrafx-16/PC Engine</PCE>
+		<PCECD>TurboGrafx-16 CD/PC Engine CD</PCECD>
+		<PSX>Sony PlayStation</PSX>
+		<SMDGEN>Mega Drive/Genesis</SMDGEN>
+		<SMS>Master System</SMS>
+		<SNES>SNES/Super Famicom</SNES>
+	</global>
+
+	<global name="Strings">
+		<Abbr.Kilobytes>KB</Abbr.Kilobytes>
+		<Abbr.Megabytes>MB</Abbr.Megabytes>
+		<About>About {0}</About>
+		<Author>Author(s): {0}</Author>
+		<B.Cancel>Cancel</B.Cancel>
+		<B.Close>Close</B.Close>
+		<B.No>No</B.No>
+		<B.OK>OK</B.OK>
+		<B.Yes>Yes</B.Yes>
+		<ByDefault>Default</ByDefault>
+		<DoNotShow>Do not show this again</DoNotShow>
+		<Error>An error has occurred</Error>
+		<Error.000>
+			Failed to connect to the Internet.
+			Message: {0}
+		</Error.000>
+		<Error.001>
+			Failed to generate images.
+			This may be due to an issue with GDI+.
+		</Error.001>
+		<Error.002>Unable to replace data.</Error.002>
+		<Error.003>The ROM provided is too large (over {0} {1} in size).</Error.003>
+		<Error.004>
+			Failed to modify the following content options:
+			{0}
+			Injection will continue as intended.
+		</Error.004>
+		<Error.005>The application needed ({0}) was not found in the resources\tools subdirectory.</Error.005>
+		<Error.006>Failed to export to WAD.</Error.006>
+		<Filter>|All files (*.*)|*.*</Filter>
+		<Filter.Disc>Disc Images (*.cue, *.iso, *.chd)|*.cue;*.iso;*.chd|  Cue Sheet files (*.cue)|*.cue|  ISO images (*.iso)|*.iso|  Compressed Hunks of Data (*.chd)|*.chd</Filter.Disc>
+		<Filter.Img>Images (*.bmp, *.jpg, *.jpeg, *.png)|*.bmp;*.jpg;*.jpeg;*.png|  Bitmap (*.bmp)|*.bmp|  JPEG (*.jpg, *.jpeg)|*.jpg;*.jpeg|  PNG (*.png)|*.png</Filter.Img>
+		<Filter.Patch>Patch files (*.bps, *.ips, *.xdelta)|*.bps;*.ips;*.xdelta</Filter.Patch>
+		<Filter.ROM.MSX>MSX1/MSX2 ROM files (*.rom, *.mx1, *.mx2)|*.rom;*.mx1;*.mx2</Filter.ROM.MSX>
+		<Filter.ROM.N64>Nintendo 64 ROM files (*.n64, *.v64, *.z64)|*.n64;*.v64;*.z64</Filter.ROM.N64>
+		<Filter.ROM.NES>NES/Famicom ROM files (*.nes)|*.nes</Filter.ROM.NES>
+		<Filter.ROM.PCE>TurboGrafx-16/PC Engine ROM files (*.pce)|*.pce</Filter.ROM.PCE>
+		<Filter.ROM.SMDGEN>Mega Drive/Genesis ROM files (*.bin, *.gen, *.md)|*.bin;*.gen;*.md</Filter.ROM.SMDGEN>
+		<Filter.ROM.SMS>Master System ROM files (*.sms)|*.sms</Filter.ROM.SMS>
+		<Filter.ROM.SNES>SNES/Super Famicom ROM files (*.sfc, *.smc)|*.sfc;*.smc</Filter.ROM.SNES>
+		<Filter.SWF>SWF files (*.swf)|*.swf</Filter.SWF>
+		<Filter.WAD>Wii Channels (*.wad)|*.wad</Filter.WAD>
+		<Filter.ZIP>ZIP archives (*.zip)|*.zip</Filter.ZIP>
+		<InjectionMethodOptions>Injection method options</InjectionMethodOptions>
+		<List.ImageInterpolation>
+			Low
+			High
+			Bilinear
+			Bicubic
+			Nearest Neighbor
+			High Quality Bilinear
+			High Quality Bicubic
+		</List.ImageInterpolation>
+		<List.N64Options>
+			Screen brightness fix
+			Crashes fix
+			Extended ROM patch
+			Allocation for ROM size
+		</List.N64Options>
+		<Message.000>
+			An application restart is needed in order for changes to take effect.
+			Restart now?
+		</Message.000>
+		<Message.001>Discard unsaved changes to this project?</Message.001>
+		<Message.002>Discard all unsaved changes?</Message.002>
+		<Message.003>
+			Successfully exported to WAD:
+			{0}
+		</Message.003>
+		<Message.004>
+			Unable to retrieve all LibRetro data for the selected software.
+			Some fields may need to be filled manually.
+		</Message.004>
+		<Message.005>
+			The WAD you have selected (title ID: {0}) is invalid.
+			This could be for any of the following reasons:
+			- The currently-selected console does not match that used by the WAD.
+			- The WAD is not yet available in the database.
+			- The WAD has already been modified (i.e. injected or converted to a forwarder).
+		</Message.005>
+		<Message.006>
+			Importing a custom manual
+			This can be used to replace the original Operations Guide for the VC title with one modified for the needs of the injected ROM.
+
+			Before proceeding, please make sure the directory you are choosing contains a subfolder "emanual", including the extracted contents of a manual .arc from a VC WAD.
+		</Message.006>
+		<Message.007>Not a valid emanual contents folder.</Message.007>
+		<Message.008>The file you have selected is invalid.</Message.008>
+		<Other>Other</Other>
+		<ProjectType>{0} Project</ProjectType>
+		<Region.J>Japan</Region.J>
+		<Region.K>Korea</Region.K>
+		<Region.U>USA</Region.U>
+		<Region.E>Europe</Region.E>
+		<Settings>Settings</Settings>
+		<Unknown>Unknown</Unknown>
+		<Untitled>Untitled {0} WAD</Untitled>
+	</global>
+</language>
