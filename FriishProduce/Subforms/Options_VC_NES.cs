@@ -28,7 +28,7 @@ namespace FriishProduce
             // *******
             if (!DesignMode)
             {
-                Language.AutoSetForm(this);
+                Language.Localize(this);
 
                 t.ToolTipTitle = Language.Get("Author").Replace("{0}", "").Trim();
             }

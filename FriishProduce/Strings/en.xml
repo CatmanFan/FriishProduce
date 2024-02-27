@@ -6,14 +6,15 @@
 	</global>
 
 	<global name="Platforms">
-		<PlatformGroup0>Nintendo</PlatformGroup0>
-		<PlatformGroup1>SEGA</PlatformGroup1>
+		<Group0>Nintendo</Group0>
+		<Group1>SEGA</Group1>
 		<C64>Commodore 64</C64>
 		<Flash>Macromedia/Adobe Flash</Flash>
 		<GBA>Game Boy Advance</GBA>
 		<MSX>Microsoft MSX/MSX2</MSX>
 		<N64>Nintendo 64</N64>
 		<NeoGeo>SNK NEO-GEO</NeoGeo>
+		<NES>NES/Famicom</NES>
 		<PCE>TurboGrafx-16/PC Engine</PCE>
 		<PCECD>TurboGrafx-16 CD/PC Engine CD</PCECD>
 		<PSX>Sony PlayStation</PSX>
@@ -121,4 +122,18 @@
 		<Unknown>Unknown</Unknown>
 		<Untitled>Untitled {0} WAD</Untitled>
 	</global>
+
+	<form name="MainForm">
+		<ExportWAD.Text>Save as WAD...</ExportWAD.Text>
+		<MenuItem_About.Text>About</MenuItem_About.Text>
+		<MenuItem_Exit.Text>Exit</MenuItem_Exit.Text>
+		<MenuItem_File.Text>&amp;File</MenuItem_File.Text>
+		<MenuItem_Help.Text>&amp;Help</MenuItem_Help.Text>
+		<MenuItem_Project.Text>&amp;Project</MenuItem_Project.Text>
+		<NewProject.Text>New...</NewProject.Text>
+		<OpenImage.Text>Open image...</OpenImage.Text>
+		<OpenManual.Text>Add custom manual...</OpenManual.Text>
+		<OpenROM.Text>Open ROM...</OpenROM.Text>
+		<UseLibRetro.Text>Use LibRetro data</UseLibRetro.Text>
+	</form>
 </language>

@@ -56,7 +56,7 @@ namespace FriishProduce
 
         public void RefreshForm()
         {
-            Language.AutoSetForm(this);
+            Language.Localize(this);
 
             // Change title text to untitled string
             Untitled = string.Format(Language.Get("Untitled"), Language.Get($"Platform_{Enum.GetName(typeof(Console), Console)}"));

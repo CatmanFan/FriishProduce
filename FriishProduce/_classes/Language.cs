@@ -1,16 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Globalization;
 using System.Reflection;
-using System.Resources;
 using System.Threading;
 using System.Windows.Forms;
 using FriishProduce.Properties;
-using System.Collections;
 using System.IO;
+using System.Xml;
+using System.Linq;
 
 namespace FriishProduce
 {
@@ -22,11 +19,15 @@ namespace FriishProduce
             get => CultureInfo.CurrentCulture;
             set
             {
-                bool needsChange = English_Dictionary != null && value.ToString() != Current.Name;
+                bool needsChange = EnglishXML != null && value.ToString() != Current.Name;
                 CultureInfo.CurrentCulture = CultureInfo.CurrentUICulture = new CultureInfo(value.ToString()) { DateTimeFormat = new DateTimeFormatInfo() { DateSeparator = ".", ShortTimePattern = "HH:mm" } };
-                if (needsChange) Current_Dictionary = GetDictionary(CultureInfo.CurrentCulture.Name);
+                if (needsChange) XML = Load(CultureInfo.CurrentCulture.Name);
             }
         }
+
+        private static XmlNode EnglishXML { get; set; }
+        private static XmlNode XML { get; set; }
+
 
         private static SortedDictionary<string, string> _list;
         public static SortedDictionary<string, string> List
@@ -35,15 +36,14 @@ namespace FriishProduce
             {
                 _list = new SortedDictionary<string, string>() { { "en", "English" } };
 
-                // Pass the class name of your resources as a parameter e.g. MyResources for MyResources.resx
-                string[] installedLangs = Directory.GetDirectories(Paths.Languages);
+                string[] XMLFiles = Directory.GetFiles(Paths.Languages, "*.xml");
 
                 CultureInfo[] cultures = CultureInfo.GetCultures(CultureTypes.AllCultures);
                 foreach (CultureInfo culture in cultures)
                 {
-                    foreach (var item in installedLangs)
+                    foreach (var item in XMLFiles)
                     {
-                        if (culture.Name == Path.GetFileName(item))
+                        if (culture.Name == Path.GetFileNameWithoutExtension(item))
                         {
                             // Create neutral cultures to be displayed instead of local ones
                             // ****************
@@ -81,97 +81,7 @@ namespace FriishProduce
             return English.Parent;
         }
 
-        private static IDictionary<string, string>[] English_Dictionary { get; set; }
-        private static List<string> Sources { get; set; }
-
-        private static IDictionary<string, string>[] GetEnglish()
-        {
-            int ResourceFileNumber = 0;
-            string ResourceFileName = null;
-            string KeyName = null;
-
-            try
-            {
-                Sources = new List<string>();
-
-                var A = Assembly.GetExecutingAssembly();
-                var list = A.GetManifestResourceNames();
-
-                foreach (var listEntry in list)
-                    if (listEntry.StartsWith("FriishProduce.Strings.") && !listEntry.Contains(".xml"))
-                        Sources.Add(listEntry);
-
-                if (Sources == null) throw new Exception("No source string files were found.");
-
-                Sources.Sort();
-
-                IDictionary<string, string>[] Dict = new Dictionary<string, string>[Sources.Count];
-
-                for (int i = 0; i < Sources.Count; i++)
-                {
-                    Dict[i] = new Dictionary<string, string>();
-                    foreach (DictionaryEntry DictEntry in new ResourceManager(Sources[i].Replace(".resources", ""), Assembly.GetExecutingAssembly()).GetResourceSet(English, true, true))
-                    {
-                        ResourceFileNumber = i;
-                        ResourceFileName = Sources[i].Replace(".resources", "").Replace("FriishProduce.Strings.", "");
-                        KeyName = (string)DictEntry.Key;
-                        if (!KeyName.EndsWith(".LargeImage") && !KeyName.EndsWith(".SmallImage") && !KeyName.EndsWith(".Image"))
-                            Dict[i].Add(KeyName, (string)DictEntry.Value);
-                    }
-                }
-
-                for (int i = 0; i < Sources.Count; i++)
-                    Sources[i] = Sources[i].Replace(".resources", "").Replace("FriishProduce.Strings.", "");
-
-                return Dict;
-            }
-            catch (Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show($"A fatal error occurred while trying to read the English language resource files.\nKey name: {KeyName}\n{ResourceFileName} (index: {ResourceFileNumber}).\n\n" +
-                    $"Exception: {ex.GetType()}\nMessage: {ex.Message}\n\nStack trace:" + Environment.NewLine + ex.StackTrace + Environment.NewLine + Environment.NewLine +
-                    "The application will now shut down.", "Halt", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-                Environment.FailFast(ex.Message);
-                return null;
-            }
-        }
-
-        private static IDictionary<string, string>[] Current_Dictionary { get; set; }
-
-        private static IDictionary<string, string>[] GetDictionary(string code)
-        {
-            if (code == "en") return English_Dictionary;
-
-            string currentPath = Path.GetDirectoryName(Paths.Languages + $"{code}\\").Replace("file:\\", "");
-
-            IDictionary<string, string>[] res = new Dictionary<string, string>[Directory.GetFiles(currentPath).Length];
-            try
-            {
-                bool found = false;
-                foreach (var file in Directory.GetFiles(currentPath))
-                    if (Path.GetFileName(file) == "Strings.resx") found = true;
-                if (!found || res.Length != English_Dictionary.Length) throw new Exception("Language folder is not valid.");
-
-                for (int i = 0; i < Directory.GetFiles(currentPath).Length; i++)
-                {
-                    res[i] = new Dictionary<string, string>();
-                    using (ResXResourceReader resxReader = new ResXResourceReader(Directory.GetFiles(currentPath)[i]))
-                    {
-                        foreach (DictionaryEntry entry in resxReader)
-                            if (!entry.Key.ToString().EndsWith(".LargeImage") && !entry.Key.ToString().EndsWith(".SmallImage") && !entry.Key.ToString().EndsWith(".Image"))
-                                res[i].Add((string)entry.Key, (string)entry.Value);
-                    }
-                }
-
-                return res;
-            }
-
-            catch
-            {
-                return English_Dictionary;
-            }
-        }
-
-        public static void Load()
+        public static void Run()
         {
             var code = Settings.Default.UI_Language;
 
@@ -191,7 +101,7 @@ namespace FriishProduce
                 Settings.Default.UI_Language = "sys";
                 Settings.Default.Save();
             }
-            
+
             // --------------------------
             // Localization process
             // --------------------------
@@ -219,15 +129,15 @@ namespace FriishProduce
 
             Thread.CurrentThread.CurrentCulture = Thread.CurrentThread.CurrentUICulture = Current;
 
-            English_Dictionary = GetEnglish();
-            Current_Dictionary = null;
+            LoadEnglish();
+            XML = null;
 
             if (Settings.Default.UI_Language == "en" || Current == English || Current.EnglishName == English.EnglishName)
-                Current_Dictionary = English_Dictionary;
+                XML = EnglishXML;
             else
             {
-                Current_Dictionary = GetDictionary(Current.Name);
-                if (Current_Dictionary == English_Dictionary)
+                XML = Load(Current.Name);
+                if (XML == EnglishXML)
                 {
                     Current = English;
                     Settings.Default.UI_Language = "en";
@@ -236,68 +146,121 @@ namespace FriishProduce
             }
         }
 
-        #region Get
-        /// <summary>
-        /// Gets a string corresponding to the CultureInfo given.
-        /// </summary>
-        /// <param name="name">Key name within the resource file</param>
-        /// <param name="className">The name of the resource file</param>
-        /// <param name="ci">CultureInfo name</param>
-        /// <returns>English version by default if no corresponding localized string is found, and "undefined" if all methods fail.</returns>
-        public static string Get(string name, string source, bool isControl = false)
+        private static void LoadEnglish()
         {
-            if (isControl && !name.EndsWith(".Text")) name += ".Text";
+            try
+            {
+                XmlDocument doc = new XmlDocument();
+                doc.PreserveWhitespace = false;
+                doc.Load(Assembly.GetExecutingAssembly().GetManifestResourceStream("FriishProduce.Strings.en.xml"));
 
-            int index = -1;
-            for (int i = 0; i < Sources.Count; i++)
-                if (Sources[i] == source) index = i;
+                EnglishXML = null;
+                foreach (XmlNode item in doc.ChildNodes)
+                    if (item.Name.ToLower() == "language") EnglishXML = item;
 
-            if (index == -1) return "undefined";
+                if (EnglishXML == null) throw new Exception("The file was not found or is of invalid type.");
+            }
 
-            foreach (var item in Current_Dictionary[index])
-                if (item.Key == name) return item.Value;
-
-            foreach (var item in English_Dictionary[index])
-                if (item.Key == name) return item.Value;
-
-            return "undefined";
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show($"A fatal error occurred while trying to read the English language strings.\n" +
+                    $"Exception: {ex.GetType()}\nMessage: {ex.Message}\n\n" +
+                    "The application will now shut down.", "Halt", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                Environment.FailFast(ex.Message);
+            }
         }
 
-        public static string Get(string name) => Get(name, "Strings");
-        public static string Get(string name, Control x) => Get(name, x.Name, true);
-        public static string Get(Control name, Control x) => Get(name.Name, x.Name, true);
-        public static string Get(Control name, string source) => Get(name.Name, source, true);
-        #endregion Get
+        private static XmlNode Load(string lang)
+        {
+            try
+            {
+                if (lang == "en") throw new Exception("Lol");
 
-        #region GetArray
+                else
+                {
+                    XmlDocument doc = new XmlDocument();
+                    doc.PreserveWhitespace = false;
+                    doc.Load(Paths.Languages + lang + ".xml");
+
+                    foreach (XmlNode item in doc.ChildNodes)
+                        if (item.Name.ToLower() == "language") return item;
+
+                    throw new FileNotFoundException();
+                }
+            }
+
+            catch
+            {
+                return EnglishXML;
+            }
+        }
+
         /// <summary>
-        /// Gets a string array from a Strings.resx, or another resource file, both corresponding to the CultureInfo given.
+        /// Gets a string from the loaded XML file.
         /// </summary>
-        /// <param name="name">Key name within the resource file</param>
-        /// <param name="className">The name of the resource file</param>
-        /// <param name="ci">CultureInfo name</param>
         /// <returns>English version by default if no corresponding localized string array is found, and "undefined" if all methods fail.</returns>
-        public static string[] GetArray(string name, string source)
+        public static string Get(string name, string sectionName = null, bool isForm = false)
+        {
+            bool isSectionSet = sectionName != null;
+            bool useEnglish = false;
+
+        Search:
+            var targetXML = useEnglish ? EnglishXML : XML;
+
+            // Get global strings, if section belongs to a Form type search only in form-type node lists
+            // ****************
+            string type = isForm ? "form" : "global";
+            var searchTarget = targetXML.SelectNodes(type);
+            if (isSectionSet)
+            {
+                if (isForm && !name.EndsWith(".Text")) name += ".Text";
+                foreach (XmlNode section in targetXML.SelectNodes(type))
+                    if (section.Attributes[0].InnerText == sectionName) searchTarget = section.SelectNodes(".");
+            }
+
+            foreach (XmlNode section in searchTarget)
+                foreach (XmlNode item in section.ChildNodes)
+                    if (item.Name == name)
+                    {
+                        if (item.InnerText.StartsWith("\r\n")) return item.InnerText.Substring(2, 0).Replace('\t', '\0');
+                        else if (item.InnerText.StartsWith("\n")) return item.InnerText.Substring(1, 0).Replace('\t', '\0');
+                        else return item.InnerText.Replace('\t', '\0');
+                    }
+
+            if (!useEnglish)
+            {
+                useEnglish = true;
+                goto Search;
+            }
+
+            else return "undefined";
+        }
+
+        public static string Get(string name, Form f) => Get(name, f.Name, true);
+        public static string Get(Control c, Form f) => Get(c.Name, f.Name, true);
+        public static string Get(Control c, string section) => Get(c.Name, section, true);
+
+        /// <summary>
+        /// Same as above, except it converts the resulting string to an array.
+        /// </summary>
+        public static string[] GetArray(string name, string section = null)
         {
             List<string> undefined = new List<string>() { "undefined", "undefined", "undefined", "undefined", "undefined", "undefined", "undefined", "undefined", "undefined", "undefined" };
 
             // Get original string containing list
             // ****************
-            string orig = Get(name, source);
+            string orig = Get(name, section);
 
             // Split
             // ****************
-            var Object = orig != "undefined" && !string.IsNullOrEmpty(orig) ? orig.Split(Environment.NewLine.ToCharArray()).ToList() : undefined;
+            var Object = orig == "undefined" || string.IsNullOrEmpty(orig) ? undefined : orig.Split(Environment.NewLine.ToCharArray()).ToList();
             for (int i = 0; i < Object.Count; i++)
                 if (string.IsNullOrEmpty(Object[i])) Object.RemoveAt(i);
 
             return Object.ToArray();
         }
 
-        public static string[] GetArray(string name) => GetArray(name, "Strings");
-        #endregion
-
-        public static void AutoSetForm(Control c)
+        public static void Localize(Form c)
         {
             if (c.Name.ToLower().StartsWith("options_vc")) c.Text = Get("InjectionMethodOptions");
 
@@ -330,9 +293,9 @@ namespace FriishProduce
 
         }
 
-        private static void GetControl(Control x, Control parent, bool customStrings = true)
+        private static void GetControl(Control x, Form parent, bool customStrings = true)
         {
-            if      (x.GetType() == typeof(Form) && x.Name != parent.Name)                                                            return;
+            if (x.GetType() == typeof(Form) && x.Name != parent.Name) return;
             else if (x.GetType() == typeof(MdiTabControl.TabPage) && (x as MdiTabControl.TabPage).Form.GetType().Name != parent.Name) return;
             else if (x.GetType() == typeof(TreeView))
             {
@@ -365,8 +328,8 @@ namespace FriishProduce
             {
                 if (x.GetType() == typeof(Button))
                 {
-                    if (x.Name.ToLower() == "ok")       { x.Text = Get("Button_OK"); (x as Button).UseMnemonic = true; }
-                    if (x.Name.ToLower() == "cancel")   { x.Text = Get("Button_Cancel"); (x as Button).UseMnemonic = true; }
+                    if (x.Name.ToLower() == "ok") { x.Text = @"&" + Get("B.OK"); (x as Button).UseMnemonic = true; }
+                    if (x.Name.ToLower() == "cancel") { x.Text = @"&" + Get("B.Cancel"); (x as Button).UseMnemonic = true; }
                 }
             }
         }

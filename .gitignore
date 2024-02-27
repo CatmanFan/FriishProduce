@@ -12,3 +12,5 @@ legacy/
 /FriishProduce/langs/crowdin
 /FriishProduce/Data
 /FriishProduce/Database_Test.xml
+/FriishProduce/Strings/Original
+/FriishProduce/_classes/LanguageRESX.cs

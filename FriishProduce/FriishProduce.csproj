@@ -141,7 +141,7 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="_classes\LanguageXML.cs" />
+    <Compile Include="_classes\Language.cs" />
     <Compile Include="_classes\ROM\N64.cs" />
     <Compile Include="_classes\ROM\NeoGeo.cs" />
     <Compile Include="_classes\ROM\NES.cs" />
@@ -186,41 +186,6 @@
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
-    <Compile Include="Strings\InjectorForm.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>InjectorForm.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Strings\MainForm.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MainForm.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Strings\Options_VC_N64.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Options_VC_N64.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Strings\Options_VC_SEGA.Designer.cs">
-      <DependentUpon>Options_VC_SEGA.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Strings\Options_VC_NES.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Options_VC_NES.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Strings\SettingsForm.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SettingsForm.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Strings\Strings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Strings.resx</DependentUpon>
     </Compile>
     <Compile Include="Subforms\About.cs">
       <SubType>Form</SubType>
@@ -278,7 +243,6 @@
     <Compile Include="_classes\ProcessHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="_classes\Language.cs" />
     <Compile Include="_classes\LibRetroDB.cs" />
     <Compile Include="_classes\Paths.cs" />
     <Compile Include="_classes\ROM.cs" />
@@ -288,41 +252,6 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Strings\InjectorForm.resx">
-      <CustomToolNamespace>Strings</CustomToolNamespace>
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>InjectorForm.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Strings\MainForm.resx">
-      <CustomToolNamespace>Strings</CustomToolNamespace>
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>MainForm.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Strings\Options_VC_N64.resx">
-      <CustomToolNamespace>Strings</CustomToolNamespace>
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Options_VC_N64.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Strings\Options_VC_SEGA.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Options_VC_SEGA.Designer.cs</LastGenOutput>
-      <CustomToolNamespace>Strings</CustomToolNamespace>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Strings\Options_VC_NES.resx">
-      <CustomToolNamespace>Strings</CustomToolNamespace>
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Options_VC_NES.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Strings\SettingsForm.resx">
-      <CustomToolNamespace>Strings</CustomToolNamespace>
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>SettingsForm.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Strings\Strings.resx">
-      <CustomToolNamespace>Strings</CustomToolNamespace>
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Strings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Subforms\About.resx">
       <DependentUpon>About.cs</DependentUpon>
@@ -371,6 +300,7 @@
   <ItemGroup>
     <Content Include="Database.xml" />
     <Content Include="icon.ico" />
+    <EmbeddedResource Include="Strings\fr.xml" />
     <EmbeddedResource Include="Strings\en.xml" />
     <None Include="Resources\icons\mr-saturn.png" />
     <None Include="Resources\icons\smw_question-block.png" />
@@ -462,11 +392,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Strings\es\" />
-    <Folder Include="Strings\fr\" />
-    <Folder Include="Strings\tr\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>
@@ -474,19 +400,18 @@
   </PropertyGroup>
   <PropertyGroup>
     <PostBuildEvent>cd "$(TargetDir)strings\"
-for /R "%25cd%25" %25%25f in (.) do (call :delete %25%25f)
+for %25%25f in (*.xml) do (call :delete %25%25f)
 
 cd "$(ProjectDir)Strings\"
-for /R "%25cd%25" %25%25f in (.) do (call :copy %25%25f %25cd%25)
+for %25%25f in (*.xml) do (call :copy %25%25f)
 goto :eof
 
 :copy
-if NOT %25~n1 == %25~n2 mkdir "$(TargetDir)strings\%25~n1\"
-if NOT %25~n1 == %25~n2 robocopy %251 $(TargetDir)strings\%25~n1\ 1&gt;nul
+if NOT %25~n1 == en (copy /b/v/y %251 "$(TargetDir)strings\%25~n1%25~x1" 1&gt;nul)
 exit /b
 
 :delete
-rmdir /s /q "$(TargetDir)strings\%25~n1\"
+del /q/f "$(TargetDir)strings\%25~n1%25~x1"
 exit /b
 
 :eof</PostBuildEvent>

@@ -22,8 +22,7 @@ namespace FriishProduce
                 return;
             }
 
-            Language.Load();
-            LanguageXML.Run();
+            Language.Run();
 
             try
             {

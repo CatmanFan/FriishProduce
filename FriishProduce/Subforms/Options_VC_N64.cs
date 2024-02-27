@@ -28,7 +28,7 @@ namespace FriishProduce
             // *******
             if (!DesignMode)
             {
-                Language.AutoSetForm(this);
+                Language.Localize(this);
 
                 Height = EmuType == 3 ? 320 : 260;
             }

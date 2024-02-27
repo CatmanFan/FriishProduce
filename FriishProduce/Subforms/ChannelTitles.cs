@@ -16,7 +16,7 @@ namespace FriishProduce
         {
             InitializeComponent();
 
-            Language.AutoSetForm(this);
+            Language.Localize(this);
             foreach (TextBox TextBox in Controls.OfType<TextBox>())
                 TextBox.Text = text;
         }

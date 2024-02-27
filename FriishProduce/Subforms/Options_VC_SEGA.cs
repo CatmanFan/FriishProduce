@@ -30,7 +30,7 @@ namespace FriishProduce
             // *******
             if (!DesignMode)
             {
-                Language.AutoSetForm(this);
+                Language.Localize(this);
             }
         }
 

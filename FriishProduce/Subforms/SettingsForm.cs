@@ -34,7 +34,7 @@ namespace FriishProduce
 
         public void RefreshForm()
         {
-            Language.AutoSetForm(this);
+            Language.Localize(this);
             Text = Language.Get("Settings");
             TreeView.Nodes[1].Nodes[0].Text = Language.Get("Platform_NES");
             TreeView.Nodes[1].Nodes[1].Text = Language.Get("Platform_N64");
@@ -90,6 +90,7 @@ namespace FriishProduce
                     if (item.Value == LanguageList.SelectedItem.ToString())
                         Default.UI_Language = item.Key;
 
+            Language.Current = LanguageList.SelectedIndex == 0 ? Language.GetSystemLanguage() : new System.Globalization.CultureInfo(Default.UI_Language);
             Language.Current = LanguageList.SelectedIndex == 0 ? Language.GetSystemLanguage() : new System.Globalization.CultureInfo(Default.UI_Language);
 
             // -------------------------------------------
@@ -214,29 +215,10 @@ namespace FriishProduce
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            XmlDocument doc = new XmlDocument();
-            doc.PreserveWhitespace = false;
-            doc.Load(System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("FriishProduce.Strings.en.xml"));
-
-            XmlNode collection = null;
-            foreach (XmlNode item in doc.ChildNodes)
-                if (item.Name.ToLower() == "language") collection = item;
-
-            if (collection == null) return;
-
-            foreach (XmlNode section in collection.SelectNodes("global"))
-                foreach (XmlNode item in section.ChildNodes)
-                {
-                    var l = section.SelectNodes(".");
-
-                    if (item.Name == "Message.000")
-                    {
-                        string x = item.InnerText;
-                        MessageBox.Show(x);
-                    }
-                }
-
-            LanguageXML.Get("N64");
+            MessageBox.Show(Language.Get("N64", "Platforms"));
+            MessageBox.Show(Language.Get("AppTitle"));
+            MessageBox.Show(Language.Get("Error.004", "Strings"));
+            MessageBox.Show(Language.Get("FuckingShit", "Strings"));
         }
     }
 }

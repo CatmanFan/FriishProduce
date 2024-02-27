@@ -34,7 +34,7 @@ namespace FriishProduce
                 Cancel.Click += Cancel_Click;
                 Load += Form_Load;
 
-                // Language.AutoSetForm(this);
+                // Language.Localize(this);
             }
         }
 

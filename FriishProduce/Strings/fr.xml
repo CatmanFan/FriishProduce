@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<language>
+	<global name="Metadata">
+		<Author>CatmanFan</Author>
+		<AppTitle>FriishProduce</AppTitle>
+	</global>
+
+	<global name="Platforms">
+		<Group1>Sega</Group1>
+		<Flash>Adobe Flash</Flash>
+		<MSX>Microsoft MSX / MSX2</MSX>
+		<NeoGeo>SNK Neo-Geo</NeoGeo>
+		<NES>NES / Famicom</NES>
+		<PCE>PC Engine / TurboGrafx-16</PCE>
+		<PCECD>PC Engine CD / TurboGrafx-16 CD</PCECD>
+		<SMDGEN>Mega Drive / Genesis</SMDGEN>
+		<SNES>SNES / Super Famicom</SNES>
+	</global>
+
+	<global name="Strings">
+		<Abbr.Kilobytes>ko</Abbr.Kilobytes>
+		<Abbr.Megabytes>Mo</Abbr.Megabytes>
+		<About>À propos de {0}</About>
+		<Author>Auteur(e) : {0}</Author>
+		<B.Cancel>Annuler</B.Cancel>
+		<B.Close>Fermer</B.Close>
+		<B.No>Non</B.No>
+		<B.OK>OK</B.OK>
+		<B.Yes>Oui</B.Yes>
+		<ByDefault>Par défaut</ByDefault>
+		<DoNotShow>Ne plus afficher ce message</DoNotShow>
+		<Error>Une erreur est survenue.</Error>
+		<Error.000>
+			Échec de la connexion à Internet.
+			Message : {0}
+		</Error.000>
+		<Error.001>
+			Échec de la génération de l'image.
+			Cela peut être dû à un problème avec GDI+.
+		</Error.001>
+		<Error.002>Échec du replacement des données internes.</Error.002>
+		<Error.003>La ROM fournie est trop grande, car sa taille est plus de {0} {1}.</Error.003>
+		<Error.004>
+			Échec de modification des options de contenu suivantes :
+			{0}
+			L'injection se poursuivra comme prévu.
+		</Error.004>
+		<Error.005>L'application requise ({0}) n'a pas été trouvée dans le sous-répertoire « resources\\tools ».</Error.005>
+		<Error.006>Échec de l'exportation vers WAD.</Error.006>
+		<Filter>|Tous les fichiers (*.*)|*.*</Filter>
+		<Filter.Disc>Fichiers de format disque (*.cue, *.iso, *.chd)|*.cue;*.iso;*.chd|  Fichiers CUE Sheet (*.cue)|*.cue|  Images ISO (*.iso)|*.iso|  Fichiers CHD (*.chd)|*.chd</Filter.Disc>
+		<Filter.Img>Images (*.bmp, *.jpg, *.jpeg, *.png)|*.bmp;*.jpg;*.jpeg;*.png|  Bitmap (*.bmp)|*.bmp|  JPEG (*.jpg, *.jpeg)|*.jpg;*.jpeg|  PNG (*.png)|*.png</Filter.Img>
+		<Filter.Patch>Patch files (*.bps, *.ips, *.xdelta)|*.bps;*.ips;*.xdelta</Filter.Patch>
+		<Filter.ROM.MSX>MSX1/MSX2 ROM files (*.rom, *.mx1, *.mx2)|*.rom;*.mx1;*.mx2</Filter.ROM.MSX>
+		<Filter.ROM.N64>Nintendo 64 ROM files (*.n64, *.v64, *.z64)|*.n64;*.v64;*.z64</Filter.ROM.N64>
+		<Filter.ROM.NES>NES/Famicom ROM files (*.nes)|*.nes</Filter.ROM.NES>
+		<Filter.ROM.PCE>TurboGrafx-16/PC Engine ROM files (*.pce)|*.pce</Filter.ROM.PCE>
+		<Filter.ROM.SMDGEN>Mega Drive/Genesis ROM files (*.bin, *.gen, *.md)|*.bin;*.gen;*.md</Filter.ROM.SMDGEN>
+		<Filter.ROM.SMS>Master System ROM files (*.sms)|*.sms</Filter.ROM.SMS>
+		<Filter.ROM.SNES>SNES/Super Famicom ROM files (*.sfc, *.smc)|*.sfc;*.smc</Filter.ROM.SNES>
+		<Filter.SWF>SWF files (*.swf)|*.swf</Filter.SWF>
+		<Filter.WAD>Wii Channels (*.wad)|*.wad</Filter.WAD>
+		<Filter.ZIP>ZIP archives (*.zip)|*.zip</Filter.ZIP>
+		<InjectionMethodOptions>Options de méthode d'injection</InjectionMethodOptions>
+		<List.ImageInterpolation>
+			Basse qualité
+			Haute qualité
+			Bilinéaire
+			Bicubique
+			Plus proche voisin
+			Bilinéaire de haute qualité
+			Bicubique de haute qualité
+		</List.ImageInterpolation>
+		<List.N64Options>
+			Correctif de la luminosité de l'écran
+			Correctif des plantages
+			RAM étendue
+			Allocation pour la taille de la ROM
+		</List.N64Options>
+		<Message.000>
+			Un redémarrage de l'application est nécessaire pour que les changements aux paramètres prennent effet.
+			Redémarrer maintenant ?
+		</Message.000>
+		<Message.001>Ignorer les modifications non enregistrées à ce projet ?</Message.001>
+		<Message.002>Ignorer toutes les modifications non enregistrées ?</Message.002>
+		<Message.003>
+			Sauvegardé avec succès vers le fichier WAD suivant :
+			{0}
+		</Message.003>
+		<Message.004>
+			Impossible de remplir toutes les formes d'après la base de données Libretro pour ce logiciel.
+			Certaines formes peuvent avoir besoin d'être remplis manuellement.
+		</Message.004>
+		<Other>Autres</Other>
+		<ProjectType>Projet {0}</ProjectType>
+		<Region.J>Japon</Region.J>
+		<Region.K>Corée du Sud</Region.K>
+		<Region.U>États-Unis</Region.U>
+		<Region.E>Europe</Region.E>
+		<Settings>Paramètres</Settings>
+		<Unknown>Inconnu</Unknown>
+		<Untitled>Chaîne {0} sans titre</Untitled>
+	</global>
+
+	<form name="MainForm">
+		<ExportWAD.Text>Sauvegarder comme WAD ...</ExportWAD.Text>
+		<MenuItem_About.Text>À propos</MenuItem_About.Text>
+		<MenuItem_Exit.Text>Quitter</MenuItem_Exit.Text>
+		<MenuItem_File.Text>&amp;Fichier</MenuItem_File.Text>
+		<MenuItem_Help.Text>&amp;Aide</MenuItem_Help.Text>
+		<MenuItem_Project.Text>&amp;Projet</MenuItem_Project.Text>
+		<NewProject.Text>Nouveau ...</NewProject.Text>
+		<OpenImage.Text>Ouvrir une image ...</OpenImage.Text>
+		<OpenManual.Text>Ajouter un mode d'emploi personnalisé ...</OpenManual.Text>
+		<OpenROM.Text>Ouvrir une ROM ...</OpenROM.Text>
+		<UseLibRetro.Text>Remplir dès LibRetro</UseLibRetro.Text>
+	</form>
+</language>

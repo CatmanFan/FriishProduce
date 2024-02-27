@@ -28,7 +28,7 @@ namespace FriishProduce
             var Consoles = new ToolStripItem[]
                 {
                     new ToolStripMenuItem(
-                        Language.Get("PlatformGroup_0"), null,
+                        Language.Get("Group0", "Platforms"), null,
                         new ToolStripItem[]
                         {
                             new ToolStripMenuItem(null, new Icon(Properties.Resources.nintendo_nes, 16, 16).ToBitmap(), AddProject, Console.NES.ToString()),
@@ -38,7 +38,7 @@ namespace FriishProduce
                         }),
 
                     new ToolStripMenuItem(
-                        Language.Get("PlatformGroup_1"), null,
+                        Language.Get("Group1", "Platforms"), null,
                         new ToolStripItem[]
                         {
                             new ToolStripMenuItem(null, new Icon(Properties.Resources.sega_master_system, 16, 16).ToBitmap(), AddProject, Console.SMS.ToString()),
@@ -47,7 +47,7 @@ namespace FriishProduce
                         }),
 
                     new ToolStripMenuItem(
-                        Language.Get("PlatformGroup_2"), null,
+                        Language.Get("Other"), null,
                         new ToolStripItem[]
                         {
                             new ToolStripMenuItem(null, new Icon(Properties.Resources.snk_neo_geo_aes, 16, 16).ToBitmap(), AddProject, Console.NeoGeo.ToString()),
@@ -57,7 +57,7 @@ namespace FriishProduce
 
             foreach (ToolStripMenuItem section in Consoles)
                 foreach (ToolStripMenuItem item in section.DropDownItems.OfType<ToolStripMenuItem>())
-                    item.Text = string.Format(Language.Get("ProjectType"), Language.Get($"Platform_{item.Name}"));
+                    item.Text = string.Format(Language.Get("ProjectType"), Language.Get(item.Name, "Platforms"));
 
             NewProject.DropDownItems.Clear();
             NewProject.DropDownItems.AddRange(Consoles);
@@ -69,7 +69,7 @@ namespace FriishProduce
         private void RefreshForm()
         {
             AutoSetStrip();
-            Language.AutoSetForm(this);
+            Language.Localize(this);
 
             MenuItem_File.Text = Language.Get(MenuItem_File.Name, this);
             MenuItem_Project.Text = Language.Get(MenuItem_Project.Name, this);
@@ -82,14 +82,14 @@ namespace FriishProduce
             ToolStrip_OpenManual.Text = OpenManual.Text = Language.Get(OpenManual.Name, this);
             ToolStrip_UseLibRetro.Text = UseLibRetro.Text = Language.Get(UseLibRetro.Name, this);
             ToolStrip_ExportWAD.Text = ExportWAD.Text = Language.Get(ExportWAD.Name, this);
-            ToolStrip_CloseTab.Text = CloseTab.Text = Language.Get(CloseTab.Name, this);
+            ToolStrip_CloseTab.Text = CloseTab.Text = Language.Get("B.Close");
 
             BrowseROM.Title = OpenROM.Text;
             BrowseImage.Title = OpenImage.Text;
             SaveWAD.Title = ExportWAD.Text;
 
-            BrowseImage.Filter = Language.Get("Filter_Img");
-            SaveWAD.Filter = Language.Get("Filter_WAD");
+            BrowseImage.Filter = Language.Get("Filter.Img");
+            SaveWAD.Filter = Language.Get("Filter.WAD");
 
             Welcome_DoNotShow.Text = Language.Get("DoNotShow");
 
@@ -250,7 +250,7 @@ namespace FriishProduce
             switch (c)
             {
                 default:
-                    BrowseROM.Filter = Language.Get("Filter_Disc") + "|" + Language.Get("Filter_ZIP") + Language.Get("Filter_All");
+                    BrowseROM.Filter = Language.Get("Filter.Disc") + "|" + Language.Get("Filter.ZIP") + Language.Get("Filter");
                     break;
 
                 case Console.NES:
@@ -259,11 +259,11 @@ namespace FriishProduce
                 case Console.SMS:
                 case Console.SMDGEN:
                 case Console.PCE:
-                    BrowseROM.Filter = Language.Get($"Filter_ROM_{c}");
+                    BrowseROM.Filter = Language.Get($"Filter.ROM.{c}");
                     break;
 
                 case Console.NeoGeo:
-                    BrowseROM.Filter = Language.Get("Filter_ZIP");
+                    BrowseROM.Filter = Language.Get("Filter.ZIP");
                     break;
             }
 
@@ -300,7 +300,7 @@ namespace FriishProduce
 
         private void OpenManual_Click(object sender, EventArgs e)
         {
-            if (!Properties.Settings.Default.DoNotShow_000) MessageBox.Show(Language.Get("Message006"), 0);
+            if (!Properties.Settings.Default.DoNotShow_000) MessageBox.Show(Language.Get("Message.006"), 0);
             (tabControl.SelectedForm as InjectorForm).LoadManual(BrowseManual.ShowDialog() == DialogResult.OK ? BrowseManual.SelectedPath : null);
         }
 
