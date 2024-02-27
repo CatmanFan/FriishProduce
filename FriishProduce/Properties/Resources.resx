@@ -280,7 +280,4 @@
   <data name="Database" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\database.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
-  <data name="English" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Strings\en.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
 </root>

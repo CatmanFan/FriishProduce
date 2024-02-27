@@ -120,7 +120,7 @@ namespace FriishProduce.WiiVC
                     // Check if converted file exists
                     // ****************
                     File.Delete(Paths.WorkingFolder + "rom");
-                    if (!File.Exists(Paths.WorkingFolder + "romc")) throw new Exception(Language.Get("Error002"));
+                    if (!File.Exists(Paths.WorkingFolder + "romc")) throw new Exception(Language.Get("Error.002"));
 
                     // Convert to bytes and replace at "romc"
                     // ****************
@@ -214,22 +214,22 @@ namespace FriishProduce.WiiVC
             {
                 if (SettingParse(0))
                 {
-                    if (!ShadingFix()) failed.Add(Language.GetArray("List_N64Options")[0]);
+                    if (!ShadingFix()) failed.Add(Language.GetArray("List.N64Options")[0]);
                 }
 
                 if (SettingParse(1) && (EmuType <= 1))
                 {
-                    if (!CrashesFix()) failed.Add(Language.GetArray("List_N64Options")[1]);
+                    if (!CrashesFix()) failed.Add(Language.GetArray("List.N64Options")[1]);
                 }
 
                 if (SettingParse(2))
                 {
-                    if (!ExtendedRAM()) failed.Add(Language.GetArray("List_N64Options")[2]);
+                    if (!ExtendedRAM()) failed.Add(Language.GetArray("List.N64Options")[2]);
                 }
 
                 if (SettingParse(3) && (EmuType <= 1))
                 {
-                    if (!AllocateROM()) { failed.Add(Language.GetArray("List_N64Options")[3]); Allocate = false; }
+                    if (!AllocateROM()) { failed.Add(Language.GetArray("List.N64Options")[3]); Allocate = false; }
                 }
 
                 if (failed.Count > 0)
@@ -238,7 +238,7 @@ namespace FriishProduce.WiiVC
                     foreach (var item in failed)
                         failedList += "- " + item + Environment.NewLine;
 
-                    System.Windows.Forms.MessageBox.Show(string.Format(Language.Get("Error004"), failedList));
+                    System.Windows.Forms.MessageBox.Show(string.Format(Language.Get("Error.004"), failedList));
                 }
             }
             catch (Exception ex)

@@ -340,5 +340,10 @@ namespace FriishProduce
         private void About_Click(object sender, EventArgs e) => new About().ShowDialog();
 
         private void MenuItem_Exit_Click(object sender, EventArgs e) => Application.Exit();
+
+        private void languageEditorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new LanguageEditor().Show();
+        }
     }
 }

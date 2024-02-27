@@ -36,9 +36,9 @@ namespace FriishProduce
         {
             Language.Localize(this);
             Text = Language.Get("Settings");
-            TreeView.Nodes[1].Nodes[0].Text = Language.Get("Platform_NES");
-            TreeView.Nodes[1].Nodes[1].Text = Language.Get("Platform_N64");
-            TreeView.Nodes[1].Nodes[2].Text = Language.Get("PlatformGroup_1");
+            TreeView.Nodes[1].Nodes[0].Text = Language.Get(Console.NES.ToString());
+            TreeView.Nodes[1].Nodes[1].Text = Language.Get(Console.N64.ToString(), "Platforms");
+            TreeView.Nodes[1].Nodes[2].Text = Language.Get("Group1", "Platforms");
             TreeView.SelectedNode = TreeView.Nodes[0];
 
             // -----------------------------
@@ -48,7 +48,7 @@ namespace FriishProduce
 
             DefaultImageInterpolation.Items.Clear();
             DefaultImageInterpolation.Items.Add(Language.Get("ByDefault"));
-            DefaultImageInterpolation.Items.AddRange(Language.GetArray("List_ImageInterpolation"));
+            DefaultImageInterpolation.Items.AddRange(Language.GetArray("List.ImageInterpolation"));
             DefaultImageInterpolation.SelectedIndex = Default.ImageInterpolation;
 
             AutoLibRetro.Checked = Default.AutoLibRetro;
@@ -119,7 +119,7 @@ namespace FriishProduce
             // -------------------------------------------
             if (isDirty)
             {
-                if (MessageBox.Show(Language.Get("Message000"), ProductName, MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show(Language.Get("Message.000"), ProductName, MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     Default.Save();
                     Application.Restart();

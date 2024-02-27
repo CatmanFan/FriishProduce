@@ -530,7 +530,7 @@ namespace FriishProduce
             }
             catch
             {
-                throw new Exception(Language.Get("Error002"));
+                throw new Exception(Language.Get("Error.002"));
             }
 
             // Cleanup

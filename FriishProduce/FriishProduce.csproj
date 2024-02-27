@@ -135,6 +135,12 @@
     <Compile Include="BannerPreviewForm.Designer.cs">
       <DependentUpon>BannerPreviewForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="LanguageEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LanguageEditor.Designer.cs">
+      <DependentUpon>LanguageEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -153,6 +159,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BannerPreviewForm.resx">
       <DependentUpon>BannerPreviewForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LanguageEditor.resx">
+      <DependentUpon>LanguageEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

@@ -25,8 +25,8 @@ namespace FriishProduce
             }
         }
 
-        private static XmlNode EnglishXML { get; set; }
-        private static XmlNode XML { get; set; }
+        public static XmlNode EnglishXML { get; private set; }
+        public static XmlNode XML { get; private set; }
 
 
         private static SortedDictionary<string, string> _list;
@@ -222,9 +222,11 @@ namespace FriishProduce
                 foreach (XmlNode item in section.ChildNodes)
                     if (item.Name == name)
                     {
-                        if (item.InnerText.StartsWith("\r\n")) return item.InnerText.Substring(2, 0).Replace('\t', '\0');
-                        else if (item.InnerText.StartsWith("\n")) return item.InnerText.Substring(1, 0).Replace('\t', '\0');
-                        else return item.InnerText.Replace('\t', '\0');
+                        string returned = item.InnerText.Replace("\t", "");
+
+                        if (item.InnerText.StartsWith("\r\n")) return returned.Substring(2).Trim();
+                        else if (item.InnerText.StartsWith("\n")) return returned.Substring(1).Trim();
+                        else return returned.Trim();
                     }
 
             if (!useEnglish)
@@ -317,7 +319,6 @@ namespace FriishProduce
                     }
                 }
             }
-
 
             if (!string.IsNullOrWhiteSpace(x.Name) && Get(x.Name, parent) != "undefined")
                 x.Text = Get(x.Name, parent);

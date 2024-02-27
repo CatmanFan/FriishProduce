@@ -56,7 +56,7 @@ namespace FriishProduce.WiiVC
                     Paths.WorkingFolder,
                     "/cr LZ77orig.rom rom LZ77out.rom"
                 );
-                if (!File.Exists(Paths.WorkingFolder + "LZ77out.rom")) throw new Exception(Language.Get("Error002"));
+                if (!File.Exists(Paths.WorkingFolder + "LZ77out.rom")) throw new Exception(Language.Get("Error.002"));
 
                 MainContent.ReplaceFile(MainContent.GetNodeIndex(Target), Paths.WorkingFolder + "LZ77out.rom");
 

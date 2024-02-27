@@ -14,13 +14,13 @@ namespace FriishProduce
         public About()
         {
             InitializeComponent();
-            this.Text = string.Format(Language.Get("About"), Language.Get("_AppTitle"));
+            this.Text = string.Format(Language.Get("About"), Language.Get("AppTitle"));
             this.labelProductName.Text = AssemblyProduct;
             this.labelVersion.Text = string.Format("v{0}", AssemblyVersion);
             this.labelCopyright.Text = AssemblyCopyright;
             this.labelCompanyName.Text = AssemblyCompany;
             this.textBoxDescription.Text = AssemblyDescription;
-            okButton.Text = Language.Get("Button_Close");
+            okButton.Text = Language.Get("B.Close");
         }
 
         #region Assembly Attribute Accessors

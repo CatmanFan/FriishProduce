@@ -219,32 +219,6 @@ namespace FriishProduce.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
-        ///&lt;language&gt;
-        ///	&lt;Metadata&gt;
-        ///		&lt;Author&gt;CatmanFan&lt;/Author&gt;
-        ///		&lt;AppTitle&gt;FriishProduce&lt;/AppTitle&gt;
-        ///	&lt;/Metadata&gt;
-        ///
-        ///	&lt;Platforms&gt;
-        ///		&lt;PlatformGroup0&gt;Nintendo&lt;/PlatformGroup0&gt;
-        ///		&lt;PlatformGroup1&gt;SEGA&lt;/PlatformGroup1&gt;
-        ///		&lt;C64&gt;Commodore 64&lt;/C64&gt;
-        ///		&lt;Flash&gt;Macromedia/Adobe Flash&lt;/Flash&gt;
-        ///		&lt;GBA&gt;Game Boy Advance&lt;/GBA&gt;
-        ///		&lt;MSX&gt;Microsoft MSX/MSX2&lt;/MSX&gt;
-        ///		&lt;N64&gt;Nintendo 64&lt;/N64&gt;
-        ///		&lt;NeoGeo&gt;SNK NEO-GEO&lt;/NeoGeo&gt;
-        ///		&lt;PCE&gt;TurboGrafx-16/PC Engine&lt;/PCE&gt;
-        ///		&lt;PCECD&gt;TurboGrafx-16 CD/PC Engin [rest of string was truncated]&quot;;.
-        /// </summary>
-        public static string English {
-            get {
-                return ResourceManager.GetString("English", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap flag_eu {

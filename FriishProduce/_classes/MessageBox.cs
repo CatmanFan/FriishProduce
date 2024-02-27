@@ -14,7 +14,7 @@ namespace FriishProduce
         {
             using (TaskDialog t = new TaskDialog()
             {
-                WindowTitle = Language.Get("_AppTitle"),
+                WindowTitle = Language.Get("AppTitle"),
                 MainInstruction = mainText,
                 Content = description,
                 ButtonStyle = isLinkStyle ? TaskDialogButtonStyle.CommandLinks : TaskDialogButtonStyle.Standard,
@@ -33,10 +33,10 @@ namespace FriishProduce
                     t.Content = string.Join("\n", secondary.ToArray());
                 }
 
-                var O = new TaskDialogButton { Text = Language.Get("Button_OK") };
-                var C = new TaskDialogButton { Text = Language.Get("Button_Cancel") };
-                var Y = new TaskDialogButton { Text = Language.Get("Button_Yes") };
-                var N = new TaskDialogButton { Text = Language.Get("Button_No") };
+                var O = new TaskDialogButton { Text = Language.Get("B.OK") };
+                var C = new TaskDialogButton { Text = Language.Get("B.Cancel") };
+                var Y = new TaskDialogButton { Text = Language.Get("B.Yes") };
+                var N = new TaskDialogButton { Text = Language.Get("B.No") };
 
                 switch (buttons)
                 {
@@ -80,9 +80,9 @@ namespace FriishProduce
 
                 if (t.IsVerificationChecked && dontShow >= 0) { Properties.Settings.Default[$"DoNotShow_{dontShow:000}"] = true; Properties.Settings.Default.Save(); }
 
-                if (text == Language.Get("Button_Cancel")) return DialogResult.Cancel;
-                if (text == Language.Get("Button_Yes")) return DialogResult.Yes;
-                if (text == Language.Get("Button_No")) return DialogResult.No;
+                if (text == Language.Get("B.Cancel")) return DialogResult.Cancel;
+                if (text == Language.Get("B.Yes")) return DialogResult.Yes;
+                if (text == Language.Get("B.No")) return DialogResult.No;
                 return DialogResult.OK;
             }
         }

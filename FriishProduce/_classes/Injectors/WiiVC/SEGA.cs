@@ -109,7 +109,7 @@ namespace FriishProduce.WiiVC
                (File.Exists(Paths.DataCCF + "Opera.arc") && File.ReadAllBytes(Paths.DataCCF + "Opera.arc").Length == 0)))
             {
                 if (CCFApp != 1) { CCFApp = 1; goto RunApp; }
-                else throw new Exception(Language.Get("Error002"));
+                else throw new Exception(Language.Get("Error.002"));
             }
 
             // Get Misc.ccf
@@ -295,7 +295,7 @@ namespace FriishProduce.WiiVC
             // If not data.ccf or already using legacy app, there is no other option
             // ****************
             if (type < 2) throw new InvalidOperationException();
-            else if (type >= 3 && Failsafe) throw new Exception(Language.Get("Error002"));
+            else if (type >= 3 && Failsafe) throw new Exception(Language.Get("Error.002"));
 
             // Start application
             // ****************
@@ -317,7 +317,7 @@ namespace FriishProduce.WiiVC
             }
 
             if (!Failsafe) { Failsafe = true; goto RunApp; }
-            else throw new Exception(Language.Get("Error002"));
+            else throw new Exception(Language.Get("Error.002"));
         }
         #endregion
 
