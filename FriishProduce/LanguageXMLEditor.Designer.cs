@@ -31,12 +31,16 @@ namespace FriishProduce
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LanguageXMLEditor));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LanguageXMLEditor));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.SECTION = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.STRING = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TRANS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -48,10 +52,6 @@ namespace FriishProduce
             this.button5 = new System.Windows.Forms.Button();
             this.Cancel = new System.Windows.Forms.Button();
             this.SaveAs = new System.Windows.Forms.SaveFileDialog();
-            this.SECTION = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.STRING = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TRANS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.bottomPanel2.SuspendLayout();
             this.bottomPanel1.SuspendLayout();
@@ -95,6 +95,47 @@ namespace FriishProduce
             this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
             this.dataGridView1.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView1_RowsAdded);
+            // 
+            // SECTION
+            // 
+            this.SECTION.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 6.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SECTION.DefaultCellStyle = dataGridViewCellStyle1;
+            this.SECTION.HeaderText = "Section";
+            this.SECTION.MinimumWidth = 100;
+            this.SECTION.Name = "SECTION";
+            this.SECTION.ReadOnly = true;
+            // 
+            // ID
+            // 
+            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 6.75F, System.Drawing.FontStyle.Bold);
+            this.ID.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ID.HeaderText = "ID";
+            this.ID.MinimumWidth = 100;
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            // 
+            // STRING
+            // 
+            this.STRING.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.STRING.DefaultCellStyle = dataGridViewCellStyle3;
+            this.STRING.HeaderText = "Original";
+            this.STRING.MinimumWidth = 420;
+            this.STRING.Name = "STRING";
+            this.STRING.ReadOnly = true;
+            this.STRING.Width = 420;
+            // 
+            // TRANS
+            // 
+            this.TRANS.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TRANS.DefaultCellStyle = dataGridViewCellStyle4;
+            this.TRANS.HeaderText = "Translated";
+            this.TRANS.Name = "TRANS";
             // 
             // comboBox1
             // 
@@ -225,51 +266,10 @@ namespace FriishProduce
             this.SaveAs.DefaultExt = "xml";
             this.SaveAs.Filter = "XML|*.xml";
             // 
-            // SECTION
-            // 
-            this.SECTION.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 6.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SECTION.DefaultCellStyle = dataGridViewCellStyle1;
-            this.SECTION.HeaderText = "Section";
-            this.SECTION.MinimumWidth = 100;
-            this.SECTION.Name = "SECTION";
-            this.SECTION.ReadOnly = true;
-            // 
-            // ID
-            // 
-            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 6.75F, System.Drawing.FontStyle.Bold);
-            this.ID.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ID.HeaderText = "ID";
-            this.ID.MinimumWidth = 100;
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            // 
-            // STRING
-            // 
-            this.STRING.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.STRING.DefaultCellStyle = dataGridViewCellStyle3;
-            this.STRING.HeaderText = "Original";
-            this.STRING.MinimumWidth = 420;
-            this.STRING.Name = "STRING";
-            this.STRING.ReadOnly = true;
-            this.STRING.Width = 420;
-            // 
-            // TRANS
-            // 
-            this.TRANS.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TRANS.DefaultCellStyle = dataGridViewCellStyle4;
-            this.TRANS.HeaderText = "Translated";
-            this.TRANS.Name = "TRANS";
-            // 
             // LanguageXMLEditor
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(1059, 462);
             this.Controls.Add(this.bottomPanel2);
             this.Controls.Add(this.label1);
