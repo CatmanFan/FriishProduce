@@ -782,13 +782,15 @@ namespace FriishProduce
 
 
             int start = tempList.IndexOf(Base.SelectedItem.ToString());
-            int end = start == Database.Length - 1 ? Database.Length : start;
+            int end = start == Database.Length - 1 ? Database.Length : -1;
 
             for (int x = start; x < Database.Length; x++)
             {
-                if (Database[x].TitleID.Substring(0, 3) != Database[start].TitleID.Substring(0, 3) && end == start)
+                if (Database[x].TitleID.Substring(0, 3) != Database[start].TitleID.Substring(0, 3) && end == -1)
                     end = x;
             }
+
+            if (end == -1) end = Database.Length;
 
             // Add regions to WAD region context list
             // ********

@@ -113,26 +113,24 @@ namespace FriishProduce
 
             switch (Region())
             {
-                case 'E':
-                case 'N':
+                case 0:
                     reg = " (USA)";
                     break;
 
-                case 'P':
-                case 'L': // Japanese import
-                case 'M': // American import
+                case 1:
+                case 2:
                     reg = " (Europe)";
                     break;
 
-                case 'J':
+                case 3:
                     reg = " (Japan)";
                     break;
 
-                case 'Q':
+                case 4:
                     reg = " (Korea) (Ja,Ko)";
                     break;
 
-                case 'T':
+                case 5:
                     reg = " (Korea) (En,Ko)";
                     break;
             }

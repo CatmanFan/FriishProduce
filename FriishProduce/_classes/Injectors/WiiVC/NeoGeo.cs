@@ -41,7 +41,7 @@ namespace FriishProduce.WiiVC
             if (Contents.Count >= 7) ManualIndex = U8.Load(WAD.Contents[5]);
             ReplaceManual(Contents.Count >= 7 ? ManualIndex : MainContent);
 
-            ZIP = ZipFile.Read(new MemoryStream(ROM.Bytes));
+            ZIP = ZipFile.Read(new MemoryStream(File.ReadAllBytes(ROM.Path)));
         }
 
         /// <summary>
