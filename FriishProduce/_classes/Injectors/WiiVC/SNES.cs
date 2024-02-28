@@ -75,7 +75,7 @@ namespace FriishProduce.WiiVC
             }
         }
 
-        protected override void ReplaceSaveData(string[] lines, TitleImage tImg)
+        protected override void ReplaceSaveData(string[] lines, ImageHelper Img)
         {
             // -----------------------
             // TEXT
@@ -126,7 +126,7 @@ namespace FriishProduce.WiiVC
             // IMAGE
             // -----------------------
 
-            MainContent.ReplaceFile(MainContent.GetNodeIndex("banner.tpl"), tImg.CreateSaveTPL(Console.SNES, MainContent.Data[MainContent.GetNodeIndex("banner.tpl")]).ToByteArray());
+            MainContent.ReplaceFile(MainContent.GetNodeIndex("banner.tpl"), Img.CreateSaveTPL(Console.SNES, MainContent.Data[MainContent.GetNodeIndex("banner.tpl")]).ToByteArray());
         }
 
         /// <summary>

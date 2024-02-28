@@ -34,7 +34,7 @@ namespace FriishProduce
             this.AutoOpenFolder = new System.Windows.Forms.CheckBox();
             this.LanguageList = new System.Windows.Forms.ComboBox();
             this.AutoLibRetro = new System.Windows.Forms.CheckBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.n64003 = new System.Windows.Forms.CheckBox();
             this.n64002 = new System.Windows.Forms.CheckBox();
             this.n64001 = new System.Windows.Forms.CheckBox();
@@ -49,20 +49,20 @@ namespace FriishProduce
             this.TreeView = new System.Windows.Forms.TreeView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.leftSeparator = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.GroupBox();
-            this.groupBox1.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.n64004.SuspendLayout();
             this.bottomPanel1.SuspendLayout();
             this.bottomPanel2.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.label1.SuspendLayout();
-            this.label2.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // DefaultImageInterpolation
@@ -96,15 +96,15 @@ namespace FriishProduce
             this.AutoLibRetro.Name = "AutoLibRetro";
             this.AutoLibRetro.UseVisualStyleBackColor = true;
             // 
-            // groupBox1
+            // groupBox3
             // 
-            this.groupBox1.Controls.Add(this.n64003);
-            this.groupBox1.Controls.Add(this.n64002);
-            this.groupBox1.Controls.Add(this.n64001);
-            this.groupBox1.Controls.Add(this.n64000);
-            resources.ApplyResources(this.groupBox1, "groupBox1");
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.TabStop = false;
+            this.groupBox3.Controls.Add(this.n64003);
+            this.groupBox3.Controls.Add(this.n64002);
+            this.groupBox3.Controls.Add(this.n64001);
+            this.groupBox3.Controls.Add(this.n64000);
+            resources.ApplyResources(this.groupBox3, "groupBox3");
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.TabStop = false;
             // 
             // n64003
             // 
@@ -198,7 +198,7 @@ namespace FriishProduce
             // 
             this.panel1.Controls.Add(this.checkBox1);
             this.panel1.Controls.Add(this.AutoOpenFolder);
-            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.groupBox1);
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
             // 
@@ -208,39 +208,39 @@ namespace FriishProduce
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.LanguageList);
+            resources.ApplyResources(this.groupBox1, "groupBox1");
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.TabStop = false;
+            // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.groupBox1);
+            this.panel4.Controls.Add(this.groupBox3);
             this.panel4.Controls.Add(this.n64004);
             resources.ApplyResources(this.panel4, "panel4");
             this.panel4.Name = "panel4";
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.groupBox2);
             this.panel2.Controls.Add(this.AutoLibRetro);
             resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.DefaultImageInterpolation);
+            resources.ApplyResources(this.groupBox2, "groupBox2");
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.TabStop = false;
             // 
             // leftSeparator
             // 
             this.leftSeparator.BackColor = System.Drawing.SystemColors.ControlDark;
             resources.ApplyResources(this.leftSeparator, "leftSeparator");
             this.leftSeparator.Name = "leftSeparator";
-            // 
-            // label1
-            // 
-            this.label1.Controls.Add(this.LanguageList);
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
-            this.label1.TabStop = false;
-            // 
-            // label2
-            // 
-            this.label2.Controls.Add(this.DefaultImageInterpolation);
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
-            this.label2.TabStop = false;
             // 
             // SettingsForm
             // 
@@ -252,9 +252,9 @@ namespace FriishProduce
             this.Controls.Add(this.bottomPanel2);
             this.Controls.Add(this.leftSeparator);
             this.Controls.Add(this.TreeView);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel4);
+            this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MaximizeBox = false;
@@ -264,18 +264,18 @@ namespace FriishProduce
             this.ShowInTaskbar = false;
             this.Load += new System.EventHandler(this.Loading);
             this.Shown += new System.EventHandler(this.Loading);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.n64004.ResumeLayout(false);
             this.bottomPanel1.ResumeLayout(false);
             this.bottomPanel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.label1.ResumeLayout(false);
-            this.label2.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -289,7 +289,7 @@ namespace FriishProduce
         private System.Windows.Forms.CheckBox AutoLibRetro;
         private System.Windows.Forms.ComboBox LanguageList;
         private System.Windows.Forms.CheckBox AutoOpenFolder;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.CheckBox n64003;
         private System.Windows.Forms.CheckBox n64002;
         private System.Windows.Forms.CheckBox n64001;
@@ -303,7 +303,7 @@ namespace FriishProduce
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel leftSeparator;
         private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.GroupBox label1;
-        private System.Windows.Forms.GroupBox label2;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
     }
 }

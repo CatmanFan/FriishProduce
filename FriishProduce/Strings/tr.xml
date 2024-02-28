@@ -66,8 +66,8 @@
 		<groupBox1.Text>Parlaklık</groupBox1.Text>
 	</form>
 	<form name="SettingsForm">
-		<label1.Text>Dil</label1.Text>
-		<label2.Text>Resim enterpolasyonu</label2.Text>
+		<groupBox1.Text>Dil</groupBox1.Text>
+		<groupBox2.Text>Resim enterpolasyonu</groupBox2.Text>
 		<LanguageList.Items>Sistem dili</LanguageList.Items>
 		<Node0.Text>Uygulama</Node0.Text>
 		<Node1.Text>Varsayılan ayarları</Node1.Text>

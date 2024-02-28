@@ -293,13 +293,15 @@ namespace FriishProduce
             BannerPreview_Text.ForeColor = BannerPreview_Main.BackColor.GetBrightness() < 0.8 ? Color.White : Color.Black;
 
             if (target == 2) BannerPreview_Year.ForeColor = BannerPreview_Players.ForeColor = Color.Black;
-            if (target == 8) BannerPreview_Year.ForeColor = BannerPreview_Players.ForeColor = Color.FromArgb(90, 90, 90);
+            else if (target == 8) BannerPreview_Year.ForeColor = BannerPreview_Players.ForeColor = Color.FromArgb(90, 90, 90);
             else BannerPreview_Year.ForeColor = BannerPreview_Players.ForeColor = BannerPreview_Text.ForeColor;
+
+            if (target == 4) BannerPreview_Text.ForeColor = Color.White;
 
             bmp = new Bitmap(BannerPreview_Gradient.Width, BannerPreview_Gradient.Height);
 
             using (Graphics g = Graphics.FromImage(bmp))
-            using (LinearGradientBrush b = new LinearGradientBrush(new Point(0, -10), new Point(0, (int)Math.Round(bmp.Height * 1.5)), ColorSchemes[target][0], ColorSchemes[target][2]))
+            using (LinearGradientBrush b = new LinearGradientBrush(new Point(0, -35), new Point(0, (int)Math.Round(bmp.Height * 1.6)), ColorSchemes[target][0], ColorSchemes[target][2]))
             {
                 g.FillRectangle(b, 0, 0, bmp.Width, bmp.Height * 2);
                 BannerPreview_Gradient.Image = bmp;

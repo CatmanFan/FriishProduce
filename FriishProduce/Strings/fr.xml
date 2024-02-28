@@ -126,8 +126,8 @@
 	<form name="SettingsForm">
 		<AutoLibRetro.Text>Remplir automatiquement dès LibRetro</AutoLibRetro.Text>
 		<AutoOpenFolder.Text>Ouvrir le dossier de sortie après l'exportation du fichier WAD</AutoOpenFolder.Text>
-		<label1.Text>Langue</label1.Text>
-		<label2.Text>Méthode d'interpolation des images</label2.Text>
+		<groupBox1.Text>Langue</groupBox1.Text>
+		<groupBox2.Text>Méthode d'interpolation des images</groupBox2.Text>
 		<LanguageList.Items>Système</LanguageList.Items>
 		<Node0.Text>Application</Node0.Text>
 		<Node1.Text>Réglages par défaut</Node1.Text>

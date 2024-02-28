@@ -205,7 +205,7 @@ namespace FriishProduce.WiiVC
         /// </summary>
         /// <param name="lines">Text string array</param>
         /// <param name="tImg">Input title image</param>
-        protected override void ReplaceSaveData(string[] lines, TitleImage tImg)
+        protected override void ReplaceSaveData(string[] lines, ImageHelper Img)
         {
             // -----------------------
             // TEXT
@@ -271,7 +271,7 @@ namespace FriishProduce.WiiVC
                 // ----------------------------------------------------------------
                 // Replace TPL
                 // ----------------------------------------------------------------
-                var TPLnew = tImg.CreateSaveTPL(Console.NES, TPL).ToByteArray();
+                var TPLnew = Img.CreateSaveTPL(Console.NES, TPL).ToByteArray();
 
                 for (int i = saveTPL_offsets[0]; i < saveTPL_offsets[1]; i++)
                     Contents[1][i] = TPLnew[i - saveTPL_offsets[0]];

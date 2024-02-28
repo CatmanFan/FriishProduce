@@ -41,12 +41,21 @@ namespace FriishProduce
 
         public static byte[] Get(string URL)
         {
-            using (WebClient x = new WebClient())
-            using (Stream webS = x.OpenRead(URL))
+            // Actual web connection is done here
             using (MemoryStream ms = new MemoryStream())
+            using (WebClient x = new WebClient())
             {
-                webS.CopyTo(ms); // Actual web connection is done here
+                if (Task.WaitAny
+                    (new Task[]{Task.Run(() =>
+                        {
+                            Stream webS = x.OpenRead(URL);
+                            try { webS.CopyTo(ms); return ms; } catch { return null; }
+                        }
+                    )}, 100 * 1000) == -1)
+                    throw new TimeoutException();
+
                 if (ms.ToArray().Length > 75) return ms.ToArray();
+
                 throw new WebException();
             }
         }

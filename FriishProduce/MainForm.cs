@@ -21,6 +21,8 @@ namespace FriishProduce
 
         private void AutoSetStrip()
         {
+            Text = Language.Get("AppTitle");
+
             foreach (ToolStripMenuItem section in MenuStrip.Items.OfType<ToolStripMenuItem>())
                 foreach (ToolStripItem item in section.DropDownItems.OfType<ToolStripItem>())
                     if (Language.Get(item.Name, this) != "undefined") item.Text = Language.Get(item.Name, this);
@@ -100,7 +102,7 @@ namespace FriishProduce
             }
 
             CustomToolStripRenderer r = new CustomToolStripRenderer() { RoundedEdges = false };
-            /* MenuStrip.Renderer = */ ToolStrip.Renderer = r;
+            MenuStrip.Renderer = ToolStrip.Renderer = r;
             Refresh();
         }
 
@@ -110,7 +112,7 @@ namespace FriishProduce
 
             protected override void OnRenderToolStripBackground(ToolStripRenderEventArgs e)
             {
-                using (LinearGradientBrush b = new LinearGradientBrush(e.AffectedBounds, Color.WhiteSmoke, Color.White, LinearGradientMode.Vertical))
+                using (LinearGradientBrush b = new LinearGradientBrush(e.AffectedBounds, Color.White, Color.WhiteSmoke, LinearGradientMode.Vertical))
                     e.Graphics.FillRectangle(b, b.Rectangle);
             }
         }
@@ -343,7 +345,7 @@ namespace FriishProduce
 
         private void LanguageXMLEditor_Click(object sender, EventArgs e)
         {
-            var x = new LanguageXMLEditor();
+            var x = new LanguageXMLEditor() { Icon = (sender as ToolStripMenuItem).Image != null ? Icon.FromHandle(((sender as ToolStripMenuItem).Image as Bitmap).GetHicon()) : null };
             System.Threading.Thread.Sleep(750);
             x.ShowDialog();
             RefreshForm();

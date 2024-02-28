@@ -28,12 +28,12 @@ namespace FriishProduce
 
         public Creator(Console c) { Console = c; }
 
-        public void MakeWAD(WAD w, TitleImage tImg)
+        public void MakeWAD(WAD w, ImageHelper Img)
         {
             // Banner metadata
             w.ChangeChannelTitles(ChannelTitles);
             Banner.EditBanner(w, Console, w.Region, BannerTitle, BannerYear, BannerPlayers);
-            if (tImg.VCPic != null) tImg.ReplaceBanner(w);
+            if (Img.VCPic != null) Img.ReplaceBanner(w);
 
             // WAD metadata
             w.ChangeTitleID(LowerTitleID.Channel, TitleID.ToUpper());

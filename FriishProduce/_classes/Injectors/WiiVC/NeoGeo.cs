@@ -345,7 +345,7 @@ namespace FriishProduce.WiiVC
             // ------------------------- //
         }
 
-        protected override void ReplaceSaveData(string[] lines, TitleImage tImg)
+        protected override void ReplaceSaveData(string[] lines, ImageHelper Img)
         {
             // -----------------------
             // TEXT
@@ -393,19 +393,18 @@ namespace FriishProduce.WiiVC
                                       0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x30, 0x00, 0x30, 0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0xDF, 0xA0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
                                       0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
 
-            var tpl = new List<byte>();
+            var placeholder = new List<byte>();
 
             // Create TPL byte array
             // ****************
-            tpl.AddRange(header);
-            tpl.AddRange(contents.Skip(160).Take(contents.Length - 160));
+            placeholder.AddRange(header);
+            placeholder.AddRange(contents.Skip(160).Take(contents.Length - 160).ToArray());
 
             // Inject new TPL
+            // ___________________
+            // There seems to be a bug where the savedata icon is saved as a TPL, but does not display correctly after being injected into the banner.bin (i.e. glitched on Wii Menu Save Data Management)
             // ****************
-            var newTPL = tImg.CreateSaveTPL(Console.NeoGeo, MainContent.Data[MainContent.GetNodeIndex("banner.tpl")]).ToByteArray();
-
-            for (int i = 0; i < contents.Length - 160; i++)
-                contents[i + 160] = newTPL[i + 416];
+            Img.CreateSaveTPL(Console.NeoGeo, placeholder.ToArray()).ToByteArray().Skip(header.Length).ToArray().CopyTo(contents, 160);
 
             // Replace original savebanner
             // ****************

@@ -353,7 +353,7 @@ namespace FriishProduce.WiiVC
                     File.WriteAllBytes(item, ROM.Bytes);
         }
 
-        protected override void ReplaceSaveData(string[] lines, TitleImage tImg)
+        protected override void ReplaceSaveData(string[] lines, ImageHelper Img)
         {
             // -----------------------
             // COMMENT
@@ -396,7 +396,7 @@ namespace FriishProduce.WiiVC
             // IMAGE
             // -----------------------
 
-            tImg.ReplaceSaveWTE();
+            Img.ReplaceSaveWTE();
         }
 
         protected override void ModifyEmulatorSettings()

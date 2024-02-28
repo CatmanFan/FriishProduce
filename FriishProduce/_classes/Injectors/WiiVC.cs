@@ -220,7 +220,7 @@ namespace FriishProduce
             return WAD;
         }
 
-        public WAD Inject(ROM ROM, string[] SaveDataTitle, TitleImage Img)
+        public WAD Inject(ROM ROM, string[] SaveDataTitle, ImageHelper Img)
         {
             this.ROM = ROM;
 
@@ -233,7 +233,7 @@ namespace FriishProduce
 
         protected abstract void ReplaceROM();
 
-        protected abstract void ReplaceSaveData(string[] lines, TitleImage tImg);
+        protected abstract void ReplaceSaveData(string[] lines, ImageHelper Img);
 
         protected abstract void ModifyEmulatorSettings();
 

@@ -1,9 +1,7 @@
 name: Upload to Crowdin
 
 on:
-  push:
-    paths: [ 'FriishProduce/Strings/**' ]
-    branches: [ main ]
+  workflow-dispatch:
     
 jobs:
   crowdin:

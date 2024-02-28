@@ -255,7 +255,7 @@
     <Compile Include="_classes\LibRetroDB.cs" />
     <Compile Include="_classes\Paths.cs" />
     <Compile Include="_classes\ROM.cs" />
-    <Compile Include="_classes\TitleImage.cs" />
+    <Compile Include="_classes\ImageHelper.cs" />
     <Compile Include="_classes\Banner.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -309,6 +309,7 @@
   <ItemGroup>
     <Content Include="Database.xml" />
     <Content Include="icon.ico" />
+    <None Include="Resources\icons\globe-model.png" />
     <EmbeddedResource Include="Strings\en.xml" />
     <None Include="Resources\icons\mr-saturn.png" />
     <None Include="Resources\icons\smw_question-block.png" />

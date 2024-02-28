@@ -34,7 +34,7 @@ namespace FriishProduce
         protected LibRetroDB                    LibRetro    { get; set; }
         protected DatabaseEntry[]               Database    { get; set; }
         protected IDictionary<string, string>   CurrentBase { get; set; }
-        protected TitleImage                    tImg        { get; set; }
+        protected ImageHelper                   Img        { get; set; }
         protected Creator                       Creator     { get; set; }
 
         protected InjectorWiiVC                 VC       { get; set; }
@@ -67,7 +67,7 @@ namespace FriishProduce
             Text = string.IsNullOrWhiteSpace(ChannelTitle.Text) ? Untitled : ChannelTitle.Text;
 
             SetROMDataText();
-            bannerPreview1.Update(Console, BannerTitle.Text, (int)ReleaseYear.Value, (int)Players.Value, tImg?.VCPic, Creator.isJapan ? 1 : Creator.isKorea ? 2 : 0);
+            bannerPreview1.Update(Console, BannerTitle.Text, (int)ReleaseYear.Value, (int)Players.Value, Img?.VCPic, Creator.isJapan ? 1 : Creator.isKorea ? 2 : 0);
 
             var baseMax = Math.Max(label4.Location.X + label4.Width - 4, label5.Location.X + label5.Width - 4);
             baseName.Location = new Point(baseMax, label4.Location.Y);
@@ -181,14 +181,14 @@ namespace FriishProduce
                 SaveDataTitle.Lines;
 
             SetROMDataText();
-            bannerPreview1.Update(Console, BannerTitle.Text, (int)ReleaseYear.Value, (int)Players.Value, tImg?.VCPic, Creator.isJapan ? 1 : Creator.isKorea ? 2 : 0);
+            bannerPreview1.Update(Console, BannerTitle.Text, (int)ReleaseYear.Value, (int)Players.Value, Img?.VCPic, Creator.isJapan ? 1 : Creator.isKorea ? 2 : 0);
             button1.Enabled = CO != null;
 
             ReadyToExport =    !string.IsNullOrEmpty(Creator.TitleID) && Creator.TitleID.Length == 4
                             && !string.IsNullOrWhiteSpace(ChannelTitle.Text)
                             && !string.IsNullOrEmpty(Creator.BannerTitle)
                             && !string.IsNullOrEmpty(Creator.SaveDataTitle[0])
-                            && (tImg != null)
+                            && (Img != null)
                             && (ROM != null && ROM?.Path != null);
             Tag = "dirty";
             ExportCheck.Invoke(this, EventArgs.Empty);
@@ -314,7 +314,7 @@ namespace FriishProduce
             // ----------------------------
 
             if (imageintpl.SelectedIndex != Properties.Settings.Default.ImageInterpolation) Tag = "dirty";
-            if (Creator != null && tImg != null) LoadImage();
+            if (Creator != null && Img != null) LoadImage();
         }
 
         private void SwitchAspectRatio(object sender, EventArgs e)
@@ -335,7 +335,7 @@ namespace FriishProduce
                 radioButton1.Checked = !radioButton2.Checked;
             }
 
-            if (Creator != null && tImg != null) LoadImage();
+            if (Creator != null && Img != null) LoadImage();
         }
 
         #region Load Data Functions
@@ -409,19 +409,19 @@ namespace FriishProduce
 
         public void LoadImage()
         {
-            if (tImg != null) LoadImage(tImg.Source);
+            if (Img != null) LoadImage(Img.Source);
             else CheckExport();
         }
 
         public void LoadImage(string path)
         {
-            if (tImg != null) oldImgPath = newImgPath;
+            if (Img != null) oldImgPath = newImgPath;
             newImgPath = path;
 
-            if (tImg == null) tImg = new TitleImage(Console, path);
-            else tImg.Create(Console, path);
+            if (Img == null) Img = new ImageHelper(Console, path);
+            else Img.Create(Console, path);
 
-            LoadImage(tImg.Source);
+            LoadImage(Img.Source);
         }
 
         public bool LoadImage(Bitmap src)
@@ -430,8 +430,8 @@ namespace FriishProduce
             {
                 Bitmap img = (Bitmap)src.Clone();
 
-                tImg.Interpolation = (InterpolationMode)imageintpl.SelectedIndex;
-                tImg.FitAspectRatio = radioButton2.Checked;
+                Img.Interpolation = (InterpolationMode)imageintpl.SelectedIndex;
+                Img.FitAspectRatio = radioButton2.Checked;
 
                 // Additionally edit image before generating files, e.g. with modification of image palette/brightness, used only for images with exact resolution of original screen size
                 // ********
@@ -441,7 +441,7 @@ namespace FriishProduce
                         break;
 
                     case Console.NES:
-                        if (src.Width == 256 && (src.Height == 224 || src.Height == 240) && CO.Settings != null && CO.Settings["use_tImg"] == "1")
+                        if (src.Width == 256 && (src.Height == 224 || src.Height == 240) && CO.Settings != null && CO.Settings["use_Img"] == "1")
                         {
                             var CO_NES = CO as Options_VC_NES;
 
@@ -457,12 +457,12 @@ namespace FriishProduce
                         break;
                 }
 
-                tImg.Generate(img);
+                Img.Generate(img);
                 img.Dispose();
 
-                if (tImg.Source != null)
+                if (Img.Source != null)
                 {
-                    SaveIcon_Panel.BackgroundImage = tImg.SaveIcon();
+                    SaveIcon_Panel.BackgroundImage = Img.SaveIcon();
                 }
 
                 CheckExport();
@@ -701,7 +701,7 @@ namespace FriishProduce
 
             // Actually inject everything
             // *******
-            Creator.MakeWAD(VC.Inject(ROM, Creator.SaveDataTitle, tImg), tImg);
+            Creator.MakeWAD(VC.Inject(ROM, Creator.SaveDataTitle, Img), Img);
         }
         #endregion
 
@@ -991,7 +991,7 @@ namespace FriishProduce
 
             End:
             UpdateBaseConsole(index);
-            bannerPreview1.Update(Console, BannerTitle.Text, (int)ReleaseYear.Value, (int)Players.Value, tImg?.VCPic, Creator.isJapan ? 1 : Creator.isKorea ? 2 : 0);
+            bannerPreview1.Update(Console, BannerTitle.Text, (int)ReleaseYear.Value, (int)Players.Value, Img?.VCPic, Creator.isJapan ? 1 : Creator.isKorea ? 2 : 0);
         }
 
         /// <summary>

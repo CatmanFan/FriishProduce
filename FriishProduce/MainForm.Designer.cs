@@ -66,9 +66,9 @@ namespace FriishProduce
             this.ToolStrip_OpenImage = new System.Windows.Forms.ToolStripButton();
             this.ToolStrip_OpenManual = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            this.ToolStrip_UseLibRetro = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolStrip_ExportWAD = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.ToolStrip_UseLibRetro = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolStrip_CloseTab = new System.Windows.Forms.ToolStripButton();
             this.ToolStrip_Settings = new System.Windows.Forms.ToolStripButton();
@@ -132,6 +132,7 @@ namespace FriishProduce
             // 
             this.MenuStrip.AllowMerge = false;
             resources.ApplyResources(this.MenuStrip, "MenuStrip");
+            this.MenuStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.MenuStrip.GripMargin = new System.Windows.Forms.Padding(2);
             this.MenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MenuItem_File,
@@ -264,6 +265,7 @@ namespace FriishProduce
             // 
             // MenuItem_LanguageXMLEditor
             // 
+            this.MenuItem_LanguageXMLEditor.Image = global::FriishProduce.Properties.Resources.globe_model;
             this.MenuItem_LanguageXMLEditor.Name = "MenuItem_LanguageXMLEditor";
             resources.ApplyResources(this.MenuItem_LanguageXMLEditor, "MenuItem_LanguageXMLEditor");
             this.MenuItem_LanguageXMLEditor.Click += new System.EventHandler(this.LanguageXMLEditor_Click);
@@ -282,7 +284,7 @@ namespace FriishProduce
             // 
             // MainPanel
             // 
-            this.MainPanel.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.MainPanel.BackColor = System.Drawing.Color.LightGray;
             this.MainPanel.Controls.Add(this.Welcome_DoNotShow);
             this.MainPanel.Controls.Add(this.PointToTutorial);
             this.MainPanel.Controls.Add(this.Welcome);
@@ -319,14 +321,13 @@ namespace FriishProduce
             this.ToolStrip_OpenManual,
             this.toolStripSeparator6,
             this.ToolStrip_UseLibRetro,
-            this.toolStripSeparator7,
-            this.ToolStrip_ExportWAD,
             this.toolStripSeparator8,
+            this.ToolStrip_ExportWAD,
+            this.toolStripSeparator7,
             this.ToolStrip_CloseTab,
             this.ToolStrip_Settings,
             this.ToolStrip_Tutorial});
             this.ToolStrip.Name = "ToolStrip";
-            this.ToolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             // 
             // ToolStrip_OpenROM
             // 
@@ -357,6 +358,18 @@ namespace FriishProduce
             this.toolStripSeparator6.Name = "toolStripSeparator6";
             resources.ApplyResources(this.toolStripSeparator6, "toolStripSeparator6");
             // 
+            // ToolStrip_ExportWAD
+            // 
+            resources.ApplyResources(this.ToolStrip_ExportWAD, "ToolStrip_ExportWAD");
+            this.ToolStrip_ExportWAD.Image = global::FriishProduce.Properties.Resources.box_label;
+            this.ToolStrip_ExportWAD.Name = "ToolStrip_ExportWAD";
+            this.ToolStrip_ExportWAD.Click += new System.EventHandler(this.ExportWAD_Click);
+            // 
+            // toolStripSeparator7
+            // 
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            resources.ApplyResources(this.toolStripSeparator7, "toolStripSeparator7");
+            // 
             // ToolStrip_UseLibRetro
             // 
             this.ToolStrip_UseLibRetro.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -365,19 +378,6 @@ namespace FriishProduce
             this.ToolStrip_UseLibRetro.Name = "ToolStrip_UseLibRetro";
             this.ToolStrip_UseLibRetro.Click += new System.EventHandler(this.UseLibRetro_Click);
             // 
-            // toolStripSeparator7
-            // 
-            this.toolStripSeparator7.Name = "toolStripSeparator7";
-            resources.ApplyResources(this.toolStripSeparator7, "toolStripSeparator7");
-            // 
-            // ToolStrip_ExportWAD
-            // 
-            this.ToolStrip_ExportWAD.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            resources.ApplyResources(this.ToolStrip_ExportWAD, "ToolStrip_ExportWAD");
-            this.ToolStrip_ExportWAD.Image = global::FriishProduce.Properties.Resources.box_label;
-            this.ToolStrip_ExportWAD.Name = "ToolStrip_ExportWAD";
-            this.ToolStrip_ExportWAD.Click += new System.EventHandler(this.ExportWAD_Click);
-            // 
             // toolStripSeparator8
             // 
             this.toolStripSeparator8.Name = "toolStripSeparator8";
@@ -385,7 +385,6 @@ namespace FriishProduce
             // 
             // ToolStrip_CloseTab
             // 
-            this.ToolStrip_CloseTab.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             resources.ApplyResources(this.ToolStrip_CloseTab, "ToolStrip_CloseTab");
             this.ToolStrip_CloseTab.Image = global::FriishProduce.Properties.Resources.cross;
             this.ToolStrip_CloseTab.Name = "ToolStrip_CloseTab";

@@ -117,8 +117,8 @@
 	<form name="SettingsForm">
 		<AutoLibRetro.Text>Cargar automáticamente datos desde LibRetro para la ROM seleccionada</AutoLibRetro.Text>
 		<AutoOpenFolder.Text>Abrir carpeta de salida tras la exportación de WAD</AutoOpenFolder.Text>
-		<label1.Text>Idioma</label1.Text>
-		<label2.Text>Método de interpolación de imágenes</label2.Text>
+		<groupBox1.Text>Idioma</groupBox1.Text>
+		<groupBox2.Text>Método de interpolación de imágenes</groupBox2.Text>
 		<LanguageList.Items>Idioma del sistema</LanguageList.Items>
 		<Node0.Text>Programa</Node0.Text>
 		<Node1.Text>Ajustes por defecto</Node1.Text>

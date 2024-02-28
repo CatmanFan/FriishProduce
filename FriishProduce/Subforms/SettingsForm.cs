@@ -65,7 +65,7 @@ namespace FriishProduce
             n64002.Text = Language.Get(n64002, Name_N64);
             n64003.Text = Language.Get(n64003, Name_N64);
             n64004.Text = Language.Get(n64004, Name_N64);
-            groupBox1.Text = Language.Get(groupBox1, Name_N64);
+            groupBox3.Text = Language.Get("groupBox1", Name_N64, true);
 
             ROMCType.Items.Clear();
             ROMCType.Items.Add("auto");
