@@ -203,7 +203,7 @@ namespace FriishProduce
             var searchTarget = targetXML.SelectNodes(type);
             if (isSectionSet)
             {
-                if (isForm && !name.EndsWith(".Text") && !name.EndsWith(".Items")) name += ".Text";
+                if (isForm && !name.EndsWith(".Text") && !name.Contains(".Items")) name += ".Text";
                 foreach (XmlNode section in targetXML.SelectNodes(type))
                     if (section.Attributes[0].InnerText == sectionName) searchTarget = section.SelectNodes(".");
             }
@@ -229,10 +229,10 @@ namespace FriishProduce
         {
             foreach (XmlNode section in XML.SelectNodes("global"))
                 foreach (XmlNode item in section.ChildNodes)
-                    if (item.Name.ToLower() == "Translators" && !string.IsNullOrEmpty(item.InnerText))
+                    if (item.Name.ToLower() == "translators" && !string.IsNullOrEmpty(item.InnerText))
                         return item.InnerText;
 
-            return Get("Unknown");
+            return "?";
         }
 
         public static string Get(string name, Form f) => Get(name, f.Name, true);
@@ -257,6 +257,30 @@ namespace FriishProduce
                 if (string.IsNullOrEmpty(Object[i])) Object.RemoveAt(i);
 
             return Object.ToArray();
+        }
+
+        public static void GetComboBox(ComboBox x, string name = null, string section = null)
+        {
+            if (name == null) name = x.Name;
+
+            if (x.Items[0].ToString() == "auto")
+            {
+                x.Items.Clear();
+
+                for (int y = 0; y < 100; y++)
+                    if (Get(name + $".Items" + (y == 0 ? null : y.ToString()), section, true) != "undefined")
+                        x.Items.Add(Get(name + $".Items" + (y == 0 ? null : y.ToString()), section, true));
+            }
+
+            else if (x.Items[0].ToString() == "def")
+            {
+                x.Items.Clear();
+                x.Items.Add(Get("ByDefault"));
+
+                for (int y = 1; y < 100; y++)
+                    if (Get(name + $".Items{y}", section, true) != "undefined")
+                        x.Items.Add(Get(name + $".Items{y}", section, true));
+            }
         }
 
         public static void Localize(Form c)
@@ -296,6 +320,7 @@ namespace FriishProduce
         {
             if (x.GetType() == typeof(Form) && x.Name != parent.Name) return;
             else if (x.GetType() == typeof(MdiTabControl.TabPage) && (x as MdiTabControl.TabPage).Form.GetType().Name != parent.Name) return;
+            else if (x.GetType() == typeof(ComboBox) && (x as ComboBox).Items.Count >= 1) GetComboBox(x as ComboBox, x.Name, parent.Name);
             else if (x.GetType() == typeof(TreeView))
             {
                 foreach (TreeNode d in (x as TreeView).Nodes)

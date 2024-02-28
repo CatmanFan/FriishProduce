@@ -7,7 +7,7 @@
 **FriishProduce** is a WAD injector for Wii/vWii, which allows for automated ROM replacement in Wii channels.
 This application is designed to streamline the process to as few third-party programs as possible.
 
-***This repository has been updated by way of a new MDI version (pictured above) and is currently under work-in-progress. Most consoles may not be supported by this version yet.<br>For the legacy edition, go [here](https://github.com/CatmanFan/FriishProduce/tree/main/legacy), or see [v0.26-beta](https://github.com/CatmanFan/FriishProduce/releases/tag/v0.26-beta) for the latest release.***
+***This repository has been updated by way of a new MDI version (pictured above) and is currently under work-in-progress. Most consoles may not be supported by this version yet.<br>For the legacy edition, see [here](https://github.com/CatmanFan/FriishProduce/tree/main/legacy), or see [v0.26-beta](https://github.com/CatmanFan/FriishProduce/releases/tag/v0.26-beta) for the latest release.***
 
 ---
 
@@ -26,15 +26,17 @@ This injector bypasses other third-party assets (such as Common-Key.bin, HowardC
   * **Nintendo Entertainment System (NES) / Famicom**
   * **Super Nintendo Entertainment System (SNES) / Super Famicom**
   * **Nintendo 64**
+  * **SEGA Master System**
+  * **SEGA Mega Drive / Genesis**
+  * **SNK NEO-GEO**
  
 Planned:
 * Virtual Console
-  * SEGA Mega Drive / Genesis
-  * SEGA Master System
   * NEC TurboGrafx-16 / PC Engine
-  * SNK NEO-GEO
   * Microsoft MSX / MSX2
-* Adobe Flash
+* Support for other formats:
+  * Adobe Flash
+  * Single ROM loader (SRL) forwarders
 
 ## How-to
 * For information on how to use the new interface (v1.0 and above), see **[here](https://github.com/CatmanFan/FriishProduce/wiki/FriishProduce-v1.0)**.

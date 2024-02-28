@@ -66,8 +66,10 @@ namespace FriishProduce
             n64003.Text = Language.Get(n64003, Name_N64);
             n64004.Text = Language.Get(n64004, Name_N64);
             groupBox1.Text = Language.Get(groupBox1, Name_N64);
+
             ROMCType.Items.Clear();
-            ROMCType.Items.AddRange(new string[] { Language.Get($"{ROMCType.Name}.Items", Name_N64), Language.Get($"{ROMCType.Name}.Items1", Name_N64) });
+            ROMCType.Items.Add("auto");
+            Language.GetComboBox(ROMCType, "ROMCType", Name_N64);
 
             // -----------------------------
 
@@ -213,14 +215,6 @@ namespace FriishProduce
             Language.Current = LanguageList.SelectedIndex == 0 ? Language.GetSystemLanguage() : new System.Globalization.CultureInfo(Default.UI_Language);
 
             RefreshForm();
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            MessageBox.Show(Language.Get("N64", "Platforms"));
-            MessageBox.Show(Language.Get("AppTitle"));
-            MessageBox.Show(Language.Get("Error.004", "Strings"));
-            MessageBox.Show(Language.Get("FuckingShit", "Strings"));
         }
     }
 }

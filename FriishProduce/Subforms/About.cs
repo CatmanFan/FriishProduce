@@ -20,6 +20,7 @@ namespace FriishProduce
             this.labelCopyright.Text = AssemblyCopyright;
             this.labelCompanyName.Text = AssemblyCompany;
             this.textBoxDescription.Text = AssemblyDescription;
+            this.labelTranslation.Text = string.Format("Current language: {0} ({1})", Language.Current.EnglishName, Language.Author());
             okButton.Text = Language.Get("B.Close");
         }
 

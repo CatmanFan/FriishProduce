@@ -60,6 +60,7 @@ namespace FriishProduce
             if (DesignMode) return;
             // ----------------------------
             Language.Localize(this);
+            label7.Text = label5.Text;
 
             // Change title text to untitled string
             Untitled = string.Format(Language.Get("Untitled"), Language.Get(Enum.GetName(typeof(Console), Console), "Platforms"));

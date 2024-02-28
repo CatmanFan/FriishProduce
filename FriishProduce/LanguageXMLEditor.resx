@@ -133,7 +133,7 @@
     <value>Select a target language from the list, then translate as needed.
 Once done, you are free to add it to the FriishProduce GitHub repo as a pull request.
 
-Please note that this editor may still contain unchecked bugs, and that the current list of strings may be subject to major periodic updates.</value>
+Please note that this editor may still contain unchecked bugs, and that the current list of strings/IDs may be subject to major periodic updates.</value>
   </data>
   <metadata name="SaveAs.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>

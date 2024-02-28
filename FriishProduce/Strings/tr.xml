@@ -28,15 +28,48 @@
 		<Settings>Ayarlar</Settings>
 		<Untitled>Başlıksız {0} kanalı</Untitled>
 	</global>
+	<form name="InjectorForm">
+		<groupBox3.Text>Kanal Başlığı</groupBox3.Text>
+		<groupBox4.Text>Yazılım Ayarları</groupBox4.Text>
+		<groupBox8.Text>Resim</groupBox8.Text>
+		<label1.Text>ROM dosya adı: {0}</label1.Text>
+		<label10.Text>Oyuncular:</label10.Text>
+		<label2.Text>Yazılımın resmi adı: {0}</label2.Text>
+		<label4.Text>Oyun başlığı:</label4.Text>
+		<label6.Text>Kısa başlık:</label6.Text>
+		<label8.Text>Tam başlık:</label8.Text>
+		<label9.Text>Yıl:</label9.Text>
+		<RegionFree.Text>Bolgesiz</RegionFree.Text>
+	</form>
 	<form name="MainForm">
 		<ExportWAD.Text>WAD Olarak Kaydet...</ExportWAD.Text>
-		<MenuItem_About.Text>Hakkında</MenuItem_About.Text>
+		<MenuItem_About.Text>&amp;Hakkında</MenuItem_About.Text>
 		<MenuItem_Exit.Text>&amp;Çıkış</MenuItem_Exit.Text>
 		<MenuItem_File.Text>&amp;Dosya</MenuItem_File.Text>
 		<MenuItem_Help.Text>&amp;Yardım</MenuItem_Help.Text>
 		<MenuItem_Project.Text>&amp;Proje</MenuItem_Project.Text>
 		<NewProject.Text>Yeni...</NewProject.Text>
 		<OpenImage.Text>Resmi aç...</OpenImage.Text>
+		<OpenROM.Text>ROM'u aç...</OpenROM.Text>
 	</form>
-	<form name="SettingsForm"></form>
+	<form name="Options_VC_N64">
+		<groupBox1.Text>Yamalar</groupBox1.Text>
+		<n64000.Text>Ekran Parlaklığı Düzeltmesi</n64000.Text>
+		<n64001.Text>Donma Düzeltmesi</n64001.Text>
+		<n64004.Text>ROM Sıkıştırma</n64004.Text>
+	</form>
+	<form name="Options_VC_NES">
+		<groupBox1.Text>Renk Paleti</groupBox1.Text>
+		<PaletteList.Items1>Düzeltilmiş</PaletteList.Items1>
+	</form>
+	<form name="Options_VC_SEGA">
+		<groupBox1.Text>Parlaklık</groupBox1.Text>
+	</form>
+	<form name="SettingsForm">
+		<label1.Text>Dil</label1.Text>
+		<label2.Text>Resim enterpolasyonu</label2.Text>
+		<LanguageList.Items>Sistem dili</LanguageList.Items>
+		<Node0.Text>Uygulama</Node0.Text>
+		<Node1.Text>Varsayılan ayarları</Node1.Text>
+	</form>
 </language>

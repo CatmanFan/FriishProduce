@@ -214,22 +214,22 @@ namespace FriishProduce.WiiVC
             {
                 if (SettingParse(0))
                 {
-                    if (!ShadingFix()) failed.Add(Language.GetArray("List.N64Options")[0]);
+                    if (!ShadingFix()) failed.Add(Language.Get("n64000.Text", "Options_VC_N64"));
                 }
 
                 if (SettingParse(1) && (EmuType <= 1))
                 {
-                    if (!CrashesFix()) failed.Add(Language.GetArray("List.N64Options")[1]);
+                    if (!CrashesFix()) failed.Add(Language.Get("n64001.Text", "Options_VC_N64"));
                 }
 
                 if (SettingParse(2))
                 {
-                    if (!ExtendedRAM()) failed.Add(Language.GetArray("List.N64Options")[2]);
+                    if (!ExtendedRAM()) failed.Add(Language.Get("n64002.Text", "Options_VC_N64"));
                 }
 
                 if (SettingParse(3) && (EmuType <= 1))
                 {
-                    if (!AllocateROM()) { failed.Add(Language.GetArray("List.N64Options")[3]); Allocate = false; }
+                    if (!AllocateROM()) { failed.Add(Language.Get("n64003.Text", "Options_VC_N64")); Allocate = false; }
                 }
 
                 if (failed.Count > 0)

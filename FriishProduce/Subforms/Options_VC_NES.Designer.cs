@@ -42,7 +42,7 @@ namespace FriishProduce
             // 
             this.OK.Location = new System.Drawing.Point(101, 12);
             // 
-            // panel1
+            // bottomPanel1
             // 
             this.bottomPanel1.Size = new System.Drawing.Size(299, 47);
             // 
@@ -90,16 +90,7 @@ namespace FriishProduce
             this.PaletteList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.PaletteList.FormattingEnabled = true;
             this.PaletteList.Items.AddRange(new object[] {
-            "Default",
-            "Restored",
-            "3DS Virtual Console",
-            "NES Classic (FBX)",
-            "NES Remix U",
-            "Nestopia YUV",
-            "Nestopia RGB",
-            "FCEUX",
-            "Wavebeam (FBX)",
-            "Composite Direct (FBX)"});
+            "def"});
             this.PaletteList.Location = new System.Drawing.Point(9, 218);
             this.PaletteList.Name = "PaletteList";
             this.PaletteList.Size = new System.Drawing.Size(256, 21);
