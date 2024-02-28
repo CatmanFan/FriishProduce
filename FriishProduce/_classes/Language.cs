@@ -8,6 +8,7 @@ using FriishProduce.Properties;
 using System.IO;
 using System.Xml;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace FriishProduce
 {
@@ -129,7 +130,7 @@ namespace FriishProduce
 
             Thread.CurrentThread.CurrentCulture = Thread.CurrentThread.CurrentUICulture = Current;
 
-            LoadEnglish();
+            EnglishXML = Load();
             XML = null;
 
             if (Settings.Default.UI_Language == "en" || Current == English || Current.EnglishName == English.EnglishName)
@@ -146,52 +147,41 @@ namespace FriishProduce
             }
         }
 
-        private static void LoadEnglish()
+        private static XmlNode Load(string lang = "en")
         {
+            bool isEnglish = lang == "en";
+
             try
             {
+                XmlNode target = null;
+
+                if (lang == "en" && EnglishXML != null) throw new Exception("Lol");
+
                 XmlDocument doc = new XmlDocument();
-                doc.PreserveWhitespace = false;
-                doc.Load(Assembly.GetExecutingAssembly().GetManifestResourceStream("FriishProduce.Strings.en.xml"));
+                XmlReaderSettings opts = new XmlReaderSettings() { IgnoreComments = true, IgnoreWhitespace = true };
+                XmlReader reader = isEnglish ? XmlReader.Create(Assembly.GetExecutingAssembly().GetManifestResourceStream("FriishProduce.Strings.en.xml"), opts) : XmlReader.Create(Paths.Languages + lang + ".xml", opts);
 
-                EnglishXML = null;
-                foreach (XmlNode item in doc.ChildNodes)
-                    if (item.Name.ToLower() == "language") EnglishXML = item;
+                while (reader.Read())
+                    if (reader.Name.ToLower().Equals("language") && (reader.NodeType == XmlNodeType.Element))
+                        target = doc.ReadNode(reader);
 
-                if (EnglishXML == null) throw new Exception("The file was not found or is of invalid type.");
+                if (target == null) throw new Exception("The file was not found or is of invalid type.");
+
+                return target;
             }
 
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show($"A fatal error occurred while trying to read the English language strings.\n" +
-                    $"Exception: {ex.GetType()}\nMessage: {ex.Message}\n\n" +
-                    "The application will now shut down.", "Halt", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-                Environment.FailFast(ex.Message);
-            }
-        }
-
-        private static XmlNode Load(string lang)
-        {
-            try
-            {
-                if (lang == "en") throw new Exception("Lol");
+                if (EnglishXML != null) return EnglishXML;
 
                 else
                 {
-                    XmlDocument doc = new XmlDocument();
-                    doc.PreserveWhitespace = false;
-                    doc.Load(Paths.Languages + lang + ".xml");
-
-                    foreach (XmlNode item in doc.ChildNodes)
-                        if (item.Name.ToLower() == "language") return item;
-
-                    throw new FileNotFoundException();
+                    System.Windows.Forms.MessageBox.Show($"A fatal error occurred while trying to read the English language strings.\n" +
+                        $"Exception: {ex.GetType()}\nMessage: {ex.Message}\n\n" +
+                        "The application will now shut down.", "Halt", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                    Environment.FailFast(ex.Message);
+                    return null;
                 }
-            }
-
-            catch
-            {
-                return EnglishXML;
             }
         }
 
@@ -213,20 +203,17 @@ namespace FriishProduce
             var searchTarget = targetXML.SelectNodes(type);
             if (isSectionSet)
             {
-                if (isForm && !name.EndsWith(".Text")) name += ".Text";
+                if (isForm && !name.EndsWith(".Text") && !name.EndsWith(".Items")) name += ".Text";
                 foreach (XmlNode section in targetXML.SelectNodes(type))
                     if (section.Attributes[0].InnerText == sectionName) searchTarget = section.SelectNodes(".");
             }
 
             foreach (XmlNode section in searchTarget)
                 foreach (XmlNode item in section.ChildNodes)
-                    if (item.Name == name)
+                    if (item.Name == name && !string.IsNullOrEmpty(item.InnerText))
                     {
-                        string returned = item.InnerText.Replace("\t", "");
-
-                        if (item.InnerText.StartsWith("\r\n")) return returned.Substring(2).Trim();
-                        else if (item.InnerText.StartsWith("\n")) return returned.Substring(1).Trim();
-                        else return returned.Trim();
+                        string returned = Regex.Replace(item.InnerText, "[\r\t]", "").TrimEnd('\n').Replace(@"\n", Environment.NewLine).Replace(@"\\", "\\");
+                        return returned.StartsWith("\n") ? returned.Substring(1) : returned;
                     }
 
             if (!useEnglish)
@@ -236,6 +223,16 @@ namespace FriishProduce
             }
 
             else return "undefined";
+        }
+
+        public static string Author()
+        {
+            foreach (XmlNode section in XML.SelectNodes("global"))
+                foreach (XmlNode item in section.ChildNodes)
+                    if (item.Name.ToLower() == "Translators" && !string.IsNullOrEmpty(item.InnerText))
+                        return item.InnerText;
+
+            return Get("Unknown");
         }
 
         public static string Get(string name, Form f) => Get(name, f.Name, true);
@@ -329,8 +326,9 @@ namespace FriishProduce
             {
                 if (x.GetType() == typeof(Button))
                 {
-                    if (x.Name.ToLower() == "ok") { x.Text = @"&" + Get("B.OK"); (x as Button).UseMnemonic = true; }
-                    if (x.Name.ToLower() == "cancel") { x.Text = @"&" + Get("B.Cancel"); (x as Button).UseMnemonic = true; }
+                    if (x.Name.ToLower() == "ok") { x.Text = Get("B.OK"); (x as Button).UseMnemonic = true; }
+                    if (x.Name.ToLower() == "cancel") { x.Text = Get("B.Cancel"); (x as Button).UseMnemonic = true; }
+                    if (x.Name.ToLower() == "close") { x.Text = Get("B.Close"); (x as Button).UseMnemonic = true; }
                 }
             }
         }

@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<language>
+	<global name="Metadata">
+		<Translators>CatmanFan</Translators>
+	</global>
+	<global name="Platforms">
+		<SMDGEN>Mega Drive</SMDGEN>
+	</global>
+	<global name="Strings">
+		<About>{0} Hakkında</About>
+		<B.Cancel>&amp;İptal</B.Cancel>
+		<B.Close>&amp;Kapat</B.Close>
+		<B.No>&amp;Hayır</B.No>
+		<B.OK>&amp;Tamam</B.OK>
+		<B.Yes>&amp;Evet</B.Yes>
+		<ByDefault>Varsayılan</ByDefault>
+		<DoNotShow>Bu mesajı bir daha gösterme</DoNotShow>
+		<Error>Bir hata oluştu</Error>
+		<Filter>|Tüm dosyalar (*.*)|*.*</Filter>
+		<InjectionMethodOptions>VC Emülatör Ayarları</InjectionMethodOptions>
+		<Message.008>Seçtiğiniz dosya geçersizdir.</Message.008>
+		<Other>Diğer</Other>
+		<ProjectType>{0} Projesi</ProjectType>
+		<Region.J>Japonya</Region.J>
+		<Region.K>Güney Kore</Region.K>
+		<Region.U>ABD</Region.U>
+		<Region.E>Avrupa</Region.E>
+		<Settings>Ayarlar</Settings>
+		<Untitled>Başlıksız {0} kanalı</Untitled>
+	</global>
+	<form name="MainForm">
+		<ExportWAD.Text>WAD Olarak Kaydet...</ExportWAD.Text>
+		<MenuItem_About.Text>Hakkında</MenuItem_About.Text>
+		<MenuItem_Exit.Text>&amp;Çıkış</MenuItem_Exit.Text>
+		<MenuItem_File.Text>&amp;Dosya</MenuItem_File.Text>
+		<MenuItem_Help.Text>&amp;Yardım</MenuItem_Help.Text>
+		<MenuItem_Project.Text>&amp;Proje</MenuItem_Project.Text>
+		<NewProject.Text>Yeni...</NewProject.Text>
+		<OpenImage.Text>Resmi aç...</OpenImage.Text>
+	</form>
+	<form name="SettingsForm"></form>
+</language>

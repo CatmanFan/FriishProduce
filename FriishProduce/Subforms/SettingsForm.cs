@@ -21,15 +21,6 @@ namespace FriishProduce
         {
             InitializeComponent();
             isDirty = false;
-
-            // -------------------------------------------
-            // Add all languages
-            // -------------------------------------------
-            LanguageList.Items[0] = "<" + LanguageList.Items[0].ToString() + ">";
-            foreach (var item in Language.List)
-                LanguageList.Items.Add(item.Value);
-
-            RefreshForm();
         }
 
         public void RefreshForm()
@@ -42,6 +33,17 @@ namespace FriishProduce
             TreeView.SelectedNode = TreeView.Nodes[0];
 
             // -----------------------------
+
+            // -------------------------------------------
+            // Add all languages
+            // -------------------------------------------
+            if (LanguageList.Items.Count != Language.List.Count + 1)
+            {
+                LanguageList.Items.Clear();
+                LanguageList.Items.Add("<" + Language.Get("LanguageList.Items", this) + ">");
+                foreach (var item in Language.List)
+                    LanguageList.Items.Add(item.Value);
+            }
 
             if (Default.UI_Language == "sys") LanguageList.SelectedIndex = 0;
             else LanguageList.SelectedIndex = Language.List.Keys.ToList().IndexOf(Default.UI_Language) + 1;

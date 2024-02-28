@@ -52,11 +52,11 @@ namespace FriishProduce
             this.bottomPanel2 = new System.Windows.Forms.Panel();
             this.TreeView = new System.Windows.Forms.TreeView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.leftSeparator = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.n64004.SuspendLayout();
             this.bottomPanel1.SuspendLayout();
@@ -228,6 +228,13 @@ namespace FriishProduce
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
             // 
+            // button1
+            // 
+            resources.ApplyResources(this.button1, "button1");
+            this.button1.Name = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // checkBox1
             // 
             resources.ApplyResources(this.checkBox1, "checkBox1");
@@ -255,13 +262,6 @@ namespace FriishProduce
             this.leftSeparator.BackColor = System.Drawing.SystemColors.ControlDark;
             resources.ApplyResources(this.leftSeparator, "leftSeparator");
             this.leftSeparator.Name = "leftSeparator";
-            // 
-            // button1
-            // 
-            resources.ApplyResources(this.button1, "button1");
-            this.button1.Name = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // SettingsForm
             // 

@@ -135,11 +135,11 @@
     <Compile Include="BannerPreviewForm.Designer.cs">
       <DependentUpon>BannerPreviewForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="LanguageEditor.cs">
+    <Compile Include="LanguageXMLEditor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LanguageEditor.Designer.cs">
-      <DependentUpon>LanguageEditor.cs</DependentUpon>
+    <Compile Include="LanguageXMLEditor.Designer.cs">
+      <DependentUpon>LanguageXMLEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -160,8 +160,8 @@
     <EmbeddedResource Include="BannerPreviewForm.resx">
       <DependentUpon>BannerPreviewForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LanguageEditor.resx">
-      <DependentUpon>LanguageEditor.cs</DependentUpon>
+    <EmbeddedResource Include="LanguageXMLEditor.resx">
+      <DependentUpon>LanguageXMLEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -309,7 +309,6 @@
   <ItemGroup>
     <Content Include="Database.xml" />
     <Content Include="icon.ico" />
-    <EmbeddedResource Include="Strings\fr.xml" />
     <EmbeddedResource Include="Strings\en.xml" />
     <None Include="Resources\icons\mr-saturn.png" />
     <None Include="Resources\icons\smw_question-block.png" />

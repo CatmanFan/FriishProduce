@@ -54,6 +54,7 @@ namespace FriishProduce
             this.CloseTab = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItem_Help = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItem_Tutorial = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuItem_LanguageXMLEditor = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.MenuItem_About = new System.Windows.Forms.ToolStripMenuItem();
             this.MainPanel = new System.Windows.Forms.Panel();
@@ -72,7 +73,6 @@ namespace FriishProduce
             this.ToolStrip_CloseTab = new System.Windows.Forms.ToolStripButton();
             this.ToolStrip_Settings = new System.Windows.Forms.ToolStripButton();
             this.ToolStrip_Tutorial = new System.Windows.Forms.ToolStripButton();
-            this.languageEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuStrip.SuspendLayout();
             this.MainPanel.SuspendLayout();
             this.ToolStrip.SuspendLayout();
@@ -250,7 +250,7 @@ namespace FriishProduce
             // 
             this.MenuItem_Help.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MenuItem_Tutorial,
-            this.languageEditorToolStripMenuItem,
+            this.MenuItem_LanguageXMLEditor,
             this.toolStripSeparator5,
             this.MenuItem_About});
             this.MenuItem_Help.Name = "MenuItem_Help";
@@ -261,6 +261,12 @@ namespace FriishProduce
             resources.ApplyResources(this.MenuItem_Tutorial, "MenuItem_Tutorial");
             this.MenuItem_Tutorial.Name = "MenuItem_Tutorial";
             this.MenuItem_Tutorial.Click += new System.EventHandler(this.Tutorial_Click);
+            // 
+            // MenuItem_LanguageXMLEditor
+            // 
+            this.MenuItem_LanguageXMLEditor.Name = "MenuItem_LanguageXMLEditor";
+            resources.ApplyResources(this.MenuItem_LanguageXMLEditor, "MenuItem_LanguageXMLEditor");
+            this.MenuItem_LanguageXMLEditor.Click += new System.EventHandler(this.LanguageXMLEditor_Click);
             // 
             // toolStripSeparator5
             // 
@@ -402,12 +408,6 @@ namespace FriishProduce
             this.ToolStrip_Tutorial.Name = "ToolStrip_Tutorial";
             this.ToolStrip_Tutorial.Click += new System.EventHandler(this.Tutorial_Click);
             // 
-            // languageEditorToolStripMenuItem
-            // 
-            this.languageEditorToolStripMenuItem.Name = "languageEditorToolStripMenuItem";
-            resources.ApplyResources(this.languageEditorToolStripMenuItem, "languageEditorToolStripMenuItem");
-            this.languageEditorToolStripMenuItem.Click += new System.EventHandler(this.languageEditorToolStripMenuItem_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -475,7 +475,7 @@ namespace FriishProduce
         private System.Windows.Forms.ToolStripButton ToolStrip_Tutorial;
         private System.Windows.Forms.Label PointToTutorial;
         private System.Windows.Forms.Button Welcome_DoNotShow;
-        private System.Windows.Forms.ToolStripMenuItem languageEditorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem MenuItem_LanguageXMLEditor;
     }
 }
 

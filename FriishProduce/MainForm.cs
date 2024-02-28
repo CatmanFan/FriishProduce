@@ -341,9 +341,12 @@ namespace FriishProduce
 
         private void MenuItem_Exit_Click(object sender, EventArgs e) => Application.Exit();
 
-        private void languageEditorToolStripMenuItem_Click(object sender, EventArgs e)
+        private void LanguageXMLEditor_Click(object sender, EventArgs e)
         {
-            new LanguageEditor().Show();
+            var x = new LanguageXMLEditor();
+            System.Threading.Thread.Sleep(750);
+            x.ShowDialog();
+            RefreshForm();
         }
     }
 }

@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<language>
+	<global name="Metadata">
+		<Translators>CatmanFan</Translators>
+		<AppTitle>FriishProduce</AppTitle>
+	</global>
+	<global name="Platforms"></global>
+	<global name="Strings">
+		<About>Acerca de {0}</About>
+		<Author>Autor(a): {0}</Author>
+		<B.Cancel>&amp;Cancelar</B.Cancel>
+		<B.Close>&amp;Cerrar</B.Close>
+		<B.No>&amp;No</B.No>
+		<B.OK>&amp;Aceptar</B.OK>
+		<B.Yes>&amp;Sí</B.Yes>
+		<ByDefault>Por defecto</ByDefault>
+		<DoNotShow>No volver a mostrar este mensaje</DoNotShow>
+		<Error>Se ha producido un error</Error>
+		<Error.000>No se pudo conectar a Internet.\nDescripción : {0}</Error.000>
+		<Error.001>No se pudo generar la imagen.\nEsto puede deberse a un problema con GDI+.</Error.001>
+		<Error.002>No se pueden reemplazar los datos internos.</Error.002>
+		<Error.003>La ROM es demasiado grande (más de {0} {1} en tamaño).</Error.003>
+	</global>
+	<form name="MainForm"></form>
+	<form name="SettingsForm"></form>
+</language>

@@ -294,7 +294,7 @@ namespace FriishProduce
             if (OpenWAD.Checked && WADPath == null)
             {
                 BrowseWAD.Title = Language.Get("ribbonPanel_Open", Parent);
-                BrowseWAD.Filter = Language.Get("Filter_WAD");
+                BrowseWAD.Filter = Language.Get("Filter.WAD");
                 var result = BrowseWAD.ShowDialog();
 
                 if (result == DialogResult.OK && !LoadWAD(BrowseWAD.FileName)) OpenWAD.Checked = false;
@@ -798,21 +798,21 @@ namespace FriishProduce
                 switch (Database[x].Region())
                 {
                     case 0:
-                        WADRegionList.Items.Add(Language.Get("Region_U"), null, WADRegionList_Click);
+                        WADRegionList.Items.Add(Language.Get("Region.U"), null, WADRegionList_Click);
                         break;
 
                     case 1:
                     case 2:
-                        WADRegionList.Items.Add(Language.Get("Region_E"), null, WADRegionList_Click);
+                        WADRegionList.Items.Add(Language.Get("Region.E"), null, WADRegionList_Click);
                         break;
 
                     case 3:
-                        WADRegionList.Items.Add(Language.Get("Region_J"), null, WADRegionList_Click);
+                        WADRegionList.Items.Add(Language.Get("Region.J"), null, WADRegionList_Click);
                         break;
 
                     case 4:
                     case 5:
-                        WADRegionList.Items.Add(Language.Get("Region_K"), null, WADRegionList_Click);
+                        WADRegionList.Items.Add(Language.Get("Region.K"), null, WADRegionList_Click);
                         break;
 
                     default:
@@ -828,7 +828,7 @@ namespace FriishProduce
             string langCode = Language.Current.TwoLetterISOLanguageName;
             if (langCode == "ja" || langCode == "ko")
             {
-                string target = langCode == "ja" ? Language.Get("Region_J") : Language.Get("Region_K");
+                string target = langCode == "ja" ? Language.Get("Region.J") : Language.Get("Region.K");
 
                 for (int i = 0; i < WADRegionList.Items.Count; i++)
                     if ((WADRegionList.Items[i] as ToolStripMenuItem).Text == target)
