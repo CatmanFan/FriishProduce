@@ -16,7 +16,7 @@ namespace FriishProduce
             InitializeComponent();
             this.Text = string.Format(Language.Get("About"), Language.Get("AppTitle"));
             this.labelProductName.Text = AssemblyProduct;
-            this.labelVersion.Text = string.Format("v{0}", AssemblyVersion);
+            this.labelVersion.Text = Updater.GetCurrentVersion();
             this.labelCopyright.Text = AssemblyCopyright;
             this.labelCompanyName.Text = AssemblyCompany;
             this.textBoxDescription.Text = AssemblyDescription;

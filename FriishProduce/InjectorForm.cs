@@ -160,7 +160,7 @@ namespace FriishProduce
             Creator.BannerPlayers = (int)Players.Value;
             AddBases();
 
-            if (ROM != null && ROM.Path != null) LoadROM(ROM.Path, Properties.Settings.Default.AutoLibRetro);
+            if (ROM?.Path != null) LoadROM(ROM.Path, Properties.Settings.Default.AutoLibRetro);
         }
 
         // -----------------------------------
@@ -196,7 +196,7 @@ namespace FriishProduce
 
         public bool[] CheckToolStripButtons() => new bool[]
             {
-                Console != Console.NeoGeo && Console != Console.Flash, // LibRetro
+                Console != Console.NeoGeo && Console != Console.Flash && ROM?.Bytes != null, // LibRetro
                 Console != Console.Flash, // Browse manual
             };
 

@@ -29,6 +29,7 @@ namespace FriishProduce
         private void InitializeComponent()
         {
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.labelTranslation = new System.Windows.Forms.Label();
             this.logoPictureBox = new System.Windows.Forms.PictureBox();
             this.labelProductName = new System.Windows.Forms.Label();
             this.labelVersion = new System.Windows.Forms.Label();
@@ -36,7 +37,6 @@ namespace FriishProduce
             this.labelCompanyName = new System.Windows.Forms.Label();
             this.textBoxDescription = new System.Windows.Forms.TextBox();
             this.okButton = new System.Windows.Forms.Button();
-            this.labelTranslation = new System.Windows.Forms.Label();
             this.tableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
             this.SuspendLayout();
@@ -68,6 +68,18 @@ namespace FriishProduce
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel.Size = new System.Drawing.Size(596, 212);
             this.tableLayoutPanel.TabIndex = 0;
+            // 
+            // labelTranslation
+            // 
+            this.labelTranslation.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelTranslation.Location = new System.Drawing.Point(202, 57);
+            this.labelTranslation.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
+            this.labelTranslation.MaximumSize = new System.Drawing.Size(0, 17);
+            this.labelTranslation.Name = "labelTranslation";
+            this.labelTranslation.Size = new System.Drawing.Size(391, 17);
+            this.labelTranslation.TabIndex = 27;
+            this.labelTranslation.Text = "Current language: {0} ({1})";
+            this.labelTranslation.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // logoPictureBox
             // 
@@ -154,18 +166,6 @@ namespace FriishProduce
             this.okButton.Size = new System.Drawing.Size(100, 22);
             this.okButton.TabIndex = 24;
             this.okButton.Text = "&OK";
-            // 
-            // labelTranslation
-            // 
-            this.labelTranslation.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelTranslation.Location = new System.Drawing.Point(202, 57);
-            this.labelTranslation.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
-            this.labelTranslation.MaximumSize = new System.Drawing.Size(0, 17);
-            this.labelTranslation.Name = "labelTranslation";
-            this.labelTranslation.Size = new System.Drawing.Size(391, 17);
-            this.labelTranslation.TabIndex = 27;
-            this.labelTranslation.Text = "Current language: {0} ({1})";
-            this.labelTranslation.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // About
             // 

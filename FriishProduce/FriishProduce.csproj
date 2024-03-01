@@ -154,7 +154,7 @@
     <Compile Include="_classes\ROM\NES.cs" />
     <Compile Include="_classes\ROM\SEGA.cs" />
     <Compile Include="_classes\ROM\SNES.cs" />
-    <Compile Include="_classes\Program\Update.cs" />
+    <Compile Include="_classes\Program\Updater.cs" />
     <EmbeddedResource Include="BannerPreview.resx">
       <DependentUpon>BannerPreview.cs</DependentUpon>
     </EmbeddedResource>
