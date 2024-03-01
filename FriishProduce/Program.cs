@@ -1,12 +1,17 @@
 ﻿using System;
 using System.IO;
-using System.Globalization;
+using System.Diagnostics;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using System.Windows.Automation;
 
 namespace FriishProduce
 {
     static class Program
     {
+        [DllImport("user32.dll", SetLastError = true)]
+        static extern void SwitchToThisWindow(IntPtr hWnd, bool turnOn);
+
         public static IntPtr Handle { get; set; }
 
         /// <summary>
@@ -19,6 +24,15 @@ namespace FriishProduce
             {
                 System.Windows.Forms.MessageBox.Show($"This program is not supported for the current Windows version you are running ({Environment.OSVersion.Version.Major}.{Environment.OSVersion.Version.Minor}). Please use Windows 7 or a newer version to run this program.", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Hand);
                 Environment.Exit(-1);
+                return;
+            }
+            else if (Process.GetProcessesByName(Process.GetCurrentProcess().ProcessName).Length > 1)
+            {
+                foreach (var Process in Process.GetProcessesByName(Process.GetCurrentProcess().ProcessName))
+                    if (Process.Handle != Process.GetCurrentProcess().Handle)
+                        SwitchToThisWindow(Process.MainWindowHandle, true);
+
+                Application.Exit();
                 return;
             }
 
