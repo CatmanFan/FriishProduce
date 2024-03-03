@@ -121,13 +121,13 @@ namespace FriishProduce
                 case Console.SMS:
                     TIDCode = "L";
                     ROM = new ROM_SEGA() { IsSMS = true };
-                    CO = new Options_VC_SEGA();
+                    CO = new Options_VC_SEGA() { IsSMS = true };
                     break;
 
                 case Console.SMDGEN:
                     TIDCode = "M";
                     ROM = new ROM_SEGA() { IsSMS = false };
-                    CO = new Options_VC_SEGA();
+                    CO = new Options_VC_SEGA() { IsSMS = false };
                     break;
 
                 case Console.PCE:

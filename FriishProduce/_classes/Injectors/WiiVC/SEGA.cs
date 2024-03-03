@@ -463,7 +463,7 @@ namespace FriishProduce.WiiVC
                         foreach (var newLine in Settings)
                             if (newLine.Key == Alt.ElementAt(i).Key)
                                 foreach (var line in oldConfig)
-                                    if (line.StartsWith(Alt.ElementAt(i).Value) && Alt.ElementAt(i).Value != newLine.Key && Settings.ContainsKey(newLine.Key))
+                                    if (line.StartsWith(Alt.ElementAt(i).Value) && Alt.ElementAt(i).Value != newLine.Key && Settings.ContainsKey(newLine.Key) && !string.IsNullOrEmpty(newLine.Value))
                                     {
                                         newConfig.Add($"{newLine.Key}=\"{newLine.Value}\"");
                                         alreadyAdded.Add(Alt.ElementAt(i).Value);
@@ -491,7 +491,7 @@ namespace FriishProduce.WiiVC
                         foreach (var added in alreadyAdded.ToArray())
                             if (newLine.Key == added) { doNotAdd = true; break; }
 
-                        if (!doNotAdd)
+                        if (!doNotAdd && !string.IsNullOrEmpty(newLine.Value))
                         {
                             newConfig.Add($"{newLine.Key}=\"{newLine.Value}\"");
                             alreadyAdded.Add(newLine.Key);

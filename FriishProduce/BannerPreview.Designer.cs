@@ -65,7 +65,7 @@ namespace FriishProduce
             this.BannerPreview_Main.Location = new System.Drawing.Point(0, 0);
             this.BannerPreview_Main.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.BannerPreview_Main.Name = "BannerPreview_Main";
-            this.BannerPreview_Main.Size = new System.Drawing.Size(625, 277);
+            this.BannerPreview_Main.Size = new System.Drawing.Size(670, 277);
             this.BannerPreview_Main.TabIndex = 44;
             // 
             // BannerPreview_Text
@@ -73,7 +73,7 @@ namespace FriishProduce
             this.BannerPreview_Text.BackColor = System.Drawing.Color.Transparent;
             this.BannerPreview_Text.Font = new System.Drawing.Font("Arial", 16.5F);
             this.BannerPreview_Text.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.BannerPreview_Text.Location = new System.Drawing.Point(7, 199);
+            this.BannerPreview_Text.Location = new System.Drawing.Point(30, 199);
             this.BannerPreview_Text.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.BannerPreview_Text.Name = "BannerPreview_Text";
             this.BannerPreview_Text.Size = new System.Drawing.Size(610, 50);
@@ -111,7 +111,7 @@ namespace FriishProduce
             this.Image.BackColor = System.Drawing.SystemColors.ControlDark;
             this.Image.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Image.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.Image.Location = new System.Drawing.Point(230, 52);
+            this.Image.Location = new System.Drawing.Point(253, 52);
             this.Image.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Image.Name = "Image";
             this.Image.Size = new System.Drawing.Size(165, 132);
@@ -150,7 +150,7 @@ namespace FriishProduce
             this.BannerPreview_Gradient.BackColor = System.Drawing.SystemColors.ControlLight;
             this.BannerPreview_Gradient.Location = new System.Drawing.Point(0, 146);
             this.BannerPreview_Gradient.Name = "BannerPreview_Gradient";
-            this.BannerPreview_Gradient.Size = new System.Drawing.Size(625, 140);
+            this.BannerPreview_Gradient.Size = new System.Drawing.Size(670, 140);
             this.BannerPreview_Gradient.TabIndex = 48;
             this.BannerPreview_Gradient.TabStop = false;
             // 
@@ -162,7 +162,7 @@ namespace FriishProduce
             this.Font = new System.Drawing.Font("Tahoma", 6F);
             this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "BannerPreview";
-            this.Size = new System.Drawing.Size(625, 277);
+            this.Size = new System.Drawing.Size(670, 277);
             this.BannerPreview_Main.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.BannerPreview_Line2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BannerPreview_Line1)).EndInit();

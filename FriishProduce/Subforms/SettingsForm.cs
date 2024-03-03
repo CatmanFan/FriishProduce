@@ -37,13 +37,10 @@ namespace FriishProduce
             // -------------------------------------------
             // Add all languages
             // -------------------------------------------
-            if (LanguageList.Items.Count != Language.List.Count + 1)
-            {
-                LanguageList.Items.Clear();
-                LanguageList.Items.Add("<" + Language.Get("LanguageList.Items", this) + ">");
-                foreach (var item in Language.List)
-                    LanguageList.Items.Add(item.Value);
-            }
+            LanguageList.Items.Clear();
+            LanguageList.Items.Add("<" + Language.Get("LanguageList.Items", this) + ">");
+            foreach (var item in Language.List)
+                LanguageList.Items.Add(item.Value);
 
             if (Default.UI_Language == "sys") LanguageList.SelectedIndex = 0;
             else LanguageList.SelectedIndex = Language.List.Keys.ToList().IndexOf(Default.UI_Language) + 1;
@@ -94,7 +91,6 @@ namespace FriishProduce
                     if (item.Value == LanguageList.SelectedItem.ToString())
                         Default.UI_Language = item.Key;
 
-            Language.Current = LanguageList.SelectedIndex == 0 ? Language.GetSystemLanguage() : new System.Globalization.CultureInfo(Default.UI_Language);
             Language.Current = LanguageList.SelectedIndex == 0 ? Language.GetSystemLanguage() : new System.Globalization.CultureInfo(Default.UI_Language);
 
             // -------------------------------------------
@@ -202,19 +198,29 @@ namespace FriishProduce
 
         private void LanguageList_SelectedIndexChanged(object sender, EventArgs e)
         {
+            bool refresh = false;
+
             // -------------------------------------------
             // Language setting
             // -------------------------------------------
             if (LanguageList.SelectedIndex == 0)
+            {
+                refresh = Default.UI_Language != "sys";
                 Default.UI_Language = "sys";
+            }
+
             else
                 foreach (var item in Language.List)
                     if (item.Value == LanguageList.SelectedItem.ToString())
+                    {
+                        refresh = Default.UI_Language != item.Key;
                         Default.UI_Language = item.Key;
+                    }
+           
 
             Language.Current = LanguageList.SelectedIndex == 0 ? Language.GetSystemLanguage() : new System.Globalization.CultureInfo(Default.UI_Language);
 
-            RefreshForm();
+            if (refresh) RefreshForm();
         }
     }
 }

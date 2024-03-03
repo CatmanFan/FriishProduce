@@ -29,37 +29,39 @@ namespace FriishProduce
 
             var Consoles = new ToolStripItem[]
                 {
-                    new ToolStripMenuItem(
+                    /*new ToolStripMenuItem(
                         Language.Get("Group0", "Platforms"), null,
                         new ToolStripItem[]
-                        {
+                        {*/
                             new ToolStripMenuItem(null, new Icon(Properties.Resources.nintendo_nes, 16, 16).ToBitmap(), AddProject, Console.NES.ToString()),
                             new ToolStripMenuItem(null, new Icon(Properties.Resources.nintendo_super_nes, 16, 16).ToBitmap(), AddProject, Console.SNES.ToString()),
                             new ToolStripMenuItem(null, new Icon(Properties.Resources.nintendo_nintendo64, 16, 16).ToBitmap(), AddProject, Console.N64.ToString()),
                             new ToolStripSeparator(),
-                        }),
+                        /*}),
 
                     new ToolStripMenuItem(
                         Language.Get("Group1", "Platforms"), null,
                         new ToolStripItem[]
-                        {
+                        {*/
                             new ToolStripMenuItem(null, new Icon(Properties.Resources.sega_master_system, 16, 16).ToBitmap(), AddProject, Console.SMS.ToString()),
                             new ToolStripMenuItem(null, new Icon(Properties.Resources.sega_genesis__model_2_, 16, 16).ToBitmap(), AddProject, Console.SMDGEN.ToString()),
                             new ToolStripSeparator(),
-                        }),
+                        /*}),
 
                     new ToolStripMenuItem(
                         Language.Get("Other"), null,
                         new ToolStripItem[]
-                        {
-                            new ToolStripMenuItem(null, new Icon(Properties.Resources.snk_neo_geo_aes, 16, 16).ToBitmap(), AddProject, Console.NeoGeo.ToString()),
-                            new ToolStripSeparator(),
-                        })
+                        {*/
+                            new ToolStripMenuItem(null, new Icon(Properties.Resources.snk_neo_geo_aes, 16, 16).ToBitmap(), AddProject, Console.NeoGeo.ToString())
+                        //})
                 };
 
-            foreach (ToolStripMenuItem section in Consoles)
+            /* foreach (ToolStripMenuItem section in Consoles.OfType<ToolStripMenuItem>())
                 foreach (ToolStripMenuItem item in section.DropDownItems.OfType<ToolStripMenuItem>())
-                    item.Text = string.Format(Language.Get("ProjectType"), Language.Get(item.Name, "Platforms"));
+                    item.Text = string.Format(Language.Get("ProjectType"), Language.Get(item.Name, "Platforms")); */
+
+            foreach (ToolStripMenuItem item in Consoles.OfType<ToolStripMenuItem>())
+                item.Text = string.Format(Language.Get("ProjectType"), Language.Get(item.Name, "Platforms"));
 
             NewProject.DropDownItems.Clear();
             NewProject.DropDownItems.AddRange(Consoles);

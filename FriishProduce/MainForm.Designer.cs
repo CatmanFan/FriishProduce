@@ -66,10 +66,10 @@ namespace FriishProduce
             this.ToolStrip_OpenImage = new System.Windows.Forms.ToolStripButton();
             this.ToolStrip_OpenManual = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            this.ToolStrip_ExportWAD = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolStrip_UseLibRetro = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
+            this.ToolStrip_ExportWAD = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolStrip_CloseTab = new System.Windows.Forms.ToolStripButton();
             this.ToolStrip_Settings = new System.Windows.Forms.ToolStripButton();
             this.ToolStrip_Tutorial = new System.Windows.Forms.ToolStripButton();
@@ -293,7 +293,9 @@ namespace FriishProduce
             // 
             // Welcome_DoNotShow
             // 
-            this.Welcome_DoNotShow.BackColor = System.Drawing.SystemColors.Control;
+            this.Welcome_DoNotShow.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.Welcome_DoNotShow.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.Welcome_DoNotShow.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro;
             resources.ApplyResources(this.Welcome_DoNotShow, "Welcome_DoNotShow");
             this.Welcome_DoNotShow.Name = "Welcome_DoNotShow";
             this.Welcome_DoNotShow.UseVisualStyleBackColor = false;
@@ -302,13 +304,11 @@ namespace FriishProduce
             // PointToTutorial
             // 
             resources.ApplyResources(this.PointToTutorial, "PointToTutorial");
-            this.PointToTutorial.ForeColor = System.Drawing.Color.White;
+            this.PointToTutorial.ForeColor = System.Drawing.Color.Black;
             this.PointToTutorial.Name = "PointToTutorial";
             // 
             // Welcome
             // 
-            this.Welcome.BackColor = System.Drawing.Color.White;
-            this.Welcome.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             resources.ApplyResources(this.Welcome, "Welcome");
             this.Welcome.Name = "Welcome";
             // 
@@ -358,18 +358,6 @@ namespace FriishProduce
             this.toolStripSeparator6.Name = "toolStripSeparator6";
             resources.ApplyResources(this.toolStripSeparator6, "toolStripSeparator6");
             // 
-            // ToolStrip_ExportWAD
-            // 
-            resources.ApplyResources(this.ToolStrip_ExportWAD, "ToolStrip_ExportWAD");
-            this.ToolStrip_ExportWAD.Image = global::FriishProduce.Properties.Resources.box_label;
-            this.ToolStrip_ExportWAD.Name = "ToolStrip_ExportWAD";
-            this.ToolStrip_ExportWAD.Click += new System.EventHandler(this.ExportWAD_Click);
-            // 
-            // toolStripSeparator7
-            // 
-            this.toolStripSeparator7.Name = "toolStripSeparator7";
-            resources.ApplyResources(this.toolStripSeparator7, "toolStripSeparator7");
-            // 
             // ToolStrip_UseLibRetro
             // 
             this.ToolStrip_UseLibRetro.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -382,6 +370,18 @@ namespace FriishProduce
             // 
             this.toolStripSeparator8.Name = "toolStripSeparator8";
             resources.ApplyResources(this.toolStripSeparator8, "toolStripSeparator8");
+            // 
+            // ToolStrip_ExportWAD
+            // 
+            resources.ApplyResources(this.ToolStrip_ExportWAD, "ToolStrip_ExportWAD");
+            this.ToolStrip_ExportWAD.Image = global::FriishProduce.Properties.Resources.box_label;
+            this.ToolStrip_ExportWAD.Name = "ToolStrip_ExportWAD";
+            this.ToolStrip_ExportWAD.Click += new System.EventHandler(this.ExportWAD_Click);
+            // 
+            // toolStripSeparator7
+            // 
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            resources.ApplyResources(this.toolStripSeparator7, "toolStripSeparator7");
             // 
             // ToolStrip_CloseTab
             // 

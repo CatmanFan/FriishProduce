@@ -37,6 +37,7 @@ Planned:
 * Support for other formats:
   * Adobe Flash
   * Single ROM loader (SRL) forwarders
+* Complete SEGA VC options list & add NEO-GEO VC options list.
 
 ## How-to
 * For information on how to use the new interface (v1.0 and above), see **[here](https://github.com/CatmanFan/FriishProduce/wiki/FriishProduce-v1.0)**.

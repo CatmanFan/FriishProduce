@@ -35,14 +35,17 @@ namespace FriishProduce
         {
             get
             {
+                string[] XMLList = Directory.EnumerateFiles(Paths.Languages, "*.xml").ToArray();
+
+                if (_list?.Count == XMLList.Length + 1) return _list;
+
                 _list = new SortedDictionary<string, string>() { { "en", "English" } };
 
-                string[] XMLFiles = Directory.GetFiles(Paths.Languages, "*.xml");
-
-                CultureInfo[] cultures = CultureInfo.GetCultures(CultureTypes.AllCultures);
-                foreach (CultureInfo culture in cultures)
+                foreach (var item in XMLList)
                 {
-                    foreach (var item in XMLFiles)
+                    var cultures = CultureInfo.GetCultures(CultureTypes.AllCultures).Where(c => c.Name.StartsWith(Path.GetFileNameWithoutExtension(item)));
+
+                    foreach (CultureInfo culture in cultures)
                     {
                         if (culture.Name == Path.GetFileNameWithoutExtension(item))
                         {

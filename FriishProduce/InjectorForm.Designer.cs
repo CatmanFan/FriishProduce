@@ -42,6 +42,7 @@ namespace FriishProduce
             this.SaveIcon_Panel = new System.Windows.Forms.Panel();
             this.SaveDataTitle = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.ForwardersList = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.StatusImage2 = new System.Windows.Forms.PictureBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -72,6 +73,8 @@ namespace FriishProduce
             this.WADRegion = new System.Windows.Forms.PictureBox();
             this.Base = new System.Windows.Forms.ComboBox();
             this.bannerPreview1 = new FriishProduce.BannerPreview();
+            this.label3 = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.groupBox8.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -162,6 +165,9 @@ namespace FriishProduce
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.checkBox1);
+            this.groupBox4.Controls.Add(this.label3);
+            this.groupBox4.Controls.Add(this.ForwardersList);
             this.groupBox4.Controls.Add(this.button1);
             this.groupBox4.Controls.Add(this.StatusImage2);
             this.groupBox4.Controls.Add(this.label11);
@@ -169,6 +175,18 @@ namespace FriishProduce
             this.groupBox4.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.TabStop = false;
+            // 
+            // ForwardersList
+            // 
+            this.ForwardersList.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.ForwardersList.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.ForwardersList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ForwardersList.FormattingEnabled = true;
+            this.ForwardersList.Items.AddRange(new object[] {
+            resources.GetString("ForwardersList.Items"),
+            resources.GetString("ForwardersList.Items1")});
+            resources.ApplyResources(this.ForwardersList, "ForwardersList");
+            this.ForwardersList.Name = "ForwardersList";
             // 
             // button1
             // 
@@ -419,18 +437,29 @@ namespace FriishProduce
             resources.ApplyResources(this.bannerPreview1, "bannerPreview1");
             this.bannerPreview1.Name = "bannerPreview1";
             // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
+            // checkBox1
+            // 
+            resources.ApplyResources(this.checkBox1, "checkBox1");
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // InjectorForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             resources.ApplyResources(this, "$this");
-            this.Controls.Add(this.bannerPreview1);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox8);
-            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.bannerPreview1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "InjectorForm";
@@ -504,5 +533,8 @@ namespace FriishProduce
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.ComboBox ForwardersList;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

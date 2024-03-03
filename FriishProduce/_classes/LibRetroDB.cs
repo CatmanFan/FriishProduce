@@ -15,6 +15,8 @@ namespace FriishProduce
     {
         public static void InternetTest()
         {
+            string URL = null;
+
             try
             {
                 var request = (HttpWebRequest)WebRequest.Create
@@ -23,9 +25,12 @@ namespace FriishProduce
                     System.Globalization.CultureInfo.InstalledUICulture.Name.Contains("zh-CN") ? "http://www.baidu.com/" :
                     "https://gbatemp.net/"
                 );
+
+                URL = request.Address.Authority;
                 request.Method = "HEAD";
                 request.KeepAlive = false;
                 request.Timeout = 15000;
+
                 var response = request.GetResponse();
 
                 for (int i = 0; i < 2; i++)
@@ -33,9 +38,11 @@ namespace FriishProduce
                     char x = response.ResponseUri.ToString()[i];
                 }
             }
+
             catch (WebException ex)
             {
-                throw new Exception(string.Format(Language.Get("Error.000"), ex.Message + (ex.Message[ex.Message.Length - 1] != '.' ? "." : string.Empty)));
+                string message = (ex.Message.Contains(URL) ? ex.Message.Substring(0, ex.Message.IndexOf(':')) : ex.Message) + (ex.Message[ex.Message.Length - 1] != '.' ? "." : string.Empty);
+                throw new Exception(string.Format(Language.Get("Error.000"), message));
             }
         }
 
