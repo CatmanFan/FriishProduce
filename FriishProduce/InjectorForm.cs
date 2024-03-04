@@ -30,11 +30,12 @@ namespace FriishProduce
         // Public variables
         // -----------------------------------
         protected ROM                           ROM         { get; set; }
+        protected string                        PatchFile   { get; set; }
         protected string                        Manual      { get; set; }
         protected LibRetroDB                    LibRetro    { get; set; }
         protected DatabaseEntry[]               Database    { get; set; }
         protected IDictionary<string, string>   CurrentBase { get; set; }
-        protected ImageHelper                   Img        { get; set; }
+        protected ImageHelper                   Img         { get; set; }
         protected Creator                       Creator     { get; set; }
 
         protected InjectorWiiVC                 VC       { get; set; }
@@ -61,6 +62,7 @@ namespace FriishProduce
             // ----------------------------
             Language.Localize(this);
             label7.Text = label5.Text;
+            CustomManual.Text = Language.Get("CustomManual");
 
             // Change title text to untitled string
             Untitled = string.Format(Language.Get("Untitled"), Language.Get(Enum.GetName(typeof(Console), Console), "Platforms"));
@@ -78,6 +80,45 @@ namespace FriishProduce
             imageintpl.Items.Add(Language.Get("ByDefault"));
             imageintpl.Items.AddRange(Language.GetArray("List.ImageInterpolation"));
             imageintpl.SelectedIndex = Properties.Settings.Default.ImageInterpolation;
+
+            // Injection methods list
+            InjectorsList.Items.Clear();
+            InjectorsList.Items.Add(Language.Get("VC"));
+
+            switch (Console)
+            {
+                case Console.NES:
+                    break;
+
+                case Console.SNES:
+                    break;
+
+                case Console.N64:
+                    break;
+
+                case Console.SMS:
+                case Console.SMDGEN:
+                    break;
+
+                case Console.PCE:
+                case Console.NeoGeo:
+                case Console.MSX:
+                case Console.C64:
+                    break;
+
+                case Console.Flash:
+                    CustomManual.Enabled = false;
+                    InjectorsList.Items.Clear();
+                    InjectorsList.Items.Add(Language.Get("ByDefault"));
+                    break;
+
+                default:
+                    break;
+            }
+
+            InjectorsList.SelectedIndex = 0;
+            InjectorsList.Enabled = InjectorsList.Items.Count > 1;
+            if (!CustomManual.Enabled) CustomManual.Checked = false;
 
             if (Properties.Settings.Default.ImageFitAspectRatio) radioButton2.Checked = true; else radioButton1.Checked = true;
         }
@@ -208,6 +249,9 @@ namespace FriishProduce
                 label2.Text = string.Format(Language.Get(label2.Name, this), Language.Get("Unknown"));
             else
                 label2.Text = string.Format(Language.Get(label2.Name, this), LibRetro.GetCleanTitle() ?? Language.Get("Unknown"));
+
+            label11.Text = PatchFile != null ? Path.GetFileName(PatchFile) : Language.Get("None");
+            label11.ForeColor = PatchFile != null ? SystemColors.ControlText : Color.Gray;
         }
 
         private void RandomTID() => TitleID.Text = Creator.TitleID = TIDCode != null ? TIDCode + GenerateTitleID().Substring(0, 3) : GenerateTitleID();
@@ -404,7 +448,7 @@ namespace FriishProduce
             }
 
             Manual = path;
-            StatusImage2.Image = Manual != null ? Properties.Resources.tick : Properties.Resources.cross;
+            CustomManual.Checked = Manual != null;
         }
 
         public void LoadImage()
@@ -523,9 +567,9 @@ namespace FriishProduce
             groupBox2.Enabled =
             groupBox3.Enabled =
             groupBox4.Enabled =
-            groupBox5.Enabled =
             groupBox6.Enabled =
             groupBox8.Enabled = true;
+            groupBox5.Enabled = CustomManual.Enabled || Console == Console.Flash;
 
             RandomTID();
             UpdateBaseForm();
@@ -1064,6 +1108,36 @@ namespace FriishProduce
             else Creator.ChannelTitles = new string[8] { ChannelTitle.Text, ChannelTitle.Text, ChannelTitle.Text, ChannelTitle.Text, ChannelTitle.Text, ChannelTitle.Text, ChannelTitle.Text, ChannelTitle.Text };
 
             ChannelTitle.Enabled = !ChannelTitle_Locale.Checked;
+        }
+
+        private void CustomManual_CheckedChanged(object sender, EventArgs e)
+        {
+            if (CustomManual.Checked)
+            {
+                if (!Properties.Settings.Default.DoNotShow_000) MessageBox.Show((sender as Control).Text, Language.Get("Message.006"), 0);
+
+                if (BrowseManual.ShowDialog() == DialogResult.OK)
+                {
+                    LoadManual(BrowseManual.SelectedPath);
+                    CheckExport();
+                }
+
+                else CustomManual.Checked = false;
+            }
+
+            else if (!CustomManual.Checked && Manual != null)
+            {
+                LoadManual(null);
+                CheckExport();
+            }
+        }
+
+        private void InjectorsList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CustomManual.Enabled = InjectorsList.SelectedItem.ToString() == Language.Get("VC");
+            if (groupBox4.Enabled) groupBox5.Enabled = CustomManual.Enabled || Console == Console.Flash;
+            if (!CustomManual.Enabled) CustomManual.Checked = false;
+            if (groupBox4.Enabled) CheckExport();
         }
     }
 }

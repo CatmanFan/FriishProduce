@@ -20,6 +20,7 @@
 		<B.OK>&amp;Aceptar</B.OK>
 		<B.Yes>&amp;Sí</B.Yes>
 		<ByDefault>Por defecto</ByDefault>
+		<CustomManual>Importar manual electrónico</CustomManual>
 		<DoNotShow>No volver a mostrar este mensaje</DoNotShow>
 		<Error>Se ha producido un error</Error>
 		<Error.000>No se pudo conectar a Internet.\nDescripción : {0}</Error.000>
@@ -49,6 +50,7 @@
 		<Message.003>Exportado con éxito a WAD:\n{0}.</Message.003>
 		<Message.004>No se pueden recuperar todos los datos de LibRetro para la ROM seleccionada.\nPor esta razón deberá completar manualmente algunos formularios.</Message.004>
 		<Message.008>El archivo seleccionado no es valido.</Message.008>
+		<None>Ninguno(a)</None>
 		<Other>Otros</Other>
 		<ProjectType>Proyecto {0}</ProjectType>
 		<Region.J>Japón</Region.J>
@@ -58,9 +60,9 @@
 		<Settings>Opciones</Settings>
 		<Unknown>Desconocido</Unknown>
 		<Untitled>Canal {0} sin título</Untitled>
+		<VC>Consola Virtual</VC>
 	</global>
 	<form name="InjectorForm">
-		<button1.Text>Opciónes de método de inyección...</button1.Text>
 		<groupBox1.Text>Información de archivos actuales</groupBox1.Text>
 		<groupBox2.Text>Información del canal de origen</groupBox2.Text>
 		<groupBox3.Text>Cabecera del canal</groupBox3.Text>
@@ -70,9 +72,9 @@
 		<groupBox8.Text>Imagen</groupBox8.Text>
 		<label1.Text>Nombre de la ROM: {0}</label1.Text>
 		<label10.Text>Jugadores:</label10.Text>
-		<label11.Text>Manual electrónico personalizado</label11.Text>
 		<label12.Text>Método de interpolación:</label12.Text>
 		<label2.Text>Nombre oficial: {0}</label2.Text>
+		<label3.Text>Método de inyección:</label3.Text>
 		<label4.Text>Nombre del juego:</label4.Text>
 		<label6.Text>Nombre corto:</label6.Text>
 		<label8.Text>Nombre completo:</label8.Text>
@@ -91,7 +93,6 @@
 		<MenuItem_Project.Text>&amp;Proyecto</MenuItem_Project.Text>
 		<NewProject.Text>Nuevo...</NewProject.Text>
 		<OpenImage.Text>Abrir una imagen...</OpenImage.Text>
-		<OpenManual.Text>Añadir un manual electrónico...</OpenManual.Text>
 		<OpenROM.Text>Abrir una ROM...</OpenROM.Text>
 		<UseLibRetro.Text>Cargar datos desde LibRetro</UseLibRetro.Text>
 	</form>

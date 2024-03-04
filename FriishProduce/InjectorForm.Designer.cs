@@ -42,10 +42,10 @@ namespace FriishProduce
             this.SaveIcon_Panel = new System.Windows.Forms.Panel();
             this.SaveDataTitle = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.ForwardersList = new System.Windows.Forms.ComboBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.InjectorsList = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.StatusImage2 = new System.Windows.Forms.PictureBox();
-            this.label11 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.ChannelTitle_Locale = new System.Windows.Forms.CheckBox();
             this.Random = new System.Windows.Forms.PictureBox();
@@ -72,13 +72,13 @@ namespace FriishProduce
             this.OpenWAD = new System.Windows.Forms.CheckBox();
             this.WADRegion = new System.Windows.Forms.PictureBox();
             this.Base = new System.Windows.Forms.ComboBox();
+            this.CustomManual = new System.Windows.Forms.CheckBox();
+            this.BrowseManual = new Ookii.Dialogs.WinForms.VistaFolderBrowserDialog();
+            this.label11 = new System.Windows.Forms.Label();
             this.bannerPreview1 = new FriishProduce.BannerPreview();
-            this.label3 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.groupBox8.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.StatusImage2)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Random)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -165,47 +165,45 @@ namespace FriishProduce
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.label11);
+            this.groupBox4.Controls.Add(this.CustomManual);
             this.groupBox4.Controls.Add(this.checkBox1);
             this.groupBox4.Controls.Add(this.label3);
-            this.groupBox4.Controls.Add(this.ForwardersList);
+            this.groupBox4.Controls.Add(this.InjectorsList);
             this.groupBox4.Controls.Add(this.button1);
-            this.groupBox4.Controls.Add(this.StatusImage2);
-            this.groupBox4.Controls.Add(this.label11);
             resources.ApplyResources(this.groupBox4, "groupBox4");
             this.groupBox4.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.TabStop = false;
             // 
-            // ForwardersList
+            // checkBox1
             // 
-            this.ForwardersList.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.ForwardersList.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.ForwardersList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ForwardersList.FormattingEnabled = true;
-            this.ForwardersList.Items.AddRange(new object[] {
-            resources.GetString("ForwardersList.Items"),
-            resources.GetString("ForwardersList.Items1")});
-            resources.ApplyResources(this.ForwardersList, "ForwardersList");
-            this.ForwardersList.Name = "ForwardersList";
+            resources.ApplyResources(this.checkBox1, "checkBox1");
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
+            // InjectorsList
+            // 
+            this.InjectorsList.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.InjectorsList.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.InjectorsList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.InjectorsList.FormattingEnabled = true;
+            resources.ApplyResources(this.InjectorsList, "InjectorsList");
+            this.InjectorsList.Name = "InjectorsList";
+            this.InjectorsList.SelectedIndexChanged += new System.EventHandler(this.InjectorsList_SelectedIndexChanged);
             // 
             // button1
             // 
             resources.ApplyResources(this.button1, "button1");
+            this.button1.Image = global::FriishProduce.Properties.Resources.wrench;
             this.button1.Name = "button1";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.OpenInjectorOptions);
-            // 
-            // StatusImage2
-            // 
-            this.StatusImage2.Image = global::FriishProduce.Properties.Resources.cross;
-            resources.ApplyResources(this.StatusImage2, "StatusImage2");
-            this.StatusImage2.Name = "StatusImage2";
-            this.StatusImage2.TabStop = false;
-            // 
-            // label11
-            // 
-            resources.ApplyResources(this.label11, "label11");
-            this.label11.Name = "label11";
             // 
             // groupBox3
             // 
@@ -431,22 +429,29 @@ namespace FriishProduce
             this.Base.Name = "Base";
             this.Base.SelectedIndexChanged += new System.EventHandler(this.Base_SelectedIndexChanged);
             // 
+            // CustomManual
+            // 
+            resources.ApplyResources(this.CustomManual, "CustomManual");
+            this.CustomManual.Name = "CustomManual";
+            this.CustomManual.UseVisualStyleBackColor = true;
+            this.CustomManual.CheckedChanged += new System.EventHandler(this.CustomManual_CheckedChanged);
+            // 
+            // BrowseManual
+            // 
+            this.BrowseManual.RootFolder = System.Environment.SpecialFolder.MyComputer;
+            this.BrowseManual.ShowNewFolderButton = false;
+            // 
+            // label11
+            // 
+            resources.ApplyResources(this.label11, "label11");
+            this.label11.ForeColor = System.Drawing.Color.Gray;
+            this.label11.Name = "label11";
+            // 
             // bannerPreview1
             // 
             this.bannerPreview1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             resources.ApplyResources(this.bannerPreview1, "bannerPreview1");
             this.bannerPreview1.Name = "bannerPreview1";
-            // 
-            // label3
-            // 
-            resources.ApplyResources(this.label3, "label3");
-            this.label3.Name = "label3";
-            // 
-            // checkBox1
-            // 
-            resources.ApplyResources(this.checkBox1, "checkBox1");
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // InjectorForm
             // 
@@ -473,7 +478,6 @@ namespace FriishProduce
             this.groupBox5.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.StatusImage2)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Random)).EndInit();
@@ -526,15 +530,16 @@ namespace FriishProduce
         private System.Windows.Forms.CheckBox OpenWAD;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.CheckBox ChannelTitle_Locale;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.PictureBox StatusImage2;
         private System.Windows.Forms.Label label2;
         private BannerPreview bannerPreview1;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.ComboBox ForwardersList;
+        private System.Windows.Forms.ComboBox InjectorsList;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox CustomManual;
+        private Ookii.Dialogs.WinForms.VistaFolderBrowserDialog BrowseManual;
+        private System.Windows.Forms.Label label11;
     }
 }

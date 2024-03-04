@@ -304,7 +304,7 @@ namespace FriishProduce
 
         private void OpenManual_Click(object sender, EventArgs e)
         {
-            if (!Properties.Settings.Default.DoNotShow_000) MessageBox.Show(Language.Get("Message.006"), 0);
+            if (!Properties.Settings.Default.DoNotShow_000) MessageBox.Show((sender as Control).Text, Language.Get("Message.006"), 0);
             (tabControl.SelectedForm as InjectorForm).LoadManual(BrowseManual.ShowDialog() == DialogResult.OK ? BrowseManual.SelectedPath : null);
         }
 

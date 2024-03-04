@@ -25,6 +25,7 @@
 		<B.OK>&amp;OK</B.OK>
 		<B.Yes>&amp;Oui</B.Yes>
 		<ByDefault>Par défaut</ByDefault>
+		<CustomManual>Importer un mode d'emploi personnalisé</CustomManual>
 		<DoNotShow>Ne plus afficher ce message</DoNotShow>
 		<Error>Une erreur est survenue.</Error>
 		<Error.000>Échec de la connexion à Internet.\nMessage : {0}</Error.000>
@@ -56,6 +57,7 @@
 		<Message.003>Sauvegardé avec succès vers le fichier WAD suivant :\n{0}</Message.003>
 		<Message.004>Impossible de remplir toutes les formes d'après la base de données Libretro pour ce logiciel.\nCertaines formes peuvent avoir besoin d'être remplis manuellement.</Message.004>
 		<Message.008>Le fichier que vous avez sélectionné est invalide.</Message.008>
+		<None>Aucun(e)</None>
 		<Other>Autres</Other>
 		<ProjectType>Projet {0}</ProjectType>
 		<Region.J>Japon</Region.J>
@@ -65,9 +67,9 @@
 		<Settings>Paramètres</Settings>
 		<Unknown>Inconnu</Unknown>
 		<Untitled>Chaîne {0} sans titre</Untitled>
+		<VC>Console virtuelle</VC>
 	</global>
 	<form name="InjectorForm">
-		<button1.Text>Options de méthode d'injection ...</button1.Text>
 		<groupBox1.Text>Informations actuelles</groupBox1.Text>
 		<groupBox2.Text>Informations de la chaîne d'origine</groupBox2.Text>
 		<groupBox3.Text>Métadonnées de la chaîne</groupBox3.Text>
@@ -77,9 +79,9 @@
 		<groupBox8.Text>Image</groupBox8.Text>
 		<label1.Text>Nom de la ROM : {0}</label1.Text>
 		<label10.Text>Joueurs :</label10.Text>
-		<label11.Text>Mode d'emploi personnalisé</label11.Text>
 		<label12.Text>Méthode d'interpolation :</label12.Text>
 		<label2.Text>Nom officiel du logiciel : {0}</label2.Text>
+		<label3.Text>Méthode d'injection :</label3.Text>
 		<label4.Text>Nom du jeu :</label4.Text>
 		<label5.Text>Identifiant :</label5.Text>
 		<label6.Text>Nom abrégé :</label6.Text>
@@ -99,7 +101,6 @@
 		<MenuItem_Project.Text>&amp;Projet</MenuItem_Project.Text>
 		<NewProject.Text>Nouveau ...</NewProject.Text>
 		<OpenImage.Text>Ouvrir une image ...</OpenImage.Text>
-		<OpenManual.Text>Ajouter un mode d'emploi personnalisé ...</OpenManual.Text>
 		<OpenROM.Text>Ouvrir une ROM ...</OpenROM.Text>
 		<UseLibRetro.Text>Remplir dès LibRetro</UseLibRetro.Text>
 	</form>

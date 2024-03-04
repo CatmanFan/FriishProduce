@@ -17,8 +17,9 @@
 		<DoNotShow>Bu mesajı bir daha gösterme</DoNotShow>
 		<Error>Bir hata oluştu</Error>
 		<Filter>|Tüm dosyalar (*.*)|*.*</Filter>
-		<InjectionMethodOptions>VC Emülatör Ayarları</InjectionMethodOptions>
+		<InjectionMethodOptions>Emülatör Ayarları</InjectionMethodOptions>
 		<Message.008>Seçtiğiniz dosya geçersizdir.</Message.008>
+		<None>Yok</None>
 		<Other>Diğer</Other>
 		<ProjectType>{0} Projesi</ProjectType>
 		<Region.J>Japonya</Region.J>
