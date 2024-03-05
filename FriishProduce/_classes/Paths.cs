@@ -25,11 +25,9 @@ namespace FriishProduce
         public static readonly string WorkingFolder_FlashConfig = WorkingFolder_Content2 + "config\\config.common.pcf";
 
         // Forwarder paths
-        public static readonly string WorkingFolder_ROM = WorkingFolder + "rom\\";
-        public static readonly string WorkingFolder_SD = WorkingFolder + "SD\\";
-        public static readonly string WorkingFolder_Forwarder = WorkingFolder + "forwarder\\";
-        public static readonly string DOL = Path.Combine(EnvironmentFolder, "resources\\forwarders\\");
-        public static readonly string BIOS = Path.Combine(DOL, "bios\\");
+        public static readonly string SDUSBRoot = WorkingFolder + "root\\";
+        public static readonly string Emulators = Path.Combine(EnvironmentFolder, "resources\\forwarders\\emulators\\");
+        public static readonly string BIOSFiles = Path.Combine(EnvironmentFolder, "resources\\forwarders\\bios\\");
 
         // Other
         public static readonly string PatchedSuffix = "-patched";

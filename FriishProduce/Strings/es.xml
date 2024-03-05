@@ -1,8 +1,5 @@
 <?xml version="1.0"?>
-<language>
-	<global name="Metadata">
-		<Translators>CatmanFan</Translators>
-	</global>
+<language author="CatmanFan" appTitle="FriishProduce">
 	<global name="Platforms">
 		<Group1>Sega</Group1>
 		<NeoGeo>SNK Neo-Geo</NeoGeo>
@@ -28,6 +25,7 @@
 		<Error.002>No se pueden reemplazar los datos internos.</Error.002>
 		<Error.003>La ROM es demasiado grande (más de {0} {1} en tamaño).</Error.003>
 		<Error.005>La aplicación necesaria ({0}) no se encontró en el subdirectorio "resources\\tools".</Error.005>
+		<Error.007>No se pudo aplicar el parche.</Error.007>
 		<Filter>|Todos los archivos (*.*)|*.*</Filter>
 		<Filter.Disc>Imágenes de disco (*.cue, *.iso, *.chd)|*.cue;*.iso;*.chd|  Archivos Cue Sheet (*.cue)|*.cue|  Imágenes ISO (*.iso)|*.iso|  Archivos CHD (*.chd)|*.chd</Filter.Disc>
 		<Filter.Img>Imágenes (*.bmp, *.jpg, *.jpeg, *.png)|*.bmp;*.jpg;*.jpeg;*.png|  Bitmap (*.bmp)|*.bmp|  JPEG (*.jpg, *.jpeg)|*.jpg;*.jpeg|  PNG (*.png)|*.png</Filter.Img>

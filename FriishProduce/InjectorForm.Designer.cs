@@ -42,7 +42,9 @@ namespace FriishProduce
             this.SaveIcon_Panel = new System.Windows.Forms.Panel();
             this.SaveDataTitle = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.CustomManual = new System.Windows.Forms.CheckBox();
+            this.ImportPatch = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.InjectorsList = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -72,10 +74,9 @@ namespace FriishProduce
             this.OpenWAD = new System.Windows.Forms.CheckBox();
             this.WADRegion = new System.Windows.Forms.PictureBox();
             this.Base = new System.Windows.Forms.ComboBox();
-            this.CustomManual = new System.Windows.Forms.CheckBox();
             this.BrowseManual = new Ookii.Dialogs.WinForms.VistaFolderBrowserDialog();
-            this.label11 = new System.Windows.Forms.Label();
             this.bannerPreview1 = new FriishProduce.BannerPreview();
+            this.BrowsePatch = new System.Windows.Forms.OpenFileDialog();
             this.groupBox8.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -167,7 +168,7 @@ namespace FriishProduce
             // 
             this.groupBox4.Controls.Add(this.label11);
             this.groupBox4.Controls.Add(this.CustomManual);
-            this.groupBox4.Controls.Add(this.checkBox1);
+            this.groupBox4.Controls.Add(this.ImportPatch);
             this.groupBox4.Controls.Add(this.label3);
             this.groupBox4.Controls.Add(this.InjectorsList);
             this.groupBox4.Controls.Add(this.button1);
@@ -176,11 +177,25 @@ namespace FriishProduce
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.TabStop = false;
             // 
-            // checkBox1
+            // label11
             // 
-            resources.ApplyResources(this.checkBox1, "checkBox1");
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.label11, "label11");
+            this.label11.ForeColor = System.Drawing.Color.Gray;
+            this.label11.Name = "label11";
+            // 
+            // CustomManual
+            // 
+            resources.ApplyResources(this.CustomManual, "CustomManual");
+            this.CustomManual.Name = "CustomManual";
+            this.CustomManual.UseVisualStyleBackColor = true;
+            this.CustomManual.CheckedChanged += new System.EventHandler(this.CustomManual_CheckedChanged);
+            // 
+            // ImportPatch
+            // 
+            resources.ApplyResources(this.ImportPatch, "ImportPatch");
+            this.ImportPatch.Name = "ImportPatch";
+            this.ImportPatch.UseVisualStyleBackColor = true;
+            this.ImportPatch.CheckedChanged += new System.EventHandler(this.Patch_CheckedChanged);
             // 
             // label3
             // 
@@ -429,29 +444,20 @@ namespace FriishProduce
             this.Base.Name = "Base";
             this.Base.SelectedIndexChanged += new System.EventHandler(this.Base_SelectedIndexChanged);
             // 
-            // CustomManual
-            // 
-            resources.ApplyResources(this.CustomManual, "CustomManual");
-            this.CustomManual.Name = "CustomManual";
-            this.CustomManual.UseVisualStyleBackColor = true;
-            this.CustomManual.CheckedChanged += new System.EventHandler(this.CustomManual_CheckedChanged);
-            // 
             // BrowseManual
             // 
             this.BrowseManual.RootFolder = System.Environment.SpecialFolder.MyComputer;
             this.BrowseManual.ShowNewFolderButton = false;
-            // 
-            // label11
-            // 
-            resources.ApplyResources(this.label11, "label11");
-            this.label11.ForeColor = System.Drawing.Color.Gray;
-            this.label11.Name = "label11";
             // 
             // bannerPreview1
             // 
             this.bannerPreview1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             resources.ApplyResources(this.bannerPreview1, "bannerPreview1");
             this.bannerPreview1.Name = "bannerPreview1";
+            // 
+            // BrowsePatch
+            // 
+            this.BrowsePatch.RestoreDirectory = true;
             // 
             // InjectorForm
             // 
@@ -537,9 +543,10 @@ namespace FriishProduce
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.ComboBox InjectorsList;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox ImportPatch;
         private System.Windows.Forms.CheckBox CustomManual;
         private Ookii.Dialogs.WinForms.VistaFolderBrowserDialog BrowseManual;
         private System.Windows.Forms.Label label11;
+        internal System.Windows.Forms.OpenFileDialog BrowsePatch;
     }
 }

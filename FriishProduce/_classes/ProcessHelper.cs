@@ -9,41 +9,21 @@ namespace FriishProduce
 {
     public class ProcessHelper
     {
-        public static void Run(string app, string arguments)
-        {
-            using (Process p = Process.Start(new ProcessStartInfo
-            {
-                FileName = app,
-                WorkingDirectory = System.IO.Path.GetDirectoryName(app),
-                Arguments = arguments,
-                UseShellExecute = false,
-                CreateNoWindow = true
-            }))
-                p.WaitForExit();
-        }
+        public static void Run(string app, string arguments, bool showWindow = false) => Run(app, Paths.Tools, arguments, showWindow);
 
-        public static void Run(string app, string arguments, bool showWindow = false)
+        public static void Run(string app, string workingFolder, string arguments, bool showWindow = false)
         {
-            using (Process p = Process.Start(new ProcessStartInfo
-            {
-                FileName = app,
-                WorkingDirectory = System.IO.Path.GetDirectoryName(app),
-                Arguments = arguments,
-                UseShellExecute = false,
-                CreateNoWindow = !showWindow
-            }))
-                p.WaitForExit();
-        }
+            var appPath = System.IO.Path.Combine(Paths.Tools, System.IO.Path.GetFileName(app));
 
-        public static void Run(string app, string workingFolder, string arguments)
-        {
+            if (!System.IO.File.Exists(appPath)) throw new Exception(string.Format(Language.Get("Error.005"), app));
+
             using (Process p = Process.Start(new ProcessStartInfo
             {
-                FileName = app,
+                FileName = appPath,
                 WorkingDirectory = workingFolder,
                 Arguments = arguments,
                 UseShellExecute = false,
-                CreateNoWindow = true
+                CreateNoWindow = !showWindow
             }))
                 p.WaitForExit();
         }

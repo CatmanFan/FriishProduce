@@ -17,7 +17,8 @@ namespace FriishProduce
         NeoGeo,
         MSX,
         C64,
-        Flash
+        Flash,
+        GBA
 
         /* TO-DO:
          * PCECD,

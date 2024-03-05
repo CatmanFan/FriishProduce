@@ -148,6 +148,13 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Subforms\Options_Forwarder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Subforms\Options_Forwarder.Designer.cs">
+      <DependentUpon>Options_Forwarder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_classes\Injectors\Forwarder.cs" />
     <Compile Include="_classes\Language.cs" />
     <Compile Include="_classes\ROM\N64.cs" />
     <Compile Include="_classes\ROM\NeoGeo.cs" />
@@ -272,6 +279,9 @@
     <EmbeddedResource Include="Subforms\ContentOptions.resx">
       <DependentUpon>ContentOptions.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Subforms\Options_Forwarder.resx">
+      <DependentUpon>Options_Forwarder.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Subforms\Options_VC_SEGA.resx">
       <DependentUpon>Options_VC_SEGA.cs</DependentUpon>
     </EmbeddedResource>
@@ -305,6 +315,9 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="Resources\forwarder_comex.wad" />
+    <None Include="Resources\forwarder_v12.dol" />
+    <None Include="Resources\forwarder_v14.dol" />
     <None Include="Resources\icons\consoles\nintendo nes.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -322,8 +335,10 @@
     <None Include="Resources\icons\tick.png" />
     <None Include="Resources\icons\cross.png" />
     <None Include="Resources\icons\locale.png" />
+    <None Include="Resources\nandloader_vwii.app" />
     <None Include="Resources\subforms\screen_smd.png" />
     <None Include="Resources\savebanner_flash.png" />
+    <None Include="Resources\forwarder_waninkoko.wad" />
     <None Include="Resources\x.png" />
     <None Include="Resources\subforms\screen_nes.png" />
     <None Include="Resources\bg.png" />

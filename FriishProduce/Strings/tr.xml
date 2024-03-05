@@ -1,8 +1,5 @@
 <?xml version="1.0"?>
-<language>
-	<global name="Metadata">
-		<Translators>CatmanFan</Translators>
-	</global>
+<language author="CatmanFan" appTitle="FriishProduce">
 	<global name="Platforms">
 		<SMDGEN>Mega Drive</SMDGEN>
 	</global>

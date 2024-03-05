@@ -21,7 +21,7 @@ namespace FriishProduce
 
         private void AutoSetStrip()
         {
-            Text = Language.Get("AppTitle");
+            Text = Language.AppTitle();
 
             foreach (ToolStripMenuItem section in MenuStrip.Items.OfType<ToolStripMenuItem>())
                 foreach (ToolStripItem item in section.DropDownItems.OfType<ToolStripItem>())
@@ -276,7 +276,7 @@ namespace FriishProduce
                 ToolStrip_UseLibRetro.Enabled = UseLibRetro.Enabled = currentForm.CheckToolStripButtons()[0];
                 ToolStrip_OpenManual.Enabled = OpenManual.Enabled = currentForm.CheckToolStripButtons()[1];
 
-                currentForm.LoadROM(UseLibRetro.Enabled ? Properties.Settings.Default.AutoLibRetro : false);
+                currentForm.LoadROM(Properties.Settings.Default.AutoLibRetro);
             }
         }
 
@@ -289,8 +289,7 @@ namespace FriishProduce
 
             SaveWAD.FileName = currentForm.GetName();
             if (SaveWAD.ShowDialog() == DialogResult.OK)
-                if (currentForm.CreateInject())
-                    currentForm.Close();
+                currentForm.CreateInject();
         }
 
         private void OpenImage_Click(object sender, EventArgs e)

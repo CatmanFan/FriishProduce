@@ -283,4 +283,19 @@
   <data name="globe-model" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons\globe-model.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="forwarder_v12" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\forwarder_v12.dol;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="forwarder_v14" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\forwarder_v14.dol;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="nandloader_vwii" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\nandloader_vwii.app;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="forwarder_comex" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\forwarder_comex.wad;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="forwarder_waninkoko" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\forwarder_waninkoko.wad;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

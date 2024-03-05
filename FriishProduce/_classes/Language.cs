@@ -206,9 +206,18 @@ namespace FriishProduce
             var searchTarget = targetXML.SelectNodes(type);
             if (isSectionSet)
             {
+                bool isFound = false;
+
                 if (isForm && !name.EndsWith(".Text") && !name.Contains(".Items")) name += ".Text";
+
                 foreach (XmlNode section in targetXML.SelectNodes(type))
-                    if (section.Attributes[0].InnerText == sectionName) searchTarget = section.SelectNodes(".");
+                    if (section.Attributes[0].InnerText == sectionName)
+                    {
+                        isFound = true;
+                        searchTarget = section.SelectNodes(".");
+                    }
+
+                if (isForm && !isFound) goto Failed;
             }
 
             foreach (XmlNode section in searchTarget)
@@ -219,6 +228,7 @@ namespace FriishProduce
                         return returned.StartsWith("\n") ? returned.Substring(1) : returned;
                     }
 
+            Failed:
             if (!useEnglish)
             {
                 useEnglish = true;
@@ -228,12 +238,18 @@ namespace FriishProduce
             else return "undefined";
         }
 
+        public static string AppTitle()
+        {
+            if (XML.Attributes?[1].Name.ToLower() == "apptitle")
+                return XML.Attributes?[1].InnerText;
+
+            return Application.ProductName;
+        }
+
         public static string Author()
         {
-            foreach (XmlNode section in XML.SelectNodes("global"))
-                foreach (XmlNode item in section.ChildNodes)
-                    if (item.Name.ToLower() == "translators" && !string.IsNullOrEmpty(item.InnerText))
-                        return item.InnerText;
+            if (XML.Attributes?[0].Name.ToLower() == "author")
+                return XML.Attributes?[0].InnerText;
 
             return "?";
         }
@@ -288,7 +304,7 @@ namespace FriishProduce
 
         public static void Localize(Form c)
         {
-            if (c.Name.ToLower().StartsWith("options_vc")) c.Text = Get("InjectionMethodOptions");
+            if (c.Name.ToLower().StartsWith("options_")) c.Text = Get("InjectionMethodOptions");
 
             foreach (Control d in c.Controls)
             {

@@ -92,5 +92,11 @@ namespace FriishProduce
         }
 
         public bool CheckSize() => CheckSize(MaxSize);
+
+        public void Patch(string PatchFile)
+        {
+            ProcessHelper.Run("xdelta.exe", $"-d -s \"{Path}\" \"{PatchFile}\" \"{Paths.WorkingFolder + "patched.rom"}\"");
+            if (!File.Exists(Paths.WorkingFolder + "patched.rom")) throw new Exception(Language.Get("Error.007"));
+        }
     }
 }

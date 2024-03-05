@@ -30,6 +30,7 @@ namespace FriishProduce
         // Public variables
         // -----------------------------------
         protected ROM                           ROM         { get; set; }
+        protected WAD                           OutWAD      { get; set; }
         protected string                        PatchFile   { get; set; }
         protected string                        Manual      { get; set; }
         protected LibRetroDB                    LibRetro    { get; set; }
@@ -38,17 +39,18 @@ namespace FriishProduce
         protected ImageHelper                   Img         { get; set; }
         protected Creator                       Creator     { get; set; }
 
-        protected InjectorWiiVC                 VC       { get; set; }
+        protected bool                          isVC        { get; set; }
+        protected InjectorWiiVC                 VC          { get; set; }
 
         // -----------------------------------
         // Options
         // -----------------------------------
-        protected ContentOptions                CO { get; set; }
+        protected ContentOptions                CO          { get; set; }
 
         // -----------------------------------
         // Connection with parent form
         // -----------------------------------
-        public new MainForm Parent { get; set; }
+        public new MainForm Parent                          { get; set; }
 
         public event EventHandler ExportCheck;
 
@@ -63,6 +65,7 @@ namespace FriishProduce
             Language.Localize(this);
             label7.Text = label5.Text;
             CustomManual.Text = Language.Get("CustomManual");
+            BrowsePatch.Filter = Language.Get("Filter.Patch");
 
             // Change title text to untitled string
             Untitled = string.Format(Language.Get("Untitled"), Language.Get(Enum.GetName(typeof(Console), Console), "Platforms"));
@@ -88,16 +91,27 @@ namespace FriishProduce
             switch (Console)
             {
                 case Console.NES:
+                    InjectorsList.Items.Add(Forwarder.List[0]);
+                    InjectorsList.Items.Add(Forwarder.List[1]);
+                    InjectorsList.Items.Add(Forwarder.List[2]);
                     break;
 
                 case Console.SNES:
+                    InjectorsList.Items.Add(Forwarder.List[3]);
+                    InjectorsList.Items.Add(Forwarder.List[4]);
+                    InjectorsList.Items.Add(Forwarder.List[5]);
                     break;
 
                 case Console.N64:
+                    InjectorsList.Items.Add(Forwarder.List[8]);
+                    InjectorsList.Items.Add(Forwarder.List[9]);
+                    InjectorsList.Items.Add(Forwarder.List[10]);
+                    InjectorsList.Items.Add(Forwarder.List[11]);
                     break;
 
                 case Console.SMS:
                 case Console.SMDGEN:
+                    InjectorsList.Items.Add(Forwarder.List[7]);
                     break;
 
                 case Console.PCE:
@@ -145,7 +159,6 @@ namespace FriishProduce
                 case Console.NES:
                     TIDCode = "F";
                     ROM = new ROM_NES();
-                    CO = new Options_VC_NES();
                     break;
 
                 case Console.SNES:
@@ -156,19 +169,16 @@ namespace FriishProduce
                 case Console.N64:
                     TIDCode = "N";
                     ROM = new ROM_N64();
-                    CO = new Options_VC_N64();
                     break;
 
                 case Console.SMS:
                     TIDCode = "L";
                     ROM = new ROM_SEGA() { IsSMS = true };
-                    CO = new Options_VC_SEGA() { IsSMS = true };
                     break;
 
                 case Console.SMDGEN:
                     TIDCode = "M";
                     ROM = new ROM_SEGA() { IsSMS = false };
-                    CO = new Options_VC_SEGA() { IsSMS = false };
                     break;
 
                 case Console.PCE:
@@ -269,7 +279,7 @@ namespace FriishProduce
 
         public bool CheckUnsaved()
         {
-            if (Tag != null && Tag.ToString() == "dirty")
+            if (Tag?.ToString() == "dirty")
                 if (MessageBox.Show(Text, Language.Get("Message.001"), MessageBoxButtons.YesNo, 0, true) == DialogResult.No)
                     return false;
             return true;
@@ -562,6 +572,9 @@ namespace FriishProduce
             ROM.Path = ROMpath;
             ROMLoaded = true;
 
+            PatchFile = null;
+            ImportPatch.Checked = false;
+
             Random.Visible =
             groupBox1.Enabled =
             groupBox2.Enabled =
@@ -577,7 +590,7 @@ namespace FriishProduce
 
             Parent.tabControl.Visible = true;
 
-            if (ROM != null && UseLibRetro) LoadLibRetroData();
+            if (ROM != null && UseLibRetro && CheckToolStripButtons()[0]) LoadLibRetroData();
         }
 
         public async void LoadLibRetroData()
@@ -625,10 +638,19 @@ namespace FriishProduce
 
         public bool CreateInject()
         {
-            Creator.Out = Parent.SaveWAD.FileName;
-
             try
             {
+                Creator.Out = Parent.SaveWAD.FileName;
+                if (PatchFile != null) ROM.Patch(PatchFile);
+
+                OutWAD = new WAD();
+
+                // Get WAD data
+                // *******
+                if (WADPath != null) OutWAD = WAD.Load(WADPath);
+                else for (int x = 0; x < Database.Length; x++)
+                        if (Database[x].TitleID.ToUpper() == baseID.Text.ToUpper()) OutWAD = Database[x].Load();
+
                 switch (Console)
                 {
                     case Console.NES:
@@ -639,13 +661,22 @@ namespace FriishProduce
                     case Console.PCE:
                     case Console.NeoGeo:
                     case Console.MSX:
-                        WiiVCInject(); // To-Do: Consider forwarder function
+                        if (InjectorsList.SelectedItem.ToString().ToLower() == Language.Get("VC").ToLower())
+                            WiiVCInject();
+                        else
+                            ForwarderCreator();
+                        break;
+
+                    case Console.GBA:
+                        ForwarderCreator();
                         break;
 
                     default:
                     case Console.Flash:
                         throw new NotImplementedException();
                 }
+
+                Creator.MakeWAD(OutWAD, Img);
 
                 // Check new WAD file
                 // *******
@@ -672,9 +703,26 @@ namespace FriishProduce
 
             finally
             {
+                Creator.Out = null;
+                if (OutWAD != null) OutWAD.Dispose();
                 Parent.CleanTemp();
                 if (VC != null) VC.Dispose();
             }
+        }
+
+        public void ForwarderCreator()
+        {
+            Forwarder.ROM = ROM.Bytes;
+            Forwarder.ID = Creator.TitleID;
+            Forwarder.Emulator = InjectorsList.SelectedItem.ToString();
+            Forwarder.Storage = CO.Settings.ElementAt(0).Value == "SD" ? Forwarder.Storages.SD : Forwarder.Storages.USB;
+
+            // Actually inject everything
+            // *******
+            Forwarder.CreateZIP(Path.Combine(Path.GetDirectoryName(Creator.Out), Path.GetFileNameWithoutExtension(Creator.Out) + $" ({(Forwarder.Storage == 0 ? "SD" : "USB")}).zip"));
+            OutWAD = Forwarder.CreateWAD(OutWAD, Forwarder.ID, CO.Settings.ElementAt(1).Value == "vWii");
+
+            Forwarder.Dispose();
         }
 
         public void WiiVCInject()
@@ -734,18 +782,19 @@ namespace FriishProduce
                     break;
             }
 
-            // Set path to manual folder (if it exists) and load WAD
+            VC.WAD = OutWAD;
+
+            // Get settings from relevant form
             // *******
             if (CO != null) { VC.Settings = CO.Settings; } else { VC.Settings = new Dictionary<string, string> { { "N/A", "N/A" } }; }
-            VC.ManualPath = Manual;
 
-            if (WADPath != null) VC.WAD = WAD.Load(WADPath);
-            else for (int x = 0; x < Database.Length; x++)
-                if (Database[x].TitleID.ToUpper() == baseID.Text.ToUpper()) VC.WAD = Database[x].Load();
+            // Set path to manual folder (if it exists) and load WAD
+            // *******
+            VC.ManualPath = Manual;
 
             // Actually inject everything
             // *******
-            Creator.MakeWAD(VC.Inject(ROM, Creator.SaveDataTitle, Img), Img);
+            OutWAD = VC.Inject(ROM, Creator.SaveDataTitle, Img);
         }
         #endregion
 
@@ -1122,7 +1171,16 @@ namespace FriishProduce
                     CheckExport();
                 }
 
-                else CustomManual.Checked = false;
+                else
+                {
+                    if (Manual != null)
+                    {
+                        LoadManual(null);
+                        CheckExport();
+                    }
+
+                    CustomManual.Checked = false;
+                }
             }
 
             else if (!CustomManual.Checked && Manual != null)
@@ -1132,9 +1190,85 @@ namespace FriishProduce
             }
         }
 
+        private void Patch_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ImportPatch.Checked)
+            {
+                if (BrowsePatch.ShowDialog() == DialogResult.OK)
+                {
+                    PatchFile = BrowsePatch.FileName;
+                    CheckExport();
+                }
+
+                else
+                {
+                    if (!ImportPatch.Checked && PatchFile != null)
+                    {
+                        PatchFile = null;
+                        CheckExport();
+                    }
+
+                    ImportPatch.Checked = false;
+                }
+            }
+
+            else if (!ImportPatch.Checked && PatchFile != null)
+            {
+                PatchFile = null;
+                CheckExport();
+            }
+        }
+
         private void InjectorsList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CustomManual.Enabled = InjectorsList.SelectedItem.ToString() == Language.Get("VC");
+            isVC = InjectorsList.SelectedItem.ToString() == Language.Get("VC");
+
+            CustomManual.Enabled = isVC;
+
+            CO = null;
+            if (isVC)
+            {
+                switch (Console)
+                {
+                    case Console.NES:
+                        CO = new Options_VC_NES();
+                        break;
+
+                    case Console.SNES:
+                        break;
+
+                    case Console.N64:
+                        CO = new Options_VC_N64();
+                        break;
+
+                    case Console.SMS:
+                    case Console.SMDGEN:
+                        CO = new Options_VC_SEGA() { IsSMS = Console == Console.SMS };
+                        break;
+
+                    case Console.PCE:
+                        break;
+
+                    case Console.NeoGeo:
+                        break;
+
+                    case Console.MSX:
+                        break;
+
+                    case Console.C64:
+                        break;
+                };
+            }
+
+            else if (Console == Console.Flash)
+            {
+            }
+
+            else
+            {
+                CO = new Options_Forwarder();
+            }
+
             if (groupBox4.Enabled) groupBox5.Enabled = CustomManual.Enabled || Console == Console.Flash;
             if (!CustomManual.Enabled) CustomManual.Checked = false;
             if (groupBox4.Enabled) CheckExport();

@@ -1,8 +1,5 @@
 <?xml version="1.0"?>
-<language>
-	<global name="Metadata">
-		<Translators>CatmanFan</Translators>
-	</global>
+<language author="CatmanFan" appTitle="FriishProduce">
 	<global name="Platforms">
 		<Group1>Sega</Group1>
 		<Flash>Adobe Flash</Flash>
@@ -33,8 +30,10 @@
 		<Error.002>Échec du replacement des données internes.</Error.002>
 		<Error.003>La ROM fournie est trop grande, car sa taille est plus de {0} {1}.</Error.003>
 		<Error.004>Échec de modification des options de contenu suivantes :\n{0}\nL'injection se poursuivra comme prévu.</Error.004>
-		<Error.005>L'application requise ({0}) n'a pas été trouvée dans le sous-répertoire « resources\\tools ».</Error.005>
+		<Error.005>L'application requise ({0}) n'a pas été trouvée dans le sous-répertoire « resources\tools ».</Error.005>
 		<Error.006>Échec de l'exportation vers WAD.</Error.006>
+		<Error.007>Échec de l'application du patch.</Error.007>
+		<Error.008>Le fichier requis ({0}) n'a pas été trouvée dans le sous-répertoire « resources\forwarder\emulators ».</Error.008>
 		<Filter>|Tous les fichiers (*.*)|*.*</Filter>
 		<Filter.Disc>Fichiers de format disque (*.cue, *.iso, *.chd)|*.cue;*.iso;*.chd|  Fichiers CUE Sheet (*.cue)|*.cue|  Images ISO (*.iso)|*.iso|  Fichiers CHD (*.chd)|*.chd</Filter.Disc>
 		<Filter.Img>Tous les formats sont pris en charge (*.bmp, *.jpg, *.jpeg, *.png)|*.bmp;*.jpg;*.jpeg;*.png|  Bitmap Windows (*.bmp)|*.bmp|  JPEG (*.jpg, *.jpeg)|*.jpg;*.jpeg|  PNG (*.png)|*.png</Filter.Img>

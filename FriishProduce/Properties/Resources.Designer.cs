@@ -289,6 +289,46 @@ namespace FriishProduce.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] forwarder_comex {
+            get {
+                object obj = ResourceManager.GetObject("forwarder_comex", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] forwarder_v12 {
+            get {
+                object obj = ResourceManager.GetObject("forwarder_v12", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] forwarder_v14 {
+            get {
+                object obj = ResourceManager.GetObject("forwarder_v14", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] forwarder_waninkoko {
+            get {
+                object obj = ResourceManager.GetObject("forwarder_waninkoko", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap gear {
@@ -405,6 +445,16 @@ namespace FriishProduce.Properties {
             get {
                 object obj = ResourceManager.GetObject("mr-saturn", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] nandloader_vwii {
+            get {
+                object obj = ResourceManager.GetObject("nandloader_vwii", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         

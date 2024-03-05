@@ -14,7 +14,7 @@ namespace FriishProduce
         {
             using (TaskDialog t = new TaskDialog()
             {
-                WindowTitle = Language.Get("AppTitle"),
+                WindowTitle = Language.AppTitle(),
                 MainInstruction = mainText,
                 Content = description,
                 ButtonStyle = isLinkStyle ? TaskDialogButtonStyle.CommandLinks : TaskDialogButtonStyle.Standard,
