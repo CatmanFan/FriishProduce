@@ -126,6 +126,12 @@ namespace FriishProduce
                     InjectorsList.Items.Add(Language.Get("ByDefault"));
                     break;
 
+                case Console.GBA:
+                    CustomManual.Enabled = false;
+                    InjectorsList.Items.Clear();
+                    InjectorsList.Items.Add(Forwarder.List[6]);
+                    break;
+
                 default:
                     break;
             }

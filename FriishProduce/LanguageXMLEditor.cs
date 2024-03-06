@@ -118,6 +118,7 @@ namespace FriishProduce
             button1.Enabled = comboBox1.Enabled = true;
             dataGridView1.Enabled = button5.Enabled = button4.Enabled = button3.Enabled = button2.Enabled = false;
             dataGridView1.Rows.Clear();
+            textBox1.Text = null;
         }
 
         private void button5_Click(object sender, EventArgs e) => WriteTo(Paths.Languages + SelectedCultureInfo().Name + ".xml");
@@ -182,5 +183,10 @@ namespace FriishProduce
 
         private void dataGridView1_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e) => UpdateList();
         private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e) => UpdateList();
+
+        private void dataGridView1_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            try { textBox1.Text = null; textBox1.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString(); } catch { }
+        }
     }
 }
