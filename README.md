@@ -4,7 +4,7 @@
 <a href="https://gbatemp.net/threads/friishproduce-multiplatform-wad-injector.632028/"><img src="https://img.shields.io/badge/GBAtemp-link-blue" /></a> <a title="Crowdin" target="_blank" href="https://crowdin.com"><img src="https://badges.crowdin.net/friishproduce/localized.svg"></a>
 </div>
 
-**FriishProduce** is a WAD injector for Wii/vWii, which allows for automated ROM replacement in Wii channels.
+**FriishProduce** is a WAD injector for Wii/vWii, which allows for automated ROM/disc/SWF file replacement in Wii channels.
 This application is designed to streamline the process to as few third-party programs as possible.
 
 ***This repository has been updated by way of a new MDI version (pictured above) and is currently under work-in-progress. Most consoles may not be supported by this version yet.<br>For the legacy edition, see [here](https://github.com/CatmanFan/FriishProduce/tree/main/legacy), or see [v0.26-beta](https://github.com/CatmanFan/FriishProduce/releases/tag/v0.26-beta) for the latest release.***
@@ -22,13 +22,11 @@ This injector bypasses other third-party assets (such as Common-Key.bin, HowardC
 
 ### Platforms
 **Currently supported:**
-* Virtual Console
-  * **Nintendo Entertainment System (NES) / Famicom**
-  * **Super Nintendo Entertainment System (SNES) / Super Famicom**
-  * **Nintendo 64**
-  * **SEGA Master System**
-  * **SEGA Mega Drive / Genesis**
-  * **SNK NEO-GEO**
+* **Nintendo Entertainment System (NES) / Famicom**
+* **Super Nintendo Entertainment System (SNES) / Super Famicom**
+* **Nintendo 64**
+* **SEGA Master System** & **SEGA Mega Drive / Genesis**
+* **SNK NEO-GEO**
  
 Planned:
 * Virtual Console
@@ -36,7 +34,6 @@ Planned:
   * Microsoft MSX / MSX2
 * Support for other formats:
   * Adobe Flash
-  * Single ROM loader (SRL) forwarders
 * Complete SEGA VC options list & add NEO-GEO VC options list.
 
 ## How-to
@@ -48,7 +45,7 @@ Planned:
 ---
 
 ## Translation
-For help on translating the current GUI, please see **[here](https://github.com/CatmanFan/FriishProduce/wiki/Translation)**.
+The current version of this application includes a built-in XML editor for adding custom language files. If you have translated using that interface, please send in your XMLs [as a pull request](https://github.com/CatmanFan/FriishProduce/pulls).
 
 ---
 
@@ -58,11 +55,12 @@ For help on translating the current GUI, please see **[here](https://github.com/
 * Other VC injection support to be done later:
   * Commodore 64 (needs [Custom Frodo](https://gbatemp.net/threads/custom-frodo-for-c64-vc-injection.102356/))
   * TurboGrafx-16 CD (needs several programs to convert ISO to injectable format)
-* Try redirecting foreign language *.json files in [main/FriishProduce/langs](https://github.com/CatmanFan/FriishProduce/tree/main/FriishProduce/langs) to a separate location/repo
+* ~~Try redirecting foreign language *.json files in main/FriishProduce/langs to a separate location/repo~~ Not needed
 
 ## Credits
 This program uses the following third-party components and apps:
 * **libWiiSharp** (orig. author: Leathl), [forked](https://github.com/WiiDatabase/libWiiSharp/) by **[WiiDatabase](https://github.com/WiiDatabase)**.
+* [SD/USB forwarder components](https://github.com/modmii/modmii.github.io/tree/master/Support/DOLS) of **[ModMii](https://github.com/modmii/modmii.github.io)** by [XFlak](https://github.com/xflak).
 * **WWCXTool** by alpha-0.
 * **ROMC compressor** by Jurai, with additional LZSS code by Haruhiko Okumura.
 * **[ccf-tools](https://github.com/libertyernie/ccf-tools)** (orig. author: paulguy) and **[BrawlLib](https://github.com/libertyernie/brawllib-wit)** (orig. author: soopercool101), both forked by **[libertyernie](https://github.com/libertyernie)**.
