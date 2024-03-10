@@ -123,7 +123,7 @@ namespace FriishProduce
                 case Console.Flash:
                     CustomManual.Enabled = false;
                     InjectorsList.Items.Clear();
-                    InjectorsList.Items.Add(Language.Get("ByDefault"));
+                    InjectorsList.Items.Add(" ");
                     break;
 
                 case Console.GBA:
@@ -501,7 +501,7 @@ namespace FriishProduce
                         break;
 
                     case Console.NES:
-                        if (src.Width == 256 && (src.Height == 224 || src.Height == 240) && CO.Settings != null && CO.Settings["use_Img"] == "1")
+                        if (InjectorsList.SelectedIndex == 0 && src.Width == 256 && (src.Height == 224 || src.Height == 240) && CO.Settings != null && CO.Settings["use_tImg"] == "1")
                         {
                             var CO_NES = CO as Options_VC_NES;
 
@@ -646,7 +646,9 @@ namespace FriishProduce
         {
             try
             {
-                Creator.Out = Parent.SaveWAD.FileName;
+                Parent.CleanTemp();
+
+                Creator.Out = Path.Combine(Paths.Out, GetName()) + ".wad";
                 if (PatchFile != null) ROM.Patch(PatchFile);
 
                 OutWAD = new WAD();
@@ -692,7 +694,14 @@ namespace FriishProduce
                     Tag = null;
 
                     if (Properties.Settings.Default.AutoOpenFolder)
-                        System.Diagnostics.Process.Start("explorer.exe", $"/select, \"{Creator.Out}\"");
+                    {
+                        string args = string.Format("/e, /select, \"{0}\"", Creator.Out);
+
+                        System.Diagnostics.ProcessStartInfo info = new System.Diagnostics.ProcessStartInfo();
+                        info.FileName = "explorer";
+                        info.Arguments = args;
+                        System.Diagnostics.Process.Start(info);
+                    }
                     else
                         MessageBox.Show(string.Format(Language.Get("Message.003"), Creator.Out), MessageBoxButtons.OK, Ookii.Dialogs.WinForms.TaskDialogIcon.Information);
 
@@ -718,17 +727,19 @@ namespace FriishProduce
 
         public void ForwarderCreator()
         {
-            Forwarder.ROM = ROM.Bytes;
-            Forwarder.ID = Creator.TitleID;
-            Forwarder.Emulator = InjectorsList.SelectedItem.ToString();
-            Forwarder.Storage = CO.Settings.ElementAt(0).Value == "SD" ? Forwarder.Storages.SD : Forwarder.Storages.USB;
+            Forwarder f = new Forwarder()
+            {
+                ROM = ROM.Bytes,
+                ROMExtension = Path.GetExtension(ROM.Path),
+                ID = Creator.TitleID,
+                Emulator = InjectorsList.SelectedItem.ToString(),
+                Storage = CO.Settings.ElementAt(0).Value.ToLower().Contains("usb") ? Forwarder.Storages.USB : Forwarder.Storages.SD
+            };
 
             // Actually inject everything
             // *******
-            Forwarder.CreateZIP(Path.Combine(Path.GetDirectoryName(Creator.Out), Path.GetFileNameWithoutExtension(Creator.Out) + $" ({(Forwarder.Storage == 0 ? "SD" : "USB")}).zip"));
-            OutWAD = Forwarder.CreateWAD(OutWAD, Forwarder.ID, CO.Settings.ElementAt(1).Value == "vWii");
-
-            Forwarder.Dispose();
+            f.CreateZIP(Path.Combine(Path.GetDirectoryName(Creator.Out), Path.GetFileNameWithoutExtension(Creator.Out) + $" ({CO.Settings.ElementAt(0).Value}).zip"));
+            OutWAD = f.CreateWAD(OutWAD, CO.Settings.ElementAt(1).Value.ToLower() == "vwii");
         }
 
         public void WiiVCInject()

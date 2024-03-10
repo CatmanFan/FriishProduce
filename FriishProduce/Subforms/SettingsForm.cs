@@ -30,6 +30,7 @@ namespace FriishProduce
             TreeView.Nodes[1].Nodes[0].Text = Language.Get(Console.NES.ToString());
             TreeView.Nodes[1].Nodes[1].Text = Language.Get(Console.N64.ToString(), "Platforms");
             TreeView.Nodes[1].Nodes[2].Text = Language.Get("Group1", "Platforms");
+            TreeView.Nodes[1].Nodes[3].Text = Language.Get("Forwarders");
             TreeView.SelectedNode = TreeView.Nodes[0];
 
             // -----------------------------
@@ -56,6 +57,11 @@ namespace FriishProduce
 
             // -----------------------------
 
+            groupBox4.Text = Language.Get("groupBox2", "Options_Forwarder", true);
+            groupBox5.Text = Language.Get("groupBox1", "Options_Forwarder", true);
+
+            // -----------------------------
+
             const string Name_N64 = "Options_VC_N64";
             n64000.Text = Language.Get(n64000, Name_N64);
             n64001.Text = Language.Get(n64001, Name_N64);
@@ -70,11 +76,16 @@ namespace FriishProduce
 
             // -----------------------------
 
+            ROMStorage.SelectedIndex = Default.Default_Forwarders_FilesStorage.ToLower() == "sd" ? 0 : 1;
+            NANDLoaderType.SelectedIndex = Default.Default_Forwarders_Mode.ToLower() == "wii" ? 0 : 1;
+
             n64000.Checked = Default.Default_N64_FixBrightness;
             n64001.Checked = Default.Default_N64_FixCrashes;
             n64002.Checked = Default.Default_N64_ExtendedRAM;
             n64003.Checked = Default.Default_N64_AllocateROM;
             ROMCType.SelectedIndex = Default.Default_N64_ROMC0 ? 0 : 1;
+
+            // -----------------------------
         }
 
         private void Loading(object sender, EventArgs e) { TreeView.Select(); RefreshForm(); }
@@ -99,6 +110,9 @@ namespace FriishProduce
             Default.ImageInterpolation = DefaultImageInterpolation.SelectedIndex;
             Default.AutoLibRetro = AutoLibRetro.Checked;
             Default.AutoOpenFolder = AutoOpenFolder.Checked;
+
+            Default.Default_Forwarders_FilesStorage = ROMStorage.SelectedIndex == 0 ? "SD" : "USB";
+            Default.Default_Forwarders_Mode = NANDLoaderType.SelectedIndex == 0 ? "Wii" : "vWii";
 
             Default.Default_N64_FixBrightness = n64000.Checked;
             Default.Default_N64_FixCrashes = n64001.Checked;
@@ -171,6 +185,7 @@ namespace FriishProduce
         {
             panel1.Hide();
             panel2.Hide();
+            panel3.Hide();
             panel4.Hide();
 
             switch (e.Node.Name.Substring(4))
@@ -192,6 +207,10 @@ namespace FriishProduce
                     break;
 
                 case "SEGA":
+                    break;
+
+                case "Forwarders":
+                    panel3.Show();
                     break;
             };
         }

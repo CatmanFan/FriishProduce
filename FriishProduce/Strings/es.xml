@@ -24,8 +24,9 @@
 		<Error.001>No se pudo generar la imagen.\nEsto puede deberse a un problema con GDI+.</Error.001>
 		<Error.002>No se pueden reemplazar los datos internos.</Error.002>
 		<Error.003>La ROM es demasiado grande (más de {0} {1} en tamaño).</Error.003>
-		<Error.005>La aplicación necesaria ({0}) no se encontró en el subdirectorio "resources\\tools".</Error.005>
+		<Error.005>La aplicación necesaria ({0}) no se encontró en el subdirectorio "resources\tools".</Error.005>
 		<Error.007>No se pudo aplicar el parche.</Error.007>
+		<Error.008>El emulador necesario ({0}) no se encontró en el subdirectorio "resources\forwarder\emulators".</Error.008>
 		<Filter>|Todos los archivos (*.*)|*.*</Filter>
 		<Filter.Disc>Imágenes de disco (*.cue, *.iso, *.chd)|*.cue;*.iso;*.chd|  Archivos Cue Sheet (*.cue)|*.cue|  Imágenes ISO (*.iso)|*.iso|  Archivos CHD (*.chd)|*.chd</Filter.Disc>
 		<Filter.Img>Imágenes (*.bmp, *.jpg, *.jpeg, *.png)|*.bmp;*.jpg;*.jpeg;*.png|  Bitmap (*.bmp)|*.bmp|  JPEG (*.jpg, *.jpeg)|*.jpg;*.jpeg|  PNG (*.png)|*.png</Filter.Img>

@@ -38,5 +38,11 @@
     <Setting Name="DoNotShow_Welcome" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="Default_Forwarders_FilesStorage" Type="System.String" Scope="User">
+      <Value Profile="(Default)">SD</Value>
+    </Setting>
+    <Setting Name="Default_Forwarders_Mode" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Wii</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

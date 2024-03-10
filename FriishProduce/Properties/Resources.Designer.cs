@@ -291,9 +291,9 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        public static byte[] forwarder_comex {
+        public static byte[] Forwarder_Comex {
             get {
-                object obj = ResourceManager.GetObject("forwarder_comex", resourceCulture);
+                object obj = ResourceManager.GetObject("Forwarder_Comex", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -301,9 +301,9 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        public static byte[] forwarder_v12 {
+        public static byte[] Forwarder_vWii {
             get {
-                object obj = ResourceManager.GetObject("forwarder_v12", resourceCulture);
+                object obj = ResourceManager.GetObject("Forwarder_vWii", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -311,9 +311,9 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        public static byte[] forwarder_v14 {
+        public static byte[] Forwarder_Waninkoko {
             get {
-                object obj = ResourceManager.GetObject("forwarder_v14", resourceCulture);
+                object obj = ResourceManager.GetObject("Forwarder_Waninkoko", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -321,9 +321,19 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        public static byte[] forwarder_waninkoko {
+        public static byte[] ForwarderV12 {
             get {
-                object obj = ResourceManager.GetObject("forwarder_waninkoko", resourceCulture);
+                object obj = ResourceManager.GetObject("ForwarderV12", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] ForwarderV14 {
+            get {
+                object obj = ResourceManager.GetObject("ForwarderV14", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -445,16 +455,6 @@ namespace FriishProduce.Properties {
             get {
                 object obj = ResourceManager.GetObject("mr-saturn", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        public static byte[] nandloader_vwii {
-            get {
-                object obj = ResourceManager.GetObject("nandloader_vwii", resourceCulture);
-                return ((byte[])(obj));
             }
         }
         

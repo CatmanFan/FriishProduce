@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using static FriishProduce.Properties.Settings;
 
 namespace FriishProduce
 {
@@ -16,8 +17,8 @@ namespace FriishProduce
 
             Settings = new Dictionary<string, string>
             {
-                { "filesStorage", "SD" },
-                { "mode", "Wii" }
+                { "filesStorage", Default.Default_Forwarders_FilesStorage },
+                { "mode", Default.Default_Forwarders_Mode }
             };
 
             // Cosmetic

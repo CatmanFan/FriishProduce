@@ -166,5 +166,29 @@ namespace FriishProduce.Properties {
                 this["DoNotShow_Welcome"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("SD")]
+        public string Default_Forwarders_FilesStorage {
+            get {
+                return ((string)(this["Default_Forwarders_FilesStorage"]));
+            }
+            set {
+                this["Default_Forwarders_FilesStorage"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Wii")]
+        public string Default_Forwarders_Mode {
+            get {
+                return ((string)(this["Default_Forwarders_Mode"]));
+            }
+            set {
+                this["Default_Forwarders_Mode"] = value;
+            }
+        }
     }
 }

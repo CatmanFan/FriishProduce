@@ -315,9 +315,11 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Resources\forwarder_comex.wad" />
-    <None Include="Resources\forwarder_v12.dol" />
-    <None Include="Resources\forwarder_v14.dol" />
+    <None Include="Resources\forwarder\base_comex.wad" />
+    <None Include="Resources\forwarder\base_waninkoko.wad" />
+    <None Include="Resources\forwarder\forwarder_v12.dol" />
+    <None Include="Resources\forwarder\forwarder_v14.dol" />
+    <None Include="Resources\forwarder\vwii.app" />
     <None Include="Resources\icons\consoles\nintendo nes.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -335,10 +337,8 @@
     <None Include="Resources\icons\tick.png" />
     <None Include="Resources\icons\cross.png" />
     <None Include="Resources\icons\locale.png" />
-    <None Include="Resources\nandloader_vwii.app" />
     <None Include="Resources\subforms\screen_smd.png" />
     <None Include="Resources\savebanner_flash.png" />
-    <None Include="Resources\forwarder_waninkoko.wad" />
     <None Include="Resources\x.png" />
     <None Include="Resources\subforms\screen_nes.png" />
     <None Include="Resources\bg.png" />

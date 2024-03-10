@@ -73,6 +73,9 @@ namespace FriishProduce
             this.ToolStrip_CloseTab = new System.Windows.Forms.ToolStripButton();
             this.ToolStrip_Settings = new System.Windows.Forms.ToolStripButton();
             this.ToolStrip_Tutorial = new System.Windows.Forms.ToolStripButton();
+            this.MenuItem_OpenExports = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuItem_ClearExports = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.MenuStrip.SuspendLayout();
             this.MainPanel.SuspendLayout();
             this.ToolStrip.SuspendLayout();
@@ -145,6 +148,9 @@ namespace FriishProduce
             // 
             this.MenuItem_File.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.NewProject,
+            this.MenuItem_OpenExports,
+            this.MenuItem_ClearExports,
+            this.toolStripMenuItem1,
             this.MenuItem_Settings,
             this.toolStripSeparator4,
             this.MenuItem_Exit});
@@ -407,6 +413,23 @@ namespace FriishProduce
             this.ToolStrip_Tutorial.Name = "ToolStrip_Tutorial";
             this.ToolStrip_Tutorial.Click += new System.EventHandler(this.Tutorial_Click);
             // 
+            // MenuItem_OpenExports
+            // 
+            this.MenuItem_OpenExports.Name = "MenuItem_OpenExports";
+            resources.ApplyResources(this.MenuItem_OpenExports, "MenuItem_OpenExports");
+            this.MenuItem_OpenExports.Click += new System.EventHandler(this.OpenExports);
+            // 
+            // MenuItem_ClearExports
+            // 
+            this.MenuItem_ClearExports.Name = "MenuItem_ClearExports";
+            resources.ApplyResources(this.MenuItem_ClearExports, "MenuItem_ClearExports");
+            this.MenuItem_ClearExports.Click += new System.EventHandler(this.CleanExports);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            resources.ApplyResources(this.toolStripMenuItem1, "toolStripMenuItem1");
+            // 
             // MainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -475,6 +498,9 @@ namespace FriishProduce
         private System.Windows.Forms.Label PointToTutorial;
         private System.Windows.Forms.Button Welcome_DoNotShow;
         private System.Windows.Forms.ToolStripMenuItem MenuItem_LanguageXMLEditor;
+        private System.Windows.Forms.ToolStripMenuItem MenuItem_OpenExports;
+        private System.Windows.Forms.ToolStripMenuItem MenuItem_ClearExports;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
     }
 }
 

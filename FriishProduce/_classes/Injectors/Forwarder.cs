@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace FriishProduce
 {
-    public static class Forwarder
+    public class Forwarder
     {
         public static readonly IDictionary<int, string> List = new Dictionary<int, string>
         {
@@ -43,8 +43,8 @@ namespace FriishProduce
             { 11, "mupen64gc-fix94" }
         };
 
-        public static string Emulator { get; set; }
-        private static int EmulatorIndex
+        public string Emulator { get; set; }
+        private int EmulatorIndex
         {
             get
             {
@@ -58,34 +58,39 @@ namespace FriishProduce
         }
 
         public enum Storages { SD, USB }
-        public static Storages Storage = Storages.SD;
+        public Storages Storage = Storages.SD;
 
-        public enum WADTypes { Comex, Waninkoko, Comex_v12, Waninkoko_v12 };
+        public enum WADTypes { Comex, Waninkoko };
         public static WADTypes WADType { get; set; }
 
-        private static readonly string AppFolder = "sd:/private/vc/";
+        private static string Path { get; set; }
 
         private static bool IsDisc { get => false; } // Emulator == List[12] || Emulator == List[13]
 
-        public static byte[] ROM { get; set; }
+        public byte[] ROM { get; set; }
+        public string ROMExtension { get; set; }
 
-        public static string ID { get; set; }
+        private string tID;
+        public string ID { get => tID; set { tID = value; Path = $"%s:/private/VC/{value}/boot.dol"; } }
 
-        public static void CreateZIP(string Out)
+        public void CreateZIP(string Out)
         {
             if (ROM == null) throw new FileNotFoundException();
             if (EmulatorIndex == -1) throw new NotSupportedException();
+
+            // Create SD folder and copy emulator
+            // *******
+            var dir = Paths.SDUSBRoot + Path.Substring(4).Replace("/boot.dol", "") + '\\';
+
             if (!File.Exists(Paths.Emulators + Files[EmulatorIndex] + ".dol")) throw new Exception(Language.Get("Error.008"));
 
-            // Create SD folder
-            // *******
-            var dir = Paths.SDUSBRoot + $"private\\vc\\{ID}\\";
             if (IsDisc) dir += "title\\";
             Directory.CreateDirectory(dir);
+            File.Copy(Paths.Emulators + Files[EmulatorIndex] + ".dol", dir + "boot.dol");
 
             // Copy game to SD folder
             // *******
-            string romFile = (EmulatorIndex >= 7 ? "title" : "HOME Menu") + ".rom";
+            string romFile = (EmulatorIndex >= 7 ? "title" : "HOME Menu") + ROMExtension;
             File.WriteAllBytes(dir + romFile, ROM);
 
             // Clean file directory string
@@ -94,7 +99,7 @@ namespace FriishProduce
 
             // Declare meta.xml list
             // *******
-            string root = Storage == Storages.USB ? AppFolder.Replace("sd:/", "usb:/") : AppFolder;
+            string root = Path.Replace("%s:/", Storage == Storages.USB ? "usb:/" : "sd:/").Replace("/boot.dol", "");
             List<string> meta = new List<string>
             {
                 "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>",
@@ -106,7 +111,7 @@ namespace FriishProduce
                 "  <short_description>Placeholder for emulator.dol</short_description>",
                 "  <long_description>This is a sample placeholder for auto-running an emulator using a ROM path argument.</long_description>",
                 "  <arguments>",
-                IsDisc ? $"    <arg>{root}{ID}/title</arg>" : $"    <arg>{root}{ID}</arg>",
+                $"    <arg>{root}{(IsDisc ? "/title" : "")}</arg>",
                 $"    <arg>{romFile}</arg>"
             };
             switch (EmulatorIndex)
@@ -116,7 +121,7 @@ namespace FriishProduce
                     break;
 
                 case 10:
-                    meta[9]  = $"    <arg>rompath=\"{root}{ID}/{romFile}\"</arg>";
+                    meta[9]  = $"    <arg>rompath=\"{root}/{romFile}\"</arg>";
                     meta[10] = $"    <arg>SkipMenu=1</arg>";
                     meta.Add("    <arg>ScreenMode=0</arg>");
                     break;
@@ -141,41 +146,40 @@ namespace FriishProduce
             Directory.Delete(Paths.SDUSBRoot, true);
         }
 
-        public static WAD CreateWAD(WAD WAD, string TitleID, bool vWii = false)
+        public WAD CreateWAD(WAD WAD, bool vWii = false)
         {
             // > For GenPlus & all emulators based on Wii64 Team's code (e.g. Wii64, WiiSX and forks), use Comex NANDloader
             // > For WiiMednafen, use Waninkoko NANDloader
             // *******
-            WADType = WADTypes.Waninkoko;
-            if (EmulatorIndex == 8 && EmulatorIndex <= 11) WADType = WADTypes.Comex_v12;
-            if (EmulatorIndex >= 7 && EmulatorIndex <= 11) WADType = WADTypes.Comex;
+            WADType = EmulatorIndex >= 7 && EmulatorIndex <= 11 ? WADTypes.Comex : WADTypes.Waninkoko;
 
-            WAD x = WADType == WADTypes.Comex || WADType == WADTypes.Comex_v12 ? WAD.Load(Properties.Resources.forwarder_comex) : WAD.Load(Properties.Resources.forwarder_waninkoko);
+            // Load and unpack WAD
+            // *******
+            WAD x = WADType == WADTypes.Comex ? WAD.Load(Properties.Resources.Forwarder_Comex) : WAD.Load(Properties.Resources.Forwarder_Waninkoko);
 
             x.Unpack(Paths.WAD);
             WAD.BannerApp.Save(Paths.WAD + "00000000.app");
 
+            // Define forwarder version
+            // *******
+            bool NeedsOldForwarder = EmulatorIndex == 7;
+            byte[] Forwarder  = NeedsOldForwarder ? Properties.Resources.ForwarderV12 : Properties.Resources.ForwarderV14;
+            int TargetOffset  = NeedsOldForwarder ? 0x77426 : 0x7F979;
+            string TargetPath = NeedsOldForwarder ? Path : Path.Substring(4);
+
             // Create forwarder .app
             // *******
-            bool isV12 = WADType == WADTypes.Comex_v12 || WADType == WADTypes.Waninkoko_v12;
-            byte[] Forwarder = isV12 ? Properties.Resources.forwarder_v12 : Properties.Resources.forwarder_v14;
-            var TargetOffset = isV12 ? 488501 : 522628;
-            Encoding.ASCII.GetBytes(TitleID).CopyTo(Forwarder, TargetOffset);
+            Encoding.ASCII.GetBytes(TargetPath).CopyTo(Forwarder, TargetOffset);
+            File.WriteAllBytes(Paths.WAD + (x.BootIndex == 1 ? "00000002.app" : "00000001.app"), Forwarder);
 
-            File.WriteAllBytes(Paths.WAD + $"0000000{(WADType == WADTypes.Comex || WADType == WADTypes.Comex_v12 ? 2 : 1)}.app", Forwarder);
-            if (vWii) File.WriteAllBytes(Paths.WAD + $"0000000{(WADType == WADTypes.Comex || WADType == WADTypes.Comex_v12 ? 1 : 2)}.app", Properties.Resources.nandloader_vwii);
+            // Write NANDloader & save
+            // *******
+            if (vWii) File.WriteAllBytes(Paths.WAD + $"0000000{x.BootIndex}.app", Properties.Resources.Forwarder_vWii);
 
             x.CreateNew(Paths.WAD);
             x.Region = WAD.Region;
             Directory.Delete(Paths.WAD, true);
             return x;
-        }
-
-        public static void Dispose()
-        {
-            ROM = null;
-            Emulator = null;
-            ID = null;
         }
     }
 }

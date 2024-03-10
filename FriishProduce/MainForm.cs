@@ -138,7 +138,7 @@ namespace FriishProduce
 
             // Automatically set defined initial directory for save file dialog
             // ********
-            SaveWAD.InitialDirectory = Paths.Out;
+            // SaveWAD.InitialDirectory = Paths.Out;
 
             // Updater.GetLatest();
         }
@@ -284,12 +284,8 @@ namespace FriishProduce
 
         private void ExportWAD_Click(object sender, EventArgs e)
         {
-            CleanTemp();
             var currentForm = tabControl.SelectedForm as InjectorForm;
-
-            SaveWAD.FileName = currentForm.GetName();
-            if (SaveWAD.ShowDialog() == DialogResult.OK)
-                currentForm.CreateInject();
+            currentForm.CreateInject();
         }
 
         private void OpenImage_Click(object sender, EventArgs e)
@@ -350,6 +346,30 @@ namespace FriishProduce
             System.Threading.Thread.Sleep(750);
             x.ShowDialog();
             RefreshForm();
+        }
+
+        private void OpenExports(object sender, EventArgs e)
+        {
+            System.Diagnostics.ProcessStartInfo info = new System.Diagnostics.ProcessStartInfo();
+            info.FileName = Paths.Out;
+            info.UseShellExecute = true;
+            info.Verb = "open";
+            System.Diagnostics.Process.Start(info);
+        }
+
+        private void CleanExports(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you sure?", MessageBoxButtons.YesNo, TaskDialogIcon.Warning) == DialogResult.Yes)
+            {
+                try
+                {
+                    foreach (var item in Directory.GetFiles(Paths.Out, "*.*", SearchOption.AllDirectories))
+                        if (!Path.GetFileName(item).ToLower().Contains("readme.md")) File.Delete(item);
+                    foreach (var item in Directory.GetDirectories(Paths.Out))
+                        Directory.Delete(item, true);
+                }
+                catch { }
+            }
         }
     }
 }

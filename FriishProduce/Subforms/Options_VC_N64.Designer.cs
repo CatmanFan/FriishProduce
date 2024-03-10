@@ -142,7 +142,7 @@ namespace FriishProduce
             this.ROMCType.Items.AddRange(new object[] {
             "ROMC Type 0",
             "ROMC Type 1"});
-            this.ROMCType.Location = new System.Drawing.Point(10, 18);
+            this.ROMCType.Location = new System.Drawing.Point(10, 19);
             this.ROMCType.Name = "ROMCType";
             this.ROMCType.Size = new System.Drawing.Size(415, 21);
             this.ROMCType.TabIndex = 0;

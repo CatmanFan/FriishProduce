@@ -33,7 +33,7 @@
 		<Error.005>L'application requise ({0}) n'a pas été trouvée dans le sous-répertoire « resources\tools ».</Error.005>
 		<Error.006>Échec de l'exportation vers WAD.</Error.006>
 		<Error.007>Échec de l'application du patch.</Error.007>
-		<Error.008>Le fichier requis ({0}) n'a pas été trouvée dans le sous-répertoire « resources\forwarder\emulators ».</Error.008>
+		<Error.008>Le fichier DOL requis ({0}) n'a pas été trouvée dans le sous-répertoire « resources\forwarder\emulators ».</Error.008>
 		<Filter>|Tous les fichiers (*.*)|*.*</Filter>
 		<Filter.Disc>Fichiers de format disque (*.cue, *.iso, *.chd)|*.cue;*.iso;*.chd|  Fichiers CUE Sheet (*.cue)|*.cue|  Images ISO (*.iso)|*.iso|  Fichiers CHD (*.chd)|*.chd</Filter.Disc>
 		<Filter.Img>Tous les formats sont pris en charge (*.bmp, *.jpg, *.jpeg, *.png)|*.bmp;*.jpg;*.jpeg;*.png|  Bitmap Windows (*.bmp)|*.bmp|  JPEG (*.jpg, *.jpeg)|*.jpg;*.jpeg|  PNG (*.png)|*.png</Filter.Img>

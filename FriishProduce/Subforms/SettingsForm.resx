@@ -122,7 +122,7 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="DefaultImageInterpolation.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 18</value>
+    <value>10, 19</value>
   </data>
   <data name="DefaultImageInterpolation.Size" type="System.Drawing.Size, System.Drawing">
     <value>505, 21</value>
@@ -184,7 +184,7 @@
     <value>System default</value>
   </data>
   <data name="LanguageList.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 18</value>
+    <value>10, 19</value>
   </data>
   <data name="LanguageList.Size" type="System.Drawing.Size, System.Drawing">
     <value>505, 21</value>
@@ -418,7 +418,7 @@
     <value>0</value>
   </data>
   <data name="ROMCType.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 18</value>
+    <value>10, 19</value>
   </data>
   <data name="ROMCType.Size" type="System.Drawing.Size, System.Drawing">
     <value>505, 21</value>
@@ -605,23 +605,27 @@
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAAB1TeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5UcmVlTm9kZQwAAAAEVGV4dAtUb29sVGlwVGV4dAROYW1lCUlzQ2hlY2tl
+        ZW0uV2luZG93cy5Gb3Jtcy5UcmVlTm9kZQ0AAAAEVGV4dAtUb29sVGlwVGV4dAROYW1lCUlzQ2hlY2tl
         ZApJbWFnZUluZGV4CEltYWdlS2V5ElNlbGVjdGVkSW1hZ2VJbmRleBBTZWxlY3RlZEltYWdlS2V5CkNo
-        aWxkQ291bnQJY2hpbGRyZW4wCWNoaWxkcmVuMQljaGlsZHJlbjIBAQEAAAEAAQAEBAQBCAgIHVN5c3Rl
-        bS5XaW5kb3dzLkZvcm1zLlRyZWVOb2RlAgAAAB1TeXN0ZW0uV2luZG93cy5Gb3Jtcy5UcmVlTm9kZQIA
-        AAAdU3lzdGVtLldpbmRvd3MuRm9ybXMuVHJlZU5vZGUCAAAAAgAAAAYDAAAAEERlZmF1bHQgc2V0dGlu
-        Z3MGBAAAAAAGBQAAAAVOb2RlMQD/////CQQAAAD/////CQQAAAADAAAACQcAAAAJCAAAAAkJAAAABQcA
-        AAAdU3lzdGVtLldpbmRvd3MuRm9ybXMuVHJlZU5vZGUJAAAABFRleHQLVG9vbFRpcFRleHQETmFtZQlJ
-        c0NoZWNrZWQKSW1hZ2VJbmRleAhJbWFnZUtleRJTZWxlY3RlZEltYWdlSW5kZXgQU2VsZWN0ZWRJbWFn
-        ZUtleQpDaGlsZENvdW50AQEBAAABAAEAAQgICAIAAAAGCgAAAANORVMJBAAAAAYMAAAAB05vZGVORVMA
-        /////wkEAAAA/////wkEAAAAAAAAAAUIAAAAHVN5c3RlbS5XaW5kb3dzLkZvcm1zLlRyZWVOb2RlCQAA
-        AARUZXh0C1Rvb2xUaXBUZXh0BE5hbWUJSXNDaGVja2VkCkltYWdlSW5kZXgISW1hZ2VLZXkSU2VsZWN0
-        ZWRJbWFnZUluZGV4EFNlbGVjdGVkSW1hZ2VLZXkKQ2hpbGRDb3VudAEBAQAAAQABAAEICAgCAAAABg4A
-        AAADTjY0CQQAAAAGEAAAAAdOb2RlTjY0AP////8JBAAAAP////8JBAAAAAAAAAAFCQAAAB1TeXN0ZW0u
+        aWxkQ291bnQJY2hpbGRyZW4wCWNoaWxkcmVuMQljaGlsZHJlbjIJY2hpbGRyZW4zAQEBAAABAAEABAQE
+        BAEICAgdU3lzdGVtLldpbmRvd3MuRm9ybXMuVHJlZU5vZGUCAAAAHVN5c3RlbS5XaW5kb3dzLkZvcm1z
+        LlRyZWVOb2RlAgAAAB1TeXN0ZW0uV2luZG93cy5Gb3Jtcy5UcmVlTm9kZQIAAAAdU3lzdGVtLldpbmRv
+        d3MuRm9ybXMuVHJlZU5vZGUCAAAAAgAAAAYDAAAAEERlZmF1bHQgc2V0dGluZ3MGBAAAAAAGBQAAAAVO
+        b2RlMQD/////CQQAAAD/////CQQAAAAEAAAACQcAAAAJCAAAAAkJAAAACQoAAAAFBwAAAB1TeXN0ZW0u
         V2luZG93cy5Gb3Jtcy5UcmVlTm9kZQkAAAAEVGV4dAtUb29sVGlwVGV4dAROYW1lCUlzQ2hlY2tlZApJ
         bWFnZUluZGV4CEltYWdlS2V5ElNlbGVjdGVkSW1hZ2VJbmRleBBTZWxlY3RlZEltYWdlS2V5CkNoaWxk
-        Q291bnQBAQEAAAEAAQABCAgIAgAAAAYSAAAABFNFR0EJBAAAAAYUAAAACE5vZGVTRUdBAP////8JBAAA
-        AP////8JBAAAAAAAAAAL
+        Q291bnQBAQEAAAEAAQABCAgIAgAAAAYLAAAAA05FUwkEAAAABg0AAAAHTm9kZU5FUwD/////CQQAAAD/
+        ////CQQAAAAAAAAABQgAAAAdU3lzdGVtLldpbmRvd3MuRm9ybXMuVHJlZU5vZGUJAAAABFRleHQLVG9v
+        bFRpcFRleHQETmFtZQlJc0NoZWNrZWQKSW1hZ2VJbmRleAhJbWFnZUtleRJTZWxlY3RlZEltYWdlSW5k
+        ZXgQU2VsZWN0ZWRJbWFnZUtleQpDaGlsZENvdW50AQEBAAABAAEAAQgICAIAAAAGDwAAAANONjQJBAAA
+        AAYRAAAAB05vZGVONjQA/////wkEAAAA/////wkEAAAAAAAAAAUJAAAAHVN5c3RlbS5XaW5kb3dzLkZv
+        cm1zLlRyZWVOb2RlCQAAAARUZXh0C1Rvb2xUaXBUZXh0BE5hbWUJSXNDaGVja2VkCkltYWdlSW5kZXgI
+        SW1hZ2VLZXkSU2VsZWN0ZWRJbWFnZUluZGV4EFNlbGVjdGVkSW1hZ2VLZXkKQ2hpbGRDb3VudAEBAQAA
+        AQABAAEICAgCAAAABhMAAAAEU0VHQQkEAAAABhUAAAAITm9kZVNFR0EA/////wkEAAAA/////wkEAAAA
+        AAAAAAUKAAAAHVN5c3RlbS5XaW5kb3dzLkZvcm1zLlRyZWVOb2RlCQAAAARUZXh0C1Rvb2xUaXBUZXh0
+        BE5hbWUJSXNDaGVja2VkCkltYWdlSW5kZXgISW1hZ2VLZXkSU2VsZWN0ZWRJbWFnZUluZGV4EFNlbGVj
+        dGVkSW1hZ2VLZXkKQ2hpbGRDb3VudAEBAQAAAQABAAEICAgCAAAABhcAAAAKRm9yd2FyZGVycwkEAAAA
+        BhkAAAAOTm9kZUZvcndhcmRlcnMA/////wkEAAAA/////wkEAAAAAAAAAAs=
 </value>
   </data>
   <data name="TreeView.Size" type="System.Drawing.Size, System.Drawing">
@@ -712,7 +716,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="panel4.Location" type="System.Drawing.Point, System.Drawing">
     <value>160, 0</value>
@@ -733,7 +737,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panel4.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 10</value>
@@ -778,7 +782,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="leftSeparator.Location" type="System.Drawing.Point, System.Drawing">
     <value>159, 0</value>
@@ -800,6 +804,129 @@
   </data>
   <data name="&gt;&gt;leftSeparator.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="NANDLoaderType.Items" xml:space="preserve">
+    <value>Wii</value>
+  </data>
+  <data name="NANDLoaderType.Items1" xml:space="preserve">
+    <value>vWii (Wii U)</value>
+  </data>
+  <data name="NANDLoaderType.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 19</value>
+  </data>
+  <data name="NANDLoaderType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>505, 21</value>
+  </data>
+  <data name="NANDLoaderType.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;NANDLoaderType.Name" xml:space="preserve">
+    <value>NANDLoaderType</value>
+  </data>
+  <data name="&gt;&gt;NANDLoaderType.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;NANDLoaderType.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;NANDLoaderType.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 66</value>
+  </data>
+  <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>525, 50</value>
+  </data>
+  <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="groupBox4.Text" xml:space="preserve">
+    <value>NAND loader type</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Name" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="ROMStorage.Items" xml:space="preserve">
+    <value>SD</value>
+  </data>
+  <data name="ROMStorage.Items1" xml:space="preserve">
+    <value>USB</value>
+  </data>
+  <data name="ROMStorage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 19</value>
+  </data>
+  <data name="ROMStorage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>505, 21</value>
+  </data>
+  <data name="ROMStorage.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;ROMStorage.Name" xml:space="preserve">
+    <value>ROMStorage</value>
+  </data>
+  <data name="&gt;&gt;ROMStorage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ROMStorage.Parent" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;ROMStorage.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="groupBox5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 10</value>
+  </data>
+  <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>525, 50</value>
+  </data>
+  <data name="groupBox5.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="groupBox5.Text" xml:space="preserve">
+    <value>ROM storage</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.Name" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="panel3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>160, 0</value>
+  </data>
+  <data name="panel3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>549, 396</value>
+  </data>
+  <data name="panel3.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="&gt;&gt;panel3.Name" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;panel3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel3.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panel3.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
