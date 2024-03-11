@@ -149,7 +149,9 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="_classes\Injectors\Forwarder.cs" />
+    <Compile Include="_classes\Injectors\WiiVC\MSX.cs" />
     <Compile Include="_classes\Language.cs" />
+    <Compile Include="_classes\ROM\MSX.cs" />
     <Compile Include="_classes\ROM\N64.cs" />
     <Compile Include="_classes\ROM\NeoGeo.cs" />
     <Compile Include="_classes\ROM\NES.cs" />

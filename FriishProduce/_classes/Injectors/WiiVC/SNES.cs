@@ -15,10 +15,6 @@ namespace FriishProduce.WiiVC
 
         protected override void Load()
         {
-            // -----------------------
-            // Maximum ROM limit allowed: 4 MB
-            // -----------------------
-
             NeedsMainDOL = true;
             MainContentIndex = 5;
             NeedsManualLoaded = true;

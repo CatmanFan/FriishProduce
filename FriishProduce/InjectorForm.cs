@@ -197,6 +197,7 @@ namespace FriishProduce
 
                 case Console.MSX:
                     TIDCode = "X";
+                    ROM = new ROM_MSX();
                     break;
 
                 default:
@@ -795,6 +796,13 @@ namespace FriishProduce
                     {
                         BIOSPath = null
                     };
+                    break;
+
+
+                // MSX
+                // *******
+                case Console.MSX:
+                    VC = new WiiVC.MSX();
                     break;
             }
 

@@ -55,8 +55,8 @@ namespace FriishProduce
                          // new ToolStripMenuItem(null, new Icon(Properties.Resources.nec_turbografx_16, 16, 16).ToBitmap(), AddProject, Console.PCE.ToString()),
                          // new ToolStripSeparator(),
                             new ToolStripMenuItem(null, new Icon(Properties.Resources.snk_neo_geo_aes, 16, 16).ToBitmap(), AddProject, Console.NeoGeo.ToString()),
-                         // new ToolStripSeparator(),
-                         // new ToolStripMenuItem(null, new Icon(SystemIcons.Shield, 16, 16).ToBitmap(), AddProject, Console.MSX.ToString())
+                            new ToolStripSeparator(),
+                            new ToolStripMenuItem(null, new Icon(SystemIcons.Shield, 16, 16).ToBitmap(), AddProject, Console.MSX.ToString())
                         //})
                 };
 
