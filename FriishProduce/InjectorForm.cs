@@ -137,7 +137,7 @@ namespace FriishProduce
             }
 
             InjectorsList.SelectedIndex = 0;
-            InjectorsList.Enabled = InjectorsList.Items.Count > 1;
+            label3.Enabled = InjectorsList.Enabled = InjectorsList.Items.Count > 1;
 
             if (Properties.Settings.Default.ImageFitAspectRatio) radioButton2.Checked = true; else radioButton1.Checked = true;
         }
@@ -575,7 +575,7 @@ namespace FriishProduce
                     break;
             }
 
-            ROM.Path = ROMpath;
+            if (ROM != null) ROM.Path = ROMpath;
             ROMLoaded = true;
 
             PatchFile = null;
@@ -874,6 +874,8 @@ namespace FriishProduce
             }
 
             if (Base.Items.Count > 0) { Base.SelectedIndex = 0; }
+
+            Base.Enabled = Base.Items.Count > 1;
         }
 
 
@@ -1294,8 +1296,9 @@ namespace FriishProduce
             else
                 COPanel_Forwarder.Show();
 
-            var selected = COPanel_Forwarder.Visible ? COPanel_Forwarder : COPanel_VC;
-            groupBox4.Size = new Size(groupBox4.Width, selected.Location.Y + selected.Height + 7);
+            var selected = COPanel_Forwarder.Visible ? COPanel_Forwarder : COPanel_VC.Visible ? COPanel_VC : null;
+            int height = selected == null ? InjectorsList.Location.Y + InjectorsList.Height + 10 : selected.Location.Y + selected.Height + 10;
+            groupBox4.Size = new Size(groupBox4.Width, height);
             if (groupBox4.Enabled) CheckExport();
         }
     }

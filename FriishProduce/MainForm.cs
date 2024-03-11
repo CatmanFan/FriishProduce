@@ -56,7 +56,9 @@ namespace FriishProduce
                          // new ToolStripSeparator(),
                             new ToolStripMenuItem(null, new Icon(Properties.Resources.snk_neo_geo_aes, 16, 16).ToBitmap(), AddProject, Console.NeoGeo.ToString()),
                             new ToolStripSeparator(),
-                            new ToolStripMenuItem(null, new Icon(SystemIcons.Shield, 16, 16).ToBitmap(), AddProject, Console.MSX.ToString())
+                            new ToolStripMenuItem(null, Properties.Resources.msx, AddProject, Console.MSX.ToString()),
+                         // new ToolStripSeparator(),
+                         // new ToolStripMenuItem(null, Properties.Resources.flash, AddProject, Console.Flash.ToString())
                         //})
                 };
 
@@ -274,6 +276,10 @@ namespace FriishProduce
 
                 case Console.NeoGeo:
                     BrowseROM.Filter = Language.Get("Filter.ZIP");
+                    break;
+
+                case Console.Flash:
+                    BrowseROM.Filter = Language.Get("Filter.SWF");
                     break;
             }
 

@@ -318,6 +318,7 @@
   <ItemGroup>
     <Content Include="Database.xml" />
     <Content Include="icon.ico" />
+    <None Include="Resources\icons\msx.png" />
     <None Include="Resources\icons\globe-model.png" />
     <EmbeddedResource Include="Strings\en.xml" />
     <None Include="Resources\icons\mr-saturn.png" />
