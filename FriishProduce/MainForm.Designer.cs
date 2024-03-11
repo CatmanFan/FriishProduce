@@ -39,6 +39,9 @@ namespace FriishProduce
             this.MenuStrip = new System.Windows.Forms.MenuStrip();
             this.MenuItem_File = new System.Windows.Forms.ToolStripMenuItem();
             this.NewProject = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuItem_OpenExports = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuItem_ClearExports = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.MenuItem_Settings = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.MenuItem_Exit = new System.Windows.Forms.ToolStripMenuItem();
@@ -73,9 +76,6 @@ namespace FriishProduce
             this.ToolStrip_CloseTab = new System.Windows.Forms.ToolStripButton();
             this.ToolStrip_Settings = new System.Windows.Forms.ToolStripButton();
             this.ToolStrip_Tutorial = new System.Windows.Forms.ToolStripButton();
-            this.MenuItem_OpenExports = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuItem_ClearExports = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.MenuStrip.SuspendLayout();
             this.MainPanel.SuspendLayout();
             this.ToolStrip.SuspendLayout();
@@ -162,6 +162,23 @@ namespace FriishProduce
             this.NewProject.Image = global::FriishProduce.Properties.Resources.document;
             this.NewProject.Name = "NewProject";
             resources.ApplyResources(this.NewProject, "NewProject");
+            // 
+            // MenuItem_OpenExports
+            // 
+            this.MenuItem_OpenExports.Name = "MenuItem_OpenExports";
+            resources.ApplyResources(this.MenuItem_OpenExports, "MenuItem_OpenExports");
+            this.MenuItem_OpenExports.Click += new System.EventHandler(this.OpenExports);
+            // 
+            // MenuItem_ClearExports
+            // 
+            this.MenuItem_ClearExports.Name = "MenuItem_ClearExports";
+            resources.ApplyResources(this.MenuItem_ClearExports, "MenuItem_ClearExports");
+            this.MenuItem_ClearExports.Click += new System.EventHandler(this.CleanExports);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            resources.ApplyResources(this.toolStripMenuItem1, "toolStripMenuItem1");
             // 
             // MenuItem_Settings
             // 
@@ -412,23 +429,6 @@ namespace FriishProduce
             resources.ApplyResources(this.ToolStrip_Tutorial, "ToolStrip_Tutorial");
             this.ToolStrip_Tutorial.Name = "ToolStrip_Tutorial";
             this.ToolStrip_Tutorial.Click += new System.EventHandler(this.Tutorial_Click);
-            // 
-            // MenuItem_OpenExports
-            // 
-            this.MenuItem_OpenExports.Name = "MenuItem_OpenExports";
-            resources.ApplyResources(this.MenuItem_OpenExports, "MenuItem_OpenExports");
-            this.MenuItem_OpenExports.Click += new System.EventHandler(this.OpenExports);
-            // 
-            // MenuItem_ClearExports
-            // 
-            this.MenuItem_ClearExports.Name = "MenuItem_ClearExports";
-            resources.ApplyResources(this.MenuItem_ClearExports, "MenuItem_ClearExports");
-            this.MenuItem_ClearExports.Click += new System.EventHandler(this.CleanExports);
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            resources.ApplyResources(this.toolStripMenuItem1, "toolStripMenuItem1");
             // 
             // MainForm
             // 

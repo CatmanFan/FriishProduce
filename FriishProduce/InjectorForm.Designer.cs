@@ -42,23 +42,31 @@ namespace FriishProduce
             this.SaveIcon_Panel = new System.Windows.Forms.Panel();
             this.SaveDataTitle = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.CustomManual = new System.Windows.Forms.CheckBox();
-            this.ImportPatch = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.InjectorsList = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.COPanel_Forwarder = new System.Windows.Forms.Panel();
+            this.label14 = new System.Windows.Forms.Label();
+            this.Forwarder_Mode = new System.Windows.Forms.ComboBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.Forwarder_Device = new System.Windows.Forms.ComboBox();
+            this.COPanel_VC = new System.Windows.Forms.Panel();
+            this.CustomManual = new System.Windows.Forms.CheckBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.ImportPatch = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.ChannelTitle_Locale = new System.Windows.Forms.CheckBox();
+            this.TitleID = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.Random = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.ChannelTitle = new System.Windows.Forms.TextBox();
             this.RegionFree = new System.Windows.Forms.CheckBox();
-            this.TitleID = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.ChannelTitle = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.OpenWAD = new System.Windows.Forms.CheckBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.Players = new System.Windows.Forms.NumericUpDown();
             this.ReleaseYear = new System.Windows.Forms.NumericUpDown();
@@ -71,7 +79,6 @@ namespace FriishProduce
             this.baseName = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.OpenWAD = new System.Windows.Forms.CheckBox();
             this.WADRegion = new System.Windows.Forms.PictureBox();
             this.Base = new System.Windows.Forms.ComboBox();
             this.BrowseManual = new Ookii.Dialogs.WinForms.VistaFolderBrowserDialog();
@@ -80,6 +87,8 @@ namespace FriishProduce
             this.groupBox8.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.COPanel_Forwarder.SuspendLayout();
+            this.COPanel_VC.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Random)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -166,36 +175,15 @@ namespace FriishProduce
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.label11);
-            this.groupBox4.Controls.Add(this.CustomManual);
-            this.groupBox4.Controls.Add(this.ImportPatch);
             this.groupBox4.Controls.Add(this.label3);
             this.groupBox4.Controls.Add(this.InjectorsList);
             this.groupBox4.Controls.Add(this.button1);
+            this.groupBox4.Controls.Add(this.COPanel_Forwarder);
+            this.groupBox4.Controls.Add(this.COPanel_VC);
             resources.ApplyResources(this.groupBox4, "groupBox4");
             this.groupBox4.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.TabStop = false;
-            // 
-            // label11
-            // 
-            resources.ApplyResources(this.label11, "label11");
-            this.label11.ForeColor = System.Drawing.Color.Gray;
-            this.label11.Name = "label11";
-            // 
-            // CustomManual
-            // 
-            resources.ApplyResources(this.CustomManual, "CustomManual");
-            this.CustomManual.Name = "CustomManual";
-            this.CustomManual.UseVisualStyleBackColor = true;
-            this.CustomManual.CheckedChanged += new System.EventHandler(this.CustomManual_CheckedChanged);
-            // 
-            // ImportPatch
-            // 
-            resources.ApplyResources(this.ImportPatch, "ImportPatch");
-            this.ImportPatch.Name = "ImportPatch";
-            this.ImportPatch.UseVisualStyleBackColor = true;
-            this.ImportPatch.CheckedChanged += new System.EventHandler(this.Patch_CheckedChanged);
             // 
             // label3
             // 
@@ -220,15 +208,82 @@ namespace FriishProduce
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.OpenInjectorOptions);
             // 
+            // COPanel_Forwarder
+            // 
+            this.COPanel_Forwarder.Controls.Add(this.label14);
+            this.COPanel_Forwarder.Controls.Add(this.Forwarder_Mode);
+            this.COPanel_Forwarder.Controls.Add(this.label13);
+            this.COPanel_Forwarder.Controls.Add(this.Forwarder_Device);
+            resources.ApplyResources(this.COPanel_Forwarder, "COPanel_Forwarder");
+            this.COPanel_Forwarder.Name = "COPanel_Forwarder";
+            // 
+            // label14
+            // 
+            resources.ApplyResources(this.label14, "label14");
+            this.label14.Name = "label14";
+            // 
+            // Forwarder_Mode
+            // 
+            this.Forwarder_Mode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Forwarder_Mode.FormattingEnabled = true;
+            this.Forwarder_Mode.Items.AddRange(new object[] {
+            resources.GetString("Forwarder_Mode.Items"),
+            resources.GetString("Forwarder_Mode.Items1")});
+            resources.ApplyResources(this.Forwarder_Mode, "Forwarder_Mode");
+            this.Forwarder_Mode.Name = "Forwarder_Mode";
+            // 
+            // label13
+            // 
+            resources.ApplyResources(this.label13, "label13");
+            this.label13.Name = "label13";
+            // 
+            // Forwarder_Device
+            // 
+            this.Forwarder_Device.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Forwarder_Device.FormattingEnabled = true;
+            this.Forwarder_Device.Items.AddRange(new object[] {
+            resources.GetString("Forwarder_Device.Items"),
+            resources.GetString("Forwarder_Device.Items1")});
+            resources.ApplyResources(this.Forwarder_Device, "Forwarder_Device");
+            this.Forwarder_Device.Name = "Forwarder_Device";
+            // 
+            // COPanel_VC
+            // 
+            this.COPanel_VC.Controls.Add(this.CustomManual);
+            this.COPanel_VC.Controls.Add(this.groupBox5);
+            resources.ApplyResources(this.COPanel_VC, "COPanel_VC");
+            this.COPanel_VC.Name = "COPanel_VC";
+            // 
+            // CustomManual
+            // 
+            resources.ApplyResources(this.CustomManual, "CustomManual");
+            this.CustomManual.Name = "CustomManual";
+            this.CustomManual.UseVisualStyleBackColor = true;
+            this.CustomManual.CheckedChanged += new System.EventHandler(this.CustomManual_CheckedChanged);
+            // 
+            // label11
+            // 
+            resources.ApplyResources(this.label11, "label11");
+            this.label11.ForeColor = System.Drawing.Color.Gray;
+            this.label11.Name = "label11";
+            // 
+            // ImportPatch
+            // 
+            resources.ApplyResources(this.ImportPatch, "ImportPatch");
+            this.ImportPatch.Name = "ImportPatch";
+            this.ImportPatch.UseVisualStyleBackColor = true;
+            this.ImportPatch.CheckedChanged += new System.EventHandler(this.Patch_CheckedChanged);
+            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.ChannelTitle_Locale);
+            this.groupBox3.Controls.Add(this.TitleID);
+            this.groupBox3.Controls.Add(this.label15);
             this.groupBox3.Controls.Add(this.Random);
             this.groupBox3.Controls.Add(this.label6);
-            this.groupBox3.Controls.Add(this.ChannelTitle);
             this.groupBox3.Controls.Add(this.RegionFree);
-            this.groupBox3.Controls.Add(this.TitleID);
             this.groupBox3.Controls.Add(this.label7);
+            this.groupBox3.Controls.Add(this.ChannelTitle);
             resources.ApplyResources(this.groupBox3, "groupBox3");
             this.groupBox3.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.groupBox3.Name = "groupBox3";
@@ -241,6 +296,18 @@ namespace FriishProduce
             this.ChannelTitle_Locale.Name = "ChannelTitle_Locale";
             this.ChannelTitle_Locale.UseVisualStyleBackColor = true;
             this.ChannelTitle_Locale.CheckedChanged += new System.EventHandler(this.ChannelTitle_Locale_CheckedChanged);
+            // 
+            // TitleID
+            // 
+            this.TitleID.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            resources.ApplyResources(this.TitleID, "TitleID");
+            this.TitleID.Name = "TitleID";
+            this.TitleID.TextChanged += new System.EventHandler(this.TextBox_Changed);
+            // 
+            // label15
+            // 
+            resources.ApplyResources(this.label15, "label15");
+            this.label15.Name = "label15";
             // 
             // Random
             // 
@@ -256,34 +323,30 @@ namespace FriishProduce
             resources.ApplyResources(this.label6, "label6");
             this.label6.Name = "label6";
             // 
-            // ChannelTitle
-            // 
-            resources.ApplyResources(this.ChannelTitle, "ChannelTitle");
-            this.ChannelTitle.Name = "ChannelTitle";
-            this.ChannelTitle.TextChanged += new System.EventHandler(this.TextBox_Changed);
-            // 
             // RegionFree
             // 
             resources.ApplyResources(this.RegionFree, "RegionFree");
             this.RegionFree.Name = "RegionFree";
             this.RegionFree.UseVisualStyleBackColor = true;
             // 
-            // TitleID
-            // 
-            this.TitleID.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            resources.ApplyResources(this.TitleID, "TitleID");
-            this.TitleID.Name = "TitleID";
-            this.TitleID.TextChanged += new System.EventHandler(this.TextBox_Changed);
-            // 
             // label7
             // 
             resources.ApplyResources(this.label7, "label7");
             this.label7.Name = "label7";
             // 
+            // ChannelTitle
+            // 
+            resources.ApplyResources(this.ChannelTitle, "ChannelTitle");
+            this.ChannelTitle.Name = "ChannelTitle";
+            this.ChannelTitle.TextChanged += new System.EventHandler(this.TextBox_Changed);
+            // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.ImportPatch);
             this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.OpenWAD);
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.groupBox1.Name = "groupBox1";
@@ -299,6 +362,13 @@ namespace FriishProduce
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
             this.label1.UseMnemonic = false;
+            // 
+            // OpenWAD
+            // 
+            resources.ApplyResources(this.OpenWAD, "OpenWAD");
+            this.OpenWAD.Name = "OpenWAD";
+            this.OpenWAD.UseVisualStyleBackColor = true;
+            this.OpenWAD.CheckedChanged += new System.EventHandler(this.OpenWAD_CheckedChanged);
             // 
             // groupBox6
             // 
@@ -383,7 +453,6 @@ namespace FriishProduce
             this.groupBox2.Controls.Add(this.baseName);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.OpenWAD);
             this.groupBox2.Controls.Add(this.WADRegion);
             this.groupBox2.Controls.Add(this.Base);
             resources.ApplyResources(this.groupBox2, "groupBox2");
@@ -414,13 +483,6 @@ namespace FriishProduce
             resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
             this.label4.UseMnemonic = false;
-            // 
-            // OpenWAD
-            // 
-            resources.ApplyResources(this.OpenWAD, "OpenWAD");
-            this.OpenWAD.Name = "OpenWAD";
-            this.OpenWAD.UseVisualStyleBackColor = true;
-            this.OpenWAD.CheckedChanged += new System.EventHandler(this.OpenWAD_CheckedChanged);
             // 
             // WADRegion
             // 
@@ -465,7 +527,6 @@ namespace FriishProduce
             resources.ApplyResources(this, "$this");
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox8);
             this.Controls.Add(this.groupBox6);
@@ -484,6 +545,10 @@ namespace FriishProduce
             this.groupBox5.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            this.COPanel_Forwarder.ResumeLayout(false);
+            this.COPanel_Forwarder.PerformLayout();
+            this.COPanel_VC.ResumeLayout(false);
+            this.COPanel_VC.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Random)).EndInit();
@@ -548,5 +613,12 @@ namespace FriishProduce
         private Ookii.Dialogs.WinForms.VistaFolderBrowserDialog BrowseManual;
         private System.Windows.Forms.Label label11;
         internal System.Windows.Forms.OpenFileDialog BrowsePatch;
+        private System.Windows.Forms.Panel COPanel_VC;
+        private System.Windows.Forms.Panel COPanel_Forwarder;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.ComboBox Forwarder_Mode;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.ComboBox Forwarder_Device;
+        private System.Windows.Forms.Label label15;
     }
 }

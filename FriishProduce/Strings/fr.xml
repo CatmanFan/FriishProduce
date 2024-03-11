@@ -24,7 +24,7 @@
 		<ByDefault>Par défaut</ByDefault>
 		<CustomManual>Importer un mode d'emploi personnalisé</CustomManual>
 		<DoNotShow>Ne plus afficher ce message</DoNotShow>
-		<Error>Une erreur est survenue.</Error>
+		<Error>Un problème est survenu</Error>
 		<Error.000>Échec de la connexion à Internet.\nMessage : {0}</Error.000>
 		<Error.001>Échec de la génération de l'image.\nCela peut être dû à un problème avec GDI+.</Error.001>
 		<Error.002>Échec du replacement des données internes.</Error.002>

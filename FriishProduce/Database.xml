@@ -500,6 +500,29 @@
 		</Entry>
 	</Database>
 
+	<Database Type="MSX">
+		<Entry>
+			<tid>XAGJ</tid>
+			<name>Road Fighter</name>
+			<displayName>ロードファイター</displayName>
+			<emuVersion>0</emuVersion>
+		</Entry>
+
+		<Entry>
+			<tid>XAFJ</tid>
+			<name>Metal Gear</name>
+			<displayName>メタルギア</displayName>
+			<emuVersion>1</emuVersion>
+		</Entry>
+
+		<Entry>
+			<tid>XAPJ</tid>
+			<name>Metal Gear 2 - Solid Snake</name>
+			<displayName>メタルギア2 ソリッドスネーク</displayName>
+			<emuVersion>1</emuVersion>
+		</Entry>
+	</Database>
+
 	<Database Type="Flash">
 		<Entry>
 			<tid>WNAE</tid>

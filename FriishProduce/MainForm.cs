@@ -52,7 +52,11 @@ namespace FriishProduce
                         Language.Get("Other"), null,
                         new ToolStripItem[]
                         {*/
-                            new ToolStripMenuItem(null, new Icon(Properties.Resources.snk_neo_geo_aes, 16, 16).ToBitmap(), AddProject, Console.NeoGeo.ToString())
+                         // new ToolStripMenuItem(null, new Icon(Properties.Resources.nec_turbografx_16, 16, 16).ToBitmap(), AddProject, Console.PCE.ToString()),
+                         // new ToolStripSeparator(),
+                            new ToolStripMenuItem(null, new Icon(Properties.Resources.snk_neo_geo_aes, 16, 16).ToBitmap(), AddProject, Console.NeoGeo.ToString()),
+                         // new ToolStripSeparator(),
+                         // new ToolStripMenuItem(null, new Icon(SystemIcons.Shield, 16, 16).ToBitmap(), AddProject, Console.MSX.ToString())
                         //})
                 };
 
@@ -263,6 +267,8 @@ namespace FriishProduce
                 case Console.SMS:
                 case Console.SMDGEN:
                 case Console.PCE:
+                case Console.C64:
+                case Console.MSX:
                     BrowseROM.Filter = Language.Get($"Filter.ROM.{c}");
                     break;
 

@@ -83,6 +83,8 @@ namespace FriishProduce
             imageintpl.Items.Add(Language.Get("ByDefault"));
             imageintpl.Items.AddRange(Language.GetArray("List.ImageInterpolation"));
             imageintpl.SelectedIndex = Properties.Settings.Default.ImageInterpolation;
+            Forwarder_Device.SelectedIndex = Properties.Settings.Default.Default_Forwarders_FilesStorage.ToLower().Contains("usb") ? 1 : 0;
+            Forwarder_Mode.SelectedIndex = Properties.Settings.Default.Default_Forwarders_Mode.ToLower().Contains("vwii") ? 1 : 0;
 
             // Injection methods list
             InjectorsList.Items.Clear();
@@ -121,13 +123,11 @@ namespace FriishProduce
                     break;
 
                 case Console.Flash:
-                    CustomManual.Enabled = false;
                     InjectorsList.Items.Clear();
                     InjectorsList.Items.Add(" ");
                     break;
 
                 case Console.GBA:
-                    CustomManual.Enabled = false;
                     InjectorsList.Items.Clear();
                     InjectorsList.Items.Add(Forwarder.List[6]);
                     break;
@@ -138,7 +138,6 @@ namespace FriishProduce
 
             InjectorsList.SelectedIndex = 0;
             InjectorsList.Enabled = InjectorsList.Items.Count > 1;
-            if (!CustomManual.Enabled) CustomManual.Checked = false;
 
             if (Properties.Settings.Default.ImageFitAspectRatio) radioButton2.Checked = true; else radioButton1.Checked = true;
         }
@@ -669,7 +668,7 @@ namespace FriishProduce
                     case Console.PCE:
                     case Console.NeoGeo:
                     case Console.MSX:
-                        if (InjectorsList.SelectedItem.ToString().ToLower() == Language.Get("VC").ToLower())
+                        if (IsVCMode())
                             WiiVCInject();
                         else
                             ForwarderCreator();
@@ -733,13 +732,13 @@ namespace FriishProduce
                 ROMExtension = Path.GetExtension(ROM.Path),
                 ID = Creator.TitleID,
                 Emulator = InjectorsList.SelectedItem.ToString(),
-                Storage = CO.Settings.ElementAt(0).Value.ToLower().Contains("usb") ? Forwarder.Storages.USB : Forwarder.Storages.SD
+                Storage = Forwarder_Device.SelectedItem.ToString().ToLower().Contains("usb") ? Forwarder.Storages.USB : Forwarder.Storages.SD
             };
 
             // Actually inject everything
             // *******
-            f.CreateZIP(Path.Combine(Path.GetDirectoryName(Creator.Out), Path.GetFileNameWithoutExtension(Creator.Out) + $" ({CO.Settings.ElementAt(0).Value}).zip"));
-            OutWAD = f.CreateWAD(OutWAD, CO.Settings.ElementAt(1).Value.ToLower() == "vwii");
+            f.CreateZIP(Path.Combine(Path.GetDirectoryName(Creator.Out), Path.GetFileNameWithoutExtension(Creator.Out) + $" ({Forwarder_Device.SelectedItem.ToString()}).zip"));
+            OutWAD = f.CreateWAD(OutWAD, Forwarder_Mode.SelectedItem.ToString().ToLower() == "vwii");
         }
 
         public void WiiVCInject()
@@ -1119,7 +1118,7 @@ namespace FriishProduce
                     break;
 
                 case Console.N64:
-                    CO.EmuType = Creator.isKorea ? 3 : emuVer;
+                    if (IsVCMode()) CO.EmuType = Creator.isKorea ? 3 : emuVer;
                     break;
 
                 case Console.SMS:
@@ -1236,15 +1235,18 @@ namespace FriishProduce
             }
         }
 
+        private bool IsVCMode() => InjectorsList.SelectedItem.ToString().ToLower() == Language.Get("VC").ToLower();
+
         private void InjectorsList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            isVC = InjectorsList.SelectedItem.ToString() == Language.Get("VC");
-
-            CustomManual.Enabled = isVC;
+            COPanel_VC.Hide();
+            COPanel_Forwarder.Hide();
 
             CO = null;
-            if (isVC)
+            if (IsVCMode())
             {
+                COPanel_VC.Show();
+
                 switch (Console)
                 {
                     case Console.NES:
@@ -1282,12 +1284,10 @@ namespace FriishProduce
             }
 
             else
-            {
-                CO = new Options_Forwarder();
-            }
+                COPanel_Forwarder.Show();
 
-            if (groupBox4.Enabled) groupBox5.Enabled = CustomManual.Enabled || Console == Console.Flash;
-            if (!CustomManual.Enabled) CustomManual.Checked = false;
+            var selected = COPanel_Forwarder.Visible ? COPanel_Forwarder : COPanel_VC;
+            groupBox4.Size = new Size(groupBox4.Width, selected.Location.Y + selected.Height + 7);
             if (groupBox4.Enabled) CheckExport();
         }
     }

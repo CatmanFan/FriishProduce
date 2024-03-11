@@ -168,37 +168,37 @@
     <value>Tahoma, 8pt</value>
   </data>
   <data name="NewProject.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>171, 22</value>
   </data>
   <data name="NewProject.Text" xml:space="preserve">
     <value>New...</value>
   </data>
   <data name="MenuItem_OpenExports.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>171, 22</value>
   </data>
   <data name="MenuItem_OpenExports.Text" xml:space="preserve">
     <value>Open exports folder</value>
   </data>
   <data name="MenuItem_ClearExports.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>171, 22</value>
   </data>
   <data name="MenuItem_ClearExports.Text" xml:space="preserve">
     <value>Clear exports folder</value>
   </data>
   <data name="toolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 6</value>
+    <value>168, 6</value>
   </data>
   <data name="MenuItem_Settings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>171, 22</value>
   </data>
   <data name="MenuItem_Settings.Text" xml:space="preserve">
     <value>Settings</value>
   </data>
   <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 6</value>
+    <value>168, 6</value>
   </data>
   <data name="MenuItem_Exit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>171, 22</value>
   </data>
   <data name="MenuItem_Exit.Text" xml:space="preserve">
     <value>Exit</value>
@@ -209,90 +209,59 @@
   <data name="MenuItem_File.Text" xml:space="preserve">
     <value>File</value>
   </data>
-  <data name="MenuItem_Project.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 20</value>
-  </data>
-  <data name="MenuItem_Project.Text" xml:space="preserve">
-    <value>Project</value>
-  </data>
-  <data name="MenuItem_Help.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 20</value>
-  </data>
-  <data name="MenuItem_Help.Text" xml:space="preserve">
-    <value>Help</value>
-  </data>
-  <data name="MenuStrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="MenuStrip.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 0, 1, 0</value>
-  </data>
-  <data name="MenuStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1054, 20</value>
-  </data>
-  <data name="MenuStrip.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;MenuStrip.Name" xml:space="preserve">
-    <value>MenuStrip</value>
-  </data>
-  <data name="&gt;&gt;MenuStrip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;MenuStrip.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;MenuStrip.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="OpenROM.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="OpenROM.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>67, 22</value>
   </data>
   <data name="OpenImage.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="OpenImage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>67, 22</value>
   </data>
   <data name="OpenManual.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="OpenManual.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>67, 22</value>
   </data>
   <data name="OpenManual.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 6</value>
+    <value>64, 6</value>
   </data>
   <data name="UseLibRetro.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="UseLibRetro.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>67, 22</value>
   </data>
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 6</value>
+    <value>64, 6</value>
   </data>
   <data name="ExportWAD.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="ExportWAD.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>67, 22</value>
   </data>
   <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 6</value>
+    <value>64, 6</value>
   </data>
   <data name="CloseTab.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="CloseTab.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>67, 22</value>
+  </data>
+  <data name="MenuItem_Project.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 20</value>
+  </data>
+  <data name="MenuItem_Project.Text" xml:space="preserve">
+    <value>Project</value>
   </data>
   <data name="MenuItem_Tutorial.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -330,65 +299,36 @@
   <data name="MenuItem_About.Text" xml:space="preserve">
     <value>About</value>
   </data>
-  <data name="&gt;&gt;Welcome_DoNotShow.Name" xml:space="preserve">
-    <value>Welcome_DoNotShow</value>
+  <data name="MenuItem_Help.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 20</value>
   </data>
-  <data name="&gt;&gt;Welcome_DoNotShow.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="MenuItem_Help.Text" xml:space="preserve">
+    <value>Help</value>
   </data>
-  <data name="&gt;&gt;Welcome_DoNotShow.Parent" xml:space="preserve">
-    <value>MainPanel</value>
+  <data name="MenuStrip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
   </data>
-  <data name="&gt;&gt;Welcome_DoNotShow.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="MenuStrip.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 0, 1, 0</value>
   </data>
-  <data name="&gt;&gt;PointToTutorial.Name" xml:space="preserve">
-    <value>PointToTutorial</value>
+  <data name="MenuStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1084, 20</value>
   </data>
-  <data name="&gt;&gt;PointToTutorial.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="MenuStrip.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
   </data>
-  <data name="&gt;&gt;PointToTutorial.Parent" xml:space="preserve">
-    <value>MainPanel</value>
+  <data name="&gt;&gt;MenuStrip.Name" xml:space="preserve">
+    <value>MenuStrip</value>
   </data>
-  <data name="&gt;&gt;PointToTutorial.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;MenuStrip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;Welcome.Name" xml:space="preserve">
-    <value>Welcome</value>
-  </data>
-  <data name="&gt;&gt;Welcome.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Welcome.Parent" xml:space="preserve">
-    <value>MainPanel</value>
-  </data>
-  <data name="&gt;&gt;Welcome.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="MainPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="MainPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 45</value>
-  </data>
-  <data name="MainPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1054, 540</value>
-  </data>
-  <data name="MainPanel.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;MainPanel.Name" xml:space="preserve">
-    <value>MainPanel</value>
-  </data>
-  <data name="&gt;&gt;MainPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;MainPanel.Parent" xml:space="preserve">
+  <data name="&gt;&gt;MenuStrip.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;MainPanel.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;MenuStrip.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="Welcome_DoNotShow.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -400,7 +340,7 @@
     <value>NoControl</value>
   </data>
   <data name="Welcome_DoNotShow.Location" type="System.Drawing.Point, System.Drawing">
-    <value>354, 309</value>
+    <value>369, 321</value>
   </data>
   <data name="Welcome_DoNotShow.Size" type="System.Drawing.Size, System.Drawing">
     <value>342, 27</value>
@@ -430,7 +370,7 @@
     <value>Arial, 12pt, style=Bold</value>
   </data>
   <data name="PointToTutorial.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1007, 3</value>
+    <value>1038, 2</value>
   </data>
   <data name="PointToTutorial.Size" type="System.Drawing.Size, System.Drawing">
     <value>21, 19</value>
@@ -463,7 +403,7 @@
     <value>NoControl</value>
   </data>
   <data name="Welcome.Location" type="System.Drawing.Point, System.Drawing">
-    <value>352, 204</value>
+    <value>367, 215</value>
   </data>
   <data name="Welcome.Size" type="System.Drawing.Size, System.Drawing">
     <value>350, 100</value>
@@ -491,6 +431,30 @@ Before getting started, please be sure to familiarise yourself with this program
   <data name="&gt;&gt;Welcome.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="MainPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="MainPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 45</value>
+  </data>
+  <data name="MainPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1084, 562</value>
+  </data>
+  <data name="MainPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;MainPanel.Name" xml:space="preserve">
+    <value>MainPanel</value>
+  </data>
+  <data name="&gt;&gt;MainPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MainPanel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;MainPanel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <metadata name="ToolStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>525, 17</value>
   </metadata>
@@ -499,30 +463,6 @@ Before getting started, please be sure to familiarise yourself with this program
   </data>
   <data name="ToolStrip.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
-  </data>
-  <data name="ToolStrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 20</value>
-  </data>
-  <data name="ToolStrip.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="ToolStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1054, 25</value>
-  </data>
-  <data name="ToolStrip.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;ToolStrip.Name" xml:space="preserve">
-    <value>ToolStrip</value>
-  </data>
-  <data name="&gt;&gt;ToolStrip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStrip.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;ToolStrip.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="ToolStrip_OpenROM.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -602,6 +542,30 @@ Before getting started, please be sure to familiarise yourself with this program
   <data name="ToolStrip_Tutorial.Size" type="System.Drawing.Size, System.Drawing">
     <value>23, 22</value>
   </data>
+  <data name="ToolStrip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 20</value>
+  </data>
+  <data name="ToolStrip.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="ToolStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1084, 25</value>
+  </data>
+  <data name="ToolStrip.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;ToolStrip.Name" xml:space="preserve">
+    <value>ToolStrip</value>
+  </data>
+  <data name="&gt;&gt;ToolStrip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStrip.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ToolStrip.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -612,7 +576,7 @@ Before getting started, please be sure to familiarise yourself with this program
     <value>True</value>
   </metadata>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1054, 585</value>
+    <value>1084, 607</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8.25pt</value>
@@ -3058,6 +3022,24 @@ Before getting started, please be sure to familiarise yourself with this program
   <data name="&gt;&gt;NewProject.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;MenuItem_OpenExports.Name" xml:space="preserve">
+    <value>MenuItem_OpenExports</value>
+  </data>
+  <data name="&gt;&gt;MenuItem_OpenExports.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MenuItem_ClearExports.Name" xml:space="preserve">
+    <value>MenuItem_ClearExports</value>
+  </data>
+  <data name="&gt;&gt;MenuItem_ClearExports.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem1.Name" xml:space="preserve">
+    <value>toolStripMenuItem1</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;MenuItem_Settings.Name" xml:space="preserve">
     <value>MenuItem_Settings</value>
   </data>
@@ -3231,24 +3213,6 @@ Before getting started, please be sure to familiarise yourself with this program
   </data>
   <data name="&gt;&gt;ToolStrip_Tutorial.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;MenuItem_OpenExports.Name" xml:space="preserve">
-    <value>MenuItem_OpenExports</value>
-  </data>
-  <data name="&gt;&gt;MenuItem_OpenExports.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;MenuItem_ClearExports.Name" xml:space="preserve">
-    <value>MenuItem_ClearExports</value>
-  </data>
-  <data name="&gt;&gt;MenuItem_ClearExports.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripMenuItem1.Name" xml:space="preserve">
-    <value>toolStripMenuItem1</value>
-  </data>
-  <data name="&gt;&gt;toolStripMenuItem1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>

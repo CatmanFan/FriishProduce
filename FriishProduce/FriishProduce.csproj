@@ -148,12 +148,6 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Subforms\Options_Forwarder.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Subforms\Options_Forwarder.Designer.cs">
-      <DependentUpon>Options_Forwarder.cs</DependentUpon>
-    </Compile>
     <Compile Include="_classes\Injectors\Forwarder.cs" />
     <Compile Include="_classes\Language.cs" />
     <Compile Include="_classes\ROM\N64.cs" />
@@ -278,9 +272,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Subforms\ContentOptions.resx">
       <DependentUpon>ContentOptions.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Subforms\Options_Forwarder.resx">
-      <DependentUpon>Options_Forwarder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Subforms\Options_VC_SEGA.resx">
       <DependentUpon>Options_VC_SEGA.cs</DependentUpon>
