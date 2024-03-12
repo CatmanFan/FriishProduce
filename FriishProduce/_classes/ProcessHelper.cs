@@ -13,7 +13,7 @@ namespace FriishProduce
 
         public static void Run(string app, string workingFolder, string arguments, bool showWindow = false)
         {
-            var appPath = System.IO.Path.Combine(Paths.Tools, System.IO.Path.GetFileName(app));
+            var appPath = System.IO.Path.Combine(Paths.Tools, app.Contains('\\') ? app : System.IO.Path.GetFileName(app));
 
             if (!System.IO.File.Exists(appPath)) throw new Exception(string.Format(Language.Get("Error.005"), app));
 

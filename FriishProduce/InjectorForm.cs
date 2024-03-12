@@ -203,6 +203,8 @@ namespace FriishProduce
                 default:
                 case Console.Flash:
                     TIDCode = null;
+                    ROM = new SWF();
+                    ImportPatch.Enabled = false;
                     break;
             }
 
@@ -253,7 +255,7 @@ namespace FriishProduce
 
         public bool[] CheckToolStripButtons() => new bool[]
             {
-                Console != Console.NeoGeo && Console != Console.Flash && ROM?.Bytes != null, // LibRetro
+                Console != Console.Flash && (ROM?.Bytes != null || !string.IsNullOrWhiteSpace(ROM?.Path)), // LibRetro
                 Console != Console.Flash, // Browse manual
             };
 
@@ -486,6 +488,8 @@ namespace FriishProduce
 
         public bool LoadImage(Bitmap src)
         {
+            if (src == null) return false;
+
             try
             {
                 Bitmap img = (Bitmap)src.Clone();
@@ -679,8 +683,11 @@ namespace FriishProduce
                         ForwarderCreator();
                         break;
 
-                    default:
                     case Console.Flash:
+                        FlashInject();
+                        break;
+
+                    default:
                         throw new NotImplementedException();
                 }
 
@@ -719,7 +726,7 @@ namespace FriishProduce
             finally
             {
                 Creator.Out = null;
-                if (OutWAD != null) OutWAD.Dispose();
+                OutWAD = null;
                 Parent.CleanTemp();
                 if (VC != null) VC.Dispose();
             }
@@ -740,6 +747,11 @@ namespace FriishProduce
             // *******
             f.CreateZIP(Path.Combine(Path.GetDirectoryName(Creator.Out), Path.GetFileNameWithoutExtension(Creator.Out) + $" ({Forwarder_Device.SelectedItem.ToString()}).zip"));
             OutWAD = f.CreateWAD(OutWAD, Forwarder_Mode.SelectedItem.ToString().ToLower() == "vwii");
+        }
+
+        public void FlashInject()
+        {
+            OutWAD = Injectors.Flash.Inject(OutWAD, ROM.Path);
         }
 
         public void WiiVCInject()

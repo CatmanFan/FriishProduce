@@ -95,9 +95,9 @@ namespace FriishProduce
                     bannerPath += region == Region.Europe ? "c64_eu.bnr" : "c64_us.bnr";
                     break;
 
-                /* case Console.MSX:
-                     bannerPath += "jp_msx.bnr";
-                     break; */
+                case Console.MSX:
+                     bannerPath += w.UpperTitleID.StartsWith("XAP") ? "jp_msx2.bnr" : "jp_msx1.bnr"; // Check if version 2 MSX WADs use a different color scheme?
+                     break;
 
                  case Console.Flash:
                      bannerPath += "flash.bnr";
@@ -312,6 +312,8 @@ namespace FriishProduce
         {
             try
             {
+                if (File.Exists(Paths.Banners + tID.ToUpper() + ".bnr")) return;
+
                 WAD w = DatabaseHelper.Get(tID).Load();
                 U8[] Banner = GetBanner(w);
                 Banner[1].Dispose();
@@ -325,7 +327,7 @@ namespace FriishProduce
                 {
                     ProcessHelper.Run
                     (
-                        Paths.Tools + "vcbrlyt\\vcbrlyt.exe",
+                        "vcbrlyt\\vcbrlyt.exe",
                         $"..\\..\\temp\\banner.brlyt -H_T_VCTitle_KOR \"VC................................................................................................................................\""
                     );
                 }
@@ -333,7 +335,7 @@ namespace FriishProduce
                 {
                     ProcessHelper.Run
                     (
-                        Paths.Tools + "vcbrlyt\\vcbrlyt.exe",
+                        "vcbrlyt\\vcbrlyt.exe",
                         $"..\\..\\temp\\banner.brlyt -Title \"VC................................................................................................................................\" -YEAR VCVC -Play 4"
                     );
                 }

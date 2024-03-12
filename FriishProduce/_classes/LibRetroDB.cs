@@ -23,13 +23,13 @@ namespace FriishProduce
                 (
                     System.Globalization.CultureInfo.InstalledUICulture.Name.StartsWith("fa") ? "https://www.aparat.com/" :
                     System.Globalization.CultureInfo.InstalledUICulture.Name.Contains("zh-CN") ? "http://www.baidu.com/" :
-                    "https://gbatemp.net/"
+                    "https://www.google.com/"
                 );
 
                 URL = request.Address.Authority;
                 request.Method = "HEAD";
                 request.KeepAlive = false;
-                request.Timeout = 15000;
+                request.Timeout = 30000;
 
                 var response = request.GetResponse();
 
@@ -102,31 +102,40 @@ namespace FriishProduce
 
             Web.InternetTest();
 
-            var crc = new Crc32();
-            using (var file = File.OpenRead(SoftwarePath))
-                crc.Append(file);
-
-            var hash_array = crc.GetCurrentHash();
-            Array.Reverse(hash_array);
-            string hash = BitConverter.ToString(hash_array).Replace("-", "").ToLower();
-
             // Original: https://github.com/libretro/libretro-database/raw/master/metadat/
             // ****************
             string db_base = "https://raw.githubusercontent.com/libretro/libretro-database/master/metadat/";
-            Dictionary<Console, string> db_platforms = new Dictionary<Console, string>
+            Dictionary<string, Console> db_platforms = new Dictionary<string, Console>
             {
-                { Console.NES, "Nintendo - Nintendo Entertainment System" },
-                { Console.SNES, "Nintendo - Super Nintendo Entertainment System" },
-                { Console.N64, "Nintendo - Nintendo 64" },
-                { Console.SMS, "Sega - Master System - Mark III" },
-                { Console.SMDGEN, "Sega - Mega Drive - Genesis" }
+                { "Nintendo - Nintendo Entertainment System", Console.NES },
+                { "Nintendo - Super Nintendo Entertainment System", Console.SNES },
+                { "Nintendo - Nintendo 64", Console.N64 },
+                { "Sega - Master System - Mark III", Console.SMS },
+                { "Sega - Mega Drive - Genesis", Console.SMDGEN },
+                { "NEC - PC Engine - TurboGrafx 16", Console.PCE },
+                { "NEC - PC Engine SuperGrafx", Console.PCE },
+                { "MAME", Console.NeoGeo },
+                { "Microsoft - MSX", Console.MSX },
+                { "Microsoft - MSX2", Console.MSX },
+                { "Microsoft - MSX 2", Console.MSX },
             };
+
+            string hash;
+            using (var file = File.OpenRead(SoftwarePath))
+            {
+                var crc = new Crc32();
+                crc.Append(file);
+                var hash_array = crc.GetCurrentHash();
+                Array.Reverse(hash_array);
+                hash = BitConverter.ToString(hash_array).Replace("-", "").ToLower();
+            }
+
             bool TitleIsSet = false;
             bool YearIsSet = false;
 
-            foreach (KeyValuePair<Console, string> item in db_platforms)
+            foreach (KeyValuePair<string, Console> item in db_platforms)
             {
-                if (item.Key == platform)
+                if (item.Value == platform)
                 {
                     byte[] db_bytes = { 0x00 };
 
@@ -134,110 +143,174 @@ namespace FriishProduce
 
                     string[] db_lines = new string[1];
 
-                    try
+                    if (platform == Console.NeoGeo)
                     {
-                        // Search in "releaseyear" repository
-                        // ****************
-                        using (WebClient c = new WebClient())
-                            db_bytes = Web.Get(db_base + "releaseyear/" + Uri.EscapeUriString(item.Value) + ".dat");
+                        var size = File.ReadAllBytes(SoftwarePath).Length.ToString();
 
-                        db_lines = Encoding.UTF8.GetString(db_bytes).Split(Environment.NewLine.ToCharArray());
+                        try
+                        {
+                            using (WebClient c = new WebClient())
+                                db_bytes = Web.Get(db_base + "mame-split/" + Uri.EscapeUriString(item.Key) + " 2016.dat");
 
-                        // Scan retrieved database
-                        // ****************
-                        for (int i = 10; i < db_lines.Length; i++)
-                            if (db_lines[i].ToLower().Contains(hash))
-                            {
-                                for (int x = i + 1; x > i - 11; x--)
+                            // Scan retrieved database
+                            // ****************
+                            db_lines = Encoding.UTF8.GetString(db_bytes).Split(Environment.NewLine.ToCharArray());
+
+                            for (int i = 5; i < db_lines.Length; i++)
+                                if (db_lines[i].ToLower().Contains(Path.GetFileName(SoftwarePath).ToLower()) || db_lines[i].ToLower().Contains(hash))
                                 {
-                                    if (db_lines[x].Contains("comment \"") && !TitleIsSet)
+                                    for (int x = i; x > i - 10; x--)
                                     {
-                                        Title = db_lines[x].Replace("\t", "").Replace("comment \"", "").Replace("\"", "");
-                                        ImgURL = "https://thumbnails.libretro.com/" + Uri.EscapeUriString(item.Value) + "/Named_Titles/" + Uri.EscapeUriString(Title) + ".png";
-                                        TitleIsSet = true;
+                                        string test = db_lines[x];
+                                        if (db_lines[x].Contains("name \""))
+                                        {
+                                            Title = db_lines[x].Replace("\t", "").Replace("name \"", "").Replace("\"", "");
+                                            ImgURL = "https://thumbnails.libretro.com/" + Uri.EscapeUriString(item.Key) + "/Named_Titles/" + Uri.EscapeUriString(Title.Replace('/', '_')) + ".png";
+                                            TitleIsSet = true;
+                                        }
+
+                                        if (db_lines[x].Contains("year \""))
+                                        {
+                                            Year = db_lines[x].Replace("\t", "").Replace("year \"", "").Replace("\"", "");
+                                            YearIsSet = true;
+                                        }
                                     }
-                                    if (db_lines[x].Contains("releaseyear") && !YearIsSet)
-                                    {
-                                        Year = db_lines[x].Trim().Replace("releaseyear \"", "").Replace("\"", "");
-                                        YearIsSet = true;
-                                    }
+
+                                    return TitleIsSet || YearIsSet;
                                 }
 
-                                goto GetPlayers;
-                            }
-                    }
-                    catch
-                    {
-                        goto Dev;
-                    }
-
-                // --------------------------------------------------------------------- //
-
-                    Dev:
-                    // If not found, search in "developer" repository, which happens to be more complete
-                    // ****************
-                    using (WebClient c = new WebClient())
-                        db_bytes = Web.Get(db_base + "developer/" + Uri.EscapeUriString(item.Value) + ".dat");
-
-                    // Scan retrieved database
-                    // ****************
-                    db_lines = Encoding.UTF8.GetString(db_bytes).Split(Environment.NewLine.ToCharArray());
-
-                    for (int i = 5; i < db_lines.Length; i++)
-                        if (db_lines[i].ToLower().Contains(hash))
+                        }
+                        catch
                         {
-                            for (int x = i; x > i - 10; x--)
-                                if (db_lines[x].Contains("comment \""))
+
+                        }
+
+                        goto NotFound;
+                    }
+
+                    else
+                    {
+                        try
+                        {
+                            // Search in "releaseyear" repository
+                            // ****************
+                            using (WebClient c = new WebClient())
+                                db_bytes = Web.Get(db_base + "releaseyear/" + Uri.EscapeUriString(item.Key) + ".dat");
+
+                            db_lines = Encoding.UTF8.GetString(db_bytes).Split(Environment.NewLine.ToCharArray());
+
+                            // Scan retrieved database
+                            // ****************
+                            for (int i = 10; i < db_lines.Length; i++)
+                                if (db_lines[i].ToLower().Contains(hash))
                                 {
-                                    Title = db_lines[x].Replace("\t", "").Replace("comment \"", "").Replace("\"", "");
-                                    ImgURL = "https://thumbnails.libretro.com/" + Uri.EscapeUriString(item.Value) + "/Named_Titles/" + Uri.EscapeUriString(Title) + ".png";
+                                    for (int x = i + 1; x > i - 11; x--)
+                                    {
+                                        if (db_lines[x].Contains("comment \"") && !TitleIsSet)
+                                        {
+                                            Title = db_lines[x].Replace("\t", "").Replace("comment \"", "").Replace("\"", "");
+                                            ImgURL = "https://thumbnails.libretro.com/" + Uri.EscapeUriString(item.Key) + "/Named_Titles/" + Uri.EscapeUriString(Title) + ".png";
+                                            TitleIsSet = true;
+                                        }
+                                        if (db_lines[x].Contains("releaseyear") && !YearIsSet)
+                                        {
+                                            Year = db_lines[x].Trim().Replace("releaseyear \"", "").Replace("\"", "");
+                                            YearIsSet = true;
+                                        }
+                                    }
+
                                     goto GetPlayers;
                                 }
                         }
-
-                    goto NotFound;
-
-                // --------------------------------------------------------------------- //
-
-                    GetPlayers:
-                    // "maxusers" contains maximum number of players supported
-                    // ****************
-                    using (WebClient c = new WebClient())
-                        db_bytes = Web.Get(db_base + "maxusers/" + Uri.EscapeUriString(item.Value) + ".dat");
-
-                    // Scan retrieved database
-                    // ****************
-                    db_lines = Encoding.UTF8.GetString(db_bytes).Split(Environment.NewLine.ToCharArray());
-
-                    for (int i = 5; i < db_lines.Length; i++)
-                        if (db_lines[i].Contains(Title))
+                        catch
                         {
-                            for (int x = i; x < i + 5; x++)
-                                if (db_lines[x].Contains("users "))
-                                    Players = db_lines[x].Replace("\t", "").Replace("users ", "");
+                            goto Dev;
                         }
 
                     // --------------------------------------------------------------------- //
 
-                    // Get original serial (title or content ID) of game
-                    // ****************
-                    /* using (WebClient c = new WebClient())
-                        db_bytes = Web.Get(db_base + "serial/" + Uri.EscapeUriString(item.Value) + ".dat");
-
-                    // Scan retrieved database
-                    // ****************
-                    db_lines = Encoding.UTF8.GetString(db_bytes).Split(Environment.NewLine.ToCharArray());
-
-                    for (int i = 5; i < db_lines.Length; i++)
-                        if (db_lines[i].Contains(Title))
+                    Dev:
+                        try
                         {
-                            for (int x = i; x < i + 5; x++)
-                                if (db_lines[x].Contains("serial "))
-                                    Serial = db_lines[x].Replace("\t", "").Replace("serial ", "").Replace("\"", "");
-                        } */
+                            // If not found, search in "developer" repository, which happens to be more complete
+                            // ****************
+                            using (WebClient c = new WebClient())
+                                db_bytes = Web.Get(db_base + "developer/" + Uri.EscapeUriString(item.Key) + ".dat");
 
-                    return true;
-                }
+                            // Scan retrieved database
+                            // ****************
+                            db_lines = Encoding.UTF8.GetString(db_bytes).Split(Environment.NewLine.ToCharArray());
+
+                            for (int i = 5; i < db_lines.Length; i++)
+                                if (db_lines[i].ToLower().Contains(hash))
+                                {
+                                    for (int x = i; x > i - 10; x--)
+                                        if (db_lines[x].Contains("comment \"") && !TitleIsSet)
+                                        {
+                                            Title = db_lines[x].Replace("\t", "").Replace("comment \"", "").Replace("\"", "");
+                                            TitleIsSet = true;
+                                            ImgURL = "https://thumbnails.libretro.com/" + Uri.EscapeUriString(item.Key) + "/Named_Titles/" + Uri.EscapeUriString(Title) + ".png";
+                                            goto GetPlayers;
+                                        }
+                                }
+
+                        }
+                        catch
+                        {
+                        }
+
+                        goto NotFound;
+                    }
+
+                    // --------------------------------------------------------------------- //
+
+                    GetPlayers:
+
+                    try
+                    {
+                        // "maxusers" contains maximum number of players supported
+                        // ****************
+                        using (WebClient c = new WebClient())
+                            db_bytes = Web.Get(db_base + "maxusers/" + Uri.EscapeUriString(item.Key) + ".dat");
+
+                        // Scan retrieved database
+                        // ****************
+                        db_lines = Encoding.UTF8.GetString(db_bytes).Split(Environment.NewLine.ToCharArray());
+
+                        for (int i = 5; i < db_lines.Length; i++)
+                            if (db_lines[i].Contains(Title))
+                            {
+                                for (int x = i; x < i + 5; x++)
+                                    if (db_lines[x].Contains("users "))
+                                        Players = db_lines[x].Replace("\t", "").Replace("users ", "");
+                            }
+                    }
+                    catch
+                    {
+
+                    }
+
+                        // --------------------------------------------------------------------- //
+
+                        // Get original serial (title or content ID) of game
+                        // ****************
+                        /* using (WebClient c = new WebClient())
+                            db_bytes = Web.Get(db_base + "serial/" + Uri.EscapeUriString(item.Key) + ".dat");
+
+                        // Scan retrieved database
+                        // ****************
+                        db_lines = Encoding.UTF8.GetString(db_bytes).Split(Environment.NewLine.ToCharArray());
+
+                        for (int i = 5; i < db_lines.Length; i++)
+                            if (db_lines[i].Contains(Title))
+                            {
+                                for (int x = i; x < i + 5; x++)
+                                    if (db_lines[x].Contains("serial "))
+                                        Serial = db_lines[x].Replace("\t", "").Replace("serial ", "").Replace("\"", "");
+                            } */
+
+                        return true;
+                    }
             }
 
         NotFound:

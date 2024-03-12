@@ -165,6 +165,7 @@ namespace FriishProduce
             bool NeedsOldForwarder = EmulatorIndex == 7;
             byte[] Forwarder  = NeedsOldForwarder ? Properties.Resources.ForwarderV12 : Properties.Resources.ForwarderV14;
             int TargetOffset  = NeedsOldForwarder ? 0x77426 : 0x7F979;
+            int SecondTargetOffset = NeedsOldForwarder ? 263 : 256;
             string TargetPath = NeedsOldForwarder ? Path : Path.Substring(4);
 
             // Create forwarder .app

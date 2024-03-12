@@ -20,9 +20,9 @@ namespace FriishProduce
         public static readonly string MiscCCF = DataCCF + "misc_ccf\\";
 
         // Flash paths
-        public static readonly string WorkingFolder_Content2 = WorkingFolder + "content2\\";
-        public static readonly string WorkingFolder_FlashSWF = WorkingFolder_Content2 + "content\\menu.swf";
-        public static readonly string WorkingFolder_FlashConfig = WorkingFolder_Content2 + "config\\config.common.pcf";
+        public static readonly string FlashContents = WorkingFolder + "flash\\";
+        public static readonly string FlashSWF = FlashContents + "content\\menu.swf";
+        public static readonly string FlashConfig = FlashContents + "config\\config.common.pcf";
 
         // Forwarder paths
         public static readonly string SDUSBRoot = WorkingFolder + "root\\";

@@ -144,6 +144,7 @@ namespace FriishProduce
                                : c == Console.PCE ? " (TGX)"
                                : c == Console.NeoGeo ? " (NG)"
                                : c == Console.C64 ? " (C64)"
+                               : c == Console.MSX ? " (MSX)"
                                : null;
 
             if (reg == null) throw new ArgumentException();
@@ -163,7 +164,7 @@ namespace FriishProduce
 
             // Title ID check
             // ****************
-            if (w.UpperTitleID.ToUpper() != TitleID.ToUpper() && c != Console.Flash) throw new ArgumentException();
+            if ((w.UpperTitleID.ToUpper() != TitleID.ToUpper() && c != Console.Flash) || !w.HasBanner) throw new ArgumentException();
             return w;
         }
 

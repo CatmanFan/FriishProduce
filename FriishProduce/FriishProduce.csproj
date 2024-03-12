@@ -148,7 +148,9 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="_classes\Injectors\Flash.cs" />
     <Compile Include="_classes\Injectors\Forwarder.cs" />
+    <Compile Include="_classes\ROM\Flash.cs" />
     <Compile Include="_classes\Injectors\WiiVC\MSX.cs" />
     <Compile Include="_classes\Language.cs" />
     <Compile Include="_classes\ROM\MSX.cs" />

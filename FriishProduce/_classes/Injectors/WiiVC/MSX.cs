@@ -36,6 +36,13 @@ namespace FriishProduce.WiiVC
             MainContent.ReplaceFile(index, ROM.Bytes);
         }
 
+        // ADDITIONAL INFO:
+        // In the 00000005.app you will find a series of region code .arc files (e.g. CHN, EUR, JPN, KOR, USA.) These are actually the emanual files containing the HTML data.
+        //
+        // Also, a config file called msx2config.bin, no idea what it does yet, although feel free to edit this code for those who already do know
+        // Other ROM files include DISK, FMBIOS, MSX2P, MSX2PEXT, KNJFNT and KNJDRV
+        // ****************
+
         /// <summary>
         /// This is the same process as in NeoGeo
         /// </summary>
@@ -95,6 +102,8 @@ namespace FriishProduce.WiiVC
             placeholder.AddRange(contents.Skip(160).Take(contents.Length - 160).ToArray());
 
             // Inject new TPL
+            // ___________________
+            // There seems to be a bug where the savedata icon is saved as a TPL, but does not display correctly after being injected into the banner.bin (i.e. glitched on Wii Menu Save Data Management)
             // ****************
             Img.CreateSaveTPL(Console.MSX, placeholder.ToArray()).ToByteArray().Skip(header.Length).ToArray().CopyTo(contents, 160);
 

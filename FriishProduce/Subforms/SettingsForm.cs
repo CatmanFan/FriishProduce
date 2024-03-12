@@ -172,6 +172,8 @@ namespace FriishProduce
                 { "EAJJ", Console.NeoGeo },
                 { "C9YE", Console.C64 },
                 { "C9YP", Console.C64 },
+                { "XAGJ", Console.MSX },
+                { "XAPJ", Console.MSX },
                 { "WNAP", Console.Flash } */
             };
 

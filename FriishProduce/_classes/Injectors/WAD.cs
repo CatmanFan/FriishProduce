@@ -31,8 +31,8 @@ namespace FriishProduce
         public void MakeWAD(WAD w, ImageHelper Img)
         {
             // Banner metadata
-            w.ChangeChannelTitles(ChannelTitles);
             Banner.EditBanner(w, Console, w.Region, BannerTitle, BannerYear, BannerPlayers);
+            w.ChangeChannelTitles(ChannelTitles);
             if (Img.VCPic != null) Img.ReplaceBanner(w);
 
             // WAD metadata

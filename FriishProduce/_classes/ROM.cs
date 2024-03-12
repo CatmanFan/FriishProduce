@@ -85,7 +85,7 @@ namespace FriishProduce
                 bool isMB = length >= 1048576;
                 throw new Exception(string.Format(Language.Get("Error.003"),
                     Math.Round((double)length / (isMB ? 1048576 : 1024), 2).ToString(),
-                    isMB ? Language.Get("Abbreviation_Megabytes") : Language.Get("Abbreviation_Kilobytes")));
+                    isMB ? Language.Get("Abbr.Megabytes") : Language.Get("Abbr.Kilobytes")));
             }
 
             return true;
