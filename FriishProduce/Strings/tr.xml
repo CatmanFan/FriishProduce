@@ -30,7 +30,7 @@
 		<groupBox3.Text>Kanal Başlığı</groupBox3.Text>
 		<groupBox4.Text>Yazılım Ayarları</groupBox4.Text>
 		<groupBox8.Text>Resim</groupBox8.Text>
-		<label1.Text>ROM dosya adı: {0}</label1.Text>
+		<label1.Text>Dosya adı: {0}</label1.Text>
 		<label10.Text>Oyuncular:</label10.Text>
 		<label2.Text>Yazılımın resmi adı: {0}</label2.Text>
 		<label4.Text>Oyun başlığı:</label4.Text>
@@ -48,7 +48,7 @@
 		<MenuItem_Project.Text>&amp;Proje</MenuItem_Project.Text>
 		<NewProject.Text>Yeni...</NewProject.Text>
 		<OpenImage.Text>Resmi aç...</OpenImage.Text>
-		<OpenROM.Text>ROM'u aç...</OpenROM.Text>
+		<OpenROM.Text>Bir oyun dosyasını aç...</OpenROM.Text>
 	</form>
 	<form name="Options_VC_N64">
 		<groupBox1.Text>Yamalar</groupBox1.Text>

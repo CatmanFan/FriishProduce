@@ -55,10 +55,10 @@ namespace FriishProduce
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.leftSeparator = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.NANDLoaderType = new System.Windows.Forms.ComboBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.ROMStorage = new System.Windows.Forms.ComboBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.groupBox3.SuspendLayout();
             this.n64004.SuspendLayout();
             this.bottomPanel1.SuspendLayout();
@@ -69,8 +69,6 @@ namespace FriishProduce
             this.panel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // DefaultImageInterpolation
@@ -252,17 +250,12 @@ namespace FriishProduce
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.groupBox4);
-            this.panel3.Controls.Add(this.groupBox5);
+            this.panel3.Controls.Add(this.ROMStorage);
+            this.panel3.Controls.Add(this.NANDLoaderType);
+            this.panel3.Controls.Add(this.label14);
+            this.panel3.Controls.Add(this.label13);
             resources.ApplyResources(this.panel3, "panel3");
             this.panel3.Name = "panel3";
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.NANDLoaderType);
-            resources.ApplyResources(this.groupBox4, "groupBox4");
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.TabStop = false;
             // 
             // NANDLoaderType
             // 
@@ -274,13 +267,6 @@ namespace FriishProduce
             resources.ApplyResources(this.NANDLoaderType, "NANDLoaderType");
             this.NANDLoaderType.Name = "NANDLoaderType";
             // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.ROMStorage);
-            resources.ApplyResources(this.groupBox5, "groupBox5");
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.TabStop = false;
-            // 
             // ROMStorage
             // 
             this.ROMStorage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -290,6 +276,16 @@ namespace FriishProduce
             resources.GetString("ROMStorage.Items1")});
             resources.ApplyResources(this.ROMStorage, "ROMStorage");
             this.ROMStorage.Name = "ROMStorage";
+            // 
+            // label13
+            // 
+            resources.ApplyResources(this.label13, "label13");
+            this.label13.Name = "label13";
+            // 
+            // label14
+            // 
+            resources.ApplyResources(this.label14, "label14");
+            this.label14.Name = "label14";
             // 
             // SettingsForm
             // 
@@ -327,8 +323,7 @@ namespace FriishProduce
             this.panel2.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox5.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -359,9 +354,9 @@ namespace FriishProduce
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.ComboBox NANDLoaderType;
-        private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.ComboBox ROMStorage;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label13;
     }
 }

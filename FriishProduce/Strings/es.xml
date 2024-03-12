@@ -69,7 +69,7 @@
 		<groupBox5.Text>Datos guardados</groupBox5.Text>
 		<groupBox6.Text>Detalles del banner</groupBox6.Text>
 		<groupBox8.Text>Imagen</groupBox8.Text>
-		<label1.Text>Nombre de la ROM: {0}</label1.Text>
+		<label1.Text>Nombre del archivo: {0}</label1.Text>
 		<label10.Text>Jugadores:</label10.Text>
 		<label12.Text>Método de interpolación:</label12.Text>
 		<label2.Text>Nombre oficial: {0}</label2.Text>
@@ -92,7 +92,7 @@
 		<MenuItem_Project.Text>&amp;Proyecto</MenuItem_Project.Text>
 		<NewProject.Text>Nuevo...</NewProject.Text>
 		<OpenImage.Text>Abrir una imagen...</OpenImage.Text>
-		<OpenROM.Text>Abrir una ROM...</OpenROM.Text>
+		<OpenROM.Text>Abrir un archivo de juego...</OpenROM.Text>
 		<UseLibRetro.Text>Cargar datos desde LibRetro</UseLibRetro.Text>
 	</form>
 	<form name="Options_VC_N64">

@@ -101,10 +101,12 @@ namespace FriishProduce
             this.tabControl.BackHighColor = System.Drawing.Color.WhiteSmoke;
             this.tabControl.BackLowColor = System.Drawing.Color.White;
             this.tabControl.CloseButtonVisible = true;
+            this.tabControl.FontBoldOnSelect = false;
             this.tabControl.ForeColorDisabled = System.Drawing.Color.DarkGray;
             resources.ApplyResources(this.tabControl, "tabControl");
             this.tabControl.MenuRenderer = null;
             this.tabControl.Name = "tabControl";
+            this.tabControl.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.tabControl.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.tabControl.TabBackHighColor = System.Drawing.Color.White;
             this.tabControl.TabBackHighColorDisabled = System.Drawing.Color.LightGray;

@@ -57,8 +57,8 @@ namespace FriishProduce
 
             // -----------------------------
 
-            groupBox4.Text = Language.Get("groupBox2", "Options_Forwarder", true);
-            groupBox5.Text = Language.Get("groupBox1", "Options_Forwarder", true);
+            label14.Text = Language.Get("label14", "InjectorForm", true);
+            label13.Text = Language.Get("label13", "InjectorForm", true);
 
             // -----------------------------
 
