@@ -271,7 +271,7 @@ namespace FriishProduce.WiiVC
                 // ----------------------------------------------------------------
                 // Replace TPL
                 // ----------------------------------------------------------------
-                var TPLnew = Img.CreateSaveTPL(Console.NES, TPL).ToByteArray();
+                var TPLnew = Img.CreateSaveTPL(TPL).ToByteArray();
 
                 for (int i = saveTPL_offsets[0]; i < saveTPL_offsets[1]; i++)
                     Contents[1][i] = TPLnew[i - saveTPL_offsets[0]];

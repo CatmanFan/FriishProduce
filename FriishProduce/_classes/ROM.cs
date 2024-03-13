@@ -26,7 +26,6 @@ namespace FriishProduce
 
                     if (System.IO.Path.GetExtension(value).ToLower() == ".zip") try { ZIP = new ZipFile(value); } catch { ZIP = null; }
                     if (ZIP == null) Bytes = File.ReadAllBytes(value);
-                    IsZIPFormat = ZIP != null;
                     Load();
                 }
             }
@@ -35,7 +34,6 @@ namespace FriishProduce
 
         public int MaxSize { get; set; }
 
-        protected bool IsZIPFormat { get; set; }
         protected ZipFile ZIP { get; set; }
 
         public ROM()
@@ -43,11 +41,12 @@ namespace FriishProduce
             _rom = null;
             Bytes = null;
             ZIP = null;
+            MaxSize = -1;
         }
 
         protected virtual void Load() { }
 
-        public virtual bool CheckValidity(byte[] ROM)
+        public virtual bool CheckValidity(string path)
         {
             return true;
         }
@@ -80,7 +79,7 @@ namespace FriishProduce
 
         public bool CheckSize(int length)
         {
-            if (Bytes.Length > length)
+            if (Bytes.Length > length && MaxSize > 0)
             {
                 bool isMB = length >= 1048576;
                 throw new Exception(string.Format(Language.Get("Error.003"),

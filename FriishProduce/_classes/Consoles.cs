@@ -18,7 +18,8 @@ namespace FriishProduce
         MSX,
         C64,
         Flash,
-        GBA
+        GBA,
+        PSX
 
         /* TO-DO:
          * PCECD,

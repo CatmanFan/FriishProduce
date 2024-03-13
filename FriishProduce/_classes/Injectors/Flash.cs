@@ -10,6 +10,7 @@ namespace FriishProduce.Injectors
     public static class Flash
     {
         internal static string config = "config.common.pcf";
+        public static IDictionary<string, string> Settings { get; set; }
 
         // DEFAULT CONFIG FOR REFERENCE:
         /* # Comments (text preceded by #) and line breaks will be ignored
@@ -21,8 +22,8 @@ namespace FriishProduce.Injectors
             # frame rate being too low. You may also want to customize this value if noise is occurring during sound playback.
             # update_frame_rate             30                  # not TV-framerate(NTSC/PAL)
 
-            mouse                           on
-            qwerty_keyboard                 on
+            mouse                           on                  # on / off, enables mouse using Wii Remote Cursor
+            qwerty_keyboard                 on                  # on / off, enables keyboard
             navigation_model                4way                # 2way / 4way / 4waywrap
             quality                         high              # low / medium / high
             looping                         on
@@ -40,7 +41,7 @@ namespace FriishProduce.Injectors
             dialog_cursor_archive           cursor.arc
             dialog_cursor_layout            cursor.brlyt
 
-            shared_object_capability        off
+            shared_object_capability        off                 # off / on
             num_vff_drives                  1
             vff_cache_size                  96                  # 96[KB]
             vff_sync_on_write               off
@@ -50,18 +51,85 @@ namespace FriishProduce.Injectors
             persistent_storage_total        96                  # 96[KB]
             persistent_storage_per_movie    64                  # 64[KB]
 
-            strap_reminder                  none
+            strap_reminder                  none                # none / normal / no_ex
 
             supported_devices               core, freestyle, classic
 
-            hbm_no_save                     no
+            hbm_no_save                     no                  # no (enables "unsaved" message on HOME Menu) / yes
           */
+
+        /* 
+
+ */
 
         // DEFAULT KEYMAP.INI:
         /* KEY_BUTTON_LEFT  KEY_LEFT
            KEY_BUTTON_RIGHT KEY_RIGHT
            KEY_BUTTON_DOWN  KEY_DOWN
            KEY_BUTTON_UP    KEY_UP */
+
+        /*  Wii buttons:
+            KEY_BUTTON_LEFT
+            KEY_BUTTON_RIGHT
+            KEY_BUTTON_DOWN
+            KEY_BUTTON_UP
+            KEY_BUTTON_A
+            KEY_BUTTON_B
+            KEY_BUTTON_HOME
+            KEY_BUTTON_PLUS
+            KEY_BUTTON_MINUS
+            KEY_BUTTON_1
+            KEY_BUTTON_2
+            KEY_BUTTON_Z
+            KEY_BUTTON_C
+            KEY_CL_BUTTON_UP
+            KEY_CL_BUTTON_LEFT
+            KEY_CL_TRIGGER_ZR
+            KEY_CL_BUTTON_X
+            KEY_CL_BUTTON_A
+            KEY_CL_BUTTON_Y
+            KEY_CL_BUTTON_B
+            KEY_CL_TRIGGER_ZL
+            KEY_CL_RESERVED
+            KEY_CL_TRIGGER_R
+            KEY_CL_BUTTON_PLUS
+            KEY_CL_BUTTON_HOME
+            KEY_CL_BUTTON_MINUS
+            KEY_CL_TRIGGER_L
+            KEY_CL_BUTTON_DOWN
+            KEY_CL_BUTTON_RIGHT
+
+            Keyboards:
+            e.g. 83 = S letter key
+            KEY_LEFT
+            KEY_RIGHT
+            KEY_HOME
+            KEY_END
+            KEY_INSERT
+            KEY_DELETE
+            KEY_BACKSPACE
+            KEY_SELECT
+            KEY_UP
+            KEY_DOWN
+            KEY_PAGEUP
+            KEY_PAGEDOWN
+            KEY_FORWARD
+            KEY_BACKWARD
+            KEY_ESCAPE
+            KEY_ENTER
+            KEY_TAB
+            KEY_CAPS
+            KEY_SHIFT
+            KEY_CTRL
+
+            Once done, the config should look something like this format:
+            KEY_BUTTON_LEFT  KEY_DOWN
+            KEY_BUTTON_RIGHT KEY_UP
+            KEY_BUTTON_DOWN  KEY_RIGHT
+            KEY_BUTTON_UP    KEY_LEFT
+            KEY_BUTTON_A     88
+            KEY_BUTTON_PLUS  KEY_ENTER
+ */
 
         // DEFAULT BANNER.INI:
         /* # banner setting file
@@ -81,9 +149,27 @@ namespace FriishProduce.Injectors
            icon_speed      2, fast
            icon_speed      3, normal */
 
+        // PREFERRED CONFIG FOR SAVEDATA:
+        /* 
+           not_copy        off
+           anim_type       bounce
+           title_text      {Uri.EscapeUriString(lines[0])}
+           comment_text    {(lines.Length == 2 ? Uri.EscapeUriString(lines[1]) : "%20")}
+           banner_tpl      banner/US/banner.tpl
+           icon_tpl        banner/US/icons.tpl
+           icon_count      8
+           icon_speed      0, slow
+           icon_speed      1, slow
+           icon_speed      2, slow
+           icon_speed      3, slow
+           icon_speed      4, slow
+           icon_speed      5, slow
+           icon_speed      6, slow
+           icon_speed      7, slow */
+
         private static U8 MainContent { get; set; }
 
-        public static WAD Inject(WAD w, string path)
+        public static WAD Inject(WAD w, string path, string[] lines, ImageHelper Img)
         {
             MainContent = U8.Load(w.Contents[2]);
 
@@ -101,6 +187,26 @@ namespace FriishProduce.Injectors
                 /* if (item.ToLower().Contains(".wide.pcf"))
                     MainContent.ReplaceFile(MainContent.GetNodeIndex(item), MainContent.Data[MainContent.GetNodeIndex(item.Replace(".wide", ""))]); */
             }
+
+            // Savebanner .TPL & config
+            // ********
+            /* if (Settings["shared_object_capability"] == "on")
+            {
+                byte[] banner = Img.CreateSaveTPL(1).ToByteArray();
+                byte[] icons = Img.CreateSaveTPL(2).ToByteArray();
+
+                foreach (var item in MainContent.StringTable)
+                {
+                    if (item.ToLower().Contains("banner.tpl"))
+                        MainContent.ReplaceFile(MainContent.GetNodeIndex(item), banner);
+
+                    else if (item.ToLower().Contains("icons.tpl"))
+                        MainContent.ReplaceFile(MainContent.GetNodeIndex(item), icons);
+
+                    else if (item.ToLower().Contains("banner.ini"))
+                        MainContent.ReplaceFile(MainContent.GetNodeIndex(item), icons);
+                }
+            } */
 
             // MainContent.CreateFromDirectory(Paths.FlashContents);
 

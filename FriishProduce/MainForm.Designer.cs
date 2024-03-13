@@ -101,7 +101,6 @@ namespace FriishProduce
             this.tabControl.BackHighColor = System.Drawing.Color.WhiteSmoke;
             this.tabControl.BackLowColor = System.Drawing.Color.White;
             this.tabControl.CloseButtonVisible = true;
-            this.tabControl.FontBoldOnSelect = false;
             this.tabControl.ForeColorDisabled = System.Drawing.Color.DarkGray;
             resources.ApplyResources(this.tabControl, "tabControl");
             this.tabControl.MenuRenderer = null;
@@ -144,7 +143,7 @@ namespace FriishProduce
             this.MenuItem_Project,
             this.MenuItem_Help});
             this.MenuStrip.Name = "MenuStrip";
-            this.MenuStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.MenuStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             // 
             // MenuItem_File
             // 
@@ -353,6 +352,7 @@ namespace FriishProduce
             this.ToolStrip_Settings,
             this.ToolStrip_Tutorial});
             this.ToolStrip.Name = "ToolStrip";
+            this.ToolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             // 
             // ToolStrip_OpenROM
             // 

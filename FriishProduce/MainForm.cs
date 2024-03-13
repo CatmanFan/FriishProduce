@@ -58,7 +58,9 @@ namespace FriishProduce
                             new ToolStripSeparator(),
                             new ToolStripMenuItem(null, Properties.Resources.msx, AddProject, Console.MSX.ToString()),
                             new ToolStripSeparator(),
-                            new ToolStripMenuItem(null, Properties.Resources.flash, AddProject, Console.Flash.ToString())
+                            new ToolStripMenuItem(null, Properties.Resources.flash, AddProject, Console.Flash.ToString()),
+                         // new ToolStripSeparator(),
+                         // new ToolStripMenuItem(null, new Icon(Properties.Resources.sony_playstation, 16, 16).ToBitmap(), AddProject, Console.PSX.ToString())
                         //})
                 };
 
@@ -107,21 +109,6 @@ namespace FriishProduce
             {
                 if (tabPage.Form.GetType() == typeof(InjectorForm))
                     (tabPage.Form as InjectorForm).RefreshForm();
-            }
-
-            CustomToolStripRenderer r = new CustomToolStripRenderer() { RoundedEdges = false };
-            MenuStrip.Renderer = ToolStrip.Renderer = r;
-            Refresh();
-        }
-
-        private class CustomToolStripRenderer : ToolStripProfessionalRenderer
-        {
-            public CustomToolStripRenderer() { }
-
-            protected override void OnRenderToolStripBackground(ToolStripRenderEventArgs e)
-            {
-                using (LinearGradientBrush b = new LinearGradientBrush(e.AffectedBounds, Color.White, Color.WhiteSmoke, LinearGradientMode.Vertical))
-                    e.Graphics.FillRectangle(b, b.Rectangle);
             }
         }
 

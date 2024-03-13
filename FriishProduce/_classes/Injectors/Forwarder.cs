@@ -25,6 +25,7 @@ namespace FriishProduce
             { 9, "Wii64 (Rice GFX)" },
             { 10, "Not64" },
             { 11, "mupen64gc-fix94" },
+            { 12, "WiiStation" }
         };
 
         private static readonly IDictionary<int, string> Files = new Dictionary<int, string>
@@ -40,7 +41,8 @@ namespace FriishProduce
             { 8, "wii64_gln64" },
             { 9, "wii64_rice" },
             { 10, "not64" },
-            { 11, "mupen64gc-fix94" }
+            { 11, "mupen64gc-fix94" },
+            { 12, "wiistation" }
         };
 
         public string Emulator { get; set; }
@@ -65,7 +67,7 @@ namespace FriishProduce
 
         private static string Path { get; set; }
 
-        private static bool IsDisc { get => false; } // Emulator == List[12] || Emulator == List[13]
+        private static bool IsDisc { get => new Disc().CheckValidity(Path); }
 
         public byte[] ROM { get; set; }
         public string ROMExtension { get; set; }
@@ -75,31 +77,33 @@ namespace FriishProduce
 
         public void CreateZIP(string Out)
         {
+            // Declare main variables and failsafes
+            // *******
             if (ROM == null) throw new FileNotFoundException();
             if (EmulatorIndex == -1) throw new NotSupportedException();
 
-            // Create SD folder and copy emulator
-            // *******
-            var dir = Paths.SDUSBRoot + Path.Substring(4).Replace("/boot.dol", "") + '\\';
+            string PackageFolder = Paths.SDUSBRoot + Path.Substring(4).Replace("/boot.dol", "").Replace('/', '\\') + '\\';
+            string ROMFolder = IsDisc ? PackageFolder + "title\\" : PackageFolder;
+            string ROMName = (EmulatorIndex >= 7 ? "title" : "HOME Menu") + ROMExtension;
 
             if (!File.Exists(Paths.Emulators + Files[EmulatorIndex] + ".dol")) throw new Exception(Language.Get("Error.008"));
 
-            if (IsDisc) dir += "title\\";
-            Directory.CreateDirectory(dir);
-            File.Copy(Paths.Emulators + Files[EmulatorIndex] + ".dol", dir + "boot.dol");
+            // Create SD folder and copy emulator
+            // *******
+            Directory.CreateDirectory(ROMFolder);
+            File.Copy(Paths.Emulators + Files[EmulatorIndex] + ".dol", PackageFolder + "boot.dol");
 
             // Copy game to SD folder
             // *******
-            string romFile = (EmulatorIndex >= 7 ? "title" : "HOME Menu") + ROMExtension;
-            File.WriteAllBytes(dir + romFile, ROM);
+            File.WriteAllBytes(ROMFolder + ROMName, ROM);
 
-            // Clean file directory string
+            // Prepare for meta.xml creation
             // *******
-            if (dir.EndsWith("title\\")) dir = dir.Substring(0, dir.Length - "title\\".Length);
+            ROMFolder = Path.Replace("%s:/", Storage == Storages.USB ? "usb:/" : "sd:/").Replace("/boot.dol", "");
+            if (IsDisc) ROMFolder += "/title";
 
-            // Declare meta.xml list
+            // Write main
             // *******
-            string root = Path.Replace("%s:/", Storage == Storages.USB ? "usb:/" : "sd:/").Replace("/boot.dol", "");
             List<string> meta = new List<string>
             {
                 "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>",
@@ -108,12 +112,17 @@ namespace FriishProduce
                 "  <coder></coder>",
                 "  <version></version>",
                 "  <release_date></release_date>",
-                "  <short_description>Placeholder for emulator.dol</short_description>",
-                "  <long_description>This is a sample placeholder for auto-running an emulator using a ROM path argument.</long_description>",
+                "  <short_description>SRL Forwarder</short_description>",
+                "  <long_description>This will attempt to load a ROM from the following path:" +
+                ROMFolder + '/' + ROMName,
+                $"using the emulator {Files[EmulatorIndex]}.</long_description>",
                 "  <arguments>",
-                $"    <arg>{root}{(IsDisc ? "/title" : "")}</arg>",
-                $"    <arg>{romFile}</arg>"
+                $"    <arg>{ROMFolder}</arg>",
+                $"    <arg>{ROMName}</arg>"
             };
+
+            // Change or add parameters when needed
+            // *******
             switch (EmulatorIndex)
             {
                 case 7:
@@ -121,7 +130,7 @@ namespace FriishProduce
                     break;
 
                 case 10:
-                    meta[9]  = $"    <arg>rompath=\"{root}/{romFile}\"</arg>";
+                    meta[9]  = $"    <arg>rompath=\"{ROMFolder}/{ROMName}\"</arg>";
                     meta[10] = $"    <arg>SkipMenu=1</arg>";
                     meta.Add("    <arg>ScreenMode=0</arg>");
                     break;
@@ -131,10 +140,14 @@ namespace FriishProduce
                     meta.Add("    <arg>ScreenMode = 0</arg>");
                     break;
             }
+
+            // Write footer and create file
+            // *******
             meta.Add("  </arguments>");
             meta.Add("  <ahb_access />");
             meta.Add("</app>");
-            File.WriteAllLines(dir + "meta.xml", meta.ToArray());
+
+            File.WriteAllLines(PackageFolder + "meta.xml", meta.ToArray());
 
             // Get ZIP directory path & compress to .ZIP archive
             // *******

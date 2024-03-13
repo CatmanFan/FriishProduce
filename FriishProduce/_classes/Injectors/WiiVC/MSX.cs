@@ -105,7 +105,7 @@ namespace FriishProduce.WiiVC
             // ___________________
             // There seems to be a bug where the savedata icon is saved as a TPL, but does not display correctly after being injected into the banner.bin (i.e. glitched on Wii Menu Save Data Management)
             // ****************
-            Img.CreateSaveTPL(Console.MSX, placeholder.ToArray()).ToByteArray().Skip(header.Length).ToArray().CopyTo(contents, 160);
+            Img.CreateSaveTPL(placeholder.ToArray()).ToByteArray().Skip(header.Length).ToArray().CopyTo(contents, 160);
 
             // Replace original savebanner
             // ****************

@@ -199,37 +199,37 @@
     <value>File</value>
   </data>
   <data name="NewProject.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>171, 22</value>
   </data>
   <data name="NewProject.Text" xml:space="preserve">
     <value>New...</value>
   </data>
   <data name="MenuItem_OpenExports.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>171, 22</value>
   </data>
   <data name="MenuItem_OpenExports.Text" xml:space="preserve">
     <value>Open exports folder</value>
   </data>
   <data name="MenuItem_ClearExports.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>171, 22</value>
   </data>
   <data name="MenuItem_ClearExports.Text" xml:space="preserve">
     <value>Clear exports folder</value>
   </data>
   <data name="toolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 6</value>
+    <value>168, 6</value>
   </data>
   <data name="MenuItem_Settings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>171, 22</value>
   </data>
   <data name="MenuItem_Settings.Text" xml:space="preserve">
     <value>Settings</value>
   </data>
   <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 6</value>
+    <value>168, 6</value>
   </data>
   <data name="MenuItem_Exit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>171, 22</value>
   </data>
   <data name="MenuItem_Exit.Text" xml:space="preserve">
     <value>Exit</value>
@@ -340,7 +340,7 @@
     <value>NoControl</value>
   </data>
   <data name="Welcome_DoNotShow.Location" type="System.Drawing.Point, System.Drawing">
-    <value>369, 321</value>
+    <value>369, 315</value>
   </data>
   <data name="Welcome_DoNotShow.Size" type="System.Drawing.Size, System.Drawing">
     <value>342, 27</value>
@@ -403,7 +403,7 @@
     <value>NoControl</value>
   </data>
   <data name="Welcome.Location" type="System.Drawing.Point, System.Drawing">
-    <value>367, 215</value>
+    <value>367, 209</value>
   </data>
   <data name="Welcome.Size" type="System.Drawing.Size, System.Drawing">
     <value>350, 100</value>
@@ -438,7 +438,7 @@ Before getting started, please be sure to familiarise yourself with this program
     <value>0, 45</value>
   </data>
   <data name="MainPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1084, 562</value>
+    <value>1084, 552</value>
   </data>
   <data name="MainPanel.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -576,7 +576,7 @@ Before getting started, please be sure to familiarise yourself with this program
     <value>True</value>
   </metadata>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1084, 607</value>
+    <value>1084, 597</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8.25pt</value>

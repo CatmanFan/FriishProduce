@@ -88,23 +88,25 @@ namespace FriishProduce
 
             // Injection methods list
             InjectorsList.Items.Clear();
-            InjectorsList.Items.Add(Language.Get("VC"));
 
             switch (Console)
             {
                 case Console.NES:
+                    InjectorsList.Items.Add(Language.Get("VC"));
                     InjectorsList.Items.Add(Forwarder.List[0]);
                     InjectorsList.Items.Add(Forwarder.List[1]);
                     InjectorsList.Items.Add(Forwarder.List[2]);
                     break;
 
                 case Console.SNES:
+                    InjectorsList.Items.Add(Language.Get("VC"));
                     InjectorsList.Items.Add(Forwarder.List[3]);
                     InjectorsList.Items.Add(Forwarder.List[4]);
                     InjectorsList.Items.Add(Forwarder.List[5]);
                     break;
 
                 case Console.N64:
+                    InjectorsList.Items.Add(Language.Get("VC"));
                     InjectorsList.Items.Add(Forwarder.List[8]);
                     InjectorsList.Items.Add(Forwarder.List[9]);
                     InjectorsList.Items.Add(Forwarder.List[10]);
@@ -113,6 +115,7 @@ namespace FriishProduce
 
                 case Console.SMS:
                 case Console.SMDGEN:
+                    InjectorsList.Items.Add(Language.Get("VC"));
                     InjectorsList.Items.Add(Forwarder.List[7]);
                     break;
 
@@ -120,16 +123,19 @@ namespace FriishProduce
                 case Console.NeoGeo:
                 case Console.MSX:
                 case Console.C64:
+                    InjectorsList.Items.Add(Language.Get("VC"));
                     break;
 
                 case Console.Flash:
-                    InjectorsList.Items.Clear();
-                    InjectorsList.Items.Add(" ");
+                    InjectorsList.Items.Add(Language.Get("ByDefault"));
                     break;
 
                 case Console.GBA:
-                    InjectorsList.Items.Clear();
                     InjectorsList.Items.Add(Forwarder.List[6]);
+                    break;
+
+                case Console.PSX:
+                    InjectorsList.Items.Add(Forwarder.List[12]);
                     break;
 
                 default:
@@ -158,6 +164,7 @@ namespace FriishProduce
             // Declare WAD metadata modifier
             // ********
             Creator = new Creator(Console);
+            TIDCode = null;
 
             switch (Console)
             {
@@ -200,11 +207,15 @@ namespace FriishProduce
                     ROM = new ROM_MSX();
                     break;
 
-                default:
                 case Console.Flash:
-                    TIDCode = null;
                     ROM = new SWF();
                     ImportPatch.Enabled = false;
+                    groupBox5.Location = new Point(groupBox5.Location.X, COPanel_VC.Location.Y);
+                    groupBox5.Show();
+                    break;
+
+                default:
+                    ROM = new Disc();
                     break;
             }
 
@@ -552,7 +563,9 @@ namespace FriishProduce
                 case Console.SMS:
                 case Console.SMDGEN:
                 case Console.PCE:
-                    if (!ROM.CheckValidity(File.ReadAllBytes(ROMpath)))
+                case Console.C64:
+                case Console.MSX:
+                    if (!ROM.CheckValidity(ROMpath))
                     {
                         MessageBox.Show(Language.Get("Message.008"), 0, Ookii.Dialogs.WinForms.TaskDialogIcon.Warning);
                         return;
@@ -567,12 +580,6 @@ namespace FriishProduce
                         MessageBox.Show(Language.Get("Message.008"), 0, Ookii.Dialogs.WinForms.TaskDialogIcon.Warning);
                         return;
                     }
-                    break;
-
-                case Console.MSX:
-                    break;
-
-                case Console.C64:
                     break;
 
                 case Console.Flash:
@@ -751,7 +758,7 @@ namespace FriishProduce
 
         public void FlashInject()
         {
-            OutWAD = Injectors.Flash.Inject(OutWAD, ROM.Path);
+            OutWAD = Injectors.Flash.Inject(OutWAD, ROM.Path, Creator.SaveDataTitle, Img);
         }
 
         public void WiiVCInject()
@@ -873,7 +880,7 @@ namespace FriishProduce
         #region Base WAD Management/Visual
         private void AddBases()
         {
-            Database = DatabaseHelper.Get(Console);
+            Database = DatabaseHelper.Get(Console) ?? DatabaseHelper.Get(Console.Flash);
             string ID = null;
 
             for (int x = 0; x < Database.Length; x++)
@@ -1263,11 +1270,13 @@ namespace FriishProduce
         {
             COPanel_VC.Hide();
             COPanel_Forwarder.Hide();
+            groupBox5.Hide();
 
             CO = null;
             if (IsVCMode())
             {
                 COPanel_VC.Show();
+                groupBox5.Show();
 
                 switch (Console)
                 {
@@ -1303,13 +1312,15 @@ namespace FriishProduce
 
             else if (Console == Console.Flash)
             {
+                groupBox5.Show();
+                CO = new Options_Flash();
             }
 
             else
                 COPanel_Forwarder.Show();
 
             var selected = COPanel_Forwarder.Visible ? COPanel_Forwarder : COPanel_VC.Visible ? COPanel_VC : null;
-            int height = selected == null ? InjectorsList.Location.Y + InjectorsList.Height + 10 : selected.Location.Y + selected.Height + 10;
+            int height = selected == null ? (groupBox5.Visible ? groupBox5.Location.Y + groupBox5.Height : InjectorsList.Location.Y + InjectorsList.Height) + 10 : selected.Location.Y + selected.Height + 10;
             groupBox4.Size = new Size(groupBox4.Width, height);
             if (groupBox4.Enabled) CheckExport();
         }

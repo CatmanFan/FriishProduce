@@ -225,7 +225,6 @@ namespace FriishProduce
 
         private readonly float[] opacity4 = { 0F, 0.32F, 0.64F, 1F };
         private readonly float[] opacity6 = { 0F, 0.20F, 0.40F, 0.60F, 0.80F, 1F };
-        private readonly float[] opacity8 = { 0F, 0F, 0F, 0.32F, 0.64F, 1F, 1F, 1F };
 
         public void ReplaceTPL(TPL t, Bitmap bmp)
         {
@@ -285,12 +284,108 @@ namespace FriishProduce
         }
 
         /// <summary>
-        /// Saveicon TPL generator for NES/SNES/N64/PCE/NeoGeo/MSX
+        /// Saveicon TPL generator for NES/SNES/N64/PCE/NeoGeo/MSX/Flash
         /// </summary>
-        /// <param name="platform">Target console</param>
-        /// <param name="tplArray">The byte array which contains the TPL data (i.e. can be a file read in bytes)</param>
+        /// <param name="type">0 = both banner and icon animations; 1 = banner only: 2 = animation only. This is only valid if creating a new TPL from scratch.</param>
         /// <returns>Modified TPL</returns>
-        public TPL CreateSaveTPL(Console platform, byte[] tplBytes)
+        public TPL CreateSaveTPL(int type)
+        {
+            TPL tpl = new TPL();
+
+            Image sBanner = SaveBannerFlash;
+            Image sIconLogo = SaveIconFlash;
+            Image sIcon = new Bitmap(sIconLogo.Width, sIconLogo.Height);
+
+            var TextureFormat = TPL_TextureFormat.RGB565;
+            var PaletteFormat = TPL_PaletteFormat.RGB565;
+
+            // -------------------------
+            // Savedata banner
+            // -------------------------
+            if (type != 2)
+                using (Graphics g = Graphics.FromImage(sBanner))
+                {
+                    g.DrawImage(SaveIconPic, SaveIconL_xywh[0], SaveIconL_xywh[1], SaveIconL_xywh[2], SaveIconL_xywh[3]);
+
+                    tpl.AddTexture(sBanner, TextureFormat, PaletteFormat);
+
+                    g.Dispose();
+                }
+
+            sBanner.Dispose();
+
+            // -------------------------
+            // Savedata icon
+            // -------------------------
+            if (type != 1)
+            {
+                // 1ST FRAME
+                // ****************
+                using (Graphics g = Graphics.FromImage(sIcon))
+                {
+                    g.DrawImage(SaveIconPlaceholder, 0, 0, sIcon.Width, sIcon.Height);
+
+                    g.InterpolationMode = InterpolationMode.Bilinear;
+                    g.PixelOffsetMode = PixelOffsetMode.Half;
+                    g.SmoothingMode = SmoothingMode.HighSpeed;
+
+                    g.DrawImage(SaveIconPic, SaveIconS_xywh[0], SaveIconS_xywh[1], SaveIconS_xywh[2], SaveIconS_xywh[3]);
+                    g.Dispose();
+
+                    tpl.AddTexture(sIcon, TextureFormat, PaletteFormat);
+
+                    g.Dispose();
+                }
+
+                // ANIMATION AND END FRAMES
+                // ****************
+                using (Image sIcon2 = (Image)sIcon.Clone())
+                using (Graphics g = Graphics.FromImage(sIcon2))
+                using (var a = new ImageAttributes())
+                {
+                    var w = sIcon.Width; var h = sIcon.Height;
+
+                    // 2ND FRAME
+                    // ****************
+                    a.SetColorMatrix(new ColorMatrix() { Matrix33 = opacity4[1] });
+                    g.DrawImage(sIconLogo, new Rectangle(0, 0, w, h), 0, 0, w, h, GraphicsUnit.Pixel, a);
+
+                    tpl.AddTexture(sIcon2, TextureFormat, PaletteFormat);
+
+                    // 3RD FRAME
+                    // ****************
+                    g.DrawImage(sIcon, 0, 0);
+                    a.SetColorMatrix(new ColorMatrix() { Matrix33 = opacity4[2] });
+                    g.DrawImage(sIconLogo, new Rectangle(0, 0, w, h), 0, 0, w, h, GraphicsUnit.Pixel, a);
+
+                    tpl.AddTexture(sIcon2, TextureFormat, PaletteFormat);
+
+                    // END FRAME
+                    // ****************
+                    tpl.AddTexture(sIconLogo, TextureFormat, PaletteFormat);
+
+                    g.Dispose();
+                }
+
+                tpl.AddTexture(sIconLogo, TextureFormat, PaletteFormat);
+                tpl.AddTexture(tpl.ExtractTexture(2), TextureFormat, PaletteFormat);
+                tpl.AddTexture(tpl.ExtractTexture(1), TextureFormat, PaletteFormat);
+                tpl.AddTexture(sIcon, TextureFormat, PaletteFormat);
+            }
+
+            sIconLogo.Dispose();
+            if (sIcon != null) sIcon.Dispose();
+
+            return tpl;
+        }
+
+        /// <summary>
+        /// Saveicon TPL generator for NES/SNES/N64/PCE/NeoGeo/MSX/Flash
+        /// </summary>
+        /// <param name="tplArray">The byte array which contains the TPL data (i.e. can be a file read in bytes)</param>
+        /// <param name="type">0 = both banner and icon animations; 1 = banner only: 2 = animation only. This is only valid if creating a new TPL from scratch.</param>
+        /// <returns>Modified TPL</returns>
+        public TPL CreateSaveTPL(byte[] tplBytes)
         {
             /* DIRECTORY PATHS FOR TPLs:
              ******************************
@@ -298,11 +393,14 @@ namespace FriishProduce
                SNES:    05.app/banner.tpl
                N64:     05.app/save_banner.tpl
                PCE:     05.app/savedata.tpl
-               NeoGeo:  embedded in 01.app
-               MSX:     embedded in 01.app
+               NeoGeo:  05.app/banner.bin
+               MSX:     05.app/banner.bin
+               Flash:   banner/XX/banner.tpl
             */
 
-            TPL tpl = TPL.Load(tplBytes);
+            TPL tpl;
+            try { tpl = TPL.Load(tplBytes); } catch { return CreateSaveTPL(0); }
+
             int numTextures = tpl.NumOfTextures;
             TPL_TextureFormat[] formatsT = new TPL_TextureFormat[numTextures];
             TPL_PaletteFormat[] formatsP = new TPL_PaletteFormat[numTextures];
@@ -313,8 +411,8 @@ namespace FriishProduce
             }
 
             Image sBanner = tpl.ExtractTexture(0);
-            Image sIconBegin = tpl.ExtractTexture(1);
-            Image sIconEnd = tpl.ExtractTexture(numTextures - 1);
+            Image sIcon = tpl.ExtractTexture(1);
+            Image sIconLogo = tpl.ExtractTexture(numTextures - 1);
 
             // Clean TPL textures
             while (tpl.NumOfTextures > 0) tpl.RemoveTexture(0);
@@ -337,9 +435,9 @@ namespace FriishProduce
             // -------------------------
             // 1ST FRAME
             // ****************
-            using (Graphics g = Graphics.FromImage(sIconBegin))
+            using (Graphics g = Graphics.FromImage(sIcon))
             {
-                g.DrawImage(SaveIconPlaceholder, 0, 0, sIconBegin.Width, sIconBegin.Height);
+                g.DrawImage(SaveIconPlaceholder, 0, 0, sIcon.Width, sIcon.Height);
 
                 g.InterpolationMode = InterpolationMode.Bilinear;
                 g.PixelOffsetMode = PixelOffsetMode.Half;
@@ -348,15 +446,15 @@ namespace FriishProduce
                 g.DrawImage(SaveIconPic, SaveIconS_xywh[0], SaveIconS_xywh[1], SaveIconS_xywh[2], SaveIconS_xywh[3]);
                 g.Dispose();
 
-                tpl.AddTexture(sIconBegin, formatsT[1], formatsP[1]);
+                tpl.AddTexture(sIcon, formatsT[1], formatsP[1]);
 
                 g.Dispose();
             }
 
             // ANIMATION AND END FRAMES
             // ****************
-            using (Image sIcon = (Image)sIconBegin.Clone())
-            using (Graphics g = Graphics.FromImage(sIcon))
+            using (Image sIcon2 = (Image)sIcon.Clone())
+            using (Graphics g = Graphics.FromImage(sIcon2))
             using (var a = new ImageAttributes())
             {
                 var w = sIcon.Width; var h = sIcon.Height;
@@ -366,15 +464,15 @@ namespace FriishProduce
                     // 2ND FRAME
                     // ****************
                     a.SetColorMatrix(new ColorMatrix() { Matrix33 = opacity4[1] });
-                    g.DrawImage(sIconEnd, new Rectangle(0, 0, w, h), 0, 0, w, h, GraphicsUnit.Pixel, a);
+                    g.DrawImage(sIconLogo, new Rectangle(0, 0, w, h), 0, 0, w, h, GraphicsUnit.Pixel, a);
 
                     tpl.AddTexture(sIcon, formatsT[2], formatsP[2]);
 
                     // 3RD FRAME
                     // ****************
-                    g.DrawImage(sIconBegin, 0, 0);
+                    g.DrawImage(sIcon, 0, 0);
                     a.SetColorMatrix(new ColorMatrix() { Matrix33 = opacity4[2] });
-                    g.DrawImage(sIconEnd, new Rectangle(0, 0, w, h), 0, 0, w, h, GraphicsUnit.Pixel, a);
+                    g.DrawImage(sIconLogo, new Rectangle(0, 0, w, h), 0, 0, w, h, GraphicsUnit.Pixel, a);
 
                     tpl.AddTexture(sIcon, formatsT[3], formatsP[3]);
                 }
@@ -383,33 +481,33 @@ namespace FriishProduce
                 {
                     // 2ND/3RD FRAMES
                     // ****************
-                    tpl.AddTexture(sIconBegin, formatsT[2], formatsP[2]);
-                    tpl.AddTexture(sIconBegin, formatsT[3], formatsP[3]);
+                    tpl.AddTexture(sIcon, formatsT[2], formatsP[2]);
+                    tpl.AddTexture(sIcon, formatsT[3], formatsP[3]);
 
                     // 4TH FRAME
                     // ****************
                     a.SetColorMatrix(new ColorMatrix() { Matrix33 = 0.47F });
-                    g.DrawImage(sIconEnd, new Rectangle(0, 0, w, h), 0, 0, w, h, GraphicsUnit.Pixel, a);
+                    g.DrawImage(sIconLogo, new Rectangle(0, 0, w, h), 0, 0, w, h, GraphicsUnit.Pixel, a);
 
                     tpl.AddTexture(sIcon, formatsT[4], formatsP[4]);
 
                     // 5TH FRAME
                     // ****************
-                    g.DrawImage(sIconBegin, 0, 0);
+                    g.DrawImage(sIcon, 0, 0);
                     a.SetColorMatrix(new ColorMatrix() { Matrix33 = 0.82F });
-                    g.DrawImage(sIconEnd, new Rectangle(0, 0, w, h), 0, 0, w, h, GraphicsUnit.Pixel, a);
+                    g.DrawImage(sIconLogo, new Rectangle(0, 0, w, h), 0, 0, w, h, GraphicsUnit.Pixel, a);
 
                     tpl.AddTexture(sIcon, formatsT[5], formatsP[5]);
                 }
 
                 // END FRAME
                 // ****************
-                tpl.AddTexture(sIconEnd, formatsT[numTextures - 1], formatsP[numTextures - 1]);
+                tpl.AddTexture(sIconLogo, formatsT[numTextures - 1], formatsP[numTextures - 1]);
 
                 g.Dispose();
-                sIconBegin.Dispose();
                 sIcon.Dispose();
-                sIconEnd.Dispose();
+                sIcon.Dispose();
+                sIconLogo.Dispose();
             }
 
             return tpl;
@@ -475,10 +573,10 @@ namespace FriishProduce
                 // 1ST FRAME
                 // ****************
 
-                using (Image sIconBegin = Image.FromFile(ImagesPath + "01.png"))
-                using (Graphics g = Graphics.FromImage(sIconBegin))
+                using (Image sIcon = Image.FromFile(ImagesPath + "01.png"))
+                using (Graphics g = Graphics.FromImage(sIcon))
                 {
-                    g.DrawImage(SaveIconPlaceholder_SEGA, 0, 0, sIconBegin.Width, sIconBegin.Height);
+                    g.DrawImage(SaveIconPlaceholder_SEGA, 0, 0, sIcon.Width, sIcon.Height);
 
                     g.InterpolationMode = InterpolationMode.Bilinear;
                     g.PixelOffsetMode = PixelOffsetMode.Half;
@@ -486,7 +584,7 @@ namespace FriishProduce
 
                     g.DrawImage(SaveIconPic, SaveIconS_xywh[0], SaveIconS_xywh[1], SaveIconS_xywh[2], SaveIconS_xywh[3]);
 
-                    sIconBegin.Save(ImagesPath + "01.new.png");
+                    sIcon.Save(ImagesPath + "01.new.png");
 
                     g.Dispose();
                 }
@@ -641,157 +739,6 @@ namespace FriishProduce
 
             if (Directory.Exists(ImagesPath)) Directory.Delete(ImagesPath, true);
         }
-
-        /* TO-DO!!!!!!!!!!!!!! */
-        public void CreateSave(Console platform)
-        {
-            if (platform != Console.Flash)
-            {
-                bool embedded = false;
-                string tplPath = null;
-                bool usesWte = false;
-
-                switch (platform)
-                {
-                    case Console.SMS:
-                    case Console.SMDGEN:
-                        usesWte = true;
-                        break;
-                    case Console.PCE:
-                        tplPath = "content5\\savedata.tpl";
-                        break;
-                    case Console.NeoGeo:
-                    case Console.MSX:
-                        embedded = true;
-                        break;
-                }
-                if (embedded && !File.Exists(tplPath) && !usesWte) return;
-                else if (tplPath == null && !usesWte) return;
-            }
-
-            // ------------------------------------------------------------------------------------------
-            // Save image generation for Flash TPLs (uses Properties.Resources.Save{Icon/Banner}Flash)
-            // ------------------------------------------------------------------------------------------
-            else
-            {/*
-                var bannerPath = Paths.WorkingFolder_Content2 + "banner\\US\\banner.tpl";
-                var iconPath = Paths.WorkingFolder_Content2 + "banner\\US\\icons.tpl";
-
-                // Declaration of Graphics/Imaging variables
-                var sFiles = new System.Collections.Generic.List<string>();
-                for (int i = 0; i < 5; i++)
-                    sFiles.Add(// ImagesPath + // $"Texture_0{i}.png");
-
-                Bitmap sBanner = new Bitmap(SaveBannerFlash.Width, SaveBannerFlash.Height);
-                Bitmap sIcon = new Bitmap(48, 48);
-
-                using (Image img = (Image)sBanner.Clone())
-                using (Graphics g = Graphics.FromImage(img))
-                {
-                    g.DrawImage(SaveBannerFlash, new Point(0, 0));
-                    g.DrawImage(SaveIconPic, SaveIconL_xywh[0], SaveIconL_xywh[1], SaveIconL_xywh[2], SaveIconL_xywh[3]);
-                    img.Save(sFiles[0]);
-
-                    img.Dispose();
-                    g.Dispose();
-                }
-
-                using (Image img = (Image)SaveIcon.Clone())
-                using (Graphics g = Graphics.FromImage(img))
-                {
-                    g.DrawImage(SaveIconPlaceholder, new Point(0, 0));
-
-                    g.InterpolationMode = Interpolation;
-                    g.PixelOffsetMode = PixelOffset;
-                    g.SmoothingMode = Smoothing;
-                    g.CompositingQuality = CompositingQ;
-                    g.DrawImage(SaveIconPic, SaveIconS_xywh[0], SaveIconS_xywh[1], SaveIconS_xywh[2], SaveIconS_xywh[3]);
-                    img.Save(sFiles[1]);
-
-                    img.Dispose();
-                    g.Dispose();
-                }
-
-                // Update SaveIcon to modified version
-                SaveIcon.Dispose();
-                SaveIcon = (Bitmap)Image.FromFile(sFiles[1]);
-
-                using (Image img = (Image)SaveIcon.Clone())
-                using (Graphics g = Graphics.FromImage(img))
-                using (var a = new ImageAttributes())
-                {
-                    var w = img.Width; var h = img.Height;
-
-                    a.SetColorMatrix(new ColorMatrix() { Matrix33 = opacity4[1] });
-                    g.DrawImage(SaveIconFlash, new Rectangle(0, 0, w, h), 0, 0, w, h, GraphicsUnit.Pixel, a);
-
-                    img.Save(sFiles[2]);
-
-                    g.DrawImage(img, 0, 0);
-                    a.SetColorMatrix(new ColorMatrix() { Matrix33 = opacity4[2] });
-                    g.DrawImage(SaveIconFlash, new Rectangle(0, 0, w, h), 0, 0, w, h, GraphicsUnit.Pixel, a);
-
-                    img.Save(sFiles[3]);
-
-                    g.Dispose();
-                    img.Dispose();
-                }
-
-                SaveIconFlash.Save(sFiles[4]);
-
-                // -------------------------------------------------------------- //
-
-                TPL tpl = TPL.FromImage(sFiles[0], TPL.Load(bannerPath).GetTextureFormat(0), TPL.Load(bannerPath).GetPaletteFormat(0));
-                tpl.Save(bannerPath);
-                tpl.Save(bannerPath.Replace("banner\\US\\", "banner\\EU\\"));
-                tpl.Save(bannerPath.Replace("banner\\US\\", "banner\\JP\\"));
-
-                tpl = TPL.FromImages(new string[8]
-                    {
-                        sFiles[1],
-                        sFiles[1],
-                        sFiles[1],
-                        sFiles[2],
-                        sFiles[3],
-                        sFiles[4],
-                        sFiles[4],
-                        sFiles[4]
-                    }, new TPL_TextureFormat[8]
-                    {
-                        TPL.Load(iconPath).GetTextureFormat(0),
-                        TPL.Load(iconPath).GetTextureFormat(0),
-                        TPL.Load(iconPath).GetTextureFormat(0),
-                        TPL.Load(iconPath).GetTextureFormat(0),
-                        TPL.Load(iconPath).GetTextureFormat(0),
-                        TPL.Load(iconPath).GetTextureFormat(0),
-                        TPL.Load(iconPath).GetTextureFormat(0),
-                        TPL.Load(iconPath).GetTextureFormat(0)
-                    }, new TPL_PaletteFormat[8]
-                    {
-                        TPL.Load(iconPath).GetPaletteFormat(0),
-                        TPL.Load(iconPath).GetPaletteFormat(0),
-                        TPL.Load(iconPath).GetPaletteFormat(0),
-                        TPL.Load(iconPath).GetPaletteFormat(0),
-                        TPL.Load(iconPath).GetPaletteFormat(0),
-                        TPL.Load(iconPath).GetPaletteFormat(0),
-                        TPL.Load(iconPath).GetPaletteFormat(0),
-                        TPL.Load(iconPath).GetPaletteFormat(0)
-                    });
-                tpl.Save(iconPath);
-                tpl.Save(iconPath.Replace("banner\\US\\", "banner\\EU\\"));
-                tpl.Save(iconPath.Replace("banner\\US\\", "banner\\JP\\"));
-
-                sBanner.Dispose();
-                SaveIcon.Dispose();
-                sIcon.Dispose();
-                tpl.Dispose();*/
-            }
-
-            // Delete images directory
-        }
-
-        const UInt32 WM_KEYDOWN = 0x0100;
-        const int VK_RETURN = 0x0D;
 
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         static extern bool PostMessage(IntPtr hWnd, UInt32 Msg, int wParam, int lParam);

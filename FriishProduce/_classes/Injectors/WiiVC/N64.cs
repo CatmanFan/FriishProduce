@@ -200,7 +200,7 @@ namespace FriishProduce.WiiVC
                 // -----------------------
 
                 else if (item.ToLower().Contains("banner.tpl"))
-                    MainContent.ReplaceFile(MainContent.GetNodeIndex(item), Img.CreateSaveTPL(Console.N64, MainContent.Data[MainContent.GetNodeIndex(item)]).ToByteArray());
+                    MainContent.ReplaceFile(MainContent.GetNodeIndex(item), Img.CreateSaveTPL(MainContent.Data[MainContent.GetNodeIndex(item)]).ToByteArray());
             }
         }
 

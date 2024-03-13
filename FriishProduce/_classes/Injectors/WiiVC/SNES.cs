@@ -122,7 +122,7 @@ namespace FriishProduce.WiiVC
             // IMAGE
             // -----------------------
 
-            MainContent.ReplaceFile(MainContent.GetNodeIndex("banner.tpl"), Img.CreateSaveTPL(Console.SNES, MainContent.Data[MainContent.GetNodeIndex("banner.tpl")]).ToByteArray());
+            MainContent.ReplaceFile(MainContent.GetNodeIndex("banner.tpl"), Img.CreateSaveTPL(MainContent.Data[MainContent.GetNodeIndex("banner.tpl")]).ToByteArray());
         }
 
         /// <summary>

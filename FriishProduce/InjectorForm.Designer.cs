@@ -42,14 +42,14 @@ namespace FriishProduce
             this.SaveIcon_Panel = new System.Windows.Forms.Panel();
             this.SaveDataTitle = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.InjectorsList = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.COPanel_Forwarder = new System.Windows.Forms.Panel();
             this.label14 = new System.Windows.Forms.Label();
             this.Forwarder_Mode = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.Forwarder_Device = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.InjectorsList = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.COPanel_VC = new System.Windows.Forms.Panel();
             this.CustomManual = new System.Windows.Forms.CheckBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -82,8 +82,8 @@ namespace FriishProduce
             this.WADRegion = new System.Windows.Forms.PictureBox();
             this.Base = new System.Windows.Forms.ComboBox();
             this.BrowseManual = new Ookii.Dialogs.WinForms.VistaFolderBrowserDialog();
-            this.bannerPreview1 = new FriishProduce.BannerPreview();
             this.BrowsePatch = new System.Windows.Forms.OpenFileDialog();
+            this.bannerPreview1 = new FriishProduce.BannerPreview();
             this.groupBox8.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -175,38 +175,16 @@ namespace FriishProduce
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.COPanel_Forwarder);
             this.groupBox4.Controls.Add(this.label3);
+            this.groupBox4.Controls.Add(this.groupBox5);
             this.groupBox4.Controls.Add(this.InjectorsList);
             this.groupBox4.Controls.Add(this.button1);
-            this.groupBox4.Controls.Add(this.COPanel_Forwarder);
             this.groupBox4.Controls.Add(this.COPanel_VC);
             resources.ApplyResources(this.groupBox4, "groupBox4");
             this.groupBox4.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.TabStop = false;
-            // 
-            // label3
-            // 
-            resources.ApplyResources(this.label3, "label3");
-            this.label3.Name = "label3";
-            // 
-            // InjectorsList
-            // 
-            this.InjectorsList.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.InjectorsList.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.InjectorsList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.InjectorsList.FormattingEnabled = true;
-            resources.ApplyResources(this.InjectorsList, "InjectorsList");
-            this.InjectorsList.Name = "InjectorsList";
-            this.InjectorsList.SelectedIndexChanged += new System.EventHandler(this.InjectorsList_SelectedIndexChanged);
-            // 
-            // button1
-            // 
-            resources.ApplyResources(this.button1, "button1");
-            this.button1.Image = global::FriishProduce.Properties.Resources.wrench;
-            this.button1.Name = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.OpenInjectorOptions);
             // 
             // COPanel_Forwarder
             // 
@@ -247,10 +225,32 @@ namespace FriishProduce
             resources.ApplyResources(this.Forwarder_Device, "Forwarder_Device");
             this.Forwarder_Device.Name = "Forwarder_Device";
             // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
+            // InjectorsList
+            // 
+            this.InjectorsList.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.InjectorsList.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.InjectorsList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.InjectorsList.FormattingEnabled = true;
+            resources.ApplyResources(this.InjectorsList, "InjectorsList");
+            this.InjectorsList.Name = "InjectorsList";
+            this.InjectorsList.SelectedIndexChanged += new System.EventHandler(this.InjectorsList_SelectedIndexChanged);
+            // 
+            // button1
+            // 
+            resources.ApplyResources(this.button1, "button1");
+            this.button1.Image = global::FriishProduce.Properties.Resources.wrench;
+            this.button1.Name = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.OpenInjectorOptions);
+            // 
             // COPanel_VC
             // 
             this.COPanel_VC.Controls.Add(this.CustomManual);
-            this.COPanel_VC.Controls.Add(this.groupBox5);
             resources.ApplyResources(this.COPanel_VC, "COPanel_VC");
             this.COPanel_VC.Name = "COPanel_VC";
             // 
@@ -511,15 +511,15 @@ namespace FriishProduce
             this.BrowseManual.RootFolder = System.Environment.SpecialFolder.MyComputer;
             this.BrowseManual.ShowNewFolderButton = false;
             // 
+            // BrowsePatch
+            // 
+            this.BrowsePatch.RestoreDirectory = true;
+            // 
             // bannerPreview1
             // 
             this.bannerPreview1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             resources.ApplyResources(this.bannerPreview1, "bannerPreview1");
             this.bannerPreview1.Name = "bannerPreview1";
-            // 
-            // BrowsePatch
-            // 
-            this.BrowsePatch.RestoreDirectory = true;
             // 
             // InjectorForm
             // 

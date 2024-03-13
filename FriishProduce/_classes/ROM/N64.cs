@@ -1,6 +1,4 @@
-﻿using System.Text;
-
-namespace FriishProduce
+﻿namespace FriishProduce
 {
     public class ROM_N64 : ROM
     {
@@ -11,9 +9,9 @@ namespace FriishProduce
             Bytes = Byteswap(Bytes);
         }
 
-        public override bool CheckValidity(byte[] ROM)
+        public override bool CheckValidity(string path)
         {
-            var Byteswapped = Byteswap(ROM);
+            var Byteswapped = Byteswap(System.IO.File.ReadAllBytes(path));
             return Byteswapped[0] == 0x80 && Byteswapped[1] == 0x37 && Byteswapped[2] == 0x12 && Byteswapped[3] == 0x40 && Byteswapped[4] == 0x00 && Byteswapped[5] == 0x00 && Byteswapped[6] == 0x00 && Byteswapped[7] == 0x0F;
         }
 

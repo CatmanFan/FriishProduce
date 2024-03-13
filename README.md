@@ -1,7 +1,7 @@
 # FriishProduce
 <div align=center><a href=""><img src="https://raw.githubusercontent.com/CatmanFan/FriishProduce/main/legacy/FriishProduce/Resources/images/icon.png" width="105" height="75" /></a><br>
 <img src="https://github.com/CatmanFan/FriishProduce/blob/main/images/new.png?raw=true"/><br>
-<a href="https://gbatemp.net/threads/friishproduce-multiplatform-wad-injector.632028/"><img src="https://img.shields.io/badge/GBAtemp-link-blue" /></a> <a title="Crowdin" target="_blank" href="https://crowdin.com"><img src="https://badges.crowdin.net/friishproduce/localized.svg"></a>
+<a href="https://gbatemp.net/threads/friishproduce-multiplatform-wad-injector.632028/"><img src="https://img.shields.io/badge/GBAtemp-link-blue" /></a>
 </div>
 
 **FriishProduce** is a WAD injector for Wii/vWii, which allows for automated ROM/disc/SWF file replacement in Wii channels.
@@ -54,8 +54,7 @@ The current version of this application includes a built-in XML editor for addin
   * Check for additional bugs that need to be fixed and streamline code to make it more readable.
 * Other VC injection support to be done later:
   * Commodore 64 (needs [Custom Frodo](https://gbatemp.net/threads/custom-frodo-for-c64-vc-injection.102356/))
-  * TurboGrafx-16 CD (needs several programs to convert ISO to injectable format)
-* ~~Try redirecting foreign language *.json files in main/FriishProduce/langs to a separate location/repo~~ Not needed
+  * TurboGrafx-16 CD (needs several programs to convert ISO to injectable format)=
 
 ## Credits
 This program uses the following third-party components and apps:

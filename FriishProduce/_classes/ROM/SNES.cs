@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace FriishProduce
+﻿namespace FriishProduce
 {
     public class ROM_SNES : ROM
     {

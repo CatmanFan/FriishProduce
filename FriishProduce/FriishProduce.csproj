@@ -148,8 +148,15 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Subforms\Options_Flash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Subforms\Options_Flash.Designer.cs">
+      <DependentUpon>Options_Flash.cs</DependentUpon>
+    </Compile>
     <Compile Include="_classes\Injectors\Flash.cs" />
     <Compile Include="_classes\Injectors\Forwarder.cs" />
+    <Compile Include="_classes\ROM\Disc.cs" />
     <Compile Include="_classes\ROM\Flash.cs" />
     <Compile Include="_classes\Injectors\WiiVC\MSX.cs" />
     <Compile Include="_classes\Language.cs" />
@@ -277,6 +284,9 @@
     <EmbeddedResource Include="Subforms\ContentOptions.resx">
       <DependentUpon>ContentOptions.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Subforms\Options_Flash.resx">
+      <DependentUpon>Options_Flash.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Subforms\Options_VC_SEGA.resx">
       <DependentUpon>Options_VC_SEGA.cs</DependentUpon>
     </EmbeddedResource>
@@ -320,6 +330,7 @@
   <ItemGroup>
     <Content Include="Database.xml" />
     <Content Include="icon.ico" />
+    <None Include="Resources\icons\consoles\sony playstation.ico" />
     <None Include="Resources\icons\msx.png" />
     <None Include="Resources\icons\globe-model.png" />
     <EmbeddedResource Include="Strings\en.xml" />
