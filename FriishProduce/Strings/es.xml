@@ -62,13 +62,14 @@
 		<VC>Consola Virtual</VC>
 	</global>
 	<form name="InjectorForm">
-		<groupBox1.Text>Información de archivos actuales</groupBox1.Text>
+		<groupBox1.Text>Información de ROM</groupBox1.Text>
 		<groupBox2.Text>Información del canal de origen</groupBox2.Text>
-		<groupBox3.Text>Cabecera del canal</groupBox3.Text>
+		<groupBox3.Text>Canal de origen</groupBox3.Text>
 		<groupBox4.Text>Opciones de contenido</groupBox4.Text>
-		<groupBox5.Text>Datos guardados</groupBox5.Text>
+		<groupBox5.Text>Cabecera del canal</groupBox5.Text>
 		<groupBox6.Text>Detalles del banner</groupBox6.Text>
-		<groupBox8.Text>Imagen</groupBox8.Text>
+		<groupBox7.Text>Imagen</groupBox7.Text>
+		<groupBox8.Text>Datos guardados</groupBox8.Text>
 		<ImportPatch.Text>Importar parche</ImportPatch.Text>
 		<label1.Text>Nombre del archivo: {0}</label1.Text>
 		<label10.Text>Jugadores:</label10.Text>

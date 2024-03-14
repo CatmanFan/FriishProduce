@@ -66,6 +66,7 @@ namespace FriishProduce
             label7.Text = label5.Text;
             CustomManual.Text = Language.Get("CustomManual");
             BrowsePatch.Filter = Language.Get("Filter.Patch");
+            button1.Text = Language.Get("InjectionMethodOptions");
 
             // Change title text to untitled string
             Untitled = string.Format(Language.Get("Untitled"), Language.Get(Enum.GetName(typeof(Console), Console), "Platforms"));
@@ -210,8 +211,8 @@ namespace FriishProduce
                 case Console.Flash:
                     ROM = new SWF();
                     ImportPatch.Enabled = false;
-                    groupBox5.Location = new Point(groupBox5.Location.X, COPanel_VC.Location.Y);
-                    groupBox5.Show();
+                    groupBox8.Location = new Point(groupBox8.Location.X, COPanel_VC.Location.Y);
+                    groupBox8.Show();
                     break;
 
                 default:
@@ -597,9 +598,10 @@ namespace FriishProduce
             groupBox2.Enabled =
             groupBox3.Enabled =
             groupBox4.Enabled =
-            groupBox6.Enabled =
-            groupBox8.Enabled = true;
-            groupBox5.Enabled = CustomManual.Enabled || Console == Console.Flash;
+            groupBox5.Enabled =
+            label8.Enabled = BannerTitle.Enabled = label9.Enabled = ReleaseYear.Enabled = label10.Enabled = Players.Enabled =
+            groupBox7.Enabled = true;
+            groupBox8.Enabled = CustomManual.Enabled || Console == Console.Flash;
 
             RandomTID();
             UpdateBaseForm();
@@ -1270,13 +1272,13 @@ namespace FriishProduce
         {
             COPanel_VC.Hide();
             COPanel_Forwarder.Hide();
-            groupBox5.Hide();
+            groupBox8.Hide();
 
             CO = null;
             if (IsVCMode())
             {
                 COPanel_VC.Show();
-                groupBox5.Show();
+                groupBox8.Show();
 
                 switch (Console)
                 {
@@ -1312,16 +1314,16 @@ namespace FriishProduce
 
             else if (Console == Console.Flash)
             {
-                groupBox5.Show();
+                groupBox8.Show();
                 CO = new Options_Flash();
             }
 
             else
                 COPanel_Forwarder.Show();
 
-            var selected = COPanel_Forwarder.Visible ? COPanel_Forwarder : COPanel_VC.Visible ? COPanel_VC : null;
-            int height = selected == null ? (groupBox5.Visible ? groupBox5.Location.Y + groupBox5.Height : InjectorsList.Location.Y + InjectorsList.Height) + 10 : selected.Location.Y + selected.Height + 10;
-            groupBox4.Size = new Size(groupBox4.Width, height);
+            // var selected = COPanel_Forwarder.Visible ? COPanel_Forwarder : COPanel_VC.Visible ? COPanel_VC : null;
+            // int height = selected == null ? (groupBox8.Visible ? groupBox8.Location.Y + groupBox8.Height : InjectorsList.Location.Y + InjectorsList.Height) + 10 : selected.Location.Y + selected.Height + 10;
+            // groupBox4.Size = new Size(groupBox4.Width, height);
             if (groupBox4.Enabled) CheckExport();
         }
     }

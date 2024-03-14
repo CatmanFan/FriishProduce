@@ -175,7 +175,7 @@
     <value>1, 0, 1, 0</value>
   </data>
   <data name="MenuStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1084, 20</value>
+    <value>1074, 20</value>
   </data>
   <data name="MenuStrip.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -370,7 +370,7 @@
     <value>Arial, 12pt, style=Bold</value>
   </data>
   <data name="PointToTutorial.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1038, 2</value>
+    <value>1028, 3</value>
   </data>
   <data name="PointToTutorial.Size" type="System.Drawing.Size, System.Drawing">
     <value>21, 19</value>
@@ -438,7 +438,7 @@ Before getting started, please be sure to familiarise yourself with this program
     <value>0, 45</value>
   </data>
   <data name="MainPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1084, 552</value>
+    <value>1074, 517</value>
   </data>
   <data name="MainPanel.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -471,7 +471,7 @@ Before getting started, please be sure to familiarise yourself with this program
     <value>0, 0, 0, 0</value>
   </data>
   <data name="ToolStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1084, 25</value>
+    <value>1074, 25</value>
   </data>
   <data name="ToolStrip.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -576,7 +576,7 @@ Before getting started, please be sure to familiarise yourself with this program
     <value>True</value>
   </metadata>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1084, 597</value>
+    <value>1074, 562</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8.25pt</value>

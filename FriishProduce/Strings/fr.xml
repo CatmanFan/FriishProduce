@@ -71,11 +71,12 @@
 	<form name="InjectorForm">
 		<groupBox1.Text>Informations actuelles</groupBox1.Text>
 		<groupBox2.Text>Informations de la chaîne d'origine</groupBox2.Text>
-		<groupBox3.Text>Métadonnées de la chaîne</groupBox3.Text>
+		<groupBox3.Text>Chaîne d'origine</groupBox3.Text>
 		<groupBox4.Text>Options de contenu</groupBox4.Text>
-		<groupBox5.Text>Données de sauvegarde</groupBox5.Text>
+		<groupBox5.Text>Métadonnées de la chaîne</groupBox5.Text>
 		<groupBox6.Text>Détails du banner</groupBox6.Text>
-		<groupBox8.Text>Image</groupBox8.Text>
+		<groupBox7.Text>Image</groupBox7.Text>
+		<groupBox8.Text>Données de sauvegarde</groupBox8.Text>
 		<ImportPatch.Text>Importer un patch</ImportPatch.Text>
 		<label1.Text>Nom du fichier : {0}</label1.Text>
 		<label10.Text>Joueurs :</label10.Text>
