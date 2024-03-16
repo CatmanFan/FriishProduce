@@ -29,28 +29,28 @@ namespace FriishProduce
         // -----------------------------------
         // Public variables
         // -----------------------------------
-        protected ROM                           ROM         { get; set; }
-        protected WAD                           OutWAD      { get; set; }
-        protected string                        PatchFile   { get; set; }
-        protected string                        Manual      { get; set; }
-        protected LibRetroDB                    LibRetro    { get; set; }
-        protected DatabaseEntry[]               Database    { get; set; }
-        protected IDictionary<string, string>   CurrentBase { get; set; }
-        protected ImageHelper                   Img         { get; set; }
-        protected Creator                       Creator     { get; set; }
+        protected ROM ROM { get; set; }
+        protected WAD OutWAD { get; set; }
+        protected string PatchFile { get; set; }
+        protected string Manual { get; set; }
+        protected LibRetroDB LibRetro { get; set; }
+        protected DatabaseEntry[] Database { get; set; }
+        protected IDictionary<string, string> CurrentBase { get; set; }
+        protected ImageHelper Img { get; set; }
+        protected Creator Creator { get; set; }
 
-        protected bool                          isVC        { get; set; }
-        protected InjectorWiiVC                 VC          { get; set; }
+        protected bool isVC { get; set; }
+        protected InjectorWiiVC VC { get; set; }
 
         // -----------------------------------
         // Options
         // -----------------------------------
-        protected ContentOptions                CO          { get; set; }
+        protected ContentOptions CO { get; set; }
 
         // -----------------------------------
         // Connection with parent form
         // -----------------------------------
-        public new MainForm Parent                          { get; set; }
+        public new MainForm Parent { get; set; }
 
         public event EventHandler ExportCheck;
 
@@ -66,14 +66,14 @@ namespace FriishProduce
             label7.Text = label5.Text;
             CustomManual.Text = Language.Get("CustomManual");
             BrowsePatch.Filter = Language.Get("Filter.Patch");
-            button1.Text = Language.Get("InjectionMethodOptions");
+            label16.Text = Language.Get("None");
 
             // Change title text to untitled string
             Untitled = string.Format(Language.Get("Untitled"), Language.Get(Enum.GetName(typeof(Console), Console), "Platforms"));
             Text = string.IsNullOrWhiteSpace(ChannelTitle.Text) ? Untitled : ChannelTitle.Text;
 
             SetROMDataText();
-            bannerPreview1.Update(Console, BannerTitle.Text, (int)ReleaseYear.Value, (int)Players.Value, Img?.VCPic, Creator.isJapan ? 1 : Creator.isKorea ? 2 : 0);
+            pictureBox1.Image = BannerPreviewX.Generate(Console, BannerTitle.Text, (int)ReleaseYear.Value, (int)Players.Value, Img?.VCPic, Creator.isJapan ? 1 : Creator.isKorea ? 2 : 0);
 
             var baseMax = Math.Max(label4.Location.X + label4.Width - 4, label5.Location.X + label5.Width - 4);
             baseName.Location = new Point(baseMax, label4.Location.Y);
@@ -84,8 +84,36 @@ namespace FriishProduce
             imageintpl.Items.Add(Language.Get("ByDefault"));
             imageintpl.Items.AddRange(Language.GetArray("List.ImageInterpolation"));
             imageintpl.SelectedIndex = Properties.Settings.Default.ImageInterpolation;
-            Forwarder_Device.SelectedIndex = Properties.Settings.Default.Default_Forwarders_FilesStorage.ToLower().Contains("usb") ? 1 : 0;
-            Forwarder_Mode.SelectedIndex = Properties.Settings.Default.Default_Forwarders_Mode.ToLower().Contains("vwii") ? 1 : 0;
+            FStorage_USB.Checked = Properties.Settings.Default.Default_Forwarders_FilesStorage.ToLower().Contains("usb");
+            FStorage_SD.Checked = !FStorage_USB.Checked;
+            FNANDLoader_vWii.Checked = Properties.Settings.Default.Default_Forwarders_Mode.ToLower().Contains("vwii");
+            FNANDLoader_Wii.Checked = !FNANDLoader_vWii.Checked;
+
+            // Regions list
+            RegionsList.Items.Clear();
+            if (Language.Current.TwoLetterISOLanguageName.ToLower() == "ja")
+            {
+                RegionsList.Items.Add(Language.Get("Region.J"));
+                RegionsList.Items.Add(Language.Get("Region.U"));
+                RegionsList.Items.Add(Language.Get("Region.E"));
+                RegionsList.Items.Add(Language.Get("Region.K"));
+            }
+            else if (Language.Current.TwoLetterISOLanguageName.ToLower() == "ko")
+            {
+                RegionsList.Items.Add(Language.Get("Region.K"));
+                RegionsList.Items.Add(Language.Get("Region.U"));
+                RegionsList.Items.Add(Language.Get("Region.E"));
+                RegionsList.Items.Add(Language.Get("Region.J"));
+            }
+            else
+            {
+                RegionsList.Items.Add(Language.Get("Region.U"));
+                RegionsList.Items.Add(Language.Get("Region.E"));
+                RegionsList.Items.Add(Language.Get("Region.J"));
+                RegionsList.Items.Add(Language.Get("Region.K"));
+            }
+            RegionsList.Items.Add(Language.Get("Region.F"));
+            RegionsList.SelectedIndex = 0;
 
             // Injection methods list
             InjectorsList.Items.Clear();
@@ -211,8 +239,6 @@ namespace FriishProduce
                 case Console.Flash:
                     ROM = new SWF();
                     ImportPatch.Enabled = false;
-                    groupBox8.Location = new Point(groupBox8.Location.X, COPanel_VC.Location.Y);
-                    groupBox8.Show();
                     break;
 
                 default:
@@ -252,10 +278,10 @@ namespace FriishProduce
                 SaveDataTitle.Lines;
 
             SetROMDataText();
-            bannerPreview1.Update(Console, BannerTitle.Text, (int)ReleaseYear.Value, (int)Players.Value, Img?.VCPic, Creator.isJapan ? 1 : Creator.isKorea ? 2 : 0);
+            pictureBox1.Image = BannerPreviewX.Generate(Console, BannerTitle.Text, (int)ReleaseYear.Value, (int)Players.Value, Img?.VCPic, Creator.isJapan ? 1 : Creator.isKorea ? 2 : 0);
             button1.Enabled = CO != null;
 
-            ReadyToExport =    !string.IsNullOrEmpty(Creator.TitleID) && Creator.TitleID.Length == 4
+            ReadyToExport = !string.IsNullOrEmpty(Creator.TitleID) && Creator.TitleID.Length == 4
                             && !string.IsNullOrWhiteSpace(ChannelTitle.Text)
                             && !string.IsNullOrEmpty(Creator.BannerTitle)
                             && !string.IsNullOrEmpty(Creator.SaveDataTitle[0])
@@ -278,10 +304,10 @@ namespace FriishProduce
             if (LibRetro == null)
                 label2.Text = string.Format(Language.Get(label2.Name, this), Language.Get("Unknown"));
             else
-                label2.Text = string.Format(Language.Get(label2.Name, this), LibRetro.GetCleanTitle() ?? Language.Get("Unknown"));
+                label2.Text = string.Format(Language.Get(label2.Name, this), LibRetro.GetCleanTitle()?.Replace(Environment.NewLine, " - ") ?? Language.Get("Unknown"));
 
             label11.Text = PatchFile != null ? Path.GetFileName(PatchFile) : Language.Get("None");
-            label11.ForeColor = PatchFile != null ? SystemColors.ControlText : Color.Gray;
+            label11.Enabled = PatchFile != null;
         }
 
         private void RandomTID() => TitleID.Text = Creator.TitleID = TIDCode != null ? TIDCode + GenerateTitleID().Substring(0, 3) : GenerateTitleID();
@@ -300,7 +326,7 @@ namespace FriishProduce
         public bool CheckUnsaved()
         {
             if (Tag?.ToString() == "dirty")
-                if (MessageBox.Show(Text, Language.Get("Message.001"), MessageBoxButtons.YesNo, 0, true) == DialogResult.No)
+                if (MessageBox.Show(Text, Language.Get("Message.001"), MessageBoxButtons.YesNo, 0, false) == DialogResult.No)
                     return false;
             return true;
         }
@@ -344,7 +370,7 @@ namespace FriishProduce
 
             return;
 
-            Handled:
+        Handled:
             System.Media.SystemSounds.Beep.Play();
             e.Handled = true;
         }
@@ -397,19 +423,22 @@ namespace FriishProduce
             if (DesignMode) return;
             // ----------------------------
 
-            if (sender == radioButton1 && radioButton2.Checked)
+            if (sender == radioButton1 || sender == radioButton2)
             {
-                Tag = "dirty";
-                radioButton2.Checked = !radioButton1.Checked;
-            }
+                if (sender == radioButton1 && radioButton2.Checked)
+                {
+                    Tag = "dirty";
+                    radioButton2.Checked = !radioButton1.Checked;
+                }
 
-            else if (sender == radioButton2 && radioButton1.Checked)
-            {
-                Tag = "dirty";
-                radioButton1.Checked = !radioButton2.Checked;
-            }
+                else if (sender == radioButton2 && radioButton1.Checked)
+                {
+                    Tag = "dirty";
+                    radioButton1.Checked = !radioButton2.Checked;
+                }
 
-            if (Creator != null && Img != null) LoadImage();
+                if (Creator != null && Img != null) LoadImage();
+            }
         }
 
         #region Load Data Functions
@@ -423,7 +452,16 @@ namespace FriishProduce
         public bool LoadWAD(string path)
         {
             WAD Reader = new WAD();
-            try { Reader = WAD.Load(path); } catch { goto Failed; }
+
+            try
+            {
+                Reader = WAD.Load(path);
+            }
+            catch
+            {
+                MessageBox.Show(Language.Get("Message.002"), 0, Ookii.Dialogs.WinForms.TaskDialogIcon.Warning);
+                return false;
+            }
 
             for (int x = 0; x < Database.Length; x++)
                 if (Database[x].TitleID.ToUpper() == Reader.UpperTitleID.ToUpper())
@@ -440,8 +478,6 @@ namespace FriishProduce
                 }
 
             Reader.Dispose();
-
-            Failed:
             System.Media.SystemSounds.Beep.Play();
             MessageBox.Show(string.Format(Language.Get("Message.005"), Reader.UpperTitleID));
             return false;
@@ -568,7 +604,7 @@ namespace FriishProduce
                 case Console.MSX:
                     if (!ROM.CheckValidity(ROMpath))
                     {
-                        MessageBox.Show(Language.Get("Message.008"), 0, Ookii.Dialogs.WinForms.TaskDialogIcon.Warning);
+                        MessageBox.Show(Language.Get("Message.002"), 0, Ookii.Dialogs.WinForms.TaskDialogIcon.Warning);
                         return;
                     }
                     break;
@@ -578,7 +614,7 @@ namespace FriishProduce
                     // ****************
                     if (!ROM.CheckZIPValidity(ROMpath, new string[] { "c1", "c2", "m1", "p1", "s1", "v1" }, true, true))
                     {
-                        MessageBox.Show(Language.Get("Message.008"), 0, Ookii.Dialogs.WinForms.TaskDialogIcon.Warning);
+                        MessageBox.Show(Language.Get("Message.002"), 0, Ookii.Dialogs.WinForms.TaskDialogIcon.Warning);
                         return;
                     }
                     break;
@@ -596,12 +632,12 @@ namespace FriishProduce
             Random.Visible =
             groupBox1.Enabled =
             groupBox2.Enabled =
+            groupBox2.Enabled =
             groupBox3.Enabled =
             groupBox4.Enabled =
             groupBox5.Enabled =
-            label8.Enabled = BannerTitle.Enabled = label9.Enabled = ReleaseYear.Enabled = label10.Enabled = Players.Enabled =
-            groupBox7.Enabled = true;
-            groupBox8.Enabled = CustomManual.Enabled || Console == Console.Flash;
+            groupBox6.Enabled = true;
+            groupBox7.Enabled = CustomManual.Enabled || Console == Console.Flash;
 
             RandomTID();
             UpdateBaseForm();
@@ -700,6 +736,16 @@ namespace FriishProduce
                         throw new NotImplementedException();
                 }
 
+                // Other WAD settings to be changed
+                // *******
+                OutWAD.Region = RegionsList.SelectedItem.ToString() == Language.Get("Region.J") ? libWiiSharp.Region.Japan
+                    : RegionsList.SelectedItem.ToString() == Language.Get("Region.U") ? libWiiSharp.Region.USA
+                    : RegionsList.SelectedItem.ToString() == Language.Get("Region.E") ? libWiiSharp.Region.Europe
+                    : RegionsList.SelectedItem.ToString() == Language.Get("Region.K") ? libWiiSharp.Region.Korea
+                    : libWiiSharp.Region.Free;
+
+                // Remaining ones done by WAD creator helper, which will save to a new file
+                // *******
                 Creator.MakeWAD(OutWAD, Img);
 
                 // Check new WAD file
@@ -749,13 +795,13 @@ namespace FriishProduce
                 ROMExtension = Path.GetExtension(ROM.Path),
                 ID = Creator.TitleID,
                 Emulator = InjectorsList.SelectedItem.ToString(),
-                Storage = Forwarder_Device.SelectedItem.ToString().ToLower().Contains("usb") ? Forwarder.Storages.USB : Forwarder.Storages.SD
+                Storage = FStorage_USB.Checked ? Forwarder.Storages.USB : Forwarder.Storages.SD
             };
 
             // Actually inject everything
             // *******
-            f.CreateZIP(Path.Combine(Path.GetDirectoryName(Creator.Out), Path.GetFileNameWithoutExtension(Creator.Out) + $" ({Forwarder_Device.SelectedItem.ToString()}).zip"));
-            OutWAD = f.CreateWAD(OutWAD, Forwarder_Mode.SelectedItem.ToString().ToLower() == "vwii");
+            f.CreateZIP(Path.Combine(Path.GetDirectoryName(Creator.Out), Path.GetFileNameWithoutExtension(Creator.Out) + $" ({f.Storage}).zip"));
+            OutWAD = f.CreateWAD(OutWAD, FNANDLoader_vWii.Checked);
         }
 
         public void FlashInject()
@@ -1131,7 +1177,7 @@ namespace FriishProduce
 
             End:
             UpdateBaseConsole(index);
-            bannerPreview1.Update(Console, BannerTitle.Text, (int)ReleaseYear.Value, (int)Players.Value, Img?.VCPic, Creator.isJapan ? 1 : Creator.isKorea ? 2 : 0);
+            pictureBox1.Image = BannerPreviewX.Generate(Console, BannerTitle.Text, (int)ReleaseYear.Value, (int)Players.Value, Img?.VCPic, Creator.isJapan ? 1 : Creator.isKorea ? 2 : 0);
         }
 
         /// <summary>
@@ -1272,13 +1318,13 @@ namespace FriishProduce
         {
             COPanel_VC.Hide();
             COPanel_Forwarder.Hide();
-            groupBox8.Hide();
+            SaveIcon_Panel.Visible = SaveDataTitle.Visible = false;
 
             CO = null;
             if (IsVCMode())
             {
                 COPanel_VC.Show();
-                groupBox8.Show();
+                SaveIcon_Panel.Visible = SaveDataTitle.Visible = true;
 
                 switch (Console)
                 {
@@ -1314,17 +1360,18 @@ namespace FriishProduce
 
             else if (Console == Console.Flash)
             {
-                groupBox8.Show();
+                SaveIcon_Panel.Visible = SaveDataTitle.Visible = true;
                 CO = new Options_Flash();
             }
 
             else
                 COPanel_Forwarder.Show();
 
-            // var selected = COPanel_Forwarder.Visible ? COPanel_Forwarder : COPanel_VC.Visible ? COPanel_VC : null;
-            // int height = selected == null ? (groupBox8.Visible ? groupBox8.Location.Y + groupBox8.Height : InjectorsList.Location.Y + InjectorsList.Height) + 10 : selected.Location.Y + selected.Height + 10;
-            // groupBox4.Size = new Size(groupBox4.Width, height);
-            if (groupBox4.Enabled) CheckExport();
+            label16.Visible = !SaveDataTitle.Visible;
+            var selected = COPanel_Forwarder.Visible ? COPanel_Forwarder : COPanel_VC.Visible ? COPanel_VC : null;
+            int height = selected == null ? (groupBox7.Visible ? groupBox7.Location.Y + groupBox7.Height : InjectorsList.Location.Y + InjectorsList.Height) + 10 : selected.Location.Y + selected.Height + 10;
+            groupBox3.Size = new Size(groupBox3.Width, height);
+            if (groupBox3.Enabled) CheckExport();
         }
     }
 }

@@ -86,7 +86,7 @@ namespace FriishProduce
             string ROMFolder = IsDisc ? PackageFolder + "title\\" : PackageFolder;
             string ROMName = (EmulatorIndex >= 7 ? "title" : "HOME Menu") + ROMExtension;
 
-            if (!File.Exists(Paths.Emulators + Files[EmulatorIndex] + ".dol")) throw new Exception(Language.Get("Error.008"));
+            if (!File.Exists(Paths.Emulators + Files[EmulatorIndex] + ".dol")) throw new Exception(string.Format(Language.Get("Error.008"), List[EmulatorIndex], Files[EmulatorIndex]));
 
             // Create SD folder and copy emulator
             // *******

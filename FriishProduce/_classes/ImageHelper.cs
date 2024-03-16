@@ -257,7 +257,7 @@ namespace FriishProduce
         {
             if (!w.HasBanner) return;
 
-            U8[] BannerSet = Banner.GetBanner(w);
+            U8[] BannerSet = BannerHelper.Get(w);
 
             // VCPic.tpl
             // ****************

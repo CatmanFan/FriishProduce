@@ -57,8 +57,8 @@ namespace FriishProduce
 
             // -----------------------------
 
-            label14.Text = Language.Get("label14", "InjectorForm", true);
-            label13.Text = Language.Get("label13", "InjectorForm", true);
+            groupBox8.Text = Language.Get("groupBox8", "InjectorForm", true);
+            groupBox9.Text = Language.Get("groupBox9", "InjectorForm", true);
 
             // -----------------------------
 
@@ -76,8 +76,10 @@ namespace FriishProduce
 
             // -----------------------------
 
-            ROMStorage.SelectedIndex = Default.Default_Forwarders_FilesStorage.ToLower() == "sd" ? 0 : 1;
-            NANDLoaderType.SelectedIndex = Default.Default_Forwarders_Mode.ToLower() == "wii" ? 0 : 1;
+            FStorage_SD.Checked = Default.Default_Forwarders_FilesStorage.ToLower() == "sd";
+            FNANDLoader_Wii.Checked = Default.Default_Forwarders_Mode.ToLower() == "wii";
+            FStorage_USB.Checked = !FStorage_SD.Checked;
+            FNANDLoader_vWii.Checked = !FNANDLoader_Wii.Checked;
 
             n64000.Checked = Default.Default_N64_FixBrightness;
             n64001.Checked = Default.Default_N64_FixCrashes;
@@ -111,8 +113,8 @@ namespace FriishProduce
             Default.AutoLibRetro = AutoLibRetro.Checked;
             Default.AutoOpenFolder = AutoOpenFolder.Checked;
 
-            Default.Default_Forwarders_FilesStorage = ROMStorage.SelectedIndex == 0 ? "SD" : "USB";
-            Default.Default_Forwarders_Mode = NANDLoaderType.SelectedIndex == 0 ? "Wii" : "vWii";
+            Default.Default_Forwarders_FilesStorage = FStorage_SD.Checked ? "SD" : "USB";
+            Default.Default_Forwarders_Mode = FNANDLoader_Wii.Checked ? "Wii" : "vWii";
 
             Default.Default_N64_FixBrightness = n64000.Checked;
             Default.Default_N64_FixCrashes = n64001.Checked;
@@ -178,7 +180,7 @@ namespace FriishProduce
             };
 
             foreach (var item in WADs)
-                Banner.ExportBanner(item.Key, item.Value);
+                BannerHelper.ExportBanner(item.Key, item.Value);
 
             System.Media.SystemSounds.Beep.Play();
         }

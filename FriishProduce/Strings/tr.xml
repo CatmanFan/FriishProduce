@@ -15,7 +15,7 @@
 		<Error>Bir hata oluştu</Error>
 		<Filter>|Tüm dosyalar (*.*)|*.*</Filter>
 		<InjectionMethodOptions>Emülatör Ayarları</InjectionMethodOptions>
-		<Message.008>Seçtiğiniz dosya geçersizdir.</Message.008>
+		<Message.002>Seçtiğiniz dosya geçersizdir.</Message.002>
 		<None>Yok</None>
 		<Other>Diğer</Other>
 		<ProjectType>{0} Projesi</ProjectType>
@@ -23,13 +23,14 @@
 		<Region.K>Güney Kore</Region.K>
 		<Region.U>ABD</Region.U>
 		<Region.E>Avrupa</Region.E>
+		<Region.F>Bolgesiz</Region.F>
 		<Settings>Ayarlar</Settings>
 		<Untitled>Başlıksız {0} kanalı</Untitled>
 	</global>
 	<form name="InjectorForm">
-		<groupBox4.Text>Yazılım Ayarları</groupBox4.Text>
-		<groupBox5.Text>Kanal Başlığı</groupBox5.Text>
-		<groupBox7.Text>Resim</groupBox7.Text>
+		<groupBox3.Text>Yazılım Ayarları</groupBox3.Text>
+		<groupBox4.Text>Kanal Başlığı</groupBox4.Text>
+		<groupBox6.Text>Resim</groupBox6.Text>
 		<label1.Text>Dosya adı: {0}</label1.Text>
 		<label10.Text>Oyuncular:</label10.Text>
 		<label2.Text>Yazılımın resmi adı: {0}</label2.Text>
@@ -37,7 +38,6 @@
 		<label6.Text>Kısa başlık:</label6.Text>
 		<label8.Text>Tam başlık:</label8.Text>
 		<label9.Text>Yıl:</label9.Text>
-		<RegionFree.Text>Bolgesiz</RegionFree.Text>
 	</form>
 	<form name="MainForm">
 		<ExportWAD.Text>WAD Olarak Kaydet...</ExportWAD.Text>

@@ -55,10 +55,12 @@ namespace FriishProduce
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.leftSeparator = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.NANDLoaderType = new System.Windows.Forms.ComboBox();
-            this.ROMStorage = new System.Windows.Forms.ComboBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.FNANDLoader_vWii = new System.Windows.Forms.RadioButton();
+            this.FNANDLoader_Wii = new System.Windows.Forms.RadioButton();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.FStorage_SD = new System.Windows.Forms.RadioButton();
+            this.FStorage_USB = new System.Windows.Forms.RadioButton();
             this.groupBox3.SuspendLayout();
             this.n64004.SuspendLayout();
             this.bottomPanel1.SuspendLayout();
@@ -69,15 +71,17 @@ namespace FriishProduce
             this.panel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.groupBox9.SuspendLayout();
+            this.groupBox8.SuspendLayout();
             this.SuspendLayout();
             // 
             // DefaultImageInterpolation
             // 
             this.DefaultImageInterpolation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.DefaultImageInterpolation, "DefaultImageInterpolation");
             this.DefaultImageInterpolation.FormattingEnabled = true;
             this.DefaultImageInterpolation.Items.AddRange(new object[] {
             resources.GetString("DefaultImageInterpolation.Items")});
-            resources.ApplyResources(this.DefaultImageInterpolation, "DefaultImageInterpolation");
             this.DefaultImageInterpolation.Name = "DefaultImageInterpolation";
             // 
             // AutoOpenFolder
@@ -108,6 +112,7 @@ namespace FriishProduce
             this.groupBox3.Controls.Add(this.n64002);
             this.groupBox3.Controls.Add(this.n64001);
             this.groupBox3.Controls.Add(this.n64000);
+            this.groupBox3.FlatStyle = System.Windows.Forms.FlatStyle.System;
             resources.ApplyResources(this.groupBox3, "groupBox3");
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.TabStop = false;
@@ -139,6 +144,7 @@ namespace FriishProduce
             // n64004
             // 
             this.n64004.Controls.Add(this.ROMCType);
+            this.n64004.FlatStyle = System.Windows.Forms.FlatStyle.System;
             resources.ApplyResources(this.n64004, "n64004");
             this.n64004.Name = "n64004";
             this.n64004.TabStop = false;
@@ -146,8 +152,8 @@ namespace FriishProduce
             // ROMCType
             // 
             this.ROMCType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ROMCType.FormattingEnabled = true;
             resources.ApplyResources(this.ROMCType, "ROMCType");
+            this.ROMCType.FormattingEnabled = true;
             this.ROMCType.Name = "ROMCType";
             // 
             // DownloadBanners
@@ -191,9 +197,9 @@ namespace FriishProduce
             // TreeView
             // 
             this.TreeView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.TreeView.FullRowSelect = true;
-            this.TreeView.ItemHeight = 20;
             resources.ApplyResources(this.TreeView, "TreeView");
+            this.TreeView.FullRowSelect = true;
+            this.TreeView.ItemHeight = 19;
             this.TreeView.Name = "TreeView";
             this.TreeView.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             ((System.Windows.Forms.TreeNode)(resources.GetObject("TreeView.Nodes"))),
@@ -217,6 +223,7 @@ namespace FriishProduce
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.LanguageList);
+            this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
@@ -238,6 +245,7 @@ namespace FriishProduce
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.DefaultImageInterpolation);
+            this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.System;
             resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
@@ -250,42 +258,56 @@ namespace FriishProduce
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.ROMStorage);
-            this.panel3.Controls.Add(this.NANDLoaderType);
-            this.panel3.Controls.Add(this.label14);
-            this.panel3.Controls.Add(this.label13);
+            this.panel3.Controls.Add(this.groupBox9);
+            this.panel3.Controls.Add(this.groupBox8);
             resources.ApplyResources(this.panel3, "panel3");
             this.panel3.Name = "panel3";
             // 
-            // NANDLoaderType
+            // groupBox9
             // 
-            this.NANDLoaderType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.NANDLoaderType.FormattingEnabled = true;
-            this.NANDLoaderType.Items.AddRange(new object[] {
-            resources.GetString("NANDLoaderType.Items"),
-            resources.GetString("NANDLoaderType.Items1")});
-            resources.ApplyResources(this.NANDLoaderType, "NANDLoaderType");
-            this.NANDLoaderType.Name = "NANDLoaderType";
+            this.groupBox9.Controls.Add(this.FNANDLoader_vWii);
+            this.groupBox9.Controls.Add(this.FNANDLoader_Wii);
+            this.groupBox9.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            resources.ApplyResources(this.groupBox9, "groupBox9");
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.TabStop = false;
             // 
-            // ROMStorage
+            // FNANDLoader_vWii
             // 
-            this.ROMStorage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ROMStorage.FormattingEnabled = true;
-            this.ROMStorage.Items.AddRange(new object[] {
-            resources.GetString("ROMStorage.Items"),
-            resources.GetString("ROMStorage.Items1")});
-            resources.ApplyResources(this.ROMStorage, "ROMStorage");
-            this.ROMStorage.Name = "ROMStorage";
+            resources.ApplyResources(this.FNANDLoader_vWii, "FNANDLoader_vWii");
+            this.FNANDLoader_vWii.Name = "FNANDLoader_vWii";
+            this.FNANDLoader_vWii.TabStop = true;
+            this.FNANDLoader_vWii.UseVisualStyleBackColor = true;
             // 
-            // label13
+            // FNANDLoader_Wii
             // 
-            resources.ApplyResources(this.label13, "label13");
-            this.label13.Name = "label13";
+            resources.ApplyResources(this.FNANDLoader_Wii, "FNANDLoader_Wii");
+            this.FNANDLoader_Wii.Name = "FNANDLoader_Wii";
+            this.FNANDLoader_Wii.TabStop = true;
+            this.FNANDLoader_Wii.UseVisualStyleBackColor = true;
             // 
-            // label14
+            // groupBox8
             // 
-            resources.ApplyResources(this.label14, "label14");
-            this.label14.Name = "label14";
+            this.groupBox8.Controls.Add(this.FStorage_SD);
+            this.groupBox8.Controls.Add(this.FStorage_USB);
+            this.groupBox8.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            resources.ApplyResources(this.groupBox8, "groupBox8");
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.TabStop = false;
+            // 
+            // FStorage_SD
+            // 
+            resources.ApplyResources(this.FStorage_SD, "FStorage_SD");
+            this.FStorage_SD.Name = "FStorage_SD";
+            this.FStorage_SD.TabStop = true;
+            this.FStorage_SD.UseVisualStyleBackColor = true;
+            // 
+            // FStorage_USB
+            // 
+            resources.ApplyResources(this.FStorage_USB, "FStorage_USB");
+            this.FStorage_USB.Name = "FStorage_USB";
+            this.FStorage_USB.TabStop = true;
+            this.FStorage_USB.UseVisualStyleBackColor = true;
             // 
             // SettingsForm
             // 
@@ -323,7 +345,10 @@ namespace FriishProduce
             this.panel2.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -354,9 +379,11 @@ namespace FriishProduce
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.ComboBox NANDLoaderType;
-        private System.Windows.Forms.ComboBox ROMStorage;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.RadioButton FNANDLoader_vWii;
+        private System.Windows.Forms.RadioButton FNANDLoader_Wii;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.RadioButton FStorage_SD;
+        private System.Windows.Forms.RadioButton FStorage_USB;
     }
 }

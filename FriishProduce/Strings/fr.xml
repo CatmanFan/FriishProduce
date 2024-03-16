@@ -4,6 +4,7 @@
 		<Group1>Sega</Group1>
 		<Flash>Adobe Flash</Flash>
 		<MSX>Microsoft MSX / MSX2</MSX>
+		<N64>Nintendo 64</N64>
 		<NeoGeo>SNK Neo-Geo</NeoGeo>
 		<NES>NES / Famicom</NES>
 		<PCE>PC Engine / TurboGrafx-16</PCE>
@@ -26,14 +27,14 @@
 		<DoNotShow>Ne plus afficher ce message</DoNotShow>
 		<Error>Un problème est survenu</Error>
 		<Error.000>Échec de la connexion à Internet.\nMessage : {0}</Error.000>
-		<Error.001>Échec de la génération de l'image.\nCela peut être dû à un problème avec GDI+.</Error.001>
+		<Error.001>Échec de la génération de l'image.\nCeci peut être provoqué par un problème avec GDI+.</Error.001>
 		<Error.002>Échec du replacement des données internes.</Error.002>
-		<Error.003>La ROM fournie est trop grande, car sa taille est plus de {0} {1}.</Error.003>
-		<Error.004>Échec de modification des options de contenu suivantes :\n{0}\nL'injection se poursuivra comme prévu.</Error.004>
-		<Error.005>L'application requise ({0}) n'a pas été trouvée dans le sous-répertoire « resources\tools ».</Error.005>
-		<Error.006>Échec de l'exportation vers WAD.</Error.006>
+		<Error.003>La taille de votre fichier de jeu dépasse la limite de {0} {1}.</Error.003>
+		<Error.004>Échec de modification des options de contenu suivantes :\n{0}\nLa sauvegarde se poursuivra comme prévu.</Error.004>
+		<Error.005>L'application requise ({0}) n'est pas disponible dans le sous-répertoire « resources\\tools ».\nVeuillez obtenir cette application et la placer dans ce dossier, puis réessayer.</Error.005>
+		<Error.006>Échec de la sauvegarde vers format WAD.</Error.006>
 		<Error.007>Échec de l'application du patch.</Error.007>
-		<Error.008>Le fichier DOL requis ({0}) n'a pas été trouvée dans le sous-répertoire « resources\forwarder\emulators ».</Error.008>
+		<Error.008>L'émulateur requis ({0}) dans le chemin d'accès « resources\\forwarder\\emulators\\{1}.dol » n'a pas été trouvé.\nVeuillez obtenir le fichier d'émulateur et le placer dans ce chemin, puis réessayer.</Error.008>
 		<Filter>|Tous les fichiers (*.*)|*.*</Filter>
 		<Filter.Disc>Fichiers de format disque (*.cue, *.iso, *.chd)|*.cue;*.iso;*.chd|  Fichiers CUE Sheet (*.cue)|*.cue|  Images ISO (*.iso)|*.iso|  Fichiers CHD (*.chd)|*.chd</Filter.Disc>
 		<Filter.Img>Tous les formats sont pris en charge (*.bmp, *.jpg, *.jpeg, *.png)|*.bmp;*.jpg;*.jpeg;*.png|  Bitmap Windows (*.bmp)|*.bmp|  JPEG (*.jpg, *.jpeg)|*.jpg;*.jpeg|  PNG (*.png)|*.png</Filter.Img>
@@ -48,39 +49,43 @@
 		<Filter.SWF>Fichiers *.swf (*.swf)|*.swf</Filter.SWF>
 		<Filter.WAD>Chaînes Wii (*.wad)|*.wad</Filter.WAD>
 		<Filter.ZIP>Archives *.zip (*.zip)|*.zip</Filter.ZIP>
-		<InjectionMethodOptions>Options de méthode d'injection</InjectionMethodOptions>
+		<Forwarders>Forwarders (Raccourcis)</Forwarders>
+		<InjectionMethodOptions>Paramètres de méthode d'injection</InjectionMethodOptions>
 		<List.ImageInterpolation>Basse qualité\nHaute qualité\nBilinéaire\nBicubique\nPlus proche voisin\nBilinéaire de haute qualité\nBicubique de haute qualité</List.ImageInterpolation>
 		<Message.000>Un redémarrage de l'application est nécessaire pour que les changements aux paramètres prennent effet.\nRedémarrer maintenant ?</Message.000>
 		<Message.001>Ignorer les modifications non enregistrées à ce projet ?</Message.001>
-		<Message.002>Ignorer toutes les modifications non enregistrées ?</Message.002>
+		<Message.002>Le fichier que vous avez sélectionné est invalide.</Message.002>
 		<Message.003>Sauvegardé avec succès vers le fichier WAD suivant :\n{0}</Message.003>
-		<Message.004>Impossible de remplir toutes les formes d'après la base de données Libretro pour ce logiciel.\nCertaines formes peuvent avoir besoin d'être remplis manuellement.</Message.004>
-		<Message.008>Le fichier que vous avez sélectionné est invalide.</Message.008>
+		<Message.004>Impossible de remplir toutes les formes d'après la base de données Libretro pour ce fichier de jeu.\nCertaines formes peuvent avoir besoin d'être remplis manuellement.</Message.004>
+		<Message.005>Le fichier WAD que vous avez précisée ({0}) est invalide.\nCeci peut être provoqué par l'une des raisons suivantes :\n  • La plateforme/console cible ne correspond pas à celle de la chaîne sélectionnée.\n  • La chaîne n'est pas encore disponible dans la base des données de cette application.\n  • La chaîne était déjà modifiée (par exemple : injectée ou convertie en forme du forwarder).</Message.005>
 		<None>Aucun(e)</None>
 		<Other>Autres</Other>
 		<ProjectType>Projet {0}</ProjectType>
 		<Region.J>Japon</Region.J>
 		<Region.K>Corée du Sud</Region.K>
-		<Region.U>États-Unis</Region.U>
+		<Region.U>États-Unis / Canada</Region.U>
 		<Region.E>Europe</Region.E>
+		<Region.F>Déverrouillée</Region.F>
 		<Settings>Paramètres</Settings>
-		<Unknown>Inconnu</Unknown>
-		<Untitled>Chaîne {0} sans titre</Untitled>
+		<Unknown>Inconnu(e)</Unknown>
+		<Untitled>Projet {0} sans titre</Untitled>
 		<VC>Console virtuelle</VC>
 	</global>
 	<form name="InjectorForm">
 		<groupBox1.Text>Informations actuelles</groupBox1.Text>
-		<groupBox2.Text>Informations de la chaîne d'origine</groupBox2.Text>
-		<groupBox3.Text>Chaîne d'origine</groupBox3.Text>
-		<groupBox4.Text>Options de contenu</groupBox4.Text>
-		<groupBox5.Text>Métadonnées de la chaîne</groupBox5.Text>
-		<groupBox6.Text>Détails du banner</groupBox6.Text>
-		<groupBox7.Text>Image</groupBox7.Text>
-		<groupBox8.Text>Données de sauvegarde</groupBox8.Text>
+		<groupBox2.Text>Chaîne d'origine</groupBox2.Text>
+		<groupBox3.Text>Options de contenu</groupBox3.Text>
+		<groupBox4.Text>Métadonnées de la chaîne</groupBox4.Text>
+		<groupBox5.Text>Détails du banner</groupBox5.Text>
+		<groupBox6.Text>Image</groupBox6.Text>
+		<groupBox7.Text>Données de sauvegarde</groupBox7.Text>
+		<groupBox8.Text>Périphérique de stockage racine :</groupBox8.Text>
+		<groupBox9.Text>Version Wii cible :</groupBox9.Text>
 		<ImportPatch.Text>Importer un patch</ImportPatch.Text>
 		<label1.Text>Nom du fichier : {0}</label1.Text>
 		<label10.Text>Joueurs :</label10.Text>
 		<label12.Text>Méthode d'interpolation :</label12.Text>
+		<label13.Text>Région :</label13.Text>
 		<label2.Text>Nom officiel du logiciel : {0}</label2.Text>
 		<label3.Text>Méthode d'injection :</label3.Text>
 		<label4.Text>Nom du jeu :</label4.Text>
@@ -91,7 +96,6 @@
 		<OpenWAD.Text>Utiliser un fichier WAD hors ligne</OpenWAD.Text>
 		<radioButton1.Text>Étirer l'image</radioButton1.Text>
 		<radioButton2.Text>Conserver les proportions</radioButton2.Text>
-		<RegionFree.Text>Déverrouillage de région</RegionFree.Text>
 	</form>
 	<form name="MainForm">
 		<ExportWAD.Text>Sauvegarder comme WAD ...</ExportWAD.Text>
@@ -103,15 +107,23 @@
 		<NewProject.Text>Nouveau ...</NewProject.Text>
 		<OpenImage.Text>Ouvrir une image ...</OpenImage.Text>
 		<OpenROM.Text>Ouvrir un fichier de jeu ...</OpenROM.Text>
-		<UseLibRetro.Text>Remplir dès LibRetro</UseLibRetro.Text>
+		<UseLibRetro.Text>Remplir les données dès LibRetro</UseLibRetro.Text>
+	</form>
+	<form name="Options_Flash">
+		<comboBox1.Items>Elevé</comboBox1.Items>
+		<comboBox1.Items1>Moyen</comboBox1.Items1>
+		<comboBox1.Items2>Bas</comboBox1.Items2>
 	</form>
 	<form name="Options_VC_N64">
 		<groupBox1.Text>Patchs</groupBox1.Text>
 		<n64000.Text>Pleine luminosité</n64000.Text>
 		<n64001.Text>Correctif des plantages</n64001.Text>
-		<n64002.Text>RAM étendue</n64002.Text>
-		<n64003.Text>Allouer la taille de la ROM</n64003.Text>
+		<n64002.Text>Étendre la RAM internelle</n64002.Text>
+		<n64003.Text>Allocation de taille de la ROM</n64003.Text>
 		<n64004.Text>Type de compression</n64004.Text>
+		<ROMCType.Items>Type 0 (ROMC)</ROMCType.Items>
+		<ROMCType.Items1>Type 1 (ROMC)</ROMCType.Items1>
+		<x009.Text>Veuillez noter que ces options ne peuvent pas fonctionner pour toutes les chaînes de Console virtuelle.</x009.Text>
 	</form>
 	<form name="Options_VC_NES">
 		<checkBox1.Text>Utiliser cette palette pour les images d'aperçu</checkBox1.Text>
@@ -127,7 +139,7 @@
 	</form>
 	<form name="SettingsForm">
 		<AutoLibRetro.Text>Remplir automatiquement dès LibRetro</AutoLibRetro.Text>
-		<AutoOpenFolder.Text>Ouvrir le dossier de sortie après l'exportation du fichier WAD</AutoOpenFolder.Text>
+		<AutoOpenFolder.Text>Ouvrir le dossier de sortie après une sauvegarde</AutoOpenFolder.Text>
 		<groupBox1.Text>Langue</groupBox1.Text>
 		<groupBox2.Text>Méthode d'interpolation des images</groupBox2.Text>
 		<LanguageList.Items>Système</LanguageList.Items>

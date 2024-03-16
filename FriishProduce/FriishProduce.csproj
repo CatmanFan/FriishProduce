@@ -124,18 +124,6 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BannerPreview.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="BannerPreview.Designer.cs">
-      <DependentUpon>BannerPreview.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BannerPreviewForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BannerPreviewForm.Designer.cs">
-      <DependentUpon>BannerPreviewForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="LanguageXMLEditor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -154,6 +142,7 @@
     <Compile Include="Subforms\Options_Flash.Designer.cs">
       <DependentUpon>Options_Flash.cs</DependentUpon>
     </Compile>
+    <Compile Include="_classes\BannerPreview.cs" />
     <Compile Include="_classes\Injectors\Flash.cs" />
     <Compile Include="_classes\Injectors\Forwarder.cs" />
     <Compile Include="_classes\ROM\Disc.cs" />
@@ -167,12 +156,6 @@
     <Compile Include="_classes\ROM\SEGA.cs" />
     <Compile Include="_classes\ROM\SNES.cs" />
     <Compile Include="_classes\Program\Updater.cs" />
-    <EmbeddedResource Include="BannerPreview.resx">
-      <DependentUpon>BannerPreview.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BannerPreviewForm.resx">
-      <DependentUpon>BannerPreviewForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="LanguageXMLEditor.resx">
       <DependentUpon>LanguageXMLEditor.cs</DependentUpon>
     </EmbeddedResource>
@@ -269,7 +252,7 @@
     <Compile Include="_classes\Paths.cs" />
     <Compile Include="_classes\ROM.cs" />
     <Compile Include="_classes\ImageHelper.cs" />
-    <Compile Include="_classes\Banner.cs" />
+    <Compile Include="_classes\BannerHelper.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>

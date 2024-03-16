@@ -1,19 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace FriishProduce
 {
-    public partial class BannerPreview : UserControl
+    public static class BannerPreviewX
     {
-        private Color[][] ColorSchemes = new Color[][]
+
+        private static Color[][] ColorSchemes = new Color[][]
         {
             // ****************
 
@@ -37,7 +35,7 @@ namespace FriishProduce
                                     Color.FromArgb(200, 200, 200),
 
                                     Color.FromArgb(155, 155, 155),
-                            
+
                                     Color.FromArgb(122, 48, 48),
                                     Color.FromArgb(217, 31, 31),
                                     Color.FromArgb(230, 230, 40)
@@ -213,44 +211,25 @@ namespace FriishProduce
                                 },
         };
 
-        Bitmap bmp = new Bitmap(1, 1);
-
-        public BannerPreview() => InitializeComponent();
-
-        public BannerPreview(Console console, string title, int year, int players, Image img, int altRegion = 0, bool animation = false)
+        public static Bitmap Generate(Console console, string text, int year, int players, Bitmap img, int lang)
         {
-            InitializeComponent();
-
-            BannerPreview_Text.Parent = BannerPreview_Gradient;
-            BannerPreview_Text.BackColor = Color.Transparent;
-
-            Update(console, title, year, players, img, altRegion);
-
-            if (animation)
+            Bitmap bmp = new Bitmap(660, 260);
+            if (img == null)
             {
-                var dif = 50;
-                Image.Location = new Point(Image.Location.X, Image.Location.Y - dif);
-                BannerPreview_Text.Location = new Point(BannerPreview_Text.Location.X, BannerPreview_Text.Location.Y + dif);
-                BannerPreview_Year.Location = new Point(BannerPreview_Year.Location.X - (dif * 6), BannerPreview_Year.Location.Y);
-                BannerPreview_Players.Location = new Point(BannerPreview_Year.Location.X, BannerPreview_Players.Location.Y);
-                BannerPreview_Line1.Location = new Point(BannerPreview_Line1.Location.X - (dif * 3), BannerPreview_Line1.Location.Y);
-                BannerPreview_Line2.Location = new Point(BannerPreview_Line1.Location.X, BannerPreview_Line2.Location.Y);
-                Animation1.Enabled = true;
-                Animation1.Start();
+                img = new Bitmap(256, 192);
+                using (Graphics g = Graphics.FromImage(img))
+                    g.Clear(Color.Transparent);
             }
-        }
 
-        public void Update(Console console, string title, int year, int players, Image img, int altRegion = 0)
-        {
             int target = 0;
             switch (console)
             {
                 case Console.NES:
-                    target = altRegion > 0 ? 1 : 0;
+                    target = lang > 0 ? 1 : 0;
                     break;
 
                 case Console.SNES:
-                    target = altRegion > 0 ? 3 : 2;
+                    target = lang > 0 ? 3 : 2;
                     break;
 
                 case Console.N64:
@@ -266,7 +245,7 @@ namespace FriishProduce
                     break;
 
                 case Console.PCE:
-                    target = altRegion > 0 ? 8 : 7;
+                    target = lang > 0 ? 8 : 7;
                     break;
 
                 case Console.NeoGeo:
@@ -286,33 +265,13 @@ namespace FriishProduce
                     break;
             }
 
-            BannerPreview_Line1.BackColor = ColorSchemes[target][3];
-            BannerPreview_Line2.BackColor = ColorSchemes[target][3];
-            BannerPreview_Main.BackColor = ColorSchemes[target][0];
+            var textColor = ColorSchemes[target][2].GetBrightness() < 0.8 ? Color.White : Color.Black;
+            var leftTextColor = target == 2 ? Color.Black : target == 8 ? Color.FromArgb(90, 90, 90) : ColorSchemes[target][0].GetBrightness() < 0.8 ? Color.White : Color.Black;
+            if (target == 4 || target == 2) textColor = Color.White;
 
-            BannerPreview_Text.ForeColor = BannerPreview_Main.BackColor.GetBrightness() < 0.8 ? Color.White : Color.Black;
 
-            if (target == 2) BannerPreview_Year.ForeColor = BannerPreview_Players.ForeColor = Color.Black;
-            else if (target == 8) BannerPreview_Year.ForeColor = BannerPreview_Players.ForeColor = Color.FromArgb(90, 90, 90);
-            else BannerPreview_Year.ForeColor = BannerPreview_Players.ForeColor = BannerPreview_Text.ForeColor;
-
-            if (target == 4) BannerPreview_Text.ForeColor = Color.White;
-
-            bmp = new Bitmap(BannerPreview_Gradient.Width, BannerPreview_Gradient.Height);
-
-            using (Graphics g = Graphics.FromImage(bmp))
-            using (LinearGradientBrush b = new LinearGradientBrush(new Point(0, -35), new Point(0, (int)Math.Round(bmp.Height * 1.6)), ColorSchemes[target][0], ColorSchemes[target][2]))
-            {
-                g.FillRectangle(b, 0, 0, bmp.Width, bmp.Height * 2);
-                BannerPreview_Gradient.Image = bmp;
-                g.DrawString(title, BannerPreview_Text.Font, new SolidBrush(BannerPreview_Text.ForeColor), bmp.Width / 2, 73, new StringFormat() { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center });
-            }
-
-            BannerPreview_Line1.Refresh();
-            BannerPreview_Line2.Refresh();
-
-            BannerPreview_Year.Tag = Language.Current.TwoLetterISOLanguageName == "ja" || altRegion == 1 ? "{0}年発売"
-                                      : Language.Current.TwoLetterISOLanguageName == "ko" || altRegion == 2 ? "일본판 발매년도\r\n{0}년"
+            string released  = Language.Current.TwoLetterISOLanguageName == "ja" || lang == 1 ? "{0}年発売"
+                                      : Language.Current.TwoLetterISOLanguageName == "ko" || lang == 2 ? "일본판 발매년도\r\n{0}년"
                                       : Language.Current.TwoLetterISOLanguageName == "nl" ? "Release: {0}"
                                       : Language.Current.TwoLetterISOLanguageName == "es" ? "Año: {0}"
                                       : Language.Current.TwoLetterISOLanguageName == "it" ? "Pubblicato: {0}"
@@ -320,8 +279,8 @@ namespace FriishProduce
                                       : Language.Current.TwoLetterISOLanguageName == "de" ? "Erschienen: {0}"
                                       : "Released: {0}";
 
-            BannerPreview_Players.Tag = Language.Current.TwoLetterISOLanguageName == "ja" || altRegion == 1 ? "プレイ人数\r\n{0}人"
-                                      : Language.Current.TwoLetterISOLanguageName == "ko" || altRegion == 2 ? "플레이 인원수\r\n{0}명"
+            string numPlayers = Language.Current.TwoLetterISOLanguageName == "ja" || lang == 1 ? "プレイ人数\r\n{0}人"
+                                      : Language.Current.TwoLetterISOLanguageName == "ko" || lang == 2 ? "플레이 인원수\r\n{0}명"
                                       : Language.Current.TwoLetterISOLanguageName == "nl" ? "{0} speler(s)"
                                       : Language.Current.TwoLetterISOLanguageName == "es" ? "Jugadores: {0}"
                                       : Language.Current.TwoLetterISOLanguageName == "it" ? "Giocatori: {0}"
@@ -329,41 +288,67 @@ namespace FriishProduce
                                       : Language.Current.TwoLetterISOLanguageName == "de" ? "{0} Spieler"
                                       : "Players: {0}";
 
-            Image.Image = img;
-            BannerPreview_Text.Text = title;
-            BannerPreview_Year.Text = string.Format(BannerPreview_Year.Tag.ToString(), year);
-            BannerPreview_Players.Text = string.Format(BannerPreview_Players.Tag.ToString(), $"{1}{(players <= 1 ? null : "-" + players)}");
-            if (Language.Current.TwoLetterISOLanguageName == "ja" || altRegion == 1) BannerPreview_Players.Text = BannerPreview_Players.Text.Replace("-", "～");
-        }
-
-        private void BannerPreview_Paint(object sender, PaintEventArgs e)
-        {
-            if (sender == BannerPreview_Line1 || sender == BannerPreview_Line2)
-                using (LinearGradientBrush b = new LinearGradientBrush(new PointF((sender as Control).Width, 0), new PointF(0, 0),
-                    BannerPreview_Main.BackColor,
-                    (sender as Control).BackColor))
-                {
-                    e.Graphics.FillRectangle(b, (sender as Control).ClientRectangle);
-                }
-        }
-
-        private void Animation1_Tick(object sender, EventArgs e)
-        {
-            if (BannerPreview_Text.Location.Y > 260)
-                BannerPreview_Text.Location = new Point(BannerPreview_Text.Location.X, BannerPreview_Text.Location.Y - 1);
-
-            if (BannerPreview_Year.Location.X < 20)
+            using (Graphics g = Graphics.FromImage(bmp))
+            using (LinearGradientBrush b = new LinearGradientBrush(new Point(0, 112), new Point(0, (int)Math.Round(bmp.Height * 1.25)), ColorSchemes[target][0], ColorSchemes[target][2]))
             {
-                BannerPreview_Year.Location = new Point(BannerPreview_Year.Location.X + 4, BannerPreview_Year.Location.Y);
-                BannerPreview_Players.Location = new Point(BannerPreview_Year.Location.X, BannerPreview_Players.Location.Y);
+                g.Clear(ColorSchemes[target][0]);
+                g.FillRectangle(b, 0, (bmp.Height / 2) + 10, bmp.Width, bmp.Height);
 
-                BannerPreview_Line1.Location = new Point(BannerPreview_Line1.Location.X + 2, BannerPreview_Line1.Location.Y);
-                BannerPreview_Line2.Location = new Point(BannerPreview_Line1.Location.X, BannerPreview_Line2.Location.Y);
+                g.DrawString(
+                    text,
+                    new Font(FontFamily.GenericSansSerif, 15, FontStyle.Regular),
+                    new SolidBrush(textColor),
+                    bmp.Width / 2,
+                    215,
+                    new StringFormat() { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center });
+
+                g.DrawString(
+                    string.Format(released, year),
+                    new Font(FontFamily.GenericSansSerif, 10, FontStyle.Regular),
+                    new SolidBrush(leftTextColor),
+                    15,
+                    45,
+                    new StringFormat() { Alignment = StringAlignment.Near, LineAlignment = StringAlignment.Far });
+
+                g.DrawString(
+                    string.Format(numPlayers, players),
+                    new Font(FontFamily.GenericSansSerif, 10, FontStyle.Regular),
+                    new SolidBrush(leftTextColor),
+                    15,
+                    90,
+                    new StringFormat() { Alignment = StringAlignment.Near, LineAlignment = StringAlignment.Far });
+
+                double[] point = new double[] { (bmp.Width / 2) - Math.Round((img.Width * 0.72) / 2), 40 };
+                double[] size = new double[] { Math.Round(img.Width * 0.72), Math.Round(img.Height * 0.72) };
+
+                using (Bitmap black = new Bitmap(256, 192))
+                {
+                    using (Graphics gBlack = Graphics.FromImage(black))
+                        gBlack.Clear(Color.Gray);
+                    g.DrawImage(RoundCorners(black, 7), (int)point[0] - 1, (int)point[1] - 1, (int)size[0] + 2, (int)size[1] + 2);
+                }
+                g.DrawImage(RoundCorners(img, 7), (int)point[0], (int)point[1], (int)size[0], (int)size[1]);
             }
-            else { Animation1.Stop(); Animation1.Enabled = false; }
 
-            if (Image.Location.Y < 65)
-                Image.Location = new Point(Image.Location.X, Image.Location.Y + 1);
+            return bmp;
+        }
+
+        private static Bitmap RoundCorners(Image StartImage, int CornerRadius)
+        {
+            CornerRadius *= 2;
+            Bitmap x = new Bitmap(StartImage.Width, StartImage.Height);
+            using (Graphics g = Graphics.FromImage(x))
+            {
+                g.SmoothingMode = SmoothingMode.AntiAlias;
+                Brush brush = new TextureBrush(StartImage);
+                GraphicsPath gp = new GraphicsPath();
+                gp.AddArc(0, 0, CornerRadius, CornerRadius, 180, 90);
+                gp.AddArc(0 + x.Width - CornerRadius, 0, CornerRadius, CornerRadius, 270, 90);
+                gp.AddArc(0 + x.Width - CornerRadius, 0 + x.Height - CornerRadius, CornerRadius, CornerRadius, 0, 90);
+                gp.AddArc(0, 0 + x.Height - CornerRadius, CornerRadius, CornerRadius, 90, 90);
+                g.FillPath(brush, gp);
+                return x;
+            }
         }
     }
 }

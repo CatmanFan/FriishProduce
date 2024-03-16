@@ -188,5 +188,16 @@ namespace FriishProduce
         {
             try { textBox1.Text = null; textBox1.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString(); } catch { }
         }
+
+        private void dataGridView1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                foreach (DataGridViewTextBoxCell x in (sender as DataGridView).SelectedCells)
+                {
+                    if (x.ColumnIndex == 3) x.Value = null;
+                }
+            }
+        }
     }
 }
