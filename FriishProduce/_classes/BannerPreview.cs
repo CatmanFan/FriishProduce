@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace FriishProduce
 {
-    public static class BannerPreviewX
+    public static class Preview
     {
 
         private static Color[][] ColorSchemes = new Color[][]
@@ -240,14 +240,14 @@ namespace FriishProduce
 
         #endregion
 
-        public static Bitmap Generate(Console console, string text, int year, int players, Bitmap img, int lang)
+        public static Bitmap Banner(Console console, string text, int year, int players, Bitmap img, int lang)
         {
             Bitmap bmp = new Bitmap(650, 260);
             if (img == null)
             {
                 img = new Bitmap(256, 192);
                 using (Graphics g = Graphics.FromImage(img))
-                    g.Clear(Color.Gray);
+                    g.Clear(Color.Gainsboro);
             }
 
             int target = 0;
@@ -317,7 +317,8 @@ namespace FriishProduce
                               : "Players: {0}";
 
             using (Graphics g = Graphics.FromImage(bmp))
-            using (LinearGradientBrush b = new LinearGradientBrush(new Point(0, 112), new Point(0, (int)Math.Round(bmp.Height * 1.25)), ColorSchemes[target][0], ColorSchemes[target][2]))
+            using (LinearGradientBrush b1 = new LinearGradientBrush(new Point(0, 130), new Point(0, (int)Math.Round(bmp.Height * 0.9)), ColorSchemes[target][0], ColorSchemes[target][2]))
+            using (LinearGradientBrush b2 = new LinearGradientBrush(new Point(0, 50), new Point(0, (int)Math.Round(bmp.Height * 1.25)), ColorSchemes[target][0], ColorSchemes[target][2]))
             using (LinearGradientBrush c = new LinearGradientBrush(new Point(0, 0), new Point(125, 0), ColorSchemes[target][3], ColorSchemes[target][0]))
             {
                 g.CompositingQuality = CompositingQuality.AssumeLinear;
@@ -325,8 +326,12 @@ namespace FriishProduce
                 g.TextRenderingHint = TextRenderingHint.AntiAlias;
 
                 g.Clear(ColorSchemes[target][0]);
-                g.FillRectangle(b, -5, (bmp.Height / 2) + 10, bmp.Width + 10, bmp.Height);
+                g.FillRectangle(b1, -5, (bmp.Height / 2) + 10, bmp.Width + 10, 40);
+                g.FillRectangle(b2, -5, (bmp.Height / 2) + 49, bmp.Width + 10, bmp.Height);
 
+                #region Text
+                // Title
+                // ********
                 g.DrawString(
                     text,
                     new Font(Font(), 15),
@@ -335,6 +340,8 @@ namespace FriishProduce
                     210,
                     new StringFormat() { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center });
 
+                // Released
+                // ********
                 g.DrawString(
                     string.Format(released, year),
                     new Font(Font(), (float)9.25),
@@ -343,6 +350,8 @@ namespace FriishProduce
                     45,
                     new StringFormat() { Alignment = StringAlignment.Near, LineAlignment = StringAlignment.Far });
 
+                // Players
+                // ********
                 g.DrawString(
                     string.Format(numPlayers, players),
                     new Font(Font(), (float)9.25),
@@ -350,20 +359,25 @@ namespace FriishProduce
                     10,
                     87,
                     new StringFormat() { Alignment = StringAlignment.Near, LineAlignment = StringAlignment.Far });
+                #endregion
 
-                g.FillRectangle(c, -1, 46, 125, 2);
-                g.FillRectangle(c, -1, 88, 125, 2);
+                // Gradient lines
+                // ********
+                g.FillRectangle(c, -1, 45, 125, 2);
+                g.FillRectangle(c, -1, 87, 125, 2);
 
+                #region Image
                 double[] point = new double[] { (bmp.Width / 2) - Math.Round((img.Width * 0.72) / 2), 40 };
                 double[] size = new double[] { Math.Round(img.Width * 0.72), Math.Round(img.Height * 0.72) };
 
-                using (Bitmap black = new Bitmap(256, 192))
+                using (Bitmap border = new Bitmap(256, 192))
                 {
-                    using (Graphics gBlack = Graphics.FromImage(black))
-                        gBlack.Clear(Color.Black);
-                    g.DrawImage(RoundCorners(black, 9), (int)point[0] - 1, (int)point[1] - 1, (int)size[0] + 2, (int)size[1] + 2);
+                    using (Graphics gBorder = Graphics.FromImage(border))
+                        gBorder.Clear(Color.Black);
+                    g.DrawImage(RoundCorners(border, 9), (int)point[0] - 1, (int)point[1] - 1, (int)size[0] + 2, (int)size[1] + 2);
                 }
                 g.DrawImage(RoundCorners(img, 8), (int)point[0], (int)point[1], (int)size[0], (int)size[1]);
+                #endregion
 
                 #region Top Console Header
                 var cName = "FriishProduce";
@@ -441,7 +455,44 @@ namespace FriishProduce
             return bmp;
         }
 
-        private static Bitmap RoundCorners(Image StartImage, int CornerRadius)
+        public static Bitmap Icon(Bitmap img)
+        {
+            // 0s - 1s = Fadein
+            // 1s - 3s = Logo
+            // 3s - 4s = Fadeout
+            // 4s - 9s = Title
+
+            if (img == null)
+            {
+                img = new Bitmap(128, 96);
+                using (Graphics g = Graphics.FromImage(img))
+                    g.Clear(Color.Gainsboro);
+            }
+
+            Bitmap bmp = new Bitmap(img.Width, img.Height);
+
+            using (Graphics g = Graphics.FromImage(bmp))
+                g.DrawImage(img, -3, -3, bmp.Width + 6, bmp.Height + 8);
+
+            Bitmap bmp2 = new Bitmap(bmp.Width + 2, bmp.Height + 2);
+
+            using (Graphics g = Graphics.FromImage(bmp2))
+            {
+                using (Bitmap border = new Bitmap(bmp2.Width, bmp2.Height))
+                {
+                    using (Graphics gBorder = Graphics.FromImage(border))
+                        gBorder.Clear(SystemColors.GrayText);
+                    g.DrawImage(RoundCorners(border, 10, true), 0, 0, bmp2.Width, bmp2.Height);
+                }
+
+                g.DrawImage(RoundCorners(bmp, 10, true), 1, 1, bmp.Width, bmp.Height);
+            }
+
+            bmp.Dispose();
+            return bmp2;
+        }
+
+        private static Bitmap RoundCorners(Image StartImage, int CornerRadius, bool Smooth = false)
         {
             CornerRadius *= 2;
             Bitmap x = new Bitmap(StartImage.Width, StartImage.Height);
@@ -449,14 +500,31 @@ namespace FriishProduce
             {
                 g.SmoothingMode = SmoothingMode.AntiAlias;
                 Brush brush = new TextureBrush(StartImage);
-                GraphicsPath gp = new GraphicsPath();
-                gp.AddArc(0, 0, CornerRadius, CornerRadius, 180, 90);
-                gp.AddArc(0 + x.Width - CornerRadius, 0, CornerRadius, CornerRadius, 270, 90);
-                gp.AddArc(0 + x.Width - CornerRadius, 0 + x.Height - CornerRadius, CornerRadius, CornerRadius, 0, 90);
-                gp.AddArc(0, 0 + x.Height - CornerRadius, CornerRadius, CornerRadius, 90, 90);
-                g.FillPath(brush, gp);
+                GraphicsPath gp1 = new GraphicsPath();
+
+                int offset = Smooth ? 1 : 0;
+
+                gp1.AddArc(offset, offset, CornerRadius, CornerRadius, 180, 90);
+                gp1.AddArc(offset + x.Width - CornerRadius, offset, CornerRadius - (offset * 2), CornerRadius - (offset * 2), 270, 90);
+                gp1.AddArc(offset + x.Width - CornerRadius, offset + x.Height - CornerRadius, CornerRadius - (offset * 2), CornerRadius - (offset * 2), 0, 90);
+                gp1.AddArc(offset, offset + x.Height - CornerRadius, CornerRadius - (offset * 2), CornerRadius - (offset * 2), 90, 90);
+                g.FillPath(brush, gp1);
+                
+                if (Smooth)
+                {
+                    GraphicsPath gp2 = new GraphicsPath();
+                    gp2.AddCurve(new Point[] { new Point(offset, CornerRadius / 2), new Point(0, x.Height / 2), new Point(offset, x.Height - CornerRadius / 2) });
+                    gp2.AddCurve(new Point[] { new Point(x.Width - offset, CornerRadius / 2), new Point(x.Width, x.Height / 2), new Point(x.Width - offset, x.Height - CornerRadius / 2) });
+                    gp2.AddCurve(new Point[] { new Point(CornerRadius / 2, offset), new Point(x.Width / 2, 0), new Point(x.Width - CornerRadius / 2, offset) });
+                    gp2.AddCurve(new Point[] { new Point(CornerRadius / 2, x.Height - offset), new Point(x.Width / 2, x.Height), new Point(x.Width - CornerRadius / 2, x.Height - offset) });
+                    g.FillPath(brush, gp2);
+                }
+
                 return x;
             }
         }
+
+        #region Icon
+        #endregion
     }
 }

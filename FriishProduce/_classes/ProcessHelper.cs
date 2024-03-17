@@ -15,6 +15,8 @@ namespace FriishProduce
         {
             var appPath = System.IO.Path.Combine(Paths.Tools, app.Contains('\\') ? app : System.IO.Path.GetFileName(app));
 
+            if (!appPath.EndsWith(".exe")) appPath += ".exe";
+
             if (!System.IO.File.Exists(appPath)) throw new Exception(string.Format(Language.Get("Error.005"), app));
 
             using (Process p = Process.Start(new ProcessStartInfo

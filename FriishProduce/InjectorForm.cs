@@ -73,7 +73,6 @@ namespace FriishProduce
             Text = string.IsNullOrWhiteSpace(ChannelTitle.Text) ? Untitled : ChannelTitle.Text;
 
             SetROMDataText();
-            pictureBox1.Image = BannerPreviewX.Generate(Console, BannerTitle.Text, (int)ReleaseYear.Value, (int)Players.Value, Img?.VCPic, (int)Creator.OrigRegion);
 
             var baseMax = Math.Max(label4.Location.X + label4.Width - 4, label5.Location.X + label5.Width - 4);
             baseName.Location = new Point(baseMax, label4.Location.Y);
@@ -309,7 +308,6 @@ namespace FriishProduce
                 SaveDataTitle.Lines;
 
             SetROMDataText();
-            pictureBox1.Image = BannerPreviewX.Generate(Console, BannerTitle.Text, (int)ReleaseYear.Value, (int)Players.Value, Img?.VCPic, (int)Creator.OrigRegion);
             button1.Enabled = CO != null;
 
             ReadyToExport = !string.IsNullOrEmpty(Creator.TitleID) && Creator.TitleID.Length == 4
@@ -339,6 +337,9 @@ namespace FriishProduce
 
             label11.Text = PatchFile != null ? Path.GetFileName(PatchFile) : Language.Get("None");
             label11.Enabled = PatchFile != null;
+
+            pictureBox1.Image = Preview.Banner(Console, BannerTitle.Text, (int)ReleaseYear.Value, (int)Players.Value, Img?.VCPic, (int)Creator.OrigRegion);
+            pictureBox2.Image = Preview.Icon(Img?.IconVCPic);
         }
 
         private void RandomTID() => TitleID.Text = Creator.TitleID = TIDCode != null ? TIDCode + GenerateTitleID().Substring(0, 3) : GenerateTitleID();
@@ -610,6 +611,7 @@ namespace FriishProduce
                 if (Img.Source != null)
                 {
                     SaveIcon_Panel.BackgroundImage = Img.SaveIcon();
+                    pictureBox2.Image = Preview.Icon(Img.IconVCPic);
                 }
 
                 CheckExport();
@@ -1225,7 +1227,7 @@ namespace FriishProduce
 
             End:
             UpdateBaseConsole(index);
-            pictureBox1.Image = BannerPreviewX.Generate(Console, BannerTitle.Text, (int)ReleaseYear.Value, (int)Players.Value, Img?.VCPic, (int)Creator.OrigRegion);
+            pictureBox1.Image = Preview.Banner(Console, BannerTitle.Text, (int)ReleaseYear.Value, (int)Players.Value, Img?.VCPic, (int)Creator.OrigRegion);
         }
 
         /// <summary>

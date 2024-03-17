@@ -113,9 +113,9 @@ namespace FriishProduce
                 "  <version></version>",
                 "  <release_date></release_date>",
                 "  <short_description>SRL Forwarder</short_description>",
-                "  <long_description>This will attempt to load a ROM from the following path:" +
+                "  <long_description>This will attempt to load a ROM from the following path:",
                 ROMFolder + '/' + ROMName,
-                $"using the emulator {Files[EmulatorIndex]}.</long_description>",
+                $"using the emulator {List[EmulatorIndex]}.</long_description>",
                 "  <arguments>",
                 $"    <arg>{ROMFolder}</arg>",
                 $"    <arg>{ROMName}</arg>"

@@ -89,17 +89,17 @@ namespace FriishProduce
     [Serializable]
     public class DatabaseEntry
     {
-        [XmlElement("tid")]
+        [XmlElement("TID")]
         public string TitleID { get; set; }
 
-        [XmlElement("name")]
+        [XmlElement("Name")]
         public string Name { get; set; }            // Name on MarioCube
 
-        [XmlElement("displayName")]
+        [XmlElement("DisplayName")]
         public string DisplayName { get; set; }     // Name in specific language to be displayed on GUI
 
-        [XmlElement("emuVersion")]
-        public int EmuRev { get; set; }             // Revision used by the WAD's emulator, if one exists
+        [XmlElement("Emulator")]
+        public int Emulator { get; set; }             // Revision used by the WAD's emulator, if one exists
 
         // SEGA
         // ****************

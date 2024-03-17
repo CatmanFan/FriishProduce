@@ -30,9 +30,6 @@ This injector bypasses other third-party assets (such as Common-Key.bin, HowardC
 * **SNK NEO-GEO**
 * **Microsoft MSX / MSX2**
 * **Adobe Flash**
- 
-Planned:
-* Complete SEGA VC options list & add NEO-GEO VC and Flash options list.
 
 ## How-to
 * For information on how to use the legacy beta versions (v0.26-beta and earlier), see **[here](https://github.com/CatmanFan/FriishProduce/wiki/FriishProduce-Legacy)** (*recommended*).
@@ -49,10 +46,12 @@ The current version of this application includes a built-in XML editor for addin
 
 ## To-Do
 * ***Before releasing v1.0:***
-  * Check for additional bugs that need to be fixed and streamline code to make it more readable.
+  [ ] Clean localization files and wiki.
+  [ ] Complete SEGA VC options list & add NEO-GEO/TG-16 VC and Flash options list.
+  [ ] Check for additional bugs that need to be fixed and streamline code to make it more readable.
 * Other VC injection support to be done later:
   * Commodore 64 (needs [Custom Frodo](https://gbatemp.net/threads/custom-frodo-for-c64-vc-injection.102356/))
-  * TurboGrafx-16 CD (needs several programs to convert ISO to injectable format)=
+  * TurboGrafx-16 CD (needs several programs to convert ISO to injectable format)
 
 ## Credits
 This program uses the following third-party components and apps:
