@@ -7,7 +7,7 @@
 **FriishProduce** is a WAD injector for Wii/vWii, which allows for automated ROM/disc/SWF file replacement in Wii channels.
 This application is designed to streamline the process to as few third-party programs as possible.
 
-***This repository has been updated by way of a new MDI version (pictured above) and is currently under work-in-progress. Most consoles may not be supported by this version yet.<br>For the legacy edition, see [here](https://github.com/CatmanFan/FriishProduce/tree/main/legacy), or see [v0.26-beta](https://github.com/CatmanFan/FriishProduce/releases/tag/v0.26-beta) for the latest release.***
+***This repository has been updated by way of a new MDI version (pictured above) and is currently under work-in-progress. Most platforms may not be supported by this version yet.<br>For the legacy edition, see [here](https://github.com/CatmanFan/FriishProduce/tree/main/legacy), or check [v0.26-beta](https://github.com/CatmanFan/FriishProduce/releases/tag/v0.26-beta) for the latest release.***
 
 ---
 
@@ -26,19 +26,17 @@ This injector bypasses other third-party assets (such as Common-Key.bin, HowardC
 * **Super Nintendo Entertainment System (SNES) / Super Famicom**
 * **Nintendo 64**
 * **SEGA Master System** & **SEGA Mega Drive / Genesis**
+* **NEC TurboGrafx-16 / PC Engine**
 * **SNK NEO-GEO**
+* **Microsoft MSX / MSX2**
+* **Adobe Flash**
  
 Planned:
-* Virtual Console
-  * NEC TurboGrafx-16 / PC Engine
-  * Microsoft MSX / MSX2
-* Support for other formats:
-  * Adobe Flash
-* Complete SEGA VC options list & add NEO-GEO VC options list.
+* Complete SEGA VC options list & add NEO-GEO VC and Flash options list.
 
 ## How-to
-* For information on how to use the new interface (v1.0 and above), see **[here](https://github.com/CatmanFan/FriishProduce/wiki/FriishProduce-v1.0)**.
 * For information on how to use the legacy beta versions (v0.26-beta and earlier), see **[here](https://github.com/CatmanFan/FriishProduce/wiki/FriishProduce-Legacy)** (*recommended*).
+* For information on how to use the new interface (v1.0 and above), see **[here](https://github.com/CatmanFan/FriishProduce/wiki/FriishProduce-v1.0)**.
 
 **Make sure you have a (v)Wii NAND backup in case anything goes wrong!**
 
@@ -58,15 +56,17 @@ The current version of this application includes a built-in XML editor for addin
 
 ## Credits
 This program uses the following third-party components and apps:
-* **libWiiSharp** (orig. author: Leathl), [forked](https://github.com/WiiDatabase/libWiiSharp/) by **[WiiDatabase](https://github.com/WiiDatabase)**.
+* **libWiiSharp** (orig. author: Leathl), [forked](https://github.com/WiiDatabase/libWiiSharp/) by [WiiDatabase](https://github.com/WiiDatabase).
 * [SD/USB forwarder components](https://github.com/modmii/modmii.github.io/tree/master/Support/DOLS) of **[ModMii](https://github.com/modmii/modmii.github.io)** by [XFlak](https://github.com/xflak).
 * **WWCXTool** by alpha-0.
-* **ROMC compressor** by Jurai, with additional LZSS code by Haruhiko Okumura.
-* **[ccf-tools](https://github.com/libertyernie/ccf-tools)** (orig. author: paulguy) and **[BrawlLib](https://github.com/libertyernie/brawllib-wit)** (orig. author: soopercool101), both forked by **[libertyernie](https://github.com/libertyernie)**.
+* **romc0** and **lzh8_cmpdec** by [hcs64](https://github.com/hcs64).
+* **[ROMC VC Compressor](https://www.elotrolado.net/hilo_romc-vc-compressor_1015640)** by Jurai, with additional LZSS code by Haruhiko Okumura.
+* **[ccf-tools](https://github.com/libertyernie/ccf-tools)** (orig. author: paulguy) and **[BrawlLib](https://github.com/libertyernie/brawllib-wit)** (orig. author: soopercool101), both forked by [libertyernie](https://github.com/libertyernie).
 
 For icons and interface:
 * **[MdiTabCtrl](https://github.com/JacksiroKe/MdiTabCtrl)** by Jack Siro.
-* **[Fugue Icons](https://p.yusukekamiyamane.com/)** by Yusuke Kamiyamane (Creative Commons Attribution 3.0 License).
+* **[Fugue Icons](https://p.yusukekamiyamane.com/)** by Yusuke Kamiyamane (CC BY 3.0).
+* **[SCE-PS3 Rodin LATIN](https://github.com/skrptktty/ps3-firmware-beginners-luck/blob/master/PS3_411/update_files/dev_flash/data/font/SCE-PS3-RD-R-LATIN.TTF) font** from [this repo](https://github.com/skrptktty/ps3-firmware-beginners-luck) (Solar Storm License).
 
 I would also like to thank the following people:
 * **[SuperrSonic](https://github.com/SuperrSonic)** for reverse-engineering much of Wii software and official emulator code, and in particular, his [fork of RetroArch Wii](https://github.com/SuperrSonic/RA-SS).

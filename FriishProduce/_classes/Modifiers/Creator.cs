@@ -14,8 +14,15 @@ namespace FriishProduce
         // -----------------------------------
         // Public variables
         // -----------------------------------
-        public bool isJapan { get; set; }
-        public bool isKorea { get; set; }
+        public enum RegionType
+        {
+            Universal,
+            Japan,
+            Korea,
+            Europe,
+        };
+
+        public RegionType OrigRegion = RegionType.Universal;
         private Console Console { get; set; }
 
         public string TitleID { get; set; }
@@ -28,14 +35,14 @@ namespace FriishProduce
 
         public Creator(Console c) { Console = c; }
 
-        public void MakeWAD(WAD w, ImageHelper Img)
+        public void MakeWAD(WAD w)
         {
-            // Banner metadata
-            BannerHelper.Modify(w, Console, w.Region, BannerTitle, BannerYear, BannerPlayers);
+            // Channel title
+            // *******
             w.ChangeChannelTitles(ChannelTitles);
-            if (Img.VCPic != null) Img.ReplaceBanner(w);
 
             // WAD metadata
+            // *******
             w.ChangeTitleID(LowerTitleID.Channel, TitleID.ToUpper());
             w.FakeSign = true;
 

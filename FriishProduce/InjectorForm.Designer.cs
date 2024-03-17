@@ -47,13 +47,19 @@ namespace FriishProduce
             this.InjectorsList = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.COPanel_Forwarder = new System.Windows.Forms.Panel();
-            this.FStorage_USB = new System.Windows.Forms.RadioButton();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.FStorage_SD = new System.Windows.Forms.RadioButton();
+            this.FStorage_USB = new System.Windows.Forms.RadioButton();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.FNANDLoader_vWii = new System.Windows.Forms.RadioButton();
+            this.FNANDLoader_Wii = new System.Windows.Forms.RadioButton();
             this.COPanel_VC = new System.Windows.Forms.Panel();
             this.CustomManual = new System.Windows.Forms.CheckBox();
             this.label11 = new System.Windows.Forms.Label();
             this.ImportPatch = new System.Windows.Forms.CheckBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.RegionsList = new System.Windows.Forms.ComboBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.TitleID = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.Random = new System.Windows.Forms.PictureBox();
@@ -83,16 +89,12 @@ namespace FriishProduce
             this.BrowseManual = new Ookii.Dialogs.WinForms.VistaFolderBrowserDialog();
             this.BrowsePatch = new System.Windows.Forms.OpenFileDialog();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.FNANDLoader_Wii = new System.Windows.Forms.RadioButton();
-            this.FNANDLoader_vWii = new System.Windows.Forms.RadioButton();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.RegionsList = new System.Windows.Forms.ComboBox();
             this.groupBox6.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.COPanel_Forwarder.SuspendLayout();
+            this.groupBox8.SuspendLayout();
+            this.groupBox9.SuspendLayout();
             this.COPanel_VC.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Random)).BeginInit();
@@ -103,8 +105,6 @@ namespace FriishProduce
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WADRegion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.groupBox8.SuspendLayout();
-            this.groupBox9.SuspendLayout();
             this.SuspendLayout();
             // 
             // WADRegionList
@@ -193,8 +193,8 @@ namespace FriishProduce
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.InjectorsList);
             this.groupBox3.Controls.Add(this.button1);
-            this.groupBox3.Controls.Add(this.COPanel_Forwarder);
             this.groupBox3.Controls.Add(this.COPanel_VC);
+            this.groupBox3.Controls.Add(this.COPanel_Forwarder);
             resources.ApplyResources(this.groupBox3, "groupBox3");
             this.groupBox3.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.groupBox3.Name = "groupBox3";
@@ -230,12 +230,14 @@ namespace FriishProduce
             resources.ApplyResources(this.COPanel_Forwarder, "COPanel_Forwarder");
             this.COPanel_Forwarder.Name = "COPanel_Forwarder";
             // 
-            // FStorage_USB
+            // groupBox8
             // 
-            resources.ApplyResources(this.FStorage_USB, "FStorage_USB");
-            this.FStorage_USB.Name = "FStorage_USB";
-            this.FStorage_USB.TabStop = true;
-            this.FStorage_USB.UseVisualStyleBackColor = true;
+            this.groupBox8.Controls.Add(this.FStorage_SD);
+            this.groupBox8.Controls.Add(this.FStorage_USB);
+            this.groupBox8.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            resources.ApplyResources(this.groupBox8, "groupBox8");
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.TabStop = false;
             // 
             // FStorage_SD
             // 
@@ -243,6 +245,40 @@ namespace FriishProduce
             this.FStorage_SD.Name = "FStorage_SD";
             this.FStorage_SD.TabStop = true;
             this.FStorage_SD.UseVisualStyleBackColor = true;
+            this.FStorage_SD.CheckedChanged += new System.EventHandler(this.SwitchAspectRatio);
+            // 
+            // FStorage_USB
+            // 
+            resources.ApplyResources(this.FStorage_USB, "FStorage_USB");
+            this.FStorage_USB.Name = "FStorage_USB";
+            this.FStorage_USB.TabStop = true;
+            this.FStorage_USB.UseVisualStyleBackColor = true;
+            this.FStorage_USB.CheckedChanged += new System.EventHandler(this.SwitchAspectRatio);
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Controls.Add(this.FNANDLoader_vWii);
+            this.groupBox9.Controls.Add(this.FNANDLoader_Wii);
+            this.groupBox9.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            resources.ApplyResources(this.groupBox9, "groupBox9");
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.TabStop = false;
+            // 
+            // FNANDLoader_vWii
+            // 
+            resources.ApplyResources(this.FNANDLoader_vWii, "FNANDLoader_vWii");
+            this.FNANDLoader_vWii.Name = "FNANDLoader_vWii";
+            this.FNANDLoader_vWii.TabStop = true;
+            this.FNANDLoader_vWii.UseVisualStyleBackColor = true;
+            this.FNANDLoader_vWii.CheckedChanged += new System.EventHandler(this.SwitchAspectRatio);
+            // 
+            // FNANDLoader_Wii
+            // 
+            resources.ApplyResources(this.FNANDLoader_Wii, "FNANDLoader_Wii");
+            this.FNANDLoader_Wii.Name = "FNANDLoader_Wii";
+            this.FNANDLoader_Wii.TabStop = true;
+            this.FNANDLoader_Wii.UseVisualStyleBackColor = true;
+            this.FNANDLoader_Wii.CheckedChanged += new System.EventHandler(this.SwitchAspectRatio);
             // 
             // COPanel_VC
             // 
@@ -271,16 +307,32 @@ namespace FriishProduce
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.ChannelTitle_Locale);
             this.groupBox4.Controls.Add(this.RegionsList);
             this.groupBox4.Controls.Add(this.label13);
             this.groupBox4.Controls.Add(this.TitleID);
             this.groupBox4.Controls.Add(this.label15);
             this.groupBox4.Controls.Add(this.Random);
             this.groupBox4.Controls.Add(this.label7);
+            this.groupBox4.Controls.Add(this.ChannelTitle);
+            this.groupBox4.Controls.Add(this.label6);
             resources.ApplyResources(this.groupBox4, "groupBox4");
             this.groupBox4.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.TabStop = false;
+            // 
+            // RegionsList
+            // 
+            this.RegionsList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.RegionsList.FormattingEnabled = true;
+            resources.ApplyResources(this.RegionsList, "RegionsList");
+            this.RegionsList.Name = "RegionsList";
+            this.RegionsList.SelectedIndexChanged += new System.EventHandler(this.RegionsList_SelectedIndexChanged);
+            // 
+            // label13
+            // 
+            resources.ApplyResources(this.label13, "label13");
+            this.label13.Name = "label13";
             // 
             // TitleID
             // 
@@ -358,14 +410,11 @@ namespace FriishProduce
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.ChannelTitle_Locale);
             this.groupBox5.Controls.Add(this.Players);
             this.groupBox5.Controls.Add(this.ReleaseYear);
             this.groupBox5.Controls.Add(this.label10);
-            this.groupBox5.Controls.Add(this.label6);
             this.groupBox5.Controls.Add(this.label9);
             this.groupBox5.Controls.Add(this.label8);
-            this.groupBox5.Controls.Add(this.ChannelTitle);
             this.groupBox5.Controls.Add(this.BannerTitle);
             resources.ApplyResources(this.groupBox5, "groupBox5");
             this.groupBox5.FlatStyle = System.Windows.Forms.FlatStyle.System;
@@ -519,50 +568,6 @@ namespace FriishProduce
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.TabStop = false;
             // 
-            // FNANDLoader_Wii
-            // 
-            resources.ApplyResources(this.FNANDLoader_Wii, "FNANDLoader_Wii");
-            this.FNANDLoader_Wii.Name = "FNANDLoader_Wii";
-            this.FNANDLoader_Wii.TabStop = true;
-            this.FNANDLoader_Wii.UseVisualStyleBackColor = true;
-            // 
-            // FNANDLoader_vWii
-            // 
-            resources.ApplyResources(this.FNANDLoader_vWii, "FNANDLoader_vWii");
-            this.FNANDLoader_vWii.Name = "FNANDLoader_vWii";
-            this.FNANDLoader_vWii.TabStop = true;
-            this.FNANDLoader_vWii.UseVisualStyleBackColor = true;
-            // 
-            // groupBox8
-            // 
-            this.groupBox8.Controls.Add(this.FStorage_SD);
-            this.groupBox8.Controls.Add(this.FStorage_USB);
-            this.groupBox8.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            resources.ApplyResources(this.groupBox8, "groupBox8");
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.TabStop = false;
-            // 
-            // groupBox9
-            // 
-            this.groupBox9.Controls.Add(this.FNANDLoader_vWii);
-            this.groupBox9.Controls.Add(this.FNANDLoader_Wii);
-            this.groupBox9.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            resources.ApplyResources(this.groupBox9, "groupBox9");
-            this.groupBox9.Name = "groupBox9";
-            this.groupBox9.TabStop = false;
-            // 
-            // label13
-            // 
-            resources.ApplyResources(this.label13, "label13");
-            this.label13.Name = "label13";
-            // 
-            // RegionsList
-            // 
-            this.RegionsList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.RegionsList.FormattingEnabled = true;
-            resources.ApplyResources(this.RegionsList, "RegionsList");
-            this.RegionsList.Name = "RegionsList";
-            // 
             // InjectorForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
@@ -589,6 +594,10 @@ namespace FriishProduce
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.COPanel_Forwarder.ResumeLayout(false);
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
             this.COPanel_VC.ResumeLayout(false);
             this.COPanel_VC.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -604,10 +613,6 @@ namespace FriishProduce
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WADRegion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.groupBox8.ResumeLayout(false);
-            this.groupBox8.PerformLayout();
-            this.groupBox9.ResumeLayout(false);
-            this.groupBox9.PerformLayout();
             this.ResumeLayout(false);
 
         }

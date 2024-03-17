@@ -143,16 +143,19 @@
       <DependentUpon>Options_Flash.cs</DependentUpon>
     </Compile>
     <Compile Include="_classes\BannerPreview.cs" />
-    <Compile Include="_classes\Injectors\Flash.cs" />
-    <Compile Include="_classes\Injectors\Forwarder.cs" />
+    <Compile Include="_classes\Archives\CCF.cs" />
+    <Compile Include="_classes\Modifiers\Flash.cs" />
+    <Compile Include="_classes\Modifiers\Forwarder.cs" />
+    <Compile Include="_classes\Modifiers\WiiVC\PCE.cs" />
     <Compile Include="_classes\ROM\Disc.cs" />
     <Compile Include="_classes\ROM\Flash.cs" />
-    <Compile Include="_classes\Injectors\WiiVC\MSX.cs" />
+    <Compile Include="_classes\Modifiers\WiiVC\MSX.cs" />
     <Compile Include="_classes\Language.cs" />
     <Compile Include="_classes\ROM\MSX.cs" />
     <Compile Include="_classes\ROM\N64.cs" />
     <Compile Include="_classes\ROM\NeoGeo.cs" />
     <Compile Include="_classes\ROM\NES.cs" />
+    <Compile Include="_classes\ROM\PCE.cs" />
     <Compile Include="_classes\ROM\SEGA.cs" />
     <Compile Include="_classes\ROM\SNES.cs" />
     <Compile Include="_classes\Program\Updater.cs" />
@@ -237,13 +240,13 @@
     <Compile Include="_classes\Byte.cs" />
     <Compile Include="_classes\Consoles.cs" />
     <Compile Include="_classes\Database.cs" />
-    <Compile Include="_classes\Injectors\WAD.cs" />
-    <Compile Include="_classes\Injectors\WiiVC.cs" />
-    <Compile Include="_classes\Injectors\WiiVC\N64.cs" />
-    <Compile Include="_classes\Injectors\WiiVC\NeoGeo.cs" />
-    <Compile Include="_classes\Injectors\WiiVC\NES.cs" />
-    <Compile Include="_classes\Injectors\WiiVC\SEGA.cs" />
-    <Compile Include="_classes\Injectors\WiiVC\SNES.cs" />
+    <Compile Include="_classes\Modifiers\Creator.cs" />
+    <Compile Include="_classes\Modifiers\WiiVC.cs" />
+    <Compile Include="_classes\Modifiers\WiiVC\N64.cs" />
+    <Compile Include="_classes\Modifiers\WiiVC\NeoGeo.cs" />
+    <Compile Include="_classes\Modifiers\WiiVC\NES.cs" />
+    <Compile Include="_classes\Modifiers\WiiVC\SEGA.cs" />
+    <Compile Include="_classes\Modifiers\WiiVC\SNES.cs" />
     <Compile Include="_classes\MessageBox.cs" />
     <Compile Include="_classes\ProcessHelper.cs" />
     <Compile Include="Program.cs" />
@@ -303,6 +306,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="Resources\font.TTF" />
     <None Include="Resources\forwarder\base_comex.wad" />
     <None Include="Resources\forwarder\base_waninkoko.wad" />
     <None Include="Resources\forwarder\forwarder_v12.dol" />

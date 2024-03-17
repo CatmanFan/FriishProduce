@@ -169,8 +169,10 @@ namespace FriishProduce
                 { "JBDT", Console.SNES },
                 { "NAAP", Console.N64 }, // SM64
                 { "NAAJ", Console.N64 },
-                { "NABT", Console.N64 }, // MK64
-                { "EAJP", Console.NeoGeo },
+                { "NABT", Console.N64 }, // MK64 */
+                { "PAAP", Console.PCE },
+                { "PAGJ", Console.PCE },
+             /* { "EAJP", Console.NeoGeo },
                 { "EAJJ", Console.NeoGeo },
                 { "C9YE", Console.C64 },
                 { "C9YP", Console.C64 },

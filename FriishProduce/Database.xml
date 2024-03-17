@@ -8,8 +8,9 @@
 
 	<Database Type="NES">
 		<!-- [Emulator types:] -->
-		<!-- <emuVersion>0</emuVersion> = Original -->
-		<!-- <emuVersion>1</emuVersion> = LZ77 ROM -->
+		<!-- 0 = Original -->
+		<!-- 1 = LZ77 ROM -->
+		<!-- 2 = LZH8 ROM -->
 		
 		<Entry>
 			<tid>FCWE</tid>
@@ -77,8 +78,9 @@
 
 	<Database Type="SNES">
 		<!-- [Emulator types:] -->
-		<!-- <emuVersion>0</emuVersion> = Original -->
-		<!-- <emuVersion>1</emuVersion> = LZ77 ROM -->
+		<!-- 0 = Original -->
+		<!-- 1 = LZ77 ROM -->
+		<!-- 2 = LZH8 ROM -->
 		
 		<Entry>
 			<tid>JBDE</tid>
@@ -118,10 +120,10 @@
 
 	<Database Type="N64">
 		<!-- [Emulator types:] -->
-		<!-- <emuVersion>0</emuVersion> = emuVersion 1 (original) -->
-		<!-- <emuVersion>1</emuVersion> = emuVersion 1 (alternative save data format) -->
-		<!-- <emuVersion>2</emuVersion> = emuVersion 2 (new revision) -->
-		<!-- <emuVersion>3</emuVersion> = ROMC-compressed format -->
+		<!-- 0 = Version 1 (original) -->
+		<!-- 1 = Version 1 (alternative save data format) -->
+		<!-- 2 = Version 2 (new revision) -->
+		<!-- 3 = ROMC-compressed format (type 0/1/2) -->
 
 		<Entry>
 			<tid>NAAE</tid>
@@ -315,14 +317,14 @@
 
 	<!-- Information about SEGA VC emulator revisions (Per RadioShadow on GBATemp: https://gbatemp.net/threads/virtual-console-mega-drive-genesis-rom-injection-guide.137539/post-2103740):
 		
-            emuVersion 1 [Sonic The Hedgehog]:
+            Version 1 [Sonic The Hedgehog]:
             - Analogue Stick doesn't work on Classic Controller/Gamecube.
             - Don't support PAL Component Fix.
             - Not all have 6 button controller support.
             - The Save Banner is called "banner_xx.wte" (xx = region)
             - In the "misc_ccf_zlib" folder is a file calleed "wii_vc.txt". The necessary text messages for the necessary languages.
 			
-			emuVersion 2 [Streets of Rage 2] (the one this guide refers to):
+			Version 2 [Streets of Rage 2] (the one this guide refers to):
             - Analogue Stick works on Classic Controller/Gamecube.
             - Supports PAL Component Fix.
             - All have 6 button controller support.
@@ -330,7 +332,7 @@
             - No "wii_vc.txt" file in the "misc_ccf_zlib" folder. The text message is in the emulator instead.
             - Some contain a "patch" file (may or may not have data in). If a certain rom is detected, then changes are made to the emulator (like skipping the checksum). An injected rom won't use the patch. 
 			
-			emuVersion 3 [Pulseman] (US/EU):
+			Version 3 [Pulseman] (US/EU):
             - Analogue Stick works on Classic Controller/Gamecube.
             - Supports PAL Component Fix.
             - All have 6 button controller support.
@@ -344,9 +346,9 @@
 
 	<Database Type="SMS">
 		<!-- [Emulator types:] -->
-		<!-- <emuVersion>1</emuVersion> = emuVersion 1 (original) -->
-		<!-- <emuVersion>2</emuVersion> = emuVersion 2 (banner.wte instead of banner_**.wte) -->
-		<!-- <emuVersion>3</emuVersion> = emuVersion 3 (includes modules) -->
+		<!-- 1 = Version 1 (original) -->
+		<!-- 2 = Version 2 (banner.wte instead of banner_**.wte) -->
+		<!-- 3 = Version 3 (includes modules) -->
 		
 		<Entry>
 			<tid>LAGE</tid>
@@ -393,9 +395,9 @@
 
 	<Database Type="SMDGEN">
 		<!-- [Emulator types:] -->
-		<!-- <emuVersion>1</emuVersion> = emuVersion 1 (original) -->
-		<!-- <emuVersion>2</emuVersion> = emuVersion 2 (banner.wte instead of banner_**.wte) -->
-		<!-- <emuVersion>3</emuVersion> = emuVersion 3 (includes modules) -->
+		<!-- 1 = Version 1 (original) -->
+		<!-- 2 = Version 2 (banner.wte instead of banner_**.wte) -->
+		<!-- 3 = Version 3 (includes modules) -->
 		
 		<Entry>
 			<tid>MA6E</tid>
@@ -437,6 +439,50 @@
 			<name>Pulseman</name>
 			<displayName>パルスマン</displayName>
 			<emuVersion>2</emuVersion>
+		</Entry>
+	</Database>
+
+	<Database Type="PCE">
+		<Entry>
+			<tid>PACE</tid>
+			<name>Dungeon Explorer</name>
+			<displayName>Dungeon Explorer</displayName>
+			<emuVersion>0</emuVersion>
+		</Entry>
+
+		<Entry>
+			<tid>PACP</tid>
+			<name>Dungeon Explorer</name>
+			<displayName>Dungeon Explorer</displayName>
+			<emuVersion>0</emuVersion>
+		</Entry>
+
+		<Entry>
+			<tid>PACJ</tid>
+			<name>Dungeon Explorer</name>
+			<displayName>ダンジョン エクスプローラー</displayName>
+			<emuVersion>0</emuVersion>
+		</Entry>
+		
+		<Entry>
+			<tid>PAEE</tid>
+			<name>Super Star Soldier</name>
+			<displayName>Super Star Soldier</displayName>
+			<emuVersion>0</emuVersion>
+		</Entry>
+
+		<Entry>
+			<tid>PAEP</tid>
+			<name>Super Star Soldier</name>
+			<displayName>Super Star Soldier</displayName>
+			<emuVersion>0</emuVersion>
+		</Entry>
+
+		<Entry>
+			<tid>PAEJ</tid>
+			<name>Super Star Soldier</name>
+			<displayName>スーパースターソルジャー</displayName>
+			<emuVersion>0</emuVersion>
 		</Entry>
 	</Database>
 

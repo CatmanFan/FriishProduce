@@ -291,6 +291,16 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        public static byte[] Font {
+            get {
+                object obj = ResourceManager.GetObject("Font", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         public static byte[] Forwarder_Comex {
             get {
                 object obj = ResourceManager.GetObject("Forwarder_Comex", resourceCulture);

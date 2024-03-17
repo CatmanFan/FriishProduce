@@ -73,7 +73,7 @@ namespace FriishProduce
             Text = string.IsNullOrWhiteSpace(ChannelTitle.Text) ? Untitled : ChannelTitle.Text;
 
             SetROMDataText();
-            pictureBox1.Image = BannerPreviewX.Generate(Console, BannerTitle.Text, (int)ReleaseYear.Value, (int)Players.Value, Img?.VCPic, Creator.isJapan ? 1 : Creator.isKorea ? 2 : 0);
+            pictureBox1.Image = BannerPreviewX.Generate(Console, BannerTitle.Text, (int)ReleaseYear.Value, (int)Players.Value, Img?.VCPic, (int)Creator.OrigRegion);
 
             var baseMax = Math.Max(label4.Location.X + label4.Width - 4, label5.Location.X + label5.Width - 4);
             baseName.Location = new Point(baseMax, label4.Location.Y);
@@ -89,8 +89,10 @@ namespace FriishProduce
             FNANDLoader_vWii.Checked = Properties.Settings.Default.Default_Forwarders_Mode.ToLower().Contains("vwii");
             FNANDLoader_Wii.Checked = !FNANDLoader_vWii.Checked;
 
-            // Regions list
+            // Regions lists
             RegionsList.Items.Clear();
+            RegionsList.Items.Add(Language.Get("Region.F"));
+            RegionsList.SelectedIndex = 0;
             if (Language.Current.TwoLetterISOLanguageName.ToLower() == "ja")
             {
                 RegionsList.Items.Add(Language.Get("Region.J"));
@@ -112,8 +114,36 @@ namespace FriishProduce
                 RegionsList.Items.Add(Language.Get("Region.J"));
                 RegionsList.Items.Add(Language.Get("Region.K"));
             }
-            RegionsList.Items.Add(Language.Get("Region.F"));
-            RegionsList.SelectedIndex = 0;
+
+            if (CurrentBase != null)
+            {
+                for (int i = 0; i < CurrentBase.Count; i++)
+                {
+                    switch (CurrentBase.ElementAt(i).Key.ToString().ToUpper()[3])
+                    {
+                        default:
+                        case 'E':
+                        case 'N':
+                            WADRegionList.Items[i].Text = Language.Get("Region.U");
+                            break;
+
+                        case 'P':
+                        case 'L':
+                        case 'M':
+                            WADRegionList.Items[i].Text = Language.Get("Region.E");
+                            break;
+
+                        case 'J':
+                            WADRegionList.Items[i].Text = Language.Get("Region.J");
+                            break;
+
+                        case 'Q':
+                        case 'T':
+                            WADRegionList.Items[i].Text = Language.Get("Region.K");
+                            break;
+                    }
+                }
+            }
 
             // Injection methods list
             InjectorsList.Items.Clear();
@@ -224,6 +254,7 @@ namespace FriishProduce
 
                 case Console.PCE:
                     TIDCode = "P"; // Q for CD games
+                    ROM = new ROM_PCE();
                     break;
 
                 case Console.NeoGeo:
@@ -278,7 +309,7 @@ namespace FriishProduce
                 SaveDataTitle.Lines;
 
             SetROMDataText();
-            pictureBox1.Image = BannerPreviewX.Generate(Console, BannerTitle.Text, (int)ReleaseYear.Value, (int)Players.Value, Img?.VCPic, Creator.isJapan ? 1 : Creator.isKorea ? 2 : 0);
+            pictureBox1.Image = BannerPreviewX.Generate(Console, BannerTitle.Text, (int)ReleaseYear.Value, (int)Players.Value, Img?.VCPic, (int)Creator.OrigRegion);
             button1.Enabled = CO != null;
 
             ReadyToExport = !string.IsNullOrEmpty(Creator.TitleID) && Creator.TitleID.Length == 4
@@ -405,6 +436,8 @@ namespace FriishProduce
             {
                 WADPath = null;
             }
+
+            if (groupBox2.Enabled) CheckExport();
         }
 
         private void InterpolationChanged(object sender, EventArgs e)
@@ -439,6 +472,8 @@ namespace FriishProduce
 
                 if (Creator != null && Img != null) LoadImage();
             }
+
+            else if (groupBox3.Enabled) CheckExport();
         }
 
         #region Load Data Functions
@@ -602,7 +637,7 @@ namespace FriishProduce
                 case Console.PCE:
                 case Console.C64:
                 case Console.MSX:
-                    if (!ROM.CheckValidity(ROMpath))
+                    if (ROM == null || !ROM.CheckValidity(ROMpath))
                     {
                         MessageBox.Show(Language.Get("Message.002"), 0, Ookii.Dialogs.WinForms.TaskDialogIcon.Warning);
                         return;
@@ -637,7 +672,7 @@ namespace FriishProduce
             groupBox4.Enabled =
             groupBox5.Enabled =
             groupBox6.Enabled = true;
-            groupBox7.Enabled = CustomManual.Enabled || Console == Console.Flash;
+            groupBox7.Enabled = Console == Console.Flash;
 
             RandomTID();
             UpdateBaseForm();
@@ -736,6 +771,11 @@ namespace FriishProduce
                         throw new NotImplementedException();
                 }
 
+                // Banner
+                // *******
+                BannerHelper.Modify(OutWAD, Console, OutWAD.Region, Creator.BannerTitle, Creator.BannerYear, Creator.BannerPlayers);
+                if (Img.VCPic != null) Img.ReplaceBanner(OutWAD);
+
                 // Other WAD settings to be changed
                 // *******
                 OutWAD.Region = RegionsList.SelectedItem.ToString() == Language.Get("Region.J") ? libWiiSharp.Region.Japan
@@ -746,7 +786,7 @@ namespace FriishProduce
 
                 // Remaining ones done by WAD creator helper, which will save to a new file
                 // *******
-                Creator.MakeWAD(OutWAD, Img);
+                Creator.MakeWAD(OutWAD);
 
                 // Check new WAD file
                 // *******
@@ -824,13 +864,11 @@ namespace FriishProduce
                     VC = new WiiVC.NES();
                     break;
 
-
                 // SNES
                 // *******
                 case Console.SNES:
                     VC = new WiiVC.SNES();
                     break;
-
 
                 // N64
                 // *******
@@ -844,7 +882,6 @@ namespace FriishProduce
                     };
                     break;
 
-
                 // SEGA
                 // *******
                 case Console.SMS:
@@ -855,6 +892,13 @@ namespace FriishProduce
                     };
                     break;
 
+                // PCE
+                // *******
+                case Console.PCE:
+                    VC = new WiiVC.PCE()
+                    {
+                    };
+                    break;
 
                 // NEOGEO
                 // *******
@@ -864,7 +908,6 @@ namespace FriishProduce
                         BIOSPath = null
                     };
                     break;
-
 
                 // MSX
                 // *******
@@ -965,7 +1008,6 @@ namespace FriishProduce
             var tempIDs = new List<string>();
             for (int x = 0; x < Database.Length; x++) tempList.Add(Database[x].DisplayName);
             for (int x = 0; x < Database.Length; x++) tempIDs.Add(Database[x].TitleID.Substring(0, 3));
-
 
             int start = tempList.IndexOf(Base.SelectedItem.ToString());
             int end = start == Database.Length - 1 ? Database.Length : -1;
@@ -1074,6 +1116,7 @@ namespace FriishProduce
                     baseID.Text = CurrentBase.ElementAt(i).Key;
                     item.Checked = true;
                     UpdateBaseForm();
+                    CheckExport();
                     return;
                 }
             }
@@ -1134,39 +1177,44 @@ namespace FriishProduce
         {
             int oldSaveLength = SaveDataTitle.MaxLength;
 
+            // Korean WADs use different encoding format & using two lines or going over max limit cause visual bugs
+            // ********
+            Creator.OrigRegion = CurrentBase.ElementAt(index).Key[3] == 'Q'
+                     || CurrentBase.ElementAt(index).Key[3] == 'T'
+                     || CurrentBase.ElementAt(index).Key[3] == 'K' ? Creator.RegionType.Korea
+                     : CurrentBase.ElementAt(index).Key[3] == 'J' ? Creator.RegionType.Japan
+                     : CurrentBase.ElementAt(index).Key[3] == 'P'
+                     || CurrentBase.ElementAt(index).Key[3] == 'L'
+                     || CurrentBase.ElementAt(index).Key[3] == 'M' ? Creator.RegionType.Europe
+                     : Creator.RegionType.Universal;
+
             // Changing SaveDataTitle max length & clearing text field when needed
             // ----------------------
-            if (Console == Console.NES) SaveDataTitle.MaxLength = Creator.isKorea ? 30 : 20;
+            if (Console == Console.NES) SaveDataTitle.MaxLength = Creator.OrigRegion == Creator.RegionType.Korea ? 30 : 20;
             else if (Console == Console.SNES) SaveDataTitle.MaxLength = 80;
             else if (Console == Console.N64) SaveDataTitle.MaxLength = 100;
             else if (Console == Console.NeoGeo
                   || Console == Console.MSX) SaveDataTitle.MaxLength = 64;
             else SaveDataTitle.MaxLength = 80;
 
-            // Korean WADs use different encoding format & using two lines or going over max limit cause visual bugs
-            // ********
-            Creator.isKorea = CurrentBase.ElementAt(index).Key[3] == 'Q'
-                     || CurrentBase.ElementAt(index).Key[3] == 'T'
-                     || CurrentBase.ElementAt(index).Key[3] == 'K';
-            Creator.isJapan = CurrentBase.ElementAt(index).Key[3] == 'J';
-
             // Also, some consoles only support a single line anyway
             // ********
-            bool isSingleLine = Creator.isKorea
+            bool isSingleLine = Creator.OrigRegion == Creator.RegionType.Korea
                              || Console == Console.NES
                              || Console == Console.SMS
-                             || Console == Console.SMDGEN;
+                             || Console == Console.SMDGEN
+                             || Console == Console.PCE;
 
             // Set textbox to use single line when needed
             // ********
             if (SaveDataTitle.Multiline == isSingleLine)
             {
                 SaveDataTitle.Multiline = !isSingleLine;
-                SaveDataTitle.Location = SaveDataTitle.Multiline ? new Point(SaveDataTitle.Location.X, 25) : new Point(SaveDataTitle.Location.X, 34);
+                SaveDataTitle.Location = SaveDataTitle.Multiline ? new Point(SaveDataTitle.Location.X, 29) : new Point(SaveDataTitle.Location.X, 35);
                 SaveDataTitle.Clear();
                 goto End;
             }
-            if (Creator.isKorea && SaveDataTitle.Multiline) SaveDataTitle.MaxLength /= 2; // Applies to both NES/FC & SNES/SFC
+            if (Creator.OrigRegion == Creator.RegionType.Korea && SaveDataTitle.Multiline) SaveDataTitle.MaxLength /= 2; // Applies to both NES/FC & SNES/SFC
 
             // Clear text field if at least one line is longer than the maximum limit allowed
             // ********
@@ -1177,7 +1225,7 @@ namespace FriishProduce
 
             End:
             UpdateBaseConsole(index);
-            pictureBox1.Image = BannerPreviewX.Generate(Console, BannerTitle.Text, (int)ReleaseYear.Value, (int)Players.Value, Img?.VCPic, Creator.isJapan ? 1 : Creator.isKorea ? 2 : 0);
+            pictureBox1.Image = BannerPreviewX.Generate(Console, BannerTitle.Text, (int)ReleaseYear.Value, (int)Players.Value, Img?.VCPic, (int)Creator.OrigRegion);
         }
 
         /// <summary>
@@ -1195,7 +1243,7 @@ namespace FriishProduce
                     break;
 
                 case Console.N64:
-                    if (IsVCMode()) CO.EmuType = Creator.isKorea ? 3 : emuVer;
+                    if (IsVCMode()) CO.EmuType = Creator.OrigRegion == Creator.RegionType.Korea ? 3 : emuVer;
                     break;
 
                 case Console.SMS:
@@ -1371,7 +1419,13 @@ namespace FriishProduce
             var selected = COPanel_Forwarder.Visible ? COPanel_Forwarder : COPanel_VC.Visible ? COPanel_VC : null;
             int height = selected == null ? (groupBox7.Visible ? groupBox7.Location.Y + groupBox7.Height : InjectorsList.Location.Y + InjectorsList.Height) + 10 : selected.Location.Y + selected.Height + 10;
             groupBox3.Size = new Size(groupBox3.Width, height);
+
             if (groupBox3.Enabled) CheckExport();
+        }
+
+        private void RegionsList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (groupBox4.Enabled) CheckExport();
         }
     }
 }

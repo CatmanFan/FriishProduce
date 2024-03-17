@@ -411,7 +411,7 @@ namespace FriishProduce
             }
 
             Image sBanner = tpl.ExtractTexture(0);
-            Image sIcon = tpl.ExtractTexture(1);
+            Image sIcon = new Bitmap(SaveIconPlaceholder.Width, SaveIconPlaceholder.Height);
             Image sIconLogo = tpl.ExtractTexture(numTextures - 1);
 
             // Clean TPL textures
@@ -466,7 +466,7 @@ namespace FriishProduce
                     a.SetColorMatrix(new ColorMatrix() { Matrix33 = opacity4[1] });
                     g.DrawImage(sIconLogo, new Rectangle(0, 0, w, h), 0, 0, w, h, GraphicsUnit.Pixel, a);
 
-                    tpl.AddTexture(sIcon, formatsT[2], formatsP[2]);
+                    tpl.AddTexture(sIcon2, formatsT[2], formatsP[2]);
 
                     // 3RD FRAME
                     // ****************
@@ -474,22 +474,22 @@ namespace FriishProduce
                     a.SetColorMatrix(new ColorMatrix() { Matrix33 = opacity4[2] });
                     g.DrawImage(sIconLogo, new Rectangle(0, 0, w, h), 0, 0, w, h, GraphicsUnit.Pixel, a);
 
-                    tpl.AddTexture(sIcon, formatsT[3], formatsP[3]);
+                    tpl.AddTexture(sIcon2, formatsT[3], formatsP[3]);
                 }
 
                 else if (platform == Console.NeoGeo || platform == Console.MSX)
                 {
                     // 2ND/3RD FRAMES
                     // ****************
-                    tpl.AddTexture(sIcon, formatsT[2], formatsP[2]);
-                    tpl.AddTexture(sIcon, formatsT[3], formatsP[3]);
+                    tpl.AddTexture(sIcon2, formatsT[2], formatsP[2]);
+                    tpl.AddTexture(sIcon2, formatsT[3], formatsP[3]);
 
                     // 4TH FRAME
                     // ****************
                     a.SetColorMatrix(new ColorMatrix() { Matrix33 = 0.47F });
                     g.DrawImage(sIconLogo, new Rectangle(0, 0, w, h), 0, 0, w, h, GraphicsUnit.Pixel, a);
 
-                    tpl.AddTexture(sIcon, formatsT[4], formatsP[4]);
+                    tpl.AddTexture(sIcon2, formatsT[4], formatsP[4]);
 
                     // 5TH FRAME
                     // ****************
@@ -497,7 +497,7 @@ namespace FriishProduce
                     a.SetColorMatrix(new ColorMatrix() { Matrix33 = 0.82F });
                     g.DrawImage(sIconLogo, new Rectangle(0, 0, w, h), 0, 0, w, h, GraphicsUnit.Pixel, a);
 
-                    tpl.AddTexture(sIcon, formatsT[5], formatsP[5]);
+                    tpl.AddTexture(sIcon2, formatsT[5], formatsP[5]);
                 }
 
                 // END FRAME

@@ -84,7 +84,7 @@ namespace FriishProduce
 
                 try
                 {
-                    if (start == 0 && end == 0) throw new InvalidOperationException();
+                    if (start <= 0 && end <= 0) throw new InvalidOperationException();
                     else
                     {
                         for (int i = 1; i < end - start; i++)
@@ -140,9 +140,31 @@ namespace FriishProduce
                             OrigManual = item;
                             Manual = target.Data[target.GetNodeIndex(OrigManual)];
                         }
+
                         else if (item.ToLower().Contains("htmlc.arc"))
                         {
+                            OrigManual = item;
                             /* TO-DO: Handle using LZ77 compression (WWCXtool again?) */
+                        }
+
+                        else if (item.ToLower().Contains("lz77_html.arc"))
+                        {
+                            OrigManual = item;
+
+                            File.WriteAllBytes(Paths.WorkingFolder + "lz77_html.arc", target.Data[target.GetNodeIndex(OrigManual)]);
+                            ProcessHelper.Run
+                            (
+                                Paths.Tools + "wwcxtool.exe",
+                                Paths.WorkingFolder,
+                                "/u lz77_html.arc lz77_html.dec"
+                            );
+
+                            if (!File.Exists(Paths.WorkingFolder + "lz77_html.dec")) throw new Exception(Language.Get("Error.002"));
+
+                            Manual = File.ReadAllBytes(Paths.WorkingFolder + "lz77_html.dec");
+
+                            if (File.Exists(Paths.WorkingFolder + "lz77_html.arc")) File.Delete(Paths.WorkingFolder + "lz77_html.arc");
+                            if (File.Exists(Paths.WorkingFolder + "lz77_html.dec")) File.Delete(Paths.WorkingFolder + "lz77_html.dec");
                         }
                 }
 

@@ -52,8 +52,8 @@ namespace FriishProduce
                         Language.Get("Other"), null,
                         new ToolStripItem[]
                         {*/
-                         // new ToolStripMenuItem(null, new Icon(Properties.Resources.nec_turbografx_16, 16, 16).ToBitmap(), AddProject, Console.PCE.ToString()),
-                         // new ToolStripSeparator(),
+                            new ToolStripMenuItem(null, new Icon(Properties.Resources.nec_turbografx_16, 16, 16).ToBitmap(), AddProject, Console.PCE.ToString()),
+                            new ToolStripSeparator(),
                             new ToolStripMenuItem(null, new Icon(Properties.Resources.snk_neo_geo_aes, 16, 16).ToBitmap(), AddProject, Console.NeoGeo.ToString()),
                             new ToolStripSeparator(),
                             new ToolStripMenuItem(null, Properties.Resources.msx, AddProject, Console.MSX.ToString()),
