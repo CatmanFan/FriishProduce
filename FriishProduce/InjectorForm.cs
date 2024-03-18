@@ -734,8 +734,8 @@ namespace FriishProduce
             {
                 Parent.CleanTemp();
 
-                Creator.Out = Path.Combine(Paths.Out, GetName()) + ".wad";
-                if (PatchFile != null) ROM.Patch(PatchFile);
+                Creator.Out = Parent.SaveWAD.FileName;
+                if (PatchFile != null) ROM.Patch(PatchFile, false);
 
                 OutWAD = new WAD();
 
@@ -1339,8 +1339,16 @@ namespace FriishProduce
             {
                 if (BrowsePatch.ShowDialog() == DialogResult.OK)
                 {
-                    PatchFile = BrowsePatch.FileName;
-                    CheckExport();
+                    if (ROM.Patch(BrowsePatch.FileName, true))
+                    {
+                        PatchFile = BrowsePatch.FileName;
+                        CheckExport();
+                    }
+                    else
+                    {
+                        PatchFile = null;
+                        ImportPatch.Checked = false;
+                    }
                 }
 
                 else

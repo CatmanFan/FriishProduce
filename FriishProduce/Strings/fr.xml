@@ -33,7 +33,7 @@
 		<Error.004>Échec de modification des options de contenu suivantes :\n{0}\nLa sauvegarde se poursuivra comme prévu.</Error.004>
 		<Error.005>L'application requise ({0}) n'est pas disponible dans le sous-répertoire « resources\\tools ».\nVeuillez obtenir cette application et la placer dans ce dossier, puis réessayer.</Error.005>
 		<Error.006>Échec de la sauvegarde vers format WAD.</Error.006>
-		<Error.007>Échec de l'application du patch.</Error.007>
+		<Error.007>Échec de l'application du patch. Il peut s'agir que soit la ROM ne correspond pas au patch, soit elle-même n'est pas valide.</Error.007>
 		<Error.008>L'émulateur requis ({0}) dans le chemin d'accès « resources\\forwarder\\emulators\\{1}.dol » n'a pas été trouvé.\nVeuillez obtenir le fichier d'émulateur et le placer dans ce chemin, puis réessayer.</Error.008>
 		<Filter>|Tous les fichiers (*.*)|*.*</Filter>
 		<Filter.Disc>Fichiers de format disque (*.cue, *.iso, *.chd)|*.cue;*.iso;*.chd|  Fichiers CUE Sheet (*.cue)|*.cue|  Images ISO (*.iso)|*.iso|  Fichiers CHD (*.chd)|*.chd</Filter.Disc>

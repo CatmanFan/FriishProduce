@@ -92,10 +92,25 @@ namespace FriishProduce
 
         public bool CheckSize() => CheckSize(MaxSize);
 
-        public void Patch(string PatchFile)
+        public bool Patch(string PatchFile, bool TryParse = false)
         {
-            ProcessHelper.Run("xdelta.exe", $"-d -s \"{Path}\" \"{PatchFile}\" \"{Paths.WorkingFolder + "patched.rom"}\"");
-            if (!File.Exists(Paths.WorkingFolder + "patched.rom")) throw new Exception(Language.Get("Error.007"));
+            File.WriteAllBytes(Paths.WorkingFolder + "rom", Bytes);
+
+            ProcessHelper.Run("xdelta3.exe", $"-d -s \"{Paths.WorkingFolder + "rom"}\" \"{PatchFile}\" \"{Paths.WorkingFolder + "rom_p"}\"");
+
+            if (File.Exists(Paths.WorkingFolder + "rom")) File.Delete(Paths.WorkingFolder + "rom");
+
+            if (!File.Exists(Paths.WorkingFolder + "rom_p"))
+            {
+                MessageBox.Show(Language.Get("Error"), Language.Get("Error.007"), System.Windows.Forms.MessageBoxButtons.OK, Ookii.Dialogs.WinForms.TaskDialogIcon.Error);
+                return false;
+            }
+
+            if (!TryParse) Bytes = File.ReadAllBytes(Paths.WorkingFolder + "rom_p");
+
+            if (File.Exists(Paths.WorkingFolder + "rom_p")) File.Delete(Paths.WorkingFolder + "rom_p");
+
+            return true;
         }
     }
 }

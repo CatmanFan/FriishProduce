@@ -168,37 +168,25 @@
     <value>Tahoma, 8pt</value>
   </data>
   <data name="NewProject.Size" type="System.Drawing.Size, System.Drawing">
-    <value>171, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="NewProject.Text" xml:space="preserve">
     <value>New...</value>
   </data>
-  <data name="MenuItem_OpenExports.Size" type="System.Drawing.Size, System.Drawing">
-    <value>171, 22</value>
-  </data>
-  <data name="MenuItem_OpenExports.Text" xml:space="preserve">
-    <value>Open exports folder</value>
-  </data>
-  <data name="MenuItem_ClearExports.Size" type="System.Drawing.Size, System.Drawing">
-    <value>171, 22</value>
-  </data>
-  <data name="MenuItem_ClearExports.Text" xml:space="preserve">
-    <value>Clear exports folder</value>
-  </data>
   <data name="toolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 6</value>
+    <value>177, 6</value>
   </data>
   <data name="MenuItem_Settings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>171, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="MenuItem_Settings.Text" xml:space="preserve">
     <value>Settings</value>
   </data>
   <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 6</value>
+    <value>177, 6</value>
   </data>
   <data name="MenuItem_Exit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>171, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="MenuItem_Exit.Text" xml:space="preserve">
     <value>Exit</value>
@@ -3020,18 +3008,6 @@ Before getting started, please be sure to familiarise yourself with this program
     <value>NewProject</value>
   </data>
   <data name="&gt;&gt;NewProject.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;MenuItem_OpenExports.Name" xml:space="preserve">
-    <value>MenuItem_OpenExports</value>
-  </data>
-  <data name="&gt;&gt;MenuItem_OpenExports.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;MenuItem_ClearExports.Name" xml:space="preserve">
-    <value>MenuItem_ClearExports</value>
-  </data>
-  <data name="&gt;&gt;MenuItem_ClearExports.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItem1.Name" xml:space="preserve">

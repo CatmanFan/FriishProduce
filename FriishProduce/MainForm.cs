@@ -284,7 +284,7 @@ namespace FriishProduce
         private void ExportWAD_Click(object sender, EventArgs e)
         {
             var currentForm = tabControl.SelectedForm as InjectorForm;
-            currentForm.CreateInject();
+            if (SaveWAD.ShowDialog() == DialogResult.OK) currentForm.CreateInject();
         }
 
         private void OpenImage_Click(object sender, EventArgs e)

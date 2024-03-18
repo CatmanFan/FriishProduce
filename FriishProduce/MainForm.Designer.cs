@@ -39,8 +39,6 @@ namespace FriishProduce
             this.MenuStrip = new System.Windows.Forms.MenuStrip();
             this.MenuItem_File = new System.Windows.Forms.ToolStripMenuItem();
             this.NewProject = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuItem_OpenExports = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuItem_ClearExports = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.MenuItem_Settings = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
@@ -149,8 +147,6 @@ namespace FriishProduce
             // 
             this.MenuItem_File.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.NewProject,
-            this.MenuItem_OpenExports,
-            this.MenuItem_ClearExports,
             this.toolStripMenuItem1,
             this.MenuItem_Settings,
             this.toolStripSeparator4,
@@ -163,18 +159,6 @@ namespace FriishProduce
             this.NewProject.Image = global::FriishProduce.Properties.Resources.document;
             this.NewProject.Name = "NewProject";
             resources.ApplyResources(this.NewProject, "NewProject");
-            // 
-            // MenuItem_OpenExports
-            // 
-            this.MenuItem_OpenExports.Name = "MenuItem_OpenExports";
-            resources.ApplyResources(this.MenuItem_OpenExports, "MenuItem_OpenExports");
-            this.MenuItem_OpenExports.Click += new System.EventHandler(this.OpenExports);
-            // 
-            // MenuItem_ClearExports
-            // 
-            this.MenuItem_ClearExports.Name = "MenuItem_ClearExports";
-            resources.ApplyResources(this.MenuItem_ClearExports, "MenuItem_ClearExports");
-            this.MenuItem_ClearExports.Click += new System.EventHandler(this.CleanExports);
             // 
             // toolStripMenuItem1
             // 
@@ -500,8 +484,6 @@ namespace FriishProduce
         private System.Windows.Forms.Label PointToTutorial;
         private System.Windows.Forms.Button Welcome_DoNotShow;
         private System.Windows.Forms.ToolStripMenuItem MenuItem_LanguageXMLEditor;
-        private System.Windows.Forms.ToolStripMenuItem MenuItem_OpenExports;
-        private System.Windows.Forms.ToolStripMenuItem MenuItem_ClearExports;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
     }
 }
