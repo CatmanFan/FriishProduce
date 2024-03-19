@@ -88,6 +88,7 @@ namespace FriishProduce.WiiVC
         {
             MainCCF.ReplaceFile(MainCCF.GetNodeIndex("misc.ccf"), MiscCCF.ToByteArray());
             MiscCCF.Dispose();
+
             MainContent.ReplaceFile(MainContent.GetNodeIndex("data.ccf"), MainCCF.ToByteArray());
             MainCCF.Dispose();
 
@@ -169,7 +170,7 @@ namespace FriishProduce.WiiVC
             // IMAGE
             // -----------------------
 
-            // Img.ReplaceSaveWTE();
+            Img.CreateSaveWTE(MiscCCF);
         }
 
         protected override void ModifyEmulatorSettings()

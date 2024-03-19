@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 
 namespace Archives
 {
-    /// This has been created using reverse-engineering from the CCF Tools C source code, both by the original author (paulguy) and via libertyernie's fork: https://github.com/libertyernie/ccf-tools.
-    /// It has been converted to C# and now runs the code directly from the program instead of using a third-party app as before.
+    /// Conversion to C#, using reverse-engineering from the CCF Tools C source code, both by the original author (paulguy) and via libertyernie's fork: https://github.com/libertyernie/ccf-tools, and libWiiSharp's U8 method.
+    /// This runs the code directly from the program instead of using a third-party app as before.
 
     public class CCF : IDisposable
     {
@@ -58,6 +58,25 @@ namespace Archives
             data = new List<byte[]>();
         }
 
+        /// <summary>
+        /// Loads CCF data from an external file.
+        /// </summary>
+        public static CCF Load(string input)
+        {
+            try
+            {
+                return Load(File.ReadAllBytes(input));
+            }
+
+            catch (FileNotFoundException)
+            {
+                throw new Exception("File not found!");
+            }
+        }
+
+        /// <summary>
+        /// Loads CCF data from a byte array.
+        /// </summary>
         public static CCF Load(byte[] input)
         {
             CCF c = new CCF();
@@ -69,6 +88,9 @@ namespace Archives
             return c;
         }
 
+        /// <summary>
+        /// Returns the index of the file node with the given name, or -1 if no file is found.
+        /// </summary>
         public int GetNodeIndex(string name)
         {
             int index = -1;
@@ -80,16 +102,26 @@ namespace Archives
             return index;
         }
 
+        /// <summary>
+        /// Replaces the given file.
+        /// </summary>
         public void ReplaceFile(CCF_Node node, byte[] newData)
         {
             data[GetNodeIndex(node.Name)] = newData;
         }
 
+
+        /// <summary>
+        /// Replaces the file with the given index.
+        /// </summary>
         public void ReplaceFile(int fileIndex, byte[] newData)
         {
             data[fileIndex] = newData;
         }
 
+        /// <summary>
+        /// Returns the CCF file as a byte array.
+        /// </summary>
         public byte[] ToByteArray()
         {
             using (MemoryStream ms = new MemoryStream())
@@ -99,6 +131,9 @@ namespace Archives
             }
         }
 
+        /// <summary>
+        /// Saves the CCF file.
+        /// </summary>
         public void Save(string outputFile)
         {
             using (FileStream fs = new FileStream(outputFile, FileMode.Create, FileAccess.Write))

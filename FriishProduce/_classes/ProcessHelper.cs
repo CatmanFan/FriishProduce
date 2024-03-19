@@ -13,7 +13,7 @@ namespace FriishProduce
 
         public static void Run(string app, string workingFolder, string arguments, bool showWindow = false)
         {
-            var appPath = System.IO.Path.Combine(Paths.Tools, app.Contains('\\') ? app : System.IO.Path.GetFileName(app));
+            var appPath = System.IO.Path.Combine(Paths.Tools, app.Replace(Paths.Tools, "").Contains('\\') ? app.Replace(Paths.Tools, "") : System.IO.Path.GetFileName(app));
 
             if (!appPath.EndsWith(".exe")) appPath += ".exe";
 

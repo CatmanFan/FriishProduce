@@ -528,19 +528,21 @@ namespace FriishProduce
             {
                 if (Path.GetExtension(item.Name) == ".wte")
                 {
-                    File.WriteAllBytes(Paths.WorkingFolder + item.Name, CCF.Data[CCF.GetNodeIndex(item.Name)]);
+                    File.WriteAllBytes(ImagesPath + item.Name, CCF.Data[CCF.GetNodeIndex(item.Name)]);
 
                     // Convert first to tex0, then to PNG
                     // ****************
                     ProcessHelper.Run
                     (
-                        Paths.Tools + "sega\\wteconvert.exe",
-                        $"\"{item.Name}\" \"{ImagesPath}{Path.GetFileNameWithoutExtension(item.Name)}.tex0\""
+                        "sega\\wteconvert.exe",
+                        ImagesPath,
+                        $"\"{item.Name}\" \"{Path.GetFileNameWithoutExtension(item.Name)}.tex0\""
                     );
                     ProcessHelper.Run
                     (
-                        Paths.Tools + "sega\\texextract.exe",
-                        $"\"{ImagesPath}{Path.GetFileNameWithoutExtension(item.Name)}.tex0\" \"{ImagesPath}{Path.GetFileNameWithoutExtension(item.Name)}.png\""
+                        "sega\\texextract.exe",
+                        ImagesPath,
+                        $"\"{Path.GetFileNameWithoutExtension(item.Name)}.tex0\" \"{Path.GetFileNameWithoutExtension(item.Name)}.png\""
                     );
                 }
             }
@@ -638,26 +640,16 @@ namespace FriishProduce
             if (File.Exists(ImagesPath + "06.png")) File.Delete(ImagesPath + "06.png");
             if (File.Exists(ImagesPath + "06.tex0")) File.Delete(ImagesPath + "06.tex0");
 
-            foreach (var item in Directory.EnumerateFiles(ImagesPath))
+            foreach (var file in Directory.EnumerateFiles(ImagesPath))
             {
-                if (Path.GetExtension(item) == ".tex0" && File.Exists(ImagesPath + Path.GetFileNameWithoutExtension(item) + ".new.png"))
+                if (Path.GetExtension(file) == ".tex0" && File.Exists(ImagesPath + Path.GetFileNameWithoutExtension(file) + ".new.png"))
                 {
-                    if (File.Exists(ImagesPath + Path.GetFileNameWithoutExtension(item) + ".png")) File.Delete(ImagesPath + Path.GetFileNameWithoutExtension(item) + ".png");
-                    File.Move(ImagesPath + Path.GetFileNameWithoutExtension(item) + ".new.png", ImagesPath + Path.GetFileNameWithoutExtension(item) + ".png");
-                }
-            }
+                    string item = Path.GetFileNameWithoutExtension(file);
 
-            foreach (var item in Directory.EnumerateFiles(ImagesPath))
-            {
-                if (Path.GetExtension(item) == ".tex0" && File.Exists(ImagesPath + Path.GetFileNameWithoutExtension(item) + ".png"))
-                {
-                    // Extracts original image to use in failsafe
+                    // Backups original image to use in failsafe
                     // ****************
-                    ProcessHelper.Run
-                    (
-                        Paths.Tools + "sega\\texextract.exe",
-                        $"\"{item}\" \"{ImagesPath}{Path.GetFileNameWithoutExtension(item)}.ext1.png\""
-                    );
+                    File.Move(ImagesPath + item + ".png", ImagesPath + item + ".ext1.png");
+                    File.Move(ImagesPath + item + ".new.png", ImagesPath + item + ".png");
 
                     // --------------------------------------------
                     // TEX0 conversion
@@ -665,8 +657,8 @@ namespace FriishProduce
                     using (Process p = Process.Start(new ProcessStartInfo
                     {
                         FileName = Paths.Tools + "sega\\texreplace.exe",
-                        WorkingDirectory = Paths.Tools + "sega\\",
-                        Arguments = $"\"{item}\" \"{ImagesPath}{Path.GetFileNameWithoutExtension(item)}.png\"",
+                        WorkingDirectory = ImagesPath,
+                        Arguments = $"\"{item}.tex0\" \"{item}.png\"",
                         UseShellExecute = false,
                         CreateNoWindow = false
                     }))
@@ -696,17 +688,19 @@ namespace FriishProduce
                     // --------------------------------------------
                     // First failsafe, checks directly for process cancellation
                     // ****************
-                    if (!File.Exists($"{ImagesPath}{Path.GetFileNameWithoutExtension(item)}.png")) throw new OperationCanceledException();
+                    if (!File.Exists($"{ImagesPath}{item}.png")) throw new OperationCanceledException();
 
                     // Second failsafe, checks extracted image for similarities if Cancel was clicked on the GUI
                     // ****************
                     ProcessHelper.Run
                     (
-                        Paths.Tools + "sega\\texextract.exe",
-                        $"\"{item}\" \"{ImagesPath}{Path.GetFileNameWithoutExtension(item)}.ext2.png\""
+                        "sega\\texextract.exe",
+                        ImagesPath,
+                        $"\"{item}.tex0\" \"{item}.ext2.png\""
                     );
-                    using (Bitmap ext = (Bitmap)Image.FromFile($"{ImagesPath}{Path.GetFileNameWithoutExtension(item)}.ext1.png"))
-                    using (Bitmap src = (Bitmap)Image.FromFile($"{ImagesPath}{Path.GetFileNameWithoutExtension(item)}.ext2.png"))
+
+                    using (Bitmap ext = (Bitmap)Image.FromFile($"{ImagesPath}{item}.ext1.png"))
+                    using (Bitmap src = (Bitmap)Image.FromFile($"{ImagesPath}{item}.ext2.png"))
                     {
                         bool same = true;
                         for (int x = 0; x < ext.Width; ++x)
@@ -723,24 +717,28 @@ namespace FriishProduce
                         if (same) throw new OperationCanceledException();
                     }
 
-                    try { File.Delete(ImagesPath + Path.GetFileNameWithoutExtension(item) + ".ext1.png"); } catch { }
-                    try { File.Delete(ImagesPath + Path.GetFileNameWithoutExtension(item) + ".ext2.png"); } catch { }
-                    try { File.Delete(ImagesPath + Path.GetFileNameWithoutExtension(item) + ".png"); } catch { }
+                    try { File.Delete(ImagesPath + item + ".ext1.png"); } catch { }
+                    try { File.Delete(ImagesPath + item + ".ext2.png"); } catch { }
+                    try { File.Delete(ImagesPath + item + ".png"); } catch { }
 
                     // --------------------------------------------
                     // WTE conversion
                     // --------------------------------------------
                     ProcessHelper.Run
                     (
-                        Paths.Tools + "sega\\wteconvert.exe",
-                        $"\"{item}\" \"{Path.GetFileNameWithoutExtension(item)}.wte\""
+                        "sega\\wteconvert.exe",
+                        ImagesPath,
+                        $"\"{item}.tex0\" \"{item}.new.wte\""
                     );
 
-                    if (File.Exists(Paths.WorkingFolder + $"{Path.GetFileNameWithoutExtension(item)}.wte")) CCF.Data[CCF.GetNodeIndex($"{Path.GetFileNameWithoutExtension(item)}.wte")] = File.ReadAllBytes(Paths.WorkingFolder + $"{Path.GetFileNameWithoutExtension(item)}.wte");
+                    if (File.Exists(ImagesPath + item + ".new.wte")) CCF.ReplaceFile(CCF.GetNodeIndex($"{item}.wte"), File.ReadAllBytes(ImagesPath + item + ".new.wte"));
+
+                    try { File.Delete(ImagesPath + item + ".new.wte"); } catch { }
+                    try { File.Delete(ImagesPath + item + ".wte"); } catch { }
                 }
             }
 
-            if (Directory.Exists(ImagesPath)) Directory.Delete(ImagesPath, true);
+            if (Directory.Exists(ImagesPath)) try { Directory.Delete(ImagesPath, true); } catch { }
         }
 
         [System.Runtime.InteropServices.DllImport("user32.dll")]
