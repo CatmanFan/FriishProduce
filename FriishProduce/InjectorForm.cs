@@ -66,7 +66,7 @@ namespace FriishProduce
             label7.Text = label5.Text;
             CustomManual.Text = Language.Get("CustomManual");
             BrowsePatch.Filter = Language.Get("Filter.Patch");
-            label16.Text = Language.Get("None");
+            label16.Text = Language.Get("NotSupported");
 
             // Change title text to untitled string
             Untitled = string.Format(Language.Get("Untitled"), Language.Get(Enum.GetName(typeof(Console), Console), "Platforms"));
@@ -85,8 +85,7 @@ namespace FriishProduce
             imageintpl.SelectedIndex = Properties.Settings.Default.ImageInterpolation;
             FStorage_USB.Checked = Properties.Settings.Default.Default_Forwarders_FilesStorage.ToLower().Contains("usb");
             FStorage_SD.Checked = !FStorage_USB.Checked;
-            FNANDLoader_vWii.Checked = Properties.Settings.Default.Default_Forwarders_Mode.ToLower().Contains("vwii");
-            FNANDLoader_Wii.Checked = !FNANDLoader_vWii.Checked;
+            toggleSwitch1.Checked = Properties.Settings.Default.Default_Forwarders_Mode.ToLower().Contains("vwii");
 
             // Regions lists
             RegionsList.Items.Clear();
@@ -344,7 +343,7 @@ namespace FriishProduce
 
         private void RandomTID() => TitleID.Text = Creator.TitleID = TIDCode != null ? TIDCode + GenerateTitleID().Substring(0, 3) : GenerateTitleID();
 
-        public string GetName() => $"[{Console}] {TitleID.Text.ToUpper()} - {ChannelTitle.Text}";
+        public string GetName() => ROM?.Path != null ? Path.GetFileNameWithoutExtension(ROM?.Path) + $" [{TitleID.Text.ToUpper()}]" : $"{Console} - {ChannelTitle.Text} [{TitleID.Text.ToUpper()}]";
 
         private void isClosing(object sender, FormClosingEventArgs e)
         {
@@ -673,8 +672,8 @@ namespace FriishProduce
             groupBox3.Enabled =
             groupBox4.Enabled =
             groupBox5.Enabled =
-            groupBox6.Enabled = true;
-            groupBox7.Enabled = Console == Console.Flash;
+            groupBox6.Enabled =
+            groupBox7.Enabled = true;
 
             RandomTID();
             UpdateBaseForm();
@@ -843,7 +842,7 @@ namespace FriishProduce
             // Actually inject everything
             // *******
             f.CreateZIP(Path.Combine(Path.GetDirectoryName(Creator.Out), Path.GetFileNameWithoutExtension(Creator.Out) + $" ({f.Storage}).zip"));
-            OutWAD = f.CreateWAD(OutWAD, FNANDLoader_vWii.Checked);
+            OutWAD = f.CreateWAD(OutWAD, toggleSwitch1.Checked);
         }
 
         public void FlashInject()
@@ -1226,15 +1225,22 @@ namespace FriishProduce
                     SaveDataTitle.Clear();
 
             End:
-            UpdateBaseConsole(index);
+            UpdateBaseConsole();
             pictureBox1.Image = Preview.Banner(Console, BannerTitle.Text, (int)ReleaseYear.Value, (int)Players.Value, Img?.VCPic, (int)Creator.OrigRegion);
         }
 
         /// <summary>
         /// Changes injector settings based on selected base/console
         /// </summary>
-        private void UpdateBaseConsole(int emuVer)
+        private void UpdateBaseConsole()
         {
+            int emuVer = 0;
+
+            if (Database != null)
+                foreach (var Entry in Database)
+                    if (Entry.TitleID.ToUpper() == baseID.Text.ToUpper())
+                        emuVer = Entry.Emulator;
+
             // ******************
             // CONSOLE-SPECIFIC
             // ******************
@@ -1403,6 +1409,7 @@ namespace FriishProduce
                         break;
 
                     case Console.PCE:
+                        CO = new Options_VC_PCE();
                         break;
 
                     case Console.NeoGeo:
@@ -1413,7 +1420,9 @@ namespace FriishProduce
 
                     case Console.C64:
                         break;
-                };
+                }
+                
+                UpdateBaseConsole();
             }
 
             else if (Console == Console.Flash)
@@ -1436,6 +1445,11 @@ namespace FriishProduce
         private void RegionsList_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (groupBox4.Enabled) CheckExport();
+        }
+
+        private void ToggleSwitchChanged(object sender, EventArgs e)
+        {
+            if (sender == toggleSwitch1) toggleSwitchL1.Text = toggleSwitch1.Checked ? "vWii (Wii U)" : "Wii";
         }
     }
 }

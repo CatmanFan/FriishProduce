@@ -469,10 +469,13 @@ namespace FriishProduce
                     g.Clear(Color.Gainsboro);
             }
 
-            Bitmap bmp = new Bitmap(img.Width, img.Height);
+            Bitmap bmp = new Bitmap(img.Width, 92);
 
             using (Graphics g = Graphics.FromImage(bmp))
+            {
+                g.InterpolationMode = InterpolationMode.Bicubic;
                 g.DrawImage(img, -3, -3, bmp.Width + 6, bmp.Height + 8);
+            }
 
             Bitmap bmp2 = new Bitmap(bmp.Width + 2, bmp.Height + 2);
 

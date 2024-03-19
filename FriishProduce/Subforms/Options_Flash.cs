@@ -17,11 +17,14 @@ namespace FriishProduce
 
             Settings = new Dictionary<string, string>
             {
-                { "brightness", Default.Default_N64_FixBrightness.ToString() },
-                { "crash",  Default.Default_N64_FixCrashes.ToString() },
-                { "expansion",  Default.Default_N64_ExtendedRAM.ToString() },
-                { "rom_autosize",  Default.Default_N64_AllocateROM.ToString() },
-                { "romc_0",  Default.Default_N64_ROMC0.ToString() }
+                { "mouse", "on" },
+                { "qwerty_keyboard", "on" },
+                { "quality", "high" },
+                { "shared_object_capability", "off" },
+                { "vff_cache_size", "96" },
+                { "vff_sync_on_write", "off" },
+                { "hbm_no_save", "yes" },
+                { "strap_reminder", "none" }
             };
 
             // Cosmetic
@@ -40,14 +43,14 @@ namespace FriishProduce
             // *******
             if (Settings != null)
             {
-
+                // Code logic in derived Form
             }
             // *******
         }
 
         protected override void SaveOptions()
         {
-
+            // Code logic in derived Form
         }
     }
 }

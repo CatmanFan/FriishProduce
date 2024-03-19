@@ -120,6 +120,9 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="ToggleSwitch">
+      <HintPath>D:\Homebrew\3DS\nsui-beta28\ToggleSwitch.dll</HintPath>
+    </Reference>
     <Reference Include="UIAutomationClient" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
@@ -135,6 +138,12 @@
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Subforms\Options_VC_PCE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Subforms\Options_VC_PCE.Designer.cs">
+      <DependentUpon>Options_VC_PCE.cs</DependentUpon>
     </Compile>
     <Compile Include="Subforms\Options_Flash.cs">
       <SubType>Form</SubType>
@@ -272,6 +281,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Subforms\Options_Flash.resx">
       <DependentUpon>Options_Flash.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Subforms\Options_VC_PCE.resx">
+      <DependentUpon>Options_VC_PCE.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Subforms\Options_VC_SEGA.resx">
       <DependentUpon>Options_VC_SEGA.cs</DependentUpon>

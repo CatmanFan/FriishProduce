@@ -46,13 +46,18 @@ namespace FriishProduce.WiiVC
         public bool IsSMS { get; set; }
         private string ROMName { get; set; }
 
+        private CCF MainCCF { get; set; }
+        private CCF MiscCCF { get; set; }
+
         protected override void Load()
         {
             MainContentIndex = 5;
             NeedsManualLoaded = false;
             base.Load();
 
-            GetCCF();
+            MainCCF = new CCF(MainContent.Data[MainContent.GetNodeIndex("data.ccf")]);
+            MiscCCF = new CCF(MainCCF.Data[MainCCF.GetNodeIndex("misc.ccf")]);
+
             ReplaceManual(MainContent);
 
             switch (WAD.UpperTitleID.Substring(0, 3).ToUpper())
@@ -324,17 +329,10 @@ namespace FriishProduce.WiiVC
 
         public override WAD Write()
         {
-            if (!Directory.Exists(Paths.DataCCF)) return WAD;
-
-            // Misc.ccf
-            // ****************
-            File.WriteAllBytes(Paths.DataCCF + "misc.ccf", RunCCFArc(Paths.MiscCCF, 4));
-
-            // Data.ccf
-            // ****************
-            var NewData = RunCCFArc(Paths.DataCCF, ROMName.Contains("MonsterWorld4") ? 3 : 2);
-            MainContent.ReplaceFile(MainContent.GetNodeIndex("data.ccf"), NewData);
-
+            // MainCCF.ReplaceFile("misc.ccf", MiscCCF.ToByteArray());
+            MainCCF.Save(Paths.WorkingFolder + "data.ccf");
+            MainCCF.Dispose();
+            MainContent.ReplaceFile(MainContent.GetNodeIndex("data.ccf"), Paths.WorkingFolder + "data.ccf");
             if (File.Exists(Paths.WorkingFolder + "data.ccf")) File.Delete(Paths.WorkingFolder + "data.ccf");
 
             return base.Write();
@@ -348,22 +346,25 @@ namespace FriishProduce.WiiVC
             // -----------------------
             ROM.CheckSize();
 
-            foreach (var item in Directory.EnumerateFiles(Paths.DataCCF))
-                if (Path.GetExtension(item).ToLower().StartsWith(".sgd") || Path.GetExtension(item).ToLower().StartsWith(".sms"))
-                    File.WriteAllBytes(item, ROM.Bytes);
+            foreach (var item in MainCCF.Files)
+                if (item.Name.ToLower().Contains(".sgd") || item.Name.ToLower().Contains(".sms"))
+                    MainCCF.ReplaceFile(item, ROM.Bytes);
         }
 
         protected override void ReplaceSaveData(string[] lines, ImageHelper Img)
         {
+            return;
+
             // -----------------------
             // COMMENT
             // -----------------------
 
-            foreach (var item in Directory.EnumerateFiles(Paths.MiscCCF))
+            foreach (var item in MiscCCF.Files)
             {
-                if (Path.GetFileName(item).ToLower().Contains("banner.cfg"))
+                if (item.Name.ToLower().Contains("banner.cfg"))
                 {
-                    string[] newBanner = File.ReadAllLines(item);
+                    string[] newBanner = Encoding.BigEndianUnicode.GetString(MiscCCF.Data[MiscCCF.GetNodeIndex(item.Name)]).Replace("\r\n", "\n").Split('\n');
+
                     for (int i = 4; i < newBanner.Length; i++)
                     {
                         if (newBanner[i].StartsWith("JP:")) newBanner[i] = $"JP:{lines[0]}";
@@ -375,19 +376,37 @@ namespace FriishProduce.WiiVC
                         if (newBanner[i].StartsWith("DU:")) newBanner[i] = $"DU:{lines[0]}";
                     }
 
-                    File.WriteAllText(item, string.Join("\n", newBanner), Encoding.BigEndianUnicode);
+                    using (var s = new MemoryStream())
+                    {
+                        var t = new StreamWriter(s, Encoding.BigEndianUnicode) { NewLine = "\n" };
+
+                        foreach (string line in newBanner)
+                        {
+                            t.WriteLine(line);
+                        }
+
+                        t.Flush();
+
+                        MiscCCF.ReplaceFile(item, s.ToArray());
+                    }
                 }
 
-                else if (Path.GetFileName(item).ToLower().Contains("comment"))
+                else if (item.Name.ToLower().Contains("comment"))
                 {
-                    string[] newComment = File.ReadAllLines(item, Encoding.UTF8);
+                    string[] newComment = Encoding.UTF8.GetString(MiscCCF.Data[MiscCCF.GetNodeIndex(item.Name)]).Replace("\r\n", "\n").Split('\n');
+
                     newComment[0] = lines[0];
 
-                    using (TextWriter t = new StreamWriter(item, false))
+                    using (var s = new MemoryStream())
                     {
-                        t.NewLine = "\n";
+                        var t = new StreamWriter(s, Encoding.UTF8) { NewLine = "\n" };
+
                         for (int i = 0; i < newComment.Length; i++)
                             t.WriteLine(newComment[i]);
+
+                        t.Flush();
+
+                        MiscCCF.ReplaceFile(item, s.ToArray());
                     }
                 }
             }
@@ -396,11 +415,13 @@ namespace FriishProduce.WiiVC
             // IMAGE
             // -----------------------
 
-            Img.ReplaceSaveWTE();
+            // Img.ReplaceSaveWTE();
         }
 
         protected override void ModifyEmulatorSettings()
         {
+            return;
+
             // CONFIG Encoding: Unix (LF) - UTF-8 (new empty line at bottom)
             // Savedata Encoding: Windows (CRLF) - UTF-16 Big Endian ("banner.cfg")
             // Savedata Encoding: Windows (CRLF) - UTF-8 ("comment", ver3 only)

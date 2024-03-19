@@ -77,10 +77,11 @@ namespace FriishProduce
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
+            this.checkBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.checkBox1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.checkBox1.Location = new System.Drawing.Point(9, 244);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(188, 17);
+            this.checkBox1.Size = new System.Drawing.Size(194, 18);
             this.checkBox1.TabIndex = 12;
             this.checkBox1.Text = "Also use palette for banner image";
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -88,6 +89,7 @@ namespace FriishProduce
             // PaletteList
             // 
             this.PaletteList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.PaletteList.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.PaletteList.FormattingEnabled = true;
             this.PaletteList.Items.AddRange(new object[] {
             "def"});

@@ -208,7 +208,7 @@ namespace FriishProduce
             {
                 bool isFound = false;
 
-                if (isForm && !name.EndsWith(".Text") && !name.Contains(".Items")) name += ".Text";
+                if (isForm && !name.EndsWith("Text") && !name.Contains(".Items")) name += ".Text";
 
                 foreach (XmlNode section in targetXML.SelectNodes(type))
                     if (section.Attributes[0].InnerText == sectionName)
@@ -255,8 +255,12 @@ namespace FriishProduce
         }
 
         public static string Get(string name, Form f) => Get(name, f.Name, true);
-        public static string Get(Control c, Form f) => Get(c.Name, f.Name, true);
-        public static string Get(Control c, string section) => Get(c.Name, section, true);
+        public static string Get(Control c, Form f) => Get(c, f.Name);
+        public static string Get(Control c, string section)
+        {
+            if (c.GetType() == typeof(JCS.ToggleSwitch)) return Get(c.Name + ((c as JCS.ToggleSwitch).Checked ? ".On" : ".Off") + "Text", section, true);
+            else return Get(c.Name, section, true);
+        }
 
         /// <summary>
         /// Same as above, except it converts the resulting string to an array.
@@ -337,6 +341,8 @@ namespace FriishProduce
 
         private static void GetControl(Control x, Form parent, bool customStrings = true)
         {
+            var origText = x.Text;
+            
             if (x.GetType() == typeof(Form) && x.Name != parent.Name) return;
             else if (x.GetType() == typeof(MdiTabControl.TabPage) && (x as MdiTabControl.TabPage).Form.GetType().Name != parent.Name) return;
             else if (x.GetType() == typeof(ComboBox) && (x as ComboBox).Items.Count >= 1) GetComboBox(x as ComboBox, x.Name, parent.Name);
@@ -361,8 +367,12 @@ namespace FriishProduce
                 }
             }
 
-            if (!string.IsNullOrWhiteSpace(x.Name) && Get(x.Name, parent) != "undefined")
-                x.Text = Get(x.Name, parent);
+            if (!string.IsNullOrWhiteSpace(x.Name))
+            {
+                if (Get(x.Name, parent) != "undefined") x.Text = Get(x.Name, parent);
+                else if (Get(x.Name + ".OnText", parent) != "undefined") x.Text = Get(x.Name + ".OnText", parent);
+                else if (Get(x.Name + ".OffText", parent) != "undefined") x.Text = Get(x.Name + ".OffText", parent);
+            }
 
             // Custom strings (e.g. for buttons)
             // ****************
@@ -374,6 +384,9 @@ namespace FriishProduce
                     if (x.Name.ToLower() == "cancel") { x.Text = Get("B.Cancel"); (x as Button).UseMnemonic = true; }
                     if (x.Name.ToLower() == "close") { x.Text = Get("B.Close"); (x as Button).UseMnemonic = true; }
                 }
+
+                if (origText?.ToLower() == "system") x.Text = Get("System");
+                if (origText?.ToLower() == "display") x.Text = Get("Display");
             }
         }
     }

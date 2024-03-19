@@ -33,6 +33,7 @@ namespace FriishProduce
             if (!DesignMode)
             {
                 Language.Localize(this);
+                comboBox1.Items.Clear();
                 comboBox1.Items.Add(Language.Get("Region.U"));
                 comboBox1.Items.Add(Language.Get("Region.E"));
                 comboBox1.Items.Add(Language.Get("Region.J"));
@@ -51,18 +52,22 @@ namespace FriishProduce
                 if (Settings["dev.mdpad.enable_6b"] == null) Settings["dev.mdpad.enable_6b"] = IsSMS ? "0" : "1";
 
                 BrightnessValue.Value = int.Parse(Settings["console.brightness"]);
-                checkBox1.Checked = Settings["dev.mdpad.enable_6b"] == "1";
-                checkBox2.Checked = Settings["save_sram"] == "1";
+                toggleSwitch1.Checked = Settings["dev.mdpad.enable_6b"] == "1";
+                checkBox1.Checked = Settings["save_sram"] == "1";
                 comboBox1.SelectedIndex = Settings["country"] == "jp" ? 2 : Settings["country"] == "eu" ? 1 : 0;
                 ChangeBrightness();
             }
+
+            // Console-specific tools
+            // *******
+            toggleSwitchL1.Enabled = toggleSwitch1.Enabled = !IsSMS;
         }
 
         protected override void SaveOptions()
         {
             Settings["console.brightness"] = label1.Text;
-            Settings["dev.mdpad.enable_6b"] = checkBox1.Checked ? "1" : "0";
-            Settings["save_sram"] = checkBox2.Checked ? "1" : "0";
+            Settings["dev.mdpad.enable_6b"] = toggleSwitch1.Checked ? "1" : "0";
+            Settings["save_sram"] = checkBox1.Checked ? "1" : "0";
             Settings["country"] = comboBox1.SelectedIndex == 2 ? "jp" : comboBox1.SelectedIndex == 1 ? "eu" : "us";
         }
 
@@ -85,6 +90,11 @@ namespace FriishProduce
             pictureBox1.Image = changed;
 
             label1.Text = BrightnessValue.Value.ToString();
+        }
+
+        private void ToggleSwitchChanged(object sender, EventArgs e)
+        {
+            if (sender == toggleSwitch1) toggleSwitchL1.Text = Language.Get(toggleSwitch1, this);
         }
     }
 }

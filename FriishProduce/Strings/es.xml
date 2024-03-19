@@ -24,9 +24,9 @@
 		<Error.001>No se pudo generar la imagen.\nEsto puede deberse a un problema con GDI+.</Error.001>
 		<Error.002>No se pueden reemplazar los datos internos.</Error.002>
 		<Error.003>La ROM es demasiado grande (más de {0} {1} en tamaño).</Error.003>
-		<Error.005>La aplicación necesaria ({0}) no se encontró en el subdirectorio "resources\tools".</Error.005>
+		<Error.005>La aplicación necesaria ({0}) no se encontró en el subdirectorio "resources\\tools".</Error.005>
 		<Error.007>No se pudo aplicar el parche.</Error.007>
-		<Error.008>El emulador necesario ({0}) no se encontró en el subdirectorio "resources\forwarder\emulators".</Error.008>
+		<Error.008>El emulador necesario ({0}) no se encontró en el subdirectorio "resources\\forwarder\\emulators".</Error.008>
 		<Filter>|Todos los archivos (*.*)|*.*</Filter>
 		<Filter.Disc>Imágenes de disco (*.cue, *.iso, *.chd)|*.cue;*.iso;*.chd|  Archivos Cue Sheet (*.cue)|*.cue|  Imágenes ISO (*.iso)|*.iso|  Archivos CHD (*.chd)|*.chd</Filter.Disc>
 		<Filter.Img>Imágenes (*.bmp, *.jpg, *.jpeg, *.png)|*.bmp;*.jpg;*.jpeg;*.png|  Bitmap (*.bmp)|*.bmp|  JPEG (*.jpg, *.jpeg)|*.jpg;*.jpeg|  PNG (*.png)|*.png</Filter.Img>
@@ -41,7 +41,7 @@
 		<Filter.SWF>Archivos SWF (*.swf)|*.swf</Filter.SWF>
 		<Filter.WAD>Canales Wii (*.wad)|*.wad</Filter.WAD>
 		<Filter.ZIP>Archivos comprimidos ZIP (*.zip)|*.zip</Filter.ZIP>
-		<InjectionMethodOptions>Opciónes de método de inyección</InjectionMethodOptions>
+		<InjectionMethodOptions>Ajustes de método de inyección</InjectionMethodOptions>
 		<List.ImageInterpolation>Baja calidad\nAlta calidad\nBilineal\nBicúbica\nVecino más cercano (Nearest neighbor)\nBilineal de alta calidad\nBicúbica de alta calidad</List.ImageInterpolation>
 		<Message.000>Algunos cambios necesitan que se reinicie el programa para que tengan efecto.\n¿Reiniciar esta aplicación ahora?</Message.000>
 		<Message.001>¿Desea descartar los cambios no guardados en este proyecto?</Message.001>
@@ -96,6 +96,7 @@
 		<OpenROM.Text>Abrir un archivo de juego...</OpenROM.Text>
 		<UseLibRetro.Text>Cargar datos desde LibRetro</UseLibRetro.Text>
 	</form>
+	<form name="Options_Flash"></form>
 	<form name="Options_VC_N64">
 		<groupBox1.Text>Parches</groupBox1.Text>
 		<n64000.Text>Deshabilitación del filtro oscuro</n64000.Text>
@@ -113,6 +114,8 @@
 		<PaletteList.Items2>Consola Virtual (Nintendo 3DS)</PaletteList.Items2>
 	</form>
 	<form name="Options_VC_SEGA">
+		<toggleSwitch1.OffText>Utilizando el mando normal</toggleSwitch1.OffText>
+		<toggleSwitch1.OnText>Utilizando el mando de 6 botones</toggleSwitch1.OnText>
 		<groupBox1.Text>Brillo</groupBox1.Text>
 	</form>
 	<form name="SettingsForm">

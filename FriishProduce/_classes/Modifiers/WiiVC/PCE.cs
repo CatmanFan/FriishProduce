@@ -147,20 +147,18 @@ namespace FriishProduce.WiiVC
                 m.DiscardBufferedData();
                 m.BaseStream.Seek(0, SeekOrigin.Begin);
 
-                foreach (string line in new string[]
+                List<string> ConfigFile = new List<string>()
                 {
                     name,
-                    rom,
-                    "BACKUPRAM=1",
-                    "CHASEHQ=0",
-                    "MULTITAP=1",
-                    "HDS=0",
-                    "RASTER=0",
-                    "POPULUS=0",
-                    "SPRLINE=0",
-                    "NOFPA=1",
-                    "PAD5=1",
-                })
+                    rom
+                };
+
+                foreach (KeyValuePair<string, string> pair in Settings)
+                {
+                    ConfigFile.Add($"{pair.Key.ToUpper()}={(pair.Value.ToLower() == "true" ? "1" : pair.Value.ToLower() == "false" ? "0" : pair.Value)}");
+                }
+
+                foreach (string line in ConfigFile.ToArray())
                 {
                     t.WriteLine(line);
                 }

@@ -24,6 +24,7 @@
 		<B.Yes>&amp;Oui</B.Yes>
 		<ByDefault>Par défaut</ByDefault>
 		<CustomManual>Importer un mode d'emploi personnalisé</CustomManual>
+		<Display>Affichage</Display>
 		<DoNotShow>Ne plus afficher ce message</DoNotShow>
 		<Error>Un problème est survenu</Error>
 		<Error.000>Échec de la connexion à Internet.\nMessage : {0}</Error.000>
@@ -67,6 +68,7 @@
 		<Region.E>Europe</Region.E>
 		<Region.F>Déverrouillée</Region.F>
 		<Settings>Paramètres</Settings>
+		<System>Système</System>
 		<Unknown>Inconnu(e)</Unknown>
 		<Untitled>Projet {0} sans titre</Untitled>
 		<VC>Console virtuelle</VC>
@@ -134,8 +136,8 @@
 		<PaletteList.Items6>RGB (Nestopia)</PaletteList.Items6>
 	</form>
 	<form name="Options_VC_SEGA">
-		<checkBox1.Text>Utiliser manette à six boutons</checkBox1.Text>
-		<groupBox1.Text>Luminosité</groupBox1.Text>
+		<toggleSwitch1.OffText>Utilisant la manette normale</toggleSwitch1.OffText>
+		<toggleSwitch1.OnText>Utilisant la manette 6 boutons</toggleSwitch1.OnText>
 	</form>
 	<form name="SettingsForm">
 		<AutoLibRetro.Text>Remplir automatiquement dès LibRetro</AutoLibRetro.Text>

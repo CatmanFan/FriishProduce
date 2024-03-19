@@ -62,17 +62,16 @@ namespace FriishProduce
 
             // -----------------------------
 
-            const string Name_N64 = "Options_VC_N64";
-            n64000.Text = Language.Get(n64000, Name_N64);
-            n64001.Text = Language.Get(n64001, Name_N64);
-            n64002.Text = Language.Get(n64002, Name_N64);
-            n64003.Text = Language.Get(n64003, Name_N64);
-            n64004.Text = Language.Get(n64004, Name_N64);
-            groupBox3.Text = Language.Get("groupBox1", Name_N64, true);
+            n64000.Text = Language.Get(n64000, typeof(Options_VC_N64).Name);
+            n64001.Text = Language.Get(n64001, typeof(Options_VC_N64).Name);
+            n64002.Text = Language.Get(n64002, typeof(Options_VC_N64).Name);
+            n64003.Text = Language.Get(n64003, typeof(Options_VC_N64).Name);
+            n64004.Text = Language.Get(n64004, typeof(Options_VC_N64).Name);
+            groupBox3.Text = Language.Get("groupBox1", typeof(Options_VC_N64).Name, true);
 
             ROMCType.Items.Clear();
             ROMCType.Items.Add("auto");
-            Language.GetComboBox(ROMCType, "ROMCType", Name_N64);
+            Language.GetComboBox(ROMCType, "ROMCType", typeof(Options_VC_N64).Name);
 
             // -----------------------------
 

@@ -46,15 +46,15 @@ namespace FriishProduce
             this.label3 = new System.Windows.Forms.Label();
             this.InjectorsList = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.COPanel_VC = new System.Windows.Forms.Panel();
-            this.CustomManual = new System.Windows.Forms.CheckBox();
             this.COPanel_Forwarder = new System.Windows.Forms.Panel();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.FStorage_SD = new System.Windows.Forms.RadioButton();
             this.FStorage_USB = new System.Windows.Forms.RadioButton();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.FNANDLoader_vWii = new System.Windows.Forms.RadioButton();
-            this.FNANDLoader_Wii = new System.Windows.Forms.RadioButton();
+            this.toggleSwitchL1 = new System.Windows.Forms.Label();
+            this.toggleSwitch1 = new JCS.ToggleSwitch();
+            this.COPanel_VC = new System.Windows.Forms.Panel();
+            this.CustomManual = new System.Windows.Forms.CheckBox();
             this.label11 = new System.Windows.Forms.Label();
             this.ImportPatch = new System.Windows.Forms.CheckBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -93,10 +93,10 @@ namespace FriishProduce
             this.groupBox6.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.COPanel_VC.SuspendLayout();
             this.COPanel_Forwarder.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox9.SuspendLayout();
+            this.COPanel_VC.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Random)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -195,8 +195,8 @@ namespace FriishProduce
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.InjectorsList);
             this.groupBox3.Controls.Add(this.button1);
-            this.groupBox3.Controls.Add(this.COPanel_VC);
             this.groupBox3.Controls.Add(this.COPanel_Forwarder);
+            this.groupBox3.Controls.Add(this.COPanel_VC);
             resources.ApplyResources(this.groupBox3, "groupBox3");
             this.groupBox3.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.groupBox3.Name = "groupBox3";
@@ -224,19 +224,6 @@ namespace FriishProduce
             this.button1.Name = "button1";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.OpenInjectorOptions);
-            // 
-            // COPanel_VC
-            // 
-            this.COPanel_VC.Controls.Add(this.CustomManual);
-            resources.ApplyResources(this.COPanel_VC, "COPanel_VC");
-            this.COPanel_VC.Name = "COPanel_VC";
-            // 
-            // CustomManual
-            // 
-            resources.ApplyResources(this.CustomManual, "CustomManual");
-            this.CustomManual.Name = "CustomManual";
-            this.CustomManual.UseVisualStyleBackColor = true;
-            this.CustomManual.CheckedChanged += new System.EventHandler(this.CustomManual_CheckedChanged);
             // 
             // COPanel_Forwarder
             // 
@@ -272,28 +259,39 @@ namespace FriishProduce
             // 
             // groupBox9
             // 
-            this.groupBox9.Controls.Add(this.FNANDLoader_vWii);
-            this.groupBox9.Controls.Add(this.FNANDLoader_Wii);
+            this.groupBox9.Controls.Add(this.toggleSwitchL1);
+            this.groupBox9.Controls.Add(this.toggleSwitch1);
             this.groupBox9.FlatStyle = System.Windows.Forms.FlatStyle.System;
             resources.ApplyResources(this.groupBox9, "groupBox9");
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.TabStop = false;
             // 
-            // FNANDLoader_vWii
+            // toggleSwitchL1
             // 
-            resources.ApplyResources(this.FNANDLoader_vWii, "FNANDLoader_vWii");
-            this.FNANDLoader_vWii.Name = "FNANDLoader_vWii";
-            this.FNANDLoader_vWii.TabStop = true;
-            this.FNANDLoader_vWii.UseVisualStyleBackColor = true;
-            this.FNANDLoader_vWii.CheckedChanged += new System.EventHandler(this.SwitchAspectRatio);
+            resources.ApplyResources(this.toggleSwitchL1, "toggleSwitchL1");
+            this.toggleSwitchL1.Name = "toggleSwitchL1";
             // 
-            // FNANDLoader_Wii
+            // toggleSwitch1
             // 
-            resources.ApplyResources(this.FNANDLoader_Wii, "FNANDLoader_Wii");
-            this.FNANDLoader_Wii.Name = "FNANDLoader_Wii";
-            this.FNANDLoader_Wii.TabStop = true;
-            this.FNANDLoader_Wii.UseVisualStyleBackColor = true;
-            this.FNANDLoader_Wii.CheckedChanged += new System.EventHandler(this.SwitchAspectRatio);
+            resources.ApplyResources(this.toggleSwitch1, "toggleSwitch1");
+            this.toggleSwitch1.Name = "toggleSwitch1";
+            this.toggleSwitch1.OffFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toggleSwitch1.OnFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toggleSwitch1.Style = JCS.ToggleSwitch.ToggleSwitchStyle.IOS5;
+            this.toggleSwitch1.CheckedChanged += new JCS.ToggleSwitch.CheckedChangedDelegate(this.ToggleSwitchChanged);
+            // 
+            // COPanel_VC
+            // 
+            this.COPanel_VC.Controls.Add(this.CustomManual);
+            resources.ApplyResources(this.COPanel_VC, "COPanel_VC");
+            this.COPanel_VC.Name = "COPanel_VC";
+            // 
+            // CustomManual
+            // 
+            resources.ApplyResources(this.CustomManual, "CustomManual");
+            this.CustomManual.Name = "CustomManual";
+            this.CustomManual.UseVisualStyleBackColor = true;
+            this.CustomManual.CheckedChanged += new System.EventHandler(this.CustomManual_CheckedChanged);
             // 
             // label11
             // 
@@ -565,7 +563,6 @@ namespace FriishProduce
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             resources.ApplyResources(this.pictureBox1, "pictureBox1");
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.TabStop = false;
@@ -603,13 +600,13 @@ namespace FriishProduce
             this.groupBox7.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            this.COPanel_VC.ResumeLayout(false);
-            this.COPanel_VC.PerformLayout();
             this.COPanel_Forwarder.ResumeLayout(false);
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
+            this.COPanel_VC.ResumeLayout(false);
+            this.COPanel_VC.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Random)).EndInit();
@@ -625,7 +622,6 @@ namespace FriishProduce
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -683,12 +679,12 @@ namespace FriishProduce
         private System.Windows.Forms.RadioButton FStorage_USB;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.RadioButton FNANDLoader_Wii;
-        private System.Windows.Forms.RadioButton FNANDLoader_vWii;
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.GroupBox groupBox9;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.ComboBox RegionsList;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label toggleSwitchL1;
+        private JCS.ToggleSwitch toggleSwitch1;
     }
 }
