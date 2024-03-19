@@ -4,52 +4,16 @@ using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
-using System.Runtime.InteropServices;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Archives
 {
+    /// This has been created using reverse-engineering from the CCF Tools C source code, both by the original author (paulguy) and via libertyernie's fork: https://github.com/libertyernie/ccf-tools.
+    /// It has been converted to C# and now runs the code directly from the program instead of using a third-party app as before.
+
     public class CCF : IDisposable
     {
-        public struct FileDescriptor
-        {
-            public string Name { get; set; }
-            public uint Offset { get; set; }
-            public uint InternalSize { get; set; }
-            public uint FileSize { get; set; }
-            public bool Compressed { get; set; }
-            private CCF Parent { get; set; }
-
-            public FileDescriptor(CCF parent)
-            {
-                Parent = parent;
-                Name = null;
-                Offset = 0;
-                InternalSize = 0;
-                FileSize = 0;
-                Compressed = false;
-            }
-
-            public void Parse()
-            {
-                if (Offset > 0 && InternalSize > 0 && FileSize > 0)
-                {
-                    using (var f = new MemoryStream(Parent.CCFContent))
-                    {
-                        f.Seek(Offset * 32, SeekOrigin.Begin);
-                        byte[] buffer = new byte[InternalSize];
-                        f.Read(buffer, 0, (int)InternalSize);
-                    }
-                }
-
-                // ZLIB header is 0x789C
-                // ***************
-                Compressed = InternalSize != FileSize;
-            }
-        }
-
-        private byte[] CCFContent;
-        public FileDescriptor[] Files { get; private set; }
-
         #region ~~~ IDisposable ~~~
         private bool isDisposed = false;
 
@@ -70,9 +34,9 @@ namespace Archives
             {
                 if (dispose)
                 {
-                    CCFContent = null;
-                    Header = null;
-                    Files = null;
+                    ccfNodes = null;
+                    data = null;
+                    chunkSize = 0;
 
                     isDisposed = true;
                 }
@@ -80,165 +44,83 @@ namespace Archives
         }
         #endregion
 
-        public bool ZlibExtract = true;
-        public bool ZlibPack = false;
+        private byte[] magic = new byte[] { 0x43, 0x43, 0x46, 0x00 };
+        private uint chunkSize = 0;
+
+        private List<CCF_Node> ccfNodes = new List<CCF_Node>();
+        private List<byte[]> data = new List<byte[]>();
+
+        public List<CCF_Node> Nodes { get { return ccfNodes; } }
+        public byte[][] Data { get { return data.ToArray(); } }
 
         public CCF()
         {
-            CCFContent = null;
-            Header = null;
-            Files = null;
+            data = new List<byte[]>();
         }
 
-        public CCF(string path)
+        public static CCF Load(byte[] input)
         {
-            if (!File.Exists(path)) return;
+            CCF c = new CCF();
+            MemoryStream ms = new MemoryStream(input);
 
-            CCFContent = File.ReadAllBytes(path);
-            Header = null;
-            Files = null;
-            Parse();
-        }
+            try { c.parse(ms); }
+            catch { ms.Dispose(); throw; }
 
-        public CCF(MemoryStream path)
-        {
-            CCFContent = path.ToArray();
-            Header = null;
-            Files = null;
-            Parse();
-        }
-
-        public CCF(byte[] path)
-        {
-            CCFContent = path;
-            Header = null;
-            Files = null;
-            Parse();
-        }
-
-        private byte[] Header;
-
-        public byte[][] Data { get; set; }
-
-        private byte[][] InternalData { get; set; }
-
-        private void Parse()
-        {
-            if (CCFContent == null || CCFContent.Length < 32) { CCFContent = null; return; }
-
-            // Read header
-            // *******************
-            uint rootnode_offset;
-
-            rootnode_offset = BitConverter.ToUInt32(CCFContent.Skip(16).Take(4).ToArray(), 0);
-            uint numFiles = BitConverter.ToUInt32(CCFContent.Skip(20).Take(4).ToArray(), 0);
-
-            if (!StructuralComparisons.StructuralEqualityComparer.Equals(CCFContent.Take(4).ToArray(), new byte[] { 67, 67, 70, 0 })
-                || !StructuralComparisons.StructuralEqualityComparer.Equals(CCFContent.Skip(4).Take(12).ToArray(), new byte[12])
-                || rootnode_offset != 0x20
-                || !StructuralComparisons.StructuralEqualityComparer.Equals(CCFContent.Skip(24).Take(8).ToArray(), new byte[8]))
-            {
-                CCFContent = null;
-                throw new Exception("Invalid file!");
-            }
-
-            Header = CCFContent.Take(32).ToArray();
-
-            Files = new FileDescriptor[numFiles];
-            Data = new byte[numFiles][];
-            InternalData = new byte[Data.Length][];
-
-            for (int i = 0; i < numFiles; i++)
-            {
-                Files[i] = new FileDescriptor(this)
-                {
-                    Name = System.Text.Encoding.ASCII.GetString(CCFContent.Skip(Header.Length + (i * 32)).Take(20).ToArray()).TrimEnd('\0'),
-                    Offset = BitConverter.ToUInt32(CCFContent, Header.Length + (i * 32) + 20),
-                    InternalSize = BitConverter.ToUInt32(CCFContent, Header.Length + (i * 32) + 24),
-                    FileSize = BitConverter.ToUInt32(CCFContent, Header.Length + (i * 32) + 28),
-                };
-
-                Files[i].Parse();
-
-                if (Files[i].Offset > 0 && Files[i].InternalSize > 0 && Files[i].FileSize > 0)
-                {
-                    using (var f = new MemoryStream(CCFContent))
-                    {
-                        f.Seek(Files[i].Offset * 32, SeekOrigin.Begin);
-                        byte[] buffer = new byte[Files[i].InternalSize];
-                        f.Read(buffer, 0, (int)Files[i].InternalSize);
-
-                        Data[i] = new byte[buffer.Length];
-                        Array.Copy(buffer, Data[i], buffer.Length);
-
-                        InternalData[i] = new byte[buffer.Length];
-                        Array.Copy(buffer, InternalData[i], buffer.Length);
-                    }
-                }
-
-                // ZLIB header is 0x789C
-                // ***************
-                if (Files[i].Compressed)
-                {
-                    byte[] buffer = Ionic.Zlib.ZlibStream.UncompressBuffer(Data[i]);
-
-                    if (!ZlibExtract)
-                    {
-                        using (DeflateStream c = new DeflateStream(new MemoryStream(InternalData[i].Skip(2).ToArray(), false), CompressionMode.Decompress))
-                        using (MemoryStream ms = new MemoryStream())
-                        {
-                            c.CopyTo(ms);
-                            buffer = ms.ToArray();
-                        }
-                    }
-
-                    Data[i] = new byte[buffer.Length];
-                    Array.Copy(buffer, Data[i], buffer.Length);
-                }
-            }
+            return c;
         }
 
         public int GetNodeIndex(string name)
         {
             int index = -1;
 
-            for (int i = 0; i < Files.Length; i++)
-                if (Files[i].Name.ToLower() == name.ToLower())
+            for (int i = 0; i < ccfNodes.Count; i++)
+                if (ccfNodes[i].Name == name)
                     index = i;
 
             return index;
         }
 
-        public void ReplaceFile(string file, byte[] data) => ReplaceFile(Files[GetNodeIndex(file)], data);
-
-        public void ReplaceFile(FileDescriptor file, byte[] data)
+        public void ReplaceFile(CCF_Node node, byte[] newData)
         {
-            int index = 0;
+            data[GetNodeIndex(node.Name)] = newData;
+        }
 
-            for (int i = 0; i < Files.Length; i++)
-                if (file.Name == Files[i].Name) index = i;
+        public void ReplaceFile(int fileIndex, byte[] newData)
+        {
+            data[fileIndex] = newData;
+        }
 
-            Data[index] = new byte[data.Length];
-            Array.Copy(data, 0, Data[index], 0, data.Length);
-
-            file.FileSize = Convert.ToUInt32(data.Length);
-
-            uint intSize = 0;
-
-            if (file.Compressed)
+        public byte[] ToByteArray()
+        {
+            using (MemoryStream ms = new MemoryStream())
             {
-                byte[] buffer = null;
+                write(ms);
+                return ms.ToArray();
+            }
+        }
 
-                if (ZlibPack)
-                {
-                    buffer = Ionic.Zlib.ZlibStream.CompressBuffer(data);
-                    buffer[0] = 0x78;
-                    buffer[1] = 0x9C;
-                }
+        public void Save(string outputFile)
+        {
+            using (FileStream fs = new FileStream(outputFile, FileMode.Create, FileAccess.Write))
+            {
+                write(fs);
+            }
+        }
 
-                else
+        #region Private Methods
+        private void write(Stream writeStream)
+        {
+            List<byte[]> newDatas = new List<byte[]>();
+            int curpos = ccfNodes.Count + 1;
+
+            for (int i = 0; i < ccfNodes.Count; i++)
+            {
+                byte[] converted = new byte[1];
+                converted = data[i];
+
+                if (ccfNodes[i].Compressed)
                 {
-                    using (MemoryStream inputStream = new MemoryStream(data))
+                    using (MemoryStream inputStream = new MemoryStream(converted))
                     using (MemoryStream outputStream = new MemoryStream())
                     {
                         outputStream.WriteByte(0x78);
@@ -252,9 +134,9 @@ namespace Archives
                         // Adler32 Checksum
                         // *******************
                         uint a = 1, b = 0;
-                        for (int ptr = 0; ptr < data.Length; ptr++)
+                        for (int ptr = 0; ptr < converted.Length; ptr++)
                         {
-                            a = (a + data[ptr]) % 65521;
+                            a = (a + converted[ptr]) % 65521;
                             b = (b + a) % 65521;
                         }
 
@@ -267,85 +149,130 @@ namespace Archives
                         outputStream.WriteByte((byte)((checksum & 0x0000FF00) >> 8));
                         outputStream.WriteByte((byte)((checksum & 0x000000FF) >> 0));
 
-                        buffer = outputStream.ToArray();
+                        converted = outputStream.ToArray();
                     }
                 }
 
-                intSize = Convert.ToUInt32(buffer.Length);
+                byte[] written = new byte[converted.Length + 32 - (converted.Length % 32)];
+                converted.CopyTo(written, 0);
+                newDatas.Add(written);
 
-                // Size failsafe check
-                // *******************
-                if (intSize > 0xFFFFFFFF)
-                {
-                    throw new Exception("File is too large!");
-                }
+                ccfNodes[i] = new CCF_Node(ccfNodes[i].Name, curpos, converted.Length, data[i].Length);
 
-                InternalData[index] = new byte[buffer.Length];
-                Array.Copy(buffer, InternalData[index], buffer.Length);
+                curpos += written.Length / 32;
             }
-            else
+
+            writeStream.Write(magic, 0, 4);
+            writeStream.Write(new byte[12], 0, 12);
+            writeStream.Write(BitConverter.GetBytes(chunkSize), 0, 4);
+            writeStream.Write(BitConverter.GetBytes(ccfNodes.Count), 0, 4);
+            writeStream.Write(new byte[8], 0, 8);
+
+            foreach (var node in ccfNodes)
             {
-                intSize = Convert.ToUInt32(data.Length);
+                byte[] name = new byte[20];
+                Array.Copy(Encoding.ASCII.GetBytes(node.Name), name, Encoding.ASCII.GetBytes(node.Name).Length);
 
-                // Size failsafe check
-                // *******************
-                if (intSize > 0xFFFFFFFF)
-                {
-                    throw new Exception("File is too large!");
-                }
+                writeStream.Write(name, 0, 20);
+                writeStream.Write(BitConverter.GetBytes(node.Offset), 0, 4);
+                writeStream.Write(BitConverter.GetBytes(node.DataSize), 0, 4);
+                writeStream.Write(BitConverter.GetBytes(node.FileSize), 0, 4);
             }
 
-            // Fix internal size
-            // *******************
-            file.InternalSize = intSize & 0xFFFFFFFF;
-
-            if (file.InternalSize > file.FileSize)
-                file.InternalSize = file.FileSize;
-
-            CCFContent = new byte[RewriteCCFContent().Length];
-            RewriteCCFContent().CopyTo(CCFContent, 0);
+            foreach (var item in newDatas)
+            {
+                writeStream.Write(item, 0, item.Length);
+            }
         }
 
-        private byte[] RewriteCCFContent()
+        private void parse(MemoryStream input)
         {
-            int curpos = Files.Length + 1;
-            for (int i = 0; i < Files.Length; i++)
+            if (input == null || input.Length < 32) { throw new Exception("Not A CCF!"); }
+
+            input.Position = 0;
+
+            byte[] fileMagic = new byte[4];
+            byte[] padding0 = new byte[12];
+            byte[] chunk = new byte[4];
+            byte[] numFiles = new byte[4];
+            byte[] padding1 = new byte[8];
+
+            input.Read(fileMagic, 0, 4);
+            input.Read(padding0, 0, 12);
+            input.Read(chunk, 0, 4);
+            input.Read(numFiles, 0, 4);
+            input.Read(padding1, 0, 8);
+
+            if (!StructuralComparisons.StructuralEqualityComparer.Equals(fileMagic, magic)
+                || !StructuralComparisons.StructuralEqualityComparer.Equals(padding0, new byte[12])
+                || BitConverter.ToUInt32(chunk, 0) != 0x20
+                || !StructuralComparisons.StructuralEqualityComparer.Equals(padding1, new byte[8]))
+            { throw new Exception("Not A CCF!"); }
+
+            chunkSize = BitConverter.ToUInt32(chunk, 0);
+
+            for (int i = 0; i < BitConverter.ToUInt32(numFiles, 0); i++)
             {
-                Files[i].Offset = (uint)curpos;
-                curpos += (int)Files[i].InternalSize / 32 + 1;
+                byte[] nodeName = new byte[20];
+                byte[] nodeOffset = new byte[4];
+                byte[] nodeIntData = new byte[4];
+                byte[] nodeExtData = new byte[4];
+
+                input.Read(nodeName, 0, 20);
+                input.Read(nodeOffset, 0, 4);
+                input.Read(nodeIntData, 0, 4);
+                input.Read(nodeExtData, 0, 4);
+
+                ccfNodes.Add(new CCF_Node(Encoding.ASCII.GetString(nodeName).TrimEnd('\0'), BitConverter.ToUInt32(nodeOffset, 0), BitConverter.ToUInt32(nodeIntData, 0), BitConverter.ToUInt32(nodeExtData, 0)));
             }
 
-            var Converted = new List<byte>();
-            Converted.AddRange(Header);
-
-            for (int i = 0; i < Files.Length; i++)
+            foreach (var node in ccfNodes)
             {
-                // New file descriptor header
-                // *******************
-                var FileHeader = new byte[32];
-                System.Text.Encoding.ASCII.GetBytes(Files[i].Name).CopyTo(FileHeader, 0);
-                BitConverter.GetBytes(Files[i].Offset).CopyTo(FileHeader, 20);
-                BitConverter.GetBytes(Files[i].InternalSize).CopyTo(FileHeader, 24);
-                BitConverter.GetBytes(Files[i].FileSize).CopyTo(FileHeader, 28);
-                Converted.AddRange(FileHeader);
-            }
+                input.Seek(node.Offset * chunkSize, SeekOrigin.Begin);
+                byte[] nodeData = new byte[node.DataSize];
+                input.Read(nodeData, 0, (int)node.DataSize);
 
-            // Write new CCF file with replaced data
-            // *******************
-            for (int i = 0; i < Files.Length; i++)
-            {
-                Converted.AddRange(InternalData[i] ?? new byte[] { 0x00 });
-                for (int j = 0; j < 32 - (InternalData[i]?.Length % 32); j++)
+                if (node.Compressed)
                 {
-                    Converted.Add(0x00);
+                    data.Add(Ionic.Zlib.ZlibStream.UncompressBuffer(nodeData));
+                }
+
+                else
+                {
+                    data.Add(nodeData);
                 }
             }
+        }
+        #endregion
+    }
 
-            return Converted.ToArray();
+    public class CCF_Node
+    {
+        private string name;
+        private uint offset;
+        private uint dataSize;
+        private uint fileSize;
+
+        public string Name { get { return name; } }
+        public uint Offset { get { return offset; } }
+        public uint DataSize { get { return dataSize; } }
+        public uint FileSize { get { return fileSize; } }
+        public bool Compressed { get => dataSize != fileSize; }
+
+        public CCF_Node(string name, int offset, int intdata, int extdata)
+        {
+            this.name = name;
+            this.offset = Convert.ToUInt32(offset);
+            dataSize = Convert.ToUInt32(intdata);
+            fileSize = Convert.ToUInt32(extdata);
         }
 
-        public byte[] ToByteArray() => RewriteCCFContent();
-
-        public void Save(string file) => File.WriteAllBytes(file, ToByteArray());
+        public CCF_Node(string name, uint offset, uint intdata, uint extdata)
+        {
+            this.name = name;
+            this.offset = offset;
+            dataSize = intdata;
+            fileSize = extdata;
+        }
     }
 }

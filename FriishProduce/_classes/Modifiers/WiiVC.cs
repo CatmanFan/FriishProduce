@@ -65,36 +65,41 @@ namespace FriishProduce
             if (NeedsManualLoaded) ReplaceManual(MainContent);
         }
 
+        private void CleanManual()
+        {
+            // Dispose of "Operations Guide" button on HOME Menu
+            // ****************
+            U8 Content4 = U8.Load(WAD.Contents[4]);
+
+            int start = -1;
+            int end = -1;
+
+            for (int i = 0; i < Content4.NumOfNodes; i++)
+            {
+                if (Content4.StringTable[i].ToLower() == "homebutton2") start = i;
+                else if (Content4.StringTable[i].ToLower() == "homebutton3") end = i;
+            }
+
+            try
+            {
+                if (start <= 0 && end <= 0) throw new InvalidOperationException();
+                else
+                {
+                    for (int i = 1; i < end - start; i++)
+                        Content4.ReplaceFile(i + end, Content4.Data[i + start]);
+
+                    Contents[4] = Content4.ToByteArray();
+                    if (Content4 != null) Content4.Dispose();
+                }
+            }
+            catch { if (Content4 != null) Content4.Dispose(); }
+        }
+
         protected void ReplaceManual(U8 target)
         {
             if (ManualPath == null)
             {
-                // Dispose of "Operations Guide" button on HOME Menu
-                // ****************
-                U8 Content4 = U8.Load(WAD.Contents[4]);
-
-                int start = -1;
-                int end = -1;
-
-                for (int i = 0; i < Content4.NumOfNodes; i++)
-                {
-                    if (Content4.StringTable[i].ToLower() == "homebutton2") start = i;
-                    else if (Content4.StringTable[i].ToLower() == "homebutton3") end = i;
-                }
-
-                try
-                {
-                    if (start <= 0 && end <= 0) throw new InvalidOperationException();
-                    else
-                    {
-                        for (int i = 1; i < end - start; i++)
-                            Content4.ReplaceFile(i + end, Content4.Data[i + start]);
-
-                        Contents[4] = Content4.ToByteArray();
-                        if (Content4 != null) Content4.Dispose();
-                    }
-                }
-                catch { if (Content4 != null) Content4.Dispose(); }
+                CleanManual();
             }
 
             else

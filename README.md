@@ -63,7 +63,7 @@ This program uses the following third-party components and apps:
 * **WWCXTool** by alpha-0.
 * **romc0** and **lzh8_cmpdec** by [hcs64](https://github.com/hcs64).
 * **[ROMC VC Compressor](https://www.elotrolado.net/hilo_romc-vc-compressor_1015640)** by Jurai, with additional LZSS code by Haruhiko Okumura.
-* **[ccf-tools](https://github.com/libertyernie/ccf-tools)** (orig. author: paulguy) and **[BrawlLib](https://github.com/libertyernie/brawllib-wit)** (orig. author: soopercool101), both forked by [libertyernie](https://github.com/libertyernie).
+* [libertyernie](https://github.com/libertyernie)'s **[fork of BrawlLib](https://github.com/libertyernie/brawllib-wit)** by soopercool101.
 
 For icons and interface:
 * **[MdiTabCtrl](https://github.com/JacksiroKe/MdiTabCtrl)** by Jack Siro.

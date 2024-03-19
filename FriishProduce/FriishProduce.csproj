@@ -151,8 +151,8 @@
     <Compile Include="Subforms\Options_Flash.Designer.cs">
       <DependentUpon>Options_Flash.cs</DependentUpon>
     </Compile>
-    <Compile Include="_classes\BannerPreview.cs" />
     <Compile Include="_classes\Archives\CCF.cs" />
+    <Compile Include="_classes\BannerPreview.cs" />
     <Compile Include="_classes\Modifiers\Flash.cs" />
     <Compile Include="_classes\Modifiers\Forwarder.cs" />
     <Compile Include="_classes\Modifiers\WiiVC\PCE.cs" />

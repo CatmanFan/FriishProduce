@@ -519,26 +519,28 @@ namespace FriishProduce
         /// <param name="platform">Target console</param>
         /// <param name="tplArray">misc.wte in bytes</param>
         /// <returns>Modified WTE files in byte array format</returns>
-        public void ReplaceSaveWTE()
+        public void CreateSaveWTE(Archives.CCF CCF)
         {
-            string ImagesPath = Paths.MiscCCF + "images\\";
+            string ImagesPath = Paths.WorkingFolder + "images\\";
             if (!Directory.Exists(ImagesPath)) Directory.CreateDirectory(ImagesPath);
 
-            foreach (var item in Directory.EnumerateFiles(Paths.MiscCCF))
+            foreach (var item in CCF.Nodes)
             {
-                if (Path.GetExtension(item) == ".wte")
+                if (Path.GetExtension(item.Name) == ".wte")
                 {
+                    File.WriteAllBytes(Paths.WorkingFolder + item.Name, CCF.Data[CCF.GetNodeIndex(item.Name)]);
+
                     // Convert first to tex0, then to PNG
                     // ****************
                     ProcessHelper.Run
                     (
                         Paths.Tools + "sega\\wteconvert.exe",
-                        $"\"{item}\" \"{ImagesPath}{Path.GetFileNameWithoutExtension(item)}.tex0\""
+                        $"\"{item.Name}\" \"{ImagesPath}{Path.GetFileNameWithoutExtension(item.Name)}.tex0\""
                     );
                     ProcessHelper.Run
                     (
                         Paths.Tools + "sega\\texextract.exe",
-                        $"\"{ImagesPath}{Path.GetFileNameWithoutExtension(item)}.tex0\" \"{ImagesPath}{Path.GetFileNameWithoutExtension(item)}.png\""
+                        $"\"{ImagesPath}{Path.GetFileNameWithoutExtension(item.Name)}.tex0\" \"{ImagesPath}{Path.GetFileNameWithoutExtension(item.Name)}.png\""
                     );
                 }
             }
@@ -728,12 +730,13 @@ namespace FriishProduce
                     // --------------------------------------------
                     // WTE conversion
                     // --------------------------------------------
-                    try { File.Delete(Paths.MiscCCF + Path.GetFileNameWithoutExtension(item) + ".wte"); } catch { }
                     ProcessHelper.Run
                     (
                         Paths.Tools + "sega\\wteconvert.exe",
-                        $"\"{item}\" \"{Paths.MiscCCF}{Path.GetFileNameWithoutExtension(item)}.wte\""
+                        $"\"{item}\" \"{Path.GetFileNameWithoutExtension(item)}.wte\""
                     );
+
+                    if (File.Exists(Paths.WorkingFolder + $"{Path.GetFileNameWithoutExtension(item)}.wte")) CCF.Data[CCF.GetNodeIndex($"{Path.GetFileNameWithoutExtension(item)}.wte")] = File.ReadAllBytes(Paths.WorkingFolder + $"{Path.GetFileNameWithoutExtension(item)}.wte");
                 }
             }
 
