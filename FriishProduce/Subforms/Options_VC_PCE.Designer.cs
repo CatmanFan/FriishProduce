@@ -36,9 +36,30 @@ namespace FriishProduce
             this.toggleSwitchL1 = new System.Windows.Forms.Label();
             this.toggleSwitch1 = new JCS.ToggleSwitch();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.bottomPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // OK
+            // 
+            this.OK.Location = new System.Drawing.Point(96, 12);
+            // 
+            // bottomPanel1
+            // 
+            this.bottomPanel1.Size = new System.Drawing.Size(294, 47);
+            // 
+            // Cancel
+            // 
+            this.Cancel.Location = new System.Drawing.Point(192, 12);
             // 
             // toggleSwitch2
             // 
@@ -49,6 +70,7 @@ namespace FriishProduce
             this.toggleSwitch2.Size = new System.Drawing.Size(30, 15);
             this.toggleSwitch2.Style = JCS.ToggleSwitch.ToggleSwitchStyle.IOS5;
             this.toggleSwitch2.TabIndex = 21;
+            this.toggleSwitch2.CheckedChanged += new JCS.ToggleSwitch.CheckedChangedDelegate(this.ToggleSwitchChanged);
             // 
             // toggleSwitchL2
             // 
@@ -68,6 +90,7 @@ namespace FriishProduce
             this.toggleSwitch3.Size = new System.Drawing.Size(30, 15);
             this.toggleSwitch3.Style = JCS.ToggleSwitch.ToggleSwitchStyle.IOS5;
             this.toggleSwitch3.TabIndex = 23;
+            this.toggleSwitch3.CheckedChanged += new JCS.ToggleSwitch.CheckedChangedDelegate(this.ToggleSwitchChanged);
             // 
             // toggleSwitchL3
             // 
@@ -100,28 +123,113 @@ namespace FriishProduce
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.checkBox4);
             this.groupBox1.Controls.Add(this.toggleSwitch1);
             this.groupBox1.Controls.Add(this.toggleSwitchL1);
             this.groupBox1.Controls.Add(this.toggleSwitch3);
             this.groupBox1.Controls.Add(this.toggleSwitchL2);
             this.groupBox1.Controls.Add(this.toggleSwitchL3);
             this.groupBox1.Controls.Add(this.toggleSwitch2);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(12, 10);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(177, 87);
+            this.groupBox1.Size = new System.Drawing.Size(270, 113);
             this.groupBox1.TabIndex = 24;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "System";
             // 
+            // checkBox4
+            // 
+            this.checkBox4.AutoSize = true;
+            this.checkBox4.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.checkBox4.Location = new System.Drawing.Point(10, 83);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(81, 18);
+            this.checkBox4.TabIndex = 5;
+            this.checkBox4.Text = "Use SRAM";
+            this.checkBox4.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(this.numericUpDown1);
+            this.groupBox2.Controls.Add(this.checkBox3);
+            this.groupBox2.Controls.Add(this.checkBox2);
+            this.groupBox2.Controls.Add(this.checkBox1);
+            this.groupBox2.Location = new System.Drawing.Point(12, 129);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(270, 120);
+            this.groupBox2.TabIndex = 25;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Display";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(62, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(46, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Y-offset";
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(10, 20);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            25,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(46, 21);
+            this.numericUpDown1.TabIndex = 3;
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.checkBox3.Location = new System.Drawing.Point(10, 93);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(81, 18);
+            this.checkBox3.TabIndex = 2;
+            this.checkBox3.Text = "Sprite limit";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.checkBox2.Location = new System.Drawing.Point(10, 71);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(77, 18);
+            this.checkBox2.TabIndex = 1;
+            this.checkBox2.Text = "BG raster";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.checkBox1.Location = new System.Drawing.Point(10, 49);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(100, 18);
+            this.checkBox1.TabIndex = 0;
+            this.checkBox1.Text = "Hide overscan";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // Options_VC_PCE
             // 
-            this.ClientSize = new System.Drawing.Size(384, 362);
+            this.ClientSize = new System.Drawing.Size(294, 312);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "Options_VC_PCE";
             this.Controls.SetChildIndex(this.groupBox1, 0);
+            this.Controls.SetChildIndex(this.groupBox2, 0);
             this.bottomPanel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -135,5 +243,12 @@ namespace FriishProduce
         private System.Windows.Forms.Label toggleSwitchL1;
         private JCS.ToggleSwitch toggleSwitch1;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.CheckBox checkBox4;
     }
 }

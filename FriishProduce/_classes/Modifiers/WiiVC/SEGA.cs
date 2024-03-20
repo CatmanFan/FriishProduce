@@ -57,7 +57,34 @@ namespace FriishProduce.WiiVC
             MainCCF = CCF.Load(MainContent.Data[MainContent.GetNodeIndex("data.ccf")]);
             MiscCCF = CCF.Load(MainCCF.Data[MainCCF.GetNodeIndex("misc.ccf")]);
 
-            ReplaceManual(MainContent);
+            #region ReplaceManual
+            if (ManualPath == null) ReplaceManual(MainContent);
+
+            else
+            {
+                try
+                {
+                    // Get and read emanual
+                    // ****************
+                    foreach (var item in MainCCF.Nodes)
+                        if (item.Name.ToLower().Contains("man.arc"))
+                        {
+                            OrigManual = item.Name;
+                            Manual = MainCCF.Data[MainCCF.GetNodeIndex(OrigManual)];
+                        }
+
+                    MainCCF.ReplaceFile(MainCCF.GetNodeIndex(OrigManual), ReplaceManual().ToByteArray());
+                }
+
+                catch
+                {
+                    OrigManual = null;
+                    Manual = null;
+                    ManualPath = null;
+                    ReplaceManual(MainContent);
+                }
+            }
+            #endregion
 
             switch (WAD.UpperTitleID.Substring(0, 3).ToUpper())
             {
@@ -175,8 +202,6 @@ namespace FriishProduce.WiiVC
 
         protected override void ModifyEmulatorSettings()
         {
-            return;
-
             // CONFIG Encoding: Unix (LF) - UTF-8 (new empty line at bottom)
             // Savedata Encoding: Windows (CRLF) - UTF-16 Big Endian ("banner.cfg")
             // Savedata Encoding: Windows (CRLF) - UTF-8 ("comment", ver3 only)
@@ -203,12 +228,27 @@ namespace FriishProduce.WiiVC
             snd.snddrv="tsdev+"
             vdp.disable_gamma="0"
             vdp_md.gamma_curve ="0x00,0x1a,0x31,0x42,0x54,0x66,0x78,0x80,0x8f,0x9e,0xad,0xc1,0xd5,0xea,0xff"
+
+
+            * PULSEMAN CONFIG:
+            console.brightness="68"
+            console.machine_arch="md"
+            console.machine_country="jp"
+            console.volume="+6.0"
+            modules="emu_m68kbase tsdevp md se_vc"
+            romfile="Pulseman.SGD"
+            snd.snddrv="tsdev+"
+
              */
 
-            foreach (var item in Directory.EnumerateFiles(Paths.DataCCF))
+            foreach (var item in MainCCF.Nodes)
             {
-                if (Path.GetFileName(item).ToLower() == "config")
+                if (item.Name.ToLower() == "config")
                 {
+                    // Read config file
+                    // ****************
+                    string[] configFile = Encoding.UTF8.GetString(MainCCF.Data[MainCCF.GetNodeIndex(item.Name)]).Replace("\r\n", "\n").Split('\n');
+
                     IDictionary<string, string> Settings = this.Settings;
 
                     switch (IsSMS)
@@ -224,9 +264,11 @@ namespace FriishProduce.WiiVC
                             break;
                     }
 
+                    // newConfig is the new file which includes the modified values
+                    // alreadyAdded exists to avoid duplicate entries being added to the above
+                    // ****************
                     List<string> newConfig = new List<string>();
                     List<string> alreadyAdded = new List<string>();
-                    var oldConfig = File.ReadAllLines(item);
 
                     Dictionary<string, string> Alt = new Dictionary<string, string>
                         {
@@ -238,14 +280,17 @@ namespace FriishProduce.WiiVC
                     for (int i = 0; i < Alt.Count; i++)
                         foreach (var newLine in Settings)
                             if (newLine.Key == Alt.ElementAt(i).Key)
-                                foreach (var line in oldConfig)
-                                    if (line.StartsWith(Alt.ElementAt(i).Value) && Alt.ElementAt(i).Value != newLine.Key && Settings.ContainsKey(newLine.Key) && !string.IsNullOrEmpty(newLine.Value))
+                                foreach (var line in configFile)
+                                    if (line.ToLower().Contains(Alt.ElementAt(i).Value)
+                                     && Alt.ElementAt(i).Value != newLine.Key
+                                     && !string.IsNullOrEmpty(newLine.Value))
                                     {
-                                        newConfig.Add($"{newLine.Key}=\"{newLine.Value}\"");
+                                        newConfig.Add($"{Alt.ElementAt(i).Value}=\"{newLine.Value}\"");
+                                        alreadyAdded.Add(newLine.Key);
                                         alreadyAdded.Add(Alt.ElementAt(i).Value);
                                     }
 
-                    foreach (var line in oldConfig)
+                    foreach (var line in configFile)
                         foreach (var name in new string[]
                         {
                             // Settings that should NOT be changed:
@@ -274,7 +319,19 @@ namespace FriishProduce.WiiVC
                         }
                     }
 
-                    File.WriteAllLines(item, newConfig);
+                    newConfig.Sort();
+
+                    using (var s = new MemoryStream())
+                    {
+                        var t = new StreamWriter(s, Encoding.UTF8);
+
+                        for (int i = 0; i < newConfig.Count; i++)
+                            t.WriteLine(newConfig[i]);
+
+                        t.Flush();
+
+                        MainCCF.ReplaceFile(item, s.ToArray());
+                    }
                 }
             }
         }

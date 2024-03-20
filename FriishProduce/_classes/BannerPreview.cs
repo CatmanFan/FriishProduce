@@ -474,7 +474,7 @@ namespace FriishProduce
             using (Graphics g = Graphics.FromImage(bmp))
             {
                 g.InterpolationMode = InterpolationMode.Bicubic;
-                g.DrawImage(img, -3, -3, bmp.Width + 6, bmp.Height + 8);
+                g.DrawImage(img, -5, -4, bmp.Width + 11, bmp.Height + 11);
             }
 
             Bitmap bmp2 = new Bitmap(bmp.Width + 2, bmp.Height + 2);

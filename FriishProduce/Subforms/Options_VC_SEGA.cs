@@ -33,6 +33,8 @@ namespace FriishProduce
             if (!DesignMode)
             {
                 Language.Localize(this);
+                toggleSwitchL1.Text = Language.Get(toggleSwitch1, this);
+
                 comboBox1.Items.Clear();
                 comboBox1.Items.Add(Language.Get("Region.U"));
                 comboBox1.Items.Add(Language.Get("Region.E"));
@@ -44,11 +46,16 @@ namespace FriishProduce
 
         protected override void ResetOptions()
         {
+            // Console/emulator-specific tools
+            // *******
+            toggleSwitchL1.Enabled = toggleSwitch1.Enabled = !IsSMS;
+            // label1.Enabled = BrightnessValue.Enabled = EmuType >= 2 || IsSMS;
+
             // Form control
             // *******
             if (Settings != null)
             {
-                if (Settings["console.brightness"] == null) Settings["console.brightness"] = IsSMS ? "68" : "100";
+                if (Settings["console.brightness"] == null || !BrightnessValue.Enabled) Settings["console.brightness"] = IsSMS ? "68" : "100";
                 if (Settings["dev.mdpad.enable_6b"] == null) Settings["dev.mdpad.enable_6b"] = IsSMS ? "0" : "1";
 
                 BrightnessValue.Value = int.Parse(Settings["console.brightness"]);
@@ -57,10 +64,6 @@ namespace FriishProduce
                 comboBox1.SelectedIndex = Settings["country"] == "jp" ? 2 : Settings["country"] == "eu" ? 1 : 0;
                 ChangeBrightness();
             }
-
-            // Console-specific tools
-            // *******
-            toggleSwitchL1.Enabled = toggleSwitch1.Enabled = !IsSMS;
         }
 
         protected override void SaveOptions()

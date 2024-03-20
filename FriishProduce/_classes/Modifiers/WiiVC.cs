@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using libWiiSharp;
 
 namespace FriishProduce
@@ -23,9 +22,9 @@ namespace FriishProduce
         protected bool NeedsMainDOL { get; set; }
         protected List<byte[]> Contents { get; set; }
 
-        // This is the main U8 archive which contains the emanual, ROM, savebanner, or other needed files, stored in either 00000005.app, 00000006.app or 00000007.app (depending on the console).
-        // It needs to be set manually for each console (normally, it is the 5th index)
-        // ****************
+        /// This is the main U8 archive which contains the emanual, ROM, savebanner, or other needed files, stored in either 00000005.app, 00000006.app or 00000007.app (depending on the console).
+        /// It needs to be set manually for each console (normally, it is the 5th index)
+
         protected int MainContentIndex { get; set; }
         protected U8 MainContent { get; set; }
 
@@ -95,6 +94,28 @@ namespace FriishProduce
             catch { if (Content4 != null) Content4.Dispose(); }
         }
 
+        protected U8 ReplaceManual()
+        {
+            // Replace
+            // ****************
+            U8 ManualArc = U8.Load(Manual);
+
+            string newFolder = Path.Combine(Paths.Manual, Path.GetFileNameWithoutExtension(OrigManual).Replace("htmlc", "html"));
+            string oldFolder = Directory.Exists(Path.Combine(ManualPath, "emanual")) ? Path.Combine(ManualPath, "emanual")
+                             : Directory.Exists(Path.Combine(ManualPath, "man")) ? Path.Combine(ManualPath, "man")
+                             : Path.Combine(ManualPath, "html");
+
+            Directory.CreateDirectory(newFolder);
+            foreach (string dir in Directory.GetDirectories(oldFolder, "*", SearchOption.AllDirectories))
+                Directory.CreateDirectory(dir.Replace(oldFolder, newFolder));
+            foreach (string path in Directory.GetFiles(oldFolder, "*.*", SearchOption.AllDirectories))
+                File.Copy(path, path.Replace(oldFolder, newFolder), true);
+
+            ManualArc.CreateFromDirectory(Paths.Manual);
+            Directory.Delete(Paths.Manual, true);
+            return ManualArc;
+        }
+
         protected void ReplaceManual(U8 target)
         {
             if (ManualPath == null)
@@ -132,71 +153,56 @@ namespace FriishProduce
 
                 // Get and read emanual
                 // ****************
-                if (File.Exists(Paths.DataCCF + "man.arc"))
-                {
-                    OrigManual = Paths.DataCCF + "man.arc";
-                    Manual = File.ReadAllBytes(OrigManual);
-                }
-                else
+                try
                 {
                     foreach (var item in target.StringTable)
                         if (item.ToLower().Contains("emanual.arc") || item.ToLower().Contains("html.arc") || item.ToLower().Contains("man.arc"))
                         {
                             OrigManual = item;
                             Manual = target.Data[target.GetNodeIndex(OrigManual)];
+
+                            target.ReplaceFile(target.GetNodeIndex(OrigManual), ReplaceManual().ToByteArray());
                         }
 
-                        else if (item.ToLower().Contains("htmlc.arc"))
-                        {
-                            OrigManual = item;
-                            /* TO-DO: Handle using LZ77 compression (WWCXtool again?) */
-                        }
-
-                        else if (item.ToLower().Contains("lz77_html.arc"))
+                        else if (item.ToLower().Contains("htmlc.arc") || item.ToLower().Contains("lz77_html.arc"))
                         {
                             OrigManual = item;
 
-                            File.WriteAllBytes(Paths.WorkingFolder + "lz77_html.arc", target.Data[target.GetNodeIndex(OrigManual)]);
+                            File.WriteAllBytes(Paths.WorkingFolder + "html.arc", target.Data[target.GetNodeIndex(OrigManual)]);
                             ProcessHelper.Run
                             (
                                 Paths.Tools + "wwcxtool.exe",
                                 Paths.WorkingFolder,
-                                "/u lz77_html.arc lz77_html.dec"
+                                "/u html.arc html.dec"
                             );
 
-                            if (!File.Exists(Paths.WorkingFolder + "lz77_html.dec")) throw new Exception(Language.Get("Error.002"));
+                            if (!File.Exists(Paths.WorkingFolder + "html.dec")) throw new Exception(Language.Get("Error.002"));
+                            Manual = File.ReadAllBytes(Paths.WorkingFolder + "html.dec");
+                            if (File.Exists(Paths.WorkingFolder + "html.dec")) File.Delete(Paths.WorkingFolder + "html.dec");
 
-                            Manual = File.ReadAllBytes(Paths.WorkingFolder + "lz77_html.dec");
+                            File.WriteAllBytes("html_modified.dec", ReplaceManual().ToByteArray());
 
-                            if (File.Exists(Paths.WorkingFolder + "lz77_html.arc")) File.Delete(Paths.WorkingFolder + "lz77_html.arc");
-                            if (File.Exists(Paths.WorkingFolder + "lz77_html.dec")) File.Delete(Paths.WorkingFolder + "lz77_html.dec");
+                            ProcessHelper.Run
+                            (
+                                Paths.Tools + "wwcxtool.exe",
+                                Paths.WorkingFolder,
+                                "/cr html.arc html_modified.dec html_modified.arc"
+                            );
+
+                            if (!File.Exists(Paths.WorkingFolder + "html_modified.arc")) throw new Exception(Language.Get("Error.002"));
+                            target.ReplaceFile(target.GetNodeIndex(OrigManual), File.ReadAllBytes(Paths.WorkingFolder + "html_modified.arc"));
+
+                            if (File.Exists(Paths.WorkingFolder + "html.arc")) File.Delete(Paths.WorkingFolder + "html.arc");
+                            if (File.Exists(Paths.WorkingFolder + "html_modified.arc")) File.Delete(Paths.WorkingFolder + "html_modified.arc");
                         }
                 }
 
-                // Replace
-                // ****************
-                U8 ManualArc = U8.Load(Manual);
-
-                string newFolder = Path.Combine(Paths.Manual, Path.GetFileNameWithoutExtension(OrigManual).Replace("htmlc", "html"));
-                string oldFolder = Directory.Exists(Path.Combine(ManualPath, "emanual")) ? Path.Combine(ManualPath, "emanual")
-                                 : Directory.Exists(Path.Combine(ManualPath, "man")) ? Path.Combine(ManualPath, "man")
-                                 : Path.Combine(ManualPath, "html");
-
-                Directory.CreateDirectory(newFolder);
-                foreach (string dir in Directory.GetDirectories(oldFolder, "*", SearchOption.AllDirectories))
-                    Directory.CreateDirectory(dir.Replace(oldFolder, newFolder));
-                foreach (string path in Directory.GetFiles(oldFolder, "*.*", SearchOption.AllDirectories))
-                    File.Copy(path, path.Replace(oldFolder, newFolder), true);
-
-                ManualArc.CreateFromDirectory(Paths.Manual);
-
-                if (File.Exists(OrigManual))
-                    File.WriteAllBytes(OrigManual, ManualArc.ToByteArray());
-                else
-                    target.ReplaceFile(target.GetNodeIndex(OrigManual), ManualArc.ToByteArray());
-
-                ManualArc.Dispose();
-                Directory.Delete(Paths.Manual, true);
+                catch
+                {
+                    // Do error?
+                    // ****************
+                    CleanManual();
+                }
             }
         }
 

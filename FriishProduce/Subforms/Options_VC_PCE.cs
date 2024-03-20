@@ -22,6 +22,7 @@ namespace FriishProduce
                 { "PADBUTTON", "2" },
                 { "CHASEHQ", "0" },
                 { "EUROPE", "0" },
+                { "SGENABLE", "0" },
                 { "HIDEOVERSCAN", "0" },
                 { "YOFFSET", "0" },
                 { "MULTITAP", "1" },
@@ -37,11 +38,10 @@ namespace FriishProduce
             // *******
             if (!DesignMode)
             {
-                OK.Click += OK_Click;
-                Cancel.Click += Cancel_Click;
-                Load += Form_Load;
-
-                // Language.Localize(this);
+                Language.Localize(this);
+                toggleSwitchL1.Text = Language.Get(toggleSwitch1, this);
+                toggleSwitchL2.Text = Language.Get(toggleSwitch2, this);
+                toggleSwitchL3.Text = Language.Get(toggleSwitch3, this);
             }
         }
 
@@ -53,14 +53,28 @@ namespace FriishProduce
             // *******
             if (Settings != null)
             {
-                // Code logic in derived Form
+                numericUpDown1.Value = int.Parse(Settings["YOFFSET"]);
+                toggleSwitch1.Checked = Settings["EUROPE"] == "1";
+                toggleSwitch2.Checked = Settings["SGENABLE"] == "1";
+                toggleSwitch3.Checked = Settings["PADBUTTON"] == "6";
+                checkBox1.Checked = Settings["HIDEOVERSCAN"] == "1";
+                checkBox2.Checked = Settings["RASTER"] == "1";
+                checkBox3.Checked = Settings["SPRLINE"] == "1";
+                checkBox4.Checked = Settings["BACKUPRAM"] == "1";
             }
             // *******
         }
 
         protected override void SaveOptions()
         {
-            // Code logic in derived Form
+            Settings["YOFFSET"] = numericUpDown1.Value.ToString();
+            Settings["EUROPE"] = toggleSwitch1.Checked ? "1" : "0";
+            Settings["SGENABLE"] = toggleSwitch2.Checked ? "1" : "0";
+            Settings["PADBUTTON"] = toggleSwitch3.Checked ? "6" : "2";
+            Settings["HIDEOVERSCAN"] = checkBox1.Checked ? "1" : "0";
+            Settings["RASTER"] = checkBox2.Checked ? "1" : "0";
+            Settings["SPRLINE"] = checkBox3.Checked ? "1" : "0";
+            Settings["BACKUPRAM"] = checkBox4.Checked ? "1" : "0";
         }
 
         // ---------------------------------------------------------------------------------------------------------------

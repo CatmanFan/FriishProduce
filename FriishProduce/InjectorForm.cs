@@ -447,7 +447,7 @@ namespace FriishProduce
             // ----------------------------
 
             if (imageintpl.SelectedIndex != Properties.Settings.Default.ImageInterpolation) Tag = "dirty";
-            if (Creator != null && Img != null) LoadImage();
+            LoadImage();
         }
 
         private void SwitchAspectRatio(object sender, EventArgs e)
@@ -470,7 +470,7 @@ namespace FriishProduce
                     radioButton1.Checked = !radioButton2.Checked;
                 }
 
-                if (Creator != null && Img != null) LoadImage();
+                LoadImage();
             }
 
             else if (groupBox3.Enabled) CheckExport();
@@ -554,7 +554,7 @@ namespace FriishProduce
 
         public void LoadImage()
         {
-            if (Img != null) LoadImage(Img.Source);
+            if (Creator != null && Img != null) LoadImage(Img.Source);
             else CheckExport();
         }
 
@@ -1150,24 +1150,29 @@ namespace FriishProduce
                 case 'E':
                 case 'N':
                     WADRegion.Image = Properties.Resources.flag_us;
+                    RegionsList.SelectedIndex = 1;
                     break;
 
                 case 'P':
                     WADRegion.Image = (int)Console <= 2 ? Properties.Resources.flag_eu50 : Properties.Resources.flag_eu;
+                    RegionsList.SelectedIndex = 2;
                     break;
 
                 case 'L':
                 case 'M':
                     WADRegion.Image = (int)Console <= 2 ? Properties.Resources.flag_eu60 : Properties.Resources.flag_eu;
+                    RegionsList.SelectedIndex = 2;
                     break;
 
                 case 'J':
                     WADRegion.Image = Properties.Resources.flag_jp;
+                    RegionsList.SelectedIndex = 3;
                     break;
 
                 case 'Q':
                 case 'T':
                     WADRegion.Image = Properties.Resources.flag_kr;
+                    RegionsList.SelectedIndex = 4;
                     break;
             }
 
@@ -1256,7 +1261,7 @@ namespace FriishProduce
 
                 case Console.SMS:
                 case Console.SMDGEN:
-                    // o4.EmuType = emuVer;
+                    CO.EmuType = emuVer;
                     break;
 
                 case Console.PCE:

@@ -96,7 +96,7 @@ namespace FriishProduce
         {
             if (src == null) src = Source;
 
-            bool ShrinkToFit  = platform == Console.NES || platform == Console.SNES || platform == Console.N64 || platform == Console.Flash;
+            bool ShrinkToFit = platform == Console.NES || platform == Console.SNES || platform == Console.N64 || platform == Console.Flash;
 
             // --------------------------------------------------
             // SAVEICON : DEFINE POSITION AND SIZE VARIABLES
@@ -190,7 +190,7 @@ namespace FriishProduce
                     g.CompositingQuality = CompositingQ;
 
                     g.Clear(Color.White);
-                    g.DrawImage(src, 0, 0, 128, 96);
+                    g.DrawImage(Working, 0, 0, 128, 96);
 
                     if (ShrinkToFit)
                     {
@@ -660,7 +660,7 @@ namespace FriishProduce
                         WorkingDirectory = ImagesPath,
                         Arguments = $"\"{item}.tex0\" \"{item}.png\"",
                         UseShellExecute = false,
-                        CreateNoWindow = false
+                        CreateNoWindow = true
                     }))
                     {
                         while (!p.HasExited)
