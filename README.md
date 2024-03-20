@@ -47,12 +47,9 @@ The current version of this application includes a built-in XML editor for addin
 ## To-Do
 * ***Before releasing v1.0:***
   [ ] Clean localization files and wiki.
-  [X] CCF work
-  [X] Complete SEGA VC options list
-  [ ] NEO-GEO VC options list
-  [X] Complete TG-16 options list.
-  [ ] Flash options list.
+  [ ] NEO-GEO VC & Flash options list
   [ ] Check for additional bugs that need to be fixed and streamline code to make it more readable.
+  [ ] Fix UI shenanigans.
 * Other VC injection support to be done later:
   * Commodore 64 (needs [Custom Frodo](https://gbatemp.net/threads/custom-frodo-for-c64-vc-injection.102356/))
   * TurboGrafx-16 CD (needs several programs to convert ISO to injectable format)

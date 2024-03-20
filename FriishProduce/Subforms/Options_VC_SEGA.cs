@@ -22,7 +22,7 @@ namespace FriishProduce
             {
                 { "console.brightness", null },
                 // { "console.disable_resetbutton", "1" },
-                // { "console.volume", "+6.0" },
+                { "console.volume", "+6.0" },
                 { "country", Language.Current.Name.StartsWith("ja") ? "jp" : "us" },
                 { "dev.mdpad.enable_6b", null },
                 { "save_sram", "0" },
@@ -55,10 +55,11 @@ namespace FriishProduce
             // *******
             if (Settings != null)
             {
-                if (Settings["console.brightness"] == null || !BrightnessValue.Enabled) Settings["console.brightness"] = IsSMS ? "68" : "100";
+                if (Settings["console.brightness"] == null || int.Parse(Settings["console.brightness"]) < 0 || !BrightnessValue.Enabled) Settings["console.brightness"] = IsSMS ? "68" : "100";
                 if (Settings["dev.mdpad.enable_6b"] == null) Settings["dev.mdpad.enable_6b"] = IsSMS ? "0" : "1";
 
                 BrightnessValue.Value = int.Parse(Settings["console.brightness"]);
+                Volume.Value = Convert.ToInt32(decimal.Parse(Settings["console.volume"].Replace("+", "")));
                 toggleSwitch1.Checked = Settings["dev.mdpad.enable_6b"] == "1";
                 checkBox1.Checked = Settings["save_sram"] == "1";
                 comboBox1.SelectedIndex = Settings["country"] == "jp" ? 2 : Settings["country"] == "eu" ? 1 : 0;
@@ -69,6 +70,7 @@ namespace FriishProduce
         protected override void SaveOptions()
         {
             Settings["console.brightness"] = label1.Text;
+            Settings["console.volume"] = label3.Text;
             Settings["dev.mdpad.enable_6b"] = toggleSwitch1.Checked ? "1" : "0";
             Settings["save_sram"] = checkBox1.Checked ? "1" : "0";
             Settings["country"] = comboBox1.SelectedIndex == 2 ? "jp" : comboBox1.SelectedIndex == 1 ? "eu" : "us";
@@ -99,5 +101,7 @@ namespace FriishProduce
         {
             if (sender == toggleSwitch1) toggleSwitchL1.Text = Language.Get(toggleSwitch1, this);
         }
+
+        private void Volume_Set(object sender, EventArgs e) => label3.Text = (Volume.Value > 0 ? "+" : "") + decimal.Divide(Volume.Value, 10).ToString("0.0", System.Globalization.CultureInfo.InvariantCulture);
     }
 }
