@@ -28,6 +28,7 @@ namespace FriishProduce
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(About));
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.labelTranslation = new System.Windows.Forms.Label();
             this.logoPictureBox = new System.Windows.Forms.PictureBox();
@@ -154,7 +155,7 @@ namespace FriishProduce
             this.textBoxDescription.Size = new System.Drawing.Size(391, 83);
             this.textBoxDescription.TabIndex = 23;
             this.textBoxDescription.TabStop = false;
-            this.textBoxDescription.Text = "Description";
+            this.textBoxDescription.Text = resources.GetString("textBoxDescription.Text");
             // 
             // okButton
             // 

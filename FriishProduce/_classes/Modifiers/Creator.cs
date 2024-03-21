@@ -1,11 +1,4 @@
 ﻿using libWiiSharp;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace FriishProduce
 {
@@ -23,7 +16,6 @@ namespace FriishProduce
         };
 
         public RegionType OrigRegion = RegionType.Universal;
-        private Console Console { get; set; }
 
         public string TitleID { get; set; }
         public string[] ChannelTitles { get; set; }
@@ -33,7 +25,16 @@ namespace FriishProduce
         public string[] SaveDataTitle { get; set; }
         public string Out { get; set; }
 
-        public Creator(Console c) { Console = c; }
+        public Creator()
+        {
+            TitleID = null;
+            ChannelTitles = new string[] { "無題", "Untitled", "Ohne Titel", "Sans titre", "Sin título", "Senza titolo", "Onbekend", "제목 없음" };
+            BannerTitle = null;
+            BannerYear = 1980;
+            BannerPlayers = 1;
+            SaveDataTitle = new string[] { "" };
+            Out = null;
+        }
 
         public void MakeWAD(WAD w)
         {

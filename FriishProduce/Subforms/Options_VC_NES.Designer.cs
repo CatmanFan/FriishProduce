@@ -60,14 +60,13 @@ namespace FriishProduce
             this.groupBox1.Size = new System.Drawing.Size(275, 270);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Screen";
+            this.groupBox1.Text = "Palette";
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox1.Image = global::FriishProduce.Properties.Resources.screen_nes;
             this.pictureBox1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.pictureBox1.Location = new System.Drawing.Point(9, 17);
+            this.pictureBox1.Location = new System.Drawing.Point(9, 18);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(256, 192);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;

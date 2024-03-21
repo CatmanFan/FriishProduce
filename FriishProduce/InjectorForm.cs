@@ -220,7 +220,7 @@ namespace FriishProduce
 
             // Declare WAD metadata modifier
             // ********
-            Creator = new Creator(Console);
+            Creator = new Creator();
             TIDCode = null;
 
             switch (Console)
@@ -285,6 +285,8 @@ namespace FriishProduce
             Creator.BannerYear = (int)ReleaseYear.Value;
             Creator.BannerPlayers = (int)Players.Value;
             AddBases();
+
+            Tag = null;
 
             if (ROM?.Path != null) LoadROM(ROM.Path, Properties.Settings.Default.AutoLibRetro);
         }
@@ -906,7 +908,7 @@ namespace FriishProduce
                 case Console.NeoGeo:
                     VC = new WiiVC.NeoGeo()
                     {
-                        BIOSPath = null
+                        BIOSPath = CO?.Settings?.Count > 0 ? CO?.Settings?.ElementAt(0).Value : null
                     };
                     break;
 
@@ -1268,6 +1270,7 @@ namespace FriishProduce
                     break;
 
                 case Console.NeoGeo:
+                    if (emuVer >= 1) CO = null;
                     break;
 
                 case Console.MSX:
@@ -1418,6 +1421,7 @@ namespace FriishProduce
                         break;
 
                     case Console.NeoGeo:
+                        // CO = new Options_VC_NeoGeo();
                         break;
 
                     case Console.MSX:

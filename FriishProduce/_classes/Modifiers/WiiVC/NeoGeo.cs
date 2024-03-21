@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using libWiiSharp;
 using Ionic.Zip;
+using libWiiSharp;
 
 namespace FriishProduce.WiiVC
 {
@@ -62,13 +61,20 @@ namespace FriishProduce.WiiVC
         /// </summary>
         protected override void ReplaceROM()
         {
-            if (EmuType == 1) throw new Exception("ZLIB WADs not supported yet!");
+            int target = 0;
+            bool isZlib = EmuType >= 1;
+
+            foreach (var item in MainContent.StringTable)
+            {
+                if (item.ToLower() == "game.bin.z") { target = MainContent.GetNodeIndex(item); isZlib = true; }
+                if (item.ToLower() == "game.bin") target = MainContent.GetNodeIndex(item);
+            }
 
             // ------------------------- //
 
             // TO-DO:
             // "game.bin.z" (found in KOF '95 WAD) is the game compressed in ZLIB format.
-            // This should be decrypted to "game.bin" to avoid any IO exception then recompressed afterwards
+            // This should be decrypted to "game.bin" to avoid any IO exception then recompressed afterwards=
 
             // ------------------------- //
 
@@ -112,9 +118,9 @@ namespace FriishProduce.WiiVC
 
             // Get BIOS directly from game.bin
             // ****************
-            if (EmuType < 1) // i.e. not Zlib
+            if (!isZlib) // i.e. not Zlib
             {
-                var orig = MainContent.Data[MainContent.GetNodeIndex("game.bin")];
+                var orig = MainContent.Data[target];
                 BIOS.AddRange(orig.Skip(orig.Length - 131072).Take(131072));
             }
             else throw new FileNotFoundException();
@@ -311,7 +317,7 @@ namespace FriishProduce.WiiVC
 
             var GameBin = new List<byte>();
 
-            if (EmuType < 1) // i.e. not Zlib
+            if (!isZlib) // i.e. not Zlib
             {
                 GameBin.AddRange(Header);
                 GameBin.AddRange(P);
@@ -333,16 +339,9 @@ namespace FriishProduce.WiiVC
                 GameBin.AddRange(M);
             }
 
-            MainContent.ReplaceFile(MainContent.GetNodeIndex("game.bin"), GameBin.ToArray());
+            MainContent.ReplaceFile(target, isZlib ? Ionic.Zlib.ZlibStream.CompressBuffer(GameBin.ToArray()) : GameBin.ToArray());
 
             ZIP.Dispose();
-
-            // ------------------------- //
-
-            // TO-DO:
-            // Compress "game.bin.z"
-
-            // ------------------------- //
         }
 
         protected override void ReplaceSaveData(string[] lines, ImageHelper Img)

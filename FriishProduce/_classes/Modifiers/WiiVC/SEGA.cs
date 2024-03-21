@@ -245,11 +245,22 @@ namespace FriishProduce.WiiVC
             {
                 if (item.Name.ToLower() == "config")
                 {
+                    var encoding = Encoding.UTF8;
+
+                    using (var m = new StreamReader(new MemoryStream(MainCCF.Data[MainCCF.GetNodeIndex(item.Name)]), Encoding.UTF8))
+                    {
+                        m.ReadToEnd();
+                        encoding = m.CurrentEncoding;
+                    }
+
                     // Read config file
                     // ****************
-                    string[] configFile = Encoding.UTF8.GetString(MainCCF.Data[MainCCF.GetNodeIndex(item.Name)]).Replace("\r\n", "\n").Split('\n');
+                    string[] configFile = encoding.GetString(MainCCF.Data[MainCCF.GetNodeIndex(item.Name)]).Replace("\r\n", "\n").Split('\n');
 
                     IDictionary<string, string> Settings = this.Settings;
+
+                    foreach (var line in Settings.Keys.ToArray())
+                        if (line == "smsui.has_opll") Settings.Remove(line);
 
                     switch (IsSMS)
                     {
@@ -269,36 +280,35 @@ namespace FriishProduce.WiiVC
                     // ****************
                     List<string> newConfig = new List<string>();
                     List<string> alreadyAdded = new List<string>();
+                        Dictionary<string, string> Alt = new Dictionary<string, string>();
 
-                    Dictionary<string, string> Alt = new Dictionary<string, string>
-                        {
-                            // Settings that are known by alternative names in newer revisions (old name on left):
-                            { "country", "console.machine_country" },
-                            { "console.volume", "console.master_volume" }
-                        };
+                    foreach (var line in configFile)
+                    {
+                        // Settings that are known by alternative names in newer revisions:
+                        // ****************
+                        if (line.ToLower().Contains("console.machine_country"))
+                            Alt.Add("country", "console.machine_country");
+                    }
 
                     for (int i = 0; i < Alt.Count; i++)
                         foreach (var newLine in Settings)
                             if (newLine.Key == Alt.ElementAt(i).Key)
-                                foreach (var line in configFile)
-                                    if (line.ToLower().Contains(Alt.ElementAt(i).Value)
-                                     && Alt.ElementAt(i).Value != newLine.Key
-                                     && !string.IsNullOrEmpty(newLine.Value))
-                                    {
-                                        newConfig.Add($"{Alt.ElementAt(i).Value}=\"{newLine.Value}\"");
-                                        alreadyAdded.Add(newLine.Key);
-                                        alreadyAdded.Add(Alt.ElementAt(i).Value);
-                                    }
+                                {
+                                    newConfig.Add($"{Alt.ElementAt(i).Value}=\"{newLine.Value}\"");
+                                    if (!alreadyAdded.Contains(newLine.Key)) alreadyAdded.Add(newLine.Key);
+                                    if (!alreadyAdded.Contains(Alt.ElementAt(i).Value)) alreadyAdded.Add(Alt.ElementAt(i).Value);
+                                }
 
                     foreach (var line in configFile)
                         foreach (var name in new string[]
                         {
                             // Settings that should NOT be changed:
                             "console.machine_arch",
-                            "console.volume",
                             "console.cl_bindings",
                             "console.core_bindings",
                             "console.gc_bindings",
+                            "console.volume",
+                            "console.master_volume",
                             "modules",
                             "romfile",
                             "snd.snddrv",
@@ -309,8 +319,9 @@ namespace FriishProduce.WiiVC
                     foreach (var newLine in Settings)
                     {
                         bool doNotAdd = false;
-                        foreach (var added in alreadyAdded.ToArray())
-                            if (newLine.Key == added) { doNotAdd = true; break; }
+                        foreach (var added in alreadyAdded)
+                            if (added.Contains(newLine.Key) || newLine.Key == "save_sram" && newLine.Value == "0")
+                                doNotAdd = true;
 
                         if (!doNotAdd && !string.IsNullOrEmpty(newLine.Value))
                         {
@@ -321,17 +332,10 @@ namespace FriishProduce.WiiVC
 
                     newConfig.Sort();
 
-                    using (var s = new MemoryStream())
-                    {
-                        var t = new StreamWriter(s, Encoding.UTF8);
+                    var newConfigFile = encoding.GetBytes(string.Join("\r\n", newConfig.ToArray()) + "\r\n");
 
-                        for (int i = 0; i < newConfig.Count; i++)
-                            t.WriteLine(newConfig[i]);
-
-                        t.Flush();
-
-                        MainCCF.ReplaceFile(item, s.ToArray());
-                    }
+                    while (!System.Collections.StructuralComparisons.StructuralEqualityComparer.Equals(MainCCF.Data[MainCCF.GetNodeIndex(item.Name)], newConfigFile))
+                        MainCCF.ReplaceFile(item, newConfigFile);
                 }
             }
         }

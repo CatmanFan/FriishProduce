@@ -63,7 +63,7 @@ namespace FriishProduce
             // 
             // toggleSwitch2
             // 
-            this.toggleSwitch2.Location = new System.Drawing.Point(10, 41);
+            this.toggleSwitch2.Location = new System.Drawing.Point(10, 42);
             this.toggleSwitch2.Name = "toggleSwitch2";
             this.toggleSwitch2.OffFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toggleSwitch2.OnFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -75,7 +75,7 @@ namespace FriishProduce
             // toggleSwitchL2
             // 
             this.toggleSwitchL2.AutoSize = true;
-            this.toggleSwitchL2.Location = new System.Drawing.Point(46, 41);
+            this.toggleSwitchL2.Location = new System.Drawing.Point(46, 42);
             this.toggleSwitchL2.Name = "toggleSwitchL2";
             this.toggleSwitchL2.Size = new System.Drawing.Size(72, 13);
             this.toggleSwitchL2.TabIndex = 20;
@@ -83,7 +83,7 @@ namespace FriishProduce
             // 
             // toggleSwitch3
             // 
-            this.toggleSwitch3.Location = new System.Drawing.Point(10, 62);
+            this.toggleSwitch3.Location = new System.Drawing.Point(10, 63);
             this.toggleSwitch3.Name = "toggleSwitch3";
             this.toggleSwitch3.OffFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toggleSwitch3.OnFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -95,7 +95,7 @@ namespace FriishProduce
             // toggleSwitchL3
             // 
             this.toggleSwitchL3.AutoSize = true;
-            this.toggleSwitchL3.Location = new System.Drawing.Point(46, 62);
+            this.toggleSwitchL3.Location = new System.Drawing.Point(46, 63);
             this.toggleSwitchL3.Name = "toggleSwitchL3";
             this.toggleSwitchL3.Size = new System.Drawing.Size(99, 13);
             this.toggleSwitchL3.TabIndex = 22;
@@ -104,7 +104,7 @@ namespace FriishProduce
             // toggleSwitchL1
             // 
             this.toggleSwitchL1.AutoSize = true;
-            this.toggleSwitchL1.Location = new System.Drawing.Point(46, 20);
+            this.toggleSwitchL1.Location = new System.Drawing.Point(46, 21);
             this.toggleSwitchL1.Name = "toggleSwitchL1";
             this.toggleSwitchL1.Size = new System.Drawing.Size(89, 13);
             this.toggleSwitchL1.TabIndex = 15;
@@ -112,7 +112,7 @@ namespace FriishProduce
             // 
             // toggleSwitch1
             // 
-            this.toggleSwitch1.Location = new System.Drawing.Point(10, 20);
+            this.toggleSwitch1.Location = new System.Drawing.Point(10, 21);
             this.toggleSwitch1.Name = "toggleSwitch1";
             this.toggleSwitch1.OffFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toggleSwitch1.OnFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -123,16 +123,15 @@ namespace FriishProduce
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.checkBox4);
             this.groupBox1.Controls.Add(this.toggleSwitch1);
             this.groupBox1.Controls.Add(this.toggleSwitchL1);
             this.groupBox1.Controls.Add(this.toggleSwitch3);
             this.groupBox1.Controls.Add(this.toggleSwitchL2);
             this.groupBox1.Controls.Add(this.toggleSwitchL3);
             this.groupBox1.Controls.Add(this.toggleSwitch2);
-            this.groupBox1.Location = new System.Drawing.Point(12, 10);
+            this.groupBox1.Location = new System.Drawing.Point(12, 33);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(270, 113);
+            this.groupBox1.Size = new System.Drawing.Size(270, 90);
             this.groupBox1.TabIndex = 24;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "System";
@@ -141,7 +140,7 @@ namespace FriishProduce
             // 
             this.checkBox4.AutoSize = true;
             this.checkBox4.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.checkBox4.Location = new System.Drawing.Point(10, 83);
+            this.checkBox4.Location = new System.Drawing.Point(12, 12);
             this.checkBox4.Name = "checkBox4";
             this.checkBox4.Size = new System.Drawing.Size(81, 18);
             this.checkBox4.TabIndex = 5;
@@ -219,11 +218,13 @@ namespace FriishProduce
             // Options_VC_PCE
             // 
             this.ClientSize = new System.Drawing.Size(294, 312);
+            this.Controls.Add(this.checkBox4);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "Options_VC_PCE";
             this.Controls.SetChildIndex(this.groupBox1, 0);
             this.Controls.SetChildIndex(this.groupBox2, 0);
+            this.Controls.SetChildIndex(this.checkBox4, 0);
             this.bottomPanel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -231,6 +232,7 @@ namespace FriishProduce
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

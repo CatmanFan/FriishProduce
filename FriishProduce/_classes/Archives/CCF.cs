@@ -101,13 +101,46 @@ namespace Archives
         }
 
         /// <summary>
+        /// Adds a new file node to the archive.
+        /// </summary>
+        public void AddFile(string name, byte[] fileData, bool compress)
+        {
+            ccfNodes.Add(new CCF_Node(name, compress ? this.compress(fileData).Length : fileData.Length, fileData.Length));
+            data.Add(fileData);
+        }
+
+        /// <summary>
+        /// Imports an external file to the archive.
+        /// </summary>
+        public void AddFile(string fileName, bool compress)
+        {
+            if (!File.Exists(fileName)) throw new Exception("File not found!");
+
+            var fileData = File.ReadAllBytes(fileName);
+            ccfNodes.Add(new CCF_Node(Path.GetFileName(fileName), compress ? this.compress(fileData).Length : fileData.Length, fileData.Length));
+            data.Add(fileData);
+        }
+
+        /// <summary>
+        /// Removes a file node from the archive.
+        /// </summary>
+        public void Remove(CCF_Node node)
+        {
+            // Failsafe
+            // *******************
+            try { int index = ccfNodes.IndexOf(node); } catch { return; }
+
+            data.RemoveAt(ccfNodes.IndexOf(node));
+            ccfNodes.Remove(node);
+        }
+
+        /// <summary>
         /// Replaces the given file.
         /// </summary>
         public void ReplaceFile(CCF_Node node, byte[] newData)
         {
-            data[GetNodeIndex(node.Name)] = newData;
+            data[ccfNodes.IndexOf(node)] = newData;
         }
-
 
         /// <summary>
         /// Replaces the file with the given index.
@@ -115,6 +148,24 @@ namespace Archives
         public void ReplaceFile(int fileIndex, byte[] newData)
         {
             data[fileIndex] = newData;
+        }
+
+        /// <summary>
+        /// Extracts the file node to disk.
+        /// </summary>
+        public void Extract(CCF_Node node, string outPath)
+        {
+            if (!Directory.Exists(Path.GetDirectoryName(outPath))) Directory.CreateDirectory(Path.GetDirectoryName(outPath));
+            File.WriteAllBytes(outPath, data[ccfNodes.IndexOf(node)]);
+        }
+
+        /// <summary>
+        /// Extracts the file with the given index to disk.
+        /// </summary>
+        public void Extract(int fileIndex, string outPath)
+        {
+            if (!Directory.Exists(Path.GetDirectoryName(outPath))) Directory.CreateDirectory(Path.GetDirectoryName(outPath));
+            File.WriteAllBytes(outPath, data[fileIndex]);
         }
 
         /// <summary>
@@ -141,75 +192,79 @@ namespace Archives
         }
 
         #region Private Methods
-        private void write(Stream writeStream)
+        private byte[] compress(byte[] data)
         {
-            List<byte[]> newDatas = new List<byte[]>();
-            int curpos = ccfNodes.Count + 1;
-
-            for (int i = 0; i < ccfNodes.Count; i++)
+            using (MemoryStream inputStream = new MemoryStream(data))
+            using (MemoryStream outputStream = new MemoryStream())
             {
-                byte[] converted = new byte[1];
-                converted = data[i];
+                outputStream.WriteByte(0x78);
+                outputStream.WriteByte(0x9C);
 
-                if (ccfNodes[i].Compressed)
+                using (DeflateStream compressor = new DeflateStream(outputStream, CompressionMode.Compress, true))
                 {
-                    using (MemoryStream inputStream = new MemoryStream(converted))
-                    using (MemoryStream outputStream = new MemoryStream())
-                    {
-                        outputStream.WriteByte(0x78);
-                        outputStream.WriteByte(0x9C);
-
-                        using (DeflateStream compressor = new DeflateStream(outputStream, CompressionMode.Compress, true))
-                        {
-                            inputStream.CopyTo(compressor);
-                        }
-
-                        // Adler32 Checksum
-                        // *******************
-                        uint a = 1, b = 0;
-                        for (int ptr = 0; ptr < converted.Length; ptr++)
-                        {
-                            a = (a + converted[ptr]) % 65521;
-                            b = (b + a) % 65521;
-                        }
-
-                        uint checksum = (b << 16) | a;
-
-                        // Write checksum
-                        // *******************
-                        outputStream.WriteByte((byte)((checksum & 0xFF000000) >> 24));
-                        outputStream.WriteByte((byte)((checksum & 0x00FF0000) >> 16));
-                        outputStream.WriteByte((byte)((checksum & 0x0000FF00) >> 8));
-                        outputStream.WriteByte((byte)((checksum & 0x000000FF) >> 0));
-
-                        converted = outputStream.ToArray();
-                    }
+                    inputStream.CopyTo(compressor);
                 }
 
-                byte[] written = new byte[converted.Length + 32 - (converted.Length % 32)];
-                converted.CopyTo(written, 0);
-                newDatas.Add(written);
+                // Adler32 Checksum
+                // *******************
+                uint a = 1, b = 0;
+                for (int ptr = 0; ptr < data.Length; ptr++)
+                {
+                    a = (a + data[ptr]) % 65521;
+                    b = (b + a) % 65521;
+                }
 
-                ccfNodes[i] = new CCF_Node(ccfNodes[i].Name, curpos, converted.Length, data[i].Length);
+                uint checksum = (b << 16) | a;
 
-                curpos += written.Length / 32;
+                // Write checksum
+                // *******************
+                outputStream.WriteByte((byte)((checksum & 0xFF000000) >> 24));
+                outputStream.WriteByte((byte)((checksum & 0x00FF0000) >> 16));
+                outputStream.WriteByte((byte)((checksum & 0x0000FF00) >> 8));
+                outputStream.WriteByte((byte)((checksum & 0x000000FF) >> 0));
+
+                return outputStream.ToArray();
             }
+        }
 
+        private void write(Stream writeStream)
+        {
             writeStream.Write(magic, 0, 4);
             writeStream.Write(new byte[12], 0, 12);
             writeStream.Write(BitConverter.GetBytes(chunkSize), 0, 4);
             writeStream.Write(BitConverter.GetBytes(ccfNodes.Count), 0, 4);
             writeStream.Write(new byte[8], 0, 8);
 
-            foreach (var node in ccfNodes)
-            {
-                byte[] name = new byte[20];
-                Array.Copy(Encoding.ASCII.GetBytes(node.Name), name, Encoding.ASCII.GetBytes(node.Name).Length);
+            List<byte[]> newDatas = new List<byte[]>();
+            List<uint> offsets = new List<uint>();
+            int curpos = ccfNodes.Count + 1;
 
+            for (int i = 0; i < ccfNodes.Count; i++)
+            {
+                // Parse filedata and compress it if needed
+                // *******************
+                byte[] converted = new byte[1];
+                converted = data[i];
+
+                if (ccfNodes[i].Compressed)
+                {
+                    converted = compress(converted);
+                }
+
+                byte[] written = new byte[converted.Length + 32 - (converted.Length % 32)];
+                converted.CopyTo(written, 0);
+
+                newDatas.Add(written);
+
+                // Write file header
+                // *******************
+                byte[] name = new byte[20];
+                Array.Copy(Encoding.ASCII.GetBytes(ccfNodes[i].Name), name, Encoding.ASCII.GetBytes(ccfNodes[i].Name).Length);
                 writeStream.Write(name, 0, 20);
-                writeStream.Write(BitConverter.GetBytes(node.Offset), 0, 4);
-                writeStream.Write(BitConverter.GetBytes(node.DataSize), 0, 4);
-                writeStream.Write(BitConverter.GetBytes(node.FileSize), 0, 4);
+                writeStream.Write(BitConverter.GetBytes(curpos), 0, 4);
+                writeStream.Write(BitConverter.GetBytes(converted.Length), 0, 4);
+                writeStream.Write(BitConverter.GetBytes(data[i].Length), 0, 4);
+                curpos += written.Length / 32;
             }
 
             foreach (var item in newDatas)
@@ -244,28 +299,30 @@ namespace Archives
 
             chunkSize = BitConverter.ToUInt32(chunk, 0);
 
+            byte[][] nodeOffsets = new byte[BitConverter.ToUInt32(numFiles, 0)][];
+
             for (int i = 0; i < BitConverter.ToUInt32(numFiles, 0); i++)
             {
                 byte[] nodeName = new byte[20];
-                byte[] nodeOffset = new byte[4];
+                nodeOffsets[i] = new byte[4];
                 byte[] nodeIntData = new byte[4];
                 byte[] nodeExtData = new byte[4];
 
                 input.Read(nodeName, 0, 20);
-                input.Read(nodeOffset, 0, 4);
+                input.Read(nodeOffsets[i], 0, 4);
                 input.Read(nodeIntData, 0, 4);
                 input.Read(nodeExtData, 0, 4);
 
-                ccfNodes.Add(new CCF_Node(Encoding.ASCII.GetString(nodeName).TrimEnd('\0'), BitConverter.ToUInt32(nodeOffset, 0), BitConverter.ToUInt32(nodeIntData, 0), BitConverter.ToUInt32(nodeExtData, 0)));
+                ccfNodes.Add(new CCF_Node(Encoding.ASCII.GetString(nodeName).TrimEnd('\0'), BitConverter.ToUInt32(nodeIntData, 0), BitConverter.ToUInt32(nodeExtData, 0)));
             }
 
-            foreach (var node in ccfNodes)
+            for (int i = 0; i < BitConverter.ToUInt32(numFiles, 0); i++)
             {
-                input.Seek(node.Offset * chunkSize, SeekOrigin.Begin);
-                byte[] nodeData = new byte[node.DataSize];
-                input.Read(nodeData, 0, (int)node.DataSize);
+                input.Seek(BitConverter.ToUInt32(nodeOffsets[i], 0) * chunkSize, SeekOrigin.Begin);
+                byte[] nodeData = new byte[ccfNodes[i].DataSize];
+                input.Read(nodeData, 0, (int)ccfNodes[i].DataSize);
 
-                if (node.Compressed)
+                if (ccfNodes[i].Compressed)
                 {
                     data.Add(Ionic.Zlib.ZlibStream.UncompressBuffer(nodeData));
                 }
@@ -282,28 +339,24 @@ namespace Archives
     public class CCF_Node
     {
         private string name;
-        private uint offset;
         private uint dataSize;
         private uint fileSize;
 
-        public string Name { get { return name; } }
-        public uint Offset { get { return offset; } }
+        public string Name { get { return name; } set { name = value.Substring(0, Math.Max(value.Length, 20)); } }
         public uint DataSize { get { return dataSize; } }
         public uint FileSize { get { return fileSize; } }
         public bool Compressed { get => dataSize != fileSize; }
 
-        public CCF_Node(string name, int offset, int intdata, int extdata)
+        public CCF_Node(string name, int intdata, int extdata)
         {
             this.name = name;
-            this.offset = Convert.ToUInt32(offset);
             dataSize = Convert.ToUInt32(intdata);
             fileSize = Convert.ToUInt32(extdata);
         }
 
-        public CCF_Node(string name, uint offset, uint intdata, uint extdata)
+        public CCF_Node(string name, uint intdata, uint extdata)
         {
             this.name = name;
-            this.offset = offset;
             dataSize = intdata;
             fileSize = extdata;
         }

@@ -139,6 +139,12 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Subforms\Options_VC_NeoGeo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Subforms\Options_VC_NeoGeo.Designer.cs">
+      <DependentUpon>Options_VC_NeoGeo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Subforms\Options_VC_PCE.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -281,6 +287,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Subforms\Options_Flash.resx">
       <DependentUpon>Options_Flash.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Subforms\Options_VC_NeoGeo.resx">
+      <DependentUpon>Options_VC_NeoGeo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Subforms\Options_VC_PCE.resx">
       <DependentUpon>Options_VC_PCE.cs</DependentUpon>

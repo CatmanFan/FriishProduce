@@ -39,16 +39,11 @@ namespace FriishProduce
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.Volume = new System.Windows.Forms.TrackBar();
-            this.label3 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.bottomPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BrightnessValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Volume)).BeginInit();
-            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // OK
@@ -68,9 +63,9 @@ namespace FriishProduce
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.BrightnessValue);
             this.groupBox1.Controls.Add(this.pictureBox1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 9);
+            this.groupBox1.Location = new System.Drawing.Point(12, 33);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(275, 249);
+            this.groupBox1.Size = new System.Drawing.Size(275, 245);
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Display";
@@ -78,7 +73,7 @@ namespace FriishProduce
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.label1.Location = new System.Drawing.Point(241, 219);
+            this.label1.Location = new System.Drawing.Point(241, 218);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(25, 15);
             this.label1.TabIndex = 16;
@@ -88,7 +83,7 @@ namespace FriishProduce
             // BrightnessValue
             // 
             this.BrightnessValue.AutoSize = false;
-            this.BrightnessValue.Location = new System.Drawing.Point(7, 216);
+            this.BrightnessValue.Location = new System.Drawing.Point(7, 215);
             this.BrightnessValue.Maximum = 100;
             this.BrightnessValue.Name = "BrightnessValue";
             this.BrightnessValue.Size = new System.Drawing.Size(235, 20);
@@ -99,12 +94,11 @@ namespace FriishProduce
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Black;
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox1.Image = global::FriishProduce.Properties.Resources.screen_smd;
             this.pictureBox1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.pictureBox1.Location = new System.Drawing.Point(9, 18);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(257, 192);
+            this.pictureBox1.Size = new System.Drawing.Size(256, 192);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 14;
             this.pictureBox1.TabStop = false;
@@ -145,7 +139,7 @@ namespace FriishProduce
             this.groupBox3.Controls.Add(this.toggleSwitchL1);
             this.groupBox3.Controls.Add(this.comboBox1);
             this.groupBox3.Controls.Add(this.toggleSwitch1);
-            this.groupBox3.Location = new System.Drawing.Point(12, 320);
+            this.groupBox3.Location = new System.Drawing.Point(12, 284);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(275, 90);
             this.groupBox3.TabIndex = 20;
@@ -165,58 +159,20 @@ namespace FriishProduce
             // 
             this.checkBox1.AutoSize = true;
             this.checkBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.checkBox1.Location = new System.Drawing.Point(12, 416);
+            this.checkBox1.Location = new System.Drawing.Point(12, 12);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(81, 18);
             this.checkBox1.TabIndex = 20;
             this.checkBox1.Text = "Use SRAM";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
-            // Volume
-            // 
-            this.Volume.AutoSize = false;
-            this.Volume.LargeChange = 10;
-            this.Volume.Location = new System.Drawing.Point(6, 18);
-            this.Volume.Maximum = 100;
-            this.Volume.Minimum = -100;
-            this.Volume.Name = "Volume";
-            this.Volume.Size = new System.Drawing.Size(230, 20);
-            this.Volume.SmallChange = 5;
-            this.Volume.TabIndex = 17;
-            this.Volume.TickFrequency = 5;
-            this.Volume.Value = 60;
-            this.Volume.Scroll += new System.EventHandler(this.Volume_Set);
-            // 
-            // label3
-            // 
-            this.label3.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.label3.Location = new System.Drawing.Point(233, 21);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 15);
-            this.label3.TabIndex = 17;
-            this.label3.Text = "+6.0";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.Volume);
-            this.groupBox2.Location = new System.Drawing.Point(12, 264);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(275, 50);
-            this.groupBox2.TabIndex = 21;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Volume";
-            // 
             // Options_VC_SEGA
             // 
-            this.ClientSize = new System.Drawing.Size(299, 497);
+            this.ClientSize = new System.Drawing.Size(299, 437);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.groupBox2);
             this.Name = "Options_VC_SEGA";
-            this.Controls.SetChildIndex(this.groupBox2, 0);
             this.Controls.SetChildIndex(this.groupBox1, 0);
             this.Controls.SetChildIndex(this.groupBox3, 0);
             this.Controls.SetChildIndex(this.checkBox1, 0);
@@ -226,8 +182,6 @@ namespace FriishProduce
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Volume)).EndInit();
-            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -244,8 +198,5 @@ namespace FriishProduce
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.TrackBar Volume;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.GroupBox groupBox2;
     }
 }
