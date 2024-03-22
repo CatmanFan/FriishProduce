@@ -307,4 +307,13 @@
   <data name="Font" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\font.TTF;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="NeoGeo_VC1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\vc\NeoGeo_VC1.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NeoGeo_VC2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\vc\NeoGeo_VC2.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NeoGeo_VC3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\vc\NeoGeo_VC3.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

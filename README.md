@@ -47,8 +47,7 @@ The current version of this application includes a built-in XML editor for addin
 ## To-Do
 * ***Before releasing v1.0:***
   [ ] Clean localization files and wiki.
-  [X] NEO-GEO VC options list
-  [ ] Finish Z-LIB implementation of NeoGeo.
+  [X] Finish Z-LIB implementation of NeoGeo.
   [ ] Flash emulator options list
   [ ] Check for additional bugs that need to be fixed and streamline code to make it more readable.
   [ ] Fix UI shenanigans.

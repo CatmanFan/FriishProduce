@@ -539,8 +539,29 @@
 		<Entry>
 			<TID>EAGJ</TID>
 			<Name>King of Fighters '94, The</Name>
-			<DisplayName>THE KING OF FIGHTERS '94</DisplayName>
+			<DisplayName>ザ・キングオブファイターズ９４</DisplayName>
 			<Emulator>0</Emulator>
+		</Entry>
+
+		<Entry>
+			<TID>EAVE</TID>
+			<Name>King of Fighters '95, The</Name>
+			<DisplayName>The King of Fighters '95</DisplayName>
+			<Emulator>1</Emulator>
+		</Entry>
+
+		<Entry>
+			<TID>EAVP</TID>
+			<Name>King of Fighters '95, The</Name>
+			<DisplayName>The King of Fighters '95</DisplayName>
+			<Emulator>1</Emulator>
+		</Entry>
+
+		<Entry>
+			<TID>EAVJ</TID>
+			<Name>King of Fighters '95, The</Name>
+			<DisplayName>ザ・キングオブファイターズ９５</DisplayName>
+			<Emulator>1</Emulator>
 		</Entry>
 
 		<Entry>
@@ -592,7 +613,7 @@
 		<Entry>
 			<TID>XAPJ</TID>
 			<Name>Metal Gear 2 - Solid Snake</Name>
-			<DisplayName>メタルギア2 ソリッドスネーク</DisplayName>
+			<DisplayName>メタルギア２ ソリッドスネーク</DisplayName>
 			<Emulator>1</Emulator>
 		</Entry>
 	</Database>

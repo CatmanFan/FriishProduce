@@ -28,6 +28,9 @@ namespace FriishProduce
         protected int MainContentIndex { get; set; }
         protected U8 MainContent { get; set; }
 
+        private int ManualContentIndex { get; set; }
+        protected U8 ManualContent { get; set; }
+
         public InjectorWiiVC() { }
 
         protected virtual void Load()
@@ -36,12 +39,15 @@ namespace FriishProduce
             for (int i = 0; i < WAD.Contents.Length; i++)
                 Contents.Add(new byte[0]);
 
+            // Load main.dol if needed
+            // ****************
             if (NeedsMainDOL)
             {
                 Contents[1] = WAD.Contents[1];
+
                 if (Contents[1].Length < 1048576)
                 {
-                    // Temporary 00000001.app at working folder
+                    // Create temporary files at working folder
                     // ****************
                     File.WriteAllBytes(Paths.WorkingFolder + "content1.app", Contents[1]);
                     ProcessHelper.Run
@@ -56,18 +62,24 @@ namespace FriishProduce
                 }
             }
 
+            // Auto-set main content index if it is absolutely necessary, then load both U8 archives
+            // ****************
             if (NeedsManualLoaded && (MainContentIndex <= 1)) MainContentIndex = 5;
 
             if (MainContentIndex > 1 && WAD.Contents.Length > MainContentIndex)
                 MainContent = U8.Load(WAD.Contents[MainContentIndex]);
 
-            if (NeedsManualLoaded) ReplaceManual(MainContent);
+            ManualContentIndex = 5;
+            ManualContent = MainContentIndex == ManualContentIndex ? null : U8.Load(WAD.Contents[ManualContentIndex]);
+
+            if (NeedsManualLoaded) ReplaceManual(ManualContent != null ? ManualContent : MainContent);
         }
 
+        /// <summary>
+        /// Dispose of "Operations Guide" button on HOME Menu.
+        /// </summary>
         private void CleanManual()
         {
-            // Dispose of "Operations Guide" button on HOME Menu
-            // ****************
             U8 Content4 = U8.Load(WAD.Contents[4]);
 
             int start = -1;
@@ -91,13 +103,15 @@ namespace FriishProduce
                     if (Content4 != null) Content4.Dispose();
                 }
             }
+
             catch { if (Content4 != null) Content4.Dispose(); }
         }
 
+        /// <summary>
+        /// Actually does the replacing of the html/man/emanual.arc with the contents of the specified folder.
+        /// </summary>
         protected U8 ReplaceManual()
         {
-            // Replace
-            // ****************
             U8 ManualArc = U8.Load(Manual);
 
             string newFolder = Path.Combine(Paths.Manual, Path.GetFileNameWithoutExtension(OrigManual).Replace("htmlc", "html"));
@@ -113,6 +127,7 @@ namespace FriishProduce
 
             ManualArc.CreateFromDirectory(Paths.Manual);
             Directory.Delete(Paths.Manual, true);
+
             return ManualArc;
         }
 
@@ -208,6 +223,8 @@ namespace FriishProduce
 
         public virtual WAD Write()
         {
+            // Assign each modified content file to the Contents List
+            // ****************
             if (!WAD.Contents[1].SequenceEqual(Contents[1]) || NeedsMainDOL)
             {
                 if (File.Exists(Paths.WorkingFolder + "content1.dec"))
@@ -231,10 +248,16 @@ namespace FriishProduce
                 }
             }
 
+            if (ManualContent != null)
+                Contents[ManualContentIndex] = ManualContent.ToByteArray();
+            ManualContent.Dispose();
+
             if (Manual != null || MainContent != null)
                 Contents[MainContentIndex] = MainContent.ToByteArray();
             MainContent.Dispose();
 
+            // Then actually modify the WAD by detecting which parts need to be modified and then inserting them.
+            // ---------------------
             // Temporary workaround for crashes
             // WAD needs to be repacked using proper tik/tmd/cert from scratch using modified files.
             // Apparently it worked by directly editing before but not after I revised much of the program code just now.

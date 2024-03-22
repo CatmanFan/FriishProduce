@@ -190,5 +190,17 @@ namespace FriishProduce.Properties {
                 this["Default_Forwarders_Mode"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("VC2")]
+        public string Default_NeoGeo_BIOS {
+            get {
+                return ((string)(this["Default_NeoGeo_BIOS"]));
+            }
+            set {
+                this["Default_NeoGeo_BIOS"] = value;
+            }
+        }
     }
 }

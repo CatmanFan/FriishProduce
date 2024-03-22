@@ -154,13 +154,13 @@ namespace FriishProduce.Properties {
         ///   Looks up a localized string similar to &lt;Databases&gt;
         ///	&lt;!-- INFORMATION ON ADDING NEW DATABASE ENTRIES --&gt;
         ///	
-        ///	&lt;!-- &lt;name&gt; = WAD name as found on MarioCube database (game title ONLY, do not include any parentheses!) --&gt;
-        ///	&lt;!-- &lt;displayName&gt; = Game&apos;s native title in English, Japanese or Korean --&gt;
-        ///	&lt;!-- &lt;emuVersion&gt; = determines the emulator type, if it exists. This can either be one that uses a compressed ROM, or a different frontend. --&gt;
+        ///	&lt;!-- &lt;Name&gt; = WAD Name as found on MarioCube database (game title ONLY, do not include any parentheses!) --&gt;
+        ///	&lt;!-- &lt;DisplayName&gt; = Game&apos;s native title in English, Japanese or Korean --&gt;
+        ///	&lt;!-- &lt;Emulator&gt; = determines the emulator type, if it exists. This can either be one that uses a compressed ROM, or a different frontend. --&gt;
         ///	&lt;!--		  Settings are explained in each console database --&gt;
         ///
         ///	&lt;Database Type=&quot;NES&quot;&gt;
-        ///		&lt;!-- [Emulator ty [rest of string was truncated]&quot;;.
+        ///		&lt;!-- [Emulator type [rest of string was truncated]&quot;;.
         /// </summary>
         public static string Database {
             get {
@@ -485,6 +485,36 @@ namespace FriishProduce.Properties {
             get {
                 object obj = ResourceManager.GetObject("nec_turbografx_16", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] NeoGeo_VC1 {
+            get {
+                object obj = ResourceManager.GetObject("NeoGeo_VC1", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] NeoGeo_VC2 {
+            get {
+                object obj = ResourceManager.GetObject("NeoGeo_VC2", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] NeoGeo_VC3 {
+            get {
+                object obj = ResourceManager.GetObject("NeoGeo_VC3", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         

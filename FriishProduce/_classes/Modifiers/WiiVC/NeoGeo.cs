@@ -10,8 +10,6 @@ namespace FriishProduce.WiiVC
 {
     public class NeoGeo : InjectorWiiVC
     {
-        public string BIOSPath { get; set; }
-
         private List<byte> P { get; set; }
         private List<byte> M { get; set; }
         private List<byte> V { get; set; }
@@ -21,26 +19,24 @@ namespace FriishProduce.WiiVC
 
         private ZipFile ZIP { get; set; }
 
-        private U8 ManualIndex { get; set; }
-
         protected override void Load()
         {
-            NeedsManualLoaded = false;
-            base.Load();
+            NeedsMainDOL = false;
+            NeedsManualLoaded = true;
 
-            // Game.bin may be stored on either 00000006.app or 00000005.app.
+            // Game.bin may be stored on either 6.app, 5.app or 7.app.
             // In all cases the manual files are stored also on 00000005.app.
             // ****************
-            if (Contents.Count >= 7)
+            if (WAD.Contents.Length >= 8)
+                MainContentIndex = WAD.Contents[7].Length > WAD.Contents[6].Length && WAD.Contents[7].Length > WAD.Contents[5].Length ? 7
+                    : WAD.Contents[6].Length > WAD.Contents[7].Length && WAD.Contents[6].Length > WAD.Contents[5].Length ? 6
+                    : 5;
+            else if (WAD.Contents.Length == 7)
                 MainContentIndex = WAD.Contents[6].Length > WAD.Contents[5].Length ? 6 : 5;
             else MainContentIndex = 5;
 
-            MainContent = U8.Load(WAD.Contents[MainContentIndex]);
-
-            if (Contents.Count >= 7) ManualIndex = U8.Load(WAD.Contents[5]);
-            ReplaceManual(Contents.Count >= 7 ? ManualIndex : MainContent);
-
             ZIP = ZipFile.Read(new MemoryStream(File.ReadAllBytes(ROM.Path)));
+            base.Load();
         }
 
         /// <summary>
@@ -68,67 +64,8 @@ namespace FriishProduce.WiiVC
             {
                 if (item.ToLower() == "game.bin.z") { target = MainContent.GetNodeIndex(item); isZlib = true; }
                 if (item.ToLower() == "game.bin") target = MainContent.GetNodeIndex(item);
+                // "game.bin.z" (found in KOF '95 WAD) is the game compressed in ZLIB format.
             }
-
-            // ------------------------- //
-
-            // TO-DO:
-            // "game.bin.z" (found in KOF '95 WAD) is the game compressed in ZLIB format.
-            // This should be decrypted to "game.bin" to avoid any IO exception then recompressed afterwards=
-
-            // ------------------------- //
-
-            // TO-DO: Do byteswap for each byte with BIOS
-            // ****************
-            BIOS = new List<byte>();
-
-            if (string.IsNullOrWhiteSpace(BIOSPath) || !File.Exists(BIOSPath))
-            {
-                goto RetrieveOrigBIOS;
-            }
-
-            else
-            {
-                if (Path.GetExtension(BIOSPath).ToLower() == ".rom")
-                {
-                    BIOS.AddRange(File.ReadAllBytes(BIOSPath));
-                }
-
-                else if (Path.GetExtension(BIOSPath).ToLower() == ".zip")
-                {
-                    foreach (ZipEntry item in ZIP.Entries)
-                        if (Path.GetExtension(item.FileName).ToLower() == ".rom")
-                            BIOS.AddRange(ExtractToByteArray(item));
-
-                    if (BIOS.Count < 10) goto RetrieveOrigBIOS;
-                }
-
-                else goto RetrieveOrigBIOS;
-
-                for (int i = 1; i < BIOS.Count; i += 2)
-                {
-                    (BIOS[i - 1], BIOS[i]) = (BIOS[i], BIOS[i - 1]);
-                }
-
-                goto Next;
-            }
-
-        RetrieveOrigBIOS:
-            BIOS.Clear();
-
-            // Get BIOS directly from game.bin
-            // ****************
-            if (!isZlib) // i.e. not Zlib
-            {
-                var orig = MainContent.Data[target];
-                BIOS.AddRange(orig.Skip(orig.Length - 131072).Take(131072));
-            }
-            else throw new FileNotFoundException();
-
-            goto Next;
-
-        Next:
-            // ------------------------- //
 
             P = new List<byte>();
             M = new List<byte>();
@@ -143,11 +80,8 @@ namespace FriishProduce.WiiVC
                 string filename1 = Path.GetFileNameWithoutExtension(item.FileName).ToLower();
                 string filename2 = item.FileName.ToLower();
 
-                if (filename1[filename1.Length - 2] == 'p')
-                    FileList.Add(filename1);
-
-                if (filename2[filename2.Length - 2] == 'p')
-                    FileList.Add(filename2);
+                if (filename1[filename1.Length - 2] == 'p' || filename2[filename2.Length - 2] == 'p')
+                    FileList.Add(item.FileName);
             }
 
             FileList = FileList.Distinct().ToList();
@@ -167,73 +101,27 @@ namespace FriishProduce.WiiVC
 
             // ------------------------- //
 
-            foreach (ZipEntry item in ZIP.Entries)
-            {
-                string filename = item.FileName.ToLower();
-                if (filename[filename.Length - 2] == 'm')
-                    M.AddRange(ExtractToByteArray(item));
-            }
-
-            if (M.Count == 0)
-                foreach (ZipEntry item in ZIP.Entries)
-                {
-                    string filename = Path.GetFileNameWithoutExtension(item.FileName).ToLower();
-                    if (filename[filename.Length - 2] == 'm')
-                        M.AddRange(ExtractToByteArray(item));
-                }
-
-            // ------------------------- //
-
-            foreach (ZipEntry item in ZIP.Entries)
-            {
-                string filename = item.FileName.ToLower();
-                if (filename[filename.Length - 2] == 'v')
-                    V.AddRange(ExtractToByteArray(item));
-            }
-
-            if (V.Count == 0)
-                foreach (ZipEntry item in ZIP.Entries)
-                {
-                    string filename = Path.GetFileNameWithoutExtension(item.FileName).ToLower();
-                    if (filename[filename.Length - 2] == 'v')
-                        V.AddRange(ExtractToByteArray(item));
-                }
-
-            // ------------------------- //
-
-            foreach (ZipEntry item in ZIP.Entries)
-            {
-                string filename = item.FileName.ToLower();
-                if (filename[filename.Length - 2] == 's')
-                    S.AddRange(ExtractToByteArray(item));
-            }
-
-            if (S.Count == 0)
-                foreach (ZipEntry item in ZIP.Entries)
-                {
-                    string filename = Path.GetFileNameWithoutExtension(item.FileName).ToLower();
-                    if (filename[filename.Length - 2] == 's')
-                        S.AddRange(ExtractToByteArray(item));
-                }
-
-            // ------------------------- //
-
             int C_count = 0;
 
             foreach (ZipEntry item in ZIP.Entries)
             {
-                string filename = item.FileName.ToLower();
-                if (filename[filename.Length - 2] == 'c')
+                string filename1 = item.FileName.ToLower();
+                string filename2 = Path.GetFileNameWithoutExtension(item.FileName).ToLower();
+
+                if (filename1[filename1.Length - 2] == 'm' || filename2[filename2.Length - 2] == 'm')
+                    M.AddRange(ExtractToByteArray(item));
+
+                if (filename1[filename1.Length - 2] == 'v' || filename2[filename2.Length - 2] == 'v')
+                    V.AddRange(ExtractToByteArray(item));
+
+                if (filename1[filename1.Length - 2] == 's' || filename2[filename2.Length - 2] == 's')
+                    S.AddRange(ExtractToByteArray(item));
+
+                if (filename1[filename1.Length - 2] == 'c' || filename2[filename2.Length - 2] == 'c')
                     C_count++;
             }
 
-            if (C_count == 0)
-                foreach (ZipEntry item in ZIP.Entries)
-                {
-                    string filename = Path.GetFileNameWithoutExtension(item.FileName).ToLower();
-                    if (filename[filename.Length - 2] == 'c')
-                        C_count++;
-                }
+            // ------------------------- //
 
             // Documentation from Corsario
             // "There are some games with an non-standard C file order, and after reorganizing the bytes it's necessary to do a unknown puzzle
@@ -287,7 +175,6 @@ namespace FriishProduce.WiiVC
                 }
             }
 
-
             // ------------------------- //
 
             var C_swap = C.ToArray();
@@ -296,10 +183,84 @@ namespace FriishProduce.WiiVC
 
             // ------------------------- //
 
+            // TO-DO: Do byteswap for each byte with BIOS
+            // ****************
+            BIOS = new List<byte>();
+            var BIOSPath = "";
+            bool noBIOS = false;
+
+            try { var test = Settings["BIOS"]; BIOSPath = Settings["BIOSPath"]; } catch { noBIOS = true; goto AutoBIOS; }
+
+            if (Settings["BIOS"].ToLower() != "custom" || string.IsNullOrWhiteSpace(BIOSPath) || !File.Exists(BIOSPath))
+            {
+                goto AutoBIOS;
+            }
+
+            else
+            {
+                if (Path.GetExtension(BIOSPath).ToLower() == ".rom")
+                {
+                    BIOS.AddRange(File.ReadAllBytes(BIOSPath));
+                }
+
+                else if (Path.GetExtension(BIOSPath).ToLower() == ".zip")
+                {
+                    foreach (ZipEntry item in ZIP.Entries)
+                        if (Path.GetExtension(item.FileName).ToLower() == ".rom")
+                            BIOS.AddRange(ExtractToByteArray(item));
+
+                    if (BIOS.Count < 10) goto AutoBIOS;
+                }
+
+                else goto AutoBIOS;
+
+                goto Next;
+            }
+
+        AutoBIOS:
+            var targetBIOS = Properties.Settings.Default.Default_NeoGeo_BIOS;
+            if (!noBIOS && Settings["BIOS"].ToLower() != "custom") targetBIOS = Settings["BIOS"];
+
+            BIOS.Clear();
+            switch (targetBIOS.ToLower())
+            {
+                default:
+                case "vc1":
+                    BIOS.AddRange(Properties.Resources.NeoGeo_VC1);
+                    break;
+
+                case "vc2":
+                    BIOS.AddRange(Properties.Resources.NeoGeo_VC2);
+                    break;
+
+                case "vc3":
+                    BIOS.AddRange(Properties.Resources.NeoGeo_VC3);
+                    break;
+            }
+
+            goto Next;
+
+        Next:
+            for (int i = 1; i < BIOS.Count; i += 2)
+            {
+                (BIOS[i - 1], BIOS[i]) = (BIOS[i], BIOS[i - 1]);
+            }
+
             // Header
             // ****************
             var Header = new List<byte>();
-            string h = "00000040"
+
+            string h = isZlib ? "524F4D300000000000000000"
+                + S.Count.ToString("X8")
+                + C.Count.ToString("X8")
+                + V.Count.ToString("X8")
+                + "00000000"
+                + BIOS.Count.ToString("X8")
+                + P.Count.ToString("X8")
+                + M.Count.ToString("X8")
+                + "000000000000000000000000000000000000000000000000"
+
+                : "00000040"
                 + P.Count.ToString("X8")
                 + (P.Count + 64).ToString("X8")
                 + M.Count.ToString("X8")
@@ -346,14 +307,15 @@ namespace FriishProduce.WiiVC
 
         protected override void ReplaceSaveData(string[] lines, ImageHelper Img)
         {
+            int[] target = new int[] { 0, MainContent.GetNodeIndex("banner.bin") };
+            if (target[1] == -1) target = new int[] { 1, ManualContent.GetNodeIndex("banner.bin") };
+            if (target[1] == -1) return;
+
             // -----------------------
             // TEXT
             // -----------------------
 
-            byte[] contents = null;
-
-            try { contents = MainContent.Data[MainContent.GetNodeIndex("banner.bin")]; } catch { }
-            if (contents == null) return;
+            byte[] contents = target[0] == 0 ? MainContent.Data[target[1]] : ManualContent.Data[target[1]];
 
             // Text addition format: UTF-16 (Big Endian)
             // ****************
@@ -407,7 +369,8 @@ namespace FriishProduce.WiiVC
 
             // Replace original savebanner
             // ****************
-            MainContent.ReplaceFile(MainContent.GetNodeIndex("banner.bin"), contents);
+            if (target[0] == 0) MainContent.ReplaceFile(target[1], contents);
+            else ManualContent.ReplaceFile(target[1], contents);
         }
 
         protected override void ModifyEmulatorSettings()

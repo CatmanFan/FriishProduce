@@ -309,7 +309,6 @@ namespace FriishProduce
                 SaveDataTitle.Lines;
 
             SetROMDataText();
-            button1.Enabled = CO != null;
 
             ReadyToExport = !string.IsNullOrEmpty(Creator.TitleID) && Creator.TitleID.Length == 4
                             && !string.IsNullOrWhiteSpace(ChannelTitle.Text)
@@ -317,6 +316,7 @@ namespace FriishProduce
                             && !string.IsNullOrEmpty(Creator.SaveDataTitle[0])
                             && (Img != null)
                             && (ROM != null && ROM?.Path != null);
+
             Tag = "dirty";
             ExportCheck.Invoke(this, EventArgs.Empty);
         }
@@ -898,18 +898,13 @@ namespace FriishProduce
                 // PCE
                 // *******
                 case Console.PCE:
-                    VC = new WiiVC.PCE()
-                    {
-                    };
+                    VC = new WiiVC.PCE();
                     break;
 
                 // NEOGEO
                 // *******
                 case Console.NeoGeo:
-                    VC = new WiiVC.NeoGeo()
-                    {
-                        BIOSPath = CO?.Settings?.Count > 0 ? CO?.Settings?.ElementAt(0).Value : null
-                    };
+                    VC = new WiiVC.NeoGeo();
                     break;
 
                 // MSX
@@ -945,27 +940,22 @@ namespace FriishProduce
 
             switch (Console)
             {
+                default:
+                case Console.SNES:
+                case Console.MSX:
+                    break;
+
                 case Console.NES:
                     if (result) { LoadImage(); }
                     break;
-                case Console.SNES:
-                    break;
+
                 case Console.N64:
-                    if (result) { CheckExport(); }
-                    break;
                 case Console.SMS:
-                    break;
                 case Console.SMDGEN:
-                    break;
                 case Console.PCE:
-                    break;
                 case Console.NeoGeo:
-                    break;
-                case Console.MSX:
-                    break;
                 case Console.Flash:
-                    break;
-                default:
+                    if (result) { CheckExport(); }
                     break;
             }
         }
@@ -1236,18 +1226,84 @@ namespace FriishProduce
             pictureBox1.Image = Preview.Banner(Console, BannerTitle.Text, (int)ReleaseYear.Value, (int)Players.Value, Img?.VCPic, (int)Creator.OrigRegion);
         }
 
+        private int EmuVer()
+        {
+            if (Database != null)
+                foreach (var Entry in Database)
+                    if (Entry.TitleID.ToUpper() == baseID.Text.ToUpper())
+                        return Entry.Emulator;
+
+            return 0;
+        }
+
+        private void ResetContentOptions()
+        {
+            COPanel_VC.Hide();
+            COPanel_Forwarder.Hide();
+            SaveIcon_Panel.Visible = SaveDataTitle.Visible = false;
+
+            CO = null;
+            if (IsVCMode())
+            {
+                COPanel_VC.Show();
+                SaveIcon_Panel.Visible = SaveDataTitle.Visible = true;
+
+                switch (Console)
+                {
+                    case Console.NES:
+                        CO = new Options_VC_NES();
+                        break;
+
+                    case Console.SNES:
+                        break;
+
+                    case Console.N64:
+                        CO = new Options_VC_N64();
+                        break;
+
+                    case Console.SMS:
+                    case Console.SMDGEN:
+                        CO = new Options_VC_SEGA() { IsSMS = Console == Console.SMS };
+                        break;
+
+                    case Console.PCE:
+                        CO = new Options_VC_PCE();
+                        break;
+
+                    case Console.NeoGeo:
+                        CO = new Options_VC_NeoGeo();
+                        break;
+
+                    case Console.MSX:
+                        break;
+
+                    case Console.C64:
+                        break;
+                }
+            }
+
+            else if (Console == Console.Flash)
+            {
+                SaveIcon_Panel.Visible = SaveDataTitle.Visible = true;
+                CO = new Options_Flash();
+            }
+
+            else
+                COPanel_Forwarder.Show();
+
+            label16.Visible = !SaveDataTitle.Visible;
+            var selected = COPanel_Forwarder.Visible ? COPanel_Forwarder : COPanel_VC.Visible ? COPanel_VC : null;
+            int height = selected == null ? (groupBox7.Visible ? groupBox7.Location.Y + groupBox7.Height : InjectorsList.Location.Y + InjectorsList.Height) + 10 : selected.Location.Y + selected.Height + 10;
+            groupBox3.Size = new Size(groupBox3.Width, height);
+
+            UpdateBaseConsole();
+        }
+
         /// <summary>
         /// Changes injector settings based on selected base/console
         /// </summary>
         private void UpdateBaseConsole()
         {
-            int emuVer = 0;
-
-            if (Database != null)
-                foreach (var Entry in Database)
-                    if (Entry.TitleID.ToUpper() == baseID.Text.ToUpper())
-                        emuVer = Entry.Emulator;
-
             // ******************
             // CONSOLE-SPECIFIC
             // ******************
@@ -1258,19 +1314,18 @@ namespace FriishProduce
                     break;
 
                 case Console.N64:
-                    if (IsVCMode()) CO.EmuType = Creator.OrigRegion == Creator.RegionType.Korea ? 3 : emuVer;
+                    if (IsVCMode()) CO.EmuType = Creator.OrigRegion == Creator.RegionType.Korea ? 3 : EmuVer();
                     break;
 
                 case Console.SMS:
                 case Console.SMDGEN:
-                    CO.EmuType = emuVer;
+                    CO.EmuType = EmuVer();
                     break;
 
                 case Console.PCE:
                     break;
 
                 case Console.NeoGeo:
-                    if (emuVer >= 1) CO = null;
                     break;
 
                 case Console.MSX:
@@ -1279,6 +1334,8 @@ namespace FriishProduce
                 default:
                     break;
             }
+
+            button1.Enabled = CO != null;
         }
         #endregion
 
@@ -1388,65 +1445,7 @@ namespace FriishProduce
 
         private void InjectorsList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            COPanel_VC.Hide();
-            COPanel_Forwarder.Hide();
-            SaveIcon_Panel.Visible = SaveDataTitle.Visible = false;
-
-            CO = null;
-            if (IsVCMode())
-            {
-                COPanel_VC.Show();
-                SaveIcon_Panel.Visible = SaveDataTitle.Visible = true;
-
-                switch (Console)
-                {
-                    case Console.NES:
-                        CO = new Options_VC_NES();
-                        break;
-
-                    case Console.SNES:
-                        break;
-
-                    case Console.N64:
-                        CO = new Options_VC_N64();
-                        break;
-
-                    case Console.SMS:
-                    case Console.SMDGEN:
-                        CO = new Options_VC_SEGA() { IsSMS = Console == Console.SMS };
-                        break;
-
-                    case Console.PCE:
-                        CO = new Options_VC_PCE();
-                        break;
-
-                    case Console.NeoGeo:
-                        // CO = new Options_VC_NeoGeo();
-                        break;
-
-                    case Console.MSX:
-                        break;
-
-                    case Console.C64:
-                        break;
-                }
-                
-                UpdateBaseConsole();
-            }
-
-            else if (Console == Console.Flash)
-            {
-                SaveIcon_Panel.Visible = SaveDataTitle.Visible = true;
-                CO = new Options_Flash();
-            }
-
-            else
-                COPanel_Forwarder.Show();
-
-            label16.Visible = !SaveDataTitle.Visible;
-            var selected = COPanel_Forwarder.Visible ? COPanel_Forwarder : COPanel_VC.Visible ? COPanel_VC : null;
-            int height = selected == null ? (groupBox7.Visible ? groupBox7.Location.Y + groupBox7.Height : InjectorsList.Location.Y + InjectorsList.Height) + 10 : selected.Location.Y + selected.Height + 10;
-            groupBox3.Size = new Size(groupBox3.Width, height);
+            ResetContentOptions();
 
             if (groupBox3.Enabled) CheckExport();
         }

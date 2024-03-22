@@ -29,43 +29,46 @@ namespace FriishProduce
         /// </summary>
         private void InitializeComponent()
         {
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.ImportBIOS = new System.Windows.Forms.OpenFileDialog();
+            this.label1 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.bottomPanel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // OK
-            // 
-            this.OK.Location = new System.Drawing.Point(282, 12);
-            // 
-            // Cancel
-            // 
-            this.Cancel.Location = new System.Drawing.Point(12, 12);
-            this.Cancel.Visible = false;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.checkBox1.Location = new System.Drawing.Point(12, 12);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(134, 18);
-            this.checkBox1.TabIndex = 13;
-            this.checkBox1.Text = "Import external BIOS";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.ToggleSwitchChanged);
             // 
             // ImportBIOS
             // 
             this.ImportBIOS.DefaultExt = "rom";
             this.ImportBIOS.Filter = ".ROM (*.rom)|*.rom";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(9, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "BIOS:";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "auto"});
+            this.comboBox1.Location = new System.Drawing.Point(12, 25);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(360, 21);
+            this.comboBox1.TabIndex = 14;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.BIOSChanged);
+            // 
             // Options_VC_NeoGeo
             // 
-            this.ClientSize = new System.Drawing.Size(384, 92);
-            this.Controls.Add(this.checkBox1);
+            this.ClientSize = new System.Drawing.Size(384, 132);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.label1);
             this.Name = "Options_VC_NeoGeo";
-            this.Controls.SetChildIndex(this.checkBox1, 0);
+            this.Controls.SetChildIndex(this.label1, 0);
+            this.Controls.SetChildIndex(this.comboBox1, 0);
             this.bottomPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -73,8 +76,8 @@ namespace FriishProduce
         }
 
         #endregion
-
-        private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.OpenFileDialog ImportBIOS;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
