@@ -18,8 +18,8 @@ namespace FriishProduce
 
             Settings = new Dictionary<string, string>
             {
-                { "palette", "0" },
-                { "use_tImg", "0" }
+                { "palette", Default.Default_NES_Palette.ToString() },
+                { "use_tImg", Default.Default_NES_UsePaletteForBanner ? "1" : "0" }
             };
 
             // Cosmetic

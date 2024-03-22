@@ -323,6 +323,7 @@ namespace FriishProduce
             // ToolStrip
             // 
             resources.ApplyResources(this.ToolStrip, "ToolStrip");
+            this.ToolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.ToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ToolStrip_OpenROM,
             this.ToolStrip_OpenImage,

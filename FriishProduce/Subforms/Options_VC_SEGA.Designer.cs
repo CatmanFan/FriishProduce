@@ -48,22 +48,22 @@ namespace FriishProduce
             // 
             // OK
             // 
-            this.OK.Location = new System.Drawing.Point(101, 12);
+            this.OK.Location = new System.Drawing.Point(382, 12);
             // 
             // bottomPanel1
             // 
-            this.bottomPanel1.Size = new System.Drawing.Size(299, 47);
+            this.bottomPanel1.Size = new System.Drawing.Size(580, 47);
             // 
             // Cancel
             // 
-            this.Cancel.Location = new System.Drawing.Point(197, 12);
+            this.Cancel.Location = new System.Drawing.Point(478, 12);
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.BrightnessValue);
             this.groupBox1.Controls.Add(this.pictureBox1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 33);
+            this.groupBox1.Location = new System.Drawing.Point(12, 32);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(275, 245);
             this.groupBox1.TabIndex = 14;
@@ -139,7 +139,7 @@ namespace FriishProduce
             this.groupBox3.Controls.Add(this.toggleSwitchL1);
             this.groupBox3.Controls.Add(this.comboBox1);
             this.groupBox3.Controls.Add(this.toggleSwitch1);
-            this.groupBox3.Location = new System.Drawing.Point(12, 284);
+            this.groupBox3.Location = new System.Drawing.Point(293, 32);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(275, 90);
             this.groupBox3.TabIndex = 20;
@@ -159,7 +159,7 @@ namespace FriishProduce
             // 
             this.checkBox1.AutoSize = true;
             this.checkBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.checkBox1.Location = new System.Drawing.Point(12, 12);
+            this.checkBox1.Location = new System.Drawing.Point(12, 10);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(81, 18);
             this.checkBox1.TabIndex = 20;
@@ -168,7 +168,7 @@ namespace FriishProduce
             // 
             // Options_VC_SEGA
             // 
-            this.ClientSize = new System.Drawing.Size(299, 437);
+            this.ClientSize = new System.Drawing.Size(580, 337);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);

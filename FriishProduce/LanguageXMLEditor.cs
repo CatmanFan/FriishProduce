@@ -86,6 +86,10 @@ namespace FriishProduce
 
             button1.Enabled = comboBox1.Enabled = false;
             button5.Enabled = button4.Enabled = button3.Enabled = button2.Enabled = true;
+
+            dataGridView1.Rows[0].Selected = true;
+            dataGridView1.Columns[3].Selected = true;
+            textBox1.Text = dataGridView1.Rows[0].Cells[2].Value.ToString();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -186,7 +190,12 @@ namespace FriishProduce
 
         private void dataGridView1_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-            try { textBox1.Text = null; textBox1.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString(); } catch { }
+            try
+            {
+                textBox1.Text = null;
+                textBox1.Text = dataGridView1.SelectedCells.Count == 1 || dataGridView1.SelectedRows.Count == 1 ? dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString() : null;
+            }
+            catch { }
         }
 
         private void dataGridView1_KeyDown(object sender, KeyEventArgs e)

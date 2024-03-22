@@ -117,26 +117,44 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="OK.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>System</value>
+  <data name="&gt;&gt;bottomPanel1.Name" xml:space="preserve">
+    <value>bottomPanel1</value>
   </data>
-  <data name="OK.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="&gt;&gt;bottomPanel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;bottomPanel1.Parent" xml:space="preserve">
+    <value>bottomPanel2</value>
+  </data>
+  <data name="&gt;&gt;bottomPanel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="bottomPanel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="OK.Location" type="System.Drawing.Point, System.Drawing">
-    <value>212, 12</value>
+  <data name="bottomPanel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 230</value>
   </data>
-  <data name="OK.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 23</value>
+  <data name="bottomPanel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>314, 48</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="OK.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+  <data name="bottomPanel2.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
   </data>
-  <data name="OK.Text" xml:space="preserve">
-    <value>OK</value>
+  <data name="&gt;&gt;bottomPanel2.Name" xml:space="preserve">
+    <value>bottomPanel2</value>
+  </data>
+  <data name="&gt;&gt;bottomPanel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;bottomPanel2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;bottomPanel2.ZOrder" xml:space="preserve">
+    <value>16</value>
   </data>
   <data name="&gt;&gt;OK.Name" xml:space="preserve">
     <value>OK</value>
@@ -174,32 +192,38 @@
   <data name="&gt;&gt;bottomPanel1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="bottomPanel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
+  <data name="OK.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>System</value>
   </data>
-  <data name="bottomPanel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 234</value>
+  <data name="OK.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="bottomPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>314, 48</value>
+  <data name="OK.Location" type="System.Drawing.Point, System.Drawing">
+    <value>212, 12</value>
   </data>
-  <data name="bottomPanel2.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+  <data name="OK.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 23</value>
   </data>
-  <data name="&gt;&gt;bottomPanel2.Name" xml:space="preserve">
-    <value>bottomPanel2</value>
+  <data name="OK.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
-  <data name="&gt;&gt;bottomPanel2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="OK.Text" xml:space="preserve">
+    <value>OK</value>
   </data>
-  <data name="&gt;&gt;bottomPanel2.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;OK.Name" xml:space="preserve">
+    <value>OK</value>
   </data>
-  <data name="&gt;&gt;bottomPanel2.ZOrder" xml:space="preserve">
-    <value>16</value>
+  <data name="&gt;&gt;OK.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;OK.Parent" xml:space="preserve">
+    <value>bottomPanel1</value>
+  </data>
+  <data name="&gt;&gt;OK.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="English.Location" type="System.Drawing.Point, System.Drawing">
-    <value>104, 15</value>
+    <value>102, 12</value>
   </data>
   <data name="English.MaxLength" type="System.Int32, mscorlib">
     <value>20</value>
@@ -226,7 +250,7 @@
     <value>15</value>
   </data>
   <data name="French.Location" type="System.Drawing.Point, System.Drawing">
-    <value>104, 41</value>
+    <value>102, 38</value>
   </data>
   <data name="French.MaxLength" type="System.Int32, mscorlib">
     <value>20</value>
@@ -253,7 +277,7 @@
     <value>14</value>
   </data>
   <data name="German.Location" type="System.Drawing.Point, System.Drawing">
-    <value>104, 67</value>
+    <value>102, 64</value>
   </data>
   <data name="German.MaxLength" type="System.Int32, mscorlib">
     <value>20</value>
@@ -280,7 +304,7 @@
     <value>13</value>
   </data>
   <data name="Spanish.Location" type="System.Drawing.Point, System.Drawing">
-    <value>104, 93</value>
+    <value>102, 90</value>
   </data>
   <data name="Spanish.MaxLength" type="System.Int32, mscorlib">
     <value>20</value>
@@ -307,7 +331,7 @@
     <value>12</value>
   </data>
   <data name="Italian.Location" type="System.Drawing.Point, System.Drawing">
-    <value>104, 119</value>
+    <value>102, 116</value>
   </data>
   <data name="Italian.MaxLength" type="System.Int32, mscorlib">
     <value>20</value>
@@ -334,7 +358,7 @@
     <value>11</value>
   </data>
   <data name="Dutch.Location" type="System.Drawing.Point, System.Drawing">
-    <value>104, 145</value>
+    <value>102, 142</value>
   </data>
   <data name="Dutch.MaxLength" type="System.Int32, mscorlib">
     <value>20</value>
@@ -361,7 +385,7 @@
     <value>10</value>
   </data>
   <data name="Japanese.Location" type="System.Drawing.Point, System.Drawing">
-    <value>104, 171</value>
+    <value>102, 168</value>
   </data>
   <data name="Japanese.MaxLength" type="System.Int32, mscorlib">
     <value>20</value>
@@ -388,7 +412,7 @@
     <value>9</value>
   </data>
   <data name="Korean.Location" type="System.Drawing.Point, System.Drawing">
-    <value>104, 197</value>
+    <value>102, 194</value>
   </data>
   <data name="Korean.MaxLength" type="System.Int32, mscorlib">
     <value>20</value>
@@ -421,7 +445,7 @@
     <value>NoControl</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>60, 18</value>
+    <value>58, 15</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 13</value>
@@ -451,7 +475,7 @@
     <value>NoControl</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>53, 44</value>
+    <value>51, 41</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>47, 13</value>
@@ -481,7 +505,7 @@
     <value>NoControl</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>54, 70</value>
+    <value>52, 67</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
     <value>46, 13</value>
@@ -511,7 +535,7 @@
     <value>NoControl</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>56, 96</value>
+    <value>54, 93</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
     <value>44, 13</value>
@@ -541,7 +565,7 @@
     <value>NoControl</value>
   </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>57, 122</value>
+    <value>55, 119</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
     <value>43, 13</value>
@@ -571,7 +595,7 @@
     <value>NoControl</value>
   </data>
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>39, 148</value>
+    <value>37, 145</value>
   </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
     <value>61, 13</value>
@@ -601,7 +625,7 @@
     <value>NoControl</value>
   </data>
   <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>57, 174</value>
+    <value>55, 171</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
     <value>43, 13</value>
@@ -628,7 +652,7 @@
     <value>True</value>
   </data>
   <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>60, 200</value>
+    <value>58, 197</value>
   </data>
   <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 13</value>
@@ -655,7 +679,7 @@
     <value>True</value>
   </metadata>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>314, 282</value>
+    <value>314, 278</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8.25pt</value>

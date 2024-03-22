@@ -202,5 +202,53 @@ namespace FriishProduce.Properties {
                 this["Default_NeoGeo_BIOS"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public string Default_SEGA_6B {
+            get {
+                return ((string)(this["Default_SEGA_6B"]));
+            }
+            set {
+                this["Default_SEGA_6B"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int Default_NES_Palette {
+            get {
+                return ((int)(this["Default_NES_Palette"]));
+            }
+            set {
+                this["Default_NES_Palette"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool Default_NES_UsePaletteForBanner {
+            get {
+                return ((bool)(this["Default_NES_UsePaletteForBanner"]));
+            }
+            set {
+                this["Default_NES_UsePaletteForBanner"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public string Default_SEGA_SRAM {
+            get {
+                return ((string)(this["Default_SEGA_SRAM"]));
+            }
+            set {
+                this["Default_SEGA_SRAM"] = value;
+            }
+        }
     }
 }

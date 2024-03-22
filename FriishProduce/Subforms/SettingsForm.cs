@@ -30,7 +30,9 @@ namespace FriishProduce
             TreeView.Nodes[1].Nodes[0].Text = Language.Get(Console.NES.ToString());
             TreeView.Nodes[1].Nodes[1].Text = Language.Get(Console.N64.ToString(), "Platforms");
             TreeView.Nodes[1].Nodes[2].Text = Language.Get("Group1", "Platforms");
-            TreeView.Nodes[1].Nodes[3].Text = Language.Get("Forwarders");
+            TreeView.Nodes[1].Nodes[3].Text = Language.Get(Console.PCE.ToString(), "Platforms");
+            TreeView.Nodes[1].Nodes[4].Text = Language.Get(Console.NeoGeo.ToString(), "Platforms");
+            TreeView.Nodes[1].Nodes[5].Text = Language.Get("Forwarders");
             TreeView.SelectedNode = TreeView.Nodes[0];
 
             // -----------------------------
@@ -53,12 +55,19 @@ namespace FriishProduce
 
             AutoLibRetro.Checked = Default.AutoLibRetro;
             AutoOpenFolder.Checked = Default.AutoOpenFolder;
-            checkBox1.Checked = false;
+            ResetAllDialogs.Checked = false;
 
             // -----------------------------
 
             groupBox8.Text = Language.Get("groupBox8", "InjectorForm", true);
             groupBox9.Text = Language.Get("groupBox9", "InjectorForm", true);
+
+            // -----------------------------
+
+            groupBox4.Text = Language.Get("groupBox1", typeof(Options_VC_NES).Name, true);
+            PaletteBanner.Text = Language.Get("checkBox1", typeof(Options_VC_NES).Name, true);
+
+            Language.GetComboBox(PaletteList, "PaletteList", typeof(Options_VC_NES).Name);
 
             // -----------------------------
 
@@ -69,22 +78,51 @@ namespace FriishProduce
             n64004.Text = Language.Get(n64004, typeof(Options_VC_N64).Name);
             groupBox3.Text = Language.Get("groupBox1", typeof(Options_VC_N64).Name, true);
 
-            ROMCType.Items.Clear();
-            ROMCType.Items.Add("auto");
             Language.GetComboBox(ROMCType, "ROMCType", typeof(Options_VC_N64).Name);
 
             // -----------------------------
 
+            SegaSRAM.Text = Language.Get("checkBox1", typeof(Options_VC_SEGA).Name, true);
+            Sega6ButtonPad.Text = string.Format(Language.Get(Sega6ButtonPad, this), Language.Get(Console.SMDGEN.ToString()));
+
+            // -----------------------------
+
+            Language.GetComboBox(NGBios, "comboBox1", typeof(Options_VC_NeoGeo).Name);
+            NGBios.Items.RemoveAt(0);
+
+            // -----------------------------
+
             FStorage_SD.Checked = Default.Default_Forwarders_FilesStorage.ToLower() == "sd";
-            FNANDLoader_Wii.Checked = Default.Default_Forwarders_Mode.ToLower() == "wii";
+            toggleSwitch1.Checked = Default.Default_Forwarders_Mode.ToLower() == "vwii";
             FStorage_USB.Checked = !FStorage_SD.Checked;
-            FNANDLoader_vWii.Checked = !FNANDLoader_Wii.Checked;
+
+            PaletteList.SelectedIndex = Default.Default_NES_Palette;
+            PaletteBanner.Checked = Default.Default_NES_UsePaletteForBanner;
 
             n64000.Checked = Default.Default_N64_FixBrightness;
             n64001.Checked = Default.Default_N64_FixCrashes;
             n64002.Checked = Default.Default_N64_ExtendedRAM;
             n64003.Checked = Default.Default_N64_AllocateROM;
             ROMCType.SelectedIndex = Default.Default_N64_ROMC0 ? 0 : 1;
+
+            SegaSRAM.Checked = Default.Default_SEGA_SRAM == "1";
+            Sega6ButtonPad.Checked = Default.Default_SEGA_6B == "1";
+
+            switch (Default.Default_NeoGeo_BIOS.ToLower())
+            {
+                case "vc1":
+                    NGBios.SelectedIndex = 0;
+                    break;
+
+                default:
+                case "vc2":
+                    NGBios.SelectedIndex = 1;
+                    break;
+
+                case "vc3":
+                    NGBios.SelectedIndex = 2;
+                    break;
+            }
 
             // -----------------------------
         }
@@ -113,7 +151,10 @@ namespace FriishProduce
             Default.AutoOpenFolder = AutoOpenFolder.Checked;
 
             Default.Default_Forwarders_FilesStorage = FStorage_SD.Checked ? "SD" : "USB";
-            Default.Default_Forwarders_Mode = FNANDLoader_Wii.Checked ? "Wii" : "vWii";
+            Default.Default_Forwarders_Mode = toggleSwitch1.Checked ? "vWii" : "Wii";
+
+            Default.Default_NES_Palette = PaletteList.SelectedIndex;
+            Default.Default_NES_UsePaletteForBanner = PaletteBanner.Checked;
 
             Default.Default_N64_FixBrightness = n64000.Checked;
             Default.Default_N64_FixCrashes = n64001.Checked;
@@ -121,9 +162,27 @@ namespace FriishProduce
             Default.Default_N64_AllocateROM = n64003.Checked;
             Default.Default_N64_ROMC0 = ROMCType.SelectedIndex == 0;
 
+            Default.Default_SEGA_SRAM = SegaSRAM.Checked ? "1" : null;
+            Default.Default_SEGA_6B = Sega6ButtonPad.Checked ? "1" : null;
+
+            switch (NGBios.SelectedIndex)
+            {
+                case 0:
+                    Default.Default_NeoGeo_BIOS = "VC1";
+                    break;
+
+                case 1:
+                    Default.Default_NeoGeo_BIOS = "VC2";
+                    break;
+
+                case 2:
+                    Default.Default_NeoGeo_BIOS = "VC3";
+                    break;
+            }
+
             // -------------------------------------------
 
-            if (checkBox1.Checked)
+            if (ResetAllDialogs.Checked)
             {
                 Default.DoNotShow_Welcome = false;
                 Default.DoNotShow_000 = false;
@@ -192,10 +251,17 @@ namespace FriishProduce
             panel2.Hide();
             panel3.Hide();
             panel4.Hide();
+            panel5.Hide();
+            panel6.Hide();
+            // panel7.Hide();
+            panel8.Hide();
+            // panel9.Hide();
 
             switch (e.Node.Name.Substring(4))
             {
                 default:
+                    break;
+
                 case "0":
                     panel1.Show();
                     break;
@@ -205,13 +271,27 @@ namespace FriishProduce
                     break;
 
                 case "NES":
-                    break;
-
-                case "N64":
                     panel4.Show();
                     break;
 
+                case "N64":
+                    panel5.Show();
+                    break;
+
                 case "SEGA":
+                    panel6.Show();
+                    break;
+
+                case "PCE":
+                    // panel7.Show();
+                    break;
+
+                case "NeoGeo":
+                    panel8.Show();
+                    break;
+
+                case "Flash":
+                    // panel9.Show();
                     break;
 
                 case "Forwarders":
@@ -244,7 +324,12 @@ namespace FriishProduce
 
             Language.Current = LanguageList.SelectedIndex == 0 ? Language.GetSystemLanguage() : new System.Globalization.CultureInfo(Default.UI_Language);
 
-            if (refresh) RefreshForm();
+            // if (refresh) RefreshForm();
+        }
+
+        private void ToggleSwitchChanged(object sender, EventArgs e)
+        {
+            if (sender == toggleSwitch1) toggleSwitchL1.Text = toggleSwitch1.Checked ? "vWii (Wii U)" : "Wii";
         }
     }
 }

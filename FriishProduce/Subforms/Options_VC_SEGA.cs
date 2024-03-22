@@ -16,10 +16,10 @@ namespace FriishProduce
             Settings = new SortedDictionary<string, string>
             {
                 { "console.brightness", "87" },
-                // { "console.disable_resetbutton", "1" },
+                { "console.disable_resetbutton", null },
                 { "country", Language.Current.Name.StartsWith("ja") ? "jp" : "us" },
-                { "dev.mdpad.enable_6b", null },
-                { "save_sram", "0" },
+                { "dev.mdpad.enable_6b", Default.Default_SEGA_6B },
+                { "save_sram", Default.Default_SEGA_SRAM },
             };
 
             // Cosmetic
@@ -49,17 +49,14 @@ namespace FriishProduce
             // *******
             if (Settings != null)
             {
+                if (IsSMS) Settings["dev.mdpad.enable_6b"] = null;
+
                 if (Settings["console.brightness"] == null || int.Parse(Settings["console.brightness"]) < 0 || !BrightnessValue.Enabled) Settings["console.brightness"] = IsSMS ? "87" : "100";
 
-                if (!IsSMS)
-                {
-                    if (Settings["dev.mdpad.enable_6b"] == null) Settings["dev.mdpad.enable_6b"] = IsSMS ? "0" : "1";
-                    toggleSwitch1.Checked = Settings["dev.mdpad.enable_6b"] == "1";
-                }
-
                 BrightnessValue.Value = int.Parse(Settings["console.brightness"]);
-                checkBox1.Checked = Settings["save_sram"] == "1";
                 comboBox1.SelectedIndex = Settings["country"] == "jp" ? 2 : Settings["country"] == "eu" ? 1 : 0;
+                toggleSwitch1.Checked = Settings["dev.mdpad.enable_6b"] == "1";
+                checkBox1.Checked = Settings["save_sram"] == "1";
                 ChangeBrightness();
             }
         }
@@ -67,13 +64,9 @@ namespace FriishProduce
         protected override void SaveOptions()
         {
             Settings["console.brightness"] = label1.Text;
-            Settings["save_sram"] = checkBox1.Checked ? "1" : "0";
+            Settings["save_sram"] = checkBox1.Checked ? "1" : null;
             Settings["country"] = comboBox1.SelectedIndex == 2 ? "jp" : comboBox1.SelectedIndex == 1 ? "eu" : "us";
-
-            if (!IsSMS)
-            {
-                Settings["dev.mdpad.enable_6b"] = toggleSwitch1.Checked ? "1" : "0";
-            }
+            Settings["dev.mdpad.enable_6b"] = toggleSwitch1.Checked ? "1" : null;
         }
 
         // ---------------------------------------------------------------------------------------------------------------

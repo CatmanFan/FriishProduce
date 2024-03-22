@@ -30,6 +30,7 @@ namespace FriishProduce
                 }
             }
         }
+
         public byte[] Bytes { get; set; }
 
         public int MaxSize { get; set; }

@@ -48,31 +48,46 @@ namespace FriishProduce
             this.bottomPanel2 = new System.Windows.Forms.Panel();
             this.TreeView = new System.Windows.Forms.TreeView();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.ResetAllDialogs = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.leftSeparator = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.FNANDLoader_vWii = new System.Windows.Forms.RadioButton();
-            this.FNANDLoader_Wii = new System.Windows.Forms.RadioButton();
+            this.toggleSwitchL1 = new System.Windows.Forms.Label();
+            this.toggleSwitch1 = new JCS.ToggleSwitch();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.FStorage_SD = new System.Windows.Forms.RadioButton();
             this.FStorage_USB = new System.Windows.Forms.RadioButton();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.PaletteBanner = new System.Windows.Forms.CheckBox();
+            this.PaletteList = new System.Windows.Forms.ComboBox();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.NGBios = new System.Windows.Forms.ComboBox();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.Sega6ButtonPad = new System.Windows.Forms.CheckBox();
+            this.SegaSRAM = new System.Windows.Forms.CheckBox();
             this.groupBox3.SuspendLayout();
             this.n64004.SuspendLayout();
             this.bottomPanel1.SuspendLayout();
             this.bottomPanel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.panel4.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.groupBox9.SuspendLayout();
             this.groupBox8.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.panel8.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // DefaultImageInterpolation
@@ -208,17 +223,17 @@ namespace FriishProduce
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.checkBox1);
+            this.panel1.Controls.Add(this.ResetAllDialogs);
             this.panel1.Controls.Add(this.AutoOpenFolder);
             this.panel1.Controls.Add(this.groupBox1);
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
             // 
-            // checkBox1
+            // ResetAllDialogs
             // 
-            resources.ApplyResources(this.checkBox1, "checkBox1");
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.ResetAllDialogs, "ResetAllDialogs");
+            this.ResetAllDialogs.Name = "ResetAllDialogs";
+            this.ResetAllDialogs.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
@@ -228,12 +243,12 @@ namespace FriishProduce
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
-            // panel4
+            // panel5
             // 
-            this.panel4.Controls.Add(this.groupBox3);
-            this.panel4.Controls.Add(this.n64004);
-            resources.ApplyResources(this.panel4, "panel4");
-            this.panel4.Name = "panel4";
+            this.panel5.Controls.Add(this.groupBox3);
+            this.panel5.Controls.Add(this.n64004);
+            resources.ApplyResources(this.panel5, "panel5");
+            this.panel5.Name = "panel5";
             // 
             // panel2
             // 
@@ -265,26 +280,26 @@ namespace FriishProduce
             // 
             // groupBox9
             // 
-            this.groupBox9.Controls.Add(this.FNANDLoader_vWii);
-            this.groupBox9.Controls.Add(this.FNANDLoader_Wii);
+            this.groupBox9.Controls.Add(this.toggleSwitchL1);
+            this.groupBox9.Controls.Add(this.toggleSwitch1);
             this.groupBox9.FlatStyle = System.Windows.Forms.FlatStyle.System;
             resources.ApplyResources(this.groupBox9, "groupBox9");
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.TabStop = false;
             // 
-            // FNANDLoader_vWii
+            // toggleSwitchL1
             // 
-            resources.ApplyResources(this.FNANDLoader_vWii, "FNANDLoader_vWii");
-            this.FNANDLoader_vWii.Name = "FNANDLoader_vWii";
-            this.FNANDLoader_vWii.TabStop = true;
-            this.FNANDLoader_vWii.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.toggleSwitchL1, "toggleSwitchL1");
+            this.toggleSwitchL1.Name = "toggleSwitchL1";
             // 
-            // FNANDLoader_Wii
+            // toggleSwitch1
             // 
-            resources.ApplyResources(this.FNANDLoader_Wii, "FNANDLoader_Wii");
-            this.FNANDLoader_Wii.Name = "FNANDLoader_Wii";
-            this.FNANDLoader_Wii.TabStop = true;
-            this.FNANDLoader_Wii.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.toggleSwitch1, "toggleSwitch1");
+            this.toggleSwitch1.Name = "toggleSwitch1";
+            this.toggleSwitch1.OffFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toggleSwitch1.OnFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toggleSwitch1.Style = JCS.ToggleSwitch.ToggleSwitchStyle.IOS5;
+            this.toggleSwitch1.CheckedChanged += new JCS.ToggleSwitch.CheckedChangedDelegate(this.ToggleSwitchChanged);
             // 
             // groupBox8
             // 
@@ -309,6 +324,72 @@ namespace FriishProduce
             this.FStorage_USB.TabStop = true;
             this.FStorage_USB.UseVisualStyleBackColor = true;
             // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.groupBox4);
+            resources.ApplyResources(this.panel4, "panel4");
+            this.panel4.Name = "panel4";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.PaletteBanner);
+            this.groupBox4.Controls.Add(this.PaletteList);
+            resources.ApplyResources(this.groupBox4, "groupBox4");
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.TabStop = false;
+            // 
+            // PaletteBanner
+            // 
+            resources.ApplyResources(this.PaletteBanner, "PaletteBanner");
+            this.PaletteBanner.Name = "PaletteBanner";
+            this.PaletteBanner.UseVisualStyleBackColor = true;
+            // 
+            // PaletteList
+            // 
+            this.PaletteList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.PaletteList, "PaletteList");
+            this.PaletteList.FormattingEnabled = true;
+            this.PaletteList.Name = "PaletteList";
+            // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.groupBox5);
+            resources.ApplyResources(this.panel8, "panel8");
+            this.panel8.Name = "panel8";
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.NGBios);
+            resources.ApplyResources(this.groupBox5, "groupBox5");
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.TabStop = false;
+            // 
+            // NGBios
+            // 
+            this.NGBios.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.NGBios, "NGBios");
+            this.NGBios.FormattingEnabled = true;
+            this.NGBios.Name = "NGBios";
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.Sega6ButtonPad);
+            this.panel6.Controls.Add(this.SegaSRAM);
+            resources.ApplyResources(this.panel6, "panel6");
+            this.panel6.Name = "panel6";
+            // 
+            // Sega6ButtonPad
+            // 
+            resources.ApplyResources(this.Sega6ButtonPad, "Sega6ButtonPad");
+            this.Sega6ButtonPad.Name = "Sega6ButtonPad";
+            this.Sega6ButtonPad.UseVisualStyleBackColor = true;
+            // 
+            // SegaSRAM
+            // 
+            resources.ApplyResources(this.SegaSRAM, "SegaSRAM");
+            this.SegaSRAM.Name = "SegaSRAM";
+            this.SegaSRAM.UseVisualStyleBackColor = true;
+            // 
             // SettingsForm
             // 
             this.AcceptButton = this.OK;
@@ -319,10 +400,13 @@ namespace FriishProduce
             this.Controls.Add(this.bottomPanel2);
             this.Controls.Add(this.leftSeparator);
             this.Controls.Add(this.TreeView);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel4);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel5);
+            this.Controls.Add(this.panel6);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel8);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MaximizeBox = false;
@@ -340,7 +424,7 @@ namespace FriishProduce
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -349,6 +433,13 @@ namespace FriishProduce
             this.groupBox9.PerformLayout();
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            this.panel8.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -372,18 +463,28 @@ namespace FriishProduce
         private System.Windows.Forms.Button DownloadBanners;
         private System.Windows.Forms.TreeView TreeView;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel leftSeparator;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox ResetAllDialogs;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.GroupBox groupBox9;
-        private System.Windows.Forms.RadioButton FNANDLoader_vWii;
-        private System.Windows.Forms.RadioButton FNANDLoader_Wii;
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.RadioButton FStorage_SD;
         private System.Windows.Forms.RadioButton FStorage_USB;
+        private System.Windows.Forms.Label toggleSwitchL1;
+        private JCS.ToggleSwitch toggleSwitch1;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.CheckBox PaletteBanner;
+        private System.Windows.Forms.ComboBox PaletteList;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.ComboBox NGBios;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.CheckBox Sega6ButtonPad;
+        private System.Windows.Forms.CheckBox SegaSRAM;
     }
 }

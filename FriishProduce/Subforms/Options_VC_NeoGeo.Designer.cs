@@ -30,24 +30,28 @@ namespace FriishProduce
         private void InitializeComponent()
         {
             this.ImportBIOS = new System.Windows.Forms.OpenFileDialog();
-            this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.bottomPanel1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // OK
+            // 
+            this.OK.Location = new System.Drawing.Point(206, 12);
+            // 
+            // bottomPanel1
+            // 
+            this.bottomPanel1.Size = new System.Drawing.Size(404, 47);
+            // 
+            // Cancel
+            // 
+            this.Cancel.Location = new System.Drawing.Point(302, 12);
             // 
             // ImportBIOS
             // 
             this.ImportBIOS.DefaultExt = "rom";
             this.ImportBIOS.Filter = ".ROM (*.rom)|*.rom";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 13;
-            this.label1.Text = "BIOS:";
             // 
             // comboBox1
             // 
@@ -55,29 +59,37 @@ namespace FriishProduce
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "auto"});
-            this.comboBox1.Location = new System.Drawing.Point(12, 25);
+            this.comboBox1.Location = new System.Drawing.Point(10, 18);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(360, 21);
             this.comboBox1.TabIndex = 14;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.BIOSChanged);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Location = new System.Drawing.Point(12, 9);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(380, 50);
+            this.groupBox1.TabIndex = 15;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "BIOS";
+            // 
             // Options_VC_NeoGeo
             // 
-            this.ClientSize = new System.Drawing.Size(384, 132);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(404, 122);
+            this.Controls.Add(this.groupBox1);
             this.Name = "Options_VC_NeoGeo";
-            this.Controls.SetChildIndex(this.label1, 0);
-            this.Controls.SetChildIndex(this.comboBox1, 0);
+            this.Controls.SetChildIndex(this.groupBox1, 0);
             this.bottomPanel1.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
         private System.Windows.Forms.OpenFileDialog ImportBIOS;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

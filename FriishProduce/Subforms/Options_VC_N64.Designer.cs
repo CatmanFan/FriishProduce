@@ -58,13 +58,15 @@ namespace FriishProduce
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.pictureBox1);
             this.groupBox1.Controls.Add(this.n64003);
+            this.groupBox1.Controls.Add(this.x009);
             this.groupBox1.Controls.Add(this.n64002);
             this.groupBox1.Controls.Add(this.n64001);
             this.groupBox1.Controls.Add(this.n64000);
             this.groupBox1.Location = new System.Drawing.Point(12, 11);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(235, 110);
+            this.groupBox1.Size = new System.Drawing.Size(435, 110);
             this.groupBox1.TabIndex = 16;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Patches";
@@ -147,7 +149,7 @@ namespace FriishProduce
             this.ROMCType.Items.AddRange(new object[] {
             "ROMC Type 0",
             "ROMC Type 1"});
-            this.ROMCType.Location = new System.Drawing.Point(10, 19);
+            this.ROMCType.Location = new System.Drawing.Point(10, 18);
             this.ROMCType.Name = "ROMCType";
             this.ROMCType.Size = new System.Drawing.Size(415, 21);
             this.ROMCType.TabIndex = 0;
@@ -156,8 +158,8 @@ namespace FriishProduce
             // 
             this.x009.AutoSize = true;
             this.x009.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.x009.Location = new System.Drawing.Point(289, 19);
-            this.x009.MaximumSize = new System.Drawing.Size(155, 100);
+            this.x009.Location = new System.Drawing.Point(271, 17);
+            this.x009.MaximumSize = new System.Drawing.Size(155, 80);
             this.x009.Name = "x009";
             this.x009.Size = new System.Drawing.Size(154, 39);
             this.x009.TabIndex = 18;
@@ -167,7 +169,7 @@ namespace FriishProduce
             // 
             this.pictureBox1.Image = global::FriishProduce.Properties.Resources.information_large;
             this.pictureBox1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.pictureBox1.Location = new System.Drawing.Point(260, 18);
+            this.pictureBox1.Location = new System.Drawing.Point(242, 16);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(24, 24);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -177,23 +179,18 @@ namespace FriishProduce
             // Options_VC_N64
             // 
             this.ClientSize = new System.Drawing.Size(459, 242);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.x009);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.n64004);
             this.Name = "Options_VC_N64";
             this.Shown += new System.EventHandler(this.Form_IsShown);
             this.Controls.SetChildIndex(this.n64004, 0);
             this.Controls.SetChildIndex(this.groupBox1, 0);
-            this.Controls.SetChildIndex(this.x009, 0);
-            this.Controls.SetChildIndex(this.pictureBox1, 0);
             this.bottomPanel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.n64004.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

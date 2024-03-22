@@ -47,5 +47,17 @@
     <Setting Name="Default_NeoGeo_BIOS" Type="System.String" Scope="User">
       <Value Profile="(Default)">VC2</Value>
     </Setting>
+    <Setting Name="Default_SEGA_6B" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="Default_NES_Palette" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="Default_NES_UsePaletteForBanner" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Default_SEGA_SRAM" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

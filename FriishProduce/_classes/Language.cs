@@ -286,23 +286,36 @@ namespace FriishProduce
         {
             if (name == null) name = x.Name;
 
-            if (x.Items[0].ToString() == "auto")
+            Begin:
+            try
             {
-                x.Items.Clear();
+                if (x.Items[0].ToString() == "auto")
+                {
+                    x.Items.Clear();
 
-                for (int y = 0; y < 100; y++)
-                    if (Get(name + $".Items" + (y == 0 ? null : y.ToString()), section, true) != "undefined")
-                        x.Items.Add(Get(name + $".Items" + (y == 0 ? null : y.ToString()), section, true));
+                    for (int y = 0; y < 100; y++)
+                        if (Get(name + $".Items" + (y == 0 ? null : y.ToString()), section, true) != "undefined")
+                            x.Items.Add(Get(name + $".Items" + (y == 0 ? null : y.ToString()), section, true));
+                }
+
+                else if (x.Items[0].ToString() == "def")
+                {
+                    x.Items.Clear();
+                    x.Items.Add(Get("ByDefault"));
+
+                    for (int y = 1; y < 100; y++)
+                        if (Get(name + $".Items{y}", section, true) != "undefined")
+                            x.Items.Add(Get(name + $".Items{y}", section, true));
+                }
+
+                else throw new InvalidDataException();
             }
 
-            else if (x.Items[0].ToString() == "def")
+            catch
             {
                 x.Items.Clear();
-                x.Items.Add(Get("ByDefault"));
-
-                for (int y = 1; y < 100; y++)
-                    if (Get(name + $".Items{y}", section, true) != "undefined")
-                        x.Items.Add(Get(name + $".Items{y}", section, true));
+                x.Items.Add(Get(name + $".Items", section, true) == "undefined" ? "def" : "auto");
+                goto Begin;
             }
         }
 

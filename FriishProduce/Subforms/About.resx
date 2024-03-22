@@ -117,13 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="textBoxDescription.Text" xml:space="preserve">
-    <value>I would like to thank the following people:
-
-- SuperrSonic for reverse-engineering much of Wii software and official emulator code, and in particular, his fork of RetroArch Wii.
-- saulfabreg for archiving several tools and aiding in research &amp; documentation.
-- sr_corsario for his work in disclosing NEO-GEO ROM injection methods.
-- Larsenv for his astounding work in the Wii homebrew community, and for originally disclosing a method for Flash WAD injection.
-- And of course, the team at the 0RANGECHiCKEN release group, including lolsjoel, and the late G0dLiKe, without whose work this project would not have been possible.</value>
-  </data>
 </root>

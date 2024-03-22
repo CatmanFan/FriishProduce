@@ -309,10 +309,15 @@ namespace FriishProduce.WiiVC
                             "console.gc_bindings",
                             "console.volume",
                             "console.master_volume",
+                            "console.rapidfire",
+                            "machine_md.snd_strict_sync",
                             "modules",
                             "romfile",
+                            "selectmenu",
                             "snd.snddrv",
                             "smsui.has_opll",
+                            "vdp.disable_gamma",
+                            "vdp_md.gamma_curve"
                         })
                             if (line.StartsWith(name)) { newConfig.Add(line); alreadyAdded.Add(line); }
 
@@ -320,7 +325,7 @@ namespace FriishProduce.WiiVC
                     {
                         bool doNotAdd = false;
                         foreach (var added in alreadyAdded)
-                            if (added.Contains(newLine.Key) || newLine.Key == "save_sram" && newLine.Value == "0")
+                            if (added.Contains(newLine.Key))
                                 doNotAdd = true;
 
                         if (!doNotAdd && !string.IsNullOrEmpty(newLine.Value))
