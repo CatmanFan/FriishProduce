@@ -45,12 +45,12 @@ namespace FriishProduce
 
         private void button1_Click(object sender, EventArgs e)
         {
-            dataGridView1.Enabled = true;
-            dataGridView1.Rows.Clear();
+            dataGridView.Enabled = true;
+            dataGridView.Rows.Clear();
 
             foreach (XmlNode section in Language.EnglishXML.ChildNodes)
                 foreach (XmlNode item in section.ChildNodes)
-                    dataGridView1.Rows.Add(item.ParentNode.Attributes[0].InnerText, item.Name, item.InnerText.Replace(@"\n", Environment.NewLine).Replace(@"\\", @"\"));
+                    dataGridView.Rows.Add(item.ParentNode.Attributes[0].InnerText, item.Name, item.InnerText.Replace(@"\n", Environment.NewLine).Replace(@"\\", @"\"));
 
             try
             {
@@ -68,15 +68,15 @@ namespace FriishProduce
                             foreach (XmlNode section in node.ChildNodes)
                                 if (section.ChildNodes.Count > 0)
                                     foreach (XmlNode item in section.ChildNodes)
-                                        for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                                        for (int i = 0; i < dataGridView.Rows.Count; i++)
                                         {
-                                            string sectionName = dataGridView1.Rows[i].Cells[0].Value?.ToString();
-                                            string ID = dataGridView1.Rows[i].Cells[1].Value?.ToString();
-                                            string originalText = dataGridView1.Rows[i].Cells[2].Value?.ToString();
+                                            string sectionName = dataGridView.Rows[i].Cells[0].Value?.ToString();
+                                            string ID = dataGridView.Rows[i].Cells[1].Value?.ToString();
+                                            string originalText = dataGridView.Rows[i].Cells[2].Value?.ToString();
 
                                             if (sectionName == section.Attributes[0]?.InnerText && ID == item.Name
                                                 && !string.IsNullOrEmpty(item.InnerText))
-                                                dataGridView1.Rows[i].Cells[3].Value = item.InnerText.Replace(@"\n", Environment.NewLine).Replace(@"\\", @"\");
+                                                dataGridView.Rows[i].Cells[3].Value = item.InnerText.Replace(@"\n", Environment.NewLine).Replace(@"\\", @"\");
                                         }
                         }
                 }
@@ -87,9 +87,9 @@ namespace FriishProduce
             button1.Enabled = comboBox1.Enabled = false;
             button5.Enabled = button4.Enabled = button3.Enabled = button2.Enabled = true;
 
-            dataGridView1.Rows[0].Selected = true;
-            dataGridView1.Columns[3].Selected = true;
-            textBox1.Text = dataGridView1.Rows[0].Cells[2].Value.ToString();
+            dataGridView.Rows[0].Selected = true;
+            dataGridView.Columns[3].Selected = true;
+            textBox1.Text = dataGridView.Rows[0].Cells[2].Value.ToString();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -113,15 +113,15 @@ namespace FriishProduce
 
         private void button3_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < dataGridView1.Rows.Count; i++)
-                dataGridView1.Rows[i].Cells[3].Value = null;
+            for (int i = 0; i < dataGridView.Rows.Count; i++)
+                dataGridView.Rows[i].Cells[3].Value = null;
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             button1.Enabled = comboBox1.Enabled = true;
-            dataGridView1.Enabled = button5.Enabled = button4.Enabled = button3.Enabled = button2.Enabled = false;
-            dataGridView1.Rows.Clear();
+            dataGridView.Enabled = button5.Enabled = button4.Enabled = button3.Enabled = button2.Enabled = false;
+            dataGridView.Rows.Clear();
             textBox1.Text = null;
         }
 
@@ -144,12 +144,12 @@ namespace FriishProduce
                         }
 
                     foreach (XmlNode section in main.ChildNodes)
-                        for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                        for (int i = 0; i < dataGridView.Rows.Count; i++)
                         {
-                            string sectionName = dataGridView1.Rows[i].Cells[0].Value?.ToString();
-                            string ID = dataGridView1.Rows[i].Cells[1].Value?.ToString();
-                            string originalText = dataGridView1.Rows[i].Cells[2].Value?.ToString();
-                            string translatedText = dataGridView1.Rows[i].Cells[3].Value?.ToString().Replace(@"\", @"\\").Replace(Environment.NewLine, @"\n");
+                            string sectionName = dataGridView.Rows[i].Cells[0].Value?.ToString();
+                            string ID = dataGridView.Rows[i].Cells[1].Value?.ToString();
+                            string originalText = dataGridView.Rows[i].Cells[2].Value?.ToString();
+                            string translatedText = dataGridView.Rows[i].Cells[3].Value?.ToString().Replace(@"\", @"\\").Replace(Environment.NewLine, @"\n");
 
                             if (sectionName == section.Attributes[0]?.InnerText && !string.IsNullOrEmpty(translatedText))
                             {
@@ -181,8 +181,8 @@ namespace FriishProduce
 
         private void UpdateList()
         {
-            for (int i = 0; i < dataGridView1.Rows.Count; i++)
-                dataGridView1.Rows[i].Cells[3].Style.BackColor = dataGridView1.Rows[i].Cells[3].Value == null ? Color.MistyRose : Color.White;
+            for (int i = 0; i < dataGridView.Rows.Count; i++)
+                dataGridView.Rows[i].Cells[3].Style.BackColor = dataGridView.Rows[i].Cells[3].Value == null ? Color.MistyRose : Color.White;
         }
 
         private void dataGridView1_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e) => UpdateList();
@@ -193,7 +193,7 @@ namespace FriishProduce
             try
             {
                 textBox1.Text = null;
-                textBox1.Text = dataGridView1.SelectedCells.Count == 1 || dataGridView1.SelectedRows.Count == 1 ? dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString() : null;
+                textBox1.Text = dataGridView.SelectedCells.Count == 1 || dataGridView.SelectedRows.Count == 1 ? dataGridView.Rows[e.RowIndex].Cells[2].Value.ToString() : null;
             }
             catch { }
         }

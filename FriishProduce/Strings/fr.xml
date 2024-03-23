@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <language author="CatmanFan" appTitle="FriishProduce">
 	<global name="Platforms">
+		<Group0>Nintendo</Group0>
 		<Group1>Sega</Group1>
 		<Flash>Adobe Flash</Flash>
 		<MSX>Microsoft MSX / MSX2</MSX>
@@ -10,6 +11,7 @@
 		<PCE>PC Engine / TurboGrafx-16</PCE>
 		<PCECD>PC Engine CD / TurboGrafx-16 CD</PCECD>
 		<SMDGEN>Mega Drive / Genesis</SMDGEN>
+		<SMS>Master System</SMS>
 		<SNES>SNES / Super Famicom</SNES>
 	</global>
 	<global name="Strings">
@@ -60,6 +62,7 @@
 		<Message.004>Impossible de remplir toutes les formes d'après la base de données Libretro pour ce fichier de jeu.\nCertaines formes peuvent avoir besoin d'être remplis manuellement.</Message.004>
 		<Message.005>Le fichier WAD que vous avez précisée ({0}) est invalide.\nCeci peut être provoqué par l'une des raisons suivantes :\n  • La plateforme/console cible ne correspond pas à celle de la chaîne sélectionnée.\n  • La chaîne n'est pas encore disponible dans la base des données de cette application.\n  • La chaîne était déjà modifiée (par exemple : injectée ou convertie en forme du forwarder).</Message.005>
 		<None>Aucun(e)</None>
+		<NotSupported>Non supporté</NotSupported>
 		<Other>Autres</Other>
 		<ProjectType>Projet {0}</ProjectType>
 		<Region.J>Japon</Region.J>
@@ -106,10 +109,12 @@
 		<MenuItem_File.Text>&amp;Fichier</MenuItem_File.Text>
 		<MenuItem_Help.Text>&amp;Aide</MenuItem_Help.Text>
 		<MenuItem_Project.Text>&amp;Projet</MenuItem_Project.Text>
+		<MenuItem_Tutorial.Text>&amp;Tutoriel (en anglais)</MenuItem_Tutorial.Text>
 		<NewProject.Text>Nouveau ...</NewProject.Text>
 		<OpenImage.Text>Ouvrir une image ...</OpenImage.Text>
 		<OpenROM.Text>Ouvrir un fichier de jeu ...</OpenROM.Text>
 		<UseLibRetro.Text>Remplir les données dès LibRetro</UseLibRetro.Text>
+		<Welcome.Text>Bienvenue sur FriishProduce !\n\nAvant de commencer, veuillez vous familiariser avec ce programme en lisant le tutoriel (anglais).</Welcome.Text>
 	</form>
 	<form name="Options_Flash">
 		<comboBox1.Items>Elevé</comboBox1.Items>
@@ -127,6 +132,12 @@
 		<ROMCType.Items1>Type 1 (ROMC)</ROMCType.Items1>
 		<x009.Text>Veuillez noter que ces options ne peuvent pas fonctionner pour toutes les chaînes de Console virtuelle.</x009.Text>
 	</form>
+	<form name="Options_VC_NeoGeo">
+		<comboBox1.Items>Utiliser un fichier externe</comboBox1.Items>
+		<comboBox1.Items1>Console virtuelle (1ère génération)</comboBox1.Items1>
+		<comboBox1.Items2>Console virtuelle (2ème génération)</comboBox1.Items2>
+		<comboBox1.Items3>Console virtuelle (3ème génération)</comboBox1.Items3>
+	</form>
 	<form name="Options_VC_NES">
 		<checkBox1.Text>Utiliser cette palette pour les images d'aperçu</checkBox1.Text>
 		<groupBox1.Text>Palette</groupBox1.Text>
@@ -135,17 +146,26 @@
 		<PaletteList.Items5>YUV (Nestopia)</PaletteList.Items5>
 		<PaletteList.Items6>RGB (Nestopia)</PaletteList.Items6>
 	</form>
+	<form name="Options_VC_PCE">
+		<toggleSwitch1.OffText>Région du jeu : Japon</toggleSwitch1.OffText>
+		<toggleSwitch1.OnText>Région du jeu : Europe / États-Unis</toggleSwitch1.OnText>
+		<toggleSwitch2.OffText>SuperGrafx est désactivée</toggleSwitch2.OffText>
+		<toggleSwitch2.OnText>SuperGrafx est activée</toggleSwitch2.OnText>
+	</form>
 	<form name="Options_VC_SEGA">
+		<label2.Text>Région :</label2.Text>
 		<toggleSwitch1.OffText>Utilisant la manette normale</toggleSwitch1.OffText>
 		<toggleSwitch1.OnText>Utilisant la manette 6 boutons</toggleSwitch1.OnText>
 	</form>
 	<form name="SettingsForm">
 		<AutoLibRetro.Text>Remplir automatiquement dès LibRetro</AutoLibRetro.Text>
 		<AutoOpenFolder.Text>Ouvrir le dossier de sortie après une sauvegarde</AutoOpenFolder.Text>
+		<ResetAllDialogs.Text>Réinitialiser le paramètre « Ne plus afficher ce message »</ResetAllDialogs.Text>
 		<groupBox1.Text>Langue</groupBox1.Text>
 		<groupBox2.Text>Méthode d'interpolation des images</groupBox2.Text>
 		<LanguageList.Items>Système</LanguageList.Items>
 		<Node0.Text>Application</Node0.Text>
 		<Node1.Text>Réglages par défaut</Node1.Text>
+		<Sega6ButtonPad.Text>Utiliser la manette 6 boutons ({0})</Sega6ButtonPad.Text>
 	</form>
 </language>

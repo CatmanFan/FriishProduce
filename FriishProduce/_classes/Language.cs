@@ -258,7 +258,8 @@ namespace FriishProduce
         public static string Get(Control c, Form f) => Get(c, f.Name);
         public static string Get(Control c, string section)
         {
-            if (c.GetType() == typeof(JCS.ToggleSwitch)) return Get(c.Name + ((c as JCS.ToggleSwitch).Checked ? ".On" : ".Off") + "Text", section, true);
+            if (c == null) return Get("undefined", "undefined");
+            else if (c.GetType() == typeof(JCS.ToggleSwitch)) return Get(c.Name + ((c as JCS.ToggleSwitch).Checked ? ".On" : ".Off") + "Text", section, true);
             else return Get(c.Name, section, true);
         }
 

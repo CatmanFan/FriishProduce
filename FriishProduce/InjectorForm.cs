@@ -313,9 +313,9 @@ namespace FriishProduce
             ReadyToExport = !string.IsNullOrEmpty(Creator.TitleID) && Creator.TitleID.Length == 4
                             && !string.IsNullOrWhiteSpace(ChannelTitle.Text)
                             && !string.IsNullOrEmpty(Creator.BannerTitle)
-                            && !string.IsNullOrEmpty(Creator.SaveDataTitle[0])
                             && (Img != null)
                             && (ROM != null && ROM?.Path != null);
+            if (SaveDataTitle.Visible) ReadyToExport = ReadyToExport && !string.IsNullOrEmpty(Creator.SaveDataTitle[0]);
 
             Tag = "dirty";
             ExportCheck.Invoke(this, EventArgs.Empty);

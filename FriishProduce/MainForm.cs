@@ -91,7 +91,6 @@ namespace FriishProduce
             ToolStrip_Settings.Text = MenuItem_Settings.Text = Language.Get("Settings");
             ToolStrip_OpenROM.Text = OpenROM.Text = Language.Get(OpenROM.Name, this);
             ToolStrip_OpenImage.Text = OpenImage.Text = Language.Get(OpenImage.Name, this);
-            ToolStrip_OpenManual.Text = OpenManual.Text = Language.Get(OpenManual.Name, this);
             ToolStrip_UseLibRetro.Text = UseLibRetro.Text = Language.Get(UseLibRetro.Name, this);
             ToolStrip_ExportWAD.Text = ExportWAD.Text = Language.Get(ExportWAD.Name, this);
             ToolStrip_CloseTab.Text = CloseTab.Text = Language.Get("B.Close");
@@ -166,7 +165,6 @@ namespace FriishProduce
             else ExportCheck(sender, e);
 
             ToolStrip_CloseTab.Enabled = CloseTab.Enabled
-             = ToolStrip_OpenManual.Enabled = OpenManual.Enabled
              = ToolStrip_OpenImage.Enabled = OpenImage.Enabled
              = ToolStrip_OpenROM.Enabled = OpenROM.Enabled;
 
@@ -174,13 +172,9 @@ namespace FriishProduce
             // ********
             if (tabControl.TabPages.Count >= 1)
                 if (sender == tabControl.TabPages[0])
-                {
                     UseLibRetro.Enabled = (tabControl.SelectedForm as InjectorForm).CheckToolStripButtons()[0];
-                    OpenManual.Enabled = (tabControl.SelectedForm as InjectorForm).CheckToolStripButtons()[1];
-                }
 
             ToolStrip_UseLibRetro.Enabled = UseLibRetro.Enabled;
-            ToolStrip_OpenManual.Enabled = OpenManual.Enabled;
         }
 
         private void ExportCheck(object sender, EventArgs e)
@@ -273,7 +267,6 @@ namespace FriishProduce
             if (BrowseROM.ShowDialog() == DialogResult.OK)
             {
                 ToolStrip_UseLibRetro.Enabled = UseLibRetro.Enabled = currentForm.CheckToolStripButtons()[0];
-                ToolStrip_OpenManual.Enabled = OpenManual.Enabled = currentForm.CheckToolStripButtons()[1];
 
                 currentForm.LoadROM(Properties.Settings.Default.AutoLibRetro);
             }
@@ -298,15 +291,11 @@ namespace FriishProduce
             }
         }
 
-        private void OpenManual_Click(object sender, EventArgs e)
-        {
-            if (!Properties.Settings.Default.DoNotShow_000) MessageBox.Show((sender as Control).Text, Language.Get("Message.006"), 0);
-            (tabControl.SelectedForm as InjectorForm).LoadManual(BrowseManual.ShowDialog() == DialogResult.OK ? BrowseManual.SelectedPath : null);
-        }
-
         private void Tutorial_Click(object sender, EventArgs e)
         {
-
+            var tut = new Tutorial() { Text = MenuItem_Tutorial.Text };
+            tut.ShowDialog();
+            tut.Dispose();
         }
 
         private void Welcome_DoNotShow_Click(object sender, EventArgs e)
@@ -344,8 +333,9 @@ namespace FriishProduce
         private void LanguageXMLEditor_Click(object sender, EventArgs e)
         {
             var x = new LanguageXMLEditor() { Icon = (sender as ToolStripMenuItem).Image != null ? Icon.FromHandle(((sender as ToolStripMenuItem).Image as Bitmap).GetHicon()) : null };
-            System.Threading.Thread.Sleep(750);
+            System.Threading.Thread.Sleep(375);
             x.ShowDialog();
+            x.Dispose();
             RefreshForm();
         }
 

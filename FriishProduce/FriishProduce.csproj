@@ -157,6 +157,12 @@
     <Compile Include="Subforms\Options_Flash.Designer.cs">
       <DependentUpon>Options_Flash.cs</DependentUpon>
     </Compile>
+    <Compile Include="Subforms\Tutorial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Subforms\Tutorial.Designer.cs">
+      <DependentUpon>Tutorial.cs</DependentUpon>
+    </Compile>
     <Compile Include="_classes\Archives\CCF.cs" />
     <Compile Include="_classes\BannerPreview.cs" />
     <Compile Include="_classes\Modifiers\Flash.cs" />
@@ -315,6 +321,9 @@
     <EmbeddedResource Include="Subforms\SettingsForm.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Subforms\Tutorial.resx">
+      <DependentUpon>Tutorial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -354,6 +363,7 @@
     <None Include="Resources\icons\locale.png" />
     <None Include="Resources\subforms\screen_smd.png" />
     <None Include="Resources\savebanner_flash.png" />
+    <None Include="Resources\tutorial.rtf" />
     <None Include="Resources\vc\NeoGeo_VC1.bin" />
     <None Include="Resources\vc\NeoGeo_VC2.bin" />
     <None Include="Resources\vc\NeoGeo_VC3.bin" />

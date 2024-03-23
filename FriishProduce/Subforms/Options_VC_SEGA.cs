@@ -20,6 +20,8 @@ namespace FriishProduce
                 { "country", Language.Current.Name.StartsWith("ja") ? "jp" : "us" },
                 { "dev.mdpad.enable_6b", Default.Default_SEGA_6B },
                 { "save_sram", Default.Default_SEGA_SRAM },
+                { "machine_md.use_4ptap", null },
+                { "nplayers", null }
             };
 
             // Cosmetic

@@ -709,6 +709,20 @@ namespace FriishProduce.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Arial;}}
+        ///{\colortbl ;\red255\green0\blue0;}
+        ///{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+        ///\pard\sa200\sl276\slmult1\b\i\fs18\lang12 Background\b0\par
+        ///\i0 FriishProduce can be used to convert ROMs, disc images or other types of software to installable WADs for Wii/vWii (Wii U). This includes injectable Virtual Console (VC) games, as well as single ROM loaders (SRLs), and Adobe Flash files.\par
+        ///Please note that some game [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string Tutorial {
+            get {
+                return ResourceManager.GetString("Tutorial", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap wrench {

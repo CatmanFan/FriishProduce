@@ -35,7 +35,6 @@ namespace FriishProduce
             this.SaveWAD = new System.Windows.Forms.SaveFileDialog();
             this.BrowseImage = new System.Windows.Forms.OpenFileDialog();
             this.tabControl = new MdiTabControl.TabControl();
-            this.BrowseManual = new Ookii.Dialogs.WinForms.VistaFolderBrowserDialog();
             this.MenuStrip = new System.Windows.Forms.MenuStrip();
             this.MenuItem_File = new System.Windows.Forms.ToolStripMenuItem();
             this.NewProject = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,7 +45,6 @@ namespace FriishProduce
             this.MenuItem_Project = new System.Windows.Forms.ToolStripMenuItem();
             this.OpenROM = new System.Windows.Forms.ToolStripMenuItem();
             this.OpenImage = new System.Windows.Forms.ToolStripMenuItem();
-            this.OpenManual = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.UseLibRetro = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -65,7 +63,6 @@ namespace FriishProduce
             this.ToolStrip = new System.Windows.Forms.ToolStrip();
             this.ToolStrip_OpenROM = new System.Windows.Forms.ToolStripButton();
             this.ToolStrip_OpenImage = new System.Windows.Forms.ToolStripButton();
-            this.ToolStrip_OpenManual = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolStrip_UseLibRetro = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
@@ -124,11 +121,6 @@ namespace FriishProduce
             this.tabControl.TabPadRight = 7;
             this.tabControl.SelectedTabChanged += new System.EventHandler(this.TabChanged);
             this.tabControl.TabIndexChanged += new System.EventHandler(this.TabChanged);
-            // 
-            // BrowseManual
-            // 
-            this.BrowseManual.RootFolder = System.Environment.SpecialFolder.MyComputer;
-            this.BrowseManual.ShowNewFolderButton = false;
             // 
             // MenuStrip
             // 
@@ -189,7 +181,6 @@ namespace FriishProduce
             this.MenuItem_Project.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.OpenROM,
             this.OpenImage,
-            this.OpenManual,
             this.toolStripSeparator1,
             this.UseLibRetro,
             this.toolStripSeparator2,
@@ -212,13 +203,6 @@ namespace FriishProduce
             this.OpenImage.Image = global::FriishProduce.Properties.Resources.image_sunset;
             this.OpenImage.Name = "OpenImage";
             this.OpenImage.Click += new System.EventHandler(this.OpenImage_Click);
-            // 
-            // OpenManual
-            // 
-            resources.ApplyResources(this.OpenManual, "OpenManual");
-            this.OpenManual.Image = global::FriishProduce.Properties.Resources.book;
-            this.OpenManual.Name = "OpenManual";
-            this.OpenManual.Click += new System.EventHandler(this.OpenManual_Click);
             // 
             // toolStripSeparator1
             // 
@@ -292,7 +276,7 @@ namespace FriishProduce
             // 
             // MainPanel
             // 
-            this.MainPanel.BackColor = System.Drawing.Color.LightGray;
+            this.MainPanel.BackColor = System.Drawing.Color.Gainsboro;
             this.MainPanel.Controls.Add(this.Welcome_DoNotShow);
             this.MainPanel.Controls.Add(this.PointToTutorial);
             this.MainPanel.Controls.Add(this.Welcome);
@@ -323,11 +307,9 @@ namespace FriishProduce
             // ToolStrip
             // 
             resources.ApplyResources(this.ToolStrip, "ToolStrip");
-            this.ToolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.ToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ToolStrip_OpenROM,
             this.ToolStrip_OpenImage,
-            this.ToolStrip_OpenManual,
             this.toolStripSeparator6,
             this.ToolStrip_UseLibRetro,
             this.toolStripSeparator8,
@@ -354,14 +336,6 @@ namespace FriishProduce
             this.ToolStrip_OpenImage.Image = global::FriishProduce.Properties.Resources.image_sunset;
             this.ToolStrip_OpenImage.Name = "ToolStrip_OpenImage";
             this.ToolStrip_OpenImage.Click += new System.EventHandler(this.OpenImage_Click);
-            // 
-            // ToolStrip_OpenManual
-            // 
-            this.ToolStrip_OpenManual.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            resources.ApplyResources(this.ToolStrip_OpenManual, "ToolStrip_OpenManual");
-            this.ToolStrip_OpenManual.Image = global::FriishProduce.Properties.Resources.book;
-            this.ToolStrip_OpenManual.Name = "ToolStrip_OpenManual";
-            this.ToolStrip_OpenManual.Click += new System.EventHandler(this.OpenManual_Click);
             // 
             // toolStripSeparator6
             // 
@@ -449,7 +423,6 @@ namespace FriishProduce
         internal System.Windows.Forms.SaveFileDialog SaveWAD;
         private System.Windows.Forms.OpenFileDialog BrowseImage;
         internal MdiTabControl.TabControl tabControl;
-        private Ookii.Dialogs.WinForms.VistaFolderBrowserDialog BrowseManual;
         private System.Windows.Forms.MenuStrip MenuStrip;
         private System.Windows.Forms.ToolStripMenuItem MenuItem_File;
         private System.Windows.Forms.ToolStripMenuItem NewProject;
@@ -459,7 +432,6 @@ namespace FriishProduce
         private System.Windows.Forms.ToolStripMenuItem MenuItem_Project;
         private System.Windows.Forms.ToolStripMenuItem OpenROM;
         private System.Windows.Forms.ToolStripMenuItem OpenImage;
-        private System.Windows.Forms.ToolStripMenuItem OpenManual;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem UseLibRetro;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
@@ -475,7 +447,6 @@ namespace FriishProduce
         private System.Windows.Forms.ToolStrip ToolStrip;
         private System.Windows.Forms.ToolStripButton ToolStrip_OpenROM;
         private System.Windows.Forms.ToolStripButton ToolStrip_OpenImage;
-        private System.Windows.Forms.ToolStripButton ToolStrip_OpenManual;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ToolStripButton ToolStrip_UseLibRetro;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
