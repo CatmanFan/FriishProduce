@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <language author="CatmanFan" appTitle="FriishProduce">
 	<global name="Platforms">
+		<Group0>Nintendo</Group0>
 		<Group1>Sega</Group1>
 		<NeoGeo>SNK Neo-Geo</NeoGeo>
 		<NES>NES (Famicom)</NES>
@@ -18,6 +19,7 @@
 		<B.Yes>&amp;Sí</B.Yes>
 		<ByDefault>Por defecto</ByDefault>
 		<CustomManual>Importar manual electrónico</CustomManual>
+		<Display>Pantalla</Display>
 		<DoNotShow>No volver a mostrar este mensaje</DoNotShow>
 		<Error>Se ha producido un error</Error>
 		<Error.000>No se pudo conectar a Internet.\nDescripción : {0}</Error.000>
@@ -25,6 +27,7 @@
 		<Error.002>No se pueden reemplazar los datos internos.</Error.002>
 		<Error.003>La ROM es demasiado grande (más de {0} {1} en tamaño).</Error.003>
 		<Error.005>La aplicación necesaria ({0}) no se encontró en el subdirectorio "resources\\tools".</Error.005>
+		<Error.006>No se pudo exportar en formato WAD.</Error.006>
 		<Error.007>No se pudo aplicar el parche.</Error.007>
 		<Error.008>El emulador necesario ({0}) no se encontró en el subdirectorio "resources\\forwarder\\emulators".</Error.008>
 		<Filter>|Todos los archivos (*.*)|*.*</Filter>
@@ -50,6 +53,7 @@
 		<Message.003.A>Abrir carpeta de salida</Message.003.A>
 		<Message.004>No se pueden recuperar todos los datos de LibRetro para la ROM seleccionada.\nPor esta razón deberá completar manualmente algunos formularios.</Message.004>
 		<None>Ninguno(a)</None>
+		<NotSupported>No soportado</NotSupported>
 		<Other>Otros</Other>
 		<ProjectType>Canal WAD de {0}</ProjectType>
 		<Region.J>Japón</Region.J>
@@ -58,6 +62,7 @@
 		<Region.E>Europa/Australia</Region.E>
 		<Region.F>Sin bloqueo</Region.F>
 		<Settings>Opciones</Settings>
+		<System>Sistema</System>
 		<Unknown>Desconocido</Unknown>
 		<Untitled>Canal {0} sin título</Untitled>
 		<VC>Consola Virtual</VC>
@@ -70,6 +75,8 @@
 		<groupBox5.Text>Detalles del banner</groupBox5.Text>
 		<groupBox6.Text>Imagen</groupBox6.Text>
 		<groupBox7.Text>Datos guardados</groupBox7.Text>
+		<groupBox8.Text>Dispositivo de almacenamiento</groupBox8.Text>
+		<groupBox9.Text>Tipo de consola Wii</groupBox9.Text>
 		<ImportPatch.Text>Importar parche</ImportPatch.Text>
 		<label1.Text>Nombre del archivo: {0}</label1.Text>
 		<label10.Text>Jugadores:</label10.Text>
@@ -92,12 +99,18 @@
 		<MenuItem_File.Text>&amp;Archivo</MenuItem_File.Text>
 		<MenuItem_Help.Text>&amp;Ayuda</MenuItem_Help.Text>
 		<MenuItem_Project.Text>&amp;Proyecto</MenuItem_Project.Text>
+		<MenuItem_Tutorial.Text>&amp;Tutorial (en inglés)</MenuItem_Tutorial.Text>
 		<NewProject.Text>Nuevo...</NewProject.Text>
 		<OpenImage.Text>Abrir una imagen...</OpenImage.Text>
 		<OpenROM.Text>Abrir un archivo de juego...</OpenROM.Text>
 		<UseLibRetro.Text>Cargar datos desde LibRetro</UseLibRetro.Text>
+		<Welcome.Text>¡Bienvenido a FriishProduce!\n\nAntes de comenzar, por favor asegúrese de familiarizarse con esta aplicación leyendo su tutorial (en inglés).</Welcome.Text>
 	</form>
-	<form name="Options_Flash"></form>
+	<form name="Options_Flash">
+		<comboBox1.Items>Alta</comboBox1.Items>
+		<comboBox1.Items1>Media</comboBox1.Items1>
+		<comboBox1.Items2>Baja</comboBox1.Items2>
+	</form>
 	<form name="Options_VC_N64">
 		<groupBox1.Text>Parches</groupBox1.Text>
 		<n64000.Text>Deshabilitación del filtro oscuro</n64000.Text>
@@ -109,15 +122,29 @@
 		<ROMCType.Items1>ROMC (Tipo 1)</ROMCType.Items1>
 		<x009.Text>Recuerda que algunas opciones no pueden funcionar con el canal de origen elegido.</x009.Text>
 	</form>
+	<form name="Options_VC_NeoGeo">
+		<comboBox1.Items>Importar desde archivo externo</comboBox1.Items>
+		<comboBox1.Items1>Consola Virtual (1.ª generación)</comboBox1.Items1>
+		<comboBox1.Items2>Consola Virtual (2.ª generación)</comboBox1.Items2>
+		<comboBox1.Items3>Consola Virtual (3.ª generación)</comboBox1.Items3>
+	</form>
 	<form name="Options_VC_NES">
 		<groupBox1.Text>Paleta</groupBox1.Text>
 		<PaletteList.Items1>Colores restaurados</PaletteList.Items1>
 		<PaletteList.Items2>Consola Virtual (Nintendo 3DS)</PaletteList.Items2>
 	</form>
+	<form name="Options_VC_PCE">
+		<toggleSwitch1.OffText>Región actual: Japón</toggleSwitch1.OffText>
+		<toggleSwitch1.OnText>Región actual: América/Europa</toggleSwitch1.OnText>
+		<toggleSwitch2.OffText>SuperGrafx está deshabilitada</toggleSwitch2.OffText>
+		<toggleSwitch2.OnText>SuperGrafx está habilitada</toggleSwitch2.OnText>
+		<toggleSwitch3.OffText>Utilizando el mando de 2 botones</toggleSwitch3.OffText>
+		<toggleSwitch3.OnText>Utilizando el mando de 6 botones</toggleSwitch3.OnText>
+	</form>
 	<form name="Options_VC_SEGA">
+		<label2.Text>Región:</label2.Text>
 		<toggleSwitch1.OffText>Utilizando el mando normal</toggleSwitch1.OffText>
 		<toggleSwitch1.OnText>Utilizando el mando de 6 botones</toggleSwitch1.OnText>
-		<groupBox1.Text>Brillo</groupBox1.Text>
 	</form>
 	<form name="SettingsForm">
 		<AutoLibRetro.Text>Cargar automáticamente datos desde LibRetro para la ROM seleccionada</AutoLibRetro.Text>
@@ -126,5 +153,6 @@
 		<LanguageList.Items>Idioma del sistema</LanguageList.Items>
 		<Node0.Text>Programa</Node0.Text>
 		<Node1.Text>Ajustes por defecto</Node1.Text>
+		<Sega6ButtonPad.Text>Utilizar el mando de 6 botones ({0})</Sega6ButtonPad.Text>
 	</form>
 </language>

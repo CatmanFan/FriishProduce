@@ -47,8 +47,8 @@ The current version of this application includes a built-in XML editor for addin
 ## To-Do
 * ***Before releasing v1.0:***
 - [ ] Check for additional bugs that need to be fixed (Discord).
-- [ ] Cleanup file names, other unused parts and streamline code to make it more readable.
-- [ ] Clean localization files and wiki.
+- [ ] Clean localization wiki.
+- [ ] Update this readme
 * ***Planned for v1.1:***
 - [ ] Flash emulator options list
 - [ ] Reorganize content options into their own setting files

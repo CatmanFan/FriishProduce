@@ -152,6 +152,8 @@
 		<toggleSwitch1.OnText>Région du jeu : Europe / États-Unis</toggleSwitch1.OnText>
 		<toggleSwitch2.OffText>SuperGrafx est désactivée</toggleSwitch2.OffText>
 		<toggleSwitch2.OnText>SuperGrafx est activée</toggleSwitch2.OnText>
+		<toggleSwitch3.OffText>Utilisant la manette 2 boutons</toggleSwitch3.OffText>
+		<toggleSwitch3.OnText>Utilisant la manette 6 boutons</toggleSwitch3.OnText>
 	</form>
 	<form name="Options_VC_SEGA">
 		<label2.Text>Région :</label2.Text>
@@ -160,7 +162,6 @@
 	</form>
 	<form name="SettingsForm">
 		<AutoLibRetro.Text>Remplir automatiquement dès LibRetro</AutoLibRetro.Text>
-		<AutoOpenFolder.Text>Ouvrir le dossier de sortie après une sauvegarde</AutoOpenFolder.Text>
 		<ResetAllDialogs.Text>Réinitialiser le paramètre « Ne plus afficher ce message »</ResetAllDialogs.Text>
 		<groupBox1.Text>Langue</groupBox1.Text>
 		<groupBox2.Text>Méthode d'interpolation des images</groupBox2.Text>

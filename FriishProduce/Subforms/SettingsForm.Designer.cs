@@ -581,6 +581,7 @@ namespace FriishProduce
             this.Controls.Add(this.bottomPanel2);
             this.Controls.Add(this.leftSeparator);
             this.Controls.Add(this.TreeView);
+            this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel8);
             this.Controls.Add(this.panel4);
@@ -588,7 +589,6 @@ namespace FriishProduce
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel7);
-            this.Controls.Add(this.panel6);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MaximizeBox = false;

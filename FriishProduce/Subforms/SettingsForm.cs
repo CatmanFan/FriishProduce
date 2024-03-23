@@ -77,6 +77,7 @@ namespace FriishProduce
 
             // -----------------------------
 
+            label2.Text = Language.Get("label2", typeof(Options_VC_SEGA).Name, true);
             SegaSRAM.Text = Language.Get("checkBox1", typeof(Options_VC_SEGA).Name, true);
             Sega6ButtonPad.Text = string.Format(Language.Get(Sega6ButtonPad, this), Language.Get(Console.SMDGEN.ToString()));
 

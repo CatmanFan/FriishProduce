@@ -359,7 +359,7 @@ namespace FriishProduce
 
         }
 
-        private static void GetControl(Control x, Form parent, bool customStrings = true)
+        private static void GetControl(Control x, Form parent)
         {
             var origText = x.Text;
 
@@ -396,18 +396,15 @@ namespace FriishProduce
 
             // Custom strings (e.g. for buttons)
             // ****************
-            if (customStrings)
+            if (x.GetType() == typeof(Button))
             {
-                if (x.GetType() == typeof(Button))
-                {
-                    if (x.Name.ToLower() == "ok") { x.Text = Get("B.OK"); (x as Button).UseMnemonic = true; }
-                    if (x.Name.ToLower() == "cancel") { x.Text = Get("B.Cancel"); (x as Button).UseMnemonic = true; }
-                    if (x.Name.ToLower() == "close") { x.Text = Get("B.Close"); (x as Button).UseMnemonic = true; }
-                }
-
-                if (origText?.ToLower() == "system") x.Text = Get("System");
-                if (origText?.ToLower() == "display") x.Text = Get("Display");
+                if (x.Name.ToLower() == "ok") { x.Text = Get("B.OK"); (x as Button).UseMnemonic = true; }
+                if (x.Name.ToLower() == "cancel") { x.Text = Get("B.Cancel"); (x as Button).UseMnemonic = true; }
+                if (x.Name.ToLower() == "close") { x.Text = Get("B.Close"); (x as Button).UseMnemonic = true; }
             }
+
+            if (origText.ToLower() == "system") x.Text = Get("System");
+            if (origText.ToLower() == "display") x.Text = Get("Display");
         }
     }
 }

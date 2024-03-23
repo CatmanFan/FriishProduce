@@ -93,7 +93,7 @@ namespace FriishProduce
             this.dataGridView.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dataGridView.ShowCellToolTips = false;
             this.dataGridView.Size = new System.Drawing.Size(1060, 295);
             this.dataGridView.TabIndex = 0;
