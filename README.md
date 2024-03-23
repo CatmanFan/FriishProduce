@@ -47,15 +47,10 @@ The current version of this application includes a built-in XML editor for addin
 ## To-Do
 * ***Before releasing v1.0:***
 - [ ] Flash emulator options list
-- [X] Tutorial section
 - [ ] Update Settings UI.
   - [ ] PCE section
-  - [ ] SEGA section
+  - [X] SEGA section
   - [ ] Flash section
-- [X] Double-check & fix other forms
-  - [X] InjectorForm
-  - [X] MainForm
-  - [X] About
 - [ ] Check for additional bugs that need to be fixed.
 - [ ] Cleanup file names, other unused parts and streamline code to make it more readable.
 - [ ] Clean localization files and wiki.

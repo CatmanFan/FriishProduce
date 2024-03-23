@@ -15,9 +15,9 @@ namespace FriishProduce
 
             Settings = new SortedDictionary<string, string>
             {
-                { "console.brightness", "87" },
+                { "console.brightness", Default.Default_SEGA_Brightness },
                 { "console.disable_resetbutton", null },
-                { "country", Language.Current.Name.StartsWith("ja") ? "jp" : "us" },
+                { "country", Language.Current.Name.StartsWith("ja") ? "jp" : Default.Default_SEGA_Region },
                 { "dev.mdpad.enable_6b", Default.Default_SEGA_6B },
                 { "save_sram", Default.Default_SEGA_SRAM },
                 { "machine_md.use_4ptap", null },
@@ -53,7 +53,7 @@ namespace FriishProduce
             {
                 if (IsSMS) Settings["dev.mdpad.enable_6b"] = null;
 
-                if (Settings["console.brightness"] == null || int.Parse(Settings["console.brightness"]) < 0 || !BrightnessValue.Enabled) Settings["console.brightness"] = IsSMS ? "87" : "100";
+                if (Settings["console.brightness"] == null || int.Parse(Settings["console.brightness"]) < 0) Settings["console.brightness"] = Default.Default_SEGA_Brightness;
 
                 BrightnessValue.Value = int.Parse(Settings["console.brightness"]);
                 comboBox1.SelectedIndex = Settings["country"] == "jp" ? 2 : Settings["country"] == "eu" ? 1 : 0;
@@ -65,7 +65,7 @@ namespace FriishProduce
 
         protected override void SaveOptions()
         {
-            Settings["console.brightness"] = label1.Text;
+            Settings["console.brightness"] = BrightnessValue.Enabled ? label1.Text : null;
             Settings["save_sram"] = checkBox1.Checked ? "1" : null;
             Settings["country"] = comboBox1.SelectedIndex == 2 ? "jp" : comboBox1.SelectedIndex == 1 ? "eu" : "us";
             Settings["dev.mdpad.enable_6b"] = toggleSwitch1.Checked ? "1" : null;
@@ -90,6 +90,8 @@ namespace FriishProduce
             pictureBox1.Image = changed;
 
             label1.Text = BrightnessValue.Value.ToString();
+
+            if (!BrightnessValue.Enabled) Settings["console.brightness"] = null;
         }
 
         private void ToggleSwitchChanged(object sender, EventArgs e)

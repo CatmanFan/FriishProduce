@@ -85,6 +85,11 @@ namespace FriishProduce
             SegaSRAM.Text = Language.Get("checkBox1", typeof(Options_VC_SEGA).Name, true);
             Sega6ButtonPad.Text = string.Format(Language.Get(Sega6ButtonPad, this), Language.Get(Console.SMDGEN.ToString()));
 
+            comboBox1.Items.Clear();
+            comboBox1.Items.Add(Language.Get("Region.U"));
+            comboBox1.Items.Add(Language.Get("Region.E"));
+            comboBox1.Items.Add(Language.Get("Region.J"));
+
             // -----------------------------
 
             Language.GetComboBox(NGBios, "comboBox1", typeof(Options_VC_NeoGeo).Name);
@@ -105,8 +110,11 @@ namespace FriishProduce
             n64003.Checked = Default.Default_N64_AllocateROM;
             ROMCType.SelectedIndex = Default.Default_N64_ROMC0 ? 0 : 1;
 
+            label1.Text = Default.Default_SEGA_Brightness;
+            BrightnessValue.Value = int.Parse(Default.Default_SEGA_Brightness);
             SegaSRAM.Checked = Default.Default_SEGA_SRAM == "1";
             Sega6ButtonPad.Checked = Default.Default_SEGA_6B == "1";
+            comboBox1.SelectedIndex = Default.Default_SEGA_Region.ToLower() == "jp" ? 0 : Default.Default_SEGA_Region.ToLower() == "eu" ? 2 : 1;
 
             switch (Default.Default_NeoGeo_BIOS.ToLower())
             {
@@ -162,8 +170,10 @@ namespace FriishProduce
             Default.Default_N64_AllocateROM = n64003.Checked;
             Default.Default_N64_ROMC0 = ROMCType.SelectedIndex == 0;
 
+            Default.Default_SEGA_Brightness = label1.Text;
             Default.Default_SEGA_SRAM = SegaSRAM.Checked ? "1" : null;
             Default.Default_SEGA_6B = Sega6ButtonPad.Checked ? "1" : null;
+            Default.Default_SEGA_Region = comboBox1.SelectedIndex == 0 ? "jp" : comboBox1.SelectedIndex == 2 ? "eu" : "us";
 
             switch (NGBios.SelectedIndex)
             {
@@ -331,5 +341,7 @@ namespace FriishProduce
         {
             if (sender == toggleSwitch1) toggleSwitchL1.Text = toggleSwitch1.Checked ? "vWii (Wii U)" : "Wii";
         }
+
+        private void BrightnessValue_Scroll(object sender, EventArgs e) => label1.Text = BrightnessValue.Value.ToString();
     }
 }

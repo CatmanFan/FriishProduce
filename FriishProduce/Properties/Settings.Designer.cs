@@ -250,5 +250,29 @@ namespace FriishProduce.Properties {
                 this["Default_SEGA_SRAM"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("87")]
+        public string Default_SEGA_Brightness {
+            get {
+                return ((string)(this["Default_SEGA_Brightness"]));
+            }
+            set {
+                this["Default_SEGA_Brightness"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("us")]
+        public string Default_SEGA_Region {
+            get {
+                return ((string)(this["Default_SEGA_Region"]));
+            }
+            set {
+                this["Default_SEGA_Region"] = value;
+            }
+        }
     }
 }

@@ -71,6 +71,12 @@ namespace FriishProduce
             this.panel6 = new System.Windows.Forms.Panel();
             this.Sega6ButtonPad = new System.Windows.Forms.CheckBox();
             this.SegaSRAM = new System.Windows.Forms.CheckBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.BrightnessValue = new System.Windows.Forms.TrackBar();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox3.SuspendLayout();
             this.n64004.SuspendLayout();
             this.bottomPanel1.SuspendLayout();
@@ -88,6 +94,9 @@ namespace FriishProduce
             this.panel8.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.panel6.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BrightnessValue)).BeginInit();
+            this.groupBox7.SuspendLayout();
             this.SuspendLayout();
             // 
             // DefaultImageInterpolation
@@ -373,7 +382,8 @@ namespace FriishProduce
             // 
             // panel6
             // 
-            this.panel6.Controls.Add(this.Sega6ButtonPad);
+            this.panel6.Controls.Add(this.groupBox7);
+            this.panel6.Controls.Add(this.groupBox6);
             this.panel6.Controls.Add(this.SegaSRAM);
             resources.ApplyResources(this.panel6, "panel6");
             this.panel6.Name = "panel6";
@@ -390,6 +400,48 @@ namespace FriishProduce
             this.SegaSRAM.Name = "SegaSRAM";
             this.SegaSRAM.UseVisualStyleBackColor = true;
             // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.label1);
+            this.groupBox6.Controls.Add(this.BrightnessValue);
+            resources.ApplyResources(this.groupBox6, "groupBox6");
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.TabStop = false;
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // BrightnessValue
+            // 
+            resources.ApplyResources(this.BrightnessValue, "BrightnessValue");
+            this.BrightnessValue.Maximum = 100;
+            this.BrightnessValue.Name = "BrightnessValue";
+            this.BrightnessValue.Value = 100;
+            this.BrightnessValue.Scroll += new System.EventHandler(this.BrightnessValue_Scroll);
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.label2);
+            this.groupBox7.Controls.Add(this.Sega6ButtonPad);
+            this.groupBox7.Controls.Add(this.comboBox1);
+            resources.ApplyResources(this.groupBox7, "groupBox7");
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.TabStop = false;
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.comboBox1, "comboBox1");
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Name = "comboBox1";
+            // 
             // SettingsForm
             // 
             this.AcceptButton = this.OK;
@@ -400,13 +452,13 @@ namespace FriishProduce
             this.Controls.Add(this.bottomPanel2);
             this.Controls.Add(this.leftSeparator);
             this.Controls.Add(this.TreeView);
+            this.Controls.Add(this.panel6);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel8);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel5);
-            this.Controls.Add(this.panel6);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.panel8);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MaximizeBox = false;
@@ -440,6 +492,10 @@ namespace FriishProduce
             this.groupBox5.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.BrightnessValue)).EndInit();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -486,5 +542,11 @@ namespace FriishProduce
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.CheckBox Sega6ButtonPad;
         private System.Windows.Forms.CheckBox SegaSRAM;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TrackBar BrightnessValue;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

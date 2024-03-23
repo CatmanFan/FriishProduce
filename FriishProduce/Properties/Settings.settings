@@ -59,5 +59,11 @@
     <Setting Name="Default_SEGA_SRAM" Type="System.String" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
+    <Setting Name="Default_SEGA_Brightness" Type="System.String" Scope="User">
+      <Value Profile="(Default)">87</Value>
+    </Setting>
+    <Setting Name="Default_SEGA_Region" Type="System.String" Scope="User">
+      <Value Profile="(Default)">us</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
