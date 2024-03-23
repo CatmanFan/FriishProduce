@@ -4,16 +4,16 @@
 <a href="https://gbatemp.net/threads/friishproduce-multiplatform-wad-injector.632028/"><img src="https://img.shields.io/badge/GBAtemp-link-blue" /></a>
 </div>
 
-**FriishProduce** is a WAD injector for Wii/vWii, which allows for automated ROM/disc/SWF file replacement in Wii channels.
+**FriishProduce** is a WAD channel injector/creator for (v)Wii. It can be used to convert ROMs, disc images or other types of software to installable WADs for Wii/vWii (Wii U). This includes injectable Virtual Console (VC) games, as well as single ROM loaders (SRLs), and Adobe Flash files.
 This application is designed to streamline the process to as few third-party programs as possible.
 
-***This repository has been updated by way of a new MDI version (pictured above) and is currently under work-in-progress. Most platforms may not be supported by this version yet.<br>For the legacy edition, see [here](https://github.com/CatmanFan/FriishProduce/tree/main/legacy), or check [v0.26-beta](https://github.com/CatmanFan/FriishProduce/releases/tag/v0.26-beta) for the latest release.***
+***This repository has been updated by way of a new MDI version (pictured above) and is currently under work-in-progress.<br>For the legacy edition, see [here](https://github.com/CatmanFan/FriishProduce/tree/main/legacy), or check [v0.26-beta](https://github.com/CatmanFan/FriishProduce/releases/tag/v0.26-beta) for the latest release.***
 
 ---
 
 ## Features
 This injector bypasses other third-party assets (such as Common-Key.bin, HowardC's tools, and Autoinjectuwad/Devilken's VC) by handling many steps directly from the program's code. Some examples:
-* Automatic WAD/U8 handling
+* Automatic WAD/U8/CCF handling
 * VC ROM injection through hex writing and/or file replacement
 * Automatic banner/icon editing
 * Automatic editing of source WAD's savedata where available
@@ -29,26 +29,26 @@ This injector bypasses other third-party assets (such as Common-Key.bin, HowardC
 * **NEC TurboGrafx-16 / PC Engine**
 * **SNK NEO-GEO**
 * **Microsoft MSX / MSX2**
-* **Adobe Flash**
+<!-- * **Adobe Flash** -->
 
 ## How-to
-* For information on how to use the legacy beta versions (v0.26-beta and earlier), see **[here](https://github.com/CatmanFan/FriishProduce/wiki/FriishProduce-Legacy)** (*recommended*).
 * For information on how to use the new interface (v1.0 and above), see **[here](https://github.com/CatmanFan/FriishProduce/wiki/FriishProduce-v1.0)**.
+* For information on how to use the legacy beta versions (v0.26-beta and earlier), see **[here](https://github.com/CatmanFan/FriishProduce/wiki/FriishProduce-Legacy)** (*recommended*).
 
 **Make sure you have a (v)Wii NAND backup in case anything goes wrong!**
 
 ---
 
 ## Translation
-The current version of this application includes a built-in XML editor for adding custom language files. If you have translated using that interface, please send in your XMLs [as a pull request](https://github.com/CatmanFan/FriishProduce/pulls).
+See **[here](https://github.com/CatmanFan/FriishProduce/wiki/Translation)** for basic instructions on translating the app.
 
 ---
 
 ## To-Do
 * ***Before releasing v1.0:***
-- [ ] Check for additional bugs that need to be fixed (Discord).
-- [ ] Clean localization wiki.
-- [ ] Update this readme
+- [ ] Check for additional bugs that need to be fixed.
+- [X] Clean localization wiki.
+- [X] Update this readme
 * ***Planned for v1.1:***
 - [ ] Flash emulator options list
 - [ ] Reorganize content options into their own setting files
