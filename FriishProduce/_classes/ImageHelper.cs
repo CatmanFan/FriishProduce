@@ -19,7 +19,7 @@ namespace FriishProduce
         public Bitmap VCPic { get; protected set; }
         public Bitmap IconVCPic { get; protected set; }
         private Bitmap SaveIconPic { get; set; }
-        
+
         internal InterpolationMode Interpolation { get; set; }
         internal bool FitAspectRatio { get; set; }
         private int[] SaveIconL_xywh { get; set; }
@@ -746,7 +746,7 @@ namespace FriishProduce
 
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         private static extern int SetForegroundWindow(IntPtr point);
-        
+
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         private static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
 

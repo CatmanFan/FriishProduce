@@ -1,7 +1,6 @@
-﻿using System;
+﻿using Ionic.Zip;
+using System;
 using System.IO;
-using System.Text;
-using Ionic.Zip;
 
 namespace FriishProduce
 {

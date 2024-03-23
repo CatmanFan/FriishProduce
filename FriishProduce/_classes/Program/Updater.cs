@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Octokit;
+﻿using Octokit;
 using Ookii.Dialogs.WinForms;
+using System;
 
 namespace FriishProduce
 {
@@ -26,7 +22,7 @@ namespace FriishProduce
                     "An update is available",
                     $"Version {latest} is available for download.\nYou are currently running version {current}.\n\nWould you like to update now?",
                     System.Windows.Forms.MessageBoxButtons.YesNo,
-                    TaskDialogIcon.Shield) == System.Windows.Forms.DialogResult.Yes)
+                    TaskDialogIcon.Shield) == MessageBox.Result.Yes)
                 {
                     // *************************
                     // TO-DO

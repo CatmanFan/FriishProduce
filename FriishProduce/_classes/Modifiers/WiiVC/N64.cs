@@ -1,8 +1,8 @@
-﻿using System;
+﻿using libWiiSharp;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using libWiiSharp;
 
 namespace FriishProduce.WiiVC
 {
@@ -33,33 +33,33 @@ namespace FriishProduce.WiiVC
 
             if (WAD.Region == Region.Korea) EmuType = 3;
             else switch (WAD.UpperTitleID.Substring(0, 3).ToUpper())
-            {
-                default:
-                case "NAA":
-                case "NAF":
-                    EmuType = 0;
-                    break;
+                {
+                    default:
+                    case "NAA":
+                    case "NAF":
+                        EmuType = 0;
+                        break;
 
-                case "NAB":
-                case "NAC":
-                case "NAD":
-                    EmuType = 1;
-                    break;
+                    case "NAB":
+                    case "NAC":
+                    case "NAD":
+                        EmuType = 1;
+                        break;
 
-                case "NAK":
-                case "NAJ":
-                case "NAH":
-                    EmuType = 2;
-                    break;
+                    case "NAK":
+                    case "NAJ":
+                    case "NAH":
+                        EmuType = 2;
+                        break;
 
-                case "NA3":
-                case "NAE":
-                case "NAU":
-                case "NAY":
-                case "NAZ":
-                    EmuType = 3;
-                    break;
-            }
+                    case "NA3":
+                    case "NAE":
+                    case "NAU":
+                    case "NAY":
+                    case "NAZ":
+                        EmuType = 3;
+                        break;
+                }
         }
 
         /// <summary>

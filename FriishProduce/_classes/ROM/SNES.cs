@@ -13,7 +13,7 @@
             {
                 var data = System.IO.File.ReadAllBytes(path);
 
-                return data.Length % 1024 == 512 || data.Length % 1024 == 0; 
+                return data.Length % 1024 == 512 || data.Length % 1024 == 0;
             }
 
             catch { return false; }

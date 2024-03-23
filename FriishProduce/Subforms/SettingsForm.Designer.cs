@@ -31,7 +31,6 @@ namespace FriishProduce
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsForm));
             this.DefaultImageInterpolation = new System.Windows.Forms.ComboBox();
-            this.AutoOpenFolder = new System.Windows.Forms.CheckBox();
             this.LanguageList = new System.Windows.Forms.ComboBox();
             this.AutoLibRetro = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -79,6 +78,12 @@ namespace FriishProduce
             this.SegaSRAM = new System.Windows.Forms.CheckBox();
             this.panel7 = new System.Windows.Forms.Panel();
             this.PCEUseSRAM = new System.Windows.Forms.CheckBox();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.PCEYOffset = new System.Windows.Forms.NumericUpDown();
+            this.PCESpriteLimit = new System.Windows.Forms.CheckBox();
+            this.PCEBgRaster = new System.Windows.Forms.CheckBox();
+            this.PCEHideOverscan = new System.Windows.Forms.CheckBox();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.toggleSwitch2 = new JCS.ToggleSwitch();
             this.toggleSwitchL2 = new System.Windows.Forms.Label();
@@ -86,12 +91,6 @@ namespace FriishProduce
             this.toggleSwitchL3 = new System.Windows.Forms.Label();
             this.toggleSwitchL4 = new System.Windows.Forms.Label();
             this.toggleSwitch3 = new JCS.ToggleSwitch();
-            this.PCEHideOverscan = new System.Windows.Forms.CheckBox();
-            this.PCEBgRaster = new System.Windows.Forms.CheckBox();
-            this.PCESpriteLimit = new System.Windows.Forms.CheckBox();
-            this.PCEYOffset = new System.Windows.Forms.NumericUpDown();
-            this.label3 = new System.Windows.Forms.Label();
-            this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.groupBox3.SuspendLayout();
             this.n64004.SuspendLayout();
             this.bottomPanel1.SuspendLayout();
@@ -113,9 +112,9 @@ namespace FriishProduce
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SegaBrightnessValue)).BeginInit();
             this.panel7.SuspendLayout();
-            this.groupBox11.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PCEYOffset)).BeginInit();
             this.groupBox10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PCEYOffset)).BeginInit();
+            this.groupBox11.SuspendLayout();
             this.SuspendLayout();
             // 
             // DefaultImageInterpolation
@@ -126,12 +125,6 @@ namespace FriishProduce
             this.DefaultImageInterpolation.Items.AddRange(new object[] {
             resources.GetString("DefaultImageInterpolation.Items")});
             this.DefaultImageInterpolation.Name = "DefaultImageInterpolation";
-            // 
-            // AutoOpenFolder
-            // 
-            resources.ApplyResources(this.AutoOpenFolder, "AutoOpenFolder");
-            this.AutoOpenFolder.Name = "AutoOpenFolder";
-            this.AutoOpenFolder.UseVisualStyleBackColor = true;
             // 
             // LanguageList
             // 
@@ -240,9 +233,9 @@ namespace FriishProduce
             // TreeView
             // 
             this.TreeView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            resources.ApplyResources(this.TreeView, "TreeView");
             this.TreeView.FullRowSelect = true;
             this.TreeView.ItemHeight = 19;
+            resources.ApplyResources(this.TreeView, "TreeView");
             this.TreeView.Name = "TreeView";
             this.TreeView.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             ((System.Windows.Forms.TreeNode)(resources.GetObject("TreeView.Nodes"))),
@@ -252,7 +245,6 @@ namespace FriishProduce
             // panel1
             // 
             this.panel1.Controls.Add(this.ResetAllDialogs);
-            this.panel1.Controls.Add(this.AutoOpenFolder);
             this.panel1.Controls.Add(this.groupBox1);
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
@@ -479,6 +471,51 @@ namespace FriishProduce
             this.PCEUseSRAM.Name = "PCEUseSRAM";
             this.PCEUseSRAM.UseVisualStyleBackColor = true;
             // 
+            // groupBox10
+            // 
+            this.groupBox10.Controls.Add(this.label3);
+            this.groupBox10.Controls.Add(this.PCEYOffset);
+            this.groupBox10.Controls.Add(this.PCESpriteLimit);
+            this.groupBox10.Controls.Add(this.PCEBgRaster);
+            this.groupBox10.Controls.Add(this.PCEHideOverscan);
+            this.groupBox10.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            resources.ApplyResources(this.groupBox10, "groupBox10");
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.TabStop = false;
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
+            // PCEYOffset
+            // 
+            resources.ApplyResources(this.PCEYOffset, "PCEYOffset");
+            this.PCEYOffset.Maximum = new decimal(new int[] {
+            25,
+            0,
+            0,
+            0});
+            this.PCEYOffset.Name = "PCEYOffset";
+            // 
+            // PCESpriteLimit
+            // 
+            resources.ApplyResources(this.PCESpriteLimit, "PCESpriteLimit");
+            this.PCESpriteLimit.Name = "PCESpriteLimit";
+            this.PCESpriteLimit.UseVisualStyleBackColor = true;
+            // 
+            // PCEBgRaster
+            // 
+            resources.ApplyResources(this.PCEBgRaster, "PCEBgRaster");
+            this.PCEBgRaster.Name = "PCEBgRaster";
+            this.PCEBgRaster.UseVisualStyleBackColor = true;
+            // 
+            // PCEHideOverscan
+            // 
+            resources.ApplyResources(this.PCEHideOverscan, "PCEHideOverscan");
+            this.PCEHideOverscan.Name = "PCEHideOverscan";
+            this.PCEHideOverscan.UseVisualStyleBackColor = true;
+            // 
             // groupBox11
             // 
             this.groupBox11.Controls.Add(this.toggleSwitch2);
@@ -534,51 +571,6 @@ namespace FriishProduce
             this.toggleSwitch3.Style = JCS.ToggleSwitch.ToggleSwitchStyle.IOS5;
             this.toggleSwitch3.CheckedChanged += new JCS.ToggleSwitch.CheckedChangedDelegate(this.ToggleSwitchChanged);
             // 
-            // PCEHideOverscan
-            // 
-            resources.ApplyResources(this.PCEHideOverscan, "PCEHideOverscan");
-            this.PCEHideOverscan.Name = "PCEHideOverscan";
-            this.PCEHideOverscan.UseVisualStyleBackColor = true;
-            // 
-            // PCEBgRaster
-            // 
-            resources.ApplyResources(this.PCEBgRaster, "PCEBgRaster");
-            this.PCEBgRaster.Name = "PCEBgRaster";
-            this.PCEBgRaster.UseVisualStyleBackColor = true;
-            // 
-            // PCESpriteLimit
-            // 
-            resources.ApplyResources(this.PCESpriteLimit, "PCESpriteLimit");
-            this.PCESpriteLimit.Name = "PCESpriteLimit";
-            this.PCESpriteLimit.UseVisualStyleBackColor = true;
-            // 
-            // PCEYOffset
-            // 
-            resources.ApplyResources(this.PCEYOffset, "PCEYOffset");
-            this.PCEYOffset.Maximum = new decimal(new int[] {
-            25,
-            0,
-            0,
-            0});
-            this.PCEYOffset.Name = "PCEYOffset";
-            // 
-            // label3
-            // 
-            resources.ApplyResources(this.label3, "label3");
-            this.label3.Name = "label3";
-            // 
-            // groupBox10
-            // 
-            this.groupBox10.Controls.Add(this.label3);
-            this.groupBox10.Controls.Add(this.PCEYOffset);
-            this.groupBox10.Controls.Add(this.PCESpriteLimit);
-            this.groupBox10.Controls.Add(this.PCEBgRaster);
-            this.groupBox10.Controls.Add(this.PCEHideOverscan);
-            this.groupBox10.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            resources.ApplyResources(this.groupBox10, "groupBox10");
-            this.groupBox10.Name = "groupBox10";
-            this.groupBox10.TabStop = false;
-            // 
             // SettingsForm
             // 
             this.AcceptButton = this.OK;
@@ -589,14 +581,14 @@ namespace FriishProduce
             this.Controls.Add(this.bottomPanel2);
             this.Controls.Add(this.leftSeparator);
             this.Controls.Add(this.TreeView);
-            this.Controls.Add(this.panel7);
-            this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel8);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel5);
+            this.Controls.Add(this.panel7);
+            this.Controls.Add(this.panel6);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MaximizeBox = false;
@@ -636,11 +628,11 @@ namespace FriishProduce
             ((System.ComponentModel.ISupportInitialize)(this.SegaBrightnessValue)).EndInit();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
-            this.groupBox11.ResumeLayout(false);
-            this.groupBox11.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PCEYOffset)).EndInit();
             this.groupBox10.ResumeLayout(false);
             this.groupBox10.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PCEYOffset)).EndInit();
+            this.groupBox11.ResumeLayout(false);
+            this.groupBox11.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -653,7 +645,6 @@ namespace FriishProduce
         private System.Windows.Forms.ComboBox DefaultImageInterpolation;
         private System.Windows.Forms.CheckBox AutoLibRetro;
         private System.Windows.Forms.ComboBox LanguageList;
-        private System.Windows.Forms.CheckBox AutoOpenFolder;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.CheckBox n64003;
         private System.Windows.Forms.CheckBox n64002;

@@ -1,10 +1,9 @@
-﻿using libWiiSharp;
-using System;
+﻿using Archives;
+using libWiiSharp;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using Archives;
 
 namespace FriishProduce.WiiVC
 {
@@ -280,7 +279,7 @@ namespace FriishProduce.WiiVC
                     // ****************
                     List<string> newConfig = new List<string>();
                     List<string> alreadyAdded = new List<string>();
-                        Dictionary<string, string> Alt = new Dictionary<string, string>();
+                    Dictionary<string, string> Alt = new Dictionary<string, string>();
 
                     foreach (var line in configFile)
                     {
@@ -293,11 +292,11 @@ namespace FriishProduce.WiiVC
                     for (int i = 0; i < Alt.Count; i++)
                         foreach (var newLine in Settings)
                             if (newLine.Key == Alt.ElementAt(i).Key)
-                                {
-                                    newConfig.Add($"{Alt.ElementAt(i).Value}=\"{newLine.Value}\"");
-                                    if (!alreadyAdded.Contains(newLine.Key)) alreadyAdded.Add(newLine.Key);
-                                    if (!alreadyAdded.Contains(Alt.ElementAt(i).Value)) alreadyAdded.Add(Alt.ElementAt(i).Value);
-                                }
+                            {
+                                newConfig.Add($"{Alt.ElementAt(i).Value}=\"{newLine.Value}\"");
+                                if (!alreadyAdded.Contains(newLine.Key)) alreadyAdded.Add(newLine.Key);
+                                if (!alreadyAdded.Contains(Alt.ElementAt(i).Value)) alreadyAdded.Add(Alt.ElementAt(i).Value);
+                            }
 
                     foreach (var line in configFile)
                         foreach (var name in new string[]

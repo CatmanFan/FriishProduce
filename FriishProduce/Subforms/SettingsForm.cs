@@ -1,14 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml;
 using static FriishProduce.Properties.Settings;
 
 namespace FriishProduce
@@ -56,7 +50,6 @@ namespace FriishProduce
             DefaultImageInterpolation.SelectedIndex = Default.ImageInterpolation;
 
             AutoLibRetro.Checked = Default.AutoLibRetro;
-            AutoOpenFolder.Checked = Default.AutoOpenFolder;
             ResetAllDialogs.Checked = false;
 
             // -----------------------------
@@ -91,6 +84,17 @@ namespace FriishProduce
             SegaRegion.Items.Add(Language.Get("Region.U"));
             SegaRegion.Items.Add(Language.Get("Region.E"));
             SegaRegion.Items.Add(Language.Get("Region.J"));
+
+            // -----------------------------
+
+            label3.Text = Language.Get("label1", typeof(Options_VC_PCE).Name, true);
+            PCEHideOverscan.Text = Language.Get("checkBox1", typeof(Options_VC_PCE).Name, true);
+            PCEBgRaster.Text = Language.Get("checkBox2", typeof(Options_VC_PCE).Name, true);
+            PCESpriteLimit.Text = Language.Get("checkBox3", typeof(Options_VC_PCE).Name, true);
+            PCEUseSRAM.Text = Language.Get("checkBox4", typeof(Options_VC_PCE).Name, true);
+            toggleSwitchL2.Text = Language.GetToggleSwitch(toggleSwitch2, "toggleSwitch1", typeof(Options_VC_PCE).Name);
+            toggleSwitchL3.Text = Language.GetToggleSwitch(toggleSwitch3, "toggleSwitch2", typeof(Options_VC_PCE).Name);
+            toggleSwitchL4.Text = Language.GetToggleSwitch(toggleSwitch4, "toggleSwitch3", typeof(Options_VC_PCE).Name);
 
             // -----------------------------
 
@@ -167,7 +171,6 @@ namespace FriishProduce
             // -------------------------------------------
             Default.ImageInterpolation = DefaultImageInterpolation.SelectedIndex;
             Default.AutoLibRetro = AutoLibRetro.Checked;
-            Default.AutoOpenFolder = AutoOpenFolder.Checked;
 
             Default.Default_Forwarders_FilesStorage = FStorage_SD.Checked ? "SD" : "USB";
             Default.Default_Forwarders_Mode = toggleSwitch1.Checked ? "vWii" : "Wii";
@@ -223,7 +226,7 @@ namespace FriishProduce
             // -------------------------------------------
             if (isDirty)
             {
-                if (MessageBox.Show(Language.Get("Message.000"), ProductName, MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show(Language.Get("Message.000"), ProductName, MessageBoxButtons.YesNo) == MessageBox.Result.Yes)
                 {
                     Default.Save();
                     Application.Restart();
@@ -352,7 +355,7 @@ namespace FriishProduce
                         refresh = Default.UI_Language != item.Key;
                         Default.UI_Language = item.Key;
                     }
-           
+
 
             Language.Current = LanguageList.SelectedIndex == 0 ? Language.GetSystemLanguage() : new System.Globalization.CultureInfo(Default.UI_Language);
 
@@ -361,10 +364,10 @@ namespace FriishProduce
 
         private void ToggleSwitchChanged(object sender, EventArgs e)
         {
-            if (sender == toggleSwitch1) toggleSwitchL1.Text = toggleSwitch1.Checked ? "vWii (Wii U)" : "Wii";
-            if (sender == toggleSwitch2) toggleSwitchL2.Text = Language.Get("toggleSwitch1", typeof(Options_VC_PCE).Name, true);
-            if (sender == toggleSwitch3) toggleSwitchL3.Text = Language.Get("toggleSwitch2", typeof(Options_VC_PCE).Name, true);
-            if (sender == toggleSwitch4) toggleSwitchL4.Text = Language.Get("toggleSwitch3", typeof(Options_VC_PCE).Name, true);
+            toggleSwitchL1.Text = toggleSwitch1.Checked ? "vWii (Wii U)" : "Wii";
+            toggleSwitchL2.Text = Language.GetToggleSwitch(toggleSwitch2, "toggleSwitch1", typeof(Options_VC_PCE).Name);
+            toggleSwitchL3.Text = Language.GetToggleSwitch(toggleSwitch3, "toggleSwitch2", typeof(Options_VC_PCE).Name);
+            toggleSwitchL4.Text = Language.GetToggleSwitch(toggleSwitch4, "toggleSwitch3", typeof(Options_VC_PCE).Name);
         }
 
         private void BrightnessValue_Scroll(object sender, EventArgs e) => label1.Text = SegaBrightnessValue.Value.ToString();

@@ -1,8 +1,8 @@
-﻿using System;
+﻿using libWiiSharp;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using libWiiSharp;
 
 namespace FriishProduce
 {
@@ -249,8 +249,10 @@ namespace FriishProduce
             }
 
             if (ManualContent != null)
+            {
                 Contents[ManualContentIndex] = ManualContent.ToByteArray();
-            ManualContent.Dispose();
+                ManualContent.Dispose();
+            }
 
             if (Manual != null || MainContent != null)
                 Contents[MainContentIndex] = MainContent.ToByteArray();

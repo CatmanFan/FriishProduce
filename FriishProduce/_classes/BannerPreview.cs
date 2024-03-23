@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Text;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FriishProduce
@@ -298,7 +294,7 @@ namespace FriishProduce
             var leftTextColor = target == 2 ? Color.Black : target == 8 ? Color.FromArgb(90, 90, 90) : ColorSchemes[target][0].GetBrightness() < 0.8 ? Color.White : Color.Black;
             if (target == 4 || target == 2) textColor = Color.White;
 
-            string released  = lang == 1 ? "{0}年発売"
+            string released = lang == 1 ? "{0}年発売"
                              : lang == 2 ? "일본판 발매년도\r\n{0}년"
                              : Language.Current.TwoLetterISOLanguageName == "nl" ? "Release: {0}"
                              : Language.Current.TwoLetterISOLanguageName == "es" ? "Año: {0}"
@@ -512,7 +508,7 @@ namespace FriishProduce
                 gp1.AddArc(offset + x.Width - CornerRadius, offset + x.Height - CornerRadius, CornerRadius - (offset * 2), CornerRadius - (offset * 2), 0, 90);
                 gp1.AddArc(offset, offset + x.Height - CornerRadius, CornerRadius - (offset * 2), CornerRadius - (offset * 2), 90, 90);
                 g.FillPath(brush, gp1);
-                
+
                 if (Smooth)
                 {
                     GraphicsPath gp2 = new GraphicsPath();

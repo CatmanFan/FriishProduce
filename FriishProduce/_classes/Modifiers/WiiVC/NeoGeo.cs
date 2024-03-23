@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Ionic.Zip;
+using libWiiSharp;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using Ionic.Zip;
-using libWiiSharp;
 
 namespace FriishProduce.WiiVC
 {
@@ -74,7 +74,7 @@ namespace FriishProduce.WiiVC
             C = new List<byte>();
 
             List<string> FileList = new List<string>();
-            
+
             foreach (ZipEntry item in ZIP.Entries)
             {
                 string filename1 = Path.GetFileNameWithoutExtension(item.FileName).ToLower();

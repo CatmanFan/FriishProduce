@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using libWiiSharp;
+using System;
 using System.IO;
-using System.Linq;
-using System.Net;
 using System.Text;
-using System.Threading.Tasks;
-using libWiiSharp;
 
 namespace FriishProduce
 {
@@ -96,12 +91,12 @@ namespace FriishProduce
                     break;
 
                 case Console.MSX:
-                     bannerPath += w.UpperTitleID.StartsWith("XAP") ? "jp_msx2.bnr" : "jp_msx1.bnr"; // Check if version 2 MSX WADs use a different color scheme?
-                     break;
+                    bannerPath += w.UpperTitleID.StartsWith("XAP") ? "jp_msx2.bnr" : "jp_msx1.bnr"; // Check if version 2 MSX WADs use a different color scheme?
+                    break;
 
-                 case Console.Flash:
-                     bannerPath += "flash.bnr";
-                     break;
+                case Console.Flash:
+                    bannerPath += "flash.bnr";
+                    break;
 
                 default:
                     throw new NotImplementedException();

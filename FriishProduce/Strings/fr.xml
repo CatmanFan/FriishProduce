@@ -58,7 +58,8 @@
 		<Message.000>Un redémarrage de l'application est nécessaire pour que les changements aux paramètres prennent effet.\nRedémarrer maintenant ?</Message.000>
 		<Message.001>Ignorer les modifications non enregistrées à ce projet ?</Message.001>
 		<Message.002>Le fichier que vous avez sélectionné est invalide.</Message.002>
-		<Message.003>Sauvegardé avec succès vers le fichier WAD suivant :\n{0}</Message.003>
+		<Message.003>Sauvegardé avec succès.\nQu'est-ce que vous voulez faire maintenant ?</Message.003>
+		<Message.003.A>Ouvrir le dossier de sortie</Message.003.A>
 		<Message.004>Impossible de remplir toutes les formes d'après la base de données Libretro pour ce fichier de jeu.\nCertaines formes peuvent avoir besoin d'être remplis manuellement.</Message.004>
 		<Message.005>Le fichier WAD que vous avez précisée ({0}) est invalide.\nCeci peut être provoqué par l'une des raisons suivantes :\n  • La plateforme/console cible ne correspond pas à celle de la chaîne sélectionnée.\n  • La chaîne n'est pas encore disponible dans la base des données de cette application.\n  • La chaîne était déjà modifiée (par exemple : injectée ou convertie en forme du forwarder).</Message.005>
 		<None>Aucun(e)</None>

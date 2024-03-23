@@ -1,14 +1,14 @@
-﻿using System;
+﻿using FriishProduce.Properties;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
+using System.Linq;
 using System.Reflection;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
-using FriishProduce.Properties;
-using System.IO;
 using System.Xml;
-using System.Linq;
-using System.Text.RegularExpressions;
 
 namespace FriishProduce
 {
@@ -106,10 +106,10 @@ namespace FriishProduce
                 Settings.Default.Save();
             }
 
-            // --------------------------
-            // Localization process
-            // --------------------------
-            Set:
+        // --------------------------
+        // Localization process
+        // --------------------------
+        Set:
             if (code.ToLower() != "sys")
             {
                 bool set = false;
@@ -228,7 +228,7 @@ namespace FriishProduce
                         return returned.StartsWith("\n") ? returned.Substring(1) : returned;
                     }
 
-            Failed:
+                Failed:
             if (!useEnglish)
             {
                 useEnglish = true;
@@ -259,7 +259,7 @@ namespace FriishProduce
         public static string Get(Control c, string section)
         {
             if (c == null) return Get("undefined", "undefined");
-            else if (c.GetType() == typeof(JCS.ToggleSwitch)) return Get(c.Name + ((c as JCS.ToggleSwitch).Checked ? ".On" : ".Off") + "Text", section, true);
+            else if (c.GetType() == typeof(JCS.ToggleSwitch)) return GetToggleSwitch(c as JCS.ToggleSwitch, null, section);
             else return Get(c.Name, section, true);
         }
 
@@ -281,6 +281,12 @@ namespace FriishProduce
                 if (string.IsNullOrEmpty(Object[i])) Object.RemoveAt(i);
 
             return Object.ToArray();
+        }
+
+        public static string GetToggleSwitch(JCS.ToggleSwitch x, string name = null, string section = null)
+        {
+            if (name == null) name = x.Name;
+            return Get(name + (x.Checked ? ".On" : ".Off") + "Text", section, true);
         }
 
         public static void GetComboBox(ComboBox x, string name = null, string section = null)
@@ -356,7 +362,7 @@ namespace FriishProduce
         private static void GetControl(Control x, Form parent, bool customStrings = true)
         {
             var origText = x.Text;
-            
+
             if (x.GetType() == typeof(Form) && x.Name != parent.Name) return;
             else if (x.GetType() == typeof(MdiTabControl.TabPage) && (x as MdiTabControl.TabPage).Form.GetType().Name != parent.Name) return;
             else if (x.GetType() == typeof(ComboBox) && (x as ComboBox).Items.Count >= 1) GetComboBox(x as ComboBox, x.Name, parent.Name);

@@ -46,8 +46,6 @@ The current version of this application includes a built-in XML editor for addin
 
 ## To-Do
 * ***Before releasing v1.0:***
-- [X] Update Settings UI.
-  - [X] PCE section
 - [ ] Check for additional bugs that need to be fixed (Discord).
 - [ ] Cleanup file names, other unused parts and streamline code to make it more readable.
 - [ ] Clean localization files and wiki.

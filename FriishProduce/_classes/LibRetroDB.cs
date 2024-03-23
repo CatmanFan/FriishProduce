@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Hashing;
-using System.Linq;
 using System.Net;
-using System.Net.NetworkInformation;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -262,9 +260,9 @@ namespace FriishProduce
                         goto NotFound;
                     }
 
-                    // --------------------------------------------------------------------- //
+                // --------------------------------------------------------------------- //
 
-                    GetPlayers:
+                GetPlayers:
 
                     try
                     {
@@ -290,27 +288,27 @@ namespace FriishProduce
 
                     }
 
-                        // --------------------------------------------------------------------- //
+                    // --------------------------------------------------------------------- //
 
-                        // Get original serial (title or content ID) of game
-                        // ****************
-                        /* using (WebClient c = new WebClient())
-                            db_bytes = Web.Get(db_base + "serial/" + Uri.EscapeUriString(item.Key) + ".dat");
+                    // Get original serial (title or content ID) of game
+                    // ****************
+                    /* using (WebClient c = new WebClient())
+                        db_bytes = Web.Get(db_base + "serial/" + Uri.EscapeUriString(item.Key) + ".dat");
 
-                        // Scan retrieved database
-                        // ****************
-                        db_lines = Encoding.UTF8.GetString(db_bytes).Split(Environment.NewLine.ToCharArray());
+                    // Scan retrieved database
+                    // ****************
+                    db_lines = Encoding.UTF8.GetString(db_bytes).Split(Environment.NewLine.ToCharArray());
 
-                        for (int i = 5; i < db_lines.Length; i++)
-                            if (db_lines[i].Contains(Title))
-                            {
-                                for (int x = i; x < i + 5; x++)
-                                    if (db_lines[x].Contains("serial "))
-                                        Serial = db_lines[x].Replace("\t", "").Replace("serial ", "").Replace("\"", "");
-                            } */
+                    for (int i = 5; i < db_lines.Length; i++)
+                        if (db_lines[i].Contains(Title))
+                        {
+                            for (int x = i; x < i + 5; x++)
+                                if (db_lines[x].Contains("serial "))
+                                    Serial = db_lines[x].Replace("\t", "").Replace("serial ", "").Replace("\"", "");
+                        } */
 
-                        return true;
-                    }
+                    return true;
+                }
             }
 
         NotFound:

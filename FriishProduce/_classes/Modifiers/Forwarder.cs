@@ -3,9 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace FriishProduce
 {
@@ -126,11 +124,11 @@ namespace FriishProduce
             switch (EmulatorIndex)
             {
                 case 7:
-                    meta[9]  = meta[9].Replace("</arg>", "/</arg>");
+                    meta[9] = meta[9].Replace("</arg>", "/</arg>");
                     break;
 
                 case 10:
-                    meta[9]  = $"    <arg>rompath=\"{ROMFolder}/{ROMName}\"</arg>";
+                    meta[9] = $"    <arg>rompath=\"{ROMFolder}/{ROMName}\"</arg>";
                     meta[10] = $"    <arg>SkipMenu=1</arg>";
                     meta.Add("    <arg>ScreenMode=0</arg>");
                     break;
@@ -176,8 +174,8 @@ namespace FriishProduce
             // Define forwarder version
             // *******
             bool NeedsOldForwarder = EmulatorIndex == 7;
-            byte[] Forwarder  = NeedsOldForwarder ? Properties.Resources.ForwarderV12 : Properties.Resources.ForwarderV14;
-            int TargetOffset  = NeedsOldForwarder ? 0x77426 : 0x7F979;
+            byte[] Forwarder = NeedsOldForwarder ? Properties.Resources.ForwarderV12 : Properties.Resources.ForwarderV14;
+            int TargetOffset = NeedsOldForwarder ? 0x77426 : 0x7F979;
             int SecondTargetOffset = NeedsOldForwarder ? 263 : 256;
             string TargetPath = NeedsOldForwarder ? Path : Path.Substring(4);
 

@@ -1,9 +1,6 @@
-﻿using System;
+﻿using libWiiSharp;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using libWiiSharp;
 
 namespace FriishProduce.Injectors
 {

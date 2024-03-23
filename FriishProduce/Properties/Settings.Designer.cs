@@ -62,18 +62,6 @@ namespace FriishProduce.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool AutoOpenFolder {
-            get {
-                return ((bool)(this["AutoOpenFolder"]));
-            }
-            set {
-                this["AutoOpenFolder"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool Default_N64_FixBrightness {
             get {
                 return ((bool)(this["Default_N64_FixBrightness"]));

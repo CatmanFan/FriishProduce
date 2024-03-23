@@ -1,16 +1,13 @@
-﻿using System;
+﻿using libWiiSharp;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
-using System.Net;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using libWiiSharp;
 
 namespace FriishProduce
 {
@@ -359,7 +356,7 @@ namespace FriishProduce
         public bool CheckUnsaved()
         {
             if (Tag?.ToString() == "dirty")
-                if (MessageBox.Show(Text, Language.Get("Message.001"), MessageBoxButtons.YesNo, 0, false) == DialogResult.No)
+                if (MessageBox.Show(Text, Language.Get("Message.001"), MessageBoxButtons.YesNo, 0, false) == MessageBox.Result.No)
                     return false;
             return true;
         }
@@ -535,12 +532,12 @@ namespace FriishProduce
                 int validFiles = 0;
                 if (folder != null)
                     foreach (var item in Directory.EnumerateFiles(folder))
-                        {
-                            if ((Path.GetFileNameWithoutExtension(item).StartsWith("startup") && Path.GetExtension(item) == ".html")
-                             || Path.GetFileName(item) == "standard.css"
-                             || Path.GetFileName(item) == "contents.css"
-                             || Path.GetFileName(item) == "vsscript.css") validFiles++;
-                        }
+                    {
+                        if ((Path.GetFileNameWithoutExtension(item).StartsWith("startup") && Path.GetExtension(item) == ".html")
+                         || Path.GetFileName(item) == "standard.css"
+                         || Path.GetFileName(item) == "contents.css"
+                         || Path.GetFileName(item) == "vsscript.css") validFiles++;
+                    }
 
                 if (validFiles < 2)
                 {
@@ -711,8 +708,8 @@ namespace FriishProduce
                     if (LibRetro.GetImgURL() != null) { LoadImage(LibRetro.GetImgURL()); }
 
                     // Set year and players
-                    ReleaseYear.Value = Creator.BannerYear    = !string.IsNullOrEmpty(LibRetro.GetYear())    ? int.Parse(LibRetro.GetYear())    : Creator.BannerYear;
-                    Players.Value     = Creator.BannerPlayers = !string.IsNullOrEmpty(LibRetro.GetPlayers()) ? int.Parse(LibRetro.GetPlayers()) : Creator.BannerPlayers;
+                    ReleaseYear.Value = Creator.BannerYear = !string.IsNullOrEmpty(LibRetro.GetYear()) ? int.Parse(LibRetro.GetYear()) : Creator.BannerYear;
+                    Players.Value = Creator.BannerPlayers = !string.IsNullOrEmpty(LibRetro.GetPlayers()) ? int.Parse(LibRetro.GetPlayers()) : Creator.BannerPlayers;
                 }
 
                 if (Retrieved) CheckExport();
@@ -798,7 +795,9 @@ namespace FriishProduce
                     System.Media.SystemSounds.Beep.Play();
                     Tag = null;
 
-                    if (Properties.Settings.Default.AutoOpenFolder)
+                    var Message = MessageBox.Show(Language.Get("Message.003"), null, new string[] { Language.Get("Message.003.A"), Language.Get("B.Cancel") }, Ookii.Dialogs.WinForms.TaskDialogIcon.Information, -1, true);
+
+                    if (Message == 0)
                     {
                         string args = string.Format("/e, /select, \"{0}\"", Creator.Out);
 
@@ -807,8 +806,6 @@ namespace FriishProduce
                         info.Arguments = args;
                         System.Diagnostics.Process.Start(info);
                     }
-                    else
-                        MessageBox.Show(string.Format(Language.Get("Message.003"), Creator.Out), MessageBoxButtons.OK, Ookii.Dialogs.WinForms.TaskDialogIcon.Information);
 
                     return true;
                 }
@@ -1127,7 +1124,7 @@ namespace FriishProduce
                 return;
             }
 
-            Set:
+        Set:
             // Native name & Title ID
             // ********
             baseName.Text = CurrentBase.ElementAt(index).Value;
@@ -1137,36 +1134,36 @@ namespace FriishProduce
             // ********
             if (!WADRegion.Enabled) WADRegion.Image = null;
             else switch (CurrentBase.ElementAt(index).Key[3])
-            {
-                default:
-                case 'E':
-                case 'N':
-                    WADRegion.Image = Properties.Resources.flag_us;
-                    RegionsList.SelectedIndex = 1;
-                    break;
+                {
+                    default:
+                    case 'E':
+                    case 'N':
+                        WADRegion.Image = Properties.Resources.flag_us;
+                        RegionsList.SelectedIndex = 1;
+                        break;
 
-                case 'P':
-                    WADRegion.Image = (int)Console <= 2 ? Properties.Resources.flag_eu50 : Properties.Resources.flag_eu;
-                    RegionsList.SelectedIndex = 2;
-                    break;
+                    case 'P':
+                        WADRegion.Image = (int)Console <= 2 ? Properties.Resources.flag_eu50 : Properties.Resources.flag_eu;
+                        RegionsList.SelectedIndex = 2;
+                        break;
 
-                case 'L':
-                case 'M':
-                    WADRegion.Image = (int)Console <= 2 ? Properties.Resources.flag_eu60 : Properties.Resources.flag_eu;
-                    RegionsList.SelectedIndex = 2;
-                    break;
+                    case 'L':
+                    case 'M':
+                        WADRegion.Image = (int)Console <= 2 ? Properties.Resources.flag_eu60 : Properties.Resources.flag_eu;
+                        RegionsList.SelectedIndex = 2;
+                        break;
 
-                case 'J':
-                    WADRegion.Image = Properties.Resources.flag_jp;
-                    RegionsList.SelectedIndex = 3;
-                    break;
+                    case 'J':
+                        WADRegion.Image = Properties.Resources.flag_jp;
+                        RegionsList.SelectedIndex = 3;
+                        break;
 
-                case 'Q':
-                case 'T':
-                    WADRegion.Image = Properties.Resources.flag_kr;
-                    RegionsList.SelectedIndex = 4;
-                    break;
-            }
+                    case 'Q':
+                    case 'T':
+                        WADRegion.Image = Properties.Resources.flag_kr;
+                        RegionsList.SelectedIndex = 4;
+                        break;
+                }
 
             UpdateBaseGeneral(index);
         }
@@ -1221,7 +1218,7 @@ namespace FriishProduce
                 if (line.Length > max && SaveDataTitle.MaxLength != oldSaveLength)
                     SaveDataTitle.Clear();
 
-            End:
+                End:
             UpdateBaseConsole();
             pictureBox1.Image = Preview.Banner(Console, BannerTitle.Text, (int)ReleaseYear.Value, (int)Players.Value, Img?.VCPic, (int)Creator.OrigRegion);
         }

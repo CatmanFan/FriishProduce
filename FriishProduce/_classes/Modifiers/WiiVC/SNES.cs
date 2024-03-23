@@ -1,8 +1,8 @@
-﻿using System;
+﻿using libWiiSharp;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using libWiiSharp;
 
 namespace FriishProduce.WiiVC
 {
