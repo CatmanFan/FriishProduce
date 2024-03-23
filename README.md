@@ -46,14 +46,15 @@ The current version of this application includes a built-in XML editor for addin
 
 ## To-Do
 * ***Before releasing v1.0:***
-- [ ] Flash emulator options list
-- [ ] Update Settings UI.
-  - [ ] PCE section
-  - [X] SEGA section
-  - [ ] Flash section
-- [ ] Check for additional bugs that need to be fixed.
+- [X] Update Settings UI.
+  - [X] PCE section
+- [ ] Check for additional bugs that need to be fixed (Discord).
 - [ ] Cleanup file names, other unused parts and streamline code to make it more readable.
 - [ ] Clean localization files and wiki.
+* ***Planned for v1.1:***
+- [ ] Flash emulator options list
+- [ ] Reorganize content options into their own setting files
+- [ ] Clean forms code
 * Other VC injection support to be done later:
   * Commodore 64 (needs [Custom Frodo](https://gbatemp.net/threads/custom-frodo-for-c64-vc-injection.102356/))
   * TurboGrafx-16 CD (needs several programs to convert ISO to injectable format)

@@ -16,6 +16,7 @@ namespace FriishProduce
     public partial class SettingsForm : Form
     {
         private bool isDirty { get; set; }
+        private string NodeName { get; set; }
 
         public SettingsForm()
         {
@@ -25,6 +26,8 @@ namespace FriishProduce
 
         public void RefreshForm()
         {
+            TreeView.SelectedNode = !string.IsNullOrWhiteSpace(NodeName) ? TreeView.Nodes.Cast<TreeNode>().SingleOrDefault(n => n.Text == NodeName) : TreeView.Nodes[0];
+
             Language.Localize(this);
             Text = Language.Get("Settings");
             TreeView.Nodes[1].Nodes[0].Text = Language.Get(Console.NES.ToString());
@@ -33,7 +36,6 @@ namespace FriishProduce
             TreeView.Nodes[1].Nodes[3].Text = Language.Get(Console.PCE.ToString(), "Platforms");
             TreeView.Nodes[1].Nodes[4].Text = Language.Get(Console.NeoGeo.ToString(), "Platforms");
             TreeView.Nodes[1].Nodes[5].Text = Language.Get("Forwarders");
-            TreeView.SelectedNode = TreeView.Nodes[0];
 
             // -----------------------------
 
@@ -85,10 +87,10 @@ namespace FriishProduce
             SegaSRAM.Text = Language.Get("checkBox1", typeof(Options_VC_SEGA).Name, true);
             Sega6ButtonPad.Text = string.Format(Language.Get(Sega6ButtonPad, this), Language.Get(Console.SMDGEN.ToString()));
 
-            comboBox1.Items.Clear();
-            comboBox1.Items.Add(Language.Get("Region.U"));
-            comboBox1.Items.Add(Language.Get("Region.E"));
-            comboBox1.Items.Add(Language.Get("Region.J"));
+            SegaRegion.Items.Clear();
+            SegaRegion.Items.Add(Language.Get("Region.U"));
+            SegaRegion.Items.Add(Language.Get("Region.E"));
+            SegaRegion.Items.Add(Language.Get("Region.J"));
 
             // -----------------------------
 
@@ -111,10 +113,19 @@ namespace FriishProduce
             ROMCType.SelectedIndex = Default.Default_N64_ROMC0 ? 0 : 1;
 
             label1.Text = Default.Default_SEGA_Brightness;
-            BrightnessValue.Value = int.Parse(Default.Default_SEGA_Brightness);
+            SegaBrightnessValue.Value = int.Parse(Default.Default_SEGA_Brightness);
             SegaSRAM.Checked = Default.Default_SEGA_SRAM == "1";
             Sega6ButtonPad.Checked = Default.Default_SEGA_6B == "1";
-            comboBox1.SelectedIndex = Default.Default_SEGA_Region.ToLower() == "jp" ? 0 : Default.Default_SEGA_Region.ToLower() == "eu" ? 2 : 1;
+            SegaRegion.SelectedIndex = Default.Default_SEGA_Region.ToLower() == "jp" ? 0 : Default.Default_SEGA_Region.ToLower() == "eu" ? 2 : 1;
+
+            PCEUseSRAM.Checked = Default.Default_PCE_BackupRAM == "1";
+            toggleSwitch2.Checked = Default.Default_PCE_Europe == "1";
+            toggleSwitch3.Checked = Default.Default_PCE_SuperGrafx == "1";
+            toggleSwitch4.Checked = Default.Default_PCE_Pad == "6";
+            PCEYOffset.Value = int.Parse(Default.Default_PCE_YOffset);
+            PCEHideOverscan.Checked = Default.Default_PCE_HideOverscan == "1";
+            PCEBgRaster.Checked = Default.Default_PCE_BGRaster == "1";
+            PCESpriteLimit.Checked = Default.Default_PCE_SpriteLimit == "1";
 
             switch (Default.Default_NeoGeo_BIOS.ToLower())
             {
@@ -173,7 +184,16 @@ namespace FriishProduce
             Default.Default_SEGA_Brightness = label1.Text;
             Default.Default_SEGA_SRAM = SegaSRAM.Checked ? "1" : null;
             Default.Default_SEGA_6B = Sega6ButtonPad.Checked ? "1" : null;
-            Default.Default_SEGA_Region = comboBox1.SelectedIndex == 0 ? "jp" : comboBox1.SelectedIndex == 2 ? "eu" : "us";
+            Default.Default_SEGA_Region = SegaRegion.SelectedIndex == 0 ? "jp" : SegaRegion.SelectedIndex == 2 ? "eu" : "us";
+
+            Default.Default_PCE_BackupRAM = PCEUseSRAM.Checked ? "1" : "0";
+            Default.Default_PCE_Europe = toggleSwitch2.Checked ? "1" : "0";
+            Default.Default_PCE_SuperGrafx = toggleSwitch3.Checked ? "1" : "0";
+            Default.Default_PCE_Pad = toggleSwitch4.Checked ? "6" : "2";
+            Default.Default_PCE_YOffset = PCEYOffset.Value.ToString();
+            Default.Default_PCE_HideOverscan = PCEHideOverscan.Checked ? "1" : "0";
+            Default.Default_PCE_BGRaster = PCEBgRaster.Checked ? "1" : "0";
+            Default.Default_PCE_SpriteLimit = PCESpriteLimit.Checked ? "1" : "0";
 
             switch (NGBios.SelectedIndex)
             {
@@ -263,9 +283,11 @@ namespace FriishProduce
             panel4.Hide();
             panel5.Hide();
             panel6.Hide();
-            // panel7.Hide();
+            panel7.Hide();
             panel8.Hide();
             // panel9.Hide();
+
+            NodeName = e.Node.Name;
 
             switch (e.Node.Name.Substring(4))
             {
@@ -293,7 +315,7 @@ namespace FriishProduce
                     break;
 
                 case "PCE":
-                    // panel7.Show();
+                    panel7.Show();
                     break;
 
                 case "NeoGeo":
@@ -340,8 +362,11 @@ namespace FriishProduce
         private void ToggleSwitchChanged(object sender, EventArgs e)
         {
             if (sender == toggleSwitch1) toggleSwitchL1.Text = toggleSwitch1.Checked ? "vWii (Wii U)" : "Wii";
+            if (sender == toggleSwitch2) toggleSwitchL2.Text = Language.Get("toggleSwitch1", typeof(Options_VC_PCE).Name, true);
+            if (sender == toggleSwitch3) toggleSwitchL3.Text = Language.Get("toggleSwitch2", typeof(Options_VC_PCE).Name, true);
+            if (sender == toggleSwitch4) toggleSwitchL4.Text = Language.Get("toggleSwitch3", typeof(Options_VC_PCE).Name, true);
         }
 
-        private void BrightnessValue_Scroll(object sender, EventArgs e) => label1.Text = BrightnessValue.Value.ToString();
+        private void BrightnessValue_Scroll(object sender, EventArgs e) => label1.Text = SegaBrightnessValue.Value.ToString();
     }
 }

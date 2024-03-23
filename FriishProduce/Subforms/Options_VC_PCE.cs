@@ -14,18 +14,18 @@ namespace FriishProduce
 
             Settings = new Dictionary<string, string>
             {
-                { "BACKUPRAM", "1" },
-                { "PADBUTTON", "2" },
+                { "BACKUPRAM", Default.Default_PCE_BackupRAM },
+                { "PADBUTTON", Default.Default_PCE_Pad },
                 { "CHASEHQ", "0" },
-                { "EUROPE", "0" },
-                { "SGENABLE", "0" },
-                { "HIDEOVERSCAN", "0" },
-                { "YOFFSET", "0" },
+                { "EUROPE", Default.Default_PCE_Europe },
+                { "SGENABLE", Default.Default_PCE_SuperGrafx },
+                { "HIDEOVERSCAN", Default.Default_PCE_HideOverscan },
+                { "YOFFSET", Default.Default_PCE_YOffset },
                 { "MULTITAP", "1" },
                 { "HDS", "0" },
-                { "RASTER", "0" },
+                { "RASTER", Default.Default_PCE_BGRaster },
                 { "POPULUS", "0" },
-                { "SPRLINE", "0" },
+                { "SPRLINE", Default.Default_PCE_SpriteLimit },
                 { "NOFPA", "1" },
                 { "PAD5", "1" },
             };

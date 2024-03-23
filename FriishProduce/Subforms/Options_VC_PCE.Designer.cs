@@ -129,6 +129,7 @@ namespace FriishProduce
             this.groupBox1.Controls.Add(this.toggleSwitchL2);
             this.groupBox1.Controls.Add(this.toggleSwitchL3);
             this.groupBox1.Controls.Add(this.toggleSwitch2);
+            this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.groupBox1.Location = new System.Drawing.Point(12, 32);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(270, 85);
@@ -154,6 +155,7 @@ namespace FriishProduce
             this.groupBox2.Controls.Add(this.checkBox3);
             this.groupBox2.Controls.Add(this.checkBox2);
             this.groupBox2.Controls.Add(this.checkBox1);
+            this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.groupBox2.Location = new System.Drawing.Point(12, 125);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(270, 115);

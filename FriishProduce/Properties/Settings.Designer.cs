@@ -274,5 +274,101 @@ namespace FriishProduce.Properties {
                 this["Default_SEGA_Region"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public string Default_PCE_Europe {
+            get {
+                return ((string)(this["Default_PCE_Europe"]));
+            }
+            set {
+                this["Default_PCE_Europe"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public string Default_PCE_SuperGrafx {
+            get {
+                return ((string)(this["Default_PCE_SuperGrafx"]));
+            }
+            set {
+                this["Default_PCE_SuperGrafx"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        public string Default_PCE_Pad {
+            get {
+                return ((string)(this["Default_PCE_Pad"]));
+            }
+            set {
+                this["Default_PCE_Pad"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public string Default_PCE_YOffset {
+            get {
+                return ((string)(this["Default_PCE_YOffset"]));
+            }
+            set {
+                this["Default_PCE_YOffset"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public string Default_PCE_SpriteLimit {
+            get {
+                return ((string)(this["Default_PCE_SpriteLimit"]));
+            }
+            set {
+                this["Default_PCE_SpriteLimit"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public string Default_PCE_HideOverscan {
+            get {
+                return ((string)(this["Default_PCE_HideOverscan"]));
+            }
+            set {
+                this["Default_PCE_HideOverscan"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public string Default_PCE_BGRaster {
+            get {
+                return ((string)(this["Default_PCE_BGRaster"]));
+            }
+            set {
+                this["Default_PCE_BGRaster"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public string Default_PCE_BackupRAM {
+            get {
+                return ((string)(this["Default_PCE_BackupRAM"]));
+            }
+            set {
+                this["Default_PCE_BackupRAM"] = value;
+            }
+        }
     }
 }

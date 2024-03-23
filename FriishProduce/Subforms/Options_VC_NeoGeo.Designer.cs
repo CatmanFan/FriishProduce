@@ -68,6 +68,7 @@ namespace FriishProduce
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.groupBox1.Location = new System.Drawing.Point(12, 9);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(380, 50);

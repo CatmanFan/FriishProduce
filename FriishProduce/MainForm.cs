@@ -57,8 +57,8 @@ namespace FriishProduce
                             new ToolStripMenuItem(null, new Icon(Properties.Resources.snk_neo_geo_aes, 16, 16).ToBitmap(), AddProject, Console.NeoGeo.ToString()),
                             new ToolStripSeparator(),
                             new ToolStripMenuItem(null, Properties.Resources.msx, AddProject, Console.MSX.ToString()),
-                            new ToolStripSeparator(),
-                            new ToolStripMenuItem(null, Properties.Resources.flash, AddProject, Console.Flash.ToString()),
+                         // new ToolStripSeparator(),
+                         // new ToolStripMenuItem(null, Properties.Resources.flash, AddProject, Console.Flash.ToString()),
                          // new ToolStripSeparator(),
                          // new ToolStripMenuItem(null, new Icon(Properties.Resources.sony_playstation, 16, 16).ToBitmap(), AddProject, Console.PSX.ToString())
                         //})

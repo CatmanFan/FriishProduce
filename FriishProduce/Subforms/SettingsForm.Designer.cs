@@ -69,14 +69,29 @@ namespace FriishProduce
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.NGBios = new System.Windows.Forms.ComboBox();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.Sega6ButtonPad = new System.Windows.Forms.CheckBox();
-            this.SegaSRAM = new System.Windows.Forms.CheckBox();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.BrightnessValue = new System.Windows.Forms.TrackBar();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.Sega6ButtonPad = new System.Windows.Forms.CheckBox();
+            this.SegaRegion = new System.Windows.Forms.ComboBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.SegaBrightnessValue = new System.Windows.Forms.TrackBar();
+            this.SegaSRAM = new System.Windows.Forms.CheckBox();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.PCEUseSRAM = new System.Windows.Forms.CheckBox();
+            this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.toggleSwitch2 = new JCS.ToggleSwitch();
+            this.toggleSwitchL2 = new System.Windows.Forms.Label();
+            this.toggleSwitch4 = new JCS.ToggleSwitch();
+            this.toggleSwitchL3 = new System.Windows.Forms.Label();
+            this.toggleSwitchL4 = new System.Windows.Forms.Label();
+            this.toggleSwitch3 = new JCS.ToggleSwitch();
+            this.PCEHideOverscan = new System.Windows.Forms.CheckBox();
+            this.PCEBgRaster = new System.Windows.Forms.CheckBox();
+            this.PCESpriteLimit = new System.Windows.Forms.CheckBox();
+            this.PCEYOffset = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.groupBox3.SuspendLayout();
             this.n64004.SuspendLayout();
             this.bottomPanel1.SuspendLayout();
@@ -94,9 +109,13 @@ namespace FriishProduce
             this.panel8.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.panel6.SuspendLayout();
-            this.groupBox6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.BrightnessValue)).BeginInit();
             this.groupBox7.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SegaBrightnessValue)).BeginInit();
+            this.panel7.SuspendLayout();
+            this.groupBox11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PCEYOffset)).BeginInit();
+            this.groupBox10.SuspendLayout();
             this.SuspendLayout();
             // 
             // DefaultImageInterpolation
@@ -343,6 +362,7 @@ namespace FriishProduce
             // 
             this.groupBox4.Controls.Add(this.PaletteBanner);
             this.groupBox4.Controls.Add(this.PaletteList);
+            this.groupBox4.FlatStyle = System.Windows.Forms.FlatStyle.System;
             resources.ApplyResources(this.groupBox4, "groupBox4");
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.TabStop = false;
@@ -369,6 +389,7 @@ namespace FriishProduce
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.NGBios);
+            this.groupBox5.FlatStyle = System.Windows.Forms.FlatStyle.System;
             resources.ApplyResources(this.groupBox5, "groupBox5");
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.TabStop = false;
@@ -388,44 +409,12 @@ namespace FriishProduce
             resources.ApplyResources(this.panel6, "panel6");
             this.panel6.Name = "panel6";
             // 
-            // Sega6ButtonPad
-            // 
-            resources.ApplyResources(this.Sega6ButtonPad, "Sega6ButtonPad");
-            this.Sega6ButtonPad.Name = "Sega6ButtonPad";
-            this.Sega6ButtonPad.UseVisualStyleBackColor = true;
-            // 
-            // SegaSRAM
-            // 
-            resources.ApplyResources(this.SegaSRAM, "SegaSRAM");
-            this.SegaSRAM.Name = "SegaSRAM";
-            this.SegaSRAM.UseVisualStyleBackColor = true;
-            // 
-            // groupBox6
-            // 
-            this.groupBox6.Controls.Add(this.label1);
-            this.groupBox6.Controls.Add(this.BrightnessValue);
-            resources.ApplyResources(this.groupBox6, "groupBox6");
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.TabStop = false;
-            // 
-            // label1
-            // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
-            // 
-            // BrightnessValue
-            // 
-            resources.ApplyResources(this.BrightnessValue, "BrightnessValue");
-            this.BrightnessValue.Maximum = 100;
-            this.BrightnessValue.Name = "BrightnessValue";
-            this.BrightnessValue.Value = 100;
-            this.BrightnessValue.Scroll += new System.EventHandler(this.BrightnessValue_Scroll);
-            // 
             // groupBox7
             // 
             this.groupBox7.Controls.Add(this.label2);
             this.groupBox7.Controls.Add(this.Sega6ButtonPad);
-            this.groupBox7.Controls.Add(this.comboBox1);
+            this.groupBox7.Controls.Add(this.SegaRegion);
+            this.groupBox7.FlatStyle = System.Windows.Forms.FlatStyle.System;
             resources.ApplyResources(this.groupBox7, "groupBox7");
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.TabStop = false;
@@ -435,12 +424,160 @@ namespace FriishProduce
             resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
             // 
-            // comboBox1
+            // Sega6ButtonPad
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            resources.ApplyResources(this.comboBox1, "comboBox1");
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Name = "comboBox1";
+            resources.ApplyResources(this.Sega6ButtonPad, "Sega6ButtonPad");
+            this.Sega6ButtonPad.Name = "Sega6ButtonPad";
+            this.Sega6ButtonPad.UseVisualStyleBackColor = true;
+            // 
+            // SegaRegion
+            // 
+            this.SegaRegion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.SegaRegion, "SegaRegion");
+            this.SegaRegion.FormattingEnabled = true;
+            this.SegaRegion.Name = "SegaRegion";
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.label1);
+            this.groupBox6.Controls.Add(this.SegaBrightnessValue);
+            this.groupBox6.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            resources.ApplyResources(this.groupBox6, "groupBox6");
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.TabStop = false;
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // SegaBrightnessValue
+            // 
+            resources.ApplyResources(this.SegaBrightnessValue, "SegaBrightnessValue");
+            this.SegaBrightnessValue.Maximum = 100;
+            this.SegaBrightnessValue.Name = "SegaBrightnessValue";
+            this.SegaBrightnessValue.Value = 100;
+            this.SegaBrightnessValue.Scroll += new System.EventHandler(this.BrightnessValue_Scroll);
+            // 
+            // SegaSRAM
+            // 
+            resources.ApplyResources(this.SegaSRAM, "SegaSRAM");
+            this.SegaSRAM.Name = "SegaSRAM";
+            this.SegaSRAM.UseVisualStyleBackColor = true;
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.PCEUseSRAM);
+            this.panel7.Controls.Add(this.groupBox10);
+            this.panel7.Controls.Add(this.groupBox11);
+            resources.ApplyResources(this.panel7, "panel7");
+            this.panel7.Name = "panel7";
+            // 
+            // PCEUseSRAM
+            // 
+            resources.ApplyResources(this.PCEUseSRAM, "PCEUseSRAM");
+            this.PCEUseSRAM.Name = "PCEUseSRAM";
+            this.PCEUseSRAM.UseVisualStyleBackColor = true;
+            // 
+            // groupBox11
+            // 
+            this.groupBox11.Controls.Add(this.toggleSwitch2);
+            this.groupBox11.Controls.Add(this.toggleSwitchL2);
+            this.groupBox11.Controls.Add(this.toggleSwitch4);
+            this.groupBox11.Controls.Add(this.toggleSwitchL3);
+            this.groupBox11.Controls.Add(this.toggleSwitchL4);
+            this.groupBox11.Controls.Add(this.toggleSwitch3);
+            this.groupBox11.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            resources.ApplyResources(this.groupBox11, "groupBox11");
+            this.groupBox11.Name = "groupBox11";
+            this.groupBox11.TabStop = false;
+            // 
+            // toggleSwitch2
+            // 
+            resources.ApplyResources(this.toggleSwitch2, "toggleSwitch2");
+            this.toggleSwitch2.Name = "toggleSwitch2";
+            this.toggleSwitch2.OffFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toggleSwitch2.OnFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toggleSwitch2.Style = JCS.ToggleSwitch.ToggleSwitchStyle.IOS5;
+            this.toggleSwitch2.CheckedChanged += new JCS.ToggleSwitch.CheckedChangedDelegate(this.ToggleSwitchChanged);
+            // 
+            // toggleSwitchL2
+            // 
+            resources.ApplyResources(this.toggleSwitchL2, "toggleSwitchL2");
+            this.toggleSwitchL2.Name = "toggleSwitchL2";
+            // 
+            // toggleSwitch4
+            // 
+            resources.ApplyResources(this.toggleSwitch4, "toggleSwitch4");
+            this.toggleSwitch4.Name = "toggleSwitch4";
+            this.toggleSwitch4.OffFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toggleSwitch4.OnFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toggleSwitch4.Style = JCS.ToggleSwitch.ToggleSwitchStyle.IOS5;
+            this.toggleSwitch4.CheckedChanged += new JCS.ToggleSwitch.CheckedChangedDelegate(this.ToggleSwitchChanged);
+            // 
+            // toggleSwitchL3
+            // 
+            resources.ApplyResources(this.toggleSwitchL3, "toggleSwitchL3");
+            this.toggleSwitchL3.Name = "toggleSwitchL3";
+            // 
+            // toggleSwitchL4
+            // 
+            resources.ApplyResources(this.toggleSwitchL4, "toggleSwitchL4");
+            this.toggleSwitchL4.Name = "toggleSwitchL4";
+            // 
+            // toggleSwitch3
+            // 
+            resources.ApplyResources(this.toggleSwitch3, "toggleSwitch3");
+            this.toggleSwitch3.Name = "toggleSwitch3";
+            this.toggleSwitch3.OffFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toggleSwitch3.OnFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toggleSwitch3.Style = JCS.ToggleSwitch.ToggleSwitchStyle.IOS5;
+            this.toggleSwitch3.CheckedChanged += new JCS.ToggleSwitch.CheckedChangedDelegate(this.ToggleSwitchChanged);
+            // 
+            // PCEHideOverscan
+            // 
+            resources.ApplyResources(this.PCEHideOverscan, "PCEHideOverscan");
+            this.PCEHideOverscan.Name = "PCEHideOverscan";
+            this.PCEHideOverscan.UseVisualStyleBackColor = true;
+            // 
+            // PCEBgRaster
+            // 
+            resources.ApplyResources(this.PCEBgRaster, "PCEBgRaster");
+            this.PCEBgRaster.Name = "PCEBgRaster";
+            this.PCEBgRaster.UseVisualStyleBackColor = true;
+            // 
+            // PCESpriteLimit
+            // 
+            resources.ApplyResources(this.PCESpriteLimit, "PCESpriteLimit");
+            this.PCESpriteLimit.Name = "PCESpriteLimit";
+            this.PCESpriteLimit.UseVisualStyleBackColor = true;
+            // 
+            // PCEYOffset
+            // 
+            resources.ApplyResources(this.PCEYOffset, "PCEYOffset");
+            this.PCEYOffset.Maximum = new decimal(new int[] {
+            25,
+            0,
+            0,
+            0});
+            this.PCEYOffset.Name = "PCEYOffset";
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
+            // groupBox10
+            // 
+            this.groupBox10.Controls.Add(this.label3);
+            this.groupBox10.Controls.Add(this.PCEYOffset);
+            this.groupBox10.Controls.Add(this.PCESpriteLimit);
+            this.groupBox10.Controls.Add(this.PCEBgRaster);
+            this.groupBox10.Controls.Add(this.PCEHideOverscan);
+            this.groupBox10.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            resources.ApplyResources(this.groupBox10, "groupBox10");
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.TabStop = false;
             // 
             // SettingsForm
             // 
@@ -452,6 +589,7 @@ namespace FriishProduce
             this.Controls.Add(this.bottomPanel2);
             this.Controls.Add(this.leftSeparator);
             this.Controls.Add(this.TreeView);
+            this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel8);
@@ -492,10 +630,17 @@ namespace FriishProduce
             this.groupBox5.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
-            this.groupBox6.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.BrightnessValue)).EndInit();
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.SegaBrightnessValue)).EndInit();
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
+            this.groupBox11.ResumeLayout(false);
+            this.groupBox11.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PCEYOffset)).EndInit();
+            this.groupBox10.ResumeLayout(false);
+            this.groupBox10.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -544,9 +689,24 @@ namespace FriishProduce
         private System.Windows.Forms.CheckBox SegaSRAM;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TrackBar BrightnessValue;
+        private System.Windows.Forms.TrackBar SegaBrightnessValue;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox SegaRegion;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.CheckBox PCEUseSRAM;
+        private System.Windows.Forms.GroupBox groupBox11;
+        private JCS.ToggleSwitch toggleSwitch2;
+        private System.Windows.Forms.Label toggleSwitchL2;
+        private JCS.ToggleSwitch toggleSwitch4;
+        private System.Windows.Forms.Label toggleSwitchL3;
+        private System.Windows.Forms.Label toggleSwitchL4;
+        private JCS.ToggleSwitch toggleSwitch3;
+        private System.Windows.Forms.GroupBox groupBox10;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.NumericUpDown PCEYOffset;
+        private System.Windows.Forms.CheckBox PCESpriteLimit;
+        private System.Windows.Forms.CheckBox PCEBgRaster;
+        private System.Windows.Forms.CheckBox PCEHideOverscan;
     }
 }
