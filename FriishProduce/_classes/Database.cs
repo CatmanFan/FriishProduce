@@ -136,9 +136,9 @@ namespace FriishProduce
                                : c == Console.SNES ? " (SNES)"
                                : c == Console.N64 ? " (N64)"
                                : c == Console.SMS ? " (SMS)"
-                               : c == Console.SMDGEN ? " (SMD)"
+                               : c == Console.SMD ? " (SMD)"
                                : c == Console.PCE ? " (TGX)"
-                               : c == Console.NeoGeo ? " (NG)"
+                               : c == Console.NEO ? " (NG)"
                                : c == Console.C64 ? " (C64)"
                                : c == Console.MSX ? " (MSX)"
                                : null;

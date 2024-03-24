@@ -39,7 +39,7 @@ namespace FriishProduce
                         new ToolStripItem[]
                         {*/
                             new ToolStripMenuItem(null, new Icon(Properties.Resources.sega_master_system, 16, 16).ToBitmap(), AddProject, Console.SMS.ToString()),
-                            new ToolStripMenuItem(null, new Icon(Properties.Resources.sega_genesis__model_2_, 16, 16).ToBitmap(), AddProject, Console.SMDGEN.ToString()),
+                            new ToolStripMenuItem(null, new Icon(Properties.Resources.sega_genesis__model_2_, 16, 16).ToBitmap(), AddProject, Console.SMD.ToString()),
                             new ToolStripSeparator(),
                         /*}),
 
@@ -49,7 +49,7 @@ namespace FriishProduce
                         {*/
                             new ToolStripMenuItem(null, new Icon(Properties.Resources.nec_turbografx_16, 16, 16).ToBitmap(), AddProject, Console.PCE.ToString()),
                             new ToolStripSeparator(),
-                            new ToolStripMenuItem(null, new Icon(Properties.Resources.snk_neo_geo_aes, 16, 16).ToBitmap(), AddProject, Console.NeoGeo.ToString()),
+                            new ToolStripMenuItem(null, new Icon(Properties.Resources.snk_neo_geo_aes, 16, 16).ToBitmap(), AddProject, Console.NEO.ToString()),
                             new ToolStripSeparator(),
                             new ToolStripMenuItem(null, Properties.Resources.msx, AddProject, Console.MSX.ToString()),
                          // new ToolStripSeparator(),
@@ -243,14 +243,14 @@ namespace FriishProduce
                 case Console.SNES:
                 case Console.N64:
                 case Console.SMS:
-                case Console.SMDGEN:
+                case Console.SMD:
                 case Console.PCE:
                 case Console.C64:
                 case Console.MSX:
                     BrowseROM.Filter = Language.Get($"Filter.ROM.{c}");
                     break;
 
-                case Console.NeoGeo:
+                case Console.NEO:
                     BrowseROM.Filter = Language.Get("Filter.ZIP");
                     break;
 

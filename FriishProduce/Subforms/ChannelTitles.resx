@@ -192,9 +192,6 @@
   <data name="&gt;&gt;bottomPanel1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="OK.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>System</value>
-  </data>
   <data name="OK.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>

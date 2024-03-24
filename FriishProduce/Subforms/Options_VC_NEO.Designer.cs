@@ -1,7 +1,7 @@
 ﻿
 namespace FriishProduce
 {
-    partial class Options_VC_NeoGeo
+    partial class Options_VC_NEO
     {
         /// <summary>
         /// Required designer variable.
@@ -68,7 +68,6 @@ namespace FriishProduce
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.groupBox1.Location = new System.Drawing.Point(12, 9);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(380, 50);
@@ -76,11 +75,11 @@ namespace FriishProduce
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "BIOS";
             // 
-            // Options_VC_NeoGeo
+            // Options_VC_NEO
             // 
             this.ClientSize = new System.Drawing.Size(404, 122);
             this.Controls.Add(this.groupBox1);
-            this.Name = "Options_VC_NeoGeo";
+            this.Name = "Options_VC_NEO";
             this.Controls.SetChildIndex(this.groupBox1, 0);
             this.bottomPanel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);

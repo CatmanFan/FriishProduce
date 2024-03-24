@@ -144,11 +144,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Subforms\Options_VC_NeoGeo.cs">
+    <Compile Include="Subforms\Options_VC_NEO.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Subforms\Options_VC_NeoGeo.Designer.cs">
-      <DependentUpon>Options_VC_NeoGeo.cs</DependentUpon>
+    <Compile Include="Subforms\Options_VC_NEO.Designer.cs">
+      <DependentUpon>Options_VC_NEO.cs</DependentUpon>
     </Compile>
     <Compile Include="Subforms\Options_VC_PCE.cs">
       <SubType>Form</SubType>
@@ -179,7 +179,7 @@
     <Compile Include="_classes\Language.cs" />
     <Compile Include="_classes\ROM\MSX.cs" />
     <Compile Include="_classes\ROM\N64.cs" />
-    <Compile Include="_classes\ROM\NeoGeo.cs" />
+    <Compile Include="_classes\ROM\NEO.cs" />
     <Compile Include="_classes\ROM\NES.cs" />
     <Compile Include="_classes\ROM\PCE.cs" />
     <Compile Include="_classes\ROM\SEGA.cs" />
@@ -264,7 +264,7 @@
     <Compile Include="_classes\Modifiers\Creator.cs" />
     <Compile Include="_classes\Modifiers\WiiVC.cs" />
     <Compile Include="_classes\Modifiers\WiiVC\N64.cs" />
-    <Compile Include="_classes\Modifiers\WiiVC\NeoGeo.cs" />
+    <Compile Include="_classes\Modifiers\WiiVC\NEO.cs" />
     <Compile Include="_classes\Modifiers\WiiVC\NES.cs" />
     <Compile Include="_classes\Modifiers\WiiVC\SEGA.cs" />
     <Compile Include="_classes\Modifiers\WiiVC\SNES.cs" />
@@ -294,8 +294,8 @@
     <EmbeddedResource Include="Subforms\Options_Flash.resx">
       <DependentUpon>Options_Flash.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Subforms\Options_VC_NeoGeo.resx">
-      <DependentUpon>Options_VC_NeoGeo.cs</DependentUpon>
+    <EmbeddedResource Include="Subforms\Options_VC_NEO.resx">
+      <DependentUpon>Options_VC_NEO.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Subforms\Options_VC_PCE.resx">
       <DependentUpon>Options_VC_PCE.cs</DependentUpon>

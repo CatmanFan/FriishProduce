@@ -308,9 +308,30 @@
 		</Entry>
 
 		<Entry>
-			<TID>NA3J</TID>
+			<TID>NA3E</TID>
 			<Name>Bomberman Hero</Name>
+			<DisplayName>Bomberman Hero</DisplayName>
+			<Emulator>3</Emulator>
+		</Entry>
+
+		<Entry>
+			<TID>NA3P</TID>
+			<Name>Bomberman Hero</Name>
+			<DisplayName>Bomberman Hero</DisplayName>
+			<Emulator>3</Emulator>
+		</Entry>
+
+		<Entry>
+			<TID>NA3J</TID>
+			<Name>Bomberman Hero - Millian-Oujo wo Sukue!</Name>
 			<DisplayName>Bomberman Hero - ボンバーマンヒーロー ミリアン王女を救え!</DisplayName>
+			<Emulator>3</Emulator>
+		</Entry>
+
+		<Entry>
+			<TID>NAPJ</TID>
+			<Name>Custom Robo V2</Name>
+			<DisplayName>カスタムロボV２</DisplayName>
 			<Emulator>3</Emulator>
 		</Entry>
 	</Database>
@@ -393,7 +414,7 @@
 		</Entry>
 	</Database>
 
-	<Database Type="SMDGEN">
+	<Database Type="SMD">
 		<!-- [Emulator types:] -->
 		<!-- 1 = Version 1 (original) -->
 		<!-- 2 = Version 2 (banner.wte instead of banner_**.wte) -->
@@ -521,7 +542,7 @@
 		</Entry>
 	</Database>
 
-	<Database Type="NeoGeo">
+	<Database Type="NEO">
 		<Entry>
 			<TID>EAGE</TID>
 			<Name>King of Fighters '94, The</Name>

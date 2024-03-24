@@ -103,7 +103,7 @@ namespace FriishProduce
             // --------------------------------------------------
             SaveIconL_xywh = new int[] { 10, 10, 58, 44 };
             SaveIconS_xywh = new int[] { 4, 9, 40, 30 };
-            if (platform == Console.SMS || platform == Console.SMDGEN)
+            if (platform == Console.SMS || platform == Console.SMD)
             {
                 SaveIconL_xywh = new int[] { 8, 8, 69, 48 };
                 SaveIconS_xywh = new int[] { 2, new Random().Next(8, 9), 44, 31 };
@@ -240,7 +240,7 @@ namespace FriishProduce
 
             using (Graphics g = Graphics.FromImage(bmp))
             {
-                g.DrawImage(platform == Console.SMS || platform == Console.SMDGEN ? SaveIconPlaceholder_SEGA : SaveIconPlaceholder, 0, 0, bmp.Width, bmp.Height);
+                g.DrawImage(platform == Console.SMS || platform == Console.SMD ? SaveIconPlaceholder_SEGA : SaveIconPlaceholder, 0, 0, bmp.Width, bmp.Height);
 
                 g.InterpolationMode = InterpolationMode.Bilinear;
                 g.PixelOffsetMode = PixelOffsetMode.Half;
@@ -477,7 +477,7 @@ namespace FriishProduce
                     tpl.AddTexture(sIcon2, formatsT[3], formatsP[3]);
                 }
 
-                else if (platform == Console.NeoGeo || platform == Console.MSX)
+                else if (platform == Console.NEO || platform == Console.MSX)
                 {
                     // 2ND/3RD FRAMES
                     // ****************

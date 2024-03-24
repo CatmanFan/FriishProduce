@@ -53,6 +53,9 @@ See **[here](https://github.com/CatmanFan/FriishProduce/wiki/Translation)** for 
 - [ ] Flash emulator options list
 - [ ] Reorganize content options into their own setting files
 - [ ] Clean forms code
+- [ ] Clean languages
+- [ ] Separate classes
+- [ ] Create project format
 * Other VC injection support to be done later:
   * Commodore 64 (needs [Custom Frodo](https://gbatemp.net/threads/custom-frodo-for-c64-vc-injection.102356/))
   * TurboGrafx-16 CD (needs several programs to convert ISO to injectable format)

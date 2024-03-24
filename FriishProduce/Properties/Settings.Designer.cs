@@ -182,12 +182,12 @@ namespace FriishProduce.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("VC2")]
-        public string Default_NeoGeo_BIOS {
+        public string Default_NEO_BIOS {
             get {
-                return ((string)(this["Default_NeoGeo_BIOS"]));
+                return ((string)(this["Default_NEO_BIOS"]));
             }
             set {
-                this["Default_NeoGeo_BIOS"] = value;
+                this["Default_NEO_BIOS"] = value;
             }
         }
         

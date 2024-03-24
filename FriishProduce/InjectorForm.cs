@@ -168,13 +168,13 @@ namespace FriishProduce
                     break;
 
                 case Console.SMS:
-                case Console.SMDGEN:
+                case Console.SMD:
                     InjectorsList.Items.Add(Language.Get("VC"));
                     InjectorsList.Items.Add(Forwarder.List[7]);
                     break;
 
                 case Console.PCE:
-                case Console.NeoGeo:
+                case Console.NEO:
                 case Console.MSX:
                 case Console.C64:
                     InjectorsList.Items.Add(Language.Get("VC"));
@@ -242,7 +242,7 @@ namespace FriishProduce
                     ROM = new ROM_SEGA() { IsSMS = true };
                     break;
 
-                case Console.SMDGEN:
+                case Console.SMD:
                     TIDCode = "M";
                     ROM = new ROM_SEGA() { IsSMS = false };
                     break;
@@ -252,9 +252,9 @@ namespace FriishProduce
                     ROM = new ROM_PCE();
                     break;
 
-                case Console.NeoGeo:
+                case Console.NEO:
                     TIDCode = "E";
-                    ROM = new ROM_NeoGeo();
+                    ROM = new ROM_NEO();
                     break;
 
                 case Console.MSX:
@@ -276,7 +276,7 @@ namespace FriishProduce
 
             // Cosmetic
             // ********
-            if (Console == Console.SMS || Console == Console.SMDGEN) SaveIcon_Panel.BackgroundImage = Properties.Resources.SaveIconPlaceholder_SEGA;
+            if (Console == Console.SMS || Console == Console.SMD) SaveIcon_Panel.BackgroundImage = Properties.Resources.SaveIconPlaceholder_SEGA;
             RefreshForm();
 
             Creator.BannerYear = (int)ReleaseYear.Value;
@@ -599,7 +599,7 @@ namespace FriishProduce
                         break;
 
                     case Console.SMS:
-                    case Console.SMDGEN:
+                    case Console.SMD:
                         break;
                 }
 
@@ -633,7 +633,7 @@ namespace FriishProduce
                 case Console.SNES:
                 case Console.N64:
                 case Console.SMS:
-                case Console.SMDGEN:
+                case Console.SMD:
                 case Console.PCE:
                 case Console.C64:
                 case Console.MSX:
@@ -644,7 +644,7 @@ namespace FriishProduce
                     }
                     break;
 
-                case Console.NeoGeo:
+                case Console.NEO:
                     // Check if ZIP archive is of valid format
                     // ****************
                     if (!ROM.CheckZIPValidity(ROMpath, new string[] { "c1", "c2", "m1", "p1", "s1", "v1" }, true, true))
@@ -749,9 +749,9 @@ namespace FriishProduce
                     case Console.SNES:
                     case Console.N64:
                     case Console.SMS:
-                    case Console.SMDGEN:
+                    case Console.SMD:
                     case Console.PCE:
-                    case Console.NeoGeo:
+                    case Console.NEO:
                     case Console.MSX:
                         if (IsVCMode())
                             WiiVCInject();
@@ -885,7 +885,7 @@ namespace FriishProduce
                 // SEGA
                 // *******
                 case Console.SMS:
-                case Console.SMDGEN:
+                case Console.SMD:
                     VC = new WiiVC.SEGA()
                     {
                         IsSMS = Console == Console.SMS
@@ -900,8 +900,8 @@ namespace FriishProduce
 
                 // NEOGEO
                 // *******
-                case Console.NeoGeo:
-                    VC = new WiiVC.NeoGeo();
+                case Console.NEO:
+                    VC = new WiiVC.NEO();
                     break;
 
                 // MSX
@@ -948,9 +948,9 @@ namespace FriishProduce
 
                 case Console.N64:
                 case Console.SMS:
-                case Console.SMDGEN:
+                case Console.SMD:
                 case Console.PCE:
-                case Console.NeoGeo:
+                case Console.NEO:
                 case Console.Flash:
                     if (result) { CheckExport(); }
                     break;
@@ -1188,7 +1188,7 @@ namespace FriishProduce
             if (Console == Console.NES) SaveDataTitle.MaxLength = Creator.OrigRegion == Creator.RegionType.Korea ? 30 : 20;
             else if (Console == Console.SNES) SaveDataTitle.MaxLength = 80;
             else if (Console == Console.N64) SaveDataTitle.MaxLength = 100;
-            else if (Console == Console.NeoGeo
+            else if (Console == Console.NEO
                   || Console == Console.MSX) SaveDataTitle.MaxLength = 64;
             else SaveDataTitle.MaxLength = 80;
 
@@ -1197,7 +1197,7 @@ namespace FriishProduce
             bool isSingleLine = Creator.OrigRegion == Creator.RegionType.Korea
                              || Console == Console.NES
                              || Console == Console.SMS
-                             || Console == Console.SMDGEN
+                             || Console == Console.SMD
                              || Console == Console.PCE;
 
             // Set textbox to use single line when needed
@@ -1259,7 +1259,7 @@ namespace FriishProduce
                         break;
 
                     case Console.SMS:
-                    case Console.SMDGEN:
+                    case Console.SMD:
                         CO = new Options_VC_SEGA() { IsSMS = Console == Console.SMS };
                         break;
 
@@ -1267,8 +1267,8 @@ namespace FriishProduce
                         CO = new Options_VC_PCE();
                         break;
 
-                    case Console.NeoGeo:
-                        CO = new Options_VC_NeoGeo();
+                    case Console.NEO:
+                        CO = new Options_VC_NEO();
                         break;
 
                     case Console.MSX:
@@ -1315,14 +1315,14 @@ namespace FriishProduce
                     break;
 
                 case Console.SMS:
-                case Console.SMDGEN:
+                case Console.SMD:
                     CO.EmuType = EmuVer();
                     break;
 
                 case Console.PCE:
                     break;
 
-                case Console.NeoGeo:
+                case Console.NEO:
                     break;
 
                 case Console.MSX:

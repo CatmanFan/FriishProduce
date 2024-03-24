@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="FriishProduce.Options" GeneratedClassName="VC_NEO">
+  <Profiles />
+  <Settings>
+    <Setting Name="bios" Type="System.String" Scope="User">
+      <Value Profile="(Default)">VC2</Value>
+    </Setting>
+    <Setting Name="bios_path" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+  </Settings>
+</SettingsFile>

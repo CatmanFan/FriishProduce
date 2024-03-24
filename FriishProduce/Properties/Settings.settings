@@ -41,7 +41,7 @@
     <Setting Name="Default_Forwarders_Mode" Type="System.String" Scope="User">
       <Value Profile="(Default)">Wii</Value>
     </Setting>
-    <Setting Name="Default_NeoGeo_BIOS" Type="System.String" Scope="User">
+    <Setting Name="Default_NEO_BIOS" Type="System.String" Scope="User">
       <Value Profile="(Default)">VC2</Value>
     </Setting>
     <Setting Name="Default_SEGA_6B" Type="System.String" Scope="User">

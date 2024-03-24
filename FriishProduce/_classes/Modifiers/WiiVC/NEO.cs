@@ -8,7 +8,7 @@ using System.Text;
 
 namespace FriishProduce.WiiVC
 {
-    public class NeoGeo : InjectorWiiVC
+    public class NEO : InjectorWiiVC
     {
         private List<byte> P { get; set; }
         private List<byte> M { get; set; }
@@ -218,7 +218,7 @@ namespace FriishProduce.WiiVC
             }
 
         AutoBIOS:
-            var targetBIOS = Properties.Settings.Default.Default_NeoGeo_BIOS;
+            var targetBIOS = Properties.Settings.Default.Default_NEO_BIOS;
             if (!noBIOS && Settings["BIOS"].ToLower() != "custom") targetBIOS = Settings["BIOS"];
 
             BIOS.Clear();

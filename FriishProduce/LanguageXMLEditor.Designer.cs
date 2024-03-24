@@ -150,7 +150,6 @@ namespace FriishProduce
             this.comboBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboBox1.DropDownHeight = 125;
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.IntegralHeight = false;
             this.comboBox1.Location = new System.Drawing.Point(103, 70);
@@ -163,7 +162,6 @@ namespace FriishProduce
             // 
             // button1
             // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.button1.Location = new System.Drawing.Point(866, 69);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(100, 23);
@@ -175,7 +173,6 @@ namespace FriishProduce
             // button2
             // 
             this.button2.Enabled = false;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.button2.Location = new System.Drawing.Point(876, 12);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(100, 23);
@@ -196,7 +193,6 @@ namespace FriishProduce
             // button3
             // 
             this.button3.Enabled = false;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.button3.Location = new System.Drawing.Point(12, 12);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(100, 23);
@@ -208,7 +204,6 @@ namespace FriishProduce
             // button4
             // 
             this.button4.Enabled = false;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.button4.Location = new System.Drawing.Point(972, 69);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(100, 23);
@@ -243,7 +238,6 @@ namespace FriishProduce
             // button5
             // 
             this.button5.Enabled = false;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.button5.Location = new System.Drawing.Point(770, 12);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(100, 23);
@@ -255,7 +249,6 @@ namespace FriishProduce
             // Cancel
             // 
             this.Cancel.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.Cancel.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.Cancel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.Cancel.Location = new System.Drawing.Point(982, 12);
             this.Cancel.Name = "Cancel";

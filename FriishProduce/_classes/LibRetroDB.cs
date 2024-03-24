@@ -109,10 +109,10 @@ namespace FriishProduce
                 { "Nintendo - Super Nintendo Entertainment System", Console.SNES },
                 { "Nintendo - Nintendo 64", Console.N64 },
                 { "Sega - Master System - Mark III", Console.SMS },
-                { "Sega - Mega Drive - Genesis", Console.SMDGEN },
+                { "Sega - Mega Drive - Genesis", Console.SMD },
                 { "NEC - PC Engine - TurboGrafx 16", Console.PCE },
                 { "NEC - PC Engine SuperGrafx", Console.PCE },
-                { "MAME", Console.NeoGeo },
+                { "MAME", Console.NEO },
                 { "Microsoft - MSX", Console.MSX },
                 { "Microsoft - MSX2", Console.MSX },
                 { "Microsoft - MSX 2", Console.MSX },
@@ -141,7 +141,7 @@ namespace FriishProduce
 
                     string[] db_lines = new string[1];
 
-                    if (platform == Console.NeoGeo)
+                    if (platform == Console.NEO)
                     {
                         var size = File.ReadAllBytes(SoftwarePath).Length.ToString();
 

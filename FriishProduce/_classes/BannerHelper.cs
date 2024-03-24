@@ -74,7 +74,7 @@ namespace FriishProduce
                     bannerPath += region == Region.Japan ? "jp_sms.bnr" : "sms.bnr";
                     break;
 
-                case Console.SMDGEN:
+                case Console.SMD:
                     bannerPath += region == Region.Japan ? "jp_smd.bnr" : region == Region.Europe ? "smd.bnr" : "gen.bnr";
                     break;
 
@@ -82,7 +82,7 @@ namespace FriishProduce
                     bannerPath += region == Region.Japan ? "jp_pce.bnr" : "tg16.bnr";
                     break;
 
-                case Console.NeoGeo:
+                case Console.NEO:
                     bannerPath += region == Region.Japan ? "jp_neogeo.bnr" : "neogeo.bnr";
                     break;
 

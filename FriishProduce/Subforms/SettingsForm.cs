@@ -28,7 +28,7 @@ namespace FriishProduce
             TreeView.Nodes[1].Nodes[1].Text = Language.Get(Console.N64.ToString(), "Platforms");
             TreeView.Nodes[1].Nodes[2].Text = Language.Get("Group1", "Platforms");
             TreeView.Nodes[1].Nodes[3].Text = Language.Get(Console.PCE.ToString(), "Platforms");
-            TreeView.Nodes[1].Nodes[4].Text = Language.Get(Console.NeoGeo.ToString(), "Platforms");
+            TreeView.Nodes[1].Nodes[4].Text = Language.Get(Console.NEO.ToString(), "Platforms");
             TreeView.Nodes[1].Nodes[5].Text = Language.Get("Forwarders");
 
             // -----------------------------
@@ -79,7 +79,7 @@ namespace FriishProduce
 
             label2.Text = Language.Get("label2", typeof(Options_VC_SEGA).Name, true);
             SegaSRAM.Text = Language.Get("checkBox1", typeof(Options_VC_SEGA).Name, true);
-            Sega6ButtonPad.Text = string.Format(Language.Get(Sega6ButtonPad, this), Language.Get(Console.SMDGEN.ToString()));
+            Sega6ButtonPad.Text = string.Format(Language.Get(Sega6ButtonPad, this), Language.Get(Console.SMD.ToString()));
 
             SegaRegion.Items.Clear();
             SegaRegion.Items.Add(Language.Get("Region.U"));
@@ -99,7 +99,7 @@ namespace FriishProduce
 
             // -----------------------------
 
-            Language.GetComboBox(NGBios, "comboBox1", typeof(Options_VC_NeoGeo).Name);
+            Language.GetComboBox(NGBios, "comboBox1", typeof(Options_VC_NEO).Name);
             NGBios.Items.RemoveAt(0);
 
             // -----------------------------
@@ -132,7 +132,7 @@ namespace FriishProduce
             PCEBgRaster.Checked = Default.Default_PCE_BGRaster == "1";
             PCESpriteLimit.Checked = Default.Default_PCE_SpriteLimit == "1";
 
-            switch (Default.Default_NeoGeo_BIOS.ToLower())
+            switch (Default.Default_NEO_BIOS.ToLower())
             {
                 case "vc1":
                     NGBios.SelectedIndex = 0;
@@ -202,15 +202,15 @@ namespace FriishProduce
             switch (NGBios.SelectedIndex)
             {
                 case 0:
-                    Default.Default_NeoGeo_BIOS = "VC1";
+                    Default.Default_NEO_BIOS = "VC1";
                     break;
 
                 case 1:
-                    Default.Default_NeoGeo_BIOS = "VC2";
+                    Default.Default_NEO_BIOS = "VC2";
                     break;
 
                 case 2:
-                    Default.Default_NeoGeo_BIOS = "VC3";
+                    Default.Default_NEO_BIOS = "VC3";
                     break;
             }
 
@@ -264,8 +264,8 @@ namespace FriishProduce
                 { "NABT", Console.N64 }, // MK64 */
                 { "PAAP", Console.PCE },
                 { "PAGJ", Console.PCE },
-             /* { "EAJP", Console.NeoGeo },
-                { "EAJJ", Console.NeoGeo },
+             /* { "EAJP", Console.NEO },
+                { "EAJJ", Console.NEO },
                 { "C9YE", Console.C64 },
                 { "C9YP", Console.C64 },
                 { "XAGJ", Console.MSX },
@@ -322,7 +322,7 @@ namespace FriishProduce
                     panel7.Show();
                     break;
 
-                case "NeoGeo":
+                case "NEO":
                     panel8.Show();
                     break;
 

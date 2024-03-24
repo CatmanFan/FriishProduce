@@ -148,7 +148,6 @@ namespace FriishProduce
             this.groupBox3.Controls.Add(this.n64002);
             this.groupBox3.Controls.Add(this.n64001);
             this.groupBox3.Controls.Add(this.n64000);
-            this.groupBox3.FlatStyle = System.Windows.Forms.FlatStyle.System;
             resources.ApplyResources(this.groupBox3, "groupBox3");
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.TabStop = false;
@@ -180,7 +179,6 @@ namespace FriishProduce
             // n64004
             // 
             this.n64004.Controls.Add(this.ROMCType);
-            this.n64004.FlatStyle = System.Windows.Forms.FlatStyle.System;
             resources.ApplyResources(this.n64004, "n64004");
             this.n64004.Name = "n64004";
             this.n64004.TabStop = false;
@@ -258,7 +256,6 @@ namespace FriishProduce
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.LanguageList);
-            this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
@@ -280,7 +277,6 @@ namespace FriishProduce
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.DefaultImageInterpolation);
-            this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.System;
             resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
@@ -302,7 +298,6 @@ namespace FriishProduce
             // 
             this.groupBox9.Controls.Add(this.toggleSwitchL1);
             this.groupBox9.Controls.Add(this.toggleSwitch1);
-            this.groupBox9.FlatStyle = System.Windows.Forms.FlatStyle.System;
             resources.ApplyResources(this.groupBox9, "groupBox9");
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.TabStop = false;
@@ -325,7 +320,6 @@ namespace FriishProduce
             // 
             this.groupBox8.Controls.Add(this.FStorage_SD);
             this.groupBox8.Controls.Add(this.FStorage_USB);
-            this.groupBox8.FlatStyle = System.Windows.Forms.FlatStyle.System;
             resources.ApplyResources(this.groupBox8, "groupBox8");
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.TabStop = false;
@@ -354,7 +348,6 @@ namespace FriishProduce
             // 
             this.groupBox4.Controls.Add(this.PaletteBanner);
             this.groupBox4.Controls.Add(this.PaletteList);
-            this.groupBox4.FlatStyle = System.Windows.Forms.FlatStyle.System;
             resources.ApplyResources(this.groupBox4, "groupBox4");
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.TabStop = false;
@@ -381,7 +374,6 @@ namespace FriishProduce
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.NGBios);
-            this.groupBox5.FlatStyle = System.Windows.Forms.FlatStyle.System;
             resources.ApplyResources(this.groupBox5, "groupBox5");
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.TabStop = false;
@@ -406,7 +398,6 @@ namespace FriishProduce
             this.groupBox7.Controls.Add(this.label2);
             this.groupBox7.Controls.Add(this.Sega6ButtonPad);
             this.groupBox7.Controls.Add(this.SegaRegion);
-            this.groupBox7.FlatStyle = System.Windows.Forms.FlatStyle.System;
             resources.ApplyResources(this.groupBox7, "groupBox7");
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.TabStop = false;
@@ -433,7 +424,6 @@ namespace FriishProduce
             // 
             this.groupBox6.Controls.Add(this.label1);
             this.groupBox6.Controls.Add(this.SegaBrightnessValue);
-            this.groupBox6.FlatStyle = System.Windows.Forms.FlatStyle.System;
             resources.ApplyResources(this.groupBox6, "groupBox6");
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.TabStop = false;
@@ -478,7 +468,6 @@ namespace FriishProduce
             this.groupBox10.Controls.Add(this.PCESpriteLimit);
             this.groupBox10.Controls.Add(this.PCEBgRaster);
             this.groupBox10.Controls.Add(this.PCEHideOverscan);
-            this.groupBox10.FlatStyle = System.Windows.Forms.FlatStyle.System;
             resources.ApplyResources(this.groupBox10, "groupBox10");
             this.groupBox10.Name = "groupBox10";
             this.groupBox10.TabStop = false;
@@ -524,7 +513,6 @@ namespace FriishProduce
             this.groupBox11.Controls.Add(this.toggleSwitchL3);
             this.groupBox11.Controls.Add(this.toggleSwitchL4);
             this.groupBox11.Controls.Add(this.toggleSwitch3);
-            this.groupBox11.FlatStyle = System.Windows.Forms.FlatStyle.System;
             resources.ApplyResources(this.groupBox11, "groupBox11");
             this.groupBox11.Name = "groupBox11";
             this.groupBox11.TabStop = false;

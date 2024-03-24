@@ -6,18 +6,18 @@ using static FriishProduce.Properties.Settings;
 
 namespace FriishProduce
 {
-    public partial class Options_VC_NeoGeo : ContentOptions
+    public partial class Options_VC_NEO : ContentOptions
     {
         public bool IsCD { get; set; }
         private string BIOSPath { get; set; }
 
-        public Options_VC_NeoGeo()
+        public Options_VC_NEO()
         {
             InitializeComponent();
 
             Settings = new Dictionary<string, string>
             {
-                { "BIOS", Default.Default_NeoGeo_BIOS },
+                { "BIOS", Default.Default_NEO_BIOS },
                 { "BIOSPath", null }
             };
 
@@ -43,7 +43,7 @@ namespace FriishProduce
                     BIOSPath = Settings["BIOSPath"];
                 }
 
-                else if (Settings["BIOS"] == "custom") Settings["BIOS"] = Default.Default_NeoGeo_BIOS;
+                else if (Settings["BIOS"] == "custom") Settings["BIOS"] = Default.Default_NEO_BIOS;
 
                 comboBox1.SelectedIndex = GetBIOSIndex(Settings["BIOS"]);
             }
@@ -101,7 +101,7 @@ namespace FriishProduce
                     if (ImportBIOS.ShowDialog() == DialogResult.OK)
                         BIOSPath = ImportBIOS.FileName;
 
-                    else comboBox1.SelectedIndex = GetBIOSIndex(Settings["BIOS"] == "custom" ? Default.Default_NeoGeo_BIOS : Settings["BIOS"]);
+                    else comboBox1.SelectedIndex = GetBIOSIndex(Settings["BIOS"] == "custom" ? Default.Default_NEO_BIOS : Settings["BIOS"]);
                 }
             }
 

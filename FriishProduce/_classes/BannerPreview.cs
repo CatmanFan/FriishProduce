@@ -265,7 +265,7 @@ namespace FriishProduce
                     target = 5;
                     break;
 
-                case Console.SMDGEN:
+                case Console.SMD:
                     target = 6;
                     break;
 
@@ -273,7 +273,7 @@ namespace FriishProduce
                     target = lang == 1 || lang == 2 ? 8 : 7;
                     break;
 
-                case Console.NeoGeo:
+                case Console.NEO:
                     target = 9;
                     break;
 
@@ -395,7 +395,7 @@ namespace FriishProduce
                         cName = "MASTER SYSTEM";
                         break;
 
-                    case Console.SMDGEN:
+                    case Console.SMD:
                         cName = lang > 0 ? "MEGA DRIVE" : "GENESIS";
                         break;
 
@@ -403,7 +403,7 @@ namespace FriishProduce
                         cName = lang == 1 || lang == 2 ? "PC ENGINE" : "TURBO GRAFX16";
                         break;
 
-                    case Console.NeoGeo:
+                    case Console.NEO:
                         cName = "NEO-GEO";
                         break;
 

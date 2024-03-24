@@ -64,7 +64,6 @@ namespace FriishProduce
             this.groupBox1.Controls.Add(this.n64002);
             this.groupBox1.Controls.Add(this.n64001);
             this.groupBox1.Controls.Add(this.n64000);
-            this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.groupBox1.Location = new System.Drawing.Point(12, 11);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(435, 110);
@@ -87,7 +86,6 @@ namespace FriishProduce
             // 
             this.n64003.AutoSize = true;
             this.n64003.CheckAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.n64003.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.n64003.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.n64003.Location = new System.Drawing.Point(10, 63);
             this.n64003.MaximumSize = new System.Drawing.Size(203, 27);
@@ -113,7 +111,6 @@ namespace FriishProduce
             // 
             this.n64002.AutoSize = true;
             this.n64002.CheckAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.n64002.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.n64002.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.n64002.Location = new System.Drawing.Point(10, 41);
             this.n64002.MaximumSize = new System.Drawing.Size(203, 27);
@@ -128,7 +125,6 @@ namespace FriishProduce
             // 
             this.n64001.AutoSize = true;
             this.n64001.CheckAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.n64001.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.n64001.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.n64001.Location = new System.Drawing.Point(10, 85);
             this.n64001.MaximumSize = new System.Drawing.Size(203, 27);
@@ -143,7 +139,6 @@ namespace FriishProduce
             // 
             this.n64000.AutoSize = true;
             this.n64000.CheckAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.n64000.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.n64000.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.n64000.Location = new System.Drawing.Point(10, 19);
             this.n64000.MaximumSize = new System.Drawing.Size(203, 27);
@@ -157,7 +152,6 @@ namespace FriishProduce
             // n64004
             // 
             this.n64004.Controls.Add(this.ROMCType);
-            this.n64004.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.n64004.Location = new System.Drawing.Point(12, 128);
             this.n64004.Name = "n64004";
             this.n64004.Size = new System.Drawing.Size(435, 50);
@@ -168,7 +162,6 @@ namespace FriishProduce
             // ROMCType
             // 
             this.ROMCType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ROMCType.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.ROMCType.FormattingEnabled = true;
             this.ROMCType.Items.AddRange(new object[] {
             "ROMC Type 0",

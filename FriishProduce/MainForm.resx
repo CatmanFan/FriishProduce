@@ -366,9 +366,6 @@
   <data name="&gt;&gt;MainPanel.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="Welcome_DoNotShow.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>System</value>
-  </data>
   <data name="Welcome_DoNotShow.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8.25pt</value>
   </data>

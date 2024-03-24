@@ -55,7 +55,6 @@ namespace FriishProduce
             this.groupBox1.Controls.Add(this.pictureBox1);
             this.groupBox1.Controls.Add(this.checkBox1);
             this.groupBox1.Controls.Add(this.PaletteList);
-            this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.groupBox1.Location = new System.Drawing.Point(12, 10);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(275, 270);
@@ -77,7 +76,6 @@ namespace FriishProduce
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.checkBox1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.checkBox1.Location = new System.Drawing.Point(9, 244);
             this.checkBox1.Name = "checkBox1";
@@ -89,7 +87,6 @@ namespace FriishProduce
             // PaletteList
             // 
             this.PaletteList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.PaletteList.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.PaletteList.FormattingEnabled = true;
             this.PaletteList.Items.AddRange(new object[] {
             "def"});

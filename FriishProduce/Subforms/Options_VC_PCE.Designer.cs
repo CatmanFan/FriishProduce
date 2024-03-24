@@ -129,7 +129,6 @@ namespace FriishProduce
             this.groupBox1.Controls.Add(this.toggleSwitchL2);
             this.groupBox1.Controls.Add(this.toggleSwitchL3);
             this.groupBox1.Controls.Add(this.toggleSwitch2);
-            this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.groupBox1.Location = new System.Drawing.Point(12, 32);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(270, 85);
@@ -140,7 +139,6 @@ namespace FriishProduce
             // checkBox4
             // 
             this.checkBox4.AutoSize = true;
-            this.checkBox4.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.checkBox4.Location = new System.Drawing.Point(12, 10);
             this.checkBox4.Name = "checkBox4";
             this.checkBox4.Size = new System.Drawing.Size(81, 18);
@@ -155,7 +153,6 @@ namespace FriishProduce
             this.groupBox2.Controls.Add(this.checkBox3);
             this.groupBox2.Controls.Add(this.checkBox2);
             this.groupBox2.Controls.Add(this.checkBox1);
-            this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.groupBox2.Location = new System.Drawing.Point(12, 125);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(270, 115);
@@ -187,7 +184,6 @@ namespace FriishProduce
             // checkBox3
             // 
             this.checkBox3.AutoSize = true;
-            this.checkBox3.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.checkBox3.Location = new System.Drawing.Point(10, 88);
             this.checkBox3.Name = "checkBox3";
             this.checkBox3.Size = new System.Drawing.Size(81, 18);
@@ -198,7 +194,6 @@ namespace FriishProduce
             // checkBox2
             // 
             this.checkBox2.AutoSize = true;
-            this.checkBox2.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.checkBox2.Location = new System.Drawing.Point(10, 67);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(77, 18);
@@ -209,7 +204,6 @@ namespace FriishProduce
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.checkBox1.Location = new System.Drawing.Point(10, 46);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(100, 18);

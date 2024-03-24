@@ -54,6 +54,7 @@ namespace FriishProduce.WiiVC
 
                     case "NA3":
                     case "NAE":
+                    case "NAP":
                     case "NAU":
                     case "NAY":
                     case "NAZ":
@@ -75,6 +76,8 @@ namespace FriishProduce.WiiVC
             ROM.MaxSize = Allocate ? 56623104 : 33554432;
             ROM.CheckSize();
 
+            if (MainContent.GetNodeIndex("romc") != -1) EmuType = 3;
+
             // -----------------------
             // Actually replace original ROM
             // -----------------------
@@ -87,11 +90,9 @@ namespace FriishProduce.WiiVC
                 case 3:
                     // Set title ID to NBDx to prevent crashing on Bomberman Hero
                     // ****************
-                    if (WAD.UpperTitleID.ToUpper().StartsWith("NBD"))
+                    if (WAD.UpperTitleID.ToUpper().StartsWith("NA3"))
                     {
-                        ROM.Bytes[0x3B] = 0x4E;
-                        ROM.Bytes[0x3C] = 0x42;
-                        ROM.Bytes[0x3D] = 0x44;
+                        Encoding.ASCII.GetBytes("NBD").CopyTo(ROM.Bytes, 0x3B);
                     }
 
                     // Temporary ROM file at working folder
@@ -213,22 +214,22 @@ namespace FriishProduce.WiiVC
             {
                 if (SettingParse(0))
                 {
-                    if (!ShadingFix()) failed.Add(Language.Get("n64000.Text", "Options_VC_N64"));
+                    if (!ShadingFix()) failed.Add(Language.Get("n64000.Text", typeof(Options_VC_N64).Name, true));
                 }
 
                 if (SettingParse(1) && (EmuType <= 1))
                 {
-                    if (!CrashesFix()) failed.Add(Language.Get("n64001.Text", "Options_VC_N64"));
+                    if (!CrashesFix()) failed.Add(Language.Get("n64001.Text", typeof(Options_VC_N64).Name, true));
                 }
 
                 if (SettingParse(2))
                 {
-                    if (!ExtendedRAM()) failed.Add(Language.Get("n64002.Text", "Options_VC_N64"));
+                    if (!ExtendedRAM()) failed.Add(Language.Get("n64002.Text", typeof(Options_VC_N64).Name, true));
                 }
 
                 if (SettingParse(3) && (EmuType <= 1))
                 {
-                    if (!AllocateROM()) { failed.Add(Language.Get("n64003.Text", "Options_VC_N64")); Allocate = false; }
+                    if (!AllocateROM()) { failed.Add(Language.Get("n64003.Text", typeof(Options_VC_N64).Name, true)); Allocate = false; }
                 }
 
                 if (failed.Count > 0)
