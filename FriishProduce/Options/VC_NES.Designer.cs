@@ -37,7 +37,7 @@ namespace FriishProduce.Options {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public string palette_use_on_banner {
             get {
                 return ((string)(this["palette_use_on_banner"]));

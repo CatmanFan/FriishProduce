@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
+using FriishProduce.Options;
 using static FriishProduce.Properties.Settings;
 
 namespace FriishProduce
@@ -16,6 +17,17 @@ namespace FriishProduce
         {
             InitializeComponent();
             isDirty = false;
+        }
+
+        private void SaveAll()
+        {
+            Default.Save();
+            FORWARDER.Default.Save();
+            VC_NES.Default.Save();
+            VC_N64.Default.Save();
+            VC_SEGA.Default.Save();
+            VC_PCE.Default.Save();
+            VC_NEO.Default.Save();
         }
 
         public void RefreshForm()
@@ -104,35 +116,35 @@ namespace FriishProduce
 
             // -----------------------------
 
-            FStorage_SD.Checked = Default.Default_Forwarders_FilesStorage.ToLower() == "sd";
-            toggleSwitch1.Checked = Default.Default_Forwarders_Mode.ToLower() == "vwii";
+            FStorage_SD.Checked = FORWARDER.Default.root_storage_device.ToLower() == "sd";
+            toggleSwitch1.Checked = FORWARDER.Default.nand_loader.ToLower() == "vwii";
             FStorage_USB.Checked = !FStorage_SD.Checked;
 
-            PaletteList.SelectedIndex = Default.Default_NES_Palette;
-            PaletteBanner.Checked = Default.Default_NES_UsePaletteForBanner;
+            PaletteList.SelectedIndex = int.Parse(VC_NES.Default.palette);
+            PaletteBanner.Checked = bool.Parse(VC_NES.Default.palette_use_on_banner);
 
-            n64000.Checked = Default.Default_N64_FixBrightness;
-            n64001.Checked = Default.Default_N64_FixCrashes;
-            n64002.Checked = Default.Default_N64_ExtendedRAM;
-            n64003.Checked = Default.Default_N64_AllocateROM;
-            ROMCType.SelectedIndex = Default.Default_N64_ROMC0 ? 0 : 1;
+            n64000.Checked = bool.Parse(VC_N64.Default.patch_fixbrightness);
+            n64001.Checked = bool.Parse(VC_N64.Default.patch_fixcrashes);
+            n64002.Checked = bool.Parse(VC_N64.Default.patch_expandedram);
+            n64003.Checked = bool.Parse(VC_N64.Default.patch_autosizerom);
+            ROMCType.SelectedIndex = bool.Parse(VC_N64.Default.romc_type0) ? 0 : 1;
 
-            label1.Text = Default.Default_SEGA_Brightness;
-            SegaBrightnessValue.Value = int.Parse(Default.Default_SEGA_Brightness);
-            SegaSRAM.Checked = Default.Default_SEGA_SRAM == "1";
-            Sega6ButtonPad.Checked = Default.Default_SEGA_6B == "1";
-            SegaRegion.SelectedIndex = Default.Default_SEGA_Region.ToLower() == "jp" ? 0 : Default.Default_SEGA_Region.ToLower() == "eu" ? 2 : 1;
+            label1.Text = VC_SEGA.Default.console_brightness;
+            SegaBrightnessValue.Value = int.Parse(label1.Text);
+            SegaSRAM.Checked = VC_SEGA.Default.save_sram == "1";
+            Sega6ButtonPad.Checked = VC_SEGA.Default.dev_mdpad_enable_6b == "1";
+            SegaRegion.SelectedIndex = VC_SEGA.Default.country == "jp" ? 0 : VC_SEGA.Default.country == "eu" ? 2 : 1;
 
-            PCEUseSRAM.Checked = Default.Default_PCE_BackupRAM == "1";
-            toggleSwitch2.Checked = Default.Default_PCE_Europe == "1";
-            toggleSwitch3.Checked = Default.Default_PCE_SuperGrafx == "1";
-            toggleSwitch4.Checked = Default.Default_PCE_Pad == "6";
-            PCEYOffset.Value = int.Parse(Default.Default_PCE_YOffset);
-            PCEHideOverscan.Checked = Default.Default_PCE_HideOverscan == "1";
-            PCEBgRaster.Checked = Default.Default_PCE_BGRaster == "1";
-            PCESpriteLimit.Checked = Default.Default_PCE_SpriteLimit == "1";
+            PCEUseSRAM.Checked = VC_PCE.Default.BACKUPRAM == "1";
+            toggleSwitch2.Checked = VC_PCE.Default.EUROPE == "1";
+            toggleSwitch3.Checked = VC_PCE.Default.SGENABLE == "1";
+            toggleSwitch4.Checked = VC_PCE.Default.PADBUTTON == "6";
+            PCEYOffset.Value = int.Parse(VC_PCE.Default.YOFFSET);
+            PCEHideOverscan.Checked = VC_PCE.Default.HIDEOVERSCAN == "1";
+            PCEBgRaster.Checked = VC_PCE.Default.RASTER == "1";
+            PCESpriteLimit.Checked = VC_PCE.Default.SPRLINE == "1";
 
-            switch (Default.Default_NEO_BIOS.ToLower())
+            switch (VC_NEO.Default.bios.ToLower())
             {
                 case "vc1":
                     NGBios.SelectedIndex = 0;
@@ -173,44 +185,44 @@ namespace FriishProduce
             Default.ImageInterpolation = DefaultImageInterpolation.SelectedIndex;
             Default.AutoLibRetro = AutoLibRetro.Checked;
 
-            Default.Default_Forwarders_FilesStorage = FStorage_SD.Checked ? "SD" : "USB";
-            Default.Default_Forwarders_Mode = toggleSwitch1.Checked ? "vWii" : "Wii";
+            FORWARDER.Default.root_storage_device = FStorage_SD.Checked ? "SD" : "USB";
+            FORWARDER.Default.nand_loader = toggleSwitch1.Checked ? "vWii" : "Wii";
 
-            Default.Default_NES_Palette = PaletteList.SelectedIndex;
-            Default.Default_NES_UsePaletteForBanner = PaletteBanner.Checked;
+            VC_NES.Default.palette = PaletteList.SelectedIndex.ToString();
+            VC_NES.Default.palette_use_on_banner = PaletteBanner.Checked.ToString();
 
-            Default.Default_N64_FixBrightness = n64000.Checked;
-            Default.Default_N64_FixCrashes = n64001.Checked;
-            Default.Default_N64_ExtendedRAM = n64002.Checked;
-            Default.Default_N64_AllocateROM = n64003.Checked;
-            Default.Default_N64_ROMC0 = ROMCType.SelectedIndex == 0;
+            VC_N64.Default.patch_fixbrightness = n64000.Checked.ToString();
+            VC_N64.Default.patch_fixcrashes = n64001.Checked.ToString();
+            VC_N64.Default.patch_expandedram = n64002.Checked.ToString();
+            VC_N64.Default.patch_autosizerom = n64003.Checked.ToString();
+            VC_N64.Default.romc_type0 = (ROMCType.SelectedIndex == 0).ToString();
 
-            Default.Default_SEGA_Brightness = label1.Text;
-            Default.Default_SEGA_SRAM = SegaSRAM.Checked ? "1" : null;
-            Default.Default_SEGA_6B = Sega6ButtonPad.Checked ? "1" : null;
-            Default.Default_SEGA_Region = SegaRegion.SelectedIndex == 0 ? "jp" : SegaRegion.SelectedIndex == 2 ? "eu" : "us";
+            VC_SEGA.Default.console_brightness = label1.Text;
+            VC_SEGA.Default.save_sram = SegaSRAM.Checked ? "1" : "0";
+            VC_SEGA.Default.dev_mdpad_enable_6b = Sega6ButtonPad.Checked ? "1" : "0";
+            VC_SEGA.Default.country = SegaRegion.SelectedIndex == 0 ? "jp" : SegaRegion.SelectedIndex == 2 ? "eu" : "us";
 
-            Default.Default_PCE_BackupRAM = PCEUseSRAM.Checked ? "1" : "0";
-            Default.Default_PCE_Europe = toggleSwitch2.Checked ? "1" : "0";
-            Default.Default_PCE_SuperGrafx = toggleSwitch3.Checked ? "1" : "0";
-            Default.Default_PCE_Pad = toggleSwitch4.Checked ? "6" : "2";
-            Default.Default_PCE_YOffset = PCEYOffset.Value.ToString();
-            Default.Default_PCE_HideOverscan = PCEHideOverscan.Checked ? "1" : "0";
-            Default.Default_PCE_BGRaster = PCEBgRaster.Checked ? "1" : "0";
-            Default.Default_PCE_SpriteLimit = PCESpriteLimit.Checked ? "1" : "0";
+            VC_PCE.Default.BACKUPRAM = PCEUseSRAM.Checked ? "1" : "0";
+            VC_PCE.Default.EUROPE = toggleSwitch2.Checked ? "1" : "0";
+            VC_PCE.Default.SGENABLE = toggleSwitch3.Checked ? "1" : "0";
+            VC_PCE.Default.PADBUTTON = toggleSwitch4.Checked ? "6" : "2";
+            VC_PCE.Default.YOFFSET = PCEYOffset.Value.ToString();
+            VC_PCE.Default.HIDEOVERSCAN = PCEHideOverscan.Checked ? "1" : "0";
+            VC_PCE.Default.RASTER = PCEBgRaster.Checked ? "1" : "0";
+            VC_PCE.Default.SPRLINE = PCESpriteLimit.Checked ? "1" : "0";
 
             switch (NGBios.SelectedIndex)
             {
                 case 0:
-                    Default.Default_NEO_BIOS = "VC1";
+                    VC_NEO.Default.bios = "VC1";
                     break;
 
                 case 1:
-                    Default.Default_NEO_BIOS = "VC2";
+                    VC_NEO.Default.bios = "VC2";
                     break;
 
                 case 2:
-                    Default.Default_NEO_BIOS = "VC3";
+                    VC_NEO.Default.bios = "VC3";
                     break;
             }
 
@@ -229,13 +241,13 @@ namespace FriishProduce
             {
                 if (MessageBox.Show(Language.Get("Message.000"), ProductName, MessageBoxButtons.YesNo) == MessageBox.Result.Yes)
                 {
-                    Default.Save();
+                    SaveAll();
                     Application.Restart();
                 }
             }
             else
             {
-                Default.Save();
+                SaveAll();
                 DialogResult = DialogResult.OK;
             }
         }

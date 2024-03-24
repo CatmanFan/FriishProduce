@@ -51,7 +51,8 @@ See **[here](https://github.com/CatmanFan/FriishProduce/wiki/Translation)** for 
 - [X] Update this readme
 * ***Planned for v1.1:***
 - [ ] Flash emulator options list
-- [ ] Reorganize content options into their own setting files
+- [X] Reorganize content options into their own setting files
+- [ ] Potentially reorganize consoles into their own folders?
 - [ ] Clean forms code
 - [ ] Clean languages
 - [ ] Separate classes

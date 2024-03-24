@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Linq;
 using System.Windows.Forms;
-using static FriishProduce.Properties.Settings;
+using FriishProduce.Options;
 
 namespace FriishProduce
 {
@@ -18,8 +18,8 @@ namespace FriishProduce
 
             Settings = new Dictionary<string, string>
             {
-                { "palette", Default.Default_NES_Palette.ToString() },
-                { "use_tImg", Default.Default_NES_UsePaletteForBanner ? "1" : "0" }
+                { "palette", VC_NES.Default.palette },
+                { "use_tImg", VC_NES.Default.palette_use_on_banner }
             };
 
             // Cosmetic
@@ -41,7 +41,7 @@ namespace FriishProduce
             if (Settings != null)
             {
                 PaletteList.SelectedIndex = int.Parse(Settings["palette"]);
-                checkBox1.Checked = Settings["use_tImg"] == "1";
+                checkBox1.Checked = bool.Parse(Settings["use_tImg"]);
             }
             // *******
         }
@@ -49,7 +49,7 @@ namespace FriishProduce
         protected override void SaveOptions()
         {
             Settings["palette"] = PaletteList.SelectedIndex.ToString();
-            Settings["use_tImg"] = checkBox1.Checked ? "1" : "0";
+            Settings["use_tImg"] = checkBox1.Checked.ToString();
         }
 
         // ---------------------------------------------------------------------------------------------------------------

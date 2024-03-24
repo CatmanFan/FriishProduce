@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
-using static FriishProduce.Properties.Settings;
+using FriishProduce.Options;
 
 namespace FriishProduce
 {
@@ -17,7 +17,7 @@ namespace FriishProduce
 
             Settings = new Dictionary<string, string>
             {
-                { "BIOS", Default.Default_NEO_BIOS },
+                { "BIOS", VC_NEO.Default.bios },
                 { "BIOSPath", null }
             };
 
@@ -43,7 +43,7 @@ namespace FriishProduce
                     BIOSPath = Settings["BIOSPath"];
                 }
 
-                else if (Settings["BIOS"] == "custom") Settings["BIOS"] = Default.Default_NEO_BIOS;
+                else if (Settings["BIOS"] == "custom") Settings["BIOS"] = VC_NEO.Default.bios;
 
                 comboBox1.SelectedIndex = GetBIOSIndex(Settings["BIOS"]);
             }
@@ -101,7 +101,7 @@ namespace FriishProduce
                     if (ImportBIOS.ShowDialog() == DialogResult.OK)
                         BIOSPath = ImportBIOS.FileName;
 
-                    else comboBox1.SelectedIndex = GetBIOSIndex(Settings["BIOS"] == "custom" ? Default.Default_NEO_BIOS : Settings["BIOS"]);
+                    else comboBox1.SelectedIndex = GetBIOSIndex(Settings["BIOS"] == "custom" ? VC_NEO.Default.bios : Settings["BIOS"]);
                 }
             }
 

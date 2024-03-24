@@ -80,9 +80,9 @@ namespace FriishProduce
             imageintpl.Items.Add(Language.Get("ByDefault"));
             imageintpl.Items.AddRange(Language.GetArray("List.ImageInterpolation"));
             imageintpl.SelectedIndex = Properties.Settings.Default.ImageInterpolation;
-            FStorage_USB.Checked = Properties.Settings.Default.Default_Forwarders_FilesStorage.ToLower().Contains("usb");
+            FStorage_USB.Checked = Options.FORWARDER.Default.root_storage_device.ToLower().Contains("usb");
             FStorage_SD.Checked = !FStorage_USB.Checked;
-            toggleSwitch1.Checked = Properties.Settings.Default.Default_Forwarders_Mode.ToLower().Contains("vwii");
+            toggleSwitch1.Checked = Options.FORWARDER.Default.nand_loader.ToLower().Contains("vwii");
 
             // Regions lists
             RegionsList.Items.Clear();
@@ -587,7 +587,10 @@ namespace FriishProduce
                         break;
 
                     case Console.NES:
-                        if (InjectorsList.SelectedIndex == 0 && src.Width == 256 && (src.Height == 224 || src.Height == 240) && CO.Settings != null && CO.Settings["use_tImg"] == "1")
+                        if (InjectorsList.SelectedIndex == 0
+                            && src.Width == 256 && (src.Height == 224 || src.Height == 240)
+                            && CO.Settings != null
+                            && bool.Parse(CO.Settings["use_tImg"]))
                         {
                             var CO_NES = CO as Options_VC_NES;
 

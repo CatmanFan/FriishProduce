@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using static FriishProduce.Properties.Settings;
+using FriishProduce.Options;
 
 namespace FriishProduce
 {
@@ -14,18 +14,18 @@ namespace FriishProduce
 
             Settings = new Dictionary<string, string>
             {
-                { "BACKUPRAM", Default.Default_PCE_BackupRAM },
-                { "PADBUTTON", Default.Default_PCE_Pad },
+                { "BACKUPRAM", VC_PCE.Default.BACKUPRAM },
+                { "PADBUTTON", VC_PCE.Default.PADBUTTON },
                 { "CHASEHQ", "0" },
-                { "EUROPE", Default.Default_PCE_Europe },
-                { "SGENABLE", Default.Default_PCE_SuperGrafx },
-                { "HIDEOVERSCAN", Default.Default_PCE_HideOverscan },
-                { "YOFFSET", Default.Default_PCE_YOffset },
+                { "EUROPE", VC_PCE.Default.EUROPE },
+                { "SGENABLE", VC_PCE.Default.SGENABLE },
+                { "HIDEOVERSCAN", VC_PCE.Default.HIDEOVERSCAN },
+                { "YOFFSET", VC_PCE.Default.YOFFSET },
                 { "MULTITAP", "1" },
                 { "HDS", "0" },
-                { "RASTER", Default.Default_PCE_BGRaster },
+                { "RASTER", VC_PCE.Default.RASTER },
                 { "POPULUS", "0" },
-                { "SPRLINE", Default.Default_PCE_SpriteLimit },
+                { "SPRLINE", VC_PCE.Default.SPRLINE },
                 { "NOFPA", "1" },
                 { "PAD5", "1" },
             };

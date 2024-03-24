@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using static FriishProduce.Properties.Settings;
+using FriishProduce.Options;
 
 namespace FriishProduce
 {
@@ -13,11 +13,11 @@ namespace FriishProduce
 
             Settings = new Dictionary<string, string>
             {
-                { "brightness", Default.Default_N64_FixBrightness.ToString() },
-                { "crash",  Default.Default_N64_FixCrashes.ToString() },
-                { "expansion",  Default.Default_N64_ExtendedRAM.ToString() },
-                { "rom_autosize",  Default.Default_N64_AllocateROM.ToString() },
-                { "romc_0",  Default.Default_N64_ROMC0.ToString() }
+                { "brightness", VC_N64.Default.patch_fixbrightness },
+                { "crash",  VC_N64.Default.patch_fixcrashes },
+                { "expansion",  VC_N64.Default.patch_expandedram },
+                { "rom_autosize",  VC_N64.Default.patch_autosizerom },
+                { "romc_0",  VC_N64.Default.romc_type0 }
             };
 
             // Cosmetic

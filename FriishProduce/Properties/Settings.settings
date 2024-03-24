@@ -11,21 +11,6 @@
     <Setting Name="AutoLibRetro" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="Default_N64_FixBrightness" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="Default_N64_FixCrashes" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="Default_N64_ExtendedRAM" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="Default_N64_AllocateROM" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="Default_N64_ROMC0" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
     <Setting Name="DoNotShow_000" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
@@ -34,57 +19,6 @@
     </Setting>
     <Setting Name="DoNotShow_Welcome" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="Default_Forwarders_FilesStorage" Type="System.String" Scope="User">
-      <Value Profile="(Default)">SD</Value>
-    </Setting>
-    <Setting Name="Default_Forwarders_Mode" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Wii</Value>
-    </Setting>
-    <Setting Name="Default_NEO_BIOS" Type="System.String" Scope="User">
-      <Value Profile="(Default)">VC2</Value>
-    </Setting>
-    <Setting Name="Default_SEGA_6B" Type="System.String" Scope="User">
-      <Value Profile="(Default)">1</Value>
-    </Setting>
-    <Setting Name="Default_NES_Palette" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">0</Value>
-    </Setting>
-    <Setting Name="Default_NES_UsePaletteForBanner" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="Default_SEGA_SRAM" Type="System.String" Scope="User">
-      <Value Profile="(Default)">1</Value>
-    </Setting>
-    <Setting Name="Default_SEGA_Brightness" Type="System.String" Scope="User">
-      <Value Profile="(Default)">87</Value>
-    </Setting>
-    <Setting Name="Default_SEGA_Region" Type="System.String" Scope="User">
-      <Value Profile="(Default)">us</Value>
-    </Setting>
-    <Setting Name="Default_PCE_Europe" Type="System.String" Scope="User">
-      <Value Profile="(Default)">0</Value>
-    </Setting>
-    <Setting Name="Default_PCE_SuperGrafx" Type="System.String" Scope="User">
-      <Value Profile="(Default)">0</Value>
-    </Setting>
-    <Setting Name="Default_PCE_Pad" Type="System.String" Scope="User">
-      <Value Profile="(Default)">2</Value>
-    </Setting>
-    <Setting Name="Default_PCE_YOffset" Type="System.String" Scope="User">
-      <Value Profile="(Default)">0</Value>
-    </Setting>
-    <Setting Name="Default_PCE_SpriteLimit" Type="System.String" Scope="User">
-      <Value Profile="(Default)">0</Value>
-    </Setting>
-    <Setting Name="Default_PCE_HideOverscan" Type="System.String" Scope="User">
-      <Value Profile="(Default)">0</Value>
-    </Setting>
-    <Setting Name="Default_PCE_BGRaster" Type="System.String" Scope="User">
-      <Value Profile="(Default)">0</Value>
-    </Setting>
-    <Setting Name="Default_PCE_BackupRAM" Type="System.String" Scope="User">
-      <Value Profile="(Default)">0</Value>
     </Setting>
   </Settings>
 </SettingsFile>

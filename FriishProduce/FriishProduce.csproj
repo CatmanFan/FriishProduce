@@ -139,6 +139,36 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Options\FORWARDER.Designer.cs">
+      <DependentUpon>FORWARDER.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Options\VC_N64.Designer.cs">
+      <DependentUpon>VC_N64.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Options\VC_NEO.Designer.cs">
+      <DependentUpon>VC_NEO.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Options\VC_NES.Designer.cs">
+      <DependentUpon>VC_NES.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Options\VC_PCE.Designer.cs">
+      <DependentUpon>VC_PCE.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Options\VC_SEGA.Designer.cs">
+      <DependentUpon>VC_SEGA.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -329,6 +359,30 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Options\FORWARDER.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>FORWARDER.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Options\VC_N64.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>VC_N64.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Options\VC_NEO.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>VC_NEO.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Options\VC_NES.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>VC_NES.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Options\VC_PCE.settings">
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
+      <LastGenOutput>VC_PCE.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Options\VC_SEGA.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>VC_SEGA.Designer.cs</LastGenOutput>
+    </None>
     <None Include="packages.config" />
     <None Include="packages\Newtonsoft.Json.13.0.3\.signature.p7s" />
     <None Include="packages\RibbonWinForms.5.0.1.1\.signature.p7s" />
