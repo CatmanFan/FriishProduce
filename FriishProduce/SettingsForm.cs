@@ -131,7 +131,7 @@ namespace FriishProduce
 
             // -----------------------------
 
-            groupBox14.Text = Language.Get("groupBox1", typeof(Options_Flash).Name, true);
+            groupBox14.Text = Language.Get("SaveData");
             groupBox12.Text = Language.Get("groupBox3", typeof(Options_Flash).Name, true);
             groupBox13.Text = Language.Get("groupBox2", typeof(Options_Flash).Name, true);
             FLASH_savedata.Text = Language.Get("checkBox1", typeof(Options_Flash).Name, true);

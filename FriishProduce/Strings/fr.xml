@@ -6,11 +6,9 @@
 		<Flash>Adobe Flash</Flash>
 		<MSX>Microsoft MSX / MSX2</MSX>
 		<N64>Nintendo 64</N64>
-		<NeoGeo>SNK Neo-Geo</NeoGeo>
 		<NES>NES / Famicom</NES>
 		<PCE>PC Engine / TurboGrafx-16</PCE>
 		<PCECD>PC Engine CD / TurboGrafx-16 CD</PCECD>
-		<SMDGEN>Mega Drive / Genesis</SMDGEN>
 		<SMS>Master System</SMS>
 		<SNES>SNES / Super Famicom</SNES>
 	</global>
@@ -46,7 +44,7 @@
 		<Filter.ROM.N64>Fichiers ROM de Nintendo 64 (*.n64, *.v64, *.z64)|*.n64;*.v64;*.z64</Filter.ROM.N64>
 		<Filter.ROM.NES>Fichiers ROM de Nintendo (*.nes)|*.nes</Filter.ROM.NES>
 		<Filter.ROM.PCE>Fichiers ROM de PC Engine / TurboGrafx-16 (*.pce)|*.pce</Filter.ROM.PCE>
-		<Filter.ROM.SMDGEN>Fichiers ROM de Sega Mega Drive / Genesis (*.bin, *.gen, *.md)|*.bin;*.gen;*.md</Filter.ROM.SMDGEN>
+		<Filter.ROM.SMD>Fichiers ROM de Sega Mega Drive / Genesis (*.bin, *.gen, *.md)|*.bin;*.gen;*.md</Filter.ROM.SMD>
 		<Filter.ROM.SMS>Fichiers ROM de Sega Master System (*.sms)|*.sms</Filter.ROM.SMS>
 		<Filter.ROM.SNES>Fichiers ROM de Super Nintendo (*.sfc, *.smc)|*.sfc;*.smc</Filter.ROM.SNES>
 		<Filter.SWF>Fichiers *.swf (*.swf)|*.swf</Filter.SWF>
@@ -71,6 +69,7 @@
 		<Region.U>États-Unis / Canada</Region.U>
 		<Region.E>Europe</Region.E>
 		<Region.F>Déverrouillée</Region.F>
+		<SaveData>Données de sauvegarde</SaveData>
 		<Settings>Paramètres</Settings>
 		<System>Système</System>
 		<Unknown>Inconnu(e)</Unknown>
@@ -84,10 +83,10 @@
 		<groupBox4.Text>Métadonnées de la chaîne</groupBox4.Text>
 		<groupBox5.Text>Détails du banner</groupBox5.Text>
 		<groupBox6.Text>Image</groupBox6.Text>
-		<groupBox7.Text>Données de sauvegarde</groupBox7.Text>
 		<groupBox8.Text>Périphérique de stockage racine :</groupBox8.Text>
 		<groupBox9.Text>Version Wii cible :</groupBox9.Text>
 		<ImportPatch.Text>Importer un patch</ImportPatch.Text>
+		<LinkSaveData.Text>Lier automatiquement</LinkSaveData.Text>
 		<label1.Text>Nom du fichier : {0}</label1.Text>
 		<label10.Text>Joueurs :</label10.Text>
 		<label12.Text>Méthode d'interpolation :</label12.Text>
@@ -118,9 +117,13 @@
 		<Welcome.Text>Bienvenue sur FriishProduce !\n\nAvant de commencer, veuillez vous familiariser avec ce programme en lisant le tutoriel (anglais).</Welcome.Text>
 	</form>
 	<form name="Options_Flash">
+		<checkBox1.Text>Activer</checkBox1.Text>
+		<checkBox3.Text>Souris</checkBox3.Text>
+		<checkBox4.Text>Clavier QWERTY</checkBox4.Text>
 		<comboBox1.Items>Elevé</comboBox1.Items>
 		<comboBox1.Items1>Moyen</comboBox1.Items1>
 		<comboBox1.Items2>Bas</comboBox1.Items2>
+		<groupBox2.Text>Qualité</groupBox2.Text>
 	</form>
 	<form name="Options_VC_N64">
 		<groupBox1.Text>Patchs</groupBox1.Text>
@@ -133,11 +136,10 @@
 		<ROMCType.Items1>Type 1 (ROMC)</ROMCType.Items1>
 		<x009.Text>Veuillez noter que ces options ne peuvent pas fonctionner pour toutes les chaînes de Console virtuelle.</x009.Text>
 	</form>
-	<form name="Options_VC_NeoGeo">
-		<comboBox1.Items>Utiliser un fichier externe</comboBox1.Items>
-		<comboBox1.Items1>Console virtuelle (1ère génération)</comboBox1.Items1>
-		<comboBox1.Items2>Console virtuelle (2ème génération)</comboBox1.Items2>
-		<comboBox1.Items3>Console virtuelle (3ème génération)</comboBox1.Items3>
+	<form name="Options_VC_NEO">
+		<comboBox1.Items1>Console virtuelle (1ère édition)</comboBox1.Items1>
+		<comboBox1.Items2>Console virtuelle (2ème édition)</comboBox1.Items2>
+		<comboBox1.Items3>Console virtuelle (3ème édition)</comboBox1.Items3>
 	</form>
 	<form name="Options_VC_NES">
 		<checkBox1.Text>Utiliser cette palette pour les images d'aperçu</checkBox1.Text>
@@ -168,6 +170,6 @@
 		<LanguageList.Items>Système</LanguageList.Items>
 		<Node0.Text>Application</Node0.Text>
 		<Node1.Text>Réglages par défaut</Node1.Text>
-		<Sega6ButtonPad.Text>Utiliser la manette 6 boutons ({0})</Sega6ButtonPad.Text>
+		<SEGA_dev_mdpad_enable_6b.Text>Utilisant la manette 6 boutons ({0})</SEGA_dev_mdpad_enable_6b.Text>
 	</form>
 </language>

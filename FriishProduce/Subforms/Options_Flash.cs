@@ -30,6 +30,7 @@ namespace FriishProduce
             if (!DesignMode)
             {
                 Language.Localize(this);
+                groupBox1.Text = Language.Get("SaveData");
             }
         }
 

@@ -64,6 +64,7 @@ namespace FriishProduce
             CustomManual.Text = Language.Get("CustomManual");
             BrowsePatch.Filter = Language.Get("Filter.Patch");
             label16.Text = Language.Get("NotSupported");
+            groupBox7.Text = Language.Get("SaveData");
 
             // Change title text to untitled string
             Untitled = string.Format(Language.Get("Untitled"), Language.Get(Enum.GetName(typeof(Console), Console), "Platforms"));

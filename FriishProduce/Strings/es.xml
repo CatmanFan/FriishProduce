@@ -38,7 +38,7 @@
 		<Filter.ROM.N64>Archivos ROM de Nintendo 64 (*.n64, *.v64, *.z64)|*.n64;*.v64;*.z64</Filter.ROM.N64>
 		<Filter.ROM.NES>Archivos ROM de Nintendo NES (*.nes)|*.nes</Filter.ROM.NES>
 		<Filter.ROM.PCE>Archivos ROM de TurboGrafx-16/PC Engine (*.pce)|*.pce</Filter.ROM.PCE>
-		<Filter.ROM.SMDGEN>Archivos ROM de Mega Drive/Genesis (*.bin, *.gen, *.md)|*.bin;*.gen;*.md</Filter.ROM.SMDGEN>
+		<Filter.ROM.SMD>Archivos ROM de Mega Drive/Genesis (*.bin, *.gen, *.md)|*.bin;*.gen;*.md</Filter.ROM.SMD>
 		<Filter.ROM.SMS>Archivos ROM de Master System (*.sms)|*.sms</Filter.ROM.SMS>
 		<Filter.ROM.SNES>Archivos ROM de Super Nintendo (*.sfc, *.smc)|*.sfc;*.smc</Filter.ROM.SNES>
 		<Filter.SWF>Archivos SWF (*.swf)|*.swf</Filter.SWF>
@@ -61,6 +61,7 @@
 		<Region.U>América</Region.U>
 		<Region.E>Europa/Australia</Region.E>
 		<Region.F>Sin bloqueo</Region.F>
+		<SaveData>Datos guardados</SaveData>
 		<Settings>Opciones</Settings>
 		<System>Sistema</System>
 		<Unknown>Desconocido</Unknown>
@@ -74,7 +75,6 @@
 		<groupBox4.Text>Cabecera del canal</groupBox4.Text>
 		<groupBox5.Text>Detalles del banner</groupBox5.Text>
 		<groupBox6.Text>Imagen</groupBox6.Text>
-		<groupBox7.Text>Datos guardados</groupBox7.Text>
 		<groupBox8.Text>Dispositivo de almacenamiento</groupBox8.Text>
 		<groupBox9.Text>Tipo de consola Wii</groupBox9.Text>
 		<ImportPatch.Text>Importar parche</ImportPatch.Text>
