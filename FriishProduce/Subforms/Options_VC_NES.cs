@@ -16,7 +16,7 @@ namespace FriishProduce
         {
             InitializeComponent();
 
-            Settings = new Dictionary<string, string>
+            Options = new Dictionary<string, string>
             {
                 { "palette", VC_NES.Default.palette },
                 { "use_tImg", VC_NES.Default.palette_use_on_banner }
@@ -38,18 +38,18 @@ namespace FriishProduce
         {
             // Form control
             // *******
-            if (Settings != null)
+            if (Options != null)
             {
-                PaletteList.SelectedIndex = int.Parse(Settings["palette"]);
-                checkBox1.Checked = bool.Parse(Settings["use_tImg"]);
+                PaletteList.SelectedIndex = int.Parse(Options["palette"]);
+                checkBox1.Checked = bool.Parse(Options["use_tImg"]);
             }
             // *******
         }
 
         protected override void SaveOptions()
         {
-            Settings["palette"] = PaletteList.SelectedIndex.ToString();
-            Settings["use_tImg"] = checkBox1.Checked.ToString();
+            Options["palette"] = PaletteList.SelectedIndex.ToString();
+            Options["use_tImg"] = checkBox1.Checked.ToString();
         }
 
         // ---------------------------------------------------------------------------------------------------------------

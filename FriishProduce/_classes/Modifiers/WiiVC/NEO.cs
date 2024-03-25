@@ -23,6 +23,7 @@ namespace FriishProduce.WiiVC
         {
             NeedsMainDOL = false;
             NeedsManualLoaded = true;
+            SaveTextEncoding = Encoding.BigEndianUnicode;
 
             // Game.bin may be stored on either 6.app, 5.app or 7.app.
             // In all cases the manual files are stored also on 00000005.app.
@@ -218,7 +219,7 @@ namespace FriishProduce.WiiVC
             }
 
         AutoBIOS:
-            var targetBIOS = Properties.Settings.Default.Default_NEO_BIOS;
+            var targetBIOS = Options.VC_NEO.Default.bios;
             if (!noBIOS && Settings["BIOS"].ToLower() != "custom") targetBIOS = Settings["BIOS"];
 
             BIOS.Clear();
@@ -315,19 +316,19 @@ namespace FriishProduce.WiiVC
             // TEXT
             // -----------------------
 
+            lines = ConvertSaveText(lines);
+
             byte[] contents = target[0] == 0 ? MainContent.Data[target[1]] : ManualContent.Data[target[1]];
 
-            // Text addition format: UTF-16 (Big Endian)
-            // ****************
             for (int i = 32; i < 96; i++)
             {
-                try { contents[i] = Encoding.BigEndianUnicode.GetBytes(lines[0])[i - 32]; }
+                try { contents[i] = SaveTextEncoding.GetBytes(lines[0])[i - 32]; }
                 catch { contents[i] = 0x00; }
             }
 
             for (int i = 96; i < 160; i++)
             {
-                try { contents[i] = Encoding.BigEndianUnicode.GetBytes(lines[1])[i - 96]; }
+                try { contents[i] = SaveTextEncoding.GetBytes(lines[1])[i - 96]; }
                 catch { contents[i] = 0x00; }
             }
 

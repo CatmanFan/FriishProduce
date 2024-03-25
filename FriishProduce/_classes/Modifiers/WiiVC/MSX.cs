@@ -12,6 +12,7 @@ namespace FriishProduce.WiiVC
             NeedsMainDOL = false;
             MainContentIndex = 5;
             NeedsManualLoaded = true;
+            SaveTextEncoding = Encoding.BigEndianUnicode;
 
             base.Load();
         }
@@ -49,22 +50,22 @@ namespace FriishProduce.WiiVC
             // TEXT
             // -----------------------
 
+            lines = ConvertSaveText(lines);
+
             byte[] contents = null;
 
             try { contents = MainContent.Data[MainContent.GetNodeIndex("banner.bin")]; } catch { }
             if (contents == null) return;
 
-            // Text addition format: UTF-16 (Big Endian)
-            // ****************
             for (int i = 32; i < 96; i++)
             {
-                try { contents[i] = Encoding.BigEndianUnicode.GetBytes(lines[0])[i - 32]; }
+                try { contents[i] = SaveTextEncoding.GetBytes(lines[0])[i - 32]; }
                 catch { contents[i] = 0x00; }
             }
 
             for (int i = 96; i < 160; i++)
             {
-                try { contents[i] = Encoding.BigEndianUnicode.GetBytes(lines[1])[i - 96]; }
+                try { contents[i] = SaveTextEncoding.GetBytes(lines[1])[i - 96]; }
                 catch { contents[i] = 0x00; }
             }
 

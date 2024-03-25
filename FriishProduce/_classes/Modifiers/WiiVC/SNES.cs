@@ -16,6 +16,7 @@ namespace FriishProduce.WiiVC
             NeedsMainDOL = true;
             MainContentIndex = 5;
             NeedsManualLoaded = true;
+            SaveTextEncoding = WAD.Region == Region.Korea ? Encoding.BigEndianUnicode : Encoding.GetEncoding(932); // Shift-JIS
 
             base.Load();
 
@@ -75,6 +76,8 @@ namespace FriishProduce.WiiVC
             // TEXT
             // -----------------------
 
+            lines = ConvertSaveText(lines);
+
             // Search for entry points
             // ****************
             List<int> ID_indexes = new List<int>();
@@ -95,16 +98,12 @@ namespace FriishProduce.WiiVC
 
             if (ID_indexes.Count > 0)
             {
-                // Text addition format: Big Endian (Korea region) / Shift-JIS (others)
-                // ****************
-                var encoder = WAD.Region == Region.Korea ? Encoding.BigEndianUnicode : Encoding.GetEncoding(932);
-
                 foreach (var index in ID_indexes)
                 {
                     var title = new byte[80];
 
-                    var line1 = encoder.GetBytes(lines[0]);
-                    var line2 = lines.Length == 2 ? encoder.GetBytes(lines[1]) : new byte[] { 0x00 };
+                    var line1 = SaveTextEncoding.GetBytes(lines[0]);
+                    var line2 = lines.Length == 2 ? SaveTextEncoding.GetBytes(lines[1]) : new byte[] { 0x00 };
 
                     for (int i = 0; i < 40; i++)
                         try { title[i] = line1[i]; } catch { title[i] = 0x00; }

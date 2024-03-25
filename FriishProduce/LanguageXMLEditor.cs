@@ -12,7 +12,7 @@ namespace FriishProduce
 {
     public partial class LanguageXMLEditor : Form
     {
-        private XmlDocument orig = new XmlDocument();
+        private readonly XmlDocument orig = new XmlDocument();
 
         public LanguageXMLEditor()
         {
@@ -54,8 +54,7 @@ namespace FriishProduce
 
                 if (File.Exists(path))
                 {
-                    XmlDocument doc = new XmlDocument();
-                    doc.PreserveWhitespace = false;
+                    XmlDocument doc = new XmlDocument { PreserveWhitespace = false };
                     doc.Load(path);
 
                     foreach (XmlNode node in doc.ChildNodes)
@@ -125,8 +124,7 @@ namespace FriishProduce
 
         private void WriteTo(string file)
         {
-            var x = new XmlDocument();
-            x.InnerXml = orig.InnerXml;
+            var x = new XmlDocument { InnerXml = orig.InnerXml };
 
             foreach (XmlNode main in x.ChildNodes)
                 if (main.Name.ToLower() == "language")

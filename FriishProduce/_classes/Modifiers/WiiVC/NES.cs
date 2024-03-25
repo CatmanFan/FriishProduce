@@ -14,6 +14,7 @@ namespace FriishProduce.WiiVC
         {
             NeedsMainDOL = true;
             NeedsManualLoaded = true;
+            SaveTextEncoding = Encoding.BigEndianUnicode;
             base.Load();
         }
 
@@ -206,11 +207,13 @@ namespace FriishProduce.WiiVC
         /// <param name="tImg">Input title image</param>
         protected override void ReplaceSaveData(string[] lines, ImageHelper Img)
         {
+            saveTPL_offsets = DetermineSaveTPLOffsets();
+
             // -----------------------
             // TEXT
             // -----------------------
 
-            saveTPL_offsets = DetermineSaveTPLOffsets();
+            lines = ConvertSaveText(lines);
             string text = lines.Length > 1 ? string.Join("\n", lines) : lines[0];
 
             // In the two WADs I've tested (SMB3 & Kirby's Adventure), the savedata text is found near
@@ -242,7 +245,7 @@ namespace FriishProduce.WiiVC
                 start = saveTPL_offsets[1] > 100 ? saveTPL_offsets[1] : end - 40;
                 for (int i = start; i < end; i++)
                 {
-                    try { Contents[1][i] = Encoding.BigEndianUnicode.GetBytes(text)[i - start]; }
+                    try { Contents[1][i] = SaveTextEncoding.GetBytes(text)[i - start]; }
                     catch { Contents[1][i] = 0x00; }
                 }
             }

@@ -264,7 +264,7 @@ namespace FriishProduce
 
                 case Console.Flash:
                     ROM = new SWF();
-                    ImportPatch.Enabled = false;
+                    label2.Enabled = ImportPatch.Enabled = false;
                     break;
 
                 default:
@@ -365,12 +365,39 @@ namespace FriishProduce
 
         private void Value_Changed(object sender, EventArgs e) => CheckExport();
 
+        private void LinkSaveDataTitle()
+        {
+            if (LinkSaveData.Checked)
+            {
+                string[] lines = new string[2];
+                int limit = SaveDataTitle.Multiline ? SaveDataTitle.MaxLength / 2 : SaveDataTitle.MaxLength;
+                if (ChannelTitle.TextLength <= limit) lines[0] = ChannelTitle.Text;
+                if (BannerTitle.Lines.Length > 1 && BannerTitle.Lines[1].Length <= limit) lines[1] = BannerTitle.Lines[1];
+
+                SaveDataTitle.Text
+                    = string.IsNullOrWhiteSpace(lines[1]) ? lines[0]
+                    : string.IsNullOrWhiteSpace(lines[0]) ? lines[1]
+                    : string.IsNullOrWhiteSpace(lines[0]) && string.IsNullOrWhiteSpace(lines[1]) ? null
+                    : SaveDataTitle.Multiline ? string.Join(Environment.NewLine, lines) : lines[0];
+
+                CheckExport();
+            }
+        }
+
+        private void LinkSaveData_Changed(object sender, EventArgs e)
+        {
+            if (sender == LinkSaveData)
+            {
+                SaveDataTitle.Enabled = !LinkSaveData.Checked;
+                if (LinkSaveData.Checked) LinkSaveDataTitle();
+            }
+        }
+
         private void TextBox_Changed(object sender, EventArgs e)
         {
             if (sender == ChannelTitle)
             {
                 Text = string.IsNullOrWhiteSpace(ChannelTitle.Text) ? Untitled : ChannelTitle.Text;
-                if (ChannelTitle.TextLength <= SaveDataTitle.MaxLength) SaveDataTitle.Text = ChannelTitle.Text;
 
                 if (!ChannelTitle_Locale.Checked)
                 {
@@ -378,6 +405,10 @@ namespace FriishProduce
                     Creator.ChannelTitles = new string[8] { ChannelTitle.Text, ChannelTitle.Text, ChannelTitle.Text, ChannelTitle.Text, ChannelTitle.Text, ChannelTitle.Text, ChannelTitle.Text, ChannelTitle.Text };
                 }
             }
+
+            if (sender == BannerTitle || sender == ChannelTitle) LinkSaveDataTitle();
+
+            if (sender == TitleID) Parent.SaveWAD.FileName = GetName();
 
             var currentSender = sender as TextBox;
             if (currentSender.Multiline && currentSender.Lines.Length > 2) currentSender.Lines = new string[] { currentSender.Lines[0], currentSender.Lines[1] };
@@ -589,15 +620,15 @@ namespace FriishProduce
                     case Console.NES:
                         if (InjectorsList.SelectedIndex == 0
                             && src.Width == 256 && (src.Height == 224 || src.Height == 240)
-                            && CO.Settings != null
-                            && bool.Parse(CO.Settings["use_tImg"]))
+                            && CO.Options != null
+                            && bool.Parse(CO.Options["use_tImg"]))
                         {
                             var CO_NES = CO as Options_VC_NES;
 
                             if (CO_NES.ImgPaletteIndex == -1 || oldImgPath != newImgPath)
                                 CO_NES.ImgPaletteIndex = CO_NES.CheckPalette(img);
 
-                            img = CO_NES.SwapColors(img, CO_NES.Palettes[CO_NES.ImgPaletteIndex], CO_NES.Palettes[int.Parse(CO_NES.Settings["palette"])]);
+                            img = CO_NES.SwapColors(img, CO_NES.Palettes[CO_NES.ImgPaletteIndex], CO_NES.Palettes[int.Parse(CO_NES.Options["palette"])]);
                         }
                         break;
 
@@ -684,6 +715,7 @@ namespace FriishProduce
             Parent.tabControl.Visible = true;
 
             if (ROM != null && UseLibRetro && CheckToolStripButtons()[0]) LoadLibRetroData();
+            Parent.SaveWAD.FileName = GetName();
         }
 
         public async void LoadLibRetroData()
@@ -729,7 +761,7 @@ namespace FriishProduce
             }
         }
 
-        public bool CreateInject()
+        public bool SaveToWAD()
         {
             try
             {
@@ -804,10 +836,11 @@ namespace FriishProduce
                     {
                         string args = string.Format("/e, /select, \"{0}\"", Creator.Out);
 
-                        System.Diagnostics.ProcessStartInfo info = new System.Diagnostics.ProcessStartInfo();
-                        info.FileName = "explorer";
-                        info.Arguments = args;
-                        System.Diagnostics.Process.Start(info);
+                        System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
+                        {
+                            FileName = "explorer",
+                            Arguments = args
+                        });
                     }
 
                     return true;
@@ -849,6 +882,7 @@ namespace FriishProduce
 
         public void FlashInject()
         {
+            Injectors.Flash.Settings = CO.Options;
             OutWAD = Injectors.Flash.Inject(OutWAD, ROM.Path, Creator.SaveDataTitle, Img);
         }
 
@@ -878,10 +912,10 @@ namespace FriishProduce
                 case Console.N64:
                     VC = new WiiVC.N64()
                     {
-                        Settings = CO.Settings,
+                        Settings = CO.Options,
 
-                        CompressionType = CO.EmuType == 3 ? (CO.Settings.ElementAt(3).Value == "True" ? 1 : 2) : 0,
-                        Allocate = CO.Settings.ElementAt(3).Value == "True" && (CO.EmuType <= 1),
+                        CompressionType = CO.EmuType == 3 ? (CO.Options.ElementAt(3).Value == "True" ? 1 : 2) : 0,
+                        Allocate = CO.Options.ElementAt(3).Value == "True" && (CO.EmuType <= 1),
                     };
                     break;
 
@@ -918,7 +952,7 @@ namespace FriishProduce
 
             // Get settings from relevant form
             // *******
-            if (CO != null) { VC.Settings = CO.Settings; } else { VC.Settings = new Dictionary<string, string> { { "N/A", "N/A" } }; }
+            if (CO != null) { VC.Settings = CO.Options; } else { VC.Settings = new Dictionary<string, string> { { "N/A", "N/A" } }; }
 
             // Set path to manual folder (if it exists) and load WAD
             // *******
@@ -1208,7 +1242,7 @@ namespace FriishProduce
             if (SaveDataTitle.Multiline == isSingleLine)
             {
                 SaveDataTitle.Multiline = !isSingleLine;
-                SaveDataTitle.Location = SaveDataTitle.Multiline ? new Point(SaveDataTitle.Location.X, 29) : new Point(SaveDataTitle.Location.X, 35);
+                SaveDataTitle.Location = SaveDataTitle.Multiline ? new Point(SaveDataTitle.Location.X, 28) : new Point(SaveDataTitle.Location.X, 35);
                 SaveDataTitle.Clear();
                 goto End;
             }
@@ -1221,7 +1255,8 @@ namespace FriishProduce
                 if (line.Length > max && SaveDataTitle.MaxLength != oldSaveLength)
                     SaveDataTitle.Clear();
 
-                End:
+            End:
+            LinkSaveDataTitle();
             UpdateBaseConsole();
             pictureBox1.Image = Preview.Banner(Console, BannerTitle.Text, (int)ReleaseYear.Value, (int)Players.Value, Img?.VCPic, (int)Creator.OrigRegion);
         }
@@ -1240,13 +1275,13 @@ namespace FriishProduce
         {
             COPanel_VC.Hide();
             COPanel_Forwarder.Hide();
-            SaveIcon_Panel.Visible = SaveDataTitle.Visible = false;
+            bool ShowSaveData = false;
 
             CO = null;
             if (IsVCMode())
             {
                 COPanel_VC.Show();
-                SaveIcon_Panel.Visible = SaveDataTitle.Visible = true;
+                ShowSaveData = true;
 
                 switch (Console)
                 {
@@ -1284,16 +1319,18 @@ namespace FriishProduce
 
             else if (Console == Console.Flash)
             {
-                SaveIcon_Panel.Visible = SaveDataTitle.Visible = true;
+                ShowSaveData = true;
                 CO = new Options_Flash();
             }
 
             else
                 COPanel_Forwarder.Show();
 
+            LinkSaveData.Visible = SaveIcon_Panel.Visible = SaveDataTitle.Visible = ShowSaveData;
             label16.Visible = !SaveDataTitle.Visible;
+
             var selected = COPanel_Forwarder.Visible ? COPanel_Forwarder : COPanel_VC.Visible ? COPanel_VC : null;
-            int height = selected == null ? (groupBox7.Visible ? groupBox7.Location.Y + groupBox7.Height : InjectorsList.Location.Y + InjectorsList.Height) + 10 : selected.Location.Y + selected.Height + 10;
+            int height = selected == null ? button1.Location.Y + button1.Height + 10 : selected.Location.Y + selected.Height + 10;
             groupBox3.Size = new Size(groupBox3.Width, height);
 
             UpdateBaseConsole();
@@ -1446,7 +1483,6 @@ namespace FriishProduce
         private void InjectorsList_SelectedIndexChanged(object sender, EventArgs e)
         {
             ResetContentOptions();
-
             if (groupBox3.Enabled) CheckExport();
         }
 

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 
 namespace FriishProduce
 {
@@ -11,6 +12,7 @@ namespace FriishProduce
         public WAD WAD { get; set; }
         public int EmuType { get; set; }
         public IDictionary<string, string> Settings { get; set; }
+        protected Encoding SaveTextEncoding { get; set; }
 
         protected ROM ROM { get; set; }
 
@@ -294,6 +296,17 @@ namespace FriishProduce
         protected abstract void ReplaceSaveData(string[] lines, ImageHelper Img);
 
         protected abstract void ModifyEmulatorSettings();
+
+        protected string[] ConvertSaveText(string[] lines)
+        {
+            for (int i = 0; i < lines.Length; i++)
+            {
+                var bytes = Encoding.Unicode.GetBytes(lines[i]);
+                lines[i] = SaveTextEncoding.GetString(Encoding.Convert(Encoding.Unicode, SaveTextEncoding, bytes));
+            }
+
+            return lines;
+        }
 
         protected bool SettingParse(int i)
         {

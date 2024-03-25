@@ -296,7 +296,13 @@ namespace FriishProduce
             Begin:
             try
             {
-                if (x.Items[0].ToString() == "auto")
+                if (x.Items[0].ToString() == "static")
+                {
+                    x.Items.RemoveAt(0);
+                    return;
+                }
+
+                else if (x.Items[0].ToString() == "auto")
                 {
                     x.Items.Clear();
 

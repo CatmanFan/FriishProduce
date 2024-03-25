@@ -1,12 +1,12 @@
 ﻿using libWiiSharp;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 
 namespace FriishProduce.Injectors
 {
     public static class Flash
     {
-        internal static string config = "config.common.pcf";
         public static IDictionary<string, string> Settings { get; set; }
 
         // DEFAULT CONFIG FOR REFERENCE:
@@ -181,29 +181,101 @@ namespace FriishProduce.Injectors
 
                 // FOR FORCING 4:3
                 // ********
-                /* if (item.ToLower().Contains(".wide.pcf"))
-                    MainContent.ReplaceFile(MainContent.GetNodeIndex(item), MainContent.Data[MainContent.GetNodeIndex(item.Replace(".wide", ""))]); */
+                else if (item.ToLower().Contains(".wide.pcf"))
+                    MainContent.ReplaceFile(MainContent.GetNodeIndex(item.Replace(".wide", "")), MainContent.Data[MainContent.GetNodeIndex(item)]);
+
+                else if (item.ToLower() == "config.common.pcf")
+                {
+                    var file = new List<string>()
+                        {
+                            "# Comments (text preceded by #) and line breaks will be ignored",
+                            "static_heap_size                8192                # 8192[KB] -> 8[MB]",
+                            "dynamic_heap_size               16384               # 16384[KB] -> 16[MB]",
+
+                            "# update_frame_rate             30                  # not TV-framerate(NTSC/PAL)",
+
+                            $"mouse                           {Settings["mouse"]}",
+                            $"qwerty_keyboard                 {Settings["qwerty_keyboard"]}",
+                            "navigation_model                4way                # 2way / 4way / 4waywrap",
+                            $"quality                         {Settings["quality"]}",
+                            "looping                         on",
+
+                            "text_encoding                   utf-16",
+
+                            $"midi                            {Settings["midi"]}",
+                            $"# dls_file                      dls/GM16.DLS",
+
+                            "key_input                       on",
+
+                            "cursor_archive                  cursor.arc",
+                            "cursor_layout                   cursor.brlyt",
+                            "dialog_cursor_archive           cursor.arc",
+                            "dialog_cursor_layout            cursor.brlyt",
+
+                            $"shared_object_capability        {Settings["shared_object_capability"]}",
+                            "num_vff_drives                  1",
+                            $"vff_cache_size                  {Settings["vff_cache_size"]}",
+                            $"vff_sync_on_write               {Settings["vff_sync_on_write"]}",
+
+                            "persistent_storage_root_drive   X",
+                            "persistent_storage_vff_file     shrdobjs.vff        # 8.3 format",
+                            $"persistent_storage_total        {Settings["vff_cache_size"]}",
+                            "persistent_storage_per_movie    64                  # 64[KB]",
+
+                            $"strap_reminder                  {Settings["strap_reminder"]}",
+
+                            "supported_devices               core, freestyle, classic",
+
+                            $"hbm_no_save                     {Settings["hbm_no_save"]}"
+                        };
+
+                    MainContent.ReplaceFile(MainContent.GetNodeIndex(item), Encoding.UTF8.GetBytes(string.Join("\r\n", file) + "\r\n"));
+                }
             }
 
             // Savebanner .TPL & config
             // ********
-            /* if (Settings["shared_object_capability"] == "on")
+            if (Settings["shared_object_capability"] == "on")
             {
-                byte[] banner = Img.CreateSaveTPL(1).ToByteArray();
-                byte[] icons = Img.CreateSaveTPL(2).ToByteArray();
+                var banner = Img.CreateSaveTPL(1);
+                var icons = Img.CreateSaveTPL(2);
+
+                for (int i = 0; i < lines.Length; i++)
+                {
+                    var bytes = Encoding.Unicode.GetBytes(lines[i]);
+                    lines[i] = Encoding.UTF8.GetString(Encoding.Convert(Encoding.Unicode, Encoding.UTF8, bytes));
+                }
 
                 foreach (var item in MainContent.StringTable)
                 {
-                    if (item.ToLower().Contains("banner.tpl"))
-                        MainContent.ReplaceFile(MainContent.GetNodeIndex(item), banner);
+                    if (item.ToLower() == "banner.tpl")
+                        MainContent.ReplaceFile(MainContent.GetNodeIndex(item), banner.ToByteArray());
 
-                    else if (item.ToLower().Contains("icons.tpl"))
-                        MainContent.ReplaceFile(MainContent.GetNodeIndex(item), icons);
+                    else if (item.ToLower() == "icons.tpl")
+                        MainContent.ReplaceFile(MainContent.GetNodeIndex(item), icons.ToByteArray());
 
-                    else if (item.ToLower().Contains("banner.ini"))
-                        MainContent.ReplaceFile(MainContent.GetNodeIndex(item), icons);
+                    else if (item.ToLower() == "banner.ini")
+                    {
+                        var file = new List<string>()
+                            {
+                                "not_copy        off",
+                                "anim_type       bounce",
+                                $"title_text      {System.Uri.EscapeUriString(lines[0])}",
+                                $"comment_text    {(lines.Length > 1 ? System.Uri.EscapeUriString(lines[1]) : "%20")}",
+                                "banner_tpl      banner/US/banner.tpl",
+                                "icon_tpl        banner/US/icons.tpl",
+                                "icon_count      " + icons.NumOfTextures,
+                            };
+
+                        for (int i = 0; i < icons.NumOfTextures; i++)
+                        {
+                            file.Add($"icon_speed      {i}, slow");
+                        }
+
+                        MainContent.ReplaceFile(MainContent.GetNodeIndex(item), Encoding.UTF8.GetBytes(string.Join("\r\n", file) + "\r\n"));
+                    }
                 }
-            } */
+            }
 
             // MainContent.CreateFromDirectory(Paths.FlashContents);
 

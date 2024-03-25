@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 
 namespace FriishProduce.WiiVC
@@ -28,6 +29,7 @@ namespace FriishProduce.WiiVC
             NeedsMainDOL = true;
             MainContentIndex = 5;
             NeedsManualLoaded = true;
+            SaveTextEncoding = Encoding.Unicode;
 
             base.Load();
 
@@ -136,16 +138,18 @@ namespace FriishProduce.WiiVC
             // TEXT
             // -----------------------
 
+            if (EmuType >= 2) SaveTextEncoding = Encoding.BigEndianUnicode;
+            lines = ConvertSaveText(lines);
+
             // The separator byte array for double-lines.
             // This varies depending on the revision of the emulator, and the second separator is often cut off by end-of-file in earlier releases
             // ****************
-            byte[] separator = EmuType == 0 ? new byte[] { 0x00, 0xBB, 0xBB, 0xBB }
-                             : EmuType == 1 ? new byte[] { 0x00, 0xBB }
-                             : new byte[] { 0x00, 0x00, 0xBB, 0xBB };
-
-            // Text addition format: UTF-16 (Little Endian) for Rev1, UTF-16 (Big Endian) for newer revisions
-            // ****************
-            var encoding = EmuType == 0 || EmuType == 1 ? Encoding.Unicode : Encoding.BigEndianUnicode;
+            byte[][] separators = new byte[][]
+            {
+                new byte[] { 0x00, 0xBB, 0xBB, 0xBB },
+                new byte[] { 0x00, 0xBB },
+                new byte[] { 0x00, 0x00, 0xBB, 0xBB }
+            };
 
             foreach (var item in MainContent.StringTable)
             {
@@ -155,42 +159,62 @@ namespace FriishProduce.WiiVC
 
                     List<byte> newSave = new List<byte>();
 
-                    // Add 64-byte header
-                    // ****************
-                    for (int i = 0; i < 64; i++)
-                        newSave.Add(byteArray[i]);
-
-                    // First savetext line
-                    // ****************
-                    for (int i = 0; i < encoding.GetBytes(lines[0]).Length; i++)
-                        try { newSave.Add(encoding.GetBytes(lines[0])[i]); } catch { newSave.Add(0x00); }
-                    if (byteArray[28] == 0x6A || (byteArray[28] == 0x6B && byteArray[29] == 0x72)) // JP/KO
-                    { newSave.Add(0x00); }
-                    else foreach (var Byte in separator) newSave.Add(Byte);
-
-                    // Set first-line offset
-                    // ****************
-                    newSave[55] = Convert.ToByte(newSave.Count);
-                    newSave[59] = Convert.ToByte(newSave.Count);
-
                     // Also varying on revision, how the second line field is itself handled.
                     // Where it is empty: In earlier revisions such as F-Zero X and Super Mario 64, it is a white space character, otherwise it is null.
                     // ****************
                     if (lines.Length == 1 && EmuType == 0) lines = new string[2] { lines[0], " " };
 
+                    // Add 64-byte header
+                    // ****************
+                    // 30 69 0A FB 00 00 00 AA 00 00 00 AA 00 BB 00 BB
+                    // 30 69 0A FD 00 00 00 CC 00 00 00 CC 00 DD 00 DD
+                    // ****************
+                    // AA = Offset beginning the first line
+                    // BB = Length in bytes
+                    // CC = Offset beginning the second line
+                    // DD = Length in bytes
+                    // ****************
+                    newSave.AddRange(byteArray.Take(32));
+
+                    var isLatin = !(byteArray[28] == 0x6A || (byteArray[28] == 0x6B && byteArray[29] == 0x72)); // Lang is not JP/KO
+                    var isCJK
+                       = HasChars(lines[0], 0x1100, 0x11FF) // Hangul Jamo
+                      || HasChars(lines[0], 0x3040, 0x309F) // Hiragana
+                      || HasChars(lines[0], 0x30A0, 0x30FF) // Katakana
+                      || HasChars(lines[0], 0x3130, 0x318F) // Hangul Jamo
+                      || HasChars(lines[0], 0x3300, 0x9FFF) // CJK
+                      || HasChars(lines[0], 0xAC00, 0xD7AF); // Hangul Syllables
+
+                    var line1 = SaveTextEncoding.GetBytes(lines[0]);
+                    var line2 = lines.Length > 1 ? SaveTextEncoding.GetBytes(lines[1]) : new byte[0];
+
+                    var separator1 = isCJK ? separators[1] : EmuType > 1 ? separators[2] : EmuType == 0 && isLatin ? separators[0] : separators[1];
+                    var separator2 = EmuType < 2 ? (!isLatin ? separators[1] : separators[0]) : separators[2];
+
+                    newSave.AddRange(new byte[]
+                        {
+                            0x30, 0x69, 0x0A, 0xFB, 0x00, 0x00, 0x00,
+                            0x40,
+                            0x00, 0x00, 0x00,
+                            0x40,
+                            0x00, Convert.ToByte(line1.Length), 0x00, Convert.ToByte(line1.Length),
+
+                            0x30, 0x69, 0x0A, 0xFD, 0x00, 0x00, 0x00,
+                            Convert.ToByte(64 + line1.Length + separator1.Length),
+                            0x00, 0x00, 0x00,
+                            Convert.ToByte(64 + line1.Length + separator1.Length),
+                            0x00, Convert.ToByte(line2.Length), 0x00, Convert.ToByte(line2.Length)
+                        });
+
+                    // First savetext line
+                    // ****************
+                    newSave.AddRange(line1);
+                    newSave.AddRange(separator1);
+
                     // Second savetext line (optional)
                     // ****************
-                    if (lines.Length == 2)
-                        for (int i = 0; i < encoding.GetBytes(lines[1]).Length; i++)
-                            try { newSave.Add(encoding.GetBytes(lines[1])[i]); } catch { newSave.Add(0x00); }
-                    foreach (var Byte in separator) newSave.Add(Byte);
-
-                    // Character count determiner within savedata file
-                    // ****************
-                    newSave[45] = Convert.ToByte(encoding.GetBytes(lines[0]).Length);
-                    newSave[47] = Convert.ToByte(encoding.GetBytes(lines[0]).Length);
-                    newSave[61] = lines.Length == 2 ? Convert.ToByte(encoding.GetBytes(lines[1]).Length) : (byte)0x00;
-                    newSave[63] = lines.Length == 2 ? Convert.ToByte(encoding.GetBytes(lines[1]).Length) : (byte)0x00;
+                    if (lines.Length > 1) newSave.AddRange(line2);
+                    newSave.AddRange(separator2);
 
                     MainContent.ReplaceFile(MainContent.GetNodeIndex(item), newSave.ToArray());
                 }
@@ -203,6 +227,8 @@ namespace FriishProduce.WiiVC
                     MainContent.ReplaceFile(MainContent.GetNodeIndex(item), Img.CreateSaveTPL(MainContent.Data[MainContent.GetNodeIndex(item)]).ToByteArray());
             }
         }
+
+        private bool HasChars(string text, int min, int max) => text.Where(e => e >= min && e <= max).Any();
 
         // *****************************************************************************************************
         #region SETTINGS
@@ -238,7 +264,7 @@ namespace FriishProduce.WiiVC
                     foreach (var item in failed)
                         failedList += "- " + item + Environment.NewLine;
 
-                    System.Windows.Forms.MessageBox.Show(string.Format(Language.Get("Error.004"), failedList));
+                    MessageBox.Show(string.Format(Language.Get("Error.004"), failedList));
                 }
             }
             catch (Exception ex)

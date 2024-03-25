@@ -90,6 +90,7 @@ namespace FriishProduce
             this.BrowsePatch = new System.Windows.Forms.OpenFileDialog();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.LinkSaveData = new System.Windows.Forms.CheckBox();
             this.groupBox6.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -134,10 +135,10 @@ namespace FriishProduce
             // imageintpl
             // 
             this.imageintpl.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            resources.ApplyResources(this.imageintpl, "imageintpl");
             this.imageintpl.FormattingEnabled = true;
             this.imageintpl.Items.AddRange(new object[] {
             resources.GetString("imageintpl.Items")});
+            resources.ApplyResources(this.imageintpl, "imageintpl");
             this.imageintpl.Name = "imageintpl";
             this.imageintpl.SelectedIndexChanged += new System.EventHandler(this.InterpolationChanged);
             // 
@@ -161,6 +162,7 @@ namespace FriishProduce
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.LinkSaveData);
             this.groupBox7.Controls.Add(this.SaveIcon_Panel);
             this.groupBox7.Controls.Add(this.SaveDataTitle);
             this.groupBox7.Controls.Add(this.label16);
@@ -532,8 +534,8 @@ namespace FriishProduce
             this.Base.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.Base.DropDownHeight = 150;
             this.Base.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            resources.ApplyResources(this.Base, "Base");
             this.Base.FormattingEnabled = true;
+            resources.ApplyResources(this.Base, "Base");
             this.Base.Name = "Base";
             this.Base.SelectedIndexChanged += new System.EventHandler(this.Base_SelectedIndexChanged);
             // 
@@ -565,6 +567,13 @@ namespace FriishProduce
             resources.ApplyResources(this.pictureBox2, "pictureBox2");
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.TabStop = false;
+            // 
+            // LinkSaveData
+            // 
+            resources.ApplyResources(this.LinkSaveData, "LinkSaveData");
+            this.LinkSaveData.Name = "LinkSaveData";
+            this.LinkSaveData.UseVisualStyleBackColor = true;
+            this.LinkSaveData.CheckedChanged += new System.EventHandler(this.LinkSaveData_Changed);
             // 
             // InjectorForm
             // 
@@ -678,5 +687,6 @@ namespace FriishProduce
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label toggleSwitchL1;
         private JCS.ToggleSwitch toggleSwitch1;
+        private System.Windows.Forms.CheckBox LinkSaveData;
     }
 }

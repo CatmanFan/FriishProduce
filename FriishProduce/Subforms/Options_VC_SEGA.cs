@@ -13,7 +13,7 @@ namespace FriishProduce
         {
             InitializeComponent();
 
-            Settings = new SortedDictionary<string, string>
+            Options = new SortedDictionary<string, string>
             {
                 { "console.brightness", VC_SEGA.Default.console_brightness },
                 { "console.disable_resetbutton", VC_SEGA.Default.console_disableresetbutton },
@@ -49,26 +49,28 @@ namespace FriishProduce
 
             // Form control
             // *******
-            if (Settings != null)
+            if (Options != null)
             {
-                if (IsSMS) Settings["dev.mdpad.enable_6b"] = null;
+                if (IsSMS) Options["dev.mdpad.enable_6b"] = null;
 
-                if (Settings["console.brightness"] == null || int.Parse(Settings["console.brightness"]) < 0) Settings["console.brightness"] = VC_SEGA.Default.console_brightness;
+                if (Options["console.brightness"] == null || int.Parse(Options["console.brightness"]) < 0) Options["console.brightness"] = VC_SEGA.Default.console_brightness;
 
-                BrightnessValue.Value = int.Parse(Settings["console.brightness"]);
-                comboBox1.SelectedIndex = Settings["country"] == "jp" ? 2 : Settings["country"] == "eu" ? 1 : 0;
-                toggleSwitch1.Checked = Settings["dev.mdpad.enable_6b"] == "1";
-                checkBox1.Checked = Settings["save_sram"] == "1";
+                BrightnessValue.Value = int.Parse(Options["console.brightness"]);
+                comboBox1.SelectedIndex = Options["country"] == "jp" ? 2 : Options["country"] == "eu" ? 1 : 0;
+                toggleSwitch1.Checked = Options["dev.mdpad.enable_6b"] == "1";
+                checkBox1.Checked = Options["save_sram"] == "1";
+                checkBox2.Checked = Options["console.disable_resetbutton"] == "1";
                 ChangeBrightness();
             }
         }
 
         protected override void SaveOptions()
         {
-            Settings["console.brightness"] = BrightnessValue.Enabled ? label1.Text : null;
-            Settings["save_sram"] = checkBox1.Checked ? "1" : null;
-            Settings["country"] = comboBox1.SelectedIndex == 2 ? "jp" : comboBox1.SelectedIndex == 1 ? "eu" : "us";
-            Settings["dev.mdpad.enable_6b"] = toggleSwitch1.Checked ? "1" : null;
+            Options["console.brightness"] = BrightnessValue.Enabled ? label1.Text : null;
+            Options["save_sram"] = checkBox1.Checked ? "1" : null;
+            Options["country"] = comboBox1.SelectedIndex == 2 ? "jp" : comboBox1.SelectedIndex == 1 ? "eu" : "us";
+            Options["dev.mdpad.enable_6b"] = toggleSwitch1.Checked ? "1" : null;
+            Options["console.disable_resetbutton"] = checkBox2.Checked ? "1" : null;
         }
 
         // ---------------------------------------------------------------------------------------------------------------
@@ -91,7 +93,7 @@ namespace FriishProduce
 
             label1.Text = BrightnessValue.Value.ToString();
 
-            if (!BrightnessValue.Enabled) Settings["console.brightness"] = null;
+            if (!BrightnessValue.Enabled) Options["console.brightness"] = null;
         }
 
         private void ToggleSwitchChanged(object sender, EventArgs e)

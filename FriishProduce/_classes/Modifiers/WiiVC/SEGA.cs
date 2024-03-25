@@ -144,7 +144,10 @@ namespace FriishProduce.WiiVC
             {
                 if (item.Name.ToLower().Contains("banner.cfg"))
                 {
-                    string[] newBanner = Encoding.BigEndianUnicode.GetString(MiscCCF.Data[MiscCCF.GetNodeIndex(item.Name)]).Replace("\r\n", "\n").Split('\n');
+                    SaveTextEncoding = Encoding.BigEndianUnicode;
+                    lines = ConvertSaveText(lines);
+
+                    string[] newBanner = SaveTextEncoding.GetString(MiscCCF.Data[MiscCCF.GetNodeIndex(item.Name)]).Replace("\r\n", "\n").Split('\n');
 
                     for (int i = 4; i < newBanner.Length; i++)
                     {
@@ -159,7 +162,7 @@ namespace FriishProduce.WiiVC
 
                     using (var s = new MemoryStream())
                     {
-                        var t = new StreamWriter(s, Encoding.BigEndianUnicode) { NewLine = "\n" };
+                        var t = new StreamWriter(s, SaveTextEncoding) { NewLine = "\n" };
 
                         foreach (string line in newBanner)
                         {
@@ -174,13 +177,16 @@ namespace FriishProduce.WiiVC
 
                 else if (item.Name.ToLower().Contains("comment"))
                 {
-                    string[] newComment = Encoding.UTF8.GetString(MiscCCF.Data[MiscCCF.GetNodeIndex(item.Name)]).Replace("\r\n", "\n").Split('\n');
+                    SaveTextEncoding = Encoding.UTF8;
+                    lines = ConvertSaveText(lines);
+
+                    string[] newComment = SaveTextEncoding.GetString(MiscCCF.Data[MiscCCF.GetNodeIndex(item.Name)]).Replace("\r\n", "\n").Split('\n');
 
                     newComment[0] = lines[0];
 
                     using (var s = new MemoryStream())
                     {
-                        var t = new StreamWriter(s, Encoding.UTF8) { NewLine = "\n" };
+                        var t = new StreamWriter(s, SaveTextEncoding) { NewLine = "\n" };
 
                         for (int i = 0; i < newComment.Length; i++)
                             t.WriteLine(newComment[i]);

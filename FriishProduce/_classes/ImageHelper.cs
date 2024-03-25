@@ -292,12 +292,12 @@ namespace FriishProduce
         {
             TPL tpl = new TPL();
 
-            Image sBanner = SaveBannerFlash;
-            Image sIconLogo = SaveIconFlash;
+            Image sBanner = new Bitmap(SaveBannerFlash.Width, SaveBannerFlash.Height);
+            Image sIconLogo = new Bitmap(SaveIconFlash);
             Image sIcon = new Bitmap(sIconLogo.Width, sIconLogo.Height);
 
-            var TextureFormat = TPL_TextureFormat.RGB565;
-            var PaletteFormat = TPL_PaletteFormat.RGB565;
+            var TextureFormat = TPL_TextureFormat.RGB5A3;
+            var PaletteFormat = TPL_PaletteFormat.RGB5A3;
 
             // -------------------------
             // Savedata banner
@@ -305,6 +305,7 @@ namespace FriishProduce
             if (type != 2)
                 using (Graphics g = Graphics.FromImage(sBanner))
                 {
+                    g.DrawImage(SaveBannerFlash, 0, 0);
                     g.DrawImage(SaveIconPic, SaveIconL_xywh[0], SaveIconL_xywh[1], SaveIconL_xywh[2], SaveIconL_xywh[3]);
 
                     tpl.AddTexture(sBanner, TextureFormat, PaletteFormat);
@@ -319,6 +320,14 @@ namespace FriishProduce
             // -------------------------
             if (type != 1)
             {
+                // LOGO
+                // ****************
+                using (Graphics g = Graphics.FromImage(sIconLogo))
+                {
+                    g.DrawImage(SaveIconFlash, 0, 0);
+                    g.Dispose();
+                }
+
                 // 1ST FRAME
                 // ****************
                 using (Graphics g = Graphics.FromImage(sIcon))

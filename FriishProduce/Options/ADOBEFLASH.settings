@@ -1,0 +1,33 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="FriishProduce.Options" GeneratedClassName="ADOBEFLASH">
+  <Profiles />
+  <Settings>
+    <Setting Name="mouse" Type="System.String" Scope="User">
+      <Value Profile="(Default)">on</Value>
+    </Setting>
+    <Setting Name="qwerty_keyboard" Type="System.String" Scope="User">
+      <Value Profile="(Default)">on</Value>
+    </Setting>
+    <Setting Name="quality" Type="System.String" Scope="User">
+      <Value Profile="(Default)">high</Value>
+    </Setting>
+    <Setting Name="shared_object_capability" Type="System.String" Scope="User">
+      <Value Profile="(Default)">off</Value>
+    </Setting>
+    <Setting Name="vff_cache_size" Type="System.String" Scope="User">
+      <Value Profile="(Default)">96</Value>
+    </Setting>
+    <Setting Name="vff_sync_on_write" Type="System.String" Scope="User">
+      <Value Profile="(Default)">off</Value>
+    </Setting>
+    <Setting Name="hbm_no_save" Type="System.String" Scope="User">
+      <Value Profile="(Default)">yes</Value>
+    </Setting>
+    <Setting Name="strap_reminder" Type="System.String" Scope="User">
+      <Value Profile="(Default)">none</Value>
+    </Setting>
+    <Setting Name="midi" Type="System.String" Scope="User">
+      <Value Profile="(Default)">off</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

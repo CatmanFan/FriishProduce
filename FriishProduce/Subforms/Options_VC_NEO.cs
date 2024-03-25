@@ -15,7 +15,7 @@ namespace FriishProduce
         {
             InitializeComponent();
 
-            Settings = new Dictionary<string, string>
+            Options = new Dictionary<string, string>
             {
                 { "BIOS", VC_NEO.Default.bios },
                 { "BIOSPath", null }
@@ -35,25 +35,25 @@ namespace FriishProduce
         {
             // Form control
             // *******
-            if (Settings != null)
+            if (Options != null)
             {
-                if (Settings["BIOSPath"] != null || File.Exists(Settings["BIOSPath"]))
+                if (Options["BIOSPath"] != null || File.Exists(Options["BIOSPath"]))
                 {
-                    Settings["BIOS"] = "custom";
-                    BIOSPath = Settings["BIOSPath"];
+                    Options["BIOS"] = "custom";
+                    BIOSPath = Options["BIOSPath"];
                 }
 
-                else if (Settings["BIOS"] == "custom") Settings["BIOS"] = VC_NEO.Default.bios;
+                else if (Options["BIOS"] == "custom") Options["BIOS"] = VC_NEO.Default.bios;
 
-                comboBox1.SelectedIndex = GetBIOSIndex(Settings["BIOS"]);
+                comboBox1.SelectedIndex = GetBIOSIndex(Options["BIOS"]);
             }
             // *******
         }
 
         protected override void SaveOptions()
         {
-            Settings["BIOSPath"] = BIOSPath;
-            Settings["BIOS"] = Settings["BIOSPath"] != null || File.Exists(Settings["BIOSPath"]) ? "custom" : GetBIOSName(comboBox1.SelectedIndex);
+            Options["BIOSPath"] = BIOSPath;
+            Options["BIOS"] = Options["BIOSPath"] != null || File.Exists(Options["BIOSPath"]) ? "custom" : GetBIOSName(comboBox1.SelectedIndex);
         }
 
         // ---------------------------------------------------------------------------------------------------------------
@@ -101,7 +101,7 @@ namespace FriishProduce
                     if (ImportBIOS.ShowDialog() == DialogResult.OK)
                         BIOSPath = ImportBIOS.FileName;
 
-                    else comboBox1.SelectedIndex = GetBIOSIndex(Settings["BIOS"] == "custom" ? VC_NEO.Default.bios : Settings["BIOS"]);
+                    else comboBox1.SelectedIndex = GetBIOSIndex(Options["BIOS"] == "custom" ? VC_NEO.Default.bios : Options["BIOS"]);
                 }
             }
 

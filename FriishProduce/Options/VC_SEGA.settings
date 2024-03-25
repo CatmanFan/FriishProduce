@@ -1,12 +1,12 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="FriishProduce.Options" GeneratedClassName="SEGA">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="FriishProduce.Options" GeneratedClassName="VC_SEGA">
   <Profiles />
   <Settings>
     <Setting Name="console_brightness" Type="System.String" Scope="User">
       <Value Profile="(Default)">87</Value>
     </Setting>
     <Setting Name="console_disableresetbutton" Type="System.String" Scope="User">
-      <Value Profile="(Default)">0</Value>
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="country" Type="System.String" Scope="User">
       <Value Profile="(Default)">us</Value>

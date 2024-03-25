@@ -12,7 +12,7 @@ namespace FriishProduce
         {
             InitializeComponent();
 
-            Settings = new Dictionary<string, string>
+            Options = new Dictionary<string, string>
             {
                 { "BACKUPRAM", VC_PCE.Default.BACKUPRAM },
                 { "PADBUTTON", VC_PCE.Default.PADBUTTON },
@@ -47,30 +47,30 @@ namespace FriishProduce
         {
             // Form control
             // *******
-            if (Settings != null)
+            if (Options != null)
             {
-                numericUpDown1.Value = int.Parse(Settings["YOFFSET"]);
-                toggleSwitch1.Checked = Settings["EUROPE"] == "1";
-                toggleSwitch2.Checked = Settings["SGENABLE"] == "1";
-                toggleSwitch3.Checked = Settings["PADBUTTON"] == "6";
-                checkBox1.Checked = Settings["HIDEOVERSCAN"] == "1";
-                checkBox2.Checked = Settings["RASTER"] == "1";
-                checkBox3.Checked = Settings["SPRLINE"] == "1";
-                checkBox4.Checked = Settings["BACKUPRAM"] == "1";
+                numericUpDown1.Value = int.Parse(Options["YOFFSET"]);
+                toggleSwitch1.Checked = Options["EUROPE"] == "1";
+                toggleSwitch2.Checked = Options["SGENABLE"] == "1";
+                toggleSwitch3.Checked = Options["PADBUTTON"] == "6";
+                checkBox1.Checked = Options["HIDEOVERSCAN"] == "1";
+                checkBox2.Checked = Options["RASTER"] == "1";
+                checkBox3.Checked = Options["SPRLINE"] == "1";
+                checkBox4.Checked = Options["BACKUPRAM"] == "1";
             }
             // *******
         }
 
         protected override void SaveOptions()
         {
-            Settings["YOFFSET"] = numericUpDown1.Value.ToString();
-            Settings["EUROPE"] = toggleSwitch1.Checked ? "1" : "0";
-            Settings["SGENABLE"] = toggleSwitch2.Checked ? "1" : "0";
-            Settings["PADBUTTON"] = toggleSwitch3.Checked ? "6" : "2";
-            Settings["HIDEOVERSCAN"] = checkBox1.Checked ? "1" : "0";
-            Settings["RASTER"] = checkBox2.Checked ? "1" : "0";
-            Settings["SPRLINE"] = checkBox3.Checked ? "1" : "0";
-            Settings["BACKUPRAM"] = checkBox4.Checked ? "1" : "0";
+            Options["YOFFSET"] = numericUpDown1.Value.ToString();
+            Options["EUROPE"] = toggleSwitch1.Checked ? "1" : "0";
+            Options["SGENABLE"] = toggleSwitch2.Checked ? "1" : "0";
+            Options["PADBUTTON"] = toggleSwitch3.Checked ? "6" : "2";
+            Options["HIDEOVERSCAN"] = checkBox1.Checked ? "1" : "0";
+            Options["RASTER"] = checkBox2.Checked ? "1" : "0";
+            Options["SPRLINE"] = checkBox3.Checked ? "1" : "0";
+            Options["BACKUPRAM"] = checkBox4.Checked ? "1" : "0";
         }
 
         // ---------------------------------------------------------------------------------------------------------------

@@ -47,11 +47,8 @@ See **[here](https://github.com/CatmanFan/FriishProduce/wiki/Translation)** for 
 ## To-Do
 * ***Before releasing v1.0:***
 - [ ] Check for additional bugs that need to be fixed.
-- [X] Clean localization wiki.
-- [X] Update this readme
 * ***Planned for v1.1:***
 - [ ] Flash emulator options list
-- [X] Reorganize content options into their own setting files
 - [ ] Potentially reorganize consoles into their own folders?
 - [ ] Clean forms code
 - [ ] Clean languages

@@ -139,6 +139,11 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Options\ADOBEFLASH.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>ADOBEFLASH.settings</DependentUpon>
+    </Compile>
     <Compile Include="Options\FORWARDER.Designer.cs">
       <DependentUpon>FORWARDER.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -192,10 +197,10 @@
     <Compile Include="Subforms\Options_Flash.Designer.cs">
       <DependentUpon>Options_Flash.cs</DependentUpon>
     </Compile>
-    <Compile Include="Subforms\Tutorial.cs">
+    <Compile Include="Tutorial.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Subforms\Tutorial.Designer.cs">
+    <Compile Include="Tutorial.Designer.cs">
       <DependentUpon>Tutorial.cs</DependentUpon>
     </Compile>
     <Compile Include="_classes\Archives\CCF.cs" />
@@ -282,10 +287,10 @@
     <Compile Include="Subforms\Options_VC_NES.Designer.cs">
       <DependentUpon>Options_VC_NES.cs</DependentUpon>
     </Compile>
-    <Compile Include="Subforms\SettingsForm.cs">
+    <Compile Include="SettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Subforms\SettingsForm.Designer.cs">
+    <Compile Include="SettingsForm.Designer.cs">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="_classes\Byte.cs" />
@@ -348,10 +353,10 @@
     <Compile Include="InjectorForm.Designer.cs">
       <DependentUpon>InjectorForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Subforms\SettingsForm.resx">
+    <EmbeddedResource Include="SettingsForm.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Subforms\Tutorial.resx">
+    <EmbeddedResource Include="Tutorial.resx">
       <DependentUpon>Tutorial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
@@ -359,6 +364,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Options\ADOBEFLASH.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>ADOBEFLASH.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Options\FORWARDER.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>FORWARDER.Designer.cs</LastGenOutput>

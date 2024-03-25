@@ -11,7 +11,7 @@ namespace FriishProduce
         {
             InitializeComponent();
 
-            Settings = new Dictionary<string, string>
+            Options = new Dictionary<string, string>
             {
                 { "brightness", VC_N64.Default.patch_fixbrightness },
                 { "crash",  VC_N64.Default.patch_fixcrashes },
@@ -36,26 +36,26 @@ namespace FriishProduce
         {
             // Form control
             // *******
-            if (Settings != null)
+            if (Options != null)
             {
                 n64003.Enabled = n64001.Enabled = EmuType <= 1;
                 n64004.Visible = n64004.Enabled = EmuType == 3;
-                n64000.Checked = bool.Parse(Settings["brightness"]);
-                n64001.Checked = bool.Parse(Settings["crash"]);
-                n64002.Checked = bool.Parse(Settings["expansion"]);
-                n64003.Checked = bool.Parse(Settings["rom_autosize"]);
-                ROMCType.SelectedIndex = bool.Parse(Settings["romc_0"]) ? 0 : 1;
+                n64000.Checked = bool.Parse(Options["brightness"]);
+                n64001.Checked = bool.Parse(Options["crash"]);
+                n64002.Checked = bool.Parse(Options["expansion"]);
+                n64003.Checked = bool.Parse(Options["rom_autosize"]);
+                ROMCType.SelectedIndex = bool.Parse(Options["romc_0"]) ? 0 : 1;
             }
             // *******
         }
 
         protected override void SaveOptions()
         {
-            Settings["brightness"] = n64000.Checked.ToString();
-            Settings["crash"] = n64001.Checked.ToString();
-            Settings["expansion"] = n64002.Checked.ToString();
-            Settings["rom_autosize"] = n64003.Checked.ToString();
-            Settings["romc_0"] = (ROMCType.SelectedIndex == 0).ToString();
+            Options["brightness"] = n64000.Checked.ToString();
+            Options["crash"] = n64001.Checked.ToString();
+            Options["expansion"] = n64002.Checked.ToString();
+            Options["rom_autosize"] = n64003.Checked.ToString();
+            Options["romc_0"] = (ROMCType.SelectedIndex == 0).ToString();
         }
 
         // ---------------------------------------------------------------------------------------------------------------

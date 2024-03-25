@@ -39,6 +39,7 @@ namespace FriishProduce
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.bottomPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BrightnessValue)).BeginInit();
@@ -134,13 +135,14 @@ namespace FriishProduce
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.checkBox2);
             this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.Controls.Add(this.toggleSwitchL1);
             this.groupBox3.Controls.Add(this.comboBox1);
             this.groupBox3.Controls.Add(this.toggleSwitch1);
             this.groupBox3.Location = new System.Drawing.Point(293, 32);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(275, 90);
+            this.groupBox3.Size = new System.Drawing.Size(275, 110);
             this.groupBox3.TabIndex = 20;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "System";
@@ -159,10 +161,21 @@ namespace FriishProduce
             this.checkBox1.AutoSize = true;
             this.checkBox1.Location = new System.Drawing.Point(12, 10);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(81, 18);
+            this.checkBox1.Size = new System.Drawing.Size(75, 17);
             this.checkBox1.TabIndex = 20;
             this.checkBox1.Text = "Use SRAM";
             this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.checkBox2.Location = new System.Drawing.Point(9, 85);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(123, 17);
+            this.checkBox2.TabIndex = 21;
+            this.checkBox2.Text = "Disable reset button";
+            this.checkBox2.UseVisualStyleBackColor = true;
             // 
             // Options_VC_SEGA
             // 
@@ -196,5 +209,6 @@ namespace FriishProduce
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkBox2;
     }
 }

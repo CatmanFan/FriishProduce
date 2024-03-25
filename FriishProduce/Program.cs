@@ -25,6 +25,7 @@ namespace FriishProduce
                 Environment.Exit(-1);
                 return;
             }
+
             else if (Process.GetProcessesByName(Process.GetCurrentProcess().ProcessName).Length > 1)
             {
                 foreach (var Process in Process.GetProcessesByName(Process.GetCurrentProcess().ProcessName))

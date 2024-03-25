@@ -16,6 +16,7 @@ namespace FriishProduce.WiiVC
             NeedsMainDOL = false;
             MainContentIndex = 5;
             NeedsManualLoaded = true;
+            SaveTextEncoding = Encoding.BigEndianUnicode;
 
             base.Load();
         }
@@ -90,15 +91,12 @@ namespace FriishProduce.WiiVC
             // TEXT
             // -----------------------
 
+            lines = ConvertSaveText(lines);
+
             using (var s = new MemoryStream())
             {
-                var m = new StreamReader(new MemoryStream(MainContent.Data[MainContent.GetNodeIndex("TITLE.TXT")]), Encoding.UTF8);
-
-                m.ReadToEnd();
-                var t = new StreamWriter(s, m.CurrentEncoding);
-
-                m.DiscardBufferedData();
-                m.BaseStream.Seek(0, SeekOrigin.Begin);
+                var m = new StreamReader(new MemoryStream(MainContent.Data[MainContent.GetNodeIndex("TITLE.TXT")]), SaveTextEncoding);
+                var t = new StreamWriter(s, SaveTextEncoding);
 
                 int line = 0;
                 string ln;

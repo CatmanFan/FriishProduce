@@ -52,8 +52,8 @@ namespace FriishProduce
                             new ToolStripMenuItem(null, new Icon(Properties.Resources.snk_neo_geo_aes, 16, 16).ToBitmap(), AddProject, Console.NEO.ToString()),
                             new ToolStripSeparator(),
                             new ToolStripMenuItem(null, Properties.Resources.msx, AddProject, Console.MSX.ToString()),
-                         // new ToolStripSeparator(),
-                         // new ToolStripMenuItem(null, Properties.Resources.flash, AddProject, Console.Flash.ToString()),
+                            new ToolStripSeparator(),
+                            new ToolStripMenuItem(null, Properties.Resources.flash, AddProject, Console.Flash.ToString()),
                          // new ToolStripSeparator(),
                          // new ToolStripMenuItem(null, new Icon(Properties.Resources.sony_playstation, 16, 16).ToBitmap(), AddProject, Console.PSX.ToString())
                         //})
@@ -273,8 +273,8 @@ namespace FriishProduce
         {
             var currentForm = tabControl.SelectedForm as InjectorForm;
 
-            SaveWAD.FileName = currentForm.GetName();
-            if (SaveWAD.ShowDialog() == DialogResult.OK) currentForm.CreateInject();
+            SaveWAD.FileName = string.IsNullOrWhiteSpace(SaveWAD.FileName) ? currentForm.GetName() : Path.GetFileNameWithoutExtension(SaveWAD.FileName);
+            if (SaveWAD.ShowDialog() == DialogResult.OK) currentForm.SaveToWAD();
         }
 
         private void OpenImage_Click(object sender, EventArgs e)
@@ -332,30 +332,6 @@ namespace FriishProduce
             x.ShowDialog();
             x.Dispose();
             RefreshForm();
-        }
-
-        private void OpenExports(object sender, EventArgs e)
-        {
-            System.Diagnostics.ProcessStartInfo info = new System.Diagnostics.ProcessStartInfo();
-            info.FileName = Paths.Out;
-            info.UseShellExecute = true;
-            info.Verb = "open";
-            System.Diagnostics.Process.Start(info);
-        }
-
-        private void CleanExports(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("Are you sure?", MessageBoxButtons.YesNo, TaskDialogIcon.Warning) == MessageBox.Result.Yes)
-            {
-                try
-                {
-                    foreach (var item in Directory.GetFiles(Paths.Out, "*.*", SearchOption.AllDirectories))
-                        if (!Path.GetFileName(item).ToLower().Contains("readme.md")) File.Delete(item);
-                    foreach (var item in Directory.GetDirectories(Paths.Out))
-                        Directory.Delete(item, true);
-                }
-                catch { }
-            }
         }
     }
 }

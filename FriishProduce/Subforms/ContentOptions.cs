@@ -7,14 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static FriishProduce.Properties.Settings;
+using FriishProduce.Options;
 
 namespace FriishProduce
 {
     public partial class ContentOptions : Form
     {
         #region Variables to be changed go here. They should not be copied!
-        public IDictionary<string, string> Settings { get; protected set; }
+        public IDictionary<string, string> Options { get; protected set; }
         public int EmuType { get; set; }
         #endregion
 
@@ -22,7 +22,7 @@ namespace FriishProduce
         {
             InitializeComponent();
 
-            Settings = new Dictionary<string, string>
+            Options = new Dictionary<string, string>
             {
             };
 
@@ -44,7 +44,7 @@ namespace FriishProduce
         {
             // Form control
             // *******
-            if (Settings != null)
+            if (Options != null)
             {
                 // Code logic in derived Form
             }
