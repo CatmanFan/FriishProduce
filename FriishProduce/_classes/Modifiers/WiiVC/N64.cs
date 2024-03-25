@@ -353,17 +353,19 @@ namespace FriishProduce.WiiVC
             // ---------------------------------------------------------
             // Check ROM size
             // ****************
-            int NewSize = (1 + (ROM.Bytes.Length / 1048576)) * 1048576;
-            ROM.CheckSize(NewSize);
+            int NewSize = 1 + ROM.Bytes.Length / 1024 / 1024;
+            ROM.CheckSize();
 
             // Check for offset
             // ****************
-            int index = Byte.IndexOf(Contents[1], "44 38 7D 00 1C 3C 80", 0x5A000, 0x5E000);
+            int index = Byte.IndexOf(Contents[1], "7D 00 1C 3C 80", 0x5A000, 0x5E000);
 
             if (index == -1) return false;
             else
             {
-                index += 7;
+                var origSize = BitConverter.ToString(Contents[1].Skip(index + 5).Take(2).ToArray()).Replace("-", "");
+
+                if (origSize[0] != '7' || origSize[3] != '0' || Byte.IndexOf(Contents[1], "1D 00 1C 3C 60", index, index + 50) == -1) return false;
 
                 // Set size value in bytes
                 // ****************
@@ -378,15 +380,10 @@ namespace FriishProduce.WiiVC
 
                 // Copy
                 // ****************
-                Contents[1][index] = size_array[0];
-                Contents[1][index + 1] = size_array[1];
+                (Contents[1][index + 5], Contents[1][index + 6]) = (size_array[0], size_array[1]);
 
-                var second = BitConverter.ToString(new byte[] { Contents[1][index + 36], Contents[1][index + 37] }).Replace("-", "");
-                if (second[0] == '0' && second[3] == '0')
-                {
-                    Contents[1][index + 36] = size_array[2];
-                    Contents[1][index + 37] = size_array[3];
-                }
+                index = Byte.IndexOf(Contents[1], "1D 00 1C 3C 60", index, index + 50);
+                (Contents[1][index + 5], Contents[1][index + 6]) = (size_array[2], size_array[3]);
 
                 return true;
             }
