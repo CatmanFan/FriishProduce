@@ -29,6 +29,7 @@ namespace FriishProduce
             VC_SEGA.Default.Save();
             VC_PCE.Default.Save();
             VC_NEO.Default.Save();
+            ADOBEFLASH.Default.Save();
         }
 
         public void RefreshForm()
@@ -53,7 +54,8 @@ namespace FriishProduce
             TreeView.Nodes[1].Nodes[2].Text = Language.Get("Group1", "Platforms");
             TreeView.Nodes[1].Nodes[3].Text = Language.Get(Console.PCE.ToString(), "Platforms");
             TreeView.Nodes[1].Nodes[4].Text = Language.Get(Console.NEO.ToString(), "Platforms");
-            TreeView.Nodes[1].Nodes[5].Text = Language.Get("Forwarders");
+            TreeView.Nodes[1].Nodes[5].Text = Language.Get(Console.Flash.ToString(), "Platforms");
+            TreeView.Nodes[1].Nodes[6].Text = Language.Get("Forwarders");
 
             // -----------------------------
 
@@ -129,6 +131,18 @@ namespace FriishProduce
 
             // -----------------------------
 
+            groupBox14.Text = Language.Get("groupBox1", typeof(Options_Flash).Name, true);
+            groupBox12.Text = Language.Get("groupBox3", typeof(Options_Flash).Name, true);
+            groupBox13.Text = Language.Get("groupBox2", typeof(Options_Flash).Name, true);
+            FLASH_savedata.Text = Language.Get("checkBox1", typeof(Options_Flash).Name, true);
+            FLASH_vff_sync_on_write.Text = Language.Get("checkBox2", typeof(Options_Flash).Name, true);
+            label4.Text = Language.Get("label1", typeof(Options_Flash).Name, true);
+            FLASH_mouse.Text = Language.Get("checkBox3", typeof(Options_Flash).Name, true);
+            FLASH_qwerty_keyboard.Text = Language.Get("checkBox4", typeof(Options_Flash).Name, true);
+            Language.GetComboBox(FLASH_quality, "comboBox1", typeof(Options_Flash).Name);
+
+            // -----------------------------
+
             FStorage_SD.Checked = FORWARDER.Default.root_storage_device.ToLower() == "sd";
             toggleSwitch1.Checked = FORWARDER.Default.nand_loader.ToLower() == "vwii";
             FStorage_USB.Checked = !FStorage_SD.Checked;
@@ -173,6 +187,14 @@ namespace FriishProduce
                     NGBios.SelectedIndex = 2;
                     break;
             }
+
+            FLASH_savedata.Checked = ADOBEFLASH.Default.shared_object_capability == "on";
+            FLASH_vff_sync_on_write.Checked = ADOBEFLASH.Default.vff_sync_on_write == "on";
+            FLASH_vff_cache_size.SelectedItem = FLASH_vff_cache_size.Items.Cast<string>().FirstOrDefault(n => n.ToString() == ADOBEFLASH.Default.vff_cache_size);
+            FLASH_quality.SelectedIndex = ADOBEFLASH.Default.quality == "high" ? 0 : ADOBEFLASH.Default.quality == "medium" ? 1 : 2;
+            FLASH_mouse.Checked = ADOBEFLASH.Default.mouse == "on";
+            FLASH_qwerty_keyboard.Checked = ADOBEFLASH.Default.qwerty_keyboard == "on";
+            label4.Enabled = FLASH_vff_sync_on_write.Enabled = FLASH_vff_cache_size.Enabled = FLASH_savedata.Checked;
 
             // -----------------------------
         }
@@ -225,6 +247,14 @@ namespace FriishProduce
             VC_PCE.Default.HIDEOVERSCAN = PCEHideOverscan.Checked ? "1" : "0";
             VC_PCE.Default.RASTER = PCEBgRaster.Checked ? "1" : "0";
             VC_PCE.Default.SPRLINE = PCESpriteLimit.Checked ? "1" : "0";
+
+            ADOBEFLASH.Default.shared_object_capability = FLASH_savedata.Checked ? "on" : "off";
+            ADOBEFLASH.Default.vff_sync_on_write = FLASH_vff_sync_on_write.Checked ? "on" : "off";
+            ADOBEFLASH.Default.vff_cache_size = FLASH_vff_cache_size.SelectedItem.ToString();
+            ADOBEFLASH.Default.quality = FLASH_quality.SelectedIndex == 0 ? "high" : FLASH_quality.SelectedIndex == 1 ? "medium" : "low";
+            ADOBEFLASH.Default.mouse = FLASH_mouse.Checked ? "on" : "off";
+            ADOBEFLASH.Default.qwerty_keyboard = FLASH_qwerty_keyboard.Checked ? "on" : "off";
+            ADOBEFLASH.Default.hbm_no_save = ADOBEFLASH.Default.shared_object_capability == "on" ? "no" : "yes";
 
             switch (NGBios.SelectedIndex)
             {
@@ -316,7 +346,7 @@ namespace FriishProduce
             panel6.Hide();
             panel7.Hide();
             panel8.Hide();
-            // panel9.Hide();
+            panel9.Hide();
 
             if (!NodeLocked) NodeName = e.Node.Name;
 
@@ -354,7 +384,7 @@ namespace FriishProduce
                     break;
 
                 case "Flash":
-                    // panel9.Show();
+                    panel9.Show();
                     break;
 
                 case "Forwarders":
@@ -396,6 +426,7 @@ namespace FriishProduce
             toggleSwitchL2.Text = Language.GetToggleSwitch(toggleSwitch2, "toggleSwitch1", typeof(Options_VC_PCE).Name);
             toggleSwitchL3.Text = Language.GetToggleSwitch(toggleSwitch3, "toggleSwitch2", typeof(Options_VC_PCE).Name);
             toggleSwitchL4.Text = Language.GetToggleSwitch(toggleSwitch4, "toggleSwitch3", typeof(Options_VC_PCE).Name);
+            label4.Enabled = FLASH_vff_sync_on_write.Enabled = FLASH_vff_cache_size.Enabled = FLASH_savedata.Checked;
         }
 
         private void BrightnessValue_Scroll(object sender, EventArgs e) => label1.Text = SEGA_console_brightness.Value.ToString();

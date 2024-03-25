@@ -31,6 +31,7 @@ namespace FriishProduce
         {
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
@@ -38,7 +39,6 @@ namespace FriishProduce
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.bottomPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -81,6 +81,16 @@ namespace FriishProduce
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Save data";
             // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(10, 40);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(111, 17);
+            this.checkBox2.TabIndex = 25;
+            this.checkBox2.Text = "VFF sync on write";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
@@ -106,7 +116,6 @@ namespace FriishProduce
             this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Items.AddRange(new object[] {
-            "static",
             "32",
             "48",
             "72",
@@ -163,16 +172,6 @@ namespace FriishProduce
             this.checkBox3.TabIndex = 13;
             this.checkBox3.Text = "Mouse";
             this.checkBox3.UseVisualStyleBackColor = true;
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(10, 40);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(111, 17);
-            this.checkBox2.TabIndex = 25;
-            this.checkBox2.Text = "VFF sync on write";
-            this.checkBox2.UseVisualStyleBackColor = true;
             // 
             // Options_Flash
             // 

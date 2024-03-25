@@ -326,9 +326,12 @@ namespace FriishProduce
 
             catch
             {
-                x.Items.Clear();
-                x.Items.Add(Get(name + $".Items", section, true) == "undefined" ? "def" : "auto");
-                goto Begin;
+                if (Get(name + $".Items", section, true) != "undefined" || Get(name + $".Items1", section, true) != "undefined")
+                {
+                    x.Items.Clear();
+                    x.Items.Add(Get(name + $".Items", section, true) != "undefined" ? "auto" : Get(name + $".Items1", section, true) != "undefined" ? "def" : "static");
+                    goto Begin;
+                }
             }
         }
 
