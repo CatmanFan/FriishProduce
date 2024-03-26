@@ -127,7 +127,7 @@ namespace FriishProduce
             // ********
             // SaveWAD.InitialDirectory = Paths.Out;
 
-            // Updater.GetLatest();
+            Updater.GetLatest();
         }
 
         private void Settings_Click(object sender, EventArgs e)

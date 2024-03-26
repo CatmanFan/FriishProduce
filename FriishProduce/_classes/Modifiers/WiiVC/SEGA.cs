@@ -33,15 +33,6 @@ namespace FriishProduce.WiiVC
             Rev3            // Phantasy Star (SMS); Pulseman (SMD); Sonic & Knuckles (special edition)
         }
 
-        private readonly string[] CCFApps = new string[]
-        {
-            "ccfex",        // 0 = New CCF ext
-            "ccfex2009",    // 1 = Old CCF ext
-            "ccfarc",       // 2 = New CCF arc
-            "ccfarc2009",   // 3 = Old CCF arc
-            "ccfarcraw"     // 4 = Raw CCF arc
-        };
-
         public bool IsSMS { get; set; }
 
         private CCF MainCCF { get; set; }

@@ -285,6 +285,7 @@ namespace FriishProduce
             // 
             // Welcome_DoNotShow
             // 
+            this.Welcome_DoNotShow.BackColor = System.Drawing.Color.White;
             this.Welcome_DoNotShow.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.Welcome_DoNotShow.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
             this.Welcome_DoNotShow.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro;
