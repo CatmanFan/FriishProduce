@@ -36,7 +36,6 @@ namespace FriishProduce
         protected ImageHelper Img { get; set; }
         protected Creator Creator { get; set; }
 
-        protected bool isVC { get; set; }
         protected InjectorWiiVC VC { get; set; }
 
         // -----------------------------------

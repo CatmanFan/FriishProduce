@@ -9,7 +9,7 @@ namespace FriishProduce
     public static class Preview
     {
 
-        private static Color[][] ColorSchemes = new Color[][]
+        private static readonly Color[][] ColorSchemes = new Color[][]
         {
             // ****************
 
@@ -420,7 +420,7 @@ namespace FriishProduce
                         break;
                 }
 
-                var f = new Font(Font(), (float)9);
+                var f = new Font(Font(), 9);
                 var brush = new SolidBrush(ColorSchemes[target][5]);
 
                 var p = new GraphicsPath();

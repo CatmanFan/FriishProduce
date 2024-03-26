@@ -751,7 +751,7 @@ namespace FriishProduce
         }
 
         [System.Runtime.InteropServices.DllImport("user32.dll")]
-        static extern bool PostMessage(IntPtr hWnd, UInt32 Msg, int wParam, int lParam);
+        static extern bool PostMessage(IntPtr hWnd, uint Msg, int wParam, int lParam);
 
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         private static extern int SetForegroundWindow(IntPtr point);

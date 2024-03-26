@@ -410,6 +410,7 @@
   <ItemGroup>
     <Content Include="Database.xml" />
     <Content Include="icon.ico" />
+    <None Include="Resources\sound.wave.wav" />
     <None Include="Resources\icons\consoles\sony playstation.ico" />
     <None Include="Resources\icons\msx.png" />
     <None Include="Resources\icons\globe-model.png" />
