@@ -30,6 +30,7 @@ namespace FriishProduce
             {
                 Language.Localize(this);
                 toggleSwitchL1.Text = Language.Get(toggleSwitch1, this);
+                checkBox1.Text = Language.Get("EnableSaving");
 
                 comboBox1.Items.Clear();
                 comboBox1.Items.Add(Language.Get("Region.U"));

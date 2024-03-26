@@ -31,6 +31,7 @@ namespace FriishProduce
             {
                 Language.Localize(this);
                 groupBox1.Text = Language.Get("SaveData");
+                checkBox1.Text = Language.Get("EnableSaving");
             }
         }
 

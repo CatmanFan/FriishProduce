@@ -412,8 +412,8 @@ namespace FriishProduce
                 if (x.Name.ToLower() == "close") { x.Text = Get("B.Close"); (x as Button).UseMnemonic = true; }
             }
 
-            if (origText.ToLower() == "system") x.Text = Get("System");
-            if (origText.ToLower() == "display") x.Text = Get("Display");
+            if (origText.ToLower() == "system" || x.Name.StartsWith("system")) x.Text = Get("System");
+            if (origText.ToLower() == "display" || x.Name.StartsWith("display")) x.Text = Get("Display");
         }
     }
 }

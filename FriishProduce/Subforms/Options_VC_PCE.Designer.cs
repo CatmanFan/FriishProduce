@@ -141,9 +141,9 @@ namespace FriishProduce
             this.checkBox4.AutoSize = true;
             this.checkBox4.Location = new System.Drawing.Point(12, 10);
             this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(81, 18);
+            this.checkBox4.Size = new System.Drawing.Size(92, 17);
             this.checkBox4.TabIndex = 5;
-            this.checkBox4.Text = "Use SRAM";
+            this.checkBox4.Text = "Enable saving";
             this.checkBox4.UseVisualStyleBackColor = true;
             // 
             // groupBox2
@@ -186,7 +186,7 @@ namespace FriishProduce
             this.checkBox3.AutoSize = true;
             this.checkBox3.Location = new System.Drawing.Point(10, 88);
             this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(81, 18);
+            this.checkBox3.Size = new System.Drawing.Size(75, 17);
             this.checkBox3.TabIndex = 2;
             this.checkBox3.Text = "Sprite limit";
             this.checkBox3.UseVisualStyleBackColor = true;
@@ -196,7 +196,7 @@ namespace FriishProduce
             this.checkBox2.AutoSize = true;
             this.checkBox2.Location = new System.Drawing.Point(10, 67);
             this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(77, 18);
+            this.checkBox2.Size = new System.Drawing.Size(71, 17);
             this.checkBox2.TabIndex = 1;
             this.checkBox2.Text = "BG raster";
             this.checkBox2.UseVisualStyleBackColor = true;
@@ -206,7 +206,7 @@ namespace FriishProduce
             this.checkBox1.AutoSize = true;
             this.checkBox1.Location = new System.Drawing.Point(10, 46);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(100, 18);
+            this.checkBox1.Size = new System.Drawing.Size(94, 17);
             this.checkBox1.TabIndex = 0;
             this.checkBox1.Text = "Hide overscan";
             this.checkBox1.UseVisualStyleBackColor = true;

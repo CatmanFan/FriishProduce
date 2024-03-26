@@ -68,24 +68,24 @@ namespace FriishProduce
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.NGBios = new System.Windows.Forms.ComboBox();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.system1 = new System.Windows.Forms.GroupBox();
             this.SEGA_console_disableresetbutton = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
             this.SEGA_dev_mdpad_enable_6b = new System.Windows.Forms.CheckBox();
             this.SEGA_country = new System.Windows.Forms.ComboBox();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.display2 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.SEGA_console_brightness = new System.Windows.Forms.TrackBar();
             this.SEGA_save_sram = new System.Windows.Forms.CheckBox();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.PCEUseSRAM = new System.Windows.Forms.CheckBox();
-            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.PCESavedata = new System.Windows.Forms.CheckBox();
+            this.display = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.PCEYOffset = new System.Windows.Forms.NumericUpDown();
             this.PCESpriteLimit = new System.Windows.Forms.CheckBox();
             this.PCEBgRaster = new System.Windows.Forms.CheckBox();
             this.PCEHideOverscan = new System.Windows.Forms.CheckBox();
-            this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.system = new System.Windows.Forms.GroupBox();
             this.toggleSwitch2 = new JCS.ToggleSwitch();
             this.toggleSwitchL2 = new System.Windows.Forms.Label();
             this.toggleSwitch4 = new JCS.ToggleSwitch();
@@ -120,13 +120,13 @@ namespace FriishProduce
             this.panel8.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.panel6.SuspendLayout();
-            this.groupBox7.SuspendLayout();
-            this.groupBox6.SuspendLayout();
+            this.system1.SuspendLayout();
+            this.display2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SEGA_console_brightness)).BeginInit();
             this.panel7.SuspendLayout();
-            this.groupBox10.SuspendLayout();
+            this.display.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PCEYOffset)).BeginInit();
-            this.groupBox11.SuspendLayout();
+            this.system.SuspendLayout();
             this.panel9.SuspendLayout();
             this.groupBox12.SuspendLayout();
             this.groupBox13.SuspendLayout();
@@ -403,21 +403,21 @@ namespace FriishProduce
             // 
             // panel6
             // 
-            this.panel6.Controls.Add(this.groupBox7);
-            this.panel6.Controls.Add(this.groupBox6);
+            this.panel6.Controls.Add(this.system1);
+            this.panel6.Controls.Add(this.display2);
             this.panel6.Controls.Add(this.SEGA_save_sram);
             resources.ApplyResources(this.panel6, "panel6");
             this.panel6.Name = "panel6";
             // 
-            // groupBox7
+            // system1
             // 
-            this.groupBox7.Controls.Add(this.SEGA_console_disableresetbutton);
-            this.groupBox7.Controls.Add(this.label2);
-            this.groupBox7.Controls.Add(this.SEGA_dev_mdpad_enable_6b);
-            this.groupBox7.Controls.Add(this.SEGA_country);
-            resources.ApplyResources(this.groupBox7, "groupBox7");
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.TabStop = false;
+            this.system1.Controls.Add(this.SEGA_console_disableresetbutton);
+            this.system1.Controls.Add(this.label2);
+            this.system1.Controls.Add(this.SEGA_dev_mdpad_enable_6b);
+            this.system1.Controls.Add(this.SEGA_country);
+            resources.ApplyResources(this.system1, "system1");
+            this.system1.Name = "system1";
+            this.system1.TabStop = false;
             // 
             // SEGA_console_disableresetbutton
             // 
@@ -443,13 +443,13 @@ namespace FriishProduce
             resources.ApplyResources(this.SEGA_country, "SEGA_country");
             this.SEGA_country.Name = "SEGA_country";
             // 
-            // groupBox6
+            // display2
             // 
-            this.groupBox6.Controls.Add(this.label1);
-            this.groupBox6.Controls.Add(this.SEGA_console_brightness);
-            resources.ApplyResources(this.groupBox6, "groupBox6");
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.TabStop = false;
+            this.display2.Controls.Add(this.label1);
+            this.display2.Controls.Add(this.SEGA_console_brightness);
+            resources.ApplyResources(this.display2, "display2");
+            this.display2.Name = "display2";
+            this.display2.TabStop = false;
             // 
             // label1
             // 
@@ -472,28 +472,28 @@ namespace FriishProduce
             // 
             // panel7
             // 
-            this.panel7.Controls.Add(this.PCEUseSRAM);
-            this.panel7.Controls.Add(this.groupBox10);
-            this.panel7.Controls.Add(this.groupBox11);
+            this.panel7.Controls.Add(this.PCESavedata);
+            this.panel7.Controls.Add(this.display);
+            this.panel7.Controls.Add(this.system);
             resources.ApplyResources(this.panel7, "panel7");
             this.panel7.Name = "panel7";
             // 
-            // PCEUseSRAM
+            // PCESavedata
             // 
-            resources.ApplyResources(this.PCEUseSRAM, "PCEUseSRAM");
-            this.PCEUseSRAM.Name = "PCEUseSRAM";
-            this.PCEUseSRAM.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.PCESavedata, "PCESavedata");
+            this.PCESavedata.Name = "PCESavedata";
+            this.PCESavedata.UseVisualStyleBackColor = true;
             // 
-            // groupBox10
+            // display
             // 
-            this.groupBox10.Controls.Add(this.label3);
-            this.groupBox10.Controls.Add(this.PCEYOffset);
-            this.groupBox10.Controls.Add(this.PCESpriteLimit);
-            this.groupBox10.Controls.Add(this.PCEBgRaster);
-            this.groupBox10.Controls.Add(this.PCEHideOverscan);
-            resources.ApplyResources(this.groupBox10, "groupBox10");
-            this.groupBox10.Name = "groupBox10";
-            this.groupBox10.TabStop = false;
+            this.display.Controls.Add(this.label3);
+            this.display.Controls.Add(this.PCEYOffset);
+            this.display.Controls.Add(this.PCESpriteLimit);
+            this.display.Controls.Add(this.PCEBgRaster);
+            this.display.Controls.Add(this.PCEHideOverscan);
+            resources.ApplyResources(this.display, "display");
+            this.display.Name = "display";
+            this.display.TabStop = false;
             // 
             // label3
             // 
@@ -528,17 +528,17 @@ namespace FriishProduce
             this.PCEHideOverscan.Name = "PCEHideOverscan";
             this.PCEHideOverscan.UseVisualStyleBackColor = true;
             // 
-            // groupBox11
+            // system
             // 
-            this.groupBox11.Controls.Add(this.toggleSwitch2);
-            this.groupBox11.Controls.Add(this.toggleSwitchL2);
-            this.groupBox11.Controls.Add(this.toggleSwitch4);
-            this.groupBox11.Controls.Add(this.toggleSwitchL3);
-            this.groupBox11.Controls.Add(this.toggleSwitchL4);
-            this.groupBox11.Controls.Add(this.toggleSwitch3);
-            resources.ApplyResources(this.groupBox11, "groupBox11");
-            this.groupBox11.Name = "groupBox11";
-            this.groupBox11.TabStop = false;
+            this.system.Controls.Add(this.toggleSwitch2);
+            this.system.Controls.Add(this.toggleSwitchL2);
+            this.system.Controls.Add(this.toggleSwitch4);
+            this.system.Controls.Add(this.toggleSwitchL3);
+            this.system.Controls.Add(this.toggleSwitchL4);
+            this.system.Controls.Add(this.toggleSwitch3);
+            resources.ApplyResources(this.system, "system");
+            this.system.Name = "system";
+            this.system.TabStop = false;
             // 
             // toggleSwitch2
             // 
@@ -680,18 +680,18 @@ namespace FriishProduce
             this.CancelButton = this.Cancel;
             resources.ApplyResources(this, "$this");
             this.ControlBox = false;
-            this.Controls.Add(this.panel9);
             this.Controls.Add(this.bottomPanel2);
             this.Controls.Add(this.leftSeparator);
             this.Controls.Add(this.TreeView);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel8);
             this.Controls.Add(this.panel4);
+            this.Controls.Add(this.panel9);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel5);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MaximizeBox = false;
@@ -725,17 +725,17 @@ namespace FriishProduce
             this.groupBox5.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
-            this.groupBox6.ResumeLayout(false);
+            this.system1.ResumeLayout(false);
+            this.system1.PerformLayout();
+            this.display2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.SEGA_console_brightness)).EndInit();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
-            this.groupBox10.ResumeLayout(false);
-            this.groupBox10.PerformLayout();
+            this.display.ResumeLayout(false);
+            this.display.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PCEYOffset)).EndInit();
-            this.groupBox11.ResumeLayout(false);
-            this.groupBox11.PerformLayout();
+            this.system.ResumeLayout(false);
+            this.system.PerformLayout();
             this.panel9.ResumeLayout(false);
             this.groupBox12.ResumeLayout(false);
             this.groupBox12.PerformLayout();
@@ -787,22 +787,22 @@ namespace FriishProduce
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.CheckBox SEGA_dev_mdpad_enable_6b;
         private System.Windows.Forms.CheckBox SEGA_save_sram;
-        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.GroupBox display2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TrackBar SEGA_console_brightness;
-        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.GroupBox system1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox SEGA_country;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.CheckBox PCEUseSRAM;
-        private System.Windows.Forms.GroupBox groupBox11;
+        private System.Windows.Forms.CheckBox PCESavedata;
+        private System.Windows.Forms.GroupBox system;
         private JCS.ToggleSwitch toggleSwitch2;
         private System.Windows.Forms.Label toggleSwitchL2;
         private JCS.ToggleSwitch toggleSwitch4;
         private System.Windows.Forms.Label toggleSwitchL3;
         private System.Windows.Forms.Label toggleSwitchL4;
         private JCS.ToggleSwitch toggleSwitch3;
-        private System.Windows.Forms.GroupBox groupBox10;
+        private System.Windows.Forms.GroupBox display;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.NumericUpDown PCEYOffset;
         private System.Windows.Forms.CheckBox PCESpriteLimit;

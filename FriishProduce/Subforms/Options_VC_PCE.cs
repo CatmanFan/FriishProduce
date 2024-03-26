@@ -38,6 +38,7 @@ namespace FriishProduce
                 toggleSwitchL1.Text = Language.Get(toggleSwitch1, this);
                 toggleSwitchL2.Text = Language.Get(toggleSwitch2, this);
                 toggleSwitchL3.Text = Language.Get(toggleSwitch3, this);
+                checkBox4.Text = Language.Get("EnableSaving");
             }
         }
 

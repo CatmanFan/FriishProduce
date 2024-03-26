@@ -1,9 +1,9 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="FriishProduce.Settings" GeneratedClassName="PCE">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="FriishProduce.Options" GeneratedClassName="VC_PCE">
   <Profiles />
   <Settings>
     <Setting Name="BACKUPRAM" Type="System.String" Scope="User">
-      <Value Profile="(Default)">1</Value>
+      <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="PADBUTTON" Type="System.String" Scope="User">
       <Value Profile="(Default)">2</Value>

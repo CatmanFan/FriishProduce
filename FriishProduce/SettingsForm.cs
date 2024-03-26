@@ -104,7 +104,7 @@ namespace FriishProduce
             // -----------------------------
 
             label2.Text = Language.Get("label2", typeof(Options_VC_SEGA).Name, true);
-            SEGA_save_sram.Text = Language.Get("checkBox1", typeof(Options_VC_SEGA).Name, true);
+            SEGA_save_sram.Text = Language.Get("EnableSaving");
             SEGA_dev_mdpad_enable_6b.Text = string.Format(Language.Get(SEGA_dev_mdpad_enable_6b, this), Language.Get(Console.SMD.ToString()));
             SEGA_console_disableresetbutton.Text = Language.Get("checkBox2", typeof(Options_VC_SEGA).Name, true);
 
@@ -119,7 +119,7 @@ namespace FriishProduce
             PCEHideOverscan.Text = Language.Get("checkBox1", typeof(Options_VC_PCE).Name, true);
             PCEBgRaster.Text = Language.Get("checkBox2", typeof(Options_VC_PCE).Name, true);
             PCESpriteLimit.Text = Language.Get("checkBox3", typeof(Options_VC_PCE).Name, true);
-            PCEUseSRAM.Text = Language.Get("checkBox4", typeof(Options_VC_PCE).Name, true);
+            PCESavedata.Text = Language.Get("EnableSaving");
             toggleSwitchL2.Text = Language.GetToggleSwitch(toggleSwitch2, "toggleSwitch1", typeof(Options_VC_PCE).Name);
             toggleSwitchL3.Text = Language.GetToggleSwitch(toggleSwitch3, "toggleSwitch2", typeof(Options_VC_PCE).Name);
             toggleSwitchL4.Text = Language.GetToggleSwitch(toggleSwitch4, "toggleSwitch3", typeof(Options_VC_PCE).Name);
@@ -134,7 +134,7 @@ namespace FriishProduce
             groupBox14.Text = Language.Get("SaveData");
             groupBox12.Text = Language.Get("groupBox3", typeof(Options_Flash).Name, true);
             groupBox13.Text = Language.Get("groupBox2", typeof(Options_Flash).Name, true);
-            FLASH_savedata.Text = Language.Get("checkBox1", typeof(Options_Flash).Name, true);
+            FLASH_savedata.Text = Language.Get("EnableSaving");
             FLASH_vff_sync_on_write.Text = Language.Get("checkBox2", typeof(Options_Flash).Name, true);
             label4.Text = Language.Get("label1", typeof(Options_Flash).Name, true);
             FLASH_mouse.Text = Language.Get("checkBox3", typeof(Options_Flash).Name, true);
@@ -163,7 +163,7 @@ namespace FriishProduce
             SEGA_country.SelectedIndex = VC_SEGA.Default.country == "jp" ? 0 : VC_SEGA.Default.country == "eu" ? 2 : 1;
             SEGA_console_disableresetbutton.Checked = VC_SEGA.Default.console_disableresetbutton == "1";
 
-            PCEUseSRAM.Checked = VC_PCE.Default.BACKUPRAM == "1";
+            PCESavedata.Checked = VC_PCE.Default.BACKUPRAM == "1";
             toggleSwitch2.Checked = VC_PCE.Default.EUROPE == "1";
             toggleSwitch3.Checked = VC_PCE.Default.SGENABLE == "1";
             toggleSwitch4.Checked = VC_PCE.Default.PADBUTTON == "6";
@@ -239,7 +239,7 @@ namespace FriishProduce
             VC_SEGA.Default.country = SEGA_country.SelectedIndex == 0 ? "jp" : SEGA_country.SelectedIndex == 2 ? "eu" : "us";
             VC_SEGA.Default.console_disableresetbutton = SEGA_console_disableresetbutton.Checked ? "1" : null;
 
-            VC_PCE.Default.BACKUPRAM = PCEUseSRAM.Checked ? "1" : "0";
+            VC_PCE.Default.BACKUPRAM = PCESavedata.Checked ? "1" : "0";
             VC_PCE.Default.EUROPE = toggleSwitch2.Checked ? "1" : "0";
             VC_PCE.Default.SGENABLE = toggleSwitch3.Checked ? "1" : "0";
             VC_PCE.Default.PADBUTTON = toggleSwitch4.Checked ? "6" : "2";
