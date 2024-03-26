@@ -45,14 +45,9 @@ See **[here](https://github.com/CatmanFan/FriishProduce/wiki/Translation)** for 
 ---
 
 ## To-Do
-* ***Before releasing v1.0:***
-- [ ] Check for additional bugs that need to be fixed.
 * ***Planned for v1.1:***
-- [ ] Flash emulator options list
 - [ ] Potentially reorganize consoles into their own folders?
-- [ ] Clean forms code
-- [ ] Clean languages
-- [ ] Separate classes
+- [ ] Restructure and clean code
 - [ ] Create project format
 * Other VC injection support to be done later:
   * Commodore 64 (needs [Custom Frodo](https://gbatemp.net/threads/custom-frodo-for-c64-vc-injection.102356/))
