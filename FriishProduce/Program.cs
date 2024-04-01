@@ -11,6 +11,7 @@ namespace FriishProduce
         [DllImport("user32.dll", SetLastError = true)]
         static extern void SwitchToThisWindow(IntPtr hWnd, bool turnOn);
 
+        public static Language Lang { get; set; }
         public static IntPtr Handle { get; set; }
 
         /// <summary>
@@ -36,7 +37,7 @@ namespace FriishProduce
                 return;
             }
 
-            Language.Run();
+            Lang = new Language();
 
             try
             {
@@ -51,7 +52,7 @@ namespace FriishProduce
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
 
-            { System.Threading.Thread.CurrentThread.CurrentUICulture = Language.Current; }
+            System.Threading.Thread.CurrentThread.CurrentUICulture = System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(Lang.Current);
         }
     }
 }

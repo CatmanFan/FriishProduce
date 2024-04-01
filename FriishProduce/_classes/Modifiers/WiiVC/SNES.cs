@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace FriishProduce.WiiVC
+namespace FriishProduce.Injectors
 {
     public class SNES : InjectorWiiVC
     {
@@ -45,13 +45,13 @@ namespace FriishProduce.WiiVC
                 File.WriteAllBytes(Paths.WorkingFolder + "rom", ROM.Bytes);
                 File.WriteAllBytes(Paths.WorkingFolder + "LZ77orig.rom", MainContent.Data[MainContent.GetNodeIndex(Target)]);
 
-                ProcessHelper.Run
+                Utils.Run
                 (
                     Paths.Tools + "wwcxtool.exe",
                     Paths.WorkingFolder,
                     "/cr LZ77orig.rom rom LZ77out.rom"
                 );
-                if (!File.Exists(Paths.WorkingFolder + "LZ77out.rom")) throw new Exception(Language.Get("Error.002"));
+                if (!File.Exists(Paths.WorkingFolder + "LZ77out.rom")) throw new Exception(Program.Lang.Msg(2, true));
 
                 MainContent.ReplaceFile(MainContent.GetNodeIndex(Target), Paths.WorkingFolder + "LZ77out.rom");
 

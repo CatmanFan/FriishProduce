@@ -37,9 +37,9 @@ namespace FriishProduce
             this.toggleSwitch1 = new JCS.ToggleSwitch();
             this.toggleSwitchL1 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.bottomPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BrightnessValue)).BeginInit();
@@ -47,17 +47,17 @@ namespace FriishProduce
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
-            // OK
+            // b_ok
             // 
-            this.OK.Location = new System.Drawing.Point(382, 12);
+            this.b_ok.Location = new System.Drawing.Point(382, 12);
             // 
             // bottomPanel1
             // 
             this.bottomPanel1.Size = new System.Drawing.Size(580, 47);
             // 
-            // Cancel
+            // b_cancel
             // 
-            this.Cancel.Location = new System.Drawing.Point(478, 12);
+            this.b_cancel.Location = new System.Drawing.Point(478, 12);
             // 
             // groupBox1
             // 
@@ -147,25 +147,6 @@ namespace FriishProduce
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "System";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(7, 18);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 13);
-            this.label2.TabIndex = 19;
-            this.label2.Text = "Region:";
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(12, 10);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(75, 17);
-            this.checkBox1.TabIndex = 20;
-            this.checkBox1.Text = "Use SRAM";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
             // checkBox2
             // 
             this.checkBox2.AutoSize = true;
@@ -176,6 +157,25 @@ namespace FriishProduce
             this.checkBox2.TabIndex = 21;
             this.checkBox2.Text = "Disable reset button";
             this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(7, 18);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(37, 13);
+            this.label2.TabIndex = 19;
+            this.label2.Text = "region";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(12, 10);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(75, 17);
+            this.checkBox1.TabIndex = 20;
+            this.checkBox1.Text = "Use SRAM";
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // Options_VC_SEGA
             // 

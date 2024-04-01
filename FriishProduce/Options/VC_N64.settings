@@ -1,9 +1,9 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="FriishProduce.Options" GeneratedClassName="N64">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="FriishProduce.Options" GeneratedClassName="VC_N64">
   <Profiles />
   <Settings>
-    <Setting Name="romc_type0" Type="System.String" Scope="User">
-      <Value Profile="(Default)">False</Value>
+    <Setting Name="romc_type" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1</Value>
     </Setting>
     <Setting Name="patch_fixbrightness" Type="System.String" Scope="User">
       <Value Profile="(Default)">True</Value>

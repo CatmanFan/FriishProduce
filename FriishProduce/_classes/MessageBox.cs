@@ -7,13 +7,24 @@ namespace FriishProduce
 {
     public static class MessageBox
     {
+        public enum Buttons
+        {
+            Ok,
+            OkCancel,
+            Cancel,
+            YesNo,
+            YesNoCancel,
+            Close,
+            Custom
+        }
+
         public enum Result
         {
-            Option1 = 0,
-            Option2 = 1,
-            Option3 = 2,
-            Option4 = 3,
-            Option5 = 4,
+            Button1 = 0,
+            Button2 = 1,
+            Button3 = 2,
+            Button4 = 3,
+            Button5 = 4,
             Yes = 5,
             No = 6,
             Ok = 7,
@@ -21,44 +32,62 @@ namespace FriishProduce
             Close = 9
         }
 
-        public static Result Show(string mainText, string description, MessageBoxButtons buttons, TaskDialogIcon icon = 0, int dontShow = -1, bool isLinkStyle = false)
+        public static Result Show(string mainText, string description, Buttons buttons, TaskDialogIcon icon = 0, int dontShow = -1, bool isLinkStyle = false)
         {
-            List<string> Buttons = new List<string>();
+            List<string> b = new List<string>();
 
             switch (buttons)
             {
                 default:
-                case MessageBoxButtons.OK:
-                case MessageBoxButtons.AbortRetryIgnore:
-                case MessageBoxButtons.RetryCancel:
-                    Buttons.Add(Language.Get("B.OK"));
+                case Buttons.Ok:
+                    b.Add(Program.Lang.String("b_ok"));
                     break;
 
-                case MessageBoxButtons.OKCancel:
-                    Buttons.Add(Language.Get("B.OK"));
-                    Buttons.Add(Language.Get("B.Cancel"));
+                case Buttons.OkCancel:
+                    b.Add(Program.Lang.String("b_ok"));
+                    b.Add(Program.Lang.String("b_cancel"));
                     break;
 
-                case MessageBoxButtons.YesNo:
-                    Buttons.Add(Language.Get("B.Yes"));
-                    Buttons.Add(Language.Get("B.No"));
+                case Buttons.YesNo:
+                    b.Add(Program.Lang.String("b_yes"));
+                    b.Add(Program.Lang.String("b_no"));
                     break;
 
-                case MessageBoxButtons.YesNoCancel:
-                    Buttons.Add(Language.Get("B.Yes"));
-                    Buttons.Add(Language.Get("B.No"));
-                    Buttons.Add(Language.Get("B.Cancel"));
+                case Buttons.YesNoCancel:
+                    b.Add(Program.Lang.String("b_yes"));
+                    b.Add(Program.Lang.String("b_no"));
+                    b.Add(Program.Lang.String("b_cancel"));
                     break;
+
+                case Buttons.Custom:
+                    for (int i = 0; i < 100; i++)
+                    {
+                        string s = Program.Lang.String(i.ToString("000"), "messages");
+                        bool valid = !string.IsNullOrWhiteSpace(description) ? s.Contains(mainText) || s.Contains(description) : s.Contains(mainText);
+
+                        if (valid)
+                            for (int j = 0; j < 5; j++)
+                            {
+                                string code = i.ToString("000") + "_" + (char)(j + 97);
+                                if (Program.Lang.StringCheck(code)) b.Add(Program.Lang.String(code, "messages"));
+                            }
+
+                        if (b.Count > 0) break;
+                    }
+
+                    if (b.Count == 0) b.Add(Program.Lang.String("b_ok"));
+                    break;
+
             }
 
-            return Show(mainText, description, Buttons.ToArray(), icon, dontShow, isLinkStyle);
+            return Show(mainText, description, b.ToArray(), icon, isLinkStyle, dontShow);
         }
 
-        public static Result Show(string mainText, string description, string[] buttons, TaskDialogIcon icon = 0, int dontShow = -1, bool isLinkStyle = false)
+        public static Result Show(string mainText, string description, string[] buttons, TaskDialogIcon icon = 0, bool isLinkStyle = false, int dontShow = -1)
         {
             using (TaskDialog t = new TaskDialog()
             {
-                WindowTitle = Language.AppTitle(),
+                WindowTitle = Program.Lang.ApplicationTitle,
                 MainInstruction = mainText,
                 Content = description,
                 ButtonStyle = isLinkStyle ? TaskDialogButtonStyle.CommandLinks : TaskDialogButtonStyle.Standard,
@@ -95,17 +124,17 @@ namespace FriishProduce
                         break;
                 }
 
-                if (dontShow >= 0) { t.VerificationText = Language.Get("DoNotShow"); }
+                if (dontShow >= 0) { t.VerificationText = Program.Lang.String("do_not_show"); }
 
                 var clicked = t.ShowDialog();
 
                 if (t.IsVerificationChecked && dontShow >= 0) { Properties.Settings.Default[$"DoNotShow_{dontShow:000}"] = true; Properties.Settings.Default.Save(); }
 
-                if (clicked.Text == Language.Get("B.Yes")) return Result.Yes;
-                if (clicked.Text == Language.Get("B.No")) return Result.No;
-                if (clicked.Text == Language.Get("B.OK")) return Result.Ok;
-                if (clicked.Text == Language.Get("B.Cancel")) return Result.Cancel;
-                if (clicked.Text == Language.Get("B.Close")) return Result.Close;
+                if (clicked.Text == Program.Lang.String("b_yes")) return Result.Yes;
+                if (clicked.Text == Program.Lang.String("b_no")) return Result.No;
+                if (clicked.Text == Program.Lang.String("b_ok")) return Result.Ok;
+                if (clicked.Text == Program.Lang.String("b_cancel")) return Result.Cancel;
+                if (clicked.Text == Program.Lang.String("b_close")) return Result.Close;
 
                 for (int i = 0; i < Math.Max(t.Buttons.Count, 5); i++)
                 {
@@ -116,14 +145,14 @@ namespace FriishProduce
             }
         }
 
-        public static Result Show(string mainText, string description, MessageBoxButtons buttons, TaskDialogIcon icon, bool isLinkStyle) => Show(mainText, description, buttons, icon, -1, isLinkStyle);
+        public static Result Show(string mainText, string description, Buttons buttons, TaskDialogIcon icon, bool isLinkStyle) => Show(mainText, description, buttons, icon, -1, isLinkStyle);
 
-        public static Result Show(string mainText, MessageBoxButtons buttons, TaskDialogIcon icon, bool isLinkStyle) => Show(mainText, null, buttons, icon, -1, isLinkStyle);
+        public static Result Show(string mainText, Buttons buttons, TaskDialogIcon icon, bool isLinkStyle) => Show(mainText, null, buttons, icon, -1, isLinkStyle);
 
-        public static Result Show(string mainText, MessageBoxButtons buttons = MessageBoxButtons.OK, TaskDialogIcon icon = 0, int dontShow = -1) => Show(mainText, null, buttons, icon, dontShow);
+        public static Result Show(string mainText, Buttons buttons = Buttons.Ok, TaskDialogIcon icon = 0, int dontShow = -1) => Show(mainText, null, buttons, icon, dontShow);
 
-        public static void Show(string mainText, string description, int dontShow = -1) => Show(mainText, description, MessageBoxButtons.OK, 0, dontShow);
+        public static void Show(string mainText, string description, int dontShow = -1) => Show(mainText, description, Buttons.Ok, 0, dontShow);
 
-        public static void Show(string mainText, int dontShow) => Show(mainText, null, MessageBoxButtons.OK, 0, dontShow);
+        public static void Show(string mainText, int dontShow) => Show(mainText, null, Buttons.Ok, 0, dontShow);
     }
 }

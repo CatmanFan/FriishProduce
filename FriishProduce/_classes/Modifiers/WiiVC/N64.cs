@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace FriishProduce.WiiVC
+namespace FriishProduce.Injectors
 {
     public class N64 : InjectorWiiVC
     {
@@ -104,7 +104,7 @@ namespace FriishProduce.WiiVC
                     // Compress using ROMC type
                     // ****************
                     if (CompressionType == 1) // Type 0
-                        ProcessHelper.Run
+                        Utils.Run
                         (
                             Paths.Tools + "romc0.exe",
                             Paths.WorkingFolder,
@@ -112,7 +112,7 @@ namespace FriishProduce.WiiVC
                         );
 
                     else // Type 1
-                        ProcessHelper.Run
+                        Utils.Run
                         (
                             Paths.Tools + "romc.exe",
                             Paths.WorkingFolder,
@@ -122,7 +122,7 @@ namespace FriishProduce.WiiVC
                     // Check if converted file exists
                     // ****************
                     File.Delete(Paths.WorkingFolder + "rom");
-                    if (!File.Exists(Paths.WorkingFolder + "romc")) throw new Exception(Language.Get("Error.002"));
+                    if (!File.Exists(Paths.WorkingFolder + "romc")) throw new Exception(Program.Lang.Msg(2, true));
 
                     // Convert to bytes and replace at "romc"
                     // ****************
@@ -240,22 +240,22 @@ namespace FriishProduce.WiiVC
             {
                 if (SettingParse(0))
                 {
-                    if (!ShadingFix()) failed.Add(Language.Get("n64000.Text", typeof(Options_VC_N64).Name, true));
+                    if (!ShadingFix()) failed.Add(Program.Lang.String("patch_fixbrightness", "vc_n64"));
                 }
 
                 if (SettingParse(1) && (EmuType <= 1))
                 {
-                    if (!CrashesFix()) failed.Add(Language.Get("n64001.Text", typeof(Options_VC_N64).Name, true));
+                    if (!CrashesFix()) failed.Add(Program.Lang.String("patch_fixcrashes", "vc_n64"));
                 }
 
                 if (SettingParse(2))
                 {
-                    if (!ExtendedRAM()) failed.Add(Language.Get("n64002.Text", typeof(Options_VC_N64).Name, true));
+                    if (!ExtendedRAM()) failed.Add(Program.Lang.String("patch_expandedram", "vc_n64"));
                 }
 
                 if (SettingParse(3) && (EmuType <= 1))
                 {
-                    if (!AllocateROM()) { failed.Add(Language.Get("n64003.Text", typeof(Options_VC_N64).Name, true)); Allocate = false; }
+                    if (!AllocateROM()) { failed.Add(Program.Lang.String("patch_autosizerom", "vc_n64")); Allocate = false; }
                 }
 
                 if (failed.Count > 0)
@@ -264,7 +264,7 @@ namespace FriishProduce.WiiVC
                     foreach (var item in failed)
                         failedList += "- " + item + Environment.NewLine;
 
-                    MessageBox.Show(string.Format(Language.Get("Error.004"), failedList));
+                    MessageBox.Show(string.Format(Program.Lang.Msg(4, true), failedList));
                 }
             }
             catch (Exception ex)
@@ -287,10 +287,7 @@ namespace FriishProduce.WiiVC
             {
                 for (int i = index; i > 200; i--)
                 {
-                    if (Contents[1][i] == 0x94
-                     && Contents[1][i + 1] == 0x21
-                     && Contents[1][i + 2] == 0xFF
-                     && Contents[1][i + 3] == 0xE0)
+                    if (Byte.IsSame(Contents[1].Skip(i).Take(4).ToArray(), new byte[] { 0x94, 0x21, 0xFF, 0xE0 }))
                     {
                         // Set brightness
                         // ****************

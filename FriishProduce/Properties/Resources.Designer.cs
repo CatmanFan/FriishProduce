@@ -161,9 +161,9 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap disc_blue {
+        public static System.Drawing.Bitmap disc_case {
             get {
-                object obj = ResourceManager.GetObject("disc_blue", resourceCulture);
+                object obj = ResourceManager.GetObject("disc-case", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -171,9 +171,9 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap disc_blue_large {
+        public static System.Drawing.Bitmap disk_black {
             get {
-                object obj = ResourceManager.GetObject("disc_blue_large", resourceCulture);
+                object obj = ResourceManager.GetObject("disk-black", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -425,6 +425,16 @@ namespace FriishProduce.Properties {
             get {
                 object obj = ResourceManager.GetObject("information_large", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] JSON_EN {
+            get {
+                object obj = ResourceManager.GetObject("JSON_EN", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         
@@ -695,6 +705,16 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap wooden_box_pencil {
+            get {
+                object obj = ResourceManager.GetObject("wooden_box_pencil", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap wrench {
             get {
                 object obj = ResourceManager.GetObject("wrench", resourceCulture);
@@ -709,6 +729,16 @@ namespace FriishProduce.Properties {
             get {
                 object obj = ResourceManager.GetObject("x", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] YAML_EN {
+            get {
+                object obj = ResourceManager.GetObject("YAML_EN", resourceCulture);
+                return ((byte[])(obj));
             }
         }
     }

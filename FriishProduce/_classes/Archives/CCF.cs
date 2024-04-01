@@ -5,7 +5,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Text;
 
-namespace Archives
+namespace FriishProduce
 {
     /// Conversion to C#, using reverse-engineering from the CCF Tools C source code, both by the original author (paulguy) and via libertyernie's fork: https://github.com/libertyernie/ccf-tools, and libWiiSharp's U8 method.
     /// This runs the code directly from the program instead of using a third-party app as before.

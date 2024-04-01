@@ -47,15 +47,14 @@ namespace FriishProduce
             catch { TreeView.SelectedNode = TreeView.Nodes[0]; }
             NodeLocked = false;
 
-            Language.Localize(this);
-            Text = Language.Get("Settings");
-            TreeView.Nodes[1].Nodes[0].Text = Language.Get(Console.NES.ToString());
-            TreeView.Nodes[1].Nodes[1].Text = Language.Get(Console.N64.ToString(), "Platforms");
-            TreeView.Nodes[1].Nodes[2].Text = Language.Get("Group1", "Platforms");
-            TreeView.Nodes[1].Nodes[3].Text = Language.Get(Console.PCE.ToString(), "Platforms");
-            TreeView.Nodes[1].Nodes[4].Text = Language.Get(Console.NEO.ToString(), "Platforms");
-            TreeView.Nodes[1].Nodes[5].Text = Language.Get(Console.Flash.ToString(), "Platforms");
-            TreeView.Nodes[1].Nodes[6].Text = Language.Get("Forwarders");
+            Text = Program.Lang.String("settings");
+            TreeView.Nodes[1].Nodes[0].Text = Program.Lang.Console(Console.NES);
+            TreeView.Nodes[1].Nodes[1].Text = Program.Lang.Console(Console.N64);
+            TreeView.Nodes[1].Nodes[2].Text = Program.Lang.String("group1", "platforms");
+            TreeView.Nodes[1].Nodes[3].Text = Program.Lang.Console(Console.PCE);
+            TreeView.Nodes[1].Nodes[4].Text = Program.Lang.Console(Console.NEO);
+            TreeView.Nodes[1].Nodes[5].Text = Program.Lang.Console(Console.Flash);
+            TreeView.Nodes[1].Nodes[6].Text = Program.Lang.String("forwarders", "platforms");
 
             // -----------------------------
 
@@ -63,16 +62,15 @@ namespace FriishProduce
             // Add all languages
             // -------------------------------------------
             LanguageList.Items.Clear();
-            LanguageList.Items.Add("<" + Language.Get("LanguageList.Items", this) + ">");
-            foreach (var item in Language.List)
+            LanguageList.Items.Add("<" + Program.Lang.String("system_default", Name) + ">");
+            foreach (var item in Program.Lang.List)
                 LanguageList.Items.Add(item.Value);
 
-            if (Default.UI_Language == "sys") LanguageList.SelectedIndex = 0;
-            else LanguageList.SelectedIndex = Language.List.Keys.ToList().IndexOf(Default.UI_Language) + 1;
+            if (Default.Language == "sys") LanguageList.SelectedIndex = 0;
+            else LanguageList.SelectedIndex = Program.Lang.List.Keys.ToList().IndexOf(Default.Language) + 1;
 
             DefaultImageInterpolation.Items.Clear();
-            DefaultImageInterpolation.Items.Add(Language.Get("ByDefault"));
-            DefaultImageInterpolation.Items.AddRange(Language.GetArray("List.ImageInterpolation"));
+            DefaultImageInterpolation.Items.AddRange(Program.Lang.StringArray("image_interpolation_mode", "projectform"));
             DefaultImageInterpolation.SelectedIndex = Default.ImageInterpolation;
 
             AutoLibRetro.Checked = Default.AutoLibRetro;
@@ -80,66 +78,58 @@ namespace FriishProduce
 
             // -----------------------------
 
-            groupBox8.Text = Language.Get("groupBox8", "InjectorForm", true);
-            groupBox9.Text = Language.Get("groupBox9", "InjectorForm", true);
+            forwarder_root_device.Text = Program.Lang.String(forwarder_root_device.Name, "projectform");
+            forwarder_console.Text = Program.Lang.String(forwarder_console.Name, "projectform");
 
             // -----------------------------
 
-            groupBox4.Text = Language.Get("groupBox1", typeof(Options_VC_NES).Name, true);
-            PaletteBanner.Text = Language.Get("checkBox1", typeof(Options_VC_NES).Name, true);
+            palette.Text = Program.Lang.String("palette", "vc_nes");
+            palette_use_on_banner.Text = Program.Lang.String("palette_use_on_banner", "vc_nes");
 
-            Language.GetComboBox(PaletteList, "PaletteList", typeof(Options_VC_NES).Name);
-
-            // -----------------------------
-
-            n64000.Text = Language.Get(n64000, typeof(Options_VC_N64).Name);
-            n64001.Text = Language.Get(n64001, typeof(Options_VC_N64).Name);
-            n64002.Text = Language.Get(n64002, typeof(Options_VC_N64).Name);
-            n64003.Text = Language.Get(n64003, typeof(Options_VC_N64).Name);
-            n64004.Text = Language.Get(n64004, typeof(Options_VC_N64).Name);
-            groupBox3.Text = Language.Get("groupBox1", typeof(Options_VC_N64).Name, true);
-
-            Language.GetComboBox(ROMCType, "ROMCType", typeof(Options_VC_N64).Name);
+            PaletteList.Items.Clear();
+            PaletteList.Items.AddRange(Program.Lang.StringArray("palette", "vc_nes"));
 
             // -----------------------------
 
-            label2.Text = Language.Get("label2", typeof(Options_VC_SEGA).Name, true);
-            SEGA_save_sram.Text = Language.Get("EnableSaving");
-            SEGA_dev_mdpad_enable_6b.Text = string.Format(Language.Get(SEGA_dev_mdpad_enable_6b, this), Language.Get(Console.SMD.ToString()));
-            SEGA_console_disableresetbutton.Text = Language.Get("checkBox2", typeof(Options_VC_SEGA).Name, true);
+            patch_fixbrightness.Text = Program.Lang.String("patch_fixbrightness", "vc_n64");
+            patch_fixcrashes.Text = Program.Lang.String("patch_fixcrashes", "vc_n64");
+            patch_expandedram.Text = Program.Lang.String("patch_expandedram", "vc_n64");
+            patch_autosizerom.Text = Program.Lang.String("patch_autosizerom", "vc_n64");
+            romc_type.Text = Program.Lang.String("romc_type", "vc_n64");
+            groupBox3.Text = Program.Lang.String("patches", "vc_n64");
+
+            ROMCType.Items.Clear();
+            ROMCType.Items.AddRange(Program.Lang.StringArray("romc_type", "vc_n64"));
+
+            // -----------------------------
+
+            label2.Text = Program.Lang.String("country", "vc_sega");
+            SEGA_save_sram.Text = Program.Lang.String("save_data_enable", "projectform");
+            SEGA_dev_mdpad_enable_6b.Text = string.Format(Program.Lang.String("dev_mdpad_enable_6b", "vc_sega"), Program.Lang.Console(Console.SMD));
+            SEGA_console_disableresetbutton.Text = Program.Lang.String("console_disableresetbutton", "vc_sega");
 
             SEGA_country.Items.Clear();
-            SEGA_country.Items.Add(Language.Get("Region.U"));
-            SEGA_country.Items.Add(Language.Get("Region.E"));
-            SEGA_country.Items.Add(Language.Get("Region.J"));
+            SEGA_country.Items.Add(Program.Lang.String("region_u"));
+            SEGA_country.Items.Add(Program.Lang.String("region_e"));
+            SEGA_country.Items.Add(Program.Lang.String("region_j"));
 
             // -----------------------------
 
-            label3.Text = Language.Get("label1", typeof(Options_VC_PCE).Name, true);
-            PCEHideOverscan.Text = Language.Get("checkBox1", typeof(Options_VC_PCE).Name, true);
-            PCEBgRaster.Text = Language.Get("checkBox2", typeof(Options_VC_PCE).Name, true);
-            PCESpriteLimit.Text = Language.Get("checkBox3", typeof(Options_VC_PCE).Name, true);
-            PCESavedata.Text = Language.Get("EnableSaving");
-            toggleSwitchL2.Text = Language.GetToggleSwitch(toggleSwitch2, "toggleSwitch1", typeof(Options_VC_PCE).Name);
-            toggleSwitchL3.Text = Language.GetToggleSwitch(toggleSwitch3, "toggleSwitch2", typeof(Options_VC_PCE).Name);
-            toggleSwitchL4.Text = Language.GetToggleSwitch(toggleSwitch4, "toggleSwitch3", typeof(Options_VC_PCE).Name);
+            label3.Text = Program.Lang.String("y_offset", "vc_pce");
+            PCEHideOverscan.Text = Program.Lang.String("hide_overscan", "vc_pce");
+            PCEBgRaster.Text = Program.Lang.String("raster", "vc_pce");
+            PCESpriteLimit.Text = Program.Lang.String("sprline", "vc_pce");
+            PCESavedata.Text = Program.Lang.String("save_data_enable", "projectform");
 
             // -----------------------------
 
-            Language.GetComboBox(NGBios, "comboBox1", typeof(Options_VC_NEO).Name);
+            NGBios.Items.Clear();
+            NGBios.Items.AddRange(Program.Lang.StringArray("bios", "vc_neo"));
             NGBios.Items.RemoveAt(0);
 
             // -----------------------------
 
-            groupBox14.Text = Language.Get("SaveData");
-            groupBox12.Text = Language.Get("groupBox3", typeof(Options_Flash).Name, true);
-            groupBox13.Text = Language.Get("groupBox2", typeof(Options_Flash).Name, true);
-            FLASH_savedata.Text = Language.Get("EnableSaving");
-            FLASH_vff_sync_on_write.Text = Language.Get("checkBox2", typeof(Options_Flash).Name, true);
-            label4.Text = Language.Get("label1", typeof(Options_Flash).Name, true);
-            FLASH_mouse.Text = Language.Get("checkBox3", typeof(Options_Flash).Name, true);
-            FLASH_qwerty_keyboard.Text = Language.Get("checkBox4", typeof(Options_Flash).Name, true);
-            Language.GetComboBox(FLASH_quality, "comboBox1", typeof(Options_Flash).Name);
+            groupBox14.Text = Program.Lang.String("save_data", "projectform");
 
             // -----------------------------
 
@@ -148,13 +138,13 @@ namespace FriishProduce
             FStorage_USB.Checked = !FStorage_SD.Checked;
 
             PaletteList.SelectedIndex = int.Parse(VC_NES.Default.palette);
-            PaletteBanner.Checked = bool.Parse(VC_NES.Default.palette_use_on_banner);
+            palette_use_on_banner.Checked = bool.Parse(VC_NES.Default.palette_use_on_banner);
 
-            n64000.Checked = bool.Parse(VC_N64.Default.patch_fixbrightness);
-            n64001.Checked = bool.Parse(VC_N64.Default.patch_fixcrashes);
-            n64002.Checked = bool.Parse(VC_N64.Default.patch_expandedram);
-            n64003.Checked = bool.Parse(VC_N64.Default.patch_autosizerom);
-            ROMCType.SelectedIndex = bool.Parse(VC_N64.Default.romc_type0) ? 0 : 1;
+            patch_fixbrightness.Checked = bool.Parse(VC_N64.Default.patch_fixbrightness);
+            patch_fixcrashes.Checked = bool.Parse(VC_N64.Default.patch_fixcrashes);
+            patch_expandedram.Checked = bool.Parse(VC_N64.Default.patch_expandedram);
+            patch_autosizerom.Checked = bool.Parse(VC_N64.Default.patch_autosizerom);
+            ROMCType.SelectedIndex = int.Parse(VC_N64.Default.romc_type);
 
             label1.Text = VC_SEGA.Default.console_brightness;
             SEGA_console_brightness.Value = int.Parse(label1.Text);
@@ -207,13 +197,11 @@ namespace FriishProduce
             // Language setting
             // -------------------------------------------
             if (LanguageList.SelectedIndex == 0)
-                Default.UI_Language = "sys";
+                Default.Language = "sys";
             else
-                foreach (var item in Language.List)
+                foreach (var item in Program.Lang.List)
                     if (item.Value == LanguageList.SelectedItem.ToString())
-                        Default.UI_Language = item.Key;
-
-            Language.Current = LanguageList.SelectedIndex == 0 ? Language.GetSystemLanguage() : new System.Globalization.CultureInfo(Default.UI_Language);
+                        Default.Language = item.Key;
 
             // -------------------------------------------
             // Other settings
@@ -225,13 +213,13 @@ namespace FriishProduce
             FORWARDER.Default.nand_loader = toggleSwitch1.Checked ? "vWii" : "Wii";
 
             VC_NES.Default.palette = PaletteList.SelectedIndex.ToString();
-            VC_NES.Default.palette_use_on_banner = PaletteBanner.Checked.ToString();
+            VC_NES.Default.palette_use_on_banner = palette_use_on_banner.Checked.ToString();
 
-            VC_N64.Default.patch_fixbrightness = n64000.Checked.ToString();
-            VC_N64.Default.patch_fixcrashes = n64001.Checked.ToString();
-            VC_N64.Default.patch_expandedram = n64002.Checked.ToString();
-            VC_N64.Default.patch_autosizerom = n64003.Checked.ToString();
-            VC_N64.Default.romc_type0 = (ROMCType.SelectedIndex == 0).ToString();
+            VC_N64.Default.patch_fixbrightness = patch_fixbrightness.Checked.ToString();
+            VC_N64.Default.patch_fixcrashes = patch_fixcrashes.Checked.ToString();
+            VC_N64.Default.patch_expandedram = patch_expandedram.Checked.ToString();
+            VC_N64.Default.patch_autosizerom = patch_autosizerom.Checked.ToString();
+            VC_N64.Default.romc_type = ROMCType.SelectedIndex.ToString();
 
             VC_SEGA.Default.console_brightness = label1.Text;
             VC_SEGA.Default.save_sram = SEGA_save_sram.Checked ? "1" : "0";
@@ -284,7 +272,7 @@ namespace FriishProduce
             // -------------------------------------------
             if (isDirty)
             {
-                if (MessageBox.Show(Language.Get("Message.000"), ProductName, MessageBoxButtons.YesNo) == MessageBox.Result.Yes)
+                if (MessageBox.Show(Program.Lang.Msg(0), ProductName, MessageBox.Buttons.YesNo) == MessageBox.Result.Yes)
                 {
                     SaveAll();
                     Application.Restart();
@@ -300,7 +288,6 @@ namespace FriishProduce
         private void Cancel_Click(object sender, EventArgs e)
         {
             Default.Reload();
-            Language.Current = Default.UI_Language.ToLower() == "sys" ? Language.GetSystemLanguage() : new System.Globalization.CultureInfo(Default.UI_Language);
             DialogResult = DialogResult.Cancel;
         }
 
@@ -393,40 +380,18 @@ namespace FriishProduce
             };
         }
 
-        private void LanguageList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            bool refresh = false;
-
-            // -------------------------------------------
-            // Language setting
-            // -------------------------------------------
-            if (LanguageList.SelectedIndex == 0)
-            {
-                refresh = Default.UI_Language != "sys";
-                Default.UI_Language = "sys";
-            }
-
-            else
-                foreach (var item in Language.List)
-                    if (item.Value == LanguageList.SelectedItem.ToString())
-                    {
-                        refresh = Default.UI_Language != item.Key;
-                        Default.UI_Language = item.Key;
-                    }
-
-
-            Language.Current = LanguageList.SelectedIndex == 0 ? Language.GetSystemLanguage() : new System.Globalization.CultureInfo(Default.UI_Language);
-
-            // if (refresh) RefreshForm();
-        }
-
         private void ToggleSwitchChanged(object sender, EventArgs e)
         {
-            toggleSwitchL1.Text = toggleSwitch1.Checked ? "vWii (Wii U)" : "Wii";
-            toggleSwitchL2.Text = Language.GetToggleSwitch(toggleSwitch2, "toggleSwitch1", typeof(Options_VC_PCE).Name);
-            toggleSwitchL3.Text = Language.GetToggleSwitch(toggleSwitch3, "toggleSwitch2", typeof(Options_VC_PCE).Name);
-            toggleSwitchL4.Text = Language.GetToggleSwitch(toggleSwitch4, "toggleSwitch3", typeof(Options_VC_PCE).Name);
+            ToggleSwitchText();
             label4.Enabled = FLASH_vff_sync_on_write.Enabled = FLASH_vff_cache_size.Enabled = FLASH_savedata.Checked;
+        }
+
+        private void ToggleSwitchText()
+        {
+            toggleSwitchL1.Text = toggleSwitch1.Checked ? "vWii (Wii U)" : "Wii";
+            toggleSwitchL2.Text = Program.Lang.Toggle(toggleSwitch2.Checked, "europe", "vc_pce");
+            toggleSwitchL3.Text = Program.Lang.Toggle(toggleSwitch3.Checked, "sgenable", "vc_pce");
+            toggleSwitchL4.Text = Program.Lang.Toggle(toggleSwitch4.Checked, "padbutton", "vc_pce");
         }
 
         private void BrightnessValue_Scroll(object sender, EventArgs e) => label1.Text = SEGA_console_brightness.Value.ToString();

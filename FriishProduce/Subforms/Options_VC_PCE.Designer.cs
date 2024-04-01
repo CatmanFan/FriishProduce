@@ -51,7 +51,7 @@ namespace FriishProduce
             // 
             // OK
             // 
-            this.OK.Location = new System.Drawing.Point(96, 12);
+            this.b_ok.Location = new System.Drawing.Point(96, 12);
             // 
             // bottomPanel1
             // 
@@ -59,7 +59,7 @@ namespace FriishProduce
             // 
             // Cancel
             // 
-            this.Cancel.Location = new System.Drawing.Point(192, 12);
+            this.b_cancel.Location = new System.Drawing.Point(192, 12);
             // 
             // toggleSwitch2
             // 

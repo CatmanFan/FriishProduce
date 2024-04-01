@@ -1,5 +1,9 @@
 <?xml version="1.0"?>
-<language author="CatmanFan" appTitle="FriishProduce">
+<language>
+	<global name="Metadata">
+		<Author>CatmanFan</Author>
+		<AppTitle>FriishProduce</AppTitle>
+	</global>
 	<global name="Platforms">
 		<Group0>Nintendo</Group0>
 		<Group1>Sega</Group1>
@@ -17,6 +21,41 @@
 		<SMS>Master System</SMS>
 		<SNES>SNES / Super Famicom</SNES>
 	</global>
+	<global name="Filters">
+		<Filter>|Tous les fichiers (*.*)|*.*</Filter>
+		<Filter.Disc>Fichiers de format disque (*.cue, *.iso, *.chd)|*.cue;*.iso;*.chd|  Fichiers CUE Sheet (*.cue)|*.cue|  Images ISO (*.iso)|*.iso|  Fichiers CHD (*.chd)|*.chd</Filter.Disc>
+		<Filter.Img>Tous les formats sont pris en charge (*.bmp, *.jpg, *.jpeg, *.png)|*.bmp;*.jpg;*.jpeg;*.png|  Bitmap Windows (*.bmp)|*.bmp|  JPEG (*.jpg, *.jpeg)|*.jpg;*.jpeg|  PNG (*.png)|*.png</Filter.Img>
+		<Filter.Patch>Fichiers patch (*.bps, *.ips, *.xdelta)|*.bps;*.ips;*.xdelta</Filter.Patch>
+		<Filter.ROM.MSX>Fichiers ROM de MSX / MSX2 (*.rom, *.mx1, *.mx2)|*.rom;*.mx1;*.mx2</Filter.ROM.MSX>
+		<Filter.ROM.N64>Fichiers ROM de Nintendo 64 (*.n64, *.v64, *.z64)|*.n64;*.v64;*.z64</Filter.ROM.N64>
+		<Filter.ROM.NES>Fichiers ROM de Nintendo (*.nes)|*.nes</Filter.ROM.NES>
+		<Filter.ROM.PCE>Fichiers ROM de PC Engine / TurboGrafx-16 (*.pce)|*.pce</Filter.ROM.PCE>
+		<Filter.ROM.SMD>Fichiers ROM de Sega Mega Drive / Genesis (*.bin, *.gen, *.md)|*.bin;*.gen;*.md</Filter.ROM.SMD>
+		<Filter.ROM.SMS>Fichiers ROM de Sega Master System (*.sms)|*.sms</Filter.ROM.SMS>
+		<Filter.ROM.SNES>Fichiers ROM de Super Nintendo (*.sfc, *.smc)|*.sfc;*.smc</Filter.ROM.SNES>
+		<Filter.SWF>Fichiers *.swf (*.swf)|*.swf</Filter.SWF>
+		<Filter.WAD>Chaînes Wii (*.wad)|*.wad</Filter.WAD>
+		<Filter.ZIP>Archives *.zip (*.zip)|*.zip</Filter.ZIP>
+	</global>
+	<global name="Messages">
+		<Error>Un problème est survenu</Error>
+		<Error.000>Échec de la connexion à Internet.\nMessage : {0}</Error.000>
+		<Error.001>Échec de la génération de l'image.\nCeci peut être provoqué par un problème avec GDI+.</Error.001>
+		<Error.002>Échec du replacement des données internes.</Error.002>
+		<Error.003>La taille de votre fichier de jeu dépasse la limite de {0} {1}.</Error.003>
+		<Error.004>Échec de modification des options de contenu suivantes :\n{0}\nLa sauvegarde se poursuivra comme prévu.</Error.004>
+		<Error.005>L'application requise ({0}) n'est pas disponible dans le sous-répertoire « resources\\tools ».\nVeuillez obtenir cette application et la placer dans ce dossier, puis réessayer.</Error.005>
+		<Error.006>Échec de la sauvegarde vers format WAD.</Error.006>
+		<Error.007>Échec de l'application du patch. Il peut s'agir que soit la ROM ne correspond pas au patch, soit elle-même n'est pas valide.</Error.007>
+		<Error.008>L'émulateur requis ({0}) dans le chemin d'accès « resources\\forwarder\\emulators\\{1}.dol » n'a pas été trouvé.\nVeuillez obtenir le fichier d'émulateur et le placer dans ce chemin, puis réessayer.</Error.008>
+		<Message.000>Un redémarrage de l'application est nécessaire pour que les changements aux paramètres prennent effet.\nRedémarrer maintenant ?</Message.000>
+		<Message.001>Ignorer les modifications non enregistrées à ce projet ?</Message.001>
+		<Message.002>Le fichier que vous avez sélectionné est invalide.</Message.002>
+		<Message.003>Sauvegardé avec succès.\nQu'est-ce que vous voulez faire maintenant ?</Message.003>
+		<Message.003.A>Ouvrir le dossier de sortie</Message.003.A>
+		<Message.004>Impossible de remplir toutes les formes d'après la base de données Libretro pour ce fichier de jeu.\nCertaines formes peuvent avoir besoin d'être remplis manuellement.</Message.004>
+		<Message.005>Le fichier WAD que vous avez précisée ({0}) est invalide.\nCeci peut être provoqué par l'une des raisons suivantes :\n  • La plateforme/console cible ne correspond pas à celle de la chaîne sélectionnée.\n  • La chaîne n'est pas encore disponible dans la base des données de cette application.\n  • La chaîne était déjà modifiée (soit injectée, soit convertie en forme du forwarder).</Message.005>
+	</global>
 	<global name="Strings">
 		<Abbr.Kilobytes>ko</Abbr.Kilobytes>
 		<Abbr.Megabytes>Mo</Abbr.Megabytes>
@@ -32,40 +71,9 @@
 		<Display>Affichage</Display>
 		<DoNotShow>Ne plus afficher ce message</DoNotShow>
 		<EnableSaving>Activer la sauvegarde</EnableSaving>
-		<Error>Un problème est survenu</Error>
-		<Error.000>Échec de la connexion à Internet.\nMessage : {0}</Error.000>
-		<Error.001>Échec de la génération de l'image.\nCeci peut être provoqué par un problème avec GDI+.</Error.001>
-		<Error.002>Échec du replacement des données internes.</Error.002>
-		<Error.003>La taille de votre fichier de jeu dépasse la limite de {0} {1}.</Error.003>
-		<Error.004>Échec de modification des options de contenu suivantes :\n{0}\nLa sauvegarde se poursuivra comme prévu.</Error.004>
-		<Error.005>L'application requise ({0}) n'est pas disponible dans le sous-répertoire « resources\\tools ».\nVeuillez obtenir cette application et la placer dans ce dossier, puis réessayer.</Error.005>
-		<Error.006>Échec de la sauvegarde vers format WAD.</Error.006>
-		<Error.007>Échec de l'application du patch. Il peut s'agir que soit la ROM ne correspond pas au patch, soit elle-même n'est pas valide.</Error.007>
-		<Error.008>L'émulateur requis ({0}) dans le chemin d'accès « resources\\forwarder\\emulators\\{1}.dol » n'a pas été trouvé.\nVeuillez obtenir le fichier d'émulateur et le placer dans ce chemin, puis réessayer.</Error.008>
-		<Filter>|Tous les fichiers (*.*)|*.*</Filter>
-		<Filter.Disc>Fichiers de format disque (*.cue, *.iso, *.chd)|*.cue;*.iso;*.chd|  Fichiers CUE Sheet (*.cue)|*.cue|  Images ISO (*.iso)|*.iso|  Fichiers CHD (*.chd)|*.chd</Filter.Disc>
-		<Filter.Img>Tous les formats sont pris en charge (*.bmp, *.jpg, *.jpeg, *.png)|*.bmp;*.jpg;*.jpeg;*.png|  Bitmap Windows (*.bmp)|*.bmp|  JPEG (*.jpg, *.jpeg)|*.jpg;*.jpeg|  PNG (*.png)|*.png</Filter.Img>
-		<Filter.Patch>Fichiers patch (*.bps, *.ips, *.xdelta)|*.bps;*.ips;*.xdelta</Filter.Patch>
-		<Filter.ROM.MSX>Fichiers ROM de MSX / MSX2 (*.rom, *.mx1, *.mx2)|*.rom;*.mx1;*.mx2</Filter.ROM.MSX>
-		<Filter.ROM.N64>Fichiers ROM de Nintendo 64 (*.n64, *.v64, *.z64)|*.n64;*.v64;*.z64</Filter.ROM.N64>
-		<Filter.ROM.NES>Fichiers ROM de Nintendo (*.nes)|*.nes</Filter.ROM.NES>
-		<Filter.ROM.PCE>Fichiers ROM de PC Engine / TurboGrafx-16 (*.pce)|*.pce</Filter.ROM.PCE>
-		<Filter.ROM.SMD>Fichiers ROM de Sega Mega Drive / Genesis (*.bin, *.gen, *.md)|*.bin;*.gen;*.md</Filter.ROM.SMD>
-		<Filter.ROM.SMS>Fichiers ROM de Sega Master System (*.sms)|*.sms</Filter.ROM.SMS>
-		<Filter.ROM.SNES>Fichiers ROM de Super Nintendo (*.sfc, *.smc)|*.sfc;*.smc</Filter.ROM.SNES>
-		<Filter.SWF>Fichiers *.swf (*.swf)|*.swf</Filter.SWF>
-		<Filter.WAD>Chaînes Wii (*.wad)|*.wad</Filter.WAD>
-		<Filter.ZIP>Archives *.zip (*.zip)|*.zip</Filter.ZIP>
 		<Forwarders>Forwarders (Raccourcis)</Forwarders>
 		<InjectionMethodOptions>Paramètres de méthode d'injection</InjectionMethodOptions>
 		<List.ImageInterpolation>Basse qualité\nHaute qualité\nBilinéaire\nBicubique\nPlus proche voisin\nBilinéaire de haute qualité\nBicubique de haute qualité</List.ImageInterpolation>
-		<Message.000>Un redémarrage de l'application est nécessaire pour que les changements aux paramètres prennent effet.\nRedémarrer maintenant ?</Message.000>
-		<Message.001>Ignorer les modifications non enregistrées à ce projet ?</Message.001>
-		<Message.002>Le fichier que vous avez sélectionné est invalide.</Message.002>
-		<Message.003>Sauvegardé avec succès.\nQu'est-ce que vous voulez faire maintenant ?</Message.003>
-		<Message.003.A>Ouvrir le dossier de sortie</Message.003.A>
-		<Message.004>Impossible de remplir toutes les formes d'après la base de données Libretro pour ce fichier de jeu.\nCertaines formes peuvent avoir besoin d'être remplis manuellement.</Message.004>
-		<Message.005>Le fichier WAD que vous avez précisée ({0}) est invalide.\nCeci peut être provoqué par l'une des raisons suivantes :\n  • La plateforme/console cible ne correspond pas à celle de la chaîne sélectionnée.\n  • La chaîne n'est pas encore disponible dans la base des données de cette application.\n  • La chaîne était déjà modifiée (soit injectée, soit convertie en forme du forwarder).</Message.005>
 		<None>Aucun(e)</None>
 		<NotSupported>Non supporté</NotSupported>
 		<Other>Autres</Other>
@@ -82,7 +90,7 @@
 		<Untitled>Projet {0} sans titre</Untitled>
 		<VC>Console virtuelle</VC>
 	</global>
-	<form name="InjectorForm">
+	<form name="ProjectForm">
 		<groupBox1.Text>Informations actuelles</groupBox1.Text>
 		<groupBox2.Text>Chaîne d'origine</groupBox2.Text>
 		<groupBox3.Text>Options de contenu</groupBox3.Text>

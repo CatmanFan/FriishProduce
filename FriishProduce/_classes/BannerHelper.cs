@@ -7,7 +7,7 @@ namespace FriishProduce
 {
     public static class BannerHelper
     {
-        public static U8[] Get(WAD w)
+        public static (U8, U8) Get(WAD w)
         {
             if (w != null)
             {
@@ -17,10 +17,10 @@ namespace FriishProduce
                 Banner.LoadFile(w.BannerApp.Data[w.BannerApp.GetNodeIndex("banner.bin")]);
                 Icon.LoadFile(w.BannerApp.Data[w.BannerApp.GetNodeIndex("icon.bin")]);
 
-                return new U8[] { Banner, Icon };
+                return (Banner, Icon);
             }
 
-            return null;
+            return (null, null);
         }
 
         public static U8[] Get(string file)
@@ -268,15 +268,15 @@ namespace FriishProduce
         {
             if (!w.HasBanner) return;
 
-            U8[] Banner = Get(w);
-            Banner[1].Dispose();
+            (U8, U8) Banner = Get(w);
+            Banner.Item2.Dispose();
 
             // VCBrlyt and create temporary .brlyt file
             // ****************
             string BRLYTPath = Path.Combine(Paths.WorkingFolder, "banner.brlyt");
-            File.WriteAllBytes(BRLYTPath, Banner[0].Data[Banner[0].GetNodeIndex("banner.brlyt")]);
+            File.WriteAllBytes(BRLYTPath, Banner.Item1.Data[Banner.Item1.GetNodeIndex("banner.brlyt")]);
 
-            ProcessHelper.Run
+            Utils.Run
             (
                 Paths.Tools + "vcbrlyt\\vcbrlyt.exe",
                 $"..\\..\\temp\\banner.brlyt -Title \"{title}\" -YEAR {year} -Play {players}"
@@ -287,17 +287,17 @@ namespace FriishProduce
 
             // Check if modified
             // ****************
-            if (BRLYT == Banner[0].Data[Banner[0].GetNodeIndex("banner.brlyt")])
+            if (BRLYT == Banner.Item1.Data[Banner.Item1.GetNodeIndex("banner.brlyt")])
             {
-                Banner[0].Dispose();
+                Banner.Item1.Dispose();
                 return;
             }
 
             // Replace
             // ****************
-            Banner[0].ReplaceFile(Banner[0].GetNodeIndex("banner.brlyt"), BRLYT);
-            w.BannerApp.ReplaceFile(w.BannerApp.GetNodeIndex("banner.bin"), Banner[0].ToByteArray());
-            Banner[0].Dispose();
+            Banner.Item1.ReplaceFile(Banner.Item1.GetNodeIndex("banner.brlyt"), BRLYT);
+            w.BannerApp.ReplaceFile(w.BannerApp.GetNodeIndex("banner.bin"), Banner.Item1.ToByteArray());
+            Banner.Item1.Dispose();
         }
 
         /// <summary>
@@ -310,17 +310,17 @@ namespace FriishProduce
                 if (File.Exists(Paths.Banners + tID.ToUpper() + ".bnr")) return;
 
                 WAD w = DatabaseHelper.Get(tID).Load();
-                U8[] Banner = Get(w);
-                Banner[1].Dispose();
+                (U8, U8) Banner = Get(w);
+                Banner.Item2.Dispose();
 
                 // VCBrlyt and create temporary .brlyt file
                 // ****************
                 string BRLYTPath = Path.Combine(Paths.WorkingFolder, "banner.brlyt");
-                File.WriteAllBytes(BRLYTPath, Banner[0].Data[Banner[0].GetNodeIndex("banner.brlyt")]);
+                File.WriteAllBytes(BRLYTPath, Banner.Item1.Data[Banner.Item1.GetNodeIndex("banner.brlyt")]);
 
                 if (tID.ToUpper().EndsWith("Q") || tID.ToUpper().EndsWith("T"))
                 {
-                    ProcessHelper.Run
+                    Utils.Run
                     (
                         "vcbrlyt\\vcbrlyt.exe",
                         $"..\\..\\temp\\banner.brlyt -H_T_VCTitle_KOR \"VC................................................................................................................................\""
@@ -328,7 +328,7 @@ namespace FriishProduce
                 }
                 else
                 {
-                    ProcessHelper.Run
+                    Utils.Run
                     (
                         "vcbrlyt\\vcbrlyt.exe",
                         $"..\\..\\temp\\banner.brlyt -Title \"VC................................................................................................................................\" -YEAR VCVC -Play 4"
@@ -340,24 +340,24 @@ namespace FriishProduce
 
                 // Check if modified
                 // ****************
-                if (BRLYT == Banner[0].Data[Banner[0].GetNodeIndex("banner.brlyt")])
+                if (BRLYT == Banner.Item1.Data[Banner.Item1.GetNodeIndex("banner.brlyt")])
                 {
-                    Banner[0].Dispose();
+                    Banner.Item1.Dispose();
                     return;
                 }
 
                 // Replace
                 // ****************
-                Banner[0].ReplaceFile(Banner[0].GetNodeIndex("banner.brlyt"), BRLYT);
+                Banner.Item1.ReplaceFile(Banner.Item1.GetNodeIndex("banner.brlyt"), BRLYT);
 
                 if (!Directory.Exists(Paths.Banners)) Directory.CreateDirectory(Paths.Banners);
-                File.WriteAllBytes(Paths.Banners + tID.ToUpper() + ".bnr", Banner[0].ToByteArray());
-                Banner[0].Dispose();
+                File.WriteAllBytes(Paths.Banners + tID.ToUpper() + ".bnr", Banner.Item1.ToByteArray());
+                Banner.Item1.Dispose();
                 w.Dispose();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(Language.Get("Error"), ex.Message, System.Windows.Forms.MessageBoxButtons.OK, Ookii.Dialogs.WinForms.TaskDialogIcon.Error);
+                MessageBox.Show(Program.Lang.String("error", "messages"), ex.Message, MessageBox.Buttons.Ok, Ookii.Dialogs.WinForms.TaskDialogIcon.Error);
             }
         }
 

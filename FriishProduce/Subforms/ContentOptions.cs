@@ -14,7 +14,7 @@ namespace FriishProduce
     public partial class ContentOptions : Form
     {
         #region Variables to be changed go here. They should not be copied!
-        public IDictionary<string, string> Options { get; protected set; }
+        public IDictionary<string, string> Options { get; set; }
         public int EmuType { get; set; }
         #endregion
 
@@ -30,11 +30,9 @@ namespace FriishProduce
             // *******
             if (!DesignMode)
             {
-                OK.Click += OK_Click;
-                Cancel.Click += Cancel_Click;
+                b_ok.Click += OK_Click;
+                b_cancel.Click += Cancel_Click;
                 Load += Form_Load;
-
-                // Language.Localize(this);
             }
         }
 

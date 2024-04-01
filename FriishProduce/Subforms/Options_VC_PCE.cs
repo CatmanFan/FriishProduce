@@ -34,11 +34,8 @@ namespace FriishProduce
             // *******
             if (!DesignMode)
             {
-                Language.Localize(this);
-                toggleSwitchL1.Text = Language.Get(toggleSwitch1, this);
-                toggleSwitchL2.Text = Language.Get(toggleSwitch2, this);
-                toggleSwitchL3.Text = Language.Get(toggleSwitch3, this);
-                checkBox4.Text = Language.Get("EnableSaving");
+                ToggleSwitchText();
+                checkBox4.Text = Program.Lang.String("save_data_enable", "projectform");
             }
         }
 
@@ -78,9 +75,14 @@ namespace FriishProduce
 
         private void ToggleSwitchChanged(object sender, EventArgs e)
         {
-            if (sender == toggleSwitch1) toggleSwitchL1.Text = Language.Get(toggleSwitch1, this);
-            if (sender == toggleSwitch2) toggleSwitchL2.Text = Language.Get(toggleSwitch2, this);
-            if (sender == toggleSwitch3) toggleSwitchL3.Text = Language.Get(toggleSwitch3, this);
+            ToggleSwitchText();
+        }
+
+        private void ToggleSwitchText()
+        {
+            toggleSwitchL1.Text = Program.Lang.Toggle(toggleSwitch1.Checked, "europe", "vc_pce");
+            toggleSwitchL2.Text = Program.Lang.Toggle(toggleSwitch2.Checked, "sgenable", "vc_pce");
+            toggleSwitchL3.Text = Program.Lang.Toggle(toggleSwitch3.Checked, "padbutton", "vc_pce");
         }
     }
 }

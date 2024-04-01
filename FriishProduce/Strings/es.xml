@@ -1,5 +1,9 @@
 <?xml version="1.0"?>
-<language author="CatmanFan" appTitle="FriishProduce">
+<language>
+	<global name="Metadata">
+		<Author>CatmanFan</Author>
+		<AppTitle>FriishProduce</AppTitle>
+	</global>
 	<global name="Platforms">
 		<Group0>Nintendo</Group0>
 		<Group1>Sega</Group1>
@@ -17,6 +21,40 @@
 		<SMS>Master System</SMS>
 		<SNES>Super NES (Super Famicom)</SNES>
 	</global>
+	<global name="Filters">
+		<Filter>|Todos los archivos (*.*)|*.*</Filter>
+		<Filter.Disc>Imágenes de disco (*.cue, *.iso, *.chd)|*.cue;*.iso;*.chd|  Archivos Cue Sheet (*.cue)|*.cue|  Imágenes ISO (*.iso)|*.iso|  Archivos CHD (*.chd)|*.chd</Filter.Disc>
+		<Filter.Img>Imágenes (*.bmp, *.jpg, *.jpeg, *.png)|*.bmp;*.jpg;*.jpeg;*.png|  Bitmap (*.bmp)|*.bmp|  JPEG (*.jpg, *.jpeg)|*.jpg;*.jpeg|  PNG (*.png)|*.png</Filter.Img>
+		<Filter.Patch>Parches (*.bps, *.ips, *.xdelta)|*.bps;*.ips;*.xdelta</Filter.Patch>
+		<Filter.ROM.MSX>Archivos ROM de MSX/MSX2 (*.rom, *.mx1, *.mx2)|*.rom;*.mx1;*.mx2</Filter.ROM.MSX>
+		<Filter.ROM.N64>Archivos ROM de Nintendo 64 (*.n64, *.v64, *.z64)|*.n64;*.v64;*.z64</Filter.ROM.N64>
+		<Filter.ROM.NES>Archivos ROM de Nintendo NES (*.nes)|*.nes</Filter.ROM.NES>
+		<Filter.ROM.PCE>Archivos ROM de TurboGrafx-16/PC Engine (*.pce)|*.pce</Filter.ROM.PCE>
+		<Filter.ROM.SMD>Archivos ROM de Mega Drive/Genesis (*.bin, *.gen, *.md)|*.bin;*.gen;*.md</Filter.ROM.SMD>
+		<Filter.ROM.SMS>Archivos ROM de Master System (*.sms)|*.sms</Filter.ROM.SMS>
+		<Filter.ROM.SNES>Archivos ROM de Super Nintendo (*.sfc, *.smc)|*.sfc;*.smc</Filter.ROM.SNES>
+		<Filter.SWF>Archivos SWF (*.swf)|*.swf</Filter.SWF>
+		<Filter.WAD>Canales Wii (*.wad)|*.wad</Filter.WAD>
+		<Filter.ZIP>Archivos comprimidos ZIP (*.zip)|*.zip</Filter.ZIP>
+	</global>
+	<global name="Messages">
+		<Error>Se ha producido un error</Error>
+		<Error.000>No se pudo conectar a Internet.\nDescripción : {0}</Error.000>
+		<Error.001>No se pudo generar la imagen.\nEsto puede deberse a un problema con GDI+.</Error.001>
+		<Error.002>No se pueden reemplazar los datos internos.</Error.002>
+		<Error.003>La ROM es demasiado grande (más de {0} {1} en tamaño).</Error.003>
+		<Error.005>La aplicación necesaria ({0}) no se encontró en el subdirectorio "resources\\tools".</Error.005>
+		<Error.006>No se pudo exportar en formato WAD.</Error.006>
+		<Error.007>No se pudo aplicar el parche.</Error.007>
+		<Error.008>El emulador necesario ({0}) no se encontró en el subdirectorio "resources\\forwarder\\emulators".</Error.008>
+		<Message.000>Algunos cambios necesitan que se reinicie el programa para que tengan efecto.\n¿Reiniciar esta aplicación ahora?</Message.000>
+		<Message.001>¿Desea descartar los cambios no guardados en este proyecto?</Message.001>
+		<Message.002>El archivo seleccionado no es valido.</Message.002>
+		<Message.003>Exportado con éxito a WAD.\n¿Qué querría hacer ahora?</Message.003>
+		<Message.003.A>Abrir carpeta de salida</Message.003.A>
+		<Message.004>No se pueden recuperar todos los datos de LibRetro para la ROM seleccionada.\nPor esta razón deberá completar manualmente algunos formularios.</Message.004>
+		<Message.005>El WAD que ha seleccionado (ID: {0}) no es válido.\nEsto puede deberse a que:\n  • la consola actual no coincide con la del WAD.\n  • el WAD aún no está disponible en la base de datos de esta aplicación.\n  • el WAD ya está modificado, ya sea inyectado o convertido en forwarder.</Message.005>
+	</global>
 	<global name="Strings">
 		<Abbr.Kilobytes>KB</Abbr.Kilobytes>
 		<Abbr.Megabytes>MB</Abbr.Megabytes>
@@ -32,38 +70,8 @@
 		<Display>Pantalla</Display>
 		<DoNotShow>No volver a mostrar este mensaje</DoNotShow>
 		<EnableSaving>Habilitar datos guardados</EnableSaving>
-		<Error>Se ha producido un error</Error>
-		<Error.000>No se pudo conectar a Internet.\nDescripción : {0}</Error.000>
-		<Error.001>No se pudo generar la imagen.\nEsto puede deberse a un problema con GDI+.</Error.001>
-		<Error.002>No se pueden reemplazar los datos internos.</Error.002>
-		<Error.003>La ROM es demasiado grande (más de {0} {1} en tamaño).</Error.003>
-		<Error.005>La aplicación necesaria ({0}) no se encontró en el subdirectorio "resources\\tools".</Error.005>
-		<Error.006>No se pudo exportar en formato WAD.</Error.006>
-		<Error.007>No se pudo aplicar el parche.</Error.007>
-		<Error.008>El emulador necesario ({0}) no se encontró en el subdirectorio "resources\\forwarder\\emulators".</Error.008>
-		<Filter>|Todos los archivos (*.*)|*.*</Filter>
-		<Filter.Disc>Imágenes de disco (*.cue, *.iso, *.chd)|*.cue;*.iso;*.chd|  Archivos Cue Sheet (*.cue)|*.cue|  Imágenes ISO (*.iso)|*.iso|  Archivos CHD (*.chd)|*.chd</Filter.Disc>
-		<Filter.Img>Imágenes (*.bmp, *.jpg, *.jpeg, *.png)|*.bmp;*.jpg;*.jpeg;*.png|  Bitmap (*.bmp)|*.bmp|  JPEG (*.jpg, *.jpeg)|*.jpg;*.jpeg|  PNG (*.png)|*.png</Filter.Img>
-		<Filter.Patch>Parches (*.bps, *.ips, *.xdelta)|*.bps;*.ips;*.xdelta</Filter.Patch>
-		<Filter.ROM.MSX>Archivos ROM de MSX/MSX2 (*.rom, *.mx1, *.mx2)|*.rom;*.mx1;*.mx2</Filter.ROM.MSX>
-		<Filter.ROM.N64>Archivos ROM de Nintendo 64 (*.n64, *.v64, *.z64)|*.n64;*.v64;*.z64</Filter.ROM.N64>
-		<Filter.ROM.NES>Archivos ROM de Nintendo NES (*.nes)|*.nes</Filter.ROM.NES>
-		<Filter.ROM.PCE>Archivos ROM de TurboGrafx-16/PC Engine (*.pce)|*.pce</Filter.ROM.PCE>
-		<Filter.ROM.SMD>Archivos ROM de Mega Drive/Genesis (*.bin, *.gen, *.md)|*.bin;*.gen;*.md</Filter.ROM.SMD>
-		<Filter.ROM.SMS>Archivos ROM de Master System (*.sms)|*.sms</Filter.ROM.SMS>
-		<Filter.ROM.SNES>Archivos ROM de Super Nintendo (*.sfc, *.smc)|*.sfc;*.smc</Filter.ROM.SNES>
-		<Filter.SWF>Archivos SWF (*.swf)|*.swf</Filter.SWF>
-		<Filter.WAD>Canales Wii (*.wad)|*.wad</Filter.WAD>
-		<Filter.ZIP>Archivos comprimidos ZIP (*.zip)|*.zip</Filter.ZIP>
 		<InjectionMethodOptions>Ajustes de método de inyección</InjectionMethodOptions>
 		<List.ImageInterpolation>Baja calidad\nAlta calidad\nBilineal\nBicúbica\nVecino más cercano (Nearest neighbor)\nBilineal de alta calidad\nBicúbica de alta calidad</List.ImageInterpolation>
-		<Message.000>Algunos cambios necesitan que se reinicie el programa para que tengan efecto.\n¿Reiniciar esta aplicación ahora?</Message.000>
-		<Message.001>¿Desea descartar los cambios no guardados en este proyecto?</Message.001>
-		<Message.002>El archivo seleccionado no es valido.</Message.002>
-		<Message.003>Exportado con éxito a WAD.\n¿Qué querría hacer ahora?</Message.003>
-		<Message.003.A>Abrir carpeta de salida</Message.003.A>
-		<Message.004>No se pueden recuperar todos los datos de LibRetro para la ROM seleccionada.\nPor esta razón deberá completar manualmente algunos formularios.</Message.004>
-		<Message.005>El WAD que ha seleccionado (ID: {0}) no es válido.\nEsto puede deberse a que:\n  • la consola actual no coincide con la del WAD.\n  • el WAD aún no está disponible en la base de datos de esta aplicación.\n  • el WAD ya está modificado, ya sea inyectado o convertido en forwarder.</Message.005>
 		<None>Ninguno(a)</None>
 		<NotSupported>No soportado</NotSupported>
 		<Other>Otros</Other>
@@ -80,7 +88,7 @@
 		<Untitled>Canal {0} sin título</Untitled>
 		<VC>Consola Virtual</VC>
 	</global>
-	<form name="InjectorForm">
+	<form name="ProjectForm">
 		<groupBox1.Text>Información de ROM</groupBox1.Text>
 		<groupBox2.Text>Canal de origen</groupBox2.Text>
 		<groupBox3.Text>Opciones de contenido</groupBox3.Text>
@@ -117,7 +125,7 @@
 		<OpenImage.Text>Abrir una imagen...</OpenImage.Text>
 		<OpenROM.Text>Abrir un archivo de juego...</OpenROM.Text>
 		<UseLibRetro.Text>Cargar datos desde LibRetro</UseLibRetro.Text>
-		<Welcome.Text>¡Bienvenido a FriishProduce!\n\nAntes de comenzar, por favor asegúrese de familiarizarse con esta aplicación leyendo su tutorial (en inglés).</Welcome.Text>
+		<Welcome.Text></Welcome.Text>
 	</form>
 	<form name="Options_Flash">
 		<checkBox3.Text>Ratón</checkBox3.Text>

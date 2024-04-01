@@ -8,8 +8,8 @@ namespace FriishProduce
         public Tutorial()
         {
             InitializeComponent();
-            Language.Localize(this);
-            CloseButton.Text = Language.Get("B.Close");
+            Text = Program.Lang.String("tutorial", "mainform");
+            CloseButton.Text = Program.Lang.String("b_close");
             richTextBox.Rtf = Properties.Resources.Tutorial;
         }
 

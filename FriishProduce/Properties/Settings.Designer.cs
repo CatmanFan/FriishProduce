@@ -26,18 +26,18 @@ namespace FriishProduce.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("sys")]
-        public string UI_Language {
+        public string Language {
             get {
-                return ((string)(this["UI_Language"]));
+                return ((string)(this["Language"]));
             }
             set {
-                this["UI_Language"] = value;
+                this["Language"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
         public int ImageInterpolation {
             get {
                 return ((int)(this["ImageInterpolation"]));

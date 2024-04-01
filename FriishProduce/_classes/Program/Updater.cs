@@ -23,7 +23,7 @@ namespace FriishProduce
                     if (MessageBox.Show(
                         "An update is available",
                         $"Version {latest} is available for download.\nYou are currently running version {current}.\n\nWould you like to download the latest version?",
-                        System.Windows.Forms.MessageBoxButtons.YesNo,
+                        MessageBox.Buttons.YesNo,
                         TaskDialogIcon.Shield) == MessageBox.Result.Yes)
                     {
                         // *************************

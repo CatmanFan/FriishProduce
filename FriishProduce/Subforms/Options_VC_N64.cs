@@ -17,14 +17,14 @@ namespace FriishProduce
                 { "crash",  VC_N64.Default.patch_fixcrashes },
                 { "expansion",  VC_N64.Default.patch_expandedram },
                 { "rom_autosize",  VC_N64.Default.patch_autosizerom },
-                { "romc_0",  VC_N64.Default.romc_type0 }
+                { "romc",  VC_N64.Default.romc_type }
             };
 
             // Cosmetic
             // *******
             if (!DesignMode)
             {
-                Language.Localize(this);
+                ;
 
                 Height = EmuType == 3 ? 320 : 260;
             }
@@ -44,7 +44,7 @@ namespace FriishProduce
                 n64001.Checked = bool.Parse(Options["crash"]);
                 n64002.Checked = bool.Parse(Options["expansion"]);
                 n64003.Checked = bool.Parse(Options["rom_autosize"]);
-                ROMCType.SelectedIndex = bool.Parse(Options["romc_0"]) ? 0 : 1;
+                ROMCType.SelectedIndex = int.Parse(Options["romc"]);
             }
             // *******
         }
@@ -55,7 +55,7 @@ namespace FriishProduce
             Options["crash"] = n64001.Checked.ToString();
             Options["expansion"] = n64002.Checked.ToString();
             Options["rom_autosize"] = n64003.Checked.ToString();
-            Options["romc_0"] = (ROMCType.SelectedIndex == 0).ToString();
+            Options["romc"] = ROMCType.SelectedIndex.ToString();
         }
 
         // ---------------------------------------------------------------------------------------------------------------

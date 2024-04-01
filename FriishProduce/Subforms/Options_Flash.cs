@@ -29,9 +29,8 @@ namespace FriishProduce
             // *******
             if (!DesignMode)
             {
-                Language.Localize(this);
-                groupBox1.Text = Language.Get("SaveData");
-                checkBox1.Text = Language.Get("EnableSaving");
+                groupBox1.Text = Program.Lang.String("save_data", "projectform");
+                checkBox1.Text = Program.Lang.String("save_data_enable", "projectform");
             }
         }
 

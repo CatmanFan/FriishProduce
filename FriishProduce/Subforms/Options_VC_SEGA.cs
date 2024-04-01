@@ -17,7 +17,7 @@ namespace FriishProduce
             {
                 { "console.brightness", VC_SEGA.Default.console_brightness },
                 { "console.disable_resetbutton", VC_SEGA.Default.console_disableresetbutton },
-                { "country", Language.Current.Name.StartsWith("ja") ? "jp" : VC_SEGA.Default.country },
+                { "country", Program.Lang.Current.StartsWith("ja") ? "jp" : VC_SEGA.Default.country },
                 { "dev.mdpad.enable_6b", VC_SEGA.Default.dev_mdpad_enable_6b },
                 { "save_sram", VC_SEGA.Default.save_sram },
                 { "machine_md.use_4ptap", null },
@@ -28,14 +28,17 @@ namespace FriishProduce
             // *******
             if (!DesignMode)
             {
-                Language.Localize(this);
-                toggleSwitchL1.Text = Language.Get(toggleSwitch1, this);
-                checkBox1.Text = Language.Get("EnableSaving");
+                #region Localization
+                label2.Text = Program.Lang.String("region");
+                checkBox1.Text = Program.Lang.String("save_data_enable", "projectform");
+                checkBox2.Text = Program.Lang.String("console_disableresetbutton", "vc_sega");
+                toggleSwitchL1.Text = Program.Lang.Toggle(toggleSwitch1.Checked, "dev_mdpad_enable_6b", "vc_sega");
 
                 comboBox1.Items.Clear();
-                comboBox1.Items.Add(Language.Get("Region.U"));
-                comboBox1.Items.Add(Language.Get("Region.E"));
-                comboBox1.Items.Add(Language.Get("Region.J"));
+                comboBox1.Items.Add(Program.Lang.String("region_u"));
+                comboBox1.Items.Add(Program.Lang.String("region_e"));
+                comboBox1.Items.Add(Program.Lang.String("region_j"));
+                #endregion
             }
         }
 
@@ -99,7 +102,8 @@ namespace FriishProduce
 
         private void ToggleSwitchChanged(object sender, EventArgs e)
         {
-            if (sender == toggleSwitch1) toggleSwitchL1.Text = Language.Get(toggleSwitch1, this);
+            if (sender == toggleSwitch1)
+                toggleSwitchL1.Text = Program.Lang.Toggle(toggleSwitch1.Checked, "dev_mdpad_enable_6b", "vc_sega");
         }
     }
 }

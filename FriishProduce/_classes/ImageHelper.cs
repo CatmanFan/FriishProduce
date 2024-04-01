@@ -84,10 +84,12 @@ namespace FriishProduce
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, Language.Get("Error"), System.Windows.Forms.MessageBoxButtons.OK, Ookii.Dialogs.WinForms.TaskDialogIcon.Error);
+                MessageBox.Show(Program.Lang.String("error", "messages"), ex.Message, MessageBox.Buttons.Ok, Ookii.Dialogs.WinForms.TaskDialogIcon.Error);
                 return null;
             }
         }
+
+        public Bitmap LoadToSource(Bitmap b) => Source = b;
 
         /// <summary>
         /// Generates VCPic, IconVCPic and saveicon bitmaps for use in injection.
@@ -257,30 +259,30 @@ namespace FriishProduce
         {
             if (!w.HasBanner) return;
 
-            U8[] BannerSet = BannerHelper.Get(w);
+            (U8, U8) BannerSet = BannerHelper.Get(w);
 
             // VCPic.tpl
             // ****************
-            TPL tpl = TPL.Load(BannerSet[0].Data[BannerSet[0].GetNodeIndex("VCPic.tpl")]);
+            TPL tpl = TPL.Load(BannerSet.Item1.Data[BannerSet.Item1.GetNodeIndex("VCPic.tpl")]);
             ReplaceTPL(tpl, VCPic);
-            BannerSet[0].ReplaceFile(BannerSet[0].GetNodeIndex("VCPic.tpl"), tpl.ToByteArray());
+            BannerSet.Item1.ReplaceFile(BannerSet.Item1.GetNodeIndex("VCPic.tpl"), tpl.ToByteArray());
 
             // IconVCPic.tpl
             // ****************
-            tpl = TPL.Load(BannerSet[1].Data[BannerSet[1].GetNodeIndex("IconVCPic.tpl")]);
+            tpl = TPL.Load(BannerSet.Item2.Data[BannerSet.Item2.GetNodeIndex("IconVCPic.tpl")]);
             ReplaceTPL(tpl, IconVCPic);
-            BannerSet[1].ReplaceFile(BannerSet[1].GetNodeIndex("IconVCPic.tpl"), tpl.ToByteArray());
+            BannerSet.Item2.ReplaceFile(BannerSet.Item2.GetNodeIndex("IconVCPic.tpl"), tpl.ToByteArray());
             tpl.Dispose();
 
             // Replace banner.bin
             // ****************
-            w.BannerApp.ReplaceFile(w.BannerApp.GetNodeIndex("banner.bin"), BannerSet[0].ToByteArray());
-            BannerSet[0].Dispose();
+            w.BannerApp.ReplaceFile(w.BannerApp.GetNodeIndex("banner.bin"), BannerSet.Item1.ToByteArray());
+            BannerSet.Item1.Dispose();
 
             // Replace icon.bin
             // ****************
-            w.BannerApp.ReplaceFile(w.BannerApp.GetNodeIndex("icon.bin"), BannerSet[1].ToByteArray());
-            BannerSet[1].Dispose();
+            w.BannerApp.ReplaceFile(w.BannerApp.GetNodeIndex("icon.bin"), BannerSet.Item2.ToByteArray());
+            BannerSet.Item2.Dispose();
         }
 
         /// <summary>
@@ -528,7 +530,7 @@ namespace FriishProduce
         /// <param name="platform">Target console</param>
         /// <param name="tplArray">misc.wte in bytes</param>
         /// <returns>Modified WTE files in byte array format</returns>
-        public void CreateSaveWTE(Archives.CCF CCF)
+        public void CreateSaveWTE(CCF CCF)
         {
             string ImagesPath = Paths.WorkingFolder + "images\\";
             if (!Directory.Exists(ImagesPath)) Directory.CreateDirectory(ImagesPath);
@@ -541,13 +543,13 @@ namespace FriishProduce
 
                     // Convert first to tex0, then to PNG
                     // ****************
-                    ProcessHelper.Run
+                    Utils.Run
                     (
                         "sega\\wteconvert.exe",
                         ImagesPath,
                         $"\"{item.Name}\" \"{Path.GetFileNameWithoutExtension(item.Name)}.tex0\""
                     );
-                    ProcessHelper.Run
+                    Utils.Run
                     (
                         "sega\\texextract.exe",
                         ImagesPath,
@@ -641,7 +643,7 @@ namespace FriishProduce
             }
             catch
             {
-                throw new Exception(Language.Get("Error.002"));
+                throw new Exception(Program.Lang.Msg(2, true));
             }
 
             // Cleanup
@@ -701,7 +703,7 @@ namespace FriishProduce
 
                     // Second failsafe, checks extracted image for similarities if Cancel was clicked on the GUI
                     // ****************
-                    ProcessHelper.Run
+                    Utils.Run
                     (
                         "sega\\texextract.exe",
                         ImagesPath,
@@ -733,7 +735,7 @@ namespace FriishProduce
                     // --------------------------------------------
                     // WTE conversion
                     // --------------------------------------------
-                    ProcessHelper.Run
+                    Utils.Run
                     (
                         "sega\\wteconvert.exe",
                         ImagesPath,

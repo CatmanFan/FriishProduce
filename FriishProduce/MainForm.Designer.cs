@@ -38,6 +38,9 @@ namespace FriishProduce
             this.MenuStrip = new System.Windows.Forms.MenuStrip();
             this.MenuItem_File = new System.Windows.Forms.ToolStripMenuItem();
             this.NewProject = new System.Windows.Forms.ToolStripMenuItem();
+            this.OpenProject = new System.Windows.Forms.ToolStripMenuItem();
+            this.SaveAs = new System.Windows.Forms.ToolStripMenuItem();
+            this.ExportWAD = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.MenuItem_Settings = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
@@ -48,29 +51,31 @@ namespace FriishProduce
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.UseLibRetro = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.ExportWAD = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.CloseTab = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItem_Help = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItem_Tutorial = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuItem_LanguageXMLEditor = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.MenuItem_About = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.MainPanel = new System.Windows.Forms.Panel();
             this.Welcome_DoNotShow = new System.Windows.Forms.Button();
             this.PointToTutorial = new System.Windows.Forms.Label();
             this.Welcome = new System.Windows.Forms.Label();
             this.ToolStrip = new System.Windows.Forms.ToolStrip();
+            this.ToolStrip_NewProject = new System.Windows.Forms.ToolStripDropDownButton();
+            this.ToolStrip_SaveAs = new System.Windows.Forms.ToolStripButton();
+            this.ToolStrip_ExportWAD = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolStrip_OpenROM = new System.Windows.Forms.ToolStripButton();
             this.ToolStrip_OpenImage = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolStrip_UseLibRetro = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
-            this.ToolStrip_ExportWAD = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolStrip_CloseTab = new System.Windows.Forms.ToolStripButton();
             this.ToolStrip_Settings = new System.Windows.Forms.ToolStripButton();
             this.ToolStrip_Tutorial = new System.Windows.Forms.ToolStripButton();
+            this.SaveProject = new System.Windows.Forms.SaveFileDialog();
+            this.BrowseProject = new System.Windows.Forms.OpenFileDialog();
             this.MenuStrip.SuspendLayout();
             this.MainPanel.SuspendLayout();
             this.ToolStrip.SuspendLayout();
@@ -139,6 +144,9 @@ namespace FriishProduce
             // 
             this.MenuItem_File.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.NewProject,
+            this.OpenProject,
+            this.SaveAs,
+            this.ExportWAD,
             this.toolStripMenuItem1,
             this.MenuItem_Settings,
             this.toolStripSeparator4,
@@ -151,6 +159,26 @@ namespace FriishProduce
             this.NewProject.Image = global::FriishProduce.Properties.Resources.document;
             this.NewProject.Name = "NewProject";
             resources.ApplyResources(this.NewProject, "NewProject");
+            // 
+            // OpenProject
+            // 
+            this.OpenProject.Name = "OpenProject";
+            resources.ApplyResources(this.OpenProject, "OpenProject");
+            this.OpenProject.Click += new System.EventHandler(this.OpenProject_Click);
+            // 
+            // SaveAs
+            // 
+            resources.ApplyResources(this.SaveAs, "SaveAs");
+            this.SaveAs.Image = global::FriishProduce.Properties.Resources.disk_black;
+            this.SaveAs.Name = "SaveAs";
+            this.SaveAs.Click += new System.EventHandler(this.SaveAs_Click);
+            // 
+            // ExportWAD
+            // 
+            resources.ApplyResources(this.ExportWAD, "ExportWAD");
+            this.ExportWAD.Image = global::FriishProduce.Properties.Resources.wooden_box_pencil;
+            this.ExportWAD.Name = "ExportWAD";
+            this.ExportWAD.Click += new System.EventHandler(this.ExportWAD_Click);
             // 
             // toolStripMenuItem1
             // 
@@ -184,8 +212,6 @@ namespace FriishProduce
             this.toolStripSeparator1,
             this.UseLibRetro,
             this.toolStripSeparator2,
-            this.ExportWAD,
-            this.toolStripSeparator3,
             this.CloseTab});
             this.MenuItem_Project.Name = "MenuItem_Project";
             resources.ApplyResources(this.MenuItem_Project, "MenuItem_Project");
@@ -193,7 +219,7 @@ namespace FriishProduce
             // OpenROM
             // 
             resources.ApplyResources(this.OpenROM, "OpenROM");
-            this.OpenROM.Image = global::FriishProduce.Properties.Resources.disc_blue;
+            this.OpenROM.Image = global::FriishProduce.Properties.Resources.disc_case;
             this.OpenROM.Name = "OpenROM";
             this.OpenROM.Click += new System.EventHandler(this.OpenROM_Click);
             // 
@@ -221,18 +247,6 @@ namespace FriishProduce
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
             // 
-            // ExportWAD
-            // 
-            resources.ApplyResources(this.ExportWAD, "ExportWAD");
-            this.ExportWAD.Image = global::FriishProduce.Properties.Resources.box_label;
-            this.ExportWAD.Name = "ExportWAD";
-            this.ExportWAD.Click += new System.EventHandler(this.ExportWAD_Click);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            resources.ApplyResources(this.toolStripSeparator3, "toolStripSeparator3");
-            // 
             // CloseTab
             // 
             resources.ApplyResources(this.CloseTab, "CloseTab");
@@ -243,7 +257,6 @@ namespace FriishProduce
             // 
             this.MenuItem_Help.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MenuItem_Tutorial,
-            this.MenuItem_LanguageXMLEditor,
             this.toolStripSeparator5,
             this.MenuItem_About});
             this.MenuItem_Help.Name = "MenuItem_Help";
@@ -254,13 +267,6 @@ namespace FriishProduce
             resources.ApplyResources(this.MenuItem_Tutorial, "MenuItem_Tutorial");
             this.MenuItem_Tutorial.Name = "MenuItem_Tutorial";
             this.MenuItem_Tutorial.Click += new System.EventHandler(this.Tutorial_Click);
-            // 
-            // MenuItem_LanguageXMLEditor
-            // 
-            this.MenuItem_LanguageXMLEditor.Image = global::FriishProduce.Properties.Resources.globe_model;
-            this.MenuItem_LanguageXMLEditor.Name = "MenuItem_LanguageXMLEditor";
-            resources.ApplyResources(this.MenuItem_LanguageXMLEditor, "MenuItem_LanguageXMLEditor");
-            this.MenuItem_LanguageXMLEditor.Click += new System.EventHandler(this.LanguageXMLEditor_Click);
             // 
             // toolStripSeparator5
             // 
@@ -273,6 +279,11 @@ namespace FriishProduce
             this.MenuItem_About.Name = "MenuItem_About";
             resources.ApplyResources(this.MenuItem_About, "MenuItem_About");
             this.MenuItem_About.Click += new System.EventHandler(this.About_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            resources.ApplyResources(this.toolStripSeparator3, "toolStripSeparator3");
             // 
             // MainPanel
             // 
@@ -309,24 +320,54 @@ namespace FriishProduce
             // 
             resources.ApplyResources(this.ToolStrip, "ToolStrip");
             this.ToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStrip_NewProject,
+            this.ToolStrip_SaveAs,
+            this.ToolStrip_ExportWAD,
+            this.toolStripSeparator7,
             this.ToolStrip_OpenROM,
             this.ToolStrip_OpenImage,
             this.toolStripSeparator6,
             this.ToolStrip_UseLibRetro,
             this.toolStripSeparator8,
-            this.ToolStrip_ExportWAD,
-            this.toolStripSeparator7,
             this.ToolStrip_CloseTab,
             this.ToolStrip_Settings,
             this.ToolStrip_Tutorial});
             this.ToolStrip.Name = "ToolStrip";
             this.ToolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             // 
+            // ToolStrip_NewProject
+            // 
+            this.ToolStrip_NewProject.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ToolStrip_NewProject.Image = global::FriishProduce.Properties.Resources.document;
+            resources.ApplyResources(this.ToolStrip_NewProject, "ToolStrip_NewProject");
+            this.ToolStrip_NewProject.Name = "ToolStrip_NewProject";
+            // 
+            // ToolStrip_SaveAs
+            // 
+            this.ToolStrip_SaveAs.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            resources.ApplyResources(this.ToolStrip_SaveAs, "ToolStrip_SaveAs");
+            this.ToolStrip_SaveAs.Image = global::FriishProduce.Properties.Resources.disk_black;
+            this.ToolStrip_SaveAs.Name = "ToolStrip_SaveAs";
+            this.ToolStrip_SaveAs.Click += new System.EventHandler(this.SaveAs_Click);
+            // 
+            // ToolStrip_ExportWAD
+            // 
+            this.ToolStrip_ExportWAD.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            resources.ApplyResources(this.ToolStrip_ExportWAD, "ToolStrip_ExportWAD");
+            this.ToolStrip_ExportWAD.Image = global::FriishProduce.Properties.Resources.wooden_box_pencil;
+            this.ToolStrip_ExportWAD.Name = "ToolStrip_ExportWAD";
+            this.ToolStrip_ExportWAD.Click += new System.EventHandler(this.ExportWAD_Click);
+            // 
+            // toolStripSeparator7
+            // 
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            resources.ApplyResources(this.toolStripSeparator7, "toolStripSeparator7");
+            // 
             // ToolStrip_OpenROM
             // 
             this.ToolStrip_OpenROM.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             resources.ApplyResources(this.ToolStrip_OpenROM, "ToolStrip_OpenROM");
-            this.ToolStrip_OpenROM.Image = global::FriishProduce.Properties.Resources.disc_blue;
+            this.ToolStrip_OpenROM.Image = global::FriishProduce.Properties.Resources.disc_case;
             this.ToolStrip_OpenROM.Name = "ToolStrip_OpenROM";
             this.ToolStrip_OpenROM.Click += new System.EventHandler(this.OpenROM_Click);
             // 
@@ -356,19 +397,6 @@ namespace FriishProduce
             this.toolStripSeparator8.Name = "toolStripSeparator8";
             resources.ApplyResources(this.toolStripSeparator8, "toolStripSeparator8");
             // 
-            // ToolStrip_ExportWAD
-            // 
-            this.ToolStrip_ExportWAD.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            resources.ApplyResources(this.ToolStrip_ExportWAD, "ToolStrip_ExportWAD");
-            this.ToolStrip_ExportWAD.Image = global::FriishProduce.Properties.Resources.box_label;
-            this.ToolStrip_ExportWAD.Name = "ToolStrip_ExportWAD";
-            this.ToolStrip_ExportWAD.Click += new System.EventHandler(this.ExportWAD_Click);
-            // 
-            // toolStripSeparator7
-            // 
-            this.toolStripSeparator7.Name = "toolStripSeparator7";
-            resources.ApplyResources(this.toolStripSeparator7, "toolStripSeparator7");
-            // 
             // ToolStrip_CloseTab
             // 
             this.ToolStrip_CloseTab.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -393,6 +421,16 @@ namespace FriishProduce
             resources.ApplyResources(this.ToolStrip_Tutorial, "ToolStrip_Tutorial");
             this.ToolStrip_Tutorial.Name = "ToolStrip_Tutorial";
             this.ToolStrip_Tutorial.Click += new System.EventHandler(this.Tutorial_Click);
+            // 
+            // SaveProject
+            // 
+            this.SaveProject.DefaultExt = "fppj";
+            this.SaveProject.RestoreDirectory = true;
+            this.SaveProject.SupportMultiDottedExtensions = true;
+            // 
+            // BrowseProject
+            // 
+            this.BrowseProject.DefaultExt = "fppj";
             // 
             // MainForm
             // 
@@ -458,8 +496,13 @@ namespace FriishProduce
         private System.Windows.Forms.ToolStripButton ToolStrip_Tutorial;
         private System.Windows.Forms.Label PointToTutorial;
         private System.Windows.Forms.Button Welcome_DoNotShow;
-        private System.Windows.Forms.ToolStripMenuItem MenuItem_LanguageXMLEditor;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem SaveAs;
+        private System.Windows.Forms.ToolStripDropDownButton ToolStrip_NewProject;
+        internal System.Windows.Forms.SaveFileDialog SaveProject;
+        private System.Windows.Forms.OpenFileDialog BrowseProject;
+        private System.Windows.Forms.ToolStripMenuItem OpenProject;
+        private System.Windows.Forms.ToolStripButton ToolStrip_SaveAs;
     }
 }
 

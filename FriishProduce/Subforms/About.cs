@@ -9,14 +9,14 @@ namespace FriishProduce
         public About()
         {
             InitializeComponent();
-            this.Text = string.Format(Language.Get("About"), Language.AppTitle());
+            this.Text = string.Format(Program.Lang.String("about"), Program.Lang.ApplicationTitle);
             this.labelProductName.Text = AssemblyProduct;
             this.labelVersion.Text = Updater.GetCurrentVersion();
             this.labelCopyright.Text = AssemblyCopyright;
             this.labelCompanyName.Text = AssemblyCompany;
             this.textBoxDescription.Text = AssemblyDescription + Environment.NewLine + Environment.NewLine + this.textBoxDescription.Text;
-            this.labelTranslation.Text = string.Format("Current language: {0} ({1})", Language.Current.EnglishName, Language.Author());
-            okButton.Text = Language.Get("B.Close");
+            this.labelTranslation.Text = string.Format("Current language: {0} ({1})", System.Globalization.CultureInfo.CurrentUICulture.EnglishName, Program.Lang.Author);
+            okButton.Text = Program.Lang.String("b_close");
         }
 
         #region Assembly Attribute Accessors

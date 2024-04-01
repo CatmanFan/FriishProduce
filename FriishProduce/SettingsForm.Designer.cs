@@ -34,11 +34,11 @@ namespace FriishProduce
             this.LanguageList = new System.Windows.Forms.ComboBox();
             this.AutoLibRetro = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.n64003 = new System.Windows.Forms.CheckBox();
-            this.n64002 = new System.Windows.Forms.CheckBox();
-            this.n64001 = new System.Windows.Forms.CheckBox();
-            this.n64000 = new System.Windows.Forms.CheckBox();
-            this.n64004 = new System.Windows.Forms.GroupBox();
+            this.patch_autosizerom = new System.Windows.Forms.CheckBox();
+            this.patch_expandedram = new System.Windows.Forms.CheckBox();
+            this.patch_fixcrashes = new System.Windows.Forms.CheckBox();
+            this.patch_fixbrightness = new System.Windows.Forms.CheckBox();
+            this.romc_type = new System.Windows.Forms.GroupBox();
             this.ROMCType = new System.Windows.Forms.ComboBox();
             this.DownloadBanners = new System.Windows.Forms.Button();
             this.OK = new System.Windows.Forms.Button();
@@ -54,15 +54,15 @@ namespace FriishProduce
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.leftSeparator = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.forwarder_console = new System.Windows.Forms.GroupBox();
             this.toggleSwitchL1 = new System.Windows.Forms.Label();
             this.toggleSwitch1 = new JCS.ToggleSwitch();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.forwarder_root_device = new System.Windows.Forms.GroupBox();
             this.FStorage_SD = new System.Windows.Forms.RadioButton();
             this.FStorage_USB = new System.Windows.Forms.RadioButton();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.PaletteBanner = new System.Windows.Forms.CheckBox();
+            this.palette = new System.Windows.Forms.GroupBox();
+            this.palette_use_on_banner = new System.Windows.Forms.CheckBox();
             this.PaletteList = new System.Windows.Forms.ComboBox();
             this.panel8 = new System.Windows.Forms.Panel();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -104,7 +104,7 @@ namespace FriishProduce
             this.label4 = new System.Windows.Forms.Label();
             this.FLASH_vff_cache_size = new System.Windows.Forms.ComboBox();
             this.groupBox3.SuspendLayout();
-            this.n64004.SuspendLayout();
+            this.romc_type.SuspendLayout();
             this.bottomPanel1.SuspendLayout();
             this.bottomPanel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -113,10 +113,10 @@ namespace FriishProduce
             this.panel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.groupBox9.SuspendLayout();
-            this.groupBox8.SuspendLayout();
+            this.forwarder_console.SuspendLayout();
+            this.forwarder_root_device.SuspendLayout();
             this.panel4.SuspendLayout();
-            this.groupBox4.SuspendLayout();
+            this.palette.SuspendLayout();
             this.panel8.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -150,7 +150,6 @@ namespace FriishProduce
             resources.GetString("LanguageList.Items")});
             resources.ApplyResources(this.LanguageList, "LanguageList");
             this.LanguageList.Name = "LanguageList";
-            this.LanguageList.SelectedIndexChanged += new System.EventHandler(this.LanguageList_SelectedIndexChanged);
             // 
             // AutoLibRetro
             // 
@@ -160,44 +159,44 @@ namespace FriishProduce
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.n64003);
-            this.groupBox3.Controls.Add(this.n64002);
-            this.groupBox3.Controls.Add(this.n64001);
-            this.groupBox3.Controls.Add(this.n64000);
+            this.groupBox3.Controls.Add(this.patch_autosizerom);
+            this.groupBox3.Controls.Add(this.patch_expandedram);
+            this.groupBox3.Controls.Add(this.patch_fixcrashes);
+            this.groupBox3.Controls.Add(this.patch_fixbrightness);
             resources.ApplyResources(this.groupBox3, "groupBox3");
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.TabStop = false;
             // 
-            // n64003
+            // patch_autosizerom
             // 
-            resources.ApplyResources(this.n64003, "n64003");
-            this.n64003.Name = "n64003";
-            this.n64003.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.patch_autosizerom, "patch_autosizerom");
+            this.patch_autosizerom.Name = "patch_autosizerom";
+            this.patch_autosizerom.UseVisualStyleBackColor = true;
             // 
-            // n64002
+            // patch_expandedram
             // 
-            resources.ApplyResources(this.n64002, "n64002");
-            this.n64002.Name = "n64002";
-            this.n64002.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.patch_expandedram, "patch_expandedram");
+            this.patch_expandedram.Name = "patch_expandedram";
+            this.patch_expandedram.UseVisualStyleBackColor = true;
             // 
-            // n64001
+            // patch_fixcrashes
             // 
-            resources.ApplyResources(this.n64001, "n64001");
-            this.n64001.Name = "n64001";
-            this.n64001.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.patch_fixcrashes, "patch_fixcrashes");
+            this.patch_fixcrashes.Name = "patch_fixcrashes";
+            this.patch_fixcrashes.UseVisualStyleBackColor = true;
             // 
-            // n64000
+            // patch_fixbrightness
             // 
-            resources.ApplyResources(this.n64000, "n64000");
-            this.n64000.Name = "n64000";
-            this.n64000.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.patch_fixbrightness, "patch_fixbrightness");
+            this.patch_fixbrightness.Name = "patch_fixbrightness";
+            this.patch_fixbrightness.UseVisualStyleBackColor = true;
             // 
-            // n64004
+            // romc_type
             // 
-            this.n64004.Controls.Add(this.ROMCType);
-            resources.ApplyResources(this.n64004, "n64004");
-            this.n64004.Name = "n64004";
-            this.n64004.TabStop = false;
+            this.romc_type.Controls.Add(this.ROMCType);
+            resources.ApplyResources(this.romc_type, "romc_type");
+            this.romc_type.Name = "romc_type";
+            this.romc_type.TabStop = false;
             // 
             // ROMCType
             // 
@@ -279,7 +278,7 @@ namespace FriishProduce
             // panel5
             // 
             this.panel5.Controls.Add(this.groupBox3);
-            this.panel5.Controls.Add(this.n64004);
+            this.panel5.Controls.Add(this.romc_type);
             resources.ApplyResources(this.panel5, "panel5");
             this.panel5.Name = "panel5";
             // 
@@ -305,18 +304,18 @@ namespace FriishProduce
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.groupBox9);
-            this.panel3.Controls.Add(this.groupBox8);
+            this.panel3.Controls.Add(this.forwarder_console);
+            this.panel3.Controls.Add(this.forwarder_root_device);
             resources.ApplyResources(this.panel3, "panel3");
             this.panel3.Name = "panel3";
             // 
-            // groupBox9
+            // forwarder_console
             // 
-            this.groupBox9.Controls.Add(this.toggleSwitchL1);
-            this.groupBox9.Controls.Add(this.toggleSwitch1);
-            resources.ApplyResources(this.groupBox9, "groupBox9");
-            this.groupBox9.Name = "groupBox9";
-            this.groupBox9.TabStop = false;
+            this.forwarder_console.Controls.Add(this.toggleSwitchL1);
+            this.forwarder_console.Controls.Add(this.toggleSwitch1);
+            resources.ApplyResources(this.forwarder_console, "forwarder_console");
+            this.forwarder_console.Name = "forwarder_console";
+            this.forwarder_console.TabStop = false;
             // 
             // toggleSwitchL1
             // 
@@ -332,13 +331,13 @@ namespace FriishProduce
             this.toggleSwitch1.Style = JCS.ToggleSwitch.ToggleSwitchStyle.IOS5;
             this.toggleSwitch1.CheckedChanged += new JCS.ToggleSwitch.CheckedChangedDelegate(this.ToggleSwitchChanged);
             // 
-            // groupBox8
+            // forwarder_root_device
             // 
-            this.groupBox8.Controls.Add(this.FStorage_SD);
-            this.groupBox8.Controls.Add(this.FStorage_USB);
-            resources.ApplyResources(this.groupBox8, "groupBox8");
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.TabStop = false;
+            this.forwarder_root_device.Controls.Add(this.FStorage_SD);
+            this.forwarder_root_device.Controls.Add(this.FStorage_USB);
+            resources.ApplyResources(this.forwarder_root_device, "forwarder_root_device");
+            this.forwarder_root_device.Name = "forwarder_root_device";
+            this.forwarder_root_device.TabStop = false;
             // 
             // FStorage_SD
             // 
@@ -356,23 +355,23 @@ namespace FriishProduce
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.groupBox4);
+            this.panel4.Controls.Add(this.palette);
             resources.ApplyResources(this.panel4, "panel4");
             this.panel4.Name = "panel4";
             // 
-            // groupBox4
+            // palette
             // 
-            this.groupBox4.Controls.Add(this.PaletteBanner);
-            this.groupBox4.Controls.Add(this.PaletteList);
-            resources.ApplyResources(this.groupBox4, "groupBox4");
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.TabStop = false;
+            this.palette.Controls.Add(this.palette_use_on_banner);
+            this.palette.Controls.Add(this.PaletteList);
+            resources.ApplyResources(this.palette, "palette");
+            this.palette.Name = "palette";
+            this.palette.TabStop = false;
             // 
-            // PaletteBanner
+            // palette_use_on_banner
             // 
-            resources.ApplyResources(this.PaletteBanner, "PaletteBanner");
-            this.PaletteBanner.Name = "PaletteBanner";
-            this.PaletteBanner.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.palette_use_on_banner, "palette_use_on_banner");
+            this.palette_use_on_banner.Name = "palette_use_on_banner";
+            this.palette_use_on_banner.UseVisualStyleBackColor = true;
             // 
             // PaletteList
             // 
@@ -669,7 +668,10 @@ namespace FriishProduce
             resources.GetString("FLASH_vff_cache_size.Items7"),
             resources.GetString("FLASH_vff_cache_size.Items8"),
             resources.GetString("FLASH_vff_cache_size.Items9"),
-            resources.GetString("FLASH_vff_cache_size.Items10")});
+            resources.GetString("FLASH_vff_cache_size.Items10"),
+            resources.GetString("FLASH_vff_cache_size.Items11"),
+            resources.GetString("FLASH_vff_cache_size.Items12"),
+            resources.GetString("FLASH_vff_cache_size.Items13")});
             resources.ApplyResources(this.FLASH_vff_cache_size, "FLASH_vff_cache_size");
             this.FLASH_vff_cache_size.Name = "FLASH_vff_cache_size";
             // 
@@ -703,7 +705,7 @@ namespace FriishProduce
             this.Shown += new System.EventHandler(this.Loading);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            this.n64004.ResumeLayout(false);
+            this.romc_type.ResumeLayout(false);
             this.bottomPanel1.ResumeLayout(false);
             this.bottomPanel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
@@ -714,13 +716,13 @@ namespace FriishProduce
             this.panel2.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
-            this.groupBox9.ResumeLayout(false);
-            this.groupBox9.PerformLayout();
-            this.groupBox8.ResumeLayout(false);
-            this.groupBox8.PerformLayout();
+            this.forwarder_console.ResumeLayout(false);
+            this.forwarder_console.PerformLayout();
+            this.forwarder_root_device.ResumeLayout(false);
+            this.forwarder_root_device.PerformLayout();
             this.panel4.ResumeLayout(false);
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
+            this.palette.ResumeLayout(false);
+            this.palette.PerformLayout();
             this.panel8.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
@@ -755,11 +757,11 @@ namespace FriishProduce
         private System.Windows.Forms.CheckBox AutoLibRetro;
         private System.Windows.Forms.ComboBox LanguageList;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.CheckBox n64003;
-        private System.Windows.Forms.CheckBox n64002;
-        private System.Windows.Forms.CheckBox n64001;
-        private System.Windows.Forms.CheckBox n64000;
-        private System.Windows.Forms.GroupBox n64004;
+        private System.Windows.Forms.CheckBox patch_autosizerom;
+        private System.Windows.Forms.CheckBox patch_expandedram;
+        private System.Windows.Forms.CheckBox patch_fixcrashes;
+        private System.Windows.Forms.CheckBox patch_fixbrightness;
+        private System.Windows.Forms.GroupBox romc_type;
         private System.Windows.Forms.ComboBox ROMCType;
         private System.Windows.Forms.Button DownloadBanners;
         private System.Windows.Forms.TreeView TreeView;
@@ -771,15 +773,15 @@ namespace FriishProduce
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.GroupBox groupBox9;
-        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.GroupBox forwarder_console;
+        private System.Windows.Forms.GroupBox forwarder_root_device;
         private System.Windows.Forms.RadioButton FStorage_SD;
         private System.Windows.Forms.RadioButton FStorage_USB;
         private System.Windows.Forms.Label toggleSwitchL1;
         private JCS.ToggleSwitch toggleSwitch1;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.CheckBox PaletteBanner;
+        private System.Windows.Forms.GroupBox palette;
+        private System.Windows.Forms.CheckBox palette_use_on_banner;
         private System.Windows.Forms.ComboBox PaletteList;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.GroupBox groupBox5;

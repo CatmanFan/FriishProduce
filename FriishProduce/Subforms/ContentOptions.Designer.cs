@@ -32,8 +32,8 @@ namespace FriishProduce
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ContentOptions));
             this.bottomPanel2 = new System.Windows.Forms.Panel();
             this.bottomPanel1 = new System.Windows.Forms.Panel();
-            this.Cancel = new System.Windows.Forms.Button();
-            this.OK = new System.Windows.Forms.Button();
+            this.b_cancel = new System.Windows.Forms.Button();
+            this.b_ok = new System.Windows.Forms.Button();
             this.bottomPanel2.SuspendLayout();
             this.bottomPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -48,29 +48,31 @@ namespace FriishProduce
             // bottomPanel1
             // 
             this.bottomPanel1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.bottomPanel1.Controls.Add(this.Cancel);
-            this.bottomPanel1.Controls.Add(this.OK);
+            this.bottomPanel1.Controls.Add(this.b_cancel);
+            this.bottomPanel1.Controls.Add(this.b_ok);
             resources.ApplyResources(this.bottomPanel1, "bottomPanel1");
             this.bottomPanel1.Name = "bottomPanel1";
             // 
-            // Cancel
+            // b_cancel
             // 
-            this.Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            resources.ApplyResources(this.Cancel, "Cancel");
-            this.Cancel.Name = "Cancel";
-            this.Cancel.UseVisualStyleBackColor = true;
+            this.b_cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            resources.ApplyResources(this.b_cancel, "b_cancel");
+            this.b_cancel.Name = "b_cancel";
+            this.b_cancel.Tag = "b_cancel";
+            this.b_cancel.UseVisualStyleBackColor = true;
             // 
-            // OK
+            // b_ok
             // 
-            resources.ApplyResources(this.OK, "OK");
-            this.OK.Name = "OK";
-            this.OK.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.b_ok, "b_ok");
+            this.b_ok.Name = "b_ok";
+            this.b_ok.Tag = "b_ok";
+            this.b_ok.UseVisualStyleBackColor = true;
             // 
             // ContentOptions
             // 
-            this.AcceptButton = this.OK;
+            this.AcceptButton = this.b_ok;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
-            this.CancelButton = this.Cancel;
+            this.CancelButton = this.b_cancel;
             resources.ApplyResources(this, "$this");
             this.ControlBox = false;
             this.Controls.Add(this.bottomPanel2);
@@ -92,8 +94,8 @@ namespace FriishProduce
         #endregion
 
         private System.Windows.Forms.Panel bottomPanel2;
-        protected System.Windows.Forms.Button OK;
+        protected System.Windows.Forms.Button b_ok;
         protected System.Windows.Forms.Panel bottomPanel1;
-        protected System.Windows.Forms.Button Cancel;
+        protected System.Windows.Forms.Button b_cancel;
     }
 }

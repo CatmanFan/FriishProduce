@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace FriishProduce.WiiVC
+namespace FriishProduce.Injectors
 {
     public class MSX : InjectorWiiVC
     {
@@ -29,7 +29,7 @@ namespace FriishProduce.WiiVC
             // -----------------------
 
             int index = MainContent.GetNodeIndex("SLOT1.ROM") != -1 ? MainContent.GetNodeIndex("SLOT1.ROM") : MainContent.GetNodeIndex("MEGAROM.ROM");
-            if (index == -1) throw new Exception(Language.Get("Error.002"));
+            if (index == -1) throw new Exception(Program.Lang.Msg(2, true));
 
             MainContent.ReplaceFile(index, ROM.Bytes);
         }

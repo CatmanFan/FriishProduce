@@ -40,7 +40,7 @@ namespace FriishProduce
             catch (WebException ex)
             {
                 string message = (ex.Message.Contains(URL) ? ex.Message.Substring(0, ex.Message.IndexOf(':')) : ex.Message) + (ex.Message[ex.Message.Length - 1] != '.' ? "." : string.Empty);
-                throw new Exception(string.Format(Language.Get("Error.000"), message));
+                throw new Exception(string.Format(Program.Lang.Msg(0, true), message));
             }
         }
 
@@ -66,6 +66,7 @@ namespace FriishProduce
         }
     }
 
+    [Serializable]
     public class LibRetroDB
     {
         public string SoftwarePath { get; set; }

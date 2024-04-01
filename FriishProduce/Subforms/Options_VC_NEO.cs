@@ -25,7 +25,7 @@ namespace FriishProduce
             // *******
             if (!DesignMode)
             {
-                Language.Localize(this);
+                ;
             }
         }
 

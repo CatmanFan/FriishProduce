@@ -25,13 +25,13 @@ namespace FriishProduce.Options {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public string romc_type0 {
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public string romc_type {
             get {
-                return ((string)(this["romc_type0"]));
+                return ((string)(this["romc_type"]));
             }
             set {
-                this["romc_type0"] = value;
+                this["romc_type"] = value;
             }
         }
         

@@ -12,7 +12,7 @@ using System.Xml;
 
 namespace FriishProduce
 {
-    public static class Language
+    public static class LanguageX
     {
         public static CultureInfo English { get => new CultureInfo(9); }
         public static CultureInfo Current
@@ -87,7 +87,7 @@ namespace FriishProduce
 
         public static void Run()
         {
-            var code = Settings.Default.UI_Language;
+            var code = Settings.Default.Language;
 
             // --------------------------
             // Failsafe check
@@ -102,7 +102,7 @@ namespace FriishProduce
             if (string.IsNullOrWhiteSpace(code) || !Exists)
             {
                 code = "sys";
-                Settings.Default.UI_Language = "sys";
+                Settings.Default.Language = "sys";
                 Settings.Default.Save();
             }
 
@@ -123,7 +123,7 @@ namespace FriishProduce
                 if (!set)
                 {
                     code = "sys";
-                    Settings.Default.UI_Language = "sys";
+                    Settings.Default.Language = "sys";
                     Settings.Default.Save();
                     goto Set; // Loop back
                 }
@@ -136,7 +136,7 @@ namespace FriishProduce
             EnglishXML = Load();
             XML = null;
 
-            if (Settings.Default.UI_Language == "en" || Current == English || Current.EnglishName == English.EnglishName)
+            if (Settings.Default.Language == "en" || Current == English || Current.EnglishName == English.EnglishName)
                 XML = EnglishXML;
             else
             {
@@ -144,7 +144,7 @@ namespace FriishProduce
                 if (XML == EnglishXML)
                 {
                     Current = English;
-                    Settings.Default.UI_Language = "en";
+                    Settings.Default.Language = "en";
                     Settings.Default.Save();
                 }
             }
@@ -179,7 +179,7 @@ namespace FriishProduce
 
                 else
                 {
-                    System.Windows.Forms.MessageBox.Show($"A fatal error occurred while trying to read the English language strings.\n" +
+                    System.Windows.Forms.MessageBox.Show("A fatal error occurred while trying to read the English language strings.\n" +
                         $"Exception: {ex.GetType()}\nMessage: {ex.Message}\n\n" +
                         "The application will now shut down.", "Halt", MessageBoxButtons.OK, MessageBoxIcon.Hand);
                     Environment.FailFast(ex.Message);
@@ -240,16 +240,16 @@ namespace FriishProduce
 
         public static string AppTitle()
         {
-            if (XML.Attributes?[1].Name.ToLower() == "apptitle")
-                return XML.Attributes?[1].InnerText;
+            if (Get("AppTitle", "Metadata") != "undefined")
+                return Get("AppTitle", "Metadata");
 
             return Application.ProductName;
         }
 
         public static string Author()
         {
-            if (XML.Attributes?[0].Name.ToLower() == "author")
-                return XML.Attributes?[0].InnerText;
+            if (Get("AppTitle", "Author") != "undefined")
+                return Get("AppTitle", "Author");
 
             return "?";
         }

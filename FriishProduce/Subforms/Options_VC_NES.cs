@@ -26,9 +26,10 @@ namespace FriishProduce
             // *******
             if (!DesignMode)
             {
-                Language.Localize(this);
+                PaletteList.Items.Clear();
+                PaletteList.Items.Add(Program.Lang.StringArray("palette", "vc_nes"));
 
-                t.ToolTipTitle = Language.Get("Author").Replace("{0}", "").Trim();
+                t.ToolTipTitle = Program.Lang.String("authors").Replace("{0}", "").Trim();
             }
         }
 

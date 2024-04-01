@@ -10,7 +10,7 @@ namespace FriishProduce
         {
             InitializeComponent();
 
-            Language.Localize(this);
+            OK.Text = Program.Lang.String("b_ok");
             foreach (TextBox TextBox in Controls.OfType<TextBox>())
                 TextBox.Text = text;
         }

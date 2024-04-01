@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace FriishProduce.WiiVC
+namespace FriishProduce.Injectors
 {
     public class PCE : InjectorWiiVC
     {
@@ -49,7 +49,7 @@ namespace FriishProduce.WiiVC
                 if (line.Contains("ROM=")) rom = line.Replace("ROM=/", string.Empty).Replace("ROM=", string.Empty);
 
             if (rom == null || !MainContent.StringTable.Contains(rom))
-                throw new Exception(Language.Get("Error.002"));
+                throw new Exception(Program.Lang.Msg(2, true));
 
             // -----------------------
             // Replace original ROM
@@ -62,14 +62,14 @@ namespace FriishProduce.WiiVC
                 File.WriteAllBytes(Paths.WorkingFolder + "rom_comp", MainContent.Data[MainContent.GetNodeIndex(rom)]);
                 File.WriteAllBytes(Paths.WorkingFolder + "rom", ROM.Bytes);
 
-                ProcessHelper.Run
+                Utils.Run
                 (
                     Paths.Tools + "wwcxtool.exe",
                     Paths.WorkingFolder,
                     "/cr rom_comp rom rom_new"
                 );
 
-                if (!File.Exists(Paths.WorkingFolder + "rom_new")) throw new Exception(Language.Get("Error.002"));
+                if (!File.Exists(Paths.WorkingFolder + "rom_new")) throw new Exception(Program.Lang.Msg(2, true));
 
                 var LZ77_ROM = File.ReadAllBytes(Paths.WorkingFolder + "rom_new");
 

@@ -121,10 +121,10 @@
     <value>17, 17</value>
   </metadata>
   <metadata name="SaveWAD.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>120, 17</value>
+    <value>441, 17</value>
   </metadata>
   <metadata name="BrowseImage.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>209, 17</value>
+    <value>120, 17</value>
   </metadata>
   <data name="BrowseImage.Filter" xml:space="preserve">
     <value>img|*.bmp;*.jpg;*.jpeg;*.png|bmp|*.bmp|jpeg|*.jpg;*.jpeg|png|*.png</value>
@@ -156,7 +156,7 @@
     <value>3</value>
   </data>
   <metadata name="MenuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>318, 17</value>
+    <value>530, 17</value>
   </metadata>
   <data name="MenuStrip.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -165,25 +165,49 @@
     <value>Tahoma, 8pt</value>
   </data>
   <data name="NewProject.Size" type="System.Drawing.Size, System.Drawing">
-    <value>113, 22</value>
+    <value>161, 22</value>
   </data>
   <data name="NewProject.Text" xml:space="preserve">
     <value>New...</value>
   </data>
+  <data name="OpenProject.Size" type="System.Drawing.Size, System.Drawing">
+    <value>161, 22</value>
+  </data>
+  <data name="OpenProject.Text" xml:space="preserve">
+    <value>Open...</value>
+  </data>
+  <data name="SaveAs.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="SaveAs.Size" type="System.Drawing.Size, System.Drawing">
+    <value>161, 22</value>
+  </data>
+  <data name="SaveAs.Text" xml:space="preserve">
+    <value>Save project as...</value>
+  </data>
+  <data name="ExportWAD.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ExportWAD.Size" type="System.Drawing.Size, System.Drawing">
+    <value>161, 22</value>
+  </data>
+  <data name="ExportWAD.Text" xml:space="preserve">
+    <value>Export to WAD...</value>
+  </data>
   <data name="toolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>110, 6</value>
+    <value>158, 6</value>
   </data>
   <data name="MenuItem_Settings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>113, 22</value>
+    <value>161, 22</value>
   </data>
   <data name="MenuItem_Settings.Text" xml:space="preserve">
     <value>Settings</value>
   </data>
   <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>110, 6</value>
+    <value>158, 6</value>
   </data>
   <data name="MenuItem_Exit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>113, 22</value>
+    <value>161, 22</value>
   </data>
   <data name="MenuItem_Exit.Text" xml:space="preserve">
     <value>Exit</value>
@@ -218,15 +242,6 @@
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
     <value>64, 6</value>
   </data>
-  <data name="ExportWAD.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="ExportWAD.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 22</value>
-  </data>
-  <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 6</value>
-  </data>
   <data name="CloseTab.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -255,22 +270,16 @@
 </value>
   </data>
   <data name="MenuItem_Tutorial.Size" type="System.Drawing.Size, System.Drawing">
-    <value>174, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="MenuItem_Tutorial.Text" xml:space="preserve">
     <value>Tutorial</value>
   </data>
-  <data name="MenuItem_LanguageXMLEditor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>174, 22</value>
-  </data>
-  <data name="MenuItem_LanguageXMLEditor.Text" xml:space="preserve">
-    <value>Language XML Editor</value>
-  </data>
   <data name="toolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>171, 6</value>
+    <value>177, 6</value>
   </data>
   <data name="MenuItem_About.Size" type="System.Drawing.Size, System.Drawing">
-    <value>174, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="MenuItem_About.Text" xml:space="preserve">
     <value>About</value>
@@ -305,6 +314,9 @@
   </data>
   <data name="&gt;&gt;MenuStrip.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 6</value>
   </data>
   <data name="Welcome_DoNotShow.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8.25pt</value>
@@ -429,13 +441,43 @@ Before getting started, please be sure to familiarise yourself with this program
     <value>0</value>
   </data>
   <metadata name="ToolStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>410, 17</value>
+    <value>622, 17</value>
   </metadata>
   <data name="ToolStrip.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="ToolStrip.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
+  </data>
+  <data name="ToolStrip_NewProject.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="ToolStrip_NewProject.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 22</value>
+  </data>
+  <data name="ToolStrip_NewProject.Text" xml:space="preserve">
+    <value>toolStripDropDownButton1</value>
+  </data>
+  <data name="ToolStrip_SaveAs.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ToolStrip_SaveAs.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="ToolStrip_SaveAs.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="ToolStrip_ExportWAD.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ToolStrip_ExportWAD.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="ToolStrip_ExportWAD.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="toolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
   </data>
   <data name="ToolStrip_OpenROM.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -468,18 +510,6 @@ Before getting started, please be sure to familiarise yourself with this program
     <value>23, 22</value>
   </data>
   <data name="toolStripSeparator8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 25</value>
-  </data>
-  <data name="ToolStrip_ExportWAD.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="ToolStrip_ExportWAD.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="ToolStrip_ExportWAD.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="toolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 25</value>
   </data>
   <data name="ToolStrip_CloseTab.Enabled" type="System.Boolean, mscorlib">
@@ -527,6 +557,12 @@ Before getting started, please be sure to familiarise yourself with this program
   <data name="&gt;&gt;ToolStrip.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <metadata name="SaveProject.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>342, 17</value>
+  </metadata>
+  <metadata name="BrowseProject.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>229, 17</value>
+  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -2977,6 +3013,24 @@ Before getting started, please be sure to familiarise yourself with this program
   <data name="&gt;&gt;NewProject.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;OpenProject.Name" xml:space="preserve">
+    <value>OpenProject</value>
+  </data>
+  <data name="&gt;&gt;OpenProject.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SaveAs.Name" xml:space="preserve">
+    <value>SaveAs</value>
+  </data>
+  <data name="&gt;&gt;SaveAs.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ExportWAD.Name" xml:space="preserve">
+    <value>ExportWAD</value>
+  </data>
+  <data name="&gt;&gt;ExportWAD.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;toolStripMenuItem1.Name" xml:space="preserve">
     <value>toolStripMenuItem1</value>
   </data>
@@ -3037,18 +3091,6 @@ Before getting started, please be sure to familiarise yourself with this program
   <data name="&gt;&gt;toolStripSeparator2.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ExportWAD.Name" xml:space="preserve">
-    <value>ExportWAD</value>
-  </data>
-  <data name="&gt;&gt;ExportWAD.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator3.Name" xml:space="preserve">
-    <value>toolStripSeparator3</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;CloseTab.Name" xml:space="preserve">
     <value>CloseTab</value>
   </data>
@@ -3067,12 +3109,6 @@ Before getting started, please be sure to familiarise yourself with this program
   <data name="&gt;&gt;MenuItem_Tutorial.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;MenuItem_LanguageXMLEditor.Name" xml:space="preserve">
-    <value>MenuItem_LanguageXMLEditor</value>
-  </data>
-  <data name="&gt;&gt;MenuItem_LanguageXMLEditor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;toolStripSeparator5.Name" xml:space="preserve">
     <value>toolStripSeparator5</value>
   </data>
@@ -3084,6 +3120,36 @@ Before getting started, please be sure to familiarise yourself with this program
   </data>
   <data name="&gt;&gt;MenuItem_About.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator3.Name" xml:space="preserve">
+    <value>toolStripSeparator3</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStrip_NewProject.Name" xml:space="preserve">
+    <value>ToolStrip_NewProject</value>
+  </data>
+  <data name="&gt;&gt;ToolStrip_NewProject.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripDropDownButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStrip_SaveAs.Name" xml:space="preserve">
+    <value>ToolStrip_SaveAs</value>
+  </data>
+  <data name="&gt;&gt;ToolStrip_SaveAs.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStrip_ExportWAD.Name" xml:space="preserve">
+    <value>ToolStrip_ExportWAD</value>
+  </data>
+  <data name="&gt;&gt;ToolStrip_ExportWAD.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator7.Name" xml:space="preserve">
+    <value>toolStripSeparator7</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;ToolStrip_OpenROM.Name" xml:space="preserve">
     <value>ToolStrip_OpenROM</value>
@@ -3115,18 +3181,6 @@ Before getting started, please be sure to familiarise yourself with this program
   <data name="&gt;&gt;toolStripSeparator8.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ToolStrip_ExportWAD.Name" xml:space="preserve">
-    <value>ToolStrip_ExportWAD</value>
-  </data>
-  <data name="&gt;&gt;ToolStrip_ExportWAD.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator7.Name" xml:space="preserve">
-    <value>toolStripSeparator7</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;ToolStrip_CloseTab.Name" xml:space="preserve">
     <value>ToolStrip_CloseTab</value>
   </data>
@@ -3144,6 +3198,18 @@ Before getting started, please be sure to familiarise yourself with this program
   </data>
   <data name="&gt;&gt;ToolStrip_Tutorial.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SaveProject.Name" xml:space="preserve">
+    <value>SaveProject</value>
+  </data>
+  <data name="&gt;&gt;SaveProject.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SaveFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;BrowseProject.Name" xml:space="preserve">
+    <value>BrowseProject</value>
+  </data>
+  <data name="&gt;&gt;BrowseProject.Type" xml:space="preserve">
+    <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>

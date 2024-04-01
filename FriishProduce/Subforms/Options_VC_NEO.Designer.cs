@@ -38,7 +38,7 @@ namespace FriishProduce
             // 
             // OK
             // 
-            this.OK.Location = new System.Drawing.Point(206, 12);
+            this.b_ok.Location = new System.Drawing.Point(206, 12);
             // 
             // bottomPanel1
             // 
@@ -46,7 +46,7 @@ namespace FriishProduce
             // 
             // Cancel
             // 
-            this.Cancel.Location = new System.Drawing.Point(302, 12);
+            this.b_cancel.Location = new System.Drawing.Point(302, 12);
             // 
             // ImportBIOS
             // 

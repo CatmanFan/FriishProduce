@@ -47,7 +47,7 @@ namespace FriishProduce
             // 
             // OK
             // 
-            this.OK.Location = new System.Drawing.Point(106, 12);
+            this.b_ok.Location = new System.Drawing.Point(106, 12);
             // 
             // bottomPanel1
             // 
@@ -55,7 +55,7 @@ namespace FriishProduce
             // 
             // Cancel
             // 
-            this.Cancel.Location = new System.Drawing.Point(202, 12);
+            this.b_cancel.Location = new System.Drawing.Point(202, 12);
             // 
             // comboBox1
             // 
@@ -105,7 +105,7 @@ namespace FriishProduce
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(71, 65);
+            this.label1.Location = new System.Drawing.Point(91, 65);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(58, 13);
             this.label1.TabIndex = 23;
@@ -125,11 +125,14 @@ namespace FriishProduce
             "192",
             "224",
             "256",
-            "288",
-            "320"});
+            "512",
+            "1024",
+            "2048",
+            "4096",
+            "8192"});
             this.comboBox2.Location = new System.Drawing.Point(10, 62);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(55, 21);
+            this.comboBox2.Size = new System.Drawing.Size(75, 21);
             this.comboBox2.TabIndex = 22;
             // 
             // groupBox2

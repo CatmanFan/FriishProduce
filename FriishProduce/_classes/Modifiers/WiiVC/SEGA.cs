@@ -1,11 +1,10 @@
-﻿using Archives;
-using libWiiSharp;
+﻿using libWiiSharp;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace FriishProduce.WiiVC
+namespace FriishProduce.Injectors
 {
     public class SEGA : InjectorWiiVC
     {
@@ -337,7 +336,7 @@ namespace FriishProduce.WiiVC
 
                     var newConfigFile = encoding.GetBytes(string.Join("\r\n", newConfig.ToArray()) + "\r\n");
 
-                    while (!System.Collections.StructuralComparisons.StructuralEqualityComparer.Equals(MainCCF.Data[MainCCF.GetNodeIndex(item.Name)], newConfigFile))
+                    while (!Byte.IsSame(MainCCF.Data[MainCCF.GetNodeIndex(item.Name)], newConfigFile))
                         MainCCF.ReplaceFile(item, newConfigFile);
                 }
             }

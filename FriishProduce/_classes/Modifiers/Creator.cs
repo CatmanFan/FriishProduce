@@ -1,7 +1,9 @@
 ﻿using libWiiSharp;
+using System;
 
 namespace FriishProduce
 {
+    [Serializable]
     public class Creator
     {
         // -----------------------------------
@@ -28,7 +30,7 @@ namespace FriishProduce
         public Creator()
         {
             TitleID = null;
-            ChannelTitles = new string[] { "無題", "Untitled", "Ohne Titel", "Sans titre", "Sin título", "Senza titolo", "Onbekend", "제목 없음" };
+            ChannelTitles = new string[8]; // "無題", "Untitled", "Ohne Titel", "Sans titre", "Sin título", "Senza titolo", "Onbekend", "제목 없음"
             BannerTitle = null;
             BannerYear = 1980;
             BannerPlayers = 1;

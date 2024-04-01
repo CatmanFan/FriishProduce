@@ -1,0 +1,93 @@
+﻿{
+    "HOW TO ADD BASES":
+	{
+		"// id": "The full ID of the channel in hex, except the last two characters (replace with '__' two underscores). This is the region component for the title ID and will be determined automatically by the app.",
+		"Example": "00010001-464357__ (FCW_)",
+		
+		"// region": "The regions for which the channel is available, in an array, listed by number.",
+		[
+			"0": "Japan",
+			"1": "USA",
+			"2": "USA (Japanese import)",
+			"3": "Europe",
+			"4": "Europe (Japanese import/PAL60)",
+			"5": "Europe (American import/PAL60)",
+			"6": "Korea (Japanese language)",
+			"7": "Korea (English language)"
+		],
+
+		"// emu_ver": "The emulator version(s) corresponding to the WAD for each region, in an array. MUST be an integer!",
+		[
+			"NES": [
+				"Normal": 0,
+				"LZ77": 1,
+				"LZH8": 2
+			],
+
+			"SNES": [
+				"Normal": 0,
+				"LZ77": 1,
+				"LZH8": 2
+			],
+
+			"N64": [
+				"Rev 1": 0,
+				"Rev 1 (alternative savedata format)": 1,
+				"Rev 2 (legacy configuration removed)": 2,
+				"Rev 3 (ROMC)": 3
+			],
+
+			"SMS": "Same as SMD, see below",
+
+			"SMD": [
+				"Rev 1 (has regional banner_XX.wte files for savedata)": 1,
+				"Rev 2 (may use 'patch' file, more settings)": 2,
+				"Rev 3 (includes modules and controller config)": 3
+			]
+		],
+
+		"// titles": "The regional software titles for the channel, by order of regions listed.",
+		[
+			"Example 1": ["ゼルダの伝説", "The Legend of Zelda", "The Legend of Zelda"],
+			"Example 2": ["スターフォックス６４", "Star Fox 64", "Lylat Wars"],
+		]
+	},
+
+
+
+	"NES": [
+		{
+			"id": "00010001-464357__",
+			"region": [0, 1, 3, 6],
+			"emu_ver": [0, 0, 0, 0],
+			"titles": ["スーパーマリオブラザーズ3", "Super Mario Bros. 3", "Super Mario Bros. 3", "슈퍼 마리오브라더스 3"]
+		},
+		{
+			"id": "00010001-464138__",
+			"region": [0, 1, 3, 7],
+			"emu_ver": [0, 0, 0, 0],
+			"titles": ["星のカービィ 夢の泉の物語", "Kirby's Adventure", "Kirby's Adventure", "별의 커비 꿈의 샘 이야기"]
+		},
+		{
+			"id": "00010001-46424e__",
+			"region": [5],
+			"emu_ver": [0],
+			"titles": ["Ninja Gaiden"]
+		}
+	],
+
+	"SNES": [
+		{
+			"id": "00010001-4a4244__",
+			"region": [0, 1, 3, 7],
+			"emu_ver": [0, 0, 0, 0],
+			"titles": ["スーパードンキーコング2", "Donkey Kong Country 2", "Donkey Kong Country 2", "동키콩 컨트리 2"]
+		},
+		{
+			"id": "00010001-4a4142__",
+			"region": [4],
+			"emu_ver": [0],
+			"titles": ["Mario's Super Picross"]
+		}
+	]
+}

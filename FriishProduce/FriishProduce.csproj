@@ -24,7 +24,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <ApplicationVersion>1.1.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -52,6 +52,9 @@
   <PropertyGroup>
     <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>FriishProduce.Program</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="DotNetZip, Version=1.16.0.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL">
       <HintPath>..\packages\DotNetZip.1.16.0\lib\net40\DotNetZip.dll</HintPath>
@@ -65,6 +68,7 @@
     <Reference Include="MdiTabControl">
       <HintPath>.\MdiTabControl.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.5.0, Culture=neutral, PublicKeyToken=8985beaab7ea3f04, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft-WindowsAPICodePack-Core.1.1.5\lib\net472\Microsoft.WindowsAPICodePack.dll</HintPath>
     </Reference>
@@ -125,14 +129,11 @@
     </Reference>
     <Reference Include="UIAutomationClient" />
     <Reference Include="WindowsBase" />
+    <Reference Include="YamlDotNet, Version=15.0.0.0, Culture=neutral, PublicKeyToken=ec19458f3c15af5e, processorArchitecture=MSIL">
+      <HintPath>..\packages\YamlDotNet.15.1.2\lib\net47\YamlDotNet.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LanguageXMLEditor.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="LanguageXMLEditor.Designer.cs">
-      <DependentUpon>LanguageXMLEditor.cs</DependentUpon>
-    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -205,13 +206,14 @@
     </Compile>
     <Compile Include="_classes\Archives\CCF.cs" />
     <Compile Include="_classes\BannerPreview.cs" />
+    <Compile Include="_classes\Program\Language.cs" />
     <Compile Include="_classes\Modifiers\Flash.cs" />
     <Compile Include="_classes\Modifiers\Forwarder.cs" />
     <Compile Include="_classes\Modifiers\WiiVC\PCE.cs" />
+    <Compile Include="_classes\Projects\ProjectType.cs" />
     <Compile Include="_classes\ROM\Disc.cs" />
     <Compile Include="_classes\ROM\Flash.cs" />
     <Compile Include="_classes\Modifiers\WiiVC\MSX.cs" />
-    <Compile Include="_classes\Language.cs" />
     <Compile Include="_classes\ROM\MSX.cs" />
     <Compile Include="_classes\ROM\N64.cs" />
     <Compile Include="_classes\ROM\NEO.cs" />
@@ -220,9 +222,6 @@
     <Compile Include="_classes\ROM\SEGA.cs" />
     <Compile Include="_classes\ROM\SNES.cs" />
     <Compile Include="_classes\Program\Updater.cs" />
-    <EmbeddedResource Include="LanguageXMLEditor.resx">
-      <DependentUpon>LanguageXMLEditor.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -293,7 +292,7 @@
     <Compile Include="SettingsForm.Designer.cs">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="_classes\Byte.cs" />
+    <Compile Include="_classes\Utilities.cs" />
     <Compile Include="_classes\Consoles.cs" />
     <Compile Include="_classes\Database.cs" />
     <Compile Include="_classes\Modifiers\Creator.cs" />
@@ -344,14 +343,15 @@
     <EmbeddedResource Include="Subforms\Options_VC_NES.resx">
       <DependentUpon>Options_VC_NES.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InjectorForm.resx">
-      <DependentUpon>InjectorForm.cs</DependentUpon>
+    <EmbeddedResource Include="ProjectForm.resx">
+      <DependentUpon>ProjectForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Compile Include="InjectorForm.cs">
+    <Compile Include="ProjectForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InjectorForm.Designer.cs">
-      <DependentUpon>InjectorForm.cs</DependentUpon>
+    <Compile Include="ProjectForm.Designer.cs">
+      <DependentUpon>ProjectForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="SettingsForm.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
@@ -362,6 +362,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="database.json" />
+    <None Include="Strings\en.yml" />
+    <None Include="Strings\es.json" />
+    <None Include="Strings\en.json" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Options\ADOBEFLASH.settings">
@@ -410,6 +414,9 @@
   <ItemGroup>
     <Content Include="Database.xml" />
     <Content Include="icon.ico" />
+    <None Include="Resources\icons\wooden-box--pencil.png" />
+    <None Include="Resources\icons\disk-black.png" />
+    <None Include="Resources\icons\disc-case.png" />
     <None Include="Resources\sound.wave.wav" />
     <None Include="Resources\icons\consoles\sony playstation.ico" />
     <None Include="Resources\icons\msx.png" />
@@ -505,7 +512,9 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Subforms\Options\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>
@@ -513,10 +522,10 @@
   </PropertyGroup>
   <PropertyGroup>
     <PostBuildEvent>cd "$(TargetDir)strings\"
-for %25%25f in (*.xml) do (call :delete %25%25f)
+for %25%25f in (*.json) do (call :delete %25%25f)
 
 cd "$(ProjectDir)Strings\"
-for %25%25f in (*.xml) do (call :copy %25%25f)
+for %25%25f in (*.json) do (call :copy %25%25f)
 goto :eof
 
 :copy

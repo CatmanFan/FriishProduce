@@ -296,20 +296,20 @@ namespace FriishProduce
 
             string released = lang == 1 ? "{0}年発売"
                              : lang == 2 ? "일본판 발매년도\r\n{0}년"
-                             : Language.Current.TwoLetterISOLanguageName == "nl" ? "Release: {0}"
-                             : Language.Current.TwoLetterISOLanguageName == "es" ? "Año: {0}"
-                             : Language.Current.TwoLetterISOLanguageName == "it" ? "Pubblicato: {0}"
-                             : Language.Current.TwoLetterISOLanguageName == "fr" ? "Publié en {0}"
-                             : Language.Current.TwoLetterISOLanguageName == "de" ? "Erschienen: {0}"
+                             : Program.Lang.Current == "nl" ? "Release: {0}"
+                             : Program.Lang.Current == "es" ? "Año: {0}"
+                             : Program.Lang.Current == "it" ? "Pubblicato: {0}"
+                             : Program.Lang.Current == "fr" ? "Publié en {0}"
+                             : Program.Lang.Current == "de" ? "Erschienen: {0}"
                              : "Released: {0}";
 
             string numPlayers = lang == 1 ? "プレイ人数\r\n{0}人"
                               : lang == 2 ? "플레이 인원수\r\n{0}명"
-                              : Language.Current.TwoLetterISOLanguageName == "nl" ? "{0} speler(s)"
-                              : Language.Current.TwoLetterISOLanguageName == "es" ? "Jugadores: {0}"
-                              : Language.Current.TwoLetterISOLanguageName == "it" ? "Giocatori: {0}"
-                              : Language.Current.TwoLetterISOLanguageName == "fr" ? "Joueurs: {0}"
-                              : Language.Current.TwoLetterISOLanguageName == "de" ? "{0} Spieler"
+                              : Program.Lang.Current == "nl" ? "{0} speler(s)"
+                              : Program.Lang.Current == "es" ? "Jugadores: {0}"
+                              : Program.Lang.Current == "it" ? "Giocatori: {0}"
+                              : Program.Lang.Current == "fr" ? "Joueurs: {0}"
+                              : Program.Lang.Current == "de" ? "{0} Spieler"
                               : "Players: {0}";
 
             using (Graphics g = Graphics.FromImage(bmp))

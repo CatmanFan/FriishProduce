@@ -4,6 +4,7 @@ using System.IO;
 
 namespace FriishProduce
 {
+    [Serializable]
     public abstract class ROM
     {
         private string _rom;
@@ -15,17 +16,29 @@ namespace FriishProduce
             {
                 if (value != null)
                 {
-                    // -----------------------
-                    // Check if raw ROM exists
-                    // -----------------------
-                    if (!File.Exists(value))
-                        throw new FileNotFoundException(new FileNotFoundException().Message, value);
+                    try
+                    {
+                        // -----------------------
+                        // Check if raw ROM exists
+                        // -----------------------
+                        if (!File.Exists(value))
+                            throw new FileNotFoundException(new FileNotFoundException().Message, value);
 
-                    _rom = value;
+                        _rom = value;
 
-                    if (System.IO.Path.GetExtension(value).ToLower() == ".zip") try { ZIP = new ZipFile(value); } catch { ZIP = null; }
-                    if (ZIP == null) Bytes = File.ReadAllBytes(value);
-                    Load();
+                        if (System.IO.Path.GetExtension(value).ToLower() == ".zip") try { ZIP = new ZipFile(value); } catch { ZIP = null; }
+                        if (ZIP == null) Bytes = File.ReadAllBytes(value);
+                        Load();
+                    }
+
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+
+                        _rom = null;
+                        Bytes = null;
+                        ZIP = null;
+                    }
                 }
             }
         }
@@ -82,9 +95,9 @@ namespace FriishProduce
             if (Bytes.Length > length && MaxSize > 0)
             {
                 bool isMB = length >= 1048576;
-                throw new Exception(string.Format(Language.Get("Error.003"),
+                throw new Exception(string.Format(Program.Lang.Msg(3, true),
                     Math.Round((double)length / (isMB ? 1048576 : 1024), 2).ToString(),
-                    isMB ? Language.Get("Abbr.Megabytes") : Language.Get("Abbr.Kilobytes")));
+                    isMB ? Program.Lang.String("megabytes") : Program.Lang.String("kilobytes")));
             }
 
             return true;
@@ -96,13 +109,13 @@ namespace FriishProduce
         {
             File.WriteAllBytes(Paths.WorkingFolder + "rom", Bytes);
 
-            ProcessHelper.Run("xdelta3.exe", $"-d -s \"{Paths.WorkingFolder + "rom"}\" \"{PatchFile}\" \"{Paths.WorkingFolder + "rom_p"}\"");
+            Utils.Run("xdelta3.exe", $"-d -s \"{Paths.WorkingFolder + "rom"}\" \"{PatchFile}\" \"{Paths.WorkingFolder + "rom_p"}\"");
 
             if (File.Exists(Paths.WorkingFolder + "rom")) File.Delete(Paths.WorkingFolder + "rom");
 
             if (!File.Exists(Paths.WorkingFolder + "rom_p"))
             {
-                MessageBox.Show(Language.Get("Error"), Language.Get("Error.007"), System.Windows.Forms.MessageBoxButtons.OK, Ookii.Dialogs.WinForms.TaskDialogIcon.Error);
+                MessageBox.Show(Program.Lang.String("error", "messages"), Program.Lang.Msg(7, true), MessageBox.Buttons.Ok, Ookii.Dialogs.WinForms.TaskDialogIcon.Error);
                 return false;
             }
 

@@ -52,13 +52,13 @@ namespace FriishProduce
                     // Create temporary files at working folder
                     // ****************
                     File.WriteAllBytes(Paths.WorkingFolder + "content1.app", Contents[1]);
-                    ProcessHelper.Run
+                    Utils.Run
                     (
                         Paths.Tools + "wwcxtool.exe",
                         Paths.WorkingFolder,
                         "/u content1.app content1.dec"
                     );
-                    if (!File.Exists(Paths.WorkingFolder + "content1.dec")) throw new Exception(Language.Get("Error.002"));
+                    if (!File.Exists(Paths.WorkingFolder + "content1.dec")) throw new Exception(Program.Lang.Msg(2, true));
 
                     Contents[1] = File.ReadAllBytes(Paths.WorkingFolder + "content1.dec");
                 }
@@ -186,27 +186,27 @@ namespace FriishProduce
                             OrigManual = item;
 
                             File.WriteAllBytes(Paths.WorkingFolder + "html.arc", target.Data[target.GetNodeIndex(OrigManual)]);
-                            ProcessHelper.Run
+                            Utils.Run
                             (
                                 Paths.Tools + "wwcxtool.exe",
                                 Paths.WorkingFolder,
                                 "/u html.arc html.dec"
                             );
 
-                            if (!File.Exists(Paths.WorkingFolder + "html.dec")) throw new Exception(Language.Get("Error.002"));
+                            if (!File.Exists(Paths.WorkingFolder + "html.dec")) throw new Exception(Program.Lang.Msg(2, true));
                             Manual = File.ReadAllBytes(Paths.WorkingFolder + "html.dec");
                             if (File.Exists(Paths.WorkingFolder + "html.dec")) File.Delete(Paths.WorkingFolder + "html.dec");
 
                             File.WriteAllBytes("html_modified.dec", ReplaceManual().ToByteArray());
 
-                            ProcessHelper.Run
+                            Utils.Run
                             (
                                 Paths.Tools + "wwcxtool.exe",
                                 Paths.WorkingFolder,
                                 "/cr html.arc html_modified.dec html_modified.arc"
                             );
 
-                            if (!File.Exists(Paths.WorkingFolder + "html_modified.arc")) throw new Exception(Language.Get("Error.002"));
+                            if (!File.Exists(Paths.WorkingFolder + "html_modified.arc")) throw new Exception(Program.Lang.Msg(2, true));
                             target.ReplaceFile(target.GetNodeIndex(OrigManual), File.ReadAllBytes(Paths.WorkingFolder + "html_modified.arc"));
 
                             if (File.Exists(Paths.WorkingFolder + "html.arc")) File.Delete(Paths.WorkingFolder + "html.arc");
@@ -232,13 +232,13 @@ namespace FriishProduce
                 if (File.Exists(Paths.WorkingFolder + "content1.dec"))
                 {
                     File.WriteAllBytes(Paths.WorkingFolder + "content1.dec", Contents[1]);
-                    ProcessHelper.Run
+                    Utils.Run
                     (
                         Paths.Tools + "wwcxtool.exe",
                         Paths.WorkingFolder,
                         "/cr content1.app content1.dec content1.new"
                     );
-                    if (!File.Exists(Paths.WorkingFolder + "content1.new")) throw new Exception(Language.Get("Error.002"));
+                    if (!File.Exists(Paths.WorkingFolder + "content1.new")) throw new Exception(Program.Lang.Msg(2, true));
 
                     byte[] Recompressed = File.ReadAllBytes(Paths.WorkingFolder + "content1.new");
 

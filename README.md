@@ -7,7 +7,7 @@
 **FriishProduce** is a WAD channel injector/creator for (v)Wii. It can be used to convert ROMs, disc images or other types of software to installable WADs for Wii/vWii (Wii U). This includes injectable Virtual Console (VC) games, as well as single ROM loaders (SRLs), and Adobe Flash files.
 This application is designed to streamline the process to as few third-party programs as possible.
 
-***This repository has been updated by way of a new MDI version (pictured above) and is currently under work-in-progress.<br>For the legacy edition, see [here](https://github.com/CatmanFan/FriishProduce/tree/main/legacy), or check [v0.26-beta](https://github.com/CatmanFan/FriishProduce/releases/tag/v0.26-beta) for the latest release.***
+***This repository has been updated by way of a new MDI version (pictured above) and is currently under work-in-progress.<br>The legacy version (all revisions up to and including v0.26-beta) are currently being deprecated and will be moved to a separate read-only repository.***
 
 ---
 
@@ -29,17 +29,16 @@ This injector bypasses other third-party assets (such as Common-Key.bin, HowardC
 * **NEC TurboGrafx-16 / PC Engine**
 * **SNK NEO-GEO**
 * **Microsoft MSX / MSX2**
-<!-- * **Adobe Flash** -->
-
-## How-to
-* For information on how to use the new interface (v1.0 and above), see **[here](https://github.com/CatmanFan/FriishProduce/wiki/FriishProduce-v1.0)**.
-* For information on how to use the legacy beta versions (v0.26-beta and earlier), see **[here](https://github.com/CatmanFan/FriishProduce/wiki/FriishProduce-Legacy)** (*recommended*).
-
-**Make sure you have a (v)Wii NAND backup in case anything goes wrong!**
+* **Adobe Flash**
 
 ---
 
-## Translation
+## How-to
+See **[here](https://github.com/CatmanFan/FriishProduce/wiki/FriishProduce-v1.0)** for basic instructions on how to use the app.
+
+**Make sure you have a (v)Wii NAND backup in case anything goes wrong!**
+
+### Translation
 See **[here](https://github.com/CatmanFan/FriishProduce/wiki/Translation)** for basic instructions on translating the app.
 
 ---
@@ -48,7 +47,7 @@ See **[here](https://github.com/CatmanFan/FriishProduce/wiki/Translation)** for 
 * ***Planned for v1.1:***
 - [ ] Potentially reorganize consoles into their own folders?
 - [ ] Restructure and clean code
-- [ ] Create project format
+- [X] Create project format
 * Other VC injection support to be done later:
   * Commodore 64 (needs [Custom Frodo](https://gbatemp.net/threads/custom-frodo-for-c64-vc-injection.102356/))
   * TurboGrafx-16 CD (needs several programs to convert ISO to injectable format)
