@@ -8,15 +8,15 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using YamlDotNet.Core;
-using YamlDotNet.Helpers;
-using YamlDotNet.Serialization;
-using YamlDotNet.Serialization.NamingConventions;
+using System.Text.Json;
 
 namespace FriishProduce
 {
     public class Language
     {
+        private readonly string extension = ".json";
+        private readonly byte[] englishFile = Properties.Resources.JSON_EN;
+
         protected class LanguageData
         {
             public string language { get; set; }
@@ -32,7 +32,7 @@ namespace FriishProduce
         {
             get
             {
-                string[] fileList = Directory.EnumerateFiles(Paths.Languages, "*.*").Where(x => x.ToLower().EndsWith(".yml") || x.ToLower().EndsWith(".yaml")).ToArray();
+                string[] fileList = Directory.EnumerateFiles(Paths.Languages, "*.*").Where(x => x.ToLower().EndsWith(extension)).ToArray();
 
                 if (_list?.Count == fileList.Length + 1) return _list;
 
@@ -88,11 +88,11 @@ namespace FriishProduce
                 Properties.Settings.Default.Save();
             }
 
-            if (true)
+            if (_english == null || _english?.language != "en")
             {
                 try
                 {
-                    _english = parseFile(Properties.Resources.YAML_EN);
+                    _english = parseFile(englishFile);
                 }
 
                 catch (Exception ex)
@@ -226,7 +226,7 @@ namespace FriishProduce
                 {
                     foreach (KeyValuePair<string, string> item in path[sectionName.ToLower()])
                     {
-                        if (item.Key.ToLower() == name.ToLower())
+                        if (item.Key?.ToLower() == name?.ToLower())
                         {
                             result = item.Value;
                             goto Found;
@@ -267,31 +267,30 @@ namespace FriishProduce
                                                           let open = pair.Item1
                                                           let close = pair.Item2
                                                           let inside = result.Substring(open + 1, close - open - 1)
-                                                          where StringCheck(inside)
                                                           select (open, close, inside))
                     {
-                        result = result.Replace(result.Substring(open, close - open + 1), String(inside));
+                        result = !int.TryParse(inside, out _) ? result.Replace(result.Substring(open, close - open + 1), String(inside)) : result;
                     }
                 }
 
                 return result;
-
-            NotFound:
-                throw new KeyNotFoundException();
             }
 
             catch
             {
-                if (!isEnglish)
-                {
-                    isEnglish = true;
-                    goto Top;
-                }
+                goto NotFound;
+            }
 
-                else
-                {
-                    return "undefined";
-                }
+            NotFound:
+            if (!isEnglish)
+            {
+                isEnglish = true;
+                goto Top;
+            }
+
+            else
+            {
+                return "undefined";
             }
         }
         #endregion
@@ -304,8 +303,8 @@ namespace FriishProduce
                 try
                 {
                     string path = Paths.Languages + code;
-                    if (File.Exists(path + ".yml") || File.Exists(path + ".yaml"))
-                        return parseFile(File.ReadAllBytes(path));
+                    if (File.Exists(path + extension))
+                        return parseFile(File.ReadAllBytes(path + extension));
 
                     throw new FileNotFoundException();
                 }
@@ -315,18 +314,18 @@ namespace FriishProduce
                 }
             }
 
-            else return parseFile(Properties.Resources.YAML_EN);
+            else return parseFile(englishFile);
         }
 
         private dynamic parseFile(byte[] file)
         {
             dynamic reader = null;
-            var yamlReader = new DeserializerBuilder().Build();
 
             using (MemoryStream ms = new MemoryStream(file))
             using (StreamReader sr = new StreamReader(ms, Encoding.Unicode))
+            using (var fileReader = JsonDocument.Parse(sr.ReadToEnd(), new JsonDocumentOptions() { AllowTrailingCommas = true, CommentHandling = JsonCommentHandling.Skip }))
             {
-                reader = yamlReader.Deserialize<LanguageData>(sr.ReadToEnd());
+                reader = JsonSerializer.Deserialize<LanguageData>(fileReader, new JsonSerializerOptions() { AllowTrailingCommas = true, ReadCommentHandling = JsonCommentHandling.Skip });
                 sr.Dispose();
                 ms.Dispose();
             }

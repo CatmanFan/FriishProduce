@@ -81,7 +81,7 @@ namespace FriishProduce
         {
             foreach (ToolStripMenuItem section in MenuStrip.Items.OfType<ToolStripMenuItem>())
                 foreach (ToolStripItem item in section.DropDownItems.OfType<ToolStripItem>())
-                    if (Program.Lang.StringCheck(item.Name, Name)) item.Text = Program.Lang.String(item.Name, Name);
+                    if (Program.Lang.StringCheck(item.Tag?.ToString().ToLower(), Name)) item.Text = Program.Lang.String(item.Tag?.ToString().ToLower(), Name);
 
             NewProject.DropDownItems.Clear();
             NewProject.DropDownItems.AddRange(ConsolesList());
