@@ -36,7 +36,7 @@ namespace FriishProduce
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // OK
+            // b_ok
             // 
             this.b_ok.Location = new System.Drawing.Point(206, 12);
             // 
@@ -44,7 +44,7 @@ namespace FriishProduce
             // 
             this.bottomPanel1.Size = new System.Drawing.Size(404, 47);
             // 
-            // Cancel
+            // b_cancel
             // 
             this.b_cancel.Location = new System.Drawing.Point(302, 12);
             // 
@@ -80,6 +80,7 @@ namespace FriishProduce
             this.ClientSize = new System.Drawing.Size(404, 122);
             this.Controls.Add(this.groupBox1);
             this.Name = "Options_VC_NEO";
+            this.Tag = "vc_neo";
             this.Controls.SetChildIndex(this.groupBox1, 0);
             this.bottomPanel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);

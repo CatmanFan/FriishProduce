@@ -29,16 +29,16 @@ namespace FriishProduce
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.palette = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.palette_use_on_banner = new System.Windows.Forms.CheckBox();
             this.PaletteList = new System.Windows.Forms.ComboBox();
             this.bottomPanel1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.palette.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // OK
+            // b_ok
             // 
             this.b_ok.Location = new System.Drawing.Point(101, 12);
             // 
@@ -46,21 +46,22 @@ namespace FriishProduce
             // 
             this.bottomPanel1.Size = new System.Drawing.Size(299, 47);
             // 
-            // Cancel
+            // b_cancel
             // 
             this.b_cancel.Location = new System.Drawing.Point(197, 12);
             // 
-            // groupBox1
+            // palette
             // 
-            this.groupBox1.Controls.Add(this.pictureBox1);
-            this.groupBox1.Controls.Add(this.checkBox1);
-            this.groupBox1.Controls.Add(this.PaletteList);
-            this.groupBox1.Location = new System.Drawing.Point(12, 10);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(275, 270);
-            this.groupBox1.TabIndex = 13;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Palette";
+            this.palette.Controls.Add(this.pictureBox1);
+            this.palette.Controls.Add(this.palette_use_on_banner);
+            this.palette.Controls.Add(this.PaletteList);
+            this.palette.Location = new System.Drawing.Point(12, 10);
+            this.palette.Name = "palette";
+            this.palette.Size = new System.Drawing.Size(275, 270);
+            this.palette.TabIndex = 13;
+            this.palette.TabStop = false;
+            this.palette.Tag = "palette";
+            this.palette.Text = "palette";
             // 
             // pictureBox1
             // 
@@ -73,38 +74,39 @@ namespace FriishProduce
             this.pictureBox1.TabIndex = 10;
             this.pictureBox1.TabStop = false;
             // 
-            // checkBox1
+            // palette_use_on_banner
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.checkBox1.Location = new System.Drawing.Point(9, 244);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(194, 18);
-            this.checkBox1.TabIndex = 12;
-            this.checkBox1.Text = "Also use palette for banner image";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.palette_use_on_banner.AutoSize = true;
+            this.palette_use_on_banner.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.palette_use_on_banner.Location = new System.Drawing.Point(9, 244);
+            this.palette_use_on_banner.Name = "palette_use_on_banner";
+            this.palette_use_on_banner.Size = new System.Drawing.Size(141, 17);
+            this.palette_use_on_banner.TabIndex = 12;
+            this.palette_use_on_banner.Tag = "palette_use_on_banner";
+            this.palette_use_on_banner.Text = "palette_use_on_banner";
+            this.palette_use_on_banner.UseVisualStyleBackColor = true;
             // 
             // PaletteList
             // 
             this.PaletteList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.PaletteList.FormattingEnabled = true;
-            this.PaletteList.Items.AddRange(new object[] {
-            "def"});
             this.PaletteList.Location = new System.Drawing.Point(9, 218);
             this.PaletteList.Name = "PaletteList";
             this.PaletteList.Size = new System.Drawing.Size(256, 21);
             this.PaletteList.TabIndex = 9;
+            this.PaletteList.Tag = "palette";
             this.PaletteList.SelectedIndexChanged += new System.EventHandler(this.PaletteChanged);
             // 
             // Options_VC_NES
             // 
             this.ClientSize = new System.Drawing.Size(299, 342);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.palette);
             this.Name = "Options_VC_NES";
-            this.Controls.SetChildIndex(this.groupBox1, 0);
+            this.Tag = "vc_nes";
+            this.Controls.SetChildIndex(this.palette, 0);
             this.bottomPanel1.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.palette.ResumeLayout(false);
+            this.palette.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -112,9 +114,9 @@ namespace FriishProduce
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox palette;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ComboBox PaletteList;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox palette_use_on_banner;
     }
 }

@@ -83,8 +83,8 @@ namespace FriishProduce
                 foreach (ToolStripItem item in section.DropDownItems.OfType<ToolStripItem>())
                     if (Program.Lang.StringCheck(item.Tag?.ToString().ToLower(), Name)) item.Text = Program.Lang.String(item.Tag?.ToString().ToLower(), Name);
 
-            NewProject.DropDownItems.Clear();
-            NewProject.DropDownItems.AddRange(ConsolesList());
+            menu_new_project.DropDownItems.Clear();
+            menu_new_project.DropDownItems.AddRange(ConsolesList());
             ToolStrip_NewProject.DropDownItems.Clear();
             ToolStrip_NewProject.DropDownItems.AddRange(ConsolesList());
         }
@@ -97,33 +97,39 @@ namespace FriishProduce
             AutoSetStrip();
 
             #region Localization
+            Program.Lang.Control(this);
+            menu_file.Text = Program.Lang.String("file", Name);
+            menu_project.Text = Program.Lang.String("project", Name);
+            menu_help.Text = Program.Lang.String("help", Name);
             Text = Program.Lang.ApplicationTitle;
 
-            MenuItem_File.Text = Program.Lang.String("file", Name);
-            MenuItem_Project.Text = Program.Lang.String("project", Name);
-            MenuItem_Help.Text = Program.Lang.String("help", Name);
-            ToolStrip_NewProject.Text = NewProject.Text = Program.Lang.String("new_project", Name);
-            ToolStrip_Tutorial.Text = MenuItem_Tutorial.Text = Program.Lang.String("tutorial", Name);
-            ToolStrip_Tutorial.Image = MenuItem_Tutorial.Image;
-            ToolStrip_Settings.Text = MenuItem_Settings.Text = Program.Lang.String("settings");
-            ToolStrip_OpenROM.Text = OpenROM.Text = Program.Lang.String("open_gamefile", Name);
-            ToolStrip_OpenImage.Text = OpenImage.Text = Program.Lang.String("open_image", Name);
-            ToolStrip_UseLibRetro.Text = UseLibRetro.Text = Program.Lang.String("retrieve_gamedata_online", Name);
-            ToolStrip_ExportWAD.Text = ExportWAD.Text = Program.Lang.String("save_as_wad", Name);
-            ToolStrip_CloseTab.Text = CloseTab.Text = Program.Lang.String("b_close");
-            ToolStrip_SaveAs.Text = SaveAs.Text;
+            ToolStrip_NewProject.Text = menu_new_project.Text;
+            ToolStrip_SaveAs.Text = menu_save_project_as.Text;
+            ToolStrip_ExportWAD.Text = menu_save_as_wad.Text;
+            ToolStrip_OpenROM.Text = menu_open_gamefile.Text;
+            ToolStrip_OpenImage.Text = menu_open_image.Text;
+            ToolStrip_CloseTab.Text = menu_close_project.Text;
+            ToolStrip_UseLibRetro.Text = menu_retrieve_gamedata_online.Text;
+            ToolStrip_Settings.Text = menu_settings.Text;
+            ToolStrip_Tutorial.Text = menu_tutorial.Text;
+            ToolStrip_Tutorial.Image = menu_tutorial.Image;
+            BrowseROM.Title = menu_open_gamefile.Text;
+            BrowseImage.Title = menu_open_image.Text;
+            SaveProject.Title = menu_save_project_as.Text;
+            SaveWAD.Title = menu_save_as_wad.Text;
 
-            BrowseROM.Title = OpenROM.Text;
-            BrowseImage.Title = OpenImage.Text;
-            SaveProject.Title = SaveAs.Text;
-            SaveWAD.Title = ExportWAD.Text;
+            try
+            {
+                BrowseImage.Filter = Program.Lang.String("filter.img");
+                BrowseProject.Filter = SaveProject.Filter = Program.Lang.String("filter.project");
+                SaveWAD.Filter = Program.Lang.String("filter.wad");
+            }
+            catch
+            {
+                MessageBox.Show("Warning!\nThe language strings have not been loaded correctly.\n\nSeveral items may show up as 'undefined'.\n\nOther exceptions related to strings or filters can also occur!", MessageBox.Buttons.Ok, TaskDialogIcon.Warning, false);
+            }
 
-            var test = Program.Lang.String("filter.img");
-            BrowseImage.Filter = Program.Lang.String("filter.img");
-            BrowseProject.Filter = SaveProject.Filter = Program.Lang.String("filter.project");
-            SaveWAD.Filter = Program.Lang.String("filter.wad");
-
-            Welcome_DoNotShow.Text = Program.Lang.String("do_not_show");
+            welcome_do_not_show.Text = Program.Lang.String("do_not_show");
             #endregion
 
 
@@ -139,7 +145,7 @@ namespace FriishProduce
             InitializeComponent();
             RefreshForm();
 
-            Welcome_DoNotShow.Visible = PointToTutorial.Visible = Welcome.Visible = !Properties.Settings.Default.DoNotShow_Welcome;
+            welcome_do_not_show.Visible = PointToTutorial.Visible = welcome.Visible = !Properties.Settings.Default.DoNotShow_Welcome;
 
             Program.Handle = Handle;
             tabControl.Location = MainPanel.Location;
@@ -171,45 +177,45 @@ namespace FriishProduce
         {
             // Toggle visibility of Open ROM/Image buttons
             // ********
-            if (sender != tabControl.TabPages[0]) OpenROM.Enabled = tabControl.TabPages.Count > 1;
-            else OpenROM.Enabled = true;
+            if (sender != tabControl.TabPages[0]) menu_open_gamefile.Enabled = tabControl.TabPages.Count > 1;
+            else menu_open_gamefile.Enabled = true;
 
             // Toggle visibility of Export WAD button
             // Toggle visibility of Download LibRetro data button
             // ********
-            if (!OpenROM.Enabled)
+            if (!menu_open_gamefile.Enabled)
             {
-                SaveAs.Enabled = false;
-                ToolStrip_ExportWAD.Enabled = ExportWAD.Enabled = false;
-                UseLibRetro.Enabled = false;
+                menu_save_project_as.Enabled = false;
+                ToolStrip_ExportWAD.Enabled = menu_save_as_wad.Enabled = false;
+                menu_retrieve_gamedata_online.Enabled = false;
                 tabControl.Visible = false;
                 MainPanel.Visible = true;
             }
 
             else ExportCheck(sender, e);
 
-            ToolStrip_CloseTab.Enabled = CloseTab.Enabled
-            = ToolStrip_OpenImage.Enabled = OpenImage.Enabled
-            = ToolStrip_OpenROM.Enabled = OpenROM.Enabled;
+            ToolStrip_CloseTab.Enabled = menu_close_project.Enabled
+            = ToolStrip_OpenImage.Enabled = menu_open_image.Enabled
+            = ToolStrip_OpenROM.Enabled = menu_open_gamefile.Enabled;
 
             // Context menu
             // ********
             if (tabControl.TabPages.Count >= 1)
                 if (sender == tabControl.TabPages[0])
                 {
-                    UseLibRetro.Enabled = (tabControl.SelectedForm as ProjectForm).CheckToolStripButtons()[0];
-                    SaveAs.Enabled = (tabControl.SelectedForm as ProjectForm).Tag?.ToString().ToLower() == "dirty";
+                    menu_retrieve_gamedata_online.Enabled = (tabControl.SelectedForm as ProjectForm).CheckToolStripButtons()[0];
+                    menu_save_project_as.Enabled = (tabControl.SelectedForm as ProjectForm).Tag?.ToString().ToLower() == "dirty";
                 }
             
-            ToolStrip_SaveAs.Enabled = SaveAs.Enabled;
-            ToolStrip_UseLibRetro.Enabled = UseLibRetro.Enabled;
+            ToolStrip_SaveAs.Enabled = menu_save_project_as.Enabled;
+            ToolStrip_UseLibRetro.Enabled = menu_retrieve_gamedata_online.Enabled;
         }
 
         private void ExportCheck(object sender, EventArgs e)
         {
-            ToolStrip_ExportWAD.Enabled = ExportWAD.Enabled = (tabControl.SelectedForm as ProjectForm).ReadyToExport;
-            ToolStrip_UseLibRetro.Enabled = UseLibRetro.Enabled = (tabControl.SelectedForm as ProjectForm).CheckToolStripButtons()[0];
-            ToolStrip_SaveAs.Enabled = SaveAs.Enabled = (tabControl.SelectedForm as ProjectForm).Tag?.ToString().ToLower() == "dirty";
+            ToolStrip_ExportWAD.Enabled = menu_save_as_wad.Enabled = (tabControl.SelectedForm as ProjectForm).ReadyToExport;
+            ToolStrip_UseLibRetro.Enabled = menu_retrieve_gamedata_online.Enabled = (tabControl.SelectedForm as ProjectForm).CheckToolStripButtons()[0];
+            ToolStrip_SaveAs.Enabled = menu_save_project_as.Enabled = (tabControl.SelectedForm as ProjectForm).Tag?.ToString().ToLower() == "dirty";
         }
 
         private void MainForm_Closing(object sender, FormClosingEventArgs e)
@@ -265,7 +271,7 @@ namespace FriishProduce
             tabControl.TabPages.Add(Tab);
 
             tabControl.Visible = true;
-            Welcome_DoNotShow.Visible = PointToTutorial.Visible = Welcome.Visible = MainPanel.Visible = false;
+            welcome_do_not_show.Visible = PointToTutorial.Visible = welcome.Visible = MainPanel.Visible = false;
 
             return Tab;
         }
@@ -302,7 +308,7 @@ namespace FriishProduce
 
             if (BrowseROM.ShowDialog() == DialogResult.OK)
             {
-                ToolStrip_UseLibRetro.Enabled = UseLibRetro.Enabled = currentForm.CheckToolStripButtons()[0];
+                ToolStrip_UseLibRetro.Enabled = menu_retrieve_gamedata_online.Enabled = currentForm.CheckToolStripButtons()[0];
 
                 currentForm.LoadROM(Properties.Settings.Default.AutoLibRetro);
             }
@@ -329,14 +335,14 @@ namespace FriishProduce
 
         private void Tutorial_Click(object sender, EventArgs e)
         {
-            var tut = new Tutorial() { Text = MenuItem_Tutorial.Text };
+            var tut = new Tutorial() { Text = menu_tutorial.Text };
             tut.ShowDialog();
             tut.Dispose();
         }
 
         private void Welcome_DoNotShow_Click(object sender, EventArgs e)
         {
-            Welcome_DoNotShow.Visible = PointToTutorial.Visible = Welcome.Visible = false;
+            welcome_do_not_show.Visible = PointToTutorial.Visible = welcome.Visible = false;
             Properties.Settings.Default.DoNotShow_Welcome = true;
             Properties.Settings.Default.Save();
         }

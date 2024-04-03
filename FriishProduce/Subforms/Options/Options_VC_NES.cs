@@ -26,9 +26,7 @@ namespace FriishProduce
             // *******
             if (!DesignMode)
             {
-                PaletteList.Items.Clear();
-                PaletteList.Items.Add(Program.Lang.StringArray("palette", "vc_nes"));
-
+                Program.Lang.Control(this);
                 t.ToolTipTitle = Program.Lang.String("authors").Replace("{0}", "").Trim();
             }
         }
@@ -42,7 +40,7 @@ namespace FriishProduce
             if (Options != null)
             {
                 PaletteList.SelectedIndex = int.Parse(Options["palette"]);
-                checkBox1.Checked = bool.Parse(Options["use_tImg"]);
+                palette_use_on_banner.Checked = bool.Parse(Options["use_tImg"]);
             }
             // *******
         }
@@ -50,7 +48,7 @@ namespace FriishProduce
         protected override void SaveOptions()
         {
             Options["palette"] = PaletteList.SelectedIndex.ToString();
-            Options["use_tImg"] = checkBox1.Checked.ToString();
+            Options["use_tImg"] = palette_use_on_banner.Checked.ToString();
         }
 
         // ---------------------------------------------------------------------------------------------------------------

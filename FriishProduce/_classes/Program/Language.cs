@@ -15,7 +15,7 @@ namespace FriishProduce
     public class Language
     {
         private readonly string extension = ".json";
-        private readonly byte[] englishFile = Properties.Resources.JSON_EN;
+        private readonly byte[] englishFile = Properties.Resources.English;
 
         protected class LanguageData
         {
@@ -144,6 +144,9 @@ namespace FriishProduce
         }
 
         #region Public methods and variables
+        /// <summary>
+        /// Returns the current OS language.
+        /// </summary>
         public string GetSystemLanguage()
         {
             foreach (var item in List.Keys)
@@ -155,7 +158,10 @@ namespace FriishProduce
             return "en";
         }
 
-        public void Form(Form c, string tag = null)
+        /// <summary>
+        /// Localizes a form using an auto-determined or manually-inputted tag name.
+        /// </summary>
+        public void Control(Control c, string tag = null)
         {
             if (tag == null) tag = c.Tag != null ? c.Tag?.ToString() : c.Name;
 
@@ -181,17 +187,30 @@ namespace FriishProduce
             }
         }
 
+        /// <summary>
+        /// Returns the localized name of a console/platform.
+        /// </summary>
         public string Console(Console c) => String(c.ToString().ToLower(), "platforms");
 
+        /// <summary>
+        /// Returns a localized message string from the corresponding ID.
+        /// </summary>
+        /// <param name="isError">Determines if the message should be drawn from the errors category instead.</param>
         public string Msg(int number, bool isError = false) => String((isError ? "e_" : null) + number.ToString("000"), "messages");
 
+        /// <summary>
+        /// Returns a localized string which changes depending on a boolean condition. This is the name of the string suffixed with "0" if false, or "1" if true.
+        /// </summary>
         public string Toggle(bool activated, string name, string sectionName = "")
         {
             if (activated && StringCheck(name + "1", sectionName)) return String(name + "1", sectionName);
             if (!activated && StringCheck(name + "0", sectionName)) return String(name + "0", sectionName);
             return String(name, sectionName);
         }
-
+        
+        /// <summary>
+        /// Returns an array of localized strings corresponding to the name input plus a number affixed to the end for each entry. A maximum of 100 entries is allowed.
+        /// </summary>
         public string[] StringArray(string name, string sectionName = "")
         {
             List<string> result = new List<string>();
@@ -204,10 +223,18 @@ namespace FriishProduce
             return result?.Count > 0 ? result.ToArray() : new string[] { "undefined" };
         }
 
+        /// <summary>
+        /// Checks if the input localized string exists in the language file.
+        /// </summary>
         public bool StringCheck(string name, string sectionName = "") => String(name, sectionName) != "undefined";
 
+        /// <summary>
+        /// Returns a localized string using the identification name, and the name of the section containing said string within the file.
+        /// </summary>
         public string String(string name, string sectionName = "")
         {
+            if (string.IsNullOrWhiteSpace(name)) return "undefined";
+
             bool isEnglish = false;
 
         Top:
@@ -220,10 +247,12 @@ namespace FriishProduce
                               || sectionName.ToLower() == "platforms"
                               || sectionName.ToLower() == "messages" ? target.global : target.strings;
 
-                string result = null;
+                dynamic result = null;
 
                 if (!string.IsNullOrEmpty(sectionName))
                 {
+                    if (!path.ContainsKey(sectionName.ToLower())) goto NotFound;
+
                     foreach (KeyValuePair<string, string> item in path[sectionName.ToLower()])
                     {
                         if (item.Key?.ToLower() == name?.ToLower())
@@ -238,10 +267,9 @@ namespace FriishProduce
                 {
                     foreach (KeyValuePair<string, Dictionary<string, string>> section in target.global)
                     {
-                        result = section.Value.Where(x => x.Key.ToLower() == name.ToLower())?.FirstOrDefault().Value;
                         foreach (KeyValuePair<string, string> item in section.Value)
                         {
-                            if (item.Key.ToLower() == name.ToLower())
+                            if (item.Key?.ToLower() == name?.ToLower())
                             {
                                 result = item.Value;
                                 goto Found;
@@ -251,8 +279,9 @@ namespace FriishProduce
                 }
 
                 if (result == null) goto NotFound;
+                else goto Found;
 
-            Found:
+                Found:
                 var brackets = new List<Tuple<int, int>>();
 
                 for (int i = 0; i < result.Length; i++)
@@ -269,7 +298,7 @@ namespace FriishProduce
                                                           let inside = result.Substring(open + 1, close - open - 1)
                                                           select (open, close, inside))
                     {
-                        result = !int.TryParse(inside, out _) ? result.Replace(result.Substring(open, close - open + 1), String(inside)) : result;
+                        result = !int.TryParse(inside, out int x) ? result.Replace(result.Substring(open, close - open + 1), String(inside)) : result;
                     }
                 }
 
@@ -342,21 +371,21 @@ namespace FriishProduce
             if (item.Tag == null) return;
 
             string name = item.Tag != null ? item.Tag?.ToString() : item.Name;
-            dynamic target = null;
 
             if (item.GetType() == typeof(ComboBox))
             {
-                target = StringArray(name.ToLower(), form.ToLower());
-                if (target[0] != "undefined")
+                string[] targetA = StringArray(name.ToLower(), form.ToLower());
+
+                if (targetA[0] != "undefined")
                 {
                     (item as ComboBox).Items.Clear();
-                    (item as ComboBox).Items.AddRange(target);
+                    (item as ComboBox).Items.AddRange(targetA);
                 }
             }
 
             else
             {
-                target = item.GetType() == typeof(JCS.ToggleSwitch) ? Toggle((item as JCS.ToggleSwitch).Checked, name.ToLower(), form.ToLower()) : String(name.ToLower(), form.ToLower());
+                string target = item.GetType() == typeof(JCS.ToggleSwitch) ? Toggle((item as JCS.ToggleSwitch).Checked, name.ToLower(), form.ToLower()) : String(name.ToLower(), form.ToLower());
                 if (target == "undefined") target = String(name.ToLower());
                 if (target != "undefined") item.Text = target;
             }

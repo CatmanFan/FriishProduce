@@ -115,7 +115,7 @@ namespace FriishProduce
 
             if (!File.Exists(Paths.WorkingFolder + "rom_p"))
             {
-                MessageBox.Show(Program.Lang.String("error", "messages"), Program.Lang.Msg(7, true), MessageBox.Buttons.Ok, Ookii.Dialogs.WinForms.TaskDialogIcon.Error);
+                MessageBox.Show(Program.Lang.String("error", "messages"), Program.Lang.Msg(7, true), MessageBox.Buttons.Ok, Properties.Resources.brick);
                 return false;
             }
 

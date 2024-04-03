@@ -32,7 +32,7 @@ namespace FriishProduce
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChannelTitles));
             this.bottomPanel2 = new System.Windows.Forms.Panel();
             this.bottomPanel1 = new System.Windows.Forms.Panel();
-            this.OK = new System.Windows.Forms.Button();
+            this.b_ok = new System.Windows.Forms.Button();
             this.English = new System.Windows.Forms.TextBox();
             this.French = new System.Windows.Forms.TextBox();
             this.German = new System.Windows.Forms.TextBox();
@@ -63,16 +63,17 @@ namespace FriishProduce
             // bottomPanel1
             // 
             this.bottomPanel1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.bottomPanel1.Controls.Add(this.OK);
+            this.bottomPanel1.Controls.Add(this.b_ok);
             resources.ApplyResources(this.bottomPanel1, "bottomPanel1");
             this.bottomPanel1.Name = "bottomPanel1";
             // 
-            // OK
+            // b_ok
             // 
-            resources.ApplyResources(this.OK, "OK");
-            this.OK.Name = "OK";
-            this.OK.UseVisualStyleBackColor = true;
-            this.OK.Click += new System.EventHandler(this.OK_Click);
+            resources.ApplyResources(this.b_ok, "b_ok");
+            this.b_ok.Name = "b_ok";
+            this.b_ok.Tag = "b_ok";
+            this.b_ok.UseVisualStyleBackColor = true;
+            this.b_ok.Click += new System.EventHandler(this.OK_Click);
             // 
             // English
             // 
@@ -172,7 +173,7 @@ namespace FriishProduce
             // 
             // ChannelTitles
             // 
-            this.AcceptButton = this.OK;
+            this.AcceptButton = this.b_ok;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             resources.ApplyResources(this, "$this");
             this.ControlBox = false;
@@ -212,7 +213,7 @@ namespace FriishProduce
 
         private System.Windows.Forms.Panel bottomPanel2;
         protected System.Windows.Forms.Panel bottomPanel1;
-        protected System.Windows.Forms.Button OK;
+        protected System.Windows.Forms.Button b_ok;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;

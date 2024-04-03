@@ -112,7 +112,7 @@ namespace FriishProduce
             if (DesignMode) return;
             // ----------------------------
             #region Localization
-            Program.Lang.Form(this, "projectform");
+            Program.Lang.Control(this, "projectform");
             title_id_2.Text = title_id.Text;
             BrowsePatch.Filter = Program.Lang.String("filter.patch");
 
@@ -456,21 +456,21 @@ namespace FriishProduce
         {
             if (Tag?.ToString() == "dirty")
             {
-                var result = MessageBox.Show(string.Format(Program.Lang.Msg(1), Text), null, new string[] { "Save", "Don't save", "Cancel" });
+                var result = MessageBox.Show(string.Format(Program.Lang.Msg(1), Text), null, new string[] { Program.Lang.String("b_save"), Program.Lang.String("b_dont_save"), Program.Lang.String("b_cancel") });
                 {
-                    if (result == MessageBox.Result.Button3)
-                    {
-                        return false;
-                    }
-
-                    else if (result == MessageBox.Result.Button1)
+                    if (result == MessageBox.Result.Button1)
                     {
                         return Parent.SaveAs_Trigger();
+                    }
+                    
+                    else if (result == MessageBox.Result.Button2)
+                    {
+                        return true;
                     }
                 }
             }
 
-            return true;
+            return false;
         }
 
         private void Random_Click(object sender, EventArgs e) => RandomTID();
@@ -858,7 +858,7 @@ namespace FriishProduce
             }
             catch (Exception ex)
             {
-                MessageBox.Show(Program.Lang.String("error", "messages"), ex.Message, MessageBox.Buttons.Ok, Ookii.Dialogs.WinForms.TaskDialogIcon.Error);
+                MessageBox.Show(Program.Lang.String("error", "messages"), ex.Message, MessageBox.Buttons.Ok, Properties.Resources.brick);
             }
         }
 
@@ -951,7 +951,7 @@ namespace FriishProduce
 
             catch (Exception ex)
             {
-                MessageBox.Show(Program.Lang.String("error", "messages"), ex.Message, MessageBox.Buttons.Ok, Ookii.Dialogs.WinForms.TaskDialogIcon.Error);
+                MessageBox.Show(Program.Lang.String("error", "messages"), ex.Message, MessageBox.Buttons.Ok, Properties.Resources.brick);
                 return false;
             }
 
@@ -1421,6 +1421,8 @@ namespace FriishProduce
 
             else
                 COPanel_Forwarder.Show();
+
+            if (CO != null) CO.Text = Program.Lang.String("injection_method_options", "projectform");
 
             LinkSaveData.Visible = SaveIcon_Panel.Visible = SaveDataTitle.Visible = ShowSaveData;
             label16.Visible = !SaveDataTitle.Visible;

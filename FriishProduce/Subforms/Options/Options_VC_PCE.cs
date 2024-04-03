@@ -34,6 +34,7 @@ namespace FriishProduce
             // *******
             if (!DesignMode)
             {
+                Program.Lang.Control(this);
                 ToggleSwitchText();
                 checkBox4.Text = Program.Lang.String("save_data_enable", "projectform");
             }
@@ -47,13 +48,13 @@ namespace FriishProduce
             // *******
             if (Options != null)
             {
-                numericUpDown1.Value = int.Parse(Options["YOFFSET"]);
-                toggleSwitch1.Checked = Options["EUROPE"] == "1";
-                toggleSwitch2.Checked = Options["SGENABLE"] == "1";
-                toggleSwitch3.Checked = Options["PADBUTTON"] == "6";
-                checkBox1.Checked = Options["HIDEOVERSCAN"] == "1";
-                checkBox2.Checked = Options["RASTER"] == "1";
-                checkBox3.Checked = Options["SPRLINE"] == "1";
+                y_offset_toggle.Value = int.Parse(Options["YOFFSET"]);
+                europe_switch.Checked = Options["EUROPE"] == "1";
+                sgenable_switch.Checked = Options["SGENABLE"] == "1";
+                padbutton_switch.Checked = Options["PADBUTTON"] == "6";
+                hide_overscan.Checked = Options["HIDEOVERSCAN"] == "1";
+                raster.Checked = Options["RASTER"] == "1";
+                sprline.Checked = Options["SPRLINE"] == "1";
                 checkBox4.Checked = Options["BACKUPRAM"] == "1";
             }
             // *******
@@ -61,13 +62,13 @@ namespace FriishProduce
 
         protected override void SaveOptions()
         {
-            Options["YOFFSET"] = numericUpDown1.Value.ToString();
-            Options["EUROPE"] = toggleSwitch1.Checked ? "1" : "0";
-            Options["SGENABLE"] = toggleSwitch2.Checked ? "1" : "0";
-            Options["PADBUTTON"] = toggleSwitch3.Checked ? "6" : "2";
-            Options["HIDEOVERSCAN"] = checkBox1.Checked ? "1" : "0";
-            Options["RASTER"] = checkBox2.Checked ? "1" : "0";
-            Options["SPRLINE"] = checkBox3.Checked ? "1" : "0";
+            Options["YOFFSET"] = y_offset_toggle.Value.ToString();
+            Options["EUROPE"] = europe_switch.Checked ? "1" : "0";
+            Options["SGENABLE"] = sgenable_switch.Checked ? "1" : "0";
+            Options["PADBUTTON"] = padbutton_switch.Checked ? "6" : "2";
+            Options["HIDEOVERSCAN"] = hide_overscan.Checked ? "1" : "0";
+            Options["RASTER"] = raster.Checked ? "1" : "0";
+            Options["SPRLINE"] = sprline.Checked ? "1" : "0";
             Options["BACKUPRAM"] = checkBox4.Checked ? "1" : "0";
         }
 
@@ -80,9 +81,9 @@ namespace FriishProduce
 
         private void ToggleSwitchText()
         {
-            toggleSwitchL1.Text = Program.Lang.Toggle(toggleSwitch1.Checked, "europe", "vc_pce");
-            toggleSwitchL2.Text = Program.Lang.Toggle(toggleSwitch2.Checked, "sgenable", "vc_pce");
-            toggleSwitchL3.Text = Program.Lang.Toggle(toggleSwitch3.Checked, "padbutton", "vc_pce");
+            europe.Text = Program.Lang.Toggle(europe_switch.Checked, europe.Name, Tag.ToString());
+            sgenable.Text = Program.Lang.Toggle(sgenable_switch.Checked, sgenable.Name, Tag.ToString());
+            padbutton.Text = Program.Lang.Toggle(padbutton_switch.Checked, padbutton.Name, Tag.ToString());
         }
     }
 }

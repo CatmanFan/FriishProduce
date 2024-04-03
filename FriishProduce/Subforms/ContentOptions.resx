@@ -133,7 +133,7 @@
     <value>4</value>
   </data>
   <data name="b_cancel.Text" xml:space="preserve">
-    <value>Cancel</value>
+    <value>&amp;Cancel</value>
   </data>
   <data name="&gt;&gt;b_cancel.Name" xml:space="preserve">
     <value>b_cancel</value>
@@ -157,7 +157,7 @@
     <value>3</value>
   </data>
   <data name="b_ok.Text" xml:space="preserve">
-    <value>OK</value>
+    <value>&amp;OK</value>
   </data>
   <data name="&gt;&gt;b_ok.Name" xml:space="preserve">
     <value>b_ok</value>

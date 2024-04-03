@@ -9,7 +9,7 @@ namespace FriishProduce
         {
             InitializeComponent();
             Text = Program.Lang.String("tutorial", "mainform");
-            CloseButton.Text = Program.Lang.String("b_close");
+            b_close.Text = Program.Lang.String("b_close");
             richTextBox.Rtf = Properties.Resources.Tutorial;
         }
 

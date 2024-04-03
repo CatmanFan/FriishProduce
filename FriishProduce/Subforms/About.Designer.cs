@@ -37,7 +37,7 @@ namespace FriishProduce
             this.labelCopyright = new System.Windows.Forms.Label();
             this.labelCompanyName = new System.Windows.Forms.Label();
             this.textBoxDescription = new System.Windows.Forms.TextBox();
-            this.okButton = new System.Windows.Forms.Button();
+            this.b_ok = new System.Windows.Forms.Button();
             this.tableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
             this.SuspendLayout();
@@ -54,7 +54,7 @@ namespace FriishProduce
             this.tableLayoutPanel.Controls.Add(this.labelCopyright, 1, 2);
             this.tableLayoutPanel.Controls.Add(this.labelCompanyName, 1, 3);
             this.tableLayoutPanel.Controls.Add(this.textBoxDescription, 1, 5);
-            this.tableLayoutPanel.Controls.Add(this.okButton, 1, 6);
+            this.tableLayoutPanel.Controls.Add(this.b_ok, 1, 6);
             this.tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel.Location = new System.Drawing.Point(9, 9);
             this.tableLayoutPanel.Name = "tableLayoutPanel";
@@ -157,20 +157,21 @@ namespace FriishProduce
             this.textBoxDescription.TabStop = false;
             this.textBoxDescription.Text = resources.GetString("textBoxDescription.Text");
             // 
-            // okButton
+            // b_ok
             // 
-            this.okButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.okButton.AutoSize = true;
-            this.okButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.okButton.Location = new System.Drawing.Point(493, 187);
-            this.okButton.Name = "okButton";
-            this.okButton.Size = new System.Drawing.Size(100, 22);
-            this.okButton.TabIndex = 24;
-            this.okButton.Text = "&OK";
+            this.b_ok.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.b_ok.AutoSize = true;
+            this.b_ok.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.b_ok.Location = new System.Drawing.Point(493, 187);
+            this.b_ok.Name = "b_ok";
+            this.b_ok.Size = new System.Drawing.Size(100, 22);
+            this.b_ok.TabIndex = 24;
+            this.b_ok.Tag = "b_ok";
+            this.b_ok.Text = "&OK";
             // 
             // About
             // 
-            this.AcceptButton = this.okButton;
+            this.AcceptButton = this.b_ok;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.ClientSize = new System.Drawing.Size(614, 230);
             this.Controls.Add(this.tableLayoutPanel);
@@ -200,7 +201,7 @@ namespace FriishProduce
         private System.Windows.Forms.Label labelCopyright;
         private System.Windows.Forms.Label labelCompanyName;
         private System.Windows.Forms.TextBox textBoxDescription;
-        private System.Windows.Forms.Button okButton;
+        private System.Windows.Forms.Button b_ok;
         private System.Windows.Forms.Label labelTranslation;
     }
 }

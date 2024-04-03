@@ -84,7 +84,7 @@ namespace FriishProduce
             }
             catch (Exception ex)
             {
-                MessageBox.Show(Program.Lang.String("error", "messages"), ex.Message, MessageBox.Buttons.Ok, Ookii.Dialogs.WinForms.TaskDialogIcon.Error);
+                MessageBox.Show(Program.Lang.String("error", "messages"), ex.Message, MessageBox.Buttons.Ok, brick);
                 return null;
             }
         }

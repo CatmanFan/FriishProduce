@@ -32,7 +32,7 @@ namespace FriishProduce
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Tutorial));
             this.bottomPanel2 = new System.Windows.Forms.Panel();
             this.bottomPanel1 = new System.Windows.Forms.Panel();
-            this.CloseButton = new System.Windows.Forms.Button();
+            this.b_close = new System.Windows.Forms.Button();
             this.richTextBox = new System.Windows.Forms.RichTextBox();
             this.bottomPanel2.SuspendLayout();
             this.bottomPanel1.SuspendLayout();
@@ -48,16 +48,17 @@ namespace FriishProduce
             // bottomPanel1
             // 
             this.bottomPanel1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.bottomPanel1.Controls.Add(this.CloseButton);
+            this.bottomPanel1.Controls.Add(this.b_close);
             resources.ApplyResources(this.bottomPanel1, "bottomPanel1");
             this.bottomPanel1.Name = "bottomPanel1";
             // 
-            // CloseButton
+            // b_close
             // 
-            resources.ApplyResources(this.CloseButton, "CloseButton");
-            this.CloseButton.Name = "CloseButton";
-            this.CloseButton.UseVisualStyleBackColor = true;
-            this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
+            resources.ApplyResources(this.b_close, "b_close");
+            this.b_close.Name = "b_close";
+            this.b_close.Tag = "b_close";
+            this.b_close.UseVisualStyleBackColor = true;
+            this.b_close.Click += new System.EventHandler(this.CloseButton_Click);
             // 
             // richTextBox
             // 
@@ -67,7 +68,7 @@ namespace FriishProduce
             // 
             // Tutorial
             // 
-            this.AcceptButton = this.CloseButton;
+            this.AcceptButton = this.b_close;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             resources.ApplyResources(this, "$this");
             this.Controls.Add(this.richTextBox);
@@ -89,7 +90,7 @@ namespace FriishProduce
 
         private System.Windows.Forms.Panel bottomPanel2;
         private System.Windows.Forms.Panel bottomPanel1;
-        private System.Windows.Forms.Button CloseButton;
+        private System.Windows.Forms.Button b_close;
         private System.Windows.Forms.RichTextBox richTextBox;
     }
 }

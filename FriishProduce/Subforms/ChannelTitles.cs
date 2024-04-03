@@ -10,7 +10,7 @@ namespace FriishProduce
         {
             InitializeComponent();
 
-            OK.Text = Program.Lang.String("b_ok");
+            b_ok.Text = Program.Lang.String("b_ok");
             foreach (TextBox TextBox in Controls.OfType<TextBox>())
                 TextBox.Text = text;
         }
@@ -28,7 +28,7 @@ namespace FriishProduce
                 total++;
             }
 
-            OK.Enabled = isFilled == total;
+            b_ok.Enabled = isFilled == total;
         }
     }
 }

@@ -16,7 +16,7 @@ namespace FriishProduce
             this.labelCompanyName.Text = AssemblyCompany;
             this.textBoxDescription.Text = AssemblyDescription + Environment.NewLine + Environment.NewLine + this.textBoxDescription.Text;
             this.labelTranslation.Text = string.Format("Current language: {0} ({1})", System.Globalization.CultureInfo.CurrentUICulture.EnglishName, Program.Lang.Author);
-            okButton.Text = Program.Lang.String("b_close");
+            b_ok.Text = Program.Lang.String("b_close");
         }
 
         #region Assembly Attribute Accessors

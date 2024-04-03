@@ -28,16 +28,18 @@ namespace FriishProduce
             // *******
             if (!DesignMode)
             {
+                Program.Lang.Control(this);
+
                 #region Localization
                 label2.Text = Program.Lang.String("region");
-                checkBox1.Text = Program.Lang.String("save_data_enable", "projectform");
-                checkBox2.Text = Program.Lang.String("console_disableresetbutton", "vc_sega");
-                toggleSwitchL1.Text = Program.Lang.Toggle(toggleSwitch1.Checked, "dev_mdpad_enable_6b", "vc_sega");
+                save_sram.Text = Program.Lang.String("save_data_enable", "projectform");
+                console_disableresetbutton.Text = Program.Lang.String("console_disableresetbutton", "vc_sega");
+                toggleSwitchL1.Text = Program.Lang.Toggle(dev_mdpad_enable_6b.Checked, "dev_mdpad_enable_6b", "vc_sega");
 
-                comboBox1.Items.Clear();
-                comboBox1.Items.Add(Program.Lang.String("region_u"));
-                comboBox1.Items.Add(Program.Lang.String("region_e"));
-                comboBox1.Items.Add(Program.Lang.String("region_j"));
+                country.Items.Clear();
+                country.Items.Add(Program.Lang.String("region_u"));
+                country.Items.Add(Program.Lang.String("region_e"));
+                country.Items.Add(Program.Lang.String("region_j"));
                 #endregion
             }
         }
@@ -48,7 +50,7 @@ namespace FriishProduce
         {
             // Console/emulator-specific tools
             // *******
-            toggleSwitchL1.Enabled = toggleSwitch1.Enabled = !IsSMS;
+            toggleSwitchL1.Enabled = dev_mdpad_enable_6b.Enabled = !IsSMS;
             // label1.Enabled = BrightnessValue.Enabled = EmuType >= 2 || IsSMS;
 
             // Form control
@@ -59,22 +61,22 @@ namespace FriishProduce
 
                 if (Options["console.brightness"] == null || int.Parse(Options["console.brightness"]) < 0) Options["console.brightness"] = VC_SEGA.Default.console_brightness;
 
-                BrightnessValue.Value = int.Parse(Options["console.brightness"]);
-                comboBox1.SelectedIndex = Options["country"] == "jp" ? 2 : Options["country"] == "eu" ? 1 : 0;
-                toggleSwitch1.Checked = Options["dev.mdpad.enable_6b"] == "1";
-                checkBox1.Checked = Options["save_sram"] == "1";
-                checkBox2.Checked = Options["console.disable_resetbutton"] == "1";
+                console_brightness.Value = int.Parse(Options["console.brightness"]);
+                country.SelectedIndex = Options["country"] == "jp" ? 0 : Options["country"] == "eu" ? 2 : 1;
+                dev_mdpad_enable_6b.Checked = Options["dev.mdpad.enable_6b"] == "1";
+                save_sram.Checked = Options["save_sram"] == "1";
+                console_disableresetbutton.Checked = Options["console.disable_resetbutton"] == "1";
                 ChangeBrightness();
             }
         }
 
         protected override void SaveOptions()
         {
-            Options["console.brightness"] = BrightnessValue.Enabled ? label1.Text : null;
-            Options["save_sram"] = checkBox1.Checked ? "1" : null;
-            Options["country"] = comboBox1.SelectedIndex == 2 ? "jp" : comboBox1.SelectedIndex == 1 ? "eu" : "us";
-            Options["dev.mdpad.enable_6b"] = toggleSwitch1.Checked ? "1" : null;
-            Options["console.disable_resetbutton"] = checkBox2.Checked ? "1" : null;
+            Options["console.brightness"] = console_brightness.Enabled ? label1.Text : null;
+            Options["save_sram"] = save_sram.Checked ? "1" : null;
+            Options["country"] = country.SelectedIndex == 0 ? "jp" : country.SelectedIndex == 2 ? "eu" : "us";
+            Options["dev.mdpad.enable_6b"] = dev_mdpad_enable_6b.Checked ? "1" : null;
+            Options["console.disable_resetbutton"] = console_disableresetbutton.Checked ? "1" : null;
         }
 
         // ---------------------------------------------------------------------------------------------------------------
@@ -82,7 +84,7 @@ namespace FriishProduce
         private void BrightnessValue_Set(object sender, EventArgs e) => ChangeBrightness();
         private void ChangeBrightness()
         {
-            double factor = BrightnessValue.Value * 0.01;
+            double factor = console_brightness.Value * 0.01;
             var orig = Properties.Resources.screen_smd;
             Bitmap changed = new Bitmap(orig.Width, orig.Height);
 
@@ -95,15 +97,15 @@ namespace FriishProduce
             }
             pictureBox1.Image = changed;
 
-            label1.Text = BrightnessValue.Value.ToString();
+            label1.Text = console_brightness.Value.ToString();
 
-            if (!BrightnessValue.Enabled) Options["console.brightness"] = null;
+            if (!console_brightness.Enabled) Options["console.brightness"] = null;
         }
 
         private void ToggleSwitchChanged(object sender, EventArgs e)
         {
-            if (sender == toggleSwitch1)
-                toggleSwitchL1.Text = Program.Lang.Toggle(toggleSwitch1.Checked, "dev_mdpad_enable_6b", "vc_sega");
+            if (sender == dev_mdpad_enable_6b)
+                toggleSwitchL1.Text = Program.Lang.Toggle(dev_mdpad_enable_6b.Checked, "dev_mdpad_enable_6b", "vc_sega");
         }
     }
 }

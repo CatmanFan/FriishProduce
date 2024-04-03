@@ -45,7 +45,7 @@ namespace FriishProduce
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
-            // OK
+            // b_ok
             // 
             this.b_ok.Location = new System.Drawing.Point(106, 12);
             // 
@@ -53,7 +53,7 @@ namespace FriishProduce
             // 
             this.bottomPanel1.Size = new System.Drawing.Size(304, 47);
             // 
-            // Cancel
+            // b_cancel
             // 
             this.b_cancel.Location = new System.Drawing.Point(202, 12);
             // 
@@ -183,6 +183,7 @@ namespace FriishProduce
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "Options_Flash";
+            this.Tag = "adobe_flash";
             this.Controls.SetChildIndex(this.groupBox1, 0);
             this.Controls.SetChildIndex(this.groupBox2, 0);
             this.Controls.SetChildIndex(this.groupBox3, 0);

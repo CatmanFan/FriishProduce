@@ -131,6 +131,16 @@ namespace FriishProduce.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        public static System.Drawing.Icon brick {
+            get {
+                object obj = ResourceManager.GetObject("brick", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap cross {
@@ -205,6 +215,16 @@ namespace FriishProduce.Properties {
             get {
                 object obj = ResourceManager.GetObject("door-open", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] English {
+            get {
+                object obj = ResourceManager.GetObject("English", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         
@@ -425,16 +445,6 @@ namespace FriishProduce.Properties {
             get {
                 object obj = ResourceManager.GetObject("information_large", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        public static byte[] JSON_EN {
-            get {
-                object obj = ResourceManager.GetObject("JSON_EN", resourceCulture);
-                return ((byte[])(obj));
             }
         }
         
@@ -729,16 +739,6 @@ namespace FriishProduce.Properties {
             get {
                 object obj = ResourceManager.GetObject("x", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        public static byte[] YAML_EN {
-            get {
-                object obj = ResourceManager.GetObject("YAML_EN", resourceCulture);
-                return ((byte[])(obj));
             }
         }
     }

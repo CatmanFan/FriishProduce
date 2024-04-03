@@ -164,97 +164,109 @@
   <data name="MenuStrip.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
   </data>
-  <data name="NewProject.Size" type="System.Drawing.Size, System.Drawing">
-    <value>161, 22</value>
+  <data name="menu_new_project.Size" type="System.Drawing.Size, System.Drawing">
+    <value>154, 22</value>
   </data>
-  <data name="NewProject.Text" xml:space="preserve">
-    <value>New...</value>
+  <data name="menu_new_project.Text" xml:space="preserve">
+    <value>new_project</value>
   </data>
-  <data name="OpenProject.Size" type="System.Drawing.Size, System.Drawing">
-    <value>161, 22</value>
+  <data name="menu_open_project.Size" type="System.Drawing.Size, System.Drawing">
+    <value>154, 22</value>
   </data>
-  <data name="OpenProject.Text" xml:space="preserve">
-    <value>Open...</value>
+  <data name="menu_open_project.Text" xml:space="preserve">
+    <value>open_project</value>
   </data>
-  <data name="SaveAs.Enabled" type="System.Boolean, mscorlib">
+  <data name="menu_save_project_as.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="SaveAs.Size" type="System.Drawing.Size, System.Drawing">
-    <value>161, 22</value>
+  <data name="menu_save_project_as.Size" type="System.Drawing.Size, System.Drawing">
+    <value>154, 22</value>
   </data>
-  <data name="SaveAs.Text" xml:space="preserve">
-    <value>Save project as...</value>
+  <data name="menu_save_project_as.Text" xml:space="preserve">
+    <value>save_project_as</value>
   </data>
-  <data name="ExportWAD.Enabled" type="System.Boolean, mscorlib">
+  <data name="menu_save_as_wad.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="ExportWAD.Size" type="System.Drawing.Size, System.Drawing">
-    <value>161, 22</value>
+  <data name="menu_save_as_wad.Size" type="System.Drawing.Size, System.Drawing">
+    <value>154, 22</value>
   </data>
-  <data name="ExportWAD.Text" xml:space="preserve">
-    <value>Export to WAD...</value>
+  <data name="menu_save_as_wad.Text" xml:space="preserve">
+    <value>save_as_wad</value>
   </data>
   <data name="toolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>158, 6</value>
+    <value>151, 6</value>
   </data>
-  <data name="MenuItem_Settings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>161, 22</value>
+  <data name="menu_settings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>154, 22</value>
   </data>
-  <data name="MenuItem_Settings.Text" xml:space="preserve">
-    <value>Settings</value>
+  <data name="menu_settings.Text" xml:space="preserve">
+    <value>settings</value>
   </data>
   <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>158, 6</value>
+    <value>151, 6</value>
   </data>
-  <data name="MenuItem_Exit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>161, 22</value>
+  <data name="menu_exit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>154, 22</value>
   </data>
-  <data name="MenuItem_Exit.Text" xml:space="preserve">
-    <value>Exit</value>
+  <data name="menu_exit.Text" xml:space="preserve">
+    <value>exit</value>
   </data>
-  <data name="MenuItem_File.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 20</value>
+  <data name="menu_file.Size" type="System.Drawing.Size, System.Drawing">
+    <value>33, 20</value>
   </data>
-  <data name="MenuItem_File.Text" xml:space="preserve">
-    <value>File</value>
+  <data name="menu_file.Text" xml:space="preserve">
+    <value>file</value>
   </data>
-  <data name="OpenROM.Enabled" type="System.Boolean, mscorlib">
+  <data name="menu_open_gamefile.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="OpenROM.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 22</value>
+  <data name="menu_open_gamefile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 22</value>
   </data>
-  <data name="OpenImage.Enabled" type="System.Boolean, mscorlib">
+  <data name="menu_open_gamefile.Text" xml:space="preserve">
+    <value>open_gamefile</value>
+  </data>
+  <data name="menu_open_image.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="OpenImage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 22</value>
+  <data name="menu_open_image.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 22</value>
+  </data>
+  <data name="menu_open_image.Text" xml:space="preserve">
+    <value>open_image</value>
   </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 6</value>
+    <value>197, 6</value>
   </data>
-  <data name="UseLibRetro.Enabled" type="System.Boolean, mscorlib">
+  <data name="menu_retrieve_gamedata_online.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="UseLibRetro.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 22</value>
+  <data name="menu_retrieve_gamedata_online.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 22</value>
+  </data>
+  <data name="menu_retrieve_gamedata_online.Text" xml:space="preserve">
+    <value>retrieve_gamedata_online</value>
   </data>
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 6</value>
+    <value>197, 6</value>
   </data>
-  <data name="CloseTab.Enabled" type="System.Boolean, mscorlib">
+  <data name="menu_close_project.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="CloseTab.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 22</value>
+  <data name="menu_close_project.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 22</value>
   </data>
-  <data name="MenuItem_Project.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="menu_close_project.Text" xml:space="preserve">
+    <value>close_project</value>
+  </data>
+  <data name="menu_project.Size" type="System.Drawing.Size, System.Drawing">
     <value>53, 20</value>
   </data>
-  <data name="MenuItem_Project.Text" xml:space="preserve">
-    <value>Project</value>
+  <data name="menu_project.Text" xml:space="preserve">
+    <value>project</value>
   </data>
-  <data name="MenuItem_Tutorial.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="menu_tutorial.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAAAhVJREFUOE+1Uk1rE1EUzU/IT5ifUBRcuMrS5aANZBnBRRcqwYUEQRwKQjCoESka
@@ -269,26 +281,26 @@
         78J/RyTyC53a8qzC7E1mAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="MenuItem_Tutorial.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+  <data name="menu_tutorial.Size" type="System.Drawing.Size, System.Drawing">
+    <value>108, 22</value>
   </data>
-  <data name="MenuItem_Tutorial.Text" xml:space="preserve">
-    <value>Tutorial</value>
+  <data name="menu_tutorial.Text" xml:space="preserve">
+    <value>tutorial</value>
   </data>
   <data name="toolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 6</value>
+    <value>105, 6</value>
   </data>
-  <data name="MenuItem_About.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+  <data name="menu_about.Size" type="System.Drawing.Size, System.Drawing">
+    <value>108, 22</value>
   </data>
-  <data name="MenuItem_About.Text" xml:space="preserve">
-    <value>About</value>
+  <data name="menu_about.Text" xml:space="preserve">
+    <value>about</value>
   </data>
-  <data name="MenuItem_Help.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 20</value>
+  <data name="menu_help.Size" type="System.Drawing.Size, System.Drawing">
+    <value>39, 20</value>
   </data>
-  <data name="MenuItem_Help.Text" xml:space="preserve">
-    <value>Help</value>
+  <data name="menu_help.Text" xml:space="preserve">
+    <value>help</value>
   </data>
   <data name="MenuStrip.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -318,34 +330,34 @@
   <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 6</value>
   </data>
-  <data name="Welcome_DoNotShow.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="welcome_do_not_show.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8.25pt</value>
   </data>
-  <data name="Welcome_DoNotShow.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="welcome_do_not_show.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="Welcome_DoNotShow.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="welcome_do_not_show.Location" type="System.Drawing.Point, System.Drawing">
     <value>389, 304</value>
   </data>
-  <data name="Welcome_DoNotShow.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="welcome_do_not_show.Size" type="System.Drawing.Size, System.Drawing">
     <value>342, 27</value>
   </data>
-  <data name="Welcome_DoNotShow.TabIndex" type="System.Int32, mscorlib">
+  <data name="welcome_do_not_show.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="Welcome_DoNotShow.Text" xml:space="preserve">
-    <value>Do not show</value>
+  <data name="welcome_do_not_show.Text" xml:space="preserve">
+    <value>do_not_show</value>
   </data>
-  <data name="&gt;&gt;Welcome_DoNotShow.Name" xml:space="preserve">
-    <value>Welcome_DoNotShow</value>
+  <data name="&gt;&gt;welcome_do_not_show.Name" xml:space="preserve">
+    <value>welcome_do_not_show</value>
   </data>
-  <data name="&gt;&gt;Welcome_DoNotShow.Type" xml:space="preserve">
+  <data name="&gt;&gt;welcome_do_not_show.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;Welcome_DoNotShow.Parent" xml:space="preserve">
+  <data name="&gt;&gt;welcome_do_not_show.Parent" xml:space="preserve">
     <value>MainPanel</value>
   </data>
-  <data name="&gt;&gt;Welcome_DoNotShow.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;welcome_do_not_show.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="PointToTutorial.AutoSize" type="System.Boolean, mscorlib">
@@ -381,39 +393,37 @@
   <data name="&gt;&gt;PointToTutorial.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="Welcome.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="welcome.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 9pt</value>
   </data>
-  <data name="Welcome.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="welcome.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="Welcome.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="welcome.Location" type="System.Drawing.Point, System.Drawing">
     <value>333, 201</value>
   </data>
-  <data name="Welcome.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="welcome.Size" type="System.Drawing.Size, System.Drawing">
     <value>454, 100</value>
   </data>
-  <data name="Welcome.TabIndex" type="System.Int32, mscorlib">
+  <data name="welcome.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="Welcome.Text" xml:space="preserve">
-    <value>Welcome to FriishProduce!
-
-Before getting started, please be sure to familiarise yourself with this program by reading the tutorial.</value>
+  <data name="welcome.Text" xml:space="preserve">
+    <value>welcome</value>
   </data>
-  <data name="Welcome.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+  <data name="welcome.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
   </data>
-  <data name="&gt;&gt;Welcome.Name" xml:space="preserve">
-    <value>Welcome</value>
+  <data name="&gt;&gt;welcome.Name" xml:space="preserve">
+    <value>welcome</value>
   </data>
-  <data name="&gt;&gt;Welcome.Type" xml:space="preserve">
+  <data name="&gt;&gt;welcome.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;Welcome.Parent" xml:space="preserve">
+  <data name="&gt;&gt;welcome.Parent" xml:space="preserve">
     <value>MainPanel</value>
   </data>
-  <data name="&gt;&gt;Welcome.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;welcome.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <data name="MainPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
@@ -449,6 +459,9 @@ Before getting started, please be sure to familiarise yourself with this program
   <data name="ToolStrip.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
   </data>
+  <data name="ToolStrip_NewProject.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 7pt</value>
+  </data>
   <data name="ToolStrip_NewProject.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
@@ -456,10 +469,13 @@ Before getting started, please be sure to familiarise yourself with this program
     <value>29, 22</value>
   </data>
   <data name="ToolStrip_NewProject.Text" xml:space="preserve">
-    <value>toolStripDropDownButton1</value>
+    <value>new_project</value>
   </data>
   <data name="ToolStrip_SaveAs.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
+  </data>
+  <data name="ToolStrip_SaveAs.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 7pt</value>
   </data>
   <data name="ToolStrip_SaveAs.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
@@ -467,14 +483,23 @@ Before getting started, please be sure to familiarise yourself with this program
   <data name="ToolStrip_SaveAs.Size" type="System.Drawing.Size, System.Drawing">
     <value>23, 22</value>
   </data>
+  <data name="ToolStrip_SaveAs.Text" xml:space="preserve">
+    <value>save_project_as</value>
+  </data>
   <data name="ToolStrip_ExportWAD.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
+  </data>
+  <data name="ToolStrip_ExportWAD.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 7pt</value>
   </data>
   <data name="ToolStrip_ExportWAD.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
   <data name="ToolStrip_ExportWAD.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
+    <value>89, 22</value>
+  </data>
+  <data name="ToolStrip_ExportWAD.Text" xml:space="preserve">
+    <value>save_as_wad</value>
   </data>
   <data name="toolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 25</value>
@@ -482,20 +507,32 @@ Before getting started, please be sure to familiarise yourself with this program
   <data name="ToolStrip_OpenROM.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
+  <data name="ToolStrip_OpenROM.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 7pt</value>
+  </data>
   <data name="ToolStrip_OpenROM.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
   <data name="ToolStrip_OpenROM.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
+    <value>99, 22</value>
+  </data>
+  <data name="ToolStrip_OpenROM.Text" xml:space="preserve">
+    <value>open_gamefile</value>
   </data>
   <data name="ToolStrip_OpenImage.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
+  </data>
+  <data name="ToolStrip_OpenImage.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 7pt</value>
   </data>
   <data name="ToolStrip_OpenImage.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
   <data name="ToolStrip_OpenImage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
+    <value>87, 22</value>
+  </data>
+  <data name="ToolStrip_OpenImage.Text" xml:space="preserve">
+    <value>open_image</value>
   </data>
   <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 25</value>
@@ -503,11 +540,17 @@ Before getting started, please be sure to familiarise yourself with this program
   <data name="ToolStrip_UseLibRetro.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
+  <data name="ToolStrip_UseLibRetro.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 7pt</value>
+  </data>
   <data name="ToolStrip_UseLibRetro.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
   <data name="ToolStrip_UseLibRetro.Size" type="System.Drawing.Size, System.Drawing">
     <value>23, 22</value>
+  </data>
+  <data name="ToolStrip_UseLibRetro.Text" xml:space="preserve">
+    <value>retrieve_gamedata_online</value>
   </data>
   <data name="toolStripSeparator8.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 25</value>
@@ -3001,34 +3044,34 @@ Before getting started, please be sure to familiarise yourself with this program
   <data name="&gt;&gt;BrowseImage.Type" xml:space="preserve">
     <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;MenuItem_File.Name" xml:space="preserve">
-    <value>MenuItem_File</value>
+  <data name="&gt;&gt;menu_file.Name" xml:space="preserve">
+    <value>menu_file</value>
   </data>
-  <data name="&gt;&gt;MenuItem_File.Type" xml:space="preserve">
+  <data name="&gt;&gt;menu_file.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;NewProject.Name" xml:space="preserve">
-    <value>NewProject</value>
+  <data name="&gt;&gt;menu_new_project.Name" xml:space="preserve">
+    <value>menu_new_project</value>
   </data>
-  <data name="&gt;&gt;NewProject.Type" xml:space="preserve">
+  <data name="&gt;&gt;menu_new_project.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;OpenProject.Name" xml:space="preserve">
-    <value>OpenProject</value>
+  <data name="&gt;&gt;menu_open_project.Name" xml:space="preserve">
+    <value>menu_open_project</value>
   </data>
-  <data name="&gt;&gt;OpenProject.Type" xml:space="preserve">
+  <data name="&gt;&gt;menu_open_project.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;SaveAs.Name" xml:space="preserve">
-    <value>SaveAs</value>
+  <data name="&gt;&gt;menu_save_project_as.Name" xml:space="preserve">
+    <value>menu_save_project_as</value>
   </data>
-  <data name="&gt;&gt;SaveAs.Type" xml:space="preserve">
+  <data name="&gt;&gt;menu_save_project_as.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ExportWAD.Name" xml:space="preserve">
-    <value>ExportWAD</value>
+  <data name="&gt;&gt;menu_save_as_wad.Name" xml:space="preserve">
+    <value>menu_save_as_wad</value>
   </data>
-  <data name="&gt;&gt;ExportWAD.Type" xml:space="preserve">
+  <data name="&gt;&gt;menu_save_as_wad.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItem1.Name" xml:space="preserve">
@@ -3037,10 +3080,10 @@ Before getting started, please be sure to familiarise yourself with this program
   <data name="&gt;&gt;toolStripMenuItem1.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;MenuItem_Settings.Name" xml:space="preserve">
-    <value>MenuItem_Settings</value>
+  <data name="&gt;&gt;menu_settings.Name" xml:space="preserve">
+    <value>menu_settings</value>
   </data>
-  <data name="&gt;&gt;MenuItem_Settings.Type" xml:space="preserve">
+  <data name="&gt;&gt;menu_settings.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator4.Name" xml:space="preserve">
@@ -3049,28 +3092,28 @@ Before getting started, please be sure to familiarise yourself with this program
   <data name="&gt;&gt;toolStripSeparator4.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;MenuItem_Exit.Name" xml:space="preserve">
-    <value>MenuItem_Exit</value>
+  <data name="&gt;&gt;menu_exit.Name" xml:space="preserve">
+    <value>menu_exit</value>
   </data>
-  <data name="&gt;&gt;MenuItem_Exit.Type" xml:space="preserve">
+  <data name="&gt;&gt;menu_exit.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;MenuItem_Project.Name" xml:space="preserve">
-    <value>MenuItem_Project</value>
+  <data name="&gt;&gt;menu_project.Name" xml:space="preserve">
+    <value>menu_project</value>
   </data>
-  <data name="&gt;&gt;MenuItem_Project.Type" xml:space="preserve">
+  <data name="&gt;&gt;menu_project.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;OpenROM.Name" xml:space="preserve">
-    <value>OpenROM</value>
+  <data name="&gt;&gt;menu_open_gamefile.Name" xml:space="preserve">
+    <value>menu_open_gamefile</value>
   </data>
-  <data name="&gt;&gt;OpenROM.Type" xml:space="preserve">
+  <data name="&gt;&gt;menu_open_gamefile.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;OpenImage.Name" xml:space="preserve">
-    <value>OpenImage</value>
+  <data name="&gt;&gt;menu_open_image.Name" xml:space="preserve">
+    <value>menu_open_image</value>
   </data>
-  <data name="&gt;&gt;OpenImage.Type" xml:space="preserve">
+  <data name="&gt;&gt;menu_open_image.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator1.Name" xml:space="preserve">
@@ -3079,10 +3122,10 @@ Before getting started, please be sure to familiarise yourself with this program
   <data name="&gt;&gt;toolStripSeparator1.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;UseLibRetro.Name" xml:space="preserve">
-    <value>UseLibRetro</value>
+  <data name="&gt;&gt;menu_retrieve_gamedata_online.Name" xml:space="preserve">
+    <value>menu_retrieve_gamedata_online</value>
   </data>
-  <data name="&gt;&gt;UseLibRetro.Type" xml:space="preserve">
+  <data name="&gt;&gt;menu_retrieve_gamedata_online.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator2.Name" xml:space="preserve">
@@ -3091,22 +3134,22 @@ Before getting started, please be sure to familiarise yourself with this program
   <data name="&gt;&gt;toolStripSeparator2.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;CloseTab.Name" xml:space="preserve">
-    <value>CloseTab</value>
+  <data name="&gt;&gt;menu_close_project.Name" xml:space="preserve">
+    <value>menu_close_project</value>
   </data>
-  <data name="&gt;&gt;CloseTab.Type" xml:space="preserve">
+  <data name="&gt;&gt;menu_close_project.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;MenuItem_Help.Name" xml:space="preserve">
-    <value>MenuItem_Help</value>
+  <data name="&gt;&gt;menu_help.Name" xml:space="preserve">
+    <value>menu_help</value>
   </data>
-  <data name="&gt;&gt;MenuItem_Help.Type" xml:space="preserve">
+  <data name="&gt;&gt;menu_help.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;MenuItem_Tutorial.Name" xml:space="preserve">
-    <value>MenuItem_Tutorial</value>
+  <data name="&gt;&gt;menu_tutorial.Name" xml:space="preserve">
+    <value>menu_tutorial</value>
   </data>
-  <data name="&gt;&gt;MenuItem_Tutorial.Type" xml:space="preserve">
+  <data name="&gt;&gt;menu_tutorial.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator5.Name" xml:space="preserve">
@@ -3115,10 +3158,10 @@ Before getting started, please be sure to familiarise yourself with this program
   <data name="&gt;&gt;toolStripSeparator5.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;MenuItem_About.Name" xml:space="preserve">
-    <value>MenuItem_About</value>
+  <data name="&gt;&gt;menu_about.Name" xml:space="preserve">
+    <value>menu_about</value>
   </data>
-  <data name="&gt;&gt;MenuItem_About.Type" xml:space="preserve">
+  <data name="&gt;&gt;menu_about.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator3.Name" xml:space="preserve">
