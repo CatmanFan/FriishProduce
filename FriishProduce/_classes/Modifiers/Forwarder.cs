@@ -91,6 +91,45 @@ namespace FriishProduce
             Directory.CreateDirectory(ROMFolder);
             File.Copy(Paths.Emulators + Files[EmulatorIndex] + ".dol", PackageFolder + "boot.dol");
 
+            // Saves folders
+            // *******
+            switch (EmulatorIndex)
+            {
+                case 0:
+                case 1:
+                    Directory.CreateDirectory(Paths.SDUSBRoot + "fceugx\\saves\\");
+                    break;
+                case 2:
+                    Directory.CreateDirectory(Paths.SDUSBRoot + "fceuxtx\\saves\\");
+                    break;
+                case 3:
+                case 4:
+                    Directory.CreateDirectory(Paths.SDUSBRoot + "snes9xgx\\saves\\");
+                    break;
+                case 5:
+                    Directory.CreateDirectory(Paths.SDUSBRoot + "snes9xtx\\saves\\");
+                    break;
+                case 6:
+                    Directory.CreateDirectory(Paths.SDUSBRoot + "vbagx\\saves\\");
+                    break;
+                case 8:
+                case 9:
+                case 11:
+                    Directory.CreateDirectory(Paths.SDUSBRoot + "wii64\\roms\\");
+                    Directory.CreateDirectory(Paths.SDUSBRoot + "wii64\\saves\\");
+                    break;
+                case 10:
+                    Directory.CreateDirectory(Paths.SDUSBRoot + "not64\\roms\\");
+                    Directory.CreateDirectory(Paths.SDUSBRoot + "not64\\saves\\");
+                    break;
+                case 12:
+                    Directory.CreateDirectory(Paths.SDUSBRoot + "wiisxrx\\bios\\");
+                    Directory.CreateDirectory(Paths.SDUSBRoot + "wiisxrx\\isos\\");
+                    Directory.CreateDirectory(Paths.SDUSBRoot + "wiisxrx\\saves\\");
+                    Directory.CreateDirectory(Paths.SDUSBRoot + "wiisxrx\\savestates\\");
+                    break;
+            }
+
             // Copy game to SD folder
             // *******
             File.WriteAllBytes(ROMFolder + ROMName, ROM);
