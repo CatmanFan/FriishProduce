@@ -30,9 +30,7 @@ namespace FriishProduce
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsForm));
-            this.image_interpolation_mode_list = new System.Windows.Forms.ComboBox();
             this.lngList = new System.Windows.Forms.ComboBox();
-            this.auto_retrieve_gamedata_online = new System.Windows.Forms.CheckBox();
             this.vc_n64_patches = new System.Windows.Forms.GroupBox();
             this.vc_n64_patch_autosizerom = new System.Windows.Forms.CheckBox();
             this.vc_n64_patch_expandedram = new System.Windows.Forms.CheckBox();
@@ -50,8 +48,6 @@ namespace FriishProduce
             this.reset_all_dialogs = new System.Windows.Forms.CheckBox();
             this.language = new System.Windows.Forms.GroupBox();
             this.vc_n64 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.image_interpolation_mode = new System.Windows.Forms.GroupBox();
             this.leftSeparator = new System.Windows.Forms.Panel();
             this.forwarder = new System.Windows.Forms.Panel();
             this.forwarder_console = new System.Windows.Forms.GroupBox();
@@ -104,6 +100,9 @@ namespace FriishProduce
             this.label4 = new System.Windows.Forms.Label();
             this.FLASH_vff_cache_size = new System.Windows.Forms.ComboBox();
             this.LanguageList = new System.Windows.Forms.ComboBox();
+            this.default_image_interpolation_mode = new System.Windows.Forms.GroupBox();
+            this.image_interpolation_mode_list = new System.Windows.Forms.ComboBox();
+            this.auto_retrieve_gamedata_online = new System.Windows.Forms.CheckBox();
             this.vc_n64_patches.SuspendLayout();
             this.vc_n64_romc_type.SuspendLayout();
             this.bottomPanel1.SuspendLayout();
@@ -111,8 +110,6 @@ namespace FriishProduce
             this.panel1.SuspendLayout();
             this.language.SuspendLayout();
             this.vc_n64.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.image_interpolation_mode.SuspendLayout();
             this.forwarder.SuspendLayout();
             this.forwarder_console.SuspendLayout();
             this.forwarder_root_device.SuspendLayout();
@@ -132,17 +129,8 @@ namespace FriishProduce
             this.groupBox12.SuspendLayout();
             this.groupBox13.SuspendLayout();
             this.groupBox14.SuspendLayout();
+            this.default_image_interpolation_mode.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // image_interpolation_mode_list
-            // 
-            this.image_interpolation_mode_list.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.image_interpolation_mode_list.FormattingEnabled = true;
-            this.image_interpolation_mode_list.Items.AddRange(new object[] {
-            resources.GetString("image_interpolation_mode_list.Items")});
-            resources.ApplyResources(this.image_interpolation_mode_list, "image_interpolation_mode_list");
-            this.image_interpolation_mode_list.Name = "image_interpolation_mode_list";
-            this.image_interpolation_mode_list.Tag = "image_interpolation_mode";
             // 
             // lngList
             // 
@@ -152,13 +140,6 @@ namespace FriishProduce
             resources.GetString("lngList.Items")});
             resources.ApplyResources(this.lngList, "lngList");
             this.lngList.Name = "lngList";
-            // 
-            // auto_retrieve_gamedata_online
-            // 
-            resources.ApplyResources(this.auto_retrieve_gamedata_online, "auto_retrieve_gamedata_online");
-            this.auto_retrieve_gamedata_online.Name = "auto_retrieve_gamedata_online";
-            this.auto_retrieve_gamedata_online.Tag = "auto_retrieve_gamedata_online";
-            this.auto_retrieve_gamedata_online.UseVisualStyleBackColor = true;
             // 
             // vc_n64_patches
             // 
@@ -269,6 +250,8 @@ namespace FriishProduce
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.default_image_interpolation_mode);
+            this.panel1.Controls.Add(this.auto_retrieve_gamedata_online);
             this.panel1.Controls.Add(this.reset_all_dialogs);
             this.panel1.Controls.Add(this.language);
             resources.ApplyResources(this.panel1, "panel1");
@@ -296,21 +279,6 @@ namespace FriishProduce
             resources.ApplyResources(this.vc_n64, "vc_n64");
             this.vc_n64.Name = "vc_n64";
             this.vc_n64.Tag = "vc_n64";
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.image_interpolation_mode);
-            this.panel2.Controls.Add(this.auto_retrieve_gamedata_online);
-            resources.ApplyResources(this.panel2, "panel2");
-            this.panel2.Name = "panel2";
-            // 
-            // image_interpolation_mode
-            // 
-            this.image_interpolation_mode.Controls.Add(this.image_interpolation_mode_list);
-            resources.ApplyResources(this.image_interpolation_mode, "image_interpolation_mode");
-            this.image_interpolation_mode.Name = "image_interpolation_mode";
-            this.image_interpolation_mode.TabStop = false;
-            this.image_interpolation_mode.Tag = "image_interpolation_mode";
             // 
             // leftSeparator
             // 
@@ -724,6 +692,31 @@ namespace FriishProduce
             resources.ApplyResources(this.LanguageList, "LanguageList");
             this.LanguageList.Name = "LanguageList";
             // 
+            // default_image_interpolation_mode
+            // 
+            this.default_image_interpolation_mode.Controls.Add(this.image_interpolation_mode_list);
+            resources.ApplyResources(this.default_image_interpolation_mode, "default_image_interpolation_mode");
+            this.default_image_interpolation_mode.Name = "default_image_interpolation_mode";
+            this.default_image_interpolation_mode.TabStop = false;
+            this.default_image_interpolation_mode.Tag = "default_image_interpolation_mode";
+            // 
+            // image_interpolation_mode_list
+            // 
+            this.image_interpolation_mode_list.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.image_interpolation_mode_list.FormattingEnabled = true;
+            this.image_interpolation_mode_list.Items.AddRange(new object[] {
+            resources.GetString("image_interpolation_mode_list.Items")});
+            resources.ApplyResources(this.image_interpolation_mode_list, "image_interpolation_mode_list");
+            this.image_interpolation_mode_list.Name = "image_interpolation_mode_list";
+            this.image_interpolation_mode_list.Tag = "image_interpolation_mode";
+            // 
+            // auto_retrieve_gamedata_online
+            // 
+            resources.ApplyResources(this.auto_retrieve_gamedata_online, "auto_retrieve_gamedata_online");
+            this.auto_retrieve_gamedata_online.Name = "auto_retrieve_gamedata_online";
+            this.auto_retrieve_gamedata_online.Tag = "auto_retrieve_gamedata_online";
+            this.auto_retrieve_gamedata_online.UseVisualStyleBackColor = true;
+            // 
             // SettingsForm
             // 
             this.AcceptButton = this.b_ok;
@@ -739,7 +732,6 @@ namespace FriishProduce
             this.Controls.Add(this.vc_nes);
             this.Controls.Add(this.adobe_flash);
             this.Controls.Add(this.forwarder);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.vc_n64);
             this.Controls.Add(this.vc_pce);
             this.Controls.Add(this.vc_sega);
@@ -762,9 +754,6 @@ namespace FriishProduce
             this.panel1.PerformLayout();
             this.language.ResumeLayout(false);
             this.vc_n64.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.image_interpolation_mode.ResumeLayout(false);
             this.forwarder.ResumeLayout(false);
             this.forwarder_console.ResumeLayout(false);
             this.forwarder_console.PerformLayout();
@@ -794,6 +783,7 @@ namespace FriishProduce
             this.groupBox13.ResumeLayout(false);
             this.groupBox14.ResumeLayout(false);
             this.groupBox14.PerformLayout();
+            this.default_image_interpolation_mode.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -803,8 +793,6 @@ namespace FriishProduce
         private System.Windows.Forms.Button b_cancel;
         private System.Windows.Forms.Panel bottomPanel1;
         private System.Windows.Forms.Panel bottomPanel2;
-        private System.Windows.Forms.ComboBox image_interpolation_mode_list;
-        private System.Windows.Forms.CheckBox auto_retrieve_gamedata_online;
         private System.Windows.Forms.ComboBox lngList;
         private System.Windows.Forms.GroupBox vc_n64_patches;
         private System.Windows.Forms.CheckBox vc_n64_patch_autosizerom;
@@ -817,11 +805,9 @@ namespace FriishProduce
         private System.Windows.Forms.TreeView TreeView;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel vc_n64;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel leftSeparator;
         private System.Windows.Forms.CheckBox reset_all_dialogs;
         private System.Windows.Forms.GroupBox language;
-        private System.Windows.Forms.GroupBox image_interpolation_mode;
         private System.Windows.Forms.Panel forwarder;
         private System.Windows.Forms.GroupBox forwarder_console;
         private System.Windows.Forms.GroupBox forwarder_root_device;
@@ -873,5 +859,8 @@ namespace FriishProduce
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox FLASH_vff_cache_size;
         private System.Windows.Forms.ComboBox LanguageList;
+        private System.Windows.Forms.GroupBox default_image_interpolation_mode;
+        private System.Windows.Forms.ComboBox image_interpolation_mode_list;
+        private System.Windows.Forms.CheckBox auto_retrieve_gamedata_online;
     }
 }

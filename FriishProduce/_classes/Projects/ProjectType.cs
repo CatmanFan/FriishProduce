@@ -19,8 +19,8 @@ namespace FriishProduce
         public IDictionary<string, string> Options { get; set; }
         public LibRetroDB LibRetro { get; set; }
         public int WADRegion { get; set; }
-        public int BaseNumber { get; set; }
-        public int BaseRegion { get; set; }
+        public (int, int) Base { get; set; }
         public bool LinkSaveDataTitle { get; set; }
+        public (int, bool) ImageOptions { get; set; }
     }
 }

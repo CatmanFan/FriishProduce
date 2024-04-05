@@ -115,8 +115,9 @@
 			"default_settings": "Default settings",
 			"language": "Language",
 			"system_default": "System default",
-			"reset_all_dialogs": "Reset all dialogs",
+			"default_image_interpolation_mode": "Default image interpolation mode",
 			"auto_retrieve_gamedata_online": "Automatically retrieve game data online",
+			"reset_all_dialogs": "Reset all dialogs",
 		},
 		"projectform": {
 			"rom_info": "ROM information",

@@ -77,11 +77,12 @@ namespace FriishProduce
             p.Options = CO?.Options ?? null;
             p.LibRetro = LibRetro;
             p.WADRegion = TargetRegion.SelectedIndex;
-            p.BaseNumber = Base.SelectedIndex;
+            p.Base = (Base.SelectedIndex, 0);
             p.LinkSaveDataTitle = LinkSaveData.Checked;
+            p.ImageOptions = (imageintpl.SelectedIndex, image_fit.Checked);
 
             for (int i = 0; i < BaseRegionList.Items.Count; i++)
-                if (BaseRegionList.Items[i].GetType() == typeof(ToolStripMenuItem) && (BaseRegionList.Items[i] as ToolStripMenuItem).Checked) p.BaseRegion = i;
+                if (BaseRegionList.Items[i].GetType() == typeof(ToolStripMenuItem) && (BaseRegionList.Items[i] as ToolStripMenuItem).Checked) p.Base = (Base.SelectedIndex, i);
 
             using (Stream stream = File.Open(Parent.SaveProject.FileName, FileMode.Create))
             {
@@ -366,11 +367,11 @@ namespace FriishProduce
                 Img.LoadToSource(ParentProject.Img);
                 LoadImage(ParentProject.Img);
 
-                Base.SelectedIndex = ParentProject.BaseNumber;
+                Base.SelectedIndex = ParentProject.Base.Item1;
                 for (int i = 0; i < BaseRegionList.Items.Count; i++)
                     if (BaseRegionList.Items[i].GetType() == typeof(ToolStripMenuItem)) (BaseRegionList.Items[i] as ToolStripMenuItem).Checked = false;
-                (BaseRegionList.Items[ParentProject.BaseRegion] as ToolStripMenuItem).Checked = true;
-                UpdateBaseForm(ParentProject.BaseRegion);
+                (BaseRegionList.Items[ParentProject.Base.Item2] as ToolStripMenuItem).Checked = true;
+                UpdateBaseForm(ParentProject.Base.Item2);
 
                 SetROMDataText();
 
@@ -382,6 +383,8 @@ namespace FriishProduce
                 TitleID.Text = Creator.TitleID;
                 TargetRegion.SelectedIndex = ParentProject.WADRegion;
                 LinkSaveData.Checked = ParentProject.LinkSaveDataTitle;
+                imageintpl.SelectedIndex = ParentProject.ImageOptions.Item1;
+                image_fit.Checked = ParentProject.ImageOptions.Item2;
 
                 PatchFile = File.Exists(ParentProject.PatchFile) ? ParentProject.PatchFile : null;
                 Patch.Checked = !string.IsNullOrWhiteSpace(ParentProject.PatchFile);

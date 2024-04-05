@@ -107,8 +107,9 @@
 			"default_settings": "Réglages par défaut",
 			"language": "Langue",
 			"system_default": "Système",
-			"reset_all_dialogs": "Réinitialiser le paramètre « Ne plus afficher ce message »",
+			"default_image_interpolation_mode": "Méthode d'interpolation d'images par défaut",
 			"auto_retrieve_gamedata_online": "Remplir automatiquement dès de la base de données en ligne",
+			"reset_all_dialogs": "Réinitialiser le paramètre « Ne plus afficher ce message »"
 		},
 		"projectform": {
 			"rom_info": "Information de la ROM",

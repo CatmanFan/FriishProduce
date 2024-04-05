@@ -99,8 +99,9 @@
 			"default_settings": "Preferencias por defecto",
 			"language": "Idioma",
 			"system_default": "Idioma del sistema",
-			"reset_all_dialogs": "Restablecer la opción \"No volver a mostrar este mensaje\"",
+			"default_image_interpolation_mode": "Método de interpolación de imágenes por defecto",
 			"auto_retrieve_gamedata_online": "Obtener automáticamente datos del juego de la base de datos en línea",
+			"reset_all_dialogs": "Restablecer la opción \"No volver a mostrar este mensaje\""
 		},
 		"projectform": {
 			"rom_info": "Información de ROM",

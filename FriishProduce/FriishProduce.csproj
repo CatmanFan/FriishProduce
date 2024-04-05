@@ -308,8 +308,7 @@
     <Compile Include="_classes\Modifiers\WiiVC\NES.cs" />
     <Compile Include="_classes\Modifiers\WiiVC\SEGA.cs" />
     <Compile Include="_classes\Modifiers\WiiVC\SNES.cs" />
-    <Compile Include="_classes\MessageBox.cs" />
-    <Compile Include="_classes\ProcessHelper.cs" />
+    <Compile Include="_classes\Program\MessageBox.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="_classes\LibRetroDB.cs" />
@@ -420,6 +419,9 @@
   <ItemGroup>
     <Content Include="Database.xml" />
     <Content Include="icon.ico" />
+    <None Include="Resources\icons\folder-horizontal-open.png" />
+    <None Include="Resources\apps\romc0.exe" />
+    <None Include="Resources\apps\romc.exe" />
     <None Include="Resources\apps\flips.exe" />
     <None Include="Resources\apps\xdelta3.exe" />
     <None Include="Resources\icons\brick.ico" />

@@ -1,6 +1,7 @@
 ﻿using libWiiSharp;
 using System;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -65,15 +66,24 @@ namespace FriishProduce
 
     public static class Utils
     {
+        public static void Run(byte[] app, string appName, string arguments, bool showWindow = false)
+        {
+            string targetPath = Paths.WorkingFolder + Path.GetFileNameWithoutExtension(appName) + ".exe";
+            File.WriteAllBytes(targetPath, app);
+            Run(targetPath, Paths.WorkingFolder, arguments, showWindow);
+
+            if (File.Exists(targetPath)) File.Delete(targetPath);
+        }
+
         public static void Run(string app, string arguments, bool showWindow = false) => Run(app, Paths.Tools, arguments, showWindow);
 
         public static void Run(string app, string workingFolder, string arguments, bool showWindow = false)
         {
-            var appPath = System.IO.Path.Combine(Paths.Tools, app.Replace(Paths.Tools, "").Contains('\\') ? app.Replace(Paths.Tools, "") : System.IO.Path.GetFileName(app));
+            var appPath = Path.Combine(Paths.Tools, app.Replace(Paths.Tools, "").Contains('\\') ? app.Replace(Paths.Tools, "") : Path.GetFileName(app));
 
             if (!appPath.EndsWith(".exe")) appPath += ".exe";
 
-            if (!System.IO.File.Exists(appPath)) throw new Exception(string.Format(Program.Lang.Msg(5, true), app));
+            if (!File.Exists(appPath)) throw new Exception(string.Format(Program.Lang.Msg(5, true), app));
 
             using (Process p = Process.Start(new ProcessStartInfo
             {
@@ -84,14 +94,6 @@ namespace FriishProduce
                 CreateNoWindow = !showWindow
             }))
                 p.WaitForExit();
-        }
-
-        public static void SendToHBC(byte[] file)
-        {
-            string address = Microsoft.VisualBasic.Interaction.InputBox("Please enter the IP address of your Wii/Wii U.\nThis can be found by opening the Homebrew Channel and pressing HOME to access the main menu.", Program.Lang.ApplicationTitle);
-            if (!string.IsNullOrWhiteSpace(address)) return;
-
-            HbcTransmitter h = new HbcTransmitter(Protocol.JODI, address);
         }
     }
 }

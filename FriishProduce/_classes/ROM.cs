@@ -116,23 +116,8 @@ namespace FriishProduce
             File.WriteAllBytes(Paths.WorkingFolder + "rom", origData);
             File.WriteAllBytes(Paths.WorkingFolder + "patch", File.ReadAllBytes(PatchFile));
 
-            // -----------------------
-            // XDelta
-            // -----------------------
-            File.WriteAllBytes(Paths.WorkingFolder + "xdelta3.exe", Properties.Resources.App_XDelta);
-
-            Utils.Run(Paths.WorkingFolder + "xdelta3.exe", Paths.WorkingFolder, "-d -s rom patch rom_p_xdelta");
-
-            if (File.Exists(Paths.WorkingFolder + "xdelta3.exe")) File.Delete(Paths.WorkingFolder + "xdelta3.exe");
-
-            // -----------------------
-            // BPS
-            // -----------------------
-            File.WriteAllBytes(Paths.WorkingFolder + "flips.exe", Properties.Resources.App_Flips);
-
-            Utils.Run(Paths.WorkingFolder + "flips.exe", Paths.WorkingFolder, "--apply patch rom rom_p_bps");
-
-            if (File.Exists(Paths.WorkingFolder + "flips.exe")) File.Delete(Paths.WorkingFolder + "flips.exe");
+            Utils.Run(Properties.Resources.App_XDelta, "xdelta3", "-d -s rom patch rom_p_xdelta");
+            Utils.Run(Properties.Resources.App_Flips, "flips", "--apply patch rom rom_p_bps");
 
             // -----------------------
             // Check if patch applied successfully

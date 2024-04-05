@@ -117,41 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="image_interpolation_mode_list.Items" xml:space="preserve">
-    <value>null</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="image_interpolation_mode_list.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 19</value>
-  </data>
-  <data name="image_interpolation_mode_list.Size" type="System.Drawing.Size, System.Drawing">
-    <value>505, 21</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="image_interpolation_mode_list.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;image_interpolation_mode_list.Name" xml:space="preserve">
-    <value>image_interpolation_mode_list</value>
-  </data>
-  <data name="&gt;&gt;image_interpolation_mode_list.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;image_interpolation_mode_list.Parent" xml:space="preserve">
-    <value>image_interpolation_mode</value>
-  </data>
-  <data name="&gt;&gt;image_interpolation_mode_list.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="lngList.Items" xml:space="preserve">
     <value>System default</value>
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="lngList.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 19</value>
   </data>
   <data name="lngList.Size" type="System.Drawing.Size, System.Drawing">
     <value>505, 21</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="lngList.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
@@ -166,33 +142,6 @@
   </data>
   <data name="&gt;&gt;lngList.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="auto_retrieve_gamedata_online.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="auto_retrieve_gamedata_online.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 67</value>
-  </data>
-  <data name="auto_retrieve_gamedata_online.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 17</value>
-  </data>
-  <data name="auto_retrieve_gamedata_online.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="auto_retrieve_gamedata_online.Text" xml:space="preserve">
-    <value>auto_retrieve_gamedata_online</value>
-  </data>
-  <data name="&gt;&gt;auto_retrieve_gamedata_online.Name" xml:space="preserve">
-    <value>auto_retrieve_gamedata_online</value>
-  </data>
-  <data name="&gt;&gt;auto_retrieve_gamedata_online.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;auto_retrieve_gamedata_online.Parent" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="&gt;&gt;auto_retrieve_gamedata_online.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="&gt;&gt;vc_n64_patch_autosizerom.Name" xml:space="preserve">
     <value>vc_n64_patch_autosizerom</value>
@@ -663,11 +612,77 @@
   <data name="&gt;&gt;TreeView.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="&gt;&gt;image_interpolation_mode_list.Name" xml:space="preserve">
+    <value>image_interpolation_mode_list</value>
+  </data>
+  <data name="&gt;&gt;image_interpolation_mode_list.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;image_interpolation_mode_list.Parent" xml:space="preserve">
+    <value>default_image_interpolation_mode</value>
+  </data>
+  <data name="&gt;&gt;image_interpolation_mode_list.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="default_image_interpolation_mode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 65</value>
+  </data>
+  <data name="default_image_interpolation_mode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>525, 50</value>
+  </data>
+  <data name="default_image_interpolation_mode.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="default_image_interpolation_mode.Text" xml:space="preserve">
+    <value>default_image_interpolation_mode</value>
+  </data>
+  <data name="&gt;&gt;default_image_interpolation_mode.Name" xml:space="preserve">
+    <value>default_image_interpolation_mode</value>
+  </data>
+  <data name="&gt;&gt;default_image_interpolation_mode.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;default_image_interpolation_mode.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;default_image_interpolation_mode.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="auto_retrieve_gamedata_online.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="auto_retrieve_gamedata_online.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="auto_retrieve_gamedata_online.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 123</value>
+  </data>
+  <data name="auto_retrieve_gamedata_online.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 17</value>
+  </data>
+  <data name="auto_retrieve_gamedata_online.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="auto_retrieve_gamedata_online.Text" xml:space="preserve">
+    <value>auto_retrieve_gamedata_online</value>
+  </data>
+  <data name="&gt;&gt;auto_retrieve_gamedata_online.Name" xml:space="preserve">
+    <value>auto_retrieve_gamedata_online</value>
+  </data>
+  <data name="&gt;&gt;auto_retrieve_gamedata_online.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;auto_retrieve_gamedata_online.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;auto_retrieve_gamedata_online.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="reset_all_dialogs.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="reset_all_dialogs.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 67</value>
+    <value>12, 145</value>
   </data>
   <data name="reset_all_dialogs.Size" type="System.Drawing.Size, System.Drawing">
     <value>106, 17</value>
@@ -688,7 +703,7 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;reset_all_dialogs.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="language.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 10</value>
@@ -712,7 +727,7 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;language.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
     <value>180, 0</value>
@@ -754,64 +769,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_n64.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;image_interpolation_mode.Name" xml:space="preserve">
-    <value>image_interpolation_mode</value>
-  </data>
-  <data name="&gt;&gt;image_interpolation_mode.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;image_interpolation_mode.Parent" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="&gt;&gt;image_interpolation_mode.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>180, 0</value>
-  </data>
-  <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>549, 300</value>
-  </data>
-  <data name="panel2.TabIndex" type="System.Int32, mscorlib">
-    <value>20</value>
-  </data>
-  <data name="&gt;&gt;panel2.Name" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="&gt;&gt;panel2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel2.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
     <value>8</value>
-  </data>
-  <data name="image_interpolation_mode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 10</value>
-  </data>
-  <data name="image_interpolation_mode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>525, 50</value>
-  </data>
-  <data name="image_interpolation_mode.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="image_interpolation_mode.Text" xml:space="preserve">
-    <value>image_interpolation_mode</value>
-  </data>
-  <data name="&gt;&gt;image_interpolation_mode.Name" xml:space="preserve">
-    <value>image_interpolation_mode</value>
-  </data>
-  <data name="&gt;&gt;image_interpolation_mode.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;image_interpolation_mode.Parent" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="&gt;&gt;image_interpolation_mode.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="leftSeparator.Location" type="System.Drawing.Point, System.Drawing">
     <value>179, 0</value>
@@ -1363,7 +1321,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_sega.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>10</value>
   </data>
   <data name="&gt;&gt;vc_sega_console_disableresetbutton.Name" xml:space="preserve">
     <value>vc_sega_console_disableresetbutton</value>
@@ -1729,7 +1687,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_pce.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>9</value>
   </data>
   <data name="vc_pce_backupram.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2690,6 +2648,30 @@
   </data>
   <data name="&gt;&gt;LanguageList.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="image_interpolation_mode_list.Items" xml:space="preserve">
+    <value>null</value>
+  </data>
+  <data name="image_interpolation_mode_list.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 19</value>
+  </data>
+  <data name="image_interpolation_mode_list.Size" type="System.Drawing.Size, System.Drawing">
+    <value>505, 21</value>
+  </data>
+  <data name="image_interpolation_mode_list.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;image_interpolation_mode_list.Name" xml:space="preserve">
+    <value>image_interpolation_mode_list</value>
+  </data>
+  <data name="&gt;&gt;image_interpolation_mode_list.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;image_interpolation_mode_list.Parent" xml:space="preserve">
+    <value>default_image_interpolation_mode</value>
+  </data>
+  <data name="&gt;&gt;image_interpolation_mode_list.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

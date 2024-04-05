@@ -76,6 +76,7 @@ namespace FriishProduce
             this.ToolStrip_Tutorial = new System.Windows.Forms.ToolStripButton();
             this.SaveProject = new System.Windows.Forms.SaveFileDialog();
             this.BrowseProject = new System.Windows.Forms.OpenFileDialog();
+            this.ToolStrip_OpenProject = new System.Windows.Forms.ToolStripButton();
             this.MenuStrip.SuspendLayout();
             this.MainPanel.SuspendLayout();
             this.ToolStrip.SuspendLayout();
@@ -164,6 +165,7 @@ namespace FriishProduce
             // 
             // menu_open_project
             // 
+            this.menu_open_project.Image = global::FriishProduce.Properties.Resources.folder_horizontal_open;
             this.menu_open_project.Name = "menu_open_project";
             resources.ApplyResources(this.menu_open_project, "menu_open_project");
             this.menu_open_project.Tag = "open_project";
@@ -338,6 +340,7 @@ namespace FriishProduce
             resources.ApplyResources(this.ToolStrip, "ToolStrip");
             this.ToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ToolStrip_NewProject,
+            this.ToolStrip_OpenProject,
             this.ToolStrip_SaveAs,
             this.ToolStrip_ExportWAD,
             this.toolStripSeparator7,
@@ -454,6 +457,15 @@ namespace FriishProduce
             // 
             this.BrowseProject.DefaultExt = "fppj";
             // 
+            // ToolStrip_OpenProject
+            // 
+            this.ToolStrip_OpenProject.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ToolStrip_OpenProject.Image = global::FriishProduce.Properties.Resources.folder_horizontal_open;
+            resources.ApplyResources(this.ToolStrip_OpenProject, "ToolStrip_OpenProject");
+            this.ToolStrip_OpenProject.Name = "ToolStrip_OpenProject";
+            this.ToolStrip_OpenProject.Tag = "open_project";
+            this.ToolStrip_OpenProject.Click += new System.EventHandler(this.OpenProject_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -526,6 +538,7 @@ namespace FriishProduce
         private System.Windows.Forms.OpenFileDialog BrowseProject;
         private System.Windows.Forms.ToolStripMenuItem menu_open_project;
         private System.Windows.Forms.ToolStripButton ToolStrip_SaveAs;
+        private System.Windows.Forms.ToolStripButton ToolStrip_OpenProject;
     }
 }
 

@@ -105,20 +105,10 @@ namespace FriishProduce.Injectors
                     // Compress using ROMC type
                     // ****************
                     if (CompressionType == 1) // Type 0
-                        Utils.Run
-                        (
-                            Paths.Tools + "romc0.exe",
-                            Paths.WorkingFolder,
-                            "rom romc"
-                        );
+                        Utils.Run(Properties.Resources.App_ROMC0, "romc0", "rom romc");
 
                     else // Type 1
-                        Utils.Run
-                        (
-                            Paths.Tools + "romc.exe",
-                            Paths.WorkingFolder,
-                            "e rom romc"
-                        );
+                        Utils.Run(Properties.Resources.App_ROMC, "romc", "e rom romc");
 
                     // Check if converted file exists
                     // ****************

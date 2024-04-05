@@ -45,7 +45,7 @@ See **[here](https://github.com/CatmanFan/FriishProduce/wiki/Translation)** for 
 
 ## To-Do
 * ***Planned for v1.1:***
-- [ ] Potentially reorganize consoles into their own folders?
+- [ ] Probably reorganize consoles into their own folders?
 - [ ] Restructure and clean code
 - [X] Create project format
 * Other VC injection support to be done later:

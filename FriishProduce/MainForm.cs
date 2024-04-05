@@ -104,6 +104,7 @@ namespace FriishProduce
             Text = Program.Lang.ApplicationTitle;
 
             ToolStrip_NewProject.Text = menu_new_project.Text;
+            ToolStrip_OpenProject.Text = menu_open_project.Text;
             ToolStrip_SaveAs.Text = menu_save_project_as.Text;
             ToolStrip_ExportWAD.Text = menu_save_as_wad.Text;
             ToolStrip_OpenROM.Text = menu_open_gamefile.Text;

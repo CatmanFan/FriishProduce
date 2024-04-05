@@ -57,6 +57,7 @@ namespace FriishProduce
             Text = Program.Lang.String("settings");
             TreeView.Nodes[0].Text = Program.Lang.String(TreeView.Nodes[0].Tag.ToString(), Tag.ToString());
             TreeView.Nodes[1].Text = Program.Lang.String(TreeView.Nodes[1].Tag.ToString(), Tag.ToString());
+            TreeView.Nodes[1].Expand();
             TreeView.Nodes[1].Nodes[0].Text = Program.Lang.Console(Console.NES);
             TreeView.Nodes[1].Nodes[1].Text = Program.Lang.Console(Console.N64);
             TreeView.Nodes[1].Nodes[2].Text = Program.Lang.String("group1", "platforms");
@@ -91,7 +92,6 @@ namespace FriishProduce
 
             forwarder_root_device.Text = Program.Lang.String(forwarder_root_device.Name, "projectform");
             forwarder_console.Text = Program.Lang.String(forwarder_console.Name, "projectform");
-            image_interpolation_mode.Text = Program.Lang.String(image_interpolation_mode.Name, "projectform");
 
             // -----------------------------
 
@@ -341,59 +341,36 @@ namespace FriishProduce
 
         private void TreeView_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            panel1.Hide();
-            panel2.Hide();
-            forwarder.Hide();
-            vc_nes.Hide();
-            vc_n64.Hide();
-            vc_sega.Hide();
-            vc_pce.Hide();
-            vc_neo.Hide();
-            adobe_flash.Hide();
-
             if (!NodeLocked) NodeName = e.Node.Name;
 
-            switch (e.Node.Name.Substring(4))
+            string v_selected = e.Node.Name.Substring(4).ToLower();
+
+            bool[] isVisible = new bool[]
+                {
+                    v_selected == "0",
+                    v_selected == "forwarders",
+                    v_selected == "nes",
+                    v_selected == "n64",
+                    v_selected == "sega",
+                    v_selected == "pce",
+                    v_selected == "neo",
+                    v_selected == "flash"
+                };
+
+            foreach (var item in isVisible)
             {
-                default:
-                    break;
-
-                case "0":
-                    panel1.Show();
-                    break;
-
-                case "1":
-                    panel2.Show();
-                    break;
-
-                case "NES":
-                    vc_nes.Show();
-                    break;
-
-                case "N64":
-                    vc_n64.Show();
-                    break;
-
-                case "SEGA":
-                    vc_sega.Show();
-                    break;
-
-                case "PCE":
-                    vc_pce.Show();
-                    break;
-
-                case "NEO":
-                    vc_neo.Show();
-                    break;
-
-                case "Flash":
-                    adobe_flash.Show();
-                    break;
-
-                case "Forwarders":
-                    forwarder.Show();
-                    break;
-            };
+                if (item == true)
+                {
+                    panel1.Visible = isVisible[0];
+                    forwarder.Visible = isVisible[1];
+                    vc_nes.Visible = isVisible[2];
+                    vc_n64.Visible = isVisible[3];
+                    vc_sega.Visible = isVisible[4];
+                    vc_pce.Visible = isVisible[5];
+                    vc_neo.Visible = isVisible[6];
+                    adobe_flash.Visible = isVisible[7];
+                }
+            }
         }
 
         private void ToggleSwitchChanged(object sender, EventArgs e)
