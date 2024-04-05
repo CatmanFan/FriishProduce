@@ -6,17 +6,18 @@
 
         protected override void Load()
         {
-            Bytes = Byteswap(Bytes);
         }
 
         public override bool CheckValidity(string path)
         {
-            var Byteswapped = Byteswap(System.IO.File.ReadAllBytes(path));
-            return Byteswapped[0] == 0x80 && Byteswapped[1] == 0x37 && Byteswapped[2] == 0x12 && Byteswapped[3] == 0x40 && Byteswapped[4] == 0x00 && Byteswapped[5] == 0x00 && Byteswapped[6] == 0x00 && Byteswapped[7] == 0x0F;
+            var data = ToBigEndian(System.IO.File.ReadAllBytes(path));
+            return data[0] == 0x80 && data[1] == 0x37 && data[2] == 0x12 && data[3] == 0x40 && data[4] == 0x00 && data[5] == 0x00 && data[6] == 0x00 && data[7] == 0x0F;
         }
 
-        private byte[] Byteswap(byte[] ROM)
+        public byte[] ToBigEndian(byte[] romData = null)
         {
+            var ROM = romData != null ? romData : patched?.Length > 0 ? patched : origData;
+
             // -----------------------
             // Byteswap ROM first
             // ****************

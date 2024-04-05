@@ -71,9 +71,9 @@ namespace FriishProduce
             var p = new ProjectType();
             p.Console = Console;
             p.Creator = Creator;
-            p.ROM = ROM.Path;
+            p.ROM = ROM?.Path;
             p.PatchFile = PatchFile;
-            p.Img = Img.Source;
+            p.Img = Img?.Source ?? null;
             p.Options = CO?.Options ?? null;
             p.LibRetro = LibRetro;
             p.WADRegion = TargetRegion.SelectedIndex;
@@ -359,7 +359,8 @@ namespace FriishProduce
 
                 if (ParentProject.LibRetro != null) LibRetro = ParentProject.LibRetro;
                 if (CO != null) CO.Options = ParentProject.Options;
-                ROM.Path = ParentProject.ROM;
+
+                ROM.Path = File.Exists(ParentProject.ROM) ? ParentProject.ROM : null;
 
                 Img = new ImageHelper(ParentProject.Console, null);
                 Img.LoadToSource(ParentProject.Img);
@@ -381,6 +382,9 @@ namespace FriishProduce
                 TitleID.Text = Creator.TitleID;
                 TargetRegion.SelectedIndex = ParentProject.WADRegion;
                 LinkSaveData.Checked = ParentProject.LinkSaveDataTitle;
+
+                PatchFile = File.Exists(ParentProject.PatchFile) ? ParentProject.PatchFile : null;
+                Patch.Checked = !string.IsNullOrWhiteSpace(ParentProject.PatchFile);
 
                 ParentProject = null;
                 ToggleControls(!string.IsNullOrEmpty(ROM?.Path));
@@ -441,7 +445,13 @@ namespace FriishProduce
 
         private void RandomTID() => TitleID.Text = Creator.TitleID = TIDCode != null ? TIDCode + GenerateTitleID().Substring(0, 3) : GenerateTitleID();
 
-        public string GetName() => ROM?.Path != null ? Path.GetFileNameWithoutExtension(ROM?.Path) + $" [{TitleID.Text.ToUpper()}]" : $"{Console} - {ChannelTitle.Text} [{TitleID.Text.ToUpper()}]";
+        public string GetName()
+        {
+            return Patch.Checked ? Path.GetFileNameWithoutExtension(PatchFile) + $" [{TitleID.Text.ToUpper()}]"
+                 : ROM?.Path != null ? Path.GetFileNameWithoutExtension(ROM?.Path) + $" [{TitleID.Text.ToUpper()}]"
+
+                 : $"{Console} - {ChannelTitle.Text} [{TitleID.Text.ToUpper()}]";
+        }
 
         private void isClosing(object sender, FormClosingEventArgs e)
         {
@@ -462,15 +472,20 @@ namespace FriishProduce
                     {
                         return Parent.SaveAs_Trigger();
                     }
-                    
+
                     else if (result == MessageBox.Result.Button2)
                     {
                         return true;
                     }
+
+                    else if (result == MessageBox.Result.Cancel || result == MessageBox.Result.Button3)
+                    {
+                        return false;
+                    }
                 }
             }
 
-            return false;
+            return true;
         }
 
         private void Random_Click(object sender, EventArgs e) => RandomTID();
@@ -519,8 +534,6 @@ namespace FriishProduce
             }
 
             if (sender == BannerTitle || sender == ChannelTitle) LinkSaveDataTitle();
-
-            if (sender == TitleID) Parent.SaveWAD.FileName = GetName();
 
             var currentSender = sender as TextBox;
             if (currentSender.Multiline && currentSender.Lines.Length > 2) currentSender.Lines = new string[] { currentSender.Lines[0], currentSender.Lines[1] };
@@ -816,7 +829,6 @@ namespace FriishProduce
             Parent.tabControl.Visible = true;
 
             if (ROM != null && UseLibRetro && CheckToolStripButtons()[0]) LoadLibRetroData();
-            Parent.SaveWAD.FileName = GetName();
         }
 
         public async void LoadLibRetroData()
@@ -867,9 +879,9 @@ namespace FriishProduce
             try
             {
                 Parent.CleanTemp();
-
                 Creator.Out = Parent.SaveWAD.FileName;
-                if (PatchFile != null) ROM.Patch(PatchFile, false);
+
+                if (Patch.Checked) ROM.Patch(PatchFile);
 
                 OutWAD = new WAD();
 
@@ -929,7 +941,6 @@ namespace FriishProduce
                 if (File.Exists(Creator.Out) && File.ReadAllBytes(Creator.Out).Length > 10)
                 {
                     System.Media.SystemSounds.Beep.Play();
-                    Tag = null;
 
                     var Message = MessageBox.Show(Program.Lang.Msg(3), null, MessageBox.Buttons.Custom, Ookii.Dialogs.WinForms.TaskDialogIcon.Information);
 
@@ -969,7 +980,7 @@ namespace FriishProduce
             Forwarder f = new Forwarder()
             {
                 ROM = ROM.Bytes,
-                ROMExtension = Path.GetExtension(ROM.Path),
+                ROMExtension = Path.GetExtension(this.ROM.Path),
                 ID = Creator.TitleID,
                 Emulator = InjectorsList.SelectedItem.ToString(),
                 Storage = FStorage_USB.Checked ? Forwarder.Storages.USB : Forwarder.Storages.SD
@@ -1541,20 +1552,12 @@ namespace FriishProduce
 
         private void Patch_CheckedChanged(object sender, EventArgs e)
         {
-            if (Patch.Checked)
+            if (Patch.Checked && PatchFile == null)
             {
                 if (BrowsePatch.ShowDialog() == DialogResult.OK)
                 {
-                    if (ROM.Patch(BrowsePatch.FileName, true))
-                    {
-                        PatchFile = BrowsePatch.FileName;
-                        CheckExport();
-                    }
-                    else
-                    {
-                        PatchFile = null;
-                        Patch.Checked = false;
-                    }
+                    PatchFile = BrowsePatch.FileName;
+                    CheckExport();
                 }
 
                 else

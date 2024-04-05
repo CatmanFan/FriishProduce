@@ -27,7 +27,7 @@ namespace FriishProduce
                         _rom = value;
 
                         if (System.IO.Path.GetExtension(value).ToLower() == ".zip") try { ZIP = new ZipFile(value); } catch { ZIP = null; }
-                        if (ZIP == null) Bytes = File.ReadAllBytes(value);
+                        if (ZIP == null) origData = File.ReadAllBytes(value);
                         Load();
                     }
 
@@ -36,14 +36,17 @@ namespace FriishProduce
                         MessageBox.Show(ex.Message);
 
                         _rom = null;
-                        Bytes = null;
+                        origData = null;
                         ZIP = null;
                     }
                 }
             }
         }
 
-        public byte[] Bytes { get; set; }
+        protected byte[] origData = new byte[0];
+        protected byte[] patched = new byte[0];
+
+        public byte[] Bytes { get => patched?.Length > 0 ? patched : origData; }
 
         public int MaxSize { get; set; }
 
@@ -52,7 +55,8 @@ namespace FriishProduce
         public ROM()
         {
             _rom = null;
-            Bytes = null;
+            origData = null;
+            patched = null;
             ZIP = null;
             MaxSize = -1;
         }
@@ -105,25 +109,50 @@ namespace FriishProduce
 
         public bool CheckSize() => CheckSize(MaxSize);
 
-        public bool Patch(string PatchFile, bool TryParse = false)
+        public void Patch(string PatchFile)
         {
-            File.WriteAllBytes(Paths.WorkingFolder + "rom", Bytes);
+            if (!File.Exists(PatchFile) || string.IsNullOrWhiteSpace(PatchFile)) return;
 
-            Utils.Run("xdelta3.exe", $"-d -s \"{Paths.WorkingFolder + "rom"}\" \"{PatchFile}\" \"{Paths.WorkingFolder + "rom_p"}\"");
+            File.WriteAllBytes(Paths.WorkingFolder + "rom", origData);
+            File.WriteAllBytes(Paths.WorkingFolder + "patch", File.ReadAllBytes(PatchFile));
 
+            // -----------------------
+            // XDelta
+            // -----------------------
+            File.WriteAllBytes(Paths.WorkingFolder + "xdelta3.exe", Properties.Resources.App_XDelta);
+
+            Utils.Run(Paths.WorkingFolder + "xdelta3.exe", Paths.WorkingFolder, "-d -s rom patch rom_p_xdelta");
+
+            if (File.Exists(Paths.WorkingFolder + "xdelta3.exe")) File.Delete(Paths.WorkingFolder + "xdelta3.exe");
+
+            // -----------------------
+            // BPS
+            // -----------------------
+            File.WriteAllBytes(Paths.WorkingFolder + "flips.exe", Properties.Resources.App_Flips);
+
+            Utils.Run(Paths.WorkingFolder + "flips.exe", Paths.WorkingFolder, "--apply patch rom rom_p_bps");
+
+            if (File.Exists(Paths.WorkingFolder + "flips.exe")) File.Delete(Paths.WorkingFolder + "flips.exe");
+
+            // -----------------------
+            // Check if patch applied successfully
+            // -----------------------
             if (File.Exists(Paths.WorkingFolder + "rom")) File.Delete(Paths.WorkingFolder + "rom");
+            if (File.Exists(Paths.WorkingFolder + "patch")) File.Delete(Paths.WorkingFolder + "patch");
 
-            if (!File.Exists(Paths.WorkingFolder + "rom_p"))
-            {
-                MessageBox.Show(Program.Lang.String("error", "messages"), Program.Lang.Msg(7, true), MessageBox.Buttons.Ok, Properties.Resources.brick);
-                return false;
-            }
+            var Out = File.Exists(Paths.WorkingFolder + "rom_p_bps") ? File.ReadAllBytes(Paths.WorkingFolder + "rom_p_bps")
+                : File.Exists(Paths.WorkingFolder + "rom_p_xdelta") ? File.ReadAllBytes(Paths.WorkingFolder + "rom_p_xdelta")
+                : null;
 
-            if (!TryParse) Bytes = File.ReadAllBytes(Paths.WorkingFolder + "rom_p");
+            // -----------------------
+            // Delete files
+            // -----------------------
+            if (File.Exists(Paths.WorkingFolder + "rom_p_xdelta")) File.Delete(Paths.WorkingFolder + "rom_p_xdelta");
+            if (File.Exists(Paths.WorkingFolder + "rom_p_bps")) File.Delete(Paths.WorkingFolder + "rom_p_bps");
 
-            if (File.Exists(Paths.WorkingFolder + "rom_p")) File.Delete(Paths.WorkingFolder + "rom_p");
+            if (Out == null) throw new Exception(Program.Lang.Msg(7, true));
 
-            return true;
+            patched = Out;
         }
     }
 }

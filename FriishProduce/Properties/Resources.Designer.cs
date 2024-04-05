@@ -61,6 +61,26 @@ namespace FriishProduce.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] App_Flips {
+            get {
+                object obj = ResourceManager.GetObject("App_Flips", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] App_XDelta {
+            get {
+                object obj = ResourceManager.GetObject("App_XDelta", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap arrow_circle_double {

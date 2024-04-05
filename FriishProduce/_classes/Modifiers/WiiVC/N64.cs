@@ -77,6 +77,7 @@ namespace FriishProduce.Injectors
             // -----------------------
             ROM.MaxSize = Allocate ? 56623104 : 33554432;
             ROM.CheckSize();
+            var data = (ROM as ROM_N64).ToBigEndian();
 
             if (MainContent.GetNodeIndex("romc") != -1) EmuType = 3;
 
@@ -86,7 +87,7 @@ namespace FriishProduce.Injectors
             switch (EmuType)
             {
                 default:
-                    MainContent.ReplaceFile(MainContent.GetNodeIndex("rom"), ROM.Bytes);
+                    MainContent.ReplaceFile(MainContent.GetNodeIndex("rom"), data);
                     break;
 
                 case 3:
@@ -94,12 +95,12 @@ namespace FriishProduce.Injectors
                     // ****************
                     if (WAD.UpperTitleID.ToUpper().StartsWith("NA3"))
                     {
-                        Encoding.ASCII.GetBytes("NBD").CopyTo(ROM.Bytes, 0x3B);
+                        Encoding.ASCII.GetBytes("NBD").CopyTo(data, 0x3B);
                     }
 
                     // Temporary ROM file at working folder
                     // ****************
-                    File.WriteAllBytes(Paths.WorkingFolder + "rom", ROM.Bytes);
+                    File.WriteAllBytes(Paths.WorkingFolder + "rom", data);
 
                     // Compress using ROMC type
                     // ****************

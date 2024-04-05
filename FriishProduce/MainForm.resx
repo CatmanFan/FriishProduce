@@ -460,7 +460,7 @@
     <value>Tahoma, 8pt</value>
   </data>
   <data name="ToolStrip_NewProject.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 7pt</value>
+    <value>Microsoft Sans Serif, 8pt</value>
   </data>
   <data name="ToolStrip_NewProject.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
@@ -475,7 +475,7 @@
     <value>False</value>
   </data>
   <data name="ToolStrip_SaveAs.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 7pt</value>
+    <value>Microsoft Sans Serif, 8pt</value>
   </data>
   <data name="ToolStrip_SaveAs.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
@@ -490,13 +490,13 @@
     <value>False</value>
   </data>
   <data name="ToolStrip_ExportWAD.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 7pt</value>
+    <value>Microsoft Sans Serif, 8pt</value>
   </data>
   <data name="ToolStrip_ExportWAD.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
   <data name="ToolStrip_ExportWAD.Size" type="System.Drawing.Size, System.Drawing">
-    <value>89, 22</value>
+    <value>23, 22</value>
   </data>
   <data name="ToolStrip_ExportWAD.Text" xml:space="preserve">
     <value>save_as_wad</value>
@@ -508,13 +508,13 @@
     <value>False</value>
   </data>
   <data name="ToolStrip_OpenROM.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 7pt</value>
+    <value>Microsoft Sans Serif, 8pt</value>
   </data>
   <data name="ToolStrip_OpenROM.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
   <data name="ToolStrip_OpenROM.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 22</value>
+    <value>96, 22</value>
   </data>
   <data name="ToolStrip_OpenROM.Text" xml:space="preserve">
     <value>open_gamefile</value>
@@ -523,13 +523,13 @@
     <value>False</value>
   </data>
   <data name="ToolStrip_OpenImage.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 7pt</value>
+    <value>Microsoft Sans Serif, 8pt</value>
   </data>
   <data name="ToolStrip_OpenImage.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
   <data name="ToolStrip_OpenImage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>87, 22</value>
+    <value>85, 22</value>
   </data>
   <data name="ToolStrip_OpenImage.Text" xml:space="preserve">
     <value>open_image</value>
@@ -541,7 +541,7 @@
     <value>False</value>
   </data>
   <data name="ToolStrip_UseLibRetro.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 7pt</value>
+    <value>Microsoft Sans Serif, 8pt</value>
   </data>
   <data name="ToolStrip_UseLibRetro.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
@@ -557,6 +557,9 @@
   </data>
   <data name="ToolStrip_CloseTab.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
+  </data>
+  <data name="ToolStrip_CloseTab.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8pt</value>
   </data>
   <data name="ToolStrip_CloseTab.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>

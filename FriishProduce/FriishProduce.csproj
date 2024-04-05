@@ -420,6 +420,8 @@
   <ItemGroup>
     <Content Include="Database.xml" />
     <Content Include="icon.ico" />
+    <None Include="Resources\apps\flips.exe" />
+    <None Include="Resources\apps\xdelta3.exe" />
     <None Include="Resources\icons\brick.ico" />
     <None Include="Resources\icons\wooden-box--pencil.png" />
     <None Include="Resources\icons\disk-black.png" />

@@ -37,12 +37,12 @@ namespace FriishProduce
             // *******
             if (Options != null)
             {
-                n64003.Enabled = patch_fixcrashes.Enabled = EmuType <= 1;
+                patch_autosizerom.Enabled = patch_fixcrashes.Enabled = EmuType <= 1;
                 g2.Visible = g2.Enabled = EmuType == 3;
                 patch_fixbrightness.Checked = bool.Parse(Options["brightness"]);
                 patch_fixcrashes.Checked = bool.Parse(Options["crash"]);
                 patch_expandedram.Checked = bool.Parse(Options["expansion"]);
-                n64003.Checked = bool.Parse(Options["rom_autosize"]);
+                patch_autosizerom.Checked = bool.Parse(Options["rom_autosize"]);
                 romc_type.SelectedIndex = int.Parse(Options["romc"]);
             }
             // *******
@@ -53,7 +53,7 @@ namespace FriishProduce
             Options["brightness"] = patch_fixbrightness.Checked.ToString();
             Options["crash"] = patch_fixcrashes.Checked.ToString();
             Options["expansion"] = patch_expandedram.Checked.ToString();
-            Options["rom_autosize"] = n64003.Checked.ToString();
+            Options["rom_autosize"] = patch_autosizerom.Checked.ToString();
             Options["romc"] = romc_type.SelectedIndex.ToString();
         }
 

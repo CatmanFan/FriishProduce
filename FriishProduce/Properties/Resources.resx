@@ -319,4 +319,10 @@
   <data name="brick" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons\brick.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="App_Flips" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\apps\flips.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="App_XDelta" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\apps\xdelta3.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

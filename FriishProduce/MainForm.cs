@@ -320,7 +320,7 @@ namespace FriishProduce
         {
             var currentForm = tabControl.SelectedForm as ProjectForm;
 
-            SaveWAD.FileName = string.IsNullOrWhiteSpace(SaveWAD.FileName) ? currentForm.GetName() : Path.GetFileNameWithoutExtension(SaveWAD.FileName);
+            SaveWAD.FileName = currentForm.GetName();
             if (SaveWAD.ShowDialog() == DialogResult.OK) currentForm.SaveToWAD();
         }
 

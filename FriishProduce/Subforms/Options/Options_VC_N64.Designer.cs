@@ -31,7 +31,7 @@ namespace FriishProduce
         {
             this.g1 = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.n64003 = new System.Windows.Forms.CheckBox();
+            this.patch_autosizerom = new System.Windows.Forms.CheckBox();
             this.x009 = new System.Windows.Forms.Label();
             this.patch_expandedram = new System.Windows.Forms.CheckBox();
             this.patch_fixcrashes = new System.Windows.Forms.CheckBox();
@@ -59,7 +59,7 @@ namespace FriishProduce
             // g1
             // 
             this.g1.Controls.Add(this.pictureBox1);
-            this.g1.Controls.Add(this.n64003);
+            this.g1.Controls.Add(this.patch_autosizerom);
             this.g1.Controls.Add(this.x009);
             this.g1.Controls.Add(this.patch_expandedram);
             this.g1.Controls.Add(this.patch_fixcrashes);
@@ -83,19 +83,20 @@ namespace FriishProduce
             this.pictureBox1.TabIndex = 17;
             this.pictureBox1.TabStop = false;
             // 
-            // n64003
+            // patch_autosizerom
             // 
-            this.n64003.AutoSize = true;
-            this.n64003.CheckAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.n64003.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.n64003.Location = new System.Drawing.Point(10, 63);
-            this.n64003.MaximumSize = new System.Drawing.Size(203, 27);
-            this.n64003.Name = "n64003";
-            this.n64003.Size = new System.Drawing.Size(117, 17);
-            this.n64003.TabIndex = 16;
-            this.n64003.Text = "patch_autosizerom";
-            this.n64003.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.n64003.UseVisualStyleBackColor = true;
+            this.patch_autosizerom.AutoSize = true;
+            this.patch_autosizerom.CheckAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.patch_autosizerom.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.patch_autosizerom.Location = new System.Drawing.Point(10, 63);
+            this.patch_autosizerom.MaximumSize = new System.Drawing.Size(203, 27);
+            this.patch_autosizerom.Name = "patch_autosizerom";
+            this.patch_autosizerom.Size = new System.Drawing.Size(117, 17);
+            this.patch_autosizerom.TabIndex = 16;
+            this.patch_autosizerom.Tag = "patch_autosizerom";
+            this.patch_autosizerom.Text = "patch_autosizerom";
+            this.patch_autosizerom.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.patch_autosizerom.UseVisualStyleBackColor = true;
             // 
             // x009
             // 
@@ -118,6 +119,7 @@ namespace FriishProduce
             this.patch_expandedram.Name = "patch_expandedram";
             this.patch_expandedram.Size = new System.Drawing.Size(125, 17);
             this.patch_expandedram.TabIndex = 15;
+            this.patch_expandedram.Tag = "patch_expandedram";
             this.patch_expandedram.Text = "patch_expandedram";
             this.patch_expandedram.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.patch_expandedram.UseVisualStyleBackColor = true;
@@ -132,6 +134,7 @@ namespace FriishProduce
             this.patch_fixcrashes.Name = "patch_fixcrashes";
             this.patch_fixcrashes.Size = new System.Drawing.Size(108, 17);
             this.patch_fixcrashes.TabIndex = 14;
+            this.patch_fixcrashes.Tag = "patch_fixcrashes";
             this.patch_fixcrashes.Text = "patch_fixcrashes";
             this.patch_fixcrashes.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.patch_fixcrashes.UseVisualStyleBackColor = true;
@@ -146,6 +149,7 @@ namespace FriishProduce
             this.patch_fixbrightness.Name = "patch_fixbrightness";
             this.patch_fixbrightness.Size = new System.Drawing.Size(121, 17);
             this.patch_fixbrightness.TabIndex = 13;
+            this.patch_fixbrightness.Tag = "patch_fixbrightness";
             this.patch_fixbrightness.Text = "patch_fixbrightness";
             this.patch_fixbrightness.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.patch_fixbrightness.UseVisualStyleBackColor = true;
@@ -196,7 +200,7 @@ namespace FriishProduce
         #endregion
 
         private System.Windows.Forms.GroupBox g1;
-        private System.Windows.Forms.CheckBox n64003;
+        private System.Windows.Forms.CheckBox patch_autosizerom;
         private System.Windows.Forms.CheckBox patch_expandedram;
         private System.Windows.Forms.CheckBox patch_fixcrashes;
         private System.Windows.Forms.CheckBox patch_fixbrightness;
