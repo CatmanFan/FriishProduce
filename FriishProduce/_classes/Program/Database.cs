@@ -4,6 +4,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -80,7 +81,7 @@ namespace FriishProduce
                     ascii += character;
                 }
 
-                return ascii;
+                return ascii.ToUpper();
             }
 
             /// <summary>
@@ -89,7 +90,8 @@ namespace FriishProduce
             public WAD GetWAD(int index)
             {
                 throw new NotImplementedException();
-                return new WAD();
+                var placeholder = WAD.Load(Properties.Resources.StaticBase);
+                placeholder.ChangeTitleID(LowerTitleID.Channel, GetUpperID(index));
             }
         }
 

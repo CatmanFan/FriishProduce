@@ -368,6 +368,7 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="database.json" />
+    <None Include="Resources\StaticBase.wad" />
     <None Include="Strings\fr.json" />
     <None Include="Strings\es.json" />
     <None Include="Strings\en.json" />
