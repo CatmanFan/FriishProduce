@@ -212,6 +212,7 @@
     </Compile>
     <Compile Include="_classes\Archives\CCF.cs" />
     <Compile Include="_classes\BannerPreview.cs" />
+    <Compile Include="_classes\Program\Database.cs" />
     <Compile Include="_classes\Program\Language.cs" />
     <Compile Include="_classes\Modifiers\Flash.cs" />
     <Compile Include="_classes\Modifiers\Forwarder.cs" />
@@ -300,7 +301,6 @@
     </Compile>
     <Compile Include="_classes\Utilities.cs" />
     <Compile Include="_classes\Consoles.cs" />
-    <Compile Include="_classes\Database.cs" />
     <Compile Include="_classes\Modifiers\Creator.cs" />
     <Compile Include="_classes\Modifiers\WiiVC.cs" />
     <Compile Include="_classes\Modifiers\WiiVC\N64.cs" />
@@ -417,7 +417,6 @@
     <None Include="Resources\icons\consoles\nintendo nes.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Database.xml" />
     <Content Include="icon.ico" />
     <None Include="Resources\icons\folder-horizontal-open.png" />
     <None Include="Resources\apps\romc0.exe" />

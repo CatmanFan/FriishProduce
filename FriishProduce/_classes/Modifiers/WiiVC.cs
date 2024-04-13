@@ -133,6 +133,32 @@ namespace FriishProduce
             return ManualArc;
         }
 
+        protected CCF ReplaceManual(CCF target)
+        {
+            // Get and read emanual
+            // ****************
+            try
+            {
+                if (ManualPath != null)
+                {
+                    foreach (var item in target.Nodes)
+                        if (item.Name.ToLower().Contains("man.arc"))
+                        {
+                            OrigManual = item.Name;
+                            Manual = target.Data[target.GetNodeIndex(OrigManual)];
+
+                            target.ReplaceFile(target.GetNodeIndex(OrigManual), ReplaceManual().ToByteArray());
+                        }
+                }
+            }
+
+            catch
+            {
+            }
+
+            return target;
+        }
+
         protected void ReplaceManual(U8 target)
         {
             if (ManualPath == null)
@@ -144,29 +170,17 @@ namespace FriishProduce
             {
                 /* For reference: copied from "vcromclaim": https://github.com/JanErikGunnar/vcromclaim/blob/master/wiimetadata.py
 
-                if u8arc.findfile('emanual.arc'):
-                    man = U8Archive(u8arc.getfile(u8arc.findfile('emanual.arc')))
+                NOT COMPRESSED:
 
-                elif u8arc.findfile('html.arc'):
-                    man = U8Archive(u8arc.getfile(u8arc.findfile('html.arc')))
+                emanual.arc
+                html.arc
+                man.arc
+                data.ccf > man.arc
 
-                elif u8arc.findfile('man.arc'):
-                    man = U8Archive(u8arc.getfile(u8arc.findfile('man.arc')))
+                COMPRESSED:
 
-                elif u8arc.findfile('data.ccf'):
-                    ccf = CCFArchive(u8arc.getfile(u8arc.findfile('data.ccf')))
-                    man = U8Archive(ccf.getfile('man.arc'))
-
-                elif u8arc.findfile('htmlc.arc'):
-                    manc = u8arc.getfile(u8arc.findfile('htmlc.arc'))
-                    print('Decompressing manual: htmlc.arc')
-                    man = U8Archive(BytesIO(lz77.decompress_n64(manc)))
-
-                elif u8arc.findfilebyregex('.+_manual_.+\\.arc\\.lz77$'):
-                    # E.g. makaimura_manual_usa.arc.lz77 (Arcade Ghosts n Goblins)
-                    manc = u8arc.getfile(u8arc.findfilebyregex('.+_manual_.+\\.arc\\.lz77$'))
-                    man = U8Archive(BytesIO(lz77.decompress_nonN64(manc)))
-                    manc.close() */
+                htmlc.arc (N64 LZ77)
+                Regex('.+_manual_.+\\.arc\\.lz77$') e.g. makaimura_manual_usa.arc.lz77 (Arcade Ghosts n Goblins) */
 
                 // Get and read emanual
                 // ****************

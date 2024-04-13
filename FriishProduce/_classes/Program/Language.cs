@@ -97,7 +97,7 @@ namespace FriishProduce
 
                 catch (Exception ex)
                 {
-                    System.Windows.Forms.MessageBox.Show($"A fatal error occurred initializing the program, as the English string resource file was not found or is invalid.\n\nException: {ex.GetType().FullName}\nMessage: {ex.Message}\n\nThe application will now shut down.", "Halt", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Hand);
+                    System.Windows.Forms.MessageBox.Show($"A fatal error occurred initializing the program, as the English string resource file was not found or is invalid.\n\nException: {ex.GetType().FullName}\nMessage: {ex.Message}\n\nThe application will now shut down.", "Halt", MessageBoxButtons.OK, MessageBoxIcon.Hand);
                     Environment.FailFast("Language initialization failed.");
                 }
             }
@@ -129,7 +129,7 @@ namespace FriishProduce
             else _current = parseFile(GetSystemLanguage());
 
             if (string.IsNullOrEmpty(_current.language)) _current = _english;
-            else if (_current.language != code) code = _current.language;
+            else if (_current.language != code) _current.language = code;
 
             if (_current == null)
             {

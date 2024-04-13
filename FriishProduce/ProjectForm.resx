@@ -504,6 +504,63 @@
   <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="CustomManual.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="CustomManual.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="CustomManual.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="CustomManual.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 1</value>
+  </data>
+  <data name="CustomManual.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 17</value>
+  </data>
+  <data name="CustomManual.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="CustomManual.Text" xml:space="preserve">
+    <value>import_manual</value>
+  </data>
+  <data name="&gt;&gt;CustomManual.Name" xml:space="preserve">
+    <value>CustomManual</value>
+  </data>
+  <data name="&gt;&gt;CustomManual.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CustomManual.Parent" xml:space="preserve">
+    <value>COPanel_VC</value>
+  </data>
+  <data name="&gt;&gt;CustomManual.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="COPanel_VC.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 67</value>
+  </data>
+  <data name="COPanel_VC.Size" type="System.Drawing.Size, System.Drawing">
+    <value>376, 20</value>
+  </data>
+  <data name="COPanel_VC.TabIndex" type="System.Int32, mscorlib">
+    <value>42</value>
+  </data>
+  <data name="COPanel_VC.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;COPanel_VC.Name" xml:space="preserve">
+    <value>COPanel_VC</value>
+  </data>
+  <data name="&gt;&gt;COPanel_VC.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;COPanel_VC.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;COPanel_VC.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <data name="FStorage_SD.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -676,63 +733,6 @@
     <value>groupBox3</value>
   </data>
   <data name="&gt;&gt;COPanel_Forwarder.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="CustomManual.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="CustomManual.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="CustomManual.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="CustomManual.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 1</value>
-  </data>
-  <data name="CustomManual.Size" type="System.Drawing.Size, System.Drawing">
-    <value>94, 17</value>
-  </data>
-  <data name="CustomManual.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="CustomManual.Text" xml:space="preserve">
-    <value>import_manual</value>
-  </data>
-  <data name="&gt;&gt;CustomManual.Name" xml:space="preserve">
-    <value>CustomManual</value>
-  </data>
-  <data name="&gt;&gt;CustomManual.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;CustomManual.Parent" xml:space="preserve">
-    <value>COPanel_VC</value>
-  </data>
-  <data name="&gt;&gt;CustomManual.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="COPanel_VC.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 67</value>
-  </data>
-  <data name="COPanel_VC.Size" type="System.Drawing.Size, System.Drawing">
-    <value>376, 20</value>
-  </data>
-  <data name="COPanel_VC.TabIndex" type="System.Int32, mscorlib">
-    <value>42</value>
-  </data>
-  <data name="COPanel_VC.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;COPanel_VC.Name" xml:space="preserve">
-    <value>COPanel_VC</value>
-  </data>
-  <data name="&gt;&gt;COPanel_VC.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;COPanel_VC.Parent" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="&gt;&gt;COPanel_VC.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
   <data name="groupBox3.Enabled" type="System.Boolean, mscorlib">
@@ -772,7 +772,7 @@
     <value>NoControl</value>
   </data>
   <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
-    <value>26, 81</value>
+    <value>28, 80</value>
   </data>
   <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
     <value>31, 13</value>
@@ -1699,7 +1699,7 @@
     <value>NoControl</value>
   </data>
   <data name="pictureBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>978, 261</value>
+    <value>977, 261</value>
   </data>
   <data name="pictureBox2.Size" type="System.Drawing.Size, System.Drawing">
     <value>130, 96</value>

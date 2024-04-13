@@ -349,7 +349,7 @@ namespace FriishProduce
                 // Players
                 // ********
                 g.DrawString(
-                    string.Format(numPlayers, players),
+                    string.Format(numPlayers, $"{1}{(players <= 1 ? null : "-" + players)}").Replace("-", lang == 1 ? "～" : "-"),
                     new Font(Font(), (float)9.25),
                     new SolidBrush(leftTextColor),
                     10,

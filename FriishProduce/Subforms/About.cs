@@ -9,7 +9,7 @@ namespace FriishProduce
         public About()
         {
             InitializeComponent();
-            this.Text = string.Format(Program.Lang.String("about"), Program.Lang.ApplicationTitle);
+            this.Text = string.Format(Program.Lang.String("about_app"), Program.Lang.ApplicationTitle);
             this.labelProductName.Text = AssemblyProduct;
             this.labelVersion.Text = Updater.GetCurrentVersion();
             this.labelCopyright.Text = AssemblyCopyright;

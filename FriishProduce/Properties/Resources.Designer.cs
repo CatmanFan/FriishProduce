@@ -191,20 +191,12 @@ namespace FriishProduce.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;Databases&gt;
-        ///	&lt;!-- INFORMATION ON ADDING NEW DATABASE ENTRIES --&gt;
-        ///	
-        ///	&lt;!-- &lt;Name&gt; = WAD Name as found on MarioCube database (game title ONLY, do not include any parentheses!) --&gt;
-        ///	&lt;!-- &lt;DisplayName&gt; = Game&apos;s native title in English, Japanese or Korean --&gt;
-        ///	&lt;!-- &lt;Emulator&gt; = determines the emulator type, if it exists. This can either be one that uses a compressed ROM, or a different frontend. --&gt;
-        ///	&lt;!--		  Settings are explained in each console database --&gt;
-        ///
-        ///	&lt;Database Type=&quot;NES&quot;&gt;
-        ///		&lt;!-- [Emulator type [rest of string was truncated]&quot;;.
+        ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        public static string Database {
+        public static byte[] Database {
             get {
-                return ResourceManager.GetString("Database", resourceCulture);
+                object obj = ResourceManager.GetObject("Database", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         

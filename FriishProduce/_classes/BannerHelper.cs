@@ -309,51 +309,62 @@ namespace FriishProduce
             {
                 if (File.Exists(Paths.Banners + tID.ToUpper() + ".bnr")) return;
 
-                WAD w = DatabaseHelper.Get(tID).Load();
-                (U8, U8) Banner = Get(w);
-                Banner.Item2.Dispose();
-
-                // VCBrlyt and create temporary .brlyt file
-                // ****************
-                string BRLYTPath = Path.Combine(Paths.WorkingFolder, "banner.brlyt");
-                File.WriteAllBytes(BRLYTPath, Banner.Item1.Data[Banner.Item1.GetNodeIndex("banner.brlyt")]);
-
-                if (tID.ToUpper().EndsWith("Q") || tID.ToUpper().EndsWith("T"))
+                var d = new Database(c);
+                foreach (var entry in d.Entries)
                 {
-                    Utils.Run
-                    (
-                        "vcbrlyt\\vcbrlyt.exe",
-                        $"..\\..\\temp\\banner.brlyt -H_T_VCTitle_KOR \"VC................................................................................................................................\""
-                    );
+                    for (int i = 0; i < entry.Regions.Count; i++)
+                    {
+                        if (entry.GetUpperID(i).ToUpper() == tID.ToUpper())
+                        {
+                            using (WAD w = entry.GetWAD(i))
+                            {
+                                (U8, U8) Banner = Get(w);
+                                Banner.Item2.Dispose();
+
+                                // VCBrlyt and create temporary .brlyt file
+                                // ****************
+                                string BRLYTPath = Path.Combine(Paths.WorkingFolder, "banner.brlyt");
+                                File.WriteAllBytes(BRLYTPath, Banner.Item1.Data[Banner.Item1.GetNodeIndex("banner.brlyt")]);
+
+                                if (tID.ToUpper().EndsWith("Q") || tID.ToUpper().EndsWith("T"))
+                                {
+                                    Utils.Run
+                                    (
+                                        "vcbrlyt\\vcbrlyt.exe",
+                                        $"..\\..\\temp\\banner.brlyt -H_T_VCTitle_KOR \"VC................................................................................................................................\""
+                                    );
+                                }
+                                else
+                                {
+                                    Utils.Run
+                                    (
+                                        "vcbrlyt\\vcbrlyt.exe",
+                                        $"..\\..\\temp\\banner.brlyt -Title \"VC................................................................................................................................\" -YEAR VCVC -Play 4"
+                                    );
+                                }
+
+                                byte[] BRLYT = File.ReadAllBytes(BRLYTPath);
+                                File.Delete(BRLYTPath);
+
+                                // Check if modified
+                                // ****************
+                                if (BRLYT == Banner.Item1.Data[Banner.Item1.GetNodeIndex("banner.brlyt")])
+                                {
+                                    Banner.Item1.Dispose();
+                                    return;
+                                }
+
+                                // Replace
+                                // ****************
+                                Banner.Item1.ReplaceFile(Banner.Item1.GetNodeIndex("banner.brlyt"), BRLYT);
+
+                                if (!Directory.Exists(Paths.Banners)) Directory.CreateDirectory(Paths.Banners);
+                                File.WriteAllBytes(Paths.Banners + tID.ToUpper() + ".bnr", Banner.Item1.ToByteArray());
+                                Banner.Item1.Dispose();
+                            }
+                        }
+                    }
                 }
-                else
-                {
-                    Utils.Run
-                    (
-                        "vcbrlyt\\vcbrlyt.exe",
-                        $"..\\..\\temp\\banner.brlyt -Title \"VC................................................................................................................................\" -YEAR VCVC -Play 4"
-                    );
-                }
-
-                byte[] BRLYT = File.ReadAllBytes(BRLYTPath);
-                File.Delete(BRLYTPath);
-
-                // Check if modified
-                // ****************
-                if (BRLYT == Banner.Item1.Data[Banner.Item1.GetNodeIndex("banner.brlyt")])
-                {
-                    Banner.Item1.Dispose();
-                    return;
-                }
-
-                // Replace
-                // ****************
-                Banner.Item1.ReplaceFile(Banner.Item1.GetNodeIndex("banner.brlyt"), BRLYT);
-
-                if (!Directory.Exists(Paths.Banners)) Directory.CreateDirectory(Paths.Banners);
-                File.WriteAllBytes(Paths.Banners + tID.ToUpper() + ".bnr", Banner.Item1.ToByteArray());
-                Banner.Item1.Dispose();
-                w.Dispose();
             }
             catch (Exception ex)
             {

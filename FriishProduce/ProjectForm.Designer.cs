@@ -47,6 +47,8 @@ namespace FriishProduce
             this.label3 = new System.Windows.Forms.Label();
             this.InjectorsList = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.COPanel_VC = new System.Windows.Forms.Panel();
+            this.CustomManual = new System.Windows.Forms.CheckBox();
             this.COPanel_Forwarder = new System.Windows.Forms.Panel();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.FStorage_SD = new System.Windows.Forms.RadioButton();
@@ -54,8 +56,6 @@ namespace FriishProduce
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.toggleSwitchL1 = new System.Windows.Forms.Label();
             this.toggleSwitch1 = new JCS.ToggleSwitch();
-            this.COPanel_VC = new System.Windows.Forms.Panel();
-            this.CustomManual = new System.Windows.Forms.CheckBox();
             this.label11 = new System.Windows.Forms.Label();
             this.Patch = new System.Windows.Forms.CheckBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -94,10 +94,10 @@ namespace FriishProduce
             this.groupBox6.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.COPanel_VC.SuspendLayout();
             this.COPanel_Forwarder.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox9.SuspendLayout();
-            this.COPanel_VC.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Random)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -209,8 +209,8 @@ namespace FriishProduce
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.InjectorsList);
             this.groupBox3.Controls.Add(this.button1);
-            this.groupBox3.Controls.Add(this.COPanel_Forwarder);
             this.groupBox3.Controls.Add(this.COPanel_VC);
+            this.groupBox3.Controls.Add(this.COPanel_Forwarder);
             resources.ApplyResources(this.groupBox3, "groupBox3");
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.TabStop = false;
@@ -240,6 +240,20 @@ namespace FriishProduce
             this.button1.Tag = "";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.OpenInjectorOptions);
+            // 
+            // COPanel_VC
+            // 
+            this.COPanel_VC.Controls.Add(this.CustomManual);
+            resources.ApplyResources(this.COPanel_VC, "COPanel_VC");
+            this.COPanel_VC.Name = "COPanel_VC";
+            // 
+            // CustomManual
+            // 
+            resources.ApplyResources(this.CustomManual, "CustomManual");
+            this.CustomManual.Name = "CustomManual";
+            this.CustomManual.Tag = "import_manual";
+            this.CustomManual.UseVisualStyleBackColor = true;
+            this.CustomManual.CheckedChanged += new System.EventHandler(this.CustomManual_CheckedChanged);
             // 
             // COPanel_Forwarder
             // 
@@ -295,20 +309,6 @@ namespace FriishProduce
             this.toggleSwitch1.OnFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toggleSwitch1.Style = JCS.ToggleSwitch.ToggleSwitchStyle.IOS5;
             this.toggleSwitch1.CheckedChanged += new JCS.ToggleSwitch.CheckedChangedDelegate(this.ToggleSwitchChanged);
-            // 
-            // COPanel_VC
-            // 
-            this.COPanel_VC.Controls.Add(this.CustomManual);
-            resources.ApplyResources(this.COPanel_VC, "COPanel_VC");
-            this.COPanel_VC.Name = "COPanel_VC";
-            // 
-            // CustomManual
-            // 
-            resources.ApplyResources(this.CustomManual, "CustomManual");
-            this.CustomManual.Name = "CustomManual";
-            this.CustomManual.Tag = "import_manual";
-            this.CustomManual.UseVisualStyleBackColor = true;
-            this.CustomManual.CheckedChanged += new System.EventHandler(this.CustomManual_CheckedChanged);
             // 
             // label11
             // 
@@ -630,13 +630,13 @@ namespace FriishProduce
             this.groupBox7.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.COPanel_VC.ResumeLayout(false);
+            this.COPanel_VC.PerformLayout();
             this.COPanel_Forwarder.ResumeLayout(false);
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
-            this.COPanel_VC.ResumeLayout(false);
-            this.COPanel_VC.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Random)).EndInit();

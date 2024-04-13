@@ -42,8 +42,7 @@ namespace FriishProduce
         protected string PatchFile { get; set; }
         protected string Manual { get; set; }
         protected LibRetroDB LibRetro { get; set; }
-        protected DatabaseEntry[] Database { get; set; }
-        protected IDictionary<string, string> CurrentBase { get; set; }
+        protected Database Database { get; set; }
         protected ImageHelper Img { get; set; }
         protected Creator Creator { get; set; }
 
@@ -62,6 +61,7 @@ namespace FriishProduce
         private ProjectType ParentProject { get; set; }
         public bool ROMLoaded { get => ROM?.Path != null; }
         private bool FormEnabled { get => groupBox1.Enabled && groupBox2.Enabled; }
+        private bool isVCMode { get => InjectorsList.SelectedItem?.ToString().ToLower() == Program.Lang.String("vc").ToLower(); }
 
 
         // -----------------------------------
@@ -162,34 +162,43 @@ namespace FriishProduce
             }
             #endregion
 
-            if (CurrentBase != null)
-            {
-                for (int i = 0; i < CurrentBase.Count; i++)
+            if (Base.SelectedIndex >= 0)
+                for (int i = 0; i < Database.Entries[Base.SelectedIndex].Regions.Count; i++)
                 {
-                    switch (CurrentBase.ElementAt(i).Key.ToString().ToUpper()[3])
+                    switch (Database.Entries[Base.SelectedIndex].Regions[i])
                     {
                         default:
-                        case 'E':
-                        case 'N':
-                            BaseRegionList.Items[i].Text = Program.Lang.String("region_u");
-                            break;
-
-                        case 'P':
-                        case 'L':
-                        case 'M':
-                            BaseRegionList.Items[i].Text = Program.Lang.String("region_e");
-                            break;
-
-                        case 'J':
+                        case 0:
                             BaseRegionList.Items[i].Text = Program.Lang.String("region_j");
                             break;
 
-                        case 'Q':
-                        case 'T':
+                        case 1:
+                        case 2:
+                            BaseRegionList.Items[i].Text = Program.Lang.String("region_u");
+                            break;
+
+                        case 3:
+                        case 4:
+                        case 5:
+                            BaseRegionList.Items[i].Text = Program.Lang.String("region_e");
+                            break;
+
+                        case 6:
+                        case 7:
                             BaseRegionList.Items[i].Text = Program.Lang.String("region_k");
                             break;
                     }
                 }
+
+
+            for (int i = 0; i < Base.Items.Count; i++)
+            {
+                var title = Database.Entries[i].Regions.Contains(0) && Program.Lang.Current.StartsWith("ja") ? Database.Entries[i].Titles[0]
+                          : Database.Entries[i].Regions.Contains(0) && Program.Lang.Current.StartsWith("ko") ? Database.Entries[i].Titles[Database.Entries[i].Titles.Count - 1]
+                          : Database.Entries[i].Regions.Contains(0) && Database.Entries[i].Regions.Count > 1 ? Database.Entries[i].Titles[1]
+                          : Database.Entries[i].Titles[0];
+
+                Base.Items[i] = title;
             }
 
             // Injection methods list
@@ -257,6 +266,8 @@ namespace FriishProduce
         public ProjectForm(Console c, string ROMpath = null)
         {
             Console = c;
+            Database = new Database(Console);
+
             InitializeComponent();
 
             if (ROMpath != null)
@@ -269,7 +280,9 @@ namespace FriishProduce
         public ProjectForm(ProjectType p)
         {
             Console = p.Console;
+            Database = new Database(Console);
             ParentProject = p;
+
             InitializeComponent();
         }
 
@@ -396,6 +409,7 @@ namespace FriishProduce
             FStorage_USB.Checked = Options.FORWARDER.Default.root_storage_device.ToLower().Contains("usb");
             FStorage_SD.Checked = !FStorage_USB.Checked;
             toggleSwitch1.Checked = Options.FORWARDER.Default.nand_loader.ToLower().Contains("vwii");
+            CustomManual.Enabled = Console != Console.NEO && Console != Console.PCE;
 
             Tag = null;
             ExportCheck.Invoke(this, EventArgs.Empty);
@@ -427,7 +441,7 @@ namespace FriishProduce
         public bool[] CheckToolStripButtons() => new bool[]
             {
                 Console != Console.Flash && (ROM?.Bytes != null || !string.IsNullOrWhiteSpace(ROM?.Path)), // LibRetro
-                Console != Console.Flash, // Browse manual
+                Console != Console.Flash && isVCMode, // Browse manual
             };
 
         protected virtual void SetROMDataText()
@@ -656,19 +670,18 @@ namespace FriishProduce
                 return false;
             }
 
-            for (int x = 0; x < Database.Length; x++)
-                if (Database[x].TitleID.ToUpper() == Reader.UpperTitleID.ToUpper())
-                {
-                    WADPath = path;
+            foreach (var entry in Database.Entries)
+                for (int i = 0; i < entry.Regions.Count; i++)
+                    if (entry.GetUpperID(i) == Reader.UpperTitleID.ToUpper())
+                    {
+                        WADPath = path;
 
-                    CurrentBase.Clear();
-                    CurrentBase.Add(Database[x].TitleID, Database[x].DisplayName);
-                    baseName.Text = Database[x].DisplayName;
-                    baseID.Text = Database[x].TitleID;
-                    UpdateBaseGeneral(0);
-                    Reader.Dispose();
-                    return true;
-                }
+                        baseName.Text = entry.Titles[i];
+                        baseID.Text = entry.GetUpperID(i);
+                        UpdateBaseGeneral(0);
+                        Reader.Dispose();
+                        return true;
+                    }
 
             Reader.Dispose();
             System.Media.SystemSounds.Beep.Play();
@@ -891,8 +904,9 @@ namespace FriishProduce
                 // Get WAD data
                 // *******
                 if (WADPath != null) OutWAD = WAD.Load(WADPath);
-                else for (int x = 0; x < Database.Length; x++)
-                        if (Database[x].TitleID.ToUpper() == baseID.Text.ToUpper()) OutWAD = Database[x].Load();
+                else foreach (var entry in Database.Entries)
+                        for (int i = 0; i < entry.Regions.Count; i++)
+                            if (entry.GetUpperID(i) == baseID.Text.ToUpper()) OutWAD = entry.GetWAD(i);
 
                 switch (Console)
                 {
@@ -904,7 +918,7 @@ namespace FriishProduce
                     case Console.PCE:
                     case Console.NEO:
                     case Console.MSX:
-                        if (IsVCMode())
+                        if (isVCMode)
                             WiiVCInject();
                         else
                             ForwarderCreator();
@@ -1113,16 +1127,14 @@ namespace FriishProduce
         #region Base WAD Management/Visual
         private void AddBases()
         {
-            Database = DatabaseHelper.Get(Console) ?? DatabaseHelper.Get(Console.Flash);
-            string ID = null;
-
-            for (int x = 0; x < Database.Length; x++)
+            foreach (var entry in Database.Entries)
             {
-                if (Database[x].TitleID.Substring(0, 3) != ID)
-                {
-                    Base.Items.Add(Database[x].DisplayName);
-                    ID = Database[x].TitleID.Substring(0, 3);
-                }
+                var title = entry.Regions.Contains(0) && Program.Lang.Current.StartsWith("ja") ? entry.Titles[0]
+                          : entry.Regions.Contains(0) && Program.Lang.Current.StartsWith("ko") ? entry.Titles[entry.Titles.Count - 1]
+                          : entry.Regions.Contains(0) && entry.Regions.Count > 1 ? entry.Titles[1]
+                          : entry.Titles[0];
+
+                Base.Items.Add(title);
             }
 
             if (Base.Items.Count > 0) { Base.SelectedIndex = 0; }
@@ -1140,101 +1152,116 @@ namespace FriishProduce
             if (DesignMode) return;
             // ----------------------------
 
-            // Reset currently-selected base info
-            // ********
-            CurrentBase = new Dictionary<string, string>();
-            BaseRegionList.Items.Clear();
-
-            // Add base native names to temporary list
-            // ********
-            var tempList = new List<string>();
-            var tempIDs = new List<string>();
-            for (int x = 0; x < Database.Length; x++) tempList.Add(Database[x].DisplayName);
-            for (int x = 0; x < Database.Length; x++) tempIDs.Add(Database[x].TitleID.Substring(0, 3));
-
-            int start = tempList.IndexOf(Base.SelectedItem.ToString());
-            int end = start == Database.Length - 1 ? Database.Length : -1;
-
-            for (int x = start; x < Database.Length; x++)
+            var regions = new List<string>();
+            for (int i = 0; i < Database.Entries[Base.SelectedIndex].Regions.Count; i++)
             {
-                if (Database[x].TitleID.Substring(0, 3) != Database[start].TitleID.Substring(0, 3) && end == -1)
-                    end = x;
-            }
-
-            if (end == -1) end = Database.Length;
-
-            // Add regions to WAD region context list
-            // ********
-            for (int x = start; x < end; x++)
-            {
-                // Add region of entry to context list
-                // ********
-                switch (Database[x].Region())
+                switch (Database.Entries[Base.SelectedIndex].Regions[i])
                 {
                     case 0:
-                        BaseRegionList.Items.Add(Program.Lang.String("region_u"), null, WADRegionList_Click);
+                        regions.Add(Program.Lang.String("region_j"));
                         break;
 
                     case 1:
                     case 2:
-                        BaseRegionList.Items.Add(Program.Lang.String("region_e"), null, WADRegionList_Click);
+                        regions.Add(Program.Lang.String("region_u"));
                         break;
 
                     case 3:
+                    case 4:
+                    case 5:
+                        regions.Add(Program.Lang.String("region_e"));
+                        break;
+
+                    case 6:
+                    case 7:
+                        regions.Add(Program.Lang.String("region_k"));
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+
+            // Check if language is set to Japanese or Korean
+            // If so, make Japan/Korea region item the first in the WAD region context list
+            // ********
+            var selected = regions.IndexOf(Program.Lang.String("region_u"));
+
+            var altRegions = new Dictionary<string, int>()
+            {
+                { "ja", 0 },
+                { "ko", 1 },
+                { "fr", 2 },
+                { "de", 2 },
+                { "nl", 2 },
+                { "it", 2 },
+                { "pl", 2 },
+                { "ru", 2 },
+                { "uk", 2 },
+                { "tr", 2 },
+                { "hu", 2 },
+                { "ca", 2 },
+                { "eu", 2 },
+                { "gl", 2 },
+                { "ast", 2 },
+                { "no", 2 },
+                { "sv", 2 },
+                { "fi", 2 },
+                { "-GB", 2 },
+                { "-UK", 2 },
+                { "-ES", 2 },
+                { "-PT", 2 },
+                { "-RU", 2 },
+                { "-IN", 2 },
+                { "-ZA", 2 },
+                { "-CA", 3 },
+                { "-US", 3 },
+                { "-MX", 3 },
+                { "-BR", 3 },
+            };
+            foreach (var item in altRegions) if (Program.Lang.Current.ToLower().StartsWith(item.Key) || (item.Key.Contains("-") && Program.Lang.Current.ToLower().EndsWith(item.Key)))
+                    selected = regions.IndexOf(item.Value == 0 ? Program.Lang.String("region_j") : item.Value == 1 ? Program.Lang.String("region_k") : item.Value == 2 ? Program.Lang.String("region_e") : Program.Lang.String("region_u"));
+
+            if (selected == -1) selected = 0;
+
+            // Reset currently-selected base info
+            // ********
+            BaseRegionList.Items.Clear();
+
+            // Add regions to WAD region context list
+            // ********
+            for (int i = 0; i < Database.Entries[Base.SelectedIndex].Regions.Count; i++)
+            {
+                switch (Database.Entries[Base.SelectedIndex].Regions[i])
+                {
+                    case 0:
                         BaseRegionList.Items.Add(Program.Lang.String("region_j"), null, WADRegionList_Click);
                         break;
 
+                    case 1:
+                    case 2:
+                        BaseRegionList.Items.Add(Program.Lang.String("region_u"), null, WADRegionList_Click);
+                        break;
+
+                    case 3:
                     case 4:
                     case 5:
+                        BaseRegionList.Items.Add(Program.Lang.String("region_e"), null, WADRegionList_Click);
+                        break;
+
+                    case 6:
+                    case 7:
                         BaseRegionList.Items.Add(Program.Lang.String("region_k"), null, WADRegionList_Click);
                         break;
 
                     default:
                         break;
                 }
-
-                CurrentBase.Add(Database[x].TitleID, Database[x].DisplayName);
-            }
-
-            // Check if language is set to Japanese or Korean
-            // If so, make Japan/Korea region item the first in the WAD region context list
-            // ********
-            string langCode = Program.Lang.Current;
-            if (langCode == "ja" || langCode == "ko")
-            {
-                string target = langCode == "ja" ? Program.Lang.String("region_j") : Program.Lang.String("region_k");
-
-                for (int i = 0; i < BaseRegionList.Items.Count; i++)
-                    if ((BaseRegionList.Items[i] as ToolStripMenuItem).Text == target)
-                    {
-                        // Swap first element of context list with Japan/Korea
-                        // ********
-                        var tempDict = new Dictionary<string, string> { { BaseRegionList.Items[i].Text, null } };
-
-                        for (int j = 0; j < CurrentBase.Count; j++)
-                            try { tempDict.Add(BaseRegionList.Items[j].Text, null); } catch { }
-
-                        for (int x = 0; x < BaseRegionList.Items.Count; x++)
-                        {
-                            var item = BaseRegionList.Items[x] as ToolStripMenuItem;
-                            item.Text = tempDict.ElementAt(x).Key;
-                        }
-
-                        // Likewise do the same for the CurrentBase dictionary
-                        // ********
-                        tempDict = new Dictionary<string, string> { { CurrentBase.ElementAt(i).Key, CurrentBase.ElementAt(i).Value } };
-
-                        for (int j = 0; j < CurrentBase.Count; j++)
-                            if (CurrentBase.ElementAt(j).Key != tempDict.ElementAt(0).Key)
-                                tempDict.Add(CurrentBase.ElementAt(j).Key, CurrentBase.ElementAt(j).Value);
-                        CurrentBase = tempDict;
-                    }
             }
 
             // Final visual updates
             // ********
-            (BaseRegionList.Items[0] as ToolStripMenuItem).Checked = true;
-            UpdateBaseForm(0);
+            UpdateBaseForm(selected);
             BaseRegion.Cursor = BaseRegionList.Items.Count == 1 ? Cursors.Default : Cursors.Hand;
         }
 
@@ -1246,68 +1273,65 @@ namespace FriishProduce
 
         private void WADRegionList_Click(object sender, EventArgs e)
         {
-            foreach (ToolStripMenuItem item in BaseRegionList.Items.OfType<ToolStripMenuItem>())
-                item.Checked = false;
-
             string targetRegion = (sender as ToolStripMenuItem).Text;
 
             for (int i = 0; i < BaseRegionList.Items.Count; i++)
             {
-                var item = BaseRegionList.Items[i] as ToolStripMenuItem;
-                if (item.Text == targetRegion)
+                if ((BaseRegionList.Items[i] as ToolStripMenuItem).Text == targetRegion)
                 {
-                    baseID.Text = CurrentBase.ElementAt(i).Key;
-                    item.Checked = true;
-                    UpdateBaseForm();
+                    UpdateBaseForm(i);
                     CheckExport();
                     return;
                 }
             }
-
         }
 
         private void UpdateBaseForm(int index = -1)
         {
             if (index == -1)
             {
-                for (index = 0; index < CurrentBase.Count; index++)
-                    if (CurrentBase.ElementAt(index).Key[3] == baseID.Text[3])
+                for (index = 0; index < Database.Entries[Base.SelectedIndex].Regions.Count; index++)
+                    if (Database.Entries[Base.SelectedIndex].GetUpperID(index)[3] == baseID.Text[3])
                         goto Set;
 
                 return;
             }
 
-        Set:
+            Set:
             // Native name & Title ID
             // ********
-            baseName.Text = CurrentBase.ElementAt(index).Value;
-            baseID.Text = CurrentBase.ElementAt(index).Key;
+            baseName.Text = Database.Entries[Base.SelectedIndex].Titles[index];
+            baseID.Text = Database.Entries[Base.SelectedIndex].GetUpperID(index);
+
+            foreach (ToolStripMenuItem item in BaseRegionList.Items.OfType<ToolStripMenuItem>())
+                item.Checked = false;
+            (BaseRegionList.Items[index] as ToolStripMenuItem).Checked = true;
 
             // Flag
             // ********
-            switch (CurrentBase.ElementAt(index).Key[3])
+            switch (Database.Entries[Base.SelectedIndex].Regions[index])
                 {
                     default:
-                    case 'E':
-                    case 'N':
-                        BaseRegion.Image = Properties.Resources.flag_us;
-                        break;
-
-                    case 'P':
-                        BaseRegion.Image = (int)Console <= 2 ? Properties.Resources.flag_eu50 : Properties.Resources.flag_eu;
-                        break;
-
-                    case 'L':
-                    case 'M':
-                        BaseRegion.Image = (int)Console <= 2 ? Properties.Resources.flag_eu60 : Properties.Resources.flag_eu;
-                        break;
-
-                    case 'J':
+                    case 0:
                         BaseRegion.Image = Properties.Resources.flag_jp;
                         break;
 
-                    case 'Q':
-                    case 'T':
+                    case 1:
+                    case 2:
+                        BaseRegion.Image = Properties.Resources.flag_us;
+                        break;
+
+                    case 3:
+                        BaseRegion.Image = (int)Console <= 2 ? Properties.Resources.flag_eu50 : Properties.Resources.flag_eu;
+                        break;
+
+                    case 4:
+                    case 5:
+                        BaseRegion.Image = (int)Console <= 2 ? Properties.Resources.flag_eu60 : Properties.Resources.flag_eu;
+                        break;
+
+                    case 6:
+                    case 7:
                         BaseRegion.Image = Properties.Resources.flag_kr;
                         break;
                 }
@@ -1321,13 +1345,9 @@ namespace FriishProduce
 
             // Korean WADs use different encoding format & using two lines or going over max limit cause visual bugs
             // ********
-            Creator.OrigRegion = CurrentBase.ElementAt(index).Key[3] == 'Q'
-                     || CurrentBase.ElementAt(index).Key[3] == 'T'
-                     || CurrentBase.ElementAt(index).Key[3] == 'K' ? Creator.RegionType.Korea
-                     : CurrentBase.ElementAt(index).Key[3] == 'J' ? Creator.RegionType.Japan
-                     : CurrentBase.ElementAt(index).Key[3] == 'P'
-                     || CurrentBase.ElementAt(index).Key[3] == 'L'
-                     || CurrentBase.ElementAt(index).Key[3] == 'M' ? Creator.RegionType.Europe
+            Creator.OrigRegion = Database.Entries[Base.SelectedIndex].Regions[index] >= 6 ? Creator.RegionType.Korea
+                     : Database.Entries[Base.SelectedIndex].Regions[index] == 0 ? Creator.RegionType.Japan
+                     : Database.Entries[Base.SelectedIndex].Regions[index] >= 3 && Database.Entries[Base.SelectedIndex].Regions[index] <= 5 ? Creator.RegionType.Europe
                      : Creator.RegionType.Universal;
 
             // Changing SaveDataTitle max length & clearing text field when needed
@@ -1371,14 +1391,18 @@ namespace FriishProduce
             pictureBox1.Image = Preview.Banner(Console, BannerTitle.Text, (int)ReleaseYear.Value, (int)Players.Value, Img?.VCPic, (int)Creator.OrigRegion);
         }
 
-        private int EmuVer()
+        private int emuVer
         {
-            if (Database != null)
-                foreach (var Entry in Database)
-                    if (Entry.TitleID.ToUpper() == baseID.Text.ToUpper())
-                        return Entry.Emulator;
+            get
+            {
+                if (Database != null)
+                    foreach (var entry in Database.Entries)
+                        for (int i = 0; i < entry.Regions.Count; i++)
+                            if (entry.GetUpperID(i) == baseID.Text.ToUpper())
+                                return entry.EmuRevs[i];
 
-            return 0;
+                return 0;
+            }
         }
 
         private void ResetContentOptions()
@@ -1388,7 +1412,7 @@ namespace FriishProduce
             bool ShowSaveData = false;
 
             CO = null;
-            if (IsVCMode())
+            if (isVCMode)
             {
                 COPanel_VC.Show();
                 ShowSaveData = true;
@@ -1463,12 +1487,12 @@ namespace FriishProduce
                     break;
 
                 case Console.N64:
-                    if (IsVCMode()) CO.EmuType = Creator.OrigRegion == Creator.RegionType.Korea ? 3 : EmuVer();
+                    if (isVCMode) CO.EmuType = Creator.OrigRegion == Creator.RegionType.Korea ? 3 : emuVer;
                     break;
 
                 case Console.SMS:
                 case Console.SMD:
-                    CO.EmuType = EmuVer();
+                    CO.EmuType = emuVer;
                     break;
 
                 case Console.PCE:
@@ -1524,7 +1548,7 @@ namespace FriishProduce
 
         private void CustomManual_CheckedChanged(object sender, EventArgs e)
         {
-            if (CustomManual.Checked)
+            if (CustomManual.Checked && CustomManual.Enabled)
             {
                 if (!Properties.Settings.Default.DoNotShow_000) MessageBox.Show((sender as Control).Text, Program.Lang.Msg(6), 0);
 
@@ -1546,7 +1570,7 @@ namespace FriishProduce
                 }
             }
 
-            else if (!CustomManual.Checked && Manual != null)
+            else if (!CustomManual.Checked && Manual != null && CustomManual.Enabled)
             {
                 LoadManual(null);
                 CheckExport();
@@ -1581,8 +1605,6 @@ namespace FriishProduce
                 CheckExport();
             }
         }
-
-        private bool IsVCMode() => InjectorsList.SelectedItem.ToString().ToLower() == Program.Lang.String("vc").ToLower();
 
         private void InjectorsList_SelectedIndexChanged(object sender, EventArgs e)
         {
