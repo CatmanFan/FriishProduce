@@ -83,9 +83,10 @@
 			"e_003": "The ROM provided is too large (size limit: {0} {1}).",
 			"e_004": "Failed to modify the following content options:\n{0}\nInjection will continue as intended.",
 			"e_005": "The application needed ({0}) was not found in the resources\\tools subdirectory.",
-			"e_006": "Failed to export to WAD",
+			"e_006": "Failed to export to WAD.",
 			"e_007": "Unable to apply patch file. Either the patch and target ROM do not match, or the ROM's checksum is invalid.",
-			"e_008": "The required emulator ({0}) was not found at the path 'resources\\forwarders\\emulators\\{1}.dol'.\nPlease obtain this emulator file and place it in the correct path, then try again."
+			"e_008": "The required emulator ({0}) was not found at the path 'resources\\forwarders\\emulators\\{1}.dol'.\nPlease obtain this emulator file and place it in the correct path, then try again.",
+			"e_009": "Failed to download WAD."
 		}
 	},
 

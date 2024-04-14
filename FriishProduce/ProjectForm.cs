@@ -895,18 +895,18 @@ namespace FriishProduce
             try
             {
                 Parent.CleanTemp();
-                Creator.Out = Parent.SaveWAD.FileName;
-
-                if (Patch.Checked) ROM.Patch(PatchFile);
-
-                OutWAD = new WAD();
 
                 // Get WAD data
                 // *******
+                OutWAD = new WAD();
                 if (WADPath != null) OutWAD = WAD.Load(WADPath);
                 else foreach (var entry in Database.Entries)
                         for (int i = 0; i < entry.Regions.Count; i++)
                             if (entry.GetUpperID(i) == baseID.Text.ToUpper()) OutWAD = entry.GetWAD(i);
+                if (OutWAD == null || OutWAD?.NumOfContents <= 1) throw new Exception(Program.Lang.Msg(9, true));
+
+                Creator.Out = Parent.SaveWAD.FileName;
+                if (Patch.Checked) ROM.Patch(PatchFile);
 
                 switch (Console)
                 {
