@@ -383,8 +383,8 @@ namespace FriishProduce
                 Base.SelectedIndex = ParentProject.Base.Item1;
                 for (int i = 0; i < BaseRegionList.Items.Count; i++)
                     if (BaseRegionList.Items[i].GetType() == typeof(ToolStripMenuItem)) (BaseRegionList.Items[i] as ToolStripMenuItem).Checked = false;
-                (BaseRegionList.Items[ParentProject.Base.Item2] as ToolStripMenuItem).Checked = true;
                 UpdateBaseForm(ParentProject.Base.Item2);
+                (BaseRegionList.Items[ParentProject.Base.Item2] as ToolStripMenuItem).Checked = true;
 
                 SetROMDataText();
 
@@ -591,7 +591,7 @@ namespace FriishProduce
             }
             else
             {
-                Base.Items.Clear();
+                Base.SelectedIndex = -1;
                 BaseRegion.Image = null;
             }
 
@@ -662,7 +662,11 @@ namespace FriishProduce
 
             try
             {
+                if (Directory.Exists(Paths.WAD)) Directory.Delete(Paths.WAD, true);
                 Reader = WAD.Load(path);
+                Reader.Unpack(Paths.WAD, true);
+                Ticket tik = Ticket.Load(Directory.EnumerateFiles(Paths.WAD, "*.tik").First());
+                TMD tmd = TMD.Load(Directory.EnumerateFiles(Paths.WAD, "*.tmd").First());
             }
             catch
             {
@@ -670,15 +674,14 @@ namespace FriishProduce
                 return false;
             }
 
-            foreach (var entry in Database.Entries)
-                for (int i = 0; i < entry.Regions.Count; i++)
-                    if (entry.GetUpperID(i) == Reader.UpperTitleID.ToUpper())
+            for (int h = 0; h < Database.Entries.Count; h++)
+                for (int i = 0; i < Database.Entries[h].Regions.Count; i++)
+                    if (Database.Entries[h].GetUpperID(i) == Reader.UpperTitleID.ToUpper())
                     {
                         WADPath = path;
 
-                        baseName.Text = entry.Titles[i];
-                        baseID.Text = entry.GetUpperID(i);
-                        UpdateBaseGeneral(0);
+                        Base.SelectedIndex = h;
+                        UpdateBaseForm(i);
                         Reader.Dispose();
                         return true;
                     }
@@ -1127,6 +1130,8 @@ namespace FriishProduce
         #region Base WAD Management/Visual
         private void AddBases()
         {
+            Base.Items.Clear();
+
             foreach (var entry in Database.Entries)
             {
                 var title = entry.Regions.Contains(0) && Program.Lang.Current.StartsWith("ja") ? entry.Titles[0]
@@ -1149,7 +1154,7 @@ namespace FriishProduce
         private void Base_SelectedIndexChanged(object sender, EventArgs e)
         {
             // ----------------------------
-            if (DesignMode) return;
+            if (DesignMode || Base.SelectedIndex < 0) return;
             // ----------------------------
 
             var regions = new List<string>();
