@@ -664,9 +664,6 @@ namespace FriishProduce
             {
                 if (Directory.Exists(Paths.WAD)) Directory.Delete(Paths.WAD, true);
                 Reader = WAD.Load(path);
-                Reader.Unpack(Paths.WAD, true);
-                Ticket tik = Ticket.Load(Directory.EnumerateFiles(Paths.WAD, "*.tik").First());
-                TMD tmd = TMD.Load(Directory.EnumerateFiles(Paths.WAD, "*.tmd").First());
             }
             catch
             {

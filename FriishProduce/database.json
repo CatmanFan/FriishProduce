@@ -47,8 +47,19 @@
 
         // Examples:
             // ["ゼルダの伝説", "The Legend of Zelda"]                                                            (universal English title)
-            // ["スターフォックス６４", "Star Fox 64", "Lylat Wars"]                                                (additional European title)
+            // ["スターフォックス６４", "Star Fox 64", "Lylat Wars"]                                               (additional European title)
             // ["スーパードンキーコング２", "Donkey Kong Country 2", "Donkey Kong Country 2", "동키콩 컨트리 2"]    (has Korean)
+        // _____________________________________________
+
+        // "wad_titles"
+            // The name of the game in the MarioCube database.
+            // If all available region names match one of the "titles" parameters, as shown below in the examples, do not add this on your own. The software will automatically do it itself.
+            // This is only meant as an interim solution until an equivalent to WiiUDownloader (w/ built-in decryptor) can be released for (v)Wii!
+
+        // Examples:
+            // ["Super Mario Bros. 3"]                                                                           (only one MarioCube name, this can be left out since there is also a "titles" using the same text)
+            // ["Hoshi no Kirby - Yume no Izumi no Monogatari", "Kirby's Adventure"]                             (only the Japanese WAD version will use the first entry, the rest will do the second one)
+            // ["Star Fox 64", "Star Fox 64", "Lylat Wars", "Star Fox 64"]                                       (absolutely required to input J/U/E/K name entries in order, because the app will not be able to differentiate otherwise)
         // _____________________________________________
 
     "nes": [
@@ -62,7 +73,8 @@
             "id": "00010001-464138__",
             "region": [0, 1, 3, 7],
             "emu_ver": [0, 0, 0, 0],
-            "titles": ["星のカービィ 夢の泉の物語", "Kirby's Adventure", "Kirby's Adventure", "별의 커비 꿈의 샘 이야기"]
+            "titles": ["星のカービィ 夢の泉の物語", "Kirby's Adventure", "Kirby's Adventure", "별의 커비 꿈의 샘 이야기"],
+            "wad_titles": ["Hoshi no Kirby - Yume no Izumi no Monogatari", "Kirby's Adventure"]
         },
         {
             "id": "00010001-46424e__",
@@ -77,7 +89,8 @@
             "id": "00010001-4a4244__",
             "region": [0, 1, 3, 7],
             "emu_ver": [0, 0, 0, 0],
-            "titles": ["スーパードンキーコング２", "Donkey Kong Country 2", "Donkey Kong Country 2", "동키콩 컨트리 2"]
+            "titles": ["スーパードンキーコング２", "Donkey Kong Country 2", "Donkey Kong Country 2", "동키콩 컨트리 2"],
+            "wad_titles": ["Super Donkey Kong 2 - Dixie & Diddy", "Donkey Kong Country 2 - Diddy's Kong Quest"]
         },
         {
             "id": "00010001-4a4142__",
@@ -106,7 +119,8 @@
             "id": "00010001-4e4144__",
             "region": [0, 1, 3, 7],
             "emu_ver": [1, 1, 1, 3],
-            "titles": ["スターフォックス６４", "Star Fox 64", "Lylat Wars", "스타폭스 64"]
+            "titles": ["スターフォックス６４", "Star Fox 64", "Lylat Wars", "스타폭스 64"],
+            "wad_titles": ["Star Fox 64", "Star Fox 64", "Lylat Wars", "Star Fox 64"]
         },
 
         {
@@ -120,42 +134,48 @@
             "id": "00010001-4e4143__",
             "region": [0, 1, 3],
             "emu_ver": [1, 1, 1],
-            "titles": ["ゼルダの伝説 時のオカリナ", "The Legend of Zelda: Ocarina of Time"]
+            "titles": ["ゼルダの伝説 時のオカリナ", "The Legend of Zelda: Ocarina of Time"],
+            "wad_titles": ["Legend of Zelda, The - Ocarina of Time"]
         },
 
         {
             "id": "00010001-4e414a__",
             "region": [0, 2, 4],
             "emu_ver": [2, 2, 2],
-            "titles": ["罪と罰 〜地球の継承者〜", "Sin and Punishment"]
+            "titles": ["罪と罰 〜地球の継承者〜", "Sin and Punishment"],
+            "wad_titles": ["Tsumi to Batsu - Hoshi no Keishousha", "Sin and Punishment"]
         },
 
         {
             "id": "00010001-4e414b__",
             "region": [0, 2, 4],
             "emu_ver": [2, 2, 2],
-            "titles": ["ポケモンスナップ", "Pokémon Snap"]
+            "titles": ["ポケモンスナップ", "Pokémon Snap"],
+            "wad_titles": ["Pokemon Snap"]
         },
         
         {
             "id": "00010001-4e4150__",
             "region": [0],
             "emu_ver": [3],
-            "titles": ["カスタムロボV２（Custom Robo V2）"]
+            "titles": ["カスタムロボV２（Custom Robo V2）"],
+            "wad_titles": ["Custom Robo V2"]
         },
         
         {
             "id": "00010001-4e4133__",
             "region": [0, 1, 3],
             "emu_ver": [3, 3, 3],
-            "titles": ["ボンバーマンヒーロー ミリアン王女を救え!", "Bomberman Hero"]
+            "titles": ["ボンバーマンヒーロー ミリアン王女を救え!", "Bomberman Hero"],
+            "wad_titles": ["Bomberman Hero - Millian-Oujo wo Sukue!", "Bomberman Hero"]
         },
         
         {
             "id": "00010001-4e4155__",
             "region": [0, 1, 3],
             "emu_ver": [3, 3, 3],
-            "titles": ["マリオゴルフ６４", "Mario Golf"]
+            "titles": ["マリオゴルフ６４", "Mario Golf"],
+            "wad_titles": ["Mario Golf 64", "Mario Golf"],
         },
         
         {
@@ -171,7 +191,8 @@
             "id": "00010001-4c4147__",
             "region": [0, 1, 3],
             "emu_ver": [2, 2, 2],
-            "titles": ["ソニック・ザ・ヘッジホッグ", "Sonic the Hedgehog"]
+            "titles": ["ソニック・ザ・ヘッジホッグ", "Sonic the Hedgehog"],
+            "wad_titles": ["Sonic The Hedgehog"],
         },
         
         {
@@ -187,7 +208,8 @@
             "id": "00010001-4d4136__",
             "region": [0, 1, 3],
             "emu_ver": [2, 2, 2],
-            "titles": ["ベア・ナックルII 死闘への鎮魂歌", "Streets of Rage 2"]
+            "titles": ["ベア・ナックルII 死闘への鎮魂歌", "Streets of Rage 2"],
+            "wad_titles": ["Bare Knuckle II - Shitou he no Requiem", "Streets of Rage 2"]
         },
         
         {
@@ -265,14 +287,16 @@
             "id": "00010001-584147__",
             "region": [0],
             "emu_ver": [0],
-            "titles": ["ロードファイター  Ｒｏａｄ　Ｆｉｇｈｔｅｒ"]
+            "titles": ["ロードファイター  Ｒｏａｄ　Ｆｉｇｈｔｅｒ"],
+            "wad_titles": ["Road Fighter"]
         },
 
         {
             "id": "00010001-584150__",
             "region": [0],
             "emu_ver": [0],
-            "titles": ["メタルギア２ ソリッドスネーク"]
+            "titles": ["メタルギア２ ソリッドスネーク"],
+            "wad_titles": ["Metal Gear 2 - Solid Snake"]
         },
     ],
 
