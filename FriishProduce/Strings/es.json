@@ -105,6 +105,8 @@
 			"reset_all_dialogs": "Restablecer la opción \"No volver a mostrar este mensaje\""
 		},
 		"projectform": {
+			"tab_main_details": "Detalles claves",
+			"tab_customization": "Personalización del canal",
 			"rom_info": "Información de ROM",
 			"base": "Canal de origen",
 			"content_options": "Opciones de contenido",

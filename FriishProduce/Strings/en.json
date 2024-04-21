@@ -121,6 +121,8 @@
 			"reset_all_dialogs": "Reset all dialogs",
 		},
 		"projectform": {
+			"tab_main_details": "Main details",
+			"tab_customization": "Customization",
 			"rom_info": "ROM information",
 			"base": "Base",
 			"content_options": "Content options",

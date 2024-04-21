@@ -63,6 +63,7 @@ namespace FriishProduce
             this.welcome = new System.Windows.Forms.Label();
             this.ToolStrip = new System.Windows.Forms.ToolStrip();
             this.ToolStrip_NewProject = new System.Windows.Forms.ToolStripDropDownButton();
+            this.ToolStrip_OpenProject = new System.Windows.Forms.ToolStripButton();
             this.ToolStrip_SaveAs = new System.Windows.Forms.ToolStripButton();
             this.ToolStrip_ExportWAD = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
@@ -76,7 +77,6 @@ namespace FriishProduce
             this.ToolStrip_Tutorial = new System.Windows.Forms.ToolStripButton();
             this.SaveProject = new System.Windows.Forms.SaveFileDialog();
             this.BrowseProject = new System.Windows.Forms.OpenFileDialog();
-            this.ToolStrip_OpenProject = new System.Windows.Forms.ToolStripButton();
             this.MenuStrip.SuspendLayout();
             this.MainPanel.SuspendLayout();
             this.ToolStrip.SuspendLayout();
@@ -358,10 +358,19 @@ namespace FriishProduce
             // ToolStrip_NewProject
             // 
             this.ToolStrip_NewProject.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            resources.ApplyResources(this.ToolStrip_NewProject, "ToolStrip_NewProject");
             this.ToolStrip_NewProject.Image = global::FriishProduce.Properties.Resources.document;
+            resources.ApplyResources(this.ToolStrip_NewProject, "ToolStrip_NewProject");
             this.ToolStrip_NewProject.Name = "ToolStrip_NewProject";
             this.ToolStrip_NewProject.Tag = "new_project";
+            // 
+            // ToolStrip_OpenProject
+            // 
+            this.ToolStrip_OpenProject.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ToolStrip_OpenProject.Image = global::FriishProduce.Properties.Resources.folder_horizontal_open;
+            resources.ApplyResources(this.ToolStrip_OpenProject, "ToolStrip_OpenProject");
+            this.ToolStrip_OpenProject.Name = "ToolStrip_OpenProject";
+            this.ToolStrip_OpenProject.Tag = "open_project";
+            this.ToolStrip_OpenProject.Click += new System.EventHandler(this.OpenProject_Click);
             // 
             // ToolStrip_SaveAs
             // 
@@ -456,15 +465,6 @@ namespace FriishProduce
             // BrowseProject
             // 
             this.BrowseProject.DefaultExt = "fppj";
-            // 
-            // ToolStrip_OpenProject
-            // 
-            this.ToolStrip_OpenProject.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.ToolStrip_OpenProject.Image = global::FriishProduce.Properties.Resources.folder_horizontal_open;
-            resources.ApplyResources(this.ToolStrip_OpenProject, "ToolStrip_OpenProject");
-            this.ToolStrip_OpenProject.Name = "ToolStrip_OpenProject";
-            this.ToolStrip_OpenProject.Tag = "open_project";
-            this.ToolStrip_OpenProject.Click += new System.EventHandler(this.OpenProject_Click);
             // 
             // MainForm
             // 

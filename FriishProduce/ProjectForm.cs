@@ -452,6 +452,7 @@ namespace FriishProduce
                 software_name.Text = string.Format(Program.Lang.String("software_name", Name), Program.Lang.String("unknown"));
             else
                 software_name.Text = string.Format(Program.Lang.String("software_name", Name), LibRetro.GetCleanTitle()?.Replace(Environment.NewLine, " - ") ?? Program.Lang.String("unknown"));
+            software_name.Visible = LibRetro != null;
 
             label11.Text = !string.IsNullOrWhiteSpace(PatchFile) ? Path.GetFileName(PatchFile) : Program.Lang.String("none");
             label11.Enabled = !string.IsNullOrWhiteSpace(PatchFile);
@@ -1374,7 +1375,7 @@ namespace FriishProduce
             if (SaveDataTitle.Multiline == isSingleLine)
             {
                 SaveDataTitle.Multiline = !isSingleLine;
-                SaveDataTitle.Location = SaveDataTitle.Multiline ? new Point(SaveDataTitle.Location.X, 28) : new Point(SaveDataTitle.Location.X, 35);
+                SaveDataTitle.Location = isSingleLine ? new Point(SaveDataTitle.Location.X, int.Parse(SaveDataTitle.Tag.ToString()) + 6) : new Point(SaveDataTitle.Location.X, int.Parse(SaveDataTitle.Tag.ToString()));
                 SaveDataTitle.Clear();
                 goto End;
             }
@@ -1462,13 +1463,13 @@ namespace FriishProduce
             else
                 COPanel_Forwarder.Show();
 
-            if (CO != null) CO.Text = Program.Lang.String("injection_method_options", "projectform");
+            if (CO != null) { CO.Text = Program.Lang.String("injection_method_options", "projectform"); CO.Icon = Icon.FromHandle(Properties.Resources.wrench.GetHicon()); }
 
             LinkSaveData.Visible = SaveIcon_Panel.Visible = SaveDataTitle.Visible = ShowSaveData;
-            label16.Visible = !SaveDataTitle.Visible;
+            label16.Visible = !ShowSaveData;
 
-            var selected = COPanel_Forwarder.Visible ? COPanel_Forwarder : COPanel_VC.Visible ? COPanel_VC : null;
-            int height = selected == null ? button1.Location.Y + button1.Height + 10 : selected.Location.Y + selected.Height + 10;
+            var selected = isVCMode ? COPanel_VC : Console != Console.Flash ? COPanel_Forwarder : null;
+            int height = selected == null ? MethodOptions.Location.Y + MethodOptions.Height + 11 : selected.Location.Y + selected.Height + 11;
             groupBox3.Size = new Size(groupBox3.Width, height);
 
             UpdateBaseConsole();
@@ -1510,7 +1511,7 @@ namespace FriishProduce
                     break;
             }
 
-            button1.Enabled = CO != null;
+            MethodOptions.Enabled = CO != null;
         }
         #endregion
 

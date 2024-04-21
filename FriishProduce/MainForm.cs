@@ -133,12 +133,17 @@ namespace FriishProduce
             welcome_do_not_show.Text = Program.Lang.String("do_not_show");
             #endregion
 
-
             foreach (MdiTabControl.TabPage tabPage in tabControl.TabPages)
             {
                 if (tabPage.Form.GetType() == typeof(ProjectForm))
                     (tabPage.Form as ProjectForm).RefreshForm();
             }
+
+            MenuStrip.Font = ToolStrip.Font = Font;
+            using (var pj = new ProjectForm(0))
+                Size = new Size(pj.Width + 16, pj.Height + MenuStrip.Height + ToolStrip.Height + tabControl.TabHeight + 40);
+            welcome.Location = new Point((MainPanel.Width / 2) - (welcome.Width / 2), (MainPanel.Height / 2) - (welcome.Height / 2) - 15);
+            welcome_do_not_show.Location = new Point(welcome.Location.X + 104, welcome.Location.Y + 96);
         }
 
         public MainForm()

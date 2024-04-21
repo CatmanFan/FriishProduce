@@ -46,7 +46,7 @@ namespace FriishProduce
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.InjectorsList = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.MethodOptions = new System.Windows.Forms.Button();
             this.COPanel_VC = new System.Windows.Forms.Panel();
             this.CustomManual = new System.Windows.Forms.CheckBox();
             this.COPanel_Forwarder = new System.Windows.Forms.Panel();
@@ -59,13 +59,13 @@ namespace FriishProduce
             this.label11 = new System.Windows.Forms.Label();
             this.Patch = new System.Windows.Forms.CheckBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.title_id_2 = new System.Windows.Forms.Label();
             this.ChannelTitle_Locale = new System.Windows.Forms.CheckBox();
             this.TargetRegion = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.TitleID = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.Random = new System.Windows.Forms.PictureBox();
-            this.title_id_2 = new System.Windows.Forms.Label();
             this.ChannelTitle = new System.Windows.Forms.TextBox();
             this.short_channel_name = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -195,6 +195,7 @@ namespace FriishProduce
             // 
             resources.ApplyResources(this.SaveDataTitle, "SaveDataTitle");
             this.SaveDataTitle.Name = "SaveDataTitle";
+            this.SaveDataTitle.Tag = "33";
             this.SaveDataTitle.TextChanged += new System.EventHandler(this.TextBox_Changed);
             this.SaveDataTitle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_Handle);
             // 
@@ -208,7 +209,7 @@ namespace FriishProduce
             // 
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.InjectorsList);
-            this.groupBox3.Controls.Add(this.button1);
+            this.groupBox3.Controls.Add(this.MethodOptions);
             this.groupBox3.Controls.Add(this.COPanel_VC);
             this.groupBox3.Controls.Add(this.COPanel_Forwarder);
             resources.ApplyResources(this.groupBox3, "groupBox3");
@@ -232,14 +233,14 @@ namespace FriishProduce
             this.InjectorsList.Name = "InjectorsList";
             this.InjectorsList.SelectedIndexChanged += new System.EventHandler(this.InjectorsList_SelectedIndexChanged);
             // 
-            // button1
+            // MethodOptions
             // 
-            resources.ApplyResources(this.button1, "button1");
-            this.button1.Image = global::FriishProduce.Properties.Resources.wrench;
-            this.button1.Name = "button1";
-            this.button1.Tag = "";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.OpenInjectorOptions);
+            resources.ApplyResources(this.MethodOptions, "MethodOptions");
+            this.MethodOptions.Image = global::FriishProduce.Properties.Resources.wrench;
+            this.MethodOptions.Name = "MethodOptions";
+            this.MethodOptions.Tag = "";
+            this.MethodOptions.UseVisualStyleBackColor = true;
+            this.MethodOptions.Click += new System.EventHandler(this.OpenInjectorOptions);
             // 
             // COPanel_VC
             // 
@@ -325,19 +326,25 @@ namespace FriishProduce
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.title_id_2);
             this.groupBox4.Controls.Add(this.ChannelTitle_Locale);
             this.groupBox4.Controls.Add(this.TargetRegion);
             this.groupBox4.Controls.Add(this.label13);
             this.groupBox4.Controls.Add(this.TitleID);
             this.groupBox4.Controls.Add(this.label15);
             this.groupBox4.Controls.Add(this.Random);
-            this.groupBox4.Controls.Add(this.title_id_2);
             this.groupBox4.Controls.Add(this.ChannelTitle);
             this.groupBox4.Controls.Add(this.short_channel_name);
             resources.ApplyResources(this.groupBox4, "groupBox4");
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.TabStop = false;
             this.groupBox4.Tag = "channel";
+            // 
+            // title_id_2
+            // 
+            resources.ApplyResources(this.title_id_2, "title_id_2");
+            this.title_id_2.Name = "title_id_2";
+            this.title_id_2.Tag = "title_id";
             // 
             // ChannelTitle_Locale
             // 
@@ -381,12 +388,6 @@ namespace FriishProduce
             this.Random.Name = "Random";
             this.Random.TabStop = false;
             this.Random.Click += new System.EventHandler(this.Random_Click);
-            // 
-            // title_id_2
-            // 
-            resources.ApplyResources(this.title_id_2, "title_id_2");
-            this.title_id_2.Name = "title_id_2";
-            this.title_id_2.Tag = "title_id";
             // 
             // ChannelTitle
             // 
@@ -592,7 +593,6 @@ namespace FriishProduce
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             resources.ApplyResources(this.pictureBox1, "pictureBox1");
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.TabStop = false;
@@ -608,17 +608,18 @@ namespace FriishProduce
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             resources.ApplyResources(this, "$this");
-            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.groupBox6);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox7);
-            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox5);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.groupBox7);
+            this.Controls.Add(this.groupBox6);
+            this.Controls.Add(this.groupBox4);
+            this.Controls.Add(this.groupBox2);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.KeyPreview = true;
             this.Name = "ProjectForm";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
@@ -675,7 +676,7 @@ namespace FriishProduce
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.PictureBox Random;
         private System.Windows.Forms.ComboBox Base;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button MethodOptions;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.PictureBox BaseRegion;
         private System.Windows.Forms.ContextMenuStrip BaseRegionList;

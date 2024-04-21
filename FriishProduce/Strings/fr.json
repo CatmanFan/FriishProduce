@@ -113,6 +113,8 @@
 			"reset_all_dialogs": "Réinitialiser le paramètre « Ne plus afficher ce message »"
 		},
 		"projectform": {
+			"tab_main_details": "Détails clés",
+			"tab_customization": "Personnalisation de la chaîne",
 			"rom_info": "Information de la ROM",
 			"base": "Chaîne d'origine",
 			"content_options": "Options de contenu",

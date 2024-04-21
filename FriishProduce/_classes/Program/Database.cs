@@ -225,7 +225,7 @@ namespace FriishProduce
                                         if (title.Contains(": ")) title = title.Replace(": ", ", The: ");
                                         else title += ", The";
                                     }
-                                    y.MarioCube.Add(title.Replace(": ", " - "));
+                                    y.MarioCube.Add(title.Replace(": ", " - ").Replace('é', 'e'));
                                 }
                             }
                         }
