@@ -47,31 +47,23 @@ namespace FriishProduce.Injectors
             MiscCCF = CCF.Load(MainCCF.Data[MainCCF.GetNodeIndex("misc.ccf")]);
 
             #region ReplaceManual
-            if (ManualPath == null) ReplaceManual(MainContent);
-
-            else
+            try
             {
-                try
-                {
-                    // Get and read emanual
-                    // ****************
-                    foreach (var item in MainCCF.Nodes)
-                        if (item.Name.ToLower().Contains("man.arc"))
-                        {
-                            OrigManual = item.Name;
-                            Manual = MainCCF.Data[MainCCF.GetNodeIndex(OrigManual)];
-                        }
+                // Get and read emanual
+                // ****************
+                OrigManual = MainCCF.Nodes.Where(y => y.Name.ToLower().Contains("man.arc")).First().Name;
+                if (string.IsNullOrEmpty(OrigManual) || ManualPath == null) throw new FileNotFoundException();
 
-                    MainCCF.ReplaceFile(MainCCF.GetNodeIndex(OrigManual), ReplaceManual().ToByteArray());
-                }
+                Manual = MainCCF.Data[MainCCF.GetNodeIndex(OrigManual)];
+                MainCCF.ReplaceFile(MainCCF.GetNodeIndex(OrigManual), ReplaceManual().ToByteArray());
+            }
 
-                catch
-                {
-                    OrigManual = null;
-                    Manual = null;
-                    ManualPath = null;
-                    ReplaceManual(MainContent);
-                }
+            catch
+            {
+                OrigManual = null;
+                Manual = null;
+                ManualPath = null;
+                ReplaceManual(MainContent);
             }
             #endregion
 

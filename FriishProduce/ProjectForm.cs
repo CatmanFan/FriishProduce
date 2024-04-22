@@ -1,4 +1,5 @@
-﻿using libWiiSharp;
+﻿using Ionic.Zip;
+using libWiiSharp;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -58,7 +59,7 @@ namespace FriishProduce
         // -----------------------------------
         public new MainForm Parent { get; set; }
         public event EventHandler ExportCheck;
-        private ProjectType ParentProject { get; set; }
+        private Project ParentProject { get; set; }
         public bool ROMLoaded { get => ROM?.Path != null; }
         private bool FormEnabled { get => groupBox1.Enabled && groupBox2.Enabled; }
         private bool isVCMode { get => InjectorsList.SelectedItem?.ToString().ToLower() == Program.Lang.String("vc").ToLower(); }
@@ -68,16 +69,18 @@ namespace FriishProduce
 
         public void Save()
         {
-            var p = new ProjectType();
+            var p = new Project();
             p.Console = Console;
             p.Creator = Creator;
             p.ROM = ROM?.Path;
             p.PatchFile = PatchFile;
+            p.Manual = Manual;
             p.Img = Img?.Source ?? null;
             p.Options = CO?.Options ?? null;
             p.LibRetro = LibRetro;
             p.WADRegion = TargetRegion.SelectedIndex;
-            p.Base = (Base.SelectedIndex, 0);
+            if (!string.IsNullOrWhiteSpace(WADPath)) p.BaseFile = WADPath;
+            else p.Base = (Base.SelectedIndex, 0);
             p.LinkSaveDataTitle = LinkSaveData.Checked;
             p.ImageOptions = (imageintpl.SelectedIndex, image_fit.Checked);
 
@@ -116,6 +119,7 @@ namespace FriishProduce
             Program.Lang.Control(this, "projectform");
             title_id_2.Text = title_id.Text;
             BrowsePatch.Filter = Program.Lang.String("filter.patch");
+            BrowseManual.Filter = Program.Lang.String("filter.zip");
 
             // Change title text to untitled string
             Untitled = string.Format(Program.Lang.String("untitled_project", "mainform"), Program.Lang.String(Enum.GetName(typeof(Console), Console).ToLower(), "platforms"));
@@ -134,6 +138,7 @@ namespace FriishProduce
 
             // Regions lists
             TargetRegion.Items.Clear();
+            TargetRegion.Items.Add(Program.Lang.String("region_orig"));
             TargetRegion.Items.Add(Program.Lang.String("region_rf"));
             TargetRegion.SelectedIndex = 0;
 
@@ -277,7 +282,7 @@ namespace FriishProduce
             }
         }
 
-        public ProjectForm(ProjectType p)
+        public ProjectForm(Project p)
         {
             Console = p.Console;
             Database = new Database(Console);
@@ -380,11 +385,21 @@ namespace FriishProduce
                 Img.LoadToSource(ParentProject.Img);
                 LoadImage(ParentProject.Img);
 
-                Base.SelectedIndex = ParentProject.Base.Item1;
-                for (int i = 0; i < BaseRegionList.Items.Count; i++)
-                    if (BaseRegionList.Items[i].GetType() == typeof(ToolStripMenuItem)) (BaseRegionList.Items[i] as ToolStripMenuItem).Checked = false;
-                UpdateBaseForm(ParentProject.Base.Item2);
-                (BaseRegionList.Items[ParentProject.Base.Item2] as ToolStripMenuItem).Checked = true;
+                if (File.Exists(ParentProject.BaseFile))
+                {
+                    WADPath = ParentProject.BaseFile;
+                    ImportWAD.Checked = true;
+                    DownloadWAD.Checked = false;
+                    LoadWAD(ParentProject.BaseFile);
+                }
+                else
+                {
+                    Base.SelectedIndex = ParentProject.Base.Item1;
+                    for (int i = 0; i < BaseRegionList.Items.Count; i++)
+                        if (BaseRegionList.Items[i].GetType() == typeof(ToolStripMenuItem)) (BaseRegionList.Items[i] as ToolStripMenuItem).Checked = false;
+                    UpdateBaseForm(ParentProject.Base.Item2);
+                    (BaseRegionList.Items[ParentProject.Base.Item2] as ToolStripMenuItem).Checked = true;
+                }
 
                 SetROMDataText();
 
@@ -401,6 +416,7 @@ namespace FriishProduce
 
                 PatchFile = File.Exists(ParentProject.PatchFile) ? ParentProject.PatchFile : null;
                 Patch.Checked = !string.IsNullOrWhiteSpace(ParentProject.PatchFile);
+                LoadManual(ParentProject.Manual);
 
                 ParentProject = null;
                 ToggleControls(!string.IsNullOrEmpty(ROM?.Path));
@@ -409,7 +425,7 @@ namespace FriishProduce
             FStorage_USB.Checked = Options.FORWARDER.Default.root_storage_device.ToLower().Contains("usb");
             FStorage_SD.Checked = !FStorage_USB.Checked;
             toggleSwitch1.Checked = Options.FORWARDER.Default.nand_loader.ToLower().Contains("vwii");
-            CustomManual.Enabled = Console != Console.NEO && Console != Console.PCE;
+            CustomManual.Enabled = Console != Console.NEO && Console != Console.PCE; // Confirmed to have an algorithm exist for NES, SNES, N64, SEGA, PCE,
 
             Tag = null;
             ExportCheck.Invoke(this, EventArgs.Empty);
@@ -446,13 +462,17 @@ namespace FriishProduce
 
         protected virtual void SetROMDataText()
         {
+            bool foundRomName = false;
             filename.Text = string.Format(Program.Lang.String("filename", Name), !string.IsNullOrWhiteSpace(ROM?.Path) ? Path.GetFileName(ROM.Path) : Program.Lang.String("unknown"));
 
             if (LibRetro == null)
                 software_name.Text = string.Format(Program.Lang.String("software_name", Name), Program.Lang.String("unknown"));
             else
+            {
+                foundRomName = LibRetro.GetCleanTitle() != null;
                 software_name.Text = string.Format(Program.Lang.String("software_name", Name), LibRetro.GetCleanTitle()?.Replace(Environment.NewLine, " - ") ?? Program.Lang.String("unknown"));
-            software_name.Visible = LibRetro != null;
+            }
+            software_name.Visible = foundRomName;
 
             label11.Text = !string.IsNullOrWhiteSpace(PatchFile) ? Path.GetFileName(PatchFile) : Program.Lang.String("none");
             label11.Enabled = !string.IsNullOrWhiteSpace(PatchFile);
@@ -585,6 +605,7 @@ namespace FriishProduce
             if (DesignMode) return;
             // ----------------------------
 
+            DownloadWAD.Checked = !ImportWAD.Checked;
             Base.Enabled = BaseRegion.Enabled = !ImportWAD.Checked;
             if (Base.Enabled)
             {
@@ -592,7 +613,6 @@ namespace FriishProduce
             }
             else
             {
-                Base.SelectedIndex = -1;
                 BaseRegion.Image = null;
             }
 
@@ -605,7 +625,7 @@ namespace FriishProduce
                 if (result == DialogResult.OK && !LoadWAD(BrowseWAD.FileName)) ImportWAD.Checked = false;
                 else if (result == DialogResult.Cancel) ImportWAD.Checked = false;
             }
-            else
+            else if (!ImportWAD.Checked)
             {
                 WADPath = null;
             }
@@ -668,8 +688,7 @@ namespace FriishProduce
             }
             catch
             {
-                MessageBox.Show(Program.Lang.Msg(2), 0, Ookii.Dialogs.WinForms.TaskDialogIcon.Warning);
-                return false;
+                goto Failed;
             }
 
             for (int h = 0; h < Database.Entries.Count; h++)
@@ -684,6 +703,7 @@ namespace FriishProduce
                         return true;
                     }
 
+            Failed:
             Reader.Dispose();
             System.Media.SystemSounds.Beep.Play();
             MessageBox.Show(string.Format(Program.Lang.Msg(5), Reader.UpperTitleID));
@@ -692,35 +712,46 @@ namespace FriishProduce
 
         public void LoadManual(string path)
         {
-            if (path != null)
+            if (File.Exists(path))
             {
-                // Check if is a valid emanual contents folder
-                // ****************
-                string folder = null;
-                if (Directory.Exists(Path.Combine(path, "emanual")))
-                    folder = Path.Combine(path, "emanual");
-                else if (Directory.Exists(Path.Combine(path, "html")))
-                    folder = Path.Combine(path, "html");
+                using (ZipFile ZIP = ZipFile.Read(path))
+                {
+                    int applicable = 0;
+                    // bool hasFolder = false;
 
-                int validFiles = 0;
-                if (folder != null)
-                    foreach (var item in Directory.EnumerateFiles(folder))
+                    foreach (var item in ZIP.Entries)
                     {
-                        if ((Path.GetFileNameWithoutExtension(item).StartsWith("startup") && Path.GetExtension(item) == ".html")
-                         || Path.GetFileName(item) == "standard.css"
-                         || Path.GetFileName(item) == "contents.css"
-                         || Path.GetFileName(item) == "vsscript.css") validFiles++;
+                        // Check if is a valid emanual contents folder
+                        // ****************
+                        // if ((item.FileName == "emanual" || item.FileName == "html") && item.IsDirectory)
+                        //    hasFolder = true;
+
+                        // Check key files
+                        // ****************
+                        /* else */ if ((item.FileName.StartsWith("startup") && Path.GetExtension(item.FileName) == ".html")
+                         || item.FileName == "standard.css"
+                         || item.FileName == "contents.css"
+                         || item.FileName == "vsscript.css") applicable++;
                     }
 
-                if (validFiles < 2)
-                {
-                    MessageBox.Show(Program.Lang.Msg(7), MessageBox.Buttons.Ok, Ookii.Dialogs.WinForms.TaskDialogIcon.Warning);
-                    Manual = null;
-                    return;
+                    if (applicable < 2 /* || !hasFolder */)
+                    {
+                        MessageBox.Show(Program.Lang.Msg(7), MessageBox.Buttons.Ok, Ookii.Dialogs.WinForms.TaskDialogIcon.Warning);
+                        Manual = null;
+                        goto End;
+                    }
                 }
+            }
+            else
+            {
+                Manual = null;
+                goto End;
             }
 
             Manual = path;
+            goto End;
+
+            End:
             CustomManual.Checked = Manual != null;
         }
 
@@ -944,11 +975,14 @@ namespace FriishProduce
 
                 // Other WAD settings to be changed
                 // *******
-                OutWAD.Region = TargetRegion.SelectedItem.ToString() == Program.Lang.String("region_j") ? libWiiSharp.Region.Japan
+                if (TargetRegion.SelectedIndex > 0)
+                {
+                    OutWAD.Region = TargetRegion.SelectedItem.ToString() == Program.Lang.String("region_j") ? libWiiSharp.Region.Japan
                     : TargetRegion.SelectedItem.ToString() == Program.Lang.String("region_u") ? libWiiSharp.Region.USA
                     : TargetRegion.SelectedItem.ToString() == Program.Lang.String("region_e") ? libWiiSharp.Region.Europe
                     : TargetRegion.SelectedItem.ToString() == Program.Lang.String("region_k") ? libWiiSharp.Region.Korea
                     : libWiiSharp.Region.Free;
+                }
 
                 // Remaining ones done by WAD creator helper, which will save to a new file
                 // *******
@@ -1551,13 +1585,13 @@ namespace FriishProduce
 
         private void CustomManual_CheckedChanged(object sender, EventArgs e)
         {
-            if (CustomManual.Checked && CustomManual.Enabled)
+            if (CustomManual.Checked && CustomManual.Enabled && Manual == null)
             {
                 if (!Properties.Settings.Default.DoNotShow_000) MessageBox.Show((sender as Control).Text, Program.Lang.Msg(6), 0);
 
                 if (BrowseManual.ShowDialog() == DialogResult.OK)
                 {
-                    LoadManual(BrowseManual.SelectedPath);
+                    LoadManual(BrowseManual.FileName);
                     CheckExport();
                 }
 

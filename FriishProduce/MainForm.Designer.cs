@@ -383,7 +383,6 @@ namespace FriishProduce
             // 
             // ToolStrip_ExportWAD
             // 
-            this.ToolStrip_ExportWAD.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             resources.ApplyResources(this.ToolStrip_ExportWAD, "ToolStrip_ExportWAD");
             this.ToolStrip_ExportWAD.Image = global::FriishProduce.Properties.Resources.wooden_box_pencil;
             this.ToolStrip_ExportWAD.Name = "ToolStrip_ExportWAD";
@@ -405,6 +404,7 @@ namespace FriishProduce
             // 
             // ToolStrip_OpenImage
             // 
+            this.ToolStrip_OpenImage.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             resources.ApplyResources(this.ToolStrip_OpenImage, "ToolStrip_OpenImage");
             this.ToolStrip_OpenImage.Image = global::FriishProduce.Properties.Resources.image_sunset;
             this.ToolStrip_OpenImage.Name = "ToolStrip_OpenImage";

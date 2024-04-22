@@ -146,7 +146,6 @@ namespace FriishProduce
                         {
                             OrigManual = item.Name;
                             Manual = target.Data[target.GetNodeIndex(OrigManual)];
-
                             target.ReplaceFile(target.GetNodeIndex(OrigManual), ReplaceManual().ToByteArray());
                         }
                 }
@@ -157,6 +156,40 @@ namespace FriishProduce
             }
 
             return target;
+        }
+
+        private void ExtractManual(U8 target)
+        {
+            var extManual = new U8();
+
+            foreach (var item in target.StringTable)
+
+                if (item.ToLower().Contains("htmlc.arc") || item.ToLower().Contains("lz77_html.arc") || item.ToLower().Contains("lz77emanual.arc"))
+                {
+                    OrigManual = item;
+
+                    File.WriteAllBytes(Paths.WorkingFolder + "html.arc", target.Data[target.GetNodeIndex(OrigManual)]);
+                    Utils.Run
+                    (
+                        Paths.Tools + "wwcxtool.exe",
+                        Paths.WorkingFolder,
+                        "/u html.arc html.dec"
+                    );
+                    if (!File.Exists(Paths.WorkingFolder + "html.dec")) throw new Exception(Program.Lang.Msg(2, true));
+
+                    extManual = U8.Load(File.ReadAllBytes(Paths.WorkingFolder + "html.dec"));
+
+                    if (File.Exists(Paths.WorkingFolder + "html.dec")) File.Delete(Paths.WorkingFolder + "html.dec");
+                    if (File.Exists(Paths.WorkingFolder + "html.arc")) File.Delete(Paths.WorkingFolder + "html.arc");
+                }
+
+                else if (item.ToLower().Contains("emanual.arc") || item.ToLower().Contains("html.arc") || item.ToLower().Contains("man.arc"))
+                {
+                    extManual = U8.Load(target.Data[target.GetNodeIndex(item)]);
+                }
+
+            extManual.Unpack(@"D:\EMANUAL\");
+            extManual.Dispose();
         }
 
         protected void ReplaceManual(U8 target)
@@ -172,14 +205,14 @@ namespace FriishProduce
 
                 NOT COMPRESSED:
 
-                emanual.arc
-                html.arc
-                man.arc
-                data.ccf > man.arc
+                X emanual.arc
+                X html.arc
+                X man.arc
+                X data.ccf > man.arc
 
                 COMPRESSED:
 
-                htmlc.arc (N64 LZ77)
+                X htmlc.arc (N64 LZ77)
                 Regex('.+_manual_.+\\.arc\\.lz77$') e.g. makaimura_manual_usa.arc.lz77 (Arcade Ghosts n Goblins) */
 
                 // Get and read emanual
@@ -187,15 +220,8 @@ namespace FriishProduce
                 try
                 {
                     foreach (var item in target.StringTable)
-                        if (item.ToLower().Contains("emanual.arc") || item.ToLower().Contains("html.arc") || item.ToLower().Contains("man.arc"))
-                        {
-                            OrigManual = item;
-                            Manual = target.Data[target.GetNodeIndex(OrigManual)];
 
-                            target.ReplaceFile(target.GetNodeIndex(OrigManual), ReplaceManual().ToByteArray());
-                        }
-
-                        else if (item.ToLower().Contains("htmlc.arc") || item.ToLower().Contains("lz77_html.arc"))
+                        if (item.ToLower().Contains("htmlc.arc") || item.ToLower().Contains("lz77_html.arc"))
                         {
                             OrigManual = item;
 
@@ -206,11 +232,9 @@ namespace FriishProduce
                                 Paths.WorkingFolder,
                                 "/u html.arc html.dec"
                             );
-
                             if (!File.Exists(Paths.WorkingFolder + "html.dec")) throw new Exception(Program.Lang.Msg(2, true));
-                            Manual = File.ReadAllBytes(Paths.WorkingFolder + "html.dec");
-                            if (File.Exists(Paths.WorkingFolder + "html.dec")) File.Delete(Paths.WorkingFolder + "html.dec");
 
+                            Manual = File.ReadAllBytes(Paths.WorkingFolder + "html.dec");
                             File.WriteAllBytes("html_modified.dec", ReplaceManual().ToByteArray());
 
                             Utils.Run
@@ -219,12 +243,21 @@ namespace FriishProduce
                                 Paths.WorkingFolder,
                                 "/cr html.arc html_modified.dec html_modified.arc"
                             );
-
                             if (!File.Exists(Paths.WorkingFolder + "html_modified.arc")) throw new Exception(Program.Lang.Msg(2, true));
+
                             target.ReplaceFile(target.GetNodeIndex(OrigManual), File.ReadAllBytes(Paths.WorkingFolder + "html_modified.arc"));
 
+                            if (File.Exists(Paths.WorkingFolder + "html.dec")) File.Delete(Paths.WorkingFolder + "html.dec");
                             if (File.Exists(Paths.WorkingFolder + "html.arc")) File.Delete(Paths.WorkingFolder + "html.arc");
                             if (File.Exists(Paths.WorkingFolder + "html_modified.arc")) File.Delete(Paths.WorkingFolder + "html_modified.arc");
+                        }
+
+                        else if (item.ToLower().Contains("emanual.arc") || item.ToLower().Contains("html.arc") || item.ToLower().Contains("man.arc"))
+                        {
+                            OrigManual = item;
+
+                            Manual = target.Data[target.GetNodeIndex(OrigManual)];
+                            target.ReplaceFile(target.GetNodeIndex(OrigManual), ReplaceManual().ToByteArray());
                         }
                 }
 

@@ -68,7 +68,7 @@ namespace FriishProduce
             return true;
         }
 
-        public virtual bool CheckZIPValidity(string path, string[] strings, bool SearchEndingOnly, bool ForceLowercase)
+        public virtual bool CheckZIPValidity(string path, string[] strings, bool searchEndingOnly, bool forceLowercase)
         {
             using (ZipFile ZIP = ZipFile.Read(path))
             {
@@ -77,9 +77,9 @@ namespace FriishProduce
                 foreach (var item in ZIP.Entries)
                     foreach (string line in strings)
                     {
-                        string name = ForceLowercase ? item.FileName.ToLower() : item.FileName;
-                        if ((SearchEndingOnly && (name.EndsWith(line) || System.IO.Path.GetFileNameWithoutExtension(name).EndsWith(line)))
-                            || (!SearchEndingOnly && name.Contains(line)))
+                        string name = forceLowercase ? item.FileName.ToLower() : item.FileName;
+                        if ((searchEndingOnly && (name.EndsWith(line) || System.IO.Path.GetFileNameWithoutExtension(name).EndsWith(line)))
+                            || (!searchEndingOnly && name.Contains(line)))
                             applicable++;
                     }
 
@@ -92,7 +92,7 @@ namespace FriishProduce
             }
         }
 
-        public virtual bool CheckZIPValidity(string[] strings, bool SearchEndingOnly, bool ForceLowercase) => CheckZIPValidity(Path, strings, SearchEndingOnly, ForceLowercase);
+        public virtual bool CheckZIPValidity(string[] strings, bool searchEndingOnly, bool forceLowercase) => CheckZIPValidity(Path, strings, searchEndingOnly, forceLowercase);
 
         public bool CheckSize(int length)
         {
@@ -109,12 +109,12 @@ namespace FriishProduce
 
         public bool CheckSize() => CheckSize(MaxSize);
 
-        public void Patch(string PatchFile)
+        public void Patch(string filePath)
         {
-            if (!File.Exists(PatchFile) || string.IsNullOrWhiteSpace(PatchFile)) return;
+            if (!File.Exists(filePath) || string.IsNullOrWhiteSpace(filePath)) return;
 
             File.WriteAllBytes(Paths.WorkingFolder + "rom", origData);
-            File.WriteAllBytes(Paths.WorkingFolder + "patch", File.ReadAllBytes(PatchFile));
+            File.WriteAllBytes(Paths.WorkingFolder + "patch", File.ReadAllBytes(filePath));
 
             Utils.Run(Properties.Resources.App_XDelta, "xdelta3", "-d -s rom patch rom_p_xdelta");
             Utils.Run(Properties.Resources.App_Flips, "flips", "--apply patch rom rom_p_bps");

@@ -73,7 +73,6 @@ namespace FriishProduce
                 var hex = GetID(index).Substring(ID.Length - 8);
                 var ascii = string.Empty;
 
-
                 for (int i = 0; i < hex.Length; i += 2)
                 {
                     var hs = hex.Substring(i, 2);
@@ -89,6 +88,7 @@ namespace FriishProduce
             /// </summary>
             public WAD GetWAD(int index)
             {
+                string tID = GetUpperID(index);
                 string reg = " (Japan)";
                 switch (Regions[index])
                 {
@@ -113,7 +113,7 @@ namespace FriishProduce
                 }
 
                 string console = "";
-                switch (GetUpperID(index)[0])
+                switch (tID[0])
                 {
                     case 'F':
                         console = "NES";
@@ -173,8 +173,8 @@ namespace FriishProduce
 
                 // Title ID check
                 // ****************
-                if ((w.UpperTitleID.ToUpper() != GetUpperID(index)) || !w.HasBanner) throw new ArgumentException();
-                return w;
+                if (w.UpperTitleID.ToUpper() == tID && w.HasBanner) return w;
+                return null;
             }
         }
 
@@ -215,10 +215,10 @@ namespace FriishProduce
                             try { y.MarioCube.Add(item.GetProperty("wad_titles")[i].GetString()); }
                             catch
                             {
-                                try { y.Titles.Add(item.GetProperty("wad_titles")[Math.Max(0, item.GetProperty("wad_titles").GetArrayLength() - 1)].GetString()); }
+                                try { y.MarioCube.Add(item.GetProperty("wad_titles")[Math.Max(0, item.GetProperty("wad_titles").GetArrayLength() - 1)].GetString()); }
                                 catch
                                 {
-                                    var title = y.Titles[y.Regions[i] == 0 ? y.Regions.Count > 1 ? 1 : 0 : i];
+                                    var title = y.Titles[y.Regions.Count > 1 ? 1 : 0];
                                     if (title.StartsWith("The "))
                                     {
                                         title = title.Substring(4);

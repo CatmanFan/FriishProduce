@@ -75,14 +75,11 @@
     <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.5.0, Culture=neutral, PublicKeyToken=8985beaab7ea3f04, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft-WindowsAPICodePack-Core.1.1.5\lib\net472\Microsoft.WindowsAPICodePack.dll</HintPath>
     </Reference>
-    <Reference Include="Octokit, Version=9.1.2.0, Culture=neutral, PublicKeyToken=0be8860aee462442, processorArchitecture=MSIL">
-      <HintPath>..\packages\Octokit.9.1.2\lib\netstandard2.0\Octokit.dll</HintPath>
+    <Reference Include="Octokit, Version=11.0.1.0, Culture=neutral, PublicKeyToken=0be8860aee462442, processorArchitecture=MSIL">
+      <HintPath>..\packages\Octokit.11.0.1\lib\netstandard2.0\Octokit.dll</HintPath>
     </Reference>
     <Reference Include="Ookii.Dialogs.WinForms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=66aa232afad40158, processorArchitecture=MSIL">
       <HintPath>..\packages\Ookii.Dialogs.WinForms.4.0.0\lib\net462\Ookii.Dialogs.WinForms.dll</HintPath>
-    </Reference>
-    <Reference Include="PBKDF2.NET, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\PBKDF2.NET.2.0.0\lib\net45\PBKDF2.NET.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -213,24 +210,24 @@
     <Compile Include="Tutorial.Designer.cs">
       <DependentUpon>Tutorial.cs</DependentUpon>
     </Compile>
-    <Compile Include="_classes\Archives\CCF.cs" />
+    <Compile Include="_classes\Files\CCF.cs" />
     <Compile Include="_classes\BannerPreview.cs" />
     <Compile Include="_classes\Program\Database.cs" />
     <Compile Include="_classes\Program\Language.cs" />
-    <Compile Include="_classes\Modifiers\Flash.cs" />
-    <Compile Include="_classes\Modifiers\Forwarder.cs" />
-    <Compile Include="_classes\Modifiers\WiiVC\PCE.cs" />
-    <Compile Include="_classes\Projects\ProjectType.cs" />
-    <Compile Include="_classes\ROM\Disc.cs" />
-    <Compile Include="_classes\ROM\Flash.cs" />
-    <Compile Include="_classes\Modifiers\WiiVC\MSX.cs" />
-    <Compile Include="_classes\ROM\MSX.cs" />
-    <Compile Include="_classes\ROM\N64.cs" />
-    <Compile Include="_classes\ROM\NEO.cs" />
-    <Compile Include="_classes\ROM\NES.cs" />
-    <Compile Include="_classes\ROM\PCE.cs" />
-    <Compile Include="_classes\ROM\SEGA.cs" />
-    <Compile Include="_classes\ROM\SNES.cs" />
+    <Compile Include="_classes\Creators\Flash.cs" />
+    <Compile Include="_classes\Creators\Forwarder.cs" />
+    <Compile Include="_classes\Creators\WiiVC\PCE.cs" />
+    <Compile Include="_classes\Program\Project.cs" />
+    <Compile Include="_classes\Files\ROM\Disc.cs" />
+    <Compile Include="_classes\Files\ROM\Flash.cs" />
+    <Compile Include="_classes\Creators\WiiVC\MSX.cs" />
+    <Compile Include="_classes\Files\ROM\MSX.cs" />
+    <Compile Include="_classes\Files\ROM\N64.cs" />
+    <Compile Include="_classes\Files\ROM\NEO.cs" />
+    <Compile Include="_classes\Files\ROM\NES.cs" />
+    <Compile Include="_classes\Files\ROM\PCE.cs" />
+    <Compile Include="_classes\Files\ROM\SEGA.cs" />
+    <Compile Include="_classes\Files\ROM\SNES.cs" />
     <Compile Include="_classes\Program\Updater.cs" />
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -304,19 +301,19 @@
     </Compile>
     <Compile Include="_classes\Utilities.cs" />
     <Compile Include="_classes\Consoles.cs" />
-    <Compile Include="_classes\Modifiers\Creator.cs" />
-    <Compile Include="_classes\Modifiers\WiiVC.cs" />
-    <Compile Include="_classes\Modifiers\WiiVC\N64.cs" />
-    <Compile Include="_classes\Modifiers\WiiVC\NEO.cs" />
-    <Compile Include="_classes\Modifiers\WiiVC\NES.cs" />
-    <Compile Include="_classes\Modifiers\WiiVC\SEGA.cs" />
-    <Compile Include="_classes\Modifiers\WiiVC\SNES.cs" />
+    <Compile Include="_classes\Creators\Creator.cs" />
+    <Compile Include="_classes\Creators\WiiVC.cs" />
+    <Compile Include="_classes\Creators\WiiVC\N64.cs" />
+    <Compile Include="_classes\Creators\WiiVC\NEO.cs" />
+    <Compile Include="_classes\Creators\WiiVC\NES.cs" />
+    <Compile Include="_classes\Creators\WiiVC\SEGA.cs" />
+    <Compile Include="_classes\Creators\WiiVC\SNES.cs" />
     <Compile Include="_classes\Program\MessageBox.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="_classes\LibRetroDB.cs" />
-    <Compile Include="_classes\Paths.cs" />
-    <Compile Include="_classes\ROM.cs" />
+    <Compile Include="_classes\Program\Paths.cs" />
+    <Compile Include="_classes\Files\ROM.cs" />
     <Compile Include="_classes\ImageHelper.cs" />
     <Compile Include="_classes\BannerHelper.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -422,6 +419,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\apps\gbalzss.exe" />
     <None Include="Resources\icons\folder-horizontal-open.png" />
     <None Include="Resources\apps\romc0.exe" />
     <None Include="Resources\apps\romc.exe" />
@@ -532,19 +530,68 @@
     </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>cd "$(TargetDir)strings\"
+    <PostBuildEvent>set location=resources\libraries
+
+cd "$(TargetDir)strings\"
+
+
 for %25%25f in (*.json) do (call :delete %25%25f)
 
+
+
 cd "$(ProjectDir)Strings\"
+
+
 for %25%25f in (*.json) do (call :copy %25%25f)
+
+
+cd "$(TargetDir)"
+
+md %25location%25
+
+
+for %25%25f in (*.dll) do (call :move %25%25f)
+
+
+
+for %25%25f in (*.xml) do (call :move %25%25f)
+
+
+
+for %25%25f in (*.pdb) do (call :move %25%25f)
+
 goto :eof
 
+
+
+
+
 :copy
+
+
 if NOT %25~n1 == en (copy /b/v/y %251 "$(TargetDir)strings\%25~n1%25~x1" 1&gt;nul)
+
+
 exit /b
 
+
+
+
+
 :delete
+
+
 del /q/f "$(TargetDir)strings\%25~n1%25~x1"
+
+
+exit /b
+
+
+
+
+
+:move
+move /y %251 "%25location%25\%25~n1%25~x1" 1&gt;nul
 exit /b
 
 :eof</PostBuildEvent>

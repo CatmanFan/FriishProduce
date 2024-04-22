@@ -161,6 +161,7 @@ namespace FriishProduce
                 MainPanel.Width + (ToolStrip.Dock == DockStyle.Right || ToolStrip.Dock == DockStyle.Left ? ToolStrip.Width - 8 : 16),
                 MainPanel.Location.Y + MainPanel.Height + 38
             );
+            welcome.Font = new Font(Font.FontFamily, 9.5f, FontStyle.Regular);
             CenterToScreen();
 
             // Automatically set defined initial directory for save file dialog
@@ -267,7 +268,7 @@ namespace FriishProduce
             }
         }
 
-        private ProjectForm AddTab(Console console, ProjectType x = null)
+        private ProjectForm AddTab(Console console, Project x = null)
         {
             ProjectForm Tab = x == null ? new ProjectForm(console) : new ProjectForm(x);
             Tab.Parent = this;
@@ -415,7 +416,7 @@ namespace FriishProduce
                     using (Stream stream = File.Open(BrowseProject.FileName, FileMode.Open))
                     {
                         var binaryFormatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-                        var project = (ProjectType)binaryFormatter.Deserialize(stream);
+                        var project = (Project)binaryFormatter.Deserialize(stream);
                         AddTab(project.Console, project);
                     }
                 }

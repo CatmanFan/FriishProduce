@@ -9,7 +9,7 @@ namespace FriishProduce.Injectors
     public class SNES : InjectorWiiVC
     {
         private string ID { get; set; }
-        private string Target { get; set; }
+        private string target { get; set; }
 
         protected override void Load()
         {
@@ -36,29 +36,29 @@ namespace FriishProduce.Injectors
 
             // Normal
             // ****************
-            if (Target.Length == 8) MainContent.ReplaceFile(MainContent.GetNodeIndex(Target), ROM.Bytes);
+            if (target.Length == 8) MainContent.ReplaceFile(MainContent.GetNodeIndex(target), ROM.Bytes);
 
             // LZ77 compression
             // ****************
-            else if (Target.ToUpper().StartsWith("LZ77"))
+            else if (target.ToUpper().StartsWith("LZ77"))
             {
                 File.WriteAllBytes(Paths.WorkingFolder + "rom", ROM.Bytes);
-                File.WriteAllBytes(Paths.WorkingFolder + "LZ77orig.rom", MainContent.Data[MainContent.GetNodeIndex(Target)]);
 
                 Utils.Run
                 (
-                    Paths.Tools + "wwcxtool.exe",
-                    Paths.WorkingFolder,
-                    "/cr LZ77orig.rom rom LZ77out.rom"
+                    Properties.Resources.GBALZSS,
+                    "gbalzss",
+                    "e rom LZ77out.rom"
                 );
                 if (!File.Exists(Paths.WorkingFolder + "LZ77out.rom")) throw new Exception(Program.Lang.Msg(2, true));
 
-                MainContent.ReplaceFile(MainContent.GetNodeIndex(Target), Paths.WorkingFolder + "LZ77out.rom");
+                MainContent.ReplaceFile(MainContent.GetNodeIndex(target), Paths.WorkingFolder + "LZ77out.rom");
 
-                File.Delete(Paths.WorkingFolder + "LZ77out.rom");
-                if (File.Exists(Paths.WorkingFolder + "rom")) File.Delete(Paths.WorkingFolder + "rom");
-                if (File.Exists(Paths.WorkingFolder + "LZ77orig.rom")) File.Delete(Paths.WorkingFolder + "LZ77orig.rom");
+                if (File.Exists(Paths.WorkingFolder + "LZ77out.rom"))   File.Delete(Paths.WorkingFolder + "LZ77out.rom");
+                if (File.Exists(Paths.WorkingFolder + "rom"))           File.Delete(Paths.WorkingFolder + "rom");
             }
+
+            else throw new Exception(Program.Lang.Msg(2, true));
 
             // Dummify unused files
             // ****************
@@ -131,7 +131,7 @@ namespace FriishProduce.Injectors
             {
                 if (file.ToLower().EndsWith(".rom"))
                 {
-                    Target = file;
+                    target = file;
                     ID = file.Substring(file.Length - 8, 4);
                 }
             }

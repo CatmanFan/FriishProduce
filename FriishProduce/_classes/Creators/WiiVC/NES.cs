@@ -26,7 +26,7 @@ namespace FriishProduce.Injectors
             // -----------------------
             // Check for "NES" header
             // -----------------------
-            int offset = 0;
+            int offset = -1;
             for (int i = 0; i < Contents[1].Length; i++)
             {
                 if (Contents[1][i] == 0x4E
@@ -39,7 +39,7 @@ namespace FriishProduce.Injectors
                 }
             }
 
-            if (offset == 0) throw new InvalidDataException();
+            if (offset == -1) throw new Exception(Program.Lang.Msg(2, true));
 
             // -----------------------
             // Check filesize of original ROM and set to variable

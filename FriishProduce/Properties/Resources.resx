@@ -337,4 +337,7 @@
   <data name="StaticBase" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\StaticBase.wad;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="GBALZSS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\apps\gbalzss.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

@@ -9,15 +9,15 @@
         // "region"
             // The regions for which the channel is available, in an array, listed by number.
 
-        // Available regions:
-        // "0": Japan
-        // "1": USA
-        // "2": USA (Japanese import)
-        // "3": Europe
-        // "4": Europe (Japanese import/PAL60)
-        // "5": Europe (American import/PAL60)
-        // "6": Korea (Japanese language)
-        // "7": Korea (English language)
+        // Available regions:                       Final letter in TitleID
+        // "0": Japan                               J
+        // "1": USA                                 E
+        // "2": USA (Japanese import)               N
+        // "3": Europe                              P
+        // "4": Europe (Japanese import/PAL60)      L
+        // "5": Europe (American import/PAL60)      M
+        // "6": Korea (Japanese language)           Q
+        // "7": Korea (English language)            T
         // _____________________________________________
 
         // "emu_ver"
@@ -91,6 +91,18 @@
             "emu_ver": [0, 0, 0, 0],
             "titles": ["スーパードンキーコング２", "Donkey Kong Country 2", "Donkey Kong Country 2", "동키콩 컨트리 2"],
             "wad_titles": ["Super Donkey Kong 2 - Dixie & Diddy", "Donkey Kong Country 2 - Diddy's Kong Quest"]
+        },
+        {
+            "id": "00010001-4a4156__",
+            "region": [0, 1, 3, 7],
+            "emu_ver": [0, 0, 0, 0],
+            "titles": ["スーパーメトロイド", "Super Metroid", "Super Metroid", "슈퍼 메트로이드"]
+        },
+        {
+            "id": "00010001-4a4342__",
+            "region": [0, 1, 5],
+            "emu_ver": [1, 1, 1],
+            "titles": ["スーパーマリオＲＰＧ", "Super Mario RPG", "Super Mario RPG"]
         },
         {
             "id": "00010001-4a4142__",
