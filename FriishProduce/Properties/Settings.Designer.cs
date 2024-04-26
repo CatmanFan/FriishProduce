@@ -26,72 +26,96 @@ namespace FriishProduce.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("sys")]
-        public string Language {
+        public string language {
             get {
-                return ((string)(this["Language"]));
+                return ((string)(this["language"]));
             }
             set {
-                this["Language"] = value;
+                this["language"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("2")]
-        public int ImageInterpolation {
+        public int image_interpolation {
             get {
-                return ((int)(this["ImageInterpolation"]));
+                return ((int)(this["image_interpolation"]));
             }
             set {
-                this["ImageInterpolation"] = value;
+                this["image_interpolation"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool AutoLibRetro {
+        public bool auto_retrieve_game_data {
             get {
-                return ((bool)(this["AutoLibRetro"]));
+                return ((bool)(this["auto_retrieve_game_data"]));
             }
             set {
-                this["AutoLibRetro"] = value;
+                this["auto_retrieve_game_data"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool DoNotShow_000 {
+        public bool donotshow_000 {
             get {
-                return ((bool)(this["DoNotShow_000"]));
+                return ((bool)(this["donotshow_000"]));
             }
             set {
-                this["DoNotShow_000"] = value;
+                this["donotshow_000"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool ImageFitAspectRatio {
+        public bool image_fit_aspect_ratio {
             get {
-                return ((bool)(this["ImageFitAspectRatio"]));
+                return ((bool)(this["image_fit_aspect_ratio"]));
             }
             set {
-                this["ImageFitAspectRatio"] = value;
+                this["image_fit_aspect_ratio"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool DoNotShow_Welcome {
+        public bool donotshow_welcome {
             get {
-                return ((bool)(this["DoNotShow_Welcome"]));
+                return ((bool)(this["donotshow_welcome"]));
             }
             set {
-                this["DoNotShow_Welcome"] = value;
+                this["donotshow_welcome"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool link_save_data {
+            get {
+                return ((bool)(this["link_save_data"]));
+            }
+            set {
+                this["link_save_data"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int gamedata_source_image {
+            get {
+                return ((int)(this["gamedata_source_image"]));
+            }
+            set {
+                this["gamedata_source_image"] = value;
             }
         }
     }

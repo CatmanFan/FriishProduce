@@ -2,23 +2,29 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="FriishProduce.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="Language" Type="System.String" Scope="User">
+    <Setting Name="language" Type="System.String" Scope="User">
       <Value Profile="(Default)">sys</Value>
     </Setting>
-    <Setting Name="ImageInterpolation" Type="System.Int32" Scope="User">
+    <Setting Name="image_interpolation" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">2</Value>
     </Setting>
-    <Setting Name="AutoLibRetro" Type="System.Boolean" Scope="User">
+    <Setting Name="auto_retrieve_game_data" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="DoNotShow_000" Type="System.Boolean" Scope="User">
+    <Setting Name="donotshow_000" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="ImageFitAspectRatio" Type="System.Boolean" Scope="User">
+    <Setting Name="image_fit_aspect_ratio" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="DoNotShow_Welcome" Type="System.Boolean" Scope="User">
+    <Setting Name="donotshow_welcome" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="link_save_data" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="gamedata_source_image" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -158,5 +158,13 @@ namespace FriishProduce
         public static void Show(string mainText, string description, int dontShow = -1) => Show(mainText, description, Buttons.Ok, 0, dontShow);
 
         public static void Show(string mainText, int dontShow) => Show(mainText, null, Buttons.Ok, 0, dontShow);
+
+        public static void Error(int msg) => Error(Program.Lang.Msg(msg, true));
+
+        public static void Error(string msg)
+        {
+            System.Media.SystemSounds.Beep.Play();
+            Show(Program.Lang.String("error", "messages"), msg, Buttons.Ok, Properties.Resources.brick);
+        }
     }
 }

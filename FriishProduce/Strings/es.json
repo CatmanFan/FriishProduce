@@ -18,6 +18,7 @@
 			"b_dont_save": "&No guardar",
 			"by_default": "Por defecto",
 			"do_not_show": "No volver a mostrar este mensaje",
+			"automatic": "Automático",
 			"unknown": "Desconocido(a)",
 			"none": "Ningúno(a)",
 			"region": "Región:",
@@ -30,7 +31,8 @@
 			"settings": "Opciones",
 			"system": "Sistema",
 			"display": "Pantalla",
-			"vc": "Consola Virtual"
+			"vc": "Consola Virtual",
+			"vc_options": "Opciones de Consola Virtual"
 		},
 		"platforms": {
 			"snes": "Super NES/Famicom",
@@ -59,21 +61,22 @@
 			"002": "El archivo seleccionado no es valido.",
 			"003": "Exportado con éxito a WAD.\n¿Qué querría hacer con el archivo?",
 			"003_a": "Abrir carpeta de salida",
-			"004": "No se pueden recuperar todos los datos de LibRetro para la ROM seleccionada.\nPor esta razón deberá completar manualmente algunos formularios.",
+			"004": "No se pueden recuperar todos los datos del juego para el seleccionado.\nPor esta razón deberá completar manualmente algunos formularios.",
 			"005": "El WAD que ha seleccionado (ID: {0}) no es válido.\nEsto puede deberse a que:\n  • la consola actual no coincide con la del WAD.\n  • el WAD aún no está disponible en la base de datos de esta aplicación.\n  • el WAD ya está modificado, ya sea inyectado o convertido en forwarder.",
 			"006": "Puede reemplazar el manual electrónico original del juego de la Consola Virtual con un otro personalizado.\n\nPara hacer esto, necesita un archivo comprimido ZIP conteniendo el contenido extraído/modificado del archivo *.arc del manual electrónico.",
-			"007": "El archivo comprimido no contiene un contenido de manual electrónico.",
+			"007": "El seleccionado no contiene ningún contenido de manual electrónico.",
 			"error": "¡Se ha producido un error!",
 			"e_000": "No se pudo conectar a Internet.\nDescripción : {0}",
 			"e_001": "No se pudo generar la imagen.\nEsto puede deberse a un problema con GDI+.",
 			"e_002": "No se pueden reemplazar los datos internos.",
 			"e_003": "La ROM es demasiado grande (más de {0} {1} en tamaño).",
-			"e_004": "No se pudo modificar los ajustes siguientes:\n{0}\nContinuará el proceso de inyección según lo previsto.",
+			"e_004": "No se pudo modificar los ajustes siguientes:\n{0}\nLa exportación en formato WAD continuará según lo previsto.",
 			"e_005": "La aplicación necesaria ({0}) no se encontró en el subdirectorio \"resources\\tools\".",
 			"e_006": "No se pudo exportar en formato WAD.",
 			"e_007": "No se pudo aplicar el parche, ya sea porque la ROM de destino y el parche no coinciden o porque el checksum de la ROM no es válida.",
 			"e_008": "El emulador necesario ({0}) no se encontró en el subdirectorio \"resources\\forwarder\\emulators\".",
-			"e_009": "No se pudo descargar el canal."
+			"e_009": "No se pudo descargar el canal.",
+			"e_010": "No se pudo modificar el archivo de manual electrónico.\nLa exportación en formato WAD continuará según lo previsto."
 		}
 	},
 
@@ -104,8 +107,9 @@
 			"default_settings": "Preferencias por defecto",
 			"language": "Idioma",
 			"system_default": "Idioma del sistema",
-			"default_image_interpolation_mode": "Método de interpolación de imágenes por defecto",
-			"auto_retrieve_gamedata_online": "Obtener automáticamente datos del juego de la base de datos en línea",
+			"auto_retrieve_gamedata_online": "Obtener automáticamente tras abrir una ROM",
+			"gamedata_source_image": "Sitio web de imágenes:",
+			"autolink_save_data": "Vincular automáticamente el título de los datos guardados al título del banner y del canal",
 			"reset_all_dialogs": "Restablecer la opción \"No volver a mostrar este mensaje\""
 		},
 		"projectform": {
@@ -128,7 +132,7 @@
 			"image_stretch": "Estirar la imagen",
 			"image_fit": "Mantener relación de aspecto",
 			"filename": "Nombre del archivo: {0}",
-			"software_name": "Nombre oficial: {0}",
+			"software_name": "Título oficial: {0}",
 			"import_patch": "Abrir un archivo de parche",
 			"injection_method": "Método de inyección:",
 			"injection_method_options": "Ajustes de método de inyección",
@@ -139,8 +143,8 @@
 			"import_manual": "Importar manual electrónico personalizado",
 			"base_name": "Nombre del juego:",
 			"title_id": "Title ID:",
-			"short_channel_name": "Nombre corto:",
-			"full_banner_name": "Nombre completo:",
+			"short_channel_name": "Título corto:",
+			"full_banner_name": "Título completo:",
 			"year": "Año:",
 			"players": "Jugadores:",
 			"save_data": "Datos guardados",
@@ -153,12 +157,11 @@
 			"palette_use_on_banner": "Utilizar esta paleta para las imágenes previas",
 		},
 		"vc_n64": {
-			"patches": "Parches",
 			"patch_fixbrightness": "Deshabilitación del filtro oscuro",
 			"patch_fixcrashes": "Antibloqueo (anticrash)",
 			"patch_expandedram": "RAM extendida",
 			"patch_autosizerom": "Asignación automática de tamaño de ROM",
-			"romc_type": "Método de compresión",
+			"romc_type": "Método de compresión:",
 			"romc_type0": "ROMC (Tipo 0)",
 			"romc_type1": "ROMC (Tipo 1)"
 		},

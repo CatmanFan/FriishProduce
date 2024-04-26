@@ -13,8 +13,6 @@ namespace FriishProduce
     {
         private readonly SettingsForm s = new SettingsForm();
 
-        internal LibRetroDB LibRetro { get; set; }
-
         public readonly IDictionary<Console, Bitmap> Icons = new Dictionary<Console, Bitmap>
         {
             { Console.NES, new Icon(Properties.Resources.nintendo_nes, 16, 16).ToBitmap() },
@@ -139,7 +137,7 @@ namespace FriishProduce
                     (tabPage.Form as ProjectForm).RefreshForm();
             }
 
-            MenuStrip.Font = ToolStrip.Font = Font;
+            MenuStrip.Font = ToolStrip.Font; // = Font;
             using (var pj = new ProjectForm(0))
                 Size = new Size(pj.Width + 16, pj.Height + MenuStrip.Height + ToolStrip.Height + tabControl.TabHeight + 40);
             welcome.Location = new Point((MainPanel.Width / 2) - (welcome.Width / 2), (MainPanel.Height / 2) - (welcome.Height / 2) - 15);
@@ -151,7 +149,7 @@ namespace FriishProduce
             InitializeComponent();
             RefreshForm();
 
-            welcome_do_not_show.Visible = PointToTutorial.Visible = welcome.Visible = !Properties.Settings.Default.DoNotShow_Welcome;
+            welcome_do_not_show.Visible = PointToTutorial.Visible = welcome.Visible = !Properties.Settings.Default.donotshow_welcome;
 
             Program.Handle = Handle;
             tabControl.Location = MainPanel.Location;
@@ -159,7 +157,7 @@ namespace FriishProduce
             Size = new Size
             (
                 MainPanel.Width + (ToolStrip.Dock == DockStyle.Right || ToolStrip.Dock == DockStyle.Left ? ToolStrip.Width - 8 : 16),
-                MainPanel.Location.Y + MainPanel.Height + 38
+                MainPanel.Location.Y + MainPanel.Height + 41
             );
             welcome.Font = new Font(Font.FontFamily, 9.5f, FontStyle.Regular);
             CenterToScreen();
@@ -173,11 +171,11 @@ namespace FriishProduce
 
         private void Settings_Click(object sender, EventArgs e)
         {
-            string lang = Properties.Settings.Default.Language;
+            string lang = Properties.Settings.Default.language;
 
             s.ShowDialog(this);
 
-            if (lang != Properties.Settings.Default.Language) RefreshForm();
+            if (lang != Properties.Settings.Default.language) RefreshForm();
         }
 
         public void TabChanged(object sender, EventArgs e)
@@ -317,11 +315,11 @@ namespace FriishProduce
             {
                 ToolStrip_UseLibRetro.Enabled = menu_retrieve_gamedata_online.Enabled = currentForm.CheckToolStripButtons()[0];
 
-                currentForm.LoadROM(Properties.Settings.Default.AutoLibRetro);
+                currentForm.LoadROM(Properties.Settings.Default.auto_retrieve_game_data);
             }
         }
 
-        private void UseLibRetro_Click(object sender, EventArgs e) => (tabControl.SelectedForm as ProjectForm).LoadLibRetroData();
+        private void UseLibRetro_Click(object sender, EventArgs e) => (tabControl.SelectedForm as ProjectForm).LoadGameData();
 
         private void ExportWAD_Click(object sender, EventArgs e)
         {
@@ -350,7 +348,7 @@ namespace FriishProduce
         private void Welcome_DoNotShow_Click(object sender, EventArgs e)
         {
             welcome_do_not_show.Visible = PointToTutorial.Visible = welcome.Visible = false;
-            Properties.Settings.Default.DoNotShow_Welcome = true;
+            Properties.Settings.Default.donotshow_welcome = true;
             Properties.Settings.Default.Save();
         }
 

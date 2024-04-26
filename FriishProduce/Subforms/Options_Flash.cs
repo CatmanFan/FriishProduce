@@ -31,7 +31,10 @@ namespace FriishProduce
             {
                 Program.Lang.Control(this);
                 groupBox1.Text = Program.Lang.String("save_data", "projectform");
-                checkBox1.Text = Program.Lang.String("save_data_enable", "projectform");
+                save_data_enable.Text = Program.Lang.String("save_data_enable", "projectform");
+
+                quality_list.Items.Clear();
+                quality_list.Items.AddRange(Program.Lang.StringArray("quality", Tag.ToString()));
             }
         }
 
@@ -44,34 +47,34 @@ namespace FriishProduce
             if (Options != null)
             {
                 // Code logic in derived Form
-                checkBox1.Checked = Options["shared_object_capability"] == "on";
-                checkBox2.Checked = Options["vff_sync_on_write"] == "on";
-                checkBox3.Checked = Options["mouse"] == "on";
-                checkBox4.Checked = Options["qwerty_keyboard"] == "on";
-                comboBox1.SelectedIndex = Options["quality"] == "high" ? 0 : Options["quality"] == "medium" ? 1 : 2;
-                comboBox2.SelectedItem = comboBox2.Items.Cast<string>().FirstOrDefault(n => n.ToString() == Options["vff_cache_size"]);
+                save_data_enable.Checked = Options["shared_object_capability"] == "on";
+                vff_sync_on_write.Checked = Options["vff_sync_on_write"] == "on";
+                mouse.Checked = Options["mouse"] == "on";
+                qwerty_keyboard.Checked = Options["qwerty_keyboard"] == "on";
+                quality_list.SelectedIndex = Options["quality"] == "high" ? 0 : Options["quality"] == "medium" ? 1 : 2;
+                vff_cache_size_list.SelectedItem = vff_cache_size_list.Items.Cast<string>().FirstOrDefault(n => n.ToString() == Options["vff_cache_size"]);
             }
 
-            label1.Enabled = comboBox2.Enabled = checkBox2.Enabled = checkBox1.Checked;
+            vff_cache_size.Enabled = vff_cache_size_list.Enabled = vff_sync_on_write.Enabled = save_data_enable.Checked;
             // *******
         }
 
         protected override void SaveOptions()
         {
             // Code logic in derived Form
-            Options["shared_object_capability"] = checkBox1.Checked ? "on" : "off";
-            Options["vff_sync_on_write"] = checkBox2.Checked ? "on" : "off";
-            Options["mouse"] = checkBox3.Checked ? "on" : "off";
-            Options["qwerty_keyboard"] = checkBox4.Checked ? "on" : "off";
-            Options["quality"] = comboBox1.SelectedIndex == 0 ? "high" : comboBox1.SelectedIndex == 1 ? "medium" : "low";
-            Options["vff_cache_size"] = comboBox2.SelectedItem.ToString();
+            Options["shared_object_capability"] = save_data_enable.Checked ? "on" : "off";
+            Options["vff_sync_on_write"] = vff_sync_on_write.Checked ? "on" : "off";
+            Options["mouse"] = mouse.Checked ? "on" : "off";
+            Options["qwerty_keyboard"] = qwerty_keyboard.Checked ? "on" : "off";
+            Options["quality"] = quality_list.SelectedIndex == 0 ? "high" : quality_list.SelectedIndex == 1 ? "medium" : "low";
+            Options["vff_cache_size"] = vff_cache_size_list.SelectedItem.ToString();
 
             Options["hbm_no_save"] = Options["shared_object_capability"] == "on" ? "no" : "yes";
         }
 
         private void checkBoxChanged(object sender, EventArgs e)
         {
-            if (sender == checkBox1) label1.Enabled = comboBox2.Enabled = checkBox2.Enabled = checkBox1.Checked;
+            if (sender == save_data_enable) vff_cache_size.Enabled = vff_cache_size_list.Enabled = vff_sync_on_write.Enabled = save_data_enable.Checked;
         }
     }
 }

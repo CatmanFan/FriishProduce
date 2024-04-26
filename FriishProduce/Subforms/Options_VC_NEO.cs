@@ -45,7 +45,7 @@ namespace FriishProduce
 
                 else if (Options["BIOS"] == "custom") Options["BIOS"] = VC_NEO.Default.bios;
 
-                comboBox1.SelectedIndex = GetBIOSIndex(Options["BIOS"]);
+                bios_list.SelectedIndex = GetBIOSIndex(Options["BIOS"]);
             }
             // *******
         }
@@ -53,7 +53,7 @@ namespace FriishProduce
         protected override void SaveOptions()
         {
             Options["BIOSPath"] = BIOSPath;
-            Options["BIOS"] = Options["BIOSPath"] != null || File.Exists(Options["BIOSPath"]) ? "custom" : GetBIOSName(comboBox1.SelectedIndex);
+            Options["BIOS"] = Options["BIOSPath"] != null || File.Exists(Options["BIOSPath"]) ? "custom" : GetBIOSName(bios_list.SelectedIndex);
         }
 
         // ---------------------------------------------------------------------------------------------------------------
@@ -94,18 +94,18 @@ namespace FriishProduce
 
         private void BIOSChanged(object sender, EventArgs e)
         {
-            if (GetBIOSName(comboBox1.SelectedIndex) == "custom")
+            if (GetBIOSName(bios_list.SelectedIndex) == "custom")
             {
                 if (BIOSPath == null)
                 {
                     if (ImportBIOS.ShowDialog() == DialogResult.OK)
                         BIOSPath = ImportBIOS.FileName;
 
-                    else comboBox1.SelectedIndex = GetBIOSIndex(Options["BIOS"] == "custom" ? VC_NEO.Default.bios : Options["BIOS"]);
+                    else bios_list.SelectedIndex = GetBIOSIndex(Options["BIOS"] == "custom" ? VC_NEO.Default.bios : Options["BIOS"]);
                 }
             }
 
-            else if (comboBox1.SelectedIndex > 0) BIOSPath = null;
+            else if (bios_list.SelectedIndex > 0) BIOSPath = null;
         }
     }
 }

@@ -253,7 +253,7 @@
     <value>False</value>
   </data>
   <data name="groupBox6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>778, 366</value>
+    <value>778, 364</value>
   </data>
   <data name="groupBox6.Size" type="System.Drawing.Size, System.Drawing">
     <value>312, 115</value>
@@ -403,7 +403,7 @@
     <value>False</value>
   </data>
   <data name="groupBox7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>500, 366</value>
+    <value>500, 364</value>
   </data>
   <data name="groupBox7.Size" type="System.Drawing.Size, System.Drawing">
     <value>271, 115</value>
@@ -736,7 +736,7 @@
     <value>False</value>
   </data>
   <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 366</value>
+    <value>10, 364</value>
   </data>
   <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
     <value>483, 115</value>
@@ -1096,7 +1096,7 @@
     <value>False</value>
   </data>
   <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 259</value>
+    <value>10, 258</value>
   </data>
   <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
     <value>483, 100</value>
@@ -1372,7 +1372,7 @@
     <value>False</value>
   </data>
   <data name="groupBox5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>500, 259</value>
+    <value>500, 258</value>
   </data>
   <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
     <value>451, 100</value>
@@ -1394,63 +1394,6 @@
   </data>
   <data name="&gt;&gt;groupBox5.ZOrder" xml:space="preserve">
     <value>2</value>
-  </data>
-  <data name="ImportWAD.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="ImportWAD.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="ImportWAD.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 108</value>
-  </data>
-  <data name="ImportWAD.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 17</value>
-  </data>
-  <data name="ImportWAD.TabIndex" type="System.Int32, mscorlib">
-    <value>37</value>
-  </data>
-  <data name="ImportWAD.Text" xml:space="preserve">
-    <value>import_wad_from_file</value>
-  </data>
-  <data name="&gt;&gt;ImportWAD.Name" xml:space="preserve">
-    <value>ImportWAD</value>
-  </data>
-  <data name="&gt;&gt;ImportWAD.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ImportWAD.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;ImportWAD.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="DownloadWAD.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="DownloadWAD.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 17</value>
-  </data>
-  <data name="DownloadWAD.Size" type="System.Drawing.Size, System.Drawing">
-    <value>102, 17</value>
-  </data>
-  <data name="DownloadWAD.TabIndex" type="System.Int32, mscorlib">
-    <value>36</value>
-  </data>
-  <data name="DownloadWAD.Text" xml:space="preserve">
-    <value>use_online_wad</value>
-  </data>
-  <data name="&gt;&gt;DownloadWAD.Name" xml:space="preserve">
-    <value>DownloadWAD</value>
-  </data>
-  <data name="&gt;&gt;DownloadWAD.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;DownloadWAD.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;DownloadWAD.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="base_name.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1483,6 +1426,63 @@
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;base_name.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="ImportWAD.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="ImportWAD.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ImportWAD.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 108</value>
+  </data>
+  <data name="ImportWAD.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 17</value>
+  </data>
+  <data name="ImportWAD.TabIndex" type="System.Int32, mscorlib">
+    <value>37</value>
+  </data>
+  <data name="ImportWAD.Text" xml:space="preserve">
+    <value>import_wad_from_file</value>
+  </data>
+  <data name="&gt;&gt;ImportWAD.Name" xml:space="preserve">
+    <value>ImportWAD</value>
+  </data>
+  <data name="&gt;&gt;ImportWAD.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ImportWAD.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;ImportWAD.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="DownloadWAD.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="DownloadWAD.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 17</value>
+  </data>
+  <data name="DownloadWAD.Size" type="System.Drawing.Size, System.Drawing">
+    <value>102, 17</value>
+  </data>
+  <data name="DownloadWAD.TabIndex" type="System.Int32, mscorlib">
+    <value>36</value>
+  </data>
+  <data name="DownloadWAD.Text" xml:space="preserve">
+    <value>use_online_wad</value>
+  </data>
+  <data name="&gt;&gt;DownloadWAD.Name" xml:space="preserve">
+    <value>DownloadWAD</value>
+  </data>
+  <data name="&gt;&gt;DownloadWAD.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DownloadWAD.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;DownloadWAD.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <data name="title_id.AutoSize" type="System.Boolean, mscorlib">
@@ -1663,7 +1663,7 @@
     <value>False</value>
   </data>
   <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 118</value>
+    <value>10, 117</value>
   </data>
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
     <value>483, 135</value>
@@ -1720,7 +1720,7 @@
     <value>NoControl</value>
   </data>
   <data name="pictureBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>960, 263</value>
+    <value>960, 262</value>
   </data>
   <data name="pictureBox2.Size" type="System.Drawing.Size, System.Drawing">
     <value>130, 96</value>
@@ -1753,10 +1753,7 @@
     <value>True</value>
   </metadata>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1100, 495</value>
-  </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+    <value>1100, 490</value>
   </data>
   <data name="$this.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
     <value>No</value>
@@ -1777,7 +1774,7 @@
     <value>BrowseManual</value>
   </data>
   <data name="&gt;&gt;BrowseManual.Type" xml:space="preserve">
-    <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>Ookii.Dialogs.WinForms.VistaFolderBrowserDialog, Ookii.Dialogs.WinForms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=66aa232afad40158</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>ProjectForm</value>

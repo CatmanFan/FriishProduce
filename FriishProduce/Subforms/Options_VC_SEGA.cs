@@ -34,12 +34,12 @@ namespace FriishProduce
                 label2.Text = Program.Lang.String("region");
                 save_sram.Text = Program.Lang.String("save_data_enable", "projectform");
                 console_disableresetbutton.Text = Program.Lang.String("console_disableresetbutton", "vc_sega");
-                toggleSwitchL1.Text = Program.Lang.Toggle(dev_mdpad_enable_6b.Checked, "dev_mdpad_enable_6b", "vc_sega");
+                dev_mdpad_enable_6b.Text = string.Format(Program.Lang.String("dev_mdpad_enable_6b", "vc_sega"), Program.Lang.Console(Console.SMD));
 
                 country.Items.Clear();
-                country.Items.Add(Program.Lang.String("region_u"));
-                country.Items.Add(Program.Lang.String("region_e"));
-                country.Items.Add(Program.Lang.String("region_j"));
+                country.Items.AddRange(new string[] { Program.Lang.String("region_j"), Program.Lang.String("region_u"), Program.Lang.String("region_e") });
+
+                Program.AutoSizeControl(country, label2);
                 #endregion
             }
         }
@@ -50,7 +50,7 @@ namespace FriishProduce
         {
             // Console/emulator-specific tools
             // *******
-            toggleSwitchL1.Enabled = dev_mdpad_enable_6b.Enabled = !IsSMS;
+            dev_mdpad_enable_6b.Enabled = !IsSMS;
             // label1.Enabled = BrightnessValue.Enabled = EmuType >= 2 || IsSMS;
 
             // Form control
@@ -62,7 +62,7 @@ namespace FriishProduce
                 if (Options["console.brightness"] == null || int.Parse(Options["console.brightness"]) < 0) Options["console.brightness"] = VC_SEGA.Default.console_brightness;
 
                 console_brightness.Value = int.Parse(Options["console.brightness"]);
-                country.SelectedIndex = Options["country"] == "jp" ? 0 : Options["country"] == "eu" ? 2 : 1;
+                country.SelectedIndex = Options["country"] == "jp" ? 0 : Options["country"] == "us" ? 1 : 2;
                 dev_mdpad_enable_6b.Checked = Options["dev.mdpad.enable_6b"] == "1";
                 save_sram.Checked = Options["save_sram"] == "1";
                 console_disableresetbutton.Checked = Options["console.disable_resetbutton"] == "1";
@@ -100,12 +100,6 @@ namespace FriishProduce
             label1.Text = console_brightness.Value.ToString();
 
             if (!console_brightness.Enabled) Options["console.brightness"] = null;
-        }
-
-        private void ToggleSwitchChanged(object sender, EventArgs e)
-        {
-            if (sender == dev_mdpad_enable_6b)
-                toggleSwitchL1.Text = Program.Lang.Toggle(dev_mdpad_enable_6b.Checked, "dev_mdpad_enable_6b", "vc_sega");
         }
     }
 }

@@ -79,6 +79,7 @@ namespace FriishProduce
             this.label8 = new System.Windows.Forms.Label();
             this.BannerTitle = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.ImportWAD = new System.Windows.Forms.RadioButton();
             this.DownloadWAD = new System.Windows.Forms.RadioButton();
             this.base_name = new System.Windows.Forms.Label();
             this.title_id = new System.Windows.Forms.Label();
@@ -90,8 +91,7 @@ namespace FriishProduce
             this.BrowsePatch = new System.Windows.Forms.OpenFileDialog();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.BrowseManual = new System.Windows.Forms.OpenFileDialog();
-            this.ImportWAD = new System.Windows.Forms.RadioButton();
+            this.BrowseManual = new Ookii.Dialogs.WinForms.VistaFolderBrowserDialog();
             this.groupBox6.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -507,9 +507,9 @@ namespace FriishProduce
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.base_name);
             this.groupBox2.Controls.Add(this.ImportWAD);
             this.groupBox2.Controls.Add(this.DownloadWAD);
-            this.groupBox2.Controls.Add(this.base_name);
             this.groupBox2.Controls.Add(this.title_id);
             this.groupBox2.Controls.Add(this.panel1);
             this.groupBox2.Controls.Add(this.baseID);
@@ -520,6 +520,14 @@ namespace FriishProduce
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
             this.groupBox2.Tag = "base";
+            // 
+            // ImportWAD
+            // 
+            resources.ApplyResources(this.ImportWAD, "ImportWAD");
+            this.ImportWAD.Name = "ImportWAD";
+            this.ImportWAD.Tag = "import_wad_from_file";
+            this.ImportWAD.UseVisualStyleBackColor = true;
+            this.ImportWAD.CheckedChanged += new System.EventHandler(this.OpenWAD_CheckedChanged);
             // 
             // DownloadWAD
             // 
@@ -600,18 +608,6 @@ namespace FriishProduce
             resources.ApplyResources(this.pictureBox2, "pictureBox2");
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.TabStop = false;
-            // 
-            // BrowseManual
-            // 
-            this.BrowseManual.DefaultExt = "*.zip";
-            // 
-            // ImportWAD
-            // 
-            resources.ApplyResources(this.ImportWAD, "ImportWAD");
-            this.ImportWAD.Name = "ImportWAD";
-            this.ImportWAD.Tag = "import_wad_from_file";
-            this.ImportWAD.UseVisualStyleBackColor = true;
-            this.ImportWAD.CheckedChanged += new System.EventHandler(this.OpenWAD_CheckedChanged);
             // 
             // ProjectForm
             // 
@@ -725,8 +721,8 @@ namespace FriishProduce
         private System.Windows.Forms.Label toggleSwitchL1;
         private JCS.ToggleSwitch toggleSwitch1;
         private System.Windows.Forms.CheckBox LinkSaveData;
-        private System.Windows.Forms.OpenFileDialog BrowseManual;
         private System.Windows.Forms.RadioButton DownloadWAD;
         private System.Windows.Forms.RadioButton ImportWAD;
+        private Ookii.Dialogs.WinForms.VistaFolderBrowserDialog BrowseManual;
     }
 }

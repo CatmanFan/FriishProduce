@@ -1,12 +1,97 @@
-﻿using libWiiSharp;
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Sockets;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace FriishProduce
 {
+    public static class Web
+    {
+        public static bool InternetTest(string URL = null, int timeout = 30)
+        {
+            try
+            {
+                var request = (HttpWebRequest)WebRequest.Create
+                (
+                    !string.IsNullOrWhiteSpace(URL) ? URL :
+                    (
+                        System.Globalization.CultureInfo.InstalledUICulture.Name.StartsWith("fa") ? "https://www.aparat.com/" :
+                        System.Globalization.CultureInfo.InstalledUICulture.Name.Contains("zh-CN") ? "http://www.baidu.com/" :
+                        "https://www.google.com/"
+                    )
+                );
+
+                URL = request.Address.Authority;
+                request.Method = "HEAD";
+                request.KeepAlive = false;
+                request.Timeout = timeout * 500;
+
+                if (CheckDomain(URL, timeout))
+                {
+                    var response = request.GetResponse();
+
+                    for (int i = 0; i < 2; i++)
+                    {
+                        char x = response.ResponseUri.ToString()[i];
+                    }
+
+                    return true;
+                }
+
+                return false;
+            }
+
+            catch (Exception ex)
+            {
+                string message = (ex.Message.Contains(URL) ? ex.Message.Substring(0, ex.Message.IndexOf(':')) : ex.Message) + (ex.Message[ex.Message.Length - 1] != '.' ? "." : string.Empty);
+                throw new Exception(string.Format(Program.Lang.Msg(0, true), message));
+            }
+        }
+
+        private static bool CheckDomain(string URL, int timeout)
+        {
+            string host = URL;
+            try { host = new Uri(URL).Host; } catch { host = URL; }
+
+            using (var tcp = new TcpClient())
+            {
+                var result = tcp.BeginConnect(host, 80, null, null);
+                if (!result.AsyncWaitHandle.WaitOne(TimeSpan.FromSeconds(timeout)))
+                {
+                    throw new WebException("The domain is not available.", WebExceptionStatus.ConnectFailure);
+                }
+
+                tcp.EndConnect(result);
+                return true;
+            }
+        }
+
+        public static byte[] Get(string URL)
+        {
+            // Actual web connection is done here
+            using (MemoryStream ms = new MemoryStream())
+            using (WebClient x = new WebClient())
+            {
+                if (Task.WaitAny
+                    (new Task[]{Task.Run(() =>
+                        {
+                            Stream webS = x.OpenRead(URL);
+                            try { webS.CopyTo(ms); return ms; } catch { return null; }
+                        }
+                    )}, 100 * 1000) == -1)
+                    throw new TimeoutException();
+
+                if (ms.ToArray().Length > 75) return ms.ToArray();
+
+                throw new WebException();
+            }
+        }
+    }
+
     public static class Byte
     {
         public static readonly byte[] Dummy = new byte[] { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };

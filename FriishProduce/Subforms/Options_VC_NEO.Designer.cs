@@ -30,10 +30,10 @@ namespace FriishProduce
         private void InitializeComponent()
         {
             this.ImportBIOS = new System.Windows.Forms.OpenFileDialog();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.bios_list = new System.Windows.Forms.ComboBox();
+            this.bios = new System.Windows.Forms.GroupBox();
             this.bottomPanel1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.bios.SuspendLayout();
             this.SuspendLayout();
             // 
             // b_ok
@@ -53,44 +53,45 @@ namespace FriishProduce
             this.ImportBIOS.DefaultExt = "rom";
             this.ImportBIOS.Filter = ".ROM (*.rom)|*.rom";
             // 
-            // comboBox1
+            // bios_list
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.bios_list.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.bios_list.FormattingEnabled = true;
+            this.bios_list.Items.AddRange(new object[] {
             "auto"});
-            this.comboBox1.Location = new System.Drawing.Point(10, 18);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(360, 21);
-            this.comboBox1.TabIndex = 14;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.BIOSChanged);
+            this.bios_list.Location = new System.Drawing.Point(10, 18);
+            this.bios_list.Name = "bios_list";
+            this.bios_list.Size = new System.Drawing.Size(360, 21);
+            this.bios_list.TabIndex = 14;
+            this.bios_list.SelectedIndexChanged += new System.EventHandler(this.BIOSChanged);
             // 
-            // groupBox1
+            // bios
             // 
-            this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 9);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(380, 50);
-            this.groupBox1.TabIndex = 15;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "BIOS";
+            this.bios.Controls.Add(this.bios_list);
+            this.bios.Location = new System.Drawing.Point(12, 9);
+            this.bios.Name = "bios";
+            this.bios.Size = new System.Drawing.Size(380, 50);
+            this.bios.TabIndex = 15;
+            this.bios.TabStop = false;
+            this.bios.Tag = "bios";
+            this.bios.Text = "bios";
             // 
             // Options_VC_NEO
             // 
             this.ClientSize = new System.Drawing.Size(404, 122);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.bios);
             this.Name = "Options_VC_NEO";
             this.Tag = "vc_neo";
-            this.Controls.SetChildIndex(this.groupBox1, 0);
+            this.Controls.SetChildIndex(this.bios, 0);
             this.bottomPanel1.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
+            this.bios.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private System.Windows.Forms.OpenFileDialog ImportBIOS;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.ComboBox bios_list;
+        private System.Windows.Forms.GroupBox bios;
     }
 }

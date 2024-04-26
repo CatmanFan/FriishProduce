@@ -25,7 +25,7 @@ namespace FriishProduce
             if (!DesignMode)
             {
                 Program.Lang.Control(this);
-                Height = EmuType == 3 ? 320 : 260;
+                Program.AutoSizeControl(romc_type_list, romc_type);
             }
         }
 
@@ -38,12 +38,11 @@ namespace FriishProduce
             if (Options != null)
             {
                 patch_autosizerom.Enabled = patch_fixcrashes.Enabled = EmuType <= 1;
-                g2.Visible = g2.Enabled = EmuType == 3;
                 patch_fixbrightness.Checked = bool.Parse(Options["brightness"]);
                 patch_fixcrashes.Checked = bool.Parse(Options["crash"]);
                 patch_expandedram.Checked = bool.Parse(Options["expansion"]);
                 patch_autosizerom.Checked = bool.Parse(Options["rom_autosize"]);
-                romc_type.SelectedIndex = int.Parse(Options["romc"]);
+                romc_type_list.SelectedIndex = int.Parse(Options["romc"]);
             }
             // *******
         }
@@ -54,14 +53,18 @@ namespace FriishProduce
             Options["crash"] = patch_fixcrashes.Checked.ToString();
             Options["expansion"] = patch_expandedram.Checked.ToString();
             Options["rom_autosize"] = patch_autosizerom.Checked.ToString();
-            Options["romc"] = romc_type.SelectedIndex.ToString();
+            Options["romc"] = romc_type_list.SelectedIndex.ToString();
         }
 
         // ---------------------------------------------------------------------------------------------------------------
 
         private void Form_IsShown(object sender, EventArgs e)
         {
-            Size = g2.Visible ? new Size(475, 280) : new Size(475, 280 - 55);
+            romc_type_list.Visible = romc_type.Visible = romc_type.Enabled = EmuType == 3;
+            g1.Height = romc_type.Visible ? 140 : 110;
+            Height = romc_type.Visible ? 250 : 220;
+            if (!patch_autosizerom.Enabled) patch_autosizerom.Checked = false;
+            if (!patch_fixcrashes.Enabled) patch_fixcrashes.Checked = false;
             CenterToParent();
         }
     }

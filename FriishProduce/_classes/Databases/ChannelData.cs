@@ -1,23 +1,15 @@
-﻿using System;
+﻿using libWiiSharp;
+using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Security.Cryptography;
 using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Text.Json;
-using System.Text.Json.Nodes;
-using System.Text.Json.Serialization.Metadata;
-using libWiiSharp;
 
 namespace FriishProduce
 {
-    public class Database
+    public class ChannelDatabase
     {
-        public class DatabaseEntry
+        public class ChannelEntry
         {
             public string ID { get; set; }
             public List<int> Regions = new List<int>();
@@ -131,8 +123,8 @@ namespace FriishProduce
                         console = "SMS";
                         break;
 
-                    case 'C':
-                        console = "C64";
+                    case 'M':
+                        console = "SMD";
                         break;
 
                     case 'E':
@@ -140,11 +132,12 @@ namespace FriishProduce
                         break;
 
                     case 'P':
-                        console = "SMD";
-                        break;
-
                     case 'Q':
                         console = "TGX";
+                        break;
+
+                    case 'C':
+                        console = "C64";
                         break;
 
                     case 'X':
@@ -178,12 +171,12 @@ namespace FriishProduce
             }
         }
 
-        public List<DatabaseEntry> Entries { get; private set; }
+        public List<ChannelEntry> Entries { get; private set; }
 
         /// <summary>
         /// Loads a database of WADs for a selected console/platform.
         /// </summary>
-        public Database(Console c)
+        public ChannelDatabase(Console c)
         {
             try
             {
@@ -197,10 +190,10 @@ namespace FriishProduce
                     sr.Dispose();
                     ms.Dispose();
 
-                    Entries = new List<DatabaseEntry>();
+                    Entries = new List<ChannelEntry>();
                     foreach (var item in x.EnumerateArray())
                     {
-                        var y = new DatabaseEntry() { ID = item.GetProperty("id").GetString() };
+                        var y = new ChannelEntry() { ID = item.GetProperty("id").GetString() };
                         var reg = item.GetProperty("region");
 
                         for (int i = 0; i < reg.GetArrayLength(); i++)

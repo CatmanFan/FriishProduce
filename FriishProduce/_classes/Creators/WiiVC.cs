@@ -1,4 +1,5 @@
-﻿using libWiiSharp;
+﻿using Ionic.Zip;
+using libWiiSharp;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -16,9 +17,8 @@ namespace FriishProduce
 
         protected ROM ROM { get; set; }
 
-        public string ManualPath { get; set; }
+        public ZipFile Manual { get; set; }
         protected string OrigManual { get; set; }
-        protected byte[] Manual { get; set; }
         protected bool NeedsManualLoaded { get; set; }
 
         protected bool NeedsMainDOL { get; set; }
@@ -77,6 +77,7 @@ namespace FriishProduce
             if (NeedsManualLoaded) ReplaceManual(ManualContent != null ? ManualContent : MainContent);
         }
 
+        #region EMANUAL Functions
         /// <summary>
         /// Dispose of "Operations Guide" button on HOME Menu.
         /// </summary>
@@ -109,56 +110,23 @@ namespace FriishProduce
             catch { if (Content4 != null) Content4.Dispose(); }
         }
 
-        /// <summary>
-        /// Actually does the replacing of the html/man/emanual.arc with the contents of the specified folder.
-        /// </summary>
-        protected U8 ReplaceManual()
+        private void ExtractManual(CCF target, string path)
         {
-            U8 ManualArc = U8.Load(Manual);
+            var extManual = new U8();
 
-            string newFolder = Path.Combine(Paths.Manual, Path.GetFileNameWithoutExtension(OrigManual).Replace("htmlc", "html"));
-            string oldFolder = Directory.Exists(Path.Combine(ManualPath, "emanual")) ? Path.Combine(ManualPath, "emanual")
-                             : Directory.Exists(Path.Combine(ManualPath, "man")) ? Path.Combine(ManualPath, "man")
-                             : Path.Combine(ManualPath, "html");
-
-            Directory.CreateDirectory(newFolder);
-            foreach (string dir in Directory.GetDirectories(oldFolder, "*", SearchOption.AllDirectories))
-                Directory.CreateDirectory(dir.Replace(oldFolder, newFolder));
-            foreach (string path in Directory.GetFiles(oldFolder, "*.*", SearchOption.AllDirectories))
-                File.Copy(path, path.Replace(oldFolder, newFolder), true);
-
-            ManualArc.CreateFromDirectory(Paths.Manual);
-            Directory.Delete(Paths.Manual, true);
-
-            return ManualArc;
-        }
-
-        protected CCF ReplaceManual(CCF target)
-        {
             // Get and read emanual
             // ****************
-            try
-            {
-                if (ManualPath != null)
+            foreach (var item in target.Nodes)
+                if (item.Name.ToLower().Contains("man.arc"))
                 {
-                    foreach (var item in target.Nodes)
-                        if (item.Name.ToLower().Contains("man.arc"))
-                        {
-                            OrigManual = item.Name;
-                            Manual = target.Data[target.GetNodeIndex(OrigManual)];
-                            target.ReplaceFile(target.GetNodeIndex(OrigManual), ReplaceManual().ToByteArray());
-                        }
+                    extManual = U8.Load(target.Data[target.GetNodeIndex(item.Name)]);
                 }
-            }
 
-            catch
-            {
-            }
-
-            return target;
+            extManual.Unpack(path);
+            extManual.Dispose();
         }
 
-        private void ExtractManual(U8 target)
+        private void ExtractManual(U8 target, string path)
         {
             var extManual = new U8();
 
@@ -166,9 +134,7 @@ namespace FriishProduce
 
                 if (item.ToLower().Contains("htmlc.arc") || item.ToLower().Contains("lz77_html.arc") || item.ToLower().Contains("lz77emanual.arc"))
                 {
-                    OrigManual = item;
-
-                    File.WriteAllBytes(Paths.WorkingFolder + "html.arc", target.Data[target.GetNodeIndex(OrigManual)]);
+                    File.WriteAllBytes(Paths.WorkingFolder + "html.arc", target.Data[target.GetNodeIndex(item)]);
                     Utils.Run
                     (
                         Paths.Tools + "wwcxtool.exe",
@@ -188,13 +154,70 @@ namespace FriishProduce
                     extManual = U8.Load(target.Data[target.GetNodeIndex(item)]);
                 }
 
-            extManual.Unpack(@"D:\EMANUAL\");
+            extManual.Unpack(path);
             extManual.Dispose();
+        }
+
+        /// <summary>
+        /// Actually does the replacing of the html/man/emanual.arc with the contents of the specified folder.
+        /// </summary>
+        protected U8 ReplaceManual(byte[] file)
+        {
+            U8 manualArc = U8.Load(file);
+            if (Manual == null) return manualArc;
+            
+            string path = Paths.Manual;
+
+            // Get root folder name
+            // ****************
+            List<string> rootFolders = new List<string>() { "html", "man", "emanual" };
+
+            foreach (var item in rootFolders)
+            {
+                if (item == manualArc.StringTable[0])
+                {
+                    bool hasRoot = Manual[0].IsDirectory && Manual[0].FileName == item;
+                    if (!hasRoot) path = Path.Combine(Paths.Manual, item) + "\\";
+                }
+            }
+
+            Directory.CreateDirectory(path);
+            Manual.Save(Paths.WorkingFolder + "manual.zip");
+            Manual.ExtractAll(path, ExtractExistingFileAction.OverwriteSilently);
+            Manual.Dispose();
+
+            if (File.Exists(Paths.WorkingFolder + "manual.zip")) File.Delete(Paths.WorkingFolder + "manual.zip");
+            manualArc.CreateFromDirectory(Paths.Manual);
+
+            if (Directory.Exists(Paths.Manual)) Directory.Delete(Paths.Manual, true);
+
+            return manualArc;
+        }
+
+        protected CCF ReplaceManual(CCF target)
+        {
+            if (Manual?.Count > 0)
+            {
+                // Get and read emanual
+                // ****************
+                foreach (var item in target.Nodes)
+                    if (item.Name.ToLower().Contains("man.arc"))
+                    {
+                        OrigManual = item.Name;
+                        target.ReplaceFile
+                        (
+                            target.GetNodeIndex(OrigManual),
+                            ReplaceManual(target.Data[target.GetNodeIndex(OrigManual)]).ToByteArray()
+                        );
+                    }
+            }
+            else { CleanManual(); }
+            return target;
         }
 
         protected void ReplaceManual(U8 target)
         {
-            if (ManualPath == null)
+            if (Manual == null || Manual?.Count == 0)
             {
                 CleanManual();
             }
@@ -215,6 +238,8 @@ namespace FriishProduce
                 X htmlc.arc (N64 LZ77)
                 Regex('.+_manual_.+\\.arc\\.lz77$') e.g. makaimura_manual_usa.arc.lz77 (Arcade Ghosts n Goblins) */
 
+                byte[] backup = null;
+
                 // Get and read emanual
                 // ****************
                 try
@@ -224,6 +249,7 @@ namespace FriishProduce
                         if (item.ToLower().Contains("htmlc.arc") || item.ToLower().Contains("lz77_html.arc"))
                         {
                             OrigManual = item;
+                            backup = target.Data[target.GetNodeIndex(OrigManual)];
 
                             File.WriteAllBytes(Paths.WorkingFolder + "html.arc", target.Data[target.GetNodeIndex(OrigManual)]);
                             Utils.Run
@@ -234,8 +260,7 @@ namespace FriishProduce
                             );
                             if (!File.Exists(Paths.WorkingFolder + "html.dec")) throw new Exception(Program.Lang.Msg(2, true));
 
-                            Manual = File.ReadAllBytes(Paths.WorkingFolder + "html.dec");
-                            File.WriteAllBytes("html_modified.dec", ReplaceManual().ToByteArray());
+                            File.WriteAllBytes("html_modified.dec", ReplaceManual(File.ReadAllBytes(Paths.WorkingFolder + "html.dec")).ToByteArray());
 
                             Utils.Run
                             (
@@ -245,7 +270,11 @@ namespace FriishProduce
                             );
                             if (!File.Exists(Paths.WorkingFolder + "html_modified.arc")) throw new Exception(Program.Lang.Msg(2, true));
 
-                            target.ReplaceFile(target.GetNodeIndex(OrigManual), File.ReadAllBytes(Paths.WorkingFolder + "html_modified.arc"));
+                            target.ReplaceFile
+                            (
+                                target.GetNodeIndex(OrigManual),
+                                File.ReadAllBytes(Paths.WorkingFolder + "html_modified.arc")
+                            );
 
                             if (File.Exists(Paths.WorkingFolder + "html.dec")) File.Delete(Paths.WorkingFolder + "html.dec");
                             if (File.Exists(Paths.WorkingFolder + "html.arc")) File.Delete(Paths.WorkingFolder + "html.arc");
@@ -255,20 +284,25 @@ namespace FriishProduce
                         else if (item.ToLower().Contains("emanual.arc") || item.ToLower().Contains("html.arc") || item.ToLower().Contains("man.arc"))
                         {
                             OrigManual = item;
+                            backup = target.Data[target.GetNodeIndex(OrigManual)];
 
-                            Manual = target.Data[target.GetNodeIndex(OrigManual)];
-                            target.ReplaceFile(target.GetNodeIndex(OrigManual), ReplaceManual().ToByteArray());
+                            target.ReplaceFile
+                            (
+                                target.GetNodeIndex(OrigManual),
+                                ReplaceManual(target.Data[target.GetNodeIndex(OrigManual)]).ToByteArray()
+                            );
                         }
                 }
 
                 catch
                 {
-                    // Do error?
-                    // ****************
                     CleanManual();
+                    target.ReplaceFile(target.GetNodeIndex(OrigManual), backup);
+                    MessageBox.Show(Program.Lang.Msg(10, true));
                 }
             }
         }
+        #endregion
 
         public virtual WAD Write()
         {
@@ -367,7 +401,6 @@ namespace FriishProduce
             if (WAD != null) WAD.Dispose();
             if (Contents != null) Contents.Clear();
             ROM = null;
-            ManualPath = null;
             OrigManual = null;
             Manual = null;
         }

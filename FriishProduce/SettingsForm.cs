@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
@@ -76,17 +77,23 @@ namespace FriishProduce
             foreach (var item in Program.Lang.List)
                 lngList.Items.Add(item.Value);
 
-            if (Default.Language == "sys") lngList.SelectedIndex = 0;
-            else lngList.SelectedIndex = Program.Lang.List.Keys.ToList().IndexOf(Default.Language) + 1;
+            if (Default.language == "sys") lngList.SelectedIndex = 0;
+            else lngList.SelectedIndex = Program.Lang.List.Keys.ToList().IndexOf(Default.language) + 1;
 
+            image_interpolation_mode.Text = Program.Lang.String(image_interpolation_mode.Name, "projectform");
             image_interpolation_mode_list.Items.Clear();
             image_interpolation_mode_list.Items.AddRange(Program.Lang.StringArray("image_interpolation_mode", "projectform"));
-            image_interpolation_mode_list.SelectedIndex = Default.ImageInterpolation;
+            image_interpolation_mode_list.SelectedIndex = Default.image_interpolation;
 
-            auto_retrieve_gamedata_online.Checked = Default.AutoLibRetro;
+            gamedata_source_image_list.Items.Clear();
+            gamedata_source_image_list.Items.AddRange(new string[] { Program.Lang.String("automatic"), "https://thumbnails.libretro.com/", "https://github.com/libretro/libretro-thumbnails/" });
+            gamedata_source_image_list.SelectedIndex = Default.gamedata_source_image;
+
+            retrieve_gamedata_online.Text = Program.Lang.String(retrieve_gamedata_online.Name, "mainform") != "undefined" ? Program.Lang.String(retrieve_gamedata_online.Name, "mainform") : Program.Lang.String(retrieve_gamedata_online.Name, Name);
+            auto_retrieve_gamedata_online.Checked = Default.auto_retrieve_game_data;
             reset_all_dialogs.Checked = false;
 
-            adobe_flash_savedata.Text = vc_pce_backupram.Text = vc_sega_save_sram.Text = Program.Lang.String("save_data_enable", "projectform");
+            flash_save_data_enable.Text = vc_pce_backupram.Text = vc_sega_save_sram.Text = Program.Lang.String("save_data_enable", "projectform");
 
             // -----------------------------
 
@@ -108,7 +115,6 @@ namespace FriishProduce
             vc_n64_patch_expandedram.Text = Program.Lang.String("patch_expandedram", "vc_n64");
             vc_n64_patch_autosizerom.Text = Program.Lang.String("patch_autosizerom", "vc_n64");
             vc_n64_romc_type.Text = Program.Lang.String("romc_type", "vc_n64");
-            vc_n64_patches.Text = Program.Lang.String("patches", "vc_n64");
 
             vc_n64_romc_type_list.Items.Clear();
             vc_n64_romc_type_list.Items.AddRange(Program.Lang.StringArray("romc_type", "vc_n64"));
@@ -120,9 +126,7 @@ namespace FriishProduce
             vc_sega_console_disableresetbutton.Text = Program.Lang.String("console_disableresetbutton", "vc_sega");
 
             vc_sega_country.Items.Clear();
-            vc_sega_country.Items.Add(Program.Lang.String("region_j"));
-            vc_sega_country.Items.Add(Program.Lang.String("region_u"));
-            vc_sega_country.Items.Add(Program.Lang.String("region_e"));
+            vc_sega_country.Items.AddRange(new string[] { Program.Lang.String("region_j"), Program.Lang.String("region_u"), Program.Lang.String("region_e") });
 
             // -----------------------------
 
@@ -139,13 +143,24 @@ namespace FriishProduce
 
             // -----------------------------
 
-            groupBox14.Text = Program.Lang.String("save_data", "projectform");
+            flash_save_data.Text = Program.Lang.String("save_data", "projectform");
+            flash_save_data_enable.Text = Program.Lang.String("save_data_enable", "projectform");
+            flash_vff_sync_on_write.Text = Program.Lang.String("vff_sync_on_write", "adobe_flash");
+            flash_vff_cache_size.Text = Program.Lang.String("vff_cache_size", "adobe_flash");
+            flash_controls.Text = Program.Lang.String("controls", "adobe_flash");
+            flash_mouse.Text = Program.Lang.String("mouse", "adobe_flash");
+            flash_qwerty_keyboard.Text = Program.Lang.String("qwerty_keyboard", "adobe_flash");
+            flash_quality.Text = Program.Lang.String("quality", "adobe_flash");
+
+            flash_quality_list.Items.Clear();
+            flash_quality_list.Items.AddRange(Program.Lang.StringArray("quality", "adobe_flash"));
 
             // -----------------------------
 
             FStorage_SD.Checked = FORWARDER.Default.root_storage_device.ToLower() == "sd";
             toggleSwitch1.Checked = FORWARDER.Default.nand_loader.ToLower() == "vwii";
             FStorage_USB.Checked = !FStorage_SD.Checked;
+            autolink_save_data.Checked = Default.link_save_data;
 
             vc_nes_palettelist.SelectedIndex = int.Parse(VC_NES.Default.palette);
             vc_nes_palette_use_on_banner.Checked = bool.Parse(VC_NES.Default.palette_use_on_banner);
@@ -160,7 +175,7 @@ namespace FriishProduce
             SEGA_console_brightness.Value = int.Parse(label1.Text);
             vc_sega_save_sram.Checked = VC_SEGA.Default.save_sram == "1";
             vc_sega_dev_mdpad_enable_6b.Checked = VC_SEGA.Default.dev_mdpad_enable_6b == "1";
-            vc_sega_country.SelectedIndex = VC_SEGA.Default.country == "jp" ? 0 : VC_SEGA.Default.country == "eu" ? 2 : 1;
+            vc_sega_country.SelectedIndex = VC_SEGA.Default.country == "jp" ? 0 : VC_SEGA.Default.country == "us" ? 1 : 2;
             vc_sega_console_disableresetbutton.Checked = VC_SEGA.Default.console_disableresetbutton == "1";
 
             vc_pce_backupram.Checked = VC_PCE.Default.BACKUPRAM == "1";
@@ -188,15 +203,17 @@ namespace FriishProduce
                     break;
             }
 
-            adobe_flash_savedata.Checked = ADOBEFLASH.Default.shared_object_capability == "on";
-            FLASH_vff_sync_on_write.Checked = ADOBEFLASH.Default.vff_sync_on_write == "on";
-            FLASH_vff_cache_size.SelectedItem = FLASH_vff_cache_size.Items.Cast<string>().FirstOrDefault(n => n.ToString() == ADOBEFLASH.Default.vff_cache_size);
-            FLASH_quality.SelectedIndex = ADOBEFLASH.Default.quality == "high" ? 0 : ADOBEFLASH.Default.quality == "medium" ? 1 : 2;
-            FLASH_mouse.Checked = ADOBEFLASH.Default.mouse == "on";
-            FLASH_qwerty_keyboard.Checked = ADOBEFLASH.Default.qwerty_keyboard == "on";
-            label4.Enabled = FLASH_vff_sync_on_write.Enabled = FLASH_vff_cache_size.Enabled = adobe_flash_savedata.Checked;
+            flash_save_data_enable.Checked = ADOBEFLASH.Default.shared_object_capability == "on";
+            flash_vff_sync_on_write.Checked = ADOBEFLASH.Default.vff_sync_on_write == "on";
+            flash_vff_cache_size_list.SelectedItem = flash_vff_cache_size_list.Items.Cast<string>().FirstOrDefault(n => n.ToString() == ADOBEFLASH.Default.vff_cache_size);
+            flash_quality_list.SelectedIndex = ADOBEFLASH.Default.quality == "high" ? 0 : ADOBEFLASH.Default.quality == "medium" ? 1 : 2;
+            flash_mouse.Checked = ADOBEFLASH.Default.mouse == "on";
+            flash_qwerty_keyboard.Checked = ADOBEFLASH.Default.qwerty_keyboard == "on";
+            flash_vff_cache_size.Enabled = flash_vff_sync_on_write.Enabled = flash_vff_cache_size_list.Enabled = flash_save_data_enable.Checked;
 
             ToggleSwitchText();
+            Program.AutoSizeControl(gamedata_source_image_list, gamedata_source_image);
+            Program.AutoSizeControl(vc_sega_country, vc_sega_country_l);
 
             // -----------------------------
         }
@@ -214,18 +231,20 @@ namespace FriishProduce
                     if (item.Value == lngList.SelectedItem.ToString())
                         lng = item.Key;
 
-            Default.Language = lng;
+            Default.language = lng;
 
             // -------------------------------------------
             // Other settings
             // -------------------------------------------
-            Default.ImageInterpolation = image_interpolation_mode_list.SelectedIndex;
-            Default.AutoLibRetro = auto_retrieve_gamedata_online.Checked;
+            Default.image_interpolation = image_interpolation_mode_list.SelectedIndex;
+            Default.auto_retrieve_game_data = auto_retrieve_gamedata_online.Checked;
             Default.Save();
             Program.Lang = new Language(lng);
 
             FORWARDER.Default.root_storage_device = FStorage_SD.Checked ? "SD" : "USB";
             FORWARDER.Default.nand_loader = toggleSwitch1.Checked ? "vWii" : "Wii";
+            Default.link_save_data = autolink_save_data.Checked;
+            Default.gamedata_source_image = gamedata_source_image_list.SelectedIndex;
 
             VC_NES.Default.palette = vc_nes_palettelist.SelectedIndex.ToString();
             VC_NES.Default.palette_use_on_banner = vc_nes_palette_use_on_banner.Checked.ToString();
@@ -251,12 +270,12 @@ namespace FriishProduce
             VC_PCE.Default.RASTER = vc_pce_raster.Checked ? "1" : "0";
             VC_PCE.Default.SPRLINE = vc_pce_sprline.Checked ? "1" : "0";
 
-            ADOBEFLASH.Default.shared_object_capability = adobe_flash_savedata.Checked ? "on" : "off";
-            ADOBEFLASH.Default.vff_sync_on_write = FLASH_vff_sync_on_write.Checked ? "on" : "off";
-            ADOBEFLASH.Default.vff_cache_size = FLASH_vff_cache_size.SelectedItem.ToString();
-            ADOBEFLASH.Default.quality = FLASH_quality.SelectedIndex == 0 ? "high" : FLASH_quality.SelectedIndex == 1 ? "medium" : "low";
-            ADOBEFLASH.Default.mouse = FLASH_mouse.Checked ? "on" : "off";
-            ADOBEFLASH.Default.qwerty_keyboard = FLASH_qwerty_keyboard.Checked ? "on" : "off";
+            ADOBEFLASH.Default.shared_object_capability = flash_save_data_enable.Checked ? "on" : "off";
+            ADOBEFLASH.Default.vff_sync_on_write = flash_vff_sync_on_write.Checked ? "on" : "off";
+            ADOBEFLASH.Default.vff_cache_size = flash_vff_cache_size_list.SelectedItem.ToString();
+            ADOBEFLASH.Default.quality = flash_quality_list.SelectedIndex == 0 ? "high" : flash_quality_list.SelectedIndex == 1 ? "medium" : "low";
+            ADOBEFLASH.Default.mouse = flash_mouse.Checked ? "on" : "off";
+            ADOBEFLASH.Default.qwerty_keyboard = flash_qwerty_keyboard.Checked ? "on" : "off";
             ADOBEFLASH.Default.hbm_no_save = ADOBEFLASH.Default.shared_object_capability == "on" ? "no" : "yes";
 
             switch (vc_neo_bios_list.SelectedIndex)
@@ -278,8 +297,8 @@ namespace FriishProduce
 
             if (reset_all_dialogs.Checked)
             {
-                Default.DoNotShow_Welcome = false;
-                Default.DoNotShow_000 = false;
+                Default.donotshow_welcome = false;
+                Default.donotshow_000 = false;
             }
 
             // -------------------------------------------
@@ -348,6 +367,7 @@ namespace FriishProduce
             bool[] isVisible = new bool[]
                 {
                     v_selected == "0",
+                    v_selected == "1",
                     v_selected == "forwarders",
                     v_selected == "nes",
                     v_selected == "n64",
@@ -362,13 +382,14 @@ namespace FriishProduce
                 if (item == true)
                 {
                     panel1.Visible = isVisible[0];
-                    forwarder.Visible = isVisible[1];
-                    vc_nes.Visible = isVisible[2];
-                    vc_n64.Visible = isVisible[3];
-                    vc_sega.Visible = isVisible[4];
-                    vc_pce.Visible = isVisible[5];
-                    vc_neo.Visible = isVisible[6];
-                    adobe_flash.Visible = isVisible[7];
+                    panel2.Visible = isVisible[1];
+                    forwarder.Visible = isVisible[2];
+                    vc_nes.Visible = isVisible[3];
+                    vc_n64.Visible = isVisible[4];
+                    vc_sega.Visible = isVisible[5];
+                    vc_pce.Visible = isVisible[6];
+                    vc_neo.Visible = isVisible[7];
+                    adobe_flash.Visible = isVisible[8];
                 }
             }
         }
@@ -376,7 +397,7 @@ namespace FriishProduce
         private void ToggleSwitchChanged(object sender, EventArgs e)
         {
             ToggleSwitchText();
-            label4.Enabled = FLASH_vff_sync_on_write.Enabled = FLASH_vff_cache_size.Enabled = adobe_flash_savedata.Checked;
+            flash_vff_cache_size.Enabled = flash_vff_sync_on_write.Enabled = flash_vff_cache_size_list.Enabled = flash_save_data_enable.Checked;
         }
 
         private void ToggleSwitchText()

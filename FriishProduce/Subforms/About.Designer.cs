@@ -73,6 +73,7 @@ namespace FriishProduce
             // labelTranslation
             // 
             this.labelTranslation.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelTranslation.Font = new System.Drawing.Font("Tahoma", 8.25F);
             this.labelTranslation.Location = new System.Drawing.Point(202, 57);
             this.labelTranslation.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
             this.labelTranslation.MaximumSize = new System.Drawing.Size(0, 17);
@@ -110,6 +111,7 @@ namespace FriishProduce
             // labelVersion
             // 
             this.labelVersion.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelVersion.Font = new System.Drawing.Font("Tahoma", 8.25F);
             this.labelVersion.Location = new System.Drawing.Point(202, 19);
             this.labelVersion.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
             this.labelVersion.MaximumSize = new System.Drawing.Size(0, 17);
@@ -122,6 +124,7 @@ namespace FriishProduce
             // labelCopyright
             // 
             this.labelCopyright.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelCopyright.Font = new System.Drawing.Font("Tahoma", 8.25F);
             this.labelCopyright.Location = new System.Drawing.Point(202, 38);
             this.labelCopyright.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
             this.labelCopyright.MaximumSize = new System.Drawing.Size(0, 17);
@@ -134,6 +137,7 @@ namespace FriishProduce
             // labelCompanyName
             // 
             this.labelCompanyName.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelCompanyName.Font = new System.Drawing.Font("Tahoma", 8.25F);
             this.labelCompanyName.Location = new System.Drawing.Point(202, 76);
             this.labelCompanyName.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
             this.labelCompanyName.MaximumSize = new System.Drawing.Size(0, 17);
@@ -146,6 +150,7 @@ namespace FriishProduce
             // textBoxDescription
             // 
             this.textBoxDescription.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxDescription.Font = new System.Drawing.Font("Tahoma", 8.25F);
             this.textBoxDescription.Location = new System.Drawing.Point(202, 98);
             this.textBoxDescription.Margin = new System.Windows.Forms.Padding(6, 3, 3, 3);
             this.textBoxDescription.Multiline = true;
@@ -175,7 +180,6 @@ namespace FriishProduce
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.ClientSize = new System.Drawing.Size(614, 230);
             this.Controls.Add(this.tableLayoutPanel);
-            this.Font = new System.Drawing.Font("Tahoma", 8.25F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;

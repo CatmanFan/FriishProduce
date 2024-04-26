@@ -102,6 +102,7 @@ namespace FriishProduce
             this.tabControl.BackHighColor = System.Drawing.Color.WhiteSmoke;
             this.tabControl.BackLowColor = System.Drawing.Color.White;
             this.tabControl.CloseButtonVisible = true;
+            this.tabControl.FontBoldOnSelect = false;
             this.tabControl.ForeColorDisabled = System.Drawing.Color.DarkGray;
             resources.ApplyResources(this.tabControl, "tabControl");
             this.tabControl.MenuRenderer = null;
@@ -383,6 +384,7 @@ namespace FriishProduce
             // 
             // ToolStrip_ExportWAD
             // 
+            this.ToolStrip_ExportWAD.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             resources.ApplyResources(this.ToolStrip_ExportWAD, "ToolStrip_ExportWAD");
             this.ToolStrip_ExportWAD.Image = global::FriishProduce.Properties.Resources.wooden_box_pencil;
             this.ToolStrip_ExportWAD.Name = "ToolStrip_ExportWAD";
@@ -396,6 +398,7 @@ namespace FriishProduce
             // 
             // ToolStrip_OpenROM
             // 
+            this.ToolStrip_OpenROM.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             resources.ApplyResources(this.ToolStrip_OpenROM, "ToolStrip_OpenROM");
             this.ToolStrip_OpenROM.Image = global::FriishProduce.Properties.Resources.disc_case;
             this.ToolStrip_OpenROM.Name = "ToolStrip_OpenROM";

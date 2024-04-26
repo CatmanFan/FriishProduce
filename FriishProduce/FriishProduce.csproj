@@ -146,63 +146,53 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Options\ADOBEFLASH.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>ADOBEFLASH.settings</DependentUpon>
-    </Compile>
-    <Compile Include="Options\FORWARDER.Designer.cs">
-      <DependentUpon>FORWARDER.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <AutoGen>True</AutoGen>
-    </Compile>
-    <Compile Include="Options\VC_N64.Designer.cs">
-      <DependentUpon>VC_N64.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <AutoGen>True</AutoGen>
-    </Compile>
-    <Compile Include="Options\VC_NEO.Designer.cs">
-      <DependentUpon>VC_NEO.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <AutoGen>True</AutoGen>
-    </Compile>
-    <Compile Include="Options\VC_NES.Designer.cs">
-      <DependentUpon>VC_NES.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <AutoGen>True</AutoGen>
-    </Compile>
-    <Compile Include="Options\VC_PCE.Designer.cs">
-      <DependentUpon>VC_PCE.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <AutoGen>True</AutoGen>
-    </Compile>
-    <Compile Include="Options\VC_SEGA.Designer.cs">
-      <DependentUpon>VC_SEGA.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <AutoGen>True</AutoGen>
-    </Compile>
+    <Compile Include="Options\ADOBEFLASH.Designer.cs" />
+    <Compile Include="Options\FORWARDER.Designer.cs" />
+    <Compile Include="Options\VC_N64.Designer.cs" />
+    <Compile Include="Options\VC_NEO.Designer.cs" />
+    <Compile Include="Options\VC_NES.Designer.cs" />
+    <Compile Include="Options\VC_PCE.Designer.cs" />
+    <Compile Include="Options\VC_SEGA.Designer.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Subforms\Options\Options_VC_NEO.cs">
+    <Compile Include="Subforms\Options_Flash.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Subforms\Options\Options_VC_NEO.Designer.cs">
+    <Compile Include="Subforms\Options_Flash.Designer.cs">
+      <DependentUpon>Options_Flash.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Subforms\Options_VC_N64.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Subforms\Options_VC_N64.Designer.cs">
+      <DependentUpon>Options_VC_N64.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Subforms\Options_VC_NEO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Subforms\Options_VC_NEO.Designer.cs">
       <DependentUpon>Options_VC_NEO.cs</DependentUpon>
     </Compile>
-    <Compile Include="Subforms\Options\Options_VC_PCE.cs">
+    <Compile Include="Subforms\Options_VC_NES.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Subforms\Options\Options_VC_PCE.Designer.cs">
+    <Compile Include="Subforms\Options_VC_NES.Designer.cs">
+      <DependentUpon>Options_VC_NES.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Subforms\Options_VC_PCE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Subforms\Options_VC_PCE.Designer.cs">
       <DependentUpon>Options_VC_PCE.cs</DependentUpon>
     </Compile>
-    <Compile Include="Subforms\Options\Options_Flash.cs">
+    <Compile Include="Subforms\Options_VC_SEGA.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Subforms\Options\Options_Flash.Designer.cs">
-      <DependentUpon>Options_Flash.cs</DependentUpon>
+    <Compile Include="Subforms\Options_VC_SEGA.Designer.cs">
+      <DependentUpon>Options_VC_SEGA.cs</DependentUpon>
     </Compile>
     <Compile Include="Tutorial.cs">
       <SubType>Form</SubType>
@@ -212,7 +202,7 @@
     </Compile>
     <Compile Include="_classes\Files\CCF.cs" />
     <Compile Include="_classes\BannerPreview.cs" />
-    <Compile Include="_classes\Program\Database.cs" />
+    <Compile Include="_classes\Databases\ChannelData.cs" />
     <Compile Include="_classes\Program\Language.cs" />
     <Compile Include="_classes\Creators\Flash.cs" />
     <Compile Include="_classes\Creators\Forwarder.cs" />
@@ -275,24 +265,6 @@
     <Compile Include="Subforms\ContentOptions.Designer.cs">
       <DependentUpon>ContentOptions.cs</DependentUpon>
     </Compile>
-    <Compile Include="Subforms\Options\Options_VC_SEGA.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Subforms\Options\Options_VC_SEGA.Designer.cs">
-      <DependentUpon>Options_VC_SEGA.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Subforms\Options\Options_VC_N64.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Subforms\Options\Options_VC_N64.Designer.cs">
-      <DependentUpon>Options_VC_N64.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Subforms\Options\Options_VC_NES.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Subforms\Options\Options_VC_NES.Designer.cs">
-      <DependentUpon>Options_VC_NES.cs</DependentUpon>
-    </Compile>
     <Compile Include="SettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -311,7 +283,7 @@
     <Compile Include="_classes\Program\MessageBox.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="_classes\LibRetroDB.cs" />
+    <Compile Include="_classes\Databases\GameData.cs" />
     <Compile Include="_classes\Program\Paths.cs" />
     <Compile Include="_classes\Files\ROM.cs" />
     <Compile Include="_classes\ImageHelper.cs" />
@@ -330,24 +302,6 @@
     <EmbeddedResource Include="Subforms\ContentOptions.resx">
       <DependentUpon>ContentOptions.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Subforms\Options\Options_Flash.resx">
-      <DependentUpon>Options_Flash.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Subforms\Options\Options_VC_NEO.resx">
-      <DependentUpon>Options_VC_NEO.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Subforms\Options\Options_VC_PCE.resx">
-      <DependentUpon>Options_VC_PCE.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Subforms\Options\Options_VC_SEGA.resx">
-      <DependentUpon>Options_VC_SEGA.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Subforms\Options\Options_VC_N64.resx">
-      <DependentUpon>Options_VC_N64.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Subforms\Options\Options_VC_NES.resx">
-      <DependentUpon>Options_VC_NES.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ProjectForm.resx">
       <DependentUpon>ProjectForm.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -361,6 +315,24 @@
     <EmbeddedResource Include="SettingsForm.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Subforms\Options_Flash.resx">
+      <DependentUpon>Options_Flash.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Subforms\Options_VC_N64.resx">
+      <DependentUpon>Options_VC_N64.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Subforms\Options_VC_NEO.resx">
+      <DependentUpon>Options_VC_NEO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Subforms\Options_VC_NES.resx">
+      <DependentUpon>Options_VC_NES.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Subforms\Options_VC_PCE.resx">
+      <DependentUpon>Options_VC_PCE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Subforms\Options_VC_SEGA.resx">
+      <DependentUpon>Options_VC_SEGA.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Tutorial.resx">
       <DependentUpon>Tutorial.cs</DependentUpon>
     </EmbeddedResource>
@@ -368,40 +340,20 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="database.json" />
+    <None Include="Options\ADOBEFLASH.settings" />
+    <None Include="Options\FORWARDER.settings" />
+    <None Include="Options\VC_N64.settings" />
+    <None Include="Options\VC_NEO.settings" />
+    <None Include="Options\VC_NES.settings" />
+    <None Include="Options\VC_PCE.settings" />
+    <None Include="Options\VC_SEGA.settings" />
     <None Include="Resources\StaticBase.wad" />
+    <None Include="Strings\de.json" />
     <None Include="Strings\fr.json" />
     <None Include="Strings\es.json" />
     <None Include="Strings\en.json" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Options\ADOBEFLASH.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>ADOBEFLASH.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="Options\FORWARDER.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>FORWARDER.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="Options\VC_N64.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>VC_N64.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="Options\VC_NEO.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>VC_NEO.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="Options\VC_NES.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>VC_NES.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="Options\VC_PCE.settings">
-      <Generator>PublicSettingsSingleFileGenerator</Generator>
-      <LastGenOutput>VC_PCE.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="Options\VC_SEGA.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>VC_SEGA.Designer.cs</LastGenOutput>
-    </None>
     <None Include="packages.config" />
     <None Include="packages\Newtonsoft.Json.13.0.3\.signature.p7s" />
     <None Include="packages\RibbonWinForms.5.0.1.1\.signature.p7s" />

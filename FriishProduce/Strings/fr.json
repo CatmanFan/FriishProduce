@@ -18,6 +18,7 @@
 			"b_dont_save": "&Ne pas sauvegarder",
 			"by_default": "Par défaut",
 			"do_not_show": "Ne plus afficher ce message",
+			"automatic": "Automatique",
 			"unknown": "Inconnu(e)",
 			"none": "Aucun(e)",
 			"region": "Région :",
@@ -30,7 +31,8 @@
 			"settings": "Paramètres",
 			"system": "Système",
 			"display": "Affichage",
-			"vc": "Console virtuelle"
+			"vc": "Console virtuelle",
+			"vc_options": "Options de Console virtuelle"
 		},
 		"platforms": {
 			"group1": "Sega",
@@ -66,21 +68,22 @@
 			"002": "Le fichier sélectionné est invalide.",
 			"003": "Sauvegardé avec succès.\nQu'est-ce que vous voudrais faire avec le fichier WAD ?",
 			"003_a": "Ouvrir le dossier de sortie",
-			"004": "Impossible de remplir toutes les formes d'après la base de données Libretro pour ce fichier de jeu.\nCertaines formes peuvent avoir besoin d'être remplis manuellement.",
+			"004": "Impossible de remplir toutes les formes d'après la base de données pour ce fichier de jeu.\nCertaines formes peuvent avoir besoin d'être remplis manuellement.",
 			"005": "Le fichier WAD que vous avez précisée ({0}) est invalide.\nCeci peut être provoqué par l'une des raisons suivantes :\n  • La plateforme/console cible ne correspond pas à celle de la chaîne sélectionnée.\n  • La chaîne n'est pas encore disponible dans la base des données de cette application.\n  • La chaîne était déjà modifiée (soit injectée, soit convertie en forme du forwarder).",
 			"006": "Vous pouvez replacer le mode d'emploi inclus dans la chaîne de Console virtuelle par un autre de votre choix.\n\nPour ce faire, vous aurez besoin d'une archive ZIP comprenant le contenu d'un fichier *.arc du mode d'emploi de Console virtuelle.",
-			"007": "L'archive ne contient pas de contenu mode d'emploi.",
+			"007": "Aucun contenu du mode d'emploi n'a été détecté.",
 			"error": "Un problème est survenu !",
 			"e_000": "Échec de la connexion à Internet.\nMessage : {0}",
 			"e_001": "Échec de la génération de l'image.\nCeci peut être provoqué par un problème avec GDI+.",
 			"e_002": "Échec du replacement des données internes.",
 			"e_003": "La taille de votre fichier de jeu dépasse la limite de {0} {1}.",
-			"e_004": "Échec de modification des options de contenu suivantes :\n{0}\nLa sauvegarde se poursuivra comme prévu.",
+			"e_004": "Échec de modification des options de contenu suivantes :\n{0}\nLa sauvegarde du fichier WAD se poursuivra comme prévu.",
 			"e_005": "L'application requise ({0}) n'est pas disponible dans le sous-répertoire « resources\\tools ».\nVeuillez obtenir cette application et la placer dans ce dossier, puis réessayer.",
 			"e_006": "Échec de la sauvegarde vers format WAD.",
 			"e_007": "Échec de l'application du patch. Il peut s'agir que soit la ROM ne correspond pas au patch, soit elle-même n'est pas valide.",
 			"e_008": "L'émulateur requis ({0}) dans le chemin d'accès « resources\\forwarder\\emulators\\{1}.dol » n'a pas été trouvé.\nVeuillez obtenir le fichier d'émulateur et le placer dans ce chemin, puis réessayer.",
-			"e_009": "Échec du téléchargement de la chaîne."
+			"e_009": "Échec du téléchargement de la chaîne.",
+			"e_010": "Échec de modification du fichier du mode d'emploi.\nLa sauvegarde du fichier WAD se poursuivra comme prévu."
 		}
 	},
 
@@ -111,8 +114,10 @@
 			"default_settings": "Réglages par défaut",
 			"language": "Langue",
 			"system_default": "Système",
-			"default_image_interpolation_mode": "Méthode d'interpolation d'images par défaut",
-			"auto_retrieve_gamedata_online": "Remplir automatiquement dès de la base de données en ligne",
+			"retrieve_gamedata_online": "Remplissage à partir de la base de données en ligne",
+			"auto_retrieve_gamedata_online": "Remplir automatiquement à l'ouverture d'une ROM",
+			"gamedata_source_image": "Site web des images :",
+			"autolink_save_data": "Lier automatiquement le titre des données de sauvegarde avec celles de la chaîne et du banner",
 			"reset_all_dialogs": "Réinitialiser le paramètre « Ne plus afficher ce message »"
 		},
 		"projectform": {
@@ -144,10 +149,10 @@
 			"use_online_wad": "Utiliser une chaîne en ligne",
 			"import_wad_from_file": "Utiliser un fichier WAD",
 			"import_manual": "Importer un mode d'emploi personnalisé",
-			"base_name": "Nom du jeu :",
+			"base_name": "Titre du jeu :",
 			"title_id": "Identifiant :",
-			"short_channel_name": "Nom abrégé :",
-			"full_banner_name": "Nom complet :",
+			"short_channel_name": "Titre abrégé :",
+			"full_banner_name": "Titre complet :",
 			"year": "Année :",
 			"players": "Joueurs :",
 			"save_data": "Données de sauvegarde",
@@ -160,12 +165,11 @@
 			"palette_use_on_banner": "Utiliser cette palette pour les images d'aperçu",
 		},
 		"vc_n64": {
-			"patches": "Patchs",
 			"patch_fixbrightness": "Désactivation du filtre sombre",
 			"patch_fixcrashes": "Correctif des plantages",
 			"patch_expandedram": "RAM interne étendue",
 			"patch_autosizerom": "Allocation de taille de la ROM",
-			"romc_type": "Méthode de compression",
+			"romc_type": "Méthode de compression :",
 			"romc_type0": "ROMC (type 0)",
 			"romc_type1": "ROMC (type 1)"
 		},

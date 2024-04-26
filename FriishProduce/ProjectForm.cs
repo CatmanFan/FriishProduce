@@ -42,8 +42,8 @@ namespace FriishProduce
         protected WAD OutWAD { get; set; }
         protected string PatchFile { get; set; }
         protected string Manual { get; set; }
-        protected LibRetroDB LibRetro { get; set; }
-        protected Database Database { get; set; }
+        protected GameDatabase gameData { get; set; }
+        protected ChannelDatabase channelData { get; set; }
         protected ImageHelper Img { get; set; }
         protected Creator Creator { get; set; }
 
@@ -76,8 +76,9 @@ namespace FriishProduce
             p.PatchFile = PatchFile;
             p.Manual = Manual;
             p.Img = Img?.Source ?? null;
+            p.ForwarderOptions = (FStorage_USB.Checked, toggleSwitch1.Checked);
             p.Options = CO?.Options ?? null;
-            p.LibRetro = LibRetro;
+            p.GameData = gameData;
             p.WADRegion = TargetRegion.SelectedIndex;
             if (!string.IsNullOrWhiteSpace(WADPath)) p.BaseFile = WADPath;
             else p.Base = (Base.SelectedIndex, 0);
@@ -119,7 +120,7 @@ namespace FriishProduce
             Program.Lang.Control(this, "projectform");
             title_id_2.Text = title_id.Text;
             BrowsePatch.Filter = Program.Lang.String("filter.patch");
-            BrowseManual.Filter = Program.Lang.String("filter.zip");
+            // BrowseManualZIP.Filter = Program.Lang.String("filter.zip");
 
             // Change title text to untitled string
             Untitled = string.Format(Program.Lang.String("untitled_project", "mainform"), Program.Lang.String(Enum.GetName(typeof(Console), Console).ToLower(), "platforms"));
@@ -134,7 +135,7 @@ namespace FriishProduce
             // Selected index properties
             imageintpl.Items.Clear();
             imageintpl.Items.AddRange(Program.Lang.StringArray("image_interpolation_mode", Name));
-            imageintpl.SelectedIndex = Properties.Settings.Default.ImageInterpolation;
+            imageintpl.SelectedIndex = Properties.Settings.Default.image_interpolation;
 
             // Regions lists
             TargetRegion.Items.Clear();
@@ -168,9 +169,9 @@ namespace FriishProduce
             #endregion
 
             if (Base.SelectedIndex >= 0)
-                for (int i = 0; i < Database.Entries[Base.SelectedIndex].Regions.Count; i++)
+                for (int i = 0; i < channelData.Entries[Base.SelectedIndex].Regions.Count; i++)
                 {
-                    switch (Database.Entries[Base.SelectedIndex].Regions[i])
+                    switch (channelData.Entries[Base.SelectedIndex].Regions[i])
                     {
                         default:
                         case 0:
@@ -198,10 +199,10 @@ namespace FriishProduce
 
             for (int i = 0; i < Base.Items.Count; i++)
             {
-                var title = Database.Entries[i].Regions.Contains(0) && Program.Lang.Current.StartsWith("ja") ? Database.Entries[i].Titles[0]
-                          : Database.Entries[i].Regions.Contains(0) && Program.Lang.Current.StartsWith("ko") ? Database.Entries[i].Titles[Database.Entries[i].Titles.Count - 1]
-                          : Database.Entries[i].Regions.Contains(0) && Database.Entries[i].Regions.Count > 1 ? Database.Entries[i].Titles[1]
-                          : Database.Entries[i].Titles[0];
+                var title = channelData.Entries[i].Regions.Contains(0) && Program.Lang.Current.StartsWith("ja") ? channelData.Entries[i].Titles[0]
+                          : channelData.Entries[i].Regions.Contains(0) && Program.Lang.Current.StartsWith("ko") ? channelData.Entries[i].Titles[channelData.Entries[i].Titles.Count - 1]
+                          : channelData.Entries[i].Regions.Contains(0) && channelData.Entries[i].Regions.Count > 1 ? channelData.Entries[i].Titles[1]
+                          : channelData.Entries[i].Titles[0];
 
                 Base.Items[i] = title;
             }
@@ -265,27 +266,27 @@ namespace FriishProduce
             InjectorsList.SelectedIndex = 0;
             label3.Enabled = InjectorsList.Enabled = InjectorsList.Items.Count > 1;
 
-            if (Properties.Settings.Default.ImageFitAspectRatio) image_fit.Checked = true; else image_stretch.Checked = true;
+            if (Properties.Settings.Default.image_fit_aspect_ratio) image_fit.Checked = true; else image_stretch.Checked = true;
         }
 
         public ProjectForm(Console c, string ROMpath = null)
         {
             Console = c;
-            Database = new Database(Console);
+            channelData = new ChannelDatabase(Console);
 
             InitializeComponent();
 
             if (ROMpath != null)
             {
                 ROM.Path = ROMpath;
-                LoadROM(ROM.Path, Properties.Settings.Default.AutoLibRetro);
+                LoadROM(ROM.Path, Properties.Settings.Default.auto_retrieve_game_data);
             }
         }
 
         public ProjectForm(Project p)
         {
             Console = p.Console;
-            Database = new Database(Console);
+            channelData = new ChannelDatabase(Console);
             ParentProject = p;
 
             InitializeComponent();
@@ -360,7 +361,7 @@ namespace FriishProduce
                     break;
             }
 
-            LibRetro = Parent.LibRetro;
+            gameData = new GameDatabase();
 
             // Cosmetic
             // ********
@@ -369,14 +370,32 @@ namespace FriishProduce
 
             Creator.BannerYear = (int)ReleaseYear.Value;
             Creator.BannerPlayers = (int)Players.Value;
+            FStorage_USB.Checked = Options.FORWARDER.Default.root_storage_device.ToLower().Contains("usb");
+            toggleSwitch1.Checked = Options.FORWARDER.Default.nand_loader.ToLower().Contains("vwii");
+            LinkSaveData.Checked = Properties.Settings.Default.link_save_data;
+
+            CustomManual.Enabled = false;
+            foreach (var customManualConsole in new List<Console>() // Confirmed to have an algorithm exist for NES, SNES, N64, SEGA, PCE, NEO
+            {
+                Console.NES,
+                Console.SNES,
+                Console.N64,
+                Console.SMS,
+                Console.SMD,
+                // Console.PCE,
+                // Console.NEO
+            })
+                if (Console == customManualConsole) CustomManual.Enabled = true;
 
             AddBases();
 
             if (ParentProject != null)
             {
                 Creator = ParentProject.Creator;
+                FStorage_USB.Checked = ParentProject.ForwarderOptions.Item1;
+                toggleSwitch1.Checked = ParentProject.ForwarderOptions.Item2;
 
-                if (ParentProject.LibRetro != null) LibRetro = ParentProject.LibRetro;
+                if (ParentProject.GameData != null) gameData = ParentProject.GameData;
                 if (CO != null) CO.Options = ParentProject.Options;
 
                 ROM.Path = File.Exists(ParentProject.ROM) ? ParentProject.ROM : null;
@@ -422,10 +441,7 @@ namespace FriishProduce
                 ToggleControls(!string.IsNullOrEmpty(ROM?.Path));
             }
 
-            FStorage_USB.Checked = Options.FORWARDER.Default.root_storage_device.ToLower().Contains("usb");
             FStorage_SD.Checked = !FStorage_USB.Checked;
-            toggleSwitch1.Checked = Options.FORWARDER.Default.nand_loader.ToLower().Contains("vwii");
-            CustomManual.Enabled = Console != Console.NEO && Console != Console.PCE; // Confirmed to have an algorithm exist for NES, SNES, N64, SEGA, PCE,
 
             Tag = null;
             ExportCheck.Invoke(this, EventArgs.Empty);
@@ -456,7 +472,7 @@ namespace FriishProduce
 
         public bool[] CheckToolStripButtons() => new bool[]
             {
-                Console != Console.Flash && (ROM?.Bytes != null || !string.IsNullOrWhiteSpace(ROM?.Path)), // LibRetro
+                Console != Console.Flash && (ROM?.Bytes != null || !string.IsNullOrWhiteSpace(ROM?.Path)), // LibRetro / game data
                 Console != Console.Flash && isVCMode, // Browse manual
             };
 
@@ -465,12 +481,12 @@ namespace FriishProduce
             bool foundRomName = false;
             filename.Text = string.Format(Program.Lang.String("filename", Name), !string.IsNullOrWhiteSpace(ROM?.Path) ? Path.GetFileName(ROM.Path) : Program.Lang.String("unknown"));
 
-            if (LibRetro == null)
+            if (gameData == null)
                 software_name.Text = string.Format(Program.Lang.String("software_name", Name), Program.Lang.String("unknown"));
             else
             {
-                foundRomName = LibRetro.GetCleanTitle() != null;
-                software_name.Text = string.Format(Program.Lang.String("software_name", Name), LibRetro.GetCleanTitle()?.Replace(Environment.NewLine, " - ") ?? Program.Lang.String("unknown"));
+                foundRomName = gameData.CleanTitle != null;
+                software_name.Text = string.Format(Program.Lang.String("software_name", Name), gameData.CleanTitle?.Replace(Environment.NewLine, " - ") ?? Program.Lang.String("unknown"));
             }
             software_name.Visible = foundRomName;
 
@@ -639,7 +655,7 @@ namespace FriishProduce
             if (DesignMode) return;
             // ----------------------------
 
-            if (imageintpl.SelectedIndex != Properties.Settings.Default.ImageInterpolation) Tag = "dirty";
+            if (imageintpl.SelectedIndex != Properties.Settings.Default.image_interpolation) Tag = "dirty";
             LoadImage();
         }
 
@@ -691,9 +707,9 @@ namespace FriishProduce
                 goto Failed;
             }
 
-            for (int h = 0; h < Database.Entries.Count; h++)
-                for (int i = 0; i < Database.Entries[h].Regions.Count; i++)
-                    if (Database.Entries[h].GetUpperID(i) == Reader.UpperTitleID.ToUpper())
+            for (int h = 0; h < channelData.Entries.Count; h++)
+                for (int i = 0; i < channelData.Entries[h].Regions.Count; i++)
+                    if (channelData.Entries[h].GetUpperID(i) == Reader.UpperTitleID.ToUpper())
                     {
                         WADPath = path;
 
@@ -710,9 +726,9 @@ namespace FriishProduce
             return false;
         }
 
-        public void LoadManual(string path)
+        public void LoadManual(string path, bool isFolder = true)
         {
-            if (File.Exists(path))
+            if (File.Exists(path) && !isFolder)
             {
                 using (ZipFile ZIP = ZipFile.Read(path))
                 {
@@ -734,21 +750,54 @@ namespace FriishProduce
                          || item.FileName == "vsscript.css") applicable++;
                     }
 
-                    if (applicable < 2 /* || !hasFolder */)
+                    if (applicable >= 2 /* && hasFolder */)
                     {
-                        MessageBox.Show(Program.Lang.Msg(7), MessageBox.Buttons.Ok, Ookii.Dialogs.WinForms.TaskDialogIcon.Warning);
-                        Manual = null;
+                        Manual = path;
                         goto End;
                     }
+
+                    goto Failed;
                 }
             }
+
+            else if (Directory.Exists(path) && isFolder)
+            {
+                // Check if is a valid emanual contents folder
+                // ****************
+                string folder = path;
+                if (Directory.Exists(Path.Combine(path, "emanual")))
+                    folder = Path.Combine(path, "emanual");
+                else if (Directory.Exists(Path.Combine(path, "html")))
+                    folder = Path.Combine(path, "html");
+
+                int validFiles = 0;
+                if (folder != null)
+                    foreach (var item in Directory.EnumerateFiles(folder))
+                    {
+                        if ((Path.GetFileNameWithoutExtension(item).StartsWith("startup") && Path.GetExtension(item) == ".html")
+                         || Path.GetFileName(item) == "standard.css"
+                         || Path.GetFileName(item) == "contents.css"
+                         || Path.GetFileName(item) == "vsscript.css") validFiles++;
+                    }
+
+                if (validFiles >= 2)
+                {
+                    Manual = path;
+                    goto End;
+                }
+
+                goto Failed;
+            }
+
             else
             {
                 Manual = null;
                 goto End;
             }
 
-            Manual = path;
+            Failed:
+            MessageBox.Show(Program.Lang.Msg(7), MessageBox.Buttons.Ok, Ookii.Dialogs.WinForms.TaskDialogIcon.Warning);
+            Manual = null;
             goto End;
 
             End:
@@ -829,9 +878,9 @@ namespace FriishProduce
             }
         }
 
-        public void LoadROM(bool UseLibRetro = true) => LoadROM(Parent.BrowseROM.FileName, UseLibRetro);
+        public void LoadROM(bool LoadGameData = true) => LoadROM(Parent.BrowseROM.FileName, LoadGameData);
 
-        public void LoadROM(string ROMpath, bool UseLibRetro = true)
+        public void LoadROM(string ROMpath, bool LoadGameData = true)
         {
             switch (Console)
             {
@@ -876,49 +925,49 @@ namespace FriishProduce
 
             Parent.tabControl.Visible = true;
 
-            if (ROM != null && UseLibRetro && CheckToolStripButtons()[0]) LoadLibRetroData();
+            if (ROM != null && LoadGameData && CheckToolStripButtons()[0]) this.LoadGameData();
         }
 
-        public async void LoadLibRetroData()
+        public async void LoadGameData()
         {
             if (ROM == null || ROM.Path == null) return;
 
             try
             {
-                LibRetro = new LibRetroDB { SoftwarePath = ROM.Path };
-                var Retrieved = await Task.FromResult(LibRetro.Get(Console));
+                gameData = new GameDatabase { SoftwarePath = ROM.Path };
+                var Retrieved = await Task.FromResult(gameData.Get(Console));
                 if (Retrieved)
                 {
                     // Set banner title
-                    BannerTitle.Text = Creator.BannerTitle = LibRetro.GetCleanTitle() ?? Creator.BannerTitle;
+                    BannerTitle.Text = Creator.BannerTitle = gameData.CleanTitle ?? Creator.BannerTitle;
 
                     // Set channel title text
-                    if (LibRetro.GetCleanTitle() != null)
+                    if (gameData.CleanTitle != null)
                     {
-                        var text = LibRetro.GetCleanTitle().Replace("\r", "").Split('\n');
+                        var text = gameData.CleanTitle.Replace("\r", "").Split('\n');
                         if (text[0].Length <= ChannelTitle.MaxLength) { ChannelTitle_Locale.Checked = false; ChannelTitle.Text = text[0]; }
                         if (ChannelTitle.TextLength <= SaveDataTitle.MaxLength) SaveDataTitle.Text = ChannelTitle.Text;
                     }
 
                     // Set image
-                    if (LibRetro.GetImgURL() != null) { LoadImage(LibRetro.GetImgURL()); }
+                    if (gameData.ImgURL != null) { LoadImage(gameData.ImgURL); }
 
                     // Set year and players
-                    ReleaseYear.Value = Creator.BannerYear = !string.IsNullOrEmpty(LibRetro.GetYear()) ? int.Parse(LibRetro.GetYear()) : Creator.BannerYear;
-                    Players.Value = Creator.BannerPlayers = !string.IsNullOrEmpty(LibRetro.GetPlayers()) ? int.Parse(LibRetro.GetPlayers()) : Creator.BannerPlayers;
+                    ReleaseYear.Value = Creator.BannerYear = !string.IsNullOrEmpty(gameData.Year) ? int.Parse(gameData.Year) : Creator.BannerYear;
+                    Players.Value = Creator.BannerPlayers = !string.IsNullOrEmpty(gameData.Players) ? int.Parse(gameData.Players) : Creator.BannerPlayers;
                 }
 
                 if (Retrieved) CheckExport();
 
                 // Show message if partially failed to retrieve data
-                if (Retrieved && (LibRetro.GetTitle() == null || LibRetro.GetPlayers() == null || LibRetro.GetYear() == null || LibRetro.GetImgURL() == null))
+                if (Retrieved && (gameData.Title == null || gameData.Players == null || gameData.Year == null || gameData.ImgURL == null))
                     MessageBox.Show(Program.Lang.Msg(4));
                 else if (!Retrieved) System.Media.SystemSounds.Beep.Play();
 
             }
             catch (Exception ex)
             {
-                MessageBox.Show(Program.Lang.String("error", "messages"), ex.Message, MessageBox.Buttons.Ok, Properties.Resources.brick);
+                MessageBox.Error(ex.Message);
             }
         }
 
@@ -932,7 +981,7 @@ namespace FriishProduce
                 // *******
                 OutWAD = new WAD();
                 if (WADPath != null) OutWAD = WAD.Load(WADPath);
-                else foreach (var entry in Database.Entries)
+                else foreach (var entry in channelData.Entries)
                         for (int i = 0; i < entry.Regions.Count; i++)
                             if (entry.GetUpperID(i) == baseID.Text.ToUpper()) OutWAD = entry.GetWAD(i);
                 if (OutWAD == null || OutWAD?.NumOfContents <= 1) throw new Exception(Program.Lang.Msg(9, true));
@@ -1014,7 +1063,7 @@ namespace FriishProduce
 
             catch (Exception ex)
             {
-                MessageBox.Show(Program.Lang.String("error", "messages"), ex.Message, MessageBox.Buttons.Ok, Properties.Resources.brick);
+                MessageBox.Error(ex.Message);
                 return false;
             }
 
@@ -1118,9 +1167,10 @@ namespace FriishProduce
             // *******
             if (CO != null) { VC.Settings = CO.Options; } else { VC.Settings = new Dictionary<string, string> { { "N/A", "N/A" } }; }
 
-            // Set path to manual folder (if it exists) and load WAD
+            // Set path to manual (if it exists) and load WAD
             // *******
-            VC.ManualPath = Manual;
+            VC.Manual = Manual != null ? new ZipFile("manual") : null;
+            if (VC.Manual != null) VC.Manual.AddDirectory(Manual);
 
             // Actually inject everything
             // *******
@@ -1164,7 +1214,7 @@ namespace FriishProduce
         {
             Base.Items.Clear();
 
-            foreach (var entry in Database.Entries)
+            foreach (var entry in channelData.Entries)
             {
                 var title = entry.Regions.Contains(0) && Program.Lang.Current.StartsWith("ja") ? entry.Titles[0]
                           : entry.Regions.Contains(0) && Program.Lang.Current.StartsWith("ko") ? entry.Titles[entry.Titles.Count - 1]
@@ -1190,9 +1240,9 @@ namespace FriishProduce
             // ----------------------------
 
             var regions = new List<string>();
-            for (int i = 0; i < Database.Entries[Base.SelectedIndex].Regions.Count; i++)
+            for (int i = 0; i < channelData.Entries[Base.SelectedIndex].Regions.Count; i++)
             {
-                switch (Database.Entries[Base.SelectedIndex].Regions[i])
+                switch (channelData.Entries[Base.SelectedIndex].Regions[i])
                 {
                     case 0:
                         regions.Add(Program.Lang.String("region_j"));
@@ -1267,9 +1317,9 @@ namespace FriishProduce
 
             // Add regions to WAD region context list
             // ********
-            for (int i = 0; i < Database.Entries[Base.SelectedIndex].Regions.Count; i++)
+            for (int i = 0; i < channelData.Entries[Base.SelectedIndex].Regions.Count; i++)
             {
-                switch (Database.Entries[Base.SelectedIndex].Regions[i])
+                switch (channelData.Entries[Base.SelectedIndex].Regions[i])
                 {
                     case 0:
                         BaseRegionList.Items.Add(Program.Lang.String("region_j"), null, WADRegionList_Click);
@@ -1327,8 +1377,8 @@ namespace FriishProduce
         {
             if (index == -1)
             {
-                for (index = 0; index < Database.Entries[Base.SelectedIndex].Regions.Count; index++)
-                    if (Database.Entries[Base.SelectedIndex].GetUpperID(index)[3] == baseID.Text[3])
+                for (index = 0; index < channelData.Entries[Base.SelectedIndex].Regions.Count; index++)
+                    if (channelData.Entries[Base.SelectedIndex].GetUpperID(index)[3] == baseID.Text[3])
                         goto Set;
 
                 return;
@@ -1337,8 +1387,8 @@ namespace FriishProduce
             Set:
             // Native name & Title ID
             // ********
-            baseName.Text = Database.Entries[Base.SelectedIndex].Titles[index];
-            baseID.Text = Database.Entries[Base.SelectedIndex].GetUpperID(index);
+            baseName.Text = channelData.Entries[Base.SelectedIndex].Titles[index];
+            baseID.Text = channelData.Entries[Base.SelectedIndex].GetUpperID(index);
 
             foreach (ToolStripMenuItem item in BaseRegionList.Items.OfType<ToolStripMenuItem>())
                 item.Checked = false;
@@ -1346,7 +1396,7 @@ namespace FriishProduce
 
             // Flag
             // ********
-            switch (Database.Entries[Base.SelectedIndex].Regions[index])
+            switch (channelData.Entries[Base.SelectedIndex].Regions[index])
                 {
                     default:
                     case 0:
@@ -1382,9 +1432,9 @@ namespace FriishProduce
 
             // Korean WADs use different encoding format & using two lines or going over max limit cause visual bugs
             // ********
-            Creator.OrigRegion = Database.Entries[Base.SelectedIndex].Regions[index] >= 6 ? Creator.RegionType.Korea
-                     : Database.Entries[Base.SelectedIndex].Regions[index] == 0 ? Creator.RegionType.Japan
-                     : Database.Entries[Base.SelectedIndex].Regions[index] >= 3 && Database.Entries[Base.SelectedIndex].Regions[index] <= 5 ? Creator.RegionType.Europe
+            Creator.OrigRegion = channelData.Entries[Base.SelectedIndex].Regions[index] >= 6 ? Creator.RegionType.Korea
+                     : channelData.Entries[Base.SelectedIndex].Regions[index] == 0 ? Creator.RegionType.Japan
+                     : channelData.Entries[Base.SelectedIndex].Regions[index] >= 3 && channelData.Entries[Base.SelectedIndex].Regions[index] <= 5 ? Creator.RegionType.Europe
                      : Creator.RegionType.Universal;
 
             // Changing SaveDataTitle max length & clearing text field when needed
@@ -1424,7 +1474,7 @@ namespace FriishProduce
 
             End:
             LinkSaveDataTitle();
-            UpdateBaseConsole();
+            ResetContentOptions();
             pictureBox1.Image = Preview.Banner(Console, BannerTitle.Text, (int)ReleaseYear.Value, (int)Players.Value, Img?.VCPic, (int)Creator.OrigRegion);
         }
 
@@ -1432,8 +1482,8 @@ namespace FriishProduce
         {
             get
             {
-                if (Database != null)
-                    foreach (var entry in Database.Entries)
+                if (channelData != null)
+                    foreach (var entry in channelData.Entries)
                         for (int i = 0; i < entry.Regions.Count; i++)
                             if (entry.GetUpperID(i) == baseID.Text.ToUpper())
                                 return entry.EmuRevs[i];
@@ -1442,6 +1492,9 @@ namespace FriishProduce
             }
         }
 
+        /// <summary>
+        /// Changes injector settings based on selected base/console
+        /// </summary>
         private void ResetContentOptions()
         {
             COPanel_VC.Hide();
@@ -1457,19 +1510,19 @@ namespace FriishProduce
                 switch (Console)
                 {
                     case Console.NES:
-                        CO = new Options_VC_NES();
+                        CO = new Options_VC_NES() { EmuType = emuVer };
                         break;
 
                     case Console.SNES:
                         break;
 
                     case Console.N64:
-                        CO = new Options_VC_N64();
+                        CO = new Options_VC_N64() { EmuType = Creator.OrigRegion == Creator.RegionType.Korea ? 3 : emuVer };
                         break;
 
                     case Console.SMS:
                     case Console.SMD:
-                        CO = new Options_VC_SEGA() { IsSMS = Console == Console.SMS };
+                        CO = new Options_VC_SEGA() { EmuType = emuVer, IsSMS = Console == Console.SMS };
                         break;
 
                     case Console.PCE:
@@ -1477,7 +1530,7 @@ namespace FriishProduce
                         break;
 
                     case Console.NEO:
-                        CO = new Options_VC_NEO();
+                        CO = new Options_VC_NEO() { EmuType = emuVer };
                         break;
 
                     case Console.MSX:
@@ -1497,55 +1550,23 @@ namespace FriishProduce
             else
                 COPanel_Forwarder.Show();
 
-            if (CO != null) { CO.Text = Program.Lang.String("injection_method_options", "projectform"); CO.Icon = Icon.FromHandle(Properties.Resources.wrench.GetHicon()); }
+            if (CO != null)
+            {
+                CO.Text = Program.Lang.String("injection_method_options", "projectform");
+                CO.Icon = Icon.FromHandle(Properties.Resources.wrench.GetHicon());
+            }
 
+            #region Toggle savedata panel
             LinkSaveData.Visible = SaveIcon_Panel.Visible = SaveDataTitle.Visible = ShowSaveData;
             label16.Visible = !ShowSaveData;
+            #endregion
 
+            #region Set size of content options panel
             var selected = isVCMode ? COPanel_VC : Console != Console.Flash ? COPanel_Forwarder : null;
             int height = selected == null ? MethodOptions.Location.Y + MethodOptions.Height + 11 : selected.Location.Y + selected.Height + 11;
             groupBox3.Size = new Size(groupBox3.Width, height);
-
-            UpdateBaseConsole();
-        }
-
-        /// <summary>
-        /// Changes injector settings based on selected base/console
-        /// </summary>
-        private void UpdateBaseConsole()
-        {
-            // ******************
-            // CONSOLE-SPECIFIC
-            // ******************
-            // -------------------------------------------------------------------------------------
-            switch (Console)
-            {
-                case Console.SNES:
-                    break;
-
-                case Console.N64:
-                    if (isVCMode) CO.EmuType = Creator.OrigRegion == Creator.RegionType.Korea ? 3 : emuVer;
-                    break;
-
-                case Console.SMS:
-                case Console.SMD:
-                    CO.EmuType = emuVer;
-                    break;
-
-                case Console.PCE:
-                    break;
-
-                case Console.NEO:
-                    break;
-
-                case Console.MSX:
-                    break;
-
-                default:
-                    break;
-            }
-
             MethodOptions.Enabled = CO != null;
+            #endregion
         }
         #endregion
 
@@ -1587,11 +1608,11 @@ namespace FriishProduce
         {
             if (CustomManual.Checked && CustomManual.Enabled && Manual == null)
             {
-                if (!Properties.Settings.Default.DoNotShow_000) MessageBox.Show((sender as Control).Text, Program.Lang.Msg(6), 0);
+                if (!Properties.Settings.Default.donotshow_000) MessageBox.Show((sender as Control).Text, Program.Lang.Msg(6), 0);
 
                 if (BrowseManual.ShowDialog() == DialogResult.OK)
                 {
-                    LoadManual(BrowseManual.FileName);
+                    LoadManual(BrowseManual.SelectedPath, true);
                     CheckExport();
                 }
 

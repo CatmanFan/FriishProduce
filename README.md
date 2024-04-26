@@ -44,13 +44,14 @@ See **[here](https://github.com/CatmanFan/FriishProduce/wiki/Translation)** for 
 ---
 
 ## To-Do
-* ***Planned for v1.1:***
-- [ ] Probably reorganize consoles into their own folders?
-- [ ] Restructure and clean code
-- [X] Create project format
-* Other VC injection support to be done later:
-  * Commodore 64 (needs [Custom Frodo](https://gbatemp.net/threads/custom-frodo-for-c64-vc-injection.102356/))
-  * TurboGrafx-16 CD (needs several programs to convert ISO to injectable format)
+* ***Before v1.1 release:***
+  - [ ] Restructure and clean code
+  - [X] Complete custom manual building algorithm (NES/SNES/N64/SEGA only)
+* ***Planned later:***
+  - [ ] Probably reorganize consoles into their own folders?
+  * Other VC injection support:
+    * Commodore 64 (needs [Custom Frodo](https://gbatemp.net/threads/custom-frodo-for-c64-vc-injection.102356/))
+    * TurboGrafx-16 CD (needs several programs to convert ISO to injectable format)
 
 ## Credits
 This program uses the following third-party components and apps:

@@ -85,7 +85,8 @@ namespace FriishProduce
 
             catch (Exception ex)
             {
-                MessageBox.Show(Program.Lang.String("error", "messages"), ex.Message, MessageBox.Buttons.Ok, brick);
+                string message = ex.GetType() == typeof(WebException) ? ex.Message.TrimEnd('.') + "." : ex.Message;
+                MessageBox.Error(message);
                 return null;
             }
         }

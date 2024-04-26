@@ -309,7 +309,7 @@ namespace FriishProduce
             {
                 if (File.Exists(Paths.Banners + tID.ToUpper() + ".bnr")) return;
 
-                var d = new Database(c);
+                var d = new ChannelDatabase(c);
                 foreach (var entry in d.Entries)
                 {
                     for (int i = 0; i < entry.Regions.Count; i++)
@@ -368,7 +368,7 @@ namespace FriishProduce
             }
             catch (Exception ex)
             {
-                MessageBox.Show(Program.Lang.String("error", "messages"), ex.Message, MessageBox.Buttons.Ok, Properties.Resources.brick);
+                MessageBox.Error(ex.Message);
             }
         }
 

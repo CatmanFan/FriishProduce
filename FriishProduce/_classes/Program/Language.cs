@@ -72,7 +72,7 @@ namespace FriishProduce
 
         public Language(string code = null)
         {
-            if (string.IsNullOrWhiteSpace(code)) code = Properties.Settings.Default.Language;
+            if (string.IsNullOrWhiteSpace(code)) code = Properties.Settings.Default.language;
 
             bool valid = false;
             foreach (var item in List)
@@ -84,7 +84,7 @@ namespace FriishProduce
             if (string.IsNullOrWhiteSpace(code) || !valid)
             {
                 code = "sys";
-                Properties.Settings.Default.Language = "sys";
+                Properties.Settings.Default.language = "sys";
                 Properties.Settings.Default.Save();
             }
 
@@ -119,7 +119,7 @@ namespace FriishProduce
                 if (!set)
                 {
                     code = "sys";
-                    Properties.Settings.Default.Language = "sys";
+                    Properties.Settings.Default.language = "sys";
                     Properties.Settings.Default.Save();
 
                     goto Set; // Loop back
@@ -134,11 +134,11 @@ namespace FriishProduce
             if (_current == null)
             {
                 _current = _english;
-                Properties.Settings.Default.Language = "en";
+                Properties.Settings.Default.language = "en";
                 Properties.Settings.Default.Save();
             }
 
-            if (Properties.Settings.Default.Language == "en") _current = _english;
+            if (Properties.Settings.Default.language == "en") _current = _english;
 
             Thread.CurrentThread.CurrentCulture = Thread.CurrentThread.CurrentUICulture = new CultureInfo(code);
         }
