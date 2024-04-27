@@ -37,23 +37,23 @@ namespace FriishProduce
             // *******
             if (Options != null)
             {
-                patch_autosizerom.Enabled = patch_fixcrashes.Enabled = EmuType <= 1;
-                patch_fixbrightness.Checked = bool.Parse(Options["brightness"]);
-                patch_fixcrashes.Checked = bool.Parse(Options["crash"]);
-                patch_expandedram.Checked = bool.Parse(Options["expansion"]);
-                patch_autosizerom.Checked = bool.Parse(Options["rom_autosize"]);
-                romc_type_list.SelectedIndex = int.Parse(Options["romc"]);
+                patch_autosizerom.Enabled           = patch_fixcrashes.Enabled = EmuType <= 1;
+                patch_fixbrightness.Checked         = bool.Parse(Options["brightness"]);
+                patch_fixcrashes.Checked            = bool.Parse(Options["crash"]);
+                patch_expandedram.Checked           = bool.Parse(Options["expansion"]);
+                patch_autosizerom.Checked           = bool.Parse(Options["rom_autosize"]);
+                romc_type_list.SelectedIndex        = int.Parse(Options["romc"]);
             }
             // *******
         }
 
         protected override void SaveOptions()
         {
-            Options["brightness"] = patch_fixbrightness.Checked.ToString();
-            Options["crash"] = patch_fixcrashes.Checked.ToString();
-            Options["expansion"] = patch_expandedram.Checked.ToString();
-            Options["rom_autosize"] = patch_autosizerom.Checked.ToString();
-            Options["romc"] = romc_type_list.SelectedIndex.ToString();
+            Options["brightness"]                   = patch_fixbrightness.Checked.ToString();
+            Options["crash"]                        = patch_fixcrashes.Checked.ToString();
+            Options["expansion"]                    = patch_expandedram.Checked.ToString();
+            Options["rom_autosize"]                 = patch_autosizerom.Checked.ToString();
+            Options["romc"]                         = romc_type_list.SelectedIndex.ToString();
         }
 
         // ---------------------------------------------------------------------------------------------------------------

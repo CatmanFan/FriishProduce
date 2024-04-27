@@ -13,7 +13,7 @@ namespace FriishProduce.Options {
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.10.0.0")]
-    public sealed partial class VC_PCE : global::System.Configuration.ApplicationSettingsBase {
+    internal sealed partial class VC_PCE : global::System.Configuration.ApplicationSettingsBase {
         
         private static VC_PCE defaultInstance = ((VC_PCE)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new VC_PCE())));
         

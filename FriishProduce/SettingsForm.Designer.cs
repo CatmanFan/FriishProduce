@@ -81,7 +81,6 @@ namespace FriishProduce
             this.label1 = new System.Windows.Forms.Label();
             this.SEGA_console_brightness = new System.Windows.Forms.TrackBar();
             this.vc_pce = new System.Windows.Forms.Panel();
-            this.vc_pce_backupram = new System.Windows.Forms.CheckBox();
             this.vc_pce_display = new System.Windows.Forms.GroupBox();
             this.vc_pce_y_offset_l = new System.Windows.Forms.Label();
             this.vc_pce_y_offset = new System.Windows.Forms.NumericUpDown();
@@ -89,6 +88,7 @@ namespace FriishProduce
             this.vc_pce_raster = new System.Windows.Forms.CheckBox();
             this.vc_pce_hide_overscan = new System.Windows.Forms.CheckBox();
             this.vc_pce_system = new System.Windows.Forms.GroupBox();
+            this.vc_pce_backupram = new System.Windows.Forms.CheckBox();
             this.vc_pce_europe_switch = new JCS.ToggleSwitch();
             this.vc_pce_europe = new System.Windows.Forms.Label();
             this.vc_pce_padbutton_switch = new JCS.ToggleSwitch();
@@ -108,6 +108,8 @@ namespace FriishProduce
             this.flash_vff_cache_size_list = new System.Windows.Forms.ComboBox();
             this.LanguageList = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.flash_strap_reminder = new System.Windows.Forms.GroupBox();
+            this.flash_strap_reminder_list = new System.Windows.Forms.ComboBox();
             this.vc_n64_options.SuspendLayout();
             this.vc_n64_romc_type.SuspendLayout();
             this.bottomPanel1.SuspendLayout();
@@ -137,6 +139,7 @@ namespace FriishProduce
             this.flash_quality.SuspendLayout();
             this.flash_save_data.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.flash_strap_reminder.SuspendLayout();
             this.SuspendLayout();
             // 
             // lngList
@@ -540,12 +543,6 @@ namespace FriishProduce
             this.vc_pce.Name = "vc_pce";
             this.vc_pce.Tag = "vc_pce";
             // 
-            // vc_pce_backupram
-            // 
-            resources.ApplyResources(this.vc_pce_backupram, "vc_pce_backupram");
-            this.vc_pce_backupram.Name = "vc_pce_backupram";
-            this.vc_pce_backupram.UseVisualStyleBackColor = true;
-            // 
             // vc_pce_display
             // 
             this.vc_pce_display.Controls.Add(this.vc_pce_y_offset_l);
@@ -609,6 +606,12 @@ namespace FriishProduce
             this.vc_pce_system.TabStop = false;
             this.vc_pce_system.Tag = "vc_options";
             // 
+            // vc_pce_backupram
+            // 
+            resources.ApplyResources(this.vc_pce_backupram, "vc_pce_backupram");
+            this.vc_pce_backupram.Name = "vc_pce_backupram";
+            this.vc_pce_backupram.UseVisualStyleBackColor = true;
+            // 
             // vc_pce_europe_switch
             // 
             resources.ApplyResources(this.vc_pce_europe_switch, "vc_pce_europe_switch");
@@ -650,6 +653,7 @@ namespace FriishProduce
             // 
             // adobe_flash
             // 
+            this.adobe_flash.Controls.Add(this.flash_strap_reminder);
             this.adobe_flash.Controls.Add(this.flash_controls);
             this.adobe_flash.Controls.Add(this.flash_quality);
             this.adobe_flash.Controls.Add(this.flash_save_data);
@@ -762,6 +766,24 @@ namespace FriishProduce
             resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
             // 
+            // flash_strap_reminder
+            // 
+            this.flash_strap_reminder.Controls.Add(this.flash_strap_reminder_list);
+            resources.ApplyResources(this.flash_strap_reminder, "flash_strap_reminder");
+            this.flash_strap_reminder.Name = "flash_strap_reminder";
+            this.flash_strap_reminder.TabStop = false;
+            this.flash_strap_reminder.Tag = "strap_reminder";
+            // 
+            // flash_strap_reminder_list
+            // 
+            this.flash_strap_reminder_list.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.flash_strap_reminder_list.FormattingEnabled = true;
+            this.flash_strap_reminder_list.Items.AddRange(new object[] {
+            resources.GetString("flash_strap_reminder_list.Items")});
+            resources.ApplyResources(this.flash_strap_reminder_list, "flash_strap_reminder_list");
+            this.flash_strap_reminder_list.Name = "flash_strap_reminder_list";
+            this.flash_strap_reminder_list.Tag = "strap_reminder";
+            // 
             // SettingsForm
             // 
             this.AcceptButton = this.b_ok;
@@ -832,6 +854,7 @@ namespace FriishProduce
             this.flash_save_data.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.flash_strap_reminder.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -915,5 +938,7 @@ namespace FriishProduce
         private System.Windows.Forms.ComboBox gamedata_source_image_list;
         private System.Windows.Forms.Label gamedata_source_image;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.GroupBox flash_strap_reminder;
+        private System.Windows.Forms.ComboBox flash_strap_reminder_list;
     }
 }

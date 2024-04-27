@@ -59,15 +59,15 @@ namespace FriishProduce
             switch (c)
             {
                 case Console.NES:
-                    bannerPath += region == Region.Japan ? "jp_fc.bnr" : region == Region.Korea ? "kr_fc.bnr" : "nes.bnr";
+                    bannerPath += region switch { Region.Japan => "jp_fc.bnr", Region.Korea => "kr_fc.bnr", _ => "nes.bnr" };
                     break;
 
                 case Console.SNES:
-                    bannerPath += region == Region.Japan ? "jp_sfc.bnr" : region == Region.Korea ? "kr_sfc.bnr" : "snes.bnr";
+                    bannerPath += region switch { Region.Japan => "jp_sfc.bnr", Region.Korea => "kr_sfc.bnr", _ => "snes.bnr" };
                     break;
 
                 case Console.N64:
-                    bannerPath += region == Region.Japan ? "jp_n64.bnr" : region == Region.Korea ? "kr_n64.bnr" : "n64.bnr";
+                    bannerPath += region switch { Region.Japan => "jp_n64.bnr", Region.Korea => "kr_n64.bnr", _ => "n64.bnr" };
                     break;
 
                 case Console.SMS:
@@ -75,7 +75,7 @@ namespace FriishProduce
                     break;
 
                 case Console.SMD:
-                    bannerPath += region == Region.Japan ? "jp_smd.bnr" : region == Region.Europe ? "smd.bnr" : "gen.bnr";
+                    bannerPath += region switch { Region.Japan => "jp_smd.bnr", Region.Europe => "smd.bnr", _ => "gen.bnr" };
                     break;
 
                 case Console.PCE:

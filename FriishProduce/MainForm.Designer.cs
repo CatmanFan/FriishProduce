@@ -55,7 +55,7 @@ namespace FriishProduce
             this.menu_help = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_tutorial = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.menu_about = new System.Windows.Forms.ToolStripMenuItem();
+            this.menu_about_app = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.MainPanel = new System.Windows.Forms.Panel();
             this.welcome_do_not_show = new System.Windows.Forms.Button();
@@ -273,7 +273,7 @@ namespace FriishProduce
             this.menu_help.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menu_tutorial,
             this.toolStripSeparator5,
-            this.menu_about});
+            this.menu_about_app});
             this.menu_help.Name = "menu_help";
             resources.ApplyResources(this.menu_help, "menu_help");
             this.menu_help.Tag = "help";
@@ -290,13 +290,13 @@ namespace FriishProduce
             this.toolStripSeparator5.Name = "toolStripSeparator5";
             resources.ApplyResources(this.toolStripSeparator5, "toolStripSeparator5");
             // 
-            // menu_about
+            // menu_about_app
             // 
-            this.menu_about.Image = global::FriishProduce.Properties.Resources.mr_saturn;
-            this.menu_about.Name = "menu_about";
-            resources.ApplyResources(this.menu_about, "menu_about");
-            this.menu_about.Tag = "about";
-            this.menu_about.Click += new System.EventHandler(this.About_Click);
+            this.menu_about_app.Image = global::FriishProduce.Properties.Resources.mr_saturn;
+            this.menu_about_app.Name = "menu_about_app";
+            resources.ApplyResources(this.menu_about_app, "menu_about_app");
+            this.menu_about_app.Tag = "about_app";
+            this.menu_about_app.Click += new System.EventHandler(this.About_Click);
             // 
             // toolStripSeparator3
             // 
@@ -517,7 +517,7 @@ namespace FriishProduce
         private System.Windows.Forms.ToolStripMenuItem menu_close_project;
         private System.Windows.Forms.ToolStripMenuItem menu_help;
         private System.Windows.Forms.ToolStripMenuItem menu_tutorial;
-        private System.Windows.Forms.ToolStripMenuItem menu_about;
+        private System.Windows.Forms.ToolStripMenuItem menu_about_app;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.Panel MainPanel;
         private System.Windows.Forms.Label welcome;

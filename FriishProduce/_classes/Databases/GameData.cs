@@ -41,6 +41,11 @@ namespace FriishProduce
         private string imgURL { get; set; }
         public string ImgURL { get => imgURL; }
 
+        /// <summary>
+        /// Gets any game metadata that is available for the file based on its CRC32 reading hash, including the software title, year, players, and title image URL.
+        /// </summary>
+        /// <param name="platform"></param>
+        /// <returns></returns>
         public bool Get(Console platform)
         {
             title = null;

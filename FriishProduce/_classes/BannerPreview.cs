@@ -380,11 +380,11 @@ namespace FriishProduce
                 switch (console)
                 {
                     case Console.NES:
-                        cName = lang == 1 ? "ファミリーコンピュータ" : lang == 2 ? "패밀리컴퓨터" : "NINTENDO ENTERTAINMENT SYSTEM";
+                        cName = lang switch { 1 => "ファミリーコンピュータ", 2 => "패밀리컴퓨터", _ => "NINTENDO ENTERTAINMENT SYSTEM" };
                         break;
 
                     case Console.SNES:
-                        cName = lang == 1 ? "スーパーファミコン" : lang == 2 ? "슈퍼 패미컴" : "SUPER NINTENDO ENTERTAINMENT SYSTEM";
+                        cName = lang switch { 1 => "スーパーファミコン", 2 => "슈퍼 패미컴", _ => "SUPER NINTENDO ENTERTAINMENT SYSTEM" };
                         break;
 
                     case Console.N64:

@@ -39,10 +39,13 @@ namespace FriishProduce
             this.controls = new System.Windows.Forms.GroupBox();
             this.qwerty_keyboard = new System.Windows.Forms.CheckBox();
             this.mouse = new System.Windows.Forms.CheckBox();
+            this.strap_reminder = new System.Windows.Forms.GroupBox();
+            this.strap_reminder_list = new System.Windows.Forms.ComboBox();
             this.bottomPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.quality.SuspendLayout();
             this.controls.SuspendLayout();
+            this.strap_reminder.SuspendLayout();
             this.SuspendLayout();
             // 
             // b_ok
@@ -185,9 +188,33 @@ namespace FriishProduce
             this.mouse.Text = "mouse";
             this.mouse.UseVisualStyleBackColor = true;
             // 
+            // strap_reminder
+            // 
+            this.strap_reminder.Controls.Add(this.strap_reminder_list);
+            this.strap_reminder.Location = new System.Drawing.Point(12, 109);
+            this.strap_reminder.Name = "strap_reminder";
+            this.strap_reminder.Size = new System.Drawing.Size(280, 50);
+            this.strap_reminder.TabIndex = 19;
+            this.strap_reminder.TabStop = false;
+            this.strap_reminder.Tag = "strap_reminder";
+            this.strap_reminder.Text = "strap_reminder";
+            // 
+            // strap_reminder_list
+            // 
+            this.strap_reminder_list.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.strap_reminder_list.FormattingEnabled = true;
+            this.strap_reminder_list.Items.AddRange(new object[] {
+            "auto"});
+            this.strap_reminder_list.Location = new System.Drawing.Point(10, 19);
+            this.strap_reminder_list.Name = "strap_reminder_list";
+            this.strap_reminder_list.Size = new System.Drawing.Size(260, 21);
+            this.strap_reminder_list.TabIndex = 16;
+            this.strap_reminder_list.Tag = "strap_reminder";
+            // 
             // Options_Flash
             // 
             this.ClientSize = new System.Drawing.Size(594, 262);
+            this.Controls.Add(this.strap_reminder);
             this.Controls.Add(this.controls);
             this.Controls.Add(this.quality);
             this.Controls.Add(this.groupBox1);
@@ -196,12 +223,14 @@ namespace FriishProduce
             this.Controls.SetChildIndex(this.groupBox1, 0);
             this.Controls.SetChildIndex(this.quality, 0);
             this.Controls.SetChildIndex(this.controls, 0);
+            this.Controls.SetChildIndex(this.strap_reminder, 0);
             this.bottomPanel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.quality.ResumeLayout(false);
             this.controls.ResumeLayout(false);
             this.controls.PerformLayout();
+            this.strap_reminder.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -217,5 +246,7 @@ namespace FriishProduce
         private System.Windows.Forms.CheckBox qwerty_keyboard;
         private System.Windows.Forms.CheckBox mouse;
         private System.Windows.Forms.CheckBox vff_sync_on_write;
+        private System.Windows.Forms.GroupBox strap_reminder;
+        private System.Windows.Forms.ComboBox strap_reminder_list;
     }
 }

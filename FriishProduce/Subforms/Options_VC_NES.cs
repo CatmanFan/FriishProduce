@@ -39,16 +39,16 @@ namespace FriishProduce
             // *******
             if (Options != null)
             {
-                PaletteList.SelectedIndex = int.Parse(Options["palette"]);
-                palette_use_on_banner.Checked = bool.Parse(Options["use_tImg"]);
+                PaletteList.SelectedIndex           = int.Parse(Options["palette"]);
+                palette_use_on_banner.Checked       = bool.Parse(Options["use_tImg"]);
             }
             // *******
         }
 
         protected override void SaveOptions()
         {
-            Options["palette"] = PaletteList.SelectedIndex.ToString();
-            Options["use_tImg"] = palette_use_on_banner.Checked.ToString();
+            Options["palette"]                      = PaletteList.SelectedIndex.ToString();
+            Options["use_tImg"]                     = palette_use_on_banner.Checked.ToString();
         }
 
         // ---------------------------------------------------------------------------------------------------------------

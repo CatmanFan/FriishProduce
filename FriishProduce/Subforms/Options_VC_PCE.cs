@@ -48,28 +48,28 @@ namespace FriishProduce
             // *******
             if (Options != null)
             {
-                y_offset_toggle.Value = int.Parse(Options["YOFFSET"]);
-                europe_switch.Checked = Options["EUROPE"] == "1";
-                sgenable_switch.Checked = Options["SGENABLE"] == "1";
-                padbutton_switch.Checked = Options["PADBUTTON"] == "6";
-                hide_overscan.Checked = Options["HIDEOVERSCAN"] == "1";
-                raster.Checked = Options["RASTER"] == "1";
-                sprline.Checked = Options["SPRLINE"] == "1";
-                checkBox4.Checked = Options["BACKUPRAM"] == "1";
+                y_offset_toggle.Value               = int.Parse(Options["YOFFSET"]);
+                europe_switch.Checked               = Options["EUROPE"] == "1";
+                sgenable_switch.Checked             = Options["SGENABLE"] == "1";
+                padbutton_switch.Checked            = Options["PADBUTTON"] == "6";
+                hide_overscan.Checked               = Options["HIDEOVERSCAN"] == "1";
+                raster.Checked                      = Options["RASTER"] == "1";
+                sprline.Checked                     = Options["SPRLINE"] == "1";
+                checkBox4.Checked                   = Options["BACKUPRAM"] == "1";
             }
             // *******
         }
 
         protected override void SaveOptions()
         {
-            Options["YOFFSET"] = y_offset_toggle.Value.ToString();
-            Options["EUROPE"] = europe_switch.Checked ? "1" : "0";
-            Options["SGENABLE"] = sgenable_switch.Checked ? "1" : "0";
-            Options["PADBUTTON"] = padbutton_switch.Checked ? "6" : "2";
-            Options["HIDEOVERSCAN"] = hide_overscan.Checked ? "1" : "0";
-            Options["RASTER"] = raster.Checked ? "1" : "0";
-            Options["SPRLINE"] = sprline.Checked ? "1" : "0";
-            Options["BACKUPRAM"] = checkBox4.Checked ? "1" : "0";
+            Options["YOFFSET"]                      = y_offset_toggle.Value.ToString();
+            Options["EUROPE"]                       = europe_switch.Checked ? "1" : "0";
+            Options["SGENABLE"]                     = sgenable_switch.Checked ? "1" : "0";
+            Options["PADBUTTON"]                    = padbutton_switch.Checked ? "6" : "2";
+            Options["HIDEOVERSCAN"]                 = hide_overscan.Checked ? "1" : "0";
+            Options["RASTER"]                       = raster.Checked ? "1" : "0";
+            Options["SPRLINE"]                      = sprline.Checked ? "1" : "0";
+            Options["BACKUPRAM"]                    = checkBox4.Checked ? "1" : "0";
         }
 
         // ---------------------------------------------------------------------------------------------------------------

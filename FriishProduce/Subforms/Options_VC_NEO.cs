@@ -60,36 +60,26 @@ namespace FriishProduce
 
         private string GetBIOSName(int i)
         {
-            switch (i)
+            return i switch
             {
-                default:
-                    return "";
-                case 0:
-                    return "custom";
-                case 1:
-                    return "VC1";
-                case 2:
-                    return "VC2";
-                case 3:
-                    return "VC3";
-            }
+                0 => "custom",
+                1 => "VC1",
+                2 => "VC2",
+                3 => "VC3",
+                _ => "",
+            };
         }
 
         private int GetBIOSIndex(string name)
         {
-            switch (name.ToLower())
+            return name.ToLower() switch
             {
-                default:
-                    return -1;
-                case "custom":
-                    return 0;
-                case "vc1":
-                    return 1;
-                case "vc2":
-                    return 2;
-                case "vc3":
-                    return 3;
-            }
+                "custom" => 0,
+                "vc1" => 1,
+                "vc2" => 2,
+                "vc3" => 3,
+                _ => -1,
+            };
         }
 
         private void BIOSChanged(object sender, EventArgs e)

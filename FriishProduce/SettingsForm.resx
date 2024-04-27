@@ -1839,6 +1839,54 @@
   <data name="&gt;&gt;vc_pce.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
+  <data name="flash_strap_reminder_list.Items" xml:space="preserve">
+    <value>auto</value>
+  </data>
+  <data name="flash_strap_reminder_list.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 19</value>
+  </data>
+  <data name="flash_strap_reminder_list.Size" type="System.Drawing.Size, System.Drawing">
+    <value>235, 21</value>
+  </data>
+  <data name="flash_strap_reminder_list.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="&gt;&gt;flash_strap_reminder_list.Name" xml:space="preserve">
+    <value>flash_strap_reminder_list</value>
+  </data>
+  <data name="&gt;&gt;flash_strap_reminder_list.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flash_strap_reminder_list.Parent" xml:space="preserve">
+    <value>flash_strap_reminder</value>
+  </data>
+  <data name="&gt;&gt;flash_strap_reminder_list.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="flash_strap_reminder.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 110</value>
+  </data>
+  <data name="flash_strap_reminder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>254, 50</value>
+  </data>
+  <data name="flash_strap_reminder.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="flash_strap_reminder.Text" xml:space="preserve">
+    <value>strap_reminder</value>
+  </data>
+  <data name="&gt;&gt;flash_strap_reminder.Name" xml:space="preserve">
+    <value>flash_strap_reminder</value>
+  </data>
+  <data name="&gt;&gt;flash_strap_reminder.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flash_strap_reminder.Parent" xml:space="preserve">
+    <value>adobe_flash</value>
+  </data>
+  <data name="&gt;&gt;flash_strap_reminder.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="flash_qwerty_keyboard.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1900,10 +1948,10 @@
     <value>1</value>
   </data>
   <data name="flash_controls.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 110</value>
+    <value>272, 12</value>
   </data>
   <data name="flash_controls.Size" type="System.Drawing.Size, System.Drawing">
-    <value>280, 65</value>
+    <value>265, 65</value>
   </data>
   <data name="flash_controls.TabIndex" type="System.Int32, mscorlib">
     <value>21</value>
@@ -1921,7 +1969,7 @@
     <value>adobe_flash</value>
   </data>
   <data name="&gt;&gt;flash_controls.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="flash_quality_list.Items" xml:space="preserve">
     <value>auto</value>
@@ -1930,7 +1978,7 @@
     <value>10, 19</value>
   </data>
   <data name="flash_quality_list.Size" type="System.Drawing.Size, System.Drawing">
-    <value>260, 21</value>
+    <value>245, 21</value>
   </data>
   <data name="flash_quality_list.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
@@ -1948,10 +1996,10 @@
     <value>0</value>
   </data>
   <data name="flash_quality.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 181</value>
+    <value>272, 83</value>
   </data>
   <data name="flash_quality.Size" type="System.Drawing.Size, System.Drawing">
-    <value>280, 50</value>
+    <value>265, 50</value>
   </data>
   <data name="flash_quality.TabIndex" type="System.Int32, mscorlib">
     <value>20</value>
@@ -1969,7 +2017,7 @@
     <value>adobe_flash</value>
   </data>
   <data name="&gt;&gt;flash_quality.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="flash_vff_sync_on_write.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2128,7 +2176,7 @@
     <value>12, 10</value>
   </data>
   <data name="flash_save_data.Size" type="System.Drawing.Size, System.Drawing">
-    <value>280, 94</value>
+    <value>254, 94</value>
   </data>
   <data name="flash_save_data.TabIndex" type="System.Int32, mscorlib">
     <value>19</value>
@@ -2146,7 +2194,7 @@
     <value>adobe_flash</value>
   </data>
   <data name="&gt;&gt;flash_save_data.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="adobe_flash.Location" type="System.Drawing.Point, System.Drawing">
     <value>180, 0</value>

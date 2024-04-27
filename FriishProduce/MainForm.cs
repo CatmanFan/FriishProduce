@@ -99,6 +99,7 @@ namespace FriishProduce
             menu_file.Text = Program.Lang.String("file", Name);
             menu_project.Text = Program.Lang.String("project", Name);
             menu_help.Text = Program.Lang.String("help", Name);
+            menu_about_app.Text = string.Format(Program.Lang.String("about_app"), Program.Lang.ApplicationTitle);
             Text = Program.Lang.ApplicationTitle;
 
             ToolStrip_NewProject.Text = menu_new_project.Text;
@@ -173,6 +174,7 @@ namespace FriishProduce
         {
             string lang = Properties.Settings.Default.language;
 
+            s.Font = Font;
             s.ShowDialog(this);
 
             if (lang != Properties.Settings.Default.language) RefreshForm();
@@ -269,6 +271,7 @@ namespace FriishProduce
         private ProjectForm AddTab(Console console, Project x = null)
         {
             ProjectForm Tab = x == null ? new ProjectForm(console) : new ProjectForm(x);
+            Tab.Font = Font;
             Tab.Parent = this;
             Tab.FormClosed += TabChanged;
             Tab.ExportCheck += ExportCheck;
@@ -340,7 +343,7 @@ namespace FriishProduce
 
         private void Tutorial_Click(object sender, EventArgs e)
         {
-            var tut = new Tutorial() { Text = menu_tutorial.Text };
+            var tut = new Tutorial() { Text = menu_tutorial.Text, Font = Font };
             tut.ShowDialog();
             tut.Dispose();
         }
@@ -373,7 +376,7 @@ namespace FriishProduce
 
         private void CloseTab_Click(object sender, EventArgs e) => (tabControl.SelectedForm as Form).Close();
 
-        private void About_Click(object sender, EventArgs e) => new About().ShowDialog();
+        private void About_Click(object sender, EventArgs e) { using (var about = new About() { Font = Font }) about.ShowDialog(); }
 
         private void MenuItem_Exit_Click(object sender, EventArgs e) => Application.Exit();
 

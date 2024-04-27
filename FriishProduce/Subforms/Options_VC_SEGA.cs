@@ -61,22 +61,22 @@ namespace FriishProduce
 
                 if (Options["console.brightness"] == null || int.Parse(Options["console.brightness"]) < 0) Options["console.brightness"] = VC_SEGA.Default.console_brightness;
 
-                console_brightness.Value = int.Parse(Options["console.brightness"]);
-                country.SelectedIndex = Options["country"] == "jp" ? 0 : Options["country"] == "us" ? 1 : 2;
-                dev_mdpad_enable_6b.Checked = Options["dev.mdpad.enable_6b"] == "1";
-                save_sram.Checked = Options["save_sram"] == "1";
-                console_disableresetbutton.Checked = Options["console.disable_resetbutton"] == "1";
+                console_brightness.Value            = int.Parse(Options["console.brightness"]);
+                country.SelectedIndex               = Options["country"] switch { "jp" => 0, "us" => 1, _ => 2 };
+                dev_mdpad_enable_6b.Checked         = Options["dev.mdpad.enable_6b"] == "1";
+                save_sram.Checked                   = Options["save_sram"] == "1";
+                console_disableresetbutton.Checked  = Options["console.disable_resetbutton"] == "1";
                 ChangeBrightness();
             }
         }
 
         protected override void SaveOptions()
         {
-            Options["console.brightness"] = console_brightness.Enabled ? label1.Text : null;
-            Options["save_sram"] = save_sram.Checked ? "1" : null;
-            Options["country"] = country.SelectedIndex == 0 ? "jp" : country.SelectedIndex == 2 ? "eu" : "us";
-            Options["dev.mdpad.enable_6b"] = dev_mdpad_enable_6b.Checked ? "1" : null;
-            Options["console.disable_resetbutton"] = console_disableresetbutton.Checked ? "1" : null;
+            Options["console.brightness"]           = console_brightness.Enabled ? label1.Text : null;
+            Options["save_sram"]                    = save_sram.Checked ? "1" : null;
+            Options["country"]                      = country.SelectedIndex switch { 0 => "jp", 1 => "us", _ => "eu" };
+            Options["dev.mdpad.enable_6b"]          = dev_mdpad_enable_6b.Checked ? "1" : null;
+            Options["console.disable_resetbutton"]  = console_disableresetbutton.Checked ? "1" : null;
         }
 
         // ---------------------------------------------------------------------------------------------------------------

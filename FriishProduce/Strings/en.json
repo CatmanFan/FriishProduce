@@ -112,8 +112,7 @@
 			"save_project_as": "&Save project as...",
 			"save_as_wad": "Save as &WAD...",
 			"close_project": "&Close project",
-			"settings": "&Settings",
-			"about": "&About..."
+			"settings": "&Settings"
 		},
 		"settingsform": {
 		    "application": "Application",
@@ -220,7 +219,11 @@
 			"quality": "Quality",
 			"quality0": "High",
 			"quality1": "Medium",
-			"quality2": "Low"
+			"quality2": "Low",
+			"strap_reminder": "Strap reminder screen",
+			"strap_reminder0": "Disabled",
+			"strap_reminder1": "Normal",
+			"strap_reminder2": "No extension controller"
 		}
 	}
 }

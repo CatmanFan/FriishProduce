@@ -1026,11 +1026,12 @@ namespace FriishProduce
                 // *******
                 if (TargetRegion.SelectedIndex > 0)
                 {
-                    OutWAD.Region = TargetRegion.SelectedItem.ToString() == Program.Lang.String("region_j") ? libWiiSharp.Region.Japan
-                    : TargetRegion.SelectedItem.ToString() == Program.Lang.String("region_u") ? libWiiSharp.Region.USA
-                    : TargetRegion.SelectedItem.ToString() == Program.Lang.String("region_e") ? libWiiSharp.Region.Europe
-                    : TargetRegion.SelectedItem.ToString() == Program.Lang.String("region_k") ? libWiiSharp.Region.Korea
-                    : libWiiSharp.Region.Free;
+                    OutWAD.Region
+                        = TargetRegion.SelectedItem.ToString() == Program.Lang.String("region_j") ? libWiiSharp.Region.Japan
+                        : TargetRegion.SelectedItem.ToString() == Program.Lang.String("region_u") ? libWiiSharp.Region.USA
+                        : TargetRegion.SelectedItem.ToString() == Program.Lang.String("region_e") ? libWiiSharp.Region.Europe
+                        : TargetRegion.SelectedItem.ToString() == Program.Lang.String("region_k") ? libWiiSharp.Region.Korea
+                        : libWiiSharp.Region.Free;
                 }
 
                 // Remaining ones done by WAD creator helper, which will save to a new file
@@ -1552,6 +1553,7 @@ namespace FriishProduce
 
             if (CO != null)
             {
+                CO.Font = Font;
                 CO.Text = Program.Lang.String("injection_method_options", "projectform");
                 CO.Icon = Icon.FromHandle(Properties.Resources.wrench.GetHicon());
             }
@@ -1574,11 +1576,11 @@ namespace FriishProduce
         {
             if (ChannelTitle_Locale.Checked)
             {
-                ChannelTitles titles = new ChannelTitles(ChannelTitle.Text);
+                ChannelTitles titles = new ChannelTitles(ChannelTitle.Text) { Font = Font };
                 if (titles.ShowDialog() == DialogResult.OK)
                 {
                     Creator.ChannelTitles = new string[8]
-                        {
+                    {
                         titles.Japanese.Text,
                         titles.English.Text,
                         titles.German.Text,
@@ -1587,15 +1589,19 @@ namespace FriishProduce
                         titles.Italian.Text,
                         titles.Dutch.Text,
                         titles.Korean.Text,
-                        };
-                    ChannelTitle.Text = Program.Lang.Current == "ja" ? titles.Japanese.Text
-                                          : Program.Lang.Current == "ko" ? titles.Korean.Text
-                                          : Program.Lang.Current == "nl" ? titles.Dutch.Text
-                                          : Program.Lang.Current == "es" ? titles.Spanish.Text
-                                          : Program.Lang.Current == "it" ? titles.Italian.Text
-                                          : Program.Lang.Current == "fr" ? titles.French.Text
-                                          : Program.Lang.Current == "de" ? titles.English.Text
-                                          : titles.English.Text;
+                    };
+
+                    ChannelTitle.Text = Program.Lang.Current switch
+                    {
+                        "ja" => titles.Japanese.Text,
+                        "ko" => titles.Korean.Text,
+                        "nl" => titles.Dutch.Text,
+                        "es" => titles.Spanish.Text,
+                        "it" => titles.Italian.Text,
+                        "fr" => titles.French.Text,
+                        "de" => titles.German.Text,
+                        _ => titles.English.Text
+                    };
                 }
             }
 
