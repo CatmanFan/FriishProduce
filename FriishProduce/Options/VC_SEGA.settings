@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="console_brightness" Type="System.String" Scope="User">
-      <Value Profile="(Default)">87</Value>
+      <Value Profile="(Default)">100</Value>
     </Setting>
     <Setting Name="console_disableresetbutton" Type="System.String" Scope="User">
       <Value Profile="(Default)" />

@@ -231,6 +231,16 @@ namespace FriishProduce
         /// <summary>
         /// Returns a localized string using the identification name, and the name of the section containing said string within the file.
         /// </summary>
+        public void String(Control control, string sectionName = "")
+        {
+            string target = String(control.Text, sectionName) != "undefined" ? control.Text : control.Tag != null ? control.Tag.ToString() : control.Name;
+            if (control.GetType() == typeof(ComboBox)) { (control as ComboBox).Items.Clear(); (control as ComboBox).Items.AddRange(StringArray(target, sectionName)); }
+            else control.Text = String(target, sectionName);
+        }
+
+        /// <summary>
+        /// Returns a localized string using the identification name, and the name of the section containing said string within the file.
+        /// </summary>
         public string String(string name, string sectionName = "")
         {
             if (string.IsNullOrWhiteSpace(name)) return "undefined";

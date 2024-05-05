@@ -44,11 +44,12 @@ namespace FriishProduce
             this.SaveDataTitle = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.COPanel_VC = new System.Windows.Forms.Panel();
+            this.manual_type = new System.Windows.Forms.Label();
+            this.manual_type_list = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.InjectorsList = new System.Windows.Forms.ComboBox();
             this.MethodOptions = new System.Windows.Forms.Button();
-            this.COPanel_VC = new System.Windows.Forms.Panel();
-            this.CustomManual = new System.Windows.Forms.CheckBox();
             this.COPanel_Forwarder = new System.Windows.Forms.Panel();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.FStorage_SD = new System.Windows.Forms.RadioButton();
@@ -79,9 +80,9 @@ namespace FriishProduce
             this.label8 = new System.Windows.Forms.Label();
             this.BannerTitle = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.base_name = new System.Windows.Forms.Label();
             this.ImportWAD = new System.Windows.Forms.RadioButton();
             this.DownloadWAD = new System.Windows.Forms.RadioButton();
-            this.base_name = new System.Windows.Forms.Label();
             this.title_id = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.baseID = new System.Windows.Forms.Label();
@@ -143,6 +144,7 @@ namespace FriishProduce
             resources.GetString("imageintpl.Items")});
             resources.ApplyResources(this.imageintpl, "imageintpl");
             this.imageintpl.Name = "imageintpl";
+            this.imageintpl.Tag = "image_interpolation_mode";
             this.imageintpl.SelectedIndexChanged += new System.EventHandler(this.InterpolationChanged);
             // 
             // image_fit
@@ -208,15 +210,37 @@ namespace FriishProduce
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.COPanel_VC);
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.InjectorsList);
             this.groupBox3.Controls.Add(this.MethodOptions);
-            this.groupBox3.Controls.Add(this.COPanel_VC);
             this.groupBox3.Controls.Add(this.COPanel_Forwarder);
             resources.ApplyResources(this.groupBox3, "groupBox3");
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.TabStop = false;
             this.groupBox3.Tag = "content_options";
+            // 
+            // COPanel_VC
+            // 
+            this.COPanel_VC.Controls.Add(this.manual_type);
+            this.COPanel_VC.Controls.Add(this.manual_type_list);
+            resources.ApplyResources(this.COPanel_VC, "COPanel_VC");
+            this.COPanel_VC.Name = "COPanel_VC";
+            // 
+            // manual_type
+            // 
+            resources.ApplyResources(this.manual_type, "manual_type");
+            this.manual_type.Name = "manual_type";
+            this.manual_type.Tag = "manual_type";
+            // 
+            // manual_type_list
+            // 
+            this.manual_type_list.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.manual_type_list.FormattingEnabled = true;
+            resources.ApplyResources(this.manual_type_list, "manual_type_list");
+            this.manual_type_list.Name = "manual_type_list";
+            this.manual_type_list.Tag = "manual_type";
+            this.manual_type_list.SelectedIndexChanged += new System.EventHandler(this.CustomManual_CheckedChanged);
             // 
             // label3
             // 
@@ -242,20 +266,6 @@ namespace FriishProduce
             this.MethodOptions.Tag = "";
             this.MethodOptions.UseVisualStyleBackColor = true;
             this.MethodOptions.Click += new System.EventHandler(this.OpenInjectorOptions);
-            // 
-            // COPanel_VC
-            // 
-            this.COPanel_VC.Controls.Add(this.CustomManual);
-            resources.ApplyResources(this.COPanel_VC, "COPanel_VC");
-            this.COPanel_VC.Name = "COPanel_VC";
-            // 
-            // CustomManual
-            // 
-            resources.ApplyResources(this.CustomManual, "CustomManual");
-            this.CustomManual.Name = "CustomManual";
-            this.CustomManual.Tag = "import_manual";
-            this.CustomManual.UseVisualStyleBackColor = true;
-            this.CustomManual.CheckedChanged += new System.EventHandler(this.CustomManual_CheckedChanged);
             // 
             // COPanel_Forwarder
             // 
@@ -521,6 +531,13 @@ namespace FriishProduce
             this.groupBox2.TabStop = false;
             this.groupBox2.Tag = "base";
             // 
+            // base_name
+            // 
+            resources.ApplyResources(this.base_name, "base_name");
+            this.base_name.Name = "base_name";
+            this.base_name.Tag = "base_name";
+            this.base_name.UseMnemonic = false;
+            // 
             // ImportWAD
             // 
             resources.ApplyResources(this.ImportWAD, "ImportWAD");
@@ -538,13 +555,6 @@ namespace FriishProduce
             this.DownloadWAD.Tag = "use_online_wad";
             this.DownloadWAD.UseVisualStyleBackColor = true;
             this.DownloadWAD.CheckedChanged += new System.EventHandler(this.OpenWAD_CheckedChanged);
-            // 
-            // base_name
-            // 
-            resources.ApplyResources(this.base_name, "base_name");
-            this.base_name.Name = "base_name";
-            this.base_name.Tag = "base_name";
-            this.base_name.UseMnemonic = false;
             // 
             // title_id
             // 
@@ -702,7 +712,6 @@ namespace FriishProduce
         private System.Windows.Forms.ComboBox InjectorsList;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox Patch;
-        private System.Windows.Forms.CheckBox CustomManual;
         private System.Windows.Forms.Label label11;
         internal System.Windows.Forms.OpenFileDialog BrowsePatch;
         private System.Windows.Forms.Panel COPanel_VC;
@@ -724,5 +733,7 @@ namespace FriishProduce
         private System.Windows.Forms.RadioButton DownloadWAD;
         private System.Windows.Forms.RadioButton ImportWAD;
         private Ookii.Dialogs.WinForms.VistaFolderBrowserDialog BrowseManual;
+        private System.Windows.Forms.Label manual_type;
+        private System.Windows.Forms.ComboBox manual_type_list;
     }
 }

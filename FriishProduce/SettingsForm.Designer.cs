@@ -32,12 +32,12 @@ namespace FriishProduce
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsForm));
             this.lngList = new System.Windows.Forms.ComboBox();
             this.vc_n64_options = new System.Windows.Forms.GroupBox();
+            this.vc_n64_romc_type = new System.Windows.Forms.Label();
             this.vc_n64_patch_autosizerom = new System.Windows.Forms.CheckBox();
+            this.vc_n64_romc_type_list = new System.Windows.Forms.ComboBox();
             this.vc_n64_patch_expandedram = new System.Windows.Forms.CheckBox();
             this.vc_n64_patch_fixcrashes = new System.Windows.Forms.CheckBox();
             this.vc_n64_patch_fixbrightness = new System.Windows.Forms.CheckBox();
-            this.vc_n64_romc_type = new System.Windows.Forms.GroupBox();
-            this.vc_n64_romc_type_list = new System.Windows.Forms.ComboBox();
             this.DownloadBanners = new System.Windows.Forms.Button();
             this.b_ok = new System.Windows.Forms.Button();
             this.b_cancel = new System.Windows.Forms.Button();
@@ -81,12 +81,6 @@ namespace FriishProduce
             this.label1 = new System.Windows.Forms.Label();
             this.SEGA_console_brightness = new System.Windows.Forms.TrackBar();
             this.vc_pce = new System.Windows.Forms.Panel();
-            this.vc_pce_display = new System.Windows.Forms.GroupBox();
-            this.vc_pce_y_offset_l = new System.Windows.Forms.Label();
-            this.vc_pce_y_offset = new System.Windows.Forms.NumericUpDown();
-            this.vc_pce_sprline = new System.Windows.Forms.CheckBox();
-            this.vc_pce_raster = new System.Windows.Forms.CheckBox();
-            this.vc_pce_hide_overscan = new System.Windows.Forms.CheckBox();
             this.vc_pce_system = new System.Windows.Forms.GroupBox();
             this.vc_pce_backupram = new System.Windows.Forms.CheckBox();
             this.vc_pce_europe_switch = new JCS.ToggleSwitch();
@@ -95,7 +89,15 @@ namespace FriishProduce
             this.vc_pce_sgenable = new System.Windows.Forms.Label();
             this.vc_pce_padbutton = new System.Windows.Forms.Label();
             this.vc_pce_sgenable_switch = new JCS.ToggleSwitch();
+            this.vc_pce_display = new System.Windows.Forms.GroupBox();
+            this.vc_pce_y_offset_l = new System.Windows.Forms.Label();
+            this.vc_pce_y_offset = new System.Windows.Forms.NumericUpDown();
+            this.vc_pce_sprline = new System.Windows.Forms.CheckBox();
+            this.vc_pce_raster = new System.Windows.Forms.CheckBox();
+            this.vc_pce_hide_overscan = new System.Windows.Forms.CheckBox();
             this.adobe_flash = new System.Windows.Forms.Panel();
+            this.flash_strap_reminder = new System.Windows.Forms.GroupBox();
+            this.flash_strap_reminder_list = new System.Windows.Forms.ComboBox();
             this.flash_controls = new System.Windows.Forms.GroupBox();
             this.flash_qwerty_keyboard = new System.Windows.Forms.CheckBox();
             this.flash_mouse = new System.Windows.Forms.CheckBox();
@@ -108,10 +110,7 @@ namespace FriishProduce
             this.flash_vff_cache_size_list = new System.Windows.Forms.ComboBox();
             this.LanguageList = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.flash_strap_reminder = new System.Windows.Forms.GroupBox();
-            this.flash_strap_reminder_list = new System.Windows.Forms.ComboBox();
             this.vc_n64_options.SuspendLayout();
-            this.vc_n64_romc_type.SuspendLayout();
             this.bottomPanel1.SuspendLayout();
             this.bottomPanel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -131,15 +130,15 @@ namespace FriishProduce
             this.vc_sega_display.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SEGA_console_brightness)).BeginInit();
             this.vc_pce.SuspendLayout();
+            this.vc_pce_system.SuspendLayout();
             this.vc_pce_display.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vc_pce_y_offset)).BeginInit();
-            this.vc_pce_system.SuspendLayout();
             this.adobe_flash.SuspendLayout();
+            this.flash_strap_reminder.SuspendLayout();
             this.flash_controls.SuspendLayout();
             this.flash_quality.SuspendLayout();
             this.flash_save_data.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.flash_strap_reminder.SuspendLayout();
             this.SuspendLayout();
             // 
             // lngList
@@ -153,7 +152,9 @@ namespace FriishProduce
             // 
             // vc_n64_options
             // 
+            this.vc_n64_options.Controls.Add(this.vc_n64_romc_type);
             this.vc_n64_options.Controls.Add(this.vc_n64_patch_autosizerom);
+            this.vc_n64_options.Controls.Add(this.vc_n64_romc_type_list);
             this.vc_n64_options.Controls.Add(this.vc_n64_patch_expandedram);
             this.vc_n64_options.Controls.Add(this.vc_n64_patch_fixcrashes);
             this.vc_n64_options.Controls.Add(this.vc_n64_patch_fixbrightness);
@@ -162,12 +163,26 @@ namespace FriishProduce
             this.vc_n64_options.TabStop = false;
             this.vc_n64_options.Tag = "vc_options";
             // 
+            // vc_n64_romc_type
+            // 
+            resources.ApplyResources(this.vc_n64_romc_type, "vc_n64_romc_type");
+            this.vc_n64_romc_type.Name = "vc_n64_romc_type";
+            this.vc_n64_romc_type.Tag = "romc_type";
+            // 
             // vc_n64_patch_autosizerom
             // 
             resources.ApplyResources(this.vc_n64_patch_autosizerom, "vc_n64_patch_autosizerom");
             this.vc_n64_patch_autosizerom.Name = "vc_n64_patch_autosizerom";
             this.vc_n64_patch_autosizerom.Tag = "patch_autosizerom";
             this.vc_n64_patch_autosizerom.UseVisualStyleBackColor = true;
+            // 
+            // vc_n64_romc_type_list
+            // 
+            this.vc_n64_romc_type_list.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.vc_n64_romc_type_list.FormattingEnabled = true;
+            resources.ApplyResources(this.vc_n64_romc_type_list, "vc_n64_romc_type_list");
+            this.vc_n64_romc_type_list.Name = "vc_n64_romc_type_list";
+            this.vc_n64_romc_type_list.Tag = "romc_type";
             // 
             // vc_n64_patch_expandedram
             // 
@@ -189,22 +204,6 @@ namespace FriishProduce
             this.vc_n64_patch_fixbrightness.Name = "vc_n64_patch_fixbrightness";
             this.vc_n64_patch_fixbrightness.Tag = "patch_fixbrightness";
             this.vc_n64_patch_fixbrightness.UseVisualStyleBackColor = true;
-            // 
-            // vc_n64_romc_type
-            // 
-            this.vc_n64_romc_type.Controls.Add(this.vc_n64_romc_type_list);
-            resources.ApplyResources(this.vc_n64_romc_type, "vc_n64_romc_type");
-            this.vc_n64_romc_type.Name = "vc_n64_romc_type";
-            this.vc_n64_romc_type.TabStop = false;
-            this.vc_n64_romc_type.Tag = "romc_type";
-            // 
-            // vc_n64_romc_type_list
-            // 
-            this.vc_n64_romc_type_list.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.vc_n64_romc_type_list.FormattingEnabled = true;
-            resources.ApplyResources(this.vc_n64_romc_type_list, "vc_n64_romc_type_list");
-            this.vc_n64_romc_type_list.Name = "vc_n64_romc_type_list";
-            this.vc_n64_romc_type_list.Tag = "romc_type";
             // 
             // DownloadBanners
             // 
@@ -249,9 +248,9 @@ namespace FriishProduce
             // TreeView
             // 
             this.TreeView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.TreeView, "TreeView");
             this.TreeView.FullRowSelect = true;
             this.TreeView.ItemHeight = 19;
-            resources.ApplyResources(this.TreeView, "TreeView");
             this.TreeView.Name = "TreeView";
             this.TreeView.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             ((System.Windows.Forms.TreeNode)(resources.GetObject("TreeView.Nodes"))),
@@ -341,7 +340,6 @@ namespace FriishProduce
             // vc_n64
             // 
             this.vc_n64.Controls.Add(this.vc_n64_options);
-            this.vc_n64.Controls.Add(this.vc_n64_romc_type);
             resources.ApplyResources(this.vc_n64, "vc_n64");
             this.vc_n64.Name = "vc_n64";
             this.vc_n64.Tag = "vc_n64";
@@ -537,60 +535,11 @@ namespace FriishProduce
             // 
             // vc_pce
             // 
-            this.vc_pce.Controls.Add(this.vc_pce_display);
             this.vc_pce.Controls.Add(this.vc_pce_system);
+            this.vc_pce.Controls.Add(this.vc_pce_display);
             resources.ApplyResources(this.vc_pce, "vc_pce");
             this.vc_pce.Name = "vc_pce";
             this.vc_pce.Tag = "vc_pce";
-            // 
-            // vc_pce_display
-            // 
-            this.vc_pce_display.Controls.Add(this.vc_pce_y_offset_l);
-            this.vc_pce_display.Controls.Add(this.vc_pce_y_offset);
-            this.vc_pce_display.Controls.Add(this.vc_pce_sprline);
-            this.vc_pce_display.Controls.Add(this.vc_pce_raster);
-            this.vc_pce_display.Controls.Add(this.vc_pce_hide_overscan);
-            resources.ApplyResources(this.vc_pce_display, "vc_pce_display");
-            this.vc_pce_display.Name = "vc_pce_display";
-            this.vc_pce_display.TabStop = false;
-            this.vc_pce_display.Tag = "display";
-            // 
-            // vc_pce_y_offset_l
-            // 
-            resources.ApplyResources(this.vc_pce_y_offset_l, "vc_pce_y_offset_l");
-            this.vc_pce_y_offset_l.Name = "vc_pce_y_offset_l";
-            this.vc_pce_y_offset_l.Tag = "y_offset";
-            // 
-            // vc_pce_y_offset
-            // 
-            resources.ApplyResources(this.vc_pce_y_offset, "vc_pce_y_offset");
-            this.vc_pce_y_offset.Maximum = new decimal(new int[] {
-            25,
-            0,
-            0,
-            0});
-            this.vc_pce_y_offset.Name = "vc_pce_y_offset";
-            // 
-            // vc_pce_sprline
-            // 
-            resources.ApplyResources(this.vc_pce_sprline, "vc_pce_sprline");
-            this.vc_pce_sprline.Name = "vc_pce_sprline";
-            this.vc_pce_sprline.Tag = "sprline";
-            this.vc_pce_sprline.UseVisualStyleBackColor = true;
-            // 
-            // vc_pce_raster
-            // 
-            resources.ApplyResources(this.vc_pce_raster, "vc_pce_raster");
-            this.vc_pce_raster.Name = "vc_pce_raster";
-            this.vc_pce_raster.Tag = "raster";
-            this.vc_pce_raster.UseVisualStyleBackColor = true;
-            // 
-            // vc_pce_hide_overscan
-            // 
-            resources.ApplyResources(this.vc_pce_hide_overscan, "vc_pce_hide_overscan");
-            this.vc_pce_hide_overscan.Name = "vc_pce_hide_overscan";
-            this.vc_pce_hide_overscan.Tag = "hide_overscan";
-            this.vc_pce_hide_overscan.UseVisualStyleBackColor = true;
             // 
             // vc_pce_system
             // 
@@ -651,6 +600,55 @@ namespace FriishProduce
             this.vc_pce_sgenable_switch.OnFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.vc_pce_sgenable_switch.CheckedChanged += new JCS.ToggleSwitch.CheckedChangedDelegate(this.ToggleSwitchChanged);
             // 
+            // vc_pce_display
+            // 
+            this.vc_pce_display.Controls.Add(this.vc_pce_y_offset_l);
+            this.vc_pce_display.Controls.Add(this.vc_pce_y_offset);
+            this.vc_pce_display.Controls.Add(this.vc_pce_sprline);
+            this.vc_pce_display.Controls.Add(this.vc_pce_raster);
+            this.vc_pce_display.Controls.Add(this.vc_pce_hide_overscan);
+            resources.ApplyResources(this.vc_pce_display, "vc_pce_display");
+            this.vc_pce_display.Name = "vc_pce_display";
+            this.vc_pce_display.TabStop = false;
+            this.vc_pce_display.Tag = "display";
+            // 
+            // vc_pce_y_offset_l
+            // 
+            resources.ApplyResources(this.vc_pce_y_offset_l, "vc_pce_y_offset_l");
+            this.vc_pce_y_offset_l.Name = "vc_pce_y_offset_l";
+            this.vc_pce_y_offset_l.Tag = "y_offset";
+            // 
+            // vc_pce_y_offset
+            // 
+            resources.ApplyResources(this.vc_pce_y_offset, "vc_pce_y_offset");
+            this.vc_pce_y_offset.Maximum = new decimal(new int[] {
+            25,
+            0,
+            0,
+            0});
+            this.vc_pce_y_offset.Name = "vc_pce_y_offset";
+            // 
+            // vc_pce_sprline
+            // 
+            resources.ApplyResources(this.vc_pce_sprline, "vc_pce_sprline");
+            this.vc_pce_sprline.Name = "vc_pce_sprline";
+            this.vc_pce_sprline.Tag = "sprline";
+            this.vc_pce_sprline.UseVisualStyleBackColor = true;
+            // 
+            // vc_pce_raster
+            // 
+            resources.ApplyResources(this.vc_pce_raster, "vc_pce_raster");
+            this.vc_pce_raster.Name = "vc_pce_raster";
+            this.vc_pce_raster.Tag = "raster";
+            this.vc_pce_raster.UseVisualStyleBackColor = true;
+            // 
+            // vc_pce_hide_overscan
+            // 
+            resources.ApplyResources(this.vc_pce_hide_overscan, "vc_pce_hide_overscan");
+            this.vc_pce_hide_overscan.Name = "vc_pce_hide_overscan";
+            this.vc_pce_hide_overscan.Tag = "hide_overscan";
+            this.vc_pce_hide_overscan.UseVisualStyleBackColor = true;
+            // 
             // adobe_flash
             // 
             this.adobe_flash.Controls.Add(this.flash_strap_reminder);
@@ -660,6 +658,24 @@ namespace FriishProduce
             resources.ApplyResources(this.adobe_flash, "adobe_flash");
             this.adobe_flash.Name = "adobe_flash";
             this.adobe_flash.Tag = "adobe_flash";
+            // 
+            // flash_strap_reminder
+            // 
+            this.flash_strap_reminder.Controls.Add(this.flash_strap_reminder_list);
+            resources.ApplyResources(this.flash_strap_reminder, "flash_strap_reminder");
+            this.flash_strap_reminder.Name = "flash_strap_reminder";
+            this.flash_strap_reminder.TabStop = false;
+            this.flash_strap_reminder.Tag = "strap_reminder";
+            // 
+            // flash_strap_reminder_list
+            // 
+            this.flash_strap_reminder_list.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.flash_strap_reminder_list.FormattingEnabled = true;
+            this.flash_strap_reminder_list.Items.AddRange(new object[] {
+            resources.GetString("flash_strap_reminder_list.Items")});
+            resources.ApplyResources(this.flash_strap_reminder_list, "flash_strap_reminder_list");
+            this.flash_strap_reminder_list.Name = "flash_strap_reminder_list";
+            this.flash_strap_reminder_list.Tag = "strap_reminder";
             // 
             // flash_controls
             // 
@@ -674,13 +690,14 @@ namespace FriishProduce
             // 
             resources.ApplyResources(this.flash_qwerty_keyboard, "flash_qwerty_keyboard");
             this.flash_qwerty_keyboard.Name = "flash_qwerty_keyboard";
+            this.flash_qwerty_keyboard.Tag = "qwerty_keyboard";
             this.flash_qwerty_keyboard.UseVisualStyleBackColor = true;
             // 
             // flash_mouse
             // 
             resources.ApplyResources(this.flash_mouse, "flash_mouse");
             this.flash_mouse.Name = "flash_mouse";
-            this.flash_mouse.Tag = "";
+            this.flash_mouse.Tag = "mouse";
             this.flash_mouse.UseVisualStyleBackColor = true;
             // 
             // flash_quality
@@ -689,6 +706,7 @@ namespace FriishProduce
             resources.ApplyResources(this.flash_quality, "flash_quality");
             this.flash_quality.Name = "flash_quality";
             this.flash_quality.TabStop = false;
+            this.flash_quality.Tag = "quality";
             // 
             // flash_quality_list
             // 
@@ -698,6 +716,7 @@ namespace FriishProduce
             resources.GetString("flash_quality_list.Items")});
             resources.ApplyResources(this.flash_quality_list, "flash_quality_list");
             this.flash_quality_list.Name = "flash_quality_list";
+            this.flash_quality_list.Tag = "quality";
             // 
             // flash_save_data
             // 
@@ -708,17 +727,20 @@ namespace FriishProduce
             resources.ApplyResources(this.flash_save_data, "flash_save_data");
             this.flash_save_data.Name = "flash_save_data";
             this.flash_save_data.TabStop = false;
+            this.flash_save_data.Tag = "save_data";
             // 
             // flash_vff_sync_on_write
             // 
             resources.ApplyResources(this.flash_vff_sync_on_write, "flash_vff_sync_on_write");
             this.flash_vff_sync_on_write.Name = "flash_vff_sync_on_write";
+            this.flash_vff_sync_on_write.Tag = "vff_sync_on_write";
             this.flash_vff_sync_on_write.UseVisualStyleBackColor = true;
             // 
             // flash_save_data_enable
             // 
             resources.ApplyResources(this.flash_save_data_enable, "flash_save_data_enable");
             this.flash_save_data_enable.Name = "flash_save_data_enable";
+            this.flash_save_data_enable.Tag = "save_data_enable";
             this.flash_save_data_enable.UseVisualStyleBackColor = true;
             this.flash_save_data_enable.CheckedChanged += new System.EventHandler(this.ToggleSwitchChanged);
             // 
@@ -726,6 +748,7 @@ namespace FriishProduce
             // 
             resources.ApplyResources(this.flash_vff_cache_size, "flash_vff_cache_size");
             this.flash_vff_cache_size.Name = "flash_vff_cache_size";
+            this.flash_vff_cache_size.Tag = "vff_cache_size";
             // 
             // flash_vff_cache_size_list
             // 
@@ -766,24 +789,6 @@ namespace FriishProduce
             resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
             // 
-            // flash_strap_reminder
-            // 
-            this.flash_strap_reminder.Controls.Add(this.flash_strap_reminder_list);
-            resources.ApplyResources(this.flash_strap_reminder, "flash_strap_reminder");
-            this.flash_strap_reminder.Name = "flash_strap_reminder";
-            this.flash_strap_reminder.TabStop = false;
-            this.flash_strap_reminder.Tag = "strap_reminder";
-            // 
-            // flash_strap_reminder_list
-            // 
-            this.flash_strap_reminder_list.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.flash_strap_reminder_list.FormattingEnabled = true;
-            this.flash_strap_reminder_list.Items.AddRange(new object[] {
-            resources.GetString("flash_strap_reminder_list.Items")});
-            resources.ApplyResources(this.flash_strap_reminder_list, "flash_strap_reminder_list");
-            this.flash_strap_reminder_list.Name = "flash_strap_reminder_list";
-            this.flash_strap_reminder_list.Tag = "strap_reminder";
-            // 
             // SettingsForm
             // 
             this.AcceptButton = this.b_ok;
@@ -815,7 +820,6 @@ namespace FriishProduce
             this.Shown += new System.EventHandler(this.Loading);
             this.vc_n64_options.ResumeLayout(false);
             this.vc_n64_options.PerformLayout();
-            this.vc_n64_romc_type.ResumeLayout(false);
             this.bottomPanel1.ResumeLayout(false);
             this.bottomPanel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
@@ -841,12 +845,13 @@ namespace FriishProduce
             this.vc_sega_display.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.SEGA_console_brightness)).EndInit();
             this.vc_pce.ResumeLayout(false);
+            this.vc_pce_system.ResumeLayout(false);
+            this.vc_pce_system.PerformLayout();
             this.vc_pce_display.ResumeLayout(false);
             this.vc_pce_display.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vc_pce_y_offset)).EndInit();
-            this.vc_pce_system.ResumeLayout(false);
-            this.vc_pce_system.PerformLayout();
             this.adobe_flash.ResumeLayout(false);
+            this.flash_strap_reminder.ResumeLayout(false);
             this.flash_controls.ResumeLayout(false);
             this.flash_controls.PerformLayout();
             this.flash_quality.ResumeLayout(false);
@@ -854,7 +859,6 @@ namespace FriishProduce
             this.flash_save_data.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.flash_strap_reminder.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -870,7 +874,6 @@ namespace FriishProduce
         private System.Windows.Forms.CheckBox vc_n64_patch_expandedram;
         private System.Windows.Forms.CheckBox vc_n64_patch_fixcrashes;
         private System.Windows.Forms.CheckBox vc_n64_patch_fixbrightness;
-        private System.Windows.Forms.GroupBox vc_n64_romc_type;
         private System.Windows.Forms.ComboBox vc_n64_romc_type_list;
         private System.Windows.Forms.Button DownloadBanners;
         private System.Windows.Forms.TreeView TreeView;
@@ -940,5 +943,6 @@ namespace FriishProduce
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.GroupBox flash_strap_reminder;
         private System.Windows.Forms.ComboBox flash_strap_reminder_list;
+        private System.Windows.Forms.Label vc_n64_romc_type;
     }
 }

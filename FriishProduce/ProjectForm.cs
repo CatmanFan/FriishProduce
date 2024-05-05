@@ -74,7 +74,8 @@ namespace FriishProduce
             p.Creator = Creator;
             p.ROM = ROM?.Path;
             p.PatchFile = PatchFile;
-            p.Manual = Manual;
+            p.ManualIndex = manual_type_list.SelectedIndex;
+            p.ManualFile = Manual;
             p.Img = Img?.Source ?? null;
             p.ForwarderOptions = (FStorage_USB.Checked, toggleSwitch1.Checked);
             p.Options = CO?.Options ?? null;
@@ -133,13 +134,16 @@ namespace FriishProduce
             baseID.Location = new Point(baseMax, title_id.Location.Y);
 
             // Selected index properties
-            imageintpl.Items.Clear();
-            imageintpl.Items.AddRange(Program.Lang.StringArray("image_interpolation_mode", Name));
+            Program.Lang.Control(imageintpl, Name);
             imageintpl.SelectedIndex = Properties.Settings.Default.image_interpolation;
+
+            // Manual
+            Program.Lang.Control(manual_type, Name);
+            Program.AutoSizeControl(manual_type_list, manual_type);
 
             // Regions lists
             TargetRegion.Items.Clear();
-            TargetRegion.Items.Add(Program.Lang.String("region_orig"));
+            TargetRegion.Items.Add(Program.Lang.String("keep_original"));
             TargetRegion.Items.Add(Program.Lang.String("region_rf"));
             TargetRegion.SelectedIndex = 0;
 
@@ -374,7 +378,8 @@ namespace FriishProduce
             toggleSwitch1.Checked = Options.FORWARDER.Default.nand_loader.ToLower().Contains("vwii");
             LinkSaveData.Checked = Properties.Settings.Default.link_save_data;
 
-            CustomManual.Enabled = false;
+            manual_type_list.SelectedIndex = 0;
+            manual_type_list.Enabled = false;
             foreach (var customManualConsole in new List<Console>() // Confirmed to have an algorithm exist for NES, SNES, N64, SEGA, PCE, NEO
             {
                 Console.NES,
@@ -385,7 +390,7 @@ namespace FriishProduce
                 // Console.PCE,
                 // Console.NEO
             })
-                if (Console == customManualConsole) CustomManual.Enabled = true;
+                if (Console == customManualConsole) manual_type_list.Enabled = true;
 
             AddBases();
 
@@ -432,13 +437,13 @@ namespace FriishProduce
                 LinkSaveData.Checked = ParentProject.LinkSaveDataTitle;
                 imageintpl.SelectedIndex = ParentProject.ImageOptions.Item1;
                 image_fit.Checked = ParentProject.ImageOptions.Item2;
+                ToggleControls(!string.IsNullOrEmpty(ROM?.Path));
 
                 PatchFile = File.Exists(ParentProject.PatchFile) ? ParentProject.PatchFile : null;
                 Patch.Checked = !string.IsNullOrWhiteSpace(ParentProject.PatchFile);
-                LoadManual(ParentProject.Manual);
+                LoadManual(ParentProject.ManualIndex, ParentProject.ManualFile);
 
                 ParentProject = null;
-                ToggleControls(!string.IsNullOrEmpty(ROM?.Path));
             }
 
             FStorage_SD.Checked = !FStorage_USB.Checked;
@@ -726,10 +731,12 @@ namespace FriishProduce
             return false;
         }
 
-        public void LoadManual(string path, bool isFolder = true)
+        public void LoadManual(int index, string path = null, bool isFolder = true)
         {
             if (File.Exists(path) && !isFolder)
             {
+                index = 2;
+
                 using (ZipFile ZIP = ZipFile.Read(path))
                 {
                     int applicable = 0;
@@ -762,6 +769,8 @@ namespace FriishProduce
 
             else if (Directory.Exists(path) && isFolder)
             {
+                index = 2;
+
                 // Check if is a valid emanual contents folder
                 // ****************
                 string folder = path;
@@ -801,7 +810,8 @@ namespace FriishProduce
             goto End;
 
             End:
-            CustomManual.Checked = Manual != null;
+            if (Manual == null && index >= 2) index = 0;
+            manual_type_list.SelectedIndex = index;
         }
 
         public void LoadImage()
@@ -1171,7 +1181,8 @@ namespace FriishProduce
             // Set path to manual (if it exists) and load WAD
             // *******
             VC.Manual = Manual != null ? new ZipFile("manual") : null;
-            if (VC.Manual != null) VC.Manual.AddDirectory(Manual);
+            VC.KeepOrigManual = manual_type_list.SelectedIndex == 1;
+            if (VC.Manual != null && manual_type_list.SelectedIndex == 2) VC.Manual.AddDirectory(Manual);
 
             // Actually inject everything
             // *******
@@ -1558,6 +1569,12 @@ namespace FriishProduce
                 CO.Icon = Icon.FromHandle(Properties.Resources.wrench.GetHicon());
             }
 
+            if (!isVCMode && Manual != null)
+            {
+                Manual = null;
+                manual_type_list.SelectedIndex = 0;
+            }
+
             #region Toggle savedata panel
             LinkSaveData.Visible = SaveIcon_Panel.Visible = SaveDataTitle.Visible = ShowSaveData;
             label16.Visible = !ShowSaveData;
@@ -1612,33 +1629,17 @@ namespace FriishProduce
 
         private void CustomManual_CheckedChanged(object sender, EventArgs e)
         {
-            if (CustomManual.Checked && CustomManual.Enabled && Manual == null)
+            if (manual_type_list.Enabled && manual_type_list.SelectedIndex == 2 && Manual == null)
             {
                 if (!Properties.Settings.Default.donotshow_000) MessageBox.Show((sender as Control).Text, Program.Lang.Msg(6), 0);
 
-                if (BrowseManual.ShowDialog() == DialogResult.OK)
-                {
-                    LoadManual(BrowseManual.SelectedPath, true);
-                    CheckExport();
-                }
-
-                else
-                {
-                    if (Manual != null)
-                    {
-                        LoadManual(null);
-                        CheckExport();
-                    }
-
-                    CustomManual.Checked = false;
-                }
+                if (BrowseManual.ShowDialog() == DialogResult.OK) LoadManual(manual_type_list.SelectedIndex, BrowseManual.SelectedPath, true);
+                else if (Manual != null) LoadManual(manual_type_list.SelectedIndex, null);
             }
 
-            else if (!CustomManual.Checked && Manual != null && CustomManual.Enabled)
-            {
-                LoadManual(null);
-                CheckExport();
-            }
+            else if ((manual_type_list.SelectedIndex < 2 && Manual != null) || !manual_type_list.Enabled) LoadManual(0);
+
+            CheckExport();
         }
 
         private void Patch_CheckedChanged(object sender, EventArgs e)

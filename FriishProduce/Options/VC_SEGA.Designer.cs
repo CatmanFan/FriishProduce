@@ -25,7 +25,7 @@ namespace FriishProduce.Options {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("87")]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
         public string console_brightness {
             get {
                 return ((string)(this["console_brightness"]));

@@ -520,7 +520,6 @@ namespace FriishProduce
         private System.Windows.Forms.ToolStripMenuItem menu_about_app;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.Panel MainPanel;
-        private System.Windows.Forms.Label welcome;
         private System.Windows.Forms.ToolStrip ToolStrip;
         private System.Windows.Forms.ToolStripButton ToolStrip_OpenROM;
         private System.Windows.Forms.ToolStripButton ToolStrip_OpenImage;
@@ -542,6 +541,7 @@ namespace FriishProduce
         private System.Windows.Forms.ToolStripMenuItem menu_open_project;
         private System.Windows.Forms.ToolStripButton ToolStrip_SaveAs;
         private System.Windows.Forms.ToolStripButton ToolStrip_OpenProject;
+        private System.Windows.Forms.Label welcome;
     }
 }
 

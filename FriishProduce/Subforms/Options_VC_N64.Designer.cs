@@ -42,15 +42,15 @@ namespace FriishProduce
             // 
             // b_ok
             // 
-            this.b_ok.Location = new System.Drawing.Point(261, 12);
+            this.b_ok.Location = new System.Drawing.Point(286, 12);
             // 
             // bottomPanel1
             // 
-            this.bottomPanel1.Size = new System.Drawing.Size(459, 47);
+            this.bottomPanel1.Size = new System.Drawing.Size(484, 47);
             // 
             // b_cancel
             // 
-            this.b_cancel.Location = new System.Drawing.Point(357, 12);
+            this.b_cancel.Location = new System.Drawing.Point(382, 12);
             // 
             // g1
             // 
@@ -62,7 +62,7 @@ namespace FriishProduce
             this.g1.Controls.Add(this.patch_fixbrightness);
             this.g1.Location = new System.Drawing.Point(12, 10);
             this.g1.Name = "g1";
-            this.g1.Size = new System.Drawing.Size(435, 140);
+            this.g1.Size = new System.Drawing.Size(460, 140);
             this.g1.TabIndex = 16;
             this.g1.TabStop = false;
             this.g1.Tag = "vc_options";
@@ -73,7 +73,7 @@ namespace FriishProduce
             this.romc_type.AutoSize = true;
             this.romc_type.Location = new System.Drawing.Point(7, 111);
             this.romc_type.Name = "romc_type";
-            this.romc_type.Size = new System.Drawing.Size(58, 13);
+            this.romc_type.Size = new System.Drawing.Size(56, 13);
             this.romc_type.TabIndex = 18;
             this.romc_type.Tag = "romc_type";
             this.romc_type.Text = "romc_type";
@@ -87,7 +87,7 @@ namespace FriishProduce
             "ROMC Type 1"});
             this.romc_type_list.Location = new System.Drawing.Point(10, 108);
             this.romc_type_list.Name = "romc_type_list";
-            this.romc_type_list.Size = new System.Drawing.Size(415, 21);
+            this.romc_type_list.Size = new System.Drawing.Size(440, 21);
             this.romc_type_list.TabIndex = 0;
             this.romc_type_list.Tag = "romc_type";
             // 
@@ -98,7 +98,7 @@ namespace FriishProduce
             this.patch_autosizerom.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.patch_autosizerom.Location = new System.Drawing.Point(10, 63);
             this.patch_autosizerom.Name = "patch_autosizerom";
-            this.patch_autosizerom.Size = new System.Drawing.Size(117, 17);
+            this.patch_autosizerom.Size = new System.Drawing.Size(115, 17);
             this.patch_autosizerom.TabIndex = 16;
             this.patch_autosizerom.Tag = "patch_autosizerom";
             this.patch_autosizerom.Text = "patch_autosizerom";
@@ -112,7 +112,7 @@ namespace FriishProduce
             this.patch_expandedram.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.patch_expandedram.Location = new System.Drawing.Point(10, 41);
             this.patch_expandedram.Name = "patch_expandedram";
-            this.patch_expandedram.Size = new System.Drawing.Size(125, 17);
+            this.patch_expandedram.Size = new System.Drawing.Size(123, 17);
             this.patch_expandedram.TabIndex = 15;
             this.patch_expandedram.Tag = "patch_expandedram";
             this.patch_expandedram.Text = "patch_expandedram";
@@ -126,7 +126,7 @@ namespace FriishProduce
             this.patch_fixcrashes.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.patch_fixcrashes.Location = new System.Drawing.Point(10, 85);
             this.patch_fixcrashes.Name = "patch_fixcrashes";
-            this.patch_fixcrashes.Size = new System.Drawing.Size(108, 17);
+            this.patch_fixcrashes.Size = new System.Drawing.Size(106, 17);
             this.patch_fixcrashes.TabIndex = 14;
             this.patch_fixcrashes.Tag = "patch_fixcrashes";
             this.patch_fixcrashes.Text = "patch_fixcrashes";
@@ -140,7 +140,7 @@ namespace FriishProduce
             this.patch_fixbrightness.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.patch_fixbrightness.Location = new System.Drawing.Point(10, 19);
             this.patch_fixbrightness.Name = "patch_fixbrightness";
-            this.patch_fixbrightness.Size = new System.Drawing.Size(121, 17);
+            this.patch_fixbrightness.Size = new System.Drawing.Size(117, 17);
             this.patch_fixbrightness.TabIndex = 13;
             this.patch_fixbrightness.Tag = "patch_fixbrightness";
             this.patch_fixbrightness.Text = "patch_fixbrightness";
@@ -149,7 +149,7 @@ namespace FriishProduce
             // 
             // Options_VC_N64
             // 
-            this.ClientSize = new System.Drawing.Size(459, 212);
+            this.ClientSize = new System.Drawing.Size(484, 212);
             this.Controls.Add(this.g1);
             this.Name = "Options_VC_N64";
             this.Tag = "vc_n64";

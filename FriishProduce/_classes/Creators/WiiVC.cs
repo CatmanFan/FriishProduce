@@ -18,6 +18,7 @@ namespace FriishProduce
         protected ROM ROM { get; set; }
 
         public ZipFile Manual { get; set; }
+        public bool KeepOrigManual { get; set; }
         protected string OrigManual { get; set; }
         protected bool NeedsManualLoaded { get; set; }
 
@@ -219,7 +220,7 @@ namespace FriishProduce
         {
             if (Manual == null || Manual?.Count == 0)
             {
-                CleanManual();
+                if (!KeepOrigManual) CleanManual();
             }
 
             else

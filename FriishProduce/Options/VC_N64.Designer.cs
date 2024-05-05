@@ -37,7 +37,7 @@ namespace FriishProduce.Options {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public string patch_fixbrightness {
             get {
                 return ((string)(this["patch_fixbrightness"]));
@@ -73,7 +73,7 @@ namespace FriishProduce.Options {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public string patch_autosizerom {
             get {
                 return ((string)(this["patch_autosizerom"]));

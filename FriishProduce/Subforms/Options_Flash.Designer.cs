@@ -213,7 +213,7 @@ namespace FriishProduce
             // 
             // Options_Flash
             // 
-            this.ClientSize = new System.Drawing.Size(594, 262);
+            this.ClientSize = new System.Drawing.Size(594, 282);
             this.Controls.Add(this.strap_reminder);
             this.Controls.Add(this.controls);
             this.Controls.Add(this.quality);

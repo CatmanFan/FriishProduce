@@ -95,66 +95,59 @@ namespace FriishProduce
 
             // -----------------------------
 
-            forwarder_root_device.Text = Program.Lang.String(forwarder_root_device.Name, "projectform");
-            forwarder_console.Text = Program.Lang.String(forwarder_console.Name, "projectform");
+            Program.Lang.String(forwarder_root_device, "projectform");
+            Program.Lang.String(forwarder_console, "projectform");
 
             // -----------------------------
 
-            vc_nes_palette.Text = Program.Lang.String("palette", "vc_nes");
-            vc_nes_palette_use_on_banner.Text = Program.Lang.String("palette_use_on_banner", "vc_nes");
-
-            vc_nes_palettelist.Items.Clear();
-            vc_nes_palettelist.Items.AddRange(Program.Lang.StringArray("palette", "vc_nes"));
+            Program.Lang.String(vc_nes_palette, "vc_nes");
+            Program.Lang.String(vc_nes_palette_use_on_banner, "vc_nes");
+            Program.Lang.String(vc_nes_palettelist, "vc_nes");
 
             // -----------------------------
 
-            vc_n64_patch_fixbrightness.Text = Program.Lang.String("patch_fixbrightness", "vc_n64");
-            vc_n64_patch_fixcrashes.Text = Program.Lang.String("patch_fixcrashes", "vc_n64");
-            vc_n64_patch_expandedram.Text = Program.Lang.String("patch_expandedram", "vc_n64");
-            vc_n64_patch_autosizerom.Text = Program.Lang.String("patch_autosizerom", "vc_n64");
-            vc_n64_romc_type.Text = Program.Lang.String("romc_type", "vc_n64");
-
-            vc_n64_romc_type_list.Items.Clear();
-            vc_n64_romc_type_list.Items.AddRange(Program.Lang.StringArray("romc_type", "vc_n64"));
+            Program.Lang.String(vc_n64_patch_fixbrightness, "vc_n64");
+            Program.Lang.String(vc_n64_patch_fixcrashes, "vc_n64");
+            Program.Lang.String(vc_n64_patch_expandedram, "vc_n64");
+            Program.Lang.String(vc_n64_patch_autosizerom, "vc_n64");
+            Program.Lang.String(vc_n64_romc_type, "vc_n64");
+            Program.Lang.String(vc_n64_romc_type_list, "vc_n64");
+            Program.AutoSizeControl(vc_n64_romc_type_list, vc_n64_romc_type);
 
             // -----------------------------
 
-            vc_sega_country_l.Text = Program.Lang.String("region");
+            Program.Lang.String(vc_sega_country_l);
             vc_sega_dev_mdpad_enable_6b.Text = string.Format(Program.Lang.String("dev_mdpad_enable_6b", "vc_sega"), Program.Lang.Console(Console.SMD));
-            vc_sega_console_disableresetbutton.Text = Program.Lang.String("console_disableresetbutton", "vc_sega");
+            Program.Lang.String(vc_sega_console_disableresetbutton, "vc_sega");
 
             vc_sega_country.Items.Clear();
             vc_sega_country.Items.AddRange(new string[] { Program.Lang.String("region_j"), Program.Lang.String("region_u"), Program.Lang.String("region_e") });
 
             // -----------------------------
 
-            vc_pce_y_offset_l.Text = Program.Lang.String("y_offset", "vc_pce");
-            vc_pce_hide_overscan.Text = Program.Lang.String("hide_overscan", "vc_pce");
-            vc_pce_raster.Text = Program.Lang.String("raster", "vc_pce");
-            vc_pce_sprline.Text = Program.Lang.String("sprline", "vc_pce");
+            Program.Lang.String(vc_pce_y_offset_l, "vc_pce");
+            Program.Lang.String(vc_pce_hide_overscan, "vc_pce");
+            Program.Lang.String(vc_pce_raster, "vc_pce");
+            Program.Lang.String(vc_pce_sprline, "vc_pce");
 
             // -----------------------------
 
-            vc_neo_bios_list.Items.Clear();
-            vc_neo_bios_list.Items.AddRange(Program.Lang.StringArray("bios", "vc_neo"));
+            Program.Lang.String(vc_neo_bios_list, "vc_neo");
             vc_neo_bios_list.Items.RemoveAt(0);
 
             // -----------------------------
 
-            flash_save_data.Text = Program.Lang.String("save_data", "projectform");
-            flash_save_data_enable.Text = Program.Lang.String("save_data_enable", "projectform");
-            flash_vff_sync_on_write.Text = Program.Lang.String("vff_sync_on_write", "adobe_flash");
-            flash_vff_cache_size.Text = Program.Lang.String("vff_cache_size", "adobe_flash");
-            flash_controls.Text = Program.Lang.String("controls", "adobe_flash");
-            flash_mouse.Text = Program.Lang.String("mouse", "adobe_flash");
-            flash_qwerty_keyboard.Text = Program.Lang.String("qwerty_keyboard", "adobe_flash");
-            flash_quality.Text = Program.Lang.String("quality", "adobe_flash");
-            flash_strap_reminder.Text = Program.Lang.String("strap_reminder", "adobe_flash");
-
-            flash_quality_list.Items.Clear();
-            flash_quality_list.Items.AddRange(Program.Lang.StringArray("quality", "adobe_flash"));
-            flash_strap_reminder_list.Items.Clear();
-            flash_strap_reminder_list.Items.AddRange(Program.Lang.StringArray("strap_reminder", "adobe_flash"));
+            Program.Lang.String(flash_save_data, "projectform");
+            Program.Lang.String(flash_save_data_enable, "projectform");
+            Program.Lang.String(flash_vff_sync_on_write, "adobe_flash");
+            Program.Lang.String(flash_vff_cache_size, "adobe_flash");
+            Program.Lang.String(flash_controls, "adobe_flash");
+            Program.Lang.String(flash_mouse, "adobe_flash");
+            Program.Lang.String(flash_qwerty_keyboard, "adobe_flash");
+            Program.Lang.String(flash_quality, "adobe_flash");
+            Program.Lang.String(flash_quality_list, "adobe_flash");
+            Program.Lang.String(flash_strap_reminder, "adobe_flash");
+            Program.Lang.String(flash_strap_reminder_list, "adobe_flash");
             #endregion
 
             // -----------------------------

@@ -27,7 +27,9 @@
 			"region_e": "Europe/Australia",
 			"region_k": "Republic of Korea",
 			"region_rf": "Region Free",
-			"region_orig": "Keep original",
+			"disabled": "Disabled",
+			"enabled": "Enabled",
+			"keep_original": "Keep original",
 			"settings": "Settings",
 			"system": "System",
 			"display": "Display",
@@ -153,7 +155,10 @@
 			"forwarder_console": "Console type",
 			"use_online_wad": "Use an online base",
 			"import_wad_from_file": "Use an offline WAD file",
-			"import_manual": "Import custom manual",
+			"manual_type": "Operations manual:",
+			"manual_type0": "{disabled}",
+			"manual_type1": "{keep_original}",
+			"manual_type2": "Import custom manual",
 			"base_name": "Base name:",
 			"title_id": "Title ID:",
 			"short_channel_name": "Short name:",
@@ -221,8 +226,8 @@
 			"quality1": "Medium",
 			"quality2": "Low",
 			"strap_reminder": "Strap reminder screen",
-			"strap_reminder0": "Disabled",
-			"strap_reminder1": "Normal",
+			"strap_reminder0": "{disabled}",
+			"strap_reminder1": "{enabled}",
 			"strap_reminder2": "No extension controller"
 		}
 	}

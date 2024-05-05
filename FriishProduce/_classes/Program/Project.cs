@@ -14,7 +14,8 @@ namespace FriishProduce
 
         public string ROM { get; set; }
         public string PatchFile { get; set; }
-        public string Manual { get; set; }
+        public int ManualIndex { get; set; }
+        public string ManualFile { get; set; }
         public Bitmap Img { get; set; }
         public Creator Creator { get; set; }
         public (bool, bool) ForwarderOptions { get; set; }

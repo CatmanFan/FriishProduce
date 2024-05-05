@@ -343,7 +343,7 @@ namespace FriishProduce
 
         private void Tutorial_Click(object sender, EventArgs e)
         {
-            var tut = new Tutorial() { Text = menu_tutorial.Text, Font = Font };
+            var tut = new Tutorial() { Text = menu_tutorial.Text };
             tut.ShowDialog();
             tut.Dispose();
         }

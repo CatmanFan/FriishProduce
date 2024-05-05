@@ -44,10 +44,8 @@ See **[here](https://github.com/CatmanFan/FriishProduce/wiki/Translation)** for 
 ---
 
 ## To-Do
-* ***Before v1.1 release:***
-  - [ ] Restructure and clean code
-  - [X] Complete custom manual building algorithm (NES/SNES/N64/SEGA only)
 * ***Planned later:***
+  - [ ] Restructure and clean code
   - [ ] Probably reorganize consoles into their own folders?
   * Other VC injection support:
     * Commodore 64 (needs [Custom Frodo](https://gbatemp.net/threads/custom-frodo-for-c64-vc-injection.102356/))
