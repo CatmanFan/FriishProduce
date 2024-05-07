@@ -143,24 +143,35 @@ namespace FriishProduce
                 Size = new Size(pj.Width + 16, pj.Height + MenuStrip.Height + ToolStrip.Height + tabControl.TabHeight + 40);
             welcome.Location = new Point((MainPanel.Width / 2) - (welcome.Width / 2), (MainPanel.Height / 2) - (welcome.Height / 2) - 15);
             welcome_do_not_show.Location = new Point(welcome.Location.X + 104, welcome.Location.Y + 96);
+
+            if (MaximumSize.IsEmpty)
+            {
+                MaximumSize = new Size
+                (
+                    MainPanel.Width + (ToolStrip.Dock == DockStyle.Right || ToolStrip.Dock == DockStyle.Left ? ToolStrip.Width - 8 : 16),
+                    MainPanel.Location.Y + MainPanel.Height + excessHeight
+                );
+                MinimumSize = Size = MaximumSize;
+            }
+
+            tabControl.Size = new Size(MainPanel.Width, 1000);
         }
+
+        private int excessHeight = 41;
 
         public MainForm()
         {
             InitializeComponent();
-            RefreshForm();
 
             welcome_do_not_show.Visible = PointToTutorial.Visible = welcome.Visible = !Properties.Settings.Default.donotshow_welcome;
 
             Program.Handle = Handle;
-            tabControl.Location = MainPanel.Location;
-            tabControl.Size = new Size(MainPanel.Width, 1000);
-            Size = new Size
-            (
-                MainPanel.Width + (ToolStrip.Dock == DockStyle.Right || ToolStrip.Dock == DockStyle.Left ? ToolStrip.Width - 8 : 16),
-                MainPanel.Location.Y + MainPanel.Height + 41
-            );
             welcome.Font = new Font(Font.FontFamily, 9.5f, FontStyle.Regular);
+
+            MaximumSize = new Size(0,0);
+            tabControl.Location = MainPanel.Location;
+            MainPanel.Height += excessHeight + 5;
+            RefreshForm();
             CenterToScreen();
 
             // Automatically set defined initial directory for save file dialog

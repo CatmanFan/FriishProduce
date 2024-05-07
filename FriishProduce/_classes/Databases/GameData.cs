@@ -57,7 +57,7 @@ namespace FriishProduce
             bool YearIsSet = false;
 
             if (!Web.InternetTest("https://gbatemp.net/", 6)) goto NotFound;
-            bool useGitHub = Properties.Settings.Default.gamedata_source_image == 2 ? true : Properties.Settings.Default.gamedata_source_image == 1 ? false : Web.InternetTest("https://thumbnails.libretro.com/", 6);
+            bool useGitHub = Properties.Settings.Default.gamedata_source_image == 2 ? true : Properties.Settings.Default.gamedata_source_image == 1 ? false : !Web.InternetTest("https://thumbnails.libretro.com/README.md", 6);
 
             // Original: https://github.com/libretro/libretro-database/raw/master/metadat/
             // ****************

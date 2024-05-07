@@ -7,8 +7,6 @@
 **FriishProduce** is a WAD channel injector/creator for (v)Wii. It can be used to convert ROMs, disc images or other types of software to installable WADs for Wii/vWii (Wii U). This includes injectable Virtual Console (VC) games, as well as single ROM loaders (SRLs), and Adobe Flash files.
 This application is designed to streamline the process to as few third-party programs as possible.
 
-***This repository has been updated by way of a new MDI version (pictured above) and is currently under work-in-progress.<br>The legacy version (all revisions up to and including v0.26-beta) are currently being deprecated and will be moved to a separate read-only repository.***
-
 ---
 
 ## Features
@@ -74,3 +72,7 @@ I would also like to thank the following people:
 * And of course, the team at the 0RANGECHiCKEN release group, including [lolsjoel](https://gbatemp.net/members/lolsjoel.18721/), and the late [G0dLiKe](https://gbatemp.net/members/g0dlike.190457/), without whose work this project would not have been possible.
 
 This application is distributed and licensed under the **GNU General Public License v3.0** ([view in full](https://github.com/CatmanFan/FriishProduce/blob/main/LICENSE)).
+
+---
+
+To view the source code for the legacy interface (all versions up to and including v0.26-beta), go **[here](https://github.com/CatmanFan/FriishProduce-Legacy/upload/main/FriishProduce)**.
