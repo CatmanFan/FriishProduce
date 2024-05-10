@@ -31,13 +31,8 @@ This injector bypasses other third-party assets (such as Common-Key.bin, HowardC
 
 ---
 
-## How-to
-See **[here](https://github.com/CatmanFan/FriishProduce/wiki/FriishProduce-v1.0)** for basic instructions on how to use the app.
-
-**Make sure you have a (v)Wii NAND backup in case anything goes wrong!**
-
-### Translation
-See **[here](https://github.com/CatmanFan/FriishProduce/wiki/Translation)** for basic instructions on translating the app.
+## Instructions
+See **[here](https://github.com/CatmanFan/FriishProduce/wiki/FriishProduce-v1.0)** for a tutorial on how to use the app. For translations, see **[here](https://github.com/CatmanFan/FriishProduce/wiki/Translation)**.
 
 ---
 
@@ -75,4 +70,4 @@ This application is distributed and licensed under the **GNU General Public Lice
 
 ---
 
-To view the source code for the legacy interface (all versions up to and including v0.26-beta), go **[here](https://github.com/CatmanFan/FriishProduce-Legacy/upload/main/FriishProduce)**.
+To view the source code for the legacy interface (all versions up to and including v0.26-beta), go **[here](https://github.com/CatmanFan/FriishProduce-Legacy)**.
