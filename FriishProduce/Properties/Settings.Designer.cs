@@ -86,18 +86,6 @@ namespace FriishProduce.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool donotshow_welcome {
-            get {
-                return ((bool)(this["donotshow_welcome"]));
-            }
-            set {
-                this["donotshow_welcome"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool link_save_data {
             get {
                 return ((bool)(this["link_save_data"]));
@@ -116,6 +104,18 @@ namespace FriishProduce.Properties {
             }
             set {
                 this["gamedata_source_image"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string custom_database {
+            get {
+                return ((string)(this["custom_database"]));
+            }
+            set {
+                this["custom_database"] = value;
             }
         }
     }

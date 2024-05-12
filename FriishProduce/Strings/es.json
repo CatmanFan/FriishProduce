@@ -84,11 +84,9 @@
 
 	"strings": {
 		"mainform": {
-			"welcome": "¡Bienvenido a FriishProduce!\n\nAntes de comenzar, por favor asegúrese de familiarizarse con esta aplicación leyendo su tutorial (en inglés).",
 			"file": "&Archivo",
 			"project": "&Proyecto",
 			"help": "A&yuda",
-			"tutorial": "&Tutorial (en inglés)",
 			"exit": "&Salir",
 			"new_project": "&Nuevo...",
 			"project_type": "Canal de {0}",
@@ -111,7 +109,8 @@
 			"auto_retrieve_gamedata_online": "Obtener automáticamente tras abrir una ROM",
 			"gamedata_source_image": "Sitio web de imágenes:",
 			"autolink_save_data": "Vincular automáticamente el título de los datos guardados al título del banner y del canal",
-			"reset_all_dialogs": "Restablecer la opción \"No volver a mostrar este mensaje\""
+			"reset_all_dialogs": "Restablecer la opción \"No volver a mostrar este mensaje\"",
+			"use_custom_database": "Utilizar una base de datos externa para los canales de origen"
 		},
 		"projectform": {
 			"tab_main_details": "Detalles claves",

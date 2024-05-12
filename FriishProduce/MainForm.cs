@@ -24,6 +24,7 @@ namespace FriishProduce
             { Console.NEO, new Icon(Properties.Resources.snk_neo_geo_aes, 16, 16).ToBitmap() },
             { Console.MSX, Properties.Resources.msx },
             { Console.Flash, Properties.Resources.flash },
+            { Console.RPGM, new Icon(Properties.Resources.rpg2003, 16, 16).ToBitmap() }
         };
 
         private ToolStripItem[] ConsolesList()
@@ -61,7 +62,9 @@ namespace FriishProduce
                             new ToolStripSeparator(),
                             new ToolStripMenuItem(null, Icons[Console.Flash], AddProject, Console.Flash.ToString()),
                          // new ToolStripSeparator(),
-                         // new ToolStripMenuItem(null, new Icon(Properties.Resources.sony_playstation, 16, 16).ToBitmap(), AddProject, Console.PSX.ToString())
+                         // new ToolStripMenuItem(null, new Icon(Properties.Resources.sony_playstation, 16, 16).ToBitmap(), AddProject, Console.PSX.ToString()),
+                         // new ToolStripSeparator(),
+                         // new ToolStripMenuItem(null, Icons[Console.RPGM], AddProject, Console.RPGM.ToString())
                         //})
                 };
 
@@ -111,8 +114,6 @@ namespace FriishProduce
             ToolStrip_CloseTab.Text = menu_close_project.Text;
             ToolStrip_UseLibRetro.Text = menu_retrieve_gamedata_online.Text;
             ToolStrip_Settings.Text = menu_settings.Text;
-            ToolStrip_Tutorial.Text = menu_tutorial.Text;
-            ToolStrip_Tutorial.Image = menu_tutorial.Image;
             BrowseROM.Title = menu_open_gamefile.Text;
             BrowseImage.Title = menu_open_image.Text;
             SaveProject.Title = menu_save_project_as.Text;
@@ -128,8 +129,6 @@ namespace FriishProduce
             {
                 MessageBox.Show("Warning!\nThe language strings have not been loaded correctly.\n\nSeveral items may show up as 'undefined'.\n\nOther exceptions related to strings or filters can also occur!", MessageBox.Buttons.Ok, TaskDialogIcon.Warning, false);
             }
-
-            welcome_do_not_show.Text = Program.Lang.String("do_not_show");
             #endregion
 
             foreach (MdiTabControl.TabPage tabPage in tabControl.TabPages)
@@ -141,8 +140,7 @@ namespace FriishProduce
             MenuStrip.Font = ToolStrip.Font; // = Font;
             using (var pj = new ProjectForm(0))
                 Size = new Size(pj.Width + 16, pj.Height + MenuStrip.Height + ToolStrip.Height + tabControl.TabHeight + 40);
-            welcome.Location = new Point((MainPanel.Width / 2) - (welcome.Width / 2), (MainPanel.Height / 2) - (welcome.Height / 2) - 15);
-            welcome_do_not_show.Location = new Point(welcome.Location.X + 104, welcome.Location.Y + 96);
+            pictureBox1.Location = new Point((MainPanel.Width / 2) - (pictureBox1.Width / 2), (MainPanel.Height / 2) - (pictureBox1.Height / 2));
 
             if (MaximumSize.IsEmpty)
             {
@@ -157,16 +155,12 @@ namespace FriishProduce
             tabControl.Size = new Size(MainPanel.Width, 1000);
         }
 
-        private int excessHeight = 41;
+        private int excessHeight = 40;
 
         public MainForm()
         {
             InitializeComponent();
-
-            welcome_do_not_show.Visible = PointToTutorial.Visible = welcome.Visible = !Properties.Settings.Default.donotshow_welcome;
-
             Program.Handle = Handle;
-            welcome.Font = new Font(Font.FontFamily, 9.5f, FontStyle.Regular);
 
             MaximumSize = new Size(0,0);
             tabControl.Location = MainPanel.Location;
@@ -290,7 +284,7 @@ namespace FriishProduce
             tabControl.TabPages.Add(Tab);
 
             tabControl.Visible = true;
-            welcome_do_not_show.Visible = PointToTutorial.Visible = welcome.Visible = MainPanel.Visible = false;
+            MainPanel.Visible = false;
 
             return Tab;
         }
@@ -323,6 +317,10 @@ namespace FriishProduce
                 case Console.Flash:
                     BrowseROM.Filter = Program.Lang.String("filter.swf");
                     break;
+
+                case Console.RPGM:
+                    BrowseROM.Filter = Program.Lang.String("filter.rpgm");
+                    break;
             }
 
             if (BrowseROM.ShowDialog() == DialogResult.OK)
@@ -350,20 +348,6 @@ namespace FriishProduce
                 var currentForm = tabControl.SelectedForm as ProjectForm;
                 currentForm.LoadImage(BrowseImage.FileName);
             }
-        }
-
-        private void Tutorial_Click(object sender, EventArgs e)
-        {
-            var tut = new Tutorial() { Text = menu_tutorial.Text };
-            tut.ShowDialog();
-            tut.Dispose();
-        }
-
-        private void Welcome_DoNotShow_Click(object sender, EventArgs e)
-        {
-            welcome_do_not_show.Visible = PointToTutorial.Visible = welcome.Visible = false;
-            Properties.Settings.Default.donotshow_welcome = true;
-            Properties.Settings.Default.Save();
         }
 
         public void CleanTemp()

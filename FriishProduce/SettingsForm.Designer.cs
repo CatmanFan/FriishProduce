@@ -38,7 +38,7 @@ namespace FriishProduce
             this.vc_n64_patch_expandedram = new System.Windows.Forms.CheckBox();
             this.vc_n64_patch_fixcrashes = new System.Windows.Forms.CheckBox();
             this.vc_n64_patch_fixbrightness = new System.Windows.Forms.CheckBox();
-            this.DownloadBanners = new System.Windows.Forms.Button();
+            this.GetBanners = new System.Windows.Forms.Button();
             this.b_ok = new System.Windows.Forms.Button();
             this.b_cancel = new System.Windows.Forms.Button();
             this.bottomPanel1 = new System.Windows.Forms.Panel();
@@ -110,6 +110,7 @@ namespace FriishProduce
             this.flash_vff_cache_size_list = new System.Windows.Forms.ComboBox();
             this.LanguageList = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.use_custom_database = new System.Windows.Forms.CheckBox();
             this.vc_n64_options.SuspendLayout();
             this.bottomPanel1.SuspendLayout();
             this.bottomPanel2.SuspendLayout();
@@ -205,12 +206,12 @@ namespace FriishProduce
             this.vc_n64_patch_fixbrightness.Tag = "patch_fixbrightness";
             this.vc_n64_patch_fixbrightness.UseVisualStyleBackColor = true;
             // 
-            // DownloadBanners
+            // GetBanners
             // 
-            resources.ApplyResources(this.DownloadBanners, "DownloadBanners");
-            this.DownloadBanners.Name = "DownloadBanners";
-            this.DownloadBanners.UseVisualStyleBackColor = true;
-            this.DownloadBanners.Click += new System.EventHandler(this.DownloadBanners_Click);
+            resources.ApplyResources(this.GetBanners, "GetBanners");
+            this.GetBanners.Name = "GetBanners";
+            this.GetBanners.UseVisualStyleBackColor = true;
+            this.GetBanners.Click += new System.EventHandler(this.DownloadBanners_Click);
             // 
             // b_ok
             // 
@@ -234,7 +235,7 @@ namespace FriishProduce
             this.bottomPanel1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.bottomPanel1.Controls.Add(this.b_cancel);
             this.bottomPanel1.Controls.Add(this.b_ok);
-            this.bottomPanel1.Controls.Add(this.DownloadBanners);
+            this.bottomPanel1.Controls.Add(this.GetBanners);
             resources.ApplyResources(this.bottomPanel1, "bottomPanel1");
             this.bottomPanel1.Name = "bottomPanel1";
             // 
@@ -783,11 +784,20 @@ namespace FriishProduce
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.use_custom_database);
             this.panel2.Controls.Add(this.autolink_save_data);
             this.panel2.Controls.Add(this.image_interpolation_mode);
             this.panel2.Controls.Add(this.retrieve_gamedata_online);
             resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
+            // 
+            // use_custom_database
+            // 
+            resources.ApplyResources(this.use_custom_database, "use_custom_database");
+            this.use_custom_database.Name = "use_custom_database";
+            this.use_custom_database.Tag = "use_custom_database";
+            this.use_custom_database.UseVisualStyleBackColor = true;
+            this.use_custom_database.CheckedChanged += new System.EventHandler(this.CustomDatabase_CheckedChanged);
             // 
             // SettingsForm
             // 
@@ -799,15 +809,15 @@ namespace FriishProduce
             this.Controls.Add(this.bottomPanel2);
             this.Controls.Add(this.leftSeparator);
             this.Controls.Add(this.TreeView);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.vc_neo);
+            this.Controls.Add(this.vc_nes);
             this.Controls.Add(this.adobe_flash);
             this.Controls.Add(this.forwarder);
             this.Controls.Add(this.vc_n64);
             this.Controls.Add(this.vc_pce);
             this.Controls.Add(this.vc_sega);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.vc_neo);
-            this.Controls.Add(this.vc_nes);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MaximizeBox = false;
@@ -875,7 +885,7 @@ namespace FriishProduce
         private System.Windows.Forms.CheckBox vc_n64_patch_fixcrashes;
         private System.Windows.Forms.CheckBox vc_n64_patch_fixbrightness;
         private System.Windows.Forms.ComboBox vc_n64_romc_type_list;
-        private System.Windows.Forms.Button DownloadBanners;
+        private System.Windows.Forms.Button GetBanners;
         private System.Windows.Forms.TreeView TreeView;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel vc_n64;
@@ -944,5 +954,6 @@ namespace FriishProduce
         private System.Windows.Forms.GroupBox flash_strap_reminder;
         private System.Windows.Forms.ComboBox flash_strap_reminder_list;
         private System.Windows.Forms.Label vc_n64_romc_type;
+        private System.Windows.Forms.CheckBox use_custom_database;
     }
 }

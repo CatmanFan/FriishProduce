@@ -417,6 +417,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\icons\consoles\RPG2003.ico" />
     <None Include="Resources\apps\gbalzss.exe" />
     <None Include="Resources\icons\folder-horizontal-open.png" />
     <None Include="Resources\apps\romc0.exe" />

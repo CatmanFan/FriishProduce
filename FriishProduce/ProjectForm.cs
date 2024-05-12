@@ -263,6 +263,10 @@ namespace FriishProduce
                     InjectorsList.Items.Add(Forwarder.List[12]);
                     break;
 
+                case Console.RPGM:
+                    InjectorsList.Items.Add(Forwarder.List[13]);
+                    break;
+
                 default:
                     break;
             }
@@ -276,7 +280,16 @@ namespace FriishProduce
         public ProjectForm(Console c, string ROMpath = null)
         {
             Console = c;
-            channelData = new ChannelDatabase(Console);
+            try { channelData = new ChannelDatabase(Console); }
+            catch (Exception ex)
+            {
+                if ((int)Console < 10)
+                {
+                    System.Windows.Forms.MessageBox.Show($"A fatal error occurred retrieving the {c} WADs database.\n\nException: {ex.GetType().FullName}\nMessage: {ex.Message}\n\nThe application will now shut down.", "Halt", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                    Environment.FailFast("Database initialization failed.");
+                }
+                else { channelData = new ChannelDatabase(Console.NES); }
+            }
 
             InitializeComponent();
 
@@ -477,8 +490,8 @@ namespace FriishProduce
 
         public bool[] CheckToolStripButtons() => new bool[]
             {
-                Console != Console.Flash && (ROM?.Bytes != null || !string.IsNullOrWhiteSpace(ROM?.Path)), // LibRetro / game data
-                Console != Console.Flash && isVCMode, // Browse manual
+                Console != Console.Flash && Console != Console.RPGM && (ROM?.Bytes != null || !string.IsNullOrWhiteSpace(ROM?.Path)), // LibRetro / game data
+                Console != Console.Flash && Console != Console.RPGM && isVCMode, // Browse manual
             };
 
         protected virtual void SetROMDataText()
@@ -894,15 +907,9 @@ namespace FriishProduce
         {
             switch (Console)
             {
+                // ROM file formats
+                // ****************
                 default:
-                case Console.NES:
-                case Console.SNES:
-                case Console.N64:
-                case Console.SMS:
-                case Console.SMD:
-                case Console.PCE:
-                case Console.C64:
-                case Console.MSX:
                     if (ROM == null || !ROM.CheckValidity(ROMpath))
                     {
                         MessageBox.Show(Program.Lang.Msg(2), 0, Ookii.Dialogs.WinForms.TaskDialogIcon.Warning);
@@ -910,9 +917,9 @@ namespace FriishProduce
                     }
                     break;
 
+                // ZIP format
+                // ****************
                 case Console.NEO:
-                    // Check if ZIP archive is of valid format
-                    // ****************
                     if (!ROM.CheckZIPValidity(ROMpath, new string[] { "c1", "c2", "m1", "p1", "s1", "v1" }, true, true))
                     {
                         MessageBox.Show(Program.Lang.Msg(2), 0, Ookii.Dialogs.WinForms.TaskDialogIcon.Warning);
@@ -920,7 +927,15 @@ namespace FriishProduce
                     }
                     break;
 
+                // Disc format
+                // ****************
+                case Console.PSX:
+                    break;
+
+                // Other, no verification needed
+                // ****************
                 case Console.Flash:
+                case Console.RPGM:
                     break;
             }
 

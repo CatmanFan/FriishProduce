@@ -198,7 +198,7 @@ namespace FriishProduce
             // 
             resources.ApplyResources(this.SaveDataTitle, "SaveDataTitle");
             this.SaveDataTitle.Name = "SaveDataTitle";
-            this.SaveDataTitle.Tag = "33";
+            this.SaveDataTitle.Tag = "26";
             this.SaveDataTitle.TextChanged += new System.EventHandler(this.TextBox_Changed);
             this.SaveDataTitle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_Handle);
             // 
@@ -578,8 +578,9 @@ namespace FriishProduce
             // BaseRegion
             // 
             this.BaseRegion.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.BaseRegion.BackgroundImage = global::FriishProduce.Properties.Resources.x;
+            this.BaseRegion.BackgroundImage = global::FriishProduce.Properties.Resources.flag_eu50;
             resources.ApplyResources(this.BaseRegion, "BaseRegion");
+            this.BaseRegion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.BaseRegion.ContextMenuStrip = this.BaseRegionList;
             this.BaseRegion.Name = "BaseRegion";
             this.BaseRegion.TabStop = false;

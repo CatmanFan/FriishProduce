@@ -58,6 +58,7 @@ namespace FriishProduce
             string bannerPath = Paths.Banners;
             switch (c)
             {
+            #region VC & Other Official
                 case Console.NES:
                     bannerPath += region switch { Region.Japan => "jp_fc.bnr", Region.Korea => "kr_fc.bnr", _ => "nes.bnr" };
                     break;
@@ -79,6 +80,7 @@ namespace FriishProduce
                     break;
 
                 case Console.PCE:
+                case Console.PCECD:
                     bannerPath += region == Region.Japan ? "jp_pce.bnr" : "tg16.bnr";
                     break;
 
@@ -97,6 +99,29 @@ namespace FriishProduce
                 case Console.Flash:
                     bannerPath += "flash.bnr";
                     break;
+            #endregion
+
+            #region Forwarders
+                case Console.GB:
+                    bannerPath += region == Region.Japan ? "jp_gb.bnr" : "gb.bnr";
+                    break;
+
+                case Console.GBC:
+                    bannerPath += region == Region.Japan ? "jp_gbc.bnr" : "gbc.bnr";
+                    break;
+
+                case Console.GBA:
+                    bannerPath += region == Region.Japan ? "jp_gba.bnr" : "gba.bnr";
+                    break;
+
+                case Console.PSX:
+                    bannerPath += region == Region.Japan ? "jp_psx.bnr" : "psx.bnr";
+                    break;
+
+                case Console.RPGM:
+                    bannerPath += region == Region.Japan ? "jp_rpgm.bnr" : "rpgm.bnr";
+                    break;
+            #endregion
 
                 default:
                     throw new NotImplementedException();
@@ -365,6 +390,95 @@ namespace FriishProduce
                         }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Error(ex.Message);
+            }
+        }
+
+        public static void ModifyBanner(string system, string file, string outFile, System.Drawing.Color[] colors)
+        {
+            file = file.ToLower();
+            outFile = outFile.ToLower();
+
+            var textColor = colors[2].GetBrightness() < 0.75 ? System.Drawing.Color.White : System.Drawing.Color.Black;
+            var leftTextColor = colors[0].GetBrightness() < 0.8 ? System.Drawing.Color.White : System.Drawing.Color.FromArgb(50, 50, 50);
+
+            string[] colorsFile = new string[]
+            {
+                $"{colors[4].R}             {colors[4].G}             {colors[4].B}             {colors[5].R}             {colors[5].G}             {colors[5].B}",
+                $"{colors[6].R}             {colors[6].G}             {colors[6].B}             {colors[6].R}             {colors[6].G}             {colors[6].B}",
+                "116           108           109           67            105           101",
+                "0             0             0             255           255           255",
+                $"{colors[0].R}             {colors[0].G}             {colors[0].B}             {colors[1].R}             {colors[1].G}             {colors[1].B}",
+                $"{colors[0].R}             {colors[0].G}             {colors[0].B}             {colors[1].R}             {colors[1].G}             {colors[1].B}",
+                $"{colors[0].R}             {colors[0].G}             {colors[0].B}             {colors[1].R}             {colors[1].G}             {colors[1].B}",
+                $"{colors[0].R}             {colors[0].G}             {colors[0].B}             {colors[1].R}             {colors[1].G}             {colors[1].B}",
+                $"0             0             0             {colors[3].R}             {colors[3].G}             {colors[3].B}",
+                $"0             0             0             {colors[3].R}             {colors[3].G}             {colors[3].B}",
+                $"{textColor.R}             {textColor.G}             {textColor.B}             {textColor.R}             {textColor.G}             {textColor.B}",
+                $"{leftTextColor.R}             {leftTextColor.G}             {leftTextColor.B}             {leftTextColor.R}             {leftTextColor.G}             {leftTextColor.B}",
+                $"{leftTextColor.R}             {leftTextColor.G}             {leftTextColor.B}             {leftTextColor.R}             {leftTextColor.G}             {leftTextColor.B}",
+                $"{textColor.R}             {textColor.G}             {textColor.B}             {textColor.R}             {textColor.G}             {textColor.B}",
+                "0             0             0             255           255           255",
+                "0             0             0             0             0             0",
+                "0             0             0             0             0             0",
+                "60             60             60             255           255           255",
+                $"0             0             0             {colors[2].R}             {colors[2].G}             {colors[2].B}",
+                $"0             0             0             {colors[2].R}             {colors[2].G}             {colors[2].B}",
+            };
+
+            string VCCSPath = Path.Combine(Paths.Tools, "vcbrlyt\\Schemes\\banner.vccs");
+            File.WriteAllLines(VCCSPath, colorsFile);
+
+            try
+            {
+                if (!File.Exists(Paths.Banners + file.Replace(".bnr", "") + ".bnr")) return;
+
+                U8 Banner = U8.Load(Paths.Banners + file.Replace(".bnr", "") + ".bnr");
+
+                // VCBrlyt and create temporary .brlyt file
+                // ****************
+                string BRLYTPath = Path.Combine(Paths.WorkingFolder, "banner.brlyt");
+                File.WriteAllBytes(BRLYTPath, Banner.Data[Banner.GetNodeIndex("banner.brlyt")]);
+
+                if (file.ToLower().Contains("kr_"))
+                {
+                    Utils.Run
+                    (
+                        "vcbrlyt\\vcbrlyt.exe",
+                        $"..\\..\\temp\\banner.brlyt -Color banner -System {system} -H_T_VCTitle_KOR \"VC................................................................................................................................\""
+                    );
+                }
+                else
+                {
+                    Utils.Run
+                    (
+                        "vcbrlyt\\vcbrlyt.exe",
+                        $"..\\..\\temp\\banner.brlyt -Color banner -System {system} -Title \"VC................................................................................................................................\" -YEAR VCVC -Play 4"
+                    );
+                }
+
+                byte[] BRLYT = File.ReadAllBytes(BRLYTPath);
+                File.Delete(BRLYTPath);
+                File.Delete(VCCSPath);
+
+                // Check if modified
+                // ****************
+                if (BRLYT == Banner.Data[Banner.GetNodeIndex("banner.brlyt")])
+                {
+                    Banner.Dispose();
+                    return;
+                }
+
+                // Replace
+                // ****************
+                Banner.ReplaceFile(Banner.GetNodeIndex("banner.brlyt"), BRLYT);
+
+                if (!Directory.Exists(Paths.Banners)) Directory.CreateDirectory(Paths.Banners);
+                File.WriteAllBytes(Paths.Banners + outFile.Replace(".bnr", "") + ".bnr", Banner.ToByteArray());
+                Banner.Dispose();
             }
             catch (Exception ex)
             {

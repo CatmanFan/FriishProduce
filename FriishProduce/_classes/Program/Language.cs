@@ -140,7 +140,7 @@ namespace FriishProduce
 
             if (Properties.Settings.Default.language == "en") _current = _english;
 
-            Thread.CurrentThread.CurrentCulture = Thread.CurrentThread.CurrentUICulture = new CultureInfo(code);
+            Thread.CurrentThread.CurrentCulture = Thread.CurrentThread.CurrentUICulture = new CultureInfo(code == "sys" ? GetSystemLanguage() : code);
         }
 
         #region Public methods and variables

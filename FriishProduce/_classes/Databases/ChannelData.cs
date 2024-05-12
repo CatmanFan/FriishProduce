@@ -176,63 +176,86 @@ namespace FriishProduce
         /// <summary>
         /// Loads a database of WADs for a selected console/platform.
         /// </summary>
-        public ChannelDatabase(Console c)
+        public ChannelDatabase(Console c, string externalFile = null)
         {
+            string file = File.Exists(externalFile) ? externalFile : File.Exists(Properties.Settings.Default.custom_database) ? Properties.Settings.Default.custom_database : null;
+
+            Entries = new List<ChannelEntry>();
+
+            if (!File.Exists(Properties.Settings.Default.custom_database))
+            {
+                Properties.Settings.Default.custom_database = null;
+                Properties.Settings.Default.Save();
+            }
+
             try
             {
-                using (MemoryStream ms = new MemoryStream(Properties.Resources.Database))
-                using (StreamReader sr = new StreamReader(ms, Encoding.Unicode))
-                using (var doc = JsonDocument.Parse(sr.ReadToEnd(), new JsonDocumentOptions() { AllowTrailingCommas = true, CommentHandling = JsonCommentHandling.Skip }))
+                GetEntries(c, File.ReadAllBytes(file));
+            }
+            catch
+            {
+                if (!string.IsNullOrWhiteSpace(externalFile)) throw;
+                else GetEntries(c, Properties.Resources.Database);
+            }
+        }
+
+        private ChannelDatabase(Console c)
+        {
+            GetEntries(c, Properties.Resources.Database);
+        }
+
+        private void GetEntries(Console c, byte[] file)
+        {
+            Entries = new List<ChannelEntry>();
+            string error = "The database format or styling is not valid.";
+
+            using (MemoryStream ms = new MemoryStream(file))
+            using (StreamReader sr = new StreamReader(ms, Encoding.Unicode))
+            using (var doc = JsonDocument.Parse(sr.ReadToEnd(), new JsonDocumentOptions() { AllowTrailingCommas = true, CommentHandling = JsonCommentHandling.Skip }))
+            {
+                var x = doc.Deserialize<JsonElement>(new JsonSerializerOptions() { AllowTrailingCommas = true, ReadCommentHandling = JsonCommentHandling.Skip }).GetProperty(c.ToString().ToLower());
+                if (x.ValueKind != JsonValueKind.Array) throw new Exception(error);
+
+                sr.Dispose();
+                ms.Dispose();
+
+                foreach (var item in x.EnumerateArray())
                 {
-                    var x = doc.Deserialize<JsonElement>(new JsonSerializerOptions() { AllowTrailingCommas = true, ReadCommentHandling = JsonCommentHandling.Skip }).GetProperty(c.ToString().ToLower());
-                    if (x.ValueKind != JsonValueKind.Array) throw new Exception("The database format or styling is not valid.");
+                    var y = new ChannelEntry() { ID = item.GetProperty("id").GetString() };
+                    var reg = item.GetProperty("region");
 
-                    sr.Dispose();
-                    ms.Dispose();
-
-                    Entries = new List<ChannelEntry>();
-                    foreach (var item in x.EnumerateArray())
+                    for (int i = 0; i < reg.GetArrayLength(); i++)
                     {
-                        var y = new ChannelEntry() { ID = item.GetProperty("id").GetString() };
-                        var reg = item.GetProperty("region");
+                        y.Regions.Add(reg[i].GetInt32());
+                        try { y.Titles.Add(item.GetProperty("titles")[i].GetString()); } catch { y.Titles.Add(item.GetProperty("titles")[Math.Max(0, item.GetProperty("titles").GetArrayLength() - 1)].GetString()); }
+                        try { y.EmuRevs.Add(item.GetProperty("emu_ver")[i].GetInt32()); } catch { y.EmuRevs.Add(0); }
+                    }
 
-                        for (int i = 0; i < reg.GetArrayLength(); i++)
+                    for (int i = 0; i < y.Regions.Count; i++)
+                    {
+                        try { y.MarioCube.Add(item.GetProperty("wad_titles")[i].GetString()); }
+                        catch
                         {
-                            y.Regions.Add(reg[i].GetInt32());
-                            try { y.Titles.Add(item.GetProperty("titles")[i].GetString()); } catch { y.Titles.Add(item.GetProperty("titles")[Math.Max(0, item.GetProperty("titles").GetArrayLength() - 1)].GetString()); }
-                            try { y.EmuRevs.Add(item.GetProperty("emu_ver")[i].GetInt32()); } catch { y.EmuRevs.Add(0); }
-                        }
-
-                        for (int i = 0; i < y.Regions.Count; i++)
-                        {
-                            try { y.MarioCube.Add(item.GetProperty("wad_titles")[i].GetString()); }
+                            try { y.MarioCube.Add(item.GetProperty("wad_titles")[Math.Max(0, item.GetProperty("wad_titles").GetArrayLength() - 1)].GetString()); }
                             catch
                             {
-                                try { y.MarioCube.Add(item.GetProperty("wad_titles")[Math.Max(0, item.GetProperty("wad_titles").GetArrayLength() - 1)].GetString()); }
-                                catch
+                                var title = y.Titles[y.Regions.Count > 1 ? 1 : 0];
+                                if (title.StartsWith("The "))
                                 {
-                                    var title = y.Titles[y.Regions.Count > 1 ? 1 : 0];
-                                    if (title.StartsWith("The "))
-                                    {
-                                        title = title.Substring(4);
-                                        if (title.Contains(": ")) title = title.Replace(": ", ", The: ");
-                                        else title += ", The";
-                                    }
-                                    y.MarioCube.Add(title.Replace(": ", " - ").Replace('é', 'e'));
+                                    title = title.Substring(4);
+                                    if (title.Contains(": ")) title = title.Replace(": ", ", The: ");
+                                    else title += ", The";
                                 }
+                                y.MarioCube.Add(title.Replace(": ", " - ").Replace('é', 'e'));
                             }
                         }
-
-                        Entries.Add(y);
                     }
+
+                    Entries.Add(y);
                 }
             }
 
-            catch (Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show($"A fatal error occurred retrieving the {c} WADs database.\n\nException: {ex.GetType().FullName}\nMessage: {ex.Message}\n\nThe application will now shut down.", "Halt", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Hand);
-                Environment.FailFast("Database initialization failed.");
-            }
+            if (Entries.Count == 0) throw new Exception(error);
         }
     }
 }

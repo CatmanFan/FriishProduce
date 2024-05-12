@@ -23,7 +23,8 @@ namespace FriishProduce
             { 9, "Wii64 (Rice GFX)" },
             { 10, "Not64" },
             { 11, "mupen64gc-fix94" },
-            { 12, "WiiStation" }
+            { 12, "WiiStation" },
+            { 13, "EasyRPG Player" }
         };
 
         private static readonly IDictionary<int, string> Files = new Dictionary<int, string>
@@ -40,7 +41,8 @@ namespace FriishProduce
             { 9, "wii64_rice" },
             { 10, "not64" },
             { 11, "mupen64gc-fix94" },
-            { 12, "wiistation" }
+            { 12, "wiistation" },
+            { 13, "easyrpg" }
         };
 
         public string Emulator { get; set; }

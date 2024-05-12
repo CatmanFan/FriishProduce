@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using FriishProduce.Options;
@@ -159,6 +161,24 @@ namespace FriishProduce
             FStorage_SD.Checked                         = FORWARDER.Default.root_storage_device.ToLower() == "sd";
             toggleSwitch1.Checked                       = FORWARDER.Default.nand_loader.ToLower() == "vwii";
             FStorage_USB.Checked                        = !FStorage_SD.Checked;
+            #region use_custom_database
+            bool clearCustomDatabase = !File.Exists(Default.custom_database);
+            use_custom_database.Checked = File.Exists(Default.custom_database);
+
+            /*#if DEBUG
+                use_custom_database.Visible = true;
+            #else
+                use_custom_database.Visible = false;
+                clearCustomDatabase = true;
+            #endif*/
+
+            if (clearCustomDatabase && use_custom_database.Checked)
+            {
+                use_custom_database.Checked = false;
+                Default.custom_database = null;
+                Default.Save();
+            }
+            #endregion
 
             // NES
             vc_nes_palettelist.SelectedIndex            = int.Parse(VC_NES.Default.palette);
@@ -211,6 +231,33 @@ namespace FriishProduce
         }
 
         private void Loading(object sender, EventArgs e) { TreeView.Select(); RefreshForm(); }
+
+        private void CustomDatabase_CheckedChanged(object sender, EventArgs e)
+        {
+            if (use_custom_database.Checked && (!File.Exists(Default.custom_database) || string.IsNullOrWhiteSpace(Default.custom_database)))
+            {
+                using (var dialog = new OpenFileDialog() { DefaultExt = ".json", CheckFileExists = true, AddExtension = true, Filter = "*.json|*.json", Title = use_custom_database.Text })
+                {
+                    if (dialog.ShowDialog() == DialogResult.OK)
+                    {
+                        try
+                        {
+                            var database = new ChannelDatabase(Console.NES, dialog.FileName);
+                            Default.custom_database = dialog.FileName;
+                        }
+                        catch
+                        {
+                            MessageBox.Show(Program.Lang.Msg(2), 0, Ookii.Dialogs.WinForms.TaskDialogIcon.Warning);
+                            Default.custom_database = null;
+                            use_custom_database.Checked = false;
+                        }
+                    }
+                }
+
+            }
+
+            else if (!use_custom_database.Checked) Default.custom_database = null;
+        }
 
         private void OK_Click(object sender, EventArgs e)
         {
@@ -290,7 +337,6 @@ namespace FriishProduce
 
             if (reset_all_dialogs.Checked)
             {
-                Default.donotshow_welcome = false;
                 Default.donotshow_000 = false;
             }
 
@@ -323,32 +369,46 @@ namespace FriishProduce
         {
             System.Media.SystemSounds.Beep.Play();
 
-            var WADs = new Dictionary<string, Console>()
+            /* var WADs = new Dictionary<string, Console>()
             {
-                /* { "FCWP", Console.NES }, // SMB3
-                { "FCWJ", Console.NES },
-                { "FCWQ", Console.NES },
-                { "JBDP", Console.SNES }, // DKC2
-                { "JBDJ", Console.SNES },
-                { "JBDT", Console.SNES },
-                { "NAAP", Console.N64 }, // SM64
-                { "NAAJ", Console.N64 },
-                { "NABT", Console.N64 }, // MK64 */
+                // { "FCWP", Console.NES }, // SMB3
+                // { "FCWJ", Console.NES },
+                // { "FCWQ", Console.NES },
+                // { "JBDP", Console.SNES }, // DKC2
+                // { "JBDJ", Console.SNES },
+                // { "JBDT", Console.SNES },
+                // { "NAAP", Console.N64 }, // SM64
+                // { "NAAJ", Console.N64 },
+                // { "NABT", Console.N64 }, // MK64
                 { "PAAP", Console.PCE },
                 { "PAGJ", Console.PCE },
-             /* { "EAJP", Console.NEO },
-                { "EAJJ", Console.NEO },
-                { "C9YE", Console.C64 },
-                { "C9YP", Console.C64 },
-                { "XAGJ", Console.MSX },
-                { "XAPJ", Console.MSX },
-                { "WNAP", Console.Flash } */
+                // { "EAJP", Console.NEO },
+                // { "EAJJ", Console.NEO },
+                // { "C9YE", Console.C64 },
+                // { "C9YP", Console.C64 },
+                // { "XAGJ", Console.MSX },
+                // { "XAPJ", Console.MSX },
+                // { "WNAP", Console.Flash }
             };
 
             foreach (var item in WADs)
                 BannerHelper.ExportBanner(item.Key, item.Value);
 
-            System.Media.SystemSounds.Beep.Play();
+            System.Media.SystemSounds.Beep.Play(); */
+
+            BannerHelper.ModifyBanner("RPG MAKER", "n64.bnr", "rpgm.bnr",
+                new Color[]
+                                {
+                                    Color.FromArgb(220, 225, 210),
+                                    Color.FromArgb(200, 205, 180),
+                                    Color.FromArgb(150, 180, 110),
+
+                                    Color.FromArgb(70, 100, 10),
+
+                                    Color.FromArgb(70, 100, 10),
+                                    Color.FromArgb(130, 160, 110),
+                                    Color.FromArgb(255, 255, 255)
+                                });
         }
 
         private void TreeView_AfterSelect(object sender, TreeViewEventArgs e)

@@ -207,6 +207,19 @@ namespace FriishProduce
                                     Color.FromArgb(174, 30, 37),
                                     Color.FromArgb(255, 255, 255)
                                 },
+
+            /* RPG Maker */     new Color[]
+                                {
+                                    Color.FromArgb(220, 225, 210),
+                                    Color.FromArgb(200, 205, 180),
+                                    Color.FromArgb(150, 180, 110),
+
+                                    Color.FromArgb(70, 100, 10),
+
+                                    Color.FromArgb(70, 100, 10),
+                                    Color.FromArgb(130, 160, 110),
+                                    Color.FromArgb(255, 255, 255)
+                                },
         };
 
         #region Font Functions
@@ -270,6 +283,7 @@ namespace FriishProduce
                     break;
 
                 case Console.PCE:
+                case Console.PCECD:
                     target = lang == 1 || lang == 2 ? 8 : 7;
                     break;
 
@@ -288,10 +302,14 @@ namespace FriishProduce
                 case Console.Flash:
                     target = 14;
                     break;
+
+                case Console.RPGM:
+                    target = 15;
+                    break;
             }
 
             var textColor = ColorSchemes[target][2].GetBrightness() < 0.75 ? Color.White : Color.Black;
-            var leftTextColor = target == 2 ? Color.Black : target == 8 ? Color.FromArgb(90, 90, 90) : ColorSchemes[target][0].GetBrightness() < 0.8 ? Color.White : Color.Black;
+            var leftTextColor = target == 2 ? Color.Black : target == 8 ? Color.FromArgb(90, 90, 90) : ColorSchemes[target][0].GetBrightness() < 0.8 ? Color.White : Color.FromArgb(50, 50, 50);
             if (target == 4 || target == 2) textColor = Color.White;
 
             string released = lang == 1 ? "{0}年発売"
@@ -417,6 +435,30 @@ namespace FriishProduce
 
                     case Console.Flash:
                         cName = "    Flash";
+                        break;
+
+                    case Console.GB:
+                        cName = "GAME BOY";
+                        break;
+
+                    case Console.GBC:
+                        cName = "GAME BOY COLOR";
+                        break;
+
+                    case Console.GBA:
+                        cName = "GAME BOY ADVANCE";
+                        break;
+
+                    case Console.GCN:
+                        cName = "GAMECUBE";
+                        break;
+
+                    case Console.PSX:
+                        cName = "PLAYSTATION";
+                        break;
+
+                    case Console.RPGM:
+                        cName = "RPG MAKER";
                         break;
                 }
 
