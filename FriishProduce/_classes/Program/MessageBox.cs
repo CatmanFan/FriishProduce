@@ -132,15 +132,15 @@ namespace FriishProduce
 
                 if (t.IsVerificationChecked && dontShow >= 0) { Properties.Settings.Default[$"DoNotShow_{dontShow:000}"] = true; Properties.Settings.Default.Save(); }
 
-                if (clicked.Text == Program.Lang.String("b_yes")) return Result.Yes;
-                if (clicked.Text == Program.Lang.String("b_no")) return Result.No;
-                if (clicked.Text == Program.Lang.String("b_ok")) return Result.Ok;
-                if (clicked.Text == Program.Lang.String("b_cancel")) return Result.Cancel;
-                if (clicked.Text == Program.Lang.String("b_close")) return Result.Close;
+                if (clicked?.Text == Program.Lang.String("b_yes")) return Result.Yes;
+                if (clicked?.Text == Program.Lang.String("b_no")) return Result.No;
+                if (clicked?.Text == Program.Lang.String("b_ok")) return Result.Ok;
+                if (clicked?.Text == Program.Lang.String("b_cancel")) return Result.Cancel;
+                if (clicked?.Text == Program.Lang.String("b_close")) return Result.Close;
 
                 for (int i = 0; i < Math.Max(t.Buttons.Count, 5); i++)
                 {
-                    if (clicked.Text == t.Buttons[i].Text) return (Result)Enum.ToObject(typeof(Result), i);
+                    if (clicked?.Text == t.Buttons[i].Text) return (Result)Enum.ToObject(typeof(Result), i);
                 }
 
                 return Result.Ok;

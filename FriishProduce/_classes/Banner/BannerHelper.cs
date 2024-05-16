@@ -2,6 +2,7 @@
 using System;
 using System.IO;
 using System.Text;
+using static FriishProduce.Properties.Resources;
 
 namespace FriishProduce
 {
@@ -55,71 +56,79 @@ namespace FriishProduce
 
             if (!w.HasBanner) return;
 
-            string bannerPath = Paths.Banners;
+            U8 Banner = new U8();
+            U8 Icon = null;
+
             switch (c)
             {
             #region VC & Other Official
                 case Console.NES:
-                    bannerPath += region switch { Region.Japan => "jp_fc.bnr", Region.Korea => "kr_fc.bnr", _ => "nes.bnr" };
+                    Banner = U8.Load(region switch { Region.Japan => VCB_Banner_JP_FC, Region.Korea => VCB_Banner_KR_FC, _ => VCB_Banner_NES });
                     break;
 
                 case Console.SNES:
-                    bannerPath += region switch { Region.Japan => "jp_sfc.bnr", Region.Korea => "kr_sfc.bnr", _ => "snes.bnr" };
+                    Banner = U8.Load(region switch { Region.Japan => VCB_Banner_JP_SFC, Region.Korea => VCB_Banner_KR_SFC, _ => VCB_Banner_SNES });
                     break;
 
                 case Console.N64:
-                    bannerPath += region switch { Region.Japan => "jp_n64.bnr", Region.Korea => "kr_n64.bnr", _ => "n64.bnr" };
+                    Banner = U8.Load(region switch { Region.Japan => VCB_Banner_JP_N64, Region.Korea => VCB_Banner_KR_N64, _ => VCB_Banner_N64 });
                     break;
 
                 case Console.SMS:
-                    bannerPath += region == Region.Japan ? "jp_sms.bnr" : "sms.bnr";
+                    Banner = U8.Load(region switch { Region.Japan => VCB_Banner_JP_SMS, _ => VCB_Banner_SMS });
                     break;
 
                 case Console.SMD:
-                    bannerPath += region switch { Region.Japan => "jp_smd.bnr", Region.Europe => "smd.bnr", _ => "gen.bnr" };
+                    Banner = U8.Load(region switch { Region.Japan => VCB_Banner_JP_SMD, Region.Europe => VCB_Banner_SMD, _ => VCB_Banner_GEN });
                     break;
 
                 case Console.PCE:
                 case Console.PCECD:
-                    bannerPath += region == Region.Japan ? "jp_pce.bnr" : "tg16.bnr";
+                    Banner = U8.Load(region switch { Region.Japan => VCB_Banner_JP_PCE, _ => VCB_Banner_TG16 });
                     break;
 
                 case Console.NEO:
-                    bannerPath += region == Region.Japan ? "jp_neogeo.bnr" : "neogeo.bnr";
+                    Banner = U8.Load(region switch { Region.Japan => VCB_Banner_JP_NG, _ => VCB_Banner_NG });
                     break;
 
                 case Console.C64:
-                    bannerPath += region == Region.Europe ? "c64_eu.bnr" : "c64_us.bnr";
+                    Banner = U8.Load(region switch { Region.Europe => VCB_Banner_EU_C64, _ => VCB_Banner_US_C64 });
                     break;
 
                 case Console.MSX:
-                    bannerPath += w.UpperTitleID.StartsWith("XAP") ? "jp_msx2.bnr" : "jp_msx1.bnr"; // Check if version 2 MSX WADs use a different color scheme?
+                    Banner = U8.Load(w.UpperTitleID.StartsWith("XAP") ? VCB_Banner_JP_MSX2 : VCB_Banner_JP_MSX1); // Check if version 2 MSX WADs use a different color scheme?
                     break;
 
                 case Console.Flash:
-                    bannerPath += "flash.bnr";
+                    Banner = U8.Load(VCB_Banner_Flash);
                     break;
             #endregion
 
             #region Forwarders
                 case Console.GB:
-                    bannerPath += region == Region.Japan ? "jp_gb.bnr" : "gb.bnr";
+                    // Banner = U8.Load(region switch { Region.Japan => VCB_Banner_JP_GB, _ => VCB_Banner_GB });
+                    // Icon = U8.Load(VCB_Icon_GB);
                     break;
 
                 case Console.GBC:
-                    bannerPath += region == Region.Japan ? "jp_gbc.bnr" : "gbc.bnr";
+                    // Banner = U8.Load(region switch { Region.Japan => VCB_Banner_JP_GBC, _ => VCB_Banner_GBC });
+                    // Icon = U8.Load(VCB_Icon_GBC);
                     break;
 
                 case Console.GBA:
-                    bannerPath += region == Region.Japan ? "jp_gba.bnr" : "gba.bnr";
+                    // Banner = U8.Load(region switch { Region.Japan => VCB_Banner_JP_GBA, _ => VCB_Banner_GBA });
+                    // Icon = U8.Load(VCB_Icon_GBA);
                     break;
 
                 case Console.PSX:
-                    bannerPath += region == Region.Japan ? "jp_psx.bnr" : "psx.bnr";
+                    // Banner = U8.Load(region switch { Region.Japan => VCB_Banner_JP_PSX, _ => VCB_Banner_PSX });
+                    // Icon = U8.Load(VCB_Icon_PSX);
                     break;
 
                 case Console.RPGM:
-                    bannerPath += region == Region.Japan ? "jp_rpgm.bnr" : "rpgm.bnr";
+                    // Banner = U8.Load(region switch { Region.Japan => VCB_Banner_JP_RPGM, _ => VCB_Banner_RPGM });
+                    Banner = U8.Load(VCB_Banner_RPGM);
+                    // Icon = U8.Load(VCB_Icon_RPGM);
                     break;
             #endregion
 
@@ -127,9 +136,7 @@ namespace FriishProduce
                     throw new NotImplementedException();
             }
 
-            if (!File.Exists(bannerPath)) throw new FileNotFoundException(new FileNotFoundException().Message, bannerPath);
-
-            U8 Banner = U8.Load(bannerPath);
+            if (Icon != null) w.BannerApp.ReplaceFile(w.BannerApp.GetNodeIndex("icon.bin"), Icon.ToByteArray());
 
             byte[] BRLYT = Banner.Data[Banner.GetNodeIndex("banner.brlyt")];
 
@@ -397,12 +404,13 @@ namespace FriishProduce
             }
         }
 
-        public static void ModifyBanner(string system, string file, string outFile, System.Drawing.Color[] colors)
+        public static void ModifyBanner(string system, string file, string outFile, int target)
         {
+            var colors = BannerSchemes.List[target];
+
             file = file.ToLower();
             outFile = outFile.ToLower();
 
-            var textColor = colors[2].GetBrightness() < 0.75 ? System.Drawing.Color.White : System.Drawing.Color.Black;
             var leftTextColor = colors[0].GetBrightness() < 0.8 ? System.Drawing.Color.White : System.Drawing.Color.FromArgb(50, 50, 50);
 
             string[] colorsFile = new string[]
@@ -417,12 +425,11 @@ namespace FriishProduce
                 $"{colors[0].R}             {colors[0].G}             {colors[0].B}             {colors[1].R}             {colors[1].G}             {colors[1].B}",
                 $"0             0             0             {colors[3].R}             {colors[3].G}             {colors[3].B}",
                 $"0             0             0             {colors[3].R}             {colors[3].G}             {colors[3].B}",
-                $"{textColor.R}             {textColor.G}             {textColor.B}             {textColor.R}             {textColor.G}             {textColor.B}",
+                $"{BannerSchemes.TextColor(target).R}             {BannerSchemes.TextColor(target).G}             {BannerSchemes.TextColor(target).B}             {BannerSchemes.TextColor(target).R}             {BannerSchemes.TextColor(target).G}             {BannerSchemes.TextColor(target).B}",
                 $"{leftTextColor.R}             {leftTextColor.G}             {leftTextColor.B}             {leftTextColor.R}             {leftTextColor.G}             {leftTextColor.B}",
                 $"{leftTextColor.R}             {leftTextColor.G}             {leftTextColor.B}             {leftTextColor.R}             {leftTextColor.G}             {leftTextColor.B}",
-                $"{textColor.R}             {textColor.G}             {textColor.B}             {textColor.R}             {textColor.G}             {textColor.B}",
+                $"{BannerSchemes.TextColor(target).R}             {BannerSchemes.TextColor(target).G}             {BannerSchemes.TextColor(target).B}             {BannerSchemes.TextColor(target).R}             {BannerSchemes.TextColor(target).G}             {BannerSchemes.TextColor(target).B}",
                 "0             0             0             255           255           255",
-                "0             0             0             0             0             0",
                 "0             0             0             0             0             0",
                 "60             60             60             255           255           255",
                 $"0             0             0             {colors[2].R}             {colors[2].G}             {colors[2].B}",
@@ -448,7 +455,7 @@ namespace FriishProduce
                     Utils.Run
                     (
                         "vcbrlyt\\vcbrlyt.exe",
-                        $"..\\..\\temp\\banner.brlyt -Color banner -System {system} -H_T_VCTitle_KOR \"VC................................................................................................................................\""
+                        $"..\\..\\temp\\banner.brlyt -Color banner -H_T_VCTitle_KOR \"VC................................................................................................................................\""
                     );
                 }
                 else
@@ -456,9 +463,15 @@ namespace FriishProduce
                     Utils.Run
                     (
                         "vcbrlyt\\vcbrlyt.exe",
-                        $"..\\..\\temp\\banner.brlyt -Color banner -System {system} -Title \"VC................................................................................................................................\" -YEAR VCVC -Play 4"
+                        $"..\\..\\temp\\banner.brlyt -Color banner -Title \"VC................................................................................................................................\" -YEAR VCVC -Play 4"
                     );
                 }
+
+                Utils.Run
+                (
+                    "vcbrlyt\\vcbrlyt.exe",
+                    $"..\\..\\temp\\banner.brlyt -System \"{system}\""
+                );
 
                 byte[] BRLYT = File.ReadAllBytes(BRLYTPath);
                 File.Delete(BRLYTPath);

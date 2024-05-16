@@ -751,6 +751,15 @@ namespace FriishProduce.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        public static System.IO.UnmanagedMemoryStream Sound_WiiVC {
+            get {
+                return ResourceManager.GetStream("Sound_WiiVC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         public static byte[] StaticBase {
@@ -771,6 +780,26 @@ namespace FriishProduce.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] TPL_RPGM {
+            get {
+                object obj = ResourceManager.GetObject("TPL_RPGM", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] TPL_RPGM_JPN {
+            get {
+                object obj = ResourceManager.GetObject("TPL_RPGM_JPN", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Arial;}{\f1\fnil\fcharset2 Symbol;}}
         ///{\colortbl ;\red255\green0\blue0;}
         ///{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
@@ -780,6 +809,256 @@ namespace FriishProduce.Properties {
         public static string Tutorial {
             get {
                 return ResourceManager.GetString("Tutorial", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] VCB_Banner_EU_C64 {
+            get {
+                object obj = ResourceManager.GetObject("VCB_Banner_EU_C64", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] VCB_Banner_Flash {
+            get {
+                object obj = ResourceManager.GetObject("VCB_Banner_Flash", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] VCB_Banner_GEN {
+            get {
+                object obj = ResourceManager.GetObject("VCB_Banner_GEN", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] VCB_Banner_JP_FC {
+            get {
+                object obj = ResourceManager.GetObject("VCB_Banner_JP_FC", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] VCB_Banner_JP_MSX1 {
+            get {
+                object obj = ResourceManager.GetObject("VCB_Banner_JP_MSX1", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] VCB_Banner_JP_MSX2 {
+            get {
+                object obj = ResourceManager.GetObject("VCB_Banner_JP_MSX2", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] VCB_Banner_JP_N64 {
+            get {
+                object obj = ResourceManager.GetObject("VCB_Banner_JP_N64", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] VCB_Banner_JP_NG {
+            get {
+                object obj = ResourceManager.GetObject("VCB_Banner_JP_NG", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] VCB_Banner_JP_PCE {
+            get {
+                object obj = ResourceManager.GetObject("VCB_Banner_JP_PCE", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] VCB_Banner_JP_SFC {
+            get {
+                object obj = ResourceManager.GetObject("VCB_Banner_JP_SFC", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] VCB_Banner_JP_SMD {
+            get {
+                object obj = ResourceManager.GetObject("VCB_Banner_JP_SMD", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] VCB_Banner_JP_SMS {
+            get {
+                object obj = ResourceManager.GetObject("VCB_Banner_JP_SMS", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] VCB_Banner_KR_FC {
+            get {
+                object obj = ResourceManager.GetObject("VCB_Banner_KR_FC", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] VCB_Banner_KR_N64 {
+            get {
+                object obj = ResourceManager.GetObject("VCB_Banner_KR_N64", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] VCB_Banner_KR_SFC {
+            get {
+                object obj = ResourceManager.GetObject("VCB_Banner_KR_SFC", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] VCB_Banner_N64 {
+            get {
+                object obj = ResourceManager.GetObject("VCB_Banner_N64", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] VCB_Banner_NES {
+            get {
+                object obj = ResourceManager.GetObject("VCB_Banner_NES", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] VCB_Banner_NG {
+            get {
+                object obj = ResourceManager.GetObject("VCB_Banner_NG", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] VCB_Banner_RPGM {
+            get {
+                object obj = ResourceManager.GetObject("VCB_Banner_RPGM", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] VCB_Banner_SMD {
+            get {
+                object obj = ResourceManager.GetObject("VCB_Banner_SMD", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] VCB_Banner_SMS {
+            get {
+                object obj = ResourceManager.GetObject("VCB_Banner_SMS", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] VCB_Banner_SNES {
+            get {
+                object obj = ResourceManager.GetObject("VCB_Banner_SNES", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] VCB_Banner_TG16 {
+            get {
+                object obj = ResourceManager.GetObject("VCB_Banner_TG16", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] VCB_Banner_US_C64 {
+            get {
+                object obj = ResourceManager.GetObject("VCB_Banner_US_C64", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] VCB_Icon_RPGM {
+            get {
+                object obj = ResourceManager.GetObject("VCB_Icon_RPGM", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         

@@ -165,12 +165,12 @@ namespace FriishProduce
             bool clearCustomDatabase = !File.Exists(Default.custom_database);
             use_custom_database.Checked = File.Exists(Default.custom_database);
 
-            /*#if DEBUG
+            #if DEBUG
                 use_custom_database.Visible = true;
             #else
                 use_custom_database.Visible = false;
                 clearCustomDatabase = true;
-            #endif*/
+            #endif
 
             if (clearCustomDatabase && use_custom_database.Checked)
             {
@@ -396,19 +396,7 @@ namespace FriishProduce
 
             System.Media.SystemSounds.Beep.Play(); */
 
-            BannerHelper.ModifyBanner("RPG MAKER", "n64.bnr", "rpgm.bnr",
-                new Color[]
-                                {
-                                    Color.FromArgb(220, 225, 210),
-                                    Color.FromArgb(200, 205, 180),
-                                    Color.FromArgb(150, 180, 110),
-
-                                    Color.FromArgb(70, 100, 10),
-
-                                    Color.FromArgb(70, 100, 10),
-                                    Color.FromArgb(130, 160, 110),
-                                    Color.FromArgb(255, 255, 255)
-                                });
+            BannerHelper.ModifyBanner("RPG MAKER", "n64.bnr", "rpgm.bnr", 15);
         }
 
         private void TreeView_AfterSelect(object sender, TreeViewEventArgs e)

@@ -128,7 +128,7 @@
     <value>..\Resources\forwarder\base_waninkoko.wad;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Tutorial" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\tutorial.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+    <value>..\Resources\tutorial.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
   </data>
   <data name="box_label" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons\box-label.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -342,5 +342,89 @@
   </data>
   <data name="rpg2003" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons\consoles\RPG2003.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Sound_WiiVC" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sound.wave.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="TPL_RPGM" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\banners\tpls\rpgm.tpl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="TPL_RPGM_JPN" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\banners\tpls\jp_rpgm.tpl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="VCB_Banner_EU_C64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\banners\c64_eu.bnr;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="VCB_Banner_Flash" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\banners\flash.bnr;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="VCB_Banner_GEN" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\banners\gen.bnr;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="VCB_Banner_JP_FC" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\banners\jp_fc.bnr;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="VCB_Banner_JP_MSX1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\banners\jp_msx1.bnr;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="VCB_Banner_JP_MSX2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\banners\jp_msx2.bnr;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="VCB_Banner_JP_N64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\banners\jp_n64.bnr;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="VCB_Banner_JP_NG" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\banners\jp_neogeo.bnr;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="VCB_Banner_JP_PCE" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\banners\jp_pce.bnr;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="VCB_Banner_JP_SFC" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\banners\jp_sfc.bnr;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="VCB_Banner_JP_SMD" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\banners\jp_smd.bnr;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="VCB_Banner_JP_SMS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\banners\jp_sms.bnr;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="VCB_Banner_KR_FC" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\banners\kr_fc.bnr;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="VCB_Banner_KR_N64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\banners\kr_n64.bnr;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="VCB_Banner_KR_SFC" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\banners\kr_sfc.bnr;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="VCB_Banner_N64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\banners\n64.bnr;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="VCB_Banner_NES" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\banners\nes.bnr;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="VCB_Banner_NG" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\banners\neogeo.bnr;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="VCB_Banner_RPGM" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\banners\rpgm.bnr;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="VCB_Banner_SMD" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\banners\smd.bnr;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="VCB_Banner_SMS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\banners\sms.bnr;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="VCB_Banner_SNES" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\banners\snes.bnr;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="VCB_Banner_TG16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\banners\tg16.bnr;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="VCB_Banner_US_C64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\banners\c64_us.bnr;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="VCB_Icon_RPGM" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\banners\rpgm.icn;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

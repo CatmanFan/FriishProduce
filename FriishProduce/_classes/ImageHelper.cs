@@ -100,7 +100,15 @@ namespace FriishProduce
         {
             if (src == null) src = Source;
 
-            bool ShrinkToFit = platform == Console.NES || platform == Console.SNES || platform == Console.N64 || platform == Console.Flash;
+            bool ShrinkToFit = platform == Console.NES
+                            || platform == Console.SNES
+                            || platform == Console.N64
+                            || platform == Console.Flash
+                            || platform == Console.GB
+                            || platform == Console.GBC
+                            || platform == Console.GBA
+                            || platform == Console.GCN
+                            || platform == Console.RPGM;
 
             // --------------------------------------------------
             // SAVEICON : DEFINE POSITION AND SIZE VARIABLES
@@ -268,6 +276,37 @@ namespace FriishProduce
             TPL tpl = TPL.Load(BannerSet.Item1.Data[BannerSet.Item1.GetNodeIndex("VCPic.tpl")]);
             ReplaceTPL(tpl, VCPic);
             BannerSet.Item1.ReplaceFile(BannerSet.Item1.GetNodeIndex("VCPic.tpl"), tpl.ToByteArray());
+
+            // ****************
+            #region Custom banner (for forwarders only)
+            foreach (var item in BannerSet.Item1.StringTable)
+            {
+                if (item.ToLower().StartsWith("my_back"))
+                    switch (platform)
+                    {
+                        case Console.GB:
+                            break;
+                        case Console.GBC:
+                            break;
+                        case Console.GBA:
+                            break;
+                        case Console.GCN:
+                            break;
+                        case Console.S32X:
+                            break;
+                        case Console.SMCD:
+                            break;
+                        case Console.PSX:
+                            break;
+                        case Console.RPGM:
+                            BannerSet.Item1.ReplaceFile(BannerSet.Item1.GetNodeIndex(item), w.Region == 0 ? TPL_RPGM_JPN : TPL_RPGM);
+                            break;
+                        default:
+                            break;
+                    };
+            }
+            #endregion
+            // ****************
 
             // IconVCPic.tpl
             // ****************

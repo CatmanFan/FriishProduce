@@ -9,40 +9,22 @@ namespace FriishProduce
 {
     public class Forwarder
     {
-        public static readonly IDictionary<int, string> List = new Dictionary<int, string>
+        public static readonly (int Index, string File, string Name)[] List = new (int Index, string File, string Name)[]
         {
-            { 0, "FCE Ultra GX" },
-            { 1, "FCE Ultra RX" },
-            { 2, "FCEUX TX" },
-            { 3, "Snes9x GX" },
-            { 4, "Snes9x RX" },
-            { 5, "Snes9x TX" },
-            { 6, "Visual Boy Advance GX" },
-            { 7, "Genesis Plus GX" },
-            { 8, "Wii64 (GLideN64 GFX)" },
-            { 9, "Wii64 (Rice GFX)" },
-            { 10, "Not64" },
-            { 11, "mupen64gc-fix94" },
-            { 12, "WiiStation" },
-            { 13, "EasyRPG Player" }
-        };
-
-        private static readonly IDictionary<int, string> Files = new Dictionary<int, string>
-        {
-            { 0, "fceugx" },
-            { 1, "fceurx" },
-            { 2, "fceuxtx" },
-            { 3, "snes9xgx" },
-            { 4, "snes9xrx" },
-            { 5, "snes9xtx" },
-            { 6, "vbagx" },
-            { 7, "genplusgx" },
-            { 8, "wii64_gln64" },
-            { 9, "wii64_rice" },
-            { 10, "not64" },
-            { 11, "mupen64gc-fix94" },
-            { 12, "wiistation" },
-            { 13, "easyrpg" }
+            (0,     "fceugx",           "FCE Ultra GX"),
+            (1,     "fceurx",           "FCE Ultra RX"),
+            (2,     "fceuxtx",          "FCEUX TX"),
+            (3,     "snes9xgx",         "Snes9x GX"),
+            (4,     "snes9xrx",         "Snes9x RX"),
+            (5,     "snes9xtx",         "Snes9x TX"),
+            (6,     "vbagx",            "Visual Boy Advance GX"),
+            (7,     "genplusgx",        "Genesis Plus GX"),
+            (8,     "wii64_gln64",      "Wii64 (GLideN64 GFX)"),
+            (9,     "wii64_rice",       "Wii64 (Rice GFX)"),
+            (10,    "not64",            "Not64"),
+            (11,    "mupen64gc-fix94",  "mupen64gc-fix94"),
+            (12,    "wiistation",       "WiiStation"),
+            (13,    "easyrpg",          "EasyRPG Player"),
         };
 
         public string Emulator { get; set; }
@@ -50,9 +32,9 @@ namespace FriishProduce
         {
             get
             {
-                foreach (KeyValuePair<int, string> item in List)
+                foreach (var item in List)
                 {
-                    if (item.Value == Emulator) return item.Key;
+                    if (item.Name == Emulator) return item.Index;
                 }
 
                 return -1;
@@ -69,7 +51,7 @@ namespace FriishProduce
 
         private static bool IsDisc { get => new Disc().CheckValidity(Path); }
 
-        public byte[] ROM { get; set; }
+        public string ROM { get; set; }
         public string ROMExtension { get; set; }
 
         private string tID;
@@ -86,55 +68,74 @@ namespace FriishProduce
             string ROMFolder = IsDisc ? PackageFolder + "title\\" : PackageFolder;
             string ROMName = (EmulatorIndex >= 7 ? "title" : "HOME Menu") + ROMExtension;
 
-            if (!File.Exists(Paths.Emulators + Files[EmulatorIndex] + ".dol")) throw new Exception(string.Format(Program.Lang.Msg(8, true), List[EmulatorIndex], Files[EmulatorIndex]));
+            if (!File.Exists(Paths.Emulators + List[EmulatorIndex].File + ".dol")) throw new Exception(string.Format(Program.Lang.Msg(8, true), List[EmulatorIndex].Name, List[EmulatorIndex].File));
 
             // Create SD folder and copy emulator
             // *******
             Directory.CreateDirectory(ROMFolder);
-            File.Copy(Paths.Emulators + Files[EmulatorIndex] + ".dol", PackageFolder + "boot.dol");
+            File.Copy(Paths.Emulators + List[EmulatorIndex].File + ".dol", PackageFolder + "boot.dol");
 
-            // Saves folders
+            // If RPG Maker game, copy all files within the ROM folder (RTP not included as part of this, yet)
             // *******
-            switch (EmulatorIndex)
+            if (EmulatorIndex == 13)
             {
-                case 0:
-                case 1:
-                    Directory.CreateDirectory(Paths.SDUSBRoot + "fceugx\\saves\\");
-                    break;
-                case 2:
-                    Directory.CreateDirectory(Paths.SDUSBRoot + "fceuxtx\\saves\\");
-                    break;
-                case 3:
-                case 4:
-                    Directory.CreateDirectory(Paths.SDUSBRoot + "snes9xgx\\saves\\");
-                    break;
-                case 5:
-                    Directory.CreateDirectory(Paths.SDUSBRoot + "snes9xtx\\saves\\");
-                    break;
-                case 6:
-                    Directory.CreateDirectory(Paths.SDUSBRoot + "vbagx\\saves\\");
-                    break;
-                case 8:
-                case 9:
-                case 11:
-                    Directory.CreateDirectory(Paths.SDUSBRoot + "wii64\\roms\\");
-                    Directory.CreateDirectory(Paths.SDUSBRoot + "wii64\\saves\\");
-                    break;
-                case 10:
-                    Directory.CreateDirectory(Paths.SDUSBRoot + "not64\\roms\\");
-                    Directory.CreateDirectory(Paths.SDUSBRoot + "not64\\saves\\");
-                    break;
-                case 12:
-                    Directory.CreateDirectory(Paths.SDUSBRoot + "wiisxrx\\bios\\");
-                    Directory.CreateDirectory(Paths.SDUSBRoot + "wiisxrx\\isos\\");
-                    Directory.CreateDirectory(Paths.SDUSBRoot + "wiisxrx\\saves\\");
-                    Directory.CreateDirectory(Paths.SDUSBRoot + "wiisxrx\\savestates\\");
-                    break;
+                string origPath = System.IO.Path.GetDirectoryName(ROM);
+                foreach (var folder in Directory.EnumerateDirectories(origPath, "*.*", SearchOption.AllDirectories))
+                {
+                    string rawFolder = folder.Replace(origPath, "");
+                    Directory.CreateDirectory(ROMFolder + rawFolder);
+                }
+                foreach (var file in Directory.EnumerateFiles(origPath, "*.*", SearchOption.AllDirectories))
+                {
+                    string rawFile = file.Replace(origPath, "");
+                    if (!System.IO.Path.GetExtension(file).ToLower().EndsWith("exe")) File.Copy(file, ROMFolder + rawFile);
+                }
             }
+            else
+            {
+                // Saves folders
+                // *******
+                switch (EmulatorIndex)
+                {
+                    case 0:
+                    case 1:
+                        Directory.CreateDirectory(Paths.SDUSBRoot + "fceugx\\saves\\");
+                        break;
+                    case 2:
+                        Directory.CreateDirectory(Paths.SDUSBRoot + "fceuxtx\\saves\\");
+                        break;
+                    case 3:
+                    case 4:
+                        Directory.CreateDirectory(Paths.SDUSBRoot + "snes9xgx\\saves\\");
+                        break;
+                    case 5:
+                        Directory.CreateDirectory(Paths.SDUSBRoot + "snes9xtx\\saves\\");
+                        break;
+                    case 6:
+                        Directory.CreateDirectory(Paths.SDUSBRoot + "vbagx\\saves\\");
+                        break;
+                    case 8:
+                    case 9:
+                    case 11:
+                        Directory.CreateDirectory(Paths.SDUSBRoot + "wii64\\roms\\");
+                        Directory.CreateDirectory(Paths.SDUSBRoot + "wii64\\saves\\");
+                        break;
+                    case 10:
+                        Directory.CreateDirectory(Paths.SDUSBRoot + "not64\\roms\\");
+                        Directory.CreateDirectory(Paths.SDUSBRoot + "not64\\saves\\");
+                        break;
+                    case 12:
+                        Directory.CreateDirectory(Paths.SDUSBRoot + "wiisxrx\\bios\\");
+                        Directory.CreateDirectory(Paths.SDUSBRoot + "wiisxrx\\isos\\");
+                        Directory.CreateDirectory(Paths.SDUSBRoot + "wiisxrx\\saves\\");
+                        Directory.CreateDirectory(Paths.SDUSBRoot + "wiisxrx\\savestates\\");
+                        break;
+                }
 
-            // Copy game to SD folder
-            // *******
-            File.WriteAllBytes(ROMFolder + ROMName, ROM);
+                // Copy game to SD folder
+                // *******
+                if (!File.Exists(ROMFolder + ROMName)) File.Copy(ROM, ROMFolder + ROMName);
+            }
 
             // Prepare for meta.xml creation
             // *******
@@ -203,7 +204,7 @@ namespace FriishProduce
             // > For GenPlus & all emulators based on Wii64 Team's code (e.g. Wii64, WiiSX and forks), use Comex NANDloader
             // > For WiiMednafen, use Waninkoko NANDloader
             // *******
-            WADType = EmulatorIndex >= 7 && EmulatorIndex <= 11 ? WADTypes.Comex : WADTypes.Waninkoko;
+            WADType = (EmulatorIndex >= 7 && EmulatorIndex <= 11) || EmulatorIndex == 13 ? WADTypes.Comex : WADTypes.Waninkoko;
 
             // Load and unpack WAD
             // *******
@@ -214,7 +215,7 @@ namespace FriishProduce
 
             // Define forwarder version
             // *******
-            bool NeedsOldForwarder = EmulatorIndex == 7;
+            bool NeedsOldForwarder = EmulatorIndex == 7 || EmulatorIndex == 13;
             byte[] Forwarder = NeedsOldForwarder ? Properties.Resources.ForwarderV12 : Properties.Resources.ForwarderV14;
             int TargetOffset = NeedsOldForwarder ? 0x77426 : 0x7F979;
             int SecondTargetOffset = NeedsOldForwarder ? 263 : 256;

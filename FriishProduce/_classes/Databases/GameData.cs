@@ -71,10 +71,18 @@ namespace FriishProduce
                 { "Sega - Mega Drive - Genesis", Console.SMD },
                 { "NEC - PC Engine - TurboGrafx 16", Console.PCE },
                 { "NEC - PC Engine SuperGrafx", Console.PCE },
+                { "NEC - PC Engine CD - TurboGrafx-CD", Console.PCECD },
                 { "MAME", Console.NEO },
                 { "Microsoft - MSX", Console.MSX },
                 { "Microsoft - MSX2", Console.MSX },
                 { "Microsoft - MSX 2", Console.MSX },
+                { "Nintendo - Game Boy", Console.GB },
+                { "Nintendo - Game Boy Color", Console.GBC },
+                { "Nintendo - Game Boy Advance", Console.GBA },
+                { "Nintendo - GameCube", Console.GCN },
+                { "Sega - 32X", Console.S32X },
+                { "Sega - Mega-CD - Sega CD", Console.SMCD },
+                { "Sony - PlayStation", Console.PSX },
             };
 
             string hash;

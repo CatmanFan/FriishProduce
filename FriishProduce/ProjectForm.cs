@@ -218,30 +218,30 @@ namespace FriishProduce
             {
                 case Console.NES:
                     InjectorsList.Items.Add(Program.Lang.String("vc"));
-                    InjectorsList.Items.Add(Forwarder.List[0]);
-                    InjectorsList.Items.Add(Forwarder.List[1]);
-                    InjectorsList.Items.Add(Forwarder.List[2]);
+                    InjectorsList.Items.Add(Forwarder.List[0].Name);
+                    InjectorsList.Items.Add(Forwarder.List[1].Name);
+                    InjectorsList.Items.Add(Forwarder.List[2].Name);
                     break;
 
                 case Console.SNES:
                     InjectorsList.Items.Add(Program.Lang.String("vc"));
-                    InjectorsList.Items.Add(Forwarder.List[3]);
-                    InjectorsList.Items.Add(Forwarder.List[4]);
-                    InjectorsList.Items.Add(Forwarder.List[5]);
+                    InjectorsList.Items.Add(Forwarder.List[3].Name);
+                    InjectorsList.Items.Add(Forwarder.List[4].Name);
+                    InjectorsList.Items.Add(Forwarder.List[5].Name);
                     break;
 
                 case Console.N64:
                     InjectorsList.Items.Add(Program.Lang.String("vc"));
-                    InjectorsList.Items.Add(Forwarder.List[8]);
-                    InjectorsList.Items.Add(Forwarder.List[9]);
-                    InjectorsList.Items.Add(Forwarder.List[10]);
-                    InjectorsList.Items.Add(Forwarder.List[11]);
+                    InjectorsList.Items.Add(Forwarder.List[8].Name);
+                    InjectorsList.Items.Add(Forwarder.List[9].Name);
+                    InjectorsList.Items.Add(Forwarder.List[10].Name);
+                    InjectorsList.Items.Add(Forwarder.List[11].Name);
                     break;
 
                 case Console.SMS:
                 case Console.SMD:
                     InjectorsList.Items.Add(Program.Lang.String("vc"));
-                    InjectorsList.Items.Add(Forwarder.List[7]);
+                    InjectorsList.Items.Add(Forwarder.List[7].Name);
                     break;
 
                 case Console.PCE:
@@ -256,15 +256,15 @@ namespace FriishProduce
                     break;
 
                 case Console.GBA:
-                    InjectorsList.Items.Add(Forwarder.List[6]);
+                    InjectorsList.Items.Add(Forwarder.List[6].Name);
                     break;
 
                 case Console.PSX:
-                    InjectorsList.Items.Add(Forwarder.List[12]);
+                    InjectorsList.Items.Add(Forwarder.List[12].Name);
                     break;
 
                 case Console.RPGM:
-                    InjectorsList.Items.Add(Forwarder.List[13]);
+                    InjectorsList.Items.Add(Forwarder.List[13].Name);
                     break;
 
                 default:
@@ -288,7 +288,7 @@ namespace FriishProduce
                     System.Windows.Forms.MessageBox.Show($"A fatal error occurred retrieving the {c} WADs database.\n\nException: {ex.GetType().FullName}\nMessage: {ex.Message}\n\nThe application will now shut down.", "Halt", MessageBoxButtons.OK, MessageBoxIcon.Hand);
                     Environment.FailFast("Database initialization failed.");
                 }
-                else { channelData = new ChannelDatabase(Console.NES); }
+                else { channelData = new ChannelDatabase(); }
             }
 
             InitializeComponent();
@@ -354,8 +354,13 @@ namespace FriishProduce
                     break;
 
                 case Console.PCE:
-                    TIDCode = "P"; // Q for CD games
+                    TIDCode = "P";
                     ROM = new ROM_PCE();
+                    break;
+
+                case Console.PCECD:
+                    TIDCode = "Q";
+                    ROM = new Disc();
                     break;
 
                 case Console.NEO:
@@ -371,6 +376,11 @@ namespace FriishProduce
                 case Console.Flash:
                     ROM = new SWF();
                     software_name.Enabled = Patch.Enabled = false;
+                    break;
+
+                case Console.RPGM:
+                    ROM = new RPGM();
+                    Patch.Enabled = false;
                     break;
 
                 default:
@@ -501,6 +511,11 @@ namespace FriishProduce
 
             if (gameData == null)
                 software_name.Text = string.Format(Program.Lang.String("software_name", Name), Program.Lang.String("unknown"));
+            else if (Console == Console.RPGM && (ROM as RPGM)?.GetTitle(ROM.Path) != null)
+            {
+                foundRomName = true;
+                software_name.Text = string.Format(Program.Lang.String("software_name", Name), (ROM as RPGM).GetTitle(ROM.Path)?.Replace(Environment.NewLine, " - ") ?? Program.Lang.String("unknown"));
+            }
             else
             {
                 foundRomName = gameData.CleanTitle != null;
@@ -932,10 +947,19 @@ namespace FriishProduce
                 case Console.PSX:
                     break;
 
+                // RPG Maker format
+                // ****************
+                case Console.RPGM:
+                    if ((ROM as RPGM).GetTitle(ROMpath) != null)
+                    {
+                        Creator.BannerTitle = BannerTitle.Text = (ROM as RPGM).GetTitle(ROMpath);
+                        if (Creator.BannerTitle.Length <= ChannelTitle.MaxLength) ChannelTitle.Text = Creator.BannerTitle;
+                    }
+                    break;
+
                 // Other, no verification needed
                 // ****************
                 case Console.Flash:
-                case Console.RPGM:
                     break;
             }
 
@@ -996,6 +1020,16 @@ namespace FriishProduce
             }
         }
 
+        protected void SetRegion()
+        {
+            OutWAD.Region
+                = TargetRegion.SelectedItem.ToString() == Program.Lang.String("region_j") ? libWiiSharp.Region.Japan
+                : TargetRegion.SelectedItem.ToString() == Program.Lang.String("region_u") ? libWiiSharp.Region.USA
+                : TargetRegion.SelectedItem.ToString() == Program.Lang.String("region_e") ? libWiiSharp.Region.Europe
+                : TargetRegion.SelectedItem.ToString() == Program.Lang.String("region_k") ? libWiiSharp.Region.Korea
+                : libWiiSharp.Region.Free;
+        }
+
         public bool SaveToWAD()
         {
             try
@@ -1022,6 +1056,7 @@ namespace FriishProduce
                     case Console.SMS:
                     case Console.SMD:
                     case Console.PCE:
+                    case Console.PCECD:
                     case Console.NEO:
                     case Console.MSX:
                         if (isVCMode)
@@ -1030,7 +1065,14 @@ namespace FriishProduce
                             ForwarderCreator();
                         break;
 
+                    case Console.GB:
+                    case Console.GBC:
                     case Console.GBA:
+                    case Console.S32X:
+                    case Console.SMCD:
+                    case Console.PSX:
+                    case Console.RPGM:
+                        SetRegion();
                         ForwarderCreator();
                         break;
 
@@ -1050,14 +1092,9 @@ namespace FriishProduce
                 // Other WAD settings to be changed
                 // *******
                 if (TargetRegion.SelectedIndex > 0)
-                {
-                    OutWAD.Region
-                        = TargetRegion.SelectedItem.ToString() == Program.Lang.String("region_j") ? libWiiSharp.Region.Japan
-                        : TargetRegion.SelectedItem.ToString() == Program.Lang.String("region_u") ? libWiiSharp.Region.USA
-                        : TargetRegion.SelectedItem.ToString() == Program.Lang.String("region_e") ? libWiiSharp.Region.Europe
-                        : TargetRegion.SelectedItem.ToString() == Program.Lang.String("region_k") ? libWiiSharp.Region.Korea
-                        : libWiiSharp.Region.Free;
-                }
+                    SetRegion();
+
+                SoundHelper.ReplaceSound(OutWAD, Properties.Resources.Sound_WiiVC);
 
                 // Remaining ones done by WAD creator helper, which will save to a new file
                 // *******
@@ -1106,7 +1143,7 @@ namespace FriishProduce
         {
             Forwarder f = new Forwarder()
             {
-                ROM = ROM.Bytes,
+                ROM = ROM.Path,
                 ROMExtension = Path.GetExtension(this.ROM.Path),
                 ID = Creator.TitleID,
                 Emulator = InjectorsList.SelectedItem.ToString(),
@@ -1174,6 +1211,12 @@ namespace FriishProduce
                     VC = new Injectors.PCE();
                     break;
 
+                // PCECD
+                // *******
+                case Console.PCECD:
+                    // VC = new Injectors.PCECD();
+                    break;
+
                 // NEOGEO
                 // *******
                 case Console.NEO:
@@ -1228,6 +1271,7 @@ namespace FriishProduce
                 case Console.SMS:
                 case Console.SMD:
                 case Console.PCE:
+                case Console.PCECD:
                 case Console.NEO:
                 case Console.Flash:
                     if (result) { CheckExport(); }
@@ -1292,6 +1336,8 @@ namespace FriishProduce
                         break;
 
                     default:
+                    case 8:
+                        regions.Add(Program.Lang.String("region_rf"));
                         break;
                 }
             }
@@ -1369,6 +1415,8 @@ namespace FriishProduce
                         break;
 
                     default:
+                    case 8:
+                        BaseRegionList.Items.Add(Program.Lang.String("region_rf"), null, WADRegionList_Click);
                         break;
                 }
             }
@@ -1417,38 +1465,44 @@ namespace FriishProduce
             baseName.Text = channelData.Entries[Base.SelectedIndex].Titles[index];
             baseID.Text = channelData.Entries[Base.SelectedIndex].GetUpperID(index);
 
-            foreach (ToolStripMenuItem item in BaseRegionList.Items.OfType<ToolStripMenuItem>())
-                item.Checked = false;
-            (BaseRegionList.Items[index] as ToolStripMenuItem).Checked = true;
+            if (BaseRegionList.Items.Count > 0)
+            {
+                foreach (ToolStripMenuItem item in BaseRegionList.Items.OfType<ToolStripMenuItem>())
+                    item.Checked = false;
+                (BaseRegionList.Items[index] as ToolStripMenuItem).Checked = true;
+            }
 
             // Flag
             // ********
             switch (channelData.Entries[Base.SelectedIndex].Regions[index])
-                {
-                    default:
-                    case 0:
-                        BaseRegion.Image = Properties.Resources.flag_jp;
-                        break;
+            {
+                case 0:
+                    BaseRegion.Image = Properties.Resources.flag_jp;
+                    break;
 
-                    case 1:
-                    case 2:
-                        BaseRegion.Image = Properties.Resources.flag_us;
-                        break;
+                case 1:
+                case 2:
+                    BaseRegion.Image = Properties.Resources.flag_us;
+                    break;
 
-                    case 3:
-                        BaseRegion.Image = (int)Console <= 2 ? Properties.Resources.flag_eu50 : Properties.Resources.flag_eu;
-                        break;
+                case 3:
+                    BaseRegion.Image = (int)Console <= 2 ? Properties.Resources.flag_eu50 : Properties.Resources.flag_eu;
+                    break;
 
-                    case 4:
-                    case 5:
-                        BaseRegion.Image = (int)Console <= 2 ? Properties.Resources.flag_eu60 : Properties.Resources.flag_eu;
-                        break;
+                case 4:
+                case 5:
+                    BaseRegion.Image = (int)Console <= 2 ? Properties.Resources.flag_eu60 : Properties.Resources.flag_eu;
+                    break;
 
-                    case 6:
-                    case 7:
-                        BaseRegion.Image = Properties.Resources.flag_kr;
-                        break;
-                }
+                case 6:
+                case 7:
+                    BaseRegion.Image = Properties.Resources.flag_kr;
+                    break;
+
+                default:
+                    BaseRegion.Image = null;
+                    break;
+            }
 
             UpdateBaseGeneral(index);
         }
@@ -1459,7 +1513,7 @@ namespace FriishProduce
 
             // Korean WADs use different encoding format & using two lines or going over max limit cause visual bugs
             // ********
-            Creator.OrigRegion = channelData.Entries[Base.SelectedIndex].Regions[index] >= 6 ? Creator.RegionType.Korea
+            Creator.OrigRegion = channelData.Entries[Base.SelectedIndex].Regions[index] == 6 || channelData.Entries[Base.SelectedIndex].Regions[index] == 7 ? Creator.RegionType.Korea
                      : channelData.Entries[Base.SelectedIndex].Regions[index] == 0 ? Creator.RegionType.Japan
                      : channelData.Entries[Base.SelectedIndex].Regions[index] >= 3 && channelData.Entries[Base.SelectedIndex].Regions[index] <= 5 ? Creator.RegionType.Europe
                      : Creator.RegionType.Universal;
@@ -1479,7 +1533,8 @@ namespace FriishProduce
                              || Console == Console.NES
                              || Console == Console.SMS
                              || Console == Console.SMD
-                             || Console == Console.PCE;
+                             || Console == Console.PCE
+                             || Console == Console.PCECD;
 
             // Set textbox to use single line when needed
             // ********
@@ -1553,6 +1608,7 @@ namespace FriishProduce
                         break;
 
                     case Console.PCE:
+                    case Console.PCECD:
                         CO = new Options_VC_PCE();
                         break;
 

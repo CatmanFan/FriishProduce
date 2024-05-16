@@ -326,6 +326,7 @@ namespace FriishProduce
             // 
             resources.ApplyResources(this.label11, "label11");
             this.label11.Name = "label11";
+            this.label11.UseMnemonic = false;
             // 
             // Patch
             // 
@@ -427,6 +428,7 @@ namespace FriishProduce
             resources.ApplyResources(this.software_name, "software_name");
             this.software_name.Name = "software_name";
             this.software_name.Tag = "software_name";
+            this.software_name.UseMnemonic = false;
             // 
             // filename
             // 
@@ -578,7 +580,7 @@ namespace FriishProduce
             // BaseRegion
             // 
             this.BaseRegion.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.BaseRegion.BackgroundImage = global::FriishProduce.Properties.Resources.flag_eu50;
+            this.BaseRegion.BackgroundImage = global::FriishProduce.Properties.Resources.x;
             resources.ApplyResources(this.BaseRegion, "BaseRegion");
             this.BaseRegion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.BaseRegion.ContextMenuStrip = this.BaseRegionList;

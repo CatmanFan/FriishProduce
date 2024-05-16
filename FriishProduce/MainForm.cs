@@ -63,8 +63,8 @@ namespace FriishProduce
                             new ToolStripMenuItem(null, Icons[Console.Flash], AddProject, Console.Flash.ToString()),
                          // new ToolStripSeparator(),
                          // new ToolStripMenuItem(null, new Icon(Properties.Resources.sony_playstation, 16, 16).ToBitmap(), AddProject, Console.PSX.ToString()),
-                         // new ToolStripSeparator(),
-                         // new ToolStripMenuItem(null, Icons[Console.RPGM], AddProject, Console.RPGM.ToString())
+                            new ToolStripSeparator(),
+                            new ToolStripMenuItem(null, Icons[Console.RPGM], AddProject, Console.RPGM.ToString())
                         //})
                 };
 

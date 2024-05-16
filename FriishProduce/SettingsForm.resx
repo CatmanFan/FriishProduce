@@ -444,9 +444,6 @@
   <data name="GetBanners.Text" xml:space="preserve">
     <value>Get VC banner files</value>
   </data>
-  <data name="GetBanners.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="&gt;&gt;GetBanners.Name" xml:space="preserve">
     <value>GetBanners</value>
   </data>

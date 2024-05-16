@@ -17,11 +17,9 @@
         GBC,
         GBA,
         GCN,
+        S32X,
+        SMCD,
         PSX,
         RPGM,
-
-        /* TO-DO:
-         * S32X,
-         * SMCD */
     }
 }

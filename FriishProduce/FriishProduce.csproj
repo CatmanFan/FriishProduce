@@ -225,9 +225,11 @@
     <Compile Include="Tutorial.Designer.cs">
       <DependentUpon>Tutorial.cs</DependentUpon>
     </Compile>
+    <Compile Include="_classes\Banner\BannerSchemes.cs" />
     <Compile Include="_classes\Files\CCF.cs" />
-    <Compile Include="_classes\BannerPreview.cs" />
+    <Compile Include="_classes\Banner\BannerPreview.cs" />
     <Compile Include="_classes\Databases\ChannelData.cs" />
+    <Compile Include="_classes\Files\ROM\RPGM.cs" />
     <Compile Include="_classes\Program\Language.cs" />
     <Compile Include="_classes\Creators\Flash.cs" />
     <Compile Include="_classes\Creators\Forwarder.cs" />
@@ -296,6 +298,7 @@
     <Compile Include="SettingsForm.Designer.cs">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="_classes\SoundHelper.cs" />
     <Compile Include="_classes\Utilities.cs" />
     <Compile Include="_classes\Consoles.cs" />
     <Compile Include="_classes\Creators\Creator.cs" />
@@ -312,7 +315,7 @@
     <Compile Include="_classes\Program\Paths.cs" />
     <Compile Include="_classes\Files\ROM.cs" />
     <Compile Include="_classes\ImageHelper.cs" />
-    <Compile Include="_classes\BannerHelper.cs" />
+    <Compile Include="_classes\Banner\BannerHelper.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
@@ -393,6 +396,33 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>VC_SEGA.Designer.cs</LastGenOutput>
     </None>
+    <None Include="Resources\banners\c64_eu.bnr" />
+    <None Include="Resources\banners\c64_us.bnr" />
+    <None Include="Resources\banners\flash.bnr" />
+    <None Include="Resources\banners\gen.bnr" />
+    <None Include="Resources\banners\jp_fc.bnr" />
+    <None Include="Resources\banners\jp_msx1.bnr" />
+    <None Include="Resources\banners\jp_msx2.bnr" />
+    <None Include="Resources\banners\jp_n64.bnr" />
+    <None Include="Resources\banners\jp_neogeo.bnr" />
+    <None Include="Resources\banners\jp_pce.bnr" />
+    <None Include="Resources\banners\jp_sfc.bnr" />
+    <None Include="Resources\banners\jp_smd.bnr" />
+    <None Include="Resources\banners\jp_sms.bnr" />
+    <None Include="Resources\banners\kr_fc.bnr" />
+    <None Include="Resources\banners\kr_n64.bnr" />
+    <None Include="Resources\banners\kr_sfc.bnr" />
+    <None Include="Resources\banners\n64.bnr" />
+    <None Include="Resources\banners\neogeo.bnr" />
+    <None Include="Resources\banners\nes.bnr" />
+    <None Include="Resources\banners\rpgm.bnr" />
+    <None Include="Resources\banners\rpgm.icn" />
+    <None Include="Resources\banners\smd.bnr" />
+    <None Include="Resources\banners\sms.bnr" />
+    <None Include="Resources\banners\snes.bnr" />
+    <None Include="Resources\banners\tg16.bnr" />
+    <None Include="Resources\banners\tpls\jp_rpgm.tpl" />
+    <None Include="Resources\banners\tpls\rpgm.tpl" />
     <None Include="Resources\StaticBase.wad" />
     <None Include="Strings\de.json" />
     <None Include="Strings\fr.json" />

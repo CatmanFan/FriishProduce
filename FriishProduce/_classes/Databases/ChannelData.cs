@@ -62,6 +62,8 @@ namespace FriishProduce
 
             public string GetUpperID(int index)
             {
+                if (index == -1) return null;
+
                 var hex = GetID(index).Substring(ID.Length - 8);
                 var ascii = string.Empty;
 
@@ -81,6 +83,11 @@ namespace FriishProduce
             public WAD GetWAD(int index)
             {
                 string tID = GetUpperID(index);
+
+                // Load Static WAD by default
+                // ****************
+                if (tID == null || tID?.Length < 4 || tID == "STLB") return WAD.Load(Properties.Resources.StaticBase);
+
                 string reg = " (Japan)";
                 switch (Regions[index])
                 {
@@ -173,6 +180,52 @@ namespace FriishProduce
 
         public List<ChannelEntry> Entries { get; private set; }
 
+        #region Standalone Database
+        /// <summary>
+        /// Loads the Static Base WAD.
+        /// </summary>
+        public ChannelDatabase(string externalFile = null)
+        {
+            string file = File.Exists(externalFile) ? externalFile : File.Exists(Properties.Settings.Default.custom_database) ? Properties.Settings.Default.custom_database : null;
+
+            Entries = new List<ChannelEntry>();
+
+            if (!File.Exists(Properties.Settings.Default.custom_database))
+            {
+                Properties.Settings.Default.custom_database = null;
+                Properties.Settings.Default.Save();
+            }
+
+            try
+            {
+                GetEntry(File.ReadAllBytes(file));
+            }
+            catch
+            {
+                if (!string.IsNullOrWhiteSpace(externalFile)) throw;
+                else GetEntry(Properties.Resources.Database);
+            }
+        }
+
+        private readonly string error = "The database format or styling is not valid.";
+
+        private void GetEntry(byte[] file)
+        {
+            Entries = new List<ChannelEntry>();
+
+            var y = new ChannelEntry() { ID = "00010001-53544c42" };
+            y.Regions.Add(8);
+            y.Titles.Add("Static Base");
+            y.EmuRevs.Add(0);
+            y.MarioCube.Add("");
+
+            Entries.Add(y);
+
+            if (Entries.Count == 0) throw new Exception(error);
+        }
+        #endregion
+
+        #region Console Databases
         /// <summary>
         /// Loads a database of WADs for a selected console/platform.
         /// </summary>
@@ -199,15 +252,9 @@ namespace FriishProduce
             }
         }
 
-        private ChannelDatabase(Console c)
-        {
-            GetEntries(c, Properties.Resources.Database);
-        }
-
         private void GetEntries(Console c, byte[] file)
         {
             Entries = new List<ChannelEntry>();
-            string error = "The database format or styling is not valid.";
 
             using (MemoryStream ms = new MemoryStream(file))
             using (StreamReader sr = new StreamReader(ms, Encoding.Unicode))
@@ -257,5 +304,6 @@ namespace FriishProduce
 
             if (Entries.Count == 0) throw new Exception(error);
         }
+        #endregion
     }
 }
