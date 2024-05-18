@@ -46,7 +46,7 @@ namespace FriishProduce.Injectors
 
                 Utils.Run
                 (
-                    Properties.Resources.GBALZSS,
+                    FileDatas.Apps.gbalzss,
                     "gbalzss",
                     "e rom LZ77out.rom"
                 );

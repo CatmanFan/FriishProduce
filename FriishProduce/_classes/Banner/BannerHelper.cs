@@ -2,7 +2,7 @@
 using System;
 using System.IO;
 using System.Text;
-using static FriishProduce.Properties.Resources;
+using static FriishProduce.FileDatas.WADBanners;
 
 namespace FriishProduce
 {
@@ -63,72 +63,72 @@ namespace FriishProduce
             {
             #region VC & Other Official
                 case Console.NES:
-                    Banner = U8.Load(region switch { Region.Japan => VCB_Banner_JP_FC, Region.Korea => VCB_Banner_KR_FC, _ => VCB_Banner_NES });
+                    Banner = U8.Load(region switch { Region.Japan => BNR_jp_fc, Region.Korea => BNR_kr_fc, _ => BNR_nes });
                     break;
 
                 case Console.SNES:
-                    Banner = U8.Load(region switch { Region.Japan => VCB_Banner_JP_SFC, Region.Korea => VCB_Banner_KR_SFC, _ => VCB_Banner_SNES });
+                    Banner = U8.Load(region switch { Region.Japan => BNR_jp_sfc, Region.Korea => BNR_kr_sfc, _ => BNR_snes });
                     break;
 
                 case Console.N64:
-                    Banner = U8.Load(region switch { Region.Japan => VCB_Banner_JP_N64, Region.Korea => VCB_Banner_KR_N64, _ => VCB_Banner_N64 });
+                    Banner = U8.Load(region switch { Region.Japan => BNR_jp_n64, Region.Korea => BNR_kr_n64, _ => BNR_n64 });
                     break;
 
                 case Console.SMS:
-                    Banner = U8.Load(region switch { Region.Japan => VCB_Banner_JP_SMS, _ => VCB_Banner_SMS });
+                    Banner = U8.Load(region switch { Region.Japan => BNR_jp_sms, _ => BNR_sms });
                     break;
 
                 case Console.SMD:
-                    Banner = U8.Load(region switch { Region.Japan => VCB_Banner_JP_SMD, Region.Europe => VCB_Banner_SMD, _ => VCB_Banner_GEN });
+                    Banner = U8.Load(region switch { Region.Japan => BNR_jp_smd, Region.Europe => BNR_smd, _ => BNR_gen });
                     break;
 
                 case Console.PCE:
                 case Console.PCECD:
-                    Banner = U8.Load(region switch { Region.Japan => VCB_Banner_JP_PCE, _ => VCB_Banner_TG16 });
+                    Banner = U8.Load(region switch { Region.Japan => BNR_jp_pce, _ => BNR_tg16 });
                     break;
 
                 case Console.NEO:
-                    Banner = U8.Load(region switch { Region.Japan => VCB_Banner_JP_NG, _ => VCB_Banner_NG });
+                    Banner = U8.Load(region switch { Region.Japan => BNR_jp_neogeo, _ => BNR_neogeo });
                     break;
 
                 case Console.C64:
-                    Banner = U8.Load(region switch { Region.Europe => VCB_Banner_EU_C64, _ => VCB_Banner_US_C64 });
+                    Banner = U8.Load(region switch { Region.Europe => BNR_c64_eu, _ => BNR_c64_us });
                     break;
 
                 case Console.MSX:
-                    Banner = U8.Load(w.UpperTitleID.StartsWith("XAP") ? VCB_Banner_JP_MSX2 : VCB_Banner_JP_MSX1); // Check if version 2 MSX WADs use a different color scheme?
+                    Banner = U8.Load(w.UpperTitleID.StartsWith("XAP") ? BNR_jp_msx2 : BNR_jp_msx1); // Check if version 2 MSX WADs use a different color scheme?
                     break;
 
                 case Console.Flash:
-                    Banner = U8.Load(VCB_Banner_Flash);
+                    Banner = U8.Load(BNR_flash);
                     break;
             #endregion
 
             #region Forwarders
                 case Console.GB:
-                    // Banner = U8.Load(region switch { Region.Japan => VCB_Banner_JP_GB, _ => VCB_Banner_GB });
-                    // Icon = U8.Load(VCB_Icon_GB);
+                    // Banner = U8.Load(region switch { Region.Japan => BNR_jp_gb, _ => BNR_gb });
+                    // Icon = U8.Load(ICN_gb);
                     break;
 
                 case Console.GBC:
-                    // Banner = U8.Load(region switch { Region.Japan => VCB_Banner_JP_GBC, _ => VCB_Banner_GBC });
-                    // Icon = U8.Load(VCB_Icon_GBC);
+                    // Banner = U8.Load(region switch { Region.Japan => BNR_jp_gbc, _ => BNR_gbc });
+                    // Icon = U8.Load(ICN_gbc);
                     break;
 
                 case Console.GBA:
-                    // Banner = U8.Load(region switch { Region.Japan => VCB_Banner_JP_GBA, _ => VCB_Banner_GBA });
-                    // Icon = U8.Load(VCB_Icon_GBA);
+                    // Banner = U8.Load(region switch { Region.Japan => BNR_jp_gba, _ => BNR_gba });
+                    // Icon = U8.Load(ICN_gba);
                     break;
 
                 case Console.PSX:
-                    // Banner = U8.Load(region switch { Region.Japan => VCB_Banner_JP_PSX, _ => VCB_Banner_PSX });
-                    // Icon = U8.Load(VCB_Icon_PSX);
+                    // Banner = U8.Load(region switch { Region.Japan => BNR_jp_psx, _ => BNR_psx });
+                    // Icon = U8.Load(ICN_psx);
                     break;
 
                 case Console.RPGM:
-                    // Banner = U8.Load(region switch { Region.Japan => VCB_Banner_JP_RPGM, _ => VCB_Banner_RPGM });
-                    Banner = U8.Load(VCB_Banner_RPGM);
-                    // Icon = U8.Load(VCB_Icon_RPGM);
+                    // Banner = U8.Load(region switch { Region.Japan => BNR_jp_rpgm, _ => BNR_rpgm });
+                    Banner = U8.Load(BNR_rpgm);
+                    Icon = U8.Load(ICN_rpgm);
                     break;
             #endregion
 

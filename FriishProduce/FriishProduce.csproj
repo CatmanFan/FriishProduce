@@ -137,6 +137,26 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FileDatas\Emulators.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Emulators.resx</DependentUpon>
+    </Compile>
+    <Compile Include="FileDatas\Forwarder.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Forwarder.resx</DependentUpon>
+    </Compile>
+    <Compile Include="FileDatas\Apps.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Apps.resx</DependentUpon>
+    </Compile>
+    <Compile Include="FileDatas\WADBanners.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WADBanners.resx</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -246,6 +266,22 @@
     <Compile Include="_classes\Files\ROM\SEGA.cs" />
     <Compile Include="_classes\Files\ROM\SNES.cs" />
     <Compile Include="_classes\Program\Updater.cs" />
+    <EmbeddedResource Include="FileDatas\Emulators.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Emulators.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FileDatas\Forwarder.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Forwarder.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FileDatas\Apps.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Apps.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FileDatas\WADBanners.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>WADBanners.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -396,35 +432,56 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>VC_SEGA.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Resources\banners\c64_eu.bnr" />
-    <None Include="Resources\banners\c64_us.bnr" />
-    <None Include="Resources\banners\flash.bnr" />
-    <None Include="Resources\banners\gen.bnr" />
-    <None Include="Resources\banners\jp_fc.bnr" />
-    <None Include="Resources\banners\jp_msx1.bnr" />
-    <None Include="Resources\banners\jp_msx2.bnr" />
-    <None Include="Resources\banners\jp_n64.bnr" />
-    <None Include="Resources\banners\jp_neogeo.bnr" />
-    <None Include="Resources\banners\jp_pce.bnr" />
-    <None Include="Resources\banners\jp_sfc.bnr" />
-    <None Include="Resources\banners\jp_smd.bnr" />
-    <None Include="Resources\banners\jp_sms.bnr" />
-    <None Include="Resources\banners\kr_fc.bnr" />
-    <None Include="Resources\banners\kr_n64.bnr" />
-    <None Include="Resources\banners\kr_sfc.bnr" />
-    <None Include="Resources\banners\n64.bnr" />
-    <None Include="Resources\banners\neogeo.bnr" />
-    <None Include="Resources\banners\nes.bnr" />
-    <None Include="Resources\banners\rpgm.bnr" />
-    <None Include="Resources\banners\rpgm.icn" />
-    <None Include="Resources\banners\smd.bnr" />
-    <None Include="Resources\banners\sms.bnr" />
-    <None Include="Resources\banners\snes.bnr" />
-    <None Include="Resources\banners\tg16.bnr" />
-    <None Include="Resources\banners\tpls\jp_rpgm.tpl" />
-    <None Include="Resources\banners\tpls\rpgm.tpl" />
+    <None Include="Resources\banners\bnr\c64_eu.bnr" />
+    <None Include="Resources\banners\bnr\c64_us.bnr" />
+    <None Include="Resources\banners\bnr\flash.bnr" />
+    <None Include="Resources\banners\bnr\gen.bnr" />
+    <None Include="Resources\banners\bnr\jp_fc.bnr" />
+    <None Include="Resources\banners\bnr\jp_msx1.bnr" />
+    <None Include="Resources\banners\bnr\jp_msx2.bnr" />
+    <None Include="Resources\banners\bnr\jp_n64.bnr" />
+    <None Include="Resources\banners\bnr\jp_neogeo.bnr" />
+    <None Include="Resources\banners\bnr\jp_pce.bnr" />
+    <None Include="Resources\banners\bnr\jp_sfc.bnr" />
+    <None Include="Resources\banners\bnr\jp_smd.bnr" />
+    <None Include="Resources\banners\bnr\jp_sms.bnr" />
+    <None Include="Resources\banners\bnr\kr_fc.bnr" />
+    <None Include="Resources\banners\bnr\kr_n64.bnr" />
+    <None Include="Resources\banners\bnr\kr_sfc.bnr" />
+    <None Include="Resources\banners\bnr\n64.bnr" />
+    <None Include="Resources\banners\bnr\neogeo.bnr" />
+    <None Include="Resources\banners\bnr\nes.bnr" />
+    <None Include="Resources\banners\bnr\rpgm.bnr" />
+    <None Include="Resources\banners\bnr\smd.bnr" />
+    <None Include="Resources\banners\bnr\sms.bnr" />
+    <None Include="Resources\banners\bnr\snes.bnr" />
+    <None Include="Resources\banners\bnr\tg16.bnr" />
+    <None Include="Resources\banners\icn\rpgm.icn" />
+    <None Include="Resources\banners\tpl\jp_rpgm.tpl" />
+    <None Include="Resources\banners\tpl\rpgm.tpl" />
+    <None Include="Resources\forwarder_emus\easyrpg.dol" />
+    <None Include="Resources\forwarder_emus\fceugx.dol" />
+    <None Include="Resources\forwarder_emus\fceurx.dol" />
+    <None Include="Resources\forwarder_emus\fceuxtx.dol" />
+    <None Include="Resources\forwarder_emus\genplusgx.dol" />
+    <None Include="Resources\forwarder_emus\mgba.dol" />
+    <None Include="Resources\forwarder_emus\mupen64gc-fix94.dol" />
+    <None Include="Resources\forwarder_emus\mupen64gc.dol" />
+    <None Include="Resources\forwarder_emus\not64.dol" />
+    <None Include="Resources\forwarder_emus\snes9xgx.dol" />
+    <None Include="Resources\forwarder_emus\snes9xrx.dol" />
+    <None Include="Resources\forwarder_emus\snes9xtx.dol" />
+    <None Include="Resources\forwarder_emus\vbagx.dol" />
+    <None Include="Resources\forwarder_emus\wii64_gln64.dol" />
+    <None Include="Resources\forwarder_emus\wii64_rice.dol" />
+    <None Include="Resources\forwarder_emus\wiistation.dol" />
+    <None Include="Resources\forwarder_emus\wiisx.dol" />
+    <None Include="Resources\forwarder_wii\base_comex.wad" />
+    <None Include="Resources\forwarder_wii\base_waninkoko.wad" />
+    <None Include="Resources\forwarder_wii\forwarder_v12.dol" />
+    <None Include="Resources\forwarder_wii\forwarder_v14.dol" />
+    <None Include="Resources\forwarder_wii\vwii.app" />
     <None Include="Resources\StaticBase.wad" />
-    <None Include="Strings\de.json" />
     <None Include="Strings\fr.json" />
     <None Include="Strings\es.json" />
     <None Include="Strings\en.json" />
@@ -438,11 +495,6 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <None Include="Resources\font.TTF" />
-    <None Include="Resources\forwarder\base_comex.wad" />
-    <None Include="Resources\forwarder\base_waninkoko.wad" />
-    <None Include="Resources\forwarder\forwarder_v12.dol" />
-    <None Include="Resources\forwarder\forwarder_v14.dol" />
-    <None Include="Resources\forwarder\vwii.app" />
     <None Include="Resources\icons\consoles\nintendo nes.ico" />
   </ItemGroup>
   <ItemGroup>

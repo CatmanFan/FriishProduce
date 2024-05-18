@@ -4,27 +4,29 @@ using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 using System.Text;
+using static FriishProduce.FileDatas.Emulators;
 
 namespace FriishProduce
 {
     public class Forwarder
     {
-        public static readonly (int Index, string File, string Name)[] List = new (int Index, string File, string Name)[]
+        public static readonly (int Index, byte[] File, string Name)[] List = new (int Index, byte[] File, string Name)[]
         {
-            (0,     "fceugx",           "FCE Ultra GX"),
-            (1,     "fceurx",           "FCE Ultra RX"),
-            (2,     "fceuxtx",          "FCEUX TX"),
-            (3,     "snes9xgx",         "Snes9x GX"),
-            (4,     "snes9xrx",         "Snes9x RX"),
-            (5,     "snes9xtx",         "Snes9x TX"),
-            (6,     "vbagx",            "Visual Boy Advance GX"),
-            (7,     "genplusgx",        "Genesis Plus GX"),
-            (8,     "wii64_gln64",      "Wii64 (GLideN64 GFX)"),
-            (9,     "wii64_rice",       "Wii64 (Rice GFX)"),
-            (10,    "not64",            "Not64"),
-            (11,    "mupen64gc-fix94",  "mupen64gc-fix94"),
-            (12,    "wiistation",       "WiiStation"),
-            (13,    "easyrpg",          "EasyRPG Player"),
+            (0,     fceugx,             "FCE Ultra GX"),
+            (1,     fceurx,             "FCE Ultra RX"),
+            (2,     fceuxtx,            "FCEUX TX"),
+            (3,     snes9xgx,           "Snes9x GX"),
+            (4,     snes9xrx,           "Snes9x RX"),
+            (5,     snes9xtx,           "Snes9x TX"),
+            (6,     vbagx,              "Visual Boy Advance GX"),
+            (7,     genplusgx,          "Genesis Plus GX"),
+            (8,     wii64_gln64,        "Wii64 (GLideN64 GFX)"),
+            (9,     wii64_rice,         "Wii64 (Rice GFX)"),
+            (10,    not64,              "Not64"),
+            (11,    mupen64gc_fix94,    "mupen64gc-fix94"),
+            (12,    wiistation,         "WiiStation"),
+            (13,    easyrpg,            "EasyRPG Player"),
+            (14,    mgba,               "mGBA"),
         };
 
         public string Emulator { get; set; }
@@ -68,12 +70,10 @@ namespace FriishProduce
             string ROMFolder = IsDisc ? PackageFolder + "title\\" : PackageFolder;
             string ROMName = (EmulatorIndex >= 7 ? "title" : "HOME Menu") + ROMExtension;
 
-            if (!File.Exists(Paths.Emulators + List[EmulatorIndex].File + ".dol")) throw new Exception(string.Format(Program.Lang.Msg(8, true), List[EmulatorIndex].Name, List[EmulatorIndex].File));
-
             // Create SD folder and copy emulator
             // *******
             Directory.CreateDirectory(ROMFolder);
-            File.Copy(Paths.Emulators + List[EmulatorIndex].File + ".dol", PackageFolder + "boot.dol");
+            File.WriteAllBytes(PackageFolder + "boot.dol", List[EmulatorIndex].File);
 
             // If RPG Maker game, copy all files within the ROM folder (RTP not included as part of this, yet)
             // *******
@@ -157,8 +157,7 @@ namespace FriishProduce
                 ROMFolder + '/' + ROMName,
                 $"using the emulator {List[EmulatorIndex]}.</long_description>",
                 "  <arguments>",
-                $"    <arg>{ROMFolder}</arg>",
-                $"    <arg>{ROMName}</arg>"
+                
             };
 
             // Change or add parameters when needed
@@ -166,18 +165,30 @@ namespace FriishProduce
             switch (EmulatorIndex)
             {
                 case 7:
-                    meta[9] = meta[9].Replace("</arg>", "/</arg>");
+                    meta.Add($"    <arg>{ROMFolder}/</arg>");
+                    meta.Add($"    <arg>{ROMName}</arg>");
                     break;
 
                 case 10:
-                    meta[9] = $"    <arg>rompath=\"{ROMFolder}/{ROMName}\"</arg>";
-                    meta[10] = $"    <arg>SkipMenu=1</arg>";
+                    meta.Add($"    <arg>rompath=\"{ROMFolder}/{ROMName}\"</arg>");
+                    meta.Add($"    <arg>SkipMenu=1</arg>");
                     meta.Add("    <arg>ScreenMode=0</arg>");
                     break;
 
                 case 11:
+                    meta.Add($"    <arg>{ROMFolder}</arg>");
+                    meta.Add($"    <arg>{ROMName}</arg>");
                     meta.Add("    <arg>loader</arg>"); // Mupen64GC-FIX94 needs at least a third argument for be able to autoboot
                     meta.Add("    <arg>ScreenMode = 0</arg>");
+                    break;
+
+                case 14:
+                    meta.Add($"    <arg>{ROMFolder}/{ROMName}</arg>");
+                    break;
+
+                default:
+                    meta.Add($"    <arg>{ROMFolder}</arg>");
+                    meta.Add($"    <arg>{ROMName}</arg>");
                     break;
             }
 
@@ -208,7 +219,7 @@ namespace FriishProduce
 
             // Load and unpack WAD
             // *******
-            WAD x = WADType == WADTypes.Comex ? WAD.Load(Properties.Resources.Forwarder_Comex) : WAD.Load(Properties.Resources.Forwarder_Waninkoko);
+            WAD x = WADType == WADTypes.Comex ? WAD.Load(FileDatas.Forwarder.Base_Comex) : WAD.Load(FileDatas.Forwarder.Base_Waninkoko);
 
             x.Unpack(Paths.WAD);
             WAD.BannerApp.Save(Paths.WAD + "00000000.app");
@@ -216,7 +227,7 @@ namespace FriishProduce
             // Define forwarder version
             // *******
             bool NeedsOldForwarder = EmulatorIndex == 7 || EmulatorIndex == 13;
-            byte[] Forwarder = NeedsOldForwarder ? Properties.Resources.ForwarderV12 : Properties.Resources.ForwarderV14;
+            byte[] Forwarder = NeedsOldForwarder ? FileDatas.Forwarder.DOL_V12 : FileDatas.Forwarder.DOL_V14;
             int TargetOffset = NeedsOldForwarder ? 0x77426 : 0x7F979;
             int SecondTargetOffset = NeedsOldForwarder ? 263 : 256;
             string TargetPath = NeedsOldForwarder ? Path : Path.Substring(4);
@@ -228,7 +239,7 @@ namespace FriishProduce
 
             // Write NANDloader & save
             // *******
-            if (vWii) File.WriteAllBytes(Paths.WAD + $"0000000{x.BootIndex}.app", Properties.Resources.Forwarder_vWii);
+            if (vWii) File.WriteAllBytes(Paths.WAD + $"0000000{x.BootIndex}.app", FileDatas.Forwarder.vWiiNandLoader);
 
             x.CreateNew(Paths.WAD);
             x.Region = WAD.Region;

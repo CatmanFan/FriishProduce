@@ -83,9 +83,8 @@
 			"e_005": "L'application requise ({0}) n'est pas disponible dans le sous-répertoire « resources\\tools ».\nVeuillez obtenir cette application et la placer dans ce dossier, puis réessayer.",
 			"e_006": "Échec de la sauvegarde vers format WAD.",
 			"e_007": "Échec de l'application du patch. Il peut s'agir que soit la ROM ne correspond pas au patch, soit elle-même n'est pas valide.",
-			"e_008": "L'émulateur requis ({0}) dans le chemin d'accès « resources\\forwarder\\emulators\\{1}.dol » n'a pas été trouvé.\nVeuillez obtenir le fichier d'émulateur et le placer dans ce chemin, puis réessayer.",
-			"e_009": "Échec du téléchargement de la chaîne.",
-			"e_010": "Échec de modification du fichier du mode d'emploi.\nLa sauvegarde du fichier WAD se poursuivra comme prévu."
+			"e_008": "Échec du téléchargement de la chaîne.",
+			"e_009": "Échec de modification du fichier du mode d'emploi.\nLa sauvegarde du fichier WAD se poursuivra comme prévu."
 		}
 	},
 

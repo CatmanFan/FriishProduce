@@ -1,5 +1,5 @@
 # FriishProduce
-<div align=center><a href=""><img src="https://raw.githubusercontent.com/CatmanFan/FriishProduce/main/legacy/FriishProduce/Resources/images/icon.png" width="105" height="75" /></a><br>
+<div align=center><a href=""><img src="https://github.com/CatmanFan/FriishProduce/blob/main/FriishProduce/Resources/icon.png" width="105" height="75" /></a><br>
 <img src="https://github.com/CatmanFan/FriishProduce/blob/main/images/new.png?raw=true"/><br>
 <a href="https://gbatemp.net/threads/friishproduce-multiplatform-wad-injector.632028/"><img src="https://img.shields.io/badge/GBAtemp-link-blue" /></a>
 </div>
@@ -37,12 +37,15 @@ See **[here](https://github.com/CatmanFan/FriishProduce/wiki/FriishProduce-v1.0)
 ---
 
 ## To-Do
-* ***Planned later:***
+- [ ] Complete RPG Maker banner and icon (it is confirmed working otherwise)
+- [ ] Combine all .bnr and .icn WAD banner files to .app
+* Other VC injection support:
+  * Commodore 64 (needs [Custom Frodo](https://gbatemp.net/threads/custom-frodo-for-c64-vc-injection.102356/))
+  * TurboGrafx-16 CD (needs several programs to convert ISO to injectable format)
+
+* Optional:
   - [ ] Restructure and clean code
   - [ ] Probably reorganize consoles into their own folders?
-  * Other VC injection support:
-    * Commodore 64 (needs [Custom Frodo](https://gbatemp.net/threads/custom-frodo-for-c64-vc-injection.102356/))
-    * TurboGrafx-16 CD (needs several programs to convert ISO to injectable format)
 
 ## Credits
 This program uses the following third-party components and apps:
@@ -66,6 +69,25 @@ I would also like to thank the following people:
 * **[Larsenv](https://github.com/Larsenv)** for his astounding work in the Wii homebrew community, and for originally disclosing a method for Flash WAD injection ([GBAtemp thread](https://gbatemp.net/threads/how-to-make-flash-game-wad-injects.561406/)).
 * And of course, the team at the 0RANGECHiCKEN release group, including [lolsjoel](https://gbatemp.net/members/lolsjoel.18721/), and the late [G0dLiKe](https://gbatemp.net/members/g0dlike.190457/), without whose work this project would not have been possible.
 
+### Emulators
+* **[FCE Ultra GX](https://github.com/dborth/fceugx)** (dborth et al.)
+* **[FCE Ultra RX](https://github.com/niuus/FCEUltraRX)** (NiuuS et al.)
+* **[FCEUX TX / FCEUGX-1UP](https://gbatemp.net/threads/fceugx-1up.558023/)** (Tanooki16)
+* **[Snes9x GX](https://github.com/dborth/snes9xgx)** (dborth et al.)
+* **[Snes9x RX](https://github.com/niuus/Snes9xRX)** (NiuuS et al.)
+* **[Snes9x TX / Snes9xGX-Mushroom](https://gbatemp.net/threads/snes9xgx-mushroom.558500/)** (Tanooki16)
+* **[Visual Boy Advance GX](https://github.com/dborth/vbagx)** (dborth et al.) -->
+* **[mGBA Wii](https://github.com/mgba-emu/mgba)** (endrift et al.) -->
+* **[Wii64 1.3 MOD](https://github.com/saulfabregwiivc/Wii64/tree/wii64-wiiflow)** forked by saulfabreg (original author: Wii64 Team)
+* **[Not64](https://github.com/extremscorner/not64)** (Extrems)
+* **[Mupen64GC-FIX94](https://github.com/FIX94/mupen64gc-fix94)** (Wii64 Team, forked by FIX94)
+* **[Genesis Plus GX](https://github.com/ekeeke/Genesis-Plus-GX)** (eke-eke et al.)
+* **[WiiSX](https://github.com/emukidid/pcsxgc)** (Wii64 Team)
+* **[EasyRPG Player](https://github.com/EasyRPG/Player)** (EasyRPG Team)
+<!-- * **[WiiStation / WiiSXRX_2022](https://github.com/xjsxjs197/WiiSXRX_2022)** (xjsxjs197, forked from NiuuS' WiiSX RX) -->
+<!-- * **[WiiMednafen](https://github.com/raz0red/wii-mednafen)** (raz0red) -->
+
+### License
 This application is distributed and licensed under the **GNU General Public License v3.0** ([view in full](https://github.com/CatmanFan/FriishProduce/blob/main/LICENSE)).
 
 ---

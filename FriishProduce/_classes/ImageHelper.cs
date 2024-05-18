@@ -7,6 +7,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Net;
 using static FriishProduce.Properties.Resources;
+using static FriishProduce.FileDatas.WADBanners;
 
 namespace FriishProduce
 {
@@ -299,7 +300,7 @@ namespace FriishProduce
                         case Console.PSX:
                             break;
                         case Console.RPGM:
-                            BannerSet.Item1.ReplaceFile(BannerSet.Item1.GetNodeIndex(item), w.Region == 0 ? TPL_RPGM_JPN : TPL_RPGM);
+                            BannerSet.Item1.ReplaceFile(BannerSet.Item1.GetNodeIndex(item), w.Region == 0 ? TPL_jp_rpgm : TPL_rpgm);
                             break;
                         default:
                             break;

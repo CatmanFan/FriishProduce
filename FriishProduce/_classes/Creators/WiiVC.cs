@@ -299,7 +299,7 @@ namespace FriishProduce
                 {
                     CleanManual();
                     target.ReplaceFile(target.GetNodeIndex(OrigManual), backup);
-                    MessageBox.Show(Program.Lang.Msg(10, true));
+                    MessageBox.Show(Program.Lang.Msg(9, true));
                 }
             }
         }

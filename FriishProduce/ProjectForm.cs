@@ -1043,7 +1043,7 @@ namespace FriishProduce
                 else foreach (var entry in channelData.Entries)
                         for (int i = 0; i < entry.Regions.Count; i++)
                             if (entry.GetUpperID(i) == baseID.Text.ToUpper()) OutWAD = entry.GetWAD(i);
-                if (OutWAD == null || OutWAD?.NumOfContents <= 1) throw new Exception(Program.Lang.Msg(9, true));
+                if (OutWAD == null || OutWAD?.NumOfContents <= 1) throw new Exception(Program.Lang.Msg(8, true));
 
                 Creator.Out = Parent.SaveWAD.FileName;
                 if (Patch.Checked) ROM.Patch(PatchFile);

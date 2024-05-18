@@ -116,8 +116,8 @@ namespace FriishProduce
             File.WriteAllBytes(Paths.WorkingFolder + "rom", origData);
             File.WriteAllBytes(Paths.WorkingFolder + "patch", File.ReadAllBytes(filePath));
 
-            Utils.Run(Properties.Resources.App_XDelta, "xdelta3", "-d -s rom patch rom_p_xdelta");
-            Utils.Run(Properties.Resources.App_Flips, "flips", "--apply patch rom rom_p_bps");
+            Utils.Run(FileDatas.Apps.xdelta3, "xdelta3", "-d -s rom patch rom_p_xdelta");
+            Utils.Run(FileDatas.Apps.flips, "flips", "--apply patch rom rom_p_bps");
 
             // -----------------------
             // Check if patch applied successfully
