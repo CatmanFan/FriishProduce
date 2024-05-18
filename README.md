@@ -20,14 +20,17 @@ This injector bypasses other third-party assets (such as Common-Key.bin, HowardC
 
 ### Platforms
 **Currently supported:**
-* **Nintendo Entertainment System (NES) / Famicom**
-* **Super Nintendo Entertainment System (SNES) / Super Famicom**
-* **Nintendo 64**
-* **SEGA Master System** & **SEGA Mega Drive / Genesis**
-* **NEC TurboGrafx-16 / PC Engine**
-* **SNK NEO-GEO**
-* **Microsoft MSX / MSX2**
-* **Adobe Flash**
+  * Virtual Console:
+    * **Nintendo Entertainment System (NES) / Famicom**
+    * **Super Nintendo Entertainment System (SNES) / Super Famicom**
+    * **Nintendo 64**
+    * **SEGA Master System** & **SEGA Mega Drive / Genesis**
+    * **NEC TurboGrafx-16 / PC Engine**
+    * **SNK NEO-GEO**
+    * **Microsoft MSX / MSX2**
+  * Others:
+    * **Adobe Flash**
+    * **RPG Maker 2000 / 2003**
 
 ---
 
@@ -37,7 +40,7 @@ See **[here](https://github.com/CatmanFan/FriishProduce/wiki/FriishProduce-v1.0)
 ---
 
 ## To-Do
-- [ ] Complete RPG Maker banner and icon (it is confirmed working otherwise)
+- [ ] Complete RPG Maker banner and icon (forwarder is confirmed working otherwise)
 - [ ] Combine all .bnr and .icn WAD banner files to .app
 * Other VC injection support:
   * Commodore 64 (needs [Custom Frodo](https://gbatemp.net/threads/custom-frodo-for-c64-vc-injection.102356/))
