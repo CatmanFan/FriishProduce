@@ -18,6 +18,7 @@ namespace FriishProduce
         public string ManualFile { get; set; }
         public Bitmap Img { get; set; }
         public Creator Creator { get; set; }
+        public int InjectionMethod { get; set; }
         public (bool, bool) ForwarderOptions { get; set; }
         public IDictionary<string, string> Options { get; set; }
         public GameDatabase GameData { get; set; }

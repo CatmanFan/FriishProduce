@@ -56,6 +56,7 @@ namespace FriishProduce
             this.menu_about_app = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.MainPanel = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.ToolStrip = new System.Windows.Forms.ToolStrip();
             this.ToolStrip_NewProject = new System.Windows.Forms.ToolStripDropDownButton();
             this.ToolStrip_OpenProject = new System.Windows.Forms.ToolStripButton();
@@ -71,11 +72,10 @@ namespace FriishProduce
             this.ToolStrip_Settings = new System.Windows.Forms.ToolStripButton();
             this.SaveProject = new System.Windows.Forms.SaveFileDialog();
             this.BrowseProject = new System.Windows.Forms.OpenFileDialog();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.MenuStrip.SuspendLayout();
             this.MainPanel.SuspendLayout();
-            this.ToolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.ToolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // BrowseROM
@@ -292,6 +292,13 @@ namespace FriishProduce
             resources.ApplyResources(this.MainPanel, "MainPanel");
             this.MainPanel.Name = "MainPanel";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::FriishProduce.Properties.Resources.icon;
+            resources.ApplyResources(this.pictureBox1, "pictureBox1");
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.TabStop = false;
+            // 
             // ToolStrip
             // 
             resources.ApplyResources(this.ToolStrip, "ToolStrip");
@@ -416,13 +423,6 @@ namespace FriishProduce
             // 
             this.BrowseProject.DefaultExt = "fppj";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::FriishProduce.Properties.Resources.icon;
-            resources.ApplyResources(this.pictureBox1, "pictureBox1");
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.TabStop = false;
-            // 
             // MainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -442,9 +442,9 @@ namespace FriishProduce
             this.MenuStrip.ResumeLayout(false);
             this.MenuStrip.PerformLayout();
             this.MainPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ToolStrip.ResumeLayout(false);
             this.ToolStrip.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

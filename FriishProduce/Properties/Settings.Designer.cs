@@ -118,5 +118,17 @@ namespace FriishProduce.Properties {
                 this["custom_database"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("[PLATFORM] CHANNELNAME - TITLEID")]
+        public string default_save_as_filename {
+            get {
+                return ((string)(this["default_save_as_filename"]));
+            }
+            set {
+                this["default_save_as_filename"] = value;
+            }
+        }
     }
 }

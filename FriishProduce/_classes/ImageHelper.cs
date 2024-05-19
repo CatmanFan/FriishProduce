@@ -239,10 +239,10 @@ namespace FriishProduce
         private readonly float[] opacity4 = { 0F, 0.32F, 0.64F, 1F };
         private readonly float[] opacity6 = { 0F, 0.20F, 0.40F, 0.60F, 0.80F, 1F };
 
-        public void ReplaceTPL(TPL t, Bitmap bmp)
+        public static void ReplaceTPL(TPL t, Bitmap bmp, bool forceTransparency = false)
         {
-            var tplTF = t.GetTextureFormat(0);
-            var tplPF = t.GetPaletteFormat(0);
+            var tplTF = forceTransparency ? TPL_TextureFormat.RGB5A3 : t.GetTextureFormat(0);
+            var tplPF = forceTransparency ? TPL_PaletteFormat.RGB5A3 : t.GetPaletteFormat(0);
             t.RemoveTexture(0);
             t.AddTexture(bmp, tplTF, tplPF);
         }
@@ -270,51 +270,23 @@ namespace FriishProduce
         {
             if (!w.HasBanner) return;
 
-            (U8, U8) BannerSet = BannerHelper.Get(w);
+            (U8, U8) BannerSet = (U8.Load(w.BannerApp.Data[w.BannerApp.GetNodeIndex("banner.bin")]), U8.Load(w.BannerApp.Data[w.BannerApp.GetNodeIndex("icon.bin")]));
 
             // VCPic.tpl
             // ****************
-            TPL tpl = TPL.Load(BannerSet.Item1.Data[BannerSet.Item1.GetNodeIndex("VCPic.tpl")]);
-            ReplaceTPL(tpl, VCPic);
-            BannerSet.Item1.ReplaceFile(BannerSet.Item1.GetNodeIndex("VCPic.tpl"), tpl.ToByteArray());
-
-            // ****************
-            #region Custom banner (for forwarders only)
-            foreach (var item in BannerSet.Item1.StringTable)
+            using (TPL tpl = TPL.Load(BannerSet.Item1.Data[BannerSet.Item1.GetNodeIndex("VCPic.tpl")]))
             {
-                if (item.ToLower().StartsWith("my_back"))
-                    switch (platform)
-                    {
-                        case Console.GB:
-                            break;
-                        case Console.GBC:
-                            break;
-                        case Console.GBA:
-                            break;
-                        case Console.GCN:
-                            break;
-                        case Console.S32X:
-                            break;
-                        case Console.SMCD:
-                            break;
-                        case Console.PSX:
-                            break;
-                        case Console.RPGM:
-                            BannerSet.Item1.ReplaceFile(BannerSet.Item1.GetNodeIndex(item), w.Region == 0 ? TPL_jp_rpgm : TPL_rpgm);
-                            break;
-                        default:
-                            break;
-                    };
+                ReplaceTPL(tpl, VCPic);
+                BannerSet.Item1.ReplaceFile(BannerSet.Item1.GetNodeIndex("VCPic.tpl"), tpl.ToByteArray());
             }
-            #endregion
-            // ****************
 
             // IconVCPic.tpl
             // ****************
-            tpl = TPL.Load(BannerSet.Item2.Data[BannerSet.Item2.GetNodeIndex("IconVCPic.tpl")]);
-            ReplaceTPL(tpl, IconVCPic);
-            BannerSet.Item2.ReplaceFile(BannerSet.Item2.GetNodeIndex("IconVCPic.tpl"), tpl.ToByteArray());
-            tpl.Dispose();
+            using (TPL tpl = TPL.Load(BannerSet.Item2.Data[BannerSet.Item2.GetNodeIndex("IconVCPic.tpl")]))
+            {
+                ReplaceTPL(tpl, IconVCPic);
+                BannerSet.Item2.ReplaceFile(BannerSet.Item2.GetNodeIndex("IconVCPic.tpl"), tpl.ToByteArray());
+            }
 
             // Replace banner.bin
             // ****************

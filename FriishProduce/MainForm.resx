@@ -504,6 +504,9 @@
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>684, 462</value>
   </data>
+  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8.25pt</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAYAAAAAAAEAIADWqwAAZgAAAICAAAABACAAKAgBADysAABAQAAAAQAgAChCAABktAEAMDAAAAEA

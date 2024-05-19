@@ -117,7 +117,9 @@
 			"gamedata_source_image": "Site web des images :",
 			"autolink_save_data": "Lier automatiquement le titre des données de sauvegarde avec celles de la chaîne et du banner",
 			"reset_all_dialogs": "Réinitialiser le paramètre « Ne plus afficher ce message »",
-			"use_custom_database": "Utiliser une base de données externe pour les chaînes d'origine"
+			"use_custom_database": "Utiliser une base de données externe pour les chaînes d'origine",
+			"default_save_as_filename": "Nom par défaut des fichiers WAD enregistrés",
+			"default_save_as_parameters": "Parties remplaçables :",
 		},
 		"projectform": {
 			"tab_main_details": "Détails clés",

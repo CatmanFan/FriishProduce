@@ -69,22 +69,26 @@ namespace FriishProduce
 
         public void Save()
         {
-            var p = new Project();
-            p.Console = Console;
-            p.Creator = Creator;
-            p.ROM = ROM?.Path;
-            p.PatchFile = PatchFile;
-            p.ManualIndex = manual_type_list.SelectedIndex;
-            p.ManualFile = Manual;
-            p.Img = Img?.Source ?? null;
-            p.ForwarderOptions = (FStorage_USB.Checked, toggleSwitch1.Checked);
-            p.Options = CO?.Options ?? null;
-            p.GameData = gameData;
-            p.WADRegion = TargetRegion.SelectedIndex;
+            var p = new Project()
+            {
+                Console = Console,
+                Creator = Creator,
+                ROM = ROM?.Path,
+                PatchFile = PatchFile,
+                ManualIndex = manual_type_list.SelectedIndex,
+                ManualFile = Manual,
+                Img = Img?.Source ?? null,
+                InjectionMethod = InjectorsList.SelectedIndex,
+                ForwarderOptions = (FStorage_USB.Checked, toggleSwitch1.Checked),
+                Options = CO?.Options ?? null,
+                GameData = gameData,
+                WADRegion = TargetRegion.SelectedIndex,
+                LinkSaveDataTitle = LinkSaveData.Checked,
+                ImageOptions = (imageintpl.SelectedIndex, image_fit.Checked)
+            };
+            
             if (!string.IsNullOrWhiteSpace(WADPath)) p.BaseFile = WADPath;
             else p.Base = (Base.SelectedIndex, 0);
-            p.LinkSaveDataTitle = LinkSaveData.Checked;
-            p.ImageOptions = (imageintpl.SelectedIndex, image_fit.Checked);
 
             for (int i = 0; i < BaseRegionList.Items.Count; i++)
                 if (BaseRegionList.Items[i].GetType() == typeof(ToolStripMenuItem) && (BaseRegionList.Items[i] as ToolStripMenuItem).Checked) p.Base = (Base.SelectedIndex, i);
@@ -277,19 +281,24 @@ namespace FriishProduce
             if (Properties.Settings.Default.image_fit_aspect_ratio) image_fit.Checked = true; else image_stretch.Checked = true;
         }
 
-        public ProjectForm(Console c, string ROMpath = null)
+        private void LoadChannelDatabase()
         {
-            Console = c;
             try { channelData = new ChannelDatabase(Console); }
             catch (Exception ex)
             {
                 if ((int)Console < 10)
                 {
-                    System.Windows.Forms.MessageBox.Show($"A fatal error occurred retrieving the {c} WADs database.\n\nException: {ex.GetType().FullName}\nMessage: {ex.Message}\n\nThe application will now shut down.", "Halt", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                    System.Windows.Forms.MessageBox.Show($"A fatal error occurred retrieving the {Console} WADs database.\n\nException: {ex.GetType().FullName}\nMessage: {ex.Message}\n\nThe application will now shut down.", "Halt", MessageBoxButtons.OK, MessageBoxIcon.Hand);
                     Environment.FailFast("Database initialization failed.");
                 }
                 else { channelData = new ChannelDatabase(); }
             }
+        }
+
+        public ProjectForm(Console c, string ROMpath = null)
+        {
+            Console = c;
+            LoadChannelDatabase();
 
             InitializeComponent();
 
@@ -303,7 +312,7 @@ namespace FriishProduce
         public ProjectForm(Project p)
         {
             Console = p.Console;
-            channelData = new ChannelDatabase(Console);
+            LoadChannelDatabase();
             ParentProject = p;
 
             InitializeComponent();
@@ -457,6 +466,7 @@ namespace FriishProduce
                 SaveDataTitle.Lines = Creator.SaveDataTitle;
                 TitleID.Text = Creator.TitleID;
                 TargetRegion.SelectedIndex = ParentProject.WADRegion;
+                InjectorsList.SelectedIndex = ParentProject.InjectionMethod;
                 LinkSaveData.Checked = ParentProject.LinkSaveDataTitle;
                 imageintpl.SelectedIndex = ParentProject.ImageOptions.Item1;
                 image_fit.Checked = ParentProject.ImageOptions.Item2;
@@ -526,7 +536,7 @@ namespace FriishProduce
             label11.Text = !string.IsNullOrWhiteSpace(PatchFile) ? Path.GetFileName(PatchFile) : Program.Lang.String("none");
             label11.Enabled = !string.IsNullOrWhiteSpace(PatchFile);
 
-            pictureBox1.Image = Preview.Banner(Console, BannerTitle.Text, (int)ReleaseYear.Value, (int)Players.Value, Img?.VCPic, (int)Creator.OrigRegion);
+            PreviewBanner();
             pictureBox2.Image = Preview.Icon(Img?.IconVCPic);
         }
 
@@ -534,10 +544,13 @@ namespace FriishProduce
 
         public string GetName()
         {
-            return Patch.Checked ? Path.GetFileNameWithoutExtension(PatchFile) + $" [{TitleID.Text.ToUpper()}]"
-                 : ROM?.Path != null ? Path.GetFileNameWithoutExtension(ROM?.Path) + $" [{TitleID.Text.ToUpper()}]"
+            string FILENAME = Patch.Checked ? Path.GetFileNameWithoutExtension(PatchFile) : Path.GetFileNameWithoutExtension(ROM?.Path);
+            string CHANNELNAME = ChannelTitle.Text;
+            string FULLNAME = System.Text.RegularExpressions.Regex.Replace(Creator.BannerTitle.Replace(": ", Environment.NewLine).Replace(" - ", Environment.NewLine), @"\((.*?)\)", "").Replace("\r\n", "\n").Replace("\n", " - ");
+            string TITLEID = TitleID.Text.ToUpper();
+            string PLATFORM = Console.ToString();
 
-                 : $"{Console} - {ChannelTitle.Text} [{TitleID.Text.ToUpper()}]";
+            return Properties.Settings.Default.default_save_as_filename.Replace("FILENAME", FILENAME).Replace("CHANNELNAME", CHANNELNAME).Replace("FULLNAME", FULLNAME).Replace("TITLEID", TITLEID).Replace("PLATFORM", PLATFORM);
         }
 
         private void isClosing(object sender, FormClosingEventArgs e)
@@ -643,7 +656,7 @@ namespace FriishProduce
 
             return;
 
-        Handled:
+            Handled:
             System.Media.SystemSounds.Beep.Play();
             e.Handled = true;
         }
@@ -779,10 +792,11 @@ namespace FriishProduce
 
                         // Check key files
                         // ****************
-                        /* else */ if ((item.FileName.StartsWith("startup") && Path.GetExtension(item.FileName) == ".html")
-                         || item.FileName == "standard.css"
-                         || item.FileName == "contents.css"
-                         || item.FileName == "vsscript.css") applicable++;
+                        /* else */
+                        if ((item.FileName.StartsWith("startup") && Path.GetExtension(item.FileName) == ".html")
+              || item.FileName == "standard.css"
+              || item.FileName == "contents.css"
+              || item.FileName == "vsscript.css") applicable++;
                     }
 
                     if (applicable >= 2 /* && hasFolder */)
@@ -1020,13 +1034,13 @@ namespace FriishProduce
             }
         }
 
-        protected void SetRegion()
+        protected libWiiSharp.Region GetRegionSetting()
         {
-            OutWAD.Region
-                = TargetRegion.SelectedItem.ToString() == Program.Lang.String("region_j") ? libWiiSharp.Region.Japan
-                : TargetRegion.SelectedItem.ToString() == Program.Lang.String("region_u") ? libWiiSharp.Region.USA
-                : TargetRegion.SelectedItem.ToString() == Program.Lang.String("region_e") ? libWiiSharp.Region.Europe
-                : TargetRegion.SelectedItem.ToString() == Program.Lang.String("region_k") ? libWiiSharp.Region.Korea
+            return TargetRegion.SelectedItem?.ToString() == Program.Lang.String("region_j") ? libWiiSharp.Region.Japan
+                : TargetRegion.SelectedItem?.ToString() == Program.Lang.String("region_u") ? libWiiSharp.Region.USA
+                : TargetRegion.SelectedItem?.ToString() == Program.Lang.String("region_e") ? libWiiSharp.Region.Europe
+                : TargetRegion.SelectedItem?.ToString() == Program.Lang.String("region_k") ? libWiiSharp.Region.Korea
+                : TargetRegion.SelectedIndex == 0 && OutWAD != null ? OutWAD.Region
                 : libWiiSharp.Region.Free;
         }
 
@@ -1072,7 +1086,6 @@ namespace FriishProduce
                     case Console.SMCD:
                     case Console.PSX:
                     case Console.RPGM:
-                        SetRegion();
                         ForwarderCreator();
                         break;
 
@@ -1086,17 +1099,24 @@ namespace FriishProduce
 
                 // Banner
                 // *******
-                BannerHelper.Modify(OutWAD, Console, OutWAD.Region, Creator.BannerTitle, Creator.BannerYear, Creator.BannerPlayers);
+                BannerHelper.Modify
+                (
+                    OutWAD,
+                    Console,
+                    isVCMode ? OutWAD.Region : (int)BannerRegion() switch { 1 => libWiiSharp.Region.Japan, 2 => libWiiSharp.Region.Korea, 3 => libWiiSharp.Region.Europe, _ => libWiiSharp.Region.USA },
+                    Creator.BannerTitle,
+                    Creator.BannerYear,
+                    Creator.BannerPlayers
+                );
+                SoundHelper.ReplaceSound(OutWAD, Properties.Resources.Sound_WiiVC);
                 if (Img.VCPic != null) Img.ReplaceBanner(OutWAD);
 
-                // Other WAD settings to be changed
+                // Change WAD region
                 // *******
                 if (TargetRegion.SelectedIndex > 0)
-                    SetRegion();
+                    OutWAD.Region = GetRegionSetting();
 
-                SoundHelper.ReplaceSound(OutWAD, Properties.Resources.Sound_WiiVC);
-
-                // Remaining ones done by WAD creator helper, which will save to a new file
+                // Other WAD settings to be changed done by WAD creator helper, which will save to a new file
                 // *******
                 Creator.MakeWAD(OutWAD);
 
@@ -1557,7 +1577,7 @@ namespace FriishProduce
             End:
             LinkSaveDataTitle();
             ResetContentOptions();
-            pictureBox1.Image = Preview.Banner(Console, BannerTitle.Text, (int)ReleaseYear.Value, (int)Players.Value, Img?.VCPic, (int)Creator.OrigRegion);
+            PreviewBanner();
         }
 
         private int emuVer
@@ -1744,18 +1764,57 @@ namespace FriishProduce
 
         private void InjectorsList_SelectedIndexChanged(object sender, EventArgs e)
         {
+            PreviewBanner();
             ResetContentOptions();
             if (groupBox3.Enabled) CheckExport();
         }
 
         private void RegionsList_SelectedIndexChanged(object sender, EventArgs e)
         {
+            PreviewBanner();
             if (groupBox4.Enabled) CheckExport();
         }
 
         private void ToggleSwitchChanged(object sender, EventArgs e)
         {
             if (sender == toggleSwitch1) toggleSwitchL1.Text = toggleSwitch1.Checked ? "vWii (Wii U)" : "Wii";
+        }
+
+        private Preview.Language BannerRegion()
+        {
+            var lang = isVCMode ? Preview.Language.Auto : GetRegionSetting() switch
+            {
+                libWiiSharp.Region.Japan => Preview.Language.Japanese,
+                libWiiSharp.Region.Korea => Preview.Language.Korean,
+                libWiiSharp.Region.Europe => Preview.Language.Europe,
+                libWiiSharp.Region.USA => Preview.Language.America,
+                _ => Preview.Language.Auto
+            };
+
+            if (lang == Preview.Language.Auto) lang = (int)Creator.OrigRegion switch { 1 => Preview.Language.Japanese, 2 => Preview.Language.Korean, 3 => Preview.Language.Europe, _ => Preview.Language.America };
+            if (!isVCMode && Program.Lang.Current.StartsWith("ja")) lang = Preview.Language.Japanese;
+            if (!isVCMode && Program.Lang.Current.StartsWith("ko")) lang = Preview.Language.Korean;
+
+            if (lang != 0 && lang != Preview.Language.Europe && Console == Console.C64) lang = 0;
+            else if (lang != Preview.Language.Japanese && Console == Console.MSX) lang = Preview.Language.Japanese;
+            else if (lang == Preview.Language.Korean && Console == Console.SMD) lang = Preview.Language.Europe;
+            else if (lang == Preview.Language.Korean && (int)Console >= 3) lang = 0;
+
+            return lang;
+        }
+
+        protected void PreviewBanner()
+        {
+
+            pictureBox1.Image = Preview.Banner
+            (
+                Console,
+                BannerTitle.Text,
+                (int)ReleaseYear.Value,
+                (int)Players.Value,
+                Img?.VCPic,
+                BannerRegion()
+            );
         }
     }
 }

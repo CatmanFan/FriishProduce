@@ -110,6 +110,9 @@ namespace FriishProduce
             this.flash_vff_cache_size_list = new System.Windows.Forms.ComboBox();
             this.LanguageList = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.default_save_as_filename = new System.Windows.Forms.GroupBox();
+            this.default_save_as_parameters = new System.Windows.Forms.Label();
+            this.default_save_as_filename_tb = new System.Windows.Forms.TextBox();
             this.use_custom_database = new System.Windows.Forms.CheckBox();
             this.vc_n64_options.SuspendLayout();
             this.bottomPanel1.SuspendLayout();
@@ -140,6 +143,7 @@ namespace FriishProduce
             this.flash_quality.SuspendLayout();
             this.flash_save_data.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.default_save_as_filename.SuspendLayout();
             this.SuspendLayout();
             // 
             // lngList
@@ -784,12 +788,33 @@ namespace FriishProduce
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.default_save_as_filename);
             this.panel2.Controls.Add(this.use_custom_database);
             this.panel2.Controls.Add(this.autolink_save_data);
             this.panel2.Controls.Add(this.image_interpolation_mode);
             this.panel2.Controls.Add(this.retrieve_gamedata_online);
             resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
+            // 
+            // default_save_as_filename
+            // 
+            this.default_save_as_filename.Controls.Add(this.default_save_as_parameters);
+            this.default_save_as_filename.Controls.Add(this.default_save_as_filename_tb);
+            resources.ApplyResources(this.default_save_as_filename, "default_save_as_filename");
+            this.default_save_as_filename.Name = "default_save_as_filename";
+            this.default_save_as_filename.TabStop = false;
+            this.default_save_as_filename.Tag = "default_save_as_filename";
+            // 
+            // default_save_as_parameters
+            // 
+            resources.ApplyResources(this.default_save_as_parameters, "default_save_as_parameters");
+            this.default_save_as_parameters.Name = "default_save_as_parameters";
+            this.default_save_as_parameters.Tag = "default_save_as_parameters";
+            // 
+            // default_save_as_filename_tb
+            // 
+            resources.ApplyResources(this.default_save_as_filename_tb, "default_save_as_filename_tb");
+            this.default_save_as_filename_tb.Name = "default_save_as_filename_tb";
             // 
             // use_custom_database
             // 
@@ -869,6 +894,8 @@ namespace FriishProduce
             this.flash_save_data.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.default_save_as_filename.ResumeLayout(false);
+            this.default_save_as_filename.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -955,5 +982,8 @@ namespace FriishProduce
         private System.Windows.Forms.ComboBox flash_strap_reminder_list;
         private System.Windows.Forms.Label vc_n64_romc_type;
         private System.Windows.Forms.CheckBox use_custom_database;
+        private System.Windows.Forms.GroupBox default_save_as_filename;
+        private System.Windows.Forms.TextBox default_save_as_filename_tb;
+        private System.Windows.Forms.Label default_save_as_parameters;
     }
 }

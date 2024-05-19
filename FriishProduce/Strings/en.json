@@ -125,6 +125,8 @@
 			"autolink_save_data": "Link save data title automatically with banner and channel names",
 			"reset_all_dialogs": "Reset all dialogs",
 			"use_custom_database": "Use custom WAD database file",
+			"default_save_as_filename": "Default filename for exported WADs",
+			"default_save_as_parameters": "Replaceable parameters:",
 		},
 		"projectform": {
 			"tab_main_details": "Main details",

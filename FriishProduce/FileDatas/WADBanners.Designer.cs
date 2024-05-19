@@ -63,9 +63,9 @@ namespace FriishProduce.FileDatas {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] BNR_c64_eu {
+        internal static byte[] c64_eu {
             get {
-                object obj = ResourceManager.GetObject("BNR_c64_eu", resourceCulture);
+                object obj = ResourceManager.GetObject("c64_eu", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace FriishProduce.FileDatas {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] BNR_c64_us {
+        internal static byte[] c64_us {
             get {
-                object obj = ResourceManager.GetObject("BNR_c64_us", resourceCulture);
+                object obj = ResourceManager.GetObject("c64_us", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace FriishProduce.FileDatas {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] BNR_flash {
+        internal static byte[] flash {
             get {
-                object obj = ResourceManager.GetObject("BNR_flash", resourceCulture);
+                object obj = ResourceManager.GetObject("flash", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -93,9 +93,9 @@ namespace FriishProduce.FileDatas {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] BNR_gen {
+        internal static byte[] gen {
             get {
-                object obj = ResourceManager.GetObject("BNR_gen", resourceCulture);
+                object obj = ResourceManager.GetObject("gen", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -103,9 +103,9 @@ namespace FriishProduce.FileDatas {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] BNR_jp_fc {
+        internal static byte[] jp_fc {
             get {
-                object obj = ResourceManager.GetObject("BNR_jp_fc", resourceCulture);
+                object obj = ResourceManager.GetObject("jp_fc", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -113,9 +113,9 @@ namespace FriishProduce.FileDatas {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] BNR_jp_msx1 {
+        internal static byte[] jp_msx1 {
             get {
-                object obj = ResourceManager.GetObject("BNR_jp_msx1", resourceCulture);
+                object obj = ResourceManager.GetObject("jp_msx1", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -123,9 +123,9 @@ namespace FriishProduce.FileDatas {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] BNR_jp_msx2 {
+        internal static byte[] jp_msx2 {
             get {
-                object obj = ResourceManager.GetObject("BNR_jp_msx2", resourceCulture);
+                object obj = ResourceManager.GetObject("jp_msx2", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -133,9 +133,9 @@ namespace FriishProduce.FileDatas {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] BNR_jp_n64 {
+        internal static byte[] jp_n64 {
             get {
-                object obj = ResourceManager.GetObject("BNR_jp_n64", resourceCulture);
+                object obj = ResourceManager.GetObject("jp_n64", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -143,9 +143,9 @@ namespace FriishProduce.FileDatas {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] BNR_jp_neogeo {
+        internal static byte[] jp_neogeo {
             get {
-                object obj = ResourceManager.GetObject("BNR_jp_neogeo", resourceCulture);
+                object obj = ResourceManager.GetObject("jp_neogeo", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -153,9 +153,9 @@ namespace FriishProduce.FileDatas {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] BNR_jp_pce {
+        internal static byte[] jp_pce {
             get {
-                object obj = ResourceManager.GetObject("BNR_jp_pce", resourceCulture);
+                object obj = ResourceManager.GetObject("jp_pce", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -163,9 +163,29 @@ namespace FriishProduce.FileDatas {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] BNR_jp_sfc {
+        internal static byte[] jp_rpgm {
             get {
-                object obj = ResourceManager.GetObject("BNR_jp_sfc", resourceCulture);
+                object obj = ResourceManager.GetObject("jp_rpgm", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap jp_rpgm_banner {
+            get {
+                object obj = ResourceManager.GetObject("jp_rpgm_banner", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] jp_sfc {
+            get {
+                object obj = ResourceManager.GetObject("jp_sfc", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -173,9 +193,9 @@ namespace FriishProduce.FileDatas {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] BNR_jp_smd {
+        internal static byte[] jp_smd {
             get {
-                object obj = ResourceManager.GetObject("BNR_jp_smd", resourceCulture);
+                object obj = ResourceManager.GetObject("jp_smd", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -183,9 +203,9 @@ namespace FriishProduce.FileDatas {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] BNR_jp_sms {
+        internal static byte[] jp_sms {
             get {
-                object obj = ResourceManager.GetObject("BNR_jp_sms", resourceCulture);
+                object obj = ResourceManager.GetObject("jp_sms", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -193,9 +213,9 @@ namespace FriishProduce.FileDatas {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] BNR_kr_fc {
+        internal static byte[] kr_fc {
             get {
-                object obj = ResourceManager.GetObject("BNR_kr_fc", resourceCulture);
+                object obj = ResourceManager.GetObject("kr_fc", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -203,9 +223,9 @@ namespace FriishProduce.FileDatas {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] BNR_kr_n64 {
+        internal static byte[] kr_n64 {
             get {
-                object obj = ResourceManager.GetObject("BNR_kr_n64", resourceCulture);
+                object obj = ResourceManager.GetObject("kr_n64", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -213,9 +233,9 @@ namespace FriishProduce.FileDatas {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] BNR_kr_sfc {
+        internal static byte[] kr_sfc {
             get {
-                object obj = ResourceManager.GetObject("BNR_kr_sfc", resourceCulture);
+                object obj = ResourceManager.GetObject("kr_sfc", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -223,9 +243,9 @@ namespace FriishProduce.FileDatas {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] BNR_n64 {
+        internal static byte[] n64 {
             get {
-                object obj = ResourceManager.GetObject("BNR_n64", resourceCulture);
+                object obj = ResourceManager.GetObject("n64", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -233,9 +253,9 @@ namespace FriishProduce.FileDatas {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] BNR_neogeo {
+        internal static byte[] neogeo {
             get {
-                object obj = ResourceManager.GetObject("BNR_neogeo", resourceCulture);
+                object obj = ResourceManager.GetObject("neogeo", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -243,9 +263,9 @@ namespace FriishProduce.FileDatas {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] BNR_nes {
+        internal static byte[] nes {
             get {
-                object obj = ResourceManager.GetObject("BNR_nes", resourceCulture);
+                object obj = ResourceManager.GetObject("nes", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -253,9 +273,39 @@ namespace FriishProduce.FileDatas {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] BNR_rpgm {
+        internal static byte[] rpgm {
             get {
-                object obj = ResourceManager.GetObject("BNR_rpgm", resourceCulture);
+                object obj = ResourceManager.GetObject("rpgm", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap rpgm_banner {
+            get {
+                object obj = ResourceManager.GetObject("rpgm_banner", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap rpgm_icon {
+            get {
+                object obj = ResourceManager.GetObject("rpgm_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] smd {
+            get {
+                object obj = ResourceManager.GetObject("smd", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -263,9 +313,9 @@ namespace FriishProduce.FileDatas {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] BNR_smd {
+        internal static byte[] sms {
             get {
-                object obj = ResourceManager.GetObject("BNR_smd", resourceCulture);
+                object obj = ResourceManager.GetObject("sms", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -273,9 +323,9 @@ namespace FriishProduce.FileDatas {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] BNR_sms {
+        internal static byte[] snes {
             get {
-                object obj = ResourceManager.GetObject("BNR_sms", resourceCulture);
+                object obj = ResourceManager.GetObject("snes", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -283,49 +333,9 @@ namespace FriishProduce.FileDatas {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] BNR_snes {
+        internal static byte[] tg16 {
             get {
-                object obj = ResourceManager.GetObject("BNR_snes", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] BNR_tg16 {
-            get {
-                object obj = ResourceManager.GetObject("BNR_tg16", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] ICN_rpgm {
-            get {
-                object obj = ResourceManager.GetObject("ICN_rpgm", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] TPL_jp_rpgm {
-            get {
-                object obj = ResourceManager.GetObject("TPL_jp_rpgm", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] TPL_rpgm {
-            get {
-                object obj = ResourceManager.GetObject("TPL_rpgm", resourceCulture);
+                object obj = ResourceManager.GetObject("tg16", resourceCulture);
                 return ((byte[])(obj));
             }
         }

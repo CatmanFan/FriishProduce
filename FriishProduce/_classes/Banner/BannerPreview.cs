@@ -8,6 +8,15 @@ namespace FriishProduce
 {
     public static class Preview
     {
+        public enum Language
+        {
+            America,
+            Japanese,
+            Korean,
+            Europe,
+            Auto
+        }
+
         private static readonly Color[][] ColorSchemes = BannerSchemes.List;
 
         #region Font Functions
@@ -37,7 +46,7 @@ namespace FriishProduce
 
         #endregion
 
-        public static Bitmap Banner(Console console, string text, int year, int players, Bitmap img, int lang)
+        public static Bitmap Banner(Console console, string text, int year, int players, Bitmap img, Language lang)
         {
             Bitmap bmp = new Bitmap(650, 260);
             if (img == null)
@@ -51,11 +60,11 @@ namespace FriishProduce
             switch (console)
             {
                 case Console.NES:
-                    target = lang == 1 || lang == 2 ? 1 : 0;
+                    target = lang switch { Language.Japanese or Language.Korean => 1, _ => 0 };
                     break;
 
                 case Console.SNES:
-                    target = lang == 1 || lang == 2 ? 3 : 2;
+                    target = lang switch { Language.Japanese or Language.Korean => 3, _ => 2 };
                     break;
 
                 case Console.N64:
@@ -72,7 +81,7 @@ namespace FriishProduce
 
                 case Console.PCE:
                 case Console.PCECD:
-                    target = lang == 1 || lang == 2 ? 8 : 7;
+                    target = lang switch { Language.Japanese or Language.Korean => 8, _ => 7 };
                     break;
 
                 case Console.NEO:
@@ -98,8 +107,8 @@ namespace FriishProduce
 
             var leftTextColor = target == 2 ? Color.Black : target == 8 ? Color.FromArgb(90, 90, 90) : ColorSchemes[target][0].GetBrightness() < 0.8 ? Color.White : Color.FromArgb(50, 50, 50);
 
-            string released = lang == 1 ? "{0}年発売"
-                             : lang == 2 ? "일본판 발매년도\r\n{0}년"
+            string released = lang == Language.Japanese ? "{0}年発売"
+                             : lang == Language.Korean ? "일본판 발매년도\r\n{0}년"
                              : Program.Lang.Current == "nl" ? "Release: {0}"
                              : Program.Lang.Current == "es" ? "Año: {0}"
                              : Program.Lang.Current == "it" ? "Pubblicato: {0}"
@@ -107,8 +116,8 @@ namespace FriishProduce
                              : Program.Lang.Current == "de" ? "Erschienen: {0}"
                              : "Released: {0}";
 
-            string numPlayers = lang == 1 ? "プレイ人数\r\n{0}人"
-                              : lang == 2 ? "플레이 인원수\r\n{0}명"
+            string numPlayers = lang == Language.Japanese ? "プレイ人数\r\n{0}人"
+                              : lang == Language.Korean ? "플레이 인원수\r\n{0}명"
                               : Program.Lang.Current == "nl" ? "{0} speler(s)"
                               : Program.Lang.Current == "es" ? "Jugadores: {0}"
                               : Program.Lang.Current == "it" ? "Giocatori: {0}"
@@ -153,7 +162,7 @@ namespace FriishProduce
                 // Players
                 // ********
                 g.DrawString(
-                    string.Format(numPlayers, $"{1}{(players <= 1 ? null : "-" + players)}").Replace("-", lang == 1 ? "～" : "-"),
+                    string.Format(numPlayers, $"{1}{(players <= 1 ? null : "-" + players)}").Replace("-", lang == Language.Japanese ? "～" : "-"),
                     new Font(Font(), (float)9.25),
                     new SolidBrush(leftTextColor),
                     10,
@@ -184,15 +193,15 @@ namespace FriishProduce
                 switch (console)
                 {
                     case Console.NES:
-                        cName = lang switch { 1 => "ファミリーコンピュータ", 2 => "패밀리컴퓨터", _ => "NINTENDO ENTERTAINMENT SYSTEM" };
+                        cName = lang switch { Language.Japanese => "ファミリーコンピュータ", Language.Korean => "패밀리컴퓨터", _ => "NINTENDO ENTERTAINMENT SYSTEM" };
                         break;
 
                     case Console.SNES:
-                        cName = lang switch { 1 => "スーパーファミコン", 2 => "슈퍼 패미컴", _ => "SUPER NINTENDO ENTERTAINMENT SYSTEM" };
+                        cName = lang switch { Language.Japanese => "スーパーファミコン", Language.Korean => "슈퍼 패미컴", _ => "SUPER NINTENDO ENTERTAINMENT SYSTEM" };
                         break;
 
                     case Console.N64:
-                        cName = lang == 2 ? "닌텐도 64" : "NINTENDO64";
+                        cName = lang switch { Language.Korean => "닌텐도 64", _ => "NINTENDO64" };
                         break;
 
                     case Console.SMS:
@@ -205,7 +214,7 @@ namespace FriishProduce
 
                     case Console.PCE:
                     case Console.PCECD:
-                        cName = lang == 1 || lang == 2 ? "PC ENGINE" : "TURBO GRAFX16";
+                        cName = lang switch { Language.Japanese or Language.Korean => "PC ENGINE", _ => "TURBO GRAFX16" };
                         break;
 
                     case Console.NEO:

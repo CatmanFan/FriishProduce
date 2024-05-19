@@ -280,6 +280,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FileDatas\WADBanners.resx">
       <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
       <LastGenOutput>WADBanners.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
@@ -432,31 +433,31 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>VC_SEGA.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Resources\banners\bnr\c64_eu.bnr" />
-    <None Include="Resources\banners\bnr\c64_us.bnr" />
-    <None Include="Resources\banners\bnr\flash.bnr" />
-    <None Include="Resources\banners\bnr\gen.bnr" />
-    <None Include="Resources\banners\bnr\jp_fc.bnr" />
-    <None Include="Resources\banners\bnr\jp_msx1.bnr" />
-    <None Include="Resources\banners\bnr\jp_msx2.bnr" />
-    <None Include="Resources\banners\bnr\jp_n64.bnr" />
-    <None Include="Resources\banners\bnr\jp_neogeo.bnr" />
-    <None Include="Resources\banners\bnr\jp_pce.bnr" />
-    <None Include="Resources\banners\bnr\jp_sfc.bnr" />
-    <None Include="Resources\banners\bnr\jp_smd.bnr" />
-    <None Include="Resources\banners\bnr\jp_sms.bnr" />
-    <None Include="Resources\banners\bnr\kr_fc.bnr" />
-    <None Include="Resources\banners\bnr\kr_n64.bnr" />
-    <None Include="Resources\banners\bnr\kr_sfc.bnr" />
-    <None Include="Resources\banners\bnr\n64.bnr" />
-    <None Include="Resources\banners\bnr\neogeo.bnr" />
-    <None Include="Resources\banners\bnr\nes.bnr" />
-    <None Include="Resources\banners\bnr\rpgm.bnr" />
-    <None Include="Resources\banners\bnr\smd.bnr" />
-    <None Include="Resources\banners\bnr\sms.bnr" />
-    <None Include="Resources\banners\bnr\snes.bnr" />
-    <None Include="Resources\banners\bnr\tg16.bnr" />
-    <None Include="Resources\banners\icn\rpgm.icn" />
+    <None Include="Resources\banners\c64_eu.app" />
+    <None Include="Resources\banners\c64_us.app" />
+    <None Include="Resources\banners\flash.app" />
+    <None Include="Resources\banners\gen.app" />
+    <None Include="Resources\banners\jp_fc.app" />
+    <None Include="Resources\banners\jp_msx1.app" />
+    <None Include="Resources\banners\jp_msx2.app" />
+    <None Include="Resources\banners\jp_n64.app" />
+    <None Include="Resources\banners\jp_neogeo.app" />
+    <None Include="Resources\banners\jp_pce.app" />
+    <None Include="Resources\banners\jp_rpgm.app" />
+    <None Include="Resources\banners\jp_sfc.app" />
+    <None Include="Resources\banners\jp_smd.app" />
+    <None Include="Resources\banners\jp_sms.app" />
+    <None Include="Resources\banners\kr_fc.app" />
+    <None Include="Resources\banners\kr_n64.app" />
+    <None Include="Resources\banners\kr_sfc.app" />
+    <None Include="Resources\banners\n64.app" />
+    <None Include="Resources\banners\neogeo.app" />
+    <None Include="Resources\banners\nes.app" />
+    <None Include="Resources\banners\rpgm.app" />
+    <None Include="Resources\banners\smd.app" />
+    <None Include="Resources\banners\sms.app" />
+    <None Include="Resources\banners\snes.app" />
+    <None Include="Resources\banners\tg16.app" />
     <None Include="Resources\banners\tpl\jp_rpgm.tpl" />
     <None Include="Resources\banners\tpl\rpgm.tpl" />
     <None Include="Resources\forwarder_emus\easyrpg.dol" />
@@ -499,6 +500,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\banners\tpl\rpgm_icon.png" />
+    <None Include="Resources\banners\tpl\rpgm.png" />
+    <None Include="Resources\banners\tpl\jp_rpgm.png" />
     <None Include="Resources\icons\consoles\RPG2003.ico" />
     <None Include="Resources\apps\gbalzss.exe" />
     <None Include="Resources\icons\folder-horizontal-open.png" />

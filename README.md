@@ -24,8 +24,9 @@ This injector bypasses other third-party assets (such as Common-Key.bin, HowardC
     * **Nintendo Entertainment System (NES) / Famicom**
     * **Super Nintendo Entertainment System (SNES) / Super Famicom**
     * **Nintendo 64**
-    * **SEGA Master System** & **SEGA Mega Drive / Genesis**
-    * **NEC TurboGrafx-16 / PC Engine**
+    * **SEGA Master System**
+    * **SEGA Mega Drive / Genesis**
+    * **NEC TurboGrafx-16 / PC Engine (HuCARD)**
     * **SNK NEO-GEO**
     * **Microsoft MSX / MSX2**
   * Others:
@@ -40,8 +41,9 @@ See **[here](https://github.com/CatmanFan/FriishProduce/wiki/FriishProduce-v1.0)
 ---
 
 ## To-Do
-- [ ] Complete RPG Maker banner and icon (forwarder is confirmed working otherwise)
-- [ ] Combine all .bnr and .icn WAD banner files to .app
+- [X] Complete RPG Maker banner and icon (forwarder is confirmed working otherwise)
+- [X] Combine all .bnr and .icn WAD banner files to .app
+- [ ] More proper file format for RPG Maker games, and tidy up some code and formatting/form design
 * Other VC injection support:
   * Commodore 64 (needs [Custom Frodo](https://gbatemp.net/threads/custom-frodo-for-c64-vc-injection.102356/))
   * TurboGrafx-16 CD (needs several programs to convert ISO to injectable format)
@@ -49,6 +51,7 @@ See **[here](https://github.com/CatmanFan/FriishProduce/wiki/FriishProduce-v1.0)
 * Optional:
   - [ ] Restructure and clean code
   - [ ] Probably reorganize consoles into their own folders?
+  - [ ] Create Korean-language banner files for other platforms?
 
 ## Credits
 This program uses the following third-party components and apps:

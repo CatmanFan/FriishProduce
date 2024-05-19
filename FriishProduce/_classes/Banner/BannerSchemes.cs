@@ -214,11 +214,11 @@ namespace FriishProduce
                                     Color.FromArgb(225, 225, 225),
                                     Color.FromArgb(175, 175, 175),
 
-                                    Color.FromArgb(100, 100, 100),
+                                    Color.FromArgb(50, 95, 40),
 
-                                    Color.FromArgb(155, 50, 0),
-                                    Color.FromArgb(205, 120, 0),
-                                    Color.FromArgb(55, 30, 0)
+                                    Color.FromArgb(105, 165, 55),
+                                    Color.FromArgb(155, 205, 100),
+                                    Color.FromArgb(5, 30, 0)
                                 },
         };
 

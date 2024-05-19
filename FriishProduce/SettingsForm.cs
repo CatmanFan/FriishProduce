@@ -92,6 +92,7 @@ namespace FriishProduce
             gamedata_source_image_list.SelectedIndex = Default.gamedata_source_image;
 
             retrieve_gamedata_online.Text = Program.Lang.String(retrieve_gamedata_online.Name, "mainform") != "undefined" ? Program.Lang.String(retrieve_gamedata_online.Name, "mainform") : Program.Lang.String(retrieve_gamedata_online.Name, Name);
+            default_save_as_parameters.Text = Program.Lang.String(default_save_as_parameters.Name, Name) + Environment.NewLine + "FILENAME, CHANNELNAME, FULLNAME, TITLEID, PLATFORM";
 
             flash_save_data_enable.Text = vc_pce_backupram.Text = vc_sega_save_sram.Text = Program.Lang.String("save_data_enable", "projectform");
 
@@ -179,6 +180,7 @@ namespace FriishProduce
                 Default.Save();
             }
             #endregion
+            default_save_as_filename_tb.Text            = Default.default_save_as_filename;
 
             // NES
             vc_nes_palettelist.SelectedIndex            = int.Parse(VC_NES.Default.palette);
@@ -252,6 +254,11 @@ namespace FriishProduce
                             use_custom_database.Checked = false;
                         }
                     }
+                    else
+                    {
+                        Default.custom_database = null;
+                        use_custom_database.Checked = false;
+                    }
                 }
 
             }
@@ -280,6 +287,7 @@ namespace FriishProduce
             Default.gamedata_source_image               = gamedata_source_image_list.SelectedIndex;
             Default.image_interpolation                 = image_interpolation_mode_list.SelectedIndex;
             Default.auto_retrieve_game_data             = auto_retrieve_gamedata_online.Checked;
+            Default.default_save_as_filename            = default_save_as_filename_tb.Text;
             Default.Save();
             FORWARDER.Default.root_storage_device       = FStorage_SD.Checked ? "SD" : "USB";
             FORWARDER.Default.nand_loader               = toggleSwitch1.Checked ? "vWii" : "Wii";
@@ -369,34 +377,43 @@ namespace FriishProduce
         {
             System.Media.SystemSounds.Beep.Play();
 
-            /* var WADs = new Dictionary<string, Console>()
+            /* var WADs = new List<(string ID, Console c, string file)>()
             {
-                // { "FCWP", Console.NES }, // SMB3
-                // { "FCWJ", Console.NES },
-                // { "FCWQ", Console.NES },
-                // { "JBDP", Console.SNES }, // DKC2
-                // { "JBDJ", Console.SNES },
-                // { "JBDT", Console.SNES },
-                // { "NAAP", Console.N64 }, // SM64
-                // { "NAAJ", Console.N64 },
-                // { "NABT", Console.N64 }, // MK64
-                { "PAAP", Console.PCE },
-                { "PAGJ", Console.PCE },
-                // { "EAJP", Console.NEO },
-                // { "EAJJ", Console.NEO },
-                // { "C9YE", Console.C64 },
-                // { "C9YP", Console.C64 },
-                // { "XAGJ", Console.MSX },
-                // { "XAPJ", Console.MSX },
-                // { "WNAP", Console.Flash }
+                ("FCWP", Console.NES, "nes"),
+                ("FCWJ", Console.NES, "jp_fc"),
+                ("FCWQ", Console.NES, "kr_fc"),
+                ("JBDP", Console.SNES, "snes"),
+                ("JBDJ", Console.SNES, "jp_sfc"),
+                ("JBDT", Console.SNES, "kr_sfc"),
+                ("NAAP", Console.N64, "n64"),
+                ("NAAJ", Console.N64, "jp_n64"),
+                ("NABT", Console.N64, "kr_n64"),
+                ("LAGP", Console.SMS, "sms"),
+                ("LAGJ", Console.SMS, "jp_sms"),
+                ("MAPE", Console.SMD, "gen"),
+                ("MAPP", Console.SMD, "smd"),
+                ("MAPJ", Console.SMD, "jp_smd"),
+                ("PAAP", Console.PCE, "tg16"),
+                ("PAGJ", Console.PCE, "jp_pce"),
+                ("EAJP", Console.NEO, "neogeo"),
+                ("EAJJ", Console.NEO, "jp_neogeo"),
+                ("C9YE", Console.C64, "us_c64"),
+                ("C9YP", Console.C64, "eu_c64"),
+                ("XAGJ", Console.MSX, "jp_msx1"),
+                ("XAPJ", Console.MSX, "jp_msx2"),
+                ("WNAP", Console.Flash, "flash")
             };
 
             foreach (var item in WADs)
-                BannerHelper.ExportBanner(item.Key, item.Value);
+            {
+                BannerHelper.ExportBanner(item.ID, item.c, item.file);
+                System.Media.SystemSounds.Beep.Play();
+            }
 
-            System.Media.SystemSounds.Beep.Play(); */
+            System.Media.SystemSounds.Asterisk.Play(); */
 
-            BannerHelper.ModifyBanner("RPG MAKER", "n64.bnr", "rpgm.bnr", 15);
+            BannerHelper.ModifyBanner("RPG MAKER", FileDatas.WADBanners.n64, "rpgm.app", 15, FileDatas.WADBanners.rpgm_banner, FileDatas.WADBanners.rpgm_icon);
+            BannerHelper.ModifyBanner("ＲＰＧツクール", FileDatas.WADBanners.jp_n64, "jp_rpgm.app", 15, FileDatas.WADBanners.jp_rpgm_banner, FileDatas.WADBanners.rpgm_icon);
         }
 
         private void TreeView_AfterSelect(object sender, TreeViewEventArgs e)
