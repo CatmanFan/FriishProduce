@@ -92,7 +92,7 @@ namespace FriishProduce
             gamedata_source_image_list.SelectedIndex = Default.gamedata_source_image;
 
             retrieve_gamedata_online.Text = Program.Lang.String(retrieve_gamedata_online.Name, "mainform") != "undefined" ? Program.Lang.String(retrieve_gamedata_online.Name, "mainform") : Program.Lang.String(retrieve_gamedata_online.Name, Name);
-            default_save_as_parameters.Text = Program.Lang.String(default_save_as_parameters.Name, Name) + Environment.NewLine + "FILENAME, CHANNELNAME, FULLNAME, TITLEID, PLATFORM";
+            default_save_as_parameters.Font = new Font(default_save_as_parameters.Font, FontStyle.Bold);
 
             flash_save_data_enable.Text = vc_pce_backupram.Text = vc_sega_save_sram.Text = Program.Lang.String("save_data_enable", "projectform");
 

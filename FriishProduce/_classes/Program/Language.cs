@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Text.Json;
+using System.Threading;
+using System.Windows.Forms;
 
 namespace FriishProduce
 {
@@ -102,7 +100,7 @@ namespace FriishProduce
                 }
             }
 
-        Set:
+            Set:
             if (code.ToLower() != "sys")
             {
                 bool set = false;
@@ -207,7 +205,7 @@ namespace FriishProduce
             if (!activated && StringCheck(name + "0", sectionName)) return String(name + "0", sectionName);
             return String(name, sectionName);
         }
-        
+
         /// <summary>
         /// Returns an array of localized strings corresponding to the name input plus a number affixed to the end for each entry. A maximum of 100 entries is allowed.
         /// </summary>
@@ -247,7 +245,7 @@ namespace FriishProduce
 
             bool isEnglish = false;
 
-        Top:
+            Top:
             var target = isEnglish ? _english : _current;
 
             try

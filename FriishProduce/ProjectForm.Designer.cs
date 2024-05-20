@@ -65,10 +65,11 @@ namespace FriishProduce
             this.TargetRegion = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.TitleID = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
             this.Random = new System.Windows.Forms.PictureBox();
             this.ChannelTitle = new System.Windows.Forms.TextBox();
             this.short_channel_name = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.software_name = new System.Windows.Forms.Label();
             this.filename = new System.Windows.Forms.Label();
@@ -91,7 +92,6 @@ namespace FriishProduce
             this.baseName = new System.Windows.Forms.Label();
             this.BrowsePatch = new System.Windows.Forms.OpenFileDialog();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.BrowseManual = new Ookii.Dialogs.WinForms.VistaFolderBrowserDialog();
             this.groupBox6.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -102,6 +102,7 @@ namespace FriishProduce
             this.groupBox9.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Random)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Players)).BeginInit();
@@ -109,7 +110,6 @@ namespace FriishProduce
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BaseRegion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // BaseRegionList
@@ -343,10 +343,10 @@ namespace FriishProduce
             this.groupBox4.Controls.Add(this.TargetRegion);
             this.groupBox4.Controls.Add(this.label13);
             this.groupBox4.Controls.Add(this.TitleID);
-            this.groupBox4.Controls.Add(this.label15);
             this.groupBox4.Controls.Add(this.Random);
             this.groupBox4.Controls.Add(this.ChannelTitle);
             this.groupBox4.Controls.Add(this.short_channel_name);
+            this.groupBox4.Controls.Add(this.label15);
             resources.ApplyResources(this.groupBox4, "groupBox4");
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.TabStop = false;
@@ -387,11 +387,6 @@ namespace FriishProduce
             this.TitleID.Name = "TitleID";
             this.TitleID.TextChanged += new System.EventHandler(this.TextBox_Changed);
             // 
-            // label15
-            // 
-            resources.ApplyResources(this.label15, "label15");
-            this.label15.Name = "label15";
-            // 
             // Random
             // 
             this.Random.Image = global::FriishProduce.Properties.Resources.arrow_circle_double;
@@ -411,6 +406,18 @@ namespace FriishProduce
             resources.ApplyResources(this.short_channel_name, "short_channel_name");
             this.short_channel_name.Name = "short_channel_name";
             this.short_channel_name.Tag = "short_channel_name";
+            // 
+            // label15
+            // 
+            resources.ApplyResources(this.label15, "label15");
+            this.label15.Name = "label15";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.pictureBox2, "pictureBox2");
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.TabStop = false;
             // 
             // groupBox1
             // 
@@ -615,13 +622,6 @@ namespace FriishProduce
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.TabStop = false;
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            resources.ApplyResources(this.pictureBox2, "pictureBox2");
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.TabStop = false;
-            // 
             // ProjectForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
@@ -630,10 +630,10 @@ namespace FriishProduce
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.groupBox6);
-            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox2);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -659,6 +659,7 @@ namespace FriishProduce
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Random)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox5.ResumeLayout(false);
@@ -669,8 +670,8 @@ namespace FriishProduce
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BaseRegion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

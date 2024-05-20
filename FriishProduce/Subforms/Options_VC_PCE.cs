@@ -1,6 +1,6 @@
-﻿using System;
+﻿using FriishProduce.Options;
+using System;
 using System.Collections.Generic;
-using FriishProduce.Options;
 
 namespace FriishProduce
 {
@@ -41,7 +41,7 @@ namespace FriishProduce
         }
 
         // ---------------------------------------------------------------------------------------------------------------
-
+        
         protected override void ResetOptions()
         {
             // Form control

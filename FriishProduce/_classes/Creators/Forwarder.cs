@@ -157,7 +157,7 @@ namespace FriishProduce
                 ROMFolder + '/' + ROMName,
                 $"using the emulator {List[EmulatorIndex]}.</long_description>",
                 "  <arguments>",
-                
+
             };
 
             // Change or add parameters when needed

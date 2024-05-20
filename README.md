@@ -41,15 +41,14 @@ See **[here](https://github.com/CatmanFan/FriishProduce/wiki/FriishProduce-v1.0)
 ---
 
 ## To-Do
-- [X] Complete RPG Maker banner and icon (forwarder is confirmed working otherwise)
-- [X] Combine all .bnr and .icn WAD banner files to .app
-- [ ] More proper file format for RPG Maker games, and tidy up some code and formatting/form design
+- [ ] Add *.zip format for RPG Maker games
+- [ ] Restructure and clean code
+- [ ] Use by default: *.chd format for disc games, *.wbfs for GCN 
 * Other VC injection support:
   * Commodore 64 (needs [Custom Frodo](https://gbatemp.net/threads/custom-frodo-for-c64-vc-injection.102356/))
   * TurboGrafx-16 CD (needs several programs to convert ISO to injectable format)
 
 * Optional:
-  - [ ] Restructure and clean code
   - [ ] Probably reorganize consoles into their own folders?
   - [ ] Create Korean-language banner files for other platforms?
 

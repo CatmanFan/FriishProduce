@@ -1,10 +1,10 @@
-﻿using System;
+﻿using FriishProduce.Options;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Linq;
 using System.Windows.Forms;
-using FriishProduce.Options;
 
 namespace FriishProduce
 {
@@ -32,7 +32,7 @@ namespace FriishProduce
         }
 
         // ---------------------------------------------------------------------------------------------------------------
-
+        
         protected override void ResetOptions()
         {
             // Form control

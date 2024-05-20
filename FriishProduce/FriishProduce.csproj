@@ -245,9 +245,9 @@
     <Compile Include="Tutorial.Designer.cs">
       <DependentUpon>Tutorial.cs</DependentUpon>
     </Compile>
-    <Compile Include="_classes\Banner\BannerSchemes.cs" />
+    <Compile Include="_classes\Helpers\BannerSchemes.cs" />
     <Compile Include="_classes\Files\CCF.cs" />
-    <Compile Include="_classes\Banner\BannerPreview.cs" />
+    <Compile Include="_classes\Helpers\BannerPreview.cs" />
     <Compile Include="_classes\Databases\ChannelData.cs" />
     <Compile Include="_classes\Files\ROM\RPGM.cs" />
     <Compile Include="_classes\Program\Language.cs" />
@@ -335,11 +335,11 @@
     <Compile Include="SettingsForm.Designer.cs">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="_classes\SoundHelper.cs" />
+    <Compile Include="_classes\Helpers\SoundHelper.cs" />
     <Compile Include="_classes\Utilities.cs" />
     <Compile Include="_classes\Consoles.cs" />
-    <Compile Include="_classes\Creators\Creator.cs" />
-    <Compile Include="_classes\Creators\WiiVC.cs" />
+    <Compile Include="_classes\Creators\WAD.cs" />
+    <Compile Include="_classes\Creators\WiiVC\_base.cs" />
     <Compile Include="_classes\Creators\WiiVC\N64.cs" />
     <Compile Include="_classes\Creators\WiiVC\NEO.cs" />
     <Compile Include="_classes\Creators\WiiVC\NES.cs" />
@@ -350,9 +350,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="_classes\Databases\GameData.cs" />
     <Compile Include="_classes\Program\Paths.cs" />
-    <Compile Include="_classes\Files\ROM.cs" />
-    <Compile Include="_classes\ImageHelper.cs" />
-    <Compile Include="_classes\Banner\BannerHelper.cs" />
+    <Compile Include="_classes\Files\ROM\_base.cs" />
+    <Compile Include="_classes\Helpers\ImageHelper.cs" />
+    <Compile Include="_classes\Helpers\BannerHelper.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>

@@ -730,7 +730,7 @@
     <value>NoControl</value>
   </data>
   <data name="autolink_save_data.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 236</value>
+    <value>12, 246</value>
   </data>
   <data name="autolink_save_data.Size" type="System.Drawing.Size, System.Drawing">
     <value>119, 17</value>
@@ -2934,11 +2934,41 @@
   <data name="&gt;&gt;LanguageList.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 8.25pt</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 66</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>300, 14</value>
+  </data>
+  <data name="label2.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>FILENAME, CHANNELNAME, FULLNAME, TITLEID, PLATFORM</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>default_save_as_filename</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="default_save_as_parameters.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="default_save_as_parameters.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 45</value>
+    <value>8, 49</value>
   </data>
   <data name="default_save_as_parameters.Size" type="System.Drawing.Size, System.Drawing">
     <value>143, 13</value>
@@ -2959,10 +2989,10 @@
     <value>default_save_as_filename</value>
   </data>
   <data name="&gt;&gt;default_save_as_parameters.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="default_save_as_filename_tb.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 20</value>
+    <value>10, 21</value>
   </data>
   <data name="default_save_as_filename_tb.Size" type="System.Drawing.Size, System.Drawing">
     <value>505, 20</value>
@@ -2980,13 +3010,13 @@
     <value>default_save_as_filename</value>
   </data>
   <data name="&gt;&gt;default_save_as_filename_tb.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="default_save_as_filename.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 147</value>
   </data>
   <data name="default_save_as_filename.Size" type="System.Drawing.Size, System.Drawing">
-    <value>525, 80</value>
+    <value>525, 90</value>
   </data>
   <data name="default_save_as_filename.TabIndex" type="System.Int32, mscorlib">
     <value>43</value>
@@ -3013,7 +3043,7 @@
     <value>NoControl</value>
   </data>
   <data name="use_custom_database.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 258</value>
+    <value>12, 269</value>
   </data>
   <data name="use_custom_database.Size" type="System.Drawing.Size, System.Drawing">
     <value>133, 17</value>

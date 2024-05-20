@@ -114,6 +114,7 @@ namespace FriishProduce
             this.default_save_as_parameters = new System.Windows.Forms.Label();
             this.default_save_as_filename_tb = new System.Windows.Forms.TextBox();
             this.use_custom_database = new System.Windows.Forms.CheckBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.vc_n64_options.SuspendLayout();
             this.bottomPanel1.SuspendLayout();
             this.bottomPanel2.SuspendLayout();
@@ -798,6 +799,7 @@ namespace FriishProduce
             // 
             // default_save_as_filename
             // 
+            this.default_save_as_filename.Controls.Add(this.label2);
             this.default_save_as_filename.Controls.Add(this.default_save_as_parameters);
             this.default_save_as_filename.Controls.Add(this.default_save_as_filename_tb);
             resources.ApplyResources(this.default_save_as_filename, "default_save_as_filename");
@@ -823,6 +825,11 @@ namespace FriishProduce
             this.use_custom_database.Tag = "use_custom_database";
             this.use_custom_database.UseVisualStyleBackColor = true;
             this.use_custom_database.CheckedChanged += new System.EventHandler(this.CustomDatabase_CheckedChanged);
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
             // 
             // SettingsForm
             // 
@@ -985,5 +992,6 @@ namespace FriishProduce
         private System.Windows.Forms.GroupBox default_save_as_filename;
         private System.Windows.Forms.TextBox default_save_as_filename_tb;
         private System.Windows.Forms.Label default_save_as_parameters;
+        private System.Windows.Forms.Label label2;
     }
 }

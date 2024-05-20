@@ -7,7 +7,6 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Net;
 using static FriishProduce.Properties.Resources;
-using static FriishProduce.FileDatas.WADBanners;
 
 namespace FriishProduce
 {

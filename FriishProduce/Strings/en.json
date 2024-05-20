@@ -52,7 +52,14 @@
 			"c64": "Commodore 64",
 			"msx": "MSX/MSX2",
 			"flash": "Adobe Flash",
-			"rpgm": "RPG Maker 2000/2003"
+			"gb": "Game Boy",
+			"gbc": "Game Boy Color",
+			"gba": "Game Boy Advance",
+			"gcn": "GameCube",
+			"s32x": "32X",
+			"smcd": "SEGA CD/MEGA CD",
+			"psx": "PlayStation",
+			"rpgm": "RPG Maker 2000/2003",
 		},
 		"filters": {
 			"filter": "|All files (*.*)|*.*",

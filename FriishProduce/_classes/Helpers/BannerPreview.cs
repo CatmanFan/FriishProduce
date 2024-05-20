@@ -303,12 +303,14 @@ namespace FriishProduce
                     g.Clear(Color.Gainsboro);
             }
 
-            Bitmap bmp = new Bitmap(img.Width, 92);
+            Bitmap bmp = new Bitmap(img.Width - 10, 92 + 4 - 11);
 
             using (Graphics g = Graphics.FromImage(bmp))
             {
-                g.InterpolationMode = InterpolationMode.Bicubic;
-                g.DrawImage(img, -5, -4, bmp.Width + 11, bmp.Height + 11);
+                g.InterpolationMode = InterpolationMode.High;
+                g.SmoothingMode = SmoothingMode.HighQuality;
+                g.CompositingQuality = CompositingQuality.HighQuality;
+                g.DrawImage(img, -4, -4, bmp.Width + 11, bmp.Height + 11);
             }
 
             Bitmap bmp2 = new Bitmap(bmp.Width + 2, bmp.Height + 2);
@@ -318,11 +320,11 @@ namespace FriishProduce
                 using (Bitmap border = new Bitmap(bmp2.Width, bmp2.Height))
                 {
                     using (Graphics gBorder = Graphics.FromImage(border))
-                        gBorder.Clear(SystemColors.GrayText);
+                        gBorder.Clear(Color.LightSlateGray);
                     g.DrawImage(RoundCorners(border, 10, true), 0, 0, bmp2.Width, bmp2.Height);
                 }
 
-                g.DrawImage(RoundCorners(bmp, 10, true), 1, 1, bmp.Width, bmp.Height);
+                g.DrawImage(RoundCorners(bmp, 8, true), 1, 1, bmp.Width, bmp.Height);
             }
 
             bmp.Dispose();

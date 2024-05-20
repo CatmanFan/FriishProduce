@@ -166,7 +166,7 @@ namespace FriishProduce
         {
             U8 manualArc = U8.Load(file);
             if (Manual == null) return manualArc;
-            
+
             string path = Paths.Manual;
 
             // Get root folder name

@@ -189,9 +189,9 @@ namespace FriishProduce
                             goto Dev;
                         }
 
-                    // --------------------------------------------------------------------- //
+                        // --------------------------------------------------------------------- //
 
-                    Dev:
+                        Dev:
                         try
                         {
                             // If not found, search in "developer" repository, which happens to be more complete
@@ -225,9 +225,9 @@ namespace FriishProduce
                         goto NotFound;
                     }
 
-                // --------------------------------------------------------------------- //
+                    // --------------------------------------------------------------------- //
 
-                GetPlayers:
+                    GetPlayers:
                     try
                     {
                         // "maxusers" contains maximum number of players supported
@@ -285,7 +285,7 @@ namespace FriishProduce
                 }
             }
 
-        NotFound:
+            NotFound:
             System.Media.SystemSounds.Beep.Play();
             return false;
         }

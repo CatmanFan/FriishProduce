@@ -1,7 +1,7 @@
-﻿using System;
+﻿using FriishProduce.Options;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
-using FriishProduce.Options;
 
 namespace FriishProduce
 {
@@ -60,7 +60,7 @@ namespace FriishProduce
                 if (IsSMS) Options["dev.mdpad.enable_6b"] = null;
 
                 if (Options["console.brightness"] == null || int.Parse(Options["console.brightness"]) < 0) Options["console.brightness"] = VC_SEGA.Default.console_brightness;
-
+                
                 console_brightness.Value            = int.Parse(Options["console.brightness"]);
                 country.SelectedIndex               = Options["country"] switch { "jp" => 0, "us" => 1, _ => 2 };
                 dev_mdpad_enable_6b.Checked         = Options["dev.mdpad.enable_6b"] == "1";

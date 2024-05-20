@@ -1,8 +1,8 @@
-﻿using System;
+﻿using FriishProduce.Options;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
-using FriishProduce.Options;
 
 namespace FriishProduce
 {

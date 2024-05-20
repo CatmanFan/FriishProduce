@@ -77,11 +77,7 @@ namespace FriishProduce
             using (WebClient x = new WebClient())
             {
                 if (Task.WaitAny
-                    (new Task[]{Task.Run(() =>
-                        {
-                            Stream webS = x.OpenRead(URL);
-                            try { webS.CopyTo(ms); return ms; } catch { return null; }
-                        }
+                    (new Task[]{Task.Run(() => { try { x.OpenRead(URL).CopyTo(ms); return ms; } catch { return null; } }
                     )}, 100 * 1000) == -1)
                     throw new TimeoutException();
 

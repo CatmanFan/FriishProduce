@@ -23,6 +23,7 @@ namespace FriishProduce
             { Console.PCE, new Icon(Properties.Resources.nec_turbografx_16, 16, 16).ToBitmap() },
             { Console.NEO, new Icon(Properties.Resources.snk_neo_geo_aes, 16, 16).ToBitmap() },
             { Console.MSX, Properties.Resources.msx },
+            { Console.PSX, new Icon(Properties.Resources.sony_playstation, 16, 16).ToBitmap() },
             { Console.Flash, Properties.Resources.flash },
             { Console.RPGM, new Icon(Properties.Resources.rpg2003, 16, 16).ToBitmap() }
         };
@@ -55,15 +56,12 @@ namespace FriishProduce
                         new ToolStripItem[]
                         {*/
                             new ToolStripMenuItem(null, Icons[Console.PCE], AddProject, Console.PCE.ToString()),
-                            new ToolStripSeparator(),
                             new ToolStripMenuItem(null, Icons[Console.NEO], AddProject, Console.NEO.ToString()),
-                            new ToolStripSeparator(),
                             new ToolStripMenuItem(null, Icons[Console.MSX], AddProject, Console.MSX.ToString()),
                             new ToolStripSeparator(),
-                            new ToolStripMenuItem(null, Icons[Console.Flash], AddProject, Console.Flash.ToString()),
-                         // new ToolStripSeparator(),
-                         // new ToolStripMenuItem(null, new Icon(Properties.Resources.sony_playstation, 16, 16).ToBitmap(), AddProject, Console.PSX.ToString()),
+                            new ToolStripMenuItem(null, Icons[Console.PSX], AddProject, Console.PSX.ToString()),
                             new ToolStripSeparator(),
+                            new ToolStripMenuItem(null, Icons[Console.Flash], AddProject, Console.Flash.ToString()),
                             new ToolStripMenuItem(null, Icons[Console.RPGM], AddProject, Console.RPGM.ToString())
                         //})
                 };

@@ -176,6 +176,8 @@ namespace FriishProduce
             }
             #endregion
 
+            baseName.Font = new Font(baseName.Font, FontStyle.Bold);
+
             if (Base.SelectedIndex >= 0)
                 for (int i = 0; i < channelData.Entries[Base.SelectedIndex].Regions.Count; i++)
                 {
@@ -1561,7 +1563,7 @@ namespace FriishProduce
             if (SaveDataTitle.Multiline == isSingleLine)
             {
                 SaveDataTitle.Multiline = !isSingleLine;
-                SaveDataTitle.Location = isSingleLine ? new Point(SaveDataTitle.Location.X, int.Parse(SaveDataTitle.Tag.ToString()) + 6) : new Point(SaveDataTitle.Location.X, int.Parse(SaveDataTitle.Tag.ToString()));
+                SaveDataTitle.Location = isSingleLine ? new Point(SaveDataTitle.Location.X, int.Parse(SaveDataTitle.Tag.ToString()) + 8) : new Point(SaveDataTitle.Location.X, int.Parse(SaveDataTitle.Tag.ToString()));
                 SaveDataTitle.Clear();
                 goto End;
             }

@@ -26,8 +26,7 @@ namespace FriishProduce
 
         // Forwarder paths
         public static readonly string SDUSBRoot = WorkingFolder + "root\\";
-        public static readonly string Emulators = Path.Combine(EnvironmentFolder, "resources\\forwarders\\emulators\\");
-        public static readonly string BIOSFiles = Path.Combine(EnvironmentFolder, "resources\\forwarders\\bios\\");
+        public static readonly string BIOSFiles = Path.Combine(EnvironmentFolder, "resources\\bios\\");
 
         // Other
         public static readonly string PatchedSuffix = "-patched";

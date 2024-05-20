@@ -57,7 +57,7 @@ namespace FriishProduce
 
             switch (platform)
             {
-            #region VC & Other Official
+                #region VC & Other Official
                 case Console.NES:
                     Banner = U8.Load(region switch { Region.Japan => jp_fc, Region.Korea => kr_fc, _ => nes });
                     break;
@@ -98,9 +98,9 @@ namespace FriishProduce
                 case Console.Flash:
                     Banner = U8.Load(flash);
                     break;
-            #endregion
+                #endregion
 
-            #region Forwarders
+                #region Forwarders
                 case Console.GB:
                     // Banner = U8.Load(region switch { Region.Japan => jp_gb, _ => gb });
                     break;
@@ -120,7 +120,7 @@ namespace FriishProduce
                 case Console.RPGM:
                     Banner = U8.Load(region switch { Region.Japan => jp_rpgm, _ => rpgm });
                     break;
-            #endregion
+                #endregion
 
                 default:
                     throw new NotImplementedException();
