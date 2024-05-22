@@ -73,6 +73,8 @@ namespace FriishProduce
         public static byte[] Get(string URL)
         {
             // Actual web connection is done here
+            // ****************
+
             using (MemoryStream ms = new MemoryStream())
             using (WebClient x = new WebClient())
             {

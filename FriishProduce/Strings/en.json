@@ -143,6 +143,7 @@
 			"content_options": "Content options",
 			"channel": "Channel metadata",
 			"banner": "Banner details",
+			"banner_preview": "Banner preview",
 			"image": "Image",
 			"image_interpolation_mode": "Interpolation mode",
 			"image_interpolation_mode0": "{by_default}",

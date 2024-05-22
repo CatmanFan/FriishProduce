@@ -44,6 +44,7 @@ namespace FriishProduce
         protected string Manual { get; set; }
         protected GameDatabase gameData { get; set; }
         protected ChannelDatabase channelData { get; set; }
+        protected Preview Preview { get; set; }
         protected ImageHelper Img { get; set; }
         protected Creator Creator { get; set; }
 
@@ -404,6 +405,8 @@ namespace FriishProduce
             // Cosmetic
             // ********
             if (Console == Console.SMS || Console == Console.SMD) SaveIcon_Panel.BackgroundImage = Properties.Resources.SaveIconPlaceholder_SEGA;
+            Preview = new Preview();
+            IconPreview.Image = Preview.Icon(null, Console, BannerRegion());
             RefreshForm();
 
             Creator.BannerYear = (int)ReleaseYear.Value;
@@ -537,9 +540,6 @@ namespace FriishProduce
 
             label11.Text = !string.IsNullOrWhiteSpace(PatchFile) ? Path.GetFileName(PatchFile) : Program.Lang.String("none");
             label11.Enabled = !string.IsNullOrWhiteSpace(PatchFile);
-
-            PreviewBanner();
-            pictureBox2.Image = Preview.Icon(Img?.IconVCPic);
         }
 
         private void RandomTID() => TitleID.Text = Creator.TitleID = TIDCode != null ? TIDCode + GenerateTitleID().Substring(0, 3) : GenerateTitleID();
@@ -919,7 +919,7 @@ namespace FriishProduce
                 if (Img.Source != null)
                 {
                     SaveIcon_Panel.BackgroundImage = Img.SaveIcon();
-                    pictureBox2.Image = Preview.Icon(Img.IconVCPic);
+                    IconPreview.Image = Preview.Icon(Img.IconVCPic, Console, BannerRegion(), IconPreview);
                 }
 
                 CheckExport();
@@ -1577,9 +1577,9 @@ namespace FriishProduce
                     SaveDataTitle.Clear();
 
             End:
+            IconPreview.Image = Preview.Icon(Img?.IconVCPic, Console, BannerRegion(), IconPreview);
             LinkSaveDataTitle();
             ResetContentOptions();
-            PreviewBanner();
         }
 
         private int emuVer
@@ -1766,14 +1766,13 @@ namespace FriishProduce
 
         private void InjectorsList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            PreviewBanner();
             ResetContentOptions();
+            IconPreview.Image = Preview.Icon(Img?.IconVCPic, Console, BannerRegion(), IconPreview);
             if (groupBox3.Enabled) CheckExport();
         }
 
         private void RegionsList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            PreviewBanner();
             if (groupBox4.Enabled) CheckExport();
         }
 
@@ -1805,18 +1804,33 @@ namespace FriishProduce
             return lang;
         }
 
-        protected void PreviewBanner()
+        private void BannerPreview_Click(object sender, EventArgs e)
         {
+            using (Form f = new Form())
+            {
+                f.FormBorderStyle = FormBorderStyle.FixedToolWindow;
+                f.ShowInTaskbar = false;
+                f.Text = BannerPreview.Text;
+                f.Icon = Icon;
 
-            pictureBox1.Image = Preview.Banner
-            (
-                Console,
-                BannerTitle.Text,
-                (int)ReleaseYear.Value,
-                (int)Players.Value,
-                Img?.VCPic,
-                BannerRegion()
-            );
+                var p = new PictureBox() { Name = "picture" };
+                p.SizeMode = PictureBoxSizeMode.AutoSize;
+                p.Location = new Point(0, 0);
+                p.Image = Preview.Banner
+                (
+                    Console,
+                    BannerTitle.Text,
+                    (int)ReleaseYear.Value,
+                    (int)Players.Value,
+                    Img?.VCPic,
+                    BannerRegion()
+                );
+
+                f.ClientSize = p.Image.Size;
+                f.StartPosition = FormStartPosition.CenterParent;
+                f.Controls.Add(p);
+                f.ShowDialog();
+            }
         }
     }
 }

@@ -129,6 +129,7 @@
 			"content_options": "Options de contenu",
 			"channel": "Métadonnées de la chaîne",
 			"banner": "Détails du banner",
+			"banner_preview": "Aperçu du banner",
 			"image": "Image",
 			"image_interpolation_mode": "Méthode d'interpolation",
 			"image_interpolation_mode1": "Basse qualité",

@@ -458,8 +458,6 @@
     <None Include="Resources\banners\sms.app" />
     <None Include="Resources\banners\snes.app" />
     <None Include="Resources\banners\tg16.app" />
-    <None Include="Resources\banners\tpl\jp_rpgm.tpl" />
-    <None Include="Resources\banners\tpl\rpgm.tpl" />
     <None Include="Resources\forwarder_emus\easyrpg.dol" />
     <None Include="Resources\forwarder_emus\fceugx.dol" />
     <None Include="Resources\forwarder_emus\fceurx.dol" />

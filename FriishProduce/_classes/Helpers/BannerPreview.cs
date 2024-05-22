@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace FriishProduce
 {
-    public static class Preview
+    public class Preview
     {
         public enum Language
         {
@@ -17,7 +17,7 @@ namespace FriishProduce
             Auto
         }
 
-        private static readonly Color[][] ColorSchemes = BannerSchemes.List;
+        private readonly Color[][] ColorSchemes = BannerSchemes.List;
 
         #region Font Functions
 
@@ -25,9 +25,9 @@ namespace FriishProduce
         private static extern IntPtr AddFontMemResourceEx(IntPtr pbFont, uint cbFont,
             IntPtr pdv, [System.Runtime.InteropServices.In] ref uint pcFonts);
 
-        private static PrivateFontCollection fonts;
+        private PrivateFontCollection fonts;
 
-        private static FontFamily Font()
+        private FontFamily Font()
         {
             if (fonts != null && fonts.Families.Length > 0) return fonts.Families[0];
 
@@ -46,7 +46,7 @@ namespace FriishProduce
 
         #endregion
 
-        public static Bitmap Banner(Console console, string text, int year, int players, Bitmap img, Language lang)
+        public Bitmap Banner(Console console, string text, int year, int players, Bitmap img, Language lang)
         {
             Bitmap bmp = new Bitmap(650, 260);
             if (img == null)
@@ -289,31 +289,94 @@ namespace FriishProduce
             return bmp;
         }
 
-        public static Bitmap Icon(Bitmap img)
+        private struct icon
         {
-            // 0s - 1s = Fadein
-            // 1s - 3s = Logo
-            // 3s - 4s = Fadeout
-            // 4s - 9s = Title
+            public Bitmap origImg;
+            public Bitmap iconImg;
+            public Bitmap consoleImg;
+            public (Console, Language) type;
+            public double duration;
+            public Timer durationTimer;
+            public PictureBox target;
+        }
 
-            if (img == null)
+        private icon iconData = new icon();
+
+        public Bitmap Icon(Bitmap img, Console console, Language lang, PictureBox target = null)
+        {
+            // 0s - 5s = Title
+            // 5s - 6s = Fadein
+            // 6s - 8s = Logo
+            // 8s - 9s = Fadeout
+
+            if (iconData.duration >= 90) iconData.duration = 0;
+
+            // Console/platform logo
+            // ****************
+            if (iconData.consoleImg == null)
             {
-                img = new Bitmap(128, 96);
-                using (Graphics g = Graphics.FromImage(img))
-                    g.Clear(Color.Gainsboro);
+                iconData.consoleImg = new Bitmap(128, 96);
+                using (Graphics g = Graphics.FromImage(iconData.consoleImg))
+                    g.Clear(Color.White);
             }
 
-            Bitmap bmp = new Bitmap(img.Width - 10, 92 + 4 - 11);
-
-            using (Graphics g = Graphics.FromImage(bmp))
+            else if (target != null)
             {
-                g.InterpolationMode = InterpolationMode.High;
-                g.SmoothingMode = SmoothingMode.HighQuality;
-                g.CompositingQuality = CompositingQuality.HighQuality;
-                g.DrawImage(img, -4, -4, bmp.Width + 11, bmp.Height + 11);
+                iconData.type = (console, lang);
+                using (var U8 = BannerHelper.BannerApp(console, lang switch { Language.Japanese => libWiiSharp.Region.Japan, Language.Korean => libWiiSharp.Region.Korea, Language.Europe => libWiiSharp.Region.Europe, _ => libWiiSharp.Region.USA }))
+                {
+                    if (U8 != null)
+                    {
+                        using (var Icon = libWiiSharp.U8.Load(U8.Data[U8.GetNodeIndex("icon.bin")]))
+                        {
+                            foreach (var item in Icon.StringTable)
+                            {
+                                if (item.ToLower().StartsWith("log"))
+                                {
+                                    var tpl = libWiiSharp.TPL.Load(Icon.Data[Icon.GetNodeIndex(item)]);
+
+                                    iconData.consoleImg = new Bitmap(128, 96);
+                                    using (Graphics g = Graphics.FromImage(iconData.consoleImg))
+                                    {
+                                        g.Clear(Color.White);
+                                        var logo = tpl.ExtractTexture();
+                                        g.DrawImage(logo, (128 / 2) - (logo.Width / 2), (96 / 2) - (logo.Height / 2));
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
 
-            Bitmap bmp2 = new Bitmap(bmp.Width + 2, bmp.Height + 2);
+            // Title image
+            // ****************
+            if (iconData.origImg != img)
+            {
+                iconData.origImg = img;
+                iconData.duration = 0;
+
+                // Set icon image
+                // ****************
+                iconData.iconImg = new Bitmap(img.Width - 10, 92 + 4 - 11);
+
+                using (Graphics g = Graphics.FromImage(iconData.iconImg))
+                {
+                    g.InterpolationMode = InterpolationMode.High;
+                    g.SmoothingMode = SmoothingMode.HighQuality;
+                    g.CompositingQuality = CompositingQuality.HighQuality;
+                    g.DrawImage(img, -4, -4, iconData.iconImg.Width + 11, iconData.iconImg.Height + 11);
+                }
+
+                // Restart timer
+                // ****************
+                iconData.durationTimer = new Timer() { Interval = 100, Enabled = true };
+                iconData.durationTimer.Tick += iconDurationTick;
+            }
+
+            var bmp = img == null || iconData.duration >= 50 ? iconData.consoleImg : iconData.iconImg;
+
+            var bmp2 = new Bitmap(120, 87);
 
             using (Graphics g = Graphics.FromImage(bmp2))
             {
@@ -324,14 +387,19 @@ namespace FriishProduce
                     g.DrawImage(RoundCorners(border, 10, true), 0, 0, bmp2.Width, bmp2.Height);
                 }
 
-                g.DrawImage(RoundCorners(bmp, 8, true), 1, 1, bmp.Width, bmp.Height);
+                g.DrawImage(RoundCorners(bmp, 8, true), 1, 1, bmp2.Width - 2, bmp2.Height - 2);
             }
 
-            bmp.Dispose();
+            if (img != null) iconData.durationTimer.Start();
+            if (target != null) iconData.target = target;
+            if (iconData.target != null) iconData.target.Image = bmp2;
+            iconData.duration++;
             return bmp2;
         }
 
-        private static Bitmap RoundCorners(Image StartImage, int CornerRadius, bool Smooth = false)
+        private void iconDurationTick(object sender, EventArgs e) => Icon(iconData.origImg, iconData.type.Item1, iconData.type.Item2, iconData.target);
+
+        private Bitmap RoundCorners(Image StartImage, int CornerRadius, bool Smooth = false)
         {
             CornerRadius *= 2;
             Bitmap x = new Bitmap(StartImage.Width, StartImage.Height);

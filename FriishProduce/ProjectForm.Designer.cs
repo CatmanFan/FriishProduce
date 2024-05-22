@@ -37,6 +37,7 @@ namespace FriishProduce
             this.imageintpl = new System.Windows.Forms.ComboBox();
             this.image_fit = new System.Windows.Forms.RadioButton();
             this.image_stretch = new System.Windows.Forms.RadioButton();
+            this.IconPreview = new System.Windows.Forms.PictureBox();
             this.BrowseWAD = new System.Windows.Forms.OpenFileDialog();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.LinkSaveData = new System.Windows.Forms.CheckBox();
@@ -69,11 +70,11 @@ namespace FriishProduce
             this.ChannelTitle = new System.Windows.Forms.TextBox();
             this.short_channel_name = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.software_name = new System.Windows.Forms.Label();
             this.filename = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.BannerPreview = new System.Windows.Forms.Button();
             this.Players = new System.Windows.Forms.NumericUpDown();
             this.ReleaseYear = new System.Windows.Forms.NumericUpDown();
             this.label10 = new System.Windows.Forms.Label();
@@ -91,9 +92,9 @@ namespace FriishProduce
             this.Base = new System.Windows.Forms.ComboBox();
             this.baseName = new System.Windows.Forms.Label();
             this.BrowsePatch = new System.Windows.Forms.OpenFileDialog();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.BrowseManual = new Ookii.Dialogs.WinForms.VistaFolderBrowserDialog();
             this.groupBox6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.IconPreview)).BeginInit();
             this.groupBox7.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.COPanel_VC.SuspendLayout();
@@ -102,14 +103,12 @@ namespace FriishProduce
             this.groupBox9.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Random)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Players)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReleaseYear)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BaseRegion)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // BaseRegionList
@@ -125,6 +124,7 @@ namespace FriishProduce
             this.groupBox6.Controls.Add(this.imageintpl);
             this.groupBox6.Controls.Add(this.image_fit);
             this.groupBox6.Controls.Add(this.image_stretch);
+            this.groupBox6.Controls.Add(this.IconPreview);
             resources.ApplyResources(this.groupBox6, "groupBox6");
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.TabStop = false;
@@ -162,6 +162,13 @@ namespace FriishProduce
             this.image_stretch.Tag = "image_stretch";
             this.image_stretch.UseVisualStyleBackColor = true;
             this.image_stretch.CheckedChanged += new System.EventHandler(this.SwitchAspectRatio);
+            // 
+            // IconPreview
+            // 
+            this.IconPreview.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.IconPreview, "IconPreview");
+            this.IconPreview.Name = "IconPreview";
+            this.IconPreview.TabStop = false;
             // 
             // BrowseWAD
             // 
@@ -412,13 +419,6 @@ namespace FriishProduce
             resources.ApplyResources(this.label15, "label15");
             this.label15.Name = "label15";
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            resources.ApplyResources(this.pictureBox2, "pictureBox2");
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.TabStop = false;
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.label11);
@@ -446,6 +446,7 @@ namespace FriishProduce
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.BannerPreview);
             this.groupBox5.Controls.Add(this.Players);
             this.groupBox5.Controls.Add(this.ReleaseYear);
             this.groupBox5.Controls.Add(this.label10);
@@ -456,6 +457,14 @@ namespace FriishProduce
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.TabStop = false;
             this.groupBox5.Tag = "banner";
+            // 
+            // BannerPreview
+            // 
+            resources.ApplyResources(this.BannerPreview, "BannerPreview");
+            this.BannerPreview.Name = "BannerPreview";
+            this.BannerPreview.Tag = "banner_preview";
+            this.BannerPreview.UseVisualStyleBackColor = true;
+            this.BannerPreview.Click += new System.EventHandler(this.BannerPreview_Click);
             // 
             // Players
             // 
@@ -616,20 +625,12 @@ namespace FriishProduce
             // 
             this.BrowsePatch.RestoreDirectory = true;
             // 
-            // pictureBox1
-            // 
-            resources.ApplyResources(this.pictureBox1, "pictureBox1");
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.TabStop = false;
-            // 
             // ProjectForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             resources.ApplyResources(this, "$this");
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox7);
@@ -645,6 +646,7 @@ namespace FriishProduce
             this.Shown += new System.EventHandler(this.Form_Shown);
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.IconPreview)).EndInit();
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -659,7 +661,6 @@ namespace FriishProduce
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Random)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox5.ResumeLayout(false);
@@ -669,9 +670,7 @@ namespace FriishProduce
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BaseRegion)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -724,13 +723,12 @@ namespace FriishProduce
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.RadioButton FStorage_SD;
         private System.Windows.Forms.RadioButton FStorage_USB;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.GroupBox groupBox9;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.ComboBox TargetRegion;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox IconPreview;
         private System.Windows.Forms.Label toggleSwitchL1;
         private JCS.ToggleSwitch toggleSwitch1;
         private System.Windows.Forms.CheckBox LinkSaveData;
@@ -739,5 +737,6 @@ namespace FriishProduce
         private Ookii.Dialogs.WinForms.VistaFolderBrowserDialog BrowseManual;
         private System.Windows.Forms.Label manual_type;
         private System.Windows.Forms.ComboBox manual_type_list;
+        private System.Windows.Forms.Button BannerPreview;
     }
 }

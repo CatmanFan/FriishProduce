@@ -8,6 +8,69 @@ namespace FriishProduce
 {
     public static class BannerHelper
     {
+        public static U8 BannerApp(Console platform, Region region, string tID = null)
+        {
+            switch (platform)
+            {
+                #region VC & Other Official
+                case Console.NES:
+                    return U8.Load(region switch { Region.Japan => jp_fc, Region.Korea => kr_fc, _ => nes });
+
+                case Console.SNES:
+                    return U8.Load(region switch { Region.Japan => jp_sfc, Region.Korea => kr_sfc, _ => snes });
+
+                case Console.N64:
+                    return U8.Load(region switch { Region.Japan => jp_n64, Region.Korea => kr_n64, _ => n64 });
+
+                case Console.SMS:
+                    return U8.Load(region switch { Region.Japan => jp_sms, _ => sms });
+
+                case Console.SMD:
+                    return U8.Load(region switch { Region.Japan => jp_smd, Region.USA => gen, _ => smd });
+
+                case Console.PCE:
+                case Console.PCECD:
+                    return U8.Load(region switch { Region.Japan => jp_pce, _ => tg16 });
+
+                case Console.NEO:
+                    return U8.Load(region switch { Region.Japan => jp_neogeo, _ => neogeo });
+
+                case Console.C64:
+                    return U8.Load(region switch { Region.Europe => c64_eu, _ => c64_us });
+
+                case Console.MSX:
+                    return U8.Load(tID != null && tID.ToUpper().StartsWith("XAP") ? jp_msx2 : jp_msx1); // Check if version 2 MSX WADs use a different color scheme?
+
+                case Console.Flash:
+                    return U8.Load(flash);
+                #endregion
+
+                #region Forwarders
+                case Console.GB:
+                    // return U8.Load(region switch { Region.Japan => jp_gb, _ => gb });
+                    throw new NotImplementedException();
+
+                case Console.GBC:
+                    // return U8.Load(region switch { Region.Japan => jp_gbc, _ => gbc });
+                    throw new NotImplementedException();
+
+                case Console.GBA:
+                    // return U8.Load(region switch { Region.Japan => jp_gba, _ => gba });
+                    throw new NotImplementedException();
+
+                case Console.PSX:
+                    // return U8.Load(region switch { Region.Japan => jp_psx, _ => psx });
+                    return null;
+
+                case Console.RPGM:
+                    return U8.Load(region switch { Region.Japan => jp_rpgm, _ => rpgm });
+                #endregion
+
+                default:
+                    throw new NotImplementedException();
+            }
+        }
+
         public static U8 Get(WAD w)
         {
             if (w != null)
@@ -53,78 +116,7 @@ namespace FriishProduce
 
             if (!w.HasBanner) return;
 
-            U8 Banner = new U8();
-
-            switch (platform)
-            {
-                #region VC & Other Official
-                case Console.NES:
-                    Banner = U8.Load(region switch { Region.Japan => jp_fc, Region.Korea => kr_fc, _ => nes });
-                    break;
-
-                case Console.SNES:
-                    Banner = U8.Load(region switch { Region.Japan => jp_sfc, Region.Korea => kr_sfc, _ => snes });
-                    break;
-
-                case Console.N64:
-                    Banner = U8.Load(region switch { Region.Japan => jp_n64, Region.Korea => kr_n64, _ => n64 });
-                    break;
-
-                case Console.SMS:
-                    Banner = U8.Load(region switch { Region.Japan => jp_sms, _ => sms });
-                    break;
-
-                case Console.SMD:
-                    Banner = U8.Load(region switch { Region.Japan => jp_smd, Region.USA => gen, _ => smd });
-                    break;
-
-                case Console.PCE:
-                case Console.PCECD:
-                    Banner = U8.Load(region switch { Region.Japan => jp_pce, _ => tg16 });
-                    break;
-
-                case Console.NEO:
-                    Banner = U8.Load(region switch { Region.Japan => jp_neogeo, _ => neogeo });
-                    break;
-
-                case Console.C64:
-                    Banner = U8.Load(region switch { Region.Europe => c64_eu, _ => c64_us });
-                    break;
-
-                case Console.MSX:
-                    Banner = U8.Load(w.UpperTitleID.StartsWith("XAP") ? jp_msx2 : jp_msx1); // Check if version 2 MSX WADs use a different color scheme?
-                    break;
-
-                case Console.Flash:
-                    Banner = U8.Load(flash);
-                    break;
-                #endregion
-
-                #region Forwarders
-                case Console.GB:
-                    // Banner = U8.Load(region switch { Region.Japan => jp_gb, _ => gb });
-                    break;
-
-                case Console.GBC:
-                    // Banner = U8.Load(region switch { Region.Japan => jp_gbc, _ => gbc });
-                    break;
-
-                case Console.GBA:
-                    // Banner = U8.Load(region switch { Region.Japan => jp_gba, _ => gba });
-                    break;
-
-                case Console.PSX:
-                    // Banner = U8.Load(region switch { Region.Japan => jp_psx, _ => psx });
-                    break;
-
-                case Console.RPGM:
-                    Banner = U8.Load(region switch { Region.Japan => jp_rpgm, _ => rpgm });
-                    break;
-                #endregion
-
-                default:
-                    throw new NotImplementedException();
-            }
+            U8 Banner = BannerApp(platform, region, w.UpperTitleID);
 
             using (var bannerBin = U8.Load(Banner.Data[Banner.GetNodeIndex("banner.bin")]))
             {

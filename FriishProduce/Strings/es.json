@@ -121,6 +121,7 @@
 			"content_options": "Opciones de contenido",
 			"channel": "Cabecera del canal",
 			"banner": "Detalles del banner",
+			"banner_preview": "Vista previa del banner",
 			"image": "Imagen",
 			"image_interpolation_mode": "Método de interpolación",
 			"image_interpolation_mode1": "Baja calidad",
