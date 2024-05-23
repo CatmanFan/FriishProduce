@@ -1808,7 +1808,8 @@ namespace FriishProduce
                 Img?.IconVCPic,
                 Console,
                 BannerRegion(),
-                IconPreview
+                IconPreview,
+                true
             );
 
             BannerPreview.Image = Preview.Banner

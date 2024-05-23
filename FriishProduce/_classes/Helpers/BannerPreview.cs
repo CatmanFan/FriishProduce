@@ -78,6 +78,9 @@ namespace FriishProduce
 
         #endregion
 
+        private (int, int) bannerType = (-1, -1);
+        private Bitmap bannerLogo;
+
         /// <summary>
         /// Creates a banner preview bitmap using VCPic.
         /// </summary>
@@ -181,6 +184,73 @@ namespace FriishProduce
                 g.TextRenderingHint = TextRenderingHint.AntiAlias;
 
                 g.Clear(BannerSchemes.List[target].bg);
+
+                #region Console/platform logo
+                if (((int)console, (int)lang) != bannerType)
+                {
+                    bannerType = ((int)console, (int)lang);
+                    using (var U8 = BannerHelper.BannerApp(console, lang switch { Language.Japanese => libWiiSharp.Region.Japan, Language.Korean => libWiiSharp.Region.Korea, Language.Europe => libWiiSharp.Region.Europe, _ => libWiiSharp.Region.USA }))
+                    {
+                        if (U8 != null)
+                        {
+                            using (var Icon = libWiiSharp.U8.Load(U8.Data[U8.GetNodeIndex("banner.bin")]))
+                            {
+                                foreach (var item in Icon.StringTable)
+                                {
+                                    if (item.ToLower().Contains("back") && item.ToLower().EndsWith(".tpl"))
+                                    {
+                                        using (var logo = (Bitmap)libWiiSharp.TPL.Load(Icon.Data[Icon.GetNodeIndex(item)]).ExtractTexture())
+                                        {
+                                            bannerLogo = new Bitmap(logo.Width, logo.Height, PixelFormat.Format32bppArgb);
+                                            unsafe
+                                            {
+                                                BitmapData data = bannerLogo.LockBits(new Rectangle(Point.Empty, bannerLogo.Size), ImageLockMode.ReadWrite, bannerLogo.PixelFormat);
+
+                                                byte* line = (byte*)data.Scan0;
+                                                for (int y = 0; y < data.Height; y++)
+                                                {
+                                                    for (int x = 0; x < data.Width; x++)
+                                                    {
+                                                        *((int*)line + x) = Color.FromArgb(logo.GetPixel(x, y).R, BannerSchemes.List[target].bgLogo.R, BannerSchemes.List[target].bgLogo.G, BannerSchemes.List[target].bgLogo.B).ToArgb();
+                                                    }
+
+                                                    line += data.Stride;
+                                                }
+
+                                                bannerLogo.UnlockBits(data);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                if (bannerLogo != null)
+                {
+                    double startingPointY = -30;
+                    double maxHeight = bannerLogo.Height / 3;
+                    (double width, double height) logoSize = (bannerLogo.Width / 1.5, bannerLogo.Height / 1.5);
+
+                    for (double y = startingPointY; y < bmp.Height / 2; y += maxHeight * 2)
+                    {
+                        for (double x = 0; x < bmp.Width; x += logoSize.width)
+                        {
+                            g.DrawImage(bannerLogo, (int)Math.Round(x), (int)Math.Round(y), (int)Math.Round(logoSize.width), (int)Math.Round(logoSize.height));
+                        }
+                    }
+
+                    for (double y = startingPointY + maxHeight; y < bmp.Height / 2; y += maxHeight * 2)
+                    {
+                        for (double x = 0 - (logoSize.width / 2.5); x < bmp.Width; x += logoSize.width)
+                        {
+                            g.DrawImage(bannerLogo, (int)Math.Round(x), (int)Math.Round(y), (int)Math.Round(logoSize.width), (int)Math.Round(logoSize.height));
+                        }
+                    }
+                }
+                #endregion
+
                 g.FillRectangle(b1, -5, (bmp.Height / 2) + 10, bmp.Width + 10, 40);
                 g.FillRectangle(b2, -5, (bmp.Height / 2) + 49, bmp.Width + 10, bmp.Height);
 
@@ -330,6 +400,8 @@ namespace FriishProduce
                     24,
                     new StringFormat() { Alignment = StringAlignment.Far, LineAlignment = StringAlignment.Center });
                 #endregion
+
+                g.Dispose();
             }
 
             return bmp;
@@ -343,7 +415,7 @@ namespace FriishProduce
         /// <param name="lang">Banner region/language: Japanese, Korean, Europe or America</param>
         /// <param name="target">PictureBox control</param>
         /// <returns></returns>
-        public Bitmap Icon(Bitmap img, Console console, Language lang, PictureBox target = null)
+        public Bitmap Icon(Bitmap img, Console console, Language lang, PictureBox target = null, bool restart = false)
         {
             // 0s - 5s = Title
             // 5s - 6s = Fadein
@@ -351,7 +423,7 @@ namespace FriishProduce
             // 8s - 9s = Fadeout
 
             if (iconData.duration.second >= iconData.opacities.Count - 1) iconData.duration = (0, 0);
-            bool reset = iconData.type != ((int)console, (int)lang) || iconData.origImg != img;
+            bool reset = iconData.type != ((int)console, (int)lang) || iconData.origImg != img || restart;
 
             // Console/platform logo
             // ****************
