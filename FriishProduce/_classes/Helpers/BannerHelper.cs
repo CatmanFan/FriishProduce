@@ -59,8 +59,7 @@ namespace FriishProduce
                     throw new NotImplementedException();
 
                 case Console.PSX:
-                    // return U8.Load(region switch { Region.Japan => jp_psx, _ => psx });
-                    return null;
+                    return U8.Load(region switch { Region.Japan => jp_psx, _ => psx });
 
                 case Console.RPGM:
                     return U8.Load(region switch { Region.Japan => jp_rpgm, _ => rpgm });
@@ -422,20 +421,20 @@ namespace FriishProduce
 
             outFile = outFile.ToLower();
 
-            var leftTextColor = colors[0].GetBrightness() < 0.8 ? System.Drawing.Color.White : System.Drawing.Color.FromArgb(50, 50, 50);
+            var leftTextColor = colors.bg.GetBrightness() < 0.8 ? System.Drawing.Color.White : System.Drawing.Color.FromArgb(50, 50, 50);
 
             string[] colorsFile = new string[]
             {
-                $"{colors[4].R}             {colors[4].G}             {colors[4].B}             {colors[5].R}             {colors[5].G}             {colors[5].B}",
-                $"{colors[6].R}             {colors[6].G}             {colors[6].B}             {colors[6].R}             {colors[6].G}             {colors[6].B}",
+                $"{colors.topBorder.R}             {colors.topBorder.G}             {colors.topBorder.B}             {colors.topBG.R}             {colors.topBG.G}             {colors.topBG.B}",
+                $"{colors.topText.R}             {colors.topText.G}             {colors.topText.B}             {colors.topText.R}             {colors.topText.G}             {colors.topText.B}",
                 "116           108           109           67            105           101",
                 "0             0             0             255           255           255",
-                $"{colors[0].R}             {colors[0].G}             {colors[0].B}             {colors[1].R}             {colors[1].G}             {colors[1].B}",
-                $"{colors[0].R}             {colors[0].G}             {colors[0].B}             {colors[1].R}             {colors[1].G}             {colors[1].B}",
-                $"{colors[0].R}             {colors[0].G}             {colors[0].B}             {colors[1].R}             {colors[1].G}             {colors[1].B}",
-                $"{colors[0].R}             {colors[0].G}             {colors[0].B}             {colors[1].R}             {colors[1].G}             {colors[1].B}",
-                $"0             0             0             {colors[3].R}             {colors[3].G}             {colors[3].B}",
-                $"0             0             0             {colors[3].R}             {colors[3].G}             {colors[3].B}",
+                $"{colors.bg.R}             {colors.bg.G}             {colors.bg.B}             {colors.bgLogo.R}             {colors.bgLogo.G}             {colors.bgLogo.B}",
+                $"{colors.bg.R}             {colors.bg.G}             {colors.bg.B}             {colors.bgLogo.R}             {colors.bgLogo.G}             {colors.bgLogo.B}",
+                $"{colors.bg.R}             {colors.bg.G}             {colors.bg.B}             {colors.bgLogo.R}             {colors.bgLogo.G}             {colors.bgLogo.B}",
+                $"{colors.bg.R}             {colors.bg.G}             {colors.bg.B}             {colors.bgLogo.R}             {colors.bgLogo.G}             {colors.bgLogo.B}",
+                $"0             0             0             {colors.lines.R}             {colors.lines.G}             {colors.lines.B}",
+                $"0             0             0             {colors.lines.R}             {colors.lines.G}             {colors.lines.B}",
                 $"{BannerSchemes.TextColor(colorIndex).R}             {BannerSchemes.TextColor(colorIndex).G}             {BannerSchemes.TextColor(colorIndex).B}             {BannerSchemes.TextColor(colorIndex).R}             {BannerSchemes.TextColor(colorIndex).G}             {BannerSchemes.TextColor(colorIndex).B}",
                 $"{leftTextColor.R}             {leftTextColor.G}             {leftTextColor.B}             {leftTextColor.R}             {leftTextColor.G}             {leftTextColor.B}",
                 $"{leftTextColor.R}             {leftTextColor.G}             {leftTextColor.B}             {leftTextColor.R}             {leftTextColor.G}             {leftTextColor.B}",
@@ -443,8 +442,8 @@ namespace FriishProduce
                 "0             0             0             255           255           255",
                 "0             0             0             0             0             0",
                 "60             60             60             255           255           255",
-                $"0             0             0             {colors[2].R}             {colors[2].G}             {colors[2].B}",
-                $"0             0             0             {colors[2].R}             {colors[2].G}             {colors[2].B}",
+                $"0             0             0             {colors.bgBottom.R}             {colors.bgBottom.G}             {colors.bgBottom.B}",
+                $"0             0             0             {colors.bgBottom.R}             {colors.bgBottom.G}             {colors.bgBottom.B}",
             };
 
             string VCCSPath = Path.Combine(Paths.Tools, "vcbrlyt\\Schemes\\banner.vccs");

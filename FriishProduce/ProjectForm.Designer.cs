@@ -74,7 +74,7 @@ namespace FriishProduce
             this.software_name = new System.Windows.Forms.Label();
             this.filename = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.BannerPreview = new System.Windows.Forms.Button();
+            this.ShowBannerPreview = new System.Windows.Forms.Button();
             this.Players = new System.Windows.Forms.NumericUpDown();
             this.ReleaseYear = new System.Windows.Forms.NumericUpDown();
             this.label10 = new System.Windows.Forms.Label();
@@ -93,6 +93,8 @@ namespace FriishProduce
             this.baseName = new System.Windows.Forms.Label();
             this.BrowsePatch = new System.Windows.Forms.OpenFileDialog();
             this.BrowseManual = new Ookii.Dialogs.WinForms.VistaFolderBrowserDialog();
+            this.BannerPreview = new System.Windows.Forms.PictureBox();
+            this.banner_preview = new System.Windows.Forms.GroupBox();
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.IconPreview)).BeginInit();
             this.groupBox7.SuspendLayout();
@@ -109,6 +111,8 @@ namespace FriishProduce
             ((System.ComponentModel.ISupportInitialize)(this.ReleaseYear)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BaseRegion)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BannerPreview)).BeginInit();
+            this.banner_preview.SuspendLayout();
             this.SuspendLayout();
             // 
             // BaseRegionList
@@ -124,7 +128,6 @@ namespace FriishProduce
             this.groupBox6.Controls.Add(this.imageintpl);
             this.groupBox6.Controls.Add(this.image_fit);
             this.groupBox6.Controls.Add(this.image_stretch);
-            this.groupBox6.Controls.Add(this.IconPreview);
             resources.ApplyResources(this.groupBox6, "groupBox6");
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.TabStop = false;
@@ -446,7 +449,7 @@ namespace FriishProduce
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.BannerPreview);
+            this.groupBox5.Controls.Add(this.ShowBannerPreview);
             this.groupBox5.Controls.Add(this.Players);
             this.groupBox5.Controls.Add(this.ReleaseYear);
             this.groupBox5.Controls.Add(this.label10);
@@ -458,13 +461,13 @@ namespace FriishProduce
             this.groupBox5.TabStop = false;
             this.groupBox5.Tag = "banner";
             // 
-            // BannerPreview
+            // ShowBannerPreview
             // 
-            resources.ApplyResources(this.BannerPreview, "BannerPreview");
-            this.BannerPreview.Name = "BannerPreview";
-            this.BannerPreview.Tag = "banner_preview";
-            this.BannerPreview.UseVisualStyleBackColor = true;
-            this.BannerPreview.Click += new System.EventHandler(this.BannerPreview_Click);
+            resources.ApplyResources(this.ShowBannerPreview, "ShowBannerPreview");
+            this.ShowBannerPreview.Name = "ShowBannerPreview";
+            this.ShowBannerPreview.Tag = "banner_preview";
+            this.ShowBannerPreview.UseVisualStyleBackColor = true;
+            this.ShowBannerPreview.Click += new System.EventHandler(this.ShowBannerPreview_Click);
             // 
             // Players
             // 
@@ -625,12 +628,28 @@ namespace FriishProduce
             // 
             this.BrowsePatch.RestoreDirectory = true;
             // 
+            // BannerPreview
+            // 
+            resources.ApplyResources(this.BannerPreview, "BannerPreview");
+            this.BannerPreview.Name = "BannerPreview";
+            this.BannerPreview.TabStop = false;
+            // 
+            // banner_preview
+            // 
+            this.banner_preview.Controls.Add(this.BannerPreview);
+            resources.ApplyResources(this.banner_preview, "banner_preview");
+            this.banner_preview.Name = "banner_preview";
+            this.banner_preview.TabStop = false;
+            this.banner_preview.Tag = "banner_preview";
+            // 
             // ProjectForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.banner_preview);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.IconPreview);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox7);
@@ -670,7 +689,10 @@ namespace FriishProduce
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BaseRegion)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BannerPreview)).EndInit();
+            this.banner_preview.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -737,6 +759,8 @@ namespace FriishProduce
         private Ookii.Dialogs.WinForms.VistaFolderBrowserDialog BrowseManual;
         private System.Windows.Forms.Label manual_type;
         private System.Windows.Forms.ComboBox manual_type_list;
-        private System.Windows.Forms.Button BannerPreview;
+        private System.Windows.Forms.Button ShowBannerPreview;
+        private System.Windows.Forms.PictureBox BannerPreview;
+        private System.Windows.Forms.GroupBox banner_preview;
     }
 }

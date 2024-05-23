@@ -397,6 +397,7 @@ namespace FriishProduce
 
                 default:
                     ROM = new Disc();
+                    Patch.Enabled = false;
                     break;
             }
 
@@ -508,6 +509,7 @@ namespace FriishProduce
                 SaveDataTitle.Lines;
 
             SetROMDataText();
+            ResetBannerPreview();
 
             Tag = "dirty";
             ExportCheck.Invoke(this, EventArgs.Empty);
@@ -515,28 +517,27 @@ namespace FriishProduce
 
         public bool[] CheckToolStripButtons() => new bool[]
             {
-                Console != Console.Flash && Console != Console.RPGM && (ROM?.Bytes != null || !string.IsNullOrWhiteSpace(ROM?.Path)), // LibRetro / game data
-                Console != Console.Flash && Console != Console.RPGM && isVCMode, // Browse manual
+                Console != Console.Flash
+                && Console != Console.RPGM
+                && Console != Console.PSX
+                && (ROM?.Bytes != null || !string.IsNullOrWhiteSpace(ROM?.Path)), // LibRetro / game data
+
+                Console != Console.Flash
+                && Console != Console.RPGM
+                && Console != Console.PSX
+                && isVCMode, // Browse manual
             };
 
         protected virtual void SetROMDataText()
         {
-            bool foundRomName = false;
-            filename.Text = string.Format(Program.Lang.String("filename", Name), !string.IsNullOrWhiteSpace(ROM?.Path) ? Path.GetFileName(ROM.Path) : Program.Lang.String("unknown"));
+            filename.Text = string.Format(Program.Lang.String("filename", Name), !string.IsNullOrWhiteSpace(ROM?.Path) ? Path.GetFileName(ROM.Path) : Program.Lang.String("none"));
 
             if (gameData == null)
-                software_name.Text = string.Format(Program.Lang.String("software_name", Name), Program.Lang.String("unknown"));
+                software_name.Text = string.Format(Program.Lang.String("software_name", Name), Program.Lang.String("none"));
             else if (Console == Console.RPGM && (ROM as RPGM)?.GetTitle(ROM.Path) != null)
-            {
-                foundRomName = true;
-                software_name.Text = string.Format(Program.Lang.String("software_name", Name), (ROM as RPGM).GetTitle(ROM.Path)?.Replace(Environment.NewLine, " - ") ?? Program.Lang.String("unknown"));
-            }
+                software_name.Text = string.Format(Program.Lang.String("software_name", Name), (ROM as RPGM).GetTitle(ROM.Path)?.Replace(Environment.NewLine, " - ") ?? Program.Lang.String("none"));
             else
-            {
-                foundRomName = gameData.CleanTitle != null;
-                software_name.Text = string.Format(Program.Lang.String("software_name", Name), gameData.CleanTitle?.Replace(Environment.NewLine, " - ") ?? Program.Lang.String("unknown"));
-            }
-            software_name.Visible = foundRomName;
+                software_name.Text = string.Format(Program.Lang.String("software_name", Name), gameData.CleanTitle?.Replace(Environment.NewLine, " - ") ?? Program.Lang.String("none"));
 
             label11.Text = !string.IsNullOrWhiteSpace(PatchFile) ? Path.GetFileName(PatchFile) : Program.Lang.String("none");
             label11.Enabled = !string.IsNullOrWhiteSpace(PatchFile);
@@ -895,16 +896,14 @@ namespace FriishProduce
 
                     case Console.NES:
                         if (InjectorsList.SelectedIndex == 0
-                            && src.Width == 256 && (src.Height == 224 || src.Height == 240)
                             && CO.Options != null
                             && bool.Parse(CO.Options["use_tImg"]))
                         {
                             var CO_NES = CO as Options_VC_NES;
+                            var palette = CO_NES.CheckPalette(img);
 
-                            if (CO_NES.ImgPaletteIndex == -1 || oldImgPath != newImgPath)
-                                CO_NES.ImgPaletteIndex = CO_NES.CheckPalette(img);
-
-                            img = CO_NES.SwapColors(img, CO_NES.Palettes[CO_NES.ImgPaletteIndex], CO_NES.Palettes[int.Parse(CO_NES.Options["palette"])]);
+                            if (palette != -1 && src.Width == 256 && (src.Height == 224 || src.Height == 240))
+                                img = CO_NES.SwapColors(img, CO_NES.Palettes[palette], CO_NES.Palettes[int.Parse(CO_NES.Options["palette"])]);
                         }
                         break;
 
@@ -919,7 +918,7 @@ namespace FriishProduce
                 if (Img.Source != null)
                 {
                     SaveIcon_Panel.BackgroundImage = Img.SaveIcon();
-                    IconPreview.Image = Preview.Icon(Img.IconVCPic, Console, BannerRegion(), IconPreview);
+                    ResetBannerPreview();
                 }
 
                 CheckExport();
@@ -1166,7 +1165,6 @@ namespace FriishProduce
             Forwarder f = new Forwarder()
             {
                 ROM = ROM.Path,
-                ROMExtension = Path.GetExtension(this.ROM.Path),
                 ID = Creator.TitleID,
                 Emulator = InjectorsList.SelectedItem.ToString(),
                 Storage = FStorage_USB.Checked ? Forwarder.Storages.USB : Forwarder.Storages.SD
@@ -1577,7 +1575,7 @@ namespace FriishProduce
                     SaveDataTitle.Clear();
 
             End:
-            IconPreview.Image = Preview.Icon(Img?.IconVCPic, Console, BannerRegion(), IconPreview);
+            ResetBannerPreview();
             LinkSaveDataTitle();
             ResetContentOptions();
         }
@@ -1675,7 +1673,7 @@ namespace FriishProduce
 
             #region Set size of content options panel
             var selected = isVCMode ? COPanel_VC : Console != Console.Flash ? COPanel_Forwarder : null;
-            int height = selected == null ? MethodOptions.Location.Y + MethodOptions.Height + 11 : selected.Location.Y + selected.Height + 11;
+            int height = selected == null ? MethodOptions.Location.Y + MethodOptions.Height + 11 : selected.Location.Y + selected.Height + 10;
             groupBox3.Size = new Size(groupBox3.Width, height);
             MethodOptions.Enabled = CO != null;
             #endregion
@@ -1767,7 +1765,6 @@ namespace FriishProduce
         private void InjectorsList_SelectedIndexChanged(object sender, EventArgs e)
         {
             ResetContentOptions();
-            IconPreview.Image = Preview.Icon(Img?.IconVCPic, Console, BannerRegion(), IconPreview);
             if (groupBox3.Enabled) CheckExport();
         }
 
@@ -1804,13 +1801,34 @@ namespace FriishProduce
             return lang;
         }
 
-        private void BannerPreview_Click(object sender, EventArgs e)
+        private void ResetBannerPreview()
+        {
+            IconPreview.Image = Preview.Icon
+            (
+                Img?.IconVCPic,
+                Console,
+                BannerRegion(),
+                IconPreview
+            );
+
+            BannerPreview.Image = Preview.Banner
+            (
+                Img?.VCPic,
+                BannerTitle.Text,
+                (int)ReleaseYear.Value,
+                (int)Players.Value,
+                Console,
+                BannerRegion()
+            );
+        }
+
+        private void ShowBannerPreview_Click(object sender, EventArgs e)
         {
             using (Form f = new Form())
             {
                 f.FormBorderStyle = FormBorderStyle.FixedToolWindow;
                 f.ShowInTaskbar = false;
-                f.Text = BannerPreview.Text;
+                f.Text = ShowBannerPreview.Text;
                 f.Icon = Icon;
 
                 var p = new PictureBox() { Name = "picture" };
@@ -1818,11 +1836,11 @@ namespace FriishProduce
                 p.Location = new Point(0, 0);
                 p.Image = Preview.Banner
                 (
-                    Console,
+                    Img?.VCPic,
                     BannerTitle.Text,
                     (int)ReleaseYear.Value,
                     (int)Players.Value,
-                    Img?.VCPic,
+                    Console,
                     BannerRegion()
                 );
 

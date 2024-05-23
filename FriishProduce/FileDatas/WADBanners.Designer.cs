@@ -163,6 +163,16 @@ namespace FriishProduce.FileDatas {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] jp_psx {
+            get {
+                object obj = ResourceManager.GetObject("jp_psx", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] jp_rpgm {
             get {
                 object obj = ResourceManager.GetObject("jp_rpgm", resourceCulture);
@@ -267,6 +277,36 @@ namespace FriishProduce.FileDatas {
             get {
                 object obj = ResourceManager.GetObject("nes", resourceCulture);
                 return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] psx {
+            get {
+                object obj = ResourceManager.GetObject("psx", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap psx_banner {
+            get {
+                object obj = ResourceManager.GetObject("psx_banner", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap psx_icon {
+            get {
+                object obj = ResourceManager.GetObject("psx_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

@@ -92,10 +92,6 @@ namespace FriishProduce
         }
 
         #region Palettes handler
-        /* FOR COSMETIC DISPLAY ONLY */
-        public int ImgPaletteIndex = -1;
-        // *******
-
         public readonly string[][] Palettes = new string[][]
         {
             // WIIVC

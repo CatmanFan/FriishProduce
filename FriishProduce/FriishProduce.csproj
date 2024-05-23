@@ -443,6 +443,7 @@
     <None Include="Resources\banners\jp_n64.app" />
     <None Include="Resources\banners\jp_neogeo.app" />
     <None Include="Resources\banners\jp_pce.app" />
+    <None Include="Resources\banners\jp_psx.app" />
     <None Include="Resources\banners\jp_rpgm.app" />
     <None Include="Resources\banners\jp_sfc.app" />
     <None Include="Resources\banners\jp_smd.app" />
@@ -453,6 +454,7 @@
     <None Include="Resources\banners\n64.app" />
     <None Include="Resources\banners\neogeo.app" />
     <None Include="Resources\banners\nes.app" />
+    <None Include="Resources\banners\psx.app" />
     <None Include="Resources\banners\rpgm.app" />
     <None Include="Resources\banners\smd.app" />
     <None Include="Resources\banners\sms.app" />
@@ -498,6 +500,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\banners\tpl\psx.png" />
+    <None Include="Resources\banners\tpl\psx_icon1.png" />
+    <None Include="Resources\banners\tpl\psx_icon.png" />
     <None Include="Resources\banners\tpl\rpgm_icon.png" />
     <None Include="Resources\banners\tpl\rpgm.png" />
     <None Include="Resources\banners\tpl\jp_rpgm.png" />

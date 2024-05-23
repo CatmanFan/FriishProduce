@@ -49,15 +49,15 @@ namespace FriishProduce
         public enum WADTypes { Comex, Waninkoko };
         public static WADTypes WADType { get; set; }
 
-        private static string Path { get; set; }
+        private static string path { get; set; }
 
-        private static bool IsDisc { get => new Disc().CheckValidity(Path); }
+        private bool isDisc { get => new Disc().CheckValidity(ROM); }
 
         public string ROM { get; set; }
-        public string ROMExtension { get; set; }
+        private string romExtension { get => Path.GetExtension(ROM).ToLower(); }
 
         private string tID;
-        public string ID { get => tID; set { tID = value; Path = $"%s:/private/VC/{value}/boot.dol"; } }
+        public string ID { get => tID; set { tID = value; path = $"%s:/private/VC/{value}/boot.dol"; } }
 
         public void CreateZIP(string Out)
         {
@@ -66,9 +66,9 @@ namespace FriishProduce
             if (ROM == null) throw new FileNotFoundException();
             if (EmulatorIndex == -1) throw new NotSupportedException();
 
-            string PackageFolder = Paths.SDUSBRoot + Path.Substring(4).Replace("/boot.dol", "").Replace('/', '\\') + '\\';
-            string ROMFolder = IsDisc ? PackageFolder + "title\\" : PackageFolder;
-            string ROMName = (EmulatorIndex >= 7 ? "title" : "HOME Menu") + ROMExtension;
+            string PackageFolder = Paths.SDUSBRoot + path.Substring(4).Replace("/boot.dol", "").Replace('/', '\\') + '\\';
+            string ROMFolder = isDisc ? PackageFolder + "title\\" : PackageFolder;
+            string ROMName = isDisc ? Path.GetFileName(ROM) : (EmulatorIndex >= 7 ? "title" : "HOME Menu") + romExtension;
 
             // Create SD folder and copy emulator
             // *******
@@ -79,7 +79,7 @@ namespace FriishProduce
             // *******
             if (EmulatorIndex == 13)
             {
-                string origPath = System.IO.Path.GetDirectoryName(ROM);
+                string origPath = Path.GetDirectoryName(ROM);
                 foreach (var folder in Directory.EnumerateDirectories(origPath, "*.*", SearchOption.AllDirectories))
                 {
                     string rawFolder = folder.Replace(origPath, "");
@@ -88,9 +88,10 @@ namespace FriishProduce
                 foreach (var file in Directory.EnumerateFiles(origPath, "*.*", SearchOption.AllDirectories))
                 {
                     string rawFile = file.Replace(origPath, "");
-                    if (!System.IO.Path.GetExtension(file).ToLower().EndsWith("exe")) File.Copy(file, ROMFolder + rawFile);
+                    if (!Path.GetExtension(file).ToLower().EndsWith("exe")) File.Copy(file, ROMFolder + rawFile);
                 }
             }
+
             else
             {
                 // Saves folders
@@ -134,13 +135,25 @@ namespace FriishProduce
 
                 // Copy game to SD folder
                 // *******
-                if (!File.Exists(ROMFolder + ROMName)) File.Copy(ROM, ROMFolder + ROMName);
+                if (!File.Exists(ROMFolder + ROMName))
+                {
+                    File.Copy(ROM, ROMFolder + ROMName);
+                    if (romExtension == ".cue")
+                    {
+                        foreach (var item in Directory.EnumerateFiles(Path.GetDirectoryName(ROM)))
+                        {
+                            if ((Path.GetExtension(item).ToLower() == ".bin" || Path.GetExtension(item).ToLower() == ".iso")
+                                && (Path.GetFileNameWithoutExtension(item).ToLower() == Path.GetFileNameWithoutExtension(ROM).ToLower()))
+                                File.Copy(item, ROMFolder + Path.GetFileName(item));
+                        }
+                    }
+                }
             }
 
             // Prepare for meta.xml creation
             // *******
-            ROMFolder = Path.Replace("%s:/", Storage == Storages.USB ? "usb:/" : "sd:/").Replace("/boot.dol", "");
-            if (IsDisc) ROMFolder += "/title";
+            ROMFolder = path.Replace("%s:/", Storage == Storages.USB ? "usb:/" : "sd:/").Replace("/boot.dol", "");
+            if (isDisc) ROMFolder += "/title";
 
             // Write main
             // *******
@@ -155,7 +168,7 @@ namespace FriishProduce
                 "  <short_description>SRL Forwarder</short_description>",
                 "  <long_description>This will attempt to load a ROM from the following path:",
                 ROMFolder + '/' + ROMName,
-                $"using the emulator {List[EmulatorIndex]}.</long_description>",
+                $"using the emulator {List[EmulatorIndex].Name}.</long_description>",
                 "  <arguments>",
 
             };
@@ -230,7 +243,7 @@ namespace FriishProduce
             byte[] Forwarder = NeedsOldForwarder ? FileDatas.Forwarder.DOL_V12 : FileDatas.Forwarder.DOL_V14;
             int TargetOffset = NeedsOldForwarder ? 0x77426 : 0x7F979;
             int SecondTargetOffset = NeedsOldForwarder ? 263 : 256;
-            string TargetPath = NeedsOldForwarder ? Path : Path.Substring(4);
+            string TargetPath = NeedsOldForwarder ? path : path.Substring(4);
 
             // Create forwarder .app
             // *******

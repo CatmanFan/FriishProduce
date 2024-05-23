@@ -31,6 +31,7 @@ This injector bypasses other third-party assets (such as Common-Key.bin, HowardC
     * **Microsoft MSX / MSX2**
   * Others:
     * **Adobe Flash**
+    * **Sony PlayStation**
     * **RPG Maker 2000 / 2003**
 
 ---
@@ -41,6 +42,7 @@ See **[here](https://github.com/CatmanFan/FriishProduce/wiki/FriishProduce-v1.0)
 ---
 
 ## To-Do
+- [ ] Add BIOS option for PlayStation
 - [ ] Add *.zip format for RPG Maker games
 - [ ] Restructure and clean code
 - [ ] Use by default: *.chd format for disc games, *.wbfs for GCN 

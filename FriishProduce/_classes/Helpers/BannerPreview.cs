@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
 using System.Drawing.Text;
 using System.Windows.Forms;
 
@@ -17,7 +19,37 @@ namespace FriishProduce
             Auto
         }
 
-        private readonly Color[][] ColorSchemes = BannerSchemes.List;
+        private Bitmap RoundCorners(Image StartImage, int CornerRadius, bool Smooth = false)
+        {
+            CornerRadius *= 2;
+            Bitmap x = new Bitmap(StartImage.Width, StartImage.Height);
+            using (Graphics g = Graphics.FromImage(x))
+            {
+                g.SmoothingMode = SmoothingMode.AntiAlias;
+                Brush brush = new TextureBrush(StartImage);
+                GraphicsPath gp1 = new GraphicsPath();
+
+                int offset = Smooth ? 1 : 0;
+
+                gp1.AddArc(offset, offset, CornerRadius, CornerRadius, 180, 90);
+                gp1.AddArc(offset + x.Width - CornerRadius, offset, CornerRadius - (offset * 2), CornerRadius - (offset * 2), 270, 90);
+                gp1.AddArc(offset + x.Width - CornerRadius, offset + x.Height - CornerRadius, CornerRadius - (offset * 2), CornerRadius - (offset * 2), 0, 90);
+                gp1.AddArc(offset, offset + x.Height - CornerRadius, CornerRadius - (offset * 2), CornerRadius - (offset * 2), 90, 90);
+                g.FillPath(brush, gp1);
+
+                if (Smooth)
+                {
+                    GraphicsPath gp2 = new GraphicsPath();
+                    gp2.AddCurve(new Point[] { new Point(offset, CornerRadius / 2), new Point(0, x.Height / 2), new Point(offset, x.Height - CornerRadius / 2) });
+                    gp2.AddCurve(new Point[] { new Point(x.Width - offset, CornerRadius / 2), new Point(x.Width, x.Height / 2), new Point(x.Width - offset, x.Height - CornerRadius / 2) });
+                    gp2.AddCurve(new Point[] { new Point(CornerRadius / 2, offset), new Point(x.Width / 2, 0), new Point(x.Width - CornerRadius / 2, offset) });
+                    gp2.AddCurve(new Point[] { new Point(CornerRadius / 2, x.Height - offset), new Point(x.Width / 2, x.Height), new Point(x.Width - CornerRadius / 2, x.Height - offset) });
+                    g.FillPath(brush, gp2);
+                }
+
+                return x;
+            }
+        }
 
         #region Font Functions
 
@@ -46,7 +78,17 @@ namespace FriishProduce
 
         #endregion
 
-        public Bitmap Banner(Console console, string text, int year, int players, Bitmap img, Language lang)
+        /// <summary>
+        /// Creates a banner preview bitmap using VCPic.
+        /// </summary>
+        /// <param name="img">Image to be used</param>
+        /// <param name="text">Full title of the game</param>
+        /// <param name="year">Year the game was released</param>
+        /// <param name="players">No. of players supported</param>
+        /// <param name="console">Platform/console</param>
+        /// <param name="lang">Banner region/language: Japanese, Korean, Europe or America</param>
+        /// <returns></returns>
+        public Bitmap Banner(Bitmap img, string text, int year, int players, Console console, Language lang)
         {
             Bitmap bmp = new Bitmap(650, 260);
             if (img == null)
@@ -100,12 +142,16 @@ namespace FriishProduce
                     target = 14;
                     break;
 
-                case Console.RPGM:
+                case Console.PSX:
                     target = 15;
+                    break;
+
+                case Console.RPGM:
+                    target = 16;
                     break;
             }
 
-            var leftTextColor = target == 2 ? Color.Black : target == 8 ? Color.FromArgb(90, 90, 90) : ColorSchemes[target][0].GetBrightness() < 0.8 ? Color.White : Color.FromArgb(50, 50, 50);
+            var leftTextColor = target == 2 ? Color.Black : target == 8 ? Color.FromArgb(90, 90, 90) : BannerSchemes.List[target].bg.GetBrightness() < 0.8 ? Color.White : Color.FromArgb(50, 50, 50);
 
             string released = lang == Language.Japanese ? "{0}年発売"
                              : lang == Language.Korean ? "일본판 발매년도\r\n{0}년"
@@ -126,15 +172,15 @@ namespace FriishProduce
                               : "Players: {0}";
 
             using (Graphics g = Graphics.FromImage(bmp))
-            using (LinearGradientBrush b1 = new LinearGradientBrush(new Point(0, 130), new Point(0, (int)Math.Round(bmp.Height * 0.9)), ColorSchemes[target][0], ColorSchemes[target][2]))
-            using (LinearGradientBrush b2 = new LinearGradientBrush(new Point(0, 50), new Point(0, (int)Math.Round(bmp.Height * 1.25)), ColorSchemes[target][0], ColorSchemes[target][2]))
-            using (LinearGradientBrush c = new LinearGradientBrush(new Point(0, 0), new Point(125, 0), ColorSchemes[target][3], ColorSchemes[target][0]))
+            using (LinearGradientBrush b1 = new LinearGradientBrush(new Point(0, 130), new Point(0, (int)Math.Round(bmp.Height * 0.9)), BannerSchemes.List[target].bg, BannerSchemes.List[target].bgBottom))
+            using (LinearGradientBrush b2 = new LinearGradientBrush(new Point(0, 50), new Point(0, (int)Math.Round(bmp.Height * 1.25)), BannerSchemes.List[target].bg, BannerSchemes.List[target].bgBottom))
+            using (LinearGradientBrush c = new LinearGradientBrush(new Point(0, 0), new Point(125, 0), BannerSchemes.List[target].lines, BannerSchemes.List[target].bg))
             {
                 g.CompositingQuality = CompositingQuality.AssumeLinear;
                 g.SmoothingMode = SmoothingMode.HighQuality;
                 g.TextRenderingHint = TextRenderingHint.AntiAlias;
 
-                g.Clear(ColorSchemes[target][0]);
+                g.Clear(BannerSchemes.List[target].bg);
                 g.FillRectangle(b1, -5, (bmp.Height / 2) + 10, bmp.Width + 10, 40);
                 g.FillRectangle(b2, -5, (bmp.Height / 2) + 49, bmp.Width + 10, bmp.Height);
 
@@ -250,16 +296,16 @@ namespace FriishProduce
                         break;
 
                     case Console.PSX:
-                        cName = "PLAYSTATION";
+                        cName = lang switch { Language.Japanese => "プレイステーション", _ => "PLAYSTATION" };
                         break;
 
                     case Console.RPGM:
-                        cName = "RPG MAKER";
+                        cName = lang switch { Language.Japanese => "ＲＰＧツクール", _ => "RPG MAKER" };
                         break;
                 }
 
                 var f = new Font(Font(), 9);
-                var brush = new SolidBrush(ColorSchemes[target][5]);
+                var brush = new SolidBrush(BannerSchemes.List[target].topBG);
 
                 var p = new GraphicsPath();
                 p.AddLine(-5, -5, -5, 5);
@@ -277,9 +323,9 @@ namespace FriishProduce
                 p.AddLine(bmp.Width - TextRenderer.MeasureText(cName, f).Width - 14, 32, bmp.Width + 5, 32);
                 p.AddLine(bmp.Width + 5, 32, bmp.Width + 5, -5);
 
-                g.DrawPath(new Pen(ColorSchemes[target][4], 2), p);
+                g.DrawPath(new Pen(BannerSchemes.List[target].topBorder, 2), p);
                 g.FillPath(brush, p);
-                g.DrawString(cName, f, new SolidBrush(ColorSchemes[target][6]),
+                g.DrawString(cName, f, new SolidBrush(BannerSchemes.List[target].topText),
                     bmp.Width - 10,
                     24,
                     new StringFormat() { Alignment = StringAlignment.Far, LineAlignment = StringAlignment.Center });
@@ -289,19 +335,14 @@ namespace FriishProduce
             return bmp;
         }
 
-        private struct icon
-        {
-            public Bitmap origImg;
-            public Bitmap iconImg;
-            public Bitmap consoleImg;
-            public (Console, Language) type;
-            public double duration;
-            public Timer durationTimer;
-            public PictureBox target;
-        }
-
-        private icon iconData = new icon();
-
+        /// <summary>
+        /// Creates an icon preview bitmap using IconVCPic. If a PictureBox control is specified, this can also be used to create an animation similar to what will appear on the Wii Menu.
+        /// </summary>
+        /// <param name="img">Image to be used</param>
+        /// <param name="console">Platform/console</param>
+        /// <param name="lang">Banner region/language: Japanese, Korean, Europe or America</param>
+        /// <param name="target">PictureBox control</param>
+        /// <returns></returns>
         public Bitmap Icon(Bitmap img, Console console, Language lang, PictureBox target = null)
         {
             // 0s - 5s = Title
@@ -309,20 +350,14 @@ namespace FriishProduce
             // 6s - 8s = Logo
             // 8s - 9s = Fadeout
 
-            if (iconData.duration >= 90) iconData.duration = 0;
+            if (iconData.duration.second >= iconData.opacities.Count - 1) iconData.duration = (0, 0);
+            bool reset = iconData.type != ((int)console, (int)lang) || iconData.origImg != img;
 
             // Console/platform logo
             // ****************
-            if (iconData.consoleImg == null)
+            if (reset)
             {
-                iconData.consoleImg = new Bitmap(128, 96);
-                using (Graphics g = Graphics.FromImage(iconData.consoleImg))
-                    g.Clear(Color.White);
-            }
-
-            else if (target != null)
-            {
-                iconData.type = (console, lang);
+                iconData.type = ((int)console, (int)lang);
                 using (var U8 = BannerHelper.BannerApp(console, lang switch { Language.Japanese => libWiiSharp.Region.Japan, Language.Korean => libWiiSharp.Region.Korea, Language.Europe => libWiiSharp.Region.Europe, _ => libWiiSharp.Region.USA }))
                 {
                     if (U8 != null)
@@ -339,8 +374,35 @@ namespace FriishProduce
                                     using (Graphics g = Graphics.FromImage(iconData.consoleImg))
                                     {
                                         g.Clear(Color.White);
-                                        var logo = tpl.ExtractTexture();
-                                        g.DrawImage(logo, (128 / 2) - (logo.Width / 2), (96 / 2) - (logo.Height / 2));
+                                        Bitmap logo = (Bitmap)tpl.ExtractTexture();
+
+                                        if ((int)tpl.GetTextureFormat(0) <= 1)
+                                        {
+                                            using (Bitmap transLogo = new Bitmap(logo.Width, logo.Height, PixelFormat.Format32bppArgb))
+                                            {
+                                                unsafe
+                                                {
+                                                    BitmapData data = transLogo.LockBits(new Rectangle(Point.Empty, transLogo.Size), ImageLockMode.ReadWrite, transLogo.PixelFormat);
+
+                                                    byte* line = (byte*)data.Scan0;
+                                                    for (int y = 0; y < data.Height; y++)
+                                                    {
+                                                        for (int x = 0; x < data.Width; x++)
+                                                        {
+                                                            var c = console == Console.NES ? Color.FromArgb(176, 26, 26) : Color.Black;
+                                                            *((int*)line + x) = Color.FromArgb(logo.GetPixel(x, y).R, c.R, c.G, c.B).ToArgb();
+                                                        }
+
+                                                        line += data.Stride;
+                                                    }
+
+                                                    transLogo.UnlockBits(data);
+                                                    g.DrawImage(transLogo, (128 / 2) - (logo.Width / 2), (96 / 2) - (logo.Height / 2));
+                                                }
+                                            }
+
+                                        }
+                                        else g.DrawImage(logo, (128 / 2) - (logo.Width / 2), (96 / 2) - (logo.Height / 2));
                                     }
                                 }
                             }
@@ -349,20 +411,30 @@ namespace FriishProduce
                 }
             }
 
+            if (iconData.consoleImg == null)
+            {
+                iconData.consoleImg = new Bitmap(128, 96);
+                using (Graphics g = Graphics.FromImage(iconData.consoleImg))
+                    g.Clear(Color.White);
+            }
+
             // Title image
             // ****************
-            if (iconData.origImg != img)
+            if (img != null && reset)
             {
                 iconData.origImg = img;
-                iconData.duration = 0;
+                iconData.duration = (0, 0);
+
+                try { iconData.durationTimer.Tick -= iconDurationTick; } catch { }
+                iconData.durationTimer.Stop();
 
                 // Set icon image
                 // ****************
-                iconData.iconImg = new Bitmap(img.Width - 10, 92 + 4 - 11);
+                iconData.iconImg = new Bitmap(128, 96);
 
                 using (Graphics g = Graphics.FromImage(iconData.iconImg))
                 {
-                    g.InterpolationMode = InterpolationMode.High;
+                    g.InterpolationMode = InterpolationMode.Bilinear;
                     g.SmoothingMode = SmoothingMode.HighQuality;
                     g.CompositingQuality = CompositingQuality.HighQuality;
                     g.DrawImage(img, -4, -4, iconData.iconImg.Width + 11, iconData.iconImg.Height + 11);
@@ -370,14 +442,34 @@ namespace FriishProduce
 
                 // Restart timer
                 // ****************
-                iconData.durationTimer = new Timer() { Interval = 100, Enabled = true };
                 iconData.durationTimer.Tick += iconDurationTick;
+                iconData.durationTimer.Start();
             }
 
-            var bmp = img == null || iconData.duration >= 50 ? iconData.consoleImg : iconData.iconImg;
+            var bmp = new Bitmap(128, 96);
+            using (Graphics g = Graphics.FromImage(bmp))
+            {
+                g.DrawImage(iconData.consoleImg, 0, 0);
+                var opacity1 = iconData.opacities[iconData.duration.second];
+                var opacity2 = iconData.opacities[iconData.duration.second + 1];
+                var percentage = iconData.duration.frame / (1000F / iconData.durationTimer.Interval);
+                float opacityT = (opacity1 * (1F - percentage)) + (opacity2 * percentage);
+
+                if (img != null)
+                {
+                    if (opacityT < 1 && opacityT > 0)
+                    {
+                        using (var a = new ImageAttributes())
+                        {
+                            a.SetColorMatrix(new ColorMatrix() { Matrix33 = opacityT });
+                            g.DrawImage(iconData.iconImg, new Rectangle(0, 0, bmp.Width, bmp.Height), 0, 0, iconData.iconImg.Width, iconData.iconImg.Height, GraphicsUnit.Pixel, a);
+                        }
+                    }
+                    else if (opacity1 >= 1) g.DrawImage(iconData.iconImg, 0, 0);
+                }
+            }
 
             var bmp2 = new Bitmap(120, 87);
-
             using (Graphics g = Graphics.FromImage(bmp2))
             {
                 using (Bitmap border = new Bitmap(bmp2.Width, bmp2.Height))
@@ -390,48 +482,30 @@ namespace FriishProduce
                 g.DrawImage(RoundCorners(bmp, 8, true), 1, 1, bmp2.Width - 2, bmp2.Height - 2);
             }
 
-            if (img != null) iconData.durationTimer.Start();
+            iconData.duration.frame++;
+            if (img != null && iconData.duration.frame >= 1000 / iconData.durationTimer.Interval) { iconData.duration.frame = 0; iconData.duration.second++; }
+
             if (target != null) iconData.target = target;
             if (iconData.target != null) iconData.target.Image = bmp2;
-            iconData.duration++;
             return bmp2;
         }
 
-        private void iconDurationTick(object sender, EventArgs e) => Icon(iconData.origImg, iconData.type.Item1, iconData.type.Item2, iconData.target);
-
-        private Bitmap RoundCorners(Image StartImage, int CornerRadius, bool Smooth = false)
+        #region Icon (private functions)
+        private struct icon
         {
-            CornerRadius *= 2;
-            Bitmap x = new Bitmap(StartImage.Width, StartImage.Height);
-            using (Graphics g = Graphics.FromImage(x))
-            {
-                g.SmoothingMode = SmoothingMode.AntiAlias;
-                Brush brush = new TextureBrush(StartImage);
-                GraphicsPath gp1 = new GraphicsPath();
-
-                int offset = Smooth ? 1 : 0;
-
-                gp1.AddArc(offset, offset, CornerRadius, CornerRadius, 180, 90);
-                gp1.AddArc(offset + x.Width - CornerRadius, offset, CornerRadius - (offset * 2), CornerRadius - (offset * 2), 270, 90);
-                gp1.AddArc(offset + x.Width - CornerRadius, offset + x.Height - CornerRadius, CornerRadius - (offset * 2), CornerRadius - (offset * 2), 0, 90);
-                gp1.AddArc(offset, offset + x.Height - CornerRadius, CornerRadius - (offset * 2), CornerRadius - (offset * 2), 90, 90);
-                g.FillPath(brush, gp1);
-
-                if (Smooth)
-                {
-                    GraphicsPath gp2 = new GraphicsPath();
-                    gp2.AddCurve(new Point[] { new Point(offset, CornerRadius / 2), new Point(0, x.Height / 2), new Point(offset, x.Height - CornerRadius / 2) });
-                    gp2.AddCurve(new Point[] { new Point(x.Width - offset, CornerRadius / 2), new Point(x.Width, x.Height / 2), new Point(x.Width - offset, x.Height - CornerRadius / 2) });
-                    gp2.AddCurve(new Point[] { new Point(CornerRadius / 2, offset), new Point(x.Width / 2, 0), new Point(x.Width - CornerRadius / 2, offset) });
-                    gp2.AddCurve(new Point[] { new Point(CornerRadius / 2, x.Height - offset), new Point(x.Width / 2, x.Height), new Point(x.Width - CornerRadius / 2, x.Height - offset) });
-                    g.FillPath(brush, gp2);
-                }
-
-                return x;
-            }
+            public Bitmap origImg;
+            public Bitmap iconImg;
+            public Bitmap consoleImg;
+            public (int, int) type;
+            public (int second, float frame) duration;
+            public List<float> opacities;
+            public Timer durationTimer;
+            public PictureBox target;
         }
 
-        #region Icon
+        private icon iconData = new icon() { type = (-1, -1), opacities = new List<float>() { 1, 1, 1, 1, 1, 1, 0, 0, 0, 1 }, durationTimer = new Timer() { Interval = 25 } };
+
+        private void iconDurationTick(object sender, EventArgs e) => Icon(iconData.origImg, (Console)Math.Max(iconData.type.Item1, 0), (Language)Math.Max(iconData.type.Item2, 0), iconData.target);
         #endregion
     }
 }
