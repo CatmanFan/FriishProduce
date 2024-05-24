@@ -407,7 +407,7 @@ namespace FriishProduce
             // ********
             if (Console == Console.SMS || Console == Console.SMD) SaveIcon_Panel.BackgroundImage = Properties.Resources.SaveIconPlaceholder_SEGA;
             Preview = new Preview();
-            IconPreview.Image = Preview.Icon(null, Console, BannerRegion());
+            IconPreview.Image = Preview.Icon(null, Console, BannerRegion(), true, IconPreview);
             RefreshForm();
 
             Creator.BannerYear = (int)ReleaseYear.Value;
@@ -1852,7 +1852,6 @@ namespace FriishProduce
                 Img?.IconVCPic,
                 Console,
                 BannerRegion(),
-                IconPreview,
                 true
             );
 

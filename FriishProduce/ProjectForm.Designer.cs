@@ -45,9 +45,6 @@ namespace FriishProduce
             this.SaveDataTitle = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.COPanel_VC = new System.Windows.Forms.Panel();
-            this.manual_type = new System.Windows.Forms.Label();
-            this.manual_type_list = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.InjectorsList = new System.Windows.Forms.ComboBox();
             this.MethodOptions = new System.Windows.Forms.Button();
@@ -58,6 +55,9 @@ namespace FriishProduce
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.toggleSwitchL1 = new System.Windows.Forms.Label();
             this.toggleSwitch1 = new JCS.ToggleSwitch();
+            this.COPanel_VC = new System.Windows.Forms.Panel();
+            this.manual_type = new System.Windows.Forms.Label();
+            this.manual_type_list = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.Patch = new System.Windows.Forms.CheckBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -99,10 +99,10 @@ namespace FriishProduce
             ((System.ComponentModel.ISupportInitialize)(this.IconPreview)).BeginInit();
             this.groupBox7.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.COPanel_VC.SuspendLayout();
             this.COPanel_Forwarder.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox9.SuspendLayout();
+            this.COPanel_VC.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Random)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -230,28 +230,6 @@ namespace FriishProduce
             this.groupBox3.TabStop = false;
             this.groupBox3.Tag = "content_options";
             // 
-            // COPanel_VC
-            // 
-            this.COPanel_VC.Controls.Add(this.manual_type);
-            this.COPanel_VC.Controls.Add(this.manual_type_list);
-            resources.ApplyResources(this.COPanel_VC, "COPanel_VC");
-            this.COPanel_VC.Name = "COPanel_VC";
-            // 
-            // manual_type
-            // 
-            resources.ApplyResources(this.manual_type, "manual_type");
-            this.manual_type.Name = "manual_type";
-            this.manual_type.Tag = "manual_type";
-            // 
-            // manual_type_list
-            // 
-            this.manual_type_list.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.manual_type_list.FormattingEnabled = true;
-            resources.ApplyResources(this.manual_type_list, "manual_type_list");
-            this.manual_type_list.Name = "manual_type_list";
-            this.manual_type_list.Tag = "manual_type";
-            this.manual_type_list.SelectedIndexChanged += new System.EventHandler(this.CustomManual_CheckedChanged);
-            // 
             // label3
             // 
             resources.ApplyResources(this.label3, "label3");
@@ -330,6 +308,28 @@ namespace FriishProduce
             this.toggleSwitch1.OffFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toggleSwitch1.OnFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toggleSwitch1.CheckedChanged += new JCS.ToggleSwitch.CheckedChangedDelegate(this.ToggleSwitchChanged);
+            // 
+            // COPanel_VC
+            // 
+            this.COPanel_VC.Controls.Add(this.manual_type);
+            this.COPanel_VC.Controls.Add(this.manual_type_list);
+            resources.ApplyResources(this.COPanel_VC, "COPanel_VC");
+            this.COPanel_VC.Name = "COPanel_VC";
+            // 
+            // manual_type
+            // 
+            resources.ApplyResources(this.manual_type, "manual_type");
+            this.manual_type.Name = "manual_type";
+            this.manual_type.Tag = "manual_type";
+            // 
+            // manual_type_list
+            // 
+            this.manual_type_list.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.manual_type_list.FormattingEnabled = true;
+            resources.ApplyResources(this.manual_type_list, "manual_type_list");
+            this.manual_type_list.Name = "manual_type_list";
+            this.manual_type_list.Tag = "manual_type";
+            this.manual_type_list.SelectedIndexChanged += new System.EventHandler(this.CustomManual_CheckedChanged);
             // 
             // label11
             // 
@@ -669,13 +669,13 @@ namespace FriishProduce
             this.groupBox7.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            this.COPanel_VC.ResumeLayout(false);
-            this.COPanel_VC.PerformLayout();
             this.COPanel_Forwarder.ResumeLayout(false);
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
+            this.COPanel_VC.ResumeLayout(false);
+            this.COPanel_VC.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Random)).EndInit();
@@ -691,7 +691,6 @@ namespace FriishProduce
             ((System.ComponentModel.ISupportInitialize)(this.BannerPreview)).EndInit();
             this.banner_preview.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
