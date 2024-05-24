@@ -160,7 +160,7 @@ namespace FriishProduce
             InitializeComponent();
             Program.Handle = Handle;
 
-            MaximumSize = new Size(0,0);
+            MaximumSize = new Size(0, 0);
             tabControl.Location = MainPanel.Location;
             MainPanel.Height += excessHeight + 5;
             RefreshForm();
@@ -216,7 +216,7 @@ namespace FriishProduce
                     menu_retrieve_gamedata_online.Enabled = (tabControl.SelectedForm as ProjectForm).CheckToolStripButtons()[0];
                     menu_save_project_as.Enabled = (tabControl.SelectedForm as ProjectForm).Tag?.ToString().ToLower() == "dirty";
                 }
-            
+
             ToolStrip_SaveAs.Enabled = menu_save_project_as.Enabled;
             ToolStrip_UseLibRetro.Enabled = menu_retrieve_gamedata_online.Enabled;
         }
@@ -367,7 +367,7 @@ namespace FriishProduce
             if (index != -1) tabControl.TabPages[index].Select();
         }
 
-        private void CloseTab_Click(object sender, EventArgs e) => (tabControl.SelectedForm as Form).Close();
+        private void CloseTab_Click(object sender, EventArgs e) { var tab = tabControl.SelectedForm as Form; tab.Close(); tab.Dispose(); }
 
         private void About_Click(object sender, EventArgs e) { using (var about = new About() { Font = Font }) about.ShowDialog(); }
 

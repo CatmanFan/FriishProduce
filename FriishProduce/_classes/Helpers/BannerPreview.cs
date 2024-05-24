@@ -47,6 +47,9 @@ namespace FriishProduce
                     g.FillPath(brush, gp2);
                 }
 
+                g.Dispose();
+                gp1.Dispose();
+                brush.Dispose();
                 return x;
             }
         }
@@ -78,9 +81,6 @@ namespace FriishProduce
 
         #endregion
 
-        private (int, int) bannerType = (-1, -1);
-        private Bitmap bannerLogo;
-
         /// <summary>
         /// Creates a banner preview bitmap using VCPic.
         /// </summary>
@@ -94,6 +94,8 @@ namespace FriishProduce
         public Bitmap Banner(Bitmap img, string text, int year, int players, Console console, Language lang)
         {
             Bitmap bmp = new Bitmap(650, 260);
+            Bitmap bannerLogo = null;
+
             if (img == null)
             {
                 img = new Bitmap(256, 192);
@@ -186,39 +188,35 @@ namespace FriishProduce
                 g.Clear(BannerSchemes.List[target].bg);
 
                 #region Console/platform logo
-                if (((int)console, (int)lang) != bannerType)
+                using (var U8 = BannerHelper.BannerApp(console, lang switch { Language.Japanese => libWiiSharp.Region.Japan, Language.Korean => libWiiSharp.Region.Korea, Language.Europe => libWiiSharp.Region.Europe, _ => libWiiSharp.Region.USA }))
                 {
-                    bannerType = ((int)console, (int)lang);
-                    using (var U8 = BannerHelper.BannerApp(console, lang switch { Language.Japanese => libWiiSharp.Region.Japan, Language.Korean => libWiiSharp.Region.Korea, Language.Europe => libWiiSharp.Region.Europe, _ => libWiiSharp.Region.USA }))
+                    if (U8 != null)
                     {
-                        if (U8 != null)
+                        using (var Icon = libWiiSharp.U8.Load(U8.Data[U8.GetNodeIndex("banner.bin")]))
                         {
-                            using (var Icon = libWiiSharp.U8.Load(U8.Data[U8.GetNodeIndex("banner.bin")]))
+                            foreach (var item in Icon.StringTable)
                             {
-                                foreach (var item in Icon.StringTable)
+                                if (item.ToLower().Contains("back") && item.ToLower().EndsWith(".tpl"))
                                 {
-                                    if (item.ToLower().Contains("back") && item.ToLower().EndsWith(".tpl"))
+                                    using (var logo = (Bitmap)libWiiSharp.TPL.Load(Icon.Data[Icon.GetNodeIndex(item)]).ExtractTexture())
                                     {
-                                        using (var logo = (Bitmap)libWiiSharp.TPL.Load(Icon.Data[Icon.GetNodeIndex(item)]).ExtractTexture())
+                                        bannerLogo = new Bitmap(logo.Width, logo.Height, PixelFormat.Format32bppArgb);
+                                        unsafe
                                         {
-                                            bannerLogo = new Bitmap(logo.Width, logo.Height, PixelFormat.Format32bppArgb);
-                                            unsafe
+                                            BitmapData data = bannerLogo.LockBits(new Rectangle(Point.Empty, bannerLogo.Size), ImageLockMode.ReadWrite, bannerLogo.PixelFormat);
+
+                                            byte* line = (byte*)data.Scan0;
+                                            for (int y = 0; y < data.Height; y++)
                                             {
-                                                BitmapData data = bannerLogo.LockBits(new Rectangle(Point.Empty, bannerLogo.Size), ImageLockMode.ReadWrite, bannerLogo.PixelFormat);
-
-                                                byte* line = (byte*)data.Scan0;
-                                                for (int y = 0; y < data.Height; y++)
+                                                for (int x = 0; x < data.Width; x++)
                                                 {
-                                                    for (int x = 0; x < data.Width; x++)
-                                                    {
-                                                        *((int*)line + x) = Color.FromArgb(logo.GetPixel(x, y).R, BannerSchemes.List[target].bgLogo.R, BannerSchemes.List[target].bgLogo.G, BannerSchemes.List[target].bgLogo.B).ToArgb();
-                                                    }
-
-                                                    line += data.Stride;
+                                                    *((int*)line + x) = Color.FromArgb(logo.GetPixel(x, y).R, BannerSchemes.List[target].bgLogo.R, BannerSchemes.List[target].bgLogo.G, BannerSchemes.List[target].bgLogo.B).ToArgb();
                                                 }
 
-                                                bannerLogo.UnlockBits(data);
+                                                line += data.Stride;
                                             }
+
+                                            bannerLogo.UnlockBits(data);
                                         }
                                     }
                                 }
@@ -401,7 +399,11 @@ namespace FriishProduce
                     new StringFormat() { Alignment = StringAlignment.Far, LineAlignment = StringAlignment.Center });
                 #endregion
 
+                f.Dispose();
+                p.Dispose();
                 g.Dispose();
+                brush.Dispose();
+                if (bannerLogo != null) bannerLogo.Dispose();
             }
 
             return bmp;
@@ -559,6 +561,8 @@ namespace FriishProduce
 
             if (target != null) iconData.target = target;
             if (iconData.target != null) iconData.target.Image = bmp2;
+
+            bmp.Dispose();
             return bmp2;
         }
 
