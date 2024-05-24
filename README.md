@@ -42,10 +42,10 @@ See **[here](https://github.com/CatmanFan/FriishProduce/wiki/FriishProduce-v1.0)
 ---
 
 ## To-Do
-- [X] Add BIOS option for PlayStation
-- [ ] Add *.zip format for RPG Maker games
-- [ ] Restructure and clean code
-- [ ] Use by default: *.chd format for disc games, *.wbfs for GCN 
+* **Before next release:**
+  - [ ] Add folder format for RPG Maker games
+  - [ ] Use by default: *.chd format for disc games, *.wbfs for GCN
+  - [ ] Restructure and clean code 
 * Other VC injection support:
   * Commodore 64 (needs [Custom Frodo](https://gbatemp.net/threads/custom-frodo-for-c64-vc-injection.102356/))
   * TurboGrafx-16 CD (needs several programs to convert ISO to injectable format)
