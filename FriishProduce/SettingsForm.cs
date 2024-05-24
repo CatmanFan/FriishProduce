@@ -100,6 +100,7 @@ namespace FriishProduce
 
             Program.Lang.String(forwarder_root_device, "projectform");
             Program.Lang.String(forwarder_console, "projectform");
+            Program.Lang.String(show_bios_screen, "forwarder");
 
             // -----------------------------
 
@@ -161,6 +162,7 @@ namespace FriishProduce
             reset_all_dialogs.Checked                   = false;
             FStorage_SD.Checked                         = FORWARDER.Default.root_storage_device.ToLower() == "sd";
             toggleSwitch1.Checked                       = FORWARDER.Default.nand_loader.ToLower() == "vwii";
+            toggleSwitch2.Checked                       = bool.Parse(FORWARDER.Default.show_bios_screen);
             FStorage_USB.Checked                        = !FStorage_SD.Checked;
             #region use_custom_database
             bool clearCustomDatabase = !File.Exists(Default.custom_database);
@@ -289,8 +291,10 @@ namespace FriishProduce
             Default.auto_retrieve_game_data             = auto_retrieve_gamedata_online.Checked;
             Default.default_save_as_filename            = default_save_as_filename_tb.Text;
             Default.Save();
+
             FORWARDER.Default.root_storage_device       = FStorage_SD.Checked ? "SD" : "USB";
             FORWARDER.Default.nand_loader               = toggleSwitch1.Checked ? "vWii" : "Wii";
+            FORWARDER.Default.show_bios_screen          = toggleSwitch2.Checked.ToString();
             Program.Lang = new Language(lng);
 
             VC_NES.Default.palette                      = vc_nes_palettelist.SelectedIndex.ToString();

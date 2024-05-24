@@ -203,6 +203,10 @@
 			"quality0": "High",
 			"quality1": "Medium",
 			"quality2": "Low"
+		},
+		"forwarder": {
+			"use_bios": "Utilizar un archivo BIOS",
+			"show_bios_screen": "Mostrar la pantalla de inicio de la consola"
 		}
 	}
 }

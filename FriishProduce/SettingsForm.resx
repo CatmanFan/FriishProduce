@@ -670,7 +670,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>8</value>
   </data>
   <data name="reset_all_dialogs.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -979,7 +979,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_n64.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>4</value>
   </data>
   <data name="leftSeparator.Location" type="System.Drawing.Point, System.Drawing">
     <value>184, 0</value>
@@ -1002,50 +1002,56 @@
   <data name="&gt;&gt;leftSeparator.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;forwarder_console.Name" xml:space="preserve">
-    <value>forwarder_console</value>
+  <data name="show_bios_screen.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="&gt;&gt;forwarder_console.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="show_bios_screen.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;forwarder_console.Parent" xml:space="preserve">
+  <data name="show_bios_screen.Location" type="System.Drawing.Point, System.Drawing">
+    <value>47, 64</value>
+  </data>
+  <data name="show_bios_screen.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 13</value>
+  </data>
+  <data name="show_bios_screen.TabIndex" type="System.Int32, mscorlib">
+    <value>27</value>
+  </data>
+  <data name="show_bios_screen.Text" xml:space="preserve">
+    <value>show_bios_screen</value>
+  </data>
+  <data name="&gt;&gt;show_bios_screen.Name" xml:space="preserve">
+    <value>show_bios_screen</value>
+  </data>
+  <data name="&gt;&gt;show_bios_screen.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;show_bios_screen.Parent" xml:space="preserve">
     <value>forwarder</value>
   </data>
-  <data name="&gt;&gt;forwarder_console.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;show_bios_screen.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;forwarder_root_device.Name" xml:space="preserve">
-    <value>forwarder_root_device</value>
+  <data name="toggleSwitch2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 63</value>
   </data>
-  <data name="&gt;&gt;forwarder_root_device.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="toggleSwitch2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 15</value>
   </data>
-  <data name="&gt;&gt;forwarder_root_device.Parent" xml:space="preserve">
+  <data name="toggleSwitch2.TabIndex" type="System.Int32, mscorlib">
+    <value>26</value>
+  </data>
+  <data name="&gt;&gt;toggleSwitch2.Name" xml:space="preserve">
+    <value>toggleSwitch2</value>
+  </data>
+  <data name="&gt;&gt;toggleSwitch2.Type" xml:space="preserve">
+    <value>JCS.ToggleSwitch, ToggleSwitch, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;toggleSwitch2.Parent" xml:space="preserve">
     <value>forwarder</value>
   </data>
-  <data name="&gt;&gt;forwarder_root_device.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;toggleSwitch2.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="forwarder.Location" type="System.Drawing.Point, System.Drawing">
-    <value>185, 1</value>
-  </data>
-  <data name="forwarder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>549, 350</value>
-  </data>
-  <data name="forwarder.TabIndex" type="System.Int32, mscorlib">
-    <value>22</value>
-  </data>
-  <data name="&gt;&gt;forwarder.Name" xml:space="preserve">
-    <value>forwarder</value>
-  </data>
-  <data name="&gt;&gt;forwarder.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;forwarder.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;forwarder.ZOrder" xml:space="preserve">
-    <value>8</value>
   </data>
   <data name="&gt;&gt;toggleSwitchL1.Name" xml:space="preserve">
     <value>toggleSwitchL1</value>
@@ -1093,7 +1099,76 @@
     <value>forwarder</value>
   </data>
   <data name="&gt;&gt;forwarder_console.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;FStorage_SD.Name" xml:space="preserve">
+    <value>FStorage_SD</value>
+  </data>
+  <data name="&gt;&gt;FStorage_SD.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;FStorage_SD.Parent" xml:space="preserve">
+    <value>forwarder_root_device</value>
+  </data>
+  <data name="&gt;&gt;FStorage_SD.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="&gt;&gt;FStorage_USB.Name" xml:space="preserve">
+    <value>FStorage_USB</value>
+  </data>
+  <data name="&gt;&gt;FStorage_USB.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;FStorage_USB.Parent" xml:space="preserve">
+    <value>forwarder_root_device</value>
+  </data>
+  <data name="&gt;&gt;FStorage_USB.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="forwarder_root_device.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 10</value>
+  </data>
+  <data name="forwarder_root_device.Size" type="System.Drawing.Size, System.Drawing">
+    <value>260, 44</value>
+  </data>
+  <data name="forwarder_root_device.TabIndex" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <data name="forwarder_root_device.Text" xml:space="preserve">
+    <value>forwarder_root_device</value>
+  </data>
+  <data name="&gt;&gt;forwarder_root_device.Name" xml:space="preserve">
+    <value>forwarder_root_device</value>
+  </data>
+  <data name="&gt;&gt;forwarder_root_device.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;forwarder_root_device.Parent" xml:space="preserve">
+    <value>forwarder</value>
+  </data>
+  <data name="&gt;&gt;forwarder_root_device.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="forwarder.Location" type="System.Drawing.Point, System.Drawing">
+    <value>185, 1</value>
+  </data>
+  <data name="forwarder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>549, 350</value>
+  </data>
+  <data name="forwarder.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="&gt;&gt;forwarder.Name" xml:space="preserve">
+    <value>forwarder</value>
+  </data>
+  <data name="&gt;&gt;forwarder.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;forwarder.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;forwarder.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="toggleSwitchL1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1144,54 +1219,6 @@
     <value>forwarder_console</value>
   </data>
   <data name="&gt;&gt;toggleSwitch1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;FStorage_SD.Name" xml:space="preserve">
-    <value>FStorage_SD</value>
-  </data>
-  <data name="&gt;&gt;FStorage_SD.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;FStorage_SD.Parent" xml:space="preserve">
-    <value>forwarder_root_device</value>
-  </data>
-  <data name="&gt;&gt;FStorage_SD.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;FStorage_USB.Name" xml:space="preserve">
-    <value>FStorage_USB</value>
-  </data>
-  <data name="&gt;&gt;FStorage_USB.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;FStorage_USB.Parent" xml:space="preserve">
-    <value>forwarder_root_device</value>
-  </data>
-  <data name="&gt;&gt;FStorage_USB.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="forwarder_root_device.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 10</value>
-  </data>
-  <data name="forwarder_root_device.Size" type="System.Drawing.Size, System.Drawing">
-    <value>260, 44</value>
-  </data>
-  <data name="forwarder_root_device.TabIndex" type="System.Int32, mscorlib">
-    <value>25</value>
-  </data>
-  <data name="forwarder_root_device.Text" xml:space="preserve">
-    <value>forwarder_root_device</value>
-  </data>
-  <data name="&gt;&gt;forwarder_root_device.Name" xml:space="preserve">
-    <value>forwarder_root_device</value>
-  </data>
-  <data name="&gt;&gt;forwarder_root_device.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;forwarder_root_device.Parent" xml:space="preserve">
-    <value>forwarder</value>
-  </data>
-  <data name="&gt;&gt;forwarder_root_device.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="FStorage_SD.AutoSize" type="System.Boolean, mscorlib">
@@ -1285,7 +1312,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_nes.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>10</value>
   </data>
   <data name="&gt;&gt;vc_nes_palette_use_on_banner.Name" xml:space="preserve">
     <value>vc_nes_palette_use_on_banner</value>
@@ -1417,7 +1444,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_neo.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>9</value>
   </data>
   <data name="&gt;&gt;vc_neo_bios_list.Name" xml:space="preserve">
     <value>vc_neo_bios_list</value>
@@ -1519,7 +1546,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_sega.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>6</value>
   </data>
   <data name="&gt;&gt;vc_sega_console_disableresetbutton.Name" xml:space="preserve">
     <value>vc_sega_console_disableresetbutton</value>
@@ -1888,7 +1915,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_pce.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>5</value>
   </data>
   <data name="&gt;&gt;vc_pce_backupram.Name" xml:space="preserve">
     <value>vc_pce_backupram</value>
@@ -2461,7 +2488,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;adobe_flash.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>11</value>
   </data>
   <data name="&gt;&gt;flash_strap_reminder_list.Name" xml:space="preserve">
     <value>flash_strap_reminder_list</value>
@@ -2934,6 +2961,111 @@
   <data name="&gt;&gt;LanguageList.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;default_save_as_filename.Name" xml:space="preserve">
+    <value>default_save_as_filename</value>
+  </data>
+  <data name="&gt;&gt;default_save_as_filename.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;default_save_as_filename.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;default_save_as_filename.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;use_custom_database.Name" xml:space="preserve">
+    <value>use_custom_database</value>
+  </data>
+  <data name="&gt;&gt;use_custom_database.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;use_custom_database.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;use_custom_database.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>185, 1</value>
+  </data>
+  <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>549, 350</value>
+  </data>
+  <data name="panel2.TabIndex" type="System.Int32, mscorlib">
+    <value>42</value>
+  </data>
+  <data name="&gt;&gt;panel2.Name" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;panel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>default_save_as_filename</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;default_save_as_parameters.Name" xml:space="preserve">
+    <value>default_save_as_parameters</value>
+  </data>
+  <data name="&gt;&gt;default_save_as_parameters.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;default_save_as_parameters.Parent" xml:space="preserve">
+    <value>default_save_as_filename</value>
+  </data>
+  <data name="&gt;&gt;default_save_as_parameters.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;default_save_as_filename_tb.Name" xml:space="preserve">
+    <value>default_save_as_filename_tb</value>
+  </data>
+  <data name="&gt;&gt;default_save_as_filename_tb.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;default_save_as_filename_tb.Parent" xml:space="preserve">
+    <value>default_save_as_filename</value>
+  </data>
+  <data name="&gt;&gt;default_save_as_filename_tb.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="default_save_as_filename.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 147</value>
+  </data>
+  <data name="default_save_as_filename.Size" type="System.Drawing.Size, System.Drawing">
+    <value>525, 90</value>
+  </data>
+  <data name="default_save_as_filename.TabIndex" type="System.Int32, mscorlib">
+    <value>43</value>
+  </data>
+  <data name="default_save_as_filename.Text" xml:space="preserve">
+    <value>default_save_as_filename</value>
+  </data>
+  <data name="&gt;&gt;default_save_as_filename.Name" xml:space="preserve">
+    <value>default_save_as_filename</value>
+  </data>
+  <data name="&gt;&gt;default_save_as_filename.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;default_save_as_filename.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;default_save_as_filename.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3012,30 +3144,6 @@
   <data name="&gt;&gt;default_save_as_filename_tb.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="default_save_as_filename.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 147</value>
-  </data>
-  <data name="default_save_as_filename.Size" type="System.Drawing.Size, System.Drawing">
-    <value>525, 90</value>
-  </data>
-  <data name="default_save_as_filename.TabIndex" type="System.Int32, mscorlib">
-    <value>43</value>
-  </data>
-  <data name="default_save_as_filename.Text" xml:space="preserve">
-    <value>default_save_as_filename</value>
-  </data>
-  <data name="&gt;&gt;default_save_as_filename.Name" xml:space="preserve">
-    <value>default_save_as_filename</value>
-  </data>
-  <data name="&gt;&gt;default_save_as_filename.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;default_save_as_filename.Parent" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="&gt;&gt;default_save_as_filename.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="use_custom_database.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3065,27 +3173,6 @@
   </data>
   <data name="&gt;&gt;use_custom_database.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>185, 1</value>
-  </data>
-  <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>549, 350</value>
-  </data>
-  <data name="panel2.TabIndex" type="System.Int32, mscorlib">
-    <value>42</value>
-  </data>
-  <data name="&gt;&gt;panel2.Name" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="&gt;&gt;panel2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel2.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
-    <value>3</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

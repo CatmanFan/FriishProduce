@@ -8,5 +8,8 @@
     <Setting Name="nand_loader" Type="System.String" Scope="User">
       <Value Profile="(Default)">wii</Value>
     </Setting>
+    <Setting Name="show_bios_screen" Type="System.String" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

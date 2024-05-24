@@ -43,6 +43,8 @@ namespace FriishProduce
             }
         }
 
+        public IDictionary<string, string> Settings { get; set; }
+
         public enum Storages { SD, USB }
         public Storages Storage = Storages.SD;
 
@@ -66,6 +68,7 @@ namespace FriishProduce
             if (ROM == null) throw new FileNotFoundException();
             if (EmulatorIndex == -1) throw new NotSupportedException();
 
+            bool hasBIOS = false;
             string PackageFolder = Paths.SDUSBRoot + path.Substring(4).Replace("/boot.dol", "").Replace('/', '\\') + '\\';
             string ROMFolder = isDisc ? PackageFolder + "title\\" : PackageFolder;
             string ROMName = isDisc ? Path.GetFileName(ROM) : (EmulatorIndex >= 7 ? "title" : "HOME Menu") + romExtension;
@@ -148,6 +151,29 @@ namespace FriishProduce
                         }
                     }
                 }
+
+                // Copy BIOS if available
+                // *******
+                bool validBIOS = false;
+                try { validBIOS = File.Exists(Settings["BIOSPath"]); } catch { hasBIOS = false; }
+
+                if (validBIOS)
+                {
+                    var validList = new List<(Console Platform, int Index, string Directory)>()
+                    {
+                        (Console.PSX,   12, Paths.SDUSBRoot + "wiisxrx\\bios\\SCPH1001.BIN"),
+                    };
+
+                    foreach (var item in validList)
+                    {
+                        if (BIOS.GetConsole(File.ReadAllBytes(Settings["BIOSPath"])) == item.Platform
+                            && EmulatorIndex == item.Index)
+                        {
+                            File.Copy(Settings["BIOSPath"], item.Directory);
+                            hasBIOS = true;
+                        }
+                    }
+                }
             }
 
             // Prepare for meta.xml creation
@@ -184,7 +210,7 @@ namespace FriishProduce
 
                 case 10:
                     meta.Add($"    <arg>rompath=\"{ROMFolder}/{ROMName}\"</arg>");
-                    meta.Add($"    <arg>SkipMenu=1</arg>");
+                    meta.Add("    <arg>SkipMenu=1</arg>");
                     meta.Add("    <arg>ScreenMode=0</arg>");
                     break;
 
@@ -193,6 +219,17 @@ namespace FriishProduce
                     meta.Add($"    <arg>{ROMName}</arg>");
                     meta.Add("    <arg>loader</arg>"); // Mupen64GC-FIX94 needs at least a third argument for be able to autoboot
                     meta.Add("    <arg>ScreenMode = 0</arg>");
+                    break;
+
+                case 12:
+                    meta.Add($"    <arg>{ROMFolder}</arg>");
+                    meta.Add($"    <arg>{ROMName}</arg>");
+                    meta.Add($"    <arg>BiosDevice = {(hasBIOS ? "1" : "0")}</arg>");
+                    meta.Add($"    <arg>BootThruBios = {(hasBIOS && bool.Parse(Settings["BIOSScreen"]) ? "1" : "0")}</arg>");
+                    meta.Add("    <arg>FPS = 0</arg>");
+                    meta.Add("    <arg>ScreenMode = 0</arg>");
+                    meta.Add("    <arg>VideoMode = 0</arg>");
+                    meta.Add("    <arg>Interlaced = 1</arg>");
                     break;
 
                 case 14:

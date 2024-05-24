@@ -239,6 +239,10 @@
 			"strap_reminder0": "{disabled}",
 			"strap_reminder1": "{enabled}",
 			"strap_reminder2": "No extension controller"
+		},
+		"forwarder": {
+			"use_bios": "Use a BIOS file",
+			"show_bios_screen": "Show BIOS startup screen"
 		}
 	}
 }

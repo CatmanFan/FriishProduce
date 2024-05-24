@@ -42,7 +42,7 @@ See **[here](https://github.com/CatmanFan/FriishProduce/wiki/FriishProduce-v1.0)
 ---
 
 ## To-Do
-- [ ] Add BIOS option for PlayStation
+- [X] Add BIOS option for PlayStation
 - [ ] Add *.zip format for RPG Maker games
 - [ ] Restructure and clean code
 - [ ] Use by default: *.chd format for disc games, *.wbfs for GCN 

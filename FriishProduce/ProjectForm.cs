@@ -1170,6 +1170,10 @@ namespace FriishProduce
                 Storage = FStorage_USB.Checked ? Forwarder.Storages.USB : Forwarder.Storages.SD
             };
 
+            // Get settings from relevant form
+            // *******
+            if (CO != null) { f.Settings = CO.Options; } else { f.Settings = new Dictionary<string, string> { { "N/A", "N/A" } }; }
+
             // Actually inject everything
             // *******
             f.CreateZIP(Path.Combine(Path.GetDirectoryName(Creator.Out), Path.GetFileNameWithoutExtension(Creator.Out) + $" ({f.Storage}).zip"));
@@ -1651,7 +1655,47 @@ namespace FriishProduce
             }
 
             else
+            {
                 COPanel_Forwarder.Show();
+
+                switch (Console)
+                {
+                    case Console.GB:
+                    case Console.GBC:
+                    case Console.GBA:
+                    case Console.S32X:
+                    case Console.SMCD:
+                    case Console.PSX:
+                        CO = new Options_Forwarder(Console);
+                        break;
+                    case Console.NES:
+                        break;
+                    case Console.SNES:
+                        break;
+                    case Console.N64:
+                        break;
+                    case Console.SMS:
+                        break;
+                    case Console.SMD:
+                        break;
+                    case Console.PCE:
+                        break;
+                    case Console.PCECD:
+                        break;
+                    case Console.NEO:
+                        break;
+                    case Console.MSX:
+                        break;
+                    case Console.C64:
+                        break;
+                    case Console.Flash:
+                        break;
+                    case Console.RPGM:
+                        break;
+                    default:
+                        break;
+                }
+            }
 
             if (CO != null)
             {

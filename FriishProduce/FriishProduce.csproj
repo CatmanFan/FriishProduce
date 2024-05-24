@@ -209,6 +209,12 @@
     <Compile Include="Subforms\Options_Flash.Designer.cs">
       <DependentUpon>Options_Flash.cs</DependentUpon>
     </Compile>
+    <Compile Include="Subforms\Options_Forwarder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Subforms\Options_Forwarder.Designer.cs">
+      <DependentUpon>Options_Forwarder.cs</DependentUpon>
+    </Compile>
     <Compile Include="Subforms\Options_VC_N64.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -245,6 +251,7 @@
     <Compile Include="Tutorial.Designer.cs">
       <DependentUpon>Tutorial.cs</DependentUpon>
     </Compile>
+    <Compile Include="_classes\BIOS.cs" />
     <Compile Include="_classes\Helpers\BannerSchemes.cs" />
     <Compile Include="_classes\Files\CCF.cs" />
     <Compile Include="_classes\Helpers\BannerPreview.cs" />
@@ -382,6 +389,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Subforms\Options_Flash.resx">
       <DependentUpon>Options_Flash.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Subforms\Options_Forwarder.resx">
+      <DependentUpon>Options_Forwarder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Subforms\Options_VC_N64.resx">
       <DependentUpon>Options_VC_N64.cs</DependentUpon>

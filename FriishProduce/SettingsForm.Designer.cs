@@ -111,10 +111,12 @@ namespace FriishProduce
             this.LanguageList = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.default_save_as_filename = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.default_save_as_parameters = new System.Windows.Forms.Label();
             this.default_save_as_filename_tb = new System.Windows.Forms.TextBox();
             this.use_custom_database = new System.Windows.Forms.CheckBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.show_bios_screen = new System.Windows.Forms.Label();
+            this.toggleSwitch2 = new JCS.ToggleSwitch();
             this.vc_n64_options.SuspendLayout();
             this.bottomPanel1.SuspendLayout();
             this.bottomPanel2.SuspendLayout();
@@ -358,6 +360,8 @@ namespace FriishProduce
             // 
             // forwarder
             // 
+            this.forwarder.Controls.Add(this.show_bios_screen);
+            this.forwarder.Controls.Add(this.toggleSwitch2);
             this.forwarder.Controls.Add(this.forwarder_console);
             this.forwarder.Controls.Add(this.forwarder_root_device);
             resources.ApplyResources(this.forwarder, "forwarder");
@@ -383,7 +387,6 @@ namespace FriishProduce
             this.toggleSwitch1.Name = "toggleSwitch1";
             this.toggleSwitch1.OffFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toggleSwitch1.OnFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toggleSwitch1.Style = JCS.ToggleSwitch.ToggleSwitchStyle.IOS5;
             this.toggleSwitch1.CheckedChanged += new JCS.ToggleSwitch.CheckedChangedDelegate(this.ToggleSwitchChanged);
             // 
             // forwarder_root_device
@@ -807,6 +810,11 @@ namespace FriishProduce
             this.default_save_as_filename.TabStop = false;
             this.default_save_as_filename.Tag = "default_save_as_filename";
             // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
             // default_save_as_parameters
             // 
             resources.ApplyResources(this.default_save_as_parameters, "default_save_as_parameters");
@@ -826,10 +834,18 @@ namespace FriishProduce
             this.use_custom_database.UseVisualStyleBackColor = true;
             this.use_custom_database.CheckedChanged += new System.EventHandler(this.CustomDatabase_CheckedChanged);
             // 
-            // label2
+            // show_bios_screen
             // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
+            resources.ApplyResources(this.show_bios_screen, "show_bios_screen");
+            this.show_bios_screen.Name = "show_bios_screen";
+            this.show_bios_screen.Tag = "show_bios_screen";
+            // 
+            // toggleSwitch2
+            // 
+            resources.ApplyResources(this.toggleSwitch2, "toggleSwitch2");
+            this.toggleSwitch2.Name = "toggleSwitch2";
+            this.toggleSwitch2.OffFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toggleSwitch2.OnFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
             // SettingsForm
             // 
@@ -841,15 +857,15 @@ namespace FriishProduce
             this.Controls.Add(this.bottomPanel2);
             this.Controls.Add(this.leftSeparator);
             this.Controls.Add(this.TreeView);
+            this.Controls.Add(this.forwarder);
+            this.Controls.Add(this.vc_n64);
+            this.Controls.Add(this.vc_pce);
+            this.Controls.Add(this.vc_sega);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.vc_neo);
             this.Controls.Add(this.vc_nes);
             this.Controls.Add(this.adobe_flash);
-            this.Controls.Add(this.forwarder);
-            this.Controls.Add(this.vc_n64);
-            this.Controls.Add(this.vc_pce);
-            this.Controls.Add(this.vc_sega);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MaximizeBox = false;
@@ -872,6 +888,7 @@ namespace FriishProduce
             this.retrieve_gamedata_online.PerformLayout();
             this.vc_n64.ResumeLayout(false);
             this.forwarder.ResumeLayout(false);
+            this.forwarder.PerformLayout();
             this.forwarder_console.ResumeLayout(false);
             this.forwarder_console.PerformLayout();
             this.forwarder_root_device.ResumeLayout(false);
@@ -993,5 +1010,7 @@ namespace FriishProduce
         private System.Windows.Forms.TextBox default_save_as_filename_tb;
         private System.Windows.Forms.Label default_save_as_parameters;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label show_bios_screen;
+        private JCS.ToggleSwitch toggleSwitch2;
     }
 }

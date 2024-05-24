@@ -211,6 +211,10 @@
 			"quality0": "Élevé",
 			"quality1": "Moyen",
 			"quality2": "Bas"
+		},
+		"forwarder": {
+			"use_bios": "Utiliser un fichier BIOS",
+			"show_bios_screen": "Afficher l'écran de démarrage de la console"
 		}
 	}
 }

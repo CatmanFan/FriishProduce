@@ -46,5 +46,17 @@ namespace FriishProduce.Options {
                 this["nand_loader"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public string show_bios_screen {
+            get {
+                return ((string)(this["show_bios_screen"]));
+            }
+            set {
+                this["show_bios_screen"] = value;
+            }
+        }
     }
 }
