@@ -415,7 +415,7 @@ namespace FriishProduce
         /// <param name="lang">Banner region/language: Japanese, Korean, Europe or America</param>
         /// <param name="target">PictureBox control</param>
         /// <returns></returns>
-        public Bitmap Icon(Bitmap img, Console console, Language lang, bool restart = false, PictureBox target = null)
+        public unsafe Bitmap Icon(Bitmap img, Console console, Language lang, bool restart = false, PictureBox target = null)
         {
             // 0s - 5s = Title
             // 5s - 6s = Fadein
@@ -552,7 +552,9 @@ namespace FriishProduce
             return iconData.generatedImg ?? (opacity1 == 1 && iconData.iconImg != null ? iconData.iconImg : iconData.consoleImg);
 
             #region 4. Create border on icon
+#pragma warning disable CS0162 // Unreachable code detected
             var bmp2 = new Bitmap(120, 87);
+#pragma warning restore CS0162 // Unreachable code detected
             using (Graphics g = Graphics.FromImage(bmp2))
             {
                 using (Bitmap border = new Bitmap(bmp2.Width, bmp2.Height))

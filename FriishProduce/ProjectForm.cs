@@ -87,7 +87,7 @@ namespace FriishProduce
                 LinkSaveDataTitle = LinkSaveData.Checked,
                 ImageOptions = (imageintpl.SelectedIndex, image_fit.Checked)
             };
-            
+
             if (!string.IsNullOrWhiteSpace(WADPath)) p.BaseFile = WADPath;
             else p.Base = (Base.SelectedIndex, 0);
 

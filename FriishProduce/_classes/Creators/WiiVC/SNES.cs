@@ -54,8 +54,10 @@ namespace FriishProduce.Injectors
 
                 MainContent.ReplaceFile(MainContent.GetNodeIndex(target), Paths.WorkingFolder + "LZ77out.rom");
 
-                if (File.Exists(Paths.WorkingFolder + "LZ77out.rom"))   File.Delete(Paths.WorkingFolder + "LZ77out.rom");
-                if (File.Exists(Paths.WorkingFolder + "rom"))           File.Delete(Paths.WorkingFolder + "rom");
+                if (File.Exists(Paths.WorkingFolder + "LZ77out.rom"))
+                    File.Delete(Paths.WorkingFolder + "LZ77out.rom");
+                if (File.Exists(Paths.WorkingFolder + "rom"))
+                    File.Delete(Paths.WorkingFolder + "rom");
             }
 
             else throw new Exception(Program.Lang.Msg(2, true));

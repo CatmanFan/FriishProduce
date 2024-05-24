@@ -218,7 +218,7 @@ namespace FriishProduce.Injectors
                 goto Next;
             }
 
-        AutoBIOS:
+            AutoBIOS:
             var targetBIOS = Options.VC_NEO.Default.bios;
             if (!noBIOS && Settings["BIOS"].ToLower() != "custom") targetBIOS = Settings["BIOS"];
 
@@ -241,7 +241,7 @@ namespace FriishProduce.Injectors
 
             goto Next;
 
-        Next:
+            Next:
             for (int i = 1; i < BIOS.Count; i += 2)
             {
                 (BIOS[i - 1], BIOS[i]) = (BIOS[i], BIOS[i - 1]);
