@@ -57,6 +57,8 @@ namespace FriishProduce
             this.vc_n64 = new System.Windows.Forms.Panel();
             this.leftSeparator = new System.Windows.Forms.Panel();
             this.forwarder = new System.Windows.Forms.Panel();
+            this.show_bios_screen = new System.Windows.Forms.Label();
+            this.toggleSwitch2 = new JCS.ToggleSwitch();
             this.forwarder_console = new System.Windows.Forms.GroupBox();
             this.toggleSwitchL1 = new System.Windows.Forms.Label();
             this.toggleSwitch1 = new JCS.ToggleSwitch();
@@ -114,9 +116,8 @@ namespace FriishProduce
             this.label2 = new System.Windows.Forms.Label();
             this.default_save_as_parameters = new System.Windows.Forms.Label();
             this.default_save_as_filename_tb = new System.Windows.Forms.TextBox();
+            this.icon_animation = new System.Windows.Forms.CheckBox();
             this.use_custom_database = new System.Windows.Forms.CheckBox();
-            this.show_bios_screen = new System.Windows.Forms.Label();
-            this.toggleSwitch2 = new JCS.ToggleSwitch();
             this.vc_n64_options.SuspendLayout();
             this.bottomPanel1.SuspendLayout();
             this.bottomPanel2.SuspendLayout();
@@ -267,6 +268,8 @@ namespace FriishProduce
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.icon_animation);
+            this.panel1.Controls.Add(this.use_custom_database);
             this.panel1.Controls.Add(this.reset_all_dialogs);
             this.panel1.Controls.Add(this.language);
             resources.ApplyResources(this.panel1, "panel1");
@@ -366,6 +369,19 @@ namespace FriishProduce
             this.forwarder.Controls.Add(this.forwarder_root_device);
             resources.ApplyResources(this.forwarder, "forwarder");
             this.forwarder.Name = "forwarder";
+            // 
+            // show_bios_screen
+            // 
+            resources.ApplyResources(this.show_bios_screen, "show_bios_screen");
+            this.show_bios_screen.Name = "show_bios_screen";
+            this.show_bios_screen.Tag = "show_bios_screen";
+            // 
+            // toggleSwitch2
+            // 
+            resources.ApplyResources(this.toggleSwitch2, "toggleSwitch2");
+            this.toggleSwitch2.Name = "toggleSwitch2";
+            this.toggleSwitch2.OffFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toggleSwitch2.OnFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
             // forwarder_console
             // 
@@ -793,7 +809,6 @@ namespace FriishProduce
             // panel2
             // 
             this.panel2.Controls.Add(this.default_save_as_filename);
-            this.panel2.Controls.Add(this.use_custom_database);
             this.panel2.Controls.Add(this.autolink_save_data);
             this.panel2.Controls.Add(this.image_interpolation_mode);
             this.panel2.Controls.Add(this.retrieve_gamedata_online);
@@ -826,26 +841,19 @@ namespace FriishProduce
             resources.ApplyResources(this.default_save_as_filename_tb, "default_save_as_filename_tb");
             this.default_save_as_filename_tb.Name = "default_save_as_filename_tb";
             // 
+            // icon_animation
+            // 
+            resources.ApplyResources(this.icon_animation, "icon_animation");
+            this.icon_animation.Name = "icon_animation";
+            this.icon_animation.Tag = "icon_animation";
+            this.icon_animation.UseVisualStyleBackColor = true;
+            // 
             // use_custom_database
             // 
             resources.ApplyResources(this.use_custom_database, "use_custom_database");
             this.use_custom_database.Name = "use_custom_database";
             this.use_custom_database.Tag = "use_custom_database";
             this.use_custom_database.UseVisualStyleBackColor = true;
-            this.use_custom_database.CheckedChanged += new System.EventHandler(this.CustomDatabase_CheckedChanged);
-            // 
-            // show_bios_screen
-            // 
-            resources.ApplyResources(this.show_bios_screen, "show_bios_screen");
-            this.show_bios_screen.Name = "show_bios_screen";
-            this.show_bios_screen.Tag = "show_bios_screen";
-            // 
-            // toggleSwitch2
-            // 
-            resources.ApplyResources(this.toggleSwitch2, "toggleSwitch2");
-            this.toggleSwitch2.Name = "toggleSwitch2";
-            this.toggleSwitch2.OffFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toggleSwitch2.OnFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
             // SettingsForm
             // 
@@ -857,15 +865,15 @@ namespace FriishProduce
             this.Controls.Add(this.bottomPanel2);
             this.Controls.Add(this.leftSeparator);
             this.Controls.Add(this.TreeView);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.vc_neo);
+            this.Controls.Add(this.vc_nes);
+            this.Controls.Add(this.adobe_flash);
             this.Controls.Add(this.forwarder);
             this.Controls.Add(this.vc_n64);
             this.Controls.Add(this.vc_pce);
             this.Controls.Add(this.vc_sega);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.vc_neo);
-            this.Controls.Add(this.vc_nes);
-            this.Controls.Add(this.adobe_flash);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MaximizeBox = false;
@@ -1005,12 +1013,13 @@ namespace FriishProduce
         private System.Windows.Forms.GroupBox flash_strap_reminder;
         private System.Windows.Forms.ComboBox flash_strap_reminder_list;
         private System.Windows.Forms.Label vc_n64_romc_type;
-        private System.Windows.Forms.CheckBox use_custom_database;
         private System.Windows.Forms.GroupBox default_save_as_filename;
         private System.Windows.Forms.TextBox default_save_as_filename_tb;
         private System.Windows.Forms.Label default_save_as_parameters;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label show_bios_screen;
         private JCS.ToggleSwitch toggleSwitch2;
+        private System.Windows.Forms.CheckBox icon_animation;
+        private System.Windows.Forms.CheckBox use_custom_database;
     }
 }

@@ -422,25 +422,42 @@ namespace FriishProduce
             // 6s - 8s = Logo
             // 8s - 9s = Fadeout
 
-            bool reset = iconData.type != ((int)console, (int)lang) || (iconData.origImg != img && img != null) || restart;
-
-            if (img == null && iconData.origImg != null) img = iconData.origImg;
+            bool reset = iconData.type != ((int)console, (int)lang) || img != null | restart;
+            bool animation = Properties.Settings.Default.icon_animation;
 
             #region 0. Restart timer
-            if (iconData.duration.second >= iconData.opacities.Count - 1 || reset)
+            if (animation)
             {
-                iconData.duration = (0, 0);
-                try { iconData.durationTimer.Tick -= iconDurationTick; } catch { }
-                iconData.durationTimer.Stop();
+                if (iconData.generatedImg?.Count > 2)
+                {
+                    if (iconData.duration.second >= iconData.opacities.Count - 1 || reset)
+                    {
+                        iconData.duration = (0, 0);
+                        try { iconData.durationTimer.Tick -= iconDurationTick; } catch { }
+                        iconData.durationTimer.Stop();
 
-                iconData.durationTimer.Tick += iconDurationTick;
-                iconData.durationTimer.Start();
+                        iconData.durationTimer.Tick += iconDurationTick;
+                    }
+
+                    iconData.durationTimer.Start();
+                }
+                else
+                {
+                    iconData.duration = (0, 0);
+                    try { iconData.durationTimer.Tick -= iconDurationTick; } catch { }
+                    iconData.durationTimer.Stop();
+                }
             }
+            else { iconData.durationTimer.Enabled = false; }
             #endregion
 
-            #region 1. Console/platform logo
+            var opacity1 = iconData.opacities[iconData.duration.second];
+            var opacity2 = iconData.opacities[iconData.duration.second + 1];
+            float maxFrames = 1000 / iconData.durationTimer.Interval;
+
             if (reset)
             {
+                #region 1. Console/platform logo
                 iconData.type = ((int)console, (int)lang);
                 using (var U8 = BannerHelper.BannerApp(console, lang switch { Language.Japanese => libWiiSharp.Region.Japan, Language.Korean => libWiiSharp.Region.Korea, Language.Europe => libWiiSharp.Region.Europe, _ => libWiiSharp.Region.USA }))
                 {
@@ -493,102 +510,117 @@ namespace FriishProduce
                         }
                     }
                 }
-            }
 
-            if (iconData.consoleImg == null)
-            {
-                iconData.consoleImg = new Bitmap(128, 96);
-                using (Graphics g = Graphics.FromImage(iconData.consoleImg))
-                    g.Clear(Color.White);
-            }
-            #endregion
+                if (iconData.consoleImg == null)
+                {
+                    iconData.consoleImg = new Bitmap(128, 96);
+                    using (Graphics g = Graphics.FromImage(iconData.consoleImg))
+                        g.Clear(Color.White);
+                }
+                #endregion
 
-            #region 2. Title image creation and resizing
-            if (img != null && reset)
-            {
-                iconData.origImg = img;
-
-                // Set icon image
+                // Clean bitmap list
                 // ****************
-                iconData.iconImg = new Bitmap(128, 96);
+                if (iconData.generatedImg != null)
+                    foreach (Bitmap bmp in iconData.generatedImg)
+                        bmp.Dispose();
 
-                using (Graphics g = Graphics.FromImage(iconData.iconImg))
+                iconData.generatedImg = new List<Bitmap>();
+
+                #region 2. Icons & animation
+                if (img != null)
                 {
-                    g.InterpolationMode = InterpolationMode.Bilinear;
-                    g.SmoothingMode = SmoothingMode.HighQuality;
-                    g.CompositingQuality = CompositingQuality.HighQuality;
-                    g.DrawImage(img, -4, -4, iconData.iconImg.Width + 11, iconData.iconImg.Height + 11);
+                    iconData.generatedImg.Add(new Bitmap(128, 96));
+
+                    // Set icon image
+                    // ****************
+                    using (Graphics g = Graphics.FromImage(iconData.generatedImg[0]))
+                    {
+                        g.InterpolationMode = InterpolationMode.Bilinear;
+                        g.SmoothingMode = SmoothingMode.HighQuality;
+                        g.CompositingQuality = CompositingQuality.HighQuality;
+                        g.DrawImage(img, -4, -4, iconData.generatedImg[0].Width + 11, iconData.generatedImg[0].Height + 11);
+                    }
+
+                    if (animation)
+                    {
+                        for (float i = 0; i < maxFrames; i++)
+                        {
+                            float percentage = i / maxFrames;
+
+                            var bmp = new Bitmap(iconData.generatedImg[0].Width, iconData.generatedImg[0].Height);
+
+                            using (Graphics g = Graphics.FromImage(bmp))
+                            using (var a = new ImageAttributes())
+                            {
+                                g.DrawImage(iconData.consoleImg, 0, 0);
+                                a.SetColorMatrix(new ColorMatrix() { Matrix33 = percentage });
+                                g.DrawImage(iconData.generatedImg[0], new Rectangle(0, 0, iconData.generatedImg[0].Width, iconData.generatedImg[0].Height), 0, 0, iconData.generatedImg[0].Width, iconData.generatedImg[0].Height, GraphicsUnit.Pixel, a);
+                            }
+
+                            iconData.generatedImg.Add(bmp);
+                        }
+                    }
                 }
 
-            }
-            #endregion
+                iconData.generatedImg.Add((Bitmap)iconData.consoleImg.Clone());
+                iconData.consoleImg.Dispose();
 
-            #region 3. Create animation for icon
-            var opacity1 = iconData.opacities[iconData.duration.second];
-            var opacity2 = iconData.opacities[iconData.duration.second + 1];
-            var percentage = iconData.duration.frame / (1000F / iconData.durationTimer.Interval);
-            float opacityT = (opacity1 * (1F - percentage)) + (opacity2 * percentage);
-
-            bool transition = opacity1 != opacity2;
-
-            if (transition)
-            {
-                iconData.generatedImg = new Bitmap(iconData.iconImg.Width, iconData.iconImg.Height);
-
-                using (Graphics g = Graphics.FromImage(iconData.generatedImg))
-                using (var a = new ImageAttributes())
+                for (int i = 0; i < iconData.generatedImg.Count; i++)
                 {
-                    g.DrawImage(iconData.consoleImg, 0, 0);
-                    a.SetColorMatrix(new ColorMatrix() { Matrix33 = opacityT });
-                    g.DrawImage(iconData.iconImg, new Rectangle(0, 0, iconData.iconImg.Width, iconData.iconImg.Height), 0, 0, iconData.iconImg.Width, iconData.iconImg.Height, GraphicsUnit.Pixel, a);
-                }
-            }
-            else iconData.generatedImg = null;
-            #endregion
+                    Bitmap bmp2 = new Bitmap(120, 87);
 
-            iconData.duration.frame++;
-            if (img != null && iconData.duration.frame >= 1000 / iconData.durationTimer.Interval) { iconData.duration.frame = 0; iconData.duration.second++; }
-            if (target != null) iconData.target = target;
-            return iconData.generatedImg ?? (opacity1 == 1 && iconData.iconImg != null ? iconData.iconImg : iconData.consoleImg);
-
-            #region 4. Create border on icon
-#pragma warning disable CS0162 // Unreachable code detected
-            var bmp2 = new Bitmap(120, 87);
-#pragma warning restore CS0162 // Unreachable code detected
-            using (Graphics g = Graphics.FromImage(bmp2))
-            {
-                using (Bitmap border = new Bitmap(bmp2.Width, bmp2.Height))
-                {
+                    using (Graphics g = Graphics.FromImage(bmp2))
+                    using (Bitmap border = new Bitmap(bmp2.Width, bmp2.Height))
                     using (Graphics gBorder = Graphics.FromImage(border))
+                    {
                         gBorder.Clear(Color.LightSlateGray);
-                    g.DrawImage(RoundCorners(border, 10, true), 0, 0, bmp2.Width, bmp2.Height);
-                }
+                        g.DrawImage(RoundCorners(border, 10, true), 0, 0, bmp2.Width, bmp2.Height);
+                        g.DrawImage(RoundCorners(iconData.generatedImg[i], 8, true), 1, 1, bmp2.Width - 2, bmp2.Height - 2);
+                    }
 
-                g.DrawImage(RoundCorners(iconData.generatedImg ?? (opacity1 == 1 && iconData.iconImg != null ? iconData.iconImg : iconData.consoleImg), 8, true), 1, 1, bmp2.Width - 2, bmp2.Height - 2);
+                    iconData.generatedImg[i].Dispose();
+                    iconData.generatedImg[i] = bmp2;
+                }
             }
             #endregion
 
-            iconData.duration.frame++;
-            if (img != null && iconData.duration.frame >= 1000 / iconData.durationTimer.Interval) { iconData.duration.frame = 0; iconData.duration.second++; }
             if (target != null) iconData.target = target;
-            return bmp2;
+
+            if (animation)
+            {
+                iconData.duration.frame++;
+                if (iconData.duration.frame >= maxFrames) { iconData.duration.frame = 0; iconData.duration.second++; }
+
+                return opacity1 != opacity2 && iconData.generatedImg?.Count > 2 ? iconData.generatedImg[opacity1 == 1 ? (int)maxFrames - iconData.duration.frame + 1 : iconData.duration.frame]
+                                                                                : opacity1 == 1 && iconData.generatedImg?[0] != null ? iconData.generatedImg[0]
+                                                                                : iconData.generatedImg[iconData.generatedImg.Count - 1];
+            }
+            else
+            {
+                if (iconData.generatedImg.Count > 1)
+                {
+                    iconData.generatedImg[1].Dispose();
+                    iconData.generatedImg.RemoveAt(1);
+                }
+
+                return iconData.generatedImg[0];
+            }
         }
 
         #region Icon (private functions)
         private struct icon
         {
-            public Bitmap origImg;
-            public Bitmap iconImg;
             public Bitmap consoleImg;
-            public Bitmap generatedImg;
+            public List<Bitmap> generatedImg;
             public (int, int) type;
-            public (int second, float frame) duration;
+            public (int second, int frame) duration;
             public List<float> opacities;
             public Timer durationTimer;
             public PictureBox target;
         }
 
-        private icon iconData = new icon() { type = (-1, -1), opacities = new List<float>() { 1, 1, 1, 1, 1, 1, 0, 0, 0, 1 }, durationTimer = new Timer() { Interval = 35 } };
+        private icon iconData = new icon() { type = (-1, -1), opacities = new List<float>() { 1, 1, 1, 1, 1, 1, 0, 0, 0, 1 }, durationTimer = new Timer() { Interval = 25 } };
 
         private void iconDurationTick(object sender, EventArgs e) { if (iconData.target != null) iconData.target.Image = Icon(null, (Console)Math.Max(iconData.type.Item1, 0), (Language)Math.Max(iconData.type.Item2, 0), false); }
         #endregion

@@ -43,6 +43,7 @@ See **[here](https://github.com/CatmanFan/FriishProduce/wiki/FriishProduce-v1.0)
 
 ## To-Do
 * **Before next release:**
+  * Bugfixing
 * Other VC injection support:
   * Commodore 64 (needs [Custom Frodo](https://gbatemp.net/threads/custom-frodo-for-c64-vc-injection.102356/))
   * TurboGrafx-16 CD (needs several programs to convert ISO to injectable format)

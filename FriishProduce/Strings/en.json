@@ -130,6 +130,7 @@
 			"auto_retrieve_gamedata_online": "Automatically retrieve after opening a ROM",
 			"gamedata_source_image": "Source images website:",
 			"autolink_save_data": "Link save data title automatically with banner and channel names",
+			"icon_animation": "Animate channel icon preview",
 			"reset_all_dialogs": "Reset all dialogs",
 			"use_custom_database": "Use custom WAD database file",
 			"default_save_as_filename": "Default filename for exported WADs",

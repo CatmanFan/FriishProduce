@@ -156,6 +156,7 @@ namespace FriishProduce
             // -----------------------------
 
             // Defaults & forwarders
+            icon_animation.Checked                      = Default.icon_animation;
             auto_retrieve_gamedata_online.Checked       = Default.auto_retrieve_game_data;
             autolink_save_data.Checked                  = Default.link_save_data;
             reset_all_dialogs.Checked                   = false;
@@ -283,7 +284,8 @@ namespace FriishProduce
             // -------------------------------------------
             // Other settings
             // -------------------------------------------
-
+            
+            Default.icon_animation                      = icon_animation.Checked;
             Default.link_save_data                      = autolink_save_data.Checked;
             Default.gamedata_source_image               = gamedata_source_image_list.SelectedIndex;
             Default.image_interpolation                 = image_interpolation_mode_list.SelectedIndex;

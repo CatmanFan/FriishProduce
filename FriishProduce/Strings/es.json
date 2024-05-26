@@ -108,6 +108,7 @@
 			"auto_retrieve_gamedata_online": "Obtener automáticamente tras abrir una ROM",
 			"gamedata_source_image": "Sitio web de imágenes:",
 			"autolink_save_data": "Vincular automáticamente el título de los datos guardados al título del banner y del canal",
+			"icon_animation": "Habilitar vista previa animada del ícono del canal",
 			"reset_all_dialogs": "Restablecer la opción \"No volver a mostrar este mensaje\"",
 			"use_custom_database": "Utilizar una base de datos externa para los canales de origen",
 			"default_save_as_filename": "Nombre por defecto de los archivos WAD guardados",
