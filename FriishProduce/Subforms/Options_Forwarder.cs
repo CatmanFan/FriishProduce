@@ -41,13 +41,12 @@ namespace FriishProduce
             {
                 bool valid = Options["BIOSPath"] != null || File.Exists(Options["BIOSPath"]);
 
+                if (!File.Exists(Options["BIOSPath"]) && !string.IsNullOrEmpty(Options["BIOSPath"])) MessageBox.Show(string.Format(Program.Lang.Msg(10, true), Path.GetFileName(Options["BIOSPath"])));
+
                 toggleSwitch1.Checked = valid;
                 toggleSwitch2.Checked = bool.Parse(Options["BIOSScreen"]);
 
-                if (valid)
-                {
-                    BIOSPath = Options["BIOSPath"];
-                }
+                if (valid) BIOSPath = Options["BIOSPath"];
 
                 show_bios_screen.Enabled = toggleSwitch2.Enabled = valid;
             }

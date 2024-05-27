@@ -125,7 +125,7 @@ namespace FriishProduce
             }
             catch
             {
-                MessageBox.Show("Warning!\nThe language strings have not been loaded correctly.\n\nSeveral items may show up as 'undefined'.\n\nOther exceptions related to strings or filters can also occur!", MessageBox.Buttons.Ok, TaskDialogIcon.Warning, false);
+                MessageBox.Show("Warning!\nThe language strings have not been loaded correctly.\n\nSeveral items may show up as 'undefined'.\n\nOther exceptions related to strings or filters can also occur!", MessageBox.Buttons.Ok, MessageBox.Icons.Warning, false);
             }
             #endregion
 
@@ -170,7 +170,9 @@ namespace FriishProduce
             // ********
             // SaveWAD.InitialDirectory = Paths.Out;
 
-            Updater.GetLatest();
+#pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
+            if (Properties.Settings.Default.auto_update_check) { var result = Updater.GetLatest(); }
+#pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
         }
 
         private void Settings_Click(object sender, EventArgs e)
@@ -367,7 +369,7 @@ namespace FriishProduce
             if (index != -1) tabControl.TabPages[index].Select();
         }
 
-        private void CloseTab_Click(object sender, EventArgs e) { var tab = tabControl.SelectedForm as Form; tab.Close(); tab.Dispose(); }
+        private void CloseTab_Click(object sender, EventArgs e) { var tab = tabControl.SelectedForm as Form; tab.Close(); }
 
         private void About_Click(object sender, EventArgs e) { using (var about = new About() { Font = Font }) about.ShowDialog(); }
 
@@ -395,7 +397,7 @@ namespace FriishProduce
 
             catch (Exception ex)
             {
-                MessageBox.Show("Could not save!", ex.Message, MessageBox.Buttons.Ok, TaskDialogIcon.Error);
+                MessageBox.Show("Could not save!", ex.Message, MessageBox.Buttons.Ok, MessageBox.Icons.Error);
             }
 
             return false;
@@ -417,7 +419,7 @@ namespace FriishProduce
 
                 catch
                 {
-                    MessageBox.Show("Not a valid project file!", MessageBox.Buttons.Ok, TaskDialogIcon.Error);
+                    MessageBox.Show("Not a valid project file!", MessageBox.Buttons.Ok, MessageBox.Icons.Error);
                 }
             }
         }

@@ -67,6 +67,8 @@
 			"005": "El WAD que ha seleccionado (ID: {0}) no es válido.\nEsto puede deberse a que:\n  • la consola actual no coincide con la del WAD.\n  • el WAD aún no está disponible en la base de datos de esta aplicación.\n  • el WAD ya está modificado, ya sea inyectado o convertido en forwarder.",
 			"006": "Puede reemplazar el manual electrónico original del juego de la Consola Virtual con un otro personalizado.\n\nPara hacer esto, necesita un archivo comprimido ZIP conteniendo el contenido extraído/modificado del archivo *.arc del manual electrónico.",
 			"007": "El seleccionado no contiene ningún contenido de manual electrónico.",
+			"008": "Actualización de FriishProduce\nYa está disponible para descargar la nueva versión {0} de FriishProduce.\nActualmente está utilizando la versión {1}.\n\n¿Quiere descargar la actualización de GitHub ahora?",
+			"009": "Actualmente ya está actualizado.",
 			"error": "¡Se ha producido un error!",
 			"e_000": "No se pudo conectar a Internet.\nDescripción : {0}",
 			"e_001": "No se pudo generar la imagen.\nEsto puede deberse a un problema con GDI+.",
@@ -77,7 +79,8 @@
 			"e_006": "No se pudo exportar en formato WAD.",
 			"e_007": "No se pudo aplicar el parche, ya sea porque la ROM de destino y el parche no coinciden o porque el checksum de la ROM no es válida.",
 			"e_008": "No se pudo descargar el canal.",
-			"e_009": "No se pudo modificar el archivo de manual electrónico.\nLa exportación en formato WAD continuará según lo previsto."
+			"e_009": "No se pudo modificar el archivo de manual electrónico.\nLa exportación en formato WAD continuará según lo previsto.",
+			"e_010": "El archivo \"{0}\" no se encontró en su ruta original. Puede que haya sido eliminado o movido."
 		}
 	},
 
@@ -105,6 +108,9 @@
 			"default_settings": "Preferencias por defecto",
 			"language": "Idioma",
 			"system_default": "Idioma del sistema",
+			"updater": "Actualización de FriishProduce",
+			"check_for_updates": "Buscar actualizaciones",
+			"auto_update_check": "Buscar actualizaciones cuando se abra la aplicación",
 			"auto_retrieve_gamedata_online": "Obtener automáticamente tras abrir una ROM",
 			"gamedata_source_image": "Sitio web de imágenes:",
 			"autolink_save_data": "Vincular automáticamente el título de los datos guardados al título del banner y del canal",

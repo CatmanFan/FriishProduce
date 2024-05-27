@@ -62,7 +62,11 @@ namespace FriishProduce
                 DLSPath = Options["midi"];
                 midi.Checked = true;
             }
-            else { midi.Checked = false; }
+            else
+            {
+                if (!string.IsNullOrEmpty(Options["midi"])) MessageBox.Show(string.Format(Program.Lang.Msg(10, true), Path.GetFileName(Options["midi"])));
+                midi.Checked = false;
+            }
             // *******
         }
 

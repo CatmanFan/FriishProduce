@@ -90,6 +90,8 @@
 			"005": "The WAD you have selected (title ID: {0}) is invalid.\nThis could be for any of the following reasons:\n  • The currently-selected console does not match that used by the WAD.\n  • The WAD is not yet available in the database.\n  • The WAD has already been modified (i.e. injected or converted to a forwarder).",
 			"006": "You can replace the original Virtual Console game's Operations Guide manual.\n\nTo do this, you need a ZIP containing the extracted/modified contents of a manual .arc from a VC WAD.",
 			"007": "Not a valid emanual contents item.",
+			"008": "An update is available\nFriishProduce v{0} is now available for download.\nYou are currently running v{1}.\n\nWould you like to get the latest version from GitHub now?",
+			"009": "You are currently already up to date.",
 			"error": "An error has occurred!",
 			"e_000": "Failed to connect to the Internet.\nMessage: {0}",
 			"e_001": "Failed to generate images.\nThis may be due to an issue with GDI+.",
@@ -100,7 +102,8 @@
 			"e_006": "Failed to export to WAD.",
 			"e_007": "Unable to apply patch file. Either the patch and target ROM do not match, or the ROM's checksum is invalid.",
 			"e_008": "Failed to download WAD.",
-			"e_009": "Failed to replace the manual file.\nExportation to WAD will continue as intended."
+			"e_009": "Failed to replace the manual file.\nExportation to WAD will continue as intended.",
+			"e_010": "The file \"{0}\" could not be found in its original path. It may have been deleted or moved."
 		}
 	},
 
@@ -127,6 +130,9 @@
 			"default_settings": "Default settings",
 			"language": "Language",
 			"system_default": "System default",
+			"updater": "Updater",
+			"check_for_updates": "Check for updates",
+			"auto_update_check": "Check for updates automatically on startup",
 			"auto_retrieve_gamedata_online": "Automatically retrieve after opening a ROM",
 			"gamedata_source_image": "Source images website:",
 			"autolink_save_data": "Link save data title automatically with banner and channel names",

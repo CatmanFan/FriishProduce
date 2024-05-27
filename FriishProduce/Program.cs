@@ -13,6 +13,7 @@ namespace FriishProduce
 
         public static Language Lang { get; set; }
         public static IntPtr Handle { get; set; }
+        public static bool IsUpdated = false;
 
         /// <summary>
         /// Auto-sizes a control, such as a combo box, based on the width of the label which is placed near it.

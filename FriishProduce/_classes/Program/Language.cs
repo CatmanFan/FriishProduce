@@ -255,7 +255,7 @@ namespace FriishProduce
                               || sectionName.ToLower() == "platforms"
                               || sectionName.ToLower() == "messages" ? target.global : target.strings;
 
-                dynamic result = null;
+                string result = null;
 
                 if (!string.IsNullOrEmpty(sectionName))
                 {
@@ -292,10 +292,11 @@ namespace FriishProduce
                 Found:
                 var brackets = new List<Tuple<int, int>>();
 
-                for (int i = 0; i < result.Length; i++)
+                for (int i = 0; i < result.Length - 2; i++)
                 {
-                    if (result.IndexOf("{", i) != -1)
-                        brackets.Add(Tuple.Create(result.IndexOf("{", i), result.IndexOf("}", i)));
+                    if (result[i] == '{')
+                        if (result.IndexOf('}', i) != -1)
+                            brackets.Add(Tuple.Create(i, result.IndexOf('}', i)));
                 }
 
                 if (brackets.Count > 0)

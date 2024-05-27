@@ -17,6 +17,15 @@ namespace FriishProduce
             Custom
         }
 
+        public enum Icons
+        {
+            None = 0,
+            Error = 1,
+            Information = 2,
+            Shield = 3,
+            Warning = 4
+        }
+
         public enum Result
         {
             Button1 = 0,
@@ -31,9 +40,11 @@ namespace FriishProduce
             Close = 9
         }
 
+        public static Result Show(string mainText, Buttons buttons, Icons icon) => Show(mainText, null, buttons, icon);
+
         public static Result Show(string mainText, string description, Buttons buttons, System.Drawing.Icon icon, int dontShow = -1, bool isLinkStyle = false) => Show(mainText, description, buttons, 0, dontShow, isLinkStyle, icon);
 
-        public static Result Show(string mainText, string description, Buttons buttons, TaskDialogIcon icon = 0, int dontShow = -1, bool isLinkStyle = false, System.Drawing.Icon ico = null)
+        public static Result Show(string mainText, string description, Buttons buttons, Icons icon = 0, int dontShow = -1, bool isLinkStyle = false, System.Drawing.Icon ico = null)
         {
             List<string> b = new List<string>();
 
@@ -84,7 +95,7 @@ namespace FriishProduce
             return Show(mainText, description, b.ToArray(), icon, isLinkStyle, dontShow, ico);
         }
 
-        public static Result Show(string mainText, string description, string[] buttons, TaskDialogIcon icon = 0, bool isLinkStyle = false, int dontShow = -1, System.Drawing.Icon ico = null)
+        public static Result Show(string mainText, string description, string[] buttons, Icons icon = 0, bool isLinkStyle = false, int dontShow = -1, System.Drawing.Icon ico = null)
         {
             using (TaskDialog t = new TaskDialog()
             {
@@ -122,7 +133,7 @@ namespace FriishProduce
                 }
                 else
                 {
-                    t.MainIcon = icon;
+                    t.MainIcon = icon switch { Icons.Error => TaskDialogIcon.Error, Icons.Information => TaskDialogIcon.Information, Icons.Shield => TaskDialogIcon.Shield, Icons.Warning => TaskDialogIcon.Warning, _ => TaskDialogIcon.Custom };
                 }
 
                 if (dontShow >= 0) { t.VerificationText = Program.Lang.String("do_not_show"); }
@@ -146,17 +157,19 @@ namespace FriishProduce
             }
         }
 
-        public static Result Show(string mainText, string description, Buttons buttons, TaskDialogIcon icon, bool isLinkStyle) => Show(mainText, description, buttons, icon, -1, isLinkStyle);
+        public static Result Show(string mainText, string description, Buttons buttons, Icons icon, bool isLinkStyle) => Show(mainText, description, buttons, icon, -1, isLinkStyle);
 
-        public static Result Show(string mainText, Buttons buttons, TaskDialogIcon icon, bool isLinkStyle) => Show(mainText, null, buttons, icon, -1, isLinkStyle);
+        public static Result Show(string mainText, Buttons buttons, Icons icon, bool isLinkStyle) => Show(mainText, null, buttons, icon, -1, isLinkStyle);
 
         public static Result Show(string mainText, Buttons buttons, System.Drawing.Icon icon, bool isLinkStyle = false) => Show(mainText, null, buttons, icon, -1, isLinkStyle);
 
-        public static Result Show(string mainText, Buttons buttons = Buttons.Ok, TaskDialogIcon icon = 0, int dontShow = -1) => Show(mainText, null, buttons, icon, dontShow);
+        public static Result Show(string mainText, Buttons buttons = Buttons.Ok, Icons icon = 0, int dontShow = -1) => Show(mainText, null, buttons, icon, dontShow);
 
         public static void Show(string mainText, string description, int dontShow = -1) => Show(mainText, description, Buttons.Ok, 0, dontShow);
 
         public static void Show(string mainText, int dontShow) => Show(mainText, null, Buttons.Ok, 0, dontShow);
+
+        public static void Show(string mainText) => Show(mainText, null, Buttons.Ok, 0, -1);
 
         public static void Error(int msg) => Error(Program.Lang.Msg(msg, true));
 

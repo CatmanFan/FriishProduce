@@ -37,6 +37,8 @@ namespace FriishProduce
             // *******
             if (Options != null)
             {
+                if (!File.Exists(Options["BIOSPath"]) && !string.IsNullOrEmpty(Options["BIOSPath"])) MessageBox.Show(string.Format(Program.Lang.Msg(10, true), Path.GetFileName(Options["BIOSPath"])), MessageBox.Buttons.Ok, MessageBox.Icons.Warning);
+
                 if (Options["BIOSPath"] != null || File.Exists(Options["BIOSPath"]))
                 {
                     Options["BIOS"] = "custom";

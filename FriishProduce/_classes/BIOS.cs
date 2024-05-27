@@ -52,7 +52,7 @@ namespace FriishProduce
                 if (List[i].platform == index) return Verify(file, i);
             }
 
-            MessageBox.Show(Program.Lang.Msg(2), MessageBox.Buttons.Ok, Ookii.Dialogs.WinForms.TaskDialogIcon.Warning);
+            MessageBox.Show(Program.Lang.Msg(2), MessageBox.Buttons.Ok, MessageBox.Icons.Warning);
             return false;
         }
 
@@ -63,7 +63,7 @@ namespace FriishProduce
                 if (List[i].platform == index) return Verify(file, i);
             }
 
-            MessageBox.Show(Program.Lang.Msg(2), MessageBox.Buttons.Ok, Ookii.Dialogs.WinForms.TaskDialogIcon.Warning);
+            MessageBox.Show(Program.Lang.Msg(2), MessageBox.Buttons.Ok, MessageBox.Icons.Warning);
             return false;
         }
 
@@ -99,7 +99,7 @@ namespace FriishProduce
                 }
             }
 
-            MessageBox.Show(Program.Lang.Msg(2), MessageBox.Buttons.Ok, Ookii.Dialogs.WinForms.TaskDialogIcon.Warning);
+            MessageBox.Show(Program.Lang.Msg(2), MessageBox.Buttons.Ok, MessageBox.Icons.Warning);
             return false;
         }
 

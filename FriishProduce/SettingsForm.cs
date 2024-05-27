@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FriishProduce
@@ -155,25 +156,31 @@ namespace FriishProduce
 
             // -----------------------------
 
+            // Update checker button
+            check_for_updates.Enabled = Default.auto_update_check ? !Program.IsUpdated : true;
+
             // Defaults & forwarders
-            icon_animation.Checked                      = Default.icon_animation;
-            auto_retrieve_gamedata_online.Checked       = Default.auto_retrieve_game_data;
-            autolink_save_data.Checked                  = Default.link_save_data;
-            reset_all_dialogs.Checked                   = false;
-            FStorage_SD.Checked                         = FORWARDER.Default.root_storage_device.ToLower() == "sd";
-            toggleSwitch1.Checked                       = FORWARDER.Default.nand_loader.ToLower() == "vwii";
-            toggleSwitch2.Checked                       = bool.Parse(FORWARDER.Default.show_bios_screen);
-            FStorage_USB.Checked                        = !FStorage_SD.Checked;
+            auto_update_check.Checked = Default.auto_update_check;
+            icon_animation.Checked = Default.icon_animation;
+            auto_retrieve_gamedata_online.Checked = Default.auto_retrieve_game_data;
+            autolink_save_data.Checked = Default.link_save_data;
+            reset_all_dialogs.Checked = false;
+            FStorage_SD.Checked = FORWARDER.Default.root_storage_device.ToLower() == "sd";
+            toggleSwitch1.Checked = FORWARDER.Default.nand_loader.ToLower() == "vwii";
+            toggleSwitch2.Checked = bool.Parse(FORWARDER.Default.show_bios_screen);
+            FStorage_USB.Checked = !FStorage_SD.Checked;
             #region use_custom_database
             bool clearCustomDatabase = !File.Exists(Default.custom_database);
             use_custom_database.Checked = File.Exists(Default.custom_database);
 
-            #if DEBUG
-                use_custom_database.Visible = true;
-            #else
-                use_custom_database.Visible = false;
-                clearCustomDatabase = true;
-            #endif
+        #if DEBUG
+            use_custom_database.Visible = true;
+            // GetBanners.Visible = true;
+        #else
+            use_custom_database.Visible = false;
+            clearCustomDatabase = true;
+            // GetBanners.Visible = false;
+        #endif
 
             if (clearCustomDatabase && use_custom_database.Checked)
             {
@@ -182,48 +189,48 @@ namespace FriishProduce
                 Default.Save();
             }
             #endregion
-            default_save_as_filename_tb.Text            = Default.default_save_as_filename;
+            default_save_as_filename_tb.Text = Default.default_save_as_filename;
 
             // NES
-            vc_nes_palettelist.SelectedIndex            = int.Parse(VC_NES.Default.palette);
-            vc_nes_palette_use_on_banner.Checked        = bool.Parse(VC_NES.Default.palette_use_on_banner);
+            vc_nes_palettelist.SelectedIndex = int.Parse(VC_NES.Default.palette);
+            vc_nes_palette_use_on_banner.Checked = bool.Parse(VC_NES.Default.palette_use_on_banner);
 
             // N64
-            vc_n64_patch_fixbrightness.Checked          = bool.Parse(VC_N64.Default.patch_fixbrightness);
-            vc_n64_patch_fixcrashes.Checked             = bool.Parse(VC_N64.Default.patch_fixcrashes);
-            vc_n64_patch_expandedram.Checked            = bool.Parse(VC_N64.Default.patch_expandedram);
-            vc_n64_patch_autosizerom.Checked            = bool.Parse(VC_N64.Default.patch_autosizerom);
-            vc_n64_romc_type_list.SelectedIndex         = int.Parse(VC_N64.Default.romc_type);
+            vc_n64_patch_fixbrightness.Checked = bool.Parse(VC_N64.Default.patch_fixbrightness);
+            vc_n64_patch_fixcrashes.Checked = bool.Parse(VC_N64.Default.patch_fixcrashes);
+            vc_n64_patch_expandedram.Checked = bool.Parse(VC_N64.Default.patch_expandedram);
+            vc_n64_patch_autosizerom.Checked = bool.Parse(VC_N64.Default.patch_autosizerom);
+            vc_n64_romc_type_list.SelectedIndex = int.Parse(VC_N64.Default.romc_type);
 
             // SEGA
-            label1.Text                                 = VC_SEGA.Default.console_brightness;
-            SEGA_console_brightness.Value               = int.Parse(label1.Text);
-            vc_sega_save_sram.Checked                   = VC_SEGA.Default.save_sram == "1";
-            vc_sega_dev_mdpad_enable_6b.Checked         = VC_SEGA.Default.dev_mdpad_enable_6b == "1";
-            vc_sega_country.SelectedIndex               = VC_SEGA.Default.country switch { "jp" => 0, "us" => 1, _ => 2 };
-            vc_sega_console_disableresetbutton.Checked  = VC_SEGA.Default.console_disableresetbutton == "1";
+            label1.Text = VC_SEGA.Default.console_brightness;
+            SEGA_console_brightness.Value = int.Parse(label1.Text);
+            vc_sega_save_sram.Checked = VC_SEGA.Default.save_sram == "1";
+            vc_sega_dev_mdpad_enable_6b.Checked = VC_SEGA.Default.dev_mdpad_enable_6b == "1";
+            vc_sega_country.SelectedIndex = VC_SEGA.Default.country switch { "jp" => 0, "us" => 1, _ => 2 };
+            vc_sega_console_disableresetbutton.Checked = VC_SEGA.Default.console_disableresetbutton == "1";
 
             // PCE
-            vc_pce_backupram.Checked                    = VC_PCE.Default.BACKUPRAM == "1";
-            vc_pce_europe_switch.Checked                = VC_PCE.Default.EUROPE == "1";
-            vc_pce_sgenable_switch.Checked              = VC_PCE.Default.SGENABLE == "1";
-            vc_pce_padbutton_switch.Checked             = VC_PCE.Default.PADBUTTON == "6";
-            vc_pce_y_offset.Value                       = int.Parse(VC_PCE.Default.YOFFSET);
-            vc_pce_hide_overscan.Checked                = VC_PCE.Default.HIDEOVERSCAN == "1";
-            vc_pce_raster.Checked                       = VC_PCE.Default.RASTER == "1";
-            vc_pce_sprline.Checked                      = VC_PCE.Default.SPRLINE == "1";
+            vc_pce_backupram.Checked = VC_PCE.Default.BACKUPRAM == "1";
+            vc_pce_europe_switch.Checked = VC_PCE.Default.EUROPE == "1";
+            vc_pce_sgenable_switch.Checked = VC_PCE.Default.SGENABLE == "1";
+            vc_pce_padbutton_switch.Checked = VC_PCE.Default.PADBUTTON == "6";
+            vc_pce_y_offset.Value = int.Parse(VC_PCE.Default.YOFFSET);
+            vc_pce_hide_overscan.Checked = VC_PCE.Default.HIDEOVERSCAN == "1";
+            vc_pce_raster.Checked = VC_PCE.Default.RASTER == "1";
+            vc_pce_sprline.Checked = VC_PCE.Default.SPRLINE == "1";
 
             // NEO-GEO
-            vc_neo_bios_list.SelectedIndex              = VC_NEO.Default.bios.ToLower() switch { "vc1" => 0, "vc3" => 2, _ => 1 };
+            vc_neo_bios_list.SelectedIndex = VC_NEO.Default.bios.ToLower() switch { "vc1" => 0, "vc3" => 2, _ => 1 };
 
             // FLASH
-            flash_save_data_enable.Checked              = ADOBEFLASH.Default.shared_object_capability == "on";
-            flash_vff_sync_on_write.Checked             = ADOBEFLASH.Default.vff_sync_on_write == "on";
-            flash_vff_cache_size_list.SelectedItem      = flash_vff_cache_size_list.Items.Cast<string>().FirstOrDefault(n => n.ToString() == ADOBEFLASH.Default.vff_cache_size);
-            flash_quality_list.SelectedIndex            = ADOBEFLASH.Default.quality switch { "high" => 0, "medium" => 1, _ => 2 };
-            flash_mouse.Checked                         = ADOBEFLASH.Default.mouse == "on";
-            flash_qwerty_keyboard.Checked               = ADOBEFLASH.Default.qwerty_keyboard == "on";
-            flash_strap_reminder_list.SelectedIndex           = ADOBEFLASH.Default.strap_reminder switch { "none" => 0, "normal" => 1, _ => 2 };
+            flash_save_data_enable.Checked = ADOBEFLASH.Default.shared_object_capability == "on";
+            flash_vff_sync_on_write.Checked = ADOBEFLASH.Default.vff_sync_on_write == "on";
+            flash_vff_cache_size_list.SelectedItem = flash_vff_cache_size_list.Items.Cast<string>().FirstOrDefault(n => n.ToString() == ADOBEFLASH.Default.vff_cache_size);
+            flash_quality_list.SelectedIndex = ADOBEFLASH.Default.quality switch { "high" => 0, "medium" => 1, _ => 2 };
+            flash_mouse.Checked = ADOBEFLASH.Default.mouse == "on";
+            flash_qwerty_keyboard.Checked = ADOBEFLASH.Default.qwerty_keyboard == "on";
+            flash_strap_reminder_list.SelectedIndex = ADOBEFLASH.Default.strap_reminder switch { "none" => 0, "normal" => 1, _ => 2 };
 
             flash_vff_cache_size.Enabled = flash_vff_sync_on_write.Enabled = flash_vff_cache_size_list.Enabled = flash_save_data_enable.Checked;
 
@@ -251,7 +258,7 @@ namespace FriishProduce
                         }
                         catch
                         {
-                            MessageBox.Show(Program.Lang.Msg(2), 0, Ookii.Dialogs.WinForms.TaskDialogIcon.Warning);
+                            MessageBox.Show(Program.Lang.Msg(2), 0, MessageBox.Icons.Warning);
                             Default.custom_database = null;
                             use_custom_database.Checked = false;
                         }
@@ -284,52 +291,53 @@ namespace FriishProduce
             // -------------------------------------------
             // Other settings
             // -------------------------------------------
-            
-            Default.icon_animation                      = icon_animation.Checked;
-            Default.link_save_data                      = autolink_save_data.Checked;
-            Default.gamedata_source_image               = gamedata_source_image_list.SelectedIndex;
-            Default.image_interpolation                 = image_interpolation_mode_list.SelectedIndex;
-            Default.auto_retrieve_game_data             = auto_retrieve_gamedata_online.Checked;
-            Default.default_save_as_filename            = default_save_as_filename_tb.Text;
+
+            Default.auto_update_check = auto_update_check.Checked;
+            Default.icon_animation = icon_animation.Checked;
+            Default.link_save_data = autolink_save_data.Checked;
+            Default.gamedata_source_image = gamedata_source_image_list.SelectedIndex;
+            Default.image_interpolation = image_interpolation_mode_list.SelectedIndex;
+            Default.auto_retrieve_game_data = auto_retrieve_gamedata_online.Checked;
+            Default.default_save_as_filename = default_save_as_filename_tb.Text;
             Default.Save();
 
-            FORWARDER.Default.root_storage_device       = FStorage_SD.Checked ? "SD" : "USB";
-            FORWARDER.Default.nand_loader               = toggleSwitch1.Checked ? "vWii" : "Wii";
-            FORWARDER.Default.show_bios_screen          = toggleSwitch2.Checked.ToString();
+            FORWARDER.Default.root_storage_device = FStorage_SD.Checked ? "SD" : "USB";
+            FORWARDER.Default.nand_loader = toggleSwitch1.Checked ? "vWii" : "Wii";
+            FORWARDER.Default.show_bios_screen = toggleSwitch2.Checked.ToString();
             Program.Lang = new Language(lng);
 
-            VC_NES.Default.palette                      = vc_nes_palettelist.SelectedIndex.ToString();
-            VC_NES.Default.palette_use_on_banner        = vc_nes_palette_use_on_banner.Checked.ToString();
+            VC_NES.Default.palette = vc_nes_palettelist.SelectedIndex.ToString();
+            VC_NES.Default.palette_use_on_banner = vc_nes_palette_use_on_banner.Checked.ToString();
 
-            VC_N64.Default.patch_fixbrightness          = vc_n64_patch_fixbrightness.Checked.ToString();
-            VC_N64.Default.patch_fixcrashes             = vc_n64_patch_fixcrashes.Checked.ToString();
-            VC_N64.Default.patch_expandedram            = vc_n64_patch_expandedram.Checked.ToString();
-            VC_N64.Default.patch_autosizerom            = vc_n64_patch_autosizerom.Checked.ToString();
-            VC_N64.Default.romc_type                    = vc_n64_romc_type_list.SelectedIndex.ToString();
+            VC_N64.Default.patch_fixbrightness = vc_n64_patch_fixbrightness.Checked.ToString();
+            VC_N64.Default.patch_fixcrashes = vc_n64_patch_fixcrashes.Checked.ToString();
+            VC_N64.Default.patch_expandedram = vc_n64_patch_expandedram.Checked.ToString();
+            VC_N64.Default.patch_autosizerom = vc_n64_patch_autosizerom.Checked.ToString();
+            VC_N64.Default.romc_type = vc_n64_romc_type_list.SelectedIndex.ToString();
 
-            VC_SEGA.Default.console_brightness          = label1.Text;
-            VC_SEGA.Default.save_sram                   = vc_sega_save_sram.Checked ? "1" : "0";
-            VC_SEGA.Default.dev_mdpad_enable_6b         = vc_sega_dev_mdpad_enable_6b.Checked ? "1" : "0";
-            VC_SEGA.Default.country                     = vc_sega_country.SelectedIndex switch { 0 => "jp", 1 => "us", _ => "eu" };
-            VC_SEGA.Default.console_disableresetbutton  = vc_sega_console_disableresetbutton.Checked ? "1" : null;
+            VC_SEGA.Default.console_brightness = label1.Text;
+            VC_SEGA.Default.save_sram = vc_sega_save_sram.Checked ? "1" : "0";
+            VC_SEGA.Default.dev_mdpad_enable_6b = vc_sega_dev_mdpad_enable_6b.Checked ? "1" : "0";
+            VC_SEGA.Default.country = vc_sega_country.SelectedIndex switch { 0 => "jp", 1 => "us", _ => "eu" };
+            VC_SEGA.Default.console_disableresetbutton = vc_sega_console_disableresetbutton.Checked ? "1" : null;
 
-            VC_PCE.Default.BACKUPRAM                    = vc_pce_backupram.Checked ? "1" : "0";
-            VC_PCE.Default.EUROPE                       = vc_pce_europe_switch.Checked ? "1" : "0";
-            VC_PCE.Default.SGENABLE                     = vc_pce_sgenable_switch.Checked ? "1" : "0";
-            VC_PCE.Default.PADBUTTON                    = vc_pce_padbutton_switch.Checked ? "6" : "2";
-            VC_PCE.Default.YOFFSET                      = vc_pce_y_offset.Value.ToString();
-            VC_PCE.Default.HIDEOVERSCAN                 = vc_pce_hide_overscan.Checked ? "1" : "0";
-            VC_PCE.Default.RASTER                       = vc_pce_raster.Checked ? "1" : "0";
-            VC_PCE.Default.SPRLINE                      = vc_pce_sprline.Checked ? "1" : "0";
+            VC_PCE.Default.BACKUPRAM = vc_pce_backupram.Checked ? "1" : "0";
+            VC_PCE.Default.EUROPE = vc_pce_europe_switch.Checked ? "1" : "0";
+            VC_PCE.Default.SGENABLE = vc_pce_sgenable_switch.Checked ? "1" : "0";
+            VC_PCE.Default.PADBUTTON = vc_pce_padbutton_switch.Checked ? "6" : "2";
+            VC_PCE.Default.YOFFSET = vc_pce_y_offset.Value.ToString();
+            VC_PCE.Default.HIDEOVERSCAN = vc_pce_hide_overscan.Checked ? "1" : "0";
+            VC_PCE.Default.RASTER = vc_pce_raster.Checked ? "1" : "0";
+            VC_PCE.Default.SPRLINE = vc_pce_sprline.Checked ? "1" : "0";
 
             ADOBEFLASH.Default.shared_object_capability = flash_save_data_enable.Checked ? "on" : "off";
-            ADOBEFLASH.Default.vff_sync_on_write        = flash_vff_sync_on_write.Checked ? "on" : "off";
-            ADOBEFLASH.Default.vff_cache_size           = flash_vff_cache_size_list.SelectedItem.ToString();
-            ADOBEFLASH.Default.quality                  = flash_quality_list.SelectedIndex switch { 0 => "high", 1 => "medium", _ => "low" };
-            ADOBEFLASH.Default.mouse                    = flash_mouse.Checked ? "on" : "off";
-            ADOBEFLASH.Default.qwerty_keyboard          = flash_qwerty_keyboard.Checked ? "on" : "off";
-            ADOBEFLASH.Default.strap_reminder           = flash_strap_reminder_list.SelectedIndex switch { 0 => "none", 1 => "normal", _ => "no_ex" };
-            ADOBEFLASH.Default.hbm_no_save              = ADOBEFLASH.Default.shared_object_capability == "on" ? "no" : "yes";
+            ADOBEFLASH.Default.vff_sync_on_write = flash_vff_sync_on_write.Checked ? "on" : "off";
+            ADOBEFLASH.Default.vff_cache_size = flash_vff_cache_size_list.SelectedItem.ToString();
+            ADOBEFLASH.Default.quality = flash_quality_list.SelectedIndex switch { 0 => "high", 1 => "medium", _ => "low" };
+            ADOBEFLASH.Default.mouse = flash_mouse.Checked ? "on" : "off";
+            ADOBEFLASH.Default.qwerty_keyboard = flash_qwerty_keyboard.Checked ? "on" : "off";
+            ADOBEFLASH.Default.strap_reminder = flash_strap_reminder_list.SelectedIndex switch { 0 => "none", 1 => "normal", _ => "no_ex" };
+            ADOBEFLASH.Default.hbm_no_save = ADOBEFLASH.Default.shared_object_capability == "on" ? "no" : "yes";
 
             switch (vc_neo_bios_list.SelectedIndex)
             {
@@ -419,8 +427,8 @@ namespace FriishProduce
 
             // BannerHelper.ModifyBanner("RPG MAKER",        FileDatas.WADBanners.n64,     "rpgm.app",     16,     FileDatas.WADBanners.rpgm_banner,       FileDatas.WADBanners.rpgm_icon);
             // BannerHelper.ModifyBanner("ＲＰＧツクール",    FileDatas.WADBanners.jp_n64,  "jp_rpgm.app",  16,     FileDatas.WADBanners.jp_rpgm_banner,    FileDatas.WADBanners.rpgm_icon);
-            BannerHelper.ModifyBanner("PLAYSTATION",        FileDatas.WADBanners.n64,       "psx.app",      15,     FileDatas.WADBanners.psx_banner,    FileDatas.WADBanners.psx_icon);
-            BannerHelper.ModifyBanner("プレイステーション",   FileDatas.WADBanners.jp_n64,    "jp_psx.app",   15,     FileDatas.WADBanners.psx_banner,    FileDatas.WADBanners.psx_icon);
+            BannerHelper.ModifyBanner("PLAYSTATION", FileDatas.WADBanners.n64, "psx.app", 15, FileDatas.WADBanners.psx_banner, FileDatas.WADBanners.psx_icon);
+            BannerHelper.ModifyBanner("プレイステーション", FileDatas.WADBanners.jp_n64, "jp_psx.app", 15, FileDatas.WADBanners.psx_banner, FileDatas.WADBanners.psx_icon);
         }
 
         private void TreeView_AfterSelect(object sender, TreeViewEventArgs e)
@@ -474,5 +482,21 @@ namespace FriishProduce
         }
 
         private void BrightnessValue_Scroll(object sender, EventArgs e) => label1.Text = SEGA_console_brightness.Value.ToString();
+
+        private async void CheckUpdates_Click(object sender, EventArgs e)
+        {
+            if ((sender as Control).Name.ToLower() == auto_update_check.Name.ToLower())
+            {
+                if (!auto_update_check.Checked) check_for_updates.Enabled = true;
+                else check_for_updates.Enabled = !Program.IsUpdated;
+            }
+
+            else
+            {
+                var isUpdated = await Updater.GetLatest();
+                check_for_updates.Enabled = auto_update_check.Checked ? !isUpdated : true;
+                if (isUpdated) MessageBox.Show(Program.Lang.Msg(9), MessageBox.Buttons.Ok, MessageBox.Icons.Information);
+            }
+        }
     }
 }

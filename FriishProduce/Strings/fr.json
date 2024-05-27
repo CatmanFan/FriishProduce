@@ -74,6 +74,8 @@
 			"005": "Le fichier WAD que vous avez précisée ({0}) est invalide.\nCeci peut être provoqué par l'une des raisons suivantes :\n  • La plateforme/console cible ne correspond pas à celle de la chaîne sélectionnée.\n  • La chaîne n'est pas encore disponible dans la base des données de cette application.\n  • La chaîne était déjà modifiée (soit injectée, soit convertie en forme du forwarder).",
 			"006": "Vous pouvez replacer le mode d'emploi inclus dans la chaîne de Console virtuelle par un autre de votre choix.\n\nPour ce faire, vous aurez besoin d'une archive ZIP comprenant le contenu d'un fichier *.arc du mode d'emploi de Console virtuelle.",
 			"007": "Aucun contenu du mode d'emploi n'a été détecté.",
+			"008": "Mise à jour disponible : v{0}\nUne nouvelle version de FriishProduce est désormais disponible en téléchargement.\nVous utilisez actuellement la version {1}.\n\nVoulez-vous obtenir la dernière mise à jour dès GitHub maintenant ?",
+			"009": "Vous êtes déjà à jour.",
 			"error": "Un problème est survenu !",
 			"e_000": "Échec de la connexion à Internet.\nMessage : {0}",
 			"e_001": "Échec de la génération de l'image.\nCeci peut être provoqué par un problème avec GDI+.",
@@ -84,7 +86,8 @@
 			"e_006": "Échec de la sauvegarde vers format WAD.",
 			"e_007": "Échec de l'application du patch. Il peut s'agir que soit la ROM ne correspond pas au patch, soit elle-même n'est pas valide.",
 			"e_008": "Échec du téléchargement de la chaîne.",
-			"e_009": "Échec de modification du fichier du mode d'emploi.\nLa sauvegarde du fichier WAD se poursuivra comme prévu."
+			"e_009": "Échec de modification du fichier du mode d'emploi.\nLa sauvegarde du fichier WAD se poursuivra comme prévu.",
+			"e_010": "Le fichier « {0} » n'a pas été trouvé dans son chemin original. Il s'agit qu'il peut avoir été déplacé ou supprimé."
 		}
 	},
 
@@ -112,6 +115,9 @@
 			"default_settings": "Réglages par défaut",
 			"language": "Langue",
 			"system_default": "Système",
+			"updater": "Mises à jour",
+			"check_for_updates": "Vérifies les mises à jour",
+			"auto_update_check": "Vérifier les mises à jour dès que l'application est ouverte",
 			"retrieve_gamedata_online": "Remplissage à partir de la base de données en ligne",
 			"auto_retrieve_gamedata_online": "Remplir automatiquement à l'ouverture d'une ROM",
 			"gamedata_source_image": "Site web des images :",

@@ -146,6 +146,8 @@ namespace FriishProduce
             // Manual
             Program.Lang.Control(manual_type, Name);
             Program.AutoSizeControl(manual_type_list, manual_type);
+            manual_type_list.SelectedIndex = 0;
+            Manual = null;
 
             // Regions lists
             TargetRegion.Items.Clear();
@@ -417,7 +419,6 @@ namespace FriishProduce
             toggleSwitch1.Checked = Options.FORWARDER.Default.nand_loader.ToLower().Contains("vwii");
             LinkSaveData.Checked = Properties.Settings.Default.link_save_data;
 
-            manual_type_list.SelectedIndex = 0;
             manual_type_list.Enabled = false;
             foreach (var customManualConsole in new List<Console>() // Confirmed to have an algorithm exist for NES, SNES, N64, SEGA, PCE, NEO
             {
@@ -442,7 +443,11 @@ namespace FriishProduce
                 if (ParentProject.GameData != null) gameData = ParentProject.GameData;
                 if (CO != null) CO.Options = ParentProject.Options;
 
+                foreach (var item in new string[] { ParentProject.ROM, ParentProject.PatchFile, ParentProject.BaseFile })
+                    if (!File.Exists(item) && !string.IsNullOrWhiteSpace(item)) MessageBox.Show(string.Format(Program.Lang.Msg(10, true), Path.GetFileName(item)));
+
                 ROM.Path = File.Exists(ParentProject.ROM) ? ParentProject.ROM : null;
+                LoadROM(ROM.Path, false);
 
                 Img = new ImageHelper(ParentProject.Console, null);
                 Img.LoadToSource(ParentProject.Img);
@@ -564,6 +569,7 @@ namespace FriishProduce
             // ----------------------------
 
             e.Cancel = !CheckUnsaved();
+            if (!e.Cancel) Dispose();
         }
 
         public bool CheckUnsaved()
@@ -851,13 +857,18 @@ namespace FriishProduce
             }
 
             Failed:
-            MessageBox.Show(Program.Lang.Msg(7), MessageBox.Buttons.Ok, Ookii.Dialogs.WinForms.TaskDialogIcon.Warning);
+            MessageBox.Show(Program.Lang.Msg(7), MessageBox.Buttons.Ok, MessageBox.Icons.Warning);
             Manual = null;
             goto End;
 
             End:
             if (Manual == null && index >= 2) index = 0;
             manual_type_list.SelectedIndex = index;
+        }
+
+        private void LoadImageS()
+        {
+            if (Console == Console.NES) LoadImage();
         }
 
         public void LoadImage()
@@ -943,7 +954,7 @@ namespace FriishProduce
                 default:
                     if (ROM == null || !ROM.CheckValidity(ROMpath))
                     {
-                        MessageBox.Show(Program.Lang.Msg(2), 0, Ookii.Dialogs.WinForms.TaskDialogIcon.Warning);
+                        MessageBox.Show(Program.Lang.Msg(2), 0, MessageBox.Icons.Warning);
                         return;
                     }
                     break;
@@ -953,7 +964,7 @@ namespace FriishProduce
                 case Console.NEO:
                     if (!ROM.CheckZIPValidity(ROMpath, new string[] { "c1", "c2", "m1", "p1", "s1", "v1" }, true, true))
                     {
-                        MessageBox.Show(Program.Lang.Msg(2), 0, Ookii.Dialogs.WinForms.TaskDialogIcon.Warning);
+                        MessageBox.Show(Program.Lang.Msg(2), 0, MessageBox.Icons.Warning);
                         return;
                     }
                     break;
@@ -1011,7 +1022,6 @@ namespace FriishProduce
                     {
                         var text = gameData.CleanTitle.Replace("\r", "").Split('\n');
                         if (text[0].Length <= ChannelTitle.MaxLength) { ChannelTitle_Locale.Checked = false; ChannelTitle.Text = text[0]; }
-                        if (ChannelTitle.TextLength <= SaveDataTitle.MaxLength) SaveDataTitle.Text = ChannelTitle.Text;
                     }
 
                     // Set image
@@ -1022,7 +1032,8 @@ namespace FriishProduce
                     Players.Value = Creator.BannerPlayers = !string.IsNullOrEmpty(gameData.Players) ? int.Parse(gameData.Players) : Creator.BannerPlayers;
                 }
 
-                if (Retrieved) CheckExport();
+                if (Retrieved && LinkSaveData.Checked) LinkSaveDataTitle();
+                else if (gameData?.CleanTitle != null && ChannelTitle.TextLength <= SaveDataTitle.MaxLength) SaveDataTitle.Text = ChannelTitle.Text;
 
                 // Show message if partially failed to retrieve data
                 if (Retrieved && (gameData.Title == null || gameData.Players == null || gameData.Year == null || gameData.ImgURL == null))
@@ -1128,7 +1139,7 @@ namespace FriishProduce
                 {
                     System.Media.SystemSounds.Beep.Play();
 
-                    var Message = MessageBox.Show(Program.Lang.Msg(3), null, MessageBox.Buttons.Custom, Ookii.Dialogs.WinForms.TaskDialogIcon.Information);
+                    var Message = MessageBox.Show(Program.Lang.Msg(3), null, MessageBox.Buttons.Custom, MessageBox.Icons.Information);
 
                     if (Message == MessageBox.Result.Button1)
                     {
@@ -1811,11 +1822,13 @@ namespace FriishProduce
         private void InjectorsList_SelectedIndexChanged(object sender, EventArgs e)
         {
             ResetContentOptions();
+            LoadImageS();
             if (groupBox3.Enabled) CheckExport();
         }
 
         private void RegionsList_SelectedIndexChanged(object sender, EventArgs e)
         {
+            LoadImageS();
             if (groupBox4.Enabled) CheckExport();
         }
 

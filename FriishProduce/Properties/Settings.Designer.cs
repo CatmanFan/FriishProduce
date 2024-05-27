@@ -142,5 +142,17 @@ namespace FriishProduce.Properties {
                 this["icon_animation"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool auto_update_check {
+            get {
+                return ((bool)(this["auto_update_check"]));
+            }
+            set {
+                this["auto_update_check"] = value;
+            }
+        }
     }
 }
