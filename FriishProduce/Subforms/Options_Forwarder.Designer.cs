@@ -46,7 +46,7 @@ namespace FriishProduce
             // 
             this.use_bios.AutoSize = true;
             this.use_bios.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.use_bios.Location = new System.Drawing.Point(59, 13);
+            this.use_bios.Location = new System.Drawing.Point(52, 13);
             this.use_bios.Name = "use_bios";
             this.use_bios.Size = new System.Drawing.Size(49, 13);
             this.use_bios.TabIndex = 23;
@@ -59,7 +59,8 @@ namespace FriishProduce
             this.toggleSwitch1.Name = "toggleSwitch1";
             this.toggleSwitch1.OffFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toggleSwitch1.OnFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toggleSwitch1.Size = new System.Drawing.Size(41, 16);
+            this.toggleSwitch1.Size = new System.Drawing.Size(35, 15);
+            this.toggleSwitch1.Style = JCS.ToggleSwitch.ToggleSwitchStyle.Iphone;
             this.toggleSwitch1.TabIndex = 22;
             this.toggleSwitch1.CheckedChanged += new JCS.ToggleSwitch.CheckedChangedDelegate(this.BIOSChanged);
             // 
@@ -67,7 +68,7 @@ namespace FriishProduce
             // 
             this.show_bios_screen.AutoSize = true;
             this.show_bios_screen.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.show_bios_screen.Location = new System.Drawing.Point(47, 36);
+            this.show_bios_screen.Location = new System.Drawing.Point(52, 36);
             this.show_bios_screen.Name = "show_bios_screen";
             this.show_bios_screen.Size = new System.Drawing.Size(95, 13);
             this.show_bios_screen.TabIndex = 29;
@@ -80,7 +81,8 @@ namespace FriishProduce
             this.toggleSwitch2.Name = "toggleSwitch2";
             this.toggleSwitch2.OffFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toggleSwitch2.OnFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toggleSwitch2.Size = new System.Drawing.Size(30, 15);
+            this.toggleSwitch2.Size = new System.Drawing.Size(35, 15);
+            this.toggleSwitch2.Style = JCS.ToggleSwitch.ToggleSwitchStyle.Iphone;
             this.toggleSwitch2.TabIndex = 28;
             // 
             // Options_Forwarder

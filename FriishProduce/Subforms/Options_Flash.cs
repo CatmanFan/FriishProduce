@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using static FriishProduce.Options.ADOBEFLASH;
 
@@ -7,6 +8,8 @@ namespace FriishProduce
 {
     public partial class Options_Flash : ContentOptions
     {
+        private string DLSPath { get; set; }
+
         public Options_Flash() : base()
         {
             InitializeComponent();
@@ -21,7 +24,7 @@ namespace FriishProduce
                 { "vff_sync_on_write", Default.vff_sync_on_write },
                 { "hbm_no_save", Default.hbm_no_save },
                 { "strap_reminder", Default.strap_reminder },
-                { "midi", Default.midi }
+                { "midi", null }
             };
 
             // Cosmetic
@@ -53,6 +56,13 @@ namespace FriishProduce
             }
 
             vff_cache_size.Enabled = vff_cache_size_list.Enabled = vff_sync_on_write.Enabled = save_data_enable.Checked;
+
+            if (File.Exists(Options["midi"]))
+            {
+                DLSPath = Options["midi"];
+                midi.Checked = true;
+            }
+            else { midi.Checked = false; }
             // *******
         }
 
@@ -64,6 +74,7 @@ namespace FriishProduce
             Options["vff_cache_size"] = vff_cache_size_list.SelectedItem.ToString();
             Options["mouse"] = mouse.Checked ? "on" : "off";
             Options["qwerty_keyboard"] = qwerty_keyboard.Checked ? "on" : "off";
+            Options["midi"] = DLSPath;
             Options["quality"] = quality_list.SelectedIndex switch { 0 => "high", 1 => "medium", _ => "low" };
             Options["strap_reminder"] = strap_reminder_list.SelectedIndex switch { 0 => "none", 1 => "normal", _ => "no_ex" };
             Options["hbm_no_save"] = Options["shared_object_capability"] == "on" ? "no" : "yes";
@@ -72,6 +83,22 @@ namespace FriishProduce
         private void checkBoxChanged(object sender, EventArgs e)
         {
             if (sender == save_data_enable) vff_cache_size.Enabled = vff_cache_size_list.Enabled = vff_sync_on_write.Enabled = save_data_enable.Checked;
+            else if (sender == midi)
+            {
+                if (midi.Checked)
+                {
+                    if (!File.Exists(DLSPath) || string.IsNullOrWhiteSpace(DLSPath))
+                    {
+                        ImportDLS.Title = midi.Text;
+
+                        if (ImportDLS.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                            DLSPath = ImportDLS.FileName;
+                        else midi.Checked = false;
+                    }
+                }
+
+                if (!midi.Checked) DLSPath = null;
+            }
         }
     }
 }

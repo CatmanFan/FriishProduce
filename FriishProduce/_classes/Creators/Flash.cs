@@ -184,6 +184,14 @@ namespace FriishProduce.Injectors
                 else if (item.ToLower().Contains(".wide.pcf"))
                     MainContent.ReplaceFile(MainContent.GetNodeIndex(item.Replace(".wide", "")), MainContent.Data[MainContent.GetNodeIndex(item)]);
 
+                // Taking the SWF soundfont
+                // ********
+                if (File.Exists(Settings["midi"]))
+                {
+                    MainContent.AddDirectory("/dls");
+                    MainContent.AddFile("/dls/GM16.DLS", File.ReadAllBytes(Settings["midi"]));
+                }
+
                 else if (item.ToLower() == "config.common.pcf")
                 {
                     var file = new List<string>()
@@ -202,8 +210,8 @@ namespace FriishProduce.Injectors
 
                             "text_encoding                   utf-16",
 
-                            $"midi                            {Settings["midi"]}",
-                            $"# dls_file                      dls/GM16.DLS",
+                            $"midi                            {(File.Exists(Settings["midi"]) ? "on" : "off")}",
+                            $"{(File.Exists(Settings["midi"]) ? null : "# ")}dls_file                      dls/GM16.DLS",
 
                             "key_input                       on",
 

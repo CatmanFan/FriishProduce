@@ -232,6 +232,7 @@
 			"controls": "Controls",
 			"mouse": "Mouse",
 			"qwerty_keyboard": "QWERTY keyboard",
+			"midi": "Enable MIDI playback using DLS soundfont",
 			"quality": "Quality",
 			"quality0": "High",
 			"quality1": "Medium",

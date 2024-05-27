@@ -68,6 +68,8 @@ namespace FriishProduce
             {
                 if (BIOSPath == null)
                 {
+                    ImportBIOS.Title = toggleSwitch1.Text;
+
                     if (ImportBIOS.ShowDialog() == DialogResult.OK)
                     {
                         if (BIOS.Verify(ImportBIOS.FileName, platform))

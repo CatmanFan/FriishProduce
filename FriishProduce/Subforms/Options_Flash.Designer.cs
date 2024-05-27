@@ -41,6 +41,8 @@ namespace FriishProduce
             this.mouse = new System.Windows.Forms.CheckBox();
             this.strap_reminder = new System.Windows.Forms.GroupBox();
             this.strap_reminder_list = new System.Windows.Forms.ComboBox();
+            this.midi = new System.Windows.Forms.CheckBox();
+            this.ImportDLS = new System.Windows.Forms.OpenFileDialog();
             this.bottomPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.quality.SuspendLayout();
@@ -211,9 +213,27 @@ namespace FriishProduce
             this.strap_reminder_list.TabIndex = 16;
             this.strap_reminder_list.Tag = "strap_reminder";
             // 
+            // midi
+            // 
+            this.midi.AutoSize = true;
+            this.midi.Location = new System.Drawing.Point(302, 136);
+            this.midi.Name = "midi";
+            this.midi.Size = new System.Drawing.Size(44, 17);
+            this.midi.TabIndex = 15;
+            this.midi.Tag = "midi";
+            this.midi.Text = "midi";
+            this.midi.UseVisualStyleBackColor = true;
+            this.midi.CheckedChanged += new System.EventHandler(this.checkBoxChanged);
+            // 
+            // ImportDLS
+            // 
+            this.ImportDLS.DefaultExt = "dls";
+            this.ImportDLS.Filter = ".dls (*.dls)|*.dls";
+            // 
             // Options_Flash
             // 
             this.ClientSize = new System.Drawing.Size(594, 282);
+            this.Controls.Add(this.midi);
             this.Controls.Add(this.strap_reminder);
             this.Controls.Add(this.controls);
             this.Controls.Add(this.quality);
@@ -224,6 +244,7 @@ namespace FriishProduce
             this.Controls.SetChildIndex(this.quality, 0);
             this.Controls.SetChildIndex(this.controls, 0);
             this.Controls.SetChildIndex(this.strap_reminder, 0);
+            this.Controls.SetChildIndex(this.midi, 0);
             this.bottomPanel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -232,6 +253,7 @@ namespace FriishProduce
             this.controls.PerformLayout();
             this.strap_reminder.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -248,5 +270,7 @@ namespace FriishProduce
         private System.Windows.Forms.CheckBox vff_sync_on_write;
         private System.Windows.Forms.GroupBox strap_reminder;
         private System.Windows.Forms.ComboBox strap_reminder_list;
+        private System.Windows.Forms.CheckBox midi;
+        private System.Windows.Forms.OpenFileDialog ImportDLS;
     }
 }

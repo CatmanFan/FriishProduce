@@ -45,6 +45,8 @@ namespace FriishProduce
             this.bottomPanel2 = new System.Windows.Forms.Panel();
             this.TreeView = new System.Windows.Forms.TreeView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.icon_animation = new System.Windows.Forms.CheckBox();
+            this.use_custom_database = new System.Windows.Forms.CheckBox();
             this.reset_all_dialogs = new System.Windows.Forms.CheckBox();
             this.language = new System.Windows.Forms.GroupBox();
             this.autolink_save_data = new System.Windows.Forms.CheckBox();
@@ -116,8 +118,6 @@ namespace FriishProduce
             this.label2 = new System.Windows.Forms.Label();
             this.default_save_as_parameters = new System.Windows.Forms.Label();
             this.default_save_as_filename_tb = new System.Windows.Forms.TextBox();
-            this.icon_animation = new System.Windows.Forms.CheckBox();
-            this.use_custom_database = new System.Windows.Forms.CheckBox();
             this.vc_n64_options.SuspendLayout();
             this.bottomPanel1.SuspendLayout();
             this.bottomPanel2.SuspendLayout();
@@ -275,6 +275,20 @@ namespace FriishProduce
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
             // 
+            // icon_animation
+            // 
+            resources.ApplyResources(this.icon_animation, "icon_animation");
+            this.icon_animation.Name = "icon_animation";
+            this.icon_animation.Tag = "icon_animation";
+            this.icon_animation.UseVisualStyleBackColor = true;
+            // 
+            // use_custom_database
+            // 
+            resources.ApplyResources(this.use_custom_database, "use_custom_database");
+            this.use_custom_database.Name = "use_custom_database";
+            this.use_custom_database.Tag = "use_custom_database";
+            this.use_custom_database.UseVisualStyleBackColor = true;
+            // 
             // reset_all_dialogs
             // 
             resources.ApplyResources(this.reset_all_dialogs, "reset_all_dialogs");
@@ -382,6 +396,7 @@ namespace FriishProduce
             this.toggleSwitch2.Name = "toggleSwitch2";
             this.toggleSwitch2.OffFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toggleSwitch2.OnFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toggleSwitch2.Style = JCS.ToggleSwitch.ToggleSwitchStyle.Iphone;
             // 
             // forwarder_console
             // 
@@ -403,6 +418,7 @@ namespace FriishProduce
             this.toggleSwitch1.Name = "toggleSwitch1";
             this.toggleSwitch1.OffFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toggleSwitch1.OnFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toggleSwitch1.Style = JCS.ToggleSwitch.ToggleSwitchStyle.Iphone;
             this.toggleSwitch1.CheckedChanged += new JCS.ToggleSwitch.CheckedChangedDelegate(this.ToggleSwitchChanged);
             // 
             // forwarder_root_device
@@ -841,20 +857,6 @@ namespace FriishProduce
             resources.ApplyResources(this.default_save_as_filename_tb, "default_save_as_filename_tb");
             this.default_save_as_filename_tb.Name = "default_save_as_filename_tb";
             // 
-            // icon_animation
-            // 
-            resources.ApplyResources(this.icon_animation, "icon_animation");
-            this.icon_animation.Name = "icon_animation";
-            this.icon_animation.Tag = "icon_animation";
-            this.icon_animation.UseVisualStyleBackColor = true;
-            // 
-            // use_custom_database
-            // 
-            resources.ApplyResources(this.use_custom_database, "use_custom_database");
-            this.use_custom_database.Name = "use_custom_database";
-            this.use_custom_database.Tag = "use_custom_database";
-            this.use_custom_database.UseVisualStyleBackColor = true;
-            // 
             // SettingsForm
             // 
             this.AcceptButton = this.b_ok;
@@ -865,15 +867,15 @@ namespace FriishProduce
             this.Controls.Add(this.bottomPanel2);
             this.Controls.Add(this.leftSeparator);
             this.Controls.Add(this.TreeView);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.vc_neo);
-            this.Controls.Add(this.vc_nes);
-            this.Controls.Add(this.adobe_flash);
             this.Controls.Add(this.forwarder);
             this.Controls.Add(this.vc_n64);
             this.Controls.Add(this.vc_pce);
             this.Controls.Add(this.vc_sega);
             this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.vc_neo);
+            this.Controls.Add(this.vc_nes);
+            this.Controls.Add(this.adobe_flash);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MaximizeBox = false;

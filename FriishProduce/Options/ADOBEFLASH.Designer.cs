@@ -118,17 +118,5 @@ namespace FriishProduce.Options {
                 this["strap_reminder"] = value;
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("off")]
-        public string midi {
-            get {
-                return ((string)(this["midi"]));
-            }
-            set {
-                this["midi"] = value;
-            }
-        }
     }
 }

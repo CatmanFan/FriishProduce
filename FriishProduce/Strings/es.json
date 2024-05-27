@@ -200,6 +200,7 @@
 			"controls": "Controls",
 			"mouse": "Mouse",
 			"qwerty_keyboard": "QWERTY keyboard",
+			"midi": "Habilitar MIDI con fuente de sonido DLS",
 			"quality": "Quality",
 			"quality0": "High",
 			"quality1": "Medium",

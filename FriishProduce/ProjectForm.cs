@@ -114,7 +114,8 @@ namespace FriishProduce
             groupBox4.Enabled =
             groupBox5.Enabled =
             groupBox6.Enabled =
-            groupBox7.Enabled = value;
+            groupBox7.Enabled =
+            groupBox8.Enabled = value;
         }
 
         public void RefreshForm()
@@ -1716,8 +1717,9 @@ namespace FriishProduce
             #endregion
 
             #region Set size of content options panel
+            if (groupBox3.MaximumSize.Height == 0) groupBox3.MaximumSize = groupBox3.Size;
             var selected = isVCMode ? COPanel_VC : Console != Console.Flash ? COPanel_Forwarder : null;
-            int height = selected == null ? MethodOptions.Location.Y + MethodOptions.Height + 11 : selected.Location.Y + selected.Height + 10;
+            int height = selected == null ? groupBox7.Height : selected.Location.Y + selected.Height + 11;
             groupBox3.Size = new Size(groupBox3.Width, height);
             MethodOptions.Enabled = CO != null;
             #endregion

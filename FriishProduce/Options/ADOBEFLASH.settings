@@ -26,8 +26,5 @@
     <Setting Name="strap_reminder" Type="System.String" Scope="User">
       <Value Profile="(Default)">none</Value>
     </Setting>
-    <Setting Name="midi" Type="System.String" Scope="User">
-      <Value Profile="(Default)">off</Value>
-    </Setting>
   </Settings>
 </SettingsFile>

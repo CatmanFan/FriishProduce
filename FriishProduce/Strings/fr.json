@@ -208,6 +208,7 @@
 			"controls": "Contrôles",
 			"mouse": "Souris",
 			"qwerty_keyboard": "Clavier Qwerty",
+			"midi": "Utiliser lecture de MIDI avec une police sonore DLS",
 			"quality": "Qualité",
 			"quality0": "Élevé",
 			"quality1": "Moyen",

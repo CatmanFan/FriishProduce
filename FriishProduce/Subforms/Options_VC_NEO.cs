@@ -88,6 +88,8 @@ namespace FriishProduce
             {
                 if (BIOSPath == null)
                 {
+                    ImportBIOS.Title = bios_list.SelectedItem.ToString();
+
                     if (ImportBIOS.ShowDialog() == DialogResult.OK)
                         BIOSPath = ImportBIOS.FileName;
 
