@@ -56,7 +56,7 @@ namespace FriishProduce
             this.menu_about_app = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.MainPanel = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.Logo = new System.Windows.Forms.PictureBox();
             this.ToolStrip = new System.Windows.Forms.ToolStrip();
             this.ToolStrip_NewProject = new System.Windows.Forms.ToolStripDropDownButton();
             this.ToolStrip_OpenProject = new System.Windows.Forms.ToolStripButton();
@@ -74,7 +74,7 @@ namespace FriishProduce
             this.BrowseProject = new System.Windows.Forms.OpenFileDialog();
             this.MenuStrip.SuspendLayout();
             this.MainPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             this.ToolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -288,16 +288,16 @@ namespace FriishProduce
             // MainPanel
             // 
             this.MainPanel.BackColor = System.Drawing.Color.Gainsboro;
-            this.MainPanel.Controls.Add(this.pictureBox1);
+            this.MainPanel.Controls.Add(this.Logo);
             resources.ApplyResources(this.MainPanel, "MainPanel");
             this.MainPanel.Name = "MainPanel";
             // 
-            // pictureBox1
+            // Logo
             // 
-            this.pictureBox1.Image = global::FriishProduce.Properties.Resources.icon;
-            resources.ApplyResources(this.pictureBox1, "pictureBox1");
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.TabStop = false;
+            this.Logo.Image = global::FriishProduce.Properties.Resources.icon;
+            resources.ApplyResources(this.Logo, "Logo");
+            this.Logo.Name = "Logo";
+            this.Logo.TabStop = false;
             // 
             // ToolStrip
             // 
@@ -442,7 +442,7 @@ namespace FriishProduce
             this.MenuStrip.ResumeLayout(false);
             this.MenuStrip.PerformLayout();
             this.MainPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Logo)).EndInit();
             this.ToolStrip.ResumeLayout(false);
             this.ToolStrip.PerformLayout();
             this.ResumeLayout(false);
@@ -490,7 +490,7 @@ namespace FriishProduce
         private System.Windows.Forms.ToolStripMenuItem menu_open_project;
         private System.Windows.Forms.ToolStripButton ToolStrip_SaveAs;
         private System.Windows.Forms.ToolStripButton ToolStrip_OpenProject;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox Logo;
     }
 }
 

@@ -11,8 +11,10 @@ namespace FriishProduce
 {
     public static class Web
     {
-        public static bool InternetTest(string URL = null, int timeout = 30)
+        public static bool InternetTest(string URL = null)
         {
+            int timeout = 15;
+
             try
             {
                 var request = (HttpWebRequest)WebRequest.Create

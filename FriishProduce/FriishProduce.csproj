@@ -493,8 +493,6 @@
     <None Include="Resources\forwarder_wii\forwarder_v14.dol" />
     <None Include="Resources\forwarder_wii\vwii.app" />
     <None Include="Resources\StaticBase.wad" />
-    <None Include="Strings\fr.json" />
-    <None Include="Strings\es.json" />
     <None Include="Strings\en.json" />
   </ItemGroup>
   <ItemGroup>

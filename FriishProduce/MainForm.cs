@@ -138,7 +138,8 @@ namespace FriishProduce
             MenuStrip.Font = ToolStrip.Font; // = Font;
             using (var pj = new ProjectForm(0))
                 Size = new Size(pj.Width + 16, pj.Height + MenuStrip.Height + ToolStrip.Height + tabControl.TabHeight + 40);
-            pictureBox1.Location = new Point((MainPanel.Width / 2) - (pictureBox1.Width / 2), (MainPanel.Height / 2) - (pictureBox1.Height / 2));
+
+            if (Logo.Location.X == 0 || Logo.Location.Y == 0) Logo.Location = new Point((MainPanel.Width / 2) - (Logo.Width / 2), (MainPanel.Height / 2) - (Logo.Height / 2));
 
             if (MaximumSize.IsEmpty)
             {

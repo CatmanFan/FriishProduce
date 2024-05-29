@@ -866,11 +866,6 @@ namespace FriishProduce
             manual_type_list.SelectedIndex = index;
         }
 
-        private void LoadImageS()
-        {
-            if (Console == Console.NES) LoadImage();
-        }
-
         public void LoadImage()
         {
             if (Creator != null && Img != null) LoadImage(Img.Source);
@@ -894,10 +889,10 @@ namespace FriishProduce
 
             try
             {
-                Bitmap img = (Bitmap)src.Clone();
-
                 Img.Interpolation = (InterpolationMode)imageintpl.SelectedIndex;
                 Img.FitAspectRatio = image_fit.Checked;
+
+                Bitmap img = (Bitmap)src.Clone();
 
                 // Additionally edit image before generating files, e.g. with modification of image palette/brightness, used only for images with exact resolution of original screen size
                 // ********
@@ -931,9 +926,9 @@ namespace FriishProduce
                 {
                     SaveIcon_Panel.BackgroundImage = Img.SaveIcon();
                     ResetBannerPreview();
+                    CheckExport();
                 }
 
-                CheckExport();
                 return true;
             }
             catch
@@ -1822,13 +1817,13 @@ namespace FriishProduce
         private void InjectorsList_SelectedIndexChanged(object sender, EventArgs e)
         {
             ResetContentOptions();
-            LoadImageS();
+            LoadImage();
             if (groupBox3.Enabled) CheckExport();
         }
 
         private void RegionsList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LoadImageS();
+            LoadImage();
             if (groupBox4.Enabled) CheckExport();
         }
 

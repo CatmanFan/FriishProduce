@@ -22,8 +22,46 @@ namespace FriishProduce
 
         internal InterpolationMode Interpolation { get; set; }
         internal bool FitAspectRatio { get; set; }
-        private int[] SaveIconL_xywh { get; set; }
-        private int[] SaveIconS_xywh { get; set; }
+        private int[] SaveIconL_xywh
+        {
+            get
+            {
+                // --------------------------------------------------
+                // SAVEICON : DEFINE POSITION AND SIZE VARIABLES
+                // --------------------------------------------------
+                return platform == Console.SMS || platform == Console.SMD ? new int[] { 8, 8, 69, 48 } : new int[] { 10, 10, 58, 44 };
+            }
+        }
+        private int[] SaveIconS_xywh
+        {
+            get
+            {
+                // --------------------------------------------------
+                // SAVEICON : DEFINE POSITION AND SIZE VARIABLES
+                // --------------------------------------------------
+                var size = platform == Console.SMS || platform == Console.SMD ? new int[] { 2, new Random().Next(8, 9), 44, 31 } : platform == Console.PCE ? new int[] { 6, 9, 36, 30 } : new int[] { 4, 9, 40, 30 };
+
+                // --------------------------------------------------
+                // SAVEICON : Fit by width/height variables
+                // --------------------------------------------------
+
+                if (FitAspectRatio && Source != null)
+                {
+                    float maxWidth = SaveIconS_xywh[2];
+                    float ratio = Math.Min(maxWidth / Source.Width, maxWidth / Source.Height);
+
+                    size = new int[]
+                    {
+                    Convert.ToInt32(Math.Round(maxWidth - SaveIconS_xywh[2]) / 2) + Convert.ToInt32(Math.Round((48 - maxWidth) / 2)),
+                    Convert.ToInt32(Math.Round(maxWidth - SaveIconS_xywh[3]) / 2) + Convert.ToInt32(Math.Round((48 - maxWidth) / 2)),
+                    Convert.ToInt32(Math.Round(Source.Width * ratio)),
+                    Convert.ToInt32(Math.Round(Source.Height * ratio))
+                    };
+                }
+
+                return size;
+            }
+        }
 
         public ImageHelper(Console console, string path)
         {
@@ -96,8 +134,9 @@ namespace FriishProduce
         /// <summary>
         /// Generates VCPic, IconVCPic and saveicon bitmaps for use in injection.
         /// </summary>
-        public void Generate(Bitmap src)
+        public void Generate(Bitmap src = null)
         {
+            if (src == Source) return;
             if (src == null) src = Source;
 
             bool ShrinkToFit = platform == Console.NES
@@ -111,39 +150,10 @@ namespace FriishProduce
                             || platform == Console.RPGM;
 
             // --------------------------------------------------
-            // SAVEICON : DEFINE POSITION AND SIZE VARIABLES
-            // --------------------------------------------------
-            SaveIconL_xywh = new int[] { 10, 10, 58, 44 };
-            SaveIconS_xywh = new int[] { 4, 9, 40, 30 };
-            if (platform == Console.SMS || platform == Console.SMD)
-            {
-                SaveIconL_xywh = new int[] { 8, 8, 69, 48 };
-                SaveIconS_xywh = new int[] { 2, new Random().Next(8, 9), 44, 31 };
-            }
-            if (platform == Console.PCE)
-            {
-                SaveIconS_xywh = new int[] { 6, 9, 36, 30 };
-            }
-            // --------------------------------------------------
 
             PixelOffset = PixelOffsetMode.Half;
             Smoothing = SmoothingMode.HighQuality;
             CompositingQ = CompositingQuality.AssumeLinear;
-
-            // --------------------------------------------------
-            // SAVEICON : Fit by width/height variables
-            // --------------------------------------------------
-
-            if (FitAspectRatio)
-            {
-                float maxWidth = SaveIconS_xywh[2];
-                float ratio = Math.Min(maxWidth / src.Width, maxWidth / src.Height);
-
-                SaveIconS_xywh[2] = Convert.ToInt32(src.Width * ratio);
-                SaveIconS_xywh[3] = Convert.ToInt32(src.Height * ratio);
-                SaveIconS_xywh[0] = Convert.ToInt32((maxWidth - SaveIconS_xywh[2]) / 2) + Convert.ToInt32((48 - maxWidth) / 2);
-                SaveIconS_xywh[1] = Convert.ToInt32((maxWidth - SaveIconS_xywh[3]) / 2) + Convert.ToInt32((48 - maxWidth) / 2);
-            }
 
             // --------------------------------------------------
             // Actual image generation
@@ -232,8 +242,6 @@ namespace FriishProduce
 
             SaveIcon();
         }
-
-        public void Generate() => Generate(Source);
 
         private readonly float[] opacity4 = { 0F, 0.32F, 0.64F, 1F };
         private readonly float[] opacity6 = { 0F, 0.20F, 0.40F, 0.60F, 0.80F, 1F };
