@@ -629,6 +629,7 @@ namespace FriishProduce
             // 
             // BannerPreview
             // 
+            this.BannerPreview.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             resources.ApplyResources(this.BannerPreview, "BannerPreview");
             this.BannerPreview.Name = "BannerPreview";
             this.BannerPreview.TabStop = false;

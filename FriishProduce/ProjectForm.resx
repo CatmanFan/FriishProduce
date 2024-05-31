@@ -142,7 +142,7 @@
     <value>NoControl</value>
   </data>
   <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 17</value>
+    <value>8, 17</value>
   </data>
   <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
     <value>130, 13</value>
@@ -169,7 +169,7 @@
     <value>null</value>
   </data>
   <data name="imageintpl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 35</value>
+    <value>10, 35</value>
   </data>
   <data name="imageintpl.Size" type="System.Drawing.Size, System.Drawing">
     <value>250, 21</value>
@@ -196,7 +196,7 @@
     <value>NoControl</value>
   </data>
   <data name="image_fit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 78</value>
+    <value>10, 78</value>
   </data>
   <data name="image_fit.Size" type="System.Drawing.Size, System.Drawing">
     <value>67, 17</value>
@@ -226,7 +226,7 @@
     <value>NoControl</value>
   </data>
   <data name="image_stretch.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 60</value>
+    <value>10, 60</value>
   </data>
   <data name="image_stretch.Size" type="System.Drawing.Size, System.Drawing">
     <value>91, 17</value>
@@ -253,10 +253,10 @@
     <value>False</value>
   </data>
   <data name="groupBox6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>811, 373</value>
+    <value>812, 371</value>
   </data>
   <data name="groupBox6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>270, 103</value>
+    <value>268, 103</value>
   </data>
   <data name="groupBox6.TabIndex" type="System.Int32, mscorlib">
     <value>39</value>
@@ -280,7 +280,7 @@
     <value>NoControl</value>
   </data>
   <data name="IconPreview.Location" type="System.Drawing.Point, System.Drawing">
-    <value>958, 275</value>
+    <value>958, 273</value>
   </data>
   <data name="IconPreview.Size" type="System.Drawing.Size, System.Drawing">
     <value>120, 87</value>
@@ -433,7 +433,7 @@
     <value>False</value>
   </data>
   <data name="groupBox7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>505, 373</value>
+    <value>506, 371</value>
   </data>
   <data name="groupBox7.Size" type="System.Drawing.Size, System.Drawing">
     <value>300, 103</value>
@@ -534,6 +534,129 @@
   <data name="&gt;&gt;MethodOptions.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="&gt;&gt;manual_type.Name" xml:space="preserve">
+    <value>manual_type</value>
+  </data>
+  <data name="&gt;&gt;manual_type.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;manual_type.Parent" xml:space="preserve">
+    <value>COPanel_VC</value>
+  </data>
+  <data name="&gt;&gt;manual_type.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;manual_type_list.Name" xml:space="preserve">
+    <value>manual_type_list</value>
+  </data>
+  <data name="&gt;&gt;manual_type_list.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;manual_type_list.Parent" xml:space="preserve">
+    <value>COPanel_VC</value>
+  </data>
+  <data name="&gt;&gt;manual_type_list.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="COPanel_VC.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 65</value>
+  </data>
+  <data name="COPanel_VC.Size" type="System.Drawing.Size, System.Drawing">
+    <value>457, 27</value>
+  </data>
+  <data name="COPanel_VC.TabIndex" type="System.Int32, mscorlib">
+    <value>42</value>
+  </data>
+  <data name="COPanel_VC.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;COPanel_VC.Name" xml:space="preserve">
+    <value>COPanel_VC</value>
+  </data>
+  <data name="&gt;&gt;COPanel_VC.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;COPanel_VC.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;COPanel_VC.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;groupBox9.Name" xml:space="preserve">
+    <value>groupBox9</value>
+  </data>
+  <data name="&gt;&gt;groupBox9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox9.Parent" xml:space="preserve">
+    <value>COPanel_Forwarder</value>
+  </data>
+  <data name="&gt;&gt;groupBox9.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;groupBox10.Name" xml:space="preserve">
+    <value>groupBox10</value>
+  </data>
+  <data name="&gt;&gt;groupBox10.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox10.Parent" xml:space="preserve">
+    <value>COPanel_Forwarder</value>
+  </data>
+  <data name="&gt;&gt;groupBox10.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="COPanel_Forwarder.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 64</value>
+  </data>
+  <data name="COPanel_Forwarder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>457, 40</value>
+  </data>
+  <data name="COPanel_Forwarder.TabIndex" type="System.Int32, mscorlib">
+    <value>42</value>
+  </data>
+  <data name="COPanel_Forwarder.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;COPanel_Forwarder.Name" xml:space="preserve">
+    <value>COPanel_Forwarder</value>
+  </data>
+  <data name="&gt;&gt;COPanel_Forwarder.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;COPanel_Forwarder.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;COPanel_Forwarder.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="groupBox3.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 371</value>
+  </data>
+  <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>490, 114</value>
+  </data>
+  <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
+    <value>35</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>content_options</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Name" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
   <data name="manual_type.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -582,29 +705,53 @@
   <data name="&gt;&gt;manual_type_list.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="COPanel_VC.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 65</value>
+  <data name="&gt;&gt;FStorage_SD.Name" xml:space="preserve">
+    <value>FStorage_SD</value>
   </data>
-  <data name="COPanel_VC.Size" type="System.Drawing.Size, System.Drawing">
-    <value>457, 27</value>
+  <data name="&gt;&gt;FStorage_SD.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="COPanel_VC.TabIndex" type="System.Int32, mscorlib">
-    <value>42</value>
+  <data name="&gt;&gt;FStorage_SD.Parent" xml:space="preserve">
+    <value>groupBox9</value>
   </data>
-  <data name="COPanel_VC.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="&gt;&gt;FStorage_SD.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="&gt;&gt;COPanel_VC.Name" xml:space="preserve">
-    <value>COPanel_VC</value>
+  <data name="&gt;&gt;FStorage_USB.Name" xml:space="preserve">
+    <value>FStorage_USB</value>
   </data>
-  <data name="&gt;&gt;COPanel_VC.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;FStorage_USB.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;COPanel_VC.Parent" xml:space="preserve">
-    <value>groupBox3</value>
+  <data name="&gt;&gt;FStorage_USB.Parent" xml:space="preserve">
+    <value>groupBox9</value>
   </data>
-  <data name="&gt;&gt;COPanel_VC.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="&gt;&gt;FStorage_USB.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="groupBox9.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="groupBox9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>205, 40</value>
+  </data>
+  <data name="groupBox9.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="groupBox9.Text" xml:space="preserve">
+    <value>forwarder_root_device</value>
+  </data>
+  <data name="&gt;&gt;groupBox9.Name" xml:space="preserve">
+    <value>groupBox9</value>
+  </data>
+  <data name="&gt;&gt;groupBox9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox9.Parent" xml:space="preserve">
+    <value>COPanel_Forwarder</value>
+  </data>
+  <data name="&gt;&gt;groupBox9.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="FStorage_SD.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -660,29 +807,53 @@
   <data name="&gt;&gt;FStorage_USB.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="groupBox9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+  <data name="&gt;&gt;toggleSwitchL1.Name" xml:space="preserve">
+    <value>toggleSwitchL1</value>
   </data>
-  <data name="groupBox9.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="&gt;&gt;toggleSwitchL1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toggleSwitchL1.Parent" xml:space="preserve">
+    <value>groupBox10</value>
+  </data>
+  <data name="&gt;&gt;toggleSwitchL1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;toggleSwitch1.Name" xml:space="preserve">
+    <value>toggleSwitch1</value>
+  </data>
+  <data name="&gt;&gt;toggleSwitch1.Type" xml:space="preserve">
+    <value>JCS.ToggleSwitch, ToggleSwitch, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;toggleSwitch1.Parent" xml:space="preserve">
+    <value>groupBox10</value>
+  </data>
+  <data name="&gt;&gt;toggleSwitch1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="groupBox10.Location" type="System.Drawing.Point, System.Drawing">
+    <value>217, 0</value>
+  </data>
+  <data name="groupBox10.Size" type="System.Drawing.Size, System.Drawing">
     <value>205, 40</value>
   </data>
-  <data name="groupBox9.TabIndex" type="System.Int32, mscorlib">
+  <data name="groupBox10.TabIndex" type="System.Int32, mscorlib">
     <value>23</value>
   </data>
-  <data name="groupBox9.Text" xml:space="preserve">
-    <value>forwarder_root_device</value>
+  <data name="groupBox10.Text" xml:space="preserve">
+    <value>forwarder_console</value>
   </data>
-  <data name="&gt;&gt;groupBox9.Name" xml:space="preserve">
-    <value>groupBox9</value>
+  <data name="&gt;&gt;groupBox10.Name" xml:space="preserve">
+    <value>groupBox10</value>
   </data>
-  <data name="&gt;&gt;groupBox9.Type" xml:space="preserve">
+  <data name="&gt;&gt;groupBox10.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;groupBox9.Parent" xml:space="preserve">
+  <data name="&gt;&gt;groupBox10.Parent" xml:space="preserve">
     <value>COPanel_Forwarder</value>
   </data>
-  <data name="&gt;&gt;groupBox9.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;groupBox10.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="toggleSwitchL1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -731,81 +902,6 @@
   </data>
   <data name="&gt;&gt;toggleSwitch1.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="groupBox10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>217, 0</value>
-  </data>
-  <data name="groupBox10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>205, 40</value>
-  </data>
-  <data name="groupBox10.TabIndex" type="System.Int32, mscorlib">
-    <value>23</value>
-  </data>
-  <data name="groupBox10.Text" xml:space="preserve">
-    <value>forwarder_console</value>
-  </data>
-  <data name="&gt;&gt;groupBox10.Name" xml:space="preserve">
-    <value>groupBox10</value>
-  </data>
-  <data name="&gt;&gt;groupBox10.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox10.Parent" xml:space="preserve">
-    <value>COPanel_Forwarder</value>
-  </data>
-  <data name="&gt;&gt;groupBox10.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="COPanel_Forwarder.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 64</value>
-  </data>
-  <data name="COPanel_Forwarder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>457, 40</value>
-  </data>
-  <data name="COPanel_Forwarder.TabIndex" type="System.Int32, mscorlib">
-    <value>42</value>
-  </data>
-  <data name="COPanel_Forwarder.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;COPanel_Forwarder.Name" xml:space="preserve">
-    <value>COPanel_Forwarder</value>
-  </data>
-  <data name="&gt;&gt;COPanel_Forwarder.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;COPanel_Forwarder.Parent" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="&gt;&gt;COPanel_Forwarder.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="groupBox3.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 373</value>
-  </data>
-  <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>490, 114</value>
-  </data>
-  <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
-    <value>35</value>
-  </data>
-  <data name="groupBox3.Text" xml:space="preserve">
-    <value>content_options</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.Name" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
-    <value>6</value>
   </data>
   <data name="label11.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1141,7 +1237,7 @@
     <value>False</value>
   </data>
   <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 266</value>
+    <value>10, 264</value>
   </data>
   <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
     <value>490, 100</value>
@@ -1228,7 +1324,7 @@
     <value>False</value>
   </data>
   <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 7</value>
+    <value>10, 7</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
     <value>490, 105</value>
@@ -1285,7 +1381,7 @@
     <value>0</value>
   </data>
   <data name="Players.Location" type="System.Drawing.Point, System.Drawing">
-    <value>360, 69</value>
+    <value>358, 69</value>
   </data>
   <data name="Players.Size" type="System.Drawing.Size, System.Drawing">
     <value>64, 20</value>
@@ -1306,7 +1402,7 @@
     <value>1</value>
   </data>
   <data name="ReleaseYear.Location" type="System.Drawing.Point, System.Drawing">
-    <value>144, 69</value>
+    <value>142, 69</value>
   </data>
   <data name="ReleaseYear.Size" type="System.Drawing.Size, System.Drawing">
     <value>64, 20</value>
@@ -1330,7 +1426,7 @@
     <value>NoControl</value>
   </data>
   <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>236, 71</value>
+    <value>234, 71</value>
   </data>
   <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
     <value>119, 18</value>
@@ -1360,7 +1456,7 @@
     <value>NoControl</value>
   </data>
   <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 71</value>
+    <value>18, 71</value>
   </data>
   <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
     <value>119, 19</value>
@@ -1390,7 +1486,7 @@
     <value>NoControl</value>
   </data>
   <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 22</value>
+    <value>18, 22</value>
   </data>
   <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
     <value>119, 19</value>
@@ -1417,7 +1513,7 @@
     <value>5</value>
   </data>
   <data name="BannerTitle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>144, 18</value>
+    <value>142, 18</value>
   </data>
   <data name="BannerTitle.MaxLength" type="System.Int32, mscorlib">
     <value>130</value>
@@ -1450,10 +1546,10 @@
     <value>False</value>
   </data>
   <data name="groupBox5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>505, 266</value>
+    <value>506, 264</value>
   </data>
   <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>445, 100</value>
+    <value>440, 100</value>
   </data>
   <data name="groupBox5.TabIndex" type="System.Int32, mscorlib">
     <value>33</value>
@@ -1513,7 +1609,7 @@
     <value>NoControl</value>
   </data>
   <data name="ImportWAD.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 112</value>
+    <value>14, 110</value>
   </data>
   <data name="ImportWAD.Size" type="System.Drawing.Size, System.Drawing">
     <value>124, 17</value>
@@ -1597,7 +1693,7 @@
     <value>3</value>
   </data>
   <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>19, 30</value>
+    <value>19, 28</value>
   </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>2, 90</value>
@@ -1738,10 +1834,10 @@
     <value>False</value>
   </data>
   <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 119</value>
+    <value>10, 119</value>
   </data>
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>490, 140</value>
+    <value>490, 138</value>
   </data>
   <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
     <value>40</value>
@@ -1771,7 +1867,7 @@
     <value>NoControl</value>
   </data>
   <data name="BannerPreview.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 18</value>
+    <value>10, 18</value>
   </data>
   <data name="BannerPreview.Size" type="System.Drawing.Size, System.Drawing">
     <value>555, 222</value>
@@ -1798,10 +1894,10 @@
     <value>False</value>
   </data>
   <data name="groupBox8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>505, 9</value>
+    <value>506, 7</value>
   </data>
   <data name="groupBox8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>576, 250</value>
+    <value>574, 250</value>
   </data>
   <data name="groupBox8.TabIndex" type="System.Int32, mscorlib">
     <value>42</value>
@@ -1828,7 +1924,10 @@
     <value>True</value>
   </metadata>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1090, 500</value>
+    <value>1090, 495</value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
     <value>No</value>

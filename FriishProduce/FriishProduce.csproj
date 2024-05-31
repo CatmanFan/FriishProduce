@@ -509,7 +509,6 @@
   <ItemGroup>
     <Content Include="icon.ico" />
     <None Include="Resources\banners\tpl\psx.png" />
-    <None Include="Resources\banners\tpl\psx_icon1.png" />
     <None Include="Resources\banners\tpl\psx_icon.png" />
     <None Include="Resources\banners\tpl\rpgm_icon.png" />
     <None Include="Resources\banners\tpl\rpgm.png" />
