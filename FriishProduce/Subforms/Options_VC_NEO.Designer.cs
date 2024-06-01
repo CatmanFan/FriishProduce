@@ -63,6 +63,7 @@ namespace FriishProduce
             this.bios_list.Name = "bios_list";
             this.bios_list.Size = new System.Drawing.Size(360, 21);
             this.bios_list.TabIndex = 14;
+            this.bios_list.Tag = "bios";
             this.bios_list.SelectedIndexChanged += new System.EventHandler(this.BIOSChanged);
             // 
             // bios
