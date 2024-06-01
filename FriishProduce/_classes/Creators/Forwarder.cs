@@ -82,16 +82,32 @@ namespace FriishProduce
             // *******
             if (EmulatorIndex == 13)
             {
+                if (RTP.IsValid(Settings["rtp_folder"]))
+                {
+                    foreach (var folder in Directory.EnumerateDirectories(Settings["rtp_folder"], "*.*", SearchOption.AllDirectories))
+                    {
+                        string target = Path.Combine(ROMFolder, folder.Replace(Settings["rtp_folder"], "").TrimStart('\\'));
+                        if (!Directory.Exists(target)) Directory.CreateDirectory(target);
+
+                        foreach (var file in Directory.EnumerateFiles(folder, "*.*", SearchOption.AllDirectories))
+                        {
+                            string rawFile = file.Replace(folder, "");
+                            File.Copy(file, target + rawFile, true);
+                        }
+                    }
+                }
+                    
                 string origPath = Path.GetDirectoryName(ROM);
                 foreach (var folder in Directory.EnumerateDirectories(origPath, "*.*", SearchOption.AllDirectories))
                 {
-                    string rawFolder = folder.Replace(origPath, "");
-                    Directory.CreateDirectory(ROMFolder + rawFolder);
+                    string target = Path.Combine(ROMFolder, folder.Replace(origPath, "").TrimStart('\\'));
+                    if (!Directory.Exists(target)) Directory.CreateDirectory(target);
                 }
+
                 foreach (var file in Directory.EnumerateFiles(origPath, "*.*", SearchOption.AllDirectories))
                 {
                     string rawFile = file.Replace(origPath, "");
-                    if (!Path.GetExtension(file).ToLower().EndsWith("exe")) File.Copy(file, ROMFolder + rawFile);
+                    if (!Path.GetExtension(file).ToLower().EndsWith("exe")) File.Copy(file, ROMFolder + rawFile.TrimStart('\\'), true);
                 }
             }
 

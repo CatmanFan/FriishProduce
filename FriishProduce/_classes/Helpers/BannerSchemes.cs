@@ -204,8 +204,8 @@ namespace FriishProduce
                                     ),
 
                 /* RPG Maker */     (
-                                        Color.FromArgb(240, 243, 235),
-                                        Color.FromArgb(222, 226, 214),
+                                        Color.FromArgb(6, 239, 230),
+                                        Color.FromArgb(230, 234, 222),
                                         Color.FromArgb(165, 190, 150),
 
                                         Color.FromArgb(83, 118, 61),

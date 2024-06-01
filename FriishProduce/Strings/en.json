@@ -103,7 +103,8 @@
 			"e_007": "Unable to apply patch file. Either the patch and target ROM do not match, or the ROM's checksum is invalid.",
 			"e_008": "Failed to download WAD.",
 			"e_009": "Failed to replace the manual file.\nExportation to WAD will continue as intended.",
-			"e_010": "The file \"{0}\" could not be found in its original path. It may have been deleted or moved."
+			"e_010": "The file \"{0}\" could not be found in its original path. It may have been deleted or moved.",
+			"e_011": "The folder \"{0}\" could not be found in its original path. It may have been deleted or moved."
 		}
 	},
 
@@ -249,8 +250,11 @@
 			"strap_reminder2": "No extension controller"
 		},
 		"forwarder": {
+			"bios_settings": "BIOS settings",
 			"use_bios": "Use a BIOS file",
-			"show_bios_screen": "Show BIOS startup screen"
+			"show_bios_screen": "Show BIOS startup screen",
+			"rpgm_settings": "RPG Maker settings",
+			"use_rtp": "Use external RTP (Run-Time Package)",
 		}
 	}
 }

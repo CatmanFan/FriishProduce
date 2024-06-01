@@ -80,7 +80,8 @@
 			"e_007": "No se pudo aplicar el parche, ya sea porque la ROM de destino y el parche no coinciden o porque el checksum de la ROM no es válida.",
 			"e_008": "No se pudo descargar el canal.",
 			"e_009": "No se pudo modificar el archivo de manual electrónico.\nLa exportación en formato WAD continuará según lo previsto.",
-			"e_010": "El archivo \"{0}\" no se encontró en su ruta original. Puede que haya sido eliminado o movido."
+			"e_010": "El archivo \"{0}\" no se encontró en su ruta original. Puede que haya sido eliminado o movido.",
+			"e_011": "La carpeta \"{0}\" no se encontró en su ruta original. Puede que haya sido eliminada o movida."
 		}
 	},
 
@@ -213,8 +214,10 @@
 			"quality2": "Low"
 		},
 		"forwarder": {
+		    "bios_settings": "Configuración del BIOS",
 			"use_bios": "Utilizar un archivo BIOS",
-			"show_bios_screen": "Mostrar la pantalla de inicio de la consola"
+			"show_bios_screen": "Mostrar la pantalla de inicio de la consola",
+			"rpgm_settings": "Configuración de RPG Maker"
 		}
 	}
 }

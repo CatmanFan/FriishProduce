@@ -203,6 +203,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Subforms\Options_RPGM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Subforms\Options_RPGM.Designer.cs">
+      <DependentUpon>Options_RPGM.cs</DependentUpon>
+    </Compile>
     <Compile Include="Subforms\Options_Flash.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -392,6 +398,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Subforms\Options_Forwarder.resx">
       <DependentUpon>Options_Forwarder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Subforms\Options_RPGM.resx">
+      <DependentUpon>Options_RPGM.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Subforms\Options_VC_N64.resx">
       <DependentUpon>Options_VC_N64.cs</DependentUpon>
@@ -621,8 +630,24 @@
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>
-    </PreBuildEvent>
+    <PreBuildEvent>cd "$(TargetDir)resources\tools\banners\"
+
+
+for %25%25f in (*.app) do (call :copy %25%25f)
+
+
+
+
+
+
+
+:copy
+del /q/f "$(ProjectDir)resources\banners\%25~n1%25~x1"
+
+
+copy /b/v/y %251 "$(ProjectDir)resources\banners\%25~n1%25~x1" 1&gt;nul)
+
+exit /b</PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PostBuildEvent>set location=resources\libraries

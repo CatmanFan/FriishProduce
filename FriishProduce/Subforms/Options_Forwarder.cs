@@ -41,7 +41,11 @@ namespace FriishProduce
             {
                 bool valid = Options["BIOSPath"] != null || File.Exists(Options["BIOSPath"]);
 
-                if (!File.Exists(Options["BIOSPath"]) && !string.IsNullOrEmpty(Options["BIOSPath"])) MessageBox.Show(string.Format(Program.Lang.Msg(10, true), Path.GetFileName(Options["BIOSPath"])));
+                if (!File.Exists(Options["BIOSPath"]) && !string.IsNullOrEmpty(Options["BIOSPath"]))
+                {
+                    MessageBox.Show(string.Format(Program.Lang.Msg(10, true), Path.GetFileName(Options["BIOSPath"])));
+                    Options["BIOSPath"] = null;
+                }
 
                 toggleSwitch1.Checked = valid;
                 toggleSwitch2.Checked = bool.Parse(Options["BIOSScreen"]);

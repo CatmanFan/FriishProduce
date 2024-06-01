@@ -34,7 +34,9 @@ namespace FriishProduce
             this.toggleSwitch1 = new JCS.ToggleSwitch();
             this.show_bios_screen = new System.Windows.Forms.Label();
             this.toggleSwitch2 = new JCS.ToggleSwitch();
+            this.bios_settings = new System.Windows.Forms.GroupBox();
             this.bottomPanel1.SuspendLayout();
+            this.bios_settings.SuspendLayout();
             this.SuspendLayout();
             // 
             // ImportBIOS
@@ -46,7 +48,7 @@ namespace FriishProduce
             // 
             this.use_bios.AutoSize = true;
             this.use_bios.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.use_bios.Location = new System.Drawing.Point(52, 13);
+            this.use_bios.Location = new System.Drawing.Point(50, 20);
             this.use_bios.Name = "use_bios";
             this.use_bios.Size = new System.Drawing.Size(49, 13);
             this.use_bios.TabIndex = 23;
@@ -55,12 +57,11 @@ namespace FriishProduce
             // 
             // toggleSwitch1
             // 
-            this.toggleSwitch1.Location = new System.Drawing.Point(12, 12);
+            this.toggleSwitch1.Location = new System.Drawing.Point(10, 19);
             this.toggleSwitch1.Name = "toggleSwitch1";
             this.toggleSwitch1.OffFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toggleSwitch1.OnFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toggleSwitch1.Size = new System.Drawing.Size(35, 15);
-            this.toggleSwitch1.Style = JCS.ToggleSwitch.ToggleSwitchStyle.Iphone;
             this.toggleSwitch1.TabIndex = 22;
             this.toggleSwitch1.CheckedChanged += new JCS.ToggleSwitch.CheckedChangedDelegate(this.BIOSChanged);
             // 
@@ -68,7 +69,7 @@ namespace FriishProduce
             // 
             this.show_bios_screen.AutoSize = true;
             this.show_bios_screen.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.show_bios_screen.Location = new System.Drawing.Point(52, 36);
+            this.show_bios_screen.Location = new System.Drawing.Point(50, 42);
             this.show_bios_screen.Name = "show_bios_screen";
             this.show_bios_screen.Size = new System.Drawing.Size(95, 13);
             this.show_bios_screen.TabIndex = 29;
@@ -77,30 +78,38 @@ namespace FriishProduce
             // 
             // toggleSwitch2
             // 
-            this.toggleSwitch2.Location = new System.Drawing.Point(12, 35);
+            this.toggleSwitch2.Location = new System.Drawing.Point(10, 41);
             this.toggleSwitch2.Name = "toggleSwitch2";
             this.toggleSwitch2.OffFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toggleSwitch2.OnFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toggleSwitch2.Size = new System.Drawing.Size(35, 15);
-            this.toggleSwitch2.Style = JCS.ToggleSwitch.ToggleSwitchStyle.Iphone;
             this.toggleSwitch2.TabIndex = 28;
+            // 
+            // bios_settings
+            // 
+            this.bios_settings.Controls.Add(this.toggleSwitch1);
+            this.bios_settings.Controls.Add(this.use_bios);
+            this.bios_settings.Controls.Add(this.show_bios_screen);
+            this.bios_settings.Controls.Add(this.toggleSwitch2);
+            this.bios_settings.Location = new System.Drawing.Point(12, 8);
+            this.bios_settings.Name = "bios_settings";
+            this.bios_settings.Size = new System.Drawing.Size(360, 65);
+            this.bios_settings.TabIndex = 30;
+            this.bios_settings.TabStop = false;
+            this.bios_settings.Tag = "bios_settings";
+            this.bios_settings.Text = "bios_settings";
             // 
             // Options_Forwarder
             // 
-            this.ClientSize = new System.Drawing.Size(384, 112);
-            this.Controls.Add(this.show_bios_screen);
-            this.Controls.Add(this.toggleSwitch2);
-            this.Controls.Add(this.use_bios);
-            this.Controls.Add(this.toggleSwitch1);
+            this.ClientSize = new System.Drawing.Size(384, 132);
+            this.Controls.Add(this.bios_settings);
             this.Name = "Options_Forwarder";
             this.Tag = "forwarder";
-            this.Controls.SetChildIndex(this.toggleSwitch1, 0);
-            this.Controls.SetChildIndex(this.use_bios, 0);
-            this.Controls.SetChildIndex(this.toggleSwitch2, 0);
-            this.Controls.SetChildIndex(this.show_bios_screen, 0);
+            this.Controls.SetChildIndex(this.bios_settings, 0);
             this.bottomPanel1.ResumeLayout(false);
+            this.bios_settings.ResumeLayout(false);
+            this.bios_settings.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -111,5 +120,6 @@ namespace FriishProduce
         private JCS.ToggleSwitch toggleSwitch1;
         private System.Windows.Forms.Label show_bios_screen;
         private JCS.ToggleSwitch toggleSwitch2;
+        private System.Windows.Forms.GroupBox bios_settings;
     }
 }

@@ -100,6 +100,7 @@ namespace FriishProduce
 
             Program.Lang.String(forwarder_root_device, "projectform");
             Program.Lang.String(forwarder_console, "projectform");
+            Program.Lang.String(bios_settings, "forwarder");
             Program.Lang.String(show_bios_screen, "forwarder");
 
             // -----------------------------

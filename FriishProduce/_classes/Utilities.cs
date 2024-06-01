@@ -190,4 +190,38 @@ namespace FriishProduce
                 p.WaitForExit();
         }
     }
+
+    public static class RTP
+    {
+        public static bool IsValid(string path)
+        {
+            if (!Directory.Exists(path)) return false;
+            int isValid = 0;
+
+            string[] folders = new string[]
+                {
+                    "Battle",
+                    "CharSet",
+                    "ChipSet",
+                    "FaceSet",
+                    "GameOver",
+                    "Music",
+                    "Title",
+                    "Sound",
+                    "System",
+                    "Title"
+                };
+
+            try
+            {
+                foreach (var item in folders)
+                    if (Directory.Exists(Path.Combine(path, item)))
+                        if (Directory.GetFiles(Path.Combine(path, item)).Length > 0)
+                            isValid++;
+            }
+            catch { }
+
+            return isValid >= 10;
+        }
+    }
 }

@@ -283,6 +283,7 @@ namespace FriishProduce
 
             InjectorsList.SelectedIndex = 0;
             label3.Enabled = InjectorsList.Enabled = InjectorsList.Items.Count > 1;
+            ReleaseYear.Maximum = DateTime.Now.Year;
 
             if (Properties.Settings.Default.image_fit_aspect_ratio) image_fit.Checked = true; else image_stretch.Checked = true;
         }
@@ -312,6 +313,7 @@ namespace FriishProduce
             {
                 ROM.Path = ROMpath;
                 LoadROM(ROM.Path, Properties.Settings.Default.auto_retrieve_game_data);
+                RandomTID();
             }
         }
 
@@ -396,6 +398,7 @@ namespace FriishProduce
                 case Console.RPGM:
                     ROM = new RPGM();
                     Patch.Enabled = false;
+                    Players.Enabled = false;
                     break;
 
                 default:
@@ -415,9 +418,6 @@ namespace FriishProduce
 
             Creator.BannerYear = (int)ReleaseYear.Value;
             Creator.BannerPlayers = (int)Players.Value;
-            FStorage_USB.Checked = Options.FORWARDER.Default.root_storage_device.ToLower().Contains("usb");
-            toggleSwitch1.Checked = Options.FORWARDER.Default.nand_loader.ToLower().Contains("vwii");
-            LinkSaveData.Checked = Properties.Settings.Default.link_save_data;
 
             manual_type_list.Enabled = false;
             foreach (var customManualConsole in new List<Console>() // Confirmed to have an algorithm exist for NES, SNES, N64, SEGA, PCE, NEO
@@ -436,15 +436,14 @@ namespace FriishProduce
 
             if (ParentProject != null)
             {
-                Creator = ParentProject.Creator;
-                FStorage_USB.Checked = ParentProject.ForwarderOptions.Item1;
-                toggleSwitch1.Checked = ParentProject.ForwarderOptions.Item2;
-
-                if (ParentProject.GameData != null) gameData = ParentProject.GameData;
-                if (CO != null) CO.Options = ParentProject.Options;
-
+                // Error messages for not found files
+                // ********
                 foreach (var item in new string[] { ParentProject.ROM, ParentProject.PatchFile, ParentProject.BaseFile })
                     if (!File.Exists(item) && !string.IsNullOrWhiteSpace(item)) MessageBox.Show(string.Format(Program.Lang.Msg(10, true), Path.GetFileName(item)));
+
+                Creator = ParentProject.Creator;
+
+                if (ParentProject.GameData != null) gameData = ParentProject.GameData;
 
                 ROM.Path = File.Exists(ParentProject.ROM) ? ParentProject.ROM : null;
                 LoadROM(ROM.Path, false);
@@ -479,20 +478,24 @@ namespace FriishProduce
                 TitleID.Text = Creator.TitleID;
                 TargetRegion.SelectedIndex = ParentProject.WADRegion;
                 InjectorsList.SelectedIndex = ParentProject.InjectionMethod;
-                LinkSaveData.Checked = ParentProject.LinkSaveDataTitle;
                 imageintpl.SelectedIndex = ParentProject.ImageOptions.Item1;
                 image_fit.Checked = ParentProject.ImageOptions.Item2;
+                if (CO != null) CO.Options = ParentProject.Options;
+
                 ToggleControls(!string.IsNullOrEmpty(ROM?.Path));
 
                 PatchFile = File.Exists(ParentProject.PatchFile) ? ParentProject.PatchFile : null;
                 Patch.Checked = !string.IsNullOrWhiteSpace(ParentProject.PatchFile);
                 LoadManual(ParentProject.ManualIndex, ParentProject.ManualFile);
-
-                ParentProject = null;
             }
 
+            LinkSaveData.Checked  = ParentProject == null ? Properties.Settings.Default.link_save_data                              : ParentProject.LinkSaveDataTitle;
+            FStorage_USB.Checked  = ParentProject == null ? Options.FORWARDER.Default.root_storage_device.ToLower().Contains("usb") : ParentProject.ForwarderOptions.Item1;
+            toggleSwitch1.Checked = ParentProject == null ? Options.FORWARDER.Default.nand_loader.ToLower().Contains("vwii")        : ParentProject.ForwarderOptions.Item2;
             FStorage_SD.Checked = !FStorage_USB.Checked;
 
+            ParentProject = null;
+            ToggleControls(!string.IsNullOrEmpty(ROM?.Path));
             Tag = null;
             ExportCheck.Invoke(this, EventArgs.Empty);
         }
@@ -925,7 +928,7 @@ namespace FriishProduce
                 if (Img.Source != null)
                 {
                     SaveIcon_Panel.BackgroundImage = Img.SaveIcon();
-                    ResetBannerPreview();
+                    ResetBannerPreview(true);
                     CheckExport();
                 }
 
@@ -938,7 +941,11 @@ namespace FriishProduce
             }
         }
 
-        public void LoadROM(bool LoadGameData = true) => LoadROM(Parent.BrowseROM.FileName, LoadGameData);
+        public void LoadROM(bool LoadGameData = true)
+        {
+            LoadROM(Parent.BrowseROM.FileName, LoadGameData);
+            RandomTID();
+        }
 
         public void LoadROM(string ROMpath, bool LoadGameData = true)
         {
@@ -991,7 +998,6 @@ namespace FriishProduce
             Patch.Checked = false;
 
             ToggleControls(true);
-            RandomTID();
             CheckExport();
 
             Parent.tabControl.Visible = true;
@@ -1290,22 +1296,11 @@ namespace FriishProduce
             switch (Console)
             {
                 default:
-                case Console.SNES:
-                case Console.MSX:
+                    if (result) { CheckExport(); }
                     break;
 
                 case Console.NES:
                     if (result) { LoadImage(); }
-                    break;
-
-                case Console.N64:
-                case Console.SMS:
-                case Console.SMD:
-                case Console.PCE:
-                case Console.PCECD:
-                case Console.NEO:
-                case Console.Flash:
-                    if (result) { CheckExport(); }
                     break;
             }
         }
@@ -1698,6 +1693,7 @@ namespace FriishProduce
                     case Console.Flash:
                         break;
                     case Console.RPGM:
+                        CO = new Options_RPGM();
                         break;
                     default:
                         break;
@@ -1855,15 +1851,16 @@ namespace FriishProduce
             return lang;
         }
 
-        private void ResetBannerPreview()
+        private void ResetBannerPreview(bool icon = false)
         {
-            IconPreview.Image = Preview.Icon
-            (
-                Img?.IconVCPic,
-                Console,
-                BannerRegion(),
-                true
-            );
+            if (icon)
+                IconPreview.Image = Preview.Icon
+                (
+                    Img?.IconVCPic,
+                    Console,
+                    BannerRegion(),
+                    true
+                );
 
             BannerPreview.Image = Preview.Banner
             (

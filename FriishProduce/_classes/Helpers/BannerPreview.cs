@@ -425,34 +425,6 @@ namespace FriishProduce
             bool reset = iconData.type != ((int)console, (int)lang) || img != null | restart;
             bool animation = Properties.Settings.Default.icon_animation;
 
-            #region 0. Restart timer
-            if (animation)
-            {
-                if (iconData.generatedImg?.Count > 2)
-                {
-                    if (iconData.duration.second >= iconData.opacities.Count - 1 || reset)
-                    {
-                        iconData.duration = (0, 0);
-                        try { iconData.durationTimer.Tick -= iconDurationTick; } catch { }
-                        iconData.durationTimer.Stop();
-
-                        iconData.durationTimer.Tick += iconDurationTick;
-                    }
-
-                    iconData.durationTimer.Start();
-                }
-                else
-                {
-                    iconData.duration = (0, 0);
-                    try { iconData.durationTimer.Tick -= iconDurationTick; } catch { }
-                    iconData.durationTimer.Stop();
-                }
-            }
-            else { iconData.durationTimer.Enabled = false; }
-            #endregion
-
-            var opacity1 = iconData.opacities[iconData.duration.second];
-            var opacity2 = iconData.opacities[iconData.duration.second + 1];
             float maxFrames = 1000 / iconData.durationTimer.Interval;
 
             if (reset)
@@ -553,9 +525,9 @@ namespace FriishProduce
                             using (Graphics g = Graphics.FromImage(bmp))
                             using (var a = new ImageAttributes())
                             {
-                                g.DrawImage(iconData.consoleImg, 0, 0);
+                                g.DrawImage(iconData.generatedImg[0], 0, 0);
                                 a.SetColorMatrix(new ColorMatrix() { Matrix33 = percentage });
-                                g.DrawImage(iconData.generatedImg[0], new Rectangle(0, 0, iconData.generatedImg[0].Width, iconData.generatedImg[0].Height), 0, 0, iconData.generatedImg[0].Width, iconData.generatedImg[0].Height, GraphicsUnit.Pixel, a);
+                                g.DrawImage(iconData.consoleImg, new Rectangle(0, 0, iconData.generatedImg[0].Width, iconData.generatedImg[0].Height), 0, 0, iconData.generatedImg[0].Width, iconData.generatedImg[0].Height, GraphicsUnit.Pixel, a);
                             }
 
                             iconData.generatedImg.Add(bmp);
@@ -589,15 +561,54 @@ namespace FriishProduce
 
             if (animation)
             {
+                // --------------------------------------------------
+                // ADD FRAME TO TIMER
+                // --------------------------------------------------
                 iconData.duration.frame++;
                 if (iconData.duration.frame >= maxFrames) { iconData.duration.frame = 0; iconData.duration.second++; }
 
-                return opacity1 != opacity2 && iconData.generatedImg?.Count > 2 ? iconData.generatedImg[opacity1 == 1 ? (int)maxFrames - iconData.duration.frame + 1 : iconData.duration.frame]
-                                                                                : opacity1 == 1 && iconData.generatedImg?[0] != null ? iconData.generatedImg[0]
-                                                                                : iconData.generatedImg[iconData.generatedImg.Count - 1];
+                // --------------------------------------------------
+                // SET ANIMATION TIMER
+                // --------------------------------------------------
+                if (iconData.generatedImg?.Count > 2)
+                {
+                    if (iconData.duration.second >= iconData.opacities.Count - 1 || reset)
+                    {
+                        iconData.duration = (0, 0);
+                        try { iconData.durationTimer.Tick -= iconDurationTick; } catch { }
+                        iconData.durationTimer.Stop();
+
+                        iconData.durationTimer.Tick += iconDurationTick;
+                    }
+
+                    iconData.durationTimer.Start();
+                }
+                else
+                {
+                    iconData.duration = (0, 0);
+                    try { iconData.durationTimer.Tick -= iconDurationTick; } catch { }
+                    iconData.durationTimer.Stop();
+                }
+                // --------------------------------------------------
+
+                var opacity1 = iconData.opacities[iconData.duration.second];
+                var opacity2 = iconData.opacities[iconData.duration.second + 1];
+
+                if (opacity1 != opacity2 && iconData.generatedImg?.Count > 2)
+                    return iconData.generatedImg[opacity1 == 1 ? iconData.duration.frame + 1 : (int)maxFrames + 1 - iconData.duration.frame];
+                else if (opacity1 == 1 && iconData.generatedImg?[0] != null)
+                    return iconData.generatedImg[0];
+                else
+                    return iconData.generatedImg[iconData.generatedImg.Count - 1];
             }
             else
             {
+                // --------------------------------------------------
+                // DISABLE TIMER
+                // --------------------------------------------------
+                iconData.durationTimer.Enabled = false;
+                // --------------------------------------------------
+
                 if (iconData.generatedImg.Count > 1)
                 {
                     iconData.generatedImg[1].Dispose();
