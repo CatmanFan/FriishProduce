@@ -428,7 +428,7 @@ namespace FriishProduce
                 $"{colors.topBorder.R}             {colors.topBorder.G}             {colors.topBorder.B}             {colors.topBG.R}             {colors.topBG.G}             {colors.topBG.B}",
                 $"{colors.topText.R}             {colors.topText.G}             {colors.topText.B}             {colors.topText.R}             {colors.topText.G}             {colors.topText.B}",
                 "116           108           109           67            105           101",
-                "0             0             0             255           255           255",
+                $"0             0             0             {colors.bg.R}             {colors.bg.G}             {colors.bg.B}",
                 $"{colors.bg.R}             {colors.bg.G}             {colors.bg.B}             {colors.bgLogo.R}             {colors.bgLogo.G}             {colors.bgLogo.B}",
                 $"{colors.bg.R}             {colors.bg.G}             {colors.bg.B}             {colors.bgLogo.R}             {colors.bgLogo.G}             {colors.bgLogo.B}",
                 $"{colors.bg.R}             {colors.bg.G}             {colors.bg.B}             {colors.bgLogo.R}             {colors.bgLogo.G}             {colors.bgLogo.B}",

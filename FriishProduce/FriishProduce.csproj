@@ -642,11 +642,7 @@ for %25%25f in (*.app) do (call :copy %25%25f)
 
 
 :copy
-del /q/f "$(ProjectDir)resources\banners\%25~n1%25~x1"
-
-
-copy /b/v/y %251 "$(ProjectDir)resources\banners\%25~n1%25~x1" 1&gt;nul)
-
+if NOT exist %251\* (move %251 "$(ProjectDir)Resources\banners\%25~n1%25~x1" 1&gt;nul)
 exit /b</PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>

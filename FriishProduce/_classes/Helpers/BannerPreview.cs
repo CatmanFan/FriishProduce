@@ -366,7 +366,7 @@ namespace FriishProduce
                         break;
 
                     case Console.PSX:
-                        cName = lang switch { Language.Japanese => "プレイステーション", _ => "PLAYSTATION" };
+                        cName = "PLAYSTATION";
                         break;
 
                     case Console.RPGM:
