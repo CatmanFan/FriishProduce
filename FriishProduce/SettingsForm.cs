@@ -176,10 +176,10 @@ namespace FriishProduce
 
         #if DEBUG
             use_custom_database.Visible = true;
-            // GetBanners.Visible = true;
+            GetBanners.Visible = true;
         #else
-            use_custom_database.Visible = false;
-            clearCustomDatabase = true;
+            // use_custom_database.Visible = false;
+            // clearCustomDatabase = true;
             GetBanners.Visible = false;
         #endif
 
