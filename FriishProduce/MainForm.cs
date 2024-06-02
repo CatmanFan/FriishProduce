@@ -178,12 +178,12 @@ namespace FriishProduce
 
         private void Settings_Click(object sender, EventArgs e)
         {
-            string lang = Properties.Settings.Default.language;
+            // string lang = Properties.Settings.Default.language;
 
             s.Font = Font;
             s.ShowDialog(this);
 
-            if (lang != Properties.Settings.Default.language) RefreshForm();
+            // if (lang != Properties.Settings.Default.language) RefreshForm();
         }
 
         public void TabChanged(object sender, EventArgs e)
@@ -258,6 +258,8 @@ namespace FriishProduce
                 }
                 catch { }
             }
+
+            Environment.Exit(0);
         }
 
         /// <summary>

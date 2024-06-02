@@ -123,6 +123,7 @@ namespace FriishProduce
             // ----------------------------
             if (DesignMode) return;
             // ----------------------------
+
             #region Localization
             Program.Lang.Control(this, "projectform");
             title_id_2.Text = title_id.Text;
@@ -286,6 +287,7 @@ namespace FriishProduce
             ReleaseYear.Maximum = DateTime.Now.Year;
 
             if (Properties.Settings.Default.image_fit_aspect_ratio) image_fit.Checked = true; else image_stretch.Checked = true;
+            if (!groupBox1.Enabled) Tag = null;
         }
 
         private void LoadChannelDatabase()
@@ -331,6 +333,7 @@ namespace FriishProduce
             // ----------------------------
             if (DesignMode) return;
             // ----------------------------
+            ToggleControls(false);
 
             // Declare WAD metadata modifier
             // ********
@@ -406,8 +409,6 @@ namespace FriishProduce
                     Patch.Enabled = false;
                     break;
             }
-
-            gameData = new GameDatabase();
 
             // Cosmetic
             // ********
@@ -505,7 +506,7 @@ namespace FriishProduce
         protected virtual void CheckExport()
         {
             // ----------------------------
-            if (DesignMode || ParentProject != null) return;
+            if (DesignMode || ParentProject != null || (!groupBox1.Enabled && Img?.Source == null)) return;
             // ----------------------------
 
             Creator.TitleID = TitleID.Text;
@@ -528,12 +529,10 @@ namespace FriishProduce
             {
                 Console != Console.Flash
                 && Console != Console.RPGM
-                && Console != Console.PSX
                 && (ROM?.Bytes != null || !string.IsNullOrWhiteSpace(ROM?.Path)), // LibRetro / game data
 
                 Console != Console.Flash
                 && Console != Console.RPGM
-                && Console != Console.PSX
                 && isVCMode, // Browse manual
             };
 
@@ -541,12 +540,10 @@ namespace FriishProduce
         {
             filename.Text = string.Format(Program.Lang.String("filename", Name), !string.IsNullOrWhiteSpace(ROM?.Path) ? Path.GetFileName(ROM.Path) : Program.Lang.String("none"));
 
-            if (gameData == null)
-                software_name.Text = string.Format(Program.Lang.String("software_name", Name), Program.Lang.String("none"));
-            else if (Console == Console.RPGM && (ROM as RPGM)?.GetTitle(ROM.Path) != null)
+            if (Console == Console.RPGM && (ROM as RPGM)?.GetTitle(ROM.Path) != null)
                 software_name.Text = string.Format(Program.Lang.String("software_name", Name), (ROM as RPGM).GetTitle(ROM.Path)?.Replace(Environment.NewLine, " - ") ?? Program.Lang.String("none"));
             else
-                software_name.Text = string.Format(Program.Lang.String("software_name", Name), gameData.CleanTitle?.Replace(Environment.NewLine, " - ") ?? Program.Lang.String("none"));
+                software_name.Text = string.Format(Program.Lang.String("software_name", Name), gameData?.CleanTitle?.Replace(Environment.NewLine, " - ") ?? Program.Lang.String("none"));
 
             label11.Text = !string.IsNullOrWhiteSpace(PatchFile) ? Path.GetFileName(PatchFile) : Program.Lang.String("none");
             label11.Enabled = !string.IsNullOrWhiteSpace(PatchFile);
@@ -949,6 +946,8 @@ namespace FriishProduce
 
         public void LoadROM(string ROMpath, bool LoadGameData = true)
         {
+            gameData = new GameDatabase();
+
             switch (Console)
             {
                 // ROM file formats
@@ -1011,8 +1010,8 @@ namespace FriishProduce
 
             try
             {
-                gameData = new GameDatabase { SoftwarePath = ROM.Path };
-                var Retrieved = await Task.FromResult(gameData.Get(Console));
+                gameData = new GameDatabase();
+                var Retrieved = await Task.FromResult(gameData.Get(Console, ROM.Path));
                 if (Retrieved)
                 {
                     // Set banner title

@@ -46,7 +46,7 @@ namespace FriishProduce
                     if (Process.Handle != Process.GetCurrentProcess().Handle)
                         SwitchToThisWindow(Process.MainWindowHandle, true);
 
-                Application.Exit();
+                Environment.Exit(0);
                 return;
             }
 

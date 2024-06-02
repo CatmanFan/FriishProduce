@@ -117,7 +117,7 @@ namespace FriishProduce
                             secondary.Add(lines[i]);
 
                         t.MainInstruction = lines[0];
-                        t.Content = string.Join("\n", secondary.ToArray());
+                        t.Content = string.Join("\n", secondary.ToArray()).Trim();
                     }
                 }
 

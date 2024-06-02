@@ -288,6 +288,7 @@ namespace FriishProduce
                         lng = item.Key;
 
             Default.language = lng;
+            // Program.Lang = new Language(lng);
 
             // -------------------------------------------
             // Other settings
@@ -305,7 +306,6 @@ namespace FriishProduce
             FORWARDER.Default.root_storage_device = FStorage_SD.Checked ? "SD" : "USB";
             FORWARDER.Default.nand_loader = toggleSwitch1.Checked ? "vWii" : "Wii";
             FORWARDER.Default.show_bios_screen = toggleSwitch2.Checked.ToString();
-            Program.Lang = new Language(lng);
 
             VC_NES.Default.palette = vc_nes_palettelist.SelectedIndex.ToString();
             VC_NES.Default.palette_use_on_banner = vc_nes_palette_use_on_banner.Checked.ToString();
@@ -499,5 +499,7 @@ namespace FriishProduce
                 if (isUpdated) MessageBox.Show(Program.Lang.Msg(9), MessageBox.Buttons.Ok, MessageBox.Icons.Information);
             }
         }
+
+        private void MakeDirty(object sender, EventArgs e) => isDirty = true;
     }
 }

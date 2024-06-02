@@ -45,7 +45,6 @@ namespace FriishProduce
             this.bottomPanel2 = new System.Windows.Forms.Panel();
             this.TreeView = new System.Windows.Forms.TreeView();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.icon_animation = new System.Windows.Forms.CheckBox();
             this.use_custom_database = new System.Windows.Forms.CheckBox();
             this.reset_all_dialogs = new System.Windows.Forms.CheckBox();
             this.updater = new System.Windows.Forms.GroupBox();
@@ -122,6 +121,7 @@ namespace FriishProduce
             this.default_save_as_parameters = new System.Windows.Forms.Label();
             this.default_save_as_filename_tb = new System.Windows.Forms.TextBox();
             this.image_interpolation_mode = new System.Windows.Forms.GroupBox();
+            this.icon_animation = new System.Windows.Forms.CheckBox();
             this.vc_n64_options.SuspendLayout();
             this.bottomPanel1.SuspendLayout();
             this.bottomPanel2.SuspendLayout();
@@ -164,6 +164,7 @@ namespace FriishProduce
             resources.GetString("lngList.Items")});
             resources.ApplyResources(this.lngList, "lngList");
             this.lngList.Name = "lngList";
+            this.lngList.SelectedIndexChanged += new System.EventHandler(this.MakeDirty);
             // 
             // vc_n64_options
             // 
@@ -274,20 +275,12 @@ namespace FriishProduce
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.icon_animation);
             this.panel1.Controls.Add(this.use_custom_database);
             this.panel1.Controls.Add(this.reset_all_dialogs);
             this.panel1.Controls.Add(this.updater);
             this.panel1.Controls.Add(this.language);
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
-            // 
-            // icon_animation
-            // 
-            resources.ApplyResources(this.icon_animation, "icon_animation");
-            this.icon_animation.Name = "icon_animation";
-            this.icon_animation.Tag = "icon_animation";
-            this.icon_animation.UseVisualStyleBackColor = true;
             // 
             // use_custom_database
             // 
@@ -855,6 +848,7 @@ namespace FriishProduce
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.icon_animation);
             this.panel2.Controls.Add(this.default_save_as_filename);
             this.panel2.Controls.Add(this.autolink_save_data);
             this.panel2.Controls.Add(this.image_interpolation_mode);
@@ -896,6 +890,14 @@ namespace FriishProduce
             this.image_interpolation_mode.TabStop = false;
             this.image_interpolation_mode.Tag = "image_interpolation_mode";
             // 
+            // icon_animation
+            // 
+            resources.ApplyResources(this.icon_animation, "icon_animation");
+            this.icon_animation.Name = "icon_animation";
+            this.icon_animation.Tag = "icon_animation";
+            this.icon_animation.UseVisualStyleBackColor = true;
+            this.icon_animation.CheckedChanged += new System.EventHandler(this.MakeDirty);
+            // 
             // SettingsForm
             // 
             this.AcceptButton = this.b_ok;
@@ -906,8 +908,6 @@ namespace FriishProduce
             this.Controls.Add(this.bottomPanel2);
             this.Controls.Add(this.leftSeparator);
             this.Controls.Add(this.TreeView);
-            this.Controls.Add(this.vc_sega);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.vc_neo);
             this.Controls.Add(this.vc_nes);
@@ -915,6 +915,8 @@ namespace FriishProduce
             this.Controls.Add(this.forwarder);
             this.Controls.Add(this.vc_n64);
             this.Controls.Add(this.vc_pce);
+            this.Controls.Add(this.vc_sega);
+            this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MaximizeBox = false;
@@ -1061,7 +1063,6 @@ namespace FriishProduce
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label show_bios_screen;
         private JCS.ToggleSwitch toggleSwitch2;
-        private System.Windows.Forms.CheckBox icon_animation;
         private System.Windows.Forms.CheckBox use_custom_database;
         private System.Windows.Forms.Button check_for_updates;
         private System.Windows.Forms.GroupBox updater;
@@ -1069,5 +1070,6 @@ namespace FriishProduce
         private System.Windows.Forms.GroupBox language;
         private System.Windows.Forms.GroupBox image_interpolation_mode;
         private System.Windows.Forms.GroupBox bios_settings;
+        private System.Windows.Forms.CheckBox icon_animation;
     }
 }

@@ -303,18 +303,6 @@
   <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 6</value>
   </data>
-  <data name="Logo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="Logo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>155, 114</value>
-  </data>
-  <data name="Logo.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
-    <value>StretchImage</value>
-  </data>
-  <data name="Logo.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
   <data name="&gt;&gt;Logo.Name" xml:space="preserve">
     <value>Logo</value>
   </data>
@@ -351,6 +339,30 @@
   <data name="&gt;&gt;MainPanel.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="Logo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="Logo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>155, 114</value>
+  </data>
+  <data name="Logo.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>StretchImage</value>
+  </data>
+  <data name="Logo.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;Logo.Name" xml:space="preserve">
+    <value>Logo</value>
+  </data>
+  <data name="&gt;&gt;Logo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Logo.Parent" xml:space="preserve">
+    <value>MainPanel</value>
+  </data>
+  <data name="&gt;&gt;Logo.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <metadata name="ToolStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>622, 17</value>
   </metadata>
@@ -359,30 +371,6 @@
   </data>
   <data name="ToolStrip.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8.25pt</value>
-  </data>
-  <data name="ToolStrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 20</value>
-  </data>
-  <data name="ToolStrip.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="ToolStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>684, 25</value>
-  </data>
-  <data name="ToolStrip.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;ToolStrip.Name" xml:space="preserve">
-    <value>ToolStrip</value>
-  </data>
-  <data name="&gt;&gt;ToolStrip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStrip.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;ToolStrip.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="ToolStrip_NewProject.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
@@ -485,6 +473,30 @@
   </data>
   <data name="ToolStrip_Settings.Size" type="System.Drawing.Size, System.Drawing">
     <value>23, 22</value>
+  </data>
+  <data name="ToolStrip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 20</value>
+  </data>
+  <data name="ToolStrip.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="ToolStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>684, 25</value>
+  </data>
+  <data name="ToolStrip.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;ToolStrip.Name" xml:space="preserve">
+    <value>ToolStrip</value>
+  </data>
+  <data name="&gt;&gt;ToolStrip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStrip.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ToolStrip.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <metadata name="SaveProject.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>342, 17</value>
