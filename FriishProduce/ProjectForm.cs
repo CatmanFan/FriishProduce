@@ -214,8 +214,8 @@ namespace FriishProduce
 
             for (int i = 0; i < Base.Items.Count; i++)
             {
-                var title = channelData.Entries[i].Regions.Contains(0) && Program.Lang.Current.StartsWith("ja") ? channelData.Entries[i].Titles[0]
-                          : channelData.Entries[i].Regions.Contains(0) && Program.Lang.Current.StartsWith("ko") ? channelData.Entries[i].Titles[channelData.Entries[i].Titles.Count - 1]
+                var title = channelData.Entries[i].Regions.Contains(0) && Program.Lang.Current.ToLower().StartsWith("ja") ? channelData.Entries[i].Titles[0]
+                          : channelData.Entries[i].Regions.Contains(0) && Program.Lang.Current.ToLower().StartsWith("ko") ? channelData.Entries[i].Titles[channelData.Entries[i].Titles.Count - 1]
                           : channelData.Entries[i].Regions.Contains(0) && channelData.Entries[i].Regions.Count > 1 ? channelData.Entries[i].Titles[1]
                           : channelData.Entries[i].Titles[0];
 
@@ -1404,8 +1404,17 @@ namespace FriishProduce
                 { "-MX", 3 },
                 { "-BR", 3 },
             };
+
             foreach (var item in altRegions) if (Program.Lang.Current.ToLower().StartsWith(item.Key) || (item.Key.Contains("-") && Program.Lang.Current.ToLower().EndsWith(item.Key)))
-                    selected = regions.IndexOf(item.Value == 0 ? Program.Lang.String("region_j") : item.Value == 1 ? Program.Lang.String("region_k") : item.Value == 2 ? Program.Lang.String("region_e") : Program.Lang.String("region_u"));
+            {
+                selected = regions.IndexOf(item.Value == 0 ? Program.Lang.String("region_j")
+                         : item.Value == 1 ? Program.Lang.String("region_k")
+                         : item.Value == 2 ? Program.Lang.String("region_e")
+                         : Program.Lang.String("region_u"));
+
+                if (selected == -1 && item.Value == 1) selected = regions.IndexOf(Program.Lang.String("region_u"));
+                break;
+            }
 
             if (selected == -1) selected = 0;
 

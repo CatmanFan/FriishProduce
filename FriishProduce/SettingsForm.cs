@@ -365,19 +365,12 @@ namespace FriishProduce
             // -------------------------------------------
             // Restart message box & save changes
             // -------------------------------------------
+            SaveAll();
+
             if (isDirty)
-            {
-                if (MessageBox.Show(Program.Lang.Msg(0), MessageBox.Buttons.YesNo) == MessageBox.Result.Yes)
-                {
-                    SaveAll();
-                    Application.Restart();
-                }
-            }
-            else
-            {
-                SaveAll();
-                DialogResult = DialogResult.OK;
-            }
+                MessageBox.Show(Program.Lang.Msg(0));
+
+            DialogResult = DialogResult.OK;
         }
 
         private void Cancel_Click(object sender, EventArgs e)

@@ -116,12 +116,12 @@ namespace FriishProduce
             this.flash_vff_cache_size_list = new System.Windows.Forms.ComboBox();
             this.LanguageList = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.icon_animation = new System.Windows.Forms.CheckBox();
             this.default_save_as_filename = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.default_save_as_parameters = new System.Windows.Forms.Label();
             this.default_save_as_filename_tb = new System.Windows.Forms.TextBox();
             this.image_interpolation_mode = new System.Windows.Forms.GroupBox();
-            this.icon_animation = new System.Windows.Forms.CheckBox();
             this.vc_n64_options.SuspendLayout();
             this.bottomPanel1.SuspendLayout();
             this.bottomPanel2.SuspendLayout();
@@ -856,6 +856,14 @@ namespace FriishProduce
             resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
             // 
+            // icon_animation
+            // 
+            resources.ApplyResources(this.icon_animation, "icon_animation");
+            this.icon_animation.Name = "icon_animation";
+            this.icon_animation.Tag = "icon_animation";
+            this.icon_animation.UseVisualStyleBackColor = true;
+            this.icon_animation.CheckedChanged += new System.EventHandler(this.MakeDirty);
+            // 
             // default_save_as_filename
             // 
             this.default_save_as_filename.Controls.Add(this.label2);
@@ -889,14 +897,6 @@ namespace FriishProduce
             this.image_interpolation_mode.Name = "image_interpolation_mode";
             this.image_interpolation_mode.TabStop = false;
             this.image_interpolation_mode.Tag = "image_interpolation_mode";
-            // 
-            // icon_animation
-            // 
-            resources.ApplyResources(this.icon_animation, "icon_animation");
-            this.icon_animation.Name = "icon_animation";
-            this.icon_animation.Tag = "icon_animation";
-            this.icon_animation.UseVisualStyleBackColor = true;
-            this.icon_animation.CheckedChanged += new System.EventHandler(this.MakeDirty);
             // 
             // SettingsForm
             // 

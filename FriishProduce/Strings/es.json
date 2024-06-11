@@ -58,7 +58,7 @@
 			"filter.patch": "Archivos de parche (*.bps, *.ips, *.xdelta)|*.bps;*.ips;*.xdelta",
 		},
 		"messages": {
-			"000": "Algunos cambios necesitan que se reinicie el programa para que tengan efecto.\n¿Reiniciar esta aplicación ahora?",
+			"000": "Algunos cambios necesitan que se reinicie el programa para que tengan efecto.",
 		    "001": "El proyecto \"{0}\" ha cambiado.\n¿Qué querría hacer?",
 			"002": "El archivo seleccionado no es valido.",
 			"003": "Exportado con éxito a WAD.\n¿Qué querría hacer con el archivo?",

@@ -80,7 +80,7 @@
 			"filter.patch": "Patch files (*.bps, *.ips, *.xdelta)|*.bps;*.ips;*.xdelta",
 		},
 		"messages": {
-			"000": "An application restart is needed in order for changes to take effect.\nRestart now?",
+			"000": "An application restart is needed in order for changes to take effect.",
 			"001": "{0} has unsaved changes.\nWhat would you like to do?",
 			"002": "The file you have selected is of an invalid format.",
 			"003": "Successfully completed.\nWhat would you like to do with the exported WAD?",

@@ -7,7 +7,11 @@ namespace FriishProduce
 {
     public static class Updater
     {
-        public static string GetCurrentVersion() => "v" + System.Diagnostics.FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetExecutingAssembly().Location).FileVersion.Substring(0, 3);
+        public static string GetCurrentVersion()
+        {
+            var ver = System.Diagnostics.FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetExecutingAssembly().Location).FileVersion;
+            return "v" + ver.Substring(0, ver[4] != '0' ? 5 : 3);
+        }
 
         public static async Task<bool> GetLatest()
         {

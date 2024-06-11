@@ -65,7 +65,7 @@
 			"filter.patch": "Patch files (*.bps, *.ips, *.xdelta)|*.bps;*.ips;*.xdelta",
 		},
 		"messages": {
-			"000": "Un redémarrage de l'application est nécessaire pour que les changements aux paramètres prennent effet.\nRedémarrer maintenant ?",
+			"000": "Un redémarrage de l'application est nécessaire pour que les changements aux paramètres prennent effet.",
 			"001": "Le projet « {0} » comporte des modifications non enregistrées.\nQu'est-ce que vous voudrais faire ?",
 			"002": "Le fichier sélectionné est invalide.",
 			"003": "Sauvegardé avec succès.\nQu'est-ce que vous voudrais faire avec le fichier WAD ?",

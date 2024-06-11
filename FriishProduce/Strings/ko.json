@@ -1,6 +1,6 @@
 {
 	"language": "ko",
-	"author": "CatmanFan",
+	"author": "DDinghoya",
 	"application_title": "FriishProduce",
 	
 	"global": {
@@ -80,7 +80,7 @@
 			"filter.patch": "패치 파일 (*.bps, *.ips, *.xdelta)|*.bps;*.ips;*.xdelta",
 		},
 		"messages": {
-			"000": "변경 사항을 적용하려면 응용 프로그램을 다시 시작해야 합니다.\n지금 다시 시작하겠습니까?",
+			"000": "변경 사항을 적용하려면 응용 프로그램을 다시 시작해야 합니다.",
 			"001": "{0}에 저장되지 않은 변경사항이 있습니다.\n무엇을 하겠습니까?",
 			"002": "선택한 파일의 형식이 잘못되었습니다.",
 			"003": "성공적으로 완료되었습니다.\n내보낸 WAD로 무엇을 하겠습니까?",
