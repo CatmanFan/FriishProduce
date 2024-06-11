@@ -95,7 +95,7 @@ namespace FriishProduce
 
                 catch (Exception ex)
                 {
-                    System.Windows.Forms.MessageBox.Show($"A fatal error occurred initializing the program, as the English string resource file was not found or is invalid.\n\nException: {ex.GetType().FullName}\nMessage: {ex.Message}\n\nThe application will now shut down.", "Halt", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                    System.Windows.Forms.MessageBox.Show($"A fatal error occurred initializing the program, as the English string resource file was not found or is invalid.\n\n{ex.GetType().FullName}\n{ex.Message}\n\nThe application will now shut down.", "Halt", MessageBoxButtons.OK, MessageBoxIcon.Hand);
                     Environment.FailFast("Language initialization failed.");
                 }
             }
@@ -341,13 +341,21 @@ namespace FriishProduce
                 try
                 {
                     string path = Paths.Languages + code;
-                    if (File.Exists(path + extension))
-                        return parseFile(File.ReadAllBytes(path + extension));
 
-                    throw new FileNotFoundException();
+                    if (File.Exists(path + extension))
+                    {
+                        return parseFile(File.ReadAllBytes(path + extension));
+                    }
+
+                    else
+                    {
+                        System.Windows.Forms.MessageBox.Show($"Could not initialize the language string file \"{code}.json\" as it was not found.\n\nThe language will now be reset to system default.");
+                        return null;
+                    }
                 }
-                catch
+                catch (Exception ex)
                 {
+                    System.Windows.Forms.MessageBox.Show($"Could not initialize the language string file \"{code}.json\" because of an error.\n\n{ex.GetType().FullName}\n{ex.Message}\n\nThe language will now be reset to system default.");
                     return null;
                 }
             }
@@ -358,9 +366,20 @@ namespace FriishProduce
         private dynamic parseFile(byte[] file)
         {
             dynamic reader = null;
+            var encoding = Encoding.Unicode;
 
             using (MemoryStream ms = new MemoryStream(file))
-            using (StreamReader sr = new StreamReader(ms, Encoding.Unicode))
+            using (StreamReader sr = new StreamReader(ms, encoding))
+            {
+                sr.ReadToEnd();
+                encoding = sr.CurrentEncoding;
+
+                try { JsonDocument.Parse(sr.ReadToEnd(), new JsonDocumentOptions() { AllowTrailingCommas = true, CommentHandling = JsonCommentHandling.Skip }); }
+                catch { encoding = Encoding.UTF8; }
+            }
+
+            using (MemoryStream ms = new MemoryStream(file))
+            using (StreamReader sr = new StreamReader(ms, encoding))
             using (var fileReader = JsonDocument.Parse(sr.ReadToEnd(), new JsonDocumentOptions() { AllowTrailingCommas = true, CommentHandling = JsonCommentHandling.Skip }))
             {
                 reader = JsonSerializer.Deserialize<LanguageData>(fileReader, new JsonSerializerOptions() { AllowTrailingCommas = true, ReadCommentHandling = JsonCommentHandling.Skip });

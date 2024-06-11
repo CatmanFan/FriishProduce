@@ -65,6 +65,9 @@
     <Reference Include="HtmlRenderer.WinForms, Version=1.5.0.6, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\HtmlRenderer.WinForms.1.5.0.6\lib\net45\HtmlRenderer.WinForms.dll</HintPath>
     </Reference>
+    <Reference Include="libWiiSharp">
+      <HintPath>.\libWiiSharp.dll</HintPath>
+    </Reference>
     <Reference Include="MdiTabControl">
       <HintPath>.\MdiTabControl.dll</HintPath>
     </Reference>
@@ -299,26 +302,6 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <Compile Include="packages\libWiiSharp\BNS.cs" />
-    <Compile Include="packages\libWiiSharp\Brlan.cs" />
-    <Compile Include="packages\libWiiSharp\Brlyt.cs" />
-    <Compile Include="packages\libWiiSharp\CertificateChain.cs" />
-    <Compile Include="packages\libWiiSharp\CommonKey.cs" />
-    <Compile Include="packages\libWiiSharp\ContentIndices.cs" />
-    <Compile Include="packages\libWiiSharp\HbcTransmitter.cs" />
-    <Compile Include="packages\libWiiSharp\Headers.cs" />
-    <Compile Include="packages\libWiiSharp\HexView.cs" />
-    <Compile Include="packages\libWiiSharp\IosPatcher.cs" />
-    <Compile Include="packages\libWiiSharp\Lz77.cs" />
-    <Compile Include="packages\libWiiSharp\MessageEventArgs.cs" />
-    <Compile Include="packages\libWiiSharp\NusClient.cs" />
-    <Compile Include="packages\libWiiSharp\Shared.cs" />
-    <Compile Include="packages\libWiiSharp\Ticket.cs" />
-    <Compile Include="packages\libWiiSharp\TMD.cs" />
-    <Compile Include="packages\libWiiSharp\TPL.cs" />
-    <Compile Include="packages\libWiiSharp\U8.cs" />
-    <Compile Include="packages\libWiiSharp\WAD.cs" />
-    <Compile Include="packages\libWiiSharp\Wave.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -506,8 +489,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="packages\Newtonsoft.Json.13.0.3\.signature.p7s" />
-    <None Include="packages\RibbonWinForms.5.0.1.1\.signature.p7s" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -554,7 +535,6 @@
     <None Include="Resources\vc\NeoGeo_VC3.bin" />
     <None Include="Resources\x.png" />
     <None Include="Resources\subforms\screen_nes.png" />
-    <Content Include="packages\Newtonsoft.Json.13.0.3\lib\net6.0\Newtonsoft.Json.xml" />
     <None Include="Resources\flag_eu.png" />
     <None Include="Resources\flag_eu50.png" />
     <None Include="Resources\flag_eu60.png" />
@@ -596,22 +576,22 @@
   <ItemGroup>
     <PublishFile Include="icon.ico">
       <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>File</FileType>
     </PublishFile>
     <PublishFile Include="VistaMenu">
       <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
   </ItemGroup>

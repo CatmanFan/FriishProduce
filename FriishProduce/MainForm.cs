@@ -258,8 +258,6 @@ namespace FriishProduce
                 }
                 catch { }
             }
-
-            Environment.Exit(0);
         }
 
         /// <summary>

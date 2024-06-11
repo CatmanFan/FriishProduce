@@ -42,9 +42,15 @@ See **[here](https://github.com/CatmanFan/FriishProduce/wiki/FriishProduce-v1.0)
 ---
 
 ## To-Do
+* Redesign interface and logo!
+  * Replace toolbar with project/ROM/image buttons with consoles toolbar for the purpose of only adding tabs
+  * Make project forms inheritable and categorize by console/platform
+  * Place ROM and image open dialogs in ProjectForms instead of handling from MainForm
 * For next version:
   - [ ] Use *.bin format for disc games by default
   - [ ] Restructuring, trimming features and cleaning code
+
+
 * Other VC injection support:
   * Commodore 64 (needs [Custom Frodo](https://gbatemp.net/threads/custom-frodo-for-c64-vc-injection.102356/))
   * TurboGrafx-16 CD (needs several programs to convert ISO to injectable format)

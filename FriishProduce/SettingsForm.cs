@@ -371,7 +371,6 @@ namespace FriishProduce
                 {
                     SaveAll();
                     Application.Restart();
-                    Environment.Exit(0);
                 }
             }
             else
