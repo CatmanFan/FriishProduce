@@ -225,11 +225,11 @@ namespace FriishProduce
         }
         #endregion
 
-        #region Console Databases
+        #region Platform Databases
         /// <summary>
         /// Loads a database of WADs for a selected console/platform.
         /// </summary>
-        public ChannelDatabase(Console c, string externalFile = null)
+        public ChannelDatabase(Platform c, string externalFile = null)
         {
             string file = File.Exists(externalFile) ? externalFile : File.Exists(Properties.Settings.Default.custom_database) ? Properties.Settings.Default.custom_database : null;
 
@@ -252,7 +252,7 @@ namespace FriishProduce
             }
         }
 
-        private void GetEntries(Console c, byte[] file)
+        private void GetEntries(Platform c, byte[] file)
         {
             Entries = new List<ChannelEntry>();
 

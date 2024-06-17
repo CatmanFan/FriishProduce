@@ -175,9 +175,9 @@ namespace FriishProduce
 
                 if (validBIOS)
                 {
-                    var validList = new List<(Console Platform, int Index, string Directory)>()
+                    var validList = new List<(Platform Platform, int Index, string Directory)>()
                     {
-                        (Console.PSX,   12, Paths.SDUSBRoot + "wiisxrx\\bios\\SCPH1001.BIN"),
+                        (Platform.PSX,   12, Paths.SDUSBRoot + "wiisxrx\\bios\\SCPH1001.BIN"),
                     };
 
                     foreach (var item in validList)

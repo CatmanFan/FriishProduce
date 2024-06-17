@@ -8,60 +8,60 @@ namespace FriishProduce
 {
     public static class BannerHelper
     {
-        public static U8 BannerApp(Console platform, Region region, string tID = null)
+        public static U8 BannerApp(Platform platform, Region region, string tID = null)
         {
             switch (platform)
             {
                 #region VC & Other Official
-                case Console.NES:
+                case Platform.NES:
                     return U8.Load(region switch { Region.Japan => jp_fc, Region.Korea => kr_fc, _ => nes });
 
-                case Console.SNES:
+                case Platform.SNES:
                     return U8.Load(region switch { Region.Japan => jp_sfc, Region.Korea => kr_sfc, _ => snes });
 
-                case Console.N64:
+                case Platform.N64:
                     return U8.Load(region switch { Region.Japan => jp_n64, Region.Korea => kr_n64, _ => n64 });
 
-                case Console.SMS:
+                case Platform.SMS:
                     return U8.Load(region switch { Region.Japan => jp_sms, _ => sms });
 
-                case Console.SMD:
+                case Platform.SMD:
                     return U8.Load(region switch { Region.Japan => jp_smd, Region.USA => gen, _ => smd });
 
-                case Console.PCE:
-                case Console.PCECD:
+                case Platform.PCE:
+                case Platform.PCECD:
                     return U8.Load(region switch { Region.Japan => jp_pce, _ => tg16 });
 
-                case Console.NEO:
+                case Platform.NEO:
                     return U8.Load(region switch { Region.Japan => jp_neogeo, _ => neogeo });
 
-                case Console.C64:
+                case Platform.C64:
                     return U8.Load(region switch { Region.Europe => c64_eu, _ => c64_us });
 
-                case Console.MSX:
+                case Platform.MSX:
                     return U8.Load(tID != null && tID.ToUpper().StartsWith("XAP") ? jp_msx2 : jp_msx1); // Check if version 2 MSX WADs use a different color scheme?
 
-                case Console.Flash:
+                case Platform.Flash:
                     return U8.Load(flash);
                 #endregion
 
                 #region Forwarders
-                case Console.GB:
+                case Platform.GB:
                     // return U8.Load(region switch { Region.Japan => jp_gb, _ => gb });
                     throw new NotImplementedException();
 
-                case Console.GBC:
+                case Platform.GBC:
                     // return U8.Load(region switch { Region.Japan => jp_gbc, _ => gbc });
                     throw new NotImplementedException();
 
-                case Console.GBA:
+                case Platform.GBA:
                     // return U8.Load(region switch { Region.Japan => jp_gba, _ => gba });
                     throw new NotImplementedException();
 
-                case Console.PSX:
+                case Platform.PSX:
                     return U8.Load(region switch { Region.Japan => jp_psx, _ => psx });
 
-                case Console.RPGM:
+                case Platform.RPGM:
                     return U8.Load(region switch { Region.Japan => jp_rpgm, _ => rpgm });
                 #endregion
 
@@ -74,9 +74,6 @@ namespace FriishProduce
         {
             if (w != null)
             {
-                U8 Banner = new U8();
-                U8 Icon = new U8();
-
                 return w.BannerApp;
             }
 
@@ -105,7 +102,7 @@ namespace FriishProduce
         /// <param name="title">Game title</param>
         /// <param name="year">Release year</param>
         /// <param name="players">No. of players</param>
-        public static void Modify(WAD w, Console platform, Region region, string title, int year, int players)
+        public static void Modify(WAD w, Platform platform, Region region, string title, int year, int players)
         {
             // NOTE:
             // Confirmed working:
@@ -319,7 +316,7 @@ namespace FriishProduce
         /// <summary>
         /// Temporary debug function
         /// </summary>
-        public static void ExportBanner(string tID, Console c, string outFile = null)
+        public static void ExportBanner(string tID, Platform c, string outFile = null)
         {
             try
             {
@@ -417,24 +414,24 @@ namespace FriishProduce
 
         public static void ModifyBanner(string system, byte[] file, string outFile, int colorIndex, System.Drawing.Bitmap bImage, System.Drawing.Bitmap icon)
         {
-            var colors = BannerSchemes.List[colorIndex];
+            var (bg, bgLogo, bgBottom, lines, topBorder, topBG, topText) = BannerSchemes.List[colorIndex];
 
             outFile = outFile.ToLower();
 
-            var leftTextColor = colors.bg.GetBrightness() < 0.8 ? System.Drawing.Color.White : System.Drawing.Color.FromArgb(50, 50, 50);
+            var leftTextColor = bg.GetBrightness() < 0.8 ? System.Drawing.Color.White : System.Drawing.Color.FromArgb(50, 50, 50);
 
             string[] colorsFile = new string[]
             {
-                $"{colors.topBorder.R}             {colors.topBorder.G}             {colors.topBorder.B}             {colors.topBG.R}             {colors.topBG.G}             {colors.topBG.B}",
-                $"{colors.topText.R}             {colors.topText.G}             {colors.topText.B}             {colors.topText.R}             {colors.topText.G}             {colors.topText.B}",
+                $"{topBorder.R}             {topBorder.G}             {topBorder.B}             {topBG.R}             {topBG.G}             {topBG.B}",
+                $"{topText.R}             {topText.G}             {topText.B}             {topText.R}             {topText.G}             {topText.B}",
                 "116           108           109           67            105           101",
-                $"0             0             0             {colors.bg.R}             {colors.bg.G}             {colors.bg.B}",
-                $"{colors.bg.R}             {colors.bg.G}             {colors.bg.B}             {colors.bgLogo.R}             {colors.bgLogo.G}             {colors.bgLogo.B}",
-                $"{colors.bg.R}             {colors.bg.G}             {colors.bg.B}             {colors.bgLogo.R}             {colors.bgLogo.G}             {colors.bgLogo.B}",
-                $"{colors.bg.R}             {colors.bg.G}             {colors.bg.B}             {colors.bgLogo.R}             {colors.bgLogo.G}             {colors.bgLogo.B}",
-                $"{colors.bg.R}             {colors.bg.G}             {colors.bg.B}             {colors.bgLogo.R}             {colors.bgLogo.G}             {colors.bgLogo.B}",
-                $"0             0             0             {colors.lines.R}             {colors.lines.G}             {colors.lines.B}",
-                $"0             0             0             {colors.lines.R}             {colors.lines.G}             {colors.lines.B}",
+                $"0             0             0             {bg.R}             {bg.G}             {bg.B}",
+                $"{bg.R}             {bg.G}             {bg.B}             {bgLogo.R}             {bgLogo.G}             {bgLogo.B}",
+                $"{bg.R}             {bg.G}             {bg.B}             {bgLogo.R}             {bgLogo.G}             {bgLogo.B}",
+                $"{bg.R}             {bg.G}             {bg.B}             {bgLogo.R}             {bgLogo.G}             {bgLogo.B}",
+                $"{bg.R}             {bg.G}             {bg.B}             {bgLogo.R}             {bgLogo.G}             {bgLogo.B}",
+                $"0             0             0             {lines.R}             {lines.G}             {lines.B}",
+                $"0             0             0             {lines.R}             {lines.G}             {lines.B}",
                 $"{BannerSchemes.TextColor(colorIndex).R}             {BannerSchemes.TextColor(colorIndex).G}             {BannerSchemes.TextColor(colorIndex).B}             {BannerSchemes.TextColor(colorIndex).R}             {BannerSchemes.TextColor(colorIndex).G}             {BannerSchemes.TextColor(colorIndex).B}",
                 $"{leftTextColor.R}             {leftTextColor.G}             {leftTextColor.B}             {leftTextColor.R}             {leftTextColor.G}             {leftTextColor.B}",
                 $"{leftTextColor.R}             {leftTextColor.G}             {leftTextColor.B}             {leftTextColor.R}             {leftTextColor.G}             {leftTextColor.B}",
@@ -442,8 +439,8 @@ namespace FriishProduce
                 "0             0             0             255           255           255",
                 "0             0             0             0             0             0",
                 "60             60             60             255           255           255",
-                $"0             0             0             {colors.bgBottom.R}             {colors.bgBottom.G}             {colors.bgBottom.B}",
-                $"0             0             0             {colors.bgBottom.R}             {colors.bgBottom.G}             {colors.bgBottom.B}",
+                $"0             0             0             {bgBottom.R}             {bgBottom.G}             {bgBottom.B}",
+                $"0             0             0             {bgBottom.R}             {bgBottom.G}             {bgBottom.B}",
             };
 
             string VCCSPath = Path.Combine(Paths.Tools, "vcbrlyt\\Schemes\\banner.vccs");

@@ -58,18 +58,18 @@ namespace FriishProduce
             this.MainPanel = new System.Windows.Forms.Panel();
             this.Logo = new System.Windows.Forms.PictureBox();
             this.ToolStrip = new System.Windows.Forms.ToolStrip();
-            this.ToolStrip_NewProject = new System.Windows.Forms.ToolStripDropDownButton();
-            this.ToolStrip_OpenProject = new System.Windows.Forms.ToolStripButton();
-            this.ToolStrip_SaveAs = new System.Windows.Forms.ToolStripButton();
-            this.ToolStrip_ExportWAD = new System.Windows.Forms.ToolStripButton();
+            this.toolbarNewProject = new System.Windows.Forms.ToolStripDropDownButton();
+            this.toolbarOpenProject = new System.Windows.Forms.ToolStripButton();
+            this.toolbarSaveAs = new System.Windows.Forms.ToolStripButton();
+            this.toolbarCloseProject = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
-            this.ToolStrip_OpenROM = new System.Windows.Forms.ToolStripButton();
-            this.ToolStrip_OpenImage = new System.Windows.Forms.ToolStripButton();
+            this.toolbarOpenROM = new System.Windows.Forms.ToolStripButton();
+            this.toolbarOpenImage = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            this.ToolStrip_UseLibRetro = new System.Windows.Forms.ToolStripButton();
+            this.toolbarUseLibRetro = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
-            this.ToolStrip_CloseTab = new System.Windows.Forms.ToolStripButton();
             this.ToolStrip_Settings = new System.Windows.Forms.ToolStripButton();
+            this.toolbarSaveAsWAD = new System.Windows.Forms.ToolStripButton();
             this.SaveProject = new System.Windows.Forms.SaveFileDialog();
             this.BrowseProject = new System.Windows.Forms.OpenFileDialog();
             this.MenuStrip.SuspendLayout();
@@ -303,106 +303,97 @@ namespace FriishProduce
             // 
             resources.ApplyResources(this.ToolStrip, "ToolStrip");
             this.ToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStrip_NewProject,
-            this.ToolStrip_OpenProject,
-            this.ToolStrip_SaveAs,
-            this.ToolStrip_ExportWAD,
+            this.toolbarNewProject,
+            this.toolbarOpenProject,
+            this.toolbarSaveAs,
+            this.toolbarCloseProject,
             this.toolStripSeparator7,
-            this.ToolStrip_OpenROM,
-            this.ToolStrip_OpenImage,
+            this.toolbarOpenROM,
+            this.toolbarOpenImage,
             this.toolStripSeparator6,
-            this.ToolStrip_UseLibRetro,
+            this.toolbarUseLibRetro,
             this.toolStripSeparator8,
-            this.ToolStrip_CloseTab,
-            this.ToolStrip_Settings});
+            this.ToolStrip_Settings,
+            this.toolbarSaveAsWAD});
             this.ToolStrip.Name = "ToolStrip";
             this.ToolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             // 
-            // ToolStrip_NewProject
+            // toolbarNewProject
             // 
-            this.ToolStrip_NewProject.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.ToolStrip_NewProject.Image = global::FriishProduce.Properties.Resources.document;
-            resources.ApplyResources(this.ToolStrip_NewProject, "ToolStrip_NewProject");
-            this.ToolStrip_NewProject.Name = "ToolStrip_NewProject";
-            this.ToolStrip_NewProject.Tag = "new_project";
+            this.toolbarNewProject.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolbarNewProject.Image = global::FriishProduce.Properties.Resources.document;
+            resources.ApplyResources(this.toolbarNewProject, "toolbarNewProject");
+            this.toolbarNewProject.Name = "toolbarNewProject";
+            this.toolbarNewProject.Tag = "new_project";
             // 
-            // ToolStrip_OpenProject
+            // toolbarOpenProject
             // 
-            this.ToolStrip_OpenProject.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.ToolStrip_OpenProject.Image = global::FriishProduce.Properties.Resources.folder_horizontal_open;
-            resources.ApplyResources(this.ToolStrip_OpenProject, "ToolStrip_OpenProject");
-            this.ToolStrip_OpenProject.Name = "ToolStrip_OpenProject";
-            this.ToolStrip_OpenProject.Tag = "open_project";
-            this.ToolStrip_OpenProject.Click += new System.EventHandler(this.OpenProject_Click);
+            this.toolbarOpenProject.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolbarOpenProject.Image = global::FriishProduce.Properties.Resources.folder_horizontal_open;
+            resources.ApplyResources(this.toolbarOpenProject, "toolbarOpenProject");
+            this.toolbarOpenProject.Name = "toolbarOpenProject";
+            this.toolbarOpenProject.Tag = "open_project";
+            this.toolbarOpenProject.Click += new System.EventHandler(this.OpenProject_Click);
             // 
-            // ToolStrip_SaveAs
+            // toolbarSaveAs
             // 
-            this.ToolStrip_SaveAs.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            resources.ApplyResources(this.ToolStrip_SaveAs, "ToolStrip_SaveAs");
-            this.ToolStrip_SaveAs.Image = global::FriishProduce.Properties.Resources.disk_black;
-            this.ToolStrip_SaveAs.Name = "ToolStrip_SaveAs";
-            this.ToolStrip_SaveAs.Tag = "save_project_as";
-            this.ToolStrip_SaveAs.Click += new System.EventHandler(this.SaveAs_Click);
+            this.toolbarSaveAs.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            resources.ApplyResources(this.toolbarSaveAs, "toolbarSaveAs");
+            this.toolbarSaveAs.Image = global::FriishProduce.Properties.Resources.disk_black;
+            this.toolbarSaveAs.Name = "toolbarSaveAs";
+            this.toolbarSaveAs.Tag = "save_project_as";
+            this.toolbarSaveAs.Click += new System.EventHandler(this.SaveAs_Click);
             // 
-            // ToolStrip_ExportWAD
+            // toolbarCloseProject
             // 
-            this.ToolStrip_ExportWAD.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            resources.ApplyResources(this.ToolStrip_ExportWAD, "ToolStrip_ExportWAD");
-            this.ToolStrip_ExportWAD.Image = global::FriishProduce.Properties.Resources.wooden_box_pencil;
-            this.ToolStrip_ExportWAD.Name = "ToolStrip_ExportWAD";
-            this.ToolStrip_ExportWAD.Tag = "save_as_wad";
-            this.ToolStrip_ExportWAD.Click += new System.EventHandler(this.ExportWAD_Click);
+            this.toolbarCloseProject.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            resources.ApplyResources(this.toolbarCloseProject, "toolbarCloseProject");
+            this.toolbarCloseProject.Image = global::FriishProduce.Properties.Resources.cross;
+            this.toolbarCloseProject.Name = "toolbarCloseProject";
+            this.toolbarCloseProject.Tag = "close_project";
+            this.toolbarCloseProject.Click += new System.EventHandler(this.CloseTab_Click);
             // 
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
             resources.ApplyResources(this.toolStripSeparator7, "toolStripSeparator7");
             // 
-            // ToolStrip_OpenROM
+            // toolbarOpenROM
             // 
-            this.ToolStrip_OpenROM.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            resources.ApplyResources(this.ToolStrip_OpenROM, "ToolStrip_OpenROM");
-            this.ToolStrip_OpenROM.Image = global::FriishProduce.Properties.Resources.disc_case;
-            this.ToolStrip_OpenROM.Name = "ToolStrip_OpenROM";
-            this.ToolStrip_OpenROM.Tag = "open_gamefile";
-            this.ToolStrip_OpenROM.Click += new System.EventHandler(this.OpenROM_Click);
+            this.toolbarOpenROM.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            resources.ApplyResources(this.toolbarOpenROM, "toolbarOpenROM");
+            this.toolbarOpenROM.Image = global::FriishProduce.Properties.Resources.disc_case;
+            this.toolbarOpenROM.Name = "toolbarOpenROM";
+            this.toolbarOpenROM.Tag = "open_gamefile";
+            this.toolbarOpenROM.Click += new System.EventHandler(this.OpenROM_Click);
             // 
-            // ToolStrip_OpenImage
+            // toolbarOpenImage
             // 
-            this.ToolStrip_OpenImage.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            resources.ApplyResources(this.ToolStrip_OpenImage, "ToolStrip_OpenImage");
-            this.ToolStrip_OpenImage.Image = global::FriishProduce.Properties.Resources.image_sunset;
-            this.ToolStrip_OpenImage.Name = "ToolStrip_OpenImage";
-            this.ToolStrip_OpenImage.Tag = "open_image";
-            this.ToolStrip_OpenImage.Click += new System.EventHandler(this.OpenImage_Click);
+            this.toolbarOpenImage.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            resources.ApplyResources(this.toolbarOpenImage, "toolbarOpenImage");
+            this.toolbarOpenImage.Image = global::FriishProduce.Properties.Resources.image_sunset;
+            this.toolbarOpenImage.Name = "toolbarOpenImage";
+            this.toolbarOpenImage.Tag = "open_image";
+            this.toolbarOpenImage.Click += new System.EventHandler(this.OpenImage_Click);
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
             resources.ApplyResources(this.toolStripSeparator6, "toolStripSeparator6");
             // 
-            // ToolStrip_UseLibRetro
+            // toolbarUseLibRetro
             // 
-            this.ToolStrip_UseLibRetro.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            resources.ApplyResources(this.ToolStrip_UseLibRetro, "ToolStrip_UseLibRetro");
-            this.ToolStrip_UseLibRetro.Image = global::FriishProduce.Properties.Resources.retroarch;
-            this.ToolStrip_UseLibRetro.Name = "ToolStrip_UseLibRetro";
-            this.ToolStrip_UseLibRetro.Tag = "retrieve_gamedata_online";
-            this.ToolStrip_UseLibRetro.Click += new System.EventHandler(this.UseLibRetro_Click);
+            this.toolbarUseLibRetro.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            resources.ApplyResources(this.toolbarUseLibRetro, "toolbarUseLibRetro");
+            this.toolbarUseLibRetro.Image = global::FriishProduce.Properties.Resources.retroarch;
+            this.toolbarUseLibRetro.Name = "toolbarUseLibRetro";
+            this.toolbarUseLibRetro.Tag = "retrieve_gamedata_online";
+            this.toolbarUseLibRetro.Click += new System.EventHandler(this.UseLibRetro_Click);
             // 
             // toolStripSeparator8
             // 
             this.toolStripSeparator8.Name = "toolStripSeparator8";
             resources.ApplyResources(this.toolStripSeparator8, "toolStripSeparator8");
-            // 
-            // ToolStrip_CloseTab
-            // 
-            this.ToolStrip_CloseTab.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            resources.ApplyResources(this.ToolStrip_CloseTab, "ToolStrip_CloseTab");
-            this.ToolStrip_CloseTab.Image = global::FriishProduce.Properties.Resources.cross;
-            this.ToolStrip_CloseTab.Name = "ToolStrip_CloseTab";
-            this.ToolStrip_CloseTab.Tag = "close_project";
-            this.ToolStrip_CloseTab.Click += new System.EventHandler(this.CloseTab_Click);
             // 
             // ToolStrip_Settings
             // 
@@ -412,6 +403,15 @@ namespace FriishProduce
             resources.ApplyResources(this.ToolStrip_Settings, "ToolStrip_Settings");
             this.ToolStrip_Settings.Name = "ToolStrip_Settings";
             this.ToolStrip_Settings.Click += new System.EventHandler(this.Settings_Click);
+            // 
+            // toolbarSaveAsWAD
+            // 
+            this.toolbarSaveAsWAD.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            resources.ApplyResources(this.toolbarSaveAsWAD, "toolbarSaveAsWAD");
+            this.toolbarSaveAsWAD.Image = global::FriishProduce.Properties.Resources.wooden_box_pencil;
+            this.toolbarSaveAsWAD.Name = "toolbarSaveAsWAD";
+            this.toolbarSaveAsWAD.Tag = "save_as_wad";
+            this.toolbarSaveAsWAD.Click += new System.EventHandler(this.ExportWAD_Click);
             // 
             // SaveProject
             // 
@@ -432,7 +432,7 @@ namespace FriishProduce
             this.Controls.Add(this.ToolStrip);
             this.Controls.Add(this.MenuStrip);
             this.Controls.Add(this.tabControl);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MainMenuStrip = this.MenuStrip;
             this.MaximizeBox = false;
@@ -450,8 +450,6 @@ namespace FriishProduce
         }
 
         #endregion
-        internal System.Windows.Forms.OpenFileDialog BrowseROM;
-        internal System.Windows.Forms.SaveFileDialog SaveWAD;
         private System.Windows.Forms.OpenFileDialog BrowseImage;
         internal MdiTabControl.TabControl tabControl;
         private System.Windows.Forms.MenuStrip MenuStrip;
@@ -462,35 +460,37 @@ namespace FriishProduce
         private System.Windows.Forms.ToolStripMenuItem menu_exit;
         private System.Windows.Forms.ToolStripMenuItem menu_project;
         private System.Windows.Forms.ToolStripMenuItem menu_open_gamefile;
-        private System.Windows.Forms.ToolStripMenuItem menu_open_image;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem menu_retrieve_gamedata_online;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripMenuItem menu_save_as_wad;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem menu_close_project;
         private System.Windows.Forms.ToolStripMenuItem menu_help;
         private System.Windows.Forms.ToolStripMenuItem menu_about_app;
         private System.Windows.Forms.Panel MainPanel;
         private System.Windows.Forms.ToolStrip ToolStrip;
-        private System.Windows.Forms.ToolStripButton ToolStrip_OpenROM;
-        private System.Windows.Forms.ToolStripButton ToolStrip_OpenImage;
+        private System.Windows.Forms.ToolStripButton toolbarOpenROM;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
-        private System.Windows.Forms.ToolStripButton ToolStrip_UseLibRetro;
+        private System.Windows.Forms.ToolStripButton toolbarUseLibRetro;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
-        private System.Windows.Forms.ToolStripButton ToolStrip_ExportWAD;
-        private System.Windows.Forms.ToolStripButton ToolStrip_CloseTab;
+        private System.Windows.Forms.ToolStripButton toolbarCloseProject;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
         private System.Windows.Forms.ToolStripButton ToolStrip_Settings;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem menu_save_project_as;
-        private System.Windows.Forms.ToolStripDropDownButton ToolStrip_NewProject;
-        internal System.Windows.Forms.SaveFileDialog SaveProject;
+        private System.Windows.Forms.ToolStripDropDownButton toolbarNewProject;
         private System.Windows.Forms.OpenFileDialog BrowseProject;
         private System.Windows.Forms.ToolStripMenuItem menu_open_project;
-        private System.Windows.Forms.ToolStripButton ToolStrip_SaveAs;
-        private System.Windows.Forms.ToolStripButton ToolStrip_OpenProject;
+        private System.Windows.Forms.ToolStripButton toolbarOpenProject;
         private System.Windows.Forms.PictureBox Logo;
+        private System.Windows.Forms.OpenFileDialog BrowseROM;
+        private System.Windows.Forms.SaveFileDialog SaveWAD;
+        private System.Windows.Forms.SaveFileDialog SaveProject;
+        internal System.Windows.Forms.ToolStripButton toolbarSaveAsWAD;
+        internal System.Windows.Forms.ToolStripButton toolbarSaveAs;
+        internal System.Windows.Forms.ToolStripMenuItem menu_save_project_as;
+        internal System.Windows.Forms.ToolStripMenuItem menu_save_as_wad;
+        internal System.Windows.Forms.ToolStripMenuItem menu_open_image;
+        internal System.Windows.Forms.ToolStripButton toolbarOpenImage;
     }
 }
 

@@ -13,22 +13,22 @@ namespace FriishProduce
     {
         private readonly SettingsForm s = new SettingsForm();
 
-        public readonly IDictionary<Console, Bitmap> Icons = new Dictionary<Console, Bitmap>
+        public readonly IDictionary<Platform, Bitmap> Icons = new Dictionary<Platform, Bitmap>
         {
-            { Console.NES, new Icon(Properties.Resources.nintendo_nes, 16, 16).ToBitmap() },
-            { Console.SNES, new Icon(Properties.Resources.nintendo_super_nes, 16, 16).ToBitmap() },
-            { Console.N64, new Icon(Properties.Resources.nintendo_nintendo64, 16, 16).ToBitmap() },
-            { Console.SMS, new Icon(Properties.Resources.sega_master_system, 16, 16).ToBitmap() },
-            { Console.SMD, new Icon(Properties.Resources.sega_genesis, 16, 16).ToBitmap() },
-            { Console.PCE, new Icon(Properties.Resources.nec_turbografx_16, 16, 16).ToBitmap() },
-            { Console.NEO, new Icon(Properties.Resources.snk_neo_geo_aes, 16, 16).ToBitmap() },
-            { Console.MSX, Properties.Resources.msx },
-            { Console.PSX, new Icon(Properties.Resources.sony_playstation, 16, 16).ToBitmap() },
-            { Console.Flash, Properties.Resources.flash },
-            { Console.RPGM, new Icon(Properties.Resources.rpg2003, 16, 16).ToBitmap() }
+            { Platform.NES, new Icon(Properties.Resources.nintendo_nes, 16, 16).ToBitmap() },
+            { Platform.SNES, new Icon(Properties.Resources.nintendo_super_nes, 16, 16).ToBitmap() },
+            { Platform.N64, new Icon(Properties.Resources.nintendo_nintendo64, 16, 16).ToBitmap() },
+            { Platform.SMS, new Icon(Properties.Resources.sega_master_system, 16, 16).ToBitmap() },
+            { Platform.SMD, new Icon(Properties.Resources.sega_genesis, 16, 16).ToBitmap() },
+            { Platform.PCE, new Icon(Properties.Resources.nec_turbografx_16, 16, 16).ToBitmap() },
+            { Platform.NEO, new Icon(Properties.Resources.snk_neo_geo_aes, 16, 16).ToBitmap() },
+            { Platform.MSX, Properties.Resources.msx },
+            { Platform.PSX, new Icon(Properties.Resources.sony_playstation, 16, 16).ToBitmap() },
+            { Platform.Flash, Properties.Resources.flash },
+            { Platform.RPGM, new Icon(Properties.Resources.rpg2003, 16, 16).ToBitmap() }
         };
 
-        private ToolStripItem[] ConsolesList()
+        private ToolStripItem[] PlatformsList()
         {
             var list = new ToolStripItem[]
                 {
@@ -36,9 +36,9 @@ namespace FriishProduce
                         Language.Get("Group0", "Platforms"), null,
                         new ToolStripItem[]
                         {*/
-                            new ToolStripMenuItem(null, Icons[Console.NES], AddProject, Console.NES.ToString()),
-                            new ToolStripMenuItem(null, Icons[Console.SNES], AddProject, Console.SNES.ToString()),
-                            new ToolStripMenuItem(null, Icons[Console.N64], AddProject, Console.N64.ToString()),
+                            new ToolStripMenuItem(null, Icons[Platform.NES], addProject, Platform.NES.ToString()),
+                            new ToolStripMenuItem(null, Icons[Platform.SNES], addProject, Platform.SNES.ToString()),
+                            new ToolStripMenuItem(null, Icons[Platform.N64], addProject, Platform.N64.ToString()),
                             new ToolStripSeparator(),
                         /*}),
 
@@ -46,8 +46,8 @@ namespace FriishProduce
                         Language.Get("Group1", "Platforms"), null,
                         new ToolStripItem[]
                         {*/
-                            new ToolStripMenuItem(null, Icons[Console.SMS], AddProject, Console.SMS.ToString()),
-                            new ToolStripMenuItem(null, Icons[Console.SMD], AddProject, Console.SMD.ToString()),
+                            new ToolStripMenuItem(null, Icons[Platform.SMS], addProject, Platform.SMS.ToString()),
+                            new ToolStripMenuItem(null, Icons[Platform.SMD], addProject, Platform.SMD.ToString()),
                             new ToolStripSeparator(),
                         /*}),
 
@@ -55,14 +55,14 @@ namespace FriishProduce
                         Language.Get("Other"), null,
                         new ToolStripItem[]
                         {*/
-                            new ToolStripMenuItem(null, Icons[Console.PCE], AddProject, Console.PCE.ToString()),
-                            new ToolStripMenuItem(null, Icons[Console.NEO], AddProject, Console.NEO.ToString()),
-                            new ToolStripMenuItem(null, Icons[Console.MSX], AddProject, Console.MSX.ToString()),
+                            new ToolStripMenuItem(null, Icons[Platform.PCE], addProject, Platform.PCE.ToString()),
+                            new ToolStripMenuItem(null, Icons[Platform.NEO], addProject, Platform.NEO.ToString()),
+                            new ToolStripMenuItem(null, Icons[Platform.MSX], addProject, Platform.MSX.ToString()),
                             new ToolStripSeparator(),
-                            new ToolStripMenuItem(null, Icons[Console.PSX], AddProject, Console.PSX.ToString()),
+                            new ToolStripMenuItem(null, Icons[Platform.PSX], addProject, Platform.PSX.ToString()),
                             new ToolStripSeparator(),
-                            new ToolStripMenuItem(null, Icons[Console.Flash], AddProject, Console.Flash.ToString()),
-                            new ToolStripMenuItem(null, Icons[Console.RPGM], AddProject, Console.RPGM.ToString())
+                            new ToolStripMenuItem(null, Icons[Platform.Flash], addProject, Platform.Flash.ToString()),
+                            new ToolStripMenuItem(null, Icons[Platform.RPGM], addProject, Platform.RPGM.ToString())
                         //})
                 };
 
@@ -71,7 +71,7 @@ namespace FriishProduce
                     item.Text = string.Format(Language.Get("ProjectType"), Language.Get(item.Name, "Platforms")); */
 
             foreach (ToolStripMenuItem item in list.OfType<ToolStripMenuItem>())
-                item.Text = string.Format(Program.Lang.String("project_type", Name), Program.Lang.Console((Console)Enum.Parse(typeof(Console), item.Name)));
+                item.Text = string.Format(Program.Lang.String("project_type", Name), Program.Lang.Console((Platform)Enum.Parse(typeof(Platform), item.Name)));
 
             return list;
         }
@@ -83,9 +83,9 @@ namespace FriishProduce
                     if (Program.Lang.StringCheck(item.Tag?.ToString().ToLower(), Name)) item.Text = Program.Lang.String(item.Tag?.ToString().ToLower(), Name);
 
             menu_new_project.DropDownItems.Clear();
-            menu_new_project.DropDownItems.AddRange(ConsolesList());
-            ToolStrip_NewProject.DropDownItems.Clear();
-            ToolStrip_NewProject.DropDownItems.AddRange(ConsolesList());
+            menu_new_project.DropDownItems.AddRange(PlatformsList());
+            toolbarNewProject.DropDownItems.Clear();
+            toolbarNewProject.DropDownItems.AddRange(PlatformsList());
         }
 
         /// <summary>
@@ -103,14 +103,14 @@ namespace FriishProduce
             menu_about_app.Text = string.Format(Program.Lang.String("about_app"), Program.Lang.ApplicationTitle);
             Text = Program.Lang.ApplicationTitle;
 
-            ToolStrip_NewProject.Text = menu_new_project.Text;
-            ToolStrip_OpenProject.Text = menu_open_project.Text;
-            ToolStrip_SaveAs.Text = menu_save_project_as.Text;
-            ToolStrip_ExportWAD.Text = menu_save_as_wad.Text;
-            ToolStrip_OpenROM.Text = menu_open_gamefile.Text;
-            ToolStrip_OpenImage.Text = menu_open_image.Text;
-            ToolStrip_CloseTab.Text = menu_close_project.Text;
-            ToolStrip_UseLibRetro.Text = menu_retrieve_gamedata_online.Text;
+            toolbarNewProject.Text = menu_new_project.Text;
+            toolbarOpenProject.Text = menu_open_project.Text;
+            toolbarSaveAs.Text = menu_save_project_as.Text;
+            toolbarSaveAsWAD.Text = menu_save_as_wad.Text;
+            toolbarOpenROM.Text = menu_open_gamefile.Text;
+            toolbarOpenImage.Text = menu_open_image.Text;
+            toolbarCloseProject.Text = menu_close_project.Text;
+            toolbarUseLibRetro.Text = menu_retrieve_gamedata_online.Text;
             ToolStrip_Settings.Text = menu_settings.Text;
             BrowseROM.Title = menu_open_gamefile.Text;
             BrowseImage.Title = menu_open_image.Text;
@@ -135,9 +135,7 @@ namespace FriishProduce
                     (tabPage.Form as ProjectForm).RefreshForm();
             }
 
-            MenuStrip.Font = ToolStrip.Font; // = Font;
-            using (var pj = new ProjectForm(0))
-                Size = new Size(pj.Width + 16, pj.Height + MenuStrip.Height + ToolStrip.Height + tabControl.TabHeight + 40);
+            MenuStrip.Font = ToolStrip.Font;
 
             if (Logo.Location.X == 0 || Logo.Location.Y == 0) Logo.Location = new Point((MainPanel.Width / 2) - (Logo.Width / 2), (MainPanel.Height / 2) - (Logo.Height / 2));
 
@@ -171,9 +169,7 @@ namespace FriishProduce
             // ********
             // SaveWAD.InitialDirectory = Paths.Out;
 
-#pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
-            if (Properties.Settings.Default.auto_update_check) { var result = Updater.GetLatest(); }
-#pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
+            if (Properties.Settings.Default.auto_update_check) { _ = Updater.GetLatest(); }
         }
 
         private void Settings_Click(object sender, EventArgs e)
@@ -198,37 +194,36 @@ namespace FriishProduce
             // ********
             if (!menu_open_gamefile.Enabled)
             {
+                toolbarUseLibRetro.Enabled = menu_retrieve_gamedata_online.Enabled = false;
+                toolbarOpenImage.Enabled = menu_open_image.Enabled = false;
                 menu_save_project_as.Enabled = false;
-                ToolStrip_ExportWAD.Enabled = menu_save_as_wad.Enabled = false;
-                menu_retrieve_gamedata_online.Enabled = false;
+                toolbarSaveAsWAD.Enabled = menu_save_as_wad.Enabled = false;
+
                 tabControl.Visible = false;
                 MainPanel.Visible = true;
             }
 
-            else ExportCheck(sender, e);
+            else
+            {
+                toolbarUseLibRetro.Enabled = menu_retrieve_gamedata_online.Enabled = (tabControl.SelectedForm as ProjectForm).ToolbarButtons[0];
+                toolbarOpenImage.Enabled = menu_open_image.Enabled = !(tabControl.SelectedForm as ProjectForm).IsEmpty;
+                toolbarSaveAsWAD.Enabled = menu_save_as_wad.Enabled = (tabControl.SelectedForm as ProjectForm).IsExportable;
+            }
 
-            ToolStrip_CloseTab.Enabled = menu_close_project.Enabled
-            = ToolStrip_OpenImage.Enabled = menu_open_image.Enabled
-            = ToolStrip_OpenROM.Enabled = menu_open_gamefile.Enabled;
+            toolbarCloseProject.Enabled = menu_close_project.Enabled
+            = toolbarOpenROM.Enabled = menu_open_gamefile.Enabled;
 
             // Context menu
             // ********
             if (tabControl.TabPages.Count >= 1)
                 if (sender == tabControl.TabPages[0])
                 {
-                    menu_retrieve_gamedata_online.Enabled = (tabControl.SelectedForm as ProjectForm).CheckToolStripButtons()[0];
+                    menu_retrieve_gamedata_online.Enabled = (tabControl.SelectedForm as ProjectForm).ToolbarButtons[0];
                     menu_save_project_as.Enabled = (tabControl.SelectedForm as ProjectForm).Tag?.ToString().ToLower() == "dirty";
                 }
 
-            ToolStrip_SaveAs.Enabled = menu_save_project_as.Enabled;
-            ToolStrip_UseLibRetro.Enabled = menu_retrieve_gamedata_online.Enabled;
-        }
-
-        private void ExportCheck(object sender, EventArgs e)
-        {
-            ToolStrip_ExportWAD.Enabled = menu_save_as_wad.Enabled = (tabControl.SelectedForm as ProjectForm).ReadyToExport;
-            ToolStrip_UseLibRetro.Enabled = menu_retrieve_gamedata_online.Enabled = (tabControl.SelectedForm as ProjectForm).CheckToolStripButtons()[0];
-            ToolStrip_SaveAs.Enabled = menu_save_project_as.Enabled = (tabControl.SelectedForm as ProjectForm).Tag?.ToString().ToLower() == "dirty";
+            toolbarSaveAs.Enabled = menu_save_project_as.Enabled;
+            toolbarUseLibRetro.Enabled = menu_retrieve_gamedata_online.Enabled;
         }
 
         private void MainForm_Closing(object sender, FormClosingEventArgs e)
@@ -237,98 +232,87 @@ namespace FriishProduce
 
             for (int i = 0; i < collection.Count; i++)
             {
-                var tabPage = tabControl.TabPages[i];
+                var p = tabControl.TabPages[i];
+                var f = p.Form as ProjectForm;
 
-                ProjectForm x = tabPage?.Form as ProjectForm;
-                if (x?.Tag?.ToString() == "dirty")
+                if (f.IsModified)
                 {
-                    tabControl.TabPages[tabControl.TabPages.get_IndexOf(tabPage)].Select();
-                    bool Cancelled = !x.CheckUnsaved();
+                    tabControl.TabPages[tabControl.TabPages.get_IndexOf(p)].Select();
 
-                    if (Cancelled)
-                    { e.Cancel = true; return; }
+                    if (!f.CheckUnsaved())
+                    {
+                        e.Cancel = true;
+                        return;
+                    }
                 }
-            }
-
-            foreach (MdiTabControl.TabPage tabPage in collection)
-            {
-                try
-                {
-                    (tabPage.Form as Form).Tag = null;
-                }
-                catch { }
             }
         }
 
         /// <summary>
         /// Adds a new project to the Main Form.
         /// </summary>
-        private void AddProject(object sender, EventArgs e)
+        private void addProject(object sender, EventArgs e)
         {
             var source = sender as ToolStripMenuItem;
 
-            if (Enum.TryParse(source.Name.ToString(), out Console console))
+            if (Enum.TryParse(source.Name.ToString(), out Platform console))
             {
-                var Tab = AddTab(console);
-                // BrowseROMDialog(console, Tab);
+                addTab(console);
             }
         }
 
-        private ProjectForm AddTab(Console console, Project x = null)
+        private void addTab(Platform platform, Project x = null)
         {
-            ProjectForm Tab = x == null ? new ProjectForm(console) : new ProjectForm(x);
-            Tab.Font = Font;
-            Tab.Parent = this;
-            Tab.FormClosed += TabChanged;
-            Tab.ExportCheck += ExportCheck;
-            tabControl.TabBackHighColor = Tab.BackColor;
-            tabControl.TabPages.Add(Tab);
+            ProjectForm p = new(platform, null, x);
+            p.FormClosed += TabChanged;
+            tabControl.TabPages.Add(p);
 
             tabControl.Visible = true;
             MainPanel.Visible = false;
 
-            return Tab;
+            // BrowseROMDialog(console, p);
         }
 
-        private void OpenROM_Click(object sender, EventArgs e) => BrowseROMDialog((tabControl.SelectedForm as ProjectForm).Console, tabControl.SelectedForm as ProjectForm);
+        private void OpenROM_Click(object sender, EventArgs e) => BrowseROMDialog((tabControl.SelectedForm as ProjectForm).Platform);
 
-        private void BrowseROMDialog(Console c, ProjectForm currentForm)
+        private void BrowseROMDialog(Platform platform)
         {
-            switch (c)
+            switch (platform)
             {
                 default:
                     BrowseROM.Filter = Program.Lang.String("filter.disc") + "|" + Program.Lang.String("filter.zip") + Program.Lang.String("filter");
                     break;
 
-                case Console.NES:
-                case Console.SNES:
-                case Console.N64:
-                case Console.SMS:
-                case Console.SMD:
-                case Console.PCE:
-                case Console.C64:
-                case Console.MSX:
-                    BrowseROM.Filter = Program.Lang.String($"filter.rom_{c.ToString().ToLower()}");
+                case Platform.NES:
+                case Platform.SNES:
+                case Platform.N64:
+                case Platform.SMS:
+                case Platform.SMD:
+                case Platform.PCE:
+                case Platform.C64:
+                case Platform.MSX:
+                    BrowseROM.Filter = Program.Lang.String($"filter.rom_{platform.ToString().ToLower()}");
                     break;
 
-                case Console.NEO:
+                case Platform.NEO:
                     BrowseROM.Filter = Program.Lang.String("filter.zip");
                     break;
 
-                case Console.Flash:
+                case Platform.Flash:
                     BrowseROM.Filter = Program.Lang.String("filter.swf");
                     break;
 
-                case Console.RPGM:
+                case Platform.RPGM:
                     BrowseROM.Filter = Program.Lang.String("filter.rpgm");
                     break;
             }
 
-            if (BrowseROM.ShowDialog() == DialogResult.OK)
+            if (BrowseROM.ShowDialog() == DialogResult.OK && tabControl.SelectedForm != null)
             {
-                ToolStrip_UseLibRetro.Enabled = menu_retrieve_gamedata_online.Enabled = currentForm.CheckToolStripButtons()[0];
+                var p = tabControl.SelectedForm as ProjectForm;
+                p.LoadROM(BrowseROM.FileName, Properties.Settings.Default.auto_retrieve_game_data);
 
-                currentForm.LoadROM(Properties.Settings.Default.auto_retrieve_game_data);
+                toolbarUseLibRetro.Enabled = menu_retrieve_gamedata_online.Enabled = p.ToolbarButtons[0];
             }
         }
 
@@ -339,7 +323,7 @@ namespace FriishProduce
             var currentForm = tabControl.SelectedForm as ProjectForm;
 
             SaveWAD.FileName = currentForm.GetName();
-            if (SaveWAD.ShowDialog() == DialogResult.OK) currentForm.SaveToWAD();
+            if (SaveWAD.ShowDialog() == DialogResult.OK) currentForm.SaveToWAD(SaveProject.FileName);
         }
 
         private void OpenImage_Click(object sender, EventArgs e)
@@ -372,7 +356,7 @@ namespace FriishProduce
 
         private void CloseTab_Click(object sender, EventArgs e) { var tab = tabControl.SelectedForm as Form; tab.Close(); }
 
-        private void About_Click(object sender, EventArgs e) { using (var about = new About() { Font = Font }) about.ShowDialog(); }
+        private void About_Click(object sender, EventArgs e) { using var about = new About() { Font = Font }; about.ShowDialog(); }
 
         private void MenuItem_Exit_Click(object sender, EventArgs e) => Application.Exit();
 
@@ -382,8 +366,7 @@ namespace FriishProduce
         {
             try
             {
-                var currentForm = tabControl.SelectedForm as ProjectForm;
-                if (currentForm == null) throw new Exception("No project found!");
+                if (tabControl.SelectedForm is not ProjectForm currentForm) throw new Exception("No project found!");
 
                 SaveProject.FileName = currentForm.Text;
                 foreach (var item in new char[] { '\\', '/', ':', '*', '?', '"', '<', '>', '|' })
@@ -391,7 +374,7 @@ namespace FriishProduce
 
                 if (SaveProject.ShowDialog() == DialogResult.OK)
                 {
-                    currentForm.Save();
+                    currentForm.SaveProject(SaveProject.FileName);
                     return true;
                 }
             }
@@ -410,12 +393,10 @@ namespace FriishProduce
             {
                 try
                 {
-                    using (Stream stream = File.Open(BrowseProject.FileName, FileMode.Open))
-                    {
-                        var binaryFormatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-                        var project = (Project)binaryFormatter.Deserialize(stream);
-                        AddTab(project.Console, project);
-                    }
+                    using Stream stream = File.Open(BrowseProject.FileName, FileMode.Open);
+                    var binaryFormatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                    var project = (Project)binaryFormatter.Deserialize(stream);
+                    addTab(project.Platform, project);
                 }
 
                 catch

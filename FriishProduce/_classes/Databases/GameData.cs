@@ -9,7 +9,7 @@ using System.Text.RegularExpressions;
 namespace FriishProduce
 {
     [Serializable]
-    public class GameDatabase
+    public class GameData
     {
         private string title { get; set; }
         public string Title { get => title; }
@@ -44,32 +44,32 @@ namespace FriishProduce
 
         private readonly string db_base = "https://raw.githubusercontent.com/libretro/libretro-database/master/metadat/";
 
-        private string db_name(Console platform)
+        private string db_name(Platform platform)
         {
-            Dictionary<string, Console> names = new Dictionary<string, Console>
+            Dictionary<string, Platform> names = new Dictionary<string, Platform>
             {
-                { "Nintendo - Nintendo Entertainment System", Console.NES },
-                { "Nintendo - Super Nintendo Entertainment System", Console.SNES },
-                { "Nintendo - Nintendo 64", Console.N64 },
-                { "Sega - Master System - Mark III", Console.SMS },
-                { "Sega - Mega Drive - Genesis", Console.SMD },
-                { "NEC - PC Engine - TurboGrafx 16", Console.PCE },
-                { "NEC - PC Engine SuperGrafx", Console.PCE },
-                { "NEC - PC Engine CD - TurboGrafx-CD", Console.PCECD },
-                { "MAME", Console.NEO },
-                { "Microsoft - MSX", Console.MSX },
-                { "Microsoft - MSX2", Console.MSX },
-                { "Microsoft - MSX 2", Console.MSX },
-                { "Nintendo - Game Boy", Console.GB },
-                { "Nintendo - Game Boy Color", Console.GBC },
-                { "Nintendo - Game Boy Advance", Console.GBA },
-                { "Nintendo - GameCube", Console.GCN },
-                { "Sega - 32X", Console.S32X },
-                { "Sega - Mega-CD - Sega CD", Console.SMCD },
-                { "Sony - PlayStation", Console.PSX },
+                { "Nintendo - Nintendo Entertainment System", Platform.NES },
+                { "Nintendo - Super Nintendo Entertainment System", Platform.SNES },
+                { "Nintendo - Nintendo 64", Platform.N64 },
+                { "Sega - Master System - Mark III", Platform.SMS },
+                { "Sega - Mega Drive - Genesis", Platform.SMD },
+                { "NEC - PC Engine - TurboGrafx 16", Platform.PCE },
+                { "NEC - PC Engine SuperGrafx", Platform.PCE },
+                { "NEC - PC Engine CD - TurboGrafx-CD", Platform.PCECD },
+                { "MAME", Platform.NEO },
+                { "Microsoft - MSX", Platform.MSX },
+                { "Microsoft - MSX2", Platform.MSX },
+                { "Microsoft - MSX 2", Platform.MSX },
+                { "Nintendo - Game Boy", Platform.GB },
+                { "Nintendo - Game Boy Color", Platform.GBC },
+                { "Nintendo - Game Boy Advance", Platform.GBA },
+                { "Nintendo - GameCube", Platform.GCN },
+                { "Sega - 32X", Platform.S32X },
+                { "Sega - Mega-CD - Sega CD", Platform.SMCD },
+                { "Sony - PlayStation", Platform.PSX },
             };
 
-            foreach (KeyValuePair<string, Console> item in names)
+            foreach (KeyValuePair<string, Platform> item in names)
             {
                 if (item.Value == platform)
                 {
@@ -80,7 +80,7 @@ namespace FriishProduce
             return null;
         }
 
-        private bool db_search(string path, Console platform, int type)
+        private bool db_search(string path, Platform platform, int type)
         {
             #region Establish URL of database entry
             string URL = null;
@@ -90,14 +90,14 @@ namespace FriishProduce
             {
                 switch (platform)
                 {
-                    case Console.PCECD:
-                    case Console.GCN:
-                    case Console.SMCD:
-                    case Console.PSX:
+                    case Platform.PCECD:
+                    case Platform.GCN:
+                    case Platform.SMCD:
+                    case Platform.PSX:
                         URL = db_base + "redump/" + Uri.EscapeUriString(db_name) + ".dat";
                         break;
 
-                    case Console.NEO:
+                    case Platform.NEO:
                         URL = db_base + "mame-split/" + Uri.EscapeUriString(db_name) + " 2016.dat";
                         break;
 
@@ -185,7 +185,7 @@ namespace FriishProduce
         /// </summary>
         /// <param name="platform"></param>
         /// <returns></returns>
-        public bool Get(Console platform, string path)
+        public bool Get(Platform platform, string path)
         {
             title = null;
             year = null;
@@ -193,7 +193,7 @@ namespace FriishProduce
             serial = null;
             imgURL = null;
 
-            bool isDisc = platform == Console.PCECD || platform == Console.GCN || platform == Console.SMCD || platform == Console.PSX;
+            bool isDisc = platform == Platform.PCECD || platform == Platform.GCN || platform == Platform.SMCD || platform == Platform.PSX;
             if (isDisc)
             {
                 if (Path.GetExtension(path).ToLower() == ".cue")

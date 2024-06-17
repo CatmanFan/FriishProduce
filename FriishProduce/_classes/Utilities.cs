@@ -9,6 +9,17 @@ using System.Threading.Tasks;
 
 namespace FriishProduce
 {
+    public enum ExportResult
+    {
+        BIOS_NOT_FOUND,
+        FILE_NOT_FOUND,
+        FOLDER_NOT_FOUND,
+        ROM_SIZE,
+        FAILED_INTERNET,
+        FAILED_INJECTION,
+        FAILED_DOWNLOADED_WAD
+    }
+
     public static class Web
     {
         public static bool InternetTest(string URL = null)
@@ -56,7 +67,7 @@ namespace FriishProduce
 
         private static bool CheckDomain(string URL, int timeout)
         {
-            string host = URL;
+            string host;
             try { host = new Uri(URL).Host; } catch { host = URL; }
 
             using (var tcp = new TcpClient())

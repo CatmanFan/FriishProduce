@@ -11,6 +11,7 @@ namespace FriishProduce
         [DllImport("user32.dll", SetLastError = true)]
         static extern void SwitchToThisWindow(IntPtr hWnd, bool turnOn);
 
+        public static MainForm MainForm { get; set; }
         public static Language Lang { get; set; }
         public static IntPtr Handle { get; set; }
         public static bool IsUpdated = false;
@@ -63,7 +64,8 @@ namespace FriishProduce
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            MainForm = new MainForm();
+            Application.Run(MainForm);
 
             System.Threading.Thread.CurrentThread.CurrentUICulture = System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(Lang.Current);
         }

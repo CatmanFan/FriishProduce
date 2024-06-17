@@ -188,7 +188,7 @@ namespace FriishProduce
         /// <summary>
         /// Returns the localized name of a console/platform.
         /// </summary>
-        public string Console(Console c) => String(c.ToString().ToLower(), "platforms");
+        public string Console(Platform c) => String(c.ToString().ToLower(), "platforms");
 
         /// <summary>
         /// Returns a localized message string from the corresponding ID.

@@ -161,37 +161,6 @@
   <data name="MenuStrip.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="MenuStrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="MenuStrip.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 0, 1, 0</value>
-  </data>
-  <data name="MenuStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>684, 20</value>
-  </data>
-  <data name="MenuStrip.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;MenuStrip.Name" xml:space="preserve">
-    <value>MenuStrip</value>
-  </data>
-  <data name="&gt;&gt;MenuStrip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;MenuStrip.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;MenuStrip.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="menu_file.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 20</value>
-  </data>
-  <data name="menu_file.Text" xml:space="preserve">
-    <value>file</value>
-  </data>
   <data name="menu_new_project.Size" type="System.Drawing.Size, System.Drawing">
     <value>155, 22</value>
   </data>
@@ -240,11 +209,11 @@
   <data name="menu_exit.Text" xml:space="preserve">
     <value>exit</value>
   </data>
-  <data name="menu_project.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 20</value>
+  <data name="menu_file.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 20</value>
   </data>
-  <data name="menu_project.Text" xml:space="preserve">
-    <value>project</value>
+  <data name="menu_file.Text" xml:space="preserve">
+    <value>file</value>
   </data>
   <data name="menu_open_gamefile.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -288,11 +257,11 @@
   <data name="menu_close_project.Text" xml:space="preserve">
     <value>close_project</value>
   </data>
-  <data name="menu_help.Size" type="System.Drawing.Size, System.Drawing">
-    <value>42, 20</value>
+  <data name="menu_project.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 20</value>
   </data>
-  <data name="menu_help.Text" xml:space="preserve">
-    <value>help</value>
+  <data name="menu_project.Text" xml:space="preserve">
+    <value>project</value>
   </data>
   <data name="menu_about_app.Size" type="System.Drawing.Size, System.Drawing">
     <value>130, 22</value>
@@ -300,44 +269,39 @@
   <data name="menu_about_app.Text" xml:space="preserve">
     <value>about_app</value>
   </data>
-  <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 6</value>
+  <data name="menu_help.Size" type="System.Drawing.Size, System.Drawing">
+    <value>42, 20</value>
   </data>
-  <data name="&gt;&gt;Logo.Name" xml:space="preserve">
-    <value>Logo</value>
+  <data name="menu_help.Text" xml:space="preserve">
+    <value>help</value>
   </data>
-  <data name="&gt;&gt;Logo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="MenuStrip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
   </data>
-  <data name="&gt;&gt;Logo.Parent" xml:space="preserve">
-    <value>MainPanel</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="MenuStrip.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 0, 1, 0</value>
   </data>
-  <data name="&gt;&gt;Logo.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="MenuStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1035, 20</value>
   </data>
-  <data name="MainPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="MenuStrip.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
   </data>
-  <data name="MainPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 45</value>
+  <data name="&gt;&gt;MenuStrip.Name" xml:space="preserve">
+    <value>MenuStrip</value>
   </data>
-  <data name="MainPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>684, 417</value>
+  <data name="&gt;&gt;MenuStrip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="MainPanel.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;MainPanel.Name" xml:space="preserve">
-    <value>MainPanel</value>
-  </data>
-  <data name="&gt;&gt;MainPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;MainPanel.Parent" xml:space="preserve">
+  <data name="&gt;&gt;MenuStrip.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;MainPanel.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;MenuStrip.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 6</value>
   </data>
   <data name="Logo.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -363,6 +327,30 @@
   <data name="&gt;&gt;Logo.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="MainPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="MainPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 45</value>
+  </data>
+  <data name="MainPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1035, 572</value>
+  </data>
+  <data name="MainPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;MainPanel.Name" xml:space="preserve">
+    <value>MainPanel</value>
+  </data>
+  <data name="&gt;&gt;MainPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MainPanel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;MainPanel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <metadata name="ToolStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>622, 17</value>
   </metadata>
@@ -372,107 +360,107 @@
   <data name="ToolStrip.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8.25pt</value>
   </data>
-  <data name="ToolStrip_NewProject.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+  <data name="toolbarNewProject.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
-  <data name="ToolStrip_NewProject.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="toolbarNewProject.Size" type="System.Drawing.Size, System.Drawing">
     <value>29, 22</value>
   </data>
-  <data name="ToolStrip_NewProject.Text" xml:space="preserve">
+  <data name="toolbarNewProject.Text" xml:space="preserve">
     <value>new_project</value>
   </data>
-  <data name="ToolStrip_OpenProject.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+  <data name="toolbarOpenProject.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
-  <data name="ToolStrip_OpenProject.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="toolbarOpenProject.Size" type="System.Drawing.Size, System.Drawing">
     <value>23, 22</value>
   </data>
-  <data name="ToolStrip_OpenProject.Text" xml:space="preserve">
+  <data name="toolbarOpenProject.Text" xml:space="preserve">
     <value>open_project</value>
   </data>
-  <data name="ToolStrip_SaveAs.Enabled" type="System.Boolean, mscorlib">
+  <data name="toolbarSaveAs.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="ToolStrip_SaveAs.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+  <data name="toolbarSaveAs.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
-  <data name="ToolStrip_SaveAs.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="toolbarSaveAs.Size" type="System.Drawing.Size, System.Drawing">
     <value>23, 22</value>
   </data>
-  <data name="ToolStrip_SaveAs.Text" xml:space="preserve">
+  <data name="toolbarSaveAs.Text" xml:space="preserve">
     <value>save_project_as</value>
   </data>
-  <data name="ToolStrip_ExportWAD.Enabled" type="System.Boolean, mscorlib">
+  <data name="toolbarCloseProject.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="ToolStrip_ExportWAD.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+  <data name="toolbarCloseProject.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
-  <data name="ToolStrip_ExportWAD.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="toolbarCloseProject.Size" type="System.Drawing.Size, System.Drawing">
     <value>23, 22</value>
-  </data>
-  <data name="ToolStrip_ExportWAD.Text" xml:space="preserve">
-    <value>save_as_wad</value>
   </data>
   <data name="toolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 25</value>
   </data>
-  <data name="ToolStrip_OpenROM.Enabled" type="System.Boolean, mscorlib">
+  <data name="toolbarOpenROM.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="ToolStrip_OpenROM.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+  <data name="toolbarOpenROM.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
-  <data name="ToolStrip_OpenROM.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="toolbarOpenROM.Size" type="System.Drawing.Size, System.Drawing">
     <value>23, 22</value>
   </data>
-  <data name="ToolStrip_OpenROM.Text" xml:space="preserve">
+  <data name="toolbarOpenROM.Text" xml:space="preserve">
     <value>open_gamefile</value>
   </data>
-  <data name="ToolStrip_OpenImage.Enabled" type="System.Boolean, mscorlib">
+  <data name="toolbarOpenImage.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="ToolStrip_OpenImage.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+  <data name="toolbarOpenImage.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
-  <data name="ToolStrip_OpenImage.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="toolbarOpenImage.Size" type="System.Drawing.Size, System.Drawing">
     <value>23, 22</value>
   </data>
-  <data name="ToolStrip_OpenImage.Text" xml:space="preserve">
+  <data name="toolbarOpenImage.Text" xml:space="preserve">
     <value>open_image</value>
   </data>
   <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 25</value>
   </data>
-  <data name="ToolStrip_UseLibRetro.Enabled" type="System.Boolean, mscorlib">
+  <data name="toolbarUseLibRetro.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="ToolStrip_UseLibRetro.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+  <data name="toolbarUseLibRetro.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
-  <data name="ToolStrip_UseLibRetro.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="toolbarUseLibRetro.Size" type="System.Drawing.Size, System.Drawing">
     <value>23, 22</value>
   </data>
-  <data name="ToolStrip_UseLibRetro.Text" xml:space="preserve">
+  <data name="toolbarUseLibRetro.Text" xml:space="preserve">
     <value>retrieve_gamedata_online</value>
   </data>
   <data name="toolStripSeparator8.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 25</value>
-  </data>
-  <data name="ToolStrip_CloseTab.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="ToolStrip_CloseTab.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="ToolStrip_CloseTab.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
   </data>
   <data name="ToolStrip_Settings.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
   <data name="ToolStrip_Settings.Size" type="System.Drawing.Size, System.Drawing">
     <value>23, 22</value>
+  </data>
+  <data name="toolbarSaveAsWAD.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="toolbarSaveAsWAD.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="toolbarSaveAsWAD.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="toolbarSaveAsWAD.Text" xml:space="preserve">
+    <value>save_as_wad</value>
   </data>
   <data name="ToolStrip.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 20</value>
@@ -481,7 +469,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="ToolStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>684, 25</value>
+    <value>1035, 25</value>
   </data>
   <data name="ToolStrip.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -514,10 +502,7 @@
     <value>True</value>
   </metadata>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>684, 462</value>
-  </data>
-  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8.25pt</value>
+    <value>1035, 617</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2918,6 +2903,12 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAhAAAAIQBAAD8HwAA//8AAP//AAA=
 </value>
   </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>16, 110</value>
+  </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>
   </data>
@@ -3056,28 +3047,28 @@
   <data name="&gt;&gt;toolStripSeparator3.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ToolStrip_NewProject.Name" xml:space="preserve">
-    <value>ToolStrip_NewProject</value>
+  <data name="&gt;&gt;toolbarNewProject.Name" xml:space="preserve">
+    <value>toolbarNewProject</value>
   </data>
-  <data name="&gt;&gt;ToolStrip_NewProject.Type" xml:space="preserve">
+  <data name="&gt;&gt;toolbarNewProject.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripDropDownButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ToolStrip_OpenProject.Name" xml:space="preserve">
-    <value>ToolStrip_OpenProject</value>
+  <data name="&gt;&gt;toolbarOpenProject.Name" xml:space="preserve">
+    <value>toolbarOpenProject</value>
   </data>
-  <data name="&gt;&gt;ToolStrip_OpenProject.Type" xml:space="preserve">
+  <data name="&gt;&gt;toolbarOpenProject.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ToolStrip_SaveAs.Name" xml:space="preserve">
-    <value>ToolStrip_SaveAs</value>
+  <data name="&gt;&gt;toolbarSaveAs.Name" xml:space="preserve">
+    <value>toolbarSaveAs</value>
   </data>
-  <data name="&gt;&gt;ToolStrip_SaveAs.Type" xml:space="preserve">
+  <data name="&gt;&gt;toolbarSaveAs.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ToolStrip_ExportWAD.Name" xml:space="preserve">
-    <value>ToolStrip_ExportWAD</value>
+  <data name="&gt;&gt;toolbarCloseProject.Name" xml:space="preserve">
+    <value>toolbarCloseProject</value>
   </data>
-  <data name="&gt;&gt;ToolStrip_ExportWAD.Type" xml:space="preserve">
+  <data name="&gt;&gt;toolbarCloseProject.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator7.Name" xml:space="preserve">
@@ -3086,16 +3077,16 @@
   <data name="&gt;&gt;toolStripSeparator7.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ToolStrip_OpenROM.Name" xml:space="preserve">
-    <value>ToolStrip_OpenROM</value>
+  <data name="&gt;&gt;toolbarOpenROM.Name" xml:space="preserve">
+    <value>toolbarOpenROM</value>
   </data>
-  <data name="&gt;&gt;ToolStrip_OpenROM.Type" xml:space="preserve">
+  <data name="&gt;&gt;toolbarOpenROM.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ToolStrip_OpenImage.Name" xml:space="preserve">
-    <value>ToolStrip_OpenImage</value>
+  <data name="&gt;&gt;toolbarOpenImage.Name" xml:space="preserve">
+    <value>toolbarOpenImage</value>
   </data>
-  <data name="&gt;&gt;ToolStrip_OpenImage.Type" xml:space="preserve">
+  <data name="&gt;&gt;toolbarOpenImage.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator6.Name" xml:space="preserve">
@@ -3104,10 +3095,10 @@
   <data name="&gt;&gt;toolStripSeparator6.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ToolStrip_UseLibRetro.Name" xml:space="preserve">
-    <value>ToolStrip_UseLibRetro</value>
+  <data name="&gt;&gt;toolbarUseLibRetro.Name" xml:space="preserve">
+    <value>toolbarUseLibRetro</value>
   </data>
-  <data name="&gt;&gt;ToolStrip_UseLibRetro.Type" xml:space="preserve">
+  <data name="&gt;&gt;toolbarUseLibRetro.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator8.Name" xml:space="preserve">
@@ -3116,16 +3107,16 @@
   <data name="&gt;&gt;toolStripSeparator8.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ToolStrip_CloseTab.Name" xml:space="preserve">
-    <value>ToolStrip_CloseTab</value>
-  </data>
-  <data name="&gt;&gt;ToolStrip_CloseTab.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;ToolStrip_Settings.Name" xml:space="preserve">
     <value>ToolStrip_Settings</value>
   </data>
   <data name="&gt;&gt;ToolStrip_Settings.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolbarSaveAsWAD.Name" xml:space="preserve">
+    <value>toolbarSaveAsWAD</value>
+  </data>
+  <data name="&gt;&gt;toolbarSaveAsWAD.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;SaveProject.Name" xml:space="preserve">

@@ -29,9 +29,6 @@
     <Setting Name="default_save_as_filename" Type="System.String" Scope="User">
       <Value Profile="(Default)">[PLATFORM] CHANNELNAME - TITLEID</Value>
     </Setting>
-    <Setting Name="icon_animation" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
     <Setting Name="auto_update_check" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>

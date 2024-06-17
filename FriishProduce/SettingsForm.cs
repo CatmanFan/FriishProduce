@@ -60,12 +60,12 @@ namespace FriishProduce
             TreeView.Nodes[0].Text = Program.Lang.String(TreeView.Nodes[0].Tag.ToString(), Tag.ToString());
             TreeView.Nodes[1].Text = Program.Lang.String(TreeView.Nodes[1].Tag.ToString(), Tag.ToString());
             TreeView.Nodes[1].Expand();
-            TreeView.Nodes[1].Nodes[0].Text = Program.Lang.Console(Console.NES);
-            TreeView.Nodes[1].Nodes[1].Text = Program.Lang.Console(Console.N64);
+            TreeView.Nodes[1].Nodes[0].Text = Program.Lang.Console(Platform.NES);
+            TreeView.Nodes[1].Nodes[1].Text = Program.Lang.Console(Platform.N64);
             TreeView.Nodes[1].Nodes[2].Text = Program.Lang.String("group1", "platforms");
-            TreeView.Nodes[1].Nodes[3].Text = Program.Lang.Console(Console.PCE);
-            TreeView.Nodes[1].Nodes[4].Text = Program.Lang.Console(Console.NEO);
-            TreeView.Nodes[1].Nodes[5].Text = Program.Lang.Console(Console.Flash);
+            TreeView.Nodes[1].Nodes[3].Text = Program.Lang.Console(Platform.PCE);
+            TreeView.Nodes[1].Nodes[4].Text = Program.Lang.Console(Platform.NEO);
+            TreeView.Nodes[1].Nodes[5].Text = Program.Lang.Console(Platform.Flash);
             TreeView.Nodes[1].Nodes[6].Text = Program.Lang.String("forwarders", "platforms");
 
             // -----------------------------
@@ -122,7 +122,7 @@ namespace FriishProduce
             // -----------------------------
 
             Program.Lang.String(vc_sega_country_l);
-            vc_sega_dev_mdpad_enable_6b.Text = string.Format(Program.Lang.String("dev_mdpad_enable_6b", "vc_sega"), Program.Lang.Console(Console.SMD));
+            vc_sega_dev_mdpad_enable_6b.Text = string.Format(Program.Lang.String("dev_mdpad_enable_6b", "vc_sega"), Program.Lang.Console(Platform.SMD));
             Program.Lang.String(vc_sega_console_disableresetbutton, "vc_sega");
 
             vc_sega_country.Items.Clear();
@@ -158,11 +158,10 @@ namespace FriishProduce
             // -----------------------------
 
             // Update checker button
-            check_for_updates.Enabled = Default.auto_update_check ? !Program.IsUpdated : true;
+            check_for_updates.Enabled = !Default.auto_update_check || !Program.IsUpdated;
 
             // Defaults & forwarders
             auto_update_check.Checked = Default.auto_update_check;
-            icon_animation.Checked = Default.icon_animation;
             auto_retrieve_gamedata_online.Checked = Default.auto_retrieve_game_data;
             autolink_save_data.Checked = Default.link_save_data;
             reset_all_dialogs.Checked = false;
@@ -254,7 +253,7 @@ namespace FriishProduce
                     {
                         try
                         {
-                            var database = new ChannelDatabase(Console.NES, dialog.FileName);
+                            var database = new ChannelDatabase(Platform.NES, dialog.FileName);
                             Default.custom_database = dialog.FileName;
                         }
                         catch
@@ -295,7 +294,6 @@ namespace FriishProduce
             // -------------------------------------------
 
             Default.auto_update_check = auto_update_check.Checked;
-            Default.icon_animation = icon_animation.Checked;
             Default.link_save_data = autolink_save_data.Checked;
             Default.gamedata_source_image = gamedata_source_image_list.SelectedIndex;
             Default.image_interpolation = image_interpolation_mode_list.SelectedIndex;
@@ -383,31 +381,31 @@ namespace FriishProduce
         {
             System.Media.SystemSounds.Beep.Play();
 
-            /* var WADs = new List<(string ID, Console c, string file)>()
+            /* var WADs = new List<(string ID, Platform c, string file)>()
             {
-                ("FCWP", Console.NES, "nes"),
-                ("FCWJ", Console.NES, "jp_fc"),
-                ("FCWQ", Console.NES, "kr_fc"),
-                ("JBDP", Console.SNES, "snes"),
-                ("JBDJ", Console.SNES, "jp_sfc"),
-                ("JBDT", Console.SNES, "kr_sfc"),
-                ("NAAP", Console.N64, "n64"),
-                ("NAAJ", Console.N64, "jp_n64"),
-                ("NABT", Console.N64, "kr_n64"),
-                ("LAGP", Console.SMS, "sms"),
-                ("LAGJ", Console.SMS, "jp_sms"),
-                ("MAPE", Console.SMD, "gen"),
-                ("MAPP", Console.SMD, "smd"),
-                ("MAPJ", Console.SMD, "jp_smd"),
-                ("PAAP", Console.PCE, "tg16"),
-                ("PAGJ", Console.PCE, "jp_pce"),
-                ("EAJP", Console.NEO, "neogeo"),
-                ("EAJJ", Console.NEO, "jp_neogeo"),
-                ("C9YE", Console.C64, "us_c64"),
-                ("C9YP", Console.C64, "eu_c64"),
-                ("XAGJ", Console.MSX, "jp_msx1"),
-                ("XAPJ", Console.MSX, "jp_msx2"),
-                ("WNAP", Console.Flash, "flash")
+                ("FCWP", Platform.NES, "nes"),
+                ("FCWJ", Platform.NES, "jp_fc"),
+                ("FCWQ", Platform.NES, "kr_fc"),
+                ("JBDP", Platform.SNES, "snes"),
+                ("JBDJ", Platform.SNES, "jp_sfc"),
+                ("JBDT", Platform.SNES, "kr_sfc"),
+                ("NAAP", Platform.N64, "n64"),
+                ("NAAJ", Platform.N64, "jp_n64"),
+                ("NABT", Platform.N64, "kr_n64"),
+                ("LAGP", Platform.SMS, "sms"),
+                ("LAGJ", Platform.SMS, "jp_sms"),
+                ("MAPE", Platform.SMD, "gen"),
+                ("MAPP", Platform.SMD, "smd"),
+                ("MAPJ", Platform.SMD, "jp_smd"),
+                ("PAAP", Platform.PCE, "tg16"),
+                ("PAGJ", Platform.PCE, "jp_pce"),
+                ("EAJP", Platform.NEO, "neogeo"),
+                ("EAJJ", Platform.NEO, "jp_neogeo"),
+                ("C9YE", Platform.C64, "us_c64"),
+                ("C9YP", Platform.C64, "eu_c64"),
+                ("XAGJ", Platform.MSX, "jp_msx1"),
+                ("XAPJ", Platform.MSX, "jp_msx2"),
+                ("WNAP", Platform.Flash, "flash")
             };
 
             foreach (var item in WADs)
@@ -487,7 +485,7 @@ namespace FriishProduce
             else
             {
                 var isUpdated = await Updater.GetLatest();
-                check_for_updates.Enabled = auto_update_check.Checked ? !isUpdated : true;
+                check_for_updates.Enabled = !isUpdated || !auto_update_check.Checked;
                 if (isUpdated) MessageBox.Show(Program.Lang.Msg(9), MessageBox.Buttons.Ok, MessageBox.Icons.Information);
             }
         }

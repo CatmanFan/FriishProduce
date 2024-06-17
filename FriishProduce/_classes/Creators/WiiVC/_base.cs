@@ -10,7 +10,7 @@ namespace FriishProduce
 {
     public abstract class InjectorWiiVC
     {
-        public WAD WAD { get; set; }
+        protected WAD WAD { get; set; }
         public int EmuType { get; set; }
         public IDictionary<string, string> Settings { get; set; }
         protected Encoding SaveTextEncoding { get; set; }
@@ -75,7 +75,7 @@ namespace FriishProduce
             ManualContentIndex = 5;
             ManualContent = MainContentIndex == ManualContentIndex ? null : U8.Load(WAD.Contents[ManualContentIndex]);
 
-            if (NeedsManualLoaded) ReplaceManual(ManualContent != null ? ManualContent : MainContent);
+            if (NeedsManualLoaded) ReplaceManual(ManualContent ?? MainContent);
         }
 
         #region EMANUAL Functions
@@ -362,9 +362,10 @@ namespace FriishProduce
             return WAD;
         }
 
-        public WAD Inject(ROM ROM, string[] SaveDataTitle, ImageHelper Img)
+        public WAD Inject(WAD wad, ROM rom, string[] SaveDataTitle, ImageHelper Img)
         {
-            this.ROM = ROM;
+            this.WAD = wad;
+            this.ROM = rom;
 
             Load();
             ReplaceROM();

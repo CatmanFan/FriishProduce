@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace FriishProduce
 {
-    public class Preview
+    public static class Preview
     {
         public enum Language
         {
@@ -19,10 +19,10 @@ namespace FriishProduce
             Auto
         }
 
-        private Bitmap RoundCorners(Image StartImage, int CornerRadius, bool Smooth = false)
+        private static Bitmap RoundCorners(Image StartImage, int CornerRadius, bool Smooth = false)
         {
             CornerRadius *= 2;
-            Bitmap x = new Bitmap(StartImage.Width, StartImage.Height);
+            Bitmap x = new(StartImage.Width, StartImage.Height);
             using (Graphics g = Graphics.FromImage(x))
             {
                 g.SmoothingMode = SmoothingMode.AntiAlias;
@@ -57,9 +57,9 @@ namespace FriishProduce
         private static extern IntPtr AddFontMemResourceEx(IntPtr pbFont, uint cbFont,
             IntPtr pdv, [System.Runtime.InteropServices.In] ref uint pcFonts);
 
-        private PrivateFontCollection fonts;
+        private static PrivateFontCollection fonts;
 
-        private FontFamily Font()
+        private static FontFamily font()
         {
             if (fonts != null && fonts.Families.Length > 0) return fonts.Families[0];
 
@@ -78,8 +78,8 @@ namespace FriishProduce
 
         #endregion
 
-        private (int, int) bannerType = (-1, -1);
-        private Bitmap bannerLogo;
+        private static (int, int) bannerType = (-1, -1);
+        private static Bitmap bannerLogo;
 
         /// <summary>
         /// Creates a banner preview bitmap using VCPic.
@@ -91,7 +91,7 @@ namespace FriishProduce
         /// <param name="console">Platform/console</param>
         /// <param name="lang">Banner region/language: Japanese, Korean, Europe or America</param>
         /// <returns></returns>
-        public Bitmap Banner(Bitmap img, string text, int year, int players, Console console, Language lang)
+        public static Bitmap Banner(Bitmap img, string text, int year, int players, Platform platform, int lang)
         {
             Bitmap bmp = new Bitmap(650, 260);
             if (img == null)
@@ -102,62 +102,62 @@ namespace FriishProduce
             }
 
             int target = 0;
-            switch (console)
+            switch (platform)
             {
-                case Console.NES:
-                    target = lang switch { Language.Japanese or Language.Korean => 1, _ => 0 };
+                case Platform.NES:
+                    target = lang switch { 1 or 2 => 1, _ => 0 };
                     break;
 
-                case Console.SNES:
-                    target = lang switch { Language.Japanese or Language.Korean => 3, _ => 2 };
+                case Platform.SNES:
+                    target = lang switch { 1 or 2 => 3, _ => 2 };
                     break;
 
-                case Console.N64:
+                case Platform.N64:
                     target = 4;
                     break;
 
-                case Console.SMS:
+                case Platform.SMS:
                     target = 5;
                     break;
 
-                case Console.SMD:
+                case Platform.SMD:
                     target = 6;
                     break;
 
-                case Console.PCE:
-                case Console.PCECD:
-                    target = lang switch { Language.Japanese or Language.Korean => 8, _ => 7 };
+                case Platform.PCE:
+                case Platform.PCECD:
+                    target = lang switch { 1 or 2 => 8, _ => 7 };
                     break;
 
-                case Console.NEO:
+                case Platform.NEO:
                     target = 9;
                     break;
 
-                case Console.C64:
+                case Platform.C64:
                     target = 11;
                     break;
 
-                case Console.MSX:
+                case Platform.MSX:
                     target = 12;
                     break;
 
-                case Console.Flash:
+                case Platform.Flash:
                     target = 14;
                     break;
 
-                case Console.PSX:
+                case Platform.PSX:
                     target = 15;
                     break;
 
-                case Console.RPGM:
+                case Platform.RPGM:
                     target = 16;
                     break;
             }
 
             var leftTextColor = target == 2 ? Color.Black : target == 8 ? Color.FromArgb(90, 90, 90) : BannerSchemes.List[target].bg.GetBrightness() < 0.8 ? Color.White : Color.FromArgb(50, 50, 50);
 
-            string released = lang == Language.Japanese ? "{0}年発売"
-                             : lang == Language.Korean ? "일본판 발매년도\r\n{0}년"
+            string released = lang == 1 ? "{0}年発売"
+                             : lang == 2 ? "일본판 발매년도\r\n{0}년"
                              : Program.Lang.Current == "nl" ? "Release: {0}"
                              : Program.Lang.Current == "es" ? "Año: {0}"
                              : Program.Lang.Current == "it" ? "Pubblicato: {0}"
@@ -165,8 +165,8 @@ namespace FriishProduce
                              : Program.Lang.Current == "de" ? "Erschienen: {0}"
                              : "Released: {0}";
 
-            string numPlayers = lang == Language.Japanese ? "プレイ人数\r\n{0}人"
-                              : lang == Language.Korean ? "플레이 인원수\r\n{0}명"
+            string numPlayers = lang == 1 ? "プレイ人数\r\n{0}人"
+                              : lang == 2 ? "플레이 인원수\r\n{0}명"
                               : Program.Lang.Current == "nl" ? "{0} speler(s)"
                               : Program.Lang.Current == "es" ? "Jugadores: {0}"
                               : Program.Lang.Current == "it" ? "Giocatori: {0}"
@@ -175,9 +175,9 @@ namespace FriishProduce
                               : "Players: {0}";
 
             using (Graphics g = Graphics.FromImage(bmp))
-            using (LinearGradientBrush b1 = new LinearGradientBrush(new Point(0, 130), new Point(0, (int)Math.Round(bmp.Height * 0.9)), BannerSchemes.List[target].bg, BannerSchemes.List[target].bgBottom))
-            using (LinearGradientBrush b2 = new LinearGradientBrush(new Point(0, 50), new Point(0, (int)Math.Round(bmp.Height * 1.25)), BannerSchemes.List[target].bg, BannerSchemes.List[target].bgBottom))
-            using (LinearGradientBrush c = new LinearGradientBrush(new Point(0, 0), new Point(125, 0), BannerSchemes.List[target].lines, BannerSchemes.List[target].bg))
+            using (LinearGradientBrush b1 = new(new Point(0, 130), new Point(0, (int)Math.Round(bmp.Height * 0.9)), BannerSchemes.List[target].bg, BannerSchemes.List[target].bgBottom))
+            using (LinearGradientBrush b2 = new(new Point(0, 50), new Point(0, (int)Math.Round(bmp.Height * 1.25)), BannerSchemes.List[target].bg, BannerSchemes.List[target].bgBottom))
+            using (LinearGradientBrush c = new(new Point(0, 0), new Point(125, 0), BannerSchemes.List[target].lines, BannerSchemes.List[target].bg))
             {
                 g.CompositingQuality = CompositingQuality.AssumeLinear;
                 g.SmoothingMode = SmoothingMode.HighQuality;
@@ -186,10 +186,10 @@ namespace FriishProduce
                 g.Clear(BannerSchemes.List[target].bg);
 
                 #region Console/platform logo
-                if (((int)console, (int)lang) != bannerType)
+                if (((int)platform, lang) != bannerType)
                 {
-                    bannerType = ((int)console, (int)lang);
-                    using (var U8 = BannerHelper.BannerApp(console, lang switch { Language.Japanese => libWiiSharp.Region.Japan, Language.Korean => libWiiSharp.Region.Korea, Language.Europe => libWiiSharp.Region.Europe, _ => libWiiSharp.Region.USA }))
+                    bannerType = ((int)platform, lang);
+                    using (var U8 = BannerHelper.BannerApp(platform, lang switch { 1 => libWiiSharp.Region.Japan, 2 => libWiiSharp.Region.Korea, 3 => libWiiSharp.Region.Europe, _ => libWiiSharp.Region.USA }))
                     {
                         if (U8 != null)
                         {
@@ -231,21 +231,21 @@ namespace FriishProduce
                 {
                     double startingPointY = -30;
                     double maxHeight = bannerLogo.Height / 3;
-                    (double width, double height) logoSize = (bannerLogo.Width / 1.5, bannerLogo.Height / 1.5);
+                    (double width, double height) = (bannerLogo.Width / 1.5, bannerLogo.Height / 1.5);
 
                     for (double y = startingPointY; y < bmp.Height / 2; y += maxHeight * 2)
                     {
-                        for (double x = 0; x < bmp.Width; x += logoSize.width)
+                        for (double x = 0; x < bmp.Width; x += width)
                         {
-                            g.DrawImage(bannerLogo, (int)Math.Round(x), (int)Math.Round(y), (int)Math.Round(logoSize.width), (int)Math.Round(logoSize.height));
+                            g.DrawImage(bannerLogo, (int)Math.Round(x), (int)Math.Round(y), (int)Math.Round(width), (int)Math.Round(height));
                         }
                     }
 
                     for (double y = startingPointY + maxHeight; y < bmp.Height / 2; y += maxHeight * 2)
                     {
-                        for (double x = 0 - (logoSize.width / 2.5); x < bmp.Width; x += logoSize.width)
+                        for (double x = 0 - (width / 2.5); x < bmp.Width; x += width)
                         {
-                            g.DrawImage(bannerLogo, (int)Math.Round(x), (int)Math.Round(y), (int)Math.Round(logoSize.width), (int)Math.Round(logoSize.height));
+                            g.DrawImage(bannerLogo, (int)Math.Round(x), (int)Math.Round(y), (int)Math.Round(width), (int)Math.Round(height));
                         }
                     }
                 }
@@ -259,7 +259,7 @@ namespace FriishProduce
                 // ********
                 g.DrawString(
                     text,
-                    new Font(Font(), 15),
+                    new Font(font(), 15),
                     new SolidBrush(BannerSchemes.TextColor(target)),
                     bmp.Width / 2,
                     210,
@@ -269,7 +269,7 @@ namespace FriishProduce
                 // ********
                 g.DrawString(
                     string.Format(released, year),
-                    new Font(Font(), (float)9.25),
+                    new Font(font(), (float)9.25),
                     new SolidBrush(leftTextColor),
                     10,
                     45,
@@ -278,8 +278,8 @@ namespace FriishProduce
                 // Players
                 // ********
                 g.DrawString(
-                    string.Format(numPlayers, $"{1}{(players <= 1 ? null : "-" + players)}").Replace("-", lang == Language.Japanese ? "～" : "-"),
-                    new Font(Font(), (float)9.25),
+                    string.Format(numPlayers, $"{1}{(players <= 1 ? null : "-" + players)}").Replace("-", lang == 1 ? "～" : "-"),
+                    new Font(font(), (float)9.25),
                     new SolidBrush(leftTextColor),
                     10,
                     87,
@@ -304,77 +304,77 @@ namespace FriishProduce
                 g.DrawImage(RoundCorners(img, 8), (int)point[0], (int)point[1], (int)size[0], (int)size[1]);
                 #endregion
 
-                #region Top Console Header
+                #region Top Platform Header
                 var cName = "FriishProduce";
-                switch (console)
+                switch (platform)
                 {
-                    case Console.NES:
-                        cName = lang switch { Language.Japanese => "ファミリーコンピュータ", Language.Korean => "패밀리컴퓨터", _ => "NINTENDO ENTERTAINMENT SYSTEM" };
+                    case Platform.NES:
+                        cName = lang switch { 1 => "ファミリーコンピュータ", 2 => "패밀리컴퓨터", _ => "NINTENDO ENTERTAINMENT SYSTEM" };
                         break;
 
-                    case Console.SNES:
-                        cName = lang switch { Language.Japanese => "スーパーファミコン", Language.Korean => "슈퍼 패미컴", _ => "SUPER NINTENDO ENTERTAINMENT SYSTEM" };
+                    case Platform.SNES:
+                        cName = lang switch { 1 => "スーパーファミコン", 2 => "슈퍼 패미컴", _ => "SUPER NINTENDO ENTERTAINMENT SYSTEM" };
                         break;
 
-                    case Console.N64:
-                        cName = lang switch { Language.Korean => "닌텐도 64", _ => "NINTENDO64" };
+                    case Platform.N64:
+                        cName = lang switch { 2 => "닌텐도 64", _ => "NINTENDO64" };
                         break;
 
-                    case Console.SMS:
+                    case Platform.SMS:
                         cName = "MASTER SYSTEM";
                         break;
 
-                    case Console.SMD:
+                    case Platform.SMD:
                         cName = lang > 0 ? "MEGA DRIVE" : "GENESIS";
                         break;
 
-                    case Console.PCE:
-                    case Console.PCECD:
-                        cName = lang switch { Language.Japanese or Language.Korean => "PC ENGINE", _ => "TURBO GRAFX16" };
+                    case Platform.PCE:
+                    case Platform.PCECD:
+                        cName = lang switch { 1 or 2 => "PC ENGINE", _ => "TURBO GRAFX16" };
                         break;
 
-                    case Console.NEO:
+                    case Platform.NEO:
                         cName = "NEO-GEO";
                         break;
 
-                    case Console.C64:
+                    case Platform.C64:
                         cName = "COMMODORE 64";
                         break;
 
-                    case Console.MSX:
+                    case Platform.MSX:
                         cName = "MSX";
                         break;
 
-                    case Console.Flash:
+                    case Platform.Flash:
                         cName = "    Flash";
                         break;
 
-                    case Console.GB:
+                    case Platform.GB:
                         cName = "GAME BOY";
                         break;
 
-                    case Console.GBC:
+                    case Platform.GBC:
                         cName = "GAME BOY COLOR";
                         break;
 
-                    case Console.GBA:
+                    case Platform.GBA:
                         cName = "GAME BOY ADVANCE";
                         break;
 
-                    case Console.GCN:
+                    case Platform.GCN:
                         cName = "GAMECUBE";
                         break;
 
-                    case Console.PSX:
-                        cName = lang switch { Language.Japanese => "プレイステーション", _ => "PLAYSTATION" };
+                    case Platform.PSX:
+                        cName = lang switch { 1 => "プレイステーション", _ => "PLAYSTATION" };
                         break;
 
-                    case Console.RPGM:
-                        cName = lang switch { Language.Japanese => "ＲＰＧツクール", _ => "RPG MAKER" };
+                    case Platform.RPGM:
+                        cName = lang switch { 1 => "ＲＰＧツクール", _ => "RPG MAKER" };
                         break;
                 }
 
-                var f = new Font(Font(), 9);
+                var f = new Font(font(), 9);
                 var brush = new SolidBrush(BannerSchemes.List[target].topBG);
 
                 var p = new GraphicsPath();
@@ -415,23 +415,23 @@ namespace FriishProduce
         /// <param name="lang">Banner region/language: Japanese, Korean, Europe or America</param>
         /// <param name="target">PictureBox control</param>
         /// <returns></returns>
-        public unsafe Bitmap Icon(Bitmap img, Console console, Language lang, bool restart = false, PictureBox target = null)
+        public static unsafe Bitmap Icon(Bitmap img, Platform platform, int region, bool restart = false, PictureBox target = null)
         {
             // 0s - 5s = Title
             // 5s - 6s = Fadein
             // 6s - 8s = Logo
             // 8s - 9s = Fadeout
 
-            bool reset = iconData.type != ((int)console, (int)lang) || img != null | restart;
-            bool animation = Properties.Settings.Default.icon_animation;
+            bool reset = iconData.type != ((int)platform, region) || img != null | restart;
+            bool animation = false;
 
             float maxFrames = 1000 / iconData.durationTimer.Interval;
 
             if (reset)
             {
                 #region 1. Console/platform logo
-                iconData.type = ((int)console, (int)lang);
-                using (var U8 = BannerHelper.BannerApp(console, lang switch { Language.Japanese => libWiiSharp.Region.Japan, Language.Korean => libWiiSharp.Region.Korea, Language.Europe => libWiiSharp.Region.Europe, _ => libWiiSharp.Region.USA }))
+                iconData.type = ((int)platform, region);
+                using (var U8 = BannerHelper.BannerApp(platform, region switch { 1 => libWiiSharp.Region.Japan, 2 => libWiiSharp.Region.Korea, 3 => libWiiSharp.Region.Europe, _ => libWiiSharp.Region.USA }))
                 {
                     if (U8 != null)
                     {
@@ -462,7 +462,7 @@ namespace FriishProduce
                                                     {
                                                         for (int x = 0; x < data.Width; x++)
                                                         {
-                                                            var c = console == Console.NES ? Color.FromArgb(176, 26, 26) : Color.Black;
+                                                            var c = platform == Platform.NES ? Color.FromArgb(176, 26, 26) : Color.Black;
                                                             *((int*)line + x) = Color.FromArgb(logo.GetPixel(x, y).R, c.R, c.G, c.B).ToArgb();
                                                         }
 
@@ -631,9 +631,9 @@ namespace FriishProduce
             public PictureBox target;
         }
 
-        private icon iconData = new icon() { type = (-1, -1), opacities = new List<float>() { 1, 1, 1, 1, 1, 1, 0, 0, 0, 1 }, durationTimer = new Timer() { Interval = 25 } };
+        private static icon iconData = new icon() { type = (-1, -1), opacities = new List<float>() { 1, 1, 1, 1, 1, 1, 0, 0, 0, 1 }, durationTimer = new Timer() { Interval = 25 } };
 
-        private void iconDurationTick(object sender, EventArgs e) { if (iconData.target != null) iconData.target.Image = Icon(null, (Console)Math.Max(iconData.type.Item1, 0), (Language)Math.Max(iconData.type.Item2, 0), false); }
+        private static void iconDurationTick(object sender, EventArgs e) { if (iconData.target != null) iconData.target.Image = Icon(null, (Platform)Math.Max(iconData.type.Item1, 0), Math.Max(iconData.type.Item2, 0), false); }
         #endregion
     }
 }

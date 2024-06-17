@@ -7,31 +7,31 @@ namespace FriishProduce
 {
     public static class BIOS
     {
-        public static readonly (Console platform, List<string> BIOS)[] List = new (Console platform, List<string> BIOS)[]
+        public static readonly (Platform platform, List<string> BIOS)[] List = new (Platform platform, List<string> BIOS)[]
         {
             (
-                Console.GB, new List<string>()
+                Platform.GB, new List<string>()
                 {
                     "32fbbd84168d3482956eb3c5051637f5"
                 }
             ),
 
             (
-                Console.GBC, new List<string>()
+                Platform.GBC, new List<string>()
                 {
                     "dbfce9db9deaa2567f6a84fde55f9680"
                 }
             ),
 
             (
-                Console.GBA, new List<string>()
+                Platform.GBA, new List<string>()
                 {
                     "a860e8c0b6d573d191e4ec7db1b1e4f6"
                 }
             ),
 
             (
-                Console.PSX, new List<string>()
+                Platform.PSX, new List<string>()
                 {
                     "c53ca5908936d412331790f4426c6c33", // PSP
                     "81bbe60ba7a3d1cea1d48c14cbcc647b", // PS3
@@ -45,7 +45,7 @@ namespace FriishProduce
             ),
         };
 
-        public static bool Verify(string file, Console index)
+        public static bool Verify(string file, Platform index)
         {
             for (int i = 0; i < List.Length; i++)
             {
@@ -56,7 +56,7 @@ namespace FriishProduce
             return false;
         }
 
-        public static bool Verify(byte[] file, Console index)
+        public static bool Verify(byte[] file, Platform index)
         {
             for (int i = 0; i < List.Length; i++)
             {
@@ -67,7 +67,7 @@ namespace FriishProduce
             return false;
         }
 
-        public static bool Verify(string file, int index = -1) => File.Exists(file) ? Verify(File.ReadAllBytes(file), index) : false;
+        public static bool Verify(string file, int index = -1) => File.Exists(file) && Verify(File.ReadAllBytes(file), index);
 
         public static bool Verify(byte[] file, int index = -1)
         {
@@ -103,7 +103,7 @@ namespace FriishProduce
             return false;
         }
 
-        public static Console GetConsole(byte[] file)
+        public static Platform GetConsole(byte[] file)
         {
             if (Verify(file))
             {
@@ -125,7 +125,7 @@ namespace FriishProduce
                 }
             }
 
-            return Console.NES;
+            return Platform.NES;
         }
     }
 }

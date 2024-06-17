@@ -116,7 +116,6 @@ namespace FriishProduce
             this.flash_vff_cache_size_list = new System.Windows.Forms.ComboBox();
             this.LanguageList = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.icon_animation = new System.Windows.Forms.CheckBox();
             this.default_save_as_filename = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.default_save_as_parameters = new System.Windows.Forms.Label();
@@ -848,21 +847,12 @@ namespace FriishProduce
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.icon_animation);
             this.panel2.Controls.Add(this.default_save_as_filename);
             this.panel2.Controls.Add(this.autolink_save_data);
             this.panel2.Controls.Add(this.image_interpolation_mode);
             this.panel2.Controls.Add(this.retrieve_gamedata_online);
             resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
-            // 
-            // icon_animation
-            // 
-            resources.ApplyResources(this.icon_animation, "icon_animation");
-            this.icon_animation.Name = "icon_animation";
-            this.icon_animation.Tag = "icon_animation";
-            this.icon_animation.UseVisualStyleBackColor = true;
-            this.icon_animation.CheckedChanged += new System.EventHandler(this.MakeDirty);
             // 
             // default_save_as_filename
             // 
@@ -908,6 +898,7 @@ namespace FriishProduce
             this.Controls.Add(this.bottomPanel2);
             this.Controls.Add(this.leftSeparator);
             this.Controls.Add(this.TreeView);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.vc_neo);
             this.Controls.Add(this.vc_nes);
@@ -916,7 +907,6 @@ namespace FriishProduce
             this.Controls.Add(this.vc_n64);
             this.Controls.Add(this.vc_pce);
             this.Controls.Add(this.vc_sega);
-            this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MaximizeBox = false;
@@ -1070,6 +1060,5 @@ namespace FriishProduce
         private System.Windows.Forms.GroupBox language;
         private System.Windows.Forms.GroupBox image_interpolation_mode;
         private System.Windows.Forms.GroupBox bios_settings;
-        private System.Windows.Forms.CheckBox icon_animation;
     }
 }

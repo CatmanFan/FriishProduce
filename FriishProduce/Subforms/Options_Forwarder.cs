@@ -8,10 +8,10 @@ namespace FriishProduce
 {
     public partial class Options_Forwarder : ContentOptions
     {
-        private Console platform { get; set; }
+        private Platform platform { get; set; }
         private string BIOSPath { get; set; }
 
-        public Options_Forwarder(Console platform)
+        public Options_Forwarder(Platform platform)
         {
             InitializeComponent();
             this.platform = platform;

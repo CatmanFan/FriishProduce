@@ -12,7 +12,7 @@ namespace FriishProduce
 {
     public class ImageHelper
     {
-        private Console platform { get; set; }
+        private Platform platform { get; set; }
 
         public Bitmap Source { get; protected set; }
         private string SourcePath { get; set; }
@@ -29,7 +29,7 @@ namespace FriishProduce
                 // --------------------------------------------------
                 // SAVEICON : DEFINE POSITION AND SIZE VARIABLES
                 // --------------------------------------------------
-                return platform == Console.SMS || platform == Console.SMD ? (8, 8, 69, 48) : (10, 10, 58, 44);
+                return platform == Platform.SMS || platform == Platform.SMD ? (8, 8, 69, 48) : (10, 10, 58, 44);
             }
         }
         private (int X, int Y, int width, int height) SaveIconS
@@ -39,7 +39,7 @@ namespace FriishProduce
                 // --------------------------------------------------
                 // SAVEICON : DEFINE POSITION AND SIZE VARIABLES
                 // --------------------------------------------------
-                (int X, int Y, int width, int height) size = platform == Console.SMS || platform == Console.SMD ? (2, new Random().Next(8, 9), 44, 31) : platform == Console.PCE ? (6, 9, 36, 30) : (4, 9, 40, 30);
+                (int X, int Y, int width, int height) size = platform == Platform.SMS || platform == Platform.SMD ? (2, new Random().Next(8, 9), 44, 31) : platform == Platform.PCE ? (6, 9, 36, 30) : (4, 9, 40, 30);
 
                 // --------------------------------------------------
                 // SAVEICON : Fit by width/height variables
@@ -63,13 +63,13 @@ namespace FriishProduce
             }
         }
 
-        public ImageHelper(Console console, string path)
+        public ImageHelper(Platform console, string path)
         {
             SourcePath = null;
             Create(console, path);
         }
 
-        public void Create(Console console, string path)
+        public void Create(Platform console, string path)
         {
             platform = console;
             if (SourcePath == null) Source = null;
@@ -105,7 +105,7 @@ namespace FriishProduce
                         System.Net.Security.SslPolicyErrors sslPolicyErrors)
                     { return true; };
 
-                    using (WebClient c = new WebClient())
+                    using (WebClient c = new())
                     using (Stream s = c.OpenRead(path))
                     {
                         Source = new Bitmap(s);
@@ -136,18 +136,18 @@ namespace FriishProduce
         /// </summary>
         public void Generate(Bitmap src = null)
         {
-            if (src == Source) return;
+            if (src == Source && VCPic != null && IconVCPic != null && SaveIconPic != null) return;
             if (src == null) src = Source;
 
-            bool ShrinkToFit = platform == Console.NES
-                            || platform == Console.SNES
-                            || platform == Console.N64
-                            || platform == Console.Flash
-                            || platform == Console.GB
-                            || platform == Console.GBC
-                            || platform == Console.GBA
-                            || platform == Console.GCN
-                            || platform == Console.RPGM;
+            bool ShrinkToFit = platform == Platform.NES
+                            || platform == Platform.SNES
+                            || platform == Platform.N64
+                            || platform == Platform.Flash
+                            || platform == Platform.GB
+                            || platform == Platform.GBC
+                            || platform == Platform.GBA
+                            || platform == Platform.GCN
+                            || platform == Platform.RPGM;
 
             // --------------------------------------------------
 
@@ -256,18 +256,21 @@ namespace FriishProduce
 
         public Bitmap SaveIcon()
         {
-            Bitmap bmp = new Bitmap(SaveIconPlaceholder.Width, SaveIconPlaceholder.Height);
+            Bitmap bmp = new(SaveIconPlaceholder.Width, SaveIconPlaceholder.Height);
 
             using (Graphics g = Graphics.FromImage(bmp))
             {
-                g.DrawImage(platform == Console.SMS || platform == Console.SMD ? SaveIconPlaceholder_SEGA : SaveIconPlaceholder, 0, 0, bmp.Width, bmp.Height);
+                g.DrawImage(platform == Platform.SMS || platform == Platform.SMD ? SaveIconPlaceholder_SEGA : SaveIconPlaceholder, 0, 0, bmp.Width, bmp.Height);
 
-                g.InterpolationMode = InterpolationMode.Bilinear;
-                g.PixelOffsetMode = PixelOffsetMode.Half;
-                g.SmoothingMode = SmoothingMode.HighSpeed;
+                if (SaveIconPic != null)
+                {
+                    g.InterpolationMode = InterpolationMode.Bilinear;
+                    g.PixelOffsetMode = PixelOffsetMode.Half;
+                    g.SmoothingMode = SmoothingMode.HighSpeed;
 
-                g.DrawImage(SaveIconPic, SaveIconS.X, SaveIconS.Y, SaveIconS.width, SaveIconS.height);
-                g.Dispose();
+                    g.DrawImage(SaveIconPic, SaveIconS.X, SaveIconS.Y, SaveIconS.width, SaveIconS.height);
+                    g.Dispose();
+                }
             }
 
             return bmp;
@@ -509,7 +512,7 @@ namespace FriishProduce
                     tpl.AddTexture(sIcon2, formatsT[3], formatsP[3]);
                 }
 
-                else if (platform == Console.NEO || platform == Console.MSX)
+                else if (platform == Platform.NEO || platform == Platform.MSX)
                 {
                     // 2ND/3RD FRAMES
                     // ****************
