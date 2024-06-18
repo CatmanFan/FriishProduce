@@ -85,7 +85,7 @@ namespace FriishProduce
                             && !string.IsNullOrWhiteSpace(channel_title.Text)
                             && !string.IsNullOrEmpty(_bannerTitle)
                             && (img != null)
-                            && rom?.Path != null;
+                            && rom?.FilePath != null;
 
                 return save_data_title.Visible ? yes && !string.IsNullOrEmpty(_saveDataTitle[0]) : yes;
             }
@@ -122,6 +122,7 @@ namespace FriishProduce
             }
         }
 
+        private Project project;
         private WAD outWad;
         private libWiiSharp.Region outWadRegion
         {
@@ -134,7 +135,6 @@ namespace FriishProduce
         }
 
         protected ROM rom { get; set; }
-        protected GameData gameData { get; set; }
         protected string patch { get; set; }
         protected string manual { get; set; }
         protected ImageHelper img { get; set; }
@@ -203,14 +203,13 @@ namespace FriishProduce
             {
                 Platform = platform,
 
-                ROM = rom?.Path,
+                ROM = rom?.FilePath,
                 Patch = patch,
                 Manual = (manual_type_list.SelectedIndex, manual),
                 Img = img?.Source ?? null,
                 InjectionMethod = injection_methods.SelectedIndex,
                 ForwarderOptions = (FStorage_USB.Checked, toggleSwitch1.Checked),
                 ContentOptions = contentOptions ?? null,
-                GameData = gameData,
                 WADRegion = TargetRegion.SelectedIndex,
                 LinkSaveDataTitle = LinkSaveData.Checked,
                 ImageOptions = (imageintpl.SelectedIndex, image_fit.Checked),
@@ -417,70 +416,14 @@ namespace FriishProduce
             _isShown = true;
 
             if (project != null && ROMpath == null)
-            {
-                // Error messages for not found files
-                // ********
-                foreach (var item in new string[] { project.ROM, project.Patch, project.BaseFile })
-                    if (!File.Exists(item) && !string.IsNullOrWhiteSpace(item)) MessageBox.Show(string.Format(Program.Lang.Msg(10, true), Path.GetFileName(item)));
-
-                if (project.GameData != null) gameData = project.GameData;
-
-                rom.Path = File.Exists(project.ROM) ? project.ROM : null;
-                LoadROM(rom.Path, false);
-
-                img = new ImageHelper(project.Platform, null);
-                img.LoadToSource(project.Img);
-                LoadImage(project.Img);
-
-                if (File.Exists(project.BaseFile))
-                {
-                    WADPath = project.BaseFile;
-                    ImportWAD.Checked = true;
-                    DownloadWAD.Checked = false;
-                    LoadWAD(project.BaseFile);
-                }
-                else
-                {
-                    Base.SelectedIndex = project.Base.Item1;
-                    for (int i = 0; i < baseRegionList.Items.Count; i++)
-                        if (baseRegionList.Items[i].GetType() == typeof(ToolStripMenuItem)) (baseRegionList.Items[i] as ToolStripMenuItem).Checked = false;
-                    UpdateBaseForm(project.Base.Item2);
-                    (baseRegionList.Items[project.Base.Item2] as ToolStripMenuItem).Checked = true;
-                }
-
-                SetROMDataText();
-
-                channel_title.Text = project.ChannelTitles[1];
-                banner_title.Text = project.BannerTitle;
-                released.Value = project.BannerYear;
-                players.Value = project.BannerPlayers;
-                save_data_title.Lines = project.SaveDataTitle;
-                tid.Text = project.TitleID;
-
-                TargetRegion.SelectedIndex = project.WADRegion;
-                injection_methods.SelectedIndex = project.InjectionMethod;
-                imageintpl.SelectedIndex = project.ImageOptions.Item1;
-                image_fit.Checked = project.ImageOptions.Item2;
-
-                contentOptions = project.ContentOptions;
-
-                IsEmpty = false;
-
-                patch = File.Exists(project.Patch) ? project.Patch : null;
-                Patch.Checked = !string.IsNullOrWhiteSpace(project.Patch);
-                LoadManual(project.Manual.Type, project.Manual.File);
-            }
+                this.project = project;
 
             if (ROMpath != null && project == null)
             {
-                rom.Path = ROMpath;
-                LoadROM(rom.Path, Properties.Settings.Default.auto_retrieve_game_data);
+                rom.FilePath = ROMpath;
+                LoadROM(rom.FilePath, Properties.Settings.Default.auto_retrieve_game_data);
                 randomTID();
             }
-
-            LinkSaveData.Checked = project == null ? Properties.Settings.Default.link_save_data : project.LinkSaveDataTitle;
-            FStorage_USB.Checked = project == null ? Options.FORWARDER.Default.root_storage_device.ToLower().Contains("usb") : project.ForwarderOptions.Item1;
-            toggleSwitch1.Checked = project == null ? Options.FORWARDER.Default.nand_loader.ToLower().Contains("vwii") : project.ForwarderOptions.Item2;
         }
 
         private void Form_Shown(object sender, EventArgs e)
@@ -581,7 +524,63 @@ namespace FriishProduce
             })
                 if (platform == customManualplatform) manual_type_list.Enabled = true;
 
+            if (project != null)
+            {
+                // Error messages for not found files
+                // ********
+                foreach (var item in new string[] { project.ROM, project.Patch, project.BaseFile })
+                    if (!File.Exists(item) && !string.IsNullOrWhiteSpace(item)) MessageBox.Show(string.Format(Program.Lang.Msg(10, true), Path.GetFileName(item)));
+
+                img = new ImageHelper(project.Platform, null);
+                img.LoadToSource(project.Img);
+                LoadROM(project.ROM, false);
+                LoadImage(project.Img);
+
+                if (File.Exists(project.BaseFile))
+                {
+                    WADPath = project.BaseFile;
+                    ImportWAD.Checked = true;
+                    DownloadWAD.Checked = false;
+                    LoadWAD(project.BaseFile);
+                }
+                else
+                {
+                    Base.SelectedIndex = project.Base.Item1;
+                    for (int i = 0; i < baseRegionList.Items.Count; i++)
+                        if (baseRegionList.Items[i].GetType() == typeof(ToolStripMenuItem)) (baseRegionList.Items[i] as ToolStripMenuItem).Checked = false;
+                    UpdateBaseForm(project.Base.Item2);
+                    (baseRegionList.Items[project.Base.Item2] as ToolStripMenuItem).Checked = true;
+                }
+
+                SetROMDataText();
+
+                channel_title.Text = project.ChannelTitles[1];
+                banner_title.Text = project.BannerTitle;
+                released.Value = project.BannerYear;
+                players.Value = project.BannerPlayers;
+                save_data_title.Lines = project.SaveDataTitle;
+                tid.Text = project.TitleID;
+
+                TargetRegion.SelectedIndex = project.WADRegion;
+                injection_methods.SelectedIndex = project.InjectionMethod;
+                imageintpl.SelectedIndex = project.ImageOptions.Item1;
+                image_fit.Checked = project.ImageOptions.Item2;
+
+                contentOptions = project.ContentOptions;
+
+                IsEmpty = false;
+
+                patch = File.Exists(project.Patch) ? project.Patch : null;
+                Patch.Checked = !string.IsNullOrWhiteSpace(project.Patch);
+                LoadManual(project.Manual.Type, project.Manual.File);
+
+                project = null;
+            }
+
+            LinkSaveData.Checked = project == null ? Properties.Settings.Default.link_save_data : project.LinkSaveDataTitle;
+            FStorage_USB.Checked = project == null ? Options.FORWARDER.Default.root_storage_device.ToLower().Contains("usb") : project.ForwarderOptions.Item1;
             FStorage_SD.Checked = !FStorage_USB.Checked;
+            toggleSwitch1.Checked = project == null ? Options.FORWARDER.Default.nand_loader.ToLower().Contains("vwii") : project.ForwarderOptions.Item2;
         }
 
         // -----------------------------------
@@ -606,7 +605,7 @@ namespace FriishProduce
             {
                 platform != Platform.Flash
                 && platform != Platform.RPGM
-                && (rom?.Bytes != null || !string.IsNullOrWhiteSpace(rom?.Path)), // LibRetro / game data
+                && (rom?.Bytes != null || !string.IsNullOrWhiteSpace(rom?.FilePath)), // LibRetro / game data
 
                 platform != Platform.Flash
                 && platform != Platform.RPGM
@@ -616,12 +615,12 @@ namespace FriishProduce
 
         protected virtual void SetROMDataText()
         {
-            filename.Text = string.Format(Program.Lang.String("filename", Name), !string.IsNullOrWhiteSpace(rom?.Path) ? Path.GetFileName(rom.Path) : Program.Lang.String("none"));
+            filename.Text = string.Format(Program.Lang.String("filename", Name), !string.IsNullOrWhiteSpace(rom?.FilePath) ? Path.GetFileName(rom.FilePath) : Program.Lang.String("none"));
 
-            if (platform == Platform.RPGM && (rom as RPGM)?.GetTitle(rom.Path) != null)
-                software_name.Text = string.Format(Program.Lang.String("software_name", Name), (rom as RPGM).GetTitle(rom.Path)?.Replace(Environment.NewLine, " - ") ?? Program.Lang.String("none"));
+            if (platform == Platform.RPGM && (rom as RPGM)?.GetTitle(rom.FilePath) != null)
+                software_name.Text = string.Format(Program.Lang.String("software_name", Name), (rom as RPGM).GetTitle(rom.FilePath)?.Replace(Environment.NewLine, " - ") ?? Program.Lang.String("none"));
             else
-                software_name.Text = string.Format(Program.Lang.String("software_name", Name), gameData?.CleanTitle?.Replace(Environment.NewLine, " - ") ?? Program.Lang.String("none"));
+                software_name.Text = string.Format(Program.Lang.String("software_name", Name), rom.CleanTitle?.Replace(Environment.NewLine, " - ") ?? Program.Lang.String("none"));
 
             label11.Text = !string.IsNullOrWhiteSpace(patch) ? Path.GetFileName(patch) : Program.Lang.String("none");
             label11.Enabled = !string.IsNullOrWhiteSpace(patch);
@@ -635,7 +634,7 @@ namespace FriishProduce
 
         public string GetName()
         {
-            string FILENAME = Patch.Checked ? Path.GetFileNameWithoutExtension(patch) : Path.GetFileNameWithoutExtension(rom?.Path);
+            string FILENAME = Patch.Checked ? Path.GetFileNameWithoutExtension(patch) : Path.GetFileNameWithoutExtension(rom?.FilePath);
             string CHANNELNAME = channel_title.Text;
             string FULLNAME = System.Text.RegularExpressions.Regex.Replace(_bannerTitle.Replace(": ", Environment.NewLine).Replace(" - ", Environment.NewLine), @"\((.*?)\)", "").Replace("\r\n", "\n").Replace("\n", " - ");
             string TITLEID = tid.Text.ToUpper();
@@ -684,6 +683,7 @@ namespace FriishProduce
 
         private void Value_Changed(object sender, EventArgs e)
         {
+            resetBannerPreview();
             refreshData();
         }
 
@@ -1007,12 +1007,14 @@ namespace FriishProduce
 
         public void LoadROM(string ROMpath, bool LoadGameData = true)
         {
+            if (ROMpath == null || rom == null || !File.Exists(ROMpath)) return;
+
             switch (platform)
             {
                 // ROM file formats
                 // ****************
                 default:
-                    if (rom == null || !rom.CheckValidity(ROMpath))
+                    if (!rom.CheckValidity(ROMpath))
                     {
                         MessageBox.Show(Program.Lang.Msg(2), 0, MessageBox.Icons.Warning);
                         return;
@@ -1022,7 +1024,7 @@ namespace FriishProduce
                 // ZIP format
                 // ****************
                 case Platform.NEO:
-                    if (!rom.CheckZIPValidity(ROMpath, new string[] { "c1", "c2", "m1", "p1", "s1", "v1" }, true, true))
+                    if (!rom.CheckZIPValidity(new string[] { "c1", "c2", "m1", "p1", "s1", "v1" }, true, true, ROMpath))
                     {
                         MessageBox.Show(Program.Lang.Msg(2), 0, MessageBox.Icons.Warning);
                         return;
@@ -1050,7 +1052,7 @@ namespace FriishProduce
                     break;
             }
 
-            if (rom != null) rom.Path = ROMpath;
+            rom.FilePath = ROMpath;
 
             IsEmpty = false;
             IsModified = true;
@@ -1059,46 +1061,45 @@ namespace FriishProduce
             patch = null;
             Patch.Checked = false;
 
-            gameData = new GameData();
             if (rom != null && LoadGameData && ToolbarButtons[0]) this.LoadGameData();
         }
 
         public async void LoadGameData()
         {
-            if (rom == null || rom.Path == null) return;
+            if (rom == null || rom.FilePath == null) return;
 
             try
             {
-                gameData = new GameData();
-                var Retrieved = await Task.FromResult(gameData.Get(platform, rom.Path));
-                if (Retrieved)
+                var gameData = await Task.FromResult(rom.GetData(platform, rom.FilePath));
+                bool retrieved = gameData != (null, null, null, null, null);
+
+                if (retrieved)
                 {
                     // Set banner title
-                    banner_title.Text = gameData.CleanTitle ?? banner_title.Text;
+                    banner_title.Text = rom.CleanTitle ?? banner_title.Text;
 
                     // Set channel title text
-                    if (gameData.CleanTitle != null)
+                    if (rom.CleanTitle != null)
                     {
-                        var text = gameData.CleanTitle.Replace("\r", "").Split('\n');
+                        var text = rom.CleanTitle.Replace("\r", "").Split('\n');
                         if (text[0].Length <= channel_title.MaxLength) { channel_title.Text = text[0]; }
                     }
 
                     // Set image
-                    if (gameData.ImgURL != null) { LoadImage(gameData.ImgURL); }
+                    if (gameData.Image != null) { LoadImage(gameData.Image); }
 
                     // Set year and players
                     released.Value = !string.IsNullOrEmpty(gameData.Year) ? int.Parse(gameData.Year) : released.Value;
                     players.Value = !string.IsNullOrEmpty(gameData.Players) ? int.Parse(gameData.Players) : players.Value;
                 }
 
-                if (Retrieved && LinkSaveData.Checked) linkSaveDataTitle();
-                else if (gameData?.CleanTitle != null && channel_title.TextLength <= save_data_title.MaxLength) save_data_title.Text = channel_title.Text;
+                if (retrieved && LinkSaveData.Checked) linkSaveDataTitle();
+                else if (rom.CleanTitle != null && channel_title.TextLength <= save_data_title.MaxLength) save_data_title.Text = channel_title.Text;
 
                 // Show message if partially failed to retrieve data
-                if (Retrieved && (gameData.Title == null || gameData.Players == null || gameData.Year == null || gameData.ImgURL == null))
+                if (retrieved && (gameData.Title == null || gameData.Players == null || gameData.Year == null || gameData.Image == null))
                     MessageBox.Show(Program.Lang.Msg(4));
-                else if (!Retrieved) System.Media.SystemSounds.Beep.Play();
-
+                else if (!retrieved) System.Media.SystemSounds.Beep.Play();
             }
             catch (Exception ex)
             {
@@ -1227,7 +1228,7 @@ namespace FriishProduce
         {
             Forwarder f = new Forwarder()
             {
-                ROM = rom.Path,
+                ROM = rom.FilePath,
                 ID = _tID,
                 Emulator = injection_methods.SelectedItem.ToString(),
                 Storage = FStorage_USB.Checked ? Forwarder.Storages.USB : Forwarder.Storages.SD
@@ -1248,7 +1249,7 @@ namespace FriishProduce
         public void FlashInject()
         {
             Injectors.Flash.Settings = contentOptions;
-            outWad = Injectors.Flash.Inject(outWad, rom.Path, _saveDataTitle, img);
+            outWad = Injectors.Flash.Inject(outWad, rom.FilePath, _saveDataTitle, img);
         }
 
         public void WiiVCInject()

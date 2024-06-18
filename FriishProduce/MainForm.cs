@@ -399,7 +399,7 @@ namespace FriishProduce
                     addTab(project.Platform, project);
                 }
 
-                catch
+                catch (Exception ex)
                 {
                     MessageBox.Show("Not a valid project file!", MessageBox.Buttons.Ok, MessageBox.Icons.Error);
                 }

@@ -36,7 +36,7 @@ namespace FriishProduce.Injectors
                 MainContentIndex = WAD.Contents[6].Length > WAD.Contents[5].Length ? 6 : 5;
             else MainContentIndex = 5;
 
-            ZIP = ZipFile.Read(new MemoryStream(File.ReadAllBytes(ROM.Path)));
+            ZIP = ZipFile.Read(new MemoryStream(File.ReadAllBytes(ROM.FilePath)));
             base.Load();
         }
 

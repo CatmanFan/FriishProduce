@@ -142,7 +142,7 @@
     <value>NoControl</value>
   </data>
   <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 230</value>
+    <value>7, 227</value>
   </data>
   <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
     <value>130, 13</value>
@@ -169,7 +169,7 @@
     <value>null</value>
   </data>
   <data name="imageintpl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 248</value>
+    <value>9, 245</value>
   </data>
   <data name="imageintpl.Size" type="System.Drawing.Size, System.Drawing">
     <value>491, 21</value>
@@ -196,7 +196,7 @@
     <value>NoControl</value>
   </data>
   <data name="image_fit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 291</value>
+    <value>9, 290</value>
   </data>
   <data name="image_fit.Size" type="System.Drawing.Size, System.Drawing">
     <value>67, 17</value>
@@ -226,7 +226,7 @@
     <value>NoControl</value>
   </data>
   <data name="image_stretch.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 273</value>
+    <value>9, 271</value>
   </data>
   <data name="image_stretch.Size" type="System.Drawing.Size, System.Drawing">
     <value>91, 17</value>
@@ -1965,6 +1965,21 @@
   <metadata name="browseManual.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>240, 17</value>
   </metadata>
+  <data name="bannerPreview.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="bannerPreview.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 19</value>
+  </data>
+  <data name="bannerPreview.Size" type="System.Drawing.Size, System.Drawing">
+    <value>490, 200</value>
+  </data>
+  <data name="bannerPreview.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>StretchImage</value>
+  </data>
+  <data name="bannerPreview.TabIndex" type="System.Int32, mscorlib">
+    <value>41</value>
+  </data>
   <data name="&gt;&gt;bannerPreview.Name" xml:space="preserve">
     <value>bannerPreview</value>
   </data>
@@ -2004,33 +2019,6 @@
   <data name="&gt;&gt;groupBox5.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="bannerPreview.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="bannerPreview.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 19</value>
-  </data>
-  <data name="bannerPreview.Size" type="System.Drawing.Size, System.Drawing">
-    <value>490, 205</value>
-  </data>
-  <data name="bannerPreview.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
-    <value>StretchImage</value>
-  </data>
-  <data name="bannerPreview.TabIndex" type="System.Int32, mscorlib">
-    <value>41</value>
-  </data>
-  <data name="&gt;&gt;bannerPreview.Name" xml:space="preserve">
-    <value>bannerPreview</value>
-  </data>
-  <data name="&gt;&gt;bannerPreview.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;bannerPreview.Parent" xml:space="preserve">
-    <value>groupBox5</value>
-  </data>
-  <data name="&gt;&gt;bannerPreview.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="editContentOptions.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>System</value>
   </data>
@@ -2060,24 +2048,6 @@
   </data>
   <data name="&gt;&gt;editContentOptions.ZOrder" xml:space="preserve">
     <value>3</value>
-  </data>
-  <data name="manual_type.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="manual_type.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 48</value>
-  </data>
-  <data name="manual_type.Size" type="System.Drawing.Size, System.Drawing">
-    <value>131, 21</value>
-  </data>
-  <data name="manual_type.TabIndex" type="System.Int32, mscorlib">
-    <value>24</value>
-  </data>
-  <data name="manual_type.Text" xml:space="preserve">
-    <value>manual_type</value>
-  </data>
-  <data name="manual_type.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>TopRight</value>
   </data>
   <data name="&gt;&gt;manual_type.Name" xml:space="preserve">
     <value>manual_type</value>
@@ -2117,6 +2087,36 @@
   </data>
   <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
     <value>7</value>
+  </data>
+  <data name="manual_type.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="manual_type.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 48</value>
+  </data>
+  <data name="manual_type.Size" type="System.Drawing.Size, System.Drawing">
+    <value>131, 21</value>
+  </data>
+  <data name="manual_type.TabIndex" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
+  <data name="manual_type.Text" xml:space="preserve">
+    <value>manual_type</value>
+  </data>
+  <data name="manual_type.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopRight</value>
+  </data>
+  <data name="&gt;&gt;manual_type.Name" xml:space="preserve">
+    <value>manual_type</value>
+  </data>
+  <data name="&gt;&gt;manual_type.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;manual_type.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;manual_type.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

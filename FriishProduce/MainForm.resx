@@ -162,13 +162,13 @@
     <value>False</value>
   </data>
   <data name="menu_new_project.Size" type="System.Drawing.Size, System.Drawing">
-    <value>155, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="menu_new_project.Text" xml:space="preserve">
     <value>new_project</value>
   </data>
   <data name="menu_open_project.Size" type="System.Drawing.Size, System.Drawing">
-    <value>155, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="menu_open_project.Text" xml:space="preserve">
     <value>open_project</value>
@@ -177,34 +177,22 @@
     <value>False</value>
   </data>
   <data name="menu_save_project_as.Size" type="System.Drawing.Size, System.Drawing">
-    <value>155, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="menu_save_project_as.Text" xml:space="preserve">
     <value>save_project_as</value>
   </data>
-  <data name="menu_save_as_wad.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="menu_save_as_wad.Size" type="System.Drawing.Size, System.Drawing">
-    <value>155, 22</value>
-  </data>
-  <data name="menu_save_as_wad.Text" xml:space="preserve">
-    <value>save_as_wad</value>
-  </data>
-  <data name="toolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 6</value>
-  </data>
   <data name="menu_settings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>155, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="menu_settings.Text" xml:space="preserve">
     <value>settings</value>
   </data>
   <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 6</value>
+    <value>177, 6</value>
   </data>
   <data name="menu_exit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>155, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="menu_exit.Text" xml:space="preserve">
     <value>exit</value>
@@ -246,6 +234,18 @@
     <value>retrieve_gamedata_online</value>
   </data>
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>206, 6</value>
+  </data>
+  <data name="menu_save_as_wad.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="menu_save_as_wad.Size" type="System.Drawing.Size, System.Drawing">
+    <value>209, 22</value>
+  </data>
+  <data name="menu_save_as_wad.Text" xml:space="preserve">
+    <value>save_as_wad</value>
+  </data>
+  <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
     <value>206, 6</value>
   </data>
   <data name="menu_close_project.Enabled" type="System.Boolean, mscorlib">
@@ -299,9 +299,6 @@
   </data>
   <data name="&gt;&gt;MenuStrip.ZOrder" xml:space="preserve">
     <value>2</value>
-  </data>
-  <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 6</value>
   </data>
   <data name="Logo.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -492,6 +489,9 @@
   <metadata name="BrowseProject.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>229, 17</value>
   </metadata>
+  <data name="toolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>206, 6</value>
+  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -2903,9 +2903,6 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAhAAAAIQBAAD8HwAA//8AAP//AAA=
 </value>
   </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>16, 110</value>
   </data>
@@ -2956,18 +2953,6 @@
   </data>
   <data name="&gt;&gt;menu_save_project_as.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;menu_save_as_wad.Name" xml:space="preserve">
-    <value>menu_save_as_wad</value>
-  </data>
-  <data name="&gt;&gt;menu_save_as_wad.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripMenuItem1.Name" xml:space="preserve">
-    <value>toolStripMenuItem1</value>
-  </data>
-  <data name="&gt;&gt;toolStripMenuItem1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;menu_settings.Name" xml:space="preserve">
     <value>menu_settings</value>
@@ -3023,6 +3008,18 @@
   <data name="&gt;&gt;toolStripSeparator2.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;menu_save_as_wad.Name" xml:space="preserve">
+    <value>menu_save_as_wad</value>
+  </data>
+  <data name="&gt;&gt;menu_save_as_wad.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator3.Name" xml:space="preserve">
+    <value>toolStripSeparator3</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;menu_close_project.Name" xml:space="preserve">
     <value>menu_close_project</value>
   </data>
@@ -3040,12 +3037,6 @@
   </data>
   <data name="&gt;&gt;menu_about_app.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator3.Name" xml:space="preserve">
-    <value>toolStripSeparator3</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolbarNewProject.Name" xml:space="preserve">
     <value>toolbarNewProject</value>
@@ -3130,6 +3121,12 @@
   </data>
   <data name="&gt;&gt;BrowseProject.Type" xml:space="preserve">
     <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator5.Name" xml:space="preserve">
+    <value>toolStripSeparator5</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>

@@ -12,7 +12,6 @@ namespace FriishProduce
         public string WADFile { get; set; }
         public string Patch { get; set; }
         public (int Type, string File) Manual { get; set; }
-        public GameData GameData { get; set; }
         public System.Drawing.Bitmap Img { get; set; }
 
 

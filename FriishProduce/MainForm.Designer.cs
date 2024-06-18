@@ -40,8 +40,6 @@ namespace FriishProduce
             this.menu_new_project = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_open_project = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_save_project_as = new System.Windows.Forms.ToolStripMenuItem();
-            this.menu_save_as_wad = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.menu_settings = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.menu_exit = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,10 +49,11 @@ namespace FriishProduce
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.menu_retrieve_gamedata_online = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.menu_save_as_wad = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.menu_close_project = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_help = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_about_app = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.MainPanel = new System.Windows.Forms.Panel();
             this.Logo = new System.Windows.Forms.PictureBox();
             this.ToolStrip = new System.Windows.Forms.ToolStrip();
@@ -72,6 +71,7 @@ namespace FriishProduce
             this.toolbarSaveAsWAD = new System.Windows.Forms.ToolStripButton();
             this.SaveProject = new System.Windows.Forms.SaveFileDialog();
             this.BrowseProject = new System.Windows.Forms.OpenFileDialog();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.MenuStrip.SuspendLayout();
             this.MainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
@@ -144,10 +144,9 @@ namespace FriishProduce
             this.menu_new_project,
             this.menu_open_project,
             this.menu_save_project_as,
-            this.menu_save_as_wad,
-            this.toolStripMenuItem1,
-            this.menu_settings,
             this.toolStripSeparator4,
+            this.menu_settings,
+            this.toolStripSeparator5,
             this.menu_exit});
             this.menu_file.Name = "menu_file";
             resources.ApplyResources(this.menu_file, "menu_file");
@@ -175,19 +174,6 @@ namespace FriishProduce
             this.menu_save_project_as.Name = "menu_save_project_as";
             this.menu_save_project_as.Tag = "save_project_as";
             this.menu_save_project_as.Click += new System.EventHandler(this.SaveAs_Click);
-            // 
-            // menu_save_as_wad
-            // 
-            resources.ApplyResources(this.menu_save_as_wad, "menu_save_as_wad");
-            this.menu_save_as_wad.Image = global::FriishProduce.Properties.Resources.wooden_box_pencil;
-            this.menu_save_as_wad.Name = "menu_save_as_wad";
-            this.menu_save_as_wad.Tag = "save_as_wad";
-            this.menu_save_as_wad.Click += new System.EventHandler(this.ExportWAD_Click);
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            resources.ApplyResources(this.toolStripMenuItem1, "toolStripMenuItem1");
             // 
             // menu_settings
             // 
@@ -218,6 +204,8 @@ namespace FriishProduce
             this.toolStripSeparator1,
             this.menu_retrieve_gamedata_online,
             this.toolStripSeparator2,
+            this.menu_save_as_wad,
+            this.toolStripSeparator3,
             this.menu_close_project});
             this.menu_project.Name = "menu_project";
             resources.ApplyResources(this.menu_project, "menu_project");
@@ -257,6 +245,19 @@ namespace FriishProduce
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
             // 
+            // menu_save_as_wad
+            // 
+            resources.ApplyResources(this.menu_save_as_wad, "menu_save_as_wad");
+            this.menu_save_as_wad.Image = global::FriishProduce.Properties.Resources.wooden_box_pencil;
+            this.menu_save_as_wad.Name = "menu_save_as_wad";
+            this.menu_save_as_wad.Tag = "save_as_wad";
+            this.menu_save_as_wad.Click += new System.EventHandler(this.ExportWAD_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            resources.ApplyResources(this.toolStripSeparator3, "toolStripSeparator3");
+            // 
             // menu_close_project
             // 
             resources.ApplyResources(this.menu_close_project, "menu_close_project");
@@ -279,11 +280,6 @@ namespace FriishProduce
             resources.ApplyResources(this.menu_about_app, "menu_about_app");
             this.menu_about_app.Tag = "about_app";
             this.menu_about_app.Click += new System.EventHandler(this.About_Click);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            resources.ApplyResources(this.toolStripSeparator3, "toolStripSeparator3");
             // 
             // MainPanel
             // 
@@ -423,6 +419,11 @@ namespace FriishProduce
             // 
             this.BrowseProject.DefaultExt = "fppj";
             // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            resources.ApplyResources(this.toolStripSeparator5, "toolStripSeparator5");
+            // 
             // MainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -476,7 +477,6 @@ namespace FriishProduce
         private System.Windows.Forms.ToolStripButton toolbarCloseProject;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
         private System.Windows.Forms.ToolStripButton ToolStrip_Settings;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripDropDownButton toolbarNewProject;
         private System.Windows.Forms.OpenFileDialog BrowseProject;
         private System.Windows.Forms.ToolStripMenuItem menu_open_project;
@@ -491,6 +491,7 @@ namespace FriishProduce
         internal System.Windows.Forms.ToolStripMenuItem menu_save_as_wad;
         internal System.Windows.Forms.ToolStripMenuItem menu_open_image;
         internal System.Windows.Forms.ToolStripButton toolbarOpenImage;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
     }
 }
 
