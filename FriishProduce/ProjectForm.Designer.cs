@@ -38,7 +38,7 @@ namespace FriishProduce
             this.image_stretch = new System.Windows.Forms.RadioButton();
             this.browseInputWad = new System.Windows.Forms.OpenFileDialog();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.LinkSaveData = new System.Windows.Forms.CheckBox();
+            this.autolink_save_data = new System.Windows.Forms.CheckBox();
             this.SaveIcon_Panel = new System.Windows.Forms.Panel();
             this.save_data_title = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
@@ -50,21 +50,21 @@ namespace FriishProduce
             this.manual_type_list = new System.Windows.Forms.ComboBox();
             this.injection_methods = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.Patch = new System.Windows.Forms.CheckBox();
+            this.import_patch = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.tid = new System.Windows.Forms.TextBox();
-            this.title_id_2 = new System.Windows.Forms.Label();
-            this.Random = new System.Windows.Forms.PictureBox();
+            this.title_id_upper = new System.Windows.Forms.TextBox();
+            this.title_id = new System.Windows.Forms.Label();
+            this.title_id_random = new System.Windows.Forms.PictureBox();
             this.channel_title = new System.Windows.Forms.TextBox();
             this.channel_name = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.TargetRegion = new System.Windows.Forms.ComboBox();
+            this.title_id_lower = new System.Windows.Forms.Label();
+            this.region_list = new System.Windows.Forms.ComboBox();
             this.region = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.software_name = new System.Windows.Forms.Label();
             this.filename = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.ShowBannerPreview = new System.Windows.Forms.Button();
+            this.banner_preview = new System.Windows.Forms.Button();
             this.players = new System.Windows.Forms.NumericUpDown();
             this.released = new System.Windows.Forms.NumericUpDown();
             this.label10 = new System.Windows.Forms.Label();
@@ -75,7 +75,7 @@ namespace FriishProduce
             this.base_name = new System.Windows.Forms.Label();
             this.ImportWAD = new System.Windows.Forms.RadioButton();
             this.DownloadWAD = new System.Windows.Forms.RadioButton();
-            this.title_id = new System.Windows.Forms.Label();
+            this.title_id_2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.baseID = new System.Windows.Forms.Label();
             this.BaseRegion = new System.Windows.Forms.PictureBox();
@@ -84,17 +84,17 @@ namespace FriishProduce
             this.browsePatch = new System.Windows.Forms.OpenFileDialog();
             this.browseManual = new Ookii.Dialogs.WinForms.VistaFolderBrowserDialog();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.bannerPreview = new System.Windows.Forms.PictureBox();
             this.editContentOptions = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.manual_type = new System.Windows.Forms.Label();
-            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.forwarder_root_device = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.forwarder_console = new System.Windows.Forms.Label();
-            this.forwarder_root_device = new System.Windows.Forms.Label();
+            this.manual_type = new System.Windows.Forms.Label();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox7.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Random)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.title_id_random)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.players)).BeginInit();
@@ -102,8 +102,8 @@ namespace FriishProduce
             this.wad_base.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BaseRegion)).BeginInit();
             this.groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bannerPreview)).BeginInit();
             this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // baseRegionList
@@ -152,7 +152,7 @@ namespace FriishProduce
             // 
             // groupBox7
             // 
-            this.groupBox7.Controls.Add(this.LinkSaveData);
+            this.groupBox7.Controls.Add(this.autolink_save_data);
             this.groupBox7.Controls.Add(this.SaveIcon_Panel);
             this.groupBox7.Controls.Add(this.save_data_title);
             this.groupBox7.Controls.Add(this.label16);
@@ -161,13 +161,13 @@ namespace FriishProduce
             this.groupBox7.TabStop = false;
             this.groupBox7.Tag = "save_data";
             // 
-            // LinkSaveData
+            // autolink_save_data
             // 
-            resources.ApplyResources(this.LinkSaveData, "LinkSaveData");
-            this.LinkSaveData.Name = "LinkSaveData";
-            this.LinkSaveData.Tag = "autolink_save_data";
-            this.LinkSaveData.UseVisualStyleBackColor = true;
-            this.LinkSaveData.CheckedChanged += new System.EventHandler(this.LinkSaveData_Changed);
+            resources.ApplyResources(this.autolink_save_data, "autolink_save_data");
+            this.autolink_save_data.Name = "autolink_save_data";
+            this.autolink_save_data.Tag = "autolink_save_data";
+            this.autolink_save_data.UseVisualStyleBackColor = true;
+            this.autolink_save_data.CheckedChanged += new System.EventHandler(this.LinkSaveData_Changed);
             // 
             // SaveIcon_Panel
             // 
@@ -216,7 +216,6 @@ namespace FriishProduce
             // 
             resources.ApplyResources(this.toggleSwitchL1, "toggleSwitchL1");
             this.toggleSwitchL1.Name = "toggleSwitchL1";
-            this.toggleSwitchL1.Click += new System.EventHandler(this.toggleSwitchL1_Click);
             // 
             // toggleSwitch1
             // 
@@ -251,50 +250,50 @@ namespace FriishProduce
             this.label11.Name = "label11";
             this.label11.UseMnemonic = false;
             // 
-            // Patch
+            // import_patch
             // 
-            resources.ApplyResources(this.Patch, "Patch");
-            this.Patch.Name = "Patch";
-            this.Patch.Tag = "import_patch";
-            this.Patch.UseVisualStyleBackColor = true;
-            this.Patch.CheckedChanged += new System.EventHandler(this.Patch_CheckedChanged);
+            resources.ApplyResources(this.import_patch, "import_patch");
+            this.import_patch.Name = "import_patch";
+            this.import_patch.Tag = "import_patch";
+            this.import_patch.UseVisualStyleBackColor = true;
+            this.import_patch.CheckedChanged += new System.EventHandler(this.import_patch_CheckedChanged);
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.tid);
-            this.groupBox3.Controls.Add(this.title_id_2);
-            this.groupBox3.Controls.Add(this.Random);
+            this.groupBox3.Controls.Add(this.title_id_upper);
+            this.groupBox3.Controls.Add(this.title_id);
+            this.groupBox3.Controls.Add(this.title_id_random);
             this.groupBox3.Controls.Add(this.channel_title);
             this.groupBox3.Controls.Add(this.channel_name);
-            this.groupBox3.Controls.Add(this.label15);
-            this.groupBox3.Controls.Add(this.TargetRegion);
+            this.groupBox3.Controls.Add(this.title_id_lower);
+            this.groupBox3.Controls.Add(this.region_list);
             this.groupBox3.Controls.Add(this.region);
             resources.ApplyResources(this.groupBox3, "groupBox3");
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.TabStop = false;
             this.groupBox3.Tag = "channel";
             // 
-            // tid
+            // title_id_upper
             // 
-            this.tid.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            resources.ApplyResources(this.tid, "tid");
-            this.tid.Name = "tid";
-            this.tid.TextChanged += new System.EventHandler(this.TextBox_Changed);
+            this.title_id_upper.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            resources.ApplyResources(this.title_id_upper, "title_id_upper");
+            this.title_id_upper.Name = "title_id_upper";
+            this.title_id_upper.TextChanged += new System.EventHandler(this.TextBox_Changed);
             // 
-            // title_id_2
+            // title_id
             // 
-            resources.ApplyResources(this.title_id_2, "title_id_2");
-            this.title_id_2.Name = "title_id_2";
-            this.title_id_2.Tag = "title_id";
+            resources.ApplyResources(this.title_id, "title_id");
+            this.title_id.Name = "title_id";
+            this.title_id.Tag = "title_id";
             // 
-            // Random
+            // title_id_random
             // 
-            this.Random.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Random.Image = global::FriishProduce.Properties.Resources.arrow_switch;
-            resources.ApplyResources(this.Random, "Random");
-            this.Random.Name = "Random";
-            this.Random.TabStop = false;
-            this.Random.Click += new System.EventHandler(this.Random_Click);
+            this.title_id_random.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.title_id_random.Image = global::FriishProduce.Properties.Resources.arrow_switch;
+            resources.ApplyResources(this.title_id_random, "title_id_random");
+            this.title_id_random.Name = "title_id_random";
+            this.title_id_random.TabStop = false;
+            this.title_id_random.Click += new System.EventHandler(this.Random_Click);
             // 
             // channel_title
             // 
@@ -308,18 +307,18 @@ namespace FriishProduce
             this.channel_name.Name = "channel_name";
             this.channel_name.Tag = "channel_name";
             // 
-            // label15
+            // title_id_lower
             // 
-            resources.ApplyResources(this.label15, "label15");
-            this.label15.Name = "label15";
+            resources.ApplyResources(this.title_id_lower, "title_id_lower");
+            this.title_id_lower.Name = "title_id_lower";
             // 
-            // TargetRegion
+            // region_list
             // 
-            this.TargetRegion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.TargetRegion.FormattingEnabled = true;
-            resources.ApplyResources(this.TargetRegion, "TargetRegion");
-            this.TargetRegion.Name = "TargetRegion";
-            this.TargetRegion.SelectedIndexChanged += new System.EventHandler(this.RegionsList_SelectedIndexChanged);
+            this.region_list.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.region_list.FormattingEnabled = true;
+            resources.ApplyResources(this.region_list, "region_list");
+            this.region_list.Name = "region_list";
+            this.region_list.SelectedIndexChanged += new System.EventHandler(this.RegionsList_SelectedIndexChanged);
             // 
             // region
             // 
@@ -352,7 +351,7 @@ namespace FriishProduce
             // 
             // groupBox6
             // 
-            this.groupBox6.Controls.Add(this.ShowBannerPreview);
+            this.groupBox6.Controls.Add(this.banner_preview);
             this.groupBox6.Controls.Add(this.players);
             this.groupBox6.Controls.Add(this.released);
             this.groupBox6.Controls.Add(this.label10);
@@ -364,13 +363,13 @@ namespace FriishProduce
             this.groupBox6.TabStop = false;
             this.groupBox6.Tag = "banner";
             // 
-            // ShowBannerPreview
+            // banner_preview
             // 
-            resources.ApplyResources(this.ShowBannerPreview, "ShowBannerPreview");
-            this.ShowBannerPreview.Name = "ShowBannerPreview";
-            this.ShowBannerPreview.Tag = "banner_preview";
-            this.ShowBannerPreview.UseVisualStyleBackColor = true;
-            this.ShowBannerPreview.Click += new System.EventHandler(this.ShowBannerPreview_Click);
+            resources.ApplyResources(this.banner_preview, "banner_preview");
+            this.banner_preview.Name = "banner_preview";
+            this.banner_preview.Tag = "banner_preview";
+            this.banner_preview.UseVisualStyleBackColor = true;
+            this.banner_preview.Click += new System.EventHandler(this.banner_preview_Click);
             // 
             // players
             // 
@@ -444,7 +443,7 @@ namespace FriishProduce
             this.wad_base.Controls.Add(this.base_name);
             this.wad_base.Controls.Add(this.ImportWAD);
             this.wad_base.Controls.Add(this.DownloadWAD);
-            this.wad_base.Controls.Add(this.title_id);
+            this.wad_base.Controls.Add(this.title_id_2);
             this.wad_base.Controls.Add(this.panel1);
             this.wad_base.Controls.Add(this.baseID);
             this.wad_base.Controls.Add(this.BaseRegion);
@@ -480,12 +479,12 @@ namespace FriishProduce
             this.DownloadWAD.UseVisualStyleBackColor = true;
             this.DownloadWAD.CheckedChanged += new System.EventHandler(this.OpenWAD_CheckedChanged);
             // 
-            // title_id
+            // title_id_2
             // 
-            resources.ApplyResources(this.title_id, "title_id");
-            this.title_id.Name = "title_id";
-            this.title_id.Tag = "title_id";
-            this.title_id.UseMnemonic = false;
+            resources.ApplyResources(this.title_id_2, "title_id_2");
+            this.title_id_2.Name = "title_id_2";
+            this.title_id_2.Tag = "title_id";
+            this.title_id_2.UseMnemonic = false;
             // 
             // panel1
             // 
@@ -501,8 +500,7 @@ namespace FriishProduce
             // 
             // BaseRegion
             // 
-            this.BaseRegion.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.BaseRegion.BackgroundImage = global::FriishProduce.Properties.Resources.x;
+            this.BaseRegion.BackColor = System.Drawing.Color.Gainsboro;
             resources.ApplyResources(this.BaseRegion, "BaseRegion");
             this.BaseRegion.ContextMenuStrip = this.baseRegionList;
             this.BaseRegion.Name = "BaseRegion";
@@ -532,21 +530,15 @@ namespace FriishProduce
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.pictureBox1);
             this.groupBox5.Controls.Add(this.image_stretch);
             this.groupBox5.Controls.Add(this.label12);
-            this.groupBox5.Controls.Add(this.bannerPreview);
             this.groupBox5.Controls.Add(this.imageintpl);
             this.groupBox5.Controls.Add(this.image_fit);
             resources.ApplyResources(this.groupBox5, "groupBox5");
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.TabStop = false;
             this.groupBox5.Tag = "image";
-            // 
-            // bannerPreview
-            // 
-            resources.ApplyResources(this.bannerPreview, "bannerPreview");
-            this.bannerPreview.Name = "bannerPreview";
-            this.bannerPreview.TabStop = false;
             // 
             // editContentOptions
             // 
@@ -560,6 +552,7 @@ namespace FriishProduce
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.forwarder_root_device);
             this.groupBox4.Controls.Add(this.panel2);
             this.groupBox4.Controls.Add(this.forwarder_console);
             this.groupBox4.Controls.Add(this.editContentOptions);
@@ -569,7 +562,6 @@ namespace FriishProduce
             this.groupBox4.Controls.Add(this.toggleSwitch1);
             this.groupBox4.Controls.Add(this.FStorage_SD);
             this.groupBox4.Controls.Add(this.FStorage_USB);
-            this.groupBox4.Controls.Add(this.forwarder_root_device);
             this.groupBox4.Controls.Add(this.manual_type_list);
             this.groupBox4.Controls.Add(this.manual_type);
             resources.ApplyResources(this.groupBox4, "groupBox4");
@@ -577,15 +569,11 @@ namespace FriishProduce
             this.groupBox4.TabStop = false;
             this.groupBox4.Tag = "content_options";
             // 
-            // manual_type
+            // forwarder_root_device
             // 
-            resources.ApplyResources(this.manual_type, "manual_type");
-            this.manual_type.Name = "manual_type";
-            this.manual_type.Tag = "manual_type";
-            // 
-            // toolTip
-            // 
-            this.toolTip.ShowAlways = true;
+            resources.ApplyResources(this.forwarder_root_device, "forwarder_root_device");
+            this.forwarder_root_device.Name = "forwarder_root_device";
+            this.forwarder_root_device.Tag = "forwarder_root_device";
             // 
             // panel2
             // 
@@ -599,11 +587,22 @@ namespace FriishProduce
             this.forwarder_console.Name = "forwarder_console";
             this.forwarder_console.Tag = "forwarder_console";
             // 
-            // forwarder_root_device
+            // manual_type
             // 
-            resources.ApplyResources(this.forwarder_root_device, "forwarder_root_device");
-            this.forwarder_root_device.Name = "forwarder_root_device";
-            this.forwarder_root_device.Tag = "forwarder_root_device";
+            resources.ApplyResources(this.manual_type, "manual_type");
+            this.manual_type.Name = "manual_type";
+            this.manual_type.Tag = "manual_type";
+            // 
+            // toolTip
+            // 
+            this.toolTip.ShowAlways = true;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Gainsboro;
+            resources.ApplyResources(this.pictureBox1, "pictureBox1");
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.TabStop = false;
             // 
             // ProjectForm
             // 
@@ -613,7 +612,7 @@ namespace FriishProduce
             this.Controls.Add(this.label11);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox6);
-            this.Controls.Add(this.Patch);
+            this.Controls.Add(this.import_patch);
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.wad_base);
@@ -631,7 +630,7 @@ namespace FriishProduce
             this.groupBox7.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Random)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.title_id_random)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
@@ -642,9 +641,9 @@ namespace FriishProduce
             ((System.ComponentModel.ISupportInitialize)(this.BaseRegion)).EndInit();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bannerPreview)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -662,12 +661,12 @@ namespace FriishProduce
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label filename;
-        private System.Windows.Forms.Label title_id_2;
-        private System.Windows.Forms.TextBox tid;
+        private System.Windows.Forms.Label title_id;
+        private System.Windows.Forms.TextBox title_id_upper;
         private System.Windows.Forms.Panel SaveIcon_Panel;
         private System.Windows.Forms.ComboBox imageintpl;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.PictureBox Random;
+        private System.Windows.Forms.PictureBox title_id_random;
         private System.Windows.Forms.ComboBox Base;
         private System.Windows.Forms.Button editContentOptions;
         private System.Windows.Forms.GroupBox wad_base;
@@ -675,7 +674,7 @@ namespace FriishProduce
         private System.Windows.Forms.ContextMenuStrip baseRegionList;
         private System.Windows.Forms.Label baseName;
         private System.Windows.Forms.Label baseID;
-        private System.Windows.Forms.Label title_id;
+        private System.Windows.Forms.Label title_id_2;
         private System.Windows.Forms.Label base_name;
         private System.Windows.Forms.NumericUpDown released;
         private System.Windows.Forms.NumericUpDown players;
@@ -687,31 +686,31 @@ namespace FriishProduce
         private System.Windows.Forms.RadioButton image_fit;
         private System.Windows.Forms.ComboBox injection_methods;
         private System.Windows.Forms.Label injection_method;
-        private System.Windows.Forms.CheckBox Patch;
+        private System.Windows.Forms.CheckBox import_patch;
         private System.Windows.Forms.Label label11;
         internal System.Windows.Forms.OpenFileDialog browsePatch;
-        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label title_id_lower;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label region;
-        private System.Windows.Forms.ComboBox TargetRegion;
-        private System.Windows.Forms.CheckBox LinkSaveData;
+        private System.Windows.Forms.ComboBox region_list;
+        private System.Windows.Forms.CheckBox autolink_save_data;
         private System.Windows.Forms.RadioButton DownloadWAD;
         private System.Windows.Forms.RadioButton ImportWAD;
         private Ookii.Dialogs.WinForms.VistaFolderBrowserDialog browseManual;
         private System.Windows.Forms.ComboBox manual_type_list;
-        private System.Windows.Forms.Button ShowBannerPreview;
+        private System.Windows.Forms.Button banner_preview;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Label toggleSwitchL1;
         private JCS.ToggleSwitch toggleSwitch1;
         private System.Windows.Forms.RadioButton FStorage_SD;
         private System.Windows.Forms.RadioButton FStorage_USB;
-        private System.Windows.Forms.PictureBox bannerPreview;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label manual_type;
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label forwarder_console;
         private System.Windows.Forms.Label forwarder_root_device;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

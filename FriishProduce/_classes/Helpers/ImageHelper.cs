@@ -20,9 +20,9 @@ namespace FriishProduce
         public Bitmap IconVCPic { get; protected set; }
         private Bitmap SaveIconPic { get; set; }
 
-        internal InterpolationMode Interpolation { get; set; }
-        internal bool FitAspectRatio { get; set; }
-        private (int X, int Y, int width, int height) SaveIconL
+        public InterpolationMode InterpMode { get; set; }
+        public bool FitAspectRatio { get; set; }
+        private (int X, int Y, int width, int height) saveIconL
         {
             get
             {
@@ -32,7 +32,7 @@ namespace FriishProduce
                 return platform == Platform.SMS || platform == Platform.SMD ? (8, 8, 69, 48) : (10, 10, 58, 44);
             }
         }
-        private (int X, int Y, int width, int height) SaveIconS
+        private (int X, int Y, int width, int height) saveIconS
         {
             get
             {
@@ -61,7 +61,7 @@ namespace FriishProduce
                     return
                     (
                         Convert.ToInt32((maxWidth - width) / 2) + Convert.ToInt32((48 - maxWidth) / 2),
-                        Convert.ToInt32((maxWidth - height) / 2) + Convert.ToInt32((48 - maxWidth) / 2) + 1,
+                        Convert.ToInt32((maxWidth - height) / 2) + Convert.ToInt32((48 - maxWidth) / 2),
                         width,
                         height
                     );
@@ -144,7 +144,6 @@ namespace FriishProduce
         /// </summary>
         public void Generate(Bitmap src = null)
         {
-            if (src == Source && VCPic != null && IconVCPic != null && SaveIconPic != null) return;
             if (src == null) src = Source;
 
             bool ShrinkToFit = platform == Platform.NES
@@ -168,7 +167,7 @@ namespace FriishProduce
             // --------------------------------------------------
             VCPic = new Bitmap(256, 192);
             IconVCPic = new Bitmap(128, 96);
-            SaveIconPic = new Bitmap(SaveIconL.width, SaveIconL.height);
+            SaveIconPic = new Bitmap(saveIconL.width, saveIconL.height);
 
             using (Bitmap Working = new Bitmap(256, 192, PixelFormat.Format32bppRgb))
             {
@@ -179,7 +178,7 @@ namespace FriishProduce
                     VCPic.SetResolution(Working.HorizontalResolution, src.VerticalResolution);
                     IconVCPic.SetResolution(Working.HorizontalResolution, src.VerticalResolution);
 
-                    g.InterpolationMode = Interpolation;
+                    g.InterpolationMode = InterpMode;
                     g.PixelOffsetMode = PixelOffset;
                     g.SmoothingMode = Smoothing;
                     g.CompositingMode = CompositingMode.SourceOver;
@@ -214,7 +213,7 @@ namespace FriishProduce
 
                 using (Graphics g = Graphics.FromImage(IconVCPic))
                 {
-                    g.InterpolationMode = Interpolation;
+                    g.InterpolationMode = InterpMode;
                     g.PixelOffsetMode = PixelOffset;
                     g.SmoothingMode = Smoothing;
                     g.CompositingQuality = CompositingQ;
@@ -239,7 +238,7 @@ namespace FriishProduce
 
             using (Graphics g = Graphics.FromImage(SaveIconPic))
             {
-                g.InterpolationMode = Interpolation;
+                g.InterpolationMode = InterpMode;
                 g.PixelOffsetMode = PixelOffsetMode.Half;
                 g.SmoothingMode = SmoothingMode.AntiAlias;
 
@@ -276,7 +275,7 @@ namespace FriishProduce
                     g.PixelOffsetMode = PixelOffsetMode.Half;
                     g.SmoothingMode = SmoothingMode.HighSpeed;
 
-                    g.DrawImage(SaveIconPic, SaveIconS.X, SaveIconS.Y, SaveIconS.width, SaveIconS.height);
+                    g.DrawImage(SaveIconPic, saveIconS.X, saveIconS.Y, saveIconS.width, saveIconS.height);
                     g.Dispose();
                 }
             }
@@ -340,7 +339,7 @@ namespace FriishProduce
                 using (Graphics g = Graphics.FromImage(sBanner))
                 {
                     g.DrawImage(SaveBannerFlash, 0, 0);
-                    g.DrawImage(SaveIconPic, SaveIconL.X, SaveIconL.Y, SaveIconL.width, SaveIconL.height);
+                    g.DrawImage(SaveIconPic, saveIconL.X, saveIconL.Y, saveIconL.width, saveIconL.height);
 
                     tpl.AddTexture(sBanner, TextureFormat, PaletteFormat);
 
@@ -372,7 +371,7 @@ namespace FriishProduce
                     g.PixelOffsetMode = PixelOffsetMode.Half;
                     g.SmoothingMode = SmoothingMode.HighSpeed;
 
-                    g.DrawImage(SaveIconPic, SaveIconS.X, SaveIconS.Y, SaveIconS.width, SaveIconS.height);
+                    g.DrawImage(SaveIconPic, saveIconS.X, saveIconS.Y, saveIconS.width, saveIconS.height);
                     g.Dispose();
 
                     tpl.AddTexture(sIcon, TextureFormat, PaletteFormat);
@@ -465,7 +464,7 @@ namespace FriishProduce
             // -------------------------
             using (Graphics g = Graphics.FromImage(sBanner))
             {
-                g.DrawImage(SaveIconPic, SaveIconL.X, SaveIconL.Y, SaveIconL.width, SaveIconL.height);
+                g.DrawImage(SaveIconPic, saveIconL.X, saveIconL.Y, saveIconL.width, saveIconL.height);
 
                 tpl.AddTexture(sBanner, formatsT[0], formatsP[0]);
 
@@ -486,7 +485,7 @@ namespace FriishProduce
                 g.PixelOffsetMode = PixelOffsetMode.Half;
                 g.SmoothingMode = SmoothingMode.HighSpeed;
 
-                g.DrawImage(SaveIconPic, SaveIconS.X, SaveIconS.Y, SaveIconS.width, SaveIconS.height);
+                g.DrawImage(SaveIconPic, saveIconS.X, saveIconS.Y, saveIconS.width, saveIconS.height);
                 g.Dispose();
 
                 tpl.AddTexture(sIcon, formatsT[1], formatsP[1]);
@@ -607,7 +606,7 @@ namespace FriishProduce
                 using (Image img = Image.FromFile(sBannerPath))
                 using (Graphics g = Graphics.FromImage(img))
                 {
-                    g.DrawImage(SaveIconPic, SaveIconL.X, SaveIconL.Y, SaveIconL.width, SaveIconL.height);
+                    g.DrawImage(SaveIconPic, saveIconL.X, saveIconL.Y, saveIconL.width, saveIconL.height);
                     img.Save(ImagesPath + Path.GetFileNameWithoutExtension(sBannerPath) + ".new.png");
 
                     img.Dispose();
@@ -629,7 +628,7 @@ namespace FriishProduce
                     g.PixelOffsetMode = PixelOffsetMode.Half;
                     g.SmoothingMode = SmoothingMode.HighSpeed;
 
-                    g.DrawImage(SaveIconPic, SaveIconS.X, SaveIconS.Y, SaveIconS.width, SaveIconS.height);
+                    g.DrawImage(SaveIconPic, saveIconS.X, saveIconS.Y, saveIconS.width, saveIconS.height);
 
                     sIcon.Save(ImagesPath + "01.new.png");
 

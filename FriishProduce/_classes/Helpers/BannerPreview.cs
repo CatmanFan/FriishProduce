@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace FriishProduce
 {
-    public static class Preview
+    public class Preview
     {
         public enum Language
         {
@@ -19,15 +19,16 @@ namespace FriishProduce
             Auto
         }
 
-        private static Bitmap RoundCorners(Image StartImage, int CornerRadius, bool Smooth = false)
+        private Bitmap RoundCorners(Bitmap x, int CornerRadius, bool Smooth = false)
         {
             CornerRadius *= 2;
-            Bitmap x = new(StartImage.Width, StartImage.Height);
+
             using (Graphics g = Graphics.FromImage(x))
+            using (Brush brush = new TextureBrush(x))
+            using (GraphicsPath gp1 = new GraphicsPath())
             {
                 g.SmoothingMode = SmoothingMode.AntiAlias;
-                Brush brush = new TextureBrush(StartImage);
-                GraphicsPath gp1 = new GraphicsPath();
+                g.Clear(Color.Transparent);
 
                 int offset = Smooth ? 1 : 0;
 
@@ -39,12 +40,14 @@ namespace FriishProduce
 
                 if (Smooth)
                 {
-                    GraphicsPath gp2 = new GraphicsPath();
-                    gp2.AddCurve(new Point[] { new Point(offset, CornerRadius / 2), new Point(0, x.Height / 2), new Point(offset, x.Height - CornerRadius / 2) });
-                    gp2.AddCurve(new Point[] { new Point(x.Width - offset, CornerRadius / 2), new Point(x.Width, x.Height / 2), new Point(x.Width - offset, x.Height - CornerRadius / 2) });
-                    gp2.AddCurve(new Point[] { new Point(CornerRadius / 2, offset), new Point(x.Width / 2, 0), new Point(x.Width - CornerRadius / 2, offset) });
-                    gp2.AddCurve(new Point[] { new Point(CornerRadius / 2, x.Height - offset), new Point(x.Width / 2, x.Height), new Point(x.Width - CornerRadius / 2, x.Height - offset) });
-                    g.FillPath(brush, gp2);
+                    using (GraphicsPath gp2 = new GraphicsPath())
+                    {
+                        gp2.AddCurve(new Point[] { new Point(offset, CornerRadius / 2), new Point(0, x.Height / 2), new Point(offset, x.Height - CornerRadius / 2) });
+                        gp2.AddCurve(new Point[] { new Point(x.Width - offset, CornerRadius / 2), new Point(x.Width, x.Height / 2), new Point(x.Width - offset, x.Height - CornerRadius / 2) });
+                        gp2.AddCurve(new Point[] { new Point(CornerRadius / 2, offset), new Point(x.Width / 2, 0), new Point(x.Width - CornerRadius / 2, offset) });
+                        gp2.AddCurve(new Point[] { new Point(CornerRadius / 2, x.Height - offset), new Point(x.Width / 2, x.Height), new Point(x.Width - CornerRadius / 2, x.Height - offset) });
+                        g.FillPath(brush, gp2);
+                    }
                 }
 
                 return x;
@@ -52,34 +55,40 @@ namespace FriishProduce
         }
 
         #region Font Functions
-
         [System.Runtime.InteropServices.DllImport("gdi32.dll")]
         private static extern IntPtr AddFontMemResourceEx(IntPtr pbFont, uint cbFont,
             IntPtr pdv, [System.Runtime.InteropServices.In] ref uint pcFonts);
 
-        private static PrivateFontCollection fonts;
-
-        private static FontFamily font()
-        {
-            if (fonts != null && fonts.Families.Length > 0) return fonts.Families[0];
-
-            fonts = new PrivateFontCollection();
-
-            byte[] fontData = Properties.Resources.Font;
-            IntPtr fontPtr = System.Runtime.InteropServices.Marshal.AllocCoTaskMem(fontData.Length);
-            System.Runtime.InteropServices.Marshal.Copy(fontData, 0, fontPtr, fontData.Length);
-            uint dummy = 0;
-            fonts.AddMemoryFont(fontPtr, Properties.Resources.Font.Length);
-            AddFontMemResourceEx(fontPtr, (uint)Properties.Resources.Font.Length, IntPtr.Zero, ref dummy);
-            System.Runtime.InteropServices.Marshal.FreeCoTaskMem(fontPtr);
-
-            return fonts.Families[0];
-        }
-
+        private FontFamily font;
         #endregion
 
-        private static (int, int) bannerType = (-1, -1);
-        private static Bitmap bannerLogo;
+        private (int, int) bannerType = (-1, -1);
+        private Bitmap banner;
+        private Bitmap bannerLogo;
+
+        public Preview()
+        {
+            bannerLogo = null;
+            iconData = new icon() { type = (-1, -1), opacities = new List<float>() { 1, 1, 1, 1, 1, 1, 0, 0, 0, 1 }, durationTimer = new Timer() { Interval = 25 } };
+            iconData.consoleImg = null;
+            iconData.generatedImg = null;
+            iconData.target = null;
+
+            #region Font
+            using (var fonts = new PrivateFontCollection())
+            {
+                byte[] fontData = Properties.Resources.Font;
+                IntPtr fontPtr = System.Runtime.InteropServices.Marshal.AllocCoTaskMem(fontData.Length);
+                System.Runtime.InteropServices.Marshal.Copy(fontData, 0, fontPtr, fontData.Length);
+                uint dummy = 0;
+                fonts.AddMemoryFont(fontPtr, Properties.Resources.Font.Length);
+                AddFontMemResourceEx(fontPtr, (uint)Properties.Resources.Font.Length, IntPtr.Zero, ref dummy);
+                System.Runtime.InteropServices.Marshal.FreeCoTaskMem(fontPtr);
+
+                font = fonts.Families[0];
+            }
+            #endregion
+        }
 
         /// <summary>
         /// Creates a banner preview bitmap using VCPic.
@@ -91,9 +100,11 @@ namespace FriishProduce
         /// <param name="console">Platform/console</param>
         /// <param name="lang">Banner region/language: Japanese, Korean, Europe or America</param>
         /// <returns></returns>
-        public static Bitmap Banner(Bitmap img, string text, int year, int players, Platform platform, int lang)
+        public Bitmap Banner(Bitmap img, string text, int year, int players, Platform platform, int lang)
         {
-            Bitmap bmp = new Bitmap(650, 260);
+            if (banner != null) banner.Dispose();
+            banner = new Bitmap(650, 260);
+
             if (img == null)
             {
                 img = new Bitmap(256, 192);
@@ -101,6 +112,7 @@ namespace FriishProduce
                     g.Clear(Color.Gainsboro);
             }
 
+            #region -- Define target --
             int target = 0;
             switch (platform)
             {
@@ -153,8 +165,10 @@ namespace FriishProduce
                     target = 16;
                     break;
             }
+            #endregion
 
-            var leftTextColor = target == 2 ? Color.Black : target == 8 ? Color.FromArgb(90, 90, 90) : BannerSchemes.List[target].bg.GetBrightness() < 0.8 ? Color.White : Color.FromArgb(50, 50, 50);
+            #region -- Define left text color and contents --
+            var leftTextColor = target == 2 ? Color.Black : target == 8 ? Color.FromArgb(90, 90, 90) : BannerSchemes.GetBrightness(target) < 0.8 ? Color.White : Color.FromArgb(50, 50, 50);
 
             string released = lang == 1 ? "{0}年発売"
                              : lang == 2 ? "일본판 발매년도\r\n{0}년"
@@ -173,32 +187,98 @@ namespace FriishProduce
                               : Program.Lang.Current == "fr" ? "Joueurs: {0}"
                               : Program.Lang.Current == "de" ? "{0} Spieler"
                               : "Players: {0}";
+            #endregion
 
-            using (Graphics g = Graphics.FromImage(bmp))
-            using (LinearGradientBrush b1 = new(new Point(0, 130), new Point(0, (int)Math.Round(bmp.Height * 0.9)), BannerSchemes.List[target].bg, BannerSchemes.List[target].bgBottom))
-            using (LinearGradientBrush b2 = new(new Point(0, 50), new Point(0, (int)Math.Round(bmp.Height * 1.25)), BannerSchemes.List[target].bg, BannerSchemes.List[target].bgBottom))
-            using (LinearGradientBrush c = new(new Point(0, 0), new Point(125, 0), BannerSchemes.List[target].lines, BannerSchemes.List[target].bg))
+            #region -- Define top platform header contents --
+            string platformName = "FriishProduce";
+            switch (platform)
+            {
+                case Platform.NES:
+                    platformName = lang switch { 1 => "ファミリーコンピュータ", 2 => "패밀리컴퓨터", _ => "NINTENDO ENTERTAINMENT SYSTEM" };
+                    break;
+
+                case Platform.SNES:
+                    platformName = lang switch { 1 => "スーパーファミコン", 2 => "슈퍼 패미컴", _ => "SUPER NINTENDO ENTERTAINMENT SYSTEM" };
+                    break;
+
+                case Platform.N64:
+                    platformName = lang switch { 2 => "닌텐도 64", _ => "NINTENDO64" };
+                    break;
+
+                case Platform.SMS:
+                    platformName = "MASTER SYSTEM";
+                    break;
+
+                case Platform.SMD:
+                    platformName = lang > 0 ? "MEGA DRIVE" : "GENESIS";
+                    break;
+
+                case Platform.PCE:
+                case Platform.PCECD:
+                    platformName = lang switch { 1 or 2 => "PC ENGINE", _ => "TURBO GRAFX16" };
+                    break;
+
+                case Platform.NEO:
+                    platformName = "NEO-GEO";
+                    break;
+
+                case Platform.C64:
+                    platformName = "COMMODORE 64";
+                    break;
+
+                case Platform.MSX:
+                    platformName = "MSX";
+                    break;
+
+                case Platform.Flash:
+                    platformName = "    Flash";
+                    break;
+
+                case Platform.GB:
+                    platformName = "GAME BOY";
+                    break;
+
+                case Platform.GBC:
+                    platformName = "GAME BOY COLOR";
+                    break;
+
+                case Platform.GBA:
+                    platformName = "GAME BOY ADVANCE";
+                    break;
+
+                case Platform.GCN:
+                    platformName = "GAMECUBE";
+                    break;
+
+                case Platform.PSX:
+                    platformName = lang switch { 1 => "プレイステーション", _ => "PLAYSTATION" };
+                    break;
+
+                case Platform.RPGM:
+                    platformName = lang switch { 1 => "ＲＰＧツクール", _ => "RPG MAKER" };
+                    break;
+            }
+            #endregion
+
+            using (Graphics g = Graphics.FromImage(banner))
             {
                 g.CompositingQuality = CompositingQuality.AssumeLinear;
                 g.SmoothingMode = SmoothingMode.HighQuality;
                 g.TextRenderingHint = TextRenderingHint.AntiAlias;
 
-                g.Clear(BannerSchemes.List[target].bg);
+                g.Clear(BannerSchemes.GetColor(target, 0));
 
-                #region Console/platform logo
+                #region -- Get and draw console/platform logo --
                 if (((int)platform, lang) != bannerType)
                 {
+                    if (bannerLogo != null) bannerLogo.Dispose();
+
                     bannerType = ((int)platform, lang);
                     using (var U8 = BannerHelper.BannerApp(platform, lang switch { 1 => libWiiSharp.Region.Japan, 2 => libWiiSharp.Region.Korea, 3 => libWiiSharp.Region.Europe, _ => libWiiSharp.Region.USA }))
-                    {
                         if (U8 != null)
-                        {
                             using (var Icon = libWiiSharp.U8.Load(U8.Data[U8.GetNodeIndex("banner.bin")]))
-                            {
                                 foreach (var item in Icon.StringTable)
-                                {
                                     if (item.ToLower().Contains("back") && item.ToLower().EndsWith(".tpl"))
-                                    {
                                         using (var logo = (Bitmap)libWiiSharp.TPL.Load(Icon.Data[Icon.GetNodeIndex(item)]).ExtractTexture())
                                         {
                                             bannerLogo = new Bitmap(logo.Width, logo.Height, PixelFormat.Format32bppArgb);
@@ -220,11 +300,6 @@ namespace FriishProduce
                                                 bannerLogo.UnlockBits(data);
                                             }
                                         }
-                                    }
-                                }
-                            }
-                        }
-                    }
                 }
 
                 if (bannerLogo != null)
@@ -233,178 +308,136 @@ namespace FriishProduce
                     double maxHeight = bannerLogo.Height / 3;
                     (double width, double height) = (bannerLogo.Width / 1.5, bannerLogo.Height / 1.5);
 
-                    for (double y = startingPointY; y < bmp.Height / 2; y += maxHeight * 2)
-                    {
-                        for (double x = 0; x < bmp.Width; x += width)
-                        {
+                    for (double y = startingPointY; y < banner.Height / 2; y += maxHeight * 2)
+                        for (double x = 0; x < banner.Width; x += width)
                             g.DrawImage(bannerLogo, (int)Math.Round(x), (int)Math.Round(y), (int)Math.Round(width), (int)Math.Round(height));
-                        }
-                    }
 
-                    for (double y = startingPointY + maxHeight; y < bmp.Height / 2; y += maxHeight * 2)
-                    {
-                        for (double x = 0 - (width / 2.5); x < bmp.Width; x += width)
-                        {
+                    for (double y = startingPointY + maxHeight; y < banner.Height / 2; y += maxHeight * 2)
+                        for (double x = 0 - (width / 2.5); x < banner.Width; x += width)
                             g.DrawImage(bannerLogo, (int)Math.Round(x), (int)Math.Round(y), (int)Math.Round(width), (int)Math.Round(height));
-                        }
-                    }
                 }
                 #endregion
 
-                g.FillRectangle(b1, -5, (bmp.Height / 2) + 10, bmp.Width + 10, 40);
-                g.FillRectangle(b2, -5, (bmp.Height / 2) + 49, bmp.Width + 10, bmp.Height);
-
-                #region Text
-                // Title
-                // ********
-                g.DrawString(
-                    text,
-                    new Font(font(), 15),
-                    new SolidBrush(BannerSchemes.TextColor(target)),
-                    bmp.Width / 2,
-                    210,
-                    new StringFormat() { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center });
-
-                // Released
-                // ********
-                g.DrawString(
-                    string.Format(released, year),
-                    new Font(font(), (float)9.25),
-                    new SolidBrush(leftTextColor),
-                    10,
-                    45,
-                    new StringFormat() { Alignment = StringAlignment.Near, LineAlignment = StringAlignment.Far });
-
-                // Players
-                // ********
-                g.DrawString(
-                    string.Format(numPlayers, $"{1}{(players <= 1 ? null : "-" + players)}").Replace("-", lang == 1 ? "～" : "-"),
-                    new Font(font(), (float)9.25),
-                    new SolidBrush(leftTextColor),
-                    10,
-                    87,
-                    new StringFormat() { Alignment = StringAlignment.Near, LineAlignment = StringAlignment.Far });
+                #region -- Bottom gradient --
+                using (LinearGradientBrush b1 = new(new Point(0, 130), new Point(0, (int)Math.Round(banner.Height * 0.9)), BannerSchemes.GetColor(target, 0), BannerSchemes.GetColor(target, 2)))
+                using (LinearGradientBrush b2 = new(new Point(0, 50), new Point(0, (int)Math.Round(banner.Height * 1.25)), BannerSchemes.GetColor(target, 0), BannerSchemes.GetColor(target, 2)))
+                {
+                    g.FillRectangle(b1, -5, (banner.Height / 2) + 10, banner.Width + 10, 40);
+                    g.FillRectangle(b2, -5, (banner.Height / 2) + 49, banner.Width + 10, banner.Height);
+                }
                 #endregion
 
-                // Gradient lines
-                // ********
-                g.FillRectangle(c, -1, 45, 125, 2);
-                g.FillRectangle(c, -1, 87, 125, 2);
+                #region -- Draw center and left text --
+                using (var titleFont = new Font(font, 15))
+                using (var leftFont = new Font(font, (float)9.25))
+                using (var titleColor = new SolidBrush(BannerSchemes.GetColor(target, 7)))
+                using (var leftColor = new SolidBrush(leftTextColor))
+                {
+                    // Title
+                    // ********
+                    g.DrawString
+                    (
+                        text,
+                        titleFont,
+                        titleColor,
+                        banner.Width / 2,
+                        210,
+                        new StringFormat() { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center }
+                    );
 
-                #region Image
-                double[] point = new double[] { (bmp.Width / 2) - Math.Round((img.Width * 0.72) / 2), 40 };
+                    // Released
+                    // ********
+                    g.DrawString
+                    (
+                        string.Format(released, year),
+                        leftFont,
+                        leftColor,
+                        10,
+                        45,
+                        new StringFormat() { Alignment = StringAlignment.Near, LineAlignment = StringAlignment.Far }
+                    );
+
+                    // Players
+                    // ********
+                    g.DrawString
+                    (
+                        string.Format(numPlayers, $"{1}{(players <= 1 ? null : "-" + players)}").Replace("-", lang == 1 ? "～" : "-"),
+                        leftFont,
+                        leftColor,
+                        10,
+                        87,
+                        new StringFormat() { Alignment = StringAlignment.Near, LineAlignment = StringAlignment.Far }
+                    );
+                }
+                #endregion
+
+                #region -- Gradient lines --
+                using (LinearGradientBrush c = new(new Point(0, 0), new Point(125, 0), BannerSchemes.GetColor(target, 3), BannerSchemes.GetColor(target, 0)))
+                {
+                    g.FillRectangle(c, -1, 45, 125, 2);
+                    g.FillRectangle(c, -1, 87, 125, 2);
+                }
+                #endregion
+
+                #region -- Image --
+                double[] point = new double[] { (banner.Width / 2) - Math.Round((img.Width * 0.72) / 2), 40 };
                 double[] size = new double[] { Math.Round(img.Width * 0.72), Math.Round(img.Height * 0.72) };
 
                 using (Bitmap border = new Bitmap(256, 192))
                 {
                     using (Graphics gBorder = Graphics.FromImage(border))
                         gBorder.Clear(Color.Black);
+
                     g.DrawImage(RoundCorners(border, 9), (int)point[0] - 1, (int)point[1] - 1, (int)size[0] + 2, (int)size[1] + 2);
                 }
+
                 g.DrawImage(RoundCorners(img, 8), (int)point[0], (int)point[1], (int)size[0], (int)size[1]);
                 #endregion
 
-                #region Top Platform Header
-                var cName = "FriishProduce";
-                switch (platform)
+                #region -- Top header --
+                using (var f = new Font(font, 9))
+                using (var p = new GraphicsPath())
                 {
-                    case Platform.NES:
-                        cName = lang switch { 1 => "ファミリーコンピュータ", 2 => "패밀리컴퓨터", _ => "NINTENDO ENTERTAINMENT SYSTEM" };
-                        break;
+                    // Draw border
+                    // ********
+                    p.AddLine(-5, -5, -5, 5);
+                    p.AddLine(-5, 5, banner.Width, 5);
+                    p.AddLine(banner.Width - TextRenderer.MeasureText(platformName, f).Width - 58, 5,
+                              banner.Width - TextRenderer.MeasureText(platformName, f).Width - 50, 7);
+                    p.AddLine(banner.Width - TextRenderer.MeasureText(platformName, f).Width - 50, 7,
+                              banner.Width - TextRenderer.MeasureText(platformName, f).Width - 46, 9);
+                    p.AddLine(banner.Width - TextRenderer.MeasureText(platformName, f).Width - 46, 9,
+                              banner.Width - TextRenderer.MeasureText(platformName, f).Width - 26, 28);
+                    p.AddLine(banner.Width - TextRenderer.MeasureText(platformName, f).Width - 26, 28,
+                              banner.Width - TextRenderer.MeasureText(platformName, f).Width - 22, 30);
+                    p.AddLine(banner.Width - TextRenderer.MeasureText(platformName, f).Width - 22, 30,
+                              banner.Width - TextRenderer.MeasureText(platformName, f).Width - 14, 32);
+                    p.AddLine(banner.Width - TextRenderer.MeasureText(platformName, f).Width - 14, 32, banner.Width + 5, 32);
+                    p.AddLine(banner.Width + 5, 32, banner.Width + 5, -5);
 
-                    case Platform.SNES:
-                        cName = lang switch { 1 => "スーパーファミコン", 2 => "슈퍼 패미컴", _ => "SUPER NINTENDO ENTERTAINMENT SYSTEM" };
-                        break;
-
-                    case Platform.N64:
-                        cName = lang switch { 2 => "닌텐도 64", _ => "NINTENDO64" };
-                        break;
-
-                    case Platform.SMS:
-                        cName = "MASTER SYSTEM";
-                        break;
-
-                    case Platform.SMD:
-                        cName = lang > 0 ? "MEGA DRIVE" : "GENESIS";
-                        break;
-
-                    case Platform.PCE:
-                    case Platform.PCECD:
-                        cName = lang switch { 1 or 2 => "PC ENGINE", _ => "TURBO GRAFX16" };
-                        break;
-
-                    case Platform.NEO:
-                        cName = "NEO-GEO";
-                        break;
-
-                    case Platform.C64:
-                        cName = "COMMODORE 64";
-                        break;
-
-                    case Platform.MSX:
-                        cName = "MSX";
-                        break;
-
-                    case Platform.Flash:
-                        cName = "    Flash";
-                        break;
-
-                    case Platform.GB:
-                        cName = "GAME BOY";
-                        break;
-
-                    case Platform.GBC:
-                        cName = "GAME BOY COLOR";
-                        break;
-
-                    case Platform.GBA:
-                        cName = "GAME BOY ADVANCE";
-                        break;
-
-                    case Platform.GCN:
-                        cName = "GAMECUBE";
-                        break;
-
-                    case Platform.PSX:
-                        cName = lang switch { 1 => "プレイステーション", _ => "PLAYSTATION" };
-                        break;
-
-                    case Platform.RPGM:
-                        cName = lang switch { 1 => "ＲＰＧツクール", _ => "RPG MAKER" };
-                        break;
+                    // Draw text and colours
+                    // ********
+                    using (var borderPen = new Pen(BannerSchemes.GetColor(target, 4), 2))
+                        g.DrawPath(borderPen, p);
+                    using (var bgBrush = new SolidBrush(BannerSchemes.GetColor(target, 5)))
+                        g.FillPath(bgBrush, p);
+                    using (var textBrush = new SolidBrush(BannerSchemes.GetColor(target, 6)))
+                        g.DrawString
+                        (
+                            platformName,
+                            f,
+                            textBrush,
+                            banner.Width - 10,
+                            24,
+                            new StringFormat() { Alignment = StringAlignment.Far, LineAlignment = StringAlignment.Center }
+                        );
                 }
-
-                var f = new Font(font(), 9);
-                var brush = new SolidBrush(BannerSchemes.List[target].topBG);
-
-                var p = new GraphicsPath();
-                p.AddLine(-5, -5, -5, 5);
-                p.AddLine(-5, 5, bmp.Width, 5);
-                p.AddLine(bmp.Width - TextRenderer.MeasureText(cName, f).Width - 58, 5,
-                          bmp.Width - TextRenderer.MeasureText(cName, f).Width - 50, 7);
-                p.AddLine(bmp.Width - TextRenderer.MeasureText(cName, f).Width - 50, 7,
-                          bmp.Width - TextRenderer.MeasureText(cName, f).Width - 46, 9);
-                p.AddLine(bmp.Width - TextRenderer.MeasureText(cName, f).Width - 46, 9,
-                          bmp.Width - TextRenderer.MeasureText(cName, f).Width - 26, 28);
-                p.AddLine(bmp.Width - TextRenderer.MeasureText(cName, f).Width - 26, 28,
-                          bmp.Width - TextRenderer.MeasureText(cName, f).Width - 22, 30);
-                p.AddLine(bmp.Width - TextRenderer.MeasureText(cName, f).Width - 22, 30,
-                          bmp.Width - TextRenderer.MeasureText(cName, f).Width - 14, 32);
-                p.AddLine(bmp.Width - TextRenderer.MeasureText(cName, f).Width - 14, 32, bmp.Width + 5, 32);
-                p.AddLine(bmp.Width + 5, 32, bmp.Width + 5, -5);
-
-                g.DrawPath(new Pen(BannerSchemes.List[target].topBorder, 2), p);
-                g.FillPath(brush, p);
-                g.DrawString(cName, f, new SolidBrush(BannerSchemes.List[target].topText),
-                    bmp.Width - 10,
-                    24,
-                    new StringFormat() { Alignment = StringAlignment.Far, LineAlignment = StringAlignment.Center });
                 #endregion
 
                 g.Dispose();
             }
 
-            return bmp;
+            return banner;
         }
 
         /// <summary>
@@ -415,7 +448,7 @@ namespace FriishProduce
         /// <param name="lang">Banner region/language: Japanese, Korean, Europe or America</param>
         /// <param name="target">PictureBox control</param>
         /// <returns></returns>
-        public static unsafe Bitmap Icon(Bitmap img, Platform platform, int region, bool restart = false, PictureBox target = null)
+        public unsafe Bitmap Icon(Bitmap img, Platform platform, int region, bool restart = false, PictureBox target = null)
         {
             // 0s - 5s = Title
             // 5s - 6s = Fadein
@@ -631,9 +664,31 @@ namespace FriishProduce
             public PictureBox target;
         }
 
-        private static icon iconData = new icon() { type = (-1, -1), opacities = new List<float>() { 1, 1, 1, 1, 1, 1, 0, 0, 0, 1 }, durationTimer = new Timer() { Interval = 25 } };
+        private icon iconData;
 
-        private static void iconDurationTick(object sender, EventArgs e) { if (iconData.target != null) iconData.target.Image = Icon(null, (Platform)Math.Max(iconData.type.Item1, 0), Math.Max(iconData.type.Item2, 0), false); }
+        private void iconDurationTick(object sender, EventArgs e) { if (iconData.target != null) iconData.target.Image = Icon(null, (Platform)Math.Max(iconData.type.Item1, 0), Math.Max(iconData.type.Item2, 0), false); }
+
+        public void Dispose()
+        {
+            if (font != null) font.Dispose();
+            if (banner != null) banner.Dispose();
+            if (bannerLogo != null) bannerLogo.Dispose();
+            if (iconData.consoleImg != null) iconData.consoleImg.Dispose();
+            if (iconData.generatedImg != null)
+                for (int x = 0; x < iconData.generatedImg.Count; x++)
+                {
+                    if (iconData.generatedImg[x] != null) iconData.generatedImg[x].Dispose();
+                    iconData.generatedImg[x] = null;
+                }
+            if (iconData.durationTimer != null) iconData.durationTimer.Dispose();
+
+            font = null;
+            banner = null;
+            bannerLogo = null;
+            iconData.consoleImg = null;
+            iconData.generatedImg = null;
+            iconData.durationTimer = null;
+        }
         #endregion
     }
 }

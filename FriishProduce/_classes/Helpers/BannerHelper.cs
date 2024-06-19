@@ -418,7 +418,7 @@ namespace FriishProduce
 
             outFile = outFile.ToLower();
 
-            var leftTextColor = bg.GetBrightness() < 0.8 ? System.Drawing.Color.White : System.Drawing.Color.FromArgb(50, 50, 50);
+            var leftTextColor = BannerSchemes.GetBrightness(colorIndex) < 0.8 ? System.Drawing.Color.White : System.Drawing.Color.FromArgb(50, 50, 50);
 
             string[] colorsFile = new string[]
             {

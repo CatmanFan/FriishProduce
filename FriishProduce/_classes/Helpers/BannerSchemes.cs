@@ -5,222 +5,250 @@ namespace FriishProduce
 {
     public static class BannerSchemes
     {
-        public static List<(Color bg, Color bgLogo, Color bgBottom, Color lines, Color topBorder, Color topBG, Color topText)> List
+        public static List<((int R, int G, int B) bg, (int R, int G, int B) bgLogo, (int R, int G, int B) bgBottom, (int R, int G, int B) lines, (int R, int G, int B) topBorder, (int R, int G, int B) topBG, (int R, int G, int B) topText)> List
         {
-            get => new List<(Color bg, Color bgLogo, Color bgBottom, Color lines, Color topBorder, Color topBG, Color topText)>
+            get => new List<((int R, int G, int B) bg, (int R, int G, int B) bgLogo, (int R, int G, int B) bgBottom, (int R, int G, int B) lines, (int R, int G, int B) topBorder, (int R, int G, int B) topBG, (int R, int G, int B) topText)>
             {
                 // ****************
 
                 /* NES */           (
-                                        Color.FromArgb(250, 250, 250),  // Main Background Color
-                                        Color.FromArgb(255, 230, 230),  // Background Logo(s)
-                                        Color.FromArgb(100, 100, 100),  // Bottom Section
+                                        (250, 250, 250),  // Main Background Color
+                                        (255, 230, 230),  // Background Logo(s)
+                                        (100, 100, 100),  // Bottom Section
 
-                                        Color.FromArgb(155, 155, 155),  // Left Lines
+                                        (155, 155, 155),  // Left Lines
 
-                                        Color.FromArgb(144, 144, 144),  // PFLine Border
-                                        Color.FromArgb(210, 210, 210),  // PFLine BG Color
-                                        Color.FromArgb(230, 40, 40)     // Text_PF
+                                        (144, 144, 144),  // PFLine Border
+                                        (210, 210, 210),  // PFLine BG Color
+                                        (230, 40, 40)     // Text_PF
                                     ),
 
                 /* FC */            (
-                                        Color.FromArgb(250, 250, 250),
-                                        Color.FromArgb(240, 240, 240),
-                                        Color.FromArgb(200, 200, 200),
+                                        (250, 250, 250),
+                                        (240, 240, 240),
+                                        (200, 200, 200),
 
-                                        Color.FromArgb(155, 155, 155),
+                                        (155, 155, 155),
 
-                                        Color.FromArgb(122, 48, 48),
-                                        Color.FromArgb(217, 31, 31),
-                                        Color.FromArgb(230, 230, 40)
+                                        (122, 48, 48),
+                                        (217, 31, 31),
+                                        (230, 230, 40)
                                     ),
 
                 /* SNES */          (
-                                        Color.FromArgb(209, 209, 209),
-                                        Color.FromArgb(200, 200, 200),
-                                        Color.FromArgb(60, 40, 70),
+                                        (209, 209, 209),
+                                        (200, 200, 200),
+                                        (60, 40, 70),
 
-                                        Color.FromArgb(120, 120, 120),
+                                        (120, 120, 120),
 
-                                        Color.FromArgb(127, 88, 149),
-                                        Color.FromArgb(190, 146, 255),
-                                        Color.FromArgb(100, 60, 120)
+                                        (127, 88, 149),
+                                        (190, 146, 255),
+                                        (100, 60, 120)
                                     ),
 
                 /* SFC */           (
-                                        Color.FromArgb(209, 209, 209),
-                                        Color.FromArgb(200, 200, 200),
-                                        Color.FromArgb(0, 0, 0),
+                                        (209, 209, 209),
+                                        (200, 200, 200),
+                                        (0, 0, 0),
 
-                                        Color.FromArgb(120, 120, 120),
+                                        (120, 120, 120),
 
-                                        Color.FromArgb(153, 153, 153),
-                                        Color.FromArgb(255, 255, 255),
-                                        Color.FromArgb(145, 145, 145)
+                                        (153, 153, 153),
+                                        (255, 255, 255),
+                                        (145, 145, 145)
                                     ),
 
                 /* N64 */           (
-                                        Color.FromArgb(254, 254, 254),
-                                        Color.FromArgb(240, 242, 255),
-                                        Color.FromArgb(0, 0, 120),
+                                        (254, 254, 254),
+                                        (240, 242, 255),
+                                        (0, 0, 120),
 
-                                        Color.FromArgb(80, 80, 255),
+                                        (80, 80, 255),
 
-                                        Color.FromArgb(30, 30, 120),
-                                        Color.FromArgb(80, 80, 255),
-                                        Color.FromArgb(255, 255, 255)
+                                        (30, 30, 120),
+                                        (80, 80, 255),
+                                        (255, 255, 255)
                                     ),
 
                 /* SMS */           (
-                                        Color.FromArgb(32, 32, 32),
-                                        Color.FromArgb(44, 44, 44),
-                                        Color.FromArgb(191, 191, 191),
+                                        (32, 32, 32),
+                                        (44, 44, 44),
+                                        (191, 191, 191),
 
-                                        Color.FromArgb(185, 28, 34),
+                                        (185, 28, 34),
 
-                                        Color.FromArgb(0, 0, 0),
-                                        Color.FromArgb(241, 84, 90),
-                                        Color.FromArgb(255, 255, 255)
+                                        (0, 0, 0),
+                                        (241, 84, 90),
+                                        (255, 255, 255)
                                     ),
 
                 /* SMD */           (
-                                        Color.FromArgb(40, 40, 40),
-                                        Color.FromArgb(47, 47, 47),
-                                        Color.FromArgb(180, 180, 180),
+                                        (40, 40, 40),
+                                        (47, 47, 47),
+                                        (180, 180, 180),
 
-                                        Color.FromArgb(157, 63, 105),
+                                        (157, 63, 105),
 
-                                        Color.FromArgb(0, 0, 0),
-                                        Color.FromArgb(157, 63, 105),
-                                        Color.FromArgb(255, 255, 255)
+                                        (0, 0, 0),
+                                        (157, 63, 105),
+                                        (255, 255, 255)
                                     ),
 
                 /* TG-16 */         (
-                                        Color.FromArgb(78, 78, 78),
-                                        Color.FromArgb(95, 95, 95),
-                                        Color.FromArgb(0, 0, 0),
+                                        (78, 78, 78),
+                                        (95, 95, 95),
+                                        (0, 0, 0),
 
-                                        Color.FromArgb(180, 180, 180),
+                                        (180, 180, 180),
 
-                                        Color.FromArgb(255, 80, 0),
-                                        Color.FromArgb(64, 64, 64),
-                                        Color.FromArgb(255, 80, 0)
+                                        (255, 80, 0),
+                                        (64, 64, 64),
+                                        (255, 80, 0)
                                     ),
 
                 /* PCE */           (
-                                        Color.FromArgb(255, 255, 255),
-                                        Color.FromArgb(255, 232, 218),
-                                        Color.FromArgb(40, 40, 50),
+                                        (255, 255, 255),
+                                        (255, 232, 218),
+                                        (40, 40, 50),
 
-                                        Color.FromArgb(138, 138, 138),
+                                        (138, 138, 138),
 
-                                        Color.FromArgb(255, 80, 0),
-                                        Color.FromArgb(255, 255, 255),
-                                        Color.FromArgb(255, 80, 0)
+                                        (255, 80, 0),
+                                        (255, 255, 255),
+                                        (255, 80, 0)
                                     ),
 
                 /* NEO-GEO */       (
-                                        Color.FromArgb(223, 223, 223),
-                                        Color.FromArgb(220, 212, 198),
-                                        Color.FromArgb(255, 248, 152),
+                                        (223, 223, 223),
+                                        (220, 212, 198),
+                                        (255, 248, 152),
 
-                                        Color.FromArgb(191, 139, 0),
+                                        (191, 139, 0),
 
-                                        Color.FromArgb(184, 31, 24),
-                                        Color.FromArgb(255, 227, 29),
-                                        Color.FromArgb(160, 107, 0)
+                                        (184, 31, 24),
+                                        (255, 227, 29),
+                                        (160, 107, 0)
                                     ),
 
                 /* NEO-GEO MVS */   (
-                                        Color.FromArgb(223, 223, 223),
-                                        Color.FromArgb(198, 198, 198),
-                                        Color.FromArgb(100, 100, 100),
+                                        (223, 223, 223),
+                                        (198, 198, 198),
+                                        (100, 100, 100),
 
-                                        Color.FromArgb(191, 191, 191),
+                                        (191, 191, 191),
 
-                                        Color.FromArgb(0, 0, 0),
-                                        Color.FromArgb(255, 51, 51),
-                                        Color.FromArgb(255, 255, 255)
+                                        (0, 0, 0),
+                                        (255, 51, 51),
+                                        (255, 255, 255)
                                     ),
 
                 /* C64 */           (
-                                        Color.FromArgb(209, 209, 209),
-                                        Color.FromArgb(201, 201, 201),
-                                        Color.FromArgb(37, 72, 186),
+                                        (209, 209, 209),
+                                        (201, 201, 201),
+                                        (37, 72, 186),
 
-                                        Color.FromArgb(79, 114, 228),
+                                        (79, 114, 228),
 
-                                        Color.FromArgb(63, 98, 212),
-                                        Color.FromArgb(166, 196, 255),
-                                        Color.FromArgb(28, 63, 186)
+                                        (63, 98, 212),
+                                        (166, 196, 255),
+                                        (28, 63, 186)
                                     ),
 
                 /* MSX */           (
-                                        Color.FromArgb(55, 55, 255),
-                                        Color.FromArgb(3, 0, 120),
-                                        Color.FromArgb(0, 0, 120),
+                                        (55, 55, 255),
+                                        (3, 0, 120),
+                                        (0, 0, 120),
 
-                                        Color.FromArgb(255, 255, 255),
+                                        (255, 255, 255),
 
-                                        Color.FromArgb(60, 60, 60),
-                                        Color.FromArgb(255, 255, 255),
-                                        Color.FromArgb(90, 90, 90)
+                                        (60, 60, 60),
+                                        (255, 255, 255),
+                                        (90, 90, 90)
                                     ),
 
                 /* MSX MOD */       (
-                                        Color.FromArgb(55, 55, 255),
-                                        Color.FromArgb(0, 0, 247),
-                                        Color.FromArgb(0, 0, 120),
+                                        (55, 55, 255),
+                                        (0, 0, 247),
+                                        (0, 0, 120),
 
-                                        Color.FromArgb(255, 255, 255),
+                                        (255, 255, 255),
 
-                                        Color.FromArgb(60, 60, 60),
-                                        Color.FromArgb(255, 255, 255),
-                                        Color.FromArgb(90, 90, 90)
+                                        (60, 60, 60),
+                                        (255, 255, 255),
+                                        (90, 90, 90)
                                     ),
 
                 /* Flash */         (
-                                        Color.FromArgb(40, 40, 40),
-                                        Color.FromArgb(47, 47, 47),
-                                        Color.FromArgb(180, 180, 180),
+                                        (40, 40, 40),
+                                        (47, 47, 47),
+                                        (180, 180, 180),
 
-                                        Color.FromArgb(94, 49, 52),
+                                        (94, 49, 52),
 
-                                        Color.FromArgb(0, 0, 0),
-                                        Color.FromArgb(174, 30, 37),
-                                        Color.FromArgb(255, 255, 255)
+                                        (0, 0, 0),
+                                        (174, 30, 37),
+                                        (255, 255, 255)
                                     ),
 
                 /* PlayStation */   (
-                                        Color.FromArgb(234, 234, 234),
-                                        Color.FromArgb(223, 223, 223),
-                                        Color.FromArgb(100, 100, 100),
+                                        (234, 234, 234),
+                                        (223, 223, 223),
+                                        (100, 100, 100),
 
-                                        Color.FromArgb(100, 100, 100),
+                                        (100, 100, 100),
 
-                                        Color.FromArgb(0, 0, 0),
-                                        Color.FromArgb(0, 0, 0),
-                                        Color.FromArgb(255, 255, 255)
+                                        (0, 0, 0),
+                                        (0, 0, 0),
+                                        (255, 255, 255)
                                     ),
 
                 /* RPG Maker */     (
-                                        Color.FromArgb(239, 242, 233),
-                                        Color.FromArgb(229, 231, 221),
-                                        Color.FromArgb(165, 190, 150),
+                                        (239, 242, 233),
+                                        (229, 231, 221),
+                                        (165, 190, 150),
 
-                                        Color.FromArgb(83, 118, 61),
+                                        (83, 118, 61),
 
-                                        Color.FromArgb(46, 61, 37),
-                                        Color.FromArgb(86, 140, 58),
-                                        Color.FromArgb(255, 255, 255)
+                                        (46, 61, 37),
+                                        (86, 140, 58),
+                                        (255, 255, 255)
                                     )
             };
         }
 
-        public static Color TextColor(int target)
+        public static (int R, int G, int B) TextColor(int target)
         {
             var limit = target == 15 || target == 16 ? 0.5 : 0.75;
-            return List[target].bgBottom.GetBrightness() < limit || target == 4 || target == 2 ? Color.White : Color.Black;
+            return GetBrightness(target) < limit || target == 4 || target == 2 ? (255, 255, 255) : (0, 0, 0);
+        }
+
+        public static float GetBrightness(int target)
+        {
+            return (List[target].bgBottom.Item1 + List[target].bgBottom.Item2 + List[target].bgBottom.Item3) / 3f;
+        }
+
+        /// <summary>
+        /// 0 = BG, 1 = BG's logo, 2 = Bottom gradient, 3 = Left lines, 4 = Top header border, 5 = Top header BG, 6 = Top header text
+        /// </summary>
+        /// <param name="target"></param>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        public static Color GetColor(int target, int type)
+        {
+            var t = type switch
+            {
+                1 => List[target].bgLogo,
+                2 => List[target].bgBottom,
+                3 => List[target].lines,
+                4 => List[target].topBorder,
+                5 => List[target].topBG,
+                6 => List[target].topText,
+                7 => TextColor(target),
+                _ => List[target].bg
+            };
+
+            return Color.FromArgb(t.R, t.G, t.B);
         }
     }
 }
