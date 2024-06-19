@@ -12,14 +12,14 @@ namespace FriishProduce
 {
     public partial class SettingsForm : Form
     {
-        private bool isDirty { get; set; }
+        private bool isShown = false;
+        private bool isDirty = false;
         private string NodeName { get; set; }
         private bool NodeLocked { get; set; }
 
         public SettingsForm()
         {
             InitializeComponent();
-            isDirty = false;
         }
 
         private void SaveAll()
@@ -241,7 +241,7 @@ namespace FriishProduce
             // -----------------------------
         }
 
-        private void Loading(object sender, EventArgs e) { TreeView.Select(); RefreshForm(); }
+        private void Loading(object sender, EventArgs e) { TreeView.Select(); RefreshForm(); isShown = true; }
 
         private void CustomDatabase_CheckedChanged(object sender, EventArgs e)
         {
@@ -368,6 +368,8 @@ namespace FriishProduce
             if (isDirty)
                 MessageBox.Show(Program.Lang.Msg(0));
 
+            isShown = false;
+            isDirty = false;
             DialogResult = DialogResult.OK;
         }
 
@@ -490,6 +492,6 @@ namespace FriishProduce
             }
         }
 
-        private void MakeDirty(object sender, EventArgs e) => isDirty = true;
+        private void MakeDirty(object sender, EventArgs e) { if (isShown) isDirty = true; }
     }
 }

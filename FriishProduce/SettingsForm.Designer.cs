@@ -916,7 +916,6 @@ namespace FriishProduce
             this.ShowInTaskbar = false;
             this.Tag = "settingsform";
             this.Load += new System.EventHandler(this.Loading);
-            this.Shown += new System.EventHandler(this.Loading);
             this.vc_n64_options.ResumeLayout(false);
             this.vc_n64_options.PerformLayout();
             this.bottomPanel1.ResumeLayout(false);
