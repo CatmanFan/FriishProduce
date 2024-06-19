@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace FriishProduce
 {
@@ -18,6 +21,38 @@ namespace FriishProduce
         FAILED_INTERNET,
         FAILED_INJECTION,
         FAILED_DOWNLOADED_WAD
+    }
+
+    class CustomToolTip : ToolTip
+    {
+        public CustomToolTip()
+        {
+            OwnerDraw = true;
+
+            AutoPopDelay = 5000;
+            InitialDelay = 500;
+            ReshowDelay = 100;
+            AutomaticDelay = 400;
+
+            Draw += new DrawToolTipEventHandler(OnDraw);
+        }
+
+        private void OnDraw(object sender, DrawToolTipEventArgs e) // use this event to customise the tool tip
+        {
+            using (SolidBrush b = new SolidBrush(Color.Black))
+                e.Graphics.FillRectangle(b, e.Bounds.X, e.Bounds.Y, e.Bounds.Width + 2, e.Bounds.Height + 2);
+
+            using (SolidBrush b = new SolidBrush(SystemColors.Info))
+                e.Graphics.FillRectangle(b, e.Bounds.X + 1, e.Bounds.Y + 1, e.Bounds.Width, e.Bounds.Height);
+
+            e.Graphics.DrawString
+            (
+                e.ToolTipText,
+                Program.MainForm.Font,
+                Brushes.Black,
+                new RectangleF(new PointF(4, 4), new SizeF (e.Bounds.Width - 4, e.Bounds.Height - 4))
+            );
+        }
     }
 
     public static class Web

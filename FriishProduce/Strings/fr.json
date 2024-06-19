@@ -89,6 +89,9 @@
 			"e_009": "Échec de modification du fichier du mode d'emploi.\nLa sauvegarde du fichier WAD se poursuivra comme prévu.",
 			"e_010": "Le fichier « {0} » n'a pas été trouvé dans son chemin original. Il s'agit qu'il peut avoir été déplacé ou supprimé.",
 			"e_011": "Le dossier « {0} » n'a pas été trouvé dans son chemin original. Il s'agit qu'il peut avoir été déplacé ou supprimé."
+		},
+		"tooltips": {
+			"000": "Nom d'aperçu de la chaîne sur le menu Wii.",
 		}
 	},
 
@@ -133,7 +136,7 @@
 			"tab_main_details": "Détails clés",
 			"tab_customization": "Personnalisation de la chaîne",
 			"rom_info": "Information de la ROM",
-			"base": "Chaîne d'origine",
+			"wad_base": "Chaîne d'origine",
 			"content_options": "Options de contenu",
 			"channel": "Métadonnées de la chaîne",
 			"banner": "Détails du banner",
@@ -154,15 +157,15 @@
 			"import_patch": "Utiliser un patch",
 			"injection_method": "Méthode d'injection :",
 			"injection_method_options": "Réglages de méthode d'injection",
-			"forwarder_root_device": "Périphérique de stockage racine",
-			"forwarder_console": "Système Wii cible",
+			"forwarder_root_device": "Périphérique de stockage racine :",
+			"forwarder_console": "Système Wii cible :",
 			"use_online_wad": "Utiliser une chaîne en ligne",
 			"import_wad_from_file": "Utiliser un fichier WAD",
 			"manual_type": "Mode d'emploi :",
 			"manual_type2": "Importer un mode d'emploi personnalisé",
 			"base_name": "Titre du jeu :",
 			"title_id": "Identifiant :",
-			"short_channel_name": "Titre abrégé :",
+			"channel_name": "Nom de la chaîne :",
 			"full_banner_name": "Titre complet :",
 			"year": "Année :",
 			"players": "Joueurs :",

@@ -33,14 +33,8 @@ namespace FriishProduce.Injectors
             // -----------------------
             // Replace original ROM
             // -----------------------
-
-            // Normal
-            // ****************
-            if (target.Length == 8) MainContent.ReplaceFile(MainContent.GetNodeIndex(target), ROM.Bytes);
-
-            // LZ77 compression
-            // ****************
-            else if (target.ToUpper().StartsWith("LZ77"))
+            #region -- LZ77 compression --
+            if (target.ToUpper().StartsWith("LZ77"))
             {
                 File.WriteAllBytes(Paths.WorkingFolder + "rom", ROM.Bytes);
 
@@ -48,21 +42,49 @@ namespace FriishProduce.Injectors
                 (
                     FileDatas.Apps.gbalzss,
                     "gbalzss",
-                    "e rom LZ77out.rom"
+                    "e rom lz77.rom"
                 );
-                if (!File.Exists(Paths.WorkingFolder + "LZ77out.rom")) throw new Exception(Program.Lang.Msg(2, true));
+                if (!File.Exists(Paths.WorkingFolder + "lz77.rom")) throw new Exception(Program.Lang.Msg(2, true));
 
-                MainContent.ReplaceFile(MainContent.GetNodeIndex(target), Paths.WorkingFolder + "LZ77out.rom");
+                MainContent.ReplaceFile(MainContent.GetNodeIndex(target), Paths.WorkingFolder + "lz77.rom");
+            }
+            #endregion
 
-                if (File.Exists(Paths.WorkingFolder + "LZ77out.rom"))
-                    File.Delete(Paths.WorkingFolder + "LZ77out.rom");
-                if (File.Exists(Paths.WorkingFolder + "rom"))
-                    File.Delete(Paths.WorkingFolder + "rom");
+            #region -- LZH8 compression --
+            else if (target.ToUpper().StartsWith("LZH8"))
+            {
+                File.WriteAllBytes(Paths.WorkingFolder + "rom", ROM.Bytes);
+
+                Utils.Run
+                (
+                    FileDatas.Apps.lzh8_cmp_nonstrict,
+                    "lzh8",
+                    "rom lzh8.rom"
+                );
+                if (!File.Exists(Paths.WorkingFolder + "lzh8.rom")) throw new Exception(Program.Lang.Msg(2, true));
+
+                MainContent.ReplaceFile(MainContent.GetNodeIndex(target), Paths.WorkingFolder + "lzh8.rom");
+            }
+            #endregion
+
+            #region -- Normal --
+            else if (target.Length == 8)
+            {
+                MainContent.ReplaceFile(MainContent.GetNodeIndex(target), ROM.Bytes);
+            }
+            #endregion
+
+            else
+            {
+                throw new Exception(Program.Lang.Msg(12, true));
             }
 
-            else throw new Exception(Program.Lang.Msg(2, true));
+            // Delete temporary files
+            // ****************
+            foreach (var file in new string[] { Paths.WorkingFolder + "rom", Paths.WorkingFolder + "lz77.rom", Paths.WorkingFolder + "lzh8.rom" })
+                if (File.Exists(file)) File.Delete(file);
 
-            // Dummify unused files
+            // Dummify unused files in emulator
             // ****************
             foreach (string file in MainContent.StringTable)
             {

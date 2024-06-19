@@ -83,6 +83,26 @@ namespace FriishProduce.FileDatas {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] lzh8_cmp {
+            get {
+                object obj = ResourceManager.GetObject("lzh8_cmp", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] lzh8_cmp_nonstrict {
+            get {
+                object obj = ResourceManager.GetObject("lzh8_cmp_nonstrict", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] romc {
             get {
                 object obj = ResourceManager.GetObject("romc", resourceCulture);

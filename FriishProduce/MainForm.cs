@@ -107,10 +107,10 @@ namespace FriishProduce
             toolbarOpenProject.Text = menu_open_project.Text;
             toolbarSaveAs.Text = menu_save_project_as.Text;
             toolbarSaveAsWAD.Text = menu_save_as_wad.Text;
-            toolbarOpenROM.Text = menu_open_gamefile.Text;
+            toolbarOpenGameFile.Text = menu_open_gamefile.Text;
             toolbarOpenImage.Text = menu_open_image.Text;
             toolbarCloseProject.Text = menu_close_project.Text;
-            toolbarUseLibRetro.Text = menu_retrieve_gamedata_online.Text;
+            toolbarRetrieveGameData.Text = menu_retrieve_gamedata_online.Text;
             ToolStrip_Settings.Text = menu_settings.Text;
             BrowseROM.Title = menu_open_gamefile.Text;
             BrowseImage.Title = menu_open_image.Text;
@@ -135,7 +135,7 @@ namespace FriishProduce
                     (tabPage.Form as ProjectForm).RefreshForm();
             }
 
-            MenuStrip.Font = ToolStrip.Font;
+            ToolStrip.Font = MenuStrip.Font;
 
             if (Logo.Location.X == 0 || Logo.Location.Y == 0) Logo.Location = new Point((MainPanel.Width / 2) - (Logo.Width / 2), (MainPanel.Height / 2) - (Logo.Height / 2));
 
@@ -186,18 +186,17 @@ namespace FriishProduce
         {
             // Toggle visibility of Open ROM/Image buttons
             // ********
-            if (sender != tabControl.TabPages[0]) menu_open_gamefile.Enabled = tabControl.TabPages.Count > 1;
-            else menu_open_gamefile.Enabled = true;
+            menu_open_gamefile.Enabled = tabControl.TabPages.Count > 1 || e.GetType() != typeof(FormClosedEventArgs);
 
             // Toggle visibility of Export WAD button
             // Toggle visibility of Download LibRetro data button
             // ********
             if (!menu_open_gamefile.Enabled)
             {
-                toolbarUseLibRetro.Enabled = menu_retrieve_gamedata_online.Enabled = false;
-                toolbarOpenImage.Enabled = menu_open_image.Enabled = false;
+                menu_retrieve_gamedata_online.Enabled = false;
+                menu_open_image.Enabled = false;
                 menu_save_project_as.Enabled = false;
-                toolbarSaveAsWAD.Enabled = menu_save_as_wad.Enabled = false;
+                menu_save_as_wad.Enabled = false;
 
                 tabControl.Visible = false;
                 MainPanel.Visible = true;
@@ -205,13 +204,12 @@ namespace FriishProduce
 
             else
             {
-                toolbarUseLibRetro.Enabled = menu_retrieve_gamedata_online.Enabled = (tabControl.SelectedForm as ProjectForm).ToolbarButtons[0];
-                toolbarOpenImage.Enabled = menu_open_image.Enabled = !(tabControl.SelectedForm as ProjectForm).IsEmpty;
-                toolbarSaveAsWAD.Enabled = menu_save_as_wad.Enabled = (tabControl.SelectedForm as ProjectForm).IsExportable;
+                menu_retrieve_gamedata_online.Enabled = (tabControl.SelectedForm as ProjectForm).ToolbarButtons[0];
+                menu_open_image.Enabled = !(tabControl.SelectedForm as ProjectForm).IsEmpty;
+                menu_save_as_wad.Enabled = (tabControl.SelectedForm as ProjectForm).IsExportable;
             }
 
-            toolbarCloseProject.Enabled = menu_close_project.Enabled
-            = toolbarOpenROM.Enabled = menu_open_gamefile.Enabled;
+            menu_close_project.Enabled = menu_open_gamefile.Enabled;
 
             // Context menu
             // ********
@@ -223,7 +221,11 @@ namespace FriishProduce
                 }
 
             toolbarSaveAs.Enabled = menu_save_project_as.Enabled;
-            toolbarUseLibRetro.Enabled = menu_retrieve_gamedata_online.Enabled;
+            toolbarCloseProject.Enabled = menu_close_project.Enabled;
+            toolbarOpenGameFile.Enabled = menu_open_gamefile.Enabled;
+            toolbarOpenImage.Enabled = menu_open_image.Enabled;
+            toolbarRetrieveGameData.Enabled = menu_retrieve_gamedata_online.Enabled;
+            toolbarSaveAsWAD.Enabled = menu_save_as_wad.Enabled;
         }
 
         private void MainForm_Closing(object sender, FormClosingEventArgs e)
@@ -264,6 +266,7 @@ namespace FriishProduce
         private void addTab(Platform platform, Project x = null)
         {
             ProjectForm p = new(platform, null, x);
+            p.Shown += TabChanged;
             p.FormClosed += TabChanged;
             tabControl.TabPages.Add(p);
 
@@ -310,9 +313,10 @@ namespace FriishProduce
             if (BrowseROM.ShowDialog() == DialogResult.OK && tabControl.SelectedForm != null)
             {
                 var p = tabControl.SelectedForm as ProjectForm;
+                p.IsEmpty = false;
                 p.LoadROM(BrowseROM.FileName, Properties.Settings.Default.auto_retrieve_game_data);
 
-                toolbarUseLibRetro.Enabled = menu_retrieve_gamedata_online.Enabled = p.ToolbarButtons[0];
+                toolbarRetrieveGameData.Enabled = menu_retrieve_gamedata_online.Enabled = p.ToolbarButtons[0];
             }
         }
 
@@ -323,7 +327,7 @@ namespace FriishProduce
             var currentForm = tabControl.SelectedForm as ProjectForm;
 
             SaveWAD.FileName = currentForm.GetName();
-            if (SaveWAD.ShowDialog() == DialogResult.OK) currentForm.SaveToWAD(SaveProject.FileName);
+            if (SaveWAD.ShowDialog() == DialogResult.OK) currentForm.SaveToWAD(SaveWAD.FileName);
         }
 
         private void OpenImage_Click(object sender, EventArgs e)
@@ -399,7 +403,7 @@ namespace FriishProduce
                     addTab(project.Platform, project);
                 }
 
-                catch (Exception ex)
+                catch
                 {
                     MessageBox.Show("Not a valid project file!", MessageBox.Buttons.Ok, MessageBox.Icons.Error);
                 }

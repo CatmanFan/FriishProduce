@@ -196,6 +196,8 @@ namespace FriishProduce
         /// <param name="isError">Determines if the message should be drawn from the errors category instead.</param>
         public string Msg(int number, bool isError = false) => String((isError ? "e_" : null) + number.ToString("000"), "messages");
 
+        public string ToolTip(int number) => String(number.ToString("000"), "tooltips");
+
         /// <summary>
         /// Returns a localized string which changes depending on a boolean condition. This is the name of the string suffixed with "0" if false, or "1" if true.
         /// </summary>
@@ -253,7 +255,8 @@ namespace FriishProduce
                 var path = sectionName.ToLower() == "main"
                               || sectionName.ToLower() == "filters"
                               || sectionName.ToLower() == "platforms"
-                              || sectionName.ToLower() == "messages" ? target.global : target.strings;
+                              || sectionName.ToLower() == "messages"
+                              || sectionName.ToLower() == "tooltips" ? target.global : target.strings;
 
                 string result = null;
 

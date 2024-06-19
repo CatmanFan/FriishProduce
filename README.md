@@ -66,8 +66,8 @@ This program uses the following third-party components and apps:
 * [Static WAD Base](https://github.com/Brawl345/customizemii/blob/master/Base_WADs/StaticBase.wad) from **CustomizeMii**.
 
 For icons and interface:
+* **[Silk icons](https://github.com/legacy-icons/famfamfam-silk)** by Mark James.
 * **[MdiTabCtrl](https://github.com/JacksiroKe/MdiTabCtrl)** by Jack Siro.
-* **[Fugue Icons](https://p.yusukekamiyamane.com/)** by Yusuke Kamiyamane (CC BY 3.0).
 * **[SCE-PS3 Rodin LATIN](https://github.com/skrptktty/ps3-firmware-beginners-luck/blob/master/PS3_411/update_files/dev_flash/data/font/SCE-PS3-RD-R-LATIN.TTF) font** from [this repo](https://github.com/skrptktty/ps3-firmware-beginners-luck) (Solar Storm License).
 
 I would also like to thank the following people:

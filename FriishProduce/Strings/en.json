@@ -104,7 +104,13 @@
 			"e_008": "Failed to download WAD.",
 			"e_009": "Failed to replace the manual file.\nExportation to WAD will continue as intended.",
 			"e_010": "The file \"{0}\" could not be found in its original path. It may have been deleted or moved.",
-			"e_011": "The folder \"{0}\" could not be found in its original path. It may have been deleted or moved."
+			"e_011": "The folder \"{0}\" could not be found in its original path. It may have been deleted or moved.",
+			"e_012": "The ROM injection method for this WAD is not supported for this version.",
+		},
+		"tooltips": {
+			"000": "Name displayed on the Wii Menu, when hovering over the channnel icon.",
+			"001": "Channel's title ID.\nIf another one already exists with the same ID, installing this one will overwrite it!",
+			"002": "Channel's target region. It is generally recommended to set it to the region of your Wii console, instead of 'region free'.\nSetting the wrong region setting will trigger a 'This channel cannot be used' error if the channel is opened on a region-locked Wii.",
 		}
 	},
 
@@ -147,7 +153,7 @@
 			"tab_main_details": "Main details",
 			"tab_customization": "Customization",
 			"rom_info": "ROM information",
-			"base": "Base",
+			"wad_base": "Base WAD information",
 			"content_options": "Content options",
 			"channel": "Channel metadata",
 			"banner": "Banner details",
@@ -169,8 +175,8 @@
 			"import_patch": "Import patch",
 			"injection_method": "Injection method:",
 			"injection_method_options": "Injection method options",
-			"forwarder_root_device": "Root storage device",
-			"forwarder_console": "Console type",
+			"forwarder_root_device": "Root storage device:",
+			"forwarder_console": "Console type:",
 			"use_online_wad": "Use an online base",
 			"import_wad_from_file": "Use an offline WAD file",
 			"manual_type": "Operations manual:",
@@ -179,7 +185,7 @@
 			"manual_type2": "Import custom manual",
 			"base_name": "Base name:",
 			"title_id": "Title ID:",
-			"short_channel_name": "Short name:",
+			"channel_name": "Channel name:",
 			"full_banner_name": "Full name:",
 			"year": "Year:",
 			"players": "Players:",

@@ -64,7 +64,7 @@ namespace FriishProduce
                 {
                     Random.Visible =
                     groupBox1.Enabled =
-                    groupBox2.Enabled =
+                    wad_base.Enabled =
                     groupBox3.Enabled =
                     groupBox4.Enabled =
                     groupBox5.Enabled =
@@ -255,7 +255,7 @@ namespace FriishProduce
 
             SetROMDataText();
 
-            var baseMax = Math.Max(base_name.Location.X + base_name.Width - 4, title_id.Location.X + title_id.Width - 4);
+            var baseMax = Math.Max(base_name.Location.X + base_name.Width - 4, title_id.Location.X + title_id.Width - 4) + 2;
             baseName.Location = new Point(baseMax, base_name.Location.Y);
             baseID.Location = new Point(baseMax, title_id.Location.Y);
 
@@ -296,6 +296,12 @@ namespace FriishProduce
                     TargetRegion.Items.Add(Program.Lang.String("region_j"));
                     break;
             }
+
+            toolTip = new CustomToolTip();
+            toolTip.SetToolTip(channel_title, Program.Lang.ToolTip(0));
+            toolTip.SetToolTip(label15, Program.Lang.ToolTip(1));
+            toolTip.SetToolTip(tid, Program.Lang.ToolTip(1));
+            toolTip.SetToolTip(TargetRegion, Program.Lang.ToolTip(2));
             #endregion
 
             baseName.Font = new Font(baseName.Font, FontStyle.Bold);
@@ -384,7 +390,7 @@ namespace FriishProduce
             }
 
             injection_methods.SelectedIndex = 0;
-            label3.Enabled = injection_methods.Enabled = injection_methods.Items.Count > 1;
+            injection_method.Enabled = injection_methods.Enabled = injection_methods.Items.Count > 1;
             released.Maximum = DateTime.Now.Year;
 
             if (Properties.Settings.Default.image_fit_aspect_ratio) image_fit.Checked = true; else image_stretch.Checked = true;
@@ -422,7 +428,6 @@ namespace FriishProduce
             {
                 rom.FilePath = ROMpath;
                 LoadROM(rom.FilePath, Properties.Settings.Default.auto_retrieve_game_data);
-                randomTID();
             }
         }
 
@@ -568,19 +573,21 @@ namespace FriishProduce
 
                 contentOptions = project.ContentOptions;
 
-                IsEmpty = false;
 
                 patch = File.Exists(project.Patch) ? project.Patch : null;
                 Patch.Checked = !string.IsNullOrWhiteSpace(project.Patch);
                 LoadManual(project.Manual.Type, project.Manual.File);
 
-                project = null;
             }
 
             LinkSaveData.Checked = project == null ? Properties.Settings.Default.link_save_data : project.LinkSaveDataTitle;
             FStorage_USB.Checked = project == null ? Options.FORWARDER.Default.root_storage_device.ToLower().Contains("usb") : project.ForwarderOptions.Item1;
             FStorage_SD.Checked = !FStorage_USB.Checked;
             toggleSwitch1.Checked = project == null ? Options.FORWARDER.Default.nand_loader.ToLower().Contains("vwii") : project.ForwarderOptions.Item2;
+
+            IsEmpty = project == null;
+            IsModified = false;
+            project = null;
         }
 
         // -----------------------------------
@@ -605,7 +612,7 @@ namespace FriishProduce
             {
                 platform != Platform.Flash
                 && platform != Platform.RPGM
-                && (rom?.Bytes != null || !string.IsNullOrWhiteSpace(rom?.FilePath)), // LibRetro / game data
+                && rom?.FilePath != null, // LibRetro / game data
 
                 platform != Platform.Flash
                 && platform != Platform.RPGM
@@ -620,7 +627,7 @@ namespace FriishProduce
             if (platform == Platform.RPGM && (rom as RPGM)?.GetTitle(rom.FilePath) != null)
                 software_name.Text = string.Format(Program.Lang.String("software_name", Name), (rom as RPGM).GetTitle(rom.FilePath)?.Replace(Environment.NewLine, " - ") ?? Program.Lang.String("none"));
             else
-                software_name.Text = string.Format(Program.Lang.String("software_name", Name), rom.CleanTitle?.Replace(Environment.NewLine, " - ") ?? Program.Lang.String("none"));
+                software_name.Text = string.Format(Program.Lang.String("software_name", Name), rom?.CleanTitle?.Replace(Environment.NewLine, " - ") ?? Program.Lang.String("none"));
 
             label11.Text = !string.IsNullOrWhiteSpace(patch) ? Path.GetFileName(patch) : Program.Lang.String("none");
             label11.Enabled = !string.IsNullOrWhiteSpace(patch);
@@ -1053,9 +1060,6 @@ namespace FriishProduce
             }
 
             rom.FilePath = ROMpath;
-
-            IsEmpty = false;
-            IsModified = true;
 
             randomTID();
             patch = null;
@@ -1639,6 +1643,7 @@ namespace FriishProduce
             resetBannerPreview();
             linkSaveDataTitle();
             resetContentOptions();
+            refreshData();
         }
 
         private int emuVer
@@ -1768,6 +1773,7 @@ namespace FriishProduce
             editContentOptions.Enabled = contentOptionsForm != null;
 
             showSaveData = isVC || platform == Platform.Flash;
+            toggleSwitchL1.Visible = toggleSwitch1.Visible = FStorage_SD.Visible = FStorage_USB.Visible = forwarder_console.Visible;
         }
         #endregion
 
@@ -1874,6 +1880,11 @@ namespace FriishProduce
                 f.Controls.Add(p);
                 f.ShowDialog();
             }
+        }
+
+        private void toggleSwitchL1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

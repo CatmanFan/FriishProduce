@@ -39,7 +39,12 @@ namespace FriishProduce
                 // --------------------------------------------------
                 // SAVEICON : DEFINE POSITION AND SIZE VARIABLES
                 // --------------------------------------------------
-                (int X, int Y, int width, int height) size = platform == Platform.SMS || platform == Platform.SMD ? (2, new Random().Next(8, 9), 44, 31) : platform == Platform.PCE ? (6, 9, 36, 30) : (4, 9, 40, 30);
+                (int X, int Y, int width, int height) = platform switch
+                {
+                    Platform.SMS or Platform.SMD => (2, new Random().Next(8, 9), 44, 31),
+                    Platform.PCE => (6, 9, 36, 30),
+                    _ => (4, 9, 40, 30)
+                };
 
                 // --------------------------------------------------
                 // SAVEICON : Fit by width/height variables
@@ -47,19 +52,22 @@ namespace FriishProduce
 
                 if (FitAspectRatio && Source != null)
                 {
-                    float maxWidth = size.width;
+                    float maxWidth = width;
                     float ratio = Math.Min(maxWidth / Source.Width, maxWidth / Source.Height);
 
-                    size =
+                    width = Convert.ToInt32(Math.Round(Source.Width * ratio));
+                    height = Convert.ToInt32(Math.Round(Source.Height * ratio));
+
+                    return
                     (
-                        Convert.ToInt32(Math.Round(maxWidth - size.width) / 2) + Convert.ToInt32(Math.Round((48 - maxWidth) / 2)),
-                        Convert.ToInt32(Math.Round(maxWidth - size.height) / 2) + Convert.ToInt32(Math.Round((48 - maxWidth) / 2)),
-                        Convert.ToInt32(Math.Round(Source.Width * ratio)),
-                        Convert.ToInt32(Math.Round(Source.Height * ratio))
+                        Convert.ToInt32((maxWidth - width) / 2) + Convert.ToInt32((48 - maxWidth) / 2),
+                        Convert.ToInt32((maxWidth - height) / 2) + Convert.ToInt32((48 - maxWidth) / 2) + 1,
+                        width,
+                        height
                     );
                 }
 
-                return size;
+                return (X, Y, width, height);
             }
         }
 
