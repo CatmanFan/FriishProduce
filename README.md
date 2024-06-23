@@ -84,15 +84,15 @@ I would also like to thank the following people:
 * **[Snes9x GX](https://github.com/dborth/snes9xgx)** (dborth et al.)
 * **[Snes9x RX](https://github.com/NiuuS/Snes9xRX)** (NiuuS et al.)
 * **[Snes9x TX / Snes9xGX-Mushroom](https://gbatemp.net/threads/snes9xgx-mushroom.558500/)** (Tanooki16)
-* **[Visual Boy Advance GX](https://github.com/dborth/vbagx)** (dborth et al.) -->
-* **[mGBA Wii](https://github.com/mgba-emu/mgba)** (endrift et al.) -->
+<!-- * **[Visual Boy Advance GX](https://github.com/dborth/vbagx)** (dborth et al.) -->
+<!-- * **[mGBA Wii](https://github.com/mgba-emu/mgba)** (endrift et al.) -->
 * **[Wii64 1.3 MOD](https://github.com/saulfabregwiivc/Wii64/tree/wii64-wiiflow)** (Wii64 Team, forked by saulfabreg)
 * **[Not64](https://github.com/extremscorner/not64)** (Extrems)
 * **[Mupen64GC-FIX94](https://github.com/FIX94/mupen64gc-fix94)** (Wii64 Team, forked by FIX94)
 * **[Genesis Plus GX](https://github.com/ekeeke/Genesis-Plus-GX)** (eke-eke et al.)
 * **[WiiSX](https://github.com/emukidid/pcsxgc)** (Wii64 Team)
 * **[EasyRPG Player](https://github.com/EasyRPG/Player)** (EasyRPG Team)
-<!-- * **[WiiStation / WiiSXRX_2022](https://github.com/xjsxjs197/WiiSXRX_2022)** (xjsxjs197, forked from NiuuS' WiiSX RX) -->
+* **[WiiStation / WiiSXRX_2022](https://github.com/xjsxjs197/WiiSXRX_2022)** (xjsxjs197, forked from NiuuS' WiiSX RX) -->
 <!-- * **[WiiMednafen](https://github.com/raz0red/wii-mednafen)** (raz0red) -->
 
 ### License

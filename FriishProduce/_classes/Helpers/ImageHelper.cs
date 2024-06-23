@@ -794,9 +794,10 @@ namespace FriishProduce
 
         public void Dispose()
         {
-            VCPic.Dispose();
-            IconVCPic.Dispose();
-            SaveIconPic.Dispose();
+            if (Source != null) Source.Dispose();
+            if (VCPic != null) VCPic.Dispose();
+            if (IconVCPic != null) IconVCPic.Dispose();
+            if (SaveIconPic != null) SaveIconPic.Dispose();
         }
     }
 }

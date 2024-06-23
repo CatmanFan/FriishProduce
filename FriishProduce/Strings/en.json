@@ -110,9 +110,9 @@
 		"tooltips": {
 			"000": "Name displayed on the Wii Menu, when hovering over the channnel icon.",
 			"001": "Channel's title ID.\nIf another one already exists with the same ID, installing this one will overwrite it!",
-			"002": "Channel's target region. It is generally recommended to set it to the region of your Wii console, instead of 'region free'.\nSetting the wrong region setting will trigger a 'This channel cannot be used' error\nif the channel is opened on a region-locked Wii.",
+			"002": "Channel's target region. It is generally recommended to set it to the region of your Wii console, instead of 'region free'. Setting the wrong region setting will trigger a 'This channel cannot be used' error if the channel is opened on a region-locked Wii.",
 			"003": "Full name displayed in the Data Management settings on the Wii Menu.",
-			"004": "Specifies whether to automatically fill in the savedata title using the channel's name\nand the second line of the banner's full title (if it is multiline)."
+			"004": "Specifies whether to automatically fill in the savedata title using the channel's name and the second line of the banner's full title (if it is multiline)."
 		}
 	},
 
@@ -137,6 +137,7 @@
 		"settingsform": {
 		    "application": "Application",
 			"default_settings": "Default settings",
+			"default_injection_methods": "Default injection methods",
 			"language": "Language",
 			"system_default": "System default",
 			"updater": "Updater",
@@ -172,7 +173,7 @@
 			"image_interpolation_mode7": "High Quality Bicubic",
 			"image_stretch": "Stretch image",
 			"image_fit": "Fit aspect ratio",
-			"filename": "Filename: {0}",
+			"filename": "Filename:",
 			"software_name": "Software name: {0}",
 			"import_patch": "Import patch",
 			"injection_method": "Injection method:",

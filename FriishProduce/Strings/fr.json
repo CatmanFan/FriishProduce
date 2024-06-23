@@ -117,6 +117,7 @@
 		"settingsform": {
 		    "application": "Application",
 			"default_settings": "Réglages par défaut",
+			"default_injection_methods": "Méthodes d'injection par défaut",
 			"language": "Langue",
 			"system_default": "Système",
 			"updater": "Mises à jour",
@@ -152,7 +153,7 @@
 			"image_interpolation_mode7": "Bicubique de haute qualité",
 			"image_stretch": "Étirer l'image",
 			"image_fit": "Conserver les proportions",
-			"filename": "Nom du fichier : {0}",
+			"filename": "Nom du fichier :",
 			"software_name": "Nom complet du logiciel : {0}",
 			"import_patch": "Utiliser un patch",
 			"injection_method": "Méthode d'injection :",

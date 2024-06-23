@@ -14,8 +14,8 @@ namespace FriishProduce
     {
         private bool isShown = false;
         private bool isDirty = false;
-        private string NodeName { get; set; }
-        private bool NodeLocked { get; set; }
+        private bool nodeLocked = false;
+        private string nodeName;
 
         public SettingsForm()
         {
@@ -43,30 +43,19 @@ namespace FriishProduce
             Program.Lang.Control(vc_neo);
             Program.Lang.Control(adobe_flash);
 
-            NodeLocked = true;
-            try
-            {
-                foreach (TreeNode node in TreeView.Nodes)
-                {
-                    TreeView.SelectedNode = node;
-                    if (node.Name == NodeName) break;
-                    if (TreeView.SelectedNode.Nodes.Count > 1) TreeView.SelectedNode = node.Nodes.Cast<TreeNode>().First(n => n.Name == NodeName);
-                }
-            }
-            catch { TreeView.SelectedNode = TreeView.Nodes[0]; }
-            NodeLocked = false;
-
             Text = Program.Lang.String("settings");
             TreeView.Nodes[0].Text = Program.Lang.String(TreeView.Nodes[0].Tag.ToString(), Tag.ToString());
             TreeView.Nodes[1].Text = Program.Lang.String(TreeView.Nodes[1].Tag.ToString(), Tag.ToString());
+            TreeView.Nodes[2].Text = Program.Lang.String(TreeView.Nodes[2].Tag.ToString(), Tag.ToString());
             TreeView.Nodes[1].Expand();
-            TreeView.Nodes[1].Nodes[0].Text = Program.Lang.Console(Platform.NES);
-            TreeView.Nodes[1].Nodes[1].Text = Program.Lang.Console(Platform.N64);
-            TreeView.Nodes[1].Nodes[2].Text = Program.Lang.String("group1", "platforms");
-            TreeView.Nodes[1].Nodes[3].Text = Program.Lang.Console(Platform.PCE);
-            TreeView.Nodes[1].Nodes[4].Text = Program.Lang.Console(Platform.NEO);
-            TreeView.Nodes[1].Nodes[5].Text = Program.Lang.Console(Platform.Flash);
-            TreeView.Nodes[1].Nodes[6].Text = Program.Lang.String("forwarders", "platforms");
+            TreeView.Nodes[1].Nodes[0].Text = Program.Lang.String("vc");
+            TreeView.Nodes[1].Nodes[0].Nodes[0].Text = Program.Lang.Console(Platform.NES);
+            TreeView.Nodes[1].Nodes[0].Nodes[1].Text = Program.Lang.Console(Platform.N64);
+            TreeView.Nodes[1].Nodes[0].Nodes[2].Text = default_injection_method_sega.Text = Program.Lang.String("group1", "platforms");
+            TreeView.Nodes[1].Nodes[0].Nodes[3].Text = Program.Lang.Console(Platform.PCE);
+            TreeView.Nodes[1].Nodes[0].Nodes[4].Text = Program.Lang.Console(Platform.NEO);
+            TreeView.Nodes[1].Nodes[1].Text = Program.Lang.Console(Platform.Flash);
+            TreeView.Nodes[1].Nodes[2].Text = Program.Lang.String("forwarders", "platforms");
 
             // -----------------------------
 
@@ -95,6 +84,36 @@ namespace FriishProduce
             default_save_as_parameters.Font = new Font(default_save_as_parameters.Font, FontStyle.Bold);
 
             flash_save_data_enable.Text = vc_pce_backupram.Text = vc_sega_save_sram.Text = Program.Lang.String("save_data_enable", "projectform");
+
+            // -----------------------------
+
+            injection_methods_nes.Items.Clear();
+            injection_methods_nes.Items.Add(Program.Lang.String("vc"));
+            injection_methods_nes.Items.Add(Forwarder.List[0].Name);
+            injection_methods_nes.Items.Add(Forwarder.List[1].Name);
+            injection_methods_nes.Items.Add(Forwarder.List[2].Name);
+
+            injection_methods_snes.Items.Clear();
+            injection_methods_snes.Items.Add(Program.Lang.String("vc"));
+            injection_methods_snes.Items.Add(Forwarder.List[3].Name);
+            injection_methods_snes.Items.Add(Forwarder.List[4].Name);
+            injection_methods_snes.Items.Add(Forwarder.List[5].Name);
+
+            injection_methods_n64.Items.Clear();
+            injection_methods_n64.Items.Add(Program.Lang.String("vc"));
+            injection_methods_n64.Items.Add(Forwarder.List[8].Name);
+            injection_methods_n64.Items.Add(Forwarder.List[9].Name);
+            injection_methods_n64.Items.Add(Forwarder.List[10].Name);
+            injection_methods_n64.Items.Add(Forwarder.List[11].Name);
+
+            injection_methods_sega.Items.Clear();
+            injection_methods_sega.Items.Add(Program.Lang.String("vc"));
+            injection_methods_sega.Items.Add(Forwarder.List[7].Name);
+
+            injection_methods_nes.SelectedIndex = Default.default_injection_method_nes;
+            injection_methods_snes.SelectedIndex = Default.default_injection_method_snes;
+            injection_methods_n64.SelectedIndex = Default.default_injection_method_n64;
+            injection_methods_sega.SelectedIndex = Default.default_injection_method_sega;
 
             // -----------------------------
 
@@ -169,18 +188,20 @@ namespace FriishProduce
             toggleSwitch1.Checked = FORWARDER.Default.nand_loader.ToLower() == "vwii";
             toggleSwitch2.Checked = bool.Parse(FORWARDER.Default.show_bios_screen);
             FStorage_USB.Checked = !FStorage_SD.Checked;
+            default_save_as_filename_tb.Text = Default.default_save_as_filename;
+
             #region use_custom_database
             bool clearCustomDatabase = !File.Exists(Default.custom_database);
             use_custom_database.Checked = File.Exists(Default.custom_database);
 
-        #if DEBUG
+#if DEBUG
             use_custom_database.Visible = true;
             GetBanners.Visible = true;
-        #else
+#else
             // use_custom_database.Visible = false;
             // clearCustomDatabase = true;
             GetBanners.Visible = false;
-        #endif
+#endif
 
             if (clearCustomDatabase && use_custom_database.Checked)
             {
@@ -189,7 +210,6 @@ namespace FriishProduce
                 Default.Save();
             }
             #endregion
-            default_save_as_filename_tb.Text = Default.default_save_as_filename;
 
             // NES
             vc_nes_palettelist.SelectedIndex = int.Parse(VC_NES.Default.palette);
@@ -241,7 +261,12 @@ namespace FriishProduce
             // -----------------------------
         }
 
-        private void Loading(object sender, EventArgs e) { TreeView.Select(); RefreshForm(); isShown = true; }
+        private void Loading(object sender, EventArgs e)
+        {
+            TreeView.Select();
+            RefreshForm();
+            isShown = true;
+        }
 
         private void CustomDatabase_CheckedChanged(object sender, EventArgs e)
         {
@@ -299,6 +324,11 @@ namespace FriishProduce
             Default.image_interpolation = image_interpolation_mode_list.SelectedIndex;
             Default.auto_retrieve_game_data = auto_retrieve_gamedata_online.Checked;
             Default.default_save_as_filename = default_save_as_filename_tb.Text;
+
+            Default.default_injection_method_nes = injection_methods_nes.SelectedIndex;
+            Default.default_injection_method_snes = injection_methods_snes.SelectedIndex;
+            Default.default_injection_method_n64 = injection_methods_n64.SelectedIndex;
+            Default.default_injection_method_sega = injection_methods_sega.SelectedIndex;
             Default.Save();
 
             FORWARDER.Default.root_storage_device = FStorage_SD.Checked ? "SD" : "USB";
@@ -426,7 +456,7 @@ namespace FriishProduce
 
         private void TreeView_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            if (!NodeLocked) NodeName = e.Node.Name;
+            if (!nodeLocked) nodeName = e.Node.Name;
 
             string v_selected = e.Node.Name.Substring(4).ToLower();
 
@@ -434,6 +464,7 @@ namespace FriishProduce
                 {
                     v_selected == "0",
                     v_selected == "1",
+                    v_selected == "2",
                     v_selected == "forwarders",
                     v_selected == "nes",
                     v_selected == "n64",
@@ -449,13 +480,14 @@ namespace FriishProduce
                 {
                     panel1.Visible = isVisible[0];
                     panel2.Visible = isVisible[1];
-                    forwarder.Visible = isVisible[2];
-                    vc_nes.Visible = isVisible[3];
-                    vc_n64.Visible = isVisible[4];
-                    vc_sega.Visible = isVisible[5];
-                    vc_pce.Visible = isVisible[6];
-                    vc_neo.Visible = isVisible[7];
-                    adobe_flash.Visible = isVisible[8];
+                    panel3.Visible = isVisible[2];
+                    forwarder.Visible = isVisible[3];
+                    vc_nes.Visible = isVisible[4];
+                    vc_n64.Visible = isVisible[5];
+                    vc_sega.Visible = isVisible[6];
+                    vc_pce.Visible = isVisible[7];
+                    vc_neo.Visible = isVisible[8];
+                    adobe_flash.Visible = isVisible[9];
                 }
             }
         }

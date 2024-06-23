@@ -220,12 +220,24 @@ namespace FriishProduce
         public static (int R, int G, int B) TextColor(int target)
         {
             var limit = target == 15 || target == 16 ? 0.5 : 0.75;
-            return GetBrightness(target) < limit || target == 4 || target == 2 ? (255, 255, 255) : (0, 0, 0);
+            return GetBrightness(target, 2) < limit || target == 4 || target == 2 ? (255, 255, 255) : (0, 0, 0);
         }
 
-        public static float GetBrightness(int target)
+        public static float GetBrightness(int target, int type)
         {
-            return (List[target].bgBottom.Item1 + List[target].bgBottom.Item2 + List[target].bgBottom.Item3) / 3f;
+            var t = type switch
+            {
+                1 => List[target].bgLogo,
+                2 => List[target].bgBottom,
+                3 => List[target].lines,
+                4 => List[target].topBorder,
+                5 => List[target].topBG,
+                6 => List[target].topText,
+                7 => TextColor(target),
+                _ => List[target].bg
+            };
+
+            return (t.R + t.G + t.B) / 3f;
         }
 
         /// <summary>

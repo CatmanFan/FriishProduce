@@ -78,7 +78,7 @@ namespace FriishProduce
 
         private void AutoSetStrip()
         {
-            foreach (ToolStripMenuItem section in MenuStrip.Items.OfType<ToolStripMenuItem>())
+            foreach (ToolStripMenuItem section in menuStrip.Items.OfType<ToolStripMenuItem>())
                 foreach (ToolStripItem item in section.DropDownItems.OfType<ToolStripItem>())
                     if (Program.Lang.StringCheck(item.Tag?.ToString().ToLower(), Name)) item.Text = Program.Lang.String(item.Tag?.ToString().ToLower(), Name);
 
@@ -135,7 +135,7 @@ namespace FriishProduce
                     (tabPage.Form as ProjectForm).RefreshForm();
             }
 
-            ToolStrip.Font = MenuStrip.Font;
+            toolStrip.Font = menuStrip.Font;
 
             if (Logo.Location.X == 0 || Logo.Location.Y == 0) Logo.Location = new Point((MainPanel.Width / 2) - (Logo.Width / 2), (MainPanel.Height / 2) - (Logo.Height / 2));
 
@@ -143,16 +143,14 @@ namespace FriishProduce
             {
                 MaximumSize = new Size
                 (
-                    MainPanel.Width + (ToolStrip.Dock == DockStyle.Right || ToolStrip.Dock == DockStyle.Left ? ToolStrip.Width - 8 : 16),
-                    MainPanel.Location.Y + MainPanel.Height + excessHeight
+                    MainPanel.Width + (toolStrip.Dock == DockStyle.Right || toolStrip.Dock == DockStyle.Left ? toolStrip.Width - 8 : 16),
+                    menuStrip.Height + toolStrip.Height + MainPanel.Height + 38
                 );
                 MinimumSize = Size = MaximumSize;
             }
 
-            tabControl.Size = new Size(MainPanel.Width, 1000);
+            tabControl.Size = MainPanel.Size;
         }
-
-        private int excessHeight = 40;
 
         public MainForm()
         {
@@ -161,7 +159,6 @@ namespace FriishProduce
 
             MaximumSize = new Size(0, 0);
             tabControl.Location = MainPanel.Location;
-            MainPanel.Height += excessHeight + 5;
             RefreshForm();
             CenterToScreen();
 
@@ -395,18 +392,22 @@ namespace FriishProduce
         {
             if (BrowseProject.ShowDialog() == DialogResult.OK)
             {
+                var project = new Project();
+
                 try
                 {
                     using Stream stream = File.Open(BrowseProject.FileName, FileMode.Open);
                     var binaryFormatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-                    var project = (Project)binaryFormatter.Deserialize(stream);
-                    addTab(project.Platform, project);
+                    project = (Project)binaryFormatter.Deserialize(stream);
                 }
 
                 catch
                 {
                     MessageBox.Show("Not a valid project file!", MessageBox.Buttons.Ok, MessageBox.Icons.Error);
+                    return;
                 }
+
+                addTab(project.Platform, project);
             }
         }
     }

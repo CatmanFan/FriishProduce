@@ -196,7 +196,29 @@ namespace FriishProduce
         /// <param name="isError">Determines if the message should be drawn from the errors category instead.</param>
         public string Msg(int number, bool isError = false) => String((isError ? "e_" : null) + number.ToString("000"), "messages");
 
-        public string ToolTip(int number) => String(number.ToString("000"), "tooltips");
+        public string ToolTip(int number)
+        {
+            int spaces = 0;
+            string text = "";
+            string input = String(number.ToString("000"), "tooltips");
+
+            for (int i = 0; i < input.Length; i++)
+            {
+                if (input[i] == ' ')
+                    spaces++;
+                else if (input[i] == '\n')
+                    spaces = 0;
+
+                if (spaces > 10)
+                {
+                    text += '\n';
+                    spaces = 0;
+                }
+                else text += input[i];
+            }
+
+            return text;
+        }
 
         /// <summary>
         /// Returns a localized string which changes depending on a boolean condition. This is the name of the string suffixed with "0" if false, or "1" if true.

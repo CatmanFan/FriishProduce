@@ -163,7 +163,7 @@
 			"image_interpolation_mode7": "고품질 고등차수보간",
 			"image_stretch": "이미지 늘리기",
 			"image_fit": "화면비 맞추기",
-			"filename": "파일이름: {0}",
+			"filename": "파일이름:",
 			"software_name": "소프트웨어 이름: {0}",
 			"import_patch": "패치 가져오기",
 			"injection_method": "주입 방법:",

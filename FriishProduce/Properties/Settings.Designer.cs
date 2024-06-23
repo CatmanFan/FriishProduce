@@ -142,5 +142,53 @@ namespace FriishProduce.Properties {
                 this["auto_update_check"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int default_injection_method_nes {
+            get {
+                return ((int)(this["default_injection_method_nes"]));
+            }
+            set {
+                this["default_injection_method_nes"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int default_injection_method_snes {
+            get {
+                return ((int)(this["default_injection_method_snes"]));
+            }
+            set {
+                this["default_injection_method_snes"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
+        public int default_injection_method_n64 {
+            get {
+                return ((int)(this["default_injection_method_n64"]));
+            }
+            set {
+                this["default_injection_method_n64"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int default_injection_method_sega {
+            get {
+                return ((int)(this["default_injection_method_sega"]));
+            }
+            set {
+                this["default_injection_method_sega"] = value;
+            }
+        }
     }
 }

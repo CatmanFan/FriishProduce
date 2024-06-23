@@ -59,7 +59,30 @@ namespace FriishProduce
         private static extern IntPtr AddFontMemResourceEx(IntPtr pbFont, uint cbFont,
             IntPtr pdv, [System.Runtime.InteropServices.In] ref uint pcFonts);
 
-        private FontFamily font;
+        private FontFamily _font;
+        private FontFamily font
+        {
+            get
+            {
+                if (_font == null)
+                {
+                    using (var fonts = new PrivateFontCollection())
+                    {
+                        byte[] fontData = Properties.Resources.Font;
+                        IntPtr fontPtr = System.Runtime.InteropServices.Marshal.AllocCoTaskMem(fontData.Length);
+                        System.Runtime.InteropServices.Marshal.Copy(fontData, 0, fontPtr, fontData.Length);
+                        uint dummy = 0;
+                        fonts.AddMemoryFont(fontPtr, Properties.Resources.Font.Length);
+                        AddFontMemResourceEx(fontPtr, (uint)Properties.Resources.Font.Length, IntPtr.Zero, ref dummy);
+                        System.Runtime.InteropServices.Marshal.FreeCoTaskMem(fontPtr);
+
+                        _font = fonts.Families[0];
+                    }
+                }
+
+                return _font;
+            }
+        }
         #endregion
 
         private (int, int) bannerType = (-1, -1);
@@ -73,21 +96,6 @@ namespace FriishProduce
             iconData.consoleImg = null;
             iconData.generatedImg = null;
             iconData.target = null;
-
-            #region Font
-            using (var fonts = new PrivateFontCollection())
-            {
-                byte[] fontData = Properties.Resources.Font;
-                IntPtr fontPtr = System.Runtime.InteropServices.Marshal.AllocCoTaskMem(fontData.Length);
-                System.Runtime.InteropServices.Marshal.Copy(fontData, 0, fontPtr, fontData.Length);
-                uint dummy = 0;
-                fonts.AddMemoryFont(fontPtr, Properties.Resources.Font.Length);
-                AddFontMemResourceEx(fontPtr, (uint)Properties.Resources.Font.Length, IntPtr.Zero, ref dummy);
-                System.Runtime.InteropServices.Marshal.FreeCoTaskMem(fontPtr);
-
-                font = fonts.Families[0];
-            }
-            #endregion
         }
 
         /// <summary>
@@ -168,7 +176,7 @@ namespace FriishProduce
             #endregion
 
             #region -- Define left text color and contents --
-            var leftTextColor = target == 2 ? Color.Black : target == 8 ? Color.FromArgb(90, 90, 90) : BannerSchemes.GetBrightness(target) < 0.8 ? Color.White : Color.FromArgb(50, 50, 50);
+            var leftTextColor = target == 2 ? Color.Black : target == 8 ? Color.FromArgb(90, 90, 90) : BannerSchemes.GetBrightness(target, 0) < 0.8 ? Color.White : Color.FromArgb(50, 50, 50);
 
             string released = lang == 1 ? "{0}年発売"
                              : lang == 2 ? "일본판 발매년도\r\n{0}년"
@@ -670,7 +678,7 @@ namespace FriishProduce
 
         public void Dispose()
         {
-            if (font != null) font.Dispose();
+            if (_font != null) _font.Dispose();
             if (banner != null) banner.Dispose();
             if (bannerLogo != null) bannerLogo.Dispose();
             if (iconData.consoleImg != null) iconData.consoleImg.Dispose();
@@ -682,7 +690,7 @@ namespace FriishProduce
                 }
             if (iconData.durationTimer != null) iconData.durationTimer.Dispose();
 
-            font = null;
+            _font = null;
             banner = null;
             bannerLogo = null;
             iconData.consoleImg = null;

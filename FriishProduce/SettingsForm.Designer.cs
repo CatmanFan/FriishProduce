@@ -121,6 +121,15 @@ namespace FriishProduce
             this.default_save_as_parameters = new System.Windows.Forms.Label();
             this.default_save_as_filename_tb = new System.Windows.Forms.TextBox();
             this.image_interpolation_mode = new System.Windows.Forms.GroupBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.default_injection_method_nes = new System.Windows.Forms.GroupBox();
+            this.injection_methods_nes = new System.Windows.Forms.ComboBox();
+            this.default_injection_method_n64 = new System.Windows.Forms.GroupBox();
+            this.injection_methods_n64 = new System.Windows.Forms.ComboBox();
+            this.default_injection_method_snes = new System.Windows.Forms.GroupBox();
+            this.injection_methods_snes = new System.Windows.Forms.ComboBox();
+            this.default_injection_method_sega = new System.Windows.Forms.GroupBox();
+            this.injection_methods_sega = new System.Windows.Forms.ComboBox();
             this.vc_n64_options.SuspendLayout();
             this.bottomPanel1.SuspendLayout();
             this.bottomPanel2.SuspendLayout();
@@ -153,6 +162,11 @@ namespace FriishProduce
             this.panel2.SuspendLayout();
             this.default_save_as_filename.SuspendLayout();
             this.image_interpolation_mode.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.default_injection_method_nes.SuspendLayout();
+            this.default_injection_method_n64.SuspendLayout();
+            this.default_injection_method_snes.SuspendLayout();
+            this.default_injection_method_sega.SuspendLayout();
             this.SuspendLayout();
             // 
             // lngList
@@ -269,7 +283,8 @@ namespace FriishProduce
             this.TreeView.Name = "TreeView";
             this.TreeView.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             ((System.Windows.Forms.TreeNode)(resources.GetObject("TreeView.Nodes"))),
-            ((System.Windows.Forms.TreeNode)(resources.GetObject("TreeView.Nodes1")))});
+            ((System.Windows.Forms.TreeNode)(resources.GetObject("TreeView.Nodes1"))),
+            ((System.Windows.Forms.TreeNode)(resources.GetObject("TreeView.Nodes2")))});
             this.TreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TreeView_AfterSelect);
             // 
             // panel1
@@ -888,6 +903,79 @@ namespace FriishProduce
             this.image_interpolation_mode.TabStop = false;
             this.image_interpolation_mode.Tag = "image_interpolation_mode";
             // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.default_injection_method_sega);
+            this.panel3.Controls.Add(this.default_injection_method_snes);
+            this.panel3.Controls.Add(this.default_injection_method_nes);
+            this.panel3.Controls.Add(this.default_injection_method_n64);
+            resources.ApplyResources(this.panel3, "panel3");
+            this.panel3.Name = "panel3";
+            // 
+            // default_injection_method_nes
+            // 
+            this.default_injection_method_nes.Controls.Add(this.injection_methods_nes);
+            resources.ApplyResources(this.default_injection_method_nes, "default_injection_method_nes");
+            this.default_injection_method_nes.Name = "default_injection_method_nes";
+            this.default_injection_method_nes.TabStop = false;
+            this.default_injection_method_nes.Tag = "nes";
+            // 
+            // injection_methods_nes
+            // 
+            this.injection_methods_nes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.injection_methods_nes.FormattingEnabled = true;
+            resources.ApplyResources(this.injection_methods_nes, "injection_methods_nes");
+            this.injection_methods_nes.Name = "injection_methods_nes";
+            this.injection_methods_nes.Tag = "";
+            // 
+            // default_injection_method_n64
+            // 
+            this.default_injection_method_n64.Controls.Add(this.injection_methods_n64);
+            resources.ApplyResources(this.default_injection_method_n64, "default_injection_method_n64");
+            this.default_injection_method_n64.Name = "default_injection_method_n64";
+            this.default_injection_method_n64.TabStop = false;
+            this.default_injection_method_n64.Tag = "n64";
+            // 
+            // injection_methods_n64
+            // 
+            this.injection_methods_n64.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.injection_methods_n64.FormattingEnabled = true;
+            resources.ApplyResources(this.injection_methods_n64, "injection_methods_n64");
+            this.injection_methods_n64.Name = "injection_methods_n64";
+            this.injection_methods_n64.Tag = "";
+            // 
+            // default_injection_method_snes
+            // 
+            this.default_injection_method_snes.Controls.Add(this.injection_methods_snes);
+            resources.ApplyResources(this.default_injection_method_snes, "default_injection_method_snes");
+            this.default_injection_method_snes.Name = "default_injection_method_snes";
+            this.default_injection_method_snes.TabStop = false;
+            this.default_injection_method_snes.Tag = "snes";
+            // 
+            // injection_methods_snes
+            // 
+            this.injection_methods_snes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.injection_methods_snes.FormattingEnabled = true;
+            resources.ApplyResources(this.injection_methods_snes, "injection_methods_snes");
+            this.injection_methods_snes.Name = "injection_methods_snes";
+            this.injection_methods_snes.Tag = "";
+            // 
+            // default_injection_method_sega
+            // 
+            this.default_injection_method_sega.Controls.Add(this.injection_methods_sega);
+            resources.ApplyResources(this.default_injection_method_sega, "default_injection_method_sega");
+            this.default_injection_method_sega.Name = "default_injection_method_sega";
+            this.default_injection_method_sega.TabStop = false;
+            this.default_injection_method_sega.Tag = "sega";
+            // 
+            // injection_methods_sega
+            // 
+            this.injection_methods_sega.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.injection_methods_sega.FormattingEnabled = true;
+            resources.ApplyResources(this.injection_methods_sega, "injection_methods_sega");
+            this.injection_methods_sega.Name = "injection_methods_sega";
+            this.injection_methods_sega.Tag = "";
+            // 
             // SettingsForm
             // 
             this.AcceptButton = this.b_ok;
@@ -898,6 +986,7 @@ namespace FriishProduce
             this.Controls.Add(this.bottomPanel2);
             this.Controls.Add(this.leftSeparator);
             this.Controls.Add(this.TreeView);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.vc_neo);
@@ -963,6 +1052,11 @@ namespace FriishProduce
             this.default_save_as_filename.ResumeLayout(false);
             this.default_save_as_filename.PerformLayout();
             this.image_interpolation_mode.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.default_injection_method_nes.ResumeLayout(false);
+            this.default_injection_method_n64.ResumeLayout(false);
+            this.default_injection_method_snes.ResumeLayout(false);
+            this.default_injection_method_sega.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1059,5 +1153,14 @@ namespace FriishProduce
         private System.Windows.Forms.GroupBox language;
         private System.Windows.Forms.GroupBox image_interpolation_mode;
         private System.Windows.Forms.GroupBox bios_settings;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.GroupBox default_injection_method_nes;
+        private System.Windows.Forms.ComboBox injection_methods_nes;
+        private System.Windows.Forms.GroupBox default_injection_method_n64;
+        private System.Windows.Forms.ComboBox injection_methods_n64;
+        private System.Windows.Forms.GroupBox default_injection_method_snes;
+        private System.Windows.Forms.ComboBox injection_methods_snes;
+        private System.Windows.Forms.GroupBox default_injection_method_sega;
+        private System.Windows.Forms.ComboBox injection_methods_sega;
     }
 }

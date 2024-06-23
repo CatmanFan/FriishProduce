@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace FriishProduce
 {
-    public partial class ProjectForm : Form
+    public /* abstract */ partial class ProjectForm : Form
     {
         protected Platform platform { get; set; }
         public Platform Platform { get => platform; }
@@ -302,7 +302,6 @@ namespace FriishProduce
 
             toolTip = new CustomToolTip();
             toolTip.SetToolTip(channel_title, Program.Lang.ToolTip(0));
-            toolTip.SetToolTip(title_id_lower, Program.Lang.ToolTip(1));
             toolTip.SetToolTip(title_id_upper, Program.Lang.ToolTip(1));
             toolTip.SetToolTip(region_list, Program.Lang.ToolTip(2));
             toolTip.SetToolTip(save_data_title, Program.Lang.ToolTip(3));
@@ -395,12 +394,20 @@ namespace FriishProduce
                     break;
             }
 
-            injection_methods.SelectedIndex = 0;
+            injection_methods.SelectedIndex = platform switch
+            {
+                Platform.NES                 => Properties.Settings.Default.default_injection_method_nes,
+                Platform.SNES                => Properties.Settings.Default.default_injection_method_snes,
+                Platform.N64                 => Properties.Settings.Default.default_injection_method_n64,
+                Platform.SMS or Platform.SMD => Properties.Settings.Default.default_injection_method_sega,
+                _ => 0
+            };
             injection_method.Enabled = injection_methods.Enabled = injection_methods.Items.Count > 1;
             released.Maximum = DateTime.Now.Year;
 
             if (Properties.Settings.Default.image_fit_aspect_ratio) image_fit.Checked = true; else image_stretch.Checked = true;
-            if (!groupBox1.Enabled) Tag = null;
+            resetImages();
+            IsModified = false;
         }
 
         private void LoadChannelDatabase()
@@ -502,7 +509,7 @@ namespace FriishProduce
 
                 case Platform.Flash:
                     rom = new SWF();
-                    software_name.Enabled = import_patch.Enabled = false;
+                    import_patch.Enabled = false;
                     break;
 
                 case Platform.RPGM:
@@ -519,7 +526,6 @@ namespace FriishProduce
 
             // Cosmetic
             // ********
-            if (platform == Platform.SMS || platform == Platform.SMD) SaveIcon_Panel.BackgroundImage = Properties.Resources.SaveIconPlaceholder_SEGA;
             RefreshForm();
 
             manual_type_list.Enabled = false;
@@ -551,7 +557,6 @@ namespace FriishProduce
                 {
                     WADPath = project.BaseFile;
                     ImportWAD.Checked = true;
-                    DownloadWAD.Checked = false;
                     LoadWAD(project.BaseFile);
                 }
                 else
@@ -628,15 +633,11 @@ namespace FriishProduce
 
         protected virtual void SetROMDataText()
         {
-            filename.Text = string.Format(Program.Lang.String("filename", Name), !string.IsNullOrWhiteSpace(rom?.FilePath) ? Path.GetFileName(rom.FilePath) : Program.Lang.String("none"));
+            filename.Text = !string.IsNullOrWhiteSpace(rom?.FilePath) ? Path.GetFileName(rom.FilePath) : Program.Lang.String("none");
+            filename.Enabled = !string.IsNullOrWhiteSpace(rom?.FilePath);
 
-            if (platform == Platform.RPGM && (rom as RPGM)?.GetTitle(rom.FilePath) != null)
-                software_name.Text = string.Format(Program.Lang.String("software_name", Name), (rom as RPGM).GetTitle(rom.FilePath)?.Replace(Environment.NewLine, " - ") ?? Program.Lang.String("none"));
-            else
-                software_name.Text = string.Format(Program.Lang.String("software_name", Name), rom?.CleanTitle?.Replace(Environment.NewLine, " - ") ?? Program.Lang.String("none"));
-
-            label11.Text = !string.IsNullOrWhiteSpace(patch) ? Path.GetFileName(patch) : Program.Lang.String("none");
-            label11.Enabled = !string.IsNullOrWhiteSpace(patch);
+            label7.Text = !string.IsNullOrWhiteSpace(patch) ? Path.GetFileName(patch) : Program.Lang.String("none");
+            label7.Enabled = !string.IsNullOrWhiteSpace(patch);
         }
 
         private void randomTID()
@@ -711,7 +712,7 @@ namespace FriishProduce
 
         private void Value_Changed(object sender, EventArgs e)
         {
-            // resetImages();
+            resetImages(true);
             refreshData();
         }
 
@@ -751,7 +752,7 @@ namespace FriishProduce
                 Text = string.IsNullOrWhiteSpace(channel_title.Text) ? Untitled : channel_title.Text;
 
             if (sender == banner_title || sender == channel_title) linkSaveDataTitle();
-            // if (sender == banner_title) resetImages();
+            if (sender == banner_title) resetImages(true);
 
             var currentSender = sender as TextBox;
             if (currentSender.Multiline && currentSender.Lines.Length > 2) currentSender.Lines = new string[] { currentSender.Lines[0], currentSender.Lines[1] };
@@ -785,7 +786,6 @@ namespace FriishProduce
             if (DesignMode) return;
             // ----------------------------
 
-            DownloadWAD.Checked = !ImportWAD.Checked;
             Base.Enabled = BaseRegion.Enabled = !ImportWAD.Checked;
             if (Base.Enabled)
             {
@@ -819,7 +819,7 @@ namespace FriishProduce
             if (DesignMode) return;
             // ----------------------------
 
-            if (imageintpl.SelectedIndex != Properties.Settings.Default.image_interpolation) Tag = "dirty";
+            if (imageintpl.SelectedIndex != Properties.Settings.Default.image_interpolation) refreshData();
             LoadImage();
         }
 
@@ -987,29 +987,52 @@ namespace FriishProduce
             LoadImage(img.Source);
         }
 
-        #region /////////////////////////////////////////////// To inherit ///////////////////////////////////////////////
-        /* 
-                // Additionally edit image before generating files, e.g. with modification of image palette/brightness, used only for images with exact resolution of original screen size
-                // ********
-                        if (injection_methods.SelectedIndex == 0
-                            && contentOptions != null
-                            && bool.Parse(contentOptions["use_timg"]))
-                        {
-                            var CO_NES = contentOptionsForm as Options_VC_NES;
-                            var palette = CO_NES.CheckPalette(bmp);
+        #region /////////////////////////////////////////////// Inheritable functions ///////////////////////////////////////////////
+        /// <summary>
+        /// Additionally edit image before generating files, e.g. with modification of image palette/brightness, used only for images with exact resolution of original screen size
+        /// </summary>
+        // protected abstract void platformImageFunction(Bitmap src);
 
-                            if (palette != -1 && src.Width == 256 && (src.Height == 224 || src.Height == 240))
-                                bmp = CO_NES.SwapColors(bmp, CO_NES.Palettes[palette], CO_NES.Palettes[int.Parse(CO_NES.Options["palette"])]);
-                        }
-                        ;
-                        break;
-        */
+        protected void platformImageFunction(Bitmap src)
+        {
+            Bitmap bmp = null;
+
+            switch (platform)
+            {
+                case Platform.NES:
+                    bmp = (Bitmap)src.Clone();
+                    var CO_NES = contentOptionsForm as Options_VC_NES;
+                    var palette = CO_NES.CheckPalette(src);
+
+                    if (palette != -1 && src.Width == 256 && (src.Height == 224 || src.Height == 240))
+                        bmp = CO_NES.SwapColors(src, CO_NES.Palettes[palette], CO_NES.Palettes[int.Parse(CO_NES.Options["palette"])]);
+                    break;
+
+                case Platform.SMS:
+                case Platform.SMD:
+                    break;
+            }
+
+            img.Generate(bmp ?? src);
+        }
         #endregion
 
-        private void resetImages()
+        private void resetImages(bool bannerOnly = false)
         {
-            pictureBox1.Image = img?.VCPic;
-            SaveIcon_Panel.BackgroundImage = img.SaveIcon();
+            bannerPreview.Image = preview.Banner
+                (
+                    img?.VCPic,
+                    banner_title.Text,
+                    (int)released.Value,
+                    (int)players.Value,
+                    platform,
+                    _bannerRegion
+                );
+
+            if (!bannerOnly)
+            {
+                SaveIcon_Panel.Image = img?.SaveIcon();
+            }
         }
 
         protected bool LoadImage(Bitmap src)
@@ -1020,7 +1043,7 @@ namespace FriishProduce
             {
                 img.InterpMode = (InterpolationMode)imageintpl.SelectedIndex;
                 img.FitAspectRatio = image_fit.Checked;
-                img.Generate(src);
+                platformImageFunction(src);
 
                 if (img.Source != null)
                 {

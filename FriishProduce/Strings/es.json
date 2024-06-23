@@ -110,6 +110,7 @@
 		"settingsform": {
 		    "application": "Aplicación",
 			"default_settings": "Preferencias por defecto",
+			"default_injection_methods": "Métodos de inyección por defecto",
 			"language": "Idioma",
 			"system_default": "Idioma del sistema",
 			"updater": "Actualización de FriishProduce",
@@ -144,7 +145,7 @@
 			"image_interpolation_mode7": "Bicúbica de alta calidad",
 			"image_stretch": "Estirar la imagen",
 			"image_fit": "Mantener relación de aspecto",
-			"filename": "Nombre del archivo: {0}",
+			"filename": "Nombre del archivo:",
 			"software_name": "Título oficial: {0}",
 			"import_patch": "Abrir un archivo de parche",
 			"injection_method": "Método de inyección:",
