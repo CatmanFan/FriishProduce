@@ -126,7 +126,7 @@
 			"default_save_as_parameters": "Partidos reemplazables:",
 		},
 		"projectform": {
-			"tab_main_details": "Detalles claves",
+			"tab_main_details": "Detalles principales",
 			"tab_customization": "Personalización del canal",
 			"rom_info": "Información de ROM",
 			"wad_base": "Canal de origen",
@@ -159,6 +159,7 @@
 			"base_name": "Nombre del juego:",
 			"title_id": "Title ID:",
 			"channel_name": "Título del canal:",
+			"video_mode": "Modo de vídeo:",
 			"full_banner_name": "Título completo:",
 			"year": "Año:",
 			"players": "Jugadores:",

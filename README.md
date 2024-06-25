@@ -74,6 +74,8 @@ I would also like to thank the following people:
 * **[SuperrSonic](https://github.com/SuperrSonic)** for reverse-engineering much of Wii software and official emulator code, and in particular, his [fork of RetroArch Wii](https://github.com/SuperrSonic/RA-SS).
 * **[saulfabreg](https://github.com/saulfabregwiivc)** for archiving several tools and aiding in research & documentation.
 * **[sr_corsario](https://gbatemp.net/members/sr_corsario.128473/)** for his work in disclosing NEO-GEO ROM injection methods.
+* **[FIX94](https://github.com/FIX94)** for his particular contributions to (v)Wii and Wii U homebrew and assistance in forking various homebrew apps.
+* **Vague Rant** for their work in converting FIX94's [wiivc_chan_booter](https://github.com/FIX94/wiivc_chan_booter) to a patchable Gecko codes file ([GBAtemp thread](https://gbatemp.net/threads/forcing-4-3-display-in-wii-retail-vc-injections.575768/)).
 * **[Larsenv](https://github.com/Larsenv)** for his astounding work in the Wii homebrew community, and for originally disclosing a method for Flash WAD injection ([GBAtemp thread](https://gbatemp.net/threads/how-to-make-flash-game-wad-injects.561406/)).
 * And of course, the team at the 0RANGECHiCKEN release group, including [lolsjoel](https://gbatemp.net/members/lolsjoel.18721/), and the late [G0dLiKe](https://gbatemp.net/members/g0dlike.190457/), without whose work this project would not have been possible.
 

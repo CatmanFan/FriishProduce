@@ -236,6 +236,176 @@ namespace FriishProduce
             }))
                 p.WaitForExit();
         }
+
+        public static byte[] ExtractContent1(byte[] input)
+        {
+            if (input.Length < 1048576)
+            {
+                // Create temporary files at working folder
+                // ****************
+                File.WriteAllBytes(Paths.WorkingFolder + "content1.app", input);
+
+                // Decompress
+                // ****************
+                Run
+                (
+                    Paths.Tools + "wwcxtool.exe",
+                    Paths.WorkingFolder,
+                    "/u content1.app content1.dec"
+                );
+                if (!File.Exists(Paths.WorkingFolder + "content1.dec")) throw new Exception(Program.Lang.Msg(2, true));
+
+                return File.ReadAllBytes(Paths.WorkingFolder + "content1.dec");
+            }
+
+            else return input;
+        }
+
+        public static byte[] PackContent1(byte[] input)
+        {
+            if (File.Exists(Paths.WorkingFolder + "content1.dec"))
+            {
+                // Write new to original decompressed file
+                // ****************
+                File.WriteAllBytes(Paths.WorkingFolder + "content1.dec", input);
+
+                // Pack
+                // ****************
+                Run
+                (
+                    Paths.Tools + "wwcxtool.exe",
+                    Paths.WorkingFolder,
+                    "/cr content1.app content1.dec content1.new"
+                );
+                if (!File.Exists(Paths.WorkingFolder + "content1.new")) throw new Exception(Program.Lang.Msg(2, true));
+
+                var output = File.ReadAllBytes(Paths.WorkingFolder + "content1.new");
+
+                if (File.Exists(Paths.WorkingFolder + "content1.new")) File.Delete(Paths.WorkingFolder + "content1.new");
+                if (File.Exists(Paths.WorkingFolder + "content1.dec")) File.Delete(Paths.WorkingFolder + "content1.dec");
+                if (File.Exists(Paths.WorkingFolder + "content1.app")) File.Delete(Paths.WorkingFolder + "content1.app");
+
+                return output;
+            }
+
+            else return input;
+        }
+
+        public static void ChangeVideoMode(libWiiSharp.WAD wad, int mode = 0, bool force43 = false)
+        {
+            var content1 = ExtractContent1(wad.Contents[1]);
+
+            if (mode > 0)
+            {
+                #region List of byte patterns and corresponding video modes
+                /// NTSC & PAL60: 60Hz ///
+                // NTSC (interlaced)   / 480i       00 02 80 01 E0 01 E0 00 28 00 00 02 80 01 E0
+                // NTSC (non interlaced)            01 02 80 01 E0 01 E0 00 28 00 0B 02 80 01 E0
+                // NTSC (progressive)  / 480p       02 02 80 01 E0 01 E0 00 28 00 00 02 80 01 E0
+                // PAL60 (interlaced)  / 480i       14 02 80 01 E0 01 E0 00 28 00 00 02 80 01 E0
+                // PAL60 (non interlaced)           15 02 80 01 E0 01 E0 00 28 00 00 02 80 01 E0
+                // PAL60 (progressive) / 480p       16 02 80 01 E0 01 E0 00 28 00 00 02 80 01 E0
+
+                /// MPAL: 50Hz for American region ///
+                // MPAL (interlaced)                08 02 80 01 E0 01 E0 00 28 00 00 02 80 01 E0
+                // MPAL (non interlaced)            09 02 80 01 E0 01 E0 00 28 00 00 02 80 01 E0
+                // MPAL (progressive)               0A 02 80 01 E0 01 E0 00 28 00 00 02 80 01 E0
+                /// PAL: replace 01 at end with 02 ///
+                // PAL (interlaced)    / 576i       04 02 80 02 10 02 10 00 28 00 17 02 80 02 10
+                // PAL (non interlaced)             05 02 80 01 08 01 08 00 28 00 0B 02 80 02 10
+                // PAL (progressive)                06 02 80 02 10 02 10 00 28 00 17 02 80 02 10
+                /// ONLY PAL50 is different in byte composition !                 ^^ This byte seems to vary ///
+                // PAL (progressive/alt)          = 06 02 80 01 08 02 0C 00 28 00 17 02 80 02 0C
+                #endregion
+
+                int start = 0x13F000;
+                int end = 0x1FFFFF;
+
+                // 0-2: NTSC/PAL
+                // 3-5: MPAL/PAL
+                // 6: Backup for PAL (progressive)
+                Dictionary<int, string> modesList = new Dictionary<int, string>
+                {
+                    // NTSC
+                    { 1, "00 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
+                    { 2, "01 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
+                    { 3, "02 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
+                    // MPAL
+                    { 4, "08 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
+                    { 5, "09 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
+                    { 6, "0A 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
+                    // PAL60
+                    { 7, "14 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
+                    { 8, "15 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
+                    { 9, "16 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
+                    // PAL50
+                    { 10, "04 02 80 02 10 02 10 00 28 00 xx 02 80 02 10" },
+                    { 11, "05 02 80 01 08 01 08 00 28 00 xx 02 80 02 10" },
+                    { 12, "06 02 80 02 10 02 10 00 28 00 xx 02 80 02 10" },
+                };
+
+                // 0 = None
+                // 1 = NTSC
+                // 2 = MPAL
+                // 3 = PAL60
+                // 4 = PAL50
+                // 5 = NTSC/PAL60
+                // 6 = NTSC/MPAL
+                // 7 = PAL60/50
+
+                switch (mode)
+                {
+                    default:
+                        int targetMode = mode switch
+                        {
+                            1 => 1,
+                            2 => 4,
+                            3 => 7,
+                            4 => 10,
+                            _ => 1
+                        };
+
+                        for (int i = 1; i < modesList.Count; i++)
+                        {
+                            for (int index; (index = Byte.IndexOf(content1, modesList[i].Substring(0, 23), start, end)) > 0;)
+                            {
+                                string[] array = i == 1 || i == 4 || i == 7 || i == 10 ? modesList[targetMode + 0].Split(' ')   // Interlaced
+                                               : i == 2 || i == 5 || i == 8 || i == 11 ? modesList[targetMode + 1].Split(' ')   // Non-interlaced
+                                               : modesList[targetMode + 2].Split(' ');                                          // Progressive
+
+                                for (int x = 0; x < 15; x++)
+                                    if (array[x].ToLower() != "xx") content1[index + x] = Convert.ToByte(array[x], 16);
+                                break;
+                            }
+                        }
+                        break;
+                }
+            }
+
+            #region Force 4:3 aspect ratio display on Wii U
+            if (force43)
+            {
+                File.WriteAllBytes(Paths.WorkingFolder + "main.dol", content1);
+
+                Run
+                (
+                    "szs\\wstrt.exe",
+                    Paths.Tools + "szs\\",
+                    $"patch \"{Paths.WorkingFolder}main.dol\" --add-section Force43.gct"
+                );
+
+                content1 = File.ReadAllBytes(Paths.WorkingFolder + "main.dol");
+                if (File.Exists(Paths.WorkingFolder + "main.dol")) File.Delete(Paths.WorkingFolder + "main.dol");
+            }
+            #endregion
+
+            content1 = PackContent1(content1);
+
+            wad.Unpack(Paths.WAD);
+            File.WriteAllBytes(Paths.WAD + "00000001.app", content1);
+            wad.CreateNew(Paths.WAD);
+            Directory.Delete(Paths.WAD, true);
+        }
     }
 
     public static class RTP

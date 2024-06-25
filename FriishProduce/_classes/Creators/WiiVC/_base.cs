@@ -46,23 +46,7 @@ namespace FriishProduce
             // ****************
             if (NeedsMainDOL)
             {
-                Contents[1] = WAD.Contents[1];
-
-                if (Contents[1].Length < 1048576)
-                {
-                    // Create temporary files at working folder
-                    // ****************
-                    File.WriteAllBytes(Paths.WorkingFolder + "content1.app", Contents[1]);
-                    Utils.Run
-                    (
-                        Paths.Tools + "wwcxtool.exe",
-                        Paths.WorkingFolder,
-                        "/u content1.app content1.dec"
-                    );
-                    if (!File.Exists(Paths.WorkingFolder + "content1.dec")) throw new Exception(Program.Lang.Msg(2, true));
-
-                    Contents[1] = File.ReadAllBytes(Paths.WorkingFolder + "content1.dec");
-                }
+                Contents[1] = Utils.ExtractContent1(WAD.Contents[1]);
             }
 
             // Auto-set main content index if it is absolutely necessary, then load both U8 archives
@@ -311,25 +295,7 @@ namespace FriishProduce
             // ****************
             if (!WAD.Contents[1].SequenceEqual(Contents[1]) || NeedsMainDOL)
             {
-                if (File.Exists(Paths.WorkingFolder + "content1.dec"))
-                {
-                    File.WriteAllBytes(Paths.WorkingFolder + "content1.dec", Contents[1]);
-                    Utils.Run
-                    (
-                        Paths.Tools + "wwcxtool.exe",
-                        Paths.WorkingFolder,
-                        "/cr content1.app content1.dec content1.new"
-                    );
-                    if (!File.Exists(Paths.WorkingFolder + "content1.new")) throw new Exception(Program.Lang.Msg(2, true));
-
-                    byte[] Recompressed = File.ReadAllBytes(Paths.WorkingFolder + "content1.new");
-
-                    if (File.Exists(Paths.WorkingFolder + "content1.new")) File.Delete(Paths.WorkingFolder + "content1.new");
-                    if (File.Exists(Paths.WorkingFolder + "content1.dec")) File.Delete(Paths.WorkingFolder + "content1.dec");
-                    if (File.Exists(Paths.WorkingFolder + "content1.app")) File.Delete(Paths.WorkingFolder + "content1.app");
-
-                    Contents[1] = Recompressed;
-                }
+                Contents[1] = Utils.PackContent1(Contents[1]);
             }
 
             if (ManualContent != null)

@@ -144,7 +144,7 @@ namespace FriishProduce
 
         protected bool isVC { get => injection_methods.SelectedItem?.ToString().ToLower() == Program.Lang.String("vc").ToLower(); }
         protected ContentOptions contentOptionsForm { get; set; }
-        protected IDictionary<string, string> contentOptions { get; set; }
+        protected IDictionary<string, string> contentOptions { get => contentOptionsForm?.Options; }
 
         #region Channel/banner parameters
         private string _tID { get => title_id_upper.Text.ToUpper(); }
@@ -216,6 +216,7 @@ namespace FriishProduce
                 WADRegion = region_list.SelectedIndex,
                 LinkSaveDataTitle = autolink_save_data.Checked,
                 ImageOptions = (imageintpl.SelectedIndex, image_fit.Checked),
+                VideoOptions = (video_modes.SelectedIndex, force_43_wiiu.Checked),
 
                 TitleID = _tID,
                 ChannelTitles = _channelTitles,
@@ -275,6 +276,10 @@ namespace FriishProduce
             region_list.Items.Add(Program.Lang.String("keep_original"));
             region_list.Items.Add(Program.Lang.String("region_rf"));
             region_list.SelectedIndex = 0;
+
+            // Video modes
+            video_modes.Items[0] = Program.Lang.String("keep_original");
+            video_modes.SelectedIndex = 0;
 
             switch (Program.Lang.Current.ToLower())
             {
@@ -543,6 +548,9 @@ namespace FriishProduce
 
             if (project != null)
             {
+                video_modes.SelectedIndex = project.VideoOptions.Item1;
+                force_43_wiiu.Checked = project.VideoOptions.Item2;
+
                 // Error messages for not found files
                 // ********
                 foreach (var item in new string[] { project.ROM, project.Patch, project.BaseFile })
@@ -551,7 +559,6 @@ namespace FriishProduce
                 img = new ImageHelper(project.Platform, null);
                 img.LoadToSource(project.Img);
                 LoadROM(project.ROM, false);
-                LoadImage(project.Img);
 
                 if (File.Exists(project.BaseFile))
                 {
@@ -582,13 +589,12 @@ namespace FriishProduce
                 imageintpl.SelectedIndex = project.ImageOptions.Item1;
                 image_fit.Checked = project.ImageOptions.Item2;
 
-                contentOptions = project.ContentOptions;
-
-
                 patch = File.Exists(project.Patch) ? project.Patch : null;
                 import_patch.Checked = !string.IsNullOrWhiteSpace(project.Patch);
-                LoadManual(project.Manual.Type, project.Manual.File);
 
+                if (contentOptionsForm != null) contentOptionsForm.Options = project.ContentOptions;
+                LoadImage();
+                LoadManual(project.Manual.Type, project.Manual.File);
             }
 
             autolink_save_data.Checked = project == null ? Properties.Settings.Default.link_save_data : project.LinkSaveDataTitle;
@@ -712,7 +718,7 @@ namespace FriishProduce
 
         private void Value_Changed(object sender, EventArgs e)
         {
-            resetImages(true);
+            if (sender == released || sender == players) resetImages(true);
             refreshData();
         }
 
@@ -805,7 +811,8 @@ namespace FriishProduce
                 if (result == DialogResult.OK && !LoadWAD(browseInputWad.FileName)) ImportWAD.Checked = false;
                 else if (result == DialogResult.Cancel) ImportWAD.Checked = false;
             }
-            else if (!ImportWAD.Checked)
+
+            if (!ImportWAD.Checked)
             {
                 WADPath = null;
             }
@@ -893,10 +900,11 @@ namespace FriishProduce
 
         protected void LoadManual(int index, string path = null, bool isFolder = true)
         {
+            bool failed = false;
+
+            #region Load manual as ZIP file (if exists)
             if (File.Exists(path) && !isFolder)
             {
-                index = 2;
-
                 using (ZipFile ZIP = ZipFile.Read(path))
                 {
                     int applicable = 0;
@@ -924,14 +932,14 @@ namespace FriishProduce
                         goto End;
                     }
 
-                    goto Failed;
+                    failed = true;
                 }
             }
+            #endregion
 
+            #region Load manual as folder/directory (if exists)
             else if (Directory.Exists(path) && isFolder)
             {
-                index = 2;
-
                 // Check if is a valid emanual contents folder
                 // ****************
                 string folder = path;
@@ -956,8 +964,9 @@ namespace FriishProduce
                     goto End;
                 }
 
-                goto Failed;
+                failed = true;
             }
+            #endregion
 
             else
             {
@@ -965,14 +974,14 @@ namespace FriishProduce
                 goto End;
             }
 
-            Failed:
-            MessageBox.Show(Program.Lang.Msg(7), MessageBox.Buttons.Ok, MessageBox.Icons.Warning);
-            manual = null;
-            goto End;
-
             End:
-            if (manual == null && index >= 2) index = 0;
-            manual_type_list.SelectedIndex = index;
+            if (failed)
+            {
+                MessageBox.Show(Program.Lang.Msg(7), MessageBox.Buttons.Ok, MessageBox.Icons.Warning);
+                manual = null;
+            }
+
+            manual_type_list.SelectedIndex = manual == null && index >= 2 ? 0 : manual != null && index < 2 ? 2 : index;
         }
 
         protected void LoadImage()
@@ -1000,12 +1009,18 @@ namespace FriishProduce
             switch (platform)
             {
                 case Platform.NES:
-                    bmp = (Bitmap)src.Clone();
-                    var CO_NES = contentOptionsForm as Options_VC_NES;
-                    var palette = CO_NES.CheckPalette(src);
+                    bmp = cloneImage(src);
+                    if (bmp == null) return;
 
-                    if (palette != -1 && src.Width == 256 && (src.Height == 224 || src.Height == 240))
-                        bmp = CO_NES.SwapColors(src, CO_NES.Palettes[palette], CO_NES.Palettes[int.Parse(CO_NES.Options["palette"])]);
+                    if (contentOptions != null && bool.Parse(contentOptions.ElementAt(1).Value))
+                    {
+                        var contentOptionsNES = contentOptionsForm as Options_VC_NES;
+                        var palette = contentOptionsNES.CheckPalette(src);
+
+                        if (palette != -1 && src.Width == 256 && (src.Height == 224 || src.Height == 240))
+                            bmp = contentOptionsNES.SwapColors(bmp, contentOptionsNES.Palettes[palette], contentOptionsNES.Palettes[int.Parse(contentOptions.ElementAt(0).Value)]);
+                    }
+                    else bmp = src;
                     break;
 
                 case Platform.SMS:
@@ -1014,6 +1029,11 @@ namespace FriishProduce
             }
 
             img.Generate(bmp ?? src);
+        }
+
+        private Bitmap cloneImage(Bitmap src)
+        {
+            try { return (Bitmap)src.Clone(); } catch { try { return (Bitmap)img?.Source.Clone(); } catch { return null; } }
         }
         #endregion
 
@@ -1043,6 +1063,7 @@ namespace FriishProduce
             {
                 img.InterpMode = (InterpolationMode)imageintpl.SelectedIndex;
                 img.FitAspectRatio = image_fit.Checked;
+
                 platformImageFunction(src);
 
                 if (img.Source != null)
@@ -1228,10 +1249,11 @@ namespace FriishProduce
                 SoundHelper.ReplaceSound(outWad, Properties.Resources.Sound_WiiVC);
                 if (img.VCPic != null) img.ReplaceBanner(outWad);
 
-                // Change WAD region
+                // Change WAD region & internal main.dol things
                 // *******
                 if (region_list.SelectedIndex > 0)
                     outWad.Region = outWadRegion;
+                Utils.ChangeVideoMode(outWad, video_modes.SelectedIndex, force_43_wiiu.Checked);
 
                 // Other WAD settings to be changed done by WAD creator helper, which will save to a new file
                 // *******
@@ -1402,10 +1424,7 @@ namespace FriishProduce
             switch (platform)
             {
                 default:
-                    if (result)
-                    {
-                        refreshData();
-                    }
+                    if (result) { refreshData(); }
                     break;
 
                 case Platform.NES:
@@ -1689,7 +1708,7 @@ namespace FriishProduce
             #endregion
 
             End:
-            // resetImages();
+            resetImages();
             linkSaveDataTitle();
             resetContentOptions();
             refreshData();
@@ -1836,7 +1855,7 @@ namespace FriishProduce
                 else if (manual != null) LoadManual(manual_type_list.SelectedIndex, null);
             }
 
-            else if ((manual_type_list.SelectedIndex < 2 && manual != null) || !manual_type_list.Enabled) LoadManual(0);
+            else if (manual_type_list.Enabled && manual_type_list.SelectedIndex < 2) LoadManual(manual_type_list.SelectedIndex);
 
             refreshData();
         }

@@ -414,6 +414,8 @@ namespace FriishProduce
             this.tabControl.TabOffset = 2;
             this.tabControl.TabTop = 2;
             this.tabControl.TopSeparator = false;
+            this.tabControl.SelectedTabChanged += new System.EventHandler(this.TabChanged);
+            this.tabControl.TabIndexChanged += new System.EventHandler(this.TabChanged);
             // 
             // MainForm
             // 

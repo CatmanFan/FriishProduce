@@ -52,6 +52,9 @@ namespace FriishProduce
             this.label7 = new System.Windows.Forms.Label();
             this.import_patch = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.force_43_wiiu = new System.Windows.Forms.CheckBox();
+            this.video_modes = new System.Windows.Forms.ComboBox();
+            this.video_mode = new System.Windows.Forms.Label();
             this.channel_title = new System.Windows.Forms.TextBox();
             this.title_id_upper = new System.Windows.Forms.TextBox();
             this.title_id = new System.Windows.Forms.Label();
@@ -89,6 +92,7 @@ namespace FriishProduce
             this.manual_type = new System.Windows.Forms.Label();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.bannerPreview = new System.Windows.Forms.PictureBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SaveIcon_Panel)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -259,6 +263,10 @@ namespace FriishProduce
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.panel1);
+            this.groupBox3.Controls.Add(this.force_43_wiiu);
+            this.groupBox3.Controls.Add(this.video_modes);
+            this.groupBox3.Controls.Add(this.video_mode);
             this.groupBox3.Controls.Add(this.channel_title);
             this.groupBox3.Controls.Add(this.title_id_upper);
             this.groupBox3.Controls.Add(this.title_id);
@@ -270,6 +278,34 @@ namespace FriishProduce
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.TabStop = false;
             this.groupBox3.Tag = "channel";
+            // 
+            // force_43_wiiu
+            // 
+            resources.ApplyResources(this.force_43_wiiu, "force_43_wiiu");
+            this.force_43_wiiu.Name = "force_43_wiiu";
+            this.force_43_wiiu.Tag = "force_43_wiiu";
+            this.force_43_wiiu.UseVisualStyleBackColor = true;
+            this.force_43_wiiu.CheckedChanged += new System.EventHandler(this.Value_Changed);
+            // 
+            // video_modes
+            // 
+            this.video_modes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.video_modes.FormattingEnabled = true;
+            this.video_modes.Items.AddRange(new object[] {
+            resources.GetString("video_modes.Items"),
+            resources.GetString("video_modes.Items1"),
+            resources.GetString("video_modes.Items2"),
+            resources.GetString("video_modes.Items3"),
+            resources.GetString("video_modes.Items4")});
+            resources.ApplyResources(this.video_modes, "video_modes");
+            this.video_modes.Name = "video_modes";
+            this.video_modes.SelectedIndexChanged += new System.EventHandler(this.Value_Changed);
+            // 
+            // video_mode
+            // 
+            resources.ApplyResources(this.video_mode, "video_mode");
+            this.video_mode.Name = "video_mode";
+            this.video_mode.Tag = "video_mode";
             // 
             // channel_title
             // 
@@ -539,7 +575,7 @@ namespace FriishProduce
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel2.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panel2.Controls.Add(this.forwarder_console);
             this.panel2.Controls.Add(this.toggleSwitchL1);
             this.panel2.Controls.Add(this.FStorage_USB);
@@ -580,6 +616,12 @@ namespace FriishProduce
             this.bannerPreview.Name = "bannerPreview";
             this.bannerPreview.TabStop = false;
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Gainsboro;
+            resources.ApplyResources(this.panel1, "panel1");
+            this.panel1.Name = "panel1";
+            // 
             // ProjectForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
@@ -600,7 +642,7 @@ namespace FriishProduce
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.isClosing);
-            this.Shown += new System.EventHandler(this.Form_Shown);
+            this.Load += new System.EventHandler(this.Form_Shown);
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SaveIcon_Panel)).EndInit();
@@ -687,5 +729,9 @@ namespace FriishProduce
         private System.Windows.Forms.Button editContentOptions;
         private System.Windows.Forms.Label filename;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox video_modes;
+        private System.Windows.Forms.Label video_mode;
+        private System.Windows.Forms.CheckBox force_43_wiiu;
+        private System.Windows.Forms.Panel panel1;
     }
 }

@@ -171,7 +171,7 @@ namespace FriishProduce
                 // Copy BIOS if available
                 // *******
                 bool validBIOS = false;
-                try { validBIOS = File.Exists(Settings["BIOSPath"]); } catch { hasBIOS = false; }
+                try { validBIOS = Settings != null && File.Exists(Settings["BIOSPath"]); } catch { hasBIOS = false; }
 
                 if (validBIOS)
                 {
