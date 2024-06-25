@@ -216,7 +216,7 @@ namespace FriishProduce
                 WADRegion = region_list.SelectedIndex,
                 LinkSaveDataTitle = autolink_save_data.Checked,
                 ImageOptions = (imageintpl.SelectedIndex, image_fit.Checked),
-                VideoOptions = (video_modes.SelectedIndex, force_43_wiiu.Checked),
+                VideoMode = video_modes.SelectedIndex,
 
                 TitleID = _tID,
                 ChannelTitles = _channelTitles,
@@ -548,8 +548,7 @@ namespace FriishProduce
 
             if (project != null)
             {
-                video_modes.SelectedIndex = project.VideoOptions.Item1;
-                force_43_wiiu.Checked = project.VideoOptions.Item2;
+                video_modes.SelectedIndex = project.VideoMode;
 
                 // Error messages for not found files
                 // ********
@@ -1253,7 +1252,7 @@ namespace FriishProduce
                 // *******
                 if (region_list.SelectedIndex > 0)
                     outWad.Region = outWadRegion;
-                Utils.ChangeVideoMode(outWad, video_modes.SelectedIndex, force_43_wiiu.Checked);
+                Utils.ChangeVideoMode(outWad, video_modes.SelectedIndex);
 
                 // Other WAD settings to be changed done by WAD creator helper, which will save to a new file
                 // *******

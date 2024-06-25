@@ -23,7 +23,7 @@ namespace FriishProduce
         public string BaseFile { get; set; }
         public bool LinkSaveDataTitle { get; set; }
         public (int, bool) ImageOptions { get; set; }
-        public (int, bool) VideoOptions { get; set; }
+        public int VideoMode { get; set; }
 
 
         public string TitleID { get; set; }

@@ -291,12 +291,12 @@ namespace FriishProduce
             else return input;
         }
 
-        public static void ChangeVideoMode(libWiiSharp.WAD wad, int mode = 0, bool force43 = false)
+        public static void ChangeVideoMode(libWiiSharp.WAD wad, int mode = 0)
         {
-            var content1 = ExtractContent1(wad.Contents[1]);
-
             if (mode > 0)
             {
+                var content1 = ExtractContent1(wad.Contents[1]);
+
                 #region List of byte patterns and corresponding video modes
                 /// NTSC & PAL60: 60Hz ///
                 // NTSC (interlaced)   / 480i       00 02 80 01 E0 01 E0 00 28 00 00 02 80 01 E0
@@ -380,31 +380,31 @@ namespace FriishProduce
                         }
                         break;
                 }
+
+                /* Force 4:3 aspect ratio display on Wii U (NOT WORKING)
+                ////////////////////////////////////////////////////////////
+                if (force43)
+                {
+                    File.WriteAllBytes(Paths.WorkingFolder + "main.dol", content1);
+
+                    Run
+                    (
+                        "szs\\wstrt.exe",
+                        Paths.Tools + "szs\\",
+                        $"patch \"{Paths.WorkingFolder}main.dol\" --add-section Force43.gct"
+                    );
+
+                    content1 = File.ReadAllBytes(Paths.WorkingFolder + "main.dol");
+                    if (File.Exists(Paths.WorkingFolder + "main.dol")) File.Delete(Paths.WorkingFolder + "main.dol");
+                } */
+
+                content1 = PackContent1(content1);
+
+                wad.Unpack(Paths.WAD);
+                File.WriteAllBytes(Paths.WAD + "00000001.app", content1);
+                wad.CreateNew(Paths.WAD);
+                Directory.Delete(Paths.WAD, true);
             }
-
-            #region Force 4:3 aspect ratio display on Wii U
-            if (force43)
-            {
-                File.WriteAllBytes(Paths.WorkingFolder + "main.dol", content1);
-
-                Run
-                (
-                    "szs\\wstrt.exe",
-                    Paths.Tools + "szs\\",
-                    $"patch \"{Paths.WorkingFolder}main.dol\" --add-section Force43.gct"
-                );
-
-                content1 = File.ReadAllBytes(Paths.WorkingFolder + "main.dol");
-                if (File.Exists(Paths.WorkingFolder + "main.dol")) File.Delete(Paths.WorkingFolder + "main.dol");
-            }
-            #endregion
-
-            content1 = PackContent1(content1);
-
-            wad.Unpack(Paths.WAD);
-            File.WriteAllBytes(Paths.WAD + "00000001.app", content1);
-            wad.CreateNew(Paths.WAD);
-            Directory.Delete(Paths.WAD, true);
         }
     }
 
