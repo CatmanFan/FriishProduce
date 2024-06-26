@@ -40,19 +40,24 @@ namespace FriishProduce
 
         private void OnDraw(object sender, DrawToolTipEventArgs e) // use this event to customise the tool tip
         {
-            using (SolidBrush b = new SolidBrush(Color.Black))
-                e.Graphics.FillRectangle(b, e.Bounds.X, e.Bounds.Y, e.Bounds.Width + 2, e.Bounds.Height + 2);
+            e.Graphics.SmoothingMode = SmoothingMode.HighQuality;
+            e.Graphics.CompositingQuality = CompositingQuality.HighQuality;
+            e.Graphics.InterpolationMode = InterpolationMode.High;
 
-            using (SolidBrush b = new SolidBrush(SystemColors.Info))
-                e.Graphics.FillRectangle(b, e.Bounds.X + 1, e.Bounds.Y + 1, e.Bounds.Width, e.Bounds.Height);
+            using (SolidBrush b = new SolidBrush(Color.DarkGray))
+                e.Graphics.FillRectangle(b, e.Bounds);
 
-            e.Graphics.DrawString
-            (
-                e.ToolTipText,
-                Program.MainForm.Font,
-                Brushes.Black,
-                new RectangleF(new PointF(4, 4), new SizeF (e.Bounds.Width - 4, e.Bounds.Height - 4))
-            );
+            using (SolidBrush b = new SolidBrush(Color.WhiteSmoke))
+                e.Graphics.FillRectangle(b, e.Bounds.X + 1, e.Bounds.Y + 1, e.Bounds.Width - 2, e.Bounds.Height - 2);
+
+            using (Font f = new Font(Program.MainForm.Font.FontFamily, 8.5f, FontStyle.Regular))
+                e.Graphics.DrawString
+                (
+                    e.ToolTipText,
+                    f,
+                    Brushes.Black,
+                    new RectangleF(new PointF(4, 4), new SizeF(e.Bounds.Width - 3, e.Bounds.Height - 3))
+                );
         }
     }
 
@@ -291,6 +296,25 @@ namespace FriishProduce
             else return input;
         }
 
+        private enum VideoModes
+        {
+            NTSC_Interl,
+            NTSC_NonInt,
+            NTSC_Prgsiv,
+
+            MPAL_Interl,
+            MPAL_NonInt,
+            MPAL_Prgsiv,
+
+            PAL60_Interl,
+            PAL60_NonInt,
+            PAL60_Prgsiv,
+
+            PAL50_Interl,
+            PAL50_NonInt,
+            PAL50_Prgsiv
+        }
+
         public static void ChangeVideoMode(libWiiSharp.WAD wad, int mode = 0)
         {
             if (mode > 0)
@@ -324,24 +348,23 @@ namespace FriishProduce
                 // 0-2: NTSC/PAL
                 // 3-5: MPAL/PAL
                 // 6: Backup for PAL (progressive)
-                Dictionary<int, string> modesList = new Dictionary<int, string>
+                Dictionary<VideoModes, string> modesList = new Dictionary<VideoModes, string>
                 {
-                    // NTSC
-                    { 1, "00 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
-                    { 2, "01 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
-                    { 3, "02 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
-                    // MPAL
-                    { 4, "08 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
-                    { 5, "09 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
-                    { 6, "0A 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
-                    // PAL60
-                    { 7, "14 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
-                    { 8, "15 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
-                    { 9, "16 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
-                    // PAL50
-                    { 10, "04 02 80 02 10 02 10 00 28 00 xx 02 80 02 10" },
-                    { 11, "05 02 80 01 08 01 08 00 28 00 xx 02 80 02 10" },
-                    { 12, "06 02 80 02 10 02 10 00 28 00 xx 02 80 02 10" },
+                    { VideoModes.NTSC_Interl,   "00 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
+                    { VideoModes.NTSC_NonInt,   "01 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
+                    { VideoModes.NTSC_Prgsiv,   "02 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
+
+                    { VideoModes.MPAL_Interl,   "08 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
+                    { VideoModes.MPAL_NonInt,   "09 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
+                    { VideoModes.MPAL_Prgsiv,   "0A 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
+
+                    { VideoModes.PAL60_Interl,  "14 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
+                    { VideoModes.PAL60_NonInt,  "15 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
+                    { VideoModes.PAL60_Prgsiv,  "16 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
+
+                    { VideoModes.PAL50_Interl,  "04 02 80 02 10 02 10 00 28 00 xx 02 80 02 10" },
+                    { VideoModes.PAL50_NonInt,  "05 02 80 01 08 01 08 00 28 00 xx 02 80 02 10" },
+                    { VideoModes.PAL50_Prgsiv,  "06 02 80 02 10 02 10 00 28 00 xx 02 80 02 10" },
                 };
 
                 // 0 = None
@@ -349,9 +372,10 @@ namespace FriishProduce
                 // 2 = MPAL
                 // 3 = PAL60
                 // 4 = PAL50
-                // 5 = NTSC/PAL60
-                // 6 = NTSC/MPAL
+                // 5 = NTSC/MPAL
                 // 7 = PAL60/50
+                // 6 = NTSC/PAL60
+                // 8 = MPAL/PAL50
 
                 switch (mode)
                 {
@@ -367,15 +391,94 @@ namespace FriishProduce
 
                         for (int i = 1; i < modesList.Count; i++)
                         {
-                            for (int index; (index = Byte.IndexOf(content1, modesList[i].Substring(0, 23), start, end)) > 0;)
+                            for (int index; (index = Byte.IndexOf(content1, modesList.Values.ElementAt(i).Substring(0, 23), start, end)) > 0;)
                             {
-                                string[] array = i == 1 || i == 4 || i == 7 || i == 10 ? modesList[targetMode + 0].Split(' ')   // Interlaced
-                                               : i == 2 || i == 5 || i == 8 || i == 11 ? modesList[targetMode + 1].Split(' ')   // Non-interlaced
-                                               : modesList[targetMode + 2].Split(' ');                                          // Progressive
+                                string[] array = i == 1 || i == 4 || i == 7 || i == 10 ? modesList.Values.ElementAt(targetMode + 0).Split(' ')   // Interlaced
+                                               : i == 2 || i == 5 || i == 8 || i == 11 ? modesList.Values.ElementAt(targetMode + 1).Split(' ')   // Non-interlaced
+                                               : modesList.Values.ElementAt(targetMode + 2).Split(' ');                                          // Progressive
 
                                 for (int x = 0; x < 15; x++)
                                     if (array[x].ToLower() != "xx") content1[index + x] = Convert.ToByte(array[x], 16);
                                 break;
+                            }
+                        }
+                        break;
+
+                    case 5:
+                    case 6:
+                    case 7:
+                    case 8:
+                        (VideoModes[] outputs, VideoModes[] inputs) modes = mode switch
+                        {
+                            5 =>
+                            (
+                                new VideoModes[]
+                                {
+                                    VideoModes.NTSC_Interl,     VideoModes.NTSC_NonInt,     VideoModes.NTSC_Prgsiv,
+                                    VideoModes.MPAL_Interl,     VideoModes.MPAL_NonInt,     VideoModes.MPAL_Prgsiv
+                                },
+                                new VideoModes[]
+                                {
+                                    VideoModes.PAL60_Interl,    VideoModes.PAL60_NonInt,    VideoModes.PAL60_Prgsiv,
+                                    VideoModes.PAL50_Interl,    VideoModes.PAL50_NonInt,    VideoModes.PAL50_Prgsiv
+                                }
+                            ),
+
+                            6 =>
+                            (
+                                new VideoModes[]
+                                {
+                                    VideoModes.PAL60_Interl,    VideoModes.PAL60_NonInt,    VideoModes.PAL60_Prgsiv,
+                                    VideoModes.PAL50_Interl,    VideoModes.PAL50_NonInt,    VideoModes.PAL50_Prgsiv
+                                },
+                                new VideoModes[]
+                                {
+                                    VideoModes.NTSC_Interl,     VideoModes.NTSC_NonInt,     VideoModes.NTSC_Prgsiv,
+                                    VideoModes.MPAL_Interl,     VideoModes.MPAL_NonInt,     VideoModes.MPAL_Prgsiv
+                                }
+                            ),
+
+                            7 =>
+                            (
+                                new VideoModes[]
+                                {
+                                    VideoModes.NTSC_Interl,     VideoModes.NTSC_NonInt,     VideoModes.NTSC_Prgsiv,
+                                    VideoModes.PAL60_Interl,    VideoModes.PAL60_NonInt,    VideoModes.PAL60_Prgsiv
+                                },
+                                new VideoModes[]
+                                {
+                                    VideoModes.MPAL_Interl,     VideoModes.MPAL_NonInt,     VideoModes.MPAL_Prgsiv,
+                                    VideoModes.PAL50_Interl,    VideoModes.PAL50_NonInt,    VideoModes.PAL50_Prgsiv
+                                }
+                            ),
+
+                            _ =>
+                            (
+                                new VideoModes[]
+                                {
+                                    VideoModes.MPAL_Interl,     VideoModes.MPAL_NonInt,     VideoModes.MPAL_Prgsiv,
+                                    VideoModes.PAL50_Interl,    VideoModes.PAL50_NonInt,    VideoModes.PAL50_Prgsiv
+                                },
+                                new VideoModes[]
+                                {
+                                    VideoModes.NTSC_Interl,     VideoModes.NTSC_NonInt,     VideoModes.NTSC_Prgsiv,
+                                    VideoModes.PAL60_Interl,    VideoModes.PAL60_NonInt,    VideoModes.PAL60_Prgsiv
+                                }
+                            ),
+                        };
+
+                        for (int i = 0; i < modes.inputs.Length; i++)
+                        {
+                            if (modes.inputs[i] != modes.outputs[i])
+                            {
+                                for (int index; (index = Byte.IndexOf(content1, modesList[modes.inputs[i]].Substring(0, 23), start, end)) > 0;)
+                                {
+                                    string[] array = modesList[modes.outputs[i]].Split(' ');
+
+                                    for (int x = 0; x < 15; x++)
+                                        if (array[x].ToLower() != "xx") content1[index + x] = Convert.ToByte(array[x], 16);
+                                    break;
+                                }
                             }
                         }
                         break;

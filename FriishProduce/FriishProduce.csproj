@@ -498,6 +498,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\bg.png" />
     <None Include="Resources\apps\lzh8_cmp_nonstrict.exe" />
     <None Include="Resources\apps\lzh8_cmp.exe" />
     <None Include="Resources\icons\cog.png" />

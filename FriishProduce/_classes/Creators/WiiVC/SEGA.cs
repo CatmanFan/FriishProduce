@@ -39,8 +39,8 @@ namespace FriishProduce.Injectors
 
         protected override void Load()
         {
-            MainContentIndex = 5;
-            NeedsManualLoaded = false;
+            mainContentIndex = 5;
+            needsManualLoaded = false;
             base.Load();
 
             MainCCF = CCF.Load(MainContent.Data[MainContent.GetNodeIndex("data.ccf")]);

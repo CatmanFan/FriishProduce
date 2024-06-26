@@ -311,6 +311,10 @@ namespace FriishProduce
             toolTip.SetToolTip(region_list, Program.Lang.ToolTip(2));
             toolTip.SetToolTip(save_data_title, Program.Lang.ToolTip(3));
             toolTip.SetToolTip(autolink_save_data, Program.Lang.ToolTip(4));
+            toolTip.SetToolTip(video_modes, Program.Lang.ToolTip(5));
+            toolTip.SetToolTip(banner_title, Program.Lang.ToolTip(6));
+            toolTip.SetToolTip(released, Program.Lang.ToolTip(7));
+            toolTip.SetToolTip(players, Program.Lang.ToolTip(8));
 
             #endregion
 
@@ -638,7 +642,11 @@ namespace FriishProduce
 
         protected virtual void SetROMDataText()
         {
+            int maxLength = 75;
+
             filename.Text = !string.IsNullOrWhiteSpace(rom?.FilePath) ? Path.GetFileName(rom.FilePath) : Program.Lang.String("none");
+            if (filename.Text.Length > maxLength) filename.Text = filename.Text.Substring(0, maxLength - 3) + "...";
+
             filename.Enabled = !string.IsNullOrWhiteSpace(rom?.FilePath);
 
             label7.Text = !string.IsNullOrWhiteSpace(patch) ? Path.GetFileName(patch) : Program.Lang.String("none");
@@ -1402,9 +1410,9 @@ namespace FriishProduce
 
             // Set path to manual (if it exists) and load WAD
             // *******
-            VC.Manual = manual != null ? new ZipFile("manual") : null;
-            VC.KeepOrigManual = manual_type_list.SelectedIndex == 1;
-            if (VC.Manual != null && manual_type_list.SelectedIndex == 2) VC.Manual.AddDirectory(manual);
+            VC.RetainOriginalManual = manual_type_list.SelectedIndex == 1;
+            VC.ManualFile = manual != null ? new ZipFile("manual") : null;
+            if (VC.ManualFile != null) VC.ManualFile.AddDirectory(manual);
 
             // Actually inject everything
             // *******
@@ -1851,10 +1859,10 @@ namespace FriishProduce
                 if (!Properties.Settings.Default.donotshow_000) MessageBox.Show((sender as Control).Text, Program.Lang.Msg(6), 0);
 
                 if (browseManual.ShowDialog() == DialogResult.OK) LoadManual(manual_type_list.SelectedIndex, browseManual.SelectedPath, true);
-                else if (manual != null) LoadManual(manual_type_list.SelectedIndex, null);
+                else manual_type_list.SelectedIndex = 0;
             }
 
-            else if (manual_type_list.Enabled && manual_type_list.SelectedIndex < 2) LoadManual(manual_type_list.SelectedIndex);
+            if (manual_type_list.Enabled && manual_type_list.SelectedIndex < 2) LoadManual(manual_type_list.SelectedIndex);
 
             refreshData();
         }

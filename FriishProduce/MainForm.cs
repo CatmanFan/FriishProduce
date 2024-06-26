@@ -112,10 +112,10 @@ namespace FriishProduce
             toolbarCloseProject.Text = menu_close_project.Text;
             toolbarRetrieveGameData.Text = menu_retrieve_gamedata_online.Text;
             ToolStrip_Settings.Text = menu_settings.Text;
-            BrowseROM.Title = menu_open_gamefile.Text;
-            BrowseImage.Title = menu_open_image.Text;
-            SaveProject.Title = menu_save_project_as.Text;
-            SaveWAD.Title = menu_save_as_wad.Text;
+            BrowseROM.Title = menu_open_gamefile.Text.Replace("&", "");
+            BrowseImage.Title = menu_open_image.Text.Replace("&", "");
+            SaveProject.Title = menu_save_project_as.Text.Replace("&", "");
+            SaveWAD.Title = menu_save_as_wad.Text.Replace("&", "");
 
             try
             {
@@ -137,19 +137,24 @@ namespace FriishProduce
 
             toolStrip.Font = menuStrip.Font;
 
-            if (Logo.Location.X == 0 || Logo.Location.Y == 0) Logo.Location = new Point((MainPanel.Width / 2) - (Logo.Width / 2), (MainPanel.Height / 2) - (Logo.Height / 2));
-
             if (MaximumSize.IsEmpty)
             {
                 MaximumSize = new Size
                 (
-                    MainPanel.Width + (toolStrip.Dock == DockStyle.Right || toolStrip.Dock == DockStyle.Left ? toolStrip.Width - 8 : 16),
-                    menuStrip.Height + toolStrip.Height + MainPanel.Height + 38
+                    mainPanel.Width + (toolStrip.Dock == DockStyle.Right || toolStrip.Dock == DockStyle.Left ? toolStrip.Width - 8 : 16),
+                    menuStrip.Height + toolStrip.Height + mainPanel.Height + 38
                 );
                 MinimumSize = Size = MaximumSize;
             }
 
-            tabControl.Size = MainPanel.Size;
+            mainPanel.Dock = DockStyle.None;
+            // tabControl.BackLowColor = tabControl.BackHighColor = tabControl.BackColor = Color.Transparent;
+            tabControl.BackgroundImage = mainPanel.BackgroundImage;
+            tabControl.BackgroundImageLayout = mainPanel.BackgroundImageLayout;
+            mainPanel.Location = tabControl.Location = new Point(0, menuStrip.Height + toolStrip.Height);
+            mainPanel.Size = tabControl.Size = new Size(mainPanel.Width, mainPanel.Height + (Height - mainPanel.Height));
+
+            if (Logo.Location.X == 0 || Logo.Location.Y == 0) Logo.Location = new Point((mainPanel.Width / 2) - (Logo.Width / 2), (mainPanel.Height / 2) - (Logo.Height));
         }
 
         public MainForm()
@@ -157,8 +162,8 @@ namespace FriishProduce
             InitializeComponent();
             Program.Handle = Handle;
 
+
             MaximumSize = new Size(0, 0);
-            tabControl.Location = MainPanel.Location;
             RefreshForm();
             CenterToScreen();
 
@@ -196,7 +201,7 @@ namespace FriishProduce
                 menu_save_as_wad.Enabled = false;
 
                 tabControl.Visible = false;
-                MainPanel.Visible = true;
+                mainPanel.Visible = true;
             }
 
             else
@@ -268,7 +273,7 @@ namespace FriishProduce
             tabControl.TabPages.Add(p);
 
             tabControl.Visible = true;
-            MainPanel.Visible = false;
+            mainPanel.Visible = false;
 
             // BrowseROMDialog(console, p);
         }

@@ -26,9 +26,9 @@ namespace FriishProduce.Injectors
 
         protected override void Load()
         {
-            NeedsMainDOL = true;
-            MainContentIndex = 5;
-            NeedsManualLoaded = true;
+            needsMainDol = true;
+            mainContentIndex = 5;
+            needsManualLoaded = true;
             SaveTextEncoding = Encoding.Unicode;
 
             base.Load();

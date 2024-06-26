@@ -321,33 +321,33 @@
     <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;Logo.Parent" xml:space="preserve">
-    <value>MainPanel</value>
+    <value>mainPanel</value>
   </data>
   <data name="&gt;&gt;Logo.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="MainPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="mainPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="MainPanel.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="mainPanel.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 45</value>
   </data>
-  <data name="MainPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1020, 497</value>
+  <data name="mainPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1020, 496</value>
   </data>
-  <data name="MainPanel.TabIndex" type="System.Int32, mscorlib">
+  <data name="mainPanel.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
-  <data name="&gt;&gt;MainPanel.Name" xml:space="preserve">
-    <value>MainPanel</value>
+  <data name="&gt;&gt;mainPanel.Name" xml:space="preserve">
+    <value>mainPanel</value>
   </data>
-  <data name="&gt;&gt;MainPanel.Type" xml:space="preserve">
+  <data name="&gt;&gt;mainPanel.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;MainPanel.Parent" xml:space="preserve">
+  <data name="&gt;&gt;mainPanel.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;MainPanel.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;mainPanel.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="toolStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
@@ -522,7 +522,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1020, 542</value>
+    <value>1020, 541</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8.25pt</value>
@@ -2927,7 +2927,7 @@
 </value>
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>16, 85</value>
+    <value>16, 84</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>

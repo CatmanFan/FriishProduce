@@ -237,7 +237,7 @@ namespace FriishProduce
                 _ => List[target].bg
             };
 
-            return (t.R + t.G + t.B) / 3f;
+            return ((t.R + t.G + t.B) / 3f) / 255f;
         }
 
         /// <summary>

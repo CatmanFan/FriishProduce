@@ -13,9 +13,9 @@ namespace FriishProduce.Injectors
 
         protected override void Load()
         {
-            NeedsMainDOL = true;
-            MainContentIndex = 5;
-            NeedsManualLoaded = true;
+            needsMainDol = true;
+            mainContentIndex = 5;
+            needsManualLoaded = true;
             SaveTextEncoding = WAD.Region == Region.Korea ? Encoding.BigEndianUnicode : Encoding.GetEncoding(932); // Shift-JIS
 
             base.Load();

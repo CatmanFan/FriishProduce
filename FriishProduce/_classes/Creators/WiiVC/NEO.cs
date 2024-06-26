@@ -21,20 +21,20 @@ namespace FriishProduce.Injectors
 
         protected override void Load()
         {
-            NeedsMainDOL = false;
-            NeedsManualLoaded = true;
+            needsMainDol = false;
+            needsManualLoaded = true;
             SaveTextEncoding = Encoding.BigEndianUnicode;
 
             // Game.bin may be stored on either 6.app, 5.app or 7.app.
             // In all cases the manual files are stored also on 00000005.app.
             // ****************
             if (WAD.Contents.Length >= 8)
-                MainContentIndex = WAD.Contents[7].Length > WAD.Contents[6].Length && WAD.Contents[7].Length > WAD.Contents[5].Length ? 7
+                mainContentIndex = WAD.Contents[7].Length > WAD.Contents[6].Length && WAD.Contents[7].Length > WAD.Contents[5].Length ? 7
                     : WAD.Contents[6].Length > WAD.Contents[7].Length && WAD.Contents[6].Length > WAD.Contents[5].Length ? 6
                     : 5;
             else if (WAD.Contents.Length == 7)
-                MainContentIndex = WAD.Contents[6].Length > WAD.Contents[5].Length ? 6 : 5;
-            else MainContentIndex = 5;
+                mainContentIndex = WAD.Contents[6].Length > WAD.Contents[5].Length ? 6 : 5;
+            else mainContentIndex = 5;
 
             ZIP = ZipFile.Read(new MemoryStream(File.ReadAllBytes(ROM.FilePath)));
             base.Load();

@@ -53,7 +53,7 @@ namespace FriishProduce
             this.menu_close_project = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_help = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_about_app = new System.Windows.Forms.ToolStripMenuItem();
-            this.MainPanel = new System.Windows.Forms.Panel();
+            this.mainPanel = new System.Windows.Forms.Panel();
             this.Logo = new System.Windows.Forms.PictureBox();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.toolbarNewProject = new System.Windows.Forms.ToolStripDropDownButton();
@@ -71,7 +71,7 @@ namespace FriishProduce
             this.BrowseProject = new System.Windows.Forms.OpenFileDialog();
             this.tabControl = new MdiTabControl.TabControl();
             this.menuStrip.SuspendLayout();
-            this.MainPanel.SuspendLayout();
+            this.mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             this.toolStrip.SuspendLayout();
             this.SuspendLayout();
@@ -246,15 +246,16 @@ namespace FriishProduce
             this.menu_about_app.Tag = "about_app";
             this.menu_about_app.Click += new System.EventHandler(this.About_Click);
             // 
-            // MainPanel
+            // mainPanel
             // 
-            this.MainPanel.BackColor = System.Drawing.Color.Gainsboro;
-            this.MainPanel.Controls.Add(this.Logo);
-            resources.ApplyResources(this.MainPanel, "MainPanel");
-            this.MainPanel.Name = "MainPanel";
+            this.mainPanel.BackColor = System.Drawing.SystemColors.Control;
+            this.mainPanel.Controls.Add(this.Logo);
+            resources.ApplyResources(this.mainPanel, "mainPanel");
+            this.mainPanel.Name = "mainPanel";
             // 
             // Logo
             // 
+            this.Logo.BackColor = System.Drawing.Color.Transparent;
             this.Logo.Image = global::FriishProduce.Properties.Resources.icon;
             resources.ApplyResources(this.Logo, "Logo");
             this.Logo.Name = "Logo";
@@ -408,9 +409,9 @@ namespace FriishProduce
             this.tabControl.TabCloseButtonImageDisabled = null;
             this.tabControl.TabCloseButtonImageHot = null;
             this.tabControl.TabCloseButtonSize = new System.Drawing.Size(16, 16);
-            this.tabControl.TabHeight = 25;
+            this.tabControl.TabHeight = 24;
             this.tabControl.TabMaximumWidth = 300;
-            this.tabControl.TabMinimumWidth = 150;
+            this.tabControl.TabMinimumWidth = 175;
             this.tabControl.TabOffset = 2;
             this.tabControl.TabTop = 2;
             this.tabControl.TopSeparator = false;
@@ -422,7 +423,7 @@ namespace FriishProduce
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.Controls.Add(this.MainPanel);
+            this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.menuStrip);
             this.Controls.Add(this.tabControl);
@@ -436,7 +437,7 @@ namespace FriishProduce
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_Closing);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
-            this.MainPanel.ResumeLayout(false);
+            this.mainPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).EndInit();
             this.toolStrip.ResumeLayout(false);
             this.toolStrip.PerformLayout();
@@ -460,7 +461,7 @@ namespace FriishProduce
         private System.Windows.Forms.ToolStripMenuItem menu_close_project;
         private System.Windows.Forms.ToolStripMenuItem menu_help;
         private System.Windows.Forms.ToolStripMenuItem menu_about_app;
-        private System.Windows.Forms.Panel MainPanel;
+        private System.Windows.Forms.Panel mainPanel;
         private System.Windows.Forms.ToolStrip toolStrip;
         private System.Windows.Forms.ToolStripButton toolbarOpenGameFile;
         private System.Windows.Forms.ToolStripButton toolbarRetrieveGameData;

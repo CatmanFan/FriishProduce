@@ -292,7 +292,11 @@ namespace FriishProduce
             resources.GetString("video_modes.Items1"),
             resources.GetString("video_modes.Items2"),
             resources.GetString("video_modes.Items3"),
-            resources.GetString("video_modes.Items4")});
+            resources.GetString("video_modes.Items4"),
+            resources.GetString("video_modes.Items5"),
+            resources.GetString("video_modes.Items6"),
+            resources.GetString("video_modes.Items7"),
+            resources.GetString("video_modes.Items8")});
             resources.ApplyResources(this.video_modes, "video_modes");
             this.video_modes.Name = "video_modes";
             this.video_modes.SelectedIndexChanged += new System.EventHandler(this.Value_Changed);
@@ -511,6 +515,7 @@ namespace FriishProduce
             // 
             this.BaseRegion.BackColor = System.Drawing.Color.Gainsboro;
             resources.ApplyResources(this.BaseRegion, "BaseRegion");
+            this.BaseRegion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.BaseRegion.ContextMenuStrip = this.baseRegionList;
             this.BaseRegion.Name = "BaseRegion";
             this.BaseRegion.TabStop = false;
