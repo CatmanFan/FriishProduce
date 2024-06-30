@@ -249,6 +249,7 @@ namespace FriishProduce
             // mainPanel
             // 
             this.mainPanel.BackColor = System.Drawing.SystemColors.Control;
+            this.mainPanel.BackgroundImage = global::FriishProduce.Properties.Resources.bg;
             this.mainPanel.Controls.Add(this.Logo);
             resources.ApplyResources(this.mainPanel, "mainPanel");
             this.mainPanel.Name = "mainPanel";

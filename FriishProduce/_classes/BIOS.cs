@@ -125,7 +125,7 @@ namespace FriishProduce
                 }
             }
 
-            return Platform.NES;
+            throw new InvalidDataException();
         }
     }
 }

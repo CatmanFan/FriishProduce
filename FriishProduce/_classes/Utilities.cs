@@ -124,7 +124,7 @@ namespace FriishProduce
             }
         }
 
-        public static byte[] Get(string URL)
+        public static byte[] Get(string URL, int timeout = 300)
         {
             // Actual web connection is done here
             // ****************
@@ -132,14 +132,23 @@ namespace FriishProduce
             using (MemoryStream ms = new MemoryStream())
             using (WebClient x = new WebClient())
             {
-                if (Task.WaitAny
+                try
+                {
+                    if (Task.WaitAny
                     (new Task[]{Task.Run(() => { try { x.OpenRead(URL).CopyTo(ms); return ms; } catch { return null; } }
-                    )}, 100 * 1000) == -1)
+                    )}, timeout * 1000) == -1)
                     throw new TimeoutException();
 
-                if (ms.ToArray().Length > 75) return ms.ToArray();
+                    if (ms.ToArray().Length > 75) return ms.ToArray();
 
-                throw new WebException();
+                    throw new WebException();
+                }
+
+                catch (Exception ex)
+                {
+                    string message = (ex.Message.Contains(URL) ? ex.Message.Substring(0, ex.Message.IndexOf(':')) : ex.Message) + (ex.Message[ex.Message.Length - 1] != '.' ? "." : string.Empty);
+                    throw new Exception(string.Format(Program.Lang.Msg(0, true), message));
+                }
             }
         }
     }

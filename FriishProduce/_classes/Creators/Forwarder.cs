@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.IO.Compression;
 using System.Text;
 using static FriishProduce.FileDatas.Emulators;
 
@@ -51,17 +50,18 @@ namespace FriishProduce
         public enum WADTypes { Comex, Waninkoko };
         public static WADTypes WADType { get; set; }
 
-        private static string path { get; set; }
+        private static string loadPath { get; set; }
 
-        private bool isDisc { get => new Disc().CheckValidity(ROM); }
 
         public string ROM { get; set; }
         private string romExtension { get => Path.GetExtension(ROM).ToLower(); }
+        private bool isDisc { get => new Disc().CheckValidity(ROM); }
 
+        public string Name { get; set; }
         private string tID;
-        public string ID { get => tID; set { tID = value; path = $"%s:/private/VC/{value}/boot.dol"; } }
+        public string ID { get => tID; set { tID = value; loadPath = $"%s:/private/vc/{value}/boot.dol"; } }
 
-        public void CreateZIP(string Out)
+        public void CreateZIP(string outFile)
         {
             // Declare main variables and failsafes
             // *******
@@ -69,7 +69,7 @@ namespace FriishProduce
             if (EmulatorIndex == -1) throw new NotSupportedException();
 
             bool hasBIOS = false;
-            string PackageFolder = Paths.SDUSBRoot + path.Substring(4).Replace("/boot.dol", "").Replace('/', '\\') + '\\';
+            string PackageFolder = Paths.SDUSBRoot + loadPath.Substring(4).Replace("/boot.dol", "").Replace('/', '\\') + '\\';
             string ROMFolder = isDisc ? PackageFolder + "title\\" : PackageFolder;
             string ROMName = isDisc ? Path.GetFileName(ROM) : (EmulatorIndex >= 7 ? "title" : "HOME Menu") + romExtension;
 
@@ -170,31 +170,37 @@ namespace FriishProduce
 
                 // Copy BIOS if available
                 // *******
-                bool validBIOS = false;
-                try { validBIOS = Settings != null && File.Exists(Settings["BIOSPath"]); } catch { hasBIOS = false; }
-
-                if (validBIOS)
+                if (Settings != null && Settings.ContainsKey("BIOSPath") && !string.IsNullOrWhiteSpace(Settings["BIOSPath"]))
                 {
-                    var validList = new List<(Platform Platform, int Index, string Directory)>()
+                    try
                     {
-                        (Platform.PSX,   12, Paths.SDUSBRoot + "wiisxrx\\bios\\SCPH1001.BIN"),
-                    };
-
-                    foreach (var item in validList)
-                    {
-                        if (BIOS.GetConsole(File.ReadAllBytes(Settings["BIOSPath"])) == item.Platform
-                            && EmulatorIndex == item.Index)
+                        var validList = new List<(Platform Platform, int Index, string Directory)>()
                         {
-                            File.Copy(Settings["BIOSPath"], item.Directory);
-                            hasBIOS = true;
+                            (Platform.PSX,   12, Paths.SDUSBRoot + "wiisxrx\\bios\\SCPH1001.BIN"),
+                        };
+
+                        foreach (var item in validList)
+                        {
+                            if (BIOS.GetConsole(File.ReadAllBytes(Settings["BIOSPath"])) == item.Platform
+                                && EmulatorIndex == item.Index)
+                            {
+                                File.Copy(Settings["BIOSPath"], item.Directory);
+                                hasBIOS = true;
+                            }
                         }
+                    }
+
+                    catch
+                    {
+                        hasBIOS = false;
+                        MessageBox.Show(Program.Lang.Msg(13, true));
                     }
                 }
             }
 
             // Prepare for meta.xml creation
             // *******
-            ROMFolder = path.Replace("%s:/", Storage == Storages.USB ? "usb:/" : "sd:/").Replace("/boot.dol", "");
+            ROMFolder = loadPath.Replace("%s:/", Storage == Storages.USB ? "usb:/" : "sd:/").Replace("/boot.dol", "");
             if (isDisc) ROMFolder += "/title";
 
             // Write main
@@ -203,14 +209,14 @@ namespace FriishProduce
             {
                 "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>",
                 "<app version=\"1\">",
-                $"  <name>{ID}</name>",
+                $"  <name>{(string.IsNullOrWhiteSpace(Name) ? ID : Name + " - " + ID)}</name>",
                 "  <coder></coder>",
                 "  <version></version>",
                 "  <release_date></release_date>",
-                "  <short_description>SRL Forwarder</short_description>",
-                "  <long_description>This will attempt to load a ROM from the following path:",
+                $"  <short_description>SRL Forwarder</short_description>",
+                "  <long_description>Loads a ROM from the following path:",
                 ROMFolder + '/' + ROMName,
-                $"using the emulator {List[EmulatorIndex].Name}.</long_description>",
+                $"using the {List[EmulatorIndex].Name} emulator.</long_description>",
                 "  <arguments>",
 
             };
@@ -258,7 +264,7 @@ namespace FriishProduce
                     break;
             }
 
-            // Write footer and create file
+            // Write footer and create meta.xml file
             // *******
             meta.Add("  </arguments>");
             meta.Add("  <ahb_access />");
@@ -266,14 +272,9 @@ namespace FriishProduce
 
             File.WriteAllLines(PackageFolder + "meta.xml", meta.ToArray());
 
-            // Get ZIP directory path & compress to .ZIP archive
+            // Do readme
             // *******
-            if (File.Exists(Out)) File.Delete(Out);
-            ZipFile.CreateFromDirectory(Paths.SDUSBRoot, Out);
-
-            // Clean
-            // *******
-            Directory.Delete(Paths.SDUSBRoot, true);
+            File.WriteAllText(Paths.SDUSBRoot + $"(Extract to your {(Storage == Storages.USB ? "USB" : "SD")} root).txt", "");
         }
 
         public WAD CreateWAD(WAD WAD, bool vWii = false)
@@ -296,7 +297,7 @@ namespace FriishProduce
             byte[] Forwarder = NeedsOldForwarder ? FileDatas.Forwarder.DOL_V12 : FileDatas.Forwarder.DOL_V14;
             int TargetOffset = NeedsOldForwarder ? 0x77426 : 0x7F979;
             int SecondTargetOffset = NeedsOldForwarder ? 263 : 256;
-            string TargetPath = NeedsOldForwarder ? path : path.Substring(4);
+            string TargetPath = NeedsOldForwarder ? loadPath : loadPath.Substring(4);
 
             // Create forwarder .app
             // *******

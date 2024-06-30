@@ -121,7 +121,6 @@ namespace FriishProduce
             {
                 BrowseImage.Filter = Program.Lang.String("filter.img");
                 BrowseProject.Filter = SaveProject.Filter = Program.Lang.String("filter.project");
-                SaveWAD.Filter = Program.Lang.String("filter.wad");
             }
             catch
             {
@@ -148,7 +147,7 @@ namespace FriishProduce
             }
 
             mainPanel.Dock = DockStyle.None;
-            // tabControl.BackLowColor = tabControl.BackHighColor = tabControl.BackColor = Color.Transparent;
+            if (mainPanel.BackgroundImage != null) tabControl.BackLowColor = tabControl.BackHighColor = tabControl.BackColor = Color.Transparent;
             tabControl.BackgroundImage = mainPanel.BackgroundImage;
             tabControl.BackgroundImageLayout = mainPanel.BackgroundImageLayout;
             mainPanel.Location = tabControl.Location = new Point(0, menuStrip.Height + toolStrip.Height);
@@ -162,6 +161,7 @@ namespace FriishProduce
             InitializeComponent();
             Program.Handle = Handle;
 
+            mainPanel.BackgroundImage = new Random().Next(0, 2) == 1 ? Properties.Resources.bg1 : Properties.Resources.bg;
 
             MaximumSize = new Size(0, 0);
             RefreshForm();
@@ -329,6 +329,8 @@ namespace FriishProduce
             var currentForm = tabControl.SelectedForm as ProjectForm;
 
             SaveWAD.FileName = currentForm.GetName();
+            SaveWAD.Filter = !currentForm.IsForwarder ? Program.Lang.String("filter.wad") : Program.Lang.String("filter.zip");
+
             if (SaveWAD.ShowDialog() == DialogResult.OK) currentForm.SaveToWAD(SaveWAD.FileName);
         }
 

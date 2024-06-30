@@ -122,14 +122,14 @@ namespace FriishProduce
             this.default_save_as_filename_tb = new System.Windows.Forms.TextBox();
             this.image_interpolation_mode = new System.Windows.Forms.GroupBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.default_injection_method_sega = new System.Windows.Forms.GroupBox();
+            this.injection_methods_sega = new System.Windows.Forms.ComboBox();
+            this.default_injection_method_snes = new System.Windows.Forms.GroupBox();
+            this.injection_methods_snes = new System.Windows.Forms.ComboBox();
             this.default_injection_method_nes = new System.Windows.Forms.GroupBox();
             this.injection_methods_nes = new System.Windows.Forms.ComboBox();
             this.default_injection_method_n64 = new System.Windows.Forms.GroupBox();
             this.injection_methods_n64 = new System.Windows.Forms.ComboBox();
-            this.default_injection_method_snes = new System.Windows.Forms.GroupBox();
-            this.injection_methods_snes = new System.Windows.Forms.ComboBox();
-            this.default_injection_method_sega = new System.Windows.Forms.GroupBox();
-            this.injection_methods_sega = new System.Windows.Forms.ComboBox();
             this.vc_n64_options.SuspendLayout();
             this.bottomPanel1.SuspendLayout();
             this.bottomPanel2.SuspendLayout();
@@ -163,10 +163,10 @@ namespace FriishProduce
             this.default_save_as_filename.SuspendLayout();
             this.image_interpolation_mode.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.default_injection_method_sega.SuspendLayout();
+            this.default_injection_method_snes.SuspendLayout();
             this.default_injection_method_nes.SuspendLayout();
             this.default_injection_method_n64.SuspendLayout();
-            this.default_injection_method_snes.SuspendLayout();
-            this.default_injection_method_sega.SuspendLayout();
             this.SuspendLayout();
             // 
             // lngList
@@ -912,6 +912,38 @@ namespace FriishProduce
             resources.ApplyResources(this.panel3, "panel3");
             this.panel3.Name = "panel3";
             // 
+            // default_injection_method_sega
+            // 
+            this.default_injection_method_sega.Controls.Add(this.injection_methods_sega);
+            resources.ApplyResources(this.default_injection_method_sega, "default_injection_method_sega");
+            this.default_injection_method_sega.Name = "default_injection_method_sega";
+            this.default_injection_method_sega.TabStop = false;
+            this.default_injection_method_sega.Tag = "sega";
+            // 
+            // injection_methods_sega
+            // 
+            this.injection_methods_sega.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.injection_methods_sega.FormattingEnabled = true;
+            resources.ApplyResources(this.injection_methods_sega, "injection_methods_sega");
+            this.injection_methods_sega.Name = "injection_methods_sega";
+            this.injection_methods_sega.Tag = "";
+            // 
+            // default_injection_method_snes
+            // 
+            this.default_injection_method_snes.Controls.Add(this.injection_methods_snes);
+            resources.ApplyResources(this.default_injection_method_snes, "default_injection_method_snes");
+            this.default_injection_method_snes.Name = "default_injection_method_snes";
+            this.default_injection_method_snes.TabStop = false;
+            this.default_injection_method_snes.Tag = "snes";
+            // 
+            // injection_methods_snes
+            // 
+            this.injection_methods_snes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.injection_methods_snes.FormattingEnabled = true;
+            resources.ApplyResources(this.injection_methods_snes, "injection_methods_snes");
+            this.injection_methods_snes.Name = "injection_methods_snes";
+            this.injection_methods_snes.Tag = "";
+            // 
             // default_injection_method_nes
             // 
             this.default_injection_method_nes.Controls.Add(this.injection_methods_nes);
@@ -944,38 +976,6 @@ namespace FriishProduce
             this.injection_methods_n64.Name = "injection_methods_n64";
             this.injection_methods_n64.Tag = "";
             // 
-            // default_injection_method_snes
-            // 
-            this.default_injection_method_snes.Controls.Add(this.injection_methods_snes);
-            resources.ApplyResources(this.default_injection_method_snes, "default_injection_method_snes");
-            this.default_injection_method_snes.Name = "default_injection_method_snes";
-            this.default_injection_method_snes.TabStop = false;
-            this.default_injection_method_snes.Tag = "snes";
-            // 
-            // injection_methods_snes
-            // 
-            this.injection_methods_snes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.injection_methods_snes.FormattingEnabled = true;
-            resources.ApplyResources(this.injection_methods_snes, "injection_methods_snes");
-            this.injection_methods_snes.Name = "injection_methods_snes";
-            this.injection_methods_snes.Tag = "";
-            // 
-            // default_injection_method_sega
-            // 
-            this.default_injection_method_sega.Controls.Add(this.injection_methods_sega);
-            resources.ApplyResources(this.default_injection_method_sega, "default_injection_method_sega");
-            this.default_injection_method_sega.Name = "default_injection_method_sega";
-            this.default_injection_method_sega.TabStop = false;
-            this.default_injection_method_sega.Tag = "sega";
-            // 
-            // injection_methods_sega
-            // 
-            this.injection_methods_sega.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.injection_methods_sega.FormattingEnabled = true;
-            resources.ApplyResources(this.injection_methods_sega, "injection_methods_sega");
-            this.injection_methods_sega.Name = "injection_methods_sega";
-            this.injection_methods_sega.Tag = "";
-            // 
             // SettingsForm
             // 
             this.AcceptButton = this.b_ok;
@@ -986,8 +986,6 @@ namespace FriishProduce
             this.Controls.Add(this.bottomPanel2);
             this.Controls.Add(this.leftSeparator);
             this.Controls.Add(this.TreeView);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.vc_neo);
             this.Controls.Add(this.vc_nes);
@@ -996,6 +994,8 @@ namespace FriishProduce
             this.Controls.Add(this.vc_n64);
             this.Controls.Add(this.vc_pce);
             this.Controls.Add(this.vc_sega);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MaximizeBox = false;
@@ -1053,10 +1053,10 @@ namespace FriishProduce
             this.default_save_as_filename.PerformLayout();
             this.image_interpolation_mode.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
+            this.default_injection_method_sega.ResumeLayout(false);
+            this.default_injection_method_snes.ResumeLayout(false);
             this.default_injection_method_nes.ResumeLayout(false);
             this.default_injection_method_n64.ResumeLayout(false);
-            this.default_injection_method_snes.ResumeLayout(false);
-            this.default_injection_method_sega.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

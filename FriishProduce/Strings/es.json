@@ -72,7 +72,7 @@
 			"error": "¡Se ha producido un error!",
 			"e_000": "No se pudo conectar a Internet.\nDescripción : {0}",
 			"e_001": "No se pudo generar la imagen.\nEsto puede deberse a un problema con GDI+.",
-			"e_002": "No se pueden reemplazar los datos internos.",
+			"e_002": "No se pueden reemplazar los datos internos del canal.",
 			"e_003": "La ROM es demasiado grande (más de {0} {1} en tamaño).",
 			"e_004": "No se pudo modificar los ajustes siguientes:\n{0}\nLa exportación en formato WAD continuará según lo previsto.",
 			"e_005": "La aplicación necesaria ({0}) no se encontró en el subdirectorio \"resources\\tools\".",

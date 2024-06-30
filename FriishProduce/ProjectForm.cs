@@ -35,6 +35,7 @@ namespace FriishProduce
         }
 
         private bool _isShown;
+        private bool _isMint;
 
         private bool _isModified;
         public bool IsModified
@@ -44,6 +45,7 @@ namespace FriishProduce
             set
             {
                 _isModified = value;
+                if (value) _isMint = false;
                 Program.MainForm.toolbarSaveAs.Enabled = value;
                 Program.MainForm.menu_save_project_as.Enabled = value;
                 Program.MainForm.toolbarSaveAsWAD.Enabled = IsExportable;
@@ -90,6 +92,9 @@ namespace FriishProduce
                 return save_data_title.Visible ? yes && !string.IsNullOrEmpty(_saveDataTitle[0]) : yes;
             }
         }
+
+        protected bool IsVC { get => injection_methods.SelectedItem?.ToString().ToLower() == Program.Lang.String("vc").ToLower(); }
+        public bool IsForwarder { get => !IsVC && Platform != Platform.Flash; }
 
         private new enum Region
         {
@@ -142,7 +147,6 @@ namespace FriishProduce
 
         private Preview preview = new Preview();
 
-        protected bool isVC { get => injection_methods.SelectedItem?.ToString().ToLower() == Program.Lang.String("vc").ToLower(); }
         protected ContentOptions contentOptionsForm { get; set; }
         protected IDictionary<string, string> contentOptions { get => contentOptionsForm?.Options; }
 
@@ -163,7 +167,7 @@ namespace FriishProduce
                 // 2  = Korea
                 // 3  = Europe
 
-                int lang = isVC ? -1 : outWadRegion switch
+                int lang = IsVC ? -1 : outWadRegion switch
                 {
                     libWiiSharp.Region.USA => 0,
                     libWiiSharp.Region.Japan => 1,
@@ -173,8 +177,8 @@ namespace FriishProduce
                 };
 
                 if (lang < 0 || lang > 3) lang = channels != null ? inWadRegion switch { Region.Japan => 1, Region.Korea => 2, Region.Europe => 3, _ => 0 } : 0;
-                if (!isVC && Program.Lang.Current.StartsWith("ja")) lang = 1;
-                if (!isVC && Program.Lang.Current.StartsWith("ko")) lang = 2;
+                if (!IsVC && Program.Lang.Current.StartsWith("ja")) lang = 1;
+                if (!IsVC && Program.Lang.Current.StartsWith("ko")) lang = 2;
 
                 // Japan/Korea: Use USA banner for C64
                 if (lang != 0 && lang != 3 && platform == Platform.C64)
@@ -239,6 +243,7 @@ namespace FriishProduce
             }
 
             IsModified = false;
+            _isMint = true;
         }
 
         public void RefreshForm()
@@ -246,6 +251,8 @@ namespace FriishProduce
             // ----------------------------
             if (DesignMode) return;
             // ----------------------------
+
+            bool isMint = _isMint || !Program.MainForm.menu_save_project_as.Enabled;
 
             #region Localization
             Program.Lang.Control(this, "projectform");
@@ -315,6 +322,8 @@ namespace FriishProduce
             toolTip.SetToolTip(banner_title, Program.Lang.ToolTip(6));
             toolTip.SetToolTip(released, Program.Lang.ToolTip(7));
             toolTip.SetToolTip(players, Program.Lang.ToolTip(8));
+            toolTip.SetToolTip(injection_methods, Program.Lang.ToolTip(9));
+            toolTip.SetToolTip(import_wad_from_file, Program.Lang.ToolTip(10));
 
             #endregion
 
@@ -416,7 +425,7 @@ namespace FriishProduce
 
             if (Properties.Settings.Default.image_fit_aspect_ratio) image_fit.Checked = true; else image_stretch.Checked = true;
             resetImages();
-            IsModified = false;
+            if (isMint && IsModified) IsModified = false;
         }
 
         private void LoadChannelDatabase()
@@ -566,7 +575,7 @@ namespace FriishProduce
                 if (File.Exists(project.BaseFile))
                 {
                     WADPath = project.BaseFile;
-                    ImportWAD.Checked = true;
+                    import_wad_from_file.Checked = true;
                     LoadWAD(project.BaseFile);
                 }
                 else
@@ -607,6 +616,7 @@ namespace FriishProduce
 
             IsEmpty = project == null;
             IsModified = false;
+            _isMint = true;
             project = null;
         }
 
@@ -636,7 +646,7 @@ namespace FriishProduce
 
                 platform != Platform.Flash
                 && platform != Platform.RPGM
-                && isVC, // Browse manual
+                && IsVC, // Browse manual
             };
         }
 
@@ -799,7 +809,7 @@ namespace FriishProduce
             if (DesignMode) return;
             // ----------------------------
 
-            Base.Enabled = BaseRegion.Enabled = !ImportWAD.Checked;
+            Base.Enabled = BaseRegion.Enabled = !import_wad_from_file.Checked;
             if (Base.Enabled)
             {
                 AddBases();
@@ -809,17 +819,17 @@ namespace FriishProduce
                 BaseRegion.Image = null;
             }
 
-            if (ImportWAD.Checked && WADPath == null)
+            if (import_wad_from_file.Checked && WADPath == null)
             {
-                browseInputWad.Title = ImportWAD.Text;
+                browseInputWad.Title = import_wad_from_file.Text;
                 browseInputWad.Filter = Program.Lang.String("filter.wad");
                 var result = browseInputWad.ShowDialog();
 
-                if (result == DialogResult.OK && !LoadWAD(browseInputWad.FileName)) ImportWAD.Checked = false;
-                else if (result == DialogResult.Cancel) ImportWAD.Checked = false;
+                if (result == DialogResult.OK && !LoadWAD(browseInputWad.FileName)) import_wad_from_file.Checked = false;
+                else if (result == DialogResult.Cancel) import_wad_from_file.Checked = false;
             }
 
-            if (!ImportWAD.Checked)
+            if (!import_wad_from_file.Checked)
             {
                 WADPath = null;
             }
@@ -928,9 +938,10 @@ namespace FriishProduce
                         // ****************
                         /* else */
                         if ((item.FileName.StartsWith("startup") && Path.GetExtension(item.FileName) == ".html")
-              || item.FileName == "standard.css"
-              || item.FileName == "contents.css"
-              || item.FileName == "vsscript.css") applicable++;
+                          || item.FileName == "standard.css"
+                          || item.FileName == "contents.css"
+                          || item.FileName == "vsscript.css")
+                            applicable++;
                     }
 
                     if (applicable >= 2 /* && hasFolder */)
@@ -1218,7 +1229,7 @@ namespace FriishProduce
                     case Platform.PCECD:
                     case Platform.NEO:
                     case Platform.MSX:
-                        if (isVC)
+                        if (IsVC)
                             WiiVCInject();
                         else
                             ForwarderCreator(targetFile);
@@ -1248,7 +1259,7 @@ namespace FriishProduce
                 (
                     outWad,
                     platform,
-                    isVC ? outWad.Region : _bannerRegion switch { 1 => libWiiSharp.Region.Japan, 2 => libWiiSharp.Region.Korea, 3 => libWiiSharp.Region.Europe, _ => libWiiSharp.Region.USA },
+                    IsVC ? outWad.Region : _bannerRegion switch { 1 => libWiiSharp.Region.Japan, 2 => libWiiSharp.Region.Korea, 3 => libWiiSharp.Region.Europe, _ => libWiiSharp.Region.USA },
                     _bannerTitle,
                     _bannerYear,
                     _bannerPlayers
@@ -1267,7 +1278,28 @@ namespace FriishProduce
                 outWad.ChangeChannelTitles(_channelTitles);
                 outWad.ChangeTitleID(LowerTitleID.Channel, _tID);
                 outWad.FakeSign = true;
-                outWad.Save(targetFile);
+
+                if (Directory.Exists(Paths.SDUSBRoot))
+                {
+                    Directory.CreateDirectory(Paths.SDUSBRoot + "wad\\");
+                    outWad.Save(Paths.SDUSBRoot + "wad\\" + Path.GetFileNameWithoutExtension(targetFile) + ".wad");
+
+                    // Get ZIP directory path & compress to .ZIP archive
+                    // *******
+                    if (File.Exists(targetFile)) File.Delete(targetFile);
+
+                    using (ZipFile z = new ZipFile(targetFile))
+                    {
+                        z.AddDirectory(Paths.SDUSBRoot, "");
+                        z.Save();
+                    }
+
+                    // Clean
+                    // *******
+                    Directory.Delete(Paths.SDUSBRoot, true);
+                }
+                else outWad.Save(targetFile);
+
                 outWad.Dispose();
 
                 // Check new WAD file
@@ -1313,7 +1345,8 @@ namespace FriishProduce
                 ROM = rom.FilePath,
                 ID = _tID,
                 Emulator = injection_methods.SelectedItem.ToString(),
-                Storage = FStorage_USB.Checked ? Forwarder.Storages.USB : Forwarder.Storages.SD
+                Storage = FStorage_USB.Checked ? Forwarder.Storages.USB : Forwarder.Storages.SD,
+                Name = _channelTitles[1]
             };
 
             // Get settings from relevant form
@@ -1411,7 +1444,7 @@ namespace FriishProduce
             // Set path to manual (if it exists) and load WAD
             // *******
             VC.RetainOriginalManual = manual_type_list.SelectedIndex == 1;
-            VC.ManualFile = manual != null ? new ZipFile("manual") : null;
+            VC.ManualFile = manual != null ? new Ionic.Zip.ZipFile("manual") : null;
             if (VC.ManualFile != null) VC.ManualFile.AddDirectory(manual);
 
             // Actually inject everything
@@ -1744,7 +1777,7 @@ namespace FriishProduce
             forwarder_console.Visible = forwarder_root_device.Visible = false;
             contentOptionsForm = null;
 
-            if (isVC)
+            if (IsVC)
             {
                 manual_type.Visible = manual_type_list.Visible = true;
 
@@ -1839,7 +1872,7 @@ namespace FriishProduce
                 contentOptionsForm.Icon = Icon.FromHandle(Properties.Resources.wrench.GetHicon());
             }
 
-            if (!isVC && manual != null)
+            if (!IsVC && manual != null)
             {
                 manual = null;
                 manual_type_list.SelectedIndex = 0;
@@ -1847,7 +1880,7 @@ namespace FriishProduce
 
             editContentOptions.Enabled = contentOptionsForm != null;
 
-            showSaveData = isVC || platform == Platform.Flash;
+            showSaveData = IsVC || platform == Platform.Flash;
             toggleSwitchL1.Visible = toggleSwitch1.Visible = FStorage_SD.Visible = FStorage_USB.Visible = forwarder_console.Visible;
         }
         #endregion

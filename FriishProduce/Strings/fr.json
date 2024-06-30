@@ -66,7 +66,7 @@
 		},
 		"messages": {
 			"000": "Un redémarrage de l'application est nécessaire pour que les changements aux paramètres prennent effet.",
-			"001": "Le projet « {0} » comporte des modifications non enregistrées.\nQu'est-ce que vous voudrais faire ?",
+			"001": "Le projet «{0}» comporte des modifications non enregistrées.\nQu'est-ce que vous voudrais faire ?",
 			"002": "Le fichier sélectionné est invalide.",
 			"003": "Sauvegardé avec succès.\nQu'est-ce que vous voudrais faire avec le fichier WAD ?",
 			"003_a": "Ouvrir le dossier de sortie",
@@ -79,19 +79,28 @@
 			"error": "Un problème est survenu !",
 			"e_000": "Échec de la connexion à Internet.\nMessage : {0}",
 			"e_001": "Échec de la génération de l'image.\nCeci peut être provoqué par un problème avec GDI+.",
-			"e_002": "Échec du replacement des données internes.",
+			"e_002": "Échec du replacement des données internes de la chaîne.",
 			"e_003": "La taille de votre fichier de jeu dépasse la limite de {0} {1}.",
 			"e_004": "Échec de modification des options de contenu suivantes :\n{0}\nLa sauvegarde du fichier WAD se poursuivra comme prévu.",
-			"e_005": "L'application requise ({0}) n'est pas disponible dans le sous-répertoire « resources\\tools ».\nVeuillez obtenir cette application et la placer dans ce dossier, puis réessayer.",
+			"e_005": "L'application requise ({0}) n'est pas disponible dans le sous-répertoire «resources\\tools».\nVeuillez obtenir cette application et la placer dans ce dossier, puis réessayer.",
 			"e_006": "Échec de la sauvegarde vers format WAD.",
 			"e_007": "Échec de l'application du patch. Il peut s'agir que soit la ROM ne correspond pas au patch, soit elle-même n'est pas valide.",
 			"e_008": "Échec du téléchargement de la chaîne.",
 			"e_009": "Échec de modification du fichier du mode d'emploi.\nLa sauvegarde du fichier WAD se poursuivra comme prévu.",
-			"e_010": "Le fichier « {0} » n'a pas été trouvé dans son chemin original. Il s'agit qu'il peut avoir été déplacé ou supprimé.",
-			"e_011": "Le dossier « {0} » n'a pas été trouvé dans son chemin original. Il s'agit qu'il peut avoir été déplacé ou supprimé."
+			"e_010": "Le fichier «{0}» n'a pas été trouvé dans son chemin original. Il s'agit qu'il peut avoir été déplacé ou supprimé.",
+			"e_011": "Le dossier «{0}» n'a pas été trouvé dans son chemin original. Il s'agit qu'il peut avoir été déplacé ou supprimé."
 		},
 		"tooltips": {
-			"000": "Nom d'aperçu de la chaîne sur le menu Wii.",
+			"000": "Nom de la chaîne comme aperçu sur le menu Wii.",
+			"001": "Code d'identification de la chaîne.\nAu cours d'installation, si une autre chaîne existe déjà avec le même code sur votre Wii, elle sera remplacée avec la nouvelle !",
+			"002": "Région cible de la chaîne.\nIl est généralement recommandé de définir cette option comme déverrouillée, soit «region-free» (sans région prise en charge), afin que le logiciel puisse fonctionner sur quiconque système Wii.",
+			"004": "Specifies whether to automatically fill in the savedata title using the channel's name and the second line of the banner's full title (if it is multiline).",
+			"005": "Changes the Wii video display mode used by the channel.\nSome video modes may not work depending on the software, so it is recommended to use only one target video mode for your Wii system (e.g. only PAL60) instead of a combination (e.g. NTSC + PAL60).",
+			"006": "The full title of the game, as displayed on the channel banner preview.",
+			"007": "L'année de publication (si elle est connue).",
+			"008": "Le nombre maximal de joueurs pris en charge (s'il est connu). Certains systèmes ne prennent pas en charge un mode multijoueur.",
+			"009": "Specifies whether the WAD should use the official emulator or serve as a forwarder to a homebrew single-ROM loader (SRL).",
+			"010": "Use an offline WAD file from disk instead of downloading one by default.\nThis is recommended if you want to avoid potential copyright/piracy issues."
 		}
 	},
 
@@ -121,7 +130,7 @@
 			"language": "Langue",
 			"system_default": "Système",
 			"updater": "Mises à jour",
-			"check_for_updates": "Vérifies les mises à jour",
+			"check_for_updates": "Vérifier les mises à jour",
 			"auto_update_check": "Vérifier les mises à jour dès que l'application est ouverte",
 			"retrieve_gamedata_online": "Remplissage à partir de la base de données en ligne",
 			"auto_retrieve_gamedata_online": "Remplir automatiquement à l'ouverture d'une ROM",
