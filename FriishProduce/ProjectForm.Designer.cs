@@ -74,13 +74,14 @@ namespace FriishProduce
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.wad_base = new System.Windows.Forms.GroupBox();
+            this.base_name = new System.Windows.Forms.Label();
+            this.baseName = new System.Windows.Forms.Label();
             this.BaseRegion = new System.Windows.Forms.PictureBox();
             this.Base = new System.Windows.Forms.ComboBox();
-            this.import_wad_from_file = new System.Windows.Forms.CheckBox();
-            this.base_name = new System.Windows.Forms.Label();
             this.title_id_2 = new System.Windows.Forms.Label();
             this.baseID = new System.Windows.Forms.Label();
-            this.baseName = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.import_wad_from_file = new System.Windows.Forms.CheckBox();
             this.browsePatch = new System.Windows.Forms.OpenFileDialog();
             this.browseManual = new Ookii.Dialogs.WinForms.VistaFolderBrowserDialog();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -92,7 +93,6 @@ namespace FriishProduce
             this.manual_type = new System.Windows.Forms.Label();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.bannerPreview = new System.Windows.Forms.PictureBox();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.groupBox7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SaveIcon_Panel)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -103,11 +103,11 @@ namespace FriishProduce
             ((System.ComponentModel.ISupportInitialize)(this.released)).BeginInit();
             this.wad_base.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BaseRegion)).BeginInit();
+            this.panel3.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bannerPreview)).BeginInit();
-            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // baseRegionList
@@ -485,6 +485,19 @@ namespace FriishProduce
             this.wad_base.TabStop = false;
             this.wad_base.Tag = "wad_base";
             // 
+            // base_name
+            // 
+            resources.ApplyResources(this.base_name, "base_name");
+            this.base_name.Name = "base_name";
+            this.base_name.Tag = "base_name";
+            this.base_name.UseMnemonic = false;
+            // 
+            // baseName
+            // 
+            resources.ApplyResources(this.baseName, "baseName");
+            this.baseName.Name = "baseName";
+            this.baseName.UseMnemonic = false;
+            // 
             // BaseRegion
             // 
             this.BaseRegion.BackColor = System.Drawing.Color.Gainsboro;
@@ -506,21 +519,6 @@ namespace FriishProduce
             this.Base.Name = "Base";
             this.Base.SelectedIndexChanged += new System.EventHandler(this.Base_SelectedIndexChanged);
             // 
-            // import_wad_from_file
-            // 
-            resources.ApplyResources(this.import_wad_from_file, "import_wad_from_file");
-            this.import_wad_from_file.Name = "import_wad_from_file";
-            this.import_wad_from_file.Tag = "import_wad_from_file";
-            this.import_wad_from_file.UseVisualStyleBackColor = true;
-            this.import_wad_from_file.CheckedChanged += new System.EventHandler(this.OpenWAD_CheckedChanged);
-            // 
-            // base_name
-            // 
-            resources.ApplyResources(this.base_name, "base_name");
-            this.base_name.Name = "base_name";
-            this.base_name.Tag = "base_name";
-            this.base_name.UseMnemonic = false;
-            // 
             // title_id_2
             // 
             resources.ApplyResources(this.title_id_2, "title_id_2");
@@ -534,11 +532,20 @@ namespace FriishProduce
             this.baseID.Name = "baseID";
             this.baseID.UseMnemonic = false;
             // 
-            // baseName
+            // panel3
             // 
-            resources.ApplyResources(this.baseName, "baseName");
-            this.baseName.Name = "baseName";
-            this.baseName.UseMnemonic = false;
+            this.panel3.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel3.Controls.Add(this.import_wad_from_file);
+            resources.ApplyResources(this.panel3, "panel3");
+            this.panel3.Name = "panel3";
+            // 
+            // import_wad_from_file
+            // 
+            resources.ApplyResources(this.import_wad_from_file, "import_wad_from_file");
+            this.import_wad_from_file.Name = "import_wad_from_file";
+            this.import_wad_from_file.Tag = "import_wad_from_file";
+            this.import_wad_from_file.UseVisualStyleBackColor = true;
+            this.import_wad_from_file.CheckedChanged += new System.EventHandler(this.OpenWAD_CheckedChanged);
             // 
             // browsePatch
             // 
@@ -619,13 +626,6 @@ namespace FriishProduce
             this.bannerPreview.Name = "bannerPreview";
             this.bannerPreview.TabStop = false;
             // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panel3.Controls.Add(this.import_wad_from_file);
-            resources.ApplyResources(this.panel3, "panel3");
-            this.panel3.Name = "panel3";
-            // 
             // ProjectForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
@@ -662,6 +662,8 @@ namespace FriishProduce
             this.wad_base.ResumeLayout(false);
             this.wad_base.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BaseRegion)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -669,8 +671,6 @@ namespace FriishProduce
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bannerPreview)).EndInit();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             this.ResumeLayout(false);
 
         }

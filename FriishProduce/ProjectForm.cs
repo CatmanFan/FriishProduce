@@ -48,8 +48,8 @@ namespace FriishProduce
                 if (value) _isMint = false;
                 Program.MainForm.toolbarSaveAs.Enabled = value;
                 Program.MainForm.menu_save_project_as.Enabled = value;
-                Program.MainForm.toolbarSaveAsWAD.Enabled = IsExportable;
-                Program.MainForm.menu_save_as_wad.Enabled = IsExportable;
+                Program.MainForm.toolbarExport.Enabled = IsExportable;
+                Program.MainForm.menu_export.Enabled = IsExportable;
             }
         }
 

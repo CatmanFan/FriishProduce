@@ -106,7 +106,7 @@ namespace FriishProduce
             toolbarNewProject.Text = menu_new_project.Text;
             toolbarOpenProject.Text = menu_open_project.Text;
             toolbarSaveAs.Text = menu_save_project_as.Text;
-            toolbarSaveAsWAD.Text = menu_save_as_wad.Text;
+            toolbarExport.Text = menu_export.Text;
             toolbarOpenGameFile.Text = menu_open_gamefile.Text;
             toolbarOpenImage.Text = menu_open_image.Text;
             toolbarCloseProject.Text = menu_close_project.Text;
@@ -115,7 +115,7 @@ namespace FriishProduce
             BrowseROM.Title = menu_open_gamefile.Text.Replace("&", "");
             BrowseImage.Title = menu_open_image.Text.Replace("&", "");
             SaveProject.Title = menu_save_project_as.Text.Replace("&", "");
-            SaveWAD.Title = menu_save_as_wad.Text.Replace("&", "");
+            SaveWAD.Title = menu_export.Text.Replace("&", "");
 
             try
             {
@@ -198,7 +198,7 @@ namespace FriishProduce
                 menu_retrieve_gamedata_online.Enabled = false;
                 menu_open_image.Enabled = false;
                 menu_save_project_as.Enabled = false;
-                menu_save_as_wad.Enabled = false;
+                menu_export.Enabled = false;
 
                 tabControl.Visible = false;
                 mainPanel.Visible = true;
@@ -208,7 +208,7 @@ namespace FriishProduce
             {
                 menu_retrieve_gamedata_online.Enabled = (tabControl.SelectedForm as ProjectForm).ToolbarButtons[0];
                 menu_open_image.Enabled = !(tabControl.SelectedForm as ProjectForm).IsEmpty;
-                menu_save_as_wad.Enabled = (tabControl.SelectedForm as ProjectForm).IsExportable;
+                menu_export.Enabled = (tabControl.SelectedForm as ProjectForm).IsExportable;
             }
 
             menu_close_project.Enabled = menu_open_gamefile.Enabled;
@@ -227,7 +227,7 @@ namespace FriishProduce
             toolbarOpenGameFile.Enabled = menu_open_gamefile.Enabled;
             toolbarOpenImage.Enabled = menu_open_image.Enabled;
             toolbarRetrieveGameData.Enabled = menu_retrieve_gamedata_online.Enabled;
-            toolbarSaveAsWAD.Enabled = menu_save_as_wad.Enabled;
+            toolbarExport.Enabled = menu_export.Enabled;
         }
 
         private void MainForm_Closing(object sender, FormClosingEventArgs e)
