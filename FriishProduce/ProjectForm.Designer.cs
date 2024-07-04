@@ -184,7 +184,7 @@ namespace FriishProduce
             // 
             resources.ApplyResources(this.save_data_title, "save_data_title");
             this.save_data_title.Name = "save_data_title";
-            this.save_data_title.Tag = "27";
+            this.save_data_title.Tag = "25";
             this.save_data_title.TextChanged += new System.EventHandler(this.TextBox_Changed);
             this.save_data_title.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_Handle);
             // 
@@ -361,8 +361,8 @@ namespace FriishProduce
             // 
             this.groupBox1.Controls.Add(this.filename);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.import_patch);
             this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.import_patch);
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
@@ -591,8 +591,8 @@ namespace FriishProduce
             this.panel2.Controls.Add(this.FStorage_USB);
             this.panel2.Controls.Add(this.toggleSwitch1);
             this.panel2.Controls.Add(this.FStorage_SD);
-            this.panel2.Controls.Add(this.forwarder_root_device);
             this.panel2.Controls.Add(this.manual_type_list);
+            this.panel2.Controls.Add(this.forwarder_root_device);
             this.panel2.Controls.Add(this.manual_type);
             resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
@@ -621,7 +621,6 @@ namespace FriishProduce
             // 
             // bannerPreview
             // 
-            this.bannerPreview.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             resources.ApplyResources(this.bannerPreview, "bannerPreview");
             this.bannerPreview.Name = "bannerPreview";
             this.bannerPreview.TabStop = false;
@@ -631,14 +630,14 @@ namespace FriishProduce
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(this, "$this");
-            this.Controls.Add(this.bannerPreview);
-            this.Controls.Add(this.groupBox5);
-            this.Controls.Add(this.groupBox6);
-            this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.wad_base);
-            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox4);
+            this.Controls.Add(this.bannerPreview);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.groupBox7);
+            this.Controls.Add(this.wad_base);
+            this.Controls.Add(this.groupBox6);
+            this.Controls.Add(this.groupBox5);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;

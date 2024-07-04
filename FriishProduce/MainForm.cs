@@ -94,6 +94,7 @@ namespace FriishProduce
         private void RefreshForm()
         {
             AutoSetStrip();
+            toolStrip.Font = menuStrip.Font;
 
             #region Localization
             Program.Lang.Control(this);
@@ -133,27 +134,6 @@ namespace FriishProduce
                 if (tabPage.Form.GetType() == typeof(ProjectForm))
                     (tabPage.Form as ProjectForm).RefreshForm();
             }
-
-            toolStrip.Font = menuStrip.Font;
-
-            if (MaximumSize.IsEmpty)
-            {
-                MaximumSize = new Size
-                (
-                    mainPanel.Width + (toolStrip.Dock == DockStyle.Right || toolStrip.Dock == DockStyle.Left ? toolStrip.Width - 8 : 16),
-                    menuStrip.Height + toolStrip.Height + mainPanel.Height + 38
-                );
-                MinimumSize = Size = MaximumSize;
-            }
-
-            mainPanel.Dock = DockStyle.None;
-            if (mainPanel.BackgroundImage != null) tabControl.BackLowColor = tabControl.BackHighColor = tabControl.BackColor = Color.Transparent;
-            tabControl.BackgroundImage = mainPanel.BackgroundImage;
-            tabControl.BackgroundImageLayout = mainPanel.BackgroundImageLayout;
-            mainPanel.Location = tabControl.Location = new Point(0, menuStrip.Height + toolStrip.Height);
-            mainPanel.Size = tabControl.Size = new Size(mainPanel.Width, mainPanel.Height + (Height - mainPanel.Height));
-
-            if (Logo.Location.X == 0 || Logo.Location.Y == 0) Logo.Location = new Point((mainPanel.Width / 2) - (Logo.Width / 2), (mainPanel.Height / 2) - (Logo.Height));
         }
 
         public MainForm()
@@ -161,9 +141,24 @@ namespace FriishProduce
             InitializeComponent();
             Program.Handle = Handle;
 
-            mainPanel.BackgroundImage = new Random().Next(0, 2) == 1 ? Properties.Resources.bg1 : Properties.Resources.bg;
 
-            MaximumSize = new Size(0, 0);
+
+            mainPanel.BackgroundImage = new Random().Next(0, 2) == 1 ? Properties.Resources.bg1 : Properties.Resources.bg;
+            if (mainPanel.BackgroundImage != null) tabControl.BackLowColor = tabControl.BackHighColor = tabControl.BackColor = Color.Transparent;
+            tabControl.BackgroundImage = mainPanel.BackgroundImage;
+            tabControl.BackgroundImageLayout = mainPanel.BackgroundImageLayout;
+
+            #region Set size of window
+            int w = 16;
+            int h = mainPanel.Location.Y + tabControl.TabHeight + tabControl.TabTop;
+            using (var pF = new ProjectForm(0))
+                MinimumSize = MaximumSize = Size = new Size(pF.Width + w, pF.Height + h + 37);
+            mainPanel.Dock = DockStyle.None;
+            mainPanel.Size = tabControl.Size = new Size(Width - w, Height - h);
+            #endregion
+
+            if (Logo.Location.X == 0 || Logo.Location.Y == 0) Logo.Location = new Point((mainPanel.Width / 2) - (Logo.Width / 2), (mainPanel.Height / 2) - Logo.Height);
+
             RefreshForm();
             CenterToScreen();
 
