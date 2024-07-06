@@ -229,6 +229,11 @@ namespace FriishProduce.Injectors
 
             try
             {
+                /* if (SettingParse(4))
+                {
+                    if (!Widescreen()) { failed.Add(Program.Lang.String("patch_widescreen", "vc_n64")); }
+                } */
+
                 if (SettingParse(0))
                 {
                     if (!ShadingFix()) failed.Add(Program.Lang.String("patch_fixbrightness", "vc_n64"));
@@ -317,20 +322,25 @@ namespace FriishProduce.Injectors
 
         private bool ExtendedRAM()
         {
-            // Check for offset and set RAM memory if found
+            // Search for first offset and copy if found
             // ****************
-            int index = Byte.IndexOf(Contents[1], "41 82 00 08 3C 80 00 80", 0x2000, 0x9999);
-
-            if (index == -1)
+            var offsets = new List<(string hex, int start, int end)>()
             {
-                index = Byte.IndexOf(Contents[1], "48 00 00 64 3C 80 00 80", 0x2000, 0x9999);
+                ("41 82 00 08 3C 80 00 80", 0x2000, 0x9999),
+                ("48 00 00 64 3C 80 00 80", 0x2000, 0x9999)
+            };
 
-                if (index == -1) return false;
-                else new byte[] { 0x60, 0x00, 0x00, 0x00 }.CopyTo(Contents[1], index);
+            foreach (var item in offsets)
+            {
+                int index = Byte.IndexOf(Contents[1], item.hex, item.start, item.end);
+                if (index != -1)
+                {
+                    new byte[] { 0x60, 0x00, 0x00, 0x00 }.CopyTo(Contents[1], index);
+                    return true;
+                }
             }
-            else new byte[] { 0x60, 0x00, 0x00, 0x00 }.CopyTo(Contents[1], index);
 
-            return true;
+            return false;
         }
 
         private bool AllocateROM()
@@ -375,6 +385,104 @@ namespace FriishProduce.Injectors
 
                 return true;
             }
+        }
+
+        /// NOT WORKING
+        private bool Widescreen()
+        {
+            // Check for offset
+            // ****************
+            string offset = null;
+
+            switch (WAD.UpperTitleID.Substring(0, 3).ToUpper())
+            {
+                case "NAB":
+                    if (EmuType == 3) offset = "001fe6b3";
+                    break;
+
+                case "NAD":
+                    if (EmuType == 3) offset = "0024729b";
+                    break;
+
+                case "NAF":
+                case "NAI":
+                    offset = "00246e63";
+                    break;
+
+                case "NAE":
+                    offset = "00246e6b";
+                    break;
+
+                case "NAH":
+                    offset = "0024bf8b";
+                    break;
+
+                case "NAJ":
+                    offset = "0024e6a3";
+                    break;
+
+                case "NAK":
+                    offset = "002af7fb";
+                    break;
+
+                case "NAO":
+                    offset = "00252b43";
+                    break;
+
+                case "NAM":
+                    offset = "001f31eb";
+                    break;
+
+                case "NAS":
+                    offset = "001f672b";
+                    break;
+
+                case "NAU":
+                    offset = "001ef083";
+                    break;
+
+                case "NAL":
+                    offset = "00204aeb";
+                    break;
+
+                case "NAT":
+                    offset = "0021fa33";
+                    break;
+
+                case "NAZ":
+                    offset = "0021f773";
+                    break;
+
+                case "NA3":
+                    offset = "00197973";
+                    break;
+
+                case "NAP":
+                    offset = "001f306b";
+                    break;
+            }
+
+            if (offset == null || offset?.Length != 8) return false;
+
+            byte[] patch = Byte.FromHex($"00d0c0de00d0c0de{offset}00000001f000000000000000");
+
+            File.WriteAllBytes(Paths.WorkingFolder + "patch.gct", patch);
+            File.WriteAllBytes(Paths.WorkingFolder + "main.dol", Contents[1]);
+
+            Utils.Run
+            (
+                "wstrt\\wstrt.exe",
+                Paths.Tools + "wstrt\\",
+                $"patch \"{Paths.WorkingFolder}main.dol\" --add-section \"{Paths.WorkingFolder}patch.gct\""
+            );
+
+            var patchedDol = File.ReadAllBytes(Paths.WorkingFolder + "main.dol");
+            if (File.Exists(Paths.WorkingFolder + "patch.gct")) File.Delete(Paths.WorkingFolder + "patch.gct");
+            if (File.Exists(Paths.WorkingFolder + "main.dol")) File.Delete(Paths.WorkingFolder + "main.dol");
+
+            bool isPatched = Contents[1].Length < patchedDol.Length;
+            if (isPatched) Contents[1] = patchedDol;
+            return isPatched;
         }
         #endregion
     }

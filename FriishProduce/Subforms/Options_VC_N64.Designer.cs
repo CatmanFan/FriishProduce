@@ -62,7 +62,7 @@ namespace FriishProduce
             this.g1.Controls.Add(this.patch_fixbrightness);
             this.g1.Location = new System.Drawing.Point(12, 10);
             this.g1.Name = "g1";
-            this.g1.Size = new System.Drawing.Size(460, 140);
+            this.g1.Size = new System.Drawing.Size(460, 160);
             this.g1.TabIndex = 16;
             this.g1.TabStop = false;
             this.g1.Tag = "vc_options";
@@ -71,7 +71,7 @@ namespace FriishProduce
             // romc_type
             // 
             this.romc_type.AutoSize = true;
-            this.romc_type.Location = new System.Drawing.Point(7, 111);
+            this.romc_type.Location = new System.Drawing.Point(7, 110);
             this.romc_type.Name = "romc_type";
             this.romc_type.Size = new System.Drawing.Size(56, 13);
             this.romc_type.TabIndex = 18;
@@ -85,7 +85,7 @@ namespace FriishProduce
             this.romc_type_list.Items.AddRange(new object[] {
             "ROMC Type 0",
             "ROMC Type 1"});
-            this.romc_type_list.Location = new System.Drawing.Point(10, 108);
+            this.romc_type_list.Location = new System.Drawing.Point(10, 128);
             this.romc_type_list.Name = "romc_type_list";
             this.romc_type_list.Size = new System.Drawing.Size(440, 21);
             this.romc_type_list.TabIndex = 0;
@@ -149,7 +149,7 @@ namespace FriishProduce
             // 
             // Options_VC_N64
             // 
-            this.ClientSize = new System.Drawing.Size(484, 212);
+            this.ClientSize = new System.Drawing.Size(484, 232);
             this.Controls.Add(this.g1);
             this.Name = "Options_VC_N64";
             this.Tag = "vc_n64";

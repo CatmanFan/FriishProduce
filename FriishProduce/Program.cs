@@ -23,7 +23,9 @@ namespace FriishProduce
         /// <param name="label"></param>
         public static void AutoSizeControl(Control control, Label label)
         {
-            if (control.MaximumSize.Width < label.Width || control.MaximumSize.Width <= 0) control.MaximumSize = new System.Drawing.Size(control.Size.Width, 0);
+            if (control.MaximumSize.Width < label.Width || control.MaximumSize.Width <= 0 || control.MaximumSize.IsEmpty)
+                control.MaximumSize = control.Size;
+
             control.Size = new System.Drawing.Size(control.MaximumSize.Width - label.Width - 2, control.Height);
             control.Location = new System.Drawing.Point(label.Location.X + label.Width + 2, label.Location.Y - 3);
         }

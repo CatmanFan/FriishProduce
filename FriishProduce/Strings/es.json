@@ -70,7 +70,7 @@
 			"008": "Actualización de FriishProduce\nYa está disponible para descargar la nueva versión {0} de FriishProduce.\nActualmente está utilizando la versión {1}.\n\n¿Quiere descargar la actualización de GitHub ahora?",
 			"009": "Actualmente ya está actualizado.",
 			"error": "¡Se ha producido un error!",
-			"e_000": "No se pudo conectar a Internet.\nDescripción : {0}",
+			"e_000": "No se pudo conectar a Internet.\n{0}",
 			"e_001": "No se pudo generar la imagen.\nEsto puede deberse a un problema con GDI+.",
 			"e_002": "No se pueden reemplazar los datos internos del canal.",
 			"e_003": "La ROM es demasiado grande (más de {0} {1} en tamaño).",
@@ -177,6 +177,7 @@
 			"patch_fixcrashes": "Antibloqueo (anticrash)",
 			"patch_expandedram": "RAM extendida",
 			"patch_autosizerom": "Asignación automática de tamaño de ROM",
+			"patch_widescreen": "Pantalla ancha",
 			"romc_type": "Método de compresión:",
 			"romc_type0": "ROMC (Tipo 0)",
 			"romc_type1": "ROMC (Tipo 1)"

@@ -143,7 +143,7 @@ namespace FriishProduce
 
 
 
-            mainPanel.BackgroundImage = new Random().Next(0, 2) == 1 ? Properties.Resources.bg1 : Properties.Resources.bg;
+            mainPanel.BackgroundImage = new Random().Next(0, 4) >= 2 ? Properties.Resources.bg1 : Properties.Resources.bg;
             if (mainPanel.BackgroundImage != null) tabControl.BackLowColor = tabControl.BackHighColor = tabControl.BackColor = Color.Transparent;
             tabControl.BackgroundImage = mainPanel.BackgroundImage;
             tabControl.BackgroundImageLayout = mainPanel.BackgroundImageLayout;

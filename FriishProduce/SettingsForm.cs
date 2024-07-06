@@ -134,6 +134,7 @@ namespace FriishProduce
             Program.Lang.String(vc_n64_patch_fixcrashes, "vc_n64");
             Program.Lang.String(vc_n64_patch_expandedram, "vc_n64");
             Program.Lang.String(vc_n64_patch_autosizerom, "vc_n64");
+            // Program.Lang.String(vc_n64_patch_widescreen, "vc_n64");
             Program.Lang.String(vc_n64_romc_type, "vc_n64");
             Program.Lang.String(vc_n64_romc_type_list, "vc_n64");
             Program.AutoSizeControl(vc_n64_romc_type_list, vc_n64_romc_type);
@@ -185,8 +186,9 @@ namespace FriishProduce
             autolink_save_data.Checked = Default.link_save_data;
             reset_all_dialogs.Checked = false;
             FStorage_SD.Checked = FORWARDER.Default.root_storage_device.ToLower() == "sd";
-            toggleSwitch1.Checked = FORWARDER.Default.nand_loader.ToLower() == "vwii";
+            FStorage_vWii.Checked = FORWARDER.Default.nand_loader.ToLower() == "vwii";
             toggleSwitch2.Checked = bool.Parse(FORWARDER.Default.show_bios_screen);
+            FStorage_Wii.Checked = !FStorage_vWii.Checked;
             FStorage_USB.Checked = !FStorage_SD.Checked;
             default_save_as_filename_tb.Text = Default.default_save_as_filename;
 
@@ -220,6 +222,7 @@ namespace FriishProduce
             vc_n64_patch_fixcrashes.Checked = bool.Parse(VC_N64.Default.patch_fixcrashes);
             vc_n64_patch_expandedram.Checked = bool.Parse(VC_N64.Default.patch_expandedram);
             vc_n64_patch_autosizerom.Checked = bool.Parse(VC_N64.Default.patch_autosizerom);
+            // vc_n64_patch_widescreen.Checked = bool.Parse(VC_N64.Default.patch_widescreen);
             vc_n64_romc_type_list.SelectedIndex = int.Parse(VC_N64.Default.romc_type);
 
             // SEGA
@@ -332,7 +335,7 @@ namespace FriishProduce
             Default.Save();
 
             FORWARDER.Default.root_storage_device = FStorage_SD.Checked ? "SD" : "USB";
-            FORWARDER.Default.nand_loader = toggleSwitch1.Checked ? "vWii" : "Wii";
+            FORWARDER.Default.nand_loader = FStorage_vWii.Checked ? "vWii" : "Wii";
             FORWARDER.Default.show_bios_screen = toggleSwitch2.Checked.ToString();
 
             VC_NES.Default.palette = vc_nes_palettelist.SelectedIndex.ToString();
@@ -342,6 +345,7 @@ namespace FriishProduce
             VC_N64.Default.patch_fixcrashes = vc_n64_patch_fixcrashes.Checked.ToString();
             VC_N64.Default.patch_expandedram = vc_n64_patch_expandedram.Checked.ToString();
             VC_N64.Default.patch_autosizerom = vc_n64_patch_autosizerom.Checked.ToString();
+            // VC_N64.Default.patch_widescreen = vc_n64_patch_widescreen.Checked.ToString();
             VC_N64.Default.romc_type = vc_n64_romc_type_list.SelectedIndex.ToString();
 
             VC_SEGA.Default.console_brightness = label1.Text;
@@ -500,7 +504,6 @@ namespace FriishProduce
 
         private void ToggleSwitchText()
         {
-            toggleSwitchL1.Text = toggleSwitch1.Checked ? "vWii (Wii U)" : "Wii";
             vc_pce_europe.Text = Program.Lang.Toggle(vc_pce_europe_switch.Checked, "europe", vc_pce.Tag.ToString());
             vc_pce_sgenable.Text = Program.Lang.Toggle(vc_pce_sgenable_switch.Checked, "sgenable", vc_pce.Tag.ToString());
             vc_pce_padbutton.Text = Program.Lang.Toggle(vc_pce_padbutton_switch.Checked, "padbutton", vc_pce.Tag.ToString());

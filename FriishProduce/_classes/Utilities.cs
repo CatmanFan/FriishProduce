@@ -65,7 +65,7 @@ namespace FriishProduce
     {
         public static bool InternetTest(string URL = null)
         {
-            int timeout = 15;
+            int timeout = 10;
 
             try
             {
@@ -75,14 +75,14 @@ namespace FriishProduce
                     (
                         System.Globalization.CultureInfo.InstalledUICulture.Name.StartsWith("fa") ? "https://www.aparat.com/" :
                         System.Globalization.CultureInfo.InstalledUICulture.Name.Contains("zh-CN") ? "http://www.baidu.com/" :
-                        "https://www.google.com/"
+                        "https://thumbnails.libretro.com/README.md"
                     )
                 );
 
                 URL = request.Address.Authority;
                 request.Method = "HEAD";
                 request.KeepAlive = false;
-                request.Timeout = timeout * 500;
+                request.Timeout = timeout * 1000;
 
                 if (CheckDomain(URL, timeout))
                 {
@@ -124,11 +124,10 @@ namespace FriishProduce
             }
         }
 
-        public static byte[] Get(string URL, int timeout = 300)
+        public static byte[] Get(string URL, int timeout = 500)
         {
             // Actual web connection is done here
             // ****************
-
             using (MemoryStream ms = new MemoryStream())
             using (WebClient x = new WebClient())
             {
@@ -501,8 +500,8 @@ namespace FriishProduce
 
                     Run
                     (
-                        "szs\\wstrt.exe",
-                        Paths.Tools + "szs\\",
+                        "wstrt\\wstrt.exe",
+                        Paths.Tools + "wstrt\\",
                         $"patch \"{Paths.WorkingFolder}main.dol\" --add-section Force43.gct"
                     );
 

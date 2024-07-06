@@ -12,11 +12,12 @@ namespace FriishProduce
 
             Options = new Dictionary<string, string>
             {
-                { "brightness", VC_N64.Default.patch_fixbrightness },
-                { "crash",  VC_N64.Default.patch_fixcrashes },
-                { "expansion",  VC_N64.Default.patch_expandedram },
-                { "rom_autosize",  VC_N64.Default.patch_autosizerom },
-                { "romc",  VC_N64.Default.romc_type }
+                { "brightness",     VC_N64.Default.patch_fixbrightness },
+                { "crash",          VC_N64.Default.patch_fixcrashes },
+                { "expansion",      VC_N64.Default.patch_expandedram },
+                { "rom_autosize",   VC_N64.Default.patch_autosizerom },
+                { "widescreen",     "False" },
+                { "romc",           VC_N64.Default.romc_type }
             };
 
             // Cosmetic
@@ -24,7 +25,6 @@ namespace FriishProduce
             if (!DesignMode)
             {
                 Program.Lang.Control(this);
-                Program.AutoSizeControl(romc_type_list, romc_type);
             }
         }
 
@@ -41,6 +41,7 @@ namespace FriishProduce
                 patch_fixcrashes.Checked            = bool.Parse(Options["crash"]);
                 patch_expandedram.Checked           = bool.Parse(Options["expansion"]);
                 patch_autosizerom.Checked           = bool.Parse(Options["rom_autosize"]);
+                // patch_widescreen.Checked            = bool.Parse(Options["widescreen"]);
                 romc_type_list.SelectedIndex        = int.Parse(Options["romc"]);
             }
             // *******
@@ -52,6 +53,7 @@ namespace FriishProduce
             Options["crash"]                        = patch_fixcrashes.Checked.ToString();
             Options["expansion"]                    = patch_expandedram.Checked.ToString();
             Options["rom_autosize"]                 = patch_autosizerom.Checked.ToString();
+            // Options["widescreen"]                   = patch_widescreen.Checked.ToString();
             Options["romc"]                         = romc_type_list.SelectedIndex.ToString();
         }
 
@@ -59,11 +61,16 @@ namespace FriishProduce
 
         private void Form_IsShown(object sender, EventArgs e)
         {
-            romc_type_list.Visible = romc_type.Visible = romc_type.Enabled = EmuType == 3;
-            g1.Height = romc_type.Visible ? 140 : 110;
-            Height = romc_type.Visible ? 250 : 220;
+            g1.Height = 160;
+
+            bool isRomc = EmuType == 3;
+            romc_type_list.Visible = romc_type.Visible = romc_type.Enabled = isRomc;
+            if (!isRomc) g1.Height -= 50;
+            Height = g1.Height + 110;
+
             if (!patch_autosizerom.Enabled) patch_autosizerom.Checked = false;
             if (!patch_fixcrashes.Enabled) patch_fixcrashes.Checked = false;
+
             CenterToParent();
         }
     }

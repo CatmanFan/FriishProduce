@@ -182,7 +182,7 @@ namespace FriishProduce
                 crc32 = BitConverter.ToString(hash_array).Replace("-", "").ToLower();
             }
 
-            if (!Web.InternetTest("https://gbatemp.net/")) goto NotFound;
+            if (!Web.InternetTest()) goto NotFound;
 
             var values = db_search(path, crc32, platform, 0);
             (serial, title, year, players) = (values.serial ?? serial, values.title ?? title, values.year ?? year, values.players ?? players);
@@ -207,7 +207,7 @@ namespace FriishProduce
                 (
                     db_name(platform),
                     title.Replace('/', '_'),
-                    Properties.Settings.Default.gamedata_source_image == 2 ? true : Properties.Settings.Default.gamedata_source_image == 1 ? false : !Web.InternetTest("https://thumbnails.libretro.com/README.md")
+                    Properties.Settings.Default.gamedata_source_image == 2 ? true : Properties.Settings.Default.gamedata_source_image == 1 ? false : !Web.InternetTest()
                 );
 
                 try

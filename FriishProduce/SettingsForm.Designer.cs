@@ -61,8 +61,8 @@ namespace FriishProduce
             this.leftSeparator = new System.Windows.Forms.Panel();
             this.forwarder = new System.Windows.Forms.Panel();
             this.forwarder_console = new System.Windows.Forms.GroupBox();
-            this.toggleSwitchL1 = new System.Windows.Forms.Label();
-            this.toggleSwitch1 = new JCS.ToggleSwitch();
+            this.FStorage_Wii = new System.Windows.Forms.RadioButton();
+            this.FStorage_vWii = new System.Windows.Forms.RadioButton();
             this.forwarder_root_device = new System.Windows.Forms.GroupBox();
             this.FStorage_SD = new System.Windows.Forms.RadioButton();
             this.FStorage_USB = new System.Windows.Forms.RadioButton();
@@ -277,9 +277,9 @@ namespace FriishProduce
             // TreeView
             // 
             this.TreeView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            resources.ApplyResources(this.TreeView, "TreeView");
             this.TreeView.FullRowSelect = true;
             this.TreeView.ItemHeight = 19;
+            resources.ApplyResources(this.TreeView, "TreeView");
             this.TreeView.Name = "TreeView";
             this.TreeView.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             ((System.Windows.Forms.TreeNode)(resources.GetObject("TreeView.Nodes"))),
@@ -417,25 +417,26 @@ namespace FriishProduce
             // 
             // forwarder_console
             // 
-            this.forwarder_console.Controls.Add(this.toggleSwitchL1);
-            this.forwarder_console.Controls.Add(this.toggleSwitch1);
+            this.forwarder_console.Controls.Add(this.FStorage_Wii);
+            this.forwarder_console.Controls.Add(this.FStorage_vWii);
             resources.ApplyResources(this.forwarder_console, "forwarder_console");
             this.forwarder_console.Name = "forwarder_console";
             this.forwarder_console.TabStop = false;
             this.forwarder_console.Tag = "forwarder_console";
             // 
-            // toggleSwitchL1
+            // FStorage_Wii
             // 
-            resources.ApplyResources(this.toggleSwitchL1, "toggleSwitchL1");
-            this.toggleSwitchL1.Name = "toggleSwitchL1";
+            resources.ApplyResources(this.FStorage_Wii, "FStorage_Wii");
+            this.FStorage_Wii.Name = "FStorage_Wii";
+            this.FStorage_Wii.TabStop = true;
+            this.FStorage_Wii.UseVisualStyleBackColor = true;
             // 
-            // toggleSwitch1
+            // FStorage_vWii
             // 
-            resources.ApplyResources(this.toggleSwitch1, "toggleSwitch1");
-            this.toggleSwitch1.Name = "toggleSwitch1";
-            this.toggleSwitch1.OffFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toggleSwitch1.OnFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toggleSwitch1.CheckedChanged += new JCS.ToggleSwitch.CheckedChangedDelegate(this.ToggleSwitchChanged);
+            resources.ApplyResources(this.FStorage_vWii, "FStorage_vWii");
+            this.FStorage_vWii.Name = "FStorage_vWii";
+            this.FStorage_vWii.TabStop = true;
+            this.FStorage_vWii.UseVisualStyleBackColor = true;
             // 
             // forwarder_root_device
             // 
@@ -986,16 +987,16 @@ namespace FriishProduce
             this.Controls.Add(this.bottomPanel2);
             this.Controls.Add(this.leftSeparator);
             this.Controls.Add(this.TreeView);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.vc_neo);
-            this.Controls.Add(this.vc_nes);
-            this.Controls.Add(this.adobe_flash);
-            this.Controls.Add(this.forwarder);
             this.Controls.Add(this.vc_n64);
             this.Controls.Add(this.vc_pce);
             this.Controls.Add(this.vc_sega);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.vc_neo);
+            this.Controls.Add(this.vc_nes);
+            this.Controls.Add(this.adobe_flash);
+            this.Controls.Add(this.forwarder);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MaximizeBox = false;
@@ -1084,8 +1085,6 @@ namespace FriishProduce
         private System.Windows.Forms.GroupBox forwarder_root_device;
         private System.Windows.Forms.RadioButton FStorage_SD;
         private System.Windows.Forms.RadioButton FStorage_USB;
-        private System.Windows.Forms.Label toggleSwitchL1;
-        private JCS.ToggleSwitch toggleSwitch1;
         private System.Windows.Forms.Panel vc_nes;
         private System.Windows.Forms.GroupBox vc_nes_palette;
         private System.Windows.Forms.CheckBox vc_nes_palette_use_on_banner;
@@ -1162,5 +1161,7 @@ namespace FriishProduce
         private System.Windows.Forms.ComboBox injection_methods_snes;
         private System.Windows.Forms.GroupBox default_injection_method_sega;
         private System.Windows.Forms.ComboBox injection_methods_sega;
+        private System.Windows.Forms.RadioButton FStorage_Wii;
+        private System.Windows.Forms.RadioButton FStorage_vWii;
     }
 }

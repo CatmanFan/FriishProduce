@@ -77,7 +77,7 @@
 			"008": "Mise à jour disponible : v{0}\nUne nouvelle version de FriishProduce est désormais disponible en téléchargement.\nVous utilisez actuellement la version {1}.\n\nVoulez-vous obtenir la dernière mise à jour dès GitHub maintenant ?",
 			"009": "Vous êtes déjà à jour.",
 			"error": "Un problème est survenu !",
-			"e_000": "Échec de la connexion à Internet.\nMessage : {0}",
+			"e_000": "Échec de la connexion à Internet.\n{0}",
 			"e_001": "Échec de la génération de l'image.\nCeci peut être provoqué par un problème avec GDI+.",
 			"e_002": "Échec du replacement des données internes de la chaîne.",
 			"e_003": "La taille de votre fichier de jeu dépasse la limite de {0} {1}.",
@@ -194,6 +194,7 @@
 			"patch_fixcrashes": "Correctif des plantages",
 			"patch_expandedram": "RAM interne étendue",
 			"patch_autosizerom": "Allocation de taille de la ROM",
+			"patch_widescreen": "Affichage en 16/9",
 			"romc_type": "Méthode de compression :",
 			"romc_type0": "ROMC (type 0)",
 			"romc_type1": "ROMC (type 1)"

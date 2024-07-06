@@ -736,6 +736,7 @@ namespace FriishProduce
         private void Value_Changed(object sender, EventArgs e)
         {
             if (sender == released || sender == players) resetImages(true);
+            if (sender == toggleSwitch1) toggleSwitchL1.Text = toggleSwitch1.Checked ? "vWii (Wii U)" : "Wii";
             refreshData();
         }
 
@@ -1308,17 +1309,11 @@ namespace FriishProduce
                 {
                     System.Media.SystemSounds.Beep.Play();
 
-                    var Message = MessageBox.Show(Program.Lang.Msg(3), null, MessageBox.Buttons.Custom, MessageBox.Icons.Information);
-
-                    if (Message == MessageBox.Result.Button1)
+                    switch (MessageBox.Show(Program.Lang.Msg(3), null, MessageBox.Buttons.Custom, MessageBox.Icons.Information))
                     {
-                        string args = string.Format("/e, /select, \"{0}\"", targetFile);
-
-                        System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
-                        {
-                            FileName = "explorer",
-                            Arguments = args
-                        });
+                        case MessageBox.Result.Button1:
+                            System.Diagnostics.Process.Start("explorer.exe", $"/select, \"{targetFile}\"");
+                            break;
                     }
 
                     return true;
@@ -1397,8 +1392,8 @@ namespace FriishProduce
                     {
                         Settings = contentOptions,
 
-                        CompressionType = emuVer == 3 ? (contentOptions.ElementAt(3).Value == "0" ? 1 : 2) : 0,
-                        Allocate = contentOptions.ElementAt(3).Value == "True" && (emuVer <= 1),
+                        CompressionType = emuVer == 3 ? (contentOptions["romc"] == "0" ? 1 : 2) : 0,
+                        Allocate = contentOptions["rom_autosize"] == "True" && (emuVer <= 1),
                     };
                     break;
 
@@ -1939,12 +1934,6 @@ namespace FriishProduce
         private void RegionsList_SelectedIndexChanged(object sender, EventArgs e)
         {
             LoadImage();
-            refreshData();
-        }
-
-        private void ToggleSwitchChanged(object sender, EventArgs e)
-        {
-            if (sender == toggleSwitch1) toggleSwitchL1.Text = toggleSwitch1.Checked ? "vWii (Wii U)" : "Wii";
             refreshData();
         }
 
