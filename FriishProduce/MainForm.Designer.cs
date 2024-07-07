@@ -257,7 +257,7 @@ namespace FriishProduce
             // Logo
             // 
             this.Logo.BackColor = System.Drawing.Color.Transparent;
-            this.Logo.Image = global::FriishProduce.Properties.Resources.icon;
+            this.Logo.Image = global::FriishProduce.Properties.Resources.logo;
             resources.ApplyResources(this.Logo, "Logo");
             this.Logo.Name = "Logo";
             this.Logo.TabStop = false;

@@ -50,7 +50,7 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>icon.ico</ApplicationIcon>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>FriishProduce.Program</StartupObject>
@@ -495,7 +495,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
-    <None Include="Resources\bg1.png" />
+    <Content Include="logo.ico" />
+    <None Include="Resources\logo.png" />
     <None Include="Resources\bg.png" />
     <None Include="Resources\apps\lzh8_cmp_nonstrict.exe" />
     <None Include="Resources\apps\lzh8_cmp.exe" />

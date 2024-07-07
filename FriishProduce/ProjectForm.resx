@@ -1066,7 +1066,7 @@
     <value>1</value>
   </data>
   <data name="players.Location" type="System.Drawing.Point, System.Drawing">
-    <value>373, 68</value>
+    <value>365, 68</value>
   </data>
   <data name="players.Size" type="System.Drawing.Size, System.Drawing">
     <value>64, 20</value>
@@ -1087,7 +1087,7 @@
     <value>0</value>
   </data>
   <data name="released.Location" type="System.Drawing.Point, System.Drawing">
-    <value>194, 68</value>
+    <value>186, 68</value>
   </data>
   <data name="released.Size" type="System.Drawing.Size, System.Drawing">
     <value>64, 20</value>
@@ -1108,7 +1108,7 @@
     <value>1</value>
   </data>
   <data name="banner_title.Location" type="System.Drawing.Point, System.Drawing">
-    <value>194, 17</value>
+    <value>186, 17</value>
   </data>
   <data name="banner_title.MaxLength" type="System.Int32, mscorlib">
     <value>130</value>
@@ -1174,7 +1174,7 @@
     <value>NoControl</value>
   </data>
   <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>263, 70</value>
+    <value>255, 70</value>
   </data>
   <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
     <value>105, 18</value>
@@ -1204,7 +1204,7 @@
     <value>NoControl</value>
   </data>
   <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>63, 70</value>
+    <value>55, 70</value>
   </data>
   <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
     <value>125, 19</value>
@@ -1216,7 +1216,7 @@
     <value>year</value>
   </data>
   <data name="label9.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>TopCenter</value>
+    <value>TopRight</value>
   </data>
   <data name="&gt;&gt;label9.Name" xml:space="preserve">
     <value>label9</value>
@@ -1234,7 +1234,7 @@
     <value>NoControl</value>
   </data>
   <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>63, 20</value>
+    <value>55, 20</value>
   </data>
   <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
     <value>125, 35</value>
@@ -1246,7 +1246,7 @@
     <value>full_banner_name</value>
   </data>
   <data name="label8.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>TopCenter</value>
+    <value>TopRight</value>
   </data>
   <data name="&gt;&gt;label8.Name" xml:space="preserve">
     <value>label8</value>
