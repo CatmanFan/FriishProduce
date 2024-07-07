@@ -52,15 +52,15 @@ namespace FriishProduce
             // 
             // b_ok
             // 
-            this.b_ok.Location = new System.Drawing.Point(396, 12);
+            this.b_ok.Location = new System.Drawing.Point(106, 12);
             // 
             // bottomPanel1
             // 
-            this.bottomPanel1.Size = new System.Drawing.Size(594, 47);
+            this.bottomPanel1.Size = new System.Drawing.Size(304, 47);
             // 
             // b_cancel
             // 
-            this.b_cancel.Location = new System.Drawing.Point(492, 12);
+            this.b_cancel.Location = new System.Drawing.Point(202, 12);
             // 
             // quality_list
             // 
@@ -148,7 +148,7 @@ namespace FriishProduce
             // quality
             // 
             this.quality.Controls.Add(this.quality_list);
-            this.quality.Location = new System.Drawing.Point(302, 80);
+            this.quality.Location = new System.Drawing.Point(12, 236);
             this.quality.Name = "quality";
             this.quality.Size = new System.Drawing.Size(280, 50);
             this.quality.TabIndex = 17;
@@ -160,7 +160,7 @@ namespace FriishProduce
             // 
             this.controls.Controls.Add(this.qwerty_keyboard);
             this.controls.Controls.Add(this.mouse);
-            this.controls.Location = new System.Drawing.Point(302, 9);
+            this.controls.Location = new System.Drawing.Point(12, 165);
             this.controls.Name = "controls";
             this.controls.Size = new System.Drawing.Size(280, 65);
             this.controls.TabIndex = 18;
@@ -216,7 +216,7 @@ namespace FriishProduce
             // midi
             // 
             this.midi.AutoSize = true;
-            this.midi.Location = new System.Drawing.Point(302, 136);
+            this.midi.Location = new System.Drawing.Point(12, 291);
             this.midi.Name = "midi";
             this.midi.Size = new System.Drawing.Size(44, 17);
             this.midi.TabIndex = 15;
@@ -232,7 +232,7 @@ namespace FriishProduce
             // 
             // Options_Flash
             // 
-            this.ClientSize = new System.Drawing.Size(594, 282);
+            this.ClientSize = new System.Drawing.Size(304, 367);
             this.Controls.Add(this.midi);
             this.Controls.Add(this.strap_reminder);
             this.Controls.Add(this.controls);

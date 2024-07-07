@@ -1873,10 +1873,25 @@ namespace FriishProduce
                 manual_type_list.SelectedIndex = 0;
             }
 
+            #region -- Content options panel --
+            if (groupBox4.MaximumSize.IsEmpty) groupBox4.MaximumSize = groupBox4.Size;
+            if (Platform == Platform.Flash)
+            {
+                panel2.Visible = false;
+                groupBox4.Size = groupBox4.MaximumSize - new Size(0, 45);
+                groupBox4.MinimumSize = groupBox4.Size;
+            }
+            else
+            {
+                groupBox4.Size = groupBox4.MaximumSize;
+                panel2.Visible = true;
+            }
+
             editContentOptions.Enabled = contentOptionsForm != null;
+            toggleSwitchL1.Visible = toggleSwitch1.Visible = FStorage_SD.Visible = FStorage_USB.Visible = forwarder_console.Visible;
+            #endregion
 
             showSaveData = IsVC || platform == Platform.Flash;
-            toggleSwitchL1.Visible = toggleSwitch1.Visible = FStorage_SD.Visible = FStorage_USB.Visible = forwarder_console.Visible;
         }
         #endregion
 

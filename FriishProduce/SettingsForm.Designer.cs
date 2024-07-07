@@ -987,6 +987,8 @@ namespace FriishProduce
             this.Controls.Add(this.bottomPanel2);
             this.Controls.Add(this.leftSeparator);
             this.Controls.Add(this.TreeView);
+            this.Controls.Add(this.adobe_flash);
+            this.Controls.Add(this.forwarder);
             this.Controls.Add(this.vc_n64);
             this.Controls.Add(this.vc_pce);
             this.Controls.Add(this.vc_sega);
@@ -995,8 +997,6 @@ namespace FriishProduce
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.vc_neo);
             this.Controls.Add(this.vc_nes);
-            this.Controls.Add(this.adobe_flash);
-            this.Controls.Add(this.forwarder);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MaximizeBox = false;

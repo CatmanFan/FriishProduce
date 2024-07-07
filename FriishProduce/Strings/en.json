@@ -164,6 +164,7 @@
 			"tab_customization": "Customization",
 			"rom_info": "ROM information",
 			"wad_base": "Base WAD information",
+			"internal": "Internally supplied",
 			"content_options": "Content options",
 			"channel": "Channel metadata",
 			"banner": "Banner details",

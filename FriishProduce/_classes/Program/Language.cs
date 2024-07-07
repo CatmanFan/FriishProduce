@@ -127,7 +127,7 @@ namespace FriishProduce
             else _current = parseFile(GetSystemLanguage());
 
             if (string.IsNullOrEmpty(_current.language)) _current = _english;
-            else if (_current.language != code) _current.language = code;
+            else if (_current.language != code && code != "sys") _current.language = code;
 
             if (_current == null)
             {

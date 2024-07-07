@@ -82,6 +82,7 @@ namespace FriishProduce
             this.baseID = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.import_wad_from_file = new System.Windows.Forms.CheckBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.browsePatch = new System.Windows.Forms.OpenFileDialog();
             this.browseManual = new Ookii.Dialogs.WinForms.VistaFolderBrowserDialog();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -480,6 +481,7 @@ namespace FriishProduce
             this.wad_base.Controls.Add(this.title_id_2);
             this.wad_base.Controls.Add(this.baseID);
             this.wad_base.Controls.Add(this.panel3);
+            this.wad_base.Controls.Add(this.label2);
             resources.ApplyResources(this.wad_base, "wad_base");
             this.wad_base.Name = "wad_base";
             this.wad_base.TabStop = false;
@@ -546,6 +548,12 @@ namespace FriishProduce
             this.import_wad_from_file.Tag = "import_wad_from_file";
             this.import_wad_from_file.UseVisualStyleBackColor = true;
             this.import_wad_from_file.CheckedChanged += new System.EventHandler(this.OpenWAD_CheckedChanged);
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            this.label2.Tag = "internal";
             // 
             // browsePatch
             // 
@@ -738,5 +746,6 @@ namespace FriishProduce
         private System.Windows.Forms.Label video_mode;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label label2;
     }
 }
