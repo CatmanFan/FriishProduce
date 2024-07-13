@@ -158,7 +158,6 @@ namespace FriishProduce
             string year = null;
             string players = null;
             string serial = null;
-            string imgURL = null;
 
             bool isDisc = platform == Platform.PCECD || platform == Platform.GCN || platform == Platform.SMCD || platform == Platform.PSX;
             if (isDisc)
@@ -197,13 +196,14 @@ namespace FriishProduce
             {
                 CleanTitle = Regex.Replace(title?.Replace(": ", Environment.NewLine).Replace(" - ", Environment.NewLine), @"\((.*?)\)", "");
                 if (CleanTitle.Contains(", The")) CleanTitle = "The " + CleanTitle.Replace(", The", string.Empty);
-                CleanTitle = CleanTitle.Trim();
 
                 values = db_search(path, crc32, platform, 2);
                 (serial, title, year, players) = (values.serial ?? serial, values.title ?? title, values.year ?? year, values.players ?? players);
 
+                CleanTitle = CleanTitle?.Trim();
+
                 #region Get image
-                imgURL = setImgURL
+                string imgURL = setImgURL
                 (
                     db_name(platform),
                     title.Replace('/', '_'),
@@ -221,7 +221,6 @@ namespace FriishProduce
                 catch { imgURL = null; }
                 #endregion
 
-                CleanTitle = CleanTitle.Trim();
                 return (title, year, players, serial, imgURL);
             }
 

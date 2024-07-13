@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -36,9 +37,9 @@ namespace FriishProduce
                         Language.Get("Group0", "Platforms"), null,
                         new ToolStripItem[]
                         {*/
-                            new ToolStripMenuItem(null, Icons[Platform.NES], addProject, Platform.NES.ToString()),
-                            new ToolStripMenuItem(null, Icons[Platform.SNES], addProject, Platform.SNES.ToString()),
-                            new ToolStripMenuItem(null, Icons[Platform.N64], addProject, Platform.N64.ToString()),
+                            new ToolStripButton(null, Icons[Platform.NES], addProject, Platform.NES.ToString()),
+                            new ToolStripButton(null, Icons[Platform.SNES], addProject, Platform.SNES.ToString()),
+                            new ToolStripButton(null, Icons[Platform.N64], addProject, Platform.N64.ToString()),
                             new ToolStripSeparator(),
                         /*}),
 
@@ -46,8 +47,8 @@ namespace FriishProduce
                         Language.Get("Group1", "Platforms"), null,
                         new ToolStripItem[]
                         {*/
-                            new ToolStripMenuItem(null, Icons[Platform.SMS], addProject, Platform.SMS.ToString()),
-                            new ToolStripMenuItem(null, Icons[Platform.SMD], addProject, Platform.SMD.ToString()),
+                            new ToolStripButton(null, Icons[Platform.SMS], addProject, Platform.SMS.ToString()),
+                            new ToolStripButton(null, Icons[Platform.SMD], addProject, Platform.SMD.ToString()),
                             new ToolStripSeparator(),
                         /*}),
 
@@ -55,14 +56,14 @@ namespace FriishProduce
                         Language.Get("Other"), null,
                         new ToolStripItem[]
                         {*/
-                            new ToolStripMenuItem(null, Icons[Platform.PCE], addProject, Platform.PCE.ToString()),
-                            new ToolStripMenuItem(null, Icons[Platform.NEO], addProject, Platform.NEO.ToString()),
-                            new ToolStripMenuItem(null, Icons[Platform.MSX], addProject, Platform.MSX.ToString()),
+                            new ToolStripButton(null, Icons[Platform.PCE], addProject, Platform.PCE.ToString()),
+                            new ToolStripButton(null, Icons[Platform.NEO], addProject, Platform.NEO.ToString()),
+                            new ToolStripButton(null, Icons[Platform.MSX], addProject, Platform.MSX.ToString()),
                             new ToolStripSeparator(),
-                            new ToolStripMenuItem(null, Icons[Platform.PSX], addProject, Platform.PSX.ToString()),
+                            new ToolStripButton(null, Icons[Platform.PSX], addProject, Platform.PSX.ToString()),
                             new ToolStripSeparator(),
-                            new ToolStripMenuItem(null, Icons[Platform.Flash], addProject, Platform.Flash.ToString()),
-                            new ToolStripMenuItem(null, Icons[Platform.RPGM], addProject, Platform.RPGM.ToString())
+                            new ToolStripButton(null, Icons[Platform.Flash], addProject, Platform.Flash.ToString()),
+                            new ToolStripButton(null, Icons[Platform.RPGM], addProject, Platform.RPGM.ToString())
                         //})
                 };
 
@@ -94,7 +95,6 @@ namespace FriishProduce
         private void RefreshForm()
         {
             AutoSetStrip();
-            toolStrip.Font = menuStrip.Font;
 
             #region Localization
             Program.Lang.Control(this);
@@ -108,19 +108,14 @@ namespace FriishProduce
             toolbarOpenProject.Text = menu_open_project.Text;
             toolbarSaveAs.Text = menu_save_project_as.Text;
             toolbarExport.Text = menu_export.Text;
-            toolbarOpenGameFile.Text = menu_open_gamefile.Text;
-            toolbarOpenImage.Text = menu_open_image.Text;
             toolbarCloseProject.Text = menu_close_project.Text;
             toolbarRetrieveGameData.Text = menu_retrieve_gamedata_online.Text;
             ToolStrip_Settings.Text = menu_settings.Text;
-            BrowseROM.Title = menu_open_gamefile.Text.Replace("&", "");
-            BrowseImage.Title = menu_open_image.Text.Replace("&", "");
             SaveProject.Title = menu_save_project_as.Text.Replace("&", "");
             SaveWAD.Title = menu_export.Text.Replace("&", "");
 
             try
             {
-                BrowseImage.Filter = Program.Lang.String("filter.img");
                 BrowseProject.Filter = SaveProject.Filter = Program.Lang.String("filter.project");
             }
             catch
@@ -141,18 +136,29 @@ namespace FriishProduce
             InitializeComponent();
             Program.Handle = Handle;
 
-            if (mainPanel.BackgroundImage != null) tabControl.BackLowColor = tabControl.BackHighColor = tabControl.BackColor = Color.Transparent;
-            tabControl.BackgroundImage = mainPanel.BackgroundImage;
-            tabControl.BackgroundImageLayout = mainPanel.BackgroundImageLayout;
-
             #region Set size of window
             int w = 16;
             int h = mainPanel.Location.Y + tabControl.TabHeight + tabControl.TabTop;
             using (var pF = new ProjectForm(0))
+            {
                 MinimumSize = MaximumSize = Size = new Size(pF.Width + w, pF.Height + h + 37);
+                tabControl.TabBackLowColor = pF.BackColor;
+            }
             mainPanel.Dock = DockStyle.None;
             mainPanel.Size = tabControl.Size = new Size(Width - w, Height - h);
             #endregion
+
+            mainPanel.BackgroundImage = new Bitmap(1, mainPanel.Height);
+            using (Graphics g = Graphics.FromImage(mainPanel.BackgroundImage))
+            using (LinearGradientBrush b = new(new Point(0, 0), new Point(0, 40), tabControl.BackHighColor, tabControl.BackLowColor))
+            {
+                g.Clear(tabControl.BackLowColor);
+                g.FillRectangle(b, new RectangleF(0, 0, 1, b.Rectangle.Height));
+            }
+
+            if (mainPanel.BackgroundImage != null) tabControl.BackLowColor = tabControl.BackHighColor = tabControl.BackColor = Color.Transparent;
+            tabControl.BackgroundImage = mainPanel.BackgroundImage;
+            tabControl.BackgroundImageLayout = mainPanel.BackgroundImageLayout;
 
             if (Logo.Location.X == 0 || Logo.Location.Y == 0) Logo.Location = new Point((mainPanel.Width / 2) - (Logo.Width / 2), (mainPanel.Height / 2) - Logo.Height);
 
@@ -178,17 +184,16 @@ namespace FriishProduce
 
         public void TabChanged(object sender, EventArgs e)
         {
-            // Toggle visibility of Open ROM/Image buttons
+            // Check if any tabs exist
             // ********
-            menu_open_gamefile.Enabled = tabControl.TabPages.Count > 1 || e.GetType() != typeof(FormClosedEventArgs);
+            bool hasTabs = tabControl.TabPages.Count > 1 || e.GetType() != typeof(FormClosedEventArgs);
 
             // Toggle visibility of Export WAD button
             // Toggle visibility of Download LibRetro data button
             // ********
-            if (!menu_open_gamefile.Enabled)
+            if (!hasTabs)
             {
                 menu_retrieve_gamedata_online.Enabled = false;
-                menu_open_image.Enabled = false;
                 menu_save_project_as.Enabled = false;
                 menu_export.Enabled = false;
 
@@ -199,11 +204,10 @@ namespace FriishProduce
             else
             {
                 menu_retrieve_gamedata_online.Enabled = (tabControl.SelectedForm as ProjectForm).ToolbarButtons[0];
-                menu_open_image.Enabled = !(tabControl.SelectedForm as ProjectForm).IsEmpty;
                 menu_export.Enabled = (tabControl.SelectedForm as ProjectForm).IsExportable;
             }
 
-            menu_close_project.Enabled = menu_open_gamefile.Enabled;
+            menu_close_project.Enabled = hasTabs;
 
             // Context menu
             // ********
@@ -216,8 +220,6 @@ namespace FriishProduce
 
             toolbarSaveAs.Enabled = menu_save_project_as.Enabled;
             toolbarCloseProject.Enabled = menu_close_project.Enabled;
-            toolbarOpenGameFile.Enabled = menu_open_gamefile.Enabled;
-            toolbarOpenImage.Enabled = menu_open_image.Enabled;
             toolbarRetrieveGameData.Enabled = menu_retrieve_gamedata_online.Enabled;
             toolbarExport.Enabled = menu_export.Enabled;
         }
@@ -267,50 +269,17 @@ namespace FriishProduce
             tabControl.Visible = true;
             mainPanel.Visible = false;
 
-            // BrowseROMDialog(console, p);
+            // BrowseROMDialog(p);
         }
 
-        private void OpenROM_Click(object sender, EventArgs e) => BrowseROMDialog((tabControl.SelectedForm as ProjectForm).Platform);
+        private void OpenROM_Click(object sender, EventArgs e) => BrowseROMDialog();
 
-        private void BrowseROMDialog(Platform platform)
+        private void BrowseROMDialog()
         {
-            switch (platform)
-            {
-                default:
-                    BrowseROM.Filter = Program.Lang.String("filter.disc") + "|" + Program.Lang.String("filter.zip") + Program.Lang.String("filter");
-                    break;
-
-                case Platform.NES:
-                case Platform.SNES:
-                case Platform.N64:
-                case Platform.SMS:
-                case Platform.SMD:
-                case Platform.PCE:
-                case Platform.C64:
-                case Platform.MSX:
-                    BrowseROM.Filter = Program.Lang.String($"filter.rom_{platform.ToString().ToLower()}");
-                    break;
-
-                case Platform.NEO:
-                    BrowseROM.Filter = Program.Lang.String("filter.zip");
-                    break;
-
-                case Platform.Flash:
-                    BrowseROM.Filter = Program.Lang.String("filter.swf");
-                    break;
-
-                case Platform.RPGM:
-                    BrowseROM.Filter = Program.Lang.String("filter.rpgm");
-                    break;
-            }
-
-            if (BrowseROM.ShowDialog() == DialogResult.OK && tabControl.SelectedForm != null)
+            if (tabControl.SelectedForm != null)
             {
                 var p = tabControl.SelectedForm as ProjectForm;
-                p.IsEmpty = false;
-                p.LoadROM(BrowseROM.FileName, Properties.Settings.Default.auto_retrieve_game_data);
-
-                toolbarRetrieveGameData.Enabled = menu_retrieve_gamedata_online.Enabled = p.ToolbarButtons[0];
+                p.BrowseROMDialog();
             }
         }
 
@@ -328,10 +297,10 @@ namespace FriishProduce
 
         private void OpenImage_Click(object sender, EventArgs e)
         {
-            if (BrowseImage.ShowDialog() == DialogResult.OK)
+            if (tabControl.SelectedForm != null)
             {
-                var currentForm = tabControl.SelectedForm as ProjectForm;
-                currentForm.LoadImage(BrowseImage.FileName);
+                var p = tabControl.SelectedForm as ProjectForm;
+                p.BrowseImageDialog();
             }
         }
 

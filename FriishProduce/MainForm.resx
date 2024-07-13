@@ -117,37 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="BrowseROM.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <metadata name="SaveWAD.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>441, 17</value>
+    <value>229, 17</value>
   </metadata>
-  <metadata name="BrowseImage.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>120, 17</value>
-  </metadata>
-  <data name="BrowseImage.Filter" xml:space="preserve">
-    <value>img|*.bmp;*.jpg;*.jpeg;*.png|bmp|*.bmp|jpeg|*.jpg;*.jpeg|png|*.png</value>
-  </data>
   <metadata name="menuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>530, 17</value>
+    <value>318, 17</value>
   </metadata>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="menuStrip.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="menuStrip.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8pt</value>
-  </data>
   <data name="menu_new_project.Size" type="System.Drawing.Size, System.Drawing">
-    <value>154, 22</value>
+    <value>155, 22</value>
   </data>
   <data name="menu_new_project.Text" xml:space="preserve">
     <value>new_project</value>
   </data>
   <data name="menu_open_project.Size" type="System.Drawing.Size, System.Drawing">
-    <value>154, 22</value>
+    <value>155, 22</value>
   </data>
   <data name="menu_open_project.Text" xml:space="preserve">
     <value>open_project</value>
@@ -156,22 +144,22 @@
     <value>False</value>
   </data>
   <data name="menu_save_project_as.Size" type="System.Drawing.Size, System.Drawing">
-    <value>154, 22</value>
+    <value>155, 22</value>
   </data>
   <data name="menu_save_project_as.Text" xml:space="preserve">
     <value>save_project_as</value>
   </data>
   <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>151, 6</value>
+    <value>152, 6</value>
   </data>
   <data name="menu_settings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>154, 22</value>
+    <value>155, 22</value>
   </data>
   <data name="menu_settings.Text" xml:space="preserve">
     <value>settings</value>
   </data>
   <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>151, 6</value>
+    <value>152, 6</value>
   </data>
   <data name="menu_exit.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -191,58 +179,40 @@
 </value>
   </data>
   <data name="menu_exit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>154, 22</value>
+    <value>155, 22</value>
   </data>
   <data name="menu_exit.Text" xml:space="preserve">
     <value>exit</value>
   </data>
   <data name="menu_file.Size" type="System.Drawing.Size, System.Drawing">
-    <value>33, 20</value>
+    <value>35, 20</value>
   </data>
   <data name="menu_file.Text" xml:space="preserve">
     <value>file</value>
-  </data>
-  <data name="menu_open_gamefile.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="menu_open_gamefile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 22</value>
-  </data>
-  <data name="menu_open_gamefile.Text" xml:space="preserve">
-    <value>open_gamefile</value>
-  </data>
-  <data name="menu_open_image.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="menu_open_image.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 22</value>
-  </data>
-  <data name="menu_open_image.Text" xml:space="preserve">
-    <value>open_image</value>
   </data>
   <data name="menu_retrieve_gamedata_online.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="menu_retrieve_gamedata_online.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 22</value>
+    <value>209, 22</value>
   </data>
   <data name="menu_retrieve_gamedata_online.Text" xml:space="preserve">
     <value>retrieve_gamedata_online</value>
   </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>197, 6</value>
+    <value>206, 6</value>
   </data>
   <data name="menu_export.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="menu_export.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 22</value>
+    <value>209, 22</value>
   </data>
   <data name="menu_export.Text" xml:space="preserve">
     <value>export</value>
   </data>
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>197, 6</value>
+    <value>206, 6</value>
   </data>
   <data name="toolStripSeparator2.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -251,7 +221,7 @@
     <value>False</value>
   </data>
   <data name="menu_close_project.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 22</value>
+    <value>209, 22</value>
   </data>
   <data name="menu_close_project.Text" xml:space="preserve">
     <value>close_project</value>
@@ -260,19 +230,19 @@
     <value>False</value>
   </data>
   <data name="menu_project.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 20</value>
+    <value>56, 20</value>
   </data>
   <data name="menu_project.Text" xml:space="preserve">
     <value>project</value>
   </data>
   <data name="menu_about_app.Size" type="System.Drawing.Size, System.Drawing">
-    <value>126, 22</value>
+    <value>130, 22</value>
   </data>
   <data name="menu_about_app.Text" xml:space="preserve">
     <value>about_app</value>
   </data>
   <data name="menu_help.Size" type="System.Drawing.Size, System.Drawing">
-    <value>39, 20</value>
+    <value>42, 20</value>
   </data>
   <data name="menu_help.Text" xml:space="preserve">
     <value>help</value>
@@ -300,7 +270,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;menuStrip.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="Logo.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -351,10 +321,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;mainPanel.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>0</value>
   </data>
   <metadata name="toolStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>622, 17</value>
+    <value>410, 17</value>
   </metadata>
   <data name="toolStrip.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -403,30 +373,6 @@
   </data>
   <data name="toolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 25</value>
-  </data>
-  <data name="toolbarOpenGameFile.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="toolbarOpenGameFile.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="toolbarOpenGameFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="toolbarOpenGameFile.Text" xml:space="preserve">
-    <value>open_gamefile</value>
-  </data>
-  <data name="toolbarOpenImage.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="toolbarOpenImage.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="toolbarOpenImage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="toolbarOpenImage.Text" xml:space="preserve">
-    <value>open_image</value>
   </data>
   <data name="toolbarRetrieveGameData.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -483,13 +429,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;toolStrip.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <metadata name="SaveProject.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>342, 17</value>
+    <value>130, 17</value>
   </metadata>
   <metadata name="BrowseProject.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>229, 17</value>
+    <value>17, 17</value>
   </metadata>
   <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 45</value>
@@ -528,7 +474,7 @@
     <value>484, 412</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8.25pt</value>
+    <value>Tahoma, 8pt</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2951,23 +2897,11 @@
   <data name="$this.Text" xml:space="preserve">
     <value>FriishProduce</value>
   </data>
-  <data name="&gt;&gt;BrowseROM.Name" xml:space="preserve">
-    <value>BrowseROM</value>
-  </data>
-  <data name="&gt;&gt;BrowseROM.Type" xml:space="preserve">
-    <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;SaveWAD.Name" xml:space="preserve">
     <value>SaveWAD</value>
   </data>
   <data name="&gt;&gt;SaveWAD.Type" xml:space="preserve">
     <value>System.Windows.Forms.SaveFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;BrowseImage.Name" xml:space="preserve">
-    <value>BrowseImage</value>
-  </data>
-  <data name="&gt;&gt;BrowseImage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;menu_file.Name" xml:space="preserve">
     <value>menu_file</value>
@@ -3021,18 +2955,6 @@
     <value>menu_project</value>
   </data>
   <data name="&gt;&gt;menu_project.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;menu_open_gamefile.Name" xml:space="preserve">
-    <value>menu_open_gamefile</value>
-  </data>
-  <data name="&gt;&gt;menu_open_gamefile.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;menu_open_image.Name" xml:space="preserve">
-    <value>menu_open_image</value>
-  </data>
-  <data name="&gt;&gt;menu_open_image.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;menu_retrieve_gamedata_online.Name" xml:space="preserve">
@@ -3106,18 +3028,6 @@
   </data>
   <data name="&gt;&gt;toolStripSeparator5.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolbarOpenGameFile.Name" xml:space="preserve">
-    <value>toolbarOpenGameFile</value>
-  </data>
-  <data name="&gt;&gt;toolbarOpenGameFile.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolbarOpenImage.Name" xml:space="preserve">
-    <value>toolbarOpenImage</value>
-  </data>
-  <data name="&gt;&gt;toolbarOpenImage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolbarRetrieveGameData.Name" xml:space="preserve">
     <value>toolbarRetrieveGameData</value>

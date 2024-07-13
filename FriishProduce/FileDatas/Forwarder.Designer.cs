@@ -99,15 +99,5 @@ namespace FriishProduce.FileDatas {
                 return ((byte[])(obj));
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] vWiiNandLoader {
-            get {
-                object obj = ResourceManager.GetObject("vWiiNandLoader", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
     }
 }

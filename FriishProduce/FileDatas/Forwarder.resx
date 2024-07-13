@@ -130,7 +130,4 @@
   <data name="DOL_V14" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\forwarder_wii\forwarder_v14.dol;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="vWiiNandLoader" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\forwarder_wii\vwii.app;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
 </root>

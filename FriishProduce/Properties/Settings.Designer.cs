@@ -169,7 +169,7 @@ namespace FriishProduce.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("3")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
         public int default_injection_method_n64 {
             get {
                 return ((int)(this["default_injection_method_n64"]));

@@ -12,10 +12,9 @@ using System.Windows.Forms;
 
 namespace FriishProduce
 {
-    public /* abstract */ partial class ProjectForm : Form
+    public partial class ProjectForm : Form
     {
-        protected Platform platform { get; set; }
-        public Platform Platform { get => platform; }
+        protected Platform targetPlatform { get; set; }
 
         protected string TIDCode;
         protected string Untitled;
@@ -65,16 +64,14 @@ namespace FriishProduce
                 if (_isShown)
                 {
                     title_id_random.Visible =
-                    groupBox1.Enabled =
+                    import_image.Enabled =
+                    import_patch.Enabled =
                     wad_base.Enabled =
                     groupBox3.Enabled =
                     groupBox4.Enabled =
                     groupBox5.Enabled =
                     groupBox6.Enabled =
                     groupBox7.Enabled = !value;
-
-                    Program.MainForm.toolbarOpenImage.Enabled = !value;
-                    Program.MainForm.menu_open_image.Enabled = !value;
                 }
             }
         }
@@ -94,7 +91,7 @@ namespace FriishProduce
         }
 
         protected bool IsVC { get => injection_methods.SelectedItem?.ToString().ToLower() == Program.Lang.String("vc").ToLower(); }
-        public bool IsForwarder { get => !IsVC && Platform != Platform.Flash; }
+        public bool IsForwarder { get => !IsVC && targetPlatform != Platform.Flash; }
 
         private new enum Region
         {
@@ -181,19 +178,19 @@ namespace FriishProduce
                 if (!IsVC && Program.Lang.Current.StartsWith("ko")) lang = 2;
 
                 // Japan/Korea: Use USA banner for C64
-                if (lang != 0 && lang != 3 && platform == Platform.C64)
+                if (lang != 0 && lang != 3 && targetPlatform == Platform.C64)
                     lang = 0;
 
                 // International: Use Japan banner for MSX
-                else if (lang != 1 && platform == Platform.MSX)
+                else if (lang != 1 && targetPlatform == Platform.MSX)
                     lang = 1;
 
                 // Korea: Use Europe banner for SMD
-                else if (lang == 2 && platform == Platform.SMD)
+                else if (lang == 2 && targetPlatform == Platform.SMD)
                     lang = 3;
 
                 // Korea: Use USA banner for non-available platforms
-                else if (lang == 2 && (int)platform >= 3)
+                else if (lang == 2 && (int)targetPlatform >= 3)
                     lang = 0;
 
                 return lang;
@@ -208,7 +205,7 @@ namespace FriishProduce
         {
             var p = new Project()
             {
-                Platform = platform,
+                Platform = targetPlatform,
 
                 ROM = rom?.FilePath,
                 Patch = patch,
@@ -257,14 +254,25 @@ namespace FriishProduce
             #region Localization
             Program.Lang.Control(this, "projectform");
             title_id.Text = title_id_2.Text;
+            import_rom.Text = string.Format(Program.Lang.String(import_rom.Name, Name), targetPlatform switch
+            {
+                Platform.PSX => Program.Lang.String("disc_image"),
+                Platform.GCN => Program.Lang.String("disc_image"),
+                Platform.PCECD => Program.Lang.String("disc_image"),
+                Platform.SMCD => Program.Lang.String("disc_image"),
+                Platform.RPGM => Program.Lang.String("game_file"),
+                Platform.NEO => "ZIP",
+                Platform.Flash => "SWF",
+                _ => "ROM",
+            });
             browsePatch.Filter = Program.Lang.String("filter.patch");
             // BrowseManualZIP.Filter = Program.Lang.String("filter.zip");
 
             // Change title text to untitled string
-            Untitled = string.Format(Program.Lang.String("untitled_project", "mainform"), Program.Lang.String(Enum.GetName(typeof(Platform), platform).ToLower(), "platforms"));
+            Untitled = string.Format(Program.Lang.String("untitled_project", "mainform"), Program.Lang.String(Enum.GetName(typeof(Platform), targetPlatform).ToLower(), "platforms"));
             Text = string.IsNullOrWhiteSpace(channel_title.Text) ? Untitled : channel_title.Text;
 
-            SetROMDataText();
+            setFilesText();
 
             var baseMax = Math.Max(base_name.Location.X + base_name.Width - 4, title_id_2.Location.X + title_id_2.Width - 4) + 2;
             baseName.Location = new Point(baseMax, base_name.Location.Y);
@@ -355,7 +363,7 @@ namespace FriishProduce
             // Injection methods list
             injection_methods.Items.Clear();
 
-            switch (platform)
+            switch (targetPlatform)
             {
                 case Platform.NES:
                     injection_methods.Items.Add(Program.Lang.String("vc"));
@@ -412,7 +420,7 @@ namespace FriishProduce
                     break;
             }
 
-            injection_methods.SelectedIndex = platform switch
+            injection_methods.SelectedIndex = targetPlatform switch
             {
                 Platform.NES                 => Properties.Settings.Default.default_injection_method_nes,
                 Platform.SNES                => Properties.Settings.Default.default_injection_method_snes,
@@ -430,12 +438,12 @@ namespace FriishProduce
 
         private void LoadChannelDatabase()
         {
-            try { channels = new ChannelDatabase(platform); }
+            try { channels = new ChannelDatabase(targetPlatform); }
             catch (Exception ex)
             {
-                if ((int)platform < 10)
+                if ((int)targetPlatform < 10)
                 {
-                    System.Windows.Forms.MessageBox.Show($"A fatal error occurred retrieving the {platform} WADs database.\n\nException: {ex.GetType().FullName}\nMessage: {ex.Message}\n\nThe application will now shut down.", "Halt", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                    System.Windows.Forms.MessageBox.Show($"A fatal error occurred retrieving the {targetPlatform} WADs database.\n\nException: {ex.GetType().FullName}\nMessage: {ex.Message}\n\nThe application will now shut down.", "Halt", MessageBoxButtons.OK, MessageBoxIcon.Hand);
                     Environment.FailFast("Database initialization failed.");
                 }
                 else { channels = new ChannelDatabase(); }
@@ -444,7 +452,7 @@ namespace FriishProduce
 
         public ProjectForm(Platform platform, string ROMpath = null, Project project = null)
         {
-            this.platform = platform;
+            targetPlatform = platform;
             IsEmpty = true;
             LoadChannelDatabase();
 
@@ -472,13 +480,13 @@ namespace FriishProduce
             // ********
             TIDCode = null;
 
-            using (var icon = new Bitmap(Program.MainForm.Icons[platform]))
+            using (var icon = new Bitmap(Program.MainForm.Icons[targetPlatform]))
             {
                 icon.MakeTransparent(Color.White);
                 Icon = Icon.FromHandle(icon.GetHicon());
             }
 
-            switch (platform)
+            switch (targetPlatform)
             {
                 case Platform.NES:
                     TIDCode = "F";
@@ -547,7 +555,7 @@ namespace FriishProduce
             RefreshForm();
 
             manual_type_list.Enabled = false;
-            foreach (var customManualplatform in new List<Platform>() // Confirmed to have an algorithm exist for NES, SNES, N64, SEGA, PCE, NEO
+            foreach (var manualConsole in new List<Platform>() // Confirmed to have an algorithm exist for NES, SNES, N64, SEGA, PCE, NEO
             {
                 Platform.NES,
                 Platform.SNES,
@@ -557,7 +565,7 @@ namespace FriishProduce
                 // Platform.PCE,
                 // Platform.NEO
             })
-                if (platform == customManualplatform) manual_type_list.Enabled = true;
+                if (targetPlatform == manualConsole) manual_type_list.Enabled = true;
 
             if (project != null)
             {
@@ -587,7 +595,7 @@ namespace FriishProduce
                     (baseRegionList.Items[project.Base.Item2] as ToolStripMenuItem).Checked = true;
                 }
 
-                SetROMDataText();
+                setFilesText();
 
                 channel_title.Text = project.ChannelTitles[1];
                 banner_title.Text = project.BannerTitle;
@@ -622,45 +630,101 @@ namespace FriishProduce
 
         // -----------------------------------
 
+        public void BrowseROMDialog()
+        {
+            browseROM.Title = import_rom.Text;
+
+            switch (targetPlatform)
+            {
+                default:
+                    browseROM.Filter = Program.Lang.String("filter.disc") + "|" + Program.Lang.String("filter.zip") + Program.Lang.String("filter");
+                    break;
+
+                case Platform.NES:
+                case Platform.SNES:
+                case Platform.N64:
+                case Platform.SMS:
+                case Platform.SMD:
+                case Platform.PCE:
+                case Platform.C64:
+                case Platform.MSX:
+                    browseROM.Filter = Program.Lang.String($"filter.rom_{targetPlatform.ToString().ToLower()}");
+                    break;
+
+                case Platform.NEO:
+                    browseROM.Filter = Program.Lang.String("filter.zip");
+                    break;
+
+                case Platform.Flash:
+                    browseROM.Filter = Program.Lang.String("filter.swf");
+                    break;
+
+                case Platform.RPGM:
+                    browseROM.Filter = Program.Lang.String("filter.rpgm");
+                    break;
+            }
+
+            if (browseROM.ShowDialog() == DialogResult.OK)
+            {
+                IsEmpty = false;
+                LoadROM(browseROM.FileName, Properties.Settings.Default.auto_retrieve_game_data);
+            }
+        }
+
+        private void import_rom_Click(object sender, EventArgs e) => BrowseROMDialog();
+
+        public void BrowseImageDialog()
+        {
+            browseImage.Title = import_image.Text;
+            browseImage.Filter = Program.Lang.String("filter.img");
+
+            if (browseImage.ShowDialog() == DialogResult.OK)
+            {
+                LoadImage(browseImage.FileName);
+            }
+        }
+
+        private void import_image_Click(object sender, EventArgs e) => BrowseImageDialog();
+
         private void refreshData()
         {
             // ----------------------------
             if (DesignMode) return;
             // ----------------------------
 
-            SetROMDataText();
-
             if (!IsEmpty)
             {
                 IsModified = true;
             }
+
+            setFilesText();
         }
 
         public bool[] ToolbarButtons
         {
             get => new bool[]
             {
-                platform != Platform.Flash
-                && platform != Platform.RPGM
+                targetPlatform != Platform.Flash
+                && targetPlatform != Platform.RPGM
                 && rom?.FilePath != null, // LibRetro / game data
 
-                platform != Platform.Flash
-                && platform != Platform.RPGM
+                targetPlatform != Platform.Flash
+                && targetPlatform != Platform.RPGM
                 && IsVC, // Browse manual
             };
         }
 
-        protected virtual void SetROMDataText()
+        private void setFilesText()
         {
             int maxLength = 75;
 
-            filename.Text = !string.IsNullOrWhiteSpace(rom?.FilePath) ? Path.GetFileName(rom.FilePath) : Program.Lang.String("none");
-            if (filename.Text.Length > maxLength) filename.Text = filename.Text.Substring(0, maxLength - 3) + "...";
+            rom_filename.Text = !string.IsNullOrWhiteSpace(rom?.FilePath) ? Path.GetFileName(rom.FilePath) : Program.Lang.String("none");
+            if (rom_filename.Text.Length > maxLength) rom_filename.Text = rom_filename.Text.Substring(0, maxLength - 3) + "...";
 
-            filename.Enabled = !string.IsNullOrWhiteSpace(rom?.FilePath);
+            rom_filename.Enabled = !string.IsNullOrWhiteSpace(rom?.FilePath);
 
-            label7.Text = !string.IsNullOrWhiteSpace(patch) ? Path.GetFileName(patch) : Program.Lang.String("none");
-            label7.Enabled = !string.IsNullOrWhiteSpace(patch);
+            hasPatch.Image = !string.IsNullOrWhiteSpace(patch) ? Properties.Resources.yes : Properties.Resources.no;
+            hasImage.Image = (img?.Source != null) ? Properties.Resources.yes : Properties.Resources.no;
         }
 
         private void randomTID()
@@ -675,7 +739,7 @@ namespace FriishProduce
             string CHANNELNAME = channel_title.Text;
             string FULLNAME = System.Text.RegularExpressions.Regex.Replace(_bannerTitle.Replace(": ", Environment.NewLine).Replace(" - ", Environment.NewLine), @"\((.*?)\)", "").Replace("\r\n", "\n").Replace("\n", " - ");
             string TITLEID = title_id_upper.Text.ToUpper();
-            string PLATFORM = platform.ToString();
+            string PLATFORM = targetPlatform.ToString();
 
             return Properties.Settings.Default.default_save_as_filename.Replace("FILENAME", FILENAME).Replace("CHANNELNAME", CHANNELNAME).Replace("FULLNAME", FULLNAME).Replace("TITLEID", TITLEID).Replace("PLATFORM", PLATFORM);
         }
@@ -1009,9 +1073,9 @@ namespace FriishProduce
             else refreshData();
         }
 
-        public void LoadImage(string path)
+        protected void LoadImage(string path)
         {
-            img = new ImageHelper(platform, path);
+            img = new ImageHelper(targetPlatform, path);
             LoadImage(img.Source);
         }
 
@@ -1025,7 +1089,7 @@ namespace FriishProduce
         {
             Bitmap bmp = null;
 
-            switch (platform)
+            switch (targetPlatform)
             {
                 case Platform.NES:
                     bmp = cloneImage(src);
@@ -1064,7 +1128,7 @@ namespace FriishProduce
                     banner_title.Text,
                     (int)released.Value,
                     (int)players.Value,
-                    platform,
+                    targetPlatform,
                     _bannerRegion
                 );
 
@@ -1101,11 +1165,11 @@ namespace FriishProduce
             }
         }
 
-        public void LoadROM(string ROMpath, bool LoadGameData = true)
+        protected void LoadROM(string ROMpath, bool LoadGameData = true)
         {
             if (ROMpath == null || rom == null || !File.Exists(ROMpath)) return;
 
-            switch (platform)
+            switch (targetPlatform)
             {
                 // ROM file formats
                 // ****************
@@ -1154,6 +1218,7 @@ namespace FriishProduce
             patch = null;
             import_patch.Checked = false;
 
+            Program.MainForm.toolbarRetrieveGameData.Enabled = Program.MainForm.menu_retrieve_gamedata_online.Enabled = ToolbarButtons[0];
             if (rom != null && LoadGameData && ToolbarButtons[0]) this.LoadGameData();
         }
 
@@ -1163,7 +1228,7 @@ namespace FriishProduce
 
             try
             {
-                var gameData = await Task.FromResult(rom.GetData(platform, rom.FilePath));
+                var gameData = await Task.FromResult(rom.GetData(targetPlatform, rom.FilePath));
                 bool retrieved = gameData != (null, null, null, null, null);
 
                 if (retrieved)
@@ -1179,7 +1244,10 @@ namespace FriishProduce
                     }
 
                     // Set image
-                    if (gameData.Image != null) { LoadImage(gameData.Image); }
+                    if (gameData.Image != null)
+                    {
+                        LoadImage(gameData.Image);
+                    }
 
                     // Set year and players
                     released.Value = !string.IsNullOrEmpty(gameData.Year) ? int.Parse(gameData.Year) : released.Value;
@@ -1219,7 +1287,7 @@ namespace FriishProduce
 
                 if (import_patch.Checked) rom.Patch(patch);
 
-                switch (platform)
+                switch (targetPlatform)
                 {
                     case Platform.NES:
                     case Platform.SNES:
@@ -1259,7 +1327,7 @@ namespace FriishProduce
                 BannerHelper.Modify
                 (
                     outWad,
-                    platform,
+                    targetPlatform,
                     IsVC ? outWad.Region : _bannerRegion switch { 1 => libWiiSharp.Region.Japan, 2 => libWiiSharp.Region.Korea, 3 => libWiiSharp.Region.Europe, _ => libWiiSharp.Region.USA },
                     _bannerTitle,
                     _bannerYear,
@@ -1368,7 +1436,7 @@ namespace FriishProduce
             // *******
             InjectorWiiVC VC = null;
 
-            switch (platform)
+            switch (targetPlatform)
             {
                 default:
                     throw new NotImplementedException();
@@ -1403,7 +1471,7 @@ namespace FriishProduce
                 case Platform.SMD:
                     VC = new Injectors.SEGA()
                     {
-                        IsSMS = platform == Platform.SMS
+                        IsSMS = targetPlatform == Platform.SMS
                     };
                     break;
 
@@ -1456,7 +1524,7 @@ namespace FriishProduce
         {
             var result = contentOptionsForm.ShowDialog(this) == DialogResult.OK;
 
-            switch (platform)
+            switch (targetPlatform)
             {
                 default:
                     if (result) { refreshData(); }
@@ -1684,12 +1752,12 @@ namespace FriishProduce
                     break;
 
                 case 3:
-                    BaseRegion.Image = (int)platform <= 2 ? Properties.Resources.flag_eu50 : Properties.Resources.flag_eu;
+                    BaseRegion.Image = (int)targetPlatform <= 2 ? Properties.Resources.flag_eu50 : Properties.Resources.flag_eu;
                     break;
 
                 case 4:
                 case 5:
-                    BaseRegion.Image = (int)platform <= 2 ? Properties.Resources.flag_eu60 : Properties.Resources.flag_eu;
+                    BaseRegion.Image = (int)targetPlatform <= 2 ? Properties.Resources.flag_eu60 : Properties.Resources.flag_eu;
                     break;
 
                 case 6:
@@ -1707,21 +1775,21 @@ namespace FriishProduce
 
             // Changing SaveDataTitle max length & clearing text field when needed
             // ----------------------
-            if (platform == Platform.NES) save_data_title.MaxLength = inWadRegion == Region.Korea ? 30 : 20;
-            else if (platform == Platform.SNES) save_data_title.MaxLength = 80;
-            else if (platform == Platform.N64) save_data_title.MaxLength = 100;
-            else if (platform == Platform.NEO
-                  || platform == Platform.MSX) save_data_title.MaxLength = 64;
+            if (targetPlatform == Platform.NES) save_data_title.MaxLength = inWadRegion == Region.Korea ? 30 : 20;
+            else if (targetPlatform == Platform.SNES) save_data_title.MaxLength = 80;
+            else if (targetPlatform == Platform.N64) save_data_title.MaxLength = 100;
+            else if (targetPlatform == Platform.NEO
+                  || targetPlatform == Platform.MSX) save_data_title.MaxLength = 64;
             else save_data_title.MaxLength = 80;
 
             // Also, some consoles only support a single line anyway
             // ********
             bool isSingleLine = inWadRegion == Region.Korea
-                             || platform == Platform.NES
-                             || platform == Platform.SMS
-                             || platform == Platform.SMD
-                             || platform == Platform.PCE
-                             || platform == Platform.PCECD;
+                             || targetPlatform == Platform.NES
+                             || targetPlatform == Platform.SMS
+                             || targetPlatform == Platform.SMD
+                             || targetPlatform == Platform.PCE
+                             || targetPlatform == Platform.PCECD;
 
             // Set textbox to use single line when needed
             // ********
@@ -1776,7 +1844,7 @@ namespace FriishProduce
             {
                 manual_type.Visible = manual_type_list.Visible = true;
 
-                switch (platform)
+                switch (targetPlatform)
                 {
                     case Platform.NES:
                         contentOptionsForm = new Options_VC_NES() { EmuType = emuVer };
@@ -1791,7 +1859,7 @@ namespace FriishProduce
 
                     case Platform.SMS:
                     case Platform.SMD:
-                        contentOptionsForm = new Options_VC_SEGA() { EmuType = emuVer, IsSMS = platform == Platform.SMS };
+                        contentOptionsForm = new Options_VC_SEGA() { EmuType = emuVer, IsSMS = targetPlatform == Platform.SMS };
                         break;
 
                     case Platform.PCE:
@@ -1811,7 +1879,7 @@ namespace FriishProduce
                 }
             }
 
-            else if (platform == Platform.Flash)
+            else if (targetPlatform == Platform.Flash)
             {
                 contentOptionsForm = new Options_Flash();
             }
@@ -1820,7 +1888,7 @@ namespace FriishProduce
             {
                 forwarder_console.Visible = forwarder_root_device.Visible = true;
 
-                switch (platform)
+                switch (targetPlatform)
                 {
                     case Platform.GB:
                     case Platform.GBC:
@@ -1828,7 +1896,7 @@ namespace FriishProduce
                     case Platform.S32X:
                     case Platform.SMCD:
                     case Platform.PSX:
-                        contentOptionsForm = new Options_Forwarder(platform);
+                        contentOptionsForm = new Options_Forwarder(targetPlatform);
                         break;
                     case Platform.NES:
                         break;
@@ -1875,7 +1943,7 @@ namespace FriishProduce
 
             #region -- Content options panel --
             if (groupBox4.MaximumSize.IsEmpty) groupBox4.MaximumSize = groupBox4.Size;
-            if (Platform == Platform.Flash)
+            if (targetPlatform == Platform.Flash)
             {
                 panel2.Visible = false;
                 groupBox4.Size = groupBox4.MaximumSize - new Size(0, 45);
@@ -1891,7 +1959,7 @@ namespace FriishProduce
             toggleSwitchL1.Visible = toggleSwitch1.Visible = FStorage_SD.Visible = FStorage_USB.Visible = forwarder_console.Visible;
             #endregion
 
-            showSaveData = IsVC || platform == Platform.Flash;
+            showSaveData = IsVC || targetPlatform == Platform.Flash;
         }
         #endregion
 
@@ -1941,6 +2009,7 @@ namespace FriishProduce
 
         private void InjectorsList_SelectedIndexChanged(object sender, EventArgs e)
         {
+            resetImages();
             resetContentOptions();
             LoadImage();
             refreshData();
@@ -1948,6 +2017,7 @@ namespace FriishProduce
 
         private void RegionsList_SelectedIndexChanged(object sender, EventArgs e)
         {
+            resetImages();
             LoadImage();
             refreshData();
         }
@@ -1971,7 +2041,7 @@ namespace FriishProduce
                     banner_title.Text,
                     (int)released.Value,
                     (int)players.Value,
-                    platform,
+                    targetPlatform,
                     _bannerRegion
                 );
 

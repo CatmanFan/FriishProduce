@@ -224,8 +224,9 @@ namespace FriishProduce
         {
             string targetPath = Paths.WorkingFolder + Path.GetFileNameWithoutExtension(appName) + ".exe";
             File.WriteAllBytes(targetPath, app);
+            
             Run(targetPath, Paths.WorkingFolder, arguments, showWindow);
-
+            
             if (File.Exists(targetPath)) File.Delete(targetPath);
         }
 

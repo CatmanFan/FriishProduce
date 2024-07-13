@@ -119,6 +119,11 @@ namespace FriishProduce
                         t.MainInstruction = lines[0];
                         t.Content = string.Join("\n", secondary.ToArray()).Trim();
                     }
+                    else
+                    {
+                        t.MainInstruction = null;
+                        t.Content = lines[0].Trim();
+                    }
                 }
 
                 foreach (var item in buttons)

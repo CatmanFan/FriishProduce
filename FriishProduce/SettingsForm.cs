@@ -197,11 +197,8 @@ namespace FriishProduce
             use_custom_database.Checked = File.Exists(Default.custom_database);
 
 #if DEBUG
-            use_custom_database.Visible = true;
             GetBanners.Visible = true;
 #else
-            // use_custom_database.Visible = false;
-            // clearCustomDatabase = true;
             GetBanners.Visible = false;
 #endif
 

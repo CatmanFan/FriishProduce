@@ -277,7 +277,7 @@ namespace FriishProduce
             File.WriteAllText(Paths.SDUSBRoot + $"(Extract to your {(Storage == Storages.USB ? "USB" : "SD")} root).txt", "");
         }
 
-        public WAD CreateWAD(WAD WAD, bool vWii = false)
+        public WAD CreateWAD(WAD WAD)
         {
             // > For GenPlus & all emulators based on Wii64 Team's code (e.g. Wii64, WiiSX and forks), use Comex NANDloader
             // > For WiiMednafen, use Waninkoko NANDloader
@@ -291,22 +291,30 @@ namespace FriishProduce
             x.Unpack(Paths.WAD);
             WAD.BannerApp.Save(Paths.WAD + "00000000.app");
 
-            // Define forwarder version
-            // *******
-            bool NeedsOldForwarder = EmulatorIndex == 7 || EmulatorIndex == 13;
-            byte[] Forwarder = NeedsOldForwarder ? FileDatas.Forwarder.DOL_V12 : FileDatas.Forwarder.DOL_V14;
-            int TargetOffset = NeedsOldForwarder ? 0x77426 : 0x7F979;
-            int SecondTargetOffset = NeedsOldForwarder ? 263 : 256;
-            string TargetPath = NeedsOldForwarder ? loadPath : loadPath.Substring(4);
+            #region -- Define forwarder version --
+            bool v12 = EmulatorIndex == 7 || EmulatorIndex == 13;
+            byte[] forwarder = v12 ? FileDatas.Forwarder.DOL_V12 : FileDatas.Forwarder.DOL_V14;
+            int targetOffset1 = v12 ? 0x77426 : 0x7F979;
+            int targetOffset2 = v12 ? 263 : 256;
+            string targetPath = v12 ? loadPath : loadPath.Substring(4);
+            #endregion
 
             // Create forwarder .app
             // *******
-            Encoding.ASCII.GetBytes(TargetPath).CopyTo(Forwarder, TargetOffset);
-            File.WriteAllBytes(Paths.WAD + (x.BootIndex == 1 ? "00000002.app" : "00000001.app"), Forwarder);
+            Encoding.ASCII.GetBytes(targetPath).CopyTo(forwarder, targetOffset1);
 
-            // Write NANDloader & save
+            File.WriteAllBytes(Paths.WorkingFolder + "forwarder.dol", forwarder);
+            Utils.Run(FileDatas.Apps.OpenDolBoot, "OpenDolBoot", "forwarder.dol forwarder.app");
+            if (!File.Exists(Paths.WorkingFolder + "forwarder.app")) throw new Exception(Program.Lang.Msg(2, true));
+
+            var forwarderApp = File.ReadAllBytes(Paths.WorkingFolder + "forwarder.app");
+            if (File.Exists(Paths.WorkingFolder + "forwarder.app")) File.Delete(Paths.WorkingFolder + "forwarder.app");
+
+            File.WriteAllBytes(Paths.WAD + (x.BootIndex == 1 ? "00000002.app" : "00000001.app"), forwarder);
+
+            // Write OpenDolBoot loader & save
             // *******
-            if (vWii) File.WriteAllBytes(Paths.WAD + $"0000000{x.BootIndex}.app", FileDatas.Forwarder.vWiiNandLoader);
+            File.WriteAllBytes(Paths.WAD + $"0000000{x.BootIndex}.app", forwarderApp);
 
             x.CreateNew(Paths.WAD);
             x.Region = WAD.Region;
