@@ -52,14 +52,13 @@ namespace FriishProduce
             this.mainPanel = new System.Windows.Forms.Panel();
             this.Logo = new System.Windows.Forms.PictureBox();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
-            this.toolbarNewProject = new System.Windows.Forms.ToolStripDropDownButton();
             this.toolbarOpenProject = new System.Windows.Forms.ToolStripButton();
             this.toolbarSaveAs = new System.Windows.Forms.ToolStripButton();
             this.toolbarCloseProject = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.toolbarRetrieveGameData = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            this.ToolStrip_Settings = new System.Windows.Forms.ToolStripButton();
+            this.toolbarSettings = new System.Windows.Forms.ToolStripButton();
             this.toolbarExport = new System.Windows.Forms.ToolStripButton();
             this.SaveProject = new System.Windows.Forms.SaveFileDialog();
             this.BrowseProject = new System.Windows.Forms.OpenFileDialog();
@@ -232,25 +231,16 @@ namespace FriishProduce
             // 
             resources.ApplyResources(this.toolStrip, "toolStrip");
             this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolbarNewProject,
             this.toolbarOpenProject,
             this.toolbarSaveAs,
             this.toolbarCloseProject,
             this.toolStripSeparator5,
             this.toolbarRetrieveGameData,
             this.toolStripSeparator6,
-            this.ToolStrip_Settings,
+            this.toolbarSettings,
             this.toolbarExport});
             this.toolStrip.Name = "toolStrip";
             this.toolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            // 
-            // toolbarNewProject
-            // 
-            this.toolbarNewProject.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolbarNewProject.Image = global::FriishProduce.Properties.Resources.page_white;
-            resources.ApplyResources(this.toolbarNewProject, "toolbarNewProject");
-            this.toolbarNewProject.Name = "toolbarNewProject";
-            this.toolbarNewProject.Tag = "new_project";
             // 
             // toolbarOpenProject
             // 
@@ -298,14 +288,14 @@ namespace FriishProduce
             this.toolStripSeparator6.Name = "toolStripSeparator6";
             resources.ApplyResources(this.toolStripSeparator6, "toolStripSeparator6");
             // 
-            // ToolStrip_Settings
+            // toolbarSettings
             // 
-            this.ToolStrip_Settings.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.ToolStrip_Settings.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.ToolStrip_Settings.Image = global::FriishProduce.Properties.Resources.wrench;
-            resources.ApplyResources(this.ToolStrip_Settings, "ToolStrip_Settings");
-            this.ToolStrip_Settings.Name = "ToolStrip_Settings";
-            this.ToolStrip_Settings.Click += new System.EventHandler(this.Settings_Click);
+            this.toolbarSettings.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolbarSettings.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolbarSettings.Image = global::FriishProduce.Properties.Resources.wrench;
+            resources.ApplyResources(this.toolbarSettings, "toolbarSettings");
+            this.toolbarSettings.Name = "toolbarSettings";
+            this.toolbarSettings.Click += new System.EventHandler(this.Settings_Click);
             // 
             // toolbarExport
             // 
@@ -410,8 +400,7 @@ namespace FriishProduce
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripButton toolbarCloseProject;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
-        private System.Windows.Forms.ToolStripButton ToolStrip_Settings;
-        private System.Windows.Forms.ToolStripDropDownButton toolbarNewProject;
+        private System.Windows.Forms.ToolStripButton toolbarSettings;
         private System.Windows.Forms.OpenFileDialog BrowseProject;
         private System.Windows.Forms.ToolStripMenuItem menu_open_project;
         private System.Windows.Forms.ToolStripButton toolbarOpenProject;

@@ -745,7 +745,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>9</value>
   </data>
   <data name="autolink_save_data.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -928,7 +928,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_n64.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>4</value>
   </data>
   <data name="leftSeparator.Location" type="System.Drawing.Point, System.Drawing">
     <value>198, 0</value>
@@ -950,90 +950,6 @@
   </data>
   <data name="&gt;&gt;leftSeparator.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="FStorage_Wii.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="FStorage_Wii.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="FStorage_Wii.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 18</value>
-  </data>
-  <data name="FStorage_Wii.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 17</value>
-  </data>
-  <data name="FStorage_Wii.TabIndex" type="System.Int32, mscorlib">
-    <value>21</value>
-  </data>
-  <data name="FStorage_Wii.Text" xml:space="preserve">
-    <value>Wii</value>
-  </data>
-  <data name="&gt;&gt;FStorage_Wii.Name" xml:space="preserve">
-    <value>FStorage_Wii</value>
-  </data>
-  <data name="&gt;&gt;FStorage_Wii.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;FStorage_Wii.Parent" xml:space="preserve">
-    <value>forwarder_console</value>
-  </data>
-  <data name="&gt;&gt;FStorage_Wii.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="FStorage_vWii.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="FStorage_vWii.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="FStorage_vWii.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 36</value>
-  </data>
-  <data name="FStorage_vWii.Size" type="System.Drawing.Size, System.Drawing">
-    <value>51, 17</value>
-  </data>
-  <data name="FStorage_vWii.TabIndex" type="System.Int32, mscorlib">
-    <value>22</value>
-  </data>
-  <data name="FStorage_vWii.Text" xml:space="preserve">
-    <value>Wii U</value>
-  </data>
-  <data name="&gt;&gt;FStorage_vWii.Name" xml:space="preserve">
-    <value>FStorage_vWii</value>
-  </data>
-  <data name="&gt;&gt;FStorage_vWii.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;FStorage_vWii.Parent" xml:space="preserve">
-    <value>forwarder_console</value>
-  </data>
-  <data name="&gt;&gt;FStorage_vWii.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="forwarder_console.Location" type="System.Drawing.Point, System.Drawing">
-    <value>203, 10</value>
-  </data>
-  <data name="forwarder_console.Size" type="System.Drawing.Size, System.Drawing">
-    <value>185, 62</value>
-  </data>
-  <data name="forwarder_console.TabIndex" type="System.Int32, mscorlib">
-    <value>24</value>
-  </data>
-  <data name="forwarder_console.Text" xml:space="preserve">
-    <value>forwarder_console</value>
-  </data>
-  <data name="&gt;&gt;forwarder_console.Name" xml:space="preserve">
-    <value>forwarder_console</value>
-  </data>
-  <data name="&gt;&gt;forwarder_console.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;forwarder_console.Parent" xml:space="preserve">
-    <value>forwarder</value>
-  </data>
-  <data name="&gt;&gt;forwarder_console.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="FStorage_SD.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1072,7 +988,7 @@
     <value>NoControl</value>
   </data>
   <data name="FStorage_USB.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 36</value>
+    <value>10, 37</value>
   </data>
   <data name="FStorage_USB.Size" type="System.Drawing.Size, System.Drawing">
     <value>47, 17</value>
@@ -1099,7 +1015,7 @@
     <value>12, 10</value>
   </data>
   <data name="forwarder_root_device.Size" type="System.Drawing.Size, System.Drawing">
-    <value>185, 62</value>
+    <value>377, 62</value>
   </data>
   <data name="forwarder_root_device.TabIndex" type="System.Int32, mscorlib">
     <value>25</value>
@@ -1117,7 +1033,7 @@
     <value>forwarder</value>
   </data>
   <data name="&gt;&gt;forwarder_root_device.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="show_bios_screen.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1192,7 +1108,7 @@
     <value>forwarder</value>
   </data>
   <data name="&gt;&gt;bios_settings.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="forwarder.Location" type="System.Drawing.Point, System.Drawing">
     <value>199, 0</value>
@@ -1213,7 +1129,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;forwarder.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>3</value>
   </data>
   <data name="vc_nes_palette_use_on_banner.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1309,7 +1225,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_nes.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>11</value>
   </data>
   <data name="vc_neo_bios_list.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 18</value>
@@ -1375,7 +1291,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_neo.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>10</value>
   </data>
   <data name="vc_sega_console_disableresetbutton.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1633,7 +1549,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_sega.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>6</value>
   </data>
   <data name="vc_pce_backupram.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2014,7 +1930,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_pce.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>5</value>
   </data>
   <data name="flash_strap_reminder_list.Items" xml:space="preserve">
     <value>auto</value>
@@ -2392,7 +2308,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;adobe_flash.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>12</value>
   </data>
   <data name="LanguageList.Items" xml:space="preserve">
     <value>System default</value>
@@ -2557,7 +2473,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>8</value>
   </data>
   <data name="injection_methods_sega.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 18</value>
@@ -2758,7 +2674,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panel3.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>7</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

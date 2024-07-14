@@ -67,6 +67,8 @@ namespace FriishProduce
                     import_image.Enabled =
                     import_patch.Enabled =
                     wad_base.Enabled =
+                    forwarder_root_device.Enabled =
+                    manual_type.Enabled =
                     groupBox3.Enabled =
                     groupBox4.Enabled =
                     groupBox5.Enabled =
@@ -212,7 +214,7 @@ namespace FriishProduce
                 Manual = (manual_type_list.SelectedIndex, manual),
                 Img = img?.Source ?? null,
                 InjectionMethod = injection_methods.SelectedIndex,
-                ForwarderOptions = (FStorage_USB.Checked, toggleSwitch1.Checked),
+                ForwarderStorageDevice = forwarder_usb.Checked ? 1 : 0,
                 ContentOptions = contentOptions ?? null,
                 WADRegion = region_list.SelectedIndex,
                 LinkSaveDataTitle = autolink_save_data.Checked,
@@ -428,7 +430,8 @@ namespace FriishProduce
                 Platform.SMS or Platform.SMD => Properties.Settings.Default.default_injection_method_sega,
                 _ => 0
             };
-            injection_method.Enabled = injection_methods.Enabled = injection_methods.Items.Count > 1;
+            injection_methods.Enabled = injection_methods.Items.Count > 1;
+            groupBox4.Enabled = injection_methods.Enabled && !IsEmpty;
             released.Maximum = DateTime.Now.Year;
 
             if (Properties.Settings.Default.image_fit_aspect_ratio) image_fit.Checked = true; else image_stretch.Checked = true;
@@ -618,9 +621,10 @@ namespace FriishProduce
             }
 
             autolink_save_data.Checked = project == null ? Properties.Settings.Default.link_save_data : project.LinkSaveDataTitle;
-            FStorage_USB.Checked = project == null ? Options.FORWARDER.Default.root_storage_device.ToLower().Contains("usb") : project.ForwarderOptions.Item1;
-            FStorage_SD.Checked = !FStorage_USB.Checked;
-            toggleSwitch1.Checked = project == null ? Options.FORWARDER.Default.nand_loader.ToLower().Contains("vwii") : project.ForwarderOptions.Item2;
+
+            int forwarderStorageDevice = project == null ? Options.FORWARDER.Default.root_storage_device : project.ForwarderStorageDevice;
+            forwarder_sd.Checked  = forwarderStorageDevice == 0;
+            forwarder_usb.Checked = forwarderStorageDevice == 1;
 
             IsEmpty = project == null;
             IsModified = false;
@@ -800,7 +804,6 @@ namespace FriishProduce
         private void Value_Changed(object sender, EventArgs e)
         {
             if (sender == released || sender == players) resetImages(true);
-            if (sender == toggleSwitch1) toggleSwitchL1.Text = toggleSwitch1.Checked ? "vWii (Wii U)" : "Wii";
             refreshData();
         }
 
@@ -933,7 +936,7 @@ namespace FriishProduce
                 LoadImage();
             }
 
-            if (sender == FStorage_SD || sender == FStorage_USB)
+            if (sender == forwarder_sd || sender == forwarder_usb)
             {
                 refreshData();
             }
@@ -1408,7 +1411,7 @@ namespace FriishProduce
                 ROM = rom.FilePath,
                 ID = _tID,
                 Emulator = injection_methods.SelectedItem.ToString(),
-                Storage = FStorage_USB.Checked ? Forwarder.Storages.USB : Forwarder.Storages.SD,
+                Storage = forwarder_usb.Checked ? Forwarder.Storages.USB : Forwarder.Storages.SD,
                 Name = _channelTitles[1]
             };
 
@@ -1419,7 +1422,7 @@ namespace FriishProduce
             // Actually inject everything
             // *******
             f.CreateZIP(Path.Combine(Path.GetDirectoryName(path), Path.GetFileNameWithoutExtension(path) + $" ({f.Storage}).zip"));
-            outWad = f.CreateWAD(outWad, toggleSwitch1.Checked);
+            outWad = f.CreateWAD(outWad);
         }
         #endregion
 
@@ -1836,13 +1839,13 @@ namespace FriishProduce
         /// </summary>
         private void resetContentOptions()
         {
-            manual_type.Visible = manual_type_list.Visible = false;
-            forwarder_console.Visible = forwarder_root_device.Visible = false;
+            manual_type.Visible = false;
+            forwarder_root_device.Visible = false;
             contentOptionsForm = null;
 
             if (IsVC)
             {
-                manual_type.Visible = manual_type_list.Visible = true;
+                manual_type.Visible = true;
 
                 switch (targetPlatform)
                 {
@@ -1886,7 +1889,7 @@ namespace FriishProduce
 
             else
             {
-                forwarder_console.Visible = forwarder_root_device.Visible = true;
+                forwarder_root_device.Visible = true;
 
                 switch (targetPlatform)
                 {
@@ -1942,21 +1945,7 @@ namespace FriishProduce
             }
 
             #region -- Content options panel --
-            if (groupBox4.MaximumSize.IsEmpty) groupBox4.MaximumSize = groupBox4.Size;
-            if (targetPlatform == Platform.Flash)
-            {
-                panel2.Visible = false;
-                groupBox4.Size = groupBox4.MaximumSize - new Size(0, 45);
-                groupBox4.MinimumSize = groupBox4.Size;
-            }
-            else
-            {
-                groupBox4.Size = groupBox4.MaximumSize;
-                panel2.Visible = true;
-            }
-
             editContentOptions.Enabled = contentOptionsForm != null;
-            toggleSwitchL1.Visible = toggleSwitch1.Visible = FStorage_SD.Visible = FStorage_USB.Visible = forwarder_console.Visible;
             #endregion
 
             showSaveData = IsVC || targetPlatform == Platform.Flash;
@@ -2028,7 +2017,7 @@ namespace FriishProduce
             {
                 f.FormBorderStyle = FormBorderStyle.FixedToolWindow;
                 f.ShowInTaskbar = false;
-                f.Text = banner_preview.Text;
+                f.Text = Program.Lang.String("banner_preview", Name);
                 f.Icon = Icon;
 
                 var p = new PictureBox() { Name = "picture" };

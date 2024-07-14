@@ -25,25 +25,13 @@ namespace FriishProduce.Options {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("sd")]
-        public string root_storage_device {
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int root_storage_device {
             get {
-                return ((string)(this["root_storage_device"]));
+                return ((int)(this["root_storage_device"]));
             }
             set {
                 this["root_storage_device"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("wii")]
-        public string nand_loader {
-            get {
-                return ((string)(this["nand_loader"]));
-            }
-            set {
-                this["nand_loader"] = value;
             }
         }
         

@@ -2,11 +2,8 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="FriishProduce.Options" GeneratedClassName="FORWARDER">
   <Profiles />
   <Settings>
-    <Setting Name="root_storage_device" Type="System.String" Scope="User">
-      <Value Profile="(Default)">sd</Value>
-    </Setting>
-    <Setting Name="nand_loader" Type="System.String" Scope="User">
-      <Value Profile="(Default)">wii</Value>
+    <Setting Name="root_storage_device" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="show_bios_screen" Type="System.String" Scope="User">
       <Value Profile="(Default)">False</Value>

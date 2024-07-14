@@ -60,9 +60,6 @@ namespace FriishProduce
             this.vc_n64 = new System.Windows.Forms.Panel();
             this.leftSeparator = new System.Windows.Forms.Panel();
             this.forwarder = new System.Windows.Forms.Panel();
-            this.forwarder_console = new System.Windows.Forms.GroupBox();
-            this.FStorage_Wii = new System.Windows.Forms.RadioButton();
-            this.FStorage_vWii = new System.Windows.Forms.RadioButton();
             this.forwarder_root_device = new System.Windows.Forms.GroupBox();
             this.FStorage_SD = new System.Windows.Forms.RadioButton();
             this.FStorage_USB = new System.Windows.Forms.RadioButton();
@@ -139,7 +136,6 @@ namespace FriishProduce
             this.retrieve_gamedata_online.SuspendLayout();
             this.vc_n64.SuspendLayout();
             this.forwarder.SuspendLayout();
-            this.forwarder_console.SuspendLayout();
             this.forwarder_root_device.SuspendLayout();
             this.bios_settings.SuspendLayout();
             this.vc_nes.SuspendLayout();
@@ -409,34 +405,10 @@ namespace FriishProduce
             // 
             // forwarder
             // 
-            this.forwarder.Controls.Add(this.forwarder_console);
             this.forwarder.Controls.Add(this.forwarder_root_device);
             this.forwarder.Controls.Add(this.bios_settings);
             resources.ApplyResources(this.forwarder, "forwarder");
             this.forwarder.Name = "forwarder";
-            // 
-            // forwarder_console
-            // 
-            this.forwarder_console.Controls.Add(this.FStorage_Wii);
-            this.forwarder_console.Controls.Add(this.FStorage_vWii);
-            resources.ApplyResources(this.forwarder_console, "forwarder_console");
-            this.forwarder_console.Name = "forwarder_console";
-            this.forwarder_console.TabStop = false;
-            this.forwarder_console.Tag = "forwarder_console";
-            // 
-            // FStorage_Wii
-            // 
-            resources.ApplyResources(this.FStorage_Wii, "FStorage_Wii");
-            this.FStorage_Wii.Name = "FStorage_Wii";
-            this.FStorage_Wii.TabStop = true;
-            this.FStorage_Wii.UseVisualStyleBackColor = true;
-            // 
-            // FStorage_vWii
-            // 
-            resources.ApplyResources(this.FStorage_vWii, "FStorage_vWii");
-            this.FStorage_vWii.Name = "FStorage_vWii";
-            this.FStorage_vWii.TabStop = true;
-            this.FStorage_vWii.UseVisualStyleBackColor = true;
             // 
             // forwarder_root_device
             // 
@@ -987,7 +959,6 @@ namespace FriishProduce
             this.Controls.Add(this.bottomPanel2);
             this.Controls.Add(this.leftSeparator);
             this.Controls.Add(this.TreeView);
-            this.Controls.Add(this.adobe_flash);
             this.Controls.Add(this.forwarder);
             this.Controls.Add(this.vc_n64);
             this.Controls.Add(this.vc_pce);
@@ -997,6 +968,7 @@ namespace FriishProduce
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.vc_neo);
             this.Controls.Add(this.vc_nes);
+            this.Controls.Add(this.adobe_flash);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MaximizeBox = false;
@@ -1019,8 +991,6 @@ namespace FriishProduce
             this.retrieve_gamedata_online.PerformLayout();
             this.vc_n64.ResumeLayout(false);
             this.forwarder.ResumeLayout(false);
-            this.forwarder_console.ResumeLayout(false);
-            this.forwarder_console.PerformLayout();
             this.forwarder_root_device.ResumeLayout(false);
             this.forwarder_root_device.PerformLayout();
             this.bios_settings.ResumeLayout(false);
@@ -1081,7 +1051,6 @@ namespace FriishProduce
         private System.Windows.Forms.Panel leftSeparator;
         private System.Windows.Forms.CheckBox reset_all_dialogs;
         private System.Windows.Forms.Panel forwarder;
-        private System.Windows.Forms.GroupBox forwarder_console;
         private System.Windows.Forms.GroupBox forwarder_root_device;
         private System.Windows.Forms.RadioButton FStorage_SD;
         private System.Windows.Forms.RadioButton FStorage_USB;
@@ -1161,7 +1130,5 @@ namespace FriishProduce
         private System.Windows.Forms.ComboBox injection_methods_snes;
         private System.Windows.Forms.GroupBox default_injection_method_sega;
         private System.Windows.Forms.ComboBox injection_methods_sega;
-        private System.Windows.Forms.RadioButton FStorage_Wii;
-        private System.Windows.Forms.RadioButton FStorage_vWii;
     }
 }

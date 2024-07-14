@@ -16,7 +16,10 @@ namespace FriishProduce
 
 
         public int InjectionMethod { get; set; }
-        public (bool, bool) ForwarderOptions { get; set; }
+        /// <summary>
+        /// 0 = SD card, 1 = USB
+        /// </summary>
+        public int ForwarderStorageDevice { get; set; }
         public IDictionary<string, string> ContentOptions { get; set; }
         public int WADRegion { get; set; }
         public (int, int) Base { get; set; }

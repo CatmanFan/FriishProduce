@@ -118,7 +118,6 @@ namespace FriishProduce
             // -----------------------------
 
             Program.Lang.String(forwarder_root_device, "projectform");
-            Program.Lang.String(forwarder_console, "projectform");
             Program.Lang.String(bios_settings, "forwarder");
             Program.Lang.String(show_bios_screen, "forwarder");
 
@@ -185,11 +184,9 @@ namespace FriishProduce
             auto_retrieve_gamedata_online.Checked = Default.auto_retrieve_game_data;
             autolink_save_data.Checked = Default.link_save_data;
             reset_all_dialogs.Checked = false;
-            FStorage_SD.Checked = FORWARDER.Default.root_storage_device.ToLower() == "sd";
-            FStorage_vWii.Checked = FORWARDER.Default.nand_loader.ToLower() == "vwii";
             toggleSwitch2.Checked = bool.Parse(FORWARDER.Default.show_bios_screen);
-            FStorage_Wii.Checked = !FStorage_vWii.Checked;
-            FStorage_USB.Checked = !FStorage_SD.Checked;
+            FStorage_SD.Checked = FORWARDER.Default.root_storage_device == 0;
+            FStorage_USB.Checked = FORWARDER.Default.root_storage_device == 1;
             default_save_as_filename_tb.Text = Default.default_save_as_filename;
 
             #region use_custom_database
@@ -331,8 +328,7 @@ namespace FriishProduce
             Default.default_injection_method_sega = injection_methods_sega.SelectedIndex;
             Default.Save();
 
-            FORWARDER.Default.root_storage_device = FStorage_SD.Checked ? "SD" : "USB";
-            FORWARDER.Default.nand_loader = FStorage_vWii.Checked ? "vWii" : "Wii";
+            FORWARDER.Default.root_storage_device = FStorage_USB.Checked ? 1 : 0;
             FORWARDER.Default.show_bios_screen = toggleSwitch2.Checked.ToString();
 
             VC_NES.Default.palette = vc_nes_palettelist.SelectedIndex.ToString();

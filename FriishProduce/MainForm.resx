@@ -329,15 +329,6 @@
   <data name="toolStrip.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="toolbarNewProject.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="toolbarNewProject.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 22</value>
-  </data>
-  <data name="toolbarNewProject.Text" xml:space="preserve">
-    <value>new_project</value>
-  </data>
   <data name="toolbarOpenProject.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
@@ -389,10 +380,10 @@
   <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 25</value>
   </data>
-  <data name="ToolStrip_Settings.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+  <data name="toolbarSettings.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
-  <data name="ToolStrip_Settings.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="toolbarSettings.Size" type="System.Drawing.Size, System.Drawing">
     <value>23, 22</value>
   </data>
   <data name="toolbarExport.Enabled" type="System.Boolean, mscorlib">
@@ -2999,12 +2990,6 @@
   <data name="&gt;&gt;menu_about_app.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;toolbarNewProject.Name" xml:space="preserve">
-    <value>toolbarNewProject</value>
-  </data>
-  <data name="&gt;&gt;toolbarNewProject.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripDropDownButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;toolbarOpenProject.Name" xml:space="preserve">
     <value>toolbarOpenProject</value>
   </data>
@@ -3041,10 +3026,10 @@
   <data name="&gt;&gt;toolStripSeparator6.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ToolStrip_Settings.Name" xml:space="preserve">
-    <value>ToolStrip_Settings</value>
+  <data name="&gt;&gt;toolbarSettings.Name" xml:space="preserve">
+    <value>toolbarSettings</value>
   </data>
-  <data name="&gt;&gt;ToolStrip_Settings.Type" xml:space="preserve">
+  <data name="&gt;&gt;toolbarSettings.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolbarExport.Name" xml:space="preserve">
