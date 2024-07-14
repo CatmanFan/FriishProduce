@@ -52,6 +52,7 @@ namespace FriishProduce
             this.mainPanel = new System.Windows.Forms.Panel();
             this.Logo = new System.Windows.Forms.PictureBox();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
+            this.toolbarNewProject = new System.Windows.Forms.ToolStripDropDownButton();
             this.toolbarOpenProject = new System.Windows.Forms.ToolStripButton();
             this.toolbarSaveAs = new System.Windows.Forms.ToolStripButton();
             this.toolbarCloseProject = new System.Windows.Forms.ToolStripButton();
@@ -79,7 +80,6 @@ namespace FriishProduce
             // 
             this.menuStrip.AllowMerge = false;
             resources.ApplyResources(this.menuStrip, "menuStrip");
-            this.menuStrip.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.menuStrip.GripMargin = new System.Windows.Forms.Padding(2);
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menu_file,
@@ -230,7 +230,9 @@ namespace FriishProduce
             // toolStrip
             // 
             resources.ApplyResources(this.toolStrip, "toolStrip");
+            this.toolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolbarNewProject,
             this.toolbarOpenProject,
             this.toolbarSaveAs,
             this.toolbarCloseProject,
@@ -241,6 +243,13 @@ namespace FriishProduce
             this.toolbarExport});
             this.toolStrip.Name = "toolStrip";
             this.toolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            // 
+            // toolbarNewProject
+            // 
+            this.toolbarNewProject.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolbarNewProject.Image = global::FriishProduce.Properties.Resources.page_white;
+            resources.ApplyResources(this.toolbarNewProject, "toolbarNewProject");
+            this.toolbarNewProject.Name = "toolbarNewProject";
             // 
             // toolbarOpenProject
             // 
@@ -415,6 +424,7 @@ namespace FriishProduce
         private MdiTabControl.TabControl tabControl;
         internal System.Windows.Forms.ToolStripButton toolbarRetrieveGameData;
         internal System.Windows.Forms.ToolStripMenuItem menu_retrieve_gamedata_online;
+        private System.Windows.Forms.ToolStripDropDownButton toolbarNewProject;
     }
 }
 

@@ -118,17 +118,8 @@ namespace FriishProduce
 
             menu_new_project.DropDownItems.Clear();
             menu_new_project.DropDownItems.AddRange(PlatformsItems(true));
-
-            toolStrip.Items.Clear();
-            toolStrip.Items.AddRange(PlatformsItems(false));
-            toolStrip.Items.Add(toolbarOpenProject);
-            toolStrip.Items.Add(toolbarSaveAs);
-            toolStrip.Items.Add(toolbarCloseProject);
-            toolStrip.Items.Add(toolStripSeparator5);
-            toolStrip.Items.Add(toolbarRetrieveGameData);
-            toolStrip.Items.Add(toolStripSeparator6);
-            toolStrip.Items.Add(toolbarExport);
-            toolStrip.Items.Add(toolbarSettings);
+            toolbarNewProject.DropDownItems.Clear();
+            toolbarNewProject.DropDownItems.AddRange(PlatformsItems(true));
         }
 
         /// <summary>
@@ -146,6 +137,7 @@ namespace FriishProduce
             menu_about_app.Text = string.Format(Program.Lang.String("about_app"), Program.Lang.ApplicationTitle);
             Text = Program.Lang.ApplicationTitle;
 
+            toolbarNewProject.Text = menu_new_project.Text;
             toolbarOpenProject.Text = menu_open_project.Text;
             toolbarSaveAs.Text = menu_save_project_as.Text;
             toolbarExport.Text = menu_export.Text;

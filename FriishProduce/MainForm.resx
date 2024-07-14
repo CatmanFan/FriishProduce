@@ -128,121 +128,23 @@
     <value>False</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="menu_new_project.Size" type="System.Drawing.Size, System.Drawing">
-    <value>155, 22</value>
-  </data>
-  <data name="menu_new_project.Text" xml:space="preserve">
-    <value>new_project</value>
-  </data>
-  <data name="menu_open_project.Size" type="System.Drawing.Size, System.Drawing">
-    <value>155, 22</value>
-  </data>
-  <data name="menu_open_project.Text" xml:space="preserve">
-    <value>open_project</value>
-  </data>
-  <data name="menu_save_project_as.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="menu_save_project_as.Size" type="System.Drawing.Size, System.Drawing">
-    <value>155, 22</value>
-  </data>
-  <data name="menu_save_project_as.Text" xml:space="preserve">
-    <value>save_project_as</value>
-  </data>
-  <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 6</value>
-  </data>
-  <data name="menu_settings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>155, 22</value>
-  </data>
-  <data name="menu_settings.Text" xml:space="preserve">
-    <value>settings</value>
-  </data>
-  <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 6</value>
-  </data>
-  <data name="menu_exit.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAJySURBVDhPlZLdS1NhAIf9A4wCI+giuvIuCCKCCKOS
-        MdhGYzVyrmVLx5yxdHMbpmynlZNcolNT032cfas5dC2nTi3Eksy0dDqU1DKLPhDsHyj4dd4DdTp9QRfP
-        1TnP83tfeLMA/DcZ7xXnovvyl/k72s9//OFvLNOGNUbGaqIOoy1KzN5Wb/34aLfbQVEUrFYrampqUFVV
-        BYvFgsrKSmRoI5bpCqzfv4lPSzF8WLiLVLMCT5oKuYDNZkNXVxeL2+1m8Xg8LEu+CnxM9zHEsDndideP
-        WjDiOodJ5xkuQFZ/lb1eL8uCW4/3L3qwMenC+kMnQwOGG8/igUPMBciRf14los/nY5nr0OLdbIiVV0dr
-        GRwYapBhmMrnAiaTibdKRJqmWWZa1Xg7TWM1VYuVpA0rgxSSTikS1ce4gMFg4K0S0e/3s0w1KfHmcScj
-        WrEcN2N7qgiD9WLETIe5gF6v561+lwOBACaccryaaEOm34LNVAmQESPVcArd5Qe4gE6n+00kBINBjDkk
-        WBtvRLq3HOluLTaSF5GoEyJYlssFNBoNTyYiIRQKIUkJ8HKkHvPhUszRlzDnL0GiVgCvZj8XUKvVvFUi
-        EsLhMO5V5zH3v8GIxZhxK/HMU4T49Xx0qvdyAZVKxVslIiESiaDPfASZuI2Rz2O6XY6nHQoM2E+iTZXD
-        BRQKBW+ViIRoNIpoxUEsxq5iiSHdY8LzQBkGrp1AS+HOrSzy+oxGI+RyOWQyGaRSKSQSCUQiEYRCIQQC
-        AXylueg1H0LcmochhxBjt06jnzoOV0E2d4J/4SnZt4e579H2C7uLW5W76psVOyKtqpyvroLs7W92sb2l
-        pD6TGAAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="menu_exit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>155, 22</value>
-  </data>
-  <data name="menu_exit.Text" xml:space="preserve">
-    <value>exit</value>
+  <data name="menuStrip.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
   </data>
   <data name="menu_file.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 20</value>
+    <value>33, 20</value>
   </data>
   <data name="menu_file.Text" xml:space="preserve">
     <value>file</value>
   </data>
-  <data name="menu_retrieve_gamedata_online.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="menu_retrieve_gamedata_online.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 22</value>
-  </data>
-  <data name="menu_retrieve_gamedata_online.Text" xml:space="preserve">
-    <value>retrieve_gamedata_online</value>
-  </data>
-  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>206, 6</value>
-  </data>
-  <data name="menu_export.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="menu_export.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 22</value>
-  </data>
-  <data name="menu_export.Text" xml:space="preserve">
-    <value>export</value>
-  </data>
-  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>206, 6</value>
-  </data>
-  <data name="toolStripSeparator2.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="menu_close_project.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="menu_close_project.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 22</value>
-  </data>
-  <data name="menu_close_project.Text" xml:space="preserve">
-    <value>close_project</value>
-  </data>
-  <data name="menu_close_project.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="menu_project.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 20</value>
+    <value>53, 20</value>
   </data>
   <data name="menu_project.Text" xml:space="preserve">
     <value>project</value>
   </data>
-  <data name="menu_about_app.Size" type="System.Drawing.Size, System.Drawing">
-    <value>130, 22</value>
-  </data>
-  <data name="menu_about_app.Text" xml:space="preserve">
-    <value>about_app</value>
-  </data>
   <data name="menu_help.Size" type="System.Drawing.Size, System.Drawing">
-    <value>42, 20</value>
+    <value>39, 20</value>
   </data>
   <data name="menu_help.Text" xml:space="preserve">
     <value>help</value>
@@ -272,23 +174,106 @@
   <data name="&gt;&gt;menuStrip.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="Logo.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="menu_new_project.Size" type="System.Drawing.Size, System.Drawing">
+    <value>154, 22</value>
   </data>
-  <data name="Logo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+  <data name="menu_new_project.Text" xml:space="preserve">
+    <value>new_project</value>
   </data>
-  <data name="Logo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>155, 135</value>
+  <data name="menu_open_project.Size" type="System.Drawing.Size, System.Drawing">
+    <value>154, 22</value>
   </data>
-  <data name="Logo.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
-    <value>Zoom</value>
+  <data name="menu_open_project.Text" xml:space="preserve">
+    <value>open_project</value>
   </data>
-  <data name="Logo.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="Logo.Visible" type="System.Boolean, mscorlib">
+  <data name="menu_save_project_as.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
+  </data>
+  <data name="menu_save_project_as.Size" type="System.Drawing.Size, System.Drawing">
+    <value>154, 22</value>
+  </data>
+  <data name="menu_save_project_as.Text" xml:space="preserve">
+    <value>save_project_as</value>
+  </data>
+  <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>151, 6</value>
+  </data>
+  <data name="menu_settings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>154, 22</value>
+  </data>
+  <data name="menu_settings.Text" xml:space="preserve">
+    <value>settings</value>
+  </data>
+  <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>151, 6</value>
+  </data>
+  <data name="menu_exit.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAJySURBVDhPlZLdS1NhAIf9A4wCI+giuvIuCCKCCKOS
+        MdhGYzVyrmVLx5yxdHMbpmynlZNcolNT032cfas5dC2nTi3Eksy0dDqU1DKLPhDsHyj4dd4DdTp9QRfP
+        1TnP83tfeLMA/DcZ7xXnovvyl/k72s9//OFvLNOGNUbGaqIOoy1KzN5Wb/34aLfbQVEUrFYrampqUFVV
+        BYvFgsrKSmRoI5bpCqzfv4lPSzF8WLiLVLMCT5oKuYDNZkNXVxeL2+1m8Xg8LEu+CnxM9zHEsDndideP
+        WjDiOodJ5xkuQFZ/lb1eL8uCW4/3L3qwMenC+kMnQwOGG8/igUPMBciRf14los/nY5nr0OLdbIiVV0dr
+        GRwYapBhmMrnAiaTibdKRJqmWWZa1Xg7TWM1VYuVpA0rgxSSTikS1ce4gMFg4K0S0e/3s0w1KfHmcScj
+        WrEcN2N7qgiD9WLETIe5gF6v561+lwOBACaccryaaEOm34LNVAmQESPVcArd5Qe4gE6n+00kBINBjDkk
+        WBtvRLq3HOluLTaSF5GoEyJYlssFNBoNTyYiIRQKIUkJ8HKkHvPhUszRlzDnL0GiVgCvZj8XUKvVvFUi
+        EsLhMO5V5zH3v8GIxZhxK/HMU4T49Xx0qvdyAZVKxVslIiESiaDPfASZuI2Rz2O6XY6nHQoM2E+iTZXD
+        BRQKBW+ViIRoNIpoxUEsxq5iiSHdY8LzQBkGrp1AS+HOrSzy+oxGI+RyOWQyGaRSKSQSCUQiEYRCIQQC
+        AXylueg1H0LcmochhxBjt06jnzoOV0E2d4J/4SnZt4e579H2C7uLW5W76psVOyKtqpyvroLs7W92sb2l
+        pD6TGAAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="menu_exit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>154, 22</value>
+  </data>
+  <data name="menu_exit.Text" xml:space="preserve">
+    <value>exit</value>
+  </data>
+  <data name="menu_retrieve_gamedata_online.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="menu_retrieve_gamedata_online.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 22</value>
+  </data>
+  <data name="menu_retrieve_gamedata_online.Text" xml:space="preserve">
+    <value>retrieve_gamedata_online</value>
+  </data>
+  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>197, 6</value>
+  </data>
+  <data name="menu_export.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="menu_export.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 22</value>
+  </data>
+  <data name="menu_export.Text" xml:space="preserve">
+    <value>export</value>
+  </data>
+  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>197, 6</value>
+  </data>
+  <data name="toolStripSeparator2.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="menu_close_project.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="menu_close_project.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 22</value>
+  </data>
+  <data name="menu_close_project.Text" xml:space="preserve">
+    <value>close_project</value>
+  </data>
+  <data name="menu_close_project.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="menu_about_app.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 22</value>
+  </data>
+  <data name="menu_about_app.Text" xml:space="preserve">
+    <value>about_app</value>
   </data>
   <data name="&gt;&gt;Logo.Name" xml:space="preserve">
     <value>Logo</value>
@@ -323,11 +308,74 @@
   <data name="&gt;&gt;mainPanel.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="Logo.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="Logo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="Logo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>155, 135</value>
+  </data>
+  <data name="Logo.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>Zoom</value>
+  </data>
+  <data name="Logo.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="Logo.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;Logo.Name" xml:space="preserve">
+    <value>Logo</value>
+  </data>
+  <data name="&gt;&gt;Logo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Logo.Parent" xml:space="preserve">
+    <value>mainPanel</value>
+  </data>
+  <data name="&gt;&gt;Logo.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <metadata name="toolStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>410, 17</value>
   </metadata>
   <data name="toolStrip.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
+  </data>
+  <data name="toolStrip.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8pt</value>
+  </data>
+  <data name="toolStrip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 20</value>
+  </data>
+  <data name="toolStrip.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="toolStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>484, 25</value>
+  </data>
+  <data name="toolStrip.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;toolStrip.Name" xml:space="preserve">
+    <value>toolStrip</value>
+  </data>
+  <data name="&gt;&gt;toolStrip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStrip.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;toolStrip.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="toolbarNewProject.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="toolbarNewProject.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 22</value>
   </data>
   <data name="toolbarOpenProject.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
@@ -397,30 +445,6 @@
   </data>
   <data name="toolbarExport.Text" xml:space="preserve">
     <value>export</value>
-  </data>
-  <data name="toolStrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 20</value>
-  </data>
-  <data name="toolStrip.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="toolStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>484, 25</value>
-  </data>
-  <data name="toolStrip.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;toolStrip.Name" xml:space="preserve">
-    <value>toolStrip</value>
-  </data>
-  <data name="&gt;&gt;toolStrip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStrip.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;toolStrip.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <metadata name="SaveProject.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>130, 17</value>
@@ -2989,6 +3013,12 @@
   </data>
   <data name="&gt;&gt;menu_about_app.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolbarNewProject.Name" xml:space="preserve">
+    <value>toolbarNewProject</value>
+  </data>
+  <data name="&gt;&gt;toolbarNewProject.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripDropDownButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolbarOpenProject.Name" xml:space="preserve">
     <value>toolbarOpenProject</value>
