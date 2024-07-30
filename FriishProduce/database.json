@@ -248,7 +248,7 @@
             "region": [0, 2, 4],
             "emu_ver": [2, 3, 3],
             "titles": ["ファンタシースター", "Pulseman"]
-        }
+        },
 		
         {
             "id": "00010001-4d4255__",
@@ -264,7 +264,7 @@
             "emu_ver": [2, 2, 2],
             "titles": ["ソニック･ザ･ヘッジホッグ３", "Sonic the Hedgehog 3"],
             "wad_titles": ["Sonic The Hedgehog 3"]
-        },
+        }
         
     ],
 
