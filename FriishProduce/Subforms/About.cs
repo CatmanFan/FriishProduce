@@ -13,8 +13,7 @@ namespace FriishProduce
             labelProductName.Text = AssemblyProduct;
             labelVersion.Text = Updater.GetCurrentVersion();
             labelCopyright.Text = AssemblyCopyright;
-            labelCompanyName.Text = AssemblyCompany;
-            textBoxDescription.Text = AssemblyDescription + Environment.NewLine + Environment.NewLine + textBoxDescription.Text;
+            labelDescription.Text = AssemblyDescription;
             labelTranslation.Text = string.Format("Current language: {0} ({1})", System.Globalization.CultureInfo.CurrentUICulture.EnglishName, Program.Lang.Author);
             b_ok.Text = Program.Lang.String("b_close");
         }

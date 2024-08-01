@@ -46,9 +46,9 @@ namespace FriishProduce
                 _isModified = value;
                 if (value) _isMint = false;
                 Program.MainForm.toolbarSaveAs.Enabled = value;
-                Program.MainForm.menu_save_project_as.Enabled = value;
+                Program.MainForm.menuItem6.Enabled = value;
                 Program.MainForm.toolbarExport.Enabled = IsExportable;
-                Program.MainForm.menu_export.Enabled = IsExportable;
+                Program.MainForm.menuItem11.Enabled = IsExportable;
             }
         }
 
@@ -251,7 +251,7 @@ namespace FriishProduce
             if (DesignMode) return;
             // ----------------------------
 
-            bool isMint = _isMint || !Program.MainForm.menu_save_project_as.Enabled;
+            bool isMint = _isMint || !Program.MainForm.menuItem6.Enabled;
 
             #region Localization
             Program.Lang.Control(this, "projectform");
@@ -598,6 +598,7 @@ namespace FriishProduce
                     (baseRegionList.Items[project.Base.Item2] as ToolStripMenuItem).Checked = true;
                 }
 
+                patch = File.Exists(project.Patch) ? project.Patch : null;
                 setFilesText();
 
                 channel_title.Text = project.ChannelTitles[1];
@@ -611,9 +612,6 @@ namespace FriishProduce
                 injection_methods.SelectedIndex = project.InjectionMethod;
                 imageintpl.SelectedIndex = project.ImageOptions.Item1;
                 image_fit.Checked = project.ImageOptions.Item2;
-
-                patch = File.Exists(project.Patch) ? project.Patch : null;
-                import_patch.Checked = !string.IsNullOrWhiteSpace(project.Patch);
 
                 if (contentOptionsForm != null) contentOptionsForm.Options = project.ContentOptions;
                 LoadImage();
@@ -723,11 +721,13 @@ namespace FriishProduce
             int maxLength = 75;
 
             rom_filename.Text = !string.IsNullOrWhiteSpace(rom?.FilePath) ? Path.GetFileName(rom.FilePath) : Program.Lang.String("none");
+            patch_filename.Text = !string.IsNullOrWhiteSpace(patch) ? Path.GetFileName(patch) : Program.Lang.String("none");
             if (rom_filename.Text.Length > maxLength) rom_filename.Text = rom_filename.Text.Substring(0, maxLength - 3) + "...";
+            if (patch_filename.Text.Length > maxLength) patch_filename.Text = patch_filename.Text.Substring(0, maxLength - 3) + "...";
 
             rom_filename.Enabled = !string.IsNullOrWhiteSpace(rom?.FilePath);
+            patch_filename.Enabled = !string.IsNullOrWhiteSpace(patch);
 
-            hasPatch.Image = !string.IsNullOrWhiteSpace(patch) ? Properties.Resources.yes : Properties.Resources.no;
             hasImage.Image = (img?.Source != null) ? Properties.Resources.yes : Properties.Resources.no;
         }
 
@@ -739,7 +739,7 @@ namespace FriishProduce
 
         public string GetName()
         {
-            string FILENAME = import_patch.Checked ? Path.GetFileNameWithoutExtension(patch) : Path.GetFileNameWithoutExtension(rom?.FilePath);
+            string FILENAME = File.Exists(patch) ? Path.GetFileNameWithoutExtension(patch) : Path.GetFileNameWithoutExtension(rom?.FilePath);
             string CHANNELNAME = channel_title.Text;
             string FULLNAME = System.Text.RegularExpressions.Regex.Replace(_bannerTitle.Replace(": ", Environment.NewLine).Replace(" - ", Environment.NewLine), @"\((.*?)\)", "").Replace("\r\n", "\n").Replace("\n", " - ");
             string TITLEID = title_id_upper.Text.ToUpper();
@@ -1219,10 +1219,10 @@ namespace FriishProduce
 
             randomTID();
             patch = null;
-            import_patch.Checked = false;
 
-            Program.MainForm.toolbarRetrieveGameData.Enabled = Program.MainForm.menu_retrieve_gamedata_online.Enabled = ToolbarButtons[0];
+            Program.MainForm.toolbarRetrieveGameData.Enabled = Program.MainForm.menuItem10.Enabled = ToolbarButtons[0];
             if (rom != null && LoadGameData && ToolbarButtons[0]) this.LoadGameData();
+            setFilesText();
         }
 
         public async void LoadGameData()
@@ -1288,7 +1288,7 @@ namespace FriishProduce
                             if (entry.GetUpperID(i) == baseID.Text.ToUpper()) outWad = entry.GetWAD(i);
                 if (outWad == null || outWad?.NumOfContents <= 1) throw new Exception(Program.Lang.Msg(8, true));
 
-                if (import_patch.Checked) rom.Patch(patch);
+                if (File.Exists(patch)) rom.Patch(patch);
 
                 switch (targetPlatform)
                 {
@@ -1969,27 +1969,13 @@ namespace FriishProduce
 
         private void import_patch_CheckedChanged(object sender, EventArgs e)
         {
-            if (import_patch.Checked && patch == null)
+            if (browsePatch.ShowDialog() == DialogResult.OK)
             {
-                if (browsePatch.ShowDialog() == DialogResult.OK)
-                {
-                    patch = browsePatch.FileName;
-                    refreshData();
-                }
-
-                else
-                {
-                    if (!import_patch.Checked && patch != null)
-                    {
-                        patch = null;
-                        refreshData();
-                    }
-
-                    import_patch.Checked = false;
-                }
+                patch = browsePatch.FileName;
+                refreshData();
             }
 
-            else if (!import_patch.Checked && patch != null)
+            else if (patch != null)
             {
                 patch = null;
                 refreshData();

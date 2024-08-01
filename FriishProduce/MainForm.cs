@@ -29,97 +29,44 @@ namespace FriishProduce
             { Platform.RPGM, new Icon(Properties.Resources.rpg2003, 16, 16).ToBitmap() }
         };
 
-        private ToolStripItem[] PlatformsItems(bool isList)
+        private dynamic platformsItemList()
         {
-            var list = new ToolStripItem[]
+            var list = new MenuItem[]
                 {
-                    /*new ToolStripMenuItem(
-                        Language.Get("Group0", "Platforms"), null,
-                        new ToolStripItem[]
-                        {*/
-                            isList ? new ToolStripMenuItem(null, Icons[Platform.NES], addProject, Platform.NES.ToString())
-                                   : new ToolStripButton  (null, Icons[Platform.NES], addProject, Platform.NES.ToString() + "0"),
-
-                            isList ? new ToolStripMenuItem(null, Icons[Platform.SNES], addProject, Platform.SNES.ToString())
-                                   : new ToolStripButton  (null, Icons[Platform.SNES], addProject, Platform.SNES.ToString() + "0"),
-
-                            isList ? new ToolStripMenuItem(null, Icons[Platform.N64], addProject, Platform.N64.ToString())
-                                   : new ToolStripButton  (null, Icons[Platform.N64], addProject, Platform.N64.ToString() + "0"),
-
-                            new ToolStripSeparator(),
-                        /*}),
-
-                    new ToolStripMenuItem(
-                        Language.Get("Group1", "Platforms"), null,
-                        new ToolStripItem[]
-                        {*/
-                            isList ? new ToolStripMenuItem(null, Icons[Platform.SMS], addProject, Platform.SMS.ToString())
-                                   : new ToolStripButton  (null, Icons[Platform.SMS], addProject, Platform.SMS.ToString() + "0"),
-
-                            isList ? new ToolStripMenuItem(null, Icons[Platform.SMD], addProject, Platform.SMD.ToString())
-                                   : new ToolStripButton  (null, Icons[Platform.SMD], addProject, Platform.SMD.ToString() + "0"),
-
-                            new ToolStripSeparator(),
-                        /*}),
-
-                    new ToolStripMenuItem(
-                        Language.Get("Other"), null,
-                        new ToolStripItem[]
-                        {*/
-                            isList ? new ToolStripMenuItem(null, Icons[Platform.PCE], addProject, Platform.PCE.ToString())
-                                   : new ToolStripButton  (null, Icons[Platform.PCE], addProject, Platform.PCE.ToString() + "0"),
-
-                            isList ? new ToolStripMenuItem(null, Icons[Platform.NEO], addProject, Platform.NEO.ToString())
-                                   : new ToolStripButton  (null, Icons[Platform.NEO], addProject, Platform.NEO.ToString() + "0"),
-
-                            isList ? new ToolStripMenuItem(null, Icons[Platform.MSX], addProject, Platform.MSX.ToString())
-                                   : new ToolStripButton  (null, Icons[Platform.MSX], addProject, Platform.MSX.ToString() + "0"),
-
-                            new ToolStripSeparator(),
-
-                            isList ? new ToolStripMenuItem(null, Icons[Platform.PSX], addProject, Platform.PSX.ToString())
-                                   : new ToolStripButton  (null, Icons[Platform.PSX], addProject, Platform.PSX.ToString() + "0"),
-
-                            new ToolStripSeparator(),
-
-                            isList ? new ToolStripMenuItem(null, Icons[Platform.Flash], addProject, Platform.Flash.ToString())
-                                   : new ToolStripButton  (null, Icons[Platform.Flash], addProject, Platform.Flash.ToString() + "0"),
-
-                            isList ? new ToolStripMenuItem(null, Icons[Platform.RPGM], addProject, Platform.RPGM.ToString())
-                                   : new ToolStripButton  (null, Icons[Platform.RPGM], addProject, Platform.RPGM.ToString() + "0")
-                        //})
+                    new MenuItem(Platform.NES.ToString(), addProject),
+                    new MenuItem(Platform.SNES.ToString(), addProject),
+                    new MenuItem(Platform.N64.ToString(), addProject),
+                    new MenuItem("-"),
+                    new MenuItem(Platform.SMS.ToString(), addProject),
+                    new MenuItem(Platform.SMD.ToString(), addProject),
+                    new MenuItem("-"),
+                    new MenuItem(Platform.PCE.ToString(), addProject),
+                    new MenuItem(Platform.NEO.ToString(), addProject),
+                    new MenuItem(Platform.MSX.ToString(), addProject),
+                    new MenuItem(Platform.PSX.ToString(), addProject),
+                    new MenuItem(Platform.RPGM.ToString(), addProject),
+                    new MenuItem(Platform.Flash.ToString(), addProject),
                 };
 
-            /* foreach (ToolStripMenuItem section in Consoles.OfType<ToolStripMenuItem>())
-                foreach (ToolStripMenuItem item in section.DropDownItems.OfType<ToolStripMenuItem>())
-                    item.Text = string.Format(Language.Get("ProjectType"), Language.Get(item.Name, "Platforms")); */
-
-            if (isList)
-                foreach (ToolStripMenuItem item in list.OfType<ToolStripMenuItem>())
-                {
+            foreach (MenuItem item in list)
+            {
+                if (item.Text != "-")
+                    item.Name = item.Text;
+                if (!string.IsNullOrWhiteSpace(item.Name))
                     item.Text = string.Format(Program.Lang.String("project_type", Name), Program.Lang.Console((Platform)Enum.Parse(typeof(Platform), item.Name)));
-                    item.DisplayStyle = ToolStripItemDisplayStyle.Text;
-                }
-            else
-                foreach (ToolStripButton item in list.OfType<ToolStripButton>())
-                {
-                    item.Text = string.Format(Program.Lang.String("project_type", Name), Program.Lang.Console((Platform)Enum.Parse(typeof(Platform), item.Name.Substring(0, item.Name.Length - 1))));
-                    item.DisplayStyle = ToolStripItemDisplayStyle.Image;
-                }
+            }
 
             return list;
         }
 
         private void AutoSetStrip()
         {
-            foreach (ToolStripMenuItem section in menuStrip.Items.OfType<ToolStripMenuItem>())
-                foreach (ToolStripItem item in section.DropDownItems.OfType<ToolStripItem>())
+            foreach (MenuItem section in mainMenu1.MenuItems)
+                foreach (MenuItem item in section.MenuItems)
                     if (Program.Lang.StringCheck(item.Tag?.ToString().ToLower(), Name)) item.Text = Program.Lang.String(item.Tag?.ToString().ToLower(), Name);
 
-            menu_new_project.DropDownItems.Clear();
-            menu_new_project.DropDownItems.AddRange(PlatformsItems(true));
-            toolbarNewProject.DropDownItems.Clear();
-            toolbarNewProject.DropDownItems.AddRange(PlatformsItems(true));
+            new_project.MenuItems.Clear();
+            new_project.MenuItems.AddRange(platformsItemList());
         }
 
         /// <summary>
@@ -131,21 +78,21 @@ namespace FriishProduce
 
             #region Localization
             Program.Lang.Control(this);
-            menu_file.Text = Program.Lang.String("file", Name);
-            menu_project.Text = Program.Lang.String("project", Name);
-            menu_help.Text = Program.Lang.String("help", Name);
-            menu_about_app.Text = string.Format(Program.Lang.String("about_app"), Program.Lang.ApplicationTitle);
+            menuItem1.Text = Program.Lang.String(menuItem1.Tag.ToString(), Name);
+            menuItem2.Text = Program.Lang.String(menuItem2.Tag.ToString(), Name);
+            menuItem3.Text = Program.Lang.String(menuItem3.Tag.ToString(), Name);
+            menuItem15.Text = string.Format(Program.Lang.String("about_app"), Program.Lang.ApplicationTitle);
             Text = Program.Lang.ApplicationTitle;
 
-            toolbarNewProject.Text = menu_new_project.Text;
-            toolbarOpenProject.Text = menu_open_project.Text;
-            toolbarSaveAs.Text = menu_save_project_as.Text;
-            toolbarExport.Text = menu_export.Text;
-            toolbarCloseProject.Text = menu_close_project.Text;
-            toolbarRetrieveGameData.Text = menu_retrieve_gamedata_online.Text;
-            toolbarSettings.Text = menu_settings.Text;
-            SaveProject.Title = menu_save_project_as.Text.Replace("&", "");
-            SaveWAD.Title = menu_export.Text.Replace("&", "");
+            toolbarOpenProject.Text = menuItem5.Text;
+            toolbarSaveAs.Text = menuItem6.Text;
+            toolbarExport.Text = menuItem11.Text;
+            toolbarCloseProject.Text = menuItem12.Text;
+            toolbarRetrieveGameData.Text = menuItem10.Text;
+            toolbarSettings.Text = menuItem9.Text;
+
+            SaveProject.Title = menuItem6.Text.Replace("&", "");
+            SaveWAD.Title = menuItem11.Text.Replace("&", "");
 
             try
             {
@@ -182,13 +129,13 @@ namespace FriishProduce
             mainPanel.Size = tabControl.Size = new Size(Width - w, Height - h);
             #endregion
 
-            mainPanel.BackgroundImage = new Bitmap(1, mainPanel.Height);
+            /* mainPanel.BackgroundImage = new Bitmap(1, mainPanel.Height);
             using (Graphics g = Graphics.FromImage(mainPanel.BackgroundImage))
             using (LinearGradientBrush b = new(new Point(0, 0), new Point(0, 40), tabControl.BackHighColor, tabControl.BackLowColor))
             {
                 g.Clear(tabControl.BackLowColor);
                 g.FillRectangle(b, new RectangleF(0, 0, 1, b.Rectangle.Height));
-            }
+            } */
 
             if (mainPanel.BackgroundImage != null) tabControl.BackLowColor = tabControl.BackHighColor = tabControl.BackColor = Color.Transparent;
             tabControl.BackgroundImage = mainPanel.BackgroundImage;
@@ -227,9 +174,9 @@ namespace FriishProduce
             // ********
             if (!hasTabs)
             {
-                menu_retrieve_gamedata_online.Enabled = false;
-                menu_save_project_as.Enabled = false;
-                menu_export.Enabled = false;
+                menuItem10.Enabled = false;
+                menuItem6.Enabled = false;
+                menuItem11.Enabled = false;
 
                 tabControl.Visible = false;
                 mainPanel.Visible = true;
@@ -237,25 +184,25 @@ namespace FriishProduce
 
             else
             {
-                menu_retrieve_gamedata_online.Enabled = (tabControl.SelectedForm as ProjectForm).ToolbarButtons[0];
-                menu_export.Enabled = (tabControl.SelectedForm as ProjectForm).IsExportable;
+                menuItem10.Enabled = (tabControl.SelectedForm as ProjectForm).ToolbarButtons[0];
+                menuItem11.Enabled = (tabControl.SelectedForm as ProjectForm).IsExportable;
             }
 
-            menu_close_project.Enabled = hasTabs;
+            menuItem12.Enabled = hasTabs;
 
             // Context menu
             // ********
             if (tabControl.TabPages.Count >= 1)
                 if (sender == tabControl.TabPages[0])
                 {
-                    menu_retrieve_gamedata_online.Enabled = (tabControl.SelectedForm as ProjectForm).ToolbarButtons[0];
-                    menu_save_project_as.Enabled = (tabControl.SelectedForm as ProjectForm).Tag?.ToString().ToLower() == "dirty";
+                    menuItem10.Enabled = (tabControl.SelectedForm as ProjectForm).ToolbarButtons[0];
+                    menuItem6.Enabled = (tabControl.SelectedForm as ProjectForm).Tag?.ToString().ToLower() == "dirty";
                 }
 
-            toolbarSaveAs.Enabled = menu_save_project_as.Enabled;
-            toolbarCloseProject.Enabled = menu_close_project.Enabled;
-            toolbarRetrieveGameData.Enabled = menu_retrieve_gamedata_online.Enabled;
-            toolbarExport.Enabled = menu_export.Enabled;
+            toolbarSaveAs.Enabled = menuItem6.Enabled;
+            toolbarCloseProject.Enabled = menuItem12.Enabled;
+            toolbarRetrieveGameData.Enabled = menuItem10.Enabled;
+            toolbarExport.Enabled = menuItem11.Enabled;
         }
 
         private void MainForm_Closing(object sender, FormClosingEventArgs e)
@@ -285,8 +232,7 @@ namespace FriishProduce
         /// </summary>
         private void addProject(object sender, EventArgs e)
         {
-            var source = sender as ToolStripItem;
-            string name = source.Name.ToString();
+            string name = sender.GetType() == typeof(MenuItem) ? (sender as MenuItem).Name.ToString() : (sender as ToolStripItem).Name.ToString();
 
             try
             {
@@ -326,16 +272,17 @@ namespace FriishProduce
             }
         }
 
-        private void UseLibRetro_Click(object sender, EventArgs e) => (tabControl.SelectedForm as ProjectForm).LoadGameData();
+        private void UseLibRetro_Click(object sender, EventArgs e) => (tabControl.SelectedForm as ProjectForm)?.LoadGameData();
 
         private void ExportWAD_Click(object sender, EventArgs e)
         {
             var currentForm = tabControl.SelectedForm as ProjectForm;
+            if (currentForm == null) return;
 
-            SaveWAD.FileName = currentForm.GetName();
-            SaveWAD.Filter = !currentForm.IsForwarder ? Program.Lang.String("filter.wad") : Program.Lang.String("filter.zip");
+            SaveWAD.FileName = currentForm?.GetName();
+            SaveWAD.Filter = currentForm.IsForwarder ? Program.Lang.String("filter.zip") : Program.Lang.String("filter.wad");
 
-            if (SaveWAD.ShowDialog() == DialogResult.OK) currentForm.SaveToWAD(SaveWAD.FileName);
+            if (SaveWAD.ShowDialog() == DialogResult.OK) currentForm?.SaveToWAD(SaveWAD.FileName);
         }
 
         private void OpenImage_Click(object sender, EventArgs e)
@@ -366,7 +313,7 @@ namespace FriishProduce
             if (index != -1) tabControl.TabPages[index].Select();
         }
 
-        private void CloseTab_Click(object sender, EventArgs e) { var tab = tabControl.SelectedForm as Form; tab.Close(); }
+        private void CloseTab_Click(object sender, EventArgs e) { var tab = tabControl.SelectedForm as Form; tab?.Close(); }
 
         private void About_Click(object sender, EventArgs e) { using var about = new About() { Font = Font }; about.ShowDialog(); }
 
@@ -378,7 +325,7 @@ namespace FriishProduce
         {
             try
             {
-                if (tabControl.SelectedForm is not ProjectForm currentForm) throw new Exception("No project found!");
+                if (tabControl.SelectedForm is not ProjectForm currentForm) return false;
 
                 SaveProject.FileName = currentForm.Text;
                 foreach (var item in new char[] { '\\', '/', ':', '*', '?', '"', '<', '>', '|' })
