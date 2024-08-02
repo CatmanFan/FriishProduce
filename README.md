@@ -43,9 +43,10 @@ See **[here](https://github.com/CatmanFan/FriishProduce/wiki/FriishProduce-v1.0)
 
 ## To-Do
 [ ] Make project forms inheritable and categorize by console/platform
-[ ] Place ROM and image open dialogs in Project form instead of handling from Main one
-[ ] Use *.bin/*.cue format for disc games by default
+[X] Place ROM and image open dialogs in Project form instead of handling from Main one
+[X] Use *.bin/*.cue format for disc games by default
 [ ] Restructuring, trimming features and cleaning code
+[ ] Update language strings
 
 ### Other platforms
 * Commodore 64 (needs [Custom Frodo](https://gbatemp.net/threads/custom-frodo-for-c64-vc-injection.102356/))

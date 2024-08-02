@@ -121,7 +121,7 @@ namespace FriishProduce.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("[PLATFORM] CHANNELNAME - TITLEID")]
+        [global::System.Configuration.DefaultSettingValueAttribute("FULLNAME")]
         public string default_save_as_filename {
             get {
                 return ((string)(this["default_save_as_filename"]));
@@ -188,6 +188,18 @@ namespace FriishProduce.Properties {
             }
             set {
                 this["default_injection_method_sega"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("[PLATFORM] FULLNAME - TITLEID")]
+        public string default_export_filename {
+            get {
+                return ((string)(this["default_export_filename"]));
+            }
+            set {
+                this["default_export_filename"] = value;
             }
         }
     }

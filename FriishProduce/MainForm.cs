@@ -274,17 +274,6 @@ namespace FriishProduce
 
         private void UseLibRetro_Click(object sender, EventArgs e) => (tabControl.SelectedForm as ProjectForm)?.LoadGameData();
 
-        private void ExportWAD_Click(object sender, EventArgs e)
-        {
-            var currentForm = tabControl.SelectedForm as ProjectForm;
-            if (currentForm == null) return;
-
-            SaveWAD.FileName = currentForm?.GetName();
-            SaveWAD.Filter = currentForm.IsForwarder ? Program.Lang.String("filter.zip") : Program.Lang.String("filter.wad");
-
-            if (SaveWAD.ShowDialog() == DialogResult.OK) currentForm?.SaveToWAD(SaveWAD.FileName);
-        }
-
         private void OpenImage_Click(object sender, EventArgs e)
         {
             if (tabControl.SelectedForm != null)
@@ -319,6 +308,17 @@ namespace FriishProduce
 
         private void MenuItem_Exit_Click(object sender, EventArgs e) => Application.Exit();
 
+        private void ExportWAD_Click(object sender, EventArgs e)
+        {
+            var currentForm = tabControl.SelectedForm as ProjectForm;
+            if (currentForm == null) return;
+
+            SaveWAD.FileName = currentForm?.GetName(true);
+            SaveWAD.Filter = currentForm.IsForwarder ? Program.Lang.String("filter.zip") : Program.Lang.String("filter.wad");
+
+            if (SaveWAD.ShowDialog() == DialogResult.OK) currentForm?.SaveToWAD(SaveWAD.FileName);
+        }
+
         private void SaveAs_Click(object sender, EventArgs e) => SaveAs_Trigger();
 
         public bool SaveAs_Trigger()
@@ -327,7 +327,7 @@ namespace FriishProduce
             {
                 if (tabControl.SelectedForm is not ProjectForm currentForm) return false;
 
-                SaveProject.FileName = currentForm.Text;
+                SaveProject.FileName = currentForm?.GetName(false) ?? currentForm.Text;
                 foreach (var item in new char[] { '\\', '/', ':', '*', '?', '"', '<', '>', '|' })
                     SaveProject.FileName = SaveProject.FileName.Replace(item, '_');
 

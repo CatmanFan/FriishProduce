@@ -140,7 +140,9 @@
 			"icon_animation": "Activer l'animation d'aperçu de l'icône de la chaîne",
 			"reset_all_dialogs": "Réinitialiser le paramètre « Ne plus afficher ce message »",
 			"use_custom_database": "Utiliser une base de données externe pour les chaînes d'origine",
-			"default_save_as_filename": "Nom par défaut des fichiers WAD enregistrés",
+			"default_save_as_filename": "Nom par défaut des fichiers enregistrés",
+			"default_save_as_project": "Projets :",
+			"default_save_as_wad": "WADs :",
 			"default_save_as_parameters": "Parties remplaçables :",
 		},
 		"projectform": {

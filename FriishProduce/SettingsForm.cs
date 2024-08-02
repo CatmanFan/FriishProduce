@@ -81,7 +81,14 @@ namespace FriishProduce
             gamedata_source_image_list.SelectedIndex = Default.gamedata_source_image;
 
             retrieve_gamedata_online.Text = Program.Lang.String(retrieve_gamedata_online.Name, "mainform") != "undefined" ? Program.Lang.String(retrieve_gamedata_online.Name, "mainform") : Program.Lang.String(retrieve_gamedata_online.Name, Name);
+            
             default_save_as_parameters.Font = new Font(default_save_as_parameters.Font, FontStyle.Bold);
+            Program.AutoSizeControl(default_save_as_filename_tb, default_save_as_project);
+            Program.AutoSizeControl(default_export_filename_tb, default_save_as_wad);
+            int maxX = Math.Max(default_save_as_filename_tb.Location.X, default_export_filename_tb.Location.X), maxWidth = Math.Min(default_save_as_filename_tb.Width, default_export_filename_tb.Width);
+            default_save_as_filename_tb.Location = new Point(maxX, default_save_as_filename_tb.Location.Y);
+            default_export_filename_tb.Location = new Point(maxX, default_export_filename_tb.Location.Y);
+            default_save_as_filename_tb.Width = default_export_filename_tb.Width = maxWidth;
 
             flash_save_data_enable.Text = vc_pce_backupram.Text = vc_sega_save_sram.Text = Program.Lang.String("save_data_enable", "projectform");
 
@@ -187,6 +194,7 @@ namespace FriishProduce
             toggleSwitch2.Checked = bool.Parse(FORWARDER.Default.show_bios_screen);
             FStorage_SD.Checked = FORWARDER.Default.root_storage_device == 0;
             FStorage_USB.Checked = FORWARDER.Default.root_storage_device == 1;
+            default_export_filename_tb.Text = Default.default_export_filename;
             default_save_as_filename_tb.Text = Default.default_save_as_filename;
 
             #region use_custom_database
@@ -320,6 +328,7 @@ namespace FriishProduce
             Default.gamedata_source_image = gamedata_source_image_list.SelectedIndex;
             Default.image_interpolation = image_interpolation_mode_list.SelectedIndex;
             Default.auto_retrieve_game_data = auto_retrieve_gamedata_online.Checked;
+            Default.default_export_filename = default_export_filename_tb.Text;
             Default.default_save_as_filename = default_save_as_filename_tb.Text;
 
             Default.default_injection_method_nes = injection_methods_nes.SelectedIndex;

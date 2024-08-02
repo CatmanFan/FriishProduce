@@ -127,6 +127,10 @@ namespace FriishProduce
             this.injection_methods_nes = new System.Windows.Forms.ComboBox();
             this.default_injection_method_n64 = new System.Windows.Forms.GroupBox();
             this.injection_methods_n64 = new System.Windows.Forms.ComboBox();
+            this.default_save_as_project = new System.Windows.Forms.Label();
+            this.default_save_as_wad = new System.Windows.Forms.Label();
+            this.default_export_filename_tb = new System.Windows.Forms.TextBox();
+            this.placeholder = new System.Windows.Forms.PictureBox();
             this.vc_n64_options.SuspendLayout();
             this.bottomPanel1.SuspendLayout();
             this.bottomPanel2.SuspendLayout();
@@ -163,6 +167,7 @@ namespace FriishProduce
             this.default_injection_method_snes.SuspendLayout();
             this.default_injection_method_nes.SuspendLayout();
             this.default_injection_method_n64.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.placeholder)).BeginInit();
             this.SuspendLayout();
             // 
             // lngList
@@ -844,6 +849,9 @@ namespace FriishProduce
             // 
             // default_save_as_filename
             // 
+            this.default_save_as_filename.Controls.Add(this.default_save_as_wad);
+            this.default_save_as_filename.Controls.Add(this.default_export_filename_tb);
+            this.default_save_as_filename.Controls.Add(this.default_save_as_project);
             this.default_save_as_filename.Controls.Add(this.label2);
             this.default_save_as_filename.Controls.Add(this.default_save_as_parameters);
             this.default_save_as_filename.Controls.Add(this.default_save_as_filename_tb);
@@ -949,6 +957,30 @@ namespace FriishProduce
             this.injection_methods_n64.Name = "injection_methods_n64";
             this.injection_methods_n64.Tag = "";
             // 
+            // default_save_as_project
+            // 
+            resources.ApplyResources(this.default_save_as_project, "default_save_as_project");
+            this.default_save_as_project.Name = "default_save_as_project";
+            this.default_save_as_project.Tag = "default_save_as_project";
+            // 
+            // default_save_as_wad
+            // 
+            resources.ApplyResources(this.default_save_as_wad, "default_save_as_wad");
+            this.default_save_as_wad.Name = "default_save_as_wad";
+            this.default_save_as_wad.Tag = "default_save_as_wad";
+            // 
+            // default_export_filename_tb
+            // 
+            resources.ApplyResources(this.default_export_filename_tb, "default_export_filename_tb");
+            this.default_export_filename_tb.Name = "default_export_filename_tb";
+            // 
+            // placeholder
+            // 
+            this.placeholder.BackColor = System.Drawing.SystemColors.Window;
+            resources.ApplyResources(this.placeholder, "placeholder");
+            this.placeholder.Name = "placeholder";
+            this.placeholder.TabStop = false;
+            // 
             // SettingsForm
             // 
             this.AcceptButton = this.b_ok;
@@ -959,16 +991,17 @@ namespace FriishProduce
             this.Controls.Add(this.bottomPanel2);
             this.Controls.Add(this.leftSeparator);
             this.Controls.Add(this.TreeView);
-            this.Controls.Add(this.forwarder);
-            this.Controls.Add(this.vc_n64);
-            this.Controls.Add(this.vc_pce);
-            this.Controls.Add(this.vc_sega);
-            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.vc_neo);
             this.Controls.Add(this.vc_nes);
             this.Controls.Add(this.adobe_flash);
+            this.Controls.Add(this.forwarder);
+            this.Controls.Add(this.vc_n64);
+            this.Controls.Add(this.vc_pce);
+            this.Controls.Add(this.vc_sega);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.placeholder);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MaximizeBox = false;
@@ -1028,6 +1061,7 @@ namespace FriishProduce
             this.default_injection_method_snes.ResumeLayout(false);
             this.default_injection_method_nes.ResumeLayout(false);
             this.default_injection_method_n64.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.placeholder)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1130,5 +1164,9 @@ namespace FriishProduce
         private System.Windows.Forms.ComboBox injection_methods_snes;
         private System.Windows.Forms.GroupBox default_injection_method_sega;
         private System.Windows.Forms.ComboBox injection_methods_sega;
+        private System.Windows.Forms.Label default_save_as_wad;
+        private System.Windows.Forms.TextBox default_export_filename_tb;
+        private System.Windows.Forms.Label default_save_as_project;
+        private System.Windows.Forms.PictureBox placeholder;
     }
 }

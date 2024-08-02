@@ -157,7 +157,9 @@
 			"icon_animation": "Animate channel icon preview",
 			"reset_all_dialogs": "Reset all dialogs",
 			"use_custom_database": "Use custom WAD database file",
-			"default_save_as_filename": "Default filename for exported WADs",
+			"default_save_as_filename": "Default target filename",
+			"default_save_as_project": "Projects:",
+			"default_save_as_wad": "Exported WADs:",
 			"default_save_as_parameters": "Replaceable parameters:",
 		},
 		"projectform": {

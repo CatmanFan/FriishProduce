@@ -27,7 +27,7 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="default_save_as_filename" Type="System.String" Scope="User">
-      <Value Profile="(Default)">[PLATFORM] CHANNELNAME - TITLEID</Value>
+      <Value Profile="(Default)">FULLNAME</Value>
     </Setting>
     <Setting Name="auto_update_check" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
@@ -43,6 +43,9 @@
     </Setting>
     <Setting Name="default_injection_method_sega" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="default_export_filename" Type="System.String" Scope="User">
+      <Value Profile="(Default)">[PLATFORM] FULLNAME - TITLEID</Value>
     </Setting>
   </Settings>
 </SettingsFile>

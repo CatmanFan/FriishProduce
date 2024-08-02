@@ -123,7 +123,9 @@
 			"icon_animation": "Habilitar vista previa animada del ícono del canal",
 			"reset_all_dialogs": "Restablecer la opción \"No volver a mostrar este mensaje\"",
 			"use_custom_database": "Utilizar una base de datos externa para los canales de origen",
-			"default_save_as_filename": "Nombre por defecto de los archivos WAD guardados",
+			"default_save_as_filename": "Nombre por defecto de archivos guardados",
+			"default_save_as_project": "Proyectos:",
+			"default_save_as_wad": "Canales WAD:",
 			"default_save_as_parameters": "Partidos reemplazables:",
 		},
 		"projectform": {

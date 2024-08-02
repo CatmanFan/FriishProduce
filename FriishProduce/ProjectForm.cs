@@ -737,7 +737,7 @@ namespace FriishProduce
             refreshData();
         }
 
-        public string GetName()
+        public string GetName(bool full)
         {
             string FILENAME = File.Exists(patch) ? Path.GetFileNameWithoutExtension(patch) : Path.GetFileNameWithoutExtension(rom?.FilePath);
             string CHANNELNAME = channel_title.Text;
@@ -745,7 +745,9 @@ namespace FriishProduce
             string TITLEID = title_id_upper.Text.ToUpper();
             string PLATFORM = targetPlatform.ToString();
 
-            return Properties.Settings.Default.default_save_as_filename.Replace("FILENAME", FILENAME).Replace("CHANNELNAME", CHANNELNAME).Replace("FULLNAME", FULLNAME).Replace("TITLEID", TITLEID).Replace("PLATFORM", PLATFORM);
+            string target = full ? Properties.Settings.Default.default_export_filename : Properties.Settings.Default.default_save_as_filename;
+
+            return target.Replace("FILENAME", FILENAME).Replace("CHANNELNAME", CHANNELNAME).Replace("FULLNAME", FULLNAME).Replace("TITLEID", TITLEID).Replace("PLATFORM", PLATFORM);
         }
 
         private void isClosing(object sender, FormClosingEventArgs e)

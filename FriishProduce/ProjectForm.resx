@@ -277,7 +277,7 @@
     <value>False</value>
   </data>
   <data name="groupBox7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>742, 319</value>
+    <value>741, 319</value>
   </data>
   <data name="groupBox7.Size" type="System.Drawing.Size, System.Drawing">
     <value>257, 100</value>
@@ -589,7 +589,7 @@
     <value>False</value>
   </data>
   <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 240</value>
+    <value>12, 240</value>
   </data>
   <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
     <value>459, 90</value>
@@ -923,7 +923,7 @@
     <value>NoControl</value>
   </data>
   <data name="hasImage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>165, 74</value>
+    <value>199, 74</value>
   </data>
   <data name="hasImage.Size" type="System.Drawing.Size, System.Drawing">
     <value>15, 15</value>
@@ -953,7 +953,7 @@
     <value>10, 70</value>
   </data>
   <data name="import_image.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 23</value>
+    <value>183, 23</value>
   </data>
   <data name="import_image.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -1061,7 +1061,7 @@
     <value>False</value>
   </data>
   <data name="groupBox6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>476, 8</value>
+    <value>475, 8</value>
   </data>
   <data name="groupBox6.Size" type="System.Drawing.Size, System.Drawing">
     <value>523, 305</value>
@@ -1273,21 +1273,6 @@
   <data name="&gt;&gt;bannerPreview.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="import_wad_from_file.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="import_wad_from_file.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 2</value>
-  </data>
-  <data name="import_wad_from_file.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 17</value>
-  </data>
-  <data name="import_wad_from_file.TabIndex" type="System.Int32, mscorlib">
-    <value>34</value>
-  </data>
-  <data name="import_wad_from_file.Text" xml:space="preserve">
-    <value>import_wad_from_file</value>
-  </data>
   <data name="&gt;&gt;import_wad_from_file.Name" xml:space="preserve">
     <value>import_wad_from_file</value>
   </data>
@@ -1328,7 +1313,7 @@
     <value>NoControl</value>
   </data>
   <data name="base_name.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 46</value>
+    <value>8, 45</value>
   </data>
   <data name="base_name.Size" type="System.Drawing.Size, System.Drawing">
     <value>62, 13</value>
@@ -1361,7 +1346,7 @@
     <value>NoControl</value>
   </data>
   <data name="baseName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>88, 46</value>
+    <value>88, 45</value>
   </data>
   <data name="baseName.Size" type="System.Drawing.Size, System.Drawing">
     <value>54, 13</value>
@@ -1391,10 +1376,10 @@
     <value>NoControl</value>
   </data>
   <data name="BaseRegion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>419, 18</value>
+    <value>419, 19</value>
   </data>
   <data name="BaseRegion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>30, 21</value>
+    <value>30, 20</value>
   </data>
   <data name="BaseRegion.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>StretchImage</value>
@@ -1448,7 +1433,7 @@
     <value>NoControl</value>
   </data>
   <data name="title_id_2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 64</value>
+    <value>8, 63</value>
   </data>
   <data name="title_id_2.Size" type="System.Drawing.Size, System.Drawing">
     <value>37, 13</value>
@@ -1481,7 +1466,7 @@
     <value>NoControl</value>
   </data>
   <data name="baseID.Location" type="System.Drawing.Point, System.Drawing">
-    <value>88, 64</value>
+    <value>88, 63</value>
   </data>
   <data name="baseID.Size" type="System.Drawing.Size, System.Drawing">
     <value>54, 13</value>
@@ -1508,7 +1493,7 @@
     <value>False</value>
   </data>
   <data name="wad_base.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 119</value>
+    <value>12, 119</value>
   </data>
   <data name="wad_base.Size" type="System.Drawing.Size, System.Drawing">
     <value>459, 115</value>
@@ -1531,6 +1516,33 @@
   <data name="&gt;&gt;wad_base.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <data name="import_wad_from_file.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="import_wad_from_file.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 2</value>
+  </data>
+  <data name="import_wad_from_file.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 17</value>
+  </data>
+  <data name="import_wad_from_file.TabIndex" type="System.Int32, mscorlib">
+    <value>34</value>
+  </data>
+  <data name="import_wad_from_file.Text" xml:space="preserve">
+    <value>import_wad_from_file</value>
+  </data>
+  <data name="&gt;&gt;import_wad_from_file.Name" xml:space="preserve">
+    <value>import_wad_from_file</value>
+  </data>
+  <data name="&gt;&gt;import_wad_from_file.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;import_wad_from_file.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;import_wad_from_file.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <metadata name="browsePatch.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>355, 17</value>
   </metadata>
@@ -1541,7 +1553,7 @@
     <value>False</value>
   </data>
   <data name="groupBox5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>476, 319</value>
+    <value>475, 319</value>
   </data>
   <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
     <value>260, 85</value>
@@ -1580,7 +1592,7 @@
     <value>False</value>
   </data>
   <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 336</value>
+    <value>12, 336</value>
   </data>
   <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
     <value>459, 50</value>
@@ -1652,7 +1664,7 @@
     <value>10, 18</value>
   </data>
   <data name="import_rom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 23</value>
+    <value>183, 23</value>
   </data>
   <data name="import_rom.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -1673,10 +1685,10 @@
     <value>3</value>
   </data>
   <data name="rom_filename.Location" type="System.Drawing.Point, System.Drawing">
-    <value>165, 20</value>
+    <value>199, 20</value>
   </data>
   <data name="rom_filename.Size" type="System.Drawing.Size, System.Drawing">
-    <value>283, 20</value>
+    <value>250, 20</value>
   </data>
   <data name="rom_filename.TabIndex" type="System.Int32, mscorlib">
     <value>45</value>
@@ -1718,7 +1730,7 @@
     <value>1</value>
   </data>
   <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 8</value>
+    <value>12, 8</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
     <value>459, 105</value>
@@ -1748,7 +1760,7 @@
     <value>10, 44</value>
   </data>
   <data name="import_patch.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 23</value>
+    <value>183, 23</value>
   </data>
   <data name="import_patch.TabIndex" type="System.Int32, mscorlib">
     <value>47</value>
@@ -1769,10 +1781,10 @@
     <value>0</value>
   </data>
   <data name="patch_filename.Location" type="System.Drawing.Point, System.Drawing">
-    <value>165, 46</value>
+    <value>199, 46</value>
   </data>
   <data name="patch_filename.Size" type="System.Drawing.Size, System.Drawing">
-    <value>283, 20</value>
+    <value>250, 20</value>
   </data>
   <data name="patch_filename.TabIndex" type="System.Int32, mscorlib">
     <value>46</value>
@@ -1817,7 +1829,7 @@
     <value>False</value>
   </data>
   <data name="forwarder_root_device.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 392</value>
+    <value>12, 392</value>
   </data>
   <data name="forwarder_root_device.Size" type="System.Drawing.Size, System.Drawing">
     <value>459, 62</value>
@@ -1904,7 +1916,7 @@
     <value>False</value>
   </data>
   <data name="manual_type.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 392</value>
+    <value>12, 392</value>
   </data>
   <data name="manual_type.Size" type="System.Drawing.Size, System.Drawing">
     <value>459, 50</value>
@@ -1934,7 +1946,7 @@
     <value>True</value>
   </metadata>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1011, 463</value>
+    <value>1010, 465</value>
   </data>
   <data name="$this.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
     <value>No</value>

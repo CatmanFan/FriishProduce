@@ -398,7 +398,7 @@ namespace FriishProduce
             // 
             // bannerPreview
             // 
-            this.bannerPreview.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.bannerPreview.BackColor = System.Drawing.SystemColors.ControlLight;
             resources.ApplyResources(this.bannerPreview, "bannerPreview");
             this.bannerPreview.Name = "bannerPreview";
             this.bannerPreview.TabStop = false;
@@ -447,7 +447,7 @@ namespace FriishProduce
             // 
             // BaseRegion
             // 
-            this.BaseRegion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.BaseRegion.BackColor = System.Drawing.SystemColors.ControlLight;
             resources.ApplyResources(this.BaseRegion, "BaseRegion");
             this.BaseRegion.ContextMenuStrip = this.baseRegionList;
             this.BaseRegion.Name = "BaseRegion";
