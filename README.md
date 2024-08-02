@@ -42,13 +42,14 @@ See **[here](https://github.com/CatmanFan/FriishProduce/wiki/FriishProduce-v1.0)
 ---
 
 ## To-Do
-[ ] Make project forms inheritable and categorize by console/platform
-[X] Place ROM and image open dialogs in Project form instead of handling from Main one
-[X] Use *.bin/*.cue format for disc games by default
-[ ] Restructuring, trimming features and cleaning code
+### Before releasing
 [ ] Update language strings
 
-### Other platforms
+### After releasing
+[ ] Make project forms inheritable and categorize by console/platform
+[ ] Restructuring, trimming features and cleaning code
+
+### Future platforms
 * Commodore 64 (needs [Custom Frodo](https://gbatemp.net/threads/custom-frodo-for-c64-vc-injection.102356/))
 * TurboGrafx-16 CD (needs several programs to convert ISO to injectable format)
 
