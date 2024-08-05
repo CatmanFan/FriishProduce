@@ -51,7 +51,7 @@ namespace FriishProduce
             TreeView.Nodes[1].Nodes[0].Text = Program.Lang.String("vc");
             TreeView.Nodes[1].Nodes[0].Nodes[0].Text = Program.Lang.Console(Platform.NES);
             TreeView.Nodes[1].Nodes[0].Nodes[1].Text = Program.Lang.Console(Platform.N64);
-            TreeView.Nodes[1].Nodes[0].Nodes[2].Text = default_injection_method_sega.Text = Program.Lang.String("group1", "platforms");
+            TreeView.Nodes[1].Nodes[0].Nodes[2].Text = label8.Text = Program.Lang.String("group1", "platforms");
             TreeView.Nodes[1].Nodes[0].Nodes[3].Text = Program.Lang.Console(Platform.PCE);
             TreeView.Nodes[1].Nodes[0].Nodes[4].Text = Program.Lang.Console(Platform.NEO);
             TreeView.Nodes[1].Nodes[1].Text = Program.Lang.Console(Platform.Flash);
@@ -72,9 +72,9 @@ namespace FriishProduce
 
             #region Localization
             image_interpolation_mode.Text = Program.Lang.String(image_interpolation_mode.Name, "projectform");
-            image_interpolation_mode_list.Items.Clear();
-            image_interpolation_mode_list.Items.AddRange(Program.Lang.StringArray("image_interpolation_mode", "projectform"));
-            image_interpolation_mode_list.SelectedIndex = Default.image_interpolation;
+            image_interpolation_mode.Items.Clear();
+            image_interpolation_mode.Items.AddRange(Program.Lang.StringArray("image_interpolation_mode", "projectform"));
+            image_interpolation_mode.SelectedIndex = Default.image_interpolation;
 
             gamedata_source_image_list.Items.Clear();
             gamedata_source_image_list.Items.AddRange(new string[] { Program.Lang.String("automatic"), "https://thumbnails.libretro.com/", "https://github.com/libretro/libretro-thumbnails/" });
@@ -326,7 +326,7 @@ namespace FriishProduce
             Default.auto_update_check = auto_update_check.Checked;
             Default.link_save_data = autolink_save_data.Checked;
             Default.gamedata_source_image = gamedata_source_image_list.SelectedIndex;
-            Default.image_interpolation = image_interpolation_mode_list.SelectedIndex;
+            Default.image_interpolation = image_interpolation_mode.SelectedIndex;
             Default.auto_retrieve_game_data = auto_retrieve_gamedata_online.Checked;
             Default.default_export_filename = default_export_filename_tb.Text;
             Default.default_save_as_filename = default_save_as_filename_tb.Text;

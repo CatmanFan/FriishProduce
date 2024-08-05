@@ -43,6 +43,7 @@ See **[here](https://github.com/CatmanFan/FriishProduce/wiki/FriishProduce-v1.0)
 
 ## To-Do
 ### Before releasing
+[X] Create new logo
 [ ] Update language strings
 
 ### After releasing

@@ -20,7 +20,8 @@ namespace FriishProduce
         protected string Untitled;
         protected string WADPath = null;
 
-        private bool _showSaveData;
+        protected bool isVirtualConsole { get => injection_methods.SelectedItem?.ToString().ToLower() == Program.Lang.String("vc").ToLower(); }
+        protected bool showPatch = true;
         protected bool showSaveData
         {
             get => _showSaveData;
@@ -32,11 +33,11 @@ namespace FriishProduce
                 label16.Visible = !value;
             }
         }
-
+        private bool _showSaveData;
         private bool _isShown;
         private bool _isMint;
 
-        private bool _isModified;
+        #region Public bools (for main form)
         public bool IsModified
         {
             get => _isModified;
@@ -51,8 +52,8 @@ namespace FriishProduce
                 Program.MainForm.menuItem11.Enabled = IsExportable;
             }
         }
+        private bool _isModified;
 
-        private bool _isEmpty;
         public bool IsEmpty
         {
             get => _isEmpty;
@@ -65,7 +66,6 @@ namespace FriishProduce
                 {
                     title_id_random.Visible =
                     import_image.Enabled =
-                    import_patch.Enabled =
                     wad_base.Enabled =
                     forwarder_root_device.Enabled =
                     manual_type.Enabled =
@@ -74,9 +74,12 @@ namespace FriishProduce
                     groupBox5.Enabled =
                     groupBox6.Enabled =
                     groupBox7.Enabled = !value;
+
+                    import_patch.Enabled = !value && showPatch;
                 }
             }
         }
+        private bool _isEmpty;
 
         public bool IsExportable
         {
@@ -91,9 +94,8 @@ namespace FriishProduce
                 return save_data_title.Visible ? yes && !string.IsNullOrEmpty(_saveDataTitle[0]) : yes;
             }
         }
-
-        protected bool IsVC { get => injection_methods.SelectedItem?.ToString().ToLower() == Program.Lang.String("vc").ToLower(); }
-        public bool IsForwarder { get => !IsVC && targetPlatform != Platform.Flash; }
+        public bool IsForwarder { get => !isVirtualConsole && targetPlatform != Platform.Flash; }
+        #endregion
 
         private new enum Region
         {
@@ -166,7 +168,7 @@ namespace FriishProduce
                 // 2  = Korea
                 // 3  = Europe
 
-                int lang = IsVC ? -1 : outWadRegion switch
+                int lang = isVirtualConsole ? -1 : outWadRegion switch
                 {
                     libWiiSharp.Region.USA => 0,
                     libWiiSharp.Region.Japan => 1,
@@ -176,8 +178,8 @@ namespace FriishProduce
                 };
 
                 if (lang < 0 || lang > 3) lang = channels != null ? inWadRegion switch { Region.Japan => 1, Region.Korea => 2, Region.Europe => 3, _ => 0 } : 0;
-                if (!IsVC && Program.Lang.Current.StartsWith("ja")) lang = 1;
-                if (!IsVC && Program.Lang.Current.StartsWith("ko")) lang = 2;
+                if (!isVirtualConsole && Program.Lang.Current.StartsWith("ja")) lang = 1;
+                if (!isVirtualConsole && Program.Lang.Current.StartsWith("ko")) lang = 2;
 
                 // Japan/Korea: Use USA banner for C64
                 if (lang != 0 && lang != 3 && targetPlatform == Platform.C64)
@@ -538,18 +540,18 @@ namespace FriishProduce
 
                 case Platform.Flash:
                     rom = new SWF();
-                    import_patch.Enabled = false;
+                    showPatch = false;
                     break;
 
                 case Platform.RPGM:
                     rom = new RPGM();
-                    import_patch.Enabled = false;
+                    showPatch = false;
                     players.Enabled = false;
                     break;
 
                 default:
                     rom = new Disc();
-                    import_patch.Enabled = false;
+                    showPatch = false;
                     break;
             }
 
@@ -712,7 +714,7 @@ namespace FriishProduce
 
                 targetPlatform != Platform.Flash
                 && targetPlatform != Platform.RPGM
-                && IsVC, // Browse manual
+                && isVirtualConsole, // Browse manual
             };
         }
 
@@ -1303,7 +1305,7 @@ namespace FriishProduce
                     case Platform.PCECD:
                     case Platform.NEO:
                     case Platform.MSX:
-                        if (IsVC)
+                        if (isVirtualConsole)
                             WiiVCInject();
                         else
                             ForwarderCreator(targetFile);
@@ -1333,7 +1335,7 @@ namespace FriishProduce
                 (
                     outWad,
                     targetPlatform,
-                    IsVC ? outWad.Region : _bannerRegion switch { 1 => libWiiSharp.Region.Japan, 2 => libWiiSharp.Region.Korea, 3 => libWiiSharp.Region.Europe, _ => libWiiSharp.Region.USA },
+                    isVirtualConsole ? outWad.Region : _bannerRegion switch { 1 => libWiiSharp.Region.Japan, 2 => libWiiSharp.Region.Korea, 3 => libWiiSharp.Region.Europe, _ => libWiiSharp.Region.USA },
                     _bannerTitle,
                     _bannerYear,
                     _bannerPlayers
@@ -1845,7 +1847,7 @@ namespace FriishProduce
             forwarder_root_device.Visible = false;
             contentOptionsForm = null;
 
-            if (IsVC)
+            if (isVirtualConsole)
             {
                 manual_type.Visible = true;
 
@@ -1940,7 +1942,7 @@ namespace FriishProduce
                 contentOptionsForm.Icon = Icon.FromHandle(Properties.Resources.wrench.GetHicon());
             }
 
-            if (!IsVC && manual != null)
+            if (!isVirtualConsole && manual != null)
             {
                 manual = null;
                 manual_type_list.SelectedIndex = 0;
@@ -1950,7 +1952,7 @@ namespace FriishProduce
             editContentOptions.Enabled = contentOptionsForm != null;
             #endregion
 
-            showSaveData = IsVC || targetPlatform == Platform.Flash;
+            showSaveData = isVirtualConsole || targetPlatform == Platform.Flash;
         }
         #endregion
 

@@ -14,6 +14,7 @@ namespace FriishProduce
     {
         private readonly SettingsForm s = new SettingsForm();
 
+        #region //////////////////// Platforms ////////////////////
         public readonly IDictionary<Platform, Bitmap> Icons = new Dictionary<Platform, Bitmap>
         {
             { Platform.NES, new Icon(Properties.Resources.nintendo_nes, 16, 16).ToBitmap() },
@@ -29,35 +30,86 @@ namespace FriishProduce
             { Platform.RPGM, new Icon(Properties.Resources.rpg2003, 16, 16).ToBitmap() }
         };
 
-        private dynamic platformsItemList()
+        private static string[] platformsList = new string[]
         {
-            var list = new MenuItem[]
-                {
-                    new MenuItem(Platform.NES.ToString(), addProject),
-                    new MenuItem(Platform.SNES.ToString(), addProject),
-                    new MenuItem(Platform.N64.ToString(), addProject),
-                    new MenuItem("-"),
-                    new MenuItem(Platform.SMS.ToString(), addProject),
-                    new MenuItem(Platform.SMD.ToString(), addProject),
-                    new MenuItem("-"),
-                    new MenuItem(Platform.PCE.ToString(), addProject),
-                    new MenuItem(Platform.NEO.ToString(), addProject),
-                    new MenuItem(Platform.MSX.ToString(), addProject),
-                    new MenuItem(Platform.PSX.ToString(), addProject),
-                    new MenuItem(Platform.RPGM.ToString(), addProject),
-                    new MenuItem(Platform.Flash.ToString(), addProject),
-                };
+            Platform.NES.ToString(),
+            Platform.SNES.ToString(),
+            Platform.N64.ToString(),
+            null,
+            Platform.SMS.ToString(),
+            Platform.SMD.ToString(),
+            null,
+            Platform.PCE.ToString(),
+            null,
+            Platform.NEO.ToString(),
+            null,
+            Platform.MSX.ToString(),
+            null,
+            Platform.Flash.ToString(),
+            null,
+            Platform.PSX.ToString(),
+            null,
+            Platform.RPGM.ToString(),
+        };
 
-            foreach (MenuItem item in list)
+        private MenuItem[] platformsMenuItemList()
+        {
+            var list = new List<MenuItem>();
+            foreach (var platform in platformsList)
             {
-                if (item.Text != "-")
-                    item.Name = item.Text;
-                if (!string.IsNullOrWhiteSpace(item.Name))
-                    item.Text = string.Format(Program.Lang.String("project_type", Name), Program.Lang.Console((Platform)Enum.Parse(typeof(Platform), item.Name)));
+                var item = !string.IsNullOrWhiteSpace(platform) ? new MenuItem(platform, addProject) : new MenuItem("-");
+                if (!string.IsNullOrWhiteSpace(platform))
+                {
+                    item.Name = platform;
+                    item.Text = string.Format(Program.Lang.String("project_type", Name), Program.Lang.Console((Platform)Enum.Parse(typeof(Platform), platform)));
+                }
+                list.Add(item);
             }
 
-            return list;
+            return list.ToArray();
         }
+
+        private ToolStripItem[] platformsStripItemList()
+        {
+            var list = new List<ToolStripItem>();
+            foreach (var platform in platformsList)
+            {
+                if (!string.IsNullOrWhiteSpace(platform))
+                {
+                    Platform convertedPlatform = (Platform)Enum.Parse(typeof(Platform), platform);
+
+                    list.Add(new ToolStripMenuItem
+                    (
+                        string.Format(Program.Lang.String("project_type", Name), Program.Lang.Console(convertedPlatform)),
+                        Icons[convertedPlatform],
+                        addProject,
+                        platform + "0"
+                    ));
+                }
+
+                else list.Add(new ToolStripSeparator());
+            }
+
+            return list.ToArray();
+        }
+        #endregion
+
+        #region //////////////////// UI appearance ////////////////////
+        /*public class CustomToolStripRenderer : ToolStripProfessionalRenderer
+        {
+            public CustomToolStripRenderer() { }
+
+            protected override void OnRenderToolStripBackground(ToolStripRenderEventArgs e)
+            {
+                //you may want to change this based on the toolstrip's dock or layout style
+                LinearGradientMode mode = LinearGradientMode.Vertical;
+
+                using (LinearGradientBrush b = new LinearGradientBrush(e.AffectedBounds, Color.FromArgb(250, 250, 250), Color.FromArgb(222, 227, 233), mode))
+                {
+                    e.Graphics.FillRectangle(b, e.AffectedBounds);
+                }
+            }
+        }*/
 
         private void AutoSetStrip()
         {
@@ -66,8 +118,11 @@ namespace FriishProduce
                     if (Program.Lang.StringCheck(item.Tag?.ToString().ToLower(), Name)) item.Text = Program.Lang.String(item.Tag?.ToString().ToLower(), Name);
 
             new_project.MenuItems.Clear();
-            new_project.MenuItems.AddRange(platformsItemList());
+            new_project.MenuItems.AddRange(platformsMenuItemList());
+            toolbarNewProject.DropDownItems.Clear();
+            toolbarNewProject.DropDownItems.AddRange(platformsStripItemList());
         }
+        #endregion
 
         /// <summary>
         /// Changes language of this form and all tab pages
@@ -84,6 +139,7 @@ namespace FriishProduce
             menuItem15.Text = string.Format(Program.Lang.String("about_app"), Program.Lang.ApplicationTitle);
             Text = Program.Lang.ApplicationTitle;
 
+            toolbarNewProject.Text = new_project.Text;
             toolbarOpenProject.Text = menuItem5.Text;
             toolbarSaveAs.Text = menuItem6.Text;
             toolbarExport.Text = menuItem11.Text;
@@ -105,16 +161,18 @@ namespace FriishProduce
             #endregion
 
             foreach (MdiTabControl.TabPage tabPage in tabControl.TabPages)
-            {
                 if (tabPage.Form.GetType() == typeof(ProjectForm))
                     (tabPage.Form as ProjectForm).RefreshForm();
-            }
         }
 
         public MainForm()
         {
             InitializeComponent();
             Program.Handle = Handle;
+
+            // CustomToolStripRenderer r = new CustomToolStripRenderer();
+            // r.RoundedEdges = false;
+            // toolStrip.Renderer = r;
 
             #region Set size of window
             int w = 16;
@@ -129,22 +187,22 @@ namespace FriishProduce
             mainPanel.Size = tabControl.Size = new Size(Width - w, Height - h);
             #endregion
 
-            /* mainPanel.BackgroundImage = new Bitmap(1, mainPanel.Height);
+            mainPanel.BackgroundImage = new Bitmap(1, mainPanel.Height);
             using (Graphics g = Graphics.FromImage(mainPanel.BackgroundImage))
-            using (LinearGradientBrush b = new(new Point(0, 0), new Point(0, 40), tabControl.BackHighColor, tabControl.BackLowColor))
+            using (LinearGradientBrush b = new(new Point(0, -240), new Point(0, mainPanel.Height), Color.Gainsboro, Color.White))
             {
                 g.Clear(tabControl.BackLowColor);
                 g.FillRectangle(b, new RectangleF(0, 0, 1, b.Rectangle.Height));
-            } */
+            }
 
             if (mainPanel.BackgroundImage != null) tabControl.BackLowColor = tabControl.BackHighColor = tabControl.BackColor = Color.Transparent;
             tabControl.BackgroundImage = mainPanel.BackgroundImage;
             tabControl.BackgroundImageLayout = mainPanel.BackgroundImageLayout;
 
-            if (Logo.Location.X == 0 || Logo.Location.Y == 0) Logo.Location = new Point((mainPanel.Width / 2) - (Logo.Width / 2), (mainPanel.Height / 2) - Logo.Height);
-
             RefreshForm();
             CenterToScreen();
+
+            if (Logo.Location.X == 0 || Logo.Location.Y == 0) Logo.Location = new Point(mainPanel.Bounds.Width / 2 - (Logo.Width / 2), mainPanel.Bounds.Height / 2 - (Logo.Height / 2) - mainPanel.Location.Y);
 
             // Automatically set defined initial directory for save file dialog
             // ********
@@ -157,7 +215,6 @@ namespace FriishProduce
         {
             // string lang = Properties.Settings.Default.language;
 
-            s.Font = Font;
             s.ShowDialog(this);
 
             // if (lang != Properties.Settings.Default.language) RefreshForm();
@@ -179,7 +236,6 @@ namespace FriishProduce
                 menuItem11.Enabled = false;
 
                 tabControl.Visible = false;
-                mainPanel.Visible = true;
             }
 
             else
@@ -255,8 +311,8 @@ namespace FriishProduce
             p.FormClosed += TabChanged;
             tabControl.TabPages.Add(p);
 
+            tabControl.BringToFront();
             tabControl.Visible = true;
-            mainPanel.Visible = false;
 
             // BrowseROMDialog(p);
         }

@@ -503,7 +503,7 @@ namespace FriishProduce
             // 
             // editContentOptions
             // 
-            this.editContentOptions.Image = global::FriishProduce.Properties.Resources.cog;
+            this.editContentOptions.Image = global::FriishProduce.Properties.Resources.wrench;
             resources.ApplyResources(this.editContentOptions, "editContentOptions");
             this.editContentOptions.Name = "editContentOptions";
             this.editContentOptions.Tag = "";

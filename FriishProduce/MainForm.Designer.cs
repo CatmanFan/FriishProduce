@@ -63,6 +63,7 @@ namespace FriishProduce
             this.menuItem12 = new System.Windows.Forms.MenuItem();
             this.menuItem3 = new System.Windows.Forms.MenuItem();
             this.menuItem15 = new System.Windows.Forms.MenuItem();
+            this.toolbarNewProject = new System.Windows.Forms.ToolStripDropDownButton();
             this.mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             this.toolStrip.SuspendLayout();
@@ -76,7 +77,7 @@ namespace FriishProduce
             // 
             // mainPanel
             // 
-            this.mainPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
+            this.mainPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(224)))), ((int)(((byte)(229)))));
             this.mainPanel.Controls.Add(this.Logo);
             resources.ApplyResources(this.mainPanel, "mainPanel");
             this.mainPanel.Name = "mainPanel";
@@ -84,7 +85,6 @@ namespace FriishProduce
             // Logo
             // 
             this.Logo.BackColor = System.Drawing.Color.Transparent;
-            this.Logo.Image = global::FriishProduce.Properties.Resources.logo;
             resources.ApplyResources(this.Logo, "Logo");
             this.Logo.Name = "Logo";
             this.Logo.TabStop = false;
@@ -93,6 +93,7 @@ namespace FriishProduce
             // 
             resources.ApplyResources(this.toolStrip, "toolStrip");
             this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolbarNewProject,
             this.toolbarOpenProject,
             this.toolbarSaveAs,
             this.toolbarCloseProject,
@@ -102,7 +103,7 @@ namespace FriishProduce
             this.toolbarSettings,
             this.toolbarExport});
             this.toolStrip.Name = "toolStrip";
-            this.toolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.toolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             // 
             // toolbarOpenProject
             // 
@@ -154,7 +155,7 @@ namespace FriishProduce
             // 
             this.toolbarSettings.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.toolbarSettings.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolbarSettings.Image = global::FriishProduce.Properties.Resources.wrench;
+            this.toolbarSettings.Image = global::FriishProduce.Properties.Resources.cog;
             resources.ApplyResources(this.toolbarSettings, "toolbarSettings");
             this.toolbarSettings.Name = "toolbarSettings";
             this.toolbarSettings.Click += new System.EventHandler(this.Settings_Click);
@@ -180,10 +181,11 @@ namespace FriishProduce
             // 
             // tabControl
             // 
-            this.tabControl.BackHighColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
+            this.tabControl.BackHighColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(213)))), ((int)(((byte)(216)))));
             this.tabControl.BackLowColor = System.Drawing.Color.WhiteSmoke;
             this.tabControl.BorderColor = System.Drawing.Color.LightGray;
             this.tabControl.BorderColorDisabled = System.Drawing.Color.Silver;
+            this.tabControl.ControlButtonForeColor = System.Drawing.Color.Black;
             this.tabControl.FontBoldOnSelect = false;
             this.tabControl.ForeColorDisabled = System.Drawing.SystemColors.ControlDark;
             resources.ApplyResources(this.tabControl, "tabControl");
@@ -335,14 +337,22 @@ namespace FriishProduce
             resources.ApplyResources(this.menuItem15, "menuItem15");
             this.menuItem15.Click += new System.EventHandler(this.About_Click);
             // 
+            // toolbarNewProject
+            // 
+            this.toolbarNewProject.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolbarNewProject.Image = global::FriishProduce.Properties.Resources.page_white;
+            resources.ApplyResources(this.toolbarNewProject, "toolbarNewProject");
+            this.toolbarNewProject.Name = "toolbarNewProject";
+            this.toolbarNewProject.Tag = "new_project";
+            // 
             // MainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.tabControl);
+            this.Controls.Add(this.mainPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MaximizeBox = false;
@@ -391,6 +401,7 @@ namespace FriishProduce
         internal System.Windows.Forms.MenuItem menuItem6;
         internal System.Windows.Forms.MenuItem menuItem10;
         internal System.Windows.Forms.MenuItem menuItem11;
+        private System.Windows.Forms.ToolStripDropDownButton toolbarNewProject;
     }
 }
 

@@ -93,16 +93,6 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap cd_add {
-            get {
-                object obj = ResourceManager.GetObject("cd_add", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         public static System.Drawing.Bitmap cog {
             get {
                 object obj = ResourceManager.GetObject("cog", resourceCulture);
@@ -117,16 +107,6 @@ namespace FriishProduce.Properties {
             get {
                 object obj = ResourceManager.GetObject("Database", resourceCulture);
                 return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap door_open {
-            get {
-                object obj = ResourceManager.GetObject("door_open", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -237,26 +217,6 @@ namespace FriishProduce.Properties {
             get {
                 object obj = ResourceManager.GetObject("Font", resourceCulture);
                 return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap image_add {
-            get {
-                object obj = ResourceManager.GetObject("image_add", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap joystick_add {
-            get {
-                object obj = ResourceManager.GetObject("joystick_add", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
