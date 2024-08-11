@@ -29,29 +29,28 @@ namespace FriishProduce
         /// </summary>
         private void InitializeComponent()
         {
-            this.ImportBIOS = new System.Windows.Forms.OpenFileDialog();
+            this.biosImport = new System.Windows.Forms.OpenFileDialog();
             this.bios_list = new System.Windows.Forms.ComboBox();
-            this.bios = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.bottomPanel1.SuspendLayout();
-            this.bios.SuspendLayout();
             this.SuspendLayout();
             // 
             // b_ok
             // 
-            this.b_ok.Location = new System.Drawing.Point(206, 12);
+            this.b_ok.Location = new System.Drawing.Point(362, 12);
             // 
             // bottomPanel1
             // 
-            this.bottomPanel1.Size = new System.Drawing.Size(404, 47);
+            this.bottomPanel1.Size = new System.Drawing.Size(560, 47);
             // 
             // b_cancel
             // 
-            this.b_cancel.Location = new System.Drawing.Point(302, 12);
+            this.b_cancel.Location = new System.Drawing.Point(458, 12);
             // 
-            // ImportBIOS
+            // biosImport
             // 
-            this.ImportBIOS.DefaultExt = "rom";
-            this.ImportBIOS.Filter = ".ROM (*.rom)|*.rom";
+            this.biosImport.DefaultExt = "rom";
+            this.biosImport.Filter = ".ROM (*.rom)|*.rom";
             // 
             // bios_list
             // 
@@ -59,40 +58,41 @@ namespace FriishProduce
             this.bios_list.FormattingEnabled = true;
             this.bios_list.Items.AddRange(new object[] {
             "auto"});
-            this.bios_list.Location = new System.Drawing.Point(10, 18);
+            this.bios_list.Location = new System.Drawing.Point(12, 25);
             this.bios_list.Name = "bios_list";
-            this.bios_list.Size = new System.Drawing.Size(360, 21);
+            this.bios_list.Size = new System.Drawing.Size(536, 21);
             this.bios_list.TabIndex = 14;
             this.bios_list.Tag = "bios";
             this.bios_list.SelectedIndexChanged += new System.EventHandler(this.BIOSChanged);
             // 
-            // bios
+            // label1
             // 
-            this.bios.Controls.Add(this.bios_list);
-            this.bios.Location = new System.Drawing.Point(12, 9);
-            this.bios.Name = "bios";
-            this.bios.Size = new System.Drawing.Size(380, 50);
-            this.bios.TabIndex = 15;
-            this.bios.TabStop = false;
-            this.bios.Tag = "bios";
-            this.bios.Text = "bios";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(9, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(26, 13);
+            this.label1.TabIndex = 16;
+            this.label1.Tag = "bios";
+            this.label1.Text = "bios";
             // 
             // Options_VC_NEO
             // 
-            this.ClientSize = new System.Drawing.Size(404, 122);
-            this.Controls.Add(this.bios);
+            this.ClientSize = new System.Drawing.Size(560, 107);
+            this.Controls.Add(this.bios_list);
+            this.Controls.Add(this.label1);
             this.Name = "Options_VC_NEO";
             this.Tag = "vc_neo";
-            this.Controls.SetChildIndex(this.bios, 0);
+            this.Controls.SetChildIndex(this.label1, 0);
+            this.Controls.SetChildIndex(this.bios_list, 0);
             this.bottomPanel1.ResumeLayout(false);
-            this.bios.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.OpenFileDialog ImportBIOS;
+        private System.Windows.Forms.OpenFileDialog biosImport;
         private System.Windows.Forms.ComboBox bios_list;
-        private System.Windows.Forms.GroupBox bios;
+        private System.Windows.Forms.Label label1;
     }
 }

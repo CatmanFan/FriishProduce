@@ -7,8 +7,6 @@ namespace FriishProduce
 {
     public partial class Options_VC_SEGA : ContentOptions
     {
-        public bool IsSMS { get; set; }
-
         public Options_VC_SEGA() : base()
         {
             InitializeComponent();
@@ -66,7 +64,7 @@ namespace FriishProduce
                 dev_mdpad_enable_6b.Checked         = Options["dev.mdpad.enable_6b"] == "1";
                 save_sram.Checked                   = Options["save_sram"] == "1";
                 console_disableresetbutton.Checked  = Options["console.disable_resetbutton"] == "1";
-                ChangeBrightness();
+                changeBrightness();
             }
         }
 
@@ -81,8 +79,15 @@ namespace FriishProduce
 
         // ---------------------------------------------------------------------------------------------------------------
 
-        private void BrightnessValue_Set(object sender, EventArgs e) => ChangeBrightness();
-        private void ChangeBrightness()
+        #region Variables
+        public bool IsSMS { get; set; }
+        #endregion
+
+        // ---------------------------------------------------------------------------------------------------------------
+
+        #region Functions
+        private void BrightnessValue_Set(object sender, EventArgs e) => changeBrightness();
+        private void changeBrightness()
         {
             double factor = console_brightness.Value * 0.01;
             var orig = Properties.Resources.screen_smd;
@@ -101,5 +106,6 @@ namespace FriishProduce
 
             if (!console_brightness.Enabled) Options["console.brightness"] = null;
         }
+        #endregion
     }
 }

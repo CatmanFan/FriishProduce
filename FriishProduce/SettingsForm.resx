@@ -125,7 +125,7 @@
     <value>12, 27</value>
   </data>
   <data name="lngList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>511, 21</value>
+    <value>536, 21</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="lngList.TabIndex" type="System.Int32, mscorlib">
@@ -141,33 +141,6 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;lngList.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="vc_n64_romc_type.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="vc_n64_romc_type.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 110</value>
-  </data>
-  <data name="vc_n64_romc_type.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 13</value>
-  </data>
-  <data name="vc_n64_romc_type.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
-  </data>
-  <data name="vc_n64_romc_type.Text" xml:space="preserve">
-    <value>romc_type</value>
-  </data>
-  <data name="&gt;&gt;vc_n64_romc_type.Name" xml:space="preserve">
-    <value>vc_n64_romc_type</value>
-  </data>
-  <data name="&gt;&gt;vc_n64_romc_type.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;vc_n64_romc_type.Parent" xml:space="preserve">
-    <value>vc_n64_options</value>
-  </data>
-  <data name="&gt;&gt;vc_n64_romc_type.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="vc_n64_patch_autosizerom.AutoSize" type="System.Boolean, mscorlib">
@@ -205,28 +178,7 @@
     <value>vc_n64_options</value>
   </data>
   <data name="&gt;&gt;vc_n64_patch_autosizerom.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="vc_n64_romc_type_list.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 128</value>
-  </data>
-  <data name="vc_n64_romc_type_list.Size" type="System.Drawing.Size, System.Drawing">
-    <value>490, 21</value>
-  </data>
-  <data name="vc_n64_romc_type_list.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
-  </data>
-  <data name="&gt;&gt;vc_n64_romc_type_list.Name" xml:space="preserve">
-    <value>vc_n64_romc_type_list</value>
-  </data>
-  <data name="&gt;&gt;vc_n64_romc_type_list.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;vc_n64_romc_type_list.Parent" xml:space="preserve">
-    <value>vc_n64_options</value>
-  </data>
-  <data name="&gt;&gt;vc_n64_romc_type_list.ZOrder" xml:space="preserve">
-    <value>2</value>
   </data>
   <data name="vc_n64_patch_expandedram.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -262,7 +214,7 @@
     <value>vc_n64_options</value>
   </data>
   <data name="&gt;&gt;vc_n64_patch_expandedram.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>1</value>
   </data>
   <data name="vc_n64_patch_fixcrashes.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -298,7 +250,7 @@
     <value>vc_n64_options</value>
   </data>
   <data name="&gt;&gt;vc_n64_patch_fixcrashes.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>2</value>
   </data>
   <data name="vc_n64_patch_fixbrightness.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -334,13 +286,13 @@
     <value>vc_n64_options</value>
   </data>
   <data name="&gt;&gt;vc_n64_patch_fixbrightness.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>3</value>
   </data>
   <data name="vc_n64_options.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 10</value>
   </data>
   <data name="vc_n64_options.Size" type="System.Drawing.Size, System.Drawing">
-    <value>510, 160</value>
+    <value>536, 112</value>
   </data>
   <data name="vc_n64_options.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
@@ -358,6 +310,27 @@
     <value>vc_n64</value>
   </data>
   <data name="&gt;&gt;vc_n64_options.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="vc_n64_romc_type_list.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 19</value>
+  </data>
+  <data name="vc_n64_romc_type_list.Size" type="System.Drawing.Size, System.Drawing">
+    <value>516, 21</value>
+  </data>
+  <data name="vc_n64_romc_type_list.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;vc_n64_romc_type_list.Name" xml:space="preserve">
+    <value>vc_n64_romc_type_list</value>
+  </data>
+  <data name="&gt;&gt;vc_n64_romc_type_list.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;vc_n64_romc_type_list.Parent" xml:space="preserve">
+    <value>vc_n64_romc_type</value>
+  </data>
+  <data name="&gt;&gt;vc_n64_romc_type_list.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="b_cancel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
@@ -509,6 +482,17 @@
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAAB1TeXN0
+        ZW0uV2luZG93cy5Gb3Jtcy5UcmVlTm9kZQoAAAAEVGV4dAtUb29sVGlwVGV4dAROYW1lCUlzQ2hlY2tl
+        ZApJbWFnZUluZGV4CEltYWdlS2V5ElNlbGVjdGVkSW1hZ2VJbmRleBBTZWxlY3RlZEltYWdlS2V5CkNo
+        aWxkQ291bnQIVXNlckRhdGEBAQEAAAEAAQABAQgICAIAAAAGAwAAABlkZWZhdWx0X2luamVjdGlvbl9t
+        ZXRob2RzBgQAAAAABgUAAAAFTm9kZTIA/////wkEAAAA/////wkEAAAAAAAAAAYHAAAAGWRlZmF1bHRf
+        aW5qZWN0aW9uX21ldGhvZHML
+</value>
+  </data>
+  <data name="TreeView.Nodes2" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAAB1TeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5UcmVlTm9kZQ0AAAAEVGV4dAtUb29sVGlwVGV4dAROYW1lCUlzQ2hlY2tl
         ZApJbWFnZUluZGV4CEltYWdlS2V5ElNlbGVjdGVkSW1hZ2VJbmRleBBTZWxlY3RlZEltYWdlS2V5CkNo
         aWxkQ291bnQJY2hpbGRyZW4wCWNoaWxkcmVuMQljaGlsZHJlbjIIVXNlckRhdGEBAQEAAAEAAQAEBAQB
@@ -550,17 +534,6 @@
         LwAAAAdOb2RlTkVPAP////8JBAAAAP////8JBAAAAAAAAAAL
 </value>
   </data>
-  <data name="TreeView.Nodes2" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
-        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAAB1TeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5UcmVlTm9kZQoAAAAEVGV4dAtUb29sVGlwVGV4dAROYW1lCUlzQ2hlY2tl
-        ZApJbWFnZUluZGV4CEltYWdlS2V5ElNlbGVjdGVkSW1hZ2VJbmRleBBTZWxlY3RlZEltYWdlS2V5CkNo
-        aWxkQ291bnQIVXNlckRhdGEBAQEAAAEAAQABAQgICAIAAAAGAwAAABlkZWZhdWx0X2luamVjdGlvbl9t
-        ZXRob2RzBgQAAAAABgUAAAAFTm9kZTIA/////wkEAAAA/////wkEAAAAAAAAAAYHAAAAGWRlZmF1bHRf
-        aW5qZWN0aW9uX21ldGhvZHML
-</value>
-  </data>
   <data name="TreeView.Size" type="System.Drawing.Size, System.Drawing">
     <value>175, 600</value>
   </data>
@@ -577,7 +550,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;TreeView.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>1</value>
   </data>
   <data name="label4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -697,7 +670,7 @@
     <value>10, 18</value>
   </data>
   <data name="check_for_updates.Size" type="System.Drawing.Size, System.Drawing">
-    <value>490, 24</value>
+    <value>515, 24</value>
   </data>
   <data name="check_for_updates.TabIndex" type="System.Int32, mscorlib">
     <value>47</value>
@@ -721,7 +694,7 @@
     <value>12, 66</value>
   </data>
   <data name="updater.Size" type="System.Drawing.Size, System.Drawing">
-    <value>510, 70</value>
+    <value>535, 70</value>
   </data>
   <data name="updater.TabIndex" type="System.Int32, mscorlib">
     <value>48</value>
@@ -760,7 +733,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>8</value>
   </data>
   <data name="autolink_save_data.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -829,7 +802,7 @@
     <value>10, 42</value>
   </data>
   <data name="gamedata_source_image_list.Size" type="System.Drawing.Size, System.Drawing">
-    <value>490, 21</value>
+    <value>515, 21</value>
   </data>
   <data name="gamedata_source_image_list.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -880,7 +853,7 @@
     <value>12, 66</value>
   </data>
   <data name="retrieve_gamedata_online.Size" type="System.Drawing.Size, System.Drawing">
-    <value>510, 75</value>
+    <value>535, 75</value>
   </data>
   <data name="retrieve_gamedata_online.TabIndex" type="System.Int32, mscorlib">
     <value>41</value>
@@ -899,6 +872,30 @@
   </data>
   <data name="&gt;&gt;retrieve_gamedata_online.ZOrder" xml:space="preserve">
     <value>4</value>
+  </data>
+  <data name="vc_n64_romc_type.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 128</value>
+  </data>
+  <data name="vc_n64_romc_type.Size" type="System.Drawing.Size, System.Drawing">
+    <value>536, 52</value>
+  </data>
+  <data name="vc_n64_romc_type.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="vc_n64_romc_type.Text" xml:space="preserve">
+    <value>romc_type</value>
+  </data>
+  <data name="&gt;&gt;vc_n64_romc_type.Name" xml:space="preserve">
+    <value>vc_n64_romc_type</value>
+  </data>
+  <data name="&gt;&gt;vc_n64_romc_type.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;vc_n64_romc_type.Parent" xml:space="preserve">
+    <value>vc_n64</value>
+  </data>
+  <data name="&gt;&gt;vc_n64_romc_type.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="vc_n64.Location" type="System.Drawing.Point, System.Drawing">
     <value>174, 0</value>
@@ -919,73 +916,40 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_n64.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>3</value>
   </data>
-  <data name="FStorage_SD.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="FStorage_SD.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="FStorage_SD.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 18</value>
-  </data>
-  <data name="FStorage_SD.Size" type="System.Drawing.Size, System.Drawing">
-    <value>38, 17</value>
-  </data>
-  <data name="FStorage_SD.TabIndex" type="System.Int32, mscorlib">
-    <value>19</value>
-  </data>
-  <data name="FStorage_SD.Text" xml:space="preserve">
+  <data name="forwarder_type.Items" xml:space="preserve">
     <value>SD</value>
   </data>
-  <data name="&gt;&gt;FStorage_SD.Name" xml:space="preserve">
-    <value>FStorage_SD</value>
-  </data>
-  <data name="&gt;&gt;FStorage_SD.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;FStorage_SD.Parent" xml:space="preserve">
-    <value>forwarder_root_device</value>
-  </data>
-  <data name="&gt;&gt;FStorage_SD.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="FStorage_USB.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="FStorage_USB.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="FStorage_USB.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 37</value>
-  </data>
-  <data name="FStorage_USB.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 17</value>
-  </data>
-  <data name="FStorage_USB.TabIndex" type="System.Int32, mscorlib">
-    <value>20</value>
-  </data>
-  <data name="FStorage_USB.Text" xml:space="preserve">
+  <data name="forwarder_type.Items1" xml:space="preserve">
     <value>USB</value>
   </data>
-  <data name="&gt;&gt;FStorage_USB.Name" xml:space="preserve">
-    <value>FStorage_USB</value>
+  <data name="forwarder_type.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 19</value>
   </data>
-  <data name="&gt;&gt;FStorage_USB.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="forwarder_type.Size" type="System.Drawing.Size, System.Drawing">
+    <value>516, 21</value>
   </data>
-  <data name="&gt;&gt;FStorage_USB.Parent" xml:space="preserve">
+  <data name="forwarder_type.TabIndex" type="System.Int32, mscorlib">
+    <value>27</value>
+  </data>
+  <data name="&gt;&gt;forwarder_type.Name" xml:space="preserve">
+    <value>forwarder_type</value>
+  </data>
+  <data name="&gt;&gt;forwarder_type.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;forwarder_type.Parent" xml:space="preserve">
     <value>forwarder_root_device</value>
   </data>
-  <data name="&gt;&gt;FStorage_USB.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;forwarder_type.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="forwarder_root_device.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 10</value>
   </data>
   <data name="forwarder_root_device.Size" type="System.Drawing.Size, System.Drawing">
-    <value>377, 62</value>
+    <value>536, 52</value>
   </data>
   <data name="forwarder_root_device.TabIndex" type="System.Int32, mscorlib">
     <value>25</value>
@@ -1057,10 +1021,10 @@
     <value>1</value>
   </data>
   <data name="bios_settings.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 78</value>
+    <value>12, 68</value>
   </data>
   <data name="bios_settings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>377, 44</value>
+    <value>536, 44</value>
   </data>
   <data name="bios_settings.TabIndex" type="System.Int32, mscorlib">
     <value>26</value>
@@ -1099,36 +1063,36 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;forwarder.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>2</value>
   </data>
-  <data name="vc_nes_palette_use_on_banner.AutoSize" type="System.Boolean, mscorlib">
+  <data name="vc_nes_palette_banner_usage.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="vc_nes_palette_use_on_banner.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="vc_nes_palette_banner_usage.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="vc_nes_palette_use_on_banner.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="vc_nes_palette_banner_usage.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 45</value>
   </data>
-  <data name="vc_nes_palette_use_on_banner.Size" type="System.Drawing.Size, System.Drawing">
-    <value>141, 17</value>
+  <data name="vc_nes_palette_banner_usage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>135, 17</value>
   </data>
-  <data name="vc_nes_palette_use_on_banner.TabIndex" type="System.Int32, mscorlib">
+  <data name="vc_nes_palette_banner_usage.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
-  <data name="vc_nes_palette_use_on_banner.Text" xml:space="preserve">
-    <value>palette_use_on_banner</value>
+  <data name="vc_nes_palette_banner_usage.Text" xml:space="preserve">
+    <value>palette_banner_usage</value>
   </data>
-  <data name="&gt;&gt;vc_nes_palette_use_on_banner.Name" xml:space="preserve">
-    <value>vc_nes_palette_use_on_banner</value>
+  <data name="&gt;&gt;vc_nes_palette_banner_usage.Name" xml:space="preserve">
+    <value>vc_nes_palette_banner_usage</value>
   </data>
-  <data name="&gt;&gt;vc_nes_palette_use_on_banner.Type" xml:space="preserve">
+  <data name="&gt;&gt;vc_nes_palette_banner_usage.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;vc_nes_palette_use_on_banner.Parent" xml:space="preserve">
+  <data name="&gt;&gt;vc_nes_palette_banner_usage.Parent" xml:space="preserve">
     <value>vc_nes_palette</value>
   </data>
-  <data name="&gt;&gt;vc_nes_palette_use_on_banner.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;vc_nes_palette_banner_usage.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="vc_nes_palettelist.Location" type="System.Drawing.Point, System.Drawing">
@@ -1195,13 +1159,43 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_nes.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>10</value>
+  </data>
+  <data name="vc_neo_bios.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="vc_neo_bios.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="vc_neo_bios.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 9</value>
+  </data>
+  <data name="vc_neo_bios.Size" type="System.Drawing.Size, System.Drawing">
+    <value>26, 13</value>
+  </data>
+  <data name="vc_neo_bios.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="vc_neo_bios.Text" xml:space="preserve">
+    <value>bios</value>
+  </data>
+  <data name="&gt;&gt;vc_neo_bios.Name" xml:space="preserve">
+    <value>vc_neo_bios</value>
+  </data>
+  <data name="&gt;&gt;vc_neo_bios.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;vc_neo_bios.Parent" xml:space="preserve">
+    <value>vc_neo</value>
+  </data>
+  <data name="&gt;&gt;vc_neo_bios.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="vc_neo_bios_list.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 18</value>
+    <value>12, 25</value>
   </data>
   <data name="vc_neo_bios_list.Size" type="System.Drawing.Size, System.Drawing">
-    <value>490, 21</value>
+    <value>536, 21</value>
   </data>
   <data name="vc_neo_bios_list.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -1213,34 +1207,10 @@
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;vc_neo_bios_list.Parent" xml:space="preserve">
-    <value>vc_neo_bios</value>
-  </data>
-  <data name="&gt;&gt;vc_neo_bios_list.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="vc_neo_bios.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 10</value>
-  </data>
-  <data name="vc_neo_bios.Size" type="System.Drawing.Size, System.Drawing">
-    <value>510, 50</value>
-  </data>
-  <data name="vc_neo_bios.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
-  </data>
-  <data name="vc_neo_bios.Text" xml:space="preserve">
-    <value>bios</value>
-  </data>
-  <data name="&gt;&gt;vc_neo_bios.Name" xml:space="preserve">
-    <value>vc_neo_bios</value>
-  </data>
-  <data name="&gt;&gt;vc_neo_bios.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;vc_neo_bios.Parent" xml:space="preserve">
     <value>vc_neo</value>
   </data>
-  <data name="&gt;&gt;vc_neo_bios.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;vc_neo_bios_list.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="vc_neo.Location" type="System.Drawing.Point, System.Drawing">
     <value>174, 0</value>
@@ -1261,7 +1231,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_neo.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>9</value>
   </data>
   <data name="vc_sega_console_disableresetbutton.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1384,7 +1354,7 @@
     <value>10, 19</value>
   </data>
   <data name="vc_sega_country.Size" type="System.Drawing.Size, System.Drawing">
-    <value>490, 21</value>
+    <value>516, 21</value>
   </data>
   <data name="vc_sega_country.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
@@ -1405,7 +1375,7 @@
     <value>12, 66</value>
   </data>
   <data name="vc_sega_system.Size" type="System.Drawing.Size, System.Drawing">
-    <value>510, 115</value>
+    <value>536, 115</value>
   </data>
   <data name="vc_sega_system.TabIndex" type="System.Int32, mscorlib">
     <value>21</value>
@@ -1426,7 +1396,7 @@
     <value>0</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>471, 21</value>
+    <value>496, 21</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>30, 15</value>
@@ -1459,7 +1429,7 @@
     <value>6, 18</value>
   </data>
   <data name="SEGA_console_brightness.Size" type="System.Drawing.Size, System.Drawing">
-    <value>466, 20</value>
+    <value>492, 20</value>
   </data>
   <data name="SEGA_console_brightness.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
@@ -1480,7 +1450,7 @@
     <value>12, 10</value>
   </data>
   <data name="vc_sega_display.Size" type="System.Drawing.Size, System.Drawing">
-    <value>510, 50</value>
+    <value>536, 50</value>
   </data>
   <data name="vc_sega_display.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
@@ -1519,7 +1489,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_sega.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>5</value>
   </data>
   <data name="vc_pce_backupram.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1696,7 +1666,7 @@
     <value>12, 10</value>
   </data>
   <data name="vc_pce_system.Size" type="System.Drawing.Size, System.Drawing">
-    <value>510, 110</value>
+    <value>536, 110</value>
   </data>
   <data name="vc_pce_system.TabIndex" type="System.Int32, mscorlib">
     <value>27</value>
@@ -1861,7 +1831,7 @@
     <value>12, 126</value>
   </data>
   <data name="vc_pce_display.Size" type="System.Drawing.Size, System.Drawing">
-    <value>510, 115</value>
+    <value>536, 115</value>
   </data>
   <data name="vc_pce_display.TabIndex" type="System.Int32, mscorlib">
     <value>28</value>
@@ -1900,7 +1870,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_pce.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>4</value>
   </data>
   <data name="flash_strap_reminder_list.Items" xml:space="preserve">
     <value>auto</value>
@@ -1909,7 +1879,7 @@
     <value>10, 18</value>
   </data>
   <data name="flash_strap_reminder_list.Size" type="System.Drawing.Size, System.Drawing">
-    <value>492, 21</value>
+    <value>245, 21</value>
   </data>
   <data name="flash_strap_reminder_list.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
@@ -1930,7 +1900,7 @@
     <value>12, 110</value>
   </data>
   <data name="flash_strap_reminder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>511, 50</value>
+    <value>265, 50</value>
   </data>
   <data name="flash_strap_reminder.TabIndex" type="System.Int32, mscorlib">
     <value>22</value>
@@ -2014,7 +1984,7 @@
     <value>12, 166</value>
   </data>
   <data name="flash_controls.Size" type="System.Drawing.Size, System.Drawing">
-    <value>511, 65</value>
+    <value>536, 65</value>
   </data>
   <data name="flash_controls.TabIndex" type="System.Int32, mscorlib">
     <value>21</value>
@@ -2041,7 +2011,7 @@
     <value>10, 18</value>
   </data>
   <data name="flash_quality_list.Size" type="System.Drawing.Size, System.Drawing">
-    <value>492, 21</value>
+    <value>245, 21</value>
   </data>
   <data name="flash_quality_list.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
@@ -2059,10 +2029,10 @@
     <value>0</value>
   </data>
   <data name="flash_quality.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 237</value>
+    <value>283, 110</value>
   </data>
   <data name="flash_quality.Size" type="System.Drawing.Size, System.Drawing">
-    <value>511, 50</value>
+    <value>265, 50</value>
   </data>
   <data name="flash_quality.TabIndex" type="System.Int32, mscorlib">
     <value>20</value>
@@ -2239,7 +2209,7 @@
     <value>12, 10</value>
   </data>
   <data name="flash_save_data.Size" type="System.Drawing.Size, System.Drawing">
-    <value>511, 94</value>
+    <value>536, 94</value>
   </data>
   <data name="flash_save_data.TabIndex" type="System.Int32, mscorlib">
     <value>19</value>
@@ -2278,7 +2248,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;adobe_flash.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>11</value>
   </data>
   <data name="LanguageList.Items" xml:space="preserve">
     <value>System default</value>
@@ -2302,7 +2272,7 @@
     <value>12, 27</value>
   </data>
   <data name="image_interpolation_mode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>511, 21</value>
+    <value>536, 21</value>
   </data>
   <data name="image_interpolation_mode.TabIndex" type="System.Int32, mscorlib">
     <value>45</value>
@@ -2512,7 +2482,7 @@
     <value>12, 147</value>
   </data>
   <data name="default_save_as_filename.Size" type="System.Drawing.Size, System.Drawing">
-    <value>510, 120</value>
+    <value>535, 120</value>
   </data>
   <data name="default_save_as_filename.TabIndex" type="System.Int32, mscorlib">
     <value>43</value>
@@ -2551,7 +2521,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>7</value>
   </data>
   <data name="label8.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2665,7 +2635,7 @@
     <value>12, 162</value>
   </data>
   <data name="injection_methods_sega.Size" type="System.Drawing.Size, System.Drawing">
-    <value>511, 21</value>
+    <value>536, 21</value>
   </data>
   <data name="injection_methods_sega.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
@@ -2686,7 +2656,7 @@
     <value>12, 117</value>
   </data>
   <data name="injection_methods_n64.Size" type="System.Drawing.Size, System.Drawing">
-    <value>511, 21</value>
+    <value>536, 21</value>
   </data>
   <data name="injection_methods_n64.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
@@ -2707,7 +2677,7 @@
     <value>12, 72</value>
   </data>
   <data name="injection_methods_snes.Size" type="System.Drawing.Size, System.Drawing">
-    <value>511, 21</value>
+    <value>536, 21</value>
   </data>
   <data name="injection_methods_snes.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
@@ -2728,7 +2698,7 @@
     <value>12, 27</value>
   </data>
   <data name="injection_methods_nes.Size" type="System.Drawing.Size, System.Drawing">
-    <value>511, 21</value>
+    <value>536, 21</value>
   </data>
   <data name="injection_methods_nes.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
@@ -2764,7 +2734,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panel3.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>6</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

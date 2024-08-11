@@ -74,6 +74,7 @@ namespace FriishProduce
 
         // ---------------------------------------------------------------------------------------------------------------
 
+        #region Functions
         private void ToggleSwitchChanged(object sender, EventArgs e)
         {
             ToggleSwitchText();
@@ -85,5 +86,6 @@ namespace FriishProduce
             sgenable.Text = Program.Lang.Toggle(sgenable_switch.Checked, sgenable.Name, Tag.ToString());
             padbutton.Text = Program.Lang.Toggle(padbutton_switch.Checked, padbutton.Name, Tag.ToString());
         }
+        #endregion
     }
 }

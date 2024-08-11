@@ -39,6 +39,18 @@ namespace FriishProduce
             this.bios_settings.SuspendLayout();
             this.SuspendLayout();
             // 
+            // b_ok
+            // 
+            this.b_ok.Location = new System.Drawing.Point(362, 12);
+            // 
+            // bottomPanel1
+            // 
+            this.bottomPanel1.Size = new System.Drawing.Size(560, 47);
+            // 
+            // b_cancel
+            // 
+            this.b_cancel.Location = new System.Drawing.Point(458, 12);
+            // 
             // ImportBIOS
             // 
             this.ImportBIOS.DefaultExt = "bin";
@@ -91,9 +103,9 @@ namespace FriishProduce
             this.bios_settings.Controls.Add(this.use_bios);
             this.bios_settings.Controls.Add(this.show_bios_screen);
             this.bios_settings.Controls.Add(this.toggleSwitch2);
-            this.bios_settings.Location = new System.Drawing.Point(12, 8);
+            this.bios_settings.Location = new System.Drawing.Point(12, 10);
             this.bios_settings.Name = "bios_settings";
-            this.bios_settings.Size = new System.Drawing.Size(360, 65);
+            this.bios_settings.Size = new System.Drawing.Size(536, 65);
             this.bios_settings.TabIndex = 30;
             this.bios_settings.TabStop = false;
             this.bios_settings.Tag = "bios_settings";
@@ -101,7 +113,7 @@ namespace FriishProduce
             // 
             // Options_Forwarder
             // 
-            this.ClientSize = new System.Drawing.Size(384, 132);
+            this.ClientSize = new System.Drawing.Size(560, 137);
             this.Controls.Add(this.bios_settings);
             this.Name = "Options_Forwarder";
             this.Tag = "forwarder";

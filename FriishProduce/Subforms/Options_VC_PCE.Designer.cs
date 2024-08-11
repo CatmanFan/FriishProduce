@@ -51,15 +51,15 @@ namespace FriishProduce
             // 
             // b_ok
             // 
-            this.b_ok.Location = new System.Drawing.Point(96, 12);
+            this.b_ok.Location = new System.Drawing.Point(362, 12);
             // 
             // bottomPanel1
             // 
-            this.bottomPanel1.Size = new System.Drawing.Size(294, 47);
+            this.bottomPanel1.Size = new System.Drawing.Size(560, 47);
             // 
             // b_cancel
             // 
-            this.b_cancel.Location = new System.Drawing.Point(192, 12);
+            this.b_cancel.Location = new System.Drawing.Point(458, 12);
             // 
             // sgenable_switch
             // 
@@ -130,9 +130,9 @@ namespace FriishProduce
             this.vc_options.Controls.Add(this.sgenable);
             this.vc_options.Controls.Add(this.padbutton);
             this.vc_options.Controls.Add(this.sgenable_switch);
-            this.vc_options.Location = new System.Drawing.Point(12, 9);
+            this.vc_options.Location = new System.Drawing.Point(12, 10);
             this.vc_options.Name = "vc_options";
-            this.vc_options.Size = new System.Drawing.Size(270, 110);
+            this.vc_options.Size = new System.Drawing.Size(536, 110);
             this.vc_options.TabIndex = 24;
             this.vc_options.TabStop = false;
             this.vc_options.Tag = "vc_options";
@@ -156,9 +156,9 @@ namespace FriishProduce
             this.display.Controls.Add(this.sprline);
             this.display.Controls.Add(this.raster);
             this.display.Controls.Add(this.hide_overscan);
-            this.display.Location = new System.Drawing.Point(12, 125);
+            this.display.Location = new System.Drawing.Point(12, 126);
             this.display.Name = "display";
-            this.display.Size = new System.Drawing.Size(270, 115);
+            this.display.Size = new System.Drawing.Size(536, 115);
             this.display.TabIndex = 25;
             this.display.TabStop = false;
             this.display.Tag = "display";
@@ -220,7 +220,7 @@ namespace FriishProduce
             // 
             // Options_VC_PCE
             // 
-            this.ClientSize = new System.Drawing.Size(294, 302);
+            this.ClientSize = new System.Drawing.Size(560, 422);
             this.Controls.Add(this.vc_options);
             this.Controls.Add(this.display);
             this.Name = "Options_VC_PCE";

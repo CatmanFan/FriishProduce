@@ -84,6 +84,9 @@ namespace FriishProduce
             Options["hbm_no_save"] = Options["shared_object_capability"] == "on" ? "no" : "yes";
         }
 
+        // ---------------------------------------------------------------------------------------------------------------
+
+        #region Functions
         private void checkBoxChanged(object sender, EventArgs e)
         {
             if (sender == save_data_enable) vff_cache_size.Enabled = vff_cache_size_list.Enabled = vff_sync_on_write.Enabled = save_data_enable.Checked;
@@ -104,5 +107,6 @@ namespace FriishProduce
                 if (!midi.Checked) DLSPath = null;
             }
         }
+        #endregion
     }
 }

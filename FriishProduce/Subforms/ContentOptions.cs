@@ -7,26 +7,27 @@ namespace FriishProduce
 {
     public partial class ContentOptions : Form
     {
-        #region Variables to be changed go here. They should not be copied!
-        public IDictionary<string, string> Options { get; set; }
-        public int EmuType { get; set; }
-        #endregion
-
         public ContentOptions()
         {
             InitializeComponent();
 
+            // Add options that can be changed in string format
+            // ************************************************
             Options = new Dictionary<string, string>
             {
             };
+            // ************************************************
 
             // Cosmetic
             // *******
             if (!DesignMode)
             {
-                b_ok.Click += OK_Click;
-                b_cancel.Click += Cancel_Click;
-                Load += Form_Load;
+                // Remove this code when creating a new copy
+                // *****************************************
+                   b_ok.Click += OK_Click;
+                   b_cancel.Click += Cancel_Click;
+                   Load += Form_Load;
+                // *****************************************
             }
         }
 
@@ -49,6 +50,27 @@ namespace FriishProduce
         }
 
         // ---------------------------------------------------------------------------------------------------------------
+
+        #region Variables
+
+        // Variables to be changed go here. They should not be copied!
+
+        #endregion
+
+        // ---------------------------------------------------------------------------------------------------------------
+
+        #region Functions
+
+        // Additional functions for Form go here.
+
+        #endregion
+
+        // ---------------------------------------------------------------------------------------------------------------
+        // /!\ REMAINING FUNCTIONS AND VALUES NEEDED FOR THE FORM BELOW. THERE IS NO NEED TO COPY THEM. /!\
+        // ---------------------------------------------------------------------------------------------------------------
+
+        public IDictionary<string, string> Options { get; set; }
+        public int EmuType { get; set; }
 
         protected void OK_Click(object sender, EventArgs e)
         {

@@ -16,6 +16,7 @@ namespace FriishProduce
         private bool isDirty = false;
         private bool nodeLocked = false;
         private string nodeName;
+        private int sysLangValue;
 
         public SettingsForm()
         {
@@ -47,15 +48,15 @@ namespace FriishProduce
             TreeView.Nodes[0].Text = Program.Lang.String(TreeView.Nodes[0].Tag.ToString(), Tag.ToString());
             TreeView.Nodes[1].Text = Program.Lang.String(TreeView.Nodes[1].Tag.ToString(), Tag.ToString());
             TreeView.Nodes[2].Text = Program.Lang.String(TreeView.Nodes[2].Tag.ToString(), Tag.ToString());
-            TreeView.Nodes[1].Expand();
-            TreeView.Nodes[1].Nodes[0].Text = Program.Lang.String("vc");
-            TreeView.Nodes[1].Nodes[0].Nodes[0].Text = Program.Lang.Console(Platform.NES);
-            TreeView.Nodes[1].Nodes[0].Nodes[1].Text = Program.Lang.Console(Platform.N64);
-            TreeView.Nodes[1].Nodes[0].Nodes[2].Text = label8.Text = Program.Lang.String("group1", "platforms");
-            TreeView.Nodes[1].Nodes[0].Nodes[3].Text = Program.Lang.Console(Platform.PCE);
-            TreeView.Nodes[1].Nodes[0].Nodes[4].Text = Program.Lang.Console(Platform.NEO);
-            TreeView.Nodes[1].Nodes[1].Text = Program.Lang.Console(Platform.Flash);
-            TreeView.Nodes[1].Nodes[2].Text = Program.Lang.String("forwarders", "platforms");
+            TreeView.Nodes[2].Expand();
+            TreeView.Nodes[2].Nodes[0].Text = Program.Lang.String("vc");
+            TreeView.Nodes[2].Nodes[0].Nodes[0].Text = Program.Lang.Console(Platform.NES);
+            TreeView.Nodes[2].Nodes[0].Nodes[1].Text = Program.Lang.Console(Platform.N64);
+            TreeView.Nodes[2].Nodes[0].Nodes[2].Text = label8.Text = Program.Lang.String("group1", "platforms");
+            TreeView.Nodes[2].Nodes[0].Nodes[3].Text = Program.Lang.Console(Platform.PCE);
+            TreeView.Nodes[2].Nodes[0].Nodes[4].Text = Program.Lang.Console(Platform.NEO);
+            TreeView.Nodes[2].Nodes[1].Text = Program.Lang.Console(Platform.Flash);
+            TreeView.Nodes[2].Nodes[2].Text = Program.Lang.String("forwarders", "platforms");
 
             // -----------------------------
 
@@ -63,15 +64,15 @@ namespace FriishProduce
             // Add all languages
             // -------------------------------------------
             lngList.Items.Clear();
+            foreach (var item in Program.Lang.List) lngList.Items.Add(item.Value);
             lngList.Items.Add("<" + Program.Lang.String("system_default", Name) + ">");
-            foreach (var item in Program.Lang.List)
-                lngList.Items.Add(item.Value);
 
-            if (Default.language == "sys") lngList.SelectedIndex = 0;
-            else lngList.SelectedIndex = Program.Lang.List.Keys.ToList().IndexOf(Default.language) + 1;
+            sysLangValue = lngList.Items.Count - 1;
+            if (Default.language == "sys") lngList.SelectedIndex = sysLangValue;
+            else lngList.SelectedIndex = Program.Lang.List.Keys.ToList().IndexOf(Default.language);
 
             #region Localization
-            image_interpolation_mode.Text = Program.Lang.String(image_interpolation_mode.Name, "projectform");
+            label3.Text = Program.Lang.String(image_interpolation_mode.Name, "projectform");
             image_interpolation_mode.Items.Clear();
             image_interpolation_mode.Items.AddRange(Program.Lang.StringArray("image_interpolation_mode", "projectform"));
             image_interpolation_mode.SelectedIndex = Default.image_interpolation;
@@ -131,7 +132,7 @@ namespace FriishProduce
             // -----------------------------
 
             Program.Lang.String(vc_nes_palette, "vc_nes");
-            Program.Lang.String(vc_nes_palette_use_on_banner, "vc_nes");
+            Program.Lang.String(vc_nes_palette_banner_usage, "vc_nes");
             Program.Lang.String(vc_nes_palettelist, "vc_nes");
 
             // -----------------------------
@@ -143,7 +144,6 @@ namespace FriishProduce
             // Program.Lang.String(vc_n64_patch_widescreen, "vc_n64");
             Program.Lang.String(vc_n64_romc_type, "vc_n64");
             Program.Lang.String(vc_n64_romc_type_list, "vc_n64");
-            Program.AutoSizeControl(vc_n64_romc_type_list, vc_n64_romc_type);
 
             // -----------------------------
 
@@ -163,6 +163,7 @@ namespace FriishProduce
 
             // -----------------------------
 
+            Program.Lang.String(vc_neo_bios, "vc_neo");
             Program.Lang.String(vc_neo_bios_list, "vc_neo");
             vc_neo_bios_list.Items.RemoveAt(0);
 
@@ -192,8 +193,7 @@ namespace FriishProduce
             autolink_save_data.Checked = Default.link_save_data;
             reset_all_dialogs.Checked = false;
             toggleSwitch2.Checked = bool.Parse(FORWARDER.Default.show_bios_screen);
-            FStorage_SD.Checked = FORWARDER.Default.root_storage_device == 0;
-            FStorage_USB.Checked = FORWARDER.Default.root_storage_device == 1;
+            forwarder_type.SelectedIndex = FORWARDER.Default.root_storage_device;
             default_export_filename_tb.Text = Default.default_export_filename;
             default_save_as_filename_tb.Text = Default.default_save_as_filename;
 
@@ -217,7 +217,7 @@ namespace FriishProduce
 
             // NES
             vc_nes_palettelist.SelectedIndex = int.Parse(VC_NES.Default.palette);
-            vc_nes_palette_use_on_banner.Checked = bool.Parse(VC_NES.Default.palette_use_on_banner);
+            vc_nes_palette_banner_usage.Checked = bool.Parse(VC_NES.Default.palette_banner_usage);
 
             // N64
             vc_n64_patch_fixbrightness.Checked = bool.Parse(VC_N64.Default.patch_fixbrightness);
@@ -310,7 +310,7 @@ namespace FriishProduce
             // -------------------------------------------
             // Language setting
             // -------------------------------------------
-            var lng = lngList.SelectedIndex == 0 ? "sys" : "en";
+            var lng = lngList.SelectedIndex == sysLangValue ? "sys" : "en";
             if (lng != "sys")
                 foreach (var item in Program.Lang.List)
                     if (item.Value == lngList.SelectedItem.ToString())
@@ -337,11 +337,11 @@ namespace FriishProduce
             Default.default_injection_method_sega = injection_methods_sega.SelectedIndex;
             Default.Save();
 
-            FORWARDER.Default.root_storage_device = FStorage_USB.Checked ? 1 : 0;
+            FORWARDER.Default.root_storage_device = forwarder_type.SelectedIndex;
             FORWARDER.Default.show_bios_screen = toggleSwitch2.Checked.ToString();
 
             VC_NES.Default.palette = vc_nes_palettelist.SelectedIndex.ToString();
-            VC_NES.Default.palette_use_on_banner = vc_nes_palette_use_on_banner.Checked.ToString();
+            VC_NES.Default.palette_banner_usage = vc_nes_palette_banner_usage.Checked.ToString();
 
             VC_N64.Default.patch_fixbrightness = vc_n64_patch_fixbrightness.Checked.ToString();
             VC_N64.Default.patch_fixcrashes = vc_n64_patch_fixcrashes.Checked.ToString();
@@ -401,12 +401,17 @@ namespace FriishProduce
             // -------------------------------------------
             SaveAll();
 
-            if (isDirty)
-                MessageBox.Show(Program.Lang.Msg(0));
+            bool restart = isDirty && MessageBox.Show(Program.Lang.Msg(0), MessageBox.Buttons.YesNo, MessageBox.Icons.None) == MessageBox.Result.Yes;
 
             isShown = false;
             isDirty = false;
             DialogResult = DialogResult.OK;
+
+            if (restart)
+            {
+                Application.Restart();
+                Environment.Exit(0);
+            }
         }
 
         private void Cancel_Click(object sender, EventArgs e)

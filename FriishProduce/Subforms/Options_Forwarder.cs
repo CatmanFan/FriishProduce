@@ -9,7 +9,7 @@ namespace FriishProduce
     public partial class Options_Forwarder : ContentOptions
     {
         private Platform platform { get; set; }
-        private string BIOSPath { get; set; }
+        private string biosPath { get; set; }
 
         public Options_Forwarder(Platform platform)
         {
@@ -50,7 +50,7 @@ namespace FriishProduce
                 toggleSwitch1.Checked = valid;
                 toggleSwitch2.Checked = bool.Parse(Options["BIOSScreen"]);
 
-                if (valid) BIOSPath = Options["BIOSPath"];
+                if (valid) biosPath = Options["BIOSPath"];
 
                 show_bios_screen.Enabled = toggleSwitch2.Enabled = valid;
             }
@@ -59,33 +59,35 @@ namespace FriishProduce
 
         protected override void SaveOptions()
         {
-            Options["BIOSPath"] = BIOSPath;
+            Options["BIOSPath"] = biosPath;
             Options["BIOSScreen"] = toggleSwitch2.Checked.ToString();
         }
 
         // ---------------------------------------------------------------------------------------------------------------
 
+        #region Functions
         private void BIOSChanged(object sender, EventArgs e)
         {
             if (toggleSwitch1.Checked)
             {
-                if (BIOSPath == null)
+                if (biosPath == null)
                 {
                     ImportBIOS.Title = toggleSwitch1.Text;
 
                     if (ImportBIOS.ShowDialog() == DialogResult.OK)
                     {
                         if (BIOS.Verify(ImportBIOS.FileName, platform))
-                            BIOSPath = ImportBIOS.FileName;
+                            biosPath = ImportBIOS.FileName;
                         else toggleSwitch1.Checked = false;
                     }
                     else toggleSwitch1.Checked = false;
                 }
             }
 
-            if (!toggleSwitch1.Checked) BIOSPath = null;
+            if (!toggleSwitch1.Checked) biosPath = null;
 
             show_bios_screen.Enabled = toggleSwitch2.Enabled = toggleSwitch1.Checked;
         }
+        #endregion
     }
 }

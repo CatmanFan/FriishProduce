@@ -36,7 +36,8 @@ namespace FriishProduce
             // *******
             if (Options != null)
             {
-                patch_autosizerom.Enabled           = patch_fixcrashes.Enabled = EmuType <= 1;
+                patch_autosizerom.Enabled = patch_fixcrashes.Enabled = EmuType <= 1;
+
                 patch_fixbrightness.Checked         = bool.Parse(Options["brightness"]);
                 patch_fixcrashes.Checked            = bool.Parse(Options["crash"]);
                 patch_expandedram.Checked           = bool.Parse(Options["expansion"]);
@@ -59,19 +60,17 @@ namespace FriishProduce
 
         // ---------------------------------------------------------------------------------------------------------------
 
+        #region Functions
         private void Form_IsShown(object sender, EventArgs e)
         {
-            g1.Height = 160;
-
             bool isRomc = EmuType == 3;
-            romc_type_list.Visible = romc_type.Visible = romc_type.Enabled = isRomc;
-            if (!isRomc) g1.Height -= 50;
-            Height = g1.Height + 110;
 
             if (!patch_autosizerom.Enabled) patch_autosizerom.Checked = false;
             if (!patch_fixcrashes.Enabled) patch_fixcrashes.Checked = false;
 
-            CenterToParent();
+            // g1.Height = patch_autosizerom.Enabled && patch_fixcrashes.Enabled ? 160 : 110;
+            g2.Enabled = isRomc;
         }
+        #endregion
     }
 }

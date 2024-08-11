@@ -9,13 +9,9 @@ legacy/
 /legacy/
 /packages
 
-/FriishProduce/langs/_source.json
-/FriishProduce/langs/crowdin
-/FriishProduce/Data
-/FriishProduce/Database_Test.xml
-/FriishProduce/Emanuals
 /VCManualCreator
 /FriishProduce_v2.0
+/FriishProduce/Data
+/FriishProduce/Emanuals
 /FriishProduce/Resources/bg_0.png
 /FriishProduce/Resources/bg_1.pdn
-/FriishProduce/Resources/logo.pdn

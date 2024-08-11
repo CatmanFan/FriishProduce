@@ -10,8 +10,6 @@ namespace FriishProduce
 {
     public partial class Options_VC_NES : ContentOptions
     {
-        readonly ToolTip t = new ToolTip();
-
         public Options_VC_NES() : base()
         {
             InitializeComponent();
@@ -19,7 +17,7 @@ namespace FriishProduce
             Options = new Dictionary<string, string>
             {
                 { "palette", VC_NES.Default.palette },
-                { "use_tImg", VC_NES.Default.palette_use_on_banner }
+                { "use_tImg", VC_NES.Default.palette_banner_usage }
             };
 
             // Cosmetic
@@ -40,7 +38,7 @@ namespace FriishProduce
             if (Options != null)
             {
                 PaletteList.SelectedIndex           = int.Parse(Options["palette"]);
-                palette_use_on_banner.Checked       = bool.Parse(Options["use_tImg"]);
+                palette_banner_usage.Checked       = bool.Parse(Options["use_tImg"]);
             }
             // *******
         }
@@ -48,11 +46,18 @@ namespace FriishProduce
         protected override void SaveOptions()
         {
             Options["palette"]                      = PaletteList.SelectedIndex.ToString();
-            Options["use_tImg"]                     = palette_use_on_banner.Checked.ToString();
+            Options["use_tImg"]                     = palette_banner_usage.Checked.ToString();
         }
 
         // ---------------------------------------------------------------------------------------------------------------
 
+        #region Variables
+        readonly ToolTip t = new ToolTip();
+        #endregion
+
+        // ---------------------------------------------------------------------------------------------------------------
+
+        #region Functions
         private void PaletteChanged(object sender, EventArgs e)
         {
             if (DesignMode) return;
@@ -90,6 +95,7 @@ namespace FriishProduce
 
             t.SetToolTip(PaletteList, author);
         }
+        #endregion
 
         #region Palettes handler
         public readonly string[][] Palettes = new string[][]

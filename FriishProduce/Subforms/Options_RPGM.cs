@@ -60,6 +60,7 @@ namespace FriishProduce
 
         // ---------------------------------------------------------------------------------------------------------------
 
+        #region Functions
         private void RTPChanged(object sender, EventArgs e)
         {
             if (toggleSwitch1.Checked)
@@ -83,5 +84,6 @@ namespace FriishProduce
             rtp_folder.Text = toggleSwitch1.Checked ? rtp : Program.Lang.String("none");
             rtp_folder.Enabled = toggleSwitch1.Checked;
         }
+        #endregion
     }
 }

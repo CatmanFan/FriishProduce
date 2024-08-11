@@ -8,9 +8,6 @@ namespace FriishProduce
 {
     public partial class Options_VC_NEO : ContentOptions
     {
-        public bool IsCD { get; set; }
-        private string BIOSPath { get; set; }
-
         public Options_VC_NEO()
         {
             InitializeComponent();
@@ -42,64 +39,81 @@ namespace FriishProduce
                 if (Options["BIOSPath"] != null || File.Exists(Options["BIOSPath"]))
                 {
                     Options["BIOS"] = "custom";
-                    BIOSPath = Options["BIOSPath"];
+                    biosPath = Options["BIOSPath"];
                 }
 
                 else if (Options["BIOS"] == "custom") Options["BIOS"] = VC_NEO.Default.bios;
 
-                bios_list.SelectedIndex = GetBIOSIndex(Options["BIOS"]);
+                bios_list.SelectedIndex = biosIndex;
             }
             // *******
         }
 
         protected override void SaveOptions()
         {
-            Options["BIOSPath"] = BIOSPath;
-            Options["BIOS"] = Options["BIOSPath"] != null || File.Exists(Options["BIOSPath"]) ? "custom" : GetBIOSName(bios_list.SelectedIndex);
+            Options["BIOSPath"] = biosPath;
+            Options["BIOS"] = Options["BIOSPath"] != null || File.Exists(Options["BIOSPath"]) ? "custom" : biosType;
         }
 
         // ---------------------------------------------------------------------------------------------------------------
 
-        private string GetBIOSName(int i)
+        #region Variables
+        private string biosPath { get; set; }
+
+        private string biosType
         {
-            return i switch
+            get
             {
-                0 => "custom",
-                1 => "VC1",
-                2 => "VC2",
-                3 => "VC3",
-                _ => "",
-            };
+                return bios_list.SelectedIndex switch
+                {
+                    0 => "custom",
+                    1 => "VC1",
+                    2 => "VC2",
+                    3 => "VC3",
+                    _ => "",
+                };
+            }
         }
 
-        private int GetBIOSIndex(string name)
+        private int biosIndex
         {
-            return name.ToLower() switch
+            get
             {
-                "custom" => 0,
-                "vc1" => 1,
-                "vc2" => 2,
-                "vc3" => 3,
-                _ => -1,
-            };
+                string type = Options["BIOS"] == "custom" ? VC_NEO.Default.bios : Options["BIOS"];
+                return type switch
+                {
+                    "custom" => 0,
+                    "vc1" => 1,
+                    "vc2" => 2,
+                    "vc3" => 3,
+                    _ => -1,
+                };
+            }
         }
 
+        public bool IsCD { get; set; }
+        #endregion
+
+        // ---------------------------------------------------------------------------------------------------------------
+
+        #region Functions
         private void BIOSChanged(object sender, EventArgs e)
         {
-            if (GetBIOSName(bios_list.SelectedIndex) == "custom")
+            if (biosType == "custom")
             {
-                if (BIOSPath == null)
+                if (biosPath == null)
                 {
-                    ImportBIOS.Title = bios_list.SelectedItem.ToString();
+                    biosImport.Title = bios_list.SelectedItem.ToString();
 
-                    if (ImportBIOS.ShowDialog() == DialogResult.OK)
-                        BIOSPath = ImportBIOS.FileName;
+                    if (biosImport.ShowDialog() == DialogResult.OK)
+                        biosPath = biosImport.FileName;
 
-                    else bios_list.SelectedIndex = GetBIOSIndex(Options["BIOS"] == "custom" ? VC_NEO.Default.bios : Options["BIOS"]);
+                    else bios_list.SelectedIndex = biosIndex;
                 }
             }
 
-            else if (bios_list.SelectedIndex > 0) BIOSPath = null;
+            else if (bios_list.SelectedIndex > 0) biosPath = null;
         }
+        #endregion
     }
 }

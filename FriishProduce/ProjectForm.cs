@@ -21,7 +21,7 @@ namespace FriishProduce
         protected string WADPath = null;
 
         protected bool isVirtualConsole { get => injection_methods.SelectedItem?.ToString().ToLower() == Program.Lang.String("vc").ToLower(); }
-        protected bool showPatch = true;
+        protected bool showPatch = false;
         protected bool showSaveData
         {
             get => _showSaveData;
@@ -216,7 +216,7 @@ namespace FriishProduce
                 Manual = (manual_type_list.SelectedIndex, manual),
                 Img = img?.Source ?? null,
                 InjectionMethod = injection_methods.SelectedIndex,
-                ForwarderStorageDevice = forwarder_usb.Checked ? 1 : 0,
+                ForwarderStorageDevice = forwarder_type.SelectedIndex,
                 ContentOptions = contentOptions ?? null,
                 WADRegion = region_list.SelectedIndex,
                 LinkSaveDataTitle = autolink_save_data.Checked,
@@ -292,12 +292,12 @@ namespace FriishProduce
 
             // Regions lists
             region_list.Items.Clear();
-            region_list.Items.Add(Program.Lang.String("keep_original"));
+            region_list.Items.Add(Program.Lang.String("original"));
             region_list.Items.Add(Program.Lang.String("region_rf"));
             region_list.SelectedIndex = 0;
 
             // Video modes
-            video_modes.Items[0] = Program.Lang.String("keep_original");
+            video_modes.Items[0] = Program.Lang.String("original");
             video_modes.SelectedIndex = 0;
 
             switch (Program.Lang.Current.ToLower())
@@ -324,7 +324,7 @@ namespace FriishProduce
                     break;
             }
 
-            toolTip = new CustomToolTip();
+            /* toolTip = new CustomToolTip();
             toolTip.SetToolTip(channel_title, Program.Lang.ToolTip(0));
             toolTip.SetToolTip(title_id_upper, Program.Lang.ToolTip(1));
             toolTip.SetToolTip(region_list, Program.Lang.ToolTip(2));
@@ -335,8 +335,8 @@ namespace FriishProduce
             toolTip.SetToolTip(released, Program.Lang.ToolTip(7));
             toolTip.SetToolTip(players, Program.Lang.ToolTip(8));
             toolTip.SetToolTip(injection_methods, Program.Lang.ToolTip(9));
-            toolTip.SetToolTip(import_wad_from_file, Program.Lang.ToolTip(10));
-
+            toolTip.SetToolTip(import_wad_from_file, Program.Lang.ToolTip(10)); */
+            
             #endregion
 
             baseName.Font = new Font(baseName.Font, FontStyle.Bold);
@@ -496,31 +496,37 @@ namespace FriishProduce
                 case Platform.NES:
                     TIDCode = "F";
                     rom = new ROM_NES();
+                    showPatch = true;
                     break;
 
                 case Platform.SNES:
                     TIDCode = "J";
                     rom = new ROM_SNES();
+                    showPatch = true;
                     break;
 
                 case Platform.N64:
                     TIDCode = "N";
                     rom = new ROM_N64();
+                    showPatch = true;
                     break;
 
                 case Platform.SMS:
                     TIDCode = "L";
                     rom = new ROM_SEGA() { IsSMS = true };
+                    showPatch = true;
                     break;
 
                 case Platform.SMD:
                     TIDCode = "M";
                     rom = new ROM_SEGA() { IsSMS = false };
+                    showPatch = true;
                     break;
 
                 case Platform.PCE:
                     TIDCode = "P";
                     rom = new ROM_PCE();
+                    showPatch = true;
                     break;
 
                 case Platform.PCECD:
@@ -536,22 +542,20 @@ namespace FriishProduce
                 case Platform.MSX:
                     TIDCode = "X";
                     rom = new ROM_MSX();
+                    showPatch = true;
                     break;
 
                 case Platform.Flash:
                     rom = new SWF();
-                    showPatch = false;
                     break;
 
                 case Platform.RPGM:
                     rom = new RPGM();
-                    showPatch = false;
                     players.Enabled = false;
                     break;
 
                 default:
                     rom = new Disc();
-                    showPatch = false;
                     break;
             }
 
@@ -623,8 +627,7 @@ namespace FriishProduce
             autolink_save_data.Checked = project == null ? Properties.Settings.Default.link_save_data : project.LinkSaveDataTitle;
 
             int forwarderStorageDevice = project == null ? Options.FORWARDER.Default.root_storage_device : project.ForwarderStorageDevice;
-            forwarder_sd.Checked  = forwarderStorageDevice == 0;
-            forwarder_usb.Checked = forwarderStorageDevice == 1;
+            forwarder_type.SelectedIndex = forwarderStorageDevice;
 
             IsEmpty = project == null;
             IsModified = false;
@@ -723,14 +726,16 @@ namespace FriishProduce
             int maxLength = 75;
 
             rom_filename.Text = !string.IsNullOrWhiteSpace(rom?.FilePath) ? Path.GetFileName(rom.FilePath) : Program.Lang.String("none");
-            patch_filename.Text = !string.IsNullOrWhiteSpace(patch) ? Path.GetFileName(patch) : Program.Lang.String("none");
+            patch_filename.Text = !showPatch ? Program.Lang.String("not_supported") : !string.IsNullOrWhiteSpace(patch) ? Path.GetFileName(patch) : Program.Lang.String("none");
             if (rom_filename.Text.Length > maxLength) rom_filename.Text = rom_filename.Text.Substring(0, maxLength - 3) + "...";
             if (patch_filename.Text.Length > maxLength) patch_filename.Text = patch_filename.Text.Substring(0, maxLength - 3) + "...";
 
             rom_filename.Enabled = !string.IsNullOrWhiteSpace(rom?.FilePath);
             patch_filename.Enabled = !string.IsNullOrWhiteSpace(patch);
 
-            hasImage.Image = (img?.Source != null) ? Properties.Resources.yes : Properties.Resources.no;
+            hasRom.Image = !string.IsNullOrWhiteSpace(rom?.FilePath) ? Properties.Resources.yes : Properties.Resources.no;
+            hasPatch.Image = !string.IsNullOrWhiteSpace(patch) && showPatch ? Properties.Resources.yes : Properties.Resources.no;
+            hasImage.Image = img?.Source != null ? Properties.Resources.yes : Properties.Resources.no;
         }
 
         private void randomTID()
@@ -940,7 +945,7 @@ namespace FriishProduce
                 LoadImage();
             }
 
-            if (sender == forwarder_sd || sender == forwarder_usb)
+            if (sender == forwarder_type)
             {
                 refreshData();
             }
@@ -1384,9 +1389,9 @@ namespace FriishProduce
                 {
                     System.Media.SystemSounds.Beep.Play();
 
-                    switch (MessageBox.Show(Program.Lang.Msg(3), null, MessageBox.Buttons.Custom, MessageBox.Icons.Information))
+                    switch (MessageBox.Show(Program.Lang.Msg(3), null, MessageBox.Buttons.YesNo, MessageBox.Icons.Information))
                     {
-                        case MessageBox.Result.Button1:
+                        case MessageBox.Result.Yes:
                             System.Diagnostics.Process.Start("explorer.exe", $"/select, \"{targetFile}\"");
                             break;
                     }
@@ -1415,7 +1420,7 @@ namespace FriishProduce
                 ROM = rom.FilePath,
                 ID = _tID,
                 Emulator = injection_methods.SelectedItem.ToString(),
-                Storage = forwarder_usb.Checked ? Forwarder.Storages.USB : Forwarder.Storages.SD,
+                Storage = forwarder_type.SelectedIndex switch { 1 => Forwarder.Storages.USB, _ => Forwarder.Storages.SD },
                 Name = _channelTitles[1]
             };
 

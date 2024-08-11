@@ -38,14 +38,26 @@ namespace FriishProduce
             this.rpgm_settings.SuspendLayout();
             this.SuspendLayout();
             // 
+            // b_ok
+            // 
+            this.b_ok.Location = new System.Drawing.Point(362, 12);
+            // 
+            // bottomPanel1
+            // 
+            this.bottomPanel1.Size = new System.Drawing.Size(560, 47);
+            // 
+            // b_cancel
+            // 
+            this.b_cancel.Location = new System.Drawing.Point(458, 12);
+            // 
             // rpgm_settings
             // 
             this.rpgm_settings.Controls.Add(this.rtp_folder);
             this.rpgm_settings.Controls.Add(this.use_rtp);
             this.rpgm_settings.Controls.Add(this.toggleSwitch1);
-            this.rpgm_settings.Location = new System.Drawing.Point(12, 8);
+            this.rpgm_settings.Location = new System.Drawing.Point(12, 10);
             this.rpgm_settings.Name = "rpgm_settings";
-            this.rpgm_settings.Size = new System.Drawing.Size(360, 60);
+            this.rpgm_settings.Size = new System.Drawing.Size(536, 60);
             this.rpgm_settings.TabIndex = 29;
             this.rpgm_settings.TabStop = false;
             this.rpgm_settings.Tag = "rpgm_settings";
@@ -89,7 +101,7 @@ namespace FriishProduce
             // 
             // Options_RPGM
             // 
-            this.ClientSize = new System.Drawing.Size(384, 128);
+            this.ClientSize = new System.Drawing.Size(560, 130);
             this.Controls.Add(this.rpgm_settings);
             this.Name = "Options_RPGM";
             this.Tag = "forwarder";
