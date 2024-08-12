@@ -59,6 +59,7 @@ namespace FriishProduce
             this.vc_n64_romc_type = new System.Windows.Forms.GroupBox();
             this.forwarder = new System.Windows.Forms.Panel();
             this.forwarder_root_device = new System.Windows.Forms.GroupBox();
+            this.forwarder_type = new System.Windows.Forms.ComboBox();
             this.bios_settings = new System.Windows.Forms.GroupBox();
             this.show_bios_screen = new System.Windows.Forms.Label();
             this.toggleSwitch2 = new JCS.ToggleSwitch();
@@ -127,7 +128,6 @@ namespace FriishProduce
             this.injection_methods_n64 = new System.Windows.Forms.ComboBox();
             this.injection_methods_snes = new System.Windows.Forms.ComboBox();
             this.injection_methods_nes = new System.Windows.Forms.ComboBox();
-            this.forwarder_type = new System.Windows.Forms.ComboBox();
             this.vc_n64_options.SuspendLayout();
             this.bottomPanel2.SuspendLayout();
             this.bottomPanel1.SuspendLayout();
@@ -396,6 +396,17 @@ namespace FriishProduce
             this.forwarder_root_device.Name = "forwarder_root_device";
             this.forwarder_root_device.TabStop = false;
             this.forwarder_root_device.Tag = "forwarder_root_device";
+            // 
+            // forwarder_type
+            // 
+            this.forwarder_type.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.forwarder_type.FormattingEnabled = true;
+            this.forwarder_type.Items.AddRange(new object[] {
+            resources.GetString("forwarder_type.Items"),
+            resources.GetString("forwarder_type.Items1")});
+            resources.ApplyResources(this.forwarder_type, "forwarder_type");
+            this.forwarder_type.Name = "forwarder_type";
+            this.forwarder_type.Tag = "";
             // 
             // bios_settings
             // 
@@ -935,17 +946,6 @@ namespace FriishProduce
             this.injection_methods_nes.Name = "injection_methods_nes";
             this.injection_methods_nes.Tag = "";
             // 
-            // forwarder_type
-            // 
-            this.forwarder_type.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.forwarder_type.FormattingEnabled = true;
-            this.forwarder_type.Items.AddRange(new object[] {
-            resources.GetString("forwarder_type.Items"),
-            resources.GetString("forwarder_type.Items1")});
-            resources.ApplyResources(this.forwarder_type, "forwarder_type");
-            this.forwarder_type.Name = "forwarder_type";
-            this.forwarder_type.Tag = "";
-            // 
             // SettingsForm
             // 
             this.AcceptButton = this.b_ok;
@@ -955,16 +955,16 @@ namespace FriishProduce
             this.ControlBox = false;
             this.Controls.Add(this.bottomPanel2);
             this.Controls.Add(this.TreeView);
-            this.Controls.Add(this.forwarder);
-            this.Controls.Add(this.vc_n64);
-            this.Controls.Add(this.vc_pce);
-            this.Controls.Add(this.vc_sega);
-            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.vc_neo);
             this.Controls.Add(this.vc_nes);
             this.Controls.Add(this.adobe_flash);
+            this.Controls.Add(this.forwarder);
+            this.Controls.Add(this.vc_n64);
+            this.Controls.Add(this.vc_pce);
+            this.Controls.Add(this.vc_sega);
+            this.Controls.Add(this.panel3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MaximizeBox = false;

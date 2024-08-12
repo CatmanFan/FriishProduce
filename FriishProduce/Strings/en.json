@@ -144,7 +144,6 @@
 		    "application":						"Application",
 			"language":							"Language",
 			"system_default":					"System default",
-			"icon_animation":					"Animate channel icon preview",
 			"reset_all_dialogs":				"Reset all dialogs",
 			"use_custom_database":				"Use custom WAD database file",
 
@@ -152,6 +151,7 @@
 			"check_for_updates":				"Check for updates",
 			"auto_update_check":				"Check for updates automatically on startup",
 
+			"gamedata_settings":				"Game data settings",
 			"gamedata_source_image":			"Source images website:",
 			"auto_retrieve_gamedata_online":	"Automatically retrieve after opening a ROM",
 			"autolink_save_data":				"Link save data title automatically with banner and channel names",
@@ -167,7 +167,6 @@
 		"projectform": {
 			"main":								"Main files",
 			"filename":							"Filename:",
-			"software_name":					"Software name: {0}",
 			"import_rom":						"Import {0}...",
 			"import_image":						"Import image...",
 			"import_patch":						"Import patch...",
@@ -234,7 +233,6 @@
 			"patch_fixcrashes":					"Fix crashes",
 			"patch_expandedram":				"Enable extended RAM",
 			"patch_autosizerom":				"Allocate ROM size",
-			"patch_widescreen":					"Widescreen display",
 
 			"romc_type":						"ROM compression method",
 			"romc_type0":						"ROMC (Type 0)",

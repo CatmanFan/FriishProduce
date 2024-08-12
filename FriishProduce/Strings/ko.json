@@ -124,172 +124,162 @@
 
 	"strings": {
 		"mainform": {
-			"file":								"&File",
-			"project":							"&Project",
-			"help":								"&Help",
-			"new_project":						"&New...",
-			"open_project":						"&Open project...",
-			"save_project_as":					"Save project &as...",
-			"close_project":					"&Close project",
-			"open_gamefile":					"Open &game file...",
-			"retrieve_gamedata_online":			"&Retrieve game data online",
+			"file":								"파일(&F)",
+			"project":							"프로젝트(&P)",
+			"help":								"도움말(&H)",
+			"new_project":						"새로운...(&N)",
+			"open_project":						"프로잭트 열기...(&O)",
+			"save_project_as":					"다른 이름으로 저잔...(&S)",
+			"close_project":					"프로젝트 닫기(&C)",
+			"retrieve_gamedata_online":			"온라인으로 게임 데이터 검색(&R)",
 			"export":							"&Export...",
-			"settings":							"&Settings",
-			"exit":								"&Exit",
+			"settings":							"설정(&S)",
+			"exit":								"종로(&E)",
 			"project_type":						"{0} WAD",
-			"untitled_project":					"Untitled {0} WAD"
+			"untitled_project":					"제목 없음 {0} WAD",
 		},
 
 		"settingsform": {
-		    "application":						"Application",
-			"language":							"Language",
-			"system_default":					"System default",
-			"icon_animation":					"Animate channel icon preview",
-			"reset_all_dialogs":				"Reset all dialogs",
-			"use_custom_database":				"Use custom WAD database file",
-
-			"updater":							"Updater",
-			"check_for_updates":				"Check for updates",
-			"auto_update_check":				"Check for updates automatically on startup",
-
-			"gamedata_source_image":			"Source images website:",
-			"auto_retrieve_gamedata_online":	"Automatically retrieve after opening a ROM",
-			"autolink_save_data":				"Link save data title automatically with banner and channel names",
+		    "application":						"응용 프로그램",
+			"language":							"언어",
+			"system_default":					"시스템 기본값",
+			"reset_all_dialogs":				"모든 대화상자 재설정",
+			"use_custom_database":				"커스텀 WAD 데이터베이스 파일 사용",
 			
-			"default_settings":					"Default settings",
+			"updater":							"업데이터",
+			"check_for_updates":				"업데이트 확인",
+			"auto_update_check":				"시작 시 자동으로 업데이트 확인",
+			
+			"gamedata_source_image":			"소스 이미지 웹사이트:",
+			"auto_retrieve_gamedata_online":	"롬을 연 후 자동으로 검색",
+			"autolink_save_data":				"배너 및 채널 이름으로 저장 데이터 제목을 자동으로 연결",
+			
+			"default_settings":					"기본값 설정",
 			"default_injection_methods":		"Default injection methods",
 			"default_save_as_filename":			"Default target filename",
 			"default_save_as_project":			"Projects:",
 			"default_save_as_wad":				"Exported WADs:",
-			"default_save_as_parameters":		"Replaceable parameters:"
+			"default_save_as_parameters":		"교체 가능한 매개변수:"
 		},
 
 		"projectform": {
 			"main":								"Main files",
-			"filename":							"Filename:",
-			"software_name":					"Software name: {0}",
+			"filename":							"파일이름:",
 			"import_rom":						"Import {0}...",
 			"import_image":						"Import image...",
-			"import_patch":						"Import patch...",
-			"wad_base":							"Base WAD information",
-			"base_name":						"Base name:",
+			"import_patch":						"패치 가져오기...",
+			"wad_base":							"기반",
+			"base_name":						"기반 이름:",
 			"use_offline_wad":					"Use an offline WAD file",
 			
-			"image":							"Image",
-			"image_interpolation_mode":			"Interpolation mode",
-			"image_interpolation_mode0":		"{by_default}",
-			"image_interpolation_mode1":		"Low",
-			"image_interpolation_mode2":		"High",
-			"image_interpolation_mode3":		"Bilinear",
-			"image_interpolation_mode4":		"Bicubic",
-			"image_interpolation_mode5":		"Nearest Neighbor",
-			"image_interpolation_mode6":		"High Quality Bilinear",
-			"image_interpolation_mode7":		"High Quality Bicubic",
-			"image_stretch":					"Stretch image",
-			"image_fit":						"Fit aspect ratio",
+			"image":							"이미지",
+			"image_interpolation_mode":			"보간 모드",
+			"image_interpolation_mode1":		"낮음",
+			"image_interpolation_mode2":		"높음",
+			"image_interpolation_mode3":		"이중선형",
+			"image_interpolation_mode4":		"고등차수보간",
+			"image_interpolation_mode5":		"최근저버 이웃",
+			"image_interpolation_mode6":		"고품질 이중선형",
+			"image_interpolation_mode7":		"고품질 고등차수보간",
+			"image_stretch":					"이미지 늘리기",
+			"image_fit":						"화면비 맞추기",
 			
-			"channel":							"Channel metadata",
-			"banner":							"Banner details",
-			"banner_preview":					"Banner preview",
-			"title_id":							"Title ID:",
-			"channel_name":						"Channel name:",
+			"channel":							"채널 메타데이터",
+			"banner":							"배너 상세정보",
+			"banner_preview":					"배너 미리보기",
+			"title_id":							"타이틀 ID:",
+			"channel_name":						"짧은 이름:",
 			"video_mode":						"Video mode:",
-			"full_banner_name":					"Full name:",
-			"year":								"Year:",
-			"players":							"Players:",
+			"full_banner_name":					"전체 이름:",
+			"year":								"년도:",
+			"players":							"플레이어:",
+			
+			"injection_method":					"주입 방법",
+			"injection_method_options":			"주입 방법 옵션",
+			"forwarder_root_device":			"루트 저장 장치",
+			"content_options":					"콘텐츠 옵션",
+			
+			"save_data":						"저장 데이터",
+			"save_data_enable":					"저장 활성화",
+			"autolink_save_data":				"자동으로 연결",
 
-			"injection_method":					"Injection method",
-			"injection_method_options":			"Injection method options",
-			"forwarder_root_device":			"Root storage device",
-			"content_options":					"Content options",
-
-			"save_data":						"Save data",
-			"save_data_enable":					"Enable saving",
-			"autolink_save_data":				"Link automatically",
-
-			"manual_type":						"Operations manual",
-			"manual_type0":						"{disabled}",
-			"manual_type1":						"{original}",
-			"manual_type2":						"Import custom manual"
+			"manual_type":						"사용 설명서",
+			"manual_type2":						"커스텀 매뉴얼 가져오기"
 		},
 
 		"vc_nes": {
-			"palette":							"Palette",
-			"palette0":							"{by_default}",
-			"palette1":							"Restored",
-			"palette2":							"{vc} (Nintendo 3DS)",
-			"palette3":							"NES Classic (FBX)",
-			"palette4":							"NES Remix U",
-			"palette5":							"YUV (Nestopia)",
-			"palette6":							"RGB (Nestopia)",
+			"palette":							"팔래트",
+			"palette1":							"복원됨",
+			"palette2":							"{vc} (닌텐도 3DS)",
+			"palette3":							"NES 클래식 (FBX)",
+			"palette4":							"NES 리믹스 U",
+			"palette5":							"YUV (네스토피아)",
+			"palette6":							"RGB (네스토피아)",
 			"palette7":							"FCEUX",
-			"palette8":							"Wavebeam (FBX)",
-			"palette9":							"Composite Direct (FBX)",
+			"palette8":							"웨이브빔 (FBX)",
+			"palette9":							"컴포지트 다이렉트 (FBX)",
 
-			"palette_banner_usage":				"Also use for banner image"
+			"palette_banner_usage":				"배너 이미지에도 사용"
 		},
 
 		"vc_n64": {
-			"patch_fixbrightness":				"Remove dark filter",
-			"patch_fixcrashes":					"Fix crashes",
-			"patch_expandedram":				"Enable extended RAM",
-			"patch_autosizerom":				"Allocate ROM size",
-			"patch_widescreen":					"Widescreen display",
-
-			"romc_type":						"ROM compression method",
-			"romc_type0":						"ROMC (Type 0)",
-			"romc_type1":						"ROMC (Type 1)"
+			"patch_fixbrightness":				"어두운 필터 제거",
+			"patch_fixcrashes":					"충돌 수정",
+			"patch_expandedram":				"확장 램 활성화",
+			"patch_autosizerom":				"롬 크기 할당",
+			
+			"romc_type":						"롬 압축 방법",
+			"romc_type0":						"ROMC (유형 0)",
+			"romc_type1":						"ROMC (유형 1)"
 		},
 
 		"vc_sega": {
-			"console_disableresetbutton":		"Disable reset button",
-			"dev_mdpad_enable_6b":				"Enable Six Button Control Pad for {0}"
+			"console_disableresetbutton":		"재설정 버튼 비활성화",
+			"dev_mdpad_enable_6b":				"{0} 6버튼 컨트롤 패드 활성화"
 		},
 
 		"vc_pce": {
-			"hide_overscan":					"Hide overscan",
-			"raster":							"Enable BG raster",
-			"sprline":							"Enable sprite limit",
-			"y_offset":							"Y offset",
-			"europe0":							"Region set to Japanese",
-			"europe1":							"Region set to US/Europe",
-			"sgenable0":						"Not using SuperGrafx",
-			"sgenable1":						"Using SuperGrafx",
-			"padbutton0":						"Using 2-button Pad",
-			"padbutton1":						"Using 6-button Pad"
+			"hide_overscan":					"오버스캔 숨기기",
+			"raster":							"BG 래스터 활성화",
+			"sprline":							"스프라이트 제한 활성화",
+			"y_offset":							"Y 옵셋",
+			"europe0":							"지역이 일본으로 설정",
+			"europe1":							"지역이 미국/유럽으로 설정",
+			"sgenable0":						"SuperGrafx를 사용하지 않음",
+			"sgenable1":						"SuperGrafx 사용",
+			"padbutton0":						"2버튼 패드 사용",
+			"padbutton1":						"6버튼 패드 사용"
 		},
 
 		"vc_neo": {
-			"bios":								"System BIOS",
-			"bios0":							"Import from file",
-			"bios1":							"{vc} (version 1)",
-			"bios2":							"{vc} (version 2)",
-			"bios3":							"{vc} (version 3)"
+			"bios":								"시스템 바이오스",
+			"bios0":							"파일에서 가져오기",
+			"bios1":							"{vc} (버전 1)",
+			"bios2":							"{vc} (버전 2)",
+			"bios3":							"{vc} (버전 3)"
 		},
 
 		"adobe_flash": {
-			"vff_sync_on_write":				"Sync VFF on write",
-			"vff_cache_size":					"VFF cache size",
-			"controls":							"Controls",
-			"mouse":							"Mouse",
-			"qwerty_keyboard":					"QWERTY keyboard",
-			"midi":								"Enable MIDI playback using DLS soundfont",
-			"quality":							"Quality",
-			"quality0":							"High",
-			"quality1":							"Medium",
-			"quality2":							"Low",
-			"strap_reminder":					"Strap reminder screen",
-			"strap_reminder0":					"{disabled}",
-			"strap_reminder1":					"{enabled}",
-			"strap_reminder2":					"No extension controller"
+			"vff_sync_on_write":				"쓰기 시 VFF 동기화",
+			"vff_cache_size":					"VFF 캐시 크기",
+			"controls":							"컨트롤",
+			"mouse":							"마우스",
+			"qwerty_keyboard":					"쿼티 키보드",
+			"midi":								"DLS 사운드폰트를 사용하여 MIDI 재생 활성화",
+			"quality":							"품질",
+			"quality0":							"높음",
+			"quality1":							"중간",
+			"quality2":							"낮음",
+			"strap_reminder":					"스트랩 알림 화면",
+			"strap_reminder2":					"확장 컨트롤러 없음"
 		},
 
 		"forwarder": {
-			"bios_settings":					"BIOS settings",
-			"use_bios":							"Use a BIOS file",
-			"show_bios_screen":					"Show BIOS startup screen",
-			"rpgm_settings":					"RPG Maker settings",
-			"use_rtp":							"Use external RTP (Run-Time Package)",
+			"bios_settings":					"바이오스 설정",
+			"use_bios":							"바이오스 파일 사용",
+			"show_bios_screen":					"바이오스 시작 화면 표시",
+			"rpgm_settings":					"RPG 메이커 설정",
+			"use_rtp":							"외부 RTP 사용 (런타임 패키지)"
 		}
 	}
 }
