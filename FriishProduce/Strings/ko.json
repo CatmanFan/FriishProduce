@@ -35,9 +35,9 @@
 			"region_e":							"유럽/호주",
 			"region_k":							"한국",
 			"region_rf":						"리전 프리",
-
-			"game_file":						"game file",
-			"disc_image":						"disc image",
+			
+			"game_file":						"게임 파일",
+			"disc_image":						"디스크 이미지",
 			
 			"settings":							"설정",
 			"system":							"시스템",
@@ -57,8 +57,8 @@
 			"n64":								"닌텐도 64",
 			"sms":								"마스터 시스템",
 			"smd":								"메게드라이브/제네시스",
-			"pce":								"터보그라프x-16/PC 엔진",
-			"pcecd":							"터보그라프x-CD/PC 엔진 CD",
+			"pce":								"PC 엔진/터보그래프스-16",
+			"pcecd":							"PC 엔진 CD/터보그래프스-CD",
 			"neo":								"네오지오",
 			"c64":								"코모도어 64",
 			"msx":								"MSX/MSX2",
@@ -88,7 +88,7 @@
 			"filter.rom_msx":					"MSX1/MSX2 롬 파일 (*.rom, *.mx1, *.mx2)|*.rom;*.mx1;*.mx2",
 			"filter.rom_sms":					"마스터 시스템 롬 파일 (*.sms)|*.sms",
 			"filter.rom_smd":					"메가드라이브/제네시스 롬 파일 (*.bin, *.gen, *.md)|*.bin;*.gen;*.md",
-			"filter.rom_pce":					"터보그라프x-16/PC 엔진 롬 파일 (*.pce)|*.pce",
+			"filter.rom_pce":					"PC 엔진/터보그래프스-16 롬 파일 (*.pce)|*.pce",
 			"filter.patch":						"패치 파일 (*.bps, *.ips, *.xdelta)|*.bps;*.ips;*.xdelta"
 		},
 
@@ -114,11 +114,11 @@
 			"e_006":							"Failed to create WAD or ZIP.",
 			"e_007":							"Failed to apply patch. Either the patch file and target ROM do not match, or the ROM's checksum is invalid.",
 			"e_008":							"Failed to download source WAD.",
-			"e_009":							"Failed to replace internal VC manual.\nInjection will continue as intended.",
+			"e_009":							"수동 파일을 교체하지 못했습니다.\nWAD로 내보내기는 의도한 대로 계속됩니다.",
 			"e_010":							"원래 경로에서 \"{0}\" 파일을 찾을 수 없습니다. 삭제되었거나 이동되었을 수 있습니다.",
 			"e_011":							"원래 경로에서 \"{0}\" 폴더를 찾을 수 없습니다. 삭제되었거나 이동되었을 수 있습니다.",
-			"e_012":							"An injectable ROM entrypoint was not found. This may be because the injection method used for this WAD is yet not supported.",
-			"e_013":							"The BIOS file was not found or is unsupported. This option will be disabled in the emulator settings."
+			"e_012":							"주입 가능한 ROM 진입점을 찾을 수 없습니다. 이는 이 WAD에 사용된 주입 방법이 아직 지원되지 않기 때문일 수 있습니다.",
+			"e_013":							"BIOS 파일을 찾을 수 없거나 지원되지 않습니다. 이 옵션은 에뮬레이터 설정에서 비활성화됩니다."
 		}
 	},
 
@@ -132,7 +132,7 @@
 			"save_project_as":					"다른 이름으로 저잔...(&S)",
 			"close_project":					"프로젝트 닫기(&C)",
 			"retrieve_gamedata_online":			"온라인으로 게임 데이터 검색(&R)",
-			"export":							"&Export...",
+			"export":							"내보내기(&E)",
 			"settings":							"설정(&S)",
 			"exit":								"종로(&E)",
 			"project_type":						"{0} WAD",
@@ -155,25 +155,26 @@
 			"autolink_save_data":				"배너 및 채널 이름으로 저장 데이터 제목을 자동으로 연결",
 			
 			"default_settings":					"기본값 설정",
-			"default_injection_methods":		"Default injection methods",
-			"default_save_as_filename":			"Default target filename",
-			"default_save_as_project":			"Projects:",
-			"default_save_as_wad":				"Exported WADs:",
+			"default_injection_methods":		"기본 주입 방법",
+			"default_save_as_filename":			"내보낸 WAD의 기본 파일 이름",
+			"default_save_as_project":			"프로젝트:",
+			"default_save_as_wad":				"내보낸 WAD:",
 			"default_save_as_parameters":		"교체 가능한 매개변수:"
 		},
 
 		"projectform": {
-			"main":								"Main files",
+			"main":								"주요 파일",
 			"filename":							"파일이름:",
-			"import_rom":						"Import {0}...",
-			"import_image":						"Import image...",
+			"import_rom":						"{0} 가져오기...",
+			"import_image":						"이미지 가져오기...",
 			"import_patch":						"패치 가져오기...",
 			"wad_base":							"기반",
 			"base_name":						"기반 이름:",
-			"use_offline_wad":					"Use an offline WAD file",
+			"use_offline_wad":					"오프라인 WAD 파일 사용",
 			
 			"image":							"이미지",
 			"image_interpolation_mode":			"보간 모드",
+			"image_interpolation_mode0":		"{by_default}",
 			"image_interpolation_mode1":		"낮음",
 			"image_interpolation_mode2":		"높음",
 			"image_interpolation_mode3":		"이중선형",
@@ -189,7 +190,7 @@
 			"banner_preview":					"배너 미리보기",
 			"title_id":							"타이틀 ID:",
 			"channel_name":						"짧은 이름:",
-			"video_mode":						"Video mode:",
+			"video_mode":						"비디오 모드:",
 			"full_banner_name":					"전체 이름:",
 			"year":								"년도:",
 			"players":							"플레이어:",
@@ -209,6 +210,7 @@
 
 		"vc_nes": {
 			"palette":							"팔래트",
+			"palette0":							"{by_default}",
 			"palette1":							"복원됨",
 			"palette2":							"{vc} (닌텐도 3DS)",
 			"palette3":							"NES 클래식 (FBX)",
@@ -227,6 +229,7 @@
 			"patch_fixcrashes":					"충돌 수정",
 			"patch_expandedram":				"확장 램 활성화",
 			"patch_autosizerom":				"롬 크기 할당",
+			"patch_widescreen":					"와이드스크린 디스플레이",
 			
 			"romc_type":						"롬 압축 방법",
 			"romc_type0":						"ROMC (유형 0)",
@@ -271,7 +274,9 @@
 			"quality1":							"중간",
 			"quality2":							"낮음",
 			"strap_reminder":					"스트랩 알림 화면",
-			"strap_reminder2":					"확장 컨트롤러 없음"
+			"strap_reminder0":					"{disabled}",
+			"strap_reminder1":					"{enabled}",
+			"strap_reminder2":					"확장 컨트롤러 업음"
 		},
 
 		"forwarder": {

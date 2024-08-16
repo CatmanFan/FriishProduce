@@ -592,7 +592,7 @@ namespace FriishProduce
                 if (File.Exists(project.BaseFile))
                 {
                     WADPath = project.BaseFile;
-                    import_wad_from_file.Checked = true;
+                    use_offline_wad.Checked = true;
                     LoadWAD(project.BaseFile);
                 }
                 else
@@ -886,7 +886,7 @@ namespace FriishProduce
             if (DesignMode) return;
             // ----------------------------
 
-            Base.Enabled = BaseRegion.Enabled = !import_wad_from_file.Checked;
+            Base.Enabled = BaseRegion.Enabled = !use_offline_wad.Checked;
             if (Base.Enabled)
             {
                 AddBases();
@@ -896,17 +896,17 @@ namespace FriishProduce
                 BaseRegion.Image = null;
             }
 
-            if (import_wad_from_file.Checked && WADPath == null)
+            if (use_offline_wad.Checked && WADPath == null)
             {
-                browseInputWad.Title = import_wad_from_file.Text;
+                browseInputWad.Title = use_offline_wad.Text;
                 browseInputWad.Filter = Program.Lang.String("filter.wad");
                 var result = browseInputWad.ShowDialog();
 
-                if (result == DialogResult.OK && !LoadWAD(browseInputWad.FileName)) import_wad_from_file.Checked = false;
-                else if (result == DialogResult.Cancel) import_wad_from_file.Checked = false;
+                if (result == DialogResult.OK && !LoadWAD(browseInputWad.FileName)) use_offline_wad.Checked = false;
+                else if (result == DialogResult.Cancel) use_offline_wad.Checked = false;
             }
 
-            if (!import_wad_from_file.Checked)
+            if (!use_offline_wad.Checked)
             {
                 WADPath = null;
             }

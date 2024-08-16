@@ -1013,33 +1013,36 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;bannerPreview.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>8</value>
   </data>
-  <data name="import_wad_from_file.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="use_offline_wad.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="import_wad_from_file.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="use_offline_wad.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="import_wad_from_file.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="use_offline_wad.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 0, 0, 0</value>
   </data>
-  <data name="import_wad_from_file.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="use_offline_wad.Size" type="System.Drawing.Size, System.Drawing">
     <value>509, 20</value>
   </data>
-  <data name="import_wad_from_file.TabIndex" type="System.Int32, mscorlib">
+  <data name="use_offline_wad.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;import_wad_from_file.Name" xml:space="preserve">
-    <value>import_wad_from_file</value>
+  <data name="use_offline_wad.Text" xml:space="preserve">
+    <value>use_offline_wad</value>
   </data>
-  <data name="&gt;&gt;import_wad_from_file.Type" xml:space="preserve">
+  <data name="&gt;&gt;use_offline_wad.Name" xml:space="preserve">
+    <value>use_offline_wad</value>
+  </data>
+  <data name="&gt;&gt;use_offline_wad.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;import_wad_from_file.Parent" xml:space="preserve">
+  <data name="&gt;&gt;use_offline_wad.Parent" xml:space="preserve">
     <value>panel3</value>
   </data>
-  <data name="&gt;&gt;import_wad_from_file.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;use_offline_wad.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="panel3.Location" type="System.Drawing.Point, System.Drawing">
@@ -1618,7 +1621,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;forwarder_root_device.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="manual_type.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -1645,7 +1648,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;manual_type.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
