@@ -113,6 +113,16 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap disk {
+            get {
+                object obj = ResourceManager.GetObject("disk", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap drive_disk {
             get {
                 object obj = ResourceManager.GetObject("drive_disk", resourceCulture);

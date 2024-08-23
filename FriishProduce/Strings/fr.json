@@ -1,0 +1,292 @@
+﻿{
+	"language": "fr",
+	"author": "CatmanFan",
+	"application_title": "FriishProduce",
+	
+	"global": {
+		"main": {
+			"about_app":						"À propos de {0}",
+			"authors":							"Auteur(e) : {0}",
+
+			"kilobytes":						"Ko",
+			"megabytes":						"Mo",
+
+			"b_ok":								"&OK",
+			"b_cancel":							"&Annuler",
+			"b_close":							"&Fermer",
+			"b_yes":							"&Oui",
+			"b_no":								"&Non",
+			"b_save":							"&Sauvegarder",
+			"b_dont_save":						"&Ne pas sauvegarder",
+			"do_not_show":						"Ne plus afficher ce message",
+			
+			"by_default":						"Par défaut",
+			"disabled":							"Désactivé(e)",
+			"enabled":							"Activé(e)",
+			"original":							"Original(e)",
+			"automatic":						"Automatique",
+			"unknown":							"Inconnu(e)",
+			"none":								"Aucun(e)",
+			"not_available":					"Pas disponible",
+
+			"region":							"Région :",
+			"region_j":							"Japon",
+			"region_u":							"Amérique du Nord",
+			"region_e":							"Europe",
+			"region_k":							"Corée du Sud",
+			"region_rf":						"Région déverrouillée",
+
+			"game_file":						"un fichier du jeu",
+			"disc_image":						"une image disque",
+
+			"settings":							"Réglages",
+			"system":							"Système",
+			"display":							"Affichage",
+			"vc":								"Console virtuelle",
+			"vc_options":						"Options de Console virtuelle"
+		},
+
+		"platforms": {
+			"group0":							"Nintendo",
+			"group1":							"Sega",
+			"group2":							"NEC",
+			"forwarders":						"Forwarders (raccourcis)",
+
+			"nes":								"Nintendo NES / Famicom",
+			"snes":								"Super NES / Super Famicom",
+			"n64":								"Nintendo 64",
+			"sms":								"Master System",
+			"smd":								"Mega Drive / Genesis",
+			"pce":								"TurboGrafx-16 / PC Engine",
+			"pcecd":							"TurboGrafx-CD / PC Engine CD",
+			"neo":								"Neo-Geo",
+			"c64":								"Commodore 64",
+			"msx":								"MSX / MSX2",
+			"flash":							"Adobe Flash",
+			"gb":								"Game Boy",
+			"gbc":								"Game Boy Color",
+			"gba":								"Game Boy Advance",
+			"gcn":								"GameCube",
+			"s32x":								"32X",
+			"smcd":								"Sega-Mega CD",
+			"psx":								"PlayStation",
+			"rpgm":								"RPG Maker 2000 / 2003"
+		},
+
+		"filters": {
+			"filter":							"|Tous les fichiers (*.*)|*.*",
+			"filter.project":					"Projets FriishProduce (*.fppj)|*.fppj",
+			"filter.wad":						"Chaînes Wii (*.wad)|*.wad",
+			"filter.img":						"Tous les formats sont pris en charge (*.bmp, *.jpg, *.jpeg, *.png)|*.bmp;*.jpg;*.jpeg;*.png|  Bitmap Windows (*.bmp)|*.bmp|  JPEG (*.jpg, *.jpeg)|*.jpg;*.jpeg|  PNG (*.png)|*.png",
+			"filter.zip":						"Archives *.zip (*.zip)|*.zip",
+			"filter.disc":						"Images disque (*.cue, *.bin)|*.cue;*.bin|  Fichiers CUE (*.cue)|*.cue|  Fichiers BIN (*.bin)|*.bin",
+			"filter.swf":						"Fichiers Adobe Flash (*.swf)|*.swf",
+			"filter.rpgm":						"Fichiers de base de données de RPG Maker 2000 / 2003 (*.ldb)|*.ldb",
+			"filter.rom_nes":					"Fichiers ROM de Nintendo (*.nes)|*.nes",
+			"filter.rom_snes":					"Fichiers ROM de Super Nintendo (*.sfc, *.smc)|*.sfc;*.smc",
+			"filter.rom_n64":					"Fichiers ROM de Nintendo 64 (*.n64, *.v64, *.z64)|*.n64;*.v64;*.z64",
+			"filter.rom_msx":					"Fichiers ROM de MSX / MSX2 (*.rom, *.mx1, *.mx2)|*.rom;*.mx1;*.mx2",
+			"filter.rom_sms":					"Fichiers ROM de Sega Master System (*.sms)|*.sms",
+			"filter.rom_smd":					"Fichiers ROM de Sega Mega Drive / Genesis (*.bin, *.gen, *.md)|*.bin;*.gen;*.md",
+			"filter.rom_pce":					"Fichiers ROM de PC Engine / TurboGrafx-16 (*.pce)|*.pce",
+			"filter.patch":						"Fichiers patch (*.bps, *.ips, *.xdelta)|*.bps;*.ips;*.xdelta",
+		},
+
+		"messages": {
+			"000":								"Un redémarrage est nécessaire pour que tous les changements aux réglages prennent effet.\nRedémarrer maintenant?",
+			"001":								"«{0}» comporte des modifications non enregistrées.\nQu'est-ce que vous voudrais faire ?",
+			"002":								"Le fichier précisé est invalide.",
+			"003":								"Terminé avec succès.\nOuvrir le dossier de sortie ?",
+			"004":								"REPLACE ME",
+			"005":								"Le fichier WAD que vous avez précisée ({0}) est invalide.\nCeci peut être provoqué par l'une des raisons suivantes :\n  • La plateforme/console cible ne correspond pas à celle de la chaîne sélectionnée.\n  • La chaîne n'est pas encore disponible dans la base des données de cette application.\n  • La chaîne était déjà modifiée (soit injectée, soit convertie en forme du forwarder).",
+			"006":								"Vous pouvez replacer les fichier du mode d'emploi inclus dans la chaîne de Console virtuelle par des autres externes, soit personalisés.\n\nPour ce faire, vous aurez besoin d'une archive ZIP comprenant le contenu d'un fichier *.arc du mode d'emploi de Console virtuelle.",
+			"007":								"L'archive précisée est invalide.",
+			"008":								"Une mise à jour est disponible\nFriishProduce v{0} est désormais disponible à télécharger.\nL'actuelle version est v{1}.\n\nObtenir la dernière mise à jour dès GitHub maintenant ?",
+			"009":								"Vous êtes déjà à jour.",
+
+			"error":							"Oups, un problème est survenu",
+			"e_000":							"Échec de connexion à Internet.\n{0}",
+			"e_001":							"Échec de génération de l'image.\nCeci peut être provoqué par un problème avec GDI+.",
+			"e_002":							"Échec du replacement des données internes de la chaîne.",
+			"e_003":							"La taille de votre fichier de jeu dépasse la limite de {0} {1}.",
+			"e_004":							"Échec de modification des options de contenu suivantes :\n{0}\nL'exportation se poursuivra comme prévu.",
+			"e_005":							"L'application requise ({0}) n'est pas disponible dans le sous-répertoire «resources\\tools».\nVeuillez obtenir cette application et la placer dans ce dossier, puis réessayer.",
+			"e_006":							"Échec de création du fichier WAD ou ZIP.",
+			"e_007":							"Échec d'application du patch. Il peut s'agir que soit la ROM ne correspond pas au patch, soit elle-même n'est pas valide.",
+			"e_008":							"Échec du téléchargement de la chaîne de base en ligne.",
+			"e_009":							"Échec du remplacement du mode d'emploi interne.\nL'exportation se poursuivra comme prévu.",
+			"e_010":							"Le fichier «{0}» n'a pas été trouvé dans son chemin original. Il s'agit qu'il peut avoir été déplacé ou supprimé.",
+			"e_011":							"Le dossier «{0}» n'a pas été trouvé dans son chemin original. Il s'agit qu'il peut avoir été déplacé ou supprimé.",
+			"e_012":							"Aucun point d'entrée d'injection n'a été trouvé. Il peut s'agir que la méthode d'injection utilisée par cette chaîne n'est toujours pas prise en charge.",
+			"e_013":							"Le fichier BIOS est indisponible ou invalide. Cette option sera désactivée dans les réglages de l'émulateur."
+		}
+	},
+
+	"strings": {
+		"mainform": {
+			"file":								"Fichier",
+			"project":							"Projet",
+			"help":								"Aide",
+			"new_project":						"&Nouveau ...",
+			"open_project":						"Ouvrir un project ...",
+			"save_project":						"Enregistrer le projet",
+			"save_project_as":					"Enregistrer le projet sous ...",
+			"close_project":					"Fermer le projet",
+			"open_gamefile":					"Ouvrir un fichier de jeu...",
+			"retrieve_gamedata_online":			"REPLACE ME",
+			"export":							"Exporter ...",
+			"exit":								"Quitter",
+			"project_type":						"Chaîne {0}",
+			"untitled_project":					"Chaîne {0} sans titre"
+		},
+
+		"settingsform": {
+		    "application":						"Application",
+			"language":							"Langue",
+			"system_default":					"Système",
+			"reset_all_dialogs":				"Réinitialiser le paramètre « Ne plus afficher ce message »",
+			"use_custom_database":				"Utiliser un autre fichier pour la base de données des chaînes",
+
+			"updater":							"Mise à jour",
+			"check_for_updates":				"Vérifier les mises à jour",
+			"auto_update_check":				"Vérifier les mises à jour automatiquement au démarrage de l'application",
+
+			"gamedata_settings":				"Game data settings",
+			"gamedata_source_image":			"Site web à utiliser pour les images :",
+			"auto_retrieve_gamedata_online":	"REPLACE ME automatiquement après l'ouverture d'un fichier de jeu",
+			"autolink_save_data":				"Link save data title automatically with banner and channel names",
+			
+			"default_settings":					"Paramètres par défaut",
+			"default_injection_methods":		"Méthodes d'injection par défaut",
+			"default_save_as_filename":			"Nom des fichiers enregistrés par défaut",
+			"default_save_as_project":			"Projets :",
+			"default_save_as_wad":				"Fichiers WAD ou ZIP :",
+			"default_save_as_parameters":		"Parties remplaçables :"
+		},
+
+		"projectform": {
+			"main":								"Fichiers principaux",
+			"import_rom":						"Ouvrir {0} ...",
+			"import_image":						"Ouvrir une image ...",
+			"import_patch":						"Ouvrir un patch ...",
+			"import_wad":						"Ouvrir une WAD ...",
+			"use_online_wad":					"... ou utiliser une chaîne téléchargable",
+			"wad_base":							"Chaîne de base",
+			"base_name":						"Nom du logiciel :",
+			
+			"image":							"Image",
+			"image_interpolation_mode":			"Méthode d'interpolation",
+			"image_interpolation_mode0":		"{by_default}",
+			"image_interpolation_mode1":		"Basse qualité",
+			"image_interpolation_mode2":		"Haute qualité",
+			"image_interpolation_mode3":		"Bilinéaire",
+			"image_interpolation_mode4":		"Bicubique",
+			"image_interpolation_mode5":		"Plus proche voisin",
+			"image_interpolation_mode6":		"Bilinéaire de haute qualité",
+			"image_interpolation_mode7":		"Bicubique de haute qualité",
+			"image_stretch":					"Étirer l'image",
+			"image_fit":						"Conserver les proportions",
+			
+			"channel":							"Paramètres de la chaîne",
+			"banner":							"Paramètres du banner",
+			"banner_preview":					"Aperçu du banner",
+			"title_id":							"Title ID :",
+			"channel_name":						"Nom de la chaîne :",
+			"video_mode":						"Mode vidéo :",
+			"full_banner_name":					"Nom complet :",
+			"year":								"Année :",
+			"players":							"Joueurs :",
+
+			"injection_method":					"Méthode d'injection",
+			"injection_method_options":			"Paramètres de méthode d'injection",
+			"forwarder_root_device":			"Périphérique de stockage racine",
+
+			"save_data":						"Save data",
+			"save_data_enable":					"Enable saving",
+			"autolink_save_data":				"Link automatically",
+
+			"manual_type":						"Mode d'emploi",
+			"manual_type0":						"{disabled}",
+			"manual_type1":						"{original}",
+			"manual_type2":						"Fichiers externes"
+		},
+
+		"vc_nes": {
+			"palette":							"Couleurs",
+			"palette0":							"{by_default}",
+			"palette1":							"Restaurées",
+			"palette2":							"{vc} (Nintendo 3DS)",
+			"palette3":							"NES Classic (FBX)",
+			"palette4":							"NES Remix U",
+			"palette5":							"YUV (Nestopia)",
+			"palette6":							"RGB (Nestopia)",
+			"palette7":							"FCEUX",
+			"palette8":							"Wavebeam (FBX)",
+			"palette9":							"Composite Direct (FBX)",
+
+			"palette_banner_usage":				"Utiliser également pour les images d'aperçu"
+		},
+
+		"vc_n64": {
+			"patch_fixbrightness":				"Remove dark filter",
+			"patch_fixcrashes":					"Fix crashes",
+			"patch_expandedram":				"Enable extended RAM",
+			"patch_autosizerom":				"Allocate ROM size",
+
+			"romc_type":						"ROM compression method",
+			"romc_type0":						"ROMC (Type 0)",
+			"romc_type1":						"ROMC (Type 1)"
+		},
+
+		"vc_sega": {
+			"console_disableresetbutton":		"Disable reset button",
+			"dev_mdpad_enable_6b":				"Enable Six Button Control Pad for {0}"
+		},
+
+		"vc_pce": {
+			"hide_overscan":					"Hide overscan",
+			"raster":							"Enable BG raster",
+			"sprline":							"Enable sprite limit",
+			"y_offset":							"Y offset",
+			"europe0":							"Region set to Japanese",
+			"europe1":							"Region set to US/Europe",
+			"sgenable0":						"Not using SuperGrafx",
+			"sgenable1":						"Using SuperGrafx",
+			"padbutton0":						"Using 2-button Pad",
+			"padbutton1":						"Using 6-button Pad"
+		},
+
+		"vc_neo": {
+			"bios":								"System BIOS",
+			"bios0":							"Import from file",
+			"bios1":							"{vc} (version 1)",
+			"bios2":							"{vc} (version 2)",
+			"bios3":							"{vc} (version 3)"
+		},
+
+		"adobe_flash": {
+			"vff_sync_on_write":				"Sync VFF on write",
+			"vff_cache_size":					"VFF cache size",
+			"controls":							"Controls",
+			"mouse":							"Mouse",
+			"qwerty_keyboard":					"QWERTY keyboard",
+			"midi":								"Enable MIDI playback using DLS soundfont",
+			"quality":							"Quality",
+			"quality0":							"High",
+			"quality1":							"Medium",
+			"quality2":							"Low",
+			"strap_reminder":					"Strap reminder screen",
+			"strap_reminder0":					"{disabled}",
+			"strap_reminder1":					"{enabled}",
+			"strap_reminder2":					"No extension controller"
+		},
+
+		"forwarder": {
+			"bios_settings":					"BIOS settings",
+			"use_bios":							"Use a BIOS file",
+			"show_bios_screen":					"Show BIOS startup screen",
+			"rpgm_settings":					"RPG Maker settings",
+			"use_rtp":							"Use external RTP (Run-Time Package)",
+		}
+	}
+}

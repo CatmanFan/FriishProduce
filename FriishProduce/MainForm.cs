@@ -136,19 +136,20 @@ namespace FriishProduce
             menuItem1.Text = Program.Lang.String(menuItem1.Tag.ToString(), Name);
             menuItem2.Text = Program.Lang.String(menuItem2.Tag.ToString(), Name);
             menuItem3.Text = Program.Lang.String(menuItem3.Tag.ToString(), Name);
-            menuItem15.Text = string.Format(Program.Lang.String("about_app"), Program.Lang.ApplicationTitle);
+            about.Text = string.Format(Program.Lang.String("about_app"), Program.Lang.ApplicationTitle);
             Text = Program.Lang.ApplicationTitle;
 
             toolbarNewProject.Text = new_project.Text;
-            toolbarOpenProject.Text = menuItem5.Text;
-            toolbarSaveAs.Text = menuItem6.Text;
-            toolbarExport.Text = menuItem11.Text;
-            toolbarCloseProject.Text = menuItem12.Text;
-            toolbarRetrieveGameData.Text = menuItem10.Text;
-            toolbarSettings.Text = menuItem9.Text;
+            toolbarOpenProject.Text = open_project.Text;
+            toolbarSave.Text = save_project.Text;
+            toolbarSaveAs.Text = save_project_as.Text;
+            toolbarExport.Text = export.Text;
+            toolbarCloseProject.Text = close_project.Text;
+            toolbarRetrieveGameData.Text = retrieve_gamedata_online.Text;
+            toolbarSettings.Text = settings.Text = Program.Lang.String("settings");
 
-            SaveProject.Title = menuItem6.Text.Replace("&", "");
-            SaveWAD.Title = menuItem11.Text.Replace("&", "");
+            SaveProject.Title = save_project_as.Text.Replace("&", "");
+            SaveWAD.Title = export.Text.Replace("&", "");
 
             try
             {
@@ -231,34 +232,34 @@ namespace FriishProduce
             // ********
             if (!hasTabs)
             {
-                menuItem10.Enabled = false;
-                menuItem6.Enabled = false;
-                menuItem11.Enabled = false;
+                retrieve_gamedata_online.Enabled = false;
+                save_project_as.Enabled = false;
+                export.Enabled = false;
 
                 tabControl.Visible = false;
             }
 
             else
             {
-                menuItem10.Enabled = (tabControl.SelectedForm as ProjectForm).ToolbarButtons[0];
-                menuItem11.Enabled = (tabControl.SelectedForm as ProjectForm).IsExportable;
+                retrieve_gamedata_online.Enabled = (tabControl.SelectedForm as ProjectForm).ToolbarButtons[0];
+                export.Enabled = (tabControl.SelectedForm as ProjectForm).IsExportable;
             }
 
-            menuItem12.Enabled = hasTabs;
+            close_project.Enabled = hasTabs;
 
             // Context menu
             // ********
             if (tabControl.TabPages.Count >= 1)
                 if (sender == tabControl.TabPages[0])
                 {
-                    menuItem10.Enabled = (tabControl.SelectedForm as ProjectForm).ToolbarButtons[0];
-                    menuItem6.Enabled = (tabControl.SelectedForm as ProjectForm).Tag?.ToString().ToLower() == "dirty";
+                    retrieve_gamedata_online.Enabled = (tabControl.SelectedForm as ProjectForm).ToolbarButtons[0];
+                    save_project_as.Enabled = (tabControl.SelectedForm as ProjectForm).Tag?.ToString().ToLower() == "dirty";
                 }
 
-            toolbarSaveAs.Enabled = menuItem6.Enabled;
-            toolbarCloseProject.Enabled = menuItem12.Enabled;
-            toolbarRetrieveGameData.Enabled = menuItem10.Enabled;
-            toolbarExport.Enabled = menuItem11.Enabled;
+            toolbarSave.Enabled = toolbarSaveAs.Enabled = save_project.Enabled = save_project_as.Enabled;
+            toolbarCloseProject.Enabled = close_project.Enabled;
+            toolbarRetrieveGameData.Enabled = retrieve_gamedata_online.Enabled;
+            toolbarExport.Enabled = export.Enabled;
         }
 
         private void MainForm_Closing(object sender, FormClosingEventArgs e)
@@ -383,7 +384,7 @@ namespace FriishProduce
             {
                 if (tabControl.SelectedForm is not ProjectForm currentForm) return false;
 
-                SaveProject.FileName = currentForm?.GetName(false) ?? currentForm.Text;
+                SaveProject.FileName = Path.GetFileNameWithoutExtension(currentForm.ProjectPath) ?? currentForm?.GetName(false) ?? currentForm.Text;
                 foreach (var item in new char[] { '\\', '/', ':', '*', '?', '"', '<', '>', '|' })
                     SaveProject.FileName = SaveProject.FileName.Replace(item, '_');
 
@@ -400,6 +401,19 @@ namespace FriishProduce
             }
 
             return false;
+        }
+
+        private void Save_Click(object sender, EventArgs e)
+        {
+            if (tabControl.SelectedForm is not ProjectForm currentForm) return;
+
+            if (File.Exists(currentForm.ProjectPath))
+            {
+                try { currentForm.SaveProject(currentForm.ProjectPath); }
+                catch (Exception ex) { MessageBox.Show("Could not save!", ex.Message, MessageBox.Buttons.Ok, MessageBox.Icons.Error); }
+            }
+
+            else SaveAs_Trigger();
         }
 
         private void OpenProject_Click(object sender, EventArgs e)

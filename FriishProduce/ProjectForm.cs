@@ -46,10 +46,12 @@ namespace FriishProduce
             {
                 _isModified = value;
                 if (value) _isMint = false;
+                Program.MainForm.toolbarSave.Enabled = value;
+                Program.MainForm.save_project.Enabled = value;
                 Program.MainForm.toolbarSaveAs.Enabled = value;
-                Program.MainForm.menuItem6.Enabled = value;
+                Program.MainForm.save_project_as.Enabled = value;
                 Program.MainForm.toolbarExport.Enabled = IsExportable;
-                Program.MainForm.menuItem11.Enabled = IsExportable;
+                Program.MainForm.export.Enabled = IsExportable;
             }
         }
         private bool _isModified;
@@ -89,12 +91,21 @@ namespace FriishProduce
                             && !string.IsNullOrWhiteSpace(channel_title.Text)
                             && !string.IsNullOrEmpty(_bannerTitle)
                             && (img != null)
-                            && rom?.FilePath != null;
+                            && rom?.FilePath != null
+                            && ((use_online_wad.Checked) || (!use_online_wad.Checked && File.Exists(WADPath)));
+
+                if (!File.Exists(WADPath) && !string.IsNullOrWhiteSpace(WADPath))
+                {
+                    WADPath = null;
+                    refreshData();
+                }
 
                 return save_data_title.Visible ? yes && !string.IsNullOrEmpty(_saveDataTitle[0]) : yes;
             }
         }
         public bool IsForwarder { get => !isVirtualConsole && targetPlatform != Platform.Flash; }
+
+        public string ProjectPath { get; set; }
         #endregion
 
         private new enum Region
@@ -207,8 +218,12 @@ namespace FriishProduce
 
         public void SaveProject(string path)
         {
+            ProjectPath = path;
+
             var p = new Project()
             {
+                ProjectPath = path,
+
                 Platform = targetPlatform,
 
                 ROM = rom?.FilePath,
@@ -231,7 +246,7 @@ namespace FriishProduce
                 BannerPlayers = _bannerPlayers,
             };
 
-            if (!string.IsNullOrWhiteSpace(WADPath)) p.BaseFile = WADPath;
+            if (!string.IsNullOrWhiteSpace(WADPath)) { p.BaseFile = WADPath; }
             else p.Base = (Base.SelectedIndex, 0);
 
             for (int i = 0; i < baseRegionList.Items.Count; i++)
@@ -253,7 +268,7 @@ namespace FriishProduce
             if (DesignMode) return;
             // ----------------------------
 
-            bool isMint = _isMint || !Program.MainForm.menuItem6.Enabled;
+            bool isMint = _isMint || !Program.MainForm.save_project_as.Enabled;
 
             #region Localization
             Program.Lang.Control(this, "projectform");
@@ -578,6 +593,8 @@ namespace FriishProduce
 
             if (project != null)
             {
+                ProjectPath = project.ProjectPath;
+
                 video_modes.SelectedIndex = project.VideoMode;
 
                 // Error messages for not found files
@@ -591,12 +608,13 @@ namespace FriishProduce
 
                 if (File.Exists(project.BaseFile))
                 {
-                    WADPath = project.BaseFile;
                     use_offline_wad.Checked = true;
+                    WADPath = project.BaseFile;
                     LoadWAD(project.BaseFile);
                 }
                 else
                 {
+                    use_online_wad.Checked = true;
                     Base.SelectedIndex = project.Base.Item1;
                     for (int i = 0; i < baseRegionList.Items.Count; i++)
                         if (baseRegionList.Items[i].GetType() == typeof(ToolStripMenuItem)) (baseRegionList.Items[i] as ToolStripMenuItem).Checked = false;
@@ -633,6 +651,10 @@ namespace FriishProduce
             IsModified = false;
             _isMint = true;
             project = null;
+
+            use_online_wad.Enabled = Properties.Settings.Default.use_online_wad_enabled;
+            if (use_online_wad.Checked && !use_online_wad.Enabled) use_online_wad.Checked = false;
+            if (!use_offline_wad.Checked && !use_online_wad.Checked) use_offline_wad.Checked = true;
         }
 
         // -----------------------------------
@@ -727,15 +749,20 @@ namespace FriishProduce
 
             rom_filename.Text = !string.IsNullOrWhiteSpace(rom?.FilePath) ? Path.GetFileName(rom.FilePath) : Program.Lang.String("none");
             patch_filename.Text = !showPatch ? Program.Lang.String("not_supported") : !string.IsNullOrWhiteSpace(patch) ? Path.GetFileName(patch) : Program.Lang.String("none");
+            wad_filename.Text = !string.IsNullOrWhiteSpace(WADPath) ? Path.GetFileName(WADPath) : Program.Lang.String("none");
+
             if (rom_filename.Text.Length > maxLength) rom_filename.Text = rom_filename.Text.Substring(0, maxLength - 3) + "...";
             if (patch_filename.Text.Length > maxLength) patch_filename.Text = patch_filename.Text.Substring(0, maxLength - 3) + "...";
+            if (wad_filename.Text.Length > maxLength) wad_filename.Text = wad_filename.Text.Substring(0, maxLength - 3) + "...";
 
             rom_filename.Enabled = !string.IsNullOrWhiteSpace(rom?.FilePath);
             patch_filename.Enabled = !string.IsNullOrWhiteSpace(patch);
+            wad_filename.Enabled = !string.IsNullOrWhiteSpace(WADPath);
 
             hasRom.Image = !string.IsNullOrWhiteSpace(rom?.FilePath) ? Properties.Resources.yes : Properties.Resources.no;
             hasPatch.Image = !string.IsNullOrWhiteSpace(patch) && showPatch ? Properties.Resources.yes : Properties.Resources.no;
             hasImage.Image = img?.Source != null ? Properties.Resources.yes : Properties.Resources.no;
+            hasWad.Image = !string.IsNullOrWhiteSpace(WADPath) ? Properties.Resources.yes : Properties.Resources.no;
         }
 
         private void randomTID()
@@ -832,9 +859,9 @@ namespace FriishProduce
                     : string.IsNullOrWhiteSpace(lines[0]) ? lines[1]
                     : string.IsNullOrWhiteSpace(lines[0]) && string.IsNullOrWhiteSpace(lines[1]) ? null
                     : save_data_title.Multiline ? string.Join(Environment.NewLine, lines) : lines[0];
-
-                refreshData();
             }
+
+            refreshData();
         }
 
         private void LinkSaveData_Changed(object sender, EventArgs e)
@@ -886,32 +913,35 @@ namespace FriishProduce
             if (DesignMode) return;
             // ----------------------------
 
-            Base.Enabled = BaseRegion.Enabled = !use_offline_wad.Checked;
+            use_offline_wad.Checked = !use_online_wad.Checked;
+            base_name.Enabled = title_id_2.Enabled = baseID.Enabled = baseName.Enabled = Base.Enabled = BaseRegion.Enabled = use_online_wad.Checked;
+            import_wad.Enabled = use_offline_wad.Checked;
+
             if (Base.Enabled)
             {
+                WADPath = null;
                 AddBases();
             }
             else
             {
                 BaseRegion.Image = null;
-            }
-
-            if (use_offline_wad.Checked && WADPath == null)
-            {
-                browseInputWad.Title = use_offline_wad.Text;
-                browseInputWad.Filter = Program.Lang.String("filter.wad");
-                var result = browseInputWad.ShowDialog();
-
-                if (result == DialogResult.OK && !LoadWAD(browseInputWad.FileName)) use_offline_wad.Checked = false;
-                else if (result == DialogResult.Cancel) use_offline_wad.Checked = false;
-            }
-
-            if (!use_offline_wad.Checked)
-            {
-                WADPath = null;
+                if (Base.Items.Count > 0) Base.SelectedIndex = 0;
             }
 
             refreshData();
+        }
+
+        private void import_wad_Click(object sender, EventArgs e)
+        {
+            browseInputWad.Title = import_wad.Text;
+            browseInputWad.Filter = Program.Lang.String("filter.wad");
+            var result = browseInputWad.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                LoadWAD(browseInputWad.FileName);
+                refreshData();
+            }
         }
 
         private void InterpolationChanged(object sender, EventArgs e)
@@ -989,6 +1019,7 @@ namespace FriishProduce
             Reader.Dispose();
             System.Media.SystemSounds.Beep.Play();
             MessageBox.Show(string.Format(Program.Lang.Msg(5), Reader.UpperTitleID));
+            WADPath = null;
             return false;
         }
 
@@ -1229,7 +1260,7 @@ namespace FriishProduce
             randomTID();
             patch = null;
 
-            Program.MainForm.toolbarRetrieveGameData.Enabled = Program.MainForm.menuItem10.Enabled = ToolbarButtons[0];
+            Program.MainForm.toolbarRetrieveGameData.Enabled = Program.MainForm.retrieve_gamedata_online.Enabled = ToolbarButtons[0];
             if (rom != null && LoadGameData && ToolbarButtons[0]) this.LoadGameData();
             setFilesText();
         }

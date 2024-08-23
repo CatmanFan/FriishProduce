@@ -47,5 +47,8 @@
     <Setting Name="default_export_filename" Type="System.String" Scope="User">
       <Value Profile="(Default)">[PLATFORM] FULLNAME - TITLEID</Value>
     </Setting>
+    <Setting Name="use_online_wad_enabled" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

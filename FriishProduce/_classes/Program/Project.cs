@@ -6,6 +6,8 @@ namespace FriishProduce
     [Serializable]
     public class Project
     {
+        public string ProjectPath { get; set; }
+
         public Platform Platform { get; set; }
         public string ROM { get; set; }
         public (int baseNumber, int region) WAD { get; set; }

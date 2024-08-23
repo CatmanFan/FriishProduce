@@ -1505,6 +1505,30 @@
   <data name="toolStrip.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
   </data>
+  <data name="toolStrip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="toolStrip.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="toolStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>484, 25</value>
+  </data>
+  <data name="toolStrip.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;toolStrip.Name" xml:space="preserve">
+    <value>toolStrip</value>
+  </data>
+  <data name="&gt;&gt;toolStrip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStrip.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;toolStrip.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="toolbarNewProject.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
@@ -1522,6 +1546,18 @@
   </data>
   <data name="toolbarOpenProject.Text" xml:space="preserve">
     <value>open_project</value>
+  </data>
+  <data name="toolbarSave.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="toolbarSave.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="toolbarSave.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="toolbarSave.Text" xml:space="preserve">
+    <value>save_project</value>
   </data>
   <data name="toolbarSaveAs.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -1583,30 +1619,6 @@
   <data name="toolbarExport.Text" xml:space="preserve">
     <value>export</value>
   </data>
-  <data name="toolStrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="toolStrip.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="toolStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>484, 25</value>
-  </data>
-  <data name="toolStrip.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;toolStrip.Name" xml:space="preserve">
-    <value>toolStrip</value>
-  </data>
-  <data name="&gt;&gt;toolStrip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStrip.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;toolStrip.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <metadata name="SaveProject.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>130, 17</value>
   </metadata>
@@ -1640,61 +1652,94 @@
   <metadata name="mainMenu1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>492, 17</value>
   </metadata>
-  <data name="menuItem1.Text" xml:space="preserve">
-    <value>file</value>
+  <data name="new_project.Shortcut" type="System.Windows.Forms.Shortcut, System.Windows.Forms">
+    <value>CtrlN</value>
   </data>
   <data name="new_project.Text" xml:space="preserve">
     <value>new_project</value>
   </data>
-  <data name="menuItem5.Text" xml:space="preserve">
+  <data name="open_project.Shortcut" type="System.Windows.Forms.Shortcut, System.Windows.Forms">
+    <value>CtrlO</value>
+  </data>
+  <data name="open_project.Text" xml:space="preserve">
     <value>open_project</value>
   </data>
-  <data name="menuItem6.Enabled" type="System.Boolean, mscorlib">
+  <data name="save_project.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="menuItem6.Text" xml:space="preserve">
+  <data name="save_project.Shortcut" type="System.Windows.Forms.Shortcut, System.Windows.Forms">
+    <value>CtrlS</value>
+  </data>
+  <data name="save_project.Text" xml:space="preserve">
+    <value>save_project</value>
+  </data>
+  <data name="save_project_as.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="save_project_as.Shortcut" type="System.Windows.Forms.Shortcut, System.Windows.Forms">
+    <value>CtrlShiftS</value>
+  </data>
+  <data name="save_project_as.Text" xml:space="preserve">
     <value>save_project_as</value>
   </data>
   <data name="menuItem8.Text" xml:space="preserve">
     <value>-</value>
   </data>
-  <data name="menuItem9.Text" xml:space="preserve">
+  <data name="settings.Shortcut" type="System.Windows.Forms.Shortcut, System.Windows.Forms">
+    <value>F5</value>
+  </data>
+  <data name="settings.Text" xml:space="preserve">
     <value>settings</value>
   </data>
-  <data name="menuItem7.Text" xml:space="preserve">
+  <data name="exit.Shortcut" type="System.Windows.Forms.Shortcut, System.Windows.Forms">
+    <value>AltF4</value>
+  </data>
+  <data name="exit.Text" xml:space="preserve">
     <value>exit</value>
+  </data>
+  <data name="menuItem1.Text" xml:space="preserve">
+    <value>file</value>
   </data>
   <data name="menuItem2.Text" xml:space="preserve">
     <value>project</value>
   </data>
-  <data name="menuItem10.Enabled" type="System.Boolean, mscorlib">
+  <data name="menuItem3.Text" xml:space="preserve">
+    <value>help</value>
+  </data>
+  <data name="retrieve_gamedata_online.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="menuItem10.Text" xml:space="preserve">
+  <data name="retrieve_gamedata_online.Shortcut" type="System.Windows.Forms.Shortcut, System.Windows.Forms">
+    <value>CtrlG</value>
+  </data>
+  <data name="retrieve_gamedata_online.Text" xml:space="preserve">
     <value>retrieve_gamedata_online</value>
   </data>
   <data name="menuItem14.Text" xml:space="preserve">
     <value>-</value>
   </data>
-  <data name="menuItem11.Enabled" type="System.Boolean, mscorlib">
+  <data name="export.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="menuItem11.Text" xml:space="preserve">
+  <data name="export.Shortcut" type="System.Windows.Forms.Shortcut, System.Windows.Forms">
+    <value>CtrlE</value>
+  </data>
+  <data name="export.Text" xml:space="preserve">
     <value>export</value>
   </data>
   <data name="menuItem13.Text" xml:space="preserve">
     <value>-</value>
   </data>
-  <data name="menuItem12.Enabled" type="System.Boolean, mscorlib">
+  <data name="close_project.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="menuItem12.Text" xml:space="preserve">
+  <data name="close_project.Shortcut" type="System.Windows.Forms.Shortcut, System.Windows.Forms">
+    <value>CtrlW</value>
+  </data>
+  <data name="close_project.Text" xml:space="preserve">
     <value>close_project</value>
   </data>
-  <data name="menuItem3.Text" xml:space="preserve">
-    <value>help</value>
-  </data>
-  <data name="menuItem15.Text" xml:space="preserve">
+  <data name="about.Text" xml:space="preserve">
     <value>about</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -3751,10 +3796,22 @@
   <data name="&gt;&gt;SaveWAD.Type" xml:space="preserve">
     <value>System.Windows.Forms.SaveFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;toolbarNewProject.Name" xml:space="preserve">
+    <value>toolbarNewProject</value>
+  </data>
+  <data name="&gt;&gt;toolbarNewProject.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripDropDownButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;toolbarOpenProject.Name" xml:space="preserve">
     <value>toolbarOpenProject</value>
   </data>
   <data name="&gt;&gt;toolbarOpenProject.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolbarSave.Name" xml:space="preserve">
+    <value>toolbarSave</value>
+  </data>
+  <data name="&gt;&gt;toolbarSave.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolbarSaveAs.Name" xml:space="preserve">
@@ -3829,16 +3886,10 @@
   <data name="&gt;&gt;new_project.Type" xml:space="preserve">
     <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;menuItem5.Name" xml:space="preserve">
-    <value>menuItem5</value>
+  <data name="&gt;&gt;open_project.Name" xml:space="preserve">
+    <value>open_project</value>
   </data>
-  <data name="&gt;&gt;menuItem5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;menuItem6.Name" xml:space="preserve">
-    <value>menuItem6</value>
-  </data>
-  <data name="&gt;&gt;menuItem6.Type" xml:space="preserve">
+  <data name="&gt;&gt;open_project.Type" xml:space="preserve">
     <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;menuItem8.Name" xml:space="preserve">
@@ -3847,16 +3898,16 @@
   <data name="&gt;&gt;menuItem8.Type" xml:space="preserve">
     <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;menuItem9.Name" xml:space="preserve">
-    <value>menuItem9</value>
+  <data name="&gt;&gt;settings.Name" xml:space="preserve">
+    <value>settings</value>
   </data>
-  <data name="&gt;&gt;menuItem9.Type" xml:space="preserve">
+  <data name="&gt;&gt;settings.Type" xml:space="preserve">
     <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;menuItem7.Name" xml:space="preserve">
-    <value>menuItem7</value>
+  <data name="&gt;&gt;exit.Name" xml:space="preserve">
+    <value>exit</value>
   </data>
-  <data name="&gt;&gt;menuItem7.Type" xml:space="preserve">
+  <data name="&gt;&gt;exit.Type" xml:space="preserve">
     <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;menuItem2.Name" xml:space="preserve">
@@ -3865,10 +3916,10 @@
   <data name="&gt;&gt;menuItem2.Type" xml:space="preserve">
     <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;menuItem10.Name" xml:space="preserve">
-    <value>menuItem10</value>
+  <data name="&gt;&gt;retrieve_gamedata_online.Name" xml:space="preserve">
+    <value>retrieve_gamedata_online</value>
   </data>
-  <data name="&gt;&gt;menuItem10.Type" xml:space="preserve">
+  <data name="&gt;&gt;retrieve_gamedata_online.Type" xml:space="preserve">
     <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;menuItem14.Name" xml:space="preserve">
@@ -3877,10 +3928,10 @@
   <data name="&gt;&gt;menuItem14.Type" xml:space="preserve">
     <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;menuItem11.Name" xml:space="preserve">
-    <value>menuItem11</value>
+  <data name="&gt;&gt;export.Name" xml:space="preserve">
+    <value>export</value>
   </data>
-  <data name="&gt;&gt;menuItem11.Type" xml:space="preserve">
+  <data name="&gt;&gt;export.Type" xml:space="preserve">
     <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;menuItem13.Name" xml:space="preserve">
@@ -3889,10 +3940,10 @@
   <data name="&gt;&gt;menuItem13.Type" xml:space="preserve">
     <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;menuItem12.Name" xml:space="preserve">
-    <value>menuItem12</value>
+  <data name="&gt;&gt;close_project.Name" xml:space="preserve">
+    <value>close_project</value>
   </data>
-  <data name="&gt;&gt;menuItem12.Type" xml:space="preserve">
+  <data name="&gt;&gt;close_project.Type" xml:space="preserve">
     <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;menuItem3.Name" xml:space="preserve">
@@ -3901,17 +3952,23 @@
   <data name="&gt;&gt;menuItem3.Type" xml:space="preserve">
     <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;menuItem15.Name" xml:space="preserve">
-    <value>menuItem15</value>
+  <data name="&gt;&gt;about.Name" xml:space="preserve">
+    <value>about</value>
   </data>
-  <data name="&gt;&gt;menuItem15.Type" xml:space="preserve">
+  <data name="&gt;&gt;about.Type" xml:space="preserve">
     <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;toolbarNewProject.Name" xml:space="preserve">
-    <value>toolbarNewProject</value>
+  <data name="&gt;&gt;save_project_as.Name" xml:space="preserve">
+    <value>save_project_as</value>
   </data>
-  <data name="&gt;&gt;toolbarNewProject.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripDropDownButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;save_project_as.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;save_project.Name" xml:space="preserve">
+    <value>save_project</value>
+  </data>
+  <data name="&gt;&gt;save_project.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>

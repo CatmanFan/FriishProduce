@@ -202,5 +202,17 @@ namespace FriishProduce.Properties {
                 this["default_export_filename"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool use_online_wad_enabled {
+            get {
+                return ((bool)(this["use_online_wad_enabled"]));
+            }
+            set {
+                this["use_online_wad_enabled"] = value;
+            }
+        }
     }
 }

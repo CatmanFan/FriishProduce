@@ -481,6 +481,7 @@
     <None Include="Resources\forwarder_wii\forwarder_v12.dol" />
     <None Include="Resources\forwarder_wii\forwarder_v14.dol" />
     <None Include="Resources\StaticBase.wad" />
+    <None Include="Strings\fr.json" />
     <None Include="Strings\ko.json" />
     <None Include="Strings\en.json" />
   </ItemGroup>
@@ -495,6 +496,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="Resources\icons\disk.png" />
     <None Include="Resources\apps\OpenDolBoot.exe" />
     <None Include="Resources\yes.png" />
     <None Include="Resources\no.png" />

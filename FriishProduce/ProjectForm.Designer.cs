@@ -65,14 +65,18 @@ namespace FriishProduce
             this.label8 = new System.Windows.Forms.Label();
             this.bannerPreview = new System.Windows.Forms.PictureBox();
             this.wad_base = new System.Windows.Forms.GroupBox();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.use_offline_wad = new System.Windows.Forms.CheckBox();
+            this.import_wad = new System.Windows.Forms.Button();
+            this.hasWad = new System.Windows.Forms.PictureBox();
+            this.wad_filename = new System.Windows.Forms.TextBox();
+            this.use_online_wad = new System.Windows.Forms.RadioButton();
             this.base_name = new System.Windows.Forms.Label();
             this.baseName = new System.Windows.Forms.Label();
             this.BaseRegion = new System.Windows.Forms.PictureBox();
             this.Base = new System.Windows.Forms.ComboBox();
             this.title_id_2 = new System.Windows.Forms.Label();
             this.baseID = new System.Windows.Forms.Label();
+            this.use_offline_wad = new System.Windows.Forms.RadioButton();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.browsePatch = new System.Windows.Forms.OpenFileDialog();
             this.browseManual = new Ookii.Dialogs.WinForms.VistaFolderBrowserDialog();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -101,8 +105,9 @@ namespace FriishProduce
             ((System.ComponentModel.ISupportInitialize)(this.released)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bannerPreview)).BeginInit();
             this.wad_base.SuspendLayout();
-            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.hasWad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BaseRegion)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -408,32 +413,50 @@ namespace FriishProduce
             // 
             // wad_base
             // 
-            this.wad_base.Controls.Add(this.panel3);
+            this.wad_base.Controls.Add(this.import_wad);
+            this.wad_base.Controls.Add(this.hasWad);
+            this.wad_base.Controls.Add(this.wad_filename);
+            this.wad_base.Controls.Add(this.use_online_wad);
             this.wad_base.Controls.Add(this.base_name);
             this.wad_base.Controls.Add(this.baseName);
             this.wad_base.Controls.Add(this.BaseRegion);
             this.wad_base.Controls.Add(this.Base);
             this.wad_base.Controls.Add(this.title_id_2);
             this.wad_base.Controls.Add(this.baseID);
+            this.wad_base.Controls.Add(this.use_offline_wad);
+            this.wad_base.Controls.Add(this.pictureBox2);
             resources.ApplyResources(this.wad_base, "wad_base");
             this.wad_base.Name = "wad_base";
             this.wad_base.TabStop = false;
             this.wad_base.Tag = "wad_base";
             // 
-            // panel3
+            // import_wad
             // 
-            this.panel3.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel3.Controls.Add(this.use_offline_wad);
-            resources.ApplyResources(this.panel3, "panel3");
-            this.panel3.Name = "panel3";
+            resources.ApplyResources(this.import_wad, "import_wad");
+            this.import_wad.Name = "import_wad";
+            this.import_wad.Tag = "import_wad";
+            this.import_wad.UseVisualStyleBackColor = true;
+            this.import_wad.Click += new System.EventHandler(this.import_wad_Click);
             // 
-            // use_offline_wad
+            // hasWad
             // 
-            resources.ApplyResources(this.use_offline_wad, "use_offline_wad");
-            this.use_offline_wad.Name = "use_offline_wad";
-            this.use_offline_wad.Tag = "use_offline_wad";
-            this.use_offline_wad.UseVisualStyleBackColor = true;
-            this.use_offline_wad.CheckedChanged += new System.EventHandler(this.OpenWAD_CheckedChanged);
+            resources.ApplyResources(this.hasWad, "hasWad");
+            this.hasWad.Name = "hasWad";
+            this.hasWad.TabStop = false;
+            // 
+            // wad_filename
+            // 
+            resources.ApplyResources(this.wad_filename, "wad_filename");
+            this.wad_filename.Name = "wad_filename";
+            this.wad_filename.ReadOnly = true;
+            // 
+            // use_online_wad
+            // 
+            resources.ApplyResources(this.use_online_wad, "use_online_wad");
+            this.use_online_wad.Name = "use_online_wad";
+            this.use_online_wad.Tag = "use_online_wad";
+            this.use_online_wad.UseVisualStyleBackColor = true;
+            this.use_online_wad.CheckedChanged += new System.EventHandler(this.OpenWAD_CheckedChanged);
             // 
             // base_name
             // 
@@ -464,8 +487,8 @@ namespace FriishProduce
             this.Base.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.Base.DropDownHeight = 150;
             this.Base.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Base.FormattingEnabled = true;
             resources.ApplyResources(this.Base, "Base");
+            this.Base.FormattingEnabled = true;
             this.Base.Name = "Base";
             this.Base.SelectedIndexChanged += new System.EventHandler(this.Base_SelectedIndexChanged);
             // 
@@ -481,6 +504,21 @@ namespace FriishProduce
             resources.ApplyResources(this.baseID, "baseID");
             this.baseID.Name = "baseID";
             this.baseID.UseMnemonic = false;
+            // 
+            // use_offline_wad
+            // 
+            resources.ApplyResources(this.use_offline_wad, "use_offline_wad");
+            this.use_offline_wad.Name = "use_offline_wad";
+            this.use_offline_wad.Tag = "";
+            this.use_offline_wad.UseVisualStyleBackColor = true;
+            this.use_offline_wad.CheckedChanged += new System.EventHandler(this.OpenWAD_CheckedChanged);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.SystemColors.ControlDark;
+            resources.ApplyResources(this.pictureBox2, "pictureBox2");
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.TabStop = false;
             // 
             // browsePatch
             // 
@@ -646,8 +684,9 @@ namespace FriishProduce
             ((System.ComponentModel.ISupportInitialize)(this.bannerPreview)).EndInit();
             this.wad_base.ResumeLayout(false);
             this.wad_base.PerformLayout();
-            this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.hasWad)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BaseRegion)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -702,13 +741,11 @@ namespace FriishProduce
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.PictureBox bannerPreview;
-        private System.Windows.Forms.CheckBox use_offline_wad;
         private System.Windows.Forms.PictureBox SaveIcon_Panel;
         private System.Windows.Forms.Button editContentOptions;
         private System.Windows.Forms.ComboBox video_modes;
         private System.Windows.Forms.Label video_mode;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.OpenFileDialog browseROM;
         private System.Windows.Forms.OpenFileDialog browseImage;
         private System.Windows.Forms.Button import_image;
@@ -723,5 +760,11 @@ namespace FriishProduce
         private System.Windows.Forms.ComboBox forwarder_type;
         private System.Windows.Forms.PictureBox hasRom;
         private System.Windows.Forms.PictureBox hasPatch;
+        private System.Windows.Forms.Button import_wad;
+        private System.Windows.Forms.RadioButton use_online_wad;
+        private System.Windows.Forms.RadioButton use_offline_wad;
+        private System.Windows.Forms.PictureBox hasWad;
+        private System.Windows.Forms.TextBox wad_filename;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

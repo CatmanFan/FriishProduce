@@ -65,7 +65,7 @@ namespace FriishProduce
     {
         public static bool InternetTest(string URL = null)
         {
-            int timeout = 10;
+            int timeout = 60;
 
             try
             {
@@ -138,7 +138,8 @@ namespace FriishProduce
                     )}, timeout * 1000) == -1)
                     throw new TimeoutException();
 
-                    if (ms.ToArray().Length > 75) return ms.ToArray();
+                    if (ms.ToArray().Length == 0) throw new FileNotFoundException();
+                    else if (ms.ToArray().Length > 75) return ms.ToArray();
 
                     throw new WebException();
                 }
