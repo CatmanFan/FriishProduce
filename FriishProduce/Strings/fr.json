@@ -97,7 +97,7 @@
 			"001":								"«{0}» comporte des modifications non enregistrées.\nQu'est-ce que vous voudrais faire ?",
 			"002":								"Le fichier précisé est invalide.",
 			"003":								"Terminé avec succès.\nOuvrir le dossier de sortie ?",
-			"004":								"REPLACE ME",
+			"004":								"Impossible de charger tous les informations de ce logiciel (nom, année de sortie ou joueurs) à partir de la bibliothèque des jeux.\nCertaines informations doivent être spécifiées manuellement.",
 			"005":								"Le fichier WAD que vous avez précisée ({0}) est invalide.\nCeci peut être provoqué par l'une des raisons suivantes :\n  • La plateforme/console cible ne correspond pas à celle de la chaîne sélectionnée.\n  • La chaîne n'est pas encore disponible dans la base des données de cette application.\n  • La chaîne était déjà modifiée (soit injectée, soit convertie en forme du forwarder).",
 			"006":								"Vous pouvez replacer les fichier du mode d'emploi inclus dans la chaîne de Console virtuelle par des autres externes, soit personalisés.\n\nPour ce faire, vous aurez besoin d'une archive ZIP comprenant le contenu d'un fichier *.arc du mode d'emploi de Console virtuelle.",
 			"007":								"L'archive précisée est invalide.",
@@ -118,7 +118,7 @@
 			"e_010":							"Le fichier «{0}» n'a pas été trouvé dans son chemin original. Il s'agit qu'il peut avoir été déplacé ou supprimé.",
 			"e_011":							"Le dossier «{0}» n'a pas été trouvé dans son chemin original. Il s'agit qu'il peut avoir été déplacé ou supprimé.",
 			"e_012":							"Aucun point d'entrée d'injection n'a été trouvé. Il peut s'agir que la méthode d'injection utilisée par cette chaîne n'est toujours pas prise en charge.",
-			"e_013":							"Le fichier BIOS est indisponible ou invalide. Cette option sera désactivée dans les réglages de l'émulateur."
+			"e_013":							"Le fichier du BIOS est indisponible ou invalide. Cette option sera désactivée dans les réglages de l'émulateur."
 		}
 	},
 
@@ -133,7 +133,7 @@
 			"save_project_as":					"Enregistrer le projet sous ...",
 			"close_project":					"Fermer le projet",
 			"open_gamefile":					"Ouvrir un fichier de jeu...",
-			"retrieve_gamedata_online":			"REPLACE ME",
+			"retrieve_gamedata_online":			"Charger les informations dès de la bibliothèque des jeux",
 			"export":							"Exporter ...",
 			"exit":								"Quitter",
 			"project_type":						"Chaîne {0}",
@@ -151,17 +151,20 @@
 			"check_for_updates":				"Vérifier les mises à jour",
 			"auto_update_check":				"Vérifier les mises à jour automatiquement au démarrage de l'application",
 
-			"gamedata_settings":				"Game data settings",
-			"gamedata_source_image":			"Site web à utiliser pour les images :",
-			"auto_retrieve_gamedata_online":	"REPLACE ME automatiquement après l'ouverture d'un fichier de jeu",
-			"autolink_save_data":				"Link save data title automatically with banner and channel names",
+			"gamedata_settings":				"Récupération des informations du jeu",
+			"gamedata_source_image":			"Site d'hébergement des images :",
+			"auto_retrieve_gamedata_online":	"À l'ouverture d'un fichier de jeu, charger ses informations automatiquement",
+			"auto_fill_save_data":				"Remplir automatiquement le formulaire de titre des données de sauvegarde",
 			
 			"default_settings":					"Paramètres par défaut",
 			"default_injection_methods":		"Méthodes d'injection par défaut",
 			"default_save_as_filename":			"Nom des fichiers enregistrés par défaut",
 			"default_save_as_project":			"Projets :",
 			"default_save_as_wad":				"Fichiers WAD ou ZIP :",
-			"default_save_as_parameters":		"Parties remplaçables :"
+			"default_save_as_parameters":		"Parties remplaçables :",
+
+			"use_online_wad_enabled":           "Activer l'option de téléchargement des WADs",
+			"use_online_wad_tip":				"Cette option peut être utilisée pour télécharger n'importe quelle WAD disponible dans la base des données sans avoir de fichier déjà sur le disque. Il est cependant recommandé de désactiver cette option car sa légalité est discutable et la fonctionnalité NusClient qui existe déjà dans libWiiSharp ne permet pas de décrypter facilement le contenu des chaînes de la Console virtuelle."
 		},
 
 		"projectform": {
@@ -201,9 +204,9 @@
 			"injection_method_options":			"Paramètres de méthode d'injection",
 			"forwarder_root_device":			"Périphérique de stockage racine",
 
-			"save_data":						"Save data",
-			"save_data_enable":					"Enable saving",
-			"autolink_save_data":				"Link automatically",
+			"save_data":						"Données de sauvegarde",
+			"save_data_enable":					"Activer la sauvegarde des données",
+			"fill_save_data":					"Remplir automatiquement",
 
 			"manual_type":						"Mode d'emploi",
 			"manual_type0":						"{disabled}",
@@ -228,65 +231,65 @@
 		},
 
 		"vc_n64": {
-			"patch_fixbrightness":				"Remove dark filter",
-			"patch_fixcrashes":					"Fix crashes",
-			"patch_expandedram":				"Enable extended RAM",
-			"patch_autosizerom":				"Allocate ROM size",
+			"patch_fixbrightness":				"Anti-filtre sombre",
+			"patch_fixcrashes":					"Anti-plantage",
+			"patch_expandedram":				"Extension de mémoire",
+			"patch_autosizerom":				"Allocation de taille de la ROM",
 
-			"romc_type":						"ROM compression method",
-			"romc_type0":						"ROMC (Type 0)",
-			"romc_type1":						"ROMC (Type 1)"
+			"romc_type":						"Méthode de compression",
+			"romc_type0":						"ROMC (type 0)",
+			"romc_type1":						"ROMC (type 1)"
 		},
 
 		"vc_sega": {
-			"console_disableresetbutton":		"Disable reset button",
-			"dev_mdpad_enable_6b":				"Enable Six Button Control Pad for {0}"
+			"console_disableresetbutton":		"Désactiver le bouton Reset",
+			"dev_mdpad_enable_6b":				"Utiliser la manette à 6 boutons ({0})"
 		},
 
 		"vc_pce": {
-			"hide_overscan":					"Hide overscan",
-			"raster":							"Enable BG raster",
-			"sprline":							"Enable sprite limit",
-			"y_offset":							"Y offset",
-			"europe0":							"Region set to Japanese",
-			"europe1":							"Region set to US/Europe",
-			"sgenable0":						"Not using SuperGrafx",
-			"sgenable1":						"Using SuperGrafx",
-			"padbutton0":						"Using 2-button Pad",
-			"padbutton1":						"Using 6-button Pad"
+			"hide_overscan":					"Désactiver le surbalayage",
+			"raster":							"BG raster",
+			"sprline":							"Limite de sprites",
+			"y_offset":							"Décalage Y",
+			"europe0":							"Région précisée : Japon",
+			"europe1":							"Région précisée : Occident",
+			"sgenable0":						"Fonctionnalité SuperGrafx : désactivée",
+			"sgenable1":						"Fonctionnalité SuperGrafx : activée",
+			"padbutton0":						"Manette : 2 boutons",
+			"padbutton1":						"Manette : 6 boutons"
 		},
 
 		"vc_neo": {
-			"bios":								"System BIOS",
-			"bios0":							"Import from file",
-			"bios1":							"{vc} (version 1)",
-			"bios2":							"{vc} (version 2)",
-			"bios3":							"{vc} (version 3)"
+			"bios":								"BIOS",
+			"bios0":							"Fichier externe",
+			"bios1":							"{vc} (1ᵉ édition)",
+			"bios2":							"{vc} (2ᵉ édition)",
+			"bios3":							"{vc} (3ᵉ édition)"
 		},
 
 		"adobe_flash": {
-			"vff_sync_on_write":				"Sync VFF on write",
-			"vff_cache_size":					"VFF cache size",
-			"controls":							"Controls",
-			"mouse":							"Mouse",
-			"qwerty_keyboard":					"QWERTY keyboard",
-			"midi":								"Enable MIDI playback using DLS soundfont",
-			"quality":							"Quality",
-			"quality0":							"High",
-			"quality1":							"Medium",
-			"quality2":							"Low",
-			"strap_reminder":					"Strap reminder screen",
+			"vff_sync_on_write":				"Synchroniser VFF à l'écriture",
+			"vff_cache_size":					"Taille du cache VFF",
+			"controls":							"Contrôles",
+			"mouse":							"Souris",
+			"qwerty_keyboard":					"Clavier Qwerty",
+			"midi":								"Activer la lecture de MIDI avec une police sonore DLS",
+			"quality":							"Qualité",
+			"quality0":							"Élevé",
+			"quality1":							"Moyen",
+			"quality2":							"Bas",
+			"strap_reminder":					"Écran de dragonne",
 			"strap_reminder0":					"{disabled}",
 			"strap_reminder1":					"{enabled}",
-			"strap_reminder2":					"No extension controller"
+			"strap_reminder2":					"Section consacrée aux extensions externes exclue"
 		},
 
 		"forwarder": {
-			"bios_settings":					"BIOS settings",
-			"use_bios":							"Use a BIOS file",
-			"show_bios_screen":					"Show BIOS startup screen",
-			"rpgm_settings":					"RPG Maker settings",
-			"use_rtp":							"Use external RTP (Run-Time Package)",
+			"bios_settings":					"Paramètres du BIOS",
+			"use_bios":							"Utiliser un fichier du BIOS",
+			"show_bios_screen":					"Afficher l'écran de démarrage du système",
+			"rpgm_settings":					"Paramètres de RPG Maker",
+			"use_rtp":							"Utiliser des RTP (ressources de base) externes",
 		}
 	}
 }

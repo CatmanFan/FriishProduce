@@ -38,7 +38,7 @@ namespace FriishProduce
             this.browseInputWad = new System.Windows.Forms.OpenFileDialog();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.SaveIcon_Panel = new System.Windows.Forms.PictureBox();
-            this.autolink_save_data = new System.Windows.Forms.CheckBox();
+            this.fill_save_data = new System.Windows.Forms.CheckBox();
             this.save_data_title = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.manual_type_list = new System.Windows.Forms.ComboBox();
@@ -158,7 +158,7 @@ namespace FriishProduce
             // groupBox7
             // 
             this.groupBox7.Controls.Add(this.SaveIcon_Panel);
-            this.groupBox7.Controls.Add(this.autolink_save_data);
+            this.groupBox7.Controls.Add(this.fill_save_data);
             this.groupBox7.Controls.Add(this.save_data_title);
             this.groupBox7.Controls.Add(this.label16);
             resources.ApplyResources(this.groupBox7, "groupBox7");
@@ -173,13 +173,13 @@ namespace FriishProduce
             this.SaveIcon_Panel.Name = "SaveIcon_Panel";
             this.SaveIcon_Panel.TabStop = false;
             // 
-            // autolink_save_data
+            // fill_save_data
             // 
-            resources.ApplyResources(this.autolink_save_data, "autolink_save_data");
-            this.autolink_save_data.Name = "autolink_save_data";
-            this.autolink_save_data.Tag = "autolink_save_data";
-            this.autolink_save_data.UseVisualStyleBackColor = true;
-            this.autolink_save_data.CheckedChanged += new System.EventHandler(this.LinkSaveData_Changed);
+            resources.ApplyResources(this.fill_save_data, "fill_save_data");
+            this.fill_save_data.Name = "fill_save_data";
+            this.fill_save_data.Tag = "fill_save_data";
+            this.fill_save_data.UseVisualStyleBackColor = true;
+            this.fill_save_data.CheckedChanged += new System.EventHandler(this.LinkSaveData_Changed);
             // 
             // save_data_title
             // 
@@ -734,7 +734,7 @@ namespace FriishProduce
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label region;
         private System.Windows.Forms.ComboBox region_list;
-        private System.Windows.Forms.CheckBox autolink_save_data;
+        private System.Windows.Forms.CheckBox fill_save_data;
         private Ookii.Dialogs.WinForms.VistaFolderBrowserDialog browseManual;
         private System.Windows.Forms.ComboBox manual_type_list;
         private System.Windows.Forms.GroupBox groupBox5;

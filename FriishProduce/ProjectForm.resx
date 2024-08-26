@@ -252,34 +252,34 @@
   <data name="&gt;&gt;SaveIcon_Panel.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="autolink_save_data.AutoSize" type="System.Boolean, mscorlib">
+  <data name="fill_save_data.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="autolink_save_data.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="fill_save_data.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="autolink_save_data.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 74</value>
+  <data name="fill_save_data.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 73</value>
   </data>
-  <data name="autolink_save_data.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="fill_save_data.Size" type="System.Drawing.Size, System.Drawing">
     <value>119, 17</value>
   </data>
-  <data name="autolink_save_data.TabIndex" type="System.Int32, mscorlib">
+  <data name="fill_save_data.TabIndex" type="System.Int32, mscorlib">
     <value>39</value>
   </data>
-  <data name="autolink_save_data.Text" xml:space="preserve">
-    <value>autolink_save_data</value>
+  <data name="fill_save_data.Text" xml:space="preserve">
+    <value>fill_save_data</value>
   </data>
-  <data name="&gt;&gt;autolink_save_data.Name" xml:space="preserve">
-    <value>autolink_save_data</value>
+  <data name="&gt;&gt;fill_save_data.Name" xml:space="preserve">
+    <value>fill_save_data</value>
   </data>
-  <data name="&gt;&gt;autolink_save_data.Type" xml:space="preserve">
+  <data name="&gt;&gt;fill_save_data.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;autolink_save_data.Parent" xml:space="preserve">
+  <data name="&gt;&gt;fill_save_data.Parent" xml:space="preserve">
     <value>groupBox7</value>
   </data>
-  <data name="&gt;&gt;autolink_save_data.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;fill_save_data.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="save_data_title.Location" type="System.Drawing.Point, System.Drawing">

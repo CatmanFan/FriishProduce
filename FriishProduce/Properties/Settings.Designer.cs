@@ -86,12 +86,12 @@ namespace FriishProduce.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool link_save_data {
+        public bool auto_fill_save_data {
             get {
-                return ((bool)(this["link_save_data"]));
+                return ((bool)(this["auto_fill_save_data"]));
             }
             set {
-                this["link_save_data"] = value;
+                this["auto_fill_save_data"] = value;
             }
         }
         

@@ -17,7 +17,7 @@
     <Setting Name="image_fit_aspect_ratio" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="link_save_data" Type="System.Boolean" Scope="User">
+    <Setting Name="auto_fill_save_data" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="gamedata_source_image" Type="System.Int32" Scope="User">

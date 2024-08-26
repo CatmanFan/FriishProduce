@@ -13,10 +13,12 @@ namespace FriishProduce
     public partial class SettingsForm : Form
     {
         private bool isShown = false;
-        private bool isDirty = false;
         private bool nodeLocked = false;
         private string nodeName;
         private int sysLangValue;
+
+        private int dirtyOption1;
+        private bool dirtyOption2;
 
         public SettingsForm()
         {
@@ -190,7 +192,7 @@ namespace FriishProduce
             // Defaults & forwarders
             auto_update_check.Checked = Default.auto_update_check;
             auto_retrieve_gamedata_online.Checked = Default.auto_retrieve_game_data;
-            autolink_save_data.Checked = Default.link_save_data;
+            auto_fill_save_data.Checked = Default.auto_fill_save_data;
             reset_all_dialogs.Checked = false;
             toggleSwitch2.Checked = bool.Parse(FORWARDER.Default.show_bios_screen);
             forwarder_type.SelectedIndex = FORWARDER.Default.root_storage_device;
@@ -213,6 +215,12 @@ namespace FriishProduce
                 Default.custom_database = null;
                 Default.Save();
             }
+            #endregion
+
+            #region use_online_wad_enabled
+            if (use_online_wad_tip.MaximumSize.IsEmpty) use_online_wad_tip.MaximumSize = use_online_wad_tip.Size;
+            use_online_wad_tip.AutoSize = true;
+            use_online_wad_enabled.Checked = Default.use_online_wad_enabled;
             #endregion
 
             // NES
@@ -264,6 +272,9 @@ namespace FriishProduce
             Program.AutoSizeControl(vc_sega_country, vc_sega_country_l);
 
             // -----------------------------
+
+            dirtyOption1 = lngList.SelectedIndex;
+            dirtyOption2 = use_online_wad_enabled.Checked;
         }
 
         private void Loading(object sender, EventArgs e)
@@ -324,12 +335,13 @@ namespace FriishProduce
             // -------------------------------------------
 
             Default.auto_update_check = auto_update_check.Checked;
-            Default.link_save_data = autolink_save_data.Checked;
+            Default.auto_fill_save_data = auto_fill_save_data.Checked;
             Default.gamedata_source_image = gamedata_source_image_list.SelectedIndex;
             Default.image_interpolation = image_interpolation_mode.SelectedIndex;
             Default.auto_retrieve_game_data = auto_retrieve_gamedata_online.Checked;
             Default.default_export_filename = default_export_filename_tb.Text;
             Default.default_save_as_filename = default_save_as_filename_tb.Text;
+            Default.use_online_wad_enabled = use_online_wad_enabled.Checked;
 
             Default.default_injection_method_nes = injection_methods_nes.SelectedIndex;
             Default.default_injection_method_snes = injection_methods_snes.SelectedIndex;
@@ -401,10 +413,12 @@ namespace FriishProduce
             // -------------------------------------------
             SaveAll();
 
-            bool restart = isDirty && MessageBox.Show(Program.Lang.Msg(0), MessageBox.Buttons.YesNo, MessageBox.Icons.None) == MessageBox.Result.Yes;
+            bool isDirty = isShown
+                && (dirtyOption1 != lngList.SelectedIndex
+                 || dirtyOption2 != use_online_wad_enabled.Checked);
+            bool restart = isDirty ? MessageBox.Show(Program.Lang.Msg(0), MessageBox.Buttons.YesNo, MessageBox.Icons.None) == MessageBox.Result.Yes : false;
 
             isShown = false;
-            isDirty = false;
             DialogResult = DialogResult.OK;
 
             if (restart)
@@ -533,7 +547,5 @@ namespace FriishProduce
                 if (isUpdated) MessageBox.Show(Program.Lang.Msg(9), MessageBox.Buttons.Ok, MessageBox.Icons.Information);
             }
         }
-
-        private void MakeDirty(object sender, EventArgs e) { if (isShown) isDirty = true; }
     }
 }

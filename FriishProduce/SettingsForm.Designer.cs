@@ -50,7 +50,7 @@ namespace FriishProduce
             this.updater = new System.Windows.Forms.GroupBox();
             this.auto_update_check = new System.Windows.Forms.CheckBox();
             this.check_for_updates = new System.Windows.Forms.Button();
-            this.autolink_save_data = new System.Windows.Forms.CheckBox();
+            this.auto_fill_save_data = new System.Windows.Forms.CheckBox();
             this.retrieve_gamedata_online = new System.Windows.Forms.GroupBox();
             this.gamedata_source_image = new System.Windows.Forms.Label();
             this.gamedata_source_image_list = new System.Windows.Forms.ComboBox();
@@ -108,8 +108,9 @@ namespace FriishProduce
             this.flash_save_data_enable = new System.Windows.Forms.CheckBox();
             this.flash_vff_cache_size = new System.Windows.Forms.Label();
             this.flash_vff_cache_size_list = new System.Windows.Forms.ComboBox();
-            this.LanguageList = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.use_online_wad_tip = new System.Windows.Forms.Label();
+            this.use_online_wad_enabled = new System.Windows.Forms.CheckBox();
             this.image_interpolation_mode = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.default_save_as_filename = new System.Windows.Forms.GroupBox();
@@ -168,7 +169,6 @@ namespace FriishProduce
             resources.GetString("lngList.Items")});
             resources.ApplyResources(this.lngList, "lngList");
             this.lngList.Name = "lngList";
-            this.lngList.SelectedIndexChanged += new System.EventHandler(this.MakeDirty);
             // 
             // vc_n64_options
             // 
@@ -326,12 +326,12 @@ namespace FriishProduce
             this.check_for_updates.UseVisualStyleBackColor = true;
             this.check_for_updates.Click += new System.EventHandler(this.CheckUpdates_Click);
             // 
-            // autolink_save_data
+            // auto_fill_save_data
             // 
-            resources.ApplyResources(this.autolink_save_data, "autolink_save_data");
-            this.autolink_save_data.Name = "autolink_save_data";
-            this.autolink_save_data.Tag = "autolink_save_data";
-            this.autolink_save_data.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.auto_fill_save_data, "auto_fill_save_data");
+            this.auto_fill_save_data.Name = "auto_fill_save_data";
+            this.auto_fill_save_data.Tag = "auto_fill_save_data";
+            this.auto_fill_save_data.UseVisualStyleBackColor = true;
             // 
             // retrieve_gamedata_online
             // 
@@ -798,24 +798,32 @@ namespace FriishProduce
             resources.ApplyResources(this.flash_vff_cache_size_list, "flash_vff_cache_size_list");
             this.flash_vff_cache_size_list.Name = "flash_vff_cache_size_list";
             // 
-            // LanguageList
-            // 
-            this.LanguageList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.LanguageList.FormattingEnabled = true;
-            this.LanguageList.Items.AddRange(new object[] {
-            resources.GetString("LanguageList.Items")});
-            resources.ApplyResources(this.LanguageList, "LanguageList");
-            this.LanguageList.Name = "LanguageList";
-            // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.use_online_wad_tip);
+            this.panel2.Controls.Add(this.use_online_wad_enabled);
             this.panel2.Controls.Add(this.image_interpolation_mode);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.default_save_as_filename);
-            this.panel2.Controls.Add(this.autolink_save_data);
+            this.panel2.Controls.Add(this.auto_fill_save_data);
             this.panel2.Controls.Add(this.retrieve_gamedata_online);
             resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
+            // 
+            // use_online_wad_tip
+            // 
+            this.use_online_wad_tip.BackColor = System.Drawing.SystemColors.Info;
+            this.use_online_wad_tip.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            resources.ApplyResources(this.use_online_wad_tip, "use_online_wad_tip");
+            this.use_online_wad_tip.Name = "use_online_wad_tip";
+            this.use_online_wad_tip.Tag = "use_online_wad_tip";
+            // 
+            // use_online_wad_enabled
+            // 
+            resources.ApplyResources(this.use_online_wad_enabled, "use_online_wad_enabled");
+            this.use_online_wad_enabled.Name = "use_online_wad_enabled";
+            this.use_online_wad_enabled.Tag = "use_online_wad_enabled";
+            this.use_online_wad_enabled.UseVisualStyleBackColor = true;
             // 
             // image_interpolation_mode
             // 
@@ -955,7 +963,6 @@ namespace FriishProduce
             this.ControlBox = false;
             this.Controls.Add(this.bottomPanel2);
             this.Controls.Add(this.TreeView);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.vc_neo);
             this.Controls.Add(this.vc_nes);
@@ -965,6 +972,7 @@ namespace FriishProduce
             this.Controls.Add(this.vc_pce);
             this.Controls.Add(this.vc_sega);
             this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MaximizeBox = false;
@@ -1080,9 +1088,8 @@ namespace FriishProduce
         private System.Windows.Forms.CheckBox flash_save_data_enable;
         private System.Windows.Forms.Label flash_vff_cache_size;
         private System.Windows.Forms.ComboBox flash_vff_cache_size_list;
-        private System.Windows.Forms.ComboBox LanguageList;
         private System.Windows.Forms.CheckBox auto_retrieve_gamedata_online;
-        private System.Windows.Forms.CheckBox autolink_save_data;
+        private System.Windows.Forms.CheckBox auto_fill_save_data;
         private System.Windows.Forms.GroupBox retrieve_gamedata_online;
         private System.Windows.Forms.ComboBox gamedata_source_image_list;
         private System.Windows.Forms.Label gamedata_source_image;
@@ -1122,5 +1129,7 @@ namespace FriishProduce
         private System.Windows.Forms.GroupBox vc_n64_romc_type;
         private System.Windows.Forms.Label vc_neo_bios;
         private System.Windows.Forms.ComboBox forwarder_type;
+        private System.Windows.Forms.CheckBox use_online_wad_enabled;
+        private System.Windows.Forms.Label use_online_wad_tip;
     }
 }

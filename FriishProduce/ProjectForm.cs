@@ -29,7 +29,7 @@ namespace FriishProduce
             {
                 _showSaveData = value;
 
-                autolink_save_data.Visible = SaveIcon_Panel.Visible = save_data_title.Visible = value;
+                fill_save_data.Visible = SaveIcon_Panel.Visible = save_data_title.Visible = value;
                 label16.Visible = !value;
             }
         }
@@ -234,7 +234,7 @@ namespace FriishProduce
                 ForwarderStorageDevice = forwarder_type.SelectedIndex,
                 ContentOptions = contentOptions ?? null,
                 WADRegion = region_list.SelectedIndex,
-                LinkSaveDataTitle = autolink_save_data.Checked,
+                LinkSaveDataTitle = fill_save_data.Checked,
                 ImageOptions = (imageintpl.SelectedIndex, image_fit.Checked),
                 VideoMode = video_modes.SelectedIndex,
 
@@ -642,7 +642,7 @@ namespace FriishProduce
                 LoadManual(project.Manual.Type, project.Manual.File);
             }
 
-            autolink_save_data.Checked = project == null ? Properties.Settings.Default.link_save_data : project.LinkSaveDataTitle;
+            fill_save_data.Checked = project == null ? Properties.Settings.Default.auto_fill_save_data : project.LinkSaveDataTitle;
 
             int forwarderStorageDevice = project == null ? Options.FORWARDER.Default.root_storage_device : project.ForwarderStorageDevice;
             forwarder_type.SelectedIndex = forwarderStorageDevice;
@@ -845,7 +845,7 @@ namespace FriishProduce
 
         private void linkSaveDataTitle()
         {
-            if (autolink_save_data.Checked && autolink_save_data.Enabled && autolink_save_data.Visible)
+            if (fill_save_data.Checked && fill_save_data.Enabled && fill_save_data.Visible)
             {
                 string[] lines = new string[2];
                 int limit = save_data_title.Multiline ? save_data_title.MaxLength / 2 : save_data_title.MaxLength;
@@ -866,9 +866,9 @@ namespace FriishProduce
 
         private void LinkSaveData_Changed(object sender, EventArgs e)
         {
-            if (sender == autolink_save_data)
+            if (sender == fill_save_data)
             {
-                save_data_title.Enabled = !autolink_save_data.Checked;
+                save_data_title.Enabled = !fill_save_data.Checked;
                 linkSaveDataTitle();
             }
         }
@@ -1297,7 +1297,7 @@ namespace FriishProduce
                     players.Value = !string.IsNullOrEmpty(gameData.Players) ? int.Parse(gameData.Players) : players.Value;
                 }
 
-                if (retrieved && autolink_save_data.Checked) linkSaveDataTitle();
+                if (retrieved && fill_save_data.Checked) linkSaveDataTitle();
                 else if (rom.CleanTitle != null && channel_title.TextLength <= save_data_title.MaxLength) save_data_title.Text = channel_title.Text;
 
                 // Show message if partially failed to retrieve data
