@@ -137,7 +137,7 @@
     <value>null</value>
   </data>
   <data name="imageintpl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 19</value>
+    <value>10, 22</value>
   </data>
   <data name="imageintpl.Size" type="System.Drawing.Size, System.Drawing">
     <value>240, 21</value>
@@ -166,7 +166,7 @@
     <value>NoControl</value>
   </data>
   <data name="image_fit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 60</value>
+    <value>10, 65</value>
   </data>
   <data name="image_fit.Size" type="System.Drawing.Size, System.Drawing">
     <value>67, 17</value>
@@ -196,7 +196,7 @@
     <value>NoControl</value>
   </data>
   <data name="image_stretch.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 43</value>
+    <value>10, 47</value>
   </data>
   <data name="image_stretch.Size" type="System.Drawing.Size, System.Drawing">
     <value>91, 17</value>
@@ -229,7 +229,7 @@
     <value>Center</value>
   </data>
   <data name="SaveIcon_Panel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 19</value>
+    <value>10, 18</value>
   </data>
   <data name="SaveIcon_Panel.Size" type="System.Drawing.Size, System.Drawing">
     <value>48, 48</value>
@@ -259,10 +259,10 @@
     <value>NoControl</value>
   </data>
   <data name="fill_save_data.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 73</value>
+    <value>10, 71</value>
   </data>
   <data name="fill_save_data.Size" type="System.Drawing.Size, System.Drawing">
-    <value>119, 17</value>
+    <value>91, 17</value>
   </data>
   <data name="fill_save_data.TabIndex" type="System.Int32, mscorlib">
     <value>39</value>
@@ -283,7 +283,7 @@
     <value>1</value>
   </data>
   <data name="save_data_title.Location" type="System.Drawing.Point, System.Drawing">
-    <value>66, 25</value>
+    <value>66, 24</value>
   </data>
   <data name="save_data_title.MaxLength" type="System.Int32, mscorlib">
     <value>80</value>
@@ -322,7 +322,7 @@
     <value>3, 16</value>
   </data>
   <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 79</value>
+    <value>250, 76</value>
   </data>
   <data name="label16.TabIndex" type="System.Int32, mscorlib">
     <value>38</value>
@@ -352,10 +352,10 @@
     <value>False</value>
   </data>
   <data name="groupBox7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>813, 323</value>
+    <value>813, 340</value>
   </data>
   <data name="groupBox7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 98</value>
+    <value>256, 95</value>
   </data>
   <data name="groupBox7.TabIndex" type="System.Int32, mscorlib">
     <value>40</value>
@@ -712,10 +712,10 @@
     <value>False</value>
   </data>
   <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 263</value>
+    <value>12, 280</value>
   </data>
   <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>529, 108</value>
+    <value>529, 105</value>
   </data>
   <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
     <value>39</value>
@@ -965,7 +965,7 @@
     <value>False</value>
   </data>
   <data name="groupBox6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>547, 224</value>
+    <value>547, 241</value>
   </data>
   <data name="groupBox6.Size" type="System.Drawing.Size, System.Drawing">
     <value>522, 93</value>
@@ -992,7 +992,7 @@
     <value>NoControl</value>
   </data>
   <data name="bannerPreview.Location" type="System.Drawing.Point, System.Drawing">
-    <value>547, 8</value>
+    <value>547, 25</value>
   </data>
   <data name="bannerPreview.Size" type="System.Drawing.Size, System.Drawing">
     <value>522, 210</value>
@@ -1368,7 +1368,7 @@
     <value>False</value>
   </data>
   <data name="wad_base.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 119</value>
+    <value>12, 136</value>
   </data>
   <data name="wad_base.Size" type="System.Drawing.Size, System.Drawing">
     <value>529, 140</value>
@@ -1401,10 +1401,10 @@
     <value>False</value>
   </data>
   <data name="groupBox5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>547, 323</value>
+    <value>547, 340</value>
   </data>
   <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>260, 85</value>
+    <value>260, 95</value>
   </data>
   <data name="groupBox5.TabIndex" type="System.Int32, mscorlib">
     <value>42</value>
@@ -1458,7 +1458,7 @@
     <value>False</value>
   </data>
   <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 377</value>
+    <value>12, 394</value>
   </data>
   <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
     <value>300, 50</value>
@@ -1664,7 +1664,7 @@
     <value>3</value>
   </data>
   <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 8</value>
+    <value>12, 25</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
     <value>529, 105</value>
@@ -1718,7 +1718,7 @@
     <value>False</value>
   </data>
   <data name="forwarder_root_device.Location" type="System.Drawing.Point, System.Drawing">
-    <value>318, 377</value>
+    <value>318, 394</value>
   </data>
   <data name="forwarder_root_device.Size" type="System.Drawing.Size, System.Drawing">
     <value>223, 50</value>
@@ -1745,7 +1745,7 @@
     <value>False</value>
   </data>
   <data name="manual_type.Location" type="System.Drawing.Point, System.Drawing">
-    <value>318, 377</value>
+    <value>318, 394</value>
   </data>
   <data name="manual_type.Size" type="System.Drawing.Size, System.Drawing">
     <value>223, 50</value>
@@ -1775,7 +1775,7 @@
     <value>True</value>
   </metadata>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1081, 439</value>
+    <value>1080, 470</value>
   </data>
   <data name="$this.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
     <value>No</value>

@@ -185,7 +185,7 @@ namespace FriishProduce
             // 
             resources.ApplyResources(this.save_data_title, "save_data_title");
             this.save_data_title.Name = "save_data_title";
-            this.save_data_title.Tag = "27";
+            this.save_data_title.Tag = "24";
             this.save_data_title.TextChanged += new System.EventHandler(this.TextBox_Changed);
             this.save_data_title.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_Handle);
             // 
