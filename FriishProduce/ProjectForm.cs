@@ -749,7 +749,7 @@ namespace FriishProduce
 
             rom_filename.Enabled = hasRom;
             patch_filename.Enabled = hasPatch;
-            image_filename.Enabled = hasImage;
+            if (!hasImage) image_filename.Enabled = false;
             wad_filename.Enabled = hasWad;
 
             checkImg1.Image = hasRom ? Properties.Resources.yes : Properties.Resources.no;
@@ -1106,6 +1106,7 @@ namespace FriishProduce
         protected void LoadImage(string path)
         {
             image_filename.Text = path;
+            image_filename.Enabled = true;
             img = new ImageHelper(targetPlatform, path);
             LoadImage(img.Source);
         }
@@ -1280,6 +1281,7 @@ namespace FriishProduce
                     {
                         LoadImage(gameData.Image);
                         image_filename.Text = Program.Lang.String("image_supplied", Name);
+                        image_filename.Enabled = false;
                     }
 
                     // Set year and players
