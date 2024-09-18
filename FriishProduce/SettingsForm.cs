@@ -14,7 +14,6 @@ namespace FriishProduce
     {
         private bool isShown = false;
         private bool nodeLocked = false;
-        private string nodeName;
         private int sysLangValue;
 
         private int dirtyOption1;
@@ -199,6 +198,11 @@ namespace FriishProduce
             default_export_filename_tb.Text = Default.default_export_filename;
             default_save_as_filename_tb.Text = Default.default_save_as_filename;
 
+            // Banner region
+            banner_region.Items.Clear();
+            banner_region.Items.AddRange(new string[] { Program.Lang.String("automatic"), Program.Lang.String("region_j"), Program.Lang.String("region_u"), Program.Lang.String("region_e"), Program.Lang.String("region_k") });
+            banner_region.SelectedIndex = Default.default_banner_region;
+
             #region use_custom_database
             bool clearCustomDatabase = !File.Exists(Default.custom_database);
             use_custom_database.Checked = File.Exists(Default.custom_database);
@@ -288,29 +292,27 @@ namespace FriishProduce
         {
             if (use_custom_database.Checked && (!File.Exists(Default.custom_database) || string.IsNullOrWhiteSpace(Default.custom_database)))
             {
-                using (var dialog = new OpenFileDialog() { DefaultExt = ".json", CheckFileExists = true, AddExtension = true, Filter = "*.json|*.json", Title = use_custom_database.Text })
+                using OpenFileDialog dialog = new() { DefaultExt = ".json", CheckFileExists = true, AddExtension = true, Filter = "*.json|*.json", Title = use_custom_database.Text };
+
+                if (dialog.ShowDialog() == DialogResult.OK)
                 {
-                    if (dialog.ShowDialog() == DialogResult.OK)
+                    try
                     {
-                        try
-                        {
-                            var database = new ChannelDatabase(Platform.NES, dialog.FileName);
-                            Default.custom_database = dialog.FileName;
-                        }
-                        catch
-                        {
-                            MessageBox.Show(Program.Lang.Msg(2), 0, MessageBox.Icons.Warning);
-                            Default.custom_database = null;
-                            use_custom_database.Checked = false;
-                        }
+                        var database = new ChannelDatabase(Platform.NES, dialog.FileName);
+                        Default.custom_database = dialog.FileName;
                     }
-                    else
+                    catch
                     {
+                        MessageBox.Show(Program.Lang.Msg(2), 0, MessageBox.Icons.Warning);
                         Default.custom_database = null;
                         use_custom_database.Checked = false;
                     }
                 }
-
+                else
+                {
+                    Default.custom_database = null;
+                    use_custom_database.Checked = false;
+                }
             }
 
             else if (!use_custom_database.Checked) Default.custom_database = null;
@@ -343,6 +345,7 @@ namespace FriishProduce
             Default.default_save_as_filename = default_save_as_filename_tb.Text;
             Default.use_online_wad_enabled = use_online_wad_enabled.Checked;
 
+            Default.default_banner_region = banner_region.SelectedIndex;
             Default.default_injection_method_nes = injection_methods_nes.SelectedIndex;
             Default.default_injection_method_snes = injection_methods_snes.SelectedIndex;
             Default.default_injection_method_n64 = injection_methods_n64.SelectedIndex;
@@ -416,7 +419,7 @@ namespace FriishProduce
             bool isDirty = isShown
                 && (dirtyOption1 != lngList.SelectedIndex
                  || dirtyOption2 != use_online_wad_enabled.Checked);
-            bool restart = isDirty ? MessageBox.Show(Program.Lang.Msg(0), MessageBox.Buttons.YesNo, MessageBox.Icons.None) == MessageBox.Result.Yes : false;
+            bool restart = isDirty && MessageBox.Show(Program.Lang.Msg(0), MessageBox.Buttons.YesNo, MessageBox.Icons.None) == MessageBox.Result.Yes;
 
             isShown = false;
             DialogResult = DialogResult.OK;
@@ -481,8 +484,6 @@ namespace FriishProduce
 
         private void TreeView_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            if (!nodeLocked) nodeName = e.Node.Name;
-
             string v_selected = e.Node.Name.Substring(4).ToLower();
 
             bool[] isVisible = new bool[]
@@ -535,16 +536,13 @@ namespace FriishProduce
         private async void CheckUpdates_Click(object sender, EventArgs e)
         {
             if ((sender as Control).Name.ToLower() == auto_update_check.Name.ToLower())
-            {
-                if (!auto_update_check.Checked) check_for_updates.Enabled = true;
-                else check_for_updates.Enabled = !Program.IsUpdated;
-            }
+                check_for_updates.Enabled = !Program.IsUpdated || !auto_update_check.Checked;
 
             else
             {
                 var isUpdated = await Updater.GetLatest();
-                check_for_updates.Enabled = !isUpdated || !auto_update_check.Checked;
                 if (isUpdated) MessageBox.Show(Program.Lang.Msg(9), MessageBox.Buttons.Ok, MessageBox.Icons.Information);
+                check_for_updates.Enabled = !isUpdated || !auto_update_check.Checked;
             }
         }
     }

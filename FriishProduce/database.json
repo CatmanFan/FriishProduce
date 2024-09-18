@@ -151,6 +151,14 @@
         },
 
         {
+            "id": "00010001-4e4145__",
+            "region": [0, 1, 3],
+            "emu_ver": [1, 1, 1],
+            "titles": ["マリオストーリー", "Paper Mario"],
+            "wad_titles": ["Mario Story", "Paper Mario"]
+        },
+
+        {
             "id": "00010001-4e4142__",
             "region": [0, 1, 3, 7],
             "emu_ver": [1, 1, 1, 3],
@@ -210,6 +218,14 @@
             "region": [0, 1, 5],
             "emu_ver": [3, 3, 3],
             "titles": ["オウガバトル６４", "Ogre Battle 64: Person of Lordly Caliber"]
+        },
+        
+        {
+            "id": "00010001-4e415a__",
+            "region": [0, 1, 3],
+            "emu_ver": [3, 3, 3],
+            "titles": ["マリオパーティ２", "Mario Party 2"],
+            "wad_titles": ["Mario Party 2"]
         },
     ],
 

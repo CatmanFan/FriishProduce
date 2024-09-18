@@ -82,12 +82,9 @@ namespace FriishProduce
 
         public static U8[] Get(string file)
         {
-            U8 Banner = new U8();
-            U8 Icon = new U8();
+            U8 Banner = U8.Load(file);
+            U8 Icon = U8.Load(Banner.Data[Banner.GetNodeIndex("icon.bin")]);
 
-            Banner.LoadFile(file);
-
-            Icon.LoadFile(Banner.Data[Banner.GetNodeIndex("icon.bin")]);
             Banner.LoadFile(Banner.Data[Banner.GetNodeIndex("banner.bin")]);
 
             return new U8[] { Banner, Icon };
@@ -329,79 +326,78 @@ namespace FriishProduce
                     {
                         if (entry.GetUpperID(i).ToUpper() == tID.ToUpper())
                         {
-                            using (WAD w = entry.GetWAD(i))
-                            using (var BannerApp = Get(w))
+                            using WAD w = entry.GetWAD(i);
+                            using var BannerApp = Get(w);
+
+                            using (var Banner = U8.Load(BannerApp.Data[BannerApp.GetNodeIndex("banner.bin")]))
                             {
-                                using (var Banner = U8.Load(BannerApp.Data[BannerApp.GetNodeIndex("banner.bin")]))
+                                // VCBrlyt and create temporary .brlyt file
+                                // ****************
+                                string BRLYTPath = Path.Combine(Paths.WorkingFolder, "banner.brlyt");
+                                File.WriteAllBytes(BRLYTPath, Banner.Data[Banner.GetNodeIndex("banner.brlyt")]);
+
+                                if (tID.ToUpper().EndsWith("Q") || tID.ToUpper().EndsWith("T"))
                                 {
-                                    // VCBrlyt and create temporary .brlyt file
-                                    // ****************
-                                    string BRLYTPath = Path.Combine(Paths.WorkingFolder, "banner.brlyt");
-                                    File.WriteAllBytes(BRLYTPath, Banner.Data[Banner.GetNodeIndex("banner.brlyt")]);
-
-                                    if (tID.ToUpper().EndsWith("Q") || tID.ToUpper().EndsWith("T"))
-                                    {
-                                        Utils.Run
-                                        (
-                                            "vcbrlyt\\vcbrlyt.exe",
-                                            $"..\\..\\temp\\banner.brlyt -H_T_VCTitle_KOR \"VC................................................................................................................................\""
-                                        );
-                                    }
-                                    else
-                                    {
-                                        Utils.Run
-                                        (
-                                            "vcbrlyt\\vcbrlyt.exe",
-                                            $"..\\..\\temp\\banner.brlyt -Title \"VC................................................................................................................................\" -YEAR VCVC -Play 4"
-                                        );
-                                    }
-
-                                    byte[] BRLYT = File.ReadAllBytes(BRLYTPath);
-                                    File.Delete(BRLYTPath);
-
-                                    // Check if modified
-                                    // ****************
-                                    if (BRLYT == Banner.Data[Banner.GetNodeIndex("banner.brlyt")])
-                                    {
-                                        Banner.Dispose();
-                                        return;
-                                    }
-
-                                    // ****************
-                                    #region VCPic.TPL & IconVCPic.TPL
-                                    var VCPic = new System.Drawing.Bitmap(256, 192);
-                                    var IconVCPic = new System.Drawing.Bitmap(128, 96);
-
-                                    using (var x = System.Drawing.Graphics.FromImage(VCPic))
-                                        x.DrawImage(Properties.Resources.x, 0, 0, VCPic.Width, VCPic.Height);
-                                    using (var x = System.Drawing.Graphics.FromImage(IconVCPic))
-                                        x.DrawImage(Properties.Resources.x, 0, 0, IconVCPic.Width, IconVCPic.Height);
-
-                                    using (var Icon = U8.Load(BannerApp.Data[BannerApp.GetNodeIndex("icon.bin")]))
-                                    using (TPL tpl1 = TPL.Load(Banner.Data[Banner.GetNodeIndex("VCPic.tpl")]))
-                                    using (TPL tpl2 = TPL.Load(Icon.Data[Icon.GetNodeIndex("IconVCPic.tpl")]))
-                                    {
-                                        ImageHelper.ReplaceTPL(tpl1, VCPic);
-                                        ImageHelper.ReplaceTPL(tpl2, IconVCPic);
-                                        Banner.ReplaceFile(Banner.GetNodeIndex("VCPic.tpl"), tpl1.ToByteArray());
-                                        Icon.ReplaceFile(Icon.GetNodeIndex("IconVCPic.tpl"), tpl2.ToByteArray());
-                                        BannerApp.ReplaceFile(BannerApp.GetNodeIndex("icon.bin"), Icon.ToByteArray());
-                                    }
-
-                                    VCPic.Dispose();
-                                    IconVCPic.Dispose();
-                                    #endregion
-                                    // ****************
-
-                                    // Replace
-                                    // ****************
-                                    Banner.ReplaceFile(Banner.GetNodeIndex("banner.brlyt"), BRLYT);
-                                    BannerApp.ReplaceFile(BannerApp.GetNodeIndex("banner.bin"), Banner.ToByteArray());
+                                    Utils.Run
+                                    (
+                                        "vcbrlyt\\vcbrlyt.exe",
+                                        $"..\\..\\temp\\banner.brlyt -H_T_VCTitle_KOR \"VC................................................................................................................................\""
+                                    );
+                                }
+                                else
+                                {
+                                    Utils.Run
+                                    (
+                                        "vcbrlyt\\vcbrlyt.exe",
+                                        $"..\\..\\temp\\banner.brlyt -Title \"VC................................................................................................................................\" -YEAR VCVC -Play 4"
+                                    );
                                 }
 
-                                if (!Directory.Exists(Paths.Banners)) Directory.CreateDirectory(Paths.Banners);
-                                File.WriteAllBytes(Paths.Banners + (string.IsNullOrWhiteSpace(outFile) ? tID.ToUpper() : outFile.Replace(".app", "")) + ".app", BannerApp.ToByteArray());
+                                byte[] BRLYT = File.ReadAllBytes(BRLYTPath);
+                                File.Delete(BRLYTPath);
+
+                                // Check if modified
+                                // ****************
+                                if (BRLYT == Banner.Data[Banner.GetNodeIndex("banner.brlyt")])
+                                {
+                                    Banner.Dispose();
+                                    return;
+                                }
+
+                                // ****************
+                                #region VCPic.TPL & IconVCPic.TPL
+                                var VCPic = new System.Drawing.Bitmap(256, 192);
+                                var IconVCPic = new System.Drawing.Bitmap(128, 96);
+
+                                using (var x = System.Drawing.Graphics.FromImage(VCPic))
+                                    x.DrawImage(Properties.Resources.x, 0, 0, VCPic.Width, VCPic.Height);
+                                using (var x = System.Drawing.Graphics.FromImage(IconVCPic))
+                                    x.DrawImage(Properties.Resources.x, 0, 0, IconVCPic.Width, IconVCPic.Height);
+
+                                using (var Icon = U8.Load(BannerApp.Data[BannerApp.GetNodeIndex("icon.bin")]))
+                                using (TPL tpl1 = TPL.Load(Banner.Data[Banner.GetNodeIndex("VCPic.tpl")]))
+                                using (TPL tpl2 = TPL.Load(Icon.Data[Icon.GetNodeIndex("IconVCPic.tpl")]))
+                                {
+                                    ImageHelper.ReplaceTPL(tpl1, VCPic);
+                                    ImageHelper.ReplaceTPL(tpl2, IconVCPic);
+                                    Banner.ReplaceFile(Banner.GetNodeIndex("VCPic.tpl"), tpl1.ToByteArray());
+                                    Icon.ReplaceFile(Icon.GetNodeIndex("IconVCPic.tpl"), tpl2.ToByteArray());
+                                    BannerApp.ReplaceFile(BannerApp.GetNodeIndex("icon.bin"), Icon.ToByteArray());
+                                }
+
+                                VCPic.Dispose();
+                                IconVCPic.Dispose();
+                                #endregion
+                                // ****************
+
+                                // Replace
+                                // ****************
+                                Banner.ReplaceFile(Banner.GetNodeIndex("banner.brlyt"), BRLYT);
+                                BannerApp.ReplaceFile(BannerApp.GetNodeIndex("banner.bin"), Banner.ToByteArray());
                             }
+
+                            if (!Directory.Exists(Paths.Banners)) Directory.CreateDirectory(Paths.Banners);
+                            File.WriteAllBytes(Paths.Banners + (string.IsNullOrWhiteSpace(outFile) ? tID.ToUpper() : outFile.Replace(".app", "")) + ".app", BannerApp.ToByteArray());
                         }
                     }
                 }
@@ -448,88 +444,84 @@ namespace FriishProduce
 
             try
             {
-                using (U8 BannerApp = U8.Load(file))
+                using U8 BannerApp = U8.Load(file);
+
+                using (U8 Banner = U8.Load(BannerApp.Data[BannerApp.GetNodeIndex("banner.bin")]))
                 {
-                    using (U8 Banner = U8.Load(BannerApp.Data[BannerApp.GetNodeIndex("banner.bin")]))
+                    foreach (var item in Banner.StringTable)
                     {
-                        foreach (var item in Banner.StringTable)
+                        if (item.ToLower().StartsWith("my_back") && item.ToLower().Contains(".tpl"))
                         {
-                            if (item.ToLower().StartsWith("my_back") && item.ToLower().Contains(".tpl"))
+                            using TPL tpl = TPL.Load(Banner.Data[Banner.GetNodeIndex(item)]);
+
+                            var y = new System.Drawing.Bitmap(tpl.ExtractTexture());
+                            using (var x = System.Drawing.Graphics.FromImage(y))
                             {
-                                using (TPL tpl = TPL.Load(Banner.Data[Banner.GetNodeIndex(item)]))
-                                {
-                                    var y = new System.Drawing.Bitmap(tpl.ExtractTexture());
-                                    using (var x = System.Drawing.Graphics.FromImage(y))
-                                    {
-                                        x.Clear(System.Drawing.Color.Black);
-                                        x.DrawImage(bImage, 0, 0, y.Width, y.Height);
-                                    }
-
-                                    ImageHelper.ReplaceTPL(tpl, y);
-                                    Banner.ReplaceFile(Banner.GetNodeIndex(item), tpl.ToByteArray());
-
-                                    y.Dispose();
-                                }
+                                x.Clear(System.Drawing.Color.Black);
+                                x.DrawImage(bImage, 0, 0, y.Width, y.Height);
                             }
-                        }
 
-                        // VCBrlyt and create temporary .brlyt file
-                        // ****************
-                        string BRLYTPath = Path.Combine(Paths.WorkingFolder, "banner.brlyt");
-                        File.WriteAllBytes(BRLYTPath, Banner.Data[Banner.GetNodeIndex("banner.brlyt")]);
+                            ImageHelper.ReplaceTPL(tpl, y);
+                            Banner.ReplaceFile(Banner.GetNodeIndex(item), tpl.ToByteArray());
 
-                        Utils.Run
-                        (
-                            "vcbrlyt\\vcbrlyt.exe",
-                            $"..\\..\\temp\\banner.brlyt -System \"{system}\" -Color banner"
-                        );
-
-                        byte[] BRLYT = File.ReadAllBytes(BRLYTPath);
-                        File.Delete(BRLYTPath);
-                        File.Delete(VCCSPath);
-
-                        // Check if modified
-                        // ****************
-                        if (BRLYT == Banner.Data[Banner.GetNodeIndex("banner.brlyt")])
-                        {
-                            Banner.Dispose();
-                            return;
-                        }
-
-                        // Replace
-                        // ****************
-                        Banner.ReplaceFile(Banner.GetNodeIndex("banner.brlyt"), BRLYT);
-                        BannerApp.ReplaceFile(BannerApp.GetNodeIndex("banner.bin"), Banner.ToByteArray());
-                    }
-
-                    using (var Icon = U8.Load(BannerApp.Data[BannerApp.GetNodeIndex("icon.bin")]))
-                    {
-                        foreach (var item in Icon.StringTable)
-                        {
-                            if (item.ToLower().StartsWith("logo") && item.ToLower().Contains(".tpl"))
-                            {
-                                using (TPL tpl = TPL.Load(Icon.Data[Icon.GetNodeIndex(item)]))
-                                {
-                                    var y = new System.Drawing.Bitmap(tpl.GetTextureSize(0).Width, tpl.GetTextureSize(0).Height);
-                                    using (var x = System.Drawing.Graphics.FromImage(y))
-                                    {
-                                        x.DrawImage(icon, 0, 0, y.Width, y.Height);
-                                    }
-
-                                    ImageHelper.ReplaceTPL(tpl, y, true);
-                                    Icon.ReplaceFile(Icon.GetNodeIndex(item), tpl.ToByteArray());
-                                    BannerApp.ReplaceFile(BannerApp.GetNodeIndex("icon.bin"), Icon.ToByteArray());
-
-                                    y.Dispose();
-                                }
-                            }
+                            y.Dispose();
                         }
                     }
 
-                    if (!Directory.Exists(Paths.Banners)) Directory.CreateDirectory(Paths.Banners);
-                    File.WriteAllBytes(Paths.Banners + outFile.Replace(".app", "") + ".app", BannerApp.ToByteArray());
+                    // VCBrlyt and create temporary .brlyt file
+                    // ****************
+                    string BRLYTPath = Path.Combine(Paths.WorkingFolder, "banner.brlyt");
+                    File.WriteAllBytes(BRLYTPath, Banner.Data[Banner.GetNodeIndex("banner.brlyt")]);
+
+                    Utils.Run
+                    (
+                        "vcbrlyt\\vcbrlyt.exe",
+                        $"..\\..\\temp\\banner.brlyt -System \"{system}\" -Color banner"
+                    );
+
+                    byte[] BRLYT = File.ReadAllBytes(BRLYTPath);
+                    File.Delete(BRLYTPath);
+                    File.Delete(VCCSPath);
+
+                    // Check if modified
+                    // ****************
+                    if (BRLYT == Banner.Data[Banner.GetNodeIndex("banner.brlyt")])
+                    {
+                        Banner.Dispose();
+                        return;
+                    }
+
+                    // Replace
+                    // ****************
+                    Banner.ReplaceFile(Banner.GetNodeIndex("banner.brlyt"), BRLYT);
+                    BannerApp.ReplaceFile(BannerApp.GetNodeIndex("banner.bin"), Banner.ToByteArray());
                 }
 
+                using (var Icon = U8.Load(BannerApp.Data[BannerApp.GetNodeIndex("icon.bin")]))
+                {
+                    foreach (var item in Icon.StringTable)
+                    {
+                        if (item.ToLower().StartsWith("logo") && item.ToLower().Contains(".tpl"))
+                        {
+                            using TPL tpl = TPL.Load(Icon.Data[Icon.GetNodeIndex(item)]);
+
+                            var y = new System.Drawing.Bitmap(tpl.GetTextureSize(0).Width, tpl.GetTextureSize(0).Height);
+                            using (var x = System.Drawing.Graphics.FromImage(y))
+                            {
+                                x.DrawImage(icon, 0, 0, y.Width, y.Height);
+                            }
+
+                            ImageHelper.ReplaceTPL(tpl, y, true);
+                            Icon.ReplaceFile(Icon.GetNodeIndex(item), tpl.ToByteArray());
+                            BannerApp.ReplaceFile(BannerApp.GetNodeIndex("icon.bin"), Icon.ToByteArray());
+
+                            y.Dispose();
+                        }
+                    }
+                }
+
+                if (!Directory.Exists(Paths.Banners)) Directory.CreateDirectory(Paths.Banners);
+                File.WriteAllBytes(Paths.Banners + outFile.Replace(".app", "") + ".app", BannerApp.ToByteArray());
             }
             catch (Exception ex)
             {

@@ -189,29 +189,34 @@
 			"image_interpolation_mode7":		"High Quality Bicubic",
 			"image_stretch":					"Stretch image",
 			"image_fit":						"Fit aspect ratio",
+			"image_supplied":					"Supplied",
 			
 			"channel":							"Channel metadata",
-			"banner":							"Banner details",
-			"banner_preview":					"Banner preview",
+			"banner":							"Click on the preview to access the banner details section.",
 			"title_id":							"Title ID:",
 			"channel_name":						"Channel name:",
 			"video_mode":						"Video mode:",
-			"full_banner_name":					"Full name:",
-			"year":								"Year:",
-			"players":							"Players:",
 
 			"injection_method":					"Injection method",
 			"injection_method_options":			"Injection method options",
-			"forwarder_root_device":			"Root storage device",
 
 			"save_data":						"Save data",
 			"save_data_enable":					"Enable saving",
 			"fill_save_data":					"Fill in automatically",
-
-			"manual_type":						"Operations manual",
+			
+			"forwarder_root_device":			"Root storage device:",
+			"manual_type":						"Operations manual:",
 			"manual_type0":						"{disabled}",
 			"manual_type1":						"{original}",
 			"manual_type2":						"Import custom manual"
+		},
+
+		"banner": {
+			"banner":							"Banner details",
+			"banner_region":					"Banner region:",
+			"full_name":						"Full name:",
+			"year":								"Year:",
+			"players":							"Players:",
 		},
 
 		"vc_nes": {

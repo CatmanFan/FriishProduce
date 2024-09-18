@@ -12,7 +12,7 @@ namespace FriishProduce
 {
     public partial class MainForm : Form
     {
-        private readonly SettingsForm s = new SettingsForm();
+        private readonly SettingsForm s = new();
 
         #region //////////////////// Platforms ////////////////////
         public readonly IDictionary<Platform, Bitmap> Icons = new Dictionary<Platform, Bitmap>
@@ -30,7 +30,7 @@ namespace FriishProduce
             { Platform.RPGM, new Icon(Properties.Resources.rpg2003, 16, 16).ToBitmap() }
         };
 
-        private static string[] platformsList = new string[]
+        private static readonly string[] platformsList = new string[]
         {
             Platform.NES.ToString(),
             Platform.SNES.ToString(),
@@ -367,8 +367,7 @@ namespace FriishProduce
 
         private void ExportWAD_Click(object sender, EventArgs e)
         {
-            var currentForm = tabControl.SelectedForm as ProjectForm;
-            if (currentForm == null) return;
+            if (tabControl.SelectedForm is not ProjectForm currentForm) return;
 
             SaveWAD.FileName = currentForm?.GetName(true);
             SaveWAD.Filter = currentForm.IsForwarder ? Program.Lang.String("filter.zip") : Program.Lang.String("filter.wad");

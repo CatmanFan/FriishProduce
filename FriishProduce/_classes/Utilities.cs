@@ -24,7 +24,7 @@ namespace FriishProduce
         FAILED_DOWNLOADED_WAD
     }
 
-    class CustomToolTip : ToolTip
+    /* class CustomToolTip : ToolTip
     {
         public CustomToolTip()
         {
@@ -59,7 +59,7 @@ namespace FriishProduce
                     new RectangleF(new PointF(4, 4), new SizeF(e.Bounds.Width - 3, e.Bounds.Height - 3))
                 );
         }
-    }
+    } */
 
     public static class Web
     {
@@ -128,8 +128,8 @@ namespace FriishProduce
         {
             // Actual web connection is done here
             // ****************
-            using (MemoryStream ms = new MemoryStream())
-            using (WebClient x = new WebClient())
+            using (MemoryStream ms = new())
+            using (WebClient x = new())
             {
                 try
                 {
@@ -241,15 +241,16 @@ namespace FriishProduce
 
             if (!File.Exists(appPath)) throw new Exception(string.Format(Program.Lang.Msg(5, true), app));
 
-            using (Process p = Process.Start(new ProcessStartInfo
+            using Process p = Process.Start(new ProcessStartInfo
             {
                 FileName = appPath,
                 WorkingDirectory = workingFolder,
                 Arguments = arguments,
                 UseShellExecute = false,
                 CreateNoWindow = !showWindow
-            }))
-                p.WaitForExit();
+            });
+
+            p.WaitForExit();
         }
 
         public static byte[] ExtractContent1(byte[] input)
@@ -358,7 +359,7 @@ namespace FriishProduce
                 // 0-2: NTSC/PAL
                 // 3-5: MPAL/PAL
                 // 6: Backup for PAL (progressive)
-                Dictionary<VideoModes, string> modesList = new Dictionary<VideoModes, string>
+                Dictionary<VideoModes, string> modesList = new()
                 {
                     { VideoModes.NTSC_Interl,   "00 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
                     { VideoModes.NTSC_NonInt,   "01 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
@@ -418,7 +419,7 @@ namespace FriishProduce
                     case 6:
                     case 7:
                     case 8:
-                        (VideoModes[] outputs, VideoModes[] inputs) modes = mode switch
+                        (VideoModes[] outputs, VideoModes[] inputs) = mode switch
                         {
                             5 =>
                             (
@@ -477,13 +478,13 @@ namespace FriishProduce
                             ),
                         };
 
-                        for (int i = 0; i < modes.inputs.Length; i++)
+                        for (int i = 0; i < inputs.Length; i++)
                         {
-                            if (modes.inputs[i] != modes.outputs[i])
+                            if (inputs[i] != outputs[i])
                             {
-                                for (int index; (index = Byte.IndexOf(content1, modesList[modes.inputs[i]].Substring(0, 23), start, end)) > 0;)
+                                for (int index; (index = Byte.IndexOf(content1, modesList[inputs[i]].Substring(0, 23), start, end)) > 0;)
                                 {
-                                    string[] array = modesList[modes.outputs[i]].Split(' ');
+                                    string[] array = modesList[outputs[i]].Split(' ');
 
                                     for (int x = 0; x < 15; x++)
                                         if (array[x].ToLower() != "xx") content1[index + x] = Convert.ToByte(array[x], 16);

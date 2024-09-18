@@ -66,6 +66,7 @@ namespace FriishProduce
             // Declare main variables and failsafes
             // *******
             if (ROM == null) throw new FileNotFoundException();
+            if (string.IsNullOrWhiteSpace(outFile)) throw new ArgumentNullException();
             if (EmulatorIndex == -1) throw new NotSupportedException();
 
             bool hasBIOS = false;
@@ -205,7 +206,7 @@ namespace FriishProduce
 
             // Write main
             // *******
-            List<string> meta = new List<string>
+            List<string> meta = new()
             {
                 "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>",
                 "<app version=\"1\">",
@@ -294,14 +295,13 @@ namespace FriishProduce
             #region -- Define forwarder version --
             bool v12 = EmulatorIndex == 7 || EmulatorIndex == 13;
             byte[] forwarder = v12 ? FileDatas.Forwarder.DOL_V12 : FileDatas.Forwarder.DOL_V14;
-            int targetOffset1 = v12 ? 0x77426 : 0x7F979;
-            int targetOffset2 = v12 ? 263 : 256;
+            int targetOffset = v12 ? 0x77426 : 0x7F979;
             string targetPath = v12 ? loadPath : loadPath.Substring(4);
             #endregion
 
             // Create forwarder .app
             // *******
-            Encoding.ASCII.GetBytes(targetPath).CopyTo(forwarder, targetOffset1);
+            Encoding.ASCII.GetBytes(targetPath).CopyTo(forwarder, targetOffset);
 
             File.WriteAllBytes(Paths.WorkingFolder + "forwarder.dol", forwarder);
             Utils.Run(FileDatas.Apps.OpenDolBoot, "OpenDolBoot", "forwarder.dol forwarder.app");

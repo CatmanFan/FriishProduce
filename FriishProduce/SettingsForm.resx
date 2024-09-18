@@ -141,7 +141,7 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;lngList.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="vc_n64_patch_autosizerom.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -552,6 +552,66 @@
   <data name="&gt;&gt;TreeView.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="use_online_wad_tip.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="use_online_wad_tip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 231</value>
+  </data>
+  <data name="use_online_wad_tip.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="use_online_wad_tip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>536, 85</value>
+  </data>
+  <data name="use_online_wad_tip.TabIndex" type="System.Int32, mscorlib">
+    <value>53</value>
+  </data>
+  <data name="use_online_wad_tip.Text" xml:space="preserve">
+    <value>use_online_wad_tip</value>
+  </data>
+  <data name="&gt;&gt;use_online_wad_tip.Name" xml:space="preserve">
+    <value>use_online_wad_tip</value>
+  </data>
+  <data name="&gt;&gt;use_online_wad_tip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;use_online_wad_tip.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;use_online_wad_tip.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="use_online_wad_enabled.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="use_online_wad_enabled.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="use_online_wad_enabled.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 211</value>
+  </data>
+  <data name="use_online_wad_enabled.Size" type="System.Drawing.Size, System.Drawing">
+    <value>147, 17</value>
+  </data>
+  <data name="use_online_wad_enabled.TabIndex" type="System.Int32, mscorlib">
+    <value>52</value>
+  </data>
+  <data name="use_online_wad_enabled.Text" xml:space="preserve">
+    <value>use_online_wad_enabled</value>
+  </data>
+  <data name="&gt;&gt;use_online_wad_enabled.Name" xml:space="preserve">
+    <value>use_online_wad_enabled</value>
+  </data>
+  <data name="&gt;&gt;use_online_wad_enabled.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;use_online_wad_enabled.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;use_online_wad_enabled.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="label4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -577,7 +637,7 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="use_custom_database.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -586,7 +646,7 @@
     <value>NoControl</value>
   </data>
   <data name="use_custom_database.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 167</value>
+    <value>12, 77</value>
   </data>
   <data name="use_custom_database.Size" type="System.Drawing.Size, System.Drawing">
     <value>134, 17</value>
@@ -607,13 +667,13 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;use_custom_database.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="reset_all_dialogs.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="reset_all_dialogs.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 145</value>
+    <value>12, 55</value>
   </data>
   <data name="reset_all_dialogs.Size" type="System.Drawing.Size, System.Drawing">
     <value>106, 17</value>
@@ -634,7 +694,7 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;reset_all_dialogs.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="auto_update_check.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -670,7 +730,7 @@
     <value>10, 18</value>
   </data>
   <data name="check_for_updates.Size" type="System.Drawing.Size, System.Drawing">
-    <value>515, 24</value>
+    <value>516, 24</value>
   </data>
   <data name="check_for_updates.TabIndex" type="System.Int32, mscorlib">
     <value>47</value>
@@ -691,10 +751,10 @@
     <value>1</value>
   </data>
   <data name="updater.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 66</value>
+    <value>12, 326</value>
   </data>
   <data name="updater.Size" type="System.Drawing.Size, System.Drawing">
-    <value>535, 70</value>
+    <value>536, 70</value>
   </data>
   <data name="updater.TabIndex" type="System.Int32, mscorlib">
     <value>48</value>
@@ -712,7 +772,7 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;updater.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
     <value>174, 0</value>
@@ -733,7 +793,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>3</value>
   </data>
   <data name="auto_fill_save_data.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -916,7 +976,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_n64.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>8</value>
   </data>
   <data name="forwarder_type.Items" xml:space="preserve">
     <value>SD</value>
@@ -1063,7 +1123,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;forwarder.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>7</value>
   </data>
   <data name="vc_nes_palette_banner_usage.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1159,7 +1219,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_nes.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>5</value>
   </data>
   <data name="vc_neo_bios.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1231,7 +1291,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_neo.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>4</value>
   </data>
   <data name="vc_sega_console_disableresetbutton.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1489,7 +1549,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_sega.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>10</value>
   </data>
   <data name="vc_pce_backupram.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1870,7 +1930,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_pce.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>9</value>
   </data>
   <data name="flash_strap_reminder_list.Items" xml:space="preserve">
     <value>auto</value>
@@ -2248,63 +2308,57 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;adobe_flash.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>6</value>
   </data>
-  <data name="use_online_wad_tip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 311</value>
+  <data name="banner_region.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 304</value>
   </data>
-  <data name="use_online_wad_tip.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
+  <data name="banner_region.Size" type="System.Drawing.Size, System.Drawing">
+    <value>536, 21</value>
   </data>
-  <data name="use_online_wad_tip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>536, 85</value>
-  </data>
-  <data name="use_online_wad_tip.TabIndex" type="System.Int32, mscorlib">
+  <data name="banner_region.TabIndex" type="System.Int32, mscorlib">
     <value>47</value>
   </data>
-  <data name="use_online_wad_tip.Text" xml:space="preserve">
-    <value>use_online_wad_tip</value>
+  <data name="&gt;&gt;banner_region.Name" xml:space="preserve">
+    <value>banner_region</value>
   </data>
-  <data name="&gt;&gt;use_online_wad_tip.Name" xml:space="preserve">
-    <value>use_online_wad_tip</value>
+  <data name="&gt;&gt;banner_region.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;use_online_wad_tip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;use_online_wad_tip.Parent" xml:space="preserve">
+  <data name="&gt;&gt;banner_region.Parent" xml:space="preserve">
     <value>panel2</value>
   </data>
-  <data name="&gt;&gt;use_online_wad_tip.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;banner_region.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="use_online_wad_enabled.AutoSize" type="System.Boolean, mscorlib">
+  <data name="label9.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="use_online_wad_enabled.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="label9.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="use_online_wad_enabled.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 291</value>
+  <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 288</value>
   </data>
-  <data name="use_online_wad_enabled.Size" type="System.Drawing.Size, System.Drawing">
-    <value>147, 17</value>
+  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 13</value>
   </data>
-  <data name="use_online_wad_enabled.TabIndex" type="System.Int32, mscorlib">
+  <data name="label9.TabIndex" type="System.Int32, mscorlib">
     <value>46</value>
   </data>
-  <data name="use_online_wad_enabled.Text" xml:space="preserve">
-    <value>use_online_wad_enabled</value>
+  <data name="label9.Text" xml:space="preserve">
+    <value>banner_region</value>
   </data>
-  <data name="&gt;&gt;use_online_wad_enabled.Name" xml:space="preserve">
-    <value>use_online_wad_enabled</value>
+  <data name="&gt;&gt;label9.Name" xml:space="preserve">
+    <value>label9</value>
   </data>
-  <data name="&gt;&gt;use_online_wad_enabled.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;label9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;use_online_wad_enabled.Parent" xml:space="preserve">
+  <data name="&gt;&gt;label9.Parent" xml:space="preserve">
     <value>panel2</value>
   </data>
-  <data name="&gt;&gt;use_online_wad_enabled.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="image_interpolation_mode.Location" type="System.Drawing.Point, System.Drawing">
@@ -2560,7 +2614,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>2</value>
   </data>
   <data name="label8.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2773,7 +2827,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panel3.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>11</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

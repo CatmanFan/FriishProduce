@@ -23,35 +23,33 @@ namespace FriishProduce
         {
             CornerRadius *= 2;
 
-            using (Graphics g = Graphics.FromImage(x))
-            using (Brush brush = new TextureBrush(x))
-            using (GraphicsPath gp1 = new GraphicsPath())
+            using Graphics g = Graphics.FromImage(x);
+            using Brush brush = new TextureBrush(x);
+            using GraphicsPath gp1 = new();
+
+            g.SmoothingMode = SmoothingMode.AntiAlias;
+            g.Clear(Color.Transparent);
+
+            int offset = Smooth ? 1 : 0;
+
+            gp1.AddArc(offset, offset, CornerRadius, CornerRadius, 180, 90);
+            gp1.AddArc(offset + x.Width - CornerRadius, offset, CornerRadius - (offset * 2), CornerRadius - (offset * 2), 270, 90);
+            gp1.AddArc(offset + x.Width - CornerRadius, offset + x.Height - CornerRadius, CornerRadius - (offset * 2), CornerRadius - (offset * 2), 0, 90);
+            gp1.AddArc(offset, offset + x.Height - CornerRadius, CornerRadius - (offset * 2), CornerRadius - (offset * 2), 90, 90);
+            g.FillPath(brush, gp1);
+
+            if (Smooth)
             {
-                g.SmoothingMode = SmoothingMode.AntiAlias;
-                g.Clear(Color.Transparent);
+                using GraphicsPath gp2 = new();
 
-                int offset = Smooth ? 1 : 0;
-
-                gp1.AddArc(offset, offset, CornerRadius, CornerRadius, 180, 90);
-                gp1.AddArc(offset + x.Width - CornerRadius, offset, CornerRadius - (offset * 2), CornerRadius - (offset * 2), 270, 90);
-                gp1.AddArc(offset + x.Width - CornerRadius, offset + x.Height - CornerRadius, CornerRadius - (offset * 2), CornerRadius - (offset * 2), 0, 90);
-                gp1.AddArc(offset, offset + x.Height - CornerRadius, CornerRadius - (offset * 2), CornerRadius - (offset * 2), 90, 90);
-                g.FillPath(brush, gp1);
-
-                if (Smooth)
-                {
-                    using (GraphicsPath gp2 = new GraphicsPath())
-                    {
-                        gp2.AddCurve(new Point[] { new Point(offset, CornerRadius / 2), new Point(0, x.Height / 2), new Point(offset, x.Height - CornerRadius / 2) });
-                        gp2.AddCurve(new Point[] { new Point(x.Width - offset, CornerRadius / 2), new Point(x.Width, x.Height / 2), new Point(x.Width - offset, x.Height - CornerRadius / 2) });
-                        gp2.AddCurve(new Point[] { new Point(CornerRadius / 2, offset), new Point(x.Width / 2, 0), new Point(x.Width - CornerRadius / 2, offset) });
-                        gp2.AddCurve(new Point[] { new Point(CornerRadius / 2, x.Height - offset), new Point(x.Width / 2, x.Height), new Point(x.Width - CornerRadius / 2, x.Height - offset) });
-                        g.FillPath(brush, gp2);
-                    }
-                }
-
-                return x;
+                gp2.AddCurve(new Point[] { new Point(offset, CornerRadius / 2), new Point(0, x.Height / 2), new Point(offset, x.Height - CornerRadius / 2) });
+                gp2.AddCurve(new Point[] { new Point(x.Width - offset, CornerRadius / 2), new Point(x.Width, x.Height / 2), new Point(x.Width - offset, x.Height - CornerRadius / 2) });
+                gp2.AddCurve(new Point[] { new Point(CornerRadius / 2, offset), new Point(x.Width / 2, 0), new Point(x.Width - CornerRadius / 2, offset) });
+                gp2.AddCurve(new Point[] { new Point(CornerRadius / 2, x.Height - offset), new Point(x.Width / 2, x.Height), new Point(x.Width - CornerRadius / 2, x.Height - offset) });
+                g.FillPath(brush, gp2);
             }
+
+            return x;
         }
 
         #region Font Functions
@@ -66,18 +64,17 @@ namespace FriishProduce
             {
                 if (_font == null)
                 {
-                    using (var fonts = new PrivateFontCollection())
-                    {
-                        byte[] fontData = Properties.Resources.Font;
-                        IntPtr fontPtr = System.Runtime.InteropServices.Marshal.AllocCoTaskMem(fontData.Length);
-                        System.Runtime.InteropServices.Marshal.Copy(fontData, 0, fontPtr, fontData.Length);
-                        uint dummy = 0;
-                        fonts.AddMemoryFont(fontPtr, Properties.Resources.Font.Length);
-                        AddFontMemResourceEx(fontPtr, (uint)Properties.Resources.Font.Length, IntPtr.Zero, ref dummy);
-                        System.Runtime.InteropServices.Marshal.FreeCoTaskMem(fontPtr);
+                    using var fonts = new PrivateFontCollection();
 
-                        _font = fonts.Families[0];
-                    }
+                    byte[] fontData = Properties.Resources.Font;
+                    IntPtr fontPtr = System.Runtime.InteropServices.Marshal.AllocCoTaskMem(fontData.Length);
+                    System.Runtime.InteropServices.Marshal.Copy(fontData, 0, fontPtr, fontData.Length);
+                    uint dummy = 0;
+                    fonts.AddMemoryFont(fontPtr, Properties.Resources.Font.Length);
+                    AddFontMemResourceEx(fontPtr, (uint)Properties.Resources.Font.Length, IntPtr.Zero, ref dummy);
+                    System.Runtime.InteropServices.Marshal.FreeCoTaskMem(fontPtr);
+
+                    _font = fonts.Families[0];
                 }
 
                 return _font;
@@ -116,8 +113,8 @@ namespace FriishProduce
             if (img == null)
             {
                 img = new Bitmap(256, 192);
-                using (Graphics g = Graphics.FromImage(img))
-                    g.Clear(Color.Gainsboro);
+                using Graphics g = Graphics.FromImage(img);
+                g.Clear(Color.Gainsboro);
             }
 
             #region -- Define target --
@@ -391,7 +388,7 @@ namespace FriishProduce
                 double[] point = new double[] { (banner.Width / 2) - Math.Round((img.Width * 0.72) / 2), 40 };
                 double[] size = new double[] { Math.Round(img.Width * 0.72), Math.Round(img.Height * 0.72) };
 
-                using (Bitmap border = new Bitmap(256, 192))
+                using (Bitmap border = new(256, 192))
                 {
                     using (Graphics gBorder = Graphics.FromImage(border))
                         gBorder.Clear(Color.Black);
@@ -492,7 +489,7 @@ namespace FriishProduce
 
                                         if ((int)tpl.GetTextureFormat(0) <= 1)
                                         {
-                                            using (Bitmap transLogo = new Bitmap(logo.Width, logo.Height, PixelFormat.Format32bppArgb))
+                                            using (Bitmap transLogo = new(logo.Width, logo.Height, PixelFormat.Format32bppArgb))
                                             {
                                                 unsafe
                                                 {
@@ -581,10 +578,10 @@ namespace FriishProduce
 
                 for (int i = 0; i < iconData.generatedImg.Count; i++)
                 {
-                    Bitmap bmp2 = new Bitmap(120, 87);
+                    Bitmap bmp2 = new(120, 87);
 
                     using (Graphics g = Graphics.FromImage(bmp2))
-                    using (Bitmap border = new Bitmap(bmp2.Width, bmp2.Height))
+                    using (Bitmap border = new(bmp2.Width, bmp2.Height))
                     using (Graphics gBorder = Graphics.FromImage(border))
                     {
                         gBorder.Clear(Color.LightSlateGray);

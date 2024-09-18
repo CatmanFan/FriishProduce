@@ -189,29 +189,34 @@
 			"image_interpolation_mode7":		"Bicubique de haute qualité",
 			"image_stretch":					"Étirer l'image",
 			"image_fit":						"Conserver les proportions",
+			"image_supplied":					"Image fournie",
 			
 			"channel":							"Paramètres de la chaîne",
-			"banner":							"Paramètres du banner",
-			"banner_preview":					"Aperçu du banner",
+			"banner":							"Pour accéder au paramètres du banner, cliquer sur l'image d'aperçu.",
 			"title_id":							"Title ID :",
 			"channel_name":						"Nom de la chaîne :",
 			"video_mode":						"Mode vidéo :",
-			"full_banner_name":					"Nom complet :",
-			"year":								"Année :",
-			"players":							"Joueurs :",
 
 			"injection_method":					"Méthode d'injection",
 			"injection_method_options":			"Paramètres de méthode d'injection",
-			"forwarder_root_device":			"Périphérique de stockage racine",
 
 			"save_data":						"Données de sauvegarde",
 			"save_data_enable":					"Activer la sauvegarde des données",
 			"fill_save_data":					"Remplir automatiquement",
-
-			"manual_type":						"Mode d'emploi",
+			
+			"forwarder_root_device":			"Périphérique de stockage racine :",
+			"manual_type":						"Mode d'emploi :",
 			"manual_type0":						"{disabled}",
 			"manual_type1":						"{original}",
 			"manual_type2":						"Fichiers externes"
+		},
+
+		"banner": {
+			"banner":							"Détails du banner",
+			"banner_region":					"Région du banner :",
+			"full_name":						"Nom complet :",
+			"year":								"Année :",
+			"players":							"Joueurs :"
 		},
 
 		"vc_nes": {

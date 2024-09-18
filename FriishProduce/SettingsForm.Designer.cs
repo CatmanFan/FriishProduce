@@ -44,6 +44,8 @@ namespace FriishProduce
             this.GetBanners = new System.Windows.Forms.Button();
             this.TreeView = new System.Windows.Forms.TreeView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.use_online_wad_tip = new System.Windows.Forms.Label();
+            this.use_online_wad_enabled = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
             this.use_custom_database = new System.Windows.Forms.CheckBox();
             this.reset_all_dialogs = new System.Windows.Forms.CheckBox();
@@ -109,8 +111,6 @@ namespace FriishProduce
             this.flash_vff_cache_size = new System.Windows.Forms.Label();
             this.flash_vff_cache_size_list = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.use_online_wad_tip = new System.Windows.Forms.Label();
-            this.use_online_wad_enabled = new System.Windows.Forms.CheckBox();
             this.image_interpolation_mode = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.default_save_as_filename = new System.Windows.Forms.GroupBox();
@@ -129,6 +129,8 @@ namespace FriishProduce
             this.injection_methods_n64 = new System.Windows.Forms.ComboBox();
             this.injection_methods_snes = new System.Windows.Forms.ComboBox();
             this.injection_methods_nes = new System.Windows.Forms.ComboBox();
+            this.banner_region = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.vc_n64_options.SuspendLayout();
             this.bottomPanel2.SuspendLayout();
             this.bottomPanel1.SuspendLayout();
@@ -272,6 +274,8 @@ namespace FriishProduce
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.use_online_wad_tip);
+            this.panel1.Controls.Add(this.use_online_wad_enabled);
             this.panel1.Controls.Add(this.lngList);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.use_custom_database);
@@ -279,6 +283,21 @@ namespace FriishProduce
             this.panel1.Controls.Add(this.updater);
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
+            // 
+            // use_online_wad_tip
+            // 
+            this.use_online_wad_tip.BackColor = System.Drawing.SystemColors.Info;
+            this.use_online_wad_tip.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            resources.ApplyResources(this.use_online_wad_tip, "use_online_wad_tip");
+            this.use_online_wad_tip.Name = "use_online_wad_tip";
+            this.use_online_wad_tip.Tag = "use_online_wad_tip";
+            // 
+            // use_online_wad_enabled
+            // 
+            resources.ApplyResources(this.use_online_wad_enabled, "use_online_wad_enabled");
+            this.use_online_wad_enabled.Name = "use_online_wad_enabled";
+            this.use_online_wad_enabled.Tag = "use_online_wad_enabled";
+            this.use_online_wad_enabled.UseVisualStyleBackColor = true;
             // 
             // label4
             // 
@@ -800,8 +819,8 @@ namespace FriishProduce
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.use_online_wad_tip);
-            this.panel2.Controls.Add(this.use_online_wad_enabled);
+            this.panel2.Controls.Add(this.banner_region);
+            this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.image_interpolation_mode);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.default_save_as_filename);
@@ -809,21 +828,6 @@ namespace FriishProduce
             this.panel2.Controls.Add(this.retrieve_gamedata_online);
             resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
-            // 
-            // use_online_wad_tip
-            // 
-            this.use_online_wad_tip.BackColor = System.Drawing.SystemColors.Info;
-            this.use_online_wad_tip.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            resources.ApplyResources(this.use_online_wad_tip, "use_online_wad_tip");
-            this.use_online_wad_tip.Name = "use_online_wad_tip";
-            this.use_online_wad_tip.Tag = "use_online_wad_tip";
-            // 
-            // use_online_wad_enabled
-            // 
-            resources.ApplyResources(this.use_online_wad_enabled, "use_online_wad_enabled");
-            this.use_online_wad_enabled.Name = "use_online_wad_enabled";
-            this.use_online_wad_enabled.Tag = "use_online_wad_enabled";
-            this.use_online_wad_enabled.UseVisualStyleBackColor = true;
             // 
             // image_interpolation_mode
             // 
@@ -954,6 +958,20 @@ namespace FriishProduce
             this.injection_methods_nes.Name = "injection_methods_nes";
             this.injection_methods_nes.Tag = "";
             // 
+            // banner_region
+            // 
+            this.banner_region.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.banner_region.FormattingEnabled = true;
+            resources.ApplyResources(this.banner_region, "banner_region");
+            this.banner_region.Name = "banner_region";
+            this.banner_region.Tag = "";
+            // 
+            // label9
+            // 
+            resources.ApplyResources(this.label9, "label9");
+            this.label9.Name = "label9";
+            this.label9.Tag = "banner_region";
+            // 
             // SettingsForm
             // 
             this.AcceptButton = this.b_ok;
@@ -963,16 +981,16 @@ namespace FriishProduce
             this.ControlBox = false;
             this.Controls.Add(this.bottomPanel2);
             this.Controls.Add(this.TreeView);
-            this.Controls.Add(this.forwarder);
-            this.Controls.Add(this.vc_n64);
-            this.Controls.Add(this.vc_pce);
-            this.Controls.Add(this.vc_sega);
-            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.vc_neo);
             this.Controls.Add(this.vc_nes);
             this.Controls.Add(this.adobe_flash);
+            this.Controls.Add(this.forwarder);
+            this.Controls.Add(this.vc_n64);
+            this.Controls.Add(this.vc_pce);
+            this.Controls.Add(this.vc_sega);
+            this.Controls.Add(this.panel3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MaximizeBox = false;
@@ -1129,7 +1147,9 @@ namespace FriishProduce
         private System.Windows.Forms.GroupBox vc_n64_romc_type;
         private System.Windows.Forms.Label vc_neo_bios;
         private System.Windows.Forms.ComboBox forwarder_type;
-        private System.Windows.Forms.CheckBox use_online_wad_enabled;
         private System.Windows.Forms.Label use_online_wad_tip;
+        private System.Windows.Forms.CheckBox use_online_wad_enabled;
+        private System.Windows.Forms.ComboBox banner_region;
+        private System.Windows.Forms.Label label9;
     }
 }

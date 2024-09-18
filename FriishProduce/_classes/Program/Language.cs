@@ -241,7 +241,7 @@ namespace FriishProduce
         /// </summary>
         public string[] StringArray(string name, string sectionName = "")
         {
-            List<string> result = new List<string>();
+            List<string> result = new();
 
             for (int i = 0; i < 100; i++)
             {
@@ -399,8 +399,8 @@ namespace FriishProduce
             dynamic reader = null;
             var encoding = Encoding.Unicode;
 
-            using (MemoryStream ms = new MemoryStream(file))
-            using (StreamReader sr = new StreamReader(ms, encoding))
+            using (MemoryStream ms = new(file))
+            using (StreamReader sr = new(ms, encoding))
             {
                 sr.ReadToEnd();
                 encoding = sr.CurrentEncoding;
@@ -409,8 +409,8 @@ namespace FriishProduce
                 catch { encoding = Encoding.UTF8; }
             }
 
-            using (MemoryStream ms = new MemoryStream(file))
-            using (StreamReader sr = new StreamReader(ms, encoding))
+            using (MemoryStream ms = new(file))
+            using (StreamReader sr = new(ms, encoding))
             using (var fileReader = JsonDocument.Parse(sr.ReadToEnd(), new JsonDocumentOptions() { AllowTrailingCommas = true, CommentHandling = JsonCommentHandling.Skip }))
             {
                 reader = JsonSerializer.Deserialize<LanguageData>(fileReader, new JsonSerializerOptions() { AllowTrailingCommas = true, ReadCommentHandling = JsonCommentHandling.Skip });

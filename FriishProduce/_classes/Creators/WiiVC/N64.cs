@@ -34,35 +34,25 @@ namespace FriishProduce.Injectors
             base.Load();
 
             if (WAD.Region == Region.Korea) EmuType = 3;
-            else switch (WAD.UpperTitleID.Substring(0, 3).ToUpper())
-                {
-                    default:
-                    case "NAA":
-                    case "NAF":
-                        EmuType = 0;
-                        break;
+            else EmuType = WAD.UpperTitleID.Substring(0, 3).ToUpper() switch
+            {
+                   "NAB"
+                or "NAC"
+                or "NAD" => 1,
 
-                    case "NAB":
-                    case "NAC":
-                    case "NAD":
-                        EmuType = 1;
-                        break;
+                   "NAK"
+                or "NAJ"
+                or "NAH" => 2,
 
-                    case "NAK":
-                    case "NAJ":
-                    case "NAH":
-                        EmuType = 2;
-                        break;
+                   "NA3"
+                or "NAE"
+                or "NAP"
+                or "NAU"
+                or "NAY"
+                or "NAZ" => 3,
 
-                    case "NA3":
-                    case "NAE":
-                    case "NAP":
-                    case "NAU":
-                    case "NAY":
-                    case "NAZ":
-                        EmuType = 3;
-                        break;
-                }
+                _ => 0,
+            };
         }
 
         /// <summary>
@@ -148,7 +138,7 @@ namespace FriishProduce.Injectors
                 {
                     var byteArray = MainContent.Data[MainContent.GetNodeIndex(item)];
 
-                    List<byte> newSave = new List<byte>();
+                    List<byte> newSave = new();
 
                     // Also varying on revision, how the second line field is itself handled.
                     // Where it is empty: In earlier revisions such as F-Zero X and Super Mario 64, it is a white space character, otherwise it is null.
@@ -225,7 +215,7 @@ namespace FriishProduce.Injectors
         #region SETTINGS
         protected override void ModifyEmulatorSettings()
         {
-            List<string> failed = new List<string>();
+            List<string> failed = new();
 
             try
             {
@@ -330,9 +320,9 @@ namespace FriishProduce.Injectors
                 ("48 00 00 64 3C 80 00 80", 0x2000, 0x9999)
             };
 
-            foreach (var item in offsets)
+            foreach (var (hex, start, end) in offsets)
             {
-                int index = Byte.IndexOf(Contents[1], item.hex, item.start, item.end);
+                int index = Byte.IndexOf(Contents[1], hex, start, end);
                 if (index != -1)
                 {
                     new byte[] { 0x60, 0x00, 0x00, 0x00 }.CopyTo(Contents[1], index);

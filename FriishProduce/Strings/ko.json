@@ -186,27 +186,34 @@
 			"image_interpolation_mode7":		"고품질 고등차수보간",
 			"image_stretch":					"이미지 늘리기",
 			"image_fit":						"화면비 맞추기",
+			"image_supplied":					"Supplied",
 			
 			"channel":							"채널 메타데이터",
-			"banner":							"배너 상세정보",
-			"banner_preview":					"배너 미리보기",
+			"banner":							"Click on the preview to access the banner details section.",
 			"title_id":							"타이틀 ID:",
 			"channel_name":						"짧은 이름:",
 			"video_mode":						"비디오 모드:",
-			"full_banner_name":					"전체 이름:",
-			"year":								"년도:",
-			"players":							"플레이어:",
 			
 			"injection_method":					"주입 방법",
 			"injection_method_options":			"주입 방법 옵션",
-			"forwarder_root_device":			"루트 저장 장치",
 			
 			"save_data":						"저장 데이터",
 			"save_data_enable":					"저장 활성화",
 			"fill_save_data":					"자동으로 연결",
-
-			"manual_type":						"사용 설명서",
+			
+			"forwarder_root_device":			"루트 저장 장치:",
+			"manual_type":						"사용 설명서:",
+			"manual_type0":						"{disabled}",
+			"manual_type1":						"{original}",
 			"manual_type2":						"커스텀 매뉴얼 가져오기"
+		},
+
+		"banner": {
+			"banner":							"배너 상세정보",
+			"banner_region":					"Banner region:",
+			"full_name":						"전체 이름:",
+			"year":								"년도:",
+			"players":							"플레이어:"
 		},
 
 		"vc_nes": {

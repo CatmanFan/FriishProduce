@@ -214,5 +214,17 @@ namespace FriishProduce.Properties {
                 this["use_online_wad_enabled"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int default_banner_region {
+            get {
+                return ((int)(this["default_banner_region"]));
+            }
+            set {
+                this["default_banner_region"] = value;
+            }
+        }
     }
 }

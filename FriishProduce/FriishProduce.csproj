@@ -201,6 +201,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Subforms\BannerOptions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Subforms\BannerOptions.Designer.cs">
+      <DependentUpon>BannerOptions.cs</DependentUpon>
+    </Compile>
     <Compile Include="Subforms\Options_RPGM.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -328,9 +334,7 @@
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="_classes\Helpers\SoundHelper.cs" />
-    <Compile Include="_classes\Utilities.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="_classes\Utilities.cs" />
     <Compile Include="_classes\Platform.cs" />
     <Compile Include="_classes\Creators\WiiVC\_base.cs" />
     <Compile Include="_classes\Creators\WiiVC\N64.cs" />
@@ -353,6 +357,9 @@
     <EmbeddedResource Include="Subforms\About.resx">
       <DependentUpon>About.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Subforms\BannerOptions.resx">
+      <DependentUpon>BannerOptions.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Subforms\ChannelTitles.resx">
       <DependentUpon>ChannelTitles.cs</DependentUpon>
