@@ -74,7 +74,8 @@ namespace FriishProduce
                     groupBox3.Enabled =
                     groupBox4.Enabled =
                     groupBox5.Enabled =
-                    groupBox6.Enabled = !value;
+                    groupBox6.Enabled =
+                    groupBox7.Enabled = !value;
 
                     import_patch.Enabled = !value && showPatch;
                 }
@@ -265,6 +266,7 @@ namespace FriishProduce
 
             #region Localization
             Program.Lang.Control(this, "projectform");
+            groupBox7.Text = Program.Lang.String("banner", "banner");
             title_id.Text = title_id_2.Text;
             import_rom.Text = string.Format(Program.Lang.String(import_rom.Name, Name), targetPlatform switch
             {
@@ -753,9 +755,8 @@ namespace FriishProduce
             wad_filename.Enabled = hasWad;
 
             checkImg1.Image = hasRom ? Properties.Resources.yes : Properties.Resources.no;
-            checkImg2.Image = !showPatch ? null : hasPatch ? Properties.Resources.yes : Properties.Resources.no;
-            checkImg3.Image = hasImage ? Properties.Resources.yes : Properties.Resources.no;
-            checkImg4.Image = hasWad ? Properties.Resources.yes : Properties.Resources.no;
+            checkImg2.Image = hasImage ? Properties.Resources.yes : Properties.Resources.no;
+            checkImg3.Image = hasWad ? Properties.Resources.yes : Properties.Resources.no;
         }
 
         private void randomTID()
@@ -904,7 +905,7 @@ namespace FriishProduce
 
             use_offline_wad.Checked = !use_online_wad.Checked;
             base_name.Enabled = title_id_2.Enabled = baseID.Enabled = baseName.Enabled = Base.Enabled = BaseRegion.Enabled = use_online_wad.Checked;
-            import_wad.Enabled = use_offline_wad.Checked;
+            checkImg3.Visible = import_wad.Enabled = use_offline_wad.Checked;
 
             if (Base.Enabled)
             {

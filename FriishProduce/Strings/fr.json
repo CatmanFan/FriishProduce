@@ -168,6 +168,9 @@
 		},
 
 		"projectform": {
+			"tab_files":						"Fichiers",
+			"tab_other":						"Autres",
+
 			"main":								"Fichiers principaux",
 			"import_rom":						"Ouvrir {0} ...",
 			"import_image":						"Ouvrir une image ...",

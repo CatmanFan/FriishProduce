@@ -13,7 +13,6 @@ namespace FriishProduce
     public partial class SettingsForm : Form
     {
         private bool isShown = false;
-        private bool nodeLocked = false;
         private int sysLangValue;
 
         private int dirtyOption1;

@@ -168,6 +168,9 @@
 		},
 
 		"projectform": {
+			"tab_files":						"Files",
+			"tab_other":						"Other",
+
 			"main":								"Main files",
 			"import_rom":						"Import {0}...",
 			"import_image":						"Import image...",
