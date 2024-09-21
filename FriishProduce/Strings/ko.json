@@ -166,8 +166,8 @@
 		},
 
 		"projectform": {
-			"tab_files":						"Files",
-			"tab_other":						"Other",
+			"tab_files":						"파일",
+			"tab_other":						"기타",
 
 			"main":								"주요 파일",
 			"import_rom":						"{0} 가져오기...",
