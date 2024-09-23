@@ -229,7 +229,7 @@ namespace FriishProduce
                 Patch = patch,
                 Manual = (manual_type.SelectedIndex, manual),
                 Img = (image_filename.Text == Program.Lang.String("image_supplied", Name) ? "[s]" : img?.FilePath ?? null, img?.Source ?? null),
-                ImageOptions = (imageintpl.SelectedIndex, image_fit.Checked),
+                ImageOptions = (image_interpolation_mode.SelectedIndex, image_resize.SelectedIndex == 1),
                 Sound = sound,
 
                 InjectionMethod = injection_methods.SelectedIndex,
@@ -310,8 +310,8 @@ namespace FriishProduce
             baseID.Location = new Point(baseMax, title_id.Location.Y);
 
             // Selected index properties
-            Program.Lang.Control(imageintpl, Name);
-            imageintpl.SelectedIndex = Properties.Settings.Default.image_interpolation;
+            Program.Lang.Control(image_interpolation_mode, Name);
+            image_interpolation_mode.SelectedIndex = Properties.Settings.Default.image_interpolation;
 
             // Manual
             manual_type.SelectedIndex = 0;
@@ -453,7 +453,7 @@ namespace FriishProduce
             groupBox3.Enabled = injection_methods.Enabled && !IsEmpty;
             banner_form.released.Maximum = DateTime.Now.Year;
 
-            if (Properties.Settings.Default.image_fit_aspect_ratio) image_fit.Checked = true; else image_stretch.Checked = true;
+            image_resize.SelectedIndex = Properties.Settings.Default.image_fit_aspect_ratio ? 1 : 0;
             resetImages();
             if (isMint && IsModified) IsModified = false;
         }
@@ -644,8 +644,8 @@ namespace FriishProduce
 
                 region_list.SelectedIndex = project.WADRegion;
                 injection_methods.SelectedIndex = project.InjectionMethod;
-                imageintpl.SelectedIndex = project.ImageOptions.Item1;
-                image_fit.Checked = project.ImageOptions.Item2;
+                image_interpolation_mode.SelectedIndex = project.ImageOptions.Item1;
+                image_resize.SelectedIndex = project.ImageOptions.Item2 ? 1 : 0;
 
                 if (contentOptionsForm != null) contentOptionsForm.Options = project.ContentOptions;
                 LoadImage();
@@ -968,7 +968,7 @@ namespace FriishProduce
             if (DesignMode) return;
             // ----------------------------
 
-            if (imageintpl.SelectedIndex != Properties.Settings.Default.image_interpolation) refreshData();
+            if (image_interpolation_mode.SelectedIndex != Properties.Settings.Default.image_interpolation) refreshData();
             LoadImage();
         }
 
@@ -978,18 +978,8 @@ namespace FriishProduce
             if (DesignMode) return;
             // ----------------------------
 
-            if (sender == image_stretch || sender == image_fit)
+            if (sender == image_resize)
             {
-                if (sender == image_stretch && image_fit.Checked)
-                {
-                    image_fit.Checked = !image_stretch.Checked;
-                }
-
-                else if (sender == image_fit && image_stretch.Checked)
-                {
-                    image_stretch.Checked = !image_fit.Checked;
-                }
-
                 LoadImage();
             }
 
@@ -1205,8 +1195,8 @@ namespace FriishProduce
 
             try
             {
-                img.InterpMode = (InterpolationMode)imageintpl.SelectedIndex;
-                img.FitAspectRatio = image_fit.Checked;
+                img.InterpMode = (InterpolationMode)image_interpolation_mode.SelectedIndex;
+                img.FitAspectRatio = image_resize.SelectedIndex == 1;
 
                 platformImageFunction(src);
 

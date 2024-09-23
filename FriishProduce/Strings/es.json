@@ -191,8 +191,8 @@
 			"image_interpolation_mode5":		"Vecino más cercano (Nearest neighbor)",
 			"image_interpolation_mode6":		"Bilineal de alta calidad",
 			"image_interpolation_mode7":		"Bicúbica de alta calidad",
-			"image_stretch":					"Estirar la imagen",
-			"image_fit":						"Mantener relación de aspecto",
+			"image_resize0":					"Estirar la imagen",
+			"image_resize1":					"Mantener relación de aspecto",
 			"image_supplied":					"Imagen suministrada",
 			
 			"channel_name":						"Nombre del canal:",

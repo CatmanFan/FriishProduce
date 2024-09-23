@@ -189,8 +189,8 @@
 			"image_interpolation_mode5":		"최근저버 이웃",
 			"image_interpolation_mode6":		"고품질 이중선형",
 			"image_interpolation_mode7":		"고품질 고등차수보간",
-			"image_stretch":					"이미지 늘리기",
-			"image_fit":						"화면비 맞추기",
+			"image_resize0":					"이미지 늘리기",
+			"image_resize1":					"화면비 맞추기",
 			"image_supplied":					"공급됨",
 			
 			"channel_name":						"짧은 이름",

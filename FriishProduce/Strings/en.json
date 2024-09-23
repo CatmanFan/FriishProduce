@@ -191,8 +191,8 @@
 			"image_interpolation_mode5":		"Nearest Neighbor",
 			"image_interpolation_mode6":		"High Quality Bilinear",
 			"image_interpolation_mode7":		"High Quality Bicubic",
-			"image_stretch":					"Stretch image",
-			"image_fit":						"Fit aspect ratio",
+			"image_resize0":					"Stretch image",
+			"image_resize1":					"Fit aspect ratio",
 			"image_supplied":					"Supplied",
 			
 			"channel_name":						"Channel name:",

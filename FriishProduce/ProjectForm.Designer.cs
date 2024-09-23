@@ -32,8 +32,6 @@ namespace FriishProduce
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProjectForm));
             this.baseRegionList = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.image_fit = new System.Windows.Forms.RadioButton();
-            this.image_stretch = new System.Windows.Forms.RadioButton();
             this.browseInputWad = new System.Windows.Forms.OpenFileDialog();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.SaveIcon_Panel = new System.Windows.Forms.PictureBox();
@@ -65,6 +63,8 @@ namespace FriishProduce
             this.browsePatch = new System.Windows.Forms.OpenFileDialog();
             this.browseManual = new Ookii.Dialogs.WinForms.VistaFolderBrowserDialog();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.image_resize = new System.Windows.Forms.ComboBox();
+            this.image_interpolation_mode = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.editContentOptions = new System.Windows.Forms.Button();
             this.forwarder_root_device = new System.Windows.Forms.ComboBox();
@@ -96,7 +96,6 @@ namespace FriishProduce
             this.replace_banner_sound = new System.Windows.Forms.ToolStripMenuItem();
             this.restore_banner_sound = new System.Windows.Forms.ToolStripMenuItem();
             this.browseSound = new System.Windows.Forms.OpenFileDialog();
-            this.imageintpl = new System.Windows.Forms.ComboBox();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SaveIcon_Panel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.title_id_random)).BeginInit();
@@ -127,22 +126,6 @@ namespace FriishProduce
             this.baseRegionList.Name = "WADRegion";
             this.baseRegionList.ShowCheckMargin = true;
             this.baseRegionList.ShowImageMargin = false;
-            // 
-            // image_fit
-            // 
-            resources.ApplyResources(this.image_fit, "image_fit");
-            this.image_fit.Name = "image_fit";
-            this.image_fit.Tag = "image_fit";
-            this.image_fit.UseVisualStyleBackColor = true;
-            this.image_fit.CheckedChanged += new System.EventHandler(this.SwitchAspectRatio);
-            // 
-            // image_stretch
-            // 
-            resources.ApplyResources(this.image_stretch, "image_stretch");
-            this.image_stretch.Name = "image_stretch";
-            this.image_stretch.Tag = "image_stretch";
-            this.image_stretch.UseVisualStyleBackColor = true;
-            this.image_stretch.CheckedChanged += new System.EventHandler(this.SwitchAspectRatio);
             // 
             // browseInputWad
             // 
@@ -378,13 +361,33 @@ namespace FriishProduce
             // 
             // groupBox6
             // 
-            this.groupBox6.Controls.Add(this.imageintpl);
-            this.groupBox6.Controls.Add(this.image_stretch);
-            this.groupBox6.Controls.Add(this.image_fit);
+            this.groupBox6.Controls.Add(this.image_resize);
+            this.groupBox6.Controls.Add(this.image_interpolation_mode);
             resources.ApplyResources(this.groupBox6, "groupBox6");
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.TabStop = false;
             this.groupBox6.Tag = "image";
+            // 
+            // image_resize
+            // 
+            this.image_resize.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.image_resize.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.image_resize.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.image_resize.FormattingEnabled = true;
+            resources.ApplyResources(this.image_resize, "image_resize");
+            this.image_resize.Name = "image_resize";
+            this.image_resize.Tag = "image_resize";
+            this.image_resize.SelectedIndexChanged += new System.EventHandler(this.SwitchAspectRatio);
+            // 
+            // image_interpolation_mode
+            // 
+            this.image_interpolation_mode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.image_interpolation_mode, "image_interpolation_mode");
+            this.image_interpolation_mode.FormattingEnabled = true;
+            this.image_interpolation_mode.Items.AddRange(new object[] {
+            resources.GetString("image_interpolation_mode.Items")});
+            this.image_interpolation_mode.Name = "image_interpolation_mode";
+            this.image_interpolation_mode.Tag = "image_interpolation_mode";
             // 
             // groupBox3
             // 
@@ -642,16 +645,6 @@ namespace FriishProduce
             this.browseSound.RestoreDirectory = true;
             this.browseSound.SupportMultiDottedExtensions = true;
             // 
-            // imageintpl
-            // 
-            this.imageintpl.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            resources.ApplyResources(this.imageintpl, "imageintpl");
-            this.imageintpl.FormattingEnabled = true;
-            this.imageintpl.Items.AddRange(new object[] {
-            resources.GetString("imageintpl.Items")});
-            this.imageintpl.Name = "imageintpl";
-            this.imageintpl.Tag = "image_interpolation_mode";
-            // 
             // ProjectForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
@@ -677,7 +670,6 @@ namespace FriishProduce
             ((System.ComponentModel.ISupportInitialize)(this.BaseRegion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -714,8 +706,6 @@ namespace FriishProduce
         private System.Windows.Forms.Label base_name;
         internal System.Windows.Forms.OpenFileDialog browseInputWad;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.RadioButton image_stretch;
-        private System.Windows.Forms.RadioButton image_fit;
         private System.Windows.Forms.ComboBox injection_methods;
         internal System.Windows.Forms.OpenFileDialog browsePatch;
         private System.Windows.Forms.Label label16;
@@ -765,6 +755,7 @@ namespace FriishProduce
         private System.Windows.Forms.ToolStripMenuItem restore_banner_sound;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.OpenFileDialog browseSound;
-        private System.Windows.Forms.ComboBox imageintpl;
+        private System.Windows.Forms.ComboBox image_interpolation_mode;
+        private System.Windows.Forms.ComboBox image_resize;
     }
 }

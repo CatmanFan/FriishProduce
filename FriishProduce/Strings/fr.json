@@ -191,8 +191,8 @@
 			"image_interpolation_mode5":		"Plus proche voisin",
 			"image_interpolation_mode6":		"Bilinéaire de haute qualité",
 			"image_interpolation_mode7":		"Bicubique de haute qualité",
-			"image_stretch":					"Étirer l'image",
-			"image_fit":						"Conserver les proportions",
+			"image_resize0":					"Étirer l'image",
+			"image_resize1":					"Conserver les proportions",
 			"image_supplied":					"Image fournie",
 			
 			"channel_name":						"Nom de la chaîne",
