@@ -176,6 +176,9 @@ namespace FriishProduce
             // toolStrip.Renderer = r;
 
             #region Set size of window
+            mainPanel.Dock = DockStyle.None;
+            // if (!toolStrip.Visible) tabControl.Location = mainPanel.Location = new Point(mainPanel.Location.X, mainPanel.Location.Y - toolStrip.Height);
+
             int w = 16;
             int h = mainPanel.Location.Y + tabControl.TabHeight + tabControl.TabTop;
             using (var pF = new ProjectForm(0))
@@ -184,7 +187,7 @@ namespace FriishProduce
                 MinimumSize = MaximumSize = Size;
                 tabControl.TabBackLowColor = pF.BackColor;
             }
-            mainPanel.Dock = DockStyle.None;
+
             mainPanel.Size = tabControl.Size = new Size(Width - w, Height - h);
             #endregion
 

@@ -85,9 +85,6 @@ namespace FriishProduce
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.video_modes = new System.Windows.Forms.ListBox();
-            this.tab_channel = new System.Windows.Forms.TabPage();
-            this.tab_main = new System.Windows.Forms.TabPage();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
             this.bannerMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.banner_customize = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -96,6 +93,10 @@ namespace FriishProduce
             this.replace_banner_sound = new System.Windows.Forms.ToolStripMenuItem();
             this.restore_banner_sound = new System.Windows.Forms.ToolStripMenuItem();
             this.browseSound = new System.Windows.Forms.OpenFileDialog();
+            this.tab2 = new System.Windows.Forms.Panel();
+            this.tab_main = new System.Windows.Forms.CheckBox();
+            this.tab_channel = new System.Windows.Forms.CheckBox();
+            this.tab1 = new System.Windows.Forms.Panel();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SaveIcon_Panel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.title_id_random)).BeginInit();
@@ -114,10 +115,9 @@ namespace FriishProduce
             this.groupBox8.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox10.SuspendLayout();
-            this.tab_channel.SuspendLayout();
-            this.tab_main.SuspendLayout();
-            this.tabControl1.SuspendLayout();
             this.bannerMenu.SuspendLayout();
+            this.tab2.SuspendLayout();
+            this.tab1.SuspendLayout();
             this.SuspendLayout();
             // 
             // baseRegionList
@@ -162,7 +162,7 @@ namespace FriishProduce
             // 
             resources.ApplyResources(this.save_data_title, "save_data_title");
             this.save_data_title.Name = "save_data_title";
-            this.save_data_title.Tag = "19";
+            this.save_data_title.Tag = "24";
             this.save_data_title.TextChanged += new System.EventHandler(this.TextBox_Changed);
             this.save_data_title.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_Handle);
             // 
@@ -554,39 +554,6 @@ namespace FriishProduce
             this.video_modes.Name = "video_modes";
             this.video_modes.SelectedIndexChanged += new System.EventHandler(this.Value_Changed);
             // 
-            // tab_channel
-            // 
-            this.tab_channel.Controls.Add(this.groupBox9);
-            this.tab_channel.Controls.Add(this.groupBox7);
-            this.tab_channel.Controls.Add(this.groupBox8);
-            this.tab_channel.Controls.Add(this.groupBox4);
-            this.tab_channel.Controls.Add(this.groupBox10);
-            resources.ApplyResources(this.tab_channel, "tab_channel");
-            this.tab_channel.Name = "tab_channel";
-            this.tab_channel.Tag = "tab_channel";
-            this.tab_channel.UseVisualStyleBackColor = true;
-            // 
-            // tab_main
-            // 
-            this.tab_main.Controls.Add(this.groupBox3);
-            this.tab_main.Controls.Add(this.groupBox1);
-            this.tab_main.Controls.Add(this.groupBox2);
-            this.tab_main.Controls.Add(this.groupBox6);
-            this.tab_main.Controls.Add(this.groupBox5);
-            resources.ApplyResources(this.tab_main, "tab_main");
-            this.tab_main.Name = "tab_main";
-            this.tab_main.Tag = "tab_main";
-            this.tab_main.UseVisualStyleBackColor = true;
-            // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.tab_main);
-            this.tabControl1.Controls.Add(this.tab_channel);
-            resources.ApplyResources(this.tabControl1, "tabControl1");
-            this.tabControl1.Multiline = true;
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            // 
             // bannerMenu
             // 
             this.bannerMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -645,11 +612,64 @@ namespace FriishProduce
             this.browseSound.RestoreDirectory = true;
             this.browseSound.SupportMultiDottedExtensions = true;
             // 
+            // tab2
+            // 
+            this.tab2.BackColor = System.Drawing.Color.White;
+            this.tab2.Controls.Add(this.groupBox9);
+            this.tab2.Controls.Add(this.groupBox7);
+            this.tab2.Controls.Add(this.groupBox10);
+            this.tab2.Controls.Add(this.groupBox8);
+            this.tab2.Controls.Add(this.groupBox4);
+            this.tab2.Controls.Add(this.groupBox6);
+            resources.ApplyResources(this.tab2, "tab2");
+            this.tab2.Name = "tab2";
+            // 
+            // tab_main
+            // 
+            resources.ApplyResources(this.tab_main, "tab_main");
+            this.tab_main.AutoCheck = false;
+            this.tab_main.Checked = true;
+            this.tab_main.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.tab_main.FlatAppearance.BorderSize = 0;
+            this.tab_main.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
+            this.tab_main.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.tab_main.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.tab_main.Name = "tab_main";
+            this.tab_main.Tag = "tab_main";
+            this.tab_main.UseVisualStyleBackColor = false;
+            this.tab_main.Click += new System.EventHandler(this.Tab_Switch);
+            // 
+            // tab_channel
+            // 
+            resources.ApplyResources(this.tab_channel, "tab_channel");
+            this.tab_channel.AutoCheck = false;
+            this.tab_channel.FlatAppearance.BorderSize = 0;
+            this.tab_channel.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
+            this.tab_channel.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.tab_channel.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.tab_channel.Name = "tab_channel";
+            this.tab_channel.Tag = "tab_channel";
+            this.tab_channel.UseVisualStyleBackColor = false;
+            this.tab_channel.Click += new System.EventHandler(this.Tab_Switch);
+            // 
+            // tab1
+            // 
+            this.tab1.BackColor = System.Drawing.Color.White;
+            this.tab1.Controls.Add(this.groupBox3);
+            this.tab1.Controls.Add(this.groupBox1);
+            this.tab1.Controls.Add(this.groupBox5);
+            this.tab1.Controls.Add(this.groupBox2);
+            resources.ApplyResources(this.tab1, "tab1");
+            this.tab1.Name = "tab1";
+            // 
             // ProjectForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             resources.ApplyResources(this, "$this");
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tab_channel);
+            this.Controls.Add(this.tab_main);
+            this.Controls.Add(this.tab1);
+            this.Controls.Add(this.tab2);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;
@@ -682,10 +702,9 @@ namespace FriishProduce
             this.groupBox8.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox10.ResumeLayout(false);
-            this.tab_channel.ResumeLayout(false);
-            this.tab_main.ResumeLayout(false);
-            this.tabControl1.ResumeLayout(false);
             this.bannerMenu.ResumeLayout(false);
+            this.tab2.ResumeLayout(false);
+            this.tab1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -744,9 +763,6 @@ namespace FriishProduce
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox10;
         private System.Windows.Forms.ListBox video_modes;
-        private System.Windows.Forms.TabPage tab_channel;
-        private System.Windows.Forms.TabPage tab_main;
-        private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.ContextMenuStrip bannerMenu;
         private System.Windows.Forms.ToolStripMenuItem banner_customize;
         private System.Windows.Forms.ToolStripMenuItem banner_sound;
@@ -757,5 +773,9 @@ namespace FriishProduce
         private System.Windows.Forms.OpenFileDialog browseSound;
         private System.Windows.Forms.ComboBox image_interpolation_mode;
         private System.Windows.Forms.ComboBox image_resize;
+        private System.Windows.Forms.Panel tab2;
+        private System.Windows.Forms.CheckBox tab_main;
+        private System.Windows.Forms.CheckBox tab_channel;
+        private System.Windows.Forms.Panel tab1;
     }
 }

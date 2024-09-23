@@ -273,6 +273,12 @@ namespace FriishProduce
 
             bool isMint = _isMint || !Program.MainForm.save_project_as.Enabled;
 
+            tab_main.Checked    = true;
+            tab_channel.Checked = false;
+            tab1.Visible        = true;
+            tab2.Visible        = false;
+            tab1.BackColor = tab2.BackColor = tab_main.FlatAppearance.CheckedBackColor;
+
             #region Localization
             Program.Lang.Control(this, "projectform");
             groupBox4.Text = groupBox4.Text.TrimEnd(':').Trim();
@@ -1977,7 +1983,6 @@ namespace FriishProduce
             showSaveData = isVirtualConsole || targetPlatform == Platform.Flash;
 
             extra.Text = manual_type.Visible ? Program.Lang.String(manual_type.Name, Name) : Program.Lang.String(forwarder_root_device.Name, Name);
-            groupBox3.Height = !manual_type.Visible && !forwarder_root_device.Visible ? 50 : 105;
         }
         #endregion
 
@@ -2102,6 +2107,30 @@ namespace FriishProduce
         {
             SoundPlayer snd = File.Exists(sound) && sound != null ? new(sound) : new(Properties.Resources.Sound_WiiVC);
             snd.PlaySync();
+        }
+
+        private void Tab_Switch(object sender, EventArgs e)
+        {
+            int tab = sender == tab_main ? 0 : sender == tab_channel ? 1 : 0;
+
+            switch (tab)
+            {
+                case 0:
+                default:
+                    tab_main.Checked    = true;
+                    tab_channel.Checked = false;
+                    break;
+                case 1:
+                    tab_main.Checked    = false;
+                    tab_channel.Checked = true;
+                    break;
+            }
+
+            tab1.Visible = tab_main.Checked;
+            tab2.Visible = tab_channel.Checked;
+
+            tab_main.Enabled    = !tab_main.Checked;
+            tab_channel.Enabled = !tab_channel.Checked;
         }
     }
 }
