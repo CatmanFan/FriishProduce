@@ -113,7 +113,7 @@ namespace FriishProduce
 
         private void AutoSetStrip()
         {
-            foreach (MenuItem section in mainMenu1.MenuItems)
+            foreach (MenuItem section in mainMenu.MenuItems)
                 foreach (MenuItem item in section.MenuItems)
                     if (Program.Lang.StringCheck(item.Tag?.ToString().ToLower(), Name)) item.Text = Program.Lang.String(item.Tag?.ToString().ToLower(), Name);
 
@@ -199,6 +199,7 @@ namespace FriishProduce
             if (mainPanel.BackgroundImage != null) tabControl.BackLowColor = tabControl.BackHighColor = tabControl.BackColor = Color.Transparent;
             tabControl.BackgroundImage = mainPanel.BackgroundImage;
             tabControl.BackgroundImageLayout = mainPanel.BackgroundImageLayout;
+            if (tabControl.Alignment == MdiTabControl.TabControl.TabAlignment.Bottom) tabControl.Height -= (int)Math.Round(h / 1.5);
 
             RefreshForm();
             CenterToScreen();

@@ -91,6 +91,8 @@ namespace FriishProduce
             default_export_filename_tb.Location = new Point(maxX, default_export_filename_tb.Location.Y);
             default_save_as_filename_tb.Width = default_export_filename_tb.Width = maxWidth;
 
+            label9.Text = Program.Lang.String(banner_region.Name, "banner");
+
             flash_save_data_enable.Text = vc_pce_backupram.Text = vc_sega_save_sram.Text = Program.Lang.String("save_data_enable", "projectform");
 
             // -----------------------------

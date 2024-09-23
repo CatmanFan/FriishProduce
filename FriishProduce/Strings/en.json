@@ -124,9 +124,9 @@
 
 	"strings": {
 		"mainform": {
-			"file":								"File",
-			"project":							"Project",
-			"help":								"Help",
+			"file":								"&File",
+			"project":							"&Project",
+			"help":								"&Help",
 			"new_project":						"&New...",
 			"open_project":						"Open project...",
 			"save_project":						"Save project",
@@ -168,8 +168,8 @@
 		},
 
 		"projectform": {
-			"tab_files":						"Files",
-			"tab_other":						"Other",
+			"tab_main":							"Main",
+			"tab_channel":						"Channel metadata",
 
 			"main":								"Main files",
 			"import_rom":						"Import {0}...",
@@ -179,6 +179,7 @@
 			"use_online_wad":					"...or use a downloadable base",
 			"wad_base":							"Base WAD information",
 			"base_name":						"Base name:",
+			"title_id":							"Title ID:",
 			
 			"image":							"Image",
 			"image_interpolation_mode":			"Interpolation mode",
@@ -194,11 +195,14 @@
 			"image_fit":						"Fit aspect ratio",
 			"image_supplied":					"Supplied",
 			
-			"channel":							"Channel metadata",
-			"banner":							"Click on the preview to access the banner details section.",
-			"title_id":							"Title ID:",
 			"channel_name":						"Channel name:",
 			"video_mode":						"Video mode:",
+			"banner":							"Click on the preview to access the banner details section.",
+			"banner_customize":					"Customize banner...",
+			"banner_sound":						"Banner sound",
+			"play_banner_sound":				"Play banner sound",
+			"replace_banner_sound":				"Replace banner sound...",
+			"restore_banner_sound":				"Restore banner sound",
 
 			"injection_method":					"Injection method",
 			"injection_method_options":			"Injection method options",

@@ -166,16 +166,18 @@
 		},
 
 		"projectform": {
-			"tab_files":						"파일",
-			"tab_other":						"기타",
-
+			"tab_main":							"주요 내용",
+			"tab_channel":						"채널 메타데이터",
+			
 			"main":								"주요 파일",
 			"import_rom":						"{0} 가져오기...",
 			"import_image":						"이미지 가져오기...",
 			"import_patch":						"패치 가져오기...",
+			"import_wad":						"WAD 가져오기...",
+			"use_online_wad":					"...or use a downloadable base",
 			"wad_base":							"기반",
 			"base_name":						"기반 이름:",
-			"use_offline_wad":					"오프라인 WAD 파일 사용",
+			"title_id":							"타이틀 ID:",
 			
 			"image":							"이미지",
 			"image_interpolation_mode":			"보간 모드",
@@ -191,11 +193,14 @@
 			"image_fit":						"화면비 맞추기",
 			"image_supplied":					"공급됨",
 			
-			"channel":							"채널 메타데이터",
+			"channel_name":						"짧은 이름",
+			"video_mode":						"비디오 모드",
 			"banner":							"배너 세부정보 섹션에 접근하려면 미리보기를 클릭하세요.",
-			"title_id":							"타이틀 ID:",
-			"channel_name":						"짧은 이름:",
-			"video_mode":						"비디오 모드:",
+			"banner_customize":					"Customize banner...",
+			"banner_sound":						"Banner sound",
+			"play_banner_sound":				"Play banner sound",
+			"replace_banner_sound":				"Replace banner sound...",
+			"restore_banner_sound":				"Restore banner sound",
 			
 			"injection_method":					"주입 방법",
 			"injection_method_options":			"주입 방법 옵션",

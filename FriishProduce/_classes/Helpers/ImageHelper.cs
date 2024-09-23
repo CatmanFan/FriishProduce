@@ -16,6 +16,7 @@ namespace FriishProduce
 
         public Bitmap Source { get; protected set; }
         private string SourcePath { get; set; }
+        public string FilePath { get; protected set; }
         public Bitmap VCPic { get; protected set; }
         public Bitmap IconVCPic { get; protected set; }
         private Bitmap SaveIconPic { get; set; }
@@ -118,13 +119,14 @@ namespace FriishProduce
                     {
                         Source = new Bitmap(s);
                         SourcePath = path;
+                        FilePath = null;
                         return Source;
                     }
                 }
                 else
                 {
                     Source = (Bitmap)Image.FromFile(path);
-                    SourcePath = path;
+                    FilePath = SourcePath = path;
                     return Source;
                 }
             }

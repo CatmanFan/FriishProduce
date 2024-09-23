@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <metadata name="SaveWAD.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>229, 17</value>
+    <value>469, 17</value>
   </metadata>
   <data name="&gt;&gt;Logo.Name" xml:space="preserve">
     <value>Logo</value>
@@ -1497,7 +1497,7 @@
     <value>0</value>
   </data>
   <metadata name="toolStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>410, 17</value>
+    <value>17, 17</value>
   </metadata>
   <data name="toolStrip.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -1620,10 +1620,10 @@
     <value>export</value>
   </data>
   <metadata name="SaveProject.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>130, 17</value>
+    <value>354, 17</value>
   </metadata>
   <metadata name="BrowseProject.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
+    <value>225, 17</value>
   </metadata>
   <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 25</value>
@@ -1649,9 +1649,12 @@
   <data name="&gt;&gt;tabControl.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <metadata name="mainMenu1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>492, 17</value>
+  <metadata name="mainMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>115, 17</value>
   </metadata>
+  <data name="menuItem1.Text" xml:space="preserve">
+    <value>file</value>
+  </data>
   <data name="new_project.Shortcut" type="System.Windows.Forms.Shortcut, System.Windows.Forms">
     <value>CtrlN</value>
   </data>
@@ -1697,14 +1700,8 @@
   <data name="exit.Text" xml:space="preserve">
     <value>exit</value>
   </data>
-  <data name="menuItem1.Text" xml:space="preserve">
-    <value>file</value>
-  </data>
   <data name="menuItem2.Text" xml:space="preserve">
     <value>project</value>
-  </data>
-  <data name="menuItem3.Text" xml:space="preserve">
-    <value>help</value>
   </data>
   <data name="retrieve_gamedata_online.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -1739,6 +1736,9 @@
   <data name="close_project.Text" xml:space="preserve">
     <value>close_project</value>
   </data>
+  <data name="menuItem3.Text" xml:space="preserve">
+    <value>help</value>
+  </data>
   <data name="about.Text" xml:space="preserve">
     <value>about</value>
   </data>
@@ -1747,9 +1747,6 @@
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>77</value>
-  </metadata>
-  <metadata name="$this.TrayLargeIcon" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
   </metadata>
   <data name="$this.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -3868,10 +3865,10 @@
   <data name="&gt;&gt;BrowseProject.Type" xml:space="preserve">
     <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;mainMenu1.Name" xml:space="preserve">
-    <value>mainMenu1</value>
+  <data name="&gt;&gt;mainMenu.Name" xml:space="preserve">
+    <value>mainMenu</value>
   </data>
-  <data name="&gt;&gt;mainMenu1.Type" xml:space="preserve">
+  <data name="&gt;&gt;mainMenu.Type" xml:space="preserve">
     <value>System.Windows.Forms.MainMenu, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;menuItem1.Name" xml:space="preserve">
@@ -3890,6 +3887,18 @@
     <value>open_project</value>
   </data>
   <data name="&gt;&gt;open_project.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;save_project.Name" xml:space="preserve">
+    <value>save_project</value>
+  </data>
+  <data name="&gt;&gt;save_project.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;save_project_as.Name" xml:space="preserve">
+    <value>save_project_as</value>
+  </data>
+  <data name="&gt;&gt;save_project_as.Type" xml:space="preserve">
     <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;menuItem8.Name" xml:space="preserve">
@@ -3956,18 +3965,6 @@
     <value>about</value>
   </data>
   <data name="&gt;&gt;about.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;save_project_as.Name" xml:space="preserve">
-    <value>save_project_as</value>
-  </data>
-  <data name="&gt;&gt;save_project_as.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;save_project.Name" xml:space="preserve">
-    <value>save_project</value>
-  </data>
-  <data name="&gt;&gt;save_project.Type" xml:space="preserve">
     <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

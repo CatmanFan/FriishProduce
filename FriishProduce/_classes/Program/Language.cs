@@ -157,7 +157,7 @@ namespace FriishProduce
         }
 
         /// <summary>
-        /// Localizes a form using an auto-determined or manually-inputted tag name.
+        /// Localizes a control or form using an auto-determined or manually-inputted tag name.
         /// </summary>
         public void Control(Control c, string tag = null)
         {

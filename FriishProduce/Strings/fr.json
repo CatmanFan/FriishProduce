@@ -99,7 +99,7 @@
 			"003":								"Terminé avec succès.\nOuvrir le dossier de sortie ?",
 			"004":								"Impossible de charger tous les informations de ce logiciel (nom, année de sortie ou joueurs) à partir de la bibliothèque des jeux.\nCertaines informations doivent être spécifiées manuellement.",
 			"005":								"Le fichier WAD que vous avez précisée ({0}) est invalide.\nCeci peut être provoqué par l'une des raisons suivantes :\n  • La plateforme/console cible ne correspond pas à celle de la chaîne sélectionnée.\n  • La chaîne n'est pas encore disponible dans la base des données de cette application.\n  • La chaîne était déjà modifiée (soit injectée, soit convertie en forme du forwarder).",
-			"006":								"Vous pouvez replacer les fichier du mode d'emploi inclus dans la chaîne de Console virtuelle par des autres externes, soit personalisés.\n\nPour ce faire, vous aurez besoin d'une archive ZIP comprenant le contenu d'un fichier *.arc du mode d'emploi de Console virtuelle.",
+			"006":								"Vous pouvez replacer les fichier du mode d'emploi inclus dans la chaîne de Console virtuelle par des autres externes, soit personnalisés.\n\nPour ce faire, vous aurez besoin d'une archive ZIP comprenant le contenu d'un fichier *.arc du mode d'emploi de Console virtuelle.",
 			"007":								"L'archive précisée est invalide.",
 			"008":								"Une mise à jour est disponible\nFriishProduce v{0} est désormais disponible à télécharger.\nL'actuelle version est v{1}.\n\nObtenir la dernière mise à jour dès GitHub maintenant ?",
 			"009":								"Vous êtes déjà à jour.",
@@ -124,9 +124,9 @@
 
 	"strings": {
 		"mainform": {
-			"file":								"Fichier",
-			"project":							"Projet",
-			"help":								"Aide",
+			"file":								"&Fichier",
+			"project":							"&Projet",
+			"help":								"&Aide",
 			"new_project":						"&Nouveau ...",
 			"open_project":						"Ouvrir un project ...",
 			"save_project":						"Enregistrer le projet",
@@ -168,8 +168,8 @@
 		},
 
 		"projectform": {
-			"tab_files":						"Fichiers",
-			"tab_other":						"Autres",
+			"tab_main":							"Principal",
+			"tab_channel":						"Détails de la chaîne",
 
 			"main":								"Fichiers principaux",
 			"import_rom":						"Ouvrir {0} ...",
@@ -179,6 +179,7 @@
 			"use_online_wad":					"... ou utiliser une chaîne téléchargable",
 			"wad_base":							"Chaîne de base",
 			"base_name":						"Nom du logiciel :",
+			"title_id":							"Title ID :",
 			
 			"image":							"Image",
 			"image_interpolation_mode":			"Méthode d'interpolation",
@@ -194,11 +195,14 @@
 			"image_fit":						"Conserver les proportions",
 			"image_supplied":					"Image fournie",
 			
-			"channel":							"Paramètres de la chaîne",
+			"channel_name":						"Nom de la chaîne",
+			"video_mode":						"Mode vidéo",
 			"banner":							"Pour accéder au paramètres du banner, cliquer sur l'image d'aperçu.",
-			"title_id":							"Title ID :",
-			"channel_name":						"Nom de la chaîne :",
-			"video_mode":						"Mode vidéo :",
+			"banner_customize":					"Personnaliser le banner...",
+			"banner_sound":						"Son du banner",
+			"play_banner_sound":				"Jouer le son actuel du banner",
+			"replace_banner_sound":				"Remplacer le son du banner...",
+			"restore_banner_sound":				"Restaurer le son original du banner",
 
 			"injection_method":					"Méthode d'injection",
 			"injection_method_options":			"Paramètres de méthode d'injection",

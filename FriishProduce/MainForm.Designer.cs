@@ -49,10 +49,12 @@ namespace FriishProduce
             this.SaveProject = new System.Windows.Forms.SaveFileDialog();
             this.BrowseProject = new System.Windows.Forms.OpenFileDialog();
             this.tabControl = new MdiTabControl.TabControl();
-            this.mainMenu1 = new System.Windows.Forms.MainMenu(this.components);
+            this.mainMenu = new System.Windows.Forms.MainMenu(this.components);
             this.menuItem1 = new System.Windows.Forms.MenuItem();
             this.new_project = new System.Windows.Forms.MenuItem();
             this.open_project = new System.Windows.Forms.MenuItem();
+            this.save_project = new System.Windows.Forms.MenuItem();
+            this.save_project_as = new System.Windows.Forms.MenuItem();
             this.menuItem8 = new System.Windows.Forms.MenuItem();
             this.settings = new System.Windows.Forms.MenuItem();
             this.exit = new System.Windows.Forms.MenuItem();
@@ -64,8 +66,6 @@ namespace FriishProduce
             this.close_project = new System.Windows.Forms.MenuItem();
             this.menuItem3 = new System.Windows.Forms.MenuItem();
             this.about = new System.Windows.Forms.MenuItem();
-            this.save_project_as = new System.Windows.Forms.MenuItem();
-            this.save_project = new System.Windows.Forms.MenuItem();
             this.mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             this.toolStrip.SuspendLayout();
@@ -198,6 +198,7 @@ namespace FriishProduce
             // BrowseProject
             // 
             this.BrowseProject.DefaultExt = "fppj";
+            this.BrowseProject.SupportMultiDottedExtensions = true;
             // 
             // tabControl
             // 
@@ -240,9 +241,9 @@ namespace FriishProduce
             this.tabControl.SelectedTabChanged += new System.EventHandler(this.TabChanged);
             this.tabControl.TabIndexChanged += new System.EventHandler(this.TabChanged);
             // 
-            // mainMenu1
+            // mainMenu
             // 
-            this.mainMenu1.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.mainMenu.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.menuItem1,
             this.menuItem2,
             this.menuItem3});
@@ -273,6 +274,20 @@ namespace FriishProduce
             resources.ApplyResources(this.open_project, "open_project");
             this.open_project.Tag = "open_project";
             this.open_project.Click += new System.EventHandler(this.OpenProject_Click);
+            // 
+            // save_project
+            // 
+            resources.ApplyResources(this.save_project, "save_project");
+            this.save_project.Index = 2;
+            this.save_project.Tag = "save_project";
+            this.save_project.Click += new System.EventHandler(this.Save_Click);
+            // 
+            // save_project_as
+            // 
+            resources.ApplyResources(this.save_project_as, "save_project_as");
+            this.save_project_as.Index = 3;
+            this.save_project_as.Tag = "save_project_as";
+            this.save_project_as.Click += new System.EventHandler(this.SaveAs_Click);
             // 
             // menuItem8
             // 
@@ -351,20 +366,6 @@ namespace FriishProduce
             resources.ApplyResources(this.about, "about");
             this.about.Click += new System.EventHandler(this.About_Click);
             // 
-            // save_project_as
-            // 
-            resources.ApplyResources(this.save_project_as, "save_project_as");
-            this.save_project_as.Index = 3;
-            this.save_project_as.Tag = "save_project_as";
-            this.save_project_as.Click += new System.EventHandler(this.SaveAs_Click);
-            // 
-            // save_project
-            // 
-            resources.ApplyResources(this.save_project, "save_project");
-            this.save_project.Index = 2;
-            this.save_project.Tag = "save_project";
-            this.save_project.Click += new System.EventHandler(this.Save_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -376,7 +377,7 @@ namespace FriishProduce
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MaximizeBox = false;
-            this.Menu = this.mainMenu1;
+            this.Menu = this.mainMenu;
             this.Name = "MainForm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Tag = "mainform";
@@ -405,7 +406,7 @@ namespace FriishProduce
         internal System.Windows.Forms.ToolStripButton toolbarSaveAs;
         private MdiTabControl.TabControl tabControl;
         internal System.Windows.Forms.ToolStripButton toolbarRetrieveGameData;
-        private System.Windows.Forms.MainMenu mainMenu1;
+        private System.Windows.Forms.MainMenu mainMenu;
         private System.Windows.Forms.MenuItem menuItem1;
         private System.Windows.Forms.MenuItem new_project;
         private System.Windows.Forms.MenuItem open_project;

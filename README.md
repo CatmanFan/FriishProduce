@@ -43,8 +43,9 @@ See **[here](https://github.com/CatmanFan/FriishProduce/wiki/FriishProduce-v1.0)
 
 ## To-Do
 ### Before releasing
-[X] Create new logo
-[ ] Update language strings
+[ ] Create new skeuomorphic logo
+[X] Update language strings
+[ ] Update settings form
 
 ### After releasing
 [ ] Make project forms inheritable and categorize by console/platform
