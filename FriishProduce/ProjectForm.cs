@@ -286,11 +286,11 @@ namespace FriishProduce
             groupBox9.Text = title_id.Text.TrimEnd(':').Trim();
             import_rom.Text = string.Format(Program.Lang.String(import_rom.Name, Name), targetPlatform switch
             {
-                Platform.PSX => Program.Lang.String("disc_image"),
-                Platform.GCN => Program.Lang.String("disc_image"),
-                Platform.PCECD => Program.Lang.String("disc_image"),
-                Platform.SMCD => Program.Lang.String("disc_image"),
-                Platform.RPGM => Program.Lang.String("game_file"),
+                Platform.PSX => Program.Lang.String("disc_image", Name),
+                Platform.GCN => Program.Lang.String("disc_image", Name),
+                Platform.PCECD => Program.Lang.String("disc_image", Name),
+                Platform.SMCD => Program.Lang.String("disc_image", Name),
+                Platform.RPGM => Program.Lang.String("game_file", Name),
                 Platform.NEO => "ZIP",
                 Platform.Flash => "SWF",
                 _ => "ROM",

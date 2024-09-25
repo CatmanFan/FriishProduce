@@ -120,41 +120,7 @@
   <metadata name="SaveWAD.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>469, 17</value>
   </metadata>
-  <data name="&gt;&gt;Logo.Name" xml:space="preserve">
-    <value>Logo</value>
-  </data>
-  <data name="&gt;&gt;Logo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Logo.Parent" xml:space="preserve">
-    <value>mainPanel</value>
-  </data>
-  <data name="&gt;&gt;Logo.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="mainPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 25</value>
-  </data>
-  <data name="mainPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>484, 384</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="mainPanel.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;mainPanel.Name" xml:space="preserve">
-    <value>mainPanel</value>
-  </data>
-  <data name="&gt;&gt;mainPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;mainPanel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;mainPanel.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="Logo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAA+gAAAPoCAYAAABNo9TkAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAACH
@@ -1481,6 +1447,7 @@
   <data name="Logo.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>Zoom</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="Logo.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
@@ -1495,6 +1462,27 @@
   </data>
   <data name="&gt;&gt;Logo.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="mainPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 25</value>
+  </data>
+  <data name="mainPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>484, 384</value>
+  </data>
+  <data name="mainPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;mainPanel.Name" xml:space="preserve">
+    <value>mainPanel</value>
+  </data>
+  <data name="&gt;&gt;mainPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;mainPanel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;mainPanel.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <metadata name="toolStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -1562,6 +1550,21 @@
   <data name="toolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 25</value>
   </data>
+  <data name="toolbarImportGameFile.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="toolbarImportGameFile.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="toolbarImportGameFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="toolbarImportGameFile.Text" xml:space="preserve">
+    <value>retrieve_gamedata_online</value>
+  </data>
+  <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
+  </data>
   <data name="toolbarRetrieveGameData.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -1574,15 +1577,6 @@
   <data name="toolbarRetrieveGameData.Text" xml:space="preserve">
     <value>retrieve_gamedata_online</value>
   </data>
-  <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 25</value>
-  </data>
-  <data name="toolbarSettings.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="toolbarSettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
   <data name="toolbarExport.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -1594,6 +1588,15 @@
   </data>
   <data name="toolbarExport.Text" xml:space="preserve">
     <value>export</value>
+  </data>
+  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
+  </data>
+  <data name="toolbarSettings.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="toolbarSettings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
   </data>
   <data name="toolStrip.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -1652,9 +1655,6 @@
   <metadata name="mainMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>115, 17</value>
   </metadata>
-  <data name="menuItem1.Text" xml:space="preserve">
-    <value>file</value>
-  </data>
   <data name="new_project.Shortcut" type="System.Windows.Forms.Shortcut, System.Windows.Forms">
     <value>CtrlN</value>
   </data>
@@ -1700,8 +1700,26 @@
   <data name="exit.Text" xml:space="preserve">
     <value>exit</value>
   </data>
-  <data name="menuItem2.Text" xml:space="preserve">
-    <value>project</value>
+  <data name="menuItem1.Text" xml:space="preserve">
+    <value>file</value>
+  </data>
+  <data name="import_game_file.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="import_game_file.Shortcut" type="System.Windows.Forms.Shortcut, System.Windows.Forms">
+    <value>Ctrl0</value>
+  </data>
+  <data name="import_game_file.Text" xml:space="preserve">
+    <value>import_game_file</value>
+  </data>
+  <data name="import_image.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="import_image.Text" xml:space="preserve">
+    <value>import_image</value>
+  </data>
+  <data name="menuItem4.Text" xml:space="preserve">
+    <value>-</value>
   </data>
   <data name="retrieve_gamedata_online.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -1736,11 +1754,14 @@
   <data name="close_project.Text" xml:space="preserve">
     <value>close_project</value>
   </data>
-  <data name="menuItem3.Text" xml:space="preserve">
-    <value>help</value>
+  <data name="menuItem2.Text" xml:space="preserve">
+    <value>project</value>
   </data>
   <data name="about.Text" xml:space="preserve">
     <value>about</value>
+  </data>
+  <data name="menuItem3.Text" xml:space="preserve">
+    <value>help</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -3829,10 +3850,10 @@
   <data name="&gt;&gt;toolStripSeparator5.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;toolbarRetrieveGameData.Name" xml:space="preserve">
-    <value>toolbarRetrieveGameData</value>
+  <data name="&gt;&gt;toolbarImportGameFile.Name" xml:space="preserve">
+    <value>toolbarImportGameFile</value>
   </data>
-  <data name="&gt;&gt;toolbarRetrieveGameData.Type" xml:space="preserve">
+  <data name="&gt;&gt;toolbarImportGameFile.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator6.Name" xml:space="preserve">
@@ -3841,16 +3862,28 @@
   <data name="&gt;&gt;toolStripSeparator6.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;toolbarSettings.Name" xml:space="preserve">
-    <value>toolbarSettings</value>
+  <data name="&gt;&gt;toolbarRetrieveGameData.Name" xml:space="preserve">
+    <value>toolbarRetrieveGameData</value>
   </data>
-  <data name="&gt;&gt;toolbarSettings.Type" xml:space="preserve">
+  <data name="&gt;&gt;toolbarRetrieveGameData.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolbarExport.Name" xml:space="preserve">
     <value>toolbarExport</value>
   </data>
   <data name="&gt;&gt;toolbarExport.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator1.Name" xml:space="preserve">
+    <value>toolStripSeparator1</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolbarSettings.Name" xml:space="preserve">
+    <value>toolbarSettings</value>
+  </data>
+  <data name="&gt;&gt;toolbarSettings.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;SaveProject.Name" xml:space="preserve">
@@ -3965,6 +3998,24 @@
     <value>about</value>
   </data>
   <data name="&gt;&gt;about.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;import_game_file.Name" xml:space="preserve">
+    <value>import_game_file</value>
+  </data>
+  <data name="&gt;&gt;import_game_file.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;import_image.Name" xml:space="preserve">
+    <value>import_image</value>
+  </data>
+  <data name="&gt;&gt;import_image.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuItem4.Name" xml:space="preserve">
+    <value>menuItem4</value>
+  </data>
+  <data name="&gt;&gt;menuItem4.Type" xml:space="preserve">
     <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

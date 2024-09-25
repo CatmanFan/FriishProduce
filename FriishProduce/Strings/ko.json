@@ -36,9 +36,6 @@
 			"region_k":							"한국",
 			"region_rf":						"리전 프리",
 			
-			"game_file":						"게임 파일",
-			"disc_image":						"디스크 이미지",
-			
 			"settings":							"설정",
 			"system":							"시스템",
 			"display":							"화면",
@@ -127,14 +124,21 @@
 			"file":								"파일(&F)",
 			"project":							"프로젝트(&P)",
 			"help":								"도움말(&H)",
+
 			"new_project":						"새로운...(&N)",
 			"open_project":						"프로잭트 열기...",
 			"save_project":						"프로젝트 저장",
 			"save_project_as":					"다른 이름으로 저잔...",
 			"close_project":					"프로젝트 닫기",
+			
+			"import_rom":						"게임 파일 가져오기...",
+			"import_image":						"이미지 가져오기...",
+			"import_patch":						"패치 가져오기...",
 			"retrieve_gamedata_online":			"온라인으로 게임 데이터 검색",
 			"export":							"내보내기",
+
 			"exit":								"종로",
+
 			"project_type":						"{0} WAD",
 			"untitled_project":					"제목 없음 {0} WAD",
 		},
@@ -166,16 +170,13 @@
 		},
 
 		"projectform": {
-			"tab_main":							"주요 내용",
-			"tab_channel":						"채널 메타데이터",
-			
 			"main":								"주요 파일",
-			"import_rom":						"{0} 가져오기...",
-			"import_image":						"이미지 가져오기...",
-			"import_patch":						"패치 가져오기...",
+			"rom_label":						"Current {0}:",
+			"patch_checkbox":					"Include a patch",
+
+			"wad_base":							"기반",
 			"import_wad":						"WAD 가져오기...",
 			"use_online_wad":					"...or use a downloadable base",
-			"wad_base":							"기반",
 			"base_name":						"기반 이름:",
 			"title_id":							"타이틀 ID:",
 			
@@ -191,7 +192,6 @@
 			"image_interpolation_mode7":		"고품질 고등차수보간",
 			"image_resize0":					"이미지 늘리기",
 			"image_resize1":					"화면비 맞추기",
-			"image_supplied":					"공급됨",
 			
 			"channel_name":						"짧은 이름",
 			"video_mode":						"비디오 모드",

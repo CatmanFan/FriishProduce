@@ -35,9 +35,6 @@
 			"region_e":							"Europa y Australia",
 			"region_k":							"República de Corea",
 			"region_rf":						"Region Free",
-			
-			"game_file":						"archivo de juego",
-			"disc_image":						"imagen de disco",
 
 			"settings":							"Ajustes",
 			"system":							"Sistema",
@@ -127,15 +124,21 @@
 			"file":								"&Archivo",
 			"project":							"&Proyecto",
 			"help":								"A&yuda",
+
 			"new_project":						"&Nuevo...",
 			"open_project":						"Abrir proyecto...",
 			"save_project":						"Guardar proyecto",
 			"save_project_as":					"Guardar proyecto como...",
 			"close_project":					"Cerrar proyecto",
-			"open_gamefile":					"Abrir un &archivo de juego...",
+
+			"import_rom":						"Abrir un archivo de juego...",
+			"import_image":						"Abrir una imagen...",
+			"import_patch":						"Abrir un archivo de parche",
 			"retrieve_gamedata_online":			"&Obtener datos del juego de la base de datos en línea",
 			"export":							"Exportar...",
+
 			"exit":								"Salir",
+
 			"project_type":						"Canal de {0}",
 			"untitled_project":					"Canal de {0} sin título"
 		},
@@ -168,16 +171,13 @@
 		},
 
 		"projectform": {
-			"tab_main":							"Principal",
-			"tab_channel":						"Detalles del canal",
-
 			"main":								"Archivos principales",
-			"import_rom":						"Abrir {0}...",
-			"import_image":						"Abrir una imagen...",
-			"import_patch":						"Abrir un archivo de parche",
+			"rom_label":						"Current {0}:",
+			"patch_checkbox":					"Include a patch",
+
+			"wad_base":							"Canal de origen",
 			"import_wad":						"Abrir WAD...",
 			"use_online_wad":					"...o utilizar un canal descargable",
-			"wad_base":							"Canal de origen",
 			"base_name":						"Título del canal:",
 			"title_id":							"Title ID:",
 			
@@ -193,7 +193,6 @@
 			"image_interpolation_mode7":		"Bicúbica de alta calidad",
 			"image_resize0":					"Estirar la imagen",
 			"image_resize1":					"Mantener relación de aspecto",
-			"image_supplied":					"Imagen suministrada",
 			
 			"channel_name":						"Nombre del canal:",
 			"video_mode":						"Señal video:",

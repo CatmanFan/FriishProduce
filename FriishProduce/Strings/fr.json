@@ -36,9 +36,6 @@
 			"region_k":							"Corée du Sud",
 			"region_rf":						"Région déverrouillée",
 
-			"game_file":						"un fichier du jeu",
-			"disc_image":						"une image disque",
-
 			"settings":							"Réglages",
 			"system":							"Système",
 			"display":							"Affichage",
@@ -127,15 +124,21 @@
 			"file":								"&Fichier",
 			"project":							"&Projet",
 			"help":								"&Aide",
+
 			"new_project":						"&Nouveau ...",
 			"open_project":						"Ouvrir un project ...",
 			"save_project":						"Enregistrer le projet",
 			"save_project_as":					"Enregistrer le projet sous ...",
 			"close_project":					"Fermer le projet",
-			"open_gamefile":					"Ouvrir un fichier de jeu...",
+
+			"import_rom":						"Ouvrir un fichier du jeu ...",
+			"import_image":						"Ouvrir une image ...",
+			"import_patch":						"Ouvrir un patch ...",
 			"retrieve_gamedata_online":			"Charger les informations dès de la bibliothèque des jeux",
 			"export":							"Exporter ...",
+
 			"exit":								"Quitter",
+
 			"project_type":						"Chaîne {0}",
 			"untitled_project":					"Chaîne {0} sans titre"
 		},
@@ -168,16 +171,13 @@
 		},
 
 		"projectform": {
-			"tab_main":							"Principal",
-			"tab_channel":						"Détails de la chaîne",
-
 			"main":								"Fichiers principaux",
-			"import_rom":						"Ouvrir {0} ...",
-			"import_image":						"Ouvrir une image ...",
-			"import_patch":						"Ouvrir un patch ...",
+			"rom_label":						"Current {0}:",
+			"patch_checkbox":					"Include a patch",
+
+			"wad_base":							"Chaîne de base",
 			"import_wad":						"Ouvrir une WAD ...",
 			"use_online_wad":					"... ou utiliser une chaîne téléchargable",
-			"wad_base":							"Chaîne de base",
 			"base_name":						"Nom du logiciel :",
 			"title_id":							"Title ID :",
 			
@@ -193,7 +193,6 @@
 			"image_interpolation_mode7":		"Bicubique de haute qualité",
 			"image_resize0":					"Étirer l'image",
 			"image_resize1":					"Conserver les proportions",
-			"image_supplied":					"Image fournie",
 			
 			"channel_name":						"Nom de la chaîne",
 			"video_mode":						"Mode vidéo",

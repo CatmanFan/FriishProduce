@@ -36,9 +36,6 @@
 			"region_k":							"Republic of Korea",
 			"region_rf":						"Region Free",
 
-			"game_file":						"game file",
-			"disc_image":						"disc image",
-
 			"settings":							"Settings",
 			"system":							"System",
 			"display":							"Display",
@@ -127,15 +124,21 @@
 			"file":								"&File",
 			"project":							"&Project",
 			"help":								"&Help",
+
 			"new_project":						"&New...",
 			"open_project":						"Open project...",
 			"save_project":						"Save project",
 			"save_project_as":					"Save project as...",
 			"close_project":					"Close project",
-			"open_gamefile":					"Open game file...",
+
+			"import_rom":						"Import game file...",
+			"import_image":						"Import image...",
+			"import_patch":						"Import patch...",
 			"retrieve_gamedata_online":			"Retrieve game data online",
 			"export":							"Export...",
+
 			"exit":								"Exit",
+
 			"project_type":						"{0} WAD",
 			"untitled_project":					"Untitled {0} WAD"
 		},
@@ -168,16 +171,13 @@
 		},
 
 		"projectform": {
-			"tab_main":							"Main",
-			"tab_channel":						"Channel metadata",
-
 			"main":								"Main files",
-			"import_rom":						"Import {0}...",
-			"import_image":						"Import image...",
-			"import_patch":						"Import patch...",
+			"rom_label":						"Current {0}:",
+			"patch_checkbox":					"Include a patch",
+
+			"wad_base":							"Base WAD",
 			"import_wad":						"Import WAD...",
 			"use_online_wad":					"...or use a downloadable base",
-			"wad_base":							"Base WAD information",
 			"base_name":						"Base name:",
 			"title_id":							"Title ID:",
 			
@@ -193,7 +193,6 @@
 			"image_interpolation_mode7":		"High Quality Bicubic",
 			"image_resize0":					"Stretch image",
 			"image_resize1":					"Fit aspect ratio",
-			"image_supplied":					"Supplied",
 			
 			"channel_name":						"Channel name:",
 			"video_mode":						"Video mode:",
