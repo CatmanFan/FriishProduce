@@ -132,8 +132,6 @@
 			"close_project":					"프로젝트 닫기",
 			
 			"import_rom":						"게임 파일 가져오기...",
-			"import_image":						"이미지 가져오기...",
-			"import_patch":						"패치 가져오기...",
 			"retrieve_gamedata_online":			"온라인으로 게임 데이터 검색",
 			"export":							"내보내기",
 
@@ -181,6 +179,7 @@
 			"title_id":							"타이틀 ID:",
 			
 			"image":							"이미지",
+			"import_image":						"이미지 가져오기...",
 			"image_interpolation_mode":			"보간 모드",
 			"image_interpolation_mode0":		"{by_default}",
 			"image_interpolation_mode1":		"낮음",

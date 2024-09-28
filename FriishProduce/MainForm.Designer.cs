@@ -61,6 +61,8 @@ namespace FriishProduce
             this.settings = new System.Windows.Forms.MenuItem();
             this.exit = new System.Windows.Forms.MenuItem();
             this.menuItem2 = new System.Windows.Forms.MenuItem();
+            this.import_game_file = new System.Windows.Forms.MenuItem();
+            this.menuItem4 = new System.Windows.Forms.MenuItem();
             this.retrieve_gamedata_online = new System.Windows.Forms.MenuItem();
             this.menuItem14 = new System.Windows.Forms.MenuItem();
             this.export = new System.Windows.Forms.MenuItem();
@@ -68,9 +70,6 @@ namespace FriishProduce
             this.close_project = new System.Windows.Forms.MenuItem();
             this.menuItem3 = new System.Windows.Forms.MenuItem();
             this.about = new System.Windows.Forms.MenuItem();
-            this.import_game_file = new System.Windows.Forms.MenuItem();
-            this.import_image = new System.Windows.Forms.MenuItem();
-            this.menuItem4 = new System.Windows.Forms.MenuItem();
             this.mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             this.toolStrip.SuspendLayout();
@@ -168,9 +167,10 @@ namespace FriishProduce
             // 
             this.toolbarImportGameFile.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             resources.ApplyResources(this.toolbarImportGameFile, "toolbarImportGameFile");
-            this.toolbarImportGameFile.Image = global::FriishProduce.Properties.Resources.disk;
+            this.toolbarImportGameFile.Image = global::FriishProduce.Properties.Resources.joystick_add;
             this.toolbarImportGameFile.Name = "toolbarImportGameFile";
             this.toolbarImportGameFile.Tag = "import_game_file";
+            this.toolbarImportGameFile.Click += new System.EventHandler(this.OpenROM_Click);
             // 
             // toolStripSeparator6
             // 
@@ -332,7 +332,6 @@ namespace FriishProduce
             this.menuItem2.Index = 1;
             this.menuItem2.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.import_game_file,
-            this.import_image,
             this.menuItem4,
             this.retrieve_gamedata_online,
             this.menuItem14,
@@ -342,34 +341,45 @@ namespace FriishProduce
             this.menuItem2.Tag = "project";
             resources.ApplyResources(this.menuItem2, "menuItem2");
             // 
+            // import_game_file
+            // 
+            resources.ApplyResources(this.import_game_file, "import_game_file");
+            this.import_game_file.Index = 0;
+            this.import_game_file.Click += new System.EventHandler(this.OpenROM_Click);
+            // 
+            // menuItem4
+            // 
+            this.menuItem4.Index = 1;
+            resources.ApplyResources(this.menuItem4, "menuItem4");
+            // 
             // retrieve_gamedata_online
             // 
             resources.ApplyResources(this.retrieve_gamedata_online, "retrieve_gamedata_online");
-            this.retrieve_gamedata_online.Index = 3;
+            this.retrieve_gamedata_online.Index = 2;
             this.retrieve_gamedata_online.Tag = "retrieve_gamedata_online";
             this.retrieve_gamedata_online.Click += new System.EventHandler(this.UseLibRetro_Click);
             // 
             // menuItem14
             // 
-            this.menuItem14.Index = 4;
+            this.menuItem14.Index = 3;
             resources.ApplyResources(this.menuItem14, "menuItem14");
             // 
             // export
             // 
             resources.ApplyResources(this.export, "export");
-            this.export.Index = 5;
+            this.export.Index = 4;
             this.export.Tag = "export";
             this.export.Click += new System.EventHandler(this.ExportWAD_Click);
             // 
             // menuItem13
             // 
-            this.menuItem13.Index = 6;
+            this.menuItem13.Index = 5;
             resources.ApplyResources(this.menuItem13, "menuItem13");
             // 
             // close_project
             // 
             resources.ApplyResources(this.close_project, "close_project");
-            this.close_project.Index = 7;
+            this.close_project.Index = 6;
             this.close_project.Tag = "close_project";
             this.close_project.Click += new System.EventHandler(this.CloseTab_Click);
             // 
@@ -387,21 +397,6 @@ namespace FriishProduce
             this.about.Tag = "about_app";
             resources.ApplyResources(this.about, "about");
             this.about.Click += new System.EventHandler(this.About_Click);
-            // 
-            // import_game_file
-            // 
-            resources.ApplyResources(this.import_game_file, "import_game_file");
-            this.import_game_file.Index = 0;
-            // 
-            // import_image
-            // 
-            resources.ApplyResources(this.import_image, "import_image");
-            this.import_image.Index = 1;
-            // 
-            // menuItem4
-            // 
-            this.menuItem4.Index = 2;
-            resources.ApplyResources(this.menuItem4, "menuItem4");
             // 
             // MainForm
             // 
@@ -465,7 +460,6 @@ namespace FriishProduce
         internal System.Windows.Forms.ToolStripButton toolbarImportGameFile;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.MenuItem import_game_file;
-        private System.Windows.Forms.MenuItem import_image;
         private System.Windows.Forms.MenuItem menuItem4;
     }
 }

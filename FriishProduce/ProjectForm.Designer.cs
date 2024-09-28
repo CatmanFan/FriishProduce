@@ -61,8 +61,9 @@ namespace FriishProduce
             this.browsePatch = new System.Windows.Forms.OpenFileDialog();
             this.browseManual = new Ookii.Dialogs.WinForms.VistaFolderBrowserDialog();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.image_resize = new System.Windows.Forms.ComboBox();
             this.image_interpolation_mode = new System.Windows.Forms.ComboBox();
+            this.import_image = new System.Windows.Forms.Button();
+            this.image_resize = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.editContentOptions = new System.Windows.Forms.Button();
             this.extra = new System.Windows.Forms.Label();
@@ -71,12 +72,9 @@ namespace FriishProduce
             this.browseROM = new System.Windows.Forms.OpenFileDialog();
             this.browseImage = new System.Windows.Forms.OpenFileDialog();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.patch_checkbox = new System.Windows.Forms.CheckBox();
+            this.include_patch = new System.Windows.Forms.CheckBox();
             this.rom_data = new System.Windows.Forms.Label();
             this.checkImg1 = new System.Windows.Forms.PictureBox();
-            this.import_image = new System.Windows.Forms.Button();
-            this.checkImg2 = new System.Windows.Forms.PictureBox();
-            this.image_filename = new System.Windows.Forms.TextBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
@@ -91,7 +89,6 @@ namespace FriishProduce
             this.replace_banner_sound = new System.Windows.Forms.ToolStripMenuItem();
             this.restore_banner_sound = new System.Windows.Forms.ToolStripMenuItem();
             this.browseSound = new System.Windows.Forms.OpenFileDialog();
-            this.label1 = new System.Windows.Forms.Label();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SaveIcon_Panel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.title_id_random)).BeginInit();
@@ -104,7 +101,6 @@ namespace FriishProduce
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.checkImg1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkImg2)).BeginInit();
             this.groupBox9.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox8.SuspendLayout();
@@ -340,12 +336,31 @@ namespace FriishProduce
             // 
             // groupBox6
             // 
-            this.groupBox6.Controls.Add(this.image_resize);
             this.groupBox6.Controls.Add(this.image_interpolation_mode);
+            this.groupBox6.Controls.Add(this.import_image);
+            this.groupBox6.Controls.Add(this.image_resize);
             resources.ApplyResources(this.groupBox6, "groupBox6");
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.TabStop = false;
             this.groupBox6.Tag = "image";
+            // 
+            // image_interpolation_mode
+            // 
+            this.image_interpolation_mode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.image_interpolation_mode, "image_interpolation_mode");
+            this.image_interpolation_mode.FormattingEnabled = true;
+            this.image_interpolation_mode.Items.AddRange(new object[] {
+            resources.GetString("image_interpolation_mode.Items")});
+            this.image_interpolation_mode.Name = "image_interpolation_mode";
+            this.image_interpolation_mode.Tag = "image_interpolation_mode";
+            // 
+            // import_image
+            // 
+            resources.ApplyResources(this.import_image, "import_image");
+            this.import_image.Name = "import_image";
+            this.import_image.Tag = "import_image";
+            this.import_image.UseVisualStyleBackColor = true;
+            this.import_image.Click += new System.EventHandler(this.import_image_Click);
             // 
             // image_resize
             // 
@@ -357,16 +372,6 @@ namespace FriishProduce
             this.image_resize.Name = "image_resize";
             this.image_resize.Tag = "image_resize";
             this.image_resize.SelectedIndexChanged += new System.EventHandler(this.SwitchAspectRatio);
-            // 
-            // image_interpolation_mode
-            // 
-            this.image_interpolation_mode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            resources.ApplyResources(this.image_interpolation_mode, "image_interpolation_mode");
-            this.image_interpolation_mode.FormattingEnabled = true;
-            this.image_interpolation_mode.Items.AddRange(new object[] {
-            resources.GetString("image_interpolation_mode.Items")});
-            this.image_interpolation_mode.Name = "image_interpolation_mode";
-            this.image_interpolation_mode.Tag = "image_interpolation_mode";
             // 
             // groupBox3
             // 
@@ -423,23 +428,20 @@ namespace FriishProduce
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.patch_checkbox);
+            this.groupBox1.Controls.Add(this.include_patch);
             this.groupBox1.Controls.Add(this.rom_data);
             this.groupBox1.Controls.Add(this.checkImg1);
-            this.groupBox1.Controls.Add(this.import_image);
-            this.groupBox1.Controls.Add(this.checkImg2);
-            this.groupBox1.Controls.Add(this.image_filename);
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             this.groupBox1.Tag = "main";
             // 
-            // patch_checkbox
+            // include_patch
             // 
-            resources.ApplyResources(this.patch_checkbox, "patch_checkbox");
-            this.patch_checkbox.Name = "patch_checkbox";
-            this.patch_checkbox.Tag = "patch_checkbox";
-            this.patch_checkbox.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.include_patch, "include_patch");
+            this.include_patch.Name = "include_patch";
+            this.include_patch.Tag = "include_patch";
+            this.include_patch.UseVisualStyleBackColor = true;
             // 
             // rom_data
             // 
@@ -452,26 +454,6 @@ namespace FriishProduce
             resources.ApplyResources(this.checkImg1, "checkImg1");
             this.checkImg1.Name = "checkImg1";
             this.checkImg1.TabStop = false;
-            // 
-            // import_image
-            // 
-            resources.ApplyResources(this.import_image, "import_image");
-            this.import_image.Name = "import_image";
-            this.import_image.Tag = "import_image";
-            this.import_image.UseVisualStyleBackColor = true;
-            this.import_image.Click += new System.EventHandler(this.import_image_Click);
-            // 
-            // checkImg2
-            // 
-            resources.ApplyResources(this.checkImg2, "checkImg2");
-            this.checkImg2.Name = "checkImg2";
-            this.checkImg2.TabStop = false;
-            // 
-            // image_filename
-            // 
-            resources.ApplyResources(this.image_filename, "image_filename");
-            this.image_filename.Name = "image_filename";
-            this.image_filename.ReadOnly = true;
             // 
             // groupBox9
             // 
@@ -588,11 +570,6 @@ namespace FriishProduce
             this.browseSound.RestoreDirectory = true;
             this.browseSound.SupportMultiDottedExtensions = true;
             // 
-            // label1
-            // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
-            // 
             // ProjectForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
@@ -602,7 +579,6 @@ namespace FriishProduce
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.groupBox8);
             this.Controls.Add(this.groupBox10);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox6);
@@ -633,7 +609,6 @@ namespace FriishProduce
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.checkImg1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkImg2)).EndInit();
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
             this.groupBox7.ResumeLayout(false);
@@ -643,7 +618,6 @@ namespace FriishProduce
             this.groupBox10.ResumeLayout(false);
             this.bannerMenu.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -706,9 +680,6 @@ namespace FriishProduce
         private System.Windows.Forms.Label rom_data;
         private System.Windows.Forms.PictureBox checkImg1;
         private System.Windows.Forms.Button import_image;
-        private System.Windows.Forms.PictureBox checkImg2;
-        private System.Windows.Forms.TextBox image_filename;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.CheckBox patch_checkbox;
+        private System.Windows.Forms.CheckBox include_patch;
     }
 }

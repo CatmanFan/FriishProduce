@@ -81,7 +81,7 @@ namespace FriishProduce
                     groupBox9.Enabled =
                     groupBox10.Enabled = !value;
 
-                    import_patch.Enabled = !value && showPatch;
+                    include_patch.Enabled = !value && showPatch;
                 }
             }
         }
@@ -228,7 +228,7 @@ namespace FriishProduce
                 ROM = rom?.FilePath,
                 Patch = patch,
                 Manual = (manual_type.SelectedIndex, manual),
-                Img = (image_filename.Text == Program.Lang.String("image_supplied", Name) ? "[s]" : img?.FilePath ?? null, img?.Source ?? null),
+                Img = (img?.FilePath ?? null, img?.Source ?? null),
                 ImageOptions = (image_interpolation_mode.SelectedIndex, image_resize.SelectedIndex == 1),
                 Sound = sound,
 
@@ -273,28 +273,11 @@ namespace FriishProduce
 
             bool isMint = _isMint || !Program.MainForm.save_project_as.Enabled;
 
-            tab_main.Checked    = true;
-            tab_channel.Checked = false;
-            tab1.Visible        = true;
-            tab2.Visible        = false;
-            tab1.BackColor = tab2.BackColor = tab_main.FlatAppearance.CheckedBackColor;
-
             #region Localization
             Program.Lang.Control(this, "projectform");
             groupBox4.Text = groupBox4.Text.TrimEnd(':').Trim();
             groupBox7.Text = Program.Lang.String("banner", "banner");
             groupBox9.Text = title_id.Text.TrimEnd(':').Trim();
-            import_rom.Text = string.Format(Program.Lang.String(import_rom.Name, Name), targetPlatform switch
-            {
-                Platform.PSX => Program.Lang.String("disc_image", Name),
-                Platform.GCN => Program.Lang.String("disc_image", Name),
-                Platform.PCECD => Program.Lang.String("disc_image", Name),
-                Platform.SMCD => Program.Lang.String("disc_image", Name),
-                Platform.RPGM => Program.Lang.String("game_file", Name),
-                Platform.NEO => "ZIP",
-                Platform.Flash => "SWF",
-                _ => "ROM",
-            });
             browsePatch.Filter = Program.Lang.String("filter.patch");
             // BrowseManualZIP.Filter = Program.Lang.String("filter.zip");
 
@@ -610,16 +593,6 @@ namespace FriishProduce
                 video_modes.SelectedIndex = project.VideoMode;
 
                 img = new ImageHelper(project.Platform, null);
-                if (project.Img.File == "[s]")
-                {
-                    image_filename.Text = Program.Lang.String("image_supplied", Name);
-                    image_filename.Enabled = false;
-                }
-                else if (File.Exists(project.Img.File))
-                {
-                    image_filename.Text = project.Img.File;
-                    image_filename.Enabled = true;
-                }
                 img.LoadToSource(project.Img.Bmp);
                 LoadROM(project.ROM, false);
 
@@ -683,9 +656,9 @@ namespace FriishProduce
 
         // -----------------------------------
 
-        public void BrowseROMDialog()
+        public void BrowseROMDialog(string text)
         {
-            browseROM.Title = import_rom.Text;
+            browseROM.Title = text;
 
             switch (targetPlatform)
             {
@@ -723,8 +696,6 @@ namespace FriishProduce
                 LoadROM(browseROM.FileName, Properties.Settings.Default.auto_retrieve_game_data);
             }
         }
-
-        private void import_rom_Click(object sender, EventArgs e) => BrowseROMDialog();
 
         public void BrowseImageDialog()
         {
@@ -773,23 +744,13 @@ namespace FriishProduce
             bool hasImage = img?.Source != null;
             bool hasWad = !string.IsNullOrWhiteSpace(WADPath);
 
-            rom_filename.Text = hasRom ? Path.GetFileName(rom.FilePath) : Program.Lang.String("none");
-            patch_filename.Text = !showPatch ? Program.Lang.String("not_available") : hasPatch ? Path.GetFileName(patch) : Program.Lang.String("none");
-            if (!hasImage) image_filename.Text = Program.Lang.String("none");
             wad_filename.Text = hasWad ? Path.GetFileName(WADPath) : Program.Lang.String("none");
 
-            if (rom_filename.Text.Length > maxLength) rom_filename.Text = rom_filename.Text.Substring(0, maxLength - 3) + "...";
-            if (patch_filename.Text.Length > maxLength) patch_filename.Text = patch_filename.Text.Substring(0, maxLength - 3) + "...";
-            if (image_filename.Text.Length > maxLength) image_filename.Text = image_filename.Text.Substring(0, maxLength - 3) + "...";
             if (wad_filename.Text.Length > maxLength) wad_filename.Text = wad_filename.Text.Substring(0, maxLength - 3) + "...";
 
-            rom_filename.Enabled = hasRom;
-            patch_filename.Enabled = hasPatch;
-            if (!hasImage) image_filename.Enabled = false;
             wad_filename.Enabled = hasWad;
 
             checkImg1.Image = hasRom ? Properties.Resources.yes : Properties.Resources.no;
-            checkImg2.Image = hasImage ? Properties.Resources.yes : Properties.Resources.no;
             checkImg3.Image = hasWad ? Properties.Resources.yes : Properties.Resources.no;
         }
 
@@ -1130,8 +1091,6 @@ namespace FriishProduce
 
         protected void LoadImage(string path)
         {
-            image_filename.Text = path;
-            image_filename.Enabled = true;
             img = new ImageHelper(targetPlatform, path);
             LoadImage(img.Source);
         }
@@ -1305,8 +1264,6 @@ namespace FriishProduce
                     if (gameData.Image != null)
                     {
                         LoadImage(gameData.Image);
-                        image_filename.Text = Program.Lang.String("image_supplied", Name);
-                        image_filename.Enabled = false;
                     }
 
                     // Set year and players
@@ -2107,30 +2064,6 @@ namespace FriishProduce
         {
             SoundPlayer snd = File.Exists(sound) && sound != null ? new(sound) : new(Properties.Resources.Sound_WiiVC);
             snd.PlaySync();
-        }
-
-        private void Tab_Switch(object sender, EventArgs e)
-        {
-            int tab = sender == tab_main ? 0 : sender == tab_channel ? 1 : 0;
-
-            switch (tab)
-            {
-                case 0:
-                default:
-                    tab_main.Checked    = true;
-                    tab_channel.Checked = false;
-                    break;
-                case 1:
-                    tab_main.Checked    = false;
-                    tab_channel.Checked = true;
-                    break;
-            }
-
-            tab1.Visible = tab_main.Checked;
-            tab2.Visible = tab_channel.Checked;
-
-            tab_main.Enabled    = !tab_main.Checked;
-            tab_channel.Enabled = !tab_channel.Checked;
         }
     }
 }

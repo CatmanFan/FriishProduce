@@ -229,7 +229,7 @@ namespace FriishProduce
         {
             // Check if any tabs exist
             // ********
-            bool hasTabs = tabControl.TabPages.Count > 1 || e.GetType() != typeof(FormClosedEventArgs);
+            bool hasTabs = (tabControl.TabPages.Count >= 1 && sender == tabControl.TabPages[0]) || (tabControl.TabPages.Count > 1 || e.GetType() != typeof(FormClosedEventArgs));
 
             // Toggle visibility of Export WAD button
             // Toggle visibility of Download LibRetro data button
@@ -246,20 +246,13 @@ namespace FriishProduce
             else
             {
                 retrieve_gamedata_online.Enabled = (tabControl.SelectedForm as ProjectForm).ToolbarButtons[0];
+                save_project_as.Enabled = (tabControl.SelectedForm as ProjectForm).IsModified;
                 export.Enabled = (tabControl.SelectedForm as ProjectForm).IsExportable;
             }
 
-            close_project.Enabled = hasTabs;
+            import_game_file.Enabled = close_project.Enabled = hasTabs;
 
-            // Context menu
-            // ********
-            if (tabControl.TabPages.Count >= 1)
-                if (sender == tabControl.TabPages[0])
-                {
-                    retrieve_gamedata_online.Enabled = (tabControl.SelectedForm as ProjectForm).ToolbarButtons[0];
-                    save_project_as.Enabled = (tabControl.SelectedForm as ProjectForm).Tag?.ToString().ToLower() == "dirty";
-                }
-
+            toolbarImportGameFile.Enabled = import_game_file.Enabled;
             toolbarSave.Enabled = toolbarSaveAs.Enabled = save_project.Enabled = save_project_as.Enabled;
             toolbarCloseProject.Enabled = close_project.Enabled;
             toolbarRetrieveGameData.Enabled = retrieve_gamedata_online.Enabled;
@@ -329,7 +322,7 @@ namespace FriishProduce
             if (tabControl.SelectedForm != null)
             {
                 var p = tabControl.SelectedForm as ProjectForm;
-                p.BrowseROMDialog();
+                p.BrowseROMDialog(import_game_file.Text);
             }
         }
 

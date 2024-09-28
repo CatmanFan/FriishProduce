@@ -132,8 +132,6 @@
 			"close_project":					"Fermer le projet",
 
 			"import_rom":						"Ouvrir un fichier du jeu ...",
-			"import_image":						"Ouvrir une image ...",
-			"import_patch":						"Ouvrir un patch ...",
 			"retrieve_gamedata_online":			"Charger les informations dès de la bibliothèque des jeux",
 			"export":							"Exporter ...",
 
@@ -172,8 +170,8 @@
 
 		"projectform": {
 			"main":								"Fichiers principaux",
-			"rom_label":						"Current {0}:",
-			"patch_checkbox":					"Include a patch",
+			"rom_label":						"Actuel fichier {0} :",
+			"include_patch":					"Ajouter un patch",
 
 			"wad_base":							"Chaîne de base",
 			"import_wad":						"Ouvrir une WAD ...",
@@ -182,6 +180,7 @@
 			"title_id":							"Title ID :",
 			
 			"image":							"Image",
+			"import_image":						"Ouvrir une image ...",
 			"image_interpolation_mode":			"Méthode d'interpolation",
 			"image_interpolation_mode0":		"{by_default}",
 			"image_interpolation_mode1":		"Basse qualité",
