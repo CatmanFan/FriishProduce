@@ -135,7 +135,7 @@
 			"retrieve_gamedata_online":			"온라인으로 게임 데이터 검색",
 			"export":							"내보내기",
 
-			"exit":								"종로",
+			"exit":								"나가기",
 
 			"project_type":						"{0} WAD",
 			"untitled_project":					"제목 없음 {0} WAD",
@@ -169,12 +169,12 @@
 
 		"projectform": {
 			"main":								"주요 파일",
-			"rom_label":						"Current {0}:",
-			"patch_checkbox":					"Include a patch",
+			"rom_label":						"현재 {0}:",
+			"patch_checkbox":					"패치 포함",
 
 			"wad_base":							"기반",
 			"import_wad":						"WAD 가져오기...",
-			"use_online_wad":					"...or use a downloadable base",
+			"use_online_wad":					"...또는 다운로드 가능한 기반 사용",
 			"base_name":						"기반 이름:",
 			"title_id":							"타이틀 ID:",
 			
@@ -195,11 +195,11 @@
 			"channel_name":						"짧은 이름",
 			"video_mode":						"비디오 모드",
 			"banner":							"배너 세부정보 섹션에 접근하려면 미리보기를 클릭하세요.",
-			"banner_customize":					"Customize banner...",
-			"banner_sound":						"Banner sound",
-			"play_banner_sound":				"Play banner sound",
-			"replace_banner_sound":				"Replace banner sound...",
-			"restore_banner_sound":				"Restore banner sound",
+			"banner_customize":					"커스텀 배너...",
+			"banner_sound":						"배너 사운드",
+			"play_banner_sound":				"배너 사운드 재생",
+			"replace_banner_sound":				"배너 사운드 바꾸기...",
+			"restore_banner_sound":				"배너 사운드 복원",
 			
 			"injection_method":					"주입 방법",
 			"injection_method_options":			"주입 방법 옵션",
