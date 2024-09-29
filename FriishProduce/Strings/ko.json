@@ -131,11 +131,11 @@
 			"save_project_as":					"다른 이름으로 저잔...",
 			"close_project":					"프로젝트 닫기",
 			
-			"import_rom":						"게임 파일 가져오기...",
+			"import_game_file":					"{0} 가져오기...",
 			"retrieve_gamedata_online":			"온라인으로 게임 데이터 검색",
 			"export":							"내보내기",
-
-			"exit":								"종로",
+			
+			"exit":								"나가기",
 
 			"project_type":						"{0} WAD",
 			"untitled_project":					"제목 없음 {0} WAD",
@@ -169,12 +169,14 @@
 
 		"projectform": {
 			"main":								"주요 파일",
-			"rom_label":						"Current {0}:",
-			"patch_checkbox":					"Include a patch",
+			"rom_label":						"현재 {0}: {1}",
+			"rom_label1":						"게임 파일",
+			"rom_label2":						"디스크 이미지",
+			"include_patch":					"패치 포함",
 
 			"wad_base":							"기반",
 			"import_wad":						"WAD 가져오기...",
-			"use_online_wad":					"...or use a downloadable base",
+			"use_online_wad":					"...또는 다운로드 가능한 기반 사용",
 			"base_name":						"기반 이름:",
 			"title_id":							"타이틀 ID:",
 			
@@ -194,12 +196,12 @@
 			
 			"channel_name":						"짧은 이름",
 			"video_mode":						"비디오 모드",
-			"banner":							"배너 세부정보 섹션에 접근하려면 미리보기를 클릭하세요.",
-			"banner_customize":					"Customize banner...",
-			"banner_sound":						"Banner sound",
-			"play_banner_sound":				"Play banner sound",
-			"replace_banner_sound":				"Replace banner sound...",
-			"restore_banner_sound":				"Restore banner sound",
+			"banner":							"채널 배너",
+			"banner_details":					"배너 상세정보",
+			"banner_sound":						"배너 사운드",
+			"play_banner_sound":				"배너 사운드 재생",
+			"replace_banner_sound":				"배너 사운드 바꾸기...",
+			"restore_banner_sound":				"배너 사운드 복원",
 			
 			"injection_method":					"주입 방법",
 			"injection_method_options":			"주입 방법 옵션",
@@ -216,11 +218,10 @@
 		},
 
 		"banner": {
-			"banner":							"배너 상세정보",
-			"banner_region":					"배너 지역:",
 			"full_name":						"전체 이름:",
 			"year":								"년도:",
-			"players":							"플레이어:"
+			"players":							"플레이어:",
+			"banner_region":					"배너 지역:"
 		},
 
 		"vc_nes": {

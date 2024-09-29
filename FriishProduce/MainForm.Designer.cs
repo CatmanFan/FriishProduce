@@ -62,14 +62,13 @@ namespace FriishProduce
             this.exit = new System.Windows.Forms.MenuItem();
             this.menuItem2 = new System.Windows.Forms.MenuItem();
             this.import_game_file = new System.Windows.Forms.MenuItem();
-            this.menuItem4 = new System.Windows.Forms.MenuItem();
             this.retrieve_gamedata_online = new System.Windows.Forms.MenuItem();
-            this.menuItem14 = new System.Windows.Forms.MenuItem();
             this.export = new System.Windows.Forms.MenuItem();
             this.menuItem13 = new System.Windows.Forms.MenuItem();
             this.close_project = new System.Windows.Forms.MenuItem();
             this.menuItem3 = new System.Windows.Forms.MenuItem();
             this.about = new System.Windows.Forms.MenuItem();
+            this.menuItem4 = new System.Windows.Forms.MenuItem();
             this.mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             this.toolStrip.SuspendLayout();
@@ -222,13 +221,14 @@ namespace FriishProduce
             // tabControl
             // 
             this.tabControl.BackHighColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(213)))), ((int)(((byte)(216)))));
-            this.tabControl.BackLowColor = System.Drawing.Color.WhiteSmoke;
+            this.tabControl.BackLowColor = System.Drawing.SystemColors.Control;
             this.tabControl.BorderColor = System.Drawing.Color.LightGray;
             this.tabControl.BorderColorDisabled = System.Drawing.Color.Silver;
+            this.tabControl.CloseButtonVisible = true;
             this.tabControl.ControlButtonForeColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.tabControl, "tabControl");
             this.tabControl.FontBoldOnSelect = false;
             this.tabControl.ForeColorDisabled = System.Drawing.SystemColors.ControlDark;
-            resources.ApplyResources(this.tabControl, "tabControl");
             this.tabControl.MenuRenderer = null;
             this.tabControl.Name = "tabControl";
             this.tabControl.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
@@ -236,6 +236,7 @@ namespace FriishProduce
             this.tabControl.TabBackHighColorDisabled = System.Drawing.Color.WhiteSmoke;
             this.tabControl.TabBackLowColorDisabled = System.Drawing.Color.Gainsboro;
             this.tabControl.TabBorderEnhanced = true;
+            this.tabControl.TabBorderEnhanceWeight = MdiTabControl.TabControl.Weight.Soft;
             this.tabControl.TabCloseButtonBackHighColor = System.Drawing.Color.White;
             this.tabControl.TabCloseButtonBackHighColorDisabled = System.Drawing.Color.WhiteSmoke;
             this.tabControl.TabCloseButtonBackHighColorHot = System.Drawing.Color.White;
@@ -250,7 +251,7 @@ namespace FriishProduce
             this.tabControl.TabCloseButtonImage = null;
             this.tabControl.TabCloseButtonImageDisabled = null;
             this.tabControl.TabCloseButtonImageHot = null;
-            this.tabControl.TabCloseButtonSize = new System.Drawing.Size(16, 16);
+            this.tabControl.TabCloseButtonVisible = false;
             this.tabControl.TabHeight = 24;
             this.tabControl.TabMaximumWidth = 300;
             this.tabControl.TabMinimumWidth = 175;
@@ -334,7 +335,6 @@ namespace FriishProduce
             this.import_game_file,
             this.menuItem4,
             this.retrieve_gamedata_online,
-            this.menuItem14,
             this.export,
             this.menuItem13,
             this.close_project});
@@ -347,11 +347,6 @@ namespace FriishProduce
             this.import_game_file.Index = 0;
             this.import_game_file.Click += new System.EventHandler(this.OpenROM_Click);
             // 
-            // menuItem4
-            // 
-            this.menuItem4.Index = 1;
-            resources.ApplyResources(this.menuItem4, "menuItem4");
-            // 
             // retrieve_gamedata_online
             // 
             resources.ApplyResources(this.retrieve_gamedata_online, "retrieve_gamedata_online");
@@ -359,27 +354,22 @@ namespace FriishProduce
             this.retrieve_gamedata_online.Tag = "retrieve_gamedata_online";
             this.retrieve_gamedata_online.Click += new System.EventHandler(this.UseLibRetro_Click);
             // 
-            // menuItem14
-            // 
-            this.menuItem14.Index = 3;
-            resources.ApplyResources(this.menuItem14, "menuItem14");
-            // 
             // export
             // 
             resources.ApplyResources(this.export, "export");
-            this.export.Index = 4;
+            this.export.Index = 3;
             this.export.Tag = "export";
             this.export.Click += new System.EventHandler(this.ExportWAD_Click);
             // 
             // menuItem13
             // 
-            this.menuItem13.Index = 5;
+            this.menuItem13.Index = 4;
             resources.ApplyResources(this.menuItem13, "menuItem13");
             // 
             // close_project
             // 
             resources.ApplyResources(this.close_project, "close_project");
-            this.close_project.Index = 6;
+            this.close_project.Index = 5;
             this.close_project.Tag = "close_project";
             this.close_project.Click += new System.EventHandler(this.CloseTab_Click);
             // 
@@ -397,6 +387,11 @@ namespace FriishProduce
             this.about.Tag = "about_app";
             resources.ApplyResources(this.about, "about");
             this.about.Click += new System.EventHandler(this.About_Click);
+            // 
+            // menuItem4
+            // 
+            this.menuItem4.Index = 1;
+            resources.ApplyResources(this.menuItem4, "menuItem4");
             // 
             // MainForm
             // 
@@ -446,7 +441,6 @@ namespace FriishProduce
         private System.Windows.Forms.MenuItem settings;
         private System.Windows.Forms.MenuItem exit;
         private System.Windows.Forms.MenuItem menuItem2;
-        private System.Windows.Forms.MenuItem menuItem14;
         private System.Windows.Forms.MenuItem menuItem13;
         private System.Windows.Forms.MenuItem close_project;
         private System.Windows.Forms.MenuItem menuItem3;

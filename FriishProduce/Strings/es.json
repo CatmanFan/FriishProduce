@@ -170,7 +170,9 @@
 
 		"projectform": {
 			"main":								"Archivos principales",
-			"rom_label":						"Current {0}:",
+			"rom_label":						"Archivo {0} actual: {1}",
+			"rom_label1":						"de juego",
+			"rom_label2":						"de disco",
 			"include_patch":					"Incluir parche",
 
 			"wad_base":							"Canal de origen",
@@ -196,7 +198,7 @@
 			"channel_name":						"Nombre del canal:",
 			"video_mode":						"Señal video:",
 			"banner":							"Para acceder a las preferencias del banner, haz clic en la vista previa.",
-			"banner_customize":					"Detalles del banner...",
+			"banner_details":					"Detalles del banner",
 			"banner_sound":						"Sonido del banner",
 			"play_banner_sound":				"Reproducir sonido actual del banner",
 			"replace_banner_sound":				"Remplazar sonido del banner...",
@@ -217,11 +219,10 @@
 		},
 
 		"banner": {
-			"banner":							"Detalles del banner",
-			"banner_region":					"Región del banner:",
 			"full_name":						"Título completo:",
 			"year":								"Año:",
 			"players":							"Jugadores:",
+			"banner_region":					"Región del banner:"
 		},
 
 		"vc_nes": {

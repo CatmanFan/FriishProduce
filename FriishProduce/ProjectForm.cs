@@ -73,13 +73,10 @@ namespace FriishProduce
                     banner.Enabled =
                     groupBox2.Enabled =
                     groupBox3.Enabled =
-                    groupBox4.Enabled =
                     groupBox5.Enabled =
                     groupBox6.Enabled =
                     groupBox7.Enabled =
-                    groupBox8.Enabled =
-                    groupBox9.Enabled =
-                    groupBox10.Enabled = !value;
+                    groupBox8.Enabled = !value;
 
                     include_patch.Enabled = !value && showPatch;
                 }
@@ -229,7 +226,7 @@ namespace FriishProduce
                 Patch = patch,
                 Manual = (manual_type.SelectedIndex, manual),
                 Img = (img?.FilePath ?? null, img?.Source ?? null),
-                ImageOptions = (image_interpolation_mode.SelectedIndex, image_resize.SelectedIndex == 1),
+                ImageOptions = (image_interpolation_mode.SelectedIndex, image_resize1.Checked),
                 Sound = sound,
 
                 InjectionMethod = injection_methods.SelectedIndex,
@@ -275,14 +272,11 @@ namespace FriishProduce
 
             #region Localization
             Program.Lang.Control(this, "projectform");
-            groupBox4.Text = groupBox4.Text.TrimEnd(':').Trim();
-            groupBox7.Text = Program.Lang.String("banner", "banner");
-            groupBox9.Text = title_id.Text.TrimEnd(':').Trim();
             browsePatch.Filter = Program.Lang.String("filter.patch");
             // BrowseManualZIP.Filter = Program.Lang.String("filter.zip");
 
             // Banner menu
-            banner_customize.Text = Program.Lang.String(banner_customize.Name, "projectform");
+            banner_details.Text = Program.Lang.String(banner_details.Name, "projectform");
             banner_sound.Text = Program.Lang.String(banner_sound.Name, "projectform");
             play_banner_sound.Text = Program.Lang.String(play_banner_sound.Name, "projectform");
             replace_banner_sound.Text = Program.Lang.String(replace_banner_sound.Name, "projectform");
@@ -341,7 +335,6 @@ namespace FriishProduce
             }
 
             toolTip = new ToolTip();
-            toolTip.SetToolTip(banner, Program.Lang.String("banner", Name));
             
             #endregion
 
@@ -442,7 +435,8 @@ namespace FriishProduce
             groupBox3.Enabled = injection_methods.Enabled && !IsEmpty;
             banner_form.released.Maximum = DateTime.Now.Year;
 
-            image_resize.SelectedIndex = Properties.Settings.Default.image_fit_aspect_ratio ? 1 : 0;
+            image_resize1.Checked = Properties.Settings.Default.image_fit_aspect_ratio;
+            image_resize0.Checked = !image_resize1.Checked;
             resetImages();
             if (isMint && IsModified) IsModified = false;
         }
@@ -468,6 +462,15 @@ namespace FriishProduce
             banner_form = new BannerOptions(platform);
             LoadChannelDatabase();
 
+            if (Program.MainForm != null)
+            {
+                using (var icon = new Bitmap(Program.MainForm.Icons[targetPlatform]))
+                {
+                    icon.MakeTransparent(Color.White);
+                    Icon = Icon.FromHandle(icon.GetHicon());
+                }
+            }
+
             InitializeComponent();
             AddBases();
             _isShown = true;
@@ -491,12 +494,6 @@ namespace FriishProduce
             // Declare WAD metadata modifier
             // ********
             TIDCode = null;
-
-            using (var icon = new Bitmap(Program.MainForm.Icons[targetPlatform]))
-            {
-                icon.MakeTransparent(Color.White);
-                Icon = Icon.FromHandle(icon.GetHicon());
-            }
 
             switch (targetPlatform)
             {
@@ -624,7 +621,8 @@ namespace FriishProduce
                 region_list.SelectedIndex = project.WADRegion;
                 injection_methods.SelectedIndex = project.InjectionMethod;
                 image_interpolation_mode.SelectedIndex = project.ImageOptions.Item1;
-                image_resize.SelectedIndex = project.ImageOptions.Item2 ? 1 : 0;
+                image_resize0.Checked = !project.ImageOptions.Item2;
+                image_resize1.Checked = project.ImageOptions.Item2;
 
                 if (contentOptionsForm != null) contentOptionsForm.Options = project.ContentOptions;
                 LoadImage();
@@ -735,22 +733,43 @@ namespace FriishProduce
             };
         }
 
+        public string FileTypeName
+        {
+            get
+            {
+                return targetPlatform switch
+                {
+                    Platform.PSX
+                    or Platform.PCECD
+                    or Platform.SMCD
+                    or Platform.GCN => Program.Lang.String(rom_label.Name + "2", Name),
+                    Platform.RPGM => Program.Lang.String(rom_label.Name + "1", Name),
+                    Platform.NEO => "ZIP",
+                    Platform.Flash => "SWF",
+                    _ => "ROM",
+                };
+            }
+        }
+
         private void setFilesText()
         {
-            int maxLength = 75;
-
+            // ROM/ISO
+            // ********
             bool hasRom = !string.IsNullOrWhiteSpace(rom?.FilePath);
             bool hasPatch = showPatch && !string.IsNullOrWhiteSpace(patch);
             bool hasImage = img?.Source != null;
             bool hasWad = !string.IsNullOrWhiteSpace(WADPath);
 
+            int maxLength = 75;
+            string romFileName = hasRom ? rom?.FilePath : Program.Lang.String("none");
+            if (romFileName.Length > maxLength) romFileName = romFileName.Substring(0, maxLength - 3) + "...";
+            rom_label.Text = string.Format(Program.Lang.String(rom_label.Name, Name), FileTypeName, romFileName);
+
+            // WAD
+            // ********
             wad_filename.Text = hasWad ? Path.GetFileName(WADPath) : Program.Lang.String("none");
-
             if (wad_filename.Text.Length > maxLength) wad_filename.Text = wad_filename.Text.Substring(0, maxLength - 3) + "...";
-
             wad_filename.Enabled = hasWad;
-
-            checkImg1.Image = hasRom ? Properties.Resources.yes : Properties.Resources.no;
             checkImg3.Image = hasWad ? Properties.Resources.yes : Properties.Resources.no;
         }
 
@@ -945,7 +964,7 @@ namespace FriishProduce
             if (DesignMode) return;
             // ----------------------------
 
-            if (sender == image_resize)
+            if (sender == image_resize0 || sender == image_resize1)
             {
                 LoadImage();
             }
@@ -1161,7 +1180,7 @@ namespace FriishProduce
             try
             {
                 img.InterpMode = (InterpolationMode)image_interpolation_mode.SelectedIndex;
-                img.FitAspectRatio = image_resize.SelectedIndex == 1;
+                img.FitAspectRatio = image_resize1.Checked;
 
                 platformImageFunction(src);
 
@@ -1723,7 +1742,17 @@ namespace FriishProduce
 
         private void WADRegionList_Click(object sender, EventArgs e)
         {
+            string targetRegion = (sender as ToolStripMenuItem).Text;
 
+            for (int i = 0; i < baseRegionList.Items.Count; i++)
+            {
+                if ((baseRegionList.Items[i] as ToolStripMenuItem).Text == targetRegion)
+                {
+                    UpdateBaseForm(i);
+                    refreshData();
+                    return;
+                }
+            }
         }
 
         private void UpdateBaseForm(int index = -1)
@@ -1960,17 +1989,19 @@ namespace FriishProduce
 
         private void import_patch_CheckedChanged(object sender, EventArgs e)
         {
-            if (browsePatch.ShowDialog() == DialogResult.OK)
+            string inPatch = null;
+            if (include_patch.Checked)
             {
-                patch = browsePatch.FileName;
-                refreshData();
+                if (browsePatch.ShowDialog() == DialogResult.OK)
+                    inPatch = browsePatch.FileName;
+                else
+                    inPatch = null;
             }
 
-            else if (patch != null)
-            {
-                patch = null;
-                refreshData();
-            }
+            else inPatch = null;
+
+            if (inPatch != patch) refreshData();
+            patch = inPatch;
         }
 
         private void InjectorsList_SelectedIndexChanged(object sender, EventArgs e)
@@ -1983,8 +2014,6 @@ namespace FriishProduce
 
         private void RegionsList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            resetImages();
-            LoadImage();
             refreshData();
         }
 
@@ -2018,10 +2047,11 @@ namespace FriishProduce
             }
         } */
 
-        private void banner_Click(object sender, EventArgs e) => bannerMenu.Show(Cursor.Position);
+        private void banner_sound_Click(object sender, EventArgs e) => bannerMenu.Show(Cursor.Position);
 
         private void banner_customize_Click(object sender, EventArgs e)
         {
+            banner_form.Text = banner_details.Text;
             banner_form.origTitle = banner_form.title.Text;
             banner_form.origYear = (int)banner_form.released.Value;
             banner_form.origPlayers = (int)banner_form.players.Value;
@@ -2051,6 +2081,12 @@ namespace FriishProduce
             refreshData();
         }
 
+        private void play_banner_sound_Click(object sender, EventArgs e)
+        {
+            SoundPlayer snd = File.Exists(sound) && sound != null ? new(sound) : new(Properties.Resources.Sound_WiiVC);
+            snd.PlaySync();
+        }
+
         private void replace_banner_sound_Click(object sender, EventArgs e)
         {
             browseSound.Filter = "WAV (*.wav)|*.wav"; // + Program.Lang.String("filter");
@@ -2059,11 +2095,5 @@ namespace FriishProduce
                 LoadSound(browseSound.FileName);
         }
         private void restore_banner_sound_Click(object sender, EventArgs e) => LoadSound(null);
-
-        private void play_banner_sound_Click(object sender, EventArgs e)
-        {
-            SoundPlayer snd = File.Exists(sound) && sound != null ? new(sound) : new(Properties.Resources.Sound_WiiVC);
-            snd.PlaySync();
-        }
     }
 }

@@ -76,7 +76,7 @@ namespace FriishProduce
             resources.ApplyResources(this, "$this");
             this.ControlBox = false;
             this.Controls.Add(this.bottomPanel2);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;

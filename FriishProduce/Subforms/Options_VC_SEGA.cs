@@ -36,8 +36,6 @@ namespace FriishProduce
 
                 country.Items.Clear();
                 country.Items.AddRange(new string[] { Program.Lang.String("region_j"), Program.Lang.String("region_u"), Program.Lang.String("region_e") });
-
-                Program.AutoSizeControl(country, label2);
                 #endregion
             }
         }

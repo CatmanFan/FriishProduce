@@ -11,7 +11,7 @@ namespace FriishProduce
         [DllImport("user32.dll", SetLastError = true)]
         static extern void SwitchToThisWindow(IntPtr hWnd, bool turnOn);
 
-        public static MainForm MainForm { get; set; }
+        public static MainForm MainForm { get; private set; }
         public static Language Lang { get; set; }
         public static IntPtr Handle { get; set; }
         public static bool IsUpdated = false;

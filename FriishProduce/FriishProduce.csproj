@@ -360,6 +360,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Subforms\BannerOptions.resx">
       <DependentUpon>BannerOptions.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Subforms\ChannelTitles.resx">
       <DependentUpon>ChannelTitles.cs</DependentUpon>
@@ -379,6 +380,7 @@
     </Compile>
     <EmbeddedResource Include="SettingsForm.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Subforms\Options_Flash.resx">
       <DependentUpon>Options_Flash.cs</DependentUpon>
@@ -488,6 +490,7 @@
     <None Include="Resources\forwarder_wii\forwarder_v12.dol" />
     <None Include="Resources\forwarder_wii\forwarder_v14.dol" />
     <None Include="Resources\StaticBase.wad" />
+    <None Include="Strings\ja.json" />
     <None Include="Strings\es.json" />
     <None Include="Strings\fr.json" />
     <None Include="Strings\ko.json" />
@@ -504,6 +507,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="Resources\icons\tag_blue_edit.png" />
+    <None Include="Resources\icons\sound.png" />
     <None Include="Resources\icons\disk.png" />
     <None Include="Resources\apps\OpenDolBoot.exe" />
     <None Include="Resources\yes.png" />

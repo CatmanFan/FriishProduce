@@ -131,7 +131,7 @@
 			"save_project_as":					"Save project as...",
 			"close_project":					"Close project",
 
-			"import_rom":						"Import game file...",
+			"import_game_file":					"Import {0}...",
 			"retrieve_gamedata_online":			"Retrieve game data online",
 			"export":							"Export...",
 
@@ -170,7 +170,9 @@
 
 		"projectform": {
 			"main":								"Main files",
-			"rom_label":						"Current {0}:",
+			"rom_label":						"Current {0}: {1}",
+			"rom_label1":						"game file",
+			"rom_label2":						"disc image",
 			"include_patch":					"Include a patch",
 
 			"wad_base":							"Base WAD",
@@ -193,10 +195,11 @@
 			"image_resize0":					"Stretch image",
 			"image_resize1":					"Fit aspect ratio",
 			
+			"channel_metadata":					"Channel metadata",
 			"channel_name":						"Channel name:",
 			"video_mode":						"Video mode:",
-			"banner":							"Click on the preview to access the banner details section.",
-			"banner_customize":					"Customize banner...",
+			"banner":							"Channel banner",
+			"banner_details":					"Banner details",
 			"banner_sound":						"Banner sound",
 			"play_banner_sound":				"Play banner sound",
 			"replace_banner_sound":				"Replace banner sound...",
@@ -217,11 +220,10 @@
 		},
 
 		"banner": {
-			"banner":							"Banner details",
-			"banner_region":					"Banner region:",
 			"full_name":						"Full name:",
 			"year":								"Year:",
 			"players":							"Players:",
+			"banner_region":					"Banner region:"
 		},
 
 		"vc_nes": {

@@ -531,6 +531,16 @@ namespace FriishProduce.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap sound {
+            get {
+                object obj = ResourceManager.GetObject("sound", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
         public static System.IO.UnmanagedMemoryStream Sound_WiiVC {
@@ -555,6 +565,16 @@ namespace FriishProduce.Properties {
         public static System.Drawing.Bitmap tab_delete {
             get {
                 object obj = ResourceManager.GetObject("tab_delete", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap tag_blue_edit {
+            get {
+                object obj = ResourceManager.GetObject("tag_blue_edit", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

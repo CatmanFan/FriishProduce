@@ -282,41 +282,20 @@
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="&gt;&gt;bottomPanel1.Name" xml:space="preserve">
-    <value>bottomPanel1</value>
+  <data name="b_cancel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;bottomPanel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="b_cancel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>347, 12</value>
   </data>
-  <data name="&gt;&gt;bottomPanel1.Parent" xml:space="preserve">
-    <value>bottomPanel2</value>
+  <data name="b_cancel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 23</value>
   </data>
-  <data name="&gt;&gt;bottomPanel1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="bottomPanel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="bottomPanel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 184</value>
-  </data>
-  <data name="bottomPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>459, 48</value>
-  </data>
-  <data name="bottomPanel2.TabIndex" type="System.Int32, mscorlib">
-    <value>35</value>
-  </data>
-  <data name="&gt;&gt;bottomPanel2.Name" xml:space="preserve">
-    <value>bottomPanel2</value>
-  </data>
-  <data name="&gt;&gt;bottomPanel2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;bottomPanel2.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;bottomPanel2.ZOrder" xml:space="preserve">
+  <data name="b_cancel.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
+  </data>
+  <data name="b_cancel.Text" xml:space="preserve">
+    <value>&amp;Cancel</value>
   </data>
   <data name="&gt;&gt;b_cancel.Name" xml:space="preserve">
     <value>b_cancel</value>
@@ -329,6 +308,21 @@
   </data>
   <data name="&gt;&gt;b_cancel.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="b_ok.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="b_ok.Location" type="System.Drawing.Point, System.Drawing">
+    <value>241, 12</value>
+  </data>
+  <data name="b_ok.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 23</value>
+  </data>
+  <data name="b_ok.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="b_ok.Text" xml:space="preserve">
+    <value>&amp;OK</value>
   </data>
   <data name="&gt;&gt;b_ok.Name" xml:space="preserve">
     <value>b_ok</value>
@@ -366,59 +360,29 @@
   <data name="&gt;&gt;bottomPanel1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="b_cancel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="bottomPanel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
   </data>
-  <data name="b_cancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>357, 12</value>
+  <data name="bottomPanel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 184</value>
   </data>
-  <data name="b_cancel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 23</value>
+  <data name="bottomPanel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>459, 48</value>
   </data>
-  <data name="b_cancel.TabIndex" type="System.Int32, mscorlib">
+  <data name="bottomPanel2.TabIndex" type="System.Int32, mscorlib">
+    <value>35</value>
+  </data>
+  <data name="&gt;&gt;bottomPanel2.Name" xml:space="preserve">
+    <value>bottomPanel2</value>
+  </data>
+  <data name="&gt;&gt;bottomPanel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;bottomPanel2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;bottomPanel2.ZOrder" xml:space="preserve">
     <value>4</value>
-  </data>
-  <data name="b_cancel.Text" xml:space="preserve">
-    <value>&amp;Cancel</value>
-  </data>
-  <data name="&gt;&gt;b_cancel.Name" xml:space="preserve">
-    <value>b_cancel</value>
-  </data>
-  <data name="&gt;&gt;b_cancel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;b_cancel.Parent" xml:space="preserve">
-    <value>bottomPanel1</value>
-  </data>
-  <data name="&gt;&gt;b_cancel.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="b_ok.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="b_ok.Location" type="System.Drawing.Point, System.Drawing">
-    <value>261, 12</value>
-  </data>
-  <data name="b_ok.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 23</value>
-  </data>
-  <data name="b_ok.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="b_ok.Text" xml:space="preserve">
-    <value>&amp;OK</value>
-  </data>
-  <data name="&gt;&gt;b_ok.Name" xml:space="preserve">
-    <value>b_ok</value>
-  </data>
-  <data name="&gt;&gt;b_ok.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;b_ok.Parent" xml:space="preserve">
-    <value>bottomPanel1</value>
-  </data>
-  <data name="&gt;&gt;b_ok.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="label4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>

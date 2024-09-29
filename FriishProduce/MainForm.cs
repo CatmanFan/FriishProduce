@@ -133,11 +133,14 @@ namespace FriishProduce
 
             #region Localization
             Program.Lang.Control(this);
+            Text = Program.Lang.ApplicationTitle;
+            about.Text = string.Format(Program.Lang.String("about_app"), Program.Lang.ApplicationTitle);
+
             menuItem1.Text = Program.Lang.String(menuItem1.Tag.ToString(), Name);
             menuItem2.Text = Program.Lang.String(menuItem2.Tag.ToString(), Name);
             menuItem3.Text = Program.Lang.String(menuItem3.Tag.ToString(), Name);
-            about.Text = string.Format(Program.Lang.String("about_app"), Program.Lang.ApplicationTitle);
-            Text = Program.Lang.ApplicationTitle;
+            if (import_game_file.Tag == null) import_game_file.Tag = import_game_file.Text;
+            import_game_file.Text = string.Format(Program.Lang.String(import_game_file.Tag.ToString(), Name), Program.Lang.String("rom_label1", "projectform"));
 
             toolbarNewProject.Text = new_project.Text;
             toolbarOpenProject.Text = open_project.Text;
@@ -239,6 +242,7 @@ namespace FriishProduce
                 retrieve_gamedata_online.Enabled = false;
                 save_project_as.Enabled = false;
                 export.Enabled = false;
+                import_game_file.Text = string.Format(Program.Lang.String(import_game_file.Tag.ToString(), Name), Program.Lang.String("rom_label1", "projectform"));
 
                 tabControl.Visible = false;
             }
@@ -248,15 +252,20 @@ namespace FriishProduce
                 retrieve_gamedata_online.Enabled = (tabControl.SelectedForm as ProjectForm).ToolbarButtons[0];
                 save_project_as.Enabled = (tabControl.SelectedForm as ProjectForm).IsModified;
                 export.Enabled = (tabControl.SelectedForm as ProjectForm).IsExportable;
+                import_game_file.Text = string.Format(Program.Lang.String(import_game_file.Tag.ToString(), Name), (tabControl.SelectedForm as ProjectForm).FileTypeName);
             }
 
             import_game_file.Enabled = close_project.Enabled = hasTabs;
 
-            toolbarImportGameFile.Enabled = import_game_file.Enabled;
-            toolbarSave.Enabled = toolbarSaveAs.Enabled = save_project.Enabled = save_project_as.Enabled;
-            toolbarCloseProject.Enabled = close_project.Enabled;
+            // Sync toolbar buttons
+            // ********
+            toolbarImportGameFile.Text      = import_game_file.Text;
+            toolbarImportGameFile.Enabled   = import_game_file.Enabled;
+            toolbarSave.Enabled             = save_project.Enabled;
+            toolbarSaveAs.Enabled           = save_project_as.Enabled;
+            toolbarCloseProject.Enabled     = close_project.Enabled;
             toolbarRetrieveGameData.Enabled = retrieve_gamedata_online.Enabled;
-            toolbarExport.Enabled = export.Enabled;
+            toolbarExport.Enabled           = export.Enabled;
         }
 
         private void MainForm_Closing(object sender, FormClosingEventArgs e)
@@ -304,7 +313,7 @@ namespace FriishProduce
 
         private void addTab(Platform platform, Project x = null)
         {
-            ProjectForm p = new(platform, null, x);
+            ProjectForm p = new(platform, null, x) { Font = Font };
             p.Shown += TabChanged;
             p.FormClosed += TabChanged;
             tabControl.TabPages.Add(p);
