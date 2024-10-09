@@ -35,6 +35,18 @@ namespace FriishProduce
             this.bottomPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
+            // b_ok
+            // 
+            this.b_ok.Location = new System.Drawing.Point(206, 12);
+            // 
+            // bottomPanel1
+            // 
+            this.bottomPanel1.Size = new System.Drawing.Size(424, 47);
+            // 
+            // b_cancel
+            // 
+            this.b_cancel.Location = new System.Drawing.Point(312, 12);
+            // 
             // biosImport
             // 
             this.biosImport.DefaultExt = "rom";
@@ -47,9 +59,9 @@ namespace FriishProduce
             this.bios_list.FormattingEnabled = true;
             this.bios_list.Items.AddRange(new object[] {
             "auto"});
-            this.bios_list.Location = new System.Drawing.Point(12, 25);
+            this.bios_list.Location = new System.Drawing.Point(12, 28);
             this.bios_list.Name = "bios_list";
-            this.bios_list.Size = new System.Drawing.Size(536, 21);
+            this.bios_list.Size = new System.Drawing.Size(400, 21);
             this.bios_list.TabIndex = 14;
             this.bios_list.Tag = "bios";
             this.bios_list.SelectedIndexChanged += new System.EventHandler(this.BIOSChanged);
@@ -57,7 +69,7 @@ namespace FriishProduce
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 9);
+            this.label1.Location = new System.Drawing.Point(9, 11);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(26, 13);
             this.label1.TabIndex = 16;
@@ -66,7 +78,7 @@ namespace FriishProduce
             // 
             // Options_VC_NEO
             // 
-            this.ClientSize = new System.Drawing.Size(560, 107);
+            this.ClientSize = new System.Drawing.Size(424, 112);
             this.Controls.Add(this.bios_list);
             this.Controls.Add(this.label1);
             this.Name = "Options_VC_NEO";

@@ -89,7 +89,7 @@ namespace FriishProduce
             get
             {
                 bool yes = !string.IsNullOrEmpty(_tID) && _tID.Length == 4
-                            && !string.IsNullOrWhiteSpace(channel_title.Text)
+                            && !string.IsNullOrWhiteSpace(channel_name.Text)
                             && !string.IsNullOrEmpty(_bannerTitle)
                             && (img != null)
                             && rom?.FilePath != null
@@ -166,7 +166,7 @@ namespace FriishProduce
 
         #region Channel/banner parameters
         private string _tID { get => title_id_upper.Text.ToUpper(); }
-        private string[] _channelTitles { get => new string[8] { channel_title.Text, channel_title.Text, channel_title.Text, channel_title.Text, channel_title.Text, channel_title.Text, channel_title.Text, channel_title.Text }; } // "無題", "Untitled", "Ohne Titel", "Sans titre", "Sin título", "Senza titolo", "Onbekend", "제목 없음"
+        private string[] _channelTitles { get => new string[8] { channel_name.Text, channel_name.Text, channel_name.Text, channel_name.Text, channel_name.Text, channel_name.Text, channel_name.Text, channel_name.Text }; } // "無題", "Untitled", "Ohne Titel", "Sans titre", "Sin título", "Senza titolo", "Onbekend", "제목 없음"
         private string _bannerTitle { get => banner_form.title.Text; }
         private int _bannerYear { get => (int)banner_form.released.Value; }
         private int _bannerPlayers { get => (int)banner_form.players.Value; }
@@ -284,7 +284,7 @@ namespace FriishProduce
 
             // Change title text to untitled string
             Untitled = string.Format(Program.Lang.String("untitled_project", "mainform"), Program.Lang.String(Enum.GetName(typeof(Platform), targetPlatform).ToLower(), "platforms"));
-            Text = string.IsNullOrWhiteSpace(channel_title.Text) ? Untitled : channel_title.Text;
+            Text = string.IsNullOrWhiteSpace(channel_name.Text) ? Untitled : channel_name.Text;
 
             setFilesText();
 
@@ -611,7 +611,7 @@ namespace FriishProduce
 
                 patch = File.Exists(project.Patch) ? project.Patch : null;
 
-                channel_title.Text = project.ChannelTitles[1];
+                channel_name.Text = project.ChannelTitles[1];
                 banner_form.title.Text = project.BannerTitle;
                 banner_form.released.Value = project.BannerYear;
                 banner_form.players.Value = project.BannerPlayers;
@@ -782,7 +782,7 @@ namespace FriishProduce
         public string GetName(bool full)
         {
             string FILENAME = File.Exists(patch) ? Path.GetFileNameWithoutExtension(patch) : Path.GetFileNameWithoutExtension(rom?.FilePath);
-            string CHANNELNAME = channel_title.Text;
+            string CHANNELNAME = channel_name.Text;
             string FULLNAME = System.Text.RegularExpressions.Regex.Replace(_bannerTitle.Replace(": ", Environment.NewLine).Replace(" - ", Environment.NewLine), @"\((.*?)\)", "").Replace("\r\n", "\n").Replace("\n", " - ");
             string TITLEID = title_id_upper.Text.ToUpper();
             string PLATFORM = targetPlatform.ToString();
@@ -853,7 +853,7 @@ namespace FriishProduce
             {
                 string[] lines = new string[2];
                 int limit = save_data_title.Multiline ? save_data_title.MaxLength / 2 : save_data_title.MaxLength;
-                if (channel_title.TextLength <= limit) lines[0] = channel_title.Text;
+                if (channel_name.TextLength <= limit) lines[0] = channel_name.Text;
                 if (banner_form.title.Lines.Length > 1 && banner_form.title.Lines[1].Length <= limit) lines[1] = banner_form.title.Lines[1];
 
                 if (string.Join("\n", lines).Length > save_data_title.MaxLength) return;
@@ -879,9 +879,9 @@ namespace FriishProduce
 
         private void TextBox_Changed(object sender, EventArgs e)
         {
-            if (sender == channel_title)
+            if (sender == channel_name)
             {
-                Text = string.IsNullOrWhiteSpace(channel_title.Text) ? Untitled : channel_title.Text;
+                Text = string.IsNullOrWhiteSpace(channel_name.Text) ? Untitled : channel_name.Text;
                 linkSaveDataTitle();
             }
 
@@ -1237,7 +1237,7 @@ namespace FriishProduce
                     if ((rom as RPGM).GetTitle(ROMpath) != null)
                     {
                         banner_form.title.Text = (rom as RPGM).GetTitle(ROMpath);
-                        if (_bannerTitle.Length <= channel_title.MaxLength) channel_title.Text = banner_form.title.Text;
+                        if (_bannerTitle.Length <= channel_name.MaxLength) channel_name.Text = banner_form.title.Text;
                         resetImages(true);
                     }
                     break;
@@ -1276,7 +1276,7 @@ namespace FriishProduce
                     if (rom.CleanTitle != null)
                     {
                         var text = rom.CleanTitle.Replace("\r", "").Split('\n');
-                        if (text[0].Length <= channel_title.MaxLength) { channel_title.Text = text[0]; }
+                        if (text[0].Length <= channel_name.MaxLength) { channel_name.Text = text[0]; }
                     }
 
                     // Set image
@@ -1293,7 +1293,7 @@ namespace FriishProduce
                 }
 
                 if (retrieved && fill_save_data.Checked) linkSaveDataTitle();
-                else if (rom.CleanTitle != null && channel_title.TextLength <= save_data_title.MaxLength) save_data_title.Text = channel_title.Text;
+                else if (rom.CleanTitle != null && channel_name.TextLength <= save_data_title.MaxLength) save_data_title.Text = channel_name.Text;
 
                 // Show message if partially failed to retrieve data
                 if (retrieved && (gameData.Title == null || gameData.Players == null || gameData.Year == null || gameData.Image == null))

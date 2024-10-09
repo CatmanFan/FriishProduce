@@ -48,15 +48,15 @@ namespace FriishProduce
             // 
             // b_ok
             // 
-            this.b_ok.Location = new System.Drawing.Point(492, 12);
+            this.b_ok.Location = new System.Drawing.Point(436, 12);
             // 
             // bottomPanel1
             // 
-            this.bottomPanel1.Size = new System.Drawing.Size(710, 47);
+            this.bottomPanel1.Size = new System.Drawing.Size(654, 47);
             // 
             // b_cancel
             // 
-            this.b_cancel.Location = new System.Drawing.Point(598, 12);
+            this.b_cancel.Location = new System.Drawing.Point(542, 12);
             // 
             // display
             // 
@@ -65,7 +65,7 @@ namespace FriishProduce
             this.display.Controls.Add(this.pictureBox1);
             this.display.Location = new System.Drawing.Point(12, 10);
             this.display.Name = "display";
-            this.display.Size = new System.Drawing.Size(330, 290);
+            this.display.Size = new System.Drawing.Size(312, 284);
             this.display.TabIndex = 14;
             this.display.TabStop = false;
             this.display.Tag = "display";
@@ -73,21 +73,20 @@ namespace FriishProduce
             // 
             // label1
             // 
-            this.label1.Font = new System.Drawing.Font("Arial", 9F);
-            this.label1.Location = new System.Drawing.Point(290, 252);
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(278, 253);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(31, 25);
+            this.label1.Size = new System.Drawing.Size(25, 13);
             this.label1.TabIndex = 16;
             this.label1.Text = "100";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // console_brightness
             // 
             this.console_brightness.AutoSize = false;
-            this.console_brightness.Location = new System.Drawing.Point(10, 252);
+            this.console_brightness.Location = new System.Drawing.Point(10, 251);
             this.console_brightness.Maximum = 100;
             this.console_brightness.Name = "console_brightness";
-            this.console_brightness.Size = new System.Drawing.Size(282, 24);
+            this.console_brightness.Size = new System.Drawing.Size(262, 20);
             this.console_brightness.TabIndex = 15;
             this.console_brightness.Value = 100;
             this.console_brightness.Scroll += new System.EventHandler(this.BrightnessValue_Set);
@@ -97,9 +96,9 @@ namespace FriishProduce
             this.pictureBox1.BackColor = System.Drawing.Color.Black;
             this.pictureBox1.Image = global::FriishProduce.Properties.Resources.screen_smd;
             this.pictureBox1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.pictureBox1.Location = new System.Drawing.Point(15, 20);
+            this.pictureBox1.Location = new System.Drawing.Point(10, 19);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(300, 225);
+            this.pictureBox1.Size = new System.Drawing.Size(293, 225);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 14;
             this.pictureBox1.TabStop = false;
@@ -108,9 +107,9 @@ namespace FriishProduce
             // 
             this.country.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.country.FormattingEnabled = true;
-            this.country.Location = new System.Drawing.Point(13, 37);
+            this.country.Location = new System.Drawing.Point(10, 36);
             this.country.Name = "country";
-            this.country.Size = new System.Drawing.Size(325, 21);
+            this.country.Size = new System.Drawing.Size(293, 21);
             this.country.TabIndex = 18;
             // 
             // vc_options
@@ -120,9 +119,9 @@ namespace FriishProduce
             this.vc_options.Controls.Add(this.console_disableresetbutton);
             this.vc_options.Controls.Add(this.label2);
             this.vc_options.Controls.Add(this.country);
-            this.vc_options.Location = new System.Drawing.Point(348, 10);
+            this.vc_options.Location = new System.Drawing.Point(330, 10);
             this.vc_options.Name = "vc_options";
-            this.vc_options.Size = new System.Drawing.Size(350, 290);
+            this.vc_options.Size = new System.Drawing.Size(312, 284);
             this.vc_options.TabIndex = 20;
             this.vc_options.TabStop = false;
             this.vc_options.Tag = "vc_options";
@@ -131,40 +130,43 @@ namespace FriishProduce
             // dev_mdpad_enable_6b
             // 
             this.dev_mdpad_enable_6b.AutoSize = true;
-            this.dev_mdpad_enable_6b.Location = new System.Drawing.Point(13, 69);
+            this.dev_mdpad_enable_6b.Location = new System.Drawing.Point(10, 66);
             this.dev_mdpad_enable_6b.Name = "dev_mdpad_enable_6b";
             this.dev_mdpad_enable_6b.Size = new System.Drawing.Size(138, 17);
             this.dev_mdpad_enable_6b.TabIndex = 22;
             this.dev_mdpad_enable_6b.Tag = "dev_mdpad_enable_6b";
             this.dev_mdpad_enable_6b.Text = "dev_mdpad_enable_6b";
+            this.dev_mdpad_enable_6b.ThreeState = true;
             this.dev_mdpad_enable_6b.UseVisualStyleBackColor = true;
             // 
             // save_sram
             // 
             this.save_sram.AutoSize = true;
-            this.save_sram.Location = new System.Drawing.Point(13, 111);
+            this.save_sram.Location = new System.Drawing.Point(10, 112);
             this.save_sram.Name = "save_sram";
             this.save_sram.Size = new System.Drawing.Size(77, 17);
             this.save_sram.TabIndex = 20;
             this.save_sram.Text = "save_sram";
+            this.save_sram.ThreeState = true;
             this.save_sram.UseVisualStyleBackColor = true;
             // 
             // console_disableresetbutton
             // 
             this.console_disableresetbutton.AutoSize = true;
             this.console_disableresetbutton.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.console_disableresetbutton.Location = new System.Drawing.Point(13, 90);
+            this.console_disableresetbutton.Location = new System.Drawing.Point(10, 89);
             this.console_disableresetbutton.Name = "console_disableresetbutton";
             this.console_disableresetbutton.Size = new System.Drawing.Size(155, 17);
             this.console_disableresetbutton.TabIndex = 21;
             this.console_disableresetbutton.Tag = "console_disableresetbutton";
             this.console_disableresetbutton.Text = "console_disableresetbutton";
+            this.console_disableresetbutton.ThreeState = true;
             this.console_disableresetbutton.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(11, 20);
+            this.label2.Location = new System.Drawing.Point(8, 19);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(36, 13);
             this.label2.TabIndex = 19;
@@ -172,7 +174,7 @@ namespace FriishProduce
             // 
             // Options_VC_SEGA
             // 
-            this.ClientSize = new System.Drawing.Size(710, 362);
+            this.ClientSize = new System.Drawing.Size(654, 362);
             this.Controls.Add(this.vc_options);
             this.Controls.Add(this.display);
             this.Name = "Options_VC_SEGA";
@@ -181,6 +183,7 @@ namespace FriishProduce
             this.Controls.SetChildIndex(this.vc_options, 0);
             this.bottomPanel1.ResumeLayout(false);
             this.display.ResumeLayout(false);
+            this.display.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.console_brightness)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.vc_options.ResumeLayout(false);

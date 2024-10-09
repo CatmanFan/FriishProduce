@@ -41,7 +41,7 @@ namespace FriishProduce
             this.manual_type = new System.Windows.Forms.ComboBox();
             this.injection_methods = new System.Windows.Forms.ComboBox();
             this.region_list = new System.Windows.Forms.ComboBox();
-            this.channel_title = new System.Windows.Forms.TextBox();
+            this.channel_name = new System.Windows.Forms.TextBox();
             this.title_id_upper = new System.Windows.Forms.TextBox();
             this.title_id_random = new System.Windows.Forms.PictureBox();
             this.banner = new System.Windows.Forms.PictureBox();
@@ -86,6 +86,8 @@ namespace FriishProduce
             this.replace_banner_sound = new System.Windows.Forms.ToolStripMenuItem();
             this.restore_banner_sound = new System.Windows.Forms.ToolStripMenuItem();
             this.browseSound = new System.Windows.Forms.OpenFileDialog();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SaveIcon_Panel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.title_id_random)).BeginInit();
@@ -182,11 +184,11 @@ namespace FriishProduce
             this.region_list.Name = "region_list";
             this.region_list.SelectedIndexChanged += new System.EventHandler(this.RegionsList_SelectedIndexChanged);
             // 
-            // channel_title
+            // channel_name
             // 
-            resources.ApplyResources(this.channel_title, "channel_title");
-            this.channel_title.Name = "channel_title";
-            this.channel_title.TextChanged += new System.EventHandler(this.TextBox_Changed);
+            resources.ApplyResources(this.channel_name, "channel_name");
+            this.channel_name.Name = "channel_name";
+            this.channel_name.TextChanged += new System.EventHandler(this.TextBox_Changed);
             // 
             // title_id_upper
             // 
@@ -485,11 +487,13 @@ namespace FriishProduce
             // 
             // groupBox8
             // 
+            this.groupBox8.Controls.Add(this.label2);
+            this.groupBox8.Controls.Add(this.label1);
             this.groupBox8.Controls.Add(this.video_modes);
             this.groupBox8.Controls.Add(this.title_id_upper);
             this.groupBox8.Controls.Add(this.title_id_random);
             this.groupBox8.Controls.Add(this.region_list);
-            this.groupBox8.Controls.Add(this.channel_title);
+            this.groupBox8.Controls.Add(this.channel_name);
             resources.ApplyResources(this.groupBox8, "groupBox8");
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.TabStop = false;
@@ -548,6 +552,18 @@ namespace FriishProduce
             this.browseSound.RestoreDirectory = true;
             this.browseSound.SupportMultiDottedExtensions = true;
             // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            this.label1.Tag = "channel_name";
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            this.label2.Tag = "title_id";
+            // 
             // ProjectForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
@@ -595,7 +611,7 @@ namespace FriishProduce
         #endregion
 
         private System.Windows.Forms.TextBox save_data_title;
-        private System.Windows.Forms.TextBox channel_title;
+        private System.Windows.Forms.TextBox channel_name;
         private System.Windows.Forms.TextBox title_id_upper;
         private System.Windows.Forms.PictureBox title_id_random;
         private System.Windows.Forms.ComboBox Base;
@@ -649,5 +665,7 @@ namespace FriishProduce
         private System.Windows.Forms.ToolStripMenuItem restore_banner_sound;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ComboBox video_modes;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
