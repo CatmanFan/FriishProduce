@@ -333,9 +333,6 @@ namespace FriishProduce
                     region_list.Items.Add(Program.Lang.String("region_j"));
                     break;
             }
-
-            toolTip = new ToolTip();
-            
             #endregion
 
             baseName.Font = new Font(baseName.Font, FontStyle.Bold);
@@ -706,6 +703,7 @@ namespace FriishProduce
         }
 
         private void import_image_Click(object sender, EventArgs e) => BrowseImageDialog();
+        private void download_image_Click(object sender, EventArgs e) => GameScan(true);
 
         private void refreshData()
         {
@@ -1200,7 +1198,7 @@ namespace FriishProduce
             }
         }
 
-        protected void LoadROM(string ROMpath, bool LoadGameData = true)
+        protected void LoadROM(string ROMpath, bool AutoScan = true)
         {
             if (ROMpath == null || rom == null || !File.Exists(ROMpath)) return;
 
@@ -1254,29 +1252,39 @@ namespace FriishProduce
             patch = null;
 
             Program.MainForm.toolbarGameScan.Enabled = Program.MainForm.game_scan.Enabled = ToolbarButtons[0];
-            if (rom != null && LoadGameData && ToolbarButtons[0]) this.LoadGameData();
+            if (rom != null && AutoScan && ToolbarButtons[0]) GameScan(false);
             setFilesText();
         }
 
-        public async void LoadGameData()
+        public async void GameScan(bool imageOnly)
         {
             if (rom == null || rom.FilePath == null) return;
 
             try
             {
                 var gameData = await Task.FromResult(rom.GetData(targetPlatform, rom.FilePath));
-                bool retrieved = gameData != (null, null, null, null, null);
+                bool retrieved = imageOnly ? gameData.Image != null : gameData != (null, null, null, null, null);
 
                 if (retrieved)
                 {
-                    // Set banner title
-                    banner_form.title.Text = rom.CleanTitle ?? banner_form.title.Text;
-
-                    // Set channel title text
-                    if (rom.CleanTitle != null)
+                    if (!imageOnly)
                     {
-                        var text = rom.CleanTitle.Replace("\r", "").Split('\n');
-                        if (text[0].Length <= channel_name.MaxLength) { channel_name.Text = text[0]; }
+                        // Set banner title
+                        banner_form.title.Text = rom.CleanTitle ?? banner_form.title.Text;
+
+                        // Set channel title text
+                        if (rom.CleanTitle != null)
+                        {
+                            var text = rom.CleanTitle.Replace("\r", "").Split('\n');
+                            if (text[0].Length <= channel_name.MaxLength) { channel_name.Text = text[0]; }
+                        }
+
+                        // Set year and players
+                        banner_form.released.Value = !string.IsNullOrEmpty(gameData.Year) ? int.Parse(gameData.Year) : banner_form.released.Value;
+                        banner_form.players.Value = !string.IsNullOrEmpty(gameData.Players) ? int.Parse(gameData.Players) : banner_form.players.Value;
+
+                        if (fill_save_data.Checked) linkSaveDataTitle();
+                        else if (rom.CleanTitle != null && channel_name.TextLength <= save_data_title.MaxLength) save_data_title.Text = channel_name.Text;
                     }
 
                     // Set image
@@ -1285,18 +1293,11 @@ namespace FriishProduce
                         LoadImage(gameData.Image);
                     }
 
-                    // Set year and players
-                    banner_form.released.Value = !string.IsNullOrEmpty(gameData.Year) ? int.Parse(gameData.Year) : banner_form.released.Value;
-                    banner_form.players.Value = !string.IsNullOrEmpty(gameData.Players) ? int.Parse(gameData.Players) : banner_form.players.Value;
-                    
                     resetImages(true);
                 }
 
-                if (retrieved && fill_save_data.Checked) linkSaveDataTitle();
-                else if (rom.CleanTitle != null && channel_name.TextLength <= save_data_title.MaxLength) save_data_title.Text = channel_name.Text;
-
                 // Show message if partially failed to retrieve data
-                if (retrieved && (gameData.Title == null || gameData.Players == null || gameData.Year == null || gameData.Image == null))
+                if (retrieved && (gameData.Title == null || gameData.Players == null || gameData.Year == null || gameData.Image == null) && !imageOnly)
                     MessageBox.Show(Program.Lang.Msg(4));
                 else if (!retrieved) SystemSounds.Beep.Play();
             }
@@ -1952,7 +1953,7 @@ namespace FriishProduce
             if (contentOptionsForm != null)
             {
                 contentOptionsForm.Font = Font;
-                contentOptionsForm.Text = Program.Lang.String("injection_method_options", "projectform");
+                contentOptionsForm.Text = Program.Lang.String("injection_method_options", "projectform").TrimEnd('.').Trim();
                 contentOptionsForm.Icon = Icon.FromHandle(Properties.Resources.wrench.GetHicon());
             }
 
@@ -1963,7 +1964,7 @@ namespace FriishProduce
             }
 
             #region -- Content options panel --
-            editContentOptions.Enabled = contentOptionsForm != null;
+            injection_method_options.Enabled = contentOptionsForm != null;
             #endregion
 
             showSaveData = isVirtualConsole || targetPlatform == Platform.Flash;

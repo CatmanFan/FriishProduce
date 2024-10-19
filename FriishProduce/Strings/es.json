@@ -158,9 +158,9 @@
 			"default_settings":					"Preferencias por defecto",
 			"default_injection_methods":		"Métodos de inyección por defecto",
 			"default_target_filename":			"Nombre de archivos guardados",
-			"default_save_as_project":			"Proyectos:",
-			"default_save_as_wad":				"Canales WAD:",
-			"default_save_as_parameters":		"Partidos reemplazables:",
+			"default_target_project":			"Proyectos:",
+			"default_target_wad":				"Canales WAD:",
+			"default_target_parameters":		"Partidos reemplazables:",
 
 			"use_online_wad_enabled":           "Habilitar opción de descargar canales de origen",
 			"use_online_wad_tip":				"This can be used to retrieve any WAD that is available from the current database without already requiring to have a WAD file. However, because libWiiSharp's NUS client does not allow for decrypting VC WADs in any form, it is only able to use Web download functionality. The legality of this is shady so it is better to have the option disabled.",
@@ -177,13 +177,14 @@
 			"include_patch":					"Incluir parche",
 
 			"wad_base":							"Canal de origen",
-			"import_wad":						"Abrir WAD...",
+			"import_wad":						"Abrir un archivo WAD...",
 			"use_online_wad":					"...o utilizar un canal descargable",
 			"base_name":						"Título del canal:",
 			"title_id":							"Title ID:",
 			
 			"image":							"Imagen",
 			"import_image":						"Abrir una imagen...",
+			"download_image":					"Descargar imagen de pantalla de título",
 			"image_interpolation_mode":			"Método de interpolación",
 			"image_interpolation_mode0":		"{by_default}",
 			"image_interpolation_mode1":		"Baja calidad",
@@ -207,7 +208,7 @@
 			"restore_banner_sound":				"Restaurar sonido original del banner",
 
 			"injection_method":					"Método de inyección",
-			"injection_method_options":			"Ajustes de método de inyección",
+			"injection_method_options":			"Ajustes de método de inyección...",
 
 			"save_data":						"Datos guardados",
 			"save_data_enable":					"Habilitar la función de guardado",

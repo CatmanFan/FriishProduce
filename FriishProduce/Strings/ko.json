@@ -158,14 +158,14 @@
 			"default_settings":					"기본값 설정",
 			"default_injection_methods":		"기본 주입 방법",
 			"default_target_filename":			"내보낸 WAD의 기본 파일 이름",
-			"default_save_as_project":			"프로젝트:",
-			"default_save_as_wad":				"내보낸 WAD:",
-			"default_save_as_parameters":		"교체 가능한 매개변수:",
+			"default_target_project":			"프로젝트:",
+			"default_target_wad":				"내보낸 WAD:",
+			"default_target_parameters":		"교체 가능한 매개변수:",
 
 			"use_online_wad_enabled":           "다운로드 가능한 WAD 기능 활성화",
 			"use_online_wad_tip":				"이것은 이미 WAD 파일이 없어도 현재 데이터베이스에서 사용 가능한 모든 WAD를 검색하는 데 사용할 수 있습니다. 그러나 libWiiSharp의 NUS 클라이언트는 어떤 형태로든 VC WAD를 암호화 해제하는 것을 허용하지 않기 때문에 대신 웹의 다른 곳에 연결하여 거기에서 다운로드합니다. 이것의 합법성은 모호하므로 옵션을 비활성화하는 것이 좋습니다.",
-			"auto_game_scan":					"롬을 연 후 자동으로 검색",
 			"auto_fill_save_data":				"배너 및 채널 이름으로 저장 데이터 제목을 자동으로 연결",
+			"auto_game_scan":					"롬을 연 후 자동으로 검색",
 			"game_source_image":				"소스 이미지 웹사이트:"
 		},
 
@@ -184,6 +184,7 @@
 			
 			"image":							"이미지",
 			"import_image":						"이미지 가져오기...",
+			"download_image":					"Download title screen image",
 			"image_interpolation_mode":			"보간 모드",
 			"image_interpolation_mode0":		"{by_default}",
 			"image_interpolation_mode1":		"낮음",
@@ -207,7 +208,7 @@
 			"restore_banner_sound":				"배너 사운드 복원",
 			
 			"injection_method":					"주입 방법",
-			"injection_method_options":			"주입 방법 옵션",
+			"injection_method_options":			"주입 방법 옵션...",
 			
 			"save_data":						"저장 데이터",
 			"save_data_enable":					"저장 활성화",

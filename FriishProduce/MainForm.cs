@@ -335,7 +335,7 @@ namespace FriishProduce
             }
         }
 
-        private void UseLibRetro_Click(object sender, EventArgs e) => (tabControl.SelectedForm as ProjectForm)?.LoadGameData();
+        private void GameScan_Click(object sender, EventArgs e) => (tabControl.SelectedForm as ProjectForm)?.GameScan(false);
 
         private void OpenImage_Click(object sender, EventArgs e)
         {

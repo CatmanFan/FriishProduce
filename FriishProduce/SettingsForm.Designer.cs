@@ -71,8 +71,8 @@ namespace FriishProduce
             this.vc_neo_bios = new System.Windows.Forms.GroupBox();
             this.vc_neo_bios_list = new System.Windows.Forms.ComboBox();
             this.vc_sega = new System.Windows.Forms.Panel();
-            this.vc_sega_country_l = new System.Windows.Forms.GroupBox();
-            this.vc_sega_country = new System.Windows.Forms.ComboBox();
+            this.vc_sega_country = new System.Windows.Forms.GroupBox();
+            this.vc_sega_countries = new System.Windows.Forms.ComboBox();
             this.vc_sega_system = new System.Windows.Forms.GroupBox();
             this.vc_sega_console_disableresetbutton = new System.Windows.Forms.CheckBox();
             this.vc_sega_save_sram = new System.Windows.Forms.CheckBox();
@@ -111,8 +111,8 @@ namespace FriishProduce
             this.panel2 = new System.Windows.Forms.Panel();
             this.image_interpolation_mode = new System.Windows.Forms.GroupBox();
             this.image_interpolation_modes = new System.Windows.Forms.ComboBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.banner_region = new System.Windows.Forms.ComboBox();
+            this.banner_region = new System.Windows.Forms.GroupBox();
+            this.banner_regions = new System.Windows.Forms.ComboBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.sega_default = new System.Windows.Forms.GroupBox();
             this.injection_methods_sega = new System.Windows.Forms.ComboBox();
@@ -132,10 +132,11 @@ namespace FriishProduce
             this.panel4 = new System.Windows.Forms.Panel();
             this.default_target_project = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.default_target_parameters = new System.Windows.Forms.Label();
-            this.default_target_project_tb = new System.Windows.Forms.TextBox();
-            this.default_target_wad = new System.Windows.Forms.Label();
             this.default_target_wad_tb = new System.Windows.Forms.TextBox();
+            this.default_target_parameters = new System.Windows.Forms.Label();
+            this.default_target_wad = new System.Windows.Forms.Label();
+            this.default_target_project_tb = new System.Windows.Forms.TextBox();
+            this.source_image_website = new System.Windows.Forms.GroupBox();
             this.vc_n64_options.SuspendLayout();
             this.bottomPanel2.SuspendLayout();
             this.bottomPanel1.SuspendLayout();
@@ -152,7 +153,7 @@ namespace FriishProduce
             this.vc_neo.SuspendLayout();
             this.vc_neo_bios.SuspendLayout();
             this.vc_sega.SuspendLayout();
-            this.vc_sega_country_l.SuspendLayout();
+            this.vc_sega_country.SuspendLayout();
             this.vc_sega_system.SuspendLayout();
             this.vc_sega_display.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SEGA_console_brightness)).BeginInit();
@@ -167,7 +168,7 @@ namespace FriishProduce
             this.flash_save_data.SuspendLayout();
             this.panel2.SuspendLayout();
             this.image_interpolation_mode.SuspendLayout();
-            this.groupBox5.SuspendLayout();
+            this.banner_region.SuspendLayout();
             this.panel3.SuspendLayout();
             this.sega_default.SuspendLayout();
             this.snes_default.SuspendLayout();
@@ -177,6 +178,7 @@ namespace FriishProduce
             this.bios_neo.SuspendLayout();
             this.bios_psx.SuspendLayout();
             this.panel4.SuspendLayout();
+            this.source_image_website.SuspendLayout();
             this.SuspendLayout();
             // 
             // languages
@@ -512,27 +514,27 @@ namespace FriishProduce
             // 
             // vc_sega
             // 
-            this.vc_sega.Controls.Add(this.vc_sega_country_l);
+            this.vc_sega.Controls.Add(this.vc_sega_country);
             this.vc_sega.Controls.Add(this.vc_sega_system);
             this.vc_sega.Controls.Add(this.vc_sega_display);
             resources.ApplyResources(this.vc_sega, "vc_sega");
             this.vc_sega.Name = "vc_sega";
             this.vc_sega.Tag = "vc_sega";
             // 
-            // vc_sega_country_l
-            // 
-            this.vc_sega_country_l.Controls.Add(this.vc_sega_country);
-            resources.ApplyResources(this.vc_sega_country_l, "vc_sega_country_l");
-            this.vc_sega_country_l.Name = "vc_sega_country_l";
-            this.vc_sega_country_l.TabStop = false;
-            this.vc_sega_country_l.Tag = "region";
-            // 
             // vc_sega_country
             // 
-            this.vc_sega_country.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.vc_sega_country.FormattingEnabled = true;
+            this.vc_sega_country.Controls.Add(this.vc_sega_countries);
             resources.ApplyResources(this.vc_sega_country, "vc_sega_country");
             this.vc_sega_country.Name = "vc_sega_country";
+            this.vc_sega_country.TabStop = false;
+            this.vc_sega_country.Tag = "region";
+            // 
+            // vc_sega_countries
+            // 
+            this.vc_sega_countries.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.vc_sega_countries.FormattingEnabled = true;
+            resources.ApplyResources(this.vc_sega_countries, "vc_sega_countries");
+            this.vc_sega_countries.Name = "vc_sega_countries";
             // 
             // vc_sega_system
             // 
@@ -828,11 +830,11 @@ namespace FriishProduce
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.source_image_websites);
+            this.panel2.Controls.Add(this.source_image_website);
             this.panel2.Controls.Add(this.auto_game_scan);
             this.panel2.Controls.Add(this.auto_fill_save_data);
             this.panel2.Controls.Add(this.image_interpolation_mode);
-            this.panel2.Controls.Add(this.groupBox5);
+            this.panel2.Controls.Add(this.banner_region);
             resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
             // 
@@ -852,21 +854,21 @@ namespace FriishProduce
             this.image_interpolation_modes.Name = "image_interpolation_modes";
             this.image_interpolation_modes.Tag = "image_interpolation_mode";
             // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.banner_region);
-            resources.ApplyResources(this.groupBox5, "groupBox5");
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Tag = "banner_region";
-            // 
             // banner_region
             // 
-            this.banner_region.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.banner_region.FormattingEnabled = true;
+            this.banner_region.Controls.Add(this.banner_regions);
             resources.ApplyResources(this.banner_region, "banner_region");
             this.banner_region.Name = "banner_region";
-            this.banner_region.Tag = "";
+            this.banner_region.TabStop = false;
+            this.banner_region.Tag = "banner_region";
+            // 
+            // banner_regions
+            // 
+            this.banner_regions.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.banner_regions.FormattingEnabled = true;
+            resources.ApplyResources(this.banner_regions, "banner_regions");
+            this.banner_regions.Name = "banner_regions";
+            this.banner_regions.Tag = "";
             // 
             // panel3
             // 
@@ -1014,6 +1016,11 @@ namespace FriishProduce
             resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
             // 
+            // default_target_wad_tb
+            // 
+            resources.ApplyResources(this.default_target_wad_tb, "default_target_wad_tb");
+            this.default_target_wad_tb.Name = "default_target_wad_tb";
+            // 
             // default_target_parameters
             // 
             resources.ApplyResources(this.default_target_parameters, "default_target_parameters");
@@ -1023,21 +1030,24 @@ namespace FriishProduce
             this.default_target_parameters.Name = "default_target_parameters";
             this.default_target_parameters.Tag = "default_target_parameters";
             // 
-            // default_target_project_tb
-            // 
-            resources.ApplyResources(this.default_target_project_tb, "default_target_project_tb");
-            this.default_target_project_tb.Name = "default_target_project_tb";
-            // 
             // default_target_wad
             // 
             resources.ApplyResources(this.default_target_wad, "default_target_wad");
             this.default_target_wad.Name = "default_target_wad";
             this.default_target_wad.Tag = "default_target_wad";
             // 
-            // default_target_wad_tb
+            // default_target_project_tb
             // 
-            resources.ApplyResources(this.default_target_wad_tb, "default_target_wad_tb");
-            this.default_target_wad_tb.Name = "default_target_wad_tb";
+            resources.ApplyResources(this.default_target_project_tb, "default_target_project_tb");
+            this.default_target_project_tb.Name = "default_target_project_tb";
+            // 
+            // source_image_website
+            // 
+            this.source_image_website.Controls.Add(this.source_image_websites);
+            resources.ApplyResources(this.source_image_website, "source_image_website");
+            this.source_image_website.Name = "source_image_website";
+            this.source_image_website.TabStop = false;
+            this.source_image_website.Tag = "source_image_website";
             // 
             // SettingsForm
             // 
@@ -1048,7 +1058,6 @@ namespace FriishProduce
             this.ControlBox = false;
             this.Controls.Add(this.bottomPanel2);
             this.Controls.Add(this.TreeView);
-            this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -1060,6 +1069,7 @@ namespace FriishProduce
             this.Controls.Add(this.vc_pce);
             this.Controls.Add(this.vc_neo);
             this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel4);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MaximizeBox = false;
@@ -1090,7 +1100,7 @@ namespace FriishProduce
             this.vc_neo.ResumeLayout(false);
             this.vc_neo_bios.ResumeLayout(false);
             this.vc_sega.ResumeLayout(false);
-            this.vc_sega_country_l.ResumeLayout(false);
+            this.vc_sega_country.ResumeLayout(false);
             this.vc_sega_system.ResumeLayout(false);
             this.vc_sega_system.PerformLayout();
             this.vc_sega_display.ResumeLayout(false);
@@ -1112,7 +1122,7 @@ namespace FriishProduce
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.image_interpolation_mode.ResumeLayout(false);
-            this.groupBox5.ResumeLayout(false);
+            this.banner_region.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.sega_default.ResumeLayout(false);
             this.snes_default.ResumeLayout(false);
@@ -1125,6 +1135,7 @@ namespace FriishProduce
             this.bios_psx.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            this.source_image_website.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1156,7 +1167,7 @@ namespace FriishProduce
         private System.Windows.Forms.GroupBox vc_sega_display;
         private System.Windows.Forms.TrackBar SEGA_console_brightness;
         private System.Windows.Forms.GroupBox vc_sega_system;
-        private System.Windows.Forms.ComboBox vc_sega_country;
+        private System.Windows.Forms.ComboBox vc_sega_countries;
         private System.Windows.Forms.Panel vc_pce;
         private System.Windows.Forms.CheckBox vc_pce_backupram;
         private System.Windows.Forms.GroupBox vc_pce_system;
@@ -1211,15 +1222,15 @@ namespace FriishProduce
         private System.Windows.Forms.ComboBox forwarder_type;
         private System.Windows.Forms.Label use_online_wad_tip;
         private System.Windows.Forms.CheckBox use_online_wad_enabled;
-        private System.Windows.Forms.ComboBox banner_region;
-        private System.Windows.Forms.GroupBox vc_sega_country_l;
+        private System.Windows.Forms.ComboBox banner_regions;
+        private System.Windows.Forms.GroupBox vc_sega_country;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox vc_neo_bios;
         private System.Windows.Forms.GroupBox nes_default;
         private System.Windows.Forms.GroupBox snes_default;
         private System.Windows.Forms.GroupBox sega_default;
         private System.Windows.Forms.GroupBox n64_default;
-        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.GroupBox banner_region;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Button browse_bios_psx;
         private System.Windows.Forms.TextBox bios_filename_psx;
@@ -1236,5 +1247,6 @@ namespace FriishProduce
         private System.Windows.Forms.Label default_target_parameters;
         private System.Windows.Forms.Label default_target_wad;
         private System.Windows.Forms.TextBox default_target_project_tb;
+        private System.Windows.Forms.GroupBox source_image_website;
     }
 }

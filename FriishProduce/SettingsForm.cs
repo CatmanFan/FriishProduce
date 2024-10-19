@@ -92,7 +92,7 @@ namespace FriishProduce
             default_target_wad_tb.Location = new Point(maxX, default_target_wad_tb.Location.Y);
             default_target_project_tb.Width = default_target_wad_tb.Width = maxWidth;
 
-            groupBox5.Text = Program.Lang.String(banner_region.Name, "banner");
+            banner_region.Text = Program.Lang.String(banner_regions.Name, "banner");
 
             flash_save_data_enable.Text = vc_pce_backupram.Text = vc_sega_save_sram.Text = Program.Lang.String("save_data_enable", "projectform");
 
@@ -150,12 +150,12 @@ namespace FriishProduce
 
             // -----------------------------
 
-            Program.Lang.String(vc_sega_country_l);
+            Program.Lang.String(vc_sega_country);
             vc_sega_dev_mdpad_enable_6b.Text = string.Format(Program.Lang.String("dev_mdpad_enable_6b", "vc_sega"), Program.Lang.Console(Platform.SMD));
             Program.Lang.String(vc_sega_console_disableresetbutton, "vc_sega");
 
-            vc_sega_country.Items.Clear();
-            vc_sega_country.Items.AddRange(new string[] { Program.Lang.String("region_j"), Program.Lang.String("region_u"), Program.Lang.String("region_e") });
+            vc_sega_countries.Items.Clear();
+            vc_sega_countries.Items.AddRange(new string[] { Program.Lang.String("region_j"), Program.Lang.String("region_u"), Program.Lang.String("region_e") });
 
             // -----------------------------
 
@@ -205,9 +205,9 @@ namespace FriishProduce
             bios_filename_psx.Text = Options.BIOS.Default.psx;
 
             // Banner region
-            banner_region.Items.Clear();
-            banner_region.Items.AddRange(new string[] { Program.Lang.String("automatic"), Program.Lang.String("region_j"), Program.Lang.String("region_u"), Program.Lang.String("region_e"), Program.Lang.String("region_k") });
-            banner_region.SelectedIndex = Default.default_banner_region;
+            banner_regions.Items.Clear();
+            banner_regions.Items.AddRange(new string[] { Program.Lang.String("automatic"), Program.Lang.String("region_j"), Program.Lang.String("region_u"), Program.Lang.String("region_e"), Program.Lang.String("region_k") });
+            banner_regions.SelectedIndex = Default.default_banner_region;
 
             #region use_custom_database
             bool clearCustomDatabase = !File.Exists(Default.custom_database);
@@ -250,7 +250,7 @@ namespace FriishProduce
             SEGA_console_brightness.Value = int.Parse(label1.Text);
             vc_sega_save_sram.Checked = VC_SEGA.Default.save_sram == "1";
             vc_sega_dev_mdpad_enable_6b.Checked = VC_SEGA.Default.dev_mdpad_enable_6b == "1";
-            vc_sega_country.SelectedIndex = VC_SEGA.Default.country switch { "jp" => 0, "us" => 1, _ => 2 };
+            vc_sega_countries.SelectedIndex = VC_SEGA.Default.country switch { "jp" => 0, "us" => 1, _ => 2 };
             vc_sega_console_disableresetbutton.Checked = VC_SEGA.Default.console_disableresetbutton == "1";
 
             // PCE
@@ -360,7 +360,7 @@ namespace FriishProduce
             // Platform-specific settings
             // -------------------------------------------
 
-            Default.default_banner_region = banner_region.SelectedIndex;
+            Default.default_banner_region = banner_regions.SelectedIndex;
             Default.default_injection_method_nes = injection_methods_nes.SelectedIndex;
             Default.default_injection_method_snes = injection_methods_snes.SelectedIndex;
             Default.default_injection_method_n64 = injection_methods_n64.SelectedIndex;
@@ -382,7 +382,7 @@ namespace FriishProduce
             VC_SEGA.Default.console_brightness = label1.Text;
             VC_SEGA.Default.save_sram = vc_sega_save_sram.Checked ? "1" : "0";
             VC_SEGA.Default.dev_mdpad_enable_6b = vc_sega_dev_mdpad_enable_6b.Checked ? "1" : "0";
-            VC_SEGA.Default.country = vc_sega_country.SelectedIndex switch { 0 => "jp", 1 => "us", _ => "eu" };
+            VC_SEGA.Default.country = vc_sega_countries.SelectedIndex switch { 0 => "jp", 1 => "us", _ => "eu" };
             VC_SEGA.Default.console_disableresetbutton = vc_sega_console_disableresetbutton.Checked ? "1" : null;
 
             VC_PCE.Default.BACKUPRAM = vc_pce_backupram.Checked ? "1" : "0";

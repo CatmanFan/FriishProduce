@@ -177,13 +177,14 @@
 			"include_patch":					"Include a patch",
 
 			"wad_base":							"Base WAD",
-			"import_wad":						"Import WAD...",
+			"import_wad":						"Import WAD from file...",
 			"use_online_wad":					"...or use a downloadable base",
 			"base_name":						"Base name:",
 			"title_id":							"Title ID:",
 			
 			"image":							"Image",
-			"import_image":						"Import image...",
+			"import_image":						"Import image from file...",
+			"download_image":					"Download title screen image",
 			"image_interpolation_mode":			"Interpolation mode",
 			"image_interpolation_mode0":		"{by_default}",
 			"image_interpolation_mode1":		"Low",
@@ -207,7 +208,7 @@
 			"restore_banner_sound":				"Restore banner sound",
 
 			"injection_method":					"Injection method",
-			"injection_method_options":			"Injection method options",
+			"injection_method_options":			"Injection method options...",
 
 			"save_data":						"Save data",
 			"save_data_enable":					"Enable saving",

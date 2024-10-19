@@ -183,7 +183,7 @@ namespace FriishProduce
             this.toolbarGameScan.Image = global::FriishProduce.Properties.Resources.retroarch;
             this.toolbarGameScan.Name = "toolbarGameScan";
             this.toolbarGameScan.Tag = "game_scan";
-            this.toolbarGameScan.Click += new System.EventHandler(this.UseLibRetro_Click);
+            this.toolbarGameScan.Click += new System.EventHandler(this.GameScan_Click);
             // 
             // toolbarExport
             // 
@@ -357,7 +357,7 @@ namespace FriishProduce
             resources.ApplyResources(this.game_scan, "game_scan");
             this.game_scan.Index = 2;
             this.game_scan.Tag = "game_scan";
-            this.game_scan.Click += new System.EventHandler(this.UseLibRetro_Click);
+            this.game_scan.Click += new System.EventHandler(this.GameScan_Click);
             // 
             // export
             // 
