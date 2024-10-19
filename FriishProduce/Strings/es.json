@@ -152,12 +152,12 @@
 			"check_for_updates":				"Buscar actualizaciones",
 			"auto_update_check":				"Buscar actualizaciones cuando se abra la aplicación",
 
-			"bios":								"BIOS",
+			"bios":								"Archivos BIOS",
 			"browse_bios":						"Seleccionar un archivo BIOS...",
 			
 			"default_settings":					"Preferencias por defecto",
 			"default_injection_methods":		"Métodos de inyección por defecto",
-			"default_save_as_filename":			"Nombre por defecto de archivos guardados",
+			"default_target_filename":			"Nombre de archivos guardados",
 			"default_save_as_project":			"Proyectos:",
 			"default_save_as_wad":				"Canales WAD:",
 			"default_save_as_parameters":		"Partidos reemplazables:",

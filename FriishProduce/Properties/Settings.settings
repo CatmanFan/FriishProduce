@@ -26,7 +26,7 @@
     <Setting Name="custom_database" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="default_save_as_filename" Type="System.String" Scope="User">
+    <Setting Name="default_target_filename" Type="System.String" Scope="User">
       <Value Profile="(Default)">FULLNAME</Value>
     </Setting>
     <Setting Name="auto_update_check" Type="System.Boolean" Scope="User">

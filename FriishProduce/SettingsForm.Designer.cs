@@ -109,13 +109,6 @@ namespace FriishProduce
             this.flash_vff_cache_size = new System.Windows.Forms.Label();
             this.flash_vff_cache_size_list = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.default_save_as_filename = new System.Windows.Forms.GroupBox();
-            this.default_save_as_project = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.default_save_as_parameters = new System.Windows.Forms.Label();
-            this.default_save_as_filename_tb = new System.Windows.Forms.TextBox();
-            this.default_save_as_wad = new System.Windows.Forms.Label();
-            this.default_export_filename_tb = new System.Windows.Forms.TextBox();
             this.image_interpolation_mode = new System.Windows.Forms.GroupBox();
             this.image_interpolation_modes = new System.Windows.Forms.ComboBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -137,6 +130,12 @@ namespace FriishProduce
             this.browse_bios_psx = new System.Windows.Forms.Button();
             this.bios_filename_psx = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.default_target_project = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.default_target_parameters = new System.Windows.Forms.Label();
+            this.default_target_project_tb = new System.Windows.Forms.TextBox();
+            this.default_target_wad = new System.Windows.Forms.Label();
+            this.default_target_wad_tb = new System.Windows.Forms.TextBox();
             this.vc_n64_options.SuspendLayout();
             this.bottomPanel2.SuspendLayout();
             this.bottomPanel1.SuspendLayout();
@@ -167,7 +166,6 @@ namespace FriishProduce
             this.flash_quality.SuspendLayout();
             this.flash_save_data.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.default_save_as_filename.SuspendLayout();
             this.image_interpolation_mode.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -178,6 +176,7 @@ namespace FriishProduce
             this.panel5.SuspendLayout();
             this.bios_neo.SuspendLayout();
             this.bios_psx.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // languages
@@ -287,7 +286,9 @@ namespace FriishProduce
             this.TreeView.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             ((System.Windows.Forms.TreeNode)(resources.GetObject("TreeView.Nodes"))),
             ((System.Windows.Forms.TreeNode)(resources.GetObject("TreeView.Nodes1"))),
-            ((System.Windows.Forms.TreeNode)(resources.GetObject("TreeView.Nodes2")))});
+            ((System.Windows.Forms.TreeNode)(resources.GetObject("TreeView.Nodes2"))),
+            ((System.Windows.Forms.TreeNode)(resources.GetObject("TreeView.Nodes3"))),
+            ((System.Windows.Forms.TreeNode)(resources.GetObject("TreeView.Nodes4")))});
             this.TreeView.ShowLines = false;
             this.TreeView.ShowPlusMinus = false;
             this.TreeView.ShowRootLines = false;
@@ -829,61 +830,11 @@ namespace FriishProduce
             // 
             this.panel2.Controls.Add(this.source_image_websites);
             this.panel2.Controls.Add(this.auto_game_scan);
-            this.panel2.Controls.Add(this.default_save_as_filename);
             this.panel2.Controls.Add(this.auto_fill_save_data);
             this.panel2.Controls.Add(this.image_interpolation_mode);
             this.panel2.Controls.Add(this.groupBox5);
             resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
-            // 
-            // default_save_as_filename
-            // 
-            this.default_save_as_filename.Controls.Add(this.default_save_as_project);
-            this.default_save_as_filename.Controls.Add(this.label2);
-            this.default_save_as_filename.Controls.Add(this.default_save_as_parameters);
-            this.default_save_as_filename.Controls.Add(this.default_save_as_filename_tb);
-            this.default_save_as_filename.Controls.Add(this.default_save_as_wad);
-            this.default_save_as_filename.Controls.Add(this.default_export_filename_tb);
-            resources.ApplyResources(this.default_save_as_filename, "default_save_as_filename");
-            this.default_save_as_filename.Name = "default_save_as_filename";
-            this.default_save_as_filename.TabStop = false;
-            this.default_save_as_filename.Tag = "default_save_as_filename";
-            // 
-            // default_save_as_project
-            // 
-            resources.ApplyResources(this.default_save_as_project, "default_save_as_project");
-            this.default_save_as_project.Name = "default_save_as_project";
-            this.default_save_as_project.Tag = "default_save_as_project";
-            // 
-            // label2
-            // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
-            // 
-            // default_save_as_parameters
-            // 
-            resources.ApplyResources(this.default_save_as_parameters, "default_save_as_parameters");
-            this.default_save_as_parameters.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.default_save_as_parameters.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.default_save_as_parameters.ForeColor = System.Drawing.Color.Black;
-            this.default_save_as_parameters.Name = "default_save_as_parameters";
-            this.default_save_as_parameters.Tag = "default_save_as_parameters";
-            // 
-            // default_save_as_filename_tb
-            // 
-            resources.ApplyResources(this.default_save_as_filename_tb, "default_save_as_filename_tb");
-            this.default_save_as_filename_tb.Name = "default_save_as_filename_tb";
-            // 
-            // default_save_as_wad
-            // 
-            resources.ApplyResources(this.default_save_as_wad, "default_save_as_wad");
-            this.default_save_as_wad.Name = "default_save_as_wad";
-            this.default_save_as_wad.Tag = "default_save_as_wad";
-            // 
-            // default_export_filename_tb
-            // 
-            resources.ApplyResources(this.default_export_filename_tb, "default_export_filename_tb");
-            this.default_export_filename_tb.Name = "default_export_filename_tb";
             // 
             // image_interpolation_mode
             // 
@@ -1043,8 +994,50 @@ namespace FriishProduce
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.default_target_project);
+            this.panel4.Controls.Add(this.label2);
+            this.panel4.Controls.Add(this.default_target_wad_tb);
+            this.panel4.Controls.Add(this.default_target_parameters);
+            this.panel4.Controls.Add(this.default_target_wad);
+            this.panel4.Controls.Add(this.default_target_project_tb);
             resources.ApplyResources(this.panel4, "panel4");
             this.panel4.Name = "panel4";
+            // 
+            // default_target_project
+            // 
+            resources.ApplyResources(this.default_target_project, "default_target_project");
+            this.default_target_project.Name = "default_target_project";
+            this.default_target_project.Tag = "default_target_project";
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // default_target_parameters
+            // 
+            resources.ApplyResources(this.default_target_parameters, "default_target_parameters");
+            this.default_target_parameters.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.default_target_parameters.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.default_target_parameters.ForeColor = System.Drawing.Color.Black;
+            this.default_target_parameters.Name = "default_target_parameters";
+            this.default_target_parameters.Tag = "default_target_parameters";
+            // 
+            // default_target_project_tb
+            // 
+            resources.ApplyResources(this.default_target_project_tb, "default_target_project_tb");
+            this.default_target_project_tb.Name = "default_target_project_tb";
+            // 
+            // default_target_wad
+            // 
+            resources.ApplyResources(this.default_target_wad, "default_target_wad");
+            this.default_target_wad.Name = "default_target_wad";
+            this.default_target_wad.Tag = "default_target_wad";
+            // 
+            // default_target_wad_tb
+            // 
+            resources.ApplyResources(this.default_target_wad_tb, "default_target_wad_tb");
+            this.default_target_wad_tb.Name = "default_target_wad_tb";
             // 
             // SettingsForm
             // 
@@ -1055,6 +1048,9 @@ namespace FriishProduce
             this.ControlBox = false;
             this.Controls.Add(this.bottomPanel2);
             this.Controls.Add(this.TreeView);
+            this.Controls.Add(this.panel4);
+            this.Controls.Add(this.panel5);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.adobe_flash);
             this.Controls.Add(this.forwarder);
@@ -1064,9 +1060,6 @@ namespace FriishProduce
             this.Controls.Add(this.vc_pce);
             this.Controls.Add(this.vc_neo);
             this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel4);
-            this.Controls.Add(this.panel5);
-            this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MaximizeBox = false;
@@ -1118,8 +1111,6 @@ namespace FriishProduce
             this.flash_save_data.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.default_save_as_filename.ResumeLayout(false);
-            this.default_save_as_filename.PerformLayout();
             this.image_interpolation_mode.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
@@ -1132,6 +1123,8 @@ namespace FriishProduce
             this.bios_neo.PerformLayout();
             this.bios_psx.ResumeLayout(false);
             this.bios_psx.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1197,10 +1190,6 @@ namespace FriishProduce
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.GroupBox flash_strap_reminder;
         private System.Windows.Forms.ComboBox flash_strap_reminder_list;
-        private System.Windows.Forms.GroupBox default_save_as_filename;
-        private System.Windows.Forms.TextBox default_save_as_filename_tb;
-        private System.Windows.Forms.Label default_save_as_parameters;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label show_bios_screen;
         private JCS.ToggleSwitch toggleSwitch2;
         private System.Windows.Forms.CheckBox use_custom_database;
@@ -1213,9 +1202,6 @@ namespace FriishProduce
         private System.Windows.Forms.ComboBox injection_methods_n64;
         private System.Windows.Forms.ComboBox injection_methods_snes;
         private System.Windows.Forms.ComboBox injection_methods_sega;
-        private System.Windows.Forms.Label default_save_as_wad;
-        private System.Windows.Forms.TextBox default_export_filename_tb;
-        private System.Windows.Forms.Label default_save_as_project;
         private System.Windows.Forms.ComboBox image_interpolation_modes;
         private System.Windows.Forms.Panel bottomPanel1;
         private System.Windows.Forms.Button b_cancel;
@@ -1244,5 +1230,11 @@ namespace FriishProduce
         private System.Windows.Forms.GroupBox language;
         private System.Windows.Forms.GroupBox image_interpolation_mode;
         private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label default_target_project;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox default_target_wad_tb;
+        private System.Windows.Forms.Label default_target_parameters;
+        private System.Windows.Forms.Label default_target_wad;
+        private System.Windows.Forms.TextBox default_target_project_tb;
     }
 }

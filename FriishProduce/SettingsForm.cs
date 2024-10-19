@@ -48,21 +48,21 @@ namespace FriishProduce
             Program.Lang.Control(adobe_flash);
 
             TreeView.Nodes[0].Text = Program.Lang.String(TreeView.Nodes[0].Tag.ToString(), Tag.ToString());
-            var default_node = TreeView.Nodes[1];
+            TreeView.Nodes[1].Text = Program.Lang.String(TreeView.Nodes[1].Tag.ToString(), Tag.ToString());
+            
+            var default_node = TreeView.Nodes[2];
             default_node.Text = Program.Lang.String(default_node.Tag.ToString(), Tag.ToString());
-            TreeView.Nodes[2].Text = Program.Lang.String(TreeView.Nodes[2].Tag.ToString(), Tag.ToString());
-
             default_node.Expand();
-            default_node.Nodes[0].Text = Program.Lang.String("vc");
-            default_node.Nodes[0].Expand();
-            default_node.Nodes[0].Nodes[0].Text = Program.Lang.Console(Platform.NES);
-            default_node.Nodes[0].Nodes[1].Text = Program.Lang.Console(Platform.N64);
-            default_node.Nodes[0].Nodes[2].Text = sega_default.Text = Program.Lang.String("group1", "platforms");
-            default_node.Nodes[0].Nodes[3].Text = Program.Lang.Console(Platform.PCE);
-            default_node.Nodes[0].Nodes[4].Text = Program.Lang.Console(Platform.NEO);
-            default_node.Nodes[1].Text = Program.Lang.Console(Platform.Flash);
-            default_node.Nodes[2].Text = Program.Lang.String("forwarders", "platforms");
-            default_node.Nodes[3].Text = Program.Lang.String(default_node.Nodes[3].Tag.ToString(), Tag.ToString());
+            default_node.Nodes[0].Text = Program.Lang.Console(Platform.NES);
+            default_node.Nodes[1].Text = Program.Lang.Console(Platform.N64);
+            default_node.Nodes[2].Text = sega_default.Text = Program.Lang.String("group1", "platforms");
+            default_node.Nodes[3].Text = Program.Lang.Console(Platform.PCE);
+            default_node.Nodes[4].Text = Program.Lang.Console(Platform.NEO);
+            default_node.Nodes[5].Text = Program.Lang.Console(Platform.Flash);
+            default_node.Nodes[6].Text = Program.Lang.String("forwarders", "platforms");
+
+            TreeView.Nodes[3].Text = Program.Lang.String(TreeView.Nodes[3].Tag.ToString(), Tag.ToString());
+            TreeView.Nodes[4].Text = Program.Lang.String(TreeView.Nodes[4].Tag.ToString(), Tag.ToString());
 
             // -----------------------------
 
@@ -87,11 +87,10 @@ namespace FriishProduce
             source_image_websites.Items.AddRange(new string[] { Program.Lang.String("automatic"), "https://thumbnails.libretro.com/", "https://github.com/libretro/libretro-thumbnails/" });
             source_image_websites.SelectedIndex = Default.gamedata_source_image;
             
-            default_save_as_parameters.Font = new Font(default_save_as_parameters.Font, FontStyle.Bold);
-            int maxX = Math.Max(default_save_as_filename_tb.Location.X, default_export_filename_tb.Location.X), maxWidth = Math.Min(default_save_as_filename_tb.Width, default_export_filename_tb.Width);
-            default_save_as_filename_tb.Location = new Point(maxX, default_save_as_filename_tb.Location.Y);
-            default_export_filename_tb.Location = new Point(maxX, default_export_filename_tb.Location.Y);
-            default_save_as_filename_tb.Width = default_export_filename_tb.Width = maxWidth;
+            int maxX = Math.Max(default_target_project_tb.Location.X, default_target_wad_tb.Location.X), maxWidth = Math.Min(default_target_project_tb.Width, default_target_wad_tb.Width);
+            default_target_project_tb.Location = new Point(maxX, default_target_project_tb.Location.Y);
+            default_target_wad_tb.Location = new Point(maxX, default_target_wad_tb.Location.Y);
+            default_target_project_tb.Width = default_target_wad_tb.Width = maxWidth;
 
             groupBox5.Text = Program.Lang.String(banner_region.Name, "banner");
 
@@ -198,8 +197,8 @@ namespace FriishProduce
             reset_all_dialogs.Checked = false;
             toggleSwitch2.Checked = bool.Parse(FORWARDER.Default.show_bios_screen);
             forwarder_type.SelectedIndex = FORWARDER.Default.root_storage_device;
-            default_export_filename_tb.Text = Default.default_export_filename;
-            default_save_as_filename_tb.Text = Default.default_save_as_filename;
+            default_target_wad_tb.Text = Default.default_export_filename;
+            default_target_project_tb.Text = Default.default_target_filename;
 
             // BIOS files
             bios_filename_neo.Text = Options.BIOS.Default.neogeo;
@@ -346,8 +345,8 @@ namespace FriishProduce
             Default.gamedata_source_image = source_image_websites.SelectedIndex;
             Default.image_interpolation = image_interpolation_modes.SelectedIndex;
             Default.auto_retrieve_game_data = auto_game_scan.Checked;
-            Default.default_export_filename = default_export_filename_tb.Text;
-            Default.default_save_as_filename = default_save_as_filename_tb.Text;
+            Default.default_export_filename = default_target_wad_tb.Text;
+            Default.default_target_filename = default_target_project_tb.Text;
             Default.use_online_wad_enabled = use_online_wad_enabled.Checked;
 
             // -------------------------------------------

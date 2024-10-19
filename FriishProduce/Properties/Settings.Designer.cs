@@ -122,12 +122,12 @@ namespace FriishProduce.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("FULLNAME")]
-        public string default_save_as_filename {
+        public string default_target_filename {
             get {
-                return ((string)(this["default_save_as_filename"]));
+                return ((string)(this["default_target_filename"]));
             }
             set {
-                this["default_save_as_filename"] = value;
+                this["default_target_filename"] = value;
             }
         }
         

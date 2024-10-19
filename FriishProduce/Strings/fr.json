@@ -157,7 +157,7 @@
 			
 			"default_settings":					"Paramètres par défaut",
 			"default_injection_methods":		"Méthodes d'injection par défaut",
-			"default_save_as_filename":			"Nom des fichiers enregistrés par défaut",
+			"default_target_filename":			"Nom des fichiers enregistrés",
 			"default_save_as_project":			"Projets :",
 			"default_save_as_wad":				"Fichiers WAD ou ZIP :",
 			"default_save_as_parameters":		"Parties remplaçables :",

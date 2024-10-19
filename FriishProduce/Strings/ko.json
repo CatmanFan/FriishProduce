@@ -152,12 +152,12 @@
 			"check_for_updates":				"업데이트 확인",
 			"auto_update_check":				"시작 시 자동으로 업데이트 확인",
 
-			"bios":								"BIOS",
+			"bios":								"BIOS files",
 			"browse_bios":						"Select a BIOS file...",
 			
 			"default_settings":					"기본값 설정",
 			"default_injection_methods":		"기본 주입 방법",
-			"default_save_as_filename":			"내보낸 WAD의 기본 파일 이름",
+			"default_target_filename":			"내보낸 WAD의 기본 파일 이름",
 			"default_save_as_project":			"프로젝트:",
 			"default_save_as_wad":				"내보낸 WAD:",
 			"default_save_as_parameters":		"교체 가능한 매개변수:",

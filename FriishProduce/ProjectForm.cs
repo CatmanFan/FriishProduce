@@ -787,7 +787,7 @@ namespace FriishProduce
             string TITLEID = title_id_upper.Text.ToUpper();
             string PLATFORM = targetPlatform.ToString();
 
-            string target = full ? Properties.Settings.Default.default_export_filename : Properties.Settings.Default.default_save_as_filename;
+            string target = full ? Properties.Settings.Default.default_export_filename : Properties.Settings.Default.default_target_filename;
 
             return target.Replace("FILENAME", FILENAME).Replace("CHANNELNAME", CHANNELNAME).Replace("FULLNAME", FULLNAME).Replace("TITLEID", TITLEID).Replace("PLATFORM", PLATFORM);
         }
