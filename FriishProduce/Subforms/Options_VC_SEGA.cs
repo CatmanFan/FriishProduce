@@ -89,7 +89,7 @@ namespace FriishProduce
         {
             double factor = console_brightness.Value * 0.01;
             var orig = Properties.Resources.screen_smd;
-            Bitmap changed = new Bitmap(orig.Width, orig.Height);
+            Bitmap changed = new(orig.Width, orig.Height);
 
             using (Graphics g = Graphics.FromImage(changed))
             using (Brush darkness = new SolidBrush(Color.FromArgb(255 - (int)Math.Round(factor * 255), Color.Black)))

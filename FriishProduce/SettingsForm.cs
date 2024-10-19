@@ -25,6 +25,8 @@ namespace FriishProduce
 
         private void SaveAll()
         {
+            Default.Save();
+            Options.BIOS.Default.Save();
             FORWARDER.Default.Save();
             VC_NES.Default.Save();
             VC_N64.Default.Save();
@@ -36,6 +38,7 @@ namespace FriishProduce
 
         public void RefreshForm()
         {
+            Text = Program.Lang.String("preferences");
             Program.Lang.Control(this);
             Program.Lang.Control(vc_nes);
             Program.Lang.Control(vc_n64);
@@ -44,54 +47,53 @@ namespace FriishProduce
             Program.Lang.Control(vc_neo);
             Program.Lang.Control(adobe_flash);
 
-            Text = Program.Lang.String("settings");
             TreeView.Nodes[0].Text = Program.Lang.String(TreeView.Nodes[0].Tag.ToString(), Tag.ToString());
-            TreeView.Nodes[1].Text = Program.Lang.String(TreeView.Nodes[1].Tag.ToString(), Tag.ToString());
+            var default_node = TreeView.Nodes[1];
+            default_node.Text = Program.Lang.String(default_node.Tag.ToString(), Tag.ToString());
             TreeView.Nodes[2].Text = Program.Lang.String(TreeView.Nodes[2].Tag.ToString(), Tag.ToString());
-            TreeView.Nodes[2].Expand();
-            TreeView.Nodes[2].Nodes[0].Text = Program.Lang.String("vc");
-            TreeView.Nodes[2].Nodes[0].Nodes[0].Text = Program.Lang.Console(Platform.NES);
-            TreeView.Nodes[2].Nodes[0].Nodes[1].Text = Program.Lang.Console(Platform.N64);
-            TreeView.Nodes[2].Nodes[0].Nodes[2].Text = label8.Text = Program.Lang.String("group1", "platforms");
-            TreeView.Nodes[2].Nodes[0].Nodes[3].Text = Program.Lang.Console(Platform.PCE);
-            TreeView.Nodes[2].Nodes[0].Nodes[4].Text = Program.Lang.Console(Platform.NEO);
-            TreeView.Nodes[2].Nodes[1].Text = Program.Lang.Console(Platform.Flash);
-            TreeView.Nodes[2].Nodes[2].Text = Program.Lang.String("forwarders", "platforms");
+
+            default_node.Expand();
+            default_node.Nodes[0].Text = Program.Lang.String("vc");
+            default_node.Nodes[0].Expand();
+            default_node.Nodes[0].Nodes[0].Text = Program.Lang.Console(Platform.NES);
+            default_node.Nodes[0].Nodes[1].Text = Program.Lang.Console(Platform.N64);
+            default_node.Nodes[0].Nodes[2].Text = sega_default.Text = Program.Lang.String("group1", "platforms");
+            default_node.Nodes[0].Nodes[3].Text = Program.Lang.Console(Platform.PCE);
+            default_node.Nodes[0].Nodes[4].Text = Program.Lang.Console(Platform.NEO);
+            default_node.Nodes[1].Text = Program.Lang.Console(Platform.Flash);
+            default_node.Nodes[2].Text = Program.Lang.String("forwarders", "platforms");
+            default_node.Nodes[3].Text = Program.Lang.String(default_node.Nodes[3].Tag.ToString(), Tag.ToString());
 
             // -----------------------------
 
             // -------------------------------------------
             // Add all languages
             // -------------------------------------------
-            lngList.Items.Clear();
-            foreach (var item in Program.Lang.List) lngList.Items.Add(item.Value);
-            lngList.Items.Add("<" + Program.Lang.String("system_default", Name) + ">");
+            languages.Items.Clear();
+            foreach (var item in Program.Lang.List) languages.Items.Add(item.Value);
+            languages.Items.Add("<" + Program.Lang.String("system_default", Name) + ">");
 
-            sysLangValue = lngList.Items.Count - 1;
-            if (Default.language == "sys") lngList.SelectedIndex = sysLangValue;
-            else lngList.SelectedIndex = Program.Lang.List.Keys.ToList().IndexOf(Default.language);
+            sysLangValue = languages.Items.Count - 1;
+            if (Default.language == "sys") languages.SelectedIndex = sysLangValue;
+            else languages.SelectedIndex = Program.Lang.List.Keys.ToList().IndexOf(Default.language);
 
             #region Localization
-            label3.Text = Program.Lang.String(image_interpolation_mode.Name, "projectform");
-            image_interpolation_mode.Items.Clear();
-            image_interpolation_mode.Items.AddRange(Program.Lang.StringArray("image_interpolation_mode", "projectform"));
-            image_interpolation_mode.SelectedIndex = Default.image_interpolation;
+            image_interpolation_mode.Text = Program.Lang.String("image_interpolation_mode", "projectform");
+            image_interpolation_modes.Items.Clear();
+            image_interpolation_modes.Items.AddRange(Program.Lang.StringArray("image_interpolation_mode", "projectform"));
+            image_interpolation_modes.SelectedIndex = Default.image_interpolation;
 
-            gamedata_source_image_list.Items.Clear();
-            gamedata_source_image_list.Items.AddRange(new string[] { Program.Lang.String("automatic"), "https://thumbnails.libretro.com/", "https://github.com/libretro/libretro-thumbnails/" });
-            gamedata_source_image_list.SelectedIndex = Default.gamedata_source_image;
-
-            retrieve_gamedata_online.Text = Program.Lang.String(retrieve_gamedata_online.Name, "mainform") != "undefined" ? Program.Lang.String(retrieve_gamedata_online.Name, "mainform") : Program.Lang.String(retrieve_gamedata_online.Name, Name);
+            source_image_websites.Items.Clear();
+            source_image_websites.Items.AddRange(new string[] { Program.Lang.String("automatic"), "https://thumbnails.libretro.com/", "https://github.com/libretro/libretro-thumbnails/" });
+            source_image_websites.SelectedIndex = Default.gamedata_source_image;
             
             default_save_as_parameters.Font = new Font(default_save_as_parameters.Font, FontStyle.Bold);
-            Program.AutoSizeControl(default_save_as_filename_tb, default_save_as_project);
-            Program.AutoSizeControl(default_export_filename_tb, default_save_as_wad);
             int maxX = Math.Max(default_save_as_filename_tb.Location.X, default_export_filename_tb.Location.X), maxWidth = Math.Min(default_save_as_filename_tb.Width, default_export_filename_tb.Width);
             default_save_as_filename_tb.Location = new Point(maxX, default_save_as_filename_tb.Location.Y);
             default_export_filename_tb.Location = new Point(maxX, default_export_filename_tb.Location.Y);
             default_save_as_filename_tb.Width = default_export_filename_tb.Width = maxWidth;
 
-            label9.Text = Program.Lang.String(banner_region.Name, "banner");
+            groupBox5.Text = Program.Lang.String(banner_region.Name, "banner");
 
             flash_save_data_enable.Text = vc_pce_backupram.Text = vc_sega_save_sram.Text = Program.Lang.String("save_data_enable", "projectform");
 
@@ -191,13 +193,17 @@ namespace FriishProduce
 
             // Defaults & forwarders
             auto_update_check.Checked = Default.auto_update_check;
-            auto_retrieve_gamedata_online.Checked = Default.auto_retrieve_game_data;
+            auto_game_scan.Checked = Default.auto_retrieve_game_data;
             auto_fill_save_data.Checked = Default.auto_fill_save_data;
             reset_all_dialogs.Checked = false;
             toggleSwitch2.Checked = bool.Parse(FORWARDER.Default.show_bios_screen);
             forwarder_type.SelectedIndex = FORWARDER.Default.root_storage_device;
             default_export_filename_tb.Text = Default.default_export_filename;
             default_save_as_filename_tb.Text = Default.default_save_as_filename;
+
+            // BIOS files
+            bios_filename_neo.Text = Options.BIOS.Default.neogeo;
+            bios_filename_psx.Text = Options.BIOS.Default.psx;
 
             // Banner region
             banner_region.Items.Clear();
@@ -273,12 +279,10 @@ namespace FriishProduce
             flash_vff_cache_size.Enabled = flash_vff_sync_on_write.Enabled = flash_vff_cache_size_list.Enabled = flash_save_data_enable.Checked;
 
             ToggleSwitchText();
-            Program.AutoSizeControl(gamedata_source_image_list, gamedata_source_image);
-            Program.AutoSizeControl(vc_sega_country, vc_sega_country_l);
 
             // -----------------------------
 
-            dirtyOption1 = lngList.SelectedIndex;
+            dirtyOption1 = languages.SelectedIndex;
             dirtyOption2 = use_online_wad_enabled.Checked;
         }
 
@@ -324,10 +328,10 @@ namespace FriishProduce
             // -------------------------------------------
             // Language setting
             // -------------------------------------------
-            var lng = lngList.SelectedIndex == sysLangValue ? "sys" : "en";
+            var lng = languages.SelectedIndex == sysLangValue ? "sys" : "en";
             if (lng != "sys")
                 foreach (var item in Program.Lang.List)
-                    if (item.Value == lngList.SelectedItem.ToString())
+                    if (item.Value == languages.SelectedItem.ToString())
                         lng = item.Key;
 
             Default.language = lng;
@@ -339,19 +343,29 @@ namespace FriishProduce
 
             Default.auto_update_check = auto_update_check.Checked;
             Default.auto_fill_save_data = auto_fill_save_data.Checked;
-            Default.gamedata_source_image = gamedata_source_image_list.SelectedIndex;
-            Default.image_interpolation = image_interpolation_mode.SelectedIndex;
-            Default.auto_retrieve_game_data = auto_retrieve_gamedata_online.Checked;
+            Default.gamedata_source_image = source_image_websites.SelectedIndex;
+            Default.image_interpolation = image_interpolation_modes.SelectedIndex;
+            Default.auto_retrieve_game_data = auto_game_scan.Checked;
             Default.default_export_filename = default_export_filename_tb.Text;
             Default.default_save_as_filename = default_save_as_filename_tb.Text;
             Default.use_online_wad_enabled = use_online_wad_enabled.Checked;
+
+            // -------------------------------------------
+            // BIOS files
+            // -------------------------------------------
+
+            Options.BIOS.Default.neogeo = bios_filename_neo.Text;
+            Options.BIOS.Default.psx = bios_filename_psx.Text;
+
+            // -------------------------------------------
+            // Platform-specific settings
+            // -------------------------------------------
 
             Default.default_banner_region = banner_region.SelectedIndex;
             Default.default_injection_method_nes = injection_methods_nes.SelectedIndex;
             Default.default_injection_method_snes = injection_methods_snes.SelectedIndex;
             Default.default_injection_method_n64 = injection_methods_n64.SelectedIndex;
             Default.default_injection_method_sega = injection_methods_sega.SelectedIndex;
-            Default.Save();
 
             FORWARDER.Default.root_storage_device = forwarder_type.SelectedIndex;
             FORWARDER.Default.show_bios_screen = toggleSwitch2.Checked.ToString();
@@ -418,7 +432,7 @@ namespace FriishProduce
             SaveAll();
 
             bool isDirty = isShown
-                && (dirtyOption1 != lngList.SelectedIndex
+                && (dirtyOption1 != languages.SelectedIndex
                  || dirtyOption2 != use_online_wad_enabled.Checked);
             bool restart = isDirty && MessageBox.Show(Program.Lang.Msg(0), MessageBox.Buttons.YesNo, MessageBox.Icons.None) == MessageBox.Result.Yes;
 
@@ -492,13 +506,15 @@ namespace FriishProduce
                     v_selected == "0",
                     v_selected == "1",
                     v_selected == "2",
+                    v_selected == "3",
+                    v_selected == "4",
                     v_selected == "forwarders",
                     v_selected == "nes",
                     v_selected == "n64",
                     v_selected == "sega",
                     v_selected == "pce",
                     v_selected == "neo",
-                    v_selected == "flash"
+                    v_selected == "flash",
                 };
 
             foreach (var item in isVisible)
@@ -508,13 +524,15 @@ namespace FriishProduce
                     panel1.Visible = isVisible[0];
                     panel2.Visible = isVisible[1];
                     panel3.Visible = isVisible[2];
-                    forwarder.Visible = isVisible[3];
-                    vc_nes.Visible = isVisible[4];
-                    vc_n64.Visible = isVisible[5];
-                    vc_sega.Visible = isVisible[6];
-                    vc_pce.Visible = isVisible[7];
-                    vc_neo.Visible = isVisible[8];
-                    adobe_flash.Visible = isVisible[9];
+                    panel4.Visible = isVisible[3];
+                    panel5.Visible = isVisible[4];
+                    forwarder.Visible = isVisible[5];
+                    vc_nes.Visible = isVisible[6];
+                    vc_n64.Visible = isVisible[7];
+                    vc_sega.Visible = isVisible[8];
+                    vc_pce.Visible = isVisible[9];
+                    vc_neo.Visible = isVisible[10];
+                    adobe_flash.Visible = isVisible[11];
                 }
             }
         }
@@ -544,6 +562,47 @@ namespace FriishProduce
                 var isUpdated = await Updater.GetLatest();
                 if (isUpdated) MessageBox.Show(Program.Lang.Msg(9), MessageBox.Buttons.Ok, MessageBox.Icons.Information);
                 check_for_updates.Enabled = !isUpdated || !auto_update_check.Checked;
+            }
+        }
+
+        private void BrowseBIOS(object sender, EventArgs e)
+        {
+            Platform platform = (Platform)Enum.Parse(typeof(Platform), (sender as Button).Name.Replace("browse_bios_", null).ToUpper());
+            
+            TextBox textbox = platform switch {
+                Platform.PSX => bios_filename_psx,
+                Platform.NEO => bios_filename_neo,
+                _ => null
+            };
+
+            using OpenFileDialog ImportBIOS = new()
+            {
+                Title = Program.Lang.String("browse_bios", Name),
+                Filter = ".bin (*.bin)|*.bin",
+                DefaultExt = "bin",
+                CheckFileExists = true,
+                CheckPathExists = true,
+                SupportMultiDottedExtensions = true,
+                AddExtension = true,
+                Multiselect = false,
+            };
+
+            if (platform == Platform.NEO)
+            {
+                ImportBIOS.Filter = ".ROM (*.rom)|*.rom";
+                ImportBIOS.DefaultExt = "rom";
+            }
+
+            // ImportBIOS.Filter += Program.Lang.String("filter");
+
+            var dialog = ImportBIOS.ShowDialog();
+            if (dialog == DialogResult.OK && BIOS.Verify(ImportBIOS.FileName, platform))
+            {
+                textbox.Text = ImportBIOS.FileName;
+            }
+            else if (dialog == DialogResult.Cancel)
+            {
+                textbox.Clear();
             }
         }
     }

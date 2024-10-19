@@ -148,8 +148,8 @@ namespace FriishProduce
             toolbarSaveAs.Text = save_project_as.Text;
             toolbarExport.Text = export.Text;
             toolbarCloseProject.Text = close_project.Text;
-            toolbarRetrieveGameData.Text = retrieve_gamedata_online.Text;
-            toolbarSettings.Text = settings.Text = Program.Lang.String("settings");
+            toolbarGameScan.Text = game_scan.Text;
+            toolbarPreferences.Text = preferences.Text = Program.Lang.String("preferences");
 
             SaveProject.Title = save_project_as.Text.Replace("&", "");
             SaveWAD.Title = export.Text.Replace("&", "");
@@ -239,7 +239,7 @@ namespace FriishProduce
             // ********
             if (!hasTabs)
             {
-                retrieve_gamedata_online.Enabled = false;
+                game_scan.Enabled = false;
                 save_project_as.Enabled = false;
                 export.Enabled = false;
                 import_game_file.Text = string.Format(Program.Lang.String(import_game_file.Tag.ToString(), Name), Program.Lang.String("rom_label1", "projectform"));
@@ -249,7 +249,7 @@ namespace FriishProduce
 
             else
             {
-                retrieve_gamedata_online.Enabled = (tabControl.SelectedForm as ProjectForm).ToolbarButtons[0];
+                game_scan.Enabled = (tabControl.SelectedForm as ProjectForm).ToolbarButtons[0];
                 save_project_as.Enabled = (tabControl.SelectedForm as ProjectForm).IsModified;
                 export.Enabled = (tabControl.SelectedForm as ProjectForm).IsExportable;
                 import_game_file.Text = string.Format(Program.Lang.String(import_game_file.Tag.ToString(), Name), (tabControl.SelectedForm as ProjectForm).FileTypeName);
@@ -264,7 +264,7 @@ namespace FriishProduce
             toolbarSave.Enabled             = save_project.Enabled;
             toolbarSaveAs.Enabled           = save_project_as.Enabled;
             toolbarCloseProject.Enabled     = close_project.Enabled;
-            toolbarRetrieveGameData.Enabled = retrieve_gamedata_online.Enabled;
+            toolbarGameScan.Enabled = game_scan.Enabled;
             toolbarExport.Enabled           = export.Enabled;
         }
 

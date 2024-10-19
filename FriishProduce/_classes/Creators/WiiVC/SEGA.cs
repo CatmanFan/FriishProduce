@@ -245,9 +245,9 @@ namespace FriishProduce.Injectors
                     // newConfig is the new file which includes the modified values
                     // alreadyAdded exists to avoid duplicate entries being added to the above
                     // ****************
-                    List<string> newConfig = new List<string>();
-                    List<string> alreadyAdded = new List<string>();
-                    Dictionary<string, string> Alt = new Dictionary<string, string>();
+                    List<string> newConfig = new();
+                    List<string> alreadyAdded = new();
+                    Dictionary<string, string> Alt = new();
 
                     foreach (var line in configFile)
                     {

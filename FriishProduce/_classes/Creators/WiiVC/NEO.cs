@@ -45,7 +45,7 @@ namespace FriishProduce.Injectors
         /// </summary>
         private byte[] ExtractToByteArray(string file)
         {
-            MemoryStream data = new MemoryStream();
+            MemoryStream data = new();
             ZIP[file].Extract(data);
             data.Seek(0, SeekOrigin.Begin);
             return data.ToArray();
@@ -74,7 +74,7 @@ namespace FriishProduce.Injectors
             S = new List<byte>();
             C = new List<byte>();
 
-            List<string> FileList = new List<string>();
+            List<string> FileList = new();
 
             foreach (ZipEntry item in ZIP.Entries)
             {
@@ -187,15 +187,10 @@ namespace FriishProduce.Injectors
             // TO-DO: Do byteswap for each byte with BIOS
             // ****************
             BIOS = new List<byte>();
-            var BIOSPath = "";
-            bool noBIOS = false;
+            string BIOSPath = Options.BIOS.Default.neogeo;
 
-            try { var test = Settings["BIOS"]; BIOSPath = Settings["BIOSPath"]; } catch { noBIOS = true; goto AutoBIOS; }
-
-            if (Settings["BIOS"].ToLower() != "custom" || string.IsNullOrWhiteSpace(BIOSPath) || !File.Exists(BIOSPath))
-            {
+            if (Settings["BIOS"].ToLower() != "custom" || !File.Exists(BIOSPath))
                 goto AutoBIOS;
-            }
 
             else
             {
@@ -219,8 +214,7 @@ namespace FriishProduce.Injectors
             }
 
             AutoBIOS:
-            var targetBIOS = Options.VC_NEO.Default.bios;
-            if (!noBIOS && Settings["BIOS"].ToLower() != "custom") targetBIOS = Settings["BIOS"];
+            string targetBIOS = Settings["BIOS"].ToLower() == "custom" ? Options.VC_NEO.Default.bios : Settings["BIOS"];
 
             BIOS.Clear();
             switch (targetBIOS.ToLower())

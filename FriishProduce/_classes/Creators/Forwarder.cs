@@ -171,21 +171,26 @@ namespace FriishProduce
 
                 // Copy BIOS if available
                 // *******
-                if (Settings != null && Settings.ContainsKey("BIOSPath") && !string.IsNullOrWhiteSpace(Settings["BIOSPath"]))
+                if (Settings != null && Settings.ContainsKey("use_bios") && bool.Parse(Settings["use_bios"]))
                 {
                     try
                     {
-                        var validList = new List<(Platform Platform, int Index, string Directory)>()
+                        var validList = new List<(Platform Platform, int Index, string Target)>()
                         {
                             (Platform.PSX,   12, Paths.SDUSBRoot + "wiisxrx\\bios\\SCPH1001.BIN"),
                         };
 
                         foreach (var item in validList)
                         {
-                            if (BIOS.GetConsole(File.ReadAllBytes(Settings["BIOSPath"])) == item.Platform
-                                && EmulatorIndex == item.Index)
+                            string source = item.Platform switch {
+                                Platform.PSX => Options.BIOS.Default.psx,
+                                Platform.GBA => Options.BIOS.Default.gba,
+                                _ => null
+                            };
+
+                            if (EmulatorIndex == item.Index && File.Exists(source) && BIOS.GetConsole(File.ReadAllBytes(source)) == item.Platform)
                             {
-                                File.Copy(Settings["BIOSPath"], item.Directory);
+                                File.Copy(source, item.Target);
                                 hasBIOS = true;
                             }
                         }
@@ -194,7 +199,6 @@ namespace FriishProduce
                     catch
                     {
                         hasBIOS = false;
-                        MessageBox.Show(Program.Lang.Msg(13, true));
                     }
                 }
             }
@@ -248,7 +252,7 @@ namespace FriishProduce
                     meta.Add($"    <arg>{ROMFolder}</arg>");
                     meta.Add($"    <arg>{ROMName}</arg>");
                     meta.Add($"    <arg>BiosDevice = {(hasBIOS ? "1" : "0")}</arg>");
-                    meta.Add($"    <arg>BootThruBios = {(hasBIOS && bool.Parse(Settings["BIOSScreen"]) ? "1" : "0")}</arg>");
+                    meta.Add($"    <arg>BootThruBios = {(hasBIOS && bool.Parse(Settings["show_bios_screen"]) ? "1" : "0")}</arg>");
                     meta.Add("    <arg>FPS = 0</arg>");
                     meta.Add("    <arg>ScreenMode = 0</arg>");
                     meta.Add("    <arg>VideoMode = 0</arg>");

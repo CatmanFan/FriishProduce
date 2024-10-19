@@ -17,20 +17,6 @@ namespace FriishProduce
         public static bool IsUpdated = false;
 
         /// <summary>
-        /// Auto-sizes a control, such as a combo box, based on the width of the label which is placed near it.
-        /// </summary>
-        /// <param name="control"></param>
-        /// <param name="label"></param>
-        public static void AutoSizeControl(Control control, Label label)
-        {
-            if (control.MaximumSize.Width < label.Width || control.MaximumSize.Width <= 0 || control.MaximumSize.IsEmpty)
-                control.MaximumSize = control.Size;
-
-            control.Size = new System.Drawing.Size(control.MaximumSize.Width - label.Width - 2, control.Height);
-            control.Location = new System.Drawing.Point(label.Location.X + label.Width + 2, label.Location.Y - 3);
-        }
-
-        /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]

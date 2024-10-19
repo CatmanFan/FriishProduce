@@ -48,7 +48,6 @@ See **[here](https://github.com/CatmanFan/FriishProduce/wiki/FriishProduce-v1.0)
 [ ] Update settings form
 
 ### After releasing
-[ ] Make project forms inheritable and categorize by console/platform
 [ ] Restructuring, trimming features and cleaning code
 
 ### Future platforms

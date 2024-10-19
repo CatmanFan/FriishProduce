@@ -107,7 +107,7 @@ namespace FriishProduce
             // 
             this.country.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.country.FormattingEnabled = true;
-            this.country.Location = new System.Drawing.Point(10, 36);
+            this.country.Location = new System.Drawing.Point(650, 46);
             this.country.Name = "country";
             this.country.Size = new System.Drawing.Size(293, 21);
             this.country.TabIndex = 18;
@@ -117,8 +117,6 @@ namespace FriishProduce
             this.vc_options.Controls.Add(this.dev_mdpad_enable_6b);
             this.vc_options.Controls.Add(this.save_sram);
             this.vc_options.Controls.Add(this.console_disableresetbutton);
-            this.vc_options.Controls.Add(this.label2);
-            this.vc_options.Controls.Add(this.country);
             this.vc_options.Location = new System.Drawing.Point(330, 10);
             this.vc_options.Name = "vc_options";
             this.vc_options.Size = new System.Drawing.Size(312, 284);
@@ -130,7 +128,7 @@ namespace FriishProduce
             // dev_mdpad_enable_6b
             // 
             this.dev_mdpad_enable_6b.AutoSize = true;
-            this.dev_mdpad_enable_6b.Location = new System.Drawing.Point(10, 66);
+            this.dev_mdpad_enable_6b.Location = new System.Drawing.Point(17, 19);
             this.dev_mdpad_enable_6b.Name = "dev_mdpad_enable_6b";
             this.dev_mdpad_enable_6b.Size = new System.Drawing.Size(138, 17);
             this.dev_mdpad_enable_6b.TabIndex = 22;
@@ -142,7 +140,7 @@ namespace FriishProduce
             // save_sram
             // 
             this.save_sram.AutoSize = true;
-            this.save_sram.Location = new System.Drawing.Point(10, 112);
+            this.save_sram.Location = new System.Drawing.Point(17, 65);
             this.save_sram.Name = "save_sram";
             this.save_sram.Size = new System.Drawing.Size(77, 17);
             this.save_sram.TabIndex = 20;
@@ -154,7 +152,7 @@ namespace FriishProduce
             // 
             this.console_disableresetbutton.AutoSize = true;
             this.console_disableresetbutton.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.console_disableresetbutton.Location = new System.Drawing.Point(10, 89);
+            this.console_disableresetbutton.Location = new System.Drawing.Point(17, 42);
             this.console_disableresetbutton.Name = "console_disableresetbutton";
             this.console_disableresetbutton.Size = new System.Drawing.Size(155, 17);
             this.console_disableresetbutton.TabIndex = 21;
@@ -166,7 +164,7 @@ namespace FriishProduce
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 19);
+            this.label2.Location = new System.Drawing.Point(648, 29);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(36, 13);
             this.label2.TabIndex = 19;
@@ -177,8 +175,12 @@ namespace FriishProduce
             this.ClientSize = new System.Drawing.Size(654, 362);
             this.Controls.Add(this.vc_options);
             this.Controls.Add(this.display);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.country);
             this.Name = "Options_VC_SEGA";
             this.Tag = "vc_sega";
+            this.Controls.SetChildIndex(this.country, 0);
+            this.Controls.SetChildIndex(this.label2, 0);
             this.Controls.SetChildIndex(this.display, 0);
             this.Controls.SetChildIndex(this.vc_options, 0);
             this.bottomPanel1.ResumeLayout(false);
@@ -189,6 +191,7 @@ namespace FriishProduce
             this.vc_options.ResumeLayout(false);
             this.vc_options.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

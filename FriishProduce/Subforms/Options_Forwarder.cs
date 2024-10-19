@@ -9,17 +9,23 @@ namespace FriishProduce
     public partial class Options_Forwarder : ContentOptions
     {
         private Platform platform { get; set; }
-        private string biosPath { get; set; }
+        private string bios { get; set; }
 
         public Options_Forwarder(Platform platform)
         {
             InitializeComponent();
             this.platform = platform;
+            bios = platform switch
+            {
+                Platform.PSX => FriishProduce.Options.BIOS.Default.psx,
+                Platform.GBA => FriishProduce.Options.BIOS.Default.gba,
+                _ => null
+            };
 
             Options = new Dictionary<string, string>
             {
-                { "BIOSPath", null },
-                { "BIOSScreen", FORWARDER.Default.show_bios_screen }
+                { "use_bios", false.ToString() },
+                { "show_bios_screen", FORWARDER.Default.show_bios_screen }
             };
 
             // Cosmetic
@@ -27,7 +33,6 @@ namespace FriishProduce
             if (!DesignMode)
             {
                 Program.Lang.Control(this);
-                ImportBIOS.Filter += Program.Lang.String("filter");
             }
         }
 
@@ -39,18 +44,34 @@ namespace FriishProduce
             // *******
             if (Options != null)
             {
-                bool valid = Options["BIOSPath"] != null || File.Exists(Options["BIOSPath"]);
+                bool valid = File.Exists(bios);
 
-                if (!File.Exists(Options["BIOSPath"]) && !string.IsNullOrEmpty(Options["BIOSPath"]))
+                // Clear BIOS file option if not found
+                if (!valid && !string.IsNullOrEmpty(bios))
                 {
-                    MessageBox.Show(string.Format(Program.Lang.Msg(10, true), Path.GetFileName(Options["BIOSPath"])));
-                    Options["BIOSPath"] = null;
+                    MessageBox.Show
+                    (
+                        string.Format(string.Format(Program.Lang.Msg(10, true), Path.GetFileName(bios))),
+                        MessageBox.Buttons.Ok,
+                        MessageBox.Icons.Information
+                    );
+
+                    bios = null;
+                    switch (platform)
+                    {
+                        case Platform.PSX:
+                            FriishProduce.Options.BIOS.Default.psx = null;
+                            break;
+                        case Platform.GBA:
+                            FriishProduce.Options.BIOS.Default.gba = null;
+                            break;
+                    }
+                    FriishProduce.Options.BIOS.Default.Save();
+                    Options["show_bios_screen"] = Options["use_bios"] = false.ToString();
                 }
 
-                toggleSwitch1.Checked = valid;
-                toggleSwitch2.Checked = bool.Parse(Options["BIOSScreen"]);
-
-                if (valid) biosPath = Options["BIOSPath"];
+                toggleSwitch1.Checked = bool.Parse(Options["use_bios"]);
+                toggleSwitch2.Checked = bool.Parse(Options["show_bios_screen"]);
 
                 show_bios_screen.Enabled = toggleSwitch2.Enabled = valid;
             }
@@ -59,8 +80,8 @@ namespace FriishProduce
 
         protected override void SaveOptions()
         {
-            Options["BIOSPath"] = biosPath;
-            Options["BIOSScreen"] = toggleSwitch2.Checked.ToString();
+            Options["use_bios"] = toggleSwitch1.Checked.ToString();
+            Options["show_bios_screen"] = toggleSwitch2.Checked.ToString();
         }
 
         // ---------------------------------------------------------------------------------------------------------------
@@ -68,25 +89,14 @@ namespace FriishProduce
         #region Functions
         private void BIOSChanged(object sender, EventArgs e)
         {
-            if (toggleSwitch1.Checked)
+            if (toggleSwitch1.Checked && bios == null)
             {
-                if (biosPath == null)
-                {
-                    ImportBIOS.Title = toggleSwitch1.Text;
-
-                    if (ImportBIOS.ShowDialog() == DialogResult.OK)
-                    {
-                        if (BIOS.Verify(ImportBIOS.FileName, platform))
-                            biosPath = ImportBIOS.FileName;
-                        else toggleSwitch1.Checked = false;
-                    }
-                    else toggleSwitch1.Checked = false;
-                }
+                MessageBox.Show(Program.Lang.Msg(13, true), MessageBox.Buttons.Ok, MessageBox.Icons.Error, false);
+                toggleSwitch1.Checked = false;
             }
 
-            if (!toggleSwitch1.Checked) biosPath = null;
-
             show_bios_screen.Enabled = toggleSwitch2.Enabled = toggleSwitch1.Checked;
+            if (!toggleSwitch2.Enabled) toggleSwitch2.Checked = false;
         }
         #endregion
     }

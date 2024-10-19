@@ -16,7 +16,7 @@ namespace FriishProduce
     public partial class ProjectForm : Form
     {
         protected Platform targetPlatform { get; set; }
-        private BannerOptions banner_form;
+        private readonly BannerOptions banner_form;
 
         protected string TIDCode;
         protected string Untitled;
@@ -36,7 +36,7 @@ namespace FriishProduce
             }
         }
         private bool _showSaveData;
-        private bool _isShown;
+        private readonly bool _isShown;
         private bool _isMint;
 
         #region Public bools (for main form)
@@ -464,11 +464,9 @@ namespace FriishProduce
 
             if (Program.MainForm != null)
             {
-                using (var icon = new Bitmap(Program.MainForm.Icons[targetPlatform]))
-                {
-                    icon.MakeTransparent(Color.White);
-                    Icon = Icon.FromHandle(icon.GetHicon());
-                }
+                using var icon = new Bitmap(Program.MainForm.Icons[targetPlatform]);
+                icon.MakeTransparent(Color.White);
+                Icon = Icon.FromHandle(icon.GetHicon());
             }
 
             InitializeComponent();
@@ -658,21 +656,25 @@ namespace FriishProduce
         {
             browseROM.Title = text;
 
+#pragma warning disable IDE0066 // Convert switch statement to expression
             switch (targetPlatform)
+#pragma warning restore IDE0066 // Convert switch statement to expression
             {
+                // ROM formats
                 default:
+                    browseROM.Filter = Program.Lang.String($"filter.rom_{targetPlatform.ToString().ToLower()}");
+                    break;
+
+                // CD images
+                case Platform.PCECD:
+                case Platform.PSX:
+                case Platform.SMCD:
+                case Platform.GCN:
                     browseROM.Filter = Program.Lang.String("filter.disc") + "|" + Program.Lang.String("filter.zip") + Program.Lang.String("filter");
                     break;
 
-                case Platform.NES:
-                case Platform.SNES:
-                case Platform.N64:
-                case Platform.SMS:
-                case Platform.SMD:
-                case Platform.PCE:
-                case Platform.C64:
-                case Platform.MSX:
-                    browseROM.Filter = Program.Lang.String($"filter.rom_{targetPlatform.ToString().ToLower()}");
+                case Platform.S32X:
+                    browseROM.Filter = Program.Lang.String($"filter.rom_{Platform.SMD.ToString().ToLower()}");
                     break;
 
                 case Platform.NEO:
@@ -756,8 +758,6 @@ namespace FriishProduce
             // ROM/ISO
             // ********
             bool hasRom = !string.IsNullOrWhiteSpace(rom?.FilePath);
-            bool hasPatch = showPatch && !string.IsNullOrWhiteSpace(patch);
-            bool hasImage = img?.Source != null;
             bool hasWad = !string.IsNullOrWhiteSpace(WADPath);
 
             int maxLength = 75;
@@ -1253,7 +1253,7 @@ namespace FriishProduce
             randomTID();
             patch = null;
 
-            Program.MainForm.toolbarRetrieveGameData.Enabled = Program.MainForm.retrieve_gamedata_online.Enabled = ToolbarButtons[0];
+            Program.MainForm.toolbarGameScan.Enabled = Program.MainForm.game_scan.Enabled = ToolbarButtons[0];
             if (rom != null && LoadGameData && ToolbarButtons[0]) this.LoadGameData();
             setFilesText();
         }
@@ -1989,19 +1989,19 @@ namespace FriishProduce
 
         private void import_patch_CheckedChanged(object sender, EventArgs e)
         {
-            string inPatch = null;
+            string oldPatch = patch;
+
             if (include_patch.Checked)
             {
                 if (browsePatch.ShowDialog() == DialogResult.OK)
-                    inPatch = browsePatch.FileName;
+                    patch = browsePatch.FileName;
                 else
-                    inPatch = null;
+                    patch = null;
             }
+            else
+                patch = null;
 
-            else inPatch = null;
-
-            if (inPatch != patch) refreshData();
-            patch = inPatch;
+            if (oldPatch != patch) refreshData();
         }
 
         private void InjectorsList_SelectedIndexChanged(object sender, EventArgs e)

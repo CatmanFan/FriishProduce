@@ -36,7 +36,7 @@
 			"region_k":							"Corée du Sud",
 			"region_rf":						"Région déverrouillée",
 
-			"settings":							"Réglages",
+			"preferences":						"Paramètres",
 			"system":							"Système",
 			"display":							"Affichage",
 			"vc":								"Console virtuelle",
@@ -115,7 +115,7 @@
 			"e_010":							"Le fichier «{0}» n'a pas été trouvé dans son chemin original. Il s'agit qu'il peut avoir été déplacé ou supprimé.",
 			"e_011":							"Le dossier «{0}» n'a pas été trouvé dans son chemin original. Il s'agit qu'il peut avoir été déplacé ou supprimé.",
 			"e_012":							"Aucun point d'entrée d'injection n'a été trouvé. Il peut s'agir que la méthode d'injection utilisée par cette chaîne n'est toujours pas prise en charge.",
-			"e_013":							"Le fichier du BIOS est indisponible ou invalide. Cette option sera désactivée dans les réglages de l'émulateur."
+			"e_013":							"Le fichier BIOS requis pour cette console est indisponible. Veuillez le spécifier de nouveau dans les préférences de l'application."
 		}
 	},
 
@@ -131,8 +131,8 @@
 			"save_project_as":					"Enregistrer le projet sous ...",
 			"close_project":					"Fermer le projet",
 
-			"import_rom":						"Ouvrir un fichier {0} ...",
-			"retrieve_gamedata_online":			"Charger les informations dès de la bibliothèque des jeux",
+			"import_game_file":					"Ouvrir un fichier {0} ...",
+			"game_scan":						"Charger les informations dès de la bibliothèque des jeux",
 			"export":							"Exporter ...",
 
 			"exit":								"Quitter",
@@ -152,10 +152,8 @@
 			"check_for_updates":				"Vérifier les mises à jour",
 			"auto_update_check":				"Vérifier les mises à jour automatiquement au démarrage de l'application",
 
-			"gamedata_settings":				"Récupération des informations du jeu",
-			"gamedata_source_image":			"Site d'hébergement des images :",
-			"auto_retrieve_gamedata_online":	"À l'ouverture d'un fichier de jeu, charger ses informations automatiquement",
-			"auto_fill_save_data":				"Remplir automatiquement le formulaire de titre des données de sauvegarde",
+			"bios":								"Fichiers BIOS",
+			"browse_bios":						"Choisir un fichier BIOS ...",
 			
 			"default_settings":					"Paramètres par défaut",
 			"default_injection_methods":		"Méthodes d'injection par défaut",
@@ -165,7 +163,10 @@
 			"default_save_as_parameters":		"Parties remplaçables :",
 
 			"use_online_wad_enabled":           "Activer l'option de téléchargement des WADs",
-			"use_online_wad_tip":				"Cette option peut être utilisée pour télécharger n'importe quelle WAD disponible dans la base des données sans avoir de fichier déjà sur le disque. Il est cependant recommandé de désactiver cette option car sa légalité est discutable et la fonctionnalité NusClient qui existe déjà dans libWiiSharp ne permet pas de décrypter facilement le contenu des chaînes de la Console virtuelle."
+			"use_online_wad_tip":				"Cette option peut être utilisée pour télécharger n'importe quelle WAD disponible dans la base des données sans avoir de fichier déjà sur le disque. Il est cependant recommandé de désactiver cette option car sa légalité est discutable et la fonctionnalité NusClient qui existe déjà dans libWiiSharp ne permet pas de décrypter facilement le contenu des chaînes de la Console virtuelle.",
+			"auto_fill_save_data":				"Remplir automatiquement le formulaire de titre des données de sauvegarde",
+			"auto_game_scan":					"À l'ouverture d'un fichier de jeu, charger ses informations automatiquement",
+			"game_source_image":				"Site d'hébergement des images :"
 		},
 
 		"projectform": {
@@ -195,6 +196,7 @@
 			"image_resize0":					"Étirer l'image",
 			"image_resize1":					"Conserver les proportions",
 			
+			"channel_metadata":					"Métadonnées de la chaîne",
 			"channel_name":						"Nom de la chaîne",
 			"video_mode":						"Mode vidéo",
 			"banner":							"Banner de la chaîne",
@@ -297,7 +299,7 @@
 
 		"forwarder": {
 			"bios_settings":					"Paramètres du BIOS",
-			"use_bios":							"Utiliser un fichier du BIOS",
+			"use_bios":							"Activer la fonctionnalité du BIOS",
 			"show_bios_screen":					"Afficher l'écran de démarrage du système",
 			"rpgm_settings":					"Paramètres de RPG Maker",
 			"use_rtp":							"Utiliser des RTP (ressources de base) externes",

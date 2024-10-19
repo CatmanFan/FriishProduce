@@ -80,14 +80,14 @@ namespace FriishProduce
             this.banner_sound = new System.Windows.Forms.Button();
             this.banner_details = new System.Windows.Forms.Button();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.video_modes = new System.Windows.Forms.ComboBox();
             this.bannerMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.play_banner_sound = new System.Windows.Forms.ToolStripMenuItem();
             this.replace_banner_sound = new System.Windows.Forms.ToolStripMenuItem();
             this.restore_banner_sound = new System.Windows.Forms.ToolStripMenuItem();
             this.browseSound = new System.Windows.Forms.OpenFileDialog();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SaveIcon_Panel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.title_id_random)).BeginInit();
@@ -499,6 +499,18 @@ namespace FriishProduce
             this.groupBox8.TabStop = false;
             this.groupBox8.Tag = "channel_metadata";
             // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            this.label2.Tag = "title_id";
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            this.label1.Tag = "channel_name";
+            // 
             // video_modes
             // 
             this.video_modes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -551,18 +563,6 @@ namespace FriishProduce
             resources.ApplyResources(this.browseSound, "browseSound");
             this.browseSound.RestoreDirectory = true;
             this.browseSound.SupportMultiDottedExtensions = true;
-            // 
-            // label1
-            // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
-            this.label1.Tag = "channel_name";
-            // 
-            // label2
-            // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
-            this.label2.Tag = "title_id";
             // 
             // ProjectForm
             // 

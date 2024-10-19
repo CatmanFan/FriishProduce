@@ -12,10 +12,10 @@ namespace FriishProduce
         public class ChannelEntry
         {
             public string ID { get; set; }
-            public List<int> Regions = new List<int>();
-            public List<string> Titles = new List<string>();
-            public List<int> EmuRevs = new List<int>();
-            public List<string> MarioCube = new List<string>();
+            public List<int> Regions = new();
+            public List<string> Titles = new();
+            public List<int> EmuRevs = new();
+            public List<string> MarioCube = new();
 
             public string GetID(int index, bool raw = false)
             {
@@ -184,10 +184,8 @@ namespace FriishProduce
         /// <summary>
         /// Loads the Static Base WAD.
         /// </summary>
-        public ChannelDatabase(string externalFile = null)
+        public ChannelDatabase()
         {
-            string file = File.Exists(externalFile) ? externalFile : File.Exists(Properties.Settings.Default.custom_database) ? Properties.Settings.Default.custom_database : null;
-
             Entries = new List<ChannelEntry>();
 
             if (!File.Exists(Properties.Settings.Default.custom_database))
@@ -196,20 +194,12 @@ namespace FriishProduce
                 Properties.Settings.Default.Save();
             }
 
-            try
-            {
-                GetEntry(File.ReadAllBytes(file));
-            }
-            catch
-            {
-                if (!string.IsNullOrWhiteSpace(externalFile)) throw;
-                else GetEntry(Properties.Resources.Database);
-            }
+            getStaticBase();
         }
 
         private readonly string error = "The database format or styling is not valid.";
 
-        private void GetEntry(byte[] file)
+        private void getStaticBase()
         {
             Entries = new List<ChannelEntry>();
 
@@ -256,8 +246,8 @@ namespace FriishProduce
         {
             Entries = new List<ChannelEntry>();
 
-            using (MemoryStream ms = new MemoryStream(file))
-            using (StreamReader sr = new StreamReader(ms, Encoding.Unicode))
+            using (MemoryStream ms = new(file))
+            using (StreamReader sr = new(ms, Encoding.Unicode))
             using (var doc = JsonDocument.Parse(sr.ReadToEnd(), new JsonDocumentOptions() { AllowTrailingCommas = true, CommentHandling = JsonCommentHandling.Skip }))
             {
                 var x = doc.Deserialize<JsonElement>(new JsonSerializerOptions() { AllowTrailingCommas = true, ReadCommentHandling = JsonCommentHandling.Skip }).GetProperty(c.ToString().ToLower());
@@ -268,7 +258,7 @@ namespace FriishProduce
 
                 foreach (var item in x.EnumerateArray())
                 {
-                    var y = new ChannelEntry() { ID = item.GetProperty("id").GetString() };
+                    ChannelEntry y = new() { ID = item.GetProperty("id").GetString() };
                     var reg = item.GetProperty("region");
 
                     for (int i = 0; i < reg.GetArrayLength(); i++)

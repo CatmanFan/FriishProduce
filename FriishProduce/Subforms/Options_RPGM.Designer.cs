@@ -38,18 +38,6 @@ namespace FriishProduce
             this.rpgm_settings.SuspendLayout();
             this.SuspendLayout();
             // 
-            // b_ok
-            // 
-            this.b_ok.Location = new System.Drawing.Point(362, 12);
-            // 
-            // bottomPanel1
-            // 
-            this.bottomPanel1.Size = new System.Drawing.Size(560, 47);
-            // 
-            // b_cancel
-            // 
-            this.b_cancel.Location = new System.Drawing.Point(458, 12);
-            // 
             // rpgm_settings
             // 
             this.rpgm_settings.Controls.Add(this.rtp_folder);

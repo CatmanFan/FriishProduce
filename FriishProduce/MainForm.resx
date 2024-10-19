@@ -1560,22 +1560,22 @@
     <value>23, 22</value>
   </data>
   <data name="toolbarImportGameFile.Text" xml:space="preserve">
-    <value>retrieve_gamedata_online</value>
+    <value>game_scan</value>
   </data>
   <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 25</value>
   </data>
-  <data name="toolbarRetrieveGameData.Enabled" type="System.Boolean, mscorlib">
+  <data name="toolbarGameScan.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="toolbarRetrieveGameData.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+  <data name="toolbarGameScan.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
-  <data name="toolbarRetrieveGameData.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="toolbarGameScan.Size" type="System.Drawing.Size, System.Drawing">
     <value>23, 22</value>
   </data>
-  <data name="toolbarRetrieveGameData.Text" xml:space="preserve">
-    <value>retrieve_gamedata_online</value>
+  <data name="toolbarGameScan.Text" xml:space="preserve">
+    <value>game_scan</value>
   </data>
   <data name="toolbarExport.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -1592,10 +1592,10 @@
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 25</value>
   </data>
-  <data name="toolbarSettings.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+  <data name="toolbarPreferences.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
-  <data name="toolbarSettings.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="toolbarPreferences.Size" type="System.Drawing.Size, System.Drawing">
     <value>23, 22</value>
   </data>
   <data name="toolStrip.Location" type="System.Drawing.Point, System.Drawing">
@@ -1691,11 +1691,11 @@
   <data name="menuItem8.Text" xml:space="preserve">
     <value>-</value>
   </data>
-  <data name="settings.Shortcut" type="System.Windows.Forms.Shortcut, System.Windows.Forms">
+  <data name="preferences.Shortcut" type="System.Windows.Forms.Shortcut, System.Windows.Forms">
     <value>F5</value>
   </data>
-  <data name="settings.Text" xml:space="preserve">
-    <value>settings</value>
+  <data name="preferences.Text" xml:space="preserve">
+    <value>preferences</value>
   </data>
   <data name="exit.Shortcut" type="System.Windows.Forms.Shortcut, System.Windows.Forms">
     <value>AltF4</value>
@@ -1718,14 +1718,14 @@
   <data name="menuItem4.Text" xml:space="preserve">
     <value>-</value>
   </data>
-  <data name="retrieve_gamedata_online.Enabled" type="System.Boolean, mscorlib">
+  <data name="game_scan.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="retrieve_gamedata_online.Shortcut" type="System.Windows.Forms.Shortcut, System.Windows.Forms">
+  <data name="game_scan.Shortcut" type="System.Windows.Forms.Shortcut, System.Windows.Forms">
     <value>CtrlG</value>
   </data>
-  <data name="retrieve_gamedata_online.Text" xml:space="preserve">
-    <value>retrieve_gamedata_online</value>
+  <data name="game_scan.Text" xml:space="preserve">
+    <value>game_scan</value>
   </data>
   <data name="export.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -3856,10 +3856,10 @@
   <data name="&gt;&gt;toolStripSeparator6.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;toolbarRetrieveGameData.Name" xml:space="preserve">
-    <value>toolbarRetrieveGameData</value>
+  <data name="&gt;&gt;toolbarGameScan.Name" xml:space="preserve">
+    <value>toolbarGameScan</value>
   </data>
-  <data name="&gt;&gt;toolbarRetrieveGameData.Type" xml:space="preserve">
+  <data name="&gt;&gt;toolbarGameScan.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolbarExport.Name" xml:space="preserve">
@@ -3874,10 +3874,10 @@
   <data name="&gt;&gt;toolStripSeparator1.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;toolbarSettings.Name" xml:space="preserve">
-    <value>toolbarSettings</value>
+  <data name="&gt;&gt;toolbarPreferences.Name" xml:space="preserve">
+    <value>toolbarPreferences</value>
   </data>
-  <data name="&gt;&gt;toolbarSettings.Type" xml:space="preserve">
+  <data name="&gt;&gt;toolbarPreferences.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;SaveProject.Name" xml:space="preserve">
@@ -3934,10 +3934,10 @@
   <data name="&gt;&gt;menuItem8.Type" xml:space="preserve">
     <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;settings.Name" xml:space="preserve">
-    <value>settings</value>
+  <data name="&gt;&gt;preferences.Name" xml:space="preserve">
+    <value>preferences</value>
   </data>
-  <data name="&gt;&gt;settings.Type" xml:space="preserve">
+  <data name="&gt;&gt;preferences.Type" xml:space="preserve">
     <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;exit.Name" xml:space="preserve">
@@ -3958,10 +3958,16 @@
   <data name="&gt;&gt;import_game_file.Type" xml:space="preserve">
     <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;retrieve_gamedata_online.Name" xml:space="preserve">
-    <value>retrieve_gamedata_online</value>
+  <data name="&gt;&gt;menuItem4.Name" xml:space="preserve">
+    <value>menuItem4</value>
   </data>
-  <data name="&gt;&gt;retrieve_gamedata_online.Type" xml:space="preserve">
+  <data name="&gt;&gt;menuItem4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;game_scan.Name" xml:space="preserve">
+    <value>game_scan</value>
+  </data>
+  <data name="&gt;&gt;game_scan.Type" xml:space="preserve">
     <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;export.Name" xml:space="preserve">
@@ -3992,12 +3998,6 @@
     <value>about</value>
   </data>
   <data name="&gt;&gt;about.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;menuItem4.Name" xml:space="preserve">
-    <value>menuItem4</value>
-  </data>
-  <data name="&gt;&gt;menuItem4.Type" xml:space="preserve">
     <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

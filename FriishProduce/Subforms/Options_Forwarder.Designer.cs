@@ -29,7 +29,6 @@ namespace FriishProduce
         /// </summary>
         private void InitializeComponent()
         {
-            this.ImportBIOS = new System.Windows.Forms.OpenFileDialog();
             this.use_bios = new System.Windows.Forms.Label();
             this.toggleSwitch1 = new JCS.ToggleSwitch();
             this.show_bios_screen = new System.Windows.Forms.Label();
@@ -38,23 +37,6 @@ namespace FriishProduce
             this.bottomPanel1.SuspendLayout();
             this.bios_settings.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // b_ok
-            // 
-            this.b_ok.Location = new System.Drawing.Point(362, 12);
-            // 
-            // bottomPanel1
-            // 
-            this.bottomPanel1.Size = new System.Drawing.Size(560, 47);
-            // 
-            // b_cancel
-            // 
-            this.b_cancel.Location = new System.Drawing.Point(458, 12);
-            // 
-            // ImportBIOS
-            // 
-            this.ImportBIOS.DefaultExt = "bin";
-            this.ImportBIOS.Filter = ".bin (*.bin)|*.bin";
             // 
             // use_bios
             // 
@@ -126,8 +108,6 @@ namespace FriishProduce
         }
 
         #endregion
-
-        private System.Windows.Forms.OpenFileDialog ImportBIOS;
         private System.Windows.Forms.Label use_bios;
         private JCS.ToggleSwitch toggleSwitch1;
         private System.Windows.Forms.Label show_bios_screen;

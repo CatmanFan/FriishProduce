@@ -14,8 +14,7 @@ namespace FriishProduce
 
             Options = new Dictionary<string, string>
             {
-                { "BIOS", VC_NEO.Default.bios },
-                { "BIOSPath", null }
+                { "BIOS", VC_NEO.Default.bios }
             };
 
             // Cosmetic
@@ -34,15 +33,22 @@ namespace FriishProduce
             // *******
             if (Options != null)
             {
-                if (!File.Exists(Options["BIOSPath"]) && !string.IsNullOrEmpty(Options["BIOSPath"])) MessageBox.Show(string.Format(Program.Lang.Msg(10, true), Path.GetFileName(Options["BIOSPath"])), MessageBox.Buttons.Ok, MessageBox.Icons.Warning);
+                bool valid = File.Exists(FriishProduce.Options.BIOS.Default.neogeo);
 
-                if (Options["BIOSPath"] != null || File.Exists(Options["BIOSPath"]))
+                // Clear list selection if not found
+                if (!valid && biosIndex == 0)
                 {
-                    Options["BIOS"] = "custom";
-                    biosPath = Options["BIOSPath"];
-                }
+                    MessageBox.Show
+                    (
+                        string.Format(Program.Lang.Msg(10, true), Path.GetFileName(FriishProduce.Options.BIOS.Default.neogeo)),
+                        MessageBox.Buttons.Ok,
+                        MessageBox.Icons.Information
+                    );
 
-                else if (Options["BIOS"] == "custom") Options["BIOS"] = VC_NEO.Default.bios;
+                    Options["BIOS"] = VC_NEO.Default.bios;
+                    FriishProduce.Options.BIOS.Default.neogeo = null;
+                    FriishProduce.Options.BIOS.Default.Save();
+                }
 
                 bios_list.SelectedIndex = biosIndex;
             }
@@ -51,16 +57,13 @@ namespace FriishProduce
 
         protected override void SaveOptions()
         {
-            Options["BIOSPath"] = biosPath;
-            Options["BIOS"] = Options["BIOSPath"] != null || File.Exists(Options["BIOSPath"]) ? "custom" : biosType;
+            Options["BIOS"] = biosName;
         }
 
         // ---------------------------------------------------------------------------------------------------------------
 
         #region Variables
-        private string biosPath { get; set; }
-
-        private string biosType
+        private string biosName
         {
             get
             {
@@ -79,8 +82,7 @@ namespace FriishProduce
         {
             get
             {
-                string type = Options["BIOS"] == "custom" ? VC_NEO.Default.bios : Options["BIOS"];
-                return type switch
+                return Options["BIOS"] switch
                 {
                     "custom" => 0,
                     "vc1" => 1,
@@ -99,20 +101,14 @@ namespace FriishProduce
         #region Functions
         private void BIOSChanged(object sender, EventArgs e)
         {
-            if (biosType == "custom")
+            if (biosName == "custom" && FriishProduce.Options.BIOS.Default.neogeo == null)
             {
-                if (biosPath == null)
-                {
-                    biosImport.Title = bios_list.SelectedItem.ToString();
+                MessageBox.Show(Program.Lang.Msg(13, true), MessageBox.Buttons.Ok, MessageBox.Icons.Error, false);
 
-                    if (biosImport.ShowDialog() == DialogResult.OK)
-                        biosPath = biosImport.FileName;
-
-                    else bios_list.SelectedIndex = biosIndex;
-                }
+                // Set list selection back to previous one
+                if (biosIndex == 0) Options["BIOS"] = VC_NEO.Default.bios;
+                bios_list.SelectedIndex = biosIndex;
             }
-
-            else if (bios_list.SelectedIndex > 0) biosPath = null;
         }
         #endregion
     }

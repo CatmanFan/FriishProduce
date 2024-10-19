@@ -52,7 +52,7 @@ namespace FriishProduce
         // ---------------------------------------------------------------------------------------------------------------
 
         #region Variables
-        readonly ToolTip t = new ToolTip();
+        readonly ToolTip t = new();
         #endregion
 
         // ---------------------------------------------------------------------------------------------------------------
@@ -195,7 +195,7 @@ namespace FriishProduce
         {
             try
             {
-                using (Bitmap newBmp = new Bitmap(bmp.Width, bmp.Height, PixelFormat.Format32bppRgb))
+                using (Bitmap newBmp = new(bmp.Width, bmp.Height, PixelFormat.Format32bppRgb))
                 {
                     using (Graphics g = Graphics.FromImage(newBmp))
                     {
@@ -246,7 +246,7 @@ namespace FriishProduce
             {
                 if (oldColors.Length != newColors.Length) return bmp;
 
-                Bitmap newBmp = new Bitmap(bmp.Width, bmp.Height, PixelFormat.Format32bppRgb);
+                Bitmap newBmp = new(bmp.Width, bmp.Height, PixelFormat.Format32bppRgb);
 
                 using (Graphics g = Graphics.FromImage(newBmp))
                 {
