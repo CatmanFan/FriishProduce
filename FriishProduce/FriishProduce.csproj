@@ -50,7 +50,7 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>logo.ico</ApplicationIcon>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>FriishProduce.Program</StartupObject>
@@ -518,7 +518,8 @@
     <None Include="Resources\icons\consoles\nintendo nes.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="logo.ico" />
+    <Content Include="icon.ico" />
+    <None Include="Resources\icon_new.png" />
     <None Include="Resources\icons\tag_blue_edit.png" />
     <None Include="Resources\icons\sound.png" />
     <None Include="Resources\icons\disk.png" />

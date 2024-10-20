@@ -233,6 +233,16 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap icon_new {
+            get {
+                object obj = ResourceManager.GetObject("icon_new", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap joystick_add {
             get {
                 object obj = ResourceManager.GetObject("joystick_add", resourceCulture);
@@ -246,16 +256,6 @@ namespace FriishProduce.Properties {
         public static System.Drawing.Bitmap locale {
             get {
                 object obj = ResourceManager.GetObject("locale", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap logo {
-            get {
-                object obj = ResourceManager.GetObject("logo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
