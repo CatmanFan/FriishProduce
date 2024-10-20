@@ -92,7 +92,7 @@ namespace FriishProduce
             default_target_wad_tb.Location = new Point(maxX, default_target_wad_tb.Location.Y);
             default_target_project_tb.Width = default_target_wad_tb.Width = maxWidth;
 
-            banner_region.Text = Program.Lang.String(banner_regions.Name, "banner");
+            banner_region.Text = Program.Lang.String(banner_region.Name, "banner").TrimEnd(':').Trim();
 
             flash_save_data_enable.Text = vc_pce_backupram.Text = vc_sega_save_sram.Text = Program.Lang.String("save_data_enable", "projectform");
 

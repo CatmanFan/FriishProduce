@@ -109,6 +109,7 @@ namespace FriishProduce
             this.flash_vff_cache_size = new System.Windows.Forms.Label();
             this.flash_vff_cache_size_list = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.game_source_image = new System.Windows.Forms.GroupBox();
             this.image_interpolation_mode = new System.Windows.Forms.GroupBox();
             this.image_interpolation_modes = new System.Windows.Forms.ComboBox();
             this.banner_region = new System.Windows.Forms.GroupBox();
@@ -136,7 +137,6 @@ namespace FriishProduce
             this.default_target_parameters = new System.Windows.Forms.Label();
             this.default_target_wad = new System.Windows.Forms.Label();
             this.default_target_project_tb = new System.Windows.Forms.TextBox();
-            this.source_image_website = new System.Windows.Forms.GroupBox();
             this.vc_n64_options.SuspendLayout();
             this.bottomPanel2.SuspendLayout();
             this.bottomPanel1.SuspendLayout();
@@ -167,6 +167,7 @@ namespace FriishProduce
             this.flash_quality.SuspendLayout();
             this.flash_save_data.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.game_source_image.SuspendLayout();
             this.image_interpolation_mode.SuspendLayout();
             this.banner_region.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -178,7 +179,6 @@ namespace FriishProduce
             this.bios_neo.SuspendLayout();
             this.bios_psx.SuspendLayout();
             this.panel4.SuspendLayout();
-            this.source_image_website.SuspendLayout();
             this.SuspendLayout();
             // 
             // languages
@@ -830,13 +830,21 @@ namespace FriishProduce
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.source_image_website);
+            this.panel2.Controls.Add(this.game_source_image);
             this.panel2.Controls.Add(this.auto_game_scan);
             this.panel2.Controls.Add(this.auto_fill_save_data);
             this.panel2.Controls.Add(this.image_interpolation_mode);
             this.panel2.Controls.Add(this.banner_region);
             resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
+            // 
+            // game_source_image
+            // 
+            this.game_source_image.Controls.Add(this.source_image_websites);
+            resources.ApplyResources(this.game_source_image, "game_source_image");
+            this.game_source_image.Name = "game_source_image";
+            this.game_source_image.TabStop = false;
+            this.game_source_image.Tag = "game_source_image";
             // 
             // image_interpolation_mode
             // 
@@ -1041,14 +1049,6 @@ namespace FriishProduce
             resources.ApplyResources(this.default_target_project_tb, "default_target_project_tb");
             this.default_target_project_tb.Name = "default_target_project_tb";
             // 
-            // source_image_website
-            // 
-            this.source_image_website.Controls.Add(this.source_image_websites);
-            resources.ApplyResources(this.source_image_website, "source_image_website");
-            this.source_image_website.Name = "source_image_website";
-            this.source_image_website.TabStop = false;
-            this.source_image_website.Tag = "source_image_website";
-            // 
             // SettingsForm
             // 
             this.AcceptButton = this.b_ok;
@@ -1058,7 +1058,6 @@ namespace FriishProduce
             this.ControlBox = false;
             this.Controls.Add(this.bottomPanel2);
             this.Controls.Add(this.TreeView);
-            this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.adobe_flash);
@@ -1070,6 +1069,7 @@ namespace FriishProduce
             this.Controls.Add(this.vc_neo);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel4);
+            this.Controls.Add(this.panel5);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MaximizeBox = false;
@@ -1121,6 +1121,7 @@ namespace FriishProduce
             this.flash_save_data.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.game_source_image.ResumeLayout(false);
             this.image_interpolation_mode.ResumeLayout(false);
             this.banner_region.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
@@ -1135,7 +1136,6 @@ namespace FriishProduce
             this.bios_psx.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            this.source_image_website.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1247,6 +1247,6 @@ namespace FriishProduce
         private System.Windows.Forms.Label default_target_parameters;
         private System.Windows.Forms.Label default_target_wad;
         private System.Windows.Forms.TextBox default_target_project_tb;
-        private System.Windows.Forms.GroupBox source_image_website;
+        private System.Windows.Forms.GroupBox game_source_image;
     }
 }
