@@ -145,11 +145,11 @@ namespace FriishProduce
         private WAD outWad;
         private libWiiSharp.Region outWadRegion
         {
-            get => region_list.SelectedItem?.ToString() == Program.Lang.String("region_j") ? libWiiSharp.Region.Japan
-                 : region_list.SelectedItem?.ToString() == Program.Lang.String("region_u") ? libWiiSharp.Region.USA
-                 : region_list.SelectedItem?.ToString() == Program.Lang.String("region_e") ? libWiiSharp.Region.Europe
-                 : region_list.SelectedItem?.ToString() == Program.Lang.String("region_k") ? libWiiSharp.Region.Korea
-                 : region_list.SelectedIndex == 0 ? inWadRegion switch { Region.Japan => libWiiSharp.Region.Japan, Region.Korea => libWiiSharp.Region.Korea, Region.Europe => libWiiSharp.Region.Europe, Region.America => libWiiSharp.Region.USA, _ => libWiiSharp.Region.Free }
+            get => regions.SelectedItem?.ToString() == Program.Lang.String("region_j") ? libWiiSharp.Region.Japan
+                 : regions.SelectedItem?.ToString() == Program.Lang.String("region_u") ? libWiiSharp.Region.USA
+                 : regions.SelectedItem?.ToString() == Program.Lang.String("region_e") ? libWiiSharp.Region.Europe
+                 : regions.SelectedItem?.ToString() == Program.Lang.String("region_k") ? libWiiSharp.Region.Korea
+                 : regions.SelectedIndex == 0 ? inWadRegion switch { Region.Japan => libWiiSharp.Region.Japan, Region.Korea => libWiiSharp.Region.Korea, Region.Europe => libWiiSharp.Region.Europe, Region.America => libWiiSharp.Region.USA, _ => libWiiSharp.Region.Free }
                  : libWiiSharp.Region.Free;
         }
 
@@ -243,7 +243,7 @@ namespace FriishProduce
                 BannerYear = _bannerYear,
                 BannerPlayers = _bannerPlayers,
 
-                WADRegion = region_list.SelectedIndex,
+                WADRegion = regions.SelectedIndex,
             };
 
             p.BaseFile = WADPath;
@@ -301,10 +301,10 @@ namespace FriishProduce
             manual = null;
 
             // Regions lists
-            region_list.Items.Clear();
-            region_list.Items.Add(Program.Lang.String("original"));
-            region_list.Items.Add(Program.Lang.String("region_rf"));
-            region_list.SelectedIndex = 0;
+            regions.Items.Clear();
+            regions.Items.Add(Program.Lang.String("original"));
+            regions.Items.Add(Program.Lang.String("region_rf"));
+            regions.SelectedIndex = 0;
 
             // Video modes
             video_modes.Items[0] = Program.Lang.String("original");
@@ -313,24 +313,24 @@ namespace FriishProduce
             switch (Program.Lang.Current.ToLower())
             {
                 default:
-                    region_list.Items.Add(Program.Lang.String("region_u"));
-                    region_list.Items.Add(Program.Lang.String("region_e"));
-                    region_list.Items.Add(Program.Lang.String("region_j"));
-                    region_list.Items.Add(Program.Lang.String("region_k"));
+                    regions.Items.Add(Program.Lang.String("region_u"));
+                    regions.Items.Add(Program.Lang.String("region_e"));
+                    regions.Items.Add(Program.Lang.String("region_j"));
+                    regions.Items.Add(Program.Lang.String("region_k"));
                     break;
 
                 case "ja":
-                    region_list.Items.Add(Program.Lang.String("region_j"));
-                    region_list.Items.Add(Program.Lang.String("region_u"));
-                    region_list.Items.Add(Program.Lang.String("region_e"));
-                    region_list.Items.Add(Program.Lang.String("region_k"));
+                    regions.Items.Add(Program.Lang.String("region_j"));
+                    regions.Items.Add(Program.Lang.String("region_u"));
+                    regions.Items.Add(Program.Lang.String("region_e"));
+                    regions.Items.Add(Program.Lang.String("region_k"));
                     break;
 
                 case "ko":
-                    region_list.Items.Add(Program.Lang.String("region_k"));
-                    region_list.Items.Add(Program.Lang.String("region_u"));
-                    region_list.Items.Add(Program.Lang.String("region_e"));
-                    region_list.Items.Add(Program.Lang.String("region_j"));
+                    regions.Items.Add(Program.Lang.String("region_k"));
+                    regions.Items.Add(Program.Lang.String("region_u"));
+                    regions.Items.Add(Program.Lang.String("region_e"));
+                    regions.Items.Add(Program.Lang.String("region_j"));
                     break;
             }
             #endregion
@@ -613,7 +613,7 @@ namespace FriishProduce
                 save_data_title.Lines = project.SaveDataTitle;
                 title_id_upper.Text = project.TitleID;
 
-                region_list.SelectedIndex = project.WADRegion;
+                regions.SelectedIndex = project.WADRegion;
                 injection_methods.SelectedIndex = project.InjectionMethod;
                 image_interpolation_mode.SelectedIndex = project.ImageOptions.Item1;
                 image_resize0.Checked = !project.ImageOptions.Item2;
@@ -1380,7 +1380,7 @@ namespace FriishProduce
 
                 // Change WAD region & internal main.dol things
                 // *******
-                if (region_list.SelectedIndex > 0)
+                if (regions.SelectedIndex > 0)
                     outWad.Region = outWadRegion;
                 Utils.ChangeVideoMode(outWad, video_modes.SelectedIndex);
 

@@ -92,6 +92,7 @@ namespace FriishProduce
             default_target_wad_tb.Location = new Point(maxX, default_target_wad_tb.Location.Y);
             default_target_project_tb.Width = default_target_wad_tb.Width = maxWidth;
 
+            game_scan.Text = Program.Lang.String(game_scan.Name, "mainform");
             banner_region.Text = Program.Lang.String(banner_region.Name, "banner").TrimEnd(':').Trim();
 
             flash_save_data_enable.Text = vc_pce_backupram.Text = vc_sega_save_sram.Text = Program.Lang.String("save_data_enable", "projectform");
@@ -433,7 +434,7 @@ namespace FriishProduce
             bool isDirty = isShown
                 && (dirtyOption1 != languages.SelectedIndex
                  || dirtyOption2 != use_online_wad_enabled.Checked);
-            bool restart = isDirty && MessageBox.Show(Program.Lang.Msg(0), MessageBox.Buttons.YesNo, MessageBox.Icons.None) == MessageBox.Result.Yes;
+            bool restart = isDirty && MessageBox.Show(Program.Lang.Msg(0), MessageBox.Buttons.YesNo, MessageBox.Icons.Information) == MessageBox.Result.Yes;
 
             isShown = false;
             DialogResult = DialogResult.OK;

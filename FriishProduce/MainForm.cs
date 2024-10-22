@@ -282,10 +282,7 @@ namespace FriishProduce
                     tabControl.TabPages[tabControl.TabPages.get_IndexOf(p)].Select();
 
                     if (!f.CheckUnsaved())
-                    {
                         e.Cancel = true;
-                        return;
-                    }
                 }
             }
         }

@@ -109,8 +109,8 @@ namespace FriishProduce
             this.toolStripSeparator6,
             this.toolbarGameScan,
             this.toolbarExport,
-            this.toolStripSeparator1,
-            this.toolbarPreferences});
+            this.toolbarPreferences,
+            this.toolStripSeparator1});
             this.toolStrip.Name = "toolStrip";
             this.toolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             // 
@@ -197,11 +197,13 @@ namespace FriishProduce
             // 
             // toolStripSeparator1
             // 
+            this.toolStripSeparator1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
             // 
             // toolbarPreferences
             // 
+            this.toolbarPreferences.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.toolbarPreferences.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolbarPreferences.Image = global::FriishProduce.Properties.Resources.cog;
             resources.ApplyResources(this.toolbarPreferences, "toolbarPreferences");

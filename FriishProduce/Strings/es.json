@@ -166,7 +166,7 @@
 			"use_online_wad_tip":				"This can be used to retrieve any WAD that is available from the current database without already requiring to have a WAD file. However, because libWiiSharp's NUS client does not allow for decrypting VC WADs in any form, it is only able to use Web download functionality. The legality of this is shady so it is better to have the option disabled.",
 			"auto_fill_save_data":				"Completar título de datos guardados automáticamente",
 			"auto_game_scan":					"Obtener automáticamente tras abrir una ROM",
-			"game_source_image":				"Sitio web de imágenes de origen"
+			"game_source_image":				"Sitio web de imágenes de origen:"
 		},
 
 		"projectform": {
