@@ -44,7 +44,8 @@ See **[here](https://github.com/CatmanFan/FriishProduce/wiki/FriishProduce-v1.0)
 ## To-Do
 ### Before releasing
 [X] Create new skeuomorphic logo
-[ ] Update settings and project form
+[X] Update settings and project form
+[ ] Bugfixes and beta-testing
 
 ### After releasing
 [ ] Restructuring, trimming features and cleaning code

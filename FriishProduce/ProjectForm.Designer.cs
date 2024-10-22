@@ -268,7 +268,7 @@ namespace FriishProduce
             // 
             resources.ApplyResources(this.save_data_title, "save_data_title");
             this.save_data_title.Name = "save_data_title";
-            this.save_data_title.Tag = "24";
+            this.save_data_title.Tag = "19";
             this.save_data_title.TextChanged += new System.EventHandler(this.TextBox_Changed);
             this.save_data_title.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_Handle);
             // 
@@ -572,7 +572,7 @@ namespace FriishProduce
             this.include_patch.Name = "include_patch";
             this.include_patch.Tag = "include_patch";
             this.include_patch.UseVisualStyleBackColor = true;
-            this.include_patch.CheckedChanged += new System.EventHandler(this.import_patch_CheckedChanged);
+            this.include_patch.CheckedChanged += new System.EventHandler(this.include_patch_CheckedChanged);
             // 
             // groupBox1
             // 

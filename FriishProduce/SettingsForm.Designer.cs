@@ -110,6 +110,7 @@ namespace FriishProduce
             this.flash_vff_cache_size_list = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.game_scan = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.image_interpolation_mode = new System.Windows.Forms.GroupBox();
             this.image_interpolation_modes = new System.Windows.Forms.ComboBox();
             this.banner_region = new System.Windows.Forms.GroupBox();
@@ -137,7 +138,6 @@ namespace FriishProduce
             this.default_target_parameters = new System.Windows.Forms.Label();
             this.default_target_wad = new System.Windows.Forms.Label();
             this.default_target_project_tb = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.vc_n64_options.SuspendLayout();
             this.bottomPanel2.SuspendLayout();
             this.bottomPanel1.SuspendLayout();
@@ -848,6 +848,12 @@ namespace FriishProduce
             this.game_scan.TabStop = false;
             this.game_scan.Tag = "game_scan";
             // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            this.label3.Tag = "game_source_image";
+            // 
             // image_interpolation_mode
             // 
             this.image_interpolation_mode.Controls.Add(this.image_interpolation_modes);
@@ -1051,12 +1057,6 @@ namespace FriishProduce
             resources.ApplyResources(this.default_target_project_tb, "default_target_project_tb");
             this.default_target_project_tb.Name = "default_target_project_tb";
             // 
-            // label3
-            // 
-            resources.ApplyResources(this.label3, "label3");
-            this.label3.Name = "label3";
-            this.label3.Tag = "game_source_image";
-            // 
             // SettingsForm
             // 
             this.AcceptButton = this.b_ok;
@@ -1066,7 +1066,6 @@ namespace FriishProduce
             this.ControlBox = false;
             this.Controls.Add(this.bottomPanel2);
             this.Controls.Add(this.TreeView);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.adobe_flash);
             this.Controls.Add(this.forwarder);
@@ -1078,6 +1077,7 @@ namespace FriishProduce
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel5);
+            this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MaximizeBox = false;

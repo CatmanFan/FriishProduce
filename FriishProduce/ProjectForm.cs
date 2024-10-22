@@ -1988,7 +1988,7 @@ namespace FriishProduce
             refreshData();
         }
 
-        private void import_patch_CheckedChanged(object sender, EventArgs e)
+        private void include_patch_CheckedChanged(object sender, EventArgs e)
         {
             string oldPatch = patch;
 
@@ -1997,7 +1997,10 @@ namespace FriishProduce
                 if (browsePatch.ShowDialog() == DialogResult.OK)
                     patch = browsePatch.FileName;
                 else
+                {
                     patch = null;
+                    include_patch.Checked = false;
+                }
             }
             else
                 patch = null;
