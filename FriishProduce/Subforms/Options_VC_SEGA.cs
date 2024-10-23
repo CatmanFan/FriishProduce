@@ -29,7 +29,7 @@ namespace FriishProduce
                 Program.Lang.Control(this);
 
                 #region Localization
-                label2.Text = Program.Lang.String("region");
+                region.Text = Program.Lang.String("region");
                 save_sram.Text = Program.Lang.String("save_data_enable", "projectform");
                 console_disableresetbutton.Text = Program.Lang.String("console_disableresetbutton", "vc_sega");
                 dev_mdpad_enable_6b.Text = string.Format(Program.Lang.String("dev_mdpad_enable_6b", "vc_sega"), Program.Lang.Console(Platform.SMD));
