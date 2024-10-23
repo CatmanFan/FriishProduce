@@ -49,18 +49,6 @@ namespace FriishProduce
             ((System.ComponentModel.ISupportInitialize)(this.y_offset_toggle)).BeginInit();
             this.SuspendLayout();
             // 
-            // b_ok
-            // 
-            this.b_ok.Location = new System.Drawing.Point(362, 12);
-            // 
-            // bottomPanel1
-            // 
-            this.bottomPanel1.Size = new System.Drawing.Size(560, 47);
-            // 
-            // b_cancel
-            // 
-            this.b_cancel.Location = new System.Drawing.Point(458, 12);
-            // 
             // sgenable_switch
             // 
             this.sgenable_switch.Location = new System.Drawing.Point(10, 41);
@@ -68,7 +56,6 @@ namespace FriishProduce
             this.sgenable_switch.OffFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sgenable_switch.OnFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sgenable_switch.Size = new System.Drawing.Size(35, 15);
-            this.sgenable_switch.Style = JCS.ToggleSwitch.ToggleSwitchStyle.Iphone;
             this.sgenable_switch.TabIndex = 21;
             this.sgenable_switch.CheckedChanged += new JCS.ToggleSwitch.CheckedChangedDelegate(this.ToggleSwitchChanged);
             // 
@@ -88,7 +75,6 @@ namespace FriishProduce
             this.padbutton_switch.OffFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.padbutton_switch.OnFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.padbutton_switch.Size = new System.Drawing.Size(35, 15);
-            this.padbutton_switch.Style = JCS.ToggleSwitch.ToggleSwitchStyle.Iphone;
             this.padbutton_switch.TabIndex = 23;
             this.padbutton_switch.CheckedChanged += new JCS.ToggleSwitch.CheckedChangedDelegate(this.ToggleSwitchChanged);
             // 
@@ -117,7 +103,6 @@ namespace FriishProduce
             this.europe_switch.OffFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.europe_switch.OnFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.europe_switch.Size = new System.Drawing.Size(35, 15);
-            this.europe_switch.Style = JCS.ToggleSwitch.ToggleSwitchStyle.Iphone;
             this.europe_switch.TabIndex = 19;
             this.europe_switch.CheckedChanged += new JCS.ToggleSwitch.CheckedChangedDelegate(this.ToggleSwitchChanged);
             // 

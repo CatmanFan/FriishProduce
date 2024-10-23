@@ -204,7 +204,7 @@ namespace FriishProduce
             // midi
             // 
             this.midi.AutoSize = true;
-            this.midi.Location = new System.Drawing.Point(12, 239);
+            this.midi.Location = new System.Drawing.Point(12, 240);
             this.midi.Name = "midi";
             this.midi.Size = new System.Drawing.Size(44, 17);
             this.midi.TabIndex = 15;

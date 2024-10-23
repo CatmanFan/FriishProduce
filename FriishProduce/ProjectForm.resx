@@ -157,15 +157,6 @@
   <metadata name="bannerMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>809, 17</value>
   </metadata>
-  <data name="bannerMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>193, 70</value>
-  </data>
-  <data name="&gt;&gt;bannerMenu.Name" xml:space="preserve">
-    <value>bannerMenu</value>
-  </data>
-  <data name="&gt;&gt;bannerMenu.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="play_banner_sound.Size" type="System.Drawing.Size, System.Drawing">
     <value>192, 22</value>
   </data>
@@ -188,6 +179,15 @@
   <data name="restore_banner_sound.Text" xml:space="preserve">
     <value>restore_banner_sound</value>
   </data>
+  <data name="bannerMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>193, 70</value>
+  </data>
+  <data name="&gt;&gt;bannerMenu.Name" xml:space="preserve">
+    <value>bannerMenu</value>
+  </data>
+  <data name="&gt;&gt;bannerMenu.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <metadata name="browseSound.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>699, 17</value>
   </metadata>
@@ -195,13 +195,13 @@
     <value>WAV (*.wav)|*.wav</value>
   </data>
   <data name="channel_name.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 37</value>
+    <value>12, 37</value>
   </data>
   <data name="channel_name.MaxLength" type="System.Int32, mscorlib">
     <value>20</value>
   </data>
   <data name="channel_name.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 21</value>
+    <value>210, 21</value>
   </data>
   <data name="channel_name.TabIndex" type="System.Int32, mscorlib">
     <value>21</value>
@@ -222,10 +222,10 @@
     <value>7</value>
   </data>
   <data name="regions.Location" type="System.Drawing.Point, System.Drawing">
-    <value>248, 37</value>
+    <value>250, 37</value>
   </data>
   <data name="regions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>197, 21</value>
+    <value>195, 21</value>
   </data>
   <data name="regions.TabIndex" type="System.Int32, mscorlib">
     <value>41</value>
@@ -247,7 +247,7 @@
     <value>NoControl</value>
   </data>
   <data name="title_id_random.Location" type="System.Drawing.Point, System.Drawing">
-    <value>93, 83</value>
+    <value>96, 83</value>
   </data>
   <data name="title_id_random.Size" type="System.Drawing.Size, System.Drawing">
     <value>16, 16</value>
@@ -274,7 +274,7 @@
     <value>8</value>
   </data>
   <data name="title_id_upper.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 81</value>
+    <value>12, 81</value>
   </data>
   <data name="title_id_upper.MaxLength" type="System.Int32, mscorlib">
     <value>4</value>
@@ -328,10 +328,10 @@
     <value>MPAL + PAL50</value>
   </data>
   <data name="video_modes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>248, 81</value>
+    <value>250, 81</value>
   </data>
   <data name="video_modes.Size" type="System.Drawing.Size, System.Drawing">
-    <value>197, 21</value>
+    <value>195, 21</value>
   </data>
   <data name="video_modes.TabIndex" type="System.Int32, mscorlib">
     <value>42</value>
@@ -355,7 +355,7 @@
     <value>NoControl</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 19</value>
+    <value>9, 19</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>76, 13</value>
@@ -385,7 +385,7 @@
     <value>NoControl</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 63</value>
+    <value>9, 63</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>39, 13</value>
@@ -408,54 +408,6 @@
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;video_mode.Name" xml:space="preserve">
-    <value>video_mode</value>
-  </data>
-  <data name="&gt;&gt;video_mode.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;video_mode.Parent" xml:space="preserve">
-    <value>groupBox8</value>
-  </data>
-  <data name="&gt;&gt;video_mode.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;region.Name" xml:space="preserve">
-    <value>region</value>
-  </data>
-  <data name="&gt;&gt;region.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;region.Parent" xml:space="preserve">
-    <value>groupBox8</value>
-  </data>
-  <data name="&gt;&gt;region.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="groupBox8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>580, 317</value>
-  </data>
-  <data name="groupBox8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>458, 111</value>
-  </data>
-  <data name="groupBox8.TabIndex" type="System.Int32, mscorlib">
-    <value>44</value>
-  </data>
-  <data name="groupBox8.Text" xml:space="preserve">
-    <value>channel_metadata</value>
-  </data>
-  <data name="&gt;&gt;groupBox8.Name" xml:space="preserve">
-    <value>groupBox8</value>
-  </data>
-  <data name="&gt;&gt;groupBox8.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox8.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;groupBox8.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <data name="video_mode.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -463,7 +415,7 @@
     <value>NoControl</value>
   </data>
   <data name="video_mode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>245, 63</value>
+    <value>247, 63</value>
   </data>
   <data name="video_mode.Size" type="System.Drawing.Size, System.Drawing">
     <value>65, 13</value>
@@ -493,7 +445,7 @@
     <value>NoControl</value>
   </data>
   <data name="region.Location" type="System.Drawing.Point, System.Drawing">
-    <value>245, 19</value>
+    <value>247, 19</value>
   </data>
   <data name="region.Size" type="System.Drawing.Size, System.Drawing">
     <value>37, 13</value>
@@ -515,6 +467,30 @@
   </data>
   <data name="&gt;&gt;region.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="groupBox8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>579, 316</value>
+  </data>
+  <data name="groupBox8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>454, 111</value>
+  </data>
+  <data name="groupBox8.TabIndex" type="System.Int32, mscorlib">
+    <value>44</value>
+  </data>
+  <data name="groupBox8.Text" xml:space="preserve">
+    <value>channel_metadata</value>
+  </data>
+  <data name="&gt;&gt;groupBox8.Name" xml:space="preserve">
+    <value>groupBox8</value>
+  </data>
+  <data name="&gt;&gt;groupBox8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox8.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;groupBox8.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="label16.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -652,7 +628,7 @@
     <value>False</value>
   </data>
   <data name="groupBox5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1045, 317</value>
+    <value>1039, 316</value>
   </data>
   <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
     <value>165, 85</value>
@@ -766,7 +742,7 @@
     <value>0</value>
   </data>
   <data name="groupBox7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>580, 11</value>
+    <value>579, 10</value>
   </data>
   <data name="groupBox7.Size" type="System.Drawing.Size, System.Drawing">
     <value>625, 300</value>
@@ -922,7 +898,7 @@
     <value>False</value>
   </data>
   <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 321</value>
+    <value>10, 320</value>
   </data>
   <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
     <value>563, 130</value>
@@ -1307,7 +1283,7 @@
     <value>False</value>
   </data>
   <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 165</value>
+    <value>10, 164</value>
   </data>
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
     <value>563, 150</value>
@@ -1499,7 +1475,7 @@
     <value>False</value>
   </data>
   <data name="groupBox6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 84</value>
+    <value>10, 83</value>
   </data>
   <data name="groupBox6.Size" type="System.Drawing.Size, System.Drawing">
     <value>563, 75</value>
@@ -1583,7 +1559,7 @@
     <value>0</value>
   </data>
   <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 11</value>
+    <value>10, 10</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
     <value>563, 67</value>
@@ -1613,7 +1589,7 @@
     <value>True</value>
   </metadata>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1221, 465</value>
+    <value>1214, 460</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8.25pt</value>

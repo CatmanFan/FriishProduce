@@ -38,12 +38,13 @@ namespace FriishProduce
             this.dev_mdpad_enable_6b = new System.Windows.Forms.CheckBox();
             this.save_sram = new System.Windows.Forms.CheckBox();
             this.console_disableresetbutton = new System.Windows.Forms.CheckBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.region = new System.Windows.Forms.GroupBox();
             this.bottomPanel1.SuspendLayout();
             this.display.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.console_brightness)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.vc_options.SuspendLayout();
+            this.region.SuspendLayout();
             this.SuspendLayout();
             // 
             // b_ok
@@ -107,9 +108,9 @@ namespace FriishProduce
             // 
             this.country.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.country.FormattingEnabled = true;
-            this.country.Location = new System.Drawing.Point(650, 46);
+            this.country.Location = new System.Drawing.Point(10, 18);
             this.country.Name = "country";
-            this.country.Size = new System.Drawing.Size(293, 21);
+            this.country.Size = new System.Drawing.Size(292, 21);
             this.country.TabIndex = 18;
             // 
             // vc_options
@@ -117,9 +118,9 @@ namespace FriishProduce
             this.vc_options.Controls.Add(this.dev_mdpad_enable_6b);
             this.vc_options.Controls.Add(this.save_sram);
             this.vc_options.Controls.Add(this.console_disableresetbutton);
-            this.vc_options.Location = new System.Drawing.Point(330, 10);
+            this.vc_options.Location = new System.Drawing.Point(330, 66);
             this.vc_options.Name = "vc_options";
-            this.vc_options.Size = new System.Drawing.Size(312, 284);
+            this.vc_options.Size = new System.Drawing.Size(312, 228);
             this.vc_options.TabIndex = 20;
             this.vc_options.TabStop = false;
             this.vc_options.Tag = "vc_options";
@@ -128,7 +129,7 @@ namespace FriishProduce
             // dev_mdpad_enable_6b
             // 
             this.dev_mdpad_enable_6b.AutoSize = true;
-            this.dev_mdpad_enable_6b.Location = new System.Drawing.Point(17, 19);
+            this.dev_mdpad_enable_6b.Location = new System.Drawing.Point(10, 20);
             this.dev_mdpad_enable_6b.Name = "dev_mdpad_enable_6b";
             this.dev_mdpad_enable_6b.Size = new System.Drawing.Size(138, 17);
             this.dev_mdpad_enable_6b.TabIndex = 22;
@@ -140,7 +141,7 @@ namespace FriishProduce
             // save_sram
             // 
             this.save_sram.AutoSize = true;
-            this.save_sram.Location = new System.Drawing.Point(17, 65);
+            this.save_sram.Location = new System.Drawing.Point(10, 66);
             this.save_sram.Name = "save_sram";
             this.save_sram.Size = new System.Drawing.Size(77, 17);
             this.save_sram.TabIndex = 20;
@@ -152,7 +153,7 @@ namespace FriishProduce
             // 
             this.console_disableresetbutton.AutoSize = true;
             this.console_disableresetbutton.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.console_disableresetbutton.Location = new System.Drawing.Point(17, 42);
+            this.console_disableresetbutton.Location = new System.Drawing.Point(10, 43);
             this.console_disableresetbutton.Name = "console_disableresetbutton";
             this.console_disableresetbutton.Size = new System.Drawing.Size(155, 17);
             this.console_disableresetbutton.TabIndex = 21;
@@ -161,28 +162,28 @@ namespace FriishProduce
             this.console_disableresetbutton.ThreeState = true;
             this.console_disableresetbutton.UseVisualStyleBackColor = true;
             // 
-            // label2
+            // region
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(648, 29);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(36, 13);
-            this.label2.TabIndex = 19;
-            this.label2.Text = "region";
+            this.region.Controls.Add(this.country);
+            this.region.Location = new System.Drawing.Point(330, 10);
+            this.region.Name = "region";
+            this.region.Size = new System.Drawing.Size(312, 50);
+            this.region.TabIndex = 55;
+            this.region.TabStop = false;
+            this.region.Tag = "region";
+            this.region.Text = "region";
             // 
             // Options_VC_SEGA
             // 
             this.ClientSize = new System.Drawing.Size(654, 362);
+            this.Controls.Add(this.region);
             this.Controls.Add(this.vc_options);
             this.Controls.Add(this.display);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.country);
             this.Name = "Options_VC_SEGA";
             this.Tag = "vc_sega";
-            this.Controls.SetChildIndex(this.country, 0);
-            this.Controls.SetChildIndex(this.label2, 0);
             this.Controls.SetChildIndex(this.display, 0);
             this.Controls.SetChildIndex(this.vc_options, 0);
+            this.Controls.SetChildIndex(this.region, 0);
             this.bottomPanel1.ResumeLayout(false);
             this.display.ResumeLayout(false);
             this.display.PerformLayout();
@@ -190,8 +191,8 @@ namespace FriishProduce
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.vc_options.ResumeLayout(false);
             this.vc_options.PerformLayout();
+            this.region.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -201,10 +202,10 @@ namespace FriishProduce
         private System.Windows.Forms.TrackBar console_brightness;
         private System.Windows.Forms.ComboBox country;
         private System.Windows.Forms.GroupBox vc_options;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox save_sram;
         private System.Windows.Forms.CheckBox console_disableresetbutton;
         private System.Windows.Forms.CheckBox dev_mdpad_enable_6b;
+        private System.Windows.Forms.GroupBox region;
     }
 }

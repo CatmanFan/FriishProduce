@@ -20,21 +20,19 @@ This injector bypasses other third-party assets (such as Common-Key.bin, HowardC
 
 ### Platforms
 **Currently supported:**
-  * Virtual Console:
-    * **Nintendo Entertainment System (NES) / Famicom**
-    * **Super Nintendo Entertainment System (SNES) / Super Famicom**
-    * **Nintendo 64**
-    * **SEGA Master System**
-    * **SEGA Mega Drive / Genesis**
-    * **NEC TurboGrafx-16 / PC Engine (HuCARD)**
-    * **SNK NEO-GEO**
-    * **Microsoft MSX / MSX2**
+  * *Virtual Console*:
+    * Nintendo Entertainment System (NES) / Famicom
+    * Super Nintendo Entertainment System (SNES) / Super Famicom
+    * Nintendo 64
+    * SEGA Master System
+    * SEGA Mega Drive / Genesis
+    * NEC TurboGrafx-16 / PC Engine (HuCARD)
+    * SNK NEO-GEO
+    * Microsoft MSX / MSX2
   * Others:
-    * **Adobe Flash**
-    * **Sony PlayStation**
-    * **RPG Maker 2000 / 2003**
-
----
+    * Adobe Flash
+    * Sony PlayStation
+    * RPG Maker 2000 / 2003
 
 ## Instructions
 See **[here](https://github.com/CatmanFan/FriishProduce/wiki/FriishProduce-v1.0)** for a tutorial on how to use the app. For translations, see **[here](https://github.com/CatmanFan/FriishProduce/wiki/Translation)**.
@@ -43,8 +41,6 @@ See **[here](https://github.com/CatmanFan/FriishProduce/wiki/FriishProduce-v1.0)
 
 ## To-Do
 ### Before releasing
-[X] Create new skeuomorphic logo
-[X] Update settings and project form
 [ ] Bugfixes and beta-testing
 
 ### After releasing
