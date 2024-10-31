@@ -195,7 +195,7 @@
     <value>WAV (*.wav)|*.wav</value>
   </data>
   <data name="channel_name.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 37</value>
+    <value>13, 36</value>
   </data>
   <data name="channel_name.MaxLength" type="System.Int32, mscorlib">
     <value>20</value>
@@ -222,7 +222,7 @@
     <value>7</value>
   </data>
   <data name="regions.Location" type="System.Drawing.Point, System.Drawing">
-    <value>250, 37</value>
+    <value>250, 36</value>
   </data>
   <data name="regions.Size" type="System.Drawing.Size, System.Drawing">
     <value>195, 21</value>
@@ -240,14 +240,14 @@
     <value>groupBox8</value>
   </data>
   <data name="&gt;&gt;regions.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>1</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="title_id_random.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="title_id_random.Location" type="System.Drawing.Point, System.Drawing">
-    <value>96, 83</value>
+    <value>97, 82</value>
   </data>
   <data name="title_id_random.Size" type="System.Drawing.Size, System.Drawing">
     <value>16, 16</value>
@@ -274,7 +274,7 @@
     <value>8</value>
   </data>
   <data name="title_id_upper.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 81</value>
+    <value>13, 80</value>
   </data>
   <data name="title_id_upper.MaxLength" type="System.Int32, mscorlib">
     <value>4</value>
@@ -284,6 +284,9 @@
   </data>
   <data name="title_id_upper.TabIndex" type="System.Int32, mscorlib">
     <value>36</value>
+  </data>
+  <data name="title_id_upper.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
   </data>
   <data name="title_id_upper.WordWrap" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -298,7 +301,7 @@
     <value>groupBox8</value>
   </data>
   <data name="&gt;&gt;title_id_upper.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="video_modes.Items" xml:space="preserve">
     <value>keep_original</value>
@@ -328,7 +331,7 @@
     <value>MPAL + PAL50</value>
   </data>
   <data name="video_modes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>250, 81</value>
+    <value>250, 80</value>
   </data>
   <data name="video_modes.Size" type="System.Drawing.Size, System.Drawing">
     <value>195, 21</value>
@@ -346,7 +349,7 @@
     <value>groupBox8</value>
   </data>
   <data name="&gt;&gt;video_modes.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>0</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -355,7 +358,7 @@
     <value>NoControl</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 19</value>
+    <value>10, 19</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>76, 13</value>
@@ -376,7 +379,7 @@
     <value>groupBox8</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -385,7 +388,7 @@
     <value>NoControl</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 63</value>
+    <value>10, 63</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>39, 13</value>
@@ -406,7 +409,7 @@
     <value>groupBox8</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="video_mode.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -436,7 +439,7 @@
     <value>groupBox8</value>
   </data>
   <data name="&gt;&gt;video_mode.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="region.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -466,13 +469,13 @@
     <value>groupBox8</value>
   </data>
   <data name="&gt;&gt;region.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="groupBox8.Location" type="System.Drawing.Point, System.Drawing">
     <value>579, 316</value>
   </data>
   <data name="groupBox8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>454, 111</value>
+    <value>454, 112</value>
   </data>
   <data name="groupBox8.TabIndex" type="System.Int32, mscorlib">
     <value>44</value>

@@ -143,7 +143,7 @@ namespace FriishProduce
             this.save_sram.AutoSize = true;
             this.save_sram.Location = new System.Drawing.Point(10, 66);
             this.save_sram.Name = "save_sram";
-            this.save_sram.Size = new System.Drawing.Size(77, 17);
+            this.save_sram.Size = new System.Drawing.Size(78, 17);
             this.save_sram.TabIndex = 20;
             this.save_sram.Text = "save_sram";
             this.save_sram.ThreeState = true;
@@ -155,7 +155,7 @@ namespace FriishProduce
             this.console_disableresetbutton.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.console_disableresetbutton.Location = new System.Drawing.Point(10, 43);
             this.console_disableresetbutton.Name = "console_disableresetbutton";
-            this.console_disableresetbutton.Size = new System.Drawing.Size(155, 17);
+            this.console_disableresetbutton.Size = new System.Drawing.Size(158, 17);
             this.console_disableresetbutton.TabIndex = 21;
             this.console_disableresetbutton.Tag = "console_disableresetbutton";
             this.console_disableresetbutton.Text = "console_disableresetbutton";

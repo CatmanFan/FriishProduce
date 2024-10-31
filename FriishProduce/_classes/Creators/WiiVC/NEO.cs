@@ -1,4 +1,5 @@
-﻿using Ionic.Zip;
+﻿using ICSharpCode.SharpZipLib.Zip;
+using ICSharpCode.SharpZipLib.Zip.Compression;
 using libWiiSharp;
 using System;
 using System.Collections.Generic;
@@ -36,7 +37,7 @@ namespace FriishProduce.Injectors
                 mainContentIndex = WAD.Contents[6].Length > WAD.Contents[5].Length ? 6 : 5;
             else mainContentIndex = 5;
 
-            ZIP = ZipFile.Read(new MemoryStream(File.ReadAllBytes(ROM.FilePath)));
+            ZIP = new(ROM.FilePath);
             base.Load();
         }
 
@@ -45,13 +46,30 @@ namespace FriishProduce.Injectors
         /// </summary>
         private byte[] ExtractToByteArray(string file)
         {
-            MemoryStream data = new();
-            ZIP[file].Extract(data);
-            data.Seek(0, SeekOrigin.Begin);
-            return data.ToArray();
+            try
+            {
+                var entry = ZIP.GetEntry(file);
+
+                if (entry != null && entry.IsFile)
+                {
+                    using (var s = ZIP.GetInputStream(entry))
+                    {
+                        byte[] bytes;
+                        using BinaryReader r = new(s);
+                        bytes = r.ReadBytes((int)s.Length);
+                        return bytes;
+                    }
+                }
+
+                throw new FileNotFoundException();
+            }
+            catch
+            {
+                return null;
+            }
         }
 
-        private byte[] ExtractToByteArray(ZipEntry item) => ExtractToByteArray(item.FileName);
+        private byte[] ExtractToByteArray(ZipEntry item) => ExtractToByteArray(item.Name);
 
         /// <summary>
         /// Replaces ROM within extracted content5 directory. (compressed formats not supported yet)
@@ -76,13 +94,16 @@ namespace FriishProduce.Injectors
 
             List<string> FileList = new();
 
-            foreach (ZipEntry item in ZIP.Entries)
+            foreach (ZipEntry item in ZIP)
             {
-                string filename1 = Path.GetFileNameWithoutExtension(item.FileName).ToLower();
-                string filename2 = item.FileName.ToLower();
+                if (item.IsFile)
+                {
+                    string filename1 = Path.GetFileNameWithoutExtension(item.Name).ToLower();
+                    string filename2 = item.Name.ToLower();
 
-                if (filename1[filename1.Length - 2] == 'p' || filename2[filename2.Length - 2] == 'p')
-                    FileList.Add(item.FileName);
+                    if (filename1[filename1.Length - 2] == 'p' || filename2[filename2.Length - 2] == 'p')
+                        FileList.Add(item.Name);
+                }
             }
 
             FileList = FileList.Distinct().ToList();
@@ -104,22 +125,25 @@ namespace FriishProduce.Injectors
 
             int C_count = 0;
 
-            foreach (ZipEntry item in ZIP.Entries)
+            foreach (ZipEntry item in ZIP)
             {
-                string filename1 = item.FileName.ToLower();
-                string filename2 = Path.GetFileNameWithoutExtension(item.FileName).ToLower();
+                if (item.IsFile)
+                {
+                    string filename1 = item.Name.ToLower();
+                    string filename2 = Path.GetFileNameWithoutExtension(item.Name).ToLower();
 
-                if (filename1[filename1.Length - 2] == 'm' || filename2[filename2.Length - 2] == 'm')
-                    M.AddRange(ExtractToByteArray(item));
+                    if (filename1[filename1.Length - 2] == 'm' || filename2[filename2.Length - 2] == 'm')
+                        M.AddRange(ExtractToByteArray(item));
 
-                if (filename1[filename1.Length - 2] == 'v' || filename2[filename2.Length - 2] == 'v')
-                    V.AddRange(ExtractToByteArray(item));
+                    if (filename1[filename1.Length - 2] == 'v' || filename2[filename2.Length - 2] == 'v')
+                        V.AddRange(ExtractToByteArray(item));
 
-                if (filename1[filename1.Length - 2] == 's' || filename2[filename2.Length - 2] == 's')
-                    S.AddRange(ExtractToByteArray(item));
+                    if (filename1[filename1.Length - 2] == 's' || filename2[filename2.Length - 2] == 's')
+                        S.AddRange(ExtractToByteArray(item));
 
-                if (filename1[filename1.Length - 2] == 'c' || filename2[filename2.Length - 2] == 'c')
-                    C_count++;
+                    if (filename1[filename1.Length - 2] == 'c' || filename2[filename2.Length - 2] == 'c')
+                        C_count++;
+                }
             }
 
             // ------------------------- //
@@ -136,25 +160,27 @@ namespace FriishProduce.Injectors
                 var C1 = new byte[1];
                 var C2 = new byte[1];
 
-                foreach (ZipEntry item in ZIP.Entries)
-                    if (item.FileName.ToLower().EndsWith($"c{x + 1}") || Path.GetFileNameWithoutExtension(item.FileName).ToLower().EndsWith($"c{x + 1}"))
-                    {
-                        C1 = ExtractToByteArray(item);
+                foreach (ZipEntry item in ZIP)
+                    if (item.IsFile)
+                        if (item.Name.ToLower().EndsWith($"c{x + 1}") || Path.GetFileNameWithoutExtension(item.Name).ToLower().EndsWith($"c{x + 1}"))
+                        {
+                            C1 = ExtractToByteArray(item);
 
-                        // Byteswap
-                        for (int i = 1; i < C1.Length; i += 2)
-                            (C1[i - 1], C1[i]) = (C1[i], C1[i - 1]);
-                    }
+                            // Byteswap
+                            for (int i = 1; i < C1.Length; i += 2)
+                                (C1[i - 1], C1[i]) = (C1[i], C1[i - 1]);
+                        }
 
-                foreach (ZipEntry item in ZIP.Entries)
-                    if (item.FileName.ToLower().EndsWith($"c{x + 2}") || Path.GetFileNameWithoutExtension(item.FileName).ToLower().EndsWith($"c{x + 2}"))
-                    {
-                        C2 = ExtractToByteArray(item);
+                foreach (ZipEntry item in ZIP)
+                    if (item.IsFile)
+                        if (item.Name.ToLower().EndsWith($"c{x + 2}") || Path.GetFileNameWithoutExtension(item.Name).ToLower().EndsWith($"c{x + 2}"))
+                        {
+                            C2 = ExtractToByteArray(item);
 
-                        // Byteswap
-                        for (int i = 1; i < C2.Length; i += 2)
-                            (C2[i - 1], C2[i]) = (C2[i], C2[i - 1]);
-                    }
+                            // Byteswap
+                            for (int i = 1; i < C2.Length; i += 2)
+                                (C2[i - 1], C2[i]) = (C2[i], C2[i - 1]);
+                        }
 
                 if (C1.Length > 5 && C2.Length > 5)
                 {
@@ -201,8 +227,8 @@ namespace FriishProduce.Injectors
 
                 else if (Path.GetExtension(BIOSPath).ToLower() == ".zip")
                 {
-                    foreach (ZipEntry item in ZIP.Entries)
-                        if (Path.GetExtension(item.FileName).ToLower() == ".rom")
+                    foreach (ZipEntry item in ZIP)
+                        if (item.IsFile && Path.GetExtension(item.Name).ToLower() == ".rom")
                             BIOS.AddRange(ExtractToByteArray(item));
 
                     if (BIOS.Count < 10) goto AutoBIOS;
@@ -295,9 +321,19 @@ namespace FriishProduce.Injectors
                 GameBin.AddRange(M);
             }
 
-            MainContent.ReplaceFile(target, isZlib ? Ionic.Zlib.ZlibStream.CompressBuffer(GameBin.ToArray()) : GameBin.ToArray());
+            byte[] output = GameBin.ToArray();
 
-            ZIP.Dispose();
+            if (isZlib)
+            {
+                output = null;
+                Deflater x = new();
+                x.SetInput(GameBin.ToArray());
+                x.Deflate(output);
+            }
+
+            MainContent.ReplaceFile(target, output);
+
+            ZIP.Close();
         }
 
         protected override void ReplaceSaveData(string[] lines, ImageHelper Img)

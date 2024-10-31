@@ -232,13 +232,13 @@ namespace FriishProduce
             // 
             // groupBox8
             // 
+            this.groupBox8.Controls.Add(this.video_modes);
+            this.groupBox8.Controls.Add(this.regions);
             this.groupBox8.Controls.Add(this.video_mode);
             this.groupBox8.Controls.Add(this.region);
             this.groupBox8.Controls.Add(this.label2);
             this.groupBox8.Controls.Add(this.title_id_upper);
             this.groupBox8.Controls.Add(this.label1);
-            this.groupBox8.Controls.Add(this.video_modes);
-            this.groupBox8.Controls.Add(this.regions);
             this.groupBox8.Controls.Add(this.channel_name);
             this.groupBox8.Controls.Add(this.title_id_random);
             resources.ApplyResources(this.groupBox8, "groupBox8");

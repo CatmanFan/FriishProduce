@@ -1,4 +1,4 @@
-﻿using Ionic.Zip;
+﻿using ICSharpCode.SharpZipLib.Zip;
 using libWiiSharp;
 using System;
 using System.Collections.Generic;
@@ -459,13 +459,6 @@ namespace FriishProduce
             banner_form = new BannerOptions(platform);
             LoadChannelDatabase();
 
-            if (Program.MainForm != null)
-            {
-                using var icon = new Bitmap(Program.MainForm.Icons[targetPlatform]);
-                icon.MakeTransparent(Color.White);
-                Icon = Icon.FromHandle(icon.GetHicon());
-            }
-
             InitializeComponent();
             AddBases();
             _isShown = true;
@@ -485,6 +478,15 @@ namespace FriishProduce
             // ----------------------------
             if (DesignMode) return;
             // ----------------------------
+
+            // Set icon
+            // ********
+            if (Program.MainForm != null)
+            {
+                using var icon = new Bitmap(Program.MainForm.Icons[targetPlatform]);
+                icon.MakeTransparent(Color.White);
+                Icon = Icon.FromHandle(icon.GetHicon());
+            }
 
             // Declare WAD metadata modifier
             // ********
@@ -1025,22 +1027,25 @@ namespace FriishProduce
                 int applicable = 0;
                 // bool hasFolder = false;
 
-                using ZipFile ZIP = ZipFile.Read(path);
-                foreach (var item in ZIP.Entries)
+                using ZipFile ZIP = new(path);
+                foreach (ZipEntry entry in ZIP)
                 {
-                    // Check if is a valid emanual contents folder
-                    // ****************
-                    // if ((item.FileName == "emanual" || item.FileName == "html") && item.IsDirectory)
-                    //    hasFolder = true;
+                    if (entry.IsFile)
+                    {
+                        // Check if is a valid emanual contents folder
+                        // ****************
+                        // if ((item.FileName == "emanual" || item.FileName == "html") && item.IsDirectory)
+                        //    hasFolder = true;
 
-                    // Check key files
-                    // ****************
-                    /* else */
-                    if ((item.FileName.StartsWith("startup") && Path.GetExtension(item.FileName) == ".html")
-                      || item.FileName == "standard.css"
-                      || item.FileName == "contents.css"
-                      || item.FileName == "vsscript.css")
-                        applicable++;
+                        // Check key files
+                        // ****************
+                        /* else */
+                        if ((entry.Name.StartsWith("startup") && Path.GetExtension(entry.Name) == ".html")
+                          || entry.Name == "standard.css"
+                          || entry.Name == "contents.css"
+                          || entry.Name == "vsscript.css")
+                            applicable++;
+                    }
                 }
 
                 if (applicable >= 2 /* && hasFolder */)
@@ -1399,11 +1404,8 @@ namespace FriishProduce
                     // *******
                     if (File.Exists(targetFile)) File.Delete(targetFile);
 
-                    using (ZipFile z = new(targetFile))
-                    {
-                        z.AddDirectory(Paths.SDUSBRoot, "");
-                        z.Save();
-                    }
+                    FastZip z = new();
+                    z.CreateZip(targetFile, Paths.SDUSBRoot, true, null);
 
                     // Clean
                     // *******
@@ -1548,9 +1550,8 @@ namespace FriishProduce
 
             // Set path to manual (if it exists) and load WAD
             // *******
-            VC.RetainOriginalManual = manual_type.SelectedIndex == 1;
-            VC.ManualFile = manual != null ? new Ionic.Zip.ZipFile("manual") : null;
-            if (VC.ManualFile != null) VC.ManualFile.AddDirectory(manual);
+            VC.UseOrigManual = manual_type.SelectedIndex == 1;
+            VC.CustomManual = (File.Exists(manual) || Directory.Exists(manual)) && !VC.UseOrigManual ? manual : null;
 
             // Actually inject everything
             // *******

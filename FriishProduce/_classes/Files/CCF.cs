@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ICSharpCode.SharpZipLib.Zip.Compression;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -324,7 +325,13 @@ namespace FriishProduce
 
                 if (ccfNodes[i].Compressed)
                 {
-                    data.Add(Ionic.Zlib.ZlibStream.UncompressBuffer(nodeData));
+                    byte[] deflatedNodeData = null;
+
+                    Deflater x = new();
+                    x.SetInput(nodeData);
+                    x.Deflate(deflatedNodeData);
+
+                    data.Add(deflatedNodeData);
                 }
 
                 else

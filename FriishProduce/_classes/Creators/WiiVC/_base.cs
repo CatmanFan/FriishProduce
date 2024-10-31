@@ -1,4 +1,4 @@
-﻿using Ionic.Zip;
+﻿using ICSharpCode.SharpZipLib.Zip;
 using libWiiSharp;
 using System;
 using System.Collections.Generic;
@@ -18,8 +18,8 @@ namespace FriishProduce
         protected ROM ROM { get; set; }
 
         protected string origManual { get; set; }
-        public bool RetainOriginalManual { get; set; }
-        public ZipFile ManualFile { get; set; }
+        public bool UseOrigManual { get; set; }
+        public string CustomManual { get; set; }
         protected bool needsManualLoaded { get; set; }
 
         protected bool needsMainDol { get; set; }
@@ -62,41 +62,8 @@ namespace FriishProduce
             if (needsManualLoaded) ReplaceManual(ManualContent ?? MainContent);
         }
 
-        #region EMANUAL Functions
-        /// <summary>
-        /// Dispose of "Operations Guide" button on HOME Menu.
-        /// </summary>
-        private void CleanManual()
-        {
-            if (RetainOriginalManual) return;
-
-            U8 Content4 = U8.Load(WAD.Contents[4]);
-
-            int start = -1;
-            int end = -1;
-
-            for (int i = 0; i < Content4.NumOfNodes; i++)
-            {
-                if (Content4.StringTable[i].ToLower() == "homebutton2") start = i;
-                else if (Content4.StringTable[i].ToLower() == "homebutton3") end = i;
-            }
-
-            try
-            {
-                if (start <= 0 && end <= 0) throw new InvalidOperationException();
-                else
-                {
-                    for (int i = 1; i < end - start; i++)
-                        Content4.ReplaceFile(i + end, Content4.Data[i + start]);
-
-                    Contents[4] = Content4.ToByteArray();
-                    if (Content4 != null) Content4.Dispose();
-                }
-            }
-
-            catch { if (Content4 != null) Content4.Dispose(); }
-        }
-
+        #region ### EMANUAL FUNCTIONS ###
+        #region -- Extract original manual --
         private void ExtractManual(CCF target, string path)
         {
             var extManual = new U8();
@@ -144,46 +111,72 @@ namespace FriishProduce
             extManual.Unpack(path);
             extManual.Dispose();
         }
+        #endregion
 
         /// <summary>
         /// Actually does the replacing of the html/man/emanual.arc with the contents of the specified folder.
         /// </summary>
-        protected U8 ReplaceManual(byte[] file)
+        /// <param name="file">The U8 archive to modify.</param>
+        /// <returns>Output file.</returns>
+        protected U8 WriteManual(byte[] input)
         {
-            U8 manualArc = U8.Load(file);
-            if (ManualFile == null) return manualArc;
+            U8 emanual_U8 = U8.Load(input);
+            bool valid = false;
 
-            string path = Paths.Manual;
-
-            // Get root folder name
-            // ****************
-            List<string> rootFolders = new List<string>() { "html", "man", "emanual" };
-
-            foreach (var item in rootFolders)
+            if (File.Exists(CustomManual))
             {
-                if (item == manualArc.StringTable[0])
+                valid = true;
+                Directory.CreateDirectory(Paths.Manual);
+
+                // Extract ZIP
+                // ****************
+                try
                 {
-                    bool hasRoot = ManualFile[0].IsDirectory && ManualFile[0].FileName == item;
-                    if (!hasRoot) path = Path.Combine(Paths.Manual, item) + "\\";
+                    FastZip zip = new();
+                    zip.ExtractZip(CustomManual, Paths.Manual, null);
+                }
+                catch
+                {
+                    valid = false;
                 }
             }
 
-            Directory.CreateDirectory(path);
-            ManualFile.Save(Paths.WorkingFolder + "manual.zip");
-            ManualFile.ExtractAll(path, ExtractExistingFileAction.OverwriteSilently);
-            ManualFile.Dispose();
+            else if (Directory.Exists(CustomManual))
+            {
+                valid = true;
+                Directory.CreateDirectory(Paths.Manual);
 
-            if (File.Exists(Paths.WorkingFolder + "manual.zip")) File.Delete(Paths.WorkingFolder + "manual.zip");
-            manualArc.CreateFromDirectory(Paths.Manual);
+                // Copy all files and folders to target path
+                // ****************
+                foreach (string dir in Directory.GetDirectories(CustomManual, "*", SearchOption.AllDirectories))
+                    Directory.CreateDirectory(dir.Replace(CustomManual, Paths.Manual));
 
-            if (Directory.Exists(Paths.Manual)) Directory.Delete(Paths.Manual, true);
+                foreach (string file in Directory.GetFiles(CustomManual, "*.*", SearchOption.AllDirectories))
+                    File.Copy(file, Path.Combine(Paths.Manual, file.Replace(CustomManual, null)), true);
+            }
 
-            return manualArc;
+            if (valid)
+            {
+                // Get root folder name
+                // ****************
+                List<string> rootFolders = new List<string>() { "html", "man", "emanual" };
+                string target = Paths.Manual;
+
+                foreach (var item in rootFolders)
+                    if (item == emanual_U8.StringTable[0])
+                        if (!Directory.EnumerateDirectories(target).Contains(item)) target = Path.Combine(Paths.Manual, item) + "\\";
+
+                emanual_U8.CreateFromDirectory(Paths.Manual);
+                if (Directory.Exists(Paths.Manual)) Directory.Delete(Paths.Manual, true);
+            }
+
+            return emanual_U8;
         }
 
+        #region --- Replace manual within CCF/U8 ---
         protected CCF ReplaceManual(CCF target)
         {
-            if (ManualFile?.Count > 0)
+            if (File.Exists(CustomManual) || Directory.Exists(CustomManual))
             {
                 // Get and read emanual
                 // ****************
@@ -194,7 +187,7 @@ namespace FriishProduce
                         target.ReplaceFile
                         (
                             target.GetNodeIndex(origManual),
-                            ReplaceManual(target.Data[target.GetNodeIndex(origManual)]).ToByteArray()
+                            WriteManual(target.Data[target.GetNodeIndex(origManual)]).ToByteArray()
                         );
                     }
             }
@@ -205,9 +198,7 @@ namespace FriishProduce
 
         protected void ReplaceManual(U8 target)
         {
-            if (ManualFile == null || ManualFile?.Count == 0) CleanManual();
-
-            else
+            if (File.Exists(CustomManual) || Directory.Exists(CustomManual))
             {
                 /* For reference: copied from "vcromclaim": https://github.com/JanErikGunnar/vcromclaim/blob/master/wiimetadata.py
 
@@ -245,7 +236,7 @@ namespace FriishProduce
                             );
                             if (!File.Exists(Paths.WorkingFolder + "html.dec")) throw new Exception(Program.Lang.Msg(2, true));
 
-                            File.WriteAllBytes("html_modified.dec", ReplaceManual(File.ReadAllBytes(Paths.WorkingFolder + "html.dec")).ToByteArray());
+                            File.WriteAllBytes("html_modified.dec", WriteManual(File.ReadAllBytes(Paths.WorkingFolder + "html.dec")).ToByteArray());
 
                             Utils.Run
                             (
@@ -274,7 +265,7 @@ namespace FriishProduce
                             target.ReplaceFile
                             (
                                 target.GetNodeIndex(origManual),
-                                ReplaceManual(target.Data[target.GetNodeIndex(origManual)]).ToByteArray()
+                                WriteManual(target.Data[target.GetNodeIndex(origManual)]).ToByteArray()
                             );
                         }
                 }
@@ -286,6 +277,44 @@ namespace FriishProduce
                     MessageBox.Show(Program.Lang.Msg(9, true));
                 }
             }
+
+            else CleanManual();
+        }
+        #endregion
+
+        /// <summary>
+        /// Dispose of "Operations Guide" button on HOME Menu.
+        /// </summary>
+        private void CleanManual()
+        {
+            CustomManual = null;
+            if (UseOrigManual) return;
+
+            U8 Content4 = U8.Load(WAD.Contents[4]);
+
+            int start = -1;
+            int end = -1;
+
+            for (int i = 0; i < Content4.NumOfNodes; i++)
+            {
+                if (Content4.StringTable[i].ToLower() == "homebutton2") start = i;
+                else if (Content4.StringTable[i].ToLower() == "homebutton3") end = i;
+            }
+
+            try
+            {
+                if (start <= 0 && end <= 0) throw new InvalidOperationException();
+                else
+                {
+                    for (int i = 1; i < end - start; i++)
+                        Content4.ReplaceFile(i + end, Content4.Data[i + start]);
+
+                    Contents[4] = Content4.ToByteArray();
+                    if (Content4 != null) Content4.Dispose();
+                }
+            }
+
+            catch { if (Content4 != null) Content4.Dispose(); }
         }
         #endregion
 
@@ -304,7 +333,7 @@ namespace FriishProduce
                 ManualContent.Dispose();
             }
 
-            if (ManualFile != null || MainContent != null)
+            if (CustomManual != null || MainContent != null)
                 Contents[mainContentIndex] = MainContent.ToByteArray();
             MainContent.Dispose();
 
@@ -370,8 +399,7 @@ namespace FriishProduce
             if (Contents != null) Contents.Clear();
             ROM = null;
             origManual = null;
-            RetainOriginalManual = false;
-            ManualFile = null;
+            UseOrigManual = false;
 
             mainContentIndex = 0;
             manualContentIndex = 0;

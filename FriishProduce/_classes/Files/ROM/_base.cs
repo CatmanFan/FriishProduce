@@ -1,4 +1,4 @@
-﻿using Ionic.Zip;
+﻿using ICSharpCode.SharpZipLib.Zip;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -31,7 +31,7 @@ namespace FriishProduce
 
                         _rom = value;
 
-                        if (System.IO.Path.GetExtension(value).ToLower() == ".zip") try { ZIP = new ZipFile(value); } catch { ZIP = null; }
+                        if (Path.GetExtension(value).ToLower() == ".zip") try { ZIP = new ZipFile(value); } catch { ZIP = null; }
                         if (ZIP == null) origData = File.ReadAllBytes(value);
                         Load();
                     }
@@ -78,25 +78,21 @@ namespace FriishProduce
             if (path == null && FilePath != null) path = FilePath;
             if (!File.Exists(path)) return true;
 
-            using (ZipFile ZIP = ZipFile.Read(path))
+            using (ZipFile ZIP = new(path))
             {
                 int applicable = 0;
 
-                foreach (var item in ZIP.Entries)
+                foreach (ZipEntry item in ZIP)
                     foreach (string line in strings)
-                    {
-                        string name = forceLowercase ? item.FileName.ToLower() : item.FileName;
-                        if ((searchEndingOnly && (name.EndsWith(line) || System.IO.Path.GetFileNameWithoutExtension(name).EndsWith(line)))
-                            || (!searchEndingOnly && name.Contains(line)))
-                            applicable++;
-                    }
+                        if (item.IsFile)
+                        {
+                            string name = forceLowercase ? item.Name.ToLower() : item.Name;
+                            if ((searchEndingOnly && (name.EndsWith(line) || Path.GetFileNameWithoutExtension(name).EndsWith(line)))
+                                || (!searchEndingOnly && name.Contains(line)))
+                                applicable++;
+                        }
 
-                if (applicable < strings.Length)
-                {
-                    return false;
-                }
-
-                return true;
+                return applicable >= strings.Length;
             }
         }
 
