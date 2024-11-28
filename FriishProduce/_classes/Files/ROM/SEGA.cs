@@ -8,7 +8,7 @@
 
         protected override void Load()
         {
-            MaxSize = (int)(IsSMS ? 524288 : 5.25 * 1024 * 1024);
+            MaxSize = (int)(IsSMS ? 1048576 : 5.25 * 1024 * 1024);
         }
     }
 }
