@@ -8,6 +8,7 @@ namespace FriishProduce.Injectors
     public static class Flash
     {
         public static IDictionary<string, string> Settings { get; set; }
+        public static IDictionary<string, string> Keymap { get; set; }
 
         // DEFAULT CONFIG FOR REFERENCE:
         /* # Comments (text preceded by #) and line breaks will be ignored
@@ -190,6 +191,30 @@ namespace FriishProduce.Injectors
                 {
                     MainContent.AddDirectory("/dls");
                     MainContent.AddFile("/dls/GM16.DLS", File.ReadAllBytes(Settings["midi"]));
+                }
+
+                else if (item.ToLower() == "keymap.ini" && Keymap.Count > 0 && false)
+                {
+                    var file = new List<string>()
+                    {
+                        "KEY_BUTTON_LEFT  KEY_LEFT",
+                        "KEY_BUTTON_RIGHT KEY_RIGHT",
+                        "KEY_BUTTON_DOWN  KEY_DOWN",
+                        "KEY_BUTTON_UP    KEY_UP",
+                        "KEY_BUTTON_A     65",
+                        "KEY_BUTTON_B     66",
+                        "KEY_BUTTON_1     49",
+                        "KEY_BUTTON_2     50",
+                        "KEY_BUTTON_HOME  KEY_ESCAPE",
+                        ""
+                    };
+
+                    foreach (var mapping in Keymap)
+                    {
+                        file.Add(mapping.Key.PadRight(17, ' ') + mapping.Value);
+                    }
+
+                    MainContent.ReplaceFile(MainContent.GetNodeIndex(item), Encoding.UTF8.GetBytes(string.Join("\r\n", file) + "\r\n"));
                 }
 
                 else if (item.ToLower() == "config.common.pcf")

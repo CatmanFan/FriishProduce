@@ -98,17 +98,22 @@ namespace FriishProduce
 
         public bool CheckSize(int length = 0)
         {
-            if (length == 0) length = MaxSize;
+            if (Properties.Settings.Default.bypass_rom_size) return true;
 
-            if (Bytes.Length > length && MaxSize > 0)
+            else
             {
-                bool isMB = length >= 1048576;
-                throw new Exception(string.Format(Program.Lang.Msg(3, true),
-                    Math.Round((double)length / (isMB ? 1048576 : 1024), 2).ToString(),
-                    isMB ? Program.Lang.String("megabytes") : Program.Lang.String("kilobytes")));
-            }
+                if (length == 0) length = MaxSize;
 
-            return true;
+                if (Bytes.Length > length && MaxSize > 0)
+                {
+                    bool isMB = length >= 1048576;
+                    throw new Exception(string.Format(Program.Lang.Msg(3, true),
+                        Math.Round((double)length / (isMB ? 1048576 : 1024), 2).ToString(),
+                        isMB ? Program.Lang.String("megabytes") : Program.Lang.String("kilobytes")));
+                }
+
+                return true;
+            }
         }
 
         public void Patch(string filePath)

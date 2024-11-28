@@ -130,6 +130,7 @@ namespace FriishProduce
             // -----------------------------
 
             Program.Lang.String(forwarder_root_device, "projectform");
+            forwarder_root_device.Text = forwarder_root_device.Text.TrimEnd(':').Trim();
             Program.Lang.String(bios_settings, "forwarder");
             Program.Lang.String(show_bios_screen, "forwarder");
 
@@ -210,29 +211,27 @@ namespace FriishProduce
             banner_regions.Items.AddRange(new string[] { Program.Lang.String("automatic"), Program.Lang.String("region_j"), Program.Lang.String("region_u"), Program.Lang.String("region_e"), Program.Lang.String("region_k") });
             banner_regions.SelectedIndex = Default.default_banner_region;
 
-            #region use_custom_database
-            bool clearCustomDatabase = !File.Exists(Default.custom_database);
+            // Use custom database
             use_custom_database.Checked = File.Exists(Default.custom_database);
+            if (!File.Exists(Default.custom_database) && use_custom_database.Checked)
+            {
+                use_custom_database.Checked = false;
+                Default.custom_database = null;
+                Default.Save();
+            }
+
+            // Use online WAD download option
+            if (use_online_wad_tip.MaximumSize.IsEmpty) use_online_wad_tip.MaximumSize = use_online_wad_tip.Size;
+            use_online_wad_tip.AutoSize = true;
+            use_online_wad_enabled.Checked = Default.use_online_wad_enabled;
+
+            bypass_rom_size.Checked = Default.bypass_rom_size;
 
 #if DEBUG
             GetBanners.Visible = true;
 #else
             GetBanners.Visible = false;
 #endif
-
-            if (clearCustomDatabase && use_custom_database.Checked)
-            {
-                use_custom_database.Checked = false;
-                Default.custom_database = null;
-                Default.Save();
-            }
-            #endregion
-
-            #region use_online_wad_enabled
-            if (use_online_wad_tip.MaximumSize.IsEmpty) use_online_wad_tip.MaximumSize = use_online_wad_tip.Size;
-            use_online_wad_tip.AutoSize = true;
-            use_online_wad_enabled.Checked = Default.use_online_wad_enabled;
-            #endregion
 
             // NES
             vc_nes_palettelist.SelectedIndex = int.Parse(VC_NES.Default.palette);
@@ -349,6 +348,7 @@ namespace FriishProduce
             Default.default_export_filename = default_target_wad_tb.Text;
             Default.default_target_filename = default_target_project_tb.Text;
             Default.use_online_wad_enabled = use_online_wad_enabled.Checked;
+            Default.bypass_rom_size = bypass_rom_size.Checked;
 
             // -------------------------------------------
             // BIOS files

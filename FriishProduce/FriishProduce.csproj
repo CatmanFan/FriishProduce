@@ -270,6 +270,12 @@
     <Compile Include="Subforms\Options_VC_SEGA.Designer.cs">
       <DependentUpon>Options_VC_SEGA.cs</DependentUpon>
     </Compile>
+    <Compile Include="Subforms\Savedata.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Subforms\Savedata.Designer.cs">
+      <DependentUpon>Savedata.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tutorial.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -424,6 +430,9 @@
     <EmbeddedResource Include="Subforms\Options_VC_SEGA.resx">
       <DependentUpon>Options_VC_SEGA.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Subforms\Savedata.resx">
+      <DependentUpon>Savedata.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Tutorial.resx">
       <DependentUpon>Tutorial.cs</DependentUpon>
     </EmbeddedResource>
@@ -528,6 +537,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\subforms\controller_wiirn.png" />
+    <None Include="Resources\subforms\controller_wiirh.png" />
+    <None Include="Resources\subforms\controller_gc.png" />
+    <None Include="Resources\subforms\controller_classic.png" />
     <None Include="Resources\icon_new.png" />
     <None Include="Resources\icons\tag_blue_edit.png" />
     <None Include="Resources\icons\sound.png" />

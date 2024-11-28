@@ -30,22 +30,23 @@ namespace FriishProduce
             }
 
             Program.Lang.Control(this);
-            Text = Program.Lang.String("banner", Tag.ToString());
         }
 
         private void OK_Click(object sender, EventArgs e)
         {
+            Hide();
             DialogResult = DialogResult.OK;
             Close();
         }
 
         private void Cancel_Click(object sender, EventArgs e)
         {
+            Hide();
             DialogResult = DialogResult.Cancel;
             Close();
         }
 
-        private void BannerOptions_FormClosing(object sender, FormClosingEventArgs e)
+        private void isClosing(object sender, FormClosingEventArgs e)
         {
             if (DialogResult != DialogResult.OK)
             {

@@ -286,7 +286,7 @@
     <value>NoControl</value>
   </data>
   <data name="b_cancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>347, 12</value>
+    <value>347, 8</value>
   </data>
   <data name="b_cancel.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 23</value>
@@ -313,7 +313,7 @@
     <value>NoControl</value>
   </data>
   <data name="b_ok.Location" type="System.Drawing.Point, System.Drawing">
-    <value>241, 12</value>
+    <value>241, 8</value>
   </data>
   <data name="b_ok.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 23</value>
@@ -343,7 +343,7 @@
     <value>0, 1</value>
   </data>
   <data name="bottomPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>459, 47</value>
+    <value>459, 39</value>
   </data>
   <data name="bottomPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -364,10 +364,10 @@
     <value>Bottom</value>
   </data>
   <data name="bottomPanel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 184</value>
+    <value>0, 192</value>
   </data>
   <data name="bottomPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>459, 48</value>
+    <value>459, 40</value>
   </data>
   <data name="bottomPanel2.TabIndex" type="System.Int32, mscorlib">
     <value>35</value>
@@ -467,9 +467,6 @@
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>banner</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>BannerOptions</value>

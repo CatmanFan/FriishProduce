@@ -114,7 +114,7 @@ namespace FriishProduce
             // 
             // bottomPanel2
             // 
-            this.bottomPanel2.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.bottomPanel2.BackColor = System.Drawing.Color.LightGray;
             this.bottomPanel2.Controls.Add(this.bottomPanel1);
             resources.ApplyResources(this.bottomPanel2, "bottomPanel2");
             this.bottomPanel2.Name = "bottomPanel2";
@@ -129,6 +129,7 @@ namespace FriishProduce
             // 
             // b_cancel
             // 
+            this.b_cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             resources.ApplyResources(this.b_cancel, "b_cancel");
             this.b_cancel.Name = "b_cancel";
             this.b_cancel.Tag = "b_cancel";
@@ -165,6 +166,7 @@ namespace FriishProduce
             // BannerOptions
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.CancelButton = this.b_cancel;
             resources.ApplyResources(this, "$this");
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
@@ -177,7 +179,7 @@ namespace FriishProduce
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "BannerOptions";
@@ -186,7 +188,7 @@ namespace FriishProduce
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Tag = "banner";
             this.TopMost = true;
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.BannerOptions_FormClosing);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.isClosing);
             ((System.ComponentModel.ISupportInitialize)(this.players)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.released)).EndInit();
             this.bottomPanel2.ResumeLayout(false);

@@ -147,6 +147,7 @@
 			"system_default":					"System default",
 			"reset_all_dialogs":				"Reset all dialogs",
 			"use_custom_database":				"Use custom WAD database file",
+			"bypass_rom_size":					"Bypass ROM filesize limit",
 
 			"updater":							"Updater",
 			"check_for_updates":				"Check for updates",
@@ -171,7 +172,7 @@
 
 		"projectform": {
 			"main":								"Main files",
-			"rom_label":						"Current {0}: {1}",
+			"rom_label":						"Current {0}:",
 			"rom_label1":						"game file",
 			"rom_label2":						"disc image",
 			"include_patch":					"Include a patch",
@@ -210,8 +211,9 @@
 			"injection_method":					"Injection method",
 			"injection_method_options":			"Injection method options...",
 
-			"save_data":						"Save data",
+			"save_data":						"Savedata",
 			"save_data_enable":					"Enable saving",
+			"edit_save_data":					"Edit savedata title...",
 			"fill_save_data":					"Fill in automatically",
 			
 			"forwarder_root_device":			"Root storage device:",

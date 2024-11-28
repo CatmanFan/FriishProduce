@@ -147,6 +147,9 @@
   <data name="&gt;&gt;b_cancel.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="b_ok.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="b_ok.Location" type="System.Drawing.Point, System.Drawing">
     <value>342, 12</value>
   </data>
@@ -175,13 +178,13 @@
     <value>Bottom</value>
   </data>
   <data name="bottomPanel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 1</value>
+    <value>0, 375</value>
   </data>
   <data name="bottomPanel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>560, 47</value>
   </data>
   <data name="bottomPanel1.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>12</value>
   </data>
   <data name="&gt;&gt;bottomPanel1.Name" xml:space="preserve">
     <value>bottomPanel1</value>
@@ -190,33 +193,9 @@
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;bottomPanel1.Parent" xml:space="preserve">
-    <value>bottomPanel2</value>
-  </data>
-  <data name="&gt;&gt;bottomPanel1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="bottomPanel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="bottomPanel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 374</value>
-  </data>
-  <data name="bottomPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>560, 48</value>
-  </data>
-  <data name="bottomPanel2.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
-  </data>
-  <data name="&gt;&gt;bottomPanel2.Name" xml:space="preserve">
-    <value>bottomPanel2</value>
-  </data>
-  <data name="&gt;&gt;bottomPanel2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;bottomPanel2.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;bottomPanel2.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;bottomPanel1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -232,7 +211,7 @@
     <value>CenterParent</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>options</value>
+    <value>injection_method_options</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>ContentOptions</value>

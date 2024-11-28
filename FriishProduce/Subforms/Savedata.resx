@@ -123,10 +123,10 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="b_cancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>688, 12</value>
+    <value>187, 8</value>
   </data>
   <data name="b_cancel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 23</value>
+    <value>90, 23</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="b_cancel.TabIndex" type="System.Int32, mscorlib">
@@ -151,10 +151,10 @@
     <value>NoControl</value>
   </data>
   <data name="b_ok.Location" type="System.Drawing.Point, System.Drawing">
-    <value>582, 12</value>
+    <value>91, 8</value>
   </data>
   <data name="b_ok.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 23</value>
+    <value>90, 23</value>
   </data>
   <data name="b_ok.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -181,7 +181,7 @@
     <value>0, 1</value>
   </data>
   <data name="bottomPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>800, 47</value>
+    <value>289, 39</value>
   </data>
   <data name="bottomPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -202,13 +202,13 @@
     <value>Bottom</value>
   </data>
   <data name="bottomPanel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 374</value>
+    <value>0, 98</value>
   </data>
   <data name="bottomPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>800, 48</value>
+    <value>289, 40</value>
   </data>
   <data name="bottomPanel2.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+    <value>36</value>
   </data>
   <data name="&gt;&gt;bottomPanel2.Name" xml:space="preserve">
     <value>bottomPanel2</value>
@@ -220,217 +220,106 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;bottomPanel2.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
-  <data name="WiiRemote_Left.Location" type="System.Drawing.Point, System.Drawing">
-    <value>44, 55</value>
+  <data name="Fill.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="WiiRemote_Left.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 21</value>
+  <data name="Fill.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="WiiRemote_Left.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
+  <data name="Fill.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 69</value>
   </data>
-  <data name="&gt;&gt;WiiRemote_Left.Name" xml:space="preserve">
-    <value>WiiRemote_Left</value>
+  <data name="Fill.Size" type="System.Drawing.Size, System.Drawing">
+    <value>93, 17</value>
   </data>
-  <data name="&gt;&gt;WiiRemote_Left.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="Fill.TabIndex" type="System.Int32, mscorlib">
+    <value>42</value>
   </data>
-  <data name="&gt;&gt;WiiRemote_Left.Parent" xml:space="preserve">
+  <data name="Fill.Text" xml:space="preserve">
+    <value>fill_save_data</value>
+  </data>
+  <data name="&gt;&gt;Fill.Name" xml:space="preserve">
+    <value>Fill</value>
+  </data>
+  <data name="&gt;&gt;Fill.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Fill.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;WiiRemote_Left.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;Fill.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="image_wii.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="Title.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Verdana, 11pt</value>
   </data>
-  <data name="image_wii.Location" type="System.Drawing.Point, System.Drawing">
-    <value>204, 28</value>
+  <data name="Title.Location" type="System.Drawing.Point, System.Drawing">
+    <value>66, 14</value>
   </data>
-  <data name="image_wii.Size" type="System.Drawing.Size, System.Drawing">
-    <value>360, 262</value>
+  <data name="Title.MaxLength" type="System.Int32, mscorlib">
+    <value>80</value>
   </data>
-  <data name="image_wii.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
-    <value>Zoom</value>
+  <data name="Title.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="image_wii.TabIndex" type="System.Int32, mscorlib">
-    <value>16</value>
+  <data name="Title.Size" type="System.Drawing.Size, System.Drawing">
+    <value>211, 44</value>
   </data>
-  <data name="&gt;&gt;image_wii.Name" xml:space="preserve">
-    <value>image_wii</value>
+  <data name="Title.TabIndex" type="System.Int32, mscorlib">
+    <value>41</value>
   </data>
-  <data name="&gt;&gt;image_wii.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="Title.WordWrap" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
-  <data name="&gt;&gt;image_wii.Parent" xml:space="preserve">
-    <value>tabPage1</value>
+  <data name="&gt;&gt;Title.Name" xml:space="preserve">
+    <value>Title</value>
   </data>
-  <data name="&gt;&gt;image_wii.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;Title.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="tabPage1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
+  <data name="&gt;&gt;Title.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
-  <data name="tabPage1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="tabPage1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>768, 319</value>
-  </data>
-  <data name="tabPage1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="tabPage1.Text" xml:space="preserve">
-    <value>tabPage1</value>
-  </data>
-  <data name="&gt;&gt;tabPage1.Name" xml:space="preserve">
-    <value>tabPage1</value>
-  </data>
-  <data name="&gt;&gt;tabPage1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPage1.Parent" xml:space="preserve">
-    <value>tabControl1</value>
-  </data>
-  <data name="&gt;&gt;tabPage1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="image_cc.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="image_cc.Location" type="System.Drawing.Point, System.Drawing">
-    <value>99, 28</value>
-  </data>
-  <data name="image_cc.Size" type="System.Drawing.Size, System.Drawing">
-    <value>570, 262</value>
-  </data>
-  <data name="image_cc.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
-    <value>Zoom</value>
-  </data>
-  <data name="image_cc.TabIndex" type="System.Int32, mscorlib">
-    <value>16</value>
-  </data>
-  <data name="&gt;&gt;image_cc.Name" xml:space="preserve">
-    <value>image_cc</value>
-  </data>
-  <data name="&gt;&gt;image_cc.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;image_cc.Parent" xml:space="preserve">
-    <value>tabPage2</value>
-  </data>
-  <data name="&gt;&gt;image_cc.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tabPage2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tabPage2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="tabPage2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>768, 319</value>
-  </data>
-  <data name="tabPage2.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;Title.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="tabPage2.Text" xml:space="preserve">
-    <value>tabPage2</value>
+  <data name="Picture.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Stretch</value>
   </data>
-  <data name="&gt;&gt;tabPage2.Name" xml:space="preserve">
-    <value>tabPage2</value>
-  </data>
-  <data name="&gt;&gt;tabPage2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPage2.Parent" xml:space="preserve">
-    <value>tabControl1</value>
-  </data>
-  <data name="&gt;&gt;tabPage2.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="pictureBox1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="Picture.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="pictureBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>99, 28</value>
-  </data>
-  <data name="pictureBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>570, 262</value>
-  </data>
-  <data name="pictureBox1.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
-    <value>Zoom</value>
-  </data>
-  <data name="pictureBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
-  </data>
-  <data name="&gt;&gt;pictureBox1.Name" xml:space="preserve">
-    <value>pictureBox1</value>
-  </data>
-  <data name="&gt;&gt;pictureBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pictureBox1.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;pictureBox1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tabPage3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tabPage3.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="tabPage3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>768, 319</value>
-  </data>
-  <data name="tabPage3.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="tabPage3.Text" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;tabPage3.Name" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;tabPage3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPage3.Parent" xml:space="preserve">
-    <value>tabControl1</value>
-  </data>
-  <data name="&gt;&gt;tabPage3.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="Picture.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 12</value>
   </data>
-  <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>776, 345</value>
+  <data name="Picture.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 48</value>
   </data>
-  <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
+  <data name="Picture.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>StretchImage</value>
   </data>
-  <data name="&gt;&gt;tabControl1.Name" xml:space="preserve">
-    <value>tabControl1</value>
+  <data name="Picture.TabIndex" type="System.Int32, mscorlib">
+    <value>43</value>
   </data>
-  <data name="&gt;&gt;tabControl1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;Picture.Name" xml:space="preserve">
+    <value>Picture</value>
   </data>
-  <data name="&gt;&gt;tabControl1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;Picture.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Picture.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;tabControl1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;Picture.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>800, 422</value>
+    <value>289, 138</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8.25pt</value>
@@ -438,11 +327,8 @@
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>controller_options</value>
-  </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>ControllerOptions</value>
+    <value>Savedata</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

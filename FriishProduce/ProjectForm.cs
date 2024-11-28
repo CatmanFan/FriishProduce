@@ -17,6 +17,7 @@ namespace FriishProduce
     {
         protected Platform targetPlatform { get; set; }
         private readonly BannerOptions banner_form;
+        private readonly Savedata savedata;
 
         protected string TIDCode;
         protected string Untitled;
@@ -24,18 +25,12 @@ namespace FriishProduce
 
         protected bool isVirtualConsole { get => injection_methods.SelectedItem?.ToString().ToLower() == Program.Lang.String("vc").ToLower(); }
         protected bool showPatch = false;
+        private bool _showSaveData;
         protected bool showSaveData
         {
             get => _showSaveData;
-            set
-            {
-                _showSaveData = value;
-
-                fill_save_data.Visible = SaveIcon_Panel.Visible = save_data_title.Visible = value;
-                label16.Visible = !value;
-            }
+            set => edit_save_data.Enabled = _showSaveData = value;
         }
-        private bool _showSaveData;
         private readonly bool _isShown;
         private bool _isMint;
 
@@ -73,7 +68,6 @@ namespace FriishProduce
                     banner.Enabled =
                     groupBox2.Enabled =
                     groupBox3.Enabled =
-                    groupBox5.Enabled =
                     groupBox6.Enabled =
                     groupBox7.Enabled =
                     groupBox8.Enabled = !value;
@@ -101,7 +95,7 @@ namespace FriishProduce
                     refreshData();
                 }
 
-                return save_data_title.Visible ? yes && !string.IsNullOrEmpty(_saveDataTitle[0]) : yes;
+                return savedata.Title.Visible ? yes && !string.IsNullOrEmpty(_saveDataTitle[0]) : yes;
             }
         }
         public bool IsForwarder { get => !isVirtualConsole && targetPlatform != Platform.Flash; }
@@ -170,7 +164,7 @@ namespace FriishProduce
         private string _bannerTitle { get => banner_form.title.Text; }
         private int _bannerYear { get => (int)banner_form.released.Value; }
         private int _bannerPlayers { get => (int)banner_form.players.Value; }
-        private string[] _saveDataTitle { get => save_data_title.Lines.Length == 1 ? new string[] { save_data_title.Text } : save_data_title.Lines.Length == 0 ? new string[] { "" } : save_data_title.Lines; }
+        private string[] _saveDataTitle { get => savedata.Title.Lines.Length == 1 ? new string[] { savedata.Title.Text } : savedata.Title.Lines.Length == 0 ? new string[] { "" } : savedata.Title.Lines; }
         private int _bannerRegion
         {
             get
@@ -233,7 +227,7 @@ namespace FriishProduce
                 ForwarderStorageDevice = forwarder_root_device.SelectedIndex,
                 ContentOptions = contentOptions ?? null,
 
-                LinkSaveDataTitle = fill_save_data.Checked,
+                LinkSaveDataTitle = savedata.Fill.Checked,
                 VideoMode = video_modes.SelectedIndex,
 
                 TitleID = _tID,
@@ -272,15 +266,17 @@ namespace FriishProduce
 
             #region Localization
             Program.Lang.Control(this, "projectform");
+
+            // File filters
             browsePatch.Filter = Program.Lang.String("filter.patch");
             // BrowseManualZIP.Filter = Program.Lang.String("filter.zip");
 
             // Banner menu
-            banner_details.Text = Program.Lang.String(banner_details.Name, "projectform");
-            banner_sound.Text = Program.Lang.String(banner_sound.Name, "projectform");
-            play_banner_sound.Text = Program.Lang.String(play_banner_sound.Name, "projectform");
-            replace_banner_sound.Text = Program.Lang.String(replace_banner_sound.Name, "projectform");
-            restore_banner_sound.Text = Program.Lang.String(restore_banner_sound.Name, "projectform");
+            banner_details.Text = Program.Lang.String(banner_details.Name, Name);
+            banner_sound.Text = Program.Lang.String(banner_sound.Name, Name);
+            play_banner_sound.Text = Program.Lang.String(play_banner_sound.Name, Name);
+            replace_banner_sound.Text = Program.Lang.String(replace_banner_sound.Name, Name);
+            restore_banner_sound.Text = Program.Lang.String(restore_banner_sound.Name, Name);
 
             // Change title text to untitled string
             Untitled = string.Format(Program.Lang.String("untitled_project", "mainform"), Program.Lang.String(Enum.GetName(typeof(Platform), targetPlatform).ToLower(), "platforms"));
@@ -457,6 +453,7 @@ namespace FriishProduce
             targetPlatform = platform;
             IsEmpty = true;
             banner_form = new BannerOptions(platform);
+            savedata = new Savedata(platform);
             LoadChannelDatabase();
 
             InitializeComponent();
@@ -612,7 +609,7 @@ namespace FriishProduce
                 banner_form.title.Text = project.BannerTitle;
                 banner_form.released.Value = project.BannerYear;
                 banner_form.players.Value = project.BannerPlayers;
-                save_data_title.Lines = project.SaveDataTitle;
+                savedata.Title.Lines = project.SaveDataTitle;
                 title_id_upper.Text = project.TitleID;
 
                 regions.SelectedIndex = project.WADRegion;
@@ -628,7 +625,7 @@ namespace FriishProduce
                 setFilesText();
             }
 
-            fill_save_data.Checked = project == null ? Properties.Settings.Default.auto_fill_save_data : project.LinkSaveDataTitle;
+            savedata.Fill.Checked = project == null ? Properties.Settings.Default.auto_fill_save_data : project.LinkSaveDataTitle;
 
             int forwarderStorageDevice = project == null ? Options.FORWARDER.Default.root_storage_device : project.ForwarderStorageDevice;
             forwarder_root_device.SelectedIndex = forwarderStorageDevice;
@@ -760,15 +757,13 @@ namespace FriishProduce
             bool hasRom = !string.IsNullOrWhiteSpace(rom?.FilePath);
             bool hasWad = !string.IsNullOrWhiteSpace(WADPath);
 
-            int maxLength = 75;
-            string romFileName = hasRom ? rom?.FilePath : Program.Lang.String("none");
-            if (romFileName.Length > maxLength) romFileName = romFileName.Substring(0, maxLength - 3) + "...";
-            rom_label.Text = string.Format(Program.Lang.String(rom_label.Name, Name), FileTypeName, romFileName);
+            rom_label.Text = string.Format(Program.Lang.String(rom_label.Name, Name), FileTypeName);
+            rom_label_filename.Text = hasRom ? rom?.FilePath : Program.Lang.String("none");
+            if (rom_label_filename.Text.Length > 80) rom_label_filename.Text = rom_label_filename.Text.Substring(0, 77) + "...";
 
             // WAD
             // ********
             wad_filename.Text = hasWad ? Path.GetFileName(WADPath) : Program.Lang.String("none");
-            if (wad_filename.Text.Length > maxLength) wad_filename.Text = wad_filename.Text.Substring(0, maxLength - 3) + "...";
             wad_filename.Enabled = hasWad;
             checkImg3.Image = hasWad ? Properties.Resources.yes : Properties.Resources.no;
         }
@@ -849,20 +844,20 @@ namespace FriishProduce
 
         private void linkSaveDataTitle()
         {
-            if (fill_save_data.Checked && fill_save_data.Enabled && fill_save_data.Visible)
+            if (savedata.Fill.Checked && savedata.Fill.Enabled && savedata.Fill.Visible)
             {
                 string[] lines = new string[2];
-                int limit = save_data_title.Multiline ? save_data_title.MaxLength / 2 : save_data_title.MaxLength;
+                int limit = savedata.Title.Multiline ? savedata.Title.MaxLength / 2 : savedata.Title.MaxLength;
                 if (channel_name.TextLength <= limit) lines[0] = channel_name.Text;
                 if (banner_form.title.Lines.Length > 1 && banner_form.title.Lines[1].Length <= limit) lines[1] = banner_form.title.Lines[1];
 
-                if (string.Join("\n", lines).Length > save_data_title.MaxLength) return;
+                if (string.Join("\n", lines).Length > savedata.Title.MaxLength) return;
 
-                save_data_title.Text
+                savedata.Title.Text
                     = string.IsNullOrWhiteSpace(lines[1]) ? lines[0]
                     : string.IsNullOrWhiteSpace(lines[0]) ? lines[1]
                     : string.IsNullOrWhiteSpace(lines[0]) && string.IsNullOrWhiteSpace(lines[1]) ? null
-                    : save_data_title.Multiline ? string.Join(Environment.NewLine, lines) : lines[0];
+                    : savedata.Title.Multiline ? string.Join(Environment.NewLine, lines) : lines[0];
             }
 
             refreshData();
@@ -870,9 +865,9 @@ namespace FriishProduce
 
         private void LinkSaveData_Changed(object sender, EventArgs e)
         {
-            if (sender == fill_save_data)
+            if (sender == savedata.Fill)
             {
-                save_data_title.Enabled = !fill_save_data.Checked;
+                savedata.Title.Enabled = !savedata.Fill.Checked;
                 linkSaveDataTitle();
             }
         }
@@ -1172,7 +1167,7 @@ namespace FriishProduce
 
             if (!bannerOnly)
             {
-                SaveIcon_Panel.Image = img?.SaveIcon();
+                savedata.Picture.Image = img?.SaveIcon();
             }
         }
 
@@ -1288,8 +1283,8 @@ namespace FriishProduce
                         banner_form.released.Value = !string.IsNullOrEmpty(gameData.Year) ? int.Parse(gameData.Year) : banner_form.released.Value;
                         banner_form.players.Value = !string.IsNullOrEmpty(gameData.Players) ? int.Parse(gameData.Players) : banner_form.players.Value;
 
-                        if (fill_save_data.Checked) linkSaveDataTitle();
-                        else if (rom.CleanTitle != null && channel_name.TextLength <= save_data_title.MaxLength) save_data_title.Text = channel_name.Text;
+                        if (savedata.Fill.Checked) linkSaveDataTitle();
+                        else if (rom.CleanTitle != null && channel_name.TextLength <= savedata.Title.MaxLength) savedata.Title.Text = channel_name.Text;
                     }
 
                     // Set image
@@ -1565,6 +1560,7 @@ namespace FriishProduce
         // ******************
         private void openInjectorOptions(object sender, EventArgs e)
         {
+            contentOptionsForm.Text = Program.Lang.String(injection_method_options.Name, Name).TrimEnd('.').Trim();
             var result = contentOptionsForm.ShowDialog(this) == DialogResult.OK;
 
             switch (targetPlatform)
@@ -1793,47 +1789,7 @@ namespace FriishProduce
                 _ => null,
             };
 
-            #region Save data text handling
-            int oldSaveLength = save_data_title.MaxLength;
-
-            // Changing SaveDataTitle max length & clearing text field when needed
-            // ----------------------
-            if (targetPlatform == Platform.NES) save_data_title.MaxLength = inWadRegion == Region.Korea ? 30 : 20;
-            else if (targetPlatform == Platform.SNES) save_data_title.MaxLength = 80;
-            else if (targetPlatform == Platform.N64) save_data_title.MaxLength = 100;
-            else if (targetPlatform == Platform.NEO
-                  || targetPlatform == Platform.MSX) save_data_title.MaxLength = 64;
-            else save_data_title.MaxLength = 80;
-
-            // Also, some consoles only support a single line anyway
-            // ********
-            bool isSingleLine = inWadRegion == Region.Korea
-                             || targetPlatform == Platform.NES
-                             || targetPlatform == Platform.SMS
-                             || targetPlatform == Platform.SMD
-                             || targetPlatform == Platform.PCE
-                             || targetPlatform == Platform.PCECD;
-
-            // Set textbox to use single line when needed
-            // ********
-            if (save_data_title.Multiline == isSingleLine)
-            {
-                save_data_title.Multiline = !isSingleLine;
-                save_data_title.Location = isSingleLine ? new Point(save_data_title.Location.X, int.Parse(save_data_title.Tag.ToString()) + 8) : new Point(save_data_title.Location.X, int.Parse(save_data_title.Tag.ToString()));
-                save_data_title.Clear();
-                goto End;
-            }
-            if (inWadRegion == Region.Korea && save_data_title.Multiline) save_data_title.MaxLength /= 2; // Applies to both NES/FC & SNES/SFC
-
-            // Clear text field if at least one line is longer than the maximum limit allowed
-            // ********
-            double max = save_data_title.Multiline ? Math.Round((double)save_data_title.MaxLength / 2) : save_data_title.MaxLength;
-            foreach (var line in save_data_title.Lines)
-                if (line.Length > max && save_data_title.MaxLength != oldSaveLength)
-                    save_data_title.Clear();
-            #endregion
-
-            End:
+            savedata.Reset(targetPlatform, (int)inWadRegion);
             resetImages();
             linkSaveDataTitle();
             resetContentOptions();
@@ -1954,7 +1910,7 @@ namespace FriishProduce
             if (contentOptionsForm != null)
             {
                 contentOptionsForm.Font = Font;
-                contentOptionsForm.Text = Program.Lang.String("injection_method_options", "projectform").TrimEnd('.').Trim();
+                // contentOptionsForm.Text = Program.Lang.String("injection_method_options", "projectform").TrimEnd('.').Trim();
                 contentOptionsForm.Icon = Icon.FromHandle(Properties.Resources.wrench.GetHicon());
             }
 
@@ -2056,7 +2012,7 @@ namespace FriishProduce
 
         private void banner_customize_Click(object sender, EventArgs e)
         {
-            banner_form.Text = banner_details.Text;
+            // banner_form.Text = Program.Lang.String(banner_details.Name, Name);
             banner_form.origTitle = banner_form.title.Text;
             banner_form.origYear = (int)banner_form.released.Value;
             banner_form.origPlayers = (int)banner_form.players.Value;
@@ -2100,5 +2056,11 @@ namespace FriishProduce
                 LoadSound(browseSound.FileName);
         }
         private void restore_banner_sound_Click(object sender, EventArgs e) => LoadSound(null);
+
+        private void edit_save_data_Click(object sender, EventArgs e)
+        {
+            // savedata.Text = Program.Lang.String(edit_save_data.Name, Name);
+            savedata.ShowDialog();
+        }
     }
 }

@@ -171,7 +171,7 @@
 
 		"projectform": {
 			"main":								"주요 파일",
-			"rom_label":						"현재 {0}: {1}",
+			"rom_label":						"현재 {0}:",
 			"rom_label1":						"게임 파일",
 			"rom_label2":						"디스크 이미지",
 			"include_patch":					"패치 포함",
@@ -212,6 +212,7 @@
 			
 			"save_data":						"저장 데이터",
 			"save_data_enable":					"저장 활성화",
+			"edit_save_data":					"Edit savedata title...",
 			"fill_save_data":					"자동으로 연결",
 			
 			"forwarder_root_device":			"루트 저장 장치:",

@@ -171,7 +171,7 @@
 
 		"projectform": {
 			"main":								"Archivos principales",
-			"rom_label":						"Archivo {0} actual: {1}",
+			"rom_label":						"Archivo {0} actual:",
 			"rom_label1":						"de juego",
 			"rom_label2":						"de disco",
 			"include_patch":					"Incluir parche",
@@ -212,6 +212,7 @@
 
 			"save_data":						"Datos guardados",
 			"save_data_enable":					"Habilitar la función de guardado",
+			"edit_save_data":					"Modificar título de datos guardados...",
 			"fill_save_data":					"Completar automáticamente",
 			
 			"forwarder_root_device":			"Dispositivo de almacenamiento:",

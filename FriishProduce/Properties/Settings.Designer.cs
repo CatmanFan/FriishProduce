@@ -226,5 +226,17 @@ namespace FriishProduce.Properties {
                 this["default_banner_region"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool bypass_rom_size {
+            get {
+                return ((bool)(this["bypass_rom_size"]));
+            }
+            set {
+                this["bypass_rom_size"] = value;
+            }
+        }
     }
 }

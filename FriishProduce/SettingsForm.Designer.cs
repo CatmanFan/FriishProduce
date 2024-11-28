@@ -44,6 +44,7 @@ namespace FriishProduce
             this.GetBanners = new System.Windows.Forms.Button();
             this.TreeView = new System.Windows.Forms.TreeView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.bypass_rom_size = new System.Windows.Forms.CheckBox();
             this.use_online_wad_tip = new System.Windows.Forms.Label();
             this.use_online_wad_enabled = new System.Windows.Forms.CheckBox();
             this.use_custom_database = new System.Windows.Forms.CheckBox();
@@ -240,7 +241,7 @@ namespace FriishProduce
             // 
             // bottomPanel2
             // 
-            this.bottomPanel2.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.bottomPanel2.BackColor = System.Drawing.Color.LightGray;
             this.bottomPanel2.Controls.Add(this.bottomPanel1);
             resources.ApplyResources(this.bottomPanel2, "bottomPanel2");
             this.bottomPanel2.Name = "bottomPanel2";
@@ -284,7 +285,7 @@ namespace FriishProduce
             this.TreeView.FullRowSelect = true;
             this.TreeView.HotTracking = true;
             resources.ApplyResources(this.TreeView, "TreeView");
-            this.TreeView.ItemHeight = 19;
+            this.TreeView.ItemHeight = 20;
             this.TreeView.Name = "TreeView";
             this.TreeView.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             ((System.Windows.Forms.TreeNode)(resources.GetObject("TreeView.Nodes"))),
@@ -292,13 +293,12 @@ namespace FriishProduce
             ((System.Windows.Forms.TreeNode)(resources.GetObject("TreeView.Nodes2"))),
             ((System.Windows.Forms.TreeNode)(resources.GetObject("TreeView.Nodes3"))),
             ((System.Windows.Forms.TreeNode)(resources.GetObject("TreeView.Nodes4")))});
-            this.TreeView.ShowLines = false;
             this.TreeView.ShowPlusMinus = false;
-            this.TreeView.ShowRootLines = false;
             this.TreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TreeView_AfterSelect);
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.bypass_rom_size);
             this.panel1.Controls.Add(this.use_online_wad_tip);
             this.panel1.Controls.Add(this.use_online_wad_enabled);
             this.panel1.Controls.Add(this.use_custom_database);
@@ -307,6 +307,13 @@ namespace FriishProduce
             this.panel1.Controls.Add(this.language);
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
+            // 
+            // bypass_rom_size
+            // 
+            resources.ApplyResources(this.bypass_rom_size, "bypass_rom_size");
+            this.bypass_rom_size.Name = "bypass_rom_size";
+            this.bypass_rom_size.Tag = "bypass_rom_size";
+            this.bypass_rom_size.UseVisualStyleBackColor = true;
             // 
             // use_online_wad_tip
             // 
@@ -503,7 +510,7 @@ namespace FriishProduce
             resources.ApplyResources(this.vc_neo_bios, "vc_neo_bios");
             this.vc_neo_bios.Name = "vc_neo_bios";
             this.vc_neo_bios.TabStop = false;
-            this.vc_neo_bios.Tag = "vc_neo_bios";
+            this.vc_neo_bios.Tag = "bios";
             // 
             // vc_neo_bios_list
             // 
@@ -1258,5 +1265,6 @@ namespace FriishProduce
         private System.Windows.Forms.TextBox default_target_project_tb;
         private System.Windows.Forms.GroupBox game_scan;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.CheckBox bypass_rom_size;
     }
 }

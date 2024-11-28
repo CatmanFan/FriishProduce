@@ -171,7 +171,7 @@
 
 		"projectform": {
 			"main":								"Fichiers principaux",
-			"rom_label":						"Actuel fichier {0} : {1}",
+			"rom_label":						"Actuel fichier {0} :",
 			"rom_label1":						"du jeu",
 			"rom_label2":						"de disque",
 			"include_patch":					"Ajouter un patch",
@@ -212,6 +212,7 @@
 
 			"save_data":						"Données de sauvegarde",
 			"save_data_enable":					"Activer la sauvegarde des données",
+			"edit_save_data":					"Modifier le titre des données de sauvegarde...",
 			"fill_save_data":					"Remplir automatiquement",
 			
 			"forwarder_root_device":			"Périphérique de stockage racine :",

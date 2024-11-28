@@ -46,11 +46,10 @@ namespace FriishProduce
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.toolbarGameScan = new System.Windows.Forms.ToolStripButton();
             this.toolbarExport = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolbarPreferences = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.SaveProject = new System.Windows.Forms.SaveFileDialog();
             this.BrowseProject = new System.Windows.Forms.OpenFileDialog();
-            this.tabControl = new MdiTabControl.TabControl();
             this.mainMenu = new System.Windows.Forms.MainMenu(this.components);
             this.menuItem1 = new System.Windows.Forms.MenuItem();
             this.new_project = new System.Windows.Forms.MenuItem();
@@ -69,6 +68,7 @@ namespace FriishProduce
             this.close_project = new System.Windows.Forms.MenuItem();
             this.menuItem3 = new System.Windows.Forms.MenuItem();
             this.about = new System.Windows.Forms.MenuItem();
+            this.tabControl = new MdiTabControl.TabControl();
             this.mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             this.toolStrip.SuspendLayout();
@@ -195,12 +195,6 @@ namespace FriishProduce
             this.toolbarExport.Tag = "export";
             this.toolbarExport.Click += new System.EventHandler(this.ExportWAD_Click);
             // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
-            // 
             // toolbarPreferences
             // 
             this.toolbarPreferences.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
@@ -209,6 +203,12 @@ namespace FriishProduce
             resources.ApplyResources(this.toolbarPreferences, "toolbarPreferences");
             this.toolbarPreferences.Name = "toolbarPreferences";
             this.toolbarPreferences.Click += new System.EventHandler(this.Settings_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
             // 
             // SaveProject
             // 
@@ -220,49 +220,6 @@ namespace FriishProduce
             // 
             this.BrowseProject.DefaultExt = "fppj";
             this.BrowseProject.SupportMultiDottedExtensions = true;
-            // 
-            // tabControl
-            // 
-            this.tabControl.BackHighColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(213)))), ((int)(((byte)(216)))));
-            this.tabControl.BackLowColor = System.Drawing.SystemColors.Control;
-            this.tabControl.BorderColor = System.Drawing.Color.LightGray;
-            this.tabControl.BorderColorDisabled = System.Drawing.Color.Silver;
-            this.tabControl.CloseButtonVisible = true;
-            this.tabControl.ControlButtonForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.tabControl, "tabControl");
-            this.tabControl.FontBoldOnSelect = false;
-            this.tabControl.ForeColorDisabled = System.Drawing.SystemColors.ControlDark;
-            this.tabControl.MenuRenderer = null;
-            this.tabControl.Name = "tabControl";
-            this.tabControl.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.tabControl.TabBackHighColor = System.Drawing.Color.White;
-            this.tabControl.TabBackHighColorDisabled = System.Drawing.Color.WhiteSmoke;
-            this.tabControl.TabBackLowColorDisabled = System.Drawing.Color.Gainsboro;
-            this.tabControl.TabBorderEnhanced = true;
-            this.tabControl.TabBorderEnhanceWeight = MdiTabControl.TabControl.Weight.Soft;
-            this.tabControl.TabCloseButtonBackHighColor = System.Drawing.Color.White;
-            this.tabControl.TabCloseButtonBackHighColorDisabled = System.Drawing.Color.WhiteSmoke;
-            this.tabControl.TabCloseButtonBackHighColorHot = System.Drawing.Color.White;
-            this.tabControl.TabCloseButtonBackLowColor = System.Drawing.Color.LightGray;
-            this.tabControl.TabCloseButtonBackLowColorDisabled = System.Drawing.Color.Gainsboro;
-            this.tabControl.TabCloseButtonBackLowColorHot = System.Drawing.Color.Silver;
-            this.tabControl.TabCloseButtonBorderColor = System.Drawing.Color.LightGray;
-            this.tabControl.TabCloseButtonBorderColorDisabled = System.Drawing.Color.Silver;
-            this.tabControl.TabCloseButtonBorderColorHot = System.Drawing.Color.DarkGray;
-            this.tabControl.TabCloseButtonForeColor = System.Drawing.Color.Black;
-            this.tabControl.TabCloseButtonForeColorHot = System.Drawing.Color.Black;
-            this.tabControl.TabCloseButtonImage = null;
-            this.tabControl.TabCloseButtonImageDisabled = null;
-            this.tabControl.TabCloseButtonImageHot = null;
-            this.tabControl.TabCloseButtonVisible = false;
-            this.tabControl.TabHeight = 24;
-            this.tabControl.TabMaximumWidth = 300;
-            this.tabControl.TabMinimumWidth = 175;
-            this.tabControl.TabOffset = 2;
-            this.tabControl.TabTop = 2;
-            this.tabControl.TopSeparator = false;
-            this.tabControl.SelectedTabChanged += new System.EventHandler(this.TabChanged);
-            this.tabControl.TabIndexChanged += new System.EventHandler(this.TabChanged);
             // 
             // mainMenu
             // 
@@ -396,14 +353,30 @@ namespace FriishProduce
             resources.ApplyResources(this.about, "about");
             this.about.Click += new System.EventHandler(this.About_Click);
             // 
+            // tabControl
+            // 
+            this.tabControl.BackHighColor = System.Drawing.SystemColors.ControlLight;
+            this.tabControl.BackLowColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.tabControl, "tabControl");
+            this.tabControl.MenuRenderer = null;
+            this.tabControl.Name = "tabControl";
+            this.tabControl.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.tabControl.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.Default;
+            this.tabControl.TabBorderEnhanced = true;
+            this.tabControl.TabCloseButtonImage = null;
+            this.tabControl.TabCloseButtonImageDisabled = null;
+            this.tabControl.TabCloseButtonImageHot = null;
+            this.tabControl.TabHeight = 25;
+            this.tabControl.TopSeparator = false;
+            // 
             // MainForm
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
+            this.Controls.Add(this.tabControl);
             this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.mainPanel);
-            this.Controls.Add(this.tabControl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MaximizeBox = false;
@@ -434,7 +407,6 @@ namespace FriishProduce
         private System.Windows.Forms.SaveFileDialog SaveProject;
         internal System.Windows.Forms.ToolStripButton toolbarExport;
         internal System.Windows.Forms.ToolStripButton toolbarSaveAs;
-        private MdiTabControl.TabControl tabControl;
         internal System.Windows.Forms.ToolStripButton toolbarGameScan;
         private System.Windows.Forms.MainMenu mainMenu;
         private System.Windows.Forms.MenuItem menuItem1;
@@ -458,6 +430,7 @@ namespace FriishProduce
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.MenuItem import_game_file;
         private System.Windows.Forms.MenuItem menuItem4;
+        private MdiTabControl.TabControl tabControl;
     }
 }
 
