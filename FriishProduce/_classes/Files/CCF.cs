@@ -1,4 +1,4 @@
-﻿using ICSharpCode.SharpZipLib.Zip.Compression;
+﻿using ICSharpCode.SharpZipLib.Zip.Compression.Streams;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -296,7 +296,7 @@ namespace FriishProduce
                 || !StructuralComparisons.StructuralEqualityComparer.Equals(padding0, new byte[12])
                 || BitConverter.ToUInt32(chunk, 0) != 0x20
                 || !StructuralComparisons.StructuralEqualityComparer.Equals(padding1, new byte[8]))
-            { throw new Exception("Not A CCF!"); }
+                throw new Exception("Not A CCF!");
 
             chunkSize = BitConverter.ToUInt32(chunk, 0);
 
@@ -325,13 +325,14 @@ namespace FriishProduce
 
                 if (ccfNodes[i].Compressed)
                 {
-                    byte[] deflatedNodeData = null;
+                    // Decompress buffer
+                    using MemoryStream memory = new(nodeData);
+                    using InflaterInputStream x = new(memory);
+                    byte[] decompressedNodeData = new byte[ccfNodes[i].DataSize * 5];
+                    int decompressedLength = x.Read(decompressedNodeData, 0, decompressedNodeData.Length);
+                    Array.Resize(ref decompressedNodeData, decompressedLength);
 
-                    Deflater x = new();
-                    x.SetInput(nodeData);
-                    x.Deflate(deflatedNodeData);
-
-                    data.Add(deflatedNodeData);
+                    data.Add(decompressedNodeData);
                 }
 
                 else
