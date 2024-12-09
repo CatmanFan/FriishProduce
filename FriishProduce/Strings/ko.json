@@ -212,7 +212,7 @@
 			
 			"save_data":						"저장 데이터",
 			"save_data_enable":					"저장 활성화",
-			"edit_save_data":					"Edit savedata title...",
+			"edit_save_data":					"저장데이터 타이틀 편집...",
 			"fill_save_data":					"자동으로 연결",
 			
 			"forwarder_root_device":			"루트 저장 장치:",
