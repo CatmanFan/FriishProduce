@@ -216,11 +216,17 @@
     <Compile Include="Subforms\BannerOptions.Designer.cs">
       <DependentUpon>BannerOptions.cs</DependentUpon>
     </Compile>
-    <Compile Include="Subforms\ControllerOptions.cs">
+    <Compile Include="Subforms\ControllerMapping.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Subforms\ControllerOptions.Designer.cs">
-      <DependentUpon>ControllerOptions.cs</DependentUpon>
+    <Compile Include="Subforms\ControllerMapping.Designer.cs">
+      <DependentUpon>ControllerMapping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Subforms\Controller_Flash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Subforms\Controller_Flash.Designer.cs">
+      <DependentUpon>Controller_Flash.cs</DependentUpon>
     </Compile>
     <Compile Include="Subforms\Options_RPGM.cs">
       <SubType>Form</SubType>
@@ -403,8 +409,8 @@
       <DependentUpon>SettingsForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Subforms\ControllerOptions.resx">
-      <DependentUpon>ControllerOptions.cs</DependentUpon>
+    <EmbeddedResource Include="Subforms\ControllerMapping.resx">
+      <DependentUpon>ControllerMapping.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Subforms\Options_Flash.resx">
       <DependentUpon>Options_Flash.cs</DependentUpon>
@@ -537,6 +543,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\subforms\mapping_wiiremv.png" />
+    <None Include="Resources\subforms\mapping_wiiremh.png" />
+    <None Include="Resources\subforms\mapping_gc.png" />
+    <None Include="Resources\subforms\mapping_cc.png" />
     <None Include="Resources\subforms\controller_wiirn.png" />
     <None Include="Resources\subforms\controller_wiirh.png" />
     <None Include="Resources\subforms\controller_gc.png" />

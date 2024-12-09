@@ -81,7 +81,7 @@ namespace FriishProduce
             this.vff_sync_on_write.AutoSize = true;
             this.vff_sync_on_write.Location = new System.Drawing.Point(10, 40);
             this.vff_sync_on_write.Name = "vff_sync_on_write";
-            this.vff_sync_on_write.Size = new System.Drawing.Size(112, 17);
+            this.vff_sync_on_write.Size = new System.Drawing.Size(116, 17);
             this.vff_sync_on_write.TabIndex = 25;
             this.vff_sync_on_write.Tag = "vff_sync_on_write";
             this.vff_sync_on_write.Text = "vff_sync_on_write";
@@ -92,7 +92,7 @@ namespace FriishProduce
             this.save_data_enable.AutoSize = true;
             this.save_data_enable.Location = new System.Drawing.Point(10, 19);
             this.save_data_enable.Name = "save_data_enable";
-            this.save_data_enable.Size = new System.Drawing.Size(114, 17);
+            this.save_data_enable.Size = new System.Drawing.Size(115, 17);
             this.save_data_enable.TabIndex = 24;
             this.save_data_enable.Tag = "save_data_enable";
             this.save_data_enable.Text = "save_data_enable";
@@ -161,7 +161,7 @@ namespace FriishProduce
             this.qwerty_keyboard.AutoSize = true;
             this.qwerty_keyboard.Location = new System.Drawing.Point(10, 40);
             this.qwerty_keyboard.Name = "qwerty_keyboard";
-            this.qwerty_keyboard.Size = new System.Drawing.Size(107, 17);
+            this.qwerty_keyboard.Size = new System.Drawing.Size(111, 17);
             this.qwerty_keyboard.TabIndex = 14;
             this.qwerty_keyboard.Tag = "qwerty_keyboard";
             this.qwerty_keyboard.Text = "qwerty_keyboard";
@@ -228,6 +228,7 @@ namespace FriishProduce
             this.Controls.Add(this.groupBox1);
             this.Name = "Options_Flash";
             this.Tag = "adobe_flash";
+            this.Controls.SetChildIndex(this.bottomPanel1, 0);
             this.Controls.SetChildIndex(this.groupBox1, 0);
             this.Controls.SetChildIndex(this.quality, 0);
             this.Controls.SetChildIndex(this.controls, 0);

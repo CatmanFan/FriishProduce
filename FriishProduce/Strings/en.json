@@ -210,6 +210,7 @@
 
 			"injection_method":					"Injection method",
 			"injection_method_options":			"Injection method options...",
+			"controller_mapping":				"Controller buttons mapping...",
 
 			"save_data":						"Savedata",
 			"save_data_enable":					"Enable saving",
@@ -228,6 +229,14 @@
 			"year":								"Year:",
 			"players":							"Players:",
 			"banner_region":					"Banner region:"
+		},
+
+		"controller": {
+			"page1":							"Wii Remote",
+			"page2":							"Classic Controller",
+			"page3":							"GameCube Controller",
+			"presets":							"Presets",
+			"set_preset":						"Set"
 		},
 
 		"vc_nes": {

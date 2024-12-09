@@ -94,5 +94,14 @@ namespace FriishProduce
             ResetOptions();
             CenterToParent();
         }
+
+        protected void OpenControllerMapping(object sender, EventArgs e)
+        {
+            if (DesignMode) return;
+
+            // Code logic in derived Form
+            // ********
+            // This should open an inherited controller mapping form.
+        }
     }
 }

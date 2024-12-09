@@ -31,8 +31,8 @@ namespace FriishProduce
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ContentOptions));
             this.bottomPanel1 = new System.Windows.Forms.Panel();
-            this.b_ok = new System.Windows.Forms.Button();
             this.b_cancel = new System.Windows.Forms.Button();
+            this.b_ok = new System.Windows.Forms.Button();
             this.bottomPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -44,13 +44,6 @@ namespace FriishProduce
             resources.ApplyResources(this.bottomPanel1, "bottomPanel1");
             this.bottomPanel1.Name = "bottomPanel1";
             // 
-            // b_ok
-            // 
-            resources.ApplyResources(this.b_ok, "b_ok");
-            this.b_ok.Name = "b_ok";
-            this.b_ok.Tag = "b_ok";
-            this.b_ok.UseVisualStyleBackColor = true;
-            // 
             // b_cancel
             // 
             this.b_cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
@@ -58,6 +51,13 @@ namespace FriishProduce
             this.b_cancel.Name = "b_cancel";
             this.b_cancel.Tag = "b_cancel";
             this.b_cancel.UseVisualStyleBackColor = true;
+            // 
+            // b_ok
+            // 
+            resources.ApplyResources(this.b_ok, "b_ok");
+            this.b_ok.Name = "b_ok";
+            this.b_ok.Tag = "b_ok";
+            this.b_ok.UseVisualStyleBackColor = true;
             // 
             // ContentOptions
             // 

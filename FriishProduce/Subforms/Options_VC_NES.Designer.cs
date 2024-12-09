@@ -44,6 +44,7 @@ namespace FriishProduce
             // 
             // bottomPanel1
             // 
+            this.bottomPanel1.Location = new System.Drawing.Point(0, 325);
             this.bottomPanel1.Size = new System.Drawing.Size(354, 47);
             // 
             // b_cancel
@@ -80,7 +81,7 @@ namespace FriishProduce
             this.palette_banner_usage.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.palette_banner_usage.Location = new System.Drawing.Point(10, 279);
             this.palette_banner_usage.Name = "palette_banner_usage";
-            this.palette_banner_usage.Size = new System.Drawing.Size(132, 17);
+            this.palette_banner_usage.Size = new System.Drawing.Size(135, 17);
             this.palette_banner_usage.TabIndex = 12;
             this.palette_banner_usage.Tag = "palette_banner_usage";
             this.palette_banner_usage.Text = "palette_banner_usage";
@@ -103,6 +104,7 @@ namespace FriishProduce
             this.Controls.Add(this.palette);
             this.Name = "Options_VC_NES";
             this.Tag = "vc_nes";
+            this.Controls.SetChildIndex(this.bottomPanel1, 0);
             this.Controls.SetChildIndex(this.palette, 0);
             this.bottomPanel1.ResumeLayout(false);
             this.palette.ResumeLayout(false);
