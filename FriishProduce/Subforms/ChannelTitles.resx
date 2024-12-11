@@ -123,10 +123,10 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="b_ok.Location" type="System.Drawing.Point, System.Drawing">
-    <value>212, 12</value>
+    <value>202, 7</value>
   </data>
   <data name="b_ok.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 23</value>
+    <value>100, 24</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="b_ok.TabIndex" type="System.Int32, mscorlib">
@@ -154,7 +154,7 @@
     <value>0, 1</value>
   </data>
   <data name="bottomPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>314, 47</value>
+    <value>314, 39</value>
   </data>
   <data name="bottomPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -175,10 +175,10 @@
     <value>Bottom</value>
   </data>
   <data name="bottomPanel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 230</value>
+    <value>0, 228</value>
   </data>
   <data name="bottomPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>314, 48</value>
+    <value>314, 40</value>
   </data>
   <data name="bottomPanel2.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -196,7 +196,7 @@
     <value>16</value>
   </data>
   <data name="English.Location" type="System.Drawing.Point, System.Drawing">
-    <value>102, 12</value>
+    <value>102, 11</value>
   </data>
   <data name="English.MaxLength" type="System.Int32, mscorlib">
     <value>20</value>
@@ -223,7 +223,7 @@
     <value>15</value>
   </data>
   <data name="French.Location" type="System.Drawing.Point, System.Drawing">
-    <value>102, 38</value>
+    <value>102, 37</value>
   </data>
   <data name="French.MaxLength" type="System.Int32, mscorlib">
     <value>20</value>
@@ -250,7 +250,7 @@
     <value>14</value>
   </data>
   <data name="German.Location" type="System.Drawing.Point, System.Drawing">
-    <value>102, 64</value>
+    <value>102, 63</value>
   </data>
   <data name="German.MaxLength" type="System.Int32, mscorlib">
     <value>20</value>
@@ -277,7 +277,7 @@
     <value>13</value>
   </data>
   <data name="Spanish.Location" type="System.Drawing.Point, System.Drawing">
-    <value>102, 90</value>
+    <value>102, 89</value>
   </data>
   <data name="Spanish.MaxLength" type="System.Int32, mscorlib">
     <value>20</value>
@@ -304,7 +304,7 @@
     <value>12</value>
   </data>
   <data name="Italian.Location" type="System.Drawing.Point, System.Drawing">
-    <value>102, 116</value>
+    <value>102, 115</value>
   </data>
   <data name="Italian.MaxLength" type="System.Int32, mscorlib">
     <value>20</value>
@@ -331,7 +331,7 @@
     <value>11</value>
   </data>
   <data name="Dutch.Location" type="System.Drawing.Point, System.Drawing">
-    <value>102, 142</value>
+    <value>102, 141</value>
   </data>
   <data name="Dutch.MaxLength" type="System.Int32, mscorlib">
     <value>20</value>
@@ -358,7 +358,7 @@
     <value>10</value>
   </data>
   <data name="Japanese.Location" type="System.Drawing.Point, System.Drawing">
-    <value>102, 168</value>
+    <value>102, 167</value>
   </data>
   <data name="Japanese.MaxLength" type="System.Int32, mscorlib">
     <value>20</value>
@@ -385,7 +385,7 @@
     <value>9</value>
   </data>
   <data name="Korean.Location" type="System.Drawing.Point, System.Drawing">
-    <value>102, 194</value>
+    <value>102, 193</value>
   </data>
   <data name="Korean.MaxLength" type="System.Int32, mscorlib">
     <value>20</value>
@@ -418,7 +418,7 @@
     <value>NoControl</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>58, 15</value>
+    <value>58, 14</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 13</value>
@@ -448,7 +448,7 @@
     <value>NoControl</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>51, 41</value>
+    <value>51, 40</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>47, 13</value>
@@ -478,7 +478,7 @@
     <value>NoControl</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>52, 67</value>
+    <value>52, 66</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
     <value>46, 13</value>
@@ -508,7 +508,7 @@
     <value>NoControl</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>54, 93</value>
+    <value>54, 92</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
     <value>44, 13</value>
@@ -538,7 +538,7 @@
     <value>NoControl</value>
   </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>55, 119</value>
+    <value>55, 118</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
     <value>43, 13</value>
@@ -568,7 +568,7 @@
     <value>NoControl</value>
   </data>
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>37, 145</value>
+    <value>37, 144</value>
   </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
     <value>61, 13</value>
@@ -598,7 +598,7 @@
     <value>NoControl</value>
   </data>
   <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>55, 171</value>
+    <value>55, 170</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
     <value>43, 13</value>
@@ -625,7 +625,7 @@
     <value>True</value>
   </data>
   <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>58, 197</value>
+    <value>58, 196</value>
   </data>
   <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 13</value>
@@ -652,7 +652,7 @@
     <value>True</value>
   </metadata>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>314, 278</value>
+    <value>314, 268</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8.25pt</value>

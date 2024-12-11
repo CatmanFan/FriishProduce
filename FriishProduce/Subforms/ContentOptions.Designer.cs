@@ -31,9 +31,12 @@ namespace FriishProduce
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ContentOptions));
             this.bottomPanel1 = new System.Windows.Forms.Panel();
+            this.controller_mapping = new System.Windows.Forms.Button();
             this.b_cancel = new System.Windows.Forms.Button();
             this.b_ok = new System.Windows.Forms.Button();
+            this.bottomPanel2 = new System.Windows.Forms.Panel();
             this.bottomPanel1.SuspendLayout();
+            this.bottomPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // bottomPanel1
@@ -41,8 +44,18 @@ namespace FriishProduce
             this.bottomPanel1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.bottomPanel1.Controls.Add(this.b_cancel);
             this.bottomPanel1.Controls.Add(this.b_ok);
+            this.bottomPanel1.Controls.Add(this.controller_mapping);
             resources.ApplyResources(this.bottomPanel1, "bottomPanel1");
             this.bottomPanel1.Name = "bottomPanel1";
+            // 
+            // controller_mapping
+            // 
+            resources.ApplyResources(this.controller_mapping, "controller_mapping");
+            this.controller_mapping.Image = global::FriishProduce.Properties.Resources.controller;
+            this.controller_mapping.Name = "controller_mapping";
+            this.controller_mapping.Tag = "controller_mapping";
+            this.controller_mapping.UseVisualStyleBackColor = true;
+            this.controller_mapping.Click += new System.EventHandler(this.OpenControllerMapping);
             // 
             // b_cancel
             // 
@@ -59,6 +72,13 @@ namespace FriishProduce
             this.b_ok.Tag = "b_ok";
             this.b_ok.UseVisualStyleBackColor = true;
             // 
+            // bottomPanel2
+            // 
+            this.bottomPanel2.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.bottomPanel2.Controls.Add(this.bottomPanel1);
+            resources.ApplyResources(this.bottomPanel2, "bottomPanel2");
+            this.bottomPanel2.Name = "bottomPanel2";
+            // 
             // ContentOptions
             // 
             this.AcceptButton = this.b_ok;
@@ -67,8 +87,8 @@ namespace FriishProduce
             this.CancelButton = this.b_cancel;
             resources.ApplyResources(this, "$this");
             this.ControlBox = false;
-            this.Controls.Add(this.bottomPanel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Controls.Add(this.bottomPanel2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -78,6 +98,7 @@ namespace FriishProduce
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Load += new System.EventHandler(this.Form_Load);
             this.bottomPanel1.ResumeLayout(false);
+            this.bottomPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -86,5 +107,7 @@ namespace FriishProduce
         protected System.Windows.Forms.Button b_cancel;
         protected System.Windows.Forms.Button b_ok;
         protected System.Windows.Forms.Panel bottomPanel1;
+        protected System.Windows.Forms.Button controller_mapping;
+        private System.Windows.Forms.Panel bottomPanel2;
     }
 }

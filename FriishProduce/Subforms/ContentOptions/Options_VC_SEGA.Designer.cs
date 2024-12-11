@@ -47,17 +47,17 @@ namespace FriishProduce
             this.region.SuspendLayout();
             this.SuspendLayout();
             // 
+            // b_cancel
+            // 
+            this.b_cancel.Location = new System.Drawing.Point(542, 8);
+            // 
             // b_ok
             // 
-            this.b_ok.Location = new System.Drawing.Point(436, 12);
+            this.b_ok.Location = new System.Drawing.Point(436, 8);
             // 
             // bottomPanel1
             // 
-            this.bottomPanel1.Size = new System.Drawing.Size(654, 47);
-            // 
-            // b_cancel
-            // 
-            this.b_cancel.Location = new System.Drawing.Point(542, 12);
+            this.bottomPanel1.Size = new System.Drawing.Size(654, 41);
             // 
             // display
             // 
@@ -175,7 +175,7 @@ namespace FriishProduce
             // 
             // Options_VC_SEGA
             // 
-            this.ClientSize = new System.Drawing.Size(654, 362);
+            this.ClientSize = new System.Drawing.Size(654, 350);
             this.Controls.Add(this.region);
             this.Controls.Add(this.vc_options);
             this.Controls.Add(this.display);

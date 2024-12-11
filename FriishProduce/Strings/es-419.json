@@ -1,0 +1,13 @@
+﻿{
+	"language": "es-419",
+	"author": "CatmanFan",
+	"application_title": "FriishProduce",
+	
+	"strings": {
+		"controller": {
+			"page1":							"Control remoto Wii",
+			"page2":							"Mando clásico",
+			"page3":							"Control de GameCube"
+		}
+	}
+}

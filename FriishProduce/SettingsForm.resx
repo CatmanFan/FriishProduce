@@ -813,7 +813,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="auto_fill_save_data.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -822,7 +822,7 @@
     <value>NoControl</value>
   </data>
   <data name="auto_fill_save_data.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 225</value>
+    <value>12, 124</value>
   </data>
   <data name="auto_fill_save_data.Size" type="System.Drawing.Size, System.Drawing">
     <value>121, 17</value>
@@ -845,30 +845,6 @@
   <data name="&gt;&gt;auto_fill_save_data.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="source_image_websites.Items" xml:space="preserve">
-    <value>null</value>
-  </data>
-  <data name="source_image_websites.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 61</value>
-  </data>
-  <data name="source_image_websites.Size" type="System.Drawing.Size, System.Drawing">
-    <value>516, 21</value>
-  </data>
-  <data name="source_image_websites.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;source_image_websites.Name" xml:space="preserve">
-    <value>source_image_websites</value>
-  </data>
-  <data name="&gt;&gt;source_image_websites.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;source_image_websites.Parent" xml:space="preserve">
-    <value>game_scan</value>
-  </data>
-  <data name="&gt;&gt;source_image_websites.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="auto_game_scan.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -876,7 +852,7 @@
     <value>NoControl</value>
   </data>
   <data name="auto_game_scan.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 20</value>
+    <value>12, 145</value>
   </data>
   <data name="auto_game_scan.Size" type="System.Drawing.Size, System.Drawing">
     <value>108, 17</value>
@@ -894,10 +870,10 @@
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;auto_game_scan.Parent" xml:space="preserve">
-    <value>game_scan</value>
+    <value>panel2</value>
   </data>
   <data name="&gt;&gt;auto_game_scan.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="vc_n64_romc_type.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 131</value>
@@ -942,7 +918,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_n64.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="forwarder_type.Items" xml:space="preserve">
     <value>SD</value>
@@ -1089,7 +1065,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;forwarder.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="vc_nes_palette_banner_usage.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1185,7 +1161,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_nes.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="vc_neo_bios_list.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 18</value>
@@ -1251,7 +1227,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_neo.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="vc_sega_countries.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 18</value>
@@ -1506,7 +1482,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_sega.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="vc_pce_backupram.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1887,7 +1863,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_pce.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="flash_strap_reminder_list.Items" xml:space="preserve">
     <value>auto</value>
@@ -2265,58 +2241,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;adobe_flash.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 43</value>
-  </data>
-  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>105, 13</value>
-  </data>
-  <data name="label3.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>game_source_image</value>
-  </data>
-  <data name="&gt;&gt;label3.Name" xml:space="preserve">
-    <value>label3</value>
-  </data>
-  <data name="&gt;&gt;label3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
-    <value>game_scan</value>
-  </data>
-  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="game_scan.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 10</value>
-  </data>
-  <data name="game_scan.Size" type="System.Drawing.Size, System.Drawing">
-    <value>536, 95</value>
-  </data>
-  <data name="game_scan.TabIndex" type="System.Int32, mscorlib">
-    <value>49</value>
-  </data>
-  <data name="game_scan.Text" xml:space="preserve">
-    <value>game_scan</value>
-  </data>
-  <data name="&gt;&gt;game_scan.Name" xml:space="preserve">
-    <value>game_scan</value>
-  </data>
-  <data name="&gt;&gt;game_scan.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;game_scan.Parent" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="&gt;&gt;game_scan.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>4</value>
   </data>
   <data name="image_interpolation_modes.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 18</value>
@@ -2340,7 +2265,7 @@
     <value>0</value>
   </data>
   <data name="image_interpolation_mode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 111</value>
+    <value>12, 10</value>
   </data>
   <data name="image_interpolation_mode.Size" type="System.Drawing.Size, System.Drawing">
     <value>536, 50</value>
@@ -2385,7 +2310,7 @@
     <value>0</value>
   </data>
   <data name="banner_region.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 167</value>
+    <value>12, 66</value>
   </data>
   <data name="banner_region.Size" type="System.Drawing.Size, System.Drawing">
     <value>536, 50</value>
@@ -2427,7 +2352,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>2</value>
   </data>
   <data name="injection_methods_sega.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 18</value>
@@ -2628,7 +2553,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panel3.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="browse_bios_neo.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2793,7 +2718,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panel5.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="default_target_project.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2979,7 +2904,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panel4.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

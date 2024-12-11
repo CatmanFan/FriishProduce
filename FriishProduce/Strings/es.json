@@ -91,7 +91,7 @@
 
 		"messages": {
 			"000":								"Algunos cambios necesitan que se reinicie el programa para que tengan efecto.\n¿Reiniciar ahora?",
-		    "001":								"El proyecto \"{0}\" ha cambiado.\n¿Qué querría hacer?",
+		    "001":								"El proyecto \"{0}\" ha sido cambiado.\n¿Qué desea hacer?",
 			"002":								"El archivo seleccionado no es válido.",
 			"003":								"Exportado con éxito.\n¿Quieres abrir la carpeta de salida?",
 			"004":								"No se pueden recuperar todos los datos del juego para el seleccionado.\nPor esta razón deberá completar manualmente algunos formularios.",
@@ -115,7 +115,7 @@
 			"e_010":							"El archivo \"{0}\" no se encontró en su ruta original. Puede que haya sido eliminado o movido.",
 			"e_011":							"La carpeta \"{0}\" no se encontró en su ruta original. Puede que haya sido eliminada o movida.",
 			"e_012":							"No se encontró ningún punto de entrada de inyección. Puede deberse a que el método de inyección utilizado por este canal aún no está compatible.",
-			"e_013":							"No se encontró el archivo BIOS necesario para esta consola. Por favor seleccione un nuevo archivo en los ajustes de la aplicación."
+			"e_013":							"No se encontró el archivo BIOS necesario para esta consola.\nPor favor seleccione un archivo en los ajustes de la aplicación."
 		}
 	},
 
@@ -165,8 +165,7 @@
 			"use_online_wad_enabled":           "Habilitar opción de descargar canales de origen",
 			"use_online_wad_tip":				"This can be used to retrieve any WAD that is available from the current database without already requiring to have a WAD file. However, because libWiiSharp's NUS client does not allow for decrypting VC WADs in any form, it is only able to use Web download functionality. The legality of this is shady so it is better to have the option disabled.",
 			"auto_fill_save_data":				"Completar título de datos guardados automáticamente",
-			"auto_game_scan":					"Obtener automáticamente tras abrir una ROM",
-			"game_source_image":				"Sitio web de imágenes de origen:"
+			"auto_game_scan":					"Obtener automáticamente tras abrir una ROM"
 		},
 
 		"projectform": {
@@ -227,6 +226,14 @@
 			"year":								"Año:",
 			"players":							"Jugadores:",
 			"banner_region":					"Región del banner:"
+		},
+
+		"controller": {
+			"page1":							"Mando de Wii",
+			"page2":							"Mando clásico",
+			"page3":							"Mando GameCube",
+			"presets":							"Presets",
+			"set_preset":						"Set"
 		},
 
 		"vc_nes": {

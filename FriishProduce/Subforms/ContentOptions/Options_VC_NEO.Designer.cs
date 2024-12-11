@@ -31,21 +31,22 @@ namespace FriishProduce
         {
             this.biosImport = new System.Windows.Forms.OpenFileDialog();
             this.bios_list = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.g1 = new System.Windows.Forms.GroupBox();
             this.bottomPanel1.SuspendLayout();
+            this.g1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // b_ok
-            // 
-            this.b_ok.Location = new System.Drawing.Point(206, 12);
-            // 
-            // bottomPanel1
-            // 
-            this.bottomPanel1.Size = new System.Drawing.Size(424, 47);
             // 
             // b_cancel
             // 
-            this.b_cancel.Location = new System.Drawing.Point(312, 12);
+            this.b_cancel.Location = new System.Drawing.Point(312, 8);
+            // 
+            // b_ok
+            // 
+            this.b_ok.Location = new System.Drawing.Point(206, 8);
+            // 
+            // bottomPanel1
+            // 
+            this.bottomPanel1.Size = new System.Drawing.Size(424, 41);
             // 
             // biosImport
             // 
@@ -59,41 +60,40 @@ namespace FriishProduce
             this.bios_list.FormattingEnabled = true;
             this.bios_list.Items.AddRange(new object[] {
             "auto"});
-            this.bios_list.Location = new System.Drawing.Point(12, 28);
+            this.bios_list.Location = new System.Drawing.Point(10, 18);
             this.bios_list.Name = "bios_list";
-            this.bios_list.Size = new System.Drawing.Size(400, 21);
+            this.bios_list.Size = new System.Drawing.Size(380, 21);
             this.bios_list.TabIndex = 14;
             this.bios_list.Tag = "bios";
             this.bios_list.SelectedIndexChanged += new System.EventHandler(this.BIOSChanged);
             // 
-            // label1
+            // g1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 11);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(26, 13);
-            this.label1.TabIndex = 16;
-            this.label1.Tag = "bios";
-            this.label1.Text = "bios";
+            this.g1.Controls.Add(this.bios_list);
+            this.g1.Location = new System.Drawing.Point(12, 9);
+            this.g1.Name = "g1";
+            this.g1.Size = new System.Drawing.Size(400, 50);
+            this.g1.TabIndex = 38;
+            this.g1.TabStop = false;
+            this.g1.Tag = "bios";
+            this.g1.Text = "bios";
             // 
             // Options_VC_NEO
             // 
-            this.ClientSize = new System.Drawing.Size(424, 112);
-            this.Controls.Add(this.bios_list);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(424, 114);
+            this.Controls.Add(this.g1);
             this.Name = "Options_VC_NEO";
             this.Tag = "vc_neo";
-            this.Controls.SetChildIndex(this.label1, 0);
-            this.Controls.SetChildIndex(this.bios_list, 0);
+            this.Controls.SetChildIndex(this.g1, 0);
             this.bottomPanel1.ResumeLayout(false);
+            this.g1.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
         private System.Windows.Forms.OpenFileDialog biosImport;
         private System.Windows.Forms.ComboBox bios_list;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox g1;
     }
 }

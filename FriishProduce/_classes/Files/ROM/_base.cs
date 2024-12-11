@@ -204,12 +204,7 @@ namespace FriishProduce
                 CleanTitle = CleanTitle?.Trim();
 
                 #region Get image
-                string imgURL = setImgURL
-                (
-                    db_name(platform),
-                    title.Replace('/', '_'),
-                    Properties.Settings.Default.gamedata_source_image == 2 ? true : Properties.Settings.Default.gamedata_source_image == 1 ? false : !Web.InternetTest()
-                );
+                string imgURL = setImgURL(db_name(platform), title.Replace('/', '_'));
 
                 try
                 {
@@ -237,10 +232,9 @@ namespace FriishProduce
         #region -- Private gamedata variables and functions --
         private readonly string db_base = "https://raw.githubusercontent.com/libretro/libretro-database/master/metadat/";
 
-        private string setImgURL(string console, string title, bool useGitHub)
+        private string setImgURL(string console, string title)
         {
-            return !useGitHub ? "https://thumbnails.libretro.com/" + Uri.EscapeUriString(console) + "/Named_Titles/" + Uri.EscapeUriString(title) + ".png"
-                                : "https://github.com/libretro/libretro-thumbnails/blob/master/" + Uri.EscapeUriString(console) + "/Named_Titles/" + Uri.EscapeUriString(title) + ".png?raw=true";
+            return "https://archive.org/download/No-Intro_Thumbnails_2016-04-10/" + Uri.EscapeUriString(console) + ".zip/" + Uri.EscapeUriString(console) + "/Named_Titles/" + Uri.EscapeUriString(title) + ".png";
         }
 
         private string db_name(Platform platform)

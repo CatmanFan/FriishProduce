@@ -83,7 +83,7 @@ namespace FriishProduce
             this.padbutton.AutoSize = true;
             this.padbutton.Location = new System.Drawing.Point(51, 62);
             this.padbutton.Name = "padbutton";
-            this.padbutton.Size = new System.Drawing.Size(55, 13);
+            this.padbutton.Size = new System.Drawing.Size(57, 13);
             this.padbutton.TabIndex = 22;
             this.padbutton.Text = "padbutton";
             // 
@@ -92,7 +92,7 @@ namespace FriishProduce
             this.europe.AutoSize = true;
             this.europe.Location = new System.Drawing.Point(51, 20);
             this.europe.Name = "europe";
-            this.europe.Size = new System.Drawing.Size(40, 13);
+            this.europe.Size = new System.Drawing.Size(41, 13);
             this.europe.TabIndex = 15;
             this.europe.Text = "europe";
             // 
@@ -117,7 +117,7 @@ namespace FriishProduce
             this.vc_options.Controls.Add(this.sgenable_switch);
             this.vc_options.Location = new System.Drawing.Point(12, 10);
             this.vc_options.Name = "vc_options";
-            this.vc_options.Size = new System.Drawing.Size(536, 110);
+            this.vc_options.Size = new System.Drawing.Size(530, 110);
             this.vc_options.TabIndex = 24;
             this.vc_options.TabStop = false;
             this.vc_options.Tag = "vc_options";
@@ -128,7 +128,7 @@ namespace FriishProduce
             this.checkBox4.AutoSize = true;
             this.checkBox4.Location = new System.Drawing.Point(10, 84);
             this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(114, 17);
+            this.checkBox4.Size = new System.Drawing.Size(115, 17);
             this.checkBox4.TabIndex = 5;
             this.checkBox4.Tag = "save_data_enable";
             this.checkBox4.Text = "save_data_enable";
@@ -143,7 +143,7 @@ namespace FriishProduce
             this.display.Controls.Add(this.hide_overscan);
             this.display.Location = new System.Drawing.Point(12, 126);
             this.display.Name = "display";
-            this.display.Size = new System.Drawing.Size(536, 115);
+            this.display.Size = new System.Drawing.Size(530, 115);
             this.display.TabIndex = 25;
             this.display.TabStop = false;
             this.display.Tag = "display";
@@ -154,7 +154,7 @@ namespace FriishProduce
             this.y_offset.AutoSize = true;
             this.y_offset.Location = new System.Drawing.Point(62, 21);
             this.y_offset.Name = "y_offset";
-            this.y_offset.Size = new System.Drawing.Size(44, 13);
+            this.y_offset.Size = new System.Drawing.Size(48, 13);
             this.y_offset.TabIndex = 4;
             this.y_offset.Text = "y_offset";
             // 
@@ -167,7 +167,7 @@ namespace FriishProduce
             0,
             0});
             this.y_offset_toggle.Name = "y_offset_toggle";
-            this.y_offset_toggle.Size = new System.Drawing.Size(46, 20);
+            this.y_offset_toggle.Size = new System.Drawing.Size(46, 21);
             this.y_offset_toggle.TabIndex = 3;
             // 
             // sprline
@@ -175,7 +175,7 @@ namespace FriishProduce
             this.sprline.AutoSize = true;
             this.sprline.Location = new System.Drawing.Point(10, 88);
             this.sprline.Name = "sprline";
-            this.sprline.Size = new System.Drawing.Size(56, 17);
+            this.sprline.Size = new System.Drawing.Size(57, 17);
             this.sprline.TabIndex = 2;
             this.sprline.Tag = "sprline";
             this.sprline.Text = "sprline";
@@ -186,7 +186,7 @@ namespace FriishProduce
             this.raster.AutoSize = true;
             this.raster.Location = new System.Drawing.Point(10, 67);
             this.raster.Name = "raster";
-            this.raster.Size = new System.Drawing.Size(52, 17);
+            this.raster.Size = new System.Drawing.Size(55, 17);
             this.raster.TabIndex = 1;
             this.raster.Tag = "raster";
             this.raster.Text = "raster";
@@ -205,7 +205,7 @@ namespace FriishProduce
             // 
             // Options_VC_PCE
             // 
-            this.ClientSize = new System.Drawing.Size(560, 422);
+            this.ClientSize = new System.Drawing.Size(554, 297);
             this.Controls.Add(this.vc_options);
             this.Controls.Add(this.display);
             this.Name = "Options_VC_PCE";

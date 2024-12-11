@@ -85,9 +85,9 @@ namespace FriishProduce
                 return Options["BIOS"] switch
                 {
                     "custom" => 0,
-                    "vc1" => 1,
-                    "vc2" => 2,
-                    "vc3" => 3,
+                    "VC1" => 1,
+                    "VC2" => 2,
+                    "VC3" => 3,
                     _ => -1,
                 };
             }
@@ -101,7 +101,7 @@ namespace FriishProduce
         #region Functions
         private void BIOSChanged(object sender, EventArgs e)
         {
-            if (biosName == "custom" && FriishProduce.Options.BIOS.Default.neogeo == null)
+            if (biosName == "custom" && string.IsNullOrWhiteSpace(FriishProduce.Options.BIOS.Default.neogeo))
             {
                 MessageBox.Show(Program.Lang.Msg(13, true), MessageBox.Buttons.Ok, MessageBox.Icons.Error, false);
 

@@ -30,11 +30,11 @@ namespace FriishProduce
         private void InitializeComponent()
         {
             this.g1 = new System.Windows.Forms.GroupBox();
-            this.romc_type_list = new System.Windows.Forms.ComboBox();
             this.patch_autosizerom = new System.Windows.Forms.CheckBox();
             this.patch_expandedram = new System.Windows.Forms.CheckBox();
             this.patch_fixcrashes = new System.Windows.Forms.CheckBox();
             this.patch_fixbrightness = new System.Windows.Forms.CheckBox();
+            this.romc_type_list = new System.Windows.Forms.ComboBox();
             this.g2 = new System.Windows.Forms.GroupBox();
             this.bottomPanel1.SuspendLayout();
             this.g1.SuspendLayout();
@@ -49,24 +49,11 @@ namespace FriishProduce
             this.g1.Controls.Add(this.patch_fixbrightness);
             this.g1.Location = new System.Drawing.Point(12, 10);
             this.g1.Name = "g1";
-            this.g1.Size = new System.Drawing.Size(536, 112);
+            this.g1.Size = new System.Drawing.Size(530, 112);
             this.g1.TabIndex = 16;
             this.g1.TabStop = false;
             this.g1.Tag = "vc_options";
             this.g1.Text = "vc_options";
-            // 
-            // romc_type_list
-            // 
-            this.romc_type_list.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.romc_type_list.FormattingEnabled = true;
-            this.romc_type_list.Items.AddRange(new object[] {
-            "ROMC Type 0",
-            "ROMC Type 1"});
-            this.romc_type_list.Location = new System.Drawing.Point(10, 19);
-            this.romc_type_list.Name = "romc_type_list";
-            this.romc_type_list.Size = new System.Drawing.Size(516, 21);
-            this.romc_type_list.TabIndex = 0;
-            this.romc_type_list.Tag = "romc_type";
             // 
             // patch_autosizerom
             // 
@@ -75,7 +62,7 @@ namespace FriishProduce
             this.patch_autosizerom.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.patch_autosizerom.Location = new System.Drawing.Point(9, 63);
             this.patch_autosizerom.Name = "patch_autosizerom";
-            this.patch_autosizerom.Size = new System.Drawing.Size(115, 17);
+            this.patch_autosizerom.Size = new System.Drawing.Size(117, 17);
             this.patch_autosizerom.TabIndex = 16;
             this.patch_autosizerom.Tag = "patch_autosizerom";
             this.patch_autosizerom.Text = "patch_autosizerom";
@@ -89,7 +76,7 @@ namespace FriishProduce
             this.patch_expandedram.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.patch_expandedram.Location = new System.Drawing.Point(9, 41);
             this.patch_expandedram.Name = "patch_expandedram";
-            this.patch_expandedram.Size = new System.Drawing.Size(123, 17);
+            this.patch_expandedram.Size = new System.Drawing.Size(125, 17);
             this.patch_expandedram.TabIndex = 15;
             this.patch_expandedram.Tag = "patch_expandedram";
             this.patch_expandedram.Text = "patch_expandedram";
@@ -103,7 +90,7 @@ namespace FriishProduce
             this.patch_fixcrashes.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.patch_fixcrashes.Location = new System.Drawing.Point(9, 85);
             this.patch_fixcrashes.Name = "patch_fixcrashes";
-            this.patch_fixcrashes.Size = new System.Drawing.Size(106, 17);
+            this.patch_fixcrashes.Size = new System.Drawing.Size(108, 17);
             this.patch_fixcrashes.TabIndex = 14;
             this.patch_fixcrashes.Tag = "patch_fixcrashes";
             this.patch_fixcrashes.Text = "patch_fixcrashes";
@@ -117,19 +104,32 @@ namespace FriishProduce
             this.patch_fixbrightness.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.patch_fixbrightness.Location = new System.Drawing.Point(9, 19);
             this.patch_fixbrightness.Name = "patch_fixbrightness";
-            this.patch_fixbrightness.Size = new System.Drawing.Size(117, 17);
+            this.patch_fixbrightness.Size = new System.Drawing.Size(121, 17);
             this.patch_fixbrightness.TabIndex = 13;
             this.patch_fixbrightness.Tag = "patch_fixbrightness";
             this.patch_fixbrightness.Text = "patch_fixbrightness";
             this.patch_fixbrightness.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.patch_fixbrightness.UseVisualStyleBackColor = true;
             // 
+            // romc_type_list
+            // 
+            this.romc_type_list.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.romc_type_list.FormattingEnabled = true;
+            this.romc_type_list.Items.AddRange(new object[] {
+            "ROMC Type 0",
+            "ROMC Type 1"});
+            this.romc_type_list.Location = new System.Drawing.Point(10, 18);
+            this.romc_type_list.Name = "romc_type_list";
+            this.romc_type_list.Size = new System.Drawing.Size(510, 21);
+            this.romc_type_list.TabIndex = 0;
+            this.romc_type_list.Tag = "romc_type";
+            // 
             // g2
             // 
             this.g2.Controls.Add(this.romc_type_list);
             this.g2.Location = new System.Drawing.Point(12, 128);
             this.g2.Name = "g2";
-            this.g2.Size = new System.Drawing.Size(536, 52);
+            this.g2.Size = new System.Drawing.Size(530, 50);
             this.g2.TabIndex = 19;
             this.g2.TabStop = false;
             this.g2.Tag = "romc_type";
@@ -137,7 +137,7 @@ namespace FriishProduce
             // 
             // Options_VC_N64
             // 
-            this.ClientSize = new System.Drawing.Size(560, 422);
+            this.ClientSize = new System.Drawing.Size(554, 234);
             this.Controls.Add(this.g1);
             this.Controls.Add(this.g2);
             this.Name = "Options_VC_N64";

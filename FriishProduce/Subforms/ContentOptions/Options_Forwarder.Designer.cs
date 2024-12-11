@@ -87,7 +87,7 @@ namespace FriishProduce
             this.bios_settings.Controls.Add(this.toggleSwitch2);
             this.bios_settings.Location = new System.Drawing.Point(12, 10);
             this.bios_settings.Name = "bios_settings";
-            this.bios_settings.Size = new System.Drawing.Size(536, 65);
+            this.bios_settings.Size = new System.Drawing.Size(530, 66);
             this.bios_settings.TabIndex = 30;
             this.bios_settings.TabStop = false;
             this.bios_settings.Tag = "bios_settings";
@@ -95,7 +95,7 @@ namespace FriishProduce
             // 
             // Options_Forwarder
             // 
-            this.ClientSize = new System.Drawing.Size(560, 137);
+            this.ClientSize = new System.Drawing.Size(554, 132);
             this.Controls.Add(this.bios_settings);
             this.Name = "Options_Forwarder";
             this.Tag = "forwarder";

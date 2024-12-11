@@ -82,17 +82,12 @@ namespace FriishProduce
             image_interpolation_modes.Items.Clear();
             image_interpolation_modes.Items.AddRange(Program.Lang.StringArray("image_interpolation_mode", "projectform"));
             image_interpolation_modes.SelectedIndex = Default.image_interpolation;
-
-            source_image_websites.Items.Clear();
-            source_image_websites.Items.AddRange(new string[] { Program.Lang.String("automatic"), "https://thumbnails.libretro.com/", "https://github.com/libretro/libretro-thumbnails/" });
-            source_image_websites.SelectedIndex = Default.gamedata_source_image;
             
             int maxX = Math.Max(default_target_project_tb.Location.X, default_target_wad_tb.Location.X), maxWidth = Math.Min(default_target_project_tb.Width, default_target_wad_tb.Width);
             default_target_project_tb.Location = new Point(maxX, default_target_project_tb.Location.Y);
             default_target_wad_tb.Location = new Point(maxX, default_target_wad_tb.Location.Y);
             default_target_project_tb.Width = default_target_wad_tb.Width = maxWidth;
 
-            game_scan.Text = Program.Lang.String(game_scan.Name, "mainform");
             banner_region.Text = Program.Lang.String(banner_region.Name, "banner").TrimEnd(':').Trim();
 
             flash_save_data_enable.Text = vc_pce_backupram.Text = vc_sega_save_sram.Text = Program.Lang.String("save_data_enable", "projectform");
@@ -264,7 +259,7 @@ namespace FriishProduce
             vc_pce_sprline.Checked = VC_PCE.Default.SPRLINE == "1";
 
             // NEO-GEO
-            vc_neo_bios_list.SelectedIndex = VC_NEO.Default.bios.ToLower() switch { "vc1" => 0, "vc3" => 2, _ => 1 };
+            vc_neo_bios_list.SelectedIndex = VC_NEO.Default.bios switch { "VC2" => 1, "VC3" => 2, _ => 0 };
 
             // FLASH
             flash_save_data_enable.Checked = ADOBEFLASH.Default.shared_object_capability == "on";
@@ -342,7 +337,6 @@ namespace FriishProduce
 
             Default.auto_update_check = auto_update_check.Checked;
             Default.auto_fill_save_data = auto_fill_save_data.Checked;
-            Default.gamedata_source_image = source_image_websites.SelectedIndex;
             Default.image_interpolation = image_interpolation_modes.SelectedIndex;
             Default.auto_retrieve_game_data = auto_game_scan.Checked;
             Default.default_export_filename = default_target_wad_tb.Text;

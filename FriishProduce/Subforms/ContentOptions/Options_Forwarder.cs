@@ -89,7 +89,7 @@ namespace FriishProduce
         #region Functions
         private void BIOSChanged(object sender, EventArgs e)
         {
-            if (toggleSwitch1.Checked && bios == null)
+            if (toggleSwitch1.Checked && string.IsNullOrWhiteSpace(bios))
             {
                 MessageBox.Show(Program.Lang.Msg(13, true), MessageBox.Buttons.Ok, MessageBox.Icons.Error, false);
                 toggleSwitch1.Checked = false;

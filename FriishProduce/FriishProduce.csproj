@@ -222,59 +222,65 @@
     <Compile Include="Subforms\ControllerMapping.Designer.cs">
       <DependentUpon>ControllerMapping.cs</DependentUpon>
     </Compile>
-    <Compile Include="Subforms\Controller_Flash.cs">
+    <Compile Include="Subforms\Controllers\Controller_Flash.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Subforms\Controller_Flash.Designer.cs">
+    <Compile Include="Subforms\Controllers\Controller_Flash.Designer.cs">
       <DependentUpon>Controller_Flash.cs</DependentUpon>
     </Compile>
-    <Compile Include="Subforms\Options_RPGM.cs">
+    <Compile Include="Subforms\ContentOptions\Options_RPGM.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Subforms\Options_RPGM.Designer.cs">
+    <Compile Include="Subforms\ContentOptions\Options_RPGM.Designer.cs">
       <DependentUpon>Options_RPGM.cs</DependentUpon>
     </Compile>
-    <Compile Include="Subforms\Options_Flash.cs">
+    <Compile Include="Subforms\ContentOptions\Options_Flash.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Subforms\Options_Flash.Designer.cs">
+    <Compile Include="Subforms\ContentOptions\Options_Flash.Designer.cs">
       <DependentUpon>Options_Flash.cs</DependentUpon>
     </Compile>
-    <Compile Include="Subforms\Options_Forwarder.cs">
+    <Compile Include="Subforms\ContentOptions\Options_Forwarder.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Subforms\Options_Forwarder.Designer.cs">
+    <Compile Include="Subforms\ContentOptions\Options_Forwarder.Designer.cs">
       <DependentUpon>Options_Forwarder.cs</DependentUpon>
     </Compile>
-    <Compile Include="Subforms\Options_VC_N64.cs">
+    <Compile Include="Subforms\ContentOptions\Options_VC_N64.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Subforms\Options_VC_N64.Designer.cs">
+    <Compile Include="Subforms\ContentOptions\Options_VC_N64.Designer.cs">
       <DependentUpon>Options_VC_N64.cs</DependentUpon>
     </Compile>
-    <Compile Include="Subforms\Options_VC_NEO.cs">
+    <Compile Include="Subforms\ContentOptions\Options_VC_NEO.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Subforms\Options_VC_NEO.Designer.cs">
+    <Compile Include="Subforms\ContentOptions\Options_VC_NEO.Designer.cs">
       <DependentUpon>Options_VC_NEO.cs</DependentUpon>
     </Compile>
-    <Compile Include="Subforms\Options_VC_NES.cs">
+    <Compile Include="Subforms\ContentOptions\Options_VC_NES.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Subforms\Options_VC_NES.Designer.cs">
+    <Compile Include="Subforms\ContentOptions\Options_VC_NES.Designer.cs">
       <DependentUpon>Options_VC_NES.cs</DependentUpon>
     </Compile>
-    <Compile Include="Subforms\Options_VC_PCE.cs">
+    <Compile Include="Subforms\ContentOptions\Options_VC_PCE.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Subforms\Options_VC_PCE.Designer.cs">
+    <Compile Include="Subforms\ContentOptions\Options_VC_PCE.Designer.cs">
       <DependentUpon>Options_VC_PCE.cs</DependentUpon>
     </Compile>
-    <Compile Include="Subforms\Options_VC_SEGA.cs">
+    <Compile Include="Subforms\ContentOptions\Options_VC_SEGA.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Subforms\Options_VC_SEGA.Designer.cs">
+    <Compile Include="Subforms\ContentOptions\Options_VC_SEGA.Designer.cs">
       <DependentUpon>Options_VC_SEGA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Subforms\Controllers\Controller_SEGA.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Subforms\Controllers\Controller_SEGA.Designer.cs">
+      <DependentUpon>Controller_SEGA.cs</DependentUpon>
     </Compile>
     <Compile Include="Subforms\Savedata.cs">
       <SubType>Form</SubType>
@@ -412,28 +418,28 @@
     <EmbeddedResource Include="Subforms\ControllerMapping.resx">
       <DependentUpon>ControllerMapping.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Subforms\Options_Flash.resx">
+    <EmbeddedResource Include="Subforms\ContentOptions\Options_Flash.resx">
       <DependentUpon>Options_Flash.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Subforms\Options_Forwarder.resx">
+    <EmbeddedResource Include="Subforms\ContentOptions\Options_Forwarder.resx">
       <DependentUpon>Options_Forwarder.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Subforms\Options_RPGM.resx">
+    <EmbeddedResource Include="Subforms\ContentOptions\Options_RPGM.resx">
       <DependentUpon>Options_RPGM.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Subforms\Options_VC_N64.resx">
+    <EmbeddedResource Include="Subforms\ContentOptions\Options_VC_N64.resx">
       <DependentUpon>Options_VC_N64.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Subforms\Options_VC_NEO.resx">
+    <EmbeddedResource Include="Subforms\ContentOptions\Options_VC_NEO.resx">
       <DependentUpon>Options_VC_NEO.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Subforms\Options_VC_NES.resx">
+    <EmbeddedResource Include="Subforms\ContentOptions\Options_VC_NES.resx">
       <DependentUpon>Options_VC_NES.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Subforms\Options_VC_PCE.resx">
+    <EmbeddedResource Include="Subforms\ContentOptions\Options_VC_PCE.resx">
       <DependentUpon>Options_VC_PCE.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Subforms\Options_VC_SEGA.resx">
+    <EmbeddedResource Include="Subforms\ContentOptions\Options_VC_SEGA.resx">
       <DependentUpon>Options_VC_SEGA.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Subforms\Savedata.resx">
@@ -527,6 +533,7 @@
     <None Include="Resources\forwarder_wii\forwarder_v12.dol" />
     <None Include="Resources\forwarder_wii\forwarder_v14.dol" />
     <None Include="Resources\StaticBase.wad" />
+    <None Include="Strings\es-419.json" />
     <None Include="Strings\es.json" />
     <None Include="Strings\fr.json" />
     <None Include="Strings\ko.json" />
@@ -543,6 +550,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\icons\controller.png" />
     <None Include="Resources\subforms\mapping_wiiremv.png" />
     <None Include="Resources\subforms\mapping_wiiremh.png" />
     <None Include="Resources\subforms\mapping_gc.png" />
@@ -624,12 +632,12 @@
   <ItemGroup>
     <PublishFile Include="VistaMenu">
       <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
   </ItemGroup>

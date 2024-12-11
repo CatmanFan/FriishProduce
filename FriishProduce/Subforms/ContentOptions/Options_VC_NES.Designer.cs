@@ -38,18 +38,21 @@ namespace FriishProduce
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
+            // b_cancel
+            // 
+            this.b_cancel.Location = new System.Drawing.Point(242, 8);
+            // 
             // b_ok
             // 
-            this.b_ok.Location = new System.Drawing.Point(136, 12);
+            this.b_ok.Location = new System.Drawing.Point(136, 8);
             // 
             // bottomPanel1
             // 
-            this.bottomPanel1.Location = new System.Drawing.Point(0, 325);
-            this.bottomPanel1.Size = new System.Drawing.Size(354, 47);
+            this.bottomPanel1.Size = new System.Drawing.Size(354, 41);
             // 
-            // b_cancel
+            // controller_mapping
             // 
-            this.b_cancel.Location = new System.Drawing.Point(242, 12);
+            this.controller_mapping.Location = new System.Drawing.Point(-264, 7);
             // 
             // palette
             // 
@@ -104,7 +107,6 @@ namespace FriishProduce
             this.Controls.Add(this.palette);
             this.Name = "Options_VC_NES";
             this.Tag = "vc_nes";
-            this.Controls.SetChildIndex(this.bottomPanel1, 0);
             this.Controls.SetChildIndex(this.palette, 0);
             this.bottomPanel1.ResumeLayout(false);
             this.palette.ResumeLayout(false);

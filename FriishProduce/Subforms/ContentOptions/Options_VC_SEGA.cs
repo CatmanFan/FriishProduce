@@ -49,6 +49,11 @@ namespace FriishProduce
             dev_mdpad_enable_6b.Enabled = !IsSMS;
             // label1.Enabled = BrightnessValue.Enabled = EmuType >= 2 || IsSMS;
 
+            // Controller options availability
+            // *******
+            if (EmuType >= 2 && Controller == null) Controller = new Controller_SEGA();
+            else if (EmuType < 2 && Controller != null) Controller = null;
+
             // Form control
             // *******
             if (Options != null)

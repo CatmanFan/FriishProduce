@@ -135,10 +135,10 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="bottomPanel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 428</value>
+    <value>0, 370</value>
   </data>
   <data name="bottomPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>784, 48</value>
+    <value>784, 42</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="bottomPanel2.TabIndex" type="System.Int32, mscorlib">
@@ -154,7 +154,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;bottomPanel2.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;b_cancel.Name" xml:space="preserve">
     <value>b_cancel</value>
@@ -187,7 +187,7 @@
     <value>0, 1</value>
   </data>
   <data name="bottomPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>784, 47</value>
+    <value>784, 41</value>
   </data>
   <data name="bottomPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -208,10 +208,10 @@
     <value>NoControl</value>
   </data>
   <data name="b_cancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>672, 12</value>
+    <value>672, 8</value>
   </data>
   <data name="b_cancel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 23</value>
+    <value>100, 24</value>
   </data>
   <data name="b_cancel.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -235,10 +235,10 @@
     <value>NoControl</value>
   </data>
   <data name="b_ok.Location" type="System.Drawing.Point, System.Drawing">
-    <value>566, 12</value>
+    <value>566, 8</value>
   </data>
   <data name="b_ok.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 23</value>
+    <value>100, 24</value>
   </data>
   <data name="b_ok.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -258,8 +258,182 @@
   <data name="&gt;&gt;b_ok.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="tabControl1.Appearance" type="System.Windows.Forms.TabAppearance, System.Windows.Forms">
-    <value>FlatButtons</value>
+  <data name="&gt;&gt;page1.Name" xml:space="preserve">
+    <value>page1</value>
+  </data>
+  <data name="&gt;&gt;page1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;page1.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;page1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;page2.Name" xml:space="preserve">
+    <value>page2</value>
+  </data>
+  <data name="&gt;&gt;page2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;page2.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;page2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;page3.Name" xml:space="preserve">
+    <value>page3</value>
+  </data>
+  <data name="&gt;&gt;page3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;page3.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;page3.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 11</value>
+  </data>
+  <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>760, 345</value>
+  </data>
+  <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.Name" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Minus.Name" xml:space="preserve">
+    <value>WiiRemote_Minus</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Minus.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Minus.Parent" xml:space="preserve">
+    <value>page1</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Minus.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Plus.Name" xml:space="preserve">
+    <value>WiiRemote_Plus</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Plus.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Plus.Parent" xml:space="preserve">
+    <value>page1</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Plus.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_B.Name" xml:space="preserve">
+    <value>WiiRemote_B</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_B.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_B.Parent" xml:space="preserve">
+    <value>page1</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_B.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_A.Name" xml:space="preserve">
+    <value>WiiRemote_A</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_A.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_A.Parent" xml:space="preserve">
+    <value>page1</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_A.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_2.Name" xml:space="preserve">
+    <value>WiiRemote_2</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_2.Parent" xml:space="preserve">
+    <value>page1</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_2.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_1.Name" xml:space="preserve">
+    <value>WiiRemote_1</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_1.Parent" xml:space="preserve">
+    <value>page1</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_1.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Left.Name" xml:space="preserve">
+    <value>WiiRemote_Left</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Left.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Left.Parent" xml:space="preserve">
+    <value>page1</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Left.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Down.Name" xml:space="preserve">
+    <value>WiiRemote_Down</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Down.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Down.Parent" xml:space="preserve">
+    <value>page1</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Down.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Up.Name" xml:space="preserve">
+    <value>WiiRemote_Up</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Up.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Up.Parent" xml:space="preserve">
+    <value>page1</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Up.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Right.Name" xml:space="preserve">
+    <value>WiiRemote_Right</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Right.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Right.Parent" xml:space="preserve">
+    <value>page1</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Right.ZOrder" xml:space="preserve">
+    <value>9</value>
   </data>
   <data name="&gt;&gt;pictureBox2.Name" xml:space="preserve">
     <value>pictureBox2</value>
@@ -271,16 +445,28 @@
     <value>page1</value>
   </data>
   <data name="&gt;&gt;pictureBox2.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;pictureBox3.Name" xml:space="preserve">
+    <value>pictureBox3</value>
+  </data>
+  <data name="&gt;&gt;pictureBox3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBox3.Parent" xml:space="preserve">
+    <value>page1</value>
+  </data>
+  <data name="&gt;&gt;pictureBox3.ZOrder" xml:space="preserve">
+    <value>11</value>
   </data>
   <data name="page1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 25</value>
+    <value>4, 22</value>
   </data>
   <data name="page1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
   <data name="page1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>752, 316</value>
+    <value>752, 319</value>
   </data>
   <data name="page1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -299,6 +485,300 @@
   </data>
   <data name="&gt;&gt;page1.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="WiiRemote_Minus.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="WiiRemote_Minus.Location" type="System.Drawing.Point, System.Drawing">
+    <value>358, 259</value>
+  </data>
+  <data name="WiiRemote_Minus.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 21</value>
+  </data>
+  <data name="WiiRemote_Minus.TabIndex" type="System.Int32, mscorlib">
+    <value>32</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Minus.Name" xml:space="preserve">
+    <value>WiiRemote_Minus</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Minus.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Minus.Parent" xml:space="preserve">
+    <value>page1</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Minus.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="WiiRemote_Plus.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="WiiRemote_Plus.Location" type="System.Drawing.Point, System.Drawing">
+    <value>358, 41</value>
+  </data>
+  <data name="WiiRemote_Plus.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 21</value>
+  </data>
+  <data name="WiiRemote_Plus.TabIndex" type="System.Int32, mscorlib">
+    <value>31</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Plus.Name" xml:space="preserve">
+    <value>WiiRemote_Plus</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Plus.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Plus.Parent" xml:space="preserve">
+    <value>page1</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Plus.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="WiiRemote_B.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="WiiRemote_B.Location" type="System.Drawing.Point, System.Drawing">
+    <value>210, 259</value>
+  </data>
+  <data name="WiiRemote_B.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 21</value>
+  </data>
+  <data name="WiiRemote_B.TabIndex" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_B.Name" xml:space="preserve">
+    <value>WiiRemote_B</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_B.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_B.Parent" xml:space="preserve">
+    <value>page1</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_B.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="WiiRemote_A.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="WiiRemote_A.Location" type="System.Drawing.Point, System.Drawing">
+    <value>210, 41</value>
+  </data>
+  <data name="WiiRemote_A.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 21</value>
+  </data>
+  <data name="WiiRemote_A.TabIndex" type="System.Int32, mscorlib">
+    <value>29</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_A.Name" xml:space="preserve">
+    <value>WiiRemote_A</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_A.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_A.Parent" xml:space="preserve">
+    <value>page1</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_A.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="WiiRemote_2.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="WiiRemote_2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>608, 163</value>
+  </data>
+  <data name="WiiRemote_2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 21</value>
+  </data>
+  <data name="WiiRemote_2.TabIndex" type="System.Int32, mscorlib">
+    <value>28</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_2.Name" xml:space="preserve">
+    <value>WiiRemote_2</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_2.Parent" xml:space="preserve">
+    <value>page1</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_2.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="WiiRemote_1.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="WiiRemote_1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>608, 136</value>
+  </data>
+  <data name="WiiRemote_1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 21</value>
+  </data>
+  <data name="WiiRemote_1.TabIndex" type="System.Int32, mscorlib">
+    <value>27</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_1.Name" xml:space="preserve">
+    <value>WiiRemote_1</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_1.Parent" xml:space="preserve">
+    <value>page1</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_1.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="WiiRemote_Left.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="WiiRemote_Left.Location" type="System.Drawing.Point, System.Drawing">
+    <value>23, 187</value>
+  </data>
+  <data name="WiiRemote_Left.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 21</value>
+  </data>
+  <data name="WiiRemote_Left.TabIndex" type="System.Int32, mscorlib">
+    <value>26</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Left.Name" xml:space="preserve">
+    <value>WiiRemote_Left</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Left.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Left.Parent" xml:space="preserve">
+    <value>page1</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Left.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="WiiRemote_Down.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="WiiRemote_Down.Location" type="System.Drawing.Point, System.Drawing">
+    <value>23, 160</value>
+  </data>
+  <data name="WiiRemote_Down.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 21</value>
+  </data>
+  <data name="WiiRemote_Down.TabIndex" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Down.Name" xml:space="preserve">
+    <value>WiiRemote_Down</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Down.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Down.Parent" xml:space="preserve">
+    <value>page1</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Down.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="WiiRemote_Up.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="WiiRemote_Up.Location" type="System.Drawing.Point, System.Drawing">
+    <value>23, 133</value>
+  </data>
+  <data name="WiiRemote_Up.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 21</value>
+  </data>
+  <data name="WiiRemote_Up.TabIndex" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Up.Name" xml:space="preserve">
+    <value>WiiRemote_Up</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Up.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Up.Parent" xml:space="preserve">
+    <value>page1</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Up.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="WiiRemote_Right.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="WiiRemote_Right.Location" type="System.Drawing.Point, System.Drawing">
+    <value>23, 106</value>
+  </data>
+  <data name="WiiRemote_Right.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 21</value>
+  </data>
+  <data name="WiiRemote_Right.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Right.Name" xml:space="preserve">
+    <value>WiiRemote_Right</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Right.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Right.Parent" xml:space="preserve">
+    <value>page1</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Right.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="pictureBox2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="pictureBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>91, 29</value>
+  </data>
+  <data name="pictureBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>570, 260</value>
+  </data>
+  <data name="pictureBox2.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>AutoSize</value>
+  </data>
+  <data name="pictureBox2.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="&gt;&gt;pictureBox2.Name" xml:space="preserve">
+    <value>pictureBox2</value>
+  </data>
+  <data name="&gt;&gt;pictureBox2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBox2.Parent" xml:space="preserve">
+    <value>page1</value>
+  </data>
+  <data name="&gt;&gt;pictureBox2.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="pictureBox3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="pictureBox3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>91, 29</value>
+  </data>
+  <data name="pictureBox3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>570, 260</value>
+  </data>
+  <data name="pictureBox3.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>AutoSize</value>
+  </data>
+  <data name="pictureBox3.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="&gt;&gt;pictureBox3.Name" xml:space="preserve">
+    <value>pictureBox3</value>
+  </data>
+  <data name="&gt;&gt;pictureBox3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBox3.Parent" xml:space="preserve">
+    <value>page1</value>
+  </data>
+  <data name="&gt;&gt;pictureBox3.ZOrder" xml:space="preserve">
+    <value>11</value>
   </data>
   <data name="&gt;&gt;Classic_Start.Name" xml:space="preserve">
     <value>Classic_Start</value>
@@ -481,13 +961,13 @@
     <value>14</value>
   </data>
   <data name="page2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 25</value>
+    <value>4, 22</value>
   </data>
   <data name="page2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
   <data name="page2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>752, 316</value>
+    <value>752, 319</value>
   </data>
   <data name="page2.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -507,362 +987,11 @@
   <data name="&gt;&gt;page2.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="comboBox8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>316, 275</value>
-  </data>
-  <data name="comboBox8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 21</value>
-  </data>
-  <data name="comboBox8.TabIndex" type="System.Int32, mscorlib">
-    <value>35</value>
-  </data>
-  <data name="&gt;&gt;comboBox8.Name" xml:space="preserve">
-    <value>comboBox8</value>
-  </data>
-  <data name="&gt;&gt;comboBox8.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;comboBox8.Parent" xml:space="preserve">
-    <value>page3</value>
-  </data>
-  <data name="&gt;&gt;comboBox8.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="GC_Z.Location" type="System.Drawing.Point, System.Drawing">
-    <value>610, 67</value>
-  </data>
-  <data name="GC_Z.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 21</value>
-  </data>
-  <data name="GC_Z.TabIndex" type="System.Int32, mscorlib">
-    <value>34</value>
-  </data>
-  <data name="&gt;&gt;GC_Z.Name" xml:space="preserve">
-    <value>GC_Z</value>
-  </data>
-  <data name="&gt;&gt;GC_Z.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GC_Z.Parent" xml:space="preserve">
-    <value>page3</value>
-  </data>
-  <data name="&gt;&gt;GC_Z.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="GC_R.Location" type="System.Drawing.Point, System.Drawing">
-    <value>610, 42</value>
-  </data>
-  <data name="GC_R.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 21</value>
-  </data>
-  <data name="GC_R.TabIndex" type="System.Int32, mscorlib">
-    <value>33</value>
-  </data>
-  <data name="&gt;&gt;GC_R.Name" xml:space="preserve">
-    <value>GC_R</value>
-  </data>
-  <data name="&gt;&gt;GC_R.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GC_R.Parent" xml:space="preserve">
-    <value>page3</value>
-  </data>
-  <data name="&gt;&gt;GC_R.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="GC_B.Location" type="System.Drawing.Point, System.Drawing">
-    <value>610, 187</value>
-  </data>
-  <data name="GC_B.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 21</value>
-  </data>
-  <data name="GC_B.TabIndex" type="System.Int32, mscorlib">
-    <value>32</value>
-  </data>
-  <data name="&gt;&gt;GC_B.Name" xml:space="preserve">
-    <value>GC_B</value>
-  </data>
-  <data name="&gt;&gt;GC_B.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GC_B.Parent" xml:space="preserve">
-    <value>page3</value>
-  </data>
-  <data name="&gt;&gt;GC_B.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="GC_A.Location" type="System.Drawing.Point, System.Drawing">
-    <value>610, 160</value>
-  </data>
-  <data name="GC_A.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 21</value>
-  </data>
-  <data name="GC_A.TabIndex" type="System.Int32, mscorlib">
-    <value>31</value>
-  </data>
-  <data name="&gt;&gt;GC_A.Name" xml:space="preserve">
-    <value>GC_A</value>
-  </data>
-  <data name="&gt;&gt;GC_A.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GC_A.Parent" xml:space="preserve">
-    <value>page3</value>
-  </data>
-  <data name="&gt;&gt;GC_A.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="GC_X.Location" type="System.Drawing.Point, System.Drawing">
-    <value>610, 133</value>
-  </data>
-  <data name="GC_X.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 21</value>
-  </data>
-  <data name="GC_X.TabIndex" type="System.Int32, mscorlib">
-    <value>30</value>
-  </data>
-  <data name="&gt;&gt;GC_X.Name" xml:space="preserve">
-    <value>GC_X</value>
-  </data>
-  <data name="&gt;&gt;GC_X.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GC_X.Parent" xml:space="preserve">
-    <value>page3</value>
-  </data>
-  <data name="&gt;&gt;GC_X.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="GC_Y.Location" type="System.Drawing.Point, System.Drawing">
-    <value>610, 106</value>
-  </data>
-  <data name="GC_Y.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 21</value>
-  </data>
-  <data name="GC_Y.TabIndex" type="System.Int32, mscorlib">
-    <value>29</value>
-  </data>
-  <data name="&gt;&gt;GC_Y.Name" xml:space="preserve">
-    <value>GC_Y</value>
-  </data>
-  <data name="&gt;&gt;GC_Y.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GC_Y.Parent" xml:space="preserve">
-    <value>page3</value>
-  </data>
-  <data name="&gt;&gt;GC_Y.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="GC_Down.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 256</value>
-  </data>
-  <data name="GC_Down.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 21</value>
-  </data>
-  <data name="GC_Down.TabIndex" type="System.Int32, mscorlib">
-    <value>28</value>
-  </data>
-  <data name="&gt;&gt;GC_Down.Name" xml:space="preserve">
-    <value>GC_Down</value>
-  </data>
-  <data name="&gt;&gt;GC_Down.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GC_Down.Parent" xml:space="preserve">
-    <value>page3</value>
-  </data>
-  <data name="&gt;&gt;GC_Down.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="GC_Right.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 229</value>
-  </data>
-  <data name="GC_Right.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 21</value>
-  </data>
-  <data name="GC_Right.TabIndex" type="System.Int32, mscorlib">
-    <value>27</value>
-  </data>
-  <data name="&gt;&gt;GC_Right.Name" xml:space="preserve">
-    <value>GC_Right</value>
-  </data>
-  <data name="&gt;&gt;GC_Right.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GC_Right.Parent" xml:space="preserve">
-    <value>page3</value>
-  </data>
-  <data name="&gt;&gt;GC_Right.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="GC_Left.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 202</value>
-  </data>
-  <data name="GC_Left.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 21</value>
-  </data>
-  <data name="GC_Left.TabIndex" type="System.Int32, mscorlib">
-    <value>26</value>
-  </data>
-  <data name="&gt;&gt;GC_Left.Name" xml:space="preserve">
-    <value>GC_Left</value>
-  </data>
-  <data name="&gt;&gt;GC_Left.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GC_Left.Parent" xml:space="preserve">
-    <value>page3</value>
-  </data>
-  <data name="&gt;&gt;GC_Left.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="GC_Up.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 175</value>
-  </data>
-  <data name="GC_Up.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 21</value>
-  </data>
-  <data name="GC_Up.TabIndex" type="System.Int32, mscorlib">
-    <value>25</value>
-  </data>
-  <data name="&gt;&gt;GC_Up.Name" xml:space="preserve">
-    <value>GC_Up</value>
-  </data>
-  <data name="&gt;&gt;GC_Up.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GC_Up.Parent" xml:space="preserve">
-    <value>page3</value>
-  </data>
-  <data name="&gt;&gt;GC_Up.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="GC_L.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 42</value>
-  </data>
-  <data name="GC_L.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 21</value>
-  </data>
-  <data name="GC_L.TabIndex" type="System.Int32, mscorlib">
-    <value>23</value>
-  </data>
-  <data name="&gt;&gt;GC_L.Name" xml:space="preserve">
-    <value>GC_L</value>
-  </data>
-  <data name="&gt;&gt;GC_L.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GC_L.Parent" xml:space="preserve">
-    <value>page3</value>
-  </data>
-  <data name="&gt;&gt;GC_L.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="pictureBox1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="pictureBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>91, 27</value>
-  </data>
-  <data name="pictureBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>570, 265</value>
-  </data>
-  <data name="pictureBox1.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
-    <value>AutoSize</value>
-  </data>
-  <data name="pictureBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
-  </data>
-  <data name="&gt;&gt;pictureBox1.Name" xml:space="preserve">
-    <value>pictureBox1</value>
-  </data>
-  <data name="&gt;&gt;pictureBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pictureBox1.Parent" xml:space="preserve">
-    <value>page3</value>
-  </data>
-  <data name="&gt;&gt;pictureBox1.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="page3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 25</value>
-  </data>
-  <data name="page3.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="page3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>752, 316</value>
-  </data>
-  <data name="page3.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="page3.Text" xml:space="preserve">
-    <value>page3</value>
-  </data>
-  <data name="&gt;&gt;page3.Name" xml:space="preserve">
-    <value>page3</value>
-  </data>
-  <data name="&gt;&gt;page3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;page3.Parent" xml:space="preserve">
-    <value>tabControl1</value>
-  </data>
-  <data name="&gt;&gt;page3.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 12</value>
-  </data>
-  <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>760, 345</value>
-  </data>
-  <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
-  </data>
-  <data name="&gt;&gt;tabControl1.Name" xml:space="preserve">
-    <value>tabControl1</value>
-  </data>
-  <data name="&gt;&gt;tabControl1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabControl1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;tabControl1.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="pictureBox2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="pictureBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>91, 28</value>
-  </data>
-  <data name="pictureBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>570, 260</value>
-  </data>
-  <data name="pictureBox2.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
-    <value>AutoSize</value>
-  </data>
-  <data name="pictureBox2.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
-  </data>
-  <data name="&gt;&gt;pictureBox2.Name" xml:space="preserve">
-    <value>pictureBox2</value>
-  </data>
-  <data name="&gt;&gt;pictureBox2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pictureBox2.Parent" xml:space="preserve">
-    <value>page1</value>
-  </data>
-  <data name="&gt;&gt;pictureBox2.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="Classic_Start.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="Classic_Start.Location" type="System.Drawing.Point, System.Drawing">
-    <value>380, 255</value>
+    <value>380, 273</value>
   </data>
   <data name="Classic_Start.Size" type="System.Drawing.Size, System.Drawing">
     <value>121, 21</value>
@@ -882,8 +1011,11 @@
   <data name="&gt;&gt;Classic_Start.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="Classic_Select.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="Classic_Select.Location" type="System.Drawing.Point, System.Drawing">
-    <value>244, 255</value>
+    <value>244, 273</value>
   </data>
   <data name="Classic_Select.Size" type="System.Drawing.Size, System.Drawing">
     <value>121, 21</value>
@@ -903,8 +1035,11 @@
   <data name="&gt;&gt;Classic_Select.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="Classic_B.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="Classic_B.Location" type="System.Drawing.Point, System.Drawing">
-    <value>608, 172</value>
+    <value>608, 170</value>
   </data>
   <data name="Classic_B.Size" type="System.Drawing.Size, System.Drawing">
     <value>121, 21</value>
@@ -924,8 +1059,11 @@
   <data name="&gt;&gt;Classic_B.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="Classic_A.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="Classic_A.Location" type="System.Drawing.Point, System.Drawing">
-    <value>608, 145</value>
+    <value>608, 143</value>
   </data>
   <data name="Classic_A.Size" type="System.Drawing.Size, System.Drawing">
     <value>121, 21</value>
@@ -945,8 +1083,11 @@
   <data name="&gt;&gt;Classic_A.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="Classic_Y.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="Classic_Y.Location" type="System.Drawing.Point, System.Drawing">
-    <value>608, 118</value>
+    <value>608, 116</value>
   </data>
   <data name="Classic_Y.Size" type="System.Drawing.Size, System.Drawing">
     <value>121, 21</value>
@@ -966,8 +1107,11 @@
   <data name="&gt;&gt;Classic_Y.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <data name="Classic_X.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="Classic_X.Location" type="System.Drawing.Point, System.Drawing">
-    <value>608, 91</value>
+    <value>608, 89</value>
   </data>
   <data name="Classic_X.Size" type="System.Drawing.Size, System.Drawing">
     <value>121, 21</value>
@@ -987,8 +1131,11 @@
   <data name="&gt;&gt;Classic_X.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <data name="Classic_R.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="Classic_R.Location" type="System.Drawing.Point, System.Drawing">
-    <value>608, 54</value>
+    <value>608, 52</value>
   </data>
   <data name="Classic_R.Size" type="System.Drawing.Size, System.Drawing">
     <value>121, 21</value>
@@ -1008,8 +1155,11 @@
   <data name="&gt;&gt;Classic_R.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
+  <data name="Classic_ZR.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="Classic_ZR.Location" type="System.Drawing.Point, System.Drawing">
-    <value>608, 29</value>
+    <value>608, 27</value>
   </data>
   <data name="Classic_ZR.Size" type="System.Drawing.Size, System.Drawing">
     <value>121, 21</value>
@@ -1029,8 +1179,11 @@
   <data name="&gt;&gt;Classic_ZR.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
+  <data name="Classic_Down.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="Classic_Down.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 172</value>
+    <value>23, 170</value>
   </data>
   <data name="Classic_Down.Size" type="System.Drawing.Size, System.Drawing">
     <value>121, 21</value>
@@ -1050,8 +1203,11 @@
   <data name="&gt;&gt;Classic_Down.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
+  <data name="Classic_Right.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="Classic_Right.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 145</value>
+    <value>23, 143</value>
   </data>
   <data name="Classic_Right.Size" type="System.Drawing.Size, System.Drawing">
     <value>121, 21</value>
@@ -1071,8 +1227,11 @@
   <data name="&gt;&gt;Classic_Right.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
+  <data name="Classic_Left.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="Classic_Left.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 118</value>
+    <value>23, 116</value>
   </data>
   <data name="Classic_Left.Size" type="System.Drawing.Size, System.Drawing">
     <value>121, 21</value>
@@ -1092,8 +1251,11 @@
   <data name="&gt;&gt;Classic_Left.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
+  <data name="Classic_Up.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="Classic_Up.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 91</value>
+    <value>23, 89</value>
   </data>
   <data name="Classic_Up.Size" type="System.Drawing.Size, System.Drawing">
     <value>121, 21</value>
@@ -1113,8 +1275,11 @@
   <data name="&gt;&gt;Classic_Up.ZOrder" xml:space="preserve">
     <value>11</value>
   </data>
+  <data name="Classic_L.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="Classic_L.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 54</value>
+    <value>23, 52</value>
   </data>
   <data name="Classic_L.Size" type="System.Drawing.Size, System.Drawing">
     <value>121, 21</value>
@@ -1134,8 +1299,11 @@
   <data name="&gt;&gt;Classic_L.ZOrder" xml:space="preserve">
     <value>12</value>
   </data>
+  <data name="Classic_ZL.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="Classic_ZL.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 29</value>
+    <value>23, 27</value>
   </data>
   <data name="Classic_ZL.Size" type="System.Drawing.Size, System.Drawing">
     <value>121, 21</value>
@@ -1159,7 +1327,7 @@
     <value>NoControl</value>
   </data>
   <data name="image_cc.Location" type="System.Drawing.Point, System.Drawing">
-    <value>91, 29</value>
+    <value>91, 27</value>
   </data>
   <data name="image_cc.Size" type="System.Drawing.Size, System.Drawing">
     <value>570, 260</value>
@@ -1182,107 +1350,515 @@
   <data name="&gt;&gt;image_cc.ZOrder" xml:space="preserve">
     <value>14</value>
   </data>
-  <data name="&gt;&gt;set_preset.Name" xml:space="preserve">
-    <value>set_preset</value>
+  <data name="&gt;&gt;comboBox8.Name" xml:space="preserve">
+    <value>comboBox8</value>
   </data>
-  <data name="&gt;&gt;set_preset.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;set_preset.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;set_preset.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;comboBox1.Name" xml:space="preserve">
-    <value>comboBox1</value>
-  </data>
-  <data name="&gt;&gt;comboBox1.Type" xml:space="preserve">
+  <data name="&gt;&gt;comboBox8.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;comboBox1.Parent" xml:space="preserve">
-    <value>groupBox1</value>
+  <data name="&gt;&gt;comboBox8.Parent" xml:space="preserve">
+    <value>page3</value>
   </data>
-  <data name="&gt;&gt;comboBox1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 363</value>
-  </data>
-  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>752, 50</value>
-  </data>
-  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>18</value>
-  </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>presets</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;comboBox8.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="set_preset.Location" type="System.Drawing.Point, System.Drawing">
-    <value>643, 17</value>
+  <data name="&gt;&gt;GC_Z.Name" xml:space="preserve">
+    <value>GC_Z</value>
   </data>
-  <data name="set_preset.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 23</value>
-  </data>
-  <data name="set_preset.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="set_preset.Text" xml:space="preserve">
-    <value>set_preset</value>
-  </data>
-  <data name="&gt;&gt;set_preset.Name" xml:space="preserve">
-    <value>set_preset</value>
-  </data>
-  <data name="&gt;&gt;set_preset.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;set_preset.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;set_preset.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="comboBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 18</value>
-  </data>
-  <data name="comboBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>627, 21</value>
-  </data>
-  <data name="comboBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;comboBox1.Name" xml:space="preserve">
-    <value>comboBox1</value>
-  </data>
-  <data name="&gt;&gt;comboBox1.Type" xml:space="preserve">
+  <data name="&gt;&gt;GC_Z.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;comboBox1.Parent" xml:space="preserve">
-    <value>groupBox1</value>
+  <data name="&gt;&gt;GC_Z.Parent" xml:space="preserve">
+    <value>page3</value>
   </data>
-  <data name="&gt;&gt;comboBox1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;GC_Z.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="&gt;&gt;GC_R.Name" xml:space="preserve">
+    <value>GC_R</value>
+  </data>
+  <data name="&gt;&gt;GC_R.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GC_R.Parent" xml:space="preserve">
+    <value>page3</value>
+  </data>
+  <data name="&gt;&gt;GC_R.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;GC_B.Name" xml:space="preserve">
+    <value>GC_B</value>
+  </data>
+  <data name="&gt;&gt;GC_B.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GC_B.Parent" xml:space="preserve">
+    <value>page3</value>
+  </data>
+  <data name="&gt;&gt;GC_B.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;GC_A.Name" xml:space="preserve">
+    <value>GC_A</value>
+  </data>
+  <data name="&gt;&gt;GC_A.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GC_A.Parent" xml:space="preserve">
+    <value>page3</value>
+  </data>
+  <data name="&gt;&gt;GC_A.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;GC_X.Name" xml:space="preserve">
+    <value>GC_X</value>
+  </data>
+  <data name="&gt;&gt;GC_X.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GC_X.Parent" xml:space="preserve">
+    <value>page3</value>
+  </data>
+  <data name="&gt;&gt;GC_X.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;GC_Y.Name" xml:space="preserve">
+    <value>GC_Y</value>
+  </data>
+  <data name="&gt;&gt;GC_Y.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GC_Y.Parent" xml:space="preserve">
+    <value>page3</value>
+  </data>
+  <data name="&gt;&gt;GC_Y.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;GC_Down.Name" xml:space="preserve">
+    <value>GC_Down</value>
+  </data>
+  <data name="&gt;&gt;GC_Down.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GC_Down.Parent" xml:space="preserve">
+    <value>page3</value>
+  </data>
+  <data name="&gt;&gt;GC_Down.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;GC_Right.Name" xml:space="preserve">
+    <value>GC_Right</value>
+  </data>
+  <data name="&gt;&gt;GC_Right.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GC_Right.Parent" xml:space="preserve">
+    <value>page3</value>
+  </data>
+  <data name="&gt;&gt;GC_Right.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;GC_Left.Name" xml:space="preserve">
+    <value>GC_Left</value>
+  </data>
+  <data name="&gt;&gt;GC_Left.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GC_Left.Parent" xml:space="preserve">
+    <value>page3</value>
+  </data>
+  <data name="&gt;&gt;GC_Left.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;GC_Up.Name" xml:space="preserve">
+    <value>GC_Up</value>
+  </data>
+  <data name="&gt;&gt;GC_Up.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GC_Up.Parent" xml:space="preserve">
+    <value>page3</value>
+  </data>
+  <data name="&gt;&gt;GC_Up.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;GC_L.Name" xml:space="preserve">
+    <value>GC_L</value>
+  </data>
+  <data name="&gt;&gt;GC_L.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GC_L.Parent" xml:space="preserve">
+    <value>page3</value>
+  </data>
+  <data name="&gt;&gt;GC_L.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Name" xml:space="preserve">
+    <value>pictureBox1</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Parent" xml:space="preserve">
+    <value>page3</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="page3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="page3.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="page3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>752, 319</value>
+  </data>
+  <data name="page3.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="page3.Text" xml:space="preserve">
+    <value>page3</value>
+  </data>
+  <data name="&gt;&gt;page3.Name" xml:space="preserve">
+    <value>page3</value>
+  </data>
+  <data name="&gt;&gt;page3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;page3.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;page3.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="comboBox8.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="comboBox8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>316, 273</value>
+  </data>
+  <data name="comboBox8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 21</value>
+  </data>
+  <data name="comboBox8.TabIndex" type="System.Int32, mscorlib">
+    <value>35</value>
+  </data>
+  <data name="&gt;&gt;comboBox8.Name" xml:space="preserve">
+    <value>comboBox8</value>
+  </data>
+  <data name="&gt;&gt;comboBox8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBox8.Parent" xml:space="preserve">
+    <value>page3</value>
+  </data>
+  <data name="&gt;&gt;comboBox8.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="GC_Z.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="GC_Z.Location" type="System.Drawing.Point, System.Drawing">
+    <value>610, 65</value>
+  </data>
+  <data name="GC_Z.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 21</value>
+  </data>
+  <data name="GC_Z.TabIndex" type="System.Int32, mscorlib">
+    <value>34</value>
+  </data>
+  <data name="&gt;&gt;GC_Z.Name" xml:space="preserve">
+    <value>GC_Z</value>
+  </data>
+  <data name="&gt;&gt;GC_Z.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GC_Z.Parent" xml:space="preserve">
+    <value>page3</value>
+  </data>
+  <data name="&gt;&gt;GC_Z.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="GC_R.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="GC_R.Location" type="System.Drawing.Point, System.Drawing">
+    <value>610, 40</value>
+  </data>
+  <data name="GC_R.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 21</value>
+  </data>
+  <data name="GC_R.TabIndex" type="System.Int32, mscorlib">
+    <value>33</value>
+  </data>
+  <data name="&gt;&gt;GC_R.Name" xml:space="preserve">
+    <value>GC_R</value>
+  </data>
+  <data name="&gt;&gt;GC_R.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GC_R.Parent" xml:space="preserve">
+    <value>page3</value>
+  </data>
+  <data name="&gt;&gt;GC_R.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="GC_B.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="GC_B.Location" type="System.Drawing.Point, System.Drawing">
+    <value>610, 185</value>
+  </data>
+  <data name="GC_B.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 21</value>
+  </data>
+  <data name="GC_B.TabIndex" type="System.Int32, mscorlib">
+    <value>32</value>
+  </data>
+  <data name="&gt;&gt;GC_B.Name" xml:space="preserve">
+    <value>GC_B</value>
+  </data>
+  <data name="&gt;&gt;GC_B.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GC_B.Parent" xml:space="preserve">
+    <value>page3</value>
+  </data>
+  <data name="&gt;&gt;GC_B.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="GC_A.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="GC_A.Location" type="System.Drawing.Point, System.Drawing">
+    <value>610, 158</value>
+  </data>
+  <data name="GC_A.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 21</value>
+  </data>
+  <data name="GC_A.TabIndex" type="System.Int32, mscorlib">
+    <value>31</value>
+  </data>
+  <data name="&gt;&gt;GC_A.Name" xml:space="preserve">
+    <value>GC_A</value>
+  </data>
+  <data name="&gt;&gt;GC_A.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GC_A.Parent" xml:space="preserve">
+    <value>page3</value>
+  </data>
+  <data name="&gt;&gt;GC_A.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="GC_X.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="GC_X.Location" type="System.Drawing.Point, System.Drawing">
+    <value>610, 131</value>
+  </data>
+  <data name="GC_X.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 21</value>
+  </data>
+  <data name="GC_X.TabIndex" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="&gt;&gt;GC_X.Name" xml:space="preserve">
+    <value>GC_X</value>
+  </data>
+  <data name="&gt;&gt;GC_X.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GC_X.Parent" xml:space="preserve">
+    <value>page3</value>
+  </data>
+  <data name="&gt;&gt;GC_X.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="GC_Y.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="GC_Y.Location" type="System.Drawing.Point, System.Drawing">
+    <value>610, 104</value>
+  </data>
+  <data name="GC_Y.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 21</value>
+  </data>
+  <data name="GC_Y.TabIndex" type="System.Int32, mscorlib">
+    <value>29</value>
+  </data>
+  <data name="&gt;&gt;GC_Y.Name" xml:space="preserve">
+    <value>GC_Y</value>
+  </data>
+  <data name="&gt;&gt;GC_Y.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GC_Y.Parent" xml:space="preserve">
+    <value>page3</value>
+  </data>
+  <data name="&gt;&gt;GC_Y.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="GC_Down.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="GC_Down.Location" type="System.Drawing.Point, System.Drawing">
+    <value>23, 254</value>
+  </data>
+  <data name="GC_Down.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 21</value>
+  </data>
+  <data name="GC_Down.TabIndex" type="System.Int32, mscorlib">
+    <value>28</value>
+  </data>
+  <data name="&gt;&gt;GC_Down.Name" xml:space="preserve">
+    <value>GC_Down</value>
+  </data>
+  <data name="&gt;&gt;GC_Down.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GC_Down.Parent" xml:space="preserve">
+    <value>page3</value>
+  </data>
+  <data name="&gt;&gt;GC_Down.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="GC_Right.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="GC_Right.Location" type="System.Drawing.Point, System.Drawing">
+    <value>23, 227</value>
+  </data>
+  <data name="GC_Right.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 21</value>
+  </data>
+  <data name="GC_Right.TabIndex" type="System.Int32, mscorlib">
+    <value>27</value>
+  </data>
+  <data name="&gt;&gt;GC_Right.Name" xml:space="preserve">
+    <value>GC_Right</value>
+  </data>
+  <data name="&gt;&gt;GC_Right.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GC_Right.Parent" xml:space="preserve">
+    <value>page3</value>
+  </data>
+  <data name="&gt;&gt;GC_Right.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="GC_Left.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="GC_Left.Location" type="System.Drawing.Point, System.Drawing">
+    <value>23, 200</value>
+  </data>
+  <data name="GC_Left.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 21</value>
+  </data>
+  <data name="GC_Left.TabIndex" type="System.Int32, mscorlib">
+    <value>26</value>
+  </data>
+  <data name="&gt;&gt;GC_Left.Name" xml:space="preserve">
+    <value>GC_Left</value>
+  </data>
+  <data name="&gt;&gt;GC_Left.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GC_Left.Parent" xml:space="preserve">
+    <value>page3</value>
+  </data>
+  <data name="&gt;&gt;GC_Left.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="GC_Up.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="GC_Up.Location" type="System.Drawing.Point, System.Drawing">
+    <value>23, 173</value>
+  </data>
+  <data name="GC_Up.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 21</value>
+  </data>
+  <data name="GC_Up.TabIndex" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <data name="&gt;&gt;GC_Up.Name" xml:space="preserve">
+    <value>GC_Up</value>
+  </data>
+  <data name="&gt;&gt;GC_Up.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GC_Up.Parent" xml:space="preserve">
+    <value>page3</value>
+  </data>
+  <data name="&gt;&gt;GC_Up.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="GC_L.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="GC_L.Location" type="System.Drawing.Point, System.Drawing">
+    <value>23, 40</value>
+  </data>
+  <data name="GC_L.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 21</value>
+  </data>
+  <data name="GC_L.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="&gt;&gt;GC_L.Name" xml:space="preserve">
+    <value>GC_L</value>
+  </data>
+  <data name="&gt;&gt;GC_L.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GC_L.Parent" xml:space="preserve">
+    <value>page3</value>
+  </data>
+  <data name="&gt;&gt;GC_L.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="pictureBox1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="pictureBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>91, 25</value>
+  </data>
+  <data name="pictureBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>570, 265</value>
+  </data>
+  <data name="pictureBox1.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>AutoSize</value>
+  </data>
+  <data name="pictureBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Name" xml:space="preserve">
+    <value>pictureBox1</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Parent" xml:space="preserve">
+    <value>page3</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.ZOrder" xml:space="preserve">
+    <value>12</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>784, 476</value>
+    <value>784, 412</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8.25pt</value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>

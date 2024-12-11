@@ -64,6 +64,7 @@ namespace FriishProduce
 
         private LanguageData _english { get; set; }
         private LanguageData _current { get; set; }
+        private LanguageData _current_parent { get; set; }
         public string Current { get => _current.language; }
         public string Author { get => _current.author; }
         public string ApplicationTitle { get => _current.application_title ?? _english.application_title; }
@@ -137,6 +138,20 @@ namespace FriishProduce
             }
 
             if (Properties.Settings.Default.language == "en") _current = _english;
+
+            string parent = returnParent(_current.language, false);
+            if (_current.language.Contains('-') && _current.language != parent)
+            {
+                if (File.Exists(returnParent(_current.language, true)))
+                {
+                    if (_current.language != parent)
+                        _current_parent = parseFile(parent);
+                    else
+                        _current_parent = _current;
+
+                    _current_parent.language = new CultureInfo(parent).TwoLetterISOLanguageName;
+                }
+            }
 
             Thread.CurrentThread.CurrentCulture = Thread.CurrentThread.CurrentUICulture = new CultureInfo(code == "sys" ? GetSystemLanguage() : code);
         }
@@ -273,10 +288,10 @@ namespace FriishProduce
         {
             if (string.IsNullOrWhiteSpace(name)) return "undefined";
 
-            bool isEnglish = false;
+            int mode = 0;
 
             Top:
-            var target = isEnglish ? _english : _current;
+            var target = mode switch { 2 => _english, 1 => _current_parent, _ => _current };
 
             try
             {
@@ -288,7 +303,7 @@ namespace FriishProduce
 
                 string result = null;
 
-                if (!string.IsNullOrEmpty(sectionName))
+                if (path != null && !string.IsNullOrEmpty(sectionName))
                 {
                     if (!path.ContainsKey(sectionName.ToLower())) goto NotFound;
 
@@ -302,7 +317,7 @@ namespace FriishProduce
                     }
                 }
 
-                else
+                else if (target.global != null)
                 {
                     foreach (KeyValuePair<string, Dictionary<string, string>> section in target.global)
                     {
@@ -351,9 +366,11 @@ namespace FriishProduce
             }
 
             NotFound:
-            if (!isEnglish)
+            if (mode < 2)
             {
-                isEnglish = true;
+                if (_current_parent == null) mode = 2;
+                else mode++;
+
                 goto Top;
             }
 
@@ -365,6 +382,43 @@ namespace FriishProduce
         #endregion
 
         #region Private methods and variables
+        private string returnParent(string input, bool isFile)
+        {
+            if (input.ToLower() == "en") return input;
+
+            string code = new CultureInfo(input).TwoLetterISOLanguageName;
+            int tries = 0;
+            
+            Top:
+            string file = File.Exists(Paths.Languages + code + extension) ? Paths.Languages + code + extension : null;
+
+            string region = code.ToLower() switch
+            {
+                "de" => "-DE",
+                "en" => "-US",
+                "es" => "-ES",
+                "fr" => "-FR",
+                "it" => "-IT",
+                "pt" => "-PT",
+                "zh" => "-CN",
+                _ => null
+            };
+
+            if (file == null)
+            {
+                tries++;
+
+                if (region != null && tries == 1)
+                    code += region;
+                else if (tries == 2)
+                    code = input;
+
+                goto Top;
+            }
+
+            return isFile ? file : code;
+        }
+
         private dynamic parseFile(string code)
         {
             if (code.ToLower() != "en")

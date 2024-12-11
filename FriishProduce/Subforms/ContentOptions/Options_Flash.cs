@@ -14,6 +14,7 @@ namespace FriishProduce
         {
             InitializeComponent();
 
+            Controller = new Controller_Flash();
             Options = new Dictionary<string, string>
             {
                 { "mouse", Default.mouse },
@@ -34,6 +35,7 @@ namespace FriishProduce
                 Program.Lang.Control(this);
                 groupBox1.Text = Program.Lang.String("save_data", "projectform");
                 save_data_enable.Text = Program.Lang.String("save_data_enable", "projectform");
+                controller_mapping.Text = Program.Lang.String("controller_mapping", "projectform");
             }
         }
 

@@ -12,6 +12,106 @@ namespace FriishProduce
 {
     public partial class ControllerMapping : Form
     {
+        public ControllerMapping()
+        {
+            InitializeComponent();
+
+            // Remove this code when creating a new copy
+            // *****************************************
+            if (!DesignMode)
+            {
+                // Cosmetic
+                // ---------------
+                b_ok.Click += OK_Click;
+                b_cancel.Click += Cancel_Click;
+                Load += Form_Load;
+            }
+            // *****************************************
+        }
+
+        protected void OK_Click(object sender, EventArgs e)
+        {
+            if (DesignMode) return;
+
+            foreach (Buttons orig in Mapping.Keys.ToList())
+            {
+                ComboBox target = Controls.Find(orig.ToString(), true).OfType<ComboBox>().FirstOrDefault();
+                if (target != null)
+                    Mapping[orig] = target.SelectedIndex == 0 ? "" : available.Local_Formatted[target.SelectedIndex - 1];
+            }
+
+            OldMapping = new Dictionary<Buttons, string>(Mapping);
+            DialogResult = DialogResult.OK;
+        }
+
+        protected void Cancel_Click(object sender, EventArgs e)
+        {
+            if (DesignMode) return;
+
+            // Map button values to previous settings
+            // ---------------
+            Mapping = new Dictionary<Buttons, string>(OldMapping);
+            DialogResult = DialogResult.Cancel;
+        }
+
+        protected void Form_Load(object sender, EventArgs e)
+        {
+            if (DesignMode) return;
+
+            // Map button values to null
+            // ---------------
+            if (Mapping == null)
+            {
+                const string empty = "—";
+
+                foreach (ComboBox c in page1.Controls.OfType<ComboBox>())
+                {
+                    c.Items.Add(empty);
+                    c.Items.AddRange(available.Local_Displayed);
+                    c.SelectedIndex = 0;
+                }
+
+                foreach (ComboBox c in page2.Controls.OfType<ComboBox>())
+                {
+                    c.Items.Add(empty);
+                    c.Items.AddRange(available.Local_Displayed);
+                    c.SelectedIndex = 0;
+                }
+
+                foreach (ComboBox c in page3.Controls.OfType<ComboBox>())
+                {
+                    c.Items.Add(empty);
+                    c.Items.AddRange(available.Local_Displayed);
+                    c.SelectedIndex = 0;
+                }
+
+                foreach (Buttons orig in Mapping.Keys.ToList())
+                {
+                    ComboBox target = Controls.Find(orig.ToString(), true).OfType<ComboBox>().FirstOrDefault();
+                    if (target != null) target.Enabled = true;
+                }
+
+                Mapping = new Dictionary<Buttons, string>();
+                foreach (Buttons orig in available.Wii) Mapping.Add(orig, "");
+                OldMapping = new Dictionary<Buttons, string>(Mapping);
+            }
+            else
+            {
+                foreach (Buttons orig in Mapping.Keys.ToList())
+                {
+                    int index = string.IsNullOrWhiteSpace(Mapping[orig]) ? 0 : Array.IndexOf(available.Local_Formatted, Mapping[orig]) + 1;
+
+                    ComboBox target = Controls.Find(orig.ToString(), true).OfType<ComboBox>().FirstOrDefault();
+                    if (target != null) target.SelectedIndex = index;
+                }
+            }
+
+            if (!UsesGC && tabControl1.TabPages.Contains(page3)) tabControl1.TabPages.Remove(page3);
+            CenterToParent();
+        }
+
+        // ---------------------------------------------------------------------------------------------------------------
+
         public enum Buttons
         {
             WiiRemote_Up,
@@ -56,57 +156,18 @@ namespace FriishProduce
             GC_Start
         };
 
-        private Buttons[] mapping = new Buttons[]
+        protected struct Available
         {
-            Buttons.WiiRemote_Left,
-            Buttons.WiiRemote_Right,
-            Buttons.WiiRemote_Down,
-            Buttons.WiiRemote_Up,
-            Buttons.WiiRemote_A,
-            Buttons.WiiRemote_B,
-            Buttons.WiiRemote_Home,
-            Buttons.WiiRemote_Plus,
-            Buttons.WiiRemote_Minus,
-            Buttons.WiiRemote_1,
-            Buttons.WiiRemote_2,
-            Buttons.Nunchuck_Z,
-            Buttons.Nunchuck_C,
-            Buttons.Classic_Up,
-            Buttons.Classic_Left,
-            Buttons.Classic_ZR,
-            Buttons.Classic_X,
-            Buttons.Classic_A,
-            Buttons.Classic_Y,
-            Buttons.Classic_B,
-            Buttons.Classic_ZL,
-            Buttons.Classic_R,
-            Buttons.Classic_Plus,
-            // Buttons.Classic_Home,
-            Buttons.Classic_Minus,
-            Buttons.Classic_L,
-            Buttons.Classic_Down,
-            Buttons.Classic_Right
-        };
-
-        public ControllerMapping()
-        {
-            InitializeComponent();
-
-            // Cosmetic
-            // ---------------
-            // Remove this code when creating a new copy
-            // *****************************************
-            if (!DesignMode)
-            {
-                b_ok.Click += OK_Click;
-                b_cancel.Click += Cancel_Click;
-                Load += Form_Load;
-            }
-            // *****************************************
+            public Buttons[] Wii;
+            public string[] Local_Displayed;
+            public string[] Local_Formatted;
         }
 
-        public List<string> Mapping = new();
-        public bool UsesGC { get; set; }
+        public IDictionary<Buttons, string> Mapping;
+        public IDictionary<Buttons, string> OldMapping;
+
+        protected bool UsesGC { get; set; }
+        protected bool UsesNunchuk { get; set; }
 
         // ---------------------------------------------------------------------------------------------------------------
 
@@ -114,52 +175,63 @@ namespace FriishProduce
         // /!\ MODIFIABLE FUNCTIONS AND VALUES NEEDED! /!\
         // ---------------------------------------------------------------------------------------------------------------
 
-        // Buttons used in the target console, as displayed on the form
-        // ************************************************************
-        protected string[] TargetButtons_List = new string[]
+        protected Available available = new()
         {
-        };
-
-        // Buttons used in the target console, as formatted in configuration file on WAD
-        // *****************************************************************************
-        protected string[] TargetButtons_Keys = new string[]
-        {
-        };
-
-        // ---------------------------------------------------------------------------------------------------------------
-
-        protected void OK_Click(object sender, EventArgs e)
-        {
-            if (DesignMode) return;
-
-            foreach (Buttons instance in mapping)
+            Wii = new Buttons[]
             {
-                ComboBox setting = Controls.Find(instance.ToString(), true).OfType<ComboBox>().FirstOrDefault();
-                if (setting != null)
-                    Mapping.Add(setting.SelectedIndex == 0 ? null : TargetButtons_Keys[setting.SelectedIndex - 1]);
+                Buttons.WiiRemote_Up,
+                Buttons.WiiRemote_Left,
+                Buttons.WiiRemote_Right,
+                Buttons.WiiRemote_Down,
+                Buttons.WiiRemote_1,
+                Buttons.WiiRemote_2,
+                Buttons.WiiRemote_Plus,
+                Buttons.WiiRemote_Minus,
+                Buttons.WiiRemote_A,
+                Buttons.WiiRemote_B,
+
+                Buttons.Classic_Up,
+                Buttons.Classic_Left,
+                Buttons.Classic_Right,
+                Buttons.Classic_Down,
+                Buttons.Classic_A,
+                Buttons.Classic_B,
+                Buttons.Classic_X,
+                Buttons.Classic_Y,
+                Buttons.Classic_Plus,
+                Buttons.Classic_Minus,
+                Buttons.Classic_L,
+                Buttons.Classic_R,
+                Buttons.Classic_ZL,
+                Buttons.Classic_ZR,
+
+                Buttons.GC_Up,
+                Buttons.GC_Right,
+                Buttons.GC_Left,
+                Buttons.GC_Down,
+                Buttons.GC_A,
+                Buttons.GC_B,
+                Buttons.GC_X,
+                Buttons.GC_Y,
+                Buttons.GC_Start,
+                Buttons.GC_L,
+                Buttons.GC_R,
+                Buttons.GC_Z
+            },
+
+            Local_Displayed = new string[]
+            {    
+                // Buttons used in the target console, as displayed on the form
+                // ************************************************************
+                "null"
+            },
+
+            Local_Formatted = new string[]
+            {
+                // Buttons used in the target console, as formatted in configuration file on WAD
+                // *****************************************************************************
+                "null"
             }
-
-            DialogResult = DialogResult.OK;
-        }
-
-        protected void Cancel_Click(object sender, EventArgs e)
-        {
-            if (DesignMode) return;
-
-            DialogResult = DialogResult.Cancel;
-        }
-
-        protected void Form_Load(object sender, EventArgs e)
-        {
-            if (DesignMode) return;
-            foreach (ComboBox c in page1.Controls.OfType<ComboBox>()) c.SelectedIndex = 0;
-            foreach (ComboBox c in page2.Controls.OfType<ComboBox>()) c.SelectedIndex = 0;
-            foreach (ComboBox c in page3.Controls.OfType<ComboBox>()) c.SelectedIndex = 0;
-
-            if (!UsesGC) tabControl1.TabPages.Remove(page3);
-
-
-            CenterToParent();
-        }
+        };
     }
 }

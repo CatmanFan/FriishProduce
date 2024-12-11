@@ -97,18 +97,6 @@ namespace FriishProduce.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int gamedata_source_image {
-            get {
-                return ((int)(this["gamedata_source_image"]));
-            }
-            set {
-                this["gamedata_source_image"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string custom_database {
             get {

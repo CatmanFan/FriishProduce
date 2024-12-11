@@ -70,27 +70,24 @@ namespace FriishProduce
         // ---------------------------------------------------------------------------------------------------------------
 
         public IDictionary<string, string> Options { get; set; }
+        public ControllerMapping Controller { get; set; }
         public int EmuType { get; set; }
 
         protected void OK_Click(object sender, EventArgs e)
         {
-            if (DesignMode) return;
 
-            SaveOptions();
-            DialogResult = DialogResult.OK;
         }
 
         protected void Cancel_Click(object sender, EventArgs e)
         {
-            if (DesignMode) return;
 
-            DialogResult = DialogResult.Cancel;
         }
 
         protected void Form_Load(object sender, EventArgs e)
         {
             if (DesignMode) return;
 
+            controller_mapping.Visible = controller_mapping.Enabled = Controller != null;
             ResetOptions();
             CenterToParent();
         }
@@ -101,7 +98,7 @@ namespace FriishProduce
 
             // Code logic in derived Form
             // ********
-            // This should open an inherited controller mapping form.
+            Controller.ShowDialog();
         }
     }
 }

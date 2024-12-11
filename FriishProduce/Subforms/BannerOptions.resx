@@ -286,10 +286,10 @@
     <value>NoControl</value>
   </data>
   <data name="b_cancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>347, 8</value>
+    <value>347, 7</value>
   </data>
   <data name="b_cancel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 23</value>
+    <value>100, 24</value>
   </data>
   <data name="b_cancel.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -313,10 +313,10 @@
     <value>NoControl</value>
   </data>
   <data name="b_ok.Location" type="System.Drawing.Point, System.Drawing">
-    <value>241, 8</value>
+    <value>241, 7</value>
   </data>
   <data name="b_ok.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 23</value>
+    <value>100, 24</value>
   </data>
   <data name="b_ok.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>

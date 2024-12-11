@@ -66,16 +66,21 @@ namespace FriishProduce
         public static bool InternetTest(string URL = null)
         {
             int timeout = 60;
+            int region = System.Globalization.CultureInfo.InstalledUICulture.Name.StartsWith("fa") ? 2
+                       : System.Globalization.CultureInfo.InstalledUICulture.Name.Contains("zh-CN") ? 1
+                       : -1;
 
             try
             {
+                Request:
                 var request = (HttpWebRequest)WebRequest.Create
                 (
                     !string.IsNullOrWhiteSpace(URL) ? URL :
                     (
-                        System.Globalization.CultureInfo.InstalledUICulture.Name.StartsWith("fa") ? "https://www.aparat.com/" :
-                        System.Globalization.CultureInfo.InstalledUICulture.Name.Contains("zh-CN") ? "http://www.baidu.com/" :
-                        "https://thumbnails.libretro.com/README.md"
+                        region == 2 ? "https://www.aparat.com/" :
+                        region == 1 ? "http://www.baidu.com/" :
+                        region == 0 ? "https://www.google.com" :
+                        "https://www.webpagetest.org/blank.html"
                     )
                 );
 
@@ -86,7 +91,17 @@ namespace FriishProduce
 
                 if (CheckDomain(URL, timeout))
                 {
-                    var response = request.GetResponse();
+                    WebResponse response = null;
+                    try { response = request.GetResponse(); }
+                    catch (Exception ex)
+                    {
+                        if (region < 0 && region > 2)
+                        {
+                            region = 0;
+                            goto Request;
+                        }
+                        else { throw ex; }
+                    }
 
                     for (int i = 0; i < 2; i++)
                     {
