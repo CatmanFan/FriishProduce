@@ -49,8 +49,8 @@ namespace FriishProduce
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.page2 = new System.Windows.Forms.TabPage();
-            this.Classic_Start = new System.Windows.Forms.ComboBox();
-            this.Classic_Select = new System.Windows.Forms.ComboBox();
+            this.Classic_Plus = new System.Windows.Forms.ComboBox();
+            this.Classic_Minus = new System.Windows.Forms.ComboBox();
             this.Classic_B = new System.Windows.Forms.ComboBox();
             this.Classic_A = new System.Windows.Forms.ComboBox();
             this.Classic_Y = new System.Windows.Forms.ComboBox();
@@ -78,6 +78,7 @@ namespace FriishProduce
             this.GC_Up = new System.Windows.Forms.ComboBox();
             this.GC_L = new System.Windows.Forms.ComboBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.vertical_layout = new System.Windows.Forms.CheckBox();
             this.bottomPanel2.SuspendLayout();
             this.bottomPanel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -131,6 +132,7 @@ namespace FriishProduce
             // 
             // page1
             // 
+            this.page1.Controls.Add(this.vertical_layout);
             this.page1.Controls.Add(this.WiiRemote_Minus);
             this.page1.Controls.Add(this.WiiRemote_Plus);
             this.page1.Controls.Add(this.WiiRemote_B);
@@ -234,8 +236,8 @@ namespace FriishProduce
             // 
             // page2
             // 
-            this.page2.Controls.Add(this.Classic_Start);
-            this.page2.Controls.Add(this.Classic_Select);
+            this.page2.Controls.Add(this.Classic_Plus);
+            this.page2.Controls.Add(this.Classic_Minus);
             this.page2.Controls.Add(this.Classic_B);
             this.page2.Controls.Add(this.Classic_A);
             this.page2.Controls.Add(this.Classic_Y);
@@ -254,19 +256,19 @@ namespace FriishProduce
             this.page2.Tag = "page2";
             this.page2.UseVisualStyleBackColor = true;
             // 
-            // Classic_Start
+            // Classic_Plus
             // 
-            this.Classic_Start.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            resources.ApplyResources(this.Classic_Start, "Classic_Start");
-            this.Classic_Start.FormattingEnabled = true;
-            this.Classic_Start.Name = "Classic_Start";
+            this.Classic_Plus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.Classic_Plus, "Classic_Plus");
+            this.Classic_Plus.FormattingEnabled = true;
+            this.Classic_Plus.Name = "Classic_Plus";
             // 
-            // Classic_Select
+            // Classic_Minus
             // 
-            this.Classic_Select.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            resources.ApplyResources(this.Classic_Select, "Classic_Select");
-            this.Classic_Select.FormattingEnabled = true;
-            this.Classic_Select.Name = "Classic_Select";
+            this.Classic_Minus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.Classic_Minus, "Classic_Minus");
+            this.Classic_Minus.FormattingEnabled = true;
+            this.Classic_Minus.Name = "Classic_Minus";
             // 
             // Classic_B
             // 
@@ -470,6 +472,13 @@ namespace FriishProduce
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.TabStop = false;
             // 
+            // vertical_layout
+            // 
+            resources.ApplyResources(this.vertical_layout, "vertical_layout");
+            this.vertical_layout.Name = "vertical_layout";
+            this.vertical_layout.Tag = "vertical_layout";
+            this.vertical_layout.UseVisualStyleBackColor = true;
+            // 
             // ControllerMapping
             // 
             this.AcceptButton = this.b_ok;
@@ -530,8 +539,8 @@ namespace FriishProduce
         private System.Windows.Forms.ComboBox WiiRemote_Down;
         private System.Windows.Forms.ComboBox WiiRemote_Up;
         private System.Windows.Forms.ComboBox WiiRemote_Right;
-        private System.Windows.Forms.ComboBox Classic_Start;
-        private System.Windows.Forms.ComboBox Classic_Select;
+        private System.Windows.Forms.ComboBox Classic_Plus;
+        private System.Windows.Forms.ComboBox Classic_Minus;
         private System.Windows.Forms.ComboBox Classic_B;
         private System.Windows.Forms.ComboBox Classic_A;
         private System.Windows.Forms.ComboBox Classic_Y;
@@ -556,5 +565,6 @@ namespace FriishProduce
         private System.Windows.Forms.ComboBox GC_Left;
         private System.Windows.Forms.ComboBox GC_Up;
         private System.Windows.Forms.ComboBox GC_L;
+        private System.Windows.Forms.CheckBox vertical_layout;
     }
 }

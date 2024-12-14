@@ -82,7 +82,7 @@ namespace FriishProduce
             // 
             this.palette_banner_usage.AutoSize = true;
             this.palette_banner_usage.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.palette_banner_usage.Location = new System.Drawing.Point(10, 279);
+            this.palette_banner_usage.Location = new System.Drawing.Point(10, 280);
             this.palette_banner_usage.Name = "palette_banner_usage";
             this.palette_banner_usage.Size = new System.Drawing.Size(135, 17);
             this.palette_banner_usage.TabIndex = 12;
@@ -94,7 +94,7 @@ namespace FriishProduce
             // 
             this.PaletteList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.PaletteList.FormattingEnabled = true;
-            this.PaletteList.Location = new System.Drawing.Point(10, 252);
+            this.PaletteList.Location = new System.Drawing.Point(10, 253);
             this.PaletteList.Name = "PaletteList";
             this.PaletteList.Size = new System.Drawing.Size(311, 21);
             this.PaletteList.TabIndex = 9;

@@ -142,7 +142,7 @@
 		},
 
 		"settingsform": {
-		    "application":						"Aplicación",
+		    "general":							"General",
 			"language":							"Idioma",
 			"system_default":					"Idioma del sistema",
 			"reset_all_dialogs":				"Restablecer la opción \"No volver a mostrar este mensaje\"",
@@ -232,8 +232,11 @@
 			"page1":							"Mando de Wii",
 			"page2":							"Mando clásico",
 			"page3":							"Mando GameCube",
-			"presets":							"Presets",
-			"set_preset":						"Set"
+			"vertical_layout":					"Disposición vertical",
+			"up":								"Arriba",
+			"left":								"Izquierda",
+			"right":							"Derecha",
+			"down":								"Abajo"
 		},
 
 		"vc_nes": {

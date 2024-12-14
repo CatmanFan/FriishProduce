@@ -119,7 +119,7 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="players.Location" type="System.Drawing.Point, System.Drawing">
-    <value>383, 90</value>
+    <value>374, 90</value>
   </data>
   <data name="players.Size" type="System.Drawing.Size, System.Drawing">
     <value>64, 21</value>
@@ -138,7 +138,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;players.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="released.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 90</value>
@@ -171,7 +171,7 @@
     <value>True</value>
   </data>
   <data name="title.Size" type="System.Drawing.Size, System.Drawing">
-    <value>435, 40</value>
+    <value>426, 40</value>
   </data>
   <data name="title.TabIndex" type="System.Int32, mscorlib">
     <value>24</value>
@@ -199,7 +199,7 @@
     <value>NoControl</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>233, 73</value>
+    <value>226, 73</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
     <value>216, 13</value>
@@ -286,7 +286,7 @@
     <value>NoControl</value>
   </data>
   <data name="b_cancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>347, 7</value>
+    <value>338, 7</value>
   </data>
   <data name="b_cancel.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 24</value>
@@ -313,7 +313,7 @@
     <value>NoControl</value>
   </data>
   <data name="b_ok.Location" type="System.Drawing.Point, System.Drawing">
-    <value>241, 7</value>
+    <value>232, 7</value>
   </data>
   <data name="b_ok.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 24</value>
@@ -343,7 +343,7 @@
     <value>0, 1</value>
   </data>
   <data name="bottomPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>459, 39</value>
+    <value>450, 39</value>
   </data>
   <data name="bottomPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -364,10 +364,10 @@
     <value>Bottom</value>
   </data>
   <data name="bottomPanel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 192</value>
+    <value>0, 182</value>
   </data>
   <data name="bottomPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>459, 40</value>
+    <value>450, 40</value>
   </data>
   <data name="bottomPanel2.TabIndex" type="System.Int32, mscorlib">
     <value>35</value>
@@ -382,7 +382,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;bottomPanel2.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>0</value>
   </data>
   <data name="label4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -391,7 +391,7 @@
     <value>NoControl</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 133</value>
+    <value>9, 131</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
     <value>77, 13</value>
@@ -412,13 +412,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="region.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 150</value>
+    <value>12, 148</value>
   </data>
   <data name="region.Size" type="System.Drawing.Size, System.Drawing">
-    <value>435, 21</value>
+    <value>426, 21</value>
   </data>
   <data name="region.TabIndex" type="System.Int32, mscorlib">
     <value>45</value>
@@ -433,13 +433,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;region.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 124</value>
+    <value>12, 122</value>
   </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>435, 1</value>
+    <value>426, 1</value>
   </data>
   <data name="panel1.TabIndex" type="System.Int32, mscorlib">
     <value>46</value>
@@ -454,16 +454,19 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>459, 232</value>
+    <value>450, 222</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8.25pt</value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>

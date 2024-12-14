@@ -12,7 +12,7 @@ namespace FriishProduce
 {
     public partial class MainForm : Form
     {
-        private readonly SettingsForm s = new();
+        private readonly SettingsForm settings = new();
 
         #region //////////////////// Platforms ////////////////////
         public readonly IDictionary<Platform, Bitmap> Icons = new Dictionary<Platform, Bitmap>
@@ -94,47 +94,24 @@ namespace FriishProduce
         }
         #endregion
 
-        #region //////////////////// UI appearance ////////////////////
-        /*public class CustomToolStripRenderer : ToolStripProfessionalRenderer
-        {
-            public CustomToolStripRenderer() { }
-
-            protected override void OnRenderToolStripBackground(ToolStripRenderEventArgs e)
-            {
-                //you may want to change this based on the toolstrip's dock or layout style
-                LinearGradientMode mode = LinearGradientMode.Vertical;
-
-                using (LinearGradientBrush b = new LinearGradientBrush(e.AffectedBounds, Color.FromArgb(250, 250, 250), Color.FromArgb(222, 227, 233), mode))
-                {
-                    e.Graphics.FillRectangle(b, e.AffectedBounds);
-                }
-            }
-        }*/
-
-        private void AutoSetStrip()
-        {
-            foreach (MenuItem section in mainMenu.MenuItems)
-                foreach (MenuItem item in section.MenuItems)
-                    if (Program.Lang.StringCheck(item.Tag?.ToString().ToLower(), Name)) item.Text = Program.Lang.String(item.Tag?.ToString().ToLower(), Name);
-
-            new_project.MenuItems.Clear();
-            new_project.MenuItems.AddRange(platformsMenuItemList());
-            toolbarNewProject.DropDownItems.Clear();
-            toolbarNewProject.DropDownItems.AddRange(platformsStripItemList());
-        }
-        #endregion
-
         /// <summary>
         /// Changes language of this form and all tab pages
         /// </summary>
         private void RefreshForm()
         {
-            AutoSetStrip();
+            new_project.MenuItems.Clear();
+            new_project.MenuItems.AddRange(platformsMenuItemList());
+            toolbarNewProject.DropDownItems.Clear();
+            toolbarNewProject.DropDownItems.AddRange(platformsStripItemList());
 
             #region Localization
             Program.Lang.Control(this);
             Text = Program.Lang.ApplicationTitle;
             about.Text = string.Format(Program.Lang.String("about_app"), Program.Lang.ApplicationTitle);
+
+            foreach (MenuItem section in mainMenu.MenuItems)
+                foreach (MenuItem item in section.MenuItems)
+                    if (Program.Lang.StringCheck(item.Tag?.ToString().ToLower(), Name)) item.Text = Program.Lang.String(item.Tag?.ToString().ToLower(), Name);
 
             menuItem1.Text = Program.Lang.String(menuItem1.Tag.ToString(), Name);
             menuItem2.Text = Program.Lang.String(menuItem2.Tag.ToString(), Name);
@@ -154,14 +131,8 @@ namespace FriishProduce
             SaveProject.Title = save_project_as.Text.Replace("&", "");
             SaveWAD.Title = export.Text.Replace("&", "");
 
-            try
-            {
-                BrowseProject.Filter = SaveProject.Filter = Program.Lang.String("filter.project");
-            }
-            catch
-            {
-                MessageBox.Show("Warning!\nThe language strings have not been loaded correctly.\n\nSeveral items may show up as 'undefined'.\n\nOther exceptions related to strings or filters can also occur!", MessageBox.Buttons.Ok, MessageBox.Icons.Warning, false);
-            }
+            try { BrowseProject.Filter = SaveProject.Filter = Program.Lang.String("filter.project"); }
+            catch { MessageBox.Show("Warning!\nThe language strings have not been loaded correctly.\n\nSeveral items may show up as 'undefined'.\n\nOther exceptions related to strings or filters can also occur!", MessageBox.Buttons.Ok, MessageBox.Icons.Warning, false); }
             #endregion
 
             foreach (MdiTabControl.TabPage tabPage in tabControl.TabPages)
@@ -173,14 +144,14 @@ namespace FriishProduce
         {
             InitializeComponent();
             Program.Handle = Handle;
+        }
 
-            // CustomToolStripRenderer r = new CustomToolStripRenderer();
-            // r.RoundedEdges = false;
-            // toolStrip.Renderer = r;
+        private void MainForm_Loading(object sender, EventArgs e)
+        {
+            RefreshForm();
 
             #region Set size of window
             mainPanel.Dock = DockStyle.None;
-            // if (!toolStrip.Visible) tabControl.Location = mainPanel.Location = new Point(mainPanel.Location.X, mainPanel.Location.Y - toolStrip.Height);
 
             int w = 16;
             int h = mainPanel.Location.Y + tabControl.TabHeight + tabControl.TabTop;
@@ -192,25 +163,12 @@ namespace FriishProduce
             }
 
             mainPanel.Size = tabControl.Size = new Size(Width - w, Height - h);
-            #endregion
 
-            mainPanel.BackgroundImage = new Bitmap(1, mainPanel.Height);
-            using (Graphics g = Graphics.FromImage(mainPanel.BackgroundImage))
-            using (LinearGradientBrush b = new(new Point(0, -240), new Point(0, mainPanel.Height), Color.Gainsboro, Color.White))
-            {
-                g.Clear(tabControl.BackLowColor);
-                g.FillRectangle(b, new RectangleF(0, 0, 1, b.Rectangle.Height));
-            }
 
-            if (mainPanel.BackgroundImage != null) tabControl.BackLowColor = tabControl.BackHighColor = tabControl.BackColor = Color.Transparent;
-            tabControl.BackgroundImage = mainPanel.BackgroundImage;
-            tabControl.BackgroundImageLayout = mainPanel.BackgroundImageLayout;
-            if (tabControl.Alignment == MdiTabControl.TabControl.TabAlignment.Bottom) tabControl.Height -= (int)Math.Round(h / 1.5);
-
-            RefreshForm();
-            CenterToScreen();
-
+            // Set logo position (425, 163)
+            // ********
             if (Logo.Location.X == 0 || Logo.Location.Y == 0) Logo.Location = new Point(mainPanel.Bounds.Width / 2 - (Logo.Width / 2), mainPanel.Bounds.Height / 2 - (Logo.Height / 2) - mainPanel.Location.Y);
+            #endregion
 
             // Automatically set defined initial directory for save file dialog
             // ********
@@ -219,14 +177,26 @@ namespace FriishProduce
             if (Properties.Settings.Default.auto_update_check) { _ = Updater.GetLatest(); }
         }
 
-        private void Settings_Click(object sender, EventArgs e)
+        private void MainForm_Closing(object sender, FormClosingEventArgs e)
         {
-            // string lang = Properties.Settings.Default.language;
+            var collection = tabControl.TabPages;
 
-            s.ShowDialog(this);
+            for (int i = 0; i < collection.Count; i++)
+            {
+                var p = tabControl.TabPages[i];
+                var f = p.Form as ProjectForm;
 
-            // if (lang != Properties.Settings.Default.language) RefreshForm();
+                if (f.IsModified)
+                {
+                    tabControl.TabPages[tabControl.TabPages.get_IndexOf(p)].Select();
+
+                    if (!f.CheckUnsaved())
+                        e.Cancel = true;
+                }
+            }
         }
+
+        private void Settings_Click(object sender, EventArgs e) => settings.ShowDialog(this);
 
         public void TabChanged(object sender, EventArgs e)
         {
@@ -266,25 +236,6 @@ namespace FriishProduce
             toolbarCloseProject.Enabled     = close_project.Enabled;
             toolbarGameScan.Enabled = game_scan.Enabled;
             toolbarExport.Enabled           = export.Enabled;
-        }
-
-        private void MainForm_Closing(object sender, FormClosingEventArgs e)
-        {
-            var collection = tabControl.TabPages;
-
-            for (int i = 0; i < collection.Count; i++)
-            {
-                var p = tabControl.TabPages[i];
-                var f = p.Form as ProjectForm;
-
-                if (f.IsModified)
-                {
-                    tabControl.TabPages[tabControl.TabPages.get_IndexOf(p)].Select();
-
-                    if (!f.CheckUnsaved())
-                        e.Cancel = true;
-                }
-            }
         }
 
         /// <summary>

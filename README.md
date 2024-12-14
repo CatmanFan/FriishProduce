@@ -1,6 +1,5 @@
 # FriishProduce
 <div align=center><a href=""><img src="https://github.com/CatmanFan/FriishProduce/blob/main/images/icon.png" /></a><br>
-<!-- <img src="https://github.com/CatmanFan/FriishProduce/blob/main/images/new.png?raw=true"/><br> -->
 <a href="https://gbatemp.net/threads/friishproduce-multiplatform-wad-injector.632028/"><img src="https://img.shields.io/badge/GBAtemp-link-blue" /></a>
 </div>
 
@@ -41,6 +40,8 @@ See **[here](https://github.com/CatmanFan/FriishProduce/wiki/FriishProduce-v1.0)
 
 ## To-Do
 ### Before releasing
+[ ] Add a universal title ID variable instead of reading from a text label, this should make it easier to read from a WAD or from a selected item on the other combobox. Also bind combobox to a value member which is simply the title ID.
+[ ] Merge separate components of ProjectForm into panels / Create UserControl for content options ?
 [ ] Bugfixes and beta-testing
 
 ### After releasing

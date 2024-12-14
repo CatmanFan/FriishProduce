@@ -65,7 +65,6 @@ namespace FriishProduce
                 {
                     title_id_random.Visible =
                     import_image.Enabled =
-                    banner.Enabled =
                     groupBox2.Enabled =
                     groupBox3.Enabled =
                     groupBox6.Enabled =
@@ -153,10 +152,11 @@ namespace FriishProduce
         protected string sound { get; set; }
         protected ImageHelper img { get; set; }
 
-        private Preview preview = new();
+        internal Preview preview = new();
 
         protected ContentOptions contentOptionsForm { get; set; }
         protected IDictionary<string, string> contentOptions { get => contentOptionsForm?.Options; }
+        protected IDictionary<Buttons, string> keymap { get => contentOptionsForm?.Keymap; }
 
         #region Channel/banner parameters
         private string _tID { get => title_id_upper.Text.ToUpper(); }
@@ -223,9 +223,10 @@ namespace FriishProduce
                 ImageOptions = (image_interpolation_mode.SelectedIndex, image_resize1.Checked),
                 Sound = sound,
 
+                ContentOptions = contentOptions ?? null,
+                Keymap = keymap ?? null,
                 InjectionMethod = injection_methods.SelectedIndex,
                 ForwarderStorageDevice = forwarder_root_device.SelectedIndex,
-                ContentOptions = contentOptions ?? null,
 
                 LinkSaveDataTitle = savedata.Fill.Checked,
                 VideoMode = video_modes.SelectedIndex,
@@ -284,9 +285,8 @@ namespace FriishProduce
 
             setFilesText();
 
-            var baseMax = Math.Max(base_name.Location.X + base_name.Width - 4, title_id.Location.X + title_id.Width - 4) + 2;
-            baseName.Location = new Point(baseMax, base_name.Location.Y);
-            baseID.Location = new Point(baseMax, title_id.Location.Y);
+            baseID.Location = new Point(current_base.Location.X + current_base.Width + 2, current_base.Location.Y);
+            baseName.Location = new Point(baseID.Location.X + baseID.Width + 1, baseID.Location.Y);
 
             // Selected index properties
             Program.Lang.Control(image_interpolation_mode, Name);
@@ -330,8 +330,6 @@ namespace FriishProduce
                     break;
             }
             #endregion
-
-            baseName.Font = new Font(baseName.Font, FontStyle.Bold);
 
             if (Base.SelectedIndex >= 0)
                 for (int i = 0; i < channels.Entries[Base.SelectedIndex].Regions.Count; i++)
@@ -466,7 +464,7 @@ namespace FriishProduce
             if (ROMpath != null && project == null)
             {
                 rom.FilePath = ROMpath;
-                LoadROM(rom.FilePath, Properties.Settings.Default.auto_retrieve_game_data);
+                LoadROM(rom.FilePath, Properties.Settings.Default.auto_game_scan);
             }
         }
 
@@ -618,7 +616,11 @@ namespace FriishProduce
                 image_resize0.Checked = !project.ImageOptions.Item2;
                 image_resize1.Checked = project.ImageOptions.Item2;
 
-                if (contentOptionsForm != null) contentOptionsForm.Options = project.ContentOptions;
+                if (contentOptionsForm != null)
+                {
+                    contentOptionsForm.Options = project.ContentOptions;
+                    contentOptionsForm.Keymap = project.Keymap;
+                }
                 LoadImage();
                 LoadManual(project.Manual.Type, project.Manual.File);
                 LoadSound(project.Sound);
@@ -689,7 +691,7 @@ namespace FriishProduce
             if (browseROM.ShowDialog() == DialogResult.OK)
             {
                 IsEmpty = false;
-                LoadROM(browseROM.FileName, Properties.Settings.Default.auto_retrieve_game_data);
+                LoadROM(browseROM.FileName, Properties.Settings.Default.auto_game_scan);
             }
         }
 
@@ -763,9 +765,8 @@ namespace FriishProduce
 
             // WAD
             // ********
-            wad_filename.Text = hasWad ? Path.GetFileName(WADPath) : Program.Lang.String("none");
-            wad_filename.Enabled = hasWad;
             checkImg3.Image = hasWad ? Properties.Resources.yes : Properties.Resources.no;
+            baseName.Visible = baseID.Visible = hasWad || use_online_wad.Checked;
         }
 
         private void randomTID()
@@ -913,7 +914,7 @@ namespace FriishProduce
             // ----------------------------
 
             use_offline_wad.Checked = !use_online_wad.Checked;
-            base_name.Enabled = title_id.Enabled = baseID.Enabled = baseName.Enabled = Base.Enabled = BaseRegion.Enabled = use_online_wad.Checked;
+            Base.Enabled = BaseRegion.Enabled = use_online_wad.Checked;
             checkImg3.Visible = import_wad.Enabled = use_offline_wad.Checked;
 
             if (Base.Enabled)
@@ -1466,6 +1467,7 @@ namespace FriishProduce
         public void FlashInject()
         {
             Injectors.Flash.Settings = contentOptions;
+            Injectors.Flash.Keymap = keymap;
             outWad = Injectors.Flash.Inject(outWad, rom.FilePath, _saveDataTitle, img);
         }
 
@@ -1498,6 +1500,7 @@ namespace FriishProduce
                     VC = new Injectors.N64()
                     {
                         Settings = contentOptions,
+                        Keymap = keymap,
 
                         CompressionType = emuVer == 3 ? (contentOptions["romc"] == "0" ? 1 : 2) : 0,
                         Allocate = contentOptions["rom_autosize"] == "True" && (emuVer <= 1),
@@ -1510,6 +1513,8 @@ namespace FriishProduce
                 case Platform.SMD:
                     VC = new Injectors.SEGA()
                     {
+                        Keymap = keymap,
+
                         IsSMS = targetPlatform == Platform.SMS
                     };
                     break;
@@ -1926,6 +1931,7 @@ namespace FriishProduce
 
             showSaveData = isVirtualConsole || targetPlatform == Platform.Flash;
 
+            extra.Visible = manual_type.Visible || forwarder_root_device.Visible;
             extra.Text = manual_type.Visible ? Program.Lang.String(manual_type.Name, Name) : Program.Lang.String(forwarder_root_device.Name, Name);
         }
         #endregion

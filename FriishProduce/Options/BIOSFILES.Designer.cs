@@ -13,11 +13,11 @@ namespace FriishProduce.Options {
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.10.0.0")]
-    internal sealed partial class BIOS : global::System.Configuration.ApplicationSettingsBase {
+    internal sealed partial class BIOSFILES : global::System.Configuration.ApplicationSettingsBase {
         
-        private static BIOS defaultInstance = ((BIOS)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new BIOS())));
+        private static BIOSFILES defaultInstance = ((BIOSFILES)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new BIOSFILES())));
         
-        public static BIOS Default {
+        public static BIOSFILES Default {
             get {
                 return defaultInstance;
             }

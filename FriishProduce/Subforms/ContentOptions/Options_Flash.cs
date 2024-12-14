@@ -13,8 +13,8 @@ namespace FriishProduce
         public Options_Flash() : base()
         {
             InitializeComponent();
+            controllerForm = new Controller_Flash();
 
-            Controller = new Controller_Flash();
             Options = new Dictionary<string, string>
             {
                 { "mouse", Default.mouse },

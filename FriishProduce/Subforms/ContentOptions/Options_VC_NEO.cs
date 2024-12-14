@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Windows.Forms;
 
 namespace FriishProduce
 {
@@ -33,21 +32,21 @@ namespace FriishProduce
             // *******
             if (Options != null)
             {
-                bool valid = File.Exists(FriishProduce.Options.BIOS.Default.neogeo);
+                bool valid = File.Exists(FriishProduce.Options.BIOSFILES.Default.neogeo);
 
                 // Clear list selection if not found
                 if (!valid && biosIndex == 0)
                 {
                     MessageBox.Show
                     (
-                        string.Format(Program.Lang.Msg(10, true), Path.GetFileName(FriishProduce.Options.BIOS.Default.neogeo)),
+                        string.Format(Program.Lang.Msg(10, true), Path.GetFileName(FriishProduce.Options.BIOSFILES.Default.neogeo)),
                         MessageBox.Buttons.Ok,
                         MessageBox.Icons.Information
                     );
 
                     Options["BIOS"] = VC_NEO.Default.bios;
-                    FriishProduce.Options.BIOS.Default.neogeo = null;
-                    FriishProduce.Options.BIOS.Default.Save();
+                    FriishProduce.Options.BIOSFILES.Default.neogeo = null;
+                    FriishProduce.Options.BIOSFILES.Default.Save();
                 }
 
                 bios_list.SelectedIndex = biosIndex;
@@ -101,7 +100,7 @@ namespace FriishProduce
         #region Functions
         private void BIOSChanged(object sender, EventArgs e)
         {
-            if (biosName == "custom" && string.IsNullOrWhiteSpace(FriishProduce.Options.BIOS.Default.neogeo))
+            if (biosName == "custom" && string.IsNullOrWhiteSpace(FriishProduce.Options.BIOSFILES.Default.neogeo))
             {
                 MessageBox.Show(Program.Lang.Msg(13, true), MessageBox.Buttons.Ok, MessageBox.Icons.Error, false);
 

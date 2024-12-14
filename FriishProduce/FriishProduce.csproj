@@ -165,46 +165,14 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Options\ADOBEFLASH.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>ADOBEFLASH.settings</DependentUpon>
-    </Compile>
-    <Compile Include="Options\BIOS.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>BIOS.settings</DependentUpon>
-    </Compile>
-    <Compile Include="Options\FORWARDER.Designer.cs">
-      <DependentUpon>FORWARDER.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <AutoGen>True</AutoGen>
-    </Compile>
-    <Compile Include="Options\VC_N64.Designer.cs">
-      <DependentUpon>VC_N64.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <AutoGen>True</AutoGen>
-    </Compile>
-    <Compile Include="Options\VC_NEO.Designer.cs">
-      <DependentUpon>VC_NEO.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <AutoGen>True</AutoGen>
-    </Compile>
-    <Compile Include="Options\VC_NES.Designer.cs">
-      <DependentUpon>VC_NES.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <AutoGen>True</AutoGen>
-    </Compile>
-    <Compile Include="Options\VC_PCE.Designer.cs">
-      <DependentUpon>VC_PCE.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <AutoGen>True</AutoGen>
-    </Compile>
-    <Compile Include="Options\VC_SEGA.Designer.cs">
-      <DependentUpon>VC_SEGA.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <AutoGen>True</AutoGen>
-    </Compile>
+    <Compile Include="Options\ADOBEFLASH.Designer.cs" />
+    <Compile Include="Options\BIOSFILES.Designer.cs" />
+    <Compile Include="Options\FORWARDER.Designer.cs" />
+    <Compile Include="Options\VC_N64.Designer.cs" />
+    <Compile Include="Options\VC_NEO.Designer.cs" />
+    <Compile Include="Options\VC_NES.Designer.cs" />
+    <Compile Include="Options\VC_PCE.Designer.cs" />
+    <Compile Include="Options\VC_SEGA.Designer.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -287,12 +255,6 @@
     </Compile>
     <Compile Include="Subforms\Savedata.Designer.cs">
       <DependentUpon>Savedata.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Tutorial.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Tutorial.Designer.cs">
-      <DependentUpon>Tutorial.cs</DependentUpon>
     </Compile>
     <Compile Include="_classes\BIOS.cs" />
     <Compile Include="_classes\Helpers\BannerSchemes.cs" />
@@ -442,48 +404,24 @@
     <EmbeddedResource Include="Subforms\ContentOptions\Options_VC_SEGA.resx">
       <DependentUpon>Options_VC_SEGA.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Subforms\Controllers\Controller_Flash.resx">
+      <DependentUpon>Controller_Flash.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Subforms\Savedata.resx">
       <DependentUpon>Savedata.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Tutorial.resx">
-      <DependentUpon>Tutorial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="database.json" />
-    <None Include="Options\ADOBEFLASH.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>ADOBEFLASH.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="Options\BIOS.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>BIOS.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="Options\FORWARDER.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>FORWARDER.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="Options\VC_N64.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>VC_N64.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="Options\VC_NEO.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>VC_NEO.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="Options\VC_NES.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>VC_NES.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="Options\VC_PCE.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>VC_PCE.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="Options\VC_SEGA.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>VC_SEGA.Designer.cs</LastGenOutput>
-    </None>
+    <None Include="Options\ADOBEFLASH.settings" />
+    <None Include="Options\BIOSFILES.settings" />
+    <None Include="Options\FORWARDER.settings" />
+    <None Include="Options\VC_N64.settings" />
+    <None Include="Options\VC_NEO.settings" />
+    <None Include="Options\VC_NES.settings" />
+    <None Include="Options\VC_PCE.settings" />
+    <None Include="Options\VC_SEGA.settings" />
     <None Include="Resources\banners\c64_eu.app" />
     <None Include="Resources\banners\c64_us.app" />
     <None Include="Resources\banners\flash.app" />
@@ -655,6 +593,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="NES\" />
+    <Folder Include="Properties\Subsettings\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

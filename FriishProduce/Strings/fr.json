@@ -142,7 +142,7 @@
 		},
 
 		"settingsform": {
-		    "application":						"Application",
+		    "general":							"Général",
 			"language":							"Langue",
 			"system_default":					"Système",
 			"reset_all_dialogs":				"Réinitialiser le paramètre « Ne plus afficher ce message »",
@@ -226,6 +226,17 @@
 			"year":								"Année :",
 			"players":							"Joueurs :",
 			"banner_region":					"Région du banner :"
+		},
+
+		"controller": {
+			"page1":							"Manette Wii",
+			"page2":							"Manette classique",
+			"page3":							"Manette GameCube",
+			"vertical_layout":					"Disposition verticale",
+			"up":								"Haut",
+			"left":								"Droite",
+			"right":							"Gauche",
+			"down":								"Bas"
 		},
 
 		"vc_nes": {

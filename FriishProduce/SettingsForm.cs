@@ -1,5 +1,5 @@
-﻿using static FriishProduce.Properties.Settings;
-using FriishProduce.Options;
+﻿using FriishProduce.Options;
+using static FriishProduce.Properties.Settings;
 using System;
 using System.Data;
 using System.Drawing;
@@ -26,7 +26,7 @@ namespace FriishProduce
         private void SaveAll()
         {
             Default.Save();
-            Options.BIOS.Default.Save();
+            BIOSFILES.Default.Save();
             FORWARDER.Default.Save();
             VC_NES.Default.Save();
             VC_N64.Default.Save();
@@ -38,6 +38,7 @@ namespace FriishProduce
 
         public void RefreshForm()
         {
+            #region --- Localization / Appearance ---
             Text = Program.Lang.String("preferences");
             Program.Lang.Control(this);
             Program.Lang.Control(vc_nes);
@@ -49,8 +50,9 @@ namespace FriishProduce
 
             TreeView.Nodes[0].Text = Program.Lang.String(TreeView.Nodes[0].Tag.ToString(), Tag.ToString());
             TreeView.Nodes[1].Text = Program.Lang.String(TreeView.Nodes[1].Tag.ToString(), Tag.ToString());
-            
-            var default_node = TreeView.Nodes[2];
+            TreeView.Nodes[2].Text = Program.Lang.String(TreeView.Nodes[2].Tag.ToString(), Tag.ToString());
+
+            var default_node = TreeView.Nodes[3];
             default_node.Text = Program.Lang.String(default_node.Tag.ToString(), Tag.ToString());
             default_node.Expand();
             default_node.Nodes[0].Text = Program.Lang.Console(Platform.NES);
@@ -61,8 +63,12 @@ namespace FriishProduce
             default_node.Nodes[5].Text = Program.Lang.Console(Platform.Flash);
             default_node.Nodes[6].Text = Program.Lang.String("forwarders", "platforms");
 
-            TreeView.Nodes[3].Text = Program.Lang.String(TreeView.Nodes[3].Tag.ToString(), Tag.ToString());
-            TreeView.Nodes[4].Text = Program.Lang.String(TreeView.Nodes[4].Tag.ToString(), Tag.ToString());
+            TreeView.Nodes[4].Text = Program.Lang.String(TreeView.Nodes[3].Tag.ToString(), Tag.ToString());
+            TreeView.Nodes[5].Text = Program.Lang.String(TreeView.Nodes[4].Tag.ToString(), Tag.ToString());
+
+            if (use_online_wad_tip.MaximumSize.IsEmpty) use_online_wad_tip.MaximumSize = use_online_wad_tip.Size;
+            use_online_wad_tip.AutoSize = true;
+            #endregion
 
             // -----------------------------
 
@@ -188,18 +194,13 @@ namespace FriishProduce
             check_for_updates.Enabled = !Default.auto_update_check || !Program.IsUpdated;
 
             // Defaults & forwarders
-            auto_update_check.Checked = Default.auto_update_check;
-            auto_game_scan.Checked = Default.auto_retrieve_game_data;
-            auto_fill_save_data.Checked = Default.auto_fill_save_data;
             reset_all_dialogs.Checked = false;
             toggleSwitch2.Checked = bool.Parse(FORWARDER.Default.show_bios_screen);
             forwarder_type.SelectedIndex = FORWARDER.Default.root_storage_device;
-            default_target_wad_tb.Text = Default.default_export_filename;
-            default_target_project_tb.Text = Default.default_target_filename;
 
             // BIOS files
-            bios_filename_neo.Text = Options.BIOS.Default.neogeo;
-            bios_filename_psx.Text = Options.BIOS.Default.psx;
+            bios_filename_neo.Text = BIOSFILES.Default.neogeo;
+            bios_filename_psx.Text = BIOSFILES.Default.psx;
 
             // Banner region
             banner_regions.Items.Clear();
@@ -214,13 +215,6 @@ namespace FriishProduce
                 Default.custom_database = null;
                 Default.Save();
             }
-
-            // Use online WAD download option
-            if (use_online_wad_tip.MaximumSize.IsEmpty) use_online_wad_tip.MaximumSize = use_online_wad_tip.Size;
-            use_online_wad_tip.AutoSize = true;
-            use_online_wad_enabled.Checked = Default.use_online_wad_enabled;
-
-            bypass_rom_size.Checked = Default.bypass_rom_size;
 
 #if DEBUG
             GetBanners.Visible = true;
@@ -335,21 +329,14 @@ namespace FriishProduce
             // Other settings
             // -------------------------------------------
 
-            Default.auto_update_check = auto_update_check.Checked;
-            Default.auto_fill_save_data = auto_fill_save_data.Checked;
             Default.image_interpolation = image_interpolation_modes.SelectedIndex;
-            Default.auto_retrieve_game_data = auto_game_scan.Checked;
-            Default.default_export_filename = default_target_wad_tb.Text;
-            Default.default_target_filename = default_target_project_tb.Text;
-            Default.use_online_wad_enabled = use_online_wad_enabled.Checked;
-            Default.bypass_rom_size = bypass_rom_size.Checked;
 
             // -------------------------------------------
             // BIOS files
             // -------------------------------------------
 
-            Options.BIOS.Default.neogeo = bios_filename_neo.Text;
-            Options.BIOS.Default.psx = bios_filename_psx.Text;
+            BIOSFILES.Default.neogeo = bios_filename_neo.Text;
+            BIOSFILES.Default.psx = bios_filename_psx.Text;
 
             // -------------------------------------------
             // Platform-specific settings

@@ -169,11 +169,11 @@ namespace FriishProduce
             this.CancelButton = this.b_cancel;
             resources.ApplyResources(this, "$this");
             this.ControlBox = false;
+            this.Controls.Add(this.bottomPanel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.region);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.players);
-            this.Controls.Add(this.bottomPanel2);
             this.Controls.Add(this.released);
             this.Controls.Add(this.title);
             this.Controls.Add(this.label1);

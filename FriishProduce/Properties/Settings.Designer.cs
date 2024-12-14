@@ -50,12 +50,12 @@ namespace FriishProduce.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool auto_retrieve_game_data {
+        public bool auto_game_scan {
             get {
-                return ((bool)(this["auto_retrieve_game_data"]));
+                return ((bool)(this["auto_game_scan"]));
             }
             set {
-                this["auto_retrieve_game_data"] = value;
+                this["auto_game_scan"] = value;
             }
         }
         

@@ -142,7 +142,7 @@
 		},
 
 		"settingsform": {
-		    "application":						"Application",
+		    "general":							"General",
 			"language":							"Language",
 			"system_default":					"System default",
 			"reset_all_dialogs":				"Reset all dialogs",
@@ -179,8 +179,7 @@
 			"wad_base":							"Base WAD",
 			"import_wad":						"Import WAD from file...",
 			"use_online_wad":					"...or use a downloadable base",
-			"base_name":						"Base name:",
-			"title_id":							"Title ID:",
+			"current_base":						"Current WAD:",
 			
 			"image":							"Image",
 			"import_image":						"Import image from file...",
@@ -199,6 +198,7 @@
 			
 			"channel_metadata":					"Channel metadata",
 			"channel_name":						"Channel name:",
+			"title_id":							"Title ID:",
 			"video_mode":						"Video mode:",
 			"banner":							"Channel banner",
 			"banner_details":					"Banner details",
@@ -233,7 +233,12 @@
 		"controller": {
 			"page1":							"Wii Remote",
 			"page2":							"Classic Controller",
-			"page3":							"GameCube Controller"
+			"page3":							"GameCube Controller",
+			"vertical_layout":					"Vertical layout",
+			"up":								"Up",
+			"left":								"Left",
+			"right":							"Right",
+			"down":								"Down"
 		},
 
 		"vc_nes": {

@@ -31,9 +31,9 @@ namespace FriishProduce
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ContentOptions));
             this.bottomPanel1 = new System.Windows.Forms.Panel();
-            this.controller_mapping = new System.Windows.Forms.Button();
             this.b_cancel = new System.Windows.Forms.Button();
             this.b_ok = new System.Windows.Forms.Button();
+            this.controller_mapping = new System.Windows.Forms.Button();
             this.bottomPanel2 = new System.Windows.Forms.Panel();
             this.bottomPanel1.SuspendLayout();
             this.bottomPanel2.SuspendLayout();
@@ -48,6 +48,23 @@ namespace FriishProduce
             resources.ApplyResources(this.bottomPanel1, "bottomPanel1");
             this.bottomPanel1.Name = "bottomPanel1";
             // 
+            // b_cancel
+            // 
+            this.b_cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            resources.ApplyResources(this.b_cancel, "b_cancel");
+            this.b_cancel.Name = "b_cancel";
+            this.b_cancel.Tag = "b_cancel";
+            this.b_cancel.UseVisualStyleBackColor = true;
+            this.b_cancel.Click += new System.EventHandler(this.Cancel_Click);
+            // 
+            // b_ok
+            // 
+            resources.ApplyResources(this.b_ok, "b_ok");
+            this.b_ok.Name = "b_ok";
+            this.b_ok.Tag = "b_ok";
+            this.b_ok.UseVisualStyleBackColor = true;
+            this.b_ok.Click += new System.EventHandler(this.OK_Click);
+            // 
             // controller_mapping
             // 
             resources.ApplyResources(this.controller_mapping, "controller_mapping");
@@ -56,21 +73,6 @@ namespace FriishProduce
             this.controller_mapping.Tag = "controller_mapping";
             this.controller_mapping.UseVisualStyleBackColor = true;
             this.controller_mapping.Click += new System.EventHandler(this.OpenControllerMapping);
-            // 
-            // b_cancel
-            // 
-            this.b_cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            resources.ApplyResources(this.b_cancel, "b_cancel");
-            this.b_cancel.Name = "b_cancel";
-            this.b_cancel.Tag = "b_cancel";
-            this.b_cancel.UseVisualStyleBackColor = true;
-            // 
-            // b_ok
-            // 
-            resources.ApplyResources(this.b_ok, "b_ok");
-            this.b_ok.Name = "b_ok";
-            this.b_ok.Tag = "b_ok";
-            this.b_ok.UseVisualStyleBackColor = true;
             // 
             // bottomPanel2
             // 

@@ -53,8 +53,6 @@ namespace FriishProduce
             this.auto_update_check = new System.Windows.Forms.CheckBox();
             this.check_for_updates = new System.Windows.Forms.Button();
             this.language = new System.Windows.Forms.GroupBox();
-            this.auto_fill_save_data = new System.Windows.Forms.CheckBox();
-            this.auto_game_scan = new System.Windows.Forms.CheckBox();
             this.vc_n64 = new System.Windows.Forms.Panel();
             this.vc_n64_romc_type = new System.Windows.Forms.GroupBox();
             this.forwarder = new System.Windows.Forms.Panel();
@@ -109,6 +107,8 @@ namespace FriishProduce
             this.flash_vff_cache_size = new System.Windows.Forms.Label();
             this.flash_vff_cache_size_list = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.auto_game_scan = new System.Windows.Forms.CheckBox();
+            this.auto_fill_save_data = new System.Windows.Forms.CheckBox();
             this.image_interpolation_mode = new System.Windows.Forms.GroupBox();
             this.image_interpolation_modes = new System.Windows.Forms.ComboBox();
             this.banner_region = new System.Windows.Forms.GroupBox();
@@ -237,7 +237,7 @@ namespace FriishProduce
             // 
             // bottomPanel2
             // 
-            this.bottomPanel2.BackColor = System.Drawing.Color.LightGray;
+            this.bottomPanel2.BackColor = System.Drawing.Color.DarkGray;
             this.bottomPanel2.Controls.Add(this.bottomPanel1);
             resources.ApplyResources(this.bottomPanel2, "bottomPanel2");
             this.bottomPanel2.Name = "bottomPanel2";
@@ -277,19 +277,20 @@ namespace FriishProduce
             // 
             // TreeView
             // 
-            this.TreeView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TreeView.FullRowSelect = true;
             this.TreeView.HotTracking = true;
             resources.ApplyResources(this.TreeView, "TreeView");
-            this.TreeView.ItemHeight = 20;
+            this.TreeView.ItemHeight = 22;
             this.TreeView.Name = "TreeView";
             this.TreeView.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             ((System.Windows.Forms.TreeNode)(resources.GetObject("TreeView.Nodes"))),
             ((System.Windows.Forms.TreeNode)(resources.GetObject("TreeView.Nodes1"))),
             ((System.Windows.Forms.TreeNode)(resources.GetObject("TreeView.Nodes2"))),
             ((System.Windows.Forms.TreeNode)(resources.GetObject("TreeView.Nodes3"))),
-            ((System.Windows.Forms.TreeNode)(resources.GetObject("TreeView.Nodes4")))});
+            ((System.Windows.Forms.TreeNode)(resources.GetObject("TreeView.Nodes4"))),
+            ((System.Windows.Forms.TreeNode)(resources.GetObject("TreeView.Nodes5")))});
             this.TreeView.ShowPlusMinus = false;
+            this.TreeView.ShowRootLines = false;
             this.TreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TreeView_AfterSelect);
             // 
             // panel1
@@ -307,6 +308,8 @@ namespace FriishProduce
             // bypass_rom_size
             // 
             resources.ApplyResources(this.bypass_rom_size, "bypass_rom_size");
+            this.bypass_rom_size.Checked = global::FriishProduce.Properties.Settings.Default.bypass_rom_size;
+            this.bypass_rom_size.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::FriishProduce.Properties.Settings.Default, "bypass_rom_size", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.bypass_rom_size.Name = "bypass_rom_size";
             this.bypass_rom_size.Tag = "bypass_rom_size";
             this.bypass_rom_size.UseVisualStyleBackColor = true;
@@ -322,6 +325,9 @@ namespace FriishProduce
             // use_online_wad_enabled
             // 
             resources.ApplyResources(this.use_online_wad_enabled, "use_online_wad_enabled");
+            this.use_online_wad_enabled.Checked = global::FriishProduce.Properties.Settings.Default.use_online_wad_enabled;
+            this.use_online_wad_enabled.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.use_online_wad_enabled.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::FriishProduce.Properties.Settings.Default, "use_online_wad_enabled", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.use_online_wad_enabled.Name = "use_online_wad_enabled";
             this.use_online_wad_enabled.Tag = "use_online_wad_enabled";
             this.use_online_wad_enabled.UseVisualStyleBackColor = true;
@@ -353,6 +359,9 @@ namespace FriishProduce
             // auto_update_check
             // 
             resources.ApplyResources(this.auto_update_check, "auto_update_check");
+            this.auto_update_check.Checked = global::FriishProduce.Properties.Settings.Default.auto_update_check;
+            this.auto_update_check.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.auto_update_check.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::FriishProduce.Properties.Settings.Default, "auto_update_check", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.auto_update_check.Name = "auto_update_check";
             this.auto_update_check.Tag = "auto_update_check";
             this.auto_update_check.UseVisualStyleBackColor = true;
@@ -373,20 +382,6 @@ namespace FriishProduce
             this.language.Name = "language";
             this.language.TabStop = false;
             this.language.Tag = "language";
-            // 
-            // auto_fill_save_data
-            // 
-            resources.ApplyResources(this.auto_fill_save_data, "auto_fill_save_data");
-            this.auto_fill_save_data.Name = "auto_fill_save_data";
-            this.auto_fill_save_data.Tag = "auto_fill_save_data";
-            this.auto_fill_save_data.UseVisualStyleBackColor = true;
-            // 
-            // auto_game_scan
-            // 
-            resources.ApplyResources(this.auto_game_scan, "auto_game_scan");
-            this.auto_game_scan.Name = "auto_game_scan";
-            this.auto_game_scan.Tag = "auto_game_scan";
-            this.auto_game_scan.UseVisualStyleBackColor = true;
             // 
             // vc_n64
             // 
@@ -831,6 +826,24 @@ namespace FriishProduce
             resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
             // 
+            // auto_game_scan
+            // 
+            resources.ApplyResources(this.auto_game_scan, "auto_game_scan");
+            this.auto_game_scan.Checked = global::FriishProduce.Properties.Settings.Default.auto_game_scan;
+            this.auto_game_scan.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::FriishProduce.Properties.Settings.Default, "auto_game_scan", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.auto_game_scan.Name = "auto_game_scan";
+            this.auto_game_scan.Tag = "auto_game_scan";
+            this.auto_game_scan.UseVisualStyleBackColor = true;
+            // 
+            // auto_fill_save_data
+            // 
+            resources.ApplyResources(this.auto_fill_save_data, "auto_fill_save_data");
+            this.auto_fill_save_data.Checked = global::FriishProduce.Properties.Settings.Default.auto_fill_save_data;
+            this.auto_fill_save_data.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::FriishProduce.Properties.Settings.Default, "auto_fill_save_data", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.auto_fill_save_data.Name = "auto_fill_save_data";
+            this.auto_fill_save_data.Tag = "auto_fill_save_data";
+            this.auto_fill_save_data.UseVisualStyleBackColor = true;
+            // 
             // image_interpolation_mode
             // 
             this.image_interpolation_mode.Controls.Add(this.image_interpolation_modes);
@@ -1011,8 +1024,10 @@ namespace FriishProduce
             // 
             // default_target_wad_tb
             // 
+            this.default_target_wad_tb.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FriishProduce.Properties.Settings.Default, "default_export_filename", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             resources.ApplyResources(this.default_target_wad_tb, "default_target_wad_tb");
             this.default_target_wad_tb.Name = "default_target_wad_tb";
+            this.default_target_wad_tb.Text = global::FriishProduce.Properties.Settings.Default.default_export_filename;
             // 
             // default_target_parameters
             // 
@@ -1031,8 +1046,10 @@ namespace FriishProduce
             // 
             // default_target_project_tb
             // 
+            this.default_target_project_tb.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FriishProduce.Properties.Settings.Default, "default_target_filename", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             resources.ApplyResources(this.default_target_project_tb, "default_target_project_tb");
             this.default_target_project_tb.Name = "default_target_project_tb";
+            this.default_target_project_tb.Text = global::FriishProduce.Properties.Settings.Default.default_target_filename;
             // 
             // SettingsForm
             // 
@@ -1043,11 +1060,6 @@ namespace FriishProduce
             this.ControlBox = false;
             this.Controls.Add(this.bottomPanel2);
             this.Controls.Add(this.TreeView);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.adobe_flash);
-            this.Controls.Add(this.forwarder);
-            this.Controls.Add(this.vc_nes);
             this.Controls.Add(this.vc_n64);
             this.Controls.Add(this.vc_sega);
             this.Controls.Add(this.vc_pce);
@@ -1055,6 +1067,11 @@ namespace FriishProduce
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel5);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.adobe_flash);
+            this.Controls.Add(this.forwarder);
+            this.Controls.Add(this.vc_nes);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MaximizeBox = false;

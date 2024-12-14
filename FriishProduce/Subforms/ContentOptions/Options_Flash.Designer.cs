@@ -58,7 +58,7 @@ namespace FriishProduce
             "auto"});
             this.quality_list.Location = new System.Drawing.Point(10, 18);
             this.quality_list.Name = "quality_list";
-            this.quality_list.Size = new System.Drawing.Size(241, 21);
+            this.quality_list.Size = new System.Drawing.Size(510, 21);
             this.quality_list.TabIndex = 15;
             this.quality_list.Tag = "quality";
             // 
@@ -68,9 +68,9 @@ namespace FriishProduce
             this.groupBox1.Controls.Add(this.save_data_enable);
             this.groupBox1.Controls.Add(this.vff_cache_size);
             this.groupBox1.Controls.Add(this.vff_cache_size_list);
-            this.groupBox1.Location = new System.Drawing.Point(12, 10);
+            this.groupBox1.Location = new System.Drawing.Point(12, 160);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(530, 94);
+            this.groupBox1.Size = new System.Drawing.Size(530, 70);
             this.groupBox1.TabIndex = 16;
             this.groupBox1.TabStop = false;
             this.groupBox1.Tag = "save_data";
@@ -79,7 +79,7 @@ namespace FriishProduce
             // vff_sync_on_write
             // 
             this.vff_sync_on_write.AutoSize = true;
-            this.vff_sync_on_write.Location = new System.Drawing.Point(10, 40);
+            this.vff_sync_on_write.Location = new System.Drawing.Point(10, 42);
             this.vff_sync_on_write.Name = "vff_sync_on_write";
             this.vff_sync_on_write.Size = new System.Drawing.Size(116, 17);
             this.vff_sync_on_write.TabIndex = 25;
@@ -90,7 +90,7 @@ namespace FriishProduce
             // save_data_enable
             // 
             this.save_data_enable.AutoSize = true;
-            this.save_data_enable.Location = new System.Drawing.Point(10, 19);
+            this.save_data_enable.Location = new System.Drawing.Point(10, 20);
             this.save_data_enable.Name = "save_data_enable";
             this.save_data_enable.Size = new System.Drawing.Size(115, 17);
             this.save_data_enable.TabIndex = 24;
@@ -102,7 +102,7 @@ namespace FriishProduce
             // vff_cache_size
             // 
             this.vff_cache_size.AutoSize = true;
-            this.vff_cache_size.Location = new System.Drawing.Point(91, 65);
+            this.vff_cache_size.Location = new System.Drawing.Point(321, 20);
             this.vff_cache_size.Name = "vff_cache_size";
             this.vff_cache_size.Size = new System.Drawing.Size(79, 13);
             this.vff_cache_size.TabIndex = 23;
@@ -128,7 +128,7 @@ namespace FriishProduce
             "2048",
             "4096",
             "8192"});
-            this.vff_cache_size_list.Location = new System.Drawing.Point(10, 62);
+            this.vff_cache_size_list.Location = new System.Drawing.Point(324, 37);
             this.vff_cache_size_list.Name = "vff_cache_size_list";
             this.vff_cache_size_list.Size = new System.Drawing.Size(75, 21);
             this.vff_cache_size_list.TabIndex = 22;
@@ -136,9 +136,9 @@ namespace FriishProduce
             // quality
             // 
             this.quality.Controls.Add(this.quality_list);
-            this.quality.Location = new System.Drawing.Point(282, 110);
+            this.quality.Location = new System.Drawing.Point(12, 12);
             this.quality.Name = "quality";
-            this.quality.Size = new System.Drawing.Size(260, 50);
+            this.quality.Size = new System.Drawing.Size(530, 50);
             this.quality.TabIndex = 17;
             this.quality.TabStop = false;
             this.quality.Tag = "quality";
@@ -146,11 +146,12 @@ namespace FriishProduce
             // 
             // controls
             // 
+            this.controls.Controls.Add(this.midi);
             this.controls.Controls.Add(this.qwerty_keyboard);
             this.controls.Controls.Add(this.mouse);
-            this.controls.Location = new System.Drawing.Point(12, 166);
+            this.controls.Location = new System.Drawing.Point(12, 68);
             this.controls.Name = "controls";
-            this.controls.Size = new System.Drawing.Size(530, 65);
+            this.controls.Size = new System.Drawing.Size(530, 86);
             this.controls.TabIndex = 18;
             this.controls.TabStop = false;
             this.controls.Tag = "controls";
@@ -181,9 +182,9 @@ namespace FriishProduce
             // strap_reminder
             // 
             this.strap_reminder.Controls.Add(this.strap_reminder_list);
-            this.strap_reminder.Location = new System.Drawing.Point(12, 110);
+            this.strap_reminder.Location = new System.Drawing.Point(12, 236);
             this.strap_reminder.Name = "strap_reminder";
-            this.strap_reminder.Size = new System.Drawing.Size(260, 50);
+            this.strap_reminder.Size = new System.Drawing.Size(530, 50);
             this.strap_reminder.TabIndex = 19;
             this.strap_reminder.TabStop = false;
             this.strap_reminder.Tag = "strap_reminder";
@@ -197,14 +198,14 @@ namespace FriishProduce
             "auto"});
             this.strap_reminder_list.Location = new System.Drawing.Point(10, 18);
             this.strap_reminder_list.Name = "strap_reminder_list";
-            this.strap_reminder_list.Size = new System.Drawing.Size(241, 21);
+            this.strap_reminder_list.Size = new System.Drawing.Size(510, 21);
             this.strap_reminder_list.TabIndex = 16;
             this.strap_reminder_list.Tag = "strap_reminder";
             // 
             // midi
             // 
             this.midi.AutoSize = true;
-            this.midi.Location = new System.Drawing.Point(12, 238);
+            this.midi.Location = new System.Drawing.Point(10, 61);
             this.midi.Name = "midi";
             this.midi.Size = new System.Drawing.Size(44, 17);
             this.midi.TabIndex = 15;
@@ -221,7 +222,6 @@ namespace FriishProduce
             // Options_Flash
             // 
             this.ClientSize = new System.Drawing.Size(554, 422);
-            this.Controls.Add(this.midi);
             this.Controls.Add(this.strap_reminder);
             this.Controls.Add(this.controls);
             this.Controls.Add(this.quality);
@@ -232,7 +232,6 @@ namespace FriishProduce
             this.Controls.SetChildIndex(this.quality, 0);
             this.Controls.SetChildIndex(this.controls, 0);
             this.Controls.SetChildIndex(this.strap_reminder, 0);
-            this.Controls.SetChildIndex(this.midi, 0);
             this.bottomPanel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -241,7 +240,6 @@ namespace FriishProduce
             this.controls.PerformLayout();
             this.strap_reminder.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

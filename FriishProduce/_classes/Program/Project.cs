@@ -24,6 +24,7 @@ namespace FriishProduce
         /// </summary>
         public int ForwarderStorageDevice { get; set; }
         public IDictionary<string, string> ContentOptions { get; set; }
+        public IDictionary<Buttons, string> Keymap { get; set; }
         public int WADRegion { get; set; }
         public (bool Enabled, int Index, int Region) BaseOnline { get; set; }
         public string BaseFile { get; set; }

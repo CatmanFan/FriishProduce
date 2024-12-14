@@ -82,7 +82,7 @@ namespace FriishProduce
             // 
             // mainPanel
             // 
-            this.mainPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(224)))), ((int)(((byte)(229)))));
+            this.mainPanel.BackColor = System.Drawing.SystemColors.Control;
             this.mainPanel.Controls.Add(this.Logo);
             resources.ApplyResources(this.mainPanel, "mainPanel");
             this.mainPanel.Name = "mainPanel";
@@ -90,7 +90,7 @@ namespace FriishProduce
             // Logo
             // 
             this.Logo.BackColor = System.Drawing.Color.Transparent;
-            this.Logo.Image = global::FriishProduce.Properties.Resources.icon_new;
+            this.Logo.Image = global::FriishProduce.Properties.Resources.logo;
             resources.ApplyResources(this.Logo, "Logo");
             this.Logo.Name = "Logo";
             this.Logo.TabStop = false;
@@ -358,14 +358,18 @@ namespace FriishProduce
             this.tabControl.BackHighColor = System.Drawing.SystemColors.ControlLight;
             this.tabControl.BackLowColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(this.tabControl, "tabControl");
+            this.tabControl.FontBoldOnSelect = false;
             this.tabControl.MenuRenderer = null;
             this.tabControl.Name = "tabControl";
-            this.tabControl.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.tabControl.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.Default;
-            this.tabControl.TabBorderEnhanced = true;
+            this.tabControl.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.tabControl.TabBackHighColor = System.Drawing.SystemColors.Control;
+            this.tabControl.TabBackHighColorDisabled = System.Drawing.Color.LightGray;
+            this.tabControl.TabBackLowColor = System.Drawing.SystemColors.Window;
+            this.tabControl.TabBackLowColorDisabled = System.Drawing.Color.Gainsboro;
             this.tabControl.TabCloseButtonImage = null;
             this.tabControl.TabCloseButtonImageDisabled = null;
             this.tabControl.TabCloseButtonImageHot = null;
+            this.tabControl.TabGlassGradient = true;
             this.tabControl.TabHeight = 25;
             this.tabControl.TopSeparator = false;
             // 
@@ -374,9 +378,9 @@ namespace FriishProduce
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.Controls.Add(this.tabControl);
-            this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.mainPanel);
+            this.Controls.Add(this.toolStrip);
+            this.Controls.Add(this.tabControl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MaximizeBox = false;
@@ -385,7 +389,9 @@ namespace FriishProduce
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Tag = "mainform";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_Closing);
+            this.Load += new System.EventHandler(this.MainForm_Loading);
             this.mainPanel.ResumeLayout(false);
+            this.mainPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).EndInit();
             this.toolStrip.ResumeLayout(false);
             this.toolStrip.PerformLayout();

@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Windows.Forms;
 
 namespace FriishProduce
 {
@@ -17,8 +16,8 @@ namespace FriishProduce
             this.platform = platform;
             bios = platform switch
             {
-                Platform.PSX => FriishProduce.Options.BIOS.Default.psx,
-                Platform.GBA => FriishProduce.Options.BIOS.Default.gba,
+                Platform.PSX => BIOSFILES.Default.psx,
+                Platform.GBA => BIOSFILES.Default.gba,
                 _ => null
             };
 
@@ -60,13 +59,13 @@ namespace FriishProduce
                     switch (platform)
                     {
                         case Platform.PSX:
-                            FriishProduce.Options.BIOS.Default.psx = null;
+                            FriishProduce.Options.BIOSFILES.Default.psx = null;
                             break;
                         case Platform.GBA:
-                            FriishProduce.Options.BIOS.Default.gba = null;
+                            FriishProduce.Options.BIOSFILES.Default.gba = null;
                             break;
                     }
-                    FriishProduce.Options.BIOS.Default.Save();
+                    FriishProduce.Options.BIOSFILES.Default.Save();
                     Options["show_bios_screen"] = Options["use_bios"] = false.ToString();
                 }
 

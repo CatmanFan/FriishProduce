@@ -47,10 +47,10 @@
                 {    
                     // Buttons used in the target console, as displayed on the form
                     // ************************************************************
-                    "▲",
-                    "◀",
-                    "▶",
-                    "▼",
+                    Program.Lang.String("up", "controller"),
+                    Program.Lang.String("left", "controller"),
+                    Program.Lang.String("right", "controller"),
+                    Program.Lang.String("down", "controller"),
                     "Backspace",
                     "Enter",
                     "Shift",

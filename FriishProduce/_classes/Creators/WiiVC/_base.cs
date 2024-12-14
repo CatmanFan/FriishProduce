@@ -13,6 +13,7 @@ namespace FriishProduce
         protected WAD WAD { get; set; }
         public int EmuType { get; set; }
         public IDictionary<string, string> Settings { get; set; }
+        public IDictionary<Buttons, string> Keymap { get; set; }
         protected Encoding SaveTextEncoding { get; set; }
 
         protected ROM ROM { get; set; }
@@ -365,6 +366,7 @@ namespace FriishProduce
             Load();
             ReplaceROM();
             ReplaceSaveData(SaveDataTitle, Img);
+            ModifyKeymap();
             ModifyEmulatorSettings();
             return Write();
         }
@@ -372,6 +374,8 @@ namespace FriishProduce
         protected abstract void ReplaceROM();
 
         protected abstract void ReplaceSaveData(string[] lines, ImageHelper Img);
+
+        protected virtual void ModifyKeymap() { }
 
         protected abstract void ModifyEmulatorSettings();
 

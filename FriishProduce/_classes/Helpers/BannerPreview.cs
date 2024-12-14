@@ -62,6 +62,8 @@ namespace FriishProduce
         {
             get
             {
+                // return FontFamily.GenericSansSerif;
+
                 if (_font == null)
                 {
                     using var fonts = new PrivateFontCollection();
@@ -95,6 +97,10 @@ namespace FriishProduce
             iconData.target = null;
         }
 
+        private double scaleFactor = 540.0 / 650.0;
+        private int scale(int input) => (int)Math.Round(input * scaleFactor);
+        private double scale(double input) => input * scaleFactor;
+
         /// <summary>
         /// Creates a banner preview bitmap using VCPic.
         /// </summary>
@@ -108,7 +114,7 @@ namespace FriishProduce
         public Bitmap Banner(Bitmap img, string text, int year, int players, Platform platform, int lang)
         {
             if (banner != null) banner.Dispose();
-            banner = new Bitmap(650, 260);
+            banner = new Bitmap(scale(650), scale(260));
 
             if (img == null)
             {
@@ -267,8 +273,8 @@ namespace FriishProduce
 
             using (Graphics g = Graphics.FromImage(banner))
             {
-                g.CompositingQuality = CompositingQuality.AssumeLinear;
-                g.SmoothingMode = SmoothingMode.HighQuality;
+                g.CompositingQuality = CompositingQuality.HighSpeed;
+                g.SmoothingMode = SmoothingMode.AntiAlias;
                 g.TextRenderingHint = TextRenderingHint.AntiAlias;
 
                 g.Clear(BannerSchemes.GetColor(target, 0));
@@ -309,9 +315,9 @@ namespace FriishProduce
 
                 if (bannerLogo != null)
                 {
-                    double startingPointY = -30;
-                    double maxHeight = bannerLogo.Height / 3;
-                    (double width, double height) = (bannerLogo.Width / 1.5, bannerLogo.Height / 1.5);
+                    double startingPointY = scale(-30);
+                    double maxHeight = scale(bannerLogo.Height / 3);
+                    (double width, double height) = (scale(bannerLogo.Width / 1.5), scale(bannerLogo.Height / 1.5));
 
                     for (double y = startingPointY; y < banner.Height / 2; y += maxHeight * 2)
                         for (double x = 0; x < banner.Width; x += width)
@@ -324,17 +330,17 @@ namespace FriishProduce
                 #endregion
 
                 #region -- Bottom gradient --
-                using (LinearGradientBrush b1 = new(new Point(0, 130), new Point(0, (int)Math.Round(banner.Height * 0.9)), BannerSchemes.GetColor(target, 0), BannerSchemes.GetColor(target, 2)))
-                using (LinearGradientBrush b2 = new(new Point(0, 50), new Point(0, (int)Math.Round(banner.Height * 1.25)), BannerSchemes.GetColor(target, 0), BannerSchemes.GetColor(target, 2)))
+                using (LinearGradientBrush b1 = new(new Point(0, scale(130)), new Point(0, (int)Math.Round(banner.Height * 0.9)), BannerSchemes.GetColor(target, 0), BannerSchemes.GetColor(target, 2)))
+                using (LinearGradientBrush b2 = new(new Point(0, scale(50)), new Point(0, (int)Math.Round(banner.Height * 1.25)), BannerSchemes.GetColor(target, 0), BannerSchemes.GetColor(target, 2)))
                 {
-                    g.FillRectangle(b1, -5, (banner.Height / 2) + 10, banner.Width + 10, 40);
-                    g.FillRectangle(b2, -5, (banner.Height / 2) + 49, banner.Width + 10, banner.Height);
+                    g.FillRectangle(b1, -5, (banner.Height / 2) + scale(10), banner.Width + 10, scale(40));
+                    g.FillRectangle(b2, -5, (banner.Height / 2) + scale(49) - 1, banner.Width + 10, banner.Height);
                 }
                 #endregion
 
                 #region -- Draw center and left text --
-                using (var titleFont = new Font(font, 15))
-                using (var leftFont = new Font(font, (float)9.25))
+                using (var titleFont = new Font(font, scale(15)))
+                using (var leftFont = new Font(font, (float)scale(9.25)))
                 using (var titleColor = new SolidBrush(BannerSchemes.GetColor(target, 7)))
                 using (var leftColor = new SolidBrush(leftTextColor))
                 {
@@ -346,7 +352,7 @@ namespace FriishProduce
                         titleFont,
                         titleColor,
                         banner.Width / 2,
-                        210,
+                        scale(210),
                         new StringFormat() { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center }
                     );
 
@@ -357,8 +363,8 @@ namespace FriishProduce
                         string.Format(released, year),
                         leftFont,
                         leftColor,
-                        10,
-                        45,
+                        scale(10),
+                        scale(45),
                         new StringFormat() { Alignment = StringAlignment.Near, LineAlignment = StringAlignment.Far }
                     );
 
@@ -369,56 +375,56 @@ namespace FriishProduce
                         string.Format(numPlayers, $"{1}{(players <= 1 ? null : "-" + players)}").Replace("-", lang == 1 ? "～" : "-"),
                         leftFont,
                         leftColor,
-                        10,
-                        87,
+                        scale(10),
+                        scale(87),
                         new StringFormat() { Alignment = StringAlignment.Near, LineAlignment = StringAlignment.Far }
                     );
                 }
                 #endregion
 
                 #region -- Gradient lines --
-                using (LinearGradientBrush c = new(new Point(0, 0), new Point(125, 0), BannerSchemes.GetColor(target, 3), BannerSchemes.GetColor(target, 0)))
+                using (LinearGradientBrush c = new(new Point(0, 0), new Point(scale(125), 0), BannerSchemes.GetColor(target, 3), BannerSchemes.GetColor(target, 0)))
                 {
-                    g.FillRectangle(c, -1, 45, 125, 2);
-                    g.FillRectangle(c, -1, 87, 125, 2);
+                    g.FillRectangle(c, -1, scale(45), scale(125), 2);
+                    g.FillRectangle(c, -1, scale(87), scale(125), 2);
                 }
                 #endregion
 
                 #region -- Image --
-                double[] point = new double[] { (banner.Width / 2) - Math.Round((img.Width * 0.72) / 2), 40 };
-                double[] size = new double[] { Math.Round(img.Width * 0.72), Math.Round(img.Height * 0.72) };
+                double[] point = new double[] { banner.Width / 2 - scale((img.Width * 0.72) / 2), scale(40) };
+                double[] size = new double[] { scale(img.Width * 0.72), scale(img.Height * 0.72) };
 
                 using (Bitmap border = new(256, 192))
                 {
                     using (Graphics gBorder = Graphics.FromImage(border))
                         gBorder.Clear(Color.Black);
 
-                    g.DrawImage(RoundCorners(border, 9), (int)point[0] - 1, (int)point[1] - 1, (int)size[0] + 2, (int)size[1] + 2);
+                    g.DrawImage(RoundCorners(border, 13), (int)point[0] - 1, (int)point[1] - 1, (int)size[0] + 2, (int)size[1] + 3);
                 }
 
-                g.DrawImage(RoundCorners(img, 8), (int)point[0], (int)point[1], (int)size[0], (int)size[1]);
+                g.DrawImage(RoundCorners(img, 11), (int)point[0], (int)point[1], (float)size[0], (float)size[1]);
                 #endregion
 
                 #region -- Top header --
-                using (var f = new Font(font, 9))
+                using (var f = new Font(font, scale(9)))
                 using (var p = new GraphicsPath())
                 {
                     // Draw border
                     // ********
                     p.AddLine(-5, -5, -5, 5);
-                    p.AddLine(-5, 5, banner.Width, 5);
-                    p.AddLine(banner.Width - TextRenderer.MeasureText(platformName, f).Width - 58, 5,
-                              banner.Width - TextRenderer.MeasureText(platformName, f).Width - 50, 7);
-                    p.AddLine(banner.Width - TextRenderer.MeasureText(platformName, f).Width - 50, 7,
-                              banner.Width - TextRenderer.MeasureText(platformName, f).Width - 46, 9);
-                    p.AddLine(banner.Width - TextRenderer.MeasureText(platformName, f).Width - 46, 9,
-                              banner.Width - TextRenderer.MeasureText(platformName, f).Width - 26, 28);
-                    p.AddLine(banner.Width - TextRenderer.MeasureText(platformName, f).Width - 26, 28,
-                              banner.Width - TextRenderer.MeasureText(platformName, f).Width - 22, 30);
-                    p.AddLine(banner.Width - TextRenderer.MeasureText(platformName, f).Width - 22, 30,
-                              banner.Width - TextRenderer.MeasureText(platformName, f).Width - 14, 32);
-                    p.AddLine(banner.Width - TextRenderer.MeasureText(platformName, f).Width - 14, 32, banner.Width + 5, 32);
-                    p.AddLine(banner.Width + 5, 32, banner.Width + 5, -5);
+                    p.AddLine(-5, scale(5), banner.Width, scale(5));
+                    p.AddLine(banner.Width - TextRenderer.MeasureText(platformName, f).Width - scale(58), scale(5),
+                              banner.Width - TextRenderer.MeasureText(platformName, f).Width - scale(51), scale(7));
+                    p.AddLine(banner.Width - TextRenderer.MeasureText(platformName, f).Width - scale(51), scale(7),
+                              banner.Width - TextRenderer.MeasureText(platformName, f).Width - scale(46), scale(10));
+                    p.AddLine(banner.Width - TextRenderer.MeasureText(platformName, f).Width - scale(46), scale(10),
+                              banner.Width - TextRenderer.MeasureText(platformName, f).Width - scale(26), scale(28));
+                    p.AddLine(banner.Width - TextRenderer.MeasureText(platformName, f).Width - scale(26), scale(28),
+                              banner.Width - TextRenderer.MeasureText(platformName, f).Width - scale(22), scale(30));
+                    p.AddLine(banner.Width - TextRenderer.MeasureText(platformName, f).Width - scale(22), scale(30),
+                              banner.Width - TextRenderer.MeasureText(platformName, f).Width - scale(14), scale(32));
+                    p.AddLine(banner.Width - TextRenderer.MeasureText(platformName, f).Width - scale(14), scale(32), banner.Width + 5, scale(32));
+                    p.AddLine(banner.Width + 5, scale(32), banner.Width + 5, -5);
 
                     // Draw text and colours
                     // ********
@@ -432,8 +438,8 @@ namespace FriishProduce
                             platformName,
                             f,
                             textBrush,
-                            banner.Width - 10,
-                            24,
+                            banner.Width - scale(10),
+                            scale(24),
                             new StringFormat() { Alignment = StringAlignment.Far, LineAlignment = StringAlignment.Center }
                         );
                 }

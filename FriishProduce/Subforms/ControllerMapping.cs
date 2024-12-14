@@ -85,15 +85,15 @@ namespace FriishProduce
                     c.SelectedIndex = 0;
                 }
 
+                Mapping = new Dictionary<Buttons, string>();
+                foreach (Buttons orig in available.Wii) Mapping.Add(orig, "");
+                OldMapping = new Dictionary<Buttons, string>(Mapping);
+
                 foreach (Buttons orig in Mapping.Keys.ToList())
                 {
                     ComboBox target = Controls.Find(orig.ToString(), true).OfType<ComboBox>().FirstOrDefault();
                     if (target != null) target.Enabled = true;
                 }
-
-                Mapping = new Dictionary<Buttons, string>();
-                foreach (Buttons orig in available.Wii) Mapping.Add(orig, "");
-                OldMapping = new Dictionary<Buttons, string>(Mapping);
             }
             else
             {
@@ -102,8 +102,14 @@ namespace FriishProduce
                     int index = string.IsNullOrWhiteSpace(Mapping[orig]) ? 0 : Array.IndexOf(available.Local_Formatted, Mapping[orig]) + 1;
 
                     ComboBox target = Controls.Find(orig.ToString(), true).OfType<ComboBox>().FirstOrDefault();
-                    if (target != null) target.SelectedIndex = index;
+                    if (target != null)
+                    {
+                        target.Enabled = true;
+                        target.SelectedIndex = index;
+                    }
                 }
+
+                if (OldMapping == null) OldMapping = new Dictionary<Buttons, string>(Mapping);
             }
 
             if (!UsesGC && tabControl1.TabPages.Contains(page3)) tabControl1.TabPages.Remove(page3);
@@ -111,50 +117,6 @@ namespace FriishProduce
         }
 
         // ---------------------------------------------------------------------------------------------------------------
-
-        public enum Buttons
-        {
-            WiiRemote_Up,
-            WiiRemote_Left,
-            WiiRemote_Right,
-            WiiRemote_Down,
-            WiiRemote_A,
-            WiiRemote_B,
-            WiiRemote_1,
-            WiiRemote_2,
-            WiiRemote_Plus,
-            WiiRemote_Minus,
-            WiiRemote_Home,
-            Nunchuck_Z,
-            Nunchuck_C,
-            Classic_Up,
-            Classic_Left,
-            Classic_Right,
-            Classic_Down,
-            Classic_A,
-            Classic_B,
-            Classic_X,
-            Classic_Y,
-            Classic_L,
-            Classic_R,
-            Classic_ZL,
-            Classic_ZR,
-            Classic_Plus,
-            Classic_Minus,
-            Classic_Home,
-            GC_Up,
-            GC_Left,
-            GC_Right,
-            GC_Down,
-            GC_A,
-            GC_B,
-            GC_X,
-            GC_Y,
-            GC_L,
-            GC_R,
-            GC_Z,
-            GC_Start
-        };
 
         protected struct Available
         {
@@ -164,7 +126,7 @@ namespace FriishProduce
         }
 
         public IDictionary<Buttons, string> Mapping;
-        public IDictionary<Buttons, string> OldMapping;
+        protected IDictionary<Buttons, string> OldMapping;
 
         protected bool UsesGC { get; set; }
         protected bool UsesNunchuk { get; set; }

@@ -51,8 +51,10 @@ namespace FriishProduce
 
             // Controller options availability
             // *******
-            if (EmuType >= 2 && Controller == null) Controller = new Controller_SEGA();
-            else if (EmuType < 2 && Controller != null) Controller = null;
+            if (EmuType >= 2 && controllerForm == null)
+                controllerForm = new Controller_SEGA();
+            else if (EmuType < 2 && controllerForm != null)
+                controllerForm = null;
 
             // Form control
             // *******

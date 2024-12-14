@@ -85,7 +85,7 @@ namespace FriishProduce
             // logoPictureBox
             // 
             this.logoPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.logoPictureBox.Image = global::FriishProduce.Properties.Resources.icon_new;
+            this.logoPictureBox.Image = global::FriishProduce.Properties.Resources.logo;
             this.logoPictureBox.Location = new System.Drawing.Point(471, 3);
             this.logoPictureBox.Name = "logoPictureBox";
             this.tableLayoutPanel.SetRowSpan(this.logoPictureBox, 4);

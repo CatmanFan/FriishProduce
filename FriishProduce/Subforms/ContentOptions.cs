@@ -1,4 +1,4 @@
-﻿using FriishProduce.Options;
+﻿using FriishProduce.Properties;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -22,13 +22,9 @@ namespace FriishProduce
             // *******
             if (!DesignMode)
             {
-                // Remove this code when creating a new copy
-                // *****************************************
-                   b_ok.Click += OK_Click;
-                   b_cancel.Click += Cancel_Click;
-                   Load += Form_Load;
-                // *****************************************
+                // Code logic in derived Form
             }
+            // *******
         }
 
         // ---------------------------------------------------------------------------------------------------------------
@@ -70,7 +66,19 @@ namespace FriishProduce
         // ---------------------------------------------------------------------------------------------------------------
 
         public IDictionary<string, string> Options { get; set; }
-        public ControllerMapping Controller { get; set; }
+        public IDictionary<Buttons, string> Keymap
+        {
+            get
+            {
+                if (controllerForm != null) return controllerForm.Mapping;
+                else return null;
+            }
+            set
+            {
+                if (controllerForm != null) controllerForm.Mapping = value;
+            }
+        }
+        protected ControllerMapping controllerForm { get; set; }
         public int EmuType { get; set; }
 
         protected void OK_Click(object sender, EventArgs e)
@@ -87,7 +95,7 @@ namespace FriishProduce
         {
             if (DesignMode) return;
 
-            controller_mapping.Visible = controller_mapping.Enabled = Controller != null;
+            controller_mapping.Visible = controller_mapping.Enabled = controllerForm != null;
             ResetOptions();
             CenterToParent();
         }
@@ -98,7 +106,7 @@ namespace FriishProduce
 
             // Code logic in derived Form
             // ********
-            Controller.ShowDialog();
+            controllerForm.ShowDialog();
         }
     }
 }

@@ -63,15 +63,13 @@ namespace FriishProduce
             this.injection_methods = new System.Windows.Forms.ComboBox();
             this.injection_method_options = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.wad_filename = new System.Windows.Forms.TextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.use_offline_wad = new System.Windows.Forms.RadioButton();
             this.baseID = new System.Windows.Forms.Label();
-            this.title_id = new System.Windows.Forms.Label();
             this.Base = new System.Windows.Forms.ComboBox();
             this.BaseRegion = new System.Windows.Forms.PictureBox();
             this.baseName = new System.Windows.Forms.Label();
-            this.base_name = new System.Windows.Forms.Label();
+            this.current_base = new System.Windows.Forms.Label();
             this.use_online_wad = new System.Windows.Forms.RadioButton();
             this.checkImg3 = new System.Windows.Forms.PictureBox();
             this.import_wad = new System.Windows.Forms.Button();
@@ -345,18 +343,12 @@ namespace FriishProduce
             this.groupBox3.Controls.Add(this.injection_method_options);
             this.groupBox3.Controls.Add(this.injection_methods);
             this.groupBox3.Controls.Add(this.manual_type);
-            this.groupBox3.Controls.Add(this.extra);
             this.groupBox3.Controls.Add(this.forwarder_root_device);
+            this.groupBox3.Controls.Add(this.extra);
             resources.ApplyResources(this.groupBox3, "groupBox3");
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.TabStop = false;
             this.groupBox3.Tag = "injection_method";
-            // 
-            // wad_filename
-            // 
-            resources.ApplyResources(this.wad_filename, "wad_filename");
-            this.wad_filename.Name = "wad_filename";
-            this.wad_filename.ReadOnly = true;
             // 
             // pictureBox2
             // 
@@ -379,17 +371,11 @@ namespace FriishProduce
             this.baseID.Name = "baseID";
             this.baseID.UseMnemonic = false;
             // 
-            // title_id
-            // 
-            resources.ApplyResources(this.title_id, "title_id");
-            this.title_id.Name = "title_id";
-            this.title_id.Tag = "title_id";
-            this.title_id.UseMnemonic = false;
-            // 
             // Base
             // 
             this.Base.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.Base.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.Base.BackColor = System.Drawing.SystemColors.Control;
             this.Base.DropDownHeight = 150;
             this.Base.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(this.Base, "Base");
@@ -400,7 +386,6 @@ namespace FriishProduce
             // BaseRegion
             // 
             this.BaseRegion.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.BaseRegion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.BaseRegion.ContextMenuStrip = this.baseRegionList;
             resources.ApplyResources(this.BaseRegion, "BaseRegion");
             this.BaseRegion.Name = "BaseRegion";
@@ -413,12 +398,12 @@ namespace FriishProduce
             this.baseName.Name = "baseName";
             this.baseName.UseMnemonic = false;
             // 
-            // base_name
+            // current_base
             // 
-            resources.ApplyResources(this.base_name, "base_name");
-            this.base_name.Name = "base_name";
-            this.base_name.Tag = "base_name";
-            this.base_name.UseMnemonic = false;
+            resources.ApplyResources(this.current_base, "current_base");
+            this.current_base.Name = "current_base";
+            this.current_base.Tag = "current_base";
+            this.current_base.UseMnemonic = false;
             // 
             // use_online_wad
             // 
@@ -447,15 +432,13 @@ namespace FriishProduce
             this.groupBox2.Controls.Add(this.import_wad);
             this.groupBox2.Controls.Add(this.checkImg3);
             this.groupBox2.Controls.Add(this.use_online_wad);
-            this.groupBox2.Controls.Add(this.base_name);
-            this.groupBox2.Controls.Add(this.baseName);
             this.groupBox2.Controls.Add(this.BaseRegion);
             this.groupBox2.Controls.Add(this.Base);
-            this.groupBox2.Controls.Add(this.title_id);
-            this.groupBox2.Controls.Add(this.baseID);
             this.groupBox2.Controls.Add(this.use_offline_wad);
             this.groupBox2.Controls.Add(this.pictureBox2);
-            this.groupBox2.Controls.Add(this.wad_filename);
+            this.groupBox2.Controls.Add(this.baseID);
+            this.groupBox2.Controls.Add(this.current_base);
+            this.groupBox2.Controls.Add(this.baseName);
             resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
@@ -625,15 +608,13 @@ namespace FriishProduce
         private System.Windows.Forms.ComboBox injection_methods;
         private System.Windows.Forms.Button injection_method_options;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox wad_filename;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.RadioButton use_offline_wad;
         private System.Windows.Forms.Label baseID;
-        private System.Windows.Forms.Label title_id;
         private System.Windows.Forms.ComboBox Base;
         private System.Windows.Forms.PictureBox BaseRegion;
         private System.Windows.Forms.Label baseName;
-        private System.Windows.Forms.Label base_name;
+        private System.Windows.Forms.Label current_base;
         private System.Windows.Forms.RadioButton use_online_wad;
         private System.Windows.Forms.PictureBox checkImg3;
         private System.Windows.Forms.Button import_wad;

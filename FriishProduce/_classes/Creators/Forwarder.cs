@@ -183,8 +183,8 @@ namespace FriishProduce
                         foreach (var item in validList)
                         {
                             string source = item.Platform switch {
-                                Platform.PSX => Options.BIOS.Default.psx,
-                                Platform.GBA => Options.BIOS.Default.gba,
+                                Platform.PSX => Options.BIOSFILES.Default.psx,
+                                Platform.GBA => Options.BIOSFILES.Default.gba,
                                 _ => null
                             };
 

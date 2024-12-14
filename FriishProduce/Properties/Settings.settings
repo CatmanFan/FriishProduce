@@ -8,7 +8,7 @@
     <Setting Name="image_interpolation" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">2</Value>
     </Setting>
-    <Setting Name="auto_retrieve_game_data" Type="System.Boolean" Scope="User">
+    <Setting Name="auto_game_scan" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="donotshow_000" Type="System.Boolean" Scope="User">
