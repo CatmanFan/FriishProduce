@@ -33,7 +33,7 @@ namespace FriishProduce
             this.bottomPanel1 = new System.Windows.Forms.Panel();
             this.b_cancel = new System.Windows.Forms.Button();
             this.b_ok = new System.Windows.Forms.Button();
-            this.controller_mapping = new System.Windows.Forms.Button();
+            this.b_controller = new System.Windows.Forms.Button();
             this.bottomPanel2 = new System.Windows.Forms.Panel();
             this.bottomPanel1.SuspendLayout();
             this.bottomPanel2.SuspendLayout();
@@ -44,7 +44,7 @@ namespace FriishProduce
             this.bottomPanel1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.bottomPanel1.Controls.Add(this.b_cancel);
             this.bottomPanel1.Controls.Add(this.b_ok);
-            this.bottomPanel1.Controls.Add(this.controller_mapping);
+            this.bottomPanel1.Controls.Add(this.b_controller);
             resources.ApplyResources(this.bottomPanel1, "bottomPanel1");
             this.bottomPanel1.Name = "bottomPanel1";
             // 
@@ -55,7 +55,6 @@ namespace FriishProduce
             this.b_cancel.Name = "b_cancel";
             this.b_cancel.Tag = "b_cancel";
             this.b_cancel.UseVisualStyleBackColor = true;
-            this.b_cancel.Click += new System.EventHandler(this.Cancel_Click);
             // 
             // b_ok
             // 
@@ -63,16 +62,14 @@ namespace FriishProduce
             this.b_ok.Name = "b_ok";
             this.b_ok.Tag = "b_ok";
             this.b_ok.UseVisualStyleBackColor = true;
-            this.b_ok.Click += new System.EventHandler(this.OK_Click);
             // 
-            // controller_mapping
+            // b_controller
             // 
-            resources.ApplyResources(this.controller_mapping, "controller_mapping");
-            this.controller_mapping.Image = global::FriishProduce.Properties.Resources.controller;
-            this.controller_mapping.Name = "controller_mapping";
-            this.controller_mapping.Tag = "controller_mapping";
-            this.controller_mapping.UseVisualStyleBackColor = true;
-            this.controller_mapping.Click += new System.EventHandler(this.OpenControllerMapping);
+            resources.ApplyResources(this.b_controller, "b_controller");
+            this.b_controller.Image = global::FriishProduce.Properties.Resources.controller;
+            this.b_controller.Name = "b_controller";
+            this.b_controller.Tag = "controller_mapping";
+            this.b_controller.UseVisualStyleBackColor = true;
             // 
             // bottomPanel2
             // 
@@ -98,7 +95,6 @@ namespace FriishProduce
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.Load += new System.EventHandler(this.Form_Load);
             this.bottomPanel1.ResumeLayout(false);
             this.bottomPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -109,7 +105,7 @@ namespace FriishProduce
         protected System.Windows.Forms.Button b_cancel;
         protected System.Windows.Forms.Button b_ok;
         protected System.Windows.Forms.Panel bottomPanel1;
-        protected System.Windows.Forms.Button controller_mapping;
+        protected System.Windows.Forms.Button b_controller;
         private System.Windows.Forms.Panel bottomPanel2;
     }
 }

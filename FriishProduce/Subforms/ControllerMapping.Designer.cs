@@ -36,6 +36,7 @@ namespace FriishProduce
             this.b_ok = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.page1 = new System.Windows.Forms.TabPage();
+            this.vertical_layout = new System.Windows.Forms.CheckBox();
             this.WiiRemote_Minus = new System.Windows.Forms.ComboBox();
             this.WiiRemote_Plus = new System.Windows.Forms.ComboBox();
             this.WiiRemote_B = new System.Windows.Forms.ComboBox();
@@ -78,7 +79,6 @@ namespace FriishProduce
             this.GC_Up = new System.Windows.Forms.ComboBox();
             this.GC_L = new System.Windows.Forms.ComboBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.vertical_layout = new System.Windows.Forms.CheckBox();
             this.bottomPanel2.SuspendLayout();
             this.bottomPanel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -149,6 +149,13 @@ namespace FriishProduce
             this.page1.Name = "page1";
             this.page1.Tag = "page1";
             this.page1.UseVisualStyleBackColor = true;
+            // 
+            // vertical_layout
+            // 
+            resources.ApplyResources(this.vertical_layout, "vertical_layout");
+            this.vertical_layout.Name = "vertical_layout";
+            this.vertical_layout.Tag = "vertical_layout";
+            this.vertical_layout.UseVisualStyleBackColor = true;
             // 
             // WiiRemote_Minus
             // 
@@ -472,13 +479,6 @@ namespace FriishProduce
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.TabStop = false;
             // 
-            // vertical_layout
-            // 
-            resources.ApplyResources(this.vertical_layout, "vertical_layout");
-            this.vertical_layout.Name = "vertical_layout";
-            this.vertical_layout.Tag = "vertical_layout";
-            this.vertical_layout.UseVisualStyleBackColor = true;
-            // 
             // ControllerMapping
             // 
             this.AcceptButton = this.b_ok;
@@ -497,7 +497,6 @@ namespace FriishProduce
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Tag = "controller";
-            this.Load += new System.EventHandler(this.Form_Load);
             this.bottomPanel2.ResumeLayout(false);
             this.bottomPanel1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);

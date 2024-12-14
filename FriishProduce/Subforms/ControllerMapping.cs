@@ -16,17 +16,17 @@ namespace FriishProduce
         {
             InitializeComponent();
 
-            // Remove this code when creating a new copy
-            // *****************************************
+            // Cosmetic
+            // *******
             if (!DesignMode)
             {
-                // Cosmetic
-                // ---------------
+                // Remove this code when creating a new copy
+                // *****************************************
                 b_ok.Click += OK_Click;
                 b_cancel.Click += Cancel_Click;
                 Load += Form_Load;
+                // *****************************************
             }
-            // *****************************************
         }
 
         protected void OK_Click(object sender, EventArgs e)

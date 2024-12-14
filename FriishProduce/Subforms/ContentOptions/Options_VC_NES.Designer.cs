@@ -52,7 +52,7 @@ namespace FriishProduce
             // 
             // controller_mapping
             // 
-            this.controller_mapping.Location = new System.Drawing.Point(-264, 7);
+            this.b_controller.Location = new System.Drawing.Point(-264, 7);
             // 
             // palette
             // 

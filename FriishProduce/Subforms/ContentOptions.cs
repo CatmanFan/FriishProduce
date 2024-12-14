@@ -22,9 +22,14 @@ namespace FriishProduce
             // *******
             if (!DesignMode)
             {
-                // Code logic in derived Form
+                // Remove this code when creating a new copy
+                // *****************************************
+                b_ok.Click += OK_Click;
+                b_cancel.Click += Cancel_Click;
+                b_controller.Click += OpenControllerMapping;
+                Load += Form_Load;
+                // *****************************************
             }
-            // *******
         }
 
         // ---------------------------------------------------------------------------------------------------------------
@@ -83,19 +88,24 @@ namespace FriishProduce
 
         protected void OK_Click(object sender, EventArgs e)
         {
+            if (DesignMode) return;
 
+            SaveOptions();
+            DialogResult = DialogResult.OK;
         }
 
         protected void Cancel_Click(object sender, EventArgs e)
         {
+            if (DesignMode) return;
 
+            DialogResult = DialogResult.Cancel;
         }
 
         protected void Form_Load(object sender, EventArgs e)
         {
             if (DesignMode) return;
 
-            controller_mapping.Visible = controller_mapping.Enabled = controllerForm != null;
+            b_controller.Visible = b_controller.Enabled = controllerForm != null;
             ResetOptions();
             CenterToParent();
         }
