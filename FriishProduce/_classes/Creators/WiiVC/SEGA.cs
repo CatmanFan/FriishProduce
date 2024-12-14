@@ -242,6 +242,70 @@ namespace FriishProduce.Injectors
                             break;
                     }
 
+                    if (Keymap != null)
+                    {
+                        bool notAdded = false;
+
+                        try
+                        {
+                            Settings.Add("console.core_bindings",
+                                $"up={Keymap[Buttons.WiiRemote_Right]}:"
+                                + $"down={Keymap[Buttons.WiiRemote_Left]}:"
+                                + $"left={Keymap[Buttons.WiiRemote_Up]}:"
+                                + $"right={Keymap[Buttons.WiiRemote_Down]}:"
+                                + $"+={Keymap[Buttons.WiiRemote_Plus]}:"
+                                + $"a={Keymap[Buttons.WiiRemote_A]}:"
+                                + $"1={Keymap[Buttons.WiiRemote_1]}:"
+                                + $"2={Keymap[Buttons.WiiRemote_2]}:"
+                                + $"b={Keymap[Buttons.WiiRemote_B]}:");
+                        }
+                        catch { notAdded = true; }
+
+                        try
+                        {
+                            Settings.Add("console.cl_bindings",
+                                $"up={Keymap[Buttons.Classic_Up]}:"
+                                + $"down={Keymap[Buttons.Classic_Down]}:"
+                                + $"left={Keymap[Buttons.Classic_Left]}:"
+                                + $"right={Keymap[Buttons.Classic_Right]}:"
+                                + $"+={Keymap[Buttons.Classic_Plus]}:"
+                                + $"y={Keymap[Buttons.Classic_Y]}:"
+                                + $"b={Keymap[Buttons.Classic_B]}:"
+                                + $"a={Keymap[Buttons.Classic_A]}:"
+                                + $"l={Keymap[Buttons.Classic_L]}:"
+                                + $"x={Keymap[Buttons.Classic_X]}:"
+                                + $"r={Keymap[Buttons.Classic_R]}:"
+                                + $"zr={Keymap[Buttons.Classic_ZR]}:"
+                                + $"zl={Keymap[Buttons.Classic_ZL]}");
+                        }
+                        catch { notAdded = true; }
+
+                        try
+                        {
+                            Settings.Add("console.gc_bindings",
+                                $"up={Keymap[Buttons.GC_Up]}:"
+                                + $"down={Keymap[Buttons.GC_Down]}:"
+                                + $"left={Keymap[Buttons.GC_Left]}:"
+                                + $"right={Keymap[Buttons.GC_Right]}:"
+                                + $"start={Keymap[Buttons.GC_Start]}:"
+                                + $"b={Keymap[Buttons.GC_B]}:"
+                                + $"a={Keymap[Buttons.GC_A]}:"
+                                + $"x={Keymap[Buttons.GC_X]}:"
+                                + $"l={Keymap[Buttons.GC_L]}:"
+                                + $"y={Keymap[Buttons.GC_Y]}:"
+                                + $"r={Keymap[Buttons.GC_R]}:"
+                                + $"z={Keymap[Buttons.GC_Z]}:"
+                                + "c=");
+                                // $"c={Keymap[Buttons.GC_C]}:"
+                        }
+                        catch { notAdded = true; }
+
+                        if (notAdded)
+                        {
+                            // There should be an error message here
+                        }
+                    }
+
                     // newConfig is the new file which includes the modified values
                     // alreadyAdded exists to avoid duplicate entries being added to the above
                     // ****************
@@ -267,7 +331,8 @@ namespace FriishProduce.Injectors
                             }
 
                     foreach (var line in configFile)
-                        foreach (var name in new string[]
+                    {
+                        var undeleted = new List<string>()
                         {
                             // Settings that should NOT be changed:
                             "console.machine_arch",
@@ -287,8 +352,18 @@ namespace FriishProduce.Injectors
                             "smsui.has_opll",
                             "vdp.disable_gamma",
                             "vdp_md.gamma_curve"
-                        })
+                        };
+
+                        if (Keymap != null)
+                        {
+                            if (Settings.ContainsKey("console.cl_bindings"))    undeleted.Remove("console.cl_bindings");
+                            if (Settings.ContainsKey("console.core_bindings"))  undeleted.Remove("console.core_bindings");
+                            if (Settings.ContainsKey("console.gc_bindings"))    undeleted.Remove("console.gc_bindings");
+                        }
+
+                        foreach (var name in undeleted)
                             if (line.StartsWith(name)) { newConfig.Add(line); alreadyAdded.Add(line); }
+                    }
 
                     foreach (var newLine in Settings)
                     {

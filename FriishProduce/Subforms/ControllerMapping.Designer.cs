@@ -113,6 +113,7 @@ namespace FriishProduce
             this.b_cancel.Name = "b_cancel";
             this.b_cancel.Tag = "b_cancel";
             this.b_cancel.UseVisualStyleBackColor = true;
+            this.b_cancel.Click += new System.EventHandler(this.Cancel_Click);
             // 
             // b_ok
             // 
@@ -120,6 +121,7 @@ namespace FriishProduce
             this.b_ok.Name = "b_ok";
             this.b_ok.Tag = "b_ok";
             this.b_ok.UseVisualStyleBackColor = true;
+            this.b_ok.Click += new System.EventHandler(this.OK_Click);
             // 
             // tabControl1
             // 
@@ -497,6 +499,7 @@ namespace FriishProduce
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Tag = "controller";
+            this.Load += new System.EventHandler(this.Form_Load);
             this.bottomPanel2.ResumeLayout(false);
             this.bottomPanel1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);

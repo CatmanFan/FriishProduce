@@ -196,7 +196,7 @@ namespace FriishProduce.Injectors
                 else if (item.ToLower() == "keymap.ini" && Keymap?.Count > 0)
                 {
                     var file = new List<string>()
-                    {
+                    /* {
                         "KEY_BUTTON_LEFT  KEY_LEFT",
                         "KEY_BUTTON_RIGHT KEY_RIGHT",
                         "KEY_BUTTON_DOWN  KEY_DOWN",
@@ -207,11 +207,47 @@ namespace FriishProduce.Injectors
                         "KEY_BUTTON_2     50",
                         "KEY_BUTTON_HOME  KEY_ESCAPE",
                         ""
-                    };
+                    } */;
 
                     foreach (var mapping in Keymap)
                     {
-                        file.Add(mapping.Key.ToString().PadRight(17, ' ') + mapping.Value);
+                        string button = mapping.Key switch
+                        {
+                            Buttons.WiiRemote_Left => "KEY_BUTTON_LEFT",
+                            Buttons.WiiRemote_Right => "KEY_BUTTON_RIGHT",
+                            Buttons.WiiRemote_Down => "KEY_BUTTON_DOWN",
+                            Buttons.WiiRemote_Up => "KEY_BUTTON_UP",
+                            Buttons.WiiRemote_A => "KEY_BUTTON_A",
+                            Buttons.WiiRemote_B => "KEY_BUTTON_B",
+                            Buttons.WiiRemote_Home => "KEY_BUTTON_HOME",
+                            Buttons.WiiRemote_Plus => "KEY_BUTTON_PLUS",
+                            Buttons.WiiRemote_Minus => "KEY_BUTTON_MINUS",
+                            Buttons.WiiRemote_1 => "KEY_BUTTON_1",
+                            Buttons.WiiRemote_2 => "KEY_BUTTON_2",
+                            Buttons.Nunchuck_Z => "KEY_BUTTON_Z",
+                            Buttons.Nunchuck_C => "KEY_BUTTON_C",
+
+                            Buttons.Classic_Up => "KEY_CL_BUTTON_UP",
+                            Buttons.Classic_Left => "KEY_CL_BUTTON_LEFT",
+                            Buttons.Classic_ZR => "KEY_CL_TRIGGER_ZR",
+                            Buttons.Classic_X => "KEY_CL_BUTTON_X",
+                            Buttons.Classic_A => "KEY_CL_BUTTON_A",
+                            Buttons.Classic_Y => "KEY_CL_BUTTON_Y",
+                            Buttons.Classic_B => "KEY_CL_BUTTON_B",
+                            Buttons.Classic_ZL => "KEY_CL_TRIGGER_ZL",
+                            Buttons.Classic_Reserved => "KEY_CL_RESERVED",
+                            Buttons.Classic_R => "KEY_CL_TRIGGER_R",
+                            Buttons.Classic_Plus => "KEY_CL_BUTTON_PLUS",
+                            Buttons.Classic_Home => "KEY_CL_BUTTON_HOME",
+                            Buttons.Classic_Minus => "KEY_CL_BUTTON_MINUS",
+                            Buttons.Classic_L => "KEY_CL_TRIGGER_L",
+                            Buttons.Classic_Down => "KEY_CL_BUTTON_DOWN",
+                            Buttons.Classic_Right => "KEY_CL_BUTTON_RIGHT",
+
+                            _ => null
+                        };
+
+                        if (button != null && !string.IsNullOrWhiteSpace(mapping.Value)) file.Add(button.Length < 17 ? button.PadRight(17, ' ') + mapping.Value : button + ' ' + mapping.Value);
                     }
 
                     MainContent.ReplaceFile(MainContent.GetNodeIndex(item), Encoding.UTF8.GetBytes(string.Join("\r\n", file) + "\r\n"));

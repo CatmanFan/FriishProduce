@@ -53,6 +53,7 @@
         Classic_Plus,
         Classic_Minus,
         Classic_Home,
+        Classic_Reserved,
         GC_Up,
         GC_Left,
         GC_Right,

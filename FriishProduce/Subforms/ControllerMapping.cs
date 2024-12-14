@@ -15,17 +15,66 @@ namespace FriishProduce
         public ControllerMapping()
         {
             InitializeComponent();
+        }
 
-            // Cosmetic
-            // *******
-            if (!DesignMode)
+        protected void ResetLayout()
+        {
+            const string empty = "—";
+
+            foreach (ComboBox c in page1.Controls.OfType<ComboBox>())
             {
-                // Remove this code when creating a new copy
-                // *****************************************
-                b_ok.Click += OK_Click;
-                b_cancel.Click += Cancel_Click;
-                Load += Form_Load;
-                // *****************************************
+                c.Enabled = false;
+                c.Items.Clear();
+                c.Items.Add(empty);
+                c.Items.AddRange(available.Local_Displayed);
+                c.SelectedIndex = 0;
+            }
+
+            foreach (ComboBox c in page2.Controls.OfType<ComboBox>())
+            {
+                c.Enabled = false;
+                c.Items.Clear();
+                c.Items.Add(empty);
+                c.Items.AddRange(available.Local_Displayed);
+                c.SelectedIndex = 0;
+            }
+
+            foreach (ComboBox c in page3.Controls.OfType<ComboBox>())
+            {
+                c.Enabled = false;
+                c.Items.Clear();
+                c.Items.Add(empty);
+                c.Items.AddRange(available.Local_Displayed);
+                c.SelectedIndex = 0;
+            }
+
+            Mapping = new Dictionary<Buttons, string>();
+            foreach (Buttons orig in available.Wii) Mapping.Add(orig, "");
+            OldMapping = new Dictionary<Buttons, string>(Mapping);
+
+            foreach (Buttons orig in Mapping.Keys.ToList())
+            {
+                ComboBox target = Controls.Find(orig.ToString(), true).OfType<ComboBox>().FirstOrDefault();
+                if (target != null) target.Enabled = true;
+            }
+        }
+
+        /// <summary>
+        /// Sets all current buttons to a preset or the current mapped values.
+        /// </summary>
+        /// <param name="input"></param>
+        protected void SetKeymap(IDictionary<Buttons, string> input)
+        {
+            foreach (Buttons orig in input.Keys.ToList())
+            {
+                int index = string.IsNullOrWhiteSpace(input[orig]) ? 0 : Array.IndexOf(available.Local_Formatted, input[orig]) + 1;
+
+                ComboBox target = Controls.Find(orig.ToString(), true).OfType<ComboBox>().FirstOrDefault();
+                if (target != null)
+                {
+                    target.Enabled = true;
+                    try { target.SelectedIndex = index; } catch { }
+                }
             }
         }
 
@@ -62,57 +111,18 @@ namespace FriishProduce
             // ---------------
             if (Mapping == null)
             {
-                const string empty = "—";
-
-                foreach (ComboBox c in page1.Controls.OfType<ComboBox>())
-                {
-                    c.Items.Add(empty);
-                    c.Items.AddRange(available.Local_Displayed);
-                    c.SelectedIndex = 0;
-                }
-
-                foreach (ComboBox c in page2.Controls.OfType<ComboBox>())
-                {
-                    c.Items.Add(empty);
-                    c.Items.AddRange(available.Local_Displayed);
-                    c.SelectedIndex = 0;
-                }
-
-                foreach (ComboBox c in page3.Controls.OfType<ComboBox>())
-                {
-                    c.Items.Add(empty);
-                    c.Items.AddRange(available.Local_Displayed);
-                    c.SelectedIndex = 0;
-                }
-
-                Mapping = new Dictionary<Buttons, string>();
-                foreach (Buttons orig in available.Wii) Mapping.Add(orig, "");
-                OldMapping = new Dictionary<Buttons, string>(Mapping);
-
-                foreach (Buttons orig in Mapping.Keys.ToList())
-                {
-                    ComboBox target = Controls.Find(orig.ToString(), true).OfType<ComboBox>().FirstOrDefault();
-                    if (target != null) target.Enabled = true;
-                }
+                ResetLayout();
             }
             else
             {
-                foreach (Buttons orig in Mapping.Keys.ToList())
-                {
-                    int index = string.IsNullOrWhiteSpace(Mapping[orig]) ? 0 : Array.IndexOf(available.Local_Formatted, Mapping[orig]) + 1;
-
-                    ComboBox target = Controls.Find(orig.ToString(), true).OfType<ComboBox>().FirstOrDefault();
-                    if (target != null)
-                    {
-                        target.Enabled = true;
-                        target.SelectedIndex = index;
-                    }
-                }
+                SetKeymap(Mapping);
 
                 if (OldMapping == null) OldMapping = new Dictionary<Buttons, string>(Mapping);
             }
 
             if (!UsesGC && tabControl1.TabPages.Contains(page3)) tabControl1.TabPages.Remove(page3);
+            if (!UsesNunchuk) vertical_layout.Checked = false;
+            vertical_layout.Enabled = vertical_layout.Visible = UsesNunchuk;
             CenterToParent();
         }
 
@@ -121,11 +131,46 @@ namespace FriishProduce
         protected struct Available
         {
             public Buttons[] Wii;
+            public string[] Wii_Formatted;
             public string[] Local_Displayed;
             public string[] Local_Formatted;
         }
 
-        public IDictionary<Buttons, string> Mapping;
+        public IDictionary<Buttons, string> Keymap
+        {
+            get
+            {
+                try
+                {
+                    Mapping = new Dictionary<Buttons, string>();
+                    foreach (Buttons orig in available.Wii) Mapping.Add(orig, "");
+
+                    foreach (Buttons orig in Mapping.Keys.ToList())
+                    {
+                        ComboBox target = Controls.Find(orig.ToString(), true).OfType<ComboBox>().FirstOrDefault();
+                        if (target != null)
+                            Mapping[orig] = target.SelectedIndex == 0 ? "" : available.Local_Formatted[target.SelectedIndex - 1];
+                    }
+
+                    return Mapping;
+                }
+                catch
+                {
+                    return null;
+                }
+            }
+
+            set
+            {
+                Mapping = new Dictionary<Buttons, string>(value);
+
+                if (Visible)
+                {
+                    try { SetKeymap(value); } catch { }
+                }
+            }
+        }
+        protected IDictionary<Buttons, string> Mapping;
         protected IDictionary<Buttons, string> OldMapping;
 
         protected bool UsesGC { get; set; }

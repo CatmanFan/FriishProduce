@@ -29,6 +29,8 @@ namespace FriishProduce
                 b_controller.Click += OpenControllerMapping;
                 Load += Form_Load;
                 // *****************************************
+
+                // Program.Lang.Control(this);
             }
         }
 
@@ -75,12 +77,12 @@ namespace FriishProduce
         {
             get
             {
-                if (controllerForm != null) return controllerForm.Mapping;
+                if (controllerForm != null) return controllerForm.Keymap;
                 else return null;
             }
             set
             {
-                if (controllerForm != null) controllerForm.Mapping = value;
+                if (controllerForm != null) controllerForm.Keymap = value;
             }
         }
         protected ControllerMapping controllerForm { get; set; }
