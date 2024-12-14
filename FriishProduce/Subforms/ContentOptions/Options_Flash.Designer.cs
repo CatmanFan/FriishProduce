@@ -37,11 +37,11 @@ namespace FriishProduce
             this.vff_cache_size_list = new System.Windows.Forms.ComboBox();
             this.quality = new System.Windows.Forms.GroupBox();
             this.controls = new System.Windows.Forms.GroupBox();
+            this.midi = new System.Windows.Forms.CheckBox();
             this.qwerty_keyboard = new System.Windows.Forms.CheckBox();
             this.mouse = new System.Windows.Forms.CheckBox();
             this.strap_reminder = new System.Windows.Forms.GroupBox();
             this.strap_reminder_list = new System.Windows.Forms.ComboBox();
-            this.midi = new System.Windows.Forms.CheckBox();
             this.ImportDLS = new System.Windows.Forms.OpenFileDialog();
             this.bottomPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -157,6 +157,18 @@ namespace FriishProduce
             this.controls.Tag = "controls";
             this.controls.Text = "controls";
             // 
+            // midi
+            // 
+            this.midi.AutoSize = true;
+            this.midi.Location = new System.Drawing.Point(10, 61);
+            this.midi.Name = "midi";
+            this.midi.Size = new System.Drawing.Size(44, 17);
+            this.midi.TabIndex = 15;
+            this.midi.Tag = "midi";
+            this.midi.Text = "midi";
+            this.midi.UseVisualStyleBackColor = true;
+            this.midi.CheckedChanged += new System.EventHandler(this.checkBoxChanged);
+            // 
             // qwerty_keyboard
             // 
             this.qwerty_keyboard.AutoSize = true;
@@ -201,18 +213,6 @@ namespace FriishProduce
             this.strap_reminder_list.Size = new System.Drawing.Size(510, 21);
             this.strap_reminder_list.TabIndex = 16;
             this.strap_reminder_list.Tag = "strap_reminder";
-            // 
-            // midi
-            // 
-            this.midi.AutoSize = true;
-            this.midi.Location = new System.Drawing.Point(10, 61);
-            this.midi.Name = "midi";
-            this.midi.Size = new System.Drawing.Size(44, 17);
-            this.midi.TabIndex = 15;
-            this.midi.Tag = "midi";
-            this.midi.Text = "midi";
-            this.midi.UseVisualStyleBackColor = true;
-            this.midi.CheckedChanged += new System.EventHandler(this.checkBoxChanged);
             // 
             // ImportDLS
             // 

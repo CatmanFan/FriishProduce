@@ -15,6 +15,7 @@ namespace FriishProduce
 {
     public enum ExportResult
     {
+        SUCCESS,
         BIOS_NOT_FOUND,
         FILE_NOT_FOUND,
         FOLDER_NOT_FOUND,

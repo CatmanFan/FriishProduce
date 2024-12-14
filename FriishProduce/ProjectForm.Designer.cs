@@ -63,6 +63,7 @@ namespace FriishProduce
             this.injection_methods = new System.Windows.Forms.ComboBox();
             this.injection_method_options = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.multifile_software = new System.Windows.Forms.CheckBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.use_offline_wad = new System.Windows.Forms.RadioButton();
             this.baseID = new System.Windows.Forms.Label();
@@ -253,7 +254,7 @@ namespace FriishProduce
             // 
             // banner
             // 
-            this.banner.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.banner.BackColor = System.Drawing.SystemColors.ActiveBorder;
             resources.ApplyResources(this.banner, "banner");
             this.banner.Name = "banner";
             this.banner.TabStop = false;
@@ -342,13 +343,22 @@ namespace FriishProduce
             // 
             this.groupBox3.Controls.Add(this.injection_method_options);
             this.groupBox3.Controls.Add(this.injection_methods);
-            this.groupBox3.Controls.Add(this.manual_type);
             this.groupBox3.Controls.Add(this.forwarder_root_device);
+            this.groupBox3.Controls.Add(this.manual_type);
+            this.groupBox3.Controls.Add(this.multifile_software);
             this.groupBox3.Controls.Add(this.extra);
             resources.ApplyResources(this.groupBox3, "groupBox3");
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.TabStop = false;
             this.groupBox3.Tag = "injection_method";
+            // 
+            // multifile_software
+            // 
+            resources.ApplyResources(this.multifile_software, "multifile_software");
+            this.multifile_software.Name = "multifile_software";
+            this.multifile_software.Tag = "multifile_software";
+            this.multifile_software.UseVisualStyleBackColor = true;
+            this.multifile_software.CheckedChanged += new System.EventHandler(this.multifile_software_CheckedChanged);
             // 
             // pictureBox2
             // 
@@ -633,5 +643,6 @@ namespace FriishProduce
         private System.Windows.Forms.Button edit_save_data;
         private System.Windows.Forms.Label rom_label_filename;
         private System.Windows.Forms.Label rom_label;
+        private System.Windows.Forms.CheckBox multifile_software;
     }
 }

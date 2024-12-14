@@ -435,6 +435,9 @@
   <data name="&gt;&gt;region.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="groupBox8.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="groupBox8.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 375</value>
   </data>
@@ -642,6 +645,9 @@
   <data name="&gt;&gt;edit_save_data.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="groupBox7.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="groupBox7.Location" type="System.Drawing.Point, System.Drawing">
     <value>493, 12</value>
   </data>
@@ -673,10 +679,10 @@
     <value>USB</value>
   </data>
   <data name="forwarder_root_device.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 65</value>
+    <value>10, 66</value>
   </data>
   <data name="forwarder_root_device.Size" type="System.Drawing.Size, System.Drawing">
-    <value>317, 21</value>
+    <value>454, 21</value>
   </data>
   <data name="forwarder_root_device.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -691,7 +697,7 @@
     <value>groupBox3</value>
   </data>
   <data name="&gt;&gt;forwarder_root_device.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="extra.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -700,7 +706,7 @@
     <value>NoControl</value>
   </data>
   <data name="extra.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 47</value>
+    <value>8, 48</value>
   </data>
   <data name="extra.Size" type="System.Drawing.Size, System.Drawing">
     <value>131, 13</value>
@@ -721,10 +727,10 @@
     <value>groupBox3</value>
   </data>
   <data name="&gt;&gt;extra.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="manual_type.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 65</value>
+    <value>10, 66</value>
   </data>
   <data name="manual_type.Size" type="System.Drawing.Size, System.Drawing">
     <value>454, 21</value>
@@ -742,7 +748,7 @@
     <value>groupBox3</value>
   </data>
   <data name="&gt;&gt;manual_type.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="injection_methods.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 19</value>
@@ -769,7 +775,7 @@
     <value>NoControl</value>
   </data>
   <data name="injection_method_options.Location" type="System.Drawing.Point, System.Drawing">
-    <value>198, 92</value>
+    <value>198, 94</value>
   </data>
   <data name="injection_method_options.Size" type="System.Drawing.Size, System.Drawing">
     <value>266, 24</value>
@@ -798,6 +804,18 @@
   <data name="&gt;&gt;injection_method_options.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="&gt;&gt;multifile_software.Name" xml:space="preserve">
+    <value>multifile_software</value>
+  </data>
+  <data name="&gt;&gt;multifile_software.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;multifile_software.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;multifile_software.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
   <data name="groupBox3.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -823,6 +841,36 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="multifile_software.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="multifile_software.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 47</value>
+  </data>
+  <data name="multifile_software.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 17</value>
+  </data>
+  <data name="multifile_software.TabIndex" type="System.Int32, mscorlib">
+    <value>50</value>
+  </data>
+  <data name="multifile_software.Text" xml:space="preserve">
+    <value>multifile_software</value>
+  </data>
+  <data name="multifile_software.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;multifile_software.Name" xml:space="preserve">
+    <value>multifile_software</value>
+  </data>
+  <data name="&gt;&gt;multifile_software.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;multifile_software.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;multifile_software.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
   <data name="pictureBox2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
@@ -1404,6 +1452,9 @@
   </data>
   <data name="&gt;&gt;rom_label.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="groupBox1.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 12</value>

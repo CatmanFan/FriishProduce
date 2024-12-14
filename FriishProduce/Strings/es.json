@@ -178,11 +178,10 @@
 			"wad_base":							"Canal de origen",
 			"import_wad":						"Abrir un archivo WAD...",
 			"use_online_wad":					"...o utilizar un canal descargable",
-			"base_name":						"Título del canal:",
-			"title_id":							"Title ID:",
+			"current_wad":						"WAD actual:",
 			
 			"image":							"Imagen",
-			"import_image":						"Abrir una imagen...",
+			"import_image":						"Abrir un archivo de imagen...",
 			"download_image":					"Descargar imagen de pantalla de título",
 			"image_interpolation_mode":			"Método de interpolación",
 			"image_interpolation_mode0":		"{by_default}",
@@ -190,7 +189,7 @@
 			"image_interpolation_mode2":		"Alta calidad",
 			"image_interpolation_mode3":		"Bilineal",
 			"image_interpolation_mode4":		"Bicúbica",
-			"image_interpolation_mode5":		"Vecino más cercano (Nearest neighbor)",
+			"image_interpolation_mode5":		"Vecino más cercano (nearest neighbor)",
 			"image_interpolation_mode6":		"Bilineal de alta calidad",
 			"image_interpolation_mode7":		"Bicúbica de alta calidad",
 			"image_resize0":					"Estirar la imagen",
@@ -198,6 +197,7 @@
 			
 			"channel_metadata":					"Metadatos del canal",
 			"channel_name":						"Nombre del canal:",
+			"title_id":							"Title ID:",
 			"video_mode":						"Señal video:",
 			"banner":							"Banner del canal",
 			"banner_details":					"Detalles del banner",
@@ -208,17 +208,21 @@
 
 			"injection_method":					"Método de inyección",
 			"injection_method_options":			"Ajustes de método de inyección...",
+			"controller_mapping":				"Editar configuración de botones...",
 
 			"save_data":						"Datos guardados",
-			"save_data_enable":					"Habilitar la función de guardado",
+			"save_data_enable":					"Utilizar la función de guardado",
 			"edit_save_data":					"Modificar título de datos guardados...",
+			"edit_save_data_1":					"Título:",
+			"edit_save_data_2":					"Subtítulo:",
 			"fill_save_data":					"Completar automáticamente",
 			
-			"forwarder_root_device":			"Dispositivo de almacenamiento:",
 			"manual_type":						"Manual electrónico:",
 			"manual_type0":						"{disabled}",
 			"manual_type1":						"{original}",
-			"manual_type2":						"Importar manual personalizado"
+			"manual_type2":						"Utilizar manual personalizado",
+			"forwarder_root_device":			"Dispositivo de almacenamiento:",
+			"multifile_software":				"Juego utilizando archivos múltiples"
 		},
 
 		"banner": {
@@ -229,10 +233,15 @@
 		},
 
 		"controller": {
+			"controller":						"Configuración de botones",
 			"page1":							"Mando de Wii",
 			"page2":							"Mando clásico",
 			"page3":							"Mando GameCube",
+			
 			"vertical_layout":					"Disposición vertical",
+			"presets":							"Preajustes",
+			"preset_load":						"Aplicar",
+			
 			"up":								"Arriba",
 			"left":								"Izquierda",
 			"right":							"Derecha",
@@ -240,9 +249,9 @@
 		},
 
 		"vc_nes": {
-			"palette":							"Palette",
+			"palette":							"Paleta",
 			"palette0":							"{by_default}",
-			"palette1":							"Restored",
+			"palette1":							"Sin filtro oscuro",
 			"palette2":							"{vc} (Nintendo 3DS)",
 			"palette3":							"NES Classic (FBX)",
 			"palette4":							"NES Remix U",
@@ -252,66 +261,67 @@
 			"palette8":							"Wavebeam (FBX)",
 			"palette9":							"Composite Direct (FBX)",
 
-			"palette_banner_usage":				"Also use for banner image"
+			"palette_banner_usage":				"Utilizar esta paleta también para la imagen del banner"
 		},
 
 		"vc_n64": {
-			"patch_fixbrightness":				"Remove dark filter",
-			"patch_fixcrashes":					"Fix crashes",
-			"patch_expandedram":				"Enable extended RAM",
-			"patch_autosizerom":				"Allocate ROM size",
+			"patch_fixbrightness":				"Desactivar filtro oscuro",
+			"patch_fixcrashes":					"Arreglar fallos",
+			"patch_expandedram":				"RAM extendida (8 MB)",
+			"patch_autosizerom":				"Asignación de tamaño de ROM",
+			"patch_widescreen":					"Pantalla ancha",
 
-			"romc_type":						"ROM compression method",
-			"romc_type0":						"ROMC (Type 0)",
-			"romc_type1":						"ROMC (Type 1)"
+			"romc_type":						"Método de compresión de ROM",
+			"romc_type0":						"ROMC (tipo 0)",
+			"romc_type1":						"ROMC (tipo 1)"
 		},
 
 		"vc_sega": {
-			"console_disableresetbutton":		"Disable reset button",
-			"dev_mdpad_enable_6b":				"Enable Six Button Control Pad for {0}"
+			"console_disableresetbutton":		"Deshabilitar botón de reinicio",
+			"dev_mdpad_enable_6b":				"Utilizar mando de 6 botones para {0}"
 		},
 
 		"vc_pce": {
-			"hide_overscan":					"Hide overscan",
+			"hide_overscan":					"Deshabilitar overscan",
 			"raster":							"Enable BG raster",
 			"sprline":							"Enable sprite limit",
 			"y_offset":							"Y offset",
-			"europe0":							"Region set to Japanese",
-			"europe1":							"Region set to US/Europe",
-			"sgenable0":						"Not using SuperGrafx",
-			"sgenable1":						"Using SuperGrafx",
-			"padbutton0":						"Using 2-button Pad",
-			"padbutton1":						"Using 6-button Pad"
+			"europe0":							"Región establecida en Japón",
+			"europe1":							"Región establecida en América/Europa",
+			"sgenable0":						"SuperGrafx no será utilizada",
+			"sgenable1":						"SuperGrafx será utilizada",
+			"padbutton0":						"Utilizando mando de 2 botones",
+			"padbutton1":						"Utilizando mando de 6 botones"
 		},
 
 		"vc_neo": {
 			"bios":								"BIOS de sistema",
 			"bios0":							"Archivo externo",
-			"bios1":							"{vc} (version 1)",
-			"bios2":							"{vc} (version 2)",
-			"bios3":							"{vc} (version 3)"
+			"bios1":							"{vc} (1.ª generación)",
+			"bios2":							"{vc} (2.ª generación)",
+			"bios3":							"{vc} (3.ª generación)"
 		},
 
 		"adobe_flash": {
 			"vff_sync_on_write":				"Sync VFF on write",
 			"vff_cache_size":					"VFF cache size",
-			"controls":							"Controls",
+			"controls":							"Controles",
 			"mouse":							"Mouse",
-			"qwerty_keyboard":					"QWERTY keyboard",
-			"midi":								"Enable MIDI playback using DLS soundfont",
-			"quality":							"Quality",
-			"quality0":							"High",
-			"quality1":							"Medium",
-			"quality2":							"Low",
-			"strap_reminder":					"Strap reminder screen",
+			"qwerty_keyboard":					"Teclado QWERTY",
+			"midi":								"Utilizar MIDI con fuente de sonido DLS",
+			"quality":							"Calidad de pantalla",
+			"quality0":							"Alta",
+			"quality1":							"Media",
+			"quality2":							"Baja",
+			"strap_reminder":					"Aviso de correa del mando",
 			"strap_reminder0":					"{disabled}",
 			"strap_reminder1":					"{enabled}",
-			"strap_reminder2":					"No extension controller"
+			"strap_reminder2":					"{enabled} (sin pantalla de mandos complementarios)"
 		},
 
 		"forwarder": {
 		    "bios_settings":					"Configuración del BIOS",
-			"use_bios":							"Habilitar la funcionalidad del BIOS",
+			"use_bios":							"Utilizar funcionalidad del BIOS",
 			"show_bios_screen":					"Mostrar la pantalla de inicio de la consola",
 			"rpgm_settings":					"Configuración de RPG Maker",
 			"use_rtp":							"Utilizar RTP (Run-Time Package) externo(a)",

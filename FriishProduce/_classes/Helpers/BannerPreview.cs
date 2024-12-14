@@ -97,9 +97,201 @@ namespace FriishProduce
             iconData.target = null;
         }
 
-        private double scaleFactor = 540.0 / 650.0;
-        private int scale(int input) => (int)Math.Round(input * scaleFactor);
-        private double scale(double input) => input * scaleFactor;
+        private static double scaleFactor = 540.0 / 650.0;
+        private static int scale(int input) => (int)Math.Round(input * scaleFactor);
+        private static double scale(double input) => input * scaleFactor;
+        private int width = scale(650), height = scale(260);
+
+        private Bitmap bannerBG;
+        private void resetBG(Platform platform, int target, int lang)
+        {
+            #region -- Define top platform header contents --
+            string platformName = "FriishProduce";
+            switch (platform)
+            {
+                case Platform.NES:
+                    platformName = lang switch { 1 => "ファミリーコンピュータ", 2 => "패밀리컴퓨터", _ => "NINTENDO ENTERTAINMENT SYSTEM" };
+                    break;
+
+                case Platform.SNES:
+                    platformName = lang switch { 1 => "スーパーファミコン", 2 => "슈퍼 패미컴", _ => "SUPER NINTENDO ENTERTAINMENT SYSTEM" };
+                    break;
+
+                case Platform.N64:
+                    platformName = lang switch { 2 => "닌텐도 64", _ => "NINTENDO64" };
+                    break;
+
+                case Platform.SMS:
+                    platformName = "MASTER SYSTEM";
+                    break;
+
+                case Platform.SMD:
+                    platformName = lang > 0 ? "MEGA DRIVE" : "GENESIS";
+                    break;
+
+                case Platform.PCE:
+                case Platform.PCECD:
+                    platformName = lang switch { 1 or 2 => "PC ENGINE", _ => "TURBO GRAFX16" };
+                    break;
+
+                case Platform.NEO:
+                    platformName = "NEO-GEO";
+                    break;
+
+                case Platform.C64:
+                    platformName = "COMMODORE 64";
+                    break;
+
+                case Platform.MSX:
+                    platformName = "MSX";
+                    break;
+
+                case Platform.Flash:
+                    platformName = "    Flash";
+                    break;
+
+                case Platform.GB:
+                    platformName = "GAME BOY";
+                    break;
+
+                case Platform.GBC:
+                    platformName = "GAME BOY COLOR";
+                    break;
+
+                case Platform.GBA:
+                    platformName = "GAME BOY ADVANCE";
+                    break;
+
+                case Platform.GCN:
+                    platformName = "GAMECUBE";
+                    break;
+
+                case Platform.PSX:
+                    platformName = lang switch { 1 => "プレイステーション", _ => "PLAYSTATION" };
+                    break;
+
+                case Platform.RPGM:
+                    platformName = lang switch { 1 => "ＲＰＧツクール", _ => "RPG MAKER" };
+                    break;
+            }
+            #endregion
+
+            if (bannerBG != null) bannerBG.Dispose();
+            bannerBG = new(width, height);
+
+            using Graphics g = Graphics.FromImage(bannerBG);
+            g.CompositingQuality = CompositingQuality.HighSpeed;
+            g.SmoothingMode = SmoothingMode.AntiAlias;
+            g.TextRenderingHint = TextRenderingHint.AntiAlias;
+
+            g.Clear(BannerSchemes.GetColor(target, 0));
+
+            #region -- Get and draw console/platform logo --
+            if (bannerLogo != null) bannerLogo.Dispose();
+
+            bannerType = ((int)platform, lang);
+            using (var U8 = BannerHelper.BannerApp(platform, lang switch { 1 => libWiiSharp.Region.Japan, 2 => libWiiSharp.Region.Korea, 3 => libWiiSharp.Region.Europe, _ => libWiiSharp.Region.USA }))
+                if (U8 != null)
+                    using (var Icon = libWiiSharp.U8.Load(U8.Data[U8.GetNodeIndex("banner.bin")]))
+                        foreach (var item in Icon.StringTable)
+                            if (item.ToLower().Contains("back") && item.ToLower().EndsWith(".tpl"))
+                                using (var logo = (Bitmap)libWiiSharp.TPL.Load(Icon.Data[Icon.GetNodeIndex(item)]).ExtractTexture())
+                                {
+                                    bannerLogo = new Bitmap(logo.Width, logo.Height, PixelFormat.Format32bppArgb);
+                                    unsafe
+                                    {
+                                        BitmapData data = bannerLogo.LockBits(new Rectangle(Point.Empty, bannerLogo.Size), ImageLockMode.ReadWrite, bannerLogo.PixelFormat);
+
+                                        byte* line = (byte*)data.Scan0;
+                                        for (int y = 0; y < data.Height; y++)
+                                        {
+                                            for (int x = 0; x < data.Width; x++)
+                                            {
+                                                *((int*)line + x) = Color.FromArgb(logo.GetPixel(x, y).R, BannerSchemes.List[target].bgLogo.R, BannerSchemes.List[target].bgLogo.G, BannerSchemes.List[target].bgLogo.B).ToArgb();
+                                            }
+
+                                            line += data.Stride;
+                                        }
+
+                                        bannerLogo.UnlockBits(data);
+                                    }
+                                }
+
+            if (bannerLogo != null)
+            {
+                double startingPointY = scale(-30);
+                double maxHeight = scale(bannerLogo.Height / 3);
+                (double width, double height) = (scale(bannerLogo.Width / 1.5), scale(bannerLogo.Height / 1.5));
+
+                for (double y = startingPointY; y < banner.Height / 2; y += maxHeight * 2)
+                    for (double x = 0; x < banner.Width; x += width)
+                        g.DrawImage(bannerLogo, (int)Math.Round(x), (int)Math.Round(y), (int)Math.Round(width), (int)Math.Round(height));
+
+                for (double y = startingPointY + maxHeight; y < banner.Height / 2; y += maxHeight * 2)
+                    for (double x = 0 - (width / 2.5); x < banner.Width; x += width)
+                        g.DrawImage(bannerLogo, (int)Math.Round(x), (int)Math.Round(y), (int)Math.Round(width), (int)Math.Round(height));
+            }
+            #endregion
+
+            #region -- Bottom gradient --
+            using (LinearGradientBrush b1 = new(new Point(0, scale(130)), new Point(0, (int)Math.Round(banner.Height * 0.9)), BannerSchemes.GetColor(target, 0), BannerSchemes.GetColor(target, 2)))
+            using (LinearGradientBrush b2 = new(new Point(0, scale(50)), new Point(0, (int)Math.Round(banner.Height * 1.25)), BannerSchemes.GetColor(target, 0), BannerSchemes.GetColor(target, 2)))
+            {
+                g.FillRectangle(b1, -5, (banner.Height / 2) + scale(10), banner.Width + 10, scale(40));
+                g.FillRectangle(b2, -5, (banner.Height / 2) + scale(49) - 1, banner.Width + 10, banner.Height);
+            }
+            #endregion
+
+            #region -- Gradient lines --
+            using (LinearGradientBrush c = new(new Point(0, 0), new Point(scale(125), 0), BannerSchemes.GetColor(target, 3), BannerSchemes.GetColor(target, 0)))
+            {
+                g.FillRectangle(c, -1, scale(45), scale(125), 2);
+                g.FillRectangle(c, -1, scale(87), scale(125), 2);
+            }
+            #endregion
+
+            #region -- Top header --
+            using (var f = new Font(font, (float)scale(9.04)))
+            using (var p = new GraphicsPath())
+            {
+                // Draw border
+                // ********
+                p.AddLine(-5, -5, -5, 5);
+                p.AddLine(-5, scale(5), banner.Width, scale(5));
+                p.AddLine(banner.Width - TextRenderer.MeasureText(platformName, f).Width - scale(58), scale(5),
+                          banner.Width - TextRenderer.MeasureText(platformName, f).Width - scale(51), scale(7));
+                p.AddLine(banner.Width - TextRenderer.MeasureText(platformName, f).Width - scale(51), scale(7),
+                          banner.Width - TextRenderer.MeasureText(platformName, f).Width - scale(46), scale(10));
+                p.AddLine(banner.Width - TextRenderer.MeasureText(platformName, f).Width - scale(46), scale(10),
+                          banner.Width - TextRenderer.MeasureText(platformName, f).Width - scale(26), scale(28));
+                p.AddLine(banner.Width - TextRenderer.MeasureText(platformName, f).Width - scale(26), scale(28),
+                          banner.Width - TextRenderer.MeasureText(platformName, f).Width - scale(22), scale(30));
+                p.AddLine(banner.Width - TextRenderer.MeasureText(platformName, f).Width - scale(22), scale(30),
+                          banner.Width - TextRenderer.MeasureText(platformName, f).Width - scale(14), scale(32));
+                p.AddLine(banner.Width - TextRenderer.MeasureText(platformName, f).Width - scale(14), scale(32), banner.Width + 5, scale(32));
+                p.AddLine(banner.Width + 5, scale(32), banner.Width + 5, -5);
+
+                // Draw text and colours
+                // ********
+                using (var borderPen = new Pen(BannerSchemes.GetColor(target, 4), 2))
+                    g.DrawPath(borderPen, p);
+                using (var bgBrush = new SolidBrush(BannerSchemes.GetColor(target, 5)))
+                    g.FillPath(bgBrush, p);
+                using (var textBrush = new SolidBrush(BannerSchemes.GetColor(target, 6)))
+                    g.DrawString
+                    (
+                        platformName,
+                        f,
+                        textBrush,
+                        banner.Width - scale(10) - 1,
+                        scale(24) + 1,
+                        new StringFormat() { Alignment = StringAlignment.Far, LineAlignment = StringAlignment.Center }
+                    );
+            }
+            #endregion
+
+            g.Dispose();
+        }
 
         /// <summary>
         /// Creates a banner preview bitmap using VCPic.
@@ -114,7 +306,7 @@ namespace FriishProduce
         public Bitmap Banner(Bitmap img, string text, int year, int players, Platform platform, int lang)
         {
             if (banner != null) banner.Dispose();
-            banner = new Bitmap(scale(650), scale(260));
+            banner = new Bitmap(width, height);
 
             if (img == null)
             {
@@ -200,147 +392,18 @@ namespace FriishProduce
                               : "Players: {0}";
             #endregion
 
-            #region -- Define top platform header contents --
-            string platformName = "FriishProduce";
-            switch (platform)
-            {
-                case Platform.NES:
-                    platformName = lang switch { 1 => "ファミリーコンピュータ", 2 => "패밀리컴퓨터", _ => "NINTENDO ENTERTAINMENT SYSTEM" };
-                    break;
-
-                case Platform.SNES:
-                    platformName = lang switch { 1 => "スーパーファミコン", 2 => "슈퍼 패미컴", _ => "SUPER NINTENDO ENTERTAINMENT SYSTEM" };
-                    break;
-
-                case Platform.N64:
-                    platformName = lang switch { 2 => "닌텐도 64", _ => "NINTENDO64" };
-                    break;
-
-                case Platform.SMS:
-                    platformName = "MASTER SYSTEM";
-                    break;
-
-                case Platform.SMD:
-                    platformName = lang > 0 ? "MEGA DRIVE" : "GENESIS";
-                    break;
-
-                case Platform.PCE:
-                case Platform.PCECD:
-                    platformName = lang switch { 1 or 2 => "PC ENGINE", _ => "TURBO GRAFX16" };
-                    break;
-
-                case Platform.NEO:
-                    platformName = "NEO-GEO";
-                    break;
-
-                case Platform.C64:
-                    platformName = "COMMODORE 64";
-                    break;
-
-                case Platform.MSX:
-                    platformName = "MSX";
-                    break;
-
-                case Platform.Flash:
-                    platformName = "    Flash";
-                    break;
-
-                case Platform.GB:
-                    platformName = "GAME BOY";
-                    break;
-
-                case Platform.GBC:
-                    platformName = "GAME BOY COLOR";
-                    break;
-
-                case Platform.GBA:
-                    platformName = "GAME BOY ADVANCE";
-                    break;
-
-                case Platform.GCN:
-                    platformName = "GAMECUBE";
-                    break;
-
-                case Platform.PSX:
-                    platformName = lang switch { 1 => "プレイステーション", _ => "PLAYSTATION" };
-                    break;
-
-                case Platform.RPGM:
-                    platformName = lang switch { 1 => "ＲＰＧツクール", _ => "RPG MAKER" };
-                    break;
-            }
-            #endregion
-
             using (Graphics g = Graphics.FromImage(banner))
             {
                 g.CompositingQuality = CompositingQuality.HighSpeed;
                 g.SmoothingMode = SmoothingMode.AntiAlias;
                 g.TextRenderingHint = TextRenderingHint.AntiAlias;
 
-                g.Clear(BannerSchemes.GetColor(target, 0));
-
-                #region -- Get and draw console/platform logo --
-                if (((int)platform, lang) != bannerType)
-                {
-                    if (bannerLogo != null) bannerLogo.Dispose();
-
-                    bannerType = ((int)platform, lang);
-                    using (var U8 = BannerHelper.BannerApp(platform, lang switch { 1 => libWiiSharp.Region.Japan, 2 => libWiiSharp.Region.Korea, 3 => libWiiSharp.Region.Europe, _ => libWiiSharp.Region.USA }))
-                        if (U8 != null)
-                            using (var Icon = libWiiSharp.U8.Load(U8.Data[U8.GetNodeIndex("banner.bin")]))
-                                foreach (var item in Icon.StringTable)
-                                    if (item.ToLower().Contains("back") && item.ToLower().EndsWith(".tpl"))
-                                        using (var logo = (Bitmap)libWiiSharp.TPL.Load(Icon.Data[Icon.GetNodeIndex(item)]).ExtractTexture())
-                                        {
-                                            bannerLogo = new Bitmap(logo.Width, logo.Height, PixelFormat.Format32bppArgb);
-                                            unsafe
-                                            {
-                                                BitmapData data = bannerLogo.LockBits(new Rectangle(Point.Empty, bannerLogo.Size), ImageLockMode.ReadWrite, bannerLogo.PixelFormat);
-
-                                                byte* line = (byte*)data.Scan0;
-                                                for (int y = 0; y < data.Height; y++)
-                                                {
-                                                    for (int x = 0; x < data.Width; x++)
-                                                    {
-                                                        *((int*)line + x) = Color.FromArgb(logo.GetPixel(x, y).R, BannerSchemes.List[target].bgLogo.R, BannerSchemes.List[target].bgLogo.G, BannerSchemes.List[target].bgLogo.B).ToArgb();
-                                                    }
-
-                                                    line += data.Stride;
-                                                }
-
-                                                bannerLogo.UnlockBits(data);
-                                            }
-                                        }
-                }
-
-                if (bannerLogo != null)
-                {
-                    double startingPointY = scale(-30);
-                    double maxHeight = scale(bannerLogo.Height / 3);
-                    (double width, double height) = (scale(bannerLogo.Width / 1.5), scale(bannerLogo.Height / 1.5));
-
-                    for (double y = startingPointY; y < banner.Height / 2; y += maxHeight * 2)
-                        for (double x = 0; x < banner.Width; x += width)
-                            g.DrawImage(bannerLogo, (int)Math.Round(x), (int)Math.Round(y), (int)Math.Round(width), (int)Math.Round(height));
-
-                    for (double y = startingPointY + maxHeight; y < banner.Height / 2; y += maxHeight * 2)
-                        for (double x = 0 - (width / 2.5); x < banner.Width; x += width)
-                            g.DrawImage(bannerLogo, (int)Math.Round(x), (int)Math.Round(y), (int)Math.Round(width), (int)Math.Round(height));
-                }
-                #endregion
-
-                #region -- Bottom gradient --
-                using (LinearGradientBrush b1 = new(new Point(0, scale(130)), new Point(0, (int)Math.Round(banner.Height * 0.9)), BannerSchemes.GetColor(target, 0), BannerSchemes.GetColor(target, 2)))
-                using (LinearGradientBrush b2 = new(new Point(0, scale(50)), new Point(0, (int)Math.Round(banner.Height * 1.25)), BannerSchemes.GetColor(target, 0), BannerSchemes.GetColor(target, 2)))
-                {
-                    g.FillRectangle(b1, -5, (banner.Height / 2) + scale(10), banner.Width + 10, scale(40));
-                    g.FillRectangle(b2, -5, (banner.Height / 2) + scale(49) - 1, banner.Width + 10, banner.Height);
-                }
-                #endregion
+                if (((int)platform, lang) != bannerType || bannerBG == null) resetBG(platform, target, lang);
+                g.DrawImage(bannerBG, 0, 0);
 
                 #region -- Draw center and left text --
                 using (var titleFont = new Font(font, scale(15)))
-                using (var leftFont = new Font(font, (float)scale(9.25)))
+                using (var leftFont = new Font(font, (float)scale(9.25 + 0.05)))
                 using (var titleColor = new SolidBrush(BannerSchemes.GetColor(target, 7)))
                 using (var leftColor = new SolidBrush(leftTextColor))
                 {
@@ -382,14 +445,6 @@ namespace FriishProduce
                 }
                 #endregion
 
-                #region -- Gradient lines --
-                using (LinearGradientBrush c = new(new Point(0, 0), new Point(scale(125), 0), BannerSchemes.GetColor(target, 3), BannerSchemes.GetColor(target, 0)))
-                {
-                    g.FillRectangle(c, -1, scale(45), scale(125), 2);
-                    g.FillRectangle(c, -1, scale(87), scale(125), 2);
-                }
-                #endregion
-
                 #region -- Image --
                 double[] point = new double[] { banner.Width / 2 - scale((img.Width * 0.72) / 2), scale(40) };
                 double[] size = new double[] { scale(img.Width * 0.72), scale(img.Height * 0.72) };
@@ -403,46 +458,6 @@ namespace FriishProduce
                 }
 
                 g.DrawImage(RoundCorners(img, 11), (int)point[0], (int)point[1], (float)size[0], (float)size[1]);
-                #endregion
-
-                #region -- Top header --
-                using (var f = new Font(font, scale(9)))
-                using (var p = new GraphicsPath())
-                {
-                    // Draw border
-                    // ********
-                    p.AddLine(-5, -5, -5, 5);
-                    p.AddLine(-5, scale(5), banner.Width, scale(5));
-                    p.AddLine(banner.Width - TextRenderer.MeasureText(platformName, f).Width - scale(58), scale(5),
-                              banner.Width - TextRenderer.MeasureText(platformName, f).Width - scale(51), scale(7));
-                    p.AddLine(banner.Width - TextRenderer.MeasureText(platformName, f).Width - scale(51), scale(7),
-                              banner.Width - TextRenderer.MeasureText(platformName, f).Width - scale(46), scale(10));
-                    p.AddLine(banner.Width - TextRenderer.MeasureText(platformName, f).Width - scale(46), scale(10),
-                              banner.Width - TextRenderer.MeasureText(platformName, f).Width - scale(26), scale(28));
-                    p.AddLine(banner.Width - TextRenderer.MeasureText(platformName, f).Width - scale(26), scale(28),
-                              banner.Width - TextRenderer.MeasureText(platformName, f).Width - scale(22), scale(30));
-                    p.AddLine(banner.Width - TextRenderer.MeasureText(platformName, f).Width - scale(22), scale(30),
-                              banner.Width - TextRenderer.MeasureText(platformName, f).Width - scale(14), scale(32));
-                    p.AddLine(banner.Width - TextRenderer.MeasureText(platformName, f).Width - scale(14), scale(32), banner.Width + 5, scale(32));
-                    p.AddLine(banner.Width + 5, scale(32), banner.Width + 5, -5);
-
-                    // Draw text and colours
-                    // ********
-                    using (var borderPen = new Pen(BannerSchemes.GetColor(target, 4), 2))
-                        g.DrawPath(borderPen, p);
-                    using (var bgBrush = new SolidBrush(BannerSchemes.GetColor(target, 5)))
-                        g.FillPath(bgBrush, p);
-                    using (var textBrush = new SolidBrush(BannerSchemes.GetColor(target, 6)))
-                        g.DrawString
-                        (
-                            platformName,
-                            f,
-                            textBrush,
-                            banner.Width - scale(10),
-                            scale(24),
-                            new StringFormat() { Alignment = StringAlignment.Far, LineAlignment = StringAlignment.Center }
-                        );
-                }
                 #endregion
 
                 g.Dispose();

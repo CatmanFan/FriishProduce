@@ -64,7 +64,7 @@ namespace FriishProduce
                 if (_isShown)
                 {
                     title_id_random.Visible =
-                    import_image.Enabled =
+                    groupBox1.Enabled =
                     groupBox2.Enabled =
                     groupBox3.Enabled =
                     groupBox6.Enabled =
@@ -575,7 +575,8 @@ namespace FriishProduce
             // *****************************************************
             // LOADING PROJECT
             // *****************************************************
-            if (project != null)
+            bool loadProject = project != null;
+            if (loadProject)
             {
                 ProjectPath = project.ProjectPath;
 
@@ -626,11 +627,15 @@ namespace FriishProduce
                 LoadSound(project.Sound);
                 setFilesText();
             }
+            else
+            {
+                use_online_wad.Enabled = Properties.Settings.Default.use_online_wad_enabled;
+                if (use_online_wad.Checked && !use_online_wad.Enabled) use_online_wad.Checked = false;
+                if (!use_offline_wad.Checked && !use_online_wad.Checked) use_offline_wad.Checked = true;
+            }
 
-            savedata.Fill.Checked = project == null ? Properties.Settings.Default.auto_fill_save_data : project.LinkSaveDataTitle;
-
-            int forwarderStorageDevice = project == null ? Options.FORWARDER.Default.root_storage_device : project.ForwarderStorageDevice;
-            forwarder_root_device.SelectedIndex = forwarderStorageDevice;
+            savedata.Fill.Checked = loadProject ? project.LinkSaveDataTitle : Properties.Settings.Default.auto_fill_save_data;
+            forwarder_root_device.SelectedIndex = loadProject ? project.ForwarderStorageDevice : Options.FORWARDER.Default.root_storage_device;
 
             IsEmpty = project == null;
             IsModified = false;
@@ -638,14 +643,10 @@ namespace FriishProduce
 
             // Error messages for not found files
             // ********
-            if (project != null)
+            if (loadProject)
                 foreach (var item in new string[] { project.ROM, project.Patch, project.BaseFile, project.Sound })
                     if (!File.Exists(item) && !string.IsNullOrWhiteSpace(item)) MessageBox.Show(string.Format(Program.Lang.Msg(10, true), Path.GetFileName(item)));
             project = null;
-
-            use_online_wad.Enabled = Properties.Settings.Default.use_online_wad_enabled;
-            if (use_online_wad.Checked && !use_online_wad.Enabled) use_online_wad.Checked = false;
-            if (!use_offline_wad.Checked && !use_online_wad.Checked) use_offline_wad.Checked = true;
         }
 
         // -----------------------------------
@@ -1468,6 +1469,7 @@ namespace FriishProduce
         {
             Injectors.Flash.Settings = contentOptions;
             Injectors.Flash.Keymap = keymap;
+            Injectors.Flash.Multifile = multifile_software.Checked;
             outWad = Injectors.Flash.Inject(outWad, rom.FilePath, _saveDataTitle, img);
         }
 
@@ -1933,6 +1935,10 @@ namespace FriishProduce
 
             extra.Visible = manual_type.Visible || forwarder_root_device.Visible;
             extra.Text = manual_type.Visible ? Program.Lang.String(manual_type.Name, Name) : Program.Lang.String(forwarder_root_device.Name, Name);
+            multifile_software.Visible = targetPlatform == Platform.Flash;
+            download_image.Enabled = targetPlatform != Platform.C64
+                                  && targetPlatform != Platform.Flash
+                                  && targetPlatform != Platform.RPGM;
         }
         #endregion
 
@@ -2066,7 +2072,14 @@ namespace FriishProduce
         private void edit_save_data_Click(object sender, EventArgs e)
         {
             // savedata.Text = Program.Lang.String(edit_save_data.Name, Name);
-            savedata.ShowDialog();
+            if (savedata.ShowDialog() == DialogResult.OK) refreshData();
+        }
+
+        private void multifile_software_CheckedChanged(object sender, EventArgs e)
+        {
+            refreshData();
+
+            if (multifile_software.Checked && !Properties.Settings.Default.donotshow_001) MessageBox.Show(null, Program.Lang.Msg(10, false), 1);
         }
     }
 }

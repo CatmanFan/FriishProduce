@@ -234,7 +234,7 @@
             // Localization
             // -----------------------------------------------------------------------------------------------------------
             Program.Lang.Control(this, "controller");
-            Text = Program.Lang.String("controller_mapping", "projectform").TrimEnd('.').Trim();
+            Text = Program.Lang.String("controller", "controller").TrimEnd('.').Trim();
         }
     }
 }

@@ -163,7 +163,7 @@ namespace FriishProduce
             }
 
             mainPanel.Size = tabControl.Size = new Size(Width - w, Height - h);
-
+            CenterToScreen();
 
             // Set logo position (425, 163)
             // ********

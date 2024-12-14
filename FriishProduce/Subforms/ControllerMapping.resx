@@ -202,7 +202,7 @@
     <value>Bottom</value>
   </data>
   <data name="bottomPanel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 370</value>
+    <value>0, 420</value>
   </data>
   <data name="bottomPanel2.Size" type="System.Drawing.Size, System.Drawing">
     <value>784, 42</value>
@@ -220,22 +220,25 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;bottomPanel2.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
-  <data name="vertical_layout.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="vertical_layout.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
   </data>
   <data name="vertical_layout.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 296</value>
+    <value>6, 6</value>
   </data>
   <data name="vertical_layout.Size" type="System.Drawing.Size, System.Drawing">
-    <value>97, 17</value>
+    <value>740, 17</value>
   </data>
   <data name="vertical_layout.TabIndex" type="System.Int32, mscorlib">
     <value>33</value>
   </data>
   <data name="vertical_layout.Text" xml:space="preserve">
     <value>vertical_layout</value>
+  </data>
+  <data name="vertical_layout.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
   </data>
   <data name="&gt;&gt;vertical_layout.Name" xml:space="preserve">
     <value>vertical_layout</value>
@@ -1321,13 +1324,82 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;tabControl1.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="preset_load.Location" type="System.Drawing.Point, System.Drawing">
+    <value>660, 17</value>
+  </data>
+  <data name="preset_load.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 23</value>
+  </data>
+  <data name="preset_load.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
+  </data>
+  <data name="preset_load.Text" xml:space="preserve">
+    <value>preset_load</value>
+  </data>
+  <data name="&gt;&gt;preset_load.Name" xml:space="preserve">
+    <value>preset_load</value>
+  </data>
+  <data name="&gt;&gt;preset_load.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;preset_load.Parent" xml:space="preserve">
+    <value>presets_gb</value>
+  </data>
+  <data name="&gt;&gt;preset_load.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="presets.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 18</value>
+  </data>
+  <data name="presets.Size" type="System.Drawing.Size, System.Drawing">
+    <value>644, 21</value>
+  </data>
+  <data name="presets.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;presets.Name" xml:space="preserve">
+    <value>presets</value>
+  </data>
+  <data name="&gt;&gt;presets.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;presets.Parent" xml:space="preserve">
+    <value>presets_gb</value>
+  </data>
+  <data name="&gt;&gt;presets.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="presets_gb.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 358</value>
+  </data>
+  <data name="presets_gb.Size" type="System.Drawing.Size, System.Drawing">
+    <value>760, 50</value>
+  </data>
+  <data name="presets_gb.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="presets_gb.Text" xml:space="preserve">
+    <value>presets</value>
+  </data>
+  <data name="&gt;&gt;presets_gb.Name" xml:space="preserve">
+    <value>presets_gb</value>
+  </data>
+  <data name="&gt;&gt;presets_gb.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;presets_gb.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;presets_gb.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>784, 412</value>
+    <value>784, 462</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8.25pt</value>

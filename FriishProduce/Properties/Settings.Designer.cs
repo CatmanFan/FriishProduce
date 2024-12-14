@@ -74,6 +74,18 @@ namespace FriishProduce.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool donotshow_001 {
+            get {
+                return ((bool)(this["donotshow_001"]));
+            }
+            set {
+                this["donotshow_001"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool image_fit_aspect_ratio {
             get {
                 return ((bool)(this["image_fit_aspect_ratio"]));

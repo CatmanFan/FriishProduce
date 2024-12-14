@@ -79,6 +79,9 @@ namespace FriishProduce
             this.GC_Up = new System.Windows.Forms.ComboBox();
             this.GC_L = new System.Windows.Forms.ComboBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.presets_gb = new System.Windows.Forms.GroupBox();
+            this.preset_load = new System.Windows.Forms.Button();
+            this.presets = new System.Windows.Forms.ComboBox();
             this.bottomPanel2.SuspendLayout();
             this.bottomPanel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -89,6 +92,7 @@ namespace FriishProduce
             ((System.ComponentModel.ISupportInitialize)(this.image_cc)).BeginInit();
             this.page3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.presets_gb.SuspendLayout();
             this.SuspendLayout();
             // 
             // bottomPanel2
@@ -481,6 +485,29 @@ namespace FriishProduce
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.TabStop = false;
             // 
+            // presets_gb
+            // 
+            this.presets_gb.Controls.Add(this.preset_load);
+            this.presets_gb.Controls.Add(this.presets);
+            resources.ApplyResources(this.presets_gb, "presets_gb");
+            this.presets_gb.Name = "presets_gb";
+            this.presets_gb.TabStop = false;
+            this.presets_gb.Tag = "presets";
+            // 
+            // preset_load
+            // 
+            resources.ApplyResources(this.preset_load, "preset_load");
+            this.preset_load.Name = "preset_load";
+            this.preset_load.Tag = "preset_load";
+            this.preset_load.UseVisualStyleBackColor = true;
+            // 
+            // presets
+            // 
+            this.presets.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.presets.FormattingEnabled = true;
+            resources.ApplyResources(this.presets, "presets");
+            this.presets.Name = "presets";
+            // 
             // ControllerMapping
             // 
             this.AcceptButton = this.b_ok;
@@ -488,6 +515,7 @@ namespace FriishProduce
             this.CancelButton = this.b_cancel;
             resources.ApplyResources(this, "$this");
             this.ControlBox = false;
+            this.Controls.Add(this.presets_gb);
             this.Controls.Add(this.bottomPanel2);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -513,6 +541,7 @@ namespace FriishProduce
             this.page3.ResumeLayout(false);
             this.page3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.presets_gb.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -568,5 +597,8 @@ namespace FriishProduce
         private System.Windows.Forms.ComboBox GC_Up;
         private System.Windows.Forms.ComboBox GC_L;
         private System.Windows.Forms.CheckBox vertical_layout;
+        private System.Windows.Forms.GroupBox presets_gb;
+        private System.Windows.Forms.ComboBox presets;
+        private System.Windows.Forms.Button preset_load;
     }
 }

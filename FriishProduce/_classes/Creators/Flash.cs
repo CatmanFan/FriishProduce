@@ -9,6 +9,7 @@ namespace FriishProduce.Injectors
     {
         public static IDictionary<string, string> Settings { get; set; }
         public static IDictionary<Buttons, string> Keymap { get; set; }
+        public static bool Multifile { get; set; }
 
         // DEFAULT CONFIG FOR REFERENCE:
         /* # Comments (text preceded by #) and line breaks will be ignored
@@ -185,14 +186,6 @@ namespace FriishProduce.Injectors
                 else if (item.ToLower().Contains(".wide.pcf"))
                     MainContent.ReplaceFile(MainContent.GetNodeIndex(item.Replace(".wide", "")), MainContent.Data[MainContent.GetNodeIndex(item)]);
 
-                // Taking the SWF soundfont
-                // ********
-                if (File.Exists(Settings["midi"]))
-                {
-                    MainContent.AddDirectory("/dls");
-                    MainContent.AddFile("/dls/GM16.DLS", File.ReadAllBytes(Settings["midi"]));
-                }
-
                 else if (item.ToLower() == "keymap.ini" && Keymap?.Count > 0)
                 {
                     var file = new List<string>()
@@ -301,6 +294,20 @@ namespace FriishProduce.Injectors
                     MainContent.ReplaceFile(MainContent.GetNodeIndex(item), Encoding.UTF8.GetBytes(string.Join("\r\n", file) + "\r\n"));
                 }
             }
+
+            // Taking the SWF soundfont
+            // ********
+            if (File.Exists(Settings["midi"]))
+            {
+                MainContent.AddDirectory("/dls");
+                MainContent.AddFile("/dls/GM16.DLS", File.ReadAllBytes(Settings["midi"]));
+            }
+
+            // Taking all other files
+            // ********
+            if (Multifile)
+                foreach (string file in Directory.EnumerateFiles(Path.GetDirectoryName(path), "*.*", SearchOption.TopDirectoryOnly))
+                    MainContent.AddFile("/content/" + Path.GetFileName(file), File.ReadAllBytes(file));
 
             // Savebanner .TPL & config
             // ********
