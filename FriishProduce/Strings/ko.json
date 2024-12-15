@@ -100,7 +100,7 @@
 			"007":								"선택한 VC 매뉴얼 보관소가 잘못되었습니다.",
 			"008":								"업데이트가 있습니다.\nFriishProduce v{0}를 이제 다운로드할 수 있습니다.\n현재 v{1}을(를) 실행 중입니다.\n\n지금 깃허브에서 최신 버전을 다운로드하겠습니까?",
 			"009":								"현재 이미 최신 상태입니다.",
-			"010":								"When this option is enabled, the program will treat all files within the same folder as the currently selected one as forming part of the software to be injected.\n\nPlease make sure that your software files are in a separate folder before continuing.",
+			"010":								"이 옵션을 활성화하면 프로그램은 현재 선택된 파일과 같은 폴더 내에 있는 모든 파일을 주입될 소프트웨어의 일부로 취급합니다.\n\n계속하기 전에 소프트웨어 파일이 별도의 폴더에 있는지 확인하세요.",
 			
 			"error":							"오류가 발생했습니다!",
 			"e_000":							"인터넷에 연결하지 못했습니다.\n메시지: {0}",
@@ -143,7 +143,7 @@
 		},
 
 		"settingsform": {
-		    "general":							"General",
+		    "general":							"일반",
 			"language":							"언어",
 			"system_default":					"시스템 기본값",
 			"reset_all_dialogs":				"모든 대화상자 재설정",
@@ -179,7 +179,7 @@
 			"wad_base":							"기반",
 			"import_wad":						"WAD 가져오기...",
 			"use_online_wad":					"...또는 다운로드 가능한 기반 사용",
-			"current_base":						"Current WAD:",
+			"current_base":						"현재 WAD:",
 			
 			"image":							"이미지",
 			"import_image":						"이미지 가져오기...",
@@ -209,13 +209,13 @@
 			
 			"injection_method":					"주입 방법",
 			"injection_method_options":			"주입 방법 옵션...",
-			"controller_mapping":				"Controller buttons mapping...",
+			"controller_mapping":				"컨트롤러 버튼 매핑...",
 			
 			"save_data":						"저장 데이터",
 			"save_data_enable":					"저장 활성화",
 			"edit_save_data":					"저장데이터 타이틀 편집...",
-			"edit_save_data_1":					"Title:",
-			"edit_save_data_2":					"Subtitle:",
+			"edit_save_data_1":					"타이틀:",
+			"edit_save_data_2":					"서브타이틀:",
 			"fill_save_data":					"자동으로 연결",
 			
 			"manual_type":						"사용 설명서:",
@@ -223,7 +223,7 @@
 			"manual_type1":						"{original}",
 			"manual_type2":						"커스텀 매뉴얼 가져오기",
 			"forwarder_root_device":			"루트 저장 장치:",
-			"multifile_software":				"Software is multifile"
+			"multifile_software":				"소프트웨어는 다중 파일입니다"
 		},
 
 		"banner": {
@@ -234,19 +234,19 @@
 		},
 
 		"controller": {
-			"controller":						"Controller configuration",
-			"page1":							"Wii Remote",
-			"page2":							"Classic Controller",
-			"page3":							"GameCube Controller",
+			"controller":						"컨트롤러 구성",
+			"page1":							"위모트",
+			"page2":							"클래식 컨트롤러",
+			"page3":							"게임큐브 컨트롤러",
 
-			"vertical_layout":					"Vertical layout",
-			"presets":							"Presets",
-			"preset_load":						"Load",
+			"vertical_layout":					"수직 레이아웃",
+			"presets":							"사전 설정",
+			"preset_load":						"로드",
 
-			"up":								"Up",
-			"left":								"Left",
-			"right":							"Right",
-			"down":								"Down"
+			"up":								"위쪽",
+			"left":								"왼쪽",
+			"right":							"오른쪽",
+			"down":								"아래쪽"
 		},
 
 		"vc_nes": {
