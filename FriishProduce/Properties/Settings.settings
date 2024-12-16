@@ -29,7 +29,7 @@
     <Setting Name="default_target_filename" Type="System.String" Scope="User">
       <Value Profile="(Default)">FULLNAME</Value>
     </Setting>
-    <Setting Name="auto_update_check" Type="System.Boolean" Scope="User">
+    <Setting Name="auto_update" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="default_injection_method_nes" Type="System.Int32" Scope="User">

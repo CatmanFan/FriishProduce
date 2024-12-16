@@ -136,6 +136,7 @@
 			"game_scan":						"Scan for game data",
 			"export":							"Export...",
 			
+			"tools":							"Tools",
 			"updater":							"Updater",
 			"check_for_updates":				"Check for updates",
 			"auto_update":						"Automatically check for updates on startup",

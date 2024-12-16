@@ -212,11 +212,7 @@ namespace FriishProduce
                 Default.Save();
             }
 
-#if DEBUG
-            GetBanners.Visible = true;
-#else
-            GetBanners.Visible = false;
-#endif
+            GetBanners.Visible = Program.DebugMode;
 
             // NES
             vc_nes_palettelist.SelectedIndex = int.Parse(VC_NES.Default.palette);

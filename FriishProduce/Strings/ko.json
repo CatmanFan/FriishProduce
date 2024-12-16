@@ -136,6 +136,7 @@
 			"game_scan":						"온라인으로 게임 데이터 검색",
 			"export":							"내보내기",
 			
+			"tools":							"Tools",
 			"updater":							"업데이터",
 			"check_for_updates":				"업데이트 확인",
 			"auto_update":						"시작 시 자동으로 업데이트 확인",

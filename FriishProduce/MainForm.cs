@@ -107,15 +107,21 @@ namespace FriishProduce
             #region Localization
             Program.Lang.Control(this);
             Text = Program.Lang.ApplicationTitle;
+            if (Program.DebugMode) Text += " [Running in debug mode]";
             about.Text = string.Format(Program.Lang.String("about_app"), Program.Lang.ApplicationTitle);
 
             foreach (MenuItem section in mainMenu.MenuItems)
                 foreach (MenuItem item in section.MenuItems)
+                {
                     if (Program.Lang.StringCheck(item.Tag?.ToString().ToLower(), Name)) item.Text = Program.Lang.String(item.Tag?.ToString().ToLower(), Name);
+                    foreach (MenuItem subitem in item.MenuItems)
+                        if (Program.Lang.StringCheck(subitem.Tag?.ToString().ToLower(), Name)) subitem.Text = Program.Lang.String(subitem.Tag?.ToString().ToLower(), Name);
+                }
 
             menuItem1.Text = Program.Lang.String(menuItem1.Tag.ToString(), Name);
             menuItem2.Text = Program.Lang.String(menuItem2.Tag.ToString(), Name);
             menuItem3.Text = Program.Lang.String(menuItem3.Tag.ToString(), Name);
+            menuItem4.Text = Program.Lang.String(menuItem4.Tag.ToString(), Name);
             if (import_game_file.Tag == null) import_game_file.Tag = import_game_file.Text;
             import_game_file.Text = string.Format(Program.Lang.String(import_game_file.Tag.ToString(), Name), Program.Lang.String("rom_label1", "projectform"));
 
@@ -174,7 +180,7 @@ namespace FriishProduce
             // ********
             // SaveWAD.InitialDirectory = Paths.Out;
 
-            if (Properties.Settings.Default.auto_update_check) { _ = Updater.GetLatest(); }
+            if (Properties.Settings.Default.auto_update) { _ = Updater.GetLatest(); }
         }
 
         private void MainForm_Closing(object sender, FormClosingEventArgs e)
@@ -394,9 +400,9 @@ namespace FriishProduce
 
         private async void updateCheck()
         {
-            var isUpdated = await Updater.GetLatest();
-            if (isUpdated) MessageBox.Show(Program.Lang.Msg(9), MessageBox.Buttons.Ok, MessageBox.Icons.Information);
-            check_for_updates.Enabled = !isUpdated || !auto_update.Checked;
+            bool updated = await Updater.GetLatest();
+            if (updated) MessageBox.Show(Program.Lang.Msg(9), MessageBox.Buttons.Ok, MessageBox.Icons.Information);
+            check_for_updates.Enabled = !auto_update.Checked || !updated;
         }
 
         private void Update_Click(object sender, EventArgs e)
@@ -409,14 +415,10 @@ namespace FriishProduce
             else if (sender == auto_update)
             {
                 auto_update.Checked = !auto_update.Checked;
+                check_for_updates.Enabled = !Updater.IsLatest;
 
-                if ((sender as Control).Name.ToLower() == auto_update.Name.ToLower())
-                    check_for_updates.Enabled = !Program.IsUpdated || !auto_update.Checked;
-
-                else
-                {
-                    updateCheck();
-                }
+                Properties.Settings.Default.auto_update = auto_update.Checked;
+                Properties.Settings.Default.Save();
             }
 
             /* 

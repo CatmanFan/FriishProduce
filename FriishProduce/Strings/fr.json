@@ -136,6 +136,7 @@
 			"game_scan":						"Charger les informations dès de la bibliothèque des jeux",
 			"export":							"Exporter ...",
 			
+			"tools":							"Outils",
 			"updater":							"Mise à jour",
 			"check_for_updates":				"Vérifier maintenant",
 			"auto_update":						"Vérifier automatiquement au démarrage de l'application",

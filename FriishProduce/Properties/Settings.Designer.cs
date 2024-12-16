@@ -134,12 +134,12 @@ namespace FriishProduce.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool auto_update_check {
+        public bool auto_update {
             get {
-                return ((bool)(this["auto_update_check"]));
+                return ((bool)(this["auto_update"]));
             }
             set {
-                this["auto_update_check"] = value;
+                this["auto_update"] = value;
             }
         }
         

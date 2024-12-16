@@ -317,7 +317,7 @@ namespace FriishProduce
             this.Menu = this.mainMenu;
             this.Name = "LanguageEditor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FriishProduce - Language JSON Editor";
+            this.Text = "FriishProduce - Language JSON Editor [Under Construction]";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Exit_Form);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

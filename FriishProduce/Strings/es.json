@@ -135,6 +135,7 @@
 			"game_scan":						"&Obtener datos del juego de la base de datos en línea",
 			"export":							"Exportar...",
 			
+			"tools":							"Herramientas",
 			"updater":							"Actualización",
 			"check_for_updates":				"Buscar ahora",
 			"auto_update":						"Buscar cuando se abra la aplicación",

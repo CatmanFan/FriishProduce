@@ -7,6 +7,9 @@ namespace FriishProduce
 {
     public static class Updater
     {
+        private static bool _IsLatest = false;
+        public static bool IsLatest { get => _IsLatest; private set { _IsLatest = value; } }
+
         public static string GetCurrentVersion()
         {
             var ver = System.Diagnostics.FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetExecutingAssembly().Location).FileVersion;
@@ -25,8 +28,6 @@ namespace FriishProduce
 
                 if (current.CompareTo(latest) < 0)
                 {
-                    Program.IsUpdated = false;
-
                     if (MessageBox.Show(string.Format(Program.Lang.Msg(8), latest, current), MessageBox.Buttons.YesNo, MessageBox.Icons.Shield) == MessageBox.Result.Yes)
                     {
                         // *************************
@@ -34,12 +35,15 @@ namespace FriishProduce
                         // *************************
                         System.Diagnostics.Process.Start("https://github.com/CatmanFan/FriishProduce/releases/latest");
                     }
+
+                    IsLatest = false;
                 }
 
-                else Program.IsUpdated = true;
+                else IsLatest = true;
             }
             catch { }
-            return Program.IsUpdated;
+
+            return IsLatest;
         }
     }
 }

@@ -98,6 +98,10 @@ namespace FriishProduce
                     int index = 0;
                     if (target.global != null)
                     {
+                        foreach (var row in strings.Rows)
+                        {
+                            ;
+                        }
                         foreach (var section in target.global)
                         {
                             foreach (var item in section.Value)
