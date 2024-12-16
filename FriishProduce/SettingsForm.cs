@@ -52,8 +52,9 @@ namespace FriishProduce
             TreeView.Nodes[0].Text = Program.Lang.String(TreeView.Nodes[0].Tag.ToString(), Tag.ToString());
             TreeView.Nodes[1].Text = Program.Lang.String(TreeView.Nodes[1].Tag.ToString(), Tag.ToString());
             TreeView.Nodes[2].Text = Program.Lang.String(TreeView.Nodes[2].Tag.ToString(), Tag.ToString());
+            TreeView.Nodes[3].Text = Program.Lang.String(TreeView.Nodes[3].Tag.ToString(), Tag.ToString());
 
-            var default_node = TreeView.Nodes[3];
+            var default_node = TreeView.Nodes[1];
             default_node.Text = Program.Lang.String(default_node.Tag.ToString(), Tag.ToString());
             default_node.Expand();
             default_node.Nodes[0].Text = Program.Lang.Console(Platform.NES);
@@ -63,9 +64,6 @@ namespace FriishProduce
             default_node.Nodes[4].Text = Program.Lang.Console(Platform.NEO);
             default_node.Nodes[5].Text = Program.Lang.Console(Platform.Flash);
             default_node.Nodes[6].Text = Program.Lang.String("forwarders", "platforms");
-
-            TreeView.Nodes[4].Text = Program.Lang.String(TreeView.Nodes[3].Tag.ToString(), Tag.ToString());
-            TreeView.Nodes[5].Text = Program.Lang.String(TreeView.Nodes[4].Tag.ToString(), Tag.ToString());
 
             if (use_online_wad_tip.MaximumSize.IsEmpty) use_online_wad_tip.MaximumSize = use_online_wad_tip.Size;
             use_online_wad_tip.AutoSize = true;
@@ -492,14 +490,13 @@ namespace FriishProduce
                     v_selected == "1",
                     v_selected == "2",
                     v_selected == "3",
-                    v_selected == "4",
-                    v_selected == "forwarders",
                     v_selected == "nes",
                     v_selected == "n64",
                     v_selected == "sega",
                     v_selected == "pce",
                     v_selected == "neo",
                     v_selected == "flash",
+                    v_selected == "forwarders"
                 };
 
             foreach (var item in isVisible)
@@ -508,15 +505,15 @@ namespace FriishProduce
                 {
                     panel1.Visible = isVisible[0];
                     panel2.Visible = isVisible[1];
-                    vc_nes.Visible = isVisible[2];
-                    vc_n64.Visible = isVisible[3];
-                    vc_sega.Visible = isVisible[4];
-                    vc_pce.Visible = isVisible[5];
-                    vc_neo.Visible = isVisible[6];
-                    adobe_flash.Visible = isVisible[7];
-                    forwarder.Visible = isVisible[8];
-                    default_injection_methods.Visible = isVisible[9];
-                    bios_files.Visible = isVisible[10];
+                    default_injection_methods.Visible = isVisible[2];
+                    bios_files.Visible = isVisible[3];
+                    vc_nes.Visible = isVisible[4];
+                    vc_n64.Visible = isVisible[5];
+                    vc_sega.Visible = isVisible[6];
+                    vc_pce.Visible = isVisible[7];
+                    vc_neo.Visible = isVisible[8];
+                    adobe_flash.Visible = isVisible[9];
+                    forwarder.Visible = isVisible[10];
                 }
             }
         }

@@ -86,6 +86,7 @@ namespace FriishProduce
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rom_label_filename = new System.Windows.Forms.Label();
             this.rom_label = new System.Windows.Forms.Label();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.bannerMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.title_id_random)).BeginInit();
             this.groupBox8.SuspendLayout();
@@ -99,6 +100,7 @@ namespace FriishProduce
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox6.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // baseRegionList
@@ -546,10 +548,17 @@ namespace FriishProduce
             this.rom_label.Name = "rom_label";
             this.rom_label.Tag = "rom_label";
             // 
+            // pictureBox3
+            // 
+            resources.ApplyResources(this.pictureBox3, "pictureBox3");
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.TabStop = false;
+            // 
             // ProjectForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.groupBox8);
             this.Controls.Add(this.groupBox3);
@@ -582,6 +591,7 @@ namespace FriishProduce
             this.groupBox6.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -642,5 +652,6 @@ namespace FriishProduce
         private System.Windows.Forms.Label rom_label_filename;
         private System.Windows.Forms.Label rom_label;
         private System.Windows.Forms.CheckBox multifile_software;
+        private System.Windows.Forms.PictureBox pictureBox3;
     }
 }

@@ -294,6 +294,12 @@
     <Compile Include="Subforms\Controllers\Controller_SEGA.Designer.cs">
       <DependentUpon>Controller_SEGA.cs</DependentUpon>
     </Compile>
+    <Compile Include="Subforms\LanguageEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Subforms\LanguageEditor.Designer.cs">
+      <DependentUpon>LanguageEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Subforms\Savedata.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -447,6 +453,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Subforms\ContentOptions\Options_VC_SEGA.resx">
       <DependentUpon>Options_VC_SEGA.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Subforms\LanguageEditor.resx">
+      <DependentUpon>LanguageEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Subforms\Savedata.resx">
       <DependentUpon>Savedata.cs</DependentUpon>

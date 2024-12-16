@@ -67,11 +67,12 @@ namespace FriishProduce
             this.menuItem13 = new System.Windows.Forms.MenuItem();
             this.close_project = new System.Windows.Forms.MenuItem();
             this.menuItem3 = new System.Windows.Forms.MenuItem();
-            this.about = new System.Windows.Forms.MenuItem();
-            this.tabControl = new MdiTabControl.TabControl();
-            this.menuItem5 = new System.Windows.Forms.MenuItem();
             this.check_for_updates = new System.Windows.Forms.MenuItem();
             this.auto_update = new System.Windows.Forms.MenuItem();
+            this.menuItem5 = new System.Windows.Forms.MenuItem();
+            this.about = new System.Windows.Forms.MenuItem();
+            this.tabControl = new MdiTabControl.TabControl();
+            this.language_file_editor = new System.Windows.Forms.MenuItem();
             this.mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             this.toolStrip.SuspendLayout();
@@ -233,6 +234,7 @@ namespace FriishProduce
             this.save_project_as,
             this.menuItem8,
             this.preferences,
+            this.language_file_editor,
             this.exit});
             this.menuItem1.Tag = "file";
             resources.ApplyResources(this.menuItem1, "menuItem1");
@@ -278,7 +280,7 @@ namespace FriishProduce
             // 
             // exit
             // 
-            this.exit.Index = 6;
+            this.exit.Index = 7;
             resources.ApplyResources(this.exit, "exit");
             this.exit.Tag = "exit";
             this.exit.Click += new System.EventHandler(this.MenuItem_Exit_Click);
@@ -344,6 +346,23 @@ namespace FriishProduce
             this.menuItem3.Tag = "help";
             resources.ApplyResources(this.menuItem3, "menuItem3");
             // 
+            // check_for_updates
+            // 
+            this.check_for_updates.Index = 0;
+            resources.ApplyResources(this.check_for_updates, "check_for_updates");
+            this.check_for_updates.Click += new System.EventHandler(this.Update_Click);
+            // 
+            // auto_update
+            // 
+            this.auto_update.Index = 1;
+            resources.ApplyResources(this.auto_update, "auto_update");
+            this.auto_update.Click += new System.EventHandler(this.Update_Click);
+            // 
+            // menuItem5
+            // 
+            this.menuItem5.Index = 2;
+            resources.ApplyResources(this.menuItem5, "menuItem5");
+            // 
             // about
             // 
             this.about.Index = 3;
@@ -371,22 +390,11 @@ namespace FriishProduce
             this.tabControl.TabHeight = 25;
             this.tabControl.TopSeparator = false;
             // 
-            // menuItem5
+            // language_file_editor
             // 
-            this.menuItem5.Index = 2;
-            resources.ApplyResources(this.menuItem5, "menuItem5");
-            // 
-            // check_for_updates
-            // 
-            this.check_for_updates.Index = 0;
-            resources.ApplyResources(this.check_for_updates, "check_for_updates");
-            this.check_for_updates.Click += new System.EventHandler(this.Update_Click);
-            // 
-            // auto_update
-            // 
-            this.auto_update.Index = 1;
-            resources.ApplyResources(this.auto_update, "auto_update");
-            this.auto_update.Click += new System.EventHandler(this.Update_Click);
+            this.language_file_editor.Index = 6;
+            resources.ApplyResources(this.language_file_editor, "language_file_editor");
+            this.language_file_editor.Click += new System.EventHandler(this.LanguageFileEditor);
             // 
             // MainForm
             // 
@@ -455,6 +463,7 @@ namespace FriishProduce
         private System.Windows.Forms.MenuItem menuItem5;
         private System.Windows.Forms.MenuItem check_for_updates;
         private System.Windows.Forms.MenuItem auto_update;
+        private System.Windows.Forms.MenuItem language_file_editor;
     }
 }
 

@@ -422,5 +422,10 @@ namespace FriishProduce
             /* 
             check_for_updates.Enabled = !Default.auto_update_check || !Program.IsUpdated; */
         }
+
+        private void LanguageFileEditor(object sender, EventArgs e)
+        {
+            new LanguageEditor().ShowDialog();
+        }
     }
 }

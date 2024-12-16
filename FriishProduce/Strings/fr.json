@@ -314,7 +314,7 @@
 			"quality0":							"Élevé",
 			"quality1":							"Moyen",
 			"quality2":							"Bas",
-			"strap_reminder":					"Écran de dragonne",
+			"strap_reminder":					"Rappel de dragonne",
 			"strap_reminder0":					"{disabled}",
 			"strap_reminder1":					"{enabled}",
 			"strap_reminder2":					"{enabled} (sans section consacrée aux extensions externes)"

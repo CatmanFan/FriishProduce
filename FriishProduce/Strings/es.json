@@ -313,7 +313,7 @@
 			"quality0":							"Alta",
 			"quality1":							"Media",
 			"quality2":							"Baja",
-			"strap_reminder":					"Aviso de correa del mando",
+			"strap_reminder":					"Advertencia de correa del mando",
 			"strap_reminder0":					"{disabled}",
 			"strap_reminder1":					"{enabled}",
 			"strap_reminder2":					"{enabled} (sin pantalla de mandos complementarios)"
