@@ -29,16 +29,7 @@ namespace FriishProduce
         /// </summary>
         private void InitializeComponent()
         {
-            this.bottomPanel1.SuspendLayout();
-            this.SuspendLayout();
-            // 
-            // Controller_SEGA
-            // 
-            this.ClientSize = new System.Drawing.Size(784, 421);
-            this.Name = "Controller_SEGA";
-            this.bottomPanel1.ResumeLayout(false);
-            this.ResumeLayout(false);
-
+            this.components = new System.ComponentModel.Container();
         }
 
         #endregion

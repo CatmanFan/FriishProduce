@@ -29,6 +29,9 @@ namespace FriishProduce
                 Program.Lang.Control(this);
 
                 #region Localization
+                controller_cb.Text = Program.Lang.String("controller", "projectform");
+                b_controller.Text = Program.Lang.String("controller_mapping", "projectform");
+
                 region.Text = Program.Lang.String("region");
                 save_sram.Text = Program.Lang.String("save_data_enable", "projectform");
                 console_disableresetbutton.Text = Program.Lang.String("console_disableresetbutton", "vc_sega");
@@ -51,9 +54,9 @@ namespace FriishProduce
 
             // Controller options availability
             // *******
-            if (EmuType >= 2 && controllerForm == null)
-                controllerForm = new Controller_SEGA();
-            else if (EmuType < 2 && controllerForm != null)
+            if (EmuType == 3 && controllerForm == null)
+                controllerForm = new Controller_SEGA(IsSMS);
+            else if (EmuType < 3 && controllerForm != null)
                 controllerForm = null;
 
             // Form control

@@ -15,7 +15,7 @@ namespace FriishProduce
         private readonly string extension = ".json";
         private readonly byte[] englishFile = Properties.Resources.English;
 
-        protected class LanguageData
+        public class LanguageData
         {
             public string language { get; set; }
             public string author { get; set; }

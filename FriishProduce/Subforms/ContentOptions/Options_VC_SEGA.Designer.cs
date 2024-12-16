@@ -40,6 +40,7 @@ namespace FriishProduce
             this.console_disableresetbutton = new System.Windows.Forms.CheckBox();
             this.region = new System.Windows.Forms.GroupBox();
             this.bottomPanel1.SuspendLayout();
+            this.controller_box.SuspendLayout();
             this.display.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.console_brightness)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -58,6 +59,15 @@ namespace FriishProduce
             // bottomPanel1
             // 
             this.bottomPanel1.Size = new System.Drawing.Size(654, 41);
+            // 
+            // b_controller
+            // 
+            this.b_controller.Size = new System.Drawing.Size(292, 24);
+            // 
+            // controller_box
+            // 
+            this.controller_box.Location = new System.Drawing.Point(330, 240);
+            this.controller_box.Size = new System.Drawing.Size(312, 54);
             // 
             // display
             // 
@@ -120,7 +130,7 @@ namespace FriishProduce
             this.vc_options.Controls.Add(this.console_disableresetbutton);
             this.vc_options.Location = new System.Drawing.Point(330, 66);
             this.vc_options.Name = "vc_options";
-            this.vc_options.Size = new System.Drawing.Size(312, 228);
+            this.vc_options.Size = new System.Drawing.Size(312, 168);
             this.vc_options.TabIndex = 20;
             this.vc_options.TabStop = false;
             this.vc_options.Tag = "vc_options";
@@ -181,10 +191,13 @@ namespace FriishProduce
             this.Controls.Add(this.display);
             this.Name = "Options_VC_SEGA";
             this.Tag = "vc_sega";
+            this.Controls.SetChildIndex(this.controller_box, 0);
             this.Controls.SetChildIndex(this.display, 0);
             this.Controls.SetChildIndex(this.vc_options, 0);
             this.Controls.SetChildIndex(this.region, 0);
             this.bottomPanel1.ResumeLayout(false);
+            this.controller_box.ResumeLayout(false);
+            this.controller_box.PerformLayout();
             this.display.ResumeLayout(false);
             this.display.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.console_brightness)).EndInit();

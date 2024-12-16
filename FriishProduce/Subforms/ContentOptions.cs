@@ -26,6 +26,7 @@ namespace FriishProduce
                 // *****************************************
                 b_ok.Click += OK_Click;
                 b_cancel.Click += Cancel_Click;
+                controller_cb.Click += Controller_Toggle;
                 b_controller.Click += OpenControllerMapping;
                 Load += Form_Load;
                 // *****************************************
@@ -73,24 +74,42 @@ namespace FriishProduce
         // ---------------------------------------------------------------------------------------------------------------
 
         public IDictionary<string, string> Options { get; set; }
+        public int EmuType { get; set; }
+
+        protected ControllerMapping controllerForm { get; set; }
+
+        public bool UsesKeymap { get; set; }
+
+        private IDictionary<Buttons, string> _Keymap;
+        private IDictionary<Buttons, string> _oldKeymap;
         public IDictionary<Buttons, string> Keymap
         {
             get
             {
-                if (controllerForm != null) return controllerForm.Keymap;
+                if (controllerForm != null)
+                {
+                    controllerForm.Keymap = _Keymap;
+                    return _Keymap;
+                }
                 else return null;
             }
             set
             {
-                if (controllerForm != null) controllerForm.Keymap = value;
+                if (controllerForm != null)
+                {
+                    controllerForm.Keymap = _Keymap = value;
+                }
             }
         }
-        protected ControllerMapping controllerForm { get; set; }
-        public int EmuType { get; set; }
 
         protected void OK_Click(object sender, EventArgs e)
         {
             if (DesignMode) return;
+
+            _Keymap = controllerForm.Keymap;
+            if (_oldKeymap != _Keymap)
+                _oldKeymap = new Dictionary<Buttons, string>(_Keymap);
+            UsesKeymap = controller_cb.Checked;
 
             SaveOptions();
             DialogResult = DialogResult.OK;
@@ -100,6 +119,9 @@ namespace FriishProduce
         {
             if (DesignMode) return;
 
+            if (_oldKeymap != null)
+                controllerForm.Keymap = _Keymap = new Dictionary<Buttons, string>(_oldKeymap);
+
             DialogResult = DialogResult.Cancel;
         }
 
@@ -107,7 +129,11 @@ namespace FriishProduce
         {
             if (DesignMode) return;
 
-            b_controller.Visible = b_controller.Enabled = controllerForm != null;
+            if (_oldKeymap == null && _Keymap != null)
+                _oldKeymap = controllerForm.Keymap = new Dictionary<Buttons, string>(_Keymap);
+            controller_box.Visible = controllerForm != null;
+            b_controller.Enabled = controller_cb.Checked = UsesKeymap && controllerForm != null;
+
             ResetOptions();
             CenterToParent();
         }
@@ -115,10 +141,12 @@ namespace FriishProduce
         protected void OpenControllerMapping(object sender, EventArgs e)
         {
             if (DesignMode) return;
-
-            // Code logic in derived Form
-            // ********
             controllerForm.ShowDialog();
+        }
+
+        private void Controller_Toggle(object sender, EventArgs e)
+        {
+            b_controller.Enabled = controller_cb.Checked;
         }
     }
 }

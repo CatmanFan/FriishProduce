@@ -135,7 +135,10 @@
 			"import_game_file":					"Import {0}...",
 			"game_scan":						"Scan for game data",
 			"export":							"Export...",
-
+			
+			"updater":							"Updater",
+			"check_for_updates":				"Check for updates",
+			"auto_update":						"Automatically check for updates on startup",
 			"exit":								"Exit",
 
 			"project_type":						"{0} WAD",
@@ -150,11 +153,7 @@
 			"use_custom_database":				"Use custom WAD database file",
 			"bypass_rom_size":					"Bypass ROM filesize limit",
 
-			"updater":							"Updater",
-			"check_for_updates":				"Check for updates",
-			"auto_update_check":				"Check for updates automatically on startup",
-
-			"bios":								"BIOS files",
+			"bios_files":						"BIOS files",
 			"browse_bios":						"Select a BIOS file...",
 			
 			"default_settings":					"Default settings",
@@ -210,7 +209,8 @@
 
 			"injection_method":					"Injection method",
 			"injection_method_options":			"Injection method options...",
-			"controller_mapping":				"Controller buttons mapping...",
+			"controller":						"Controller configuration",
+			"controller_mapping":				"Edit controller mapping...",
 
 			"save_data":						"Savedata",
 			"save_data_enable":					"Enable saving",
@@ -235,13 +235,13 @@
 		},
 
 		"controller": {
-			"controller":						"Controller configuration",
 			"page1":							"Wii Remote",
 			"page2":							"Classic Controller",
 			"page3":							"GameCube Controller",
 
 			"vertical_layout":					"Vertical layout",
 			"presets":							"Presets",
+			"preset_blank":						"Blank",
 			"preset_load":						"Load",
 
 			"up":								"Up",

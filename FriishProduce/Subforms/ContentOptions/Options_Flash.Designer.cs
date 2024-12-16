@@ -44,11 +44,21 @@ namespace FriishProduce
             this.strap_reminder_list = new System.Windows.Forms.ComboBox();
             this.ImportDLS = new System.Windows.Forms.OpenFileDialog();
             this.bottomPanel1.SuspendLayout();
+            this.controller_box.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.quality.SuspendLayout();
             this.controls.SuspendLayout();
             this.strap_reminder.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // b_controller
+            // 
+            this.b_controller.Size = new System.Drawing.Size(510, 24);
+            // 
+            // controller_box
+            // 
+            this.controller_box.Location = new System.Drawing.Point(12, 313);
+            this.controller_box.Size = new System.Drawing.Size(530, 54);
             // 
             // quality_list
             // 
@@ -228,11 +238,14 @@ namespace FriishProduce
             this.Controls.Add(this.groupBox1);
             this.Name = "Options_Flash";
             this.Tag = "adobe_flash";
+            this.Controls.SetChildIndex(this.controller_box, 0);
             this.Controls.SetChildIndex(this.groupBox1, 0);
             this.Controls.SetChildIndex(this.quality, 0);
             this.Controls.SetChildIndex(this.controls, 0);
             this.Controls.SetChildIndex(this.strap_reminder, 0);
             this.bottomPanel1.ResumeLayout(false);
+            this.controller_box.ResumeLayout(false);
+            this.controller_box.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.quality.ResumeLayout(false);

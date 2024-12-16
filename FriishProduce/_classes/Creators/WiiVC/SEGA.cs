@@ -242,7 +242,7 @@ namespace FriishProduce.Injectors
                             break;
                     }
 
-                    if (Keymap != null)
+                    if (Keymap?.Count >= 34)
                     {
                         bool notAdded = false;
 

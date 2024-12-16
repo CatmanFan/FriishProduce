@@ -35,6 +35,8 @@ namespace FriishProduce
                 Program.Lang.Control(this);
                 groupBox1.Text = Program.Lang.String("save_data", "projectform");
                 save_data_enable.Text = Program.Lang.String("save_data_enable", "projectform");
+
+                controller_cb.Text = Program.Lang.String("controller", "projectform");
                 b_controller.Text = Program.Lang.String("controller_mapping", "projectform");
             }
         }

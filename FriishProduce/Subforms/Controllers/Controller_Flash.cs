@@ -1,4 +1,6 @@
-﻿namespace FriishProduce
+﻿using System.Collections.Generic;
+
+namespace FriishProduce
 {
     public partial class Controller_Flash : ControllerMapping
     {
@@ -8,6 +10,7 @@
             UsesNunchuk = true;
             InitializeComponent();
 
+            #region Modifiable values: Buttons
             available = new()
             {
                 Wii = new Buttons[]
@@ -96,17 +99,17 @@
                     "X",
                     "Y",
                     "Z",
-                    ";   :",
-                    "=   +",
-                    ",   <",
-                    "-   _",
-                    ".   >",
-                    "/   ?",
-                    "`   ~",
-                    "[   {",
-                    "\\   |",
-                    "]   }",
-                    "'   \"",
+                    ";　　:",
+                    "=　　+",
+                    ",　　<",
+                    "-　　_",
+                    ".　　>",
+                    "/　　?",
+                    "`　　~",
+                    "[　　{",
+                    "\\　　|",
+                    "]　　}",
+                    "'　　\"",
 
                     "PageUp",
                     "PageDown",
@@ -194,40 +197,117 @@
                     "KEY_SELECT",
                     "KEY_FORWARD",
                     "KEY_BACKWARD",
-                    "KEY_TAB",
-
-
-                    "KEY_BUTTON_LEFT",
-                    "KEY_BUTTON_RIGHT",
-                    "KEY_BUTTON_DOWN",
-                    "KEY_BUTTON_UP",
-                    "KEY_BUTTON_A",
-                    "KEY_BUTTON_B",
-                    "KEY_BUTTON_HOME",
-                    "KEY_BUTTON_PLUS",
-                    "KEY_BUTTON_MINUS",
-                    "KEY_BUTTON_1",
-                    "KEY_BUTTON_2",
-                    "KEY_BUTTON_Z",
-                    "KEY_BUTTON_C",
-                    "KEY_CL_BUTTON_UP",
-                    "KEY_CL_BUTTON_LEFT",
-                    "KEY_CL_TRIGGER_ZR",
-                    "KEY_CL_BUTTON_X",
-                    "KEY_CL_BUTTON_A",
-                    "KEY_CL_BUTTON_Y",
-                    "KEY_CL_BUTTON_B",
-                    "KEY_CL_TRIGGER_ZL",
-                    "KEY_CL_RESERVED",
-                    "KEY_CL_TRIGGER_R",
-                    "KEY_CL_BUTTON_PLUS",
-                    "KEY_CL_BUTTON_HOME",
-                    "KEY_CL_BUTTON_MINUS",
-                    "KEY_CL_TRIGGER_L",
-                    "KEY_CL_BUTTON_DOWN",
-                    "KEY_CL_BUTTON_RIGHT",
+                    "KEY_TAB"
                 }
             };
+            #endregion
+
+            #region Modifiable values: Available presets
+            presets = new Dictionary<string, string[]>()
+            {
+                { "Basic (Horizontal)", new string[]
+                    {
+                        "KEY_DOWN",
+                        "KEY_UP",
+                        "KEY_RIGHT",
+                        "KEY_LEFT",
+                        "KEY_SELECT",
+                        null,
+                        null,
+                        "KEY_ENTER",
+                        null,
+                        "KEY_ESCAPE",
+                        null,
+                        null,
+                        null,
+
+                        "KEY_UP",
+                        "KEY_LEFT",
+                        null,
+                        null,
+                        "KEY_ESCAPE",
+                        null,
+                        null,
+                        null,
+                        null,
+                        "KEY_ENTER",
+                        null,
+                        null,
+                        null,
+                        "KEY_DOWN",
+                        "KEY_RIGHT"
+                    }
+                },
+
+                { "Basic (Vertical)", new string[]
+                    {
+                        "KEY_LEFT",
+                        "KEY_RIGHT",
+                        "KEY_DOWN",
+                        "KEY_UP",
+                        "KEY_SELECT",
+                        null,
+                        null,
+                        "KEY_ENTER",
+                        null,
+                        "KEY_ESCAPE",
+                        null,
+                        null,
+                        null,
+
+                        "KEY_UP",
+                        "KEY_LEFT",
+                        null,
+                        null,
+                        "KEY_ESCAPE",
+                        null,
+                        null,
+                        null,
+                        null,
+                        "KEY_ENTER",
+                        null,
+                        null,
+                        null,
+                        "KEY_DOWN",
+                        "KEY_RIGHT"
+                    }
+                },
+
+                { "Mouse-Only", new string[]
+                    {
+                        null,
+                        null,
+                        null,
+                        null,
+                        "KEY_SELECT",
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null
+                    }
+                },
+            };
+            #endregion
 
             ResetLayout();
 

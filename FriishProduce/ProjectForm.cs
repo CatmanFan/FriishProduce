@@ -53,6 +53,28 @@ namespace FriishProduce
         }
         private bool _isModified;
 
+        private bool _isLocked;
+        public bool IsLocked
+        {
+            get => _isLocked;
+
+            set
+            {
+                _isLocked = value;
+
+                checkImg1.Visible =
+                title_id_random.Visible =
+                groupBox1.Enabled =
+                groupBox2.Enabled =
+                groupBox3.Enabled =
+                groupBox6.Enabled =
+                groupBox7.Enabled =
+                groupBox8.Enabled = !value;
+
+                include_patch.Enabled = !value && showPatch;
+            }
+        }
+
         public bool IsEmpty
         {
             get => _isEmpty;
@@ -63,15 +85,7 @@ namespace FriishProduce
 
                 if (_isShown)
                 {
-                    title_id_random.Visible =
-                    groupBox1.Enabled =
-                    groupBox2.Enabled =
-                    groupBox3.Enabled =
-                    groupBox6.Enabled =
-                    groupBox7.Enabled =
-                    groupBox8.Enabled = !value;
-
-                    include_patch.Enabled = !value && showPatch;
+                    IsLocked = value;
                 }
             }
         }
@@ -156,7 +170,7 @@ namespace FriishProduce
 
         protected ContentOptions contentOptionsForm { get; set; }
         protected IDictionary<string, string> contentOptions { get => contentOptionsForm?.Options; }
-        protected IDictionary<Buttons, string> keymap { get => contentOptionsForm?.Keymap; }
+        protected (bool Enabled, IDictionary<Buttons, string> List) keymap { get => contentOptionsForm != null ? (contentOptionsForm.UsesKeymap, contentOptionsForm.Keymap) : (false, null); }
 
         #region Channel/banner parameters
         private string _tID { get => title_id_upper.Text.ToUpper(); }
@@ -224,9 +238,10 @@ namespace FriishProduce
                 Sound = sound,
 
                 ContentOptions = contentOptions ?? null,
-                Keymap = keymap ?? null,
+                Keymap = (keymap.Enabled, keymap.List ?? null),
                 InjectionMethod = injection_methods.SelectedIndex,
                 ForwarderStorageDevice = forwarder_root_device.SelectedIndex,
+                IsMultifile = multifile_software.Checked,
 
                 LinkSaveDataTitle = savedata.Fill.Checked,
                 VideoMode = video_modes.SelectedIndex,
@@ -613,6 +628,7 @@ namespace FriishProduce
 
                 regions.SelectedIndex = project.WADRegion;
                 injection_methods.SelectedIndex = project.InjectionMethod;
+                multifile_software.Checked = project.IsMultifile;
                 image_interpolation_mode.SelectedIndex = project.ImageOptions.Item1;
                 image_resize0.Checked = !project.ImageOptions.Item2;
                 image_resize1.Checked = project.ImageOptions.Item2;
@@ -620,7 +636,8 @@ namespace FriishProduce
                 if (contentOptionsForm != null)
                 {
                     contentOptionsForm.Options = project.ContentOptions;
-                    contentOptionsForm.Keymap = project.Keymap;
+                    contentOptionsForm.UsesKeymap = project.Keymap.Enabled;
+                    contentOptionsForm.Keymap = project.Keymap.List;
                 }
                 LoadImage();
                 LoadManual(project.Manual.Type, project.Manual.File);
@@ -718,6 +735,7 @@ namespace FriishProduce
                 IsModified = true;
             }
 
+            injection_method_options.Enabled = WADPath != null || use_online_wad.Checked;
             setFilesText();
         }
 
@@ -766,7 +784,7 @@ namespace FriishProduce
 
             // WAD
             // ********
-            checkImg3.Image = hasWad ? Properties.Resources.yes : Properties.Resources.no;
+            checkImg1.Image = hasWad ? Properties.Resources.tick : Properties.Resources.cross;
             baseName.Visible = baseID.Visible = hasWad || use_online_wad.Checked;
         }
 
@@ -821,7 +839,12 @@ namespace FriishProduce
                 {
                     if (result == MessageBox.Result.Button1)
                     {
-                        return Program.MainForm.SaveAs_Trigger();
+                        if (File.Exists(ProjectPath))
+                        {
+                            SaveProject(ProjectPath);
+                            return true;
+                        }
+                        else return Program.MainForm.SaveAs_Trigger();
                     }
 
                     else if (result == MessageBox.Result.Button2)
@@ -916,7 +939,7 @@ namespace FriishProduce
 
             use_offline_wad.Checked = !use_online_wad.Checked;
             Base.Enabled = BaseRegion.Enabled = use_online_wad.Checked;
-            checkImg3.Visible = import_wad.Enabled = use_offline_wad.Checked;
+            checkImg1.Visible = import_wad.Enabled = use_offline_wad.Checked;
 
             if (Base.Enabled)
             {
@@ -1312,6 +1335,7 @@ namespace FriishProduce
         public bool SaveToWAD(string targetFile = null)
         {
             if (targetFile == null) targetFile = Paths.WorkingFolder + "out.wad";
+            IsLocked = true;
 
             try
             {
@@ -1416,6 +1440,7 @@ namespace FriishProduce
                 // *******
                 if (File.Exists(targetFile) && File.ReadAllBytes(targetFile).Length > 10)
                 {
+                    IsLocked = false;
                     SystemSounds.Beep.Play();
 
                     switch (MessageBox.Show(Program.Lang.Msg(3), null, MessageBox.Buttons.YesNo, MessageBox.Icons.Information))
@@ -1432,6 +1457,7 @@ namespace FriishProduce
 
             catch (Exception ex)
             {
+                IsLocked = false;
                 MessageBox.Error(ex.Message);
                 return false;
             }
@@ -1468,7 +1494,7 @@ namespace FriishProduce
         public void FlashInject()
         {
             Injectors.Flash.Settings = contentOptions;
-            Injectors.Flash.Keymap = keymap;
+            Injectors.Flash.Keymap = keymap.Enabled ? keymap.List : null;
             Injectors.Flash.Multifile = multifile_software.Checked;
             outWad = Injectors.Flash.Inject(outWad, rom.FilePath, _saveDataTitle, img);
         }
@@ -1502,7 +1528,7 @@ namespace FriishProduce
                     VC = new Injectors.N64()
                     {
                         Settings = contentOptions,
-                        Keymap = keymap,
+                        Keymap = keymap.Enabled ? keymap.List : null,
 
                         CompressionType = emuVer == 3 ? (contentOptions["romc"] == "0" ? 1 : 2) : 0,
                         Allocate = contentOptions["rom_autosize"] == "True" && (emuVer <= 1),
@@ -1515,7 +1541,7 @@ namespace FriishProduce
                 case Platform.SMD:
                     VC = new Injectors.SEGA()
                     {
-                        Keymap = keymap,
+                        Keymap = keymap.Enabled ? keymap.List : null,
 
                         IsSMS = targetPlatform == Platform.SMS
                     };
@@ -1652,9 +1678,23 @@ namespace FriishProduce
 
             var altRegions = new Dictionary<string, int>()
             {
+                { "-JP", 0 },
+                { "-KR", 1 },
+                { "-GB", 2 },
+                { "-FR", 2 },
+                { "-ES", 2 },
+                { "-PT", 2 },
+                { "-IN", 2 },
+                { "-ZA", 2 },
+                { "-CA", 3 },
+                { "-US", 3 },
+                { "-419", 3 },
+                { "-MX", 3 },
+                { "-BR", 3 },
                 { "ja", 0 },
                 { "ko", 1 },
                 { "fr", 2 },
+                { "es", 2 },
                 { "de", 2 },
                 { "nl", 2 },
                 { "it", 2 },
@@ -1663,24 +1703,15 @@ namespace FriishProduce
                 { "uk", 2 },
                 { "tr", 2 },
                 { "hu", 2 },
+                { "ro", 2 },
                 { "ca", 2 },
                 { "eu", 2 },
                 { "gl", 2 },
                 { "ast", 2 },
+                { "dk", 2 },
                 { "no", 2 },
                 { "sv", 2 },
                 { "fi", 2 },
-                { "-GB", 2 },
-                { "-UK", 2 },
-                { "-ES", 2 },
-                { "-PT", 2 },
-                { "-RU", 2 },
-                { "-IN", 2 },
-                { "-ZA", 2 },
-                { "-CA", 3 },
-                { "-US", 3 },
-                { "-MX", 3 },
-                { "-BR", 3 },
             };
 
             foreach (var item in altRegions) if (Program.Lang.Current.ToLower().StartsWith(item.Key) || (item.Key.Contains("-") && Program.Lang.Current.ToLower().EndsWith(item.Key)))
@@ -1918,7 +1949,7 @@ namespace FriishProduce
             {
                 contentOptionsForm.Font = Font;
                 // contentOptionsForm.Text = Program.Lang.String("injection_method_options", "projectform").TrimEnd('.').Trim();
-                contentOptionsForm.Icon = Icon.FromHandle(Properties.Resources.wrench.GetHicon());
+                contentOptionsForm.Icon = Icon.FromHandle((injection_method_options.Image as Bitmap).GetHicon());
             }
 
             if (!isVirtualConsole && manual != null)
@@ -2079,7 +2110,7 @@ namespace FriishProduce
         {
             refreshData();
 
-            if (multifile_software.Checked && !Properties.Settings.Default.donotshow_001) MessageBox.Show(null, Program.Lang.Msg(10, false), 1);
+            if (multifile_software.Checked && !Properties.Settings.Default.donotshow_001 && !IsEmpty) MessageBox.Show(null, Program.Lang.Msg(10, false), 1);
         }
     }
 }

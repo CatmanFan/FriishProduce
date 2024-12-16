@@ -19,6 +19,10 @@ namespace FriishProduce
 
         protected void ResetLayout()
         {
+            if (DesignMode) return;
+
+            // Clean and reload combo boxes
+            // ********
             const string empty = "—";
 
             foreach (ComboBox c in page1.Controls.OfType<ComboBox>())
@@ -48,6 +52,8 @@ namespace FriishProduce
                 c.SelectedIndex = 0;
             }
 
+            // Reset mapping layout and enable available buttons
+            // ********
             Mapping = new Dictionary<Buttons, string>();
             foreach (Buttons orig in available.Wii) Mapping.Add(orig, "");
             OldMapping = new Dictionary<Buttons, string>(Mapping);
@@ -57,17 +63,33 @@ namespace FriishProduce
                 ComboBox target = Controls.Find(orig.ToString(), true).OfType<ComboBox>().FirstOrDefault();
                 if (target != null) target.Enabled = true;
             }
+
+            // -----------------------------------------------------------------------------------------------------------
+
+            presets_list.Items.Clear();
+            presets_list.Items.Add(Program.Lang.String("preset_blank", "controller"));
+            presets_list.Items.AddRange(presets.Keys.ToArray());
+            if (presets_list.Items?.Count > 0)
+            {
+                preset_load.Enabled = presets_list.Enabled = true;
+            }
+            else
+            {
+                presets_list.Items.Add(empty);
+                preset_load.Enabled = presets_list.Enabled = false;
+            }
+            presets_list.SelectedIndex = 0;
         }
 
         /// <summary>
         /// Sets all current buttons to a preset or the current mapped values.
         /// </summary>
-        /// <param name="input"></param>
+        /// <param name="input">A typical dictionary containing the lists of Wii buttons and their mapped values.</param>
         protected void SetKeymap(IDictionary<Buttons, string> input)
         {
             foreach (Buttons orig in input.Keys.ToList())
             {
-                int index = string.IsNullOrWhiteSpace(input[orig]) ? 0 : Array.IndexOf(available.Local_Formatted, input[orig]) + 1;
+                int index = string.IsNullOrWhiteSpace(input[orig]) || !available.Local_Formatted.Contains(input[orig]) ? 0 : Array.IndexOf(available.Local_Formatted, input[orig]) + 1;
 
                 ComboBox target = Controls.Find(orig.ToString(), true).OfType<ComboBox>().FirstOrDefault();
                 if (target != null)
@@ -76,6 +98,31 @@ namespace FriishProduce
                     try { target.SelectedIndex = index; } catch { }
                 }
             }
+        }
+
+        /// <summary>
+        /// Sets all current buttons to a preset or the current mapped values.
+        /// </summary>
+        /// <param name="input">A string array containing the internal names of mapped buttons.</param>
+        protected void SetKeymap(string[] input)
+        {
+            for (int i = 0; i < Math.Min(available.Wii.Length, input.Length); i++)
+            {
+                int index = string.IsNullOrWhiteSpace(input[i]) || !available.Local_Formatted.Contains(input[i]) ? 0 : Array.IndexOf(available.Local_Formatted, input[i]) + 1;
+
+                ComboBox target = Controls.Find(available.Wii[i].ToString(), true).OfType<ComboBox>().FirstOrDefault();
+                if (target != null)
+                {
+                    target.Enabled = true;
+                    try { target.SelectedIndex = index; } catch { }
+                }
+            }
+        }
+
+        protected void SetKeymap(string name)
+        {
+            if (presets?.ContainsKey(name) == true) SetKeymap(presets[name]);
+            else if (presets_list.SelectedIndex == 0) SetKeymap(new string[available.Wii.Length]);
         }
 
         protected void OK_Click(object sender, EventArgs e)
@@ -115,7 +162,7 @@ namespace FriishProduce
             }
             else
             {
-                SetKeymap(Mapping);
+                SetKeymap(Mapping.Values.ToArray());
 
                 if (OldMapping == null) OldMapping = new Dictionary<Buttons, string>(Mapping);
             }
@@ -162,11 +209,23 @@ namespace FriishProduce
 
             set
             {
-                Mapping = new Dictionary<Buttons, string>(value);
-
-                if (Visible)
+                if (value != null)
                 {
-                    try { SetKeymap(value); } catch { }
+                    Mapping = new Dictionary<Buttons, string>(value);
+
+                    if (Visible)
+                    {
+                        try { SetKeymap(value.Values.ToArray()); } catch { }
+                    }
+                }
+                else
+                {
+                    if (Visible)
+                    {
+                        try { SetKeymap(new string[available.Wii.Length]); } catch { }
+                    }
+
+                    Mapping = null;
                 }
             }
         }
@@ -240,5 +299,13 @@ namespace FriishProduce
                 "null"
             }
         };
+
+        protected IDictionary<string, string[]> presets { get; set; }
+
+        private void Preset_Click(object sender, EventArgs e)
+        {
+            if (sender == preset_load) SetKeymap(presets_list.SelectedItem.ToString());
+            // else if (sender == preset_clear) SetKeymap(new string[available.Wii.Count()]);
+        }
     }
 }

@@ -1326,11 +1326,32 @@
   <data name="&gt;&gt;tabControl1.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="presets_list.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 18</value>
+  </data>
+  <data name="presets_list.Size" type="System.Drawing.Size, System.Drawing">
+    <value>634, 21</value>
+  </data>
+  <data name="presets_list.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;presets_list.Name" xml:space="preserve">
+    <value>presets_list</value>
+  </data>
+  <data name="&gt;&gt;presets_list.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;presets_list.Parent" xml:space="preserve">
+    <value>presets_gb</value>
+  </data>
+  <data name="&gt;&gt;presets_list.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="preset_load.Location" type="System.Drawing.Point, System.Drawing">
-    <value>660, 17</value>
+    <value>650, 17</value>
   </data>
   <data name="preset_load.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 23</value>
+    <value>100, 23</value>
   </data>
   <data name="preset_load.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1348,27 +1369,6 @@
     <value>presets_gb</value>
   </data>
   <data name="&gt;&gt;preset_load.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="presets.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 18</value>
-  </data>
-  <data name="presets.Size" type="System.Drawing.Size, System.Drawing">
-    <value>644, 21</value>
-  </data>
-  <data name="presets.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;presets.Name" xml:space="preserve">
-    <value>presets</value>
-  </data>
-  <data name="&gt;&gt;presets.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;presets.Parent" xml:space="preserve">
-    <value>presets_gb</value>
-  </data>
-  <data name="&gt;&gt;presets.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="presets_gb.Location" type="System.Drawing.Point, System.Drawing">
