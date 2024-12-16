@@ -136,6 +136,9 @@
 			"game_scan":						"온라인으로 게임 데이터 검색",
 			"export":							"내보내기",
 			
+			"updater":							"업데이터",
+			"check_for_updates":				"업데이트 확인",
+			"auto_update":						"시작 시 자동으로 업데이트 확인",
 			"exit":								"나가기",
 
 			"project_type":						"{0} WAD",
@@ -148,12 +151,8 @@
 			"system_default":					"시스템 기본값",
 			"reset_all_dialogs":				"모든 대화상자 재설정",
 			"use_custom_database":				"커스텀 WAD 데이터베이스 파일 사용",
-			
-			"updater":							"업데이터",
-			"check_for_updates":				"업데이트 확인",
-			"auto_update_check":				"시작 시 자동으로 업데이트 확인",
 
-			"bios":								"바이오스 파일",
+			"bios_files":						"바이오스 파일",
 			"browse_bios":						"바이오스 파일 선택...",
 			
 			"default_settings":					"기본값 설정",
@@ -209,6 +208,7 @@
 			
 			"injection_method":					"주입 방법",
 			"injection_method_options":			"주입 방법 옵션...",
+			"controller":						"Controller configuration",
 			"controller_mapping":				"Controller buttons mapping...",
 			
 			"save_data":						"저장 데이터",
@@ -234,13 +234,13 @@
 		},
 
 		"controller": {
-			"controller":						"Controller configuration",
 			"page1":							"Wii Remote",
 			"page2":							"Classic Controller",
 			"page3":							"GameCube Controller",
 
 			"vertical_layout":					"Vertical layout",
 			"presets":							"Presets",
+			"preset_blank":						"Blank",
 			"preset_load":						"Load",
 
 			"up":								"Up",

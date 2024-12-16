@@ -191,9 +191,6 @@ namespace FriishProduce
 
             // -----------------------------
 
-            // Update checker button
-            check_for_updates.Enabled = !Default.auto_update_check || !Program.IsUpdated;
-
             // Defaults & forwarders
             reset_all_dialogs.Checked = false;
             toggleSwitch2.Checked = bool.Parse(FORWARDER.Default.show_bios_screen);
@@ -511,16 +508,15 @@ namespace FriishProduce
                 {
                     panel1.Visible = isVisible[0];
                     panel2.Visible = isVisible[1];
-                    panel3.Visible = isVisible[2];
-                    panel4.Visible = isVisible[3];
-                    panel5.Visible = isVisible[4];
-                    forwarder.Visible = isVisible[5];
-                    vc_nes.Visible = isVisible[6];
-                    vc_n64.Visible = isVisible[7];
-                    vc_sega.Visible = isVisible[8];
-                    vc_pce.Visible = isVisible[9];
-                    vc_neo.Visible = isVisible[10];
-                    adobe_flash.Visible = isVisible[11];
+                    vc_nes.Visible = isVisible[2];
+                    vc_n64.Visible = isVisible[3];
+                    vc_sega.Visible = isVisible[4];
+                    vc_pce.Visible = isVisible[5];
+                    vc_neo.Visible = isVisible[6];
+                    adobe_flash.Visible = isVisible[7];
+                    forwarder.Visible = isVisible[8];
+                    default_injection_methods.Visible = isVisible[9];
+                    bios_files.Visible = isVisible[10];
                 }
             }
         }
@@ -539,19 +535,6 @@ namespace FriishProduce
         }
 
         private void BrightnessValue_Scroll(object sender, EventArgs e) => label1.Text = SEGA_console_brightness.Value.ToString();
-
-        private async void CheckUpdates_Click(object sender, EventArgs e)
-        {
-            if ((sender as Control).Name.ToLower() == auto_update_check.Name.ToLower())
-                check_for_updates.Enabled = !Program.IsUpdated || !auto_update_check.Checked;
-
-            else
-            {
-                var isUpdated = await Updater.GetLatest();
-                if (isUpdated) MessageBox.Show(Program.Lang.Msg(9), MessageBox.Buttons.Ok, MessageBox.Icons.Information);
-                check_for_updates.Enabled = !isUpdated || !auto_update_check.Checked;
-            }
-        }
 
         private void BrowseBIOS(object sender, EventArgs e)
         {

@@ -81,7 +81,7 @@ namespace FriishProduce
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.presets_gb = new System.Windows.Forms.GroupBox();
             this.preset_load = new System.Windows.Forms.Button();
-            this.presets = new System.Windows.Forms.ComboBox();
+            this.presets_list = new System.Windows.Forms.ComboBox();
             this.bottomPanel2.SuspendLayout();
             this.bottomPanel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -487,8 +487,8 @@ namespace FriishProduce
             // 
             // presets_gb
             // 
+            this.presets_gb.Controls.Add(this.presets_list);
             this.presets_gb.Controls.Add(this.preset_load);
-            this.presets_gb.Controls.Add(this.presets);
             resources.ApplyResources(this.presets_gb, "presets_gb");
             this.presets_gb.Name = "presets_gb";
             this.presets_gb.TabStop = false;
@@ -500,13 +500,14 @@ namespace FriishProduce
             this.preset_load.Name = "preset_load";
             this.preset_load.Tag = "preset_load";
             this.preset_load.UseVisualStyleBackColor = true;
+            this.preset_load.Click += new System.EventHandler(this.Preset_Click);
             // 
-            // presets
+            // presets_list
             // 
-            this.presets.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.presets.FormattingEnabled = true;
-            resources.ApplyResources(this.presets, "presets");
-            this.presets.Name = "presets";
+            this.presets_list.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.presets_list.FormattingEnabled = true;
+            resources.ApplyResources(this.presets_list, "presets_list");
+            this.presets_list.Name = "presets_list";
             // 
             // ControllerMapping
             // 
@@ -598,7 +599,7 @@ namespace FriishProduce
         private System.Windows.Forms.ComboBox GC_L;
         private System.Windows.Forms.CheckBox vertical_layout;
         private System.Windows.Forms.GroupBox presets_gb;
-        private System.Windows.Forms.ComboBox presets;
+        private System.Windows.Forms.ComboBox presets_list;
         private System.Windows.Forms.Button preset_load;
     }
 }

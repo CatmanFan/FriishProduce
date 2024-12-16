@@ -391,5 +391,36 @@ namespace FriishProduce
                 addTab(project.Platform, project);
             }
         }
+
+        private async void updateCheck()
+        {
+            var isUpdated = await Updater.GetLatest();
+            if (isUpdated) MessageBox.Show(Program.Lang.Msg(9), MessageBox.Buttons.Ok, MessageBox.Icons.Information);
+            check_for_updates.Enabled = !isUpdated || !auto_update.Checked;
+        }
+
+        private void Update_Click(object sender, EventArgs e)
+        {
+            if (sender == check_for_updates)
+            {
+                updateCheck();
+            }
+
+            else if (sender == auto_update)
+            {
+                auto_update.Checked = !auto_update.Checked;
+
+                if ((sender as Control).Name.ToLower() == auto_update.Name.ToLower())
+                    check_for_updates.Enabled = !Program.IsUpdated || !auto_update.Checked;
+
+                else
+                {
+                    updateCheck();
+                }
+            }
+
+            /* 
+            check_for_updates.Enabled = !Default.auto_update_check || !Program.IsUpdated; */
+        }
     }
 }

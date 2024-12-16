@@ -23,8 +23,9 @@ namespace FriishProduce
         /// 0 = SD card, 1 = USB
         /// </summary>
         public int ForwarderStorageDevice { get; set; }
+        public bool IsMultifile { get; set; }
         public IDictionary<string, string> ContentOptions { get; set; }
-        public IDictionary<Buttons, string> Keymap { get; set; }
+        public (bool Enabled, IDictionary<Buttons, string> List) Keymap { get; set; }
         public int WADRegion { get; set; }
         public (bool Enabled, int Index, int Region) BaseOnline { get; set; }
         public string BaseFile { get; set; }

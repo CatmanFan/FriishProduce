@@ -174,42 +174,6 @@
   <data name="&gt;&gt;b_ok.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="b_controller.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="b_controller.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 8</value>
-  </data>
-  <data name="b_controller.Size" type="System.Drawing.Size, System.Drawing">
-    <value>255, 24</value>
-  </data>
-  <data name="b_controller.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="b_controller.Text" xml:space="preserve">
-    <value>controller_mapping</value>
-  </data>
-  <data name="b_controller.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleRight</value>
-  </data>
-  <data name="b_controller.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
-    <value>ImageBeforeText</value>
-  </data>
-  <data name="b_controller.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;b_controller.Name" xml:space="preserve">
-    <value>b_controller</value>
-  </data>
-  <data name="&gt;&gt;b_controller.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;b_controller.Parent" xml:space="preserve">
-    <value>bottomPanel1</value>
-  </data>
-  <data name="&gt;&gt;b_controller.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="bottomPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Bottom</value>
   </data>
@@ -234,6 +198,55 @@
   <data name="&gt;&gt;bottomPanel1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="b_controller.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAJISURBVDhPnZLNTxNRFMXfv6ALXMhKgjEmrti40hgx
+        Cmlr6HQ6H512CjRFDcbYznRoi5BiqPLR4MKCFQqlakVpayQaE2WBwa5QEo0rNyauiAu3rMzxvtoaa40h
+        TvKbj/vOOXNz32NWNN5A2Iqx6ewi+9jasrN1sAVvWw/g06HWnZ7eAHO6ZSb+QXNAJLqWupPB52EL36fG
+        gdQNfBmNQfD6IYjS2h4ChrC+8RrGyCikwAAEfz88/UH4A0EILjeaAiJDsQZESY6PJK5jtVRGNreM5MQU
+        KBiq5sOJk6fibklhv9PUAV37r1wN7164NIjp1Ax8/j5oPj9kxbPL15oCwkbkF6GwyUIhgwmCaDkFN1aL
+        Jfj0XthsNpzuPGN5NJ15NF8DTFG9hMboD1UM0+Jd7BNcMoqlEnTqwG63g9eaA3RWvdULqqceptGAFJTK
+        5VqADQ6Ho0H79wBCIWQKEUQZwYGLoDq6urvA6+q/AkhQlDQdLr0PPbTnM+lZbFYqePlqHTHa0vOqF06q
+        u0nDtQ0B1PZDUdFw+doYiseP4hljsMZvYvv9Bzx9/gLGGB2oc91Y6WjH4HACXMs91QAaYlEQFUQTSWy7
+        DuPbMYYnFDA5dxeTqVuYoK1M3p4FOs/i6xGGd672qpZ7uJdJsorNNxUs5PLI3CtgrvAYmcIjzC/nsZBd
+        xDyRWcohnX+A9P0VZPKFqpZ7uJcmrmKJCoZhwIhECAsmPc2ICdOsQe8/12qQlnu4l9H53pAVL314eUt7
+        oq7nXn5o2oiO/4O1/QCtGrhUMX1+dwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="b_controller.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="b_controller.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 19</value>
+  </data>
+  <data name="b_controller.Size" type="System.Drawing.Size, System.Drawing">
+    <value>255, 24</value>
+  </data>
+  <data name="b_controller.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="b_controller.Text" xml:space="preserve">
+    <value>controller_mapping</value>
+  </data>
+  <data name="b_controller.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="b_controller.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
+    <value>ImageBeforeText</value>
+  </data>
+  <data name="&gt;&gt;b_controller.Name" xml:space="preserve">
+    <value>b_controller</value>
+  </data>
+  <data name="&gt;&gt;b_controller.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;b_controller.Parent" xml:space="preserve">
+    <value>controller_box</value>
+  </data>
+  <data name="&gt;&gt;b_controller.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="bottomPanel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Bottom</value>
   </data>
@@ -256,6 +269,57 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;bottomPanel2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="controller_cb.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="controller_cb.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 0</value>
+  </data>
+  <data name="controller_cb.Size" type="System.Drawing.Size, System.Drawing">
+    <value>71, 17</value>
+  </data>
+  <data name="controller_cb.TabIndex" type="System.Int32, mscorlib">
+    <value>39</value>
+  </data>
+  <data name="controller_cb.Text" xml:space="preserve">
+    <value>controller</value>
+  </data>
+  <data name="&gt;&gt;controller_cb.Name" xml:space="preserve">
+    <value>controller_cb</value>
+  </data>
+  <data name="&gt;&gt;controller_cb.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;controller_cb.Parent" xml:space="preserve">
+    <value>controller_box</value>
+  </data>
+  <data name="&gt;&gt;controller_cb.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="controller_box.Location" type="System.Drawing.Point, System.Drawing">
+    <value>267, 315</value>
+  </data>
+  <data name="controller_box.Size" type="System.Drawing.Size, System.Drawing">
+    <value>275, 54</value>
+  </data>
+  <data name="controller_box.TabIndex" type="System.Int32, mscorlib">
+    <value>38</value>
+  </data>
+  <data name="controller_box.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;controller_box.Name" xml:space="preserve">
+    <value>controller_box</value>
+  </data>
+  <data name="&gt;&gt;controller_box.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;controller_box.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;controller_box.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

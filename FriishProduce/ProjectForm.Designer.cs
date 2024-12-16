@@ -72,7 +72,7 @@ namespace FriishProduce
             this.baseName = new System.Windows.Forms.Label();
             this.current_base = new System.Windows.Forms.Label();
             this.use_online_wad = new System.Windows.Forms.RadioButton();
-            this.checkImg3 = new System.Windows.Forms.PictureBox();
+            this.checkImg1 = new System.Windows.Forms.PictureBox();
             this.import_wad = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -94,7 +94,7 @@ namespace FriishProduce
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BaseRegion)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkImg3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkImg1)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox6.SuspendLayout();
@@ -182,7 +182,6 @@ namespace FriishProduce
             // title_id_random
             // 
             this.title_id_random.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.title_id_random.Image = global::FriishProduce.Properties.Resources.arrow_switch;
             resources.ApplyResources(this.title_id_random, "title_id_random");
             this.title_id_random.Name = "title_id_random";
             this.title_id_random.TabStop = false;
@@ -269,7 +268,6 @@ namespace FriishProduce
             // 
             // banner_sound
             // 
-            this.banner_sound.Image = global::FriishProduce.Properties.Resources.sound;
             resources.ApplyResources(this.banner_sound, "banner_sound");
             this.banner_sound.Name = "banner_sound";
             this.banner_sound.Tag = "banner_sound";
@@ -332,7 +330,6 @@ namespace FriishProduce
             // 
             // injection_method_options
             // 
-            this.injection_method_options.Image = global::FriishProduce.Properties.Resources.cog;
             resources.ApplyResources(this.injection_method_options, "injection_method_options");
             this.injection_method_options.Name = "injection_method_options";
             this.injection_method_options.Tag = "injection_method_options";
@@ -423,11 +420,12 @@ namespace FriishProduce
             this.use_online_wad.UseVisualStyleBackColor = true;
             this.use_online_wad.CheckedChanged += new System.EventHandler(this.OpenWAD_CheckedChanged);
             // 
-            // checkImg3
+            // checkImg1
             // 
-            resources.ApplyResources(this.checkImg3, "checkImg3");
-            this.checkImg3.Name = "checkImg3";
-            this.checkImg3.TabStop = false;
+            this.checkImg1.Image = global::FriishProduce.Properties.Resources.cross;
+            resources.ApplyResources(this.checkImg1, "checkImg1");
+            this.checkImg1.Name = "checkImg1";
+            this.checkImg1.TabStop = false;
             // 
             // import_wad
             // 
@@ -440,7 +438,7 @@ namespace FriishProduce
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.import_wad);
-            this.groupBox2.Controls.Add(this.checkImg3);
+            this.groupBox2.Controls.Add(this.checkImg1);
             this.groupBox2.Controls.Add(this.use_online_wad);
             this.groupBox2.Controls.Add(this.BaseRegion);
             this.groupBox2.Controls.Add(this.Base);
@@ -576,7 +574,7 @@ namespace FriishProduce
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BaseRegion)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkImg3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkImg1)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -626,7 +624,7 @@ namespace FriishProduce
         private System.Windows.Forms.Label baseName;
         private System.Windows.Forms.Label current_base;
         private System.Windows.Forms.RadioButton use_online_wad;
-        private System.Windows.Forms.PictureBox checkImg3;
+        private System.Windows.Forms.PictureBox checkImg1;
         private System.Windows.Forms.Button import_wad;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.PictureBox pictureBox1;

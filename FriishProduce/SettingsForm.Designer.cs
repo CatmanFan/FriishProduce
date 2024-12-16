@@ -44,14 +44,12 @@ namespace FriishProduce
             this.GetBanners = new System.Windows.Forms.Button();
             this.TreeView = new System.Windows.Forms.TreeView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.info1 = new System.Windows.Forms.PictureBox();
             this.bypass_rom_size = new System.Windows.Forms.CheckBox();
             this.use_online_wad_tip = new System.Windows.Forms.Label();
             this.use_online_wad_enabled = new System.Windows.Forms.CheckBox();
             this.use_custom_database = new System.Windows.Forms.CheckBox();
             this.reset_all_dialogs = new System.Windows.Forms.CheckBox();
-            this.updater = new System.Windows.Forms.GroupBox();
-            this.auto_update_check = new System.Windows.Forms.CheckBox();
-            this.check_for_updates = new System.Windows.Forms.Button();
             this.language = new System.Windows.Forms.GroupBox();
             this.vc_n64 = new System.Windows.Forms.Panel();
             this.vc_n64_romc_type = new System.Windows.Forms.GroupBox();
@@ -113,7 +111,14 @@ namespace FriishProduce
             this.image_interpolation_modes = new System.Windows.Forms.ComboBox();
             this.banner_region = new System.Windows.Forms.GroupBox();
             this.banner_regions = new System.Windows.Forms.ComboBox();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.default_target_filename = new System.Windows.Forms.GroupBox();
+            this.default_target_project = new System.Windows.Forms.Label();
+            this.default_target_project_tb = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.default_target_wad = new System.Windows.Forms.Label();
+            this.default_target_wad_tb = new System.Windows.Forms.TextBox();
+            this.default_target_parameters = new System.Windows.Forms.Label();
+            this.default_injection_methods = new System.Windows.Forms.Panel();
             this.sega_default = new System.Windows.Forms.GroupBox();
             this.injection_methods_sega = new System.Windows.Forms.ComboBox();
             this.snes_default = new System.Windows.Forms.GroupBox();
@@ -122,25 +127,18 @@ namespace FriishProduce
             this.injection_methods_nes = new System.Windows.Forms.ComboBox();
             this.n64_default = new System.Windows.Forms.GroupBox();
             this.injection_methods_n64 = new System.Windows.Forms.ComboBox();
-            this.panel5 = new System.Windows.Forms.Panel();
+            this.bios_files = new System.Windows.Forms.Panel();
             this.bios_neo = new System.Windows.Forms.GroupBox();
             this.browse_bios_neo = new System.Windows.Forms.Button();
             this.bios_filename_neo = new System.Windows.Forms.TextBox();
             this.bios_psx = new System.Windows.Forms.GroupBox();
             this.browse_bios_psx = new System.Windows.Forms.Button();
             this.bios_filename_psx = new System.Windows.Forms.TextBox();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.default_target_project = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.default_target_wad_tb = new System.Windows.Forms.TextBox();
-            this.default_target_parameters = new System.Windows.Forms.Label();
-            this.default_target_wad = new System.Windows.Forms.Label();
-            this.default_target_project_tb = new System.Windows.Forms.TextBox();
             this.vc_n64_options.SuspendLayout();
             this.bottomPanel2.SuspendLayout();
             this.bottomPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.updater.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.info1)).BeginInit();
             this.language.SuspendLayout();
             this.vc_n64.SuspendLayout();
             this.vc_n64_romc_type.SuspendLayout();
@@ -168,15 +166,15 @@ namespace FriishProduce
             this.panel2.SuspendLayout();
             this.image_interpolation_mode.SuspendLayout();
             this.banner_region.SuspendLayout();
-            this.panel3.SuspendLayout();
+            this.default_target_filename.SuspendLayout();
+            this.default_injection_methods.SuspendLayout();
             this.sega_default.SuspendLayout();
             this.snes_default.SuspendLayout();
             this.nes_default.SuspendLayout();
             this.n64_default.SuspendLayout();
-            this.panel5.SuspendLayout();
+            this.bios_files.SuspendLayout();
             this.bios_neo.SuspendLayout();
             this.bios_psx.SuspendLayout();
-            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // languages
@@ -286,24 +284,29 @@ namespace FriishProduce
             ((System.Windows.Forms.TreeNode)(resources.GetObject("TreeView.Nodes"))),
             ((System.Windows.Forms.TreeNode)(resources.GetObject("TreeView.Nodes1"))),
             ((System.Windows.Forms.TreeNode)(resources.GetObject("TreeView.Nodes2"))),
-            ((System.Windows.Forms.TreeNode)(resources.GetObject("TreeView.Nodes3"))),
-            ((System.Windows.Forms.TreeNode)(resources.GetObject("TreeView.Nodes4"))),
-            ((System.Windows.Forms.TreeNode)(resources.GetObject("TreeView.Nodes5")))});
+            ((System.Windows.Forms.TreeNode)(resources.GetObject("TreeView.Nodes3")))});
             this.TreeView.ShowPlusMinus = false;
             this.TreeView.ShowRootLines = false;
             this.TreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TreeView_AfterSelect);
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.info1);
             this.panel1.Controls.Add(this.bypass_rom_size);
             this.panel1.Controls.Add(this.use_online_wad_tip);
             this.panel1.Controls.Add(this.use_online_wad_enabled);
             this.panel1.Controls.Add(this.use_custom_database);
             this.panel1.Controls.Add(this.reset_all_dialogs);
-            this.panel1.Controls.Add(this.updater);
             this.panel1.Controls.Add(this.language);
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
+            // 
+            // info1
+            // 
+            this.info1.Image = global::FriishProduce.Properties.Resources.information;
+            resources.ApplyResources(this.info1, "info1");
+            this.info1.Name = "info1";
+            this.info1.TabStop = false;
             // 
             // bypass_rom_size
             // 
@@ -316,7 +319,7 @@ namespace FriishProduce
             // 
             // use_online_wad_tip
             // 
-            this.use_online_wad_tip.BackColor = System.Drawing.SystemColors.Info;
+            this.use_online_wad_tip.BackColor = System.Drawing.SystemColors.ControlLight;
             this.use_online_wad_tip.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             resources.ApplyResources(this.use_online_wad_tip, "use_online_wad_tip");
             this.use_online_wad_tip.Name = "use_online_wad_tip";
@@ -346,34 +349,6 @@ namespace FriishProduce
             this.reset_all_dialogs.Name = "reset_all_dialogs";
             this.reset_all_dialogs.Tag = "reset_all_dialogs";
             this.reset_all_dialogs.UseVisualStyleBackColor = true;
-            // 
-            // updater
-            // 
-            this.updater.Controls.Add(this.auto_update_check);
-            this.updater.Controls.Add(this.check_for_updates);
-            resources.ApplyResources(this.updater, "updater");
-            this.updater.Name = "updater";
-            this.updater.TabStop = false;
-            this.updater.Tag = "updater";
-            // 
-            // auto_update_check
-            // 
-            resources.ApplyResources(this.auto_update_check, "auto_update_check");
-            this.auto_update_check.Checked = global::FriishProduce.Properties.Settings.Default.auto_update_check;
-            this.auto_update_check.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.auto_update_check.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::FriishProduce.Properties.Settings.Default, "auto_update_check", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.auto_update_check.Name = "auto_update_check";
-            this.auto_update_check.Tag = "auto_update_check";
-            this.auto_update_check.UseVisualStyleBackColor = true;
-            this.auto_update_check.CheckedChanged += new System.EventHandler(this.CheckUpdates_Click);
-            // 
-            // check_for_updates
-            // 
-            resources.ApplyResources(this.check_for_updates, "check_for_updates");
-            this.check_for_updates.Name = "check_for_updates";
-            this.check_for_updates.Tag = "check_for_updates";
-            this.check_for_updates.UseVisualStyleBackColor = true;
-            this.check_for_updates.Click += new System.EventHandler(this.CheckUpdates_Click);
             // 
             // language
             // 
@@ -823,6 +798,7 @@ namespace FriishProduce
             this.panel2.Controls.Add(this.auto_fill_save_data);
             this.panel2.Controls.Add(this.image_interpolation_mode);
             this.panel2.Controls.Add(this.banner_region);
+            this.panel2.Controls.Add(this.default_target_filename);
             resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
             // 
@@ -876,14 +852,67 @@ namespace FriishProduce
             this.banner_regions.Name = "banner_regions";
             this.banner_regions.Tag = "";
             // 
-            // panel3
+            // default_target_filename
             // 
-            this.panel3.Controls.Add(this.sega_default);
-            this.panel3.Controls.Add(this.snes_default);
-            this.panel3.Controls.Add(this.nes_default);
-            this.panel3.Controls.Add(this.n64_default);
-            resources.ApplyResources(this.panel3, "panel3");
-            this.panel3.Name = "panel3";
+            this.default_target_filename.Controls.Add(this.default_target_project);
+            this.default_target_filename.Controls.Add(this.default_target_project_tb);
+            this.default_target_filename.Controls.Add(this.label2);
+            this.default_target_filename.Controls.Add(this.default_target_wad);
+            this.default_target_filename.Controls.Add(this.default_target_wad_tb);
+            this.default_target_filename.Controls.Add(this.default_target_parameters);
+            resources.ApplyResources(this.default_target_filename, "default_target_filename");
+            this.default_target_filename.Name = "default_target_filename";
+            this.default_target_filename.TabStop = false;
+            this.default_target_filename.Tag = "default_target_filename";
+            // 
+            // default_target_project
+            // 
+            resources.ApplyResources(this.default_target_project, "default_target_project");
+            this.default_target_project.Name = "default_target_project";
+            this.default_target_project.Tag = "default_target_project";
+            // 
+            // default_target_project_tb
+            // 
+            this.default_target_project_tb.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FriishProduce.Properties.Settings.Default, "default_target_filename", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            resources.ApplyResources(this.default_target_project_tb, "default_target_project_tb");
+            this.default_target_project_tb.Name = "default_target_project_tb";
+            this.default_target_project_tb.Text = global::FriishProduce.Properties.Settings.Default.default_target_filename;
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // default_target_wad
+            // 
+            resources.ApplyResources(this.default_target_wad, "default_target_wad");
+            this.default_target_wad.Name = "default_target_wad";
+            this.default_target_wad.Tag = "default_target_wad";
+            // 
+            // default_target_wad_tb
+            // 
+            this.default_target_wad_tb.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FriishProduce.Properties.Settings.Default, "default_export_filename", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            resources.ApplyResources(this.default_target_wad_tb, "default_target_wad_tb");
+            this.default_target_wad_tb.Name = "default_target_wad_tb";
+            this.default_target_wad_tb.Text = global::FriishProduce.Properties.Settings.Default.default_export_filename;
+            // 
+            // default_target_parameters
+            // 
+            resources.ApplyResources(this.default_target_parameters, "default_target_parameters");
+            this.default_target_parameters.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.default_target_parameters.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.default_target_parameters.ForeColor = System.Drawing.Color.Black;
+            this.default_target_parameters.Name = "default_target_parameters";
+            this.default_target_parameters.Tag = "default_target_parameters";
+            // 
+            // default_injection_methods
+            // 
+            this.default_injection_methods.Controls.Add(this.sega_default);
+            this.default_injection_methods.Controls.Add(this.snes_default);
+            this.default_injection_methods.Controls.Add(this.nes_default);
+            this.default_injection_methods.Controls.Add(this.n64_default);
+            resources.ApplyResources(this.default_injection_methods, "default_injection_methods");
+            this.default_injection_methods.Name = "default_injection_methods";
             // 
             // sega_default
             // 
@@ -949,12 +978,12 @@ namespace FriishProduce
             this.injection_methods_n64.Name = "injection_methods_n64";
             this.injection_methods_n64.Tag = "";
             // 
-            // panel5
+            // bios_files
             // 
-            this.panel5.Controls.Add(this.bios_neo);
-            this.panel5.Controls.Add(this.bios_psx);
-            resources.ApplyResources(this.panel5, "panel5");
-            this.panel5.Name = "panel5";
+            this.bios_files.Controls.Add(this.bios_neo);
+            this.bios_files.Controls.Add(this.bios_psx);
+            resources.ApplyResources(this.bios_files, "bios_files");
+            this.bios_files.Name = "bios_files";
             // 
             // bios_neo
             // 
@@ -1000,57 +1029,6 @@ namespace FriishProduce
             this.bios_filename_psx.Name = "bios_filename_psx";
             this.bios_filename_psx.ReadOnly = true;
             // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.default_target_project);
-            this.panel4.Controls.Add(this.label2);
-            this.panel4.Controls.Add(this.default_target_wad_tb);
-            this.panel4.Controls.Add(this.default_target_parameters);
-            this.panel4.Controls.Add(this.default_target_wad);
-            this.panel4.Controls.Add(this.default_target_project_tb);
-            resources.ApplyResources(this.panel4, "panel4");
-            this.panel4.Name = "panel4";
-            // 
-            // default_target_project
-            // 
-            resources.ApplyResources(this.default_target_project, "default_target_project");
-            this.default_target_project.Name = "default_target_project";
-            this.default_target_project.Tag = "default_target_project";
-            // 
-            // label2
-            // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
-            // 
-            // default_target_wad_tb
-            // 
-            this.default_target_wad_tb.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FriishProduce.Properties.Settings.Default, "default_export_filename", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            resources.ApplyResources(this.default_target_wad_tb, "default_target_wad_tb");
-            this.default_target_wad_tb.Name = "default_target_wad_tb";
-            this.default_target_wad_tb.Text = global::FriishProduce.Properties.Settings.Default.default_export_filename;
-            // 
-            // default_target_parameters
-            // 
-            resources.ApplyResources(this.default_target_parameters, "default_target_parameters");
-            this.default_target_parameters.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.default_target_parameters.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.default_target_parameters.ForeColor = System.Drawing.Color.Black;
-            this.default_target_parameters.Name = "default_target_parameters";
-            this.default_target_parameters.Tag = "default_target_parameters";
-            // 
-            // default_target_wad
-            // 
-            resources.ApplyResources(this.default_target_wad, "default_target_wad");
-            this.default_target_wad.Name = "default_target_wad";
-            this.default_target_wad.Tag = "default_target_wad";
-            // 
-            // default_target_project_tb
-            // 
-            this.default_target_project_tb.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FriishProduce.Properties.Settings.Default, "default_target_filename", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            resources.ApplyResources(this.default_target_project_tb, "default_target_project_tb");
-            this.default_target_project_tb.Name = "default_target_project_tb";
-            this.default_target_project_tb.Text = global::FriishProduce.Properties.Settings.Default.default_target_filename;
-            // 
             // SettingsForm
             // 
             this.AcceptButton = this.b_ok;
@@ -1060,18 +1038,17 @@ namespace FriishProduce
             this.ControlBox = false;
             this.Controls.Add(this.bottomPanel2);
             this.Controls.Add(this.TreeView);
-            this.Controls.Add(this.vc_n64);
-            this.Controls.Add(this.vc_sega);
-            this.Controls.Add(this.vc_pce);
-            this.Controls.Add(this.vc_neo);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel4);
-            this.Controls.Add(this.panel5);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.adobe_flash);
             this.Controls.Add(this.forwarder);
             this.Controls.Add(this.vc_nes);
+            this.Controls.Add(this.vc_n64);
+            this.Controls.Add(this.vc_sega);
+            this.Controls.Add(this.vc_pce);
+            this.Controls.Add(this.vc_neo);
+            this.Controls.Add(this.default_injection_methods);
+            this.Controls.Add(this.bios_files);
+            this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MaximizeBox = false;
@@ -1087,8 +1064,7 @@ namespace FriishProduce
             this.bottomPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.updater.ResumeLayout(false);
-            this.updater.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.info1)).EndInit();
             this.language.ResumeLayout(false);
             this.vc_n64.ResumeLayout(false);
             this.vc_n64_romc_type.ResumeLayout(false);
@@ -1125,18 +1101,18 @@ namespace FriishProduce
             this.panel2.PerformLayout();
             this.image_interpolation_mode.ResumeLayout(false);
             this.banner_region.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
+            this.default_target_filename.ResumeLayout(false);
+            this.default_target_filename.PerformLayout();
+            this.default_injection_methods.ResumeLayout(false);
             this.sega_default.ResumeLayout(false);
             this.snes_default.ResumeLayout(false);
             this.nes_default.ResumeLayout(false);
             this.n64_default.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
+            this.bios_files.ResumeLayout(false);
             this.bios_neo.ResumeLayout(false);
             this.bios_neo.PerformLayout();
             this.bios_psx.ResumeLayout(false);
             this.bios_psx.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1204,11 +1180,8 @@ namespace FriishProduce
         private System.Windows.Forms.Label show_bios_screen;
         private JCS.ToggleSwitch toggleSwitch2;
         private System.Windows.Forms.CheckBox use_custom_database;
-        private System.Windows.Forms.Button check_for_updates;
-        private System.Windows.Forms.GroupBox updater;
-        private System.Windows.Forms.CheckBox auto_update_check;
         private System.Windows.Forms.GroupBox bios_settings;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel default_injection_methods;
         private System.Windows.Forms.ComboBox injection_methods_nes;
         private System.Windows.Forms.ComboBox injection_methods_n64;
         private System.Windows.Forms.ComboBox injection_methods_snes;
@@ -1231,7 +1204,7 @@ namespace FriishProduce
         private System.Windows.Forms.GroupBox sega_default;
         private System.Windows.Forms.GroupBox n64_default;
         private System.Windows.Forms.GroupBox banner_region;
-        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel bios_files;
         private System.Windows.Forms.Button browse_bios_psx;
         private System.Windows.Forms.TextBox bios_filename_psx;
         private System.Windows.Forms.GroupBox bios_psx;
@@ -1240,13 +1213,14 @@ namespace FriishProduce
         private System.Windows.Forms.TextBox bios_filename_neo;
         private System.Windows.Forms.GroupBox language;
         private System.Windows.Forms.GroupBox image_interpolation_mode;
-        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.CheckBox bypass_rom_size;
+        private System.Windows.Forms.PictureBox info1;
         private System.Windows.Forms.Label default_target_project;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox default_target_wad_tb;
         private System.Windows.Forms.Label default_target_parameters;
         private System.Windows.Forms.Label default_target_wad;
         private System.Windows.Forms.TextBox default_target_project_tb;
-        private System.Windows.Forms.CheckBox bypass_rom_size;
+        private System.Windows.Forms.GroupBox default_target_filename;
     }
 }

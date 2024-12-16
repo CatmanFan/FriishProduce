@@ -134,7 +134,10 @@
 			"import_game_file":					"Abrir un archivo de juego...",
 			"game_scan":						"&Obtener datos del juego de la base de datos en línea",
 			"export":							"Exportar...",
-
+			
+			"updater":							"Actualización",
+			"check_for_updates":				"Buscar ahora",
+			"auto_update":						"Buscar cuando se abra la aplicación",
 			"exit":								"Salir",
 
 			"project_type":						"Canal de {0}",
@@ -148,11 +151,7 @@
 			"reset_all_dialogs":				"Restablecer la opción \"No volver a mostrar este mensaje\"",
 			"use_custom_database":				"Utilizar una base de datos externa para los canales de origen",
 
-			"updater":							"Actualización",
-			"check_for_updates":				"Buscar actualizaciones",
-			"auto_update_check":				"Buscar actualizaciones cuando se abra la aplicación",
-
-			"bios":								"Archivos BIOS",
+			"bios_files":						"Archivos BIOS",
 			"browse_bios":						"Seleccionar un archivo BIOS...",
 			
 			"default_settings":					"Preferencias por defecto",
@@ -208,7 +207,8 @@
 
 			"injection_method":					"Método de inyección",
 			"injection_method_options":			"Ajustes de método de inyección...",
-			"controller_mapping":				"Editar configuración de botones...",
+			"controller":						"Configuración de botones",
+			"controller_mapping":				"Editar...",
 
 			"save_data":						"Datos guardados",
 			"save_data_enable":					"Utilizar la función de guardado",
@@ -233,13 +233,13 @@
 		},
 
 		"controller": {
-			"controller":						"Configuración de botones",
 			"page1":							"Mando de Wii",
 			"page2":							"Mando clásico",
 			"page3":							"Mando GameCube",
 			
 			"vertical_layout":					"Disposición vertical",
-			"presets":							"Preajustes",
+			"presets":							"Ajustes preestablecidos",
+			"preset_clear":						"No",
 			"preset_load":						"Aplicar",
 			
 			"up":								"Arriba",

@@ -135,7 +135,10 @@
 			"import_game_file":					"Ouvrir un fichier {0} ...",
 			"game_scan":						"Charger les informations dès de la bibliothèque des jeux",
 			"export":							"Exporter ...",
-
+			
+			"updater":							"Mise à jour",
+			"check_for_updates":				"Vérifier maintenant",
+			"auto_update":						"Vérifier automatiquement au démarrage de l'application",
 			"exit":								"Quitter",
 
 			"project_type":						"Chaîne {0}",
@@ -149,11 +152,7 @@
 			"reset_all_dialogs":				"Réinitialiser le paramètre « Ne plus afficher ce message »",
 			"use_custom_database":				"Utiliser un autre fichier pour la base de données des chaînes",
 
-			"updater":							"Mise à jour",
-			"check_for_updates":				"Vérifier les mises à jour",
-			"auto_update_check":				"Vérifier les mises à jour automatiquement au démarrage de l'application",
-
-			"bios":								"Fichiers BIOS",
+			"bios_files":						"Fichiers BIOS",
 			"browse_bios":						"Choisir un fichier BIOS ...",
 			
 			"default_settings":					"Paramètres par défaut",
@@ -209,7 +208,8 @@
 
 			"injection_method":					"Méthode d'injection",
 			"injection_method_options":			"Paramètres de méthode d'injection ...",
-			"controller_mapping":				"Configuration des manettes ...",
+			"controller":						"Configuration des manettes",
+			"controller_mapping":				"Modifier le mappage ...",
 
 			"save_data":						"Données de sauvegarde",
 			"save_data_enable":					"Activer la sauvegarde des données",
@@ -235,13 +235,13 @@
 		},
 
 		"controller": {
-			"controller":						"Configuration des manettes",
 			"page1":							"Manette Wii",
 			"page2":							"Manette classique",
 			"page3":							"Manette GameCube",
 			
 			"vertical_layout":					"Disposition verticale",
-			"presets":							"Préréglages",
+			"presets":							"Configurations prédéfinies",
+			"preset_blank":						"Tout vide",
 			"preset_load":						"Appliquer",
 			
 			"up":								"Haut",
