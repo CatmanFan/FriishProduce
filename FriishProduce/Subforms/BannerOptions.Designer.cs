@@ -114,7 +114,7 @@ namespace FriishProduce
             // 
             // bottomPanel2
             // 
-            this.bottomPanel2.BackColor = System.Drawing.Color.LightGray;
+            this.bottomPanel2.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.bottomPanel2.Controls.Add(this.bottomPanel1);
             resources.ApplyResources(this.bottomPanel2, "bottomPanel2");
             this.bottomPanel2.Name = "bottomPanel2";

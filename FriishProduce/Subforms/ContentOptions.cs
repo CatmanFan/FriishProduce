@@ -141,6 +141,7 @@ namespace FriishProduce
         protected void OpenControllerMapping(object sender, EventArgs e)
         {
             if (DesignMode) return;
+            controllerForm.Text = controller_cb.Text;
             controllerForm.ShowDialog();
         }
 

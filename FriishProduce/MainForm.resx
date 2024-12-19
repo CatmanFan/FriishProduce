@@ -120,48 +120,11 @@
   <metadata name="SaveWAD.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>469, 17</value>
   </metadata>
-  <data name="&gt;&gt;Logo.Name" xml:space="preserve">
-    <value>Logo</value>
-  </data>
-  <data name="&gt;&gt;Logo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Logo.Parent" xml:space="preserve">
-    <value>mainPanel</value>
-  </data>
-  <data name="&gt;&gt;Logo.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="mainPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="mainPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 25</value>
-  </data>
-  <data name="mainPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1008, 479</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="mainPanel.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;mainPanel.Name" xml:space="preserve">
-    <value>mainPanel</value>
-  </data>
-  <data name="&gt;&gt;mainPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;mainPanel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;mainPanel.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="Logo.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="Logo.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
@@ -171,6 +134,7 @@
   <data name="Logo.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>AutoSize</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="Logo.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
@@ -184,6 +148,30 @@
     <value>mainPanel</value>
   </data>
   <data name="&gt;&gt;Logo.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="mainPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="mainPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 25</value>
+  </data>
+  <data name="mainPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1008, 479</value>
+  </data>
+  <data name="mainPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;mainPanel.Name" xml:space="preserve">
+    <value>mainPanel</value>
+  </data>
+  <data name="&gt;&gt;mainPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;mainPanel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;mainPanel.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="toolStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
@@ -333,24 +321,6 @@
   <data name="toolbarImportGameFile.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="toolbarImportGameFile.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKySURBVDhPbZLvT1JRHMbPX+DL3uWr/oHm/9CLWq213qW+
-        a81643TNtdZybqUpaCgwc+raVBTTMJ2lmEKBAiqgCIq6EpUI8IJ69QoXkKfvvVyrUZ/t3Lvz43nO+T7n
-        sGI0k35dm8mbah0PQK20VuprJvw6Zcn/0YyvXVN/WINl/QAxIY9zAIc5+hAn6TwcWwdooXlpnSL5g2bC
-        d0876cfeYQbfBWA+DtiigCcBBHkgX/BBUsiiYzLwr4natIJtLgsXR8IY4Kb/5jEQJrOjTEGcEnKIR0Xs
-        RNNQja1AkTLWNubVmddiWDkkobTjEcBnC6ILxPQ5ghs87PMcNjYFWAMxSDrZ4HmfMx1MnIPmsXsKnEnF
-        Ex+X99BrDmLOE4HA5xDaFeBf5xHnRET4PCSdbNAyuohIGjgQASpR5rMvioZ3NrFW/2moYcQmTjkpECJJ
-        m0j+UibNo+5CGa+GXVDC/k2XdQ+Pu6b1NH352VvroMFBqRbRMxUuGDQZHcoQcCwllstjZimBdstPUW+L
-        t+u/JOHeBfqdVbiuYbjRznBbx1DbV6GcoMsiCqksElwGPt8RQjsChJMMXN8E9HtOsRQGDK4qPBhieLPK
-        sMrVoNvHUP2eobKXadnTTpPR7AzB6z6Gg+5xY/sEKVFJUuFmB4PWxdDqYHK/zcnQucxQ0cPkU5Q2G+1w
-        eTlEYiL4szyylFKCQg2fAfsp4BYZLIZrZPEFyz/qUN5dMGDl1fWP1CN2cDxdByGSwRYl7qc3sUoP6g7V
-        /GqOoWGmcALpr7LKJRQMiBLJpNFggT2wjxDds4eEC0nASo+r3lyF+30ML6YZ7Dt1eGlmeGhguNvCRhS9
-        TAm1sida43CjflZsGpjFa9MCVIM2qAbWhcqOS18raEepbmlnRVwqK4uQBq9SK/urSf0rRWO0jrFfPFye
-        KMjL+QEAAAAASUVORK5CYII=
-</value>
-  </data>
   <data name="toolbarImportGameFile.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
@@ -381,15 +351,15 @@
   <data name="toolbarExport.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAG/SURBVDhPnZBPSJNhHMdfdhEDpYN/wASHYH8OleIhr+Fh
-        a+re/bksobY0wlAEcXuHNVCR0ZbkQaYMzA5KWBDaungICnRZ2FBDpwdvKSEdvHjJw/bpfd8ePeg7XH7g
-        C8/D8/08P55HypfMaMlwZqx8VmzzhwlziteX+TnnYjfhgSmzmqspcXw2vKnh9/oTorFpuvqi7L2TYbYW
-        cZybbKysh6lKfiXc9EfG+JOB7+vbdPQ9h3gZzNwgG6/qFfXT7AwXB3cmbzEyPs2hKn9LrTHzfp42JQJD
-        F9iPlR6m+8vbRN2QUu+jbpaWV9Ws8DYxT3vvIDyW4GWF9oQ6NRf1phH3vQ9YSC5htdnx3HtIhxKGARO8
-        usRBvHpT1Izx+XwsJr/QYnfSIrtouN0Mk0Xq71drk+vVXNOLRvi8Xl22y04cTjeNlmZd+hoqiaaiV178
-        a+WgtfUuC4tJdbIDh8uN9U7T0UTJer2wUr5ZYNbWhkQiz0hvbumS7HBis9mOZYFJ5DThcJhMNsuPjTSd
-        Xd1YLJaTcm78fj8ayyurzCU+EAo9zV/WUBSFj58+63IgEPg/WVAfVC8JBpVzyUdo4jlkSfoLkFvrEmra
-        iHgAAAAASUVORK5CYII=
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAG+SURBVDhPnZBPSJNhHMdfdhEDpYN/wASHYH8OleIhr+Fh
+        a+re/bksobY0wlAEcXuHNVCR0ZbkQaYMzA5KWBDaungICnRZ2FBDpwdvKWFeveRh+/S+b48e9B0uP/CF
+        5+H5fp4fzyPlS2a0ZDgzVj4rtvnDhDnF68v8nHOxm/DAlFnN1ZQ4Phve1LC//oRobJquvih772SYrUUc
+        5yYbK+thqpJfCTf9kTH+ZOD7+jYdfc8hXgYzN8jGq3pF/TQ7w8XBnclbjIxPc6jK31JrzLyfp02JwNAF
+        fsdKD9P95W2ibkip91E3S8uralZ4m5invXcQHkvwskJ7Qp2ai3rTiPveBywkl7Da7HjuPaRDCcOACV5d
+        4iBevSlqxvh8PhaTX2ixO2mRXTTcbobJIvX3q7XJ9Wqu6UUjfF6vLttlJw6nm0ZLsy59DZVEU9ErL/61
+        ctDaepeFxaQ62YHD5cZ6p+loomS9Xlgp3ywwa2tDIpFnpDe3dEl2OLHZbMeywCRymnA4TCab5cdGms6u
+        biwWy0k5N36/H43llVXmEh8IhZ7mL2soisLHT591ORAI/J8sqA+qlwSDyrnkIzTxHLIk/QWCPOsNMOX1
+        zQAAAABJRU5ErkJggg==
 </value>
   </data>
   <data name="toolbarExport.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
@@ -404,15 +374,15 @@
   <data name="toolbarPreferences.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHjSURBVDhPlZNLSxtRGIbTHyApgtouVXDhwgpSui8IggV3
-        xY10q7uANUWSRhtvuWiUIBiJGqd1HJOOSsGRxMQr0jTJeEm0pZoIk1A1GsmEdtfN2zNNLEGJYx84m/O9
-        z/k43+Eo5Jim6ToHRZ062QVwyx7Qzo+gaCYyzTCVuUhh7A5Hg4uIR8fHENMZXKauIAgJ+HzrmKI+IBcr
-        jME89Pvg4BDR6AkWPy1hZtYJm30StokpjNkn5A8YGrEinkjA7fFiZcWHYeuoJNXlrbsxGM0Q4nH4vwQR
-        CPIwDlrku+bzuvvdr+9HUfD8LgKhHQQDIfT2G6HvG0C/wSR/mFajTYf3I/jsDyAcOUSKDFEURcRiMWh1
-        XZlc7DbFerfrme49xOQP8MEQaGYOqvYOmMgVNG+7oFK18yT2JJu+QXE3x7xkY/BngJ5VAWtujgiqU1LK
-        H14VWbeR5DZOQCgNqLdF1M+n8FRHQalUyk+8hMjNbPSv3LKURCN7hprxbyjqXPCS8oNsqgBl+mX2uWMP
-        O6IkX6Bx/hy1tq8oVdMeUq7Ipu6g2rKJyE/gFXeJF0SWOj9UOyW5PJuQodqyhVZvGk2LSdSMhf9Plnj8
-        htmoMm+i0rSOR51zq2Tr/nIO6WteP5H8nf+hUPwBCPMevJWTf6QAAAAASUVORK5CYII=
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHjSURBVDhPlZNLSxtRGIbTHyApgrZdquDChQpSui8UBAV3
+        4ka6tbuANkVMMzbWS6JGkYIpscaxTsfYUSk4kqvWUoxJxkviBTURJsFLakom1J2b1zMmSqjEaR84m/O9
+        z/k43+GolJhgmBobTZ/YuTnwi04w9q+gGTY8wbJl2Uh+rDZb7QwRDw4PIaXSOE/+hijG4fEsY5z+jGws
+        PxRFXW5v7yASOcL8twVMfbHDYv0Ey9g4Rq1jygcMDo8gFo/D4XTD5fJgaOSDLNXkrPvpM/ZDjMXgWwvA
+        HxBgHDArd82lrfPdxf5BBIKwAX9wHQF/EO97jDB096Knz6R8mK5DlwpthbHq8yMU3kGSDFGSJESjUej0
+        VDobu0uhwTHzTD8JKXEMIRAEw05D0/oaJnKFjrcUNJpWgcSqMum/KOzk2UYuCl8a6PKKWHLwRNCckFLu
+        8MrJuossv+JFBFOA9qeEF7NJPNXTUKvVyhMvInITF7mWmxcSqONOUflxDwXtc25SfpBJ5eGRYZF7btvE
+        uiTLv1A3e4Zqyy6KtYyTlEszqXuoMK8g/Ad4yZ+jnshy54dauyyXZBIKVJh/oMWdQsN8ApWjof+TZZ68
+        Yb+X96+gzLSMx+3TXrL173IW+WvePJHynW9Rqa4AkJkema7OtXoAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="toolbarPreferences.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
@@ -454,9 +424,6 @@
   <metadata name="mainMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>115, 17</value>
   </metadata>
-  <data name="menuItem1.Text" xml:space="preserve">
-    <value>file</value>
-  </data>
   <data name="new_project.Shortcut" type="System.Windows.Forms.Shortcut, System.Windows.Forms">
     <value>CtrlN</value>
   </data>
@@ -496,8 +463,8 @@
   <data name="exit.Text" xml:space="preserve">
     <value>exit</value>
   </data>
-  <data name="menuItem2.Text" xml:space="preserve">
-    <value>project</value>
+  <data name="menuItem1.Text" xml:space="preserve">
+    <value>file</value>
   </data>
   <data name="import_game_file.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -541,11 +508,8 @@
   <data name="close_project.Text" xml:space="preserve">
     <value>close_project</value>
   </data>
-  <data name="menuItem3.Text" xml:space="preserve">
-    <value>tools</value>
-  </data>
-  <data name="updater.Text" xml:space="preserve">
-    <value>updater</value>
+  <data name="menuItem2.Text" xml:space="preserve">
+    <value>project</value>
   </data>
   <data name="check_for_updates.Text" xml:space="preserve">
     <value>check_for_updates</value>
@@ -553,17 +517,14 @@
   <data name="auto_update.Text" xml:space="preserve">
     <value>auto_update</value>
   </data>
+  <data name="updater.Text" xml:space="preserve">
+    <value>updater</value>
+  </data>
   <data name="menuItem8.Text" xml:space="preserve">
     <value>-</value>
   </data>
-  <data name="language_file_editor.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="language_file_editor.Text" xml:space="preserve">
     <value>Language File Editor</value>
-  </data>
-  <data name="language_file_editor.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
   </data>
   <data name="preferences.Shortcut" type="System.Windows.Forms.Shortcut, System.Windows.Forms">
     <value>F5</value>
@@ -571,11 +532,14 @@
   <data name="preferences.Text" xml:space="preserve">
     <value>preferences</value>
   </data>
-  <data name="menuItem4.Text" xml:space="preserve">
-    <value>help</value>
+  <data name="menuItem3.Text" xml:space="preserve">
+    <value>tools</value>
   </data>
   <data name="about.Text" xml:space="preserve">
     <value>about</value>
+  </data>
+  <data name="menuItem4.Text" xml:space="preserve">
+    <value>help</value>
   </data>
   <data name="tabControl.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt</value>

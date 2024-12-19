@@ -121,7 +121,7 @@ namespace FriishProduce.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("FULLNAME")]
+        [global::System.Configuration.DefaultSettingValueAttribute("[PLATFORM] FULLNAME")]
         public string default_target_filename {
             get {
                 return ((string)(this["default_target_filename"]));
@@ -205,7 +205,7 @@ namespace FriishProduce.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool use_online_wad_enabled {
             get {
                 return ((bool)(this["use_online_wad_enabled"]));

@@ -175,6 +175,7 @@
 			"rom_label1":						"du jeu",
 			"rom_label2":						"de disque",
 			"include_patch":					"Ajouter un patch",
+			"busy":								"Exportation en cours, veuillez patienter ...",
 
 			"wad_base":							"WAD de base",
 			"import_wad":						"Ouvrir un fichier WAD ...",
@@ -217,6 +218,7 @@
 			"edit_save_data":					"Modifier le nom des données de sauvegarde ...",
 			"edit_save_data_1":					"Titre :",
 			"edit_save_data_2":					"Sous-titre :",
+			"edit_save_data_max":				"Longueur maximale de {0} caractères par ligne",
 			"fill_save_data":					"Remplir automatiquement",
 			
 			"manual_type":						"Mode d'emploi :",
@@ -272,6 +274,7 @@
 			"patch_fixcrashes":					"Anti-plantage",
 			"patch_expandedram":				"Extension de mémoire",
 			"patch_autosizerom":				"Allocation de taille de la ROM",
+			"patch_widescreen":					"Plein écran (16/9)",
 
 			"romc_type":						"Méthode de compression",
 			"romc_type0":						"ROMC (type 0)",
@@ -305,8 +308,9 @@
 		},
 
 		"adobe_flash": {
-			"vff_sync_on_write":				"Synchroniser VFF à l'écriture",
-			"vff_cache_size":					"Taille du cache VFF",
+			"vff_cache_size":					"Taille du cache VFF (en {kilobytes})",
+			"persistent_storage_total":			"Stockage total (en {kilobytes})",
+			"persistent_storage_per_movie":		"Storage par SWF (en {kilobytes})",
 			"controls":							"Contrôles",
 			"mouse":							"Souris",
 			"qwerty_keyboard":					"Clavier Qwerty",

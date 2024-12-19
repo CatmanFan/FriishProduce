@@ -174,9 +174,12 @@ namespace FriishProduce.Injectors
 
             // MainContent.Extract(Paths.FlashContents);
 
+            int region = 0;
+
             foreach (var item in MainContent.StringTable)
             {
                 // Actually replacing the SWF
+                // The link to the SWF is contained in config/[region]/[language]/config.[language-REGION].pcf
                 // ********
                 if (item.ToLower().Contains("menu.swf"))
                     MainContent.ReplaceFile(MainContent.GetNodeIndex(item), File.ReadAllBytes(path));
@@ -243,7 +246,9 @@ namespace FriishProduce.Injectors
                         if (button != null && !string.IsNullOrWhiteSpace(mapping.Value)) file.Add(button.Length < 17 ? button.PadRight(17, ' ') + mapping.Value : button + ' ' + mapping.Value);
                     }
 
-                    MainContent.ReplaceFile(MainContent.GetNodeIndex(item), Encoding.UTF8.GetBytes(string.Join("\r\n", file) + "\r\n"));
+                    string keymap = string.Join("\r\n", file) + "\r\n";
+
+                    MainContent.ReplaceFile(MainContent.GetNodeIndex(item), Encoding.UTF8.GetBytes(keymap));
                 }
 
                 else if (item.ToLower() == "config.common.pcf")
@@ -254,7 +259,7 @@ namespace FriishProduce.Injectors
                             "static_heap_size                8192                # 8192[KB] -> 8[MB]",
                             "dynamic_heap_size               16384               # 16384[KB] -> 16[MB]",
 
-                            "# update_frame_rate             30                  # not TV-framerate(NTSC/PAL)",
+                            $"update_frame_rate             {Settings["update_frame_rate"]}                  # not TV-framerate(NTSC/PAL)",
 
                             $"mouse                           {Settings["mouse"]}",
                             $"qwerty_keyboard                 {Settings["qwerty_keyboard"]}",
@@ -281,8 +286,8 @@ namespace FriishProduce.Injectors
 
                             "persistent_storage_root_drive   X",
                             "persistent_storage_vff_file     shrdobjs.vff        # 8.3 format",
-                            $"persistent_storage_total        {Settings["vff_cache_size"]}",
-                            "persistent_storage_per_movie    64                  # 64[KB]",
+                            $"persistent_storage_total        {Settings["persistent_storage_total"]}",
+                            $"persistent_storage_per_movie    {Settings["persistent_storage_per_movie"]}",
 
                             $"strap_reminder                  {Settings["strap_reminder"]}",
 
@@ -313,8 +318,10 @@ namespace FriishProduce.Injectors
             // ********
             if (Settings["shared_object_capability"] == "on")
             {
-                var banner = Img.CreateSaveTPL(1);
-                var icons = Img.CreateSaveTPL(2);
+                TPL banner = Img.CreateSaveTPL(1);
+                TPL icons = Img.CreateSaveTPL(2);
+
+                int textures = icons.NumOfTextures;
 
                 for (int i = 0; i < lines.Length; i++)
                 {
@@ -324,6 +331,10 @@ namespace FriishProduce.Injectors
 
                 foreach (var item in MainContent.StringTable)
                 {
+                    if (item.ToUpper() == "US") region = 0;
+                    if (item.ToUpper() == "EU") region = 1;
+                    if (item.ToUpper() == "JP") region = 2;
+
                     if (item.ToLower() == "banner.tpl")
                         MainContent.ReplaceFile(MainContent.GetNodeIndex(item), banner.ToByteArray());
 
@@ -337,13 +348,13 @@ namespace FriishProduce.Injectors
                                 "not_copy        off",
                                 "anim_type       bounce",
                                 $"title_text      {System.Uri.EscapeUriString(lines[0])}",
-                                $"comment_text    {(lines.Length > 1 ? System.Uri.EscapeUriString(lines[1]) : "%20")}",
-                                "banner_tpl      banner/US/banner.tpl",
-                                "icon_tpl        banner/US/icons.tpl",
-                                "icon_count      " + icons.NumOfTextures,
+                                $"comment_text    {(lines.Length > 1 && !string.IsNullOrEmpty(lines[1]) ? System.Uri.EscapeUriString(lines[1]) : "%20")}",
+                                $"banner_tpl      banner/{(region == 2 ? "JP" : region == 1 ? "EU" : "US")}/banner.tpl",
+                                $"icon_tpl        banner/{(region == 2 ? "JP" : region == 1 ? "EU" : "US")}/icons.tpl",
+                                "icon_count      " + textures,
                             };
 
-                        for (int i = 0; i < icons.NumOfTextures; i++)
+                        for (int i = 0; i < textures; i++)
                         {
                             file.Add($"icon_speed      {i}, slow");
                         }
@@ -351,6 +362,9 @@ namespace FriishProduce.Injectors
                         MainContent.ReplaceFile(MainContent.GetNodeIndex(item), Encoding.UTF8.GetBytes(string.Join("\r\n", file) + "\r\n"));
                     }
                 }
+
+                banner.Dispose();
+                icons.Dispose();
             }
 
             // MainContent.CreateFromDirectory(Paths.FlashContents);

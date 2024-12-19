@@ -27,7 +27,7 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="default_target_filename" Type="System.String" Scope="User">
-      <Value Profile="(Default)">FULLNAME</Value>
+      <Value Profile="(Default)">[PLATFORM] FULLNAME</Value>
     </Setting>
     <Setting Name="auto_update" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
@@ -48,7 +48,7 @@
       <Value Profile="(Default)">[PLATFORM] FULLNAME - TITLEID</Value>
     </Setting>
     <Setting Name="use_online_wad_enabled" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
+      <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="default_banner_region" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>

@@ -6,7 +6,7 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Net;
-using static FriishProduce.Properties.Resources;
+using static FriishProduce.FileDatas.SaveImages;
 
 namespace FriishProduce
 {
@@ -265,11 +265,11 @@ namespace FriishProduce
 
         public Bitmap SaveIcon()
         {
-            Bitmap bmp = new(SaveIconPlaceholder.Width, SaveIconPlaceholder.Height);
+            Bitmap bmp = new(Icon_Nintendo.Width, Icon_Nintendo.Height);
 
             using (Graphics g = Graphics.FromImage(bmp))
             {
-                g.DrawImage(platform == Platform.SMS || platform == Platform.SMD ? SaveIconPlaceholder_SEGA : SaveIconPlaceholder, 0, 0, bmp.Width, bmp.Height);
+                g.DrawImage(platform == Platform.SMS || platform == Platform.SMD ? Icon_SEGA : Icon_Nintendo, 0, 0, bmp.Width, bmp.Height);
 
                 if (SaveIconPic != null)
                 {
@@ -319,7 +319,7 @@ namespace FriishProduce
         }
 
         /// <summary>
-        /// Saveicon TPL generator for NES/SNES/N64/PCE/NeoGeo/MSX/Flash
+        /// Saveicon TPL generator for Flash
         /// </summary>
         /// <param name="type">0 = both banner and icon animations; 1 = banner only: 2 = animation only. This is only valid if creating a new TPL from scratch.</param>
         /// <returns>Modified TPL</returns>
@@ -327,8 +327,8 @@ namespace FriishProduce
         {
             TPL tpl = new TPL();
 
-            Image sBanner = new Bitmap(SaveBannerFlash.Width, SaveBannerFlash.Height);
-            Image sIconLogo = new Bitmap(SaveIconFlash);
+            Image sBanner = new Bitmap(Banner_Flash.Width, Banner_Flash.Height);
+            Image sIconLogo = new Bitmap(Icon_Flash);
             Image sIcon = new Bitmap(sIconLogo.Width, sIconLogo.Height);
 
             var TextureFormat = TPL_TextureFormat.RGB5A3;
@@ -340,7 +340,7 @@ namespace FriishProduce
             if (type != 2)
                 using (Graphics g = Graphics.FromImage(sBanner))
                 {
-                    g.DrawImage(SaveBannerFlash, 0, 0);
+                    g.DrawImage(Banner_Flash, 0, 0);
                     g.DrawImage(SaveIconPic, saveIconL.X, saveIconL.Y, saveIconL.width, saveIconL.height);
 
                     tpl.AddTexture(sBanner, TextureFormat, PaletteFormat);
@@ -359,7 +359,7 @@ namespace FriishProduce
                 // ****************
                 using (Graphics g = Graphics.FromImage(sIconLogo))
                 {
-                    g.DrawImage(SaveIconFlash, 0, 0);
+                    g.DrawImage(Icon_Flash, 0, 0);
                     g.Dispose();
                 }
 
@@ -367,7 +367,7 @@ namespace FriishProduce
                 // ****************
                 using (Graphics g = Graphics.FromImage(sIcon))
                 {
-                    g.DrawImage(SaveIconPlaceholder, 0, 0, sIcon.Width, sIcon.Height);
+                    g.DrawImage(Icon_Nintendo, 0, 0, sIcon.Width, sIcon.Height);
 
                     g.InterpolationMode = InterpolationMode.Bilinear;
                     g.PixelOffsetMode = PixelOffsetMode.Half;
@@ -455,7 +455,7 @@ namespace FriishProduce
             }
 
             Image sBanner = tpl.ExtractTexture(0);
-            Image sIcon = new Bitmap(SaveIconPlaceholder.Width, SaveIconPlaceholder.Height);
+            Image sIcon = new Bitmap(Icon_Nintendo.Width, Icon_Nintendo.Height);
             Image sIconLogo = tpl.ExtractTexture(numTextures - 1);
 
             // Clean TPL textures
@@ -481,7 +481,7 @@ namespace FriishProduce
             // ****************
             using (Graphics g = Graphics.FromImage(sIcon))
             {
-                g.DrawImage(SaveIconPlaceholder, 0, 0, sIcon.Width, sIcon.Height);
+                g.DrawImage(Icon_Nintendo, 0, 0, sIcon.Width, sIcon.Height);
 
                 g.InterpolationMode = InterpolationMode.Bilinear;
                 g.PixelOffsetMode = PixelOffsetMode.Half;
@@ -624,7 +624,7 @@ namespace FriishProduce
                 using (Image sIcon = Image.FromFile(ImagesPath + "01.png"))
                 using (Graphics g = Graphics.FromImage(sIcon))
                 {
-                    g.DrawImage(SaveIconPlaceholder_SEGA, 0, 0, sIcon.Width, sIcon.Height);
+                    g.DrawImage(Icon_SEGA, 0, 0, sIcon.Width, sIcon.Height);
 
                     g.InterpolationMode = InterpolationMode.Bilinear;
                     g.PixelOffsetMode = PixelOffsetMode.Half;

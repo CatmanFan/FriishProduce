@@ -165,6 +165,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Apps.resx</DependentUpon>
     </Compile>
+    <Compile Include="FileDatas\SaveImages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SaveImages.resx</DependentUpon>
+    </Compile>
     <Compile Include="FileDatas\WADBanners.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -339,6 +344,10 @@
     <EmbeddedResource Include="FileDatas\Apps.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Apps.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FileDatas\SaveImages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SaveImages.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="FileDatas\WADBanners.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -548,6 +557,7 @@
     <None Include="Strings\es-419.json" />
     <None Include="Strings\es.json" />
     <None Include="Strings\fr.json" />
+    <None Include="Strings\ja.json" />
     <None Include="Strings\ko.json" />
     <None Include="Strings\en.json" />
   </ItemGroup>
@@ -562,6 +572,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\loading.gif" />
+    <None Include="Resources\page_white_zip.png" />
+    <None Include="Resources\page_white_flash.png" />
+    <None Include="Resources\page_white_cd.png" />
+    <None Include="Resources\icons\etc\swf_add.png" />
+    <None Include="Resources\vc\saveicon_placeholder_s.png" />
+    <None Include="Resources\vc\saveicon_placeholder.png" />
+    <None Include="Resources\vc\saveicon_flash.png" />
+    <None Include="Resources\vc\savebanner_flash.png" />
+    <None Include="Resources\icons\etc\tick_circle.png" />
     <None Include="Resources\icons\etc\tick.png" />
     <None Include="Resources\icons\etc\wrench.png" />
     <None Include="Resources\icons\etc\wand.png" />
@@ -594,7 +614,6 @@
     <None Include="Resources\subforms\controller_wiirh.png" />
     <None Include="Resources\subforms\controller_gc.png" />
     <None Include="Resources\subforms\controller_classic.png" />
-    <None Include="Resources\icon_new.png" />
     <None Include="Resources\icons\tag_blue_edit.png" />
     <None Include="Resources\icons\sound.png" />
     <None Include="Resources\icons\disk.png" />
@@ -634,10 +653,8 @@
     <None Include="Resources\icons\mr-saturn.png" />
     <None Include="Resources\icons\smw_note-block.png" />
     <None Include="Resources\icons\flash.png" />
-    <None Include="Resources\icon.png" />
     <None Include="Resources\icons\locale.png" />
     <None Include="Resources\subforms\screen_smd.png" />
-    <None Include="Resources\savebanner_flash.png" />
     <None Include="Resources\tutorial.rtf" />
     <None Include="Resources\vc\NeoGeo_VC1.bin" />
     <None Include="Resources\vc\NeoGeo_VC2.bin" />
@@ -653,9 +670,6 @@
     <None Include="Resources\icons\retroarch.png" />
     <None Include="Resources\icons\door_open.png" />
     <None Include="Resources\icons\retroarch_large.png" />
-    <None Include="Resources\saveicon_placeholder_s.png" />
-    <None Include="Resources\saveicon_placeholder.png" />
-    <None Include="Resources\saveicon_flash.png" />
     <None Include="Resources\icons\consoles\sega genesis.ico" />
     <None Include="Resources\icons\consoles\snk neo geo aes.ico" />
     <None Include="Resources\icons\consoles\sega master system.ico" />

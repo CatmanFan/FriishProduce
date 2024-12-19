@@ -174,6 +174,7 @@
 			"rom_label1":						"de juego",
 			"rom_label2":						"de disco",
 			"include_patch":					"Incluir parche",
+			"busy":								"Exportación en curso...",
 
 			"wad_base":							"Canal de origen",
 			"import_wad":						"Abrir un archivo WAD...",
@@ -216,6 +217,7 @@
 			"edit_save_data":					"Modificar título de datos guardados...",
 			"edit_save_data_1":					"Título:",
 			"edit_save_data_2":					"Subtítulo:",
+			"edit_save_data_max":				"No más de {0} caracteres por línea",
 			"fill_save_data":					"Completar automáticamente",
 			
 			"manual_type":						"Manual electrónico:",
@@ -304,8 +306,9 @@
 		},
 
 		"adobe_flash": {
-			"vff_sync_on_write":				"Sync VFF on write",
-			"vff_cache_size":					"VFF cache size",
+			"vff_cache_size":					"Tamaño de caché VFF (en {kilobytes})",
+			"persistent_storage_total":			"Almacenamiento total (en {kilobytes})",
+			"persistent_storage_per_movie":		"Almacenamiento por SWF (en {kilobytes})",
 			"controls":							"Controles",
 			"mouse":							"Mouse",
 			"qwerty_keyboard":					"Teclado QWERTY",

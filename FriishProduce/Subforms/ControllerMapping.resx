@@ -222,6 +222,246 @@
   <data name="&gt;&gt;bottomPanel2.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="&gt;&gt;page1.Name" xml:space="preserve">
+    <value>page1</value>
+  </data>
+  <data name="&gt;&gt;page1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;page1.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;page1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;page2.Name" xml:space="preserve">
+    <value>page2</value>
+  </data>
+  <data name="&gt;&gt;page2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;page2.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;page2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;page3.Name" xml:space="preserve">
+    <value>page3</value>
+  </data>
+  <data name="&gt;&gt;page3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;page3.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;page3.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 11</value>
+  </data>
+  <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>760, 345</value>
+  </data>
+  <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.Name" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;vertical_layout.Name" xml:space="preserve">
+    <value>vertical_layout</value>
+  </data>
+  <data name="&gt;&gt;vertical_layout.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;vertical_layout.Parent" xml:space="preserve">
+    <value>page1</value>
+  </data>
+  <data name="&gt;&gt;vertical_layout.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Minus.Name" xml:space="preserve">
+    <value>WiiRemote_Minus</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Minus.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Minus.Parent" xml:space="preserve">
+    <value>page1</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Minus.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Plus.Name" xml:space="preserve">
+    <value>WiiRemote_Plus</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Plus.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Plus.Parent" xml:space="preserve">
+    <value>page1</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Plus.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_B.Name" xml:space="preserve">
+    <value>WiiRemote_B</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_B.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_B.Parent" xml:space="preserve">
+    <value>page1</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_B.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_A.Name" xml:space="preserve">
+    <value>WiiRemote_A</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_A.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_A.Parent" xml:space="preserve">
+    <value>page1</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_A.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_2.Name" xml:space="preserve">
+    <value>WiiRemote_2</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_2.Parent" xml:space="preserve">
+    <value>page1</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_2.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_1.Name" xml:space="preserve">
+    <value>WiiRemote_1</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_1.Parent" xml:space="preserve">
+    <value>page1</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_1.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Left.Name" xml:space="preserve">
+    <value>WiiRemote_Left</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Left.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Left.Parent" xml:space="preserve">
+    <value>page1</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Left.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Down.Name" xml:space="preserve">
+    <value>WiiRemote_Down</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Down.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Down.Parent" xml:space="preserve">
+    <value>page1</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Down.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Up.Name" xml:space="preserve">
+    <value>WiiRemote_Up</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Up.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Up.Parent" xml:space="preserve">
+    <value>page1</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Up.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Right.Name" xml:space="preserve">
+    <value>WiiRemote_Right</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Right.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Right.Parent" xml:space="preserve">
+    <value>page1</value>
+  </data>
+  <data name="&gt;&gt;WiiRemote_Right.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;pictureBox2.Name" xml:space="preserve">
+    <value>pictureBox2</value>
+  </data>
+  <data name="&gt;&gt;pictureBox2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBox2.Parent" xml:space="preserve">
+    <value>page1</value>
+  </data>
+  <data name="&gt;&gt;pictureBox2.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;pictureBox3.Name" xml:space="preserve">
+    <value>pictureBox3</value>
+  </data>
+  <data name="&gt;&gt;pictureBox3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBox3.Parent" xml:space="preserve">
+    <value>page1</value>
+  </data>
+  <data name="&gt;&gt;pictureBox3.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="page1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="page1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="page1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>752, 319</value>
+  </data>
+  <data name="page1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="page1.Text" xml:space="preserve">
+    <value>page1</value>
+  </data>
+  <data name="&gt;&gt;page1.Name" xml:space="preserve">
+    <value>page1</value>
+  </data>
+  <data name="&gt;&gt;page1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;page1.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;page1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="vertical_layout.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
   </data>
@@ -546,32 +786,212 @@
   <data name="&gt;&gt;pictureBox3.ZOrder" xml:space="preserve">
     <value>12</value>
   </data>
-  <data name="page1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="&gt;&gt;Classic_Plus.Name" xml:space="preserve">
+    <value>Classic_Plus</value>
+  </data>
+  <data name="&gt;&gt;Classic_Plus.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Classic_Plus.Parent" xml:space="preserve">
+    <value>page2</value>
+  </data>
+  <data name="&gt;&gt;Classic_Plus.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;Classic_Minus.Name" xml:space="preserve">
+    <value>Classic_Minus</value>
+  </data>
+  <data name="&gt;&gt;Classic_Minus.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Classic_Minus.Parent" xml:space="preserve">
+    <value>page2</value>
+  </data>
+  <data name="&gt;&gt;Classic_Minus.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;Classic_B.Name" xml:space="preserve">
+    <value>Classic_B</value>
+  </data>
+  <data name="&gt;&gt;Classic_B.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Classic_B.Parent" xml:space="preserve">
+    <value>page2</value>
+  </data>
+  <data name="&gt;&gt;Classic_B.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;Classic_A.Name" xml:space="preserve">
+    <value>Classic_A</value>
+  </data>
+  <data name="&gt;&gt;Classic_A.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Classic_A.Parent" xml:space="preserve">
+    <value>page2</value>
+  </data>
+  <data name="&gt;&gt;Classic_A.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;Classic_Y.Name" xml:space="preserve">
+    <value>Classic_Y</value>
+  </data>
+  <data name="&gt;&gt;Classic_Y.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Classic_Y.Parent" xml:space="preserve">
+    <value>page2</value>
+  </data>
+  <data name="&gt;&gt;Classic_Y.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;Classic_X.Name" xml:space="preserve">
+    <value>Classic_X</value>
+  </data>
+  <data name="&gt;&gt;Classic_X.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Classic_X.Parent" xml:space="preserve">
+    <value>page2</value>
+  </data>
+  <data name="&gt;&gt;Classic_X.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;Classic_R.Name" xml:space="preserve">
+    <value>Classic_R</value>
+  </data>
+  <data name="&gt;&gt;Classic_R.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Classic_R.Parent" xml:space="preserve">
+    <value>page2</value>
+  </data>
+  <data name="&gt;&gt;Classic_R.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;Classic_ZR.Name" xml:space="preserve">
+    <value>Classic_ZR</value>
+  </data>
+  <data name="&gt;&gt;Classic_ZR.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Classic_ZR.Parent" xml:space="preserve">
+    <value>page2</value>
+  </data>
+  <data name="&gt;&gt;Classic_ZR.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;Classic_Down.Name" xml:space="preserve">
+    <value>Classic_Down</value>
+  </data>
+  <data name="&gt;&gt;Classic_Down.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Classic_Down.Parent" xml:space="preserve">
+    <value>page2</value>
+  </data>
+  <data name="&gt;&gt;Classic_Down.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;Classic_Right.Name" xml:space="preserve">
+    <value>Classic_Right</value>
+  </data>
+  <data name="&gt;&gt;Classic_Right.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Classic_Right.Parent" xml:space="preserve">
+    <value>page2</value>
+  </data>
+  <data name="&gt;&gt;Classic_Right.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;Classic_Left.Name" xml:space="preserve">
+    <value>Classic_Left</value>
+  </data>
+  <data name="&gt;&gt;Classic_Left.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Classic_Left.Parent" xml:space="preserve">
+    <value>page2</value>
+  </data>
+  <data name="&gt;&gt;Classic_Left.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;Classic_Up.Name" xml:space="preserve">
+    <value>Classic_Up</value>
+  </data>
+  <data name="&gt;&gt;Classic_Up.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Classic_Up.Parent" xml:space="preserve">
+    <value>page2</value>
+  </data>
+  <data name="&gt;&gt;Classic_Up.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;Classic_L.Name" xml:space="preserve">
+    <value>Classic_L</value>
+  </data>
+  <data name="&gt;&gt;Classic_L.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Classic_L.Parent" xml:space="preserve">
+    <value>page2</value>
+  </data>
+  <data name="&gt;&gt;Classic_L.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;Classic_ZL.Name" xml:space="preserve">
+    <value>Classic_ZL</value>
+  </data>
+  <data name="&gt;&gt;Classic_ZL.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Classic_ZL.Parent" xml:space="preserve">
+    <value>page2</value>
+  </data>
+  <data name="&gt;&gt;Classic_ZL.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;image_cc.Name" xml:space="preserve">
+    <value>image_cc</value>
+  </data>
+  <data name="&gt;&gt;image_cc.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;image_cc.Parent" xml:space="preserve">
+    <value>page2</value>
+  </data>
+  <data name="&gt;&gt;image_cc.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="page2.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
   </data>
-  <data name="page1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="page2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
-  <data name="page1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="page2.Size" type="System.Drawing.Size, System.Drawing">
     <value>752, 319</value>
   </data>
-  <data name="page1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="page2.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
-  <data name="page1.Text" xml:space="preserve">
-    <value>page1</value>
+  <data name="page2.Text" xml:space="preserve">
+    <value>page2</value>
   </data>
-  <data name="&gt;&gt;page1.Name" xml:space="preserve">
-    <value>page1</value>
+  <data name="&gt;&gt;page2.Name" xml:space="preserve">
+    <value>page2</value>
   </data>
-  <data name="&gt;&gt;page1.Type" xml:space="preserve">
+  <data name="&gt;&gt;page2.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;page1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;page2.Parent" xml:space="preserve">
     <value>tabControl1</value>
   </data>
-  <data name="&gt;&gt;page1.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;page2.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="Classic_Plus.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -936,32 +1356,188 @@
   <data name="&gt;&gt;image_cc.ZOrder" xml:space="preserve">
     <value>14</value>
   </data>
-  <data name="page2.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="&gt;&gt;comboBox8.Name" xml:space="preserve">
+    <value>comboBox8</value>
+  </data>
+  <data name="&gt;&gt;comboBox8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBox8.Parent" xml:space="preserve">
+    <value>page3</value>
+  </data>
+  <data name="&gt;&gt;comboBox8.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;GC_Z.Name" xml:space="preserve">
+    <value>GC_Z</value>
+  </data>
+  <data name="&gt;&gt;GC_Z.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GC_Z.Parent" xml:space="preserve">
+    <value>page3</value>
+  </data>
+  <data name="&gt;&gt;GC_Z.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;GC_R.Name" xml:space="preserve">
+    <value>GC_R</value>
+  </data>
+  <data name="&gt;&gt;GC_R.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GC_R.Parent" xml:space="preserve">
+    <value>page3</value>
+  </data>
+  <data name="&gt;&gt;GC_R.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;GC_B.Name" xml:space="preserve">
+    <value>GC_B</value>
+  </data>
+  <data name="&gt;&gt;GC_B.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GC_B.Parent" xml:space="preserve">
+    <value>page3</value>
+  </data>
+  <data name="&gt;&gt;GC_B.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;GC_A.Name" xml:space="preserve">
+    <value>GC_A</value>
+  </data>
+  <data name="&gt;&gt;GC_A.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GC_A.Parent" xml:space="preserve">
+    <value>page3</value>
+  </data>
+  <data name="&gt;&gt;GC_A.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;GC_X.Name" xml:space="preserve">
+    <value>GC_X</value>
+  </data>
+  <data name="&gt;&gt;GC_X.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GC_X.Parent" xml:space="preserve">
+    <value>page3</value>
+  </data>
+  <data name="&gt;&gt;GC_X.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;GC_Y.Name" xml:space="preserve">
+    <value>GC_Y</value>
+  </data>
+  <data name="&gt;&gt;GC_Y.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GC_Y.Parent" xml:space="preserve">
+    <value>page3</value>
+  </data>
+  <data name="&gt;&gt;GC_Y.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;GC_Down.Name" xml:space="preserve">
+    <value>GC_Down</value>
+  </data>
+  <data name="&gt;&gt;GC_Down.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GC_Down.Parent" xml:space="preserve">
+    <value>page3</value>
+  </data>
+  <data name="&gt;&gt;GC_Down.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;GC_Right.Name" xml:space="preserve">
+    <value>GC_Right</value>
+  </data>
+  <data name="&gt;&gt;GC_Right.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GC_Right.Parent" xml:space="preserve">
+    <value>page3</value>
+  </data>
+  <data name="&gt;&gt;GC_Right.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;GC_Left.Name" xml:space="preserve">
+    <value>GC_Left</value>
+  </data>
+  <data name="&gt;&gt;GC_Left.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GC_Left.Parent" xml:space="preserve">
+    <value>page3</value>
+  </data>
+  <data name="&gt;&gt;GC_Left.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;GC_Up.Name" xml:space="preserve">
+    <value>GC_Up</value>
+  </data>
+  <data name="&gt;&gt;GC_Up.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GC_Up.Parent" xml:space="preserve">
+    <value>page3</value>
+  </data>
+  <data name="&gt;&gt;GC_Up.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;GC_L.Name" xml:space="preserve">
+    <value>GC_L</value>
+  </data>
+  <data name="&gt;&gt;GC_L.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GC_L.Parent" xml:space="preserve">
+    <value>page3</value>
+  </data>
+  <data name="&gt;&gt;GC_L.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Name" xml:space="preserve">
+    <value>pictureBox1</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Parent" xml:space="preserve">
+    <value>page3</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="page3.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
   </data>
-  <data name="page2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="page3.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
-  <data name="page2.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="page3.Size" type="System.Drawing.Size, System.Drawing">
     <value>752, 319</value>
   </data>
-  <data name="page2.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="page3.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
-  <data name="page2.Text" xml:space="preserve">
-    <value>page2</value>
+  <data name="page3.Text" xml:space="preserve">
+    <value>page3</value>
   </data>
-  <data name="&gt;&gt;page2.Name" xml:space="preserve">
-    <value>page2</value>
+  <data name="&gt;&gt;page3.Name" xml:space="preserve">
+    <value>page3</value>
   </data>
-  <data name="&gt;&gt;page2.Type" xml:space="preserve">
+  <data name="&gt;&gt;page3.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;page2.Parent" xml:space="preserve">
+  <data name="&gt;&gt;page3.Parent" xml:space="preserve">
     <value>tabControl1</value>
   </data>
-  <data name="&gt;&gt;page2.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;page3.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="comboBox8.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -1278,53 +1854,53 @@
   <data name="&gt;&gt;pictureBox1.ZOrder" xml:space="preserve">
     <value>12</value>
   </data>
-  <data name="page3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
+  <data name="&gt;&gt;presets_list.Name" xml:space="preserve">
+    <value>presets_list</value>
   </data>
-  <data name="page3.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
+  <data name="&gt;&gt;presets_list.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="page3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>752, 319</value>
+  <data name="&gt;&gt;presets_list.Parent" xml:space="preserve">
+    <value>presets_gb</value>
   </data>
-  <data name="page3.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="&gt;&gt;presets_list.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="page3.Text" xml:space="preserve">
-    <value>page3</value>
+  <data name="&gt;&gt;preset_load.Name" xml:space="preserve">
+    <value>preset_load</value>
   </data>
-  <data name="&gt;&gt;page3.Name" xml:space="preserve">
-    <value>page3</value>
+  <data name="&gt;&gt;preset_load.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;page3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;preset_load.Parent" xml:space="preserve">
+    <value>presets_gb</value>
   </data>
-  <data name="&gt;&gt;page3.Parent" xml:space="preserve">
-    <value>tabControl1</value>
+  <data name="&gt;&gt;preset_load.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
-  <data name="&gt;&gt;page3.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="presets_gb.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 358</value>
   </data>
-  <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 11</value>
+  <data name="presets_gb.Size" type="System.Drawing.Size, System.Drawing">
+    <value>760, 50</value>
   </data>
-  <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>760, 345</value>
+  <data name="presets_gb.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
   </data>
-  <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
+  <data name="presets_gb.Text" xml:space="preserve">
+    <value>presets</value>
   </data>
-  <data name="&gt;&gt;tabControl1.Name" xml:space="preserve">
-    <value>tabControl1</value>
+  <data name="&gt;&gt;presets_gb.Name" xml:space="preserve">
+    <value>presets_gb</value>
   </data>
-  <data name="&gt;&gt;tabControl1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;presets_gb.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tabControl1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;presets_gb.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;tabControl1.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;presets_gb.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="presets_list.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 18</value>
@@ -1370,30 +1946,6 @@
   </data>
   <data name="&gt;&gt;preset_load.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="presets_gb.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 358</value>
-  </data>
-  <data name="presets_gb.Size" type="System.Drawing.Size, System.Drawing">
-    <value>760, 50</value>
-  </data>
-  <data name="presets_gb.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="presets_gb.Text" xml:space="preserve">
-    <value>presets</value>
-  </data>
-  <data name="&gt;&gt;presets_gb.Name" xml:space="preserve">
-    <value>presets_gb</value>
-  </data>
-  <data name="&gt;&gt;presets_gb.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;presets_gb.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;presets_gb.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

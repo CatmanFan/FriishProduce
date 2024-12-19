@@ -61,7 +61,7 @@ namespace FriishProduce.Options {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("off")]
+        [global::System.Configuration.DefaultSettingValueAttribute("on")]
         public string shared_object_capability {
             get {
                 return ((string)(this["shared_object_capability"]));
@@ -73,7 +73,7 @@ namespace FriishProduce.Options {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("96")]
+        [global::System.Configuration.DefaultSettingValueAttribute("1024")]
         public string vff_cache_size {
             get {
                 return ((string)(this["vff_cache_size"]));
@@ -85,7 +85,7 @@ namespace FriishProduce.Options {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("off")]
+        [global::System.Configuration.DefaultSettingValueAttribute("on")]
         public string vff_sync_on_write {
             get {
                 return ((string)(this["vff_sync_on_write"]));
@@ -116,6 +116,42 @@ namespace FriishProduce.Options {
             }
             set {
                 this["strap_reminder"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2048")]
+        public string persistent_storage_total {
+            get {
+                return ((string)(this["persistent_storage_total"]));
+            }
+            set {
+                this["persistent_storage_total"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1024")]
+        public string persistent_storage_per_movie {
+            get {
+                return ((string)(this["persistent_storage_per_movie"]));
+            }
+            set {
+                this["persistent_storage_per_movie"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("30")]
+        public string update_frame_rate {
+            get {
+                return ((string)(this["update_frame_rate"]));
+            }
+            set {
+                this["update_frame_rate"] = value;
             }
         }
     }

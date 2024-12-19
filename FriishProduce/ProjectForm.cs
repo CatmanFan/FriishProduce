@@ -53,6 +53,23 @@ namespace FriishProduce
         }
         private bool _isModified;
 
+        private bool _isVisible = false;
+        public bool IsVisible
+        {
+            get => _isVisible;
+
+            set
+            {
+                groupBox1.Visible =
+                groupBox2.Visible =
+                groupBox3.Visible =
+                groupBox4.Visible =
+                groupBox5.Visible =
+                groupBox6.Visible =
+                _isVisible = value;
+            }
+        }
+
         private bool _isLocked;
         public bool IsLocked
         {
@@ -67,9 +84,9 @@ namespace FriishProduce
                 groupBox1.Enabled =
                 groupBox2.Enabled =
                 groupBox3.Enabled =
-                groupBox6.Enabled =
-                groupBox7.Enabled =
-                groupBox8.Enabled = !value;
+                groupBox4.Enabled =
+                groupBox5.Enabled =
+                groupBox6.Enabled = !value;
 
                 include_patch.Enabled = !value && showPatch;
             }
@@ -108,7 +125,7 @@ namespace FriishProduce
                     refreshData();
                 }
 
-                return savedata.Title.Visible ? yes && !string.IsNullOrEmpty(_saveDataTitle[0]) : yes;
+                return showSaveData ? yes && !string.IsNullOrEmpty(savedata.Lines[0]) : yes;
             }
         }
         public bool IsForwarder { get => !isVirtualConsole && targetPlatform != Platform.Flash; }
@@ -178,7 +195,7 @@ namespace FriishProduce
         private string _bannerTitle { get => banner_form.title.Text; }
         private int _bannerYear { get => (int)banner_form.released.Value; }
         private int _bannerPlayers { get => (int)banner_form.players.Value; }
-        private string[] _saveDataTitle { get => savedata.Title.Lines.Length == 1 ? new string[] { savedata.Title.Text } : savedata.Title.Lines.Length == 0 ? new string[] { "" } : savedata.Title.Lines; }
+        private string[] _saveDataTitle { get => savedata.IsMultiline == false ? new string[] { savedata.Lines[0] } : savedata.Lines.Length == 0 ? new string[] { "" } : savedata.Lines; }
         private int _bannerRegion
         {
             get
@@ -196,8 +213,8 @@ namespace FriishProduce
                         lang = 4;
                 }
 
-                // Japan/Korea: Use USA banner for C64
-                if (lang != 2 && lang != 3 && targetPlatform == Platform.C64)
+                // Japan/Korea: Use USA banner for C64 & Flash
+                if (lang != 2 && lang != 3 && (targetPlatform == Platform.C64 || targetPlatform == Platform.Flash))
                     lang = 0;
 
                 // International: Use Japan banner for MSX
@@ -248,10 +265,10 @@ namespace FriishProduce
 
                 TitleID = _tID,
                 ChannelTitles = _channelTitles,
-                SaveDataTitle = _saveDataTitle,
                 BannerTitle = _bannerTitle,
                 BannerYear = _bannerYear,
                 BannerPlayers = _bannerPlayers,
+                SaveDataTitle = savedata.Lines,
 
                 WADRegion = regions.SelectedIndex,
             };
@@ -611,10 +628,7 @@ namespace FriishProduce
                 {
                     use_online_wad.Checked = true;
                     Base.SelectedIndex = project.BaseOnline.Index;
-                    for (int i = 0; i < baseRegionList.Items.Count; i++)
-                        if (baseRegionList.Items[i].GetType() == typeof(ToolStripMenuItem)) (baseRegionList.Items[i] as ToolStripMenuItem).Checked = false;
                     UpdateBaseForm(project.BaseOnline.Region);
-                    (baseRegionList.Items[project.BaseOnline.Region] as ToolStripMenuItem).Checked = true;
                 }
 
                 patch = File.Exists(project.Patch) ? project.Patch : null;
@@ -623,7 +637,8 @@ namespace FriishProduce
                 banner_form.title.Text = project.BannerTitle;
                 banner_form.released.Value = project.BannerYear;
                 banner_form.players.Value = project.BannerPlayers;
-                savedata.Title.Lines = project.SaveDataTitle;
+                savedata.title.Text = project.SaveDataTitle[0];
+                savedata.subtitle.Text = project.SaveDataTitle.Length > 1 ? project.SaveDataTitle[1] : null;
                 title_id_upper.Text = project.TitleID;
 
                 regions.SelectedIndex = project.WADRegion;
@@ -651,8 +666,11 @@ namespace FriishProduce
                 if (!use_offline_wad.Checked && !use_online_wad.Checked) use_offline_wad.Checked = true;
             }
 
-            savedata.Fill.Checked = loadProject ? project.LinkSaveDataTitle : Properties.Settings.Default.auto_fill_save_data;
+            savedata.Fill.Checked = project != null ? project.LinkSaveDataTitle : Properties.Settings.Default.auto_fill_save_data;
+            if (savedata.Fill.Checked) linkSaveDataTitle();
             forwarder_root_device.SelectedIndex = loadProject ? project.ForwarderStorageDevice : Options.FORWARDER.Default.root_storage_device;
+            
+            IsVisible = true;
 
             IsEmpty = project == null;
             IsModified = false;
@@ -753,6 +771,19 @@ namespace FriishProduce
             };
         }
 
+        public Bitmap FileTypeImage
+        {
+            get
+            {
+                return targetPlatform switch
+                {
+                    Platform.NEO => Properties.Resources.page_white_zip,
+                    Platform.Flash => Properties.Resources.page_white_flash,
+                    _ => Properties.Resources.page_white_cd
+                };
+            }
+        }
+
         public string FileTypeName
         {
             get
@@ -784,7 +815,7 @@ namespace FriishProduce
 
             // WAD
             // ********
-            checkImg1.Image = hasWad ? Properties.Resources.tick : Properties.Resources.cross;
+            checkImg1.Image = hasWad ? Program.Lang.Current.ToLower().StartsWith("ja") || Program.Lang.Current.ToUpper().EndsWith("-JP") ? Properties.Resources.tick_circle : Properties.Resources.tick : Properties.Resources.cross;
             baseName.Visible = baseID.Visible = hasWad || use_online_wad.Checked;
         }
 
@@ -869,31 +900,12 @@ namespace FriishProduce
 
         private void linkSaveDataTitle()
         {
-            if (savedata.Fill.Checked && savedata.Fill.Enabled && savedata.Fill.Visible)
+            savedata.SourcedLines = new string[] { channel_name.Text, banner_form.title.Lines.Length > 1 ? banner_form.title.Lines[1] : "" };
+
+            if (savedata.Fill.Checked)
             {
-                string[] lines = new string[2];
-                int limit = savedata.Title.Multiline ? savedata.Title.MaxLength / 2 : savedata.Title.MaxLength;
-                if (channel_name.TextLength <= limit) lines[0] = channel_name.Text;
-                if (banner_form.title.Lines.Length > 1 && banner_form.title.Lines[1].Length <= limit) lines[1] = banner_form.title.Lines[1];
-
-                if (string.Join("\n", lines).Length > savedata.Title.MaxLength) return;
-
-                savedata.Title.Text
-                    = string.IsNullOrWhiteSpace(lines[1]) ? lines[0]
-                    : string.IsNullOrWhiteSpace(lines[0]) ? lines[1]
-                    : string.IsNullOrWhiteSpace(lines[0]) && string.IsNullOrWhiteSpace(lines[1]) ? null
-                    : savedata.Title.Multiline ? string.Join(Environment.NewLine, lines) : lines[0];
-            }
-
-            refreshData();
-        }
-
-        private void LinkSaveData_Changed(object sender, EventArgs e)
-        {
-            if (sender == savedata.Fill)
-            {
-                savedata.Title.Enabled = !savedata.Fill.Checked;
-                linkSaveDataTitle();
+                savedata.SyncTitles();
+                refreshData();
             }
         }
 
@@ -1308,8 +1320,7 @@ namespace FriishProduce
                         banner_form.released.Value = !string.IsNullOrEmpty(gameData.Year) ? int.Parse(gameData.Year) : banner_form.released.Value;
                         banner_form.players.Value = !string.IsNullOrEmpty(gameData.Players) ? int.Parse(gameData.Players) : banner_form.players.Value;
 
-                        if (savedata.Fill.Checked) linkSaveDataTitle();
-                        else if (rom.CleanTitle != null && channel_name.TextLength <= savedata.Title.MaxLength) savedata.Title.Text = channel_name.Text;
+                        linkSaveDataTitle();
                     }
 
                     // Set image
@@ -1336,6 +1347,10 @@ namespace FriishProduce
         {
             if (targetFile == null) targetFile = Paths.WorkingFolder + "out.wad";
             IsLocked = true;
+
+            busy.BringToFront();
+            busy.Show();
+            busy.BringToFront();
 
             try
             {
@@ -1440,6 +1455,7 @@ namespace FriishProduce
                 // *******
                 if (File.Exists(targetFile) && File.ReadAllBytes(targetFile).Length > 10)
                 {
+                    busy.Hide();
                     IsLocked = false;
                     SystemSounds.Beep.Play();
 
@@ -1457,6 +1473,7 @@ namespace FriishProduce
 
             catch (Exception ex)
             {
+                busy.Hide();
                 IsLocked = false;
                 MessageBox.Error(ex.Message);
                 return false;
@@ -1855,11 +1872,15 @@ namespace FriishProduce
         {
             manual_type.Visible = false;
             forwarder_root_device.Visible = false;
+            multifile_software.Visible = false;
+            extra.Visible = false;
             contentOptionsForm = null;
 
             if (isVirtualConsole)
             {
                 manual_type.Visible = true;
+                extra.Visible = true;
+                extra.Text = Program.Lang.String(manual_type.Name, Name);
 
                 switch (targetPlatform)
                 {
@@ -1899,11 +1920,14 @@ namespace FriishProduce
             else if (targetPlatform == Platform.Flash)
             {
                 contentOptionsForm = new Options_Flash();
+                multifile_software.Visible = true;
             }
 
             else
             {
                 forwarder_root_device.Visible = true;
+                extra.Visible = true;
+                extra.Text = Program.Lang.String(forwarder_root_device.Name, Name);
 
                 switch (targetPlatform)
                 {
@@ -1914,6 +1938,7 @@ namespace FriishProduce
                     case Platform.SMCD:
                     case Platform.PSX:
                         contentOptionsForm = new Options_Forwarder(targetPlatform);
+                        if (targetPlatform == Platform.PSX) multifile_software.Visible = true;
                         break;
                     case Platform.NES:
                         break;
@@ -1963,10 +1988,6 @@ namespace FriishProduce
             #endregion
 
             showSaveData = isVirtualConsole || targetPlatform == Platform.Flash;
-
-            extra.Visible = manual_type.Visible || forwarder_root_device.Visible;
-            extra.Text = manual_type.Visible ? Program.Lang.String(manual_type.Name, Name) : Program.Lang.String(forwarder_root_device.Name, Name);
-            multifile_software.Visible = targetPlatform == Platform.Flash;
             download_image.Enabled = targetPlatform != Platform.C64
                                   && targetPlatform != Platform.Flash
                                   && targetPlatform != Platform.RPGM;
@@ -2067,7 +2088,7 @@ namespace FriishProduce
                 bool hasYear = banner_form.origYear != (int)banner_form.released.Value;
                 bool hasPlayers = banner_form.origPlayers != (int)banner_form.players.Value;
                 bool hasRegion = banner_form.origRegion != banner_form.region.SelectedIndex;
-                if (hasBanner) linkSaveDataTitle();
+                linkSaveDataTitle();
 
                 if (hasBanner || hasYear || hasPlayers || hasRegion)
                 {
@@ -2103,6 +2124,7 @@ namespace FriishProduce
         private void edit_save_data_Click(object sender, EventArgs e)
         {
             // savedata.Text = Program.Lang.String(edit_save_data.Name, Name);
+
             if (savedata.ShowDialog() == DialogResult.OK) refreshData();
         }
 
@@ -2111,6 +2133,11 @@ namespace FriishProduce
             refreshData();
 
             if (multifile_software.Checked && !Properties.Settings.Default.donotshow_001 && !IsEmpty) MessageBox.Show(null, Program.Lang.Msg(10, false), 1);
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            linkSaveDataTitle();
         }
     }
 }

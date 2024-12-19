@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace FriishProduce
@@ -107,7 +108,6 @@ namespace FriishProduce
             #region Localization
             Program.Lang.Control(this);
             Text = Program.Lang.ApplicationTitle;
-            if (Program.DebugMode) Text += " [Running in debug mode]";
             about.Text = string.Format(Program.Lang.String("about_app"), Program.Lang.ApplicationTitle);
 
             foreach (MenuItem section in mainMenu.MenuItems)
@@ -125,7 +125,7 @@ namespace FriishProduce
             if (import_game_file.Tag == null) import_game_file.Tag = import_game_file.Text;
             import_game_file.Text = string.Format(Program.Lang.String(import_game_file.Tag.ToString(), Name), Program.Lang.String("rom_label1", "projectform"));
 
-            toolbarNewProject.Text = new_project.Text;
+            toolbarNewProject.Text = new Regex(@"\(.*\)").Replace(new_project.Text, "");
             toolbarOpenProject.Text = open_project.Text;
             toolbarSave.Text = save_project.Text;
             toolbarSaveAs.Text = save_project_as.Text;
@@ -140,6 +140,12 @@ namespace FriishProduce
             try { BrowseProject.Filter = SaveProject.Filter = Program.Lang.String("filter.project"); }
             catch { MessageBox.Show("Warning!\nThe language strings have not been loaded correctly.\n\nSeveral items may show up as 'undefined'.\n\nOther exceptions related to strings or filters can also occur!", MessageBox.Buttons.Ok, MessageBox.Icons.Warning, false); }
             #endregion
+
+            if (Program.DebugMode)
+            {
+                Text += " [Running in debug mode]";
+                language_file_editor.Visible = true;
+            }
 
             foreach (MdiTabControl.TabPage tabPage in tabControl.TabPages)
                 if (tabPage.Form.GetType() == typeof(ProjectForm))
@@ -216,8 +222,9 @@ namespace FriishProduce
             if (!hasTabs)
             {
                 game_scan.Enabled = false;
-                save_project_as.Enabled = false;
+                save_project.Enabled = save_project_as.Enabled = false;
                 export.Enabled = false;
+                toolbarImportGameFile.Image = Properties.Resources.page_white_cd;
                 import_game_file.Text = string.Format(Program.Lang.String(import_game_file.Tag.ToString(), Name), Program.Lang.String("rom_label1", "projectform"));
 
                 tabControl.Visible = false;
@@ -226,8 +233,9 @@ namespace FriishProduce
             else
             {
                 game_scan.Enabled = (tabControl.SelectedForm as ProjectForm).ToolbarButtons[0];
-                save_project_as.Enabled = (tabControl.SelectedForm as ProjectForm).IsModified;
+                save_project.Enabled = save_project_as.Enabled = (tabControl.SelectedForm as ProjectForm).IsModified;
                 export.Enabled = (tabControl.SelectedForm as ProjectForm).IsExportable;
+                toolbarImportGameFile.Image = (tabControl.SelectedForm as ProjectForm).FileTypeImage;
                 import_game_file.Text = string.Format(Program.Lang.String(import_game_file.Tag.ToString(), Name), (tabControl.SelectedForm as ProjectForm).FileTypeName);
             }
 
@@ -268,7 +276,6 @@ namespace FriishProduce
         private void addTab(Platform platform, Project x = null)
         {
             ProjectForm p = new(platform, null, x) { Font = Font };
-            p.Shown += TabChanged;
             p.FormClosed += TabChanged;
             tabControl.TabPages.Add(p);
 
@@ -332,7 +339,8 @@ namespace FriishProduce
             SaveWAD.FileName = currentForm?.GetName(true);
             SaveWAD.Filter = currentForm.IsForwarder ? Program.Lang.String("filter.zip") : Program.Lang.String("filter.wad");
 
-            if (SaveWAD.ShowDialog() == DialogResult.OK) currentForm?.SaveToWAD(SaveWAD.FileName);
+            if (SaveWAD.ShowDialog() == DialogResult.OK)
+                currentForm?.SaveToWAD(SaveWAD.FileName);
         }
 
         private void SaveAs_Click(object sender, EventArgs e) => SaveAs_Trigger();

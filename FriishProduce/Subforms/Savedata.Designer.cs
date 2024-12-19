@@ -34,16 +34,22 @@
             this.b_cancel = new System.Windows.Forms.Button();
             this.b_ok = new System.Windows.Forms.Button();
             this.Fill = new System.Windows.Forms.CheckBox();
-            this.Title = new System.Windows.Forms.TextBox();
             this.Picture = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.title = new System.Windows.Forms.TextBox();
+            this.subtitle = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.info1 = new System.Windows.Forms.PictureBox();
             this.bottomPanel2.SuspendLayout();
             this.bottomPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Picture)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.info1)).BeginInit();
             this.SuspendLayout();
             // 
             // bottomPanel2
             // 
-            this.bottomPanel2.BackColor = System.Drawing.Color.LightGray;
+            this.bottomPanel2.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.bottomPanel2.Controls.Add(this.bottomPanel1);
             resources.ApplyResources(this.bottomPanel2, "bottomPanel2");
             this.bottomPanel2.Name = "bottomPanel2";
@@ -79,28 +85,66 @@
             this.Fill.Name = "Fill";
             this.Fill.Tag = "fill_save_data";
             this.Fill.UseVisualStyleBackColor = true;
-            // 
-            // Title
-            // 
-            resources.ApplyResources(this.Title, "Title");
-            this.Title.Name = "Title";
-            this.Title.Tag = "14";
+            this.Fill.CheckedChanged += new System.EventHandler(this.Fill_CheckedChanged);
             // 
             // Picture
             // 
-            this.Picture.BackgroundImage = global::FriishProduce.Properties.Resources.SaveIconPlaceholder;
+            this.Picture.BackgroundImage = global::FriishProduce.FileDatas.SaveImages.Icon_Nintendo;
             resources.ApplyResources(this.Picture, "Picture");
             this.Picture.Name = "Picture";
             this.Picture.TabStop = false;
             // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            this.label1.Tag = "edit_save_data_1";
+            // 
+            // title
+            // 
+            resources.ApplyResources(this.title, "title");
+            this.title.Name = "title";
+            // 
+            // subtitle
+            // 
+            resources.ApplyResources(this.subtitle, "subtitle");
+            this.subtitle.Name = "subtitle";
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            this.label2.Tag = "edit_save_data_2";
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label3.Name = "label3";
+            this.label3.Tag = "edit_save_data_max";
+            // 
+            // info1
+            // 
+            this.info1.Image = global::FriishProduce.Properties.Resources.information;
+            resources.ApplyResources(this.info1, "info1");
+            this.info1.Name = "info1";
+            this.info1.TabStop = false;
+            // 
             // Savedata
             // 
+            this.AcceptButton = this.b_ok;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.CancelButton = this.b_cancel;
             resources.ApplyResources(this, "$this");
             this.ControlBox = false;
+            this.Controls.Add(this.info1);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.subtitle);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.title);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.Fill);
-            this.Controls.Add(this.Title);
             this.Controls.Add(this.Picture);
             this.Controls.Add(this.bottomPanel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -112,10 +156,11 @@
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.isClosing);
-            this.Shown += new System.EventHandler(this.isShown);
+            this.Load += new System.EventHandler(this.isLoading);
             this.bottomPanel2.ResumeLayout(false);
             this.bottomPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Picture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.info1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -127,8 +172,13 @@
         protected System.Windows.Forms.Panel bottomPanel1;
         protected System.Windows.Forms.Button b_cancel;
         protected System.Windows.Forms.Button b_ok;
-        public System.Windows.Forms.TextBox Title;
-        public System.Windows.Forms.CheckBox Fill;
         public System.Windows.Forms.PictureBox Picture;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        internal System.Windows.Forms.TextBox title;
+        internal System.Windows.Forms.TextBox subtitle;
+        internal System.Windows.Forms.CheckBox Fill;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.PictureBox info1;
     }
 }

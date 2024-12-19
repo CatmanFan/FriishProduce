@@ -12,19 +12,28 @@
       <Value Profile="(Default)">high</Value>
     </Setting>
     <Setting Name="shared_object_capability" Type="System.String" Scope="User">
-      <Value Profile="(Default)">off</Value>
+      <Value Profile="(Default)">on</Value>
     </Setting>
     <Setting Name="vff_cache_size" Type="System.String" Scope="User">
-      <Value Profile="(Default)">96</Value>
+      <Value Profile="(Default)">1024</Value>
     </Setting>
     <Setting Name="vff_sync_on_write" Type="System.String" Scope="User">
-      <Value Profile="(Default)">off</Value>
+      <Value Profile="(Default)">on</Value>
     </Setting>
     <Setting Name="hbm_no_save" Type="System.String" Scope="User">
       <Value Profile="(Default)">yes</Value>
     </Setting>
     <Setting Name="strap_reminder" Type="System.String" Scope="User">
       <Value Profile="(Default)">none</Value>
+    </Setting>
+    <Setting Name="persistent_storage_total" Type="System.String" Scope="User">
+      <Value Profile="(Default)">2048</Value>
+    </Setting>
+    <Setting Name="persistent_storage_per_movie" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1024</Value>
+    </Setting>
+    <Setting Name="update_frame_rate" Type="System.String" Scope="User">
+      <Value Profile="(Default)">30</Value>
     </Setting>
   </Settings>
 </SettingsFile>

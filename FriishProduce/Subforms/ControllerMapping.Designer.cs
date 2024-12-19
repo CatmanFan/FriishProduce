@@ -80,8 +80,8 @@ namespace FriishProduce
             this.GC_L = new System.Windows.Forms.ComboBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.presets_gb = new System.Windows.Forms.GroupBox();
-            this.preset_load = new System.Windows.Forms.Button();
             this.presets_list = new System.Windows.Forms.ComboBox();
+            this.preset_load = new System.Windows.Forms.Button();
             this.bottomPanel2.SuspendLayout();
             this.bottomPanel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -97,7 +97,7 @@ namespace FriishProduce
             // 
             // bottomPanel2
             // 
-            this.bottomPanel2.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.bottomPanel2.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.bottomPanel2.Controls.Add(this.bottomPanel1);
             resources.ApplyResources(this.bottomPanel2, "bottomPanel2");
             this.bottomPanel2.Name = "bottomPanel2";
@@ -494,6 +494,13 @@ namespace FriishProduce
             this.presets_gb.TabStop = false;
             this.presets_gb.Tag = "presets";
             // 
+            // presets_list
+            // 
+            this.presets_list.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.presets_list.FormattingEnabled = true;
+            resources.ApplyResources(this.presets_list, "presets_list");
+            this.presets_list.Name = "presets_list";
+            // 
             // preset_load
             // 
             resources.ApplyResources(this.preset_load, "preset_load");
@@ -501,13 +508,6 @@ namespace FriishProduce
             this.preset_load.Tag = "preset_load";
             this.preset_load.UseVisualStyleBackColor = true;
             this.preset_load.Click += new System.EventHandler(this.Preset_Click);
-            // 
-            // presets_list
-            // 
-            this.presets_list.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.presets_list.FormattingEnabled = true;
-            resources.ApplyResources(this.presets_list, "presets_list");
-            this.presets_list.Name = "presets_list";
             // 
             // ControllerMapping
             // 
@@ -519,7 +519,7 @@ namespace FriishProduce
             this.Controls.Add(this.presets_gb);
             this.Controls.Add(this.bottomPanel2);
             this.Controls.Add(this.tabControl1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;

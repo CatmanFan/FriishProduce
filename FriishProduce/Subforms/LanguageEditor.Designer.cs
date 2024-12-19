@@ -32,9 +32,12 @@ namespace FriishProduce
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LanguageEditor));
             this.mainMenu = new System.Windows.Forms.MainMenu(this.components);
             this.menuItem1 = new System.Windows.Forms.MenuItem();
+            this.menuItem7 = new System.Windows.Forms.MenuItem();
             this.menuItem2 = new System.Windows.Forms.MenuItem();
             this.menuItem6 = new System.Windows.Forms.MenuItem();
             this.menuItem3 = new System.Windows.Forms.MenuItem();
@@ -57,10 +60,13 @@ namespace FriishProduce
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Original = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Translated = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.status_label = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.strings)).BeginInit();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainMenu
@@ -72,6 +78,7 @@ namespace FriishProduce
             // 
             this.menuItem1.Index = 0;
             this.menuItem1.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.menuItem7,
             this.menuItem2,
             this.menuItem6,
             this.menuItem3,
@@ -79,33 +86,42 @@ namespace FriishProduce
             this.menuItem5});
             this.menuItem1.Text = "File";
             // 
+            // menuItem7
+            // 
+            this.menuItem7.Index = 0;
+            this.menuItem7.Shortcut = System.Windows.Forms.Shortcut.CtrlN;
+            this.menuItem7.Text = "New";
+            this.menuItem7.Click += new System.EventHandler(this.ClearAll);
+            // 
             // menuItem2
             // 
-            this.menuItem2.Index = 0;
+            this.menuItem2.Index = 1;
             this.menuItem2.Shortcut = System.Windows.Forms.Shortcut.CtrlO;
             this.menuItem2.Text = "Open...";
             this.menuItem2.Click += new System.EventHandler(this.Open_Click);
             // 
             // menuItem6
             // 
-            this.menuItem6.Index = 1;
+            this.menuItem6.Index = 2;
             this.menuItem6.Shortcut = System.Windows.Forms.Shortcut.CtrlS;
             this.menuItem6.Text = "Save";
+            this.menuItem6.Click += new System.EventHandler(this.Save_Click);
             // 
             // menuItem3
             // 
-            this.menuItem3.Index = 2;
+            this.menuItem3.Index = 3;
             this.menuItem3.Shortcut = System.Windows.Forms.Shortcut.CtrlShiftS;
             this.menuItem3.Text = "Save as...";
+            this.menuItem3.Click += new System.EventHandler(this.Save_Click);
             // 
             // menuItem4
             // 
-            this.menuItem4.Index = 3;
+            this.menuItem4.Index = 4;
             this.menuItem4.Text = "-";
             // 
             // menuItem5
             // 
-            this.menuItem5.Index = 4;
+            this.menuItem5.Index = 5;
             this.menuItem5.Shortcut = System.Windows.Forms.Shortcut.AltF4;
             this.menuItem5.Text = "Exit";
             this.menuItem5.Click += new System.EventHandler(this.Exit);
@@ -181,6 +197,7 @@ namespace FriishProduce
             this.title.Name = "title";
             this.title.Size = new System.Drawing.Size(572, 21);
             this.title.TabIndex = 6;
+            this.title.TextChanged += new System.EventHandler(this.Text_Changed);
             // 
             // iso_code
             // 
@@ -190,6 +207,7 @@ namespace FriishProduce
             this.iso_code.ReadOnly = true;
             this.iso_code.Size = new System.Drawing.Size(100, 21);
             this.iso_code.TabIndex = 2;
+            this.iso_code.TextChanged += new System.EventHandler(this.Text_Changed);
             // 
             // author
             // 
@@ -198,6 +216,7 @@ namespace FriishProduce
             this.author.Name = "author";
             this.author.Size = new System.Drawing.Size(572, 21);
             this.author.TabIndex = 5;
+            this.author.TextChanged += new System.EventHandler(this.Text_Changed);
             // 
             // label1
             // 
@@ -246,13 +265,15 @@ namespace FriishProduce
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 125F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(884, 441);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(884, 421);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // strings
             // 
             this.strings.AllowUserToAddRows = false;
             this.strings.AllowUserToDeleteRows = false;
+            this.strings.AllowUserToResizeRows = false;
+            this.strings.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.strings.BackgroundColor = System.Drawing.SystemColors.Control;
             this.strings.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.strings.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
@@ -266,11 +287,15 @@ namespace FriishProduce
             this.strings.Dock = System.Windows.Forms.DockStyle.Fill;
             this.strings.GridColor = System.Drawing.SystemColors.Control;
             this.strings.Location = new System.Drawing.Point(11, 137);
-            this.strings.Margin = new System.Windows.Forms.Padding(10);
+            this.strings.Margin = new System.Windows.Forms.Padding(10, 10, 10, 31);
+            this.strings.MultiSelect = false;
             this.strings.Name = "strings";
             this.strings.RowHeadersVisible = false;
-            this.strings.Size = new System.Drawing.Size(864, 293);
+            this.strings.Size = new System.Drawing.Size(864, 252);
             this.strings.TabIndex = 2;
+            this.strings.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Strings_CellContentDoubleClick);
+            this.strings.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.Strings_CellEndEdit);
+            this.strings.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Strings_KeyDown);
             // 
             // Section
             // 
@@ -295,6 +320,8 @@ namespace FriishProduce
             // Original
             // 
             this.Original.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Original.DefaultCellStyle = dataGridViewCellStyle3;
             this.Original.HeaderText = "Original";
             this.Original.Name = "Original";
             this.Original.ReadOnly = true;
@@ -302,22 +329,41 @@ namespace FriishProduce
             // Translated
             // 
             this.Translated.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Translated.DefaultCellStyle = dataGridViewCellStyle4;
             this.Translated.HeaderText = "Translated";
             this.Translated.Name = "Translated";
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.status_label});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 399);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(884, 22);
+            this.statusStrip1.TabIndex = 3;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // status_label
+            // 
+            this.status_label.Name = "status_label";
+            this.status_label.Size = new System.Drawing.Size(61, 17);
+            this.status_label.Text = "undefined";
             // 
             // LanguageEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(884, 441);
+            this.ClientSize = new System.Drawing.Size(884, 421);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Tahoma", 8.25F);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Menu = this.mainMenu;
             this.Name = "LanguageEditor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FriishProduce - Language JSON Editor [Under Construction]";
+            this.Text = "FriishProduce - Language JSON Editor";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Exit_Form);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -325,7 +371,10 @@ namespace FriishProduce
             this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.strings)).EndInit();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -350,10 +399,13 @@ namespace FriishProduce
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.DataGridView strings;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Section;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Original;
         private System.Windows.Forms.DataGridViewTextBoxColumn Translated;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.MenuItem menuItem7;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel status_label;
     }
 }

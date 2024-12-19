@@ -92,6 +92,8 @@ namespace FriishProduce
             this.vc_pce_raster = new System.Windows.Forms.CheckBox();
             this.vc_pce_hide_overscan = new System.Windows.Forms.CheckBox();
             this.adobe_flash = new System.Windows.Forms.Panel();
+            this.flash_update_frame_rate_l = new System.Windows.Forms.GroupBox();
+            this.flash_update_frame_rate = new System.Windows.Forms.NumericUpDown();
             this.flash_strap_reminder = new System.Windows.Forms.GroupBox();
             this.flash_strap_reminder_list = new System.Windows.Forms.ComboBox();
             this.flash_controls = new System.Windows.Forms.GroupBox();
@@ -100,10 +102,13 @@ namespace FriishProduce
             this.flash_quality = new System.Windows.Forms.GroupBox();
             this.flash_quality_list = new System.Windows.Forms.ComboBox();
             this.flash_save_data = new System.Windows.Forms.GroupBox();
-            this.flash_vff_sync_on_write = new System.Windows.Forms.CheckBox();
+            this.flash_vff_cache_size_l = new System.Windows.Forms.Label();
+            this.flash_vff_cache_size = new System.Windows.Forms.ComboBox();
+            this.flash_persistent_storage_per_movie_l = new System.Windows.Forms.Label();
+            this.flash_persistent_storage_per_movie = new System.Windows.Forms.ComboBox();
+            this.flash_persistent_storage_total_l = new System.Windows.Forms.Label();
+            this.flash_persistent_storage_total = new System.Windows.Forms.ComboBox();
             this.flash_save_data_enable = new System.Windows.Forms.CheckBox();
-            this.flash_vff_cache_size = new System.Windows.Forms.Label();
-            this.flash_vff_cache_size_list = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.auto_game_scan = new System.Windows.Forms.CheckBox();
             this.auto_fill_save_data = new System.Windows.Forms.CheckBox();
@@ -159,6 +164,8 @@ namespace FriishProduce
             this.vc_pce_display.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vc_pce_y_offset)).BeginInit();
             this.adobe_flash.SuspendLayout();
+            this.flash_update_frame_rate_l.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.flash_update_frame_rate)).BeginInit();
             this.flash_strap_reminder.SuspendLayout();
             this.flash_controls.SuspendLayout();
             this.flash_quality.SuspendLayout();
@@ -235,7 +242,7 @@ namespace FriishProduce
             // 
             // bottomPanel2
             // 
-            this.bottomPanel2.BackColor = System.Drawing.Color.DarkGray;
+            this.bottomPanel2.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.bottomPanel2.Controls.Add(this.bottomPanel1);
             resources.ApplyResources(this.bottomPanel2, "bottomPanel2");
             this.bottomPanel2.Name = "bottomPanel2";
@@ -321,6 +328,7 @@ namespace FriishProduce
             // 
             this.use_online_wad_tip.BackColor = System.Drawing.SystemColors.ControlLight;
             this.use_online_wad_tip.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.use_online_wad_tip.Image = global::FriishProduce.Properties.Resources.information;
             resources.ApplyResources(this.use_online_wad_tip, "use_online_wad_tip");
             this.use_online_wad_tip.Name = "use_online_wad_tip";
             this.use_online_wad_tip.Tag = "use_online_wad_tip";
@@ -671,6 +679,7 @@ namespace FriishProduce
             // 
             // adobe_flash
             // 
+            this.adobe_flash.Controls.Add(this.flash_update_frame_rate_l);
             this.adobe_flash.Controls.Add(this.flash_strap_reminder);
             this.adobe_flash.Controls.Add(this.flash_controls);
             this.adobe_flash.Controls.Add(this.flash_quality);
@@ -678,6 +687,24 @@ namespace FriishProduce
             resources.ApplyResources(this.adobe_flash, "adobe_flash");
             this.adobe_flash.Name = "adobe_flash";
             this.adobe_flash.Tag = "adobe_flash";
+            // 
+            // flash_update_frame_rate_l
+            // 
+            this.flash_update_frame_rate_l.Controls.Add(this.flash_update_frame_rate);
+            resources.ApplyResources(this.flash_update_frame_rate_l, "flash_update_frame_rate_l");
+            this.flash_update_frame_rate_l.Name = "flash_update_frame_rate_l";
+            this.flash_update_frame_rate_l.TabStop = false;
+            this.flash_update_frame_rate_l.Tag = "update_frame_rate";
+            // 
+            // flash_update_frame_rate
+            // 
+            resources.ApplyResources(this.flash_update_frame_rate, "flash_update_frame_rate");
+            this.flash_update_frame_rate.Maximum = new decimal(new int[] {
+            120,
+            0,
+            0,
+            0});
+            this.flash_update_frame_rate.Name = "flash_update_frame_rate";
             // 
             // flash_strap_reminder
             // 
@@ -740,21 +767,98 @@ namespace FriishProduce
             // 
             // flash_save_data
             // 
-            this.flash_save_data.Controls.Add(this.flash_vff_sync_on_write);
-            this.flash_save_data.Controls.Add(this.flash_save_data_enable);
+            this.flash_save_data.Controls.Add(this.flash_vff_cache_size_l);
             this.flash_save_data.Controls.Add(this.flash_vff_cache_size);
-            this.flash_save_data.Controls.Add(this.flash_vff_cache_size_list);
+            this.flash_save_data.Controls.Add(this.flash_persistent_storage_per_movie_l);
+            this.flash_save_data.Controls.Add(this.flash_persistent_storage_per_movie);
+            this.flash_save_data.Controls.Add(this.flash_persistent_storage_total_l);
+            this.flash_save_data.Controls.Add(this.flash_persistent_storage_total);
+            this.flash_save_data.Controls.Add(this.flash_save_data_enable);
             resources.ApplyResources(this.flash_save_data, "flash_save_data");
             this.flash_save_data.Name = "flash_save_data";
             this.flash_save_data.TabStop = false;
             this.flash_save_data.Tag = "save_data";
             // 
-            // flash_vff_sync_on_write
+            // flash_vff_cache_size_l
             // 
-            resources.ApplyResources(this.flash_vff_sync_on_write, "flash_vff_sync_on_write");
-            this.flash_vff_sync_on_write.Name = "flash_vff_sync_on_write";
-            this.flash_vff_sync_on_write.Tag = "vff_sync_on_write";
-            this.flash_vff_sync_on_write.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.flash_vff_cache_size_l, "flash_vff_cache_size_l");
+            this.flash_vff_cache_size_l.Name = "flash_vff_cache_size_l";
+            this.flash_vff_cache_size_l.Tag = "vff_cache_size";
+            // 
+            // flash_vff_cache_size
+            // 
+            this.flash_vff_cache_size.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.flash_vff_cache_size.FormattingEnabled = true;
+            this.flash_vff_cache_size.Items.AddRange(new object[] {
+            resources.GetString("flash_vff_cache_size.Items"),
+            resources.GetString("flash_vff_cache_size.Items1"),
+            resources.GetString("flash_vff_cache_size.Items2"),
+            resources.GetString("flash_vff_cache_size.Items3"),
+            resources.GetString("flash_vff_cache_size.Items4"),
+            resources.GetString("flash_vff_cache_size.Items5"),
+            resources.GetString("flash_vff_cache_size.Items6"),
+            resources.GetString("flash_vff_cache_size.Items7"),
+            resources.GetString("flash_vff_cache_size.Items8"),
+            resources.GetString("flash_vff_cache_size.Items9"),
+            resources.GetString("flash_vff_cache_size.Items10"),
+            resources.GetString("flash_vff_cache_size.Items11"),
+            resources.GetString("flash_vff_cache_size.Items12")});
+            resources.ApplyResources(this.flash_vff_cache_size, "flash_vff_cache_size");
+            this.flash_vff_cache_size.Name = "flash_vff_cache_size";
+            // 
+            // flash_persistent_storage_per_movie_l
+            // 
+            resources.ApplyResources(this.flash_persistent_storage_per_movie_l, "flash_persistent_storage_per_movie_l");
+            this.flash_persistent_storage_per_movie_l.Name = "flash_persistent_storage_per_movie_l";
+            this.flash_persistent_storage_per_movie_l.Tag = "persistent_storage_per_movie";
+            // 
+            // flash_persistent_storage_per_movie
+            // 
+            this.flash_persistent_storage_per_movie.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.flash_persistent_storage_per_movie.FormattingEnabled = true;
+            this.flash_persistent_storage_per_movie.Items.AddRange(new object[] {
+            resources.GetString("flash_persistent_storage_per_movie.Items"),
+            resources.GetString("flash_persistent_storage_per_movie.Items1"),
+            resources.GetString("flash_persistent_storage_per_movie.Items2"),
+            resources.GetString("flash_persistent_storage_per_movie.Items3"),
+            resources.GetString("flash_persistent_storage_per_movie.Items4"),
+            resources.GetString("flash_persistent_storage_per_movie.Items5"),
+            resources.GetString("flash_persistent_storage_per_movie.Items6"),
+            resources.GetString("flash_persistent_storage_per_movie.Items7"),
+            resources.GetString("flash_persistent_storage_per_movie.Items8"),
+            resources.GetString("flash_persistent_storage_per_movie.Items9"),
+            resources.GetString("flash_persistent_storage_per_movie.Items10"),
+            resources.GetString("flash_persistent_storage_per_movie.Items11"),
+            resources.GetString("flash_persistent_storage_per_movie.Items12")});
+            resources.ApplyResources(this.flash_persistent_storage_per_movie, "flash_persistent_storage_per_movie");
+            this.flash_persistent_storage_per_movie.Name = "flash_persistent_storage_per_movie";
+            // 
+            // flash_persistent_storage_total_l
+            // 
+            resources.ApplyResources(this.flash_persistent_storage_total_l, "flash_persistent_storage_total_l");
+            this.flash_persistent_storage_total_l.Name = "flash_persistent_storage_total_l";
+            this.flash_persistent_storage_total_l.Tag = "persistent_storage_total";
+            // 
+            // flash_persistent_storage_total
+            // 
+            this.flash_persistent_storage_total.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.flash_persistent_storage_total.FormattingEnabled = true;
+            this.flash_persistent_storage_total.Items.AddRange(new object[] {
+            resources.GetString("flash_persistent_storage_total.Items"),
+            resources.GetString("flash_persistent_storage_total.Items1"),
+            resources.GetString("flash_persistent_storage_total.Items2"),
+            resources.GetString("flash_persistent_storage_total.Items3"),
+            resources.GetString("flash_persistent_storage_total.Items4"),
+            resources.GetString("flash_persistent_storage_total.Items5"),
+            resources.GetString("flash_persistent_storage_total.Items6"),
+            resources.GetString("flash_persistent_storage_total.Items7"),
+            resources.GetString("flash_persistent_storage_total.Items8"),
+            resources.GetString("flash_persistent_storage_total.Items9"),
+            resources.GetString("flash_persistent_storage_total.Items10"),
+            resources.GetString("flash_persistent_storage_total.Items11"),
+            resources.GetString("flash_persistent_storage_total.Items12")});
+            resources.ApplyResources(this.flash_persistent_storage_total, "flash_persistent_storage_total");
+            this.flash_persistent_storage_total.Name = "flash_persistent_storage_total";
             // 
             // flash_save_data_enable
             // 
@@ -763,34 +867,6 @@ namespace FriishProduce
             this.flash_save_data_enable.Tag = "save_data_enable";
             this.flash_save_data_enable.UseVisualStyleBackColor = true;
             this.flash_save_data_enable.CheckedChanged += new System.EventHandler(this.ToggleSwitchChanged);
-            // 
-            // flash_vff_cache_size
-            // 
-            resources.ApplyResources(this.flash_vff_cache_size, "flash_vff_cache_size");
-            this.flash_vff_cache_size.Name = "flash_vff_cache_size";
-            this.flash_vff_cache_size.Tag = "vff_cache_size";
-            // 
-            // flash_vff_cache_size_list
-            // 
-            this.flash_vff_cache_size_list.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.flash_vff_cache_size_list.FormattingEnabled = true;
-            this.flash_vff_cache_size_list.Items.AddRange(new object[] {
-            resources.GetString("flash_vff_cache_size_list.Items"),
-            resources.GetString("flash_vff_cache_size_list.Items1"),
-            resources.GetString("flash_vff_cache_size_list.Items2"),
-            resources.GetString("flash_vff_cache_size_list.Items3"),
-            resources.GetString("flash_vff_cache_size_list.Items4"),
-            resources.GetString("flash_vff_cache_size_list.Items5"),
-            resources.GetString("flash_vff_cache_size_list.Items6"),
-            resources.GetString("flash_vff_cache_size_list.Items7"),
-            resources.GetString("flash_vff_cache_size_list.Items8"),
-            resources.GetString("flash_vff_cache_size_list.Items9"),
-            resources.GetString("flash_vff_cache_size_list.Items10"),
-            resources.GetString("flash_vff_cache_size_list.Items11"),
-            resources.GetString("flash_vff_cache_size_list.Items12"),
-            resources.GetString("flash_vff_cache_size_list.Items13")});
-            resources.ApplyResources(this.flash_vff_cache_size_list, "flash_vff_cache_size_list");
-            this.flash_vff_cache_size_list.Name = "flash_vff_cache_size_list";
             // 
             // panel2
             // 
@@ -1091,6 +1167,8 @@ namespace FriishProduce
             this.vc_pce_display.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vc_pce_y_offset)).EndInit();
             this.adobe_flash.ResumeLayout(false);
+            this.flash_update_frame_rate_l.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.flash_update_frame_rate)).EndInit();
             this.flash_strap_reminder.ResumeLayout(false);
             this.flash_controls.ResumeLayout(false);
             this.flash_controls.PerformLayout();
@@ -1168,10 +1246,7 @@ namespace FriishProduce
         private System.Windows.Forms.GroupBox flash_quality;
         private System.Windows.Forms.ComboBox flash_quality_list;
         private System.Windows.Forms.GroupBox flash_save_data;
-        private System.Windows.Forms.CheckBox flash_vff_sync_on_write;
         private System.Windows.Forms.CheckBox flash_save_data_enable;
-        private System.Windows.Forms.Label flash_vff_cache_size;
-        private System.Windows.Forms.ComboBox flash_vff_cache_size_list;
         private System.Windows.Forms.CheckBox auto_game_scan;
         private System.Windows.Forms.CheckBox auto_fill_save_data;
         private System.Windows.Forms.Panel panel2;
@@ -1222,5 +1297,13 @@ namespace FriishProduce
         private System.Windows.Forms.Label default_target_wad;
         private System.Windows.Forms.TextBox default_target_project_tb;
         private System.Windows.Forms.GroupBox default_target_filename;
+        private System.Windows.Forms.Label flash_persistent_storage_per_movie_l;
+        private System.Windows.Forms.ComboBox flash_persistent_storage_per_movie;
+        private System.Windows.Forms.Label flash_persistent_storage_total_l;
+        private System.Windows.Forms.ComboBox flash_persistent_storage_total;
+        private System.Windows.Forms.Label flash_vff_cache_size_l;
+        private System.Windows.Forms.ComboBox flash_vff_cache_size;
+        private System.Windows.Forms.GroupBox flash_update_frame_rate_l;
+        private System.Windows.Forms.NumericUpDown flash_update_frame_rate;
     }
 }

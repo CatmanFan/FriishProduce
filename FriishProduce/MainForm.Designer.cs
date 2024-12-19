@@ -166,6 +166,7 @@ namespace FriishProduce
             // 
             this.toolbarImportGameFile.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             resources.ApplyResources(this.toolbarImportGameFile, "toolbarImportGameFile");
+            this.toolbarImportGameFile.Image = global::FriishProduce.Properties.Resources.page_white_cd;
             this.toolbarImportGameFile.Name = "toolbarImportGameFile";
             this.toolbarImportGameFile.Tag = "import_game_file";
             this.toolbarImportGameFile.Click += new System.EventHandler(this.OpenROM_Click);
@@ -362,8 +363,8 @@ namespace FriishProduce
             // 
             // language_file_editor
             // 
-            resources.ApplyResources(this.language_file_editor, "language_file_editor");
             this.language_file_editor.Index = 2;
+            resources.ApplyResources(this.language_file_editor, "language_file_editor");
             this.language_file_editor.Click += new System.EventHandler(this.LanguageFileEditor);
             // 
             // preferences
@@ -407,6 +408,7 @@ namespace FriishProduce
             this.tabControl.TabGlassGradient = true;
             this.tabControl.TabHeight = 25;
             this.tabControl.TopSeparator = false;
+            this.tabControl.SelectedTabChanged += new System.EventHandler(this.TabChanged);
             // 
             // MainForm
             // 

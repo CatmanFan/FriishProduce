@@ -176,6 +176,10 @@ namespace FriishProduce
         /// </summary>
         public void Control(Control c, string tag = null)
         {
+            // string fontFamilyName = Program.Lang.Current.ToLower().StartsWith("ja") ? "MS Gothic" : "Tahoma";
+            // float fontFamilySize = Program.Lang.Current.ToLower().StartsWith("ja") ? 9f : 8.25f;
+            // c.Font = new Font(fontFamilyName, fontFamilySize, c.Font.Style);
+
             if (tag == null) tag = c.Tag != null ? c.Tag?.ToString() : c.Name;
 
             foreach (Control item1 in c.Controls)

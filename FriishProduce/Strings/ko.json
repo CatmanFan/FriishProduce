@@ -175,6 +175,7 @@
 			"rom_label1":						"게임 파일",
 			"rom_label2":						"디스크 이미지",
 			"include_patch":					"패치 포함",
+			"busy":								"Exportation in progress...",
 
 			"wad_base":							"기반",
 			"import_wad":						"WAD 가져오기...",
@@ -217,6 +218,7 @@
 			"edit_save_data":					"저장데이터 타이틀 편집...",
 			"edit_save_data_1":					"타이틀:",
 			"edit_save_data_2":					"서브타이틀:",
+			"edit_save_data_max":				"Max. length per line: {0}",
 			"fill_save_data":					"자동으로 연결",
 			
 			"manual_type":						"사용 설명서:",
@@ -305,8 +307,9 @@
 		},
 
 		"adobe_flash": {
-			"vff_sync_on_write":				"쓰기시 VFF 동기화",
-			"vff_cache_size":					"VFF 캐시 크기",
+			"vff_cache_size":					"VFF 캐시 크기 ({kilobytes}):",
+			"persistent_storage_total":			"Total persistant storage ({kilobytes}):",
+			"persistent_storage_per_movie":		"Persistant storage per SWF ({kilobytes}):",
 			"controls":							"컨트롤",
 			"mouse":							"마우스",
 			"qwerty_keyboard":					"쿼티 키보드",

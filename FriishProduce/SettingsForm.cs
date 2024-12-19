@@ -5,7 +5,6 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FriishProduce
@@ -174,10 +173,13 @@ namespace FriishProduce
 
             // -----------------------------
 
+            Program.Lang.String(flash_update_frame_rate_l, "adobe_flash");
             Program.Lang.String(flash_save_data, "projectform");
             Program.Lang.String(flash_save_data_enable, "projectform");
-            Program.Lang.String(flash_vff_sync_on_write, "adobe_flash");
-            Program.Lang.String(flash_vff_cache_size, "adobe_flash");
+            // Program.Lang.String(flash_vff_sync_on_write, "adobe_flash");
+            Program.Lang.String(flash_vff_cache_size_l, "adobe_flash");
+            Program.Lang.String(flash_persistent_storage_total_l, "adobe_flash");
+            Program.Lang.String(flash_persistent_storage_per_movie_l, "adobe_flash");
             Program.Lang.String(flash_controls, "adobe_flash");
             Program.Lang.String(flash_mouse, "adobe_flash");
             Program.Lang.String(flash_qwerty_keyboard, "adobe_flash");
@@ -248,15 +250,21 @@ namespace FriishProduce
             vc_neo_bios_list.SelectedIndex = VC_NEO.Default.bios switch { "VC2" => 1, "VC3" => 2, _ => 0 };
 
             // FLASH
+            flash_update_frame_rate.Value = int.Parse(ADOBEFLASH.Default.update_frame_rate);
             flash_save_data_enable.Checked = ADOBEFLASH.Default.shared_object_capability == "on";
-            flash_vff_sync_on_write.Checked = ADOBEFLASH.Default.vff_sync_on_write == "on";
-            flash_vff_cache_size_list.SelectedItem = flash_vff_cache_size_list.Items.Cast<string>().FirstOrDefault(n => n.ToString() == ADOBEFLASH.Default.vff_cache_size);
+            // flash_vff_sync_on_write.Checked = ADOBEFLASH.Default.vff_sync_on_write == "on";
+            flash_vff_cache_size.SelectedItem = flash_vff_cache_size.Items.Cast<string>().FirstOrDefault(n => n.ToString() == ADOBEFLASH.Default.vff_cache_size);
+            flash_persistent_storage_total.SelectedItem = flash_persistent_storage_total.Items.Cast<string>().FirstOrDefault(n => n.ToString() == ADOBEFLASH.Default.persistent_storage_total);
+            flash_persistent_storage_per_movie.SelectedItem = flash_persistent_storage_per_movie.Items.Cast<string>().FirstOrDefault(n => n.ToString() == ADOBEFLASH.Default.persistent_storage_per_movie);
             flash_quality_list.SelectedIndex = ADOBEFLASH.Default.quality switch { "high" => 0, "medium" => 1, _ => 2 };
             flash_mouse.Checked = ADOBEFLASH.Default.mouse == "on";
             flash_qwerty_keyboard.Checked = ADOBEFLASH.Default.qwerty_keyboard == "on";
             flash_strap_reminder_list.SelectedIndex = ADOBEFLASH.Default.strap_reminder switch { "none" => 0, "normal" => 1, _ => 2 };
 
-            flash_vff_cache_size.Enabled = flash_vff_sync_on_write.Enabled = flash_vff_cache_size_list.Enabled = flash_save_data_enable.Checked;
+            // flash_vff_sync_on_write.Enabled = flash_save_data_enable.Checked;
+            flash_vff_cache_size_l.Enabled = flash_vff_cache_size.Enabled = flash_save_data_enable.Checked;
+            flash_persistent_storage_total_l.Enabled = flash_persistent_storage_total.Enabled = flash_save_data_enable.Checked;
+            flash_persistent_storage_per_movie_l.Enabled = flash_persistent_storage_per_movie.Enabled = flash_save_data_enable.Checked;
 
             ToggleSwitchText();
 
@@ -369,9 +377,12 @@ namespace FriishProduce
             VC_PCE.Default.RASTER = vc_pce_raster.Checked ? "1" : "0";
             VC_PCE.Default.SPRLINE = vc_pce_sprline.Checked ? "1" : "0";
 
+            ADOBEFLASH.Default.update_frame_rate = flash_update_frame_rate.Value.ToString();
             ADOBEFLASH.Default.shared_object_capability = flash_save_data_enable.Checked ? "on" : "off";
-            ADOBEFLASH.Default.vff_sync_on_write = flash_vff_sync_on_write.Checked ? "on" : "off";
-            ADOBEFLASH.Default.vff_cache_size = flash_vff_cache_size_list.SelectedItem.ToString();
+            // ADOBEFLASH.Default.vff_sync_on_write = flash_vff_sync_on_write.Checked ? "on" : "off";
+            ADOBEFLASH.Default.vff_cache_size = flash_vff_cache_size.SelectedItem.ToString();
+            ADOBEFLASH.Default.persistent_storage_total = flash_persistent_storage_total.SelectedItem.ToString();
+            ADOBEFLASH.Default.persistent_storage_per_movie = flash_persistent_storage_per_movie.SelectedItem.ToString();
             ADOBEFLASH.Default.quality = flash_quality_list.SelectedIndex switch { 0 => "high", 1 => "medium", _ => "low" };
             ADOBEFLASH.Default.mouse = flash_mouse.Checked ? "on" : "off";
             ADOBEFLASH.Default.qwerty_keyboard = flash_qwerty_keyboard.Checked ? "on" : "off";
@@ -517,7 +528,11 @@ namespace FriishProduce
         private void ToggleSwitchChanged(object sender, EventArgs e)
         {
             ToggleSwitchText();
-            flash_vff_cache_size.Enabled = flash_vff_sync_on_write.Enabled = flash_vff_cache_size_list.Enabled = flash_save_data_enable.Checked;
+
+            // flash_vff_sync_on_write.Enabled = flash_save_data_enable.Checked;
+            flash_vff_cache_size_l.Enabled = flash_vff_cache_size.Enabled = flash_save_data_enable.Checked;
+            flash_persistent_storage_total_l.Enabled = flash_persistent_storage_total.Enabled = flash_save_data_enable.Checked;
+            flash_persistent_storage_per_movie_l.Enabled = flash_persistent_storage_per_movie.Enabled = flash_save_data_enable.Checked;
         }
 
         private void ToggleSwitchText()

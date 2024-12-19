@@ -12,15 +12,26 @@ namespace FriishProduce
 {
     public partial class Savedata : Form
     {
-        internal string origTitle;
+        internal string[] origLines;
         internal bool origFill;
+
+        public string[] SourcedLines { get; set; }
+        public string[] Lines { get => new string[] { title.Text, subtitle.Text }; }
+        public int MaxLength { get; private set; }
+        public bool IsMultiline { get; private set; }
 
         public Savedata(Platform platform)
         {
             InitializeComponent();
             Reset(platform, 0);
+
+            #region Localization
             Program.Lang.Control(this);
             Fill.Text = Program.Lang.String("fill_save_data", "projectform");
+            label1.Text = Program.Lang.String(label1.Tag.ToString(), "projectform");
+            label2.Text = Program.Lang.String(label2.Tag.ToString(), "projectform");
+            label3.Text = string.Format(Program.Lang.String(label3.Tag.ToString(), "projectform"), MaxLength);
+            #endregion
         }
 
         /// <summary>
@@ -32,8 +43,7 @@ namespace FriishProduce
         {
             // Determine initial max character limit
             // ********
-            int orig = Title.MaxLength;
-            Title.MaxLength = platform switch
+            int orig = MaxLength = platform switch
             {
                 Platform.NES => region == 3 ? 30 : 20,
                 Platform.SNES => 80,
@@ -44,33 +54,39 @@ namespace FriishProduce
 
             // Singleline platforms
             // ********
-            bool singleline = region == 3 // Korea
-                             || platform == Platform.NES
-                             || platform == Platform.SMS
-                             || platform == Platform.SMD
-                             || platform == Platform.PCE
-                             || platform == Platform.PCECD;
+            IsMultiline = !(region == 3 // Korea
+                         || platform == Platform.NES
+                         || platform == Platform.SMS
+                         || platform == Platform.SMD
+                         || platform == Platform.PCE
+                         || platform == Platform.PCECD);
 
             // Set textbox to use singleline when needed
             // ********
-            if (Title.Multiline == singleline)
+            label2.Enabled = subtitle.Enabled = IsMultiline;
+            if (!subtitle.Enabled)
             {
-                Title.Multiline = !singleline;
-                Title.Location = singleline ? new Point(Title.Location.X, int.Parse(Title.Tag.ToString()) + 8) : new Point(Title.Location.X, int.Parse(Title.Tag.ToString()));
-                Title.Clear();
+                subtitle.Clear();
                 return;
             }
 
             // The following applies to both NES/FC & SNES/SFC
             // ********
-            if (region == 4 && Title.Multiline) Title.MaxLength /= 2;
+            if (region == 4 && IsMultiline) MaxLength /= 2;
 
             // Clear text field if at least one line is longer than the maximum limit allowed
             // ********
-            double max = Title.Multiline ? Math.Round((double)Title.MaxLength / 2) : Title.MaxLength;
-            foreach (var line in Title.Lines)
-                if (line.Length > max && Title.MaxLength != orig)
-                    Title.Clear();
+            MaxLength = IsMultiline ? (int)Math.Round((double)MaxLength / 2) : MaxLength;
+            foreach (var line in Controls.OfType<TextBox>())
+            {
+                if (line.Text.Length > MaxLength && MaxLength != orig)
+                    line.Clear();
+                line.MaxLength = MaxLength;
+            }
+
+            // Write length to label
+            // ********
+            label3.Text = string.Format(Program.Lang.String(label3.Tag.ToString(), "projectform"), MaxLength);
         }
 
         private void OK_Click(object sender, EventArgs e)
@@ -87,19 +103,47 @@ namespace FriishProduce
             Close();
         }
 
-        private void isShown(object sender, EventArgs e)
-        {
-            origTitle = Title.Text;
-            origFill = Fill.Checked;
-        }
-
         private void isClosing(object sender, FormClosingEventArgs e)
         {
             if (DialogResult != DialogResult.OK)
             {
-                Title.Text = origTitle;
+                title.Text = origLines[0];
+                subtitle.Text = origLines[1];
                 Fill.Checked = origFill;
             }
+        }
+
+        private void isLoading(object sender, EventArgs e)
+        {
+            origLines = new string[] { title.Text, subtitle.Text };
+            origFill = Fill.Checked;
+            SyncTitles();
+        }
+
+        public void SyncTitles()
+        {
+            title.ReadOnly = subtitle.ReadOnly = Fill.Checked;
+
+            if (Fill.Checked)
+            {
+                ReplaceTitles(SourcedLines[0], SourcedLines[1]);
+            }
+        }
+
+        public void ReplaceTitles(string line1, string line2)
+        {
+            if (string.IsNullOrWhiteSpace(line1)) line1 = null;
+            if (string.IsNullOrWhiteSpace(line2)) line2 = null;
+
+            if (title == null && subtitle == null) return;
+
+            title.Text = line1?.Length <= MaxLength ? line1 : null;
+            subtitle.Text = line2?.Length <= MaxLength ? line2 : null;
+        }
+
+        private void Fill_CheckedChanged(object sender, EventArgs e)
+        {
+            SyncTitles();
         }
     }
 }

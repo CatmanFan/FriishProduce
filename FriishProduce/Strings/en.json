@@ -176,6 +176,7 @@
 			"rom_label1":						"game file",
 			"rom_label2":						"disc image",
 			"include_patch":					"Include a patch",
+			"busy":								"Exportation in progress...",
 
 			"wad_base":							"Base WAD",
 			"import_wad":						"Import WAD from file...",
@@ -218,6 +219,7 @@
 			"edit_save_data":					"Edit savedata title...",
 			"edit_save_data_1":					"Title:",
 			"edit_save_data_2":					"Subtitle:",
+			"edit_save_data_max":				"Max. length per line: {0}",
 			"fill_save_data":					"Fill in automatically",
 			
 			"manual_type":						"Operations manual:",
@@ -272,6 +274,7 @@
 			"patch_fixcrashes":					"Fix crashes",
 			"patch_expandedram":				"Enable extended RAM",
 			"patch_autosizerom":				"Allocate ROM size",
+			"patch_widescreen":					"Widescreen",
 
 			"romc_type":						"ROM compression method",
 			"romc_type0":						"ROMC (Type 0)",
@@ -305,8 +308,10 @@
 		},
 
 		"adobe_flash": {
-			"vff_sync_on_write":				"Sync VFF on write",
-			"vff_cache_size":					"VFF cache size",
+			"vff_cache_size":					"VFF cache size ({kilobytes})",
+			"persistent_storage_total":			"Total persistant storage ({kilobytes})",
+			"persistent_storage_per_movie":		"Persistant storage per SWF ({kilobytes})",
+			"update_frame_rate":				"SWF framerate",
 			"controls":							"Controls",
 			"mouse":							"Mouse",
 			"qwerty_keyboard":					"QWERTY keyboard",
@@ -318,7 +323,7 @@
 			"strap_reminder":					"Strap reminder screen",
 			"strap_reminder0":					"{disabled}",
 			"strap_reminder1":					"{enabled}",
-			"strap_reminder2":					"No extension controller"
+			"strap_reminder2":					"{enabled} (w/o extension controller)"
 		},
 
 		"forwarder": {
