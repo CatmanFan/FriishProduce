@@ -627,30 +627,6 @@
   <data name="&gt;&gt;TreeView.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="info1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 314</value>
-  </data>
-  <data name="info1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>16, 16</value>
-  </data>
-  <data name="info1.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
-    <value>AutoSize</value>
-  </data>
-  <data name="info1.TabIndex" type="System.Int32, mscorlib">
-    <value>56</value>
-  </data>
-  <data name="&gt;&gt;info1.Name" xml:space="preserve">
-    <value>info1</value>
-  </data>
-  <data name="&gt;&gt;info1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;info1.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;info1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="bypass_rom_size.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -679,31 +655,34 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;bypass_rom_size.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="use_online_wad_tip.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>TopLeft</value>
+    <value>MiddleLeft</value>
   </data>
   <data name="use_online_wad_tip.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="use_online_wad_tip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>33, 314</value>
+    <value>12, 314</value>
   </data>
   <data name="use_online_wad_tip.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>515, 0</value>
   </data>
   <data name="use_online_wad_tip.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
+    <value>3, 2, 2, 2</value>
   </data>
   <data name="use_online_wad_tip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>515, 85</value>
+    <value>536, 85</value>
   </data>
   <data name="use_online_wad_tip.TabIndex" type="System.Int32, mscorlib">
     <value>53</value>
   </data>
   <data name="use_online_wad_tip.Text" xml:space="preserve">
     <value>use_online_wad_tip</value>
+  </data>
+  <data name="use_online_wad_tip.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
   </data>
   <data name="&gt;&gt;use_online_wad_tip.Name" xml:space="preserve">
     <value>use_online_wad_tip</value>
@@ -715,7 +694,7 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;use_online_wad_tip.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="use_online_wad_enabled.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -745,7 +724,7 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;use_online_wad_enabled.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="use_custom_database.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -775,7 +754,7 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;use_custom_database.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>3</value>
   </data>
   <data name="reset_all_dialogs.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -805,7 +784,7 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;reset_all_dialogs.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>4</value>
   </data>
   <data name="language.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 10</value>
@@ -829,7 +808,7 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;language.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>5</value>
   </data>
   <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
     <value>194, 0</value>

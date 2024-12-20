@@ -12,7 +12,6 @@ namespace FriishProduce
     public partial class SettingsForm : Form
     {
         private bool isShown = false;
-        private int sysLangValue;
 
         private int dirtyOption1;
         private bool dirtyOption2;
@@ -63,9 +62,6 @@ namespace FriishProduce
             default_node.Nodes[4].Text = Program.Lang.Console(Platform.NEO);
             default_node.Nodes[5].Text = Program.Lang.Console(Platform.Flash);
             default_node.Nodes[6].Text = Program.Lang.String("forwarders", "platforms");
-
-            if (use_online_wad_tip.MaximumSize.IsEmpty) use_online_wad_tip.MaximumSize = use_online_wad_tip.Size;
-            use_online_wad_tip.AutoSize = true;
             #endregion
 
             // -----------------------------
@@ -74,12 +70,9 @@ namespace FriishProduce
             // Add all languages
             // -------------------------------------------
             languages.Items.Clear();
-            foreach (var item in Program.Lang.List) languages.Items.Add(item.Value);
             languages.Items.Add("<" + Program.Lang.String("system_default", Name) + ">");
-
-            sysLangValue = languages.Items.Count - 1;
-            if (Default.language == "sys") languages.SelectedIndex = sysLangValue;
-            else languages.SelectedIndex = Program.Lang.List.Keys.ToList().IndexOf(Default.language);
+            foreach (var item in Program.Lang.List) languages.Items.Add(item.Value);
+            languages.SelectedIndex = Default.language == "sys" ? 0 : Program.Lang.List.Keys.ToList().IndexOf(Default.language) + 1;
 
             #region Localization
             image_interpolation_mode.Text = Program.Lang.String("image_interpolation_mode", "projectform");
@@ -317,7 +310,7 @@ namespace FriishProduce
             // -------------------------------------------
             // Language setting
             // -------------------------------------------
-            var lng = languages.SelectedIndex == sysLangValue ? "sys" : "en";
+            var lng = languages.SelectedIndex == 0 ? "sys" : "en";
             if (lng != "sys")
                 foreach (var item in Program.Lang.List)
                     if (item.Value == languages.SelectedItem.ToString())

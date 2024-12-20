@@ -70,7 +70,7 @@ namespace FriishProduce
             this.Base = new System.Windows.Forms.ComboBox();
             this.BaseRegion = new System.Windows.Forms.PictureBox();
             this.baseName = new System.Windows.Forms.Label();
-            this.current_base = new System.Windows.Forms.Label();
+            this.current_wad = new System.Windows.Forms.Label();
             this.use_online_wad = new System.Windows.Forms.RadioButton();
             this.checkImg1 = new System.Windows.Forms.PictureBox();
             this.import_wad = new System.Windows.Forms.Button();
@@ -86,7 +86,7 @@ namespace FriishProduce
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rom_label_filename = new System.Windows.Forms.Label();
             this.rom_label = new System.Windows.Forms.Label();
-            this.busy = new System.Windows.Forms.Label();
+            this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.bannerMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.title_id_random)).BeginInit();
             this.groupBox4.SuspendLayout();
@@ -406,12 +406,12 @@ namespace FriishProduce
             this.baseName.Name = "baseName";
             this.baseName.UseMnemonic = false;
             // 
-            // current_base
+            // current_wad
             // 
-            resources.ApplyResources(this.current_base, "current_base");
-            this.current_base.Name = "current_base";
-            this.current_base.Tag = "current_base";
-            this.current_base.UseMnemonic = false;
+            resources.ApplyResources(this.current_wad, "current_wad");
+            this.current_wad.Name = "current_wad";
+            this.current_wad.Tag = "current_wad";
+            this.current_wad.UseMnemonic = false;
             // 
             // use_online_wad
             // 
@@ -446,7 +446,7 @@ namespace FriishProduce
             this.groupBox2.Controls.Add(this.use_offline_wad);
             this.groupBox2.Controls.Add(this.pictureBox2);
             this.groupBox2.Controls.Add(this.baseID);
-            this.groupBox2.Controls.Add(this.current_base);
+            this.groupBox2.Controls.Add(this.current_wad);
             this.groupBox2.Controls.Add(this.baseName);
             resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Name = "groupBox2";
@@ -547,13 +547,10 @@ namespace FriishProduce
             this.rom_label.Name = "rom_label";
             this.rom_label.Tag = "rom_label";
             // 
-            // busy
+            // backgroundWorker
             // 
-            this.busy.BackColor = System.Drawing.Color.White;
-            this.busy.ForeColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.busy, "busy");
-            this.busy.Name = "busy";
-            this.busy.Tag = "busy";
+            this.backgroundWorker.WorkerReportsProgress = true;
+            this.backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.saveToWAD);
             // 
             // ProjectForm
             // 
@@ -565,7 +562,6 @@ namespace FriishProduce
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.busy);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;
@@ -632,7 +628,7 @@ namespace FriishProduce
         private System.Windows.Forms.ComboBox Base;
         private System.Windows.Forms.PictureBox BaseRegion;
         private System.Windows.Forms.Label baseName;
-        private System.Windows.Forms.Label current_base;
+        private System.Windows.Forms.Label current_wad;
         private System.Windows.Forms.RadioButton use_online_wad;
         private System.Windows.Forms.PictureBox checkImg1;
         private System.Windows.Forms.Button import_wad;
@@ -652,6 +648,6 @@ namespace FriishProduce
         private System.Windows.Forms.Label rom_label_filename;
         private System.Windows.Forms.Label rom_label;
         private System.Windows.Forms.CheckBox multifile_software;
-        private System.Windows.Forms.Label busy;
+        private System.ComponentModel.BackgroundWorker backgroundWorker;
     }
 }

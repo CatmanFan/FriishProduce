@@ -19,11 +19,27 @@ namespace FriishProduce
         private readonly BannerOptions banner_form;
         private readonly Savedata savedata;
 
+        private readonly Wait wait = new();
+        private readonly CustomToolTip tip = new();
+
         protected string TIDCode;
         protected string Untitled;
         protected string WADPath = null;
 
-        protected bool isVirtualConsole { get => injection_methods.SelectedItem?.ToString().ToLower() == Program.Lang.String("vc").ToLower(); }
+        protected bool isVirtualConsole
+        {
+            get
+            {
+                bool value = false;
+
+                if (InvokeRequired)
+                    Invoke(new MethodInvoker(delegate { value = injection_methods.SelectedItem?.ToString().ToLower() == Program.Lang.String("vc").ToLower(); }));
+                else
+                    value = injection_methods.SelectedItem?.ToString().ToLower() == Program.Lang.String("vc").ToLower();
+
+                return value;
+            }
+        }
         protected bool showPatch = false;
         private bool _showSaveData;
         protected bool showSaveData
@@ -70,28 +86,6 @@ namespace FriishProduce
             }
         }
 
-        private bool _isLocked;
-        public bool IsLocked
-        {
-            get => _isLocked;
-
-            set
-            {
-                _isLocked = value;
-
-                checkImg1.Visible =
-                title_id_random.Visible =
-                groupBox1.Enabled =
-                groupBox2.Enabled =
-                groupBox3.Enabled =
-                groupBox4.Enabled =
-                groupBox5.Enabled =
-                groupBox6.Enabled = !value;
-
-                include_patch.Enabled = !value && showPatch;
-            }
-        }
-
         public bool IsEmpty
         {
             get => _isEmpty;
@@ -102,7 +96,11 @@ namespace FriishProduce
 
                 if (_isShown)
                 {
-                    IsLocked = value;
+                    checkImg1.Visible =
+                    title_id_random.Visible =
+                    Enabled = !value;
+
+                    include_patch.Enabled = !value && showPatch;
                 }
             }
         }
@@ -153,14 +151,29 @@ namespace FriishProduce
         {
             get
             {
-                for (int index = 0; index < channels.Entries[Base.SelectedIndex].Regions.Count; index++)
-                    if (channels?.Entries[Base.SelectedIndex].GetUpperID(index)[3] == baseID.Text[3])
-                        return channels?.Entries[Base.SelectedIndex].Regions[index] == 0 ? Region.Japan
-                              : channels?.Entries[Base.SelectedIndex].Regions[index] == 6 || channels.Entries[Base.SelectedIndex].Regions[index] == 7 ? Region.Korea
-                              : channels?.Entries[Base.SelectedIndex].Regions[index] >= 3 && channels.Entries[Base.SelectedIndex].Regions[index] <= 5 ? Region.Europe
-                              : Region.America;
+                Region value = Region.America;
 
-                throw new InvalidOperationException();
+                if (InvokeRequired)
+                    Invoke(new MethodInvoker(delegate
+                    {
+                        for (int index = 0; index < channels.Entries[Base.SelectedIndex].Regions.Count; index++)
+                            if (channels?.Entries[Base.SelectedIndex].GetUpperID(index)[3] == baseID.Text[3])
+                                value = channels?.Entries[Base.SelectedIndex].Regions[index] == 0 ? Region.Japan
+                                      : channels?.Entries[Base.SelectedIndex].Regions[index] == 6 || channels.Entries[Base.SelectedIndex].Regions[index] == 7 ? Region.Korea
+                                      : channels?.Entries[Base.SelectedIndex].Regions[index] >= 3 && channels.Entries[Base.SelectedIndex].Regions[index] <= 5 ? Region.Europe
+                                      : Region.America;
+                    }));
+                else
+                {
+                    for (int index = 0; index < channels.Entries[Base.SelectedIndex].Regions.Count; index++)
+                        if (channels?.Entries[Base.SelectedIndex].GetUpperID(index)[3] == baseID.Text[3])
+                            value = channels?.Entries[Base.SelectedIndex].Regions[index] == 0 ? Region.Japan
+                                  : channels?.Entries[Base.SelectedIndex].Regions[index] == 6 || channels.Entries[Base.SelectedIndex].Regions[index] == 7 ? Region.Korea
+                                  : channels?.Entries[Base.SelectedIndex].Regions[index] >= 3 && channels.Entries[Base.SelectedIndex].Regions[index] <= 5 ? Region.Europe
+                                  : Region.America;
+                }
+
+                return value;
             }
         }
 
@@ -169,12 +182,23 @@ namespace FriishProduce
         private WAD outWad;
         private libWiiSharp.Region outWadRegion
         {
-            get => regions.SelectedItem?.ToString() == Program.Lang.String("region_j") ? libWiiSharp.Region.Japan
-                 : regions.SelectedItem?.ToString() == Program.Lang.String("region_u") ? libWiiSharp.Region.USA
-                 : regions.SelectedItem?.ToString() == Program.Lang.String("region_e") ? libWiiSharp.Region.Europe
-                 : regions.SelectedItem?.ToString() == Program.Lang.String("region_k") ? libWiiSharp.Region.Korea
-                 : regions.SelectedIndex == 0 ? inWadRegion switch { Region.Japan => libWiiSharp.Region.Japan, Region.Korea => libWiiSharp.Region.Korea, Region.Europe => libWiiSharp.Region.Europe, Region.America => libWiiSharp.Region.USA, _ => libWiiSharp.Region.Free }
-                 : libWiiSharp.Region.Free;
+            get
+            {
+                string index = "";
+                int indexNum = 0;
+
+                if (InvokeRequired)
+                    Invoke(new MethodInvoker(delegate { index = regions.SelectedItem?.ToString(); indexNum = regions.SelectedIndex; }));
+                else
+                    { index = regions.SelectedItem?.ToString(); indexNum = regions.SelectedIndex; }
+
+                return index == Program.Lang.String("region_j") ? libWiiSharp.Region.Japan
+                     : index == Program.Lang.String("region_u") ? libWiiSharp.Region.USA
+                     : index == Program.Lang.String("region_e") ? libWiiSharp.Region.Europe
+                     : index == Program.Lang.String("region_k") ? libWiiSharp.Region.Korea
+                     : indexNum == 0 ? inWadRegion switch { Region.Japan => libWiiSharp.Region.Japan, Region.Korea => libWiiSharp.Region.Korea, Region.Europe => libWiiSharp.Region.Europe, Region.America => libWiiSharp.Region.USA, _ => libWiiSharp.Region.Free }
+                     : libWiiSharp.Region.Free;
+            }
         }
 
         protected ROM rom { get; set; }
@@ -190,17 +214,100 @@ namespace FriishProduce
         protected (bool Enabled, IDictionary<Buttons, string> List) keymap { get => contentOptionsForm != null ? (contentOptionsForm.UsesKeymap, contentOptionsForm.Keymap) : (false, null); }
 
         #region Channel/banner parameters
-        private string _tID { get => title_id_upper.Text.ToUpper(); }
-        private string[] _channelTitles { get => new string[8] { channel_name.Text, channel_name.Text, channel_name.Text, channel_name.Text, channel_name.Text, channel_name.Text, channel_name.Text, channel_name.Text }; } // "無題", "Untitled", "Ohne Titel", "Sans titre", "Sin título", "Senza titolo", "Onbekend", "제목 없음"
-        private string _bannerTitle { get => banner_form.title.Text; }
-        private int _bannerYear { get => (int)banner_form.released.Value; }
-        private int _bannerPlayers { get => (int)banner_form.players.Value; }
-        private string[] _saveDataTitle { get => savedata.IsMultiline == false ? new string[] { savedata.Lines[0] } : savedata.Lines.Length == 0 ? new string[] { "" } : savedata.Lines; }
+        private string _tID
+        {
+            get
+            {
+                string value = "";
+
+                if (InvokeRequired)
+                    Invoke(new MethodInvoker(delegate { value = title_id_upper.Text.ToUpper(); }));
+                else
+                    value = title_id_upper.Text.ToUpper();
+
+                return value;
+            }
+        }
+        private string[] _channelTitles
+        {
+            get
+            {
+                string[] value = new string[8];
+
+                if (InvokeRequired)
+                    Invoke(new MethodInvoker(delegate { value = new string[8] { channel_name.Text, channel_name.Text, channel_name.Text, channel_name.Text, channel_name.Text, channel_name.Text, channel_name.Text, channel_name.Text }; }));
+                else
+                    value = new string[8] { channel_name.Text, channel_name.Text, channel_name.Text, channel_name.Text, channel_name.Text, channel_name.Text, channel_name.Text, channel_name.Text };
+
+                // DEFAULT: "無題", "Untitled", "Ohne Titel", "Sans titre", "Sin título", "Senza titolo", "Onbekend", "제목 없음"
+                return value;
+            }
+        }
+        private string _bannerTitle
+        {
+            get
+            {
+                string value = "";
+
+                if (InvokeRequired)
+                    Invoke(new MethodInvoker(delegate { value = banner_form.title.Text; }));
+                else
+                    value = banner_form.title.Text;
+
+                return value;
+            }
+        }
+        private int _bannerYear
+        {
+            get
+            {
+                int value = 0;
+
+                if (InvokeRequired)
+                    Invoke(new MethodInvoker(delegate { value = (int)banner_form.released.Value; }));
+                else
+                    value = (int)banner_form.released.Value;
+
+                return value;
+            }
+        }
+        private int _bannerPlayers
+        {
+            get
+            {
+                int value = 0;
+
+                if (InvokeRequired)
+                    Invoke(new MethodInvoker(delegate { value = (int)banner_form.players.Value; }));
+                else
+                    value = (int)banner_form.players.Value;
+
+                return value;
+            }
+        }
+        private string[] _saveDataTitle
+        {
+            get
+            {
+                string[] value = new string[2];
+
+                if (InvokeRequired)
+                    Invoke(new MethodInvoker(delegate { value = savedata.IsMultiline == false ? new string[] { savedata.Lines[0] } : savedata.Lines.Length == 0 ? new string[] { "" } : savedata.Lines; }));
+                else
+                    value = savedata.IsMultiline == false ? new string[] { savedata.Lines[0] } : savedata.Lines.Length == 0 ? new string[] { "" } : savedata.Lines;
+
+                return value;
+            }
+        }
         private int _bannerRegion
         {
             get
             {
-                int lang = banner_form.region.SelectedIndex;
+                int lang = 0;
+
+                if (InvokeRequired)
+                    Invoke(new MethodInvoker(delegate { lang = banner_form.region.SelectedIndex; }));
+                else lang = banner_form.region.SelectedIndex;
 
                 if (lang == 0)
                 {
@@ -297,7 +404,7 @@ namespace FriishProduce
 
             bool isMint = _isMint || !Program.MainForm.save_project_as.Enabled;
 
-            #region Localization
+            #region ------------------------------------------ Localization: Controls ------------------------------------------
             Program.Lang.Control(this, "projectform");
 
             // File filters
@@ -317,8 +424,8 @@ namespace FriishProduce
 
             setFilesText();
 
-            baseID.Location = new Point(current_base.Location.X + current_base.Width + 2, current_base.Location.Y);
-            baseName.Location = new Point(baseID.Location.X + baseID.Width + 1, baseID.Location.Y);
+            baseID.Location = new Point(current_wad.Location.X + current_wad.Width + 2, current_wad.Location.Y);
+            baseName.Location = new Point(baseID.Location.X + baseID.Width, baseID.Location.Y);
 
             // Selected index properties
             Program.Lang.Control(image_interpolation_mode, Name);
@@ -361,6 +468,10 @@ namespace FriishProduce
                     regions.Items.Add(Program.Lang.String("region_j"));
                     break;
             }
+            #endregion
+
+            #region ------------------------------------------ Localization: Tooltips ------------------------------------------
+            tip.SetToolTip(include_patch, "HELLO!");
             #endregion
 
             if (Base.SelectedIndex >= 0)
@@ -454,8 +565,7 @@ namespace FriishProduce
                 Platform.SMS or Platform.SMD => Properties.Settings.Default.default_injection_method_sega,
                 _ => 0
             };
-            injection_methods.Enabled = injection_methods.Items.Count > 1;
-            groupBox3.Enabled = injection_methods.Enabled && !IsEmpty;
+            groupBox3.Enabled = injection_methods.Enabled = injection_methods.Items.Count > 1;
             banner_form.released.Maximum = DateTime.Now.Year;
 
             image_resize1.Checked = Properties.Settings.Default.image_fit_aspect_ratio;
@@ -753,7 +863,7 @@ namespace FriishProduce
                 IsModified = true;
             }
 
-            injection_method_options.Enabled = WADPath != null || use_online_wad.Checked;
+            injection_method_options.Enabled = contentOptionsForm != null && (WADPath != null || use_online_wad.Checked);
             setFilesText();
         }
 
@@ -1343,18 +1453,16 @@ namespace FriishProduce
             }
         }
 
-        public bool SaveToWAD(string targetFile = null)
+        private void saveToWAD(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
-            if (targetFile == null) targetFile = Paths.WorkingFolder + "out.wad";
-            IsLocked = true;
+            Invoke(new MethodInvoker(delegate { wait.Show(this); Enabled = false; }));
 
-            busy.BringToFront();
-            busy.Show();
-            busy.BringToFront();
+            string targetFile = e.Argument.ToString();
+            if (targetFile == null) targetFile = Paths.WorkingFolder + "out.wad";
+            Program.MainForm.CleanTemp();
 
             try
             {
-                Program.MainForm.CleanTemp();
 
                 // Get WAD data
                 // *******
@@ -1364,6 +1472,10 @@ namespace FriishProduce
                         for (int i = 0; i < entry.Regions.Count; i++)
                             if (entry.GetUpperID(i) == baseID.Text.ToUpper()) outWad = entry.GetWAD(i);
                 if (outWad == null || outWad?.NumOfContents <= 1) throw new Exception(Program.Lang.Msg(8, true));
+
+                // -----------------------------------------------
+                backgroundWorker.ReportProgress(20);
+                // -----------------------------------------------
 
                 if (File.Exists(patch)) rom.Patch(patch);
 
@@ -1402,6 +1514,10 @@ namespace FriishProduce
                         throw new NotImplementedException();
                 }
 
+                // -----------------------------------------------
+                backgroundWorker.ReportProgress(40);
+                // -----------------------------------------------
+
                 // Banner
                 // *******
                 BannerHelper.Modify
@@ -1419,17 +1535,36 @@ namespace FriishProduce
                     SoundHelper.ReplaceSound(outWad, Properties.Resources.Sound_WiiVC);
                 if (img.VCPic != null) img.ReplaceBanner(outWad);
 
+                // -----------------------------------------------
+                backgroundWorker.ReportProgress(60);
+                // -----------------------------------------------
+
                 // Change WAD region & internal main.dol things
                 // *******
-                if (regions.SelectedIndex > 0)
-                    outWad.Region = outWadRegion;
-                Utils.ChangeVideoMode(outWad, video_modes.SelectedIndex);
+                if (InvokeRequired)
+                    Invoke(new MethodInvoker(delegate
+                    {
+                        if (regions.SelectedIndex > 0)
+                            outWad.Region = outWadRegion;
+                        Utils.ChangeVideoMode(outWad, video_modes.SelectedIndex);
+                    }));
+                else
+                {
+                    if (regions.SelectedIndex > 0)
+                        outWad.Region = outWadRegion;
+                    Utils.ChangeVideoMode(outWad, video_modes.SelectedIndex);
+                }
+                
 
                 // Other WAD settings to be changed done by WAD creator helper, which will save to a new file
                 // *******
                 outWad.ChangeChannelTitles(_channelTitles);
                 outWad.ChangeTitleID(LowerTitleID.Channel, _tID);
                 outWad.FakeSign = true;
+
+                // -----------------------------------------------
+                backgroundWorker.ReportProgress(80);
+                // -----------------------------------------------
 
                 if (Directory.Exists(Paths.SDUSBRoot))
                 {
@@ -1451,12 +1586,16 @@ namespace FriishProduce
 
                 outWad.Dispose();
 
+                // -----------------------------------------------
+                backgroundWorker.ReportProgress(100);
+                // -----------------------------------------------
+
                 // Check new WAD file
                 // *******
                 if (File.Exists(targetFile) && File.ReadAllBytes(targetFile).Length > 10)
                 {
-                    busy.Hide();
-                    IsLocked = false;
+                    Invoke(new MethodInvoker(delegate { wait.Hide(); Enabled = true; }));
+
                     SystemSounds.Beep.Play();
 
                     switch (MessageBox.Show(Program.Lang.Msg(3), null, MessageBox.Buttons.YesNo, MessageBox.Icons.Information))
@@ -1465,24 +1604,25 @@ namespace FriishProduce
                             System.Diagnostics.Process.Start("explorer.exe", $"/select, \"{targetFile}\"");
                             break;
                     }
-
-                    return true;
                 }
                 else throw new Exception(Program.Lang.Msg(6, true));
             }
 
             catch (Exception ex)
             {
-                busy.Hide();
-                IsLocked = false;
+                Invoke(new MethodInvoker(delegate { wait.Hide(); Enabled = true; }));
                 MessageBox.Error(ex.Message);
-                return false;
             }
 
             finally
             {
                 Program.MainForm.CleanTemp();
             }
+        }
+
+        public void SaveToWAD(string targetFile = null)
+        {
+            backgroundWorker.RunWorkerAsync(targetFile);
         }
 
         public void ForwarderCreator(string path)
@@ -1982,10 +2122,6 @@ namespace FriishProduce
                 manual = null;
                 manual_type.SelectedIndex = 0;
             }
-
-            #region -- Content options panel --
-            injection_method_options.Enabled = contentOptionsForm != null;
-            #endregion
 
             showSaveData = isVirtualConsole || targetPlatform == Platform.Flash;
             download_image.Enabled = targetPlatform != Platform.C64

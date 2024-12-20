@@ -311,12 +311,21 @@
     <Compile Include="Subforms\Savedata.Designer.cs">
       <DependentUpon>Savedata.cs</DependentUpon>
     </Compile>
+    <Compile Include="Subforms\Wait.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Subforms\Wait.Designer.cs">
+      <DependentUpon>Wait.cs</DependentUpon>
+    </Compile>
     <Compile Include="_classes\BIOS.cs" />
     <Compile Include="_classes\Helpers\BannerSchemes.cs" />
     <Compile Include="_classes\Files\CCF.cs" />
     <Compile Include="_classes\Helpers\BannerPreview.cs" />
     <Compile Include="_classes\Databases\ChannelData.cs" />
     <Compile Include="_classes\Files\ROM\RPGM.cs" />
+    <Compile Include="_classes\Program\CustomGraphics.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="_classes\Program\Language.cs" />
     <Compile Include="_classes\Creators\Flash.cs" />
     <Compile Include="_classes\Creators\Forwarder.cs" />
@@ -468,6 +477,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Subforms\Savedata.resx">
       <DependentUpon>Savedata.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Subforms\Wait.resx">
+      <DependentUpon>Wait.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -44,9 +44,7 @@ namespace FriishProduce
             this.GetBanners = new System.Windows.Forms.Button();
             this.TreeView = new System.Windows.Forms.TreeView();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.info1 = new System.Windows.Forms.PictureBox();
             this.bypass_rom_size = new System.Windows.Forms.CheckBox();
-            this.use_online_wad_tip = new System.Windows.Forms.Label();
             this.use_online_wad_enabled = new System.Windows.Forms.CheckBox();
             this.use_custom_database = new System.Windows.Forms.CheckBox();
             this.reset_all_dialogs = new System.Windows.Forms.CheckBox();
@@ -139,11 +137,11 @@ namespace FriishProduce
             this.bios_psx = new System.Windows.Forms.GroupBox();
             this.browse_bios_psx = new System.Windows.Forms.Button();
             this.bios_filename_psx = new System.Windows.Forms.TextBox();
+            this.use_online_wad_tip = new System.Windows.Forms.Label();
             this.vc_n64_options.SuspendLayout();
             this.bottomPanel2.SuspendLayout();
             this.bottomPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.info1)).BeginInit();
             this.language.SuspendLayout();
             this.vc_n64.SuspendLayout();
             this.vc_n64_romc_type.SuspendLayout();
@@ -298,7 +296,6 @@ namespace FriishProduce
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.info1);
             this.panel1.Controls.Add(this.bypass_rom_size);
             this.panel1.Controls.Add(this.use_online_wad_tip);
             this.panel1.Controls.Add(this.use_online_wad_enabled);
@@ -308,13 +305,6 @@ namespace FriishProduce
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
             // 
-            // info1
-            // 
-            this.info1.Image = global::FriishProduce.Properties.Resources.information;
-            resources.ApplyResources(this.info1, "info1");
-            this.info1.Name = "info1";
-            this.info1.TabStop = false;
-            // 
             // bypass_rom_size
             // 
             resources.ApplyResources(this.bypass_rom_size, "bypass_rom_size");
@@ -323,15 +313,6 @@ namespace FriishProduce
             this.bypass_rom_size.Name = "bypass_rom_size";
             this.bypass_rom_size.Tag = "bypass_rom_size";
             this.bypass_rom_size.UseVisualStyleBackColor = true;
-            // 
-            // use_online_wad_tip
-            // 
-            this.use_online_wad_tip.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.use_online_wad_tip.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.use_online_wad_tip.Image = global::FriishProduce.Properties.Resources.information;
-            resources.ApplyResources(this.use_online_wad_tip, "use_online_wad_tip");
-            this.use_online_wad_tip.Name = "use_online_wad_tip";
-            this.use_online_wad_tip.Tag = "use_online_wad_tip";
             // 
             // use_online_wad_enabled
             // 
@@ -1105,6 +1086,15 @@ namespace FriishProduce
             this.bios_filename_psx.Name = "bios_filename_psx";
             this.bios_filename_psx.ReadOnly = true;
             // 
+            // use_online_wad_tip
+            // 
+            this.use_online_wad_tip.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.use_online_wad_tip.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.use_online_wad_tip.Image = global::FriishProduce.Properties.Resources.information;
+            resources.ApplyResources(this.use_online_wad_tip, "use_online_wad_tip");
+            this.use_online_wad_tip.Name = "use_online_wad_tip";
+            this.use_online_wad_tip.Tag = "use_online_wad_tip";
+            // 
             // SettingsForm
             // 
             this.AcceptButton = this.b_ok;
@@ -1140,7 +1130,6 @@ namespace FriishProduce
             this.bottomPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.info1)).EndInit();
             this.language.ResumeLayout(false);
             this.vc_n64.ResumeLayout(false);
             this.vc_n64_romc_type.ResumeLayout(false);
@@ -1268,7 +1257,6 @@ namespace FriishProduce
         private System.Windows.Forms.Button GetBanners;
         private System.Windows.Forms.GroupBox vc_n64_romc_type;
         private System.Windows.Forms.ComboBox forwarder_type;
-        private System.Windows.Forms.Label use_online_wad_tip;
         private System.Windows.Forms.CheckBox use_online_wad_enabled;
         private System.Windows.Forms.ComboBox banner_regions;
         private System.Windows.Forms.GroupBox vc_sega_country;
@@ -1289,7 +1277,6 @@ namespace FriishProduce
         private System.Windows.Forms.GroupBox language;
         private System.Windows.Forms.GroupBox image_interpolation_mode;
         private System.Windows.Forms.CheckBox bypass_rom_size;
-        private System.Windows.Forms.PictureBox info1;
         private System.Windows.Forms.Label default_target_project;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox default_target_wad_tb;
@@ -1305,5 +1292,6 @@ namespace FriishProduce
         private System.Windows.Forms.ComboBox flash_vff_cache_size;
         private System.Windows.Forms.GroupBox flash_update_frame_rate_l;
         private System.Windows.Forms.NumericUpDown flash_update_frame_rate;
+        private System.Windows.Forms.Label use_online_wad_tip;
     }
 }

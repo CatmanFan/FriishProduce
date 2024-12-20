@@ -181,7 +181,7 @@
 			"wad_base":							"Base WAD",
 			"import_wad":						"Import WAD from file...",
 			"use_online_wad":					"...or use a downloadable base",
-			"current_base":						"Current WAD:",
+			"current_wad":						"Current WAD:",
 			
 			"image":							"Image",
 			"import_image":						"Import image from file...",

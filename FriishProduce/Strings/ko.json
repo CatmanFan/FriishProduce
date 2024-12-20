@@ -180,7 +180,7 @@
 			"wad_base":							"기반",
 			"import_wad":						"WAD 가져오기...",
 			"use_online_wad":					"...또는 다운로드 가능한 기반 사용",
-			"current_base":						"현재 WAD:",
+			"current_wad":						"현재 WAD:",
 			
 			"image":							"이미지",
 			"import_image":						"이미지 가져오기...",
