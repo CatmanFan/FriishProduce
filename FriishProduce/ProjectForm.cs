@@ -422,10 +422,9 @@ namespace FriishProduce
             Untitled = string.Format(Program.Lang.String("untitled_project", "mainform"), Program.Lang.String(Enum.GetName(typeof(Platform), targetPlatform).ToLower(), "platforms"));
             Text = string.IsNullOrWhiteSpace(channel_name.Text) ? Untitled : channel_name.Text;
 
-            setFilesText();
+            baseID.Location = new Point(current_wad.Location.X + current_wad.Width + 2, current_wad.Location.Y + 1);
 
-            baseID.Location = new Point(current_wad.Location.X + current_wad.Width + 2, current_wad.Location.Y);
-            baseName.Location = new Point(baseID.Location.X + baseID.Width, baseID.Location.Y);
+            setFilesText();
 
             // Selected index properties
             Program.Lang.Control(image_interpolation_mode, Name);
@@ -926,7 +925,14 @@ namespace FriishProduce
             // WAD
             // ********
             checkImg1.Image = hasWad ? Program.Lang.Current.ToLower().StartsWith("ja") || Program.Lang.Current.ToUpper().EndsWith("-JP") ? Properties.Resources.tick_circle : Properties.Resources.tick : Properties.Resources.cross;
-            baseName.Visible = baseID.Visible = hasWad || use_online_wad.Checked;
+            baseID.Visible = hasWad || use_online_wad.Checked;
+            if (!baseID.Visible)
+            {
+                baseName.Location = baseID.Location;
+                baseName.Text = Program.Lang.String("none");
+            }
+            else
+                baseName.Location = new Point(baseID.Location.X + baseID.Width, baseID.Location.Y);
         }
 
         private void randomTID()
