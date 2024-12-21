@@ -18,8 +18,7 @@ namespace FriishProduce
         protected Platform targetPlatform { get; set; }
         private readonly BannerOptions banner_form;
         private readonly Savedata savedata;
-
-        private readonly Wait wait = new();
+        private Wait wait;
 
         protected string TIDCode;
         protected string Untitled;
@@ -123,7 +122,10 @@ namespace FriishProduce
                         if (!value) ParentForm.Select();
 
                         if (value)
+                        {
+                            wait = new();
                             wait.Show(this);
+                        }
                         else
                             wait.Hide();
 
@@ -136,7 +138,10 @@ namespace FriishProduce
                     if (!value) ParentForm.Select();
 
                     if (value)
+                    {
+                        wait = new();
                         wait.Show(this);
+                    }
                     else
                         wait.Hide();
 
@@ -1193,15 +1198,22 @@ namespace FriishProduce
 
             for (int h = 0; h < channels.Entries.Count; h++)
                 for (int i = 0; i < channels.Entries[h].Regions.Count; i++)
+                {
                     if (channels.Entries[h].GetUpperID(i) == Reader.UpperTitleID.ToUpper())
                     {
                         WADPath = path;
+
+                        // Fix Flash Placeholder (USA) bug
+                        // ****************
+                        if ((int)Reader.Region == 1 && Reader.UpperTitleID.ToUpper().StartsWith("WNA"))
+                            i = 0;
 
                         Base.SelectedIndex = h;
                         UpdateBaseForm(i);
                         Reader.Dispose();
                         return true;
                     }
+                }
 
             Failed:
             Reader.Dispose();
@@ -1533,7 +1545,8 @@ namespace FriishProduce
                     foreach (var entry in channels.Entries)
                         for (int i = 0; i < entry.Regions.Count; i++)
                             if (entry.GetUpperID(i) == baseID.Text.ToUpper()) outWad = entry.GetWAD(i);
-                    if (outWad == null || outWad?.NumOfContents <= 1) throw new Exception(Program.Lang.Msg(8, true));
+                    if (outWad == null || outWad?.NumOfContents <= 1)
+                        throw new Exception(Program.Lang.Msg(8, true));
 
                     // -----------------------------------------------
                     progress.step += 1;

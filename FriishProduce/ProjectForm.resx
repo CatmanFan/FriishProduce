@@ -657,10 +657,10 @@
     <value>NoControl</value>
   </data>
   <data name="edit_save_data.Location" type="System.Drawing.Point, System.Drawing">
-    <value>146, 271</value>
+    <value>130, 271</value>
   </data>
   <data name="edit_save_data.Size" type="System.Drawing.Size, System.Drawing">
-    <value>268, 24</value>
+    <value>300, 24</value>
   </data>
   <data name="edit_save_data.TabIndex" type="System.Int32, mscorlib">
     <value>50</value>

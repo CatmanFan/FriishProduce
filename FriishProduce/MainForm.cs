@@ -191,6 +191,13 @@ namespace FriishProduce
 
         private void MainForm_Closing(object sender, FormClosingEventArgs e)
         {
+            if (!Enabled)
+            {
+                System.Media.SystemSounds.Beep.Play();
+                e.Cancel = true;
+                return;
+            }
+
             var collection = tabControl.TabPages;
 
             for (int i = 0; i < collection.Count; i++)
