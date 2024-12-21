@@ -73,8 +73,8 @@ namespace FriishProduce
             this.current_wad = new System.Windows.Forms.Label();
             this.use_online_wad = new System.Windows.Forms.RadioButton();
             this.checkImg1 = new System.Windows.Forms.PictureBox();
-            this.import_wad = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.import_wad = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.import_image = new System.Windows.Forms.Button();
             this.image_interpolation_mode = new System.Windows.Forms.ComboBox();
@@ -87,6 +87,7 @@ namespace FriishProduce
             this.rom_label_filename = new System.Windows.Forms.Label();
             this.rom_label = new System.Windows.Forms.Label();
             this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
+            this.tip = new FriishProduce.CustomToolTip();
             this.bannerMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.title_id_random)).BeginInit();
             this.groupBox4.SuspendLayout();
@@ -428,14 +429,6 @@ namespace FriishProduce
             this.checkImg1.Name = "checkImg1";
             this.checkImg1.TabStop = false;
             // 
-            // import_wad
-            // 
-            resources.ApplyResources(this.import_wad, "import_wad");
-            this.import_wad.Name = "import_wad";
-            this.import_wad.Tag = "import_wad";
-            this.import_wad.UseVisualStyleBackColor = true;
-            this.import_wad.Click += new System.EventHandler(this.import_wad_Click);
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.import_wad);
@@ -452,6 +445,15 @@ namespace FriishProduce
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
             this.groupBox2.Tag = "wad_base";
+            // 
+            // import_wad
+            // 
+            resources.ApplyResources(this.import_wad, "import_wad");
+            this.import_wad.Name = "import_wad";
+            this.import_wad.Tag = "import_wad";
+            this.tip.SetToolTip(this.import_wad, resources.GetString("import_wad.ToolTip"));
+            this.import_wad.UseVisualStyleBackColor = true;
+            this.import_wad.Click += new System.EventHandler(this.import_wad_Click);
             // 
             // pictureBox1
             // 
@@ -551,6 +553,11 @@ namespace FriishProduce
             // 
             this.backgroundWorker.WorkerReportsProgress = true;
             this.backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.saveToWAD);
+            this.backgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.saveToWAD_UpdateProgress);
+            // 
+            // tip
+            // 
+            this.tip.OwnerDraw = true;
             // 
             // ProjectForm
             // 
@@ -631,7 +638,6 @@ namespace FriishProduce
         private System.Windows.Forms.Label current_wad;
         private System.Windows.Forms.RadioButton use_online_wad;
         private System.Windows.Forms.PictureBox checkImg1;
-        private System.Windows.Forms.Button import_wad;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button import_image;
@@ -649,5 +655,7 @@ namespace FriishProduce
         private System.Windows.Forms.Label rom_label;
         private System.Windows.Forms.CheckBox multifile_software;
         private System.ComponentModel.BackgroundWorker backgroundWorker;
+        private System.Windows.Forms.Button import_wad;
+        private CustomToolTip tip;
     }
 }

@@ -335,6 +335,16 @@ namespace FriishProduce
             if (Discard()) Open();
         }
 
+        private void Find(object sender, EventArgs e)
+        {
+            var target = sender as ToolStripTextBox;
+            int targetColumn = target == find_translated ? 3 : 2;
+            string text = target.Text.ToLower();
+
+            foreach (DataGridViewRow row in strings.Rows)
+                row.Visible = string.IsNullOrEmpty(text) || row.Cells[targetColumn].Value?.ToString().ToLower().Contains(text) == true;
+        }
+
         private void Text_Changed(object sender, EventArgs e) => Unsaved = true;
 
         private void Languages_SelectedIndexChanged(object sender, EventArgs e)

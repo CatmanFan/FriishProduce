@@ -15,7 +15,7 @@ namespace FriishProduce
         public Wait()
         {
             InitializeComponent();
-            Program.Lang.String("busy", "projectform");
+            Text = Program.Lang.String("busy", "projectform");
         }
     }
 }

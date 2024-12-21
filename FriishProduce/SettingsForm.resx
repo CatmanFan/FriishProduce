@@ -627,6 +627,42 @@
   <data name="&gt;&gt;TreeView.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="use_online_wad_tip.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="use_online_wad_tip.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopLeft</value>
+  </data>
+  <data name="use_online_wad_tip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 312</value>
+  </data>
+  <data name="use_online_wad_tip.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>536, 96</value>
+  </data>
+  <data name="use_online_wad_tip.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>24, 4, 4, 4</value>
+  </data>
+  <data name="use_online_wad_tip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>132, 23</value>
+  </data>
+  <data name="use_online_wad_tip.TabIndex" type="System.Int32, mscorlib">
+    <value>56</value>
+  </data>
+  <data name="use_online_wad_tip.Text" xml:space="preserve">
+    <value>use_online_wad_tip</value>
+  </data>
+  <data name="&gt;&gt;use_online_wad_tip.Name" xml:space="preserve">
+    <value>use_online_wad_tip</value>
+  </data>
+  <data name="&gt;&gt;use_online_wad_tip.Type" xml:space="preserve">
+    <value>FriishProduce.ImageLabel, FriishProduce, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;use_online_wad_tip.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;use_online_wad_tip.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="bypass_rom_size.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -655,45 +691,6 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;bypass_rom_size.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="use_online_wad_tip.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
-  <data name="use_online_wad_tip.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="use_online_wad_tip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 314</value>
-  </data>
-  <data name="use_online_wad_tip.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>515, 0</value>
-  </data>
-  <data name="use_online_wad_tip.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 2, 2, 2</value>
-  </data>
-  <data name="use_online_wad_tip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>536, 85</value>
-  </data>
-  <data name="use_online_wad_tip.TabIndex" type="System.Int32, mscorlib">
-    <value>53</value>
-  </data>
-  <data name="use_online_wad_tip.Text" xml:space="preserve">
-    <value>use_online_wad_tip</value>
-  </data>
-  <data name="use_online_wad_tip.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
-  <data name="&gt;&gt;use_online_wad_tip.Name" xml:space="preserve">
-    <value>use_online_wad_tip</value>
-  </data>
-  <data name="&gt;&gt;use_online_wad_tip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;use_online_wad_tip.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;use_online_wad_tip.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="use_online_wad_enabled.AutoSize" type="System.Boolean, mscorlib">
@@ -1686,159 +1683,6 @@
   <data name="&gt;&gt;SEGA_console_brightness.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;vc_pce_system.Name" xml:space="preserve">
-    <value>vc_pce_system</value>
-  </data>
-  <data name="&gt;&gt;vc_pce_system.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;vc_pce_system.Parent" xml:space="preserve">
-    <value>vc_pce</value>
-  </data>
-  <data name="&gt;&gt;vc_pce_system.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;vc_pce_display.Name" xml:space="preserve">
-    <value>vc_pce_display</value>
-  </data>
-  <data name="&gt;&gt;vc_pce_display.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;vc_pce_display.Parent" xml:space="preserve">
-    <value>vc_pce</value>
-  </data>
-  <data name="&gt;&gt;vc_pce_display.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="vc_pce.Location" type="System.Drawing.Point, System.Drawing">
-    <value>194, 0</value>
-  </data>
-  <data name="vc_pce.Size" type="System.Drawing.Size, System.Drawing">
-    <value>560, 410</value>
-  </data>
-  <data name="vc_pce.TabIndex" type="System.Int32, mscorlib">
-    <value>26</value>
-  </data>
-  <data name="&gt;&gt;vc_pce.Name" xml:space="preserve">
-    <value>vc_pce</value>
-  </data>
-  <data name="&gt;&gt;vc_pce.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;vc_pce.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;vc_pce.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;vc_pce_backupram.Name" xml:space="preserve">
-    <value>vc_pce_backupram</value>
-  </data>
-  <data name="&gt;&gt;vc_pce_backupram.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;vc_pce_backupram.Parent" xml:space="preserve">
-    <value>vc_pce_system</value>
-  </data>
-  <data name="&gt;&gt;vc_pce_backupram.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;vc_pce_europe_switch.Name" xml:space="preserve">
-    <value>vc_pce_europe_switch</value>
-  </data>
-  <data name="&gt;&gt;vc_pce_europe_switch.Type" xml:space="preserve">
-    <value>JCS.ToggleSwitch, ToggleSwitch, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;vc_pce_europe_switch.Parent" xml:space="preserve">
-    <value>vc_pce_system</value>
-  </data>
-  <data name="&gt;&gt;vc_pce_europe_switch.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;vc_pce_europe.Name" xml:space="preserve">
-    <value>vc_pce_europe</value>
-  </data>
-  <data name="&gt;&gt;vc_pce_europe.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;vc_pce_europe.Parent" xml:space="preserve">
-    <value>vc_pce_system</value>
-  </data>
-  <data name="&gt;&gt;vc_pce_europe.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;vc_pce_padbutton_switch.Name" xml:space="preserve">
-    <value>vc_pce_padbutton_switch</value>
-  </data>
-  <data name="&gt;&gt;vc_pce_padbutton_switch.Type" xml:space="preserve">
-    <value>JCS.ToggleSwitch, ToggleSwitch, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;vc_pce_padbutton_switch.Parent" xml:space="preserve">
-    <value>vc_pce_system</value>
-  </data>
-  <data name="&gt;&gt;vc_pce_padbutton_switch.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;vc_pce_sgenable.Name" xml:space="preserve">
-    <value>vc_pce_sgenable</value>
-  </data>
-  <data name="&gt;&gt;vc_pce_sgenable.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;vc_pce_sgenable.Parent" xml:space="preserve">
-    <value>vc_pce_system</value>
-  </data>
-  <data name="&gt;&gt;vc_pce_sgenable.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;vc_pce_padbutton.Name" xml:space="preserve">
-    <value>vc_pce_padbutton</value>
-  </data>
-  <data name="&gt;&gt;vc_pce_padbutton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;vc_pce_padbutton.Parent" xml:space="preserve">
-    <value>vc_pce_system</value>
-  </data>
-  <data name="&gt;&gt;vc_pce_padbutton.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;vc_pce_sgenable_switch.Name" xml:space="preserve">
-    <value>vc_pce_sgenable_switch</value>
-  </data>
-  <data name="&gt;&gt;vc_pce_sgenable_switch.Type" xml:space="preserve">
-    <value>JCS.ToggleSwitch, ToggleSwitch, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;vc_pce_sgenable_switch.Parent" xml:space="preserve">
-    <value>vc_pce_system</value>
-  </data>
-  <data name="&gt;&gt;vc_pce_sgenable_switch.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="vc_pce_system.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 10</value>
-  </data>
-  <data name="vc_pce_system.Size" type="System.Drawing.Size, System.Drawing">
-    <value>536, 110</value>
-  </data>
-  <data name="vc_pce_system.TabIndex" type="System.Int32, mscorlib">
-    <value>27</value>
-  </data>
-  <data name="vc_pce_system.Text" xml:space="preserve">
-    <value>vc_options</value>
-  </data>
-  <data name="&gt;&gt;vc_pce_system.Name" xml:space="preserve">
-    <value>vc_pce_system</value>
-  </data>
-  <data name="&gt;&gt;vc_pce_system.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;vc_pce_system.Parent" xml:space="preserve">
-    <value>vc_pce</value>
-  </data>
-  <data name="&gt;&gt;vc_pce_system.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="vc_pce_backupram.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -2022,89 +1866,29 @@
   <data name="&gt;&gt;vc_pce_sgenable_switch.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="&gt;&gt;vc_pce_y_offset_l.Name" xml:space="preserve">
-    <value>vc_pce_y_offset_l</value>
+  <data name="vc_pce_system.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 10</value>
   </data>
-  <data name="&gt;&gt;vc_pce_y_offset_l.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="vc_pce_system.Size" type="System.Drawing.Size, System.Drawing">
+    <value>536, 110</value>
   </data>
-  <data name="&gt;&gt;vc_pce_y_offset_l.Parent" xml:space="preserve">
-    <value>vc_pce_display</value>
+  <data name="vc_pce_system.TabIndex" type="System.Int32, mscorlib">
+    <value>27</value>
   </data>
-  <data name="&gt;&gt;vc_pce_y_offset_l.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="vc_pce_system.Text" xml:space="preserve">
+    <value>vc_options</value>
   </data>
-  <data name="&gt;&gt;vc_pce_y_offset.Name" xml:space="preserve">
-    <value>vc_pce_y_offset</value>
+  <data name="&gt;&gt;vc_pce_system.Name" xml:space="preserve">
+    <value>vc_pce_system</value>
   </data>
-  <data name="&gt;&gt;vc_pce_y_offset.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;vc_pce_y_offset.Parent" xml:space="preserve">
-    <value>vc_pce_display</value>
-  </data>
-  <data name="&gt;&gt;vc_pce_y_offset.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;vc_pce_sprline.Name" xml:space="preserve">
-    <value>vc_pce_sprline</value>
-  </data>
-  <data name="&gt;&gt;vc_pce_sprline.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;vc_pce_sprline.Parent" xml:space="preserve">
-    <value>vc_pce_display</value>
-  </data>
-  <data name="&gt;&gt;vc_pce_sprline.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;vc_pce_raster.Name" xml:space="preserve">
-    <value>vc_pce_raster</value>
-  </data>
-  <data name="&gt;&gt;vc_pce_raster.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;vc_pce_raster.Parent" xml:space="preserve">
-    <value>vc_pce_display</value>
-  </data>
-  <data name="&gt;&gt;vc_pce_raster.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;vc_pce_hide_overscan.Name" xml:space="preserve">
-    <value>vc_pce_hide_overscan</value>
-  </data>
-  <data name="&gt;&gt;vc_pce_hide_overscan.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;vc_pce_hide_overscan.Parent" xml:space="preserve">
-    <value>vc_pce_display</value>
-  </data>
-  <data name="&gt;&gt;vc_pce_hide_overscan.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="vc_pce_display.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 126</value>
-  </data>
-  <data name="vc_pce_display.Size" type="System.Drawing.Size, System.Drawing">
-    <value>536, 118</value>
-  </data>
-  <data name="vc_pce_display.TabIndex" type="System.Int32, mscorlib">
-    <value>28</value>
-  </data>
-  <data name="vc_pce_display.Text" xml:space="preserve">
-    <value>display</value>
-  </data>
-  <data name="&gt;&gt;vc_pce_display.Name" xml:space="preserve">
-    <value>vc_pce_display</value>
-  </data>
-  <data name="&gt;&gt;vc_pce_display.Type" xml:space="preserve">
+  <data name="&gt;&gt;vc_pce_system.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;vc_pce_display.Parent" xml:space="preserve">
+  <data name="&gt;&gt;vc_pce_system.Parent" xml:space="preserve">
     <value>vc_pce</value>
   </data>
-  <data name="&gt;&gt;vc_pce_display.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;vc_pce_system.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="vc_pce_y_offset_l.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2247,86 +2031,59 @@
   <data name="&gt;&gt;vc_pce_hide_overscan.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="&gt;&gt;flash_update_frame_rate_l.Name" xml:space="preserve">
-    <value>flash_update_frame_rate_l</value>
+  <data name="vc_pce_display.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 126</value>
   </data>
-  <data name="&gt;&gt;flash_update_frame_rate_l.Type" xml:space="preserve">
+  <data name="vc_pce_display.Size" type="System.Drawing.Size, System.Drawing">
+    <value>536, 118</value>
+  </data>
+  <data name="vc_pce_display.TabIndex" type="System.Int32, mscorlib">
+    <value>28</value>
+  </data>
+  <data name="vc_pce_display.Text" xml:space="preserve">
+    <value>display</value>
+  </data>
+  <data name="&gt;&gt;vc_pce_display.Name" xml:space="preserve">
+    <value>vc_pce_display</value>
+  </data>
+  <data name="&gt;&gt;vc_pce_display.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;flash_update_frame_rate_l.Parent" xml:space="preserve">
-    <value>adobe_flash</value>
+  <data name="&gt;&gt;vc_pce_display.Parent" xml:space="preserve">
+    <value>vc_pce</value>
   </data>
-  <data name="&gt;&gt;flash_update_frame_rate_l.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;flash_strap_reminder.Name" xml:space="preserve">
-    <value>flash_strap_reminder</value>
-  </data>
-  <data name="&gt;&gt;flash_strap_reminder.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flash_strap_reminder.Parent" xml:space="preserve">
-    <value>adobe_flash</value>
-  </data>
-  <data name="&gt;&gt;flash_strap_reminder.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;vc_pce_display.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;flash_controls.Name" xml:space="preserve">
-    <value>flash_controls</value>
-  </data>
-  <data name="&gt;&gt;flash_controls.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flash_controls.Parent" xml:space="preserve">
-    <value>adobe_flash</value>
-  </data>
-  <data name="&gt;&gt;flash_controls.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;flash_quality.Name" xml:space="preserve">
-    <value>flash_quality</value>
-  </data>
-  <data name="&gt;&gt;flash_quality.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flash_quality.Parent" xml:space="preserve">
-    <value>adobe_flash</value>
-  </data>
-  <data name="&gt;&gt;flash_quality.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;flash_save_data.Name" xml:space="preserve">
-    <value>flash_save_data</value>
-  </data>
-  <data name="&gt;&gt;flash_save_data.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flash_save_data.Parent" xml:space="preserve">
-    <value>adobe_flash</value>
-  </data>
-  <data name="&gt;&gt;flash_save_data.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="adobe_flash.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="vc_pce.Location" type="System.Drawing.Point, System.Drawing">
     <value>194, 0</value>
   </data>
-  <data name="adobe_flash.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="vc_pce.Size" type="System.Drawing.Size, System.Drawing">
     <value>560, 410</value>
   </data>
-  <data name="adobe_flash.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="vc_pce.TabIndex" type="System.Int32, mscorlib">
+    <value>26</value>
   </data>
-  <data name="&gt;&gt;adobe_flash.Name" xml:space="preserve">
-    <value>adobe_flash</value>
+  <data name="&gt;&gt;vc_pce.Name" xml:space="preserve">
+    <value>vc_pce</value>
   </data>
-  <data name="&gt;&gt;adobe_flash.Type" xml:space="preserve">
+  <data name="&gt;&gt;vc_pce.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;adobe_flash.Parent" xml:space="preserve">
+  <data name="&gt;&gt;vc_pce.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;adobe_flash.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="&gt;&gt;vc_pce.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="flash_update_frame_rate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 18</value>
+  </data>
+  <data name="flash_update_frame_rate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>244, 21</value>
+  </data>
+  <data name="flash_update_frame_rate.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="&gt;&gt;flash_update_frame_rate.Name" xml:space="preserve">
     <value>flash_update_frame_rate</value>
@@ -2364,27 +2121,6 @@
   <data name="&gt;&gt;flash_update_frame_rate_l.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="flash_update_frame_rate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 18</value>
-  </data>
-  <data name="flash_update_frame_rate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>244, 21</value>
-  </data>
-  <data name="flash_update_frame_rate.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;flash_update_frame_rate.Name" xml:space="preserve">
-    <value>flash_update_frame_rate</value>
-  </data>
-  <data name="&gt;&gt;flash_update_frame_rate.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flash_update_frame_rate.Parent" xml:space="preserve">
-    <value>flash_update_frame_rate_l</value>
-  </data>
-  <data name="&gt;&gt;flash_update_frame_rate.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="&gt;&gt;flash_strap_reminder_list.Name" xml:space="preserve">
     <value>flash_strap_reminder_list</value>
   </data>
@@ -2420,30 +2156,6 @@
   </data>
   <data name="&gt;&gt;flash_strap_reminder.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="flash_strap_reminder_list.Items" xml:space="preserve">
-    <value>auto</value>
-  </data>
-  <data name="flash_strap_reminder_list.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 18</value>
-  </data>
-  <data name="flash_strap_reminder_list.Size" type="System.Drawing.Size, System.Drawing">
-    <value>516, 21</value>
-  </data>
-  <data name="flash_strap_reminder_list.TabIndex" type="System.Int32, mscorlib">
-    <value>16</value>
-  </data>
-  <data name="&gt;&gt;flash_strap_reminder_list.Name" xml:space="preserve">
-    <value>flash_strap_reminder_list</value>
-  </data>
-  <data name="&gt;&gt;flash_strap_reminder_list.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flash_strap_reminder_list.Parent" xml:space="preserve">
-    <value>flash_strap_reminder</value>
-  </data>
-  <data name="&gt;&gt;flash_strap_reminder_list.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="&gt;&gt;flash_qwerty_keyboard.Name" xml:space="preserve">
     <value>flash_qwerty_keyboard</value>
@@ -2493,66 +2205,6 @@
   <data name="&gt;&gt;flash_controls.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="flash_qwerty_keyboard.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="flash_qwerty_keyboard.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="flash_qwerty_keyboard.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 43</value>
-  </data>
-  <data name="flash_qwerty_keyboard.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 17</value>
-  </data>
-  <data name="flash_qwerty_keyboard.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
-  </data>
-  <data name="flash_qwerty_keyboard.Text" xml:space="preserve">
-    <value>qwerty_keyboard</value>
-  </data>
-  <data name="&gt;&gt;flash_qwerty_keyboard.Name" xml:space="preserve">
-    <value>flash_qwerty_keyboard</value>
-  </data>
-  <data name="&gt;&gt;flash_qwerty_keyboard.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flash_qwerty_keyboard.Parent" xml:space="preserve">
-    <value>flash_controls</value>
-  </data>
-  <data name="&gt;&gt;flash_qwerty_keyboard.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="flash_mouse.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="flash_mouse.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="flash_mouse.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 20</value>
-  </data>
-  <data name="flash_mouse.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 17</value>
-  </data>
-  <data name="flash_mouse.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="flash_mouse.Text" xml:space="preserve">
-    <value>mouse</value>
-  </data>
-  <data name="&gt;&gt;flash_mouse.Name" xml:space="preserve">
-    <value>flash_mouse</value>
-  </data>
-  <data name="&gt;&gt;flash_mouse.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flash_mouse.Parent" xml:space="preserve">
-    <value>flash_controls</value>
-  </data>
-  <data name="&gt;&gt;flash_mouse.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="&gt;&gt;flash_quality_list.Name" xml:space="preserve">
     <value>flash_quality_list</value>
   </data>
@@ -2588,138 +2240,6 @@
   </data>
   <data name="&gt;&gt;flash_quality.ZOrder" xml:space="preserve">
     <value>3</value>
-  </data>
-  <data name="flash_quality_list.Items" xml:space="preserve">
-    <value>auto</value>
-  </data>
-  <data name="flash_quality_list.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 18</value>
-  </data>
-  <data name="flash_quality_list.Size" type="System.Drawing.Size, System.Drawing">
-    <value>245, 21</value>
-  </data>
-  <data name="flash_quality_list.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
-  </data>
-  <data name="&gt;&gt;flash_quality_list.Name" xml:space="preserve">
-    <value>flash_quality_list</value>
-  </data>
-  <data name="&gt;&gt;flash_quality_list.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flash_quality_list.Parent" xml:space="preserve">
-    <value>flash_quality</value>
-  </data>
-  <data name="&gt;&gt;flash_quality_list.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;flash_vff_cache_size_l.Name" xml:space="preserve">
-    <value>flash_vff_cache_size_l</value>
-  </data>
-  <data name="&gt;&gt;flash_vff_cache_size_l.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flash_vff_cache_size_l.Parent" xml:space="preserve">
-    <value>flash_save_data</value>
-  </data>
-  <data name="&gt;&gt;flash_vff_cache_size_l.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;flash_vff_cache_size.Name" xml:space="preserve">
-    <value>flash_vff_cache_size</value>
-  </data>
-  <data name="&gt;&gt;flash_vff_cache_size.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flash_vff_cache_size.Parent" xml:space="preserve">
-    <value>flash_save_data</value>
-  </data>
-  <data name="&gt;&gt;flash_vff_cache_size.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;flash_persistent_storage_per_movie_l.Name" xml:space="preserve">
-    <value>flash_persistent_storage_per_movie_l</value>
-  </data>
-  <data name="&gt;&gt;flash_persistent_storage_per_movie_l.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flash_persistent_storage_per_movie_l.Parent" xml:space="preserve">
-    <value>flash_save_data</value>
-  </data>
-  <data name="&gt;&gt;flash_persistent_storage_per_movie_l.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;flash_persistent_storage_per_movie.Name" xml:space="preserve">
-    <value>flash_persistent_storage_per_movie</value>
-  </data>
-  <data name="&gt;&gt;flash_persistent_storage_per_movie.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flash_persistent_storage_per_movie.Parent" xml:space="preserve">
-    <value>flash_save_data</value>
-  </data>
-  <data name="&gt;&gt;flash_persistent_storage_per_movie.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;flash_persistent_storage_total_l.Name" xml:space="preserve">
-    <value>flash_persistent_storage_total_l</value>
-  </data>
-  <data name="&gt;&gt;flash_persistent_storage_total_l.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flash_persistent_storage_total_l.Parent" xml:space="preserve">
-    <value>flash_save_data</value>
-  </data>
-  <data name="&gt;&gt;flash_persistent_storage_total_l.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;flash_persistent_storage_total.Name" xml:space="preserve">
-    <value>flash_persistent_storage_total</value>
-  </data>
-  <data name="&gt;&gt;flash_persistent_storage_total.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flash_persistent_storage_total.Parent" xml:space="preserve">
-    <value>flash_save_data</value>
-  </data>
-  <data name="&gt;&gt;flash_persistent_storage_total.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;flash_save_data_enable.Name" xml:space="preserve">
-    <value>flash_save_data_enable</value>
-  </data>
-  <data name="&gt;&gt;flash_save_data_enable.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flash_save_data_enable.Parent" xml:space="preserve">
-    <value>flash_save_data</value>
-  </data>
-  <data name="&gt;&gt;flash_save_data_enable.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="flash_save_data.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 122</value>
-  </data>
-  <data name="flash_save_data.Size" type="System.Drawing.Size, System.Drawing">
-    <value>536, 100</value>
-  </data>
-  <data name="flash_save_data.TabIndex" type="System.Int32, mscorlib">
-    <value>19</value>
-  </data>
-  <data name="flash_save_data.Text" xml:space="preserve">
-    <value>save_data</value>
-  </data>
-  <data name="&gt;&gt;flash_save_data.Name" xml:space="preserve">
-    <value>flash_save_data</value>
-  </data>
-  <data name="&gt;&gt;flash_save_data.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flash_save_data.Parent" xml:space="preserve">
-    <value>adobe_flash</value>
-  </data>
-  <data name="&gt;&gt;flash_save_data.ZOrder" xml:space="preserve">
-    <value>4</value>
   </data>
   <data name="flash_vff_cache_size_l.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2814,6 +2334,9 @@
   <data name="flash_persistent_storage_per_movie_l.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="flash_persistent_storage_per_movie_l.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="flash_persistent_storage_per_movie_l.Location" type="System.Drawing.Point, System.Drawing">
     <value>355, 46</value>
   </data>
@@ -2900,6 +2423,9 @@
   </data>
   <data name="flash_persistent_storage_total_l.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="flash_persistent_storage_total_l.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="flash_persistent_storage_total_l.Location" type="System.Drawing.Point, System.Drawing">
     <value>183, 46</value>
@@ -3015,86 +2541,158 @@
   <data name="&gt;&gt;flash_save_data_enable.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="&gt;&gt;auto_game_scan.Name" xml:space="preserve">
-    <value>auto_game_scan</value>
+  <data name="flash_save_data.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 122</value>
   </data>
-  <data name="&gt;&gt;auto_game_scan.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="flash_save_data.Size" type="System.Drawing.Size, System.Drawing">
+    <value>536, 100</value>
   </data>
-  <data name="&gt;&gt;auto_game_scan.Parent" xml:space="preserve">
-    <value>panel2</value>
+  <data name="flash_save_data.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
   </data>
-  <data name="&gt;&gt;auto_game_scan.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="flash_save_data.Text" xml:space="preserve">
+    <value>save_data</value>
   </data>
-  <data name="&gt;&gt;auto_fill_save_data.Name" xml:space="preserve">
-    <value>auto_fill_save_data</value>
+  <data name="&gt;&gt;flash_save_data.Name" xml:space="preserve">
+    <value>flash_save_data</value>
   </data>
-  <data name="&gt;&gt;auto_fill_save_data.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;auto_fill_save_data.Parent" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="&gt;&gt;auto_fill_save_data.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;image_interpolation_mode.Name" xml:space="preserve">
-    <value>image_interpolation_mode</value>
-  </data>
-  <data name="&gt;&gt;image_interpolation_mode.Type" xml:space="preserve">
+  <data name="&gt;&gt;flash_save_data.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;image_interpolation_mode.Parent" xml:space="preserve">
-    <value>panel2</value>
+  <data name="&gt;&gt;flash_save_data.Parent" xml:space="preserve">
+    <value>adobe_flash</value>
   </data>
-  <data name="&gt;&gt;image_interpolation_mode.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;banner_region.Name" xml:space="preserve">
-    <value>banner_region</value>
-  </data>
-  <data name="&gt;&gt;banner_region.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;banner_region.Parent" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="&gt;&gt;banner_region.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;default_target_filename.Name" xml:space="preserve">
-    <value>default_target_filename</value>
-  </data>
-  <data name="&gt;&gt;default_target_filename.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;default_target_filename.Parent" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="&gt;&gt;default_target_filename.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;flash_save_data.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="adobe_flash.Location" type="System.Drawing.Point, System.Drawing">
     <value>194, 0</value>
   </data>
-  <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="adobe_flash.Size" type="System.Drawing.Size, System.Drawing">
     <value>560, 410</value>
   </data>
-  <data name="panel2.TabIndex" type="System.Int32, mscorlib">
-    <value>42</value>
+  <data name="adobe_flash.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
-  <data name="&gt;&gt;panel2.Name" xml:space="preserve">
-    <value>panel2</value>
+  <data name="&gt;&gt;adobe_flash.Name" xml:space="preserve">
+    <value>adobe_flash</value>
   </data>
-  <data name="&gt;&gt;panel2.Type" xml:space="preserve">
+  <data name="&gt;&gt;adobe_flash.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;panel2.Parent" xml:space="preserve">
+  <data name="&gt;&gt;adobe_flash.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
-    <value>12</value>
+  <data name="&gt;&gt;adobe_flash.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="flash_strap_reminder_list.Items" xml:space="preserve">
+    <value>auto</value>
+  </data>
+  <data name="flash_strap_reminder_list.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 18</value>
+  </data>
+  <data name="flash_strap_reminder_list.Size" type="System.Drawing.Size, System.Drawing">
+    <value>516, 21</value>
+  </data>
+  <data name="flash_strap_reminder_list.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="&gt;&gt;flash_strap_reminder_list.Name" xml:space="preserve">
+    <value>flash_strap_reminder_list</value>
+  </data>
+  <data name="&gt;&gt;flash_strap_reminder_list.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flash_strap_reminder_list.Parent" xml:space="preserve">
+    <value>flash_strap_reminder</value>
+  </data>
+  <data name="&gt;&gt;flash_strap_reminder_list.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="flash_qwerty_keyboard.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flash_qwerty_keyboard.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="flash_qwerty_keyboard.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 43</value>
+  </data>
+  <data name="flash_qwerty_keyboard.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 17</value>
+  </data>
+  <data name="flash_qwerty_keyboard.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="flash_qwerty_keyboard.Text" xml:space="preserve">
+    <value>qwerty_keyboard</value>
+  </data>
+  <data name="&gt;&gt;flash_qwerty_keyboard.Name" xml:space="preserve">
+    <value>flash_qwerty_keyboard</value>
+  </data>
+  <data name="&gt;&gt;flash_qwerty_keyboard.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flash_qwerty_keyboard.Parent" xml:space="preserve">
+    <value>flash_controls</value>
+  </data>
+  <data name="&gt;&gt;flash_qwerty_keyboard.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="flash_mouse.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flash_mouse.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="flash_mouse.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 20</value>
+  </data>
+  <data name="flash_mouse.Size" type="System.Drawing.Size, System.Drawing">
+    <value>57, 17</value>
+  </data>
+  <data name="flash_mouse.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="flash_mouse.Text" xml:space="preserve">
+    <value>mouse</value>
+  </data>
+  <data name="&gt;&gt;flash_mouse.Name" xml:space="preserve">
+    <value>flash_mouse</value>
+  </data>
+  <data name="&gt;&gt;flash_mouse.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flash_mouse.Parent" xml:space="preserve">
+    <value>flash_controls</value>
+  </data>
+  <data name="&gt;&gt;flash_mouse.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="flash_quality_list.Items" xml:space="preserve">
+    <value>auto</value>
+  </data>
+  <data name="flash_quality_list.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 18</value>
+  </data>
+  <data name="flash_quality_list.Size" type="System.Drawing.Size, System.Drawing">
+    <value>245, 21</value>
+  </data>
+  <data name="flash_quality_list.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="&gt;&gt;flash_quality_list.Name" xml:space="preserve">
+    <value>flash_quality_list</value>
+  </data>
+  <data name="&gt;&gt;flash_quality_list.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flash_quality_list.Parent" xml:space="preserve">
+    <value>flash_quality</value>
+  </data>
+  <data name="&gt;&gt;flash_quality_list.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="auto_game_scan.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3192,27 +2790,6 @@
   <data name="&gt;&gt;image_interpolation_mode.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="image_interpolation_modes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 18</value>
-  </data>
-  <data name="image_interpolation_modes.Size" type="System.Drawing.Size, System.Drawing">
-    <value>516, 21</value>
-  </data>
-  <data name="image_interpolation_modes.TabIndex" type="System.Int32, mscorlib">
-    <value>45</value>
-  </data>
-  <data name="&gt;&gt;image_interpolation_modes.Name" xml:space="preserve">
-    <value>image_interpolation_modes</value>
-  </data>
-  <data name="&gt;&gt;image_interpolation_modes.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;image_interpolation_modes.Parent" xml:space="preserve">
-    <value>image_interpolation_mode</value>
-  </data>
-  <data name="&gt;&gt;image_interpolation_modes.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="&gt;&gt;banner_regions.Name" xml:space="preserve">
     <value>banner_regions</value>
   </data>
@@ -3248,123 +2825,6 @@
   </data>
   <data name="&gt;&gt;banner_region.ZOrder" xml:space="preserve">
     <value>3</value>
-  </data>
-  <data name="banner_regions.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 18</value>
-  </data>
-  <data name="banner_regions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>516, 21</value>
-  </data>
-  <data name="banner_regions.TabIndex" type="System.Int32, mscorlib">
-    <value>47</value>
-  </data>
-  <data name="&gt;&gt;banner_regions.Name" xml:space="preserve">
-    <value>banner_regions</value>
-  </data>
-  <data name="&gt;&gt;banner_regions.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;banner_regions.Parent" xml:space="preserve">
-    <value>banner_region</value>
-  </data>
-  <data name="&gt;&gt;banner_regions.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;default_target_project.Name" xml:space="preserve">
-    <value>default_target_project</value>
-  </data>
-  <data name="&gt;&gt;default_target_project.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;default_target_project.Parent" xml:space="preserve">
-    <value>default_target_filename</value>
-  </data>
-  <data name="&gt;&gt;default_target_project.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;default_target_project_tb.Name" xml:space="preserve">
-    <value>default_target_project_tb</value>
-  </data>
-  <data name="&gt;&gt;default_target_project_tb.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;default_target_project_tb.Parent" xml:space="preserve">
-    <value>default_target_filename</value>
-  </data>
-  <data name="&gt;&gt;default_target_project_tb.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;label2.Name" xml:space="preserve">
-    <value>label2</value>
-  </data>
-  <data name="&gt;&gt;label2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
-    <value>default_target_filename</value>
-  </data>
-  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;default_target_wad.Name" xml:space="preserve">
-    <value>default_target_wad</value>
-  </data>
-  <data name="&gt;&gt;default_target_wad.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;default_target_wad.Parent" xml:space="preserve">
-    <value>default_target_filename</value>
-  </data>
-  <data name="&gt;&gt;default_target_wad.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;default_target_wad_tb.Name" xml:space="preserve">
-    <value>default_target_wad_tb</value>
-  </data>
-  <data name="&gt;&gt;default_target_wad_tb.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;default_target_wad_tb.Parent" xml:space="preserve">
-    <value>default_target_filename</value>
-  </data>
-  <data name="&gt;&gt;default_target_wad_tb.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;default_target_parameters.Name" xml:space="preserve">
-    <value>default_target_parameters</value>
-  </data>
-  <data name="&gt;&gt;default_target_parameters.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;default_target_parameters.Parent" xml:space="preserve">
-    <value>default_target_filename</value>
-  </data>
-  <data name="&gt;&gt;default_target_parameters.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="default_target_filename.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 122</value>
-  </data>
-  <data name="default_target_filename.Size" type="System.Drawing.Size, System.Drawing">
-    <value>536, 160</value>
-  </data>
-  <data name="default_target_filename.TabIndex" type="System.Int32, mscorlib">
-    <value>61</value>
-  </data>
-  <data name="default_target_filename.Text" xml:space="preserve">
-    <value>default_target_filename</value>
-  </data>
-  <data name="&gt;&gt;default_target_filename.Name" xml:space="preserve">
-    <value>default_target_filename</value>
-  </data>
-  <data name="&gt;&gt;default_target_filename.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;default_target_filename.Parent" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="&gt;&gt;default_target_filename.ZOrder" xml:space="preserve">
-    <value>4</value>
   </data>
   <data name="default_target_project.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3530,6 +2990,93 @@
   </data>
   <data name="&gt;&gt;default_target_parameters.ZOrder" xml:space="preserve">
     <value>5</value>
+  </data>
+  <data name="default_target_filename.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 122</value>
+  </data>
+  <data name="default_target_filename.Size" type="System.Drawing.Size, System.Drawing">
+    <value>536, 160</value>
+  </data>
+  <data name="default_target_filename.TabIndex" type="System.Int32, mscorlib">
+    <value>61</value>
+  </data>
+  <data name="default_target_filename.Text" xml:space="preserve">
+    <value>default_target_filename</value>
+  </data>
+  <data name="&gt;&gt;default_target_filename.Name" xml:space="preserve">
+    <value>default_target_filename</value>
+  </data>
+  <data name="&gt;&gt;default_target_filename.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;default_target_filename.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;default_target_filename.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>194, 0</value>
+  </data>
+  <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>560, 410</value>
+  </data>
+  <data name="panel2.TabIndex" type="System.Int32, mscorlib">
+    <value>42</value>
+  </data>
+  <data name="&gt;&gt;panel2.Name" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;panel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="image_interpolation_modes.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 18</value>
+  </data>
+  <data name="image_interpolation_modes.Size" type="System.Drawing.Size, System.Drawing">
+    <value>516, 21</value>
+  </data>
+  <data name="image_interpolation_modes.TabIndex" type="System.Int32, mscorlib">
+    <value>45</value>
+  </data>
+  <data name="&gt;&gt;image_interpolation_modes.Name" xml:space="preserve">
+    <value>image_interpolation_modes</value>
+  </data>
+  <data name="&gt;&gt;image_interpolation_modes.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;image_interpolation_modes.Parent" xml:space="preserve">
+    <value>image_interpolation_mode</value>
+  </data>
+  <data name="&gt;&gt;image_interpolation_modes.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="banner_regions.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 18</value>
+  </data>
+  <data name="banner_regions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>516, 21</value>
+  </data>
+  <data name="banner_regions.TabIndex" type="System.Int32, mscorlib">
+    <value>47</value>
+  </data>
+  <data name="&gt;&gt;banner_regions.Name" xml:space="preserve">
+    <value>banner_regions</value>
+  </data>
+  <data name="&gt;&gt;banner_regions.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;banner_regions.Parent" xml:space="preserve">
+    <value>banner_region</value>
+  </data>
+  <data name="&gt;&gt;banner_regions.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="&gt;&gt;sega_default.Name" xml:space="preserve">
     <value>sega_default</value>
@@ -3828,99 +3375,6 @@
   <data name="&gt;&gt;injection_methods_n64.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;bios_neo.Name" xml:space="preserve">
-    <value>bios_neo</value>
-  </data>
-  <data name="&gt;&gt;bios_neo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;bios_neo.Parent" xml:space="preserve">
-    <value>bios_files</value>
-  </data>
-  <data name="&gt;&gt;bios_neo.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;bios_psx.Name" xml:space="preserve">
-    <value>bios_psx</value>
-  </data>
-  <data name="&gt;&gt;bios_psx.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;bios_psx.Parent" xml:space="preserve">
-    <value>bios_files</value>
-  </data>
-  <data name="&gt;&gt;bios_psx.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="bios_files.Location" type="System.Drawing.Point, System.Drawing">
-    <value>194, 0</value>
-  </data>
-  <data name="bios_files.Size" type="System.Drawing.Size, System.Drawing">
-    <value>560, 410</value>
-  </data>
-  <data name="bios_files.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;bios_files.Name" xml:space="preserve">
-    <value>bios_files</value>
-  </data>
-  <data name="&gt;&gt;bios_files.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;bios_files.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;bios_files.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="&gt;&gt;browse_bios_neo.Name" xml:space="preserve">
-    <value>browse_bios_neo</value>
-  </data>
-  <data name="&gt;&gt;browse_bios_neo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;browse_bios_neo.Parent" xml:space="preserve">
-    <value>bios_neo</value>
-  </data>
-  <data name="&gt;&gt;browse_bios_neo.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;bios_filename_neo.Name" xml:space="preserve">
-    <value>bios_filename_neo</value>
-  </data>
-  <data name="&gt;&gt;bios_filename_neo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;bios_filename_neo.Parent" xml:space="preserve">
-    <value>bios_neo</value>
-  </data>
-  <data name="&gt;&gt;bios_filename_neo.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="bios_neo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 10</value>
-  </data>
-  <data name="bios_neo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>536, 50</value>
-  </data>
-  <data name="bios_neo.TabIndex" type="System.Int32, mscorlib">
-    <value>53</value>
-  </data>
-  <data name="bios_neo.Text" xml:space="preserve">
-    <value>neo</value>
-  </data>
-  <data name="&gt;&gt;bios_neo.Name" xml:space="preserve">
-    <value>bios_neo</value>
-  </data>
-  <data name="&gt;&gt;bios_neo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;bios_neo.Parent" xml:space="preserve">
-    <value>bios_files</value>
-  </data>
-  <data name="&gt;&gt;bios_neo.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="browse_bios_neo.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -3969,53 +3423,29 @@
   <data name="&gt;&gt;bios_filename_neo.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;browse_bios_psx.Name" xml:space="preserve">
-    <value>browse_bios_psx</value>
+  <data name="bios_neo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 10</value>
   </data>
-  <data name="&gt;&gt;browse_bios_psx.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;browse_bios_psx.Parent" xml:space="preserve">
-    <value>bios_psx</value>
-  </data>
-  <data name="&gt;&gt;browse_bios_psx.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;bios_filename_psx.Name" xml:space="preserve">
-    <value>bios_filename_psx</value>
-  </data>
-  <data name="&gt;&gt;bios_filename_psx.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;bios_filename_psx.Parent" xml:space="preserve">
-    <value>bios_psx</value>
-  </data>
-  <data name="&gt;&gt;bios_filename_psx.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="bios_psx.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 66</value>
-  </data>
-  <data name="bios_psx.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="bios_neo.Size" type="System.Drawing.Size, System.Drawing">
     <value>536, 50</value>
   </data>
-  <data name="bios_psx.TabIndex" type="System.Int32, mscorlib">
-    <value>52</value>
+  <data name="bios_neo.TabIndex" type="System.Int32, mscorlib">
+    <value>53</value>
   </data>
-  <data name="bios_psx.Text" xml:space="preserve">
-    <value>psx</value>
+  <data name="bios_neo.Text" xml:space="preserve">
+    <value>neo</value>
   </data>
-  <data name="&gt;&gt;bios_psx.Name" xml:space="preserve">
-    <value>bios_psx</value>
+  <data name="&gt;&gt;bios_neo.Name" xml:space="preserve">
+    <value>bios_neo</value>
   </data>
-  <data name="&gt;&gt;bios_psx.Type" xml:space="preserve">
+  <data name="&gt;&gt;bios_neo.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;bios_psx.Parent" xml:space="preserve">
+  <data name="&gt;&gt;bios_neo.Parent" xml:space="preserve">
     <value>bios_files</value>
   </data>
-  <data name="&gt;&gt;bios_psx.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;bios_neo.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="browse_bios_psx.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -4064,6 +3494,51 @@
   </data>
   <data name="&gt;&gt;bios_filename_psx.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="bios_psx.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 66</value>
+  </data>
+  <data name="bios_psx.Size" type="System.Drawing.Size, System.Drawing">
+    <value>536, 50</value>
+  </data>
+  <data name="bios_psx.TabIndex" type="System.Int32, mscorlib">
+    <value>52</value>
+  </data>
+  <data name="bios_psx.Text" xml:space="preserve">
+    <value>psx</value>
+  </data>
+  <data name="&gt;&gt;bios_psx.Name" xml:space="preserve">
+    <value>bios_psx</value>
+  </data>
+  <data name="&gt;&gt;bios_psx.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;bios_psx.Parent" xml:space="preserve">
+    <value>bios_files</value>
+  </data>
+  <data name="&gt;&gt;bios_psx.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="bios_files.Location" type="System.Drawing.Point, System.Drawing">
+    <value>194, 0</value>
+  </data>
+  <data name="bios_files.Size" type="System.Drawing.Size, System.Drawing">
+    <value>560, 410</value>
+  </data>
+  <data name="bios_files.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;bios_files.Name" xml:space="preserve">
+    <value>bios_files</value>
+  </data>
+  <data name="&gt;&gt;bios_files.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;bios_files.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;bios_files.ZOrder" xml:space="preserve">
+    <value>11</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

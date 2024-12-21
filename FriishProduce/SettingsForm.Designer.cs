@@ -137,7 +137,7 @@ namespace FriishProduce
             this.bios_psx = new System.Windows.Forms.GroupBox();
             this.browse_bios_psx = new System.Windows.Forms.Button();
             this.bios_filename_psx = new System.Windows.Forms.TextBox();
-            this.use_online_wad_tip = new System.Windows.Forms.Label();
+            this.use_online_wad_tip = new FriishProduce.ImageLabel();
             this.vc_n64_options.SuspendLayout();
             this.bottomPanel2.SuspendLayout();
             this.bottomPanel1.SuspendLayout();
@@ -296,8 +296,8 @@ namespace FriishProduce
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.bypass_rom_size);
             this.panel1.Controls.Add(this.use_online_wad_tip);
+            this.panel1.Controls.Add(this.bypass_rom_size);
             this.panel1.Controls.Add(this.use_online_wad_enabled);
             this.panel1.Controls.Add(this.use_custom_database);
             this.panel1.Controls.Add(this.reset_all_dialogs);
@@ -1088,10 +1088,10 @@ namespace FriishProduce
             // 
             // use_online_wad_tip
             // 
-            this.use_online_wad_tip.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.use_online_wad_tip.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.use_online_wad_tip.Image = global::FriishProduce.Properties.Resources.information;
             resources.ApplyResources(this.use_online_wad_tip, "use_online_wad_tip");
+            this.use_online_wad_tip.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.use_online_wad_tip.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.use_online_wad_tip.Image = global::FriishProduce.Properties.Resources.information;
             this.use_online_wad_tip.Name = "use_online_wad_tip";
             this.use_online_wad_tip.Tag = "use_online_wad_tip";
             // 
@@ -1292,6 +1292,6 @@ namespace FriishProduce
         private System.Windows.Forms.ComboBox flash_vff_cache_size;
         private System.Windows.Forms.GroupBox flash_update_frame_rate_l;
         private System.Windows.Forms.NumericUpDown flash_update_frame_rate;
-        private System.Windows.Forms.Label use_online_wad_tip;
+        private ImageLabel use_online_wad_tip;
     }
 }

@@ -1174,7 +1174,7 @@
     <value>NoControl</value>
   </data>
   <data name="checkImg1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>433, 45</value>
+    <value>105, 45</value>
   </data>
   <data name="checkImg1.Size" type="System.Drawing.Size, System.Drawing">
     <value>16, 16</value>
@@ -1200,20 +1200,30 @@
   <data name="&gt;&gt;checkImg1.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="import_wad.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="import_wad.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="import_wad.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
   </data>
   <data name="import_wad.Location" type="System.Drawing.Point, System.Drawing">
-    <value>27, 41</value>
+    <value>28, 41</value>
   </data>
   <data name="import_wad.Size" type="System.Drawing.Size, System.Drawing">
-    <value>403, 24</value>
+    <value>73, 23</value>
   </data>
   <data name="import_wad.TabIndex" type="System.Int32, mscorlib">
-    <value>50</value>
+    <value>54</value>
   </data>
   <data name="import_wad.Text" xml:space="preserve">
     <value>import_wad</value>
+  </data>
+  <metadata name="tip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1055, 17</value>
+  </metadata>
+  <data name="import_wad.ToolTip" xml:space="preserve">
+    <value>HELLO
+This is a test of the CustomToolTip. A description will be displayed for each element on-screen.</value>
   </data>
   <data name="&gt;&gt;import_wad.Name" xml:space="preserve">
     <value>import_wad</value>
@@ -3835,6 +3845,12 @@
   </data>
   <data name="&gt;&gt;backgroundWorker.Type" xml:space="preserve">
     <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tip.Name" xml:space="preserve">
+    <value>tip</value>
+  </data>
+  <data name="&gt;&gt;tip.Type" xml:space="preserve">
+    <value>FriishProduce.CustomToolTip, FriishProduce, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>ProjectForm</value>

@@ -248,8 +248,8 @@
 			"preset_load":						"Appliquer",
 			
 			"up":								"Haut",
-			"left":								"Droite",
-			"right":							"Gauche",
+			"left":								"Gauche",
+			"right":							"Droite",
 			"down":								"Bas"
 		},
 

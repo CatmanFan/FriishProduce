@@ -20,7 +20,6 @@ namespace FriishProduce
         private readonly Savedata savedata;
 
         private readonly Wait wait = new();
-        private readonly CustomToolTip tip = new();
 
         protected string TIDCode;
         protected string Untitled;
@@ -40,6 +39,8 @@ namespace FriishProduce
                 return value;
             }
         }
+        public bool IsForwarder { get => !isVirtualConsole && targetPlatform != Platform.Flash; }
+
         protected bool showPatch = false;
         private bool _showSaveData;
         protected bool showSaveData
@@ -86,6 +87,7 @@ namespace FriishProduce
             }
         }
 
+        private bool _isEmpty;
         public bool IsEmpty
         {
             get => _isEmpty;
@@ -104,7 +106,44 @@ namespace FriishProduce
                 }
             }
         }
-        private bool _isEmpty;
+
+        private bool _isBusy;
+        public bool IsBusy
+        {
+            get => _isBusy;
+
+            set
+            {
+                _isBusy = value;
+
+                if (InvokeRequired)
+                {
+                    Invoke(new MethodInvoker(delegate
+                    {
+                        if (!value) ParentForm.Select();
+
+                        if (value)
+                            wait.Show(this);
+                        else
+                            wait.Hide();
+
+                        (ParentForm as MainForm).Enabled = Enabled = !value;
+                    }));
+                }
+
+                else
+                {
+                    if (!value) ParentForm.Select();
+
+                    if (value)
+                        wait.Show(this);
+                    else
+                        wait.Hide();
+
+                    (ParentForm as MainForm).Enabled = Enabled = !value;
+                }
+            }
+        }
 
         public bool IsExportable
         {
@@ -126,7 +165,6 @@ namespace FriishProduce
                 return showSaveData ? yes && !string.IsNullOrEmpty(savedata.Lines[0]) : yes;
             }
         }
-        public bool IsForwarder { get => !isVirtualConsole && targetPlatform != Platform.Flash; }
 
         public string ProjectPath { get; set; }
         #endregion
@@ -422,6 +460,7 @@ namespace FriishProduce
             Untitled = string.Format(Program.Lang.String("untitled_project", "mainform"), Program.Lang.String(Enum.GetName(typeof(Platform), targetPlatform).ToLower(), "platforms"));
             Text = string.IsNullOrWhiteSpace(channel_name.Text) ? Untitled : channel_name.Text;
 
+            checkImg1.Location = new Point(import_wad.Location.X + import_wad.Width + 4, checkImg1.Location.Y);
             baseID.Location = new Point(current_wad.Location.X + current_wad.Width + 2, current_wad.Location.Y + 1);
 
             setFilesText();
@@ -564,7 +603,7 @@ namespace FriishProduce
                 Platform.SMS or Platform.SMD => Properties.Settings.Default.default_injection_method_sega,
                 _ => 0
             };
-            groupBox3.Enabled = injection_methods.Enabled = injection_methods.Items.Count > 1;
+            injection_methods.Enabled = injection_methods.Items.Count > 1;
             banner_form.released.Maximum = DateTime.Now.Year;
 
             image_resize1.Checked = Properties.Settings.Default.image_fit_aspect_ratio;
@@ -763,6 +802,7 @@ namespace FriishProduce
                     contentOptionsForm.UsesKeymap = project.Keymap.Enabled;
                     contentOptionsForm.Keymap = project.Keymap.List;
                 }
+
                 LoadImage();
                 LoadManual(project.Manual.Type, project.Manual.File);
                 LoadSound(project.Sound);
@@ -857,12 +897,14 @@ namespace FriishProduce
             if (DesignMode) return;
             // ----------------------------
 
-            if (!IsEmpty)
-            {
-                IsModified = true;
-            }
+            if (isVirtualConsole && (WADPath == null && !use_online_wad.Checked))
+                injection_method_options.Enabled = false;
+            else
+                injection_method_options.Enabled = contentOptionsForm != null;
 
-            injection_method_options.Enabled = contentOptionsForm != null && (WADPath != null || use_online_wad.Checked);
+            if (!IsEmpty)
+                IsModified = true;
+
             setFilesText();
         }
 
@@ -924,15 +966,19 @@ namespace FriishProduce
 
             // WAD
             // ********
-            checkImg1.Image = hasWad ? Program.Lang.Current.ToLower().StartsWith("ja") || Program.Lang.Current.ToUpper().EndsWith("-JP") ? Properties.Resources.tick_circle : Properties.Resources.tick : Properties.Resources.cross;
-            baseID.Visible = hasWad || use_online_wad.Checked;
-            if (!baseID.Visible)
+            if (!hasWad && !use_online_wad.Checked)
             {
+                baseID.Visible = false;
                 baseName.Location = baseID.Location;
                 baseName.Text = Program.Lang.String("none");
             }
             else
+            {
+                baseID.Visible = true;
                 baseName.Location = new Point(baseID.Location.X + baseID.Width, baseID.Location.Y);
+            }
+
+            checkImg1.Image = hasWad ? Program.Lang.Current.ToLower().StartsWith("ja") || Program.Lang.Current.ToUpper().EndsWith("-JP") ? Properties.Resources.tick_circle : Properties.Resources.tick : Properties.Resources.cross;
         }
 
         private void randomTID()
@@ -1453,15 +1499,19 @@ namespace FriishProduce
                     MessageBox.Show(Program.Lang.Msg(4));
                 else if (!retrieved) SystemSounds.Beep.Play();
             }
+
             catch (Exception ex)
             {
                 MessageBox.Error(ex.Message);
             }
         }
 
+        public void SaveToWAD(string targetFile = null) => backgroundWorker.RunWorkerAsync(targetFile);
+        private void saveToWAD_UpdateProgress(object sender, System.ComponentModel.ProgressChangedEventArgs e) => wait.progress.Value = e.ProgressPercentage;
         private void saveToWAD(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
-            Invoke(new MethodInvoker(delegate { wait.Show(this); Enabled = false; }));
+            Exception error = null;
+            IsBusy = true;
 
             string targetFile = e.Argument.ToString();
             if (targetFile == null) targetFile = Paths.WorkingFolder + "out.wad";
@@ -1469,19 +1519,27 @@ namespace FriishProduce
 
             try
             {
+                (double step, double max) progress = new();
+                progress.step = progress.max = 5.0;
+                if (WADPath != null) progress.step = progress.max -= 1.0;
+
 
                 // Get WAD data
                 // *******
                 outWad = new WAD();
                 if (WADPath != null) outWad = WAD.Load(WADPath);
-                else foreach (var entry in channels.Entries)
+                else
+                {
+                    foreach (var entry in channels.Entries)
                         for (int i = 0; i < entry.Regions.Count; i++)
                             if (entry.GetUpperID(i) == baseID.Text.ToUpper()) outWad = entry.GetWAD(i);
-                if (outWad == null || outWad?.NumOfContents <= 1) throw new Exception(Program.Lang.Msg(8, true));
+                    if (outWad == null || outWad?.NumOfContents <= 1) throw new Exception(Program.Lang.Msg(8, true));
 
-                // -----------------------------------------------
-                backgroundWorker.ReportProgress(20);
-                // -----------------------------------------------
+                    // -----------------------------------------------
+                    progress.step += 1;
+                    backgroundWorker.ReportProgress((int)Math.Round((progress.step - progress.max) / progress.max * 100.0));
+                    // -----------------------------------------------
+                }
 
                 if (File.Exists(patch)) rom.Patch(patch);
 
@@ -1521,7 +1579,8 @@ namespace FriishProduce
                 }
 
                 // -----------------------------------------------
-                backgroundWorker.ReportProgress(40);
+                progress.step += 1;
+                backgroundWorker.ReportProgress((int)Math.Round((progress.step - progress.max) / progress.max * 100.0));
                 // -----------------------------------------------
 
                 // Banner
@@ -1542,7 +1601,8 @@ namespace FriishProduce
                 if (img.VCPic != null) img.ReplaceBanner(outWad);
 
                 // -----------------------------------------------
-                backgroundWorker.ReportProgress(60);
+                progress.step += 1;
+                backgroundWorker.ReportProgress((int)Math.Round((progress.step - progress.max) / progress.max * 100.0));
                 // -----------------------------------------------
 
                 // Change WAD region & internal main.dol things
@@ -1569,7 +1629,8 @@ namespace FriishProduce
                 outWad.FakeSign = true;
 
                 // -----------------------------------------------
-                backgroundWorker.ReportProgress(80);
+                progress.step += 1;
+                backgroundWorker.ReportProgress((int)Math.Round((progress.step - progress.max) / progress.max * 100.0));
                 // -----------------------------------------------
 
                 if (Directory.Exists(Paths.SDUSBRoot))
@@ -1593,15 +1654,27 @@ namespace FriishProduce
                 outWad.Dispose();
 
                 // -----------------------------------------------
-                backgroundWorker.ReportProgress(100);
+                progress.step += 1;
+                backgroundWorker.ReportProgress((int)Math.Round((progress.step - progress.max) / progress.max * 100.0));
                 // -----------------------------------------------
 
                 // Check new WAD file
                 // *******
-                if (File.Exists(targetFile) && File.ReadAllBytes(targetFile).Length > 10)
-                {
-                    Invoke(new MethodInvoker(delegate { wait.Hide(); Enabled = true; }));
+                if (File.Exists(targetFile) && File.ReadAllBytes(targetFile).Length > 10) error = null;
+                else throw new Exception(Program.Lang.Msg(6, true));
+            }
 
+            catch (Exception ex)
+            {
+                error = ex;
+            }
+
+            finally
+            {
+                Program.MainForm.CleanTemp();
+
+                if (error == null)
+                {
                     SystemSounds.Beep.Play();
 
                     switch (MessageBox.Show(Program.Lang.Msg(3), null, MessageBox.Buttons.YesNo, MessageBox.Icons.Information))
@@ -1611,24 +1684,14 @@ namespace FriishProduce
                             break;
                     }
                 }
-                else throw new Exception(Program.Lang.Msg(6, true));
-            }
 
-            catch (Exception ex)
-            {
-                Invoke(new MethodInvoker(delegate { wait.Hide(); Enabled = true; }));
-                MessageBox.Error(ex.Message);
-            }
+                else
+                {
+                    MessageBox.Error(error.Message);
+                }
 
-            finally
-            {
-                Program.MainForm.CleanTemp();
+                IsBusy = false;
             }
-        }
-
-        public void SaveToWAD(string targetFile = null)
-        {
-            backgroundWorker.RunWorkerAsync(targetFile);
         }
 
         public void ForwarderCreator(string path)

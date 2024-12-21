@@ -62,6 +62,11 @@ namespace FriishProduce
             this.Translated = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.status_label = new System.Windows.Forms.ToolStripStatusLabel();
+            this.search_for = new System.Windows.Forms.ToolStripDropDownButton();
+            this.find_original_l = new System.Windows.Forms.ToolStripMenuItem();
+            this.find_original = new System.Windows.Forms.ToolStripTextBox();
+            this.find_translated_l = new System.Windows.Forms.ToolStripMenuItem();
+            this.find_translated = new System.Windows.Forms.ToolStripTextBox();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -337,7 +342,8 @@ namespace FriishProduce
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.status_label});
+            this.status_label,
+            this.search_for});
             this.statusStrip1.Location = new System.Drawing.Point(0, 399);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(884, 22);
@@ -349,6 +355,51 @@ namespace FriishProduce
             this.status_label.Name = "status_label";
             this.status_label.Size = new System.Drawing.Size(61, 17);
             this.status_label.Text = "undefined";
+            // 
+            // search_for
+            // 
+            this.search_for.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.search_for.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.find_original_l,
+            this.find_translated_l});
+            this.search_for.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.search_for.Name = "search_for";
+            this.search_for.Size = new System.Drawing.Size(104, 20);
+            this.search_for.Text = "Search for text...";
+            // 
+            // find_original_l
+            // 
+            this.find_original_l.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.find_original});
+            this.find_original_l.Name = "find_original_l";
+            this.find_original_l.Size = new System.Drawing.Size(129, 22);
+            this.find_original_l.Text = "Original";
+            // 
+            // find_original
+            // 
+            this.find_original.AcceptsReturn = true;
+            this.find_original.AutoSize = false;
+            this.find_original.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.find_original.Name = "find_original";
+            this.find_original.Size = new System.Drawing.Size(200, 23);
+            this.find_original.TextChanged += new System.EventHandler(this.Find);
+            // 
+            // find_translated_l
+            // 
+            this.find_translated_l.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.find_translated});
+            this.find_translated_l.Name = "find_translated_l";
+            this.find_translated_l.Size = new System.Drawing.Size(129, 22);
+            this.find_translated_l.Text = "Translated";
+            // 
+            // find_translated
+            // 
+            this.find_translated.AcceptsReturn = true;
+            this.find_translated.AutoSize = false;
+            this.find_translated.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.find_translated.Name = "find_translated";
+            this.find_translated.Size = new System.Drawing.Size(200, 23);
+            this.find_translated.TextChanged += new System.EventHandler(this.Find);
             // 
             // LanguageEditor
             // 
@@ -407,5 +458,10 @@ namespace FriishProduce
         private System.Windows.Forms.MenuItem menuItem7;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel status_label;
+        private System.Windows.Forms.ToolStripDropDownButton search_for;
+        private System.Windows.Forms.ToolStripMenuItem find_original_l;
+        private System.Windows.Forms.ToolStripTextBox find_original;
+        private System.Windows.Forms.ToolStripMenuItem find_translated_l;
+        private System.Windows.Forms.ToolStripTextBox find_translated;
     }
 }
