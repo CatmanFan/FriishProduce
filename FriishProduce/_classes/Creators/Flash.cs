@@ -171,39 +171,28 @@ namespace FriishProduce.Injectors
         public static WAD Inject(WAD w, string path, string[] lines, ImageHelper Img)
         {
             MainContent = U8.Load(w.Contents[2]);
-
-            // MainContent.Extract(Paths.FlashContents);
+            MainContent.Extract(Paths.FlashContents);
 
             int region = 0;
 
-            foreach (var item in MainContent.StringTable)
+            foreach (string file in Directory.EnumerateFiles(Paths.FlashContents, "*.*", SearchOption.AllDirectories))
             {
+                string item = file.Replace(Paths.FlashContents, null).ToLower();
+
                 // Actually replacing the SWF
                 // The link to the SWF is contained in config/[region]/[language]/config.[language-REGION].pcf
                 // ********
-                if (item.ToLower().Contains("menu.swf"))
-                    MainContent.ReplaceFile(MainContent.GetNodeIndex(item), File.ReadAllBytes(path));
+                if (item.Contains("menu.swf"))
+                    File.Copy(path, file, true);
 
                 // FOR FORCING 4:3
                 // ********
-                else if (item.ToLower().Contains(".wide.pcf"))
-                    MainContent.ReplaceFile(MainContent.GetNodeIndex(item.Replace(".wide", "")), MainContent.Data[MainContent.GetNodeIndex(item)]);
+                else if (item.Contains(".wide.pcf"))
+                    File.Copy(file.Replace(".wide.pcf", ".pcf"), file, true);
 
-                else if (item.ToLower() == "keymap.ini" && Keymap?.Count > 0)
+                else if (item.EndsWith("keymap.ini") && Keymap?.Count > 0)
                 {
-                    var file = new List<string>()
-                    /* {
-                        "KEY_BUTTON_LEFT  KEY_LEFT",
-                        "KEY_BUTTON_RIGHT KEY_RIGHT",
-                        "KEY_BUTTON_DOWN  KEY_DOWN",
-                        "KEY_BUTTON_UP    KEY_UP",
-                        "KEY_BUTTON_A     65",
-                        "KEY_BUTTON_B     66",
-                        "KEY_BUTTON_1     49",
-                        "KEY_BUTTON_2     50",
-                        "KEY_BUTTON_HOME  KEY_ESCAPE",
-                        ""
-                    } */;
+                    List<string> txt = new();
 
                     foreach (var mapping in Keymap)
                     {
@@ -243,60 +232,59 @@ namespace FriishProduce.Injectors
                             _ => null
                         };
 
-                        if (button != null && !string.IsNullOrWhiteSpace(mapping.Value)) file.Add(button.Length < 17 ? button.PadRight(17, ' ') + mapping.Value : button + ' ' + mapping.Value);
+                        if (button != null && !string.IsNullOrWhiteSpace(mapping.Value))
+                            txt.Add(button.Length < 17 ? button.PadRight(17, ' ') + mapping.Value : button + ' ' + mapping.Value);
                     }
 
-                    string keymap = string.Join("\r\n", file) + "\r\n";
-
-                    MainContent.ReplaceFile(MainContent.GetNodeIndex(item), Encoding.UTF8.GetBytes(keymap));
+                    File.WriteAllBytes(file, Encoding.UTF8.GetBytes(string.Join("\r\n", txt) + "\r\n"));
                 }
 
-                else if (item.ToLower() == "config.common.pcf")
+                else if (item.EndsWith("config.common.pcf"))
                 {
-                    var file = new List<string>()
-                        {
-                            "# Comments (text preceded by #) and line breaks will be ignored",
-                            "static_heap_size                8192                # 8192[KB] -> 8[MB]",
-                            "dynamic_heap_size               16384               # 16384[KB] -> 16[MB]",
+                    List<string> txt = new()
+                    {
+                        "# Comments (text preceded by #) and line breaks will be ignored",
+                        "static_heap_size                8192                # 8192[KB] -> 8[MB]",
+                        "dynamic_heap_size               16384               # 16384[KB] -> 16[MB]",
 
-                            $"update_frame_rate             {Settings["update_frame_rate"]}                  # not TV-framerate(NTSC/PAL)",
+                        $"update_frame_rate             {Settings["update_frame_rate"]}                  # not TV-framerate(NTSC/PAL)",
 
-                            $"mouse                           {Settings["mouse"]}",
-                            $"qwerty_keyboard                 {Settings["qwerty_keyboard"]}",
-                            "navigation_model                4way                # 2way / 4way / 4waywrap",
-                            $"quality                         {Settings["quality"]}",
-                            "looping                         on",
+                        $"mouse                           {Settings["mouse"]}",
+                        $"qwerty_keyboard                 {Settings["qwerty_keyboard"]}",
+                        "navigation_model                4way                # 2way / 4way / 4waywrap",
+                        $"quality                         {Settings["quality"]}",
+                        "looping                         on",
 
-                            "text_encoding                   utf-16",
+                        "text_encoding                   utf-16",
 
-                            $"midi                            {(File.Exists(Settings["midi"]) ? "on" : "off")}",
-                            $"{(File.Exists(Settings["midi"]) ? null : "# ")}dls_file                      dls/GM16.DLS",
+                        $"midi                            {(File.Exists(Settings["midi"]) ? "on" : "off")}",
+                        $"{(File.Exists(Settings["midi"]) ? null : "# ")}dls_file                      dls/GM16.DLS",
 
-                            "key_input                       on",
+                        "key_input                       on",
 
-                            "cursor_archive                  cursor.arc",
-                            "cursor_layout                   cursor.brlyt",
-                            "dialog_cursor_archive           cursor.arc",
-                            "dialog_cursor_layout            cursor.brlyt",
+                        "cursor_archive                  cursor.arc",
+                        "cursor_layout                   cursor.brlyt",
+                        "dialog_cursor_archive           cursor.arc",
+                        "dialog_cursor_layout            cursor.brlyt",
 
-                            $"shared_object_capability        {Settings["shared_object_capability"]}",
-                            "num_vff_drives                  1",
-                            $"vff_cache_size                  {Settings["vff_cache_size"]}",
-                            $"vff_sync_on_write               {Settings["vff_sync_on_write"]}",
+                        $"shared_object_capability        {Settings["shared_object_capability"]}",
+                        "num_vff_drives                  1",
+                        $"vff_cache_size                  {Settings["vff_cache_size"]}",
+                        $"vff_sync_on_write               {Settings["vff_sync_on_write"]}",
 
-                            "persistent_storage_root_drive   X",
-                            "persistent_storage_vff_file     shrdobjs.vff        # 8.3 format",
-                            $"persistent_storage_total        {Settings["persistent_storage_total"]}",
-                            $"persistent_storage_per_movie    {Settings["persistent_storage_per_movie"]}",
+                        "persistent_storage_root_drive   X",
+                        "persistent_storage_vff_file     shrdobjs.vff        # 8.3 format",
+                        $"persistent_storage_total        {Settings["persistent_storage_total"]}",
+                        $"persistent_storage_per_movie    {Settings["persistent_storage_per_movie"]}",
 
-                            $"strap_reminder                  {Settings["strap_reminder"]}",
+                        $"strap_reminder                  {Settings["strap_reminder"]}",
 
-                            "supported_devices               core, freestyle, classic",
+                        "supported_devices               core, freestyle, classic",
 
-                            $"hbm_no_save                     {Settings["hbm_no_save"]}"
-                        };
+                        $"hbm_no_save                     {Settings["hbm_no_save"]}"
+                    };
 
-                    MainContent.ReplaceFile(MainContent.GetNodeIndex(item), Encoding.UTF8.GetBytes(string.Join("\r\n", file) + "\r\n"));
+                    File.WriteAllBytes(file, Encoding.UTF8.GetBytes(string.Join("\r\n", txt) + "\r\n"));
                 }
             }
 
@@ -304,15 +292,18 @@ namespace FriishProduce.Injectors
             // ********
             if (File.Exists(Settings["midi"]))
             {
-                MainContent.AddDirectory("/dls");
-                MainContent.AddFile("/dls/GM16.DLS", File.ReadAllBytes(Settings["midi"]));
+                if (!Directory.Exists(Paths.FlashContents + "dls\\"))
+                    Directory.CreateDirectory(Paths.FlashContents + "dls\\");
+
+                File.Copy(Settings["midi"], Paths.FlashContents + "dls\\GM16.DLS");
             }
 
             // Taking all other files
             // ********
             if (Multifile)
-                foreach (string file in Directory.EnumerateFiles(Path.GetDirectoryName(path), "*.*", SearchOption.TopDirectoryOnly))
-                    MainContent.AddFile("/content/" + Path.GetFileName(file), File.ReadAllBytes(file));
+                foreach (string etc in Directory.EnumerateFiles(Path.GetDirectoryName(path), "*.*", SearchOption.TopDirectoryOnly))
+                    if (etc != path)
+                        File.Copy(etc, Paths.FlashContents + "content\\" + Path.GetFileName(etc), true);
 
             // Savebanner .TPL & config
             // ********
@@ -329,21 +320,23 @@ namespace FriishProduce.Injectors
                     lines[i] = Encoding.UTF8.GetString(Encoding.Convert(Encoding.Unicode, Encoding.UTF8, bytes));
                 }
 
-                foreach (var item in MainContent.StringTable)
+                foreach (string file in Directory.EnumerateFiles(Paths.FlashContents, "*.*", SearchOption.AllDirectories))
                 {
-                    if (item.ToUpper() == "US") region = 0;
-                    if (item.ToUpper() == "EU") region = 1;
-                    if (item.ToUpper() == "JP") region = 2;
+                    string item = file.Replace(Paths.FlashContents, null).ToLower();
 
-                    if (item.ToLower() == "banner.tpl")
-                        MainContent.ReplaceFile(MainContent.GetNodeIndex(item), banner.ToByteArray());
+                    if (item.Contains("banner\\us")) region = 0;
+                    if (item.Contains("banner\\eu")) region = 1;
+                    if (item.Contains("banner\\jp")) region = 2;
 
-                    else if (item.ToLower() == "icons.tpl")
-                        MainContent.ReplaceFile(MainContent.GetNodeIndex(item), icons.ToByteArray());
+                    if (item.Contains("banner.tpl"))
+                        File.WriteAllBytes(file, banner.ToByteArray());
 
-                    else if (item.ToLower() == "banner.ini")
+                    else if (item.Contains("icons.tpl"))
+                        File.WriteAllBytes(file, icons.ToByteArray());
+
+                    else if (item.Contains("banner.ini"))
                     {
-                        var file = new List<string>()
+                        var txt = new List<string>()
                             {
                                 "not_copy        off",
                                 "anim_type       bounce",
@@ -356,10 +349,10 @@ namespace FriishProduce.Injectors
 
                         for (int i = 0; i < textures; i++)
                         {
-                            file.Add($"icon_speed      {i}, slow");
+                            txt.Add($"icon_speed      {i}, slow");
                         }
 
-                        MainContent.ReplaceFile(MainContent.GetNodeIndex(item), Encoding.UTF8.GetBytes(string.Join("\r\n", file) + "\r\n"));
+                        File.WriteAllBytes(file, Encoding.UTF8.GetBytes(string.Join("\r\n", txt) + "\r\n"));
                     }
                 }
 
@@ -367,7 +360,8 @@ namespace FriishProduce.Injectors
                 icons.Dispose();
             }
 
-            // MainContent.CreateFromDirectory(Paths.FlashContents);
+            MainContent.CreateFromDirectory(Paths.FlashContents);
+            if (Directory.Exists(Paths.FlashContents)) Directory.Delete(Paths.FlashContents, true);
 
             w.Unpack(Paths.WAD);
             File.WriteAllBytes(Paths.WAD + "00000002.app", MainContent.ToByteArray());

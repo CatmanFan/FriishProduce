@@ -687,7 +687,7 @@
     <value>2</value>
   </data>
   <data name="groupBox5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>478, 12</value>
+    <value>478, 93</value>
   </data>
   <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
     <value>560, 305</value>
@@ -1430,7 +1430,7 @@ This is a test of the CustomToolTip. A description will be displayed for each el
     <value>0</value>
   </data>
   <data name="groupBox6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>478, 323</value>
+    <value>478, 12</value>
   </data>
   <data name="groupBox6.Size" type="System.Drawing.Size, System.Drawing">
     <value>560, 75</value>

@@ -116,7 +116,8 @@
 			"e_010":							"Le fichier «{0}» n'a pas été trouvé dans son chemin original. Il s'agit qu'il peut avoir été déplacé ou supprimé.",
 			"e_011":							"Le dossier «{0}» n'a pas été trouvé dans son chemin original. Il s'agit qu'il peut avoir été déplacé ou supprimé.",
 			"e_012":							"Aucun point d'entrée d'injection n'a été trouvé. Il peut s'agir que la méthode d'injection utilisée par cette chaîne n'est toujours pas prise en charge.",
-			"e_013":							"Le fichier BIOS requis pour cette console est indisponible. Veuillez le spécifier de nouveau dans les préférences de l'application."
+			"e_013":							"Le fichier BIOS requis pour cette console est indisponible. Veuillez le spécifier de nouveau dans les préférences de l'application.",
+			"e_014":							"Échec de création de l'image d'aperçu des données de sauvegarde."
 		}
 	},
 

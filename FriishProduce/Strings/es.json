@@ -115,7 +115,8 @@
 			"e_010":							"El archivo \"{0}\" no se encontró en su ruta original. Puede que haya sido eliminado o movido.",
 			"e_011":							"La carpeta \"{0}\" no se encontró en su ruta original. Puede que haya sido eliminada o movida.",
 			"e_012":							"No se encontró ningún punto de entrada de inyección. Puede deberse a que el método de inyección utilizado por este canal aún no está compatible.",
-			"e_013":							"No se encontró el archivo BIOS necesario para esta consola.\nPor favor seleccione un archivo en los ajustes de la aplicación."
+			"e_013":							"No se encontró el archivo BIOS necesario para esta consola.\nPor favor seleccione un archivo en los ajustes de la aplicación.",
+			"e_014":							"No se pudo crear la imagen TPL para los datos guardados."
 		}
 	},
 

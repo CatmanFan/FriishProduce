@@ -116,7 +116,8 @@
 			"e_010":							"The file \"{0}\" could not be found in its original path. It may have been deleted or moved.",
 			"e_011":							"The folder \"{0}\" could not be found in its original path. It may have been deleted or moved.",
 			"e_012":							"An injectable ROM entrypoint was not found. This may be because the injection method used for this WAD is yet not supported.",
-			"e_013":							"Could not find the required BIOS file for this console.\nPlease set this file in the application preferences."
+			"e_013":							"Could not find the required BIOS file for this console.\nPlease set this file in the application preferences.",
+			"e_014":							"Failed to create savedata TPL.",
 		}
 	},
 

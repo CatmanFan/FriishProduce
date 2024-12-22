@@ -2092,6 +2092,8 @@ namespace FriishProduce
         /// </summary>
         private void resetContentOptions()
         {
+            if (targetPlatform == Platform.Flash && contentOptionsForm != null) return;
+
             manual_type.Visible = false;
             forwarder_root_device.Visible = false;
             multifile_software.Visible = false;

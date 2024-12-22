@@ -377,11 +377,13 @@ namespace FriishProduce
                     g.Dispose();
 
                     tpl.AddTexture(sIcon, TextureFormat, PaletteFormat);
+                    tpl.AddTexture(sIcon, TextureFormat, PaletteFormat);
+                    tpl.AddTexture(sIcon, TextureFormat, PaletteFormat);
 
                     g.Dispose();
                 }
 
-                // ANIMATION AND END FRAMES
+                // ANIMATION FRAMES
                 // ****************
                 using (Image sIcon2 = (Image)sIcon.Clone())
                 using (Graphics g = Graphics.FromImage(sIcon2))
@@ -404,17 +406,14 @@ namespace FriishProduce
 
                     tpl.AddTexture(sIcon2, TextureFormat, PaletteFormat);
 
-                    // END FRAME
-                    // ****************
-                    tpl.AddTexture(sIconLogo, TextureFormat, PaletteFormat);
-
                     g.Dispose();
                 }
 
+                // END (4TH) FRAME
+                // ****************
                 tpl.AddTexture(sIconLogo, TextureFormat, PaletteFormat);
-                tpl.AddTexture(tpl.ExtractTexture(2), TextureFormat, PaletteFormat);
-                tpl.AddTexture(tpl.ExtractTexture(1), TextureFormat, PaletteFormat);
-                tpl.AddTexture(sIcon, TextureFormat, PaletteFormat);
+                tpl.AddTexture(sIconLogo, TextureFormat, PaletteFormat);
+                tpl.AddTexture(sIconLogo, TextureFormat, PaletteFormat);
             }
 
             sIconLogo.Dispose();
@@ -443,7 +442,7 @@ namespace FriishProduce
             */
 
             TPL tpl;
-            try { tpl = TPL.Load(tplBytes); } catch { return CreateSaveTPL(0); }
+            try { tpl = TPL.Load(tplBytes); } catch { throw new Exception(Program.Lang.Msg(14, true)); }
 
             int numTextures = tpl.NumOfTextures;
             TPL_TextureFormat[] formatsT = new TPL_TextureFormat[numTextures];
