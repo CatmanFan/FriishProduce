@@ -35,5 +35,8 @@
     <Setting Name="update_frame_rate" Type="System.String" Scope="User">
       <Value Profile="(Default)">30</Value>
     </Setting>
+    <Setting Name="stretch_to_4_3" Type="System.String" Scope="User">
+      <Value Profile="(Default)">no</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

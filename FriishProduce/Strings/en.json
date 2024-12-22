@@ -313,6 +313,7 @@
 			"persistent_storage_total":			"Total persistant storage ({kilobytes})",
 			"persistent_storage_per_movie":		"Persistant storage per SWF ({kilobytes})",
 			"update_frame_rate":				"SWF framerate",
+			"stretch_to_4_3":					"Stretch to 4:3",
 			"controls":							"Controls",
 			"mouse":							"Mouse",
 			"qwerty_keyboard":					"QWERTY keyboard",

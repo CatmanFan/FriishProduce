@@ -176,7 +176,7 @@ namespace FriishProduce
             Program.Lang.String(flash_controls, "adobe_flash");
             Program.Lang.String(flash_mouse, "adobe_flash");
             Program.Lang.String(flash_qwerty_keyboard, "adobe_flash");
-            Program.Lang.String(flash_quality, "adobe_flash");
+            Program.Lang.String(flash_quality_l, "adobe_flash");
             Program.Lang.String(flash_quality_list, "adobe_flash");
             Program.Lang.String(flash_strap_reminder, "adobe_flash");
             Program.Lang.String(flash_strap_reminder_list, "adobe_flash");

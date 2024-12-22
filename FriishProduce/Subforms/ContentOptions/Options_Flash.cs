@@ -28,7 +28,8 @@ namespace FriishProduce
                 { "persistent_storage_per_movie", Default.persistent_storage_per_movie },
                 { "hbm_no_save", Default.hbm_no_save },
                 { "strap_reminder", Default.strap_reminder },
-                { "midi", null }
+                { "midi", null },
+                { "stretch_to_4_3", Default.stretch_to_4_3 }
             };
 
             // Cosmetic
@@ -82,7 +83,8 @@ namespace FriishProduce
                         { "persistent_storage_per_movie", Default.persistent_storage_per_movie },
                         { "hbm_no_save", Default.hbm_no_save },
                         { "strap_reminder", Default.strap_reminder },
-                        { "midi", null }
+                        { "midi", null },
+                        { "stretch_to_4_3", Default.stretch_to_4_3 }
                     };
 
                     goto Refill;
@@ -119,6 +121,7 @@ namespace FriishProduce
             Options["quality"] = quality.SelectedIndex switch { 0 => "high", 1 => "medium", _ => "low" };
             Options["strap_reminder"] = strap_reminder_list.SelectedIndex switch { 0 => "none", 1 => "normal", _ => "no_ex" };
             Options["hbm_no_save"] = Options["shared_object_capability"] == "on" ? "no" : "yes";
+            Options["stretch_to_4_3"] = stretch_to_4_3.Checked ? "yes" : "no";
         }
 
         // ---------------------------------------------------------------------------------------------------------------

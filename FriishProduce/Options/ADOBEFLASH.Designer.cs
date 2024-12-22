@@ -154,5 +154,17 @@ namespace FriishProduce.Options {
                 this["update_frame_rate"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("no")]
+        public string stretch_to_4_3 {
+            get {
+                return ((string)(this["stretch_to_4_3"]));
+            }
+            set {
+                this["stretch_to_4_3"] = value;
+            }
+        }
     }
 }
