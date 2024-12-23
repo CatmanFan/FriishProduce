@@ -25,7 +25,7 @@
         // NES & SNES:
             // "0": Original
             // "1": LZ77 ROM
-            // "2": LZH8 ROM (support not added yet)
+            // "2": LZH8 ROM
         // N64:
             // "0": Rev 1
             // "1": Rev 1 (alternative savedata format)
@@ -444,6 +444,22 @@
             "titles": ["ロードファイター  Ｒｏａｄ　Ｆｉｇｈｔｅｒ"],
             "wad_titles": ["Road Fighter"]
         },
+		
+        {
+            "id": "00010001-584145__",
+            "region": [0],
+            "emu_ver": [0],
+            "titles": ["スペースマンボウ"],
+            "wad_titles": ["Space Manbow"]
+        },
+		
+        {
+            "id": "00010001-584146__",
+            "region": [0],
+            "emu_ver": [0],
+            "titles": ["メタルギア"],
+            "wad_titles": ["Metal Gear"]
+        },
 
         {
             "id": "00010001-584150__",
@@ -451,6 +467,14 @@
             "emu_ver": [0],
             "titles": ["メタルギア２ ソリッドスネーク"],
             "wad_titles": ["Metal Gear 2 - Solid Snake"]
+        },
+		
+        {
+            "id": "00010001-584144__",
+            "region": [0],
+            "emu_ver": [0],
+            "titles": ["イーガー皇帝の逆襲　イー・アル・カンフー２"],
+            "wad_titles": ["Yie-Gah-koutei no Gyakush: Yie Ar Kung-Fu 2"]
         },
     ],
 
