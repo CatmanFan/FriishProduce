@@ -441,7 +441,7 @@
             "id": "00010001-584147__",
             "region": [0],
             "emu_ver": [0],
-            "titles": ["ロードファイター  Ｒｏａｄ　Ｆｉｇｈｔｅｒ"],
+            "titles": ["ロードファイター Road Fighter"],
             "wad_titles": ["Road Fighter"]
         },
 		
@@ -449,7 +449,7 @@
             "id": "00010001-584145__",
             "region": [0],
             "emu_ver": [0],
-            "titles": ["スペースマンボウ"],
+            "titles": ["スペースマンボウ Space Manbow"],
             "wad_titles": ["Space Manbow"]
         },
 		
@@ -457,7 +457,7 @@
             "id": "00010001-584146__",
             "region": [0],
             "emu_ver": [0],
-            "titles": ["メタルギア"],
+            "titles": ["メタルギア Metal Gear"],
             "wad_titles": ["Metal Gear"]
         },
 
@@ -465,7 +465,7 @@
             "id": "00010001-584150__",
             "region": [0],
             "emu_ver": [0],
-            "titles": ["メタルギア２ ソリッドスネーク"],
+            "titles": ["メタルギア２ ソリッドスネーク Metal Gear 2: Solid Snake"],
             "wad_titles": ["Metal Gear 2 - Solid Snake"]
         },
 		
@@ -473,8 +473,8 @@
             "id": "00010001-584144__",
             "region": [0],
             "emu_ver": [0],
-            "titles": ["イーガー皇帝の逆襲　イー・アル・カンフー２"],
-            "wad_titles": ["Yie-Gah-koutei no Gyakush: Yie Ar Kung-Fu 2"]
+            "titles": ["イーガー皇帝の逆襲　イー・アル・カンフー２ Yie-Gah Koutei no Gyakushuu: Yie Ar Kung-Fu 2"],
+            "wad_titles": ["Yie-Gah Koutei no Gyakushuu - Yie Ar Kung-Fu 2"]
         },
     ],
 
