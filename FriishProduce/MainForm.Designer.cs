@@ -210,6 +210,7 @@ namespace FriishProduce
             // BrowseProject
             // 
             this.BrowseProject.DefaultExt = "fppj";
+            this.BrowseProject.Multiselect = true;
             this.BrowseProject.SupportMultiDottedExtensions = true;
             // 
             // mainMenu

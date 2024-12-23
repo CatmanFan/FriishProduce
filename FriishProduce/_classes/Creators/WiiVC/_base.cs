@@ -213,6 +213,7 @@ namespace FriishProduce
                 COMPRESSED:
 
                 X htmlc.arc (N64 LZ77)
+                X LZ77_html.arc (TG16/PCE LZ77)
                 Regex('.+_manual_.+\\.arc\\.lz77$') e.g. makaimura_manual_usa.arc.lz77 (Arcade Ghosts n Goblins) */
 
                 byte[] backup = null;

@@ -67,6 +67,8 @@ namespace FriishProduce
                     qwerty_keyboard.Checked = Options["qwerty_keyboard"] == "on";
                     quality.SelectedIndex = Options["quality"] switch { "high" => 0, "medium" => 1, _ => 2 };
                     strap_reminder_list.SelectedIndex = Options["strap_reminder"] switch { "none" => 0, "normal" => 1, _ => 2 };
+                    // MIDI is counted separately
+                    stretch_to_4_3.Checked = Options["stretch_to_4_3"] == "yes";
                 }
                 catch
                 {

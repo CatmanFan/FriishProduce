@@ -29,8 +29,6 @@ namespace FriishProduce
         /// </summary>
         private void InitializeComponent()
         {
-            this.sgenable_switch = new JCS.ToggleSwitch();
-            this.sgenable = new System.Windows.Forms.Label();
             this.padbutton_switch = new JCS.ToggleSwitch();
             this.padbutton = new System.Windows.Forms.Label();
             this.europe = new System.Windows.Forms.Label();
@@ -43,34 +41,17 @@ namespace FriishProduce
             this.sprline = new System.Windows.Forms.CheckBox();
             this.raster = new System.Windows.Forms.CheckBox();
             this.hide_overscan = new System.Windows.Forms.CheckBox();
+            this.sgenable = new System.Windows.Forms.CheckBox();
             this.bottomPanel1.SuspendLayout();
+            this.controller_box.SuspendLayout();
             this.vc_options.SuspendLayout();
             this.display.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.y_offset_toggle)).BeginInit();
             this.SuspendLayout();
             // 
-            // sgenable_switch
-            // 
-            this.sgenable_switch.Location = new System.Drawing.Point(10, 41);
-            this.sgenable_switch.Name = "sgenable_switch";
-            this.sgenable_switch.OffFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sgenable_switch.OnFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sgenable_switch.Size = new System.Drawing.Size(35, 15);
-            this.sgenable_switch.TabIndex = 21;
-            this.sgenable_switch.CheckedChanged += new JCS.ToggleSwitch.CheckedChangedDelegate(this.ToggleSwitchChanged);
-            // 
-            // sgenable
-            // 
-            this.sgenable.AutoSize = true;
-            this.sgenable.Location = new System.Drawing.Point(51, 41);
-            this.sgenable.Name = "sgenable";
-            this.sgenable.Size = new System.Drawing.Size(50, 13);
-            this.sgenable.TabIndex = 20;
-            this.sgenable.Text = "sgenable";
-            // 
             // padbutton_switch
             // 
-            this.padbutton_switch.Location = new System.Drawing.Point(10, 62);
+            this.padbutton_switch.Location = new System.Drawing.Point(10, 41);
             this.padbutton_switch.Name = "padbutton_switch";
             this.padbutton_switch.OffFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.padbutton_switch.OnFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -81,7 +62,7 @@ namespace FriishProduce
             // padbutton
             // 
             this.padbutton.AutoSize = true;
-            this.padbutton.Location = new System.Drawing.Point(51, 62);
+            this.padbutton.Location = new System.Drawing.Point(51, 41);
             this.padbutton.Name = "padbutton";
             this.padbutton.Size = new System.Drawing.Size(57, 13);
             this.padbutton.TabIndex = 22;
@@ -108,13 +89,12 @@ namespace FriishProduce
             // 
             // vc_options
             // 
+            this.vc_options.Controls.Add(this.sgenable);
             this.vc_options.Controls.Add(this.checkBox4);
             this.vc_options.Controls.Add(this.europe_switch);
             this.vc_options.Controls.Add(this.europe);
-            this.vc_options.Controls.Add(this.padbutton_switch);
-            this.vc_options.Controls.Add(this.sgenable);
             this.vc_options.Controls.Add(this.padbutton);
-            this.vc_options.Controls.Add(this.sgenable_switch);
+            this.vc_options.Controls.Add(this.padbutton_switch);
             this.vc_options.Location = new System.Drawing.Point(12, 10);
             this.vc_options.Name = "vc_options";
             this.vc_options.Size = new System.Drawing.Size(530, 110);
@@ -203,6 +183,17 @@ namespace FriishProduce
             this.hide_overscan.Text = "hide_overscan";
             this.hide_overscan.UseVisualStyleBackColor = true;
             // 
+            // sgenable
+            // 
+            this.sgenable.AutoSize = true;
+            this.sgenable.Location = new System.Drawing.Point(10, 63);
+            this.sgenable.Name = "sgenable";
+            this.sgenable.Size = new System.Drawing.Size(69, 17);
+            this.sgenable.TabIndex = 24;
+            this.sgenable.Tag = "sgenable";
+            this.sgenable.Text = "sgenable";
+            this.sgenable.UseVisualStyleBackColor = true;
+            // 
             // Options_VC_PCE
             // 
             this.ClientSize = new System.Drawing.Size(554, 297);
@@ -210,9 +201,12 @@ namespace FriishProduce
             this.Controls.Add(this.display);
             this.Name = "Options_VC_PCE";
             this.Tag = "vc_pce";
+            this.Controls.SetChildIndex(this.controller_box, 0);
             this.Controls.SetChildIndex(this.display, 0);
             this.Controls.SetChildIndex(this.vc_options, 0);
             this.bottomPanel1.ResumeLayout(false);
+            this.controller_box.ResumeLayout(false);
+            this.controller_box.PerformLayout();
             this.vc_options.ResumeLayout(false);
             this.vc_options.PerformLayout();
             this.display.ResumeLayout(false);
@@ -223,9 +217,6 @@ namespace FriishProduce
         }
 
         #endregion
-
-        private JCS.ToggleSwitch sgenable_switch;
-        private System.Windows.Forms.Label sgenable;
         private JCS.ToggleSwitch padbutton_switch;
         private System.Windows.Forms.Label padbutton;
         private System.Windows.Forms.Label europe;
@@ -238,5 +229,6 @@ namespace FriishProduce
         private System.Windows.Forms.Label y_offset;
         private System.Windows.Forms.NumericUpDown y_offset_toggle;
         private System.Windows.Forms.CheckBox checkBox4;
+        private System.Windows.Forms.CheckBox sgenable;
     }
 }

@@ -291,10 +291,9 @@
 			"raster":							"BG 래스터 활성화",
 			"sprline":							"스프라이트 제한 활성화",
 			"y_offset":							"Y 옵셋",
+			"sgenable":							"Enable SuperGrafx functionality",
 			"europe0":							"지역이 일본으로 설정",
 			"europe1":							"지역이 미국/유럽으로 설정",
-			"sgenable0":						"SuperGrafx를 사용하지 않음",
-			"sgenable1":						"SuperGrafx 사용",
 			"padbutton0":						"2버튼 패드 사용",
 			"padbutton1":						"6버튼 패드 사용"
 		},

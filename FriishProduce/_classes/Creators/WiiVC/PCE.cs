@@ -69,15 +69,14 @@ namespace FriishProduce.Injectors
                     "/cr rom_comp rom rom_new"
                 );
 
-                if (!File.Exists(Paths.WorkingFolder + "rom_new")) throw new Exception(Program.Lang.Msg(2, true));
-
-                var LZ77_ROM = File.ReadAllBytes(Paths.WorkingFolder + "rom_new");
+                if (!File.Exists(Paths.WorkingFolder + "rom_new"))
+                    throw new Exception(Program.Lang.Msg(2, true));
+                else
+                    MainContent.ReplaceFile(MainContent.GetNodeIndex(rom), File.ReadAllBytes(Paths.WorkingFolder + "rom_new"));
 
                 if (File.Exists(Paths.WorkingFolder + "rom_new")) File.Delete(Paths.WorkingFolder + "rom_new");
                 if (File.Exists(Paths.WorkingFolder + "rom")) File.Delete(Paths.WorkingFolder + "rom");
                 if (File.Exists(Paths.WorkingFolder + "rom_comp")) File.Delete(Paths.WorkingFolder + "rom_comp");
-
-                MainContent.ReplaceFile(MainContent.GetNodeIndex(rom), LZ77_ROM);
             }
 
             // Normal
@@ -154,10 +153,13 @@ namespace FriishProduce.Injectors
                     ConfigFile.Add($"{pair.Key.ToUpper()}={(pair.Value.ToLower() == "true" ? "1" : pair.Value.ToLower() == "false" ? "0" : pair.Value)}");
                 }
 
+                // Set PAD5 (5th controller) to true if base is Bomberman '93
+                // ****************
+                if (name.ToUpper().Contains("N43406YP"))
+                    Settings["PAD5"] = "1";
+
                 foreach (string line in ConfigFile.ToArray())
-                {
                     t.WriteLine(line);
-                }
 
                 t.Flush();
 
@@ -200,9 +202,9 @@ namespace FriishProduce.Injectors
         // POPULUS        Probably enabled by default on Populous, DO NOT TOUCH
         // CHASEHQ        Enabled by default on Chase H.Q., DO NOT TOUCH
 
-        // ------------------------------------------------
+        // -----------------------------------------------------
         // CONFIG from Bomberman'93:
-        // ------------------------------------------------
+        // -----------------------------------------------------
         /* NAME=N43406YP
            ROM=N43406YP.PCE
            BACKUPRAM=1
@@ -215,9 +217,9 @@ namespace FriishProduce.Injectors
            PAD5=1
            NOFPA=1 */
 
-        // ------------------------------------------------
+        // -----------------------------------------------------
         // CONFIG from Castlevania Rondo of Blood:
-        // ------------------------------------------------
+        // -----------------------------------------------------
         /* NAME=KMCD3005
            ROM=KMCD3005.hcd
            BACKUPRAM=1
@@ -230,5 +232,20 @@ namespace FriishProduce.Injectors
            EUROPE=1
            HIDEOVERSCAN=1
            YOFFSET=8 */
+
+        // -----------------------------------------------------
+        // CONFIG from Street Fighter 'II: Champion Edition:
+        // -----------------------------------------------------
+        /* NAME=HE93002
+           ROM=/LZ77HE93002.BIN
+           BACKUPRAM=0
+           MULTITAP=1
+           HDS=0
+           RASTER=0
+           POPULUS=0
+           SPRLINE=0
+           PAD5=0
+           NOFPA=1
+           PADBUTTON=6 */
     }
 }

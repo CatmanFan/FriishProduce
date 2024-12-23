@@ -780,8 +780,8 @@ namespace FriishProduce
                 else
                 {
                     use_online_wad.Checked = true;
-                    Base.SelectedIndex = project.BaseOnline.Index;
-                    UpdateBaseForm(project.BaseOnline.Region);
+                    try { Base.SelectedIndex = project.BaseOnline.Index; UpdateBaseForm(project.BaseOnline.Region); }
+                    catch { Base.SelectedIndex = 0; UpdateBaseForm(); }
                 }
 
                 patch = File.Exists(project.Patch) ? project.Patch : null;
@@ -1686,22 +1686,25 @@ namespace FriishProduce
             {
                 Program.MainForm.CleanTemp();
 
-                if (error == null)
+                Invoke(new MethodInvoker(delegate
                 {
-                    SystemSounds.Beep.Play();
-
-                    switch (MessageBox.Show(Program.Lang.Msg(3), null, MessageBox.Buttons.YesNo, MessageBox.Icons.Information))
+                    if (error == null)
                     {
-                        case MessageBox.Result.Yes:
-                            System.Diagnostics.Process.Start("explorer.exe", $"/select, \"{targetFile}\"");
-                            break;
-                    }
-                }
+                        SystemSounds.Beep.Play();
 
-                else
-                {
-                    MessageBox.Error(error.Message);
-                }
+                        switch (MessageBox.Show(Program.Lang.Msg(3), null, MessageBox.Buttons.YesNo, MessageBox.Icons.Information))
+                        {
+                            case MessageBox.Result.Yes:
+                                System.Diagnostics.Process.Start("explorer.exe", $"/select, \"{targetFile}\"");
+                                break;
+                        }
+                    }
+
+                    else
+                    {
+                        MessageBox.Error(error.Message);
+                    }
+                }));
 
                 IsBusy = false;
             }
@@ -1816,8 +1819,11 @@ namespace FriishProduce
             VC.Settings = contentOptions;
 
             // Set path to manual (if it exists) and load WAD
-            // *******
-            VC.UseOrigManual = manual_type.SelectedIndex == 1;
+            //// *******
+            if (InvokeRequired)
+                Invoke(new MethodInvoker(delegate{ VC.UseOrigManual = manual_type.SelectedIndex == 1; }));
+            else
+                VC.UseOrigManual = manual_type.SelectedIndex == 1;
             VC.CustomManual = (File.Exists(manual) || Directory.Exists(manual)) && !VC.UseOrigManual ? manual : null;
 
             // Actually inject everything

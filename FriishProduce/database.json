@@ -315,6 +315,14 @@
             "emu_ver": [0, 0, 0],
             "titles": ["スーパースターソルジャー", "Super Star Soldier"]
         },
+
+        {
+            "id": "00010001-50444a__",
+            "region": [0, 2, 4],
+            "emu_ver": [0, 0, 0],
+            "titles": ["ストリートファイターIIダッシュ -CHAMPION EDITION-", "Street Fighter II': Champion Edition"],
+            "wad_titles": ["Street Fighter II Dash - Champion Edition", "Street Fighter II - Champion Edition"],
+        },
     ],
 
     "neo": [

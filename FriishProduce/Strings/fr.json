@@ -276,7 +276,7 @@
 			"patch_expandedram":				"Extension de mémoire",
 			"patch_autosizerom":				"Allocation de taille de la ROM",
 			"patch_widescreen":					"Plein écran (16/9)",
-
+			
 			"romc_type":						"Méthode de compression",
 			"romc_type0":						"ROMC (type 0)",
 			"romc_type1":						"ROMC (type 1)"
@@ -288,14 +288,13 @@
 		},
 
 		"vc_pce": {
-			"hide_overscan":					"Désactiver le surbalayage",
-			"raster":							"BG raster",
+			"hide_overscan":					"Désactiver l'overscan",
+			"raster":							"Balayage écran",
 			"sprline":							"Limite de sprites",
 			"y_offset":							"Décalage Y",
+			"sgenable":							"Utiliser la fonctionnalité SuperGrafx",
 			"europe0":							"Région précisée : Japon",
-			"europe1":							"Région précisée : Occident",
-			"sgenable0":						"Fonctionnalité SuperGrafx : désactivée",
-			"sgenable1":						"Fonctionnalité SuperGrafx : activée",
+			"europe1":							"Région précisée : Europe / USA",
 			"padbutton0":						"Manette : 2 boutons",
 			"padbutton1":						"Manette : 6 boutons"
 		},

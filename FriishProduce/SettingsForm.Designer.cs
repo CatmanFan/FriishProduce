@@ -1116,11 +1116,8 @@ namespace FriishProduce
             this.CancelButton = this.b_cancel;
             resources.ApplyResources(this, "$this");
             this.ControlBox = false;
-            this.Controls.Add(this.adobe_flash);
             this.Controls.Add(this.bottomPanel2);
             this.Controls.Add(this.TreeView);
-            this.Controls.Add(this.forwarder);
-            this.Controls.Add(this.vc_nes);
             this.Controls.Add(this.vc_n64);
             this.Controls.Add(this.vc_sega);
             this.Controls.Add(this.vc_pce);
@@ -1129,6 +1126,9 @@ namespace FriishProduce
             this.Controls.Add(this.bios_files);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.adobe_flash);
+            this.Controls.Add(this.forwarder);
+            this.Controls.Add(this.vc_nes);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MaximizeBox = false;
@@ -1291,7 +1291,6 @@ namespace FriishProduce
         private ImageLabel use_online_wad_tip;
         private System.Windows.Forms.Panel adobe_flash;
         private System.Windows.Forms.GroupBox display;
-        private System.Windows.Forms.CheckBox flash_stretch_to_4_3;
         private System.Windows.Forms.Label flash_update_frame_rate_l;
         private System.Windows.Forms.NumericUpDown flash_update_frame_rate;
         private System.Windows.Forms.Label flash_quality_l;
@@ -1309,5 +1308,6 @@ namespace FriishProduce
         private System.Windows.Forms.Label flash_persistent_storage_total_l;
         private System.Windows.Forms.ComboBox flash_persistent_storage_total;
         private System.Windows.Forms.CheckBox flash_save_data_enable;
+        private System.Windows.Forms.CheckBox flash_stretch_to_4_3;
     }
 }

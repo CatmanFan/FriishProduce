@@ -274,7 +274,7 @@
 			"patch_expandedram":				"RAM extendida (8 MB)",
 			"patch_autosizerom":				"Asignación de tamaño de ROM",
 			"patch_widescreen":					"Pantalla ancha",
-
+			
 			"romc_type":						"Método de compresión de ROM",
 			"romc_type0":						"ROMC (tipo 0)",
 			"romc_type1":						"ROMC (tipo 1)"
@@ -290,10 +290,9 @@
 			"raster":							"Enable BG raster",
 			"sprline":							"Enable sprite limit",
 			"y_offset":							"Y offset",
-			"europe0":							"Región establecida en Japón",
-			"europe1":							"Región establecida en América/Europa",
-			"sgenable0":						"SuperGrafx no será utilizada",
-			"sgenable1":						"SuperGrafx será utilizada",
+			"sgenable":							"Funcionalidad SuperGrafx",
+			"europe0":							"Región de sistema actual: Japón",
+			"europe1":							"Región de sistema actual: América/Europa",
 			"padbutton0":						"Utilizando mando de 2 botones",
 			"padbutton1":						"Utilizando mando de 6 botones"
 		},

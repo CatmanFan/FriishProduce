@@ -180,6 +180,7 @@ namespace FriishProduce
             Program.Lang.String(flash_quality_list, "adobe_flash");
             Program.Lang.String(flash_strap_reminder, "adobe_flash");
             Program.Lang.String(flash_strap_reminder_list, "adobe_flash");
+            Program.Lang.String(flash_stretch_to_4_3, "adobe_flash");
             #endregion
 
             // -----------------------------
@@ -253,6 +254,7 @@ namespace FriishProduce
             flash_mouse.Checked = ADOBEFLASH.Default.mouse == "on";
             flash_qwerty_keyboard.Checked = ADOBEFLASH.Default.qwerty_keyboard == "on";
             flash_strap_reminder_list.SelectedIndex = ADOBEFLASH.Default.strap_reminder switch { "none" => 0, "normal" => 1, _ => 2 };
+            flash_stretch_to_4_3.Checked = ADOBEFLASH.Default.stretch_to_4_3 == "yes";
 
             // flash_vff_sync_on_write.Enabled = flash_save_data_enable.Checked;
             flash_vff_cache_size_l.Enabled = flash_vff_cache_size.Enabled = flash_save_data_enable.Checked;
@@ -381,6 +383,7 @@ namespace FriishProduce
             ADOBEFLASH.Default.qwerty_keyboard = flash_qwerty_keyboard.Checked ? "on" : "off";
             ADOBEFLASH.Default.strap_reminder = flash_strap_reminder_list.SelectedIndex switch { 0 => "none", 1 => "normal", _ => "no_ex" };
             ADOBEFLASH.Default.hbm_no_save = ADOBEFLASH.Default.shared_object_capability == "on" ? "no" : "yes";
+            ADOBEFLASH.Default.stretch_to_4_3 = flash_stretch_to_4_3.Checked ? "yes" : "no";
 
             switch (vc_neo_bios_list.SelectedIndex)
             {

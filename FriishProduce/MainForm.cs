@@ -394,22 +394,24 @@ namespace FriishProduce
         {
             if (BrowseProject.ShowDialog() == DialogResult.OK)
             {
-                var project = new Project();
-
-                try
+                foreach (var projectFile in BrowseProject.FileNames)
                 {
-                    using Stream stream = File.Open(BrowseProject.FileName, FileMode.Open);
-                    var binaryFormatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-                    project = (Project)binaryFormatter.Deserialize(stream);
-                }
+                    var project = new Project();
 
-                catch
-                {
-                    MessageBox.Show("Not a valid project file!", MessageBox.Buttons.Ok, MessageBox.Icons.Error);
-                    return;
-                }
+                    try
+                    {
+                        using Stream stream = File.Open(projectFile, FileMode.Open);
+                        var binaryFormatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                        project = (Project)binaryFormatter.Deserialize(stream);
 
-                addTab(project.Platform, project);
+                        addTab(project.Platform, project);
+                    }
+
+                    catch
+                    {
+                        MessageBox.Show("Not a valid project file!", MessageBox.Buttons.Ok, MessageBox.Icons.Error);
+                    }
+                }
             }
         }
 
