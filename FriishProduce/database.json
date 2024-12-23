@@ -101,6 +101,12 @@
             "wad_titles": ["Punch-Out!!"]
         },
         {
+            "id": "00010001-464651__",
+            "region": [1, 5],
+            "emu_ver": [1, 1],
+            "titles": ["Shadow of the Ninja"]
+        },
+        {
             "id": "00010001-464357__",
             "region": [0, 1, 3, 6],
             "emu_ver": [0, 0, 0, 0],
