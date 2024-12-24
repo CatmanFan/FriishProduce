@@ -25,7 +25,7 @@
         // NES & SNES:
             // "0": Original
             // "1": LZ77 ROM
-            // "2": LZH8 ROM (support not added yet)
+            // "2": LZH8 ROM
         // N64:
             // "0": Rev 1
             // "1": Rev 1 (alternative savedata format)
@@ -67,12 +67,6 @@
 
     "nes": [
         {
-            "id": "00010001-464357__",
-            "region": [0, 1, 3, 6],
-            "emu_ver": [0, 0, 0, 0],
-            "titles": ["スーパーマリオブラザーズ３", "Super Mario Bros. 3", "Super Mario Bros. 3", "슈퍼 마리오브라더스 3"]
-        },
-        {
             "id": "00010001-464138__",
             "region": [0, 1, 3, 7],
             "emu_ver": [0, 0, 0, 0],
@@ -80,11 +74,44 @@
             "wad_titles": ["Hoshi no Kirby - Yume no Izumi no Monogatari", "Kirby's Adventure"]
         },
         {
-            "id": "00010001-46424e__",
-            "region": [5],
+            "id": "00010001-464659__",
+            "region": [0, 1, 3],
+            "emu_ver": [1, 1, 1],
+            "titles": ["ロックマン 5 -ブルースの罠!?-", "Mega Man 5"],
+            "wad_titles": ["Rockman 5 - Blues no Wana!", "Mega Man 5"]
+        },
+        {
+            "id": "00010001-464337__",
+            "region": [1],
             "emu_ver": [0],
-            "titles": ["Ninja Gaiden"]
-        }
+            "titles": ["NES Play Action Football"]
+        },
+        {
+            "id": "00010001-46424e__",
+            "region": [0, 1, 5],
+            "emu_ver": [0, 0, 0],
+            "titles": ["忍者龍剣伝", "Ninja Gaiden"],
+            "wad_titles": ["Ninja Ryukenden", "Ninja Gaiden"]
+        },
+        {
+            "id": "00010001-464249__",
+            "region": [0, 1, 3],
+            "emu_ver": [0, 0, 0],
+            "titles": ["パンチアウト!!", "Punch-Out!! Featuring Mr. Dream"],
+            "wad_titles": ["Punch-Out!!"]
+        },
+        {
+            "id": "00010001-464651__",
+            "region": [1, 5],
+            "emu_ver": [1, 1],
+            "titles": ["Shadow of the Ninja"]
+        },
+        {
+            "id": "00010001-464357__",
+            "region": [0, 1, 3, 6],
+            "emu_ver": [0, 0, 0, 0],
+            "titles": ["スーパーマリオブラザーズ３", "Super Mario Bros. 3", "Super Mario Bros. 3", "슈퍼 마리오브라더스 3"]
+        },
     ],
 
     "snes": [
@@ -94,6 +121,13 @@
             "emu_ver": [0, 0, 0, 0],
             "titles": ["スーパードンキーコング２", "Donkey Kong Country 2", "Donkey Kong Country 2", "동키콩 컨트리 2"],
             "wad_titles": ["Super Donkey Kong 2 - Dixie & Diddy", "Donkey Kong Country 2 - Diddy's Kong Quest"]
+        },
+        {
+            "id": "00010001-4a4343__",
+            "region": [0, 1, 3],
+            "emu_ver": [2, 2, 2],
+            "titles": ["星のカービィ スーパーデラックス", "Kirby Super Star", "Kirby's Fun Pak"],
+            "wad_titles": ["Hoshi no Kirby Super Deluxe", "Kirby Super Star", "Kirby's Fun Pak"]
         },
         {
             "id": "00010001-4a4156__",
@@ -115,9 +149,10 @@
         },
         {
             "id": "00010001-4a4142__",
-            "region": [4],
-            "emu_ver": [0],
-            "titles": ["Mario's Super Picross"]
+            "region": [0, 4],
+            "emu_ver": [0, 0],
+            "titles": ["マリオのスーパーピクロス", "Mario's Super Picross"],
+            "wad_titles": ["Mario no Super Picross", "Mario's Super Picross"]
         },
         {
             "id": "00010001-4a4541__",
@@ -170,7 +205,7 @@
             "region": [0, 1, 3],
             "emu_ver": [1, 1, 1],
             "titles": ["ゼルダの伝説 時のオカリナ", "The Legend of Zelda: Ocarina of Time"],
-			"wad_titles": ["Zelda no Densetsu - Toki no Okarina", "Legend of Zelda, The - Ocarina of Time"]
+            "wad_titles": ["Zelda no Densetsu - Toki no Okarina", "Legend of Zelda, The - Ocarina of Time"]
         },
 
         {
@@ -230,6 +265,24 @@
     ],
 
     "sms": [
+//        FriishProduce currently can't detect the rom file in this base WAD :P
+//        {
+//            "id": "00010001-4c414e__",
+//            "region": [0, 1, 3],
+//            "emu_ver": [2, 2, 2],
+//            "titles": ["アレックスキッド ザ・ロストスターズ", "Alex Kidd: The Lost Stars"],
+//            "wad_titles": ["Alex Kidd - The Lost Stars"],
+//        },
+
+//        FriishProduce currently can't detect the rom file in this base WAD :P
+//        {
+//            "id": "00010001-4c414c__",
+//            "region": [0, 1, 3],
+//            "emu_ver": [2, 2, 2],
+//            "titles": ["FANTASY ZONEⅡ オパオパの涙", "Fantasy Zone II: The Tears of Opa-Opa"],
+//            "wad_titles": ["Fantasy Zone II - Opa-Opa no Namida", "Fantasy Zone II - The Tears of Opa-Opa"],
+//        },
+
         {
             "id": "00010001-4c4147__",
             "region": [0, 1, 3],
@@ -237,13 +290,38 @@
             "titles": ["ソニック・ザ・ヘッジホッグ", "Sonic the Hedgehog"],
             "wad_titles": ["Sonic The Hedgehog"],
         },
+
+        {
+            "id": "00010001-4c414a__",
+            "region": [0, 1, 3],
+            "emu_ver": [2, 2, 2],
+            "titles": ["ソニック・ザ・ヘッジホッグ２", "Sonic the Hedgehog 2"],
+            "wad_titles": ["Sonic The Hedgehog 2"],
+        },
         
         {
             "id": "00010001-4c4144__",
             "region": [0, 1, 3],
             "emu_ver": [2, 3, 3],
             "titles": ["ファンタシースター", "Phantasy Star"]
+        },
+
+        {
+            "id": "00010001-4c414f__",
+            "region": [0, 1, 3],
+            "emu_ver": [3, 3, 3],
+            "titles": ["R-TYPE"],
+            "wad_titles": ["R-Type"],
         }
+
+//        FriishProduce currently can't detect the rom file in this base WAD :P
+//        {
+//            "id": "00010001-4c414b__",
+//            "region": [0, 1, 3],
+//            "emu_ver": [2, 2, 2],
+//            "titles": ["アレックスキッド ザ・ロストスターズ", "Wonder Boy in Monster Land"],
+//            "wad_titles": ["Super Wonder Boy - Monster World", "Wonder Boy in Monster Land"],
+//        }
     ],
 
     "smd": [
@@ -310,18 +388,25 @@
         },
 
         {
-            "id": "00010001-504145__",
+            "id": "00010001-504245__",
             "region": [0, 1, 3],
             "emu_ver": [0, 0, 0],
-            "titles": ["スーパースターソルジャー", "Super Star Soldier"]
+            "titles": ["モトローダー", "Moto Roader"]
         },
 
         {
             "id": "00010001-50444a__",
             "region": [0, 2, 4],
-            "emu_ver": [0, 0, 0],
+            "emu_ver": [1, 1, 1],
             "titles": ["ストリートファイターIIダッシュ -CHAMPION EDITION-", "Street Fighter II': Champion Edition"],
             "wad_titles": ["Street Fighter II Dash - Champion Edition", "Street Fighter II - Champion Edition"],
+        },
+
+        {
+            "id": "00010001-504145__",
+            "region": [0, 1, 3],
+            "emu_ver": [0, 0, 0],
+            "titles": ["スーパースターソルジャー", "Super Star Soldier"]
         },
     ],
 
@@ -362,16 +447,40 @@
             "id": "00010001-584147__",
             "region": [0],
             "emu_ver": [0],
-            "titles": ["ロードファイター  Ｒｏａｄ　Ｆｉｇｈｔｅｒ"],
+            "titles": ["ロードファイター Road Fighter"],
             "wad_titles": ["Road Fighter"]
+        },
+		
+        {
+            "id": "00010001-584145__",
+            "region": [0],
+            "emu_ver": [0],
+            "titles": ["スペースマンボウ Space Manbow"],
+            "wad_titles": ["Space Manbow"]
+        },
+		
+        {
+            "id": "00010001-584146__",
+            "region": [0],
+            "emu_ver": [0],
+            "titles": ["メタルギア Metal Gear"],
+            "wad_titles": ["Metal Gear"]
         },
 
         {
             "id": "00010001-584150__",
             "region": [0],
             "emu_ver": [0],
-            "titles": ["メタルギア２ ソリッドスネーク"],
+            "titles": ["メタルギア２ ソリッドスネーク Metal Gear 2: Solid Snake"],
             "wad_titles": ["Metal Gear 2 - Solid Snake"]
+        },
+		
+        {
+            "id": "00010001-584144__",
+            "region": [0],
+            "emu_ver": [0],
+            "titles": ["イーガー皇帝の逆襲　イー・アル・カンフー２ Yie-Gah Koutei no Gyakushuu: Yie Ar Kung-Fu 2"],
+            "wad_titles": ["Yie-Gah Koutei no Gyakushuu - Yie Ar Kung-Fu 2"]
         },
     ],
 
