@@ -87,6 +87,105 @@ namespace FriishProduce.Injectors
 
         #endregion
 
+        #region -- Default settings for BBC iPlayer --
+        // keymap.ini
+        // -----------------------------------------------------
+        /* KEY_BUTTON_LEFT  HID_4
+           KEY_BUTTON_RIGHT HID_6
+           KEY_BUTTON_DOWN  HID_2
+           KEY_BUTTON_UP    HID_8
+           */
+
+        // banner.ini (Europe)
+        // -----------------------------------------------------
+        /* # banner setting file
+           # 
+           # ƒ^ƒCƒgƒ‹•¶Žš—ñ‚ÆƒRƒƒ“ƒg•¶Žš—ñ‚Í UTF-8 ƒGƒ“ƒR[ƒh‚³‚ê‚½•¶Žš—ñ‚ð URL ƒGƒ“ƒR[ƒh‚µ‚Ä
+           # ‹Lq‚·‚éB
+           #
+           not_copy		off
+           anim_type		loop			# loop / bounce
+           title_text		BBC%20iPlayer	# UTF-8/URL Encoded
+           comment_text		   %20             # UTF-8/URL Encoded
+           banner_tpl		banner/EU/banner.tpl
+           icon_tpl		banner/EU/icons.tpl
+           icon_count		1			# texture_index: 0 -> 0
+           icon_speed		0, normal	# texture_index, (slow|normal|fast)
+
+           */
+
+        // config.common.pcf
+        // -----------------------------------------------------
+        /* # s“ª‚ÌƒRƒƒ“ƒg‚â‰üs‚Í–³Ž‹‚³‚ê‚Ü‚·
+
+           static_heap_size				8192				# 8192[KB] -> 8[MB]
+           dynamic_heap_size				16384				# 16384[KB] -> 16[MB]
+
+           mp4_stream_buffer_size			512					# 512[KB] -> 0.5[MB]
+           #mp4_texture_buffer_count		32					# not currently implemented
+
+           stream_cache_max_file_size		512					# 512[KB] -> 0.5[MB]
+           stream_cache_size				2048				# 2048[KB] -> 2.0[MB]
+
+           # ƒRƒ“ƒeƒ“ƒc‚ÌƒtƒŒ[ƒ€ƒŒ[ƒg‚ª’x‚·‚¬‚Äƒf[ƒ^‚Ìƒ[ƒh‚È‚Ç‚ÉŽžŠÔ‚ªŠ|‚©‚Á‚½‚è
+           # ƒTƒEƒ“ƒhÄ¶‚ÉƒmƒCƒY‚ªæ‚é‚È‚Ç‚Ìê‡‚É”CˆÓ‚ÌXVƒŒ[ƒg‚ðŽw’è‚Å‚«‚Ü‚·B
+           update_frame_rate             25                  # not TV-framerate(NTSC/PAL)
+
+           mouse							on
+           qwerty_keyboard					on
+           navigation_model				4way				# 2way / 4way / 4waywrap
+           quality							high				# low / medium / high
+           looping							on
+
+           text_encoding					utf-16				# should be utf-16
+
+           midi							off
+           # dls_file						dls/GM16.DLS
+
+           key_input						on
+
+           cursor_archive					cursor.arc
+           cursor_layout					cursor.brlyt
+
+           dialog_cursor_archive			cursor.arc
+           dialog_cursor_layout			cursor.brlyt
+
+           shared_object_capability		on
+           num_vff_drives					1
+           vff_cache_size					96					# 96[KB]
+           vff_sync_on_write               off
+
+           persistent_storage_root_drive	X
+           persistent_storage_vff_file		shrdobjs.vff		# 8.3 format
+           persistent_storage_total		96					# 96[KB]
+           persistent_storage_per_movie	64					# 64[KB]
+
+           supported_devices				core
+
+           hbm_no_save						true
+
+           static_module					static.sel
+           plugin_modules					plugin_wiinotification.rso plugin_wiiremote.rso plugin_wiisystem.rso
+
+           trace_filter					none
+           texture_filter					linear
+
+           #can pass variables to flash
+           #flash_vars					varName = value
+           #flash_vars					CA_Domain = 208.186.152.236
+
+           strap_reminder			none		#normal  #no_ex  #none
+
+           ####### iPlayer ########
+
+           content_domain					file:///trusted/
+           #content_domain					https://wii-test.nintendo.iplayer.bbc.co.uk/wii-test/tvp/
+           #content_domain					https://wii.nintendo.iplayer.bbc.co.uk/testwiiiplayer/tvp/livetest/
+           content_url						file:///trusted/startup.swf
+
+           certificate_files				GTEGI.cer */
+        #endregion
+
         #region -- Default settings for YouTube --
         // banner.ini (universal)
         // -----------------------------------------------------
@@ -101,7 +200,7 @@ namespace FriishProduce.Injectors
            icon_count		1			# texture_index: 0 -> 0
            icon_speed		0, normal	# texture_index, (slow|normal|fast)
 
- */
+           */
 
         // common.pcf
         // -----------------------------------------------------
@@ -224,7 +323,7 @@ namespace FriishProduce.Injectors
            final_flash_vars	dummy=1
 
 
-          */
+           */
         #endregion
 
         /*  Wii buttons:
@@ -297,10 +396,207 @@ namespace FriishProduce.Injectors
             MainContent = U8.Load(w.Contents[2]);
             MainContent.Extract(Paths.FlashContents);
 
-            if (w.UpperTitleID.StartsWith("HCX"))
-                inject_YouTube(w, path, lines, Img);
-            else
-                inject_FlashPlaceholder(w, path, lines, Img);
+            // Actually replacing the SWF
+            // ********
+            string target = Path.GetFileName(path).Replace(" ", "_");
+            File.Copy(path, Paths.FlashContents + "content\\menu.swf", true);
+
+            // Taking the SWF soundfont
+            // ********
+            if (File.Exists(Settings["midi"]))
+            {
+                if (!Directory.Exists(Paths.FlashContents + "dls\\"))
+                    Directory.CreateDirectory(Paths.FlashContents + "dls\\");
+
+                File.Copy(Settings["midi"], Paths.FlashContents + "dls\\GM16.DLS");
+            }
+
+            // Taking all other files
+            // ********
+            if (Multifile)
+                foreach (string etc in Directory.EnumerateFiles(Path.GetDirectoryName(path), "*.*", SearchOption.TopDirectoryOnly))
+                    if (etc != path)
+                        File.Copy(etc, Paths.FlashContents + "content\\" + Path.GetFileName(etc), true);
+
+            foreach (string file in Directory.EnumerateFiles(Paths.FlashContents, "*.*", SearchOption.AllDirectories))
+            {
+                string item = file.Replace(Paths.FlashContents, null).ToLower();
+
+                // FOR FORCING 4:3
+                // ********
+                if (item.Contains(".wide.pcf") && Settings["stretch_to_4_3"] == "yes")
+                    File.Copy(file.Replace(".wide.pcf", ".pcf"), file, true);
+
+                else if (item.EndsWith("keymap.ini") && Keymap != null)
+                    File.WriteAllBytes(file, Encoding.UTF8.GetBytes(string.Join("\r\n", generateKeymap()) + "\r\n"));
+
+                else if (item.Contains("config.region.pcf"))
+                    File.Delete(file);
+
+                /* else if (item.Contains("config.") && item.EndsWith(".pcf") && File.ReadAllText(file).Contains("content_url"))
+                {
+                    string[] config = File.ReadAllLines(file);
+
+                    List<string> converted = new();
+                    foreach (var line in config)
+                    {
+                        bool blocked = false;
+
+                        if (line.StartsWith("content_")) blocked = true;
+                        if (line.StartsWith("background_")) blocked = true;
+
+                        if (!blocked) converted.Add(line);
+                    };
+
+                    if (string.IsNullOrEmpty(converted[7])) converted.RemoveAt(7);
+                    if (string.IsNullOrEmpty(converted[8])) converted.RemoveAt(8);
+
+                    File.WriteAllLines(file, config);
+                } */
+
+                else if (item.EndsWith("config.common.pcf"))
+                {
+                    string[] txt = new string[]
+                    {
+                        "# Comments (text preceded by #) and line breaks will be ignored",
+                        "######################################################################",
+                        "",
+                        "static_heap_size                8192                # 8192[KB] -> 8[MB]",
+                        "dynamic_heap_size               16384               # 16384[KB] -> 16[MB]",
+                        "",
+                     // "stream_cache_max_file_size      512                 # 512[KB] -> 0.5[MB]",
+                     // "stream_cache_size               2048                # 2048[KB] -> 2.0[MB]",
+                        "",
+                        "mouse                           " + Settings["mouse"],
+                        "qwerty_keyboard                 " + Settings["qwerty_keyboard"] + "                  # hardware keyboard",
+                     // "qwerty_events                   " + Settings["qwerty_keyboard"] + "                  # hardware keyboard sends flash events",
+                     // "use_keymap                      " + Settings["qwerty_keyboard"] + "                  # determines if the region's keymap.ini is used",
+                        "navigation_model                " + "4way                # 2way / 4way / 4waywrap",
+                        "quality                         " + Settings["quality"] + "              # low / medium / high",
+                        "looping                         " + "on",
+                        "",
+                        "text_encoding                   utf-16              # should be utf-16",
+                        "",
+                        "midi                            " + (File.Exists(Settings["midi"]) ? "on" : "off"),
+                        (File.Exists(Settings["midi"]) ? null : "# ") +"dls_file                        dls/GM16.DLS",
+                        "",
+                        "key_input                       on                  # software keyboard -- requires hardware keyboard and mouse",
+                        "",
+                        "cursor_archive                  cursor.arc",
+                        "cursor_layout                   cursor.brlyt",
+                        "",
+                        "dialog_cursor_archive           cursor.arc",
+                        "dialog_cursor_layout            cursor.brlyt",
+                        "",
+                        "########################### RegionConfig #############################",
+                        "",
+                        "banner_file                     banner/banner.ini",
+                    /*  "",
+                        "# set to match the loading screen's background color",
+                        "background_color                43 43 43 255        # RGBA -- VODF/SWF BG Color.",
+                        "",
+                        "# country_code                  usa / eur / jpn # If this is not configured, the market specified during the build will be set",
+                        "# native_code_page              latin1 / japanese_shiftjis",
+                        "keyboard_country_code           united_kingdom",
+                        "keyboard_keymap_file            config/EU/keymap.ini",
+                        "",
+                        "device_text                     on",
+                        "brfna_file                      10, wbf1.brfna",
+                        "brsar_fil                       sound/FlashPlayerSe.brsar   # sound data",
+                        "",
+                        "embedded_vector_font            off",
+                        "# embedded_vector_font_files    fonts/font1.swf fonts/font2.swf fonts/font3.swf",
+                        "# pre_installed_as_class_files  library/classes.swf",
+                        "", */
+                        "########################### SAVE STORAGE #############################",
+                        "",
+                        "shared_object_capability        " + Settings["shared_object_capability"],
+                        "num_vff_drives                  1",
+                        "vff_cache_size                  " + Settings["vff_cache_size"],
+                        "vff_sync_on_write               " + Settings["vff_sync_on_write"],
+                        "",
+                        "persistent_storage_root_drive   X",
+                        "persistent_storage_vff_file     shrdobjs.vff        # 8.3 format",
+                        "persistent_storage_total        " + Settings["persistent_storage_total"],
+                        "persistent_storage_per_movie    " + Settings["persistent_storage_per_movie"],
+                        "",
+                        "########################## Wii SoftwareUI ############################",
+                        "",
+                        "supported_devices               core, freestyle, classic",
+                        "",
+                        "hbm_no_save                     " + Settings["hbm_no_save"],
+                        "strap_reminder                  " + Settings["strap_reminder"],
+                        "",
+                        "update_frame_rate               " + Settings["update_frame_rate"] + "                   # 0 sets it to framerate set in content",
+                        "",
+                    /*  "trace_filter                    none",
+                        "texture_filter                  linear",
+                        "",
+                        "static_module                   static.sel",
+                        "",
+                        "plugin_modules                  plugin_wiinotification.rso",
+                        "plugin_modules                  plugin_wiiremote.rso",
+                        "plugin_modules                  plugin_wiisystem.rso",
+                        "plugin_modules                  plugin_wiisound.rso",
+                        "plugin_modules                  plugin_wiinetwork.rso",
+                        "# plugin_modules                plugin_wiiconnect24.rso",
+                        "# plugin_modules                plugin_wiiperformance.rso",
+                        "# plugin_modules                plugin_wiikeyboard.rso",
+                        "# plugin_modules                plugin_wiisugarcalculations.rso",
+                        "# plugin_modules                plugin_wiiuntrustedrequest.rso",
+                        "# plugin_modules                plugin_wiimiisupport.rso",
+                        "", */
+                     // "################### ContentStream (DO NOT MODIFY) ####################",
+                     // "",
+                     // "content_url                     file:///content/" + target,
+                     // "content_mem1                    no",
+                     // "content_buffer_mode             copy",
+                        // ^^^ The above are stored in each region's config.region.pcf, so they are not included here.
+                            // The below option is required to be set in order for additional files, such as XML configs, to load properly.
+                     // "content_domain                  file:///content/",
+                     // "flash_vars                      dummy=1"
+                    };
+
+                    File.WriteAllBytes(file, Encoding.UTF8.GetBytes(string.Join("\r\n", txt) + "\r\n"));
+                }
+            }
+
+            // Savebanner .TPL & config
+            // ********
+            {
+                Directory.Delete(Paths.FlashContents + "banner\\", true);
+                Directory.CreateDirectory(Paths.FlashContents + "banner\\");
+
+                int textures = 0;
+                using (TPL banner = Img.CreateSaveTPL(1))
+                using (TPL icons = Img.CreateSaveTPL(2))
+                {
+                    banner.Save(Paths.FlashContents + "banner\\banner.tpl");
+                    icons.Save(Paths.FlashContents + "banner\\icons.tpl");
+                    textures = icons.NumOfTextures;
+                }
+
+                for (int i = 0; i < lines.Length; i++)
+                    lines[i] = Encoding.UTF8.GetString(Encoding.Convert(Encoding.Unicode, Encoding.UTF8, Encoding.Unicode.GetBytes(lines[i])));
+
+                var txt = new List<string>()
+                {
+                    "not_copy        off",
+                    "anim_type       bounce",
+                    $"title_text      {System.Uri.EscapeUriString(lines[0])}",
+                    $"comment_text    {(lines.Length > 1 && !string.IsNullOrEmpty(lines[1]) ? System.Uri.EscapeUriString(lines[1]) : "%20")}",
+                    "banner_tpl      banner/banner.tpl",
+                    "icon_tpl        banner/icons.tpl",
+                    "icon_count      " + textures,
+                };
+
+                for (int i = 0; i < textures; i++)
+                {
+                    txt.Add($"icon_speed      {i}, slow");
+                }
+
+                File.WriteAllBytes(Paths.FlashContents + "banner\\banner.ini", Encoding.UTF8.GetBytes(string.Join("\r\n", txt) + "\r\n"));
+            }
 
             MainContent.CreateFromDirectory(Paths.FlashContents);
             if (Directory.Exists(Paths.FlashContents)) Directory.Delete(Paths.FlashContents, true);
@@ -358,123 +654,6 @@ namespace FriishProduce.Injectors
             }
 
             return txt.ToArray();
-        }
-
-        private static void inject_YouTube(WAD w, string path, string[] lines, ImageHelper Img)
-        {
-            // Actually replacing the SWF
-            // ********
-            Directory.Delete(Paths.FlashContents + "trusted\\", true);
-            Directory.CreateDirectory(Paths.FlashContents + "trusted\\");
-            File.Copy(path, Paths.FlashContents + "trusted\\" + Path.GetFileName(path), true);
-
-            // Taking all other files
-            // ********
-            if (Multifile)
-                foreach (string etc in Directory.EnumerateFiles(Path.GetDirectoryName(path), "*.*", SearchOption.TopDirectoryOnly))
-                    if (etc != path)
-                        File.Copy(etc, Paths.FlashContents + "trusted\\" + Path.GetFileName(etc), true);
-
-            // FOR FORCING 4:3
-            // ********
-            foreach (string file in Directory.EnumerateFiles(Paths.FlashContents + "config\\tv\\", "*.*", SearchOption.AllDirectories))
-                if (Path.GetFileName(file).ToLower().Contains(".wide.pcf") && Settings["stretch_to_4_3"] == "yes")
-                    File.Copy(file.Replace(".wide.pcf", ".pcf"), file, true);
-
-            // Taking the SWF soundfont
-            // ********
-            if (File.Exists(Settings["midi"]))
-            {
-                if (!Directory.Exists(Paths.FlashContents + "dls\\"))
-                    Directory.CreateDirectory(Paths.FlashContents + "dls\\");
-
-                File.Copy(Settings["midi"], Paths.FlashContents + "dls\\GM16.DLS");
-            }
-
-            // Keymap
-            // ********
-            if (Keymap != null)
-                File.WriteAllBytes(Paths.FlashContents + "config\\keymap.ini", Encoding.UTF8.GetBytes(string.Join("\n", generateKeymap()) + "\n"));
-
-            // General config
-            // ********
-            {
-                var t = new List<string>();
-                string[] orig = File.ReadAllLines(Paths.FlashContents + "config\\common.pcf");
-
-                for (int i = 0; i < orig.Length; i++)
-                {
-                    foreach (var pair in Settings)
-                    {
-                        // if (pair.Key == "hbm_no_save" && orig[i].Contains("hbm_no_save")) orig[i] = orig[i].Replace("true", (Settings["hbm_no_save"] == "yes").ToString().ToLower());
-
-                        if (orig[i].Contains("background_color"))              orig[i] = orig[i].Replace("43 43 43 255", "0 0 0 255");
-                        /* else if (orig[i].Contains("use_keymap") && Keymap != null)  orig[i] = orig[i].Replace("	off", "	on");
-                        else if (orig[i].Contains("wii_shim.swf"))                  orig[i] = orig[i].Replace("wii_shim.swf", Path.GetFileName(path));
-                        else if (orig[i].StartsWith("debug_") && i > 90)            orig[i] = orig[i].Replace("debug_", "# debug_");
-
-                        else if (orig[i].Contains(pair.Key))
-                        {
-                            var list = new List<string> { "on", "off", "high", "30", "none" };
-                            if (Settings["shared_object_capability"] == "on") list.AddRange(new string[] { "96", "64" });
-
-                            foreach (var setting in list)
-                                orig[i] = orig[i].Replace("	" + setting, "	ReplaceME").Replace("ReplaceME", pair.Value);
-                        } */
-                    }
-
-                    if (i == 112)
-                        t.Add("content_url 	file:///trusted/" + Path.GetFileName(path));
-
-                    t.Add(string.IsNullOrEmpty(orig[i]) ? null : orig[i]);
-
-                    if (i == 35 && Keymap != null)
-                        t.Add("keyboard_keymap_file					config/keymap.ini");
-                }
-
-                File.WriteAllLines(Paths.FlashContents + "config\\common.pcf", t);
-            }
-
-            // Savebanner .TPL & config
-            // ********
-            if (Settings["shared_object_capability"] == "on")
-            {
-                TPL banner = Img.CreateSaveTPL(1);
-                TPL icons = Img.CreateSaveTPL(2);
-                int textures = icons.NumOfTextures;
-
-                for (int i = 0; i < lines.Length; i++)
-                {
-                    var bytes = Encoding.Unicode.GetBytes(lines[i]);
-                    lines[i] = Encoding.UTF8.GetString(Encoding.Convert(Encoding.Unicode, Encoding.UTF8, bytes));
-                }
-
-                File.WriteAllBytes(Paths.FlashContents + "banner\\banner.tpl", banner.ToByteArray());
-                File.WriteAllBytes(Paths.FlashContents + "banner\\icons.tpl", icons.ToByteArray());
-
-                var txt = new List<string>()
-                    {
-                        "# generic banner setting file",
-                        "#",
-                        "not_copy		off",
-                        "anim_type		bounce			# loop / bounce",
-                        $"title_text		{System.Uri.EscapeUriString(lines[0])}",
-                        $"comment_text		   {(lines.Length > 1 && !string.IsNullOrEmpty(lines[1]) ? System.Uri.EscapeUriString(lines[1]) : "%20")}",
-                        "banner_tpl		banner/banner.tpl",
-                        "icon_tpl		banner/icons.tpl",
-                        $"icon_count		{textures}			# texture_index: 0 -> 0",
-                    };
-
-                for (int i = 0; i < textures; i++)
-                {
-                    txt.Add($"icon_speed		{i}, slow");
-                }
-
-                File.WriteAllBytes(Paths.FlashContents + "banner\\banner.ini", new UTF8Encoding(false).GetBytes(string.Join("\n", txt) + "\n\n"));
-
-                banner.Dispose();
-                icons.Dispose();
-            }
         }
     }
 }
