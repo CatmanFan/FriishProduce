@@ -396,20 +396,29 @@ namespace FriishProduce.Injectors
             MainContent = U8.Load(w.Contents[2]);
             MainContent.Extract(Paths.FlashContents);
 
-            int region = 0;
+            // Actually replacing the SWF
+            // ********
+            File.Copy(path, Paths.FlashContents + "content\\menu.swf", true);
+            if (Multifile)
+                foreach (string etc in Directory.EnumerateFiles(Path.GetDirectoryName(path), "*.*", SearchOption.TopDirectoryOnly))
+                    if (etc != path)
+                        File.Copy(etc, Paths.FlashContents + "content\\" + Path.GetFileName(etc), true);
+
+            // Copying the SWF soundfont
+            // ********
+            if (File.Exists(Settings["midi"]))
+            {
+                if (!Directory.Exists(Paths.FlashContents + "dls\\"))
+                    Directory.CreateDirectory(Paths.FlashContents + "dls\\");
+
+                File.Copy(Settings["midi"], Paths.FlashContents + "dls\\GM16.DLS");
+            }
 
             foreach (string file in Directory.EnumerateFiles(Paths.FlashContents, "*.*", SearchOption.AllDirectories))
             {
                 string item = file.Replace(Paths.FlashContents, null).ToLower();
 
-                // Actually replacing the SWF
-                // The link to the SWF is contained in config/[region]/[language]/config.[language-REGION].pcf
-                // ********
-                if (item.Contains("menu.swf"))
-                    File.Copy(path, file, true);
-
-
-                else if (item.EndsWith("keymap.ini") && Keymap?.Count > 0)
+                if (item.EndsWith("keymap.ini") && Keymap?.Count > 0)
                 {
                     List<string> txt = new();
 
@@ -466,6 +475,9 @@ namespace FriishProduce.Injectors
                         "static_heap_size                8192                # 8192[KB] -> 8[MB]",
                         "dynamic_heap_size               16384               # 16384[KB] -> 16[MB]",
 
+                      // "stream_cache_max_file_size      512                 # 512[KB] -> 0.5[MB]",
+                      // "stream_cache_size               2048                # 2048[KB] -> 2.0[MB]",
+
                         $"update_frame_rate             {Settings["update_frame_rate"]}                  # not TV-framerate(NTSC/PAL)",
 
                         $"mouse                           {Settings["mouse"]}",
@@ -486,11 +498,7 @@ namespace FriishProduce.Injectors
                         "dialog_cursor_archive           cursor.arc",
                         "dialog_cursor_layout            cursor.brlyt",
 
-                        // ########################### RegionConfig #############################
-
                         $"shared_object_capability        {Settings["shared_object_capability"]}",
-
-                        // ########################### SAVE STORAGE #############################
                         "num_vff_drives                  1",
                         $"vff_cache_size                  {Settings["vff_cache_size"]}",
                         $"vff_sync_on_write               {Settings["vff_sync_on_write"]}",
@@ -500,43 +508,38 @@ namespace FriishProduce.Injectors
                         $"persistent_storage_total        {Settings["persistent_storage_total"]}",
                         $"persistent_storage_per_movie    {Settings["persistent_storage_per_movie"]}",
 
-                        // ############################ SoftwareUI ##############################
-
                         $"strap_reminder                  {Settings["strap_reminder"]}",
 
                         "supported_devices               core, freestyle, classic",
 
-                        $"hbm_no_save                     {Settings["hbm_no_save"]}"
+                        $"hbm_no_save                     {Settings["hbm_no_save"]}",
+
+                        "content_url                     file:///content/menu.swf",
                     };
+
+                    File.WriteAllBytes(file, Encoding.UTF8.GetBytes(string.Join("\r\n", txt) + "\r\n"));
+                }
+
+                else if (item.EndsWith(".pcf") && item.StartsWith("config\\") && Path.GetFileNameWithoutExtension(file).Length == 11)
+                {
+                    List<string> txt = new();
+
+                    foreach (string line in File.ReadAllLines(file))
+                        if (!line.Contains("content_url"))
+                            txt.Add(line);
 
                     File.WriteAllBytes(file, Encoding.UTF8.GetBytes(string.Join("\r\n", txt) + "\r\n"));
                 }
             }
 
-            // Taking the SWF soundfont
-            // ********
-            if (File.Exists(Settings["midi"]))
-            {
-                if (!Directory.Exists(Paths.FlashContents + "dls\\"))
-                    Directory.CreateDirectory(Paths.FlashContents + "dls\\");
-
-                File.Copy(Settings["midi"], Paths.FlashContents + "dls\\GM16.DLS");
-            }
-
-            // Taking all other files
-            // ********
-            if (Multifile)
-                foreach (string etc in Directory.EnumerateFiles(Path.GetDirectoryName(path), "*.*", SearchOption.TopDirectoryOnly))
-                    if (etc != path)
-                        File.Copy(etc, Paths.FlashContents + "content\\" + Path.GetFileName(etc), true);
-
             // Savebanner .TPL & config
             // ********
             if (Settings["shared_object_capability"] == "on")
             {
-                TPL banner = Img.CreateSaveTPL(1);
-                TPL icons = Img.CreateSaveTPL(2);
+                using TPL banner = Img.CreateSaveTPL(1);
+                using TPL icons = Img.CreateSaveTPL(2);
 
+                int region = 0;
                 int textures = icons.NumOfTextures;
 
                 for (int i = 0; i < lines.Length; i++)
@@ -554,10 +557,10 @@ namespace FriishProduce.Injectors
                     if (item.Contains("banner\\jp")) region = 2;
 
                     if (item.Contains("banner.tpl"))
-                        File.WriteAllBytes(file, banner.ToByteArray());
+                        banner.Save(file);
 
                     else if (item.Contains("icons.tpl"))
-                        File.WriteAllBytes(file, icons.ToByteArray());
+                        icons.Save(file);
 
                     else if (item.Contains("banner.ini"))
                     {

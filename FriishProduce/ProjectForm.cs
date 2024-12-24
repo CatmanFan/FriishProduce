@@ -1123,7 +1123,8 @@ namespace FriishProduce
             // ----------------------------
 
             use_offline_wad.Checked = !use_online_wad.Checked;
-            Base.Enabled = BaseRegion.Enabled = use_online_wad.Checked && Base.Items.Count > 1;
+            BaseRegion.Enabled = use_online_wad.Checked;
+            Base.Enabled = use_online_wad.Checked && Base.Items.Count > 1;
             checkImg1.Visible = import_wad.Enabled = use_offline_wad.Checked;
 
             if (Base.Enabled)
@@ -1133,9 +1134,11 @@ namespace FriishProduce
             }
             else
             {
-                BaseRegion.Image = null;
                 if (Base.Items.Count > 0) Base.SelectedIndex = 0;
             }
+
+            if (!BaseRegion.Enabled)
+                BaseRegion.Image = null;
 
             refreshData();
         }
