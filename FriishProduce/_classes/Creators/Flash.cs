@@ -11,7 +11,6 @@ namespace FriishProduce.Injectors
         public static IDictionary<Buttons, string> Keymap { get; set; }
         public static bool Multifile { get; set; }
 
-
         #region -- Default settings for Back to Nature --
         // keymap.ini
         // -----------------------------------------------------
@@ -409,10 +408,6 @@ namespace FriishProduce.Injectors
                 if (item.Contains("menu.swf"))
                     File.Copy(path, file, true);
 
-                // FOR FORCING 4:3
-                // ********
-                else if (item.Contains(".wide.pcf"))
-                    File.Copy(file.Replace(".wide.pcf", ".pcf"), file, true);
 
                 else if (item.EndsWith("keymap.ini") && Keymap?.Count > 0)
                 {
@@ -420,41 +415,41 @@ namespace FriishProduce.Injectors
 
                     foreach (var mapping in Keymap)
                     {
-                        string button = mapping.Key switch
-                        {
-                            Buttons.WiiRemote_Left => "KEY_BUTTON_LEFT",
-                            Buttons.WiiRemote_Right => "KEY_BUTTON_RIGHT",
-                            Buttons.WiiRemote_Down => "KEY_BUTTON_DOWN",
-                            Buttons.WiiRemote_Up => "KEY_BUTTON_UP",
-                            Buttons.WiiRemote_A => "KEY_BUTTON_A",
-                            Buttons.WiiRemote_B => "KEY_BUTTON_B",
-                            Buttons.WiiRemote_Home => "KEY_BUTTON_HOME",
-                            Buttons.WiiRemote_Plus => "KEY_BUTTON_PLUS",
-                            Buttons.WiiRemote_Minus => "KEY_BUTTON_MINUS",
-                            Buttons.WiiRemote_1 => "KEY_BUTTON_1",
-                            Buttons.WiiRemote_2 => "KEY_BUTTON_2",
-                            Buttons.Nunchuck_Z => "KEY_BUTTON_Z",
-                            Buttons.Nunchuck_C => "KEY_BUTTON_C",
+                        string button =
+                        (
+                            mapping.Key == Buttons.WiiRemote_Left ? "KEY_BUTTON_LEFT" :
+                            mapping.Key == Buttons.WiiRemote_Right ? "KEY_BUTTON_RIGHT" :
+                            mapping.Key == Buttons.WiiRemote_Down ? "KEY_BUTTON_DOWN" :
+                            mapping.Key == Buttons.WiiRemote_Up ? "KEY_BUTTON_UP" :
+                            mapping.Key == Buttons.WiiRemote_A ? "KEY_BUTTON_A" :
+                            mapping.Key == Buttons.WiiRemote_B ? "KEY_BUTTON_B" :
+                            mapping.Key == Buttons.WiiRemote_Home ? "KEY_BUTTON_HOME" :
+                            mapping.Key == Buttons.WiiRemote_Plus ? "KEY_BUTTON_PLUS" :
+                            mapping.Key == Buttons.WiiRemote_Minus ? "KEY_BUTTON_MINUS" :
+                            mapping.Key == Buttons.WiiRemote_1 ? "KEY_BUTTON_1" :
+                            mapping.Key == Buttons.WiiRemote_2 ? "KEY_BUTTON_2" :
+                            mapping.Key == Buttons.Nunchuck_Z ? "KEY_BUTTON_Z" :
+                            mapping.Key == Buttons.Nunchuck_C ? "KEY_BUTTON_C" :
 
-                            Buttons.Classic_Up => "KEY_CL_BUTTON_UP",
-                            Buttons.Classic_Left => "KEY_CL_BUTTON_LEFT",
-                            Buttons.Classic_ZR => "KEY_CL_TRIGGER_ZR",
-                            Buttons.Classic_X => "KEY_CL_BUTTON_X",
-                            Buttons.Classic_A => "KEY_CL_BUTTON_A",
-                            Buttons.Classic_Y => "KEY_CL_BUTTON_Y",
-                            Buttons.Classic_B => "KEY_CL_BUTTON_B",
-                            Buttons.Classic_ZL => "KEY_CL_TRIGGER_ZL",
-                            Buttons.Classic_Reserved => "KEY_CL_RESERVED",
-                            Buttons.Classic_R => "KEY_CL_TRIGGER_R",
-                            Buttons.Classic_Plus => "KEY_CL_BUTTON_PLUS",
-                            Buttons.Classic_Home => "KEY_CL_BUTTON_HOME",
-                            Buttons.Classic_Minus => "KEY_CL_BUTTON_MINUS",
-                            Buttons.Classic_L => "KEY_CL_TRIGGER_L",
-                            Buttons.Classic_Down => "KEY_CL_BUTTON_DOWN",
-                            Buttons.Classic_Right => "KEY_CL_BUTTON_RIGHT",
+                            mapping.Key == Buttons.Classic_Up ? "KEY_CL_BUTTON_UP" :
+                            mapping.Key == Buttons.Classic_Left ? "KEY_CL_BUTTON_LEFT" :
+                            mapping.Key == Buttons.Classic_ZR ? "KEY_CL_TRIGGER_ZR" :
+                            mapping.Key == Buttons.Classic_X ? "KEY_CL_BUTTON_X" :
+                            mapping.Key == Buttons.Classic_A ? "KEY_CL_BUTTON_A" :
+                            mapping.Key == Buttons.Classic_Y ? "KEY_CL_BUTTON_Y" :
+                            mapping.Key == Buttons.Classic_B ? "KEY_CL_BUTTON_B" :
+                            mapping.Key == Buttons.Classic_ZL ? "KEY_CL_TRIGGER_ZL" :
+                            mapping.Key == Buttons.Classic_Reserved ? "KEY_CL_RESERVED" :
+                            mapping.Key == Buttons.Classic_R ? "KEY_CL_TRIGGER_R" :
+                            mapping.Key == Buttons.Classic_Plus ? "KEY_CL_BUTTON_PLUS" :
+                            mapping.Key == Buttons.Classic_Home ? "KEY_CL_BUTTON_HOME" :
+                            mapping.Key == Buttons.Classic_Minus ? "KEY_CL_BUTTON_MINUS" :
+                            mapping.Key == Buttons.Classic_L ? "KEY_CL_TRIGGER_L" :
+                            mapping.Key == Buttons.Classic_Down ? "KEY_CL_BUTTON_DOWN" :
+                            mapping.Key == Buttons.Classic_Right ? "KEY_CL_BUTTON_RIGHT" :
 
-                            _ => null
-                        };
+                            null
+                        );
 
                         if (button != null && !string.IsNullOrWhiteSpace(mapping.Value))
                             txt.Add(button.Length < 17 ? button.PadRight(17, ' ') + mapping.Value : button + ' ' + mapping.Value);
@@ -491,7 +486,11 @@ namespace FriishProduce.Injectors
                         "dialog_cursor_archive           cursor.arc",
                         "dialog_cursor_layout            cursor.brlyt",
 
+                        // ########################### RegionConfig #############################
+
                         $"shared_object_capability        {Settings["shared_object_capability"]}",
+
+                        // ########################### SAVE STORAGE #############################
                         "num_vff_drives                  1",
                         $"vff_cache_size                  {Settings["vff_cache_size"]}",
                         $"vff_sync_on_write               {Settings["vff_sync_on_write"]}",
@@ -500,6 +499,8 @@ namespace FriishProduce.Injectors
                         "persistent_storage_vff_file     shrdobjs.vff        # 8.3 format",
                         $"persistent_storage_total        {Settings["persistent_storage_total"]}",
                         $"persistent_storage_per_movie    {Settings["persistent_storage_per_movie"]}",
+
+                        // ############################ SoftwareUI ##############################
 
                         $"strap_reminder                  {Settings["strap_reminder"]}",
 
