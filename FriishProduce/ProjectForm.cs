@@ -907,6 +907,12 @@ namespace FriishProduce
             else
                 injection_method_options.Enabled = contentOptionsForm != null;
 
+            if (channels.Entries?[0].ID == "00010001-53544c42")
+            {
+                use_online_wad.Checked = true;
+                use_online_wad.Enabled = false;
+            }
+
             if (!IsEmpty)
                 IsModified = true;
 
@@ -1117,7 +1123,7 @@ namespace FriishProduce
             // ----------------------------
 
             use_offline_wad.Checked = !use_online_wad.Checked;
-            Base.Enabled = BaseRegion.Enabled = use_online_wad.Checked;
+            Base.Enabled = BaseRegion.Enabled = use_online_wad.Checked && Base.Items.Count > 1;
             checkImg1.Visible = import_wad.Enabled = use_offline_wad.Checked;
 
             if (Base.Enabled)
@@ -1712,12 +1718,27 @@ namespace FriishProduce
 
         public void ForwarderCreator(string path)
         {
+            string emulator = null;
+            var storage = Forwarder.Storages.SD;
+
+            if (InvokeRequired)
+                Invoke(new MethodInvoker(delegate
+                {
+                    emulator = injection_methods.SelectedItem.ToString();
+                    storage = forwarder_root_device.SelectedIndex switch { 1 => Forwarder.Storages.USB, _ => Forwarder.Storages.SD };
+                }));
+            else
+            {
+                emulator = injection_methods.SelectedItem.ToString();
+                storage = forwarder_root_device.SelectedIndex switch { 1 => Forwarder.Storages.USB, _ => Forwarder.Storages.SD };
+            }
+
             Forwarder f = new()
             {
                 ROM = rom.FilePath,
                 ID = _tID,
-                Emulator = injection_methods.SelectedItem.ToString(),
-                Storage = forwarder_root_device.SelectedIndex switch { 1 => Forwarder.Storages.USB, _ => Forwarder.Storages.SD },
+                Emulator = emulator,
+                Storage = storage,
                 Name = _channelTitles[1]
             };
 
@@ -2340,7 +2361,7 @@ namespace FriishProduce
 
         private void replace_banner_sound_Click(object sender, EventArgs e)
         {
-            browseSound.Filter = "WAV (*.wav)|*.wav"; // + Program.Lang.String("filter");
+            browseSound.Filter = "WAV (*.wav)|*.wav" + Program.Lang.String("filter");
             browseSound.Title = replace_banner_sound.Text;
             if (browseSound.ShowDialog() == DialogResult.OK || File.Exists(browseSound.FileName))
                 LoadSound(browseSound.FileName);
@@ -2359,11 +2380,6 @@ namespace FriishProduce
             refreshData();
 
             if (multifile_software.Checked && !Properties.Settings.Default.donotshow_001 && !IsEmpty) MessageBox.Show(null, Program.Lang.Msg(10, false), 1);
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            linkSaveDataTitle();
         }
     }
 }

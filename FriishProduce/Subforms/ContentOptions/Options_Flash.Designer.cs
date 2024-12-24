@@ -126,6 +126,7 @@ namespace FriishProduce
             this.vff_cache_size.Items.AddRange(new object[] {
             "32",
             "48",
+            "64",
             "72",
             "96",
             "128",
@@ -159,6 +160,7 @@ namespace FriishProduce
             this.persistent_storage_per_movie.Items.AddRange(new object[] {
             "32",
             "48",
+            "64",
             "72",
             "96",
             "128",
@@ -192,6 +194,7 @@ namespace FriishProduce
             this.persistent_storage_total.Items.AddRange(new object[] {
             "32",
             "48",
+            "64",
             "72",
             "96",
             "128",

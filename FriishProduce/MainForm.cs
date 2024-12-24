@@ -1,9 +1,8 @@
-﻿using Ookii.Dialogs.WinForms;
+﻿using libWiiSharp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -344,7 +343,7 @@ namespace FriishProduce
             if (tabControl.SelectedForm is not ProjectForm currentForm) return;
 
             SaveWAD.FileName = currentForm?.GetName(true);
-            SaveWAD.Filter = currentForm.IsForwarder ? Program.Lang.String("filter.zip") : Program.Lang.String("filter.wad");
+            SaveWAD.Filter = (currentForm.IsForwarder ? Program.Lang.String("filter.zip") : Program.Lang.String("filter.wad")) + Program.Lang.String("filter");
 
             if (SaveWAD.ShowDialog() == DialogResult.OK)
                 currentForm?.SaveToWAD(SaveWAD.FileName);
@@ -445,6 +444,191 @@ namespace FriishProduce
         private void LanguageFileEditor(object sender, EventArgs e)
         {
             new LanguageEditor().ShowDialog();
+        }
+
+        private void ExtractWAD_Click(object sender, EventArgs e)
+        {
+            using OpenFileDialog wadDialog = new()
+            {
+                Title = new Regex(@"\(.*\)").Replace((sender as MenuItem).Text, "").Replace("&", ""),
+                Filter = Program.Lang.String("filter.wad") + Program.Lang.String("filter"),
+
+                AddExtension = true,
+                CheckFileExists = true,
+                CheckPathExists = true,
+                DefaultExt = "wad",
+                SupportMultiDottedExtensions = true
+            };
+
+            if (wadDialog.ShowDialog() == DialogResult.OK)
+            {
+                Exception error;
+                using WAD w = new();
+
+                try { w.LoadFile(wadDialog.FileName); }
+                catch (Exception ex) { error = ex; goto Failed; }
+
+                if (sender == extract_wad_banner || sender == extract_wad_icon)
+                {
+                    using SaveFileDialog saveDialog = new()
+                    {
+                        FileName = sender == extract_wad_icon ? "icon.bin" : "banner.bin",
+                        Title = wadDialog.Title,
+                        Filter = "BIN (*.bin)|*.bin" + Program.Lang.String("filter"),
+
+                        AddExtension = true,
+                        DefaultExt = "bin",
+                        SupportMultiDottedExtensions = true
+                    };
+
+                    if (saveDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        try
+                        {
+                            using var x = libWiiSharp.U8.Load(w.BannerApp.Data[w.BannerApp.GetNodeIndex(sender == extract_wad_icon ? "icon.bin" : "banner.bin")]);
+                            File.WriteAllBytes(saveDialog.FileName, x.ToByteArray());
+
+                            goto Succeeded;
+                        }
+
+                        catch (Exception ex) { error = ex; goto Failed; }
+                    }
+                }
+
+                else if (sender == extract_wad_sound)
+                {
+                    #region ##### Extract banner sound #####
+                    using SaveFileDialog saveDialog = new()
+                    {
+                        FileName = "sound",
+                        Title = wadDialog.Title,
+                        Filter = "WAV (*.wav)|*.wav|BNS (*.bns)|*.bns" + Program.Lang.String("filter"),
+
+                        AddExtension = true,
+                        SupportMultiDottedExtensions = true
+                    };
+
+                    if (saveDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        try
+                        {
+                            var wav = SoundHelper.ExtractSound(w, Path.GetExtension(saveDialog.FileName).ToLower() == ".wav");
+                            if (wav == null) throw new FileNotFoundException();
+
+                            File.WriteAllBytes(saveDialog.FileName, wav);
+
+                            goto Succeeded;
+                        }
+
+                        catch (Exception ex) { error = ex; goto Failed; }
+                    }
+                    #endregion
+                }
+
+                else if (sender == extract_wad_manual)
+                {
+                    U8 u8, extManual = null;
+
+                    try
+                    {
+                        for (int i = Math.Min(w.Contents.Length, 5); i < w.Contents.Length; i++)
+                        {
+                            Loop:
+                            if (i != w.Contents.Length)
+                            {
+                                try { u8 = U8.Load(w.Contents[i]); } catch { i++; goto Loop; }
+
+                                #region ##### Extract original manual #####
+                                if (u8.StringTable.Contains("main.ccf"))
+                                {
+                                    using var target = CCF.Load(u8.Data[u8.GetNodeIndex("main.ccf")]);
+
+                                    // Get and read emanual
+                                    // ****************
+                                    foreach (var item in target.Nodes)
+                                        if (item.Name.ToLower().Contains("man.arc"))
+                                        {
+                                            extManual = U8.Load(target.Data[target.GetNodeIndex(item.Name)]);
+                                            u8.Dispose();
+                                            break;
+                                        }
+                                }
+
+                                else
+                                {
+                                    foreach (var item in u8.StringTable)
+                                        if (item.ToLower().Contains("htmlc.arc") || item.ToLower().Contains("lz77_html.arc") || item.ToLower().Contains("lz77emanual.arc"))
+                                        {
+                                            File.WriteAllBytes(Paths.WorkingFolder + "html.arc", u8.Data[u8.GetNodeIndex(item)]);
+                                            Utils.Run
+                                            (
+                                                Paths.Tools + "wwcxtool.exe",
+                                                Paths.WorkingFolder,
+                                                "/u html.arc html.dec"
+                                            );
+                                            if (!File.Exists(Paths.WorkingFolder + "html.dec")) throw new Exception(Program.Lang.Msg(2, true));
+
+                                            var bytes = File.ReadAllBytes(Paths.WorkingFolder + "html.dec");
+
+                                            if (File.Exists(Paths.WorkingFolder + "html.dec")) File.Delete(Paths.WorkingFolder + "html.dec");
+                                            if (File.Exists(Paths.WorkingFolder + "html.arc")) File.Delete(Paths.WorkingFolder + "html.arc");
+
+                                            extManual = U8.Load(bytes);
+                                            u8.Dispose();
+                                            break;
+                                        }
+
+                                        else if (item.ToLower().Contains("emanual.arc") || item.ToLower().Contains("html.arc") || item.ToLower().Contains("man.arc"))
+                                        {
+                                            extManual = U8.Load(u8.Data[u8.GetNodeIndex(item)]);
+                                            u8.Dispose();
+                                            break;
+                                        }
+                                }
+                                #endregion
+                            }
+                        }
+
+                        if (extManual != null)
+                        {
+                            using FolderBrowserDialog saveDialog = new()
+                            {
+                                ShowNewFolderButton = true,
+                                Description = wadDialog.Title.TrimEnd('.').Trim(),
+                            };
+
+                            if (saveDialog.ShowDialog() == DialogResult.OK)
+                            {
+                                extManual.Unpack(saveDialog.SelectedPath);
+                                extManual.Dispose();
+                            }
+
+                            goto End;
+                        }
+
+                        else throw new Exception(Program.Lang.Msg(15, true));
+                    }
+
+                    catch (Exception ex) { error = ex; goto Failed; }
+
+                }
+
+                goto End;
+
+                Failed:
+                if (error == null)
+                    System.Media.SystemSounds.Hand.Play();
+                else
+                    MessageBox.Error(error.Message);
+                goto End;
+
+                Succeeded:
+                System.Media.SystemSounds.Beep.Play();
+                goto End;
+
+                End:
+                if (w != null) w.Dispose();
+            }
         }
     }
 }

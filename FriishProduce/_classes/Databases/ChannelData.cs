@@ -170,6 +170,11 @@ namespace FriishProduce
                     URL = "https://repo.mariocube.com/WADs/Flash%20Injects/Base/" + Uri.EscapeDataString(name) + ".wad";
                     tID = "WNAP";
                 }
+                else if (GetUpperID(index).StartsWith("HCX"))
+                {
+                    int ver = Regions[index] == 0 ? 768 : Regions[index] == 3 ? 1537 : 1536;
+                    URL = "https://repo.mariocube.com/WADs/_WiiWare,%20VC,%20DLC,%20Channels%20&%20IOS/" + name[0].ToString().ToUpper() + "/" + Uri.EscapeDataString(name + $" (v{ver}) (Channel)") + ".wad";
+                }
 
                 Web.InternetTest();
 

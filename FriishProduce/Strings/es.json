@@ -101,7 +101,7 @@
 			"008":								"Actualización de FriishProduce\nYa está disponible para descargar la nueva versión {0} de FriishProduce.\nActualmente está utilizando la versión {1}.\n\n¿Quiere descargar la actualización de GitHub ahora?",
 			"009":								"Actualmente ya está actualizado.",
 			
-			"error":							"¡Se ha producido un error!",
+			"error":							"Se ha producido un error",
 			"e_000":							"No se pudo conectar a Internet.\n{0}",
 			"e_001":							"No se pudo generar la imagen.\nEsto puede deberse a un problema con GDI+.",
 			"e_002":							"No se pueden reemplazar los datos internos del canal.",
@@ -116,7 +116,8 @@
 			"e_011":							"La carpeta \"{0}\" no se encontró en su ruta original. Puede que haya sido eliminada o movida.",
 			"e_012":							"No se encontró ningún punto de entrada de inyección. Puede deberse a que el método de inyección utilizado por este canal aún no está compatible.",
 			"e_013":							"No se encontró el archivo BIOS necesario para esta consola.\nPor favor seleccione un archivo en los ajustes de la aplicación.",
-			"e_014":							"No se pudo crear la imagen TPL para los datos guardados."
+			"e_014":							"No se pudo crear la imagen TPL para los datos guardados.",
+			"e_015":							"No se encontró ningún manual electrónico de Consola Virtual."
 		}
 	},
 
@@ -124,6 +125,7 @@
 		"mainform": {
 			"file":								"&Archivo",
 			"project":							"&Proyecto",
+			"tools":							"&Herramientas",
 			"help":								"A&yuda",
 
 			"new_project":						"&Nuevo...",
@@ -136,7 +138,6 @@
 			"game_scan":						"&Obtener datos del juego de la base de datos en línea",
 			"export":							"Exportar...",
 			
-			"tools":							"Herramientas",
 			"updater":							"Actualización",
 			"check_for_updates":				"Buscar ahora",
 			"auto_update":						"Buscar cuando se abra la aplicación",

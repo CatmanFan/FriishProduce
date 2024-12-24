@@ -134,13 +134,7 @@ namespace FriishProduce.Injectors
 
             using (var s = new MemoryStream())
             {
-                var m = new StreamReader(new MemoryStream(MainContent.Data[ConfigIndex]), Encoding.UTF8);
-
-                m.ReadToEnd();
-                var t = new StreamWriter(s, m.CurrentEncoding);
-
-                m.DiscardBufferedData();
-                m.BaseStream.Seek(0, SeekOrigin.Begin);
+                var t = new StreamWriter(s, new UTF8Encoding(false));
 
                 List<string> ConfigFile = new List<string>()
                 {

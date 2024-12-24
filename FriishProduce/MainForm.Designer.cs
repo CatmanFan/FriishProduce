@@ -65,6 +65,11 @@ namespace FriishProduce
             this.menuItem7 = new System.Windows.Forms.MenuItem();
             this.close_project = new System.Windows.Forms.MenuItem();
             this.menuItem3 = new System.Windows.Forms.MenuItem();
+            this.extract_wad_banner = new System.Windows.Forms.MenuItem();
+            this.extract_wad_icon = new System.Windows.Forms.MenuItem();
+            this.extract_wad_sound = new System.Windows.Forms.MenuItem();
+            this.extract_wad_manual = new System.Windows.Forms.MenuItem();
+            this.menuItem9 = new System.Windows.Forms.MenuItem();
             this.updater = new System.Windows.Forms.MenuItem();
             this.check_for_updates = new System.Windows.Forms.MenuItem();
             this.auto_update = new System.Windows.Forms.MenuItem();
@@ -327,6 +332,11 @@ namespace FriishProduce
             // 
             this.menuItem3.Index = 2;
             this.menuItem3.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.extract_wad_banner,
+            this.extract_wad_icon,
+            this.extract_wad_sound,
+            this.extract_wad_manual,
+            this.menuItem9,
             this.updater,
             this.menuItem8,
             this.language_file_editor,
@@ -334,9 +344,42 @@ namespace FriishProduce
             this.menuItem3.Tag = "tools";
             resources.ApplyResources(this.menuItem3, "menuItem3");
             // 
+            // extract_wad_banner
+            // 
+            this.extract_wad_banner.Index = 0;
+            this.extract_wad_banner.Tag = "extract_wad_banner";
+            resources.ApplyResources(this.extract_wad_banner, "extract_wad_banner");
+            this.extract_wad_banner.Click += new System.EventHandler(this.ExtractWAD_Click);
+            // 
+            // extract_wad_icon
+            // 
+            this.extract_wad_icon.Index = 1;
+            this.extract_wad_icon.Tag = "extract_wad_icon";
+            resources.ApplyResources(this.extract_wad_icon, "extract_wad_icon");
+            this.extract_wad_icon.Click += new System.EventHandler(this.ExtractWAD_Click);
+            // 
+            // extract_wad_sound
+            // 
+            this.extract_wad_sound.Index = 2;
+            this.extract_wad_sound.Tag = "extract_wad_sound";
+            resources.ApplyResources(this.extract_wad_sound, "extract_wad_sound");
+            this.extract_wad_sound.Click += new System.EventHandler(this.ExtractWAD_Click);
+            // 
+            // extract_wad_manual
+            // 
+            this.extract_wad_manual.Index = 3;
+            this.extract_wad_manual.Tag = "extract_wad_manual";
+            resources.ApplyResources(this.extract_wad_manual, "extract_wad_manual");
+            this.extract_wad_manual.Click += new System.EventHandler(this.ExtractWAD_Click);
+            // 
+            // menuItem9
+            // 
+            this.menuItem9.Index = 4;
+            resources.ApplyResources(this.menuItem9, "menuItem9");
+            // 
             // updater
             // 
-            this.updater.Index = 0;
+            this.updater.Index = 5;
             this.updater.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.check_for_updates,
             this.auto_update});
@@ -359,18 +402,18 @@ namespace FriishProduce
             // 
             // menuItem8
             // 
-            this.menuItem8.Index = 1;
+            this.menuItem8.Index = 6;
             resources.ApplyResources(this.menuItem8, "menuItem8");
             // 
             // language_file_editor
             // 
-            this.language_file_editor.Index = 2;
+            this.language_file_editor.Index = 7;
             resources.ApplyResources(this.language_file_editor, "language_file_editor");
             this.language_file_editor.Click += new System.EventHandler(this.LanguageFileEditor);
             // 
             // preferences
             // 
-            this.preferences.Index = 3;
+            this.preferences.Index = 8;
             resources.ApplyResources(this.preferences, "preferences");
             this.preferences.Tag = "";
             this.preferences.Click += new System.EventHandler(this.Settings_Click);
@@ -480,6 +523,11 @@ namespace FriishProduce
         private System.Windows.Forms.MenuItem language_file_editor;
         private System.Windows.Forms.MenuItem menuItem3;
         private System.Windows.Forms.MenuItem updater;
+        private System.Windows.Forms.MenuItem extract_wad_banner;
+        private System.Windows.Forms.MenuItem extract_wad_icon;
+        private System.Windows.Forms.MenuItem extract_wad_sound;
+        private System.Windows.Forms.MenuItem extract_wad_manual;
+        private System.Windows.Forms.MenuItem menuItem9;
     }
 }
 

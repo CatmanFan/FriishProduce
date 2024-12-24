@@ -64,55 +64,6 @@ namespace FriishProduce
         }
 
         #region ### EMANUAL FUNCTIONS ###
-        #region -- Extract original manual --
-        private void ExtractManual(CCF target, string path)
-        {
-            var extManual = new U8();
-
-            // Get and read emanual
-            // ****************
-            foreach (var item in target.Nodes)
-                if (item.Name.ToLower().Contains("man.arc"))
-                {
-                    extManual = U8.Load(target.Data[target.GetNodeIndex(item.Name)]);
-                }
-
-            extManual.Unpack(path);
-            extManual.Dispose();
-        }
-
-        private void ExtractManual(U8 target, string path)
-        {
-            var extManual = new U8();
-
-            foreach (var item in target.StringTable)
-
-                if (item.ToLower().Contains("htmlc.arc") || item.ToLower().Contains("lz77_html.arc") || item.ToLower().Contains("lz77emanual.arc"))
-                {
-                    File.WriteAllBytes(Paths.WorkingFolder + "html.arc", target.Data[target.GetNodeIndex(item)]);
-                    Utils.Run
-                    (
-                        Paths.Tools + "wwcxtool.exe",
-                        Paths.WorkingFolder,
-                        "/u html.arc html.dec"
-                    );
-                    if (!File.Exists(Paths.WorkingFolder + "html.dec")) throw new Exception(Program.Lang.Msg(2, true));
-
-                    extManual = U8.Load(File.ReadAllBytes(Paths.WorkingFolder + "html.dec"));
-
-                    if (File.Exists(Paths.WorkingFolder + "html.dec")) File.Delete(Paths.WorkingFolder + "html.dec");
-                    if (File.Exists(Paths.WorkingFolder + "html.arc")) File.Delete(Paths.WorkingFolder + "html.arc");
-                }
-
-                else if (item.ToLower().Contains("emanual.arc") || item.ToLower().Contains("html.arc") || item.ToLower().Contains("man.arc"))
-                {
-                    extManual = U8.Load(target.Data[target.GetNodeIndex(item)]);
-                }
-
-            extManual.Unpack(path);
-            extManual.Dispose();
-        }
-        #endregion
 
         /// <summary>
         /// Actually does the replacing of the html/man/emanual.arc with the contents of the specified folder.

@@ -102,7 +102,7 @@
 			"009":								"Vous êtes déjà à jour.",
 			"010":								"Lorsque cette option est activée, l'application traitera tous les fichiers du même dossier que celui actuellement sélectionné comme faisant partie du logiciel à injecter.\n\nVeuillez vous assurer que vos fichiers sont déjà dans un répertoire séparé avant de continuer.",
 
-			"error":							"Oups, un problème est survenu",
+			"error":							"Oups, un problème est survenu !",
 			"e_000":							"Échec de connexion à Internet.\n{0}",
 			"e_001":							"Échec de génération de l'image.\nCeci peut être provoqué par un problème avec GDI+.",
 			"e_002":							"Échec du replacement des données internes de la chaîne.",
@@ -117,7 +117,8 @@
 			"e_011":							"Le dossier «{0}» n'a pas été trouvé dans son chemin original. Il s'agit qu'il peut avoir été déplacé ou supprimé.",
 			"e_012":							"Aucun point d'entrée d'injection n'a été trouvé. Il peut s'agir que la méthode d'injection utilisée par cette chaîne n'est toujours pas prise en charge.",
 			"e_013":							"Le fichier BIOS requis pour cette console est indisponible. Veuillez le spécifier de nouveau dans les préférences de l'application.",
-			"e_014":							"Échec de création de l'image d'aperçu des données de sauvegarde."
+			"e_014":							"Échec de création de l'image d'aperçu des données de sauvegarde.",
+			"e_015":							"Aucun mode d'emploi de Console virtuelle n'a été trouvé dans cette chaîne."
 		}
 	},
 
@@ -125,6 +126,7 @@
 		"mainform": {
 			"file":								"&Fichier",
 			"project":							"&Projet",
+			"tools":							"&Outils",
 			"help":								"&Aide",
 
 			"new_project":						"&Nouveau ...",
@@ -137,7 +139,10 @@
 			"game_scan":						"Charger les informations dès de la bibliothèque des jeux",
 			"export":							"Exporter ...",
 			
-			"tools":							"Outils",
+			"extract_wad_banner":				"Extraire le &banner d'aperçu d'une chaîne Wii...",
+			"extract_wad_icon":					"Extraire l'&icône d'aperçu d'une chaîne Wii...",
+			"extract_wad_sound":				"Extraire le &son d'aperçu d'une chaîne Wii...",
+			"extract_wad_manual":				"Extraire un &mode d'emploi de Console virtuelle...",
 			"updater":							"Mise à jour",
 			"check_for_updates":				"Vérifier maintenant",
 			"auto_update":						"Vérifier automatiquement au démarrage de l'application",

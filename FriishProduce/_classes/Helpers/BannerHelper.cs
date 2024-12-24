@@ -80,7 +80,7 @@ namespace FriishProduce
             return null;
         }
 
-        public static U8[] Get(string file)
+        public static U8[] Get(byte[] file)
         {
             U8 Banner = U8.Load(file);
             U8 Icon = U8.Load(Banner.Data[Banner.GetNodeIndex("icon.bin")]);

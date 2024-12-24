@@ -118,6 +118,7 @@
 			"e_012":							"An injectable ROM entrypoint was not found. This may be because the injection method used for this WAD is yet not supported.",
 			"e_013":							"Could not find the required BIOS file for this console.\nPlease set this file in the application preferences.",
 			"e_014":							"Failed to create savedata TPL.",
+			"e_015":							"No Virtual Console manual was found in the provided WAD.",
 		}
 	},
 
@@ -125,6 +126,7 @@
 		"mainform": {
 			"file":								"&File",
 			"project":							"&Project",
+			"tools":							"&Tools",
 			"help":								"&Help",
 
 			"new_project":						"&New...",
@@ -137,7 +139,6 @@
 			"game_scan":						"Scan for game data",
 			"export":							"Export...",
 			
-			"tools":							"Tools",
 			"extract_wad_banner":				"Extract channel banner from WAD...",
 			"extract_wad_icon":					"Extract channel icon from WAD...",
 			"extract_wad_sound":				"Extract channel sound from WAD...",

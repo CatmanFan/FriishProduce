@@ -511,6 +511,27 @@
   <data name="menuItem2.Text" xml:space="preserve">
     <value>project</value>
   </data>
+  <data name="extract_wad_banner.Text" xml:space="preserve">
+    <value>extract_wad_banner</value>
+  </data>
+  <data name="extract_wad_banner.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="extract_wad_icon.Text" xml:space="preserve">
+    <value>extract_wad_icon</value>
+  </data>
+  <data name="extract_wad_icon.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="extract_wad_sound.Text" xml:space="preserve">
+    <value>extract_wad_sound</value>
+  </data>
+  <data name="extract_wad_manual.Text" xml:space="preserve">
+    <value>extract_wad_manual</value>
+  </data>
+  <data name="menuItem9.Text" xml:space="preserve">
+    <value>-</value>
+  </data>
   <data name="check_for_updates.Text" xml:space="preserve">
     <value>check_for_updates</value>
   </data>
@@ -525,6 +546,9 @@
   </data>
   <data name="language_file_editor.Text" xml:space="preserve">
     <value>Language File Editor</value>
+  </data>
+  <data name="language_file_editor.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="preferences.Shortcut" type="System.Windows.Forms.Shortcut, System.Windows.Forms">
     <value>F5</value>
@@ -2962,6 +2986,36 @@
     <value>menuItem3</value>
   </data>
   <data name="&gt;&gt;menuItem3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;extract_wad_banner.Name" xml:space="preserve">
+    <value>extract_wad_banner</value>
+  </data>
+  <data name="&gt;&gt;extract_wad_banner.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;extract_wad_icon.Name" xml:space="preserve">
+    <value>extract_wad_icon</value>
+  </data>
+  <data name="&gt;&gt;extract_wad_icon.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;extract_wad_sound.Name" xml:space="preserve">
+    <value>extract_wad_sound</value>
+  </data>
+  <data name="&gt;&gt;extract_wad_sound.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;extract_wad_manual.Name" xml:space="preserve">
+    <value>extract_wad_manual</value>
+  </data>
+  <data name="&gt;&gt;extract_wad_manual.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuItem9.Name" xml:space="preserve">
+    <value>menuItem9</value>
+  </data>
+  <data name="&gt;&gt;menuItem9.Type" xml:space="preserve">
     <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;updater.Name" xml:space="preserve">
