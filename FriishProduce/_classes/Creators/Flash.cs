@@ -475,8 +475,8 @@ namespace FriishProduce.Injectors
                         "static_heap_size                8192                # 8192[KB] -> 8[MB]",
                         "dynamic_heap_size               16384               # 16384[KB] -> 16[MB]",
 
-                      // "stream_cache_max_file_size      512                 # 512[KB] -> 0.5[MB]",
-                      // "stream_cache_size               2048                # 2048[KB] -> 2.0[MB]",
+                        "#stream_cache_max_file_size      512                 # 512[KB] -> 0.5[MB]",
+                        "#stream_cache_size               2048                # 2048[KB] -> 2.0[MB]",
 
                         $"update_frame_rate             {Settings["update_frame_rate"]}                  # not TV-framerate(NTSC/PAL)",
 
@@ -515,6 +515,8 @@ namespace FriishProduce.Injectors
                         $"hbm_no_save                     {Settings["hbm_no_save"]}",
 
                         "content_url                     file:///content/menu.swf",
+                        "#content_domain                  file:///trusted/",
+                        "#flash_vars                      dummy = 1",
                     };
 
                     File.WriteAllBytes(file, Encoding.UTF8.GetBytes(string.Join("\r\n", txt) + "\r\n"));
@@ -525,8 +527,12 @@ namespace FriishProduce.Injectors
                     List<string> txt = new();
 
                     foreach (string line in File.ReadAllLines(file))
-                        if (!line.Contains("content_url"))
+                    {
+                        if (line.Contains("background_"))
+                            txt.Add($"background_color                {Settings["background_color"]}             # RGBA");
+                        else if (!line.Contains("content_url"))
                             txt.Add(line);
+                    }
 
                     File.WriteAllBytes(file, Encoding.UTF8.GetBytes(string.Join("\r\n", txt) + "\r\n"));
                 }

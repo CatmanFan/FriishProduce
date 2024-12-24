@@ -44,18 +44,22 @@ namespace FriishProduce
             this.update_frame_rate = new System.Windows.Forms.NumericUpDown();
             this.quality_l = new System.Windows.Forms.Label();
             this.controls = new System.Windows.Forms.GroupBox();
+            this.background_color_img = new System.Windows.Forms.PictureBox();
+            this.background_color = new System.Windows.Forms.Button();
             this.midi = new System.Windows.Forms.CheckBox();
             this.qwerty_keyboard = new System.Windows.Forms.CheckBox();
             this.mouse = new System.Windows.Forms.CheckBox();
             this.strap_reminder = new System.Windows.Forms.GroupBox();
             this.strap_reminder_list = new System.Windows.Forms.ComboBox();
             this.ImportDLS = new System.Windows.Forms.OpenFileDialog();
+            this.BGColor = new System.Windows.Forms.ColorDialog();
             this.bottomPanel1.SuspendLayout();
             this.controller_box.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.display.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.update_frame_rate)).BeginInit();
             this.controls.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.background_color_img)).BeginInit();
             this.strap_reminder.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -145,7 +149,7 @@ namespace FriishProduce
             // 
             // persistent_storage_per_movie_l
             // 
-            this.persistent_storage_per_movie_l.Location = new System.Drawing.Point(183, 79);
+            this.persistent_storage_per_movie_l.Location = new System.Drawing.Point(180, 79);
             this.persistent_storage_per_movie_l.Name = "persistent_storage_per_movie_l";
             this.persistent_storage_per_movie_l.Size = new System.Drawing.Size(160, 30);
             this.persistent_storage_per_movie_l.TabIndex = 28;
@@ -172,7 +176,7 @@ namespace FriishProduce
             "1024",
             "2048",
             "4096"});
-            this.persistent_storage_per_movie.Location = new System.Drawing.Point(191, 113);
+            this.persistent_storage_per_movie.Location = new System.Drawing.Point(188, 113);
             this.persistent_storage_per_movie.Name = "persistent_storage_per_movie";
             this.persistent_storage_per_movie.Size = new System.Drawing.Size(150, 21);
             this.persistent_storage_per_movie.TabIndex = 27;
@@ -283,6 +287,8 @@ namespace FriishProduce
             // 
             // controls
             // 
+            this.controls.Controls.Add(this.background_color_img);
+            this.controls.Controls.Add(this.background_color);
             this.controls.Controls.Add(this.midi);
             this.controls.Controls.Add(this.qwerty_keyboard);
             this.controls.Controls.Add(this.mouse);
@@ -293,6 +299,26 @@ namespace FriishProduce
             this.controls.TabStop = false;
             this.controls.Tag = "controls";
             this.controls.Text = "controls";
+            // 
+            // background_color_img
+            // 
+            this.background_color_img.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.background_color_img.Location = new System.Drawing.Point(590, 56);
+            this.background_color_img.Name = "background_color_img";
+            this.background_color_img.Size = new System.Drawing.Size(30, 20);
+            this.background_color_img.TabIndex = 17;
+            this.background_color_img.TabStop = false;
+            // 
+            // background_color
+            // 
+            this.background_color.Location = new System.Drawing.Point(252, 55);
+            this.background_color.Name = "background_color";
+            this.background_color.Size = new System.Drawing.Size(333, 23);
+            this.background_color.TabIndex = 16;
+            this.background_color.Tag = "background_color";
+            this.background_color.Text = "background_color";
+            this.background_color.UseVisualStyleBackColor = true;
+            this.background_color.Click += new System.EventHandler(this.changeBackgroundColor);
             // 
             // midi
             // 
@@ -380,6 +406,7 @@ namespace FriishProduce
             ((System.ComponentModel.ISupportInitialize)(this.update_frame_rate)).EndInit();
             this.controls.ResumeLayout(false);
             this.controls.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.background_color_img)).EndInit();
             this.strap_reminder.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -407,5 +434,8 @@ namespace FriishProduce
         private System.Windows.Forms.Label quality_l;
         private System.Windows.Forms.Label update_frame_rate_l;
         private System.Windows.Forms.CheckBox stretch_to_4_3;
+        private System.Windows.Forms.ColorDialog BGColor;
+        private System.Windows.Forms.Button background_color;
+        private System.Windows.Forms.PictureBox background_color_img;
     }
 }

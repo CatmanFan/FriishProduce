@@ -112,7 +112,6 @@ namespace FriishProduce
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.Click += new System.EventHandler(this.Form_Load);
             this.bottomPanel1.ResumeLayout(false);
             this.bottomPanel2.ResumeLayout(false);
             this.controller_box.ResumeLayout(false);

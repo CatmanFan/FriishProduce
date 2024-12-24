@@ -29,7 +29,8 @@ namespace FriishProduce
                 { "hbm_no_save", Default.hbm_no_save },
                 { "strap_reminder", Default.strap_reminder },
                 { "midi", null },
-                { "stretch_to_4_3", Default.stretch_to_4_3 }
+                { "stretch_to_4_3", Default.stretch_to_4_3 },
+                { "background_color", "0 0 0 0" }
             };
 
             // Cosmetic
@@ -69,6 +70,25 @@ namespace FriishProduce
                     strap_reminder_list.SelectedIndex = Options["strap_reminder"] switch { "none" => 0, "normal" => 1, _ => 2 };
                     // MIDI is counted separately
                     stretch_to_4_3.Checked = Options["stretch_to_4_3"] == "yes";
+
+                    // Background color
+                    // ****************
+                    background_color_img.BackColor = BGColor.Color = System.Drawing.Color.FromArgb(255, 0, 0, 0);
+                    int index = 0;
+                    string R = "0", G = "0", B = "0";
+                    for (int i = 0; i < 4; i++)
+                    {
+                        string color = Options["background_color"];
+                        int prevIndex = index;
+                        index = color.IndexOf(' ', prevIndex);
+
+                        if (i == 0) R = color.Substring(prevIndex, index - prevIndex);
+                        if (i == 1) G = color.Substring(prevIndex, index - prevIndex);
+                        if (i == 2) B = color.Substring(prevIndex, index - prevIndex);
+
+                        if (index < color.Length) index++;
+                    }
+                    background_color_img.BackColor = BGColor.Color = System.Drawing.Color.FromArgb(255, int.Parse(R), int.Parse(G), int.Parse(B));
                 }
                 catch
                 {
@@ -86,7 +106,8 @@ namespace FriishProduce
                         { "hbm_no_save", Default.hbm_no_save },
                         { "strap_reminder", Default.strap_reminder },
                         { "midi", null },
-                        { "stretch_to_4_3", Default.stretch_to_4_3 }
+                        { "stretch_to_4_3", Default.stretch_to_4_3 },
+                        { "background_color", "0 0 0 0" }
                     };
 
                     goto Refill;
@@ -124,6 +145,7 @@ namespace FriishProduce
             Options["strap_reminder"] = strap_reminder_list.SelectedIndex switch { 0 => "none", 1 => "normal", _ => "no_ex" };
             Options["hbm_no_save"] = Options["shared_object_capability"] == "on" ? "no" : "yes";
             Options["stretch_to_4_3"] = stretch_to_4_3.Checked ? "yes" : "no";
+            Options["background_color"] = BGColor.Color.R + BGColor.Color.G + BGColor.Color.B > 0 ? $"{BGColor.Color.R} {BGColor.Color.G} {BGColor.Color.B} 255" : "0 0 0 0";
         }
 
         // ---------------------------------------------------------------------------------------------------------------
@@ -162,5 +184,11 @@ namespace FriishProduce
             }
         }
         #endregion
+
+        private void changeBackgroundColor(object sender, EventArgs e)
+        {
+            BGColor.ShowDialog();
+            background_color_img.BackColor = BGColor.Color;
+        }
     }
 }

@@ -1955,6 +1955,8 @@ namespace FriishProduce
                 { "-PT", 2 },
                 { "-IN", 2 },
                 { "-ZA", 2 },
+                { "-AU", 2 },
+                { "-NZ", 2 },
                 { "-CA", 3 },
                 { "-US", 3 },
                 { "-419", 3 },
@@ -1983,7 +1985,7 @@ namespace FriishProduce
                 { "fi", 2 },
             };
 
-            foreach (var item in altRegions) if (Program.Lang.Current.ToLower().StartsWith(item.Key) || (item.Key.Contains("-") && Program.Lang.Current.ToLower().EndsWith(item.Key)))
+            foreach (var item in altRegions) if (Program.Lang.Current.ToLower().StartsWith(item.Key) || Program.Lang.Current.ToUpper().EndsWith(item.Key))
             {
                 selected = regions.IndexOf(item.Value == 0 ? Program.Lang.String("region_j")
                          : item.Value == 1 ? Program.Lang.String("region_k")

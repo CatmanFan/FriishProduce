@@ -322,6 +322,7 @@
 			"mouse":							"Mouse",
 			"qwerty_keyboard":					"QWERTY keyboard",
 			"midi":								"Enable MIDI playback using DLS soundfont",
+			"background_color":					"Change background color",
 			"quality":							"Quality",
 			"quality0":							"High",
 			"quality1":							"Medium",
