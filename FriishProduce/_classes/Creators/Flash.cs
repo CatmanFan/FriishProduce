@@ -11,6 +11,7 @@ namespace FriishProduce.Injectors
         public static IDictionary<Buttons, string> Keymap { get; set; }
         public static bool Multifile { get; set; }
 
+
         #region -- Default settings for Back to Nature --
         // keymap.ini
         // -----------------------------------------------------
@@ -396,10 +397,120 @@ namespace FriishProduce.Injectors
             MainContent = U8.Load(w.Contents[2]);
             MainContent.Extract(Paths.FlashContents);
 
-            // Actually replacing the SWF
-            // ********
-            string target = Path.GetFileName(path).Replace(" ", "_");
-            File.Copy(path, Paths.FlashContents + "content\\menu.swf", true);
+            int region = 0;
+
+            foreach (string file in Directory.EnumerateFiles(Paths.FlashContents, "*.*", SearchOption.AllDirectories))
+            {
+                string item = file.Replace(Paths.FlashContents, null).ToLower();
+
+                // Actually replacing the SWF
+                // The link to the SWF is contained in config/[region]/[language]/config.[language-REGION].pcf
+                // ********
+                if (item.Contains("menu.swf"))
+                    File.Copy(path, file, true);
+
+                // FOR FORCING 4:3
+                // ********
+                else if (item.Contains(".wide.pcf"))
+                    File.Copy(file.Replace(".wide.pcf", ".pcf"), file, true);
+
+                else if (item.EndsWith("keymap.ini") && Keymap?.Count > 0)
+                {
+                    List<string> txt = new();
+
+                    foreach (var mapping in Keymap)
+                    {
+                        string button = mapping.Key switch
+                        {
+                            Buttons.WiiRemote_Left => "KEY_BUTTON_LEFT",
+                            Buttons.WiiRemote_Right => "KEY_BUTTON_RIGHT",
+                            Buttons.WiiRemote_Down => "KEY_BUTTON_DOWN",
+                            Buttons.WiiRemote_Up => "KEY_BUTTON_UP",
+                            Buttons.WiiRemote_A => "KEY_BUTTON_A",
+                            Buttons.WiiRemote_B => "KEY_BUTTON_B",
+                            Buttons.WiiRemote_Home => "KEY_BUTTON_HOME",
+                            Buttons.WiiRemote_Plus => "KEY_BUTTON_PLUS",
+                            Buttons.WiiRemote_Minus => "KEY_BUTTON_MINUS",
+                            Buttons.WiiRemote_1 => "KEY_BUTTON_1",
+                            Buttons.WiiRemote_2 => "KEY_BUTTON_2",
+                            Buttons.Nunchuck_Z => "KEY_BUTTON_Z",
+                            Buttons.Nunchuck_C => "KEY_BUTTON_C",
+
+                            Buttons.Classic_Up => "KEY_CL_BUTTON_UP",
+                            Buttons.Classic_Left => "KEY_CL_BUTTON_LEFT",
+                            Buttons.Classic_ZR => "KEY_CL_TRIGGER_ZR",
+                            Buttons.Classic_X => "KEY_CL_BUTTON_X",
+                            Buttons.Classic_A => "KEY_CL_BUTTON_A",
+                            Buttons.Classic_Y => "KEY_CL_BUTTON_Y",
+                            Buttons.Classic_B => "KEY_CL_BUTTON_B",
+                            Buttons.Classic_ZL => "KEY_CL_TRIGGER_ZL",
+                            Buttons.Classic_Reserved => "KEY_CL_RESERVED",
+                            Buttons.Classic_R => "KEY_CL_TRIGGER_R",
+                            Buttons.Classic_Plus => "KEY_CL_BUTTON_PLUS",
+                            Buttons.Classic_Home => "KEY_CL_BUTTON_HOME",
+                            Buttons.Classic_Minus => "KEY_CL_BUTTON_MINUS",
+                            Buttons.Classic_L => "KEY_CL_TRIGGER_L",
+                            Buttons.Classic_Down => "KEY_CL_BUTTON_DOWN",
+                            Buttons.Classic_Right => "KEY_CL_BUTTON_RIGHT",
+
+                            _ => null
+                        };
+
+                        if (button != null && !string.IsNullOrWhiteSpace(mapping.Value))
+                            txt.Add(button.Length < 17 ? button.PadRight(17, ' ') + mapping.Value : button + ' ' + mapping.Value);
+                    }
+
+                    File.WriteAllBytes(file, Encoding.UTF8.GetBytes(string.Join("\r\n", txt) + "\r\n"));
+                }
+
+                else if (item.EndsWith("config.common.pcf"))
+                {
+                    List<string> txt = new()
+                    {
+                        "# Comments (text preceded by #) and line breaks will be ignored",
+                        "static_heap_size                8192                # 8192[KB] -> 8[MB]",
+                        "dynamic_heap_size               16384               # 16384[KB] -> 16[MB]",
+
+                        $"update_frame_rate             {Settings["update_frame_rate"]}                  # not TV-framerate(NTSC/PAL)",
+
+                        $"mouse                           {Settings["mouse"]}",
+                        $"qwerty_keyboard                 {Settings["qwerty_keyboard"]}",
+                        "navigation_model                4way                # 2way / 4way / 4waywrap",
+                        $"quality                         {Settings["quality"]}",
+                        "looping                         on",
+
+                        "text_encoding                   utf-16",
+
+                        $"midi                            {(File.Exists(Settings["midi"]) ? "on" : "off")}",
+                        $"{(File.Exists(Settings["midi"]) ? null : "# ")}dls_file                      dls/GM16.DLS",
+
+                        "key_input                       on",
+
+                        "cursor_archive                  cursor.arc",
+                        "cursor_layout                   cursor.brlyt",
+                        "dialog_cursor_archive           cursor.arc",
+                        "dialog_cursor_layout            cursor.brlyt",
+
+                        $"shared_object_capability        {Settings["shared_object_capability"]}",
+                        "num_vff_drives                  1",
+                        $"vff_cache_size                  {Settings["vff_cache_size"]}",
+                        $"vff_sync_on_write               {Settings["vff_sync_on_write"]}",
+
+                        "persistent_storage_root_drive   X",
+                        "persistent_storage_vff_file     shrdobjs.vff        # 8.3 format",
+                        $"persistent_storage_total        {Settings["persistent_storage_total"]}",
+                        $"persistent_storage_per_movie    {Settings["persistent_storage_per_movie"]}",
+
+                        $"strap_reminder                  {Settings["strap_reminder"]}",
+
+                        "supported_devices               core, freestyle, classic",
+
+                        $"hbm_no_save                     {Settings["hbm_no_save"]}"
+                    };
+
+                    File.WriteAllBytes(file, Encoding.UTF8.GetBytes(string.Join("\r\n", txt) + "\r\n"));
+                }
+            }
 
             // Taking the SWF soundfont
             // ********
@@ -418,184 +529,59 @@ namespace FriishProduce.Injectors
                     if (etc != path)
                         File.Copy(etc, Paths.FlashContents + "content\\" + Path.GetFileName(etc), true);
 
-            foreach (string file in Directory.EnumerateFiles(Paths.FlashContents, "*.*", SearchOption.AllDirectories))
-            {
-                string item = file.Replace(Paths.FlashContents, null).ToLower();
-
-                // FOR FORCING 4:3
-                // ********
-                if (item.Contains(".wide.pcf") && Settings["stretch_to_4_3"] == "yes")
-                    File.Copy(file.Replace(".wide.pcf", ".pcf"), file, true);
-
-                else if (item.EndsWith("keymap.ini") && Keymap != null)
-                    File.WriteAllBytes(file, Encoding.UTF8.GetBytes(string.Join("\r\n", generateKeymap()) + "\r\n"));
-
-                else if (item.Contains("config.region.pcf"))
-                    File.Delete(file);
-
-                /* else if (item.Contains("config.") && item.EndsWith(".pcf") && File.ReadAllText(file).Contains("content_url"))
-                {
-                    string[] config = File.ReadAllLines(file);
-
-                    List<string> converted = new();
-                    foreach (var line in config)
-                    {
-                        bool blocked = false;
-
-                        if (line.StartsWith("content_")) blocked = true;
-                        if (line.StartsWith("background_")) blocked = true;
-
-                        if (!blocked) converted.Add(line);
-                    };
-
-                    if (string.IsNullOrEmpty(converted[7])) converted.RemoveAt(7);
-                    if (string.IsNullOrEmpty(converted[8])) converted.RemoveAt(8);
-
-                    File.WriteAllLines(file, config);
-                } */
-
-                else if (item.EndsWith("config.common.pcf"))
-                {
-                    string[] txt = new string[]
-                    {
-                        "# Comments (text preceded by #) and line breaks will be ignored",
-                        "######################################################################",
-                        "",
-                        "static_heap_size                8192                # 8192[KB] -> 8[MB]",
-                        "dynamic_heap_size               16384               # 16384[KB] -> 16[MB]",
-                        "",
-                     // "stream_cache_max_file_size      512                 # 512[KB] -> 0.5[MB]",
-                     // "stream_cache_size               2048                # 2048[KB] -> 2.0[MB]",
-                        "",
-                        "mouse                           " + Settings["mouse"],
-                        "qwerty_keyboard                 " + Settings["qwerty_keyboard"] + "                  # hardware keyboard",
-                     // "qwerty_events                   " + Settings["qwerty_keyboard"] + "                  # hardware keyboard sends flash events",
-                     // "use_keymap                      " + Settings["qwerty_keyboard"] + "                  # determines if the region's keymap.ini is used",
-                        "navigation_model                " + "4way                # 2way / 4way / 4waywrap",
-                        "quality                         " + Settings["quality"] + "              # low / medium / high",
-                        "looping                         " + "on",
-                        "",
-                        "text_encoding                   utf-16              # should be utf-16",
-                        "",
-                        "midi                            " + (File.Exists(Settings["midi"]) ? "on" : "off"),
-                        (File.Exists(Settings["midi"]) ? null : "# ") +"dls_file                        dls/GM16.DLS",
-                        "",
-                        "key_input                       on                  # software keyboard -- requires hardware keyboard and mouse",
-                        "",
-                        "cursor_archive                  cursor.arc",
-                        "cursor_layout                   cursor.brlyt",
-                        "",
-                        "dialog_cursor_archive           cursor.arc",
-                        "dialog_cursor_layout            cursor.brlyt",
-                        "",
-                        "########################### RegionConfig #############################",
-                        "",
-                        "banner_file                     banner/banner.ini",
-                    /*  "",
-                        "# set to match the loading screen's background color",
-                        "background_color                43 43 43 255        # RGBA -- VODF/SWF BG Color.",
-                        "",
-                        "# country_code                  usa / eur / jpn # If this is not configured, the market specified during the build will be set",
-                        "# native_code_page              latin1 / japanese_shiftjis",
-                        "keyboard_country_code           united_kingdom",
-                        "keyboard_keymap_file            config/EU/keymap.ini",
-                        "",
-                        "device_text                     on",
-                        "brfna_file                      10, wbf1.brfna",
-                        "brsar_fil                       sound/FlashPlayerSe.brsar   # sound data",
-                        "",
-                        "embedded_vector_font            off",
-                        "# embedded_vector_font_files    fonts/font1.swf fonts/font2.swf fonts/font3.swf",
-                        "# pre_installed_as_class_files  library/classes.swf",
-                        "", */
-                        "########################### SAVE STORAGE #############################",
-                        "",
-                        "shared_object_capability        " + Settings["shared_object_capability"],
-                        "num_vff_drives                  1",
-                        "vff_cache_size                  " + Settings["vff_cache_size"],
-                        "vff_sync_on_write               " + Settings["vff_sync_on_write"],
-                        "",
-                        "persistent_storage_root_drive   X",
-                        "persistent_storage_vff_file     shrdobjs.vff        # 8.3 format",
-                        "persistent_storage_total        " + Settings["persistent_storage_total"],
-                        "persistent_storage_per_movie    " + Settings["persistent_storage_per_movie"],
-                        "",
-                        "########################## Wii SoftwareUI ############################",
-                        "",
-                        "supported_devices               core, freestyle, classic",
-                        "",
-                        "hbm_no_save                     " + Settings["hbm_no_save"],
-                        "strap_reminder                  " + Settings["strap_reminder"],
-                        "",
-                        "update_frame_rate               " + Settings["update_frame_rate"] + "                   # 0 sets it to framerate set in content",
-                        "",
-                    /*  "trace_filter                    none",
-                        "texture_filter                  linear",
-                        "",
-                        "static_module                   static.sel",
-                        "",
-                        "plugin_modules                  plugin_wiinotification.rso",
-                        "plugin_modules                  plugin_wiiremote.rso",
-                        "plugin_modules                  plugin_wiisystem.rso",
-                        "plugin_modules                  plugin_wiisound.rso",
-                        "plugin_modules                  plugin_wiinetwork.rso",
-                        "# plugin_modules                plugin_wiiconnect24.rso",
-                        "# plugin_modules                plugin_wiiperformance.rso",
-                        "# plugin_modules                plugin_wiikeyboard.rso",
-                        "# plugin_modules                plugin_wiisugarcalculations.rso",
-                        "# plugin_modules                plugin_wiiuntrustedrequest.rso",
-                        "# plugin_modules                plugin_wiimiisupport.rso",
-                        "", */
-                     // "################### ContentStream (DO NOT MODIFY) ####################",
-                     // "",
-                     // "content_url                     file:///content/" + target,
-                     // "content_mem1                    no",
-                     // "content_buffer_mode             copy",
-                        // ^^^ The above are stored in each region's config.region.pcf, so they are not included here.
-                            // The below option is required to be set in order for additional files, such as XML configs, to load properly.
-                     // "content_domain                  file:///content/",
-                     // "flash_vars                      dummy=1"
-                    };
-
-                    File.WriteAllBytes(file, Encoding.UTF8.GetBytes(string.Join("\r\n", txt) + "\r\n"));
-                }
-            }
-
             // Savebanner .TPL & config
             // ********
+            if (Settings["shared_object_capability"] == "on")
             {
-                Directory.Delete(Paths.FlashContents + "banner\\", true);
-                Directory.CreateDirectory(Paths.FlashContents + "banner\\");
+                TPL banner = Img.CreateSaveTPL(1);
+                TPL icons = Img.CreateSaveTPL(2);
 
-                int textures = 0;
-                using (TPL banner = Img.CreateSaveTPL(1))
-                using (TPL icons = Img.CreateSaveTPL(2))
-                {
-                    banner.Save(Paths.FlashContents + "banner\\banner.tpl");
-                    icons.Save(Paths.FlashContents + "banner\\icons.tpl");
-                    textures = icons.NumOfTextures;
-                }
+                int textures = icons.NumOfTextures;
 
                 for (int i = 0; i < lines.Length; i++)
-                    lines[i] = Encoding.UTF8.GetString(Encoding.Convert(Encoding.Unicode, Encoding.UTF8, Encoding.Unicode.GetBytes(lines[i])));
-
-                var txt = new List<string>()
                 {
-                    "not_copy        off",
-                    "anim_type       bounce",
-                    $"title_text      {System.Uri.EscapeUriString(lines[0])}",
-                    $"comment_text    {(lines.Length > 1 && !string.IsNullOrEmpty(lines[1]) ? System.Uri.EscapeUriString(lines[1]) : "%20")}",
-                    "banner_tpl      banner/banner.tpl",
-                    "icon_tpl        banner/icons.tpl",
-                    "icon_count      " + textures,
-                };
-
-                for (int i = 0; i < textures; i++)
-                {
-                    txt.Add($"icon_speed      {i}, slow");
+                    var bytes = Encoding.Unicode.GetBytes(lines[i]);
+                    lines[i] = Encoding.UTF8.GetString(Encoding.Convert(Encoding.Unicode, Encoding.UTF8, bytes));
                 }
 
-                File.WriteAllBytes(Paths.FlashContents + "banner\\banner.ini", Encoding.UTF8.GetBytes(string.Join("\r\n", txt) + "\r\n"));
+                foreach (string file in Directory.EnumerateFiles(Paths.FlashContents, "*.*", SearchOption.AllDirectories))
+                {
+                    string item = file.Replace(Paths.FlashContents, null).ToLower();
+
+                    if (item.Contains("banner\\us")) region = 0;
+                    if (item.Contains("banner\\eu")) region = 1;
+                    if (item.Contains("banner\\jp")) region = 2;
+
+                    if (item.Contains("banner.tpl"))
+                        File.WriteAllBytes(file, banner.ToByteArray());
+
+                    else if (item.Contains("icons.tpl"))
+                        File.WriteAllBytes(file, icons.ToByteArray());
+
+                    else if (item.Contains("banner.ini"))
+                    {
+                        var txt = new List<string>()
+                            {
+                                "not_copy        off",
+                                "anim_type       bounce",
+                                $"title_text      {System.Uri.EscapeUriString(lines[0])}",
+                                $"comment_text    {(lines.Length > 1 && !string.IsNullOrEmpty(lines[1]) ? System.Uri.EscapeUriString(lines[1]) : "%20")}",
+                                $"banner_tpl      banner/{(region == 2 ? "JP" : region == 1 ? "EU" : "US")}/banner.tpl",
+                                $"icon_tpl        banner/{(region == 2 ? "JP" : region == 1 ? "EU" : "US")}/icons.tpl",
+                                "icon_count      " + textures,
+                            };
+
+                        for (int i = 0; i < textures; i++)
+                        {
+                            txt.Add($"icon_speed      {i}, slow");
+                        }
+
+                        File.WriteAllBytes(file, Encoding.UTF8.GetBytes(string.Join("\r\n", txt) + "\r\n"));
+                    }
+                }
+
+                banner.Dispose();
+                icons.Dispose();
             }
 
             MainContent.CreateFromDirectory(Paths.FlashContents);
@@ -606,54 +592,6 @@ namespace FriishProduce.Injectors
             w.CreateNew(Paths.WAD);
             Directory.Delete(Paths.WAD, true);
             return w;
-        }
-
-        private static string[] generateKeymap()
-        {
-            List<string> txt = new();
-            foreach (var mapping in Keymap)
-            {
-                string button = mapping.Key switch
-                {
-                    Buttons.WiiRemote_Left => "KEY_BUTTON_LEFT",
-                    Buttons.WiiRemote_Right => "KEY_BUTTON_RIGHT",
-                    Buttons.WiiRemote_Down => "KEY_BUTTON_DOWN",
-                    Buttons.WiiRemote_Up => "KEY_BUTTON_UP",
-                    Buttons.WiiRemote_A => "KEY_BUTTON_A",
-                    Buttons.WiiRemote_B => "KEY_BUTTON_B",
-                    Buttons.WiiRemote_Home => "KEY_BUTTON_HOME",
-                    Buttons.WiiRemote_Plus => "KEY_BUTTON_PLUS",
-                    Buttons.WiiRemote_Minus => "KEY_BUTTON_MINUS",
-                    Buttons.WiiRemote_1 => "KEY_BUTTON_1",
-                    Buttons.WiiRemote_2 => "KEY_BUTTON_2",
-                    Buttons.Nunchuck_Z => "KEY_BUTTON_Z",
-                    Buttons.Nunchuck_C => "KEY_BUTTON_C",
-
-                    Buttons.Classic_Up => "KEY_CL_BUTTON_UP",
-                    Buttons.Classic_Left => "KEY_CL_BUTTON_LEFT",
-                    Buttons.Classic_ZR => "KEY_CL_TRIGGER_ZR",
-                    Buttons.Classic_X => "KEY_CL_BUTTON_X",
-                    Buttons.Classic_A => "KEY_CL_BUTTON_A",
-                    Buttons.Classic_Y => "KEY_CL_BUTTON_Y",
-                    Buttons.Classic_B => "KEY_CL_BUTTON_B",
-                    Buttons.Classic_ZL => "KEY_CL_TRIGGER_ZL",
-                    Buttons.Classic_Reserved => "KEY_CL_RESERVED",
-                    Buttons.Classic_R => "KEY_CL_TRIGGER_R",
-                    Buttons.Classic_Plus => "KEY_CL_BUTTON_PLUS",
-                    Buttons.Classic_Home => "KEY_CL_BUTTON_HOME",
-                    Buttons.Classic_Minus => "KEY_CL_BUTTON_MINUS",
-                    Buttons.Classic_L => "KEY_CL_TRIGGER_L",
-                    Buttons.Classic_Down => "KEY_CL_BUTTON_DOWN",
-                    Buttons.Classic_Right => "KEY_CL_BUTTON_RIGHT",
-
-                    _ => null
-                };
-
-                if (button != null && !string.IsNullOrWhiteSpace(mapping.Value))
-                    txt.Add(button.Length < 17 ? button.PadRight(17, ' ') + mapping.Value : button + ' ' + mapping.Value);
-            }
-
-            return txt.ToArray();
         }
     }
 }
