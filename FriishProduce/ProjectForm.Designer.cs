@@ -342,10 +342,10 @@ namespace FriishProduce
             // 
             this.groupBox3.Controls.Add(this.injection_method_options);
             this.groupBox3.Controls.Add(this.injection_methods);
-            this.groupBox3.Controls.Add(this.forwarder_root_device);
             this.groupBox3.Controls.Add(this.manual_type);
             this.groupBox3.Controls.Add(this.multifile_software);
             this.groupBox3.Controls.Add(this.extra);
+            this.groupBox3.Controls.Add(this.forwarder_root_device);
             resources.ApplyResources(this.groupBox3, "groupBox3");
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.TabStop = false;

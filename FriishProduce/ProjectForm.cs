@@ -744,7 +744,7 @@ namespace FriishProduce
             // ********
             RefreshForm();
 
-            manual_type.Enabled = false;
+            bool removeManual = true;
             foreach (var manualConsole in new List<Platform>() // Confirmed to have an algorithm exist for NES, SNES, N64, SEGA, PCE, NEO
             {
                 Platform.NES,
@@ -755,7 +755,8 @@ namespace FriishProduce
                 // Platform.PCE,
                 // Platform.NEO
             })
-                if (targetPlatform == manualConsole) manual_type.Enabled = true;
+                if (targetPlatform == manualConsole) removeManual = false;
+            if (removeManual) manual_type.Items.RemoveAt(2);
 
             // *****************************************************
             // LOADING PROJECT
@@ -1127,7 +1128,7 @@ namespace FriishProduce
             Base.Enabled = use_online_wad.Checked && Base.Items.Count > 1;
             checkImg1.Visible = import_wad.Enabled = use_offline_wad.Checked;
 
-            if (Base.Enabled)
+            if (use_online_wad.Checked)
             {
                 WADPath = null;
                 AddBases();
