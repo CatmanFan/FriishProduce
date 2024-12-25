@@ -835,7 +835,7 @@ namespace FriishProduce
             // ********
             if (loadProject)
                 foreach (var item in new string[] { project.ROM, project.Patch, project.BaseFile, project.Sound })
-                    if (!File.Exists(item) && !string.IsNullOrWhiteSpace(item)) MessageBox.Show(string.Format(Program.Lang.Msg(10, true), Path.GetFileName(item)));
+                    if (!File.Exists(item) && !string.IsNullOrWhiteSpace(item)) MessageBox.Show(string.Format(Program.Lang.Msg(11, true), Path.GetFileName(item)));
             project = null;
         }
 
@@ -1556,7 +1556,7 @@ namespace FriishProduce
                         for (int i = 0; i < entry.Regions.Count; i++)
                             if (entry.GetUpperID(i) == baseID.Text.ToUpper()) outWad = entry.GetWAD(i);
                     if (outWad == null || outWad?.NumOfContents <= 1)
-                        throw new Exception(Program.Lang.Msg(8, true));
+                        throw new Exception(Program.Lang.Msg(9, true));
 
                     // -----------------------------------------------
                     progress.step += 1;
@@ -1684,7 +1684,7 @@ namespace FriishProduce
                 // Check new WAD file
                 // *******
                 if (File.Exists(targetFile) && File.ReadAllBytes(targetFile).Length > 10) error = null;
-                else throw new Exception(Program.Lang.Msg(6, true));
+                else throw new Exception(Program.Lang.Msg(7, true));
             }
 
             catch (Exception ex)
@@ -2146,6 +2146,7 @@ namespace FriishProduce
                         break;
 
                     case Platform.SNES:
+                        contentOptionsForm = new Options_VC_SNES();
                         break;
 
                     case Platform.N64:

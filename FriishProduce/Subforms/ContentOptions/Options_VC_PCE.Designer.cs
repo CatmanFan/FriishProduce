@@ -34,14 +34,14 @@ namespace FriishProduce
             this.europe = new System.Windows.Forms.Label();
             this.europe_switch = new JCS.ToggleSwitch();
             this.vc_options = new System.Windows.Forms.GroupBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.sgenable = new System.Windows.Forms.CheckBox();
+            this.backupram = new System.Windows.Forms.CheckBox();
             this.display = new System.Windows.Forms.GroupBox();
             this.y_offset = new System.Windows.Forms.Label();
             this.y_offset_toggle = new System.Windows.Forms.NumericUpDown();
             this.sprline = new System.Windows.Forms.CheckBox();
             this.raster = new System.Windows.Forms.CheckBox();
             this.hide_overscan = new System.Windows.Forms.CheckBox();
-            this.sgenable = new System.Windows.Forms.CheckBox();
             this.bottomPanel1.SuspendLayout();
             this.controller_box.SuspendLayout();
             this.vc_options.SuspendLayout();
@@ -90,7 +90,7 @@ namespace FriishProduce
             // vc_options
             // 
             this.vc_options.Controls.Add(this.sgenable);
-            this.vc_options.Controls.Add(this.checkBox4);
+            this.vc_options.Controls.Add(this.backupram);
             this.vc_options.Controls.Add(this.europe_switch);
             this.vc_options.Controls.Add(this.europe);
             this.vc_options.Controls.Add(this.padbutton);
@@ -103,16 +103,27 @@ namespace FriishProduce
             this.vc_options.Tag = "vc_options";
             this.vc_options.Text = "vc_options";
             // 
-            // checkBox4
+            // sgenable
             // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(10, 84);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(115, 17);
-            this.checkBox4.TabIndex = 5;
-            this.checkBox4.Tag = "save_data_enable";
-            this.checkBox4.Text = "save_data_enable";
-            this.checkBox4.UseVisualStyleBackColor = true;
+            this.sgenable.AutoSize = true;
+            this.sgenable.Location = new System.Drawing.Point(10, 63);
+            this.sgenable.Name = "sgenable";
+            this.sgenable.Size = new System.Drawing.Size(69, 17);
+            this.sgenable.TabIndex = 24;
+            this.sgenable.Tag = "sgenable";
+            this.sgenable.Text = "sgenable";
+            this.sgenable.UseVisualStyleBackColor = true;
+            // 
+            // backupram
+            // 
+            this.backupram.AutoSize = true;
+            this.backupram.Location = new System.Drawing.Point(10, 84);
+            this.backupram.Name = "backupram";
+            this.backupram.Size = new System.Drawing.Size(115, 17);
+            this.backupram.TabIndex = 5;
+            this.backupram.Tag = "save_data_enable";
+            this.backupram.Text = "save_data_enable";
+            this.backupram.UseVisualStyleBackColor = true;
             // 
             // display
             // 
@@ -183,17 +194,6 @@ namespace FriishProduce
             this.hide_overscan.Text = "hide_overscan";
             this.hide_overscan.UseVisualStyleBackColor = true;
             // 
-            // sgenable
-            // 
-            this.sgenable.AutoSize = true;
-            this.sgenable.Location = new System.Drawing.Point(10, 63);
-            this.sgenable.Name = "sgenable";
-            this.sgenable.Size = new System.Drawing.Size(69, 17);
-            this.sgenable.TabIndex = 24;
-            this.sgenable.Tag = "sgenable";
-            this.sgenable.Text = "sgenable";
-            this.sgenable.UseVisualStyleBackColor = true;
-            // 
             // Options_VC_PCE
             // 
             this.ClientSize = new System.Drawing.Size(554, 297);
@@ -228,7 +228,7 @@ namespace FriishProduce
         private System.Windows.Forms.CheckBox sprline;
         private System.Windows.Forms.Label y_offset;
         private System.Windows.Forms.NumericUpDown y_offset_toggle;
-        private System.Windows.Forms.CheckBox checkBox4;
+        private System.Windows.Forms.CheckBox backupram;
         private System.Windows.Forms.CheckBox sgenable;
     }
 }

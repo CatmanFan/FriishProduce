@@ -36,7 +36,7 @@ namespace FriishProduce
             {
                 Program.Lang.Control(this);
                 ToggleSwitchText();
-                checkBox4.Text = Program.Lang.String("save_data_enable", "projectform");
+                backupram.Text = Program.Lang.String("save_data_enable", "projectform");
             }
         }
 
@@ -55,7 +55,7 @@ namespace FriishProduce
                 hide_overscan.Checked               = Options["HIDEOVERSCAN"] == "1";
                 raster.Checked                      = Options["RASTER"] == "1";
                 sprline.Checked                     = Options["SPRLINE"] == "1";
-                checkBox4.Checked                   = Options["BACKUPRAM"] == "1";
+                backupram.Checked                   = Options["BACKUPRAM"] == "1";
             }
             // *******
         }
@@ -69,7 +69,7 @@ namespace FriishProduce
             Options["HIDEOVERSCAN"]                 = hide_overscan.Checked ? "1" : "0";
             Options["RASTER"]                       = raster.Checked ? "1" : "0";
             Options["SPRLINE"]                      = sprline.Checked ? "1" : "0";
-            Options["BACKUPRAM"]                    = checkBox4.Checked ? "1" : "0";
+            Options["BACKUPRAM"]                    = backupram.Checked ? "1" : "0";
             Options["NOFPA"]                        = "1";
             Options["PAD5"]                         = "0";
         }

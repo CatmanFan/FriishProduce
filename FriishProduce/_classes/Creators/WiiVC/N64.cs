@@ -250,7 +250,7 @@ namespace FriishProduce.Injectors
                     foreach (var item in failed)
                         failedList += "- " + item + Environment.NewLine;
 
-                    MessageBox.Show(string.Format(Program.Lang.Msg(4, true), failedList));
+                    MessageBox.Show(string.Format(Program.Lang.Msg(5, true), failedList));
                 }
             }
             catch (Exception ex)

@@ -44,7 +44,6 @@ namespace FriishProduce
             this.GetBanners = new System.Windows.Forms.Button();
             this.TreeView = new System.Windows.Forms.TreeView();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.use_online_wad_tip = new FriishProduce.ImageLabel();
             this.bypass_rom_size = new System.Windows.Forms.CheckBox();
             this.use_online_wad_enabled = new System.Windows.Forms.CheckBox();
             this.use_custom_database = new System.Windows.Forms.CheckBox();
@@ -140,6 +139,15 @@ namespace FriishProduce
             this.flash_persistent_storage_total_l = new System.Windows.Forms.Label();
             this.flash_persistent_storage_total = new System.Windows.Forms.ComboBox();
             this.flash_save_data_enable = new System.Windows.Forms.CheckBox();
+            this.vc_snes = new System.Windows.Forms.Panel();
+            this.vc_snes_options = new System.Windows.Forms.GroupBox();
+            this.vc_snes_patch_nosave = new System.Windows.Forms.CheckBox();
+            this.vc_snes_patch_widescreen = new System.Windows.Forms.CheckBox();
+            this.vc_snes_patch_nocc = new System.Windows.Forms.CheckBox();
+            this.vc_snes_patch_nodark = new System.Windows.Forms.CheckBox();
+            this.vc_snes_patch_nosuspend = new System.Windows.Forms.CheckBox();
+            this.vc_snes_patch_volume = new System.Windows.Forms.CheckBox();
+            this.use_online_wad_tip = new FriishProduce.ImageLabel();
             this.vc_n64_options.SuspendLayout();
             this.bottomPanel2.SuspendLayout();
             this.bottomPanel1.SuspendLayout();
@@ -181,6 +189,8 @@ namespace FriishProduce
             this.flash_strap_reminder.SuspendLayout();
             this.flash_controls.SuspendLayout();
             this.flash_save_data.SuspendLayout();
+            this.vc_snes.SuspendLayout();
+            this.vc_snes_options.SuspendLayout();
             this.SuspendLayout();
             // 
             // languages
@@ -305,15 +315,6 @@ namespace FriishProduce
             this.panel1.Controls.Add(this.language);
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
-            // 
-            // use_online_wad_tip
-            // 
-            resources.ApplyResources(this.use_online_wad_tip, "use_online_wad_tip");
-            this.use_online_wad_tip.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.use_online_wad_tip.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.use_online_wad_tip.Image = global::FriishProduce.Properties.Resources.information;
-            this.use_online_wad_tip.Name = "use_online_wad_tip";
-            this.use_online_wad_tip.Tag = "use_online_wad_tip";
             // 
             // bypass_rom_size
             // 
@@ -1113,6 +1114,77 @@ namespace FriishProduce
             this.flash_save_data_enable.UseVisualStyleBackColor = true;
             this.flash_save_data_enable.CheckedChanged += new System.EventHandler(this.ToggleSwitchChanged);
             // 
+            // vc_snes
+            // 
+            this.vc_snes.Controls.Add(this.vc_snes_options);
+            resources.ApplyResources(this.vc_snes, "vc_snes");
+            this.vc_snes.Name = "vc_snes";
+            this.vc_snes.Tag = "vc_snes";
+            // 
+            // vc_snes_options
+            // 
+            this.vc_snes_options.Controls.Add(this.vc_snes_patch_nosave);
+            this.vc_snes_options.Controls.Add(this.vc_snes_patch_widescreen);
+            this.vc_snes_options.Controls.Add(this.vc_snes_patch_nocc);
+            this.vc_snes_options.Controls.Add(this.vc_snes_patch_nodark);
+            this.vc_snes_options.Controls.Add(this.vc_snes_patch_nosuspend);
+            this.vc_snes_options.Controls.Add(this.vc_snes_patch_volume);
+            resources.ApplyResources(this.vc_snes_options, "vc_snes_options");
+            this.vc_snes_options.Name = "vc_snes_options";
+            this.vc_snes_options.TabStop = false;
+            this.vc_snes_options.Tag = "vc_options";
+            // 
+            // vc_snes_patch_nosave
+            // 
+            resources.ApplyResources(this.vc_snes_patch_nosave, "vc_snes_patch_nosave");
+            this.vc_snes_patch_nosave.Name = "vc_snes_patch_nosave";
+            this.vc_snes_patch_nosave.Tag = "save_data_enable";
+            this.vc_snes_patch_nosave.UseVisualStyleBackColor = true;
+            // 
+            // vc_snes_patch_widescreen
+            // 
+            resources.ApplyResources(this.vc_snes_patch_widescreen, "vc_snes_patch_widescreen");
+            this.vc_snes_patch_widescreen.Name = "vc_snes_patch_widescreen";
+            this.vc_snes_patch_widescreen.Tag = "patch_widescreen";
+            this.vc_snes_patch_widescreen.UseVisualStyleBackColor = true;
+            // 
+            // vc_snes_patch_nocc
+            // 
+            resources.ApplyResources(this.vc_snes_patch_nocc, "vc_snes_patch_nocc");
+            this.vc_snes_patch_nocc.Name = "vc_snes_patch_nocc";
+            this.vc_snes_patch_nocc.Tag = "patch_nocc";
+            this.vc_snes_patch_nocc.UseVisualStyleBackColor = true;
+            // 
+            // vc_snes_patch_nodark
+            // 
+            resources.ApplyResources(this.vc_snes_patch_nodark, "vc_snes_patch_nodark");
+            this.vc_snes_patch_nodark.Name = "vc_snes_patch_nodark";
+            this.vc_snes_patch_nodark.Tag = "patch_nodark";
+            this.vc_snes_patch_nodark.UseVisualStyleBackColor = true;
+            // 
+            // vc_snes_patch_nosuspend
+            // 
+            resources.ApplyResources(this.vc_snes_patch_nosuspend, "vc_snes_patch_nosuspend");
+            this.vc_snes_patch_nosuspend.Name = "vc_snes_patch_nosuspend";
+            this.vc_snes_patch_nosuspend.Tag = "patch_nosuspend";
+            this.vc_snes_patch_nosuspend.UseVisualStyleBackColor = true;
+            // 
+            // vc_snes_patch_volume
+            // 
+            resources.ApplyResources(this.vc_snes_patch_volume, "vc_snes_patch_volume");
+            this.vc_snes_patch_volume.Name = "vc_snes_patch_volume";
+            this.vc_snes_patch_volume.Tag = "patch_volume";
+            this.vc_snes_patch_volume.UseVisualStyleBackColor = true;
+            // 
+            // use_online_wad_tip
+            // 
+            resources.ApplyResources(this.use_online_wad_tip, "use_online_wad_tip");
+            this.use_online_wad_tip.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.use_online_wad_tip.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.use_online_wad_tip.Image = global::FriishProduce.Properties.Resources.information;
+            this.use_online_wad_tip.Name = "use_online_wad_tip";
+            this.use_online_wad_tip.Tag = "use_online_wad_tip";
+            // 
             // SettingsForm
             // 
             this.AcceptButton = this.b_ok;
@@ -1122,9 +1194,7 @@ namespace FriishProduce
             this.ControlBox = false;
             this.Controls.Add(this.bottomPanel2);
             this.Controls.Add(this.TreeView);
-            this.Controls.Add(this.adobe_flash);
-            this.Controls.Add(this.forwarder);
-            this.Controls.Add(this.vc_nes);
+            this.Controls.Add(this.vc_snes);
             this.Controls.Add(this.vc_n64);
             this.Controls.Add(this.vc_sega);
             this.Controls.Add(this.vc_pce);
@@ -1133,6 +1203,9 @@ namespace FriishProduce
             this.Controls.Add(this.bios_files);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.adobe_flash);
+            this.Controls.Add(this.forwarder);
+            this.Controls.Add(this.vc_nes);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MaximizeBox = false;
@@ -1198,6 +1271,9 @@ namespace FriishProduce
             this.flash_controls.PerformLayout();
             this.flash_save_data.ResumeLayout(false);
             this.flash_save_data.PerformLayout();
+            this.vc_snes.ResumeLayout(false);
+            this.vc_snes_options.ResumeLayout(false);
+            this.vc_snes_options.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1313,5 +1389,13 @@ namespace FriishProduce
         private System.Windows.Forms.ComboBox flash_persistent_storage_total;
         private System.Windows.Forms.CheckBox flash_save_data_enable;
         private System.Windows.Forms.CheckBox flash_stretch_to_4_3;
+        private System.Windows.Forms.Panel vc_snes;
+        private System.Windows.Forms.GroupBox vc_snes_options;
+        private System.Windows.Forms.CheckBox vc_snes_patch_nosave;
+        private System.Windows.Forms.CheckBox vc_snes_patch_widescreen;
+        private System.Windows.Forms.CheckBox vc_snes_patch_nocc;
+        private System.Windows.Forms.CheckBox vc_snes_patch_nodark;
+        private System.Windows.Forms.CheckBox vc_snes_patch_nosuspend;
+        private System.Windows.Forms.CheckBox vc_snes_patch_volume;
     }
 }

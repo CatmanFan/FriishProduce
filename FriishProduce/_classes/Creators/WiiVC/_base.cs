@@ -183,8 +183,8 @@ namespace FriishProduce
                             File.WriteAllBytes(Paths.WorkingFolder + "html.arc", target.Data[target.GetNodeIndex(origManual)]);
                             Utils.Run
                             (
-                                Paths.Tools + "wwcxtool.exe",
-                                Paths.WorkingFolder,
+                                FileDatas.Apps.wwcxtool,
+                                "wwcxtool.exe",
                                 "/u html.arc html.dec"
                             );
                             if (!File.Exists(Paths.WorkingFolder + "html.dec")) throw new Exception(Program.Lang.Msg(2, true));
@@ -193,8 +193,8 @@ namespace FriishProduce
 
                             Utils.Run
                             (
-                                Paths.Tools + "wwcxtool.exe",
-                                Paths.WorkingFolder,
+                                FileDatas.Apps.wwcxtool,
+                                "wwcxtool.exe",
                                 "/cr html.arc html_modified.dec html_modified.arc"
                             );
                             if (!File.Exists(Paths.WorkingFolder + "html_modified.arc")) throw new Exception(Program.Lang.Msg(2, true));
@@ -227,7 +227,7 @@ namespace FriishProduce
                 {
                     CleanManual();
                     target.ReplaceFile(target.GetNodeIndex(origManual), backup);
-                    MessageBox.Show(Program.Lang.Msg(9, true));
+                    MessageBox.Show(Program.Lang.Msg(10, true));
                 }
             }
 

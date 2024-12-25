@@ -117,66 +117,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="&gt;&gt;b_cancel.Name" xml:space="preserve">
-    <value>b_cancel</value>
-  </data>
-  <data name="&gt;&gt;b_cancel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;b_cancel.Parent" xml:space="preserve">
-    <value>bottomPanel1</value>
-  </data>
-  <data name="&gt;&gt;b_cancel.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;b_ok.Name" xml:space="preserve">
-    <value>b_ok</value>
-  </data>
-  <data name="&gt;&gt;b_ok.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;b_ok.Parent" xml:space="preserve">
-    <value>bottomPanel1</value>
-  </data>
-  <data name="&gt;&gt;b_ok.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="bottomPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="bottomPanel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 1</value>
-  </data>
-  <data name="bottomPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>554, 41</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="bottomPanel1.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
-  </data>
-  <data name="&gt;&gt;bottomPanel1.Name" xml:space="preserve">
-    <value>bottomPanel1</value>
-  </data>
-  <data name="&gt;&gt;bottomPanel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;bottomPanel1.Parent" xml:space="preserve">
-    <value>bottomPanel2</value>
-  </data>
-  <data name="&gt;&gt;bottomPanel1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="b_cancel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="b_cancel.Location" type="System.Drawing.Point, System.Drawing">
     <value>442, 8</value>
   </data>
   <data name="b_cancel.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 24</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="b_cancel.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
@@ -221,6 +173,30 @@
   </data>
   <data name="&gt;&gt;b_ok.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="bottomPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="bottomPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 1</value>
+  </data>
+  <data name="bottomPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>554, 41</value>
+  </data>
+  <data name="bottomPanel1.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;bottomPanel1.Name" xml:space="preserve">
+    <value>bottomPanel1</value>
+  </data>
+  <data name="&gt;&gt;bottomPanel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;bottomPanel1.Parent" xml:space="preserve">
+    <value>bottomPanel2</value>
+  </data>
+  <data name="&gt;&gt;bottomPanel1.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="b_controller.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -295,6 +271,21 @@
   <data name="&gt;&gt;bottomPanel2.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="controller_cb.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="controller_cb.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 0</value>
+  </data>
+  <data name="controller_cb.Size" type="System.Drawing.Size, System.Drawing">
+    <value>71, 17</value>
+  </data>
+  <data name="controller_cb.TabIndex" type="System.Int32, mscorlib">
+    <value>39</value>
+  </data>
+  <data name="controller_cb.Text" xml:space="preserve">
+    <value>controller</value>
+  </data>
   <data name="&gt;&gt;controller_cb.Name" xml:space="preserve">
     <value>controller_cb</value>
   </data>
@@ -329,33 +320,6 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;controller_box.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="controller_cb.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="controller_cb.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 0</value>
-  </data>
-  <data name="controller_cb.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 17</value>
-  </data>
-  <data name="controller_cb.TabIndex" type="System.Int32, mscorlib">
-    <value>39</value>
-  </data>
-  <data name="controller_cb.Text" xml:space="preserve">
-    <value>controller</value>
-  </data>
-  <data name="&gt;&gt;controller_cb.Name" xml:space="preserve">
-    <value>controller_cb</value>
-  </data>
-  <data name="&gt;&gt;controller_cb.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;controller_cb.Parent" xml:space="preserve">
-    <value>controller_box</value>
-  </data>
-  <data name="&gt;&gt;controller_cb.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

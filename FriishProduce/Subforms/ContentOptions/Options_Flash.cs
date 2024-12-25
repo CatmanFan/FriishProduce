@@ -123,7 +123,7 @@ namespace FriishProduce
             }
             else
             {
-                if (!string.IsNullOrEmpty(Options["midi"])) MessageBox.Show(string.Format(Program.Lang.Msg(10, true), Path.GetFileName(Options["midi"])));
+                if (!string.IsNullOrEmpty(Options["midi"])) MessageBox.Show(string.Format(Program.Lang.Msg(11, true), Path.GetFileName(Options["midi"])));
                 midi.Checked = false;
             }
             // *******
@@ -183,12 +183,12 @@ namespace FriishProduce
                 if (!midi.Checked) DLSPath = null;
             }
         }
-        #endregion
 
         private void changeBackgroundColor(object sender, EventArgs e)
         {
             BGColor.ShowDialog();
             background_color_img.BackColor = BGColor.Color;
         }
+        #endregion
     }
 }

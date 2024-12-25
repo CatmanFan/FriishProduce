@@ -69,7 +69,7 @@ For icons and interface:
 * **[SCE-PS3 Rodin LATIN](https://github.com/skrptktty/ps3-firmware-beginners-luck/blob/master/PS3_411/update_files/dev_flash/data/font/SCE-PS3-RD-R-LATIN.TTF) font** from [this repo](https://github.com/skrptktty/ps3-firmware-beginners-luck) (Solar Storm License).
 
 I would also like to thank the following people:
-* **[SuperrSonic](https://github.com/SuperrSonic)** for reverse-engineering much of Wii software and official emulator code, and in particular, his [fork of RetroArch Wii](https://github.com/SuperrSonic/RA-SS).
+* **[SuperrSonic](https://github.com/SuperrSonic)** for reverse-engineering much of Wii software and official emulator code, and in particular, his [SNES VC Booster](https://github.com/SuperrSonic/snes-vc-booster) and [fork of RetroArch Wii](https://github.com/SuperrSonic/RA-SS).
 * **[saulfabreg](https://github.com/saulfabregwiivc)** for archiving several tools and aiding in research & documentation.
 * **[sr_corsario](https://gbatemp.net/members/sr_corsario.128473/)** for his work in disclosing NEO-GEO ROM injection methods.
 * **[FIX94](https://github.com/FIX94)** for his particular contributions to (v)Wii and Wii U homebrew and assistance in forking various homebrew apps.

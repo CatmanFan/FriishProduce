@@ -562,8 +562,8 @@ namespace FriishProduce
                                             File.WriteAllBytes(Paths.WorkingFolder + "html.arc", u8.Data[u8.GetNodeIndex(item)]);
                                             Utils.Run
                                             (
-                                                Paths.Tools + "wwcxtool.exe",
-                                                Paths.WorkingFolder,
+                                                FileDatas.Apps.wwcxtool,
+                                                "wwcxtool.exe",
                                                 "/u html.arc html.dec"
                                             );
                                             if (!File.Exists(Paths.WorkingFolder + "html.dec")) throw new Exception(Program.Lang.Msg(2, true));
@@ -606,7 +606,7 @@ namespace FriishProduce
                             goto End;
                         }
 
-                        else throw new Exception(Program.Lang.Msg(15, true));
+                        else throw new Exception(Program.Lang.Msg(16, true));
                     }
 
                     catch (Exception ex) { error = ex; goto Failed; }

@@ -64,8 +64,8 @@ namespace FriishProduce.Injectors
 
                 Utils.Run
                 (
-                    Paths.Tools + "wwcxtool.exe",
-                    Paths.WorkingFolder,
+                    FileDatas.Apps.wwcxtool,
+                    "wwcxtool.exe",
                     "/cr rom_comp rom rom_new"
                 );
 

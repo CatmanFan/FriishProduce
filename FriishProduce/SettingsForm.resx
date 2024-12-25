@@ -151,7 +151,7 @@
     <value>NoControl</value>
   </data>
   <data name="vc_n64_patch_autosizerom.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 66</value>
+    <value>10, 64</value>
   </data>
   <data name="vc_n64_patch_autosizerom.Size" type="System.Drawing.Size, System.Drawing">
     <value>117, 17</value>
@@ -181,7 +181,7 @@
     <value>NoControl</value>
   </data>
   <data name="vc_n64_patch_expandedram.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 43</value>
+    <value>10, 42</value>
   </data>
   <data name="vc_n64_patch_expandedram.Size" type="System.Drawing.Size, System.Drawing">
     <value>125, 17</value>
@@ -211,7 +211,7 @@
     <value>NoControl</value>
   </data>
   <data name="vc_n64_patch_fixcrashes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 89</value>
+    <value>10, 86</value>
   </data>
   <data name="vc_n64_patch_fixcrashes.Size" type="System.Drawing.Size, System.Drawing">
     <value>108, 17</value>
@@ -268,7 +268,7 @@
     <value>12, 10</value>
   </data>
   <data name="vc_n64_options.Size" type="System.Drawing.Size, System.Drawing">
-    <value>536, 115</value>
+    <value>536, 112</value>
   </data>
   <data name="vc_n64_options.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
@@ -455,41 +455,45 @@
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAAB1TeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5UcmVlTm9kZREAAAAEVGV4dAtUb29sVGlwVGV4dAROYW1lCUlzQ2hlY2tl
+        ZW0uV2luZG93cy5Gb3Jtcy5UcmVlTm9kZRIAAAAEVGV4dAtUb29sVGlwVGV4dAROYW1lCUlzQ2hlY2tl
         ZApJbWFnZUluZGV4CEltYWdlS2V5ElNlbGVjdGVkSW1hZ2VJbmRleBBTZWxlY3RlZEltYWdlS2V5CkNo
         aWxkQ291bnQJY2hpbGRyZW4wCWNoaWxkcmVuMQljaGlsZHJlbjIJY2hpbGRyZW4zCWNoaWxkcmVuNAlj
-        aGlsZHJlbjUJY2hpbGRyZW42CFVzZXJEYXRhAQEBAAABAAEABAQEBAQEBAEBCAgIHVN5c3RlbS5XaW5k
-        b3dzLkZvcm1zLlRyZWVOb2RlAgAAAB1TeXN0ZW0uV2luZG93cy5Gb3Jtcy5UcmVlTm9kZQIAAAAdU3lz
-        dGVtLldpbmRvd3MuRm9ybXMuVHJlZU5vZGUCAAAAHVN5c3RlbS5XaW5kb3dzLkZvcm1zLlRyZWVOb2Rl
-        AgAAAB1TeXN0ZW0uV2luZG93cy5Gb3Jtcy5UcmVlTm9kZQIAAAAdU3lzdGVtLldpbmRvd3MuRm9ybXMu
-        VHJlZU5vZGUCAAAAHVN5c3RlbS5XaW5kb3dzLkZvcm1zLlRyZWVOb2RlAgAAAAIAAAAGAwAAABBkZWZh
-        dWx0X3NldHRpbmdzBgQAAAAABgUAAAAFTm9kZTEA/////wkEAAAA/////wkEAAAABwAAAAkHAAAACQgA
-        AAAJCQAAAAkKAAAACQsAAAAJDAAAAAkNAAAABg4AAAAQZGVmYXVsdF9zZXR0aW5ncwUHAAAAHVN5c3Rl
-        bS5XaW5kb3dzLkZvcm1zLlRyZWVOb2RlCQAAAARUZXh0C1Rvb2xUaXBUZXh0BE5hbWUJSXNDaGVja2Vk
-        CkltYWdlSW5kZXgISW1hZ2VLZXkSU2VsZWN0ZWRJbWFnZUluZGV4EFNlbGVjdGVkSW1hZ2VLZXkKQ2hp
-        bGRDb3VudAEBAQAAAQABAAEICAgCAAAABg8AAAADbmVzCQQAAAAGEQAAAAdOb2RlTkVTAP////8JBAAA
-        AP////8JBAAAAAAAAAAFCAAAAB1TeXN0ZW0uV2luZG93cy5Gb3Jtcy5UcmVlTm9kZQkAAAAEVGV4dAtU
-        b29sVGlwVGV4dAROYW1lCUlzQ2hlY2tlZApJbWFnZUluZGV4CEltYWdlS2V5ElNlbGVjdGVkSW1hZ2VJ
-        bmRleBBTZWxlY3RlZEltYWdlS2V5CkNoaWxkQ291bnQBAQEAAAEAAQABCAgIAgAAAAYTAAAAA242NAkE
-        AAAABhUAAAAHTm9kZU42NAD/////CQQAAAD/////CQQAAAAAAAAABQkAAAAdU3lzdGVtLldpbmRvd3Mu
+        aGlsZHJlbjUJY2hpbGRyZW42CWNoaWxkcmVuNwhVc2VyRGF0YQEBAQAAAQABAAQEBAQEBAQEAQEICAgd
+        U3lzdGVtLldpbmRvd3MuRm9ybXMuVHJlZU5vZGUCAAAAHVN5c3RlbS5XaW5kb3dzLkZvcm1zLlRyZWVO
+        b2RlAgAAAB1TeXN0ZW0uV2luZG93cy5Gb3Jtcy5UcmVlTm9kZQIAAAAdU3lzdGVtLldpbmRvd3MuRm9y
+        bXMuVHJlZU5vZGUCAAAAHVN5c3RlbS5XaW5kb3dzLkZvcm1zLlRyZWVOb2RlAgAAAB1TeXN0ZW0uV2lu
+        ZG93cy5Gb3Jtcy5UcmVlTm9kZQIAAAAdU3lzdGVtLldpbmRvd3MuRm9ybXMuVHJlZU5vZGUCAAAAHVN5
+        c3RlbS5XaW5kb3dzLkZvcm1zLlRyZWVOb2RlAgAAAAIAAAAGAwAAABBkZWZhdWx0X3NldHRpbmdzBgQA
+        AAAABgUAAAAFTm9kZTEA/////wkEAAAA/////wkEAAAACAAAAAkHAAAACQgAAAAJCQAAAAkKAAAACQsA
+        AAAJDAAAAAkNAAAACQ4AAAAGDwAAABBkZWZhdWx0X3NldHRpbmdzBQcAAAAdU3lzdGVtLldpbmRvd3Mu
         Rm9ybXMuVHJlZU5vZGUJAAAABFRleHQLVG9vbFRpcFRleHQETmFtZQlJc0NoZWNrZWQKSW1hZ2VJbmRl
         eAhJbWFnZUtleRJTZWxlY3RlZEltYWdlSW5kZXgQU2VsZWN0ZWRJbWFnZUtleQpDaGlsZENvdW50AQEB
-        AAABAAEAAQgICAIAAAAGFwAAAARzZWdhCQQAAAAGGQAAAAhOb2RlU0VHQQD/////CQQAAAD/////CQQA
-        AAAAAAAABQoAAAAdU3lzdGVtLldpbmRvd3MuRm9ybXMuVHJlZU5vZGUJAAAABFRleHQLVG9vbFRpcFRl
-        eHQETmFtZQlJc0NoZWNrZWQKSW1hZ2VJbmRleAhJbWFnZUtleRJTZWxlY3RlZEltYWdlSW5kZXgQU2Vs
-        ZWN0ZWRJbWFnZUtleQpDaGlsZENvdW50AQEBAAABAAEAAQgICAIAAAAGGwAAAANwY2UJBAAAAAYdAAAA
-        B05vZGVQQ0UA/////wkEAAAA/////wkEAAAAAAAAAAULAAAAHVN5c3RlbS5XaW5kb3dzLkZvcm1zLlRy
+        AAABAAEAAQgICAIAAAAGEAAAAANuZXMJBAAAAAYSAAAAB05vZGVORVMA/////wkEAAAA/////wkEAAAA
+        AAAAAAUIAAAAHVN5c3RlbS5XaW5kb3dzLkZvcm1zLlRyZWVOb2RlCQAAAARUZXh0C1Rvb2xUaXBUZXh0
+        BE5hbWUJSXNDaGVja2VkCkltYWdlSW5kZXgISW1hZ2VLZXkSU2VsZWN0ZWRJbWFnZUluZGV4EFNlbGVj
+        dGVkSW1hZ2VLZXkKQ2hpbGRDb3VudAEBAQAAAQABAAEICAgCAAAABhQAAAAEc25lcwkEAAAABhYAAAAI
+        Tm9kZVNORVMA/////wkEAAAA/////wkEAAAAAAAAAAUJAAAAHVN5c3RlbS5XaW5kb3dzLkZvcm1zLlRy
         ZWVOb2RlCQAAAARUZXh0C1Rvb2xUaXBUZXh0BE5hbWUJSXNDaGVja2VkCkltYWdlSW5kZXgISW1hZ2VL
         ZXkSU2VsZWN0ZWRJbWFnZUluZGV4EFNlbGVjdGVkSW1hZ2VLZXkKQ2hpbGRDb3VudAEBAQAAAQABAAEI
-        CAgCAAAABh8AAAADbmVvCQQAAAAGIQAAAAdOb2RlTkVPAP////8JBAAAAP////8JBAAAAAAAAAAFDAAA
+        CAgCAAAABhgAAAADbjY0CQQAAAAGGgAAAAdOb2RlTjY0AP////8JBAAAAP////8JBAAAAAAAAAAFCgAA
         AB1TeXN0ZW0uV2luZG93cy5Gb3Jtcy5UcmVlTm9kZQkAAAAEVGV4dAtUb29sVGlwVGV4dAROYW1lCUlz
         Q2hlY2tlZApJbWFnZUluZGV4CEltYWdlS2V5ElNlbGVjdGVkSW1hZ2VJbmRleBBTZWxlY3RlZEltYWdl
-        S2V5CkNoaWxkQ291bnQBAQEAAAEAAQABCAgIAgAAAAYjAAAABWZsYXNoCQQAAAAGJQAAAAlOb2RlRmxh
-        c2gA/////wkEAAAA/////wkEAAAAAAAAAAUNAAAAHVN5c3RlbS5XaW5kb3dzLkZvcm1zLlRyZWVOb2Rl
-        CQAAAARUZXh0C1Rvb2xUaXBUZXh0BE5hbWUJSXNDaGVja2VkCkltYWdlSW5kZXgISW1hZ2VLZXkSU2Vs
-        ZWN0ZWRJbWFnZUluZGV4EFNlbGVjdGVkSW1hZ2VLZXkKQ2hpbGRDb3VudAEBAQAAAQABAAEICAgCAAAA
-        BicAAAAKZm9yd2FyZGVycwkEAAAABikAAAAOTm9kZUZvcndhcmRlcnMA/////wkEAAAA/////wkEAAAA
-        AAAAAAs=
+        S2V5CkNoaWxkQ291bnQBAQEAAAEAAQABCAgIAgAAAAYcAAAABHNlZ2EJBAAAAAYeAAAACE5vZGVTRUdB
+        AP////8JBAAAAP////8JBAAAAAAAAAAFCwAAAB1TeXN0ZW0uV2luZG93cy5Gb3Jtcy5UcmVlTm9kZQkA
+        AAAEVGV4dAtUb29sVGlwVGV4dAROYW1lCUlzQ2hlY2tlZApJbWFnZUluZGV4CEltYWdlS2V5ElNlbGVj
+        dGVkSW1hZ2VJbmRleBBTZWxlY3RlZEltYWdlS2V5CkNoaWxkQ291bnQBAQEAAAEAAQABCAgIAgAAAAYg
+        AAAAA3BjZQkEAAAABiIAAAAHTm9kZVBDRQD/////CQQAAAD/////CQQAAAAAAAAABQwAAAAdU3lzdGVt
+        LldpbmRvd3MuRm9ybXMuVHJlZU5vZGUJAAAABFRleHQLVG9vbFRpcFRleHQETmFtZQlJc0NoZWNrZWQK
+        SW1hZ2VJbmRleAhJbWFnZUtleRJTZWxlY3RlZEltYWdlSW5kZXgQU2VsZWN0ZWRJbWFnZUtleQpDaGls
+        ZENvdW50AQEBAAABAAEAAQgICAIAAAAGJAAAAANuZW8JBAAAAAYmAAAAB05vZGVORU8A/////wkEAAAA
+        /////wkEAAAAAAAAAAUNAAAAHVN5c3RlbS5XaW5kb3dzLkZvcm1zLlRyZWVOb2RlCQAAAARUZXh0C1Rv
+        b2xUaXBUZXh0BE5hbWUJSXNDaGVja2VkCkltYWdlSW5kZXgISW1hZ2VLZXkSU2VsZWN0ZWRJbWFnZUlu
+        ZGV4EFNlbGVjdGVkSW1hZ2VLZXkKQ2hpbGRDb3VudAEBAQAAAQABAAEICAgCAAAABigAAAAFZmxhc2gJ
+        BAAAAAYqAAAACU5vZGVGbGFzaAD/////CQQAAAD/////CQQAAAAAAAAABQ4AAAAdU3lzdGVtLldpbmRv
+        d3MuRm9ybXMuVHJlZU5vZGUJAAAABFRleHQLVG9vbFRpcFRleHQETmFtZQlJc0NoZWNrZWQKSW1hZ2VJ
+        bmRleAhJbWFnZUtleRJTZWxlY3RlZEltYWdlSW5kZXgQU2VsZWN0ZWRJbWFnZUtleQpDaGlsZENvdW50
+        AQEBAAABAAEAAQgICAIAAAAGLAAAAApmb3J3YXJkZXJzCQQAAAAGLgAAAA5Ob2RlRm9yd2FyZGVycwD/
+        ////CQQAAAD/////CQQAAAAAAAAACw==
 </value>
   </data>
   <data name="TreeView.Nodes2" mimetype="application/x-microsoft.net.object.binary.base64">
@@ -536,6 +540,9 @@
   </data>
   <data name="use_online_wad_tip.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>TopLeft</value>
+  </data>
+  <data name="use_online_wad_tip.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="use_online_wad_tip.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 312</value>
@@ -730,10 +737,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>10</value>
   </data>
   <data name="vc_n64_romc_type.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 131</value>
+    <value>12, 128</value>
   </data>
   <data name="vc_n64_romc_type.Size" type="System.Drawing.Size, System.Drawing">
     <value>536, 50</value>
@@ -775,7 +782,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_n64.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>3</value>
   </data>
   <data name="forwarder_type.Items" xml:space="preserve">
     <value>SD</value>
@@ -922,7 +929,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;forwarder.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>12</value>
   </data>
   <data name="vc_nes_palette_banner_usage.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1018,7 +1025,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_nes.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>13</value>
   </data>
   <data name="vc_neo_bios_list.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 18</value>
@@ -1084,7 +1091,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_neo.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>6</value>
   </data>
   <data name="vc_sega_countries.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 18</value>
@@ -1345,7 +1352,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_sega.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>4</value>
   </data>
   <data name="vc_pce_backupram.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1738,7 +1745,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_pce.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>5</value>
   </data>
   <data name="auto_game_scan.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2098,7 +2105,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>9</value>
   </data>
   <data name="injection_methods_sega.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 18</value>
@@ -2299,7 +2306,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;default_injection_methods.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>7</value>
   </data>
   <data name="browse_bios_neo.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2464,7 +2471,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;bios_files.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>8</value>
   </data>
   <data name="flash_stretch_to_4_3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3109,6 +3116,249 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;adobe_flash.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="vc_snes_patch_nosave.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="vc_snes_patch_nosave.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="vc_snes_patch_nosave.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 20</value>
+  </data>
+  <data name="vc_snes_patch_nosave.Size" type="System.Drawing.Size, System.Drawing">
+    <value>115, 17</value>
+  </data>
+  <data name="vc_snes_patch_nosave.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="vc_snes_patch_nosave.Text" xml:space="preserve">
+    <value>save_data_enable</value>
+  </data>
+  <data name="vc_snes_patch_nosave.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopLeft</value>
+  </data>
+  <data name="&gt;&gt;vc_snes_patch_nosave.Name" xml:space="preserve">
+    <value>vc_snes_patch_nosave</value>
+  </data>
+  <data name="&gt;&gt;vc_snes_patch_nosave.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;vc_snes_patch_nosave.Parent" xml:space="preserve">
+    <value>vc_snes_options</value>
+  </data>
+  <data name="&gt;&gt;vc_snes_patch_nosave.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="vc_snes_patch_widescreen.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="vc_snes_patch_widescreen.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="vc_snes_patch_widescreen.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 130</value>
+  </data>
+  <data name="vc_snes_patch_widescreen.Size" type="System.Drawing.Size, System.Drawing">
+    <value>113, 17</value>
+  </data>
+  <data name="vc_snes_patch_widescreen.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="vc_snes_patch_widescreen.Text" xml:space="preserve">
+    <value>patch_widescreen</value>
+  </data>
+  <data name="vc_snes_patch_widescreen.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopLeft</value>
+  </data>
+  <data name="&gt;&gt;vc_snes_patch_widescreen.Name" xml:space="preserve">
+    <value>vc_snes_patch_widescreen</value>
+  </data>
+  <data name="&gt;&gt;vc_snes_patch_widescreen.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;vc_snes_patch_widescreen.Parent" xml:space="preserve">
+    <value>vc_snes_options</value>
+  </data>
+  <data name="&gt;&gt;vc_snes_patch_widescreen.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="vc_snes_patch_nocc.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="vc_snes_patch_nocc.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="vc_snes_patch_nocc.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 86</value>
+  </data>
+  <data name="vc_snes_patch_nocc.Size" type="System.Drawing.Size, System.Drawing">
+    <value>81, 17</value>
+  </data>
+  <data name="vc_snes_patch_nocc.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="vc_snes_patch_nocc.Text" xml:space="preserve">
+    <value>patch_nocc</value>
+  </data>
+  <data name="vc_snes_patch_nocc.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopLeft</value>
+  </data>
+  <data name="&gt;&gt;vc_snes_patch_nocc.Name" xml:space="preserve">
+    <value>vc_snes_patch_nocc</value>
+  </data>
+  <data name="&gt;&gt;vc_snes_patch_nocc.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;vc_snes_patch_nocc.Parent" xml:space="preserve">
+    <value>vc_snes_options</value>
+  </data>
+  <data name="&gt;&gt;vc_snes_patch_nocc.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="vc_snes_patch_nodark.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="vc_snes_patch_nodark.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="vc_snes_patch_nodark.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 64</value>
+  </data>
+  <data name="vc_snes_patch_nodark.Size" type="System.Drawing.Size, System.Drawing">
+    <value>92, 17</value>
+  </data>
+  <data name="vc_snes_patch_nodark.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="vc_snes_patch_nodark.Text" xml:space="preserve">
+    <value>patch_nodark</value>
+  </data>
+  <data name="vc_snes_patch_nodark.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopLeft</value>
+  </data>
+  <data name="&gt;&gt;vc_snes_patch_nodark.Name" xml:space="preserve">
+    <value>vc_snes_patch_nodark</value>
+  </data>
+  <data name="&gt;&gt;vc_snes_patch_nodark.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;vc_snes_patch_nodark.Parent" xml:space="preserve">
+    <value>vc_snes_options</value>
+  </data>
+  <data name="&gt;&gt;vc_snes_patch_nodark.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="vc_snes_patch_nosuspend.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="vc_snes_patch_nosuspend.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="vc_snes_patch_nosuspend.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 108</value>
+  </data>
+  <data name="vc_snes_patch_nosuspend.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 17</value>
+  </data>
+  <data name="vc_snes_patch_nosuspend.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="vc_snes_patch_nosuspend.Text" xml:space="preserve">
+    <value>patch_nosuspend</value>
+  </data>
+  <data name="vc_snes_patch_nosuspend.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopLeft</value>
+  </data>
+  <data name="&gt;&gt;vc_snes_patch_nosuspend.Name" xml:space="preserve">
+    <value>vc_snes_patch_nosuspend</value>
+  </data>
+  <data name="&gt;&gt;vc_snes_patch_nosuspend.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;vc_snes_patch_nosuspend.Parent" xml:space="preserve">
+    <value>vc_snes_options</value>
+  </data>
+  <data name="&gt;&gt;vc_snes_patch_nosuspend.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="vc_snes_patch_volume.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="vc_snes_patch_volume.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="vc_snes_patch_volume.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 42</value>
+  </data>
+  <data name="vc_snes_patch_volume.Size" type="System.Drawing.Size, System.Drawing">
+    <value>93, 17</value>
+  </data>
+  <data name="vc_snes_patch_volume.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="vc_snes_patch_volume.Text" xml:space="preserve">
+    <value>patch_volume</value>
+  </data>
+  <data name="vc_snes_patch_volume.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopLeft</value>
+  </data>
+  <data name="&gt;&gt;vc_snes_patch_volume.Name" xml:space="preserve">
+    <value>vc_snes_patch_volume</value>
+  </data>
+  <data name="&gt;&gt;vc_snes_patch_volume.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;vc_snes_patch_volume.Parent" xml:space="preserve">
+    <value>vc_snes_options</value>
+  </data>
+  <data name="&gt;&gt;vc_snes_patch_volume.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="vc_snes_options.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 10</value>
+  </data>
+  <data name="vc_snes_options.Size" type="System.Drawing.Size, System.Drawing">
+    <value>530, 155</value>
+  </data>
+  <data name="vc_snes_options.TabIndex" type="System.Int32, mscorlib">
+    <value>40</value>
+  </data>
+  <data name="vc_snes_options.Text" xml:space="preserve">
+    <value>vc_options</value>
+  </data>
+  <data name="&gt;&gt;vc_snes_options.Name" xml:space="preserve">
+    <value>vc_snes_options</value>
+  </data>
+  <data name="&gt;&gt;vc_snes_options.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;vc_snes_options.Parent" xml:space="preserve">
+    <value>vc_snes</value>
+  </data>
+  <data name="&gt;&gt;vc_snes_options.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="vc_snes.Location" type="System.Drawing.Point, System.Drawing">
+    <value>194, 0</value>
+  </data>
+  <data name="vc_snes.Size" type="System.Drawing.Size, System.Drawing">
+    <value>560, 410</value>
+  </data>
+  <data name="vc_snes.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="&gt;&gt;vc_snes.Name" xml:space="preserve">
+    <value>vc_snes</value>
+  </data>
+  <data name="&gt;&gt;vc_snes.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;vc_snes.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;vc_snes.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

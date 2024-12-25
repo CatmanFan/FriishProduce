@@ -38,9 +38,11 @@ namespace FriishProduce
         public void RefreshForm()
         {
             #region --- Localization / Appearance ---
+
             Text = Program.Lang.String("preferences");
             Program.Lang.Control(this);
             Program.Lang.Control(vc_nes);
+            Program.Lang.Control(vc_snes);
             Program.Lang.Control(vc_n64);
             Program.Lang.Control(vc_sega);
             Program.Lang.Control(vc_pce);
@@ -56,12 +58,14 @@ namespace FriishProduce
             default_node.Text = Program.Lang.String(default_node.Tag.ToString(), Tag.ToString());
             default_node.Expand();
             default_node.Nodes[0].Text = Program.Lang.Console(Platform.NES);
-            default_node.Nodes[1].Text = Program.Lang.Console(Platform.N64);
-            default_node.Nodes[2].Text = sega_default.Text = Program.Lang.String("group1", "platforms");
-            default_node.Nodes[3].Text = Program.Lang.Console(Platform.PCE);
-            default_node.Nodes[4].Text = Program.Lang.Console(Platform.NEO);
-            default_node.Nodes[5].Text = Program.Lang.Console(Platform.Flash);
-            default_node.Nodes[6].Text = Program.Lang.String("forwarders", "platforms");
+            default_node.Nodes[1].Text = Program.Lang.Console(Platform.SNES);
+            default_node.Nodes[2].Text = Program.Lang.Console(Platform.N64);
+            default_node.Nodes[3].Text = sega_default.Text = Program.Lang.String("group1", "platforms");
+            default_node.Nodes[4].Text = Program.Lang.Console(Platform.PCE);
+            default_node.Nodes[5].Text = Program.Lang.Console(Platform.NEO);
+            default_node.Nodes[6].Text = Program.Lang.Console(Platform.Flash);
+            default_node.Nodes[7].Text = Program.Lang.String("forwarders", "platforms");
+
             #endregion
 
             // -----------------------------
@@ -74,7 +78,8 @@ namespace FriishProduce
             foreach (var item in Program.Lang.List) languages.Items.Add(item.Value);
             languages.SelectedIndex = Default.language == "sys" ? 0 : Program.Lang.List.Keys.ToList().IndexOf(Default.language) + 1;
 
-            #region Localization
+            #region --- Localization of All Controls ---
+
             image_interpolation_mode.Text = Program.Lang.String("image_interpolation_mode", "projectform");
             image_interpolation_modes.Items.Clear();
             image_interpolation_modes.Items.AddRange(Program.Lang.StringArray("image_interpolation_mode", "projectform"));
@@ -87,7 +92,7 @@ namespace FriishProduce
 
             banner_region.Text = Program.Lang.String(banner_region.Name, "banner").TrimEnd(':').Trim();
 
-            flash_save_data_enable.Text = vc_pce_backupram.Text = vc_sega_save_sram.Text = Program.Lang.String("save_data_enable", "projectform");
+            flash_save_data_enable.Text = vc_pce_backupram.Text = vc_sega_save_sram.Text = vc_snes_patch_nosave.Text = Program.Lang.String("save_data_enable", "projectform");
 
             // -----------------------------
 
@@ -131,6 +136,14 @@ namespace FriishProduce
             Program.Lang.String(vc_nes_palette, "vc_nes");
             Program.Lang.String(vc_nes_palette_banner_usage, "vc_nes");
             Program.Lang.String(vc_nes_palettelist, "vc_nes");
+
+            // -----------------------------
+
+            Program.Lang.String(vc_snes_patch_volume, "vc_snes");
+            Program.Lang.String(vc_snes_patch_nodark, "vc_snes");
+            Program.Lang.String(vc_snes_patch_nocc, "vc_snes");
+            Program.Lang.String(vc_snes_patch_nosuspend, "vc_snes");
+            Program.Lang.String(vc_snes_patch_widescreen, "vc_snes");
 
             // -----------------------------
 
@@ -181,9 +194,12 @@ namespace FriishProduce
             Program.Lang.String(flash_strap_reminder, "adobe_flash");
             Program.Lang.String(flash_strap_reminder_list, "adobe_flash");
             Program.Lang.String(flash_stretch_to_4_3, "adobe_flash");
+
             #endregion
 
             // -----------------------------
+
+            #region --- Set All Settings to Defaults ---
 
             // Defaults & forwarders
             reset_all_dialogs.Checked = false;
@@ -213,6 +229,14 @@ namespace FriishProduce
             // NES
             vc_nes_palettelist.SelectedIndex = int.Parse(VC_NES.Default.palette);
             vc_nes_palette_banner_usage.Checked = bool.Parse(VC_NES.Default.palette_banner_usage);
+
+            // SNES
+            vc_snes_patch_volume.Checked = bool.Parse(VC_SNES.Default.patch_volume);
+            vc_snes_patch_nodark.Checked = bool.Parse(VC_SNES.Default.patch_nodark);
+            vc_snes_patch_nocc.Checked = bool.Parse(VC_SNES.Default.patch_nocc);
+            vc_snes_patch_nosuspend.Checked = bool.Parse(VC_SNES.Default.patch_nosuspend);
+            vc_snes_patch_nosave.Checked = !bool.Parse(VC_SNES.Default.patch_nosave);
+            vc_snes_patch_widescreen.Checked = bool.Parse(VC_SNES.Default.patch_widescreen);
 
             // N64
             vc_n64_patch_fixbrightness.Checked = bool.Parse(VC_N64.Default.patch_fixbrightness);
@@ -262,6 +286,8 @@ namespace FriishProduce
             flash_persistent_storage_per_movie_l.Enabled = flash_persistent_storage_per_movie.Enabled = flash_save_data_enable.Checked;
 
             ToggleSwitchText();
+
+            #endregion
 
             // -----------------------------
 
@@ -349,6 +375,13 @@ namespace FriishProduce
 
             VC_NES.Default.palette = vc_nes_palettelist.SelectedIndex.ToString();
             VC_NES.Default.palette_banner_usage = vc_nes_palette_banner_usage.Checked.ToString();
+
+            VC_SNES.Default.patch_volume = vc_snes_patch_volume.Checked.ToString();
+            VC_SNES.Default.patch_nodark = vc_snes_patch_nodark.Checked.ToString();
+            VC_SNES.Default.patch_nocc = vc_snes_patch_nocc.Checked.ToString();
+            VC_SNES.Default.patch_nosuspend = vc_snes_patch_nosuspend.Checked.ToString();
+            VC_SNES.Default.patch_nosave = (!vc_snes_patch_nosave.Checked).ToString();
+            VC_SNES.Default.patch_widescreen = vc_snes_patch_widescreen.Checked.ToString();
 
             VC_N64.Default.patch_fixbrightness = vc_n64_patch_fixbrightness.Checked.ToString();
             VC_N64.Default.patch_fixcrashes = vc_n64_patch_fixcrashes.Checked.ToString();
@@ -494,6 +527,7 @@ namespace FriishProduce
                     v_selected == "2",
                     v_selected == "3",
                     v_selected == "nes",
+                    v_selected == "snes",
                     v_selected == "n64",
                     v_selected == "sega",
                     v_selected == "pce",
@@ -511,12 +545,13 @@ namespace FriishProduce
                     default_injection_methods.Visible = isVisible[2];
                     bios_files.Visible = isVisible[3];
                     vc_nes.Visible = isVisible[4];
-                    vc_n64.Visible = isVisible[5];
-                    vc_sega.Visible = isVisible[6];
-                    vc_pce.Visible = isVisible[7];
-                    vc_neo.Visible = isVisible[8];
-                    adobe_flash.Visible = isVisible[9];
-                    forwarder.Visible = isVisible[10];
+                    vc_snes.Visible = isVisible[5];
+                    vc_n64.Visible = isVisible[6];
+                    vc_sega.Visible = isVisible[7];
+                    vc_pce.Visible = isVisible[8];
+                    vc_neo.Visible = isVisible[9];
+                    adobe_flash.Visible = isVisible[10];
+                    forwarder.Visible = isVisible[11];
                 }
             }
         }

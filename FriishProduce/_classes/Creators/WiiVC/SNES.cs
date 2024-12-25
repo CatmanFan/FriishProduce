@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 
 namespace FriishProduce.Injectors
@@ -76,7 +77,7 @@ namespace FriishProduce.Injectors
 
             else
             {
-                throw new Exception(Program.Lang.Msg(12, true));
+                throw new Exception(Program.Lang.Msg(13, true));
             }
 
             // Delete temporary files
@@ -163,8 +164,42 @@ namespace FriishProduce.Injectors
 
         protected override void ModifyEmulatorSettings()
         {
-            // Not exists
-            return;
+            string arguments = "--no-check-header-simple";
+
+            if (bool.Parse(Settings["patch_volume"]))       arguments += " --volume";
+            if (bool.Parse(Settings["patch_nodark"]))       arguments += " --no-dark";
+            if (bool.Parse(Settings["patch_nocc"]))         arguments += " --no-cc --wiimote-native";
+            if (bool.Parse(Settings["patch_nosuspend"]))    arguments += " --no-suspend";
+            if (bool.Parse(Settings["patch_nosave"]))       arguments += " --no-save";
+            if (bool.Parse(Settings["patch_widescreen"]))   arguments += " --wide";
+
+            if (CustomManual == null && !UseOrigManual)
+            {
+                arguments += " --no-opera";
+                try
+                {
+                    if (ManualContent != null) ManualContent.RemoveFile("emanual.arc");
+                    MainContent.RemoveFile("emanual.arc");
+                }
+                catch { }
+            }
+
+            if (arguments != null)
+            {
+                File.WriteAllBytes(Paths.WorkingFolder + "01.app", Contents[1]);
+
+                Utils.Run
+                (
+                    FileDatas.Apps.sns_boost,
+                    "sns_boost.exe",
+                    "-i 01.app " + arguments
+                );
+
+                if (!File.Exists(Paths.WorkingFolder + "01_boosted.app") || File.ReadAllBytes(Paths.WorkingFolder + "01_boosted.app").SequenceEqual(Contents[1]))
+                    MessageBox.Show(Program.Lang.Msg(4, true));
+                else
+                    Contents[1] = File.ReadAllBytes(Paths.WorkingFolder + "01_boosted.app");
+            }
         }
     }
 }

@@ -442,7 +442,7 @@ namespace FriishProduce
             */
 
             TPL tpl;
-            try { tpl = TPL.Load(tplBytes); } catch { throw new Exception(Program.Lang.Msg(14, true)); }
+            try { tpl = TPL.Load(tplBytes); } catch { throw new Exception(Program.Lang.Msg(15, true)); }
 
             int numTextures = tpl.NumOfTextures;
             TPL_TextureFormat[] formatsT = new TPL_TextureFormat[numTextures];

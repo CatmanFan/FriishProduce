@@ -117,35 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="flips" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\apps\flips.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="gbalzss" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\apps\gbalzss.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="lzh8_cmp" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\apps\lzh8_cmp.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="lzh8_cmp_nonstrict" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\apps\lzh8_cmp_nonstrict.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="OpenDolBoot" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\apps\OpenDolBoot.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="romc" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\apps\romc.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="romc0" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\apps\romc0.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="sns_boost" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\apps\sns_boost.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="wwcxtool" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\apps\wwcxtool.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="xdelta3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\apps\xdelta3.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
 </root>

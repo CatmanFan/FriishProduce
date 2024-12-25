@@ -39,7 +39,7 @@ namespace FriishProduce
                 {
                     MessageBox.Show
                     (
-                        string.Format(Program.Lang.Msg(10, true), Path.GetFileName(FriishProduce.Options.BIOSFILES.Default.neogeo)),
+                        string.Format(Program.Lang.Msg(11, true), Path.GetFileName(FriishProduce.Options.BIOSFILES.Default.neogeo)),
                         MessageBox.Buttons.Ok,
                         MessageBox.Icons.Information
                     );
@@ -102,7 +102,7 @@ namespace FriishProduce
         {
             if (biosName == "custom" && string.IsNullOrWhiteSpace(FriishProduce.Options.BIOSFILES.Default.neogeo))
             {
-                MessageBox.Show(Program.Lang.Msg(13, true), MessageBox.Buttons.Ok, MessageBox.Icons.Error, false);
+                MessageBox.Show(Program.Lang.Msg(14, true), MessageBox.Buttons.Ok, MessageBox.Icons.Error, false);
 
                 // Set list selection back to previous one
                 if (biosIndex == 0) Options["BIOS"] = VC_NEO.Default.bios;

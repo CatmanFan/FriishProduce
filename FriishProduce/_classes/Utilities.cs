@@ -240,8 +240,8 @@ namespace FriishProduce
         public static void Run(byte[] app, string appName, string arguments, bool showWindow = false)
         {
             string targetPath = Paths.WorkingFolder + Path.GetFileNameWithoutExtension(appName) + ".exe";
+
             File.WriteAllBytes(targetPath, app);
-            
             Run(targetPath, Paths.WorkingFolder, arguments, showWindow);
             
             if (File.Exists(targetPath)) File.Delete(targetPath);
@@ -255,7 +255,7 @@ namespace FriishProduce
 
             if (!appPath.EndsWith(".exe")) appPath += ".exe";
 
-            if (!File.Exists(appPath)) throw new Exception(string.Format(Program.Lang.Msg(5, true), app));
+            if (!File.Exists(appPath)) throw new Exception(string.Format(Program.Lang.Msg(6, true), app));
 
             using Process p = Process.Start(new ProcessStartInfo
             {
@@ -281,8 +281,8 @@ namespace FriishProduce
                 // ****************
                 Run
                 (
-                    Paths.Tools + "wwcxtool.exe",
-                    Paths.WorkingFolder,
+                    FileDatas.Apps.wwcxtool,
+                    "wwcxtool.exe",
                     "/u content1.app content1.dec"
                 );
                 if (!File.Exists(Paths.WorkingFolder + "content1.dec")) throw new Exception(Program.Lang.Msg(2, true));
@@ -305,8 +305,8 @@ namespace FriishProduce
                 // ****************
                 Run
                 (
-                    Paths.Tools + "wwcxtool.exe",
-                    Paths.WorkingFolder,
+                    FileDatas.Apps.wwcxtool,
+                    "wwcxtool.exe",
                     "/cr content1.app content1.dec content1.new"
                 );
                 if (!File.Exists(Paths.WorkingFolder + "content1.new")) throw new Exception(Program.Lang.Msg(2, true));

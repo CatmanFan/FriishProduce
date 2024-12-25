@@ -133,6 +133,26 @@ namespace FriishProduce.FileDatas {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] sns_boost {
+            get {
+                object obj = ResourceManager.GetObject("sns_boost", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] wwcxtool {
+            get {
+                object obj = ResourceManager.GetObject("wwcxtool", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] xdelta3 {
             get {
                 object obj = ResourceManager.GetObject("xdelta3", resourceCulture);
