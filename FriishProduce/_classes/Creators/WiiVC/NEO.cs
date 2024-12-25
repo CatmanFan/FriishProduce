@@ -54,18 +54,25 @@ namespace FriishProduce.Injectors
                 {
                     using (var s = ZIP.GetInputStream(entry))
                     {
-                        byte[] bytes;
-                        using BinaryReader r = new(s);
-                        bytes = r.ReadBytes((int)s.Length);
-                        return bytes;
+                        List<byte> bytes = new();
+
+                        int curByte = s.ReadByte();
+                        while (curByte != -1)
+                        {
+                            bytes.Add(Convert.ToByte(curByte));
+                            curByte = s.ReadByte();
+                        }
+
+                        return bytes.ToArray();
                     }
                 }
 
-                throw new FileNotFoundException();
-            }
-            catch
-            {
                 return null;
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
             }
         }
 
