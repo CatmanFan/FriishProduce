@@ -287,14 +287,12 @@ namespace FriishProduce
             // 
             // controls
             // 
-            this.controls.Controls.Add(this.background_color_img);
-            this.controls.Controls.Add(this.background_color);
             this.controls.Controls.Add(this.midi);
             this.controls.Controls.Add(this.qwerty_keyboard);
             this.controls.Controls.Add(this.mouse);
             this.controls.Location = new System.Drawing.Point(12, 168);
             this.controls.Name = "controls";
-            this.controls.Size = new System.Drawing.Size(710, 86);
+            this.controls.Size = new System.Drawing.Size(352, 86);
             this.controls.TabIndex = 18;
             this.controls.TabStop = false;
             this.controls.Tag = "controls";
@@ -303,7 +301,7 @@ namespace FriishProduce
             // background_color_img
             // 
             this.background_color_img.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.background_color_img.Location = new System.Drawing.Point(590, 56);
+            this.background_color_img.Location = new System.Drawing.Point(692, 170);
             this.background_color_img.Name = "background_color_img";
             this.background_color_img.Size = new System.Drawing.Size(30, 20);
             this.background_color_img.TabIndex = 17;
@@ -311,9 +309,9 @@ namespace FriishProduce
             // 
             // background_color
             // 
-            this.background_color.Location = new System.Drawing.Point(252, 55);
+            this.background_color.Location = new System.Drawing.Point(370, 168);
             this.background_color.Name = "background_color";
-            this.background_color.Size = new System.Drawing.Size(333, 23);
+            this.background_color.Size = new System.Drawing.Size(316, 23);
             this.background_color.TabIndex = 16;
             this.background_color.Tag = "background_color";
             this.background_color.Text = "background_color";
@@ -385,8 +383,10 @@ namespace FriishProduce
             // Options_Flash
             // 
             this.ClientSize = new System.Drawing.Size(734, 371);
+            this.Controls.Add(this.background_color_img);
             this.Controls.Add(this.strap_reminder);
             this.Controls.Add(this.controls);
+            this.Controls.Add(this.background_color);
             this.Controls.Add(this.display);
             this.Controls.Add(this.groupBox1);
             this.Name = "Options_Flash";
@@ -394,8 +394,10 @@ namespace FriishProduce
             this.Controls.SetChildIndex(this.controller_box, 0);
             this.Controls.SetChildIndex(this.groupBox1, 0);
             this.Controls.SetChildIndex(this.display, 0);
+            this.Controls.SetChildIndex(this.background_color, 0);
             this.Controls.SetChildIndex(this.controls, 0);
             this.Controls.SetChildIndex(this.strap_reminder, 0);
+            this.Controls.SetChildIndex(this.background_color_img, 0);
             this.bottomPanel1.ResumeLayout(false);
             this.controller_box.ResumeLayout(false);
             this.controller_box.PerformLayout();

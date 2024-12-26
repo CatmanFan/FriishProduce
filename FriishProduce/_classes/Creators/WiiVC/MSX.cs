@@ -97,13 +97,15 @@ namespace FriishProduce.Injectors
             // Create TPL byte array
             // ****************
             placeholder.AddRange(header);
-            placeholder.AddRange(contents.Skip(160).Take(contents.Length - 160).ToArray());
+            placeholder.AddRange(contents.Skip(160).ToArray());
 
             // Inject new TPL
-            // ___________________
-            // There seems to be a bug where the savedata icon is saved as a TPL, but does not display correctly after being injected into the banner.bin (i.e. glitched on Wii Menu Save Data Management)
             // ****************
-            Img.CreateSaveTPL(placeholder.ToArray()).ToByteArray().Skip(header.Length).ToArray().CopyTo(contents, 160);
+            using var tpl = Img.CreateSaveTPL(placeholder.ToArray());
+            placeholder = new();
+            placeholder.AddRange(contents.Take(160));
+            placeholder.AddRange(tpl.ToByteArray().Skip(header.Length));
+            contents = placeholder.ToArray();
 
             // Replace original savebanner
             // ****************

@@ -520,7 +520,7 @@ namespace FriishProduce
                     tpl.AddTexture(sIcon2, formatsT[3], formatsP[3]);
                 }
 
-                else if (platform == Platform.NEO || platform == Platform.MSX)
+                else if (numTextures == 9)
                 {
                     // 2ND/3RD FRAMES
                     // ****************
@@ -541,6 +541,9 @@ namespace FriishProduce
                     g.DrawImage(sIconLogo, new Rectangle(0, 0, w, h), 0, 0, w, h, GraphicsUnit.Pixel, a);
 
                     tpl.AddTexture(sIcon2, formatsT[5], formatsP[5]);
+
+                    tpl.AddTexture(sIconLogo, formatsT[numTextures - 1], formatsP[numTextures - 1]);
+                    tpl.AddTexture(sIconLogo, formatsT[numTextures - 1], formatsP[numTextures - 1]);
                 }
 
                 // END FRAME

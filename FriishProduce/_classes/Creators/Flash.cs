@@ -5,11 +5,12 @@ using System.Text;
 
 namespace FriishProduce.Injectors
 {
-    public static class Flash
+    public class Flash
     {
-        public static IDictionary<string, string> Settings { get; set; }
-        public static IDictionary<Buttons, string> Keymap { get; set; }
-        public static bool Multifile { get; set; }
+        public string SWF { get; set; }
+        public IDictionary<string, string> Settings { get; set; }
+        public IDictionary<Buttons, string> Keymap { get; set; }
+        public bool Multifile { get; set; }
 
         #region -- Default settings for Back to Nature --
         // keymap.ini
@@ -100,8 +101,8 @@ namespace FriishProduce.Injectors
         // -----------------------------------------------------
         /* # banner setting file
            # 
-           # ƒ^ƒCƒgƒ‹•¶Žš—ñ‚ÆƒRƒƒ“ƒg•¶Žš—ñ‚Í UTF-8 ƒGƒ“ƒR[ƒh‚³‚ê‚½•¶Žš—ñ‚ð URL ƒGƒ“ƒR[ƒh‚µ‚Ä
-           # ‹Lq‚·‚éB
+           # タイトル文字列とコメント文字列は UTF-8 エンコードされた文字列を URL エンコードして
+           # 記述する。
            #
            not_copy		off
            anim_type		loop			# loop / bounce
@@ -116,7 +117,7 @@ namespace FriishProduce.Injectors
 
         // config.common.pcf
         // -----------------------------------------------------
-        /* # s“ª‚ÌƒRƒƒ“ƒg‚â‰üs‚Í–³Ž‹‚³‚ê‚Ü‚·
+        /* # 行頭のコメントや改行は無視されます
 
            static_heap_size				8192				# 8192[KB] -> 8[MB]
            dynamic_heap_size				16384				# 16384[KB] -> 16[MB]
@@ -127,8 +128,8 @@ namespace FriishProduce.Injectors
            stream_cache_max_file_size		512					# 512[KB] -> 0.5[MB]
            stream_cache_size				2048				# 2048[KB] -> 2.0[MB]
 
-           # ƒRƒ“ƒeƒ“ƒc‚ÌƒtƒŒ[ƒ€ƒŒ[ƒg‚ª’x‚·‚¬‚Äƒf[ƒ^‚Ìƒ[ƒh‚È‚Ç‚ÉŽžŠÔ‚ªŠ|‚©‚Á‚½‚è
-           # ƒTƒEƒ“ƒhÄ¶‚ÉƒmƒCƒY‚ªæ‚é‚È‚Ç‚Ìê‡‚É”CˆÓ‚ÌXVƒŒ[ƒg‚ðŽw’è‚Å‚«‚Ü‚·B
+           # コンテンツのフレームレートが遅すぎてデータのロードなどに時間が掛かったり
+           # サウンド再生にノイズが乗るなどの場合に任意の更新レートを指定できます。
            update_frame_rate             25                  # not TV-framerate(NTSC/PAL)
 
            mouse							on
@@ -178,7 +179,7 @@ namespace FriishProduce.Injectors
 
            ####### iPlayer ########
 
-           content_domain					file:///trusted/
+           content_domain					https://wii.nintendo.iplayer.bbc.co.uk/wiiiplayer/
            #content_domain					https://wii-test.nintendo.iplayer.bbc.co.uk/wii-test/tvp/
            #content_domain					https://wii.nintendo.iplayer.bbc.co.uk/testwiiiplayer/tvp/livetest/
            content_url						file:///trusted/startup.swf
@@ -389,20 +390,21 @@ namespace FriishProduce.Injectors
             KEY_BUTTON_PLUS  KEY_ENTER
  */
 
-        private static U8 MainContent { get; set; }
+        private U8 MainContent { get; set; }
 
-        public static WAD Inject(WAD w, string path, string[] lines, ImageHelper Img)
+        public WAD Inject(WAD w, string[] lines, ImageHelper Img)
         {
             MainContent = U8.Load(w.Contents[2]);
             MainContent.Extract(Paths.FlashContents);
 
             // Actually replacing the SWF
             // ********
-            File.Copy(path, Paths.FlashContents + "content\\menu.swf", true);
+            string target = Directory.Exists(Paths.FlashContents + "content\\") ? Paths.FlashContents + "content\\menu.swf" : Paths.FlashContents + "trusted\\startup.swf";
+            File.Copy(SWF, target, true);
             if (Multifile)
-                foreach (string etc in Directory.EnumerateFiles(Path.GetDirectoryName(path), "*.*", SearchOption.TopDirectoryOnly))
-                    if (etc != path)
-                        File.Copy(etc, Paths.FlashContents + "content\\" + Path.GetFileName(etc), true);
+                foreach (string etc in Directory.EnumerateFiles(Path.GetDirectoryName(SWF), "*.*", SearchOption.TopDirectoryOnly))
+                    if (etc != SWF)
+                        File.Copy(etc, Path.Combine(Path.GetDirectoryName(target), Path.GetFileName(etc)), true);
 
             // Copying the SWF soundfont
             // ********
@@ -519,7 +521,7 @@ namespace FriishProduce.Injectors
                         "#flash_vars                      dummy = 1",
                     };
 
-                    File.WriteAllBytes(file, Encoding.UTF8.GetBytes(string.Join("\r\n", txt) + "\r\n"));
+                    File.WriteAllBytes(file, Encoding.GetEncoding(932).GetBytes(string.Join("\r\n", txt) + "\r\n"));
                 }
 
                 else if (item.EndsWith(".pcf") && item.StartsWith("config\\") && Path.GetFileNameWithoutExtension(file).Length == 11)
@@ -586,7 +588,7 @@ namespace FriishProduce.Injectors
                             txt.Add($"icon_speed      {i}, slow");
                         }
 
-                        File.WriteAllBytes(file, Encoding.UTF8.GetBytes(string.Join("\r\n", txt) + "\r\n"));
+                        File.WriteAllBytes(file, Encoding.GetEncoding(932).GetBytes(string.Join("\r\n", txt) + "\r\n"));
                     }
                 }
 
@@ -601,6 +603,10 @@ namespace FriishProduce.Injectors
             File.WriteAllBytes(Paths.WAD + "00000002.app", MainContent.ToByteArray());
             w.CreateNew(Paths.WAD);
             Directory.Delete(Paths.WAD, true);
+
+            MainContent.Dispose();
+            Settings = null;
+            Keymap = null;
             return w;
         }
     }

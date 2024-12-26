@@ -44,6 +44,7 @@ namespace FriishProduce
             this.GetBanners = new System.Windows.Forms.Button();
             this.TreeView = new System.Windows.Forms.TreeView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.use_online_wad_tip = new FriishProduce.ImageLabel();
             this.bypass_rom_size = new System.Windows.Forms.CheckBox();
             this.use_online_wad_enabled = new System.Windows.Forms.CheckBox();
             this.use_custom_database = new System.Windows.Forms.CheckBox();
@@ -76,13 +77,12 @@ namespace FriishProduce
             this.SEGA_console_brightness = new System.Windows.Forms.TrackBar();
             this.vc_pce = new System.Windows.Forms.Panel();
             this.vc_pce_system = new System.Windows.Forms.GroupBox();
+            this.vc_pce_sgenable = new System.Windows.Forms.CheckBox();
             this.vc_pce_backupram = new System.Windows.Forms.CheckBox();
             this.vc_pce_europe_switch = new JCS.ToggleSwitch();
             this.vc_pce_europe = new System.Windows.Forms.Label();
             this.vc_pce_padbutton_switch = new JCS.ToggleSwitch();
-            this.vc_pce_sgenable = new System.Windows.Forms.Label();
             this.vc_pce_padbutton = new System.Windows.Forms.Label();
-            this.vc_pce_sgenable_switch = new JCS.ToggleSwitch();
             this.vc_pce_display = new System.Windows.Forms.GroupBox();
             this.vc_pce_y_offset_l = new System.Windows.Forms.Label();
             this.vc_pce_y_offset = new System.Windows.Forms.NumericUpDown();
@@ -147,7 +147,6 @@ namespace FriishProduce
             this.vc_snes_patch_nodark = new System.Windows.Forms.CheckBox();
             this.vc_snes_patch_nosuspend = new System.Windows.Forms.CheckBox();
             this.vc_snes_patch_volume = new System.Windows.Forms.CheckBox();
-            this.use_online_wad_tip = new FriishProduce.ImageLabel();
             this.vc_n64_options.SuspendLayout();
             this.bottomPanel2.SuspendLayout();
             this.bottomPanel1.SuspendLayout();
@@ -315,6 +314,15 @@ namespace FriishProduce
             this.panel1.Controls.Add(this.language);
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
+            // 
+            // use_online_wad_tip
+            // 
+            resources.ApplyResources(this.use_online_wad_tip, "use_online_wad_tip");
+            this.use_online_wad_tip.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.use_online_wad_tip.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.use_online_wad_tip.Image = global::FriishProduce.Properties.Resources.information;
+            this.use_online_wad_tip.Name = "use_online_wad_tip";
+            this.use_online_wad_tip.Tag = "use_online_wad_tip";
             // 
             // bypass_rom_size
             // 
@@ -563,17 +571,23 @@ namespace FriishProduce
             // 
             // vc_pce_system
             // 
+            this.vc_pce_system.Controls.Add(this.vc_pce_sgenable);
             this.vc_pce_system.Controls.Add(this.vc_pce_backupram);
             this.vc_pce_system.Controls.Add(this.vc_pce_europe_switch);
             this.vc_pce_system.Controls.Add(this.vc_pce_europe);
             this.vc_pce_system.Controls.Add(this.vc_pce_padbutton_switch);
-            this.vc_pce_system.Controls.Add(this.vc_pce_sgenable);
             this.vc_pce_system.Controls.Add(this.vc_pce_padbutton);
-            this.vc_pce_system.Controls.Add(this.vc_pce_sgenable_switch);
             resources.ApplyResources(this.vc_pce_system, "vc_pce_system");
             this.vc_pce_system.Name = "vc_pce_system";
             this.vc_pce_system.TabStop = false;
             this.vc_pce_system.Tag = "vc_options";
+            // 
+            // vc_pce_sgenable
+            // 
+            resources.ApplyResources(this.vc_pce_sgenable, "vc_pce_sgenable");
+            this.vc_pce_sgenable.Name = "vc_pce_sgenable";
+            this.vc_pce_sgenable.Tag = "sgenable";
+            this.vc_pce_sgenable.UseVisualStyleBackColor = true;
             // 
             // vc_pce_backupram
             // 
@@ -602,23 +616,10 @@ namespace FriishProduce
             this.vc_pce_padbutton_switch.OnFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.vc_pce_padbutton_switch.CheckedChanged += new JCS.ToggleSwitch.CheckedChangedDelegate(this.ToggleSwitchChanged);
             // 
-            // vc_pce_sgenable
-            // 
-            resources.ApplyResources(this.vc_pce_sgenable, "vc_pce_sgenable");
-            this.vc_pce_sgenable.Name = "vc_pce_sgenable";
-            // 
             // vc_pce_padbutton
             // 
             resources.ApplyResources(this.vc_pce_padbutton, "vc_pce_padbutton");
             this.vc_pce_padbutton.Name = "vc_pce_padbutton";
-            // 
-            // vc_pce_sgenable_switch
-            // 
-            resources.ApplyResources(this.vc_pce_sgenable_switch, "vc_pce_sgenable_switch");
-            this.vc_pce_sgenable_switch.Name = "vc_pce_sgenable_switch";
-            this.vc_pce_sgenable_switch.OffFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.vc_pce_sgenable_switch.OnFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.vc_pce_sgenable_switch.CheckedChanged += new JCS.ToggleSwitch.CheckedChangedDelegate(this.ToggleSwitchChanged);
             // 
             // vc_pce_display
             // 
@@ -1176,15 +1177,6 @@ namespace FriishProduce
             this.vc_snes_patch_volume.Tag = "patch_volume";
             this.vc_snes_patch_volume.UseVisualStyleBackColor = true;
             // 
-            // use_online_wad_tip
-            // 
-            resources.ApplyResources(this.use_online_wad_tip, "use_online_wad_tip");
-            this.use_online_wad_tip.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.use_online_wad_tip.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.use_online_wad_tip.Image = global::FriishProduce.Properties.Resources.information;
-            this.use_online_wad_tip.Name = "use_online_wad_tip";
-            this.use_online_wad_tip.Tag = "use_online_wad_tip";
-            // 
             // SettingsForm
             // 
             this.AcceptButton = this.b_ok;
@@ -1194,6 +1186,9 @@ namespace FriishProduce
             this.ControlBox = false;
             this.Controls.Add(this.bottomPanel2);
             this.Controls.Add(this.TreeView);
+            this.Controls.Add(this.adobe_flash);
+            this.Controls.Add(this.forwarder);
+            this.Controls.Add(this.vc_nes);
             this.Controls.Add(this.vc_snes);
             this.Controls.Add(this.vc_n64);
             this.Controls.Add(this.vc_sega);
@@ -1203,9 +1198,6 @@ namespace FriishProduce
             this.Controls.Add(this.bios_files);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.adobe_flash);
-            this.Controls.Add(this.forwarder);
-            this.Controls.Add(this.vc_nes);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MaximizeBox = false;
@@ -1311,10 +1303,6 @@ namespace FriishProduce
         private System.Windows.Forms.GroupBox vc_pce_system;
         private JCS.ToggleSwitch vc_pce_europe_switch;
         private System.Windows.Forms.Label vc_pce_europe;
-        private JCS.ToggleSwitch vc_pce_padbutton_switch;
-        private System.Windows.Forms.Label vc_pce_sgenable;
-        private System.Windows.Forms.Label vc_pce_padbutton;
-        private JCS.ToggleSwitch vc_pce_sgenable_switch;
         private System.Windows.Forms.GroupBox vc_pce_display;
         private System.Windows.Forms.Label vc_pce_y_offset_l;
         private System.Windows.Forms.NumericUpDown vc_pce_y_offset;
@@ -1397,5 +1385,8 @@ namespace FriishProduce
         private System.Windows.Forms.CheckBox vc_snes_patch_nodark;
         private System.Windows.Forms.CheckBox vc_snes_patch_nosuspend;
         private System.Windows.Forms.CheckBox vc_snes_patch_volume;
+        private System.Windows.Forms.CheckBox vc_pce_sgenable;
+        private JCS.ToggleSwitch vc_pce_padbutton_switch;
+        private System.Windows.Forms.Label vc_pce_padbutton;
     }
 }

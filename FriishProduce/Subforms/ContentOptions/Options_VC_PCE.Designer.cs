@@ -134,7 +134,7 @@ namespace FriishProduce
             this.display.Controls.Add(this.hide_overscan);
             this.display.Location = new System.Drawing.Point(12, 126);
             this.display.Name = "display";
-            this.display.Size = new System.Drawing.Size(530, 115);
+            this.display.Size = new System.Drawing.Size(530, 116);
             this.display.TabIndex = 25;
             this.display.TabStop = false;
             this.display.Tag = "display";
@@ -164,7 +164,7 @@ namespace FriishProduce
             // sprline
             // 
             this.sprline.AutoSize = true;
-            this.sprline.Location = new System.Drawing.Point(10, 88);
+            this.sprline.Location = new System.Drawing.Point(10, 90);
             this.sprline.Name = "sprline";
             this.sprline.Size = new System.Drawing.Size(57, 17);
             this.sprline.TabIndex = 2;
@@ -175,7 +175,7 @@ namespace FriishProduce
             // raster
             // 
             this.raster.AutoSize = true;
-            this.raster.Location = new System.Drawing.Point(10, 67);
+            this.raster.Location = new System.Drawing.Point(10, 68);
             this.raster.Name = "raster";
             this.raster.Size = new System.Drawing.Size(55, 17);
             this.raster.TabIndex = 1;
@@ -196,7 +196,7 @@ namespace FriishProduce
             // 
             // Options_VC_PCE
             // 
-            this.ClientSize = new System.Drawing.Size(554, 297);
+            this.ClientSize = new System.Drawing.Size(554, 298);
             this.Controls.Add(this.vc_options);
             this.Controls.Add(this.display);
             this.Name = "Options_VC_PCE";

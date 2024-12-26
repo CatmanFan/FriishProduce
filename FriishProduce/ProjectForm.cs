@@ -1226,9 +1226,13 @@ namespace FriishProduce
                 }
 
             Failed:
-            Reader.Dispose();
             SystemSounds.Beep.Play();
-            MessageBox.Show(string.Format(Program.Lang.Msg(5), Reader.UpperTitleID));
+            try
+            {
+                MessageBox.Show(string.Format(Program.Lang.Msg(5), Reader.UpperTitleID));
+                Reader.Dispose();
+            }
+            catch { Reader = null; }
             WADPath = null;
             return false;
         }
@@ -1760,10 +1764,15 @@ namespace FriishProduce
         #region /////////////////////////////////////////////// To inherit ///////////////////////////////////////////////
         public void FlashInject()
         {
-            Injectors.Flash.Settings = contentOptions;
-            Injectors.Flash.Keymap = keymap.Enabled ? keymap.List : null;
-            Injectors.Flash.Multifile = multifile_software.Checked;
-            outWad = Injectors.Flash.Inject(outWad, rom.FilePath, _saveDataTitle, img);
+            Injectors.Flash Flash = new()
+            {
+                SWF = rom.FilePath,
+                Settings = contentOptions,
+                Keymap = keymap.Enabled ? keymap.List : null,
+                Multifile = multifile_software.Checked
+            };
+
+            outWad = Flash.Inject(outWad, _saveDataTitle, img);
         }
 
         public void WiiVCInject()

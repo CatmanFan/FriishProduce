@@ -255,10 +255,10 @@ namespace FriishProduce
             vc_sega_console_disableresetbutton.Checked = VC_SEGA.Default.console_disableresetbutton == "1";
 
             // PCE
-            vc_pce_backupram.Checked = VC_PCE.Default.BACKUPRAM == "1";
             vc_pce_europe_switch.Checked = VC_PCE.Default.EUROPE == "1";
-            vc_pce_sgenable_switch.Checked = VC_PCE.Default.SGENABLE == "1";
             vc_pce_padbutton_switch.Checked = VC_PCE.Default.PADBUTTON == "6";
+            vc_pce_backupram.Checked = VC_PCE.Default.BACKUPRAM == "1";
+            vc_pce_sgenable.Checked = VC_PCE.Default.SGENABLE == "1";
             vc_pce_y_offset.Value = int.Parse(VC_PCE.Default.YOFFSET);
             vc_pce_hide_overscan.Checked = VC_PCE.Default.HIDEOVERSCAN == "1";
             vc_pce_raster.Checked = VC_PCE.Default.RASTER == "1";
@@ -396,10 +396,10 @@ namespace FriishProduce
             VC_SEGA.Default.country = vc_sega_countries.SelectedIndex switch { 0 => "jp", 1 => "us", _ => "eu" };
             VC_SEGA.Default.console_disableresetbutton = vc_sega_console_disableresetbutton.Checked ? "1" : null;
 
-            VC_PCE.Default.BACKUPRAM = vc_pce_backupram.Checked ? "1" : "0";
             VC_PCE.Default.EUROPE = vc_pce_europe_switch.Checked ? "1" : "0";
-            VC_PCE.Default.SGENABLE = vc_pce_sgenable_switch.Checked ? "1" : "0";
             VC_PCE.Default.PADBUTTON = vc_pce_padbutton_switch.Checked ? "6" : "2";
+            VC_PCE.Default.SGENABLE = vc_pce_sgenable.Checked ? "1" : "0";
+            VC_PCE.Default.BACKUPRAM = vc_pce_backupram.Checked ? "1" : "0";
             VC_PCE.Default.YOFFSET = vc_pce_y_offset.Value.ToString();
             VC_PCE.Default.HIDEOVERSCAN = vc_pce_hide_overscan.Checked ? "1" : "0";
             VC_PCE.Default.RASTER = vc_pce_raster.Checked ? "1" : "0";
@@ -569,7 +569,6 @@ namespace FriishProduce
         private void ToggleSwitchText()
         {
             vc_pce_europe.Text = Program.Lang.Toggle(vc_pce_europe_switch.Checked, "europe", vc_pce.Tag.ToString());
-            vc_pce_sgenable.Text = Program.Lang.Toggle(vc_pce_sgenable_switch.Checked, "sgenable", vc_pce.Tag.ToString());
             vc_pce_padbutton.Text = Program.Lang.Toggle(vc_pce_padbutton_switch.Checked, "padbutton", vc_pce.Tag.ToString());
         }
 
