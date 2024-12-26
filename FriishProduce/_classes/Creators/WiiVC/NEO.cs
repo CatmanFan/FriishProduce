@@ -1,5 +1,5 @@
 ﻿using ICSharpCode.SharpZipLib.Zip;
-using ICSharpCode.SharpZipLib.Zip.Compression;
+using Ionic.Zlib;
 using libWiiSharp;
 using System;
 using System.Collections.Generic;
@@ -333,9 +333,14 @@ namespace FriishProduce.Injectors
             if (isZlib)
             {
                 output = null;
-                Deflater x = new();
-                x.SetInput(GameBin.ToArray());
-                x.Deflate(output);
+
+                using (MemoryStream inputStream = new MemoryStream(GameBin.ToArray()))
+                using (MemoryStream outputStream = new MemoryStream())
+                {
+                    using ZlibStream x = new(inputStream, CompressionMode.Compress, true);
+                    x.CopyTo(outputStream);
+                    output = outputStream.ToArray();
+                }
             }
 
             MainContent.ReplaceFile(target, output);

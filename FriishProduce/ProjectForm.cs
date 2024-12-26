@@ -1003,7 +1003,7 @@ namespace FriishProduce
         {
             string FILENAME = File.Exists(patch) ? Path.GetFileNameWithoutExtension(patch) : Path.GetFileNameWithoutExtension(rom?.FilePath);
             string CHANNELNAME = channel_name.Text;
-            string FULLNAME = System.Text.RegularExpressions.Regex.Replace(_bannerTitle.Replace(": ", Environment.NewLine).Replace(" - ", Environment.NewLine), @"\((.*?)\)", "").Replace("\r\n", "\n").Replace("\n", " - ");
+            string FULLNAME = System.Text.RegularExpressions.Regex.Replace(_bannerTitle.Replace(':', '\n').Replace('/', '\n').Replace('/', '\n'), @"\((.*?)\)", "").Replace("\r\n", "\n").Replace("\n", "_");
             string TITLEID = title_id_upper.Text.ToUpper();
             string PLATFORM = targetPlatform.ToString();
 
