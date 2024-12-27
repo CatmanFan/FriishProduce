@@ -12,7 +12,21 @@ namespace FriishProduce
             (
                 Platform.NEO, new List<string>()
                 {
-                    "4f0aeda8d2d145f596826b62d563c4ef" // Uni-BIOS
+                    "6293999bbc32e594aa0ae1da2113dc4d", // Uni-BIOS 1.0
+                    "cafa6c274b271c769b8246c8f87473a1", // Uni-BIOS 1.1
+                    "206fb0d9b5d01a0375d2d3ecab2401b1", // Uni-BIOS 1.2
+                    "6b2f2d8507be4d1feb14fdfbab0bf22e", // Uni-BIOS 1.2o
+                    "856d122ee5fc473d7d1dd99dbf42c25b", // Uni-BIOS 1.3
+                    "1b9724d1b9d41a1a9b733007b2033fb5", // Uni-BIOS 2.0
+                    "0377c32f69a28f23d9281c448aafb391", // Uni-BIOS 2.1
+                    "5b9079a81d84137d8b6f221659d777c5", // Uni-BIOS 2.2
+                    "74c4bb6a945f7284350036b40f0a0d9d", // Uni-BIOS 2.3
+                    "d9f0ed2e0eeab813c9692d7e8d037fd8", // Uni-BIOS 2.3o
+                    "727b731c1f4bd643094574ebaa3814b4", // Uni-BIOS 3.0
+                    "dd77a172853200bd99c986a48dde914d", // Uni-BIOS 3.1
+                    "274a7b72b7fd490f1fa71ce32371a93d", // Uni-BIOS 3.2
+                    "bfc6563dde345d68da2623dc7f0f12d3", // Uni-BIOS 3.3
+                    "4f0aeda8d2d145f596826b62d563c4ef", // Uni-BIOS 4.0
                 }
             ),
 
