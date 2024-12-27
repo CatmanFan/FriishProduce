@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ICSharpCode.SharpZipLib.Zip;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
@@ -569,6 +570,49 @@ namespace FriishProduce
             catch { }
 
             return isValid >= 10;
+        }
+    }
+
+    public static class Zip
+    {
+        /// <summary>
+        /// Gets a specific file from the archive and extracts it to a byte array via a memory stream.
+        /// </summary>
+        public static byte[] Extract(ZipFile zip, string file)
+        {
+            var entry = zip.GetEntry(file);
+
+            if (entry != null && entry.IsFile)
+            {
+                return Extract(zip, entry);
+            }
+
+            return null;
+        }
+
+        public static byte[] Extract(ZipFile zip, ZipEntry entry)
+        {
+            try
+            {
+                List<byte> bytes = new();
+
+                using (var s = zip.GetInputStream(entry))
+                {
+                    int curByte = s.ReadByte();
+                    while (curByte != -1)
+                    {
+                        bytes.Add(Convert.ToByte(curByte));
+                        curByte = s.ReadByte();
+                    }
+                }
+
+                return bytes.ToArray();
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

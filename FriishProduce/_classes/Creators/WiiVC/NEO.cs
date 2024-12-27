@@ -42,43 +42,6 @@ namespace FriishProduce.Injectors
         }
 
         /// <summary>
-        /// Gets a specific file from the archive and extracts it to a byte array via a memory stream.
-        /// </summary>
-        private byte[] ExtractToByteArray(string file)
-        {
-            try
-            {
-                var entry = ZIP.GetEntry(file);
-
-                if (entry != null && entry.IsFile)
-                {
-                    using (var s = ZIP.GetInputStream(entry))
-                    {
-                        List<byte> bytes = new();
-
-                        int curByte = s.ReadByte();
-                        while (curByte != -1)
-                        {
-                            bytes.Add(Convert.ToByte(curByte));
-                            curByte = s.ReadByte();
-                        }
-
-                        return bytes.ToArray();
-                    }
-                }
-
-                return null;
-            }
-
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-        private byte[] ExtractToByteArray(ZipEntry item) => ExtractToByteArray(item.Name);
-
-        /// <summary>
         /// Replaces ROM within extracted content5 directory. (compressed formats not supported yet)
         /// </summary>
         protected override void ReplaceROM()
@@ -117,7 +80,7 @@ namespace FriishProduce.Injectors
 
             foreach (var item in FileList)
             {
-                var b = ExtractToByteArray(item);
+                var b = Zip.Extract(ZIP, item);
 
                 bool P1_2MB = b.Length == 2097152 && item.Contains("p1");
                 if (P1_2MB)
@@ -140,13 +103,13 @@ namespace FriishProduce.Injectors
                     string filename2 = Path.GetFileNameWithoutExtension(item.Name).ToLower();
 
                     if (filename1[filename1.Length - 2] == 'm' || filename2[filename2.Length - 2] == 'm')
-                        M.AddRange(ExtractToByteArray(item));
+                        M.AddRange(Zip.Extract(ZIP, item));
 
                     if (filename1[filename1.Length - 2] == 'v' || filename2[filename2.Length - 2] == 'v')
-                        V.AddRange(ExtractToByteArray(item));
+                        V.AddRange(Zip.Extract(ZIP, item));
 
                     if (filename1[filename1.Length - 2] == 's' || filename2[filename2.Length - 2] == 's')
-                        S.AddRange(ExtractToByteArray(item));
+                        S.AddRange(Zip.Extract(ZIP, item));
 
                     if (filename1[filename1.Length - 2] == 'c' || filename2[filename2.Length - 2] == 'c')
                         C_count++;
@@ -171,7 +134,7 @@ namespace FriishProduce.Injectors
                     if (item.IsFile)
                         if (item.Name.ToLower().EndsWith($"c{x + 1}") || Path.GetFileNameWithoutExtension(item.Name).ToLower().EndsWith($"c{x + 1}"))
                         {
-                            C1 = ExtractToByteArray(item);
+                            C1 = Zip.Extract(ZIP, item);
 
                             // Byteswap
                             for (int i = 1; i < C1.Length; i += 2)
@@ -182,7 +145,7 @@ namespace FriishProduce.Injectors
                     if (item.IsFile)
                         if (item.Name.ToLower().EndsWith($"c{x + 2}") || Path.GetFileNameWithoutExtension(item.Name).ToLower().EndsWith($"c{x + 2}"))
                         {
-                            C2 = ExtractToByteArray(item);
+                            C2 = Zip.Extract(ZIP, item);
 
                             // Byteswap
                             for (int i = 1; i < C2.Length; i += 2)
@@ -234,14 +197,16 @@ namespace FriishProduce.Injectors
 
                 else if (Path.GetExtension(BIOSPath).ToLower() == ".zip")
                 {
-                    foreach (ZipEntry item in ZIP)
-                        if (item.IsFile && Path.GetExtension(item.Name).ToLower() == ".rom")
-                            BIOS.AddRange(ExtractToByteArray(item));
+                    using ZipFile biosZip = new(BIOSPath);
 
-                    if (BIOS.Count < 10) goto AutoBIOS;
+                    foreach (ZipEntry item in biosZip)
+                        if (item.IsFile && Path.GetExtension(item.Name).ToLower() == ".rom")
+                            BIOS.AddRange(Zip.Extract(biosZip, item));
                 }
 
                 else goto AutoBIOS;
+
+                if (BIOS.Count < 10) goto AutoBIOS;
 
                 goto Next;
             }
@@ -270,9 +235,7 @@ namespace FriishProduce.Injectors
 
             Next:
             for (int i = 1; i < BIOS.Count; i += 2)
-            {
                 (BIOS[i - 1], BIOS[i]) = (BIOS[i], BIOS[i - 1]);
-            }
 
             // Header
             // ****************

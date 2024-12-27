@@ -101,6 +101,7 @@
 			"008":								"An update is available\nFriishProduce v{0} is now available for download.\nYou are currently running v{1}.\n\nWould you like to get the latest version from GitHub now?",
 			"009":								"You are currently already up to date.",
 			"010":								"When this option is enabled, the program will treat all files within the same folder as the currently selected one as forming part of the software to be injected.\n\nPlease make sure that your software files are in a separate folder before continuing.",
+			"011":								"Reset all settings to default?",
 
 			"error":							"An error has occurred",
 			"e_000":							"Unable to connect to the Internet.\n{0}",

@@ -10,6 +10,13 @@ namespace FriishProduce
         public static readonly (Platform platform, List<string> BIOS)[] List = new (Platform platform, List<string> BIOS)[]
         {
             (
+                Platform.NEO, new List<string>()
+                {
+                    "4f0aeda8d2d145f596826b62d563c4ef" // Uni-BIOS
+                }
+            ),
+
+            (
                 Platform.GB, new List<string>()
                 {
                     "32fbbd84168d3482956eb3c5051637f5"
@@ -42,22 +49,32 @@ namespace FriishProduce
                     "1e68c231d0896b7eadcad1d7d8e76129", // Version 4.1 12/16/97 A
                     "6e3735ff4c7dc899ee98981385f6f3d0", // Version 4.4 03/24/00 A
                 }
-            ),
+            )
         };
 
         public static bool Verify(string file, Platform index)
         {
-            for (int i = 0; i < List.Length; i++)
+            if (Path.GetExtension(file).ToLower() == ".zip")
             {
-                if (List[i].platform == index) return Verify(file, i);
+                using ICSharpCode.SharpZipLib.Zip.ZipFile zip = new(file);
+                bool verified = false;
+
+                for (int j = 0; j < zip.Count; j++)
+                {
+                    if (zip[j].IsFile)
+                    {
+                        for (int i = 0; i < List.Length; i++)
+                        {
+                            if (List[i].platform == index)
+                            {
+                                verified = Verify(Zip.Extract(zip, zip[j]), i);
+                                if (verified) return verified;
+                            }
+                        }
+                    }
+                }
             }
 
-            MessageBox.Show(Program.Lang.Msg(2), MessageBox.Buttons.Ok, MessageBox.Icons.Warning);
-            return false;
-        }
-
-        public static bool Verify(byte[] file, Platform index)
-        {
             for (int i = 0; i < List.Length; i++)
             {
                 if (List[i].platform == index) return Verify(file, i);
@@ -99,7 +116,6 @@ namespace FriishProduce
                 }
             }
 
-            MessageBox.Show(Program.Lang.Msg(2), MessageBox.Buttons.Ok, MessageBox.Icons.Warning);
             return false;
         }
 

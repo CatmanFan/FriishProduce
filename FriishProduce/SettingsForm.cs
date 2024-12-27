@@ -602,7 +602,7 @@ namespace FriishProduce
                 ImportBIOS.DefaultExt = "rom";
             }
 
-            // ImportBIOS.Filter += Program.Lang.String("filter");
+            ImportBIOS.Filter += "|" + Program.Lang.String("filter.zip") + Program.Lang.String("filter");
 
             var dialog = ImportBIOS.ShowDialog();
             if (dialog == DialogResult.OK && BIOS.Verify(ImportBIOS.FileName, platform))

@@ -1186,6 +1186,9 @@ namespace FriishProduce
             this.ControlBox = false;
             this.Controls.Add(this.bottomPanel2);
             this.Controls.Add(this.TreeView);
+            this.Controls.Add(this.bios_files);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.adobe_flash);
             this.Controls.Add(this.forwarder);
             this.Controls.Add(this.vc_nes);
@@ -1195,9 +1198,6 @@ namespace FriishProduce
             this.Controls.Add(this.vc_pce);
             this.Controls.Add(this.vc_neo);
             this.Controls.Add(this.default_injection_methods);
-            this.Controls.Add(this.bios_files);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MaximizeBox = false;
