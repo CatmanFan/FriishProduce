@@ -228,7 +228,7 @@
             "id": "00010001-4e4150__",
             "region": [0],
             "emu_ver": [3],
-            "titles": ["カスタムロボV２（Custom Robo V2）"],
+            "titles": ["カスタムロボV２ （Custom Robo V2）"],
             "wad_titles": ["Custom Robo V2"]
         },
         
@@ -376,7 +376,7 @@
         {
             "id": "00010001-504141__",
             "region": [1, 3],
-            "emu_ver": [0, 0, 0],
+            "emu_ver": [0, 0],
             "titles": ["Bomberman '93"]
         },
 
@@ -424,12 +424,51 @@
             "emu_ver": [0, 0, 0],
             "titles": ["メタルスラッグ", "Metal Slug"]
         },
+		
+        {
+            "id": "00010001-454144__",
+            "region": [0, 1, 3],
+            "emu_ver": [0, 0, 0],
+            "titles": ["龍虎の拳", "Art of Fighting"],
+            "wad_titles": ["Ryuuko no Ken", "Art of Fighting"],
+        },
+		
+        {
+            "id": "00010001-45414e__",
+            "region": [0, 1, 3],
+            "emu_ver": [0, 0, 0],
+            "titles": ["餓狼伝説２ ～新たなる闘い～", "Fatal Fury 2"],
+            "wad_titles": ["Garou Densetsu 2 - Aratanaru Tatakai", "Fatal Fury 2"],
+        },
+		
+        {
+            "id": "00010001-454134__",
+            "region": [0, 1, 3],
+            "emu_ver": [1, 1, 1],
+            "titles": ["サムライスピリッツ 斬紅郎無双剣", "Samurai Shodown III"],
+            "wad_titles": ["Samurai Spirits - Zankuro Musouken", "Samurai Shodown III"],
+        },
+		
+        {
+            "id": "00010001-454137__",
+            "region": [0, 1, 3],
+            "emu_ver": [1, 1, 1],
+            "titles": ["サムライスピリッツ 天草降臨", "Samurai Shodown IV: Amakusa's Revenge"],
+            "wad_titles": ["Samurai Spirits - Amakusa Kourin", "Samurai Shodown IV - Amakusa's Revenge"],
+        },
 
         {
             "id": "00010001-454156__",
             "region": [0, 1, 3],
             "emu_ver": [1, 1, 1],
             "titles": ["ザ・キングオブファイターズ９５", "The King of Fighters '95"]
+        },
+		
+        {
+            "id": "00010001-454247__",
+            "region": [0, 1, 3],
+            "emu_ver": [1, 1, 1],
+            "titles": ["ザ・キングオブファイターズ９７", "The King of Fighters '97"]
         },
     ],
 
@@ -447,7 +486,7 @@
             "id": "00010001-584147__",
             "region": [0],
             "emu_ver": [0],
-            "titles": ["ロードファイター Road Fighter"],
+            "titles": ["ロードファイター （Road Fighter）"],
             "wad_titles": ["Road Fighter"]
         },
 		
@@ -455,7 +494,7 @@
             "id": "00010001-584145__",
             "region": [0],
             "emu_ver": [0],
-            "titles": ["スペースマンボウ Space Manbow"],
+            "titles": ["スペースマンボウ （Space Manbow）"],
             "wad_titles": ["Space Manbow"]
         },
 		
@@ -463,7 +502,7 @@
             "id": "00010001-584146__",
             "region": [0],
             "emu_ver": [0],
-            "titles": ["メタルギア Metal Gear"],
+            "titles": ["メタルギア （Metal Gear）"],
             "wad_titles": ["Metal Gear"]
         },
 
@@ -471,7 +510,7 @@
             "id": "00010001-584150__",
             "region": [0],
             "emu_ver": [0],
-            "titles": ["メタルギア２ ソリッドスネーク Metal Gear 2: Solid Snake"],
+            "titles": ["メタルギア２ ソリッドスネーク （Metal Gear 2: Solid Snake）"],
             "wad_titles": ["Metal Gear 2 - Solid Snake"]
         },
 		
@@ -479,7 +518,7 @@
             "id": "00010001-584144__",
             "region": [0],
             "emu_ver": [0],
-            "titles": ["イーガー皇帝の逆襲　イー・アル・カンフー２ Yie-Gah Koutei no Gyakushuu: Yie Ar Kung-Fu 2"],
+            "titles": ["イーガー皇帝の逆襲　イー・アル・カンフー２ （Yie-Gah Koutei no Gyakushuu: Yie Ar Kung-Fu 2）"],
             "wad_titles": ["Yie-Gah Koutei no Gyakushuu - Yie Ar Kung-Fu 2"]
         },
     ],
