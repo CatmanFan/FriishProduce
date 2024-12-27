@@ -91,9 +91,23 @@ namespace FriishProduce.Injectors
             // -----------------------
             ROM.CheckSize();
 
+            bool found = false;
+            string extension = IsSMS ? ".sms" : ".sgd";
+
             foreach (var item in MainCCF.Nodes)
-                if (item.Name.ToLower().Contains(".sgd") || item.Name.ToLower().Contains(".sms"))
+                if (item.Name.ToLower().Contains(extension)
+                    || item.Name.ToLower().EndsWith(extension.Substring(0, 3))
+                    || item.Name.ToLower().EndsWith(extension.Substring(0, 2))
+                    || item.Name.Contains("MonsterWorld1")
+                    || item.Name.Contains("FantasyZone2")
+                    || item.Name.Contains("AlexKiddTheLostStars"))
+                {
+                    found = true;
                     MainCCF.ReplaceFile(item, ROM.Bytes);
+                }
+
+            if (!found)
+                throw new System.Exception(Program.Lang.Msg(13, true));
         }
 
         protected override void ReplaceSaveData(string[] lines, ImageHelper Img)

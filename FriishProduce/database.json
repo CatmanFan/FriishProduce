@@ -265,23 +265,21 @@
     ],
 
     "sms": [
-//        FriishProduce currently can't detect the rom file in this base WAD :P
-//        {
-//            "id": "00010001-4c414e__",
-//            "region": [0, 1, 3],
-//            "emu_ver": [2, 2, 2],
-//            "titles": ["アレックスキッド ザ・ロストスターズ", "Alex Kidd: The Lost Stars"],
-//            "wad_titles": ["Alex Kidd - The Lost Stars"],
-//        },
+        {
+            "id": "00010001-4c414e__",
+            "region": [0, 1, 3],
+            "emu_ver": [2, 2, 2],
+            "titles": ["アレックスキッド ザ・ロストスターズ", "Alex Kidd: The Lost Stars"],
+            "wad_titles": ["Alex Kidd - The Lost Stars"],
+        },
 
-//        FriishProduce currently can't detect the rom file in this base WAD :P
-//        {
-//            "id": "00010001-4c414c__",
-//            "region": [0, 1, 3],
-//            "emu_ver": [2, 2, 2],
-//            "titles": ["FANTASY ZONEⅡ オパオパの涙", "Fantasy Zone II: The Tears of Opa-Opa"],
-//            "wad_titles": ["Fantasy Zone II - Opa-Opa no Namida", "Fantasy Zone II - The Tears of Opa-Opa"],
-//        },
+        {
+            "id": "00010001-4c414c__",
+            "region": [0, 1, 3],
+            "emu_ver": [2, 2, 2],
+            "titles": ["FANTASY ZONEⅡ オパオパの涙", "Fantasy Zone II: The Tears of Opa-Opa"],
+            "wad_titles": ["Fantasy Zone II - Opa-Opa no Namida", "Fantasy Zone II - The Tears of Opa-Opa"],
+        },
 
         {
             "id": "00010001-4c4147__",
@@ -312,16 +310,15 @@
             "emu_ver": [3, 3, 3],
             "titles": ["R-TYPE"],
             "wad_titles": ["R-Type"],
-        }
+        },
 
-//        FriishProduce currently can't detect the rom file in this base WAD :P
-//        {
-//            "id": "00010001-4c414b__",
-//            "region": [0, 1, 3],
-//            "emu_ver": [2, 2, 2],
-//            "titles": ["アレックスキッド ザ・ロストスターズ", "Wonder Boy in Monster Land"],
-//            "wad_titles": ["Super Wonder Boy - Monster World", "Wonder Boy in Monster Land"],
-//        }
+        {
+            "id": "00010001-4c414b__",
+            "region": [0, 1, 3],
+            "emu_ver": [2, 2, 2],
+            "titles": ["アレックスキッド ザ・ロストスターズ", "Wonder Boy in Monster Land"],
+            "wad_titles": ["Super Wonder Boy - Monster World", "Wonder Boy in Monster Land"],
+        }
     ],
 
     "smd": [
