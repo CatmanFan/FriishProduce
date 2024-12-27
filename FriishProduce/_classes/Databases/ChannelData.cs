@@ -275,6 +275,9 @@ namespace FriishProduce
                         y.Regions.Add(reg[i].GetInt32());
                         try { y.Titles.Add(item.GetProperty("titles")[i].GetString()); } catch { y.Titles.Add(item.GetProperty("titles")[Math.Max(0, item.GetProperty("titles").GetArrayLength() - 1)].GetString()); }
                         try { y.EmuRevs.Add(item.GetProperty("emu_ver")[i].GetInt32()); } catch { y.EmuRevs.Add(0); }
+
+                        if (y.Regions.Count == 1 && y.Regions[0] == 0 && !Program.Lang.Current.StartsWith("ja") && item.GetProperty("titles").GetArrayLength() > 1)
+                            y.Titles[0] = item.GetProperty("titles")[1].GetString();
                     }
 
                     for (int i = 0; i < y.Regions.Count; i++)
@@ -297,7 +300,8 @@ namespace FriishProduce
                         }
                     }
 
-                    Entries.Add(y);
+                    if (!(Program.Lang.Current.StartsWith("ja") && !y.Regions.Contains(0)))
+                        Entries.Add(y);
                 }
             }
 

@@ -442,6 +442,7 @@ namespace FriishProduce
                         return null;
                     }
                 }
+
                 catch (Exception ex)
                 {
                     System.Windows.Forms.MessageBox.Show($"Could not initialize the language string file \"{code}.json\" because of an error.\n\n{ex.GetType().FullName}\n{ex.Message}\n\nThe language will now be reset to system default.");
