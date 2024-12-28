@@ -27,8 +27,9 @@ jobs:
     - name: Get commit SHA
       run: |
         set a=${{ github.sha }}
-        echo "SHORT_SHA=$(git rev-parse --short a)" >> $GITHUB_ENV
-        echo "Commit SHA is %a:~0,7%"
+        echo "SHORT_SHA=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+        echo "Commit SHA is $(git rev-parse --short HEAD)"
+        echo "Commit SHA is " $(git rev-parse --short HEAD)
   
     - name: Setup MSBuild v1.1
       uses: microsoft/setup-msbuild@v1.1
