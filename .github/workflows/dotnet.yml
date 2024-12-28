@@ -17,7 +17,7 @@ jobs:
     runs-on: windows-2019
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
   
     - name: Setup MSBuild v1.1
       uses: microsoft/setup-msbuild@v1.1
@@ -40,3 +40,15 @@ jobs:
       
     - name: Compress archive
       run: Compress-Archive -Path * -DestinationPath FriishProduce_latest.zip
+
+    - name: GH Release
+      uses: softprops/action-gh-release@v2.2.0
+      if: startsWith(github.ref, 'refs/tags/')
+      with:
+        tag-name: "latest"
+        name: "Latest Build"
+        body: "${{ steps.date.outputs.date }}"
+        prerelease: true
+        draft: true
+        files: FriishProduce_latest.zip
+        token: ${{ secrets.GITHUB_TOKEN }}
