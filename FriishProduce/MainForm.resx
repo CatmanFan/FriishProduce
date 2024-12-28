@@ -120,24 +120,6 @@
   <metadata name="SaveWAD.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>469, 17</value>
   </metadata>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Logo.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="Logo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="Logo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 175</value>
-  </data>
-  <data name="Logo.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
-    <value>AutoSize</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Logo.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
   <data name="&gt;&gt;Logo.Name" xml:space="preserve">
     <value>Logo</value>
   </data>
@@ -150,15 +132,18 @@
   <data name="&gt;&gt;Logo.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="mainPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="mainPanel.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 25</value>
   </data>
   <data name="mainPanel.Size" type="System.Drawing.Size, System.Drawing">
     <value>1008, 479</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="mainPanel.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
@@ -174,6 +159,33 @@
   <data name="&gt;&gt;mainPanel.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="Logo.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="Logo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="Logo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>175, 175</value>
+  </data>
+  <data name="Logo.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>AutoSize</value>
+  </data>
+  <data name="Logo.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;Logo.Name" xml:space="preserve">
+    <value>Logo</value>
+  </data>
+  <data name="&gt;&gt;Logo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Logo.Parent" xml:space="preserve">
+    <value>mainPanel</value>
+  </data>
+  <data name="&gt;&gt;Logo.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <metadata name="toolStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
@@ -182,6 +194,30 @@
   </data>
   <data name="toolStrip.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8pt</value>
+  </data>
+  <data name="toolStrip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="toolStrip.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="toolStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1008, 25</value>
+  </data>
+  <data name="toolStrip.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;toolStrip.Name" xml:space="preserve">
+    <value>toolStrip</value>
+  </data>
+  <data name="&gt;&gt;toolStrip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStrip.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;toolStrip.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="toolbarNewProject.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -391,30 +427,6 @@
   <data name="toolbarPreferences.Size" type="System.Drawing.Size, System.Drawing">
     <value>23, 22</value>
   </data>
-  <data name="toolStrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="toolStrip.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="toolStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1008, 25</value>
-  </data>
-  <data name="toolStrip.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;toolStrip.Name" xml:space="preserve">
-    <value>toolStrip</value>
-  </data>
-  <data name="&gt;&gt;toolStrip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStrip.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;toolStrip.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <metadata name="SaveProject.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>354, 17</value>
   </metadata>
@@ -424,6 +436,54 @@
   <metadata name="mainMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>115, 17</value>
   </metadata>
+  <data name="menuItem1.Text" xml:space="preserve">
+    <value>file</value>
+  </data>
+  <data name="menuItem2.Text" xml:space="preserve">
+    <value>project</value>
+  </data>
+  <data name="extract_wad_banner.Text" xml:space="preserve">
+    <value>extract_wad_banner</value>
+  </data>
+  <data name="extract_wad_banner.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="extract_wad_icon.Text" xml:space="preserve">
+    <value>extract_wad_icon</value>
+  </data>
+  <data name="extract_wad_icon.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="extract_wad_sound.Text" xml:space="preserve">
+    <value>extract_wad_sound</value>
+  </data>
+  <data name="extract_wad_manual.Text" xml:space="preserve">
+    <value>extract_wad_manual</value>
+  </data>
+  <data name="menuItem9.Text" xml:space="preserve">
+    <value>-</value>
+  </data>
+  <data name="updater.Text" xml:space="preserve">
+    <value>updater</value>
+  </data>
+  <data name="menuItem8.Text" xml:space="preserve">
+    <value>-</value>
+  </data>
+  <data name="language_file_editor.Text" xml:space="preserve">
+    <value>Language File Editor</value>
+  </data>
+  <data name="preferences.Shortcut" type="System.Windows.Forms.Shortcut, System.Windows.Forms">
+    <value>F5</value>
+  </data>
+  <data name="preferences.Text" xml:space="preserve">
+    <value>preferences</value>
+  </data>
+  <data name="menuItem3.Text" xml:space="preserve">
+    <value>tools</value>
+  </data>
+  <data name="menuItem4.Text" xml:space="preserve">
+    <value>help</value>
+  </data>
   <data name="new_project.Shortcut" type="System.Windows.Forms.Shortcut, System.Windows.Forms">
     <value>CtrlN</value>
   </data>
@@ -462,9 +522,6 @@
   </data>
   <data name="exit.Text" xml:space="preserve">
     <value>exit</value>
-  </data>
-  <data name="menuItem1.Text" xml:space="preserve">
-    <value>file</value>
   </data>
   <data name="import_game_file.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -508,62 +565,14 @@
   <data name="close_project.Text" xml:space="preserve">
     <value>close_project</value>
   </data>
-  <data name="menuItem2.Text" xml:space="preserve">
-    <value>project</value>
-  </data>
-  <data name="extract_wad_banner.Text" xml:space="preserve">
-    <value>extract_wad_banner</value>
-  </data>
-  <data name="extract_wad_banner.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="extract_wad_icon.Text" xml:space="preserve">
-    <value>extract_wad_icon</value>
-  </data>
-  <data name="extract_wad_icon.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="extract_wad_sound.Text" xml:space="preserve">
-    <value>extract_wad_sound</value>
-  </data>
-  <data name="extract_wad_manual.Text" xml:space="preserve">
-    <value>extract_wad_manual</value>
-  </data>
-  <data name="menuItem9.Text" xml:space="preserve">
-    <value>-</value>
-  </data>
   <data name="check_for_updates.Text" xml:space="preserve">
     <value>check_for_updates</value>
   </data>
   <data name="auto_update.Text" xml:space="preserve">
     <value>auto_update</value>
   </data>
-  <data name="updater.Text" xml:space="preserve">
-    <value>updater</value>
-  </data>
-  <data name="menuItem8.Text" xml:space="preserve">
-    <value>-</value>
-  </data>
-  <data name="language_file_editor.Text" xml:space="preserve">
-    <value>Language File Editor</value>
-  </data>
-  <data name="language_file_editor.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="preferences.Shortcut" type="System.Windows.Forms.Shortcut, System.Windows.Forms">
-    <value>F5</value>
-  </data>
-  <data name="preferences.Text" xml:space="preserve">
-    <value>preferences</value>
-  </data>
-  <data name="menuItem3.Text" xml:space="preserve">
-    <value>tools</value>
-  </data>
   <data name="about.Text" xml:space="preserve">
     <value>about</value>
-  </data>
-  <data name="menuItem4.Text" xml:space="preserve">
-    <value>help</value>
   </data>
   <data name="tabControl.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt</value>

@@ -143,7 +143,7 @@ namespace FriishProduce
             if (Program.DebugMode)
             {
                 Text += " [Running in debug mode]";
-                language_file_editor.Visible = true;
+                // Debug mode-only features are activated here. //
             }
 
             foreach (MdiTabControl.TabPage tabPage in tabControl.TabPages)

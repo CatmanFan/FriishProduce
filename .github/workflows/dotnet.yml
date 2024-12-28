@@ -35,20 +35,32 @@ jobs:
       id: date
       run: echo "date=$(date +'%Y%m%d%H%M%S')" >> $GITHUB_OUTPUT
 
+    - name: Get commit hash
+      id: commit
+      uses: prompt/actions-commit-hash@v3
+
     - name: Go to output directory
       run: cd FriishProduce\bin\Release\ && dir
       
     - name: Compress archive
       run: Compress-Archive -Path * -DestinationPath FriishProduce_latest.zip
-
-    - name: GH Release
-      uses: softprops/action-gh-release@v2.2.0
-      if: startsWith(github.ref, 'refs/tags/')
+      
+    - name: Update release
+      id: update_release
+      uses: tubone24/update_release@v1.3.1
+      env:
+        GITHUB_TOKEN: ${{ secrets.github_token }}
+        TAG_NAME: latest
       with:
-        tag-name: "latest"
-        name: "Latest Build"
+        release_name: "Latest build (${{ steps.commit.outputs.short }})"
         body: "${{ steps.date.outputs.date }}"
-        prerelease: true
-        draft: true
-        files: FriishProduce_latest.zip
-        token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Upload to release
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.github_token }}
+      with:
+        upload_url: ${{ steps.update_release.outputs.upload_url }}
+        asset_path: FriishProduce_latest.zip
+        asset_name: FriishProduce_latest.zip
+        asset_content_type: application/zip
