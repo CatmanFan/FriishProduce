@@ -21,4 +21,8 @@ jobs:
       with:
         dotnet-version: 8.0.x
     - name: Restore dependencies
-      run: dotnet restore FriishProduce/FriishProduce.csproj
+      run: dotnet restore --verbosity normal
+    - name: Build release
+      run: dotnet build -c Release --verbosity normal
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
