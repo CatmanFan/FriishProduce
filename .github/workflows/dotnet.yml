@@ -37,3 +37,6 @@ jobs:
 
     - name: Go to output directory
       run: cd FriishProduce\bin\Release\ && dir
+      
+    - name: Compress archive
+      run: Compress-Archive -Path * -DestinationPath FriishProduce_latest.zip

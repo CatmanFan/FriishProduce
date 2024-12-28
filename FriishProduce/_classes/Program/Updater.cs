@@ -88,10 +88,10 @@ namespace FriishProduce
                 var client = new GitHubClient(new ProductHeaderValue("FriishProduce"));
                 var release = await client.Repository.Release.GetLatest("CatmanFan", "FriishProduce");
 
-                Version latest = new Version(release.TagName.Substring(1).Replace("-beta", ""));
+                Version latest = release.TagName.ToLower() == "latest" ? new Version("9.99") : new Version(release.TagName.Substring(1).Replace("-beta", ""));
                 Version current = new Version(GetCurrentVersion().Substring(1));
 
-                if (current.CompareTo(latest) < 0)
+                if (current.CompareTo(latest) < 0 && !release.Prerelease)
                 {
                     if (MessageBox.Show(string.Format(Program.Lang.Msg(8), latest, current), MessageBox.Buttons.YesNo, MessageBox.Icons.Shield) == MessageBox.Result.Yes)
                     {
