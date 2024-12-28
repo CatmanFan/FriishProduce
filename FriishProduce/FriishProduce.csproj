@@ -28,7 +28,7 @@
     <ApplicationVersion>1.1.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-	<IsTestProject>false</IsTestProject>
+    <IsTestProject>false</IsTestProject>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -755,7 +755,13 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>cd "$(TargetDir)resources\tools\banners\"
+    <PreBuildEvent>:: Make needed folders
+:: -------
+mkdir "$(TargetDir)strings\"
+
+:: Move banners to project folder for development use
+:: -------
+cd "$(TargetDir)resources\tools\banners\"
 
 
 for %25%25f in (*.app) do (call :copy %25%25f)
@@ -803,6 +809,8 @@ for %25%25f in (*.pdb) do (call :move %25%25f)
 
 goto :eof
 
+:: Additional functions
+:: -------
 
 
 
