@@ -36,4 +36,26 @@ jobs:
 
     - name: Get current date
       id: date
-      run: echo "::set-output name=date::$(date +'%Y%m%d%H%M%S')"
+      run: echo "date=$(date +'%Y%m%d%H%M%S')" >> $GITHUB_OUTPUT
+
+    - name: Create release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: latest
+        release_name: Latest Build (${{ steps.date.outputs.date }})
+        draft: true
+        prerelease: true
+
+    - name: Upload release
+      id: upload_release
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: out.zip
+        asset_name: FriishProduce_latest.zip
+        asset_content_type: application/zip
