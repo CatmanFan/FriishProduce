@@ -19,14 +19,21 @@ jobs:
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1
 
-    - name: Navigate to Workspace
+    - name: Go to GitHub Workspace
       run: cd $GITHUB_WORKSPACE
 
-    - name: Create Build Directory
+    - name: Create build directory
       run: mkdir _build
 
     - name: Restore dependencies
       run: nuget restore FriishProduce.sln
 
     - name: Build release
-      run: MSBuild FriishProduce.sln /p:Configuration=Release /p:Platform="Any CPU" /t:build /restore /p:DeleteExistingFiles=False /p:PublishUrl="../_build"
+      run: MSBuild FriishProduce.sln /p:Configuration=Release /p:Platform="Any CPU" /t:build /restore /p:DeleteExistingFiles=False /p:PublishUrl="_build"
+
+    - name: Create archive
+      run: Compress-Archive -Path _build/* -Destination out.zip
+
+    - name: Get current date
+      id: date
+      run: echo "::set-output name=date::$(date +'%Y%m%d%H%M%S')"
