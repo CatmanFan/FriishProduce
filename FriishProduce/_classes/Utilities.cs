@@ -512,22 +512,8 @@ namespace FriishProduce
                         break;
                 }
 
-                /* Force 4:3 aspect ratio display on Wii U (NOT WORKING)
-                ////////////////////////////////////////////////////////////
-                if (force43)
-                {
-                    File.WriteAllBytes(Paths.WorkingFolder + "main.dol", content1);
-
-                    Run
-                    (
-                        "wstrt\\wstrt.exe",
-                        Paths.Tools + "wstrt\\",
-                        $"patch \"{Paths.WorkingFolder}main.dol\" --add-section Force43.gct"
-                    );
-
-                    content1 = File.ReadAllBytes(Paths.WorkingFolder + "main.dol");
-                    if (File.Exists(Paths.WorkingFolder + "main.dol")) File.Delete(Paths.WorkingFolder + "main.dol");
-                } */
+                /* Force 4:3 aspect ratio display on Wii U (NOT WORKING) */
+                // *************************
 
                 content1 = PackContent1(content1);
 
