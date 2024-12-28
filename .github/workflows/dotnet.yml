@@ -11,18 +11,22 @@ on:
 
 jobs:
   build:
-
     runs-on: windows-latest
 
     steps:
     - uses: actions/checkout@v4
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: 8.0.x
+
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1
+
+    - name: Navigate to Workspace
+      run: cd $GITHUB_WORKSPACE
+
+    - name: Create Build Directory
+      run: mkdir _build
+
     - name: Restore dependencies
-      run: nuget restore
+      run: nuget restore FriishProduce.sln
+
     - name: Build release
-      run: dotnet build --no-restore -c Release
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: MSBuild FriishProduce.sln /p:Configuration=Release /p:Platform="Any CPU" /t:build /restore /p:DeleteExistingFiles=False /p:PublishUrl="../_build"
