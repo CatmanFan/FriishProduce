@@ -9,53 +9,31 @@ on:
   pull_request:
     branches: [ "main" ]
 
+permissions:
+  contents: write
+
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: windows-2019
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v2
 
-    - name: Setup MSBuild
+    - name: Setup MSBuild v1
       uses: microsoft/setup-msbuild@v1
 
-    - name: Go to GitHub Workspace
-      run: cd $GITHUB_WORKSPACE
+    - name: Setup NuGet v2
+      uses: NuGet/setup-nuget@v2
+  
+    - name: Setup MSBuild v1.1
+      uses: microsoft/setup-msbuild@v1.1
 
-    - name: Create build directory
-      run: mkdir _build
-
-    - name: Restore dependencies
+    - name: Restore Packages
       run: nuget restore FriishProduce.sln
 
-    - name: Build release
-      run: MSBuild FriishProduce.sln /p:Configuration=Release /p:Platform="Any CPU" /t:build /restore /p:DeleteExistingFiles=False /p:PublishUrl="_build"
-
-    - name: Create archive
-      run: Compress-Archive -Path _build/* -Destination out.zip
+    - name: Build solution
+      run: msbuild FriishProduce\FriishProduce.csproj -t:publish -property:Configuration=Release
 
     - name: Get current date
       id: date
       run: echo "date=$(date +'%Y%m%d%H%M%S')" >> $GITHUB_OUTPUT
-
-    - name: Create release
-      id: create_release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        tag_name: latest
-        release_name: Latest Build (${{ steps.date.outputs.date }})
-        draft: true
-        prerelease: true
-
-    - name: Upload release
-      id: upload_release
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: out.zip
-        asset_name: FriishProduce_latest.zip
-        asset_content_type: application/zip
