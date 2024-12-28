@@ -5,8 +5,5 @@
     <Setting Name="bios" Type="System.String" Scope="User">
       <Value Profile="(Default)">VC2</Value>
     </Setting>
-    <Setting Name="bios_path" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
   </Settings>
 </SettingsFile>

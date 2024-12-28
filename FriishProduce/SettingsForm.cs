@@ -471,6 +471,16 @@ namespace FriishProduce
             DialogResult = DialogResult.Cancel;
         }
 
+        private void Reset_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show(Program.Lang.Msg(11), MessageBox.Buttons.YesNo, MessageBox.Icons.Warning) == MessageBox.Result.Yes)
+            {
+                Default.Reset();
+                System.Diagnostics.Process.Start(Application.ExecutablePath);
+                System.Diagnostics.Process.GetCurrentProcess().Kill();
+            }
+        }
+
         private void DownloadBanners_Click(object sender, EventArgs e)
         {
             System.Media.SystemSounds.Beep.Play();

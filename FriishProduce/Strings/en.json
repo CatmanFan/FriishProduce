@@ -156,6 +156,7 @@
 
 		"settingsform": {
 		    "general":							"General",
+			"reset":							"Reset to default",
 			"language":							"Language",
 			"system_default":					"System default",
 			"reset_all_dialogs":				"Reset all dialogs",

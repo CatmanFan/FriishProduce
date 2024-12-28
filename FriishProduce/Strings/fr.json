@@ -156,6 +156,7 @@
 
 		"settingsform": {
 		    "general":							"Général",
+			"reset":							"Réinitialiser tout",
 			"language":							"Langue",
 			"system_default":					"Système",
 			"reset_all_dialogs":				"Réinitialiser le paramètre « Ne plus afficher ce message »",

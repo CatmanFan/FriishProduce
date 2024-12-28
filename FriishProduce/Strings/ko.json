@@ -155,6 +155,7 @@
 
 		"settingsform": {
 		    "general":							"일반",
+			"reset":							"Reset to default",
 			"language":							"언어",
 			"system_default":					"시스템 기본값",
 			"reset_all_dialogs":				"모든 대화상자 재설정",

@@ -34,17 +34,5 @@ namespace FriishProduce.Options {
                 this["bios"] = value;
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string bios_path {
-            get {
-                return ((string)(this["bios_path"]));
-            }
-            set {
-                this["bios_path"] = value;
-            }
-        }
     }
 }

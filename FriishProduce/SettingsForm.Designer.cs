@@ -39,6 +39,7 @@ namespace FriishProduce
             this.vc_n64_romc_type_list = new System.Windows.Forms.ComboBox();
             this.bottomPanel2 = new System.Windows.Forms.Panel();
             this.bottomPanel1 = new System.Windows.Forms.Panel();
+            this.b_reset = new System.Windows.Forms.Button();
             this.b_cancel = new System.Windows.Forms.Button();
             this.b_ok = new System.Windows.Forms.Button();
             this.GetBanners = new System.Windows.Forms.Button();
@@ -258,11 +259,20 @@ namespace FriishProduce
             // bottomPanel1
             // 
             this.bottomPanel1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.bottomPanel1.Controls.Add(this.b_reset);
             this.bottomPanel1.Controls.Add(this.b_cancel);
             this.bottomPanel1.Controls.Add(this.b_ok);
             this.bottomPanel1.Controls.Add(this.GetBanners);
             resources.ApplyResources(this.bottomPanel1, "bottomPanel1");
             this.bottomPanel1.Name = "bottomPanel1";
+            // 
+            // b_reset
+            // 
+            resources.ApplyResources(this.b_reset, "b_reset");
+            this.b_reset.Name = "b_reset";
+            this.b_reset.Tag = "reset";
+            this.b_reset.UseVisualStyleBackColor = true;
+            this.b_reset.Click += new System.EventHandler(this.Reset_Click);
             // 
             // b_cancel
             // 
@@ -1186,8 +1196,6 @@ namespace FriishProduce
             this.ControlBox = false;
             this.Controls.Add(this.bottomPanel2);
             this.Controls.Add(this.TreeView);
-            this.Controls.Add(this.bios_files);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.adobe_flash);
             this.Controls.Add(this.forwarder);
@@ -1198,6 +1206,8 @@ namespace FriishProduce
             this.Controls.Add(this.vc_pce);
             this.Controls.Add(this.vc_neo);
             this.Controls.Add(this.default_injection_methods);
+            this.Controls.Add(this.bios_files);
+            this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MaximizeBox = false;
@@ -1388,5 +1398,6 @@ namespace FriishProduce
         private System.Windows.Forms.CheckBox vc_pce_sgenable;
         private JCS.ToggleSwitch vc_pce_padbutton_switch;
         private System.Windows.Forms.Label vc_pce_padbutton;
+        private System.Windows.Forms.Button b_reset;
     }
 }

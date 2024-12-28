@@ -32,7 +32,7 @@ namespace FriishProduce
             // *******
             if (Options != null)
             {
-                bool valid = File.Exists(FriishProduce.Options.BIOSFILES.Default.neogeo);
+                bool valid = File.Exists(BIOSFILES.Default.neogeo);
 
                 // Clear list selection if not found
                 if (!valid && biosIndex == 0)
@@ -45,8 +45,8 @@ namespace FriishProduce
                     );
 
                     Options["BIOS"] = VC_NEO.Default.bios;
-                    FriishProduce.Options.BIOSFILES.Default.neogeo = null;
-                    FriishProduce.Options.BIOSFILES.Default.Save();
+                    BIOSFILES.Default.neogeo = null;
+                    BIOSFILES.Default.Save();
                 }
 
                 bios_list.SelectedIndex = biosIndex;
