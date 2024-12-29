@@ -44,7 +44,7 @@ namespace FriishProduce
             // 
             // bottomPanel1
             // 
-            this.bottomPanel1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.bottomPanel1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.bottomPanel1.Controls.Add(this.b_cancel);
             this.bottomPanel1.Controls.Add(this.b_ok);
             resources.ApplyResources(this.bottomPanel1, "bottomPanel1");
@@ -98,7 +98,6 @@ namespace FriishProduce
             // 
             this.AcceptButton = this.b_ok;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
-            this.BackColor = System.Drawing.SystemColors.Control;
             this.CancelButton = this.b_cancel;
             resources.ApplyResources(this, "$this");
             this.ControlBox = false;

@@ -6,6 +6,7 @@ using System.Text.Json;
 
 namespace FriishProduce
 {
+    [Serializable]
     public class Settings
     {
         public App application { get; set; }

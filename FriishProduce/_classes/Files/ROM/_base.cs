@@ -154,6 +154,9 @@ namespace FriishProduce
         /// <returns></returns>
         public (string Title, string Year, string Players, string Serial, string Image) GetData(Platform platform, string path)
         {
+            Databases.OpenVGDB.Parse(path);
+            return (null, null, null, null, null);
+
             string crc32 = null;
             string title = null;
             string year = null;
