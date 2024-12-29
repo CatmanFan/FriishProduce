@@ -14,7 +14,7 @@ namespace FriishProduce
         public static string GetCurrentVersion()
         {
             var ver = System.Diagnostics.FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetExecutingAssembly().Location).FileVersion;
-            return "v" + ver.Substring(0, ver[4] != '0' ? 5 : 3);
+            return "v" + ver.Substring(0, ver.Length >= 5 && ver[4] != '0' ? 5 : Math.Min(3, ver.Length));
         }
 
         public static async void InstallUpdateSyncWithInfo()

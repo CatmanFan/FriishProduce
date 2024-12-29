@@ -455,12 +455,7 @@ namespace FriishProduce
 
         private void Reset_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show(Program.Lang.Msg(11), MessageBox.Buttons.YesNo, MessageBox.Icons.Warning) == MessageBox.Result.Yes)
-            {
-                Program.Config.Save();
-                System.Diagnostics.Process.Start(Application.ExecutablePath);
-                System.Diagnostics.Process.GetCurrentProcess().Kill();
-            }
+
         }
 
         private void DownloadBanners_Click(object sender, EventArgs e)

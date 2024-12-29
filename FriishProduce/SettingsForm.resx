@@ -309,29 +309,8 @@
   <data name="&gt;&gt;vc_n64_romc_type_list.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="b_reset.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 9</value>
-  </data>
-  <data name="b_reset.Size" type="System.Drawing.Size, System.Drawing">
-    <value>182, 23</value>
-  </data>
-  <data name="b_reset.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="b_reset.Text" xml:space="preserve">
-    <value>reset</value>
-  </data>
-  <data name="&gt;&gt;b_reset.Name" xml:space="preserve">
-    <value>b_reset</value>
-  </data>
-  <data name="&gt;&gt;b_reset.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;b_reset.Parent" xml:space="preserve">
-    <value>bottomPanel1</value>
-  </data>
-  <data name="&gt;&gt;b_reset.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="b_cancel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
   </data>
   <data name="b_cancel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -358,7 +337,10 @@
     <value>bottomPanel1</value>
   </data>
   <data name="&gt;&gt;b_cancel.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
+  </data>
+  <data name="b_ok.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
   </data>
   <data name="b_ok.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -385,13 +367,16 @@
     <value>bottomPanel1</value>
   </data>
   <data name="&gt;&gt;b_ok.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
+  </data>
+  <data name="GetBanners.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
   </data>
   <data name="GetBanners.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="GetBanners.Location" type="System.Drawing.Point, System.Drawing">
-    <value>365, 8</value>
+    <value>12, 8</value>
   </data>
   <data name="GetBanners.Size" type="System.Drawing.Size, System.Drawing">
     <value>165, 24</value>
@@ -412,7 +397,10 @@
     <value>bottomPanel1</value>
   </data>
   <data name="&gt;&gt;GetBanners.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
+  </data>
+  <data name="bottomPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
   </data>
   <data name="bottomPanel1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 1</value>
@@ -590,7 +578,7 @@
     <value>use_online_wad_tip</value>
   </data>
   <data name="&gt;&gt;use_online_wad_tip.Type" xml:space="preserve">
-    <value>FriishProduce.ImageLabel, FriishProduce, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>FriishProduce.ImageLabel, FriishProduce, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;use_online_wad_tip.Parent" xml:space="preserve">
     <value>panel1</value>
@@ -2486,7 +2474,7 @@
     <value>10, 64</value>
   </data>
   <data name="flash_fullscreen.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 17</value>
+    <value>72, 17</value>
   </data>
   <data name="flash_fullscreen.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
@@ -3372,6 +3360,9 @@
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8.25pt</value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>

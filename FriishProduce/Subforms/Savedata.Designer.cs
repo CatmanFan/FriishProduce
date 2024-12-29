@@ -64,8 +64,8 @@
             // 
             // b_cancel
             // 
-            this.b_cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             resources.ApplyResources(this.b_cancel, "b_cancel");
+            this.b_cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.b_cancel.Name = "b_cancel";
             this.b_cancel.Tag = "b_cancel";
             this.b_cancel.UseVisualStyleBackColor = true;

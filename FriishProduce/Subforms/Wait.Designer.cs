@@ -38,25 +38,25 @@ namespace FriishProduce
             // 
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox1.Image = global::FriishProduce.Properties.Resources.loading;
-            this.pictureBox1.Location = new System.Drawing.Point(320, -4);
+            this.pictureBox1.Location = new System.Drawing.Point(338, 10);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(64, 64);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
             // progress
             // 
-            this.progress.Location = new System.Drawing.Point(12, 23);
+            this.progress.Location = new System.Drawing.Point(14, 20);
+            this.progress.MaximumSize = new System.Drawing.Size(0, 15);
             this.progress.Name = "progress";
-            this.progress.Size = new System.Drawing.Size(310, 10);
+            this.progress.Size = new System.Drawing.Size(314, 12);
             this.progress.TabIndex = 2;
             // 
             // Wait
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(384, 56);
+            this.ClientSize = new System.Drawing.Size(384, 52);
             this.ControlBox = false;
             this.Controls.Add(this.progress);
             this.Controls.Add(this.pictureBox1);
@@ -71,7 +71,6 @@ namespace FriishProduce
             this.Text = "  ";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

@@ -36,18 +36,6 @@ namespace FriishProduce
             this.g1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // b_cancel
-            // 
-            this.b_cancel.Location = new System.Drawing.Point(312, 8);
-            // 
-            // b_ok
-            // 
-            this.b_ok.Location = new System.Drawing.Point(206, 8);
-            // 
-            // bottomPanel1
-            // 
-            this.bottomPanel1.Size = new System.Drawing.Size(424, 41);
-            // 
             // biosImport
             // 
             this.biosImport.DefaultExt = "rom";

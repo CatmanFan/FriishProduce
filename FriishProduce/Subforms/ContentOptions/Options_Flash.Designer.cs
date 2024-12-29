@@ -63,18 +63,6 @@ namespace FriishProduce
             this.strap_reminder.SuspendLayout();
             this.SuspendLayout();
             // 
-            // b_cancel
-            // 
-            this.b_cancel.Location = new System.Drawing.Point(622, 8);
-            // 
-            // b_ok
-            // 
-            this.b_ok.Location = new System.Drawing.Point(516, 8);
-            // 
-            // bottomPanel1
-            // 
-            this.bottomPanel1.Size = new System.Drawing.Size(734, 41);
-            // 
             // b_controller
             // 
             this.b_controller.Size = new System.Drawing.Size(690, 24);
