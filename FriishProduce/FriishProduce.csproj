@@ -82,6 +82,7 @@
     <Reference Include="Microsoft.Bcl.HashCode, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.HashCode.6.0.0\lib\net462\Microsoft.Bcl.HashCode.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Octokit, Version=13.0.1.0, Culture=neutral, PublicKeyToken=0be8860aee462442, processorArchitecture=MSIL">
       <HintPath>..\packages\Octokit.13.0.1\lib\netstandard2.0\Octokit.dll</HintPath>
@@ -110,8 +111,8 @@
     <Reference Include="System.IO.Pipelines, Version=9.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.IO.Pipelines.9.0.0\lib\net462\System.IO.Pipelines.dll</HintPath>
     </Reference>
-    <Reference Include="System.Memory, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Memory.4.6.0\lib\net462\System.Memory.dll</HintPath>
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
     </Reference>
     <Reference Include="System.Numerics" />
     <Reference Include="System.Numerics.Vectors, Version=4.1.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -123,9 +124,6 @@
     <Reference Include="System.Resources.Extensions, Version=9.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Resources.Extensions.9.0.0\lib\net462\System.Resources.Extensions.dll</HintPath>
     </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.1.0\lib\net462\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
-    </Reference>
     <Reference Include="System.Security" />
     <Reference Include="System.Text.Encodings.Web, Version=9.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Text.Encodings.Web.9.0.0\lib\net462\System.Text.Encodings.Web.dll</HintPath>
@@ -133,15 +131,11 @@
     <Reference Include="System.Text.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Text.Json.9.0.0-rc.2.24473.5\lib\net462\System.Text.Json.dll</HintPath>
     </Reference>
-    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.6.0\lib\net462\System.Threading.Tasks.Extensions.dll</HintPath>
-    </Reference>
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
@@ -186,51 +180,6 @@
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Options\ADOBEFLASH.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>ADOBEFLASH.settings</DependentUpon>
-    </Compile>
-    <Compile Include="Options\BIOSFILES.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>BIOSFILES.settings</DependentUpon>
-    </Compile>
-    <Compile Include="Options\FORWARDER.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>FORWARDER.settings</DependentUpon>
-    </Compile>
-    <Compile Include="Options\VC_N64.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>VC_N64.settings</DependentUpon>
-    </Compile>
-    <Compile Include="Options\VC_NEO.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>VC_NEO.settings</DependentUpon>
-    </Compile>
-    <Compile Include="Options\VC_NES.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>VC_NES.settings</DependentUpon>
-    </Compile>
-    <Compile Include="Options\VC_PCE.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>VC_PCE.settings</DependentUpon>
-    </Compile>
-    <Compile Include="Options\VC_SEGA.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>VC_SEGA.settings</DependentUpon>
-    </Compile>
-    <Compile Include="Options\VC_SNES.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>VC_SNES.settings</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -505,42 +454,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="database.json" />
-    <None Include="Options\ADOBEFLASH.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>ADOBEFLASH.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="Options\BIOSFILES.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>BIOSFILES.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="Options\FORWARDER.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>FORWARDER.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="Options\VC_N64.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>VC_N64.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="Options\VC_NEO.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>VC_NEO.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="Options\VC_NES.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>VC_NES.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="Options\VC_PCE.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>VC_PCE.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="Options\VC_SEGA.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>VC_SEGA.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="Options\VC_SNES.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>VC_SNES.Designer.cs</LastGenOutput>
-    </None>
     <None Include="Resources\banners\c64_eu.app" />
     <None Include="Resources\banners\c64_us.app" />
     <None Include="Resources\banners\flash.app" />
@@ -749,9 +662,6 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="NES\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

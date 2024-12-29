@@ -185,7 +185,7 @@ namespace FriishProduce
             // ********
             // SaveWAD.InitialDirectory = Paths.Out;
 
-            if (Properties.Settings.Default.auto_update) { _ = Updater.GetLatest(); }
+            if (Program.Config.application.auto_update) { _ = Updater.GetLatest(); }
         }
 
         private void MainForm_Closing(object sender, FormClosingEventArgs e)
@@ -433,8 +433,7 @@ namespace FriishProduce
                 auto_update.Checked = !auto_update.Checked;
                 check_for_updates.Enabled = !Updater.IsLatest;
 
-                Properties.Settings.Default.auto_update = auto_update.Checked;
-                Properties.Settings.Default.Save();
+                Program.Config.application.auto_update = auto_update.Checked;
             }
 
             /* 

@@ -11,6 +11,7 @@ namespace FriishProduce
         [DllImport("user32.dll", SetLastError = true)]
         static extern void SwitchToThisWindow(IntPtr hWnd, bool turnOn);
 
+        public static Settings Config { get; set; }
         public static MainForm MainForm { get; private set; }
         public static Language Lang { get; set; }
         public static IntPtr Handle { get; set; }
@@ -45,6 +46,7 @@ namespace FriishProduce
             DebugMode = false;
 #endif
 
+            Config = new(Paths.Configuration);
             Lang = new Language();
 
             try

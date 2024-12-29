@@ -122,7 +122,7 @@ namespace FriishProduce
             this.bios_filename_psx = new System.Windows.Forms.TextBox();
             this.adobe_flash = new System.Windows.Forms.Panel();
             this.display = new System.Windows.Forms.GroupBox();
-            this.flash_stretch_to_4_3 = new System.Windows.Forms.CheckBox();
+            this.flash_fullscreen = new System.Windows.Forms.CheckBox();
             this.flash_update_frame_rate_l = new System.Windows.Forms.Label();
             this.flash_update_frame_rate = new System.Windows.Forms.NumericUpDown();
             this.flash_quality_l = new System.Windows.Forms.Label();
@@ -337,8 +337,6 @@ namespace FriishProduce
             // bypass_rom_size
             // 
             resources.ApplyResources(this.bypass_rom_size, "bypass_rom_size");
-            this.bypass_rom_size.Checked = global::FriishProduce.Properties.Settings.Default.bypass_rom_size;
-            this.bypass_rom_size.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::FriishProduce.Properties.Settings.Default, "bypass_rom_size", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.bypass_rom_size.Name = "bypass_rom_size";
             this.bypass_rom_size.Tag = "bypass_rom_size";
             this.bypass_rom_size.UseVisualStyleBackColor = true;
@@ -346,9 +344,6 @@ namespace FriishProduce
             // use_online_wad_enabled
             // 
             resources.ApplyResources(this.use_online_wad_enabled, "use_online_wad_enabled");
-            this.use_online_wad_enabled.Checked = global::FriishProduce.Properties.Settings.Default.use_online_wad_enabled;
-            this.use_online_wad_enabled.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.use_online_wad_enabled.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::FriishProduce.Properties.Settings.Default, "use_online_wad_enabled", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.use_online_wad_enabled.Name = "use_online_wad_enabled";
             this.use_online_wad_enabled.Tag = "use_online_wad_enabled";
             this.use_online_wad_enabled.UseVisualStyleBackColor = true;
@@ -693,8 +688,6 @@ namespace FriishProduce
             // auto_game_scan
             // 
             resources.ApplyResources(this.auto_game_scan, "auto_game_scan");
-            this.auto_game_scan.Checked = global::FriishProduce.Properties.Settings.Default.auto_game_scan;
-            this.auto_game_scan.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::FriishProduce.Properties.Settings.Default, "auto_game_scan", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.auto_game_scan.Name = "auto_game_scan";
             this.auto_game_scan.Tag = "auto_game_scan";
             this.auto_game_scan.UseVisualStyleBackColor = true;
@@ -702,8 +695,6 @@ namespace FriishProduce
             // auto_fill_save_data
             // 
             resources.ApplyResources(this.auto_fill_save_data, "auto_fill_save_data");
-            this.auto_fill_save_data.Checked = global::FriishProduce.Properties.Settings.Default.auto_fill_save_data;
-            this.auto_fill_save_data.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::FriishProduce.Properties.Settings.Default, "auto_fill_save_data", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.auto_fill_save_data.Name = "auto_fill_save_data";
             this.auto_fill_save_data.Tag = "auto_fill_save_data";
             this.auto_fill_save_data.UseVisualStyleBackColor = true;
@@ -761,10 +752,8 @@ namespace FriishProduce
             // 
             // default_target_project_tb
             // 
-            this.default_target_project_tb.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FriishProduce.Properties.Settings.Default, "default_target_filename", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             resources.ApplyResources(this.default_target_project_tb, "default_target_project_tb");
             this.default_target_project_tb.Name = "default_target_project_tb";
-            this.default_target_project_tb.Text = global::FriishProduce.Properties.Settings.Default.default_target_filename;
             // 
             // label2
             // 
@@ -779,10 +768,8 @@ namespace FriishProduce
             // 
             // default_target_wad_tb
             // 
-            this.default_target_wad_tb.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FriishProduce.Properties.Settings.Default, "default_export_filename", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             resources.ApplyResources(this.default_target_wad_tb, "default_target_wad_tb");
             this.default_target_wad_tb.Name = "default_target_wad_tb";
-            this.default_target_wad_tb.Text = global::FriishProduce.Properties.Settings.Default.default_export_filename;
             // 
             // default_target_parameters
             // 
@@ -929,7 +916,7 @@ namespace FriishProduce
             // 
             // display
             // 
-            this.display.Controls.Add(this.flash_stretch_to_4_3);
+            this.display.Controls.Add(this.flash_fullscreen);
             this.display.Controls.Add(this.flash_update_frame_rate_l);
             this.display.Controls.Add(this.flash_update_frame_rate);
             this.display.Controls.Add(this.flash_quality_l);
@@ -939,12 +926,12 @@ namespace FriishProduce
             this.display.TabStop = false;
             this.display.Tag = "display";
             // 
-            // flash_stretch_to_4_3
+            // flash_fullscreen
             // 
-            resources.ApplyResources(this.flash_stretch_to_4_3, "flash_stretch_to_4_3");
-            this.flash_stretch_to_4_3.Name = "flash_stretch_to_4_3";
-            this.flash_stretch_to_4_3.Tag = "stretch_to_4_3";
-            this.flash_stretch_to_4_3.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.flash_fullscreen, "flash_fullscreen");
+            this.flash_fullscreen.Name = "flash_fullscreen";
+            this.flash_fullscreen.Tag = "fullscreen";
+            this.flash_fullscreen.UseVisualStyleBackColor = true;
             // 
             // flash_update_frame_rate_l
             // 
@@ -1386,7 +1373,7 @@ namespace FriishProduce
         private System.Windows.Forms.Label flash_persistent_storage_total_l;
         private System.Windows.Forms.ComboBox flash_persistent_storage_total;
         private System.Windows.Forms.CheckBox flash_save_data_enable;
-        private System.Windows.Forms.CheckBox flash_stretch_to_4_3;
+        private System.Windows.Forms.CheckBox flash_fullscreen;
         private System.Windows.Forms.Panel vc_snes;
         private System.Windows.Forms.GroupBox vc_snes_options;
         private System.Windows.Forms.CheckBox vc_snes_patch_nosave;

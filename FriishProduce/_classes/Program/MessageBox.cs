@@ -145,7 +145,15 @@ namespace FriishProduce
 
                 var clicked = t.ShowDialog();
 
-                if (t.IsVerificationChecked && dontShow >= 0) { Properties.Settings.Default[$"DoNotShow_{dontShow:000}"] = true; Properties.Settings.Default.Save(); }
+                if (t.IsVerificationChecked && dontShow >= 0)
+                {
+                    var setting = Program.Config.application.GetType().GetField($"donotshow_{dontShow:000}");
+
+                    if (setting != null)
+                        setting.SetValue(typeof(bool), true);
+
+                    Program.Config.Save();
+                }
 
                 if (clicked?.Text == Program.Lang.String("b_yes")) return Result.Yes;
                 if (clicked?.Text == Program.Lang.String("b_no")) return Result.No;

@@ -1,5 +1,4 @@
-﻿using FriishProduce.Options;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 
@@ -16,15 +15,17 @@ namespace FriishProduce
             this.platform = platform;
             bios = platform switch
             {
-                Platform.PSX => BIOSFILES.Default.psx,
-                Platform.GBA => BIOSFILES.Default.gba,
+                Platform.PSX => Program.Config.paths.bios_psx,
+                Platform.GB => Program.Config.paths.bios_gb,
+                Platform.GBC => Program.Config.paths.bios_gbc,
+                Platform.GBA => Program.Config.paths.bios_gba,
                 _ => null
             };
 
             Options = new Dictionary<string, string>
             {
                 { "use_bios", false.ToString() },
-                { "show_bios_screen", FORWARDER.Default.show_bios_screen }
+                { "show_bios_screen", Program.Config.forwarder.show_bios_screen.ToString() }
             };
 
             // Cosmetic
@@ -59,13 +60,19 @@ namespace FriishProduce
                     switch (platform)
                     {
                         case Platform.PSX:
-                            FriishProduce.Options.BIOSFILES.Default.psx = null;
+                            Program.Config.paths.bios_psx = null;
+                            break;
+                        case Platform.GB:
+                            Program.Config.paths.bios_gb = null;
+                            break;
+                        case Platform.GBC:
+                            Program.Config.paths.bios_gbc = null;
                             break;
                         case Platform.GBA:
-                            FriishProduce.Options.BIOSFILES.Default.gba = null;
+                            Program.Config.paths.bios_gba = null;
                             break;
                     }
-                    FriishProduce.Options.BIOSFILES.Default.Save();
+                    Program.Config.Save();
                     Options["show_bios_screen"] = Options["use_bios"] = false.ToString();
                 }
 

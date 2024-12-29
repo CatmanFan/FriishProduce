@@ -1,5 +1,4 @@
-﻿using FriishProduce.Options;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace FriishProduce
@@ -12,12 +11,12 @@ namespace FriishProduce
 
             Options = new Dictionary<string, string>
             {
-                { "patch_volume",       VC_SNES.Default.patch_volume },
-                { "patch_nodark",       VC_SNES.Default.patch_nodark },
-                { "patch_nocc",         VC_SNES.Default.patch_nocc },
-                { "patch_nosuspend",    VC_SNES.Default.patch_nosuspend },
-                { "patch_nosave",       VC_SNES.Default.patch_nosave },
-                { "patch_widescreen",   VC_SNES.Default.patch_widescreen }
+                { "patch_volume",       Program.Config.snes.patch_volume.ToString() },
+                { "patch_nodark",       Program.Config.snes.patch_nodark.ToString() },
+                { "patch_nocc",         Program.Config.snes.patch_nocc.ToString() },
+                { "patch_nosuspend",    Program.Config.snes.patch_nosuspend.ToString() },
+                { "patch_nosave",       Program.Config.snes.patch_nosave.ToString() },
+                { "patch_widescreen",   Program.Config.snes.patch_widescreen.ToString() }
             };
 
             // Cosmetic

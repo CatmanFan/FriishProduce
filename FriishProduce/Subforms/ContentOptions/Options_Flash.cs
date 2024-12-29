@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using static FriishProduce.Options.ADOBEFLASH;
 
 namespace FriishProduce
 {
@@ -17,19 +16,19 @@ namespace FriishProduce
 
             Options = new Dictionary<string, string>
             {
-                { "update_frame_rate", Default.update_frame_rate },
-                { "mouse", Default.mouse },
-                { "qwerty_keyboard", Default.qwerty_keyboard },
-                { "quality", Default.quality },
-                { "shared_object_capability", Default.shared_object_capability },
-                { "vff_sync_on_write", Default.vff_sync_on_write },
-                { "vff_cache_size", Default.vff_cache_size },
-                { "persistent_storage_total", Default.persistent_storage_total },
-                { "persistent_storage_per_movie", Default.persistent_storage_per_movie },
-                { "hbm_no_save", Default.hbm_no_save },
-                { "strap_reminder", Default.strap_reminder },
+                { "update_frame_rate", Program.Config.flash.update_frame_rate },
+                { "mouse", Program.Config.flash.mouse },
+                { "qwerty_keyboard", Program.Config.flash.qwerty_keyboard },
+                { "quality", Program.Config.flash.quality },
+                { "shared_object_capability", Program.Config.flash.shared_object_capability },
+                { "vff_sync_on_write", Program.Config.flash.vff_sync_on_write },
+                { "vff_cache_size", Program.Config.flash.vff_cache_size },
+                { "persistent_storage_total", Program.Config.flash.persistent_storage_total },
+                { "persistent_storage_per_movie", Program.Config.flash.persistent_storage_per_movie },
+                { "hbm_no_save", Program.Config.flash.hbm_no_save },
+                { "strap_reminder", Program.Config.flash.strap_reminder },
                 { "midi", null },
-                { "stretch_to_4_3", Default.stretch_to_4_3 },
+                { "fullscreen", Program.Config.flash.fullscreen },
                 { "background_color", "0 0 0 0" }
             };
 
@@ -69,7 +68,7 @@ namespace FriishProduce
                     quality.SelectedIndex = Options["quality"] switch { "high" => 0, "medium" => 1, _ => 2 };
                     strap_reminder_list.SelectedIndex = Options["strap_reminder"] switch { "none" => 0, "normal" => 1, _ => 2 };
                     // MIDI is counted separately
-                    stretch_to_4_3.Checked = Options["stretch_to_4_3"] == "yes";
+                    fullscreen.Checked = Options["fullscreen"] == "yes";
 
                     // Background color
                     // ****************
@@ -94,19 +93,19 @@ namespace FriishProduce
                 {
                     Options = new Dictionary<string, string>
                     {
-                        { "update_frame_rate", Default.update_frame_rate },
-                        { "mouse", Default.mouse },
-                        { "qwerty_keyboard", Default.qwerty_keyboard },
-                        { "quality", Default.quality },
-                        { "shared_object_capability", Default.shared_object_capability },
-                        { "vff_sync_on_write", Default.vff_sync_on_write },
-                        { "vff_cache_size", Default.vff_cache_size },
-                        { "persistent_storage_total", Default.persistent_storage_total },
-                        { "persistent_storage_per_movie", Default.persistent_storage_per_movie },
-                        { "hbm_no_save", Default.hbm_no_save },
-                        { "strap_reminder", Default.strap_reminder },
+                        { "update_frame_rate", Program.Config.flash.update_frame_rate },
+                        { "mouse", Program.Config.flash.mouse },
+                        { "qwerty_keyboard", Program.Config.flash.qwerty_keyboard },
+                        { "quality", Program.Config.flash.quality },
+                        { "shared_object_capability", Program.Config.flash.shared_object_capability },
+                        { "vff_sync_on_write", Program.Config.flash.vff_sync_on_write },
+                        { "vff_cache_size", Program.Config.flash.vff_cache_size },
+                        { "persistent_storage_total", Program.Config.flash.persistent_storage_total },
+                        { "persistent_storage_per_movie", Program.Config.flash.persistent_storage_per_movie },
+                        { "hbm_no_save", Program.Config.flash.hbm_no_save },
+                        { "strap_reminder", Program.Config.flash.strap_reminder },
                         { "midi", null },
-                        { "stretch_to_4_3", Default.stretch_to_4_3 },
+                        { "fullscreen", Program.Config.flash.fullscreen },
                         { "background_color", "0 0 0 0" }
                     };
 
@@ -144,7 +143,7 @@ namespace FriishProduce
             Options["quality"] = quality.SelectedIndex switch { 0 => "high", 1 => "medium", _ => "low" };
             Options["strap_reminder"] = strap_reminder_list.SelectedIndex switch { 0 => "none", 1 => "normal", _ => "no_ex" };
             Options["hbm_no_save"] = Options["shared_object_capability"] == "on" ? "no" : "yes";
-            Options["stretch_to_4_3"] = stretch_to_4_3.Checked ? "yes" : "no";
+            Options["fullscreen"] = fullscreen.Checked ? "yes" : "no";
             Options["background_color"] = BGColor.Color.R + BGColor.Color.G + BGColor.Color.B > 0 ? $"{BGColor.Color.R} {BGColor.Color.G} {BGColor.Color.B} 255" : "0 0 0 0";
         }
 

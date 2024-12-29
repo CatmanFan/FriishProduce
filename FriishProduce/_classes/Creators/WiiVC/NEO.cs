@@ -183,7 +183,7 @@ namespace FriishProduce.Injectors
             // TO-DO: Do byteswap for each byte with BIOS
             // ****************
             BIOS = new List<byte>();
-            string BIOSPath = Options.BIOSFILES.Default.neogeo;
+            string BIOSPath = Program.Config.paths.bios_neo;
 
             if (Settings["BIOS"].ToLower() != "custom" || !File.Exists(BIOSPath))
                 goto AutoBIOS;
@@ -212,7 +212,7 @@ namespace FriishProduce.Injectors
             }
 
             AutoBIOS:
-            string targetBIOS = Settings["BIOS"].ToLower() == "custom" ? Options.VC_NEO.Default.bios : Settings["BIOS"];
+            string targetBIOS = Settings["BIOS"].ToLower() == "custom" ? Program.Config.neo.bios : Settings["BIOS"];
 
             BIOS.Clear();
             switch (targetBIOS.ToLower())

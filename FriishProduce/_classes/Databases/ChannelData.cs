@@ -197,10 +197,10 @@ namespace FriishProduce
         {
             Entries = new List<ChannelEntry>();
 
-            if (!File.Exists(Properties.Settings.Default.custom_database))
+            if (!File.Exists(Program.Config.paths.database))
             {
-                Properties.Settings.Default.custom_database = null;
-                Properties.Settings.Default.Save();
+                Program.Config.paths.database = null;
+                Program.Config.Save();
             }
 
             getStaticBase();
@@ -230,14 +230,14 @@ namespace FriishProduce
         /// </summary>
         public ChannelDatabase(Platform c, string externalFile = null)
         {
-            string file = File.Exists(externalFile) ? externalFile : File.Exists(Properties.Settings.Default.custom_database) ? Properties.Settings.Default.custom_database : null;
+            string file = File.Exists(externalFile) ? externalFile : File.Exists(Program.Config.paths.database) ? Program.Config.paths.database : null;
 
             Entries = new List<ChannelEntry>();
 
-            if (!File.Exists(Properties.Settings.Default.custom_database))
+            if (!File.Exists(Program.Config.paths.database) && Program.Config.paths.database != null)
             {
-                Properties.Settings.Default.custom_database = null;
-                Properties.Settings.Default.Save();
+                Program.Config.paths.database = null;
+                Program.Config.Save();
             }
 
             try

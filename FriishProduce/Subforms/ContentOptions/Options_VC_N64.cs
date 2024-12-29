@@ -1,5 +1,4 @@
-﻿using FriishProduce.Options;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace FriishProduce
@@ -12,12 +11,12 @@ namespace FriishProduce
 
             Options = new Dictionary<string, string>
             {
-                { "brightness",     VC_N64.Default.patch_fixbrightness },
-                { "crash",          VC_N64.Default.patch_fixcrashes },
-                { "expansion",      VC_N64.Default.patch_expandedram },
-                { "rom_autosize",   VC_N64.Default.patch_autosizerom },
+                { "brightness",     Program.Config.n64.patch_nodark.ToString() },
+                { "crash",          Program.Config.n64.patch_crashfix.ToString() },
+                { "expansion",      Program.Config.n64.patch_expandedram.ToString() },
+                { "rom_autosize",   Program.Config.n64.patch_autoromsize.ToString() },
                 { "widescreen",     "False" },
-                { "romc",           VC_N64.Default.romc_type }
+                { "romc",           Program.Config.n64.romc_type.ToString() }
             };
 
             // Cosmetic

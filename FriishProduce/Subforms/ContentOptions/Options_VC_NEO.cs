@@ -1,5 +1,4 @@
-﻿using FriishProduce.Options;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 
@@ -13,7 +12,7 @@ namespace FriishProduce
 
             Options = new Dictionary<string, string>
             {
-                { "BIOS", VC_NEO.Default.bios }
+                { "BIOS", Program.Config.neo.bios }
             };
 
             // Cosmetic
@@ -32,21 +31,21 @@ namespace FriishProduce
             // *******
             if (Options != null)
             {
-                bool valid = File.Exists(BIOSFILES.Default.neogeo);
+                bool valid = File.Exists(Program.Config.paths.bios_neo);
 
                 // Clear list selection if not found
                 if (!valid && biosIndex == 0)
                 {
                     MessageBox.Show
                     (
-                        string.Format(Program.Lang.Msg(11, true), Path.GetFileName(FriishProduce.Options.BIOSFILES.Default.neogeo)),
+                        string.Format(Program.Lang.Msg(11, true), Path.GetFileName(Program.Config.paths.bios_neo)),
                         MessageBox.Buttons.Ok,
                         MessageBox.Icons.Information
                     );
 
-                    Options["BIOS"] = VC_NEO.Default.bios;
-                    BIOSFILES.Default.neogeo = null;
-                    BIOSFILES.Default.Save();
+                    Options["BIOS"] = Program.Config.neo.bios;
+                    Program.Config.paths.bios_neo = null;
+                    Program.Config.Save();
                 }
 
                 bios_list.SelectedIndex = biosIndex;
@@ -100,12 +99,12 @@ namespace FriishProduce
         #region Functions
         private void BIOSChanged(object sender, EventArgs e)
         {
-            if (biosName == "custom" && string.IsNullOrWhiteSpace(FriishProduce.Options.BIOSFILES.Default.neogeo))
+            if (biosName == "custom" && string.IsNullOrWhiteSpace(Program.Config.paths.bios_neo))
             {
                 MessageBox.Show(Program.Lang.Msg(14, true), MessageBox.Buttons.Ok, MessageBox.Icons.Error, false);
 
                 // Set list selection back to previous one
-                if (biosIndex == 0) Options["BIOS"] = VC_NEO.Default.bios;
+                if (biosIndex == 0) Options["BIOS"] = Program.Config.neo.bios;
                 bios_list.SelectedIndex = biosIndex;
             }
         }

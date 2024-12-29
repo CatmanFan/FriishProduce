@@ -2476,34 +2476,34 @@
   <data name="&gt;&gt;bios_files.ZOrder" xml:space="preserve">
     <value>12</value>
   </data>
-  <data name="flash_stretch_to_4_3.AutoSize" type="System.Boolean, mscorlib">
+  <data name="flash_fullscreen.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="flash_stretch_to_4_3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="flash_fullscreen.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="flash_stretch_to_4_3.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="flash_fullscreen.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 64</value>
   </data>
-  <data name="flash_stretch_to_4_3.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="flash_fullscreen.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 17</value>
   </data>
-  <data name="flash_stretch_to_4_3.TabIndex" type="System.Int32, mscorlib">
+  <data name="flash_fullscreen.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
   </data>
-  <data name="flash_stretch_to_4_3.Text" xml:space="preserve">
-    <value>stretch_to_4_3</value>
+  <data name="flash_fullscreen.Text" xml:space="preserve">
+    <value>fullscreen</value>
   </data>
-  <data name="&gt;&gt;flash_stretch_to_4_3.Name" xml:space="preserve">
-    <value>flash_stretch_to_4_3</value>
+  <data name="&gt;&gt;flash_fullscreen.Name" xml:space="preserve">
+    <value>flash_fullscreen</value>
   </data>
-  <data name="&gt;&gt;flash_stretch_to_4_3.Type" xml:space="preserve">
+  <data name="&gt;&gt;flash_fullscreen.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;flash_stretch_to_4_3.Parent" xml:space="preserve">
+  <data name="&gt;&gt;flash_fullscreen.Parent" xml:space="preserve">
     <value>display</value>
   </data>
-  <data name="&gt;&gt;flash_stretch_to_4_3.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;flash_fullscreen.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="flash_update_frame_rate_l.AutoSize" type="System.Boolean, mscorlib">

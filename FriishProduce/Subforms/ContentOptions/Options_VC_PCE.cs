@@ -1,5 +1,4 @@
-﻿using FriishProduce.Options;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace FriishProduce
@@ -14,18 +13,18 @@ namespace FriishProduce
 
             Options = new Dictionary<string, string>
             {
-                { "BACKUPRAM", VC_PCE.Default.BACKUPRAM },
-                { "PADBUTTON", VC_PCE.Default.PADBUTTON },
+                { "BACKUPRAM", Program.Config.pce.BACKUPRAM },
+                { "PADBUTTON", Program.Config.pce.PADBUTTON },
                 { "CHASEHQ", "0" },
-                { "EUROPE", VC_PCE.Default.EUROPE },
-                { "SGENABLE", VC_PCE.Default.SGENABLE },
-                { "HIDEOVERSCAN", VC_PCE.Default.HIDEOVERSCAN },
-                { "YOFFSET", VC_PCE.Default.YOFFSET },
+                { "EUROPE", Program.Config.pce.EUROPE },
+                { "SGENABLE", Program.Config.pce.SGENABLE },
+                { "HIDEOVERSCAN", Program.Config.pce.HIDEOVERSCAN },
+                { "YOFFSET", Program.Config.pce.YOFFSET },
                 { "MULTITAP", "1" },
                 { "HDS", "0" },
-                { "RASTER", VC_PCE.Default.RASTER },
+                { "RASTER", Program.Config.pce.RASTER },
                 { "POPULUS", "0" },
-                { "SPRLINE", VC_PCE.Default.SPRLINE },
+                { "SPRLINE", Program.Config.pce.SPRLINE },
                 { "NOFPA", "1" },
                 { "PAD5", "0" },
             };

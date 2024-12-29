@@ -39,16 +39,16 @@ namespace FriishProduce
             this.persistent_storage_total = new System.Windows.Forms.ComboBox();
             this.save_data_enable = new System.Windows.Forms.CheckBox();
             this.display = new System.Windows.Forms.GroupBox();
-            this.stretch_to_4_3 = new System.Windows.Forms.CheckBox();
+            this.fullscreen = new System.Windows.Forms.CheckBox();
             this.update_frame_rate_l = new System.Windows.Forms.Label();
             this.update_frame_rate = new System.Windows.Forms.NumericUpDown();
             this.quality_l = new System.Windows.Forms.Label();
             this.controls = new System.Windows.Forms.GroupBox();
-            this.background_color_img = new System.Windows.Forms.PictureBox();
-            this.background_color = new System.Windows.Forms.Button();
             this.midi = new System.Windows.Forms.CheckBox();
             this.qwerty_keyboard = new System.Windows.Forms.CheckBox();
             this.mouse = new System.Windows.Forms.CheckBox();
+            this.background_color_img = new System.Windows.Forms.PictureBox();
+            this.background_color = new System.Windows.Forms.Button();
             this.strap_reminder = new System.Windows.Forms.GroupBox();
             this.strap_reminder_list = new System.Windows.Forms.ComboBox();
             this.ImportDLS = new System.Windows.Forms.OpenFileDialog();
@@ -229,7 +229,7 @@ namespace FriishProduce
             // 
             // display
             // 
-            this.display.Controls.Add(this.stretch_to_4_3);
+            this.display.Controls.Add(this.fullscreen);
             this.display.Controls.Add(this.update_frame_rate_l);
             this.display.Controls.Add(this.update_frame_rate);
             this.display.Controls.Add(this.quality_l);
@@ -242,16 +242,16 @@ namespace FriishProduce
             this.display.Tag = "display";
             this.display.Text = "display";
             // 
-            // stretch_to_4_3
+            // fullscreen
             // 
-            this.stretch_to_4_3.AutoSize = true;
-            this.stretch_to_4_3.Location = new System.Drawing.Point(10, 64);
-            this.stretch_to_4_3.Name = "stretch_to_4_3";
-            this.stretch_to_4_3.Size = new System.Drawing.Size(100, 17);
-            this.stretch_to_4_3.TabIndex = 18;
-            this.stretch_to_4_3.Tag = "stretch_to_4_3";
-            this.stretch_to_4_3.Text = "stretch_to_4_3";
-            this.stretch_to_4_3.UseVisualStyleBackColor = true;
+            this.fullscreen.AutoSize = true;
+            this.fullscreen.Location = new System.Drawing.Point(10, 64);
+            this.fullscreen.Name = "fullscreen";
+            this.fullscreen.Size = new System.Drawing.Size(72, 17);
+            this.fullscreen.TabIndex = 18;
+            this.fullscreen.Tag = "fullscreen";
+            this.fullscreen.Text = "fullscreen";
+            this.fullscreen.UseVisualStyleBackColor = true;
             // 
             // update_frame_rate_l
             // 
@@ -298,26 +298,6 @@ namespace FriishProduce
             this.controls.Tag = "controls";
             this.controls.Text = "controls";
             // 
-            // background_color_img
-            // 
-            this.background_color_img.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.background_color_img.Location = new System.Drawing.Point(692, 170);
-            this.background_color_img.Name = "background_color_img";
-            this.background_color_img.Size = new System.Drawing.Size(30, 20);
-            this.background_color_img.TabIndex = 17;
-            this.background_color_img.TabStop = false;
-            // 
-            // background_color
-            // 
-            this.background_color.Location = new System.Drawing.Point(370, 168);
-            this.background_color.Name = "background_color";
-            this.background_color.Size = new System.Drawing.Size(316, 23);
-            this.background_color.TabIndex = 16;
-            this.background_color.Tag = "background_color";
-            this.background_color.Text = "background_color";
-            this.background_color.UseVisualStyleBackColor = true;
-            this.background_color.Click += new System.EventHandler(this.changeBackgroundColor);
-            // 
             // midi
             // 
             this.midi.AutoSize = true;
@@ -351,6 +331,26 @@ namespace FriishProduce
             this.mouse.Tag = "mouse";
             this.mouse.Text = "mouse";
             this.mouse.UseVisualStyleBackColor = true;
+            // 
+            // background_color_img
+            // 
+            this.background_color_img.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.background_color_img.Location = new System.Drawing.Point(692, 170);
+            this.background_color_img.Name = "background_color_img";
+            this.background_color_img.Size = new System.Drawing.Size(30, 20);
+            this.background_color_img.TabIndex = 17;
+            this.background_color_img.TabStop = false;
+            // 
+            // background_color
+            // 
+            this.background_color.Location = new System.Drawing.Point(370, 168);
+            this.background_color.Name = "background_color";
+            this.background_color.Size = new System.Drawing.Size(316, 23);
+            this.background_color.TabIndex = 16;
+            this.background_color.Tag = "background_color";
+            this.background_color.Text = "background_color";
+            this.background_color.UseVisualStyleBackColor = true;
+            this.background_color.Click += new System.EventHandler(this.changeBackgroundColor);
             // 
             // strap_reminder
             // 
@@ -435,7 +435,7 @@ namespace FriishProduce
         private System.Windows.Forms.NumericUpDown update_frame_rate;
         private System.Windows.Forms.Label quality_l;
         private System.Windows.Forms.Label update_frame_rate_l;
-        private System.Windows.Forms.CheckBox stretch_to_4_3;
+        private System.Windows.Forms.CheckBox fullscreen;
         private System.Windows.Forms.ColorDialog BGColor;
         private System.Windows.Forms.Button background_color;
         private System.Windows.Forms.PictureBox background_color_img;

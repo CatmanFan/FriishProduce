@@ -2,13 +2,14 @@
 
 namespace FriishProduce
 {
-    public class Paths
+    public static class Paths
     {
         public static readonly string EnvironmentFolder = System.Windows.Forms.Application.StartupPath;
         public static readonly string WorkingFolder = Path.Combine(EnvironmentFolder, "resources\\temp\\");
         public static readonly string Banners = Path.Combine(EnvironmentFolder, "resources\\tools\\banners\\");
 
         // Application paths
+        public static readonly string Configuration = Path.Combine(EnvironmentFolder, "config.json");
         public static readonly string Tools = Path.Combine(EnvironmentFolder, "resources\\tools\\");
         public static readonly string Languages = Path.Combine(EnvironmentFolder, "strings\\");
         public static readonly string Out = Path.Combine(EnvironmentFolder, "out\\");

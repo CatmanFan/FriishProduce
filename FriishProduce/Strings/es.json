@@ -100,7 +100,6 @@
 			"007":								"El seleccionado no contiene ningún contenido válido de manual electrónico.",
 			"008":								"Actualización de FriishProduce\nYa está disponible para descargar la nueva versión {0} de FriishProduce.\nActualmente está utilizando la versión {1}.\n\n¿Quiere descargar la actualización de GitHub ahora?",
 			"009":								"Actualmente ya está actualizado.",
-			"011":								"¿Quieres restablecer todos sus ajustes?",
 			
 			"error":							"Se ha producido un error",
 			"e_000":							"No se pudo conectar a Internet.\n{0}",
@@ -151,7 +150,6 @@
 
 		"settingsform": {
 		    "general":							"General",
-			"reset":							"Restablecer todo",
 			"language":							"Idioma",
 			"system_default":					"Idioma del sistema",
 			"reset_all_dialogs":				"Restablecer la opción \"No volver a mostrar este mensaje\"",

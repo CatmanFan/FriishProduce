@@ -472,7 +472,7 @@ namespace FriishProduce
 
             // Selected index properties
             Program.Lang.Control(image_interpolation_mode, Name);
-            image_interpolation_mode.SelectedIndex = Properties.Settings.Default.image_interpolation;
+            image_interpolation_mode.SelectedIndex = Program.Config.application.image_interpolation;
 
             // Manual
             manual_type.SelectedIndex = 0;
@@ -602,16 +602,16 @@ namespace FriishProduce
 
             injection_methods.SelectedIndex = targetPlatform switch
             {
-                Platform.NES                 => Properties.Settings.Default.default_injection_method_nes,
-                Platform.SNES                => Properties.Settings.Default.default_injection_method_snes,
-                Platform.N64                 => Properties.Settings.Default.default_injection_method_n64,
-                Platform.SMS or Platform.SMD => Properties.Settings.Default.default_injection_method_sega,
+                Platform.NES                 => Program.Config.application.default_injection_method_nes,
+                Platform.SNES                => Program.Config.application.default_injection_method_snes,
+                Platform.N64                 => Program.Config.application.default_injection_method_n64,
+                Platform.SMS or Platform.SMD => Program.Config.application.default_injection_method_sega,
                 _ => 0
             };
             injection_methods.Enabled = injection_methods.Items.Count > 1;
             banner_form.released.Maximum = DateTime.Now.Year;
 
-            image_resize1.Checked = Properties.Settings.Default.image_fit_aspect_ratio;
+            image_resize1.Checked = Program.Config.application.image_fit_aspect_ratio;
             image_resize0.Checked = !image_resize1.Checked;
             resetImages();
             if (isMint && IsModified) IsModified = false;
@@ -649,7 +649,7 @@ namespace FriishProduce
             if (ROMpath != null && project == null)
             {
                 rom.FilePath = ROMpath;
-                LoadROM(rom.FilePath, Properties.Settings.Default.auto_game_scan);
+                LoadROM(rom.FilePath, Program.Config.application.auto_game_scan);
             }
         }
 
@@ -816,14 +816,14 @@ namespace FriishProduce
             }
             else
             {
-                use_online_wad.Enabled = Properties.Settings.Default.use_online_wad_enabled;
+                use_online_wad.Enabled = Program.Config.application.use_online_wad_enabled;
                 if (use_online_wad.Checked && !use_online_wad.Enabled) use_online_wad.Checked = false;
                 if (!use_offline_wad.Checked && !use_online_wad.Checked) use_offline_wad.Checked = true;
             }
 
-            savedata.Fill.Checked = project != null ? project.LinkSaveDataTitle : Properties.Settings.Default.auto_fill_save_data;
+            savedata.Fill.Checked = project != null ? project.LinkSaveDataTitle : Program.Config.application.auto_fill_save_data;
             if (savedata.Fill.Checked) linkSaveDataTitle();
-            forwarder_root_device.SelectedIndex = loadProject ? project.ForwarderStorageDevice : Options.FORWARDER.Default.root_storage_device;
+            forwarder_root_device.SelectedIndex = loadProject ? project.ForwarderStorageDevice : Program.Config.forwarder.root_storage_device;
             
             IsVisible = true;
 
@@ -882,7 +882,7 @@ namespace FriishProduce
             if (browseROM.ShowDialog() == DialogResult.OK)
             {
                 IsEmpty = false;
-                LoadROM(browseROM.FileName, Properties.Settings.Default.auto_game_scan);
+                LoadROM(browseROM.FileName, Program.Config.application.auto_game_scan);
             }
         }
 
@@ -1006,10 +1006,11 @@ namespace FriishProduce
             string FULLNAME = System.Text.RegularExpressions.Regex.Replace(_bannerTitle.Replace(':', '\n').Replace('/', '\n').Replace('/', '\n'), @"\((.*?)\)", "").Replace("\r\n", "\n").Replace("\n", "_");
             string TITLEID = title_id_upper.Text.ToUpper();
             string PLATFORM = targetPlatform.ToString();
+            string REGION = regions.SelectedText;
 
-            string target = full ? Properties.Settings.Default.default_export_filename : Properties.Settings.Default.default_target_filename;
+            string target = full ? Program.Config.application.default_export_filename : Program.Config.application.default_target_filename;
 
-            return target.Replace("FILENAME", FILENAME).Replace("CHANNELNAME", CHANNELNAME).Replace("FULLNAME", FULLNAME).Replace("TITLEID", TITLEID).Replace("PLATFORM", PLATFORM);
+            return target.Replace("FILENAME", FILENAME).Replace("CHANNELNAME", CHANNELNAME).Replace("FULLNAME", FULLNAME).Replace("TITLEID", TITLEID).Replace("PLATFORM", PLATFORM).Replace("REGION", REGION);
         }
 
         private void isClosing(object sender, FormClosingEventArgs e)
@@ -1163,7 +1164,7 @@ namespace FriishProduce
             if (DesignMode) return;
             // ----------------------------
 
-            if (image_interpolation_mode.SelectedIndex != Properties.Settings.Default.image_interpolation) refreshData();
+            if (image_interpolation_mode.SelectedIndex != Program.Config.application.image_interpolation) refreshData();
             LoadImage();
         }
 
@@ -2261,7 +2262,7 @@ namespace FriishProduce
         {
             if (manual_type.Enabled && manual_type.SelectedIndex == 2 && manual == null)
             {
-                if (!Properties.Settings.Default.donotshow_000) MessageBox.Show((sender as Control).Text, Program.Lang.Msg(6), 0);
+                if (!Program.Config.application.donotshow_000) MessageBox.Show((sender as Control).Text, Program.Lang.Msg(6), 0);
 
                 if (browseManual.ShowDialog() == DialogResult.OK) LoadManual(manual_type.SelectedIndex, browseManual.SelectedPath, true);
                 else manual_type.SelectedIndex = 0;
@@ -2395,7 +2396,7 @@ namespace FriishProduce
         {
             refreshData();
 
-            if (multifile_software.Checked && !Properties.Settings.Default.donotshow_001 && !IsEmpty) MessageBox.Show(null, Program.Lang.Msg(10, false), 1);
+            if (multifile_software.Checked && !Program.Config.application.donotshow_001 && !IsEmpty) MessageBox.Show(null, Program.Lang.Msg(10, false), 1);
         }
     }
 }

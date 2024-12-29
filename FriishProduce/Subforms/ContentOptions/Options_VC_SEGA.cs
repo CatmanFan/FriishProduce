@@ -1,5 +1,4 @@
-﻿using FriishProduce.Options;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 
@@ -13,11 +12,11 @@ namespace FriishProduce
 
             Options = new SortedDictionary<string, string>
             {
-                { "console.brightness", VC_SEGA.Default.console_brightness },
-                { "console.disable_resetbutton", VC_SEGA.Default.console_disableresetbutton },
-                { "country", Program.Lang.Current.StartsWith("ja") ? "jp" : VC_SEGA.Default.country },
-                { "dev.mdpad.enable_6b", VC_SEGA.Default.dev_mdpad_enable_6b },
-                { "save_sram", VC_SEGA.Default.save_sram },
+                { "console.brightness", Program.Config.sega.console_brightness },
+                { "console.disable_resetbutton", Program.Config.sega.console_disableresetbutton },
+                { "country", Program.Lang.Current.StartsWith("ja") ? "jp" : Program.Config.sega.country },
+                { "dev.mdpad.enable_6b", Program.Config.sega.dev_mdpad_enable_6b },
+                { "save_sram", Program.Config.sega.save_sram },
                 { "machine_md.use_4ptap", null },
                 { "nplayers", null }
             };
@@ -65,7 +64,7 @@ namespace FriishProduce
             {
                 if (IsSMS) Options["dev.mdpad.enable_6b"] = null;
 
-                if (Options["console.brightness"] == null || int.Parse(Options["console.brightness"]) < 0) Options["console.brightness"] = VC_SEGA.Default.console_brightness;
+                if (Options["console.brightness"] == null || int.Parse(Options["console.brightness"]) < 0) Options["console.brightness"] = Program.Config.sega.console_brightness;
                 
                 console_brightness.Value            = int.Parse(Options["console.brightness"]);
                 country.SelectedIndex               = Options["country"] switch { "jp" => 0, "us" => 1, _ => 2 };

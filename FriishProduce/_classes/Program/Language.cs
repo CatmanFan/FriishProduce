@@ -71,7 +71,7 @@ namespace FriishProduce
 
         public Language(string code = null)
         {
-            if (string.IsNullOrWhiteSpace(code)) code = Properties.Settings.Default.language;
+            if (string.IsNullOrWhiteSpace(code)) code = Program.Config?.application.language ?? "sys";
 
             bool valid = false;
             foreach (var item in List)
@@ -80,11 +80,11 @@ namespace FriishProduce
                 else if (item.Key.Contains(code)) valid = true;
             }
 
-            if (string.IsNullOrWhiteSpace(code) || !valid)
+            if (string.IsNullOrWhiteSpace(code) || (!valid && code != "sys"))
             {
                 code = "sys";
-                Properties.Settings.Default.language = "sys";
-                Properties.Settings.Default.Save();
+                Program.Config.application.language = "sys";
+                Program.Config.Save();
             }
 
             if (_english == null || _english?.language != "en")
@@ -118,8 +118,8 @@ namespace FriishProduce
                 if (!set)
                 {
                     code = "sys";
-                    Properties.Settings.Default.language = "sys";
-                    Properties.Settings.Default.Save();
+                    Program.Config.application.language = "sys";
+                    Program.Config.Save();
 
                     goto Set; // Loop back
                 }
@@ -133,11 +133,11 @@ namespace FriishProduce
             if (_current == null)
             {
                 _current = _english;
-                Properties.Settings.Default.language = "en";
-                Properties.Settings.Default.Save();
+                Program.Config.application.language = "en";
+                Program.Config.Save();
             }
 
-            if (Properties.Settings.Default.language == "en") _current = _english;
+            if (Program.Config.application.language == "en") _current = _english;
 
             string parent = returnParent(_current.language, false);
             if (_current.language.Contains('-') && _current.language != parent)

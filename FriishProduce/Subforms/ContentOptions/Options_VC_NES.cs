@@ -1,5 +1,4 @@
-﻿using FriishProduce.Options;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -16,8 +15,8 @@ namespace FriishProduce
 
             Options = new Dictionary<string, string>
             {
-                { "palette", VC_NES.Default.palette },
-                { "use_tImg", VC_NES.Default.palette_banner_usage }
+                { "palette", Program.Config.nes.palette.ToString() },
+                { "use_tImg", Program.Config.nes.palette_banner_usage.ToString() }
             };
 
             // Cosmetic

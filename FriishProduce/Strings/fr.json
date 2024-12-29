@@ -101,7 +101,6 @@
 			"008":								"Une mise à jour est disponible\nFriishProduce v{0} est désormais disponible à télécharger.\nL'actuelle version est v{1}.\n\nObtenir la dernière mise à jour dès GitHub maintenant ?",
 			"009":								"Vous êtes déjà à jour.",
 			"010":								"Lorsque cette option est activée, l'application traitera tous les fichiers du même dossier que celui actuellement sélectionné comme faisant partie du logiciel à injecter.\n\nVeuillez vous assurer que vos fichiers sont déjà dans un répertoire séparé avant de continuer.",
-			"011":								"Voulez-vous réinitialiser tous vos paramètres ?",
 
 			"error":							"Oups, un problème est survenu !",
 			"e_000":							"Échec de connexion à Internet.\n{0}",
@@ -156,7 +155,6 @@
 
 		"settingsform": {
 		    "general":							"Général",
-			"reset":							"Réinitialiser tout",
 			"language":							"Langue",
 			"system_default":					"Système",
 			"reset_all_dialogs":				"Réinitialiser le paramètre « Ne plus afficher ce message »",

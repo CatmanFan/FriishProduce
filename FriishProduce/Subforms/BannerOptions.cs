@@ -22,7 +22,7 @@ namespace FriishProduce
             InitializeComponent();
 
             region.Items.AddRange(new string[] { Program.Lang.String("automatic"), Program.Lang.String("region_j"), Program.Lang.String("region_u"), Program.Lang.String("region_e"), Program.Lang.String("region_k") });
-            region.SelectedIndex = Properties.Settings.Default.default_banner_region;
+            region.SelectedIndex = Program.Config.application.default_banner_region;
 
             // Remove Korea option for non-available platforms
             // ********

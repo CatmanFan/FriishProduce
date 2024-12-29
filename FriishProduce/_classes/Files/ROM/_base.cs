@@ -98,7 +98,7 @@ namespace FriishProduce
 
         public bool CheckSize(int length = 0)
         {
-            if (Properties.Settings.Default.bypass_rom_size) return true;
+            if (Program.Config.application.bypass_rom_size) return true;
 
             else
             {
