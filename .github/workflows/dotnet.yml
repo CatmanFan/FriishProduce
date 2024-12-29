@@ -41,7 +41,7 @@ jobs:
 
     - name: Get commit SHA
       shell: bash
-      run: echo "HASH=$(echo $GITHUB_SHA | cut -c1-8)" >> $GITHUB_ENV
+      run: echo "HASH=$(echo $GITHUB_SHA | cut -c1-7)" >> $GITHUB_ENV
 
     - name: Upload release
       uses: softprops/action-gh-release@v2
