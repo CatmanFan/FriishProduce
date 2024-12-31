@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -60,6 +61,12 @@
     <StartupObject>FriishProduce.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="HtmlRenderer, Version=1.5.0.6, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\HtmlRenderer.Core.1.5.0.6\lib\net45\HtmlRenderer.dll</HintPath>
     </Reference>
@@ -94,6 +101,30 @@
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="ServiceStack, Version=3.9.71.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ServiceStack.Redis.Complete.1.0.0\lib\net35\ServiceStack.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Common, Version=1.0.4333.5581, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ServiceStack.Redis.Complete.1.0.0\lib\net35\ServiceStack.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Interfaces, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ServiceStack.Redis.Complete.1.0.0\lib\net35\ServiceStack.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.OrmLite, Version=3.0.3.5599, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ServiceStack.Redis.Complete.1.0.0\lib\net35\ServiceStack.OrmLite.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.OrmLite.SqlServer, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ServiceStack.Redis.Complete.1.0.0\lib\net35\ServiceStack.OrmLite.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Redis, Version=3.9.71.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ServiceStack.Redis.Complete.1.0.0\lib\net35\ServiceStack.Redis.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.ServiceInterface, Version=3.9.71.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ServiceStack.Redis.Complete.1.0.0\lib\net35\ServiceStack.ServiceInterface.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Text, Version=3.9.71.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ServiceStack.Redis.Complete.1.0.0\lib\net35\ServiceStack.Text.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.4.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.6.0\lib\net462\System.Buffers.dll</HintPath>
@@ -101,7 +132,17 @@
     <Reference Include="System.Collections.Immutable, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Collections.Immutable.9.0.0\lib\net462\System.Collections.Immutable.dll</HintPath>
     </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite, Version=1.0.119.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.119.0\lib\net46\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.EF6, Version=1.0.119.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.EF6.1.0.119.0\lib\net46\System.Data.SQLite.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq, Version=1.0.119.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Linq.1.0.119.0\lib\net46\System.Data.SQLite.Linq.dll</HintPath>
+    </Reference>
     <Reference Include="System.Design" />
     <Reference Include="System.Formats.Nrbf, Version=9.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Formats.Nrbf.9.0.0\lib\net462\System.Formats.Nrbf.dll</HintPath>
@@ -180,7 +221,9 @@
       <DependentUpon>WADBanners.resx</DependentUpon>
     </Compile>
     <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="MainForm.cs" />
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
@@ -189,78 +232,112 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Subforms\BannerOptions.cs" />
+    <Compile Include="Subforms\BannerOptions.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Subforms\BannerOptions.Designer.cs">
       <DependentUpon>BannerOptions.cs</DependentUpon>
     </Compile>
-    <Compile Include="Subforms\ContentOptions\Options_VC_SNES.cs" />
+    <Compile Include="Subforms\ContentOptions\Options_VC_SNES.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Subforms\ContentOptions\Options_VC_SNES.Designer.cs">
       <DependentUpon>Options_VC_SNES.cs</DependentUpon>
     </Compile>
-    <Compile Include="Subforms\ControllerMapping.cs" />
+    <Compile Include="Subforms\ControllerMapping.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Subforms\ControllerMapping.Designer.cs">
       <DependentUpon>ControllerMapping.cs</DependentUpon>
     </Compile>
-    <Compile Include="Subforms\Controllers\Controller_Flash.cs" />
+    <Compile Include="Subforms\Controllers\Controller_Flash.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Subforms\Controllers\Controller_Flash.Designer.cs">
       <DependentUpon>Controller_Flash.cs</DependentUpon>
     </Compile>
-    <Compile Include="Subforms\ContentOptions\Options_RPGM.cs" />
+    <Compile Include="Subforms\ContentOptions\Options_RPGM.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Subforms\ContentOptions\Options_RPGM.Designer.cs">
       <DependentUpon>Options_RPGM.cs</DependentUpon>
     </Compile>
-    <Compile Include="Subforms\ContentOptions\Options_Flash.cs" />
+    <Compile Include="Subforms\ContentOptions\Options_Flash.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Subforms\ContentOptions\Options_Flash.Designer.cs">
       <DependentUpon>Options_Flash.cs</DependentUpon>
     </Compile>
-    <Compile Include="Subforms\ContentOptions\Options_Forwarder.cs" />
+    <Compile Include="Subforms\ContentOptions\Options_Forwarder.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Subforms\ContentOptions\Options_Forwarder.Designer.cs">
       <DependentUpon>Options_Forwarder.cs</DependentUpon>
     </Compile>
-    <Compile Include="Subforms\ContentOptions\Options_VC_N64.cs" />
+    <Compile Include="Subforms\ContentOptions\Options_VC_N64.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Subforms\ContentOptions\Options_VC_N64.Designer.cs">
       <DependentUpon>Options_VC_N64.cs</DependentUpon>
     </Compile>
-    <Compile Include="Subforms\ContentOptions\Options_VC_NEO.cs" />
+    <Compile Include="Subforms\ContentOptions\Options_VC_NEO.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Subforms\ContentOptions\Options_VC_NEO.Designer.cs">
       <DependentUpon>Options_VC_NEO.cs</DependentUpon>
     </Compile>
-    <Compile Include="Subforms\ContentOptions\Options_VC_NES.cs" />
+    <Compile Include="Subforms\ContentOptions\Options_VC_NES.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Subforms\ContentOptions\Options_VC_NES.Designer.cs">
       <DependentUpon>Options_VC_NES.cs</DependentUpon>
     </Compile>
-    <Compile Include="Subforms\ContentOptions\Options_VC_PCE.cs" />
+    <Compile Include="Subforms\ContentOptions\Options_VC_PCE.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Subforms\ContentOptions\Options_VC_PCE.Designer.cs">
       <DependentUpon>Options_VC_PCE.cs</DependentUpon>
     </Compile>
-    <Compile Include="Subforms\ContentOptions\Options_VC_SEGA.cs" />
+    <Compile Include="Subforms\ContentOptions\Options_VC_SEGA.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Subforms\ContentOptions\Options_VC_SEGA.Designer.cs">
       <DependentUpon>Options_VC_SEGA.cs</DependentUpon>
     </Compile>
-    <Compile Include="Subforms\Controllers\Controller_SEGA.cs" />
+    <Compile Include="Subforms\Controllers\Controller_SEGA.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Subforms\Controllers\Controller_SEGA.Designer.cs">
       <DependentUpon>Controller_SEGA.cs</DependentUpon>
     </Compile>
-    <Compile Include="Subforms\LanguageEditor.cs" />
+    <Compile Include="Subforms\LanguageEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Subforms\LanguageEditor.Designer.cs">
       <DependentUpon>LanguageEditor.cs</DependentUpon>
     </Compile>
-    <Compile Include="Subforms\Savedata.cs" />
+    <Compile Include="Subforms\Savedata.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Subforms\Savedata.Designer.cs">
       <DependentUpon>Savedata.cs</DependentUpon>
     </Compile>
-    <Compile Include="Subforms\Wait.cs" />
+    <Compile Include="Subforms\Wait.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Subforms\Wait.Designer.cs">
       <DependentUpon>Wait.cs</DependentUpon>
     </Compile>
     <Compile Include="_classes\BIOS.cs" />
-    <Compile Include="_classes\Databases\OpenVGDB.cs" />
+    <Compile Include="_classes\Databases\LibRetro.cs" />
     <Compile Include="_classes\Helpers\BannerSchemes.cs" />
     <Compile Include="_classes\Files\CCF.cs" />
     <Compile Include="_classes\Helpers\BannerPreview.cs" />
     <Compile Include="_classes\Databases\ChannelData.cs" />
     <Compile Include="_classes\Files\ROM\RPGM.cs" />
-    <Compile Include="_classes\Program\CustomGraphics.cs" />
+    <Compile Include="_classes\Program\CustomGraphics.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="_classes\Program\Language.cs" />
     <Compile Include="_classes\Creators\Flash.cs" />
     <Compile Include="_classes\Creators\Forwarder.cs" />
@@ -307,19 +384,27 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Subforms\About.cs" />
+    <Compile Include="Subforms\About.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Subforms\About.Designer.cs">
       <DependentUpon>About.cs</DependentUpon>
     </Compile>
-    <Compile Include="Subforms\ChannelTitles.cs" />
+    <Compile Include="Subforms\ChannelTitles.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Subforms\ChannelTitles.Designer.cs">
       <DependentUpon>ChannelTitles.cs</DependentUpon>
     </Compile>
-    <Compile Include="Subforms\ContentOptions.cs" />
+    <Compile Include="Subforms\ContentOptions.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Subforms\ContentOptions.Designer.cs">
       <DependentUpon>ContentOptions.cs</DependentUpon>
     </Compile>
-    <Compile Include="SettingsForm.cs" />
+    <Compile Include="SettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="SettingsForm.Designer.cs">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
@@ -363,7 +448,9 @@
       <DependentUpon>ProjectForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Compile Include="ProjectForm.cs" />
+    <Compile Include="ProjectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ProjectForm.Designer.cs">
       <DependentUpon>ProjectForm.cs</DependentUpon>
     </Compile>
@@ -470,7 +557,6 @@
     <None Include="Strings\ja.json" />
     <None Include="Strings\ko.json" />
     <None Include="Strings\en.json" />
-    <Content Include="openvgdb.sqlite" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -644,16 +730,22 @@
   <PropertyGroup>
     <PreBuildEvent>:: Make needed folders
 :: -------
-mkdir "$(TargetDir)strings\"
-mkdir "$(TargetDir)resources\temp\"
-if NOT exist "$(TargetDir)resources\tools\openvgdb.db" (copy /b/v/y "$(ProjectDir)openvgdb.sqlite" "$(TargetDir)resources\tools\openvgdb.db" 1&gt;nul)
+mkdir "$(TargetDir)strings\" 1&gt;nul
+mkdir "$(TargetDir)resources\databases" 1&gt;nul
+
+cd "$(ProjectDir)Resources\databases\"
+
+
+for %25%25f in (*.rdb) do (call :copy2 %25%25f)
+
+
 
 :: Move banners to project folder for development use
 :: -------
 cd "$(TargetDir)resources\tools\banners\"
 
 
-for %25%25f in (*.app) do (call :copy %25%25f)
+for %25%25f in (*.app) do (call :copy1 %25%25f)
 
 
 
@@ -661,8 +753,16 @@ for %25%25f in (*.app) do (call :copy %25%25f)
 
 
 
-:copy
+:copy1
 if NOT exist %251\* (move %251 "$(ProjectDir)Resources\banners\%25~n1%25~x1" 1&gt;nul)
+exit /b
+
+
+
+
+
+:copy2
+if NOT exist "$(TargetDir)resources\databases\%25~n1%25~x1" (copy /b/v/y %251 "$(TargetDir)resources\databases\%25~n1%25~x1" 1&gt;nul)
 exit /b</PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
@@ -737,4 +837,14 @@ exit /b
   <PropertyGroup>
     <LangVersion>9.0</LangVersion>
   </PropertyGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.119.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.119.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.119.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets" Condition="Exists('..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.119.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" />
+  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" />
 </Project>
