@@ -65,33 +65,29 @@ namespace FriishProduce
 
     public static class Web
     {
-        public static bool InternetTest(string URL = null)
+        public static bool InternetTest(string url = null)
         {
             int timeout = 60;
             int region = System.Globalization.CultureInfo.InstalledUICulture.Name.StartsWith("fa") ? 2
                        : System.Globalization.CultureInfo.InstalledUICulture.Name.Contains("zh-CN") ? 1
                        : -1;
+            if (string.IsNullOrWhiteSpace(url)) url =
+                region == 2 ? "https://www.aparat.com/" :
+                region == 1 ? "http://www.baidu.com/" :
+                region == 0 ? "https://www.google.com" :
+                "https://webhook.site/e0da7cdc-fbae-4e72-8c32-0a634232823b";
 
             try
             {
                 Request:
-                var request = (HttpWebRequest)WebRequest.Create
-                (
-                    !string.IsNullOrWhiteSpace(URL) ? URL :
-                    (
-                        region == 2 ? "https://www.aparat.com/" :
-                        region == 1 ? "http://www.baidu.com/" :
-                        region == 0 ? "https://www.google.com" :
-                        "https://www.webpagetest.org/blank.html"
-                    )
-                );
+                var request = (HttpWebRequest)WebRequest.Create(url);
 
-                URL = request.Address.Authority;
+                url = request.Address.Authority;
                 request.Method = "HEAD";
                 request.KeepAlive = false;
                 request.Timeout = timeout * 1000;
 
-                if (CheckDomain(URL, timeout))
+                if (CheckDomain(url, timeout))
                 {
                     WebResponse response = null;
                     try { response = request.GetResponse(); }
@@ -118,7 +114,12 @@ namespace FriishProduce
 
             catch (Exception ex)
             {
-                string message = (ex.Message.Contains(URL) ? ex.Message.Substring(0, ex.Message.IndexOf(':')) : ex.Message) + (ex.Message[ex.Message.Length - 1] != '.' ? "." : string.Empty);
+                string message = ex.Message;
+
+                int colon = ex.Message.IndexOf(':');
+                if (!string.IsNullOrWhiteSpace(url) && message.Contains(url) && colon > 0) message = message.Substring(0, colon);
+                if (message[message.Length - 1] != '.') message += ".";
+
                 throw new Exception(string.Format(Program.Lang.Msg(0, true), message));
             }
         }

@@ -123,7 +123,8 @@ namespace FriishProduce
                         return Source;
                     }
                 }
-                else
+
+                else if (File.Exists(path))
                 {
                     Source = (Bitmap)Image.FromFile(path);
                     FilePath = SourcePath = path;
@@ -137,6 +138,8 @@ namespace FriishProduce
                 MessageBox.Error(message);
                 return null;
             }
+
+            return null;
         }
 
         public Bitmap LoadToSource(Bitmap b) => Source = b;

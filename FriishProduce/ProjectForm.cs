@@ -1489,19 +1489,19 @@ namespace FriishProduce
             try
             {
                 var gameData = await Task.FromResult(rom.GetData(targetPlatform, rom.FilePath));
-                bool retrieved = imageOnly ? gameData.Image != null : gameData != (null, null, null, null, null);
+                bool retrieved = imageOnly ? !string.IsNullOrEmpty(gameData.Image) : gameData != (null, null, null, null, null);
 
                 if (retrieved)
                 {
                     if (!imageOnly)
                     {
                         // Set banner title
-                        banner_form.title.Text = rom.CleanTitle ?? banner_form.title.Text;
+                        banner_form.title.Text = gameData.Name ?? banner_form.title.Text;
 
                         // Set channel title text
-                        if (rom.CleanTitle != null)
+                        if (!string.IsNullOrEmpty(gameData.Name))
                         {
-                            var text = rom.CleanTitle.Replace("\r", "").Split('\n');
+                            var text = gameData.Name.Replace("\r", "").Split('\n');
                             if (text[0].Length <= channel_name.MaxLength) { channel_name.Text = text[0]; }
                         }
 
@@ -1513,7 +1513,7 @@ namespace FriishProduce
                     }
 
                     // Set image
-                    if (gameData.Image != null)
+                    if (!string.IsNullOrEmpty(gameData.Image))
                     {
                         LoadImage(gameData.Image);
                     }
@@ -1522,7 +1522,7 @@ namespace FriishProduce
                 }
 
                 // Show message if partially failed to retrieve data
-                if (retrieved && (gameData.Title == null || gameData.Players == null || gameData.Year == null || gameData.Image == null) && !imageOnly)
+                if (retrieved && (string.IsNullOrEmpty(gameData.Name) || string.IsNullOrEmpty(gameData.Players) || string.IsNullOrEmpty(gameData.Year) || string.IsNullOrEmpty(gameData.Image)) && !imageOnly)
                     MessageBox.Show(Program.Lang.Msg(4));
                 else if (!retrieved) SystemSounds.Beep.Play();
             }
