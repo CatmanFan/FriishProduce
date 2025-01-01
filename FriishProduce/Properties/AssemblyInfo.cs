@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using System.Resources;
 using System.Runtime.InteropServices;
 
@@ -10,7 +11,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("FriishProduce")]
-[assembly: AssemblyCopyright("Copyright © CatmanFan / Mr._Lechkar 2024-2025")]
+[assembly: AssemblyCopyright("Copyright © CatmanFan / Mr._Lechkar")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
