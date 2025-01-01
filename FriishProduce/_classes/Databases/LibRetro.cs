@@ -78,6 +78,13 @@ namespace FriishProduce.Databases
 
             else return null;
         }
+
+        private static string db_img(string name, int source = 0)
+        {
+            return source == 1
+                ? "https://archive.org/download/No-Intro_Thumbnails_2016-04-10/" + Uri.EscapeUriString(db_name) + ".zip/" + Uri.EscapeUriString(db_name) + "/Named_Titles/" + Uri.EscapeUriString(name.Replace('/', '_').Replace('&', '_')) + ".png"
+                : "https://thumbnails.libretro.com/" + Uri.EscapeUriString(db_name) + "/Named_Titles/" + Uri.EscapeUriString(name.Replace('/', '_').Replace('&', '_') + ".png");
+        }
         #endregion
 
         public static DataTable Parse(Platform In)
@@ -151,7 +158,7 @@ namespace FriishProduce.Databases
                     if (name == null && (line.Contains("name \"") || line.Contains("comment \"")) && !line.Contains("rom ("))
                     {
                         name = line.Replace("\t", "").Replace("name \"", "").Replace("comment \"", "").Replace("\"", "");
-                        image = "https://archive.org/download/No-Intro_Thumbnails_2016-04-10/" + Uri.EscapeUriString(db_name) + ".zip/" + Uri.EscapeUriString(db_name) + "/Named_Titles/" + Uri.EscapeUriString(name.Replace('/', '_')) + ".png";
+                        image = db_img(name);
                     }
 
                     if (line.Contains("year "))
@@ -241,7 +248,20 @@ namespace FriishProduce.Databases
                             // Do something
                         }
                     }
-                    catch { rows[0][5] = null; }
+                    catch
+                    {
+                        rows[0][5] = db_img(rows[0][1]?.ToString(), 1);
+
+                        try
+                        {
+                            using (WebClient c = new WebClient())
+                            using (Stream s = c.OpenRead(rows[0][5]?.ToString()))
+                            {
+                                // Do something
+                            }
+                        }
+                        catch { rows[0][5] = null; }
+                    }
 
                     return (rows[0][1]?.ToString(), rows[0][2]?.ToString(), rows[0][3]?.ToString(), rows[0][4]?.ToString(), rows[0][5]?.ToString());
                 }
