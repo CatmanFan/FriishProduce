@@ -11,7 +11,7 @@
         public override bool CheckValidity(string path)
         {
             var data = ToBigEndian(System.IO.File.ReadAllBytes(path));
-            return data[0] == 0x80 && data[1] == 0x37 && data[2] == 0x12 && data[3] == 0x40 && data[4] == 0x00 && data[5] == 0x00 && data[6] == 0x00 && data[7] == 0x0F;
+            return data[0] == 0x80 && data[1] == 0x37 && data[2] == 0x12 && data[3] == 0x40 /* && data[4] == 0x00 && data[5] == 0x00 && data[6] == 0x00 && data[7] == 0x0F */;
         }
 
         public byte[] ToBigEndian(byte[] romData = null)

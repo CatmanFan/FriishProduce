@@ -79,6 +79,8 @@ namespace FriishProduce
             this.menuItem4 = new System.Windows.Forms.MenuItem();
             this.about = new System.Windows.Forms.MenuItem();
             this.tabControl = new MdiTabControl.TabControl();
+            this.clear_database = new System.Windows.Forms.MenuItem();
+            this.menuItem11 = new System.Windows.Forms.MenuItem();
             this.mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             this.toolStrip.SuspendLayout();
@@ -339,7 +341,9 @@ namespace FriishProduce
             this.menuItem9,
             this.updater,
             this.menuItem8,
+            this.clear_database,
             this.language_file_editor,
+            this.menuItem11,
             this.preferences});
             this.menuItem3.Tag = "tools";
             resources.ApplyResources(this.menuItem3, "menuItem3");
@@ -407,13 +411,13 @@ namespace FriishProduce
             // 
             // language_file_editor
             // 
-            this.language_file_editor.Index = 7;
+            this.language_file_editor.Index = 8;
             resources.ApplyResources(this.language_file_editor, "language_file_editor");
             this.language_file_editor.Click += new System.EventHandler(this.LanguageFileEditor);
             // 
             // preferences
             // 
-            this.preferences.Index = 8;
+            this.preferences.Index = 10;
             resources.ApplyResources(this.preferences, "preferences");
             this.preferences.Tag = "";
             this.preferences.Click += new System.EventHandler(this.Settings_Click);
@@ -453,6 +457,18 @@ namespace FriishProduce
             this.tabControl.TabHeight = 25;
             this.tabControl.TopSeparator = false;
             this.tabControl.SelectedTabChanged += new System.EventHandler(this.TabChanged);
+            // 
+            // clear_database
+            // 
+            this.clear_database.Index = 7;
+            this.clear_database.Tag = "clear_database";
+            resources.ApplyResources(this.clear_database, "clear_database");
+            this.clear_database.Click += new System.EventHandler(this.ClearAllDatabases);
+            // 
+            // menuItem11
+            // 
+            this.menuItem11.Index = 9;
+            resources.ApplyResources(this.menuItem11, "menuItem11");
             // 
             // MainForm
             // 
@@ -528,6 +544,8 @@ namespace FriishProduce
         private System.Windows.Forms.MenuItem extract_wad_sound;
         private System.Windows.Forms.MenuItem extract_wad_manual;
         private System.Windows.Forms.MenuItem menuItem9;
+        private System.Windows.Forms.MenuItem clear_database;
+        private System.Windows.Forms.MenuItem menuItem11;
     }
 }
 

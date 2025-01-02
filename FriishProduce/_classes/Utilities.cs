@@ -86,6 +86,10 @@ namespace FriishProduce
                 request.Method = "HEAD";
                 request.KeepAlive = false;
                 request.Timeout = timeout * 1000;
+                request.UserAgent = "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.0; WOW64; " +
+                                    "Trident/4.0; SLCC1; .NET CLR 2.0.50727; Media Center PC 5.0; " +
+                                    ".NET CLR 3.5.21022; .NET CLR 3.5.30729; .NET CLR 3.0.30618; " +
+                                    "InfoPath.2; OfficeLiveConnector.1.3; OfficeLivePatch.0.0)";
 
                 if (CheckDomain(url, timeout))
                 {
@@ -120,6 +124,7 @@ namespace FriishProduce
                 if (!string.IsNullOrWhiteSpace(url) && message.Contains(url) && colon > 0) message = message.Substring(0, colon);
                 if (message[message.Length - 1] != '.') message += ".";
 
+                return true;
                 throw new Exception(string.Format(Program.Lang.Msg(0, true), message));
             }
         }

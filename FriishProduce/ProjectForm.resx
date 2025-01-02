@@ -870,6 +870,9 @@
   <data name="multifile_software.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="multifile_software.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="multifile_software.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 47</value>
   </data>
@@ -1205,6 +1208,9 @@
   </data>
   <data name="import_wad.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
+  </data>
+  <data name="import_wad.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="import_wad.Location" type="System.Drawing.Point, System.Drawing">
     <value>28, 41</value>
@@ -3850,7 +3856,7 @@ This is a test of the CustomToolTip. A description will be displayed for each el
     <value>tip</value>
   </data>
   <data name="&gt;&gt;tip.Type" xml:space="preserve">
-    <value>FriishProduce.CustomToolTip, FriishProduce, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>FriishProduce.CustomToolTip, FriishProduce, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>ProjectForm</value>

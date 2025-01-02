@@ -144,6 +144,7 @@
 			"extract_wad_icon":					"Extraire l'&icône d'aperçu d'une chaîne Wii...",
 			"extract_wad_sound":				"Extraire le &son d'aperçu d'une chaîne Wii...",
 			"extract_wad_manual":				"Extraire un &mode d'emploi de Console virtuelle...",
+			"clear_database":					"&Effacer les bases de données ROM",
 			"updater":							"Mise à jour",
 			"check_for_updates":				"Vérifier maintenant",
 			"auto_update":						"Vérifier automatiquement au démarrage de l'application",

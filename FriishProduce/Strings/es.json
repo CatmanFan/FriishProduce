@@ -139,6 +139,7 @@
 			"game_scan":						"&Obtener datos del juego de la base de datos en línea",
 			"export":							"Exportar...",
 			
+			"clear_database":					"Borrar los bases de datos de ROM",
 			"updater":							"Actualización",
 			"check_for_updates":				"Buscar ahora",
 			"auto_update":						"Buscar cuando se abra la aplicación",

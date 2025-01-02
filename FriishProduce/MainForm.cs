@@ -445,6 +445,13 @@ namespace FriishProduce
             new LanguageEditor().ShowDialog();
         }
 
+        private void ClearAllDatabases(object sender, EventArgs e)
+        {
+            foreach (var item in Directory.EnumerateFiles(Paths.Databases))
+                if (Path.GetExtension(item).ToLower() == ".xml")
+                    File.Delete(item);
+        }
+
         private void ExtractWAD_Click(object sender, EventArgs e)
         {
             using OpenFileDialog wadDialog = new()

@@ -62,10 +62,13 @@ namespace FriishProduce.Databases
                 switch (platform)
                 {
                     case Platform.PCECD:
-                    case Platform.GCN:
                     case Platform.SMCD:
                     case Platform.PSX:
-                        folders = new string[] { "redump", "maxusers", "releaseyear" };
+                        folders = new string[] { "developer", "redump" };
+                        break;
+
+                    case Platform.GCN:
+                        folders = new string[0];
                         break;
 
                     case Platform.NEO:
@@ -73,7 +76,7 @@ namespace FriishProduce.Databases
                         break;
                 }
 
-                return i < folders.Length ? db_base + folders[i] + $"/{db_name}.dat" : null;
+                return folders.Length == 0 ? db_base.Replace("metadat", "dat") + $"{db_name}.dat" : i < folders.Length ? db_base + folders[i] + $"/{db_name}.dat" : null;
             }
 
             else return null;
@@ -85,11 +88,14 @@ namespace FriishProduce.Databases
                 ? "https://archive.org/download/No-Intro_Thumbnails_2016-04-10/" + Uri.EscapeUriString(db_name) + ".zip/" + Uri.EscapeUriString(db_name) + "/Named_Titles/" + Uri.EscapeUriString(name.Replace('/', '_').Replace('&', '_')) + ".png"
                 : "https://thumbnails.libretro.com/" + Uri.EscapeUriString(db_name) + "/Named_Titles/" + Uri.EscapeUriString(name.Replace('/', '_').Replace('&', '_') + ".png");
         }
+
+        private static string db_crc(string input) => input.Replace("-", "").Trim().ToUpper().Substring(0, 8);
         #endregion
 
         public static DataTable Parse(Platform In)
         {
             Top:
+            platform = In;
             DataTable dt = new DataTable(platform.ToString().ToLower());
 
             string path = Path.Combine(Paths.Databases, In.ToString().ToLower() + ".xml");
@@ -102,9 +108,10 @@ namespace FriishProduce.Databases
 
             else
             {
-                platform = In;
                 string crc = "";
                 string name = "";
+                string serial = "";
+                string releaseyear = "";
                 string users = "";
                 string image = "";
 
@@ -121,16 +128,19 @@ namespace FriishProduce.Databases
 
                 for (int i = 0; i < 2; i++)
                 {
-                    if (!string.IsNullOrWhiteSpace(db_url(i)))
+                    string url = db_url(i);
+
+                    if (!string.IsNullOrWhiteSpace(url))
                     {
-                        if (File.Exists(db_url(i)))
-                            db_lines.Add(File.ReadAllLines(db_url(i)));
+                        if (File.Exists(url))
+                            db_lines.Add(File.ReadAllLines(url));
 
                         else if (Web.InternetTest())
                         {
                             using (WebClient c = new WebClient())
                             {
-                                db_lines.Add(Encoding.UTF8.GetString(Web.Get(db_url(i))).Split('\n'));
+                                try { db_lines.Add(Encoding.UTF8.GetString(Web.Get(url)).Split('\n')); }
+                                catch { }
                             }
                         }
                     }
@@ -146,16 +156,16 @@ namespace FriishProduce.Databases
 
                     if (line.Contains("crc "))
                     {
-                        crc = line.Substring(line.IndexOf("crc ") + 4, 8).Trim().ToUpper().Substring(0, 7);
-
-                        if (dt.Select($"crc = '{crc}'")?.Length == 0)
+                        if (dt.Select($"crc = '{crc}'")?.Length == 0 && !string.IsNullOrWhiteSpace(name))
                         {
-                            dt.Rows.Add(crc, name, null, null, users, image);
-                            image = users = name = crc = null;
+                            dt.Rows.Add(crc, name, null, releaseyear, users, image);
+                            image = users = releaseyear = name = crc = null;
                         }
+
+                        crc = db_crc(line.Substring(line.IndexOf("crc ") + 4, 8));
                     }
 
-                    if (name == null && (line.Contains("name \"") || line.Contains("comment \"")) && !line.Contains("rom ("))
+                    if (string.IsNullOrEmpty(name) && (line.Contains("name \"") || line.Contains("comment \"")) && !line.Contains("rom ("))
                     {
                         name = line.Replace("\t", "").Replace("name \"", "").Replace("comment \"", "").Replace("\"", "");
                         image = db_img(name);
@@ -163,11 +173,17 @@ namespace FriishProduce.Databases
 
                     if (line.Contains("year "))
                     {
-                        var rows = dt.Select($"crc = '{crc}'");
-                        if (rows?.Length > 0)
-                        {
-                            rows[0][3] = line.Substring(line.IndexOf("year ") + 5).TrimStart('\"', ' ', '\t', ')').TrimEnd('\"', ' ', '\t', ')');
-                        }
+                        releaseyear = line.Substring(line.IndexOf("year ") + 5).TrimStart('\"', ' ', '\t', ')').TrimEnd('\"', ' ', '\t', ')');
+                    }
+
+                    if (line.Contains("users "))
+                    {
+                        users = line.Substring(line.IndexOf("users ") + 6).TrimStart('\"', ' ', '\t', ')').TrimEnd('\"', ' ', '\t', ')');
+                    }
+
+                    if (line.Contains("serial "))
+                    {
+                        serial = line.Substring(line.IndexOf("serial ") + 7).TrimStart('\"', ' ', '\t', ')').TrimEnd('\"', ' ', '\t', ')');
                     }
                 }
 
@@ -181,21 +197,23 @@ namespace FriishProduce.Databases
 
                         if (line.Contains("crc "))
                         {
-                            crc = line.Substring(line.IndexOf("crc ") + 4, 8).Trim().ToUpper().Substring(0, 7);
+                            crc = db_crc(line.Substring(line.IndexOf("crc ") + 4, 8));
                         }
 
                         if (line.Contains("serial "))
                         {
-                            var rows = dt.Select($"crc = '{crc}'");
-                            if (rows?.Length > 0)
+                            serial = line.Substring(line.IndexOf("serial ") + 7).TrimStart('\"', ' ', '\t', ')').TrimEnd('\"', ' ', '\t', ')');
+
+                            var rows = dt.Select($"crc = '{crc}' or serial = '{serial}'");
+                            if (rows?.Length > 0 && string.IsNullOrWhiteSpace(rows[0][2]?.ToString()))
                             {
-                                rows[0][2] = line.Substring(line.IndexOf("serial ") + 7).TrimStart('\"', ' ', '\t', ')').TrimEnd('\"', ' ', '\t', ')');
+                                rows[0][2] = serial;
                             }
                         }
 
                         if (line.Contains("year "))
                         {
-                            var rows = dt.Select($"crc = '{crc}'");
+                            var rows = dt.Select($"crc = '{crc}' or serial = '{serial}'");
                             if (rows?.Length > 0 && string.IsNullOrWhiteSpace(rows[0][3]?.ToString()))
                             {
                                 rows[0][3] = line.Substring(line.IndexOf("year ") + 5).TrimStart('\"', ' ', '\t', ')').TrimEnd('\"', ' ', '\t', ')');
@@ -204,8 +222,8 @@ namespace FriishProduce.Databases
 
                         if (line.Contains("users "))
                         {
-                            var rows = dt.Select($"crc = '{crc}'");
-                            if (rows?.Length > 0)
+                            var rows = dt.Select($"crc = '{crc}' or serial = '{serial}'");
+                            if (rows?.Length > 0 && string.IsNullOrWhiteSpace(rows[0][4]?.ToString()))
                             {
                                 rows[0][4] = line.Substring(line.IndexOf("users ") + 6).TrimStart('\"', ' ', '\t', ')').TrimEnd('\"', ' ', '\t', ')');
                             }
@@ -213,7 +231,10 @@ namespace FriishProduce.Databases
                     }
                 }
 
-                dt.WriteXml(path);
+                using DataView dv = dt.DefaultView;
+                dv.Sort = "name";
+                dt = dv.ToTable();
+                dt.WriteXml(path, XmlWriteMode.WriteSchema);
             }
 
             return dt;
@@ -230,7 +251,7 @@ namespace FriishProduce.Databases
                 crc.Append(fileStream);
                 var hash_array = crc.GetCurrentHash();
                 Array.Reverse(hash_array);
-                crc32 = BitConverter.ToString(hash_array).Replace("-", "").ToUpper();
+                crc32 = db_crc(BitConverter.ToString(hash_array));
             }
 
             DataTable dt = Parse(platform);

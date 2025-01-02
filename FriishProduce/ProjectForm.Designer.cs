@@ -542,6 +542,7 @@ namespace FriishProduce
             resources.ApplyResources(this.rom_label_filename, "rom_label_filename");
             this.rom_label_filename.Name = "rom_label_filename";
             this.rom_label_filename.Tag = "";
+            this.rom_label_filename.UseMnemonic = false;
             // 
             // rom_label
             // 
