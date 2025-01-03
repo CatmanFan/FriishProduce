@@ -1,18 +1,19 @@
-name: released
+name: virustotal
 
 on:
-  release:
-    types: [edited, published]
+  workflow_call:
 
 jobs:
   virustotal:
     runs-on: ubuntu-latest
     steps:
-      -
-        name: VirusTotal Scan
-        uses: crazy-max/ghaction-virustotal@v4
-        with:
-          vt_api_key: ${{ secrets.VT_API_KEY }}
-          update_release_body: true
-          files: |
-            .exe$
+    - name: Checkout repo
+    - uses: actions/checkout@v4
+
+    - name: VirusTotal Scan
+      uses: crazy-max/ghaction-virustotal@v4
+      with:
+        vt_api_key: ${{ secrets.VT_API_KEY }}
+        update_release_body: true
+        files: |
+        .exe$

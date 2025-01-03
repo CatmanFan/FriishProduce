@@ -58,3 +58,10 @@ jobs:
         \n  * It is recommended to also clear your previous settings by deleting the FriishProduce folder in your user's local app data directory.\n\n
         Be sure to read [the wiki](https://catmanfan.github.io/friishproduce-wiki/) for instructions and further details."
         token: ${{ secrets.github_token }} # Required
+        
+    - name: VirusTotal Scan
+      uses: crazy-max/ghaction-virustotal@v4
+      with:
+        vt_api_key: ${{ secrets.VT_API_KEY }}
+        update_release_body: true
+        files: .exe$
