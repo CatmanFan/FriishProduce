@@ -42,6 +42,18 @@ jobs:
     - name: Get commit SHA
       shell: bash
       run: echo "HASH=$(echo $GITHUB_SHA | cut -c1-7)" >> $GITHUB_ENV
+        
+    - name: VirusTotal scan
+      id: virustotal
+      uses: crazy-max/ghaction-virustotal@v4
+      with:
+        vt_api_key: ${{ secrets.VT_API_KEY }}
+        update_release_body: false
+        files: FriishProduce\bin\Release\FriishProduce.exe
+
+    - name: Get VirusTotal scan URL
+      shell: bash
+      run: echo "VT=${{ steps.virustotal.outputs.analysis }}" >> $GITHUB_ENV
 
     - name: Upload release
       uses: softprops/action-gh-release@v2
@@ -56,12 +68,6 @@ jobs:
         **How to update manually:**
         \n  * Extract the files to your FriishProduce directory, overwriting the older versions, and delete any leftover files or folders that are no longer needed.
         \n  * It is recommended to also clear your previous settings by deleting the FriishProduce folder in your user's local app data directory.\n\n
-        Be sure to read [the wiki](https://catmanfan.github.io/friishproduce-wiki/) for instructions and further details."
+        Be sure to read [the wiki](https://catmanfan.github.io/friishproduce-wiki/) for instructions and further details.\n\n
+        ${{ env.VT }}"
         token: ${{ secrets.github_token }} # Required
-        
-    - name: VirusTotal Scan
-      uses: crazy-max/ghaction-virustotal@v4
-      with:
-        vt_api_key: ${{ secrets.VT_API_KEY }}
-        update_release_body: true
-        files: FriishProduce\bin\Release\FriishProduce.exe
