@@ -52,8 +52,10 @@ jobs:
         files: FriishProduce\bin\Release\FriishProduce.exe
 
     - name: Get VirusTotal scan URL
-      shell: bash
-      run: echo "VT=${{ steps.virustotal.outputs.analysis }}" >> $GITHUB_ENV
+      shell: PowerShell
+      run: |
+        $SUB = "${{ steps.virustotal.outputs.analysis }}".substring(44)
+        echo "VT=$SUB" >> $env:GITHUB_ENV
 
     - name: Upload release
       uses: softprops/action-gh-release@v2
