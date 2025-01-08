@@ -100,6 +100,7 @@
 			"007":								"El seleccionado no contiene ningún contenido válido de manual electrónico.",
 			"008":								"Actualización de FriishProduce\nYa está disponible para descargar la nueva versión {0} de FriishProduce.\nActualmente está utilizando la versión {1}.\n\n¿Quiere descargar la actualización de GitHub ahora?",
 			"009":								"Actualmente ya está actualizado.",
+			"011":								"¿Extraer el archivo Opening.bnr (incluido la cabecera IMET)?",
 			
 			"error":							"Se ha producido un error",
 			"e_000":							"No se pudo conectar a Internet.\n{0}",
@@ -119,6 +120,11 @@
 			"e_014":							"No se encontró el archivo BIOS necesario para esta consola.\nPor favor seleccione un archivo en los ajustes de la aplicación.",
 			"e_015":							"No se pudo crear la imagen TPL para los datos guardados.",
 			"e_016":							"No se encontró ningún manual electrónico de Consola Virtual."
+		},
+
+		"html": {
+			"t_000":							"Nombre utilizado para el icono que aparece en el menu Wii.<br />Para títulos más largos, se recomienda utilizar una versión abreviada de 20 caracteres o menos.<hr><b>Ejemplo:</b> Zelda: Ocarina",
+			"t_001":							"Cambiar la configuración del emulador.",
 		}
 	},
 
@@ -183,6 +189,7 @@
 			"wad_base":							"Canal de origen",
 			"import_wad":						"Abrir un archivo WAD...",
 			"use_online_wad":					"...o utilizar un canal descargable",
+			"using_default_wad":				"Utilizando un canal Wii blanco",
 			"current_wad":						"WAD actual:",
 			
 			"image":							"Imagen",
@@ -323,7 +330,10 @@
 			"strap_reminder":					"Advertencia de correa del mando",
 			"strap_reminder0":					"{disabled}",
 			"strap_reminder1":					"{enabled}",
-			"strap_reminder2":					"{enabled} (sin pantalla de mandos complementarios)"
+			"strap_reminder2":					"{enabled} (sin pantalla de mandos complementarios)",
+			"swf_metadata":						"Metadatos SWF",
+			"content_domain":					"Dominio de contenido",
+			"background_color":					"Cambiar el color de fondo"
 		},
 
 		"forwarder": {

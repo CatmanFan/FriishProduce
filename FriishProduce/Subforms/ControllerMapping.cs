@@ -17,6 +17,26 @@ namespace FriishProduce
             InitializeComponent();
         }
 
+        protected void LoadLayout()
+        {
+            if (DesignMode) return;
+
+            // Map button values to null
+            // ---------------
+            if (Mapping == null)
+            {
+                ResetLayout();
+            }
+
+            // Map button values to existing list
+            // ---------------
+            else
+            {
+                if (OldMapping == null) OldMapping = new Dictionary<Buttons, string>(Mapping);
+                SetKeymap(Mapping.Values.ToArray());
+            }
+        }
+
         protected void ResetLayout()
         {
             if (DesignMode) return;
@@ -69,6 +89,7 @@ namespace FriishProduce
             presets_list.Items.Clear();
             presets_list.Items.Add(Program.Lang.String("preset_blank", "controller"));
             presets_list.Items.AddRange(presets.Keys.ToArray());
+
             if (presets_list.Items?.Count > 0)
             {
                 preset_load.Enabled = presets_list.Enabled = true;
@@ -78,6 +99,7 @@ namespace FriishProduce
                 presets_list.Items.Add(empty);
                 preset_load.Enabled = presets_list.Enabled = false;
             }
+
             presets_list.SelectedIndex = 0;
         }
 
@@ -153,19 +175,7 @@ namespace FriishProduce
         protected void Form_Load(object sender, EventArgs e)
         {
             if (DesignMode) return;
-
-            // Map button values to null
-            // ---------------
-            if (Mapping == null)
-            {
-                ResetLayout();
-            }
-            else
-            {
-                SetKeymap(Mapping.Values.ToArray());
-
-                if (OldMapping == null) OldMapping = new Dictionary<Buttons, string>(Mapping);
-            }
+            LoadLayout();
 
             if (!UsesGC && tabControl1.TabPages.Contains(page3)) tabControl1.TabPages.Remove(page3);
             if (!UsesNunchuk) vertical_layout.Checked = false;
@@ -213,19 +223,13 @@ namespace FriishProduce
                 {
                     Mapping = new Dictionary<Buttons, string>(value);
 
-                    if (Visible)
-                    {
-                        try { SetKeymap(value.Values.ToArray()); } catch { }
-                    }
+                    try { SetKeymap(value.Values.ToArray()); } catch { }
                 }
                 else
                 {
-                    if (Visible)
-                    {
-                        try { SetKeymap(new string[available.Wii.Length]); } catch { }
-                    }
-
                     Mapping = null;
+
+                    try { SetKeymap(new string[available.Wii.Length]); } catch { }
                 }
             }
         }

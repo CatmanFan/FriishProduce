@@ -37,6 +37,7 @@ namespace FriishProduce
             this.bottomPanel2 = new System.Windows.Forms.Panel();
             this.controller_box = new System.Windows.Forms.GroupBox();
             this.controller_cb = new System.Windows.Forms.CheckBox();
+            this.tip = new TheArtOfDev.HtmlRenderer.WinForms.HtmlToolTip();
             this.bottomPanel1.SuspendLayout();
             this.bottomPanel2.SuspendLayout();
             this.controller_box.SuspendLayout();
@@ -44,7 +45,7 @@ namespace FriishProduce
             // 
             // bottomPanel1
             // 
-            this.bottomPanel1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.bottomPanel1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.bottomPanel1.Controls.Add(this.b_cancel);
             this.bottomPanel1.Controls.Add(this.b_ok);
             resources.ApplyResources(this.bottomPanel1, "bottomPanel1");
@@ -94,6 +95,21 @@ namespace FriishProduce
             this.controller_cb.Tag = "controller";
             this.controller_cb.UseVisualStyleBackColor = true;
             // 
+            // tip
+            // 
+            this.tip.AllowLinksHandling = true;
+            this.tip.AutoPopDelay = 10000;
+            this.tip.BackColor = System.Drawing.Color.White;
+            this.tip.BaseStylesheet = "div { font-size: 11px !important; }";
+            this.tip.ForeColor = System.Drawing.Color.Black;
+            this.tip.InitialDelay = 500;
+            this.tip.MaximumSize = new System.Drawing.Size(350, 0);
+            this.tip.OwnerDraw = true;
+            this.tip.ReshowDelay = 100;
+            this.tip.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+            this.tip.TooltipCssClass = "htmltooltip";
+            this.tip.UseGdiPlusTextRendering = true;
+            // 
             // ContentOptions
             // 
             this.AcceptButton = this.b_ok;
@@ -127,5 +143,6 @@ namespace FriishProduce
         private System.Windows.Forms.Panel bottomPanel2;
         protected System.Windows.Forms.GroupBox controller_box;
         protected System.Windows.Forms.CheckBox controller_cb;
+        private TheArtOfDev.HtmlRenderer.WinForms.HtmlToolTip tip;
     }
 }

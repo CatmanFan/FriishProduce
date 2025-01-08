@@ -1,0 +1,5 @@
+site_name: FriishProduce
+nav:
+  - Home: index.md
+  - FAQ: faq.md
+  - About: about.md

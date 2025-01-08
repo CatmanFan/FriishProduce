@@ -19,6 +19,7 @@ namespace FriishProduce
         private readonly BannerOptions banner_form;
         private readonly Savedata savedata;
         private Wait wait;
+        private HTMLForm htmlForm;
 
         protected string TIDCode;
         protected string Untitled;
@@ -102,6 +103,7 @@ namespace FriishProduce
                     Enabled = !value;
 
                     include_patch.Enabled = !value && showPatch;
+                    injection_method_help.Visible = !value && htmlForm != null;
                 }
             }
         }
@@ -283,6 +285,15 @@ namespace FriishProduce
                     value = new string[8] { channel_name.Text, channel_name.Text, channel_name.Text, channel_name.Text, channel_name.Text, channel_name.Text, channel_name.Text, channel_name.Text };
 
                 // DEFAULT: "無題", "Untitled", "Ohne Titel", "Sans titre", "Sin título", "Senza titolo", "Onbekend", "제목 없음"
+
+                int maxLength = 20;
+                for (int i = 0; i < value.Length; i++)
+                    if (value[i].Length > maxLength)
+                    {
+                        string delimiter = i == 0 ? "…" : "...";
+                        value[i] = value[i].Substring(0, maxLength - delimiter.Length) + delimiter;
+                    }
+
                 return value;
             }
         }
@@ -514,7 +525,8 @@ namespace FriishProduce
             #endregion
 
             #region ------------------------------------------ Localization: Tooltips ------------------------------------------
-            tip.SetToolTip(include_patch, "HELLO!");
+            tip.SetToolTip(channel_name, Program.Lang.HTML(0, true, label1.Text));
+            tip.SetToolTip(injection_method_options, Program.Lang.HTML(1, true, injection_method_options.Text));
             #endregion
 
             if (Base.SelectedIndex >= 0)
@@ -622,7 +634,7 @@ namespace FriishProduce
             try { channels = new ChannelDatabase(targetPlatform); }
             catch (Exception ex)
             {
-                if ((int)targetPlatform < 10)
+                if ((int)targetPlatform < 10 || targetPlatform == Platform.Flash)
                 {
                     System.Windows.Forms.MessageBox.Show($"A fatal error occurred retrieving the {targetPlatform} WADs database.\n\nException: {ex.GetType().FullName}\nMessage: {ex.Message}\n\nThe application will now shut down.", "Halt", MessageBoxButtons.OK, MessageBoxIcon.Hand);
                     Environment.FailFast("Database initialization failed.");
@@ -911,7 +923,9 @@ namespace FriishProduce
             if (channels.Entries?[0].ID == "00010001-53544c42")
             {
                 use_online_wad.Checked = true;
-                use_online_wad.Enabled = false;
+                import_wad.Enabled = use_offline_wad.Enabled = use_online_wad.Enabled = false;
+                using_default_wad.Visible = true;
+                using_default_wad.BringToFront();
             }
 
             if (!IsEmpty)
@@ -1003,14 +1017,15 @@ namespace FriishProduce
         {
             string FILENAME = File.Exists(patch) ? Path.GetFileNameWithoutExtension(patch) : Path.GetFileNameWithoutExtension(rom?.FilePath);
             string CHANNELNAME = channel_name.Text;
-            string FULLNAME = System.Text.RegularExpressions.Regex.Replace(_bannerTitle.Replace(':', '\n').Replace('/', '\n').Replace('/', '\n'), @"\((.*?)\)", "").Replace("\r\n", "\n").Replace("\n", "_");
+            string FULLNAME = System.Text.RegularExpressions.Regex.Replace(_bannerTitle, @"\((.*?)\)", "").Replace("\r\n", "\n").Replace("\n", "_");
             string TITLEID = title_id_upper.Text.ToUpper();
             string PLATFORM = targetPlatform.ToString();
-            string REGION = regions.SelectedText;
+            string REGION = regions.SelectedItem.ToString();
 
             string target = full ? Program.Config.application.default_export_filename : Program.Config.application.default_target_filename;
+            target = target.Replace("FILENAME", FILENAME).Replace("CHANNELNAME", CHANNELNAME).Replace("FULLNAME", FULLNAME).Replace("TITLEID", TITLEID).Replace("PLATFORM", PLATFORM).Replace("REGION", REGION);
 
-            return target.Replace("FILENAME", FILENAME).Replace("CHANNELNAME", CHANNELNAME).Replace("FULLNAME", FULLNAME).Replace("TITLEID", TITLEID).Replace("PLATFORM", PLATFORM).Replace("REGION", REGION);
+            return string.Join("_", target.Split(Path.GetInvalidFileNameChars(), StringSplitOptions.RemoveEmptyEntries));
         }
 
         private void isClosing(object sender, FormClosingEventArgs e)
@@ -1648,11 +1663,22 @@ namespace FriishProduce
                         outWad.Region = outWadRegion;
                     Utils.ChangeVideoMode(outWad, video_modes.SelectedIndex);
                 }
-                
+
 
                 // Other WAD settings to be changed done by WAD creator helper, which will save to a new file
                 // *******
                 outWad.ChangeChannelTitles(_channelTitles);
+                /* var banner = outWad.BannerApp.ToByteArray();
+                for (int i = 0; i < 8; i++)
+                {
+                    string text = null;
+                    try { text = _channelTitles[i]; } catch { }
+
+                    byte[] textArray = new byte[84];
+                    System.Text.Encoding.BigEndianUnicode.GetBytes(text).CopyTo(textArray, 0);
+                    textArray.CopyTo(banner, 156 + (i * textArray.Length));
+                }
+                outWad.BannerApp = U8.Load(banner); */
                 outWad.ChangeTitleID(LowerTitleID.Channel, _tID);
                 outWad.FakeSign = true;
 
@@ -2142,6 +2168,7 @@ namespace FriishProduce
             multifile_software.Visible = false;
             extra.Visible = false;
             contentOptionsForm = null;
+            htmlForm = null;
 
             if (isVirtualConsole)
             {
@@ -2157,10 +2184,12 @@ namespace FriishProduce
 
                     case Platform.SNES:
                         contentOptionsForm = new Options_VC_SNES();
+                        htmlForm = new(Program.Lang.HTML(0, false), injection_methods.SelectedItem.ToString());
                         break;
 
                     case Platform.N64:
                         contentOptionsForm = new Options_VC_N64() { EmuType = inWadRegion == Region.Korea ? 3 : emuVer };
+                        htmlForm = new(Program.Lang.HTML(1, false), injection_methods.SelectedItem.ToString());
                         break;
 
                     case Platform.SMS:
@@ -2255,6 +2284,10 @@ namespace FriishProduce
             download_image.Enabled = targetPlatform != Platform.C64
                                   && targetPlatform != Platform.Flash
                                   && targetPlatform != Platform.RPGM;
+
+            bool hasHelp = !string.IsNullOrWhiteSpace(htmlForm?.FormText);
+            injection_method_help.Visible = hasHelp && !IsEmpty;
+            injection_methods.Size = hasHelp ? injection_methods.MinimumSize : injection_methods.MaximumSize;
         }
         #endregion
 
@@ -2398,5 +2431,7 @@ namespace FriishProduce
 
             if (multifile_software.Checked && !Program.Config.application.donotshow_001 && !IsEmpty) MessageBox.Show(null, Program.Lang.Msg(10, false), 1);
         }
+
+        private void injection_method_help_Click(object sender, EventArgs e) => htmlForm.ShowDialog(this);
     }
 }

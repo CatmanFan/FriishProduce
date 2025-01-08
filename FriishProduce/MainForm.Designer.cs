@@ -74,13 +74,13 @@ namespace FriishProduce
             this.check_for_updates = new System.Windows.Forms.MenuItem();
             this.auto_update = new System.Windows.Forms.MenuItem();
             this.menuItem8 = new System.Windows.Forms.MenuItem();
+            this.clear_database = new System.Windows.Forms.MenuItem();
             this.language_file_editor = new System.Windows.Forms.MenuItem();
+            this.menuItem11 = new System.Windows.Forms.MenuItem();
             this.preferences = new System.Windows.Forms.MenuItem();
             this.menuItem4 = new System.Windows.Forms.MenuItem();
             this.about = new System.Windows.Forms.MenuItem();
-            this.tabControl = new MdiTabControl.TabControl();
-            this.clear_database = new System.Windows.Forms.MenuItem();
-            this.menuItem11 = new System.Windows.Forms.MenuItem();
+            this.tabControl = new JacksiroKe.MdiTabCtrl.TabControl();
             this.mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             this.toolStrip.SuspendLayout();
@@ -409,11 +409,23 @@ namespace FriishProduce
             this.menuItem8.Index = 6;
             resources.ApplyResources(this.menuItem8, "menuItem8");
             // 
+            // clear_database
+            // 
+            this.clear_database.Index = 7;
+            this.clear_database.Tag = "clear_database";
+            resources.ApplyResources(this.clear_database, "clear_database");
+            this.clear_database.Click += new System.EventHandler(this.ClearAllDatabases);
+            // 
             // language_file_editor
             // 
             this.language_file_editor.Index = 8;
             resources.ApplyResources(this.language_file_editor, "language_file_editor");
             this.language_file_editor.Click += new System.EventHandler(this.LanguageFileEditor);
+            // 
+            // menuItem11
+            // 
+            this.menuItem11.Index = 9;
+            resources.ApplyResources(this.menuItem11, "menuItem11");
             // 
             // preferences
             // 
@@ -445,6 +457,7 @@ namespace FriishProduce
             this.tabControl.FontBoldOnSelect = false;
             this.tabControl.MenuRenderer = null;
             this.tabControl.Name = "tabControl";
+            this.tabControl.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.tabControl.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.tabControl.TabBackHighColor = System.Drawing.SystemColors.Control;
             this.tabControl.TabBackHighColorDisabled = System.Drawing.Color.LightGray;
@@ -457,18 +470,7 @@ namespace FriishProduce
             this.tabControl.TabHeight = 25;
             this.tabControl.TopSeparator = false;
             this.tabControl.SelectedTabChanged += new System.EventHandler(this.TabChanged);
-            // 
-            // clear_database
-            // 
-            this.clear_database.Index = 7;
-            this.clear_database.Tag = "clear_database";
-            resources.ApplyResources(this.clear_database, "clear_database");
-            this.clear_database.Click += new System.EventHandler(this.ClearAllDatabases);
-            // 
-            // menuItem11
-            // 
-            this.menuItem11.Index = 9;
-            resources.ApplyResources(this.menuItem11, "menuItem11");
+            this.tabControl.Paint += new System.Windows.Forms.PaintEventHandler(this.MainForm_Paint);
             // 
             // MainForm
             // 
@@ -479,6 +481,7 @@ namespace FriishProduce
             this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.tabControl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.IsMdiContainer = true;
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Menu = this.mainMenu;
@@ -487,6 +490,7 @@ namespace FriishProduce
             this.Tag = "mainform";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_Closing);
             this.Load += new System.EventHandler(this.MainForm_Loading);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.MainForm_Paint);
             this.mainPanel.ResumeLayout(false);
             this.mainPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).EndInit();
@@ -532,7 +536,7 @@ namespace FriishProduce
         internal System.Windows.Forms.ToolStripButton toolbarImportGameFile;
         private System.Windows.Forms.MenuItem import_game_file;
         private System.Windows.Forms.MenuItem menuItem6;
-        private MdiTabControl.TabControl tabControl;
+        private JacksiroKe.MdiTabCtrl.TabControl tabControl;
         private System.Windows.Forms.MenuItem menuItem8;
         private System.Windows.Forms.MenuItem check_for_updates;
         private System.Windows.Forms.MenuItem auto_update;

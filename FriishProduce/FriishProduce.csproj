@@ -59,12 +59,13 @@
   <PropertyGroup>
     <StartupObject>FriishProduce.Program</StartupObject>
   </PropertyGroup>
+  <PropertyGroup />
   <ItemGroup>
-    <Reference Include="HtmlRenderer, Version=1.5.0.6, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\HtmlRenderer.Core.1.5.0.6\lib\net45\HtmlRenderer.dll</HintPath>
+    <Reference Include="HtmlRenderer, Version=1.5.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlRenderer.Core.1.5.1-beta1\lib\net45\HtmlRenderer.dll</HintPath>
     </Reference>
-    <Reference Include="HtmlRenderer.WinForms, Version=1.5.0.6, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\HtmlRenderer.WinForms.1.5.0.6\lib\net45\HtmlRenderer.WinForms.dll</HintPath>
+    <Reference Include="HtmlRenderer.WinForms, Version=1.5.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlRenderer.WinForms.1.5.1-beta1\lib\net45\HtmlRenderer.WinForms.dll</HintPath>
     </Reference>
     <Reference Include="Iconic.Zlib, Version=1.1.0.0, Culture=neutral, PublicKeyToken=6cdd45170aaef7fc, processorArchitecture=MSIL">
       <HintPath>..\packages\Iconic.Zlib.Signed.1.1.0\lib\net45\Iconic.Zlib.dll</HintPath>
@@ -72,11 +73,11 @@
     <Reference Include="ICSharpCode.SharpZipLib, Version=1.4.2.13, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
       <HintPath>..\packages\SharpZipLib.1.4.2\lib\netstandard2.0\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
+    <Reference Include="JacksiroKe.MdiTabCtrl, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MdiTabCtrl.1.0.0.1\lib\net40\JacksiroKe.MdiTabCtrl.dll</HintPath>
+    </Reference>
     <Reference Include="libWiiSharp">
       <HintPath>.\libWiiSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="MdiTabControl">
-      <HintPath>.\MdiTabControl.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=9.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.9.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
@@ -270,6 +271,12 @@
     <Compile Include="Subforms\Controllers\Controller_SEGA.Designer.cs">
       <DependentUpon>Controller_SEGA.cs</DependentUpon>
     </Compile>
+    <Compile Include="Subforms\HTMLForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Subforms\HTMLForm.Designer.cs">
+      <DependentUpon>HTMLForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Subforms\LanguageEditor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -448,6 +455,9 @@
     <EmbeddedResource Include="Subforms\ContentOptions\Options_VC_SEGA.resx">
       <DependentUpon>Options_VC_SEGA.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Subforms\HTMLForm.resx">
+      <DependentUpon>HTMLForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Subforms\LanguageEditor.resx">
       <DependentUpon>LanguageEditor.cs</DependentUpon>
     </EmbeddedResource>
@@ -580,7 +590,6 @@
     <None Include="Resources\yes.png" />
     <None Include="Resources\no.png" />
     <None Include="Resources\logo.png" />
-    <None Include="Resources\bg.png" />
     <None Include="Resources\apps\lzh8_cmp_nonstrict.exe" />
     <None Include="Resources\apps\lzh8_cmp.exe" />
     <None Include="Resources\icons\cog.png" />
@@ -614,7 +623,6 @@
     <None Include="Resources\icons\flash.png" />
     <None Include="Resources\icons\locale.png" />
     <None Include="Resources\subforms\screen_smd.png" />
-    <None Include="Resources\tutorial.rtf" />
     <None Include="Resources\vc\NeoGeo_VC1.bin" />
     <None Include="Resources\vc\NeoGeo_VC2.bin" />
     <None Include="Resources\vc\NeoGeo_VC3.bin" />
@@ -640,22 +648,22 @@
   <ItemGroup>
     <PublishFile Include="icon.ico">
       <Visible>False</Visible>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <FileType>File</FileType>
     </PublishFile>
     <PublishFile Include="VistaMenu">
       <Visible>False</Visible>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
   </ItemGroup>

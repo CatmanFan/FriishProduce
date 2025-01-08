@@ -44,6 +44,7 @@ namespace FriishProduce
             this.GetBanners = new System.Windows.Forms.Button();
             this.TreeView = new System.Windows.Forms.TreeView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.use_online_wad_tip = new FriishProduce.ImageLabel();
             this.bypass_rom_size = new System.Windows.Forms.CheckBox();
             this.use_online_wad_enabled = new System.Windows.Forms.CheckBox();
             this.use_custom_database = new System.Windows.Forms.CheckBox();
@@ -146,7 +147,6 @@ namespace FriishProduce
             this.vc_snes_patch_nodark = new System.Windows.Forms.CheckBox();
             this.vc_snes_patch_nosuspend = new System.Windows.Forms.CheckBox();
             this.vc_snes_patch_volume = new System.Windows.Forms.CheckBox();
-            this.use_online_wad_tip = new FriishProduce.ImageLabel();
             this.vc_n64_options.SuspendLayout();
             this.bottomPanel2.SuspendLayout();
             this.bottomPanel1.SuspendLayout();
@@ -257,7 +257,7 @@ namespace FriishProduce
             // 
             // bottomPanel1
             // 
-            this.bottomPanel1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.bottomPanel1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.bottomPanel1.Controls.Add(this.b_cancel);
             this.bottomPanel1.Controls.Add(this.b_ok);
             this.bottomPanel1.Controls.Add(this.GetBanners);
@@ -314,6 +314,15 @@ namespace FriishProduce
             this.panel1.Controls.Add(this.language);
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
+            // 
+            // use_online_wad_tip
+            // 
+            resources.ApplyResources(this.use_online_wad_tip, "use_online_wad_tip");
+            this.use_online_wad_tip.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.use_online_wad_tip.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.use_online_wad_tip.Image = global::FriishProduce.Properties.Resources.information;
+            this.use_online_wad_tip.Name = "use_online_wad_tip";
+            this.use_online_wad_tip.Tag = "use_online_wad_tip";
             // 
             // bypass_rom_size
             // 
@@ -1154,15 +1163,6 @@ namespace FriishProduce
             this.vc_snes_patch_volume.Name = "vc_snes_patch_volume";
             this.vc_snes_patch_volume.Tag = "patch_volume";
             this.vc_snes_patch_volume.UseVisualStyleBackColor = true;
-            // 
-            // use_online_wad_tip
-            // 
-            resources.ApplyResources(this.use_online_wad_tip, "use_online_wad_tip");
-            this.use_online_wad_tip.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.use_online_wad_tip.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.use_online_wad_tip.Image = global::FriishProduce.Properties.Resources.information;
-            this.use_online_wad_tip.Name = "use_online_wad_tip";
-            this.use_online_wad_tip.Tag = "use_online_wad_tip";
             // 
             // SettingsForm
             // 

@@ -11,7 +11,7 @@ namespace FriishProduce
             InitializeComponent();
             Text = string.Format(Program.Lang.String("about_app"), Program.Lang.ApplicationTitle);
             labelProductName.Text = AssemblyProduct;
-            labelDescription.Text = string.Format("{0}" + Environment.NewLine + "Current language: {0} ({1})", AssemblyDescription, System.Globalization.CultureInfo.CurrentUICulture.EnglishName, Program.Lang.Author);
+            labelDescription.Text = string.Format("{0}" + Environment.NewLine + "Current language: {1} ({2})", AssemblyDescription, System.Globalization.CultureInfo.CurrentUICulture.EnglishName, Program.Lang.Author);
             labelVersion.Text = "v" + System.Diagnostics.FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion.ToString();
             labelCopyright.Text = AssemblyCopyright;
             b_ok.Text = Program.Lang.String("b_close");

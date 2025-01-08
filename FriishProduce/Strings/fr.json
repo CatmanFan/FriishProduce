@@ -101,6 +101,7 @@
 			"008":								"Une mise à jour est disponible\nFriishProduce v{0} est désormais disponible à télécharger.\nL'actuelle version est v{1}.\n\nObtenir la dernière mise à jour dès GitHub maintenant ?",
 			"009":								"Vous êtes déjà à jour.",
 			"010":								"Lorsque cette option est activée, l'application traitera tous les fichiers du même dossier que celui actuellement sélectionné comme faisant partie du logiciel à injecter.\n\nVeuillez vous assurer que vos fichiers sont déjà dans un répertoire séparé avant de continuer.",
+			"011":								"Extraire le fichier opening.bnr (comprenant le header IMET) ?",
 
 			"error":							"Oups, un problème est survenu !",
 			"e_000":							"Échec de connexion à Internet.\n{0}",
@@ -120,6 +121,11 @@
 			"e_014":							"Le fichier BIOS requis pour cette console est indisponible. Veuillez le spécifier de nouveau dans les préférences de l'application.",
 			"e_015":							"Échec de création de l'image d'aperçu des données de sauvegarde.",
 			"e_016":							"Aucun mode d'emploi de Console virtuelle n'a été trouvé dans cette chaîne."
+		},
+
+		"html": {
+			"t_000":							"Le nom de la chaîne tel qu'il apparaît sur le Menu Wii.<br />Il est recommandé d'utiliser une version abrégée du titre (maximum de 20 caractères) s'il est trop long.<br /><hr><b>Exemple :</b> Zelda: Ocarina",
+			"t_001":							"Modifier les paramètres de l'émulateur.",
 		}
 	},
 
@@ -188,6 +194,7 @@
 			"wad_base":							"WAD de base",
 			"import_wad":						"Ouvrir un fichier WAD ...",
 			"use_online_wad":					"... ou télécharger une chaîne",
+			"using_default_wad":				"Utilisant une chaîne Wii blanche",
 			"current_wad":						"WAD actuel :",
 			
 			"image":							"Image",
@@ -329,7 +336,10 @@
 			"strap_reminder":					"Rappel de dragonne",
 			"strap_reminder0":					"{disabled}",
 			"strap_reminder1":					"{enabled}",
-			"strap_reminder2":					"{enabled} (sans section consacrée aux extensions externes)"
+			"strap_reminder2":					"{enabled} (sans section consacrée aux extensions externes)",
+			"swf_metadata":						"Métadonnées du contenu SWF",
+			"content_domain":					"Domaine URL du contenu",
+			"background_color":					"Changer la couleur d'arrière-plan"
 		},
 
 		"forwarder": {

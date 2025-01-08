@@ -171,6 +171,35 @@ namespace FriishProduce
             return "en";
         }
 
+        public enum ScriptType
+        {
+            Normal,
+            CJK,
+            RTL
+        }
+
+        public ScriptType GetScript(string text)
+        {
+            return new System.Text.RegularExpressions.Regex(
+                @"\p{IsHangulJamo}|" +
+                @"\p{IsCJKRadicalsSupplement}|" +
+                @"\p{IsCJKSymbolsandPunctuation}|" +
+                @"\p{IsEnclosedCJKLettersandMonths}|" +
+                @"\p{IsCJKCompatibility}|" +
+                @"\p{IsCJKUnifiedIdeographsExtensionA}|" +
+                @"\p{IsCJKUnifiedIdeographs}|" +
+                @"\p{IsHangulSyllables}|" +
+                @"\p{IsHiragana}|" +
+                @"\p{IsKatakana}|" +
+                @"\p{IsCJKCompatibilityForms}").IsMatch(text) ? ScriptType.CJK
+                 : new System.Text.RegularExpressions.Regex(
+                @"\p{IsArabic}|" +
+                @"\p{IsHebrew}|" +
+                @"\p{IsArabicPresentationForms-A}|" +
+                @"\p{IsArabicPresentationForms-B}|").IsMatch(text) ? ScriptType.RTL
+                : ScriptType.Normal;
+        }
+
         /// <summary>
         /// Localizes a control or form using an auto-determined or manually-inputted tag name.
         /// </summary>
@@ -215,35 +244,12 @@ namespace FriishProduce
         /// <param name="isError">Determines if the message should be drawn from the errors category instead.</param>
         public string Msg(int number, bool isError = false) => String((isError ? "e_" : null) + number.ToString("000"), "messages");
 
-        /* public string ToolTip(int number)
+        public string HTML(int number, bool isTooltip, string title = null)
         {
-            int spaces = 0;
-            string text = "";
-            string input = String(number.ToString("000"), "tooltips");
-
-            for (int i = 0; i < input.Length; i++)
-            {
-                if (input[i] == ' ')
-                {
-                    try
-                    {
-                        if ((i + 1 < input.Length && input[i + 1] != '!' && input[i + 1] != '?') && (i - 2 >= 0 && input[i - 2] != ' ')) spaces++;
-                    }
-                    catch { spaces++; }
-                }
-                else if (input[i] == '\n')
-                    spaces = 0;
-
-                if (spaces > 10)
-                {
-                    text += '\n';
-                    spaces = 0;
-                }
-                else text += input[i];
-            }
-
-            return text;
-        } */
+            string text = !string.IsNullOrWhiteSpace(title) ? "<b>" + title.TrimEnd(':', '：', '.', '。', '…').Trim() + "</b><br /><br />" : "";
+            string input = String((isTooltip ? "t_" : "l_") + number.ToString("000"), "html");
+            return "<div>" + text + input + "</div>";
+        }
 
         /// <summary>
         /// Returns a localized string which changes depending on a boolean condition. This is the name of the string suffixed with "0" if false, or "1" if true.
@@ -303,6 +309,7 @@ namespace FriishProduce
                               || sectionName.ToLower() == "filters"
                               || sectionName.ToLower() == "platforms"
                               || sectionName.ToLower() == "messages"
+                              || sectionName.ToLower() == "html"
                               || sectionName.ToLower() == "tooltips" ? target.global : target.strings;
 
                 string result = null;

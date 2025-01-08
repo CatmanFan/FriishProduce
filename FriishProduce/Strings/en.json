@@ -101,6 +101,7 @@
 			"008":								"An update is available\nFriishProduce v{0} is now available for download.\nYou are currently running v{1}.\n\nWould you like to get the latest version from GitHub now?",
 			"009":								"You are currently already up to date.",
 			"010":								"When this option is enabled, the program will treat all files within the same folder as the currently selected one as forming part of the software to be injected.\n\nPlease make sure that your software files are in a separate folder before continuing.",
+			"011":								"Extract the opening.bnr (includes IMET header)?",
 
 			"error":							"An error has occurred",
 			"e_000":							"Unable to connect to the Internet.\n{0}",
@@ -120,6 +121,14 @@
 			"e_014":							"Could not find the required BIOS file for this console.\nPlease set this file in the application preferences.",
 			"e_015":							"Failed to create savedata TPL.",
 			"e_016":							"No Virtual Console manual was found in the provided WAD.",
+		},
+
+		"html": {
+			"l_000":							"About SNES VC",
+			"l_001":							"About N64 VC",
+
+			"t_000":							"The name used for the channel's icon on the Wii Menu.<br />A shortened version of 20 characters or less is recommended for longer titles.<br /><hr><b>Example:</b> Zelda: Ocarina",
+			"t_001":							"Change advanced emulator settings.",
 		}
 	},
 
@@ -189,6 +198,7 @@
 			"wad_base":							"Base WAD",
 			"import_wad":						"Import WAD from file...",
 			"use_online_wad":					"...or use a downloadable base",
+			"using_default_wad":				"Using blank WAD",
 			"current_wad":						"Current WAD:",
 			
 			"image":							"Image",
@@ -332,7 +342,6 @@
 			"mouse":							"Mouse",
 			"qwerty_keyboard":					"QWERTY keyboard",
 			"midi":								"Enable MIDI playback using DLS soundfont",
-			"background_color":					"Change background color",
 			"quality":							"Quality",
 			"quality0":							"High",
 			"quality1":							"Medium",
@@ -340,7 +349,10 @@
 			"strap_reminder":					"Strap reminder screen",
 			"strap_reminder0":					"{disabled}",
 			"strap_reminder1":					"{enabled}",
-			"strap_reminder2":					"{enabled} (w/o extension controller)"
+			"strap_reminder2":					"{enabled} (w/o extension controller)",
+			"swf_metadata":						"SWF metadata",
+			"content_domain":					"Content domain",
+			"background_color":					"Change background color"
 		},
 
 		"forwarder": {

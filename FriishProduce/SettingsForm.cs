@@ -190,6 +190,7 @@ namespace FriishProduce
             reset_all_dialogs.Checked = false;
             toggleSwitch2.Checked = Program.Config.forwarder.show_bios_screen;
             forwarder_type.SelectedIndex = Program.Config.forwarder.root_storage_device;
+            use_online_wad_enabled.Checked = Program.Config.application.use_online_wad_enabled;
 
             // BIOS files
             bios_filename_neo.Text = Program.Config.paths.bios_neo;
@@ -337,6 +338,7 @@ namespace FriishProduce
             // -------------------------------------------
 
             Program.Config.application.image_interpolation = image_interpolation_modes.SelectedIndex;
+            Program.Config.application.use_online_wad_enabled = use_online_wad_enabled.Checked;
 
             // -------------------------------------------
             // BIOS files
@@ -451,11 +453,6 @@ namespace FriishProduce
         {
             Program.Config = new(Paths.Configuration);
             DialogResult = DialogResult.Cancel;
-        }
-
-        private void Reset_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void DownloadBanners_Click(object sender, EventArgs e)

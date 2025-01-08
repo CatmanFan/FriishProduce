@@ -157,6 +157,15 @@
   <metadata name="bannerMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>809, 17</value>
   </metadata>
+  <data name="bannerMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>193, 70</value>
+  </data>
+  <data name="&gt;&gt;bannerMenu.Name" xml:space="preserve">
+    <value>bannerMenu</value>
+  </data>
+  <data name="&gt;&gt;bannerMenu.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="play_banner_sound.Size" type="System.Drawing.Size, System.Drawing">
     <value>192, 22</value>
   </data>
@@ -179,15 +188,6 @@
   <data name="restore_banner_sound.Text" xml:space="preserve">
     <value>restore_banner_sound</value>
   </data>
-  <data name="bannerMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>193, 70</value>
-  </data>
-  <data name="&gt;&gt;bannerMenu.Name" xml:space="preserve">
-    <value>bannerMenu</value>
-  </data>
-  <data name="&gt;&gt;bannerMenu.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <metadata name="browseSound.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>699, 17</value>
   </metadata>
@@ -198,7 +198,7 @@
     <value>10, 35</value>
   </data>
   <data name="channel_name.MaxLength" type="System.Int32, mscorlib">
-    <value>20</value>
+    <value>100</value>
   </data>
   <data name="channel_name.Size" type="System.Drawing.Size, System.Drawing">
     <value>210, 21</value>
@@ -424,6 +424,57 @@
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <data name="&gt;&gt;video_mode.Name" xml:space="preserve">
+    <value>video_mode</value>
+  </data>
+  <data name="&gt;&gt;video_mode.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;video_mode.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;video_mode.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;region.Name" xml:space="preserve">
+    <value>region</value>
+  </data>
+  <data name="&gt;&gt;region.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;region.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;region.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 373</value>
+  </data>
+  <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>460, 110</value>
+  </data>
+  <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
+    <value>44</value>
+  </data>
+  <data name="groupBox4.Text" xml:space="preserve">
+    <value>channel_metadata</value>
+  </data>
+  <data name="groupBox4.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Name" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <data name="video_mode.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -482,33 +533,6 @@
     <value>groupBox4</value>
   </data>
   <data name="&gt;&gt;region.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 380</value>
-  </data>
-  <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>460, 110</value>
-  </data>
-  <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
-    <value>44</value>
-  </data>
-  <data name="groupBox4.Text" xml:space="preserve">
-    <value>channel_metadata</value>
-  </data>
-  <data name="groupBox4.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.Name" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
   <data name="banner.Enabled" type="System.Boolean, mscorlib">
@@ -637,6 +661,45 @@
   <data name="&gt;&gt;banner_sound.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="&gt;&gt;edit_save_data.Name" xml:space="preserve">
+    <value>edit_save_data</value>
+  </data>
+  <data name="&gt;&gt;edit_save_data.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;edit_save_data.Parent" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;edit_save_data.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="groupBox5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>478, 93</value>
+  </data>
+  <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>560, 305</value>
+  </data>
+  <data name="groupBox5.TabIndex" type="System.Int32, mscorlib">
+    <value>48</value>
+  </data>
+  <data name="groupBox5.Text" xml:space="preserve">
+    <value>banner</value>
+  </data>
+  <data name="groupBox5.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.Name" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <data name="edit_save_data.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
@@ -686,33 +749,6 @@
   <data name="&gt;&gt;edit_save_data.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="groupBox5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>478, 93</value>
-  </data>
-  <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>560, 305</value>
-  </data>
-  <data name="groupBox5.TabIndex" type="System.Int32, mscorlib">
-    <value>48</value>
-  </data>
-  <data name="groupBox5.Text" xml:space="preserve">
-    <value>banner</value>
-  </data>
-  <data name="groupBox5.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;groupBox5.Name" xml:space="preserve">
-    <value>groupBox5</value>
-  </data>
-  <data name="&gt;&gt;groupBox5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox5.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;groupBox5.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="forwarder_root_device.Items" xml:space="preserve">
     <value>SD</value>
   </data>
@@ -723,7 +759,7 @@
     <value>10, 66</value>
   </data>
   <data name="forwarder_root_device.Size" type="System.Drawing.Size, System.Drawing">
-    <value>439, 21</value>
+    <value>440, 21</value>
   </data>
   <data name="forwarder_root_device.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -738,7 +774,7 @@
     <value>groupBox3</value>
   </data>
   <data name="&gt;&gt;forwarder_root_device.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="extra.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -771,13 +807,13 @@
     <value>groupBox3</value>
   </data>
   <data name="&gt;&gt;extra.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="manual_type.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 66</value>
   </data>
   <data name="manual_type.Size" type="System.Drawing.Size, System.Drawing">
-    <value>439, 21</value>
+    <value>440, 21</value>
   </data>
   <data name="manual_type.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -792,13 +828,19 @@
     <value>groupBox3</value>
   </data>
   <data name="&gt;&gt;manual_type.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="injection_methods.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 19</value>
   </data>
+  <data name="injection_methods.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>440, 0</value>
+  </data>
+  <data name="injection_methods.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>418, 0</value>
+  </data>
   <data name="injection_methods.Size" type="System.Drawing.Size, System.Drawing">
-    <value>439, 21</value>
+    <value>440, 21</value>
   </data>
   <data name="injection_methods.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -813,7 +855,7 @@
     <value>groupBox3</value>
   </data>
   <data name="&gt;&gt;injection_methods.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="injection_method_options.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -838,7 +880,7 @@
     <value>NoControl</value>
   </data>
   <data name="injection_method_options.Location" type="System.Drawing.Point, System.Drawing">
-    <value>179, 94</value>
+    <value>10, 93</value>
   </data>
   <data name="injection_method_options.Size" type="System.Drawing.Size, System.Drawing">
     <value>270, 24</value>
@@ -865,6 +907,87 @@
     <value>groupBox3</value>
   </data>
   <data name="&gt;&gt;injection_method_options.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;injection_method_help.Name" xml:space="preserve">
+    <value>injection_method_help</value>
+  </data>
+  <data name="&gt;&gt;injection_method_help.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;injection_method_help.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;injection_method_help.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;multifile_software.Name" xml:space="preserve">
+    <value>multifile_software</value>
+  </data>
+  <data name="&gt;&gt;multifile_software.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;multifile_software.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;multifile_software.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 239</value>
+  </data>
+  <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>460, 128</value>
+  </data>
+  <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
+    <value>43</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>injection_method</value>
+  </data>
+  <data name="groupBox3.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Name" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="injection_method_help.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="injection_method_help.Location" type="System.Drawing.Point, System.Drawing">
+    <value>434, 22</value>
+  </data>
+  <data name="injection_method_help.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 16</value>
+  </data>
+  <data name="injection_method_help.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>StretchImage</value>
+  </data>
+  <data name="injection_method_help.TabIndex" type="System.Int32, mscorlib">
+    <value>51</value>
+  </data>
+  <data name="injection_method_help.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;injection_method_help.Name" xml:space="preserve">
+    <value>injection_method_help</value>
+  </data>
+  <data name="&gt;&gt;injection_method_help.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;injection_method_help.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;injection_method_help.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="multifile_software.AutoSize" type="System.Boolean, mscorlib">
@@ -898,33 +1021,6 @@
     <value>groupBox3</value>
   </data>
   <data name="&gt;&gt;multifile_software.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 244</value>
-  </data>
-  <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>460, 130</value>
-  </data>
-  <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
-    <value>43</value>
-  </data>
-  <data name="groupBox3.Text" xml:space="preserve">
-    <value>injection_method</value>
-  </data>
-  <data name="groupBox3.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.Name" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
   <data name="pictureBox2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
@@ -985,7 +1081,7 @@
     <value>True</value>
   </data>
   <data name="baseID.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 7pt, style=Bold</value>
+    <value>Arial, 7pt, style=Bold</value>
   </data>
   <data name="baseID.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -994,7 +1090,7 @@
     <value>85, 20</value>
   </data>
   <data name="baseID.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 12</value>
+    <value>53, 12</value>
   </data>
   <data name="baseID.TabIndex" type="System.Int32, mscorlib">
     <value>33</value>
@@ -1027,7 +1123,7 @@
     <value>10</value>
   </data>
   <data name="Base.Size" type="System.Drawing.Size, System.Drawing">
-    <value>400, 21</value>
+    <value>401, 21</value>
   </data>
   <data name="Base.TabIndex" type="System.Int32, mscorlib">
     <value>31</value>
@@ -1051,7 +1147,7 @@
     <value>NoControl</value>
   </data>
   <data name="BaseRegion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>416, 97</value>
+    <value>417, 97</value>
   </data>
   <data name="BaseRegion.Size" type="System.Drawing.Size, System.Drawing">
     <value>33, 21</value>
@@ -1078,7 +1174,7 @@
     <value>True</value>
   </data>
   <data name="baseName.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 7pt</value>
+    <value>Arial, 7pt</value>
   </data>
   <data name="baseName.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1087,7 +1183,7 @@
     <value>145, 20</value>
   </data>
   <data name="baseName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 12</value>
+    <value>55, 13</value>
   </data>
   <data name="baseName.TabIndex" type="System.Int32, mscorlib">
     <value>33</value>
@@ -1111,7 +1207,7 @@
     <value>True</value>
   </data>
   <data name="current_wad.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8.25pt, style=Underline</value>
+    <value>Tahoma, 8.25pt</value>
   </data>
   <data name="current_wad.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1203,34 +1299,6 @@
   <data name="&gt;&gt;checkImg1.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="import_wad.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="import_wad.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="import_wad.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="import_wad.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 41</value>
-  </data>
-  <data name="import_wad.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 23</value>
-  </data>
-  <data name="import_wad.TabIndex" type="System.Int32, mscorlib">
-    <value>54</value>
-  </data>
-  <data name="import_wad.Text" xml:space="preserve">
-    <value>import_wad</value>
-  </data>
-  <metadata name="tip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1055, 17</value>
-  </metadata>
-  <data name="import_wad.ToolTip" xml:space="preserve">
-    <value>HELLO
-This is a test of the CustomToolTip. A description will be displayed for each element on-screen.</value>
-  </data>
   <data name="&gt;&gt;import_wad.Name" xml:space="preserve">
     <value>import_wad</value>
   </data>
@@ -1243,8 +1311,20 @@ This is a test of the CustomToolTip. A description will be displayed for each el
   <data name="&gt;&gt;import_wad.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="&gt;&gt;using_default_wad.Name" xml:space="preserve">
+    <value>using_default_wad</value>
+  </data>
+  <data name="&gt;&gt;using_default_wad.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;using_default_wad.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;using_default_wad.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
   <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 108</value>
+    <value>12, 103</value>
   </data>
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
     <value>460, 130</value>
@@ -1269,6 +1349,75 @@ This is a test of the CustomToolTip. A description will be displayed for each el
   </data>
   <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
     <value>7</value>
+  </data>
+  <data name="import_wad.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="import_wad.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="import_wad.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="import_wad.Location" type="System.Drawing.Point, System.Drawing">
+    <value>28, 41</value>
+  </data>
+  <data name="import_wad.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 23</value>
+  </data>
+  <data name="import_wad.TabIndex" type="System.Int32, mscorlib">
+    <value>54</value>
+  </data>
+  <data name="import_wad.Text" xml:space="preserve">
+    <value>import_wad</value>
+  </data>
+  <data name="&gt;&gt;import_wad.Name" xml:space="preserve">
+    <value>import_wad</value>
+  </data>
+  <data name="&gt;&gt;import_wad.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;import_wad.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;import_wad.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="using_default_wad.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="using_default_wad.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="using_default_wad.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 17</value>
+  </data>
+  <data name="using_default_wad.Size" type="System.Drawing.Size, System.Drawing">
+    <value>454, 110</value>
+  </data>
+  <data name="using_default_wad.TabIndex" type="System.Int32, mscorlib">
+    <value>55</value>
+  </data>
+  <data name="using_default_wad.Text" xml:space="preserve">
+    <value>using_default_wad</value>
+  </data>
+  <data name="using_default_wad.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="using_default_wad.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;using_default_wad.Name" xml:space="preserve">
+    <value>using_default_wad</value>
+  </data>
+  <data name="&gt;&gt;using_default_wad.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;using_default_wad.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;using_default_wad.ZOrder" xml:space="preserve">
+    <value>10</value>
   </data>
   <data name="pictureBox1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1469,7 +1618,7 @@ This is a test of the CustomToolTip. A description will be displayed for each el
     <value>NoControl</value>
   </data>
   <data name="include_patch.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 62</value>
+    <value>10, 59</value>
   </data>
   <data name="include_patch.Size" type="System.Drawing.Size, System.Drawing">
     <value>92, 17</value>
@@ -1492,20 +1641,71 @@ This is a test of the CustomToolTip. A description will be displayed for each el
   <data name="&gt;&gt;include_patch.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="&gt;&gt;rom_label_filename.Name" xml:space="preserve">
+    <value>rom_label_filename</value>
+  </data>
+  <data name="&gt;&gt;rom_label_filename.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;rom_label_filename.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;rom_label_filename.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;rom_label.Name" xml:space="preserve">
+    <value>rom_label</value>
+  </data>
+  <data name="&gt;&gt;rom_label.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;rom_label.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;rom_label.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
+  </data>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>460, 85</value>
+  </data>
+  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>46</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>main</value>
+  </data>
+  <data name="groupBox1.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
   <data name="rom_label_filename.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="rom_label_filename.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 7pt</value>
+    <value>Arial, 7pt</value>
   </data>
   <data name="rom_label_filename.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="rom_label_filename.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 38</value>
+    <value>8, 37</value>
   </data>
   <data name="rom_label_filename.Size" type="System.Drawing.Size, System.Drawing">
-    <value>89, 12</value>
+    <value>103, 13</value>
   </data>
   <data name="rom_label_filename.TabIndex" type="System.Int32, mscorlib">
     <value>55</value>
@@ -1529,13 +1729,13 @@ This is a test of the CustomToolTip. A description will be displayed for each el
     <value>True</value>
   </data>
   <data name="rom_label.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8.25pt, style=Underline</value>
+    <value>Tahoma, 8.25pt</value>
   </data>
   <data name="rom_label.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="rom_label.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 19</value>
+    <value>8, 19</value>
   </data>
   <data name="rom_label.Size" type="System.Drawing.Size, System.Drawing">
     <value>53, 13</value>
@@ -1558,35 +1758,11 @@ This is a test of the CustomToolTip. A description will be displayed for each el
   <data name="&gt;&gt;rom_label.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 12</value>
-  </data>
-  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>460, 90</value>
-  </data>
-  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>46</value>
-  </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>main</value>
-  </data>
-  <data name="groupBox1.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
   <metadata name="backgroundWorker.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>914, 17</value>
+  </metadata>
+  <metadata name="tip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1055, 17</value>
   </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -1595,7 +1771,7 @@ This is a test of the CustomToolTip. A description will be displayed for each el
     <value>True</value>
   </metadata>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1050, 500</value>
+    <value>1050, 495</value>
   </data>
   <data name="$this.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -3856,7 +4032,7 @@ This is a test of the CustomToolTip. A description will be displayed for each el
     <value>tip</value>
   </data>
   <data name="&gt;&gt;tip.Type" xml:space="preserve">
-    <value>FriishProduce.CustomToolTip, FriishProduce, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>TheArtOfDev.HtmlRenderer.WinForms.HtmlToolTip, HtmlRenderer.WinForms, Version=1.5.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>ProjectForm</value>

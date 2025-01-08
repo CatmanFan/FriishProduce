@@ -91,13 +91,16 @@ namespace FriishProduce
                     controllerForm.Keymap = _Keymap;
                     return _Keymap;
                 }
+
                 else return null;
             }
             set
             {
+                _Keymap = value;
+
                 if (controllerForm != null)
                 {
-                    controllerForm.Keymap = _Keymap = value;
+                    controllerForm.Keymap = value;
                 }
             }
         }

@@ -167,7 +167,7 @@ namespace FriishProduce
             };
             #endregion
 
-            ResetLayout();
+            LoadLayout();
 
             // Localization
             // -----------------------------------------------------------------------------------------------------------

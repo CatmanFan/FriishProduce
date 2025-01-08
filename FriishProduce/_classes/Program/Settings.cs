@@ -50,6 +50,44 @@ namespace FriishProduce
             if (save) Save();
         }
 
+        private Settings Parse(byte[] file = null)
+        {
+            if (file == null) file = File.ReadAllBytes(FriishProduce.Paths.Configuration);
+
+            Settings reader = null;
+            var encoding = Encoding.UTF8;
+
+            using (MemoryStream ms = new(file))
+            using (StreamReader sr = new(ms, encoding))
+            {
+                JsonDocument.Parse(sr.ReadToEnd(), new JsonDocumentOptions() { AllowTrailingCommas = true, CommentHandling = JsonCommentHandling.Skip });
+                encoding = sr.CurrentEncoding;
+            }
+
+            using (MemoryStream ms = new(file))
+            using (StreamReader sr = new(ms, encoding))
+            using (var fileReader = JsonDocument.Parse(sr.ReadToEnd(), new JsonDocumentOptions() { AllowTrailingCommas = true, CommentHandling = JsonCommentHandling.Skip }))
+            {
+                reader = JsonSerializer.Deserialize<Settings>(fileReader, new JsonSerializerOptions() { AllowTrailingCommas = true, ReadCommentHandling = JsonCommentHandling.Skip, IncludeFields = true });
+
+                sr.Dispose();
+                ms.Dispose();
+            }
+
+            string lang = reader.application.language;
+            if (reader.paths == null) throw new InvalidDataException();
+            if (reader.nes == null) throw new InvalidDataException();
+            if (reader.snes == null) throw new InvalidDataException();
+            if (reader.n64 == null) throw new InvalidDataException();
+            if (reader.sega == null) throw new InvalidDataException();
+            if (reader.pce == null) throw new InvalidDataException();
+            if (reader.neo == null) throw new InvalidDataException();
+            if (reader.forwarder == null) throw new InvalidDataException();
+            if (reader.flash == null) throw new InvalidDataException();
+
+            return reader;
+        }
+
         public Settings()
         {
             Reset(false);
@@ -67,36 +105,7 @@ namespace FriishProduce
             {
                 try
                 {
-                    Settings reader = null;
-                    var encoding = Encoding.UTF8;
-
-                    using (MemoryStream ms = new(File.ReadAllBytes(file)))
-                    using (StreamReader sr = new(ms, encoding))
-                    {
-                        JsonDocument.Parse(sr.ReadToEnd(), new JsonDocumentOptions() { AllowTrailingCommas = true, CommentHandling = JsonCommentHandling.Skip });
-                        encoding = sr.CurrentEncoding;
-                    }
-
-                    using (MemoryStream ms = new(File.ReadAllBytes(file)))
-                    using (StreamReader sr = new(ms, encoding))
-                    using (var fileReader = JsonDocument.Parse(sr.ReadToEnd(), new JsonDocumentOptions() { AllowTrailingCommas = true, CommentHandling = JsonCommentHandling.Skip }))
-                    {
-                        reader = JsonSerializer.Deserialize<Settings>(fileReader, new JsonSerializerOptions() { AllowTrailingCommas = true, ReadCommentHandling = JsonCommentHandling.Skip, IncludeFields = true });
-
-                        sr.Dispose();
-                        ms.Dispose();
-                    }
-
-                    string lang = reader.application.language;
-                    if (reader.paths == null) throw new InvalidDataException();
-                    if (reader.nes == null) throw new InvalidDataException();
-                    if (reader.snes == null) throw new InvalidDataException();
-                    if (reader.n64 == null) throw new InvalidDataException();
-                    if (reader.sega == null) throw new InvalidDataException();
-                    if (reader.pce == null) throw new InvalidDataException();
-                    if (reader.neo == null) throw new InvalidDataException();
-                    if (reader.forwarder == null) throw new InvalidDataException();
-                    if (reader.flash == null) throw new InvalidDataException();
+                    Settings reader = Parse(File.ReadAllBytes(file));
 
                     application = reader.application;
                     paths = reader.paths;
@@ -210,6 +219,7 @@ namespace FriishProduce
 
         public class Flash
         {
+            public string content_domain { get; set; } = "";
             public string quality { get; set; } = "high";
             public string mouse { get; set; } = "on";
             public string qwerty_keyboard { get; set; } = "on";

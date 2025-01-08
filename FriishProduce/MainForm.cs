@@ -133,8 +133,9 @@ namespace FriishProduce
             toolbarGameScan.Text = game_scan.Text;
             toolbarPreferences.Text = preferences.Text = Program.Lang.String("preferences");
 
-            SaveProject.Title = save_project_as.Text.Replace("&", "");
-            SaveWAD.Title = export.Text.Replace("&", "");
+            BrowseProject.Title = new Regex(@"\(.*\)").Replace(open_project.Text, "").Replace("&", "");
+            SaveProject.Title = new Regex(@"\(.*\)").Replace(save_project_as.Text, "").Replace("&", "");
+            SaveWAD.Title = new Regex(@"\(.*\)").Replace(export.Text, "").Replace("&", "");
 
             try { BrowseProject.Filter = SaveProject.Filter = Program.Lang.String("filter.project"); }
             catch { MessageBox.Show("Warning!\nThe language strings have not been loaded correctly.\n\nSeveral items may show up as 'undefined'.\n\nOther exceptions related to strings or filters can also occur!", MessageBox.Buttons.Ok, MessageBox.Icons.Warning, false); }
@@ -144,9 +145,11 @@ namespace FriishProduce
             {
                 Text += " [Running in debug mode]";
                 // Debug mode-only features are activated here. //
+                extract_wad_banner.Visible = true;
+                extract_wad_icon.Visible = true;
             }
 
-            foreach (MdiTabControl.TabPage tabPage in tabControl.TabPages)
+            foreach (JacksiroKe.MdiTabCtrl.TabPage tabPage in tabControl.TabPages)
                 if (tabPage.Form.GetType() == typeof(ProjectForm))
                     (tabPage.Form as ProjectForm).RefreshForm();
         }
@@ -298,7 +301,7 @@ namespace FriishProduce
             if (tabControl.SelectedForm != null)
             {
                 var p = tabControl.SelectedForm as ProjectForm;
-                p.BrowseROMDialog(import_game_file.Text);
+                p.BrowseROMDialog(new Regex(@"\(.*\)").Replace(import_game_file.Text, "").Replace("&", ""));
             }
         }
 
@@ -328,7 +331,7 @@ namespace FriishProduce
         private void TabContextMenu_Opening(object sender, CancelEventArgs e)
         {
             var page = (sender as ContextMenuStrip).SourceControl;
-            var index = tabControl.TabPages.get_IndexOf(page as MdiTabControl.TabPage);
+            var index = tabControl.TabPages.get_IndexOf(page as JacksiroKe.MdiTabCtrl.TabPage);
             if (index != -1) tabControl.TabPages[index].Select();
         }
 
@@ -487,11 +490,19 @@ namespace FriishProduce
                         SupportMultiDottedExtensions = true
                     };
 
+                    bool isIMET = sender == extract_wad_banner && MessageBox.Show(Program.Lang.Msg(11), MessageBox.Buttons.YesNo) == MessageBox.Result.Yes;
+                    if (isIMET)
+                    {
+                        saveDialog.FileName = "opening.bnr";
+                        saveDialog.Filter = "BNR (*.bnr)|*.bnr|BIN (*.bin)|*.bin" + Program.Lang.String("filter");
+                        saveDialog.DefaultExt = "bnr";
+                    }
+
                     if (saveDialog.ShowDialog() == DialogResult.OK)
                     {
                         try
                         {
-                            using var x = libWiiSharp.U8.Load(w.BannerApp.Data[w.BannerApp.GetNodeIndex(sender == extract_wad_icon ? "icon.bin" : "banner.bin")]);
+                            using var x = isIMET ? w.BannerApp : U8.Load(w.BannerApp.Data[w.BannerApp.GetNodeIndex(sender == extract_wad_icon ? "icon.bin" : "banner.bin")]);
                             File.WriteAllBytes(saveDialog.FileName, x.ToByteArray());
 
                             goto Succeeded;
@@ -635,6 +646,12 @@ namespace FriishProduce
                 End:
                 if (w != null) w.Dispose();
             }
+        }
+
+        private void MainForm_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            e.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
         }
     }
 }

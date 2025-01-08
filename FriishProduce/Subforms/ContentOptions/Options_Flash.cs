@@ -29,7 +29,8 @@ namespace FriishProduce
                 { "strap_reminder", Program.Config.flash.strap_reminder },
                 { "midi", null },
                 { "fullscreen", Program.Config.flash.fullscreen },
-                { "background_color", "0 0 0 0" }
+                { "content_domain", null },
+                { "background_color", "0 0 0 0" },
             };
 
             // Cosmetic
@@ -69,6 +70,7 @@ namespace FriishProduce
                     strap_reminder_list.SelectedIndex = Options["strap_reminder"] switch { "none" => 0, "normal" => 1, _ => 2 };
                     // MIDI is counted separately
                     fullscreen.Checked = Options["fullscreen"] == "yes";
+                    if (Options.ContainsKey("content_domain")) content_domain.Text = Options["content_domain"];
 
                     // Background color
                     // ****************
@@ -106,6 +108,7 @@ namespace FriishProduce
                         { "strap_reminder", Program.Config.flash.strap_reminder },
                         { "midi", null },
                         { "fullscreen", Program.Config.flash.fullscreen },
+                        { "content_domain", null },
                         { "background_color", "0 0 0 0" }
                     };
 
@@ -144,6 +147,7 @@ namespace FriishProduce
             Options["strap_reminder"] = strap_reminder_list.SelectedIndex switch { 0 => "none", 1 => "normal", _ => "no_ex" };
             Options["hbm_no_save"] = Options["shared_object_capability"] == "on" ? "no" : "yes";
             Options["fullscreen"] = fullscreen.Checked ? "yes" : "no";
+            Options["content_domain"] = content_domain.Text;
             Options["background_color"] = BGColor.Color.R + BGColor.Color.G + BGColor.Color.B > 0 ? $"{BGColor.Color.R} {BGColor.Color.G} {BGColor.Color.B} 255" : "0 0 0 0";
         }
 

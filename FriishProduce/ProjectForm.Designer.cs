@@ -63,6 +63,7 @@ namespace FriishProduce
             this.injection_methods = new System.Windows.Forms.ComboBox();
             this.injection_method_options = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.injection_method_help = new System.Windows.Forms.PictureBox();
             this.multifile_software = new System.Windows.Forms.CheckBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.use_offline_wad = new System.Windows.Forms.RadioButton();
@@ -75,6 +76,7 @@ namespace FriishProduce
             this.checkImg1 = new System.Windows.Forms.PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.import_wad = new System.Windows.Forms.Button();
+            this.using_default_wad = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.import_image = new System.Windows.Forms.Button();
             this.image_interpolation_mode = new System.Windows.Forms.ComboBox();
@@ -87,13 +89,14 @@ namespace FriishProduce
             this.rom_label_filename = new System.Windows.Forms.Label();
             this.rom_label = new System.Windows.Forms.Label();
             this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
-            this.tip = new FriishProduce.CustomToolTip();
+            this.tip = new TheArtOfDev.HtmlRenderer.WinForms.HtmlToolTip();
             this.bannerMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.title_id_random)).BeginInit();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.banner)).BeginInit();
             this.groupBox5.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.injection_method_help)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BaseRegion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkImg1)).BeginInit();
@@ -340,6 +343,7 @@ namespace FriishProduce
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.injection_method_help);
             this.groupBox3.Controls.Add(this.injection_method_options);
             this.groupBox3.Controls.Add(this.injection_methods);
             this.groupBox3.Controls.Add(this.manual_type);
@@ -350,6 +354,15 @@ namespace FriishProduce
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.TabStop = false;
             this.groupBox3.Tag = "injection_method";
+            // 
+            // injection_method_help
+            // 
+            this.injection_method_help.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.injection_method_help.Image = global::FriishProduce.Properties.Resources.help;
+            resources.ApplyResources(this.injection_method_help, "injection_method_help");
+            this.injection_method_help.Name = "injection_method_help";
+            this.injection_method_help.TabStop = false;
+            this.injection_method_help.Click += new System.EventHandler(this.injection_method_help_Click);
             // 
             // multifile_software
             // 
@@ -441,6 +454,7 @@ namespace FriishProduce
             this.groupBox2.Controls.Add(this.baseID);
             this.groupBox2.Controls.Add(this.current_wad);
             this.groupBox2.Controls.Add(this.baseName);
+            this.groupBox2.Controls.Add(this.using_default_wad);
             resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
@@ -451,9 +465,14 @@ namespace FriishProduce
             resources.ApplyResources(this.import_wad, "import_wad");
             this.import_wad.Name = "import_wad";
             this.import_wad.Tag = "import_wad";
-            this.tip.SetToolTip(this.import_wad, resources.GetString("import_wad.ToolTip"));
             this.import_wad.UseVisualStyleBackColor = true;
             this.import_wad.Click += new System.EventHandler(this.import_wad_Click);
+            // 
+            // using_default_wad
+            // 
+            resources.ApplyResources(this.using_default_wad, "using_default_wad");
+            this.using_default_wad.Name = "using_default_wad";
+            this.using_default_wad.Tag = "using_default_wad";
             // 
             // pictureBox1
             // 
@@ -558,7 +577,18 @@ namespace FriishProduce
             // 
             // tip
             // 
+            this.tip.AllowLinksHandling = true;
+            this.tip.AutoPopDelay = 10000;
+            this.tip.BackColor = System.Drawing.Color.White;
+            this.tip.BaseStylesheet = "div { font-size: 11px !important; }";
+            this.tip.ForeColor = System.Drawing.Color.Black;
+            this.tip.InitialDelay = 500;
+            this.tip.MaximumSize = new System.Drawing.Size(350, 0);
             this.tip.OwnerDraw = true;
+            this.tip.ReshowDelay = 100;
+            this.tip.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+            this.tip.TooltipCssClass = "htmltooltip";
+            this.tip.UseGdiPlusTextRendering = true;
             // 
             // ProjectForm
             // 
@@ -586,6 +616,7 @@ namespace FriishProduce
             this.groupBox5.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.injection_method_help)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BaseRegion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkImg1)).EndInit();
@@ -657,6 +688,8 @@ namespace FriishProduce
         private System.Windows.Forms.CheckBox multifile_software;
         private System.ComponentModel.BackgroundWorker backgroundWorker;
         private System.Windows.Forms.Button import_wad;
-        private CustomToolTip tip;
+        private System.Windows.Forms.PictureBox injection_method_help;
+        private TheArtOfDev.HtmlRenderer.WinForms.HtmlToolTip tip;
+        private System.Windows.Forms.Label using_default_wad;
     }
 }

@@ -53,6 +53,9 @@ namespace FriishProduce
             this.strap_reminder_list = new System.Windows.Forms.ComboBox();
             this.ImportDLS = new System.Windows.Forms.OpenFileDialog();
             this.BGColor = new System.Windows.Forms.ColorDialog();
+            this.swf_metadata = new System.Windows.Forms.GroupBox();
+            this.content_domain_l = new System.Windows.Forms.Label();
+            this.content_domain = new FriishProduce.PlaceholderTextBox();
             this.bottomPanel1.SuspendLayout();
             this.controller_box.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -61,16 +64,17 @@ namespace FriishProduce
             this.controls.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.background_color_img)).BeginInit();
             this.strap_reminder.SuspendLayout();
+            this.swf_metadata.SuspendLayout();
             this.SuspendLayout();
             // 
             // b_controller
             // 
-            this.b_controller.Size = new System.Drawing.Size(690, 24);
+            this.b_controller.Size = new System.Drawing.Size(340, 24);
             // 
             // controller_box
             // 
-            this.controller_box.Location = new System.Drawing.Point(12, 260);
-            this.controller_box.Size = new System.Drawing.Size(710, 54);
+            this.controller_box.Location = new System.Drawing.Point(12, 254);
+            this.controller_box.Size = new System.Drawing.Size(360, 54);
             // 
             // quality
             // 
@@ -80,7 +84,7 @@ namespace FriishProduce
             "auto"});
             this.quality.Location = new System.Drawing.Point(15, 36);
             this.quality.Name = "quality";
-            this.quality.Size = new System.Drawing.Size(150, 21);
+            this.quality.Size = new System.Drawing.Size(154, 21);
             this.quality.TabIndex = 15;
             this.quality.Tag = "quality";
             // 
@@ -93,9 +97,9 @@ namespace FriishProduce
             this.groupBox1.Controls.Add(this.persistent_storage_total_l);
             this.groupBox1.Controls.Add(this.persistent_storage_total);
             this.groupBox1.Controls.Add(this.save_data_enable);
-            this.groupBox1.Location = new System.Drawing.Point(370, 12);
+            this.groupBox1.Location = new System.Drawing.Point(378, 10);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(352, 146);
+            this.groupBox1.Size = new System.Drawing.Size(360, 146);
             this.groupBox1.TabIndex = 16;
             this.groupBox1.TabStop = false;
             this.groupBox1.Tag = "save_data";
@@ -132,12 +136,12 @@ namespace FriishProduce
             "4096"});
             this.vff_cache_size.Location = new System.Drawing.Point(15, 60);
             this.vff_cache_size.Name = "vff_cache_size";
-            this.vff_cache_size.Size = new System.Drawing.Size(150, 21);
+            this.vff_cache_size.Size = new System.Drawing.Size(152, 21);
             this.vff_cache_size.TabIndex = 22;
             // 
             // persistent_storage_per_movie_l
             // 
-            this.persistent_storage_per_movie_l.Location = new System.Drawing.Point(180, 79);
+            this.persistent_storage_per_movie_l.Location = new System.Drawing.Point(185, 79);
             this.persistent_storage_per_movie_l.Name = "persistent_storage_per_movie_l";
             this.persistent_storage_per_movie_l.Size = new System.Drawing.Size(160, 30);
             this.persistent_storage_per_movie_l.TabIndex = 28;
@@ -164,9 +168,9 @@ namespace FriishProduce
             "1024",
             "2048",
             "4096"});
-            this.persistent_storage_per_movie.Location = new System.Drawing.Point(188, 113);
+            this.persistent_storage_per_movie.Location = new System.Drawing.Point(193, 113);
             this.persistent_storage_per_movie.Name = "persistent_storage_per_movie";
-            this.persistent_storage_per_movie.Size = new System.Drawing.Size(150, 21);
+            this.persistent_storage_per_movie.Size = new System.Drawing.Size(152, 21);
             this.persistent_storage_per_movie.TabIndex = 27;
             // 
             // persistent_storage_total_l
@@ -200,7 +204,7 @@ namespace FriishProduce
             "4096"});
             this.persistent_storage_total.Location = new System.Drawing.Point(15, 113);
             this.persistent_storage_total.Name = "persistent_storage_total";
-            this.persistent_storage_total.Size = new System.Drawing.Size(150, 21);
+            this.persistent_storage_total.Size = new System.Drawing.Size(152, 21);
             this.persistent_storage_total.TabIndex = 25;
             // 
             // save_data_enable
@@ -222,9 +226,9 @@ namespace FriishProduce
             this.display.Controls.Add(this.update_frame_rate);
             this.display.Controls.Add(this.quality_l);
             this.display.Controls.Add(this.quality);
-            this.display.Location = new System.Drawing.Point(12, 68);
+            this.display.Location = new System.Drawing.Point(12, 66);
             this.display.Name = "display";
-            this.display.Size = new System.Drawing.Size(352, 90);
+            this.display.Size = new System.Drawing.Size(360, 90);
             this.display.TabIndex = 17;
             this.display.TabStop = false;
             this.display.Tag = "display";
@@ -260,7 +264,7 @@ namespace FriishProduce
             0,
             0});
             this.update_frame_rate.Name = "update_frame_rate";
-            this.update_frame_rate.Size = new System.Drawing.Size(150, 21);
+            this.update_frame_rate.Size = new System.Drawing.Size(154, 21);
             this.update_frame_rate.TabIndex = 0;
             // 
             // quality_l
@@ -278,9 +282,9 @@ namespace FriishProduce
             this.controls.Controls.Add(this.midi);
             this.controls.Controls.Add(this.qwerty_keyboard);
             this.controls.Controls.Add(this.mouse);
-            this.controls.Location = new System.Drawing.Point(12, 168);
+            this.controls.Location = new System.Drawing.Point(12, 162);
             this.controls.Name = "controls";
-            this.controls.Size = new System.Drawing.Size(352, 86);
+            this.controls.Size = new System.Drawing.Size(360, 86);
             this.controls.TabIndex = 18;
             this.controls.TabStop = false;
             this.controls.Tag = "controls";
@@ -323,17 +327,17 @@ namespace FriishProduce
             // background_color_img
             // 
             this.background_color_img.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.background_color_img.Location = new System.Drawing.Point(692, 170);
+            this.background_color_img.Location = new System.Drawing.Point(326, 68);
             this.background_color_img.Name = "background_color_img";
-            this.background_color_img.Size = new System.Drawing.Size(30, 20);
+            this.background_color_img.Size = new System.Drawing.Size(25, 18);
             this.background_color_img.TabIndex = 17;
             this.background_color_img.TabStop = false;
             // 
             // background_color
             // 
-            this.background_color.Location = new System.Drawing.Point(370, 168);
+            this.background_color.Location = new System.Drawing.Point(10, 65);
             this.background_color.Name = "background_color";
-            this.background_color.Size = new System.Drawing.Size(316, 23);
+            this.background_color.Size = new System.Drawing.Size(310, 23);
             this.background_color.TabIndex = 16;
             this.background_color.Tag = "background_color";
             this.background_color.Text = "background_color";
@@ -343,9 +347,9 @@ namespace FriishProduce
             // strap_reminder
             // 
             this.strap_reminder.Controls.Add(this.strap_reminder_list);
-            this.strap_reminder.Location = new System.Drawing.Point(12, 12);
+            this.strap_reminder.Location = new System.Drawing.Point(12, 10);
             this.strap_reminder.Name = "strap_reminder";
-            this.strap_reminder.Size = new System.Drawing.Size(352, 50);
+            this.strap_reminder.Size = new System.Drawing.Size(360, 50);
             this.strap_reminder.TabIndex = 19;
             this.strap_reminder.TabStop = false;
             this.strap_reminder.Tag = "strap_reminder";
@@ -359,7 +363,7 @@ namespace FriishProduce
             "auto"});
             this.strap_reminder_list.Location = new System.Drawing.Point(10, 18);
             this.strap_reminder_list.Name = "strap_reminder_list";
-            this.strap_reminder_list.Size = new System.Drawing.Size(333, 21);
+            this.strap_reminder_list.Size = new System.Drawing.Size(340, 21);
             this.strap_reminder_list.TabIndex = 16;
             this.strap_reminder_list.Tag = "strap_reminder";
             // 
@@ -368,24 +372,54 @@ namespace FriishProduce
             this.ImportDLS.DefaultExt = "dls";
             this.ImportDLS.Filter = ".dls (*.dls)|*.dls";
             // 
+            // swf_metadata
+            // 
+            this.swf_metadata.Controls.Add(this.content_domain_l);
+            this.swf_metadata.Controls.Add(this.content_domain);
+            this.swf_metadata.Controls.Add(this.background_color);
+            this.swf_metadata.Controls.Add(this.background_color_img);
+            this.swf_metadata.Location = new System.Drawing.Point(378, 162);
+            this.swf_metadata.Name = "swf_metadata";
+            this.swf_metadata.Size = new System.Drawing.Size(360, 98);
+            this.swf_metadata.TabIndex = 39;
+            this.swf_metadata.TabStop = false;
+            this.swf_metadata.Tag = "swf_metadata";
+            this.swf_metadata.Text = "swf_metadata";
+            // 
+            // content_domain_l
+            // 
+            this.content_domain_l.AutoSize = true;
+            this.content_domain_l.Location = new System.Drawing.Point(7, 18);
+            this.content_domain_l.Name = "content_domain_l";
+            this.content_domain_l.Size = new System.Drawing.Size(84, 13);
+            this.content_domain_l.TabIndex = 19;
+            this.content_domain_l.Tag = "content_domain";
+            this.content_domain_l.Text = "content_domain";
+            // 
+            // content_domain
+            // 
+            this.content_domain.Location = new System.Drawing.Point(15, 36);
+            this.content_domain.Name = "content_domain";
+            this.content_domain.PlaceholderText = "file:///trusted/";
+            this.content_domain.Size = new System.Drawing.Size(330, 21);
+            this.content_domain.TabIndex = 0;
+            // 
             // Options_Flash
             // 
-            this.ClientSize = new System.Drawing.Size(734, 371);
-            this.Controls.Add(this.background_color_img);
+            this.ClientSize = new System.Drawing.Size(751, 364);
+            this.Controls.Add(this.swf_metadata);
             this.Controls.Add(this.strap_reminder);
             this.Controls.Add(this.controls);
-            this.Controls.Add(this.background_color);
             this.Controls.Add(this.display);
             this.Controls.Add(this.groupBox1);
             this.Name = "Options_Flash";
             this.Tag = "adobe_flash";
-            this.Controls.SetChildIndex(this.controller_box, 0);
             this.Controls.SetChildIndex(this.groupBox1, 0);
             this.Controls.SetChildIndex(this.display, 0);
-            this.Controls.SetChildIndex(this.background_color, 0);
             this.Controls.SetChildIndex(this.controls, 0);
             this.Controls.SetChildIndex(this.strap_reminder, 0);
-            this.Controls.SetChildIndex(this.background_color_img, 0);
+            this.Controls.SetChildIndex(this.swf_metadata, 0);
+            this.Controls.SetChildIndex(this.controller_box, 0);
             this.bottomPanel1.ResumeLayout(false);
             this.controller_box.ResumeLayout(false);
             this.controller_box.PerformLayout();
@@ -398,6 +432,8 @@ namespace FriishProduce
             this.controls.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.background_color_img)).EndInit();
             this.strap_reminder.ResumeLayout(false);
+            this.swf_metadata.ResumeLayout(false);
+            this.swf_metadata.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -427,5 +463,8 @@ namespace FriishProduce
         private System.Windows.Forms.ColorDialog BGColor;
         private System.Windows.Forms.Button background_color;
         private System.Windows.Forms.PictureBox background_color_img;
+        private System.Windows.Forms.GroupBox swf_metadata;
+        private PlaceholderTextBox content_domain;
+        private System.Windows.Forms.Label content_domain_l;
     }
 }

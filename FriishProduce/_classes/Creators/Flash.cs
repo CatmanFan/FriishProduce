@@ -1,4 +1,5 @@
 ﻿using libWiiSharp;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -390,6 +391,13 @@ namespace FriishProduce.Injectors
             KEY_BUTTON_PLUS  KEY_ENTER
  */
 
+        private enum Type
+        {
+            Invalid = -1,
+            BackToNature = 0,
+            iPlayer = 1
+        }
+
         private U8 MainContent { get; set; }
 
         public WAD Inject(WAD w, string[] lines, ImageHelper Img)
@@ -397,14 +405,53 @@ namespace FriishProduce.Injectors
             MainContent = U8.Load(w.Contents[2]);
             MainContent.Extract(Paths.FlashContents);
 
+            // Determining the Flash emulator type
+            // ********
+            Type type = Type.Invalid;
+            string target = null;
+
+            if (File.Exists(Paths.FlashContents + "content\\menu.swf"))
+            {
+                target = Paths.FlashContents + "content\\menu.swf";
+                type = Type.BackToNature;
+            }
+
+            else if (File.Exists(Paths.FlashContents + "trusted\\startup.swf"))
+            {
+                target = Paths.FlashContents + "trusted\\startup.swf";
+                type = Type.iPlayer;
+            }
+
+            /* else if (File.Exists(Paths.FlashContents + "trusted\\wii_shim.swf"))
+            {
+                target = Paths.FlashContents + "trusted\\wii_shim.swf";
+                type = Type.YouTube;
+            } */
+
+            else
+            {
+                throw new Exception(Program.Lang.Msg(13, true));
+            }
+
             // Actually replacing the SWF
             // ********
-            string target = Directory.Exists(Paths.FlashContents + "content\\") ? Paths.FlashContents + "content\\menu.swf" : Paths.FlashContents + "trusted\\startup.swf";
             File.Copy(SWF, target, true);
+            // if (type == Type.YouTube) File.Copy(SWF, Paths.FlashContents + "trusted\\wii_dev_shim.swf");
+
+            // Copying other needed files
+            // ********
             if (Multifile)
-                foreach (string etc in Directory.EnumerateFiles(Path.GetDirectoryName(SWF), "*.*", SearchOption.TopDirectoryOnly))
+            {
+                foreach (string folder in Directory.EnumerateDirectories(Path.GetDirectoryName(SWF), "*.*", SearchOption.AllDirectories))
+                {
+                    string newFolder = folder.Replace(Path.GetDirectoryName(SWF), Path.GetDirectoryName(target));
+                    Directory.CreateDirectory(newFolder);
+                }
+
+                foreach (string etc in Directory.EnumerateFiles(Path.GetDirectoryName(SWF), "*.*", SearchOption.AllDirectories))
                     if (etc != SWF)
-                        File.Copy(etc, Path.Combine(Path.GetDirectoryName(target), Path.GetFileName(etc)), true);
+                        File.Copy(etc, etc.Replace(Path.GetDirectoryName(SWF), Path.GetDirectoryName(target)), true);
+            }
 
             // Copying the SWF soundfont
             // ********
@@ -469,16 +516,13 @@ namespace FriishProduce.Injectors
                     File.WriteAllBytes(file, Encoding.UTF8.GetBytes(string.Join("\r\n", txt) + "\r\n"));
                 }
 
-                else if (item.EndsWith("config.common.pcf"))
+                else if (Path.GetFileName(item).Contains("common.pcf"))
                 {
                     List<string> txt = new()
                     {
                         "# Comments (text preceded by #) and line breaks will be ignored",
                         "static_heap_size                8192                # 8192[KB] -> 8[MB]",
                         "dynamic_heap_size               16384               # 16384[KB] -> 16[MB]",
-
-                        "#stream_cache_max_file_size      512                 # 512[KB] -> 0.5[MB]",
-                        "#stream_cache_size               2048                # 2048[KB] -> 2.0[MB]",
 
                         $"update_frame_rate             {Settings["update_frame_rate"]}                  # not TV-framerate(NTSC/PAL)",
 
@@ -500,7 +544,7 @@ namespace FriishProduce.Injectors
                         "dialog_cursor_archive           cursor.arc",
                         "dialog_cursor_layout            cursor.brlyt",
 
-                        $"shared_object_capability        {Settings["shared_object_capability"]}",
+                        $"shared_object_capability        {(type == Type.BackToNature ? Settings["shared_object_capability"] : "on")}",
                         "num_vff_drives                  1",
                         $"vff_cache_size                  {Settings["vff_cache_size"]}",
                         $"vff_sync_on_write               {Settings["vff_sync_on_write"]}",
@@ -516,10 +560,28 @@ namespace FriishProduce.Injectors
 
                         $"hbm_no_save                     {Settings["hbm_no_save"]}",
 
-                        "content_url                     file:///content/menu.swf",
-                        "#content_domain                  file:///trusted/",
-                        "#flash_vars                      dummy = 1",
+                        $"content_url                     {(type == Type.BackToNature ? "file:///content/menu.swf" : "file:///trusted/startup.swf")}",
                     };
+
+                    if (type == Type.iPlayer)
+                    {
+                        txt.AddRange(new string[]
+                            {
+                                "##### iPlayer Settings #####",
+
+                                "mp4_stream_buffer_size			512					# 512[KB] -> 0.5[MB]",
+                                "stream_cache_max_file_size     512                 # 512[KB] -> 0.5[MB]",
+                                "stream_cache_size              2048                # 2048[KB] -> 2.0[MB]",
+                                "static_module					static.sel",
+                                "plugin_modules					plugin_wiinotification.rso plugin_wiiremote.rso plugin_wiisystem.rso",
+                                "trace_filter					none",
+                                "texture_filter					linear",
+                                "certificate_files				GTEGI.cer",
+                                $"content_domain					{(!Settings.ContainsKey("content_domain") || string.IsNullOrWhiteSpace(Settings["content_domain"]) ? "file:///trusted/" : Settings["content_domain"])}",
+                                "#flash_vars					dummy = 1",
+                            }
+                        );
+                    }
 
                     File.WriteAllBytes(file, Encoding.GetEncoding(932).GetBytes(string.Join("\r\n", txt) + "\r\n"));
                 }
@@ -576,7 +638,7 @@ namespace FriishProduce.Injectors
                             {
                                 "not_copy        off",
                                 "anim_type       bounce",
-                                $"title_text      {System.Uri.EscapeUriString(lines[0])}",
+                                $"title_text      {Uri.EscapeUriString(lines[0])}",
                                 $"comment_text    {(lines.Length > 1 && !string.IsNullOrEmpty(lines[1]) ? System.Uri.EscapeUriString(lines[1]) : "%20")}",
                                 $"banner_tpl      banner/{(region == 2 ? "JP" : region == 1 ? "EU" : "US")}/banner.tpl",
                                 $"icon_tpl        banner/{(region == 2 ? "JP" : region == 1 ? "EU" : "US")}/icons.tpl",

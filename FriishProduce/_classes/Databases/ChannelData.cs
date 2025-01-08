@@ -170,6 +170,11 @@ namespace FriishProduce
                     URL = "https://repo.mariocube.com/WADs/Flash%20Injects/Base/" + Uri.EscapeDataString(name) + ".wad";
                     tID = "WNAP";
                 }
+                else if (GetUpperID(index).StartsWith("HCJ"))
+                {
+                    int ver = 768;
+                    URL = "https://repo.mariocube.com/WADs/_WiiWare,%20VC,%20DLC,%20Channels%20&%20IOS/" + name[0].ToString().ToUpper() + "/" + Uri.EscapeDataString(name + $" (v{ver}) (Channel)") + ".wad";
+                }
                 else if (GetUpperID(index).StartsWith("HCX"))
                 {
                     int ver = Regions[index] == 0 ? 768 : Regions[index] == 3 ? 1537 : 1536;
@@ -230,11 +235,11 @@ namespace FriishProduce
         /// </summary>
         public ChannelDatabase(Platform c, string externalFile = null)
         {
-            string file = File.Exists(externalFile) ? externalFile : File.Exists(Program.Config.paths.database) ? Program.Config.paths.database : null;
+            string file = File.Exists(externalFile) && !string.IsNullOrWhiteSpace(externalFile) ? externalFile : File.Exists(Program.Config.paths.database) ? Program.Config.paths.database : null;
 
             Entries = new List<ChannelEntry>();
 
-            if (!File.Exists(Program.Config.paths.database) && Program.Config.paths.database != null)
+            if (!File.Exists(Program.Config.paths.database) && !string.IsNullOrWhiteSpace(Program.Config.paths.database))
             {
                 Program.Config.paths.database = null;
                 Program.Config.Save();
@@ -300,7 +305,7 @@ namespace FriishProduce
                         }
                     }
 
-                    if (!(Program.Lang.Current.StartsWith("ja") && !y.Regions.Contains(0)))
+                    if (!(Program.Lang.Current.StartsWith("ja") && !y.Regions.Contains(0)) || c == Platform.Flash || c == Platform.C64 || c == Platform.MSX)
                         Entries.Add(y);
                 }
             }

@@ -33,6 +33,7 @@ namespace FriishProduce
             this.bios_list = new System.Windows.Forms.ComboBox();
             this.g1 = new System.Windows.Forms.GroupBox();
             this.bottomPanel1.SuspendLayout();
+            this.controller_box.SuspendLayout();
             this.g1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,7 +59,7 @@ namespace FriishProduce
             // g1
             // 
             this.g1.Controls.Add(this.bios_list);
-            this.g1.Location = new System.Drawing.Point(12, 9);
+            this.g1.Location = new System.Drawing.Point(12, 10);
             this.g1.Name = "g1";
             this.g1.Size = new System.Drawing.Size(400, 50);
             this.g1.TabIndex = 38;
@@ -68,12 +69,15 @@ namespace FriishProduce
             // 
             // Options_VC_NEO
             // 
-            this.ClientSize = new System.Drawing.Size(424, 114);
+            this.ClientSize = new System.Drawing.Size(424, 116);
             this.Controls.Add(this.g1);
             this.Name = "Options_VC_NEO";
             this.Tag = "vc_neo";
+            this.Controls.SetChildIndex(this.controller_box, 0);
             this.Controls.SetChildIndex(this.g1, 0);
             this.bottomPanel1.ResumeLayout(false);
+            this.controller_box.ResumeLayout(false);
+            this.controller_box.PerformLayout();
             this.g1.ResumeLayout(false);
             this.ResumeLayout(false);
 

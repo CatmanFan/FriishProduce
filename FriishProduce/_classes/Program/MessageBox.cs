@@ -143,6 +143,12 @@ namespace FriishProduce
 
                 if (dontShow >= 0) { t.VerificationText = Program.Lang.String("do_not_show"); }
 
+                if (!string.IsNullOrEmpty(t.MainInstruction) && Program.Lang.GetScript(t.MainInstruction) == Language.ScriptType.CJK)
+                {
+                    using System.Drawing.Font f = new(System.Drawing.SystemFonts.MessageBoxFont.FontFamily, 6.5f, System.Drawing.FontStyle.Regular);
+                    t.Width = Math.Max(t.Width, System.Windows.Forms.TextRenderer.MeasureText(t.MainInstruction, f).Width + 15);
+                }
+
                 var clicked = t.ShowDialog();
 
                 if (t.IsVerificationChecked && dontShow >= 0)
