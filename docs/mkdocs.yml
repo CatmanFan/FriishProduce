@@ -29,7 +29,7 @@ theme:
         icon: material/brightness-4
         name: Switch to light mode
 
-  logo: img/logo.png
+  logo: docs/img/logo.png
 
 extra_css:
   - assets/extra.css
