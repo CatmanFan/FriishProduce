@@ -1,6 +1,6 @@
 # FriishProduce
 
-**FriishProduce** is a WAD channel injector/creator GUI for (v)Wii.
+**FriishProduce**は、WiiとvWiiのWADを作るGUI。
 
 It can be used to convert ROMs, disc images or other types of software to installable WADs, including for Virtual Console (VC) games.
 
@@ -22,4 +22,4 @@ The following minimum requirements are needed in order to run the program:
 
 ----
 
-**Proceed to [Tutorial](tutorial.md).**
+**「[使い方](tutorial.md)」へ進む**

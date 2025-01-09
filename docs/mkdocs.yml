@@ -1,5 +1,66 @@
 site_name: FriishProduce
+repo_url: https://github.com/CatmanFan/FriishProduce
+repo_name: CatmanFan/FriishProduce
+
 nav:
   - Home: index.md
+  - Tutorial: tutorial.md
   - FAQ: faq.md
   - About: about.md
+
+theme:
+# Material theme settings
+# ---------------------------------------------
+  name: material
+  palette:
+    # Palette toggle for light mode
+    - scheme: default
+      primary: white
+      accent: blue
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - scheme: slate
+      primary: black
+      accent: light blue
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+  logo: img/logo.png
+
+extra_css:
+  - assets/extra.css
+
+plugins:
+  - i18n:
+      docs_structure: folder
+      fallback_to_default: true
+      languages:
+        - locale: en
+          default: true
+          name: English
+          build: true
+
+        - locale: fr
+          name: Français
+          build: true
+          nav_translations:
+            Home: Accueil
+            Tutorial: Tutoriel
+            About: À propos
+
+        - locale: ja
+          name: 日本語
+          build: true
+          nav_translations:
+            Home: ホームページ
+            Tutorial: 使い方
+            About: について
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences

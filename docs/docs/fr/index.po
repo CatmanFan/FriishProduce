@@ -1,0 +1,64 @@
+#
+msgid ""
+msgstr ""
+
+#: index.md:block 1 (header)
+msgid "FriishProduce"
+msgstr ""
+
+#: index.md:block 2 (paragraph)
+msgid "**FriishProduce** is a WAD channel injector/creator GUI for (v)Wii."
+msgstr ""
+
+#: index.md:block 3 (paragraph)
+msgid ""
+"It can be used to convert ROMs, disc images or other types of software to "
+"installable WADs, including for Virtual Console (VC) games."
+msgstr ""
+
+#: index.md:block 4 (header)
+msgid "Before starting"
+msgstr ""
+
+#: index.md:block 5 (paragraph)
+msgid ""
+"The following minimum requirements are needed in order to run the program:"
+msgstr ""
+
+#: index.md:block 6 (unordered list)
+msgid "**OS:** Windows 7 or later"
+msgstr ""
+
+#: index.md:block 6 (unordered list)
+msgid "**Redistributables:**"
+msgstr ""
+
+#: index.md:block 6 (unordered list)
+msgid ".NET Framework 2.0 (needed for libWiiSharp)"
+msgstr ""
+
+#: index.md:block 6 (unordered list)
+msgid ".NET Framework 3.5 SP1"
+msgstr ""
+
+#: index.md:block 6 (unordered list)
+msgid ".NET Framework 4.8"
+msgstr ""
+
+#: index.md:block 6 (unordered list)
+msgid ".NET Framework 4.7.2 (needed for ccf-tools)"
+msgstr ""
+
+#: index.md:block 6 (unordered list)
+msgid ""
+"Microsoft Visual C++ Redistributable for Visual Studio 2019 (needed for ccf-"
+"tools)"
+msgstr ""
+
+#: index.md:block 7 (paragraph)
+msgid "!!! warning"
+msgstr ""
+
+#: index.md:block 9 (paragraph)
+msgid "**Proceed to [Tutorial](tutorial.md).**"
+msgstr ""
