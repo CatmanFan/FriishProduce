@@ -273,6 +273,20 @@ namespace FriishProduce
                 return value;
             }
         }
+        private string[] _friendlyChannelTitles
+        {
+            get
+            {
+                string[] value = new string[8];
+
+                if (InvokeRequired)
+                    Invoke(new MethodInvoker(delegate { value = new string[8] { channel_name.Text, channel_name.Text, channel_name.Text, channel_name.Text, channel_name.Text, channel_name.Text, channel_name.Text, channel_name.Text }; }));
+                else
+                    value = new string[8] { channel_name.Text, channel_name.Text, channel_name.Text, channel_name.Text, channel_name.Text, channel_name.Text, channel_name.Text, channel_name.Text };
+
+                return value;
+            }
+        }
         private string[] _channelTitles
         {
             get
@@ -425,7 +439,7 @@ namespace FriishProduce
                 VideoMode = video_modes.SelectedIndex,
 
                 TitleID = _tID,
-                ChannelTitles = _channelTitles,
+                ChannelTitles = _friendlyChannelTitles,
                 BannerTitle = _bannerTitle,
                 BannerYear = _bannerYear,
                 BannerPlayers = _bannerPlayers,
@@ -1668,17 +1682,6 @@ namespace FriishProduce
                 // Other WAD settings to be changed done by WAD creator helper, which will save to a new file
                 // *******
                 outWad.ChangeChannelTitles(_channelTitles);
-                /* var banner = outWad.BannerApp.ToByteArray();
-                for (int i = 0; i < 8; i++)
-                {
-                    string text = null;
-                    try { text = _channelTitles[i]; } catch { }
-
-                    byte[] textArray = new byte[84];
-                    System.Text.Encoding.BigEndianUnicode.GetBytes(text).CopyTo(textArray, 0);
-                    textArray.CopyTo(banner, 156 + (i * textArray.Length));
-                }
-                outWad.BannerApp = U8.Load(banner); */
                 outWad.ChangeTitleID(LowerTitleID.Channel, _tID);
                 outWad.FakeSign = true;
 
@@ -1774,7 +1777,7 @@ namespace FriishProduce
                 ID = _tID,
                 Emulator = emulator,
                 Storage = storage,
-                Name = _channelTitles[1]
+                Name = _friendlyChannelTitles[1]
             };
 
             // Get settings from relevant form
