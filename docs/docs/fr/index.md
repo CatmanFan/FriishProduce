@@ -11,9 +11,7 @@ La configuration suivante est nécessaire pour exécuter le programme :
 * **Système d'exploitation :** Windows 7 ou version ultérieure
 * **Redistribuables :**
     * .NET Framework 2.0 (nécessaire pour libWiiSharp)
-    * .NET Framework 3.5 SP1
-    * .NET Framework 4.8
-    * .NET Framework 4.7.2 (nécessaire pour ccf-tools)
+    * .NET Framework 4.7.2
     * Redistribuable Microsoft Visual C++ pour Visual Studio 2019 (nécessaire pour ccf-tools)
 
 !!! warning "Attention"

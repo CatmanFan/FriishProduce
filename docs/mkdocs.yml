@@ -9,27 +9,31 @@ nav:
   - About: about.md
 
 theme:
+# Bootstrap theme settings
+# ---------------------------------------------
+  name: bootstrap
+  logo: img/logo.png
+
 # Material theme settings
 # ---------------------------------------------
-  name: material
-  palette:
-    # Palette toggle for light mode
-    - scheme: default
-      primary: white
-      accent: blue
-      toggle:
-        icon: material/brightness-7
-        name: Switch to dark mode
+  # name: material
+  # logo: img/logo.png
+  # palette:
+    # # Palette toggle for light mode
+    # - scheme: default
+      # primary: white
+      # accent: blue
+      # toggle:
+        # icon: material/brightness-7
+        # name: Switch to dark mode
 
-    # Palette toggle for dark mode
-    - scheme: slate
-      primary: black
-      accent: light blue
-      toggle:
-        icon: material/brightness-4
-        name: Switch to light mode
-
-  logo: docs/img/logo.png
+    # # Palette toggle for dark mode
+    # - scheme: slate
+      # primary: black
+      # accent: light blue
+      # toggle:
+        # icon: material/brightness-4
+        # name: Switch to light mode
 
 extra_css:
   - assets/extra.css
@@ -41,12 +45,10 @@ plugins:
       fallback_to_default: true
       languages:
         - locale: en
-          name: English
           build: true
           default: true
 
         - locale: fr
-          name: Français
           build: true
           nav_translations:
             Home: Accueil
@@ -54,7 +56,6 @@ plugins:
             About: À propos
 
         - locale: ja
-          name: 日本語
           build: true
           nav_translations:
             Home: ホームページ

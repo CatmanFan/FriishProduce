@@ -5,10 +5,12 @@ on:
     branches: [ "main" ]
     paths:
       - docs/**
+      - .github/workflows/mkdocs.yml
   pull_request:
     branches: [ "main" ]
     paths:
       - docs/**
+      - .github/workflows/mkdocs.yml
 
 permissions:
   contents: write
@@ -23,10 +25,20 @@ jobs:
         run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-
-      - uses: actions/setup-python@v5
+          
+      - name: Setup Python 3.x
+        uses: actions/setup-python@v5
         with:
           python-version: 3.x
+
+      - name: Setup C++
+        uses: aminya/setup-cpp@v0.44.0
+        with:
+          compiler: msvc
+          vcvarsall: true
+          cmake: true
+          vcpkg: true
+          cppcheck: true
 
       - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV 
 
@@ -38,9 +50,8 @@ jobs:
             mkdocs-material-
 
       - name: Install dependencies
-        run: |
-          pip install mkdocs-material
-          pip install mkdocs-static-i18n
+        run: pip install -r requirements.txt
+        working-directory: docs/
 
       - name: Deploy GitHub Pages website
         run: mkdocs gh-deploy --force
