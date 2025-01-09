@@ -1,6 +1,7 @@
-site_name: FriishProduce
+site_name: "FriishProduce"
+site_description: "World's first WYSYWYG injector for Wii Virtual Console"
 repo_url: https://github.com/CatmanFan/FriishProduce
-repo_name: CatmanFan/FriishProduce
+repo_name: GitHub
 
 nav:
   - Home: index.md
@@ -41,7 +42,6 @@ extra_css:
 plugins:
   - i18n:
       docs_structure: folder
-      default_language: en
       fallback_to_default: true
       languages:
         - locale: en
@@ -52,18 +52,27 @@ plugins:
         - locale: fr
           name: Français
           build: true
+          site_description: "Premier injecteur GUI pour la Console virtuelle de Wii"
           nav_translations:
             Home: Accueil
             Tutorial: Tutoriel
             About: À propos
+          admonition_translations:
+            warning: Attention
 
         - locale: ja
           name: 日本語
           build: true
+          site_description: "WiiVC用初のGUIインジェクター"
           nav_translations:
             Home: ホームページ
             Tutorial: 使い方
             About: ついて
+
+        - locale: "null"
+          name: Add translation
+          build: false
+          fixed_link: translate-wiki.md
 
 extra:
   # The language switcher values are stored here.
