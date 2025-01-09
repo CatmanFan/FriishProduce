@@ -37,12 +37,13 @@ extra_css:
 plugins:
   - i18n:
       docs_structure: folder
+      default_language: en
       fallback_to_default: true
       languages:
         - locale: en
-          default: true
           name: English
           build: true
+          default: true
 
         - locale: fr
           name: Français
@@ -58,7 +59,23 @@ plugins:
           nav_translations:
             Home: ホームページ
             Tutorial: 使い方
-            About: について
+            About: ついて
+
+extra:
+  # The language switcher values are stored here.
+  # ---------------------------------------------
+  alternate:
+    - name: English
+      link: ""
+      lang: en
+
+    - name: Français
+      link: fr
+      lang: fr
+
+    - name: 日本語
+      link: ja
+      lang: ja
 
 markdown_extensions:
   - admonition
