@@ -45,10 +45,12 @@ plugins:
       fallback_to_default: true
       languages:
         - locale: en
+          name: English
           build: true
           default: true
 
         - locale: fr
+          name: Français
           build: true
           nav_translations:
             Home: Accueil
@@ -56,6 +58,7 @@ plugins:
             About: À propos
 
         - locale: ja
+          name: 日本語
           build: true
           nav_translations:
             Home: ホームページ

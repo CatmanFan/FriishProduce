@@ -31,15 +31,6 @@ jobs:
         with:
           python-version: 3.x
 
-      - name: Setup C++
-        uses: aminya/setup-cpp@v0.44.0
-        with:
-          compiler: msvc
-          vcvarsall: true
-          cmake: true
-          vcpkg: true
-          cppcheck: true
-
       - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV 
 
       - uses: actions/cache@v4
