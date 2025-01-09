@@ -12,29 +12,29 @@ nav:
 theme:
 # Bootstrap theme settings
 # ---------------------------------------------
-  name: bootstrap
-  logo: img/logo.png
+  # name: bootstrap
+  # logo: img/logo.png
 
 # Material theme settings
 # ---------------------------------------------
-  # name: material
-  # logo: img/logo.png
-  # palette:
-    # # Palette toggle for light mode
-    # - scheme: default
-      # primary: white
-      # accent: blue
-      # toggle:
-        # icon: material/brightness-7
-        # name: Switch to dark mode
+  name: material
+  logo: img/logo.png
+  palette:
+    # Palette toggle for light mode
+    - scheme: default
+      primary: blue grey
+      accent: blue
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
 
-    # # Palette toggle for dark mode
-    # - scheme: slate
-      # primary: black
-      # accent: light blue
-      # toggle:
-        # icon: material/brightness-4
-        # name: Switch to light mode
+    # Palette toggle for dark mode
+    - scheme: slate
+      primary: blue grey
+      accent: light blue
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
 
 extra_css:
   - assets/extra.css
