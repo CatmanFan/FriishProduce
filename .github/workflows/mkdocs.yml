@@ -9,6 +9,8 @@ on:
     branches: [ "main" ]
     paths:
       - docs/**
+  workflow_dispatch:
+    branches: [ "main" ]
 
 permissions:
   contents: write
@@ -42,4 +44,6 @@ jobs:
           pip install mkdocs-material
           pip install mkdocs-static-i18n
 
-      - run: mkdocs gh-deploy --force
+      - name: Deploy GitHub Pages website
+        run: mkdocs gh-deploy --force
+        working-directory: docs/
