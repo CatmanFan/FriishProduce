@@ -10,7 +10,24 @@ permissions:
   contents: write
 
 jobs:
+  changes:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: read
+    outputs:
+      build: ${{ steps.filter.outputs.build }}
+    steps:
+    - uses: dorny/paths-filter@v3
+      id: filter
+      with:
+        filters: |
+          build:
+            - 'docs/**'
+
   build:
+    needs: changes
+    if: ${{ needs.changes.outputs.build == 'true' }}
+
     name: Deploy docs
     runs-on: ubuntu-latest
     steps:
