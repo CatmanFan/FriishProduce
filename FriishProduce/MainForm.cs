@@ -291,17 +291,17 @@ namespace FriishProduce
             tabControl.BringToFront();
             tabControl.Visible = true;
 
-            // BrowseROMDialog(p);
+            // BrowseROMDialog();
         }
 
         private void OpenROM_Click(object sender, EventArgs e) => BrowseROMDialog();
 
-        private void BrowseROMDialog()
+        private void BrowseROMDialog(ProjectForm _form = null)
         {
-            if (tabControl.SelectedForm != null)
+            if (_form == null && tabControl.SelectedForm != null)
             {
-                var p = tabControl.SelectedForm as ProjectForm;
-                p.BrowseROMDialog(new Regex(@"\(.*\)").Replace(import_game_file.Text, "").Replace("&", ""));
+                _form = tabControl.SelectedForm as ProjectForm;
+                _form.BrowseROMDialog(new Regex(@"\(.*\)").Replace(import_game_file.Text, "").Replace("&", ""));
             }
         }
 
@@ -648,10 +648,17 @@ namespace FriishProduce
             }
         }
 
-        private void MainForm_Paint(object sender, PaintEventArgs e)
+        private void ToolStrip_Paint(object sender, PaintEventArgs e)
+        {
+            Rectangle r = new(e.ClipRectangle.X, e.ClipRectangle.Y, e.ClipRectangle.Width, e.ClipRectangle.Height + 5);
+            using var b = new System.Drawing.Drawing2D.LinearGradientBrush(new Point(0, 0), new Point(0, r.Height), Color.White, Color.Gainsboro);
+            e.Graphics.FillRectangle(b, r);
+        }
+
+        private void TabControl_Paint(object sender, JacksiroKe.MdiTabCtrl.TabControl.TabPaintEventArgs e)
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            e.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+            e.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
         }
 
         private void Website_Click(object sender, EventArgs e)

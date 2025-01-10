@@ -395,7 +395,8 @@ namespace FriishProduce.Injectors
         {
             Invalid = -1,
             BackToNature = 0,
-            iPlayer = 1
+            iPlayer = 1,
+            YouTube = 2
         }
 
         private U8 MainContent { get; set; }
@@ -405,8 +406,8 @@ namespace FriishProduce.Injectors
             MainContent = U8.Load(w.Contents[2]);
             MainContent.Extract(Paths.FlashContents);
 
-            // Determining the Flash emulator type
-            // ********
+            #region ---------------- Determining the Flash emulator type ----------------
+
             Type type = Type.Invalid;
             string target = null;
 
@@ -422,24 +423,26 @@ namespace FriishProduce.Injectors
                 type = Type.iPlayer;
             }
 
-            /* else if (File.Exists(Paths.FlashContents + "trusted\\wii_shim.swf"))
+            else if (File.Exists(Paths.FlashContents + "trusted\\wii_shim.swf"))
             {
                 target = Paths.FlashContents + "trusted\\wii_shim.swf";
                 type = Type.YouTube;
-            } */
+            }
 
             else
             {
                 throw new Exception(Program.Lang.Msg(13, true));
             }
 
-            // Actually replacing the SWF
-            // ********
-            File.Copy(SWF, target, true);
-            // if (type == Type.YouTube) File.Copy(SWF, Paths.FlashContents + "trusted\\wii_dev_shim.swf");
+            #endregion
 
-            // Copying other needed files
-            // ********
+            #region ---------------- Actually replacing the SWF + copying other needed files ----------------
+
+            Directory.Delete(Path.GetDirectoryName(target), true);
+            Directory.CreateDirectory(Path.GetDirectoryName(target));
+
+            File.Copy(SWF, target, true);
+
             if (Multifile)
             {
                 foreach (string folder in Directory.EnumerateDirectories(Path.GetDirectoryName(SWF), "*.*", SearchOption.AllDirectories))
@@ -453,8 +456,10 @@ namespace FriishProduce.Injectors
                         File.Copy(etc, etc.Replace(Path.GetDirectoryName(SWF), Path.GetDirectoryName(target)), true);
             }
 
-            // Copying the SWF soundfont
-            // ********
+            #endregion
+
+            #region ---------------- Copying the SWF soundfont ----------------
+
             if (File.Exists(Settings["midi"]))
             {
                 if (!Directory.Exists(Paths.FlashContents + "dls\\"))
@@ -463,9 +468,13 @@ namespace FriishProduce.Injectors
                 File.Copy(Settings["midi"], Paths.FlashContents + "dls\\GM16.DLS");
             }
 
+            #endregion
+
             foreach (string file in Directory.EnumerateFiles(Paths.FlashContents, "*.*", SearchOption.AllDirectories))
             {
                 string item = file.Replace(Paths.FlashContents, null).ToLower();
+
+                #region ---------------- Adding keymap ----------------
 
                 if (item.EndsWith("keymap.ini") && Keymap?.Count > 0)
                 {
@@ -516,6 +525,10 @@ namespace FriishProduce.Injectors
                     File.WriteAllBytes(file, Encoding.UTF8.GetBytes(string.Join("\r\n", txt) + "\r\n"));
                 }
 
+                #endregion
+
+                #region ---------------- Adding common config ----------------
+
                 else if (Path.GetFileName(item).Contains("common.pcf"))
                 {
                     List<string> txt = new()
@@ -560,7 +573,8 @@ namespace FriishProduce.Injectors
 
                         $"hbm_no_save                     {Settings["hbm_no_save"]}",
 
-                        $"content_url                     {(type == Type.BackToNature ? "file:///content/menu.swf" : "file:///trusted/startup.swf")}",
+                        type == Type.YouTube ? $"debug_content_url               file:///trusted/wii_shim.swf"
+                                             : $"content_url                     {(type == Type.BackToNature ? "file:///content/menu.swf" : "file:///trusted/startup.swf")}",
                     };
 
                     if (type == Type.iPlayer)
@@ -583,8 +597,45 @@ namespace FriishProduce.Injectors
                         );
                     }
 
+                    else if (type == Type.YouTube)
+                    {
+                        txt.AddRange(new string[]
+                            {
+                                "##### YouTube Settings #####",
+
+                                "stream_cache_max_file_size			512			# 512[KB] -> 0.5[MB]",
+                                "stream_cache_size				2048			# 2048[KB] -> 2.0[MB]",
+                                "content_mem1					no",
+                                "content_buffer_mode				copy",
+                                "qwerty_events					on",
+                                "use_keymap					on",
+                                "banner_file					banner/banner.ini",
+                                "device_text					off",
+                                "brfna_file					10, wbf1.brfna",
+                                "brsar_file					sound/FlashPlayerSe.brsar	# sound data",
+                                "embedded_vector_font				off",
+                                "static_module					static.sel",
+                                "plugin_modules					plugin_wiinotification.rso plugin_wiiremote.rso plugin_wiisystem.rso plugin_wiisound.rso plugin_wiinetwork.rso",
+                                "trace_filter					none",
+                                "texture_filter					linear",
+                                $"background_color				{Settings["background_color"]}		# RGBA -- VODF/SWF BG Color.",
+
+                                "##### MediaStream #####",
+
+                                $"content_domain					{(!Settings.ContainsKey("content_domain") || string.IsNullOrWhiteSpace(Settings["content_domain"]) ? "file:///trusted/" : Settings["content_domain"])}",
+                                "debug_flash_vars	dummy=1",
+                                "final_flash_vars	dummy=1",
+                                "final_content_url 	file:///trusted/wii_shim.swf",
+                            }
+                        );
+                    }
+
                     File.WriteAllBytes(file, Encoding.GetEncoding(932).GetBytes(string.Join("\r\n", txt) + "\r\n"));
                 }
+
+                #endregion
+
+                #region ---------------- Adding regional config ----------------
 
                 else if (item.EndsWith(".pcf") && item.StartsWith("config\\") && Path.GetFileNameWithoutExtension(file).Length == 11)
                 {
@@ -600,69 +651,70 @@ namespace FriishProduce.Injectors
 
                     File.WriteAllBytes(file, Encoding.UTF8.GetBytes(string.Join("\r\n", txt) + "\r\n"));
                 }
+
+                #endregion
             }
 
-            // Savebanner .TPL & config
-            // ********
-            if (Settings["shared_object_capability"] == "on")
+            #region ---------------- Savebanner .TPL & config ----------------
+
+            using TPL banner = Img.CreateSaveTPL(1);
+            using TPL icons = Img.CreateSaveTPL(2);
+
+            int region = 0;
+            int textures = icons.NumOfTextures;
+
+            for (int i = 0; i < lines.Length; i++)
             {
-                using TPL banner = Img.CreateSaveTPL(1);
-                using TPL icons = Img.CreateSaveTPL(2);
-
-                int region = 0;
-                int textures = icons.NumOfTextures;
-
-                for (int i = 0; i < lines.Length; i++)
-                {
-                    var bytes = Encoding.Unicode.GetBytes(lines[i]);
-                    lines[i] = Encoding.UTF8.GetString(Encoding.Convert(Encoding.Unicode, Encoding.UTF8, bytes));
-                }
-
-                foreach (string file in Directory.EnumerateFiles(Paths.FlashContents, "*.*", SearchOption.AllDirectories))
-                {
-                    string item = file.Replace(Paths.FlashContents, null).ToLower();
-
-                    if (item.Contains("banner\\us")) region = 0;
-                    if (item.Contains("banner\\eu")) region = 1;
-                    if (item.Contains("banner\\jp")) region = 2;
-
-                    if (item.Contains("banner.tpl"))
-                        banner.Save(file);
-
-                    else if (item.Contains("icons.tpl"))
-                        icons.Save(file);
-
-                    else if (item.Contains("banner.ini"))
-                    {
-                        var txt = new List<string>()
-                            {
-                                "not_copy        off",
-                                "anim_type       bounce",
-                                $"title_text      {Uri.EscapeUriString(lines[0])}",
-                                $"comment_text    {(lines.Length > 1 && !string.IsNullOrEmpty(lines[1]) ? System.Uri.EscapeUriString(lines[1]) : "%20")}",
-                                $"banner_tpl      banner/{(region == 2 ? "JP" : region == 1 ? "EU" : "US")}/banner.tpl",
-                                $"icon_tpl        banner/{(region == 2 ? "JP" : region == 1 ? "EU" : "US")}/icons.tpl",
-                                "icon_count      " + textures,
-                            };
-
-                        for (int i = 0; i < textures; i++)
-                        {
-                            txt.Add($"icon_speed      {i}, slow");
-                        }
-
-                        File.WriteAllBytes(file, Encoding.GetEncoding(932).GetBytes(string.Join("\r\n", txt) + "\r\n"));
-                    }
-                }
-
-                banner.Dispose();
-                icons.Dispose();
+                var bytes = Encoding.Unicode.GetBytes(lines[i]);
+                lines[i] = Encoding.UTF8.GetString(Encoding.Convert(Encoding.Unicode, Encoding.UTF8, bytes));
             }
+
+            foreach (string file in Directory.EnumerateFiles(Paths.FlashContents, "*.*", SearchOption.AllDirectories))
+            {
+                string item = file.Replace(Paths.FlashContents, null).ToLower();
+
+                if (item.Contains("banner\\us")) region = 0;
+                if (item.Contains("banner\\eu")) region = 1;
+                if (item.Contains("banner\\jp")) region = 2;
+
+                if (item.Contains("banner.tpl"))
+                    banner.Save(file);
+
+                else if (item.Contains("icons.tpl"))
+                    icons.Save(file);
+
+                else if (item.Contains("banner.ini"))
+                {
+                    var txt = new List<string>()
+                        {
+                            "not_copy        off",
+                            "anim_type       bounce",
+                            $"title_text      {Uri.EscapeUriString(lines[0])}",
+                            $"comment_text    {(lines.Length > 1 && !string.IsNullOrEmpty(lines[1]) ? Uri.EscapeUriString(lines[1]) : "%20")}",
+                            $"banner_tpl      banner{(type == Type.YouTube ? null : "/" + (region == 2 ? "JP" : region == 1 ? "EU" : "US"))}/banner.tpl",
+                            $"icon_tpl        banner{(type == Type.YouTube ? null : "/" + (region == 2 ? "JP" : region == 1 ? "EU" : "US"))}/icons.tpl",
+                            "icon_count      " + textures,
+                        };
+
+                    for (int i = 0; i < textures; i++)
+                    {
+                        txt.Add($"icon_speed      {i}, slow");
+                    }
+
+                    File.WriteAllBytes(file, Encoding.GetEncoding(932).GetBytes(string.Join("\r\n", txt) + "\r\n"));
+                }
+            }
+
+            banner.Dispose();
+            icons.Dispose();
+
+            #endregion
 
             MainContent.CreateFromDirectory(Paths.FlashContents);
             if (Directory.Exists(Paths.FlashContents)) Directory.Delete(Paths.FlashContents, true);
 
-            // Dispose of "Operations Guide" button on HOME Menu.
-            // ********
+            #region ---------------- Dispose of "Operations Guide" button on HOME Menu. ----------------
+
             U8 Content6 = U8.Load(w.Contents[6]);
 
             int start = -1;
@@ -685,13 +737,17 @@ namespace FriishProduce.Injectors
             }
             catch { }
 
-            // Finally, replace the relevant files
-            // ********
+            #endregion
+
+            #region ---------------- Finally, replace the relevant files ----------------
+
             w.Unpack(Paths.WAD);
             File.WriteAllBytes(Paths.WAD + "00000002.app", MainContent.ToByteArray());
             File.WriteAllBytes(Paths.WAD + "00000006.app", Content6.ToByteArray());
             w.CreateNew(Paths.WAD);
             Directory.Delete(Paths.WAD, true);
+
+            #endregion
 
             if (Content6 != null) Content6.Dispose();
             MainContent.Dispose();

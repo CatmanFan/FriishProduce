@@ -79,9 +79,9 @@ namespace FriishProduce
             this.menuItem11 = new System.Windows.Forms.MenuItem();
             this.preferences = new System.Windows.Forms.MenuItem();
             this.menuItem4 = new System.Windows.Forms.MenuItem();
+            this.wiki = new System.Windows.Forms.MenuItem();
             this.about = new System.Windows.Forms.MenuItem();
             this.tabControl = new JacksiroKe.MdiTabCtrl.TabControl();
-            this.wiki = new System.Windows.Forms.MenuItem();
             this.mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             this.toolStrip.SuspendLayout();
@@ -103,7 +103,6 @@ namespace FriishProduce
             // Logo
             // 
             this.Logo.BackColor = System.Drawing.Color.Transparent;
-            this.Logo.Image = global::FriishProduce.Properties.Resources.logo;
             resources.ApplyResources(this.Logo, "Logo");
             this.Logo.Name = "Logo";
             this.Logo.TabStop = false;
@@ -124,7 +123,7 @@ namespace FriishProduce
             this.toolbarExport,
             this.toolbarPreferences});
             this.toolStrip.Name = "toolStrip";
-            this.toolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.toolStrip.Paint += new System.Windows.Forms.PaintEventHandler(this.ToolStrip_Paint);
             // 
             // toolbarNewProject
             // 
@@ -444,6 +443,12 @@ namespace FriishProduce
             this.menuItem4.Tag = "help";
             resources.ApplyResources(this.menuItem4, "menuItem4");
             // 
+            // wiki
+            // 
+            this.wiki.Index = 0;
+            resources.ApplyResources(this.wiki, "wiki");
+            this.wiki.Click += new System.EventHandler(this.Website_Click);
+            // 
             // about
             // 
             this.about.Index = 1;
@@ -453,39 +458,44 @@ namespace FriishProduce
             // 
             // tabControl
             // 
-            this.tabControl.BackHighColor = System.Drawing.SystemColors.ControlLight;
+            this.tabControl.BackHighColor = System.Drawing.Color.WhiteSmoke;
             this.tabControl.BackLowColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(this.tabControl, "tabControl");
+            this.tabControl.CloseButtonVisible = true;
             this.tabControl.FontBoldOnSelect = false;
+            this.tabControl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.tabControl.ForeColorDisabled = System.Drawing.Color.Gray;
+            this.tabControl.KeyCloseEnabled = false;
+            resources.ApplyResources(this.tabControl, "tabControl");
             this.tabControl.MenuRenderer = null;
             this.tabControl.Name = "tabControl";
+            this.tabControl.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.tabControl.TabBackHighColor = System.Drawing.SystemColors.Control;
             this.tabControl.TabBackHighColorDisabled = System.Drawing.Color.LightGray;
             this.tabControl.TabBackLowColor = System.Drawing.SystemColors.Window;
             this.tabControl.TabBackLowColorDisabled = System.Drawing.Color.Gainsboro;
+            this.tabControl.TabBorderEnhanced = true;
+            this.tabControl.TabBorderEnhanceWeight = JacksiroKe.MdiTabCtrl.TabControl.Weight.Soft;
             this.tabControl.TabCloseButtonImage = null;
             this.tabControl.TabCloseButtonImageDisabled = null;
             this.tabControl.TabCloseButtonImageHot = null;
+            this.tabControl.TabCloseButtonVisible = false;
             this.tabControl.TabGlassGradient = true;
-            this.tabControl.TabHeight = 25;
+            this.tabControl.TabHeight = 24;
+            this.tabControl.TabMaximumWidth = 250;
+            this.tabControl.TabMinimumWidth = 75;
             this.tabControl.TopSeparator = false;
+            this.tabControl.TabPaintBackground += new JacksiroKe.MdiTabCtrl.TabControl.TabPaintBackgroundEventHandler(this.TabControl_Paint);
+            this.tabControl.TabPaintBorder += new JacksiroKe.MdiTabCtrl.TabControl.TabPaintBorderEventHandler(this.TabControl_Paint);
             this.tabControl.SelectedTabChanged += new System.EventHandler(this.TabChanged);
-            this.tabControl.Paint += new System.Windows.Forms.PaintEventHandler(this.MainForm_Paint);
-            // 
-            // wiki
-            // 
-            this.wiki.Index = 0;
-            resources.ApplyResources(this.wiki, "wiki");
-            this.wiki.Click += new System.EventHandler(this.Website_Click);
             // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.tabControl);
+            this.Controls.Add(this.mainPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.IsMdiContainer = true;
             this.KeyPreview = true;
@@ -496,7 +506,6 @@ namespace FriishProduce
             this.Tag = "mainform";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_Closing);
             this.Load += new System.EventHandler(this.MainForm_Loading);
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.MainForm_Paint);
             this.mainPanel.ResumeLayout(false);
             this.mainPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).EndInit();

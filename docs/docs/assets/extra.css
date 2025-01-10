@@ -1,17 +1,59 @@
+:root, [data-md-color-scheme="slate"] {
+	--md-footer-bg-color--dark:		#1c212b;
+	--md-default-bg-color:			#262b35;
+	--md-default-bg-color--light:	#2e3440;
+	--md-default-fg-color:			#d8dee9;
+	--md-typeset-a-color:			#a0c0df;
+	--md-primary-bg-color:			var(--md-default-fg-color);
+	--md-primary-fg-color:			#d8dee91a;
+	--md-accent-bg-color:			var(--md-default-fg-color);
+	--md-footer-bg-color:			var(--md-default-bg-color);
+}
+
+[data-md-color-scheme="slate"] .md-header {
+	background-color: var(--md-default-bg-color--light);
+	color: var(--md-default-fg-color);
+}
+
+[data-md-color-scheme="slate"] .md-tabs {
+	background-color: var(--md-default-bg-color--light);
+	color: var(--md-default-fg-color);
+	border-bottom: .05rem solid #585d666a;
+}
+
+.md-typeset a {
+	color: var(--md-typeset-a-color);
+	text-decoration: underline;
+}
+
 .md-typeset .admonition,
 .md-typeset details {
 	border-width: 0;
-	border-radius: .25rem;
+	border-radius: .3rem;
 	/* border-left-width: .15rem; */
-	font-size: 97.5%;
-	line-height: 1.65;
-	padding-left: .75rem;
-	padding-right: .75rem;
-	box-shadow: none;
+	font-size: 80%;
+	font-weight: 500;
+	line-height: 1.5;
+	padding: 0 .75rem;
+	box-shadow: 0 .05rem .1rem rgba(28,28,28,0.5);
+}
+
+:root {
+	/* --md-text-font: -apple-system,".SFNSText-Regular","San Francisco","Segoe UI","Helvetica Neue","Lucida Grande",Arial,sans-serif; */
+	--md-code-font: Monaco, Consolas, "Lucida Console", monospace;
+}
+
+:root, [data-md-color-scheme="default"] {
+	--md-info-bg-color:			#4f8bdb40;
+	--md-note-bg-color:			#7d828940;
+	--md-warning-bg-color:		#d7947340;
+	--md-danger-bg-color:		#cc4e6940;
+	--md-tip-bg-color:			rgba(136, 192, 208, 0.25);
+	--md-admonition-fg-color:	var(--md-default-fg-color);
 }
 
 html {
-	font-size: 1.25em;
+	font-size: 1.4em;
 }
 
 .md-grid {
@@ -24,52 +66,52 @@ html {
 	line-height: 1.75;
 }
 
+.md-typeset code {
+	border-radius: .2rem;
+	padding: .15em .3em;
+	border: 1px solid #585d66;
+}
+
 /* .md-typeset .admonition-title, .md-typeset summary, .md-typeset details {
 	font-weight: normal;
 } */
 
 .md-typeset .admonition.warning, .md-typeset summary.warning, .md-typeset details.warning,
-.md-typeset .warning > .admonition-title, .md-typeset .warning > summary {
-	border-color: #fa0;
-	background-color: #ffaa001a;
-}
-
+.md-typeset .warning > .admonition-title, .md-typeset .warning > summary,
 .md-typeset .warning > .admonition-title::before, .md-typeset .warning > summary::before {
-	background-color: #fa0;
+	border-color: var(--md-warning-bg-color);
+	background-color: var(--md-warning-bg-color);
+	color: var(--md-admonition-fg-color);
 }
 
 .md-typeset .admonition.danger, .md-typeset summary.danger, .md-typeset details.danger,
-.md-typeset .danger > .admonition-title, .md-typeset .danger > summary {
-	border-color: #ff4100;
-	background-color: #ff41002b;
-}
-
+.md-typeset .danger > .admonition-title, .md-typeset .danger > summary,
 .md-typeset .danger > .admonition-title::before, .md-typeset .danger > summary::before {
-	background-color: #ff4100;
+	border-color: var(--md-danger-bg-color);
+	background-color: var(--md-danger-bg-color);
+	color: var(--md-admonition-fg-color);
 }
 
 .md-typeset .admonition.info, .md-typeset summary.info, .md-typeset details.info,
-.md-typeset .info > .admonition-title, .md-typeset .info > summary {
-	border-color: #0078f4;
-	background-color: #0078f41a;
-}
-
+.md-typeset .info > .admonition-title, .md-typeset .info > summary,
 .md-typeset .info > .admonition-title::before, .md-typeset .info > summary::before {
-	background-color: #0078f4;
+	border-color: var(--md-info-bg-color);
+	background-color: var(--md-info-bg-color);
+	color: var(--md-admonition-fg-color);
 }
 
 .md-typeset .admonition.note, .md-typeset summary.note, .md-typeset details.note,
-.md-typeset .note > .admonition-title, .md-typeset .note > summary {
-	border-color: #888;
-	background-color: #8888881a;
-}
-
+.md-typeset .note > .admonition-title, .md-typeset .note > summary,
 .md-typeset .note > .admonition-title::before, .md-typeset .note > summary::before {
-	background-color: #888;
+	border-color: var(--md-note-bg-color);
+	background-color: var(--md-note-bg-color);
+	color: var(--md-admonition-fg-color);
 }
 
 .md-typeset .admonition.tip, .md-typeset summary.tip, .md-typeset details.tip,
-.md-typeset .tip > .admonition-title, .md-typeset .tip > summary {
-	border-color: #3f41f5;
-	background-color: #3f41f51a;
+.md-typeset .tip > .admonition-title, .md-typeset .tip > summary,
+.md-typeset .tip > .admonition-title::before, .md-typeset .tip > summary::before {
+	border-color: var(--md-tip-bg-color);
+	background-color: var(--md-tip-bg-color);
+	color: var(--md-admonition-fg-color);
 }

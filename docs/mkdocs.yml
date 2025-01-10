@@ -19,6 +19,7 @@ theme:
 # Material theme settings
 # ---------------------------------------------
   name: material
+  custom_dir: docs/
   logo: assets/images/logo.png
   favicon: assets/images/favicon.ico
   features:
@@ -26,20 +27,20 @@ theme:
     - toc.integrate
   palette:
     # Palette toggle for light mode
-    - scheme: default
-      primary: white
-      accent: light blue
-      toggle:
-        icon: material/brightness-7
-        name: Switch to dark mode
+    # - scheme: default
+    #   primary: white
+    #   accent: light blue
+    #   toggle:
+    #     icon: material/brightness-7
+    #     name: Switch to dark mode
 
     # Palette toggle for dark mode
     - scheme: slate
-      primary: black
-      accent: light blue
-      toggle:
-        icon: material/brightness-4
-        name: Switch to light mode
+      primary: custom
+      accent: blue
+    #   toggle:
+    #     icon: material/brightness-4
+    #     name: Switch to light mode
 
 extra_css:
   - assets/extra.css

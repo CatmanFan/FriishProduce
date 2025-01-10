@@ -19,7 +19,8 @@
         // _____________________________________________
 
         // "emu_ver"      - The emulator version(s) corresponding to the WAD for each region, in an array.
-            // This MUST be an integer only!
+            // - This can be omitted if it isn't used by the emulator.
+            // - MUST be an integer only!
 
         // Emulator version entries:
         // NES & SNES:
@@ -508,7 +509,6 @@
         {
             "id": "00010001-433959__",
             "region": [1, 3],
-            "emu_ver": [0, 0],
             "titles": ["International Karate"]
         },
     ],
@@ -517,7 +517,6 @@
         {
             "id": "00010001-584147__",
             "region": [0],
-            "emu_ver": [0],
             "titles": ["ロードファイター", "Road Fighter"],
             "wad_titles": ["Road Fighter"]
         },
@@ -525,7 +524,6 @@
         {
             "id": "00010001-584145__",
             "region": [0],
-            "emu_ver": [0],
             "titles": ["スペースマンボウ", "Space Manbow"],
             "wad_titles": ["Space Manbow"]
         },
@@ -533,7 +531,6 @@
         {
             "id": "00010001-584146__",
             "region": [0],
-            "emu_ver": [0],
             "titles": ["メタルギア", "Metal Gear"],
             "wad_titles": ["Metal Gear"]
         },
@@ -541,7 +538,6 @@
         {
             "id": "00010001-584150__",
             "region": [0],
-            "emu_ver": [0],
             "titles": ["メタルギア２ ソリッドスネーク", "Metal Gear 2: Solid Snake"],
             "wad_titles": ["Metal Gear 2 - Solid Snake"]
         },
@@ -549,7 +545,6 @@
         {
             "id": "00010001-584144__",
             "region": [0],
-            "emu_ver": [0],
             "titles": ["イーガー皇帝の逆襲　イー・アル・カンフー2", "Yie-Gah Koutei no Gyakushuu: Yie Ar Kung-Fu 2"],
             "wad_titles": ["Yie-Gah Koutei no Gyakushuu - Yie Ar Kung-Fu 2"]
         }
@@ -559,15 +554,19 @@
         {
             "id": "00010001-574e41__",
             "region": [1, 3],
-            "emu_ver": [0, 0],
             "titles": ["Flash Placeholder"]
         },
         
         {
             "id": "00010001-48434a__",
             "region": [3],
-            "emu_ver": [0],
             "titles": ["BBC iPlayer"]
+        },
+
+        {
+            "id": "00010001_484358__",
+            "region": [0, 1, 3],
+            "titles": ["YouTube"]
         }
     ]
 }

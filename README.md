@@ -1,7 +1,8 @@
 # FriishProduce
-<div align=center><a href=""><img src="https://github.com/CatmanFan/FriishProduce/blob/main/images/icon.png" /></a><br>
+<div align=center><a href=""><img src="https://github.com/CatmanFan/FriishProduce/blob/main/images/icon.png" /></a>
+
 ![GBAtemp thread](https://img.shields.io/badge/GBAtemp-thread-blue?link=https%3A%2F%2Fgbatemp.net%2Fthreads%2Ffriishproduce-multiplatform-wad-injector.632028%2F)
-![Wiki](https://img.shields.io/badge/wiki-gray?link=https%3A%2F%2Fcatmanfan.github.io%2FFriishProduce%2F)
+ ![Wiki](https://img.shields.io/badge/wiki-white?link=https%3A%2F%2Fcatmanfan.github.io%2FFriishProduce%2F)
 </div>
 
 **FriishProduce** is a WAD channel injector/creator for (v)Wii. It can be used to convert ROMs, disc images or other types of software to installable WADs for Wii/vWii (Wii U). This includes injectable Virtual Console (VC) games, as well as single ROM loaders (SRLs), and Adobe Flash files.
@@ -40,12 +41,12 @@ Please check the **[wiki](https://catmanfan.github.io/FriishProduce/)** for a tu
 ---
 
 ## To-Do
-   [ ] Bugfixes and beta-testing
-   [ ] Restructuring, trimming features and cleaning code
-   [ ] Fix bug on NES VC, in which palette is not being modified.
+- [ ] Bugfixes and beta-testing
+- [ ] Restructuring, trimming features and cleaning code
+- [ ] Fix bug on NES VC, in which palette is not being modified.
 
 ### Potential
-   [ ] Merge separate components of ProjectForm into panels / Create UserControl for content options ?
+- [ ] Merge separate components of ProjectForm into panels / Create UserControl for content options ?
 
 ### Future platforms
 * Commodore 64 (needs [Custom Frodo](https://gbatemp.net/threads/custom-frodo-for-c64-vc-injection.102356/))
