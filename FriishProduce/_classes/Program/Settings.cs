@@ -31,7 +31,7 @@ namespace FriishProduce
                 Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping
             }).Replace("\n\n", "\n").Replace("\t\t", "\t");
 
-            File.WriteAllText(FriishProduce.Paths.Configuration, outFile);
+            File.WriteAllText(FriishProduce.Paths.Config, outFile);
         }
 
         private void Reset(bool save)
@@ -52,7 +52,7 @@ namespace FriishProduce
 
         private Settings Parse(byte[] file = null)
         {
-            if (file == null) file = File.ReadAllBytes(FriishProduce.Paths.Configuration);
+            if (file == null) file = File.ReadAllBytes(FriishProduce.Paths.Config);
 
             Settings reader = null;
             var encoding = Encoding.UTF8;

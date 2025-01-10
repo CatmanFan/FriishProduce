@@ -46,7 +46,7 @@ namespace FriishProduce
             DebugMode = false;
 #endif
 
-            Config = new(Paths.Configuration);
+            Config = new(Paths.Config);
             Lang = new Language();
 
             try

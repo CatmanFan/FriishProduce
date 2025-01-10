@@ -9,7 +9,7 @@ namespace FriishProduce
         public static readonly string Banners = Path.Combine(EnvironmentFolder, "resources\\tools\\banners\\");
 
         // Application paths
-        public static readonly string Configuration = Path.Combine(EnvironmentFolder, "config.json");
+        public static readonly string Config = Path.Combine(EnvironmentFolder, "FriishProduce.json");
         public static readonly string Databases = Path.Combine(EnvironmentFolder, "resources\\databases\\");
         public static readonly string Tools = Path.Combine(EnvironmentFolder, "resources\\tools\\");
         public static readonly string Languages = Path.Combine(EnvironmentFolder, "strings\\");

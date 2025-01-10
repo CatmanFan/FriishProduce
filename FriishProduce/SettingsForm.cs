@@ -454,14 +454,15 @@ namespace FriishProduce
 
             if (restart)
             {
-                Application.Restart();
+                using var p = new System.Diagnostics.Process() { StartInfo = new System.Diagnostics.ProcessStartInfo(Application.ExecutablePath) };
+                p.Start();
                 Environment.Exit(0);
             }
         }
 
         private void Cancel_Click(object sender, EventArgs e)
         {
-            Program.Config = new(Paths.Configuration);
+            Program.Config = new(Paths.Config);
             DialogResult = DialogResult.Cancel;
         }
 
