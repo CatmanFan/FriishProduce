@@ -7,6 +7,7 @@
 	--md-primary-bg-color:			var(--md-default-fg-color);
 	--md-primary-fg-color:			#d8dee91a;
 	--md-accent-bg-color:			var(--md-default-fg-color);
+	--md-accent-fg-color:			#5999d7;
 	--md-footer-bg-color:			var(--md-default-bg-color);
 }
 
@@ -29,12 +30,12 @@
 .md-typeset .admonition,
 .md-typeset details {
 	border-width: 0;
-	border-radius: .3rem;
-	/* border-left-width: .15rem; */
-	font-size: 80%;
+	/* border-radius: .3rem; */
+	border-left-width: .25rem;
+	font-size: 85%;
 	font-weight: 500;
-	line-height: 1.5;
-	padding: 0 .75rem;
+	line-height: 1.35;
+	/* padding: 0 .5rem; */
 	box-shadow: 0 .05rem .1rem rgba(28,28,28,0.5);
 }
 
@@ -44,11 +45,13 @@
 }
 
 :root, [data-md-color-scheme="default"] {
-	--md-info-bg-color:			#4f8bdb40;
-	--md-note-bg-color:			#7d828940;
-	--md-warning-bg-color:		#d7947340;
-	--md-danger-bg-color:		#cc4e6940;
-	--md-tip-bg-color:			rgba(136, 192, 208, 0.25);
+	--alpha:					0.33;
+	--md-info-bg-color:			94, 129, 172;
+	--md-note-bg-color:			110, 119, 129;
+	--md-warning-bg-color:		208, 145, 112;
+	--md-danger-bg-color:		191, 97, 106;
+	--md-success-bg-color:		163, 190, 140;
+	--md-tip-bg-color:			136, 192, 208;
 	--md-admonition-fg-color:	var(--md-default-fg-color);
 }
 
@@ -77,41 +80,67 @@ html {
 } */
 
 .md-typeset .admonition.warning, .md-typeset summary.warning, .md-typeset details.warning,
-.md-typeset .warning > .admonition-title, .md-typeset .warning > summary,
-.md-typeset .warning > .admonition-title::before, .md-typeset .warning > summary::before {
-	border-color: var(--md-warning-bg-color);
-	background-color: var(--md-warning-bg-color);
+.md-typeset .warning > .admonition-title, .md-typeset .warning > summary {
+	background-color: rgba(var(--md-warning-bg-color), var(--alpha));
+	border-color: rgb(var(--md-warning-bg-color));
 	color: var(--md-admonition-fg-color);
+}
+
+.md-typeset .warning > .admonition-title::before, .md-typeset .warning > summary::before {
+	background-color: rgb(var(--md-warning-bg-color));
 }
 
 .md-typeset .admonition.danger, .md-typeset summary.danger, .md-typeset details.danger,
-.md-typeset .danger > .admonition-title, .md-typeset .danger > summary,
-.md-typeset .danger > .admonition-title::before, .md-typeset .danger > summary::before {
-	border-color: var(--md-danger-bg-color);
-	background-color: var(--md-danger-bg-color);
+.md-typeset .danger > .admonition-title, .md-typeset .danger > summary {
+	background-color: rgba(var(--md-danger-bg-color), var(--alpha));
+	border-color: rgb(var(--md-danger-bg-color));
 	color: var(--md-admonition-fg-color);
+}
+
+.md-typeset .danger > .admonition-title::before, .md-typeset .danger > summary::before {
+	background-color: rgb(var(--md-danger-bg-color));
 }
 
 .md-typeset .admonition.info, .md-typeset summary.info, .md-typeset details.info,
-.md-typeset .info > .admonition-title, .md-typeset .info > summary,
-.md-typeset .info > .admonition-title::before, .md-typeset .info > summary::before {
-	border-color: var(--md-info-bg-color);
-	background-color: var(--md-info-bg-color);
+.md-typeset .info > .admonition-title, .md-typeset .info > summary {
+	background-color: rgba(var(--md-info-bg-color), var(--alpha));
+	border-color: rgb(var(--md-info-bg-color));
 	color: var(--md-admonition-fg-color);
+}
+
+.md-typeset .info > .admonition-title::before, .md-typeset .info > summary::before {
+	background-color: rgb(var(--md-info-bg-color));
 }
 
 .md-typeset .admonition.note, .md-typeset summary.note, .md-typeset details.note,
-.md-typeset .note > .admonition-title, .md-typeset .note > summary,
-.md-typeset .note > .admonition-title::before, .md-typeset .note > summary::before {
-	border-color: var(--md-note-bg-color);
-	background-color: var(--md-note-bg-color);
+.md-typeset .note > .admonition-title, .md-typeset .note > summary {
+	background-color: rgba(var(--md-note-bg-color), var(--alpha));
+	border-color: rgb(var(--md-note-bg-color));
 	color: var(--md-admonition-fg-color);
+}
+	
+.md-typeset .note > .admonition-title::before, .md-typeset .note > summary::before {
+	background-color: rgb(var(--md-note-bg-color));
 }
 
 .md-typeset .admonition.tip, .md-typeset summary.tip, .md-typeset details.tip,
-.md-typeset .tip > .admonition-title, .md-typeset .tip > summary,
-.md-typeset .tip > .admonition-title::before, .md-typeset .tip > summary::before {
-	border-color: var(--md-tip-bg-color);
-	background-color: var(--md-tip-bg-color);
+.md-typeset .tip > .admonition-title, .md-typeset .tip > summary {
+	background-color: rgba(var(--md-tip-bg-color), var(--alpha));
+	border-color: rgb(var(--md-tip-bg-color));
 	color: var(--md-admonition-fg-color);
+}
+
+.md-typeset .tip > .admonition-title::before, .md-typeset .tip > summary::before {
+	background-color: rgb(var(--md-tip-bg-color));
+}
+
+.md-typeset .admonition.success, .md-typeset summary.success, .md-typeset details.success,
+.md-typeset .success > .admonition-title, .md-typeset .success > summary {
+	background-color: rgba(var(--md-success-bg-color), var(--alpha));
+	border-color: rgb(var(--md-success-bg-color));
+	color: var(--md-admonition-fg-color);
+}
+
+.md-typeset .success > .admonition-title::before, .md-typeset .success > summary::before {
+	background-color: rgb(var(--md-success-bg-color));
 }

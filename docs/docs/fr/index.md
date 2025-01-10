@@ -4,10 +4,9 @@ hide:
   - toc
 ---
 
-# Bienvenue
+# Bienvenue au wiki FriishProduce
 
 **FriishProduce** est un logiciel GUI qui permet la création des jeux WAD pour (v)Wii.
-
 Il s'agit d'un injecteur des jeux rétro sur Console virtuelle ou des jeux Adobe Flash, ainsi qu'un créateur des chaînes forwarder pour quelques autres consoles.
 
 ----
@@ -23,6 +22,10 @@ Il s'agit d'un injecteur des jeux rétro sur Console virtuelle ou des jeux Adobe
 		* .NET Framework 4.7.2
 		* Redistribuable Microsoft Visual C++ pour Visual Studio 2019 (nécessaire pour ccf-tools)
 
+!!! warning ""
+	
+	À noter que ce wiki est encore en construction.
+
 !!! danger ""
 
 	**N'oubliez pas de faire une sauvegarde de la NAND de votre console Wii (ou du mode vWii sur la Wii U) au cas où quelque chose se passerait mal !**<br />
@@ -32,4 +35,5 @@ Il s'agit d'un injecteur des jeux rétro sur Console virtuelle ou des jeux Adobe
 
 !!! tip ""
 	
-	**Procéder au [tutoriel](tutorial.md).**
+	* **Pour voir quelles plateformes et méthodes d'injection sont disponibles pour FriishProduce, procéder au page «[Plateformes](platforms.md)».**
+	* **Commencer avec le [tutoriel](tutorial.md)**.

@@ -103,6 +103,7 @@ namespace FriishProduce
             // Logo
             // 
             this.Logo.BackColor = System.Drawing.Color.Transparent;
+            this.Logo.Image = global::FriishProduce.Properties.Resources.logo;
             resources.ApplyResources(this.Logo, "Logo");
             this.Logo.Name = "Logo";
             this.Logo.TabStop = false;
@@ -493,9 +494,9 @@ namespace FriishProduce
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
+            this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.tabControl);
-            this.Controls.Add(this.mainPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.IsMdiContainer = true;
             this.KeyPreview = true;

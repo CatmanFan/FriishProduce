@@ -4,16 +4,16 @@ hide:
   - toc
 ---
 
-# Welcome
+# Welcome to the FriishProduce Wiki
 
 **FriishProduce** is a (v)Wii channel injector/creator GUI.
 It can be used to create installable WADs for older consoles, including for Virtual Console (VC) games, as well as for other platforms such as Adobe Flash and RPG Maker 2000/2003.
 
 ----
 
-!!! info ""
+!!! warning ""
 	
-	For information on which injection methods and platforms are supported, go to ****.
+	This wiki is under construction.
 
 !!! danger ""
 
@@ -24,4 +24,5 @@ It can be used to create installable WADs for older consoles, including for Virt
 
 !!! tip ""
 	
-	Proceed to **[Tutorial](tutorial.md)**.
+	* For information on which platforms and injection methods are supported, go to **[Platforms](platforms.md)**.
+	* Proceed to **[Tutorial](tutorial.md)**.

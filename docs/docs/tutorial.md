@@ -51,7 +51,11 @@
 4. **Optional steps:** (mainly for customization)
 	* If it is enabled, go to `Injection method options...`, and change any of the available options based to your liking.
 	* Specify a sound file to use as the banner by clicking on `Banner sound > Replace banner sound...`, then browsing a WAV file to use.
-5. Click on the Export button, and save your WAD/ZIP. You can now install it using your preferred WAD manager, or extract the contents of the ZIP archive to your SD/USB root.
+5. Click on the Export button, and save your WAD/ZIP.
+
+!!! success ""
+	
+	You can now install it using your preferred WAD manager, or extract the contents of the ZIP archive to your SD/USB root.
 
 ## Manual
 		

@@ -61,19 +61,19 @@ plugins:
           build: true
           default: true
           admonition_translations:
-            note: ""
-            info: ""
-            warning: ""
-            danger: ""
+            note: "Note"
+            info: "Important"
+            warning: "Warning"
+            danger: "Caution"
 
         - locale: fr
           name: Français
           build: true
           admonition_translations:
-            note: ""
-            info: ""
-            warning: ""
-            danger: ""
+            note: "Information"
+            info: "À noter"
+            warning: "Avertissement"
+            danger: "Attention"
           site_description: "Premier injecteur GUI pour la Console virtuelle de Wii"
           nav_translations:
             Home: Accueil
