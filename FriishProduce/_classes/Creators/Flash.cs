@@ -661,11 +661,39 @@ namespace FriishProduce.Injectors
             MainContent.CreateFromDirectory(Paths.FlashContents);
             if (Directory.Exists(Paths.FlashContents)) Directory.Delete(Paths.FlashContents, true);
 
+            // Dispose of "Operations Guide" button on HOME Menu.
+            // ********
+            U8 Content6 = U8.Load(w.Contents[6]);
+
+            int start = -1;
+            int end = -1;
+
+            for (int i = 0; i < Content6.NumOfNodes; i++)
+            {
+                if (Content6.StringTable[i].ToLower() == "homebutton2") start = i;
+                else if (Content6.StringTable[i].ToLower() == "homebutton3") end = i;
+            }
+
+            try
+            {
+                if (start <= 0 && end <= 0) throw new InvalidOperationException();
+                else
+                {
+                    for (int i = 1; i < end - start; i++)
+                        Content6.ReplaceFile(i + end, Content6.Data[i + start]);
+                }
+            }
+            catch { }
+
+            // Finally, replace the relevant files
+            // ********
             w.Unpack(Paths.WAD);
             File.WriteAllBytes(Paths.WAD + "00000002.app", MainContent.ToByteArray());
+            File.WriteAllBytes(Paths.WAD + "00000006.app", Content6.ToByteArray());
             w.CreateNew(Paths.WAD);
             Directory.Delete(Paths.WAD, true);
 
+            if (Content6 != null) Content6.Dispose();
             MainContent.Dispose();
             Settings = null;
             Keymap = null;

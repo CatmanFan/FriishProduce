@@ -1,0 +1,75 @@
+.md-typeset .admonition,
+.md-typeset details {
+	border-width: 0;
+	border-radius: .25rem;
+	/* border-left-width: .15rem; */
+	font-size: 97.5%;
+	line-height: 1.65;
+	padding-left: .75rem;
+	padding-right: .75rem;
+	box-shadow: none;
+}
+
+html {
+	font-size: 1.25em;
+}
+
+.md-grid {
+    max-width: initial;
+	padding-left: 16.25%;
+	padding-right: 16.25%;
+}
+
+.md-typeset {
+	line-height: 1.75;
+}
+
+/* .md-typeset .admonition-title, .md-typeset summary, .md-typeset details {
+	font-weight: normal;
+} */
+
+.md-typeset .admonition.warning, .md-typeset summary.warning, .md-typeset details.warning,
+.md-typeset .warning > .admonition-title, .md-typeset .warning > summary {
+	border-color: #fa0;
+	background-color: #ffaa001a;
+}
+
+.md-typeset .warning > .admonition-title::before, .md-typeset .warning > summary::before {
+	background-color: #fa0;
+}
+
+.md-typeset .admonition.danger, .md-typeset summary.danger, .md-typeset details.danger,
+.md-typeset .danger > .admonition-title, .md-typeset .danger > summary {
+	border-color: #ff4100;
+	background-color: #ff41002b;
+}
+
+.md-typeset .danger > .admonition-title::before, .md-typeset .danger > summary::before {
+	background-color: #ff4100;
+}
+
+.md-typeset .admonition.info, .md-typeset summary.info, .md-typeset details.info,
+.md-typeset .info > .admonition-title, .md-typeset .info > summary {
+	border-color: #0078f4;
+	background-color: #0078f41a;
+}
+
+.md-typeset .info > .admonition-title::before, .md-typeset .info > summary::before {
+	background-color: #0078f4;
+}
+
+.md-typeset .admonition.note, .md-typeset summary.note, .md-typeset details.note,
+.md-typeset .note > .admonition-title, .md-typeset .note > summary {
+	border-color: #888;
+	background-color: #8888881a;
+}
+
+.md-typeset .note > .admonition-title::before, .md-typeset .note > summary::before {
+	background-color: #888;
+}
+
+.md-typeset .admonition.tip, .md-typeset summary.tip, .md-typeset details.tip,
+.md-typeset .tip > .admonition-title, .md-typeset .tip > summary {
+	border-color: #3f41f5;
+	background-color: #3f41f51a;
+}

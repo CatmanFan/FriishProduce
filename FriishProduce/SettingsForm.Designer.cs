@@ -90,7 +90,7 @@ namespace FriishProduce
             this.vc_pce_raster = new System.Windows.Forms.CheckBox();
             this.vc_pce_hide_overscan = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.auto_game_scan = new System.Windows.Forms.CheckBox();
+            this.auto_prefill = new System.Windows.Forms.CheckBox();
             this.auto_fill_save_data = new System.Windows.Forms.CheckBox();
             this.image_interpolation_mode = new System.Windows.Forms.GroupBox();
             this.image_interpolation_modes = new System.Windows.Forms.ComboBox();
@@ -667,7 +667,7 @@ namespace FriishProduce
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.auto_game_scan);
+            this.panel2.Controls.Add(this.auto_prefill);
             this.panel2.Controls.Add(this.auto_fill_save_data);
             this.panel2.Controls.Add(this.image_interpolation_mode);
             this.panel2.Controls.Add(this.banner_region);
@@ -675,12 +675,12 @@ namespace FriishProduce
             resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
             // 
-            // auto_game_scan
+            // auto_prefill
             // 
-            resources.ApplyResources(this.auto_game_scan, "auto_game_scan");
-            this.auto_game_scan.Name = "auto_game_scan";
-            this.auto_game_scan.Tag = "auto_game_scan";
-            this.auto_game_scan.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.auto_prefill, "auto_prefill");
+            this.auto_prefill.Name = "auto_prefill";
+            this.auto_prefill.Tag = "auto_prefill";
+            this.auto_prefill.UseVisualStyleBackColor = true;
             // 
             // auto_fill_save_data
             // 
@@ -1297,7 +1297,7 @@ namespace FriishProduce
         private System.Windows.Forms.CheckBox vc_pce_raster;
         private System.Windows.Forms.CheckBox vc_pce_hide_overscan;
         private System.Windows.Forms.CheckBox vc_sega_console_disableresetbutton;
-        private System.Windows.Forms.CheckBox auto_game_scan;
+        private System.Windows.Forms.CheckBox auto_prefill;
         private System.Windows.Forms.CheckBox auto_fill_save_data;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label show_bios_screen;

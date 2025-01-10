@@ -653,5 +653,14 @@ namespace FriishProduce
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             e.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
         }
+
+        private void Website_Click(object sender, EventArgs e)
+        {
+            string lang = Program.Lang.Current.StartsWith("fr") ? "fr/"
+                        : Program.Lang.Current.StartsWith("es") ? "es/"
+                        : Program.Lang.Current.StartsWith("ja") ? "ja/"
+                        : null;
+            System.Diagnostics.Process.Start("https://catmanfan.github.io/FriishProduce/" + lang);
+        }
     }
 }

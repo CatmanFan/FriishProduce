@@ -191,6 +191,11 @@ namespace FriishProduce
             toggleSwitch2.Checked = Program.Config.forwarder.show_bios_screen;
             forwarder_type.SelectedIndex = Program.Config.forwarder.root_storage_device;
             use_online_wad_enabled.Checked = Program.Config.application.use_online_wad_enabled;
+            bypass_rom_size.Checked = Program.Config.application.bypass_rom_size;
+            auto_fill_save_data.Checked = Program.Config.application.auto_fill_save_data;
+            auto_prefill.Checked = Program.Config.application.auto_prefill;
+            default_target_project_tb.Text = Program.Config.application.default_target_filename;
+            default_target_wad_tb.Text = Program.Config.application.default_export_filename;
 
             // BIOS files
             bios_filename_neo.Text = Program.Config.paths.bios_neo;
@@ -336,9 +341,14 @@ namespace FriishProduce
             // -------------------------------------------
             // Other settings
             // -------------------------------------------
-
+            
             Program.Config.application.image_interpolation = image_interpolation_modes.SelectedIndex;
             Program.Config.application.use_online_wad_enabled = use_online_wad_enabled.Checked;
+            Program.Config.application.bypass_rom_size = bypass_rom_size.Checked;
+            Program.Config.application.auto_fill_save_data = auto_fill_save_data.Checked;
+            Program.Config.application.auto_prefill = auto_prefill.Checked;
+            Program.Config.application.default_target_filename = default_target_project_tb.Text;
+            Program.Config.application.default_export_filename = default_target_wad_tb.Text;
 
             // -------------------------------------------
             // BIOS files

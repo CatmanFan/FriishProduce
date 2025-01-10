@@ -1,23 +1,27 @@
-# FriishProduce
+---
+hide:
+  - navigation
+  - toc
+---
 
-**FriishProduce** is a WAD channel injector/creator GUI for (v)Wii.
+# Welcome
 
-It can be used to convert ROMs, disc images or other types of software to installable WADs, including for Virtual Console (VC) games.
-
-## Before starting
-
-The following minimum requirements are needed in order to run the program:
-
-* **OS:** Windows 7 or later
-* **Redistributables:**
-    * .NET Framework 2.0 (needed for libWiiSharp)
-    * .NET Framework 4.7.2
-    * Microsoft Visual C++ Redistributable for Visual Studio 2019 (needed for ccf-tools)
-
-!!! warning
-
-    Make sure you have a NAND backup of your Wii or vWii, in case anything goes wrong!
+**FriishProduce** is a (v)Wii channel injector/creator GUI.
+It can be used to create installable WADs for older consoles, including for Virtual Console (VC) games, as well as for other platforms such as Adobe Flash and RPG Maker 2000/2003.
 
 ----
 
-**Proceed to [Tutorial](tutorial.md).**
+!!! info ""
+	
+	For information on which injection methods and platforms are supported, go to ****.
+
+!!! danger ""
+
+	**Make sure you have a NAND backup of your Wii or vWii, in case anything goes wrong!**<br />
+	You can create a backup using [BootMii](https://wii.hacks.guide/bootmii.html) or with [nand-dumper on Wii U](https://hb-app.store/wiiu/nanddumper).
+
+----
+
+!!! tip ""
+	
+	Proceed to **[Tutorial](tutorial.md)**.

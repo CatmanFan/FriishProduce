@@ -100,11 +100,11 @@ namespace FriishProduce
 
                 // Copy all files and folders to target path
                 // ****************
-                foreach (string dir in Directory.GetDirectories(CustomManual, "*", SearchOption.AllDirectories))
-                    Directory.CreateDirectory(dir.Replace(CustomManual, Paths.Manual));
+                foreach (string dir in Directory.GetDirectories(CustomManual, "*.*", SearchOption.AllDirectories))
+                    Directory.CreateDirectory(dir.Replace(Path.GetDirectoryName(CustomManual), Path.GetDirectoryName(Paths.Manual)));
 
                 foreach (string file in Directory.GetFiles(CustomManual, "*.*", SearchOption.AllDirectories))
-                    File.Copy(file, Path.Combine(Paths.Manual, file.Replace(CustomManual, null)), true);
+                    File.Copy(file, file.Replace(Path.GetDirectoryName(file), Path.GetDirectoryName(Paths.Manual)), true);
             }
 
             if (valid)

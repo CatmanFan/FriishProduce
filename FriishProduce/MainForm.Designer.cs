@@ -81,6 +81,7 @@ namespace FriishProduce
             this.menuItem4 = new System.Windows.Forms.MenuItem();
             this.about = new System.Windows.Forms.MenuItem();
             this.tabControl = new JacksiroKe.MdiTabCtrl.TabControl();
+            this.wiki = new System.Windows.Forms.MenuItem();
             this.mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             this.toolStrip.SuspendLayout();
@@ -438,13 +439,14 @@ namespace FriishProduce
             // 
             this.menuItem4.Index = 3;
             this.menuItem4.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.wiki,
             this.about});
             this.menuItem4.Tag = "help";
             resources.ApplyResources(this.menuItem4, "menuItem4");
             // 
             // about
             // 
-            this.about.Index = 0;
+            this.about.Index = 1;
             this.about.Tag = "about_app";
             resources.ApplyResources(this.about, "about");
             this.about.Click += new System.EventHandler(this.About_Click);
@@ -457,8 +459,6 @@ namespace FriishProduce
             this.tabControl.FontBoldOnSelect = false;
             this.tabControl.MenuRenderer = null;
             this.tabControl.Name = "tabControl";
-            this.tabControl.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.tabControl.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.tabControl.TabBackHighColor = System.Drawing.SystemColors.Control;
             this.tabControl.TabBackHighColorDisabled = System.Drawing.Color.LightGray;
             this.tabControl.TabBackLowColor = System.Drawing.SystemColors.Window;
@@ -471,6 +471,12 @@ namespace FriishProduce
             this.tabControl.TopSeparator = false;
             this.tabControl.SelectedTabChanged += new System.EventHandler(this.TabChanged);
             this.tabControl.Paint += new System.Windows.Forms.PaintEventHandler(this.MainForm_Paint);
+            // 
+            // wiki
+            // 
+            this.wiki.Index = 0;
+            resources.ApplyResources(this.wiki, "wiki");
+            this.wiki.Click += new System.EventHandler(this.Website_Click);
             // 
             // MainForm
             // 
@@ -550,6 +556,7 @@ namespace FriishProduce
         private System.Windows.Forms.MenuItem menuItem9;
         private System.Windows.Forms.MenuItem clear_database;
         private System.Windows.Forms.MenuItem menuItem11;
+        private System.Windows.Forms.MenuItem wiki;
     }
 }
 

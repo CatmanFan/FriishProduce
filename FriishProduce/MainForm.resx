@@ -562,6 +562,9 @@
   <data name="menuItem3.Text" xml:space="preserve">
     <value>tools</value>
   </data>
+  <data name="wiki.Text" xml:space="preserve">
+    <value>Wiki</value>
+  </data>
   <data name="about.Text" xml:space="preserve">
     <value>about</value>
   </data>
@@ -3079,6 +3082,12 @@
     <value>about</value>
   </data>
   <data name="&gt;&gt;about.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;wiki.Name" xml:space="preserve">
+    <value>wiki</value>
+  </data>
+  <data name="&gt;&gt;wiki.Type" xml:space="preserve">
     <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

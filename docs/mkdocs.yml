@@ -7,6 +7,7 @@ nav:
   - Home: index.md
   - Tutorial: tutorial.md
   - FAQ: faq.md
+  - Translate: translate.md
   - About: about.md
 
 theme:
@@ -18,19 +19,23 @@ theme:
 # Material theme settings
 # ---------------------------------------------
   name: material
-  logo: img/logo.png
+  logo: assets/images/logo.png
+  favicon: assets/images/favicon.ico
+  features:
+    - navigation.tabs
+    - toc.integrate
   palette:
     # Palette toggle for light mode
     - scheme: default
-      primary: blue grey
-      accent: blue
+      primary: white
+      accent: light blue
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
 
     # Palette toggle for dark mode
     - scheme: slate
-      primary: blue grey
+      primary: black
       accent: light blue
       toggle:
         icon: material/brightness-4
@@ -40,6 +45,12 @@ extra_css:
   - assets/extra.css
 
 plugins:
+  - glightbox:
+       touchNavigation: true
+       loop: false
+       effect: zoom
+       slide_effect: slide
+
   - i18n:
       docs_structure: folder
       fallback_to_default: true
@@ -48,31 +59,56 @@ plugins:
           name: English
           build: true
           default: true
+          admonition_translations:
+            note: ""
+            info: ""
+            warning: ""
+            danger: ""
 
         - locale: fr
           name: Français
           build: true
+          admonition_translations:
+            note: ""
+            info: ""
+            warning: ""
+            danger: ""
           site_description: "Premier injecteur GUI pour la Console virtuelle de Wii"
           nav_translations:
             Home: Accueil
             Tutorial: Tutoriel
+            Translate: Traduire
             About: À propos
+
+        - locale: es
+          name: Español
+          build: true
           admonition_translations:
-            warning: Attention
+            note: ""
+            info: ""
+            warning: ""
+            danger: ""
+          nav_translations:
+            Home: Pagina principal
+            Tutorial: Tutorial
+            FAQ: Preguntas frecuentes
+            Translate: Traducir
+            About: Acerca de
 
         - locale: ja
           name: 日本語
-          build: true
-          site_description: "WiiVC用初のGUIインジェクター"
+          build: false
+          admonition_translations:
+            note: ""
+            info: ""
+            note: ""
+            warning: ""
           nav_translations:
             Home: ホームページ
             Tutorial: 使い方
+            Translate: 翻訳
+            FAQ: よくあるご質問
             About: ついて
-
-        - locale: "null"
-          name: Add translation
-          build: false
-          fixed_link: translate-wiki.md
 
 extra:
   # The language switcher values are stored here.
@@ -86,11 +122,14 @@ extra:
       link: fr
       lang: fr
 
-    - name: 日本語
-      link: ja
-      lang: ja
+    - name: Español
+      link: es
+      lang: es
 
 markdown_extensions:
   - admonition
   - pymdownx.details
   - pymdownx.superfences
+  - attr_list
+  - md_in_html
+  - pymdownx.blocks.caption

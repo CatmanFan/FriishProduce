@@ -675,7 +675,7 @@ namespace FriishProduce
             if (ROMpath != null && project == null)
             {
                 rom.FilePath = ROMpath;
-                LoadROM(rom.FilePath, Program.Config.application.auto_game_scan);
+                LoadROM(rom.FilePath, Program.Config.application.auto_prefill);
             }
         }
 
@@ -908,7 +908,7 @@ namespace FriishProduce
             if (browseROM.ShowDialog() == DialogResult.OK)
             {
                 IsEmpty = false;
-                LoadROM(browseROM.FileName, Program.Config.application.auto_game_scan);
+                LoadROM(browseROM.FileName, Program.Config.application.auto_prefill);
             }
         }
 
@@ -1031,7 +1031,7 @@ namespace FriishProduce
         {
             string FILENAME = File.Exists(patch) ? Path.GetFileNameWithoutExtension(patch) : Path.GetFileNameWithoutExtension(rom?.FilePath);
             string CHANNELNAME = channel_name.Text;
-            string FULLNAME = System.Text.RegularExpressions.Regex.Replace(_bannerTitle, @"\((.*?)\)", "").Replace("\r\n", "\n").Replace("\n", "_");
+            string FULLNAME = System.Text.RegularExpressions.Regex.Replace(_bannerTitle, @"\((.*?)\)", "").Replace("\r\n", "\n").Replace("\n", " - ");
             string TITLEID = title_id_upper.Text.ToUpper();
             string PLATFORM = targetPlatform.ToString();
             string REGION = regions.SelectedItem.ToString();

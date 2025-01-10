@@ -70,7 +70,7 @@ namespace FriishProduce
             // labelCopyright
             // 
             this.labelCopyright.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelCopyright.Font = new System.Drawing.Font("Arial", 6F);
+            this.labelCopyright.Font = new System.Drawing.Font("Arial", 6.5F);
             this.labelCopyright.Location = new System.Drawing.Point(6, 81);
             this.labelCopyright.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
             this.labelCopyright.MaximumSize = new System.Drawing.Size(0, 17);

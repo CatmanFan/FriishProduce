@@ -1,6 +1,6 @@
 # FriishProduce
 
-**FriishProduce**は、WiiとvWiiのWADを作り出しのGUI。
+**FriishProduce**は、WiiのWADを作りのGUIである。
 
 It can be used to convert ROMs, disc images or other types of software to installable WADs, including for Virtual Console (VC) games.
 
@@ -22,4 +22,4 @@ The following minimum requirements are needed in order to run the program:
 
 ----
 
-**「[使い方](tutorial.md)」へ進む**
+**使用を開始するには、「[使い方](tutorial.md)」に進んでください。**
