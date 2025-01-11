@@ -31,7 +31,7 @@ namespace FriishProduce
                 controller_cb.Text = Program.Lang.String("controller", "projectform");
                 b_controller.Text = Program.Lang.String("controller_mapping", "projectform");
 
-                region.Text = Program.Lang.String("region");
+                region.Text = Program.Lang.String("region").TrimEnd(':', '：').Trim();
                 save_sram.Text = Program.Lang.String("save_data_enable", "projectform");
                 console_disableresetbutton.Text = Program.Lang.String("console_disableresetbutton", "vc_sega");
                 dev_mdpad_enable_6b.Text = string.Format(Program.Lang.String("dev_mdpad_enable_6b", "vc_sega"), Program.Lang.Console(Platform.SMD));

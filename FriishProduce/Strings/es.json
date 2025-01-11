@@ -90,7 +90,7 @@
 		},
 
 		"messages": {
-			"000":								"Algunos cambios necesitan que se reinicie el programa para que tengan efecto.\n¿Reiniciar ahora?",
+			"000":								"Algunos cambios necesitan que se reinicie el programa para que tengan efecto.",
 		    "001":								"El proyecto \"{0}\" ha sido cambiado.\n¿Qué desea hacer?",
 			"002":								"El archivo seleccionado no es válido.",
 			"003":								"Exportado con éxito.\n¿Quieres abrir la carpeta de salida?",

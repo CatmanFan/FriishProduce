@@ -141,7 +141,7 @@ namespace FriishProduce
 
             // -----------------------------
 
-            Program.Lang.String(vc_sega_country);
+            vc_sega_country.Text = Program.Lang.String("region").TrimEnd(':', '：').Trim();
             vc_sega_dev_mdpad_enable_6b.Text = string.Format(Program.Lang.String("dev_mdpad_enable_6b", "vc_sega"), Program.Lang.Console(Platform.SMD));
             Program.Lang.String(vc_sega_console_disableresetbutton, "vc_sega");
 
@@ -444,15 +444,10 @@ namespace FriishProduce
             bool isDirty = isShown
                 && (dirtyOption1 != languages.SelectedIndex
                  || dirtyOption2 != reset_all_dialogs.Checked);
-            bool restart = isDirty && MessageBox.Show(Program.Lang.Msg(0), MessageBox.Buttons.YesNo, MessageBox.Icons.Information) == MessageBox.Result.Yes;
+            if (isDirty) MessageBox.Show(Program.Lang.Msg(0), MessageBox.Buttons.Ok, MessageBox.Icons.Information);
 
             isShown = false;
             DialogResult = DialogResult.OK;
-
-            if (restart)
-            {
-                Application.Restart();
-            }
         }
 
         private void Cancel_Click(object sender, EventArgs e)
