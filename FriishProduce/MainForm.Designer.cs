@@ -74,10 +74,12 @@ namespace FriishProduce
             this.check_for_updates = new System.Windows.Forms.MenuItem();
             this.auto_update = new System.Windows.Forms.MenuItem();
             this.menuItem8 = new System.Windows.Forms.MenuItem();
-            this.clear_database = new System.Windows.Forms.MenuItem();
             this.language_file_editor = new System.Windows.Forms.MenuItem();
-            this.menuItem11 = new System.Windows.Forms.MenuItem();
+            this.menuItem10 = new System.Windows.Forms.MenuItem();
             this.preferences = new System.Windows.Forms.MenuItem();
+            this.menuItem11 = new System.Windows.Forms.MenuItem();
+            this.clear_database = new System.Windows.Forms.MenuItem();
+            this.reset_preferences = new System.Windows.Forms.MenuItem();
             this.menuItem4 = new System.Windows.Forms.MenuItem();
             this.wiki = new System.Windows.Forms.MenuItem();
             this.about = new System.Windows.Forms.MenuItem();
@@ -342,10 +344,12 @@ namespace FriishProduce
             this.menuItem9,
             this.updater,
             this.menuItem8,
-            this.clear_database,
             this.language_file_editor,
+            this.menuItem10,
+            this.preferences,
             this.menuItem11,
-            this.preferences});
+            this.clear_database,
+            this.reset_preferences});
             this.menuItem3.Tag = "tools";
             resources.ApplyResources(this.menuItem3, "menuItem3");
             // 
@@ -410,30 +414,42 @@ namespace FriishProduce
             this.menuItem8.Index = 6;
             resources.ApplyResources(this.menuItem8, "menuItem8");
             // 
+            // language_file_editor
+            // 
+            this.language_file_editor.Index = 7;
+            resources.ApplyResources(this.language_file_editor, "language_file_editor");
+            this.language_file_editor.Click += new System.EventHandler(this.LanguageFileEditor);
+            // 
+            // menuItem10
+            // 
+            this.menuItem10.Index = 8;
+            resources.ApplyResources(this.menuItem10, "menuItem10");
+            // 
+            // preferences
+            // 
+            this.preferences.Index = 9;
+            resources.ApplyResources(this.preferences, "preferences");
+            this.preferences.Tag = "";
+            this.preferences.Click += new System.EventHandler(this.Settings_Click);
+            // 
+            // menuItem11
+            // 
+            this.menuItem11.Index = 10;
+            resources.ApplyResources(this.menuItem11, "menuItem11");
+            // 
             // clear_database
             // 
-            this.clear_database.Index = 7;
+            this.clear_database.Index = 11;
             this.clear_database.Tag = "clear_database";
             resources.ApplyResources(this.clear_database, "clear_database");
             this.clear_database.Click += new System.EventHandler(this.ClearAllDatabases);
             // 
-            // language_file_editor
+            // reset_preferences
             // 
-            this.language_file_editor.Index = 8;
-            resources.ApplyResources(this.language_file_editor, "language_file_editor");
-            this.language_file_editor.Click += new System.EventHandler(this.LanguageFileEditor);
-            // 
-            // menuItem11
-            // 
-            this.menuItem11.Index = 9;
-            resources.ApplyResources(this.menuItem11, "menuItem11");
-            // 
-            // preferences
-            // 
-            this.preferences.Index = 10;
-            resources.ApplyResources(this.preferences, "preferences");
-            this.preferences.Tag = "";
-            this.preferences.Click += new System.EventHandler(this.Settings_Click);
+            this.reset_preferences.Index = 12;
+            this.reset_preferences.Tag = "reset_preferences";
+            resources.ApplyResources(this.reset_preferences, "reset_preferences");
+            this.reset_preferences.Click += new System.EventHandler(this.ResetConfig);
             // 
             // menuItem4
             // 
@@ -491,8 +507,9 @@ namespace FriishProduce
             // 
             // MainForm
             // 
+            this.AllowDrop = true;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.toolStrip);
@@ -507,6 +524,8 @@ namespace FriishProduce
             this.Tag = "mainform";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_Closing);
             this.Load += new System.EventHandler(this.MainForm_Loading);
+            this.DragDrop += new System.Windows.Forms.DragEventHandler(this.Form_DragDrop);
+            this.DragEnter += new System.Windows.Forms.DragEventHandler(this.Form_DragEnter);
             this.mainPanel.ResumeLayout(false);
             this.mainPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).EndInit();
@@ -565,8 +584,10 @@ namespace FriishProduce
         private System.Windows.Forms.MenuItem extract_wad_manual;
         private System.Windows.Forms.MenuItem menuItem9;
         private System.Windows.Forms.MenuItem clear_database;
-        private System.Windows.Forms.MenuItem menuItem11;
         private System.Windows.Forms.MenuItem wiki;
+        private System.Windows.Forms.MenuItem menuItem10;
+        private System.Windows.Forms.MenuItem menuItem11;
+        private System.Windows.Forms.MenuItem reset_preferences;
     }
 }
 

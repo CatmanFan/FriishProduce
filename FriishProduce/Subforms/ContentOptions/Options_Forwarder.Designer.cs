@@ -35,6 +35,7 @@ namespace FriishProduce
             this.toggleSwitch2 = new JCS.ToggleSwitch();
             this.bios_settings = new System.Windows.Forms.GroupBox();
             this.bottomPanel1.SuspendLayout();
+            this.controller_box.SuspendLayout();
             this.bios_settings.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,7 +52,7 @@ namespace FriishProduce
             // 
             // toggleSwitch1
             // 
-            this.toggleSwitch1.Location = new System.Drawing.Point(10, 19);
+            this.toggleSwitch1.Location = new System.Drawing.Point(10, 20);
             this.toggleSwitch1.Name = "toggleSwitch1";
             this.toggleSwitch1.OffFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toggleSwitch1.OnFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -63,7 +64,7 @@ namespace FriishProduce
             // 
             this.show_bios_screen.AutoSize = true;
             this.show_bios_screen.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.show_bios_screen.Location = new System.Drawing.Point(50, 42);
+            this.show_bios_screen.Location = new System.Drawing.Point(50, 43);
             this.show_bios_screen.Name = "show_bios_screen";
             this.show_bios_screen.Size = new System.Drawing.Size(95, 13);
             this.show_bios_screen.TabIndex = 29;
@@ -72,7 +73,7 @@ namespace FriishProduce
             // 
             // toggleSwitch2
             // 
-            this.toggleSwitch2.Location = new System.Drawing.Point(10, 41);
+            this.toggleSwitch2.Location = new System.Drawing.Point(10, 43);
             this.toggleSwitch2.Name = "toggleSwitch2";
             this.toggleSwitch2.OffFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toggleSwitch2.OnFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -87,7 +88,7 @@ namespace FriishProduce
             this.bios_settings.Controls.Add(this.toggleSwitch2);
             this.bios_settings.Location = new System.Drawing.Point(12, 10);
             this.bios_settings.Name = "bios_settings";
-            this.bios_settings.Size = new System.Drawing.Size(530, 66);
+            this.bios_settings.Size = new System.Drawing.Size(530, 68);
             this.bios_settings.TabIndex = 30;
             this.bios_settings.TabStop = false;
             this.bios_settings.Tag = "bios_settings";
@@ -95,12 +96,15 @@ namespace FriishProduce
             // 
             // Options_Forwarder
             // 
-            this.ClientSize = new System.Drawing.Size(554, 132);
+            this.ClientSize = new System.Drawing.Size(554, 136);
             this.Controls.Add(this.bios_settings);
             this.Name = "Options_Forwarder";
             this.Tag = "forwarder";
+            this.Controls.SetChildIndex(this.controller_box, 0);
             this.Controls.SetChildIndex(this.bios_settings, 0);
             this.bottomPanel1.ResumeLayout(false);
+            this.controller_box.ResumeLayout(false);
+            this.controller_box.PerformLayout();
             this.bios_settings.ResumeLayout(false);
             this.bios_settings.PerformLayout();
             this.ResumeLayout(false);

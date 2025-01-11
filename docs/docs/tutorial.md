@@ -42,7 +42,11 @@
 2. Click `Import ROM...` (*the disc icon*), and open your game file. The button will be named differently depending on the console type (e.g. "disc image" for disc-based consoles, "SWF" for Flash, etc.).
 
 	![Selecting "Import ROM..." from an empty project](assets/images/tutorial_1.png){ loading=lazy; width="600"; }
+
+!!! info ""
 	
+	Alternatively, you can simply drag the game file and drop it over the interface, and it will automatically create the project for you.
+
 ### Section II - Required steps
 
 #### Base WAD

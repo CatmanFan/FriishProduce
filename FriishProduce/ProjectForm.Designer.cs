@@ -592,7 +592,7 @@ namespace FriishProduce
             // 
             // ProjectForm
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);

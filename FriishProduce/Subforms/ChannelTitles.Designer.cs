@@ -174,7 +174,7 @@ namespace FriishProduce
             // ChannelTitles
             // 
             this.AcceptButton = this.b_ok;
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
             this.ControlBox = false;
             this.Controls.Add(this.label8);

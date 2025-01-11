@@ -113,7 +113,7 @@ namespace FriishProduce
             // ContentOptions
             // 
             this.AcceptButton = this.b_ok;
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.CancelButton = this.b_cancel;
             resources.ApplyResources(this, "$this");
             this.ControlBox = false;

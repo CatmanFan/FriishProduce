@@ -31,8 +31,6 @@ namespace FriishProduce
         {
             this.padbutton_switch = new JCS.ToggleSwitch();
             this.padbutton = new System.Windows.Forms.Label();
-            this.europe = new System.Windows.Forms.Label();
-            this.europe_switch = new JCS.ToggleSwitch();
             this.vc_options = new System.Windows.Forms.GroupBox();
             this.sgenable = new System.Windows.Forms.CheckBox();
             this.backupram = new System.Windows.Forms.CheckBox();
@@ -42,16 +40,23 @@ namespace FriishProduce
             this.sprline = new System.Windows.Forms.CheckBox();
             this.raster = new System.Windows.Forms.CheckBox();
             this.hide_overscan = new System.Windows.Forms.CheckBox();
+            this.region_l = new System.Windows.Forms.GroupBox();
+            this.region = new System.Windows.Forms.ComboBox();
             this.bottomPanel1.SuspendLayout();
             this.controller_box.SuspendLayout();
             this.vc_options.SuspendLayout();
             this.display.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.y_offset_toggle)).BeginInit();
+            this.region_l.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // controller_box
+            // 
+            this.controller_box.Location = new System.Drawing.Point(564, 224);
             // 
             // padbutton_switch
             // 
-            this.padbutton_switch.Location = new System.Drawing.Point(10, 41);
+            this.padbutton_switch.Location = new System.Drawing.Point(10, 20);
             this.padbutton_switch.Name = "padbutton_switch";
             this.padbutton_switch.OffFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.padbutton_switch.OnFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -62,42 +67,21 @@ namespace FriishProduce
             // padbutton
             // 
             this.padbutton.AutoSize = true;
-            this.padbutton.Location = new System.Drawing.Point(51, 41);
+            this.padbutton.Location = new System.Drawing.Point(51, 20);
             this.padbutton.Name = "padbutton";
             this.padbutton.Size = new System.Drawing.Size(57, 13);
             this.padbutton.TabIndex = 22;
             this.padbutton.Text = "padbutton";
             // 
-            // europe
-            // 
-            this.europe.AutoSize = true;
-            this.europe.Location = new System.Drawing.Point(51, 20);
-            this.europe.Name = "europe";
-            this.europe.Size = new System.Drawing.Size(41, 13);
-            this.europe.TabIndex = 15;
-            this.europe.Text = "europe";
-            // 
-            // europe_switch
-            // 
-            this.europe_switch.Location = new System.Drawing.Point(10, 20);
-            this.europe_switch.Name = "europe_switch";
-            this.europe_switch.OffFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.europe_switch.OnFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.europe_switch.Size = new System.Drawing.Size(35, 15);
-            this.europe_switch.TabIndex = 19;
-            this.europe_switch.CheckedChanged += new JCS.ToggleSwitch.CheckedChangedDelegate(this.ToggleSwitchChanged);
-            // 
             // vc_options
             // 
             this.vc_options.Controls.Add(this.sgenable);
             this.vc_options.Controls.Add(this.backupram);
-            this.vc_options.Controls.Add(this.europe_switch);
-            this.vc_options.Controls.Add(this.europe);
             this.vc_options.Controls.Add(this.padbutton);
             this.vc_options.Controls.Add(this.padbutton_switch);
-            this.vc_options.Location = new System.Drawing.Point(12, 10);
+            this.vc_options.Location = new System.Drawing.Point(12, 66);
             this.vc_options.Name = "vc_options";
-            this.vc_options.Size = new System.Drawing.Size(530, 110);
+            this.vc_options.Size = new System.Drawing.Size(530, 90);
             this.vc_options.TabIndex = 24;
             this.vc_options.TabStop = false;
             this.vc_options.Tag = "vc_options";
@@ -106,7 +90,7 @@ namespace FriishProduce
             // sgenable
             // 
             this.sgenable.AutoSize = true;
-            this.sgenable.Location = new System.Drawing.Point(10, 63);
+            this.sgenable.Location = new System.Drawing.Point(10, 43);
             this.sgenable.Name = "sgenable";
             this.sgenable.Size = new System.Drawing.Size(69, 17);
             this.sgenable.TabIndex = 24;
@@ -117,7 +101,7 @@ namespace FriishProduce
             // backupram
             // 
             this.backupram.AutoSize = true;
-            this.backupram.Location = new System.Drawing.Point(10, 84);
+            this.backupram.Location = new System.Drawing.Point(10, 65);
             this.backupram.Name = "backupram";
             this.backupram.Size = new System.Drawing.Size(115, 17);
             this.backupram.TabIndex = 5;
@@ -132,7 +116,7 @@ namespace FriishProduce
             this.display.Controls.Add(this.sprline);
             this.display.Controls.Add(this.raster);
             this.display.Controls.Add(this.hide_overscan);
-            this.display.Location = new System.Drawing.Point(12, 126);
+            this.display.Location = new System.Drawing.Point(12, 162);
             this.display.Name = "display";
             this.display.Size = new System.Drawing.Size(530, 116);
             this.display.TabIndex = 25;
@@ -147,6 +131,7 @@ namespace FriishProduce
             this.y_offset.Name = "y_offset";
             this.y_offset.Size = new System.Drawing.Size(48, 13);
             this.y_offset.TabIndex = 4;
+            this.y_offset.Tag = "y_offset";
             this.y_offset.Text = "y_offset";
             // 
             // y_offset_toggle
@@ -194,9 +179,31 @@ namespace FriishProduce
             this.hide_overscan.Text = "hide_overscan";
             this.hide_overscan.UseVisualStyleBackColor = true;
             // 
+            // region_l
+            // 
+            this.region_l.Controls.Add(this.region);
+            this.region_l.Location = new System.Drawing.Point(12, 10);
+            this.region_l.Name = "region_l";
+            this.region_l.Size = new System.Drawing.Size(530, 50);
+            this.region_l.TabIndex = 39;
+            this.region_l.TabStop = false;
+            this.region_l.Tag = "region";
+            this.region_l.Text = "region";
+            // 
+            // region
+            // 
+            this.region.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.region.FormattingEnabled = true;
+            this.region.Location = new System.Drawing.Point(10, 18);
+            this.region.Name = "region";
+            this.region.Size = new System.Drawing.Size(510, 21);
+            this.region.TabIndex = 18;
+            this.region.Tag = "region";
+            // 
             // Options_VC_PCE
             // 
-            this.ClientSize = new System.Drawing.Size(554, 298);
+            this.ClientSize = new System.Drawing.Size(554, 338);
+            this.Controls.Add(this.region_l);
             this.Controls.Add(this.vc_options);
             this.Controls.Add(this.display);
             this.Name = "Options_VC_PCE";
@@ -204,6 +211,7 @@ namespace FriishProduce
             this.Controls.SetChildIndex(this.controller_box, 0);
             this.Controls.SetChildIndex(this.display, 0);
             this.Controls.SetChildIndex(this.vc_options, 0);
+            this.Controls.SetChildIndex(this.region_l, 0);
             this.bottomPanel1.ResumeLayout(false);
             this.controller_box.ResumeLayout(false);
             this.controller_box.PerformLayout();
@@ -212,6 +220,7 @@ namespace FriishProduce
             this.display.ResumeLayout(false);
             this.display.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.y_offset_toggle)).EndInit();
+            this.region_l.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -219,8 +228,6 @@ namespace FriishProduce
         #endregion
         private JCS.ToggleSwitch padbutton_switch;
         private System.Windows.Forms.Label padbutton;
-        private System.Windows.Forms.Label europe;
-        private JCS.ToggleSwitch europe_switch;
         private System.Windows.Forms.GroupBox vc_options;
         private System.Windows.Forms.GroupBox display;
         private System.Windows.Forms.CheckBox hide_overscan;
@@ -230,5 +237,7 @@ namespace FriishProduce
         private System.Windows.Forms.NumericUpDown y_offset_toggle;
         private System.Windows.Forms.CheckBox backupram;
         private System.Windows.Forms.CheckBox sgenable;
+        private System.Windows.Forms.GroupBox region_l;
+        private System.Windows.Forms.ComboBox region;
     }
 }

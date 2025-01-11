@@ -282,16 +282,16 @@ namespace FriishProduce
             }
         }
 
-        private void addTab(Platform platform, Project x = null)
+        private void addTab(Platform platform, Project x = null, string file = null)
         {
-            ProjectForm p = new(platform, null, x) { Font = Font };
+            ProjectForm p = new(platform, file, x) { Font = Font };
             p.FormClosed += TabChanged;
             tabControl.TabPages.Add(p);
 
             tabControl.BringToFront();
             tabControl.Visible = true;
 
-            // BrowseROMDialog();
+            // if (file == null || !File.Exists(file)) BrowseROMDialog();
         }
 
         private void OpenROM_Click(object sender, EventArgs e) => BrowseROMDialog();
@@ -417,6 +417,97 @@ namespace FriishProduce
             }
         }
 
+        private void Form_DragEnter(object sender, DragEventArgs e) { if (e.Data.GetDataPresent(DataFormats.FileDrop)) e.Effect = DragDropEffects.Copy; }
+
+        private void Form_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] files = e.Data.GetData(DataFormats.FileDrop) as string[];
+
+            if (files != null)
+            {
+                if (tabControl.SelectedForm == null)
+                {
+                    foreach (string file in files)
+                    {
+                        switch (Path.GetExtension(file).ToLower())
+                        {
+                            case ".nes":
+                                addTab(Platform.NES, null, file);
+                                break;
+
+                            case ".sfc":
+                            case ".smc":
+                                addTab(Platform.SNES, null, file);
+                                break;
+
+                            case ".n64":
+                            case ".v64":
+                            case ".z64":
+                                addTab(Platform.N64, null, file);
+                                break;
+
+                            case ".sms":
+                                addTab(Platform.SMS, null, file);
+                                break;
+
+                            case ".bin":
+                            case ".gen":
+                            case ".md":
+                                addTab(Platform.SMD, null, file);
+                                break;
+
+                            case ".pce":
+                                addTab(Platform.PCE, null, file);
+                                break;
+
+                            case ".zip":
+                                addTab(Platform.NEO, null, file);
+                                break;
+
+                            case ".rom":
+                            case ".mx1":
+                            case ".mx2":
+                                addTab(Platform.MSX, null, file);
+                                break;
+
+                            case ".t64":
+                                addTab(Platform.C64, null, file);
+                                break;
+
+                            case ".swf":
+                                addTab(Platform.Flash, null, file);
+                                break;
+                        
+                            case ".gb":
+                                addTab(Platform.GB, null, file);
+                                break;
+
+                            case ".gbc":
+                                addTab(Platform.GBC, null, file);
+                                break;
+
+                            case ".gba":
+                                addTab(Platform.GBA, null, file);
+                                break;
+                        
+                            case ".ldb":
+                                addTab(Platform.RPGM, null, file);
+                                break;
+
+                            case ".cue":
+                                addTab(Platform.PSX, null, file);
+                                break;
+                        }
+                    }
+                }
+
+                else
+                {
+                    (tabControl.SelectedForm as ProjectForm).LoadROM(files[0], Program.Config.application.auto_prefill, true);
+                }
+            }
+        }
+
         private async void updateCheck()
         {
             bool updated = await Updater.GetLatest();
@@ -453,6 +544,21 @@ namespace FriishProduce
             foreach (var item in Directory.EnumerateFiles(Paths.Databases))
                 if (Path.GetExtension(item).ToLower() == ".xml")
                     File.Delete(item);
+        }
+
+        private void ResetConfig(object sender, EventArgs e)
+        {
+            if (MessageBox.Show(Program.Lang.Msg(12), MessageBox.Buttons.YesNo, MessageBox.Icons.Warning) == MessageBox.Result.Yes)
+            {
+                foreach (var item in Directory.EnumerateFiles(Paths.Databases))
+                    if (Path.GetExtension(item).ToLower() == ".xml")
+                        File.Delete(item);
+
+                Program.Config.Reset(false);
+                if (File.Exists(Paths.Config)) File.Delete(Paths.Config);
+
+                Environment.Exit(0);
+            }
         }
 
         private void ExtractWAD_Click(object sender, EventArgs e)

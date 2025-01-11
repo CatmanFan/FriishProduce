@@ -181,7 +181,7 @@
     <value>False</value>
   </data>
   <data name="toolStrip.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8pt</value>
+    <value>Segoe UI, 11px</value>
   </data>
   <data name="toolbarNewProject.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -544,13 +544,10 @@
   <data name="menuItem8.Text" xml:space="preserve">
     <value>-</value>
   </data>
-  <data name="clear_database.Text" xml:space="preserve">
-    <value>clear_database</value>
-  </data>
   <data name="language_file_editor.Text" xml:space="preserve">
     <value>Language File Editor</value>
   </data>
-  <data name="menuItem11.Text" xml:space="preserve">
+  <data name="menuItem10.Text" xml:space="preserve">
     <value>-</value>
   </data>
   <data name="preferences.Shortcut" type="System.Windows.Forms.Shortcut, System.Windows.Forms">
@@ -558,6 +555,15 @@
   </data>
   <data name="preferences.Text" xml:space="preserve">
     <value>preferences</value>
+  </data>
+  <data name="menuItem11.Text" xml:space="preserve">
+    <value>-</value>
+  </data>
+  <data name="clear_database.Text" xml:space="preserve">
+    <value>clear_database</value>
+  </data>
+  <data name="reset_preferences.Text" xml:space="preserve">
+    <value>reset_preferences</value>
   </data>
   <data name="menuItem3.Text" xml:space="preserve">
     <value>tools</value>
@@ -604,9 +610,6 @@
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>77</value>
   </metadata>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
-  </data>
   <data name="$this.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -614,7 +617,7 @@
     <value>1008, 504</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8.25pt</value>
+    <value>Tahoma, 11px</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -3045,16 +3048,22 @@
   <data name="&gt;&gt;menuItem8.Type" xml:space="preserve">
     <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;clear_database.Name" xml:space="preserve">
-    <value>clear_database</value>
-  </data>
-  <data name="&gt;&gt;clear_database.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;language_file_editor.Name" xml:space="preserve">
     <value>language_file_editor</value>
   </data>
   <data name="&gt;&gt;language_file_editor.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuItem10.Name" xml:space="preserve">
+    <value>menuItem10</value>
+  </data>
+  <data name="&gt;&gt;menuItem10.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;preferences.Name" xml:space="preserve">
+    <value>preferences</value>
+  </data>
+  <data name="&gt;&gt;preferences.Type" xml:space="preserve">
     <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;menuItem11.Name" xml:space="preserve">
@@ -3063,10 +3072,16 @@
   <data name="&gt;&gt;menuItem11.Type" xml:space="preserve">
     <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;preferences.Name" xml:space="preserve">
-    <value>preferences</value>
+  <data name="&gt;&gt;clear_database.Name" xml:space="preserve">
+    <value>clear_database</value>
   </data>
-  <data name="&gt;&gt;preferences.Type" xml:space="preserve">
+  <data name="&gt;&gt;clear_database.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;reset_preferences.Name" xml:space="preserve">
+    <value>reset_preferences</value>
+  </data>
+  <data name="&gt;&gt;reset_preferences.Type" xml:space="preserve">
     <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;menuItem4.Name" xml:space="preserve">

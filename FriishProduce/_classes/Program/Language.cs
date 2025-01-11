@@ -174,6 +174,7 @@ namespace FriishProduce
         public enum ScriptType
         {
             Normal,
+            Japanese,
             CJK,
             RTL
         }
@@ -182,7 +183,10 @@ namespace FriishProduce
         {
             if (text == null) return ScriptType.Normal;
 
-            else return new System.Text.RegularExpressions.Regex(
+            else return Current.StartsWith("ja") || new System.Text.RegularExpressions.Regex(
+                @"\p{IsHiragana}|" +
+                @"\p{IsKatakana}").IsMatch(text) ? ScriptType.Japanese
+                 : new System.Text.RegularExpressions.Regex(
                 @"\p{IsHangulJamo}|" +
                 @"\p{IsCJKRadicalsSupplement}|" +
                 @"\p{IsCJKSymbolsandPunctuation}|" +
@@ -191,14 +195,12 @@ namespace FriishProduce
                 @"\p{IsCJKUnifiedIdeographsExtensionA}|" +
                 @"\p{IsCJKUnifiedIdeographs}|" +
                 @"\p{IsHangulSyllables}|" +
-                @"\p{IsHiragana}|" +
-                @"\p{IsKatakana}|" +
                 @"\p{IsCJKCompatibilityForms}").IsMatch(text) ? ScriptType.CJK
-                 : new System.Text.RegularExpressions.Regex(
+                 : Current.StartsWith("ar") || Current.StartsWith("he") || new System.Text.RegularExpressions.Regex(
                 @"\p{IsArabic}|" +
                 @"\p{IsHebrew}|" +
                 @"\p{IsArabicPresentationForms-A}|" +
-                @"\p{IsArabicPresentationForms-B}|").IsMatch(text) ? ScriptType.RTL
+                @"\p{IsArabicPresentationForms-B}").IsMatch(text) ? ScriptType.RTL
                 : ScriptType.Normal;
         }
 
@@ -207,27 +209,25 @@ namespace FriishProduce
         /// </summary>
         public void Control(Control c, string tag = null)
         {
-            // string fontFamilyName = Program.Lang.Current.ToLower().StartsWith("ja") ? "MS Gothic" : "Tahoma";
-            // float fontFamilySize = Program.Lang.Current.ToLower().StartsWith("ja") ? 9f : 8.25f;
-            // c.Font = new Font(fontFamilyName, fontFamilySize, c.Font.Style);
-
             if (tag == null) tag = c.Tag != null ? c.Tag?.ToString() : c.Name;
+
+            ScriptType script = GetScript(Program.Lang.String("preferences"));
 
             foreach (Control item1 in c.Controls)
             {
-                localize(item1, tag);
+                localize(item1, tag, script);
                 foreach (Control item2 in item1.Controls)
                 {
-                    localize(item2, tag);
+                    localize(item2, tag, script);
                     foreach (Control item3 in item2.Controls)
                     {
-                        localize(item3, tag);
+                        localize(item3, tag, script);
                         foreach (Control item4 in item3.Controls)
                         {
-                            localize(item4, tag);
+                            localize(item4, tag, script);
                             foreach (Control item5 in item4.Controls)
                             {
-                                localize(item5, tag);
+                                localize(item5, tag, script);
                             }
                         }
                     }
@@ -493,9 +493,20 @@ namespace FriishProduce
             return reader;
         }
 
-        private void localize(Control item, string form)
+        private void localize(Control item, string form, ScriptType script)
         {
             if (item.Tag == null) return;
+
+            if (script == ScriptType.Japanese)
+            {
+                float size = item.Font.Size;
+                if (size == 8.25) size = 9;
+                if (size == 11) size = 9;
+
+                item.Font = new System.Drawing.Font("MS Gothic", size, item.Font.Style);
+            }
+
+            // ----------------------------------------------------------------------------------------------------
 
             string name = item.Tag != null ? item.Tag?.ToString() : item.Name;
 
@@ -512,9 +523,16 @@ namespace FriishProduce
 
             else
             {
-                string target = item.GetType() == typeof(JCS.ToggleSwitch) ? Toggle((item as JCS.ToggleSwitch).Checked, name.ToLower(), form.ToLower()) : String(name.ToLower(), form.ToLower());
+                string target = item.GetType() == typeof(JCS.ToggleSwitch)
+                                                ? Toggle((item as JCS.ToggleSwitch).Checked, name.ToLower(), form.ToLower())
+                                                : String(name.ToLower(), form.ToLower());
                 if (target == "undefined") target = String(name.ToLower());
-                if (target != "undefined") item.Text = target;
+
+                if (target != "undefined")
+                {
+                    item.Text = target;
+                    // if (script == ScriptType.RTL) item.RightToLeft = RightToLeft.Yes;
+                }
             }
         }
         #endregion

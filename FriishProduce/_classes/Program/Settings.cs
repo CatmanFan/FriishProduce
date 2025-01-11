@@ -34,7 +34,7 @@ namespace FriishProduce
             File.WriteAllText(FriishProduce.Paths.Config, outFile);
         }
 
-        private void Reset(bool save)
+        public void Reset(bool save)
         {
             application = new();
             paths = new();

@@ -141,7 +141,7 @@ namespace FriishProduce
 
             // -----------------------------
 
-            vc_sega_country.Text = Program.Lang.String("region").TrimEnd(':', '：').Trim();
+            vc_sega_country.Text = Program.Lang.String("region");
             vc_sega_dev_mdpad_enable_6b.Text = string.Format(Program.Lang.String("dev_mdpad_enable_6b", "vc_sega"), Program.Lang.Console(Platform.SMD));
             Program.Lang.String(vc_sega_console_disableresetbutton, "vc_sega");
 
@@ -150,6 +150,7 @@ namespace FriishProduce
 
             // -----------------------------
 
+            Program.Lang.Control(vc_pce_region, "vc_pce");
             Program.Lang.String(vc_pce_y_offset_l, "vc_pce");
             Program.Lang.String(vc_pce_hide_overscan, "vc_pce");
             Program.Lang.String(vc_pce_raster, "vc_pce");
@@ -245,7 +246,7 @@ namespace FriishProduce
             vc_sega_console_disableresetbutton.Checked = Program.Config.sega.console_disableresetbutton == "1";
 
             // PCE
-            vc_pce_europe_switch.Checked = Program.Config.pce.EUROPE == "1";
+            vc_pce_region.SelectedIndex = int.Parse(Program.Config.pce.EUROPE);
             vc_pce_padbutton_switch.Checked = Program.Config.pce.PADBUTTON == "6";
             vc_pce_backupram.Checked = Program.Config.pce.BACKUPRAM == "1";
             vc_pce_sgenable.Checked = Program.Config.pce.SGENABLE == "1";
@@ -391,7 +392,7 @@ namespace FriishProduce
             Program.Config.sega.country = vc_sega_countries.SelectedIndex switch { 0 => "jp", 1 => "us", _ => "eu" };
             Program.Config.sega.console_disableresetbutton = vc_sega_console_disableresetbutton.Checked ? "1" : null;
 
-            Program.Config.pce.EUROPE = vc_pce_europe_switch.Checked ? "1" : "0";
+            Program.Config.pce.EUROPE = vc_pce_region.SelectedIndex.ToString();
             Program.Config.pce.PADBUTTON = vc_pce_padbutton_switch.Checked ? "6" : "2";
             Program.Config.pce.SGENABLE = vc_pce_sgenable.Checked ? "1" : "0";
             Program.Config.pce.BACKUPRAM = vc_pce_backupram.Checked ? "1" : "0";
@@ -553,7 +554,6 @@ namespace FriishProduce
 
         private void ToggleSwitchText()
         {
-            vc_pce_europe.Text = Program.Lang.Toggle(vc_pce_europe_switch.Checked, "europe", vc_pce.Tag.ToString());
             vc_pce_padbutton.Text = Program.Lang.Toggle(vc_pce_padbutton_switch.Checked, "padbutton", vc_pce.Tag.ToString());
         }
 

@@ -4,6 +4,10 @@
 	"application_title": "FriishProduce",
 	
 	"strings": {
+		"vc_pce": {
+			"region1":							"América y Europa"
+		},
+
 		"controller": {
 			"page1":							"Control remoto Wii",
 			"page2":							"Mando clásico",

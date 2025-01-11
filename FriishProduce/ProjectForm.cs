@@ -666,38 +666,23 @@ namespace FriishProduce
             LoadChannelDatabase();
 
             InitializeComponent();
-            AddBases();
+            Setup();
             _isShown = true;
 
             if (project != null && ROMpath == null)
                 this.project = project;
 
             if (ROMpath != null && project == null)
-            {
                 rom.FilePath = ROMpath;
-                LoadROM(rom.FilePath, Program.Config.application.auto_prefill);
-            }
         }
 
-        private void Form_Shown(object sender, EventArgs e)
+        private void Setup()
         {
-            // ----------------------------
-            if (DesignMode) return;
-            // ----------------------------
+            AddBases();
 
-            // Set icon
-            // ********
-            if (Program.MainForm != null)
-            {
-                using var icon = new Bitmap(Program.MainForm.Icons[targetPlatform]);
-                icon.MakeTransparent(Color.White);
-                Icon = Icon.FromHandle(icon.GetHicon());
-            }
-
-            // Declare WAD metadata modifier
+            // Declare ROM and WAD metadata modifier
             // ********
             TIDCode = null;
-
             switch (targetPlatform)
             {
                 case Platform.NES:
@@ -764,6 +749,56 @@ namespace FriishProduce
                 default:
                     rom = new Disc();
                     break;
+            }
+
+#pragma warning disable IDE0066 // Convert switch statement to expression
+            switch (targetPlatform)
+#pragma warning restore IDE0066 // Convert switch statement to expression
+            {
+                // ROM formats
+                default:
+                    browseROM.Filter = Program.Lang.String($"filter.rom_{targetPlatform.ToString().ToLower()}");
+                    break;
+
+                // CD images
+                case Platform.PCECD:
+                case Platform.PSX:
+                case Platform.SMCD:
+                case Platform.GCN:
+                    browseROM.Filter = Program.Lang.String("filter.disc") + "|" + Program.Lang.String("filter.zip") + Program.Lang.String("filter");
+                    break;
+
+                case Platform.S32X:
+                    browseROM.Filter = Program.Lang.String($"filter.rom_{Platform.SMD.ToString().ToLower()}");
+                    break;
+
+                case Platform.NEO:
+                    browseROM.Filter = Program.Lang.String("filter.zip");
+                    break;
+
+                case Platform.Flash:
+                    browseROM.Filter = Program.Lang.String("filter.swf");
+                    break;
+
+                case Platform.RPGM:
+                    browseROM.Filter = Program.Lang.String("filter.rpgm");
+                    break;
+            }
+        }
+
+        private void Form_Shown(object sender, EventArgs e)
+        {
+            // ----------------------------
+            if (DesignMode) return;
+            // ----------------------------
+
+            // Set icon
+            // ********
+            if (Program.MainForm != null)
+            {
+                using var icon = new Bitmap(Program.MainForm.Icons[targetPlatform]);
+                icon.MakeTransparent(Color.White);
+                Icon = Icon.FromHandle(icon.GetHicon());
             }
 
             // Cosmetic
@@ -864,6 +899,9 @@ namespace FriishProduce
                 foreach (var item in new string[] { project.ROM, project.Patch, project.BaseFile, project.Sound })
                     if (!File.Exists(item) && !string.IsNullOrWhiteSpace(item)) MessageBox.Show(string.Format(Program.Lang.Msg(11, true), Path.GetFileName(item)));
             project = null;
+
+            if (File.Exists(rom?.FilePath) && IsEmpty)
+                LoadROM(rom.FilePath, Program.Config.application.auto_prefill);
         }
 
         // -----------------------------------
@@ -872,43 +910,8 @@ namespace FriishProduce
         {
             browseROM.Title = text;
 
-#pragma warning disable IDE0066 // Convert switch statement to expression
-            switch (targetPlatform)
-#pragma warning restore IDE0066 // Convert switch statement to expression
-            {
-                // ROM formats
-                default:
-                    browseROM.Filter = Program.Lang.String($"filter.rom_{targetPlatform.ToString().ToLower()}");
-                    break;
-
-                // CD images
-                case Platform.PCECD:
-                case Platform.PSX:
-                case Platform.SMCD:
-                case Platform.GCN:
-                    browseROM.Filter = Program.Lang.String("filter.disc") + "|" + Program.Lang.String("filter.zip") + Program.Lang.String("filter");
-                    break;
-
-                case Platform.S32X:
-                    browseROM.Filter = Program.Lang.String($"filter.rom_{Platform.SMD.ToString().ToLower()}");
-                    break;
-
-                case Platform.NEO:
-                    browseROM.Filter = Program.Lang.String("filter.zip");
-                    break;
-
-                case Platform.Flash:
-                    browseROM.Filter = Program.Lang.String("filter.swf");
-                    break;
-
-                case Platform.RPGM:
-                    browseROM.Filter = Program.Lang.String("filter.rpgm");
-                    break;
-            }
-
             if (browseROM.ShowDialog() == DialogResult.OK)
             {
-                IsEmpty = false;
                 LoadROM(browseROM.FileName, Program.Config.application.auto_prefill);
             }
         }
@@ -1035,7 +1038,31 @@ namespace FriishProduce
             string FULLNAME = System.Text.RegularExpressions.Regex.Replace(_bannerTitle, @"\((.*?)\)", "").Replace("\r\n", "\n").Replace("\n", " - ");
             string TITLEID = title_id_upper.Text.ToUpper();
             string PLATFORM = targetPlatform.ToString();
-            string REGION = regions.SelectedItem.ToString();
+
+            string REGION = regions.SelectedItem.ToString() == Program.Lang.String("region_j") ? "Japan"
+                          : regions.SelectedItem.ToString() == Program.Lang.String("region_u") ? "USA"
+                          : regions.SelectedItem.ToString() == Program.Lang.String("region_e") ? "Europe"
+                          : regions.SelectedItem.ToString() == Program.Lang.String("region_k") ? "Korea"
+                          : regions.SelectedIndex == 1 ? "Region-Free"
+                          : null;
+            if (REGION == null)
+            {
+                for (int i = 0; i < baseRegionList.Items.Count; i++)
+                {
+                    if ((baseRegionList.Items[i] as ToolStripMenuItem).Checked)
+                    {
+                        REGION = channels.Entries[Base.SelectedIndex].Regions[i] switch
+                        {
+                            0 => "Japan",
+                            1 or 2 => "USA",
+                            3 or 4 or 5 => "Europe",
+                            6 or 7 => "Korea",
+                            8 => "Region-Free",
+                            _ => "Original"
+                        };
+                    }
+                }
+            }
 
             string target = full ? Program.Config.application.default_export_filename : Program.Config.application.default_target_filename;
             target = target.Replace("FILENAME", FILENAME).Replace("CHANNELNAME", CHANNELNAME).Replace("FULLNAME", FULLNAME).Replace("TITLEID", TITLEID).Replace("PLATFORM", PLATFORM).Replace("REGION", REGION);
@@ -1454,9 +1481,15 @@ namespace FriishProduce
             }
         }
 
-        protected void LoadROM(string ROMpath, bool AutoScan = true)
+        public void LoadROM(string ROMpath, bool AutoScan = true, bool filter = false)
         {
-            if (ROMpath == null || rom == null || !File.Exists(ROMpath)) return;
+            if (ROMpath == null || rom == null || !File.Exists(ROMpath) || (filter && !browseROM.Filter.ToLower().Contains(Path.GetExtension(ROMpath).ToLower())))
+            {
+                SystemSounds.Beep.Play();
+                return;
+            }
+
+            IsEmpty = false;
 
             switch (targetPlatform)
             {

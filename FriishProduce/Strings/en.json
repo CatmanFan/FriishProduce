@@ -29,7 +29,7 @@
 			"none":								"N/A",
 			"not_available":					"Not available",
 
-			"region":							"Region:",
+			"region":							"System region",
 			"region_j":							"Japan",
 			"region_u":							"United States",
 			"region_e":							"Europe/Australia",
@@ -102,6 +102,7 @@
 			"009":								"You are currently already up to date.",
 			"010":								"When this option is enabled, the program will treat all files within the same folder as the currently selected one as forming part of the software to be injected.\n\nPlease make sure that your software files are in a separate folder before continuing.",
 			"011":								"Extract the opening.bnr (includes IMET header)?",
+			"012":								"This will restore all settings to factory defaults.\nAre you sure you want to continue?",
 
 			"error":							"An error has occurred",
 			"e_000":							"Unable to connect to the Internet.\n{0}",
@@ -153,10 +154,11 @@
 			"extract_wad_icon":					"Extract channel &icon from WAD...",
 			"extract_wad_sound":				"Extract channel &sound from WAD...",
 			"extract_wad_manual":				"Extract VC &manual from WAD...",
-			"clear_database":					"&Clear all ROM databases",
 			"updater":							"Updater",
 			"check_for_updates":				"Check for updates",
 			"auto_update":						"Automatically check for updates on startup",
+			"clear_database":					"&Clear all databases",
+			"reset_preferences":				"&Reset all preferences",
 			"exit":								"Exit",
 
 			"project_type":						"{0} WAD",
@@ -219,6 +221,7 @@
 			"channel_metadata":					"Channel metadata",
 			"channel_name":						"Channel name:",
 			"title_id":							"Title ID:",
+			"region":							"Channel region:",
 			"video_mode":						"Video mode:",
 			"banner":							"Channel banner",
 			"banner_details":					"Banner details",
@@ -318,8 +321,8 @@
 			"sprline":							"Sprite limit",
 			"y_offset":							"Y offset",
 			"sgenable":							"Enable SuperGrafx functionality",
-			"europe0":							"Current system region: Japan",
-			"europe1":							"Current system region: US/Europe",
+			"region0":							"{region_j}",
+			"region1":							"United States/Europe",
 			"padbutton0":						"Using 2-button Pad",
 			"padbutton1":						"Using 6-button Pad"
 		},

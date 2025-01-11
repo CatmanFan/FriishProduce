@@ -29,7 +29,7 @@
 			"none":								"Aucun(e)",
 			"not_available":					"Pas disponible",
 
-			"region":							"Région :",
+			"region":							"Région de la console",
 			"region_j":							"Japon",
 			"region_u":							"Amérique du Nord",
 			"region_e":							"Europe",
@@ -102,6 +102,7 @@
 			"009":								"Vous êtes déjà à jour.",
 			"010":								"Lorsque cette option est activée, l'application traitera tous les fichiers du même dossier que celui actuellement sélectionné comme faisant partie du logiciel à injecter.\n\nVeuillez vous assurer que vos fichiers sont déjà dans un répertoire séparé avant de continuer.",
 			"011":								"Extraire le fichier opening.bnr (comprenant le header IMET) ?",
+			"012":								"Vous allez restaurer les paramètres par défaut de l'application.\nVoulez-vous vraiment continuer ?",
 
 			"error":							"Oups, un problème est survenu !",
 			"e_000":							"Échec de connexion à Internet.\n{0}",
@@ -150,10 +151,11 @@
 			"extract_wad_icon":					"Extraire l'&icône d'aperçu d'une chaîne Wii...",
 			"extract_wad_sound":				"Extraire le &son d'aperçu d'une chaîne Wii...",
 			"extract_wad_manual":				"Extraire un &mode d'emploi de Console virtuelle...",
-			"clear_database":					"&Effacer les bases de données ROM",
 			"updater":							"Mise à jour",
 			"check_for_updates":				"Vérifier maintenant",
 			"auto_update":						"Vérifier automatiquement au démarrage de l'application",
+			"clear_database":					"&Effacer les bases de données internelles",
+			"reset_preferences":				"&Réinitialiser la configuration",
 			"exit":								"Quitter",
 
 			"project_type":						"Chaîne {0}",
@@ -215,6 +217,7 @@
 			"channel_metadata":					"Métadonnées de la chaîne",
 			"channel_name":						"Nom de la chaîne :",
 			"title_id":							"Title ID :",
+			"region":							"Région cible :",
 			"video_mode":						"Mode vidéo :",
 			"banner":							"Banner de la chaîne",
 			"banner_details":					"Détails du banner",
@@ -307,8 +310,7 @@
 			"sprline":							"Limite de sprites",
 			"y_offset":							"Décalage Y",
 			"sgenable":							"Utiliser la fonctionnalité SuperGrafx",
-			"europe0":							"Région précisée : Japon",
-			"europe1":							"Région précisée : Europe / USA",
+			"region1":							"Europe / USA",
 			"padbutton0":						"Manette : 2 boutons",
 			"padbutton1":						"Manette : 6 boutons"
 		},

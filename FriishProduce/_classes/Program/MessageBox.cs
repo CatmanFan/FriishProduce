@@ -109,6 +109,7 @@ namespace FriishProduce
                 if (string.IsNullOrWhiteSpace(description))
                 {
                     var lines = mainText.Replace("\r\n", "\n").Split('\n');
+
                     if (lines.Length >= 2)
                     {
                         var secondary = new List<string>();
@@ -119,6 +120,7 @@ namespace FriishProduce
                         t.MainInstruction = lines[0];
                         t.Content = string.Join("\n", secondary.ToArray()).Trim();
                     }
+
                     else
                     {
                         t.MainInstruction = null;
@@ -136,18 +138,28 @@ namespace FriishProduce
                     t.MainIcon = TaskDialogIcon.Custom;
                     t.CustomMainIcon = ico;
                 }
+
                 else
                 {
-                    t.MainIcon = icon switch { Icons.Error => TaskDialogIcon.Error, Icons.Information => TaskDialogIcon.Information, Icons.Shield => TaskDialogIcon.Shield, Icons.Warning => TaskDialogIcon.Warning, _ => TaskDialogIcon.Custom };
+                    t.MainIcon = icon switch
+                    {
+                        Icons.Error => TaskDialogIcon.Error,
+                        Icons.Information => TaskDialogIcon.Information,
+                        Icons.Shield => TaskDialogIcon.Shield,
+                        Icons.Warning => TaskDialogIcon.Warning,
+                        _ => TaskDialogIcon.Custom
+                    };
                 }
 
                 if (dontShow >= 0) { t.VerificationText = Program.Lang.String("do_not_show"); }
 
-                if (Program.Lang.GetScript(mainText) == Language.ScriptType.CJK)
+                Language.ScriptType script = Program.Lang.GetScript(mainText);
+                t.RightToLeft = script == Language.ScriptType.RTL;
+                if (script == Language.ScriptType.CJK || script == Language.ScriptType.Japanese)
                 {
                     bool hasTitle = !string.IsNullOrEmpty(t.MainInstruction);
                     using System.Drawing.Font f = new(System.Drawing.FontFamily.GenericSansSerif, hasTitle ? 6.5f : 5.5f, System.Drawing.FontStyle.Regular);
-                    t.Width = Math.Min(450, System.Windows.Forms.TextRenderer.MeasureText(hasTitle ? t.MainInstruction : mainText, f).Width + (hasTitle ? 0 : 5));
+                    t.Width = 250; // Math.Min(450, System.Windows.Forms.TextRenderer.MeasureText(hasTitle ? t.MainInstruction : mainText, f).Width + (hasTitle ? 0 : 5));
                 }
 
                 var clicked = t.ShowDialog();

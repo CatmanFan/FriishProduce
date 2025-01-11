@@ -226,7 +226,7 @@ namespace FriishProduce
             // label1
             // 
             this.label1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(164, 19);
@@ -372,7 +372,7 @@ namespace FriishProduce
             this.find_original_l.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.find_original});
             this.find_original_l.Name = "find_original_l";
-            this.find_original_l.Size = new System.Drawing.Size(129, 22);
+            this.find_original_l.Size = new System.Drawing.Size(180, 22);
             this.find_original_l.Text = "Original";
             // 
             // find_original
@@ -389,7 +389,7 @@ namespace FriishProduce
             this.find_translated_l.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.find_translated});
             this.find_translated_l.Name = "find_translated_l";
-            this.find_translated_l.Size = new System.Drawing.Size(129, 22);
+            this.find_translated_l.Size = new System.Drawing.Size(180, 22);
             this.find_translated_l.Text = "Translated";
             // 
             // find_translated
@@ -403,13 +403,12 @@ namespace FriishProduce
             // 
             // LanguageEditor
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(884, 421);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Menu = this.mainMenu;
             this.Name = "LanguageEditor";
