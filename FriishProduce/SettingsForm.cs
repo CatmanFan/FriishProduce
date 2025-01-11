@@ -13,7 +13,6 @@ namespace FriishProduce
 
         private int dirtyOption1;
         private bool dirtyOption2;
-        private bool dirtyOption3;
 
         public SettingsForm()
         {
@@ -283,8 +282,7 @@ namespace FriishProduce
             // -----------------------------
 
             dirtyOption1 = languages.SelectedIndex;
-            dirtyOption2 = use_online_wad_enabled.Checked;
-            dirtyOption3 = reset_all_dialogs.Checked;
+            dirtyOption2 = reset_all_dialogs.Checked;
         }
 
         private void Loading(object sender, EventArgs e)
@@ -445,8 +443,7 @@ namespace FriishProduce
 
             bool isDirty = isShown
                 && (dirtyOption1 != languages.SelectedIndex
-                 || dirtyOption2 != use_online_wad_enabled.Checked
-                 || dirtyOption3 != reset_all_dialogs.Checked);
+                 || dirtyOption2 != reset_all_dialogs.Checked);
             bool restart = isDirty && MessageBox.Show(Program.Lang.Msg(0), MessageBox.Buttons.YesNo, MessageBox.Icons.Information) == MessageBox.Result.Yes;
 
             isShown = false;
@@ -454,9 +451,7 @@ namespace FriishProduce
 
             if (restart)
             {
-                using var p = new System.Diagnostics.Process() { StartInfo = new System.Diagnostics.ProcessStartInfo(Application.ExecutablePath) };
-                p.Start();
-                Environment.Exit(0);
+                Application.Restart();
             }
         }
 

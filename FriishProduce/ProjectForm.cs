@@ -800,13 +800,14 @@ namespace FriishProduce
 
                 if (!project.BaseOnline.Enabled)
                 {
+                    use_online_wad.Enabled = Program.Config.application.use_online_wad_enabled;
                     use_offline_wad.Checked = true;
                     WADPath = project.BaseFile;
                     if (File.Exists(project.BaseFile)) LoadWAD(project.BaseFile);
                 }
                 else
                 {
-                    use_online_wad.Checked = true;
+                    use_online_wad.Enabled = use_online_wad.Checked = true;
                     try { Base.SelectedIndex = project.BaseOnline.Index; UpdateBaseForm(project.BaseOnline.Region); }
                     catch { Base.SelectedIndex = 0; UpdateBaseForm(); }
                 }

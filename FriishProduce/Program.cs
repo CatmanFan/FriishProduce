@@ -33,11 +33,13 @@ namespace FriishProduce
             else if (Process.GetProcessesByName(Process.GetCurrentProcess().ProcessName).Length > 1)
             {
                 foreach (var Process in Process.GetProcessesByName(Process.GetCurrentProcess().ProcessName))
-                    if (Process.Handle != Process.GetCurrentProcess().Handle)
+                    if (Process.Handle != Process.GetCurrentProcess().Handle && Process.MainWindowHandle != IntPtr.Zero)
+                    {
                         SwitchToThisWindow(Process.MainWindowHandle, true);
+                        Environment.Exit(0);
+                        return;
+                    }
 
-                Environment.Exit(0);
-                return;
             }
 
 #if DEBUG
