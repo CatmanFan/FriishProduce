@@ -129,6 +129,11 @@ namespace FriishProduce
 
         public class App
         {
+#if DEBUG
+            public bool debug_mode { get; set; } = true;
+#else
+            public bool debug_mode { get; set; } = false;
+#endif
             public string language { get; set; } = "sys";
             public bool auto_update { get; set; } = false;
             public bool donotshow_000 { get; set; } = false;
@@ -187,7 +192,7 @@ namespace FriishProduce
         {
             public string console_brightness { get; set; } = "100";
             public string console_disableresetbutton { get; set; } = null;
-            public string country { get; set; } = "us";
+            public string country { get; set; } = "jp";
             public string dev_mdpad_enable_6b { get; set; } = "1";
             public string save_sram { get; set; } = "1";
             public string nplayers { get; set; } = null;

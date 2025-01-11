@@ -637,7 +637,7 @@ namespace FriishProduce.Injectors
 
                 #region ---------------- Adding regional config ----------------
 
-                else if (item.EndsWith(".pcf") && item.StartsWith("config\\") && Path.GetFileNameWithoutExtension(file).Length == 11)
+                else if (type != Type.YouTube && item.EndsWith(".pcf") && item.StartsWith("config\\") && Path.GetFileNameWithoutExtension(file).Length == 11)
                 {
                     List<string> txt = new();
 

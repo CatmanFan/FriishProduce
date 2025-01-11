@@ -189,7 +189,7 @@ namespace FriishProduce
 
         private void changeBackgroundColor(object sender, EventArgs e)
         {
-            BGColor.ShowDialog();
+            BGColor.ShowDialog(this);
             background_color_img.BackColor = BGColor.Color;
         }
         #endregion

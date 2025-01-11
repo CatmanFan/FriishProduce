@@ -180,7 +180,9 @@ namespace FriishProduce
 
         public ScriptType GetScript(string text)
         {
-            return new System.Text.RegularExpressions.Regex(
+            if (text == null) return ScriptType.Normal;
+
+            else return new System.Text.RegularExpressions.Regex(
                 @"\p{IsHangulJamo}|" +
                 @"\p{IsCJKRadicalsSupplement}|" +
                 @"\p{IsCJKSymbolsandPunctuation}|" +

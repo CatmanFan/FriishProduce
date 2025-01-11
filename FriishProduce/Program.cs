@@ -15,7 +15,7 @@ namespace FriishProduce
         public static MainForm MainForm { get; private set; }
         public static Language Lang { get; set; }
         public static IntPtr Handle { get; set; }
-        public static bool DebugMode { get; private set; }
+        public static bool DebugMode { get => Config?.application?.debug_mode ?? false; }
 
         /// <summary>
         /// The main entry point for the application.
@@ -41,12 +41,6 @@ namespace FriishProduce
                     }
 
             }
-
-#if DEBUG
-            DebugMode = true;
-#else
-            DebugMode = false;
-#endif
 
             Config = new(Paths.Config);
             Lang = new Language();

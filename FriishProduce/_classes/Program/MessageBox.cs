@@ -147,7 +147,7 @@ namespace FriishProduce
                 {
                     bool hasTitle = !string.IsNullOrEmpty(t.MainInstruction);
                     using System.Drawing.Font f = new(System.Drawing.FontFamily.GenericSansSerif, hasTitle ? 6.5f : 5.5f, System.Drawing.FontStyle.Regular);
-                    t.Width = Math.Max(t.Width, System.Windows.Forms.TextRenderer.MeasureText(hasTitle ? t.MainInstruction : mainText, f).Width + (hasTitle ? 0 : 5));
+                    t.Width = Math.Min(450, System.Windows.Forms.TextRenderer.MeasureText(hasTitle ? t.MainInstruction : mainText, f).Width + (hasTitle ? 0 : 5));
                 }
 
                 var clicked = t.ShowDialog();
