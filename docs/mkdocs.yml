@@ -60,20 +60,10 @@ plugins:
           name: English
           build: true
           default: true
-          admonition_translations:
-            note: "Note"
-            info: "Important"
-            warning: "Warning"
-            danger: "Caution"
 
         - locale: fr
           name: Français
           build: true
-          admonition_translations:
-            note: "Information"
-            info: "À noter"
-            warning: "Avertissement"
-            danger: "Attention"
           site_description: "Premier injecteur GUI pour la Console virtuelle de Wii"
           nav_translations:
             Home: Accueil
@@ -84,11 +74,6 @@ plugins:
         - locale: es
           name: Español
           build: true
-          admonition_translations:
-            note: ""
-            info: ""
-            warning: ""
-            danger: ""
           nav_translations:
             Home: Pagina principal
             Tutorial: Tutorial
@@ -99,11 +84,6 @@ plugins:
         - locale: ja
           name: 日本語
           build: false
-          admonition_translations:
-            note: ""
-            info: ""
-            note: ""
-            warning: ""
           nav_translations:
             Home: ホームページ
             Tutorial: 使い方

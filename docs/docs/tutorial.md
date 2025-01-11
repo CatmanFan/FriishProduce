@@ -2,7 +2,7 @@
 
 !!! warning ""
 	
-	The following minimum requirements are needed in order to run the program:
+	**The following minimum requirements are needed:**
 	
 	* **OS:** Windows 7 or later
 	* **Redistributables:**
@@ -33,37 +33,91 @@
 	
 	As an example, this will demonstrate how to create an inject of an NES game. This will be similar for other supported consoles, and injection methods.
 
-1. Open the "New..." dropdown menu, then select a console. An empty project will open.
-2. Click "Open game file...", and import your ROM or ISO file.
-3. **Required steps:**
-	* Add a base WAD to use. You can do this by:
-		* Clicking `Import WAD from file...` and browsing for your local WAD file, or
-		* Checking the option to use a downloadable base, and selecting the preferred WAD name and region of your choice. If you are unable to access this option, you can enable it in the settings.
-	* Add an image. You can do this by clicking:
-		* `Import image from file...`, then importing an image file, or
-		* `Download title screen image`, which will automatically download the title screen image if it is found.
-	* Fill in all the text fields.
-		1. Use a shortened version of your game title for the channel's name.
-		2. Open the banner details section by clicking on `Banner details`. Enter the full title of your game, the year which it was published and the number of players it supports. Click OK.
-		* You can choose to scan and prefill available game information by clicking on the LibRetro icon. If you have turned on the `Automatically prefill game data after opening` option, this will be done automatically.
-	* If it is enabled, go to `Edit savedata title...`, then enter the title of your game, or a shortened version thereof not exceeding the available amount of characters.
-		* You can choose to fill in these fields automatically, based on the channel title and the second line of your banner title.
-4. **Optional steps:** (mainly for customization)
-	* If it is enabled, go to `Injection method options...`, and change any of the available options based to your liking.
-	* Specify a sound file to use as the banner by clicking on `Banner sound > Replace banner sound...`, then browsing a WAV file to use.
-5. Click on the Export button, and save your WAD/ZIP.
+### Section I - Providing a game file
+
+1. Open the `New...` dropdown menu, then select a console. This will create an empty project.
+
+	![Empty FriishProduce interface](assets/images/tutorial_0.png){ loading=lazy; width="600"; }
+	
+2. Click `Import ROM...` (*the disc icon*), and open your game file. The button will be named differently depending on the console type (e.g. "disc image" for disc-based consoles, "SWF" for Flash, etc.).
+
+	![Selecting "Import ROM..." from an empty project](assets/images/tutorial_1.png){ loading=lazy; width="600"; }
+	
+### Section II - Required steps
+
+#### Base WAD
+
+Add a base WAD to use to inject into. You can do this by:
+
+* Clicking `Import WAD from file...` and browsing for your local WAD file, or
+
+* Checking the option to use a downloadable base, and selecting your preferred WAD from the dropdown list. You can also change the region by clicking on the flag next to it.<br />
+  (If you are unable to access this option, you can enable it in the settings.)
+
+#### Image
+
+Add an image, usually the title screen of the game. You can do this by clicking:
+
+* `Import image from file...`, then opening an image file, or
+
+* `Download title screen image`, which will automatically download the title screen image if it is found.
+
+#### Game title, year and players
+
+1. Fill in the `Channel name` text field with your game's title. If it is too long, use a shortened version of 20 characters or less (e.g. "Zelda: Ocarina").
+	
+2. Open the banner details section by clicking on `Banner details`. Enter the full title of your game, the year which it was published and the number of players it supports. Click OK.
+	
+	![Banner details form](assets/images/tutorial_3.png){ loading=lazy; }
+		
+3. If the corresponding button is enabled, go to `Edit savedata title...`, then enter the title of your game, or a shortened version thereof not exceeding the available amount of characters. You can also choose to fill in these fields automatically, based on the channel title and the second line of your banner title.
+	
+	![Savedata title form](assets/images/tutorial_4.png){ loading=lazy; }
+		
+!!! note ""
+	
+	You can choose to scan and prefill available game information (the full game name, year, players and title screen image) by clicking on the LibRetro icon. If you have turned on the `Automatically prefill game data after opening` option, this will be done automatically.
+		
+### Section III - Optional steps
+
+These are extra features mainly for customization purposes, and you can tailor any of these to your liking or leave them as they are.
+
+#### Injection method
+
+You can change the injection method (use either Virtual Console/the official emulator or a .DOL forwarder) from the `Injection method` dropdown list. If you're creating a forwarder, you can specify where to store your emulator files using the `Root storage device` dropdown list.
+
+If the corresponding button is enabled, go to `Injection method options...`. From this section, you can change the emulator's settings.
+
+![Injection method options form](assets/images/tutorial_5.png){ loading=lazy; }
+
+#### WAD's target region and video mode
+
+You can change the WAD's target region and the video mode that it will use by default. This can be useful to avoid the "This channel cannot be used." message when opening the WAD on a region-locked Wii console it is not meant for.
+
+#### Banner sound
+
+You can specify a sound file to use as the banner by clicking on `Banner sound > Replace banner sound...`, then browsing a WAV file to use.
+
+### Section IV - Saving or exporting
+	
+Once you're done, your project will look something like this:
+
+![Completed FriishProduce project, ready to export as a WAD](assets/images/tutorial_2.png){ loading=lazy; width="600" }
+	
+You can save your project to a file to leave it for later. To export it as a WAD (or a ZIP archive for forwarders), click on `Export...` (*the magic wand icon*), and specify a filename and location to save to.
 
 !!! success ""
 	
-	You can now install it using your preferred WAD manager, or extract the contents of the ZIP archive to your SD/USB root.
+	If all goes well, you should be able to install your WAD using your preferred WAD manager. For exported ZIPs, extract the contents of the archive to your SD/USB root (but not the empty .txt file telling you to do so), then install the provided WAD.
 
 ## Manual
 		
 !!! warning ""
+
+	**Make sure your base manual matches that of your WAD's target console & region.**<br />
+	Otherwise, the manual may fail to load and instead return a 404 error page similar to what is found in a [Wii semibrick](https://wii.hacks.guide/bricks.html#semibrick). This may occur if you have imported an incorrect manual folder or if it is unable to find the starting HTML.
 	
-	Make sure your base manual matches that of your WAD's target console & region. Otherwise, the manual may fail to load and instead return a 404 error page similar to what is found in a [Wii semibrick](https://wii.hacks.guide/bricks.html#semibrick). This may occur if you have imported an incorrect manual folder or if it is unable to find the starting HTML.
-	
-	![Image title](assets/images/F6J201_2025-01-09_23-35-01.png){ loading=lazy; width="350" }
+	![Opera 404 error page, when no manual is found.](assets/images/F6J201_2025-01-09_23-35-01.png){ loading=lazy; width="350" }
 
 ## Project settings & content options
 * You can **choose which base channel to use** to inject into, and which region of said channel, or you can **get a separate offline WAD file** to use instead. Some VC bases may have different compatibility or more features than other VC bases.
@@ -73,13 +127,11 @@
 * If you want to avoid using Virtual Console altogether, you can **change the injection method and use an emulator forwarder** instead in the content options section.
 * You can **change the WAD region**.
 
-## Finishing
-Once you're done, click on the box icon and choose a location and/or filename to save your WAD to. If you are creating a forwarder, this will also create a separate ZIP file in the same path, which you will have to extract to your Wii SD or USB root (the WAD will not work otherwise).
-If you encounter any issues with the current version, please feel free to notify at the FriishProduce GitHub repo, or on its release thread on GBAtemp.
-
-In case you prefer to change any of the details you have later, you can also choose to save your project by clicking on the floppy disk icon.
-
 ----
+
+!!! note ""
+	
+	**Please be sure to read the [FAQ](faq.md) if you encounter any issues.**
 
 !!! tip ""
 	

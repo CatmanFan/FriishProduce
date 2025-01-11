@@ -130,7 +130,7 @@ namespace FriishProduce
         public class App
         {
             public string language { get; set; } = "sys";
-            public bool auto_update { get; set; } = !Program.DebugMode;
+            public bool auto_update { get; set; } = false;
             public bool donotshow_000 { get; set; } = false;
             public bool donotshow_001 { get; set; } = false;
             public bool auto_prefill { get; set; } = false;
@@ -161,7 +161,7 @@ namespace FriishProduce
         public class NES
         {
             public int palette { get; set; } = 0;
-            public bool palette_banner_usage { get; set; } = true;
+            public bool palette_banner_usage { get; set; } = false;
         }
 
         public class SNES

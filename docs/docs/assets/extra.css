@@ -1,3 +1,49 @@
+:root {
+	/* --md-text-font: -apple-system,".SFNSText-Regular","San Francisco","Segoe UI","Helvetica Neue","Lucida Grande",Arial,sans-serif; */
+	--md-code-font: Monaco, Consolas, "Lucida Console", monospace;
+}
+
+html {
+	font-size: 1.4em;
+}
+
+.md-grid {
+    max-width: initial;
+	padding: 0 16.25%;
+}
+
+.md-typeset {
+	line-height: 1.75;
+}
+
+.md-typeset code {
+	border-radius: .2rem;
+	padding: .15em .3em;
+	border: 1px solid #585d66;
+}
+
+.md-typeset a {
+	color: var(--md-typeset-a-color);
+	text-decoration: underline;
+}
+
+.md-typeset .admonition,
+.md-typeset details {
+	border-width: 0;
+	/* border-radius: .3rem; */
+	border-left-width: .25rem;
+	font-size: 87.5%;
+	font-weight: 500;
+	line-height: 1.45;
+	margin: 1.25em 0;
+	/* padding: 0 .5rem; */
+	box-shadow: 0 .05rem .1rem rgba(28,28,28,0.5);
+}
+
+/* ------------------------------------------------------------ */
+/* ---------------------- Color settings ---------------------- */
+/* ------------------------------------------------------------ */
+
 :root, [data-md-color-scheme="slate"] {
 	--md-footer-bg-color--dark:		#1c212b;
 	--md-default-bg-color:			#262b35;
@@ -22,27 +68,9 @@
 	border-bottom: .05rem solid #585d666a;
 }
 
-.md-typeset a {
-	color: var(--md-typeset-a-color);
-	text-decoration: underline;
-}
-
-.md-typeset .admonition,
-.md-typeset details {
-	border-width: 0;
-	/* border-radius: .3rem; */
-	border-left-width: .25rem;
-	font-size: 85%;
-	font-weight: 500;
-	line-height: 1.35;
-	/* padding: 0 .5rem; */
-	box-shadow: 0 .05rem .1rem rgba(28,28,28,0.5);
-}
-
-:root {
-	/* --md-text-font: -apple-system,".SFNSText-Regular","San Francisco","Segoe UI","Helvetica Neue","Lucida Grande",Arial,sans-serif; */
-	--md-code-font: Monaco, Consolas, "Lucida Console", monospace;
-}
+/* .md-typeset .admonition-title, .md-typeset summary, .md-typeset details {
+	font-weight: normal;
+} */
 
 :root, [data-md-color-scheme="default"] {
 	--alpha:					0.33;
@@ -55,29 +83,9 @@
 	--md-admonition-fg-color:	var(--md-default-fg-color);
 }
 
-html {
-	font-size: 1.4em;
-}
-
-.md-grid {
-    max-width: initial;
-	padding-left: 16.25%;
-	padding-right: 16.25%;
-}
-
-.md-typeset {
-	line-height: 1.75;
-}
-
-.md-typeset code {
-	border-radius: .2rem;
-	padding: .15em .3em;
-	border: 1px solid #585d66;
-}
-
-/* .md-typeset .admonition-title, .md-typeset summary, .md-typeset details {
-	font-weight: normal;
-} */
+/* ------------------------------------------------------------ */
+/* ----------------- Admonition color schemes ----------------- */
+/* ------------------------------------------------------------ */
 
 .md-typeset .admonition.warning, .md-typeset summary.warning, .md-typeset details.warning,
 .md-typeset .warning > .admonition-title, .md-typeset .warning > summary {
