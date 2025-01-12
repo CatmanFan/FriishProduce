@@ -79,13 +79,7 @@
 			"filter.disc":						"디스크 이미지 (*.cue, *.iso, *.chd)|*.cue;*.iso;*.chd|  Cue Sheet files (*.cue)|*.cue|  ISO 이미지 (*.iso)|*.iso|  압축된 데이터 덩어리 (*.chd)|*.chd",
 			"filter.swf":						"SWF 파일 (*.swf)|*.swf",
 			"filter.rpgm":						"RPG 메이커 2000/2003 데이터베이스 파일 (*.ldb)|*.ldb",
-			"filter.rom_nes":					"NES/패미컴 롬 파일 (*.nes)|*.nes",
-			"filter.rom_snes":					"SNES/슈퍼패미컴 롬 파일 (*.sfc, *.smc)|*.sfc;*.smc",
-			"filter.rom_n64":					"닌텐도 64 롬 파일 (*.n64, *.v64, *.z64)|*.n64;*.v64;*.z64",
-			"filter.rom_msx":					"MSX1/MSX2 롬 파일 (*.rom, *.mx1, *.mx2)|*.rom;*.mx1;*.mx2",
-			"filter.rom_sms":					"마스터 시스템 롬 파일 (*.sms)|*.sms",
-			"filter.rom_smd":					"메가드라이브/제네시스 롬 파일 (*.bin, *.gen, *.md)|*.bin;*.gen;*.md",
-			"filter.rom_pce":					"PC 엔진/터보그래프스-16 롬 파일 (*.pce)|*.pce",
+			"filter.rom":						"{0} 롬 파일 ({1})|{2}",
 			"filter.patch":						"패치 파일 (*.bps, *.ips, *.xdelta)|*.bps;*.ips;*.xdelta"
 		},
 
@@ -100,9 +94,8 @@
 			"007":								"선택한 VC 매뉴얼 보관소가 잘못되었습니다.",
 			"008":								"업데이트가 있습니다.\nFriishProduce v{0}를 이제 다운로드할 수 있습니다.\n현재 v{1}을(를) 실행 중입니다.\n\n지금 깃허브에서 최신 버전을 다운로드하겠습니까?",
 			"009":								"현재 이미 최신 상태입니다.",
-			"010":								"이 옵션을 활성화하면 프로그램은 현재 선택된 파일과 같은 폴더 내에 있는 모든 파일을 주입될 소프트웨어의 일부로 취급합니다.\n\n계속하기 전에 소프트웨어 파일이 별도의 폴더에 있는지 확인하세요.",
-			"011":								"Extract the opening.bnr (includes IMET header)?",
-			"012":								"This will restore all settings to factory defaults.\nAre you sure you want to continue?",
+			"010":								"Extract the opening.bnr (includes IMET header)?",
+			"011":								"This will restore all settings to factory defaults.\nAre you sure you want to continue?",
 			
 			"error":							"오류가 발생했습니다!",
 			"e_000":							"인터넷에 연결하지 못했습니다.\n메시지: {0}",
@@ -126,7 +119,10 @@
 
 		"html": {
 			"t_000":							"The name used for the channel's icon on the Wii Menu.<br />A shortened version of 20 characters or less is recommended for longer titles.<br /><hr><b>Example:</b> Zelda: Ocarina",
-			"t_001":							"Change advanced emulator settings.",
+			"t_001":							"The full name of the software, as displayed on the banner preview.<br /><hr><b>Example:</b><br />The Legend of Zelda:<br />Ocarina of Time",
+			"t_002":							"The region to use for the channel banner and icon. This can be useful if the console's name is different for your region or if you want to use a Japanese/Korean banner, for instance.<br />If the banner region is set to automatic, it will correspond with the WAD's region.",
+			"t_003":							"Change advanced emulator settings.",
+			"t_004":							"이 옵션을 활성화하면 프로그램은 현재 선택된 파일과 같은 폴더 내에 있는 모든 파일을 주입될 소프트웨어의 일부로 취급합니다.<br />계속하기 전에 소프트웨어 파일이 별도의 폴더에 있는지 확인하세요.",
 		}
 	},
 

@@ -540,7 +540,8 @@ namespace FriishProduce
 
             #region ------------------------------------------ Localization: Tooltips ------------------------------------------
             tip.SetToolTip(channel_name, Program.Lang.HTML(0, true, label1.Text));
-            tip.SetToolTip(injection_method_options, Program.Lang.HTML(1, true, injection_method_options.Text));
+            tip.SetToolTip(injection_method_options, Program.Lang.HTML(3, true, injection_method_options.Text));
+            tip.SetToolTip(multifile_software, Program.Lang.HTML(4, true, multifile_software.Text));
             #endregion
 
             if (Base.SelectedIndex >= 0)
@@ -757,7 +758,18 @@ namespace FriishProduce
             {
                 // ROM formats
                 default:
-                    browseROM.Filter = Program.Lang.String($"filter.rom_{targetPlatform.ToString().ToLower()}");
+                    try
+                    {
+                        var extensions = Filters.ROM.Where(x => x.Platform == targetPlatform).ToArray()[0];
+                        for (int i = 0; i < extensions.Extensions.Length; i++)
+                            if (!extensions.Extensions[i].StartsWith("*")) extensions.Extensions[i] = "*" + extensions.Extensions[i];
+
+                        browseROM.Filter = string.Format(Program.Lang.String($"filter.rom"), Program.Lang.Console(targetPlatform), string.Join(", ", extensions.Extensions), string.Join(";", extensions.Extensions));
+                    }
+                    catch
+                    {
+                        browseROM.Filter = Program.Lang.String("filter").TrimStart('|');
+                    }
                     break;
 
                 // CD images
@@ -1317,7 +1329,6 @@ namespace FriishProduce
 
                         // Check key files
                         // ****************
-                        /* else */
                         if ((entry.Name.StartsWith("startup") && Path.GetExtension(entry.Name) == ".html")
                           || entry.Name == "standard.css"
                           || entry.Name == "contents.css"
@@ -2371,11 +2382,6 @@ namespace FriishProduce
             refreshData();
         }
 
-        private void RegionsList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            refreshData();
-        }
-
         /* private void banner_preview_Click(object sender, EventArgs e)
         {
             using (Form f = new Form())
@@ -2460,13 +2466,6 @@ namespace FriishProduce
             // savedata.Text = Program.Lang.String(edit_save_data.Name, Name);
 
             if (savedata.ShowDialog() == DialogResult.OK) refreshData();
-        }
-
-        private void multifile_software_CheckedChanged(object sender, EventArgs e)
-        {
-            refreshData();
-
-            if (multifile_software.Checked && !Program.Config.application.donotshow_001 && !IsEmpty) MessageBox.Show(null, Program.Lang.Msg(10, false), 1);
         }
 
         private void injection_method_help_Click(object sender, EventArgs e) => htmlForm.ShowDialog(this);

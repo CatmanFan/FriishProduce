@@ -192,10 +192,10 @@ namespace FriishProduce
             bannerType = ((int)platform, lang);
             using (var U8 = BannerHelper.BannerApp(platform, lang switch { 1 => libWiiSharp.Region.Japan, 2 => libWiiSharp.Region.Korea, 3 => libWiiSharp.Region.Europe, _ => libWiiSharp.Region.USA }))
                 if (U8 != null)
-                    using (var Icon = libWiiSharp.U8.Load(U8.Data[U8.GetNodeIndex("banner.bin")]))
-                        foreach (var item in Icon.StringTable)
+                    using (var banner = libWiiSharp.U8.Load(U8.Data[U8.GetNodeIndex("banner.bin")]))
+                        foreach (var item in banner.StringTable)
                             if (item.ToLower().Contains("back") && item.ToLower().EndsWith(".tpl"))
-                                using (var logo = (Bitmap)libWiiSharp.TPL.Load(Icon.Data[Icon.GetNodeIndex(item)]).ExtractTexture())
+                                using (var logo = (Bitmap)libWiiSharp.TPL.Load(banner.Data[banner.GetNodeIndex(item)]).ExtractTexture())
                                 {
                                     bannerLogo = new Bitmap(logo.Width, logo.Height, PixelFormat.Format32bppArgb);
                                     unsafe

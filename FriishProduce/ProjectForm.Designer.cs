@@ -182,7 +182,7 @@ namespace FriishProduce
             this.regions.FormattingEnabled = true;
             resources.ApplyResources(this.regions, "regions");
             this.regions.Name = "regions";
-            this.regions.SelectedIndexChanged += new System.EventHandler(this.RegionsList_SelectedIndexChanged);
+            this.regions.SelectedIndexChanged += new System.EventHandler(this.Value_Changed);
             // 
             // title_id_random
             // 
@@ -370,7 +370,7 @@ namespace FriishProduce
             this.multifile_software.Name = "multifile_software";
             this.multifile_software.Tag = "multifile_software";
             this.multifile_software.UseVisualStyleBackColor = true;
-            this.multifile_software.CheckedChanged += new System.EventHandler(this.multifile_software_CheckedChanged);
+            this.multifile_software.CheckedChanged += new System.EventHandler(this.Value_Changed);
             // 
             // pictureBox2
             // 

@@ -79,13 +79,7 @@
 			"filter.disc":						"Disc images (*.cue, *.bin)|*.cue;*.bin|  Cue Sheet files (*.cue)|*.cue|  BIN files (*.bin)|*.bin",
 			"filter.swf":						"SWF files (*.swf)|*.swf",
 			"filter.rpgm":						"RPG Maker 2000/2003 database files (*.ldb)|*.ldb",
-			"filter.rom_nes":					"NES/Famicom ROM files (*.nes)|*.nes",
-			"filter.rom_snes":					"SNES/Super Famicom ROM files (*.sfc, *.smc)|*.sfc;*.smc",
-			"filter.rom_n64":					"Nintendo 64 ROM files (*.n64, *.v64, *.z64)|*.n64;*.v64;*.z64",
-			"filter.rom_msx":					"MSX1/MSX2 ROM files (*.rom, *.mx1, *.mx2)|*.rom;*.mx1;*.mx2",
-			"filter.rom_sms":					"Master System ROM files (*.sms)|*.sms",
-			"filter.rom_smd":					"Mega Drive/Genesis ROM files (*.bin, *.gen, *.md)|*.bin;*.gen;*.md",
-			"filter.rom_pce":					"TurboGrafx-16/PC Engine ROM files (*.pce)|*.pce",
+			"filter.rom":						"{0} ROM files ({1})|{2}",
 			"filter.patch":						"Patch files (*.bps, *.ips, *.xdelta)|*.bps;*.ips;*.xdelta"
 		},
 
@@ -100,9 +94,8 @@
 			"007":								"The selected Virtual Console manual archive is invalid.",
 			"008":								"An update is available\nFriishProduce v{0} is now available for download.\nYou are currently running v{1}.\n\nWould you like to get the latest version from GitHub now?",
 			"009":								"You are currently already up to date.",
-			"010":								"When this option is enabled, the program will treat all files within the same folder as the currently selected one as forming part of the software to be injected.\n\nPlease make sure that your software files are in a separate folder before continuing.",
-			"011":								"Extract the opening.bnr (includes IMET header)?",
-			"012":								"This will restore all settings to factory defaults.\nAre you sure you want to continue?",
+			"010":								"Extract the opening.bnr (includes IMET header)?",
+			"011":								"This will restore all settings to factory defaults.\nAre you sure you want to continue?",
 
 			"error":							"An error has occurred",
 			"e_000":							"Unable to connect to the Internet.\n{0}",
@@ -128,8 +121,11 @@
 			"l_000":							"About SNES VC",
 			"l_001":							"About N64 VC",
 
-			"t_000":							"The name used for the channel's icon on the Wii Menu.<br />A shortened version of 20 characters or less is recommended for longer titles.<br /><hr><b>Example:</b> Zelda: Ocarina",
-			"t_001":							"Change advanced emulator settings.",
+			"t_000":							"The name used for the channel's icon on the Wii Menu.<br />A shortened version of 20 characters or less is recommended for longer titles.<br /><hr><b>Example:</b><br />Zelda: Ocarina",
+			"t_001":							"The full name of the software, as displayed on the banner preview.<br /><hr><b>Example:</b><br />The Legend of Zelda:<br />Ocarina of Time",
+			"t_002":							"The region to use for the channel banner and icon. This can be useful if the console's name is different for your region or if you want to use a Japanese/Korean banner, for instance.<br />If the banner region is set to automatic, it will correspond with the WAD's region.",
+			"t_003":							"Change advanced emulator settings.",
+			"t_004":							"When this option is enabled, the program will treat all files within the same folder as the currently selected one as forming part of the software to be injected.<br />Please make sure that your software files are in a separate folder before continuing.",
 		}
 	},
 

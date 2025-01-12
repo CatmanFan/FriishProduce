@@ -429,65 +429,27 @@ namespace FriishProduce
                 {
                     foreach (string file in files)
                     {
-                        switch (Path.GetExtension(file).ToLower())
+                        var value = Path.GetExtension(file).ToLower();
+                        switch (value)
                         {
-                            case ".nes":
-                                addTab(Platform.NES, null, file);
-                                break;
+                            default:
+                                foreach (var tuple in Filters.ROM)
+                                {
+                                    foreach (var extension in tuple.Extensions)
+                                    {
+                                        if (extension.ToLower().Contains(value))
+                                        {
+                                            addTab(tuple.Platform, null, file);
+                                            return;
+                                        }
+                                    };
+                                }
 
-                            case ".sfc":
-                            case ".smc":
-                                addTab(Platform.SNES, null, file);
-                                break;
-
-                            case ".n64":
-                            case ".v64":
-                            case ".z64":
-                                addTab(Platform.N64, null, file);
-                                break;
-
-                            case ".sms":
-                                addTab(Platform.SMS, null, file);
-                                break;
-
-                            case ".bin":
-                            case ".gen":
-                            case ".md":
-                                addTab(Platform.SMD, null, file);
-                                break;
-
-                            case ".pce":
-                                addTab(Platform.PCE, null, file);
-                                break;
-
-                            case ".zip":
-                                addTab(Platform.NEO, null, file);
-                                break;
-
-                            case ".rom":
-                            case ".mx1":
-                            case ".mx2":
-                                addTab(Platform.MSX, null, file);
-                                break;
-
-                            case ".t64":
-                                addTab(Platform.C64, null, file);
+                                System.Media.SystemSounds.Beep.Play();
                                 break;
 
                             case ".swf":
                                 addTab(Platform.Flash, null, file);
-                                break;
-                        
-                            case ".gb":
-                                addTab(Platform.GB, null, file);
-                                break;
-
-                            case ".gbc":
-                                addTab(Platform.GBC, null, file);
-                                break;
-
-                            case ".gba":
-                                addTab(Platform.GBA, null, file);
                                 break;
                         
                             case ".ldb":
@@ -548,7 +510,7 @@ namespace FriishProduce
 
         private void ResetConfig(object sender, EventArgs e)
         {
-            if (MessageBox.Show(Program.Lang.Msg(12), MessageBox.Buttons.YesNo, MessageBox.Icons.Warning) == MessageBox.Result.Yes)
+            if (MessageBox.Show(Program.Lang.Msg(11), MessageBox.Buttons.YesNo, MessageBox.Icons.Warning) == MessageBox.Result.Yes)
             {
                 foreach (var item in Directory.EnumerateFiles(Paths.Databases))
                     if (Path.GetExtension(item).ToLower() == ".xml")
@@ -596,7 +558,7 @@ namespace FriishProduce
                         SupportMultiDottedExtensions = true
                     };
 
-                    bool isIMET = sender == extract_wad_banner && MessageBox.Show(Program.Lang.Msg(11), MessageBox.Buttons.YesNo) == MessageBox.Result.Yes;
+                    bool isIMET = sender == extract_wad_banner && MessageBox.Show(Program.Lang.Msg(10), MessageBox.Buttons.YesNo) == MessageBox.Result.Yes;
                     if (isIMET)
                     {
                         saveDialog.FileName = "opening.bnr";

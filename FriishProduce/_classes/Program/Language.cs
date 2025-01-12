@@ -174,7 +174,6 @@ namespace FriishProduce
         public enum ScriptType
         {
             Normal,
-            Japanese,
             CJK,
             RTL
         }
@@ -183,10 +182,7 @@ namespace FriishProduce
         {
             if (text == null) return ScriptType.Normal;
 
-            else return Current.StartsWith("ja") || new System.Text.RegularExpressions.Regex(
-                @"\p{IsHiragana}|" +
-                @"\p{IsKatakana}").IsMatch(text) ? ScriptType.Japanese
-                 : new System.Text.RegularExpressions.Regex(
+            else return new System.Text.RegularExpressions.Regex(
                 @"\p{IsHangulJamo}|" +
                 @"\p{IsCJKRadicalsSupplement}|" +
                 @"\p{IsCJKSymbolsandPunctuation}|" +
@@ -195,6 +191,9 @@ namespace FriishProduce
                 @"\p{IsCJKUnifiedIdeographsExtensionA}|" +
                 @"\p{IsCJKUnifiedIdeographs}|" +
                 @"\p{IsHangulSyllables}|" +
+                @"\p{IsHiragana}|" +
+                @"\p{IsKatakana}" +
+                @"\p{IsKatakana}" +
                 @"\p{IsCJKCompatibilityForms}").IsMatch(text) ? ScriptType.CJK
                  : Current.StartsWith("ar") || Current.StartsWith("he") || new System.Text.RegularExpressions.Regex(
                 @"\p{IsArabic}|" +
@@ -497,7 +496,7 @@ namespace FriishProduce
         {
             if (item.Tag == null) return;
 
-            if (script == ScriptType.Japanese)
+            if (Current.StartsWith("ja"))
             {
                 float size = item.Font.Size;
                 if (size == 8.25) size = 9;

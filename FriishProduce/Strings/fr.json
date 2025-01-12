@@ -79,13 +79,7 @@
 			"filter.disc":						"Images disque (*.cue, *.bin)|*.cue;*.bin|  Fichiers CUE (*.cue)|*.cue|  Fichiers BIN (*.bin)|*.bin",
 			"filter.swf":						"Fichiers Adobe Flash (*.swf)|*.swf",
 			"filter.rpgm":						"Fichiers de base de données de RPG Maker 2000 / 2003 (*.ldb)|*.ldb",
-			"filter.rom_nes":					"Fichiers ROM de Nintendo (*.nes)|*.nes",
-			"filter.rom_snes":					"Fichiers ROM de Super Nintendo (*.sfc, *.smc)|*.sfc;*.smc",
-			"filter.rom_n64":					"Fichiers ROM de Nintendo 64 (*.n64, *.v64, *.z64)|*.n64;*.v64;*.z64",
-			"filter.rom_msx":					"Fichiers ROM de MSX / MSX2 (*.rom, *.mx1, *.mx2)|*.rom;*.mx1;*.mx2",
-			"filter.rom_sms":					"Fichiers ROM de Sega Master System (*.sms)|*.sms",
-			"filter.rom_smd":					"Fichiers ROM de Sega Mega Drive / Genesis (*.bin, *.gen, *.md)|*.bin;*.gen;*.md",
-			"filter.rom_pce":					"Fichiers ROM de PC Engine / TurboGrafx-16 (*.pce)|*.pce",
+			"filter.rom":						"Fichiers ROM de {0} ({1})|{2}",
 			"filter.patch":						"Fichiers patch (*.bps, *.ips, *.xdelta)|*.bps;*.ips;*.xdelta",
 		},
 
@@ -100,9 +94,8 @@
 			"007":								"L'archive précisée est invalide.",
 			"008":								"Une mise à jour est disponible\nFriishProduce v{0} est désormais disponible à télécharger.\nL'actuelle version est v{1}.\n\nObtenir la dernière mise à jour dès GitHub maintenant ?",
 			"009":								"Vous êtes déjà à jour.",
-			"010":								"Lorsque cette option est activée, l'application traitera tous les fichiers du même dossier que celui actuellement sélectionné comme faisant partie du logiciel à injecter.\n\nVeuillez vous assurer que vos fichiers sont déjà dans un répertoire séparé avant de continuer.",
-			"011":								"Extraire le fichier opening.bnr (comprenant le header IMET) ?",
-			"012":								"Vous allez restaurer les paramètres par défaut de l'application.\nVoulez-vous vraiment continuer ?",
+			"010":								"Extraire le fichier opening.bnr (comprenant le header IMET) ?",
+			"011":								"Vous allez restaurer les paramètres par défaut de l'application.\nVoulez-vous vraiment continuer ?",
 
 			"error":							"Oups, un problème est survenu !",
 			"e_000":							"Échec de connexion à Internet.\n{0}",
@@ -127,6 +120,7 @@
 		"html": {
 			"t_000":							"Le nom de la chaîne tel qu'il apparaît sur le Menu Wii.<br />Il est recommandé d'utiliser une version abrégée du titre (maximum de 20 caractères) s'il est trop long.<br /><hr><b>Exemple :</b> Zelda: Ocarina",
 			"t_001":							"Modifier les paramètres de l'émulateur.",
+			"t_004":							"Lorsque cette option est activée, l'application traitera tous les fichiers du même dossier que celui actuellement sélectionné comme faisant partie du logiciel à injecter.<br />Veuillez vous assurer que vos fichiers sont déjà dans un répertoire séparé avant de continuer.",
 		}
 	},
 

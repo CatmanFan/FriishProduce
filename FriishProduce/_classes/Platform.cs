@@ -23,6 +23,26 @@
         RPGM,
     }
 
+    public static class Filters
+    {
+        public static System.Collections.Generic.List<(Platform Platform, string[] Extensions)> ROM = new()
+        {
+            (Platform.NES, new string[] { ".nes" }),
+            (Platform.SNES, new string[] { ".sfc", ".smc" }),
+            (Platform.N64, new string[] { ".n64", ".v64", ".z64" }),
+            (Platform.SMS, new string[] { ".sms" }),
+            (Platform.S32X, new string[] { ".bin", ".gen", ".md" }),
+            (Platform.SMD, new string[] { ".bin", ".gen", ".md" }),
+            (Platform.PCE, new string[] { ".pce" }),
+            (Platform.NEO, new string[] { ".zip" }),
+            (Platform.MSX, new string[] { ".rom", ".mx1", ".mx2" }),
+            (Platform.C64, new string[] { ".t64" }),
+            (Platform.GB, new string[] { ".gb" }),
+            (Platform.GBC, new string[] { ".gbc" }),
+            (Platform.GBA, new string[] { ".gba" }),
+        };
+    }
+
     public enum Buttons
     {
         WiiRemote_Up,

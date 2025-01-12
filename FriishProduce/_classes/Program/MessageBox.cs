@@ -155,7 +155,7 @@ namespace FriishProduce
 
                 Language.ScriptType script = Program.Lang.GetScript(mainText);
                 t.RightToLeft = script == Language.ScriptType.RTL;
-                if (script == Language.ScriptType.CJK || script == Language.ScriptType.Japanese)
+                if (script == Language.ScriptType.CJK)
                 {
                     bool hasTitle = !string.IsNullOrEmpty(t.MainInstruction);
                     using System.Drawing.Font f = new(System.Drawing.FontFamily.GenericSansSerif, hasTitle ? 6.5f : 5.5f, System.Drawing.FontStyle.Regular);
