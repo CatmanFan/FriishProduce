@@ -12,6 +12,7 @@ namespace FriishProduce
 {
     public partial class MainForm : Form
     {
+        private string[] files = null;
         private readonly SettingsForm settings = new();
 
         #region //////////////////// Platforms ////////////////////
@@ -154,10 +155,11 @@ namespace FriishProduce
                     (tabPage.Form as ProjectForm).RefreshForm();
         }
 
-        public MainForm()
+        public MainForm(string[] files = null)
         {
             InitializeComponent();
             Program.Handle = Handle;
+            this.files = files;
         }
 
         private void MainForm_Loading(object sender, EventArgs e)
@@ -183,6 +185,11 @@ namespace FriishProduce
             // ********
             if (Logo.Location.X == 0 || Logo.Location.Y == 0) Logo.Location = new Point(mainPanel.Bounds.Width / 2 - (Logo.Width / 2), mainPanel.Bounds.Height / 2 - (Logo.Height / 2) - mainPanel.Location.Y);
             #endregion
+
+            // Open project(s) if defined as argument(s)
+            // ********
+            if (files?.Length > 0 && File.Exists(files[0]))
+                OpenProject(files);
 
             // Automatically set defined initial directory for save file dialog
             // ********
@@ -396,23 +403,28 @@ namespace FriishProduce
         {
             if (BrowseProject.ShowDialog() == DialogResult.OK)
             {
-                foreach (var projectFile in BrowseProject.FileNames)
+                OpenProject(BrowseProject.FileNames);
+            }
+        }
+
+        private void OpenProject(string[] files)
+        {
+            foreach (var file in files)
+            {
+                var project = new Project();
+
+                try
                 {
-                    var project = new Project();
+                    using Stream stream = File.Open(file, FileMode.Open);
+                    var binaryFormatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                    project = (Project)binaryFormatter.Deserialize(stream);
 
-                    try
-                    {
-                        using Stream stream = File.Open(projectFile, FileMode.Open);
-                        var binaryFormatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-                        project = (Project)binaryFormatter.Deserialize(stream);
+                    addTab(project.Platform, project);
+                }
 
-                        addTab(project.Platform, project);
-                    }
-
-                    catch
-                    {
-                        MessageBox.Show("Not a valid project file!", MessageBox.Buttons.Ok, MessageBox.Icons.Error);
-                    }
+                catch
+                {
+                    MessageBox.Show(string.Format(Program.Lang.Msg(17, true), Path.GetFileName(file)), MessageBox.Buttons.Ok, MessageBox.Icons.Error);
                 }
             }
         }
@@ -459,13 +471,28 @@ namespace FriishProduce
                             case ".cue":
                                 addTab(Platform.PSX, null, file);
                                 break;
+
+                            case ".fppj":
+                                OpenProject(new string[] { file });
+                                break;
                         }
                     }
                 }
 
                 else
                 {
-                    (tabControl.SelectedForm as ProjectForm).LoadROM(files[0], Program.Config.application.auto_prefill, true);
+                    foreach (string file in files)
+                    {
+                        if (Path.GetExtension(file).ToLower() == ".fppj")
+                        {
+                            OpenProject(new string[] { file });
+                        }
+
+                        else
+                        {
+                            (tabControl.SelectedForm as ProjectForm).LoadROM(files[0], Program.Config.application.auto_prefill, true);
+                        }
+                    }
                 }
             }
         }

@@ -21,11 +21,11 @@ namespace FriishProduce
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        static void Main(string[] args)
         {
             if (Environment.OSVersion.Version.Major < 6 || (Environment.OSVersion.Version.Major == 6 && Environment.OSVersion.Version.Minor == 0))
             {
-                System.Windows.Forms.MessageBox.Show($"To use this program, please upgrade to Windows 7 or a newer version of Windows.", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                System.Windows.Forms.MessageBox.Show("To use this program, please upgrade to Windows 7 or a newer version of Windows.", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Hand);
                 Environment.Exit(-1);
                 return;
             }
@@ -39,11 +39,7 @@ namespace FriishProduce
                         Environment.Exit(0);
                         return;
                     }
-
             }
-
-            Config = new(Paths.Config);
-            Lang = new Language();
 
             try
             {
@@ -54,12 +50,60 @@ namespace FriishProduce
             }
             catch { }
 
+            Config = new(Paths.Config);
+            Lang = new Language();
+
             System.Threading.Thread.CurrentThread.CurrentUICulture = System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(Lang.Current);
 
+            if (args.Length > 0 && args[0].StartsWith("--"))
+            {
+                CLI(args);
+                return;
+            }
+
+            GUI(args);
+        }
+
+        /// <summary>
+        /// Runs the GUI version of the app.
+        /// </summary>
+        /// <param name="args"></param>
+        private static void GUI(string[] args)
+        {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            MainForm = new MainForm();
+            MainForm = new MainForm(args);
             Application.Run(MainForm);
+        }
+
+        /// <summary>
+        /// Runs the CLI version of the app.
+        /// </summary>
+        /// <param name="args"></param>
+        private static void CLI(string[] args)
+        {
+            // Usage:
+            //
+            // "file"
+            // --patch "file"
+            // --wad "file"
+            // --platform nes snes smd flash
+            // --img "file"
+            // --sound "file"
+            // --channel-title "title"
+            // --savedata-title "title"
+            // --banner-title "title"
+            // --banner-year 1990
+            // --banner-players 1
+            // --wad-region japan usa europe korea free
+            // --tid ABCD
+
+            Console.Clear();
+            Console.WriteLine("FriishProduce v" + FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetExecutingAssembly().Location).ProductVersion.ToString() + " (CLI)");
+            Console.WriteLine();
+            Console.WriteLine("Console version is not implemented yet.");
+
+            Environment.Exit(0);
         }
     }
 }

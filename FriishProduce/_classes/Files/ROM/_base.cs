@@ -176,5 +176,14 @@ namespace FriishProduce
 
             return result;
         }
+
+        public void Dispose()
+        {
+            _rom = null;
+            origData = null;
+            patched = null;
+            ZIP = null;
+            MaxSize = -1;
+        }
     }
 }

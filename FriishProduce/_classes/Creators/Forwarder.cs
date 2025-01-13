@@ -54,6 +54,7 @@ namespace FriishProduce
 
 
         public string ROM { get; set; }
+        public bool Multifile { get; set; }
         private string romExtension { get => Path.GetExtension(ROM).ToLower(); }
         private bool isDisc { get => new Disc().CheckValidity(ROM); }
 
@@ -165,6 +166,14 @@ namespace FriishProduce
                             if ((Path.GetExtension(item).ToLower() == ".bin" || Path.GetExtension(item).ToLower() == ".iso")
                                 && (Path.GetFileNameWithoutExtension(item).ToLower() == Path.GetFileNameWithoutExtension(ROM).ToLower()))
                                 File.Copy(item, ROMFolder + Path.GetFileName(item));
+                        }
+                    }
+
+                    if (Multifile)
+                    {
+                        foreach (var item in Directory.EnumerateFiles(Path.GetDirectoryName(ROM)))
+                        {
+                            File.Copy(item, ROMFolder + Path.GetFileName(item));
                         }
                     }
                 }

@@ -84,6 +84,7 @@ namespace FriishProduce
             this.wiki = new System.Windows.Forms.MenuItem();
             this.about = new System.Windows.Forms.MenuItem();
             this.tabControl = new JacksiroKe.MdiTabCtrl.TabControl();
+            this.Tip = new TheArtOfDev.HtmlRenderer.WinForms.HtmlToolTip();
             this.mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             this.toolStrip.SuspendLayout();
@@ -505,6 +506,21 @@ namespace FriishProduce
             this.tabControl.TabPaintBorder += new JacksiroKe.MdiTabCtrl.TabControl.TabPaintBorderEventHandler(this.TabControl_Paint);
             this.tabControl.SelectedTabChanged += new System.EventHandler(this.TabChanged);
             // 
+            // Tip
+            // 
+            this.Tip.AllowLinksHandling = true;
+            this.Tip.AutoPopDelay = 10000;
+            this.Tip.BackColor = System.Drawing.Color.White;
+            this.Tip.BaseStylesheet = "div { font-size: 11px !important; }";
+            this.Tip.ForeColor = System.Drawing.Color.Black;
+            this.Tip.InitialDelay = 500;
+            this.Tip.MaximumSize = new System.Drawing.Size(350, 0);
+            this.Tip.OwnerDraw = true;
+            this.Tip.ReshowDelay = 100;
+            this.Tip.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+            this.Tip.TooltipCssClass = "htmltooltip";
+            this.Tip.UseGdiPlusTextRendering = true;
+            // 
             // MainForm
             // 
             this.AllowDrop = true;
@@ -588,6 +604,7 @@ namespace FriishProduce
         private System.Windows.Forms.MenuItem menuItem10;
         private System.Windows.Forms.MenuItem menuItem11;
         private System.Windows.Forms.MenuItem reset_preferences;
+        public TheArtOfDev.HtmlRenderer.WinForms.HtmlToolTip Tip;
     }
 }
 

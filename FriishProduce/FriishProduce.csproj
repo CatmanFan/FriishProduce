@@ -305,6 +305,7 @@
     <Compile Include="_classes\Helpers\BannerPreview.cs" />
     <Compile Include="_classes\Databases\ChannelData.cs" />
     <Compile Include="_classes\Files\ROM\RPGM.cs" />
+    <Compile Include="_classes\Method.cs" />
     <Compile Include="_classes\Program\CustomGraphics.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -681,6 +682,14 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <FileAssociation Include=".fppj">
+      <Visible>False</Visible>
+      <Description>FriishProduce Project</Description>
+      <Progid>FriishProduce</Progid>
+      <DefaultIcon>icon.ico</DefaultIcon>
+    </FileAssociation>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

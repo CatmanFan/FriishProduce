@@ -114,12 +114,13 @@
 			"e_013":							"주입 가능한 롬 진입점을 찾을 수 없습니다. 이는 이 WAD에 사용된 주입 방법이 아직 지원되지 않기 때문일 수 있습니다.",
 			"e_014":							"이 콘솔에 필요한 바이오스 파일을 찾을 수 없습니다.\n응용 프로그램 환경 설정에서 이 파일을 설정하세요.",
 			"e_015":							"Failed to create savedata TPL.",
-			"e_016":							"No Virtual Console manual was found in the provided WAD."
+			"e_016":							"No Virtual Console manual was found in the provided WAD.",
+			"e_017":							"\"{0}\" is not a valid project file."
 		},
 
 		"html": {
-			"t_000":							"The name used for the channel's icon on the Wii Menu.<br />A shortened version of 20 characters or less is recommended for longer titles.<br /><hr><b>Example:</b> Zelda: Ocarina",
-			"t_001":							"The full name of the software, as displayed on the banner preview.<br /><hr><b>Example:</b><br />The Legend of Zelda:<br />Ocarina of Time",
+			"t_000":							"The name used for the channel's icon on the Wii Menu.<br />A shortened version of 20 characters or less is recommended for longer titles.<br /><hr><h3>Example:</h3><br />Zelda: Ocarina",
+			"t_001":							"The full name of the software, as displayed on the banner preview.<br /><hr><h3>Example:</h3>The Legend of Zelda:<br />Ocarina of Time",
 			"t_002":							"The region to use for the channel banner and icon. This can be useful if the console's name is different for your region or if you want to use a Japanese/Korean banner, for instance.<br />If the banner region is set to automatic, it will correspond with the WAD's region.",
 			"t_003":							"Change advanced emulator settings.",
 			"t_004":							"이 옵션을 활성화하면 프로그램은 현재 선택된 파일과 같은 폴더 내에 있는 모든 파일을 주입될 소프트웨어의 일부로 취급합니다.<br />계속하기 전에 소프트웨어 파일이 별도의 폴더에 있는지 확인하세요.",

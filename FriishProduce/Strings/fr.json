@@ -114,11 +114,12 @@
 			"e_013":							"Aucun point d'entrée d'injection n'a été trouvé. Il peut s'agir que la méthode d'injection utilisée par cette chaîne n'est toujours pas prise en charge.",
 			"e_014":							"Le fichier BIOS requis pour cette console est indisponible. Veuillez le spécifier de nouveau dans les préférences de l'application.",
 			"e_015":							"Échec de création de l'image d'aperçu des données de sauvegarde.",
-			"e_016":							"Aucun mode d'emploi de Console virtuelle n'a été trouvé dans cette chaîne."
+			"e_016":							"Aucun mode d'emploi de Console virtuelle n'a été trouvé dans cette chaîne.",
+			"e_017":							"«{0}» n'est pas un fichier de projet valide."
 		},
 
 		"html": {
-			"t_000":							"Le nom de la chaîne tel qu'il apparaît sur le Menu Wii.<br />Il est recommandé d'utiliser une version abrégée du titre (maximum de 20 caractères) s'il est trop long.<br /><hr><b>Exemple :</b> Zelda: Ocarina",
+			"t_000":							"Le nom de la chaîne tel qu'il apparaît sur le Menu Wii.<br />Il est recommandé d'utiliser une version abrégée du titre (maximum de 20 caractères) s'il est trop long.<br /><hr><h3>Exemple :</h3> Zelda: Ocarina",
 			"t_001":							"Modifier les paramètres de l'émulateur.",
 			"t_004":							"Lorsque cette option est activée, l'application traitera tous les fichiers du même dossier que celui actuellement sélectionné comme faisant partie du logiciel à injecter.<br />Veuillez vous assurer que vos fichiers sont déjà dans un répertoire séparé avant de continuer.",
 		}

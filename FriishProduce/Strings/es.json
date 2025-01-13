@@ -114,11 +114,12 @@
 			"e_013":							"No se encontró ningún punto de entrada de inyección. Puede deberse a que el método de inyección utilizado por este canal aún no está compatible.",
 			"e_014":							"No se encontró el archivo BIOS necesario para esta consola.\nPor favor seleccione un archivo en los ajustes de la aplicación.",
 			"e_015":							"No se pudo crear la imagen TPL para los datos guardados.",
-			"e_016":							"No se encontró ningún manual electrónico de Consola Virtual."
+			"e_016":							"No se encontró ningún manual electrónico de Consola Virtual.",
+			"e_017":							"\"{0}\" no es un archivo de proyecto válido."
 		},
 
 		"html": {
-			"t_000":							"Nombre utilizado para el icono que aparece en el menu Wii.<br />Para títulos más largos, se recomienda utilizar una versión abreviada de 20 caracteres o menos.<hr><b>Ejemplo:</b> Zelda: Ocarina",
+			"t_000":							"Nombre utilizado para el icono que aparece en el menu Wii.<br />Para títulos más largos, se recomienda utilizar una versión abreviada de 20 caracteres o menos.<hr><h3>Ejemplo:</h3> Zelda: Ocarina",
 			"t_001":							"Cambiar la configuración del emulador.",
 		}
 	},

@@ -89,7 +89,6 @@ namespace FriishProduce
             this.rom_label_filename = new System.Windows.Forms.Label();
             this.rom_label = new System.Windows.Forms.Label();
             this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
-            this.tip = new TheArtOfDev.HtmlRenderer.WinForms.HtmlToolTip();
             this.bannerMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.title_id_random)).BeginInit();
             this.groupBox4.SuspendLayout();
@@ -575,21 +574,6 @@ namespace FriishProduce
             this.backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.saveToWAD);
             this.backgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.saveToWAD_UpdateProgress);
             // 
-            // tip
-            // 
-            this.tip.AllowLinksHandling = true;
-            this.tip.AutoPopDelay = 10000;
-            this.tip.BackColor = System.Drawing.Color.White;
-            this.tip.BaseStylesheet = "div { font-size: 11px !important; }";
-            this.tip.ForeColor = System.Drawing.Color.Black;
-            this.tip.InitialDelay = 500;
-            this.tip.MaximumSize = new System.Drawing.Size(350, 0);
-            this.tip.OwnerDraw = true;
-            this.tip.ReshowDelay = 100;
-            this.tip.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-            this.tip.TooltipCssClass = "htmltooltip";
-            this.tip.UseGdiPlusTextRendering = true;
-            // 
             // ProjectForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -689,7 +673,6 @@ namespace FriishProduce
         private System.ComponentModel.BackgroundWorker backgroundWorker;
         private System.Windows.Forms.Button import_wad;
         private System.Windows.Forms.PictureBox injection_method_help;
-        private TheArtOfDev.HtmlRenderer.WinForms.HtmlToolTip tip;
         private System.Windows.Forms.Label using_default_wad;
     }
 }

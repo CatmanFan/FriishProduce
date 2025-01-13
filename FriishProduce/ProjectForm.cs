@@ -539,9 +539,9 @@ namespace FriishProduce
             #endregion
 
             #region ------------------------------------------ Localization: Tooltips ------------------------------------------
-            tip.SetToolTip(channel_name, Program.Lang.HTML(0, true, label1.Text));
-            tip.SetToolTip(injection_method_options, Program.Lang.HTML(3, true, injection_method_options.Text));
-            tip.SetToolTip(multifile_software, Program.Lang.HTML(4, true, multifile_software.Text));
+            (ParentForm as MainForm).Tip.SetToolTip(channel_name, Program.Lang.HTML(0, true, label1.Text));
+            (ParentForm as MainForm).Tip.SetToolTip(injection_method_options, Program.Lang.HTML(3, true, injection_method_options.Text));
+            (ParentForm as MainForm).Tip.SetToolTip(multifile_software, Program.Lang.HTML(4, true, multifile_software.Text));
             #endregion
 
             if (Base.SelectedIndex >= 0)
@@ -1616,10 +1616,11 @@ namespace FriishProduce
 
             try
             {
+                // Define progress
+                // *******
                 (double step, double max) progress = new();
                 progress.step = progress.max = 5.0;
                 if (WADPath != null) progress.step = progress.max -= 1.0;
-
 
                 // Get WAD data
                 // *******
@@ -1681,28 +1682,6 @@ namespace FriishProduce
                 backgroundWorker.ReportProgress((int)Math.Round((progress.step - progress.max) / progress.max * 100.0));
                 // -----------------------------------------------
 
-                // Banner
-                // *******
-                BannerHelper.Modify
-                (
-                    outWad,
-                    targetPlatform,
-                    isVirtualConsole ? outWad.Region : _bannerRegion switch { 1 => libWiiSharp.Region.Japan, 2 => libWiiSharp.Region.Korea, 3 => libWiiSharp.Region.Europe, _ => libWiiSharp.Region.USA },
-                    _bannerTitle,
-                    _bannerYear,
-                    _bannerPlayers
-                );
-                if (File.Exists(sound) && sound != null)
-                    SoundHelper.ReplaceSound(outWad, sound);
-                else
-                    SoundHelper.ReplaceSound(outWad, Properties.Resources.Sound_WiiVC);
-                if (img.VCPic != null) img.ReplaceBanner(outWad);
-
-                // -----------------------------------------------
-                progress.step += 1;
-                backgroundWorker.ReportProgress((int)Math.Round((progress.step - progress.max) / progress.max * 100.0));
-                // -----------------------------------------------
-
                 // Change WAD region & internal main.dol things
                 // *******
                 if (InvokeRequired)
@@ -1719,12 +1698,33 @@ namespace FriishProduce
                     Utils.ChangeVideoMode(outWad, video_modes.SelectedIndex);
                 }
 
-
                 // Other WAD settings to be changed done by WAD creator helper, which will save to a new file
                 // *******
                 outWad.ChangeChannelTitles(_channelTitles);
                 outWad.ChangeTitleID(LowerTitleID.Channel, _tID);
                 outWad.FakeSign = true;
+
+                // -----------------------------------------------
+                progress.step += 1;
+                backgroundWorker.ReportProgress((int)Math.Round((progress.step - progress.max) / progress.max * 100.0));
+                // -----------------------------------------------
+
+                // Banner
+                // *******
+                BannerHelper.Modify
+                (
+                    outWad,
+                    targetPlatform,
+                    isVirtualConsole ? outWad.Region : _bannerRegion switch { 1 => libWiiSharp.Region.Japan, 2 => libWiiSharp.Region.Korea, 3 => libWiiSharp.Region.Europe, _ => libWiiSharp.Region.USA },
+                    _bannerTitle,
+                    _bannerYear,
+                    _bannerPlayers
+                );
+                if (File.Exists(sound) && sound != null)
+                    SoundHelper.ReplaceSound(outWad, sound);
+                else
+                    SoundHelper.ReplaceSound(outWad, Properties.Resources.Sound_WiiVC);
+                if (img.VCPic != null) img.ReplaceBanner(outWad);
 
                 // -----------------------------------------------
                 progress.step += 1;
