@@ -734,7 +734,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>9</value>
   </data>
   <data name="use_online_wad_tip.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -919,6 +919,18 @@
   <data name="&gt;&gt;language.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <data name="vc_n64_romc_type.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 128</value>
+  </data>
+  <data name="vc_n64_romc_type.Size" type="System.Drawing.Size, System.Drawing">
+    <value>536, 50</value>
+  </data>
+  <data name="vc_n64_romc_type.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="vc_n64_romc_type.Text" xml:space="preserve">
+    <value>romc_type</value>
+  </data>
   <data name="&gt;&gt;vc_n64_romc_type.Name" xml:space="preserve">
     <value>vc_n64_romc_type</value>
   </data>
@@ -950,31 +962,52 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_n64.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>2</value>
   </data>
-  <data name="vc_n64_romc_type.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 128</value>
+  <data name="&gt;&gt;forwarder_root_device.Name" xml:space="preserve">
+    <value>forwarder_root_device</value>
   </data>
-  <data name="vc_n64_romc_type.Size" type="System.Drawing.Size, System.Drawing">
-    <value>536, 50</value>
-  </data>
-  <data name="vc_n64_romc_type.TabIndex" type="System.Int32, mscorlib">
-    <value>20</value>
-  </data>
-  <data name="vc_n64_romc_type.Text" xml:space="preserve">
-    <value>romc_type</value>
-  </data>
-  <data name="&gt;&gt;vc_n64_romc_type.Name" xml:space="preserve">
-    <value>vc_n64_romc_type</value>
-  </data>
-  <data name="&gt;&gt;vc_n64_romc_type.Type" xml:space="preserve">
+  <data name="&gt;&gt;forwarder_root_device.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;vc_n64_romc_type.Parent" xml:space="preserve">
-    <value>vc_n64</value>
+  <data name="&gt;&gt;forwarder_root_device.Parent" xml:space="preserve">
+    <value>forwarder</value>
   </data>
-  <data name="&gt;&gt;vc_n64_romc_type.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;forwarder_root_device.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="&gt;&gt;bios_settings.Name" xml:space="preserve">
+    <value>bios_settings</value>
+  </data>
+  <data name="&gt;&gt;bios_settings.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;bios_settings.Parent" xml:space="preserve">
+    <value>forwarder</value>
+  </data>
+  <data name="&gt;&gt;bios_settings.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="forwarder.Location" type="System.Drawing.Point, System.Drawing">
+    <value>194, 0</value>
+  </data>
+  <data name="forwarder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>560, 410</value>
+  </data>
+  <data name="forwarder.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="&gt;&gt;forwarder.Name" xml:space="preserve">
+    <value>forwarder</value>
+  </data>
+  <data name="&gt;&gt;forwarder.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;forwarder.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;forwarder.ZOrder" xml:space="preserve">
+    <value>11</value>
   </data>
   <data name="&gt;&gt;forwarder_type.Name" xml:space="preserve">
     <value>forwarder_type</value>
@@ -1011,6 +1044,81 @@
   </data>
   <data name="&gt;&gt;forwarder_root_device.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="forwarder_type.Items" xml:space="preserve">
+    <value>SD</value>
+  </data>
+  <data name="forwarder_type.Items1" xml:space="preserve">
+    <value>USB</value>
+  </data>
+  <data name="forwarder_type.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 18</value>
+  </data>
+  <data name="forwarder_type.Size" type="System.Drawing.Size, System.Drawing">
+    <value>516, 21</value>
+  </data>
+  <data name="forwarder_type.TabIndex" type="System.Int32, mscorlib">
+    <value>27</value>
+  </data>
+  <data name="&gt;&gt;forwarder_type.Name" xml:space="preserve">
+    <value>forwarder_type</value>
+  </data>
+  <data name="&gt;&gt;forwarder_type.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;forwarder_type.Parent" xml:space="preserve">
+    <value>forwarder_root_device</value>
+  </data>
+  <data name="&gt;&gt;forwarder_type.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;show_bios_screen.Name" xml:space="preserve">
+    <value>show_bios_screen</value>
+  </data>
+  <data name="&gt;&gt;show_bios_screen.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;show_bios_screen.Parent" xml:space="preserve">
+    <value>bios_settings</value>
+  </data>
+  <data name="&gt;&gt;show_bios_screen.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;toggleSwitch2.Name" xml:space="preserve">
+    <value>toggleSwitch2</value>
+  </data>
+  <data name="&gt;&gt;toggleSwitch2.Type" xml:space="preserve">
+    <value>JCS.ToggleSwitch, ToggleSwitch, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;toggleSwitch2.Parent" xml:space="preserve">
+    <value>bios_settings</value>
+  </data>
+  <data name="&gt;&gt;toggleSwitch2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="bios_settings.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 66</value>
+  </data>
+  <data name="bios_settings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>536, 45</value>
+  </data>
+  <data name="bios_settings.TabIndex" type="System.Int32, mscorlib">
+    <value>26</value>
+  </data>
+  <data name="bios_settings.Text" xml:space="preserve">
+    <value>bios_settings</value>
+  </data>
+  <data name="&gt;&gt;bios_settings.Name" xml:space="preserve">
+    <value>bios_settings</value>
+  </data>
+  <data name="&gt;&gt;bios_settings.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;bios_settings.Parent" xml:space="preserve">
+    <value>forwarder</value>
+  </data>
+  <data name="&gt;&gt;bios_settings.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="show_bios_screen.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1063,78 +1171,6 @@
   <data name="&gt;&gt;toggleSwitch2.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="bios_settings.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 66</value>
-  </data>
-  <data name="bios_settings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>536, 45</value>
-  </data>
-  <data name="bios_settings.TabIndex" type="System.Int32, mscorlib">
-    <value>26</value>
-  </data>
-  <data name="bios_settings.Text" xml:space="preserve">
-    <value>bios_settings</value>
-  </data>
-  <data name="&gt;&gt;bios_settings.Name" xml:space="preserve">
-    <value>bios_settings</value>
-  </data>
-  <data name="&gt;&gt;bios_settings.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;bios_settings.Parent" xml:space="preserve">
-    <value>forwarder</value>
-  </data>
-  <data name="&gt;&gt;bios_settings.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="forwarder.Location" type="System.Drawing.Point, System.Drawing">
-    <value>194, 0</value>
-  </data>
-  <data name="forwarder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>560, 410</value>
-  </data>
-  <data name="forwarder.TabIndex" type="System.Int32, mscorlib">
-    <value>22</value>
-  </data>
-  <data name="&gt;&gt;forwarder.Name" xml:space="preserve">
-    <value>forwarder</value>
-  </data>
-  <data name="&gt;&gt;forwarder.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;forwarder.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;forwarder.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="forwarder_type.Items" xml:space="preserve">
-    <value>SD</value>
-  </data>
-  <data name="forwarder_type.Items1" xml:space="preserve">
-    <value>USB</value>
-  </data>
-  <data name="forwarder_type.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 18</value>
-  </data>
-  <data name="forwarder_type.Size" type="System.Drawing.Size, System.Drawing">
-    <value>516, 21</value>
-  </data>
-  <data name="forwarder_type.TabIndex" type="System.Int32, mscorlib">
-    <value>27</value>
-  </data>
-  <data name="&gt;&gt;forwarder_type.Name" xml:space="preserve">
-    <value>forwarder_type</value>
-  </data>
-  <data name="&gt;&gt;forwarder_type.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;forwarder_type.Parent" xml:space="preserve">
-    <value>forwarder_root_device</value>
-  </data>
-  <data name="&gt;&gt;forwarder_type.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="&gt;&gt;vc_nes_palette.Name" xml:space="preserve">
     <value>vc_nes_palette</value>
   </data>
@@ -1166,7 +1202,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_nes.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>12</value>
   </data>
   <data name="&gt;&gt;vc_nes_palette_banner_usage.Name" xml:space="preserve">
     <value>vc_nes_palette_banner_usage</value>
@@ -1298,7 +1334,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_neo.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>5</value>
   </data>
   <data name="&gt;&gt;vc_neo_bios_list.Name" xml:space="preserve">
     <value>vc_neo_bios_list</value>
@@ -1412,7 +1448,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_sega.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>3</value>
   </data>
   <data name="&gt;&gt;vc_sega_countries.Name" xml:space="preserve">
     <value>vc_sega_countries</value>
@@ -1781,7 +1817,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_pce.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>4</value>
   </data>
   <data name="&gt;&gt;vc_pce_region.Name" xml:space="preserve">
     <value>vc_pce_region</value>
@@ -2327,7 +2363,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>8</value>
   </data>
   <data name="auto_prefill.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2831,7 +2867,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;default_injection_methods.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>6</value>
   </data>
   <data name="&gt;&gt;injection_methods_sega.Name" xml:space="preserve">
     <value>injection_methods_sega</value>
@@ -3104,7 +3140,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;bios_files.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>7</value>
   </data>
   <data name="&gt;&gt;browse_bios_neo.Name" xml:space="preserve">
     <value>browse_bios_neo</value>
@@ -3365,7 +3401,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;adobe_flash.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>10</value>
   </data>
   <data name="&gt;&gt;flash_fullscreen.Name" xml:space="preserve">
     <value>flash_fullscreen</value>
@@ -4202,7 +4238,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_snes.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>13</value>
   </data>
   <data name="&gt;&gt;vc_snes_patch_nosave.Name" xml:space="preserve">
     <value>vc_snes_patch_nosave</value>
@@ -4307,16 +4343,16 @@
     <value>NoControl</value>
   </data>
   <data name="vc_snes_patch_nosave.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 20</value>
+    <value>10, 86</value>
   </data>
   <data name="vc_snes_patch_nosave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>115, 17</value>
+    <value>94, 17</value>
   </data>
   <data name="vc_snes_patch_nosave.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
   </data>
   <data name="vc_snes_patch_nosave.Text" xml:space="preserve">
-    <value>save_data_enable</value>
+    <value>patch_nosave</value>
   </data>
   <data name="vc_snes_patch_nosave.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>TopLeft</value>
@@ -4373,7 +4409,7 @@
     <value>NoControl</value>
   </data>
   <data name="vc_snes_patch_nocc.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 86</value>
+    <value>10, 20</value>
   </data>
   <data name="vc_snes_patch_nocc.Size" type="System.Drawing.Size, System.Drawing">
     <value>81, 17</value>

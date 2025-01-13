@@ -164,18 +164,90 @@ namespace FriishProduce.Injectors
 
         protected override void ModifyEmulatorSettings()
         {
-            string arguments = "--no-check-header-simple";
+            bool nomanual = CustomManual == null && !UseOrigManual;
 
-            if (bool.Parse(Settings["patch_volume"]))       arguments += " --volume";
-            if (bool.Parse(Settings["patch_nodark"]))       arguments += " --no-dark";
-            if (bool.Parse(Settings["patch_nocc"]))         arguments += " --no-cc --wiimote-native";
-            if (bool.Parse(Settings["patch_nosuspend"]))    arguments += " --no-suspend";
-            if (bool.Parse(Settings["patch_nosave"]))       arguments += " --no-save";
-            if (bool.Parse(Settings["patch_widescreen"]))   arguments += " --wide";
+            // Define arguments
+            // ****************
+            Dictionary<string, string> argDict = new();
 
-            if (CustomManual == null && !UseOrigManual)
+            if (bool.Parse(Settings["patch_volume"])) argDict.Add("--volume", Program.Lang.String("patch_volume", "vc_snes"));
+            if (bool.Parse(Settings["patch_nodark"])) argDict.Add("--no-dark", Program.Lang.String("patch_nodark", "vc_snes"));
+            if (bool.Parse(Settings["patch_nocc"])) argDict.Add("--no-cc --wiimote-native", Program.Lang.String("patch_nocc", "vc_snes"));
+            if (bool.Parse(Settings["patch_nosuspend"])) argDict.Add("--no-suspend", Program.Lang.String("patch_nosuspend", "vc_snes"));
+            if (bool.Parse(Settings["patch_nosave"])) argDict.Add("--no-save", Program.Lang.String("patch_nosave", "vc_snes"));
+            if (bool.Parse(Settings["patch_widescreen"])) argDict.Add("--wide", Program.Lang.String("patch_widescreen", "vc_snes"));
+            if (nomanual) argDict.Add("--no-opera", Program.Lang.String("patch_noopera", "vc_snes"));
+
+            if (argDict?.Count == 0) return;
+            argDict.Add("--no-check-header-simple", null);
+
+            // Write 01.app
+            // ****************
+            File.WriteAllBytes(Paths.WorkingFolder + "01.app", Contents[1]);
+
+            // Apply each patch
+            // ****************
+            List<string> failed = new();
+
+            for (int i = 0; i < argDict.Count; i++)
             {
-                arguments += " --no-opera";
+                (string Key, string Value) argument = (argDict.Keys.ElementAt(i), argDict.Values.ElementAt(i));
+
+                Utils.Run
+                (
+                    FileDatas.Apps.sns_boost,
+                    "sns_boost.exe",
+                    $"-i 01.app {argument.Key}"
+                );
+
+                if (argument.Value != null && (!File.Exists(Paths.WorkingFolder + "01_boosted.app") || File.ReadAllBytes(Paths.WorkingFolder + "01_boosted.app").SequenceEqual(File.ReadAllBytes(Paths.WorkingFolder + "01.app"))))
+                {
+                    if (argument.Key == "--no-opera") nomanual = false;
+
+                    argDict.Remove(argument.Key);
+                    failed.Add(argument.Value);
+                }
+
+                if (File.Exists(Paths.WorkingFolder + "01_boosted.app"))
+                    File.Delete(Paths.WorkingFolder + "01_boosted.app");
+            }
+
+            // Patch again
+            // ****************
+            File.WriteAllBytes(Paths.WorkingFolder + "01.app", Contents[1]);
+            Utils.Run
+            (
+                FileDatas.Apps.sns_boost,
+                "sns_boost.exe",
+                $"-i 01.app {string.Join(" ", argDict.Keys)}"
+            );
+
+            // Messages for failed patches
+            // ****************
+            bool notNeeded = argDict.Count == 1 && (argDict.Keys.ElementAt(0) == "--no-opera" || argDict.Keys.ElementAt(0) == "--no-check-header-simple");
+
+            if (!notNeeded)
+            {
+                if (!File.Exists(Paths.WorkingFolder + "01_boosted.app") || File.ReadAllBytes(Paths.WorkingFolder + "01_boosted.app").SequenceEqual(Contents[1]))
+                {
+                    MessageBox.Show(Program.Lang.Msg(4, true));
+                    return;
+                }
+
+                else if (failed.Count > 0)
+                {
+                    string failedList = "";
+                    foreach (var item in failed)
+                        failedList += "- " + item + Environment.NewLine;
+
+                    MessageBox.Show(string.Format(Program.Lang.Msg(5, true), failedList));
+                }
+            }
+
+            // Clean manual if not used
+            // ****************
+            if (nomanual)
+            {
                 try
                 {
                     if (ManualContent != null) ManualContent.RemoveFile("emanual.arc");
@@ -184,22 +256,10 @@ namespace FriishProduce.Injectors
                 catch { }
             }
 
-            if (arguments != null)
-            {
-                File.WriteAllBytes(Paths.WorkingFolder + "01.app", Contents[1]);
-
-                Utils.Run
-                (
-                    FileDatas.Apps.sns_boost,
-                    "sns_boost.exe",
-                    "-i 01.app " + arguments
-                );
-
-                if (!File.Exists(Paths.WorkingFolder + "01_boosted.app") || File.ReadAllBytes(Paths.WorkingFolder + "01_boosted.app").SequenceEqual(Contents[1]))
-                    MessageBox.Show(Program.Lang.Msg(4, true));
-                else
-                    Contents[1] = File.ReadAllBytes(Paths.WorkingFolder + "01_boosted.app");
-            }
+            // Finally, replace file
+            // ****************
+            if (File.Exists(Paths.WorkingFolder + "01_boosted.app"))
+                Contents[1] = File.ReadAllBytes(Paths.WorkingFolder + "01_boosted.app");
         }
     }
 }

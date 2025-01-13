@@ -37,6 +37,7 @@ namespace FriishProduce
             this.romc_type_list = new System.Windows.Forms.ComboBox();
             this.g2 = new System.Windows.Forms.GroupBox();
             this.bottomPanel1.SuspendLayout();
+            this.controller_box.SuspendLayout();
             this.g1.SuspendLayout();
             this.g2.SuspendLayout();
             this.SuspendLayout();
@@ -60,7 +61,7 @@ namespace FriishProduce
             this.patch_autosizerom.AutoSize = true;
             this.patch_autosizerom.CheckAlign = System.Drawing.ContentAlignment.TopLeft;
             this.patch_autosizerom.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.patch_autosizerom.Location = new System.Drawing.Point(9, 63);
+            this.patch_autosizerom.Location = new System.Drawing.Point(10, 64);
             this.patch_autosizerom.Name = "patch_autosizerom";
             this.patch_autosizerom.Size = new System.Drawing.Size(117, 17);
             this.patch_autosizerom.TabIndex = 16;
@@ -74,7 +75,7 @@ namespace FriishProduce
             this.patch_expandedram.AutoSize = true;
             this.patch_expandedram.CheckAlign = System.Drawing.ContentAlignment.TopLeft;
             this.patch_expandedram.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.patch_expandedram.Location = new System.Drawing.Point(9, 41);
+            this.patch_expandedram.Location = new System.Drawing.Point(10, 42);
             this.patch_expandedram.Name = "patch_expandedram";
             this.patch_expandedram.Size = new System.Drawing.Size(125, 17);
             this.patch_expandedram.TabIndex = 15;
@@ -88,7 +89,7 @@ namespace FriishProduce
             this.patch_fixcrashes.AutoSize = true;
             this.patch_fixcrashes.CheckAlign = System.Drawing.ContentAlignment.TopLeft;
             this.patch_fixcrashes.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.patch_fixcrashes.Location = new System.Drawing.Point(9, 85);
+            this.patch_fixcrashes.Location = new System.Drawing.Point(10, 86);
             this.patch_fixcrashes.Name = "patch_fixcrashes";
             this.patch_fixcrashes.Size = new System.Drawing.Size(108, 17);
             this.patch_fixcrashes.TabIndex = 14;
@@ -102,7 +103,7 @@ namespace FriishProduce
             this.patch_fixbrightness.AutoSize = true;
             this.patch_fixbrightness.CheckAlign = System.Drawing.ContentAlignment.TopLeft;
             this.patch_fixbrightness.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.patch_fixbrightness.Location = new System.Drawing.Point(9, 19);
+            this.patch_fixbrightness.Location = new System.Drawing.Point(10, 20);
             this.patch_fixbrightness.Name = "patch_fixbrightness";
             this.patch_fixbrightness.Size = new System.Drawing.Size(121, 17);
             this.patch_fixbrightness.TabIndex = 13;
@@ -127,7 +128,7 @@ namespace FriishProduce
             // g2
             // 
             this.g2.Controls.Add(this.romc_type_list);
-            this.g2.Location = new System.Drawing.Point(12, 128);
+            this.g2.Location = new System.Drawing.Point(12, 129);
             this.g2.Name = "g2";
             this.g2.Size = new System.Drawing.Size(530, 50);
             this.g2.TabIndex = 19;
@@ -137,15 +138,18 @@ namespace FriishProduce
             // 
             // Options_VC_N64
             // 
-            this.ClientSize = new System.Drawing.Size(554, 234);
+            this.ClientSize = new System.Drawing.Size(554, 236);
             this.Controls.Add(this.g1);
             this.Controls.Add(this.g2);
             this.Name = "Options_VC_N64";
             this.Tag = "vc_n64";
             this.Load += new System.EventHandler(this.Form_IsShown);
+            this.Controls.SetChildIndex(this.controller_box, 0);
             this.Controls.SetChildIndex(this.g2, 0);
             this.Controls.SetChildIndex(this.g1, 0);
             this.bottomPanel1.ResumeLayout(false);
+            this.controller_box.ResumeLayout(false);
+            this.controller_box.PerformLayout();
             this.g1.ResumeLayout(false);
             this.g1.PerformLayout();
             this.g2.ResumeLayout(false);

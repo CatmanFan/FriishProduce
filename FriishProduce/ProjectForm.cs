@@ -760,7 +760,7 @@ namespace FriishProduce
                 default:
                     try
                     {
-                        var extensions = Filters.ROM.Where(x => x.Platform == targetPlatform).ToArray()[0];
+                        var extensions = Filters.ROM.Where(x => x.Platform == (targetPlatform == Platform.S32X ? Platform.SMD : targetPlatform)).ToArray()[0];
                         for (int i = 0; i < extensions.Extensions.Length; i++)
                             if (!extensions.Extensions[i].StartsWith("*")) extensions.Extensions[i] = "*" + extensions.Extensions[i];
 
@@ -778,10 +778,6 @@ namespace FriishProduce
                 case Platform.SMCD:
                 case Platform.GCN:
                     browseROM.Filter = Program.Lang.String("filter.disc") + "|" + Program.Lang.String("filter.zip") + Program.Lang.String("filter");
-                    break;
-
-                case Platform.S32X:
-                    browseROM.Filter = Program.Lang.String($"filter.rom_{Platform.SMD.ToString().ToLower()}");
                     break;
 
                 case Platform.NEO:

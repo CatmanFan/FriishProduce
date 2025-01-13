@@ -281,6 +281,15 @@
 			"palette_banner_usage":				"Utiliser également pour les images d'aperçu"
 		},
 
+		"vc_snes": {
+			"patch_volume":						"Boost volume",
+			"patch_nodark":						"Anti-filtre sombre",
+			"patch_noopera":					"Supprimer les fichiers du mode d'emploi",
+			"patch_nosave":						"Désactivation de la sauvegarde",
+			"patch_nosuspend":					"Désactivation du point de récupération",
+			"patch_widescreen":					"Menu HOME en 16/9",
+		},
+
 		"vc_n64": {
 			"patch_fixbrightness":				"Anti-filtre sombre",
 			"patch_fixcrashes":					"Anti-plantage",

@@ -76,7 +76,7 @@ namespace FriishProduce
 
             banner_region.Text = Program.Lang.String(banner_region.Name, "banner").TrimEnd(':').Trim();
 
-            flash_save_data_enable.Text = vc_pce_backupram.Text = vc_sega_save_sram.Text = vc_snes_patch_nosave.Text = Program.Lang.String("save_data_enable", "projectform");
+            flash_save_data_enable.Text = vc_pce_backupram.Text = vc_sega_save_sram.Text = Program.Lang.String("save_data_enable", "projectform");
 
             // -----------------------------
 
@@ -126,6 +126,7 @@ namespace FriishProduce
             Program.Lang.String(vc_snes_patch_volume, "vc_snes");
             Program.Lang.String(vc_snes_patch_nodark, "vc_snes");
             Program.Lang.String(vc_snes_patch_nocc, "vc_snes");
+            Program.Lang.String(vc_snes_patch_nosave, "vc_snes");
             Program.Lang.String(vc_snes_patch_nosuspend, "vc_snes");
             Program.Lang.String(vc_snes_patch_widescreen, "vc_snes");
 
@@ -226,7 +227,7 @@ namespace FriishProduce
             vc_snes_patch_nodark.Checked = Program.Config.snes.patch_nodark;
             vc_snes_patch_nocc.Checked = Program.Config.snes.patch_nocc;
             vc_snes_patch_nosuspend.Checked = Program.Config.snes.patch_nosuspend;
-            vc_snes_patch_nosave.Checked = !Program.Config.snes.patch_nosave;
+            vc_snes_patch_nosave.Checked = Program.Config.snes.patch_nosave;
             vc_snes_patch_widescreen.Checked = Program.Config.snes.patch_widescreen;
 
             // N64
@@ -376,7 +377,7 @@ namespace FriishProduce
             Program.Config.snes.patch_nodark = vc_snes_patch_nodark.Checked;
             Program.Config.snes.patch_nocc = vc_snes_patch_nocc.Checked;
             Program.Config.snes.patch_nosuspend = vc_snes_patch_nosuspend.Checked;
-            Program.Config.snes.patch_nosave = !vc_snes_patch_nosave.Checked;
+            Program.Config.snes.patch_nosave = vc_snes_patch_nosave.Checked;
             Program.Config.snes.patch_widescreen = vc_snes_patch_widescreen.Checked;
 
             Program.Config.n64.patch_nodark = vc_n64_patch_fixbrightness.Checked;

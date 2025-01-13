@@ -286,6 +286,9 @@
   <data name="&gt;&gt;title_id_random.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
+  <data name="title_id_upper.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Lucida Console, 14px</value>
+  </data>
   <data name="title_id_upper.Location" type="System.Drawing.Point, System.Drawing">
     <value>240, 35</value>
   </data>

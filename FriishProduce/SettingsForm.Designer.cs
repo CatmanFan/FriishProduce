@@ -1129,7 +1129,7 @@ namespace FriishProduce
             // 
             resources.ApplyResources(this.vc_snes_patch_nosave, "vc_snes_patch_nosave");
             this.vc_snes_patch_nosave.Name = "vc_snes_patch_nosave";
-            this.vc_snes_patch_nosave.Tag = "save_data_enable";
+            this.vc_snes_patch_nosave.Tag = "patch_nosave";
             this.vc_snes_patch_nosave.UseVisualStyleBackColor = true;
             // 
             // vc_snes_patch_widescreen
@@ -1176,9 +1176,6 @@ namespace FriishProduce
             this.ControlBox = false;
             this.Controls.Add(this.bottomPanel2);
             this.Controls.Add(this.TreeView);
-            this.Controls.Add(this.forwarder);
-            this.Controls.Add(this.vc_nes);
-            this.Controls.Add(this.vc_snes);
             this.Controls.Add(this.vc_n64);
             this.Controls.Add(this.vc_sega);
             this.Controls.Add(this.vc_pce);
@@ -1188,6 +1185,9 @@ namespace FriishProduce
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.adobe_flash);
+            this.Controls.Add(this.forwarder);
+            this.Controls.Add(this.vc_nes);
+            this.Controls.Add(this.vc_snes);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MaximizeBox = false;

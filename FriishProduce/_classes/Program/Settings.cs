@@ -139,7 +139,7 @@ namespace FriishProduce
             public bool donotshow_000 { get; set; } = false;
             public bool donotshow_001 { get; set; } = false;
             public bool auto_prefill { get; set; } = false;
-            public bool auto_fill_save_data { get; set; } = false;
+            public bool auto_fill_save_data { get; set; } = true;
             public bool use_online_wad_enabled { get; set; } = false;
             public bool bypass_rom_size { get; set; } = false;
             public int image_interpolation { get; set; } = 2;
