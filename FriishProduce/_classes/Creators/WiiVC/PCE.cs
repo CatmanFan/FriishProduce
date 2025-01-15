@@ -118,7 +118,7 @@ namespace FriishProduce.Injectors
             // IMAGE
             // -----------------------
 
-            MainContent.ReplaceFile(MainContent.GetNodeIndex("savedata.tpl"), Img.CreateSaveTPL(MainContent.Data[MainContent.GetNodeIndex("savedata.tpl")]).ToByteArray());
+            if (Img != null) MainContent.ReplaceFile(MainContent.GetNodeIndex("savedata.tpl"), Img.CreateSaveTPL(MainContent.Data[MainContent.GetNodeIndex("savedata.tpl")]).ToByteArray());
         }
 
         protected override void ModifyEmulatorSettings()

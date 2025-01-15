@@ -204,7 +204,7 @@ namespace FriishProduce.Injectors
                 // IMAGE
                 // -----------------------
 
-                else if (item.ToLower().Contains("banner.tpl"))
+                else if (item.ToLower().Contains("banner.tpl") && Img != null)
                     MainContent.ReplaceFile(MainContent.GetNodeIndex(item), Img.CreateSaveTPL(MainContent.Data[MainContent.GetNodeIndex(item)]).ToByteArray());
             }
         }

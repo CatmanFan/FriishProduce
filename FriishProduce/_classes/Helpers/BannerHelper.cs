@@ -326,7 +326,7 @@ namespace FriishProduce
                     {
                         if (entry.GetUpperID(i).ToUpper() == tID.ToUpper())
                         {
-                            using WAD w = entry.GetWAD(i);
+                            using WAD w = WAD.Load(Web.Get(entry.GetWAD(i)));
                             using var BannerApp = Get(w);
 
                             using (var Banner = U8.Load(BannerApp.Data[BannerApp.GetNodeIndex("banner.bin")]))

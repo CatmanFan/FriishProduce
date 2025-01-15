@@ -224,7 +224,6 @@ namespace FriishProduce
 
         private Project project;
 
-        private WAD outWad;
         private libWiiSharp.Region outWadRegion
         {
             get
@@ -235,7 +234,7 @@ namespace FriishProduce
                 if (InvokeRequired)
                     Invoke(new MethodInvoker(delegate { index = regions.SelectedItem?.ToString(); indexNum = regions.SelectedIndex; }));
                 else
-                    { index = regions.SelectedItem?.ToString(); indexNum = regions.SelectedIndex; }
+                { index = regions.SelectedItem?.ToString(); indexNum = regions.SelectedIndex; }
 
                 return index == Program.Lang.String("region_j") ? libWiiSharp.Region.Japan
                      : index == Program.Lang.String("region_u") ? libWiiSharp.Region.USA
@@ -367,44 +366,44 @@ namespace FriishProduce
                 return value;
             }
         }
-        private int _bannerRegion
+
+        private libWiiSharp.Region _bannerRegion
         {
             get
             {
-                int lang = 0;
-
+                int value = 0;
                 if (InvokeRequired)
-                    Invoke(new MethodInvoker(delegate { lang = banner_form.region.SelectedIndex; }));
-                else lang = banner_form.region.SelectedIndex;
+                    Invoke(new MethodInvoker(delegate { value = banner_form.region.SelectedIndex - 1; }));
+                else value = banner_form.region.SelectedIndex - 1;
 
-                if (lang == 0)
+                if (value == -1)
                 {
-                    lang = channels != null ? inWadRegion switch { Region.Japan => 1, Region.Europe => 3, Region.Korea => 4, _ => 2 } : 2;
+                    value = channels != null ? inWadRegion switch { Region.Japan => 0, Region.Europe => 2, Region.Korea => 3, _ => 1 } : 1;
 
                     if (!isVirtualConsole && Program.Lang.Current.StartsWith("ja"))
-                        lang = 1;
+                        value = 0;
 
                     if (!isVirtualConsole && Program.Lang.Current.StartsWith("ko"))
-                        lang = 4;
+                        value = 3;
                 }
 
                 // Japan/Korea: Use USA banner for C64 & Flash
-                if (lang != 2 && lang != 3 && (targetPlatform == Platform.C64 || targetPlatform == Platform.Flash))
-                    lang = 0;
+                if (value != 1 && value != 2 && (targetPlatform == Platform.C64 || targetPlatform == Platform.Flash))
+                    return libWiiSharp.Region.USA;
 
                 // International: Use Japan banner for MSX
-                else if (lang != 1 && targetPlatform == Platform.MSX)
-                    lang = 1;
+                else if (value != 0 && targetPlatform == Platform.MSX)
+                    return libWiiSharp.Region.Japan;
 
                 // Korea: Use Europe banner for SMD
-                else if (lang == 4 && targetPlatform == Platform.SMD)
-                    lang = 3;
+                else if (value == 3 && targetPlatform == Platform.SMD)
+                    return libWiiSharp.Region.Europe;
 
                 // Korea: Use USA banner for non-available platforms
-                else if (lang == 4 && (int)targetPlatform >= 3)
-                    lang = 0;
+                else if (value == 3 && (int)targetPlatform >= 3)
+                    return libWiiSharp.Region.USA;
 
-                return lang switch { 4 => 2, 2 => 0, _ => lang }; // Korea and USA need to be swapped for the right value for the banner preview function
+                return value switch { 0 => libWiiSharp.Region.Japan, 2 => libWiiSharp.Region.Europe, 3 => libWiiSharp.Region.Korea, _ => libWiiSharp.Region.USA };
             }
         }
         #endregion
@@ -448,11 +447,11 @@ namespace FriishProduce
                 WADRegion = regions.SelectedIndex,
             };
 
-            p.BaseFile = WADPath;
-            p.BaseOnline = (use_online_wad.Checked, Base.SelectedIndex, 0);
+            p.OfflineWAD = WADPath;
+            p.OnlineWAD = (Base.SelectedIndex, 0);
 
             for (int i = 0; i < baseRegionList.Items.Count; i++)
-                if (baseRegionList.Items[i].GetType() == typeof(ToolStripMenuItem) && (baseRegionList.Items[i] as ToolStripMenuItem).Checked) p.BaseOnline = (use_online_wad.Checked, Base.SelectedIndex, i);
+                if (baseRegionList.Items[i].GetType() == typeof(ToolStripMenuItem) && (baseRegionList.Items[i] as ToolStripMenuItem).Checked) p.OnlineWAD = (Base.SelectedIndex, i);
 
             using (Stream stream = File.Open(path, FileMode.Create))
             {
@@ -549,10 +548,10 @@ namespace FriishProduce
                 {
                     baseRegionList.Items[i].Text = channels.Entries[Base.SelectedIndex].Regions[i] switch
                     {
-                        1 or 2      => Program.Lang.String("region_u"),
+                        1 or 2 => Program.Lang.String("region_u"),
                         3 or 4 or 5 => Program.Lang.String("region_e"),
-                        6 or 7      => Program.Lang.String("region_k"),
-                        _           => Program.Lang.String("region_j"),
+                        6 or 7 => Program.Lang.String("region_k"),
+                        _ => Program.Lang.String("region_j"),
                     };
                 }
 
@@ -629,9 +628,9 @@ namespace FriishProduce
 
             injection_methods.SelectedIndex = targetPlatform switch
             {
-                Platform.NES                 => Program.Config.application.default_injection_method_nes,
-                Platform.SNES                => Program.Config.application.default_injection_method_snes,
-                Platform.N64                 => Program.Config.application.default_injection_method_n64,
+                Platform.NES => Program.Config.application.default_injection_method_nes,
+                Platform.SNES => Program.Config.application.default_injection_method_snes,
+                Platform.N64 => Program.Config.application.default_injection_method_n64,
                 Platform.SMS or Platform.SMD => Program.Config.application.default_injection_method_sega,
                 _ => 0
             };
@@ -841,17 +840,16 @@ namespace FriishProduce
                 img.LoadToSource(project.Img.Bmp);
                 LoadROM(project.ROM, false);
 
-                if (!project.BaseOnline.Enabled)
+                if (File.Exists(project.OfflineWAD))
                 {
                     use_online_wad.Enabled = Program.Config.application.use_online_wad_enabled;
                     use_offline_wad.Checked = true;
-                    WADPath = project.BaseFile;
-                    if (File.Exists(project.BaseFile)) LoadWAD(project.BaseFile);
+                    LoadWAD(project.OfflineWAD);
                 }
                 else
                 {
                     use_online_wad.Enabled = use_online_wad.Checked = true;
-                    try { Base.SelectedIndex = project.BaseOnline.Index; UpdateBaseForm(project.BaseOnline.Region); }
+                    try { Base.SelectedIndex = project.OnlineWAD.BaseNumber; UpdateBaseForm(project.OnlineWAD.Region); }
                     catch { Base.SelectedIndex = 0; UpdateBaseForm(); }
                 }
 
@@ -894,7 +892,7 @@ namespace FriishProduce
             savedata.Fill.Checked = project != null ? project.LinkSaveDataTitle : Program.Config.application.auto_fill_save_data;
             if (savedata.Fill.Checked) linkSaveDataTitle();
             forwarder_root_device.SelectedIndex = loadProject ? project.ForwarderStorageDevice : Program.Config.forwarder.root_storage_device;
-            
+
             IsVisible = true;
 
             IsEmpty = project == null;
@@ -904,7 +902,7 @@ namespace FriishProduce
             // Error messages for not found files
             // ********
             if (loadProject)
-                foreach (var item in new string[] { project.ROM, project.Patch, project.BaseFile, project.Sound })
+                foreach (var item in new string[] { project.ROM, project.Patch, project.OfflineWAD, project.Sound })
                     if (!File.Exists(item) && !string.IsNullOrWhiteSpace(item)) MessageBox.Show(string.Format(Program.Lang.Msg(11, true), Path.GetFileName(item)));
             project = null;
 
@@ -1552,13 +1550,44 @@ namespace FriishProduce
             setFilesText();
         }
 
+
+        /// <summary>
+        /// Gets any game metadata that is available for the file based on its CRC32 reading hash, including the software title, year, players, and title image URL.
+        /// </summary>
+        /// <param name="platform"></param>
+        /// <returns></returns>
+        protected (string Name, string Serial, string Year, string Players, string Image) GetGameData(Platform platform, string path)
+        {
+            bool isDisc = platform == Platform.PCECD || platform == Platform.GCN || platform == Platform.SMCD || platform == Platform.PSX;
+            if (isDisc)
+            {
+                if (Path.GetExtension(path).ToLower() == ".cue")
+                    foreach (var item in Directory.EnumerateFiles(Path.GetDirectoryName(path)))
+                        if (Path.GetExtension(item).ToLower() == ".bin" && Path.GetFileNameWithoutExtension(path).ToLower() == Path.GetFileNameWithoutExtension(item).ToLower())
+                            path = item;
+
+                if (Path.GetExtension(path).ToLower() != ".bin")
+                    return (null, null, null, null, null);
+            }
+
+            var result = Databases.LibRetro.Read(path, platform);
+
+            if (!string.IsNullOrEmpty(result.Name))
+            {
+                result.Name = System.Text.RegularExpressions.Regex.Replace(result.Name?.Replace(": ", Environment.NewLine).Replace(" - ", Environment.NewLine), @"\((.*?)\)", "").Trim();
+                if (result.Name.Contains(", The")) result.Name = "The " + result.Name.Replace(", The", string.Empty);
+            }
+
+            return result;
+        }
+
         public async void GameScan(bool imageOnly)
         {
             if (rom == null || rom.FilePath == null) return;
 
             try
             {
-                var gameData = await Task.FromResult(rom.GetData(targetPlatform, rom.FilePath));
+                var gameData = await Task.FromResult(GetGameData(targetPlatform, rom.FilePath));
                 bool retrieved = imageOnly ? !string.IsNullOrEmpty(gameData.Image) : gameData != (null, null, null, null, null);
 
                 if (retrieved)
@@ -1612,35 +1641,49 @@ namespace FriishProduce
 
             string targetFile = e.Argument.ToString();
             if (targetFile == null) targetFile = Paths.WorkingFolder + "out.wad";
-            Program.MainForm.CleanTemp();
+
+            Program.CleanTemp();
 
             try
             {
-                // Define progress
-                // *******
-                (double step, double max) progress = new();
-                progress.step = progress.max = 5.0;
-                if (WADPath != null) progress.step = progress.max -= 1.0;
+                Method m = new(targetPlatform)
+                {
+                    ROM = rom,
+                    Patch = patch,
+                    Img = img,
+
+                    ChannelTitles = _channelTitles,
+                    BannerTitle = _bannerTitle,
+                    BannerYear = _bannerYear,
+                    BannerPlayers = _bannerPlayers,
+                    BannerSound = sound,
+
+                    IsMultifile = multifile_software.Checked,
+                    BannerRegion = _bannerRegion,
+                    SaveDataTitle = _saveDataTitle,
+                    Settings = (contentOptions, keymap.List),
+
+                    WAD = WAD.Load(Properties.Resources.StaticBase),
+                    WadRegion = (int)outWadRegion,
+                    WadVideoMode = video_modes.SelectedIndex,
+
+                    EmuVersion = emuVer,
+
+                    Manual = manual,
+                    TitleID = _tID,
+
+                    Out = targetFile,
+                };
 
                 // Get WAD data
                 // *******
-                outWad = new WAD();
-                if (WADPath != null) outWad = WAD.Load(WADPath);
+                if (WADPath != null) m.GetWAD(WADPath, baseID.Text);
                 else
                 {
-                    foreach (var entry in channels.Entries)
-                        for (int i = 0; i < entry.Regions.Count; i++)
-                            if (entry.GetUpperID(i) == baseID.Text.ToUpper()) outWad = entry.GetWAD(i);
-                    if (outWad == null || outWad?.NumOfContents <= 1)
-                        throw new Exception(Program.Lang.Msg(9, true));
-
-                    // -----------------------------------------------
-                    progress.step += 1;
-                    backgroundWorker.ReportProgress((int)Math.Round((progress.step - progress.max) / progress.max * 100.0));
-                    // -----------------------------------------------
+                    var entry = channels.Entries.Where(x => x.GetUpperIDs().Contains(baseID.Text)).ToArray()[0];
+                    var index = Array.IndexOf(entry.GetUpperIDs(), baseID.Text);
+                    m.GetWAD(entry.GetWAD(index), entry.GetUpperID(index));
                 }
-
-                if (File.Exists(patch)) rom.Patch(patch);
 
                 switch (targetPlatform)
                 {
@@ -1654,9 +1697,9 @@ namespace FriishProduce
                     case Platform.NEO:
                     case Platform.MSX:
                         if (isVirtualConsole)
-                            WiiVCInject();
+                            m.Inject();
                         else
-                            ForwarderCreator(targetFile);
+                            m.CreateForwarder(injection_methods.SelectedItem.ToString(), forwarder_root_device.SelectedIndex == 1 ? Forwarder.Storages.USB : Forwarder.Storages.SD);
                         break;
 
                     case Platform.GB:
@@ -1666,95 +1709,25 @@ namespace FriishProduce
                     case Platform.SMCD:
                     case Platform.PSX:
                     case Platform.RPGM:
-                        ForwarderCreator(targetFile);
+                        m.CreateForwarder(injection_methods.SelectedItem.ToString(), forwarder_root_device.SelectedIndex == 1 ? Forwarder.Storages.USB : Forwarder.Storages.SD);
                         break;
 
                     case Platform.Flash:
-                        FlashInject();
+                        m.Inject();
                         break;
 
                     default:
                         throw new NotImplementedException();
                 }
 
-                // -----------------------------------------------
-                progress.step += 1;
-                backgroundWorker.ReportProgress((int)Math.Round((progress.step - progress.max) / progress.max * 100.0));
-                // -----------------------------------------------
-
                 // Change WAD region & internal main.dol things
                 // *******
-                if (InvokeRequired)
-                    Invoke(new MethodInvoker(delegate
-                    {
-                        if (regions.SelectedIndex > 0)
-                            outWad.Region = outWadRegion;
-                        Utils.ChangeVideoMode(outWad, video_modes.SelectedIndex);
-                    }));
-                else
-                {
-                    if (regions.SelectedIndex > 0)
-                        outWad.Region = outWadRegion;
-                    Utils.ChangeVideoMode(outWad, video_modes.SelectedIndex);
-                }
 
                 // Other WAD settings to be changed done by WAD creator helper, which will save to a new file
                 // *******
-                outWad.ChangeChannelTitles(_channelTitles);
-                outWad.ChangeTitleID(LowerTitleID.Channel, _tID);
-                outWad.FakeSign = true;
-
-                // -----------------------------------------------
-                progress.step += 1;
-                backgroundWorker.ReportProgress((int)Math.Round((progress.step - progress.max) / progress.max * 100.0));
-                // -----------------------------------------------
-
-                // Banner
-                // *******
-                BannerHelper.Modify
-                (
-                    outWad,
-                    targetPlatform,
-                    isVirtualConsole ? outWad.Region : _bannerRegion switch { 1 => libWiiSharp.Region.Japan, 2 => libWiiSharp.Region.Korea, 3 => libWiiSharp.Region.Europe, _ => libWiiSharp.Region.USA },
-                    _bannerTitle,
-                    _bannerYear,
-                    _bannerPlayers
-                );
-                if (File.Exists(sound) && sound != null)
-                    SoundHelper.ReplaceSound(outWad, sound);
-                else
-                    SoundHelper.ReplaceSound(outWad, Properties.Resources.Sound_WiiVC);
-                if (img.VCPic != null) img.ReplaceBanner(outWad);
-
-                // -----------------------------------------------
-                progress.step += 1;
-                backgroundWorker.ReportProgress((int)Math.Round((progress.step - progress.max) / progress.max * 100.0));
-                // -----------------------------------------------
-
-                if (Directory.Exists(Paths.SDUSBRoot))
-                {
-                    Directory.CreateDirectory(Paths.SDUSBRoot + "wad\\");
-                    outWad.Save(Paths.SDUSBRoot + "wad\\" + Path.GetFileNameWithoutExtension(targetFile) + ".wad");
-
-                    // Get ZIP directory path & compress to .ZIP archive
-                    // *******
-                    if (File.Exists(targetFile)) File.Delete(targetFile);
-
-                    FastZip z = new();
-                    z.CreateZip(targetFile, Paths.SDUSBRoot, true, null);
-
-                    // Clean
-                    // *******
-                    Directory.Delete(Paths.SDUSBRoot, true);
-                }
-                else outWad.Save(targetFile);
-
-                outWad.Dispose();
-
-                // -----------------------------------------------
-                progress.step += 1;
-                backgroundWorker.ReportProgress((int)Math.Round((progress.step - progress.max) / progress.max * 100.0));
-                // -----------------------------------------------
+                m.EditMetadata();
+                m.EditBanner();
+                m.Save();
 
                 // Check new WAD file
                 // *******
@@ -1769,7 +1742,7 @@ namespace FriishProduce
 
             finally
             {
-                Program.MainForm.CleanTemp();
+                Program.CleanTemp();
 
                 Invoke(new MethodInvoker(delegate
                 {
@@ -1793,147 +1766,6 @@ namespace FriishProduce
 
                 IsBusy = false;
             }
-        }
-
-        public void ForwarderCreator(string path)
-        {
-            string emulator = null;
-            var storage = Forwarder.Storages.SD;
-
-            if (InvokeRequired)
-                Invoke(new MethodInvoker(delegate
-                {
-                    emulator = injection_methods.SelectedItem.ToString();
-                    storage = forwarder_root_device.SelectedIndex switch { 1 => Forwarder.Storages.USB, _ => Forwarder.Storages.SD };
-                }));
-            else
-            {
-                emulator = injection_methods.SelectedItem.ToString();
-                storage = forwarder_root_device.SelectedIndex switch { 1 => Forwarder.Storages.USB, _ => Forwarder.Storages.SD };
-            }
-
-            Forwarder f = new()
-            {
-                ROM = rom.FilePath,
-                ID = _tID,
-                Emulator = emulator,
-                Storage = storage,
-                Name = _friendlyChannelTitles[1]
-            };
-
-            // Get settings from relevant form
-            // *******
-            f.Settings = contentOptions;
-
-            // Actually inject everything
-            // *******
-            f.CreateZIP(Path.Combine(Path.GetDirectoryName(path), Path.GetFileNameWithoutExtension(path) + $" ({f.Storage}).zip"));
-            outWad = f.CreateWAD(outWad);
-        }
-        #endregion
-
-        #region /////////////////////////////////////////////// To inherit ///////////////////////////////////////////////
-        public void FlashInject()
-        {
-            Injectors.Flash Flash = new()
-            {
-                SWF = rom.FilePath,
-                Settings = contentOptions,
-                Keymap = keymap.Enabled ? keymap.List : null,
-                Multifile = multifile_software.Checked
-            };
-
-            outWad = Flash.Inject(outWad, _saveDataTitle, img);
-        }
-
-        public void WiiVCInject()
-        {
-            // Create Wii VC injector to use
-            // *******
-            InjectorWiiVC VC = null;
-
-            switch (targetPlatform)
-            {
-                default:
-                    throw new NotImplementedException();
-
-                // NES
-                // *******
-                case Platform.NES:
-                    VC = new Injectors.NES();
-                    break;
-
-                // SNES
-                // *******
-                case Platform.SNES:
-                    VC = new Injectors.SNES();
-                    break;
-
-                // N64
-                // *******
-                case Platform.N64:
-                    VC = new Injectors.N64()
-                    {
-                        Settings = contentOptions,
-                        Keymap = keymap.Enabled ? keymap.List : null,
-
-                        CompressionType = emuVer == 3 ? (contentOptions["romc"] == "0" ? 1 : 2) : 0,
-                        Allocate = contentOptions["rom_autosize"] == "True" && (emuVer <= 1),
-                    };
-                    break;
-
-                // SEGA
-                // *******
-                case Platform.SMS:
-                case Platform.SMD:
-                    VC = new Injectors.SEGA()
-                    {
-                        Keymap = keymap.Enabled ? keymap.List : null,
-
-                        IsSMS = targetPlatform == Platform.SMS
-                    };
-                    break;
-
-                // PCE
-                // *******
-                case Platform.PCE:
-                    VC = new Injectors.PCE();
-                    break;
-
-                // PCECD
-                // *******
-                case Platform.PCECD:
-                    // VC = new Injectors.PCECD();
-                    break;
-
-                // NEOGEO
-                // *******
-                case Platform.NEO:
-                    VC = new Injectors.NEO();
-                    break;
-
-                // MSX
-                // *******
-                case Platform.MSX:
-                    VC = new Injectors.MSX();
-                    break;
-            }
-
-            // Get settings from relevant form
-            // *******
-            VC.Settings = contentOptions;
-
-            // Set path to manual (if it exists) and load WAD
-            //// *******
-            if (InvokeRequired)
-                Invoke(new MethodInvoker(delegate{ VC.UseOrigManual = manual_type.SelectedIndex == 1; }));
-            else
-                VC.UseOrigManual = manual_type.SelectedIndex == 1;
-            VC.CustomManual = (File.Exists(manual) || Directory.Exists(manual)) && !VC.UseOrigManual ? manual : null;
-
-            // Actually inject everything
-            // *******
-            outWad = VC.Inject(outWad, rom, _saveDataTitle, img);
         }
         #endregion
 
@@ -2067,15 +1899,15 @@ namespace FriishProduce
             };
 
             foreach (var item in altRegions) if (Program.Lang.Current.ToLower().StartsWith(item.Key) || Program.Lang.Current.ToUpper().EndsWith(item.Key))
-            {
-                selected = regions.IndexOf(item.Value == 0 ? Program.Lang.String("region_j")
-                         : item.Value == 1 ? Program.Lang.String("region_k")
-                         : item.Value == 2 ? Program.Lang.String("region_e")
-                         : Program.Lang.String("region_u"));
+                {
+                    selected = regions.IndexOf(item.Value == 0 ? Program.Lang.String("region_j")
+                             : item.Value == 1 ? Program.Lang.String("region_k")
+                             : item.Value == 2 ? Program.Lang.String("region_e")
+                             : Program.Lang.String("region_u"));
 
-                if (selected == -1 && item.Value == 1) selected = regions.IndexOf(Program.Lang.String("region_u"));
-                break;
-            }
+                    if (selected == -1 && item.Value == 1) selected = regions.IndexOf(Program.Lang.String("region_u"));
+                    break;
+                }
 
             if (selected == -1) selected = 0;
 
@@ -2171,11 +2003,11 @@ namespace FriishProduce
             // ********
             BaseRegion.Image = channels.Entries[Base.SelectedIndex].Regions[index] switch
             {
-                0       => Properties.Resources.flag_jp,
-                1 or 2  => Properties.Resources.flag_us,
-                3       => (int)targetPlatform <= 2 ? Properties.Resources.flag_eu50 : Properties.Resources.flag_eu,
-                4 or 5  => (int)targetPlatform <= 2 ? Properties.Resources.flag_eu60 : Properties.Resources.flag_eu,
-                6 or 7  => Properties.Resources.flag_kr,
+                0 => Properties.Resources.flag_jp,
+                1 or 2 => Properties.Resources.flag_us,
+                3 => (int)targetPlatform <= 2 ? Properties.Resources.flag_eu50 : Properties.Resources.flag_eu,
+                4 or 5 => (int)targetPlatform <= 2 ? Properties.Resources.flag_eu60 : Properties.Resources.flag_eu,
+                6 or 7 => Properties.Resources.flag_kr,
                 _ => null,
             };
 

@@ -323,18 +323,6 @@ namespace FriishProduce
             }
         }
 
-        public void CleanTemp()
-        {
-            try
-            {
-                foreach (var item in Directory.GetFiles(Paths.WorkingFolder, "*.*", SearchOption.AllDirectories))
-                    if (!Path.GetFileName(item).ToLower().Contains("readme.md")) File.Delete(item);
-                foreach (var item in Directory.GetDirectories(Paths.WorkingFolder))
-                    Directory.Delete(item, true);
-            }
-            catch { }
-        }
-
         private void TabContextMenu_Opening(object sender, CancelEventArgs e)
         {
             var page = (sender as ContextMenuStrip).SourceControl;

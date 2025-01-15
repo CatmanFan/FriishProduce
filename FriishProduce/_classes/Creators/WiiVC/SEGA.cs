@@ -178,7 +178,7 @@ namespace FriishProduce.Injectors
             // IMAGE
             // -----------------------
 
-            Img.CreateSaveWTE(MiscCCF);
+            if (Img != null) Img.CreateSaveWTE(MiscCCF);
         }
 
         protected override void ModifyEmulatorSettings()

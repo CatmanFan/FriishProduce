@@ -1,11 +1,6 @@
 ﻿using ICSharpCode.SharpZipLib.Zip;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.IO.Hashing;
-using System.Net;
-using System.Text;
-using System.Text.RegularExpressions;
 
 namespace FriishProduce
 {
@@ -145,36 +140,6 @@ namespace FriishProduce
             if (Out == null) throw new Exception(Program.Lang.Msg(8, true));
 
             patched = Out;
-        }
-
-        /// <summary>
-        /// Gets any game metadata that is available for the file based on its CRC32 reading hash, including the software title, year, players, and title image URL.
-        /// </summary>
-        /// <param name="platform"></param>
-        /// <returns></returns>
-        public (string Name, string Serial, string Year, string Players, string Image) GetData(Platform platform, string path)
-        {
-            bool isDisc = platform == Platform.PCECD || platform == Platform.GCN || platform == Platform.SMCD || platform == Platform.PSX;
-            if (isDisc)
-            {
-                if (Path.GetExtension(path).ToLower() == ".cue")
-                    foreach (var item in Directory.EnumerateFiles(Path.GetDirectoryName(path)))
-                        if (Path.GetExtension(item).ToLower() == ".bin" && Path.GetFileNameWithoutExtension(path).ToLower() == Path.GetFileNameWithoutExtension(item).ToLower())
-                            path = item;
-
-                if (Path.GetExtension(path).ToLower() != ".bin")
-                    return (null, null, null, null, null);
-            }
-
-            var result = Databases.LibRetro.Read(path, platform);
-
-            if (!string.IsNullOrEmpty(result.Name))
-            {
-                result.Name = Regex.Replace(result.Name?.Replace(": ", Environment.NewLine).Replace(" - ", Environment.NewLine), @"\((.*?)\)", "").Trim();
-                if (result.Name.Contains(", The")) result.Name = "The " + result.Name.Replace(", The", string.Empty);
-            }
-
-            return result;
         }
 
         public void Dispose()

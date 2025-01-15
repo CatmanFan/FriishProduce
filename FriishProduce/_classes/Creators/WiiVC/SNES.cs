@@ -144,7 +144,7 @@ namespace FriishProduce.Injectors
             // IMAGE
             // -----------------------
 
-            MainContent.ReplaceFile(MainContent.GetNodeIndex("banner.tpl"), Img.CreateSaveTPL(MainContent.Data[MainContent.GetNodeIndex("banner.tpl")]).ToByteArray());
+            if (Img != null) MainContent.ReplaceFile(MainContent.GetNodeIndex("banner.tpl"), Img.CreateSaveTPL(MainContent.Data[MainContent.GetNodeIndex("banner.tpl")]).ToByteArray());
         }
 
         /// <summary>

@@ -25,7 +25,7 @@ namespace FriishProduce
         {
             if (Environment.OSVersion.Version.Major < 6 || (Environment.OSVersion.Version.Major == 6 && Environment.OSVersion.Version.Minor == 0))
             {
-                System.Windows.Forms.MessageBox.Show("To use this program, please upgrade to Windows 7 or a newer version of Windows.", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                System.Windows.Forms.MessageBox.Show("To use this program, please upgrade to Windows 7 or a newer version of Windows."); // , Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Hand);
                 Environment.Exit(-1);
                 return;
             }
@@ -35,7 +35,8 @@ namespace FriishProduce
                 foreach (var Process in Process.GetProcessesByName(Process.GetCurrentProcess().ProcessName))
                     if (Process.Handle != Process.GetCurrentProcess().Handle && Process.MainWindowHandle != IntPtr.Zero)
                     {
-                        SwitchToThisWindow(Process.MainWindowHandle, true);
+                        System.Windows.Forms.MessageBox.Show("FriishProduce is already running.");
+                        // SwitchToThisWindow(Process.MainWindowHandle, true);
                         Environment.Exit(0);
                         return;
                     }
@@ -43,10 +44,6 @@ namespace FriishProduce
 
             try
             {
-                foreach (var item in Directory.GetFiles(Paths.WorkingFolder, "*.*", SearchOption.AllDirectories))
-                    if (!Path.GetFileName(item).ToLower().Contains("readme.md")) File.Delete(item);
-                foreach (var item in Directory.GetDirectories(Paths.WorkingFolder))
-                    Directory.Delete(item, true);
             }
             catch { }
 
@@ -57,31 +54,46 @@ namespace FriishProduce
 
             if (args.Length > 0 && args[0].StartsWith("--"))
             {
-                CLI(args);
-                return;
+                CLI.Run(args);
             }
 
-            GUI(args);
+            else
+            {
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                MainForm = new MainForm(args);
+                Application.Run(MainForm);
+            }
         }
 
-        /// <summary>
-        /// Runs the GUI version of the app.
-        /// </summary>
-        /// <param name="args"></param>
-        private static void GUI(string[] args)
+        public static void CleanTemp()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            MainForm = new MainForm(args);
-            Application.Run(MainForm);
+            try
+            {
+                foreach (var item in Directory.GetFiles(Paths.WorkingFolder, "*.*", SearchOption.AllDirectories))
+                    if (!Path.GetFileName(item).ToLower().Contains("readme.md")) File.Delete(item);
+                foreach (var item in Directory.GetDirectories(Paths.WorkingFolder))
+                    Directory.Delete(item, true);
+            }
+            catch { }
         }
+    }
+
+
+    static class CLI
+    {
+
+        [DllImport("kernel32.dll")]
+        internal static extern bool AllocConsole();
 
         /// <summary>
         /// Runs the CLI version of the app.
         /// </summary>
         /// <param name="args"></param>
-        private static void CLI(string[] args)
+        public static void Run(string[] args)
         {
+            AllocConsole();
+
             // Usage:
             //
             // "file"
@@ -98,11 +110,12 @@ namespace FriishProduce
             // --wad-region japan usa europe korea free
             // --tid ABCD
 
-            Console.Clear();
-            Console.WriteLine("FriishProduce v" + FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetExecutingAssembly().Location).ProductVersion.ToString() + " (CLI)");
-            Console.WriteLine();
+            Console.Title = "FriishProduce v" + FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetExecutingAssembly().Location).ProductVersion.ToString() + " (CLI)";
             Console.WriteLine("Console version is not implemented yet.");
 
+            ;
+
+            Console.ReadKey();
             Environment.Exit(0);
         }
     }

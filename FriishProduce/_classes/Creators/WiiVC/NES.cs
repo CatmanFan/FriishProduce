@@ -253,7 +253,7 @@ namespace FriishProduce.Injectors
             // IMAGE
             // -----------------------
 
-            if (saveTPL_offsets[0] != 0)
+            if (saveTPL_offsets[0] != 0 && Img != null)
             {
                 var TPL = new byte[1];
 

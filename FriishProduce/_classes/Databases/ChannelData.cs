@@ -60,6 +60,18 @@ namespace FriishProduce
                 return raw ? ID.Replace("__", r).Replace("-", "").ToLower() : ID.Replace("__", r).ToLower();
             }
 
+            public string[] GetUpperIDs()
+            {
+                List<string> list = new();
+
+                for (int i = 0; i < Regions.Count; i++)
+                {
+                    list.Add(GetUpperID(i));
+                }
+
+                return list.ToArray();
+            }
+
             public string GetUpperID(int index)
             {
                 if (index == -1) return null;
@@ -78,15 +90,15 @@ namespace FriishProduce
             }
 
             /// <summary>
-            /// Gets a WAD file from the entry corresponding to the index entered and loads it to memory.
+            /// Gets a WAD file from the entry corresponding to the index entered.
             /// </summary>
-            public WAD GetWAD(int index)
+            public string GetWAD(int index)
             {
                 string tID = GetUpperID(index);
 
                 // Load Static WAD by default
                 // ****************
-                if (tID == null || tID?.Length < 4 || tID == "STLB") return WAD.Load(Properties.Resources.StaticBase);
+                if (tID == null || tID?.Length < 4 || tID == "STLB") return null;
 
                 string reg = " (Japan)";
                 switch (Regions[index])
@@ -181,14 +193,7 @@ namespace FriishProduce
                     URL = "https://repo.mariocube.com/WADs/_WiiWare,%20VC,%20DLC,%20Channels%20&%20IOS/" + name[0].ToString().ToUpper() + "/" + Uri.EscapeDataString(name + $" (v{ver}) (Channel)") + ".wad";
                 }
 
-                Web.InternetTest();
-
-                WAD w = WAD.Load(Web.Get(URL));
-
-                // Title ID check
-                // ****************
-                if (w.UpperTitleID.ToUpper() == tID && w.HasBanner) return w;
-                return null;
+                return URL;
             }
         }
 

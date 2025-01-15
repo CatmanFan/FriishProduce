@@ -103,22 +103,22 @@ namespace FriishProduce
         private int width = scale(650), height = scale(260);
 
         private Bitmap bannerBG;
-        private void resetBG(Platform platform, int target, int lang)
+        private void resetBG(Platform platform, int target, libWiiSharp.Region region)
         {
             #region -- Define top platform header contents --
             string platformName = "FriishProduce";
             switch (platform)
             {
                 case Platform.NES:
-                    platformName = lang switch { 1 => "ファミリーコンピュータ", 2 => "패밀리컴퓨터", _ => "NINTENDO ENTERTAINMENT SYSTEM" };
+                    platformName = region switch { libWiiSharp.Region.Japan => "ファミリーコンピュータ", libWiiSharp.Region.Korea => "패밀리컴퓨터", _ => "NINTENDO ENTERTAINMENT SYSTEM" };
                     break;
 
                 case Platform.SNES:
-                    platformName = lang switch { 1 => "スーパーファミコン", 2 => "슈퍼 패미컴", _ => "SUPER NINTENDO ENTERTAINMENT SYSTEM" };
+                    platformName = region switch { libWiiSharp.Region.Japan => "スーパーファミコン", libWiiSharp.Region.Korea => "슈퍼 패미컴", _ => "SUPER NINTENDO ENTERTAINMENT SYSTEM" };
                     break;
 
                 case Platform.N64:
-                    platformName = lang switch { 2 => "닌텐도 64", _ => "NINTENDO64" };
+                    platformName = region switch { libWiiSharp.Region.Korea => "닌텐도 64", _ => "NINTENDO64" };
                     break;
 
                 case Platform.SMS:
@@ -126,12 +126,12 @@ namespace FriishProduce
                     break;
 
                 case Platform.SMD:
-                    platformName = lang > 0 ? "MEGA DRIVE" : "GENESIS";
+                    platformName = region != libWiiSharp.Region.USA ? "MEGA DRIVE" : "GENESIS";
                     break;
 
                 case Platform.PCE:
                 case Platform.PCECD:
-                    platformName = lang switch { 1 or 2 => "PC ENGINE", _ => "TURBO GRAFX16" };
+                    platformName = region switch { libWiiSharp.Region.Japan or libWiiSharp.Region.Korea => "PC ENGINE", _ => "TURBO GRAFX16" };
                     break;
 
                 case Platform.NEO:
@@ -167,11 +167,11 @@ namespace FriishProduce
                     break;
 
                 case Platform.PSX:
-                    platformName = lang switch { 1 => "プレイステーション", _ => "PLAYSTATION" };
+                    platformName = region switch { libWiiSharp.Region.Japan => "プレイステーション", _ => "PLAYSTATION" };
                     break;
 
                 case Platform.RPGM:
-                    platformName = lang switch { 1 => "ＲＰＧツクール", _ => "RPG MAKER" };
+                    platformName = region switch { libWiiSharp.Region.Japan => "ＲＰＧツクール", _ => "RPG MAKER" };
                     break;
             }
             #endregion
@@ -189,8 +189,8 @@ namespace FriishProduce
             #region -- Get and draw console/platform logo --
             if (bannerLogo != null) bannerLogo.Dispose();
 
-            bannerType = ((int)platform, lang);
-            using (var U8 = BannerHelper.BannerApp(platform, lang switch { 1 => libWiiSharp.Region.Japan, 2 => libWiiSharp.Region.Korea, 3 => libWiiSharp.Region.Europe, _ => libWiiSharp.Region.USA }))
+            bannerType = ((int)platform, (int)region);
+            using (var U8 = BannerHelper.BannerApp(platform, region))
                 if (U8 != null)
                     using (var banner = libWiiSharp.U8.Load(U8.Data[U8.GetNodeIndex("banner.bin")]))
                         foreach (var item in banner.StringTable)
@@ -303,7 +303,7 @@ namespace FriishProduce
         /// <param name="console">Platform/console</param>
         /// <param name="lang">Banner region/language: Japanese, Korean, Europe or America</param>
         /// <returns></returns>
-        public Bitmap Banner(Bitmap img, string text, int year, int players, Platform platform, int lang)
+        public Bitmap Banner(Bitmap img, string text, int year, int players, Platform platform, libWiiSharp.Region region)
         {
             if (banner != null) banner.Dispose();
             banner = new Bitmap(width, height);
@@ -320,11 +320,11 @@ namespace FriishProduce
             switch (platform)
             {
                 case Platform.NES:
-                    target = lang switch { 1 or 2 => 1, _ => 0 };
+                    target = region switch { libWiiSharp.Region.Japan or libWiiSharp.Region.Korea => 1, _ => 0 };
                     break;
 
                 case Platform.SNES:
-                    target = lang switch { 1 or 2 => 3, _ => 2 };
+                    target = region switch { libWiiSharp.Region.Japan or libWiiSharp.Region.Korea => 3, _ => 2 };
                     break;
 
                 case Platform.N64:
@@ -341,7 +341,7 @@ namespace FriishProduce
 
                 case Platform.PCE:
                 case Platform.PCECD:
-                    target = lang switch { 1 or 2 => 8, _ => 7 };
+                    target = region switch { libWiiSharp.Region.Japan or libWiiSharp.Region.Korea => 8, _ => 7 };
                     break;
 
                 case Platform.NEO:
@@ -373,8 +373,8 @@ namespace FriishProduce
             #region -- Define left text color and contents --
             var leftTextColor = target == 2 ? Color.Black : target == 8 ? Color.FromArgb(90, 90, 90) : BannerSchemes.GetBrightness(target, 0) < 0.8 ? Color.White : Color.FromArgb(50, 50, 50);
 
-            string released = lang == 1 ? "{0}年発売"
-                             : lang == 2 ? "일본판 발매년도\r\n{0}년"
+            string released = region == libWiiSharp.Region.Japan ? "{0}年発売"
+                             : region == libWiiSharp.Region.Korea ? "일본판 발매년도\r\n{0}년"
                              : Program.Lang.Current == "nl" ? "Release: {0}"
                              : Program.Lang.Current == "es" ? "Año: {0}"
                              : Program.Lang.Current == "it" ? "Pubblicato: {0}"
@@ -382,8 +382,8 @@ namespace FriishProduce
                              : Program.Lang.Current == "de" ? "Erschienen: {0}"
                              : "Released: {0}";
 
-            string numPlayers = lang == 1 ? "プレイ人数\r\n{0}人"
-                              : lang == 2 ? "플레이 인원수\r\n{0}명"
+            string numPlayers = region == libWiiSharp.Region.Japan ? "プレイ人数\r\n{0}人"
+                              : region == libWiiSharp.Region.Korea ? "플레이 인원수\r\n{0}명"
                               : Program.Lang.Current == "nl" ? "{0} speler(s)"
                               : Program.Lang.Current == "es" ? "Jugadores: {0}"
                               : Program.Lang.Current == "it" ? "Giocatori: {0}"
@@ -398,7 +398,7 @@ namespace FriishProduce
                 g.SmoothingMode = SmoothingMode.AntiAlias;
                 g.TextRenderingHint = TextRenderingHint.AntiAlias;
 
-                if (((int)platform, lang) != bannerType || bannerBG == null) resetBG(platform, target, lang);
+                if (((int)platform, (int)region) != bannerType || bannerBG == null) resetBG(platform, target, region);
                 g.DrawImage(bannerBG, 0, 0);
 
                 #region -- Draw center and left text --
@@ -435,7 +435,7 @@ namespace FriishProduce
                     // ********
                     g.DrawString
                     (
-                        string.Format(numPlayers, $"{1}{(players <= 1 ? null : "-" + players)}").Replace("-", lang == 1 ? "～" : "-"),
+                        string.Format(numPlayers, $"{1}{(players <= 1 ? null : "-" + players)}").Replace("-", region == libWiiSharp.Region.Japan ? "～" : "-"),
                         leftFont,
                         leftColor,
                         scale(10),

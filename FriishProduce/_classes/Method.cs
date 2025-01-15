@@ -29,7 +29,7 @@ namespace FriishProduce
             }
         }
 
-        public (string Path, bool Multifile) ROM { get; set; } = (null, false);
+        public bool IsMultifile { get; set; } = false;
         public string Patch { get; set; } = null;
         public string Manual { get; set; } = null;
         public (IDictionary<string, string> List, IDictionary<Buttons, string> Keymap) Settings = (null, null);
@@ -64,7 +64,7 @@ namespace FriishProduce
         public string[] SaveDataTitle { get; set; } = new string[2];
         public string Out { get; set; } = null;
 
-        private ROM _rom { get; set; } = null;
+        public ROM ROM { get; set; } = null;
         public WAD WAD { get; set; } = null;
         public ImageHelper Img { get; set; } = null;
 
@@ -74,24 +74,6 @@ namespace FriishProduce
         public Method(Platform platform)
         {
             Platform = platform;
-
-            _rom = Platform switch
-            {
-                Platform.NES => new ROM_NES(),
-                Platform.SNES => new ROM_SNES(),
-                Platform.N64 => new ROM_N64(),
-                Platform.SMS => new ROM_SEGA() { IsSMS = true },
-                Platform.SMD => new ROM_SEGA() { IsSMS = false },
-                Platform.PCE => new ROM_PCE(),
-                Platform.PCECD => new Disc(),
-                Platform.NEO => new ROM_NEO(),
-                Platform.MSX => new ROM_MSX(),
-                Platform.Flash => new SWF(),
-                Platform.RPGM => new RPGM(),
-                _ => new Disc()
-            };
-
-            _rom.FilePath = ROM.Path;
         }
 
         public void GetWAD(string path, string tid)
@@ -120,16 +102,16 @@ namespace FriishProduce
                 throw new Exception(Program.Lang.Msg(9, true));
         }
             
-        public void Inject(Platform platform, bool useOrigManual = false)
+        public void Inject(bool useOrigManual = false)
         {
-            if (platform == Platform.Flash)
+            if (Platform == Platform.Flash)
             {
                 Injectors.Flash Flash = new()
                 {
-                    SWF = ROM.Path,
+                    SWF = ROM.FilePath,
                     Settings = Settings.List,
                     Keymap = Settings.Keymap,
-                    Multifile = ROM.Multifile
+                    Multifile = IsMultifile
                 };
 
                 WAD = Flash.Inject(WAD, SaveDataTitle, Img);
@@ -141,7 +123,7 @@ namespace FriishProduce
                 // *******
                 InjectorWiiVC VC = null;
 
-                switch (platform)
+                switch (Platform)
                 {
                     default:
                         throw new NotImplementedException();
@@ -174,7 +156,7 @@ namespace FriishProduce
                     case Platform.SMD:
                         VC = new Injectors.SEGA()
                         {
-                            IsSMS = platform == Platform.SMS
+                            IsSMS = Platform == Platform.SMS
                         };
                         break;
 
@@ -215,7 +197,7 @@ namespace FriishProduce
 
                 // Actually inject everything
                 // *******
-                WAD = VC.Inject(WAD, _rom, SaveDataTitle, Img);
+                WAD = VC.Inject(WAD, ROM, SaveDataTitle, Img);
             }
 
             _updateProgress();
@@ -225,8 +207,8 @@ namespace FriishProduce
         {
             Forwarder f = new()
             {
-                ROM = ROM.Path,
-                Multifile = ROM.Multifile,
+                ROM = ROM.FilePath,
+                Multifile = IsMultifile,
                 ID = TitleID,
                 Emulator = emulator,
                 Storage = storage,
@@ -243,6 +225,16 @@ namespace FriishProduce
             WAD = f.CreateWAD(WAD);
 
             _updateProgress();
+        }
+
+        public void EditMetadata()
+        {
+            if (WadRegion >= 0) WAD.Region = (Region)WadRegion;
+            Utils.ChangeVideoMode(WAD, WadVideoMode);
+
+            WAD.ChangeChannelTitles(ChannelTitles_Limit);
+            WAD.ChangeTitleID(LowerTitleID.Channel, TitleID);
+            WAD.FakeSign = true;
         }
 
         public void EditBanner()
@@ -268,20 +260,13 @@ namespace FriishProduce
 
             // Image
             // *******
-            if (Img.VCPic != null) Img.ReplaceBanner(WAD);
+            if (Img?.VCPic != null) Img.ReplaceBanner(WAD);
 
             _updateProgress();
         }
 
         public void Save()
         {
-            if (WadRegion >= 0) WAD.Region = (Region)WadRegion;
-            Utils.ChangeVideoMode(WAD, WadVideoMode);
-
-            WAD.ChangeChannelTitles(ChannelTitles_Limit);
-            WAD.ChangeTitleID(LowerTitleID.Channel, TitleID);
-            WAD.FakeSign = true;
-
             if (Directory.Exists(Paths.SDUSBRoot))
             {
                 Directory.CreateDirectory(Paths.SDUSBRoot + "wad\\");
@@ -309,7 +294,6 @@ namespace FriishProduce
         {
             _progress = (0.0, steps);
 
-            ROM = (null, false);
             Patch = null;
             Manual = null;
             Settings = (null, null);
@@ -326,7 +310,7 @@ namespace FriishProduce
             SaveDataTitle = null;
             Out = null;
 
-            _rom.Dispose();
+            ROM.Dispose();
             WAD.Dispose();
             Img.Dispose();
 
