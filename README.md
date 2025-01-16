@@ -41,9 +41,9 @@ Please check the **[wiki](https://catmanfan.github.io/FriishProduce/)** for a tu
 ---
 
 ## To-Do
-- [X] Major bugfixes
-- [ ] Fix bug on NES VC, in which palette is not being modified.
+- [X] Fix bug on NES VC, in which palette is not being modified.
 - [ ] Restructuring, trimming features and cleaning code
+- [ ] Check that everything is working properly and whether more features should be added before v1.6 release
 
 ### Potential
 - [ ] Merge separate components of ProjectForm into panels / Create UserControl for content options ?
