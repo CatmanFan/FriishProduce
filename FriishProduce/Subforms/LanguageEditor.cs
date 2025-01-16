@@ -93,8 +93,27 @@ namespace FriishProduce
             Text = fullWindowTitle;
 
             if (invalid) source = null;
-            status_label.Text = invalid ? "Loaded empty file." : $"Loaded {Path.GetFileName(file)}.";
-            Open(!invalid ? File.ReadAllBytes(file): Properties.Resources.English);
+            Open(!invalid ? File.ReadAllBytes(file) : Properties.Resources.English);
+            status_label.Text = invalid ? "Loaded empty file." : $"Loaded {Path.GetFileName(file)}. ({percentage:F0}% translated)";
+        }
+
+        private readonly string prefix_global = "global: ";
+        private readonly string prefix_strings = "strings: ";
+        private double percentage
+        {
+            get
+            {
+                (double count, double filled) = (0.0, 0.0);
+
+                foreach (DataGridViewRow row in strings.Rows)
+                {
+                    count += 1.0;
+                    if (!string.IsNullOrEmpty(row.Cells[3].Value?.ToString()))
+                        filled += 1.0;
+                }
+
+                return (filled / count) * 100.0;
+            }
         }
 
         private void Open(byte[] file)
@@ -132,22 +151,25 @@ namespace FriishProduce
                     // Add rows
                     // ****************
                     strings.Rows.Clear();
+                    filter_by_section.DropDownItems.Add("All", null, FilterBySection);
 
                     foreach (var section in source.global)
                     {
+                        filter_by_section.DropDownItems.Add(prefix_global + section.Key, null, FilterBySection);
+
                         // Dictionary<string, Dictionary<string, string>>
                         foreach (var item in section.Value)
-                        {
-                            strings.Rows.Add($"global > {section.Key}", item.Key, item.Value.Replace("\n", "\r\n"), "");
-                        }
+                            if (!(item.Value.StartsWith("{") && item.Value.EndsWith("}")))
+                                strings.Rows.Add(prefix_global + section.Key, item.Key, item.Value.Replace("\n", "\r\n"), "");
                     }
 
                     foreach (var section in source.strings)
                     {
+                        filter_by_section.DropDownItems.Add(prefix_strings + section.Key, null, FilterBySection);
+
                         foreach (var item in section.Value)
-                        {
-                            strings.Rows.Add($"strings > {section.Key}", item.Key, item.Value.Replace("\n", "\r\n"), "");
-                        }
+                            if (!(item.Value.StartsWith("{") && item.Value.EndsWith("}")))
+                                strings.Rows.Add(prefix_strings + section.Key, item.Key, item.Value.Replace("\n", "\r\n"), "");
                     }
 
                     foreach (DataGridViewRow row in strings.Rows)
@@ -259,8 +281,8 @@ namespace FriishProduce
 
             foreach (DataGridViewRow row in strings.Rows)
             {
-                bool isGlobal = row.Cells[0].Value.ToString().ToLower().StartsWith("global > ");
-                string sectionName = isGlobal ? row.Cells[0].Value.ToString().Replace("global > ", null) : row.Cells[0].Value.ToString().Replace("strings > ", null);
+                bool isGlobal = row.Cells[0].Value.ToString().ToLower().StartsWith(prefix_global);
+                string sectionName = isGlobal ? row.Cells[0].Value.ToString().Replace(prefix_global, null) : row.Cells[0].Value.ToString().Replace(prefix_strings, null);
                 var dest = isGlobal ? target.global : target.strings;
 
                 string id = row.Cells[1].Value.ToString();
@@ -286,7 +308,7 @@ namespace FriishProduce
             // -------------------------
             // Finalized
             // -------------------------
-            status_label.Text = $"Saved to {Path.GetFileName(currentFile)}.";
+            status_label.Text = $"Saved to {Path.GetFileName(currentFile)}. ({percentage:F0}% translated)";
             Unsaved = false;
             return true;
         }
@@ -326,7 +348,7 @@ namespace FriishProduce
             if (strings.CurrentCell.ColumnIndex == 2)
             {
                 Clipboard.SetText(strings.CurrentCell.Value.ToString());
-                status_label.Text = $"Copied original string at {strings.CurrentRow.Cells[0]} > {strings.CurrentRow.Cells[1]}.";
+                status_label.Text = $"Copied original string at {strings.CurrentRow.Cells[0].Value} > {strings.CurrentRow.Cells[1].Value}.";
             }
         }
 
@@ -343,6 +365,20 @@ namespace FriishProduce
 
             foreach (DataGridViewRow row in strings.Rows)
                 row.Visible = string.IsNullOrEmpty(text) || row.Cells[targetColumn].Value?.ToString().ToLower().Contains(text) == true;
+        }
+
+        private void FilterBySection(object sender, EventArgs e)
+        {
+            string text = null;
+            int index = 0;
+            if (sender.GetType() == typeof(ToolStripMenuItem))
+            {
+                text = (sender as ToolStripMenuItem).Text;
+                index = (sender as ToolStripMenuItem).GetCurrentParent().Items.IndexOf((sender as ToolStripMenuItem));
+            }
+
+            foreach (DataGridViewRow row in strings.Rows)
+                row.Visible = index == 0 || row.Cells[0].Value?.ToString().ToLower().Contains(text) == true;
         }
 
         private void Text_Changed(object sender, EventArgs e) => Unsaved = true;

@@ -187,51 +187,63 @@ namespace FriishProduce
                 "AFAFAF", "194EC8", "472FE3", "6B1FD7", "931BAE", "9E1A5E", "993200", "7B4B00", "5B6700", "267A00", "008200", "007A3E", "006E8A", "000000", "000000", "000000",
                 "FFFFFF", "64A9FF", "8E89FF", "B676FF", "E06FFF", "EF6CC4", "F0806A", "D8982C", "B9B40A", "83CB0C", "5BD63F", "4AD17E", "4DC7CB", "4C4C4C", "000000", "000000",
                 "FFFFFF", "C7E5FF", "D9D9FF", "E9D1FF", "F9CEFF", "FFCCF1", "FFD4CB", "F8DFB1", "EDEAA4", "D6F4A4", "C5F8B8", "BEF6D3", "BFF1F1", "B9B9B9", "000000", "000000"
-            }
+            },
+
+            // ###################################################################################################################################################################
+            
+            // YUV (ALT) - used only for banner preview image, available only if failed to detect original YUV color values
+            new string[]
+            {
+                "666666", "002A88", "1412A7", "3B00A4", "5C007E", "6E0040", "6C0700", "561D00", "333500", "0C4800", "005200", "004F08", "00404D", "000000", "000000", "000000",
+                "ADADAD", "155FD9", "4240FF", "7527FE", "A01ACC", "B71E7B", "B53120", "994E00", "6B6D00", "388700", "0D9300", "008F32", "007C8D", "000000", "000000", "000000",
+                "FFFEFF", "64B0FF", "9290FF", "C676FF", "F26AFF", "FF6ECC", "FF8170", "EA9E22", "BCBE00", "88D800", "5CE430", "45E082", "48CDDE", "4F4F4F", "000000", "000000",
+                "FFFEFF", "C0DFFF", "D3D2FF", "E8C8FF", "FAC2FF", "FFC4EA", "FECCC5", "F7D8A5", "E4E594", "CFEF96", "BDF4AB", "B3F3CC", "B5EBF2", "B8B8B8", "000000", "000000"
+            },
         };
 
-        public unsafe int CheckPalette(Bitmap bmp)
+        public unsafe int ImgPalette(Bitmap img)
         {
             try
             {
-                using (Bitmap newBmp = new(bmp.Width, bmp.Height, PixelFormat.Format32bppRgb))
+                // The pixel format must be fixed to 32bpp RGB in order to lock bits correctly
+                using Bitmap canvas = new(img.Width, img.Height, PixelFormat.Format32bppRgb);
+                
+                Graphics g = Graphics.FromImage(canvas);
+                g.Clear(Color.Black);
+                g.DrawImage(img, 0, 0);
+                g.Dispose();
+
+                BitmapData data = canvas.LockBits(new Rectangle(Point.Empty, canvas.Size), ImageLockMode.ReadWrite, canvas.PixelFormat);
+
+                int[] colorsFound = new int[Palettes.Length];
+
+                for (int i = 0; i < Palettes.Length; i++)
                 {
-                    using (Graphics g = Graphics.FromImage(newBmp))
+                    List<string> colorsFound_list = new();
+
+                    for (int j = 0; j < 64; j++)
                     {
-                        g.DrawImage(bmp, 0, 0);
-                        g.Dispose();
-                    }
+                        var color = ColorTranslator.FromHtml($"#{Palettes[i][j]}".ToUpper()).ToArgb();
 
-                    BitmapData data = newBmp.LockBits(new Rectangle(Point.Empty, newBmp.Size), ImageLockMode.ReadWrite, newBmp.PixelFormat);
-
-                    int[] CheckedPixels = new int[Palettes.Length];
-
-                    for (int i = 0; i < Palettes.Length; i++)
-                    {
-                        CheckedPixels[i] = 0;
-
-                        for (int j = 0; j < 64; j++)
+                        IntPtr line = data.Scan0;
+                        for (int y = 0; y < data.Height; y++)
                         {
-                            var color = ColorTranslator.FromHtml($"#{Palettes[i][j]}".ToUpper()).ToArgb();
-
-                            byte* line = (byte*)data.Scan0;
-                            for (int y = 0; y < data.Height; y++)
+                            for (int x = 0; x < data.Width; x++)
                             {
-                                for (int x = 0; x < data.Width; x++)
-                                {
-                                    int c32 = *((int*)line + x);
-                                    if (c32 == color && c32 != Color.Black.ToArgb() && c32 != Color.White.ToArgb())
-                                        CheckedPixels[i]++;
-                                }
-                                line += data.Stride;
+                                int c32 = *((int*)line + x);
+                                if (c32 == color && c32 != Color.Black.ToArgb() && c32 != Color.White.ToArgb() && !colorsFound_list.Contains(Palettes[i][j]))
+                                    colorsFound_list.Add(Palettes[i][j]);
                             }
+                            line += data.Stride;
                         }
                     }
 
-                    newBmp.UnlockBits(data);
-                    newBmp.Dispose();
-                    return CheckedPixels.ToList().IndexOf(CheckedPixels.Max());
+                    colorsFound[i] = colorsFound_list.Count;
                 }
+
+                canvas.UnlockBits(data);
+                canvas.Dispose();
+                return Array.IndexOf(colorsFound, colorsFound.Max());
             }
             catch
             {
@@ -239,7 +251,7 @@ namespace FriishProduce
             }
         }
 
-        public unsafe Bitmap SwapColors(Bitmap bmp, string[] oldColors, string[] newColors)
+        public Bitmap SwapColors(Bitmap bmp, string[] oldColors, string[] newColors)
         {
             try
             {
@@ -249,37 +261,24 @@ namespace FriishProduce
 
                 using (Graphics g = Graphics.FromImage(newBmp))
                 {
-                    g.DrawImage(bmp, 0, 0);
+                    ColorMap[] c = new ColorMap[oldColors.Length];
+
+                    for (int i = 0; i < oldColors.Length; i++)
+                    {
+                        c[i] = new()
+                        {
+                            OldColor = ColorTranslator.FromHtml($"#{oldColors[i]}"),
+                            NewColor = ColorTranslator.FromHtml($"#{newColors[i]}")
+                        };
+                    }
+
+                    ImageAttributes imgA = new();
+                    imgA.SetRemapTable(c);
+
+                    g.DrawImage(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height), 0, 0, bmp.Width, bmp.Height, GraphicsUnit.Pixel, imgA);
                     g.Dispose();
                 }
 
-                BitmapData data = newBmp.LockBits(new Rectangle(Point.Empty, newBmp.Size), ImageLockMode.ReadWrite, newBmp.PixelFormat);
-
-                for (int i = 0; i < oldColors.Length; i++)
-                {
-                    int rawFrom = ColorTranslator.FromHtml($"#{oldColors[i]}".ToUpper()).ToArgb();
-                    int rawTo = ColorTranslator.FromHtml($"#{newColors[i]}".ToUpper()).ToArgb();
-
-                    if (rawFrom != Color.Black.ToArgb() && rawFrom != Color.White.ToArgb())
-                    {
-                        byte* line = (byte*)data.Scan0;
-                        for (int y = 0; y < data.Height; y++)
-                        {
-                            for (int x = 0; x < data.Width; x++)
-                            {
-                                // Method for 32bpp RGB/ARGB
-                                // ********
-                                int c32 = *((int*)line + x);
-                                if (c32 == rawFrom)
-                                    *((int*)line + x) = rawTo;
-                            }
-
-                            line += data.Stride;
-                        }
-                    }
-                }
-
-                newBmp.UnlockBits(data);
                 bmp.Dispose();
                 return newBmp;
             }

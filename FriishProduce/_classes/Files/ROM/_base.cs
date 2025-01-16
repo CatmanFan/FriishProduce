@@ -137,9 +137,7 @@ namespace FriishProduce
             if (File.Exists(Paths.WorkingFolder + "rom_p_xdelta")) File.Delete(Paths.WorkingFolder + "rom_p_xdelta");
             if (File.Exists(Paths.WorkingFolder + "rom_p_bps")) File.Delete(Paths.WorkingFolder + "rom_p_bps");
 
-            if (Out == null) throw new Exception(Program.Lang.Msg(8, true));
-
-            patched = Out;
+            patched = Out ?? throw new Exception(Program.Lang.Msg(8, true));
         }
 
         public void Dispose()

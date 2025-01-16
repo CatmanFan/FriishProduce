@@ -529,7 +529,10 @@ namespace FriishProduce
 
                 if (target != "undefined")
                 {
-                    item.Text = target;
+                    if (item.GetType() == typeof(PlaceholderTextBox))
+                        (item as PlaceholderTextBox).PlaceholderText = target;
+                    else
+                        item.Text = target;
                     // if (script == ScriptType.RTL) item.RightToLeft = RightToLeft.Yes;
                 }
             }

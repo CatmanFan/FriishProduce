@@ -52,18 +52,18 @@ namespace FriishProduce
 
             System.Threading.Thread.CurrentThread.CurrentUICulture = System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(Lang.Current);
 
-            if (args.Length > 0 && args[0].StartsWith("--"))
-            {
-                CLI.Run(args);
-            }
+            // if (args.Length > 0 && args[0].StartsWith("--"))
+            // {
+            //     CLI.Run(args);
+            // }
 
-            else
-            {
+            // else
+            // {
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 MainForm = new MainForm(args);
                 Application.Run(MainForm);
-            }
+            // }
         }
 
         public static void CleanTemp()
@@ -103,8 +103,8 @@ namespace FriishProduce
             // --img "file"
             // --sound "file"
             // --channel-title "title"
-            // --savedata-title "title"
-            // --banner-title "title"
+            // --savedata-title "Line 1\nLine 2"
+            // --banner-title "Line 1\nLine 2"
             // --banner-year 1990
             // --banner-players 1
             // --wad-region japan usa europe korea free
@@ -113,7 +113,35 @@ namespace FriishProduce
             Console.Title = "FriishProduce v" + FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetExecutingAssembly().Location).ProductVersion.ToString() + " (CLI)";
             Console.WriteLine("Console version is not implemented yet.");
 
-            ;
+            string ROM = null, PATCH = null, WAD = null, IMAGE = null, SOUND = null, TID = null;
+            string channelTitle = null;
+            string[] bannerTitle = new string[] { };
+            try
+            {
+                ROM = args[0];
+            }
+            catch { }
+            for (int i = 0; i < args.Length - 1; i++)
+            {
+                if (args[i].ToLower() == "--patch") PATCH = args[i + 1];
+                if (args[i].ToLower() == "--wad") WAD = args[i + 1];
+                if (args[i].ToLower() == "--img") IMAGE = args[i + 1];
+                if (args[i].ToLower() == "--sound") SOUND = args[i + 1];
+                if (args[i].ToLower() == "--tid") TID = args[i + 1];
+                if (args[i].ToLower() == "--channel-title") channelTitle = args[i + 1];
+            };
+
+            Console.WriteLine($"> Input ROM: {Path.GetFileName(ROM)}");
+            Console.WriteLine($"> ROM patch: {Path.GetFileName(PATCH)}");
+            Console.WriteLine();
+            Console.WriteLine($"> Base WAD: {Path.GetFileName(WAD)}");
+            Console.WriteLine($"> Title ID: {TID}");
+            Console.WriteLine($"> Channel name: {channelTitle}");
+            Console.WriteLine();
+            Console.WriteLine($"> Image: {Path.GetFileName(IMAGE)}");
+            Console.WriteLine($"> Banner sound: {Path.GetFileName(SOUND)}");
+            Console.WriteLine();
+            Console.WriteLine("Is this OK?");
 
             Console.ReadKey();
             Environment.Exit(0);

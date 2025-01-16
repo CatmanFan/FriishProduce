@@ -12,7 +12,7 @@ namespace FriishProduce
 {
     public partial class MainForm : Form
     {
-        private string[] files = null;
+        private readonly string[] files = null;
         private readonly SettingsForm settings = new();
 
         #region //////////////////// Platforms ////////////////////
@@ -421,9 +421,7 @@ namespace FriishProduce
 
         private void Form_DragDrop(object sender, DragEventArgs e)
         {
-            string[] files = e.Data.GetData(DataFormats.FileDrop) as string[];
-
-            if (files != null)
+            if (e.Data.GetData(DataFormats.FileDrop) is string[] files)
             {
                 if (tabControl.SelectedForm == null)
                 {
@@ -451,7 +449,7 @@ namespace FriishProduce
                             case ".swf":
                                 addTab(Platform.Flash, null, file);
                                 break;
-                        
+
                             case ".ldb":
                                 addTab(Platform.RPGM, null, file);
                                 break;

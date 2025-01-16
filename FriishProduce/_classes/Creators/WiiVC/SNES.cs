@@ -191,21 +191,21 @@ namespace FriishProduce.Injectors
 
             for (int i = 0; i < argDict.Count; i++)
             {
-                (string Key, string Value) argument = (argDict.Keys.ElementAt(i), argDict.Values.ElementAt(i));
+                (string Key, string Value) = (argDict.Keys.ElementAt(i), argDict.Values.ElementAt(i));
 
                 Utils.Run
                 (
                     FileDatas.Apps.sns_boost,
                     "sns_boost.exe",
-                    $"-i 01.app {argument.Key}"
+                    $"-i 01.app {Key}"
                 );
 
-                if (argument.Value != null && (!File.Exists(Paths.WorkingFolder + "01_boosted.app") || File.ReadAllBytes(Paths.WorkingFolder + "01_boosted.app").SequenceEqual(File.ReadAllBytes(Paths.WorkingFolder + "01.app"))))
+                if (Value != null && (!File.Exists(Paths.WorkingFolder + "01_boosted.app") || File.ReadAllBytes(Paths.WorkingFolder + "01_boosted.app").SequenceEqual(File.ReadAllBytes(Paths.WorkingFolder + "01.app"))))
                 {
-                    if (argument.Key == "--no-opera") nomanual = false;
+                    if (Key == "--no-opera") nomanual = false;
 
-                    argDict.Remove(argument.Key);
-                    failed.Add(argument.Value);
+                    argDict.Remove(Key);
+                    failed.Add(Value);
                 }
 
                 if (File.Exists(Paths.WorkingFolder + "01_boosted.app"))

@@ -46,7 +46,7 @@ namespace FriishProduce
 
         public static Result Show(string mainText, string description, Buttons buttons, Icons icon = 0, int dontShow = -1, bool isLinkStyle = false, System.Drawing.Icon ico = null)
         {
-            List<string> b = new List<string>();
+            List<string> b = new();
 
             switch (buttons)
             {
@@ -97,7 +97,7 @@ namespace FriishProduce
 
         public static Result Show(string mainText, string description, string[] buttons, Icons icon = 0, bool isLinkStyle = false, int dontShow = -1, System.Drawing.Icon ico = null)
         {
-            using (TaskDialog t = new TaskDialog()
+            using (TaskDialog t = new()
             {
                 WindowTitle = Program.Lang.ApplicationTitle,
                 MainInstruction = mainText,

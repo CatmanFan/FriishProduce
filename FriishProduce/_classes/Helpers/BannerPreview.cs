@@ -100,7 +100,7 @@ namespace FriishProduce
         private static double scaleFactor = 540.0 / 650.0;
         private static int scale(int input) => (int)Math.Round(input * scaleFactor);
         private static double scale(double input) => input * scaleFactor;
-        private int width = scale(650), height = scale(260);
+        private readonly int width = scale(650), height = scale(260);
 
         private Bitmap bannerBG;
         private void resetBG(Platform platform, int target, libWiiSharp.Region region)

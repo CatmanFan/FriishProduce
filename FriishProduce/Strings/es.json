@@ -90,7 +90,7 @@
 			"003":								"Exportado con éxito.\n¿Quiere abrir la carpeta de salida?",
 			"004":								"No se pueden recuperar todos los datos del juego para el seleccionado.\nPor esta razón deberá completar manualmente algunos formularios.",
 			"005":								"El WAD que ha seleccionado (ID: {0}) no es válido.\nEsto puede deberse a que:\n  • la consola actual no coincide con la del WAD.\n  • el WAD aún no está disponible en la base de datos de esta aplicación.\n  • el WAD ya está modificado, ya sea inyectado o convertido en forwarder.",
-			"006":								"Puede reemplazar el manual electrónico original del juego de la Consola Virtual con un otro personalizado.\n\nPara hacer esto, necesita un archivo comprimido ZIP conteniendo el contenido extraído/modificado del archivo *.arc del manual electrónico de Consola Virtual.",
+			"006":								"Puede reemplazar el manual electrónico original del juego de la Consola Virtual con un otro personalizado.\nPara hacer esto, necesita un archivo comprimido ZIP conteniendo el contenido extraído/modificado del archivo *.arc del manual electrónico de Consola Virtual.",
 			"007":								"El seleccionado no contiene ningún contenido válido de manual electrónico.",
 			"008":								"Actualización de FriishProduce\nYa está disponible para descargar la nueva versión {0} de FriishProduce.\nActualmente está utilizando la versión {1}.\n\n¿Quiere descargar la actualización de GitHub ahora?",
 			"009":								"Actualmente ya está actualizado.",
@@ -120,7 +120,7 @@
 
 		"html": {
 			"t_000":							"Nombre utilizado para el icono que aparece en el menu Wii.<br />Para títulos más largos, se recomienda utilizar una versión abreviada de 20 caracteres o menos.<hr><h3>Ejemplo:</h3> Zelda: Ocarina",
-			"t_001":							"Cambiar la configuración del emulador.",
+			"t_003":							"Cambiar la configuración del emulador.",
 		}
 	},
 
@@ -334,7 +334,7 @@
 			"strap_reminder2":					"{enabled} (sin pantalla de mandos complementarios)",
 			"swf_metadata":						"Metadatos SWF",
 			"content_domain":					"Dominio de contenido",
-			"background_color":					"Cambiar el color de fondo"
+			"background_color":					"Color de fondo"
 		},
 
 		"forwarder": {

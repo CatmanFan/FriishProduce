@@ -225,7 +225,7 @@ namespace FriishProduce
 
         public static float GetBrightness(int target, int type)
         {
-            var t = type switch
+            var (R, G, B) = type switch
             {
                 1 => List[target].bgLogo,
                 2 => List[target].bgBottom,
@@ -237,7 +237,7 @@ namespace FriishProduce
                 _ => List[target].bg
             };
 
-            return ((t.R + t.G + t.B) / 3f) / 255f;
+            return ((R + G + B) / 3f) / 255f;
         }
 
         /// <summary>
@@ -248,7 +248,7 @@ namespace FriishProduce
         /// <returns></returns>
         public static Color GetColor(int target, int type)
         {
-            var t = type switch
+            var (R, G, B) = type switch
             {
                 1 => List[target].bgLogo,
                 2 => List[target].bgBottom,
@@ -260,7 +260,7 @@ namespace FriishProduce
                 _ => List[target].bg
             };
 
-            return Color.FromArgb(t.R, t.G, t.B);
+            return Color.FromArgb(R, G, B);
         }
     }
 }

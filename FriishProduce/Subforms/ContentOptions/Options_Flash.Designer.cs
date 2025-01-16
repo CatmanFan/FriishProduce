@@ -48,12 +48,13 @@ namespace FriishProduce
             this.qwerty_keyboard = new System.Windows.Forms.CheckBox();
             this.mouse = new System.Windows.Forms.CheckBox();
             this.background_color_img = new System.Windows.Forms.PictureBox();
-            this.background_color = new System.Windows.Forms.Button();
             this.strap_reminder = new System.Windows.Forms.GroupBox();
             this.strap_reminder_list = new System.Windows.Forms.ComboBox();
             this.ImportDLS = new System.Windows.Forms.OpenFileDialog();
             this.BGColor = new System.Windows.Forms.ColorDialog();
             this.swf_metadata = new System.Windows.Forms.GroupBox();
+            this.background_color = new System.Windows.Forms.TextBox();
+            this.background_color_l = new System.Windows.Forms.Label();
             this.content_domain_l = new System.Windows.Forms.Label();
             this.content_domain = new FriishProduce.PlaceholderTextBox();
             this.bottomPanel1.SuspendLayout();
@@ -217,7 +218,7 @@ namespace FriishProduce
             this.save_data_enable.Tag = "save_data_enable";
             this.save_data_enable.Text = "save_data_enable";
             this.save_data_enable.UseVisualStyleBackColor = true;
-            this.save_data_enable.CheckedChanged += new System.EventHandler(this.checkBoxChanged);
+            this.save_data_enable.CheckedChanged += new System.EventHandler(this.valueChanged);
             // 
             // display
             // 
@@ -300,7 +301,7 @@ namespace FriishProduce
             this.midi.Tag = "midi";
             this.midi.Text = "midi";
             this.midi.UseVisualStyleBackColor = true;
-            this.midi.CheckedChanged += new System.EventHandler(this.checkBoxChanged);
+            this.midi.CheckedChanged += new System.EventHandler(this.valueChanged);
             // 
             // qwerty_keyboard
             // 
@@ -327,22 +328,13 @@ namespace FriishProduce
             // background_color_img
             // 
             this.background_color_img.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.background_color_img.Location = new System.Drawing.Point(326, 68);
+            this.background_color_img.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.background_color_img.Location = new System.Drawing.Point(311, 79);
             this.background_color_img.Name = "background_color_img";
-            this.background_color_img.Size = new System.Drawing.Size(25, 18);
+            this.background_color_img.Size = new System.Drawing.Size(34, 20);
             this.background_color_img.TabIndex = 17;
             this.background_color_img.TabStop = false;
-            // 
-            // background_color
-            // 
-            this.background_color.Location = new System.Drawing.Point(10, 65);
-            this.background_color.Name = "background_color";
-            this.background_color.Size = new System.Drawing.Size(310, 23);
-            this.background_color.TabIndex = 16;
-            this.background_color.Tag = "background_color";
-            this.background_color.Text = "background_color";
-            this.background_color.UseVisualStyleBackColor = true;
-            this.background_color.Click += new System.EventHandler(this.changeBackgroundColor);
+            this.background_color_img.Click += new System.EventHandler(this.changeBackgroundColor);
             // 
             // strap_reminder
             // 
@@ -374,17 +366,38 @@ namespace FriishProduce
             // 
             // swf_metadata
             // 
-            this.swf_metadata.Controls.Add(this.content_domain_l);
-            this.swf_metadata.Controls.Add(this.content_domain);
             this.swf_metadata.Controls.Add(this.background_color);
+            this.swf_metadata.Controls.Add(this.background_color_l);
+            this.swf_metadata.Controls.Add(this.content_domain_l);
             this.swf_metadata.Controls.Add(this.background_color_img);
+            this.swf_metadata.Controls.Add(this.content_domain);
             this.swf_metadata.Location = new System.Drawing.Point(378, 162);
             this.swf_metadata.Name = "swf_metadata";
-            this.swf_metadata.Size = new System.Drawing.Size(360, 98);
+            this.swf_metadata.Size = new System.Drawing.Size(360, 110);
             this.swf_metadata.TabIndex = 39;
             this.swf_metadata.TabStop = false;
             this.swf_metadata.Tag = "swf_metadata";
             this.swf_metadata.Text = "swf_metadata";
+            // 
+            // background_color
+            // 
+            this.background_color.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
+            this.background_color.Location = new System.Drawing.Point(15, 79);
+            this.background_color.MaxLength = 6;
+            this.background_color.Name = "background_color";
+            this.background_color.Size = new System.Drawing.Size(290, 21);
+            this.background_color.TabIndex = 22;
+            this.background_color.TextChanged += new System.EventHandler(this.valueChanged);
+            // 
+            // background_color_l
+            // 
+            this.background_color_l.AutoSize = true;
+            this.background_color_l.Location = new System.Drawing.Point(7, 61);
+            this.background_color_l.Name = "background_color_l";
+            this.background_color_l.Size = new System.Drawing.Size(92, 13);
+            this.background_color_l.TabIndex = 20;
+            this.background_color_l.Tag = "background_color";
+            this.background_color_l.Text = "background_color";
             // 
             // content_domain_l
             // 
@@ -406,7 +419,7 @@ namespace FriishProduce
             // 
             // Options_Flash
             // 
-            this.ClientSize = new System.Drawing.Size(751, 364);
+            this.ClientSize = new System.Drawing.Size(751, 366);
             this.Controls.Add(this.swf_metadata);
             this.Controls.Add(this.strap_reminder);
             this.Controls.Add(this.controls);
@@ -461,10 +474,11 @@ namespace FriishProduce
         private System.Windows.Forms.Label update_frame_rate_l;
         private System.Windows.Forms.CheckBox fullscreen;
         private System.Windows.Forms.ColorDialog BGColor;
-        private System.Windows.Forms.Button background_color;
         private System.Windows.Forms.PictureBox background_color_img;
         private System.Windows.Forms.GroupBox swf_metadata;
         private PlaceholderTextBox content_domain;
         private System.Windows.Forms.Label content_domain_l;
+        private System.Windows.Forms.TextBox background_color;
+        private System.Windows.Forms.Label background_color_l;
     }
 }

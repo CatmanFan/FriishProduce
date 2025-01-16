@@ -189,6 +189,7 @@ namespace FriishProduce
             // 
             // toolbarGameScan
             // 
+            this.toolbarGameScan.AutoToolTip = false;
             this.toolbarGameScan.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             resources.ApplyResources(this.toolbarGameScan, "toolbarGameScan");
             this.toolbarGameScan.Image = global::FriishProduce.Properties.Resources.retroarch;
@@ -198,6 +199,7 @@ namespace FriishProduce
             // 
             // toolbarExport
             // 
+            this.toolbarExport.AutoToolTip = false;
             this.toolbarExport.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             resources.ApplyResources(this.toolbarExport, "toolbarExport");
             this.toolbarExport.Name = "toolbarExport";

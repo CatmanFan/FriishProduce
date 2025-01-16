@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 
@@ -74,7 +75,7 @@ namespace FriishProduce
 
                     // Background color
                     // ****************
-                    background_color_img.BackColor = BGColor.Color = System.Drawing.Color.FromArgb(255, 0, 0, 0);
+                    background_color_img.BackColor = BGColor.Color = Color.FromArgb(255, 0, 0, 0);
                     int index = 0;
                     string R = "0", G = "0", B = "0";
                     for (int i = 0; i < 4; i++)
@@ -89,7 +90,8 @@ namespace FriishProduce
 
                         if (index < color.Length) index++;
                     }
-                    background_color_img.BackColor = BGColor.Color = System.Drawing.Color.FromArgb(255, int.Parse(R), int.Parse(G), int.Parse(B));
+                    background_color_img.BackColor = BGColor.Color = Color.FromArgb(255, int.Parse(R), int.Parse(G), int.Parse(B));
+                    background_color.Text = $"{BGColor.Color.R:x2}{BGColor.Color.G:x2}{BGColor.Color.B:x2}";
                 }
                 catch
                 {
@@ -162,7 +164,7 @@ namespace FriishProduce
             persistent_storage_per_movie_l.Enabled = persistent_storage_per_movie.Enabled = save_data_enable.Checked;
         }
 
-        private void checkBoxChanged(object sender, EventArgs e)
+        private void valueChanged(object sender, EventArgs e)
         {
             if (sender == save_data_enable)
             {
@@ -185,12 +187,27 @@ namespace FriishProduce
 
                 if (!midi.Checked) DLSPath = null;
             }
+
+            else if (sender == background_color)
+            {
+                try
+                {
+                    var color = ColorTranslator.FromHtml($"#{background_color.Text}".ToUpper());
+                    background_color_img.BackColor = BGColor.Color = Color.FromArgb(255, color.R, color.G, color.B);
+                }
+
+                catch
+                {
+                    background_color_img.BackColor = BGColor.Color = Color.Black;
+                }
+            }
         }
 
         private void changeBackgroundColor(object sender, EventArgs e)
         {
             BGColor.ShowDialog(this);
             background_color_img.BackColor = BGColor.Color;
+            background_color.Text = $"{BGColor.Color.R:x2}{BGColor.Color.G:x2}{BGColor.Color.B:x2}";
         }
         #endregion
     }

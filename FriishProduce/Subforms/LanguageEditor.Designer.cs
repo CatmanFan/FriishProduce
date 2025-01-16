@@ -56,10 +56,6 @@ namespace FriishProduce
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.strings = new System.Windows.Forms.DataGridView();
-            this.Section = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Original = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Translated = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.status_label = new System.Windows.Forms.ToolStripStatusLabel();
             this.search_for = new System.Windows.Forms.ToolStripDropDownButton();
@@ -67,6 +63,11 @@ namespace FriishProduce
             this.find_original = new System.Windows.Forms.ToolStripTextBox();
             this.find_translated_l = new System.Windows.Forms.ToolStripMenuItem();
             this.find_translated = new System.Windows.Forms.ToolStripTextBox();
+            this.filter_by_section = new System.Windows.Forms.ToolStripDropDownButton();
+            this.Section = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Original = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Translated = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -302,48 +303,12 @@ namespace FriishProduce
             this.strings.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.Strings_CellEndEdit);
             this.strings.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Strings_KeyDown);
             // 
-            // Section
-            // 
-            this.Section.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Section.DefaultCellStyle = dataGridViewCellStyle1;
-            this.Section.HeaderText = "Section";
-            this.Section.Name = "Section";
-            this.Section.ReadOnly = true;
-            this.Section.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.Section.Width = 65;
-            // 
-            // ID
-            // 
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ID.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            // 
-            // Original
-            // 
-            this.Original.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Original.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Original.HeaderText = "Original";
-            this.Original.Name = "Original";
-            this.Original.ReadOnly = true;
-            // 
-            // Translated
-            // 
-            this.Translated.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Translated.DefaultCellStyle = dataGridViewCellStyle4;
-            this.Translated.HeaderText = "Translated";
-            this.Translated.Name = "Translated";
-            // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.status_label,
-            this.search_for});
+            this.filter_by_section,
+            this.search_for,
+            this.status_label});
             this.statusStrip1.Location = new System.Drawing.Point(0, 399);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(884, 22);
@@ -353,8 +318,10 @@ namespace FriishProduce
             // status_label
             // 
             this.status_label.Name = "status_label";
-            this.status_label.Size = new System.Drawing.Size(61, 17);
+            this.status_label.Size = new System.Drawing.Size(662, 17);
+            this.status_label.Spring = true;
             this.status_label.Text = "undefined";
+            this.status_label.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // search_for
             // 
@@ -400,6 +367,53 @@ namespace FriishProduce
             this.find_translated.Name = "find_translated";
             this.find_translated.Size = new System.Drawing.Size(200, 23);
             this.find_translated.TextChanged += new System.EventHandler(this.Find);
+            // 
+            // filter_by_section
+            // 
+            this.filter_by_section.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.filter_by_section.Name = "filter_by_section";
+            this.filter_by_section.Size = new System.Drawing.Size(103, 20);
+            this.filter_by_section.Text = "Filter by section";
+            // 
+            // Section
+            // 
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Section.DefaultCellStyle = dataGridViewCellStyle1;
+            this.Section.HeaderText = "Section";
+            this.Section.MinimumWidth = 100;
+            this.Section.Name = "Section";
+            this.Section.ReadOnly = true;
+            this.Section.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.Section.Visible = false;
+            this.Section.Width = 150;
+            // 
+            // ID
+            // 
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ID.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Original
+            // 
+            this.Original.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Original.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Original.HeaderText = "Original";
+            this.Original.Name = "Original";
+            this.Original.ReadOnly = true;
+            this.Original.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Translated
+            // 
+            this.Translated.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Translated.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Translated.HeaderText = "Translated";
+            this.Translated.Name = "Translated";
+            this.Translated.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // LanguageEditor
             // 
@@ -450,10 +464,6 @@ namespace FriishProduce
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.DataGridView strings;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Section;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Original;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Translated;
         private System.Windows.Forms.MenuItem menuItem7;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel status_label;
@@ -462,5 +472,10 @@ namespace FriishProduce
         private System.Windows.Forms.ToolStripTextBox find_original;
         private System.Windows.Forms.ToolStripMenuItem find_translated_l;
         private System.Windows.Forms.ToolStripTextBox find_translated;
+        private System.Windows.Forms.ToolStripDropDownButton filter_by_section;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Section;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Original;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Translated;
     }
 }

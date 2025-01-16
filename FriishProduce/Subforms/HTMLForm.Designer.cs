@@ -94,7 +94,7 @@ namespace FriishProduce
             this.Controls.Add(this.htmlPanel1);
             this.Controls.Add(this.bottomPanel2);
             this.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "HTMLForm";

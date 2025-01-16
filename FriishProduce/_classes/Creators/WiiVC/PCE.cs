@@ -8,9 +8,6 @@ namespace FriishProduce.Injectors
 {
     public class PCE : InjectorWiiVC
     {
-        private string ID { get; set; }
-        private string Target { get; set; }
-
         protected override void Load()
         {
             needsMainDol = false;

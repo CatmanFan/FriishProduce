@@ -90,7 +90,7 @@
 			"003":								"Terminé avec succès.\nOuvrir le dossier de sortie ?",
 			"004":								"Impossible de charger tous les informations de ce logiciel (nom, année de sortie ou joueurs) à partir de la bibliothèque des jeux.\nCertaines informations doivent être spécifiées manuellement.",
 			"005":								"Le fichier WAD que vous avez précisée ({0}) est invalide.\nCeci peut être provoqué par l'une des raisons suivantes :\n  • La plateforme/console cible ne correspond pas à celle de la chaîne sélectionnée.\n  • La chaîne n'est pas encore disponible dans la base des données de cette application.\n  • La chaîne était déjà modifiée (soit injectée, soit convertie en forme du forwarder).",
-			"006":								"Vous pouvez replacer les fichier du mode d'emploi inclus dans la chaîne de Console virtuelle par des autres externes, soit personnalisés.\n\nPour ce faire, vous aurez besoin d'une archive ZIP comprenant le contenu d'un fichier *.arc du mode d'emploi de Console virtuelle.",
+			"006":								"Vous pouvez replacer les fichier du mode d'emploi inclus dans la chaîne de Console virtuelle par des autres externes, soit personnalisés.\nPour ce faire, vous aurez besoin d'une archive ZIP comprenant le contenu d'un fichier *.arc du mode d'emploi de Console virtuelle.",
 			"007":								"L'archive précisée est invalide.",
 			"008":								"Une mise à jour est disponible\nFriishProduce v{0} est désormais disponible à télécharger.\nL'actuelle version est v{1}.\n\nObtenir la dernière mise à jour dès GitHub maintenant ?",
 			"009":								"Vous êtes déjà à jour.",
@@ -120,7 +120,9 @@
 
 		"html": {
 			"t_000":							"Le nom de la chaîne tel qu'il apparaît sur le Menu Wii.<br />Il est recommandé d'utiliser une version abrégée du titre (maximum de 20 caractères) s'il est trop long.<br /><hr><h3>Exemple :</h3> Zelda: Ocarina",
-			"t_001":							"Modifier les paramètres de l'émulateur.",
+			"t_001":							"Le nom complet du logiciel tel qu'il apparaît sur l'aperçu du banner.<br /><hr><h3>Exemple :</h3>The Legend of Zelda:<br />Ocarina of Time",
+			"t_002":							"La variante régionale du banner et de l'icône. Cela peut être utile dans le cas où le nom de la console serait différent pour votre région ou si vous préférez utiliser un banner japonais ou coréen, par exemple.<br />La région du banner correspondra à celle de la chaîne lorsqu'elle est réglée sur automatique.",
+			"t_003":							"Modifier les paramètres avancés de l'émulateur.",
 			"t_004":							"Lorsque cette option est activée, l'application traitera tous les fichiers du même dossier que celui actuellement sélectionné comme faisant partie du logiciel à injecter.<br />Veuillez vous assurer que vos fichiers sont déjà dans un répertoire séparé avant de continuer.",
 		}
 	},
@@ -345,7 +347,7 @@
 			"strap_reminder2":					"{enabled} (sans section consacrée aux extensions externes)",
 			"swf_metadata":						"Métadonnées du contenu SWF",
 			"content_domain":					"Domaine URL du contenu",
-			"background_color":					"Changer la couleur d'arrière-plan"
+			"background_color":					"Couleur d'arrière-plan"
 		},
 
 		"forwarder": {

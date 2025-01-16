@@ -30,7 +30,7 @@ namespace FriishProduce
             Fill.Text = Program.Lang.String("fill_save_data", "projectform");
             label1.Text = Program.Lang.String(label1.Tag.ToString(), "projectform");
             label2.Text = Program.Lang.String(label2.Tag.ToString(), "projectform");
-            label3.Text = string.Format(Program.Lang.String(label3.Tag.ToString(), "projectform"), MaxLength);
+            htmlLabel1.Text = string.Format(Program.Lang.String("edit_save_data_max", "projectform"), MaxLength);
             #endregion
         }
 
@@ -86,7 +86,7 @@ namespace FriishProduce
 
             // Write length to label
             // ********
-            label3.Text = string.Format(Program.Lang.String(label3.Tag.ToString(), "projectform"), MaxLength);
+            htmlLabel1.Text = string.Format(Program.Lang.String("edit_save_data_max", "projectform"), MaxLength);
         }
 
         private void OK_Click(object sender, EventArgs e)

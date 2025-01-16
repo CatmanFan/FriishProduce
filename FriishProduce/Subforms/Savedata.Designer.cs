@@ -39,12 +39,10 @@
             this.title = new System.Windows.Forms.TextBox();
             this.subtitle = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.info1 = new System.Windows.Forms.PictureBox();
+            this.htmlLabel1 = new TheArtOfDev.HtmlRenderer.WinForms.HtmlLabel();
             this.bottomPanel2.SuspendLayout();
             this.bottomPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Picture)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.info1)).BeginInit();
             this.SuspendLayout();
             // 
             // bottomPanel2
@@ -116,20 +114,13 @@
             this.label2.Name = "label2";
             this.label2.Tag = "edit_save_data_2";
             // 
-            // label3
+            // htmlLabel1
             // 
-            resources.ApplyResources(this.label3, "label3");
-            this.label3.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label3.Name = "label3";
-            this.label3.Tag = "edit_save_data_max";
-            // 
-            // info1
-            // 
-            this.info1.Image = global::FriishProduce.Properties.Resources.information;
-            resources.ApplyResources(this.info1, "info1");
-            this.info1.Name = "info1";
-            this.info1.TabStop = false;
+            this.htmlLabel1.BackColor = System.Drawing.SystemColors.Window;
+            this.htmlLabel1.BaseStylesheet = "div { font-size: 11px !important; }";
+            resources.ApplyResources(this.htmlLabel1, "htmlLabel1");
+            this.htmlLabel1.Name = "htmlLabel1";
+            this.htmlLabel1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
             // 
             // Savedata
             // 
@@ -138,8 +129,7 @@
             this.CancelButton = this.b_cancel;
             resources.ApplyResources(this, "$this");
             this.ControlBox = false;
-            this.Controls.Add(this.info1);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.htmlLabel1);
             this.Controls.Add(this.subtitle);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.title);
@@ -160,7 +150,6 @@
             this.bottomPanel2.ResumeLayout(false);
             this.bottomPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Picture)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.info1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -178,7 +167,6 @@
         internal System.Windows.Forms.TextBox title;
         internal System.Windows.Forms.TextBox subtitle;
         internal System.Windows.Forms.CheckBox Fill;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.PictureBox info1;
+        private TheArtOfDev.HtmlRenderer.WinForms.HtmlLabel htmlLabel1;
     }
 }
