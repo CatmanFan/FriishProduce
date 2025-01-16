@@ -119,7 +119,7 @@
 		},
 
 		"html": {
-			"t_000":							"Nombre utilizado para el icono que aparece en el menu Wii.<br />Para títulos más largos, se recomienda utilizar una versión abreviada de 20 caracteres o menos.<hr><h3>Ejemplo:</h3> Zelda: Ocarina",
+			"t_000":							"Nombre utilizado para el icono que aparece en el menu Wii.\nPara títulos más largos, se recomienda utilizar una versión abreviada de 20 caracteres o menos.<hr><b>Ejemplo:</b>\nZelda: Ocarina",
 			"t_003":							"Cambiar la configuración del emulador.",
 		}
 	},

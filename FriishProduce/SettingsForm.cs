@@ -279,7 +279,7 @@ namespace FriishProduce
 
             ToggleSwitchText();
 
-            #endregion
+#endregion
 
             // -----------------------------
 

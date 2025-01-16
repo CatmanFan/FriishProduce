@@ -247,8 +247,8 @@ namespace FriishProduce
 
         public string HTML(int number, bool isTooltip, string title = null)
         {
-            string text = !string.IsNullOrWhiteSpace(title) ? "<b>" + title.TrimEnd(':', '：', '.', '。', '…').Trim() + "</b><br /><br />" : "";
-            string input = String((isTooltip ? "t_" : "l_") + number.ToString("000"), "html");
+            string text = !string.IsNullOrWhiteSpace(title) ? "<b>" + title.TrimEnd(':', '：', '.', '。', '…').Trim() + "</b><br><br>" : "";
+            string input = String((isTooltip ? "t_" : "l_") + number.ToString("000"), "html").Replace("\n", "<br>");
             return "<div>" + text + input + "</div>";
         }
 

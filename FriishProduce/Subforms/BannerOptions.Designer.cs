@@ -43,7 +43,7 @@ namespace FriishProduce
             this.label4 = new System.Windows.Forms.Label();
             this.region = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.tip = new TheArtOfDev.HtmlRenderer.WinForms.HtmlToolTip();
+            this.Tip = new TheArtOfDev.HtmlRenderer.WinForms.HtmlToolTip();
             ((System.ComponentModel.ISupportInitialize)(this.players)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.released)).BeginInit();
             this.bottomPanel2.SuspendLayout();
@@ -164,20 +164,19 @@ namespace FriishProduce
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
             // 
-            // tip
+            // Tip
             // 
-            this.tip.AllowLinksHandling = true;
-            this.tip.AutoPopDelay = 10000;
-            this.tip.BackColor = System.Drawing.Color.White;
-            this.tip.BaseStylesheet = "div { font-size: 11px !important; }";
-            this.tip.ForeColor = System.Drawing.Color.Black;
-            this.tip.InitialDelay = 500;
-            this.tip.MaximumSize = new System.Drawing.Size(350, 0);
-            this.tip.OwnerDraw = true;
-            this.tip.ReshowDelay = 100;
-            this.tip.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-            this.tip.TooltipCssClass = "htmltooltip";
-            this.tip.UseGdiPlusTextRendering = true;
+            this.Tip.AutoPopDelay = 10000;
+            this.Tip.BackColor = System.Drawing.Color.White;
+            this.Tip.BaseStylesheet = "div { font-size: 11px !important; }";
+            this.Tip.ForeColor = System.Drawing.Color.Black;
+            this.Tip.InitialDelay = 500;
+            this.Tip.MaximumSize = new System.Drawing.Size(350, 0);
+            this.Tip.OwnerDraw = true;
+            this.Tip.ReshowDelay = 100;
+            this.Tip.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+            this.Tip.TooltipCssClass = "htmltooltip";
+            this.Tip.UseGdiPlusTextRendering = true;
             // 
             // BannerOptions
             // 
@@ -228,6 +227,6 @@ namespace FriishProduce
         private System.Windows.Forms.Label label4;
         internal System.Windows.Forms.ComboBox region;
         private System.Windows.Forms.Panel panel1;
-        private TheArtOfDev.HtmlRenderer.WinForms.HtmlToolTip tip;
+        private TheArtOfDev.HtmlRenderer.WinForms.HtmlToolTip Tip;
     }
 }

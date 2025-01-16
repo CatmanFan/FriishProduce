@@ -119,11 +119,11 @@
 		},
 
 		"html": {
-			"t_000":							"Le nom de la chaîne tel qu'il apparaît sur le Menu Wii.<br />Il est recommandé d'utiliser une version abrégée du titre (maximum de 20 caractères) s'il est trop long.<br /><hr><h3>Exemple :</h3> Zelda: Ocarina",
-			"t_001":							"Le nom complet du logiciel tel qu'il apparaît sur l'aperçu du banner.<br /><hr><h3>Exemple :</h3>The Legend of Zelda:<br />Ocarina of Time",
-			"t_002":							"La variante régionale du banner et de l'icône. Cela peut être utile dans le cas où le nom de la console serait différent pour votre région ou si vous préférez utiliser un banner japonais ou coréen, par exemple.<br />La région du banner correspondra à celle de la chaîne lorsqu'elle est réglée sur automatique.",
+			"t_000":							"Le nom de la chaîne tel qu'il apparaît sur le Menu Wii.\nIl est recommandé d'utiliser une version abrégée du titre (maximum de 20 caractères) s'il est trop long.<hr><b>Exemple :</b>\nZelda: Ocarina",
+			"t_001":							"Le nom complet du logiciel tel qu'il apparaît sur l'aperçu du banner.<hr><b>Exemple :</b>\nThe Legend of Zelda:\nOcarina of Time",
+			"t_002":							"La variante régionale du banner et de l'icône.\nCette option peut être utile dans le cas où le nom de la console serait différent pour votre région ou si vous préférez utiliser un banner japonais ou coréen, par exemple.\nLa région du banner correspondra à celle de la chaîne lorsqu'elle est réglée sur automatique.",
 			"t_003":							"Modifier les paramètres avancés de l'émulateur.",
-			"t_004":							"Lorsque cette option est activée, l'application traitera tous les fichiers du même dossier que celui actuellement sélectionné comme faisant partie du logiciel à injecter.<br />Veuillez vous assurer que vos fichiers sont déjà dans un répertoire séparé avant de continuer.",
+			"t_004":							"Lorsque cette option est activée, l'application traitera tous les fichiers du même dossier que celui actuellement sélectionné comme faisant partie du logiciel à injecter.\nPour éviter d'éventuels problèmes, veuillez vous assurer que vos fichiers sont déjà dans un répertoire séparé.",
 		}
 	},
 

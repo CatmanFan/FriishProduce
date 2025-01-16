@@ -52,8 +52,8 @@ namespace FriishProduce
             region.Enabled = region.Items.Count > 1;
 
             Program.Lang.Control(this);
-            tip.SetToolTip(title, Program.Lang.HTML(1, true, label1.Text));
-            tip.SetToolTip(region, Program.Lang.HTML(2, true, label4.Text));
+            Tip.SetToolTip(title, Program.Lang.HTML(1, true, label1.Text));
+            Tip.SetToolTip(region, Program.Lang.HTML(2, true, label4.Text));
         }
 
         private void OK_Click(object sender, EventArgs e)

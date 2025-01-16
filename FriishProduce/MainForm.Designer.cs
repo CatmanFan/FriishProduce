@@ -510,7 +510,6 @@ namespace FriishProduce
             // 
             // Tip
             // 
-            this.Tip.AllowLinksHandling = true;
             this.Tip.AutoPopDelay = 10000;
             this.Tip.BackColor = System.Drawing.Color.White;
             this.Tip.BaseStylesheet = "div { font-size: 11px !important; }";

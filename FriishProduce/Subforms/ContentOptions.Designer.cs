@@ -37,7 +37,7 @@ namespace FriishProduce
             this.bottomPanel2 = new System.Windows.Forms.Panel();
             this.controller_box = new System.Windows.Forms.GroupBox();
             this.controller_cb = new System.Windows.Forms.CheckBox();
-            this.tip = new TheArtOfDev.HtmlRenderer.WinForms.HtmlToolTip();
+            this.Tip = new TheArtOfDev.HtmlRenderer.WinForms.HtmlToolTip();
             this.bottomPanel1.SuspendLayout();
             this.bottomPanel2.SuspendLayout();
             this.controller_box.SuspendLayout();
@@ -95,20 +95,19 @@ namespace FriishProduce
             this.controller_cb.Tag = "controller";
             this.controller_cb.UseVisualStyleBackColor = true;
             // 
-            // tip
+            // Tip
             // 
-            this.tip.AllowLinksHandling = true;
-            this.tip.AutoPopDelay = 10000;
-            this.tip.BackColor = System.Drawing.Color.White;
-            this.tip.BaseStylesheet = "div { font-size: 11px !important; }";
-            this.tip.ForeColor = System.Drawing.Color.Black;
-            this.tip.InitialDelay = 500;
-            this.tip.MaximumSize = new System.Drawing.Size(350, 0);
-            this.tip.OwnerDraw = true;
-            this.tip.ReshowDelay = 100;
-            this.tip.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-            this.tip.TooltipCssClass = "htmltooltip";
-            this.tip.UseGdiPlusTextRendering = true;
+            this.Tip.AutoPopDelay = 10000;
+            this.Tip.BackColor = System.Drawing.Color.White;
+            this.Tip.BaseStylesheet = "div { font-size: 11px !important; }";
+            this.Tip.ForeColor = System.Drawing.Color.Black;
+            this.Tip.InitialDelay = 500;
+            this.Tip.MaximumSize = new System.Drawing.Size(350, 0);
+            this.Tip.OwnerDraw = true;
+            this.Tip.ReshowDelay = 100;
+            this.Tip.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+            this.Tip.TooltipCssClass = "htmltooltip";
+            this.Tip.UseGdiPlusTextRendering = true;
             // 
             // ContentOptions
             // 
@@ -143,6 +142,6 @@ namespace FriishProduce
         private System.Windows.Forms.Panel bottomPanel2;
         protected System.Windows.Forms.GroupBox controller_box;
         protected System.Windows.Forms.CheckBox controller_cb;
-        private TheArtOfDev.HtmlRenderer.WinForms.HtmlToolTip tip;
+        protected TheArtOfDev.HtmlRenderer.WinForms.HtmlToolTip Tip;
     }
 }

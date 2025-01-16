@@ -119,9 +119,9 @@
 		},
 
 		"html": {
-			"t_000":							"The name used for the channel's icon on the Wii Menu.<br />A shortened version of 20 characters or less is recommended for longer titles.<br /><hr><h3>Example:</h3><br />Zelda: Ocarina",
-			"t_001":							"The full name of the software, as displayed on the banner preview.<br /><hr><h3>Example:</h3>The Legend of Zelda:<br />Ocarina of Time",
-			"t_002":							"The region to use for the channel banner and icon. This can be useful if the console's name is different for your region or if you want to use a Japanese/Korean banner, for instance.<br />If the banner region is set to automatic, it will correspond with the WAD's region.",
+			"t_000":							"The name used for the channel's icon on the Wii Menu.\nA shortened version of 20 characters or less is recommended for longer titles.\n\n<b>Example</b><hr>Zelda: Ocarina",
+			"t_001":							"The full name of the software, as displayed on the banner preview.\n\n<b>Example</b><hr>The Legend of Zelda:\nOcarina of Time",
+			"t_002":							"The region to use for the channel banner and icon.\nThis can be useful if the console's name is different for your region or if you want to use a Japanese/Korean banner, for instance.\nIf the banner region is set to automatic, it will correspond with the WAD's region.",
 			"t_003":							"Change advanced emulator settings.",
 			"t_004":							"이 옵션을 활성화하면 프로그램은 현재 선택된 파일과 같은 폴더 내에 있는 모든 파일을 주입될 소프트웨어의 일부로 취급합니다.<br />계속하기 전에 소프트웨어 파일이 별도의 폴더에 있는지 확인하세요.",
 		}

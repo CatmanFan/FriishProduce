@@ -41,10 +41,8 @@ namespace FriishProduce
             this.bottomPanel1 = new System.Windows.Forms.Panel();
             this.b_cancel = new System.Windows.Forms.Button();
             this.b_ok = new System.Windows.Forms.Button();
-            this.GetBanners = new System.Windows.Forms.Button();
             this.TreeView = new System.Windows.Forms.TreeView();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.use_online_wad_tip = new FriishProduce.ImageLabel();
             this.bypass_rom_size = new System.Windows.Forms.CheckBox();
             this.use_online_wad_enabled = new System.Windows.Forms.CheckBox();
             this.use_custom_database = new System.Windows.Forms.CheckBox();
@@ -147,6 +145,8 @@ namespace FriishProduce
             this.vc_snes_patch_nodark = new System.Windows.Forms.CheckBox();
             this.vc_snes_patch_nosuspend = new System.Windows.Forms.CheckBox();
             this.vc_snes_patch_volume = new System.Windows.Forms.CheckBox();
+            this.use_online_wad_tip = new FriishProduce.ImageLabel();
+            this.GetBanners = new System.Windows.Forms.Button();
             this.vc_n64_options.SuspendLayout();
             this.bottomPanel2.SuspendLayout();
             this.bottomPanel1.SuspendLayout();
@@ -261,7 +261,6 @@ namespace FriishProduce
             this.bottomPanel1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.bottomPanel1.Controls.Add(this.b_cancel);
             this.bottomPanel1.Controls.Add(this.b_ok);
-            this.bottomPanel1.Controls.Add(this.GetBanners);
             resources.ApplyResources(this.bottomPanel1, "bottomPanel1");
             this.bottomPanel1.Name = "bottomPanel1";
             // 
@@ -282,13 +281,6 @@ namespace FriishProduce
             this.b_ok.UseVisualStyleBackColor = true;
             this.b_ok.Click += new System.EventHandler(this.OK_Click);
             // 
-            // GetBanners
-            // 
-            resources.ApplyResources(this.GetBanners, "GetBanners");
-            this.GetBanners.Name = "GetBanners";
-            this.GetBanners.UseVisualStyleBackColor = true;
-            this.GetBanners.Click += new System.EventHandler(this.DownloadBanners_Click);
-            // 
             // TreeView
             // 
             this.TreeView.FullRowSelect = true;
@@ -307,6 +299,7 @@ namespace FriishProduce
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.GetBanners);
             this.panel1.Controls.Add(this.use_online_wad_tip);
             this.panel1.Controls.Add(this.bypass_rom_size);
             this.panel1.Controls.Add(this.use_online_wad_enabled);
@@ -315,15 +308,6 @@ namespace FriishProduce
             this.panel1.Controls.Add(this.language);
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
-            // 
-            // use_online_wad_tip
-            // 
-            resources.ApplyResources(this.use_online_wad_tip, "use_online_wad_tip");
-            this.use_online_wad_tip.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.use_online_wad_tip.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.use_online_wad_tip.Image = global::FriishProduce.Properties.Resources.information;
-            this.use_online_wad_tip.Name = "use_online_wad_tip";
-            this.use_online_wad_tip.Tag = "use_online_wad_tip";
             // 
             // bypass_rom_size
             // 
@@ -1167,6 +1151,21 @@ namespace FriishProduce
             this.vc_snes_patch_volume.Tag = "patch_volume";
             this.vc_snes_patch_volume.UseVisualStyleBackColor = true;
             // 
+            // use_online_wad_tip
+            // 
+            resources.ApplyResources(this.use_online_wad_tip, "use_online_wad_tip");
+            this.use_online_wad_tip.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.use_online_wad_tip.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.use_online_wad_tip.Image = global::FriishProduce.Properties.Resources.information;
+            this.use_online_wad_tip.Name = "use_online_wad_tip";
+            this.use_online_wad_tip.Tag = "use_online_wad_tip";
+            // 
+            // GetBanners
+            // 
+            resources.ApplyResources(this.GetBanners, "GetBanners");
+            this.GetBanners.Name = "GetBanners";
+            this.GetBanners.UseVisualStyleBackColor = true;
+            // 
             // SettingsForm
             // 
             this.AcceptButton = this.b_ok;
@@ -1176,6 +1175,11 @@ namespace FriishProduce
             this.ControlBox = false;
             this.Controls.Add(this.bottomPanel2);
             this.Controls.Add(this.TreeView);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.adobe_flash);
+            this.Controls.Add(this.forwarder);
+            this.Controls.Add(this.vc_nes);
+            this.Controls.Add(this.vc_snes);
             this.Controls.Add(this.vc_n64);
             this.Controls.Add(this.vc_sega);
             this.Controls.Add(this.vc_pce);
@@ -1183,11 +1187,6 @@ namespace FriishProduce
             this.Controls.Add(this.default_injection_methods);
             this.Controls.Add(this.bios_files);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.adobe_flash);
-            this.Controls.Add(this.forwarder);
-            this.Controls.Add(this.vc_nes);
-            this.Controls.Add(this.vc_snes);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MaximizeBox = false;
@@ -1315,7 +1314,6 @@ namespace FriishProduce
         private System.Windows.Forms.Panel bottomPanel1;
         private System.Windows.Forms.Button b_cancel;
         private System.Windows.Forms.Button b_ok;
-        private System.Windows.Forms.Button GetBanners;
         private System.Windows.Forms.GroupBox vc_n64_romc_type;
         private System.Windows.Forms.ComboBox forwarder_type;
         private System.Windows.Forms.CheckBox use_online_wad_enabled;
@@ -1379,5 +1377,6 @@ namespace FriishProduce
         private System.Windows.Forms.Label vc_pce_padbutton;
         private System.Windows.Forms.GroupBox vc_pce_region_l;
         private System.Windows.Forms.ComboBox vc_pce_region;
+        private System.Windows.Forms.Button GetBanners;
     }
 }
