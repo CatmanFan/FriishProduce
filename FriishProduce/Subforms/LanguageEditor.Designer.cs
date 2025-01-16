@@ -56,18 +56,18 @@ namespace FriishProduce
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.strings = new System.Windows.Forms.DataGridView();
+            this.Section = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Original = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Translated = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.status_label = new System.Windows.Forms.ToolStripStatusLabel();
+            this.filter_by_section = new System.Windows.Forms.ToolStripDropDownButton();
             this.search_for = new System.Windows.Forms.ToolStripDropDownButton();
             this.find_original_l = new System.Windows.Forms.ToolStripMenuItem();
             this.find_original = new System.Windows.Forms.ToolStripTextBox();
             this.find_translated_l = new System.Windows.Forms.ToolStripMenuItem();
             this.find_translated = new System.Windows.Forms.ToolStripTextBox();
-            this.filter_by_section = new System.Windows.Forms.ToolStripDropDownButton();
-            this.Section = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Original = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Translated = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.status_label = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -303,78 +303,6 @@ namespace FriishProduce
             this.strings.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.Strings_CellEndEdit);
             this.strings.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Strings_KeyDown);
             // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.filter_by_section,
-            this.search_for,
-            this.status_label});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 399);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(884, 22);
-            this.statusStrip1.TabIndex = 3;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // status_label
-            // 
-            this.status_label.Name = "status_label";
-            this.status_label.Size = new System.Drawing.Size(662, 17);
-            this.status_label.Spring = true;
-            this.status_label.Text = "undefined";
-            this.status_label.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // search_for
-            // 
-            this.search_for.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.search_for.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.find_original_l,
-            this.find_translated_l});
-            this.search_for.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.search_for.Name = "search_for";
-            this.search_for.Size = new System.Drawing.Size(104, 20);
-            this.search_for.Text = "Search for text...";
-            // 
-            // find_original_l
-            // 
-            this.find_original_l.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.find_original});
-            this.find_original_l.Name = "find_original_l";
-            this.find_original_l.Size = new System.Drawing.Size(180, 22);
-            this.find_original_l.Text = "Original";
-            // 
-            // find_original
-            // 
-            this.find_original.AcceptsReturn = true;
-            this.find_original.AutoSize = false;
-            this.find_original.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.find_original.Name = "find_original";
-            this.find_original.Size = new System.Drawing.Size(200, 23);
-            this.find_original.TextChanged += new System.EventHandler(this.Find);
-            // 
-            // find_translated_l
-            // 
-            this.find_translated_l.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.find_translated});
-            this.find_translated_l.Name = "find_translated_l";
-            this.find_translated_l.Size = new System.Drawing.Size(180, 22);
-            this.find_translated_l.Text = "Translated";
-            // 
-            // find_translated
-            // 
-            this.find_translated.AcceptsReturn = true;
-            this.find_translated.AutoSize = false;
-            this.find_translated.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.find_translated.Name = "find_translated";
-            this.find_translated.Size = new System.Drawing.Size(200, 23);
-            this.find_translated.TextChanged += new System.EventHandler(this.Find);
-            // 
-            // filter_by_section
-            // 
-            this.filter_by_section.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.filter_by_section.Name = "filter_by_section";
-            this.filter_by_section.Size = new System.Drawing.Size(103, 20);
-            this.filter_by_section.Text = "Filter by section";
-            // 
             // Section
             // 
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -414,6 +342,78 @@ namespace FriishProduce
             this.Translated.HeaderText = "Translated";
             this.Translated.Name = "Translated";
             this.Translated.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.filter_by_section,
+            this.search_for,
+            this.status_label});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 399);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(884, 22);
+            this.statusStrip1.TabIndex = 3;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // filter_by_section
+            // 
+            this.filter_by_section.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.filter_by_section.Name = "filter_by_section";
+            this.filter_by_section.Size = new System.Drawing.Size(103, 20);
+            this.filter_by_section.Text = "Filter by section";
+            // 
+            // search_for
+            // 
+            this.search_for.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.search_for.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.find_original_l,
+            this.find_translated_l});
+            this.search_for.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.search_for.Name = "search_for";
+            this.search_for.Size = new System.Drawing.Size(104, 20);
+            this.search_for.Text = "Search for text...";
+            // 
+            // find_original_l
+            // 
+            this.find_original_l.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.find_original});
+            this.find_original_l.Name = "find_original_l";
+            this.find_original_l.Size = new System.Drawing.Size(129, 22);
+            this.find_original_l.Text = "Original";
+            // 
+            // find_original
+            // 
+            this.find_original.AcceptsReturn = true;
+            this.find_original.AutoSize = false;
+            this.find_original.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.find_original.Name = "find_original";
+            this.find_original.Size = new System.Drawing.Size(200, 23);
+            this.find_original.TextChanged += new System.EventHandler(this.Find);
+            // 
+            // find_translated_l
+            // 
+            this.find_translated_l.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.find_translated});
+            this.find_translated_l.Name = "find_translated_l";
+            this.find_translated_l.Size = new System.Drawing.Size(129, 22);
+            this.find_translated_l.Text = "Translated";
+            // 
+            // find_translated
+            // 
+            this.find_translated.AcceptsReturn = true;
+            this.find_translated.AutoSize = false;
+            this.find_translated.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.find_translated.Name = "find_translated";
+            this.find_translated.Size = new System.Drawing.Size(200, 23);
+            this.find_translated.TextChanged += new System.EventHandler(this.Find);
+            // 
+            // status_label
+            // 
+            this.status_label.Name = "status_label";
+            this.status_label.Size = new System.Drawing.Size(662, 17);
+            this.status_label.Spring = true;
+            this.status_label.Text = "undefined";
+            this.status_label.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // LanguageEditor
             // 

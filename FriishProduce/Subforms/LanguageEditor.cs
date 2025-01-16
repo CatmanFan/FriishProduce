@@ -209,10 +209,10 @@ namespace FriishProduce
                         {
                             foreach (DataGridViewRow row in strings.Rows)
                             {
-                                string sectionName = section.Key;
+                                string sectionName = row.Cells[0].Value.ToString();
                                 string id = row.Cells[1].Value.ToString();
 
-                                if (section.Value.ContainsKey(id))
+                                if (section.Value.ContainsKey(id) && sectionName.Contains(section.Key))
                                     row.Cells[3].Value = section.Value[id].Replace("\n", "\r\n");
 
                                 UpdateCell(row.Cells[3], false);
@@ -226,10 +226,10 @@ namespace FriishProduce
                         {
                             foreach (DataGridViewRow row in strings.Rows)
                             {
-                                string sectionName = section.Key;
+                                string sectionName = row.Cells[0].Value.ToString();
                                 string id = row.Cells[1].Value.ToString();
 
-                                if (section.Value.ContainsKey(id))
+                                if (section.Value.ContainsKey(id) && sectionName.Contains(section.Key))
                                     row.Cells[3].Value = section.Value[id].Replace("\n", "\r\n");
 
                                 UpdateCell(row.Cells[3], false);
