@@ -19,6 +19,8 @@
 			"b_save":							"&Save",
 			"b_dont_save":						"&Don't save",
 			"do_not_show":						"Do not show this again",
+			"busy0":							"Please wait...",
+			"busy1":							"Exportation in progress...",
 			
 			"by_default":						"Default",
 			"disabled":							"Disabled",
@@ -99,7 +101,7 @@
 
 			"error":							"An error has occurred",
 			"e_000":							"Unable to connect to the Internet.\n{0}",
-			"e_001":							"Unable to generate image. This may be due to an issue with GDI+.",
+			"e_001":							"Unable to generate image.\nThis may be due to an issue with GDI+.",
 			"e_002":							"Failed to replace content within the WAD.",
 			"e_003":							"The ROM provided is too large (size limit: {0} {1}).",
 			"e_004":							"Unable to modify the internal VC WAD's content options.\nInjection will continue as intended.",
@@ -192,7 +194,6 @@
 			"rom_label1":						"game file",
 			"rom_label2":						"disc image",
 			"include_patch":					"Include a patch",
-			"busy":								"Exportation in progress...",
 
 			"wad_base":							"Base WAD",
 			"import_wad":						"Import WAD from file...",

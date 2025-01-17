@@ -12,10 +12,38 @@ namespace FriishProduce
 {
     public partial class Wait : Form
     {
-        public Wait()
+        private Timer fader;
+
+        public Wait(bool showProgress, int msg = 0)
         {
             InitializeComponent();
-            Text = Program.Lang.String("busy", "projectform");
+
+            Opacity = 0;
+            fader = new() { Interval = 5, Enabled = true };
+            fader.Tick += Fade;
+            fader.Start();
+
+            label1.Font = Program.MainForm.Font;
+            label1.Text = Program.Lang.String($"busy{msg}");
+
+            progress.Visible = showProgress;
+            if (!showProgress)
+            {
+                tableLayoutPanel2.RowCount = 1;
+                label1.TextAlign = ContentAlignment.MiddleLeft;
+                label1.Padding = new(label1.Padding.Left, 0, 0, 0);
+            }
+        }
+
+        private void Fade(object sender, EventArgs e)
+        {
+            Opacity += 2;
+            if (Opacity >= 100 && fader != null)
+            {
+                fader.Stop();
+                fader.Enabled = false;
+                fader.Dispose();
+            }
         }
     }
 }

@@ -19,6 +19,8 @@
 			"b_save":							"&Guardar",
 			"b_dont_save":						"&No guardar",
 			"do_not_show":						"No volver a mostrar este mensaje",
+			"busy0":							"Cargando...",
+			"busy1":							"Exportación en curso...",
 			
 			"by_default":						"Por defecto",
 			"disabled":							"Deshabilitado(a)",
@@ -185,7 +187,6 @@
 			"rom_label1":						"de juego",
 			"rom_label2":						"de disco",
 			"include_patch":					"Incluir parche",
-			"busy":								"Exportación en curso...",
 
 			"wad_base":							"Canal de origen",
 			"import_wad":						"Abrir un archivo WAD...",

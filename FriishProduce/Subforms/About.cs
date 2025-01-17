@@ -9,6 +9,7 @@ namespace FriishProduce
         public About()
         {
             InitializeComponent();
+            Font = Program.MainForm.Font;
             Text = string.Format(Program.Lang.String("about_app"), Program.Lang.ApplicationTitle);
             labelProductName.Text = AssemblyProduct;
             labelDescription.Text = string.Format("{0}" + Environment.NewLine + "Current language: {1} ({2})", AssemblyDescription, System.Globalization.CultureInfo.CurrentUICulture.EnglishName, Program.Lang.Author);

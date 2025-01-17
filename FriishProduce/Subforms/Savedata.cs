@@ -23,15 +23,17 @@ namespace FriishProduce
         public Savedata(Platform platform)
         {
             InitializeComponent();
-            Reset(platform, 0);
 
             #region Localization
             Program.Lang.Control(this);
             Fill.Text = Program.Lang.String("fill_save_data", "projectform");
             label1.Text = Program.Lang.String(label1.Tag.ToString(), "projectform");
             label2.Text = Program.Lang.String(label2.Tag.ToString(), "projectform");
-            htmlLabel1.Text = string.Format(Program.Lang.String("edit_save_data_max", "projectform"), MaxLength);
+            notice.BaseStylesheet = notice.BaseStylesheet.Replace("\"REPLACEME\"", $"\"{label1.Font.FontFamily.Name}\"");
+            notice.BackColor = BackColor;
             #endregion
+
+            Reset(platform, 0);
         }
 
         /// <summary>
@@ -65,10 +67,7 @@ namespace FriishProduce
             // ********
             label2.Enabled = subtitle.Enabled = IsMultiline;
             if (!subtitle.Enabled)
-            {
                 subtitle.Clear();
-                return;
-            }
 
             // The following applies to both NES/FC & SNES/SFC
             // ********
@@ -86,7 +85,7 @@ namespace FriishProduce
 
             // Write length to label
             // ********
-            htmlLabel1.Text = string.Format(Program.Lang.String("edit_save_data_max", "projectform"), MaxLength);
+            notice.Text = "<div>" + string.Format(Program.Lang.String("edit_save_data_max", "projectform"), "<b>" + MaxLength + "</b>") + "</div>";
         }
 
         private void OK_Click(object sender, EventArgs e)

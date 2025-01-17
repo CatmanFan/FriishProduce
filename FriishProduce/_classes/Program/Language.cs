@@ -212,6 +212,7 @@ namespace FriishProduce
 
             ScriptType script = GetScript(Program.Lang.String("preferences"));
 
+            localize(c, tag, script);
             foreach (Control item1 in c.Controls)
             {
                 localize(item1, tag, script);
@@ -533,7 +534,12 @@ namespace FriishProduce
                         (item as PlaceholderTextBox).PlaceholderText = target;
                     else
                         item.Text = target;
-                    // if (script == ScriptType.RTL) item.RightToLeft = RightToLeft.Yes;
+                    if (script == ScriptType.RTL)
+                    {
+                        item.RightToLeft = RightToLeft.Yes;
+                        if (item.GetType() == typeof(Form))
+                            (item as Form).RightToLeftLayout = true;
+                    }
                 }
             }
         }

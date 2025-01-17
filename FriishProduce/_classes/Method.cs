@@ -23,10 +23,7 @@ namespace FriishProduce
 
         public int Progress
         {
-            get
-            {
-                return (int)Math.Round(_progress.step / _progress.max * 100);
-            }
+            get => (int)Math.Round(_progress.step / _progress.max * 100.0);
         }
 
         public bool IsMultifile { get; set; } = false;

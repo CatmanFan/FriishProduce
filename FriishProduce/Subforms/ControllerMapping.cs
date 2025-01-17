@@ -15,6 +15,7 @@ namespace FriishProduce
         public ControllerMapping()
         {
             InitializeComponent();
+            Font = Program.MainForm.Font;
         }
 
         protected void ResetLayout()

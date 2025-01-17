@@ -19,6 +19,8 @@
 			"b_save":							"저장(&S)",
 			"b_dont_save":						"저장하지 않음(&D)",
 			"do_not_show":						"다시 표시하지 않음",
+			"busy0":							"Please wait...",
+			"busy1":							"Exportation in progress...",
 			
 			"by_default":						"기본값",
 			"disabled":							"비활성화",
@@ -187,7 +189,6 @@
 			"rom_label1":						"게임 파일",
 			"rom_label2":						"디스크 이미지",
 			"include_patch":					"패치 포함",
-			"busy":								"Exportation in progress...",
 
 			"wad_base":							"기반",
 			"import_wad":						"WAD 가져오기...",

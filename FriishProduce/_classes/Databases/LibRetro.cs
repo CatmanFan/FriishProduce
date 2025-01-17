@@ -103,11 +103,13 @@ namespace FriishProduce.Databases
             if (File.Exists(path))
             {
                 try { dt.ReadXml(path); }
-                catch { File.Delete(path); goto Top; }
+                catch { try { File.Delete(path); } catch { } goto Top; }
             }
 
             else
             {
+                if (!Directory.Exists(Paths.Databases)) Directory.CreateDirectory(Paths.Databases);
+
                 string crc = "";
                 string name = "";
                 string serial = "";

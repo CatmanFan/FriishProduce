@@ -39,7 +39,7 @@
             this.title = new System.Windows.Forms.TextBox();
             this.subtitle = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.htmlLabel1 = new TheArtOfDev.HtmlRenderer.WinForms.HtmlLabel();
+            this.notice = new TheArtOfDev.HtmlRenderer.WinForms.HtmlLabel();
             this.bottomPanel2.SuspendLayout();
             this.bottomPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Picture)).BeginInit();
@@ -114,13 +114,14 @@
             this.label2.Name = "label2";
             this.label2.Tag = "edit_save_data_2";
             // 
-            // htmlLabel1
+            // notice
             // 
-            this.htmlLabel1.BackColor = System.Drawing.SystemColors.Window;
-            this.htmlLabel1.BaseStylesheet = "div { font-size: 11px !important; }";
-            resources.ApplyResources(this.htmlLabel1, "htmlLabel1");
-            this.htmlLabel1.Name = "htmlLabel1";
-            this.htmlLabel1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+            this.notice.BaseStylesheet = "div { color: #555; font-family: \"REPLACEME\"; font-size: 11px !important; }";
+            resources.ApplyResources(this.notice, "notice");
+            this.notice.IsContextMenuEnabled = false;
+            this.notice.IsSelectionEnabled = false;
+            this.notice.Name = "notice";
+            this.notice.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
             // 
             // Savedata
             // 
@@ -129,7 +130,7 @@
             this.CancelButton = this.b_cancel;
             resources.ApplyResources(this, "$this");
             this.ControlBox = false;
-            this.Controls.Add(this.htmlLabel1);
+            this.Controls.Add(this.notice);
             this.Controls.Add(this.subtitle);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.title);
@@ -167,6 +168,6 @@
         internal System.Windows.Forms.TextBox title;
         internal System.Windows.Forms.TextBox subtitle;
         internal System.Windows.Forms.CheckBox Fill;
-        private TheArtOfDev.HtmlRenderer.WinForms.HtmlLabel htmlLabel1;
+        private TheArtOfDev.HtmlRenderer.WinForms.HtmlLabel notice;
     }
 }

@@ -19,6 +19,8 @@
 			"b_save":							"&Sauvegarder",
 			"b_dont_save":						"&Ne pas sauvegarder",
 			"do_not_show":						"Ne plus afficher ce message",
+			"busy0":							"Veuillez patienter ...",
+			"busy1":							"Exportation en cours ...",
 			
 			"by_default":						"Par défaut",
 			"disabled":							"Désactivé(e)",
@@ -188,7 +190,6 @@
 			"rom_label1":						"du jeu",
 			"rom_label2":						"de disque",
 			"include_patch":					"Ajouter un patch",
-			"busy":								"Exportation en cours, veuillez patienter ...",
 
 			"wad_base":							"WAD de base",
 			"import_wad":						"Ouvrir un fichier WAD ...",

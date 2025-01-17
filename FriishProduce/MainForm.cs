@@ -291,7 +291,7 @@ namespace FriishProduce
 
         private void addTab(Platform platform, Project x = null, string file = null)
         {
-            ProjectForm p = new(platform, file, x) { Font = Font };
+            ProjectForm p = new(platform, file, x);
             p.FormClosed += TabChanged;
             tabControl.TabPages.Add(p);
 
@@ -332,7 +332,7 @@ namespace FriishProduce
 
         private void CloseTab_Click(object sender, EventArgs e) { var tab = tabControl.SelectedForm as Form; tab?.Close(); }
 
-        private void About_Click(object sender, EventArgs e) { using var about = new About() { Font = Font }; about.ShowDialog(); }
+        private void About_Click(object sender, EventArgs e) { using var about = new About(); about.ShowDialog(); }
 
         private void MenuItem_Exit_Click(object sender, EventArgs e) => Application.Exit();
 
@@ -516,18 +516,20 @@ namespace FriishProduce
 
         private void ClearAllDatabases(object sender, EventArgs e)
         {
-            foreach (var item in Directory.EnumerateFiles(Paths.Databases))
-                if (Path.GetExtension(item).ToLower() == ".xml")
-                    File.Delete(item);
+            if (Directory.Exists(Paths.Databases))
+                foreach (var item in Directory.EnumerateFiles(Paths.Databases))
+                    if (Path.GetExtension(item).ToLower() == ".xml")
+                        File.Delete(item);
         }
 
         private void ResetConfig(object sender, EventArgs e)
         {
             if (MessageBox.Show(Program.Lang.Msg(11), MessageBox.Buttons.YesNo, MessageBox.Icons.Warning) == MessageBox.Result.Yes)
             {
-                foreach (var item in Directory.EnumerateFiles(Paths.Databases))
-                    if (Path.GetExtension(item).ToLower() == ".xml")
-                        File.Delete(item);
+                if (Directory.Exists(Paths.Databases))
+                    foreach (var item in Directory.EnumerateFiles(Paths.Databases))
+                        if (Path.GetExtension(item).ToLower() == ".xml")
+                            File.Delete(item);
 
                 Program.Config.Reset(false);
                 if (File.Exists(Paths.Config)) File.Delete(Paths.Config);
