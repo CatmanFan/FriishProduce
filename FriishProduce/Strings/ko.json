@@ -19,8 +19,8 @@
 			"b_save":							"저장(&S)",
 			"b_dont_save":						"저장하지 않음(&D)",
 			"do_not_show":						"다시 표시하지 않음",
-			"busy0":							"Please wait...",
-			"busy1":							"Exportation in progress...",
+			"busy0":							"잠시만 기다리세요...",
+			"busy1":							"내보내기 진행 중...",
 			
 			"by_default":						"기본값",
 			"disabled":							"비활성화",
@@ -31,7 +31,7 @@
 			"none":								"N/A",
 			"not_available":					"사용할 수 없음",
 
-			"region":							"System region",
+			"region":							"시스템 지역",
 			"region_j":							"일본",
 			"region_u":							"미국",
 			"region_e":							"유럽/호주",
@@ -96,15 +96,15 @@
 			"007":								"선택한 VC 매뉴얼 보관소가 잘못되었습니다.",
 			"008":								"업데이트가 있습니다.\nFriishProduce v{0}를 이제 다운로드할 수 있습니다.\n현재 v{1}을(를) 실행 중입니다.\n\n지금 깃허브에서 최신 버전을 다운로드하겠습니까?",
 			"009":								"현재 이미 최신 상태입니다.",
-			"010":								"Extract the opening.bnr (includes IMET header)?",
-			"011":								"This will restore all settings to factory defaults.\nAre you sure you want to continue?",
+			"010":								"opening.bnr을 추출합니까? (IMET 헤더 포함)",
+			"011":								"모든 설정이 공장 기본값으로 복원됩니다.\n계속하겠습니까?",
 			
 			"error":							"오류가 발생했습니다!",
 			"e_000":							"인터넷에 연결하지 못했습니다.\n메시지: {0}",
 			"e_001":							"이미지를 생성하지 못했습니다.\n이는 GDI+ 문제 때문일 수 있습니다.",
 			"e_002":							"WAD 내의 콘텐츠를 교체하지 못했습니다.",
 			"e_003":							"제공된 롬이 너무 큽니다 (크기 제한: {0} {1}).",
-			"e_004":							"Unable to modify the internal VC WAD's content options.\nInjection will continue as intended.",
+			"e_004":							"내부 VC WAD의 콘텐츠 옵션을 수정할 수 없습니다.\n 의도한 대로 주입이 계속됩니다.",
 			"e_005":							"다음 콘텐츠 옵션을 수정하지 못했음:\n{0}\nWAD로 내보내기는 의도한 대로 계속됩니다.",
 			"e_006":							"필요한 응용 프로그램 ({0})을 resources\\tools 하위 디렉터리에서 찾을 수 없습니다.",
 			"e_007":							"WAD 또는 ZIP을 만들지 못했습니다.",
@@ -115,16 +115,16 @@
 			"e_012":							"원래 경로에서 \"{0}\" 폴더를 찾을 수 없습니다. 삭제되었거나 이동되었을 수 있습니다.",
 			"e_013":							"주입 가능한 롬 진입점을 찾을 수 없습니다. 이는 이 WAD에 사용된 주입 방법이 아직 지원되지 않기 때문일 수 있습니다.",
 			"e_014":							"이 콘솔에 필요한 바이오스 파일을 찾을 수 없습니다.\n응용 프로그램 환경 설정에서 이 파일을 설정하세요.",
-			"e_015":							"Failed to create savedata TPL.",
-			"e_016":							"No Virtual Console manual was found in the provided WAD.",
-			"e_017":							"\"{0}\" is not a valid project file."
+			"e_015":							"저장된 데이터 TPL을 만드는 데 실패했습니다.",
+			"e_016":							"제공된 WAD에서 버추얼 콘솔 설명서를 찾을 수 없습니다.",
+			"e_017":							"\"{0}\" 유효한 프로젝트 파일이 아닙니다."
 		},
 
 		"html": {
-			"t_000":							"The name used for the channel's icon on the Wii Menu.\nA shortened version of 20 characters or less is recommended for longer titles.\n\n<b>Example</b><hr>Zelda: Ocarina",
-			"t_001":							"The full name of the software, as displayed on the banner preview.\n\n<b>Example</b><hr>The Legend of Zelda:\nOcarina of Time",
-			"t_002":							"The region to use for the channel banner and icon.\nThis can be useful if the console's name is different for your region or if you want to use a Japanese/Korean banner, for instance.\nIf the banner region is set to automatic, it will correspond with the WAD's region.",
-			"t_003":							"Change advanced emulator settings.",
+			"t_000":							"Wii 메뉴의 채널 아이콘에 사용되는 이름입니다.\n긴 제목에는 20자 이하의 축약된 이름을 사용하는 것이 좋습니다.\n\n<b>예</b><hr>젤다: 오카리나",
+			"t_001":							"배너 미리보기에 표시된 소프트웨어의 전체 이름입니다.\n\n<b>예</b><hr>젤다의 전설:\n시간의 오카리나",
+			"t_002":							"채널 배너와 아이콘에 사용할 지역입니다.\n이것은 콘솔 이름이 해당 지역과 다르거나 일본어/한국어 배너를 사용하려는 경우에 유용할 수 있습니다.\n배너 지역이 자동으로 설정되어 있으면 WAD 지역과 일치하게 됩니다.",
+			"t_003":							"고급 에뮬레이터 설정을 변경합니다.",
 			"t_004":							"이 옵션을 활성화하면 프로그램은 현재 선택된 파일과 같은 폴더 내에 있는 모든 파일을 주입될 소프트웨어의 일부로 취급합니다.<br />계속하기 전에 소프트웨어 파일이 별도의 폴더에 있는지 확인하세요.",
 		}
 	},
@@ -146,11 +146,11 @@
 			"game_scan":						"온라인으로 게임 데이터 검색",
 			"export":							"내보내기",
 			
-			"extract_wad_banner":				"Extract channel banner from WAD...",
-			"extract_wad_icon":					"Extract channel icon from WAD...",
-			"extract_wad_sound":				"Extract channel sound from WAD...",
-			"extract_wad_manual":				"Extract VC manual from WAD...",
-			"clear_database":					"Clear all ROM databases",
+			"extract_wad_banner":				"WAD에서 채널 배너 압축 해제...",
+			"extract_wad_icon":					"WAD에서 채널 아이콘 압축 해제...",
+			"extract_wad_sound":				"WAD에서 채널 사운드 압축 해제...",
+			"extract_wad_manual":				"WAD에서 VC 매뉴얼 압축 해제...",
+			"clear_database":					"모든 롬 데이터베이스 지우기",
 			"updater":							"업데이터",
 			"check_for_updates":				"업데이트 확인",
 			"auto_update":						"시작 시 자동으로 업데이트 확인",
@@ -180,7 +180,7 @@
 			"use_online_wad_enabled":           "다운로드 가능한 WAD 기능 활성화",
 			"use_online_wad_tip":				"이것은 이미 WAD 파일이 없어도 현재 데이터베이스에서 사용 가능한 모든 WAD를 검색하는 데 사용할 수 있습니다. 그러나 libWiiSharp의 NUS 클라이언트는 어떤 형태로든 VC WAD를 암호화 해제하는 것을 허용하지 않기 때문에 대신 웹의 다른 곳에 연결하여 거기에서 다운로드합니다. 이것의 합법성은 모호하므로 옵션을 비활성화하는 것이 좋습니다.",
 			"auto_fill_save_data":				"배너 및 채널 이름으로 저장 데이터 제목을 자동으로 연결",
-			"auto_prefill":						"Automatically prefill game data after opening"
+			"auto_prefill":						"게임 데이터를 오픈 후 자동으로 미리 채움"
 		},
 
 		"projectform": {
@@ -193,7 +193,7 @@
 			"wad_base":							"기반",
 			"import_wad":						"WAD 가져오기...",
 			"use_online_wad":					"...또는 다운로드 가능한 기반 사용",
-			"using_default_wad":				"Using blank WAD",
+			"using_default_wad":				"빈 WAD 사용",
 			"current_wad":						"현재 WAD:",
 			
 			"image":							"이미지",
@@ -214,7 +214,7 @@
 			"channel_metadata":					"채널 메타데이터",
 			"channel_name":						"짧은 이름:",
 			"title_id":							"타이틀 ID:",
-			"region":							"Channel region:",
+			"region":							"채널 지역:",
 			"video_mode":						"비디오 모드:",
 			"banner":							"채널 배너",
 			"banner_details":					"배너 상세정보",
@@ -233,7 +233,7 @@
 			"edit_save_data":					"저장데이터 타이틀 편집...",
 			"edit_save_data_1":					"타이틀:",
 			"edit_save_data_2":					"서브타이틀:",
-			"edit_save_data_max":				"Max. length per line: {0}",
+			"edit_save_data_max":				"줄당 최대 길이: {0}",
 			"fill_save_data":					"자동으로 연결",
 			
 			"manual_type":						"사용 설명서:",
@@ -258,7 +258,7 @@
 
 			"vertical_layout":					"수직 레이아웃",
 			"presets":							"사전 설정",
-			"preset_blank":						"Blank",
+			"preset_blank":						"공백",
 			"preset_load":						"로드",
 			
 			"up":								"위쪽",
@@ -305,7 +305,7 @@
 			"raster":							"BG 래스터 활성화",
 			"sprline":							"스프라이트 제한 활성화",
 			"y_offset":							"Y 옵셋",
-			"sgenable":							"Enable SuperGrafx functionality",
+			"sgenable":							"SuperGrafx 기능 활성화",
 			"region1":							"미국/유럽으로",
 			"padbutton0":						"2버튼 패드 사용",
 			"padbutton1":						"6버튼 패드 사용"
@@ -321,8 +321,8 @@
 
 		"adobe_flash": {
 			"vff_cache_size":					"VFF 캐시 크기 ({kilobytes}):",
-			"persistent_storage_total":			"Total persistant storage ({kilobytes}):",
-			"persistent_storage_per_movie":		"Persistant storage per SWF ({kilobytes}):",
+			"persistent_storage_total":			"총 영구적 저장소 ({kilobytes}):",
+			"persistent_storage_per_movie":		"SWF당 영구적 저장소 ({kilobytes}):",
 			"controls":							"컨트롤",
 			"mouse":							"마우스",
 			"qwerty_keyboard":					"쿼티 키보드",
@@ -335,9 +335,9 @@
 			"strap_reminder0":					"{disabled}",
 			"strap_reminder1":					"{enabled}",
 			"strap_reminder2":					"확장 컨트롤러 업음",
-			"swf_metadata":						"SWF metadata",
-			"content_domain":					"Content domain",
-			"background_color":					"Background color"
+			"swf_metadata":						"SWF 메타데이터",
+			"content_domain":					"콘텐츠 도메인",
+			"background_color":					"배경색"
 		},
 
 		"forwarder": {
