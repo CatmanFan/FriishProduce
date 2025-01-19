@@ -121,7 +121,7 @@
 		},
 
 		"html": {
-			"l_000":							"The Frodo emulator will now open.\n\nEnter the following command in the emulator:\n<b>LOAD\"*\",8,1</b><br>then, once the software is loaded, type <b>RUN</b> and press Enter.\n\nIf the BIOS freezes and there is no drive LED indicator, try changing the Frodo preferences and restarting this process.\n\nOnce the game loads, click Patch and Save Snapshot, and save the file to \"snap.fss\".\n\nAlternatively, you can save another copy with the same filename and directory as your ROM to use it for later.\n\n<i>Attempts left: <b>{0}</b></i>",
+			"l_000":							"The Frodo emulator will now open.\n\nEnter the following command in the emulator:\n<b>LOAD\"*\",8,1</b><br>Once the software is loaded, enter <b>RUN</b>. If the BIOS freezes and there is no drive LED indicator, try changing the Frodo preferences and restarting this process.\n\nOnce the game loads, click Patch and Save Snapshot, and save the file to \"snap.fss\".\n\nAlternatively, you can save another copy with the same filename and directory as your ROM to use it for later.\n\n<i>Attempts left: <b>{0}</b></i>",
 			"l_001":							"About SNES VC",
 			"l_002":							"About N64 VC",
 

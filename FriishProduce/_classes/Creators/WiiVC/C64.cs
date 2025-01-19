@@ -66,77 +66,114 @@ namespace FriishProduce.Injectors
             if (!File.Exists(frodo + "ik.fss"))
                 throw new Exception(Program.Lang.Msg(13, true));
 
-            // Check if copy of snapshot exists with ROM, if not, skip
+            // Prompt to use existing copy
             // ****************
-            if (File.Exists(Path.Combine(Path.GetDirectoryName(ROM.FilePath), Path.GetFileNameWithoutExtension(ROM.FilePath) + ".fss")))
-                File.WriteAllBytes(snapshot, File.ReadAllBytes(Path.Combine(Path.GetDirectoryName(ROM.FilePath), Path.GetFileNameWithoutExtension(ROM.FilePath) + ".fss")));
+            var method = MessageBox.Show(Program.Lang.String("rom_notice", "vc_c64"), null, new string[] { Program.Lang.String("rom_notice1", "vc_c64"), Program.Lang.String("rom_notice2", "vc_c64") });
 
-            // Copy ROM
-            // ****************
-            if (!File.Exists(snapshot))
+            switch (method)
             {
-                File.WriteAllBytes(target, data);
+                case MessageBox.Result.Button1:
+                    goto Frodo;
 
-                ProcessStartInfo info = new ProcessStartInfo()
-                {
-                    FileName = "cmd.exe",
-                    Verb = "runas",
-                    WindowStyle = ProcessWindowStyle.Hidden,
-                    CreateNoWindow = true,
-                    UseShellExecute = false,
-                    RedirectStandardInput = false,
-                    WorkingDirectory = frodo,
-                    Arguments = $"/c \"{frodo + "copy.bat"}\""
-                };
+                case MessageBox.Result.Button2:
+                    System.Windows.Forms.DialogResult result = System.Windows.Forms.DialogResult.None;
+                    string filename = null;
 
-                using (Process p = new())
-                {
-                    p.StartInfo = info;
-                    p.Start();
-                    p.WaitForExit();
-                }
+                    Program.MainForm.Invoke(((Action)(() => {
+                        using (System.Windows.Forms.OpenFileDialog open = new()
+                        {
+                            Filter = "FSS (*.fss)|*.fss",
+                            CheckFileExists = true,
+                            CheckPathExists = true,
+                            AddExtension = true,
+                            Multiselect = false,
+                            DefaultExt = ".fss",
+                            Title = Program.Lang.String("rom_notice2", "vc_c64")
+                        })
+                        {
+                            result = open.ShowDialog();
+                            filename = open.FileName;
+                        }
+                    })), null);
 
-                int tries = 5;
-
-                Load:
-                // Edit Frodo config to autoload said ROM
-                // ****************
-                string[] config = File.ReadAllLines(frodo + "Frodo.fpr");
-                for (int i = 0; i < config.Length; i++)
-                    if (config[i].StartsWith("DrivePath8")) config[i] = "DrivePath8 = rom.d64";
-                File.WriteAllLines(frodo + "Frodo.fpr", config);
-
-                // Run Frodo
-                // ****************
-                HTMLForm h = new(string.Format(Program.Lang.HTML(0, false), tries));
-                h.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-                h.TopMost = true;
-                h.ShowDialog();
-                h.Dispose();
-
-                Utils.Run(frodo + "Frodo.exe", frodo, null, true);
-
-                if (!File.Exists(snapshot))
-                {
-                    if (tries > 0)
+                    if (result == System.Windows.Forms.DialogResult.OK)
                     {
-                        tries -= 1;
-                        goto Load;
+                        File.WriteAllBytes(snapshot, File.ReadAllBytes(filename));
+                        goto End;
                     }
 
-                    else
-                        throw new Exception(Program.Lang.Msg(2, true));
-                }
-
-                using (Process p = new())
-                {
-                    p.StartInfo = info;
-                    p.StartInfo.Arguments = $"/c \"{frodo + "delete.bat"}\"";
-                    p.Start();
-                    p.WaitForExit();
-                }
+                    else goto Failed;
             }
 
+            Failed:
+            throw new Exception(Program.Lang.Msg(2, true));
+
+            Frodo:
+            // Copy ROM
+            // ****************
+            File.WriteAllBytes(target, data);
+
+            // Copy Frodo files
+            // ****************
+            ProcessStartInfo info = new ProcessStartInfo()
+            {
+                FileName = "cmd.exe",
+                Verb = "runas",
+                WindowStyle = ProcessWindowStyle.Hidden,
+                CreateNoWindow = true,
+                UseShellExecute = false,
+                RedirectStandardInput = false,
+                WorkingDirectory = frodo,
+                Arguments = $"/c \"{frodo + "copy.bat"}\""
+            };
+
+            using (Process p = new())
+            {
+                p.StartInfo = info;
+                p.Start();
+                p.WaitForExit();
+            }
+
+            int tries = 5;
+
+            Frodo_Load:
+            // Edit Frodo config to autoload said ROM
+            // ****************
+            string[] config = File.ReadAllLines(frodo + "Frodo.fpr");
+            for (int i = 0; i < config.Length; i++)
+                if (config[i].StartsWith("DrivePath8")) config[i] = "DrivePath8 = rom.d64";
+            File.WriteAllLines(frodo + "Frodo.fpr", config);
+
+            // Run Frodo
+            // ****************
+            HTMLForm h = new(string.Format(Program.Lang.HTML(0, false), tries));
+            h.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            h.TopMost = true;
+            h.ShowDialog();
+            h.Dispose();
+
+            Utils.Run(frodo + "Frodo.exe", frodo, null, true);
+
+            if (!File.Exists(snapshot))
+            {
+                tries -= 1;
+
+                if (tries > 0)
+                    goto Frodo_Load;
+
+                else
+                    goto Failed;
+            }
+
+            using (Process p = new())
+            {
+                p.StartInfo = info;
+                p.StartInfo.Arguments = $"/c \"{frodo + "delete.bat"}\"";
+                p.Start();
+                p.WaitForExit();
+            }
+
+            End:
             try { File.Delete(frodo + "ik.fss"); } catch { }
             try { File.Delete(Paths.WorkingFolder + "ik.fss"); } catch { }
             try { File.Delete(target); } catch { }
