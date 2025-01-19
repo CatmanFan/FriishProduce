@@ -32,6 +32,10 @@ namespace FriishProduce
                 tableLayoutPanel2.RowCount = 1;
                 label1.TextAlign = ContentAlignment.MiddleLeft;
                 label1.Padding = new(label1.Padding.Left, 0, 0, 0);
+            }
+            else
+            {
+                tableLayoutPanel1.Height += 2;
                 Height += 2;
             }
         }
