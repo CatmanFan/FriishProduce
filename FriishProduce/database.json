@@ -83,6 +83,13 @@
             "wad_titles": ["Rockman 5 - Blues no Wana!", "Mega Man 5"]
         },
 
+	{
+            "id": "00010001-464339__",
+            "region": [0],
+            "emu_ver": [0],
+            "titles": ["メタルスレイダーグローリー", "Metal Slader Glory"]
+        },
+
         {
             "id": "00010001-464337__",
             "region": [1],
@@ -111,13 +118,6 @@
             "region": [0, 1, 3, 6],
             "emu_ver": [0, 0, 0, 0],
             "titles": ["スーパーマリオブラザーズ３", "Super Mario Bros. 3", "Super Mario Bros. 3", "슈퍼 마리오브라더스 3"]
-        },
-
-	{
-            "id": "00010001-464339__",
-            "region": [0],
-            "emu_ver": [1],
-            "titles": ["メタルスレイダーグローリー", "Metal Slader Glory"]
         },
 
         {
