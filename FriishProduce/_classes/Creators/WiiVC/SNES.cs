@@ -164,7 +164,7 @@ namespace FriishProduce.Injectors
 
         protected override void ModifyEmulatorSettings()
         {
-            bool nomanual = CustomManual == null && !UseOrigManual;
+            bool nomanual = Manual == null;
 
             // Define arguments
             // ****************

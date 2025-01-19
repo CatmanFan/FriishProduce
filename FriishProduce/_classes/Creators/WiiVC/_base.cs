@@ -18,9 +18,9 @@ namespace FriishProduce
 
         protected ROM ROM { get; set; }
 
+        public string Manual { get; set; }
+        protected bool UsesOrigManual { get => Manual?.ToLower().StartsWith("orig") == true; }
         protected string origManual { get; set; }
-        public bool UseOrigManual { get; set; }
-        public string CustomManual { get; set; }
         /// <summary>
         /// Determines if we need the manual app index to be set and replaced.
         /// </summary>
@@ -83,7 +83,7 @@ namespace FriishProduce
             U8 emanual_U8 = U8.Load(input);
             bool valid = false;
 
-            if (File.Exists(CustomManual))
+            if (File.Exists(Manual))
             {
                 valid = true;
                 Directory.CreateDirectory(Paths.Manual);
@@ -93,7 +93,7 @@ namespace FriishProduce
                 try
                 {
                     FastZip zip = new();
-                    zip.ExtractZip(CustomManual, Paths.Manual, null);
+                    zip.ExtractZip(Manual, Paths.Manual, null);
                 }
                 catch
                 {
@@ -101,17 +101,17 @@ namespace FriishProduce
                 }
             }
 
-            else if (Directory.Exists(CustomManual))
+            else if (Directory.Exists(Manual))
             {
                 valid = true;
                 Directory.CreateDirectory(Paths.Manual);
 
                 // Copy all files and folders to target path
                 // ****************
-                foreach (string dir in Directory.GetDirectories(CustomManual, "*.*", SearchOption.AllDirectories))
-                    Directory.CreateDirectory(dir.Replace(Path.GetDirectoryName(CustomManual), Path.GetDirectoryName(Paths.Manual)));
+                foreach (string dir in Directory.GetDirectories(Manual, "*.*", SearchOption.AllDirectories))
+                    Directory.CreateDirectory(dir.Replace(Path.GetDirectoryName(Manual), Path.GetDirectoryName(Paths.Manual)));
 
-                foreach (string file in Directory.GetFiles(CustomManual, "*.*", SearchOption.AllDirectories))
+                foreach (string file in Directory.GetFiles(Manual, "*.*", SearchOption.AllDirectories))
                     File.Copy(file, file.Replace(Path.GetDirectoryName(file), Path.GetDirectoryName(Paths.Manual)), true);
             }
 
@@ -136,7 +136,7 @@ namespace FriishProduce
         #region --- Replace manual within CCF/U8 ---
         protected CCF ReplaceManual(CCF target)
         {
-            if (File.Exists(CustomManual) || Directory.Exists(CustomManual))
+            if (File.Exists(Manual) || Directory.Exists(Manual))
             {
                 // Get and read emanual
                 // ****************
@@ -151,14 +151,15 @@ namespace FriishProduce
                         );
                     }
             }
-            else CleanManual();
+
+            else if (Manual == null) CleanManual();
 
             return target;
         }
 
         protected void ReplaceManual(U8 target)
         {
-            if (File.Exists(CustomManual) || Directory.Exists(CustomManual))
+            if (File.Exists(Manual) || Directory.Exists(Manual))
             {
                 /* For reference: copied from "vcromclaim": https://github.com/JanErikGunnar/vcromclaim/blob/master/wiimetadata.py
 
@@ -233,13 +234,13 @@ namespace FriishProduce
 
                 catch
                 {
-                    CleanManual();
+                    Manual = "orig";
                     target.ReplaceFile(target.GetNodeIndex(origManual), backup);
                     MessageBox.Show(Program.Lang.Msg(10, true));
                 }
             }
 
-            else CleanManual();
+            if (Manual == null) CleanManual();
         }
         #endregion
 
@@ -248,8 +249,8 @@ namespace FriishProduce
         /// </summary>
         private void CleanManual()
         {
-            CustomManual = null;
-            if (UseOrigManual) return;
+            if (UsesOrigManual) return;
+            Manual = null;
 
             U8 Content4 = U8.Load(WAD.Contents[4]);
 
@@ -294,7 +295,7 @@ namespace FriishProduce
                 ManualContent.Dispose();
             }
 
-            if (CustomManual != null || MainContent != null)
+            if ((Manual != null && !UsesOrigManual) || MainContent != null)
                 Contents[mainContentIndex] = MainContent.ToByteArray();
             MainContent.Dispose();
 
@@ -359,8 +360,8 @@ namespace FriishProduce
             if (WAD != null) WAD.Dispose();
             if (Contents != null) Contents.Clear();
             ROM = null;
+            Manual = null;
             origManual = null;
-            UseOrigManual = false;
 
             mainContentIndex = 0;
             manualContentIndex = 0;

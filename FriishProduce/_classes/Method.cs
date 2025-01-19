@@ -195,8 +195,7 @@ namespace FriishProduce
 
                 // Set path to manual (if it exists) and load WAD
                 //// *******
-                VC.UseOrigManual = useOrigManual;
-                VC.CustomManual = (File.Exists(Manual) || Directory.Exists(Manual)) && !VC.UseOrigManual ? Manual : null;
+                VC.Manual = Manual;
 
                 // Actually inject everything
                 // *******

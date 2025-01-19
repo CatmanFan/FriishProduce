@@ -1628,7 +1628,7 @@ namespace FriishProduce
 
                     EmuVersion = emuVer,
 
-                    Manual = manual,
+                    // Manual = manual,
                     TitleID = _tID,
 
                     Out = targetFile,
@@ -1641,6 +1641,7 @@ namespace FriishProduce
                 {
                     m.IsMultifile = multifile_software.Checked;
                     m.WadVideoMode = video_modes.SelectedIndex;
+                    m.Manual = manual_type.SelectedIndex == 0 ? null : manual_type.SelectedIndex == 1 ? "orig" : manual;
                     emulator = injection_methods.SelectedItem.ToString();
                     device = forwarder_root_device.SelectedIndex == 1 ? Forwarder.Storages.USB : Forwarder.Storages.SD;
                 }));
