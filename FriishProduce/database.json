@@ -113,6 +113,13 @@
             "titles": ["スーパーマリオブラザーズ３", "Super Mario Bros. 3", "Super Mario Bros. 3", "슈퍼 마리오브라더스 3"]
         },
 
+	{
+            "id": "00010001-464339__",
+            "region": [0],
+            "emu_ver": [1],
+            "titles": ["メタルスレイダーグローリー", "Metal Slader Glory"]
+        },
+
         {
             "id": "00010001-464651__",
             "region": [1, 5],
