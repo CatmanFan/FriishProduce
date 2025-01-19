@@ -8,6 +8,8 @@ namespace FriishProduce.Injectors
 {
     public class PCE : InjectorWiiVC
     {
+        public bool IsDisc { get; set; } = false;
+
         protected override void Load()
         {
             needsMainDol = false;
@@ -51,6 +53,27 @@ namespace FriishProduce.Injectors
             // -----------------------
             // Replace original ROM
             // -----------------------
+
+            if (IsDisc)
+            {
+                File.Copy(ROM.FilePath, Paths.WorkingFolder + Path.GetFileName(ROM.FilePath));
+                if (Path.GetExtension(ROM.FilePath).ToLower() == ".cue")
+                {
+                    foreach (var item in Directory.EnumerateFiles(Path.GetDirectoryName(ROM.FilePath)))
+                    {
+                        if ((Path.GetExtension(item).ToLower() == ".bin" || Path.GetExtension(item).ToLower() == ".iso")
+                            && (Path.GetFileNameWithoutExtension(item).ToLower() == Path.GetFileNameWithoutExtension(ROM.FilePath).ToLower()))
+                            File.Copy(item, Paths.WorkingFolder + Path.GetFileName(item));
+                    }
+                }
+
+                /* Utils.Run
+                (
+                    FileDatas.Apps.bincuesplit,
+                    "bincuesplit.exe",
+                    "CDROM.cue hcd"
+                ); */
+            }
 
             // LZ77-compressed
             // ****************

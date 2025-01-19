@@ -142,6 +142,7 @@
 
 			"new_project":						"&New...",
 			"open_project":						"Open project...",
+			"open_recent":						"Open &recent",
 			"save_project":						"Save project",
 			"save_project_as":					"Save project as...",
 			"close_project":					"Close project",
@@ -157,6 +158,7 @@
 			"updater":							"Updater",
 			"check_for_updates":				"Check for updates",
 			"auto_update":						"Automatically check for updates on startup",
+			"clear_recent":						"&Clear this list",
 			"clear_database":					"&Clear all databases",
 			"reset_preferences":				"&Reset all preferences",
 			"exit":								"Exit",

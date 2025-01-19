@@ -135,6 +135,7 @@
 
 			"new_project":						"&Nuevo...",
 			"open_project":						"Abrir proyecto...",
+			"open_recent":						"Abrir &recientes",
 			"save_project":						"Guardar proyecto",
 			"save_project_as":					"Guardar proyecto como...",
 			"close_project":					"Cerrar proyecto",
@@ -150,6 +151,7 @@
 			"updater":							"Actualización",
 			"check_for_updates":				"Buscar ahora",
 			"auto_update":						"Buscar cuando se abra la aplicación",
+			"clear_recent":						"&Borrar esta lista",
 			"clear_database":					"Borrar los bases de datos internos",
 			"reset_preferences":				"&Restablecer los ajustes",
 			"exit":								"Salir",

@@ -138,6 +138,7 @@
 
 			"new_project":						"&Nouveau ...",
 			"open_project":						"Ouvrir un project ...",
+			"open_recent":						"Projets &récents",
 			"save_project":						"Enregistrer le projet",
 			"save_project_as":					"Enregistrer le projet sous ...",
 			"close_project":					"Fermer le projet",
@@ -153,6 +154,7 @@
 			"updater":							"Mise à jour",
 			"check_for_updates":				"Vérifier maintenant",
 			"auto_update":						"Vérifier automatiquement au démarrage de l'application",
+			"clear_recent":						"&Effacer cette liste",
 			"clear_database":					"&Effacer les bases de données internelles",
 			"reset_preferences":				"&Réinitialiser la configuration",
 			"exit":								"Quitter",

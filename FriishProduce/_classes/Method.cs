@@ -157,16 +157,14 @@ namespace FriishProduce
                         };
                         break;
 
-                    // PCE
+                    // PCE(CD)
                     // *******
                     case Platform.PCE:
-                        VC = new Injectors.PCE();
-                        break;
-
-                    // PCECD
-                    // *******
                     case Platform.PCECD:
-                        // VC = new Injectors.PCECD();
+                        VC = new Injectors.PCE()
+                        {
+                            IsDisc = Platform == Platform.PCECD
+                        };
                         break;
 
                     // NEOGEO

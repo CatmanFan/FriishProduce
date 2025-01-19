@@ -51,6 +51,7 @@ namespace FriishProduce
                 Platform.SNES => 80,
                 Platform.N64 => 100,
                 Platform.NEO or Platform.MSX => 64,
+                Platform.C64 => 34,
                 _ => 80
             };
 
@@ -61,13 +62,12 @@ namespace FriishProduce
                          || platform == Platform.SMS
                          || platform == Platform.SMD
                          || platform == Platform.PCE
-                         || platform == Platform.PCECD);
+                         || platform == Platform.PCECD
+                         || platform == Platform.C64);
 
             // Set textbox to use singleline when needed
             // ********
             label2.Enabled = subtitle.Enabled = IsMultiline;
-            if (!subtitle.Enabled)
-                subtitle.Clear();
 
             // The following applies to both NES/FC & SNES/SFC
             // ********
@@ -127,6 +127,9 @@ namespace FriishProduce
             {
                 ReplaceTitles(SourcedLines[0], SourcedLines[1]);
             }
+
+            if (!subtitle.Enabled)
+                subtitle.Clear();
         }
 
         public void ReplaceTitles(string line1, string line2)

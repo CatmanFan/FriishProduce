@@ -157,6 +157,8 @@ namespace FriishProduce
                 extract_wad_icon.Visible = true;
             }
 
+            RefreshRecent();
+
             foreach (JacksiroKe.MdiTabCtrl.TabPage tabPage in tabControl.TabPages)
                 if (tabPage.Form.GetType() == typeof(ProjectForm))
                     (tabPage.Form as ProjectForm).RefreshForm();
@@ -400,6 +402,99 @@ namespace FriishProduce
             {
                 OpenProject(BrowseProject.FileNames);
             }
+        }
+
+        public void RefreshRecent()
+        {
+            open_recent.MenuItems.Clear();
+
+            if (File.Exists(Program.Config.paths.recent_00)) open_recent.MenuItems.Add(new MenuItem(Path.GetFileName(Program.Config.paths.recent_00), OpenRecent));
+            if (File.Exists(Program.Config.paths.recent_01)) open_recent.MenuItems.Add(new MenuItem(Path.GetFileName(Program.Config.paths.recent_01), OpenRecent));
+            if (File.Exists(Program.Config.paths.recent_02)) open_recent.MenuItems.Add(new MenuItem(Path.GetFileName(Program.Config.paths.recent_02), OpenRecent));
+            if (File.Exists(Program.Config.paths.recent_03)) open_recent.MenuItems.Add(new MenuItem(Path.GetFileName(Program.Config.paths.recent_03), OpenRecent));
+            if (File.Exists(Program.Config.paths.recent_04)) open_recent.MenuItems.Add(new MenuItem(Path.GetFileName(Program.Config.paths.recent_04), OpenRecent));
+            if (File.Exists(Program.Config.paths.recent_05)) open_recent.MenuItems.Add(new MenuItem(Path.GetFileName(Program.Config.paths.recent_05), OpenRecent));
+            if (File.Exists(Program.Config.paths.recent_06)) open_recent.MenuItems.Add(new MenuItem(Path.GetFileName(Program.Config.paths.recent_06), OpenRecent));
+            if (File.Exists(Program.Config.paths.recent_07)) open_recent.MenuItems.Add(new MenuItem(Path.GetFileName(Program.Config.paths.recent_07), OpenRecent));
+            if (File.Exists(Program.Config.paths.recent_08)) open_recent.MenuItems.Add(new MenuItem(Path.GetFileName(Program.Config.paths.recent_08), OpenRecent));
+            if (File.Exists(Program.Config.paths.recent_09)) open_recent.MenuItems.Add(new MenuItem(Path.GetFileName(Program.Config.paths.recent_09), OpenRecent));
+
+            if (open_recent.MenuItems?.Count > 0)
+            {
+                open_recent.MenuItems.Add(new MenuItem("-", OpenRecent));
+                open_recent.MenuItems.Add(new MenuItem(Program.Lang.String("clear_recent", Name), ClearRecent));
+            }
+
+            open_recent.Enabled = open_recent.MenuItems?.Count > 0;
+        }
+
+        private void ClearRecent(object sender, EventArgs e)
+        {
+            Program.Config.paths.recent_00 = null;
+            Program.Config.paths.recent_01 = null;
+            Program.Config.paths.recent_02 = null;
+            Program.Config.paths.recent_03 = null;
+            Program.Config.paths.recent_04 = null;
+            Program.Config.paths.recent_05 = null;
+            Program.Config.paths.recent_06 = null;
+            Program.Config.paths.recent_07 = null;
+            Program.Config.paths.recent_08 = null;
+            Program.Config.paths.recent_09 = null;
+
+            RefreshRecent();
+        }
+
+        private void OpenRecent(object sender, EventArgs e)
+        {
+            var control = sender as Control;
+            var list = open_recent.MenuItems.OfType<MenuItem>().ToArray();
+
+            for (int i = 0; i < list.Length; i++)
+                if (control?.Text == list[i].Text && string.IsNullOrWhiteSpace(list[i].Text))
+                {
+                    switch (i)
+                    {
+                        case 0:
+                            OpenProject(new string[] { Program.Config.paths.recent_00 });
+                            break;
+
+                        case 1:
+                            OpenProject(new string[] { Program.Config.paths.recent_01 });
+                            break;
+
+                        case 2:
+                            OpenProject(new string[] { Program.Config.paths.recent_02 });
+                            break;
+
+                        case 3:
+                            OpenProject(new string[] { Program.Config.paths.recent_03 });
+                            break;
+
+                        case 4:
+                            OpenProject(new string[] { Program.Config.paths.recent_04 });
+                            break;
+
+                        case 5:
+                            OpenProject(new string[] { Program.Config.paths.recent_05 });
+                            break;
+
+                        case 6:
+                            OpenProject(new string[] { Program.Config.paths.recent_06 });
+                            break;
+
+                        case 7:
+                            OpenProject(new string[] { Program.Config.paths.recent_07 });
+                            break;
+
+                        case 8:
+                            OpenProject(new string[] { Program.Config.paths.recent_08 });
+                            break;
+
+                        case 9:
+                            OpenProject(new string[] { Program.Config.paths.recent_09 });
+                            break;
+                    }
+                }
         }
 
         private void OpenProject(string[] files)

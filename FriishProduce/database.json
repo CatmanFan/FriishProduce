@@ -435,6 +435,16 @@
         },
     ],
 
+    "pcecd": [
+        {
+            "id": "00010001-514150__",
+            "region": [0, 2, 4],
+            "emu_ver": [0, 0, 0],
+            "titles": ["悪魔城ドラキュラX 血の輪廻", "Castlevania: Rondo of Blood"],
+            "wad_titles": ["Akumajou Dracula X - Chi no Rondo", "Castlevania - Rondo of Blood"],
+        },
+    ],
+
     "neo": [
         {
             "id": "00010001-454147__",

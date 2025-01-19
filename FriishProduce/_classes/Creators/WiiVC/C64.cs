@@ -103,6 +103,9 @@ namespace FriishProduce.Injectors
                     }
 
                     else goto Failed;
+
+                default:
+                    goto Failed;
             }
 
             Failed:
@@ -117,14 +120,12 @@ namespace FriishProduce.Injectors
             // ****************
             ProcessStartInfo info = new ProcessStartInfo()
             {
-                FileName = "cmd.exe",
+                FileName = frodo + "copy.bat",
                 Verb = "runas",
-                WindowStyle = ProcessWindowStyle.Hidden,
+                WindowStyle = ProcessWindowStyle.Minimized,
                 CreateNoWindow = true,
-                UseShellExecute = false,
-                RedirectStandardInput = false,
-                WorkingDirectory = frodo,
-                Arguments = $"/c \"{frodo + "copy.bat"}\""
+                UseShellExecute = true,
+                RedirectStandardInput = true
             };
 
             using (Process p = new())
@@ -167,8 +168,9 @@ namespace FriishProduce.Injectors
 
             using (Process p = new())
             {
+                info.FileName = frodo + "copy.bat";
+
                 p.StartInfo = info;
-                p.StartInfo.Arguments = $"/c \"{frodo + "delete.bat"}\"";
                 p.Start();
                 p.WaitForExit();
             }

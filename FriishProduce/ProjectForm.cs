@@ -354,6 +354,27 @@ namespace FriishProduce
 
         // -----------------------------------
 
+        private void SetRecentProjects(string path)
+        {
+            if (path != Program.Config.paths.recent_00)
+            {
+                Program.Config.paths.recent_09 = Program.Config.paths.recent_08;
+                Program.Config.paths.recent_08 = Program.Config.paths.recent_07;
+                Program.Config.paths.recent_07 = Program.Config.paths.recent_06;
+                Program.Config.paths.recent_06 = Program.Config.paths.recent_05;
+                Program.Config.paths.recent_05 = Program.Config.paths.recent_04;
+                Program.Config.paths.recent_04 = Program.Config.paths.recent_03;
+                Program.Config.paths.recent_03 = Program.Config.paths.recent_02;
+                Program.Config.paths.recent_02 = Program.Config.paths.recent_01;
+                Program.Config.paths.recent_01 = Program.Config.paths.recent_00;
+                Program.Config.paths.recent_00 = path;
+
+                Program.Config.Save();
+
+                Program.MainForm.RefreshRecent();
+            }
+        }
+
         public void SaveProject(string path)
         {
             ProjectPath = path;
@@ -404,6 +425,8 @@ namespace FriishProduce
 
             IsModified = false;
             _isMint = true;
+
+            SetRecentProjects(path);
         }
 
         public void RefreshForm()
@@ -780,6 +803,8 @@ namespace FriishProduce
             bool loadProject = project != null;
             if (loadProject)
             {
+                SetRecentProjects(project.ProjectPath);
+
                 ProjectPath = project.ProjectPath;
 
                 video_modes.SelectedIndex = project.VideoMode;
@@ -809,7 +834,7 @@ namespace FriishProduce
                 banner_form.released.Value = project.BannerYear;
                 banner_form.players.Value = project.BannerPlayers;
                 savedata.title.Text = project.SaveDataTitle[0];
-                savedata.subtitle.Text = project.SaveDataTitle.Length > 1 ? project.SaveDataTitle[1] : null;
+                savedata.subtitle.Text = project.SaveDataTitle.Length > 1 && savedata.subtitle.Enabled ? project.SaveDataTitle[1] : null;
                 title_id_upper.Text = project.TitleID;
 
                 regions.SelectedIndex = project.WADRegion;
@@ -1035,6 +1060,7 @@ namespace FriishProduce
 
             if (!e.Cancel)
             {
+                if (rom != null) rom.Dispose();
                 rom = null;
                 channels = null;
 

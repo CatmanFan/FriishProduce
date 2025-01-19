@@ -85,6 +85,7 @@ namespace FriishProduce
             this.about = new System.Windows.Forms.MenuItem();
             this.tabControl = new JacksiroKe.MdiTabCtrl.TabControl();
             this.Tip = new TheArtOfDev.HtmlRenderer.WinForms.HtmlToolTip();
+            this.open_recent = new System.Windows.Forms.MenuItem();
             this.mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             this.toolStrip.SuspendLayout();
@@ -240,6 +241,7 @@ namespace FriishProduce
             this.menuItem1.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.new_project,
             this.open_project,
+            this.open_recent,
             this.save_project,
             this.save_project_as,
             this.menuItem5,
@@ -263,25 +265,25 @@ namespace FriishProduce
             // save_project
             // 
             resources.ApplyResources(this.save_project, "save_project");
-            this.save_project.Index = 2;
+            this.save_project.Index = 3;
             this.save_project.Tag = "save_project";
             this.save_project.Click += new System.EventHandler(this.Save_Click);
             // 
             // save_project_as
             // 
             resources.ApplyResources(this.save_project_as, "save_project_as");
-            this.save_project_as.Index = 3;
+            this.save_project_as.Index = 4;
             this.save_project_as.Tag = "save_project_as";
             this.save_project_as.Click += new System.EventHandler(this.SaveAs_Click);
             // 
             // menuItem5
             // 
-            this.menuItem5.Index = 4;
+            this.menuItem5.Index = 5;
             resources.ApplyResources(this.menuItem5, "menuItem5");
             // 
             // exit
             // 
-            this.exit.Index = 5;
+            this.exit.Index = 6;
             resources.ApplyResources(this.exit, "exit");
             this.exit.Tag = "exit";
             this.exit.Click += new System.EventHandler(this.MenuItem_Exit_Click);
@@ -523,6 +525,12 @@ namespace FriishProduce
             this.Tip.TooltipCssClass = "htmltooltip";
             this.Tip.UseGdiPlusTextRendering = true;
             // 
+            // open_recent
+            // 
+            this.open_recent.Index = 2;
+            this.open_recent.Tag = "open_recent";
+            resources.ApplyResources(this.open_recent, "open_recent");
+            // 
             // MainForm
             // 
             this.AllowDrop = true;
@@ -607,6 +615,7 @@ namespace FriishProduce
         private System.Windows.Forms.MenuItem menuItem11;
         private System.Windows.Forms.MenuItem reset_preferences;
         public TheArtOfDev.HtmlRenderer.WinForms.HtmlToolTip Tip;
+        private System.Windows.Forms.MenuItem open_recent;
     }
 }
 

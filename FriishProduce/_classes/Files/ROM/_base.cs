@@ -40,6 +40,13 @@ namespace FriishProduce
                         ZIP = null;
                     }
                 }
+
+                else
+                {
+                    _rom = null;
+                    origData = null;
+                    ZIP = null;
+                }
             }
         }
 
@@ -142,10 +149,8 @@ namespace FriishProduce
 
         public void Dispose()
         {
-            _rom = null;
-            origData = null;
+            FilePath = null;
             patched = null;
-            ZIP = null;
             MaxSize = -1;
         }
     }

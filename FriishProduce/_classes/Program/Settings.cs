@@ -145,7 +145,7 @@ namespace FriishProduce
             public int image_interpolation { get; set; } = 2;
             public bool image_fit_aspect_ratio { get; set; } = false;
             public string default_target_filename { get; set; } = "FULLNAME";
-            public string default_export_filename { get; set; } = "FULLNAME (REGION) (PLATFORM) [TITLEID]";
+            public string default_export_filename { get; set; } = "[PLATFORM] FULLNAME (REGION) [TITLEID]";
             public int default_banner_region { get; set; } = 0;
             public int default_injection_method_nes { get; set; } = 0;
             public int default_injection_method_snes { get; set; } = 0;
@@ -161,6 +161,17 @@ namespace FriishProduce
             public string bios_gb { get; set; }
             public string bios_gbc { get; set; }
             public string bios_gba { get; set; }
+
+            public string recent_00 { get; set; }
+            public string recent_01 { get; set; }
+            public string recent_02 { get; set; }
+            public string recent_03 { get; set; }
+            public string recent_04 { get; set; }
+            public string recent_05 { get; set; }
+            public string recent_06 { get; set; }
+            public string recent_07 { get; set; }
+            public string recent_08 { get; set; }
+            public string recent_09 { get; set; }
         }
 
         public class NES

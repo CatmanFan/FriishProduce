@@ -545,6 +545,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\apps\tg16inject1.exe" />
+    <None Include="Resources\apps\bincuesplit1.exe" />
+    <None Include="Resources\apps\tg16inject.exe" />
+    <None Include="Resources\apps\bincuesplit.exe" />
     <None Include="Resources\icons\c64.png" />
     <None Include="Resources\apps\c1541.exe" />
     <None Include="Resources\apps\wwcxtool.exe" />
