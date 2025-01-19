@@ -42,9 +42,9 @@ namespace FriishProduce
             this.bottomPanel2.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.bottomPanel2.Controls.Add(this.bottomPanel1);
             this.bottomPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.bottomPanel2.Location = new System.Drawing.Point(0, 330);
+            this.bottomPanel2.Location = new System.Drawing.Point(0, 274);
             this.bottomPanel2.Name = "bottomPanel2";
-            this.bottomPanel2.Size = new System.Drawing.Size(444, 42);
+            this.bottomPanel2.Size = new System.Drawing.Size(374, 42);
             this.bottomPanel2.TabIndex = 26;
             // 
             // bottomPanel1
@@ -54,7 +54,7 @@ namespace FriishProduce
             this.bottomPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.bottomPanel1.Location = new System.Drawing.Point(0, 1);
             this.bottomPanel1.Name = "bottomPanel1";
-            this.bottomPanel1.Size = new System.Drawing.Size(444, 41);
+            this.bottomPanel1.Size = new System.Drawing.Size(374, 41);
             this.bottomPanel1.TabIndex = 3;
             // 
             // b_ok
@@ -63,7 +63,7 @@ namespace FriishProduce
             this.b_ok.AutoSize = true;
             this.b_ok.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.b_ok.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.b_ok.Location = new System.Drawing.Point(310, 9);
+            this.b_ok.Location = new System.Drawing.Point(240, 9);
             this.b_ok.Name = "b_ok";
             this.b_ok.Size = new System.Drawing.Size(122, 23);
             this.b_ok.TabIndex = 24;
@@ -73,14 +73,15 @@ namespace FriishProduce
             // htmlPanel1
             // 
             this.htmlPanel1.AutoScroll = true;
-            this.htmlPanel1.AutoScrollMinSize = new System.Drawing.Size(420, 17);
+            this.htmlPanel1.AutoScrollMinSize = new System.Drawing.Size(350, 15);
             this.htmlPanel1.BackColor = System.Drawing.SystemColors.Control;
-            this.htmlPanel1.BaseStylesheet = "div { font-size: 95% !important; }";
+            this.htmlPanel1.BaseStylesheet = "div { font-size: 12px !important; }";
             this.htmlPanel1.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.htmlPanel1.IsContextMenuEnabled = false;
             this.htmlPanel1.IsSelectionEnabled = false;
             this.htmlPanel1.Location = new System.Drawing.Point(12, 12);
             this.htmlPanel1.Name = "htmlPanel1";
-            this.htmlPanel1.Size = new System.Drawing.Size(420, 306);
+            this.htmlPanel1.Size = new System.Drawing.Size(350, 250);
             this.htmlPanel1.TabIndex = 27;
             this.htmlPanel1.Text = "<div>Not implemented</div>";
             this.htmlPanel1.UseSystemCursors = true;
@@ -89,7 +90,7 @@ namespace FriishProduce
             // 
             this.AcceptButton = this.b_ok;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
-            this.ClientSize = new System.Drawing.Size(444, 372);
+            this.ClientSize = new System.Drawing.Size(374, 316);
             this.ControlBox = false;
             this.Controls.Add(this.htmlPanel1);
             this.Controls.Add(this.bottomPanel2);

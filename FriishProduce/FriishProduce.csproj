@@ -299,7 +299,9 @@
       <DependentUpon>Wait.cs</DependentUpon>
     </Compile>
     <Compile Include="_classes\BIOS.cs" />
+    <Compile Include="_classes\Creators\WiiVC\C64.cs" />
     <Compile Include="_classes\Databases\LibRetro.cs" />
+    <Compile Include="_classes\Files\ROM\C64.cs" />
     <Compile Include="_classes\Files\ROM\RPGM.cs" />
     <Compile Include="_classes\Helpers\BannerSchemes.cs" />
     <Compile Include="_classes\Files\CCF.cs" />
@@ -543,6 +545,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\icons\c64.png" />
+    <None Include="Resources\apps\c1541.exe" />
     <None Include="Resources\apps\wwcxtool.exe" />
     <None Include="Resources\apps\sns_boost.exe" />
     <None Include="Resources\loading.gif" />

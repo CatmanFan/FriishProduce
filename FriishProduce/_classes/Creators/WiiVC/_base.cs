@@ -21,14 +21,22 @@ namespace FriishProduce
         protected string origManual { get; set; }
         public bool UseOrigManual { get; set; }
         public string CustomManual { get; set; }
+        /// <summary>
+        /// Determines if we need the manual app index to be set and replaced.
+        /// </summary>
         protected bool needsManualLoaded { get; set; }
-
+        /// <summary>
+        /// Determines if the 01.app is to be modified.
+        /// </summary>
         protected bool needsMainDol { get; set; }
+        /// <summary>
+        /// The contents of the WAD.
+        /// </summary>
         protected List<byte[]> Contents { get; set; }
-
-        /// This is the main U8 archive which contains the emanual, ROM, savebanner, or other needed files, stored in either 00000005.app, 00000006.app or 00000007.app (depending on the console).
+        /// <summary>
+        /// This is the main U8 archive which contains the emanual, ROM, savebanner, etc., stored in either 05.app, 06.app or 07.app (depending on the VC type).
         /// It needs to be set manually for each console (normally, it is the 5th index)
-
+        /// </summary>
         protected int mainContentIndex { get; set; }
         protected U8 MainContent { get; set; }
 

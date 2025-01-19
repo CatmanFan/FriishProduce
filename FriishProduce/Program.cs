@@ -76,6 +76,11 @@ namespace FriishProduce
                     Directory.Delete(item, true);
             }
             catch { }
+
+            try { File.Delete(@"C:\1541 ROM"); } catch { }
+            try { File.Delete(@"C:\Basic ROM"); } catch { }
+            try { File.Delete(@"C:\Char ROM"); } catch { }
+            try { File.Delete(@"C:\Kernal ROM"); } catch { }
         }
     }
 

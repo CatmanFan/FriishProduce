@@ -675,6 +675,12 @@ namespace FriishProduce
                     rom = new ROM_NEO();
                     break;
 
+                case Platform.C64:
+                    TIDCode = "C";
+                    rom = new ROM_C64();
+                    showPatch = false;
+                    break;
+
                 case Platform.MSX:
                     TIDCode = "X";
                     rom = new ROM_MSX();
@@ -1502,7 +1508,7 @@ namespace FriishProduce
         /// </summary>
         /// <param name="platform"></param>
         /// <returns></returns>
-        protected (string Name, string Serial, string Year, string Players, string Image) GetGameData(Platform platform, string path)
+        protected (string Name, string Serial, string Year, string Players, string Image, bool IsComplete) GetGameData(Platform platform, string path)
         {
             bool isDisc = platform == Platform.PCECD || platform == Platform.GCN || platform == Platform.SMCD || platform == Platform.PSX;
             if (isDisc)
@@ -1513,7 +1519,7 @@ namespace FriishProduce
                             path = item;
 
                 if (Path.GetExtension(path).ToLower() != ".bin")
-                    return (null, null, null, null, null);
+                    return (null, null, null, null, null, false);
             }
 
             var result = Databases.LibRetro.Read(path, platform);
@@ -1535,10 +1541,10 @@ namespace FriishProduce
 
             try
             {
-                (string Name, string Serial, string Year, string Players, string Image) gameData = (null, null, null, null, null);
+                (string Name, string Serial, string Year, string Players, string Image, bool IsComplete) gameData = (null, null, null, null, null, false);
                 await Task.Run(() => { gameData = GetGameData(targetPlatform, rom.FilePath); });
 
-                bool retrieved = imageOnly ? !string.IsNullOrEmpty(gameData.Image) : gameData != (null, null, null, null, null);
+                bool retrieved = imageOnly ? !string.IsNullOrEmpty(gameData.Image) : gameData != (null, null, null, null, null, false);
 
                 if (retrieved)
                 {
@@ -1573,7 +1579,7 @@ namespace FriishProduce
                 Wait(false);
 
                 // Show message if partially failed to retrieve data
-                if (retrieved && (string.IsNullOrEmpty(gameData.Name) || string.IsNullOrEmpty(gameData.Players) || string.IsNullOrEmpty(gameData.Year) || string.IsNullOrEmpty(gameData.Image)) && !imageOnly)
+                if (retrieved && !gameData.IsComplete && !imageOnly)
                     MessageBox.Show(Program.Lang.Msg(4));
                 else if (!retrieved) SystemSounds.Beep.Play();
             }
@@ -1660,6 +1666,7 @@ namespace FriishProduce
                     case Platform.PCE:
                     case Platform.PCECD:
                     case Platform.NEO:
+                    case Platform.C64:
                     case Platform.MSX:
                         if (isVirtualConsole)
                             m.Inject();
@@ -2035,12 +2042,12 @@ namespace FriishProduce
 
                     case Platform.SNES:
                         contentOptionsForm = new Options_VC_SNES();
-                        htmlForm = new(Program.Lang.HTML(0, false), injection_methods.SelectedItem.ToString());
+                        htmlForm = new(Program.Lang.HTML(1, false), injection_methods.SelectedItem.ToString());
                         break;
 
                     case Platform.N64:
                         contentOptionsForm = new Options_VC_N64() { EmuType = inWadRegion == Region.Korea ? 3 : emuVer };
-                        htmlForm = new(Program.Lang.HTML(1, false), injection_methods.SelectedItem.ToString());
+                        htmlForm = new(Program.Lang.HTML(2, false), injection_methods.SelectedItem.ToString());
                         break;
 
                     case Platform.SMS:
@@ -2132,9 +2139,7 @@ namespace FriishProduce
             }
 
             showSaveData = isVirtualConsole || targetPlatform == Platform.Flash;
-            download_image.Enabled = targetPlatform != Platform.C64
-                                  && targetPlatform != Platform.Flash
-                                  && targetPlatform != Platform.RPGM;
+            download_image.Enabled = Databases.LibRetro.Exists(targetPlatform);
 
             bool hasHelp = !string.IsNullOrWhiteSpace(htmlForm?.FormText);
             injection_method_help.Visible = hasHelp && !IsEmpty;

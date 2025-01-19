@@ -13,34 +13,35 @@ namespace FriishProduce.Databases
         #region -- PRIVATE VARIABLES --
         private static Platform platform = Platform.NES;
 
+        private static Dictionary<string, Platform> list = new()
+        {
+            { "Nintendo - Nintendo Entertainment System", Platform.NES },
+            { "Nintendo - Super Nintendo Entertainment System", Platform.SNES },
+            { "Nintendo - Nintendo 64", Platform.N64 },
+            { "Sega - Master System - Mark III", Platform.SMS },
+            { "Sega - Mega Drive - Genesis", Platform.SMD },
+            { "NEC - PC Engine - TurboGrafx 16", Platform.PCE },
+            { "NEC - PC Engine SuperGrafx", Platform.PCE },
+            { "NEC - PC Engine CD - TurboGrafx-CD", Platform.PCECD },
+            { "MAME", Platform.NEO },
+            { "Commodore - 64", Platform.C64 },
+            { "Microsoft - MSX", Platform.MSX },
+            { "Microsoft - MSX2", Platform.MSX },
+            { "Microsoft - MSX 2", Platform.MSX },
+            { "Nintendo - Game Boy", Platform.GB },
+            { "Nintendo - Game Boy Color", Platform.GBC },
+            { "Nintendo - Game Boy Advance", Platform.GBA },
+            { "Nintendo - GameCube", Platform.GCN },
+            { "Sega - 32X", Platform.S32X },
+            { "Sega - Mega-CD - Sega CD", Platform.SMCD },
+            { "Sony - PlayStation", Platform.PSX },
+        };
+
         private static string db_name
         {
             get
             {
-                Dictionary<string, Platform> names = new()
-                {
-                    { "Nintendo - Nintendo Entertainment System", Platform.NES },
-                    { "Nintendo - Super Nintendo Entertainment System", Platform.SNES },
-                    { "Nintendo - Nintendo 64", Platform.N64 },
-                    { "Sega - Master System - Mark III", Platform.SMS },
-                    { "Sega - Mega Drive - Genesis", Platform.SMD },
-                    { "NEC - PC Engine - TurboGrafx 16", Platform.PCE },
-                    { "NEC - PC Engine SuperGrafx", Platform.PCE },
-                    { "NEC - PC Engine CD - TurboGrafx-CD", Platform.PCECD },
-                    { "MAME", Platform.NEO },
-                    { "Microsoft - MSX", Platform.MSX },
-                    { "Microsoft - MSX2", Platform.MSX },
-                    { "Microsoft - MSX 2", Platform.MSX },
-                    { "Nintendo - Game Boy", Platform.GB },
-                    { "Nintendo - Game Boy Color", Platform.GBC },
-                    { "Nintendo - Game Boy Advance", Platform.GBA },
-                    { "Nintendo - GameCube", Platform.GCN },
-                    { "Sega - 32X", Platform.S32X },
-                    { "Sega - Mega-CD - Sega CD", Platform.SMCD },
-                    { "Sony - PlayStation", Platform.PSX },
-                };
-
-                foreach (KeyValuePair<string, Platform> item in names)
+                foreach (KeyValuePair<string, Platform> item in list)
                 {
                     if (item.Value == platform)
                     {
@@ -71,6 +72,10 @@ namespace FriishProduce.Databases
                         folders = new string[0];
                         break;
 
+                    case Platform.C64:
+                        folders = new string[] { "no-intro" };
+                        break;
+
                     case Platform.NEO:
                         folders = new string[] { "mame-split", "maxusers", "releaseyear" };
                         break;
@@ -91,6 +96,19 @@ namespace FriishProduce.Databases
 
         private static string db_crc(string input) => input.Replace("-", "").Trim().ToUpper().Substring(0, 8);
         #endregion
+
+        public static bool Exists(Platform In)
+        {
+            foreach (KeyValuePair<string, Platform> item in list)
+            {
+                if (item.Value == platform)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
 
         public static DataTable Parse(Platform In)
         {
@@ -242,7 +260,7 @@ namespace FriishProduce.Databases
             return dt;
         }
 
-        public static (string Name, string Serial, string Year, string Players, string Image) Read(string file, Platform platform)
+        public static (string Name, string Serial, string Year, string Players, string Image, bool Complete) Read(string file, Platform platform)
         {
             // Get current CRC32 hash of file and append to query
             // **********************
@@ -286,11 +304,16 @@ namespace FriishProduce.Databases
                         catch { rows[0][5] = null; }
                     }
 
-                    return (rows[0][1]?.ToString(), rows[0][2]?.ToString(), rows[0][3]?.ToString(), rows[0][4]?.ToString(), rows[0][5]?.ToString());
+                    (string name, string serial, string year, string players, string image) result = (rows[0][1]?.ToString(), rows[0][2]?.ToString(), rows[0][3]?.ToString(), rows[0][4]?.ToString(), rows[0][5]?.ToString());
+
+                    bool complete = !string.IsNullOrEmpty(result.name) && !string.IsNullOrEmpty(result.players) && !string.IsNullOrEmpty(result.year) && !string.IsNullOrEmpty(result.image);
+                    if (platform == Platform.C64) complete = !string.IsNullOrEmpty(result.name) && !string.IsNullOrEmpty(result.image);
+
+                    return (result.name, result.serial, result.year, result.players, result.image, complete);
                 }
             }
 
-            return (null, null, null, null, null);
+            return (null, null, null, null, null, false);
         }
     }
 }

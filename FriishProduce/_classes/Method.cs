@@ -177,6 +177,12 @@ namespace FriishProduce
 
                     // MSX
                     // *******
+                    case Platform.C64:
+                        VC = new Injectors.C64();
+                        break;
+
+                    // MSX
+                    // *******
                     case Platform.MSX:
                         VC = new Injectors.MSX();
                         break;

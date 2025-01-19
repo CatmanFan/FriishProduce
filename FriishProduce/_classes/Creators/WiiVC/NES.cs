@@ -238,7 +238,6 @@ namespace FriishProduce.Injectors
             // In both aforementioned WADs the savetitle text must not be bigger than what the content1 can contain.
             // If trying to increase or decrease the filesize it breaks the WAD
 
-            // Text addition format: UTF-16 (Big Endian)
             if (end != 0)
             {
                 start = saveTPL_offsets[1] > 100 ? saveTPL_offsets[1] : end - 40;
