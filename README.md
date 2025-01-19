@@ -29,6 +29,7 @@ This injector bypasses other third-party assets (such as Common-Key.bin, HowardC
     * SEGA Mega Drive / Genesis
     * NEC TurboGrafx-16 / PC Engine (HuCARD)
     * SNK NEO-GEO
+    * Commodore 64
     * Microsoft MSX / MSX2
   * Others:
     * Adobe Flash
@@ -41,7 +42,6 @@ Please check the **[wiki](https://catmanfan.github.io/FriishProduce/)** for a tu
 ---
 
 ## To-Do
-- [X] Fix bug on NES VC, in which palette is not being modified.
 - [ ] Restructuring, trimming features and cleaning code
 - [ ] Check that everything is working properly and whether more features should be added before v1.6 release
 
@@ -49,7 +49,6 @@ Please check the **[wiki](https://catmanfan.github.io/FriishProduce/)** for a tu
 - [ ] Merge separate components of ProjectForm into panels / Create UserControl for content options ?
 
 ### Future platforms
-* Commodore 64 (needs [Custom Frodo](https://gbatemp.net/threads/custom-frodo-for-c64-vc-injection.102356/))
 * TurboGrafx-16 CD (needs several programs to convert ISO to injectable format)
 
 ---
