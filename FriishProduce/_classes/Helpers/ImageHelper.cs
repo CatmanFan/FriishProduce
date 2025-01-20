@@ -30,7 +30,9 @@ namespace FriishProduce
                 // --------------------------------------------------
                 // SAVEICON : DEFINE POSITION AND SIZE VARIABLES
                 // --------------------------------------------------
-                return platform == Platform.SMS || platform == Platform.SMD ? (8, 8, 69, 48) : (10, 10, 58, 44);
+                return platform == Platform.SMS || platform == Platform.SMD ? (8, 8, 69, 48)
+                     : platform == Platform.C64 ? (0, 0, 85, 64)
+                     : (10, 10, 58, 44);
             }
         }
         private (int X, int Y, int width, int height) saveIconS
@@ -44,6 +46,7 @@ namespace FriishProduce
                 {
                     Platform.SMS or Platform.SMD => (2, new Random().Next(8, 9), 44, 31),
                     Platform.PCE => (6, 9, 36, 30),
+                    Platform.C64 => (0, 0, 48, 48),
                     _ => (4, 9, 40, 30)
                 };
 
@@ -251,8 +254,6 @@ namespace FriishProduce
                 g.DrawImage(src, 0, 0, SaveIconPic.Width, SaveIconPic.Height);
                 g.Dispose();
             }
-
-            SaveIcon();
         }
 
         private readonly float[] opacity4 = { 0F, 0.32F, 0.64F, 1F };
@@ -272,7 +273,17 @@ namespace FriishProduce
 
             using (Graphics g = Graphics.FromImage(bmp))
             {
-                g.DrawImage(platform == Platform.SMS || platform == Platform.SMD ? Icon_SEGA : Icon_Nintendo, 0, 0, bmp.Width, bmp.Height);
+                g.DrawImage
+                (
+                    platform == Platform.SMS || platform == Platform.SMD ? Icon_SEGA
+                    : platform == Platform.C64 ? Icon_C64
+                    : Icon_Nintendo,
+
+                    0,
+                    0,
+                    bmp.Width,
+                    bmp.Height
+                );
 
                 if (SaveIconPic != null)
                 {
@@ -440,6 +451,7 @@ namespace FriishProduce
                N64:     05.app/save_banner.tpl
                PCE:     05.app/savedata.tpl
                NeoGeo:  05.app/banner.bin
+               C64:     05.app/LZ77_banner.tpl
                MSX:     05.app/banner.bin
                Flash:   banner/XX/banner.tpl
             */
@@ -458,7 +470,7 @@ namespace FriishProduce
 
             Image sBanner = tpl.ExtractTexture(0);
             Image sIcon = new Bitmap(Icon_Nintendo.Width, Icon_Nintendo.Height);
-            Image sIconLogo = tpl.ExtractTexture(numTextures - 1);
+            Image sIconLogo = tpl.ExtractTexture(platform == Platform.C64 ? 1 : numTextures - 1);
 
             // Clean TPL textures
             while (tpl.NumOfTextures > 0) tpl.RemoveTexture(0);
@@ -483,7 +495,7 @@ namespace FriishProduce
             // ****************
             using (Graphics g = Graphics.FromImage(sIcon))
             {
-                g.DrawImage(Icon_Nintendo, 0, 0, sIcon.Width, sIcon.Height);
+                g.DrawImage(platform == Platform.C64 ? Icon_C64 : Icon_Nintendo, 0, 0, sIcon.Width, sIcon.Height);
 
                 g.InterpolationMode = InterpolationMode.Bilinear;
                 g.PixelOffsetMode = PixelOffsetMode.Half;
@@ -557,6 +569,28 @@ namespace FriishProduce
                 sIcon.Dispose();
                 sIcon.Dispose();
                 sIconLogo.Dispose();
+            }
+
+            // SWAP if C64
+            // ****************
+            if (platform == Platform.C64)
+            {
+                var icon_1 = tpl.ExtractTexture(1);
+                var icon_2 = tpl.ExtractTexture(2);
+                var icon_3 = tpl.ExtractTexture(3);
+                var icon_4 = tpl.ExtractTexture(4);
+
+                tpl.RemoveTexture(4);
+                tpl.RemoveTexture(3);
+                tpl.RemoveTexture(2);
+                tpl.RemoveTexture(1);
+
+                tpl.AddTexture(icon_1, formatsT[1], formatsP[1]);
+                tpl.AddTexture(icon_2, formatsT[2], formatsP[2]);
+                tpl.AddTexture(icon_3, formatsT[3], formatsP[3]);
+                tpl.AddTexture(icon_4, formatsT[4], formatsP[4]);
+
+                // There is still a bug in which the savedata banner appears transparent, even if the original wasn't the case
             }
 
             return tpl;

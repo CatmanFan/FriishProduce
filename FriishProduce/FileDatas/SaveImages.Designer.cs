@@ -73,6 +73,16 @@ namespace FriishProduce.FileDatas {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Icon_C64 {
+            get {
+                object obj = ResourceManager.GetObject("Icon_C64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Icon_Flash {
             get {
                 object obj = ResourceManager.GetObject("Icon_Flash", resourceCulture);

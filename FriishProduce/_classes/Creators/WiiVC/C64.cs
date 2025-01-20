@@ -125,7 +125,7 @@ namespace FriishProduce.Injectors
                 WindowStyle = ProcessWindowStyle.Minimized,
                 CreateNoWindow = true,
                 UseShellExecute = true,
-                RedirectStandardInput = true
+                RedirectStandardInput = false
             };
 
             using (Process p = new())
@@ -214,10 +214,49 @@ namespace FriishProduce.Injectors
             // IMAGE
             // -----------------------
 
-            // LZ77_banner.tpl
-            // NOT IMPLEMENTED
+            if (Img != null)
+            {
+                int tpl_index = MainContent.GetNodeIndex("LZ77_banner.tpl");
+                bool isLZ77 = tpl_index != -1;
+                
+                if (tpl_index == -1) return;
 
-            // if (Img != null) MainContent.ReplaceFile(MainContent.GetNodeIndex("LZ77_banner.tpl"), Img.CreateSaveTPL(MainContent.Data[MainContent.GetNodeIndex("savedata.tpl")]).ToByteArray());
+                byte[] tpl = MainContent.Data[tpl_index];
+
+                if (isLZ77)
+                {
+                    File.WriteAllBytes(Paths.WorkingFolder + "LZ77_banner.tpl", tpl);
+
+                    Utils.Run
+                    (
+                        FileDatas.Apps.gbalzss,
+                        "gbalzss",
+                        "d LZ77_banner.tpl banner.tpl"
+                    );
+
+                    File.Delete(Paths.WorkingFolder + "LZ77_banner.tpl");
+
+                    tpl = File.ReadAllBytes(Paths.WorkingFolder + "banner.tpl");
+                }
+
+                byte[] new_tpl = Img.CreateSaveTPL(tpl).ToByteArray();
+
+                if (isLZ77)
+                {
+                    File.WriteAllBytes(Paths.WorkingFolder + "banner.tpl", new_tpl);
+
+                    Utils.Run
+                    (
+                        FileDatas.Apps.gbalzss,
+                        "gbalzss",
+                        "e banner.tpl LZ77_banner.tpl"
+                    );
+
+                    new_tpl = File.ReadAllBytes(Paths.WorkingFolder + "LZ77_banner.tpl");
+                }
+
+                MainContent.ReplaceFile(tpl_index, new_tpl);
+            }
         }
 
         protected override void ModifyEmulatorSettings()

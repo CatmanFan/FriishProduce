@@ -322,6 +322,12 @@
 			"bios3":							"{vc} (버전 3)"
 		},
 
+		"vc_c64": {
+			"rom_notice":						"This VC inject requires a snapshot taken at startup using the Frodo emulator.\nWhat would you like to do?",
+			"rom_notice1":						"&Create a new snapshot",
+			"rom_notice2":						"&Use an existing snapshot",
+		},
+
 		"adobe_flash": {
 			"vff_cache_size":					"VFF 캐시 크기 ({kilobytes}):",
 			"persistent_storage_total":			"총 영구적 저장소 ({kilobytes}):",
