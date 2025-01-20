@@ -567,6 +567,7 @@ namespace FriishProduce
                     break;
 
                 case Platform.PCE:
+                case Platform.PCECD:
                 case Platform.NEO:
                 case Platform.MSX:
                 case Platform.C64:
@@ -701,7 +702,6 @@ namespace FriishProduce
                 case Platform.C64:
                     TIDCode = "C";
                     rom = new ROM_C64();
-                    showPatch = false;
                     break;
 
                 case Platform.MSX:
@@ -1541,10 +1541,10 @@ namespace FriishProduce
             {
                 if (Path.GetExtension(path).ToLower() == ".cue")
                     foreach (var item in Directory.EnumerateFiles(Path.GetDirectoryName(path)))
-                        if (Path.GetExtension(item).ToLower() == ".bin" && Path.GetFileNameWithoutExtension(path).ToLower() == Path.GetFileNameWithoutExtension(item).ToLower())
+                        if (Path.GetExtension(item).ToLower() == ".bin" || Path.GetExtension(item).ToLower() == ".iso" && Path.GetFileNameWithoutExtension(path).ToLower() == Path.GetFileNameWithoutExtension(item).ToLower())
                             path = item;
 
-                if (Path.GetExtension(path).ToLower() != ".bin")
+                if (Path.GetExtension(path).ToLower() != ".bin" && Path.GetExtension(path).ToLower() != ".iso")
                     return (null, null, null, null, null, false);
             }
 
@@ -1672,6 +1672,7 @@ namespace FriishProduce
                     device = forwarder_root_device.SelectedIndex == 1 ? Forwarder.Storages.USB : Forwarder.Storages.SD;
                 }));
 
+                Start:
                 // Get WAD data
                 // *******
                 if (inWadFile != null) m.GetWAD(inWadFile, baseID.Text);
@@ -1696,7 +1697,8 @@ namespace FriishProduce
                     case Platform.C64:
                     case Platform.MSX:
                         if (isVirtualConsole)
-                            m.Inject();
+                            try { m.Inject(); }
+                            catch (Exception ex) { if (ex.Message == "U8 Header: Invalid Magic!") goto Start; else throw; }
                         else
                             m.CreateForwarder(emulator, device);
                         break;

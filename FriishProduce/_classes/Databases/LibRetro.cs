@@ -307,7 +307,7 @@ namespace FriishProduce.Databases
                     (string name, string serial, string year, string players, string image) result = (rows[0][1]?.ToString(), rows[0][2]?.ToString(), rows[0][3]?.ToString(), rows[0][4]?.ToString(), rows[0][5]?.ToString());
 
                     bool complete = !string.IsNullOrEmpty(result.name) && !string.IsNullOrEmpty(result.players) && !string.IsNullOrEmpty(result.year) && !string.IsNullOrEmpty(result.image);
-                    if (platform == Platform.C64) complete = !string.IsNullOrEmpty(result.name) && !string.IsNullOrEmpty(result.image);
+                    if (platform == Platform.C64 || platform == Platform.PCECD) complete = !string.IsNullOrEmpty(result.name) && !string.IsNullOrEmpty(result.image);
 
                     return (result.name, result.serial, result.year, result.players, result.image, complete);
                 }

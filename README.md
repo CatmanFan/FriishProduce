@@ -27,7 +27,7 @@ This injector bypasses other third-party assets (such as Common-Key.bin, HowardC
     * Nintendo 64
     * SEGA Master System
     * SEGA Mega Drive / Genesis
-    * NEC TurboGrafx-16 / PC Engine (HuCARD)
+    * NEC TurboGrafx-16 / PC Engine (HuCARD & CD-ROM)
     * SNK NEO-GEO
     * Commodore 64
     * Microsoft MSX / MSX2
@@ -47,9 +47,6 @@ Please check the **[wiki](https://catmanfan.github.io/FriishProduce/)** for a tu
 
 ### Potential
 - [ ] Merge separate components of ProjectForm into panels / Create UserControl for content options ?
-
-### Future platforms
-* TurboGrafx-16 CD (needs several programs to convert ISO to injectable format)
 
 ---
 

@@ -33,7 +33,7 @@ namespace FriishProduce.Injectors
 
         private string Config
         {
-            get => Encoding.Default.GetString(MainContent.Data[ConfigIndex]);
+            get => Encoding.ASCII.GetString(MainContent.Data[ConfigIndex]);
         }
 
         /// <summary>
@@ -67,17 +67,50 @@ namespace FriishProduce.Injectors
                     }
                 }
 
-                /* Utils.Run
+                Utils.Run
                 (
-                    FileDatas.Apps.bincuesplit,
-                    "bincuesplit.exe",
-                    "CDROM.cue hcd"
-                ); */
+                    "pcecd\\bincuesplit.exe",
+                    Paths.WorkingFolder,
+                    $"\"{Path.GetFileName(ROM.FilePath)}\" hcd"
+                );
+
+                string hcd_folder = null;
+
+                foreach (var item in Directory.EnumerateFiles(Paths.WorkingFolder, "*.*", SearchOption.AllDirectories))
+                    if (Path.GetExtension(item).ToLower() == ".hcd")
+                    {
+                        File.WriteAllText(item, File.ReadAllText(item).Replace(".iso", ".bin"));
+                        hcd_folder = Path.GetDirectoryName(item) + '\\';
+                    }
+
+                foreach (var item in Directory.EnumerateFiles(hcd_folder, "*.iso"))
+                {
+                    Utils.Run
+                    (
+                        "pcecd\\tg16inject.exe",
+                        hcd_folder,
+                        $"\"{Path.GetFileName(item)}\" \"{Path.GetFileNameWithoutExtension(item)}.bin\""
+                    );
+
+                    try { File.Delete(item); } catch { }
+                }
+
+                foreach (var item in MainContent.StringTable)
+                    if (item.ToLower().EndsWith(".bin") || item.ToLower().EndsWith(".ogg"))
+                        MainContent.RemoveFile(item);
+
+                foreach (var item in Directory.EnumerateFiles(hcd_folder, "*.*"))
+                {
+                    if (Path.GetExtension(item).ToLower() == ".hcd")
+                        MainContent.ReplaceFile(MainContent.GetNodeIndex(rom), File.ReadAllBytes(item));
+                    else
+                        MainContent.AddFile(Path.GetFileName(item), File.ReadAllBytes(item));
+                }
             }
 
             // LZ77-compressed
             // ****************
-            if (rom.ToLower().Contains("lz77"))
+            else if (rom.ToLower().Contains("lz77"))
             {
                 File.WriteAllBytes(Paths.WorkingFolder + "rom_comp", MainContent.Data[MainContent.GetNodeIndex(rom)]);
                 File.WriteAllBytes(Paths.WorkingFolder + "rom", ROM.Bytes);
@@ -231,35 +264,35 @@ namespace FriishProduce.Injectors
            PAD5=1
            NOFPA=1 */
 
-        // -----------------------------------------------------
-        // CONFIG from Castlevania Rondo of Blood:
-        // -----------------------------------------------------
-        /* NAME=KMCD3005
-           ROM=KMCD3005.hcd
-           BACKUPRAM=1
-           MULTITAP=1
-           HDS=0
-           RASTER=0
-           SPRLINE=0
-           NOFPA=1
-           IRQMODE=0
-           EUROPE=1
-           HIDEOVERSCAN=1
-           YOFFSET=8 */
+                // -----------------------------------------------------
+                // CONFIG from Castlevania Rondo of Blood:
+                // -----------------------------------------------------
+                /* NAME=KMCD3005
+                   ROM=KMCD3005.hcd
+                   BACKUPRAM=1
+                   MULTITAP=1
+                   HDS=0
+                   RASTER=0
+                   SPRLINE=0
+                   NOFPA=1
+                   IRQMODE=0
+                   EUROPE=1
+                   HIDEOVERSCAN=1
+                   YOFFSET=8 */
 
-        // -----------------------------------------------------
-        // CONFIG from Street Fighter 'II: Champion Edition:
-        // -----------------------------------------------------
-        /* NAME=HE93002
-           ROM=/LZ77HE93002.BIN
-           BACKUPRAM=0
-           MULTITAP=1
-           HDS=0
-           RASTER=0
-           POPULUS=0
-           SPRLINE=0
-           PAD5=0
-           NOFPA=1
-           PADBUTTON=6 */
-    }
-}
+                // -----------------------------------------------------
+                // CONFIG from Street Fighter 'II: Champion Edition:
+                // -----------------------------------------------------
+                /* NAME=HE93002
+                   ROM=/LZ77HE93002.BIN
+                   BACKUPRAM=0
+                   MULTITAP=1
+                   HDS=0
+                   RASTER=0
+                   POPULUS=0
+                   SPRLINE=0
+                   PAD5=0
+                   NOFPA=1
+                   PADBUTTON=6 */
+            }
+        }

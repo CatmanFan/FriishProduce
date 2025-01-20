@@ -63,7 +63,8 @@ namespace FriishProduce
             if (needsManualLoaded && (mainContentIndex <= 1)) mainContentIndex = 5;
 
             if (mainContentIndex > 1 && WAD.Contents.Length > mainContentIndex)
-                MainContent = U8.Load(WAD.Contents[mainContentIndex]);
+                try { MainContent = U8.Load(WAD.Contents[mainContentIndex]); }
+                catch { }
 
             manualContentIndex = 5;
             ManualContent = mainContentIndex == manualContentIndex ? null : U8.Load(WAD.Contents[manualContentIndex]);

@@ -24,6 +24,7 @@ namespace FriishProduce
             { Platform.SMS, new Icon(Properties.Resources.sega_master_system, 16, 16).ToBitmap() },
             { Platform.SMD, new Icon(Properties.Resources.sega_genesis, 16, 16).ToBitmap() },
             { Platform.PCE, new Icon(Properties.Resources.nec_turbografx_16, 16, 16).ToBitmap() },
+            { Platform.PCECD, new Icon(Properties.Resources.nec_turbografx_16, 16, 16).ToBitmap() },
             { Platform.NEO, new Icon(Properties.Resources.snk_neo_geo_aes, 16, 16).ToBitmap() },
 #if DEBUG
             { Platform.C64, Properties.Resources.c64 },
@@ -44,6 +45,7 @@ namespace FriishProduce
             Platform.SMD.ToString(),
             null,
             Platform.PCE.ToString(),
+            Platform.PCECD.ToString(),
             null,
             Platform.NEO.ToString(),
             null,

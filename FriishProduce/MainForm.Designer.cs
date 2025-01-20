@@ -53,6 +53,7 @@ namespace FriishProduce
             this.menuItem1 = new System.Windows.Forms.MenuItem();
             this.new_project = new System.Windows.Forms.MenuItem();
             this.open_project = new System.Windows.Forms.MenuItem();
+            this.open_recent = new System.Windows.Forms.MenuItem();
             this.save_project = new System.Windows.Forms.MenuItem();
             this.save_project_as = new System.Windows.Forms.MenuItem();
             this.menuItem5 = new System.Windows.Forms.MenuItem();
@@ -85,7 +86,6 @@ namespace FriishProduce
             this.about = new System.Windows.Forms.MenuItem();
             this.tabControl = new JacksiroKe.MdiTabCtrl.TabControl();
             this.Tip = new TheArtOfDev.HtmlRenderer.WinForms.HtmlToolTip();
-            this.open_recent = new System.Windows.Forms.MenuItem();
             this.mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             this.toolStrip.SuspendLayout();
@@ -261,6 +261,12 @@ namespace FriishProduce
             resources.ApplyResources(this.open_project, "open_project");
             this.open_project.Tag = "open_project";
             this.open_project.Click += new System.EventHandler(this.OpenProject_Click);
+            // 
+            // open_recent
+            // 
+            this.open_recent.Index = 2;
+            this.open_recent.Tag = "open_recent";
+            resources.ApplyResources(this.open_recent, "open_recent");
             // 
             // save_project
             // 
@@ -524,12 +530,6 @@ namespace FriishProduce
             this.Tip.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
             this.Tip.TooltipCssClass = "htmltooltip";
             this.Tip.UseGdiPlusTextRendering = true;
-            // 
-            // open_recent
-            // 
-            this.open_recent.Index = 2;
-            this.open_recent.Tag = "open_recent";
-            resources.ApplyResources(this.open_recent, "open_recent");
             // 
             // MainForm
             // 
