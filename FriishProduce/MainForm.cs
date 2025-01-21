@@ -410,16 +410,16 @@ namespace FriishProduce
         {
             open_recent.MenuItems.Clear();
 
-            if (File.Exists(Program.Config.paths.recent_00)) open_recent.MenuItems.Add(new MenuItem(Path.GetFileName(Program.Config.paths.recent_00), OpenRecent));
-            if (File.Exists(Program.Config.paths.recent_01)) open_recent.MenuItems.Add(new MenuItem(Path.GetFileName(Program.Config.paths.recent_01), OpenRecent));
-            if (File.Exists(Program.Config.paths.recent_02)) open_recent.MenuItems.Add(new MenuItem(Path.GetFileName(Program.Config.paths.recent_02), OpenRecent));
-            if (File.Exists(Program.Config.paths.recent_03)) open_recent.MenuItems.Add(new MenuItem(Path.GetFileName(Program.Config.paths.recent_03), OpenRecent));
-            if (File.Exists(Program.Config.paths.recent_04)) open_recent.MenuItems.Add(new MenuItem(Path.GetFileName(Program.Config.paths.recent_04), OpenRecent));
-            if (File.Exists(Program.Config.paths.recent_05)) open_recent.MenuItems.Add(new MenuItem(Path.GetFileName(Program.Config.paths.recent_05), OpenRecent));
-            if (File.Exists(Program.Config.paths.recent_06)) open_recent.MenuItems.Add(new MenuItem(Path.GetFileName(Program.Config.paths.recent_06), OpenRecent));
-            if (File.Exists(Program.Config.paths.recent_07)) open_recent.MenuItems.Add(new MenuItem(Path.GetFileName(Program.Config.paths.recent_07), OpenRecent));
-            if (File.Exists(Program.Config.paths.recent_08)) open_recent.MenuItems.Add(new MenuItem(Path.GetFileName(Program.Config.paths.recent_08), OpenRecent));
-            if (File.Exists(Program.Config.paths.recent_09)) open_recent.MenuItems.Add(new MenuItem(Path.GetFileName(Program.Config.paths.recent_09), OpenRecent));
+            if (File.Exists(Program.Config.paths.recent_00)) open_recent.MenuItems.Add(new MenuItem(Path.GetFileName(Program.Config.paths.recent_00).Replace("&", "&&"), OpenRecent));
+            if (File.Exists(Program.Config.paths.recent_01)) open_recent.MenuItems.Add(new MenuItem(Path.GetFileName(Program.Config.paths.recent_01).Replace("&", "&&"), OpenRecent));
+            if (File.Exists(Program.Config.paths.recent_02)) open_recent.MenuItems.Add(new MenuItem(Path.GetFileName(Program.Config.paths.recent_02).Replace("&", "&&"), OpenRecent));
+            if (File.Exists(Program.Config.paths.recent_03)) open_recent.MenuItems.Add(new MenuItem(Path.GetFileName(Program.Config.paths.recent_03).Replace("&", "&&"), OpenRecent));
+            if (File.Exists(Program.Config.paths.recent_04)) open_recent.MenuItems.Add(new MenuItem(Path.GetFileName(Program.Config.paths.recent_04).Replace("&", "&&"), OpenRecent));
+            if (File.Exists(Program.Config.paths.recent_05)) open_recent.MenuItems.Add(new MenuItem(Path.GetFileName(Program.Config.paths.recent_05).Replace("&", "&&"), OpenRecent));
+            if (File.Exists(Program.Config.paths.recent_06)) open_recent.MenuItems.Add(new MenuItem(Path.GetFileName(Program.Config.paths.recent_06).Replace("&", "&&"), OpenRecent));
+            if (File.Exists(Program.Config.paths.recent_07)) open_recent.MenuItems.Add(new MenuItem(Path.GetFileName(Program.Config.paths.recent_07).Replace("&", "&&"), OpenRecent));
+            if (File.Exists(Program.Config.paths.recent_08)) open_recent.MenuItems.Add(new MenuItem(Path.GetFileName(Program.Config.paths.recent_08).Replace("&", "&&"), OpenRecent));
+            if (File.Exists(Program.Config.paths.recent_09)) open_recent.MenuItems.Add(new MenuItem(Path.GetFileName(Program.Config.paths.recent_09).Replace("&", "&&"), OpenRecent));
 
             if (open_recent.MenuItems?.Count > 0)
             {
@@ -448,55 +448,34 @@ namespace FriishProduce
 
         private void OpenRecent(object sender, EventArgs e)
         {
-            var control = sender as Control;
-            var list = open_recent.MenuItems.OfType<MenuItem>().ToArray();
+            var control = sender as MenuItem;
+            var list = open_recent.MenuItems.OfType<MenuItem>().Where(x => x.Text == control?.Text).ToArray();
 
-            for (int i = 0; i < list.Length; i++)
-                if (control?.Text == list[i].Text && string.IsNullOrWhiteSpace(list[i].Text))
+            if (list.Length > 1)
+            {
+                for (int i = 0; i < 10; i++)
                 {
-                    switch (i)
+                    string file = i switch
                     {
-                        case 0:
-                            OpenProject(new string[] { Program.Config.paths.recent_00 });
-                            break;
+                        9 => Program.Config.paths.recent_09,
+                        8 => Program.Config.paths.recent_08,
+                        7 => Program.Config.paths.recent_07,
+                        6 => Program.Config.paths.recent_06,
+                        5 => Program.Config.paths.recent_05,
+                        4 => Program.Config.paths.recent_04,
+                        3 => Program.Config.paths.recent_03,
+                        2 => Program.Config.paths.recent_02,
+                        1 => Program.Config.paths.recent_01,
+                        0 or _ => Program.Config.paths.recent_00
+                    };
 
-                        case 1:
-                            OpenProject(new string[] { Program.Config.paths.recent_01 });
-                            break;
-
-                        case 2:
-                            OpenProject(new string[] { Program.Config.paths.recent_02 });
-                            break;
-
-                        case 3:
-                            OpenProject(new string[] { Program.Config.paths.recent_03 });
-                            break;
-
-                        case 4:
-                            OpenProject(new string[] { Program.Config.paths.recent_04 });
-                            break;
-
-                        case 5:
-                            OpenProject(new string[] { Program.Config.paths.recent_05 });
-                            break;
-
-                        case 6:
-                            OpenProject(new string[] { Program.Config.paths.recent_06 });
-                            break;
-
-                        case 7:
-                            OpenProject(new string[] { Program.Config.paths.recent_07 });
-                            break;
-
-                        case 8:
-                            OpenProject(new string[] { Program.Config.paths.recent_08 });
-                            break;
-
-                        case 9:
-                            OpenProject(new string[] { Program.Config.paths.recent_09 });
-                            break;
+                    if (Path.GetFileName(file)?.Replace("&", "&&") == list[0].Text)
+                    {
+                        OpenProject(new string[] { file });
+                        return;
                     }
                 }
+            }
         }
 
         private void OpenProject(string[] files)
