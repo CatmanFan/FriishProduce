@@ -65,7 +65,7 @@ namespace FriishProduce
 
     public static class Web
     {
-        public static bool InternetTest(string url = null)
+        public static bool InternetTest(string URL = null)
         {
             Program.MainForm?.Wait(true, true, false, 0, 2);
 
@@ -73,7 +73,7 @@ namespace FriishProduce
             int region = System.Globalization.CultureInfo.InstalledUICulture.Name.StartsWith("fa") ? 2
                        : System.Globalization.CultureInfo.InstalledUICulture.Name.Contains("zh-CN") ? 1
                        : -1;
-            if (string.IsNullOrWhiteSpace(url)) url =
+            if (string.IsNullOrWhiteSpace(URL)) URL =
                 region == 2 ? "https://www.aparat.com/" :
                 region == 1 ? "http://www.baidu.com/" :
                 region == 0 ? "https://www.google.com" :
@@ -82,9 +82,9 @@ namespace FriishProduce
             try
             {
                 Request:
-                var request = (HttpWebRequest)WebRequest.Create(url);
+                var request = (HttpWebRequest)WebRequest.Create(URL);
 
-                url = request.Address.Authority;
+                URL = request.Address.Authority;
                 request.Method = "HEAD";
                 request.KeepAlive = false;
                 request.Timeout = timeout * 1000;
@@ -95,7 +95,7 @@ namespace FriishProduce
 
                 bool result = false;
 
-                if (CheckDomain(url, timeout))
+                if (CheckDomain(URL, timeout))
                 {
                     WebResponse response = null;
                     try { response = request.GetResponse(); }
@@ -129,15 +129,19 @@ namespace FriishProduce
                 if (ex.GetType() == typeof(WebException) && (ex as WebException).Status == WebExceptionStatus.ProtocolError)
                     return true;
 
-                string message = ex.Message;
-                int colon = message.IndexOf(':');
-                char dot = Program.Lang.GetScript(message) == Language.ScriptType.CJK && !Program.Lang.Current.StartsWith("ko") ? '。' : '.';
-
-                if (!string.IsNullOrWhiteSpace(url) && message.Contains(url) && colon > 0) message = message.Substring(0, colon);
-                if (message[message.Length - 1] != dot) message += dot;
-
-                throw new Exception(string.Format(Program.Lang.Msg(0, true), message));
+                throw new Exception(string.Format(Program.Lang.Msg(0, true), Message(ex.Message, URL)));
             }
+        }
+
+        private static string Message(string msg, string url)
+        {
+            int colon = msg.IndexOf(':');
+            char dot = Program.Lang.GetScript(msg) == Language.ScriptType.CJK && !Program.Lang.Current.StartsWith("ko") ? '。' : '.';
+
+            if (!string.IsNullOrWhiteSpace(url) && msg.Contains(url) && colon > 0) msg = msg.Substring(0, colon);
+            if (msg[msg.Length - 1] != dot) msg += dot;
+
+            return msg;
         }
 
         private static bool CheckDomain(string URL, int timeout)
@@ -158,7 +162,7 @@ namespace FriishProduce
             }
         }
 
-        public static byte[] Get(string URL, int timeout = 500)
+        public static byte[] Get(string URL, int timeout = 100)
         {
             // Actual web connection is done here
             // ****************
@@ -180,8 +184,7 @@ namespace FriishProduce
 
                 catch (Exception ex)
                 {
-                    string message = (ex.Message.Contains(URL) ? ex.Message.Substring(0, ex.Message.IndexOf(':')) : ex.Message) + (ex.Message[ex.Message.Length - 1] != '.' ? "." : string.Empty);
-                    throw new Exception(string.Format(Program.Lang.Msg(0, true), message));
+                    throw new Exception(string.Format(Program.Lang.Msg(0, true), Message(ex.Message, URL)));
                 }
             }
         }

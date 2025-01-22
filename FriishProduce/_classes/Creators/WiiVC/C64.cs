@@ -68,7 +68,9 @@ namespace FriishProduce.Injectors
 
             // Prompt to use existing copy
             // ****************
-            var method = MessageBox.Show(Program.Lang.String("rom_notice", "vc_c64"), null, new string[] { Program.Lang.String("rom_notice1", "vc_c64"), Program.Lang.String("rom_notice2", "vc_c64") });
+            Prompt:
+            bool cancel = false;
+            var method = MessageBox.Show(Program.Lang.String("rom_notice", "vc_c64"), null, new string[] { Program.Lang.String("rom_notice1", "vc_c64"), Program.Lang.String("rom_notice2", "vc_c64"), Program.Lang.String("b_cancel") });
 
             switch (method)
             {
@@ -80,7 +82,7 @@ namespace FriishProduce.Injectors
                     System.Windows.Forms.DialogResult result = System.Windows.Forms.DialogResult.None;
                     string filename = null;
 
-                    Program.MainForm.Invoke(((Action)(() => {
+                    Program.MainForm.Invoke((Action)(() => {
                         using (System.Windows.Forms.OpenFileDialog open = new()
                         {
                             Filter = "FSS (*.fss)|*.fss",
@@ -95,19 +97,20 @@ namespace FriishProduce.Injectors
                             result = open.ShowDialog();
                             filename = open.FileName;
                         }
-                    })), null);
+                    }), null);
 
                     if (result == System.Windows.Forms.DialogResult.OK)
                     {
                         File.WriteAllBytes(snapshot, File.ReadAllBytes(filename));
                         goto End;
                     }
+                    else
+                        goto Prompt;
 
-                    else goto Failed;
+                case MessageBox.Result.Cancel:
+                    cancel = true;
+                    goto End;
             }
-
-            Failed:
-            throw new OperationCanceledException();
 
             Frodo:
             // Copy ROM
@@ -161,7 +164,10 @@ namespace FriishProduce.Injectors
                     goto Frodo_Load;
 
                 else
-                    goto Failed;
+                {
+                    cancel = true;
+                    goto End;
+                }
             }
 
             using (Process p = new())
@@ -175,17 +181,22 @@ namespace FriishProduce.Injectors
 
             End:
             try { File.Delete(frodo + "ik.fss"); } catch { }
-            try { File.Delete(Paths.WorkingFolder + "ik.fss"); } catch { }
             try { File.Delete(target); } catch { }
 
-            File.Move(snapshot, Paths.WorkingFolder + "ik.fss");
-            Utils.Run
-            (
-                FileDatas.Apps.gbalzss,
-                "gbalzss",
-                "e ik.fss ik.fss.comp"
-            );
-            MainContent.ReplaceFile(ik_fss_index, File.ReadAllBytes(Paths.WorkingFolder + "ik.fss.comp"));
+            if (!cancel)
+            {
+                try { File.Delete(Paths.WorkingFolder + "ik.fss"); } catch { }
+                File.Move(snapshot, Paths.WorkingFolder + "ik.fss");
+                Utils.Run
+                (
+                    FileDatas.Apps.gbalzss,
+                    "gbalzss",
+                    "e ik.fss ik.fss.comp"
+                );
+                MainContent.ReplaceFile(ik_fss_index, File.ReadAllBytes(Paths.WorkingFolder + "ik.fss.comp"));
+            }
+            
+            else throw new OperationCanceledException();
         }
 
         protected override void ReplaceSaveData(string[] lines, ImageHelper Img)

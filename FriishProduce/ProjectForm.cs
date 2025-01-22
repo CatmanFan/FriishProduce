@@ -1695,13 +1695,13 @@ namespace FriishProduce
                     device = forwarder_root_device.SelectedIndex == 1 ? Forwarder.Storages.USB : Forwarder.Storages.SD;
                 }));
 
-                Start:
-                // Get WAD data
-                // *******
                 if (inWadFile == null)
                     Web.InternetTest();
                 Program.MainForm.Wait(true, true, true, 0, 1);
 
+                Start:
+                // Get WAD data
+                // *******
                 if (inWadFile != null) m.GetWAD(inWadFile, baseID.Text);
                 else
                 {
