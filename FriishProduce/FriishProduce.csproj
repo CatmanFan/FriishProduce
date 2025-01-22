@@ -546,7 +546,6 @@
   <ItemGroup>
     <Content Include="icon.ico" />
     <None Include="Resources\vc\saveicon_placeholder_c.png" />
-    <None Include="Resources\Icon_C64.png" />
     <None Include="Resources\apps\tg16inject1.exe" />
     <None Include="Resources\apps\bincuesplit1.exe" />
     <None Include="Resources\apps\tg16inject.exe" />

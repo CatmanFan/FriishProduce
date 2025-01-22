@@ -21,6 +21,7 @@
 			"do_not_show":						"Ne plus afficher ce message",
 			"busy0":							"Veuillez patienter ...",
 			"busy1":							"Exportation en cours ...",
+			"busy2":							"Test de connexion en cours ...",
 			
 			"by_default":						"Par défaut",
 			"disabled":							"Désactivé(e)",

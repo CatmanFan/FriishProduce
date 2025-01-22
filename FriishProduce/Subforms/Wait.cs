@@ -23,7 +23,8 @@ namespace FriishProduce
             fader.Tick += Fade;
             fader.Start();
 
-            label1.Font = Program.MainForm.Font;
+            if (Program.MainForm != null)
+                label1.Font = Program.MainForm.Font;
             label1.Text = Program.Lang.String($"busy{msg}");
 
             progress.Visible = showProgress;

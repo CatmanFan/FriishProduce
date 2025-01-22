@@ -18,7 +18,6 @@ namespace FriishProduce
         protected Platform targetPlatform { get; set; }
         private readonly BannerOptions banner_form;
         private readonly Savedata savedata;
-        private Wait wait = new(false);
         private HTMLForm htmlForm;
 
         protected string TIDCode;
@@ -105,24 +104,6 @@ namespace FriishProduce
                     injection_method_help.Visible = !value && htmlForm != null;
                 }
             }
-        }
-
-        public void Wait(bool show, int msg = 0, bool showProgress = false)
-        {
-            Invoke(new MethodInvoker(delegate
-            {
-                if (!show) ParentForm.Select();
-
-                if (show)
-                {
-                    wait = new(showProgress, msg);
-                    wait.Show(this);
-                }
-                else
-                    wait.Hide();
-
-                (ParentForm as MainForm).Enabled = Enabled = !show;
-            }));
         }
 
         public bool IsExportable
@@ -354,23 +335,66 @@ namespace FriishProduce
 
         // -----------------------------------
 
-        private void SetRecentProjects(string path)
+        private void SetRecentProjects(string project)
         {
-            if (path != Program.Config.paths.recent_00)
+            int max = 10;
+            bool modified = false;
+
+            // Add project to #1 slot
+            // ********
+            if (project != Program.Config.paths.recent_00)
             {
-                Program.Config.paths.recent_09 = Program.Config.paths.recent_08;
-                Program.Config.paths.recent_08 = Program.Config.paths.recent_07;
-                Program.Config.paths.recent_07 = Program.Config.paths.recent_06;
-                Program.Config.paths.recent_06 = Program.Config.paths.recent_05;
-                Program.Config.paths.recent_05 = Program.Config.paths.recent_04;
-                Program.Config.paths.recent_04 = Program.Config.paths.recent_03;
-                Program.Config.paths.recent_03 = Program.Config.paths.recent_02;
-                Program.Config.paths.recent_02 = Program.Config.paths.recent_01;
-                Program.Config.paths.recent_01 = Program.Config.paths.recent_00;
-                Program.Config.paths.recent_00 = path;
+                for (int i = 0; i < max - 1; i++)
+                {
+                    var prop1 = Program.Config.paths.GetType().GetProperty($"recent_{i:D2}");
+                    var prop2 = Program.Config.paths.GetType().GetProperty($"recent_{i + 1:D2}");
+                    prop2.SetValue(Program.Config.paths, prop1.GetValue(Program.Config.paths, null));
+                }
 
+                Program.Config.paths.recent_00 = project;
+                modified = true;
+            }
+
+            // Clean duplicate projects if there are any
+            // ********
+            for (int x = 0; x < max; x++)
+            {
+                var prop1 = Program.Config.paths.GetType().GetProperty($"recent_{x:D2}");
+                var path1 = prop1.GetValue(Program.Config.paths, null)?.ToString();
+
+                for (int y = x; y < max; y++)
+                {
+                    var prop2 = Program.Config.paths.GetType().GetProperty($"recent_{y:D2}");
+                    var path2 = prop2.GetValue(Program.Config.paths, null)?.ToString();
+
+                    if (path1 == path2 && path2 != null && x != y)
+                    {
+                        prop2.SetValue(Program.Config.paths, null);
+                        modified = true;
+                    }
+                }
+            }
+
+            // Resort slots in case of empty ones
+            // ********
+            for (int i = 0; i < max - 1; i++)
+            {
+                var prop1 = Program.Config.paths.GetType().GetProperty($"recent_{i:D2}");
+
+                if (prop1.GetValue(Program.Config.paths, null)?.ToString() == null)
+                {
+                    var prop2 = Program.Config.paths.GetType().GetProperty($"recent_{i + 1:D2}");
+                    
+                    prop1.SetValue(Program.Config.paths, prop2.GetValue(Program.Config.paths, null));
+                    prop2.SetValue(Program.Config.paths, null);
+
+                    modified = true;
+                }
+            }
+
+            if (modified)
+            {
                 Program.Config.Save();
-
                 Program.MainForm.RefreshRecent();
             }
         }
@@ -1266,12 +1290,9 @@ namespace FriishProduce
 
             Failed:
             SystemSounds.Beep.Play();
-            try
-            {
-                MessageBox.Show(string.Format(Program.Lang.Msg(5), Reader.UpperTitleID));
-                Reader.Dispose();
-            }
-            catch { Reader = null; }
+            MessageBox.Show(string.Format(Program.Lang.Msg(5), Reader.UpperTitleID == "\0\0\0\0" || Reader.UpperTitleID.Length != 4 ? Program.Lang.String("none") : Reader.UpperTitleID));
+
+            try { Reader.Dispose(); } catch { Reader = null; }
             inWadFile = null;
             return false;
         }
@@ -1533,6 +1554,7 @@ namespace FriishProduce
         /// Gets any game metadata that is available for the file based on its CRC32 reading hash, including the software title, year, players, and title image URL.
         /// </summary>
         /// <param name="platform"></param>
+        /// <param name="path">The ROM/ISO path.</param>
         /// <returns></returns>
         protected (string Name, string Serial, string Year, string Players, string Image, bool IsComplete) GetGameData(Platform platform, string path)
         {
@@ -1548,6 +1570,10 @@ namespace FriishProduce
                     return (null, null, null, null, null, false);
             }
 
+            if (Databases.LibRetro.IsWeb(platform))
+                Web.InternetTest();
+            Program.MainForm.Wait(true, true, false);
+
             var result = Databases.LibRetro.Read(path, platform);
 
             if (!string.IsNullOrEmpty(result.Name))
@@ -1562,8 +1588,6 @@ namespace FriishProduce
         public async void GameScan(bool imageOnly)
         {
             if (rom == null || rom.FilePath == null) return;
-
-            Wait(true);
 
             try
             {
@@ -1596,13 +1620,13 @@ namespace FriishProduce
                     // Set image
                     if (!string.IsNullOrEmpty(gameData.Image))
                     {
-                        LoadImage(gameData.Image);
+                        await Task.Run(() => { LoadImage(gameData.Image); });
                     }
 
                     resetImages(true);
                 }
 
-                Wait(false);
+                Program.MainForm.Wait(false, false, false);
 
                 // Show message if partially failed to retrieve data
                 if (retrieved && !gameData.IsComplete && !imageOnly)
@@ -1612,17 +1636,16 @@ namespace FriishProduce
 
             catch (Exception ex)
             {
-                Wait(false);
+                Program.MainForm.Wait(false, false, false);
                 MessageBox.Error(ex.Message);
             }
         }
 
         public void SaveToWAD(string targetFile = null) => backgroundWorker.RunWorkerAsync(targetFile);
-        private void saveToWAD_UpdateProgress(object sender, System.ComponentModel.ProgressChangedEventArgs e) => wait.progress.Value = e.ProgressPercentage;
+        private void saveToWAD_UpdateProgress(object sender, System.ComponentModel.ProgressChangedEventArgs e) => Program.MainForm.Wait(true, false, true, e.ProgressPercentage);
         private void saveToWAD(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
             Exception error = null;
-            Wait(true, 1, true);
 
             string targetFile = e.Argument.ToString();
             if (targetFile == null) targetFile = Paths.WorkingFolder + "out.wad";
@@ -1675,6 +1698,10 @@ namespace FriishProduce
                 Start:
                 // Get WAD data
                 // *******
+                if (inWadFile == null)
+                    Web.InternetTest();
+                Program.MainForm.Wait(true, true, true, 0, 1);
+
                 if (inWadFile != null) m.GetWAD(inWadFile, baseID.Text);
                 else
                 {
@@ -1747,7 +1774,7 @@ namespace FriishProduce
 
             finally
             {
-                Wait(false);
+                Program.MainForm.Wait(false, false, false);
                 Program.CleanTemp();
 
                 Invoke(new MethodInvoker(delegate

@@ -101,13 +101,38 @@ namespace FriishProduce.Databases
         {
             foreach (KeyValuePair<string, Platform> item in list)
             {
-                if (item.Value == platform)
+                if (item.Value == In)
                 {
                     return true;
                 }
             }
 
             return false;
+        }
+
+        public static bool IsWeb(Platform In)
+        {
+            bool result = false;
+
+            if (File.Exists(Path.Combine(Paths.Databases, In.ToString().ToLower() + ".xml")))
+                return result;
+
+            else
+            {
+                // Retrieve database from URL or file
+                // ****************
+                List<string[]> db_lines = new();
+
+                for (int i = 0; i < 2; i++)
+                {
+                    string url = db_url(i);
+
+                    if (!string.IsNullOrWhiteSpace(url) && !File.Exists(url))
+                        result = true;
+                }
+            }
+
+            return result;
         }
 
         public static DataTable Parse(Platform In)
@@ -155,7 +180,7 @@ namespace FriishProduce.Databases
                         if (File.Exists(url))
                             db_lines.Add(File.ReadAllLines(url));
 
-                        else if (Web.InternetTest())
+                        else if (IsWeb(In))
                         {
                             using (WebClient c = new WebClient())
                             {

@@ -21,6 +21,7 @@
 			"do_not_show":						"다시 표시하지 않음",
 			"busy0":							"잠시만 기다리세요...",
 			"busy1":							"내보내기 진행 중...",
+			"busy2":							"Testing Internet connection...",
 			
 			"by_default":						"기본값",
 			"disabled":							"비활성화",

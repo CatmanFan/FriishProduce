@@ -72,6 +72,7 @@ namespace FriishProduce.Injectors
 
             switch (method)
             {
+                default:
                 case MessageBox.Result.Button1:
                     goto Frodo;
 
@@ -103,13 +104,10 @@ namespace FriishProduce.Injectors
                     }
 
                     else goto Failed;
-
-                default:
-                    goto Failed;
             }
 
             Failed:
-            throw new Exception(Program.Lang.Msg(2, true));
+            throw new OperationCanceledException();
 
             Frodo:
             // Copy ROM

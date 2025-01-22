@@ -82,7 +82,6 @@ namespace FriishProduce
             {
                 _progress.max += 1.0;
 
-                Web.InternetTest();
                 WAD = WAD.Load(Web.Get(path));
 
                 _updateProgress();

@@ -21,6 +21,7 @@
 			"do_not_show":						"No volver a mostrar este mensaje",
 			"busy0":							"Cargando...",
 			"busy1":							"Exportación en curso...",
+			"busy2":							"Probando la conexión de Internet...",
 			
 			"by_default":						"Por defecto",
 			"disabled":							"Deshabilitado(a)",

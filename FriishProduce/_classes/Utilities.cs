@@ -67,7 +67,9 @@ namespace FriishProduce
     {
         public static bool InternetTest(string url = null)
         {
-            int timeout = 60;
+            Program.MainForm?.Wait(true, true, false, 0, 2);
+
+            int timeout = 30;
             int region = System.Globalization.CultureInfo.InstalledUICulture.Name.StartsWith("fa") ? 2
                        : System.Globalization.CultureInfo.InstalledUICulture.Name.Contains("zh-CN") ? 1
                        : -1;
@@ -87,9 +89,11 @@ namespace FriishProduce
                 request.KeepAlive = false;
                 request.Timeout = timeout * 1000;
                 request.UserAgent = "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.0; WOW64; " +
-                                    "Trident/4.0; SLCC1; .NET CLR 2.0.50727; Media Center PC 5.0; " +
-                                    ".NET CLR 3.5.21022; .NET CLR 3.5.30729; .NET CLR 3.0.30618; " +
-                                    "InfoPath.2; OfficeLiveConnector.1.3; OfficeLivePatch.0.0)";
+                                "Trident/4.0; SLCC1; .NET CLR 2.0.50727; Media Center PC 5.0; " +
+                                ".NET CLR 3.5.21022; .NET CLR 3.5.30729; .NET CLR 3.0.30618; " +
+                                "InfoPath.2; OfficeLiveConnector.1.3; OfficeLivePatch.0.0)";
+
+                bool result = false;
 
                 if (CheckDomain(url, timeout))
                 {
@@ -110,21 +114,28 @@ namespace FriishProduce
                         char x = response.ResponseUri.ToString()[i];
                     }
 
-                    return true;
+                    result = true;
                 }
 
-                return false;
+                Program.MainForm?.Wait(false, false, false);
+                return result;
             }
 
             catch (Exception ex)
             {
+                Program.MainForm?.Wait(false, false, false);
+
+                // Automatically return true in event of 429: Too many requests
+                if (ex.GetType() == typeof(WebException) && (ex as WebException).Status == WebExceptionStatus.ProtocolError)
+                    return true;
+
                 string message = ex.Message;
+                int colon = message.IndexOf(':');
+                char dot = Program.Lang.GetScript(message) == Language.ScriptType.CJK && !Program.Lang.Current.StartsWith("ko") ? '。' : '.';
 
-                int colon = ex.Message.IndexOf(':');
                 if (!string.IsNullOrWhiteSpace(url) && message.Contains(url) && colon > 0) message = message.Substring(0, colon);
-                if (message[message.Length - 1] != '.') message += ".";
+                if (message[message.Length - 1] != dot) message += dot;
 
-                return true;
                 throw new Exception(string.Format(Program.Lang.Msg(0, true), message));
             }
         }

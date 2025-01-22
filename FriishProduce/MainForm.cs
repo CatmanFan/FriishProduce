@@ -14,6 +14,7 @@ namespace FriishProduce
     {
         private readonly string[] files = null;
         private readonly SettingsForm settings = new();
+        private Wait wait = new(false);
 
         #region //////////////////// Platforms ////////////////////
         public readonly IDictionary<Platform, Bitmap> Icons = new Dictionary<Platform, Bitmap>
@@ -26,9 +27,7 @@ namespace FriishProduce
             { Platform.PCE, new Icon(Properties.Resources.nec_turbografx_16, 16, 16).ToBitmap() },
             { Platform.PCECD, new Icon(Properties.Resources.nec_turbografx_16, 16, 16).ToBitmap() },
             { Platform.NEO, new Icon(Properties.Resources.snk_neo_geo_aes, 16, 16).ToBitmap() },
-#if DEBUG
             { Platform.C64, Properties.Resources.c64 },
-#endif
             { Platform.MSX, Properties.Resources.msx },
             { Platform.PSX, new Icon(Properties.Resources.sony_playstation, 16, 16).ToBitmap() },
             { Platform.Flash, Properties.Resources.flash },
@@ -49,10 +48,8 @@ namespace FriishProduce
             null,
             Platform.NEO.ToString(),
             null,
-#if DEBUG
             Platform.C64.ToString(),
             null,
-#endif
             Platform.MSX.ToString(),
             null,
             Platform.Flash.ToString(),
@@ -232,6 +229,70 @@ namespace FriishProduce
                     if (!f.CheckUnsaved())
                         e.Cancel = true;
                 }
+            }
+        }
+
+        /// <summary>
+        /// Displays wait dialog.
+        /// </summary>
+        /// <param name="reset">Resets the dialog.</param>
+        /// <param name="show">Shows or hides the dialog.</param>
+        /// <param name="msg">The message to display.</param>
+        /// <param name="progress">Progress value</param>
+        /// <param name="showProgress">Whether to display the progress bar.</param>
+        public void Wait(bool show, bool reset, bool showProgress, int progress = 0, int msg = 0)
+        {
+            if (InvokeRequired)
+            {
+                Invoke(new MethodInvoker(delegate
+                {
+                    Enabled = !show;
+
+                    if (show)
+                    {
+                        if (reset || wait == null)
+                        {
+                            if (wait != null) wait.Visible = false;
+                            wait = new(showProgress, msg) { Visible = false };
+                        }
+
+                        if (!wait.Visible)
+                            wait.Show(this);
+                    }
+
+                    else
+                    {
+                        if (wait != null) wait.Visible = false;
+                        Select();
+                    }
+
+                    wait.progress.Value = progress;
+                }));
+            }
+
+            else
+            {
+                Enabled = !show;
+
+                if (show)
+                {
+                    if (reset || wait == null)
+                    {
+                        if (wait != null) wait.Visible = false;
+                        wait = new(showProgress, msg) { Visible = false };
+                    }
+
+                    if (!wait.Visible)
+                        wait.Show(this);
+                }
+
+                else
+                {
+                    if (wait != null) wait.Visible = false;
+                    Select();
+                }
+
+                wait.progress.Value = progress;
             }
         }
 
@@ -451,7 +512,7 @@ namespace FriishProduce
             var control = sender as MenuItem;
             var list = open_recent.MenuItems.OfType<MenuItem>().Where(x => x.Text == control?.Text).ToArray();
 
-            if (list.Length > 1)
+            if (list?.Length > 0)
             {
                 for (int i = 0; i < 10; i++)
                 {
@@ -469,7 +530,10 @@ namespace FriishProduce
                         0 or _ => Program.Config.paths.recent_00
                     };
 
-                    if (Path.GetFileName(file)?.Replace("&", "&&") == list[0].Text)
+                    string title1 = Path.GetFileName(file)?.Replace("&", "&&");
+                    string title2 = list[0].Text;
+
+                    if (title1 == title2)
                     {
                         OpenProject(new string[] { file });
                         return;

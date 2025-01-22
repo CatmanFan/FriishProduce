@@ -21,6 +21,7 @@
 			"do_not_show":						"Do not show this again",
 			"busy0":							"Please wait...",
 			"busy1":							"Exportation in progress...",
+			"busy2":							"Testing Internet connection...",
 			
 			"by_default":						"Default",
 			"disabled":							"Disabled",
