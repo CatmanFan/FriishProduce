@@ -56,6 +56,9 @@ namespace FriishProduce.Injectors
                     );
                     if (File.Exists(Paths.WorkingFolder + "ik.fss.comp")) File.Delete(Paths.WorkingFolder + "ik.fss.comp");
 
+                    if (!File.Exists(frodo + "Frodo.exe"))
+                        throw new Exception(string.Format(Program.Lang.Msg(6, true), frodo.Replace(Paths.Tools, null) + "Frodo.exe"));
+
                     File.Copy(Paths.WorkingFolder + "ik.fss", frodo + "ik.fss", true);
                     if (File.Exists(Paths.WorkingFolder + "ik.fss")) File.Delete(Paths.WorkingFolder + "ik.fss");
                 }
