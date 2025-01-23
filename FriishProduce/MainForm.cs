@@ -327,7 +327,7 @@ namespace FriishProduce
                 import_game_file.Text = string.Format(Program.Lang.String(import_game_file.Tag.ToString(), Name), (tabControl.SelectedForm as ProjectForm).FileTypeName);
             }
 
-            import_game_file.Enabled = close_project.Enabled = hasTabs;
+            import_game_file.Enabled = close_all.Enabled = close_project.Enabled = hasTabs;
 
             // Sync toolbar buttons
             // ********
@@ -403,6 +403,17 @@ namespace FriishProduce
         }
 
         private void CloseTab_Click(object sender, EventArgs e) { var tab = tabControl.SelectedForm as Form; tab?.Close(); }
+
+        private void CloseAll_Click(object sender, EventArgs e)
+        {
+            List<Form> list = new();
+
+            for (int i = 0; i < tabControl.TabPages.Count; i++)
+                list.Add(tabControl.TabPages[i].Form as Form);
+
+            foreach (var tab in list)
+                tab.Close();
+        }
 
         private void About_Click(object sender, EventArgs e) { using var about = new About(); about.ShowDialog(); }
 

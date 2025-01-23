@@ -47,6 +47,7 @@ namespace FriishProduce
             }
             catch { }
 
+            Logger.Log("Opening FriishProduce.");
             Config = new(Paths.Config);
             Lang = new Language();
 
@@ -54,11 +55,13 @@ namespace FriishProduce
 
             // if (args.Length > 0 && args[0].StartsWith("--"))
             // {
+            //     Logger.Log("Running in CLI (command-line) mode.");
             //     CLI.Run(args);
             // }
 
             // else
             // {
+                Logger.Log("Running in GUI (graphical) mode.");
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 MainForm = new MainForm(args);

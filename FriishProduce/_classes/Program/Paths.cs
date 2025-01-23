@@ -10,6 +10,7 @@ namespace FriishProduce
 
         // Application paths
         public static readonly string Config = Path.Combine(EnvironmentFolder, "FriishProduce.json");
+        public static readonly string Log = Path.Combine(EnvironmentFolder, "log.txt");
         public static readonly string Databases = Path.Combine(EnvironmentFolder, "resources\\databases\\");
         public static readonly string Tools = Path.Combine(EnvironmentFolder, "resources\\tools\\");
         public static readonly string Languages = Path.Combine(EnvironmentFolder, "strings\\");

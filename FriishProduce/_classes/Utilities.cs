@@ -25,6 +25,16 @@ namespace FriishProduce
         FAILED_INJECTION,
         FAILED_DOWNLOADED_WAD
     }
+    public static class Logger
+    {
+        public static void Log(string msg)
+        {
+            // StringBuilder sb = new StringBuilder();
+            // sb.Append($"[{DateTime.Now.Year}-{DateTime.Now.Month:D2}-{DateTime.Now.Day:D2} {DateTime.Now.Hour:D2}:{DateTime.Now.Minute:D2}:{DateTime.Now.Second:D2}] {msg}\n");
+            // File.AppendAllText(Paths.Log, sb.ToString());
+            // sb.Clear();
+        }
+    }
 
     /* class CustomToolTip : ToolTip
     {

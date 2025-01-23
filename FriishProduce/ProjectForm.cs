@@ -344,11 +344,12 @@ namespace FriishProduce
             // ********
             if (project != Program.Config.paths.recent_00)
             {
-                for (int i = 0; i < max - 1; i++)
+                for (int i = max - 1; i > 0; i--)
                 {
-                    var prop1 = Program.Config.paths.GetType().GetProperty($"recent_{i:D2}");
-                    var prop2 = Program.Config.paths.GetType().GetProperty($"recent_{i + 1:D2}");
-                    prop2.SetValue(Program.Config.paths, prop1.GetValue(Program.Config.paths, null));
+                    var prop1 = Program.Config.paths.GetType().GetProperty($"recent_{i - 1:D2}");
+                    var prop2 = Program.Config.paths.GetType().GetProperty($"recent_{i:D2}");
+                    var path = prop1.GetValue(Program.Config.paths, null)?.ToString();
+                    prop2.SetValue(Program.Config.paths, path);
                 }
 
                 Program.Config.paths.recent_00 = project;
@@ -1685,7 +1686,6 @@ namespace FriishProduce
 
                 string emulator = null;
                 Forwarder.Storages device = 0;
-
                 Invoke(new MethodInvoker(delegate
                 {
                     m.IsMultifile = multifile_software.Checked;
@@ -1695,11 +1695,14 @@ namespace FriishProduce
                     device = forwarder_root_device.SelectedIndex == 1 ? Forwarder.Storages.USB : Forwarder.Storages.SD;
                 }));
 
+                int wad_tries = 0;
+
+                Start:
+                Program.MainForm.Wait(false, false, false);
                 if (inWadFile == null)
                     Web.InternetTest();
                 Program.MainForm.Wait(true, true, true, 0, 1);
 
-                Start:
                 // Get WAD data
                 // *******
                 if (inWadFile != null) m.GetWAD(inWadFile, baseID.Text);
@@ -1725,7 +1728,21 @@ namespace FriishProduce
                     case Platform.MSX:
                         if (isVirtualConsole)
                             try { m.Inject(); }
-                            catch (Exception ex) { if (ex.Message == "U8 Header: Invalid Magic!") goto Start; else throw; }
+                            catch (Exception ex)
+                            {
+                                if (ex.Message == "U8 Header: Invalid Magic!" && wad_tries == 0)
+                                {
+                                    wad_tries++;
+                                    Logger.Log("Attempting to load/download WAD a second time.");
+                                    goto Start;
+                                }
+
+                                else
+                                {
+                                    Logger.Log("WAD is invalid or failed to load more than once. Process halted.");
+                                    throw;
+                                }
+                            }
                         else
                             m.CreateForwarder(emulator, device);
                         break;

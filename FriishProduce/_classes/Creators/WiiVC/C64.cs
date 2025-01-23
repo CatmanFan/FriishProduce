@@ -54,10 +54,10 @@ namespace FriishProduce.Injectors
                         "gbalzss",
                         "d ik.fss.comp ik.fss"
                     );
+                    if (File.Exists(Paths.WorkingFolder + "ik.fss.comp")) File.Delete(Paths.WorkingFolder + "ik.fss.comp");
 
-                    try { File.Delete(frodo + "ik.fss"); } catch { }
-                    try { File.Move(Paths.WorkingFolder + "ik.fss", frodo + "ik.fss"); } catch { }
-                    File.Delete(Paths.WorkingFolder + "ik.fss.comp");
+                    File.Copy(Paths.WorkingFolder + "ik.fss", frodo + "ik.fss", true);
+                    if (File.Exists(Paths.WorkingFolder + "ik.fss")) File.Delete(Paths.WorkingFolder + "ik.fss");
                 }
             }
 
@@ -185,14 +185,17 @@ namespace FriishProduce.Injectors
 
             if (!cancel)
             {
-                try { File.Delete(Paths.WorkingFolder + "ik.fss"); } catch { }
-                File.Move(snapshot, Paths.WorkingFolder + "ik.fss");
+                File.Copy(snapshot, Paths.WorkingFolder + "ik.fss", true);
+                if (File.Exists(snapshot)) File.Delete(snapshot);
+
                 Utils.Run
                 (
                     FileDatas.Apps.gbalzss,
                     "gbalzss",
                     "e ik.fss ik.fss.comp"
                 );
+                if (!File.Exists(Paths.WorkingFolder + "ik.fss.comp")) throw new Exception(Program.Lang.Msg(2, true));
+
                 MainContent.ReplaceFile(ik_fss_index, File.ReadAllBytes(Paths.WorkingFolder + "ik.fss.comp"));
             }
             

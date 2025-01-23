@@ -75,155 +75,192 @@ namespace FriishProduce
 
         public void GetWAD(string path, string tid)
         {
-            WAD = new WAD();
-
-            if (File.Exists(path)) WAD = WAD.Load(path);
-            else if (path.ToLower().StartsWith("http"))
+            try
             {
-                _progress.max += 1.0;
+                WAD = new WAD();
 
-                WAD = WAD.Load(Web.Get(path));
+                if (File.Exists(path))
+                {
+                    Logger.Log($"Loading WAD file with title ID {tid}.");
+                    WAD = WAD.Load(path);
+                }
 
-                _updateProgress();
+                else if (path.ToLower().StartsWith("http"))
+                {
+                    Logger.Log($"Downloading WAD with title ID {tid}.");
+                    _progress.max += 1.0;
+
+                    WAD = WAD.Load(Web.Get(path));
+
+                    _updateProgress();
+                }
+
+                // Title ID check
+                // ****************
+                if (WAD.UpperTitleID.ToUpper() != tid || !WAD.HasBanner)
+                    WAD.Dispose();
+
+                // Contents check
+                // ****************
+                if (WAD == null || WAD?.NumOfContents <= 1)
+                    throw new Exception(Program.Lang.Msg(9, true));
+
+                Logger.Log($"WAD loaded.");
             }
 
-            // Title ID check
-            // ****************
-            if (WAD.UpperTitleID.ToUpper() != tid || !WAD.HasBanner)
-                WAD.Dispose();
-
-            // Contents check
-            // ****************
-            if (WAD == null || WAD?.NumOfContents <= 1)
-                throw new Exception(Program.Lang.Msg(9, true));
+            catch (Exception ex)
+            {
+                Logger.Log($"ERROR: Failed to load original WAD. {ex.Message}");
+                throw;
+            }
         }
             
         public void Inject(bool useOrigManual = false)
         {
-            if (Platform == Platform.Flash)
+            try
             {
-                Injectors.Flash Flash = new()
+                if (Platform == Platform.Flash)
                 {
-                    SWF = ROM.FilePath,
-                    Settings = Settings.List,
-                    Keymap = Settings.Keymap,
-                    Multifile = IsMultifile
-                };
+                    Injectors.Flash Flash = new()
+                    {
+                        SWF = ROM.FilePath,
+                        Settings = Settings.List,
+                        Keymap = Settings.Keymap,
+                        Multifile = IsMultifile
+                    };
 
-                WAD = Flash.Inject(WAD, SaveDataTitle, Img);
-            }
-
-            else
-            {
-                // Create Wii VC injector to use
-                // *******
-                InjectorWiiVC VC = null;
-
-                switch (Platform)
-                {
-                    default:
-                        throw new NotImplementedException();
-
-                    // NES
-                    // *******
-                    case Platform.NES:
-                        VC = new Injectors.NES();
-                        break;
-
-                    // SNES
-                    // *******
-                    case Platform.SNES:
-                        VC = new Injectors.SNES();
-                        break;
-
-                    // N64
-                    // *******
-                    case Platform.N64:
-                        VC = new Injectors.N64()
-                        {
-                            CompressionType = EmuVersion == 3 ? (Settings.List["romc"] == "0" ? 1 : 2) : 0,
-                            Allocate = Settings.List["rom_autosize"] == "True" && (EmuVersion <= 1),
-                        };
-                        break;
-
-                    // SEGA
-                    // *******
-                    case Platform.SMS:
-                    case Platform.SMD:
-                        VC = new Injectors.SEGA()
-                        {
-                            IsSMS = Platform == Platform.SMS
-                        };
-                        break;
-
-                    // PCE(CD)
-                    // *******
-                    case Platform.PCE:
-                    case Platform.PCECD:
-                        VC = new Injectors.PCE()
-                        {
-                            IsDisc = Platform == Platform.PCECD
-                        };
-                        break;
-
-                    // NEOGEO
-                    // *******
-                    case Platform.NEO:
-                        VC = new Injectors.NEO();
-                        break;
-
-                    // MSX
-                    // *******
-                    case Platform.C64:
-                        VC = new Injectors.C64();
-                        break;
-
-                    // MSX
-                    // *******
-                    case Platform.MSX:
-                        VC = new Injectors.MSX();
-                        break;
+                    WAD = Flash.Inject(WAD, SaveDataTitle, Img);
                 }
 
-                // Get settings from relevant form
-                // *******
-                VC.Settings = Settings.List;
-                VC.Keymap = Settings.Keymap;
+                else
+                {
+                    // Create Wii VC injector to use
+                    // *******
+                    InjectorWiiVC VC = null;
 
-                // Set path to manual (if it exists) and load WAD
-                //// *******
-                VC.Manual = Manual;
+                    switch (Platform)
+                    {
+                        default:
+                            throw new NotImplementedException();
 
-                // Actually inject everything
-                // *******
-                WAD = VC.Inject(WAD, ROM, SaveDataTitle, Img);
+                        // NES
+                        // *******
+                        case Platform.NES:
+                            VC = new Injectors.NES();
+                            break;
+
+                        // SNES
+                        // *******
+                        case Platform.SNES:
+                            VC = new Injectors.SNES();
+                            break;
+
+                        // N64
+                        // *******
+                        case Platform.N64:
+                            VC = new Injectors.N64()
+                            {
+                                CompressionType = EmuVersion == 3 ? (Settings.List["romc"] == "0" ? 1 : 2) : 0,
+                                Allocate = Settings.List["rom_autosize"] == "True" && (EmuVersion <= 1),
+                            };
+                            break;
+
+                        // SEGA
+                        // *******
+                        case Platform.SMS:
+                        case Platform.SMD:
+                            VC = new Injectors.SEGA()
+                            {
+                                IsSMS = Platform == Platform.SMS
+                            };
+                            break;
+
+                        // PCE(CD)
+                        // *******
+                        case Platform.PCE:
+                        case Platform.PCECD:
+                            VC = new Injectors.PCE()
+                            {
+                                IsDisc = Platform == Platform.PCECD
+                            };
+                            break;
+
+                        // NEOGEO
+                        // *******
+                        case Platform.NEO:
+                            VC = new Injectors.NEO();
+                            break;
+
+                        // MSX
+                        // *******
+                        case Platform.C64:
+                            VC = new Injectors.C64();
+                            break;
+
+                        // MSX
+                        // *******
+                        case Platform.MSX:
+                            VC = new Injectors.MSX();
+                            break;
+                    }
+
+                    // Get settings from relevant form
+                    // *******
+                    VC.Settings = Settings.List;
+                    VC.Keymap = Settings.Keymap;
+
+                    // Set path to manual (if it exists) and load WAD
+                    //// *******
+                    VC.Manual = Manual;
+
+                    // Actually inject everything
+                    // *******
+                    WAD = VC.Inject(WAD, ROM, SaveDataTitle, Img);
+                }
+
+                Logger.Log("Created injected WAD.");
+                _updateProgress();
             }
 
-            _updateProgress();
+            catch (Exception ex)
+            {
+                Logger.Log($"ERROR: {ex.Message}");
+                throw;
+            }
         }
 
         public void CreateForwarder(string emulator, Forwarder.Storages storage)
         {
-            Forwarder f = new()
+            try
             {
-                ROM = ROM.FilePath,
-                Multifile = IsMultifile,
-                ID = TitleID,
-                Emulator = emulator,
-                Storage = storage,
-                Name = ChannelTitles[1]
-            };
+                Forwarder f = new()
+                {
+                    ROM = ROM.FilePath,
+                    Multifile = IsMultifile,
+                    ID = TitleID,
+                    Emulator = emulator,
+                    Storage = storage,
+                    Name = ChannelTitles[1]
+                };
 
-            // Get settings from relevant form
-            // *******
-            f.Settings = Settings.List;
+                // Get settings from relevant form
+                // *******
+                f.Settings = Settings.List;
 
-            // Actually inject everything
-            // *******
-            f.CreateZIP(Path.Combine(Path.GetDirectoryName(Out), Path.GetFileNameWithoutExtension(Out) + $" ({f.Storage}).zip"));
-            WAD = f.CreateWAD(WAD);
+                // Actually inject everything
+                // *******
+                f.CreateZIP(Path.Combine(Path.GetDirectoryName(Out), Path.GetFileNameWithoutExtension(Out) + $" ({f.Storage}).zip"));
+                WAD = f.CreateWAD(WAD);
 
-            _updateProgress();
+                Logger.Log($"Created {emulator} forwarder.");
+                _updateProgress();
+            }
+
+            catch (Exception ex)
+            {
+                Logger.Log($"ERROR: Failed to create forwarder. {ex.Message}");
+                throw;
+            }
         }
 
         public void EditMetadata()
@@ -234,59 +271,83 @@ namespace FriishProduce
             WAD.ChangeChannelTitles(ChannelTitles_Limit);
             WAD.ChangeTitleID(LowerTitleID.Channel, TitleID);
             WAD.FakeSign = true;
+
+            Logger.Log("Changed channel titles.");
+            Logger.Log($"Changed WAD title ID to {TitleID}.");
+            Logger.Log("Fakesigned WAD.");
         }
 
         public void EditBanner()
         {
-            // Sound
-            // *******
-            if (File.Exists(BannerSound))
-                SoundHelper.ReplaceSound(WAD, BannerSound);
-            else
-                SoundHelper.ReplaceSound(WAD, Properties.Resources.Sound_WiiVC);
+            try
+            {
+                // Sound
+                // *******
+                if (File.Exists(BannerSound))
+                    SoundHelper.ReplaceSound(WAD, BannerSound);
+                else
+                    SoundHelper.ReplaceSound(WAD, Properties.Resources.Sound_WiiVC);
 
-            // Banner text
-            // *******
-            BannerHelper.Modify
-            (
-                WAD,
-                Platform,
-                BannerRegion,
-                BannerTitle,
-                BannerYear,
-                BannerPlayers
-            );
+                // Banner text
+                // *******
+                BannerHelper.Modify
+                (
+                    WAD,
+                    Platform,
+                    BannerRegion,
+                    BannerTitle,
+                    BannerYear,
+                    BannerPlayers
+                );
 
-            // Image
-            // *******
-            if (Img?.VCPic != null) Img.ReplaceBanner(WAD);
+                // Image
+                // *******
+                if (Img?.VCPic != null) Img.ReplaceBanner(WAD);
 
-            _updateProgress();
+                Logger.Log("Added VC banner.");
+                _updateProgress();
+            }
+
+            catch (Exception ex)
+            {
+                Logger.Log($"ERROR: Failed to add VC banner. {ex.Message}");
+                throw;
+            }
         }
 
         public void Save()
         {
-            if (Directory.Exists(Paths.SDUSBRoot))
+            try
             {
-                Directory.CreateDirectory(Paths.SDUSBRoot + "wad\\");
-                WAD.Save(Paths.SDUSBRoot + "wad\\" + Path.GetFileNameWithoutExtension(Out) + ".wad");
+                if (Directory.Exists(Paths.SDUSBRoot))
+                {
+                    Directory.CreateDirectory(Paths.SDUSBRoot + "wad\\");
+                    WAD.Save(Paths.SDUSBRoot + "wad\\" + Path.GetFileNameWithoutExtension(Out) + ".wad");
 
-                // Get ZIP directory path & compress to .ZIP archive
-                // *******
-                if (File.Exists(Out)) File.Delete(Out);
+                    // Get ZIP directory path & compress to .ZIP archive
+                    // *******
+                    if (File.Exists(Out)) File.Delete(Out);
 
-                FastZip z = new();
-                z.CreateZip(Out, Paths.SDUSBRoot, true, null);
+                    FastZip z = new();
+                    z.CreateZip(Out, Paths.SDUSBRoot, true, null);
 
-                // Clean
-                // *******
-                Directory.Delete(Paths.SDUSBRoot, true);
+                    // Clean
+                    // *******
+                    Directory.Delete(Paths.SDUSBRoot, true);
+                }
+
+                else WAD.Save(Out);
+
+                Logger.Log($"SUCCESS: Exported to {Out}.");
+                _updateProgress();
+                _progress.step = _progress.max;
             }
 
-            else WAD.Save(Out);
-
-            _updateProgress();
-            _progress.step = _progress.max;
+            catch (Exception ex)
+            {
+                Logger.Log($"ERROR: Failed to export. {ex.Message}");
+                throw;
+            }
         }
 
         public void Dispose()

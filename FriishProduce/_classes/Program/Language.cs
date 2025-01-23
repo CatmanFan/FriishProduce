@@ -154,6 +154,7 @@ namespace FriishProduce
             }
 
             Thread.CurrentThread.CurrentCulture = Thread.CurrentThread.CurrentUICulture = new CultureInfo(code == "sys" ? GetSystemLanguage() : code);
+            Logger.Log($"Language set to {Thread.CurrentThread.CurrentCulture.EnglishName}.");
         }
 
         #region Public methods and variables
