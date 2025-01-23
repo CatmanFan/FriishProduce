@@ -58,7 +58,7 @@ namespace FriishProduce.Injectors
 
                 Utils.Run
                 (
-                    FileDatas.Apps.lzh8_cmp_nonstrict,
+                    FileDatas.Apps.lzh8_cmp,
                     "lzh8",
                     "rom lzh8.rom"
                 );
