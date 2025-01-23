@@ -195,22 +195,11 @@ namespace FriishProduce.Databases
 
                 // Scan retrieved database for CRC32 hashes, and add to data table
                 // ****************
-                for (int i = db_lines[0].Length - 1; i > 1; i--)
+                for (int i = 0; i < db_lines[0].Length; i++)
                 {
                     string line = db_lines[0][i];
 
-                    if (line.Contains("crc "))
-                    {
-                        if (dt.Select($"crc = '{crc}'")?.Length == 0 && !string.IsNullOrWhiteSpace(name))
-                        {
-                            dt.Rows.Add(crc, name, null, releaseyear, users, image);
-                            image = users = releaseyear = name = crc = null;
-                        }
-
-                        crc = db_crc(line.Substring(line.IndexOf("crc ") + 4, 8));
-                    }
-
-                    if (string.IsNullOrEmpty(name) && (line.Contains("name \"") || line.Contains("comment \"")) && !line.Contains("rom ("))
+                    if (string.IsNullOrEmpty(name) && (line.Contains("name \"") || line.Contains("comment \"")) && !line.Contains("rom (") && !line.Contains(db_name))
                     {
                         name = line.Replace("\t", "").Replace("name \"", "").Replace("comment \"", "").Replace("\"", "");
                         image = db_img(name);
@@ -229,6 +218,17 @@ namespace FriishProduce.Databases
                     if (line.Contains("serial "))
                     {
                         serial = line.Substring(line.IndexOf("serial ") + 7).TrimStart('\"', ' ', '\t', ')').TrimEnd('\"', ' ', '\t', ')');
+                    }
+
+                    if (line.Contains("crc "))
+                    {
+                        crc = db_crc(line.Substring(line.IndexOf("crc ") + 4, 8));
+
+                        if (dt.Select($"crc = '{crc}'")?.Length == 0 && !string.IsNullOrWhiteSpace(name))
+                        {
+                            dt.Rows.Add(crc, name, serial, releaseyear, users, image);
+                            image = users = releaseyear = name = crc = null;
+                        }
                     }
                 }
 
