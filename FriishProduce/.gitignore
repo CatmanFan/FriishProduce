@@ -17,17 +17,17 @@
 mono_crash.*
 
 # Build results
-[Dd]ebug/
-[Dd]ebugPublic/
-[Rr]elease/
-[Rr]eleases/
-x64/
-x86/
+# [Dd]ebug/
+# [Dd]ebugPublic/
+# [Rr]elease/
+# [Rr]eleases/
+# x64/
+# x86/
 [Ww][Ii][Nn]32/
 [Aa][Rr][Mm]/
 [Aa][Rr][Mm]64/
 bld/
-[Bb]in/
+# [Bb]in/
 [Oo]bj/
 [Ll]og/
 [Ll]ogs/
@@ -402,5 +402,14 @@ FodyWeavers.xsd
 
 # Others
 IconPacks/
-bin/Debug/resources/temp/README.md
+[Bb]in/*/resources/libraries/
+[Bb]in/*/resources/databases/
+[Bb]in/*/resources/temp/
+[Bb]in/*/resources/tools/wstrt/
+[Bb]in/*/resources/tools/README.md
+[Bb]in/*/strings/
+[Bb]in/*/*.exe
+[Bb]in/*/*.exe.config
+[Bb]in/*/*.json
+[Bb]in/*.rar
 Resources/bg.pdn
