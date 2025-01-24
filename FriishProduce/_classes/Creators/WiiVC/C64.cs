@@ -232,42 +232,66 @@ namespace FriishProduce.Injectors
             if (Img != null)
             {
                 int tpl_index = MainContent.GetNodeIndex("LZ77_banner.tpl");
-                bool isLZ77 = tpl_index != -1;
-                
                 if (tpl_index == -1) return;
 
-                byte[] tpl = MainContent.Data[tpl_index];
+                byte[] tpl = null, new_tpl = null;
+                int tries = 0;
 
-                if (isLZ77)
+                Extract:
+                tpl = MainContent.Data[tpl_index];
+
+                try
                 {
-                    File.WriteAllBytes(Paths.WorkingFolder + "LZ77_banner.tpl", tpl);
+                    if (tries == 0 || tries == 1)
+                    {
+                        File.WriteAllBytes(Paths.WorkingFolder + "LZ77_banner.tpl", tpl);
 
-                    Utils.Run
-                    (
-                        FileDatas.Apps.gbalzss,
-                        "gbalzss",
-                        "d LZ77_banner.tpl banner.tpl"
-                    );
+                        Utils.Run
+                        (
+                            tries == 0 ? FileDatas.Apps.wwcxtool : FileDatas.Apps.gbalzss,
+                            tries == 0 ? "wwcxtool.exe" : "gbalzss",
+                            tries == 0 ? "/u LZ77_banner.tpl banner.tpl" : "d LZ77_banner.tpl banner.tpl"
+                        );
 
-                    File.Delete(Paths.WorkingFolder + "LZ77_banner.tpl");
+                        tpl = File.ReadAllBytes(Paths.WorkingFolder + "banner.tpl");
+                    }
 
-                    tpl = File.ReadAllBytes(Paths.WorkingFolder + "banner.tpl");
+                    else if (tries == 2)
+                    {
+                        libWiiSharp.Lz77 l = new();
+                        tpl = l.Decompress(tpl);
+                    }
+
+                    new_tpl = Img.CreateSaveTPL(tpl).ToByteArray();
                 }
 
-                byte[] new_tpl = Img.CreateSaveTPL(tpl).ToByteArray();
+                catch (Exception ex)
+                {
+                    if (tries >= 3 || ex.InnerException?.Message != "TPL Header: Invalid Magic!")
+                        throw ex;
 
-                if (isLZ77)
+                    tries++;
+                    goto Extract;
+                }
+
+                if (tries == 0 || tries == 1)
                 {
                     File.WriteAllBytes(Paths.WorkingFolder + "banner.tpl", new_tpl);
 
                     Utils.Run
                     (
-                        FileDatas.Apps.gbalzss,
-                        "gbalzss",
-                        "e banner.tpl LZ77_banner.tpl"
+                        tries == 0 ? FileDatas.Apps.wwcxtool : FileDatas.Apps.gbalzss,
+                        tries == 0 ? "wwcxtool.exe" : "gbalzss",
+                        tries == 0 ? "/cr LZ77_banner.tpl banner.tpl new.tpl" : "e banner.tpl new.tpl"
                     );
 
-                    new_tpl = File.ReadAllBytes(Paths.WorkingFolder + "LZ77_banner.tpl");
+                    new_tpl = File.ReadAllBytes(Paths.WorkingFolder + "new.tpl");
+                }
+
+                else if (tries == 2)
+                {
+                    libWiiSharp.Lz77 l = new();
+                    new_tpl = l.Compress(new_tpl);
                 }
 
                 MainContent.ReplaceFile(tpl_index, new_tpl);
