@@ -111,6 +111,7 @@ namespace FriishProduce
             catch (Exception ex)
             {
                 Logger.Log($"ERROR: Failed to load original WAD. {ex.Message}");
+                if (ex.InnerException != null) Logger.Log($"DETAILS: {ex.InnerException.Message}");
                 throw;
             }
         }

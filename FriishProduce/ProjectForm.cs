@@ -1810,7 +1810,10 @@ namespace FriishProduce
 
                     else
                     {
-                        MessageBox.Error(error.Message);
+                        string msg = error.Message;
+                        if (!string.IsNullOrWhiteSpace(error.InnerException?.Message)) msg += Environment.NewLine + error.InnerException?.Message;
+
+                        MessageBox.Error(msg);
                     }
                 }));
             }

@@ -99,7 +99,7 @@ namespace FriishProduce
 
             return list.ToArray();
         }
-#endregion
+        #endregion
 
         /// <summary>
         /// Changes language of this form and all tab pages
@@ -111,7 +111,7 @@ namespace FriishProduce
             toolbarNewProject.DropDownItems.Clear();
             toolbarNewProject.DropDownItems.AddRange(platformsStripItemList());
 
-#region Localization
+            #region Localization
             Program.Lang.Control(this);
             Text = Program.Lang.ApplicationTitle;
             about.Text = string.Format(Program.Lang.String("about_app"), Program.Lang.ApplicationTitle);
@@ -146,7 +146,7 @@ namespace FriishProduce
 
             try { BrowseProject.Filter = SaveProject.Filter = Program.Lang.String("filter.project"); }
             catch { MessageBox.Show("Warning!\nThe language strings have not been loaded correctly.\n\nSeveral items may show up as 'undefined'.\n\nOther exceptions related to strings or filters can also occur!", MessageBox.Buttons.Ok, MessageBox.Icons.Warning, false); }
-#endregion
+            #endregion
 
             if (Program.DebugMode)
             {
@@ -174,7 +174,7 @@ namespace FriishProduce
         {
             RefreshForm();
 
-#region Set size of window
+            #region Set size of window
             mainPanel.Dock = DockStyle.None;
 
             int w = 16;
@@ -192,7 +192,7 @@ namespace FriishProduce
             // Set logo position (425, 163)
             // ********
             if (Logo.Location.X == 0 || Logo.Location.Y == 0) Logo.Location = new Point(mainPanel.Bounds.Width / 2 - (Logo.Width / 2), mainPanel.Bounds.Height / 2 - (Logo.Height / 2) - mainPanel.Location.Y);
-#endregion
+            #endregion
 
             // Open project(s) if defined as argument(s)
             // ********
@@ -755,7 +755,7 @@ namespace FriishProduce
 
                 else if (sender == extract_wad_sound)
                 {
-#region ##### Extract banner sound #####
+                    #region ##### Extract banner sound #####
                     using SaveFileDialog saveDialog = new()
                     {
                         FileName = "sound",
@@ -780,7 +780,7 @@ namespace FriishProduce
 
                         catch (Exception ex) { error = ex; goto Failed; }
                     }
-#endregion
+                    #endregion
                 }
 
                 else if (sender == extract_wad_manual)
@@ -796,7 +796,7 @@ namespace FriishProduce
                             {
                                 try { u8 = U8.Load(w.Contents[i]); } catch { i++; goto Loop; }
 
-#region ##### Extract original manual #####
+                                #region ##### Extract original manual #####
                                 if (u8.StringTable.Contains("main.ccf"))
                                 {
                                     using var target = CCF.Load(u8.Data[u8.GetNodeIndex("main.ccf")]);
@@ -843,7 +843,7 @@ namespace FriishProduce
                                             break;
                                         }
                                 }
-#endregion
+                                #endregion
                             }
                         }
 

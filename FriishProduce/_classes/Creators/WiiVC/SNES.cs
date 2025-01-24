@@ -39,12 +39,21 @@ namespace FriishProduce.Injectors
             {
                 File.WriteAllBytes(Paths.WorkingFolder + "rom", ROM.Bytes);
 
+                File.WriteAllBytes(Paths.WorkingFolder + "orig_lz77.rom", MainContent.Data[MainContent.GetNodeIndex(target)]);
+
                 Utils.Run
                 (
-                    FileDatas.Apps.gbalzss,
-                    "gbalzss",
-                    "e rom lz77.rom"
+                    FileDatas.Apps.wwcxtool,
+                    "wwcxtool.exe",
+                    "/u orig_lz77.rom orig.rom"
                 );
+                Utils.Run
+                (
+                    FileDatas.Apps.wwcxtool,
+                    "wwcxtool.exe",
+                    "/cr orig_lz77.rom rom lz77.rom"
+                );
+
                 if (!File.Exists(Paths.WorkingFolder + "lz77.rom")) throw new Exception(Program.Lang.Msg(2, true));
 
                 MainContent.ReplaceFile(MainContent.GetNodeIndex(target), Paths.WorkingFolder + "lz77.rom");
@@ -179,7 +188,7 @@ namespace FriishProduce.Injectors
             if (nomanual) argDict.Add("--no-opera", Program.Lang.String("patch_noopera", "vc_snes"));
 
             if (argDict?.Count == 0) return;
-            argDict.Add("--no-check-header-simple", null);
+            argDict.Add(ID.StartsWith("JCC") || ID.StartsWith("JDA") || ID.StartsWith("JD6") ? "--no-check-header-simple" : "--no-check-header-all", null);
 
             // Write 01.app
             // ****************
@@ -214,6 +223,24 @@ namespace FriishProduce.Injectors
 
             // Patch again
             // ****************
+            for (int i = 0; i < argDict.Count; i++)
+            {
+                (string Key, string Value) = (argDict.Keys.ElementAt(i), argDict.Values.ElementAt(i));
+
+                Utils.Run
+                (
+                    FileDatas.Apps.sns_boost,
+                    "sns_boost.exe",
+                    $"-i 01.app {Key}"
+                );
+
+                if (File.Exists(Paths.WorkingFolder + "01_boosted.app"))
+                {
+                    File.Copy(Paths.WorkingFolder + "01_boosted.app", Paths.WorkingFolder + "01.app", true);
+                    File.Delete(Paths.WorkingFolder + "01_boosted.app");
+                }
+            }
+
             File.WriteAllBytes(Paths.WorkingFolder + "01.app", Contents[1]);
             Utils.Run
             (
@@ -224,7 +251,7 @@ namespace FriishProduce.Injectors
 
             // Messages for failed patches
             // ****************
-            bool notNeeded = argDict.Count == 1 && (argDict.Keys.ElementAt(0) == "--no-opera" || argDict.Keys.ElementAt(0) == "--no-check-header-simple");
+            bool notNeeded = argDict.Count == 1 && (argDict.Keys.ElementAt(0) == "--no-opera" || argDict.Keys.ElementAt(0).StartsWith("--no-check-header"));
 
             if (!notNeeded)
             {
