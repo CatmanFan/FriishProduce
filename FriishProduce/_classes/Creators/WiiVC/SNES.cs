@@ -196,7 +196,8 @@ namespace FriishProduce.Injectors
             if (nomanual) argDict.Add("--no-opera", Program.Lang.String("patch_noopera", "vc_snes"));
 
             if (argDict?.Count == 0) return;
-            argDict.Add("--no-header-check-simple", null);
+            if (bool.Parse(Settings["patch_nocheck"])) argDict.Add("--no-header-check-all", Program.Lang.String("patch_nocheck", "vc_snes"));
+            else argDict.Add("--no-header-check-simple", null);
 
             // Write 01.app
             // ****************
@@ -242,7 +243,7 @@ namespace FriishProduce.Injectors
             // Messages for failed patches
             // ****************
             failed.Remove("--no-opera");
-            bool generic = argDict.Count == 1 && (argDict.Keys.ElementAt(0) == "--no-opera" || argDict.Keys.ElementAt(0).StartsWith("--no-header-check"));
+            bool generic = argDict.Count == 1 && (argDict.Keys.ElementAt(0) == "--no-opera" || argDict.Keys.ElementAt(0) == "--no-header-check-simple");
             bool notNeeded = failed.Count == 0 || generic;
             if (!notNeeded)
             {

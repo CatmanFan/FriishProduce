@@ -23,6 +23,26 @@ namespace FriishProduce.Injectors
         private readonly string target = frodo + "rom.d64";
         private readonly string snapshot = frodo + "snap.fss";
 
+        private void Setup(bool clean = false)
+        {
+            ProcessStartInfo info = new ProcessStartInfo()
+            {
+                FileName = frodo + (clean ? "copy.bat" : "delete.bat"),
+                Verb = "runas",
+                WindowStyle = ProcessWindowStyle.Minimized,
+                CreateNoWindow = true,
+                UseShellExecute = true,
+                RedirectStandardInput = false
+            };
+
+            using (Process p = new())
+            {
+                p.StartInfo = info;
+                p.Start();
+                p.WaitForExit();
+            }
+        }
+
         /// <summary>
         /// Cleans Frodo directory.
         /// </summary>
@@ -31,6 +51,9 @@ namespace FriishProduce.Injectors
             try { File.Delete(frodo + "ik.fss"); } catch { }
             try { File.Delete(target); } catch { }
             try { File.Delete(snapshot); } catch { }
+
+            if (File.Exists(@"C:\1541 ROM"))
+                Setup(true);
         }
 
         /// <summary>
@@ -134,22 +157,7 @@ namespace FriishProduce.Injectors
 
             // Copy Frodo files
             // ****************
-            ProcessStartInfo info = new ProcessStartInfo()
-            {
-                FileName = frodo + "copy.bat",
-                Verb = "runas",
-                WindowStyle = ProcessWindowStyle.Minimized,
-                CreateNoWindow = true,
-                UseShellExecute = true,
-                RedirectStandardInput = false
-            };
-
-            using (Process p = new())
-            {
-                p.StartInfo = info;
-                p.Start();
-                p.WaitForExit();
-            }
+            Setup();
 
             int tries = 5;
 
@@ -183,15 +191,6 @@ namespace FriishProduce.Injectors
                     cancel = true;
                     goto End;
                 }
-            }
-
-            using (Process p = new())
-            {
-                info.FileName = frodo + "copy.bat";
-
-                p.StartInfo = info;
-                p.Start();
-                p.WaitForExit();
             }
 
             End:
