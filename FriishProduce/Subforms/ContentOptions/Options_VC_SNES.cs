@@ -16,7 +16,8 @@ namespace FriishProduce
                 { "patch_nocc",         Program.Config.snes.patch_nocc.ToString() },
                 { "patch_nosuspend",    Program.Config.snes.patch_nosuspend.ToString() },
                 { "patch_nosave",       Program.Config.snes.patch_nosave.ToString() },
-                { "patch_widescreen",   Program.Config.snes.patch_widescreen.ToString() }
+                { "patch_widescreen",   Program.Config.snes.patch_widescreen.ToString() },
+                { "patch_nocheck",      Program.Config.snes.patch_nocheck.ToString() }
             };
 
             // Cosmetic
@@ -41,6 +42,8 @@ namespace FriishProduce
                 patch_nosuspend.Checked             = bool.Parse(Options["patch_nosuspend"]);
                 patch_nosave.Checked                = bool.Parse(Options["patch_nosave"]);
                 patch_widescreen.Checked            = bool.Parse(Options["patch_widescreen"]);
+                try { patch_nocheck.Checked               = bool.Parse(Options["patch_nocheck"]); }
+                catch { patch_nocheck.Checked               = Program.Config.snes.patch_nocheck; }
             }
             // *******
         }
@@ -53,6 +56,7 @@ namespace FriishProduce
             Options["patch_nosuspend"] = patch_nosuspend.Checked.ToString();
             Options["patch_nosave"] = patch_nosave.Checked.ToString();
             Options["patch_widescreen"] = patch_widescreen.Checked.ToString();
+            Options["patch_nocheck"] = patch_nocheck.Checked.ToString();
         }
     }
 }

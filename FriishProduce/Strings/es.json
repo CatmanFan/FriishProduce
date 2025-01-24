@@ -285,6 +285,17 @@
 			"palette_banner_usage":				"Utilizar esta paleta también para la imagen del banner"
 		},
 
+		"vc_snes": {
+			"patch_volume":						"Amplificar volumen",
+			"patch_nodark":						"Desactivar filtro oscuro",
+			"patch_nocc":						"Deshabilitar mensaje del mando clásico",
+			"patch_noopera":					"Eliminar archivos del manual",
+			"patch_nosave":						"Deshabilitar función de guardado",
+			"patch_nosuspend":					"Deshabilitar función de suspensión",
+			"patch_widescreen":					"Menú HOME en pantalla ancha",
+			"patch_nocheck":					"Eliminar verificación de ROM",
+		},
+
 		"vc_n64": {
 			"patch_fixbrightness":				"Desactivar filtro oscuro",
 			"patch_fixcrashes":					"Arreglar fallos",

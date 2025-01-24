@@ -752,7 +752,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>10</value>
   </data>
   <data name="vc_n64_romc_type.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 128</value>
@@ -797,7 +797,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_n64.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>3</value>
   </data>
   <data name="forwarder_type.Items" xml:space="preserve">
     <value>SD</value>
@@ -944,7 +944,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;forwarder.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>12</value>
   </data>
   <data name="vc_nes_palette_banner_usage.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1040,7 +1040,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_nes.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>13</value>
   </data>
   <data name="vc_neo_bios_list.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 18</value>
@@ -1106,7 +1106,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_neo.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>6</value>
   </data>
   <data name="vc_sega_countries.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 18</value>
@@ -1367,7 +1367,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_sega.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>4</value>
   </data>
   <data name="vc_pce_region.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 18</value>
@@ -1733,7 +1733,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_pce.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>5</value>
   </data>
   <data name="auto_prefill.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2093,7 +2093,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>9</value>
   </data>
   <data name="injection_methods_sega.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 18</value>
@@ -2294,7 +2294,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;default_injection_methods.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>7</value>
   </data>
   <data name="browse_bios_neo.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2459,7 +2459,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;bios_files.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>8</value>
   </data>
   <data name="flash_fullscreen.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3104,7 +3104,43 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;adobe_flash.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>11</value>
+  </data>
+  <data name="patch_nocheck.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="patch_nocheck.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopLeft</value>
+  </data>
+  <data name="patch_nocheck.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="patch_nocheck.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 152</value>
+  </data>
+  <data name="patch_nocheck.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 17</value>
+  </data>
+  <data name="patch_nocheck.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="patch_nocheck.Text" xml:space="preserve">
+    <value>patch_nocheck</value>
+  </data>
+  <data name="patch_nocheck.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopLeft</value>
+  </data>
+  <data name="&gt;&gt;patch_nocheck.Name" xml:space="preserve">
+    <value>patch_nocheck</value>
+  </data>
+  <data name="&gt;&gt;patch_nocheck.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;patch_nocheck.Parent" xml:space="preserve">
+    <value>vc_snes_options</value>
+  </data>
+  <data name="&gt;&gt;patch_nocheck.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="vc_snes_patch_nosave.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3137,7 +3173,7 @@
     <value>vc_snes_options</value>
   </data>
   <data name="&gt;&gt;vc_snes_patch_nosave.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="vc_snes_patch_widescreen.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3170,7 +3206,7 @@
     <value>vc_snes_options</value>
   </data>
   <data name="&gt;&gt;vc_snes_patch_widescreen.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="vc_snes_patch_nocc.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3203,7 +3239,7 @@
     <value>vc_snes_options</value>
   </data>
   <data name="&gt;&gt;vc_snes_patch_nocc.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="vc_snes_patch_nodark.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3236,7 +3272,7 @@
     <value>vc_snes_options</value>
   </data>
   <data name="&gt;&gt;vc_snes_patch_nodark.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="vc_snes_patch_nosuspend.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3269,7 +3305,7 @@
     <value>vc_snes_options</value>
   </data>
   <data name="&gt;&gt;vc_snes_patch_nosuspend.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="vc_snes_patch_volume.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3302,13 +3338,13 @@
     <value>vc_snes_options</value>
   </data>
   <data name="&gt;&gt;vc_snes_patch_volume.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="vc_snes_options.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 10</value>
   </data>
   <data name="vc_snes_options.Size" type="System.Drawing.Size, System.Drawing">
-    <value>530, 155</value>
+    <value>530, 177</value>
   </data>
   <data name="vc_snes_options.TabIndex" type="System.Int32, mscorlib">
     <value>40</value>
@@ -3347,7 +3383,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_snes.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>2</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -3357,9 +3393,6 @@
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8.25pt</value>
-  </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>

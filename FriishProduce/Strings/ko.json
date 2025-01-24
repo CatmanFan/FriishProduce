@@ -289,6 +289,17 @@
 			"palette_banner_usage":				"배너 이미지에도 사용"
 		},
 
+		"vc_snes": {
+			"patch_volume":						"Boost volume",
+			"patch_nodark":						"Remove dark filter",
+			"patch_nocc":						"Skip Classic Controller screen",
+			"patch_noopera":					"Remove manual files",
+			"patch_nosave":						"Disable saving",
+			"patch_nosuspend":					"Disable Suspend Point",
+			"patch_widescreen":					"Widescreen HOME Menu",
+			"patch_nocheck":					"Remove all ROM checks",
+		},
+
 		"vc_n64": {
 			"patch_fixbrightness":				"어두운 필터 제거",
 			"patch_fixcrashes":					"충돌 수정",

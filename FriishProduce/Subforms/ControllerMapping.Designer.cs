@@ -519,7 +519,7 @@ namespace FriishProduce
             this.Controls.Add(this.presets_gb);
             this.Controls.Add(this.bottomPanel2);
             this.Controls.Add(this.tabControl1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;

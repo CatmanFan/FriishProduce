@@ -305,6 +305,7 @@
 			"patch_expandedram":				"Extension de mémoire",
 			"patch_autosizerom":				"Allocation de taille de la ROM",
 			"patch_widescreen":					"Plein écran (16/9)",
+			"patch_nocheck":					"Désactiver la vérification de la ROM",
 			
 			"romc_type":						"Méthode de compression",
 			"romc_type0":						"ROMC (type 0)",

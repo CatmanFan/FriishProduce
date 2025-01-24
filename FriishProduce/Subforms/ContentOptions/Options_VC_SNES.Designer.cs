@@ -36,6 +36,7 @@ namespace FriishProduce
             this.patch_nodark = new System.Windows.Forms.CheckBox();
             this.patch_nosuspend = new System.Windows.Forms.CheckBox();
             this.patch_volume = new System.Windows.Forms.CheckBox();
+            this.patch_nocheck = new System.Windows.Forms.CheckBox();
             this.bottomPanel1.SuspendLayout();
             this.controller_box.SuspendLayout();
             this.g1.SuspendLayout();
@@ -43,6 +44,7 @@ namespace FriishProduce
             // 
             // g1
             // 
+            this.g1.Controls.Add(this.patch_nocheck);
             this.g1.Controls.Add(this.patch_nosave);
             this.g1.Controls.Add(this.patch_widescreen);
             this.g1.Controls.Add(this.patch_nocc);
@@ -51,7 +53,7 @@ namespace FriishProduce
             this.g1.Controls.Add(this.patch_volume);
             this.g1.Location = new System.Drawing.Point(12, 10);
             this.g1.Name = "g1";
-            this.g1.Size = new System.Drawing.Size(530, 155);
+            this.g1.Size = new System.Drawing.Size(530, 177);
             this.g1.TabIndex = 39;
             this.g1.TabStop = false;
             this.g1.Tag = "vc_options";
@@ -141,9 +143,23 @@ namespace FriishProduce
             this.patch_volume.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.patch_volume.UseVisualStyleBackColor = true;
             // 
+            // patch_nocheck
+            // 
+            this.patch_nocheck.AutoSize = true;
+            this.patch_nocheck.CheckAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.patch_nocheck.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.patch_nocheck.Location = new System.Drawing.Point(10, 152);
+            this.patch_nocheck.Name = "patch_nocheck";
+            this.patch_nocheck.Size = new System.Drawing.Size(98, 17);
+            this.patch_nocheck.TabIndex = 19;
+            this.patch_nocheck.Tag = "patch_nocheck";
+            this.patch_nocheck.Text = "patch_nocheck";
+            this.patch_nocheck.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.patch_nocheck.UseVisualStyleBackColor = true;
+            // 
             // Options_VC_SNES
             // 
-            this.ClientSize = new System.Drawing.Size(554, 221);
+            this.ClientSize = new System.Drawing.Size(554, 243);
             this.Controls.Add(this.g1);
             this.Name = "Options_VC_SNES";
             this.Tag = "vc_snes";
@@ -167,5 +183,6 @@ namespace FriishProduce
         private System.Windows.Forms.CheckBox patch_volume;
         private System.Windows.Forms.CheckBox patch_nosave;
         private System.Windows.Forms.CheckBox patch_widescreen;
+        private System.Windows.Forms.CheckBox patch_nocheck;
     }
 }

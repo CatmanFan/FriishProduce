@@ -301,6 +301,7 @@
 			"patch_nosave":						"Disable saving",
 			"patch_nosuspend":					"Disable Suspend Point",
 			"patch_widescreen":					"Widescreen HOME Menu",
+			"patch_nocheck":					"Remove all ROM checks",
 		},
 
 		"vc_n64": {
