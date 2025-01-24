@@ -242,22 +242,23 @@ namespace FriishProduce.Injectors
             // Messages for failed patches
             // ****************
             failed.Remove("--no-opera");
-            bool notNeeded = failed.Count == 0 || (argDict.Count == 1 && (argDict.Keys.ElementAt(0) == "--no-opera" || argDict.Keys.ElementAt(0).StartsWith("--no-header-check")));
+            bool generic = argDict.Count == 1 && (argDict.Keys.ElementAt(0) == "--no-opera" || argDict.Keys.ElementAt(0).StartsWith("--no-header-check"));
+            bool notNeeded = failed.Count == 0 || generic;
             if (!notNeeded)
             {
-                if (!File.Exists(Paths.WorkingFolder + "01_boosted.app") || File.ReadAllBytes(Paths.WorkingFolder + "01_boosted.app").SequenceEqual(Contents[1]))
-                {
-                    MessageBox.Show(Program.Lang.Msg(4, true));
-                    return;
-                }
-
-                else if (failed.Count > 0)
+                if (failed.Count > 0)
                 {
                     string failedList = "";
                     foreach (var item in failed)
                         failedList += "- " + item + Environment.NewLine;
 
                     MessageBox.Show(string.Format(Program.Lang.Msg(5, true), failedList));
+                }
+
+                else if (generic || !File.Exists(Paths.WorkingFolder + "01_boosted.app") || File.ReadAllBytes(Paths.WorkingFolder + "01_boosted.app").SequenceEqual(Contents[1]))
+                {
+                    MessageBox.Show(Program.Lang.Msg(4, true));
+                    return;
                 }
             }
 

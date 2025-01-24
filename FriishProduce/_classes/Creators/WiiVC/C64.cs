@@ -19,6 +19,20 @@ namespace FriishProduce.Injectors
             base.Load();
         }
 
+        private static readonly string frodo = Paths.Tools + "frodosrc\\";
+        private readonly string target = frodo + "rom.d64";
+        private readonly string snapshot = frodo + "snap.fss";
+
+        /// <summary>
+        /// Cleans Frodo directory.
+        /// </summary>
+        private void Clean()
+        {
+            try { File.Delete(frodo + "ik.fss"); } catch { }
+            try { File.Delete(target); } catch { }
+            try { File.Delete(snapshot); } catch { }
+        }
+
         /// <summary>
         /// Replaces ROM within extracted content5 directory.
         /// </summary>
@@ -30,9 +44,7 @@ namespace FriishProduce.Injectors
             // ****************
             byte[] data = (ROM as ROM_C64).ToD64();
 
-            string frodo = Paths.Tools + "frodosrc\\";
-            string target = frodo + "rom.d64";
-            string snapshot = frodo + "snap.fss";
+            Clean();
 
             int ik_fss_index = 0;
 
@@ -183,13 +195,10 @@ namespace FriishProduce.Injectors
             }
 
             End:
-            try { File.Delete(frodo + "ik.fss"); } catch { }
-            try { File.Delete(target); } catch { }
 
             if (!cancel)
             {
                 File.Copy(snapshot, Paths.WorkingFolder + "ik.fss", true);
-                if (File.Exists(snapshot)) File.Delete(snapshot);
 
                 Utils.Run
                 (
@@ -197,12 +206,16 @@ namespace FriishProduce.Injectors
                     "gbalzss",
                     "e ik.fss ik.fss.comp"
                 );
-                if (!File.Exists(Paths.WorkingFolder + "ik.fss.comp")) throw new Exception(Program.Lang.Msg(2, true));
 
-                MainContent.ReplaceFile(ik_fss_index, File.ReadAllBytes(Paths.WorkingFolder + "ik.fss.comp"));
+                if (!File.Exists(Paths.WorkingFolder + "ik.fss.comp"))
+                    throw new Exception(Program.Lang.Msg(2, true));
+                else
+                    MainContent.ReplaceFile(ik_fss_index, File.ReadAllBytes(Paths.WorkingFolder + "ik.fss.comp"));
             }
-            
-            else throw new OperationCanceledException();
+
+            Clean();
+
+            if (cancel) throw new OperationCanceledException();
         }
 
         protected override void ReplaceSaveData(string[] lines, ImageHelper Img)

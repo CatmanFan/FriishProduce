@@ -71,6 +71,8 @@ namespace FriishProduce
 
         public static void CleanTemp()
         {
+            if (!Directory.Exists(Paths.WorkingFolder)) Directory.CreateDirectory(Paths.WorkingFolder);
+
             try
             {
                 foreach (var item in Directory.GetFiles(Paths.WorkingFolder, "*.*", SearchOption.AllDirectories))
