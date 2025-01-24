@@ -104,6 +104,32 @@ namespace FriishProduce.Injectors
             }
         }
 
+        private List<int> ID_indexes
+        {
+            get
+            {
+                // Search for entry points
+                // ****************
+                List<int> ID_indexes = new List<int>();
+                for (int i = 0; i < Contents[1].Length; i++)
+                    if (Contents[1][i] == Convert.ToByte(ID[0])
+                     && Contents[1][i + 1] == Convert.ToByte(ID[1])
+                     && Contents[1][i + 2] == Convert.ToByte(ID[2])
+                     && Contents[1][i + 3] == Convert.ToByte(ID[3])
+                     && Contents[1][i + 4] == 0x00
+                     && Contents[1][i + 5] == 0x00
+                     && Contents[1][i + 6] == 0x00
+                     && Contents[1][i + 7] == 0x00
+                     && Contents[1][i + 8] == 0x00
+                     && Contents[1][i + 9] == 0x00
+                     && Contents[1][i + 10] == 0x00
+                     && Contents[1][i + 11] == 0x00)
+                        ID_indexes.Add(i);
+
+                return ID_indexes;
+            }
+        }
+
         protected override void ReplaceSaveData(string[] lines, ImageHelper Img)
         {
             // -----------------------
@@ -111,24 +137,6 @@ namespace FriishProduce.Injectors
             // -----------------------
 
             lines = ConvertSaveText(lines);
-
-            // Search for entry points
-            // ****************
-            List<int> ID_indexes = new List<int>();
-            for (int i = 0; i < Contents[1].Length; i++)
-                if (Contents[1][i] == Convert.ToByte(ID[0])
-                 && Contents[1][i + 1] == Convert.ToByte(ID[1])
-                 && Contents[1][i + 2] == Convert.ToByte(ID[2])
-                 && Contents[1][i + 3] == Convert.ToByte(ID[3])
-                 && Contents[1][i + 4] == 0x00
-                 && Contents[1][i + 5] == 0x00
-                 && Contents[1][i + 6] == 0x00
-                 && Contents[1][i + 7] == 0x00
-                 && Contents[1][i + 8] == 0x00
-                 && Contents[1][i + 9] == 0x00
-                 && Contents[1][i + 10] == 0x00
-                 && Contents[1][i + 11] == 0x00)
-                    ID_indexes.Add(i);
 
             if (ID_indexes.Count > 0)
             {
@@ -188,15 +196,16 @@ namespace FriishProduce.Injectors
             if (nomanual) argDict.Add("--no-opera", Program.Lang.String("patch_noopera", "vc_snes"));
 
             if (argDict?.Count == 0) return;
-            argDict.Add(ID.StartsWith("JCC") || ID.StartsWith("JDA") || ID.StartsWith("JD6") ? "--no-check-header-simple" : "--no-check-header-all", null);
+            argDict.Add("--no-header-check-simple", null);
 
             // Write 01.app
             // ****************
             File.WriteAllBytes(Paths.WorkingFolder + "01.app", Contents[1]);
 
-            // Apply each patch
+            // Apply each patch, check which ones have failed
             // ****************
             List<string> failed = new();
+            string output = null;
 
             for (int i = 0; i < argDict.Count; i++)
             {
@@ -223,26 +232,7 @@ namespace FriishProduce.Injectors
 
             // Patch again
             // ****************
-            for (int i = 0; i < argDict.Count; i++)
-            {
-                (string Key, string Value) = (argDict.Keys.ElementAt(i), argDict.Values.ElementAt(i));
-
-                Utils.Run
-                (
-                    FileDatas.Apps.sns_boost,
-                    "sns_boost.exe",
-                    $"-i 01.app {Key}"
-                );
-
-                if (File.Exists(Paths.WorkingFolder + "01_boosted.app"))
-                {
-                    File.Copy(Paths.WorkingFolder + "01_boosted.app", Paths.WorkingFolder + "01.app", true);
-                    File.Delete(Paths.WorkingFolder + "01_boosted.app");
-                }
-            }
-
-            File.WriteAllBytes(Paths.WorkingFolder + "01.app", Contents[1]);
-            Utils.Run
+            output = Utils.Run
             (
                 FileDatas.Apps.sns_boost,
                 "sns_boost.exe",
@@ -251,8 +241,8 @@ namespace FriishProduce.Injectors
 
             // Messages for failed patches
             // ****************
-            bool notNeeded = argDict.Count == 1 && (argDict.Keys.ElementAt(0) == "--no-opera" || argDict.Keys.ElementAt(0).StartsWith("--no-check-header"));
-
+            failed.Remove("--no-opera");
+            bool notNeeded = failed.Count == 0 || (argDict.Count == 1 && (argDict.Keys.ElementAt(0) == "--no-opera" || argDict.Keys.ElementAt(0).StartsWith("--no-header-check")));
             if (!notNeeded)
             {
                 if (!File.Exists(Paths.WorkingFolder + "01_boosted.app") || File.ReadAllBytes(Paths.WorkingFolder + "01_boosted.app").SequenceEqual(Contents[1]))
@@ -287,6 +277,12 @@ namespace FriishProduce.Injectors
             // ****************
             if (File.Exists(Paths.WorkingFolder + "01_boosted.app"))
                 Contents[1] = File.ReadAllBytes(Paths.WorkingFolder + "01_boosted.app");
+
+            // Determine whether savedata.bin should be created in main.dol
+            // ****************
+            if (ID_indexes.Count > 0 && argDict.ContainsKey("--no-header-check-all"))
+                foreach (var index in ID_indexes)
+                    Contents[1][index - 33] = (byte)(bool.Parse(Settings["patch_nosave"]) ? 0x03 : 0x04);
         }
     }
 }

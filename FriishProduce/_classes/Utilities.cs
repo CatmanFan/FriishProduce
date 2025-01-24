@@ -268,19 +268,20 @@ namespace FriishProduce
 
     public static class Utils
     {
-        public static void Run(byte[] app, string appName, string arguments, bool showWindow = false)
+        public static string Run(byte[] app, string appName, string arguments, bool showWindow = false)
         {
             string targetPath = Paths.WorkingFolder + Path.GetFileNameWithoutExtension(appName) + ".exe";
 
             File.WriteAllBytes(targetPath, app);
-            Run(targetPath, Paths.WorkingFolder, arguments, showWindow);
-            
+            string value = Run(targetPath, Paths.WorkingFolder, arguments, showWindow);
             if (File.Exists(targetPath)) File.Delete(targetPath);
+
+            return value;
         }
 
-        public static void Run(string app, string arguments, bool showWindow = false) => Run(app, Paths.Tools, arguments, showWindow);
+        public static string Run(string app, string arguments, bool showWindow = false) => Run(app, Paths.Tools, arguments, showWindow);
 
-        public static void Run(string app, string workingFolder, string arguments, bool showWindow = false)
+        public static string Run(string app, string workingFolder, string arguments, bool showWindow = false)
         {
             var appPath = Path.Combine(Paths.Tools, app.Replace(Paths.Tools, "").Contains('\\') ? app.Replace(Paths.Tools, "") : Path.GetFileName(app));
 
@@ -294,43 +295,39 @@ namespace FriishProduce
                 WorkingDirectory = workingFolder,
                 Arguments = arguments,
                 UseShellExecute = false,
-                CreateNoWindow = !showWindow
+                CreateNoWindow = !showWindow,
+                RedirectStandardOutput = true
             });
 
             p.WaitForExit();
+            return p.StandardOutput.ReadToEnd();
         }
 
         public static byte[] ExtractContent1(byte[] input)
         {
-            if (input.Length < 1048576)
-            {
-                // Create temporary files at working folder
-                // ****************
-                File.WriteAllBytes(Paths.WorkingFolder + "content1.app", input);
+            // Create temporary files at working folder
+            // ****************
+            File.WriteAllBytes(Paths.WorkingFolder + "main.dol", input);
 
-                // Decompress
-                // ****************
-                Run
-                (
-                    FileDatas.Apps.wwcxtool,
-                    "wwcxtool.exe",
-                    "/u content1.app content1.dec"
-                );
-                if (!File.Exists(Paths.WorkingFolder + "content1.dec")) throw new Exception(Program.Lang.Msg(2, true));
+            // Decompress
+            // ****************
+            Run
+            (
+                FileDatas.Apps.wwcxtool,
+                "wwcxtool.exe",
+                "/u main.dol main.dec.dol"
+            );
 
-                return File.ReadAllBytes(Paths.WorkingFolder + "content1.dec");
-            }
-
-            else return input;
+            return File.Exists(Paths.WorkingFolder + "main.dec.dol") ? File.ReadAllBytes(Paths.WorkingFolder + "main.dec.dol") : input;
         }
 
         public static byte[] PackContent1(byte[] input)
         {
-            if (File.Exists(Paths.WorkingFolder + "content1.dec"))
+            if (File.Exists(Paths.WorkingFolder + "main.dec.dol"))
             {
                 // Write new to original decompressed file
                 // ****************
-                File.WriteAllBytes(Paths.WorkingFolder + "content1.dec", input);
+                File.WriteAllBytes(Paths.WorkingFolder + "main.dec.dol", input);
 
                 // Pack
                 // ****************
@@ -338,15 +335,15 @@ namespace FriishProduce
                 (
                     FileDatas.Apps.wwcxtool,
                     "wwcxtool.exe",
-                    "/cr content1.app content1.dec content1.new"
+                    "/cr main.dol main.dec.dol main.new.dol"
                 );
-                if (!File.Exists(Paths.WorkingFolder + "content1.new")) throw new Exception(Program.Lang.Msg(2, true));
+                if (!File.Exists(Paths.WorkingFolder + "main.new.dol")) throw new Exception(Program.Lang.Msg(2, true));
 
-                var output = File.ReadAllBytes(Paths.WorkingFolder + "content1.new");
+                var output = File.ReadAllBytes(Paths.WorkingFolder + "main.new.dol");
 
-                if (File.Exists(Paths.WorkingFolder + "content1.new")) File.Delete(Paths.WorkingFolder + "content1.new");
-                if (File.Exists(Paths.WorkingFolder + "content1.dec")) File.Delete(Paths.WorkingFolder + "content1.dec");
-                if (File.Exists(Paths.WorkingFolder + "content1.app")) File.Delete(Paths.WorkingFolder + "content1.app");
+                if (File.Exists(Paths.WorkingFolder + "main.new.dol")) File.Delete(Paths.WorkingFolder + "main.new.dol");
+                if (File.Exists(Paths.WorkingFolder + "main.dec.dol")) File.Delete(Paths.WorkingFolder + "main.dec.dol");
+                if (File.Exists(Paths.WorkingFolder + "main.dol")) File.Delete(Paths.WorkingFolder + "main.dol");
 
                 return output;
             }

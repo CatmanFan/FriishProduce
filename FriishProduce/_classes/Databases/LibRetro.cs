@@ -236,42 +236,41 @@ namespace FriishProduce.Databases
                 // ****************
                 for (int x = 1; x < db_lines.Count; x++)
                 {
-                    for (int y = db_lines[x].Length - 1; y > 1; y--)
+                    for (int y = 0; y < db_lines[x].Length; y++)
                     {
                         string line = db_lines[x][y];
-
-                        if (line.Contains("crc "))
-                        {
-                            crc = db_crc(line.Substring(line.IndexOf("crc ") + 4, 8));
-                        }
 
                         if (line.Contains("serial "))
                         {
                             serial = line.Substring(line.IndexOf("serial ") + 7).TrimStart('\"', ' ', '\t', ')').TrimEnd('\"', ' ', '\t', ')');
-
-                            var rows = dt.Select($"crc = '{crc}' or serial = '{serial}'");
-                            if (rows?.Length > 0 && string.IsNullOrWhiteSpace(rows[0][2]?.ToString()))
-                            {
-                                rows[0][2] = serial;
-                            }
                         }
 
                         if (line.Contains("year "))
                         {
-                            var rows = dt.Select($"crc = '{crc}' or serial = '{serial}'");
-                            if (rows?.Length > 0 && string.IsNullOrWhiteSpace(rows[0][3]?.ToString()))
-                            {
-                                rows[0][3] = line.Substring(line.IndexOf("year ") + 5).TrimStart('\"', ' ', '\t', ')').TrimEnd('\"', ' ', '\t', ')');
-                            }
+                            releaseyear = line.Substring(line.IndexOf("year ") + 5).TrimStart('\"', ' ', '\t', ')').TrimEnd('\"', ' ', '\t', ')');
                         }
 
                         if (line.Contains("users "))
                         {
-                            var rows = dt.Select($"crc = '{crc}' or serial = '{serial}'");
-                            if (rows?.Length > 0 && string.IsNullOrWhiteSpace(rows[0][4]?.ToString()))
+                            users = line.Substring(line.IndexOf("users ") + 6).TrimStart('\"', ' ', '\t', ')').TrimEnd('\"', ' ', '\t', ')');
+                        }
+
+                        if (line.Contains("crc "))
+                        {
+                            crc = db_crc(line.Substring(line.IndexOf("crc ") + 4, 8));
+
+                            var rows = dt.Select($"crc = '{crc}'");
+                            if (rows?.Length > 0)
                             {
-                                rows[0][4] = line.Substring(line.IndexOf("users ") + 6).TrimStart('\"', ' ', '\t', ')').TrimEnd('\"', ' ', '\t', ')');
+                                if (string.IsNullOrWhiteSpace(rows[0][2]?.ToString()) && !string.IsNullOrWhiteSpace(serial))
+                                    rows[0][2] = serial;
+                                if (string.IsNullOrWhiteSpace(rows[0][3]?.ToString()) && !string.IsNullOrWhiteSpace(releaseyear))
+                                    rows[0][3] = releaseyear;
+                                if (string.IsNullOrWhiteSpace(rows[0][4]?.ToString()) && !string.IsNullOrWhiteSpace(users))
+                                    rows[0][4] = users;
                             }
+
+                            serial = releaseyear = users = "";
                         }
                     }
                 }

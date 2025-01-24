@@ -54,9 +54,7 @@ namespace FriishProduce
             // Load main.dol if needed
             // ****************
             if (needsMainDol)
-            {
                 Contents[1] = Utils.ExtractContent1(WAD.Contents[1]);
-            }
 
             // Auto-set main content index if it is absolutely necessary, then load both U8 archives
             // ****************
