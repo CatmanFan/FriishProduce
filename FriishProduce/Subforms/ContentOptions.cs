@@ -10,13 +10,7 @@ namespace FriishProduce
         public ContentOptions()
         {
             InitializeComponent();
-
-            // Add options that can be changed in string format
-            // ************************************************
-            Options = new Dictionary<string, string>
-            {
-            };
-            // ************************************************
+            ClearOptions();
 
             // Cosmetic
             // *******
@@ -36,6 +30,16 @@ namespace FriishProduce
         }
 
         // ---------------------------------------------------------------------------------------------------------------
+
+        protected virtual void ClearOptions()
+        {
+            // Add options that can be changed in string format
+            // ************************************************
+            Options = new Dictionary<string, string>
+            {
+            };
+            // ************************************************
+        }
 
         protected virtual void ResetOptions()
         {
@@ -140,7 +144,7 @@ namespace FriishProduce
             controller_box.Visible = controllerForm != null;
             b_controller.Enabled = controller_cb.Checked = UsesKeymap && controllerForm != null;
 
-            ResetOptions();
+            try { ResetOptions(); } catch { ClearOptions(); }
             CenterToParent();
         }
 

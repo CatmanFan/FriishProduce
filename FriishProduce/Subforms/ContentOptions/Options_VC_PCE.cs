@@ -10,7 +10,22 @@ namespace FriishProduce
         public Options_VC_PCE()
         {
             InitializeComponent();
+            ClearOptions();
 
+            // Cosmetic
+            // *******
+            if (!DesignMode)
+            {
+                Program.Lang.Control(this);
+                ToggleSwitchText();
+                backupram.Text = Program.Lang.String("save_data_enable", "projectform");
+            }
+        }
+
+        // ---------------------------------------------------------------------------------------------------------------
+
+        protected override void ClearOptions()
+        {
             Options = new Dictionary<string, string>
             {
                 { "BACKUPRAM", Program.Config.pce.BACKUPRAM },
@@ -28,19 +43,8 @@ namespace FriishProduce
                 { "NOFPA", "1" },
                 { "PAD5", "0" },
             };
-
-            // Cosmetic
-            // *******
-            if (!DesignMode)
-            {
-                Program.Lang.Control(this);
-                ToggleSwitchText();
-                backupram.Text = Program.Lang.String("save_data_enable", "projectform");
-            }
         }
 
-        // ---------------------------------------------------------------------------------------------------------------
-        
         protected override void ResetOptions()
         {
             // Form control

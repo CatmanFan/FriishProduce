@@ -12,6 +12,20 @@ namespace FriishProduce
         public Options_Forwarder(Platform platform)
         {
             InitializeComponent();
+            ClearOptions();
+
+            // Cosmetic
+            // *******
+            if (!DesignMode)
+            {
+                Program.Lang.Control(this);
+            }
+        }
+
+        // ---------------------------------------------------------------------------------------------------------------
+
+        protected override void ClearOptions()
+        {
             this.platform = platform;
             bios = platform switch
             {
@@ -27,16 +41,7 @@ namespace FriishProduce
                 { "use_bios", false.ToString() },
                 { "show_bios_screen", Program.Config.forwarder.show_bios_screen.ToString() }
             };
-
-            // Cosmetic
-            // *******
-            if (!DesignMode)
-            {
-                Program.Lang.Control(this);
-            }
         }
-
-        // ---------------------------------------------------------------------------------------------------------------
 
         protected override void ResetOptions()
         {

@@ -8,17 +8,7 @@ namespace FriishProduce
         public Options_VC_SNES() : base()
         {
             InitializeComponent();
-
-            Options = new Dictionary<string, string>
-            {
-                { "patch_volume",       Program.Config.snes.patch_volume.ToString() },
-                { "patch_nodark",       Program.Config.snes.patch_nodark.ToString() },
-                { "patch_nocc",         Program.Config.snes.patch_nocc.ToString() },
-                { "patch_nosuspend",    Program.Config.snes.patch_nosuspend.ToString() },
-                { "patch_nosave",       Program.Config.snes.patch_nosave.ToString() },
-                { "patch_widescreen",   Program.Config.snes.patch_widescreen.ToString() },
-                { "patch_nocheck",      Program.Config.snes.patch_nocheck.ToString() }
-            };
+            ClearOptions();
 
             // Cosmetic
             // *******
@@ -29,6 +19,20 @@ namespace FriishProduce
         }
 
         // ---------------------------------------------------------------------------------------------------------------
+
+        protected override void ClearOptions()
+        {
+            Options = new Dictionary<string, string>
+            {
+                { "patch_volume",       Program.Config.snes.patch_volume.ToString() },
+                { "patch_nodark",       Program.Config.snes.patch_nodark.ToString() },
+                { "patch_nocc",         Program.Config.snes.patch_nocc.ToString() },
+                { "patch_nosuspend",    Program.Config.snes.patch_nosuspend.ToString() },
+                { "patch_nosave",       Program.Config.snes.patch_nosave.ToString() },
+                { "patch_widescreen",   Program.Config.snes.patch_widescreen.ToString() },
+                { "patch_nocheck",      Program.Config.snes.patch_nocheck.ToString() }
+            };
+        }
 
         protected override void ResetOptions()
         {
@@ -42,8 +46,7 @@ namespace FriishProduce
                 patch_nosuspend.Checked             = bool.Parse(Options["patch_nosuspend"]);
                 patch_nosave.Checked                = bool.Parse(Options["patch_nosave"]);
                 patch_widescreen.Checked            = bool.Parse(Options["patch_widescreen"]);
-                try { patch_nocheck.Checked               = bool.Parse(Options["patch_nocheck"]); }
-                catch { patch_nocheck.Checked               = Program.Config.snes.patch_nocheck; }
+                patch_nocheck.Checked               = bool.Parse(Options["patch_nocheck"]);
             }
             // *******
         }

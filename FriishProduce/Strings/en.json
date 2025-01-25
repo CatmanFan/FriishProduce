@@ -309,6 +309,7 @@
 			"patch_fixcrashes":					"Fix crashes",
 			"patch_expandedram":				"Enable extended RAM",
 			"patch_autosizerom":				"Allocate ROM size",
+			"patch_cleantextures":				"Clean unused textures",
 			"patch_widescreen":					"Widescreen",
 			
 			"romc_type":						"ROM compression method",

@@ -1,4 +1,6 @@
-﻿namespace FriishProduce
+﻿using System.Linq;
+
+namespace FriishProduce
 {
     public class ROM_N64 : ROM
     {
@@ -17,6 +19,7 @@
         public byte[] ToBigEndian(byte[] romData = null)
         {
             var ROM = romData != null ? romData : patched?.Length > 0 ? patched : origData;
+            if (ROM == null || ROM?.Length < 57) return ROM;
 
             // -----------------------
             // Byteswap ROM first
@@ -46,6 +49,18 @@
             }
 
             return ROM;
+        }
+
+        public string ID
+        {
+            get
+            {
+                var ROM = ToBigEndian();
+                if (ROM == null || ROM?.Length < 57) return null;
+
+                byte[] id = ROM.Skip(0x3B).Take(4).ToArray();
+                return System.Text.Encoding.ASCII.GetString(id).ToUpper();
+            }
         }
     }
 }

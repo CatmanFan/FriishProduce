@@ -13,11 +13,7 @@ namespace FriishProduce
         public Options_RPGM()
         {
             InitializeComponent();
-
-            Options = new Dictionary<string, string>
-            {
-                { "rtp_folder", null },
-            };
+            ClearOptions();
 
             // Cosmetic
             // *******
@@ -28,6 +24,14 @@ namespace FriishProduce
         }
 
         // ---------------------------------------------------------------------------------------------------------------
+
+        protected override void ClearOptions()
+        {
+            Options = new Dictionary<string, string>
+            {
+                { "rtp_folder", null },
+            };
+        }
 
         protected override void ResetOptions()
         {

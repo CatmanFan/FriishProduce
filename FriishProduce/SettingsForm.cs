@@ -137,6 +137,7 @@ namespace FriishProduce
             Program.Lang.String(vc_n64_patch_fixcrashes, "vc_n64");
             Program.Lang.String(vc_n64_patch_expandedram, "vc_n64");
             Program.Lang.String(vc_n64_patch_autosizerom, "vc_n64");
+            Program.Lang.String(vc_n64_patch_cleantextures, "vc_n64");
             // Program.Lang.String(vc_n64_patch_widescreen, "vc_n64");
             Program.Lang.String(vc_n64_romc_type, "vc_n64");
             Program.Lang.String(vc_n64_romc_type_list, "vc_n64");
@@ -237,6 +238,7 @@ namespace FriishProduce
             vc_n64_patch_fixcrashes.Checked = Program.Config.n64.patch_crashfix;
             vc_n64_patch_expandedram.Checked = Program.Config.n64.patch_expandedram;
             vc_n64_patch_autosizerom.Checked = Program.Config.n64.patch_autoromsize;
+            vc_n64_patch_cleantextures.Checked = Program.Config.n64.patch_cleantextures;
             // vc_n64_patch_widescreen.Checked = Program.Config.n64.patch_widescreen;
             vc_n64_romc_type_list.SelectedIndex = Program.Config.n64.romc_type;
 
@@ -387,6 +389,7 @@ namespace FriishProduce
             Program.Config.n64.patch_crashfix = vc_n64_patch_fixcrashes.Checked;
             Program.Config.n64.patch_expandedram = vc_n64_patch_expandedram.Checked;
             Program.Config.n64.patch_autoromsize = vc_n64_patch_autosizerom.Checked;
+            Program.Config.n64.patch_cleantextures = vc_n64_patch_cleantextures.Checked;
             // Program.Config.n64.patch_widescreen = vc_n64_patch_widescreen.Checked;
             Program.Config.n64.romc_type = vc_n64_romc_type_list.SelectedIndex;
 

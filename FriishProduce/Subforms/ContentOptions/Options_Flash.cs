@@ -13,8 +13,26 @@ namespace FriishProduce
         public Options_Flash() : base()
         {
             InitializeComponent();
+            ClearOptions();
             controllerForm = new Controller_Flash();
 
+            // Cosmetic
+            // *******
+            if (!DesignMode)
+            {
+                Program.Lang.Control(this);
+                groupBox1.Text = Program.Lang.String("save_data", "projectform");
+                save_data_enable.Text = Program.Lang.String("save_data_enable", "projectform");
+
+                controller_cb.Text = Program.Lang.String("controller", "projectform");
+                b_controller.Text = Program.Lang.String("controller_mapping", "projectform");
+            }
+        }
+
+        // ---------------------------------------------------------------------------------------------------------------
+
+        protected override void ClearOptions()
+        {
             Options = new Dictionary<string, string>
             {
                 { "update_frame_rate", Program.Config.flash.update_frame_rate },
@@ -33,21 +51,7 @@ namespace FriishProduce
                 { "content_domain", null },
                 { "background_color", "0 0 0 0" },
             };
-
-            // Cosmetic
-            // *******
-            if (!DesignMode)
-            {
-                Program.Lang.Control(this);
-                groupBox1.Text = Program.Lang.String("save_data", "projectform");
-                save_data_enable.Text = Program.Lang.String("save_data_enable", "projectform");
-
-                controller_cb.Text = Program.Lang.String("controller", "projectform");
-                b_controller.Text = Program.Lang.String("controller_mapping", "projectform");
-            }
         }
-
-        // ---------------------------------------------------------------------------------------------------------------
 
         protected override void ResetOptions()
         {

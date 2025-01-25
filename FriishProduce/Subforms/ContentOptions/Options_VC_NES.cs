@@ -12,12 +12,7 @@ namespace FriishProduce
         public Options_VC_NES() : base()
         {
             InitializeComponent();
-
-            Options = new Dictionary<string, string>
-            {
-                { "palette", Program.Config.nes.palette.ToString() },
-                { "use_tImg", Program.Config.nes.palette_banner_usage.ToString() }
-            };
+            ClearOptions();
 
             // Cosmetic
             // *******
@@ -29,7 +24,16 @@ namespace FriishProduce
         }
 
         // ---------------------------------------------------------------------------------------------------------------
-        
+
+        protected override void ClearOptions()
+        {
+            Options = new Dictionary<string, string>
+            {
+                { "palette", Program.Config.nes.palette.ToString() },
+                { "use_tImg", Program.Config.nes.palette_banner_usage.ToString() }
+            };
+        }
+
         protected override void ResetOptions()
         {
             // Form control

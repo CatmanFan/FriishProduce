@@ -9,11 +9,7 @@ namespace FriishProduce
         public Options_VC_NEO()
         {
             InitializeComponent();
-
-            Options = new Dictionary<string, string>
-            {
-                { "BIOS", Program.Config.neo.bios }
-            };
+            ClearOptions();
 
             // Cosmetic
             // *******
@@ -24,6 +20,14 @@ namespace FriishProduce
         }
 
         // ---------------------------------------------------------------------------------------------------------------
+
+        protected override void ClearOptions()
+        {
+            Options = new Dictionary<string, string>
+            {
+                { "BIOS", Program.Config.neo.bios }
+            };
+        }
 
         protected override void ResetOptions()
         {

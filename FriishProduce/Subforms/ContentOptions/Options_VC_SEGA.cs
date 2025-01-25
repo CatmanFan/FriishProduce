@@ -9,17 +9,7 @@ namespace FriishProduce
         public Options_VC_SEGA() : base()
         {
             InitializeComponent();
-
-            Options = new SortedDictionary<string, string>
-            {
-                { "console.brightness", Program.Config.sega.console_brightness },
-                { "console.disable_resetbutton", Program.Config.sega.console_disableresetbutton },
-                { "country", Program.Lang.Current.StartsWith("ja") ? "jp" : Program.Config.sega.country },
-                { "dev.mdpad.enable_6b", Program.Config.sega.dev_mdpad_enable_6b },
-                { "save_sram", Program.Config.sega.save_sram },
-                { "machine_md.use_4ptap", null },
-                { "nplayers", null }
-            };
+            ClearOptions();
 
             // Cosmetic
             // *******
@@ -43,6 +33,20 @@ namespace FriishProduce
         }
 
         // ---------------------------------------------------------------------------------------------------------------
+
+        protected override void ClearOptions()
+        {
+            Options = new SortedDictionary<string, string>
+            {
+                { "console.brightness", Program.Config.sega.console_brightness },
+                { "console.disable_resetbutton", Program.Config.sega.console_disableresetbutton },
+                { "country", Program.Lang.Current.StartsWith("ja") ? "jp" : Program.Config.sega.country },
+                { "dev.mdpad.enable_6b", Program.Config.sega.dev_mdpad_enable_6b },
+                { "save_sram", Program.Config.sega.save_sram },
+                { "machine_md.use_4ptap", null },
+                { "nplayers", null }
+            };
+        }
 
         protected override void ResetOptions()
         {

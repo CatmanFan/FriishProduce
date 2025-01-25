@@ -268,20 +268,20 @@ namespace FriishProduce
 
     public static class Utils
     {
-        public static string Run(byte[] app, string appName, string arguments, bool showWindow = false)
+        public static string Run(byte[] app, string appName, string arguments, bool showWindow = false, bool redirectOutput = true)
         {
             string targetPath = Paths.WorkingFolder + Path.GetFileNameWithoutExtension(appName) + ".exe";
 
             File.WriteAllBytes(targetPath, app);
-            string value = Run(targetPath, Paths.WorkingFolder, arguments, showWindow);
+            string value = Run(targetPath, Paths.WorkingFolder, arguments, showWindow, redirectOutput);
             if (File.Exists(targetPath)) File.Delete(targetPath);
 
             return value;
         }
 
-        public static string Run(string app, string arguments, bool showWindow = false) => Run(app, Paths.Tools, arguments, showWindow);
+        public static string Run(string app, string arguments, bool showWindow = false, bool redirectOutput = true) => Run(app, Paths.Tools, arguments, showWindow, redirectOutput);
 
-        public static string Run(string app, string workingFolder, string arguments, bool showWindow = false)
+        public static string Run(string app, string workingFolder, string arguments, bool showWindow = false, bool redirectOutput = true)
         {
             var appPath = Path.Combine(Paths.Tools, app.Replace(Paths.Tools, "").Contains('\\') ? app.Replace(Paths.Tools, "") : Path.GetFileName(app));
 
@@ -296,11 +296,11 @@ namespace FriishProduce
                 Arguments = arguments,
                 UseShellExecute = false,
                 CreateNoWindow = !showWindow,
-                RedirectStandardOutput = true
+                RedirectStandardOutput = redirectOutput
             });
 
             p.WaitForExit();
-            return p.StandardOutput.ReadToEnd();
+            return redirectOutput ? p.StandardOutput.ReadToEnd() : null;
         }
 
         public static byte[] ExtractContent1(byte[] input)

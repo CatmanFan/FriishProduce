@@ -84,9 +84,7 @@ namespace FriishProduce.Injectors
                     // Set title ID to NBDx to prevent crashing on Bomberman Hero
                     // ****************
                     if (WAD.UpperTitleID.ToUpper().StartsWith("NA3"))
-                    {
                         Encoding.ASCII.GetBytes("NBD").CopyTo(data, 0x3B);
-                    }
 
                     // Temporary ROM file at working folder
                     // ****************
@@ -94,11 +92,13 @@ namespace FriishProduce.Injectors
 
                     // Compress using ROMC type
                     // ****************
+                    string output = null;
+
                     if (CompressionType == 1) // Type 0
-                        Utils.Run(FileDatas.Apps.romc0, "romc0", "rom romc");
+                        output = Utils.Run(FileDatas.Apps.romc0, "romc0", "rom romc", false, false);
 
                     else // Type 1
-                        Utils.Run(FileDatas.Apps.romc, "romc", "e rom romc");
+                        output = Utils.Run(FileDatas.Apps.romc, "romc", "e rom romc", false, false);
 
                     // Check if converted file exists
                     // ****************
@@ -219,11 +219,6 @@ namespace FriishProduce.Injectors
 
             try
             {
-                /* if (SettingParse(4))
-                {
-                    if (!Widescreen()) { failed.Add(Program.Lang.String("patch_widescreen", "vc_n64")); }
-                } */
-
                 if (SettingParse(0))
                 {
                     if (!ShadingFix()) failed.Add(Program.Lang.String("patch_fixbrightness", "vc_n64"));
@@ -244,6 +239,16 @@ namespace FriishProduce.Injectors
                     if (!AllocateROM()) { failed.Add(Program.Lang.String("patch_autosizerom", "vc_n64")); Allocate = false; }
                 }
 
+                if (Settings["clean_textures"].ToLower() == "true")
+                {
+                    CleanTextures();
+                }
+
+                /* if (Settings["widescreen"].ToLower() == "true")
+                {
+                    if (!Widescreen()) { failed.Add(Program.Lang.String("patch_widescreen", "vc_n64")); }
+                } */
+
                 if (failed.Count > 0)
                 {
                     string failedList = "";
@@ -253,11 +258,19 @@ namespace FriishProduce.Injectors
                     MessageBox.Show(string.Format(Program.Lang.Msg(5, true), failedList));
                 }
             }
+
             catch (Exception ex)
             {
                 // Dispose Contents[1]
                 throw ex;
             }
+        }
+
+        private void CleanTextures()
+        {
+            foreach (var item in MainContent.StringTable)
+                if (Path.GetExtension(item).ToLower() == ".t64" || Path.GetExtension(item).ToLower() == ".tif")
+                    MainContent.RemoveFile(item);
         }
 
         private bool ShadingFix()

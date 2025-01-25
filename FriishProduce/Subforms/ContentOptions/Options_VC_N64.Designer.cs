@@ -36,6 +36,7 @@ namespace FriishProduce
             this.patch_fixbrightness = new System.Windows.Forms.CheckBox();
             this.romc_type_list = new System.Windows.Forms.ComboBox();
             this.g2 = new System.Windows.Forms.GroupBox();
+            this.patch_cleantextures = new System.Windows.Forms.CheckBox();
             this.bottomPanel1.SuspendLayout();
             this.controller_box.SuspendLayout();
             this.g1.SuspendLayout();
@@ -44,13 +45,14 @@ namespace FriishProduce
             // 
             // g1
             // 
+            this.g1.Controls.Add(this.patch_cleantextures);
             this.g1.Controls.Add(this.patch_autosizerom);
             this.g1.Controls.Add(this.patch_expandedram);
             this.g1.Controls.Add(this.patch_fixcrashes);
             this.g1.Controls.Add(this.patch_fixbrightness);
             this.g1.Location = new System.Drawing.Point(12, 10);
             this.g1.Name = "g1";
-            this.g1.Size = new System.Drawing.Size(530, 112);
+            this.g1.Size = new System.Drawing.Size(530, 134);
             this.g1.TabIndex = 16;
             this.g1.TabStop = false;
             this.g1.Tag = "vc_options";
@@ -128,7 +130,7 @@ namespace FriishProduce
             // g2
             // 
             this.g2.Controls.Add(this.romc_type_list);
-            this.g2.Location = new System.Drawing.Point(12, 129);
+            this.g2.Location = new System.Drawing.Point(12, 151);
             this.g2.Name = "g2";
             this.g2.Size = new System.Drawing.Size(530, 50);
             this.g2.TabIndex = 19;
@@ -136,9 +138,23 @@ namespace FriishProduce
             this.g2.Tag = "romc_type";
             this.g2.Text = "romc_type";
             // 
+            // patch_cleantextures
+            // 
+            this.patch_cleantextures.AutoSize = true;
+            this.patch_cleantextures.CheckAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.patch_cleantextures.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.patch_cleantextures.Location = new System.Drawing.Point(10, 108);
+            this.patch_cleantextures.Name = "patch_cleantextures";
+            this.patch_cleantextures.Size = new System.Drawing.Size(125, 17);
+            this.patch_cleantextures.TabIndex = 17;
+            this.patch_cleantextures.Tag = "patch_cleantextures";
+            this.patch_cleantextures.Text = "patch_cleantextures";
+            this.patch_cleantextures.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.patch_cleantextures.UseVisualStyleBackColor = true;
+            // 
             // Options_VC_N64
             // 
-            this.ClientSize = new System.Drawing.Size(554, 236);
+            this.ClientSize = new System.Drawing.Size(554, 258);
             this.Controls.Add(this.g1);
             this.Controls.Add(this.g2);
             this.Name = "Options_VC_N64";
@@ -166,5 +182,6 @@ namespace FriishProduce
         private System.Windows.Forms.CheckBox patch_fixbrightness;
         private System.Windows.Forms.ComboBox romc_type_list;
         private System.Windows.Forms.GroupBox g2;
+        private System.Windows.Forms.CheckBox patch_cleantextures;
     }
 }

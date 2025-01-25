@@ -198,6 +198,8 @@ namespace FriishProduce
             public bool patch_crashfix { get; set; } = false;
             public bool patch_expandedram { get; set; } = false;
             public bool patch_autoromsize { get; set; } = false;
+            public bool patch_cleantextures { get; set; } = false;
+            // public bool patch_widescreen { get; set; } = false;
         }
 
         public class SEGA

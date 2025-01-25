@@ -141,13 +141,14 @@ namespace FriishProduce
             this.flash_save_data_enable = new System.Windows.Forms.CheckBox();
             this.vc_snes = new System.Windows.Forms.Panel();
             this.vc_snes_options = new System.Windows.Forms.GroupBox();
+            this.patch_nocheck = new System.Windows.Forms.CheckBox();
             this.vc_snes_patch_nosave = new System.Windows.Forms.CheckBox();
             this.vc_snes_patch_widescreen = new System.Windows.Forms.CheckBox();
             this.vc_snes_patch_nocc = new System.Windows.Forms.CheckBox();
             this.vc_snes_patch_nodark = new System.Windows.Forms.CheckBox();
             this.vc_snes_patch_nosuspend = new System.Windows.Forms.CheckBox();
             this.vc_snes_patch_volume = new System.Windows.Forms.CheckBox();
-            this.patch_nocheck = new System.Windows.Forms.CheckBox();
+            this.vc_n64_patch_cleantextures = new System.Windows.Forms.CheckBox();
             this.vc_n64_options.SuspendLayout();
             this.bottomPanel2.SuspendLayout();
             this.bottomPanel1.SuspendLayout();
@@ -205,6 +206,7 @@ namespace FriishProduce
             // 
             // vc_n64_options
             // 
+            this.vc_n64_options.Controls.Add(this.vc_n64_patch_cleantextures);
             this.vc_n64_options.Controls.Add(this.vc_n64_patch_autosizerom);
             this.vc_n64_options.Controls.Add(this.vc_n64_patch_expandedram);
             this.vc_n64_options.Controls.Add(this.vc_n64_patch_fixcrashes);
@@ -1126,6 +1128,13 @@ namespace FriishProduce
             this.vc_snes_options.TabStop = false;
             this.vc_snes_options.Tag = "vc_options";
             // 
+            // patch_nocheck
+            // 
+            resources.ApplyResources(this.patch_nocheck, "patch_nocheck");
+            this.patch_nocheck.Name = "patch_nocheck";
+            this.patch_nocheck.Tag = "patch_nocheck";
+            this.patch_nocheck.UseVisualStyleBackColor = true;
+            // 
             // vc_snes_patch_nosave
             // 
             resources.ApplyResources(this.vc_snes_patch_nosave, "vc_snes_patch_nosave");
@@ -1168,12 +1177,12 @@ namespace FriishProduce
             this.vc_snes_patch_volume.Tag = "patch_volume";
             this.vc_snes_patch_volume.UseVisualStyleBackColor = true;
             // 
-            // patch_nocheck
+            // vc_n64_patch_cleantextures
             // 
-            resources.ApplyResources(this.patch_nocheck, "patch_nocheck");
-            this.patch_nocheck.Name = "patch_nocheck";
-            this.patch_nocheck.Tag = "patch_nocheck";
-            this.patch_nocheck.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.vc_n64_patch_cleantextures, "vc_n64_patch_cleantextures");
+            this.vc_n64_patch_cleantextures.Name = "vc_n64_patch_cleantextures";
+            this.vc_n64_patch_cleantextures.Tag = "patch_cleantextures";
+            this.vc_n64_patch_cleantextures.UseVisualStyleBackColor = true;
             // 
             // SettingsForm
             // 
@@ -1184,7 +1193,6 @@ namespace FriishProduce
             this.ControlBox = false;
             this.Controls.Add(this.bottomPanel2);
             this.Controls.Add(this.TreeView);
-            this.Controls.Add(this.vc_snes);
             this.Controls.Add(this.vc_n64);
             this.Controls.Add(this.vc_sega);
             this.Controls.Add(this.vc_pce);
@@ -1196,6 +1204,7 @@ namespace FriishProduce
             this.Controls.Add(this.adobe_flash);
             this.Controls.Add(this.forwarder);
             this.Controls.Add(this.vc_nes);
+            this.Controls.Add(this.vc_snes);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MaximizeBox = false;
@@ -1388,5 +1397,6 @@ namespace FriishProduce
         private System.Windows.Forms.ComboBox vc_pce_region;
         private System.Windows.Forms.Button GetBanners;
         private System.Windows.Forms.CheckBox patch_nocheck;
+        private System.Windows.Forms.CheckBox vc_n64_patch_cleantextures;
     }
 }
