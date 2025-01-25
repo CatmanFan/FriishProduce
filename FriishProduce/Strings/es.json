@@ -122,8 +122,15 @@
 		},
 
 		"html": {
+
+			"l_000":							"Se abrirá el emulador Frodo.\n\nEn el emulador, ingrese el siguiente comando:\n<b>LOAD\"*\",8</b><br>Una vez que el software (juego) se cargue, ingrese el comando <b>RUN</b>. Si la BIOS se congela (no responde) y no hay ningún indicador LED de la unidad, intente abrir el archivo Frodo.fpr desde File > Open, luego haga clic en Tools > Reset C64 (F12), y vuelva a hacer el proceso.\n\nUna vez que el juego se cargue, haga clic en Patch and Save Snapshot, y guarde el archivo como \"snap.fss\". También puede guardar otra copia para usarlo más tarde.\n\n<i>Intentos restantes: <b>{0}</b></i>",
+			"l_001":							"Sobre la CV de SNES",
+			"l_002":							"Sobre la CV de N64",
 			"t_000":							"Nombre utilizado para el icono que aparece en el menu Wii.\nPara títulos más largos, se recomienda utilizar una versión abreviada de 20 caracteres o menos.<hr><b>Ejemplo:</b>\nZelda: Ocarina",
+			"t_001":							"El nombre completo del software, tal como se muestra en la vista previa del banner.<hr><b>Ejemplo:</b>\nThe Legend of Zelda:\nOcarina of Time",
+			"t_002":							"La región que se utilizará para el banner y el ícono del canal.\nEsto puede ser útil si el nombre de la consola es diferente para tu región o si deseas utilizar un banner en japonés o coreano, por ejemplo.\nSi la región del banner está configurada en Automática, se corresponderá con la región del WAD.",
 			"t_003":							"Cambiar la configuración del emulador.",
+			"t_004":							"Cuando esta opción está habilitada, el programa tratará todos los archivos dentro de la misma carpeta seleccionada actualmente como parte del software que se va a inyectar.\nAsegúrese de que los archivos de su software (juego) estén en una carpeta separada."
 		}
 	},
 
@@ -147,10 +154,10 @@
 			"game_scan":						"&Obtener datos del juego de la base de datos en línea",
 			"export":							"&Exportar...",
 			
-			"extract_wad_banner":				"Extract channel &banner from WAD...",
-			"extract_wad_icon":					"Extract channel &icon from WAD...",
-			"extract_wad_sound":				"Extract channel &sound from WAD...",
-			"extract_wad_manual":				"Extract VC &manual from WAD...",
+			"extract_wad_banner":				"Extraer &banner del canal de un WAD...",
+			"extract_wad_icon":					"Extraer &ícono del canal de un WAD...",
+			"extract_wad_sound":				"Extraer &sonido del canal de un WAD...",
+			"extract_wad_manual":				"Extraer &manual de CV de un WAD...",
 			"updater":							"&Actualización",
 			"check_for_updates":				"Buscar &ahora",
 			"auto_update":						"Buscar &cuando se abra la aplicación",
@@ -181,6 +188,7 @@
 			"default_target_parameters":		"Partidos reemplazables:",
 
 			"use_online_wad_enabled":           "Habilitar opción de descargar canales de origen",
+			"use_online_wad_tip":			"Esto se puede utilizar para descargar cualquier canal de origen que esté disponible en la base de datos actual sin necesidad de tener un archivo WAD existente. Sin embargo, debido a que el cliente NUS de libWiiSharp no permite descifrar archivos WADs de la Consola Virtual de ninguna forma, solo es posible utilizar la función de descarga desde la Web. La legalidad de esta función es dudosa, por lo que es mejor tener esta opción deshabilitada.",
 			"auto_fill_save_data":				"Completar título de datos guardados automáticamente",
 			"auto_prefill":						"Obtener datos de juego automáticamente tras abrir un archivo ROM"
 		},
@@ -260,6 +268,7 @@
 			
 			"vertical_layout":					"Disposición vertical",
 			"presets":							"Ajustes preestablecidos",
+			"preset_blank":						"Vacío (en blanco)",
 			"preset_clear":						"No",
 			"preset_load":						"Aplicar",
 			
@@ -301,6 +310,7 @@
 			"patch_fixcrashes":					"Arreglar fallos",
 			"patch_expandedram":				"RAM extendida (8 MB)",
 			"patch_autosizerom":				"Asignación de tamaño de ROM",
+			"patch_cleantextures":				"Borrar texturas no usadas",
 			"patch_widescreen":					"Pantalla ancha",
 			
 			"romc_type":						"Método de compresión de ROM",
@@ -332,10 +342,18 @@
 			"bios3":							"{vc} (3.ª generación)"
 		},
 
+		"vc_c64": {
+			"rom_notice":			"Esta inyección de la Consola Virtual requiere una captura (snapshot) tomada al inicio del juego usando el emulador Frodo.\n\n¿Qué desea hacer?",
+			"rom_notice1":			"&Crear una nueva captura",
+			"rom_notice2":			"&Usar una captura existente"
+		},
+
 		"adobe_flash": {
 			"vff_cache_size":					"Tamaño de caché VFF (en {kilobytes})",
 			"persistent_storage_total":			"Almacenamiento total (en {kilobytes})",
 			"persistent_storage_per_movie":		"Almacenamiento por SWF (en {kilobytes})",
+			"update_frame_rate":			"Framerate del SWF",
+			"fullscreen":				"Pantalla completa",
 			"controls":							"Controles",
 			"mouse":							"Mouse",
 			"qwerty_keyboard":					"Teclado QWERTY",
