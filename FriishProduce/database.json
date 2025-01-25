@@ -160,6 +160,14 @@
             "wad_titles": ["Mario no Super Picross", "Mario's Super Picross"]
         },
 
+	{
+            "id": "00010001-4a434c__",
+            "region": [0, 1, 3],
+            "emu_ver": [1, 1, 1],
+            "titles": ["聖剣伝説２ シークレット オブ マナ", "Secret of Mana"],
+            "wad_titles": ["Seiken Densetsu 2", "Secret of Mana"]
+        },
+
         {
             "id": "00010001-4a4342__",
             "region": [0, 1, 5],
