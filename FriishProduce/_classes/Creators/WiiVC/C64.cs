@@ -20,6 +20,7 @@ namespace FriishProduce.Injectors
         }
 
         private static readonly string frodo = Paths.Tools + "frodosrc\\";
+        private readonly string snapshot_orig = frodo + "ik.fss";
         private readonly string target = frodo + "rom.d64";
         private readonly string snapshot = frodo + "snap.fss";
 
@@ -27,7 +28,7 @@ namespace FriishProduce.Injectors
         {
             ProcessStartInfo info = new ProcessStartInfo()
             {
-                FileName = frodo + (clean ? "copy.bat" : "delete.bat"),
+                FileName = frodo + (clean ? "delete.bat" : "copy.bat"),
                 Verb = "runas",
                 WindowStyle = ProcessWindowStyle.Minimized,
                 CreateNoWindow = true,
@@ -48,9 +49,9 @@ namespace FriishProduce.Injectors
         /// </summary>
         private void Clean()
         {
-            try { File.Delete(frodo + "ik.fss"); } catch { }
             try { File.Delete(target); } catch { }
             try { File.Delete(snapshot); } catch { }
+            try { File.Delete(snapshot_orig); } catch { }
 
             if (File.Exists(@"C:\1541 ROM"))
                 Setup(true);
@@ -94,14 +95,14 @@ namespace FriishProduce.Injectors
                     if (!File.Exists(frodo + "Frodo.exe"))
                         throw new Exception(string.Format(Program.Lang.Msg(6, true), frodo.Replace(Paths.Tools, null) + "Frodo.exe"));
 
-                    File.Copy(Paths.WorkingFolder + "ik.fss", frodo + "ik.fss", true);
+                    File.Copy(Paths.WorkingFolder + "ik.fss", snapshot_orig, true);
                     if (File.Exists(Paths.WorkingFolder + "ik.fss")) File.Delete(Paths.WorkingFolder + "ik.fss");
                 }
             }
 
             // Check if original snapshot was found
             // ****************
-            if (!File.Exists(frodo + "ik.fss"))
+            if (!File.Exists(snapshot_orig))
                 throw new Exception(Program.Lang.Msg(13, true));
 
             // Prompt to use existing copy

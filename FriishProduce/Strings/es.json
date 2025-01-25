@@ -291,7 +291,7 @@
 			"patch_nocc":						"Deshabilitar mensaje del mando clásico",
 			"patch_noopera":					"Eliminar archivos del manual",
 			"patch_nosave":						"Deshabilitar función de guardado",
-			"patch_nosuspend":					"Deshabilitar función de suspensión",
+			"patch_nosuspend":					"Deshabilitar punto de suspensión",
 			"patch_widescreen":					"Menú HOME en pantalla ancha",
 			"patch_nocheck":					"Eliminar verificación de ROM",
 		},
