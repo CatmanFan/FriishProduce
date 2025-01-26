@@ -123,9 +123,10 @@
 
 		"html": {
 			"l_000":							"The Frodo emulator will now open.\n\n
-												Enter the following command in the emulator:\n<b>LOAD\"*\",8</b>\n
-												Once the software is loaded, enter <b>RUN</b>. If the BIOS freezes and there is no drive LED indicator, open Frodo.fpr from <i>File > Open</i>, then press F12 to restart the emulator and try again.\n\n
-												Once the game loads, click <i>Tools > Patch and Save Snapshot</i>, and save the file to \"snap.fss\". You can also save another copy to use it for later.\n\n
+												1) Enter the following command in the emulator: <b>LOAD\"*\",8</b>\n
+												If the C64 console freezes and there is no drive LED indicator, open Frodo.fpr from <i>File > Open</i>, then press F12 to restart the emulator and try again.\n\n
+												2) Once the software is loaded, enter <b>RUN</b>. As soon as the game loads, click <i>Tools > Patch and Save Snapshot</i>, and save the file to \"snap.fss\".\n
+												You can also save another copy to use it for later.\n\n
 												Attempts remaining: <b>{0}</b>",
 
 			"l_001":							"About SNES VC (under construction)",

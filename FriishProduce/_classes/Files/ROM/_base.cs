@@ -131,8 +131,8 @@ namespace FriishProduce
             // -----------------------
             // Check if patch applied successfully
             // -----------------------
-            if (File.Exists(Paths.WorkingFolder + "rom")) File.Delete(Paths.WorkingFolder + "rom");
-            if (File.Exists(Paths.WorkingFolder + "patch")) File.Delete(Paths.WorkingFolder + "patch");
+            try { File.Delete(Paths.WorkingFolder + "rom"); } catch { }
+            try { File.Delete(Paths.WorkingFolder + "patch"); } catch { }
 
             var Out = File.Exists(Paths.WorkingFolder + "rom_p_bps") ? File.ReadAllBytes(Paths.WorkingFolder + "rom_p_bps")
                 : File.Exists(Paths.WorkingFolder + "rom_p_xdelta") ? File.ReadAllBytes(Paths.WorkingFolder + "rom_p_xdelta")
@@ -141,8 +141,8 @@ namespace FriishProduce
             // -----------------------
             // Delete files
             // -----------------------
-            if (File.Exists(Paths.WorkingFolder + "rom_p_xdelta")) File.Delete(Paths.WorkingFolder + "rom_p_xdelta");
-            if (File.Exists(Paths.WorkingFolder + "rom_p_bps")) File.Delete(Paths.WorkingFolder + "rom_p_bps");
+            try { File.Delete(Paths.WorkingFolder + "rom_p_xdelta"); } catch { }
+            try { File.Delete(Paths.WorkingFolder + "rom_p_bps"); } catch { }
 
             patched = Out ?? throw new Exception(Program.Lang.Msg(8, true));
         }

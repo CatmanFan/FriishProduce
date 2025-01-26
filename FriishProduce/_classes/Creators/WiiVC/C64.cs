@@ -90,13 +90,13 @@ namespace FriishProduce.Injectors
                         "gbalzss",
                         "d ik.fss.comp ik.fss"
                     );
-                    if (File.Exists(Paths.WorkingFolder + "ik.fss.comp")) File.Delete(Paths.WorkingFolder + "ik.fss.comp");
+                    try { File.Delete(Paths.WorkingFolder + "ik.fss.comp"); } catch { }
 
                     if (!File.Exists(frodo + "Frodo.exe"))
                         throw new Exception(string.Format(Program.Lang.Msg(6, true), frodo.Replace(Paths.Tools, null) + "Frodo.exe"));
 
                     File.Copy(Paths.WorkingFolder + "ik.fss", snapshot_orig, true);
-                    if (File.Exists(Paths.WorkingFolder + "ik.fss")) File.Delete(Paths.WorkingFolder + "ik.fss");
+                    try { File.Delete(Paths.WorkingFolder + "ik.fss"); } catch { }
                 }
             }
 

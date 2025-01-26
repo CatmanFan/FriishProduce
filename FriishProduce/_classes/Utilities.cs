@@ -194,7 +194,10 @@ namespace FriishProduce
 
                 catch (Exception ex)
                 {
-                    throw new Exception(string.Format(Program.Lang.Msg(0, true), Message(ex.Message, URL)));
+                    if (ex.GetType() == typeof(FileNotFoundException))
+                        throw ex;
+                    else
+                        throw new Exception(string.Format(Program.Lang.Msg(0, true), Message(ex.Message, URL)));
                 }
             }
         }
@@ -274,7 +277,7 @@ namespace FriishProduce
 
             File.WriteAllBytes(targetPath, app);
             string value = Run(targetPath, Paths.WorkingFolder, arguments, showWindow, redirectOutput);
-            if (File.Exists(targetPath)) File.Delete(targetPath);
+            try { File.Delete(targetPath); } catch { }
 
             return value;
         }
@@ -341,9 +344,9 @@ namespace FriishProduce
 
                 var output = File.ReadAllBytes(Paths.WorkingFolder + "main.new.dol");
 
-                if (File.Exists(Paths.WorkingFolder + "main.new.dol")) File.Delete(Paths.WorkingFolder + "main.new.dol");
-                if (File.Exists(Paths.WorkingFolder + "main.dec.dol")) File.Delete(Paths.WorkingFolder + "main.dec.dol");
-                if (File.Exists(Paths.WorkingFolder + "main.dol")) File.Delete(Paths.WorkingFolder + "main.dol");
+                try { File.Delete(Paths.WorkingFolder + "main.new.dol"); } catch { }
+                try { File.Delete(Paths.WorkingFolder + "main.dec.dol"); } catch { }
+                try { File.Delete(Paths.WorkingFolder + "main.dol"); } catch { }
 
                 return output;
             }

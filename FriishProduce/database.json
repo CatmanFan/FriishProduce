@@ -315,12 +315,12 @@
             "emu_ver": [1, 1, 1, 3],
             "titles": ["マリオカート64", "Mario Kart 64", "Mario Kart 64", "마리오 카트 64"]
         },
-		
+
         {
-            "id": "00010001-4e4144__",
+            "id": "00010001-4e414f__",
             "region": [0, 1, 3, 7],
             "emu_ver": [2, 2, 2, 3],
-            "titles": ["テン・エイティ スノーボーディング", "1080° Snowboarding", "1080° Snowboarding", "1080° 스노우보딩"],
+            "titles": ["テン・エイティ スノーボーディング", "1080° Snowboarding", "1080° Snowboarding", "1080°스노보딩"],
             "wad_titles": ["1080 Snowboarding"]
         },
 

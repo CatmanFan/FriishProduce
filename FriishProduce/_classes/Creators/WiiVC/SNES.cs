@@ -92,7 +92,7 @@ namespace FriishProduce.Injectors
             // Delete temporary files
             // ****************
             foreach (var file in new string[] { Paths.WorkingFolder + "rom", Paths.WorkingFolder + "lz77.rom", Paths.WorkingFolder + "lzh8.rom" })
-                if (File.Exists(file)) File.Delete(file);
+                try { File.Delete(file); } catch { }
 
             // Dummify unused files in emulator
             // ****************

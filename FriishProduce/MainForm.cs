@@ -688,7 +688,7 @@ namespace FriishProduce
                             File.Delete(item);
 
                 Program.Config.Reset(false);
-                if (File.Exists(Paths.Config)) File.Delete(Paths.Config);
+                try { File.Delete(Paths.Config); } catch { }
 
                 Environment.Exit(0);
             }
@@ -826,8 +826,8 @@ namespace FriishProduce
 
                                             var bytes = File.ReadAllBytes(Paths.WorkingFolder + "html.dec");
 
-                                            if (File.Exists(Paths.WorkingFolder + "html.dec")) File.Delete(Paths.WorkingFolder + "html.dec");
-                                            if (File.Exists(Paths.WorkingFolder + "html.arc")) File.Delete(Paths.WorkingFolder + "html.arc");
+                                            try { File.Delete(Paths.WorkingFolder + "html.dec"); } catch { }
+                                            try { File.Delete(Paths.WorkingFolder + "html.arc"); } catch { }
 
                                             extManual = U8.Load(bytes);
                                             u8.Dispose();

@@ -722,8 +722,8 @@ namespace FriishProduce
 
             // Cleanup
             // ****************
-            if (File.Exists(ImagesPath + "06.png")) File.Delete(ImagesPath + "06.png");
-            if (File.Exists(ImagesPath + "06.tex0")) File.Delete(ImagesPath + "06.tex0");
+            try { File.Delete(ImagesPath + "06.png"); } catch { }
+            try { File.Delete(ImagesPath + "06.tex0"); } catch { }
 
             foreach (var file in Directory.EnumerateFiles(ImagesPath))
             {

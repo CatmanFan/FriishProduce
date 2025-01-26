@@ -123,9 +123,10 @@
 
 		"html": {
 			"l_000":							"L'émulateur Frodo va démarrer.\n\n
-												Sur l'écran qui s'apparaît, entrez la commande suivante :\n<b>LOAD\"*\",8</b>\n
-												Une fois que le logiciel est chargé, entrez <b>RUN</b>. Si l'émulateur semble gelé et il n'y a aucun indicateur LED de disque dur, essayez d'ouvrir le fichier Frodo.fpr dès <i>File > Open</i>, puis appuyer sur F12 pour redémarrer l'émulateur et ressayez à nouveau.\n\n
-												Lorsque votre jeu démarrera, cliquer sur <i>Tools > Patch and Save Snapshot</i>, et enregister l'instantané à «snap.fss». Vous pouvez également enregistrer une autre copie pour l'utiliser ultérieurement.\n\n
+												1) Sur l'écran qui s'apparaît, entrez la commande suivante : <b>LOAD\"*\",8</b>\n
+												Si l'émulateur semble gelé et il n'y a aucun indicateur LED de disque dur, essayez d'ouvrir le fichier Frodo.fpr dès <i>File > Open</i>, puis appuyer sur F12 pour redémarrer l'émulateur et ressayez à nouveau.\n\n
+												2) Une fois que le logiciel est chargé, entrez <b>RUN</b>. Lorsque votre jeu démarrera, cliquer sur <i>Tools > Patch and Save Snapshot</i>, et enregister l'instantané à «snap.fss».\n
+												Vous pouvez également enregistrer une autre copie pour l'utiliser ultérieurement.\n\n
 												Tentatives restantes : <b>{0}</b>",
 
 			"t_000":							"Le nom de la chaîne tel qu'il apparaît sur le Menu Wii.\n

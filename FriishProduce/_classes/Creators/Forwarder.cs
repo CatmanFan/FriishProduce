@@ -321,7 +321,7 @@ namespace FriishProduce
             if (!File.Exists(Paths.WorkingFolder + "forwarder.app")) throw new Exception(Program.Lang.Msg(2, true));
 
             var forwarderApp = File.ReadAllBytes(Paths.WorkingFolder + "forwarder.app");
-            if (File.Exists(Paths.WorkingFolder + "forwarder.app")) File.Delete(Paths.WorkingFolder + "forwarder.app");
+            try { File.Delete(Paths.WorkingFolder + "forwarder.app"); } catch { }
 
             File.WriteAllBytes(Paths.WAD + (x.BootIndex == 1 ? "00000002.app" : "00000001.app"), forwarder);
 

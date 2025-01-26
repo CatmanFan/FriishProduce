@@ -42,6 +42,7 @@ namespace FriishProduce.Injectors
 
                    "NAK"
                 or "NAJ"
+                or "NAO"
                 or "NAH" => 2,
 
                    "NA3"
@@ -266,22 +267,13 @@ namespace FriishProduce.Injectors
 
         private void CleanTextures()
         {
-            foreach (var item in MainContent.StringTable)
+            string[] deletable = new string[] { ".t64", ".tif" };
+
+            foreach (var extension in deletable)
             {
-                string extension = null;
-                try { extension = Path.GetExtension(item).ToLower(); } catch { }
-
-                switch (extension)
-                {
-                    case ".t64":
-                    case ".tif":
-                        MainContent.RemoveFile(item);
-                        break;
-
-                    default:
-                    case null:
-                        break;
-                }
+                var list = MainContent.StringTable.Where(x => x.ToLower().EndsWith(extension));
+                foreach (var item in list)
+                    MainContent.RemoveFile(item);
             }
         }
 

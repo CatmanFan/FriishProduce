@@ -123,9 +123,10 @@
 
 		"html": {
 			"l_000":							"Se abrirá el emulador Frodo.\n\n
-												Ingrese el comando \"<b>LOAD\"*\",8</b>\" en el emulador y, una vez que su juego se cargue, ingrese el comando \"<b>RUN</b>\".\n
-												Si la consola no responde y todavía no hay ningún indicador LED de la unidad, abra Frodo.fpr desde <i>File > Open</i>, luego pulse F12 para reiniciar el emulador y vuelva a intentar la prueba.\n\n
-												En cuanto empiece el juego, haga clic en <i>Tools > Patch and Save Snapshot</i> y guarde el archivo como \"snap.fss\". También puede guardar otra copia para usarlo más tarde.\n\n
+												1) Ingrese el comando \"<b>LOAD\"*\",8</b>\" en el emulador.\n
+												Si la consola C64 no responde y todavía no hay ningún indicador LED de la unidad, abra Frodo.fpr desde <i>File > Open</i>, luego pulse F12 para reiniciar el emulador y vuelva a intentar la prueba.\n\n
+												2) Una vez cargado el juego, ingrese el comando \"<b>RUN</b>\". En cuanto empiece el juego, haga clic en <i>Tools > Patch and Save Snapshot</i> y guarde el archivo como \"snap.fss\".\n
+												También puede guardar otra copia para usarlo más tarde.\n\n
 												<i>Intentos restantes: <b>{0}</b></i>",
 			
 			"t_000":							"Nombre utilizado para el icono que aparece en el menu Wii.\n

@@ -212,9 +212,9 @@ namespace FriishProduce
                                 File.ReadAllBytes(Paths.WorkingFolder + "html_modified.arc")
                             );
 
-                            if (File.Exists(Paths.WorkingFolder + "html.dec")) File.Delete(Paths.WorkingFolder + "html.dec");
-                            if (File.Exists(Paths.WorkingFolder + "html.arc")) File.Delete(Paths.WorkingFolder + "html.arc");
-                            if (File.Exists(Paths.WorkingFolder + "html_modified.arc")) File.Delete(Paths.WorkingFolder + "html_modified.arc");
+                            try { File.Delete(Paths.WorkingFolder + "html.dec"); } catch { }
+                            try { File.Delete(Paths.WorkingFolder + "html.arc"); } catch { }
+                            try { File.Delete(Paths.WorkingFolder + "html_modified.arc"); } catch { }
                         }
 
                         else if (item.ToLower().Contains("emanual.arc") || item.ToLower().Contains("html.arc") || item.ToLower().Contains("man.arc"))

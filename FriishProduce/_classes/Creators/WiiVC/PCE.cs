@@ -127,9 +127,9 @@ namespace FriishProduce.Injectors
                 else
                     MainContent.ReplaceFile(MainContent.GetNodeIndex(rom), File.ReadAllBytes(Paths.WorkingFolder + "rom_new"));
 
-                if (File.Exists(Paths.WorkingFolder + "rom_new")) File.Delete(Paths.WorkingFolder + "rom_new");
-                if (File.Exists(Paths.WorkingFolder + "rom")) File.Delete(Paths.WorkingFolder + "rom");
-                if (File.Exists(Paths.WorkingFolder + "rom_comp")) File.Delete(Paths.WorkingFolder + "rom_comp");
+                try { File.Delete(Paths.WorkingFolder + "rom_new"); } catch { }
+                try { File.Delete(Paths.WorkingFolder + "rom"); } catch { }
+                try { File.Delete(Paths.WorkingFolder + "rom_comp"); } catch { }
             }
 
             // Normal

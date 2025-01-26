@@ -73,14 +73,12 @@ namespace FriishProduce
         {
             if (!Directory.Exists(Paths.WorkingFolder)) Directory.CreateDirectory(Paths.WorkingFolder);
 
-            try
-            {
-                foreach (var item in Directory.GetFiles(Paths.WorkingFolder, "*.*", SearchOption.AllDirectories))
-                    if (!Path.GetFileName(item).ToLower().Contains("readme.md")) File.Delete(item);
-                foreach (var item in Directory.GetDirectories(Paths.WorkingFolder))
-                    Directory.Delete(item, true);
-            }
-            catch { }
+            foreach (var item in Directory.GetFiles(Paths.WorkingFolder, "*.*", SearchOption.AllDirectories))
+                if (!Path.GetFileName(item).ToLower().Contains("readme.md"))
+                    try { File.Delete(item); } catch { }
+
+            foreach (var item in Directory.GetDirectories(Paths.WorkingFolder))
+                try { Directory.Delete(item, true); } catch { }
 
             try { File.Delete(@"C:\1541 ROM"); } catch { }
             try { File.Delete(@"C:\Basic ROM"); } catch { }

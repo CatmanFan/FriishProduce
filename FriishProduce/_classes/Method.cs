@@ -327,7 +327,7 @@ namespace FriishProduce
 
                     // Get ZIP directory path & compress to .ZIP archive
                     // *******
-                    if (File.Exists(Out)) File.Delete(Out);
+                    try { File.Delete(Out); } catch { }
 
                     FastZip z = new();
                     z.CreateZip(Out, Paths.SDUSBRoot, true, null);
