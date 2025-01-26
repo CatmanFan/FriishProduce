@@ -393,6 +393,61 @@ namespace FriishProduce
                 return "undefined";
             }
         }
+
+        public static string Convert(string file) => Convert(File.ReadAllBytes(file));
+
+        public static string Convert(ReadOnlySpan<byte> file)
+        {
+            ReadOnlySpan<byte> utf8Bom = new byte[] { 0xEF, 0xBB, 0xBF };
+            if (file.StartsWith(utf8Bom))
+                file = file.Slice(utf8Bom.Length);
+
+            Encoding[] encodings = new Encoding[]
+            {
+                Encoding.UTF8,
+                new UnicodeEncoding(false, false),
+                new UnicodeEncoding(true, false),
+                new UnicodeEncoding(false, true),
+                new UnicodeEncoding(true, true),
+                Encoding.UTF7,
+                Encoding.UTF32,
+                Encoding.ASCII,
+                Encoding.Default
+            };
+
+            foreach (var encoding in encodings)
+            {
+                try
+                {
+                    var txt = encoding.GetString(file.ToArray());
+                    var lines = txt.Replace('\r', '\n').Split('\n');
+                    var new_lines = new List<string>();
+
+                    for (int i = 0; i < lines.Length; i++)
+                        if (!string.IsNullOrWhiteSpace(lines[i]))
+                            new_lines.Add(lines[i]);
+
+                    for (int i = new_lines.Count - 1; i > 0; i--)
+                    {
+                        var line = new_lines[i].TrimStart(' ', '\t').TrimEnd('\r', '\n');
+
+                        if (!(line.StartsWith("\"") || line.StartsWith("{") || line.StartsWith("}")) && !string.IsNullOrWhiteSpace(line))
+                        {
+                            new_lines[i - 1] += line;
+                            new_lines.Remove(new_lines[i]);
+                        }
+                    }
+
+                    txt = string.Join("\n", new_lines.ToArray());
+
+                    using var fileReader = JsonDocument.Parse(txt, new JsonDocumentOptions() { AllowTrailingCommas = true, CommentHandling = JsonCommentHandling.Skip });
+                    return txt;
+                }
+                catch { }
+            }
+
+            return null;
+        }
         #endregion
 
         #region Private methods and variables
@@ -466,26 +521,11 @@ namespace FriishProduce
         private dynamic parseFile(byte[] file)
         {
             dynamic reader = null;
-            var encoding = Encoding.Unicode;
+            var txt = Convert(file);
+            if (txt == null) throw new InvalidDataException("The file could not be recognized.");
 
-            using (MemoryStream ms = new(file))
-            using (StreamReader sr = new(ms, encoding))
-            {
-                sr.ReadToEnd();
-                encoding = sr.CurrentEncoding;
-
-                try { JsonDocument.Parse(sr.ReadToEnd(), new JsonDocumentOptions() { AllowTrailingCommas = true, CommentHandling = JsonCommentHandling.Skip }); }
-                catch { encoding = Encoding.UTF8; }
-            }
-
-            using (MemoryStream ms = new(file))
-            using (StreamReader sr = new(ms, encoding))
-            using (var fileReader = JsonDocument.Parse(sr.ReadToEnd(), new JsonDocumentOptions() { AllowTrailingCommas = true, CommentHandling = JsonCommentHandling.Skip }))
-            {
-                reader = JsonSerializer.Deserialize<LanguageData>(fileReader, new JsonSerializerOptions() { AllowTrailingCommas = true, ReadCommentHandling = JsonCommentHandling.Skip });
-                sr.Dispose();
-                ms.Dispose();
-            }
+            using var fileReader = JsonDocument.Parse(txt, new JsonDocumentOptions() { AllowTrailingCommas = true, CommentHandling = JsonCommentHandling.Skip });
+            reader = JsonSerializer.Deserialize<LanguageData>(fileReader, new JsonSerializerOptions() { AllowTrailingCommas = true, ReadCommentHandling = JsonCommentHandling.Skip });
 
             // var name = reader["language"].ToString();
             // var author = reader["author"].ToString();

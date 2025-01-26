@@ -144,7 +144,7 @@ namespace FriishProduce
             controller_box.Visible = controllerForm != null;
             b_controller.Enabled = controller_cb.Checked = UsesKeymap && controllerForm != null;
 
-            try { ResetOptions(); } catch { ClearOptions(); }
+            try { ResetOptions(); } catch { ClearOptions(); ResetOptions(); }
             CenterToParent();
         }
 

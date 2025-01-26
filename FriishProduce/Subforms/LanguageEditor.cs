@@ -120,22 +120,9 @@ namespace FriishProduce
         {
             loaded = Unsaved = false;
             bool isEnglish = source == null;
+            string txt = Language.Convert(file);
 
-            var encoding = Encoding.Unicode;
-
-            using (MemoryStream ms = new(file))
-            using (StreamReader sr = new(ms, encoding))
-            {
-                sr.ReadToEnd();
-                encoding = sr.CurrentEncoding;
-
-                try { JsonDocument.Parse(sr.ReadToEnd(), new JsonDocumentOptions() { AllowTrailingCommas = true, CommentHandling = JsonCommentHandling.Skip }); }
-                catch { encoding = Encoding.UTF8; }
-            }
-
-            using (MemoryStream ms = new(file))
-            using (StreamReader sr = new(ms, encoding))
-            using (var fileReader = JsonDocument.Parse(sr.ReadToEnd(), new JsonDocumentOptions() { AllowTrailingCommas = true, CommentHandling = JsonCommentHandling.Skip }))
+            using (var fileReader = JsonDocument.Parse(txt, new JsonDocumentOptions() { AllowTrailingCommas = true, CommentHandling = JsonCommentHandling.Skip }))
             {
                 target = JsonSerializer.Deserialize<Language.LanguageData>(fileReader, new JsonSerializerOptions() { AllowTrailingCommas = true, ReadCommentHandling = JsonCommentHandling.Skip });
 
@@ -237,9 +224,6 @@ namespace FriishProduce
                         }
                     }
                 }
-
-                sr.Dispose();
-                ms.Dispose();
             }
 
             // var name = reader["language"].ToString();
@@ -303,7 +287,7 @@ namespace FriishProduce
                 Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping
             }).Replace("\n\n", "\n").Replace("\t\t", "\t");
 
-            File.WriteAllText(currentFile, outFile, Encoding.Unicode);
+            File.WriteAllText(currentFile, outFile);
 
             // -------------------------
             // Finalized

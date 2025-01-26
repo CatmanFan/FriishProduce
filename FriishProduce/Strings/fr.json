@@ -122,6 +122,12 @@
 		},
 
 		"html": {
+			"l_000":							"L'émulateur Frodo va démarrer.\n\n
+												Sur l'écran qui s'apparaît, entrez la commande suivante :\n<b>LOAD\"*\",8</b><br>
+												Une fois que le logiciel est chargé, entrez <b>RUN</b>. Si l'émulateur semble gelé et il n'y a aucun indicateur LED de disque dur, essayez d'ouvrir le fichier Frodo.fpr dès <i>File > Open</i>, puis appuyer sur F12 pour redémarrer l'émulateur et ressayez à nouveau.\n\n
+												Lorsque votre jeu démarrera, cliquer sur <i>Tools > Patch and Save Snapshot</i>, et enregister l'instantané à «snap.fss». Vous pouvez également enregistrer une autre copie pour l'utiliser ultérieurement.\n\n
+												Tentatives restantes : <b>{0}</b>",
+
 			"t_000":							"Le nom de la chaîne tel qu'il apparaît sur le Menu Wii.\nIl est recommandé d'utiliser une version abrégée du titre (maximum de 20 caractères) s'il est trop long.<hr><b>Exemple :</b>\nZelda: Ocarina",
 			"t_001":							"Le nom complet du logiciel tel qu'il apparaît sur l'aperçu du banner.<hr><b>Exemple :</b>\nThe Legend of Zelda:\nOcarina of Time",
 			"t_002":							"La variante régionale du banner et de l'icône.\nCette option peut être utile dans le cas où le nom de la console serait différent pour votre région ou si vous préférez utiliser un banner japonais ou coréen, par exemple.\nLa région du banner correspondra à celle de la chaîne lorsqu'elle est réglée sur automatique.",
@@ -340,6 +346,7 @@
 			"vff_cache_size":					"Taille du cache VFF (en {kilobytes})",
 			"persistent_storage_total":			"Stockage total (en {kilobytes})",
 			"persistent_storage_per_movie":		"Storage par SWF (en {kilobytes})",
+			"update_frame_rate":				"FPS du SWF",
 			"controls":							"Contrôles",
 			"mouse":							"Souris",
 			"qwerty_keyboard":					"Clavier Qwerty",

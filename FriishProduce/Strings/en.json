@@ -122,9 +122,13 @@
 		},
 
 		"html": {
-			"l_000":							"The Frodo emulator will now open.\n\nEnter the following command in the emulator:\n<b>LOAD\"*\",8</b><br>Once the software is loaded, enter <b>RUN</b>. If the BIOS freezes and there is no drive LED indicator, try opening Frodo.fpr from File > Open, then going to Tools > Reset C64 (F12), and restarting this process.\n\nOnce the game loads, click Patch and Save Snapshot, and save the file to \"snap.fss\". You can also save another copy to use it for later.\n\n<i>Attempts left: <b>{0}</b></i>",
-			"l_001":							"About SNES VC",
-			"l_002":							"About N64 VC",
+			"l_000":							"The Frodo emulator will now open.\n\n
+												Enter the following command in the emulator:\n<b>LOAD\"*\",8</b><br>
+												Once the software is loaded, enter <b>RUN</b>. If the BIOS freezes and there is no drive LED indicator, open Frodo.fpr from <i>File > Open</i>, then press F12 to restart the emulator and try again.\n\n
+												Once the game loads, click <i>Tools > Patch and Save Snapshot</i>, and save the file to \"snap.fss\". You can also save another copy to use it for later.\n\n
+												Attempts remaining: <b>{0}</b>",
+			"l_001":							"About SNES VC (under construction)",
+			"l_002":							"About N64 VC (under construction)",
 
 			"t_000":							"The name used for the channel's icon on the Wii Menu.\nA shortened version of 20 characters or less is recommended for longer titles.<hr><b>Example:</b>\nZelda: Ocarina",
 			"t_001":							"The full name of the software, as displayed on the banner preview.<hr><b>Example:</b>\nThe Legend of Zelda:\nOcarina of Time",

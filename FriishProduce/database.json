@@ -83,7 +83,7 @@
             "wad_titles": ["Rockman 5 - Blues no Wana!", "Mega Man 5"]
         },
 
-	{
+	    {
             "id": "00010001-464339__",
             "region": [0],
             "emu_ver": [0],
@@ -160,7 +160,7 @@
             "wad_titles": ["Mario no Super Picross", "Mario's Super Picross"]
         },
 
-	{
+	    {
             "id": "00010001-4a434c__",
             "region": [0, 1, 3],
             "emu_ver": [1, 1, 1],
@@ -176,7 +176,7 @@
             "wad_titles": ["Super Mario RPG"]
         },
 
-	{
+	    {
             "id": "00010001-4a4441__",
             "region": [0, 1, 3],
             "emu_ver": [2, 2, 2],

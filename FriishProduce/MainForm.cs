@@ -152,8 +152,6 @@ namespace FriishProduce
             {
                 Text += " [Running in debug mode]";
                 // Debug mode-only features are activated here. //
-                extract_wad_banner.Visible = true;
-                extract_wad_icon.Visible = true;
             }
 
             RefreshRecent();

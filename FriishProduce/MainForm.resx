@@ -526,14 +526,8 @@
   <data name="extract_wad_banner.Text" xml:space="preserve">
     <value>extract_wad_banner</value>
   </data>
-  <data name="extract_wad_banner.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="extract_wad_icon.Text" xml:space="preserve">
     <value>extract_wad_icon</value>
-  </data>
-  <data name="extract_wad_icon.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
   </data>
   <data name="extract_wad_sound.Text" xml:space="preserve">
     <value>extract_wad_sound</value>

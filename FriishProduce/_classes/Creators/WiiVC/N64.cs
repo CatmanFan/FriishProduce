@@ -92,13 +92,11 @@ namespace FriishProduce.Injectors
 
                     // Compress using ROMC type
                     // ****************
-                    string output = null;
-
                     if (CompressionType == 1) // Type 0
-                        output = Utils.Run(FileDatas.Apps.romc0, "romc0", "rom romc", false, false);
+                        Utils.Run(FileDatas.Apps.romc0, "romc0", "rom romc", false, false);
 
                     else // Type 1
-                        output = Utils.Run(FileDatas.Apps.romc, "romc", "e rom romc", false, false);
+                        Utils.Run(FileDatas.Apps.romc, "romc", "e rom romc", false, false);
 
                     // Check if converted file exists
                     // ****************
@@ -269,8 +267,22 @@ namespace FriishProduce.Injectors
         private void CleanTextures()
         {
             foreach (var item in MainContent.StringTable)
-                if (Path.GetExtension(item).ToLower() == ".t64" || Path.GetExtension(item).ToLower() == ".tif")
-                    MainContent.RemoveFile(item);
+            {
+                string extension = null;
+                try { extension = Path.GetExtension(item).ToLower(); } catch { }
+
+                switch (extension)
+                {
+                    case ".t64":
+                    case ".tif":
+                        MainContent.RemoveFile(item);
+                        break;
+
+                    default:
+                    case null:
+                        break;
+                }
+            }
         }
 
         private bool ShadingFix()
