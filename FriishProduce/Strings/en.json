@@ -123,18 +123,29 @@
 
 		"html": {
 			"l_000":							"The Frodo emulator will now open.\n\n
-												Enter the following command in the emulator:\n<b>LOAD\"*\",8</b><br>
+												Enter the following command in the emulator:\n<b>LOAD\"*\",8</b>\n
 												Once the software is loaded, enter <b>RUN</b>. If the BIOS freezes and there is no drive LED indicator, open Frodo.fpr from <i>File > Open</i>, then press F12 to restart the emulator and try again.\n\n
 												Once the game loads, click <i>Tools > Patch and Save Snapshot</i>, and save the file to \"snap.fss\". You can also save another copy to use it for later.\n\n
 												Attempts remaining: <b>{0}</b>",
+
 			"l_001":							"About SNES VC (under construction)",
+
 			"l_002":							"About N64 VC (under construction)",
 
-			"t_000":							"The name used for the channel's icon on the Wii Menu.\nA shortened version of 20 characters or less is recommended for longer titles.<hr><b>Example:</b>\nZelda: Ocarina",
-			"t_001":							"The full name of the software, as displayed on the banner preview.<hr><b>Example:</b>\nThe Legend of Zelda:\nOcarina of Time",
-			"t_002":							"The region to use for the channel banner and icon.\nThis can be useful if the console's name is different for your region or if you want to use a Japanese/Korean banner, for instance.\nIf the banner region is set to automatic, it will correspond with the WAD's region.",
+			"t_000":							"The name used for the channel's icon on the Wii Menu.\nA shortened version of 20 characters or less is recommended for longer titles.<hr>
+												<b>Example:</b>\nZelda: Ocarina",
+
+			"t_001":							"The full name of the software, as displayed on the banner preview.<hr>
+												<b>Example:</b>\nThe Legend of Zelda:\nOcarina of Time",
+
+			"t_002":							"The region to use for the channel banner and icon.\n
+												This can be useful if the console's name is different for your region or if you want to use a Japanese/Korean banner, for instance.\n
+												If the banner region is set to automatic, it will correspond with the WAD's region.",
+
 			"t_003":							"Change advanced emulator settings.",
-			"t_004":							"When this option is enabled, the program will treat all files within the same folder as the currently selected one as forming part of the software to be injected.\nPlease make sure that your software files are in a separate folder.",
+
+			"t_004":							"When this option is enabled, the program will treat all files within the same folder as the currently selected one as forming part of the software to be injected.\n
+												Please make sure that your software files are in a separate folder.",
 		}
 	},
 
@@ -192,7 +203,10 @@
 			"default_target_parameters":		"Replaceable parameters:",
 
 			"use_online_wad_enabled":           "Enable downloadable WADs feature",
-			"use_online_wad_tip":				"This can be used to retrieve any WAD that is available from the current database without already requiring to have a WAD file. However, because libWiiSharp's NUS client does not allow for decrypting VC WADs in any form, it is only able to use Web download functionality. The legality of this is shady so it is better to have the option disabled.",
+			"use_online_wad_tip":				"This can be used to retrieve any WAD that is available from the current database without already requiring to have a WAD file.
+												However, because libWiiSharp's NUS client does not allow for decrypting VC WADs in any form, it is only able to use Web download functionality.
+												The legality of this is shady so it is better to have the option disabled.",
+
 			"auto_fill_save_data":				"Fill in save data title automatically",
 			"auto_prefill":						"Automatically prefill game data after opening"
 		},
