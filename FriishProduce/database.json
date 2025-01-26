@@ -76,11 +76,10 @@
         },
 
         {
-            "id": "00010001-464659__",
+            "id": "00010001-464432__",
             "region": [0, 1, 3],
-            "emu_ver": [1, 1, 1],
-            "titles": ["ロックマン５ ブルースの罠!?", "Mega Man 5"],
-            "wad_titles": ["Rockman 5 - Blues no Wana!", "Mega Man 5"]
+            "emu_ver": [0, 0, 0],
+            "titles": ["ダブルドラゴン", "Double Dragon"]
         },
 
 	    {
@@ -112,6 +111,21 @@
             "titles": ["パンチアウト!!", "Punch-Out!! Featuring Mr. Dream"],
             "wad_titles": ["Punch-Out!!"]
         },
+		
+        {
+            "id": "00010001-464456__",
+            "region": [0, 1, 3, 6],
+            "emu_ver": [0, 0, 0, 0],
+            "titles": ["ダウンタウン熱血物語", "River City Ransom", "Street Gangs", "다운타운 열혈물어"],
+            "wad_titles": ["Downtown Nekketsu Monogatari", "River City Ransom", "Street Gangs", "Downtown Nekketsu Monogatari"]
+        },
+		
+        {
+            "id": "00010001-464336__",
+            "region": [1, 3],
+            "emu_ver": [0, 0],
+            "titles": ["StarTropics"]
+        },
 
         {
             "id": "00010001-464357__",
@@ -119,12 +133,44 @@
             "emu_ver": [0, 0, 0, 0],
             "titles": ["スーパーマリオブラザーズ３", "Super Mario Bros. 3", "Super Mario Bros. 3", "슈퍼 마리오브라더스 3"]
         },
+		
+        {
+            "id": "00010001-464551__",
+            "region": [0, 1, 3],
+            "emu_ver": [1, 1, 1],
+            "titles": ["悪魔城伝説", "Castlevania III: Dracula's Curse",],
+            "wad_titles": ["Akumajou Densetsu", "Castlevania III - Dracula's Curse"]
+        },
+		
+        {
+            "id": "00010001-46444e__",
+            "region": [0, 1, 3],
+            "emu_ver": [1, 1, 1],
+            "titles": ["ロックマン２ Dr.ワイリーの謎", "Mega Man 2"],
+            "wad_titles": ["Rockman 2 - Dr. Wily no Nazo", "Mega Man 2"]
+        },
+
+        {
+            "id": "00010001-464659__",
+            "region": [0, 1, 3],
+            "emu_ver": [1, 1, 1],
+            "titles": ["ロックマン５ ブルースの罠!?", "Mega Man 5"],
+            "wad_titles": ["Rockman 5 - Blues no Wana!", "Mega Man 5"]
+        },
 
         {
             "id": "00010001-464651__",
             "region": [1, 5],
             "emu_ver": [1, 1],
             "titles": ["Shadow of the Ninja"]
+        },
+		
+        {
+            "id": "00010001-464552__",
+            "region": [1, 3],
+            "emu_ver": [1, 5],
+            "titles": ["Zoda's Revenge: StarTropics II"],
+            "wad_titles": ["Zoda's Revenge - StarTropics II"]
         }
     ],
 
@@ -136,6 +182,14 @@
             "titles": ["スーパードンキーコング２ ディクシー&ディディー", "Donkey Kong Country 2: Diddy's Kong Quest", "Donkey Kong Country 2: Diddy's Kong Quest", "동키콩 컨트리 2"],
             "wad_titles": ["Super Donkey Kong 2 - Dixie & Diddy", "Donkey Kong Country 2 - Diddy's Kong Quest"]
         },
+		
+        {
+            "id": "00010001-4a424b__",
+            "region": [0, 1, 3],
+            "emu_ver": [0, 0, 0],
+            "titles": ["ブレス オブ ファイアⅡ 使命の子", "Breath of Fire II"],
+            "wad_titles": ["Breath of Fire II - Shimei no Ko", "Breath of Fire II"]
+        },
 
         {
             "id": "00010001-4a4343__",
@@ -143,6 +197,15 @@
             "emu_ver": [2, 2, 2],
             "titles": ["星のカービィ スーパーデラックス", "Kirby Super Star", "Kirby's Fun Pak"],
             "wad_titles": ["Hoshi no Kirby Super Deluxe", "Kirby Super Star", "Kirby's Fun Pak"]
+        },
+
+
+        {
+            "id": "00010001-4a4157__",
+            "region": [0, 1],
+            "emu_ver": [0, 0],
+            "titles": ["三國志Ⅳ", "Romance of the Three Kingdoms IV: Wall of Fire"],
+            "wad_titles": ["Sangokushi IV", "Romance of the Three Kingdoms IV - Wall of Fire"]
         },
 
         {
@@ -182,6 +245,14 @@
             "emu_ver": [2, 2, 2],
             "titles": ["ファイナルファンタジーⅥ", "Final Fantasy III"],
             "wad_titles": ["Final Fantasy VI", "Final Fantasy III"]
+        },
+		
+        {
+            "id": "00010001-4a4542__",
+            "region": [0, 1, 3],
+            "emu_ver": [2, 2, 2],
+            "titles": ["ロックマンＸ", "Mega Man X"],
+            "wad_titles": ["Rockman X", "Mega Man X"]
         },
 		
         {
@@ -338,7 +409,7 @@
             "id": "00010001-4c414a__",
             "region": [0, 1, 3],
             "emu_ver": [2, 2, 2],
-            "titles": ["ソニック・ザ・ヘッジホッグ2", "Sonic the Hedgehog 2"],
+            "titles": ["ソニック・ザ・ヘッジホッグ２", "Sonic the Hedgehog 2"],
             "wad_titles": ["Sonic The Hedgehog 2"],
         },
 
@@ -389,6 +460,21 @@
             "emu_ver": [1, 1, 1],
             "titles": ["コミックスゾーン", "Comix Zone"],
         },
+		
+        {
+            "id": "00010001-4d4142__",
+            "region": [0, 1, 3],
+            "emu_ver": [1, 1, 1],
+            "titles": ["コラムス", "Columns"]
+        },
+		
+        {
+            "id": "00010001-4d4257__",
+            "region": [0, 1, 3],
+            "emu_ver": [2, 2, 2],
+            "titles": ["コラムスⅢ 対決！コラムスワールド", "Columns III: Revenge of Columns"],
+            "wad_titles": ["Columns III - Taiketsu! Columns World", "Columns III - Revenge of Columns"]
+        },
 
         {
             "id": "00010001-4d4136__",
@@ -399,11 +485,40 @@
         },
 		
         {
+            "id": "00010001-4d4350__",
+            "region": [0, 1, 3],
+            "emu_ver": [2, 2, 2],
+            "titles": ["アースワームジム", "Earthworm Jim"]
+        },
+		
+        {
+            "id": "00010001-4d4332__",
+            "region": [0, 1, 3],
+            "emu_ver": [3, 3, 3],
+            "titles": ["アースワームジム２", "Earthworm Jim 2"]
+        },
+		
+        {
+            "id": "00010001-4d4344__",
+            "region": [0, 1, 3],
+            "emu_ver": [3, 3, 3],
+            "titles": ["ソニック&ナックルズ", "Sonic & Knuckles"]
+        },
+		
+        {
             "id": "00010001-4d4255__",
             "region": [0, 1, 3],
             "emu_ver": [2, 2, 2],
             "titles": ["ソニック3Dブラスト", "Sonic 3D Blast", "Sonic 3D"],
             "wad_titles": ["Sonic 3D Blast", "Sonic 3D Blast", "Sonic 3D - Flickies' Island"]
+        },
+		
+        {
+            "id": "00010001-4d4148__",
+            "region": [0, 1, 3],
+            "emu_ver": [1, 1, 1],
+            "titles": ["ソニック･ザ･ヘッジホッグ", "Sonic the Hedgehog"],
+            "wad_titles": ["Sonic The Hedgehog"]
         },
         
         {
@@ -419,6 +534,14 @@
             "region": [0, 2, 4],
             "emu_ver": [2, 3, 3],
             "titles": ["ファンタシースター", "Pulseman"]
+        },
+		
+        {
+            "id": "00010001-4d4156__",
+            "region": [0, 1, 3],
+            "emu_ver": [1, 1, 1],
+            "titles": ["ワンダーボーイⅤ モンスターワールドⅢ", "Wonder Boy in Monster World"],
+            "wad_titles": ["Wonder Boy V - Monster World III", "Wonder Boy in Monster World"]
         }
     ],
 
@@ -457,6 +580,37 @@
             "emu_ver": [0, 0, 0],
             "titles": ["スーパースターソルジャー", "Super Star Soldier"]
         },
+		
+        {
+            "id": "00010001-504332__",
+            "region": [0, 1, 3],
+            "emu_ver": [1, 1, 1],
+            "titles": ["タイトーチェイスＨ．Ｑ．", "Chase H.Q."]
+        },
+		
+        {
+            "id": "00010001-504443__",
+            "region": [0],
+            "emu_ver": [1],
+            "titles": ["大魔界村", "Dai Makaimura"],
+            "wad_titles": ["Dai Makaimura"]
+        },
+		
+        {
+            "id": "00010001-504333__",
+            "region": [0],
+            "emu_ver": [1],
+            "titles": ["ダライアス プラス", "Darius Plus"],
+            "wad_titles": ["Darius Plus"]
+        },
+		
+        {
+            "id": "00010001-504157__",
+            "region": [0, 1, 3],
+            "emu_ver": [1, 1, 1],
+            "titles": ["ギャラガ '88", "Galaga '90"],
+            "wad_titles": ["Galaga '88", "Galaga '90"]
+        },
 
         {
             "id": "00010001-50444a__",
@@ -474,6 +628,22 @@
             "emu_ver": [0, 0, 0],
             "titles": ["悪魔城ドラキュラX 血の輪廻", "Castlevania: Rondo of Blood"],
             "wad_titles": ["Akumajou Dracula X - Chi no Rondo", "Castlevania - Rondo of Blood"],
+        },
+		
+        {
+            "id": "00010001-514144__",
+            "region": [0, 2, 4],
+            "emu_ver": [0, 0, 0],
+            "titles": ["グラディウスⅡ GOFERの野望", "Gradius II: Gofer no Yabou"],
+            "wad_titles": ["Gradius II - Gofer no Yabou"],
+        },
+		
+        {
+            "id": "00010001-514141__",
+            "region": [0, 1, 3],
+            "emu_ver": [0, 0, 0],
+            "titles": ["CD電人 ロカビリー天国", "Super Air Zonk: Rockabilly-Paradise"],
+            "wad_titles": ["CD Denjin - Rockabilly Tengoku", "Super Air Zonk - Rockabilly-Paradise"],
         },
     ],
 
