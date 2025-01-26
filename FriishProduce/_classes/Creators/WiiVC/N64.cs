@@ -40,13 +40,15 @@ namespace FriishProduce.Injectors
                 or "NAC"
                 or "NAD" => 1,
 
-                   "NAK"
+                   "NAH"
+                or "NAI"
                 or "NAJ"
-                or "NAO"
-                or "NAH" => 2,
+                or "NAK"
+                or "NAO" => 2,
 
                    "NA3"
                 or "NAE"
+                or "NAL"
                 or "NAP"
                 or "NAU"
                 or "NAY"
@@ -267,14 +269,21 @@ namespace FriishProduce.Injectors
 
         private void CleanTextures()
         {
+            try { Directory.CreateDirectory(Paths.WorkingFolder + "content5\\"); } catch { }
+            MainContent.Extract(Paths.WorkingFolder + "content5\\");
+
             string[] deletable = new string[] { ".t64", ".tif" };
 
             foreach (var extension in deletable)
             {
-                var list = MainContent.StringTable.Where(x => x.ToLower().EndsWith(extension));
+                var list = Directory.EnumerateFiles(Paths.WorkingFolder + "content5\\", "*.*", SearchOption.AllDirectories).Where(x => x.ToLower().EndsWith(extension));
+
                 foreach (var item in list)
-                    MainContent.RemoveFile(item);
+                    try { File.Delete(item); } catch { }
             }
+
+            MainContent.CreateFromDirectory(Paths.WorkingFolder + "content5\\");
+            try { Directory.Delete(Paths.WorkingFolder + "content5\\", true); } catch { }
         }
 
         private bool ShadingFix()
