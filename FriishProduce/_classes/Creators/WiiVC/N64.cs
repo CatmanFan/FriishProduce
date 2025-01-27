@@ -271,7 +271,7 @@ namespace FriishProduce.Injectors
             try { Directory.CreateDirectory(Paths.WorkingFolder + "content5\\"); } catch { }
             MainContent.Extract(Paths.WorkingFolder + "content5\\");
 
-            string[] deletable = new string[] { ".t64", ".tif" };
+            string[] deletable = new string[] { ".t64", ".tif", ".usm" };
 
             foreach (var extension in deletable)
             {
