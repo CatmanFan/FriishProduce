@@ -475,6 +475,9 @@
   <data name="close_all.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
+  <data name="close_all.Shortcut" type="System.Windows.Forms.Shortcut, System.Windows.Forms">
+    <value>CtrlShiftF4</value>
+  </data>
   <data name="close_all.Text" xml:space="preserve">
     <value>close_all</value>
   </data>

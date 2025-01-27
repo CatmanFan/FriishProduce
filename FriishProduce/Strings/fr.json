@@ -118,7 +118,8 @@
 			"e_014":							"Le fichier BIOS requis pour cette console est indisponible. Veuillez le spécifier de nouveau dans les préférences de l'application.",
 			"e_015":							"Échec de création de l'image d'aperçu des données de sauvegarde.",
 			"e_016":							"Aucun mode d'emploi de Console virtuelle n'a été trouvé dans cette chaîne.",
-			"e_017":							"«{0}» n'est pas un fichier de projet valide."
+			"e_017":							"«{0}» n'est pas un fichier de projet valide.",
+			"e_018":							"«{0}» ne peut pas être enregistré."
 		},
 
 		"html": {
@@ -161,7 +162,7 @@
 			"save_project":						"&Enregistrer le projet",
 			"save_project_as":					"Enregistrer le projet &sous ...",
 			"close_project":					"&Fermer le projet",
-			"close_all":						"Fermer &tous les projets",
+			"close_all":						"Fermer tout",
 
 			"import_game_file":					"&Ouvrir un fichier {0} ...",
 			"game_scan":						"&Charger les informations dès de la bibliothèque des jeux",

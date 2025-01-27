@@ -118,7 +118,8 @@
 			"e_014":							"No se encontró el archivo BIOS necesario para esta consola.\nPor favor seleccione un archivo en los ajustes de la aplicación.",
 			"e_015":							"No se pudo crear la imagen TPL para los datos guardados.",
 			"e_016":							"No se encontró ningún manual electrónico de Consola Virtual.",
-			"e_017":							"\"{0}\" no es un archivo de proyecto válido."
+			"e_017":							"\"{0}\" no es un archivo de proyecto válido.",
+			"e_018":							"No se pudo guardar el proyecto \"{0}\"."
 		},
 
 		"html": {
@@ -161,7 +162,7 @@
 			"save_project":						"&Guardar proyecto",
 			"save_project_as":					"Guardar &proyecto como...",
 			"close_project":					"&Cerrar proyecto",
-			"close_all":						"Cerrar &todo",
+			"close_all":						"Cerrar todo",
 
 			"import_game_file":					"&Abrir un archivo de juego...",
 			"game_scan":						"&Obtener datos del juego de la base de datos en línea",

@@ -181,7 +181,7 @@ namespace FriishProduce
                 {
                     if (!File.Exists(DLSPath) || string.IsNullOrWhiteSpace(DLSPath))
                     {
-                        ImportDLS.Title = midi.Text;
+                        ImportDLS.Title = midi.Text.Replace("&", "");
 
                         if (ImportDLS.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                             DLSPath = ImportDLS.FileName;

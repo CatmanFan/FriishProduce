@@ -119,6 +119,7 @@
 			"e_015":							"Failed to create savedata TPL.",
 			"e_016":							"No Virtual Console manual was found in the provided WAD.",
 			"e_017":							"\"{0}\" is not a valid project file.",
+			"e_018":							"Unable to save {0}."
 		},
 
 		"html": {
@@ -164,7 +165,7 @@
 			"save_project":						"&Save project",
 			"save_project_as":					"Save &project as...",
 			"close_project":					"&Close project",
-			"close_all":						"Close &all",
+			"close_all":						"Close all",
 
 			"import_game_file":					"&Import {0}...",
 			"game_scan":						"&Fill in game data",

@@ -94,7 +94,7 @@ namespace FriishProduce.Databases
                 : "https://thumbnails.libretro.com/" + Uri.EscapeUriString(db_name) + "/Named_Titles/" + Uri.EscapeUriString(name.Replace('/', '_').Replace('&', '_') + ".png");
         }
 
-        private static string db_crc(string input) => input.Replace("-", "").Trim().ToUpper().Substring(0, 8);
+        private static string db_crc(string input) => input.Replace("-", "").Trim().Substring(0, 8).ToUpper();
         #endregion
 
         public static bool Exists(Platform In)
@@ -194,83 +194,70 @@ namespace FriishProduce.Databases
                 if (db_lines.Count == 0) return null;
 
                 // Scan retrieved database for CRC32 hashes, and add to data table
+                // Also add release year, players and others
                 // ****************
-                for (int i = 0; i < db_lines[0].Length; i++)
-                {
-                    string line = db_lines[0][i];
-
-                    if (string.IsNullOrEmpty(name) && (line.Contains("name \"") || line.Contains("comment \"")) && !line.Contains("rom (") && !line.Contains(db_name))
-                    {
-                        name = line.Replace("\t", "").Replace("name \"", "").Replace("comment \"", "").Replace("\"", "");
-                        image = db_img(name);
-                    }
-
-                    if (line.Contains("year "))
-                    {
-                        releaseyear = line.Substring(line.IndexOf("year ") + 5).TrimStart('\"', ' ', '\t', ')').TrimEnd('\"', ' ', '\t', ')');
-                    }
-
-                    if (line.Contains("users "))
-                    {
-                        users = line.Substring(line.IndexOf("users ") + 6).TrimStart('\"', ' ', '\t', ')').TrimEnd('\"', ' ', '\t', ')');
-                    }
-
-                    if (line.Contains("serial "))
-                    {
-                        serial = line.Substring(line.IndexOf("serial ") + 7).TrimStart('\"', ' ', '\t', ')').TrimEnd('\"', ' ', '\t', ')');
-                    }
-
-                    if (line.Contains("crc "))
-                    {
-                        crc = db_crc(line.Substring(line.IndexOf("crc ") + 4, 8));
-
-                        if (dt.Select($"crc = '{crc}'")?.Length == 0 && !string.IsNullOrWhiteSpace(name))
-                        {
-                            dt.Rows.Add(crc, name, serial, releaseyear, users, image);
-                            image = users = releaseyear = name = crc = null;
-                        }
-                    }
-                }
-
-                // Add release year, players and others
-                // ****************
-                for (int x = 1; x < db_lines.Count; x++)
+                for (int x = 0; x < db_lines.Count; x++)
                 {
                     for (int y = 0; y < db_lines[x].Length; y++)
                     {
-                        string line = db_lines[x][y];
+                        string line = db_lines[x][y].TrimStart(' ', '\t');
+
+                        if ((line.Contains("name \"") || line.Contains("comment \"")) && !line.Contains("rom (") && !line.Contains(db_name))
+                        {
+                            name = line.Replace("name \"", "").Replace("comment \"", "").TrimEnd('\"');
+                            image = db_img(name);
+                        }
 
                         if (line.Contains("serial "))
                         {
-                            serial = line.Substring(line.IndexOf("serial ") + 7).TrimStart('\"', ' ', '\t', ')').TrimEnd('\"', ' ', '\t', ')');
+                            serial = line.Substring(line.IndexOf("serial ") + 7);
                         }
 
                         if (line.Contains("year "))
                         {
-                            releaseyear = line.Substring(line.IndexOf("year ") + 5).TrimStart('\"', ' ', '\t', ')').TrimEnd('\"', ' ', '\t', ')');
+                            releaseyear = line.Replace("\"", null).Substring(line.IndexOf("year ") + 5, 4);
+
+                            if (!int.TryParse(releaseyear, out int _))
+                                releaseyear = null;
                         }
 
                         if (line.Contains("users "))
                         {
-                            users = line.Substring(line.IndexOf("users ") + 6).TrimStart('\"', ' ', '\t', ')').TrimEnd('\"', ' ', '\t', ')');
+                            users = line.Substring(line.IndexOf("users ") + 6);
+
+
+                            if (!int.TryParse(users, out int _))
+                                users = null;
                         }
 
                         if (line.Contains("crc "))
                         {
-                            crc = db_crc(line.Substring(line.IndexOf("crc ") + 4, 8));
+                            crc = db_crc(line.Substring(line.IndexOf("crc ") + 4));
+                        }
 
+                        if (line == ")" && !string.IsNullOrEmpty(crc))
+                        {
                             var rows = dt.Select($"crc = '{crc}'");
+
                             if (rows?.Length > 0)
                             {
-                                if (string.IsNullOrWhiteSpace(rows[0][2]?.ToString()) && !string.IsNullOrWhiteSpace(serial))
+                                if (!string.IsNullOrWhiteSpace(name))
+                                    rows[0][1] = name;
+                                if (!string.IsNullOrWhiteSpace(serial))
                                     rows[0][2] = serial;
-                                if (string.IsNullOrWhiteSpace(rows[0][3]?.ToString()) && !string.IsNullOrWhiteSpace(releaseyear))
+                                if (!string.IsNullOrWhiteSpace(releaseyear))
                                     rows[0][3] = releaseyear;
-                                if (string.IsNullOrWhiteSpace(rows[0][4]?.ToString()) && !string.IsNullOrWhiteSpace(users))
+                                if (!string.IsNullOrWhiteSpace(users))
                                     rows[0][4] = users;
+
+                                image = users = releaseyear = name = crc = null;
                             }
 
-                            serial = releaseyear = users = "";
+                            else if (rows?.Length == 0 && !string.IsNullOrWhiteSpace(name))
+                            {
+                                dt.Rows.Add(crc, name, serial, releaseyear, users, image);
+                                image = users = releaseyear = name = crc = null;
+                            }
                         }
                     }
                 }
@@ -289,19 +276,22 @@ namespace FriishProduce.Databases
             // Get current CRC32 hash of file and append to query
             // **********************
             string crc32 = null;
-            using (var fileStream = File.OpenRead(file))
-            {
-                var crc = new Crc32();
-                crc.Append(fileStream);
-                var hash_array = crc.GetCurrentHash();
-                Array.Reverse(hash_array);
-                crc32 = db_crc(BitConverter.ToString(hash_array));
-            }
-
             DataTable dt = Parse(platform);
 
             if (dt != null)
             {
+                using (FileStream fileStream = File.OpenRead(file))
+                {
+                    var crc = new Crc32();
+                    crc.Append(fileStream);
+                    var hash_array = crc.GetCurrentHash();
+                    Array.Reverse(hash_array);
+                    crc32 = db_crc(BitConverter.ToString(hash_array));
+
+                    fileStream.Close();
+                    fileStream.Dispose();
+                }
+
                 var rows = dt.Select($"crc = '{crc32}'");
                 if (rows?.Length > 0)
                 {

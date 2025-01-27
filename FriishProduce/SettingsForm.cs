@@ -345,7 +345,8 @@ namespace FriishProduce
             // -------------------------------------------
             // Other settings
             // -------------------------------------------
-            
+
+            bool toggledOnline = Program.Config.application.use_online_wad_enabled != use_online_wad_enabled.Checked;
             Program.Config.application.image_interpolation = image_interpolation_modes.SelectedIndex;
             Program.Config.application.use_online_wad_enabled = use_online_wad_enabled.Checked;
             Program.Config.application.bypass_rom_size = bypass_rom_size.Checked;
@@ -453,6 +454,9 @@ namespace FriishProduce
                 && (dirtyOption1 != languages.SelectedIndex
                  || dirtyOption2 != reset_all_dialogs.Checked);
             if (isDirty) MessageBox.Show(Program.Lang.Msg(0), MessageBox.Buttons.Ok, MessageBox.Icons.Information);
+
+            if (toggledOnline)
+                Program.MainForm.UpdateConfig();
 
             isShown = false;
             DialogResult = DialogResult.OK;

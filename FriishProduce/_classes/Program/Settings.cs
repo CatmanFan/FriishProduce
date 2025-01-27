@@ -145,7 +145,7 @@ namespace FriishProduce
             public int image_interpolation { get; set; } = 2;
             public bool image_fit_aspect_ratio { get; set; } = false;
             public string default_target_filename { get; set; } = "FULLNAME";
-            public string default_export_filename { get; set; } = "[PLATFORM] FULLNAME (REGION) [TITLEID]";
+            public string default_export_filename { get; set; } = "[PLATFORM] FULLNAME (REGION) (TITLEID)";
             public int default_banner_region { get; set; } = 0;
             public int default_injection_method_nes { get; set; } = 0;
             public int default_injection_method_snes { get; set; } = 0;
@@ -193,7 +193,7 @@ namespace FriishProduce
 
         public class N64
         {
-            public int romc_type { get; set; } = 0;
+            public int romc_type { get; set; } = 1;
             public bool patch_nodark { get; set; } = false;
             public bool patch_crashfix { get; set; } = false;
             public bool patch_expandedram { get; set; } = false;

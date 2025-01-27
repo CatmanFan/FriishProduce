@@ -913,7 +913,7 @@ namespace FriishProduce
 
         public void BrowseROMDialog(string text)
         {
-            browseROM.Title = text;
+            browseROM.Title = text.Replace("&", "");
 
             if (browseROM.ShowDialog() == DialogResult.OK)
             {
@@ -923,7 +923,7 @@ namespace FriishProduce
 
         public void BrowseImageDialog()
         {
-            browseImage.Title = import_image.Text;
+            browseImage.Title = import_image.Text.Replace("&", "");
             browseImage.Filter = Program.Lang.String("filter.img");
 
             if (browseImage.ShowDialog() == DialogResult.OK) LoadImage(browseImage.FileName);
@@ -1039,9 +1039,15 @@ namespace FriishProduce
         public string GetName(bool full)
         {
             string FILENAME = File.Exists(patch) ? Path.GetFileNameWithoutExtension(patch) : Path.GetFileNameWithoutExtension(rom?.FilePath);
+
             string CHANNELNAME = channel_name.Text;
+            if (string.IsNullOrWhiteSpace(CHANNELNAME)) CHANNELNAME = Untitled;
+
             string FULLNAME = System.Text.RegularExpressions.Regex.Replace(_bannerTitle, @"\((.*?)\)", "").Replace("\r\n", "\n").Replace("\n", " - ");
+            if (string.IsNullOrWhiteSpace(FULLNAME)) FULLNAME = Untitled;
+
             string TITLEID = title_id_upper.Text.ToUpper();
+
             string PLATFORM = targetPlatform.ToString();
 
             string REGION = regions.SelectedItem.ToString() == Program.Lang.String("region_j") ? "Japan"
@@ -1071,6 +1077,7 @@ namespace FriishProduce
 
             string target = full ? Program.Config.application.default_export_filename : Program.Config.application.default_target_filename;
             target = target.Replace("FILENAME", FILENAME).Replace("CHANNELNAME", CHANNELNAME).Replace("FULLNAME", FULLNAME).Replace("TITLEID", TITLEID).Replace("PLATFORM", PLATFORM).Replace("REGION", REGION);
+            if (target == Untitled) target = "";
 
             return string.Join("_", target.Split(Path.GetInvalidFileNameChars(), StringSplitOptions.RemoveEmptyEntries));
         }
@@ -1113,7 +1120,7 @@ namespace FriishProduce
                             SaveProject(ProjectPath);
                             return true;
                         }
-                        else return Program.MainForm.SaveAs_Trigger();
+                        else return Program.MainForm.SaveAs_Trigger(this);
                     }
 
                     else if (result == MessageBox.Result.Button2)
@@ -1210,7 +1217,7 @@ namespace FriishProduce
 
         private void import_wad_Click(object sender, EventArgs e)
         {
-            browseInputWad.Title = import_wad.Text;
+            browseInputWad.Title = import_wad.Text.Replace("&", "");
             browseInputWad.Filter = Program.Lang.String("filter.wad");
             var result = browseInputWad.ShowDialog();
 
@@ -2339,7 +2346,7 @@ namespace FriishProduce
         private void replace_banner_sound_Click(object sender, EventArgs e)
         {
             browseSound.Filter = "WAV (*.wav)|*.wav" + Program.Lang.String("filter");
-            browseSound.Title = replace_banner_sound.Text;
+            browseSound.Title = replace_banner_sound.Text.Replace("&", "");
             if (browseSound.ShowDialog() == DialogResult.OK || File.Exists(browseSound.FileName))
                 LoadSound(browseSound.FileName);
         }

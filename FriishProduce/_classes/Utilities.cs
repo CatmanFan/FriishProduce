@@ -172,7 +172,7 @@ namespace FriishProduce
             }
         }
 
-        public static byte[] Get(string URL, int timeout = 100)
+        public static byte[] Get(string URL, int timeout = 180)
         {
             // Actual web connection is done here
             // ****************

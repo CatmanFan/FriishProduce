@@ -161,6 +161,16 @@ namespace FriishProduce
                     (tabPage.Form as ProjectForm).RefreshForm();
         }
 
+        public void UpdateConfig()
+        {
+            foreach (JacksiroKe.MdiTabCtrl.TabPage tabPage in tabControl.TabPages)
+                if (tabPage.Form.GetType() == typeof(ProjectForm))
+                {
+                    (tabPage.Form as ProjectForm).use_online_wad.Enabled = Program.Config.application.use_online_wad_enabled;
+                    if (!(tabPage.Form as ProjectForm).use_online_wad.Enabled) (tabPage.Form as ProjectForm).use_online_wad.Checked = false;
+                }
+        }
+
         public MainForm(string[] files = null)
         {
             InitializeComponent();
@@ -308,7 +318,7 @@ namespace FriishProduce
             if (!hasTabs)
             {
                 game_scan.Enabled = false;
-                save_project.Enabled = save_project_as.Enabled = false;
+                save_project_as.Enabled = save_project.Enabled = false;
                 export.Enabled = false;
                 toolbarImportGameFile.Image = Properties.Resources.page_white_cd;
                 import_game_file.Text = string.Format(Program.Lang.String(import_game_file.Tag.ToString(), Name), Program.Lang.String("rom_label1", "projectform"));
@@ -319,7 +329,7 @@ namespace FriishProduce
             else
             {
                 game_scan.Enabled = (tabControl.SelectedForm as ProjectForm).ToolbarButtons[0];
-                save_project.Enabled = save_project_as.Enabled = (tabControl.SelectedForm as ProjectForm).IsModified;
+                save_project_as.Enabled = save_project.Enabled = (tabControl.SelectedForm as ProjectForm).IsModified;
                 export.Enabled = (tabControl.SelectedForm as ProjectForm).IsExportable;
                 toolbarImportGameFile.Image = (tabControl.SelectedForm as ProjectForm).FileTypeImage;
                 import_game_file.Text = string.Format(Program.Lang.String(import_game_file.Tag.ToString(), Name), (tabControl.SelectedForm as ProjectForm).FileTypeName);
@@ -428,31 +438,49 @@ namespace FriishProduce
                 currentForm?.SaveToWAD(SaveWAD.FileName);
         }
 
-        private void SaveAs_Click(object sender, EventArgs e) => SaveAs_Trigger();
+        private void SaveAs_Click(object sender, EventArgs e) => SaveAs_Trigger(tabControl.SelectedForm as Form);
 
-        public bool SaveAs_Trigger()
+        public bool SaveAs_Trigger(Form form)
         {
             try
             {
-                if (tabControl.SelectedForm is not ProjectForm currentForm) return false;
+                if (form is not ProjectForm) return false;
 
-                SaveProject.FileName = Path.GetFileNameWithoutExtension(currentForm.ProjectPath) ?? currentForm?.GetName(false) ?? currentForm.Text;
+                SaveProject.FileName =
+                    Path.GetFileNameWithoutExtension((form as ProjectForm).ProjectPath) ??
+                    (form as ProjectForm)?.GetName(false) ??
+                    (form as ProjectForm).Text;
+
                 foreach (var item in new char[] { '\\', '/', ':', '*', '?', '"', '<', '>', '|' })
                     SaveProject.FileName = SaveProject.FileName.Replace(item, '_');
 
                 if (SaveProject.ShowDialog() == DialogResult.OK)
                 {
-                    currentForm.SaveProject(SaveProject.FileName);
+                    (form as ProjectForm).SaveProject(SaveProject.FileName);
                     return true;
                 }
             }
 
             catch (Exception ex)
             {
-                MessageBox.Show("Could not save!", ex.Message, MessageBox.Buttons.Ok, MessageBox.Icons.Error);
+                MessageBox.Show(string.Format(Program.Lang.Msg(18, true), form.Text), ex.Message, MessageBox.Buttons.Ok);
             }
 
             return false;
+        }
+
+        private void SaveAll_Click(object sender, EventArgs e)
+        {
+            List<ProjectForm> list = new();
+
+            for (int i = 0; i < tabControl.TabPages.Count; i++)
+                list.Add(tabControl.TabPages[i].Form as ProjectForm);
+
+            foreach (var tab in list)
+            {
+                try { if (File.Exists(tab.ProjectPath)) tab.SaveProject(tab.ProjectPath); else SaveAs_Trigger(tab); }
+                catch (Exception ex) { MessageBox.Show(string.Format(Program.Lang.Msg(18, true), tab.Text), ex.Message, MessageBox.Buttons.Ok); }
+            }
         }
 
         private void Save_Click(object sender, EventArgs e)
@@ -462,10 +490,10 @@ namespace FriishProduce
             if (File.Exists(currentForm.ProjectPath))
             {
                 try { currentForm.SaveProject(currentForm.ProjectPath); }
-                catch (Exception ex) { MessageBox.Show("Could not save!", ex.Message, MessageBox.Buttons.Ok, MessageBox.Icons.Error); }
+                catch (Exception ex) { MessageBox.Show(string.Format(Program.Lang.Msg(18, true), currentForm.Text), ex.Message, MessageBox.Buttons.Ok); }
             }
 
-            else SaveAs_Trigger();
+            else SaveAs_Trigger(currentForm);
         }
 
         private void OpenProject_Click(object sender, EventArgs e)
@@ -562,6 +590,8 @@ namespace FriishProduce
                     using Stream stream = File.Open(file, FileMode.Open);
                     var binaryFormatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
                     project = (Project)binaryFormatter.Deserialize(stream);
+
+                    if (project.ProjectPath != file) project.ProjectPath = file;
 
                     addTab(project.Platform, project);
                 }

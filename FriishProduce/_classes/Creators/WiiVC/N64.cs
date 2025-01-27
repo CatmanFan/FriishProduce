@@ -33,7 +33,8 @@ namespace FriishProduce.Injectors
 
             base.Load();
 
-            if (WAD.Region == Region.Korea) EmuType = 3;
+            if (MainContent.GetNodeIndex("romc") != -1)
+                EmuType = 3;
             else EmuType = WAD.UpperTitleID.Substring(0, 3).ToUpper() switch
             {
                    "NAB"
@@ -66,13 +67,11 @@ namespace FriishProduce.Injectors
         {
             // -----------------------
             // Check filesize
-            // Maximum ROM limit allowed: 32 MB unless allocated in main.dol (maximum possible: ~56 MB)
+            // Maximum ROM limit allowed: 64 MB for ROMC, otherwise 32 MB unless allocated in main.dol (maximum possible: ~56 MB)
             // -----------------------
-            ROM.MaxSize = Allocate ? 56623104 : 33554432;
+            ROM.MaxSize = EmuType == 3 ? 67108864 : Allocate ? 56623104 : 33554432;
             ROM.CheckSize();
             var data = (ROM as ROM_N64).ToBigEndian();
-
-            if (MainContent.GetNodeIndex("romc") != -1) EmuType = 3;
 
             // -----------------------
             // Actually replace original ROM

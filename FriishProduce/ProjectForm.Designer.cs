@@ -650,7 +650,6 @@ namespace FriishProduce
         private System.Windows.Forms.PictureBox BaseRegion;
         private System.Windows.Forms.Label baseName;
         private System.Windows.Forms.Label current_wad;
-        private System.Windows.Forms.RadioButton use_online_wad;
         private System.Windows.Forms.PictureBox checkImg1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
@@ -672,5 +671,6 @@ namespace FriishProduce
         private System.Windows.Forms.Button import_wad;
         private System.Windows.Forms.PictureBox injection_method_help;
         private System.Windows.Forms.Label using_default_wad;
+        internal System.Windows.Forms.RadioButton use_online_wad;
     }
 }
