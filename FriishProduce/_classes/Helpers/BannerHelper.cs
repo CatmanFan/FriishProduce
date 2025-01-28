@@ -3,6 +3,7 @@ using System;
 using System.IO;
 using System.Text;
 using static FriishProduce.FileDatas.WADBanners;
+using System.Collections.Generic;
 
 namespace FriishProduce
 {
@@ -127,24 +128,6 @@ namespace FriishProduce
                 byte[] Year = Encoding.BigEndianUnicode.GetBytes(year.ToString());
                 string playersDisplay = players == 1 ? players.ToString() : "1-" + players.ToString();
 
-                var Players_EN = new byte[24];
-                Encoding.BigEndianUnicode.GetBytes($"Players: {playersDisplay}").CopyTo(Players_EN, 0);
-
-                var Players_DE = new byte[22];
-                Encoding.BigEndianUnicode.GetBytes($"{playersDisplay} Spieler").CopyTo(Players_DE, 0);
-
-                var Players_FR = new byte[24];
-                Encoding.BigEndianUnicode.GetBytes($"Joueurs: {playersDisplay}").CopyTo(Players_FR, 0);
-
-                var Players_IT = new byte[28];
-                Encoding.BigEndianUnicode.GetBytes($"Giocatori: {playersDisplay}").CopyTo(Players_IT, 0);
-
-                var Players_ES = new byte[28];
-                Encoding.BigEndianUnicode.GetBytes($"Jugadores: {playersDisplay}").CopyTo(Players_ES, 0);
-
-                var Players_NL = new byte[26];
-                Encoding.BigEndianUnicode.GetBytes($"{playersDisplay} speler(s)").CopyTo(Players_NL, 0);
-
                 var Players_JP = players >= 1 ? new byte[] { 0x31, 0x4E, 0xBA, 0x00, 0x00, 0x00, 0x00 } : new byte[] { 0x31, 0xFF, 0x5E, 0x00, Encoding.BigEndianUnicode.GetBytes(players.ToString())[1], 0x4E, 0xBA };
 
                 var Players_KO = players >= 1 ? new byte[] { 0x31, 0xBA, 0x85, 0x00, 0x00, 0x00, 0x00 } : new byte[] { 0x31, 0x00, 0x2D, 0x00, Encoding.BigEndianUnicode.GetBytes(players.ToString())[1], 0xBA, 0x85 };
@@ -177,68 +160,7 @@ namespace FriishProduce
                      && BRLYT[i + 7] == 0x43)
                         Year.CopyTo(BRLYT, i);
 
-                    // Copy players
-                    // ****************
-                    #region Languages
-                    // English
-                    // -----
-                    if (BRLYT[i] == 0x00
-                     && BRLYT[i + 1] == 0x50
-                     && BRLYT[i + 2] == 0x00
-                     && BRLYT[i + 3] == 0x6C
-                     && BRLYT[i + 4] == 0x00
-                     && BRLYT[i + 5] == 0x61)
-                        Players_EN.CopyTo(BRLYT, i);
-
-                    // German
-                    // -----
-                    else if (BRLYT[i + 7] == 0x20
-                     && BRLYT[i + 8] == 0x00
-                     && BRLYT[i + 9] == 0x53
-                     && BRLYT[i + 10] == 0x00
-                     && BRLYT[i + 11] == 0x70)
-                        Players_DE.CopyTo(BRLYT, i);
-
-                    // French
-                    // -----
-                    else if (BRLYT[i] == 0x00
-                     && BRLYT[i + 1] == 0x4A
-                     && BRLYT[i + 2] == 0x00
-                     && BRLYT[i + 3] == 0x6F
-                     && BRLYT[i + 4] == 0x00
-                     && BRLYT[i + 5] == 0x75)
-                        Players_FR.CopyTo(BRLYT, i);
-
-                    // Italian
-                    // -----
-                    else if (BRLYT[i] == 0x00
-                     && BRLYT[i + 1] == 0x47
-                     && BRLYT[i + 2] == 0x00
-                     && BRLYT[i + 3] == 0x69
-                     && BRLYT[i + 4] == 0x00
-                     && BRLYT[i + 5] == 0x6F)
-                        Players_IT.CopyTo(BRLYT, i);
-
-                    // Spanish
-                    // -----
-                    else if (BRLYT[i] == 0x00
-                     && BRLYT[i + 1] == 0x4A
-                     && BRLYT[i + 2] == 0x00
-                     && BRLYT[i + 3] == 0x75
-                     && BRLYT[i + 4] == 0x00
-                     && BRLYT[i + 5] == 0x67)
-                        Players_ES.CopyTo(BRLYT, i);
-
-                    // Dutch
-                    // -----
-                    else if (BRLYT[i + 9] == 0x73
-                     && BRLYT[i + 10] == 0x00
-                     && BRLYT[i + 11] == 0x70
-                     && BRLYT[i + 12] == 0x00
-                     && BRLYT[i + 13] == 0x65)
-                        Players_NL.CopyTo(BRLYT, i);
-
-                    // Japanese
+                    // Players: Japanese
                     // -----
                     else if (region == Region.Japan
                      && BRLYT[i] == 0x31
@@ -250,7 +172,7 @@ namespace FriishProduce
                      && BRLYT[i + 6] == 0xBA)
                         Players_JP.CopyTo(BRLYT, i);
 
-                    // Korean
+                    // Players: Korean
                     // -----
                     else if (region == Region.Korea
                      && BRLYT[i] == 0x31
@@ -260,7 +182,29 @@ namespace FriishProduce
                      && BRLYT[i + 5] == 0xBA
                      && BRLYT[i + 6] == 0x85)
                         Players_KO.CopyTo(BRLYT, i);
-                    #endregion
+                }
+
+                // Players: Other languages
+                // -----
+                Dictionary<string, byte[]> Players = new()
+                {
+                    { "T_Play_ENG", Encoding.BigEndianUnicode.GetBytes($"Players: {playersDisplay}") },
+                    { "T_Play_GER", Encoding.BigEndianUnicode.GetBytes($"{playersDisplay} Spieler") },
+                    { "T_Play_FRA", Encoding.BigEndianUnicode.GetBytes($"Joueurs: {playersDisplay}") },
+                    { "T_Play_ITA", Encoding.BigEndianUnicode.GetBytes($"Giocatori: {playersDisplay}") },
+                    { "T_Play_SPA", Encoding.BigEndianUnicode.GetBytes($"Jugadores: {playersDisplay}") },
+                    { "T_Play_NED", Encoding.BigEndianUnicode.GetBytes($"{playersDisplay} speler(s)") }
+                };
+
+                foreach (var line in Players)
+                {
+                    int index = Byte.IndexOf(BRLYT, line.Key, 5200, 6800);
+                    if (index != -1)
+                    {
+                        byte[] target = new byte[Math.Min(27, Byte.IndexOf(BRLYT, "txt1", index + 104) - (index + 104) - 2)];
+                        line.Value.CopyTo(target, 0);
+                        target.CopyTo(BRLYT, index + 104);
+                    }
                 }
 
                 // Replace

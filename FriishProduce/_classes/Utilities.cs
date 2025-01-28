@@ -233,10 +233,10 @@ namespace FriishProduce
                          .ToArray();
         }
 
-        public static int IndexOf(byte[] source, byte[] pattern, int start, int end)
+        public static int IndexOf(byte[] source, byte[] pattern, int start = 0, int end = -1)
         {
             if (start < 0) start = 0;
-            if (end > source.Length) end = source.Length - pattern.Length;
+            if (end > source.Length || end < 0) end = source.Length - pattern.Length;
 
             for (int i = start; i < end; i++)
             {
@@ -256,10 +256,17 @@ namespace FriishProduce
         {
             var pArray = pattern.Split(' ');
             var pBytes = new byte[pArray.Length];
-            for (int i = 0; i < pArray.Length; i++)
-                pBytes[i] = Convert.ToByte(pArray[i], 16);
+            try
+            {
+                for (int i = 0; i < pArray.Length; i++)
+                    pBytes[i] = Convert.ToByte(pArray[i], 16);
+            }
+            catch
+            {
+                pBytes = Encoding.GetEncoding(1252).GetBytes(pattern);
+            }
 
-            if (end == -1) end = source.Length - pBytes.Length;
+            if (end > source.Length || end < 0) end = source.Length - pBytes.Length;
             return IndexOf(source, pBytes, start, end);
         }
 
