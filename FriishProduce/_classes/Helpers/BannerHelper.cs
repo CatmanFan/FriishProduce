@@ -125,7 +125,7 @@ namespace FriishProduce
                 // Convert year & players to bytes
                 // ****************
                 byte[] Year = Encoding.BigEndianUnicode.GetBytes(year.ToString());
-                string playersDisplay = players >= 1 ? players.ToString() : "1-" + players.ToString();
+                string playersDisplay = players == 1 ? players.ToString() : "1-" + players.ToString();
 
                 var Players_EN = new byte[24];
                 Encoding.BigEndianUnicode.GetBytes($"Players: {playersDisplay}").CopyTo(Players_EN, 0);

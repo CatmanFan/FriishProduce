@@ -242,7 +242,7 @@ namespace FriishProduce.Injectors
 
             // Messages for failed patches
             // ****************
-            failed.Remove("--no-opera");
+            failed.Remove(Program.Lang.String("patch_noopera", "vc_snes"));
             bool generic = argDict.Count == 1 && (argDict.Keys.ElementAt(0) == "--no-opera" || argDict.Keys.ElementAt(0) == "--no-header-check-simple");
             bool notNeeded = failed.Count == 0 || generic;
             if (!notNeeded)
