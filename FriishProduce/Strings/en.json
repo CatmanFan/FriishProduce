@@ -80,7 +80,7 @@
 			"filter.img":						"Images (*.bmp, *.jpg, *.jpeg, *.png)|*.bmp;*.jpg;*.jpeg;*.png|  Bitmap (*.bmp)|*.bmp|  JPEG (*.jpg, *.jpeg)|*.jpg;*.jpeg|  PNG (*.png)|*.png",
 			"filter.zip":						"ZIP archives (*.zip)|*.zip",
 			"filter.disc":						"Disc images (*.cue, *.bin)|*.cue;*.bin|  Cue Sheet files (*.cue)|*.cue|  BIN files (*.bin)|*.bin",
-			"filter.swf":						"Adobe Flash SWF files (*.swf)|*.swf",
+			"filter.swf":						"Adobe Flash files (*.swf)|*.swf",
 			"filter.rpgm":						"RPG Maker 2000/2003 database files (*.ldb)|*.ldb",
 			"filter.rom":						"{0} ROM files ({1})|{2}",
 			"filter.patch":						"Patch files (*.bps, *.ips, *.xdelta)|*.bps;*.ips;*.xdelta"
