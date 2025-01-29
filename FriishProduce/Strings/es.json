@@ -79,7 +79,7 @@
 			"filter.wad":						"Canales Wii (*.wad)|*.wad",
 			"filter.img":						"Imágenes (*.bmp, *.jpg, *.jpeg, *.png)|*.bmp;*.jpg;*.jpeg;*.png|  Bitmap (*.bmp)|*.bmp|  JPEG (*.jpg, *.jpeg)|*.jpg;*.jpeg|  PNG (*.png)|*.png",
 			"filter.zip":						"Archivos comprimidos ZIP (*.zip)|*.zip",
-			"filter.disc":						"Imágenes de disco (*.cue, *.bin)|*.cue;*.bin|  Archivos Cue Sheet (*.cue)|*.cue|  Archivos BIN (*.bin)|*.bin",
+			"filter.disc":						"Imágenes de disco (*.cue, *.bin)|*.cue;*.bin|  Archivos CUE Sheet (*.cue)|*.cue|  Archivos BIN (*.bin)|*.bin",
 			"filter.swf":						"Archivos Adobe Flash (*.swf)|*.swf",
 			"filter.rpgm":						"Archivos de base de datos de RPG Maker 2000/2003 (*.ldb)|*.ldb",
 			"filter.rom":						"Archivos ROM de {0} ({1})|{2}",
@@ -91,14 +91,14 @@
 		    "001":								"El proyecto \"{0}\" ha sido cambiado.\n¿Qué desea hacer?",
 			"002":								"El archivo seleccionado no es válido.",
 			"003":								"Exportado con éxito.\n¿Quiere abrir la carpeta de salida?",
-			"004":								"No se pueden recuperar todos los datos del juego.\nPor esta razón deberá completar manualmente algunos formularios.",
+			"004":								"No se pueden recuperar todos los datos del juego seleccionado.\nPor esta razón deberá completar manualmente algunos formularios.",
 			"005":								"El WAD que ha seleccionado (ID: {0}) no es válido.\nEsto puede deberse a que:\n  • la consola actual no coincide con la del WAD.\n  • el WAD aún no está disponible en la base de datos de esta aplicación.\n  • el WAD ya está modificado, ya sea inyectado o convertido en forwarder.",
 			"006":								"Puede reemplazar el manual electrónico original del juego de la Consola Virtual con otro manual personalizado.\nPara hacer esto, necesita un archivo comprimido ZIP conteniendo el contenido extraído/modificado del archivo *.arc del manual electrónico de Consola Virtual.",
 			"007":								"El archivo seleccionado no contiene ningún contenido válido de manual electrónico.",
 			"008":								"Actualización de FriishProduce\nYa está disponible para descargar la nueva versión {0} de FriishProduce.\nActualmente está utilizando la versión {1}.\n\n¿Quiere descargar la actualización desde GitHub ahora?",
-			"009":								"La aplicación ya está actualizado.",
+			"009":								"La aplicación ya está actualizada.",
 			"010":								"¿Extraer el archivo Opening.bnr (incluye la cabecera IMET)?",
-			"011":								"Se restablecerán todos los ajustes de la aplicación.\n¿Quiere continuar?",
+			"011":								"Se restablecerá toda la configuración de FriishProduce.\n¿Quiere continuar?",
 			
 			"error":							"Se ha producido un error",
 			"e_000":							"No se pudo conectar a Internet.\n{0}",
@@ -189,7 +189,7 @@
 			"system_default":					"Idioma del sistema",
 			"use_custom_database":				"Utilizar una base de datos externa para los canales de origen",
 			"reset_all_dialogs":				"Restablecer la opción \"No volver a mostrar este mensaje\"",
-			"bypass_rom_size":					"Eliminar el límite de tamaño de los archivos ROM",
+			"bypass_rom_size":					"Eliminar el límite de tamaño de archivos ROM",
 
 			"bios_files":						"Archivos BIOS",
 			"browse_bios":						"Seleccionar un archivo BIOS...",
@@ -202,8 +202,8 @@
 			"default_target_parameters":		"Partidos reemplazables:",
 
 			"use_online_wad_enabled":           "Habilitar opción de descargar canales de origen",
-			"use_online_wad_tip":				"Esto se puede utilizar para descargar cualquier canal de origen que esté disponible en la base de datos actual sin necesidad de tener un archivo WAD existente.
-												Sin embargo, debido a que el cliente NUS de libWiiSharp no permite descifrar archivos WADs de la Consola Virtual de ninguna forma, solo es posible utilizar la función de descarga desde la Web.
+			"use_online_wad_tip":				"Esto se puede utilizar para descargar cualquier canal de origen que esté disponible en la base de datos actual sin necesidad de tener un archivo WAD existente. 
+												Sin embargo, debido a que el cliente NUS de libWiiSharp no permite descifrar archivos WADs de la Consola Virtual de ninguna forma, solo es posible utilizar la función de descarga desde la Web. 
 												La legalidad de esta función es dudosa, por lo que es mejor tener esta opción deshabilitada.",
 
 			"auto_fill_save_data":				"Completar título de datos guardados automáticamente",
