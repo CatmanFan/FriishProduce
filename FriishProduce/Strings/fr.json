@@ -115,7 +115,7 @@
 			"e_011":							"Le fichier «{0}» n'a pas été trouvé dans son chemin original. Il s'agit qu'il peut avoir été déplacé ou supprimé.",
 			"e_012":							"Le dossier «{0}» n'a pas été trouvé dans son chemin original. Il s'agit qu'il peut avoir été déplacé ou supprimé.",
 			"e_013":							"Aucun point d'entrée d'injection n'a été trouvé. Il peut s'agir que la méthode d'injection utilisée par cette chaîne n'est toujours pas prise en charge.",
-			"e_014":							"Le fichier BIOS requis pour cette console est indisponible. Veuillez le spécifier de nouveau dans les préférences de l'application.",
+			"e_014":							"Le fichier BIOS requis pour cette console est toujours indisponible.\nVeuillez le spécifier dans les préférences de FriishProduce.",
 			"e_015":							"Échec de création de l'image d'aperçu des données de sauvegarde.",
 			"e_016":							"Aucun mode d'emploi de Console virtuelle n'a été trouvé dans cette chaîne.",
 			"e_017":							"«{0}» n'est pas un fichier de projet valide.",

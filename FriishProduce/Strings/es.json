@@ -39,11 +39,11 @@
 			"region_k":							"República de Corea",
 			"region_rf":						"Region Free",
 
-			"preferences":						"Ajustes",
+			"preferences":						"Configuración",
 			"system":							"Sistema",
 			"display":							"Pantalla",
 			"vc":								"Consola Virtual",
-			"vc_options":						"Ajustes del emulador de Consola Virtual"
+			"vc_options":						"Ajustes de la Consola Virtual"
 		},
 
 		"platforms": {
@@ -115,7 +115,7 @@
 			"e_011":							"El archivo \"{0}\" no se encontró en su ruta original. Puede que haya sido eliminado o movido.",
 			"e_012":							"La carpeta \"{0}\" no se encontró en su ruta original. Puede que haya sido eliminada o movida.",
 			"e_013":							"No se encontró ningún punto de entrada de inyección. Puede deberse a que el método de inyección utilizado por este canal aún no está compatible.",
-			"e_014":							"No se encontró el archivo BIOS necesario para esta consola.\nSeleccione un archivo en los ajustes de la aplicación.",
+			"e_014":							"No se encontró el archivo BIOS necesario para esta consola.\nSelecciónelo en la configuración de FriishProduce.",
 			"e_015":							"No se pudo crear la imagen TPL para los datos guardados.",
 			"e_016":							"No se encontró ningún manual electrónico de Consola Virtual.",
 			"e_017":							"\"{0}\" no es un archivo de proyecto válido.",
@@ -141,7 +141,7 @@
 												Esto puede ser útil si el nombre de la consola es diferente para tu región o si deseas utilizar un banner en japonés o coreano, por ejemplo.\n
 												Si la región del banner está configurada en Automática, se corresponderá con la región del WAD.",
 
-			"t_003":							"Cambiar la configuración del emulador.",
+			"t_003":							"Establecer los ajustes predeterminados del emulador.",
 
 			"t_004":							"Cuando esta opción está habilitada, el programa tratará todos los archivos dentro de la misma carpeta seleccionada actualmente como parte del software que se va a inyectar.\n
 												Asegúrese de que los archivos de su software (juego) estén en una carpeta separada."
@@ -176,7 +176,7 @@
 			"check_for_updates":				"Buscar &ahora",
 			"auto_update":						"Buscar &cuando se abra la aplicación",
 			"clear_database":					"&Borrar los bases de datos internos",
-			"reset_preferences":				"&Restablecer los ajustes",
+			"reset_preferences":				"&Restablecer configuración",
 			"exit":								"&Salir",
 
 			"project_type":						"Canal de {0}",

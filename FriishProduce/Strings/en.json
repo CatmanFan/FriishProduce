@@ -115,7 +115,7 @@
 			"e_011":							"The file \"{0}\" could not be found in its original path. It may have been deleted or moved.",
 			"e_012":							"The folder \"{0}\" could not be found in its original path. It may have been deleted or moved.",
 			"e_013":							"An injectable ROM entrypoint was not found. This may be because the injection method used for this WAD is yet not supported.",
-			"e_014":							"Could not find the required BIOS file for this console.\nPlease set this file in the application preferences.",
+			"e_014":							"Could not find the required BIOS file for this console.\nPlease set this file in the FriishProduce preferences.",
 			"e_015":							"Failed to create savedata TPL.",
 			"e_016":							"No Virtual Console manual was found in the provided WAD.",
 			"e_017":							"\"{0}\" is not a valid project file.",
