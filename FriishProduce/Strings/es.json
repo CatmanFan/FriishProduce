@@ -129,8 +129,6 @@
 												2) Una vez cargado el juego, ingrese el comando \"<b>RUN</b>\". En cuanto empiece el juego, haga clic en <i>Tools > Patch and Save Snapshot</i> y guarde el archivo como \"snap.fss\".\n
 												También puede guardar otra copia para usarlo más tarde.\n\n
 												<i>Intentos restantes: <b>{0}</b></i>",
-			"l_001":							"Sobre la Consola Virtual de SNES (en construcción)",
-			"l_002":							"Sobre la Consola Virtual de N64 (en construcción)",
 			
 			"t_000":							"Nombre utilizado para el icono que aparece en el menu Wii.\n
 												Para títulos más largos, se recomienda utilizar una versión abreviada de 20 caracteres o menos.<hr>
