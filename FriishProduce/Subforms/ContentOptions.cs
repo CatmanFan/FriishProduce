@@ -121,7 +121,7 @@ namespace FriishProduce
                 UsesKeymap = controller_cb.Checked;
             }
 
-            SaveOptions();
+            try { SaveOptions(); } catch { ClearOptions(); SaveOptions(); }
             DialogResult = DialogResult.OK;
         }
 

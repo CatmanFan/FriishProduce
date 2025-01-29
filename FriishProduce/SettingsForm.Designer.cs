@@ -32,6 +32,7 @@ namespace FriishProduce
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsForm));
             this.languages = new System.Windows.Forms.ComboBox();
             this.vc_n64_options = new System.Windows.Forms.GroupBox();
+            this.vc_n64_patch_cleantextures = new System.Windows.Forms.CheckBox();
             this.vc_n64_patch_autosizerom = new System.Windows.Forms.CheckBox();
             this.vc_n64_patch_expandedram = new System.Windows.Forms.CheckBox();
             this.vc_n64_patch_fixcrashes = new System.Windows.Forms.CheckBox();
@@ -141,14 +142,14 @@ namespace FriishProduce
             this.flash_save_data_enable = new System.Windows.Forms.CheckBox();
             this.vc_snes = new System.Windows.Forms.Panel();
             this.vc_snes_options = new System.Windows.Forms.GroupBox();
-            this.patch_nocheck = new System.Windows.Forms.CheckBox();
+            this.vc_snes_patch_nocheck = new System.Windows.Forms.CheckBox();
             this.vc_snes_patch_nosave = new System.Windows.Forms.CheckBox();
             this.vc_snes_patch_widescreen = new System.Windows.Forms.CheckBox();
             this.vc_snes_patch_nocc = new System.Windows.Forms.CheckBox();
             this.vc_snes_patch_nodark = new System.Windows.Forms.CheckBox();
             this.vc_snes_patch_nosuspend = new System.Windows.Forms.CheckBox();
             this.vc_snes_patch_volume = new System.Windows.Forms.CheckBox();
-            this.vc_n64_patch_cleantextures = new System.Windows.Forms.CheckBox();
+            this.vc_snes_patch_wiimote = new System.Windows.Forms.CheckBox();
             this.vc_n64_options.SuspendLayout();
             this.bottomPanel2.SuspendLayout();
             this.bottomPanel1.SuspendLayout();
@@ -215,6 +216,13 @@ namespace FriishProduce
             this.vc_n64_options.Name = "vc_n64_options";
             this.vc_n64_options.TabStop = false;
             this.vc_n64_options.Tag = "vc_options";
+            // 
+            // vc_n64_patch_cleantextures
+            // 
+            resources.ApplyResources(this.vc_n64_patch_cleantextures, "vc_n64_patch_cleantextures");
+            this.vc_n64_patch_cleantextures.Name = "vc_n64_patch_cleantextures";
+            this.vc_n64_patch_cleantextures.Tag = "patch_cleantextures";
+            this.vc_n64_patch_cleantextures.UseVisualStyleBackColor = true;
             // 
             // vc_n64_patch_autosizerom
             // 
@@ -1116,7 +1124,8 @@ namespace FriishProduce
             // 
             // vc_snes_options
             // 
-            this.vc_snes_options.Controls.Add(this.patch_nocheck);
+            this.vc_snes_options.Controls.Add(this.vc_snes_patch_wiimote);
+            this.vc_snes_options.Controls.Add(this.vc_snes_patch_nocheck);
             this.vc_snes_options.Controls.Add(this.vc_snes_patch_nosave);
             this.vc_snes_options.Controls.Add(this.vc_snes_patch_widescreen);
             this.vc_snes_options.Controls.Add(this.vc_snes_patch_nocc);
@@ -1128,12 +1137,12 @@ namespace FriishProduce
             this.vc_snes_options.TabStop = false;
             this.vc_snes_options.Tag = "vc_options";
             // 
-            // patch_nocheck
+            // vc_snes_patch_nocheck
             // 
-            resources.ApplyResources(this.patch_nocheck, "patch_nocheck");
-            this.patch_nocheck.Name = "patch_nocheck";
-            this.patch_nocheck.Tag = "patch_nocheck";
-            this.patch_nocheck.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.vc_snes_patch_nocheck, "vc_snes_patch_nocheck");
+            this.vc_snes_patch_nocheck.Name = "vc_snes_patch_nocheck";
+            this.vc_snes_patch_nocheck.Tag = "patch_nocheck";
+            this.vc_snes_patch_nocheck.UseVisualStyleBackColor = true;
             // 
             // vc_snes_patch_nosave
             // 
@@ -1177,12 +1186,12 @@ namespace FriishProduce
             this.vc_snes_patch_volume.Tag = "patch_volume";
             this.vc_snes_patch_volume.UseVisualStyleBackColor = true;
             // 
-            // vc_n64_patch_cleantextures
+            // vc_snes_patch_wiimote
             // 
-            resources.ApplyResources(this.vc_n64_patch_cleantextures, "vc_n64_patch_cleantextures");
-            this.vc_n64_patch_cleantextures.Name = "vc_n64_patch_cleantextures";
-            this.vc_n64_patch_cleantextures.Tag = "patch_cleantextures";
-            this.vc_n64_patch_cleantextures.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.vc_snes_patch_wiimote, "vc_snes_patch_wiimote");
+            this.vc_snes_patch_wiimote.Name = "vc_snes_patch_wiimote";
+            this.vc_snes_patch_wiimote.Tag = "patch_wiimote";
+            this.vc_snes_patch_wiimote.UseVisualStyleBackColor = true;
             // 
             // SettingsForm
             // 
@@ -1193,6 +1202,7 @@ namespace FriishProduce
             this.ControlBox = false;
             this.Controls.Add(this.bottomPanel2);
             this.Controls.Add(this.TreeView);
+            this.Controls.Add(this.vc_snes);
             this.Controls.Add(this.vc_n64);
             this.Controls.Add(this.vc_sega);
             this.Controls.Add(this.vc_pce);
@@ -1204,7 +1214,6 @@ namespace FriishProduce
             this.Controls.Add(this.adobe_flash);
             this.Controls.Add(this.forwarder);
             this.Controls.Add(this.vc_nes);
-            this.Controls.Add(this.vc_snes);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MaximizeBox = false;
@@ -1396,7 +1405,8 @@ namespace FriishProduce
         private System.Windows.Forms.GroupBox vc_pce_region_l;
         private System.Windows.Forms.ComboBox vc_pce_region;
         private System.Windows.Forms.Button GetBanners;
-        private System.Windows.Forms.CheckBox patch_nocheck;
+        private System.Windows.Forms.CheckBox vc_snes_patch_nocheck;
         private System.Windows.Forms.CheckBox vc_n64_patch_cleantextures;
+        private System.Windows.Forms.CheckBox vc_snes_patch_wiimote;
     }
 }

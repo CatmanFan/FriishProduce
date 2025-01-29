@@ -9,12 +9,16 @@ namespace FriishProduce
         {
             InitializeComponent();
             ClearOptions();
+            controllerForm = new Controller_SNES();
 
             // Cosmetic
             // *******
             if (!DesignMode)
             {
                 Program.Lang.Control(this);
+
+                controller_cb.Text = Program.Lang.String("controller", "projectform");
+                b_controller.Text = Program.Lang.String("controller_mapping", "projectform");
             }
         }
 
@@ -30,7 +34,8 @@ namespace FriishProduce
                 { "patch_nosuspend",    Program.Config.snes.patch_nosuspend.ToString() },
                 { "patch_nosave",       Program.Config.snes.patch_nosave.ToString() },
                 { "patch_widescreen",   Program.Config.snes.patch_widescreen.ToString() },
-                { "patch_nocheck",      Program.Config.snes.patch_nocheck.ToString() }
+                { "patch_nocheck",      Program.Config.snes.patch_nocheck.ToString() },
+                { "patch_wiimote",      Program.Config.snes.patch_wiimote.ToString() }
             };
         }
 
@@ -47,6 +52,9 @@ namespace FriishProduce
                 patch_nosave.Checked                = bool.Parse(Options["patch_nosave"]);
                 patch_widescreen.Checked            = bool.Parse(Options["patch_widescreen"]);
                 patch_nocheck.Checked               = bool.Parse(Options["patch_nocheck"]);
+                patch_wiimote.Checked               = bool.Parse(Options["patch_wiimote"]);
+
+                UsesKeymap = patch_wiimote.Checked;
             }
             // *******
         }
@@ -60,6 +68,18 @@ namespace FriishProduce
             Options["patch_nosave"] = patch_nosave.Checked.ToString();
             Options["patch_widescreen"] = patch_widescreen.Checked.ToString();
             Options["patch_nocheck"] = patch_nocheck.Checked.ToString();
+            Options["patch_wiimote"] = patch_wiimote.Checked.ToString();
+
+            UsesKeymap = patch_wiimote.Checked;
         }
+
+        // ---------------------------------------------------------------------------------------------------------------
+
+        #region Functions
+        private void patch_wiimote_CheckedChanged(object sender, EventArgs e)
+        {
+            b_controller.Enabled = controller_cb.Checked = patch_wiimote.Checked;
+        }
+        #endregion
     }
 }

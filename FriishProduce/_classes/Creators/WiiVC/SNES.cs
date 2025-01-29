@@ -183,13 +183,34 @@ namespace FriishProduce.Injectors
         {
             bool nomanual = Manual == null;
 
+            // Write Wii Remote remapping (wii.txt) if exists
+            // ****************
+            if (Keymap?.Count > 0)
+            {
+                File.WriteAllLines(Paths.WorkingFolder + "wii.txt",
+                    new string[]
+                    {
+                        "1=" + Keymap[Buttons.WiiRemote_1],
+                        "2=" + Keymap[Buttons.WiiRemote_2],
+                        "A=" + Keymap[Buttons.WiiRemote_A],
+                        "B=" + Keymap[Buttons.WiiRemote_B],
+                        "Up=" + Keymap[Buttons.WiiRemote_Up],
+                        "Down=" + Keymap[Buttons.WiiRemote_Down],
+                        "Left=" + Keymap[Buttons.WiiRemote_Left],
+                        "Right=" + Keymap[Buttons.WiiRemote_Right],
+                        "Plus=" + Keymap[Buttons.WiiRemote_Plus],
+                        "Minus=" + Keymap[Buttons.WiiRemote_Minus]
+                    });
+            };
+
             // Define arguments
             // ****************
             Dictionary<string, string> argDict = new();
 
             if (bool.Parse(Settings["patch_volume"])) argDict.Add("--volume", Program.Lang.String("patch_volume", "vc_snes"));
             if (bool.Parse(Settings["patch_nodark"])) argDict.Add("--no-dark", Program.Lang.String("patch_nodark", "vc_snes"));
-            if (bool.Parse(Settings["patch_nocc"])) argDict.Add("--no-cc --wiimote-native", Program.Lang.String("patch_nocc", "vc_snes"));
+            if (bool.Parse(Settings["patch_nocc"])) argDict.Add("--no-cc", Program.Lang.String("patch_nocc", "vc_snes"));
+            if (bool.Parse(Settings["patch_wiimote"])) argDict.Add("--wiimote-native", Program.Lang.String("patch_wiimote", "vc_snes"));
             if (bool.Parse(Settings["patch_nosuspend"])) argDict.Add("--no-suspend", Program.Lang.String("patch_nosuspend", "vc_snes"));
             if (bool.Parse(Settings["patch_nosave"])) argDict.Add("--no-save", Program.Lang.String("patch_nosave", "vc_snes"));
             if (bool.Parse(Settings["patch_widescreen"])) argDict.Add("--wide", Program.Lang.String("patch_widescreen", "vc_snes"));

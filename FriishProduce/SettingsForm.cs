@@ -129,7 +129,7 @@ namespace FriishProduce
             Program.Lang.String(vc_snes_patch_nosave, "vc_snes");
             Program.Lang.String(vc_snes_patch_nosuspend, "vc_snes");
             Program.Lang.String(vc_snes_patch_widescreen, "vc_snes");
-            Program.Lang.String(patch_nocheck, "vc_snes");
+            Program.Lang.String(vc_snes_patch_nocheck, "vc_snes");
 
             // -----------------------------
 
@@ -231,7 +231,8 @@ namespace FriishProduce
             vc_snes_patch_nosuspend.Checked = Program.Config.snes.patch_nosuspend;
             vc_snes_patch_nosave.Checked = Program.Config.snes.patch_nosave;
             vc_snes_patch_widescreen.Checked = Program.Config.snes.patch_widescreen;
-            patch_nocheck.Checked = Program.Config.snes.patch_nocheck;
+            vc_snes_patch_nocheck.Checked = Program.Config.snes.patch_nocheck;
+            vc_snes_patch_wiimote.Checked = Program.Config.snes.patch_wiimote;
 
             // N64
             vc_n64_patch_fixbrightness.Checked = Program.Config.n64.patch_nodark;
@@ -384,7 +385,8 @@ namespace FriishProduce
             Program.Config.snes.patch_nosuspend = vc_snes_patch_nosuspend.Checked;
             Program.Config.snes.patch_nosave = vc_snes_patch_nosave.Checked;
             Program.Config.snes.patch_widescreen = vc_snes_patch_widescreen.Checked;
-            Program.Config.snes.patch_nocheck = patch_nocheck.Checked;
+            Program.Config.snes.patch_nocheck = vc_snes_patch_nocheck.Checked;
+            Program.Config.snes.patch_wiimote = vc_snes_patch_wiimote.Checked;
 
             Program.Config.n64.patch_nodark = vc_n64_patch_fixbrightness.Checked;
             Program.Config.n64.patch_crashfix = vc_n64_patch_fixcrashes.Checked;
