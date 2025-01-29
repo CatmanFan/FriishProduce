@@ -130,7 +130,7 @@ namespace FriishProduce.Injectors
                             AddExtension = true,
                             Multiselect = false,
                             DefaultExt = ".fss",
-                            Title = Program.Lang.String("rom_notice2", "vc_c64")
+                            Title = Program.Lang.String("rom_notice2", "vc_c64").Replace("&", "")
                         })
                         {
                             result = open.ShowDialog();

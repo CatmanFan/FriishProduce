@@ -302,7 +302,7 @@ namespace FriishProduce
         {
             if (use_custom_database.Checked && (!File.Exists(Program.Config.paths.database) || string.IsNullOrWhiteSpace(Program.Config.paths.database)))
             {
-                using OpenFileDialog dialog = new() { DefaultExt = ".json", CheckFileExists = true, AddExtension = true, Filter = "*.json|*.json", Title = use_custom_database.Text };
+                using OpenFileDialog dialog = new() { DefaultExt = ".json", CheckFileExists = true, AddExtension = true, Filter = "*.json|*.json", Title = use_custom_database.Text.Replace("&", "") };
 
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
@@ -582,7 +582,7 @@ namespace FriishProduce
 
             using OpenFileDialog ImportBIOS = new()
             {
-                Title = Program.Lang.String("browse_bios", Name),
+                Title = Program.Lang.String("browse_bios", Name).Replace("&", ""),
                 Filter = ".bin (*.bin)|*.bin",
                 DefaultExt = "bin",
                 CheckFileExists = true,

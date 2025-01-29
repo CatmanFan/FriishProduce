@@ -196,14 +196,18 @@ namespace FriishProduce
                     { "T_Play_NED", Encoding.BigEndianUnicode.GetBytes($"{playersDisplay} speler(s)") }
                 };
 
+                List<int> lengths = new();
+
                 foreach (var line in Players)
                 {
-                    int index = Byte.IndexOf(BRLYT, line.Key, 5200, 6800);
+                    int index = Byte.IndexOf(BRLYT, line.Key, 5100, 6900);
                     if (index != -1)
                     {
-                        byte[] target = new byte[Math.Min(27, Byte.IndexOf(BRLYT, "txt1", index + 104) - (index + 104) - 2)];
+                        int length = line.Key.ToUpper().EndsWith("NED") ? Encoding.BigEndianUnicode.GetBytes("1-2 speler(s)").Length : Byte.IndexOf(BRLYT, "txt1", index + 104) - (index + 104) - 2;
+                        byte[] target = new byte[length];
+
                         line.Value.CopyTo(target, 0);
-                        target.CopyTo(BRLYT, index + 104);
+                        target.CopyTo(BRLYT, index + 104); 
                     }
                 }
 
