@@ -58,12 +58,12 @@ namespace FriishProduce
             // Singleline platforms
             // ********
             IsMultiline = !(region == 3 // Korea
-                         || platform == Platform.NES
-                         || platform == Platform.SMS
-                         || platform == Platform.SMD
-                         || platform == Platform.PCE
-                         || platform == Platform.PCECD
-                         || platform == Platform.C64);
+                        || (platform is Platform.NES
+                                     or Platform.SMS
+                                     or Platform.SMD
+                                     or Platform.PCE
+                                     or Platform.PCECD
+                                     or Platform.C64));
 
             // Set textbox to use singleline when needed
             // ********

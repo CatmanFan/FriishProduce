@@ -2,16 +2,20 @@
 	"language": "es-419",
 	"author": "CatmanFan",
 	"application_title": "FriishProduce",
-	
-	"strings": {
-		"vc_pce": {
-			"region1":							"América y Europa"
-		},
 
+	"strings": {
 		"controller": {
 			"page1":							"Control remoto Wii",
 			"page2":							"Mando clásico",
 			"page3":							"Control de GameCube"
+		},
+
+		"vc_snes": {
+			"patch_wiimote":					"Activar la compatibilidad con el control remoto Wii"
+		},
+
+		"vc_pce": {
+			"region1":							"América y Europa"
 		}
 	}
 }

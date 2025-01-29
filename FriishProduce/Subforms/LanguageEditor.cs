@@ -138,6 +138,7 @@ namespace FriishProduce
                     // Add rows
                     // ****************
                     strings.Rows.Clear();
+                    filter_by_section.DropDownItems.Clear();
                     filter_by_section.DropDownItems.Add("All", null, FilterBySection);
 
                     foreach (var section in source.global)
@@ -320,7 +321,7 @@ namespace FriishProduce
 
         private void Strings_KeyDown(object sender, KeyEventArgs e)
         {
-            if ((e.KeyCode == Keys.Back || e.KeyCode == Keys.Delete) && strings.CurrentCell.ColumnIndex == 3)
+            if ((e.KeyCode is Keys.Back or Keys.Delete) && strings.CurrentCell.ColumnIndex == 3)
             {
                 strings.CurrentCell.Value = null;
                 UpdateCell(strings.CurrentCell);

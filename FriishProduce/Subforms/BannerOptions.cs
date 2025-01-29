@@ -34,7 +34,7 @@ namespace FriishProduce
 
             // Remove Japan option for C64 & Flash
             // ********
-            if (region.Items.Count == 4 && platform == Platform.C64 || platform == Platform.Flash)
+            if (region.Items.Count == 4 && (platform is Platform.C64 or Platform.Flash))
             {
                 if (region.SelectedIndex == 1) region.SelectedIndex = 0;
                 region.Items.RemoveAt(1);
@@ -79,6 +79,21 @@ namespace FriishProduce
                 players.Value = origPlayers;
                 region.SelectedIndex = origRegion;
             }
+        }
+
+        private void TextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter && (sender as TextBox)?.Lines?.Length >= 2)
+            {
+                System.Media.SystemSounds.Beep.Play();
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void TextBox_TextChanged(object sender, EventArgs e)
+        {
+            if ((sender as TextBox)?.Lines?.Length >= 2)
+                (sender as TextBox).Lines = new string[] { (sender as TextBox).Lines[0], (sender as TextBox).Lines[1] };
         }
     }
 }

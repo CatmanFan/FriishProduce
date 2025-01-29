@@ -94,6 +94,8 @@ namespace FriishProduce
             // 
             resources.ApplyResources(this.title, "title");
             this.title.Name = "title";
+            this.title.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
+            this.title.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBox_KeyDown);
             // 
             // label3
             // 

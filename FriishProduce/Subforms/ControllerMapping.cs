@@ -15,7 +15,6 @@ namespace FriishProduce
         public ControllerMapping()
         {
             InitializeComponent();
-            Font = Program.MainForm.Font;
         }
 
         protected void ResetLayout()
@@ -168,9 +167,22 @@ namespace FriishProduce
                 if (OldMapping == null) OldMapping = new Dictionary<Buttons, string>(Mapping);
             }
 
-            if (!UsesGC && tabControl1.TabPages.Contains(page3)) tabControl1.TabPages.Remove(page3);
-            if (!UsesNunchuk) vertical_layout.Checked = false;
-            vertical_layout.Enabled = vertical_layout.Visible = UsesNunchuk;
+            bool UsesWiimote = AllowedKeymaps.HasFlag(Allowed.Wiimote);
+            bool UsesClassic = AllowedKeymaps.HasFlag(Allowed.Classic);
+            bool UsesGC      = AllowedKeymaps.HasFlag(Allowed.GC);
+            bool UsesNunchuk = AllowedKeymaps.HasFlag(Allowed.Nunchuk);
+
+            if (!UsesWiimote)
+                tabControl1.TabPages.Remove(page1);
+            if (!UsesClassic)
+                tabControl1.TabPages.Remove(page2);
+            if (!UsesGC)
+                tabControl1.TabPages.Remove(page3);
+            if (UsesNunchuk)
+                vertical_layout.Enabled = vertical_layout.Visible = true;
+            else
+                vertical_layout.Enabled = vertical_layout.Visible = vertical_layout.Checked = false;
+
             CenterToParent();
         }
 
@@ -227,8 +239,16 @@ namespace FriishProduce
         protected IDictionary<Buttons, string> Mapping;
         protected IDictionary<Buttons, string> OldMapping;
 
-        protected bool UsesGC { get; set; }
-        protected bool UsesNunchuk { get; set; }
+        [Flags]
+        protected enum Allowed
+        {
+            None = 0,
+            Wiimote = 1,
+            Nunchuk = 2,
+            Classic = 4,
+            GC = 8
+        }
+        protected Allowed AllowedKeymaps { get; set; }
 
         // ---------------------------------------------------------------------------------------------------------------
 

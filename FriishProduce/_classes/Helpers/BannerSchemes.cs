@@ -219,8 +219,8 @@ namespace FriishProduce
 
         public static (int R, int G, int B) TextColor(int target)
         {
-            var limit = target == 15 || target == 16 ? 0.5 : 0.75;
-            return GetBrightness(target, 2) < limit || target == 4 || target == 2 ? (255, 255, 255) : (0, 0, 0);
+            var limit = target is 15 or 16 ? 0.5 : 0.75;
+            return GetBrightness(target, 2) < limit || (target is 4 or 2) ? (255, 255, 255) : (0, 0, 0);
         }
 
         public static float GetBrightness(int target, int type)

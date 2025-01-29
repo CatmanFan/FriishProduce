@@ -308,12 +308,7 @@ namespace FriishProduce
 
             try
             {
-                var path = sectionName.ToLower() == "main"
-                              || sectionName.ToLower() == "filters"
-                              || sectionName.ToLower() == "platforms"
-                              || sectionName.ToLower() == "messages"
-                              || sectionName.ToLower() == "html"
-                              || sectionName.ToLower() == "tooltips" ? target.global : target.strings;
+                var path = sectionName.ToLower() is "main" or "filters" or "platforms" or "messages" or "html" or "tooltips" ? target.global : target.strings;
 
                 string result = null;
 

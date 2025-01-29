@@ -24,7 +24,9 @@
 			"enabled": "有効",
 			"original": "オリジナル",
 			"automatic": "自動",
+			"unknown": "未知",
 			"none": "該当なし",
+			"not_available": "該当なし",
 			"region": "地域",
 			"region_j": "日本",
 			"region_u": "アメリカ大陸",
@@ -86,6 +88,7 @@
 			"error": "エラーが発生しました",
 			"e_000": "インターネットに接続できませんでした。\n{0}",
 			"e_001": "画像を生成できませんでした。\nこれはGDI+の問題かもしれません。",
+			"e_002": "WADのコンテンツを置き換えることができませんでした。",
 			"e_003": "選択されたROMは大きすぎます（ファイルサイズの制限: {0} {1}）。",
 			"e_006": "必要なアプリケーション（{0}）は、resources\\toolsサブディレクトリに見つかりませんでした。",
 			"e_007": "WADまたはZIPを作成できませんでした。",
@@ -148,10 +151,10 @@
 			"auto_fill_save_data": "セーブデータの名前の自動入力"
 		},
 		"projectform": {
-			"main": "主なファイル",
+			"main": "{0}ファイル",
 			"rom_label": "現在の{0}:",
-			"rom_label1": "ゲームファイル",
-			"rom_label2": "ISOまたはCHD",
+			"rom_label1": "ゲーム",
+			"rom_label2": "ディスクイメージ",
 			"include_patch": "パッチを含める",
 			"wad_base": "元のWAD",
 			"import_wad": "WADファイルを取り込む...",
@@ -190,7 +193,8 @@
 			"edit_save_data_2": "副題:",
 			"fill_save_data": "自動入力",
 			"manual_type": "説明書:",
-			"manual_type2": "外部ディレクトリ"
+			"manual_type2": "外部ディレクトリ",
+			"forwarder_root_device": "デフォルト記憶装置:"
 		},
 		"banner": {
 			"full_name": "氏名:",
@@ -215,7 +219,11 @@
 		},
 		"vc_snes": {
 			"patch_noopera": "VC説明書のファイルを削除",
-			"patch_nosave": "セーブを無効"
+			"patch_wiimote": "Wiiリモコンの互換性を有効",
+			"patch_nocc": "「クラシックコントローラーが必要です」画面を無効",
+			"patch_nosave": "セーブを無効",
+			"patch_nosuspend": "中断機能を無効",
+			"patch_widescreen": "ワイドスクリーンのHOMEボタンメニュー"
 		},
 		"vc_n64": {
 			"patch_widescreen": "ワイドスクリーン (16:9)",
@@ -227,7 +235,11 @@
 			"dev_mdpad_enable_6b": "{0}のファイティングパッド6Bを有効"
 		},
 		"vc_pce": {
+			"sgenable": "PCエンジンスーパーグラフィックス機能",
 			"region1": "アメリカ/ヨーロッパ"
+		},
+		"vc_neo": {
+			"bios": "ゲーム機のBIOS"
 		},
 		"adobe_flash": {
 			"fullscreen": "フルスクリーン",
@@ -237,12 +249,13 @@
 			"quality0": "高画質",
 			"quality1": "中画質",
 			"quality2": "低画質",
-			"strap_reminder": "ストラップのお願い画像",
+			"strap_reminder": "ストラップのお願い画面",
 			"background_color": "背景色"
 		},
 		"forwarder": {
+			"bios_settings": "BIOS設定",
 			"use_bios": "BIOSの機能を有効",
-			"show_bios_screen": "BIOSスタート画面を表示",
+			"show_bios_screen": "ゲーム機のスタート画面を表示",
 			"rpgm_settings": "RPGツクール設定"
 		}
 	}

@@ -279,7 +279,7 @@
 		},
 
 		"controller": {
-			"page1":							"Manette Wii",
+			"page1":							"Télécommande Wii",
 			"page2":							"Manette classique",
 			"page3":							"Manette GameCube",
 			
@@ -311,11 +311,14 @@
 		},
 
 		"vc_snes": {
-			"patch_volume":						"Boost volume",
-			"patch_nodark":						"Anti-filtre sombre",
+			"patch_volume":						"Augmenter le volume",
 			"patch_noopera":					"Supprimer les fichiers du mode d'emploi",
-			"patch_nosave":						"Désactivation de la sauvegarde",
-			"patch_nosuspend":					"Désactivation du point de récupération",
+			"patch_wiimote":					"Permetter le contrôle avec la télécommande Wii",
+			"patch_nocheck":					"Désactiver la vérification de la ROM",
+			"patch_nodark":						"Désactiver le filtre sombre",
+			"patch_nocc":						"Désactiver l'écran concernant la manette classique",
+			"patch_nosave":						"Désactiver la sauvegarde des données",
+			"patch_nosuspend":					"Désactiver le point de récupération",
 			"patch_widescreen":					"Menu HOME en 16/9",
 		},
 
@@ -324,8 +327,8 @@
 			"patch_fixcrashes":					"Anti-plantage",
 			"patch_expandedram":				"Extension de mémoire",
 			"patch_autosizerom":				"Allocation de taille de la ROM",
+			"patch_cleantextures":				"Nettoyage des textures inutilisées",
 			"patch_widescreen":					"Plein écran (16/9)",
-			"patch_nocheck":					"Désactiver la vérification de la ROM",
 			
 			"romc_type":						"Méthode de compression",
 			"romc_type0":						"ROMC (type 0)",

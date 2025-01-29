@@ -6,8 +6,7 @@ namespace FriishProduce
     {
         public Controller_SEGA(bool IsSMS) : base()
         {
-            UsesGC      = true;
-            UsesNunchuk = false;
+            AllowedKeymaps = Allowed.Wiimote | Allowed.Classic | Allowed.GC;
             InitializeComponent();
 
             #region Modifiable values: Buttons

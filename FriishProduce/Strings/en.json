@@ -315,13 +315,14 @@
 
 		"vc_snes": {
 			"patch_volume":						"Boost volume",
-			"patch_nodark":						"Remove dark filter",
-			"patch_nocc":						"Skip Classic Controller screen",
 			"patch_noopera":					"Remove manual files",
+			"patch_wiimote":					"Enable native Wii Remote support",
+			"patch_nocheck":					"Disable all ROM checks",
+			"patch_nodark":						"Disable dark filter",
+			"patch_nocc":						"Disable Classic Controller screen",
 			"patch_nosave":						"Disable saving",
 			"patch_nosuspend":					"Disable Suspend Point",
 			"patch_widescreen":					"Widescreen HOME Menu",
-			"patch_nocheck":					"Remove all ROM checks",
 		},
 
 		"vc_n64": {

@@ -847,7 +847,7 @@
     <value>NoControl</value>
   </data>
   <data name="injection_method_options.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 93</value>
+    <value>180, 93</value>
   </data>
   <data name="injection_method_options.Size" type="System.Drawing.Size, System.Drawing">
     <value>270, 24</value>

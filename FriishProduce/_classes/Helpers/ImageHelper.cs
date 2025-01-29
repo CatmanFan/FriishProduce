@@ -30,8 +30,8 @@ namespace FriishProduce
                 // --------------------------------------------------
                 // SAVEICON : DEFINE POSITION AND SIZE VARIABLES
                 // --------------------------------------------------
-                return platform == Platform.SMS || platform == Platform.SMD ? (8, 8, 69, 48)
-                     : platform == Platform.C64 ? (0, 0, 85, 64)
+                return platform is Platform.SMS or Platform.SMD ? (8, 8, 69, 48)
+                     : platform is Platform.C64 ? (0, 0, 85, 64)
                      : (10, 10, 58, 44);
             }
         }
@@ -154,15 +154,15 @@ namespace FriishProduce
         {
             if (src == null) src = Source;
 
-            bool ShrinkToFit = platform == Platform.NES
-                            || platform == Platform.SNES
-                            || platform == Platform.N64
-                            || platform == Platform.Flash
-                            || platform == Platform.GB
-                            || platform == Platform.GBC
-                            || platform == Platform.GBA
-                            || platform == Platform.GCN
-                            || platform == Platform.RPGM;
+            bool NintendoFilter = platform is Platform.NES
+                                           or Platform.SNES
+                                           or Platform.N64
+                                           or Platform.Flash
+                                           or Platform.GB
+                                           or Platform.GBC
+                                           or Platform.GBA
+                                           or Platform.GCN
+                                           or Platform.RPGM;
 
             // --------------------------------------------------
 
@@ -229,7 +229,7 @@ namespace FriishProduce
                     g.Clear(Color.White);
                     g.DrawImage(Working, 0, 0, 128, 96);
 
-                    if (ShrinkToFit)
+                    if (NintendoFilter)
                     {
                         for (int a = 0; a <= 4; a++)
                             for (int b = 0; b <= 4; b++)

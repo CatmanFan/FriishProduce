@@ -6,8 +6,7 @@ namespace FriishProduce
     {
         public Controller_Flash() : base()
         {
-            UsesGC      = false;
-            UsesNunchuk = true;
+            AllowedKeymaps = Allowed.Wiimote | Allowed.Nunchuk | Allowed.Classic;
             InitializeComponent();
 
             #region Modifiable values: Buttons

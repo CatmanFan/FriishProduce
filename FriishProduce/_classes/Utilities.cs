@@ -458,9 +458,9 @@ namespace FriishProduce
                         {
                             for (int index; (index = Byte.IndexOf(content1, modesList.Values.ElementAt(i).Substring(0, 23), start, end)) > 0;)
                             {
-                                string[] array = i == 1 || i == 4 || i == 7 || i == 10 ? modesList.Values.ElementAt(targetMode + 0).Split(' ')   // Interlaced
-                                               : i == 2 || i == 5 || i == 8 || i == 11 ? modesList.Values.ElementAt(targetMode + 1).Split(' ')   // Non-interlaced
-                                               : modesList.Values.ElementAt(targetMode + 2).Split(' ');                                          // Progressive
+                                string[] array = i is 1 or 4 or 7 or 10 ? modesList.Values.ElementAt(targetMode + 0).Split(' ')   // Interlaced
+                                               : i is 2 or 5 or 8 or 11 ? modesList.Values.ElementAt(targetMode + 1).Split(' ')   // Non-interlaced
+                                               : modesList.Values.ElementAt(targetMode + 2).Split(' ');                           // Progressive
 
                                 for (int x = 0; x < 15; x++)
                                     if (array[x].ToLower() != "xx") content1[index + x] = Convert.ToByte(array[x], 16);

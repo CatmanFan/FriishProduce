@@ -740,7 +740,7 @@ namespace FriishProduce
 
             if (wadDialog.ShowDialog() == DialogResult.OK)
             {
-                Exception error;
+                Exception error = null;
                 using WAD w = new();
 
                 try { w.LoadFile(wadDialog.FileName); }
@@ -866,7 +866,52 @@ namespace FriishProduce
 
                                         else if (item.ToLower().Contains("emanual.arc") || item.ToLower().Contains("html.arc") || item.ToLower().Contains("man.arc"))
                                         {
-                                            extManual = U8.Load(u8.Data[u8.GetNodeIndex(item)]);
+                                            var file = u8.Data[u8.GetNodeIndex(item)];
+
+                                            try
+                                            {
+                                                extManual = U8.Load(file);
+                                            }
+                                            catch // File is compressed
+                                            {
+                                                int type = item.ToLower().Contains("lzh8") ? 1 : 0;
+                                                // 0 = LZ77, 1 = LZH8
+
+                                                Decompress:
+                                                // Create temporary files at working folder
+                                                // ****************
+                                                File.WriteAllBytes(Paths.WorkingFolder + "emanual.arc", file);
+
+                                                // Decompress
+                                                // ****************
+                                                Utils.Run
+                                                (
+                                                    type == 0 ? FileDatas.Apps.wwcxtool : FileDatas.Apps.lzh8_dec,
+                                                    type == 0 ? "wwcxtool" : "lzh8_dec",
+                                                    (type == 0 ? "/u " : null) + "emanual.arc emanual.dec"
+                                                );
+
+                                                if (File.Exists(Paths.WorkingFolder + "emanual.dec"))
+                                                    file = File.ReadAllBytes(Paths.WorkingFolder + "emanual.dec");
+
+                                                try { File.Delete(Paths.WorkingFolder + "emanual.arc"); } catch { }
+                                                try { File.Delete(Paths.WorkingFolder + "emanual.dec"); } catch { }
+
+                                                // Load manual
+                                                // ****************
+                                                try { extManual = U8.Load(file); }
+                                                catch
+                                                {
+                                                    if (type == 0)
+                                                    {
+                                                        type++;
+                                                        goto Decompress;
+                                                    }
+
+                                                    else throw;
+                                                }
+                                            }
+
                                             u8.Dispose();
                                             break;
                                         }
@@ -889,10 +934,10 @@ namespace FriishProduce
                                 extManual.Dispose();
                             }
 
-                            goto End;
+                            goto Succeeded;
                         }
 
-                        else throw new Exception(Program.Lang.Msg(16, true));
+                        goto Failed;
                     }
 
                     catch (Exception ex) { error = ex; goto Failed; }
@@ -903,7 +948,7 @@ namespace FriishProduce
 
                 Failed:
                 if (error == null)
-                    System.Media.SystemSounds.Hand.Play();
+                    MessageBox.Show(Program.Lang.Msg(16, true));
                 else
                     MessageBox.Error(error.Message);
                 goto End;

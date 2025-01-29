@@ -133,6 +133,9 @@
   <data name="lzh8_cmp_nonstrict" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\apps\lzh8_cmp_nonstrict.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="lzh8_dec" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\apps\lzh8_dec.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="OpenDolBoot" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\apps\OpenDolBoot.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>

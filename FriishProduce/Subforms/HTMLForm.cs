@@ -17,6 +17,7 @@ namespace FriishProduce
         public HTMLForm(string text = null, string title = null)
         {
             InitializeComponent();
+            Font = Program.MainForm.Font;
             FormText = text;
             Text = title;
             htmlPanel1.Text = string.IsNullOrWhiteSpace(text) ? "Not implemented" : text;

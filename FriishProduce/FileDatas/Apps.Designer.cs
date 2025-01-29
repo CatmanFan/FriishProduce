@@ -113,6 +113,16 @@ namespace FriishProduce.FileDatas {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] lzh8_dec {
+            get {
+                object obj = ResourceManager.GetObject("lzh8_dec", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] OpenDolBoot {
             get {
                 object obj = ResourceManager.GetObject("OpenDolBoot", resourceCulture);

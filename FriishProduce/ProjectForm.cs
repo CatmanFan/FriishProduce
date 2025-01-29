@@ -1009,6 +1009,7 @@ namespace FriishProduce
             bool hasRom = !string.IsNullOrWhiteSpace(rom?.FilePath);
             bool hasWad = !string.IsNullOrWhiteSpace(inWadFile);
 
+            groupBox1.Text = string.Format(Program.Lang.String("main", Name), FileTypeName);
             rom_label.Text = string.Format(Program.Lang.String(rom_label.Name, Name), FileTypeName);
             rom_label_filename.Text = hasRom ? rom?.FilePath : Program.Lang.String("none");
             if (rom_label_filename.Text.Length > 80) rom_label_filename.Text = rom_label_filename.Text.Substring(0, 77) + "...";
@@ -1113,25 +1114,23 @@ namespace FriishProduce
             {
                 var result = MessageBox.Show(string.Format(Program.Lang.Msg(1), Text), null, new string[] { Program.Lang.String("b_save"), Program.Lang.String("b_dont_save"), Program.Lang.String("b_cancel") });
                 {
-                    if (result == MessageBox.Result.Button1)
+                    switch (result)
                     {
-                        if (File.Exists(ProjectPath))
-                        {
-                            SaveProject(ProjectPath);
+                        case MessageBox.Result.Button1:
+                            if (File.Exists(ProjectPath))
+                            {
+                                SaveProject(ProjectPath);
+                                return true;
+                            }
+                            else return Program.MainForm.SaveAs_Trigger(this);
+
+                        case MessageBox.Result.Button2:
+                            IsModified = false;
                             return true;
-                        }
-                        else return Program.MainForm.SaveAs_Trigger(this);
-                    }
 
-                    else if (result == MessageBox.Result.Button2)
-                    {
-                        IsModified = false;
-                        return true;
-                    }
-
-                    else if (result == MessageBox.Result.Cancel || result == MessageBox.Result.Button3)
-                    {
-                        return false;
+                        case MessageBox.Result.Cancel:
+                        case MessageBox.Result.Button3:
+                            return false;
                     }
                 }
             }
@@ -1322,15 +1321,13 @@ namespace FriishProduce
                     {
                         // Check if is a valid emanual contents folder
                         // ****************
-                        // if ((item.FileName == "emanual" || item.FileName == "html") && item.IsDirectory)
+                        // if ((item.FileName is "emanual" or "html") && item.IsDirectory)
                         //    hasFolder = true;
 
                         // Check key files
                         // ****************
                         if ((entry.Name.StartsWith("startup") && Path.GetExtension(entry.Name) == ".html")
-                          || entry.Name == "standard.css"
-                          || entry.Name == "contents.css"
-                          || entry.Name == "vsscript.css")
+                          || (entry.Name is "standard.css" or "contents.css" or "vsscript.css"))
                             applicable++;
                     }
                 }
@@ -1360,10 +1357,8 @@ namespace FriishProduce
                 if (folder != null)
                     foreach (var item in Directory.EnumerateFiles(folder))
                     {
-                        if ((Path.GetFileNameWithoutExtension(item).StartsWith("startup") && Path.GetExtension(item) == ".html")
-                         || Path.GetFileName(item) == "standard.css"
-                         || Path.GetFileName(item) == "contents.css"
-                         || Path.GetFileName(item) == "vsscript.css") validFiles++;
+                        if (Path.GetFileNameWithoutExtension(item).StartsWith("startup") && Path.GetExtension(item) == ".html"
+                         || (Path.GetFileName(item) is "standard.css" or "contents.css" or "vsscript.css")) validFiles++;
                     }
 
                 if (validFiles >= 2)
@@ -1566,12 +1561,16 @@ namespace FriishProduce
         /// <returns></returns>
         protected (string Name, string Serial, string Year, string Players, string Image, bool IsComplete) GetGameData(Platform platform, string path)
         {
-            bool isDisc = platform == Platform.PCECD || platform == Platform.GCN || platform == Platform.SMCD || platform == Platform.PSX;
+            bool isDisc = platform is Platform.PCECD
+                                   or Platform.GCN
+                                   or Platform.SMCD
+                                   or Platform.PSX;
+
             if (isDisc)
             {
                 if (Path.GetExtension(path).ToLower() == ".cue")
                     foreach (var item in Directory.EnumerateFiles(Path.GetDirectoryName(path)))
-                        if (Path.GetExtension(item).ToLower() == ".bin" || Path.GetExtension(item).ToLower() == ".iso" && Path.GetFileNameWithoutExtension(path).ToLower() == Path.GetFileNameWithoutExtension(item).ToLower())
+                        if ((Path.GetExtension(item).ToLower() is ".bin" or ".iso") && Path.GetFileNameWithoutExtension(path).ToLower() == Path.GetFileNameWithoutExtension(item).ToLower())
                             path = item;
 
                 if (Path.GetExtension(path).ToLower() != ".bin" && Path.GetExtension(path).ToLower() != ".iso")
@@ -1833,6 +1832,9 @@ namespace FriishProduce
         // ******************
         private void openInjectorOptions(object sender, EventArgs e)
         {
+            if (contentOptionsForm == null) return;
+
+            contentOptionsForm.Font = Program.MainForm.Font;
             contentOptionsForm.Text = Program.Lang.String(injection_method_options.Name, Name).TrimEnd('.').Trim();
             var result = contentOptionsForm.ShowDialog(this) == DialogResult.OK;
 
@@ -1963,12 +1965,13 @@ namespace FriishProduce
                 { "fi", 2 },
             };
 
-            foreach (var item in altRegions) if (Program.Lang.Current.ToLower().StartsWith(item.Key) || Program.Lang.Current.ToUpper().EndsWith(item.Key))
+            foreach (var item in altRegions)
+                if (Program.Lang.Current.ToLower().StartsWith(item.Key) || Program.Lang.Current.ToUpper().EndsWith(item.Key))
                 {
                     selected = regions.IndexOf(item.Value == 0 ? Program.Lang.String("region_j")
-                             : item.Value == 1 ? Program.Lang.String("region_k")
-                             : item.Value == 2 ? Program.Lang.String("region_e")
-                             : Program.Lang.String("region_u"));
+                                : item.Value == 1 ? Program.Lang.String("region_k")
+                                : item.Value == 2 ? Program.Lang.String("region_e")
+                                : Program.Lang.String("region_u"));
 
                     if (selected == -1 && item.Value == 1) selected = regions.IndexOf(Program.Lang.String("region_u"));
                     break;

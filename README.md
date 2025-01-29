@@ -42,15 +42,11 @@ Please check the **[wiki](https://catmanfan.github.io/FriishProduce/)** for a tu
 ---
 
 ## To-Do
-- [X] Fix CRC32 incorrect order in LibRetro
-- [X] Reset N64 ROM limit
-- [X] Check that added N64 bases are working correctly. (Kirby 64 - The Crystal Shards, Pokémon PL, Majora)
-
-- [ ] Restructuring, trimming features and cleaning code
-- [ ] Check that everything is working properly and whether more features should be added before v1.6 release
+- [ ] Add Japanese-only icons for consoles
 
 ### Potential
 - [ ] Merge separate components of ProjectForm into panels / Create UserControl for content options ?
+- [ ] Restructuring, trimming features and cleaning code
 
 ---
 

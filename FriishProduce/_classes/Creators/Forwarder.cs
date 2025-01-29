@@ -163,7 +163,7 @@ namespace FriishProduce
                     {
                         foreach (var item in Directory.EnumerateFiles(Path.GetDirectoryName(ROM)))
                         {
-                            if ((Path.GetExtension(item).ToLower() == ".bin" || Path.GetExtension(item).ToLower() == ".iso")
+                            if ((Path.GetExtension(item).ToLower() is ".bin" or ".iso")
                                 && (Path.GetFileNameWithoutExtension(item).ToLower() == Path.GetFileNameWithoutExtension(ROM).ToLower()))
                                 File.Copy(item, ROMFolder + Path.GetFileName(item));
                         }
@@ -296,7 +296,7 @@ namespace FriishProduce
             // > For GenPlus & all emulators based on Wii64 Team's code (e.g. Wii64, WiiSX and forks), use Comex NANDloader
             // > For WiiMednafen, use Waninkoko NANDloader
             // *******
-            WADType = (EmulatorIndex >= 7 && EmulatorIndex <= 11) || EmulatorIndex == 13 ? WADTypes.Comex : WADTypes.Waninkoko;
+            WADType = (EmulatorIndex is >= 7 and <= 11) || EmulatorIndex == 13 ? WADTypes.Comex : WADTypes.Waninkoko;
 
             // Load and unpack WAD
             // *******
@@ -306,7 +306,7 @@ namespace FriishProduce
             WAD.BannerApp.Save(Paths.WAD + "00000000.app");
 
             #region -- Define forwarder version --
-            bool v12 = EmulatorIndex == 7 || EmulatorIndex == 13;
+            bool v12 = EmulatorIndex is 7 or 13;
             byte[] forwarder = v12 ? FileDatas.Forwarder.DOL_V12 : FileDatas.Forwarder.DOL_V14;
             int targetOffset = v12 ? 0x77426 : 0x7F979;
             string targetPath = v12 ? loadPath : loadPath.Substring(4);

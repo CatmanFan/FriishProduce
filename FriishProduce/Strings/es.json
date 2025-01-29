@@ -313,13 +313,14 @@
 
 		"vc_snes": {
 			"patch_volume":						"Amplificar volumen",
+			"patch_noopera":					"Eliminar archivos del manual",
+			"patch_wiimote":					"Control del juego con el mando de Wii",
+			"patch_nocheck":					"Deshabilitar verificación de ROM",
 			"patch_nodark":						"Desactivar filtro oscuro",
 			"patch_nocc":						"Deshabilitar mensaje del mando clásico",
-			"patch_noopera":					"Eliminar archivos del manual",
 			"patch_nosave":						"Deshabilitar función de guardado",
 			"patch_nosuspend":					"Deshabilitar punto de suspensión",
 			"patch_widescreen":					"Menú HOME en pantalla ancha",
-			"patch_nocheck":					"Eliminar verificación de ROM",
 		},
 
 		"vc_n64": {

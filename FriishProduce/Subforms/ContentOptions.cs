@@ -141,16 +141,19 @@ namespace FriishProduce
 
             if (_oldKeymap == null && _Keymap != null)
                 _oldKeymap = controllerForm.Keymap = new Dictionary<Buttons, string>(_Keymap);
-            controller_box.Visible = controllerForm != null;
-            b_controller.Enabled = controller_cb.Checked = UsesKeymap && controllerForm != null;
 
             try { ResetOptions(); } catch { ClearOptions(); ResetOptions(); }
             CenterToParent();
+
+            controller_box.Visible = controllerForm != null;
+            b_controller.Enabled = controller_cb.Checked = UsesKeymap && controllerForm != null;
         }
 
         protected void OpenControllerMapping(object sender, EventArgs e)
         {
             if (DesignMode) return;
+
+            controllerForm.Font = Program.MainForm.Font;
             controllerForm.Text = controller_cb.Text;
             controllerForm.ShowDialog();
         }
