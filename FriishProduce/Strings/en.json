@@ -206,8 +206,8 @@
 
 			"use_online_wad_enabled":           "Enable downloadable WADs feature",
 			"use_online_wad_tip":				"This can be used to retrieve any WAD that is available from the current database without already requiring to have a WAD file.
-												However, because libWiiSharp's NUS client does not allow for decrypting VC WADs in any form, it is only able to use Web download functionality.
-												The legality of this is shady so it is better to have the option disabled.",
+												\nHowever, because libWiiSharp's NUS client does not allow for decrypting VC WADs in any form, it is only able to use Web download functionality.
+												\nThe legality of this is shady so it is better to have the option disabled.",
 
 			"auto_fill_save_data":				"Fill in save data title automatically",
 			"auto_prefill":						"Automatically prefill game data after opening"
