@@ -281,7 +281,7 @@
 		},
 
 		"controller": {
-			"page1":							"Mando de Wii",
+			"page1":							"Mando de Wii (Wiimote)",
 			"page2":							"Mando clásico",
 			"page3":							"Mando GameCube",
 			
@@ -316,7 +316,7 @@
 		"vc_snes": {
 			"patch_volume":						"Amplificar volumen",
 			"patch_noopera":					"Eliminar archivos del manual",
-			"patch_wiimote":					"Control del juego con el mando de Wii",
+			"patch_wiimote":					"Habilitar soporte nativo para el mando de Wii (Wiimote)",
 			"patch_nocheck":					"Deshabilitar verificación de ROM",
 			"patch_nodark":						"Desactivar filtro oscuro",
 			"patch_nocc":						"Deshabilitar mensaje del mando clásico",
