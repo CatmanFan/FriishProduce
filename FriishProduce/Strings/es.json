@@ -268,6 +268,9 @@
 			"manual_type1":						"{original}",
 			"manual_type2":						"Utilizar manual personalizado",
 			"forwarder_root_device":			"Dispositivo de almacenamiento:",
+			"wiiu_display":						"Formato de pantalla en Wii U:",
+			"wiiu_display1":					"4:3 con barras negras",
+			"wiiu_display2":					"Estirada",
 			"multifile_software":				"Juego utilizando archivos múltiples"
 		},
 
@@ -314,7 +317,7 @@
 		"vc_snes": {
 			"patch_volume":						"Amplificar volumen",
 			"patch_noopera":					"Eliminar archivos del manual",
-			"patch_wiimote":					"Control del juego con el mando de Wii",
+			"patch_wiimote":					"Habilitar soporte nativo para el mando de Wii",
 			"patch_nocheck":					"Deshabilitar verificación de ROM",
 			"patch_nodark":						"Desactivar filtro oscuro",
 			"patch_nocc":						"Deshabilitar mensaje del mando clásico",
