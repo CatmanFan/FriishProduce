@@ -30,6 +30,10 @@ namespace FriishProduce
         /// </summary>
         protected bool needsMainDol { get; set; }
         /// <summary>
+        /// Determines if the 01.app is compressed.
+        /// </summary>
+        protected bool? compressedMainDol { get; private set; }
+        /// <summary>
         /// The contents of the WAD.
         /// </summary>
         protected List<byte[]> Contents { get; set; }
@@ -54,7 +58,7 @@ namespace FriishProduce
             // Load main.dol if needed
             // ****************
             if (needsMainDol)
-                Contents[1] = Utils.ExtractContent1(WAD.Contents[1]);
+                (compressedMainDol, Contents[1]) = Utils.ExtractContent1(WAD.Contents[1]);
 
             // Auto-set main content index if it is absolutely necessary, then load both U8 archives
             // ****************
@@ -283,9 +287,7 @@ namespace FriishProduce
             // Assign each modified content file to the Contents List
             // ****************
             if (!WAD.Contents[1].SequenceEqual(Contents[1]) || needsMainDol)
-            {
-                Contents[1] = Utils.PackContent1(Contents[1]);
-            }
+                Contents[1] = Utils.PackContent1(Contents[1], compressedMainDol);
 
             if (ManualContent != null)
             {
@@ -295,6 +297,7 @@ namespace FriishProduce
 
             if ((Manual != null && !UsesOrigManual) || MainContent != null)
                 Contents[mainContentIndex] = MainContent.ToByteArray();
+
             MainContent.Dispose();
 
             // Then actually modify the WAD by detecting which parts need to be modified and then inserting them.

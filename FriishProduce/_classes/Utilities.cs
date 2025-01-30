@@ -313,7 +313,7 @@ namespace FriishProduce
             return redirectOutput ? p.StandardOutput.ReadToEnd() : null;
         }
 
-        public static byte[] ExtractContent1(byte[] input)
+        public static (bool Compressed, byte[] Data) ExtractContent1(byte[] input)
         {
             // Create temporary files at working folder
             // ****************
@@ -328,12 +328,16 @@ namespace FriishProduce
                 "/u main.dol main.dec.dol"
             );
 
-            return File.Exists(Paths.WorkingFolder + "main.dec.dol") ? File.ReadAllBytes(Paths.WorkingFolder + "main.dec.dol") : input;
+            bool compressed = File.Exists(Paths.WorkingFolder + "main.dec.dol");
+            return (compressed, compressed ? File.ReadAllBytes(Paths.WorkingFolder + "main.dec.dol") : input);
         }
 
-        public static byte[] PackContent1(byte[] input)
+        public static byte[] PackContent1(byte[] input, bool? compressed = null)
         {
-            if (File.Exists(Paths.WorkingFolder + "main.dec.dol"))
+            if (compressed == null)
+                compressed = File.Exists(Paths.WorkingFolder + "main.dec.dol");
+
+            if (compressed == true)
             {
                 // Write new to original decompressed file
                 // ****************
@@ -384,7 +388,7 @@ namespace FriishProduce
         {
             if (mode > 0)
             {
-                var content1 = ExtractContent1(wad.Contents[1]);
+                var content1 = ExtractContent1(wad.Contents[1]).Data;
 
                 #region List of byte patterns and corresponding video modes
                 /// NTSC & PAL60: 60Hz ///
