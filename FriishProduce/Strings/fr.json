@@ -267,6 +267,10 @@
 			"manual_type1":						"{original}",
 			"manual_type2":						"Fichiers externes",
 			"forwarder_root_device":			"Périphérique de stockage racine :",
+			"wiiu_display":						"Affichage sur la Wii U :",
+			"wiiu_display0":					"{original}",
+			"wiiu_display1":					"4:3 letterboxed",
+			"wiiu_display2":					"Plein écran",
 			"multifile_software":				"Logiciel multifichier"
 			
 		},

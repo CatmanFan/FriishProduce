@@ -266,6 +266,9 @@
 			"manual_type1":						"{original}",
 			"manual_type2":						"커스텀 매뉴얼 가져오기",
 			"forwarder_root_device":			"루트 저장 장치:",
+			"wiiu_display":						"Wii U display format:",
+			"wiiu_display1":					"4:3 letterboxed",
+			"wiiu_display2":					"Stretched",
 			"multifile_software":				"소프트웨어는 다중 파일입니다"
 		},
 
