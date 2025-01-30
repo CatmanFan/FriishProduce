@@ -269,7 +269,6 @@
 			"manual_type2":						"Utilizar manual personalizado",
 			"forwarder_root_device":			"Dispositivo de almacenamiento:",
 			"wiiu_display":						"Formato de pantalla en Wii U:",
-			"wiiu_display0":					"{original}",
 			"wiiu_display1":					"4:3 con barras negras",
 			"wiiu_display2":					"Estirada",
 			"multifile_software":				"Juego utilizando archivos múltiples"
