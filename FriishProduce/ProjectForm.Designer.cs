@@ -1,4 +1,4 @@
-﻿
+
 namespace FriishProduce
 {
     partial class ProjectForm
@@ -309,6 +309,7 @@ namespace FriishProduce
             resources.ApplyResources(this.forwarder_root_device, "forwarder_root_device");
             this.forwarder_root_device.Name = "forwarder_root_device";
             this.forwarder_root_device.Tag = "";
+            this.forwarder_root_device.SelectedIndexChanged += new System.EventHandler(this.SwitchAspectRatio);
             // 
             // extra
             // 
@@ -583,6 +584,7 @@ namespace FriishProduce
             resources.ApplyResources(this.wiiu_display, "wiiu_display");
             this.wiiu_display.Name = "wiiu_display";
             this.wiiu_display.Tag = "wiiu_display";
+            this.wiiu_display.SelectedIndexChanged += new System.EventHandler(this.SwitchAspectRatio);
             // 
             // wiiu_display_l
             // 
