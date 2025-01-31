@@ -1,4 +1,3 @@
-
 namespace FriishProduce
 {
     partial class ProjectForm
