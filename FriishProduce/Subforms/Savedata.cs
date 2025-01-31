@@ -47,7 +47,7 @@ namespace FriishProduce
             // ********
             int orig = MaxLength = platform switch
             {
-                Platform.NES => region == 3 ? 30 : 20,
+                Platform.NES => region == 3 ? 30 : 15,
                 Platform.SNES => 80,
                 Platform.N64 => 100,
                 Platform.NEO or Platform.MSX => 64,

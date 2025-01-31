@@ -178,9 +178,9 @@ namespace FriishProduce
                 int indexNum = 0;
 
                 if (InvokeRequired)
-                    Invoke(new MethodInvoker(delegate { index = regions.SelectedItem?.ToString(); indexNum = regions.SelectedIndex; }));
+                    Invoke(new MethodInvoker(delegate { index = region.SelectedItem?.ToString(); indexNum = region.SelectedIndex; }));
                 else
-                { index = regions.SelectedItem?.ToString(); indexNum = regions.SelectedIndex; }
+                { index = region.SelectedItem?.ToString(); indexNum = region.SelectedIndex; }
 
                 return index == Program.Lang.String("region_j") ? libWiiSharp.Region.Japan
                      : index == Program.Lang.String("region_u") ? libWiiSharp.Region.USA
@@ -211,9 +211,9 @@ namespace FriishProduce
                 string value = "";
 
                 if (InvokeRequired)
-                    Invoke(new MethodInvoker(delegate { value = title_id_upper.Text.ToUpper(); }));
+                    Invoke(new MethodInvoker(delegate { value = title_id.Text.ToUpper(); }));
                 else
-                    value = title_id_upper.Text.ToUpper();
+                    value = title_id.Text.ToUpper();
 
                 return value;
             }
@@ -424,7 +424,8 @@ namespace FriishProduce
                 IsMultifile = multifile_software.Checked,
 
                 LinkSaveDataTitle = savedata.Fill.Checked,
-                VideoMode = video_modes.SelectedIndex,
+                VideoMode = video_mode.SelectedIndex,
+                WiiUDisplay = wiiu_display.SelectedIndex,
 
                 TitleID = _tID,
                 ChannelTitles = _channelTitles,
@@ -433,7 +434,7 @@ namespace FriishProduce
                 BannerPlayers = _bannerPlayers,
                 SaveDataTitle = savedata.Lines,
 
-                WADRegion = regions.SelectedIndex,
+                WADRegion = region.SelectedIndex,
             };
 
             p.OfflineWAD = inWadFile;
@@ -488,49 +489,51 @@ namespace FriishProduce
 
             // Selected index properties
             Program.Lang.Control(image_interpolation_mode, Name);
+            if (wiiu_display.Items.Count > 2) wiiu_display.Items.RemoveAt(2);
             image_interpolation_mode.SelectedIndex = Program.Config.application.image_interpolation;
+            wiiu_display.SelectedIndex = Program.Config.application.default_wiiu_display;
 
             // Manual
             manual_type.SelectedIndex = 0;
             manual = null;
 
             // Regions lists
-            regions.Items.Clear();
-            regions.Items.Add(Program.Lang.String("original"));
-            regions.Items.Add(Program.Lang.String("region_rf"));
-            regions.SelectedIndex = 0;
+            region.Items.Clear();
+            region.Items.Add(Program.Lang.String("original"));
+            region.Items.Add(Program.Lang.String("region_rf"));
+            region.SelectedIndex = 0;
 
             // Video modes
-            video_modes.Items[0] = Program.Lang.String("original");
-            video_modes.SelectedIndex = 0;
+            video_mode.Items[0] = Program.Lang.String("original");
+            video_mode.SelectedIndex = 0;
 
             switch (Program.Lang.Current.ToLower())
             {
                 default:
-                    regions.Items.Add(Program.Lang.String("region_u"));
-                    regions.Items.Add(Program.Lang.String("region_e"));
-                    regions.Items.Add(Program.Lang.String("region_j"));
-                    regions.Items.Add(Program.Lang.String("region_k"));
+                    region.Items.Add(Program.Lang.String("region_u"));
+                    region.Items.Add(Program.Lang.String("region_e"));
+                    region.Items.Add(Program.Lang.String("region_j"));
+                    region.Items.Add(Program.Lang.String("region_k"));
                     break;
 
                 case "ja":
-                    regions.Items.Add(Program.Lang.String("region_j"));
-                    regions.Items.Add(Program.Lang.String("region_u"));
-                    regions.Items.Add(Program.Lang.String("region_e"));
-                    regions.Items.Add(Program.Lang.String("region_k"));
+                    region.Items.Add(Program.Lang.String("region_j"));
+                    region.Items.Add(Program.Lang.String("region_u"));
+                    region.Items.Add(Program.Lang.String("region_e"));
+                    region.Items.Add(Program.Lang.String("region_k"));
                     break;
 
                 case "ko":
-                    regions.Items.Add(Program.Lang.String("region_k"));
-                    regions.Items.Add(Program.Lang.String("region_u"));
-                    regions.Items.Add(Program.Lang.String("region_e"));
-                    regions.Items.Add(Program.Lang.String("region_j"));
+                    region.Items.Add(Program.Lang.String("region_k"));
+                    region.Items.Add(Program.Lang.String("region_u"));
+                    region.Items.Add(Program.Lang.String("region_e"));
+                    region.Items.Add(Program.Lang.String("region_j"));
                     break;
             }
             #endregion
 
             #region ------------------------------------------ Localization: Tooltips ------------------------------------------
-            (ParentForm as MainForm).Tip.SetToolTip(channel_name, Program.Lang.HTML(0, true, label1.Text));
+            (ParentForm as MainForm).Tip.SetToolTip(channel_name, Program.Lang.HTML(0, true, channel_name_l.Text));
             (ParentForm as MainForm).Tip.SetToolTip(injection_method_options, Program.Lang.HTML(3, true, injection_method_options.Text));
             (ParentForm as MainForm).Tip.SetToolTip(multifile_software, Program.Lang.HTML(4, true, multifile_software.Text));
             #endregion
@@ -832,7 +835,7 @@ namespace FriishProduce
 
                 ProjectPath = project.ProjectPath;
 
-                video_modes.SelectedIndex = project.VideoMode;
+                video_mode.SelectedIndex = project.VideoMode;
 
                 img = new ImageHelper(project.Platform, null);
                 img.LoadToSource(project.Img.Bmp);
@@ -854,20 +857,22 @@ namespace FriishProduce
 
                 patch = File.Exists(project.Patch) ? project.Patch : null;
 
-                channel_name.Text = project.ChannelTitles[1];
-                banner_form.title.Text = project.BannerTitle;
-                banner_form.released.Value = project.BannerYear;
-                banner_form.players.Value = project.BannerPlayers;
-                savedata.title.Text = project.SaveDataTitle[0];
-                savedata.subtitle.Text = project.SaveDataTitle.Length > 1 && savedata.subtitle.Enabled ? project.SaveDataTitle[1] : null;
-                title_id_upper.Text = project.TitleID;
+                try { channel_name.Text = project.ChannelTitles[1]; } catch { }
+                try { banner_form.title.Text = project.BannerTitle; } catch { }
+                try { banner_form.released.Value = project.BannerYear; } catch { }
+                try { banner_form.players.Value = project.BannerPlayers; } catch { }
+                try { savedata.title.Text = project.SaveDataTitle[0]; } catch { }
+                try { savedata.subtitle.Text = project.SaveDataTitle.Length > 1 && savedata.subtitle.Enabled ? project.SaveDataTitle[1] : null; } catch { }
+                try { title_id.Text = project.TitleID; } catch { }
 
-                regions.SelectedIndex = project.WADRegion;
-                injection_methods.SelectedIndex = project.InjectionMethod;
-                multifile_software.Checked = project.IsMultifile;
-                image_interpolation_mode.SelectedIndex = project.ImageOptions.Item1;
-                image_resize0.Checked = !project.ImageOptions.Item2;
-                image_resize1.Checked = project.ImageOptions.Item2;
+                try { injection_methods.SelectedIndex = project.InjectionMethod; } catch { }
+                try { multifile_software.Checked = project.IsMultifile; } catch { }
+                try { image_interpolation_mode.SelectedIndex = project.ImageOptions.Item1; } catch { }
+                try { image_resize0.Checked = !project.ImageOptions.Item2; } catch { }
+                try { image_resize1.Checked = project.ImageOptions.Item2; } catch { }
+                try { region.SelectedIndex = project.WADRegion; } catch { }
+                try { video_mode.SelectedIndex = project.VideoMode; } catch { }
+                try { wiiu_display.SelectedIndex = project.WiiUDisplay; } catch { }
 
                 if (contentOptionsForm != null)
                 {
@@ -1033,7 +1038,7 @@ namespace FriishProduce
 
         private void randomTID()
         {
-            title_id_upper.Text = TIDCode != null ? TIDCode + GenerateTitleID().Substring(0, 3) : GenerateTitleID();
+            title_id.Text = TIDCode != null ? TIDCode + GenerateTitleID().Substring(0, 3) : GenerateTitleID();
             refreshData();
         }
 
@@ -1047,15 +1052,15 @@ namespace FriishProduce
             string FULLNAME = System.Text.RegularExpressions.Regex.Replace(_bannerTitle, @"\((.*?)\)", "").Replace("\r\n", "\n").Replace("\n", " - ");
             if (string.IsNullOrWhiteSpace(FULLNAME)) FULLNAME = Untitled;
 
-            string TITLEID = title_id_upper.Text.ToUpper();
+            string TITLEID = title_id.Text.ToUpper();
 
             string PLATFORM = targetPlatform.ToString();
 
-            string REGION = regions.SelectedItem.ToString() == Program.Lang.String("region_j") ? "Japan"
-                          : regions.SelectedItem.ToString() == Program.Lang.String("region_u") ? "USA"
-                          : regions.SelectedItem.ToString() == Program.Lang.String("region_e") ? "Europe"
-                          : regions.SelectedItem.ToString() == Program.Lang.String("region_k") ? "Korea"
-                          : regions.SelectedIndex == 1 ? "Region-Free"
+            string REGION = region.SelectedItem.ToString() == Program.Lang.String("region_j") ? "Japan"
+                          : region.SelectedItem.ToString() == Program.Lang.String("region_u") ? "USA"
+                          : region.SelectedItem.ToString() == Program.Lang.String("region_e") ? "Europe"
+                          : region.SelectedItem.ToString() == Program.Lang.String("region_k") ? "Korea"
+                          : region.SelectedIndex == 1 ? "Region-Free"
                           : null;
             if (REGION == null)
             {
@@ -1248,7 +1253,7 @@ namespace FriishProduce
                 LoadImage();
             }
 
-            if (sender == forwarder_root_device)
+            if (sender == forwarder_root_device || sender == wiiu_display)
             {
                 refreshData();
             }
@@ -1695,7 +1700,7 @@ namespace FriishProduce
                 Invoke(new MethodInvoker(delegate
                 {
                     m.IsMultifile = multifile_software.Checked;
-                    m.WadVideoMode = video_modes.SelectedIndex;
+                    m.WadVideoMode = video_mode.SelectedIndex;
                     m.Manual = manual_type.SelectedIndex == 0 ? null : manual_type.SelectedIndex == 1 ? "orig" : manual;
                     emulator = injection_methods.SelectedItem.ToString();
                     device = forwarder_root_device.SelectedIndex == 1 ? Forwarder.Storages.USB : Forwarder.Storages.SD;
@@ -2107,18 +2112,20 @@ namespace FriishProduce
         {
             if (targetPlatform == Platform.Flash && contentOptionsForm != null) return;
 
-            manual_type.Visible = false;
-            forwarder_root_device.Visible = false;
-            multifile_software.Visible = false;
-            extra.Visible = false;
             contentOptionsForm = null;
             htmlForm = null;
 
+            bool hasWiiU = false;
+            bool hasExtra = false;
+            manual_type.Visible = false;
+            forwarder_root_device.Visible = false;
+            multifile_software.Visible = false;
+
             if (isVirtualConsole)
             {
-                manual_type.Visible = true;
-                extra.Visible = true;
+                hasExtra = true;
                 extra.Text = Program.Lang.String(manual_type.Name, Name);
+                manual_type.Visible = true;
 
                 switch (targetPlatform)
                 {
@@ -2166,9 +2173,9 @@ namespace FriishProduce
 
             else
             {
-                forwarder_root_device.Visible = true;
-                extra.Visible = true;
+                hasExtra = true;
                 extra.Text = Program.Lang.String(forwarder_root_device.Name, Name);
+                forwarder_root_device.Visible = true;
 
                 switch (targetPlatform)
                 {
@@ -2230,6 +2237,13 @@ namespace FriishProduce
             bool hasHelp = !string.IsNullOrWhiteSpace(htmlForm?.FormText);
             injection_method_help.Visible = hasHelp && !IsEmpty;
             injection_methods.Size = hasHelp ? injection_methods.MinimumSize : injection_methods.MaximumSize;
+
+            int space = 46;
+            wiiu_display_l.Location = new Point(extra.Location.X, extra.Location.Y + (hasExtra ? space : 0));
+            wiiu_display.Location = new Point(wiiu_display.Location.X, wiiu_display_l.Location.Y + 18);
+            forwarder_root_device.Location = manual_type.Location = new Point(manual_type.Location.X, extra.Location.Y + 18);
+            multifile_software.Location = new Point(multifile_software.Location.X, (hasWiiU ? wiiu_display_l.Location.Y : extra.Location.Y) + (hasExtra || hasWiiU ? space : -1));
+            extra.Visible = hasExtra;
         }
         #endregion
 

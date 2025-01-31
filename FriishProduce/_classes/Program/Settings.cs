@@ -147,6 +147,7 @@ namespace FriishProduce
             public string default_target_filename { get; set; } = "FULLNAME";
             public string default_export_filename { get; set; } = "[PLATFORM] FULLNAME (REGION) (TITLEID)";
             public int default_banner_region { get; set; } = 0;
+            public int default_wiiu_display { get; set; } = 0;
             public int default_injection_method_nes { get; set; } = 0;
             public int default_injection_method_snes { get; set; } = 0;
             public int default_injection_method_n64 { get; set; } = 0;

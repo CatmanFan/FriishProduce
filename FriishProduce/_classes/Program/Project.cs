@@ -17,7 +17,6 @@ namespace FriishProduce
         public (string File, System.Drawing.Bitmap Bmp) Img { get; set; }
         public string Sound { get; set; }
 
-
         public int InjectionMethod { get; set; }
         public int ForwarderStorageDevice { get; set; } = Program.Config.forwarder.root_storage_device;
         public bool IsMultifile { get; set; }
@@ -27,7 +26,7 @@ namespace FriishProduce
         public bool LinkSaveDataTitle { get; set; } = Program.Config.application.auto_fill_save_data;
         public (int, bool) ImageOptions { get; set; } = (Program.Config.application.image_interpolation, Program.Config.application.image_fit_aspect_ratio);
         public int VideoMode { get; set; }
-
+        public int WiiUDisplay { get; set; } = Program.Config.application.default_wiiu_display;
 
         public string TitleID { get; set; }
         public string[] ChannelTitles { get; set; }
