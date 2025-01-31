@@ -43,7 +43,7 @@ namespace FriishProduce
 
                 if (!valid && !string.IsNullOrEmpty(Options["rtp_folder"]))
                 {
-                    MessageBox.Show(string.Format(Program.Lang.Msg(12, true), Options["rtp_folder"]));
+                    MessageBox.Show(string.Format(Program.Lang.Msg(12, 1), Options["rtp_folder"]));
                     Options["rtp_folder"] = null;
                 }
 

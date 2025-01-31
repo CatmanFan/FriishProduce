@@ -29,7 +29,7 @@ namespace FriishProduce.Injectors
             // -----------------------
 
             int index = MainContent.GetNodeIndex("SLOT1.ROM") != -1 ? MainContent.GetNodeIndex("SLOT1.ROM") : MainContent.GetNodeIndex("MEGAROM.ROM");
-            if (index == -1) throw new Exception(Program.Lang.Msg(2, true));
+            if (index == -1) throw new Exception(Program.Lang.Msg(2, 1));
 
             MainContent.ReplaceFile(index, ROM.Bytes);
         }

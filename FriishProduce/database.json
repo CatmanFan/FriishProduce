@@ -137,7 +137,7 @@
         {
             "id": "00010001-464551__",
             "region": [0, 1, 3],
-            "emu_ver": [1, 1, 1],
+            "emu_ver": [1],
             "titles": ["悪魔城伝説", "Castlevania III: Dracula's Curse",],
             "wad_titles": ["Akumajou Densetsu", "Castlevania III - Dracula's Curse"]
         },
@@ -145,7 +145,7 @@
         {
             "id": "00010001-46444e__",
             "region": [0, 1, 3],
-            "emu_ver": [1, 1, 1],
+            "emu_ver": [1],
             "titles": ["ロックマン２ Dr.ワイリーの謎", "Mega Man 2"],
             "wad_titles": ["Rockman 2 - Dr. Wily no Nazo", "Mega Man 2"]
         },
@@ -153,7 +153,7 @@
         {
             "id": "00010001-464659__",
             "region": [0, 1, 3],
-            "emu_ver": [1, 1, 1],
+            "emu_ver": [1],
             "titles": ["ロックマン５ ブルースの罠!?", "Mega Man 5"],
             "wad_titles": ["Rockman 5 - Blues no Wana!", "Mega Man 5"]
         },
@@ -161,14 +161,14 @@
         {
             "id": "00010001-464651__",
             "region": [1, 5],
-            "emu_ver": [1, 1],
+            "emu_ver": [1],
             "titles": ["Shadow of the Ninja"]
         },
 		
         {
             "id": "00010001-464552__",
             "region": [1, 3],
-            "emu_ver": [1, 5],
+            "emu_ver": [1],
             "titles": ["Zoda's Revenge: StarTropics II"],
             "wad_titles": ["Zoda's Revenge - StarTropics II"]
         }
@@ -178,7 +178,7 @@
         {
             "id": "00010001-4a4244__",
             "region": [0, 1, 3, 7],
-            "emu_ver": [0, 0, 0, 0],
+            "emu_ver": [0],
             "titles": ["スーパードンキーコング２ ディクシー&ディディー", "Donkey Kong Country 2: Diddy's Kong Quest", "Donkey Kong Country 2: Diddy's Kong Quest", "동키콩 컨트리 2"],
             "wad_titles": ["Super Donkey Kong 2 - Dixie & Diddy", "Donkey Kong Country 2 - Diddy's Kong Quest"]
         },
@@ -186,7 +186,7 @@
         {
             "id": "00010001-4a424b__",
             "region": [0, 1, 3],
-            "emu_ver": [0, 0, 0],
+            "emu_ver": [0],
             "titles": ["ブレス オブ ファイアⅡ 使命の子", "Breath of Fire II"],
             "wad_titles": ["Breath of Fire II - Shimei no Ko", "Breath of Fire II"]
         },
@@ -194,7 +194,7 @@
         {
             "id": "00010001-4a4343__",
             "region": [0, 1, 3],
-            "emu_ver": [2, 2, 2],
+            "emu_ver": [2],
             "titles": ["星のカービィ スーパーデラックス", "Kirby Super Star", "Kirby's Fun Pak"],
             "wad_titles": ["Hoshi no Kirby Super Deluxe", "Kirby Super Star", "Kirby's Fun Pak"]
         },
@@ -203,7 +203,7 @@
         {
             "id": "00010001-4a4157__",
             "region": [0, 1],
-            "emu_ver": [0, 0],
+            "emu_ver": [0],
             "titles": ["三國志Ⅳ", "Romance of the Three Kingdoms IV: Wall of Fire"],
             "wad_titles": ["Sangokushi IV", "Romance of the Three Kingdoms IV - Wall of Fire"]
         },
@@ -211,14 +211,14 @@
         {
             "id": "00010001-4a4156__",
             "region": [0, 1, 3, 7],
-            "emu_ver": [0, 0, 0, 0],
+            "emu_ver": [0],
             "titles": ["スーパーメトロイド", "Super Metroid", "Super Metroid", "슈퍼 메트로이드"]
         },
 
         {
             "id": "00010001-4a4142__",
             "region": [0, 4],
-            "emu_ver": [0, 0],
+            "emu_ver": [0],
             "titles": ["マリオのスーパーピクロス", "Mario's Super Picross"],
             "wad_titles": ["Mario no Super Picross", "Mario's Super Picross"]
         },
@@ -226,7 +226,7 @@
 	    {
             "id": "00010001-4a434c__",
             "region": [0, 1, 3],
-            "emu_ver": [1, 1, 1],
+            "emu_ver": [1],
             "titles": ["聖剣伝説２ シークレット オブ マナ", "Secret of Mana"],
             "wad_titles": ["Seiken Densetsu 2", "Secret of Mana"]
         },
@@ -234,7 +234,7 @@
         {
             "id": "00010001-4a4342__",
             "region": [0, 1, 5],
-            "emu_ver": [1, 1, 1],
+            "emu_ver": [1],
             "titles": ["スーパーマリオRPG", "Super Mario RPG: Legend of the Seven Stars"],
             "wad_titles": ["Super Mario RPG"]
         },
@@ -242,7 +242,7 @@
 	    {
             "id": "00010001-4a4441__",
             "region": [0, 1, 3],
-            "emu_ver": [2, 2, 2],
+            "emu_ver": [2],
             "titles": ["ファイナルファンタジーⅥ", "Final Fantasy III"],
             "wad_titles": ["Final Fantasy VI", "Final Fantasy III"]
         },
@@ -250,7 +250,7 @@
         {
             "id": "00010001-4a4542__",
             "region": [0, 1, 3],
-            "emu_ver": [2, 2, 2],
+            "emu_ver": [2],
             "titles": ["ロックマンＸ", "Mega Man X"],
             "wad_titles": ["Rockman X", "Mega Man X"]
         },
@@ -258,7 +258,7 @@
         {
             "id": "00010001-4a4548__",
             "region": [0, 1, 3],
-            "emu_ver": [2, 2, 2],
+            "emu_ver": [2],
             "titles": ["ロックマンＸ２", "Mega Man X2"],
             "wad_titles": ["Rockman X2", "Mega Man X2"]
         },
@@ -266,7 +266,7 @@
         {
             "id": "00010001-4a4436__",
             "region": [0, 1, 5],
-            "emu_ver": [2, 2, 2],
+            "emu_ver": [2],
             "titles": ["ファイヤー・ファイティング", "The Ignition Factor"],
             "wad_titles": ["Fire Fighting", "Ignition Factor, The"]
         },
@@ -274,14 +274,14 @@
         {
             "id": "00010001-4a4356__",
             "region": [0, 1, 3],
-            "emu_ver": [2, 2, 2],
+            "emu_ver": [2],
             "titles": ["パイロットウイングス", "Pilotwings"]
         },
 
         {
             "id": "00010001-4a4541__",
             "region": [1, 5],
-            "emu_ver": [2, 2],
+            "emu_ver": [2],
             "titles": ["Natsume Championship Wrestling"]
         }
     ],
@@ -290,14 +290,14 @@
         {
             "id": "00010001-4e4141__",
             "region": [0, 1, 3],
-            "emu_ver": [0, 0, 0],
+            "emu_ver": [0],
             "titles": ["スーパーマリオ64", "Super Mario 64"]
         },
 
         {
             "id": "00010001-4e4146__",
             "region": [0, 1, 3],
-            "emu_ver": [0, 0, 0],
+            "emu_ver": [0],
             "titles": ["F-ZERO X", "F-Zero X"]
         },
 
@@ -311,7 +311,7 @@
         {
             "id": "00010001-4e4143__",
             "region": [0, 1, 3],
-            "emu_ver": [1, 1, 1],
+            "emu_ver": [1],
             "titles": ["ゼルダの伝説 時のオカリナ", "The Legend of Zelda: Ocarina of Time"],
             "wad_titles": ["Zelda no Densetsu - Toki no Okarina", "Legend of Zelda, The - Ocarina of Time"]
         },
@@ -327,7 +327,7 @@
         {
             "id": "00010001-4e4148__",
             "region": [0, 1, 3],
-            "emu_ver": [2, 2, 2],
+            "emu_ver": [2],
             "titles": ["ヨッシーストーリー", "Yoshi's Story"],
             "wad_titles": ["Yoshi's Story"]
         },
@@ -335,7 +335,7 @@
         {
             "id": "00010001-4e4149__",
             "region": [0, 1, 3],
-            "emu_ver": [2, 2, 2],
+            "emu_ver": [2],
             "titles": ["ウエーブレース64", "Wave Race 64"],
             "wad_titles": ["Wave Race 64"]
         },
@@ -343,7 +343,7 @@
         {
             "id": "00010001-4e414a__",
             "region": [0, 2, 4],
-            "emu_ver": [2, 2, 2],
+            "emu_ver": [2],
             "titles": ["罪と罰 〜地球の継承者〜", "Sin and Punishment"],
             "wad_titles": ["Tsumi to Batsu - Hoshi no Keishousha", "Sin & Punishment"]
         },
@@ -351,7 +351,7 @@
         {
             "id": "00010001-4e414b__",
             "region": [0, 2, 4],
-            "emu_ver": [2, 2, 2],
+            "emu_ver": [2],
             "titles": ["ポケモンスナップ", "Pokémon Snap"],
             "wad_titles": ["Pokemon Snap"]
         },
@@ -367,7 +367,7 @@
         {
             "id": "00010001-4e4145__",
             "region": [0, 1, 3],
-            "emu_ver": [3, 3, 3],
+            "emu_ver": [3],
             "titles": ["マリオストーリー", "Paper Mario"],
             "wad_titles": ["Mario Story", "Paper Mario"]
         },
@@ -375,7 +375,7 @@
         {
             "id": "00010001-4e414c__",
             "region": [0, 1, 3],
-            "emu_ver": [3, 3, 3],
+            "emu_ver": [3],
             "titles": ["大乱闘スマッシュブラザーズ", "Super Smash Bros."],
             "wad_titles": ["Nintendo All-Star! Dairantou Smash Brothers", "Super Smash Bros."]
         },
@@ -383,7 +383,7 @@
         {
             "id": "00010001-4e414d__",
             "region": [0, 1, 3, 7],
-            "emu_ver": [3, 3, 3, 3],
+            "emu_ver": [3],
             "titles": ["星のカービィ64", "Kirby 64: The Crystal Shards", "Kirby 64: The Crystal Shards", "별의 커비 64"],
             "wad_titles": ["Hoshi no Kirby 64", "Kirby 64 - The Crystal Shards"]
         },
@@ -391,7 +391,7 @@
         {
             "id": "00010001-4e414e__",
             "region": [1, 3],
-            "emu_ver": [3, 3],
+            "emu_ver": [3],
             "titles": ["Pokémon Puzzle League"],
             "wad_titles": ["Pokemon Puzzle League"]
         },
@@ -399,7 +399,7 @@
         {
             "id": "00010001-4e4152__",
             "region": [0, 1, 3],
-            "emu_ver": [3, 3, 3],
+            "emu_ver": [3],
             "titles": ["ゼルダの伝説 ムジュラの仮面", "The Legend of Zelda: Majora's Mask"],
             "wad_titles": ["Zelda no Densetsu - Mujura no Kamen", "Legend of Zelda, The - Majora's Mask"]
         },
@@ -407,7 +407,7 @@
         {
             "id": "00010001-4e4155__",
             "region": [0, 1, 3],
-            "emu_ver": [3, 3, 3],
+            "emu_ver": [3],
             "titles": ["マリオゴルフ64", "Mario Golf"],
             "wad_titles": ["Mario Golf 64", "Mario Golf"],
         },
@@ -415,14 +415,14 @@
         {
             "id": "00010001-4e4159__",
             "region": [0, 1, 5],
-            "emu_ver": [3, 3, 3],
+            "emu_ver": [3],
             "titles": ["オウガバトル64", "Ogre Battle 64: Person of Lordly Caliber"]
         },
         
         {
             "id": "00010001-4e415a__",
             "region": [0, 1, 3],
-            "emu_ver": [3, 3, 3],
+            "emu_ver": [3],
             "titles": ["マリオパーティ2", "Mario Party 2"],
             "wad_titles": ["Mario Party 2"]
         },
@@ -430,7 +430,7 @@
         {
             "id": "00010001-4e4133__",
             "region": [0, 1, 3],
-            "emu_ver": [3, 3, 3],
+            "emu_ver": [3],
             "titles": ["ボンバーマンヒーロー ミリアン王女を救え!", "Bomberman Hero"],
             "wad_titles": ["Bomberman Hero - Millian-Oujo wo Sukue!", "Bomberman Hero"]
         },
@@ -448,7 +448,7 @@
         {
             "id": "00010001-4c4147__",
             "region": [0, 1, 3],
-            "emu_ver": [2, 2, 2],
+            "emu_ver": [2],
             "titles": ["ソニック・ザ・ヘッジホッグ", "Sonic the Hedgehog"],
             "wad_titles": ["Sonic The Hedgehog"],
         },
@@ -456,7 +456,7 @@
         {
             "id": "00010001-4c414a__",
             "region": [0, 1, 3],
-            "emu_ver": [2, 2, 2],
+            "emu_ver": [2],
             "titles": ["ソニック・ザ・ヘッジホッグ２", "Sonic the Hedgehog 2"],
             "wad_titles": ["Sonic The Hedgehog 2"],
         },
@@ -464,7 +464,7 @@
         {
             "id": "00010001-4c414b__",
             "region": [0, 1, 3],
-            "emu_ver": [2, 2, 2],
+            "emu_ver": [2],
             "titles": ["アレックスキッド ザ・ロストスターズ", "Wonder Boy in Monster Land"],
             "wad_titles": ["Super Wonder Boy - Monster World", "Wonder Boy in Monster Land"],
         },
@@ -472,7 +472,7 @@
         {
             "id": "00010001-4c414e__",
             "region": [0, 1, 3],
-            "emu_ver": [2, 2, 2],
+            "emu_ver": [2],
             "titles": ["アレックスキッド ザ・ロストスターズ", "Alex Kidd: The Lost Stars"],
             "wad_titles": ["Alex Kidd - The Lost Stars"],
         },
@@ -480,7 +480,7 @@
         {
             "id": "00010001-4c414c__",
             "region": [0, 1, 3],
-            "emu_ver": [2, 2, 2],
+            "emu_ver": [2],
             "titles": ["ファンタジーゾーンII オパオパの涙", "Fantasy Zone II: The Tears of Opa-Opa"],
             "wad_titles": ["Fantasy Zone II - Opa-Opa no Namida", "Fantasy Zone II - The Tears of Opa-Opa"],
         },
@@ -495,7 +495,7 @@
         {
             "id": "00010001-4c414f__",
             "region": [0, 1, 3],
-            "emu_ver": [3, 3, 3],
+            "emu_ver": [3],
             "titles": ["R-TYPE"],
             "wad_titles": ["R-Type"],
         }
@@ -503,78 +503,72 @@
 
     "smd": [
         {
-            "id": "00010001-4d4150__",
-            "region": [0, 1, 3],
-            "emu_ver": [1, 1, 1],
-            "titles": ["コミックスゾーン", "Comix Zone"],
-        },
-		
-        {
             "id": "00010001-4d4142__",
             "region": [0, 1, 3],
-            "emu_ver": [1, 1, 1],
+            "emu_ver": [1],
             "titles": ["コラムス", "Columns"]
         },
-		
+
         {
-            "id": "00010001-4d4257__",
+            "id": "00010001-4d4148__",
             "region": [0, 1, 3],
-            "emu_ver": [2, 2, 2],
-            "titles": ["コラムスⅢ 対決！コラムスワールド", "Columns III: Revenge of Columns"],
-            "wad_titles": ["Columns III - Taiketsu! Columns World", "Columns III - Revenge of Columns"]
+            "emu_ver": [1],
+            "titles": ["ソニック･ザ･ヘッジホッグ", "Sonic the Hedgehog"],
+            "wad_titles": ["Sonic The Hedgehog"]
+        },
+
+        {
+            "id": "00010001-4d4150__",
+            "region": [0, 1, 3],
+            "emu_ver": [1],
+            "titles": ["コミックスゾーン", "Comix Zone"],
+        },
+
+        {
+            "id": "00010001-4d4156__",
+            "region": [0, 1, 3],
+            "emu_ver": [1],
+            "titles": ["ワンダーボーイⅤ モンスターワールドⅢ", "Wonder Boy in Monster World"],
+            "wad_titles": ["Wonder Boy V - Monster World III", "Wonder Boy in Monster World"]
         },
 
         {
             "id": "00010001-4d4136__",
             "region": [0, 1, 3],
-            "emu_ver": [2, 2, 2],
+            "emu_ver": [2],
             "titles": ["ベア・ナックルII 死闘への鎮魂歌", "Streets of Rage 2"],
             "wad_titles": ["Bare Knuckle II - Shitou he no Requiem", "Streets of Rage 2"]
-        },
-		
-        {
-            "id": "00010001-4d4350__",
-            "region": [0, 1, 3],
-            "emu_ver": [2, 2, 2],
-            "titles": ["アースワームジム", "Earthworm Jim"]
-        },
-		
-        {
-            "id": "00010001-4d4332__",
-            "region": [0, 1, 3],
-            "emu_ver": [3, 3, 3],
-            "titles": ["アースワームジム２", "Earthworm Jim 2"]
-        },
-		
-        {
-            "id": "00010001-4d4344__",
-            "region": [0, 1, 3],
-            "emu_ver": [3, 3, 3],
-            "titles": ["ソニック&ナックルズ", "Sonic & Knuckles"]
-        },
-		
-        {
-            "id": "00010001-4d4255__",
-            "region": [0, 1, 3],
-            "emu_ver": [2, 2, 2],
-            "titles": ["ソニック3Dブラスト", "Sonic 3D Blast", "Sonic 3D"],
-            "wad_titles": ["Sonic 3D Blast", "Sonic 3D Blast", "Sonic 3D - Flickies' Island"]
-        },
-		
-        {
-            "id": "00010001-4d4148__",
-            "region": [0, 1, 3],
-            "emu_ver": [1, 1, 1],
-            "titles": ["ソニック･ザ･ヘッジホッグ", "Sonic the Hedgehog"],
-            "wad_titles": ["Sonic The Hedgehog"]
         },
         
         {
             "id": "00010001-4d424d__",
             "region": [0, 1, 3],
-            "emu_ver": [2, 2, 2],
+            "emu_ver": [2],
             "titles": ["ソニック･ザ･ヘッジホッグ3", "Sonic the Hedgehog 3"],
             "wad_titles": ["Sonic The Hedgehog 3"]
+        },
+		
+        {
+            "id": "00010001-4d4255__",
+            "region": [0, 1, 3],
+            "emu_ver": [2],
+            "titles": ["ソニック3Dブラスト", "Sonic 3D Blast", "Sonic 3D"],
+            "wad_titles": ["Sonic 3D Blast", "Sonic 3D Blast", "Sonic 3D - Flickies' Island"]
+        },
+		
+        {
+            "id": "00010001-4d4257__",
+            "region": [0, 1, 3],
+            "emu_ver": [2],
+            "titles": ["コラムスⅢ 対決！コラムスワールド", "Columns III: Revenge of Columns"],
+            "wad_titles": ["Columns III - Taiketsu! Columns World", "Columns III - Revenge of Columns"]
+        },
+		
+        {
+            "id": "00010001-4d4350__",
+            "region": [0, 1, 3],
+            "emu_ver": [2],
+            "titles": ["アースワームジム", "Earthworm Jim"]
         },
         
         {
@@ -585,63 +579,69 @@
         },
 		
         {
-            "id": "00010001-4d4156__",
+            "id": "00010001-4d4332__",
             "region": [0, 1, 3],
-            "emu_ver": [1, 1, 1],
-            "titles": ["ワンダーボーイⅤ モンスターワールドⅢ", "Wonder Boy in Monster World"],
-            "wad_titles": ["Wonder Boy V - Monster World III", "Wonder Boy in Monster World"]
+            "emu_ver": [3],
+            "titles": ["アースワームジム２", "Earthworm Jim 2"]
+        },
+		
+        {
+            "id": "00010001-4d4344__",
+            "region": [0, 1, 3],
+            "emu_ver": [3],
+            "titles": ["ソニック&ナックルズ", "Sonic & Knuckles"]
         }
     ],
 
     "pce": [
         {
-            "id": "00010001-504147__",
-            "region": [0, 2, 4],
-            "emu_ver": [0, 0, 0],
-            "titles": ["ボンバーマン’94", "Bomberman '94"]
-        },
-        
-        {
             "id": "00010001-504141__",
             "region": [1, 3],
-            "emu_ver": [0, 0],
+            "emu_ver": [0],
             "titles": ["Bomberman '93"]
         },
 
         {
             "id": "00010001-504143__",
             "region": [0, 1, 3],
-            "emu_ver": [0, 0, 0],
+            "emu_ver": [0],
             "titles": ["ダンジョン エクスプローラー", "Dungeon Explorer"]
-        },
-
-        {
-            "id": "00010001-504245__",
-            "region": [0, 1, 3],
-            "emu_ver": [0, 0, 0],
-            "titles": ["モトローダー", "Moto Roader"]
         },
 
         {
             "id": "00010001-504145__",
             "region": [0, 1, 3],
-            "emu_ver": [0, 0, 0],
+            "emu_ver": [0],
             "titles": ["スーパースターソルジャー", "Super Star Soldier"]
+        },
+
+        {
+            "id": "00010001-504147__",
+            "region": [0, 2, 4],
+            "emu_ver": [0],
+            "titles": ["ボンバーマン’94", "Bomberman '94"]
+        },
+
+        {
+            "id": "00010001-504245__",
+            "region": [0, 1, 3],
+            "emu_ver": [0],
+            "titles": ["モトローダー", "Moto Roader"]
+        },
+		
+        {
+            "id": "00010001-504157__",
+            "region": [0, 1, 3],
+            "emu_ver": [1],
+            "titles": ["ギャラガ '88", "Galaga '90"],
+            "wad_titles": ["Galaga '88", "Galaga '90"]
         },
 		
         {
             "id": "00010001-504332__",
             "region": [0, 1, 3],
-            "emu_ver": [1, 1, 1],
-            "titles": ["タイトーチェイスＨ．Ｑ．", "Chase H.Q."]
-        },
-		
-        {
-            "id": "00010001-504443__",
-            "region": [0],
             "emu_ver": [1],
-            "titles": ["大魔界村", "Dai Makaimura"],
-            "wad_titles": ["Dai Makaimura"]
+            "titles": ["タイトーチェイスＨ．Ｑ．", "Chase H.Q."]
         },
 		
         {
@@ -653,17 +653,17 @@
         },
 		
         {
-            "id": "00010001-504157__",
-            "region": [0, 1, 3],
-            "emu_ver": [1, 1, 1],
-            "titles": ["ギャラガ '88", "Galaga '90"],
-            "wad_titles": ["Galaga '88", "Galaga '90"]
+            "id": "00010001-504443__",
+            "region": [0],
+            "emu_ver": [1],
+            "titles": ["大魔界村", "Dai Makaimura"],
+            "wad_titles": ["Dai Makaimura"]
         },
 
         {
             "id": "00010001-50444a__",
             "region": [0, 2, 4],
-            "emu_ver": [1, 1, 1],
+            "emu_ver": [1],
             "titles": ["ストリートファイターⅡダッシュ CHAMPION EDITION", "Street Fighter II': Champion Edition"],
             "wad_titles": ["Street Fighter II Dash - Champion Edition", "Street Fighter II - Champion Edition"],
         },
@@ -673,7 +673,7 @@
         {
             "id": "00010001-514150__",
             "region": [0, 2, 4],
-            "emu_ver": [0, 0, 0],
+            "emu_ver": [0],
             "titles": ["悪魔城ドラキュラX 血の輪廻", "Castlevania: Rondo of Blood"],
             "wad_titles": ["Akumajou Dracula X - Chi no Rondo", "Castlevania - Rondo of Blood"],
         },
@@ -681,7 +681,7 @@
         {
             "id": "00010001-514144__",
             "region": [0, 2, 4],
-            "emu_ver": [0, 0, 0],
+            "emu_ver": [0],
             "titles": ["グラディウスⅡ GOFERの野望", "Gradius II: Gofer no Yabou"],
             "wad_titles": ["Gradius II - Gofer no Yabou"],
         },
@@ -689,7 +689,7 @@
         {
             "id": "00010001-514141__",
             "region": [0, 1, 3],
-            "emu_ver": [0, 0, 0],
+            "emu_ver": [0],
             "titles": ["CD電人 ロカビリー天国", "Super Air Zonk: Rockabilly-Paradise"],
             "wad_titles": ["CD Denjin - Rockabilly Tengoku", "Super Air Zonk - Rockabilly-Paradise"],
         },
@@ -697,54 +697,54 @@
 
     "neo": [
         {
-            "id": "00010001-454147__",
-            "region": [0, 1, 3],
-            "emu_ver": [1, 0, 0],
-            "titles": ["ザ・キングオブファイターズ94", "The King of Fighters '94"]
-        },
-
-        {
             "id": "00010001-45414a__",
             "region": [0, 1, 3],
-            "emu_ver": [0, 0, 0],
+            "emu_ver": [0],
             "titles": ["メタルスラッグ", "Metal Slug"]
         },
 		
         {
             "id": "00010001-454144__",
             "region": [0, 1, 3],
-            "emu_ver": [0, 0, 0],
+            "emu_ver": [0],
             "titles": ["龍虎の拳", "Art of Fighting"],
             "wad_titles": ["Ryuuko no Ken", "Art of Fighting"],
         },
 		
         {
-            "id": "00010001-454148__",
-            "region": [0, 1, 3],
-            "emu_ver": [0, 0, 0],
-            "titles": ["ベースボールスターズ2", "Baseball Stars 2"]
-        },
-		
-        {
             "id": "00010001-454146__",
             "region": [0, 1, 3],
-            "emu_ver": [0, 0, 0],
+            "emu_ver": [0],
             "titles": ["ラギ", "Blue's Journey"],
             "wad_titles": ["Raguy", "Blue's Journey"],
         },
 		
         {
+            "id": "00010001-454148__",
+            "region": [0, 1, 3],
+            "emu_ver": [0],
+            "titles": ["ベースボールスターズ2", "Baseball Stars 2"]
+        },
+		
+        {
             "id": "00010001-45414e__",
             "region": [0, 1, 3],
-            "emu_ver": [0, 0, 0],
+            "emu_ver": [0],
             "titles": ["餓狼伝説2 ～新たなる闘い～", "Fatal Fury 2"],
             "wad_titles": ["Garou Densetsu 2 - Aratanaru Tatakai", "Fatal Fury 2"],
+        },
+
+        {
+            "id": "00010001-454147__",
+            "region": [0, 1, 3],
+            "emu_ver": [1, 0, 0],
+            "titles": ["ザ・キングオブファイターズ94", "The King of Fighters '94"]
         },
 		
         {
             "id": "00010001-454134__",
             "region": [0, 1, 3],
-            "emu_ver": [1, 1, 1],
+            "emu_ver": [1],
             "titles": ["サムライスピリッツ 斬紅郎無双剣", "Samurai Shodown III"],
             "wad_titles": ["Samurai Spirits - Zankuro Musouken", "Samurai Shodown III"],
         },
@@ -752,7 +752,7 @@
         {
             "id": "00010001-454137__",
             "region": [0, 1, 3],
-            "emu_ver": [1, 1, 1],
+            "emu_ver": [1],
             "titles": ["サムライスピリッツ 天草降臨", "Samurai Shodown IV: Amakusa's Revenge"],
             "wad_titles": ["Samurai Spirits - Amakusa Kourin", "Samurai Shodown IV - Amakusa's Revenge"],
         },
@@ -760,14 +760,14 @@
         {
             "id": "00010001-454156__",
             "region": [0, 1, 3],
-            "emu_ver": [1, 1, 1],
+            "emu_ver": [1],
             "titles": ["ザ・キングオブファイターズ95", "The King of Fighters '95"]
         },
 		
         {
             "id": "00010001-454247__",
             "region": [0, 1, 3],
-            "emu_ver": [1, 1, 1],
+            "emu_ver": [1],
             "titles": ["ザ・キングオブファイターズ97", "The King of Fighters '97"]
         },
     ],

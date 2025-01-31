@@ -34,6 +34,7 @@ namespace FriishProduce
         public string TitleID { get; set; } = "ABCD";
         public int WadRegion { get; set; } = -1;
         public int WadVideoMode { get; set; } = 0;
+        public int WiiUDisplay { get; set; } = 0;
         public string[] ChannelTitles { get; set; } = new string[] { "無題", "Untitled", "Ohne Titel", "Sans titre", "Sin título", "Senza titolo", "Onbekend", "제목 없음" };
         private string[] ChannelTitles_Limit
         {
@@ -103,7 +104,7 @@ namespace FriishProduce
                 // Contents check
                 // ****************
                 if (WAD == null || WAD?.NumOfContents <= 1)
-                    throw new Exception(Program.Lang.Msg(9, true));
+                    throw new Exception(Program.Lang.Msg(9, 1));
 
                 Logger.Log($"WAD loaded.");
             }
@@ -267,7 +268,7 @@ namespace FriishProduce
         public void EditMetadata()
         {
             if (WadRegion >= 0) WAD.Region = (Region)WadRegion;
-            Utils.ChangeVideoMode(WAD, WadVideoMode);
+            Utils.ChangeVideoMode(WAD, WadVideoMode, /* WiiUDisplay */ 0);
 
             WAD.ChangeChannelTitles(ChannelTitles_Limit);
             WAD.ChangeTitleID(LowerTitleID.Channel, TitleID);

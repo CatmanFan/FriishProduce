@@ -62,6 +62,8 @@ namespace FriishProduce
             this.injection_methods = new System.Windows.Forms.ComboBox();
             this.injection_method_options = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.wiiu_display_l = new System.Windows.Forms.Label();
+            this.wiiu_display = new System.Windows.Forms.ComboBox();
             this.injection_method_help = new System.Windows.Forms.PictureBox();
             this.multifile_software = new System.Windows.Forms.CheckBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -88,8 +90,6 @@ namespace FriishProduce
             this.rom_label_filename = new System.Windows.Forms.Label();
             this.rom_label = new System.Windows.Forms.Label();
             this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
-            this.wiiu_display = new System.Windows.Forms.ComboBox();
-            this.wiiu_display_l = new System.Windows.Forms.Label();
             this.bannerMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.title_id_random)).BeginInit();
             this.groupBox4.SuspendLayout();
@@ -344,10 +344,10 @@ namespace FriishProduce
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.injection_method_options);
             this.groupBox3.Controls.Add(this.wiiu_display_l);
             this.groupBox3.Controls.Add(this.wiiu_display);
             this.groupBox3.Controls.Add(this.injection_method_help);
-            this.groupBox3.Controls.Add(this.injection_method_options);
             this.groupBox3.Controls.Add(this.injection_methods);
             this.groupBox3.Controls.Add(this.multifile_software);
             this.groupBox3.Controls.Add(this.extra);
@@ -357,6 +357,21 @@ namespace FriishProduce
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.TabStop = false;
             this.groupBox3.Tag = "injection_method";
+            // 
+            // wiiu_display_l
+            // 
+            resources.ApplyResources(this.wiiu_display_l, "wiiu_display_l");
+            this.wiiu_display_l.Name = "wiiu_display_l";
+            this.wiiu_display_l.Tag = "wiiu_display";
+            // 
+            // wiiu_display
+            // 
+            this.wiiu_display.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.wiiu_display.FormattingEnabled = true;
+            resources.ApplyResources(this.wiiu_display, "wiiu_display");
+            this.wiiu_display.Name = "wiiu_display";
+            this.wiiu_display.Tag = "wiiu_display";
+            this.wiiu_display.SelectedIndexChanged += new System.EventHandler(this.SwitchAspectRatio);
             // 
             // injection_method_help
             // 
@@ -575,21 +590,6 @@ namespace FriishProduce
             this.backgroundWorker.WorkerReportsProgress = true;
             this.backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.saveToWAD);
             this.backgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.saveToWAD_UpdateProgress);
-            // 
-            // wiiu_display
-            // 
-            this.wiiu_display.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.wiiu_display.FormattingEnabled = true;
-            resources.ApplyResources(this.wiiu_display, "wiiu_display");
-            this.wiiu_display.Name = "wiiu_display";
-            this.wiiu_display.Tag = "wiiu_display";
-            this.wiiu_display.SelectedIndexChanged += new System.EventHandler(this.SwitchAspectRatio);
-            // 
-            // wiiu_display_l
-            // 
-            resources.ApplyResources(this.wiiu_display_l, "wiiu_display_l");
-            this.wiiu_display_l.Name = "wiiu_display_l";
-            this.wiiu_display_l.Tag = "wiiu_display";
             // 
             // ProjectForm
             // 

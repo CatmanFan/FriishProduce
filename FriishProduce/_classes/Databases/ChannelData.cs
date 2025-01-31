@@ -12,6 +12,7 @@ namespace FriishProduce
         public class ChannelEntry
         {
             public string ID { get; set; }
+            public int Count { get => (Regions?.Count == Titles?.Count) && (Titles?.Count == MarioCube?.Count) ? Titles?.Count ?? 0 : -1; }
             public List<int> Regions = new();
             public List<string> Titles = new();
             public List<int> EmuRevs = new();
@@ -284,11 +285,27 @@ namespace FriishProduce
                     for (int i = 0; i < reg.GetArrayLength(); i++)
                     {
                         y.Regions.Add(reg[i].GetInt32());
-                        try { y.Titles.Add(item.GetProperty("titles")[i].GetString()); } catch { y.Titles.Add(item.GetProperty("titles")[Math.Max(0, item.GetProperty("titles").GetArrayLength() - 1)].GetString()); }
-                        try { y.EmuRevs.Add(item.GetProperty("emu_ver")[i].GetInt32()); } catch { y.EmuRevs.Add(0); }
 
-                        if (y.Regions.Count == 1 && y.Regions[0] == 0 && !Program.Lang.Current.StartsWith("ja") && item.GetProperty("titles").GetArrayLength() > 1)
-                            y.Titles[0] = item.GetProperty("titles")[1].GetString();
+                        try { y.Titles.Add(item.GetProperty("titles")[i].GetString()); }
+                        catch { y.Titles.Add(item.GetProperty("titles")[Math.Max(0, item.GetProperty("titles").GetArrayLength() - 1)].GetString()); }
+
+                        try { y.EmuRevs.Add(item.GetProperty("emu_ver")[i].GetInt32()); }
+                        catch
+                        {
+                            try { y.EmuRevs.Add(item.GetProperty("emu_ver")[0].GetInt32()); }
+                            catch { y.EmuRevs.Add(0); }
+                        }
+
+                        if (!Program.Lang.Current.StartsWith("ja") && !Program.Lang.Current.StartsWith("ko") && !Program.Lang.Current.StartsWith("zh"))
+                        {
+                            // Change Japanese title to English if language is not CJK
+                            if (y.Regions.Count == 1 && y.Regions[0] == 0 && item.GetProperty("titles").GetArrayLength() > 1)
+                                y.Titles[0] = item.GetProperty("titles")[1].GetString();
+
+                            // Change Korean title to English if language is not CJK
+                            if (y.Regions.Count == 4 && (y.Regions[3] is 6 or 7) && item.GetProperty("titles").GetArrayLength() == 4)
+                                y.Titles[3] = item.GetProperty("titles")[1].GetString();
+                        }
                     }
 
                     for (int i = 0; i < y.Regions.Count; i++)

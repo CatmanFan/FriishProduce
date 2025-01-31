@@ -48,7 +48,7 @@ namespace FriishProduce.Injectors
                 if (line.Contains("ROM=")) rom = line.Replace("ROM=/", string.Empty).Replace("ROM=", string.Empty);
 
             if (rom == null || !MainContent.StringTable.Contains(rom))
-                throw new Exception(Program.Lang.Msg(2, true));
+                throw new Exception(Program.Lang.Msg(2, 1));
 
             // -----------------------
             // Replace original ROM
@@ -123,7 +123,7 @@ namespace FriishProduce.Injectors
                 );
 
                 if (!File.Exists(Paths.WorkingFolder + "rom_new"))
-                    throw new Exception(Program.Lang.Msg(2, true));
+                    throw new Exception(Program.Lang.Msg(2, 1));
                 else
                     MainContent.ReplaceFile(MainContent.GetNodeIndex(rom), File.ReadAllBytes(Paths.WorkingFolder + "rom_new"));
 

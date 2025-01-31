@@ -431,7 +431,7 @@ namespace FriishProduce.Injectors
 
             else
             {
-                throw new Exception(Program.Lang.Msg(13, true));
+                throw new Exception(Program.Lang.Msg(13, 1));
             }
 
             #endregion

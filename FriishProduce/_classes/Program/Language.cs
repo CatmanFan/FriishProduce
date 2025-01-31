@@ -244,8 +244,8 @@ namespace FriishProduce
         /// <summary>
         /// Returns a localized message string from the corresponding ID.
         /// </summary>
-        /// <param name="isError">Determines if the message should be drawn from the errors category instead.</param>
-        public string Msg(int number, bool isError = false) => String((isError ? "e_" : null) + number.ToString("000"), "messages");
+        /// <param name="isError">Determines if the message should be drawn from the errors or busy category instead. 0 = Normal / 1 = Error / 2 = Busy</param>
+        public string Msg(int number, int type = 0) => String((type == 1 ? "e_" : type == 2 ? "b_" : null) + number.ToString("000"), "messages");
 
         public string HTML(int number, bool isTooltip, string title = null)
         {

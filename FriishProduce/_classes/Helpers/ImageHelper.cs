@@ -458,7 +458,7 @@ namespace FriishProduce
 
             TPL tpl;
             try { tpl = TPL.Load(tplBytes); }
-            catch (Exception ex) { throw new Exception(Program.Lang.Msg(15, true), ex); }
+            catch (Exception ex) { throw new Exception(Program.Lang.Msg(15, 1), ex); }
 
             int numTextures = tpl.NumOfTextures;
             TPL_TextureFormat[] formatsT = new TPL_TextureFormat[numTextures];
@@ -717,7 +717,7 @@ namespace FriishProduce
 
             catch (Exception ex)
             {
-                throw new Exception(Program.Lang.Msg(2, true), ex);
+                throw new Exception(Program.Lang.Msg(2, 1), ex);
             }
 
             // Cleanup

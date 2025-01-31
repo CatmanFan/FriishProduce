@@ -880,7 +880,7 @@
     <value>NoControl</value>
   </data>
   <data name="injection_method_options.Location" type="System.Drawing.Point, System.Drawing">
-    <value>180, 131</value>
+    <value>180, 121</value>
   </data>
   <data name="injection_method_options.Size" type="System.Drawing.Size, System.Drawing">
     <value>270, 24</value>
@@ -907,7 +907,7 @@
     <value>groupBox3</value>
   </data>
   <data name="&gt;&gt;injection_method_options.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>0</value>
   </data>
   <data name="wiiu_display_l.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -940,7 +940,7 @@
     <value>groupBox3</value>
   </data>
   <data name="&gt;&gt;wiiu_display_l.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="wiiu_display.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 111</value>
@@ -964,7 +964,7 @@
     <value>groupBox3</value>
   </data>
   <data name="&gt;&gt;wiiu_display.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="injection_method_help.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -994,7 +994,7 @@
     <value>groupBox3</value>
   </data>
   <data name="&gt;&gt;injection_method_help.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="multifile_software.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1033,7 +1033,7 @@
     <value>12, 238</value>
   </data>
   <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>460, 165</value>
+    <value>460, 155</value>
   </data>
   <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
     <value>43</value>

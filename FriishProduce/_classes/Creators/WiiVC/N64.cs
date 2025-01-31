@@ -103,7 +103,7 @@ namespace FriishProduce.Injectors
                     // Check if converted file exists
                     // ****************
                     File.Delete(Paths.WorkingFolder + "rom");
-                    if (!File.Exists(Paths.WorkingFolder + "romc")) throw new Exception(Program.Lang.Msg(2, true));
+                    if (!File.Exists(Paths.WorkingFolder + "romc")) throw new Exception(Program.Lang.Msg(2, 1));
 
                     // Convert to bytes and replace at "romc"
                     // ****************
@@ -255,7 +255,7 @@ namespace FriishProduce.Injectors
                     foreach (var item in failed)
                         failedList += "- " + item + Environment.NewLine;
 
-                    MessageBox.Show(string.Format(Program.Lang.Msg(5, true), failedList));
+                    MessageBox.Show(string.Format(Program.Lang.Msg(5, 1), failedList));
                 }
             }
 

@@ -54,7 +54,7 @@ namespace FriishProduce.Injectors
                     "/cr orig_lz77.rom rom lz77.rom"
                 );
 
-                if (!File.Exists(Paths.WorkingFolder + "lz77.rom")) throw new Exception(Program.Lang.Msg(2, true));
+                if (!File.Exists(Paths.WorkingFolder + "lz77.rom")) throw new Exception(Program.Lang.Msg(2, 1));
 
                 MainContent.ReplaceFile(MainContent.GetNodeIndex(target), Paths.WorkingFolder + "lz77.rom");
             }
@@ -71,7 +71,7 @@ namespace FriishProduce.Injectors
                     "lzh8",
                     "rom lzh8.rom"
                 );
-                if (!File.Exists(Paths.WorkingFolder + "lzh8.rom")) throw new Exception(Program.Lang.Msg(2, true));
+                if (!File.Exists(Paths.WorkingFolder + "lzh8.rom")) throw new Exception(Program.Lang.Msg(2, 1));
 
                 MainContent.ReplaceFile(MainContent.GetNodeIndex(target), Paths.WorkingFolder + "lzh8.rom");
             }
@@ -86,7 +86,7 @@ namespace FriishProduce.Injectors
 
             else
             {
-                throw new Exception(Program.Lang.Msg(13, true));
+                throw new Exception(Program.Lang.Msg(13, 1));
             }
 
             // Delete temporary files
@@ -277,12 +277,12 @@ namespace FriishProduce.Injectors
                     foreach (var item in failed)
                         failedList += "- " + item + Environment.NewLine;
 
-                    MessageBox.Show(string.Format(Program.Lang.Msg(5, true), failedList));
+                    MessageBox.Show(string.Format(Program.Lang.Msg(5, 1), failedList));
                 }
 
                 else if (generic || !File.Exists(Paths.WorkingFolder + "01_boosted.app") || File.ReadAllBytes(Paths.WorkingFolder + "01_boosted.app").SequenceEqual(Contents[1]))
                 {
-                    MessageBox.Show(Program.Lang.Msg(4, true));
+                    MessageBox.Show(Program.Lang.Msg(4, 1));
                     return;
                 }
             }

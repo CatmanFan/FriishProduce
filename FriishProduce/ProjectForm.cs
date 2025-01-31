@@ -907,7 +907,7 @@ namespace FriishProduce
             // ********
             if (loadProject)
                 foreach (var item in new string[] { project.ROM, project.Patch, project.OfflineWAD, project.Sound })
-                    if (!File.Exists(item) && !string.IsNullOrWhiteSpace(item)) MessageBox.Show(string.Format(Program.Lang.Msg(11, true), Path.GetFileName(item)));
+                    if (!File.Exists(item) && !string.IsNullOrWhiteSpace(item)) MessageBox.Show(string.Format(Program.Lang.Msg(11, 1), Path.GetFileName(item)));
             project = null;
 
             if (File.Exists(rom?.FilePath) && IsEmpty)
@@ -1398,9 +1398,9 @@ namespace FriishProduce
             else refreshData();
         }
 
-        protected async void LoadImage(string path)
+        protected void LoadImage(string path)
         {
-            await Task.Run(() => { img = new ImageHelper(targetPlatform, path); });
+            img = new ImageHelper(targetPlatform, path);
             LoadImage(img.Source);
         }
 
@@ -1488,7 +1488,7 @@ namespace FriishProduce
 
             catch
             {
-                MessageBox.Show(Program.Lang.Msg(1, true));
+                MessageBox.Show(Program.Lang.Msg(1, 1));
                 return false;
             }
         }
@@ -1635,7 +1635,7 @@ namespace FriishProduce
                         await Task.Run(() => { LoadImage(gameData.Image); });
                     }
 
-                    resetImages(true);
+                    await Task.Run(() => { resetImages(true); });
                 }
 
                 Program.MainForm.Wait(false, false, false);
@@ -1686,6 +1686,7 @@ namespace FriishProduce
                     WAD = WAD.Load(Properties.Resources.StaticBase),
                     WadRegion = (int)outWadRegion,
                     // WadVideoMode = video_modes.SelectedIndex,
+                    // WiiUDisplay = wiiu_display.SelectedIndex,
 
                     EmuVersion = emuVer,
 
@@ -1701,6 +1702,7 @@ namespace FriishProduce
                 {
                     m.IsMultifile = multifile_software.Checked;
                     m.WadVideoMode = video_mode.SelectedIndex;
+                    m.WiiUDisplay = wiiu_display.SelectedIndex;
                     m.Manual = manual_type.SelectedIndex == 0 ? null : manual_type.SelectedIndex == 1 ? "orig" : manual;
                     emulator = injection_methods.SelectedItem.ToString();
                     device = forwarder_root_device.SelectedIndex == 1 ? Forwarder.Storages.USB : Forwarder.Storages.SD;
@@ -1792,7 +1794,7 @@ namespace FriishProduce
                 // Check new WAD file
                 // *******
                 if (File.Exists(targetFile) && File.ReadAllBytes(targetFile).Length > 10) error = null;
-                else throw new Exception(Program.Lang.Msg(7, true));
+                else throw new Exception(Program.Lang.Msg(7, 1));
             }
 
             catch (Exception ex)

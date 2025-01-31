@@ -152,6 +152,7 @@ namespace FriishProduce
             {
                 Text += " [Running in debug mode]";
                 // Debug mode-only features are activated here. //
+                test_database.Visible = true;
             }
 
             RefreshRecent();
@@ -248,7 +249,17 @@ namespace FriishProduce
         /// <param name="msg">The message to display.</param>
         /// <param name="progress">Progress value</param>
         /// <param name="showProgress">Whether to display the progress bar.</param>
-        public void Wait(bool show, bool reset, bool showProgress, int progress = 0, int msg = 0)
+        public void Wait(bool show, bool reset, bool showProgress, int progress = 0, int msg = 0) => Wait(show, reset, showProgress, progress, Program.Lang.Msg(msg, 2));
+
+        /// <summary>
+        /// Displays wait dialog.
+        /// </summary>
+        /// <param name="reset">Resets the dialog.</param>
+        /// <param name="show">Shows or hides the dialog.</param>
+        /// <param name="msg">The message to display.</param>
+        /// <param name="progress">Progress value</param>
+        /// <param name="showProgress">Whether to display the progress bar.</param>
+        public void Wait(bool show, bool reset, bool showProgress, int progress, string msg)
         {
             if (InvokeRequired)
             {
@@ -463,7 +474,7 @@ namespace FriishProduce
 
             catch (Exception ex)
             {
-                MessageBox.Show(string.Format(Program.Lang.Msg(18, true), form.Text), ex.Message, MessageBox.Buttons.Ok);
+                MessageBox.Show(string.Format(Program.Lang.Msg(18, 1), form.Text), ex.Message, MessageBox.Buttons.Ok);
             }
 
             return false;
@@ -479,7 +490,7 @@ namespace FriishProduce
             foreach (var tab in list)
             {
                 try { if (File.Exists(tab.ProjectPath)) tab.SaveProject(tab.ProjectPath); else SaveAs_Trigger(tab); }
-                catch (Exception ex) { MessageBox.Show(string.Format(Program.Lang.Msg(18, true), tab.Text), ex.Message, MessageBox.Buttons.Ok); }
+                catch (Exception ex) { MessageBox.Show(string.Format(Program.Lang.Msg(18, 1), tab.Text), ex.Message, MessageBox.Buttons.Ok); }
             }
         }
 
@@ -490,7 +501,7 @@ namespace FriishProduce
             if (File.Exists(currentForm.ProjectPath))
             {
                 try { currentForm.SaveProject(currentForm.ProjectPath); }
-                catch (Exception ex) { MessageBox.Show(string.Format(Program.Lang.Msg(18, true), currentForm.Text), ex.Message, MessageBox.Buttons.Ok); }
+                catch (Exception ex) { MessageBox.Show(string.Format(Program.Lang.Msg(18, 1), currentForm.Text), ex.Message, MessageBox.Buttons.Ok); }
             }
 
             else SaveAs_Trigger(currentForm);
@@ -598,7 +609,7 @@ namespace FriishProduce
 
                 catch
                 {
-                    MessageBox.Show(string.Format(Program.Lang.Msg(17, true), Path.GetFileName(file)), MessageBox.Buttons.Ok, MessageBox.Icons.Error);
+                    MessageBox.Show(string.Format(Program.Lang.Msg(17, 1), Path.GetFileName(file)), MessageBox.Buttons.Ok, MessageBox.Icons.Error);
                 }
             }
         }
@@ -852,7 +863,7 @@ namespace FriishProduce
                                                 "wwcxtool.exe",
                                                 "/u html.arc html.dec"
                                             );
-                                            if (!File.Exists(Paths.WorkingFolder + "html.dec")) throw new Exception(Program.Lang.Msg(2, true));
+                                            if (!File.Exists(Paths.WorkingFolder + "html.dec")) throw new Exception(Program.Lang.Msg(2, 1));
 
                                             var bytes = File.ReadAllBytes(Paths.WorkingFolder + "html.dec");
 
@@ -948,7 +959,7 @@ namespace FriishProduce
 
                 Failed:
                 if (error == null)
-                    MessageBox.Show(Program.Lang.Msg(16, true));
+                    MessageBox.Show(Program.Lang.Msg(16, 1));
                 else
                     MessageBox.Error(error.Message);
                 goto End;
@@ -982,6 +993,78 @@ namespace FriishProduce
                         : Program.Lang.Current.StartsWith("ja") ? "ja/"
                         : null;
             System.Diagnostics.Process.Start("https://catmanfan.github.io/FriishProduce/" + lang);
+        }
+
+        private async void TestDatabase(object sender, EventArgs e)
+        {
+            if (MessageBox.Show(Program.Lang.Msg(12), MessageBox.Buttons.YesNo) != MessageBox.Result.Yes) return;
+
+            Dictionary<string, bool> tested = new();
+
+            // Open each platform's database.
+            // ****************
+            foreach (Platform p in new Platform[] { Platform.NES, Platform.SNES, Platform.N64, Platform.SMS, Platform.SMD, Platform.PCE, Platform.PCECD, Platform.NEO, Platform.MSX, Platform.Flash })
+            {
+                string msg = string.Format(Program.Lang.Msg(3, 2), Program.Lang.Console(p));
+
+                Wait(true, true, true, 0, msg);
+
+                ChannelDatabase c = new(p);
+                double total = 0, verified = 0;
+
+                for (int x = 0; x < c.Entries.Count; x++)
+                    total += c.Entries[x].Count;
+
+                // Download each entry's WAD files, then check to see if contents are valid.
+                // ****************
+                for (int x = 0; x < c.Entries.Count; x++)
+                {
+                    var entry = c.Entries[x];
+
+                    for (int y = 0; y < entry.Count; y++)
+                    {
+                        wait.Msg = msg + $" ({verified + 1}/{total})";
+
+                        int regIndex = entry.Regions[y];
+                        string title = string.Format
+                        (
+                            "{0} ({1}) ({2})",
+                            entry.Titles[y],
+                            Program.Lang.Console(p),
+                            regIndex == 0 ? "J" : regIndex is 1 or 2 ? "U" : regIndex is 3 or 4 or 5 ? "E" : regIndex is 6 or 7 ? "K" : Program.Lang.String("region_rf")
+                        );
+
+                        await System.Threading.Tasks.Task.Run(() =>
+                        {
+                            WAD w = WAD.Load(Web.Get(entry.GetWAD(y)));
+                            tested.Add(title, w.Contents?.Length > 1 && w.Contents?[0].Length > 0 && w.Contents?[1].Length > 0);
+                            w.Dispose();
+                        });
+
+                        verified += 1;
+                        int value = (int)Math.Round(verified / total * 100.0);
+
+                        Wait(true, false, true, value);
+                    }
+                }
+
+                Wait(false, false, false);
+            }
+
+            // Final report
+            // ****************
+            var failed = tested.Where(x => !x.Value).ToArray();
+            if (failed?.Length > 0)
+            {
+                List<string> failedNames = new();
+
+                foreach (var item in failed)
+                    failedNames.Add("- " + item.Key);
+
+                MessageBox.Show(string.Format(Program.Lang.Msg(14), string.Join(Environment.NewLine, failedNames)));
+            }
+            else
+                MessageBox.Show(Program.Lang.Msg(13));
         }
     }
 }

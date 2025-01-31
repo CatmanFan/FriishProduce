@@ -131,7 +131,7 @@ namespace FriishProduce
             }
             else
             {
-                if (!string.IsNullOrEmpty(Options["midi"])) MessageBox.Show(string.Format(Program.Lang.Msg(11, true), Path.GetFileName(Options["midi"])));
+                if (!string.IsNullOrEmpty(Options["midi"])) MessageBox.Show(string.Format(Program.Lang.Msg(11, 1), Path.GetFileName(Options["midi"])));
                 midi.Checked = false;
             }
             // *******

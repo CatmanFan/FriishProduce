@@ -109,7 +109,7 @@ namespace FriishProduce
                 if (Bytes.Length > length && MaxSize > 0)
                 {
                     bool isMB = length >= 1048576;
-                    throw new Exception(string.Format(Program.Lang.Msg(3, true),
+                    throw new Exception(string.Format(Program.Lang.Msg(3, 1),
                         Math.Round((double)length / (isMB ? 1048576 : 1024), 2).ToString(),
                         isMB ? Program.Lang.String("megabytes") : Program.Lang.String("kilobytes")));
                 }
@@ -144,7 +144,7 @@ namespace FriishProduce
             try { File.Delete(Paths.WorkingFolder + "rom_p_xdelta"); } catch { }
             try { File.Delete(Paths.WorkingFolder + "rom_p_bps"); } catch { }
 
-            patched = Out ?? throw new Exception(Program.Lang.Msg(8, true));
+            patched = Out ?? throw new Exception(Program.Lang.Msg(8, 1));
         }
 
         public void Dispose()

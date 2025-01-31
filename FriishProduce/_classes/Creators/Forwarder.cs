@@ -318,7 +318,7 @@ namespace FriishProduce
 
             File.WriteAllBytes(Paths.WorkingFolder + "forwarder.dol", forwarder);
             Utils.Run(FileDatas.Apps.OpenDolBoot, "OpenDolBoot", "forwarder.dol forwarder.app");
-            if (!File.Exists(Paths.WorkingFolder + "forwarder.app")) throw new Exception(Program.Lang.Msg(2, true));
+            if (!File.Exists(Paths.WorkingFolder + "forwarder.app")) throw new Exception(Program.Lang.Msg(2, 1));
 
             var forwarderApp = File.ReadAllBytes(Paths.WorkingFolder + "forwarder.app");
             try { File.Delete(Paths.WorkingFolder + "forwarder.app"); } catch { }

@@ -19,9 +19,6 @@
 			"b_save":							"&Sauvegarder",
 			"b_dont_save":						"&Ne pas sauvegarder",
 			"do_not_show":						"Ne plus afficher ce message",
-			"busy0":							"Veuillez patienter ...",
-			"busy1":							"Exportation en cours ...",
-			"busy2":							"Test de connexion en cours ...",
 			
 			"by_default":						"Par défaut",
 			"disabled":							"Désactivé(e)",
@@ -99,6 +96,14 @@
 			"009":								"Vous êtes déjà à jour.",
 			"010":								"Extraire le fichier opening.bnr (comprenant le header IMET) ?",
 			"011":								"Vous allez restaurer les paramètres par défaut de l'application.\nVoulez-vous vraiment continuer ?",
+			"012":								"Vérifier la base de données des chaînes ?\nCela peut prendre quelques minutes.",
+			"013":								"Aucune chaîne invalide n'a été trouvée dans la base de données.",
+			"014":								"Chaînes invalides trouvées dans la base de données :\n{0}\n\nVeuillez ouvrir et modifier le fichier «database.json» afin de les supprimer.",
+			
+			"b_000":							"Veuillez patienter ...",
+			"b_001":							"Exportation en cours ...",
+			"b_002":							"Test de connexion en cours ...",
+			"b_003":							"Vérification de la base de données {0} en cours ...",
 
 			"error":							"Oups, un problème est survenu !",
 			"e_000":							"Échec de connexion à Internet.\n{0}",
@@ -175,8 +180,10 @@
 			"updater":							"&Mise à jour",
 			"check_for_updates":				"&Vérifier maintenant",
 			"auto_update":						"Vérifier &automatiquement au démarrage de l'application",
-			"clear_database":					"&Effacer les bases de données internelles",
-			"reset_preferences":				"&Réinitialiser la configuration",
+			"advanced":							"&Avancés",
+			"test_database":					"&Verifier la base de données",
+			"clear_database":					"Réinitialiser la &base de données",
+			"reset_preferences":				"Réinitialiser la &configuration",
 			"exit":								"&Quitter",
 
 			"project_type":						"Chaîne {0}",

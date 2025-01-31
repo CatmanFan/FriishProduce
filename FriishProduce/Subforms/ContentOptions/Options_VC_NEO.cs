@@ -42,7 +42,7 @@ namespace FriishProduce
                 {
                     MessageBox.Show
                     (
-                        string.Format(Program.Lang.Msg(11, true), Path.GetFileName(Program.Config.paths.bios_neo)),
+                        string.Format(Program.Lang.Msg(11, 1), Path.GetFileName(Program.Config.paths.bios_neo)),
                         MessageBox.Buttons.Ok,
                         MessageBox.Icons.Information
                     );
@@ -105,7 +105,7 @@ namespace FriishProduce
         {
             if (biosName == "custom" && string.IsNullOrWhiteSpace(Program.Config.paths.bios_neo))
             {
-                MessageBox.Show(Program.Lang.Msg(14, true), MessageBox.Buttons.Ok, MessageBox.Icons.Error, false);
+                MessageBox.Show(Program.Lang.Msg(14, 1), MessageBox.Buttons.Ok, MessageBox.Icons.Error, false);
 
                 // Set list selection back to previous one
                 if (biosIndex == 0) Options["BIOS"] = Program.Config.neo.bios;

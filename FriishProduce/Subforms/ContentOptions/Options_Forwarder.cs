@@ -56,7 +56,7 @@ namespace FriishProduce
                 {
                     MessageBox.Show
                     (
-                        string.Format(string.Format(Program.Lang.Msg(11, true), Path.GetFileName(bios))),
+                        string.Format(string.Format(Program.Lang.Msg(11, 1), Path.GetFileName(bios))),
                         MessageBox.Buttons.Ok,
                         MessageBox.Icons.Information
                     );
@@ -102,7 +102,7 @@ namespace FriishProduce
         {
             if (toggleSwitch1.Checked && string.IsNullOrWhiteSpace(bios))
             {
-                MessageBox.Show(Program.Lang.Msg(14, true), MessageBox.Buttons.Ok, MessageBox.Icons.Error, false);
+                MessageBox.Show(Program.Lang.Msg(14, 1), MessageBox.Buttons.Ok, MessageBox.Icons.Error, false);
                 toggleSwitch1.Checked = false;
             }
 

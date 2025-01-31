@@ -139,7 +139,7 @@ namespace FriishProduce
                 if (ex.GetType() == typeof(WebException) && (ex as WebException).Status == WebExceptionStatus.ProtocolError)
                     return true;
 
-                throw new Exception(string.Format(Program.Lang.Msg(0, true), Message(ex.Message, URL)));
+                throw new Exception(string.Format(Program.Lang.Msg(0, 1), Message(ex.Message, URL)));
             }
         }
 
@@ -197,7 +197,7 @@ namespace FriishProduce
                     if (ex.GetType() == typeof(FileNotFoundException))
                         throw ex;
                     else
-                        throw new Exception(string.Format(Program.Lang.Msg(0, true), Message(ex.Message, URL)));
+                        throw new Exception(string.Format(Program.Lang.Msg(0, 1), Message(ex.Message, URL)));
                 }
             }
         }
@@ -297,7 +297,7 @@ namespace FriishProduce
 
             if (!appPath.EndsWith(".exe")) appPath += ".exe";
 
-            if (!File.Exists(appPath)) throw new Exception(string.Format(Program.Lang.Msg(6, true), app));
+            if (!File.Exists(appPath)) throw new Exception(string.Format(Program.Lang.Msg(6, 1), app));
 
             using Process p = Process.Start(new ProcessStartInfo
             {
@@ -351,7 +351,9 @@ namespace FriishProduce
                     "wwcxtool.exe",
                     "/cr main.dol main.dec.dol main.new.dol"
                 );
-                if (!File.Exists(Paths.WorkingFolder + "main.new.dol")) throw new Exception(Program.Lang.Msg(2, true));
+
+                if (!File.Exists(Paths.WorkingFolder + "main.new.dol"))
+                    throw new Exception(Program.Lang.Msg(2, 1));
 
                 var output = File.ReadAllBytes(Paths.WorkingFolder + "main.new.dol");
 
@@ -384,11 +386,13 @@ namespace FriishProduce
             PAL50_Prgsiv
         }
 
-        public static void ChangeVideoMode(libWiiSharp.WAD wad, int mode = 0)
+        public static void ChangeVideoMode(libWiiSharp.WAD wad, int mode = 0, int wiiu = 0)
         {
-            if (mode > 0)
+            wiiu = 0;
+
+            if (mode > 0 || wiiu > 0)
             {
-                var content1 = ExtractContent1(wad.Contents[1]).Data;
+                var content1 = ExtractContent1(wad.Contents[1]);
 
                 #region List of byte patterns and corresponding video modes
                 /// NTSC & PAL60: 60Hz ///
@@ -460,14 +464,14 @@ namespace FriishProduce
 
                         for (int i = 1; i < modesList.Count; i++)
                         {
-                            for (int index; (index = Byte.IndexOf(content1, modesList.Values.ElementAt(i).Substring(0, 23), start, end)) > 0;)
+                            for (int index; (index = Byte.IndexOf(content1.Data, modesList.Values.ElementAt(i).Substring(0, 23), start, end)) > 0;)
                             {
                                 string[] array = i is 1 or 4 or 7 or 10 ? modesList.Values.ElementAt(targetMode + 0).Split(' ')   // Interlaced
                                                : i is 2 or 5 or 8 or 11 ? modesList.Values.ElementAt(targetMode + 1).Split(' ')   // Non-interlaced
                                                : modesList.Values.ElementAt(targetMode + 2).Split(' ');                           // Progressive
 
                                 for (int x = 0; x < 15; x++)
-                                    if (array[x].ToLower() != "xx") content1[index + x] = Convert.ToByte(array[x], 16);
+                                    if (array[x].ToLower() != "xx") content1.Data[index + x] = Convert.ToByte(array[x], 16);
                                 break;
                             }
                         }
@@ -540,12 +544,12 @@ namespace FriishProduce
                         {
                             if (inputs[i] != outputs[i])
                             {
-                                for (int index; (index = Byte.IndexOf(content1, modesList[inputs[i]].Substring(0, 23), start, end)) > 0;)
+                                for (int index; (index = Byte.IndexOf(content1.Data, modesList[inputs[i]].Substring(0, 23), start, end)) > 0;)
                                 {
                                     string[] array = modesList[outputs[i]].Split(' ');
 
                                     for (int x = 0; x < 15; x++)
-                                        if (array[x].ToLower() != "xx") content1[index + x] = Convert.ToByte(array[x], 16);
+                                        if (array[x].ToLower() != "xx") content1.Data[index + x] = Convert.ToByte(array[x], 16);
                                     break;
                                 }
                             }
@@ -555,11 +559,31 @@ namespace FriishProduce
 
                 /* Force 4:3 aspect ratio display on Wii U (NOT WORKING) */
                 // *************************
+                switch (wiiu)
+                {
+                    default:
+                    case 0:
+                        break;
 
-                content1 = PackContent1(content1);
+                    case 1:
+                        File.WriteAllBytes(Paths.WorkingFolder + "main.dec.dol", content1.Data);
+
+                        string output = Run
+                        (
+                            "wstrt\\wstrt.exe",
+                            $"patch \"{Path.GetFullPath(Paths.WorkingFolder + "main.dec.dol")}\" --add-section \"{Path.GetFullPath(Paths.Tools + "wstrt\\Force43.gct")}\""
+                        );
+
+                        bool isModified = !content1.Data.SequenceEqual(File.ReadAllBytes(Paths.WorkingFolder + "main.dec.dol"));
+
+                        if (isModified) content1.Data = File.ReadAllBytes(Paths.WorkingFolder + "main.dec.dol");
+                        break;
+                }
+
+                PackContent1(content1.Data, content1.Compressed);
 
                 wad.Unpack(Paths.WAD);
-                File.WriteAllBytes(Paths.WAD + "00000001.app", content1);
+                File.WriteAllBytes(Paths.WAD + "00000001.app", content1.Data);
                 wad.CreateNew(Paths.WAD);
                 Directory.Delete(Paths.WAD, true);
             }

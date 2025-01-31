@@ -107,7 +107,7 @@ namespace FriishProduce.Injectors
                 }
 
             if (!found)
-                throw new System.Exception(Program.Lang.Msg(13, true));
+                throw new System.Exception(Program.Lang.Msg(13, 1));
         }
 
         protected override void ReplaceSaveData(string[] lines, ImageHelper Img)

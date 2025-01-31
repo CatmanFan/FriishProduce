@@ -52,7 +52,9 @@ namespace FriishProduce
         protected virtual void Load()
         {
             Contents = new List<byte[]>();
-            for (int i = 0; i < WAD.Contents.Length; i++)
+            if (WAD.Contents?.Length == 0) throw new NotSupportedException();
+
+            for (int i = 0; i < WAD.Contents?.Length; i++)
                 Contents.Add(new byte[0]);
 
             // Load main.dol if needed
@@ -198,7 +200,7 @@ namespace FriishProduce
                                 "wwcxtool.exe",
                                 "/u html.arc html.dec"
                             );
-                            if (!File.Exists(Paths.WorkingFolder + "html.dec")) throw new Exception(Program.Lang.Msg(2, true));
+                            if (!File.Exists(Paths.WorkingFolder + "html.dec")) throw new Exception(Program.Lang.Msg(2, 1));
 
                             File.WriteAllBytes("html_modified.dec", WriteManual(File.ReadAllBytes(Paths.WorkingFolder + "html.dec")).ToByteArray());
 
@@ -208,7 +210,7 @@ namespace FriishProduce
                                 "wwcxtool.exe",
                                 "/cr html.arc html_modified.dec html_modified.arc"
                             );
-                            if (!File.Exists(Paths.WorkingFolder + "html_modified.arc")) throw new Exception(Program.Lang.Msg(2, true));
+                            if (!File.Exists(Paths.WorkingFolder + "html_modified.arc")) throw new Exception(Program.Lang.Msg(2, 1));
 
                             target.ReplaceFile
                             (
@@ -238,7 +240,7 @@ namespace FriishProduce
                 {
                     Manual = "orig";
                     target.ReplaceFile(target.GetNodeIndex(origManual), backup);
-                    MessageBox.Show(Program.Lang.Msg(10, true));
+                    MessageBox.Show(Program.Lang.Msg(10, 1));
                 }
             }
 

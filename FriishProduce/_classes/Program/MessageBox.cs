@@ -203,7 +203,7 @@ namespace FriishProduce
 
         public static void Show(string mainText) => Show(mainText, null, Buttons.Ok, 0, -1);
 
-        public static void Error(int msg) => Error(Program.Lang.Msg(msg, true));
+        public static void Error(int msg) => Error(Program.Lang.Msg(msg, 1));
 
         public static void Error(string msg)
         {

@@ -13,8 +13,13 @@ namespace FriishProduce
     public partial class Wait : Form
     {
         private Timer fader;
+        public string Msg
+        {
+            get => label1.Text;
+            set => label1.Text = value;
+        }
 
-        public Wait(bool showProgress, int msg = 0)
+        public Wait(bool showProgress, string msg = null)
         {
             InitializeComponent();
 
@@ -25,7 +30,7 @@ namespace FriishProduce
 
             if (Program.MainForm != null)
                 label1.Font = Program.MainForm.Font;
-            label1.Text = Program.Lang.String($"busy{msg}");
+            label1.Text = msg ?? Program.Lang.String("busy0");
 
             progress.Visible = showProgress;
             if (!showProgress)

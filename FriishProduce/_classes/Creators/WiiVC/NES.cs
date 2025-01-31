@@ -38,7 +38,7 @@ namespace FriishProduce.Injectors
                 }
             }
 
-            if (offset == -1) throw new Exception(Program.Lang.Msg(2, true));
+            if (offset == -1) throw new Exception(Program.Lang.Msg(2, 1));
 
             // -----------------------
             // Check filesize of original ROM and set to variable

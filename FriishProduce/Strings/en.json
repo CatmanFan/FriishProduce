@@ -19,9 +19,6 @@
 			"b_save":							"&Save",
 			"b_dont_save":						"&Don't save",
 			"do_not_show":						"Do not show this again",
-			"busy0":							"Please wait...",
-			"busy1":							"Exportation in progress...",
-			"busy2":							"Testing Internet connection...",
 			
 			"by_default":						"Default",
 			"disabled":							"Disabled",
@@ -99,6 +96,14 @@
 			"009":								"You are currently already up to date.",
 			"010":								"Extract the opening.bnr (includes IMET header)?",
 			"011":								"This will restore all settings to factory defaults.\nAre you sure you want to continue?",
+			"012":								"Check all database entries to see if any are invalid?\nThis may take some time.",
+			"013":								"No invalid database entries were found.",
+			"014":								"Invalid database entries found:\n{0}\n\nPlease remove these entries from database.json.",
+
+			"b_000":							"Please wait...",
+			"b_001":							"Exportation in progress...",
+			"b_002":							"Testing Internet connection...",
+			"b_003":							"Verifying {0} database...",
 
 			"error":							"An error has occurred",
 			"e_000":							"Unable to connect to the Internet.\n{0}",
@@ -178,6 +183,8 @@
 			"updater":							"&Updater",
 			"check_for_updates":				"&Check for updates",
 			"auto_update":						"&Automatically check for updates on startup",
+			"advanced":							"&Advanced",
+			"test_database":					"&Test all database entries",
 			"clear_database":					"&Clear all databases",
 			"reset_preferences":				"&Reset all preferences",
 			"exit":								"&Exit",

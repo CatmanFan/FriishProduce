@@ -93,7 +93,7 @@ namespace FriishProduce.Injectors
                     try { File.Delete(Paths.WorkingFolder + "ik.fss.comp"); } catch { }
 
                     if (!File.Exists(frodo + "Frodo.exe"))
-                        throw new Exception(string.Format(Program.Lang.Msg(6, true), frodo.Replace(Paths.Tools, null) + "Frodo.exe"));
+                        throw new Exception(string.Format(Program.Lang.Msg(6, 1), frodo.Replace(Paths.Tools, null) + "Frodo.exe"));
 
                     File.Copy(Paths.WorkingFolder + "ik.fss", snapshot_orig, true);
                     try { File.Delete(Paths.WorkingFolder + "ik.fss"); } catch { }
@@ -103,7 +103,7 @@ namespace FriishProduce.Injectors
             // Check if original snapshot was found
             // ****************
             if (!File.Exists(snapshot_orig))
-                throw new Exception(Program.Lang.Msg(13, true));
+                throw new Exception(Program.Lang.Msg(13, 1));
 
             // Prompt to use existing copy
             // ****************
@@ -208,7 +208,7 @@ namespace FriishProduce.Injectors
                 );
 
                 if (!File.Exists(Paths.WorkingFolder + "ik.fss.comp"))
-                    throw new Exception(Program.Lang.Msg(2, true));
+                    throw new Exception(Program.Lang.Msg(2, 1));
                 else
                     MainContent.ReplaceFile(ik_fss_index, File.ReadAllBytes(Paths.WorkingFolder + "ik.fss.comp"));
             }

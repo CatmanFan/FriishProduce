@@ -19,9 +19,6 @@
 			"b_save":							"&Guardar",
 			"b_dont_save":						"&No guardar",
 			"do_not_show":						"No volver a mostrar este mensaje",
-			"busy0":							"Cargando...",
-			"busy1":							"Exportación en curso...",
-			"busy2":							"Probando la conexión a Internet...",
 			
 			"by_default":						"Por defecto",
 			"disabled":							"Deshabilitado(a)",
@@ -99,6 +96,14 @@
 			"009":								"La aplicación ya está actualizada.",
 			"010":								"¿Extraer el archivo Opening.bnr (incluye la cabecera IMET)?",
 			"011":								"Se restablecerá toda la configuración.\n¿Quiere continuar?",
+			"012":								"¿Quiere verificar la base de datos?\nEsto puede tardar varios minutos.",
+			"013":								"No se ha encontrado ninguna entrada no válida en la base de datos.",
+			"014":								"Se han encontrado las siguientes entradas no válidas:\n{0}\n\nPor favor, elimínelas del archivo \"database.json\".",
+
+			"b_000":							"Cargando...",
+			"b_001":							"Exportación en curso...",
+			"b_002":							"Probando la conexión a Internet...",
+			"b_003":							"Verificación de la base de datos de {0} en curso...",
 			
 			"error":							"Se ha producido un error",
 			"e_000":							"No se pudo conectar a Internet.\n{0}",
@@ -175,8 +180,10 @@
 			"updater":							"&Actualización",
 			"check_for_updates":				"Buscar &ahora",
 			"auto_update":						"Buscar &cuando se abra la aplicación",
-			"clear_database":					"&Borrar los bases de datos internos",
-			"reset_preferences":				"&Restablecer configuración",
+			"advanced":							"&Configuración avanzada",
+			"test_database":					"&Verificar la base de datos",
+			"clear_database":					"Restablecer la &base de datos",
+			"reset_preferences":				"&Restablecer la configuración",
 			"exit":								"&Salir",
 
 			"project_type":						"Canal de {0}",
