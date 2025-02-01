@@ -1010,14 +1010,15 @@ namespace FriishProduce
                 Wait(true, true, true, 0, msg);
 
                 ChannelDatabase c = new(p);
+                int index = 0;
                 double total = 0, verified = 0;
 
-                for (int x = 0; x < c.Entries.Count; x++)
+                for (int x = index; x < c.Entries.Count; x++)
                     total += c.Entries[x].Count;
 
                 // Download each entry's WAD files, then check to see if contents are valid.
                 // ****************
-                for (int x = 0; x < c.Entries.Count; x++)
+                for (int x = index; x < c.Entries.Count; x++)
                 {
                     var entry = c.Entries[x];
 
@@ -1037,8 +1038,12 @@ namespace FriishProduce
                         await System.Threading.Tasks.Task.Run(() =>
                         {
                             WAD w = WAD.Load(Web.Get(entry.GetWAD(y)));
-                            tested.Add(title, w.Contents?.Length > 1 && w.Contents?[0].Length > 0 && w.Contents?[1].Length > 0);
+                            bool valid = true;
+                            try { if (w.Contents?.Length == 0) throw new NotSupportedException(); }
+                            catch { valid = false; }
                             w.Dispose();
+
+                            tested.Add(title, valid);
                         });
 
                         verified += 1;

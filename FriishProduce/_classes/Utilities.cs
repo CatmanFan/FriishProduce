@@ -27,12 +27,15 @@ namespace FriishProduce
     }
     public static class Logger
     {
+        private static string Text { get; set; }
+
         public static void Log(string msg)
         {
-            // StringBuilder sb = new StringBuilder();
-            // sb.Append($"[{DateTime.Now.Year}-{DateTime.Now.Month:D2}-{DateTime.Now.Day:D2} {DateTime.Now.Hour:D2}:{DateTime.Now.Minute:D2}:{DateTime.Now.Second:D2}] {msg}\n");
-            // File.AppendAllText(Paths.Log, sb.ToString());
-            // sb.Clear();
+            if (!string.IsNullOrWhiteSpace(Text))
+                Text += Environment.NewLine;
+            Text += $"[{DateTime.Now.Year}-{DateTime.Now.Month:D2}-{DateTime.Now.Day:D2} {DateTime.Now.Hour:D2}:{DateTime.Now.Minute:D2}:{DateTime.Now.Second:D2}] {msg}";
+
+            // File.WriteAllText(Paths.Log, Text);
         }
     }
 
@@ -206,6 +209,8 @@ namespace FriishProduce
     public static class Byte
     {
         public static readonly byte[] Dummy = new byte[] { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
+
+        public static string GetPattern(byte[] source, int index = 0, int length = 16) => Encoding.GetEncoding(1252).GetString(source.Skip(index).Take(length).ToArray());
 
         public static int PatternAt(byte[] source, byte[] pattern)
         {

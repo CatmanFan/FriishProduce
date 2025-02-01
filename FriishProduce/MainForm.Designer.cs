@@ -77,7 +77,6 @@ namespace FriishProduce
             this.extract_wad_icon = new System.Windows.Forms.MenuItem();
             this.extract_wad_sound = new System.Windows.Forms.MenuItem();
             this.extract_wad_manual = new System.Windows.Forms.MenuItem();
-            this.menuItem10 = new System.Windows.Forms.MenuItem();
             this.advanced = new System.Windows.Forms.MenuItem();
             this.language_file_editor = new System.Windows.Forms.MenuItem();
             this.test_database = new System.Windows.Forms.MenuItem();
@@ -88,6 +87,8 @@ namespace FriishProduce
             this.about = new System.Windows.Forms.MenuItem();
             this.tabControl = new JacksiroKe.MdiTabCtrl.TabControl();
             this.Tip = new TheArtOfDev.HtmlRenderer.WinForms.HtmlToolTip();
+            this.extract_from_wad = new System.Windows.Forms.MenuItem();
+            this.menuItem10 = new System.Windows.Forms.MenuItem();
             this.mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             this.toolStrip.SuspendLayout();
@@ -367,10 +368,7 @@ namespace FriishProduce
             this.preferences,
             this.updater,
             this.menuItem9,
-            this.extract_wad_banner,
-            this.extract_wad_icon,
-            this.extract_wad_sound,
-            this.extract_wad_manual,
+            this.extract_from_wad,
             this.menuItem10,
             this.advanced});
             this.menuItem3.Tag = "tools";
@@ -413,40 +411,35 @@ namespace FriishProduce
             // 
             // extract_wad_banner
             // 
-            this.extract_wad_banner.Index = 3;
+            this.extract_wad_banner.Index = 0;
             this.extract_wad_banner.Tag = "extract_wad_banner";
             resources.ApplyResources(this.extract_wad_banner, "extract_wad_banner");
             this.extract_wad_banner.Click += new System.EventHandler(this.ExtractWAD_Click);
             // 
             // extract_wad_icon
             // 
-            this.extract_wad_icon.Index = 4;
+            this.extract_wad_icon.Index = 1;
             this.extract_wad_icon.Tag = "extract_wad_icon";
             resources.ApplyResources(this.extract_wad_icon, "extract_wad_icon");
             this.extract_wad_icon.Click += new System.EventHandler(this.ExtractWAD_Click);
             // 
             // extract_wad_sound
             // 
-            this.extract_wad_sound.Index = 5;
+            this.extract_wad_sound.Index = 2;
             this.extract_wad_sound.Tag = "extract_wad_sound";
             resources.ApplyResources(this.extract_wad_sound, "extract_wad_sound");
             this.extract_wad_sound.Click += new System.EventHandler(this.ExtractWAD_Click);
             // 
             // extract_wad_manual
             // 
-            this.extract_wad_manual.Index = 6;
+            this.extract_wad_manual.Index = 3;
             this.extract_wad_manual.Tag = "extract_wad_manual";
             resources.ApplyResources(this.extract_wad_manual, "extract_wad_manual");
             this.extract_wad_manual.Click += new System.EventHandler(this.ExtractWAD_Click);
             // 
-            // menuItem10
-            // 
-            this.menuItem10.Index = 7;
-            resources.ApplyResources(this.menuItem10, "menuItem10");
-            // 
             // advanced
             // 
-            this.advanced.Index = 8;
+            this.advanced.Index = 5;
             this.advanced.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.language_file_editor,
             this.test_database,
@@ -551,6 +544,22 @@ namespace FriishProduce
             this.Tip.TooltipCssClass = "htmltooltip";
             this.Tip.UseGdiPlusTextRendering = true;
             // 
+            // extract_from_wad
+            // 
+            this.extract_from_wad.Index = 3;
+            this.extract_from_wad.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.extract_wad_banner,
+            this.extract_wad_icon,
+            this.extract_wad_sound,
+            this.extract_wad_manual});
+            this.extract_from_wad.Tag = "extract_from_wad";
+            resources.ApplyResources(this.extract_from_wad, "extract_from_wad");
+            // 
+            // menuItem10
+            // 
+            this.menuItem10.Index = 4;
+            resources.ApplyResources(this.menuItem10, "menuItem10");
+            // 
             // MainForm
             // 
             this.AllowDrop = true;
@@ -631,13 +640,14 @@ namespace FriishProduce
         private System.Windows.Forms.MenuItem menuItem9;
         private System.Windows.Forms.MenuItem clear_database;
         private System.Windows.Forms.MenuItem wiki;
-        private System.Windows.Forms.MenuItem menuItem10;
         private System.Windows.Forms.MenuItem reset_preferences;
         public TheArtOfDev.HtmlRenderer.WinForms.HtmlToolTip Tip;
         private System.Windows.Forms.MenuItem open_recent;
         private System.Windows.Forms.MenuItem close_all;
         private System.Windows.Forms.MenuItem test_database;
         private System.Windows.Forms.MenuItem advanced;
+        private System.Windows.Forms.MenuItem extract_from_wad;
+        private System.Windows.Forms.MenuItem menuItem10;
     }
 }
 

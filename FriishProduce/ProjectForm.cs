@@ -831,8 +831,8 @@ namespace FriishProduce
             bool loadProject = project != null;
             if (loadProject)
             {
+                Logger.Log($"Opened project at {project.ProjectPath}.");
                 SetRecentProjects(project.ProjectPath);
-
                 ProjectPath = project.ProjectPath;
 
                 video_mode.SelectedIndex = project.VideoMode;
@@ -888,6 +888,7 @@ namespace FriishProduce
             }
             else
             {
+                Logger.Log($"Created new {targetPlatform} project.");
                 use_online_wad.Enabled = Program.Config.application.use_online_wad_enabled;
                 if (use_online_wad.Checked && !use_online_wad.Enabled) use_online_wad.Checked = false;
                 if (!use_offline_wad.Checked && !use_online_wad.Checked) use_offline_wad.Checked = true;

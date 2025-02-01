@@ -215,36 +215,20 @@ namespace FriishProduce.Injectors
             lines = ConvertSaveText(lines);
             string text = lines.Length > 1 ? string.Join("\n", lines) : lines[0];
 
-            // In the two WADs I've tested (SMB3 & Kirby's Adventure), the savedata text is found near
-            // the string "VirtualIF.c MEM1 heap allocation error" within the content1 file
-            // This function will try to read for the index of the string by going backwards from end-of-file
-            int start;
-            int end = 0;
-
-            for (int i = Contents[1].Length - 1; i > 0; i--)
-            {
-                if (Contents[1][i] == 0x56
-                 && Contents[1][i + 1] == 0x69
-                 && Contents[1][i + 2] == 0x72
-                 && Contents[1][i + 3] == 0x74
-                 && Contents[1][i + 4] == 0x75
-                 && Contents[1][i + 5] == 0x61
-                 && Contents[1][i + 6] == 0x6C
-                 && Contents[1][i + 7] == 0x49
-                 && Contents[1][i + 8] == 0x46)
-                    end = i;
-            }
-
+            // In the two WADs I've tested (SMB3 & Kirby's Adventure), the savedata text is found near the string "VirtualIF.c MEM1 heap allocation error" within the content1 file.
             // In both aforementioned WADs the savetitle text must not be bigger than what the content1 can contain.
             // If trying to increase or decrease the filesize it breaks the WAD
+            int end = Byte.IndexOf(Contents[1], "VirtualIF");
 
-            if (end != 0)
+            if (end > 0)
             {
-                start = saveTPL_offsets[1] > 100 ? saveTPL_offsets[1] : end - 40;
-                for (int i = start; i < end; i++)
+                int start = saveTPL_offsets[1] > 100 ? saveTPL_offsets[1] : end - 40;
+                int length = end - start;
+
+                for (int i = 0; i < length; i++)
                 {
-                    try { Contents[1][i] = SaveTextEncoding.GetBytes(text)[i - start]; }
-                    catch { Contents[1][i] = 0x00; }
+                    try { Contents[1][i + start] = SaveTextEncoding.GetBytes(text)[i]; }
+                    catch { Contents[1][i + start] = 0x00; }
                 }
             }
 

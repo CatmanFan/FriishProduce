@@ -556,6 +556,9 @@
   <data name="extract_wad_manual.Text" xml:space="preserve">
     <value>extract_wad_manual</value>
   </data>
+  <data name="extract_from_wad.Text" xml:space="preserve">
+    <value>extract_from_wad</value>
+  </data>
   <data name="menuItem10.Text" xml:space="preserve">
     <value>-</value>
   </data>
@@ -3084,12 +3087,6 @@
   <data name="&gt;&gt;extract_wad_manual.Type" xml:space="preserve">
     <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;menuItem10.Name" xml:space="preserve">
-    <value>menuItem10</value>
-  </data>
-  <data name="&gt;&gt;menuItem10.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;advanced.Name" xml:space="preserve">
     <value>advanced</value>
   </data>
@@ -3143,6 +3140,18 @@
   </data>
   <data name="&gt;&gt;Tip.Type" xml:space="preserve">
     <value>TheArtOfDev.HtmlRenderer.WinForms.HtmlToolTip, HtmlRenderer.WinForms, Version=1.5.1.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;extract_from_wad.Name" xml:space="preserve">
+    <value>extract_from_wad</value>
+  </data>
+  <data name="&gt;&gt;extract_from_wad.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuItem10.Name" xml:space="preserve">
+    <value>menuItem10</value>
+  </data>
+  <data name="&gt;&gt;menuItem10.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>
