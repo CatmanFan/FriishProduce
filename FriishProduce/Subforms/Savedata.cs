@@ -83,6 +83,10 @@ namespace FriishProduce
                 line.MaxLength = MaxLength;
             }
 
+            // 31 is the maximum amount of characters that the Wii system menu can display in Data Management (any more and it is cut off)
+            // ********
+            if (MaxLength > 31) MaxLength = 31;
+
             // Write length to label
             // ********
             notice.Text = "<div>" + string.Format(Program.Lang.String("edit_save_data_max", "projectform"), "<b>" + MaxLength + "</b>") + "</div>";

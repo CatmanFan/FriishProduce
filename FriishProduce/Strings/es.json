@@ -103,7 +103,7 @@
 			"b_000":							"Cargando...",
 			"b_001":							"Exportación en curso...",
 			"b_002":							"Probando la conexión a Internet...",
-			"b_003":							"Verificación de la base de datos de {0} en curso...",
+			"b_003":							"Verificando la base de datos de {0}...",
 			
 			"error":							"Se ha producido un error",
 			"e_000":							"No se pudo conectar a Internet.\n{0}",
