@@ -94,7 +94,8 @@ namespace FriishProduce
                 if (List[i].platform == index) return Verify(file, i);
             }
 
-            MessageBox.Show(Program.Lang.Msg(2), MessageBox.Buttons.Ok, MessageBox.Icons.Warning);
+            System.Media.SystemSounds.Beep.Play();
+            // MessageBox.Show(Program.Lang.Msg(2), MessageBox.Buttons.Ok, MessageBox.Icons.Warning);
             return false;
         }
 

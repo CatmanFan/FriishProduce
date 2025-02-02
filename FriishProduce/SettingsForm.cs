@@ -605,14 +605,13 @@ namespace FriishProduce
             ImportBIOS.Filter += "|" + Program.Lang.String("filter.zip") + Program.Lang.String("filter");
 
             var dialog = ImportBIOS.ShowDialog();
-            if (dialog == DialogResult.OK && BIOS.Verify(ImportBIOS.FileName, platform))
-            {
-                textbox.Text = ImportBIOS.FileName;
-            }
+
+            if (dialog == DialogResult.OK)
+                if (BIOS.Verify(ImportBIOS.FileName, platform))
+                    textbox.Text = ImportBIOS.FileName;
+
             else if (dialog == DialogResult.Cancel)
-            {
                 textbox.Clear();
-            }
         }
     }
 }
