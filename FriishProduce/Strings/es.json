@@ -326,6 +326,7 @@
 			"patch_volume":						"Amplificar volumen",
 			"patch_noopera":					"Eliminar archivos del manual",
 			"patch_wiimote":					"Habilitar soporte nativo para el mando de Wii",
+			"patch_gcremap":					"Rotar el mapeado ABXY del mando de GC",
 			"patch_nocheck":					"Deshabilitar verificación de ROM",
 			"patch_nodark":						"Desactivar filtro oscuro",
 			"patch_nocc":						"Deshabilitar mensaje del mando clásico",
