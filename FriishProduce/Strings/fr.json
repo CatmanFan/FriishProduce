@@ -16,8 +16,8 @@
 			"b_close":							"&Fermer",
 			"b_yes":							"&Oui",
 			"b_no":								"&Non",
-			"b_save":							"&Sauvegarder",
-			"b_dont_save":						"&Ne pas sauvegarder",
+			"b_save":							"&Enregistrer",
+			"b_dont_save":						"&Ne pas enregistrer",
 			"do_not_show":						"Ne plus afficher ce message",
 			
 			"by_default":						"Par défaut",
@@ -259,8 +259,8 @@
 
 			"injection_method":					"Méthode d'injection",
 			"injection_method_options":			"Paramètres de méthode d'injection ...",
-			"controller":						"Configuration des manettes",
-			"controller_mapping":				"Modifier le mappage ...",
+			"controller":						"Manettes",
+			"controller_mapping":				"Modifier la configuration des boutons ...",
 
 			"save_data":						"Données de sauvegarde",
 			"save_data_enable":					"Activer la sauvegarde des données",

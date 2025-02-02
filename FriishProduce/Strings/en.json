@@ -263,7 +263,7 @@
 
 			"injection_method":					"Injection method",
 			"injection_method_options":			"Injection method options...",
-			"controller":						"Controller configuration",
+			"controller":						"Controllers",
 			"controller_mapping":				"Edit controller mapping...",
 
 			"save_data":						"Savedata",

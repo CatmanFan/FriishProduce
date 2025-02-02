@@ -260,8 +260,8 @@
 
 			"injection_method":					"Método de inyección",
 			"injection_method_options":			"Ajustes del método de inyección...",
-			"controller":						"Configuración de botones",
-			"controller_mapping":				"Editar...",
+			"controller":						"Mandos",
+			"controller_mapping":				"Cambiar la asignación de los botones...",
 
 			"save_data":						"Datos guardados",
 			"save_data_enable":					"Utilizar la función de guardado",

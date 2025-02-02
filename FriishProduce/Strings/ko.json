@@ -258,7 +258,7 @@
 			
 			"injection_method":					"주입 방법",
 			"injection_method_options":			"주입 방법 옵션...",
-			"controller":						"컨트롤러 구성",
+			"controller":						"Controllers",
 			"controller_mapping":				"컨트롤러 버튼 매핑...",
 			
 			"save_data":						"저장 데이터",

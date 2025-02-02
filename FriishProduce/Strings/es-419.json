@@ -4,6 +4,10 @@
 	"application_title": "FriishProduce",
 
 	"strings": {
+		"projectform": {
+			"controller":						"Configuración de los controles"
+		},
+
 		"controller": {
 			"page1":							"Control remoto Wii",
 			"page2":							"Mando clásico",
@@ -11,11 +15,23 @@
 		},
 
 		"vc_snes": {
-			"patch_wiimote":					"Activar la compatibilidad con el control remoto Wii"
+			"patch_wiimote":					"Habilitar soporte nativo para el control remoto Wii",
+			"patch_gcremap":					"Rotar el mapeado ABXY del control de GC"
+		},
+
+		"vc_sega": {
+			"dev_mdpad_enable_6b":				"Utilizar control de 6 botones para {0}"
 		},
 
 		"vc_pce": {
-			"region1":							"América y Europa"
-		}
+			"region1":							"América y Europa",
+			"padbutton0":						"Utilizando control de 2 botones",
+			"padbutton1":						"Utilizando control de 6 botones"
+		},
+
+		"adobe_flash": {
+			"strap_reminder":					"Advertencia de correa del control remoto Wii",
+			"strap_reminder2":					"{enabled} (sin pantalla de controles complementarios)",
+		},
 	}
 }
