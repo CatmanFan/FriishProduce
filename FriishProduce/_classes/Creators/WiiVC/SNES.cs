@@ -145,16 +145,16 @@ namespace FriishProduce.Injectors
                     int extra = compressedMainDol == true ? 1 : 0;
                     var title = new byte[80 + extra];
 
-                    int line1 = SaveTextEncoding.GetBytes(lines[0]).Length;
-                    int line2 = lines.Length >= 2 ? SaveTextEncoding.GetBytes(lines[1]).Length : 0;
-                    int line2_offset = 40 + extra;
+                    int length_a = SaveTextEncoding.GetBytes(lines[0]).Length;
+                    int length_b = lines.Length >= 2 ? SaveTextEncoding.GetBytes(lines[1]).Length : 0;
+                    int line_break = 40 + extra;
 
-                    for (int i = 0; i < line1; i++)
+                    for (int i = 0; i < length_a; i++)
                         title[i] = SaveTextEncoding.GetBytes(lines[0])[i];
 
                     if (lines.Length >= 2)
-                        for (int i = 0; i < line2; i++)
-                            title[i + line2_offset] = SaveTextEncoding.GetBytes(lines[1])[i];
+                        for (int i = 0; i < length_b; i++)
+                            title[i + line_break] = SaveTextEncoding.GetBytes(lines[1])[i];
 
                     title.CopyTo(Contents[1], index + 64);
                 }
