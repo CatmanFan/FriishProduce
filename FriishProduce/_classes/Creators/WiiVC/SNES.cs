@@ -217,6 +217,7 @@ namespace FriishProduce.Injectors
             if (bool.Parse(Settings["patch_nosuspend"])) argDict.Add("--no-suspend", Program.Lang.String("patch_nosuspend", "vc_snes"));
             if (bool.Parse(Settings["patch_nosave"])) argDict.Add("--no-save", Program.Lang.String("patch_nosave", "vc_snes"));
             if (bool.Parse(Settings["patch_widescreen"])) argDict.Add("--wide", Program.Lang.String("patch_widescreen", "vc_snes"));
+            if (bool.Parse(Settings["patch_gcremap"])) argDict.Add("--gc-remap", Program.Lang.String("patch_gcremap", "vc_snes"));
             if (nomanual) argDict.Add("--no-opera", Program.Lang.String("patch_noopera", "vc_snes"));
 
             if (argDict?.Count == 0) return;

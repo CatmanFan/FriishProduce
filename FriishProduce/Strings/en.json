@@ -329,6 +329,7 @@
 			"patch_volume":						"Boost volume",
 			"patch_noopera":					"Remove manual files",
 			"patch_wiimote":					"Enable native Wii Remote support",
+			"patch_gcremap":					"Rotate GC controller ABXY mapping",
 			"patch_nocheck":					"Disable all ROM checks",
 			"patch_nodark":						"Disable dark filter",
 			"patch_nocc":						"Disable Classic Controller screen",

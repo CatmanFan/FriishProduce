@@ -35,7 +35,8 @@ namespace FriishProduce
                 { "patch_nosave",       Program.Config.snes.patch_nosave.ToString() },
                 { "patch_widescreen",   Program.Config.snes.patch_widescreen.ToString() },
                 { "patch_nocheck",      Program.Config.snes.patch_nocheck.ToString() },
-                { "patch_wiimote",      Program.Config.snes.patch_wiimote.ToString() }
+                { "patch_wiimote",      Program.Config.snes.patch_wiimote.ToString() },
+                { "patch_gcremap",      Program.Config.snes.patch_gcremap.ToString() }
             };
         }
 
@@ -53,6 +54,7 @@ namespace FriishProduce
                 patch_widescreen.Checked            = bool.Parse(Options["patch_widescreen"]);
                 patch_nocheck.Checked               = bool.Parse(Options["patch_nocheck"]);
                 patch_wiimote.Checked               = bool.Parse(Options["patch_wiimote"]);
+                patch_gcremap.Checked               = bool.Parse(Options["patch_gcremap"]);
 
                 UsesKeymap = patch_wiimote.Checked;
             }
@@ -69,6 +71,7 @@ namespace FriishProduce
             Options["patch_widescreen"] = patch_widescreen.Checked.ToString();
             Options["patch_nocheck"] = patch_nocheck.Checked.ToString();
             Options["patch_wiimote"] = patch_wiimote.Checked.ToString();
+            Options["patch_gcremap"] = patch_gcremap.Checked.ToString();
 
             UsesKeymap = patch_wiimote.Checked;
         }

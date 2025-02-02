@@ -191,6 +191,7 @@ namespace FriishProduce
             public bool patch_widescreen { get; set; } = false;
             public bool patch_nocheck { get; set; } = false;
             public bool patch_wiimote { get; set; } = false;
+            public bool patch_gcremap { get; set; } = false;
         }
 
         public class N64

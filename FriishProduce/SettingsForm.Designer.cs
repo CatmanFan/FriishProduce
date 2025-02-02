@@ -142,6 +142,8 @@ namespace FriishProduce
             this.flash_save_data_enable = new System.Windows.Forms.CheckBox();
             this.vc_snes = new System.Windows.Forms.Panel();
             this.vc_snes_options = new System.Windows.Forms.GroupBox();
+            this.vc_snes_patch_gcremap = new System.Windows.Forms.CheckBox();
+            this.vc_snes_patch_wiimote = new System.Windows.Forms.CheckBox();
             this.vc_snes_patch_nocheck = new System.Windows.Forms.CheckBox();
             this.vc_snes_patch_nosave = new System.Windows.Forms.CheckBox();
             this.vc_snes_patch_widescreen = new System.Windows.Forms.CheckBox();
@@ -149,7 +151,6 @@ namespace FriishProduce
             this.vc_snes_patch_nodark = new System.Windows.Forms.CheckBox();
             this.vc_snes_patch_nosuspend = new System.Windows.Forms.CheckBox();
             this.vc_snes_patch_volume = new System.Windows.Forms.CheckBox();
-            this.vc_snes_patch_wiimote = new System.Windows.Forms.CheckBox();
             this.vc_n64_options.SuspendLayout();
             this.bottomPanel2.SuspendLayout();
             this.bottomPanel1.SuspendLayout();
@@ -1124,6 +1125,7 @@ namespace FriishProduce
             // 
             // vc_snes_options
             // 
+            this.vc_snes_options.Controls.Add(this.vc_snes_patch_gcremap);
             this.vc_snes_options.Controls.Add(this.vc_snes_patch_wiimote);
             this.vc_snes_options.Controls.Add(this.vc_snes_patch_nocheck);
             this.vc_snes_options.Controls.Add(this.vc_snes_patch_nosave);
@@ -1136,6 +1138,20 @@ namespace FriishProduce
             this.vc_snes_options.Name = "vc_snes_options";
             this.vc_snes_options.TabStop = false;
             this.vc_snes_options.Tag = "vc_options";
+            // 
+            // vc_snes_patch_gcremap
+            // 
+            resources.ApplyResources(this.vc_snes_patch_gcremap, "vc_snes_patch_gcremap");
+            this.vc_snes_patch_gcremap.Name = "vc_snes_patch_gcremap";
+            this.vc_snes_patch_gcremap.Tag = "patch_gcremap";
+            this.vc_snes_patch_gcremap.UseVisualStyleBackColor = true;
+            // 
+            // vc_snes_patch_wiimote
+            // 
+            resources.ApplyResources(this.vc_snes_patch_wiimote, "vc_snes_patch_wiimote");
+            this.vc_snes_patch_wiimote.Name = "vc_snes_patch_wiimote";
+            this.vc_snes_patch_wiimote.Tag = "patch_wiimote";
+            this.vc_snes_patch_wiimote.UseVisualStyleBackColor = true;
             // 
             // vc_snes_patch_nocheck
             // 
@@ -1185,13 +1201,6 @@ namespace FriishProduce
             this.vc_snes_patch_volume.Name = "vc_snes_patch_volume";
             this.vc_snes_patch_volume.Tag = "patch_volume";
             this.vc_snes_patch_volume.UseVisualStyleBackColor = true;
-            // 
-            // vc_snes_patch_wiimote
-            // 
-            resources.ApplyResources(this.vc_snes_patch_wiimote, "vc_snes_patch_wiimote");
-            this.vc_snes_patch_wiimote.Name = "vc_snes_patch_wiimote";
-            this.vc_snes_patch_wiimote.Tag = "patch_wiimote";
-            this.vc_snes_patch_wiimote.UseVisualStyleBackColor = true;
             // 
             // SettingsForm
             // 
@@ -1408,5 +1417,6 @@ namespace FriishProduce
         private System.Windows.Forms.CheckBox vc_snes_patch_nocheck;
         private System.Windows.Forms.CheckBox vc_n64_patch_cleantextures;
         private System.Windows.Forms.CheckBox vc_snes_patch_wiimote;
+        private System.Windows.Forms.CheckBox vc_snes_patch_gcremap;
     }
 }

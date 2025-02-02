@@ -326,6 +326,7 @@
 			"patch_volume":						"Augmenter le volume",
 			"patch_noopera":					"Supprimer les fichiers du mode d'emploi",
 			"patch_wiimote":					"Permetter le contrôle avec la télécommande Wii",
+			"patch_gcremap":					"Rotation du mappage ABXY du contrôleur GC",
 			"patch_nocheck":					"Désactiver la vérification de la ROM",
 			"patch_nodark":						"Désactiver le filtre sombre",
 			"patch_nocc":						"Désactiver l'écran concernant la manette classique",
