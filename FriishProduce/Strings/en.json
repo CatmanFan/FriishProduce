@@ -377,7 +377,7 @@
 		},
 
 		"vc_c64": {
-			"rom_notice":						"This VC inject requires a snapshot taken at startup using the Frodo emulator.\nWhat would you like to do?",
+			"rom_notice":						"This injection method requires a snapshot taken at startup using the Frodo emulator.\nWhat would you like to do?",
 			"rom_notice1":						"&Create a new snapshot",
 			"rom_notice2":						"&Use an existing snapshot",
 		},

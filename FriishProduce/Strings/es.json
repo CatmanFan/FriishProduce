@@ -84,21 +84,21 @@
 		},
 
 		"messages": {
-			"000":								"Algunos cambios necesitan que se reinicie el programa para que tengan efecto.",
-		    "001":								"El proyecto \"{0}\" ha sido cambiado.\n¿Qué desea hacer?",
+			"000":								"Algunos cambios necesitan reiniciar el programa para que tengan efecto.",
+		    "001":								"El proyecto \"{0}\" ha sido cambiado.\n¿Guardar ahora?",
 			"002":								"El archivo seleccionado no es válido.",
-			"003":								"Exportado con éxito.\n¿Quiere abrir la carpeta de salida?",
-			"004":								"No se pueden recuperar todos los datos del juego actual.\nPor esta razón deberá completar manualmente algunos formularios.",
+			"003":								"Exportado con éxito.\n¿Quieres abrir la carpeta de salida?",
+			"004":								"No se pueden recuperar todos los datos del juego actual.\nPor esta razón debes completar manualmente ciertos formularios.",
 			"005":								"El WAD que ha seleccionado (ID: {0}) no es válido.\nEsto puede deberse a que:\n  • la consola actual no coincide con la del WAD.\n  • el WAD aún no está disponible en la base de datos de esta aplicación.\n  • el WAD ya está modificado, ya sea inyectado o convertido en forwarder.",
-			"006":								"Puede reemplazar el manual electrónico original del juego de la Consola Virtual con otro manual personalizado.\nPara hacer esto, necesita un archivo comprimido ZIP conteniendo el contenido extraído/modificado del archivo *.arc del manual electrónico de Consola Virtual.",
+			"006":								"Puedes reemplazar el manual electrónico original del juego de la Consola Virtual con otro manual personalizado.\nPara hacer esto, necesitas un archivo comprimido ZIP conteniendo el contenido extraído/modificado del archivo *.arc del manual electrónico de Consola Virtual.",
 			"007":								"El archivo seleccionado no contiene ningún contenido válido de manual electrónico.",
-			"008":								"Actualización de FriishProduce\nYa está disponible para descargar la nueva versión {0} de FriishProduce.\nActualmente está utilizando la versión {1}.\n\n¿Quiere descargar la actualización desde GitHub ahora?",
+			"008":								"Actualización de FriishProduce\nYa está disponible para descargar la versión {0} de FriishProduce.\nActualmente estás utilizando la versión {1}.\n\n¿Quieres descargar la nueva versión desde GitHub ahora?",
 			"009":								"La aplicación ya está actualizada.",
 			"010":								"¿Extraer el archivo Opening.bnr (incluye la cabecera IMET)?",
-			"011":								"Se restablecerá toda la configuración.\n¿Quiere continuar?",
-			"012":								"¿Quiere verificar la base de datos?\nEsto puede tardar varios minutos.",
+			"011":								"Se restablecerán la configuración predefinida y los archivos utilizados por FriishProduce.\n¿Seguro que quieres continuar?",
+			"012":								"¿Quieres verificar la base de datos?\nEsto puede tardar varios minutos.",
 			"013":								"No se ha encontrado ninguna entrada no válida en la base de datos.",
-			"014":								"Se han encontrado las siguientes entradas no válidas:\n{0}\n\nPor favor, elimínelas del archivo \"database.json\".",
+			"014":								"Se han encontrado las siguientes entradas no válidas:\n{0}\n\nPor favor, elimínalas del archivo \"database.json\".",
 
 			"b_000":							"Cargando...",
 			"b_001":							"Exportación en curso...",
@@ -120,7 +120,7 @@
 			"e_011":							"El archivo \"{0}\" no se encontró en su ruta original. Puede que haya sido eliminado o movido.",
 			"e_012":							"La carpeta \"{0}\" no se encontró en su ruta original. Puede que haya sido eliminada o movida.",
 			"e_013":							"No se encontró ningún punto de entrada de inyección. Puede deberse a que el método de inyección utilizado por este canal aún no está compatible.",
-			"e_014":							"No se encontró el archivo BIOS necesario para esta consola.\nSelecciónelo en la configuración de FriishProduce.",
+			"e_014":							"No se encontró el archivo BIOS necesario para esta consola.\nPor favor, selecciónalo en la configuración de FriishProduce.",
 			"e_015":							"No se pudo crear la imagen TPL para los datos guardados.",
 			"e_016":							"No se encontró ningún manual electrónico de Consola Virtual.",
 			"e_017":							"\"{0}\" no es un archivo de proyecto válido.",
@@ -128,11 +128,11 @@
 		},
 
 		"html": {
-			"l_000":							"Se abrirá el emulador Frodo.\n\n
-												1) Ingrese el comando \"<b>LOAD\"*\",8</b>\" en el emulador.\n
-												Si la consola C64 no responde y todavía no hay ningún indicador LED de la unidad, abra Frodo.fpr desde <i>File > Open</i>, luego pulse F12 para reiniciar el emulador y vuelva a intentar la prueba.\n\n
-												2) Una vez cargado el juego, ingrese el comando \"<b>RUN</b>\". En cuanto empiece el juego, haga clic en <i>Tools > Patch and Save Snapshot</i> y guarde el archivo como \"snap.fss\".\n
-												También puede guardar otra copia para usarlo más tarde.\n\n
+			"l_000":							"Ahora se abrirá el emulador Frodo.\n\n
+												1) Ingresa el comando \"<b>LOAD\"*\",8</b>\" en el emulador.\n
+												Si la consola C64 no responde y todavía no hay ningún indicador LED de la unidad, abre Frodo.fpr desde <i>File > Open</i>, luego pulsa F12 para reiniciar el emulador y vuelve a intentar la prueba.\n\n
+												2) Una vez cargado el juego, ingresa el comando \"<b>RUN</b>\". En cuanto empiece el juego, haz clic en <i>Tools > Patch and Save Snapshot</i> y guarda el archivo como \"snap.fss\".\n
+												También puedes guardar otra copia para usarlo más tarde.\n\n
 												<i>Intentos restantes: <b>{0}</b></i>",
 			
 			"t_000":							"Nombre utilizado para el icono que aparece en el menu Wii.\n
@@ -148,8 +148,8 @@
 
 			"t_003":							"Establecer los ajustes predeterminados del emulador.",
 
-			"t_004":							"Cuando esta opción está habilitada, el programa tratará todos los archivos dentro de la misma carpeta seleccionada actualmente como parte del software que se va a inyectar.\n
-												Asegúrese de que los archivos de su software (juego) estén en una carpeta separada."
+			"t_004":							"Cuando esta opción está habilitada, el programa tratará todos los archivos dentro de la misma carpeta seleccionada actualmente como parte del juego que se va a inyectar.\n
+												Asegúrate de que estos archivos estén en una carpeta separada."
 		}
 	},
 
@@ -373,7 +373,7 @@
 		},
 
 		"vc_c64": {
-			"rom_notice":						"Esta inyección de la Consola Virtual requiere una captura (snapshot) tomada al inicio del juego usando el emulador Frodo.\n\n¿Qué desea hacer?",
+			"rom_notice":						"Este método de inyección requiere una captura tomada al inicio del juego usando el emulador Frodo.\n\n¿Qué quieres hacer?",
 			"rom_notice1":						"&Crear una nueva captura",
 			"rom_notice2":						"&Usar una captura existente"
 		},

@@ -85,7 +85,7 @@
 
 		"messages": {
 			"000":								"Un redémarrage est nécessaire pour que tous les changements aux réglages prennent effet.",
-			"001":								"«{0}» comporte des modifications non enregistrées.\nQu'est-ce que vous voudrais faire ?",
+			"001":								"«{0}» comporte des modifications non enregistrées.\nEnregistrer le projet maintenant ?",
 			"002":								"Le fichier précisé est invalide.",
 			"003":								"Terminé avec succès.\nOuvrir le dossier de sortie ?",
 			"004":								"Impossible de charger tous les informations de ce logiciel (nom, année de sortie ou joueurs) à partir de la bibliothèque des jeux.\nCertaines informations doivent être spécifiées manuellement.",
