@@ -137,7 +137,7 @@ namespace FriishProduce
             }
 
             OldMapping = new Dictionary<Buttons, string>(Mapping);
-            DialogResult = DialogResult.OK;
+            // DialogResult = DialogResult.OK;
         }
 
         protected void Cancel_Click(object sender, EventArgs e)
@@ -163,8 +163,7 @@ namespace FriishProduce
             else
             {
                 SetKeymap(Mapping.Values.ToArray());
-
-                if (OldMapping == null) OldMapping = new Dictionary<Buttons, string>(Mapping);
+                OldMapping = new Dictionary<Buttons, string>(Mapping);
             }
 
             bool UsesWiimote = AllowedKeymaps.HasFlag(Allowed.Wiimote);

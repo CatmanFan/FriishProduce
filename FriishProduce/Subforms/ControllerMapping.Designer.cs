@@ -32,7 +32,7 @@ namespace FriishProduce
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ControllerMapping));
             this.bottomPanel2 = new System.Windows.Forms.Panel();
             this.bottomPanel1 = new System.Windows.Forms.Panel();
-            this.b_cancel = new System.Windows.Forms.Button();
+            this.b_close = new System.Windows.Forms.Button();
             this.b_save = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.page1 = new System.Windows.Forms.TabPage();
@@ -105,19 +105,19 @@ namespace FriishProduce
             // bottomPanel1
             // 
             this.bottomPanel1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.bottomPanel1.Controls.Add(this.b_cancel);
+            this.bottomPanel1.Controls.Add(this.b_close);
             this.bottomPanel1.Controls.Add(this.b_save);
             resources.ApplyResources(this.bottomPanel1, "bottomPanel1");
             this.bottomPanel1.Name = "bottomPanel1";
             // 
-            // b_cancel
+            // b_close
             // 
-            resources.ApplyResources(this.b_cancel, "b_cancel");
-            this.b_cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.b_cancel.Name = "b_cancel";
-            this.b_cancel.Tag = "b_cancel";
-            this.b_cancel.UseVisualStyleBackColor = true;
-            this.b_cancel.Click += new System.EventHandler(this.Cancel_Click);
+            resources.ApplyResources(this.b_close, "b_close");
+            this.b_close.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.b_close.Name = "b_close";
+            this.b_close.Tag = "b_close";
+            this.b_close.UseVisualStyleBackColor = true;
+            this.b_close.Click += new System.EventHandler(this.Cancel_Click);
             // 
             // b_save
             // 
@@ -513,7 +513,7 @@ namespace FriishProduce
             // 
             this.AcceptButton = this.b_save;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.CancelButton = this.b_cancel;
+            this.CancelButton = this.b_close;
             resources.ApplyResources(this, "$this");
             this.ControlBox = false;
             this.Controls.Add(this.presets_gb);
@@ -551,7 +551,7 @@ namespace FriishProduce
 
         private System.Windows.Forms.Panel bottomPanel2;
         protected System.Windows.Forms.Panel bottomPanel1;
-        protected System.Windows.Forms.Button b_cancel;
+        protected System.Windows.Forms.Button b_close;
         protected System.Windows.Forms.Button b_save;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage page1;

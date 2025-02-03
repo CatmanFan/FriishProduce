@@ -17,7 +17,7 @@ namespace FriishProduce
             {
                 Program.Lang.Control(this);
 
-                controller_cb.Text = Program.Lang.String("controller", "projectform");
+                controller_box.Text = Program.Lang.String("controller", "projectform");
                 b_controller.Text = Program.Lang.String("controller_mapping", "projectform");
             }
         }

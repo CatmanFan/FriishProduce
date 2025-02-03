@@ -154,7 +154,7 @@ namespace FriishProduce
             if (DesignMode) return;
 
             controllerForm.Font = Program.MainForm.Font;
-            controllerForm.Text = controller_cb.Text;
+            controllerForm.Text = b_controller.Text.Replace("&", null).TrimEnd('.', '。').Trim();
             controllerForm.ShowDialog();
         }
 
