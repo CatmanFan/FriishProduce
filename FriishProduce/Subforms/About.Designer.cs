@@ -28,14 +28,12 @@ namespace FriishProduce
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(About));
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.labelCopyright = new System.Windows.Forms.Label();
             this.logoPictureBox = new System.Windows.Forms.PictureBox();
             this.labelProductName = new System.Windows.Forms.Label();
             this.labelDescription = new System.Windows.Forms.Label();
             this.labelVersion = new System.Windows.Forms.Label();
-            this.textBoxDescription = new System.Windows.Forms.TextBox();
             this.b_ok = new System.Windows.Forms.Button();
             this.bottomPanel2 = new System.Windows.Forms.Panel();
             this.bottomPanel1 = new System.Windows.Forms.Panel();
@@ -55,7 +53,6 @@ namespace FriishProduce
             this.tableLayoutPanel.Controls.Add(this.labelProductName, 0, 0);
             this.tableLayoutPanel.Controls.Add(this.labelDescription, 0, 2);
             this.tableLayoutPanel.Controls.Add(this.labelVersion, 0, 1);
-            this.tableLayoutPanel.Controls.Add(this.textBoxDescription, 0, 4);
             this.tableLayoutPanel.Location = new System.Drawing.Point(12, 12);
             this.tableLayoutPanel.Name = "tableLayoutPanel";
             this.tableLayoutPanel.RowCount = 5;
@@ -131,23 +128,6 @@ namespace FriishProduce
             this.labelVersion.Text = "Version";
             this.labelVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // textBoxDescription
-            // 
-            this.tableLayoutPanel.SetColumnSpan(this.textBoxDescription, 2);
-            this.textBoxDescription.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxDescription.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.textBoxDescription.ForeColor = System.Drawing.Color.White;
-            this.textBoxDescription.Location = new System.Drawing.Point(6, 108);
-            this.textBoxDescription.Margin = new System.Windows.Forms.Padding(6, 3, 3, 3);
-            this.textBoxDescription.Multiline = true;
-            this.textBoxDescription.Name = "textBoxDescription";
-            this.textBoxDescription.ReadOnly = true;
-            this.textBoxDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxDescription.Size = new System.Drawing.Size(601, 129);
-            this.textBoxDescription.TabIndex = 23;
-            this.textBoxDescription.TabStop = false;
-            this.textBoxDescription.Text = resources.GetString("textBoxDescription.Text");
-            // 
             // b_ok
             // 
             this.b_ok.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -213,7 +193,6 @@ namespace FriishProduce
         private System.Windows.Forms.Label labelProductName;
         private System.Windows.Forms.Label labelDescription;
         private System.Windows.Forms.Label labelVersion;
-        private System.Windows.Forms.TextBox textBoxDescription;
         private System.Windows.Forms.Button b_ok;
         private System.Windows.Forms.Label labelCopyright;
         private System.Windows.Forms.Panel bottomPanel2;

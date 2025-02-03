@@ -117,10 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="textBoxDescription.Text" xml:space="preserve">
-    <value>I would like to give a special thanks to SuperrSonic, sr_corsario, saulfabreg, hcs64, and the entire Wii homebrew community for their work.
-This is also dedicated to the 0RANGECHiCKEN team, for their contribution to making Virtual Console injection possible and accessible to all.
-
-Thx2allgamefans!</value>
-  </data>
 </root>

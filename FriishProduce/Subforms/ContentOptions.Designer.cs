@@ -87,12 +87,12 @@ namespace FriishProduce
             resources.ApplyResources(this.controller_box, "controller_box");
             this.controller_box.Name = "controller_box";
             this.controller_box.TabStop = false;
+            this.controller_box.Tag = "controller";
             // 
             // controller_cb
             // 
             resources.ApplyResources(this.controller_cb, "controller_cb");
             this.controller_cb.Name = "controller_cb";
-            this.controller_cb.Tag = "controller";
             this.controller_cb.UseVisualStyleBackColor = true;
             // 
             // Tip

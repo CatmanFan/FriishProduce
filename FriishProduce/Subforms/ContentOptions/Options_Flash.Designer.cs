@@ -70,7 +70,7 @@ namespace FriishProduce
             // 
             // b_controller
             // 
-            this.b_controller.Size = new System.Drawing.Size(340, 24);
+            this.b_controller.Size = new System.Drawing.Size(319, 24);
             // 
             // controller_box
             // 
