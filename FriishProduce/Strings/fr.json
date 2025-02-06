@@ -140,16 +140,16 @@
 												Il est recommandé d'utiliser une version abrégée du titre (maximum de 20 caractères) s'il est trop long.<hr>
 												<b>Exemple :</b>\nZelda: Ocarina",
 
-			"t_001":							"Le nom complet du logiciel tel qu'il apparaît sur l'aperçu du banner.<hr>
+			"t_banner_title":					"Le nom complet du logiciel tel qu'il apparaît sur l'aperçu du banner.<hr>
 												<b>Exemple :</b>\nThe Legend of Zelda:\nOcarina of Time",
 
-			"t_002":							"La variante régionale du banner et de l'icône.\n
+			"t_banner_region":					"La variante régionale du banner et de l'icône.\n
 												Cette option peut être utile dans le cas où le nom de la console serait différent pour votre région ou si vous préférez utiliser un banner japonais ou coréen, par exemple.\n
 												La région du banner correspondra à celle de la chaîne lorsqu'elle est réglée sur automatique.",
 
-			"t_003":							"Modifier les paramètres avancés de l'émulateur.",
+			"t_injection_method_options":		"Modifier les paramètres avancés de l'émulateur.",
 
-			"t_004":							"Lorsque cette option est activée, l'application traitera tous les fichiers du même dossier que celui actuellement sélectionné comme faisant partie du logiciel à injecter.\n
+			"t_multifile_software":				"Lorsque cette option est activée, l'application traitera tous les fichiers du même dossier que celui actuellement sélectionné comme faisant partie du logiciel à injecter.\n
 												Pour éviter d'éventuels problèmes, veuillez vous assurer que vos fichiers sont déjà dans un répertoire séparé.",
 
 			"t_unsure":							"Dans le doute, {0}.",
@@ -257,11 +257,12 @@
 			"region":							"Région cible :",
 			"video_mode":						"Mode vidéo :",
 			"banner":							"Banner de la chaîne",
-			"banner_details":					"Détails du banner",
-			"banner_sound":						"Son du banner",
-			"play_banner_sound":				"Jouer le son actuel du banner",
-			"replace_banner_sound":				"Remplacer le son du banner ...",
-			"restore_banner_sound":				"Restaurer le son original du banner",
+			"banner_tip":						"Cliquez sur l'aperçu en haut pour accéder aux options de personnalisation du banner.",
+			"banner_details":					"&Détails du banner ...",
+			"banner_sound":						"&Son du banner",
+			"play_banner_sound":				"&Jouer le son actuel du banner",
+			"replace_banner_sound":				"&Remplacer le son du banner ...",
+			"restore_banner_sound":				"Restaurer le son &original du banner",
 
 			"injection_method":					"Méthode d'injection",
 			"injection_method_options":			"Paramètres de méthode d'injection ...",

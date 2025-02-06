@@ -37,7 +37,6 @@ namespace FriishProduce
             this.bottomPanel2 = new System.Windows.Forms.Panel();
             this.controller_box = new System.Windows.Forms.GroupBox();
             this.controller_cb = new System.Windows.Forms.CheckBox();
-            this.Tip = new TheArtOfDev.HtmlRenderer.WinForms.HtmlToolTip();
             this.bottomPanel1.SuspendLayout();
             this.bottomPanel2.SuspendLayout();
             this.controller_box.SuspendLayout();
@@ -95,19 +94,6 @@ namespace FriishProduce
             this.controller_cb.Name = "controller_cb";
             this.controller_cb.UseVisualStyleBackColor = true;
             // 
-            // Tip
-            // 
-            this.Tip.AllowLinksHandling = true;
-            this.Tip.AutoPopDelay = 10000;
-            this.Tip.BaseStylesheet = "div { font-size: 11px !important; }";
-            this.Tip.InitialDelay = 300;
-            this.Tip.MaximumSize = new System.Drawing.Size(350, 0);
-            this.Tip.OwnerDraw = true;
-            this.Tip.ReshowDelay = 100;
-            this.Tip.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-            this.Tip.TooltipCssClass = "htmltooltip";
-            this.Tip.UseGdiPlusTextRendering = true;
-            // 
             // ContentOptions
             // 
             this.AcceptButton = this.b_ok;
@@ -141,6 +127,5 @@ namespace FriishProduce
         private System.Windows.Forms.Panel bottomPanel2;
         protected System.Windows.Forms.GroupBox controller_box;
         protected System.Windows.Forms.CheckBox controller_cb;
-        public TheArtOfDev.HtmlRenderer.WinForms.HtmlToolTip Tip;
     }
 }

@@ -19,6 +19,7 @@ namespace FriishProduce
         private readonly BannerOptions banner_form;
         private readonly Savedata savedata;
         private HTMLForm htmlForm;
+        private TheArtOfDev.HtmlRenderer.WinForms.HtmlToolTip tip = Program.Lang.CreateTooltip();
 
         protected string TIDCode;
         protected string Untitled;
@@ -533,11 +534,10 @@ namespace FriishProduce
             #endregion
 
             #region ------------------------------------------ Localization: Tooltips ------------------------------------------
-            var tip = (ParentForm as MainForm).Tip;
-            Program.Lang.ToolTip(channel_name, tip, null, channel_name_l.Text);
-            Program.Lang.ToolTip(video_mode, tip, null, video_mode_l.Text, Program.Lang.Format(("t_unsure_s", "html"), video_mode.Items[0].ToString()));
-            (ParentForm as MainForm).Tip.SetToolTip(injection_method_options, Program.Lang.HTML(3, true, injection_method_options.Text));
-            (ParentForm as MainForm).Tip.SetToolTip(multifile_software, Program.Lang.HTML(4, true, multifile_software.Text));
+            Program.Lang.ToolTip(tip, channel_name, null, channel_name_l.Text);
+            Program.Lang.ToolTip(tip, video_mode, null, video_mode_l.Text, Program.Lang.Format(("t_unsure_s", "html"), video_mode.Items[0].ToString()));
+            Program.Lang.ToolTip(tip, injection_method_options);
+            Program.Lang.ToolTip(tip, multifile_software);
             #endregion
 
             if (Base.SelectedIndex >= 0)

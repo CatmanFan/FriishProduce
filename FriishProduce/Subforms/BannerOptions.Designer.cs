@@ -43,7 +43,6 @@ namespace FriishProduce
             this.label4 = new System.Windows.Forms.Label();
             this.region = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.Tip = new TheArtOfDev.HtmlRenderer.WinForms.HtmlToolTip();
             ((System.ComponentModel.ISupportInitialize)(this.players)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.released)).BeginInit();
             this.bottomPanel2.SuspendLayout();
@@ -166,19 +165,6 @@ namespace FriishProduce
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
             // 
-            // Tip
-            // 
-            this.Tip.AllowLinksHandling = true;
-            this.Tip.AutoPopDelay = 10000;
-            this.Tip.BaseStylesheet = "div { font-size: 11px !important; }";
-            this.Tip.InitialDelay = 300;
-            this.Tip.MaximumSize = new System.Drawing.Size(350, 0);
-            this.Tip.OwnerDraw = true;
-            this.Tip.ReshowDelay = 100;
-            this.Tip.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-            this.Tip.TooltipCssClass = "htmltooltip";
-            this.Tip.UseGdiPlusTextRendering = true;
-            // 
             // BannerOptions
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -228,6 +214,5 @@ namespace FriishProduce
         private System.Windows.Forms.Label label4;
         internal System.Windows.Forms.ComboBox region;
         private System.Windows.Forms.Panel panel1;
-        public TheArtOfDev.HtmlRenderer.WinForms.HtmlToolTip Tip;
     }
 }

@@ -16,6 +16,7 @@ namespace FriishProduce
         internal int origYear;
         internal int origPlayers;
         internal int origRegion;
+        private TheArtOfDev.HtmlRenderer.WinForms.HtmlToolTip tip = Program.Lang.CreateTooltip();
 
         public BannerOptions(Platform platform)
         {
@@ -52,8 +53,8 @@ namespace FriishProduce
             region.Enabled = region.Items.Count > 1;
 
             Program.Lang.Control(this);
-            Tip.SetToolTip(title, Program.Lang.HTML(1, true, label1.Text));
-            Tip.SetToolTip(region, Program.Lang.HTML(2, true, label4.Text));
+            Program.Lang.ToolTip(tip, title, "banner_title", label1.Text);
+            Program.Lang.ToolTip(tip, region, "banner_region", label4.Text);
         }
 
         private void OK_Click(object sender, EventArgs e)

@@ -7,6 +7,8 @@ namespace FriishProduce
 {
     public partial class ContentOptions : Form
     {
+        protected TheArtOfDev.HtmlRenderer.WinForms.HtmlToolTip tip = Program.Lang.CreateTooltip();
+
         public ContentOptions()
         {
             InitializeComponent();

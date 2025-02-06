@@ -7,6 +7,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading;
 using System.Windows.Forms;
+using TheArtOfDev.HtmlRenderer.WinForms;
 
 namespace FriishProduce
 {
@@ -251,16 +252,32 @@ namespace FriishProduce
 
         public string HTML(int number, bool isTooltip, string title = null) => html(String((isTooltip ? "t_" : "l_") + number.ToString("000"), "html"), title);
 
-        public void ToolTip(Control control, TheArtOfDev.HtmlRenderer.WinForms.HtmlToolTip tooltip, string name = null, string title = null, string unsure = null)
+        public HtmlToolTip CreateTooltip() => new()
         {
-            if (control == null || tooltip == null) return;
+            BaseStylesheet = "div { font-family: \"" + Program.MainForm.Font.FontFamily.Name /* "Verdana" */ + "\" !important; font-size: 12px !important; }" +
+                "div, p, body, hr { margin: 0px 0px 0px 0px !important; padding: 0px 0px 0px 0px !important; }" +
+                "hr { border-top: 1px solid black; }" +
+                "b { font-weight: 450 !important; }",
+            StripAmpersands = false,
+            InitialDelay = 300,
+            AutoPopDelay = 12000,
+            TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit,
+            UseGdiPlusTextRendering = true,
+            UseFading = false,
+            UseAnimation = true,
+            MaximumSize = new System.Drawing.Size(375, 0),
+        };
+
+        public void ToolTip(HtmlToolTip tip, Control control, string name = null, string title = null, string unsure = null)
+        {
+            if (control == null || tip == null) return;
 
             if (name == null) name = control.Name;
 
             string text = String("t_" + name, "html");
             if (!string.IsNullOrWhiteSpace(unsure)) text += $"\n\n<b>{string.Format(String("t_unsure", "html"), unsure)}";
 
-            tooltip.SetToolTip(control, html(text, title));
+            tip.SetToolTip(control, html(text, title));
         }
 
         /// <summary>
@@ -540,7 +557,7 @@ namespace FriishProduce
 
         private string html(string input, string title = null)
         {
-            string header = !string.IsNullOrWhiteSpace(title) ? "<big>" + title.TrimEnd(':', '：', '.', '。', '…').Trim() + "</big><hr><br>" : "";
+            string header = !string.IsNullOrWhiteSpace(title) ? "<big><b>" + title.TrimEnd(':', '：', '.', '。', '…').Trim() + "</b></big><br><br>" : "";
             return "<div>" + header + input.Replace("\n", "<br>") + "</div>";
         }
 

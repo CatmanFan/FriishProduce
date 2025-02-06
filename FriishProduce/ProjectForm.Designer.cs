@@ -37,6 +37,8 @@ namespace FriishProduce
             this.browseROM = new System.Windows.Forms.OpenFileDialog();
             this.browseImage = new System.Windows.Forms.OpenFileDialog();
             this.bannerMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.banner_details = new System.Windows.Forms.ToolStripMenuItem();
+            this.banner_sound = new System.Windows.Forms.ToolStripMenuItem();
             this.play_banner_sound = new System.Windows.Forms.ToolStripMenuItem();
             this.replace_banner_sound = new System.Windows.Forms.ToolStripMenuItem();
             this.restore_banner_sound = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,9 +54,8 @@ namespace FriishProduce
             this.video_mode_l = new System.Windows.Forms.Label();
             this.region_l = new System.Windows.Forms.Label();
             this.banner = new System.Windows.Forms.PictureBox();
-            this.banner_details = new System.Windows.Forms.Button();
-            this.banner_sound = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.banner_tip = new System.Windows.Forms.Label();
             this.edit_save_data = new System.Windows.Forms.Button();
             this.forwarder_root_device = new System.Windows.Forms.ComboBox();
             this.extra = new System.Windows.Forms.Label();
@@ -137,11 +138,27 @@ namespace FriishProduce
             // bannerMenu
             // 
             this.bannerMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.banner_details,
+            this.banner_sound});
+            this.bannerMenu.Name = "bannerMenu";
+            resources.ApplyResources(this.bannerMenu, "bannerMenu");
+            // 
+            // banner_details
+            // 
+            this.banner_details.Name = "banner_details";
+            resources.ApplyResources(this.banner_details, "banner_details");
+            this.banner_details.Tag = "banner_details";
+            this.banner_details.Click += new System.EventHandler(this.banner_customize_Click);
+            // 
+            // banner_sound
+            // 
+            this.banner_sound.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.play_banner_sound,
             this.replace_banner_sound,
             this.restore_banner_sound});
-            this.bannerMenu.Name = "bannerMenu";
-            resources.ApplyResources(this.bannerMenu, "bannerMenu");
+            this.banner_sound.Name = "banner_sound";
+            resources.ApplyResources(this.banner_sound, "banner_sound");
+            this.banner_sound.Tag = "banner_sound";
             // 
             // play_banner_sound
             // 
@@ -259,36 +276,26 @@ namespace FriishProduce
             // banner
             // 
             this.banner.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.banner.Cursor = System.Windows.Forms.Cursors.Hand;
             resources.ApplyResources(this.banner, "banner");
             this.banner.Name = "banner";
             this.banner.TabStop = false;
-            // 
-            // banner_details
-            // 
-            resources.ApplyResources(this.banner_details, "banner_details");
-            this.banner_details.Name = "banner_details";
-            this.banner_details.Tag = "banner_details";
-            this.banner_details.UseVisualStyleBackColor = true;
-            this.banner_details.Click += new System.EventHandler(this.banner_customize_Click);
-            // 
-            // banner_sound
-            // 
-            resources.ApplyResources(this.banner_sound, "banner_sound");
-            this.banner_sound.Name = "banner_sound";
-            this.banner_sound.Tag = "banner_sound";
-            this.banner_sound.UseVisualStyleBackColor = true;
-            this.banner_sound.Click += new System.EventHandler(this.banner_sound_Click);
+            this.banner.Click += new System.EventHandler(this.banner_sound_Click);
             // 
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.banner);
-            this.groupBox5.Controls.Add(this.banner_details);
-            this.groupBox5.Controls.Add(this.edit_save_data);
-            this.groupBox5.Controls.Add(this.banner_sound);
+            this.groupBox5.Controls.Add(this.banner_tip);
             resources.ApplyResources(this.groupBox5, "groupBox5");
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.TabStop = false;
             this.groupBox5.Tag = "banner";
+            // 
+            // banner_tip
+            // 
+            resources.ApplyResources(this.banner_tip, "banner_tip");
+            this.banner_tip.Name = "banner_tip";
+            this.banner_tip.Tag = "banner_tip";
             // 
             // edit_save_data
             // 
@@ -595,6 +602,7 @@ namespace FriishProduce
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.edit_save_data);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
@@ -641,9 +649,6 @@ namespace FriishProduce
         private System.Windows.Forms.OpenFileDialog browseImage;
         private System.Windows.Forms.ContextMenuStrip bannerMenu;
         private System.Windows.Forms.OpenFileDialog browseSound;
-        private System.Windows.Forms.ToolStripMenuItem play_banner_sound;
-        private System.Windows.Forms.ToolStripMenuItem replace_banner_sound;
-        private System.Windows.Forms.ToolStripMenuItem restore_banner_sound;
         private System.Windows.Forms.TextBox channel_name;
         private System.Windows.Forms.ComboBox region;
         private System.Windows.Forms.PictureBox title_id_random;
@@ -653,8 +658,6 @@ namespace FriishProduce
         private System.Windows.Forms.Label title_id_l;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.PictureBox banner;
-        private System.Windows.Forms.Button banner_details;
-        private System.Windows.Forms.Button banner_sound;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.ComboBox forwarder_root_device;
         private System.Windows.Forms.Label extra;
@@ -693,5 +696,11 @@ namespace FriishProduce
         internal System.Windows.Forms.RadioButton use_online_wad;
         private System.Windows.Forms.ComboBox wiiu_display;
         private System.Windows.Forms.Label wiiu_display_l;
+        private System.Windows.Forms.ToolStripMenuItem banner_sound;
+        private System.Windows.Forms.ToolStripMenuItem play_banner_sound;
+        private System.Windows.Forms.ToolStripMenuItem replace_banner_sound;
+        private System.Windows.Forms.ToolStripMenuItem restore_banner_sound;
+        private System.Windows.Forms.Label banner_tip;
+        private System.Windows.Forms.ToolStripMenuItem banner_details;
     }
 }

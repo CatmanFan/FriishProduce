@@ -144,11 +144,6 @@ namespace FriishProduce
             SaveProject.Title = new Regex(@"\(.*\)").Replace(save_project_as.Text, "").Replace("&", "");
             SaveWAD.Title = new Regex(@"\(.*\)").Replace(export.Text, "").Replace("&", "");
 
-            Tip.BaseStylesheet = "div { font-family: \"" + /* Font.FontFamily.Name */ "Arial" + "\" !important; font-size: 11px !important; }" +
-                "div, p, body, hr { margin: 0px 0px 0px 0px !important; padding: 0px 0px 0px 0px !important; }" +
-                "hr { border-top: 1px solid black; }" +
-                "b { font-weight: 450 !important; }";
-
             try { BrowseProject.Filter = SaveProject.Filter = Program.Lang.String("filter.project"); }
             catch { MessageBox.Show("Warning!\nThe language strings have not been loaded correctly.\n\nSeveral items may show up as 'undefined'.\n\nOther exceptions related to strings or filters can also occur!", MessageBox.Buttons.Ok, MessageBox.Icons.Warning, false); }
             #endregion
