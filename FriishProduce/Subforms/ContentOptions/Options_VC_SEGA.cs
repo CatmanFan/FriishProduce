@@ -24,7 +24,7 @@ namespace FriishProduce
                 region.Text = Program.Lang.String("region");
                 save_sram.Text = Program.Lang.String("save_data_enable", "projectform");
                 console_disableresetbutton.Text = Program.Lang.String("console_disableresetbutton", "vc_sega");
-                dev_mdpad_enable_6b.Text = string.Format(Program.Lang.String("dev_mdpad_enable_6b", "vc_sega"), Program.Lang.Console(Platform.SMD));
+                dev_mdpad_enable_6b.Text = Program.Lang.Format(("dev_mdpad_enable_6b", "vc_sega"), Program.Lang.Console(Platform.SMD));
 
                 country.Items.Clear();
                 country.Items.AddRange(new string[] { Program.Lang.String("region_j"), Program.Lang.String("region_u"), Program.Lang.String("region_e") });

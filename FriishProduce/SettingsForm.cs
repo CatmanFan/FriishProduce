@@ -145,13 +145,15 @@ namespace FriishProduce
             // -----------------------------
 
             vc_sega_country.Text = Program.Lang.String("region");
-            vc_sega_dev_mdpad_enable_6b.Text = string.Format(Program.Lang.String("dev_mdpad_enable_6b", "vc_sega"), Program.Lang.Console(Platform.SMD));
+            vc_sega_dev_mdpad_enable_6b.Text = Program.Lang.Format(("dev_mdpad_enable_6b", "vc_sega"), Program.Lang.Console(Platform.SMD));
             Program.Lang.String(vc_sega_console_disableresetbutton, "vc_sega");
 
             vc_sega_countries.Items.Clear();
             vc_sega_countries.Items.AddRange(new string[] { Program.Lang.String("region_j"), Program.Lang.String("region_u"), Program.Lang.String("region_e") });
 
             // -----------------------------
+
+            vc_pce_note.Text = Program.Lang.Format(("additional", null), Program.Lang.Console(Platform.PCECD));
 
             Program.Lang.Control(vc_pce_region, "vc_pce");
             Program.Lang.String(vc_pce_y_offset_l, "vc_pce");

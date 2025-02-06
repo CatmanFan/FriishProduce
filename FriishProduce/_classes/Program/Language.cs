@@ -247,11 +247,20 @@ namespace FriishProduce
         /// <param name="isError">Determines if the message should be drawn from the errors or busy category instead. 0 = Normal / 1 = Error / 2 = Busy</param>
         public string Msg(int number, int type = 0) => String((type == 1 ? "e_" : type == 2 ? "b_" : null) + number.ToString("000"), "messages");
 
-        public string HTML(int number, bool isTooltip, string title = null)
+        public string Format((string name, string sectionName) parent, params object[] args) => string.Format(String(parent.name, parent.sectionName), args);
+
+        public string HTML(int number, bool isTooltip, string title = null) => html(String((isTooltip ? "t_" : "l_") + number.ToString("000"), "html"), title);
+
+        public void ToolTip(Control control, TheArtOfDev.HtmlRenderer.WinForms.HtmlToolTip tooltip, string name = null, string title = null, string unsure = null)
         {
-            string text = !string.IsNullOrWhiteSpace(title) ? "<b>" + title.TrimEnd(':', '：', '.', '。', '…').Trim() + "</b><br><br>" : "";
-            string input = String((isTooltip ? "t_" : "l_") + number.ToString("000"), "html").Replace("\n", "<br>");
-            return "<div>" + text + input + "</div>";
+            if (control == null || tooltip == null) return;
+
+            if (name == null) name = control.Name;
+
+            string text = String("t_" + name, "html");
+            if (!string.IsNullOrWhiteSpace(unsure)) text += $"\n\n<b>{string.Format(String("t_unsure", "html"), unsure)}";
+
+            tooltip.SetToolTip(control, html(text, title));
         }
 
         /// <summary>
@@ -308,7 +317,7 @@ namespace FriishProduce
 
             try
             {
-                var path = sectionName.ToLower() is "main" or "filters" or "platforms" or "messages" or "html" or "tooltips" ? target.global : target.strings;
+                var path = string.IsNullOrWhiteSpace(sectionName) || (sectionName?.ToLower() is "main" or "filters" or "platforms" or "messages" or "html" or "tooltips") ? target.global : target.strings;
 
                 string result = null;
 
@@ -527,6 +536,12 @@ namespace FriishProduce
             // var appName = reader["application_title"]?.ToString();
 
             return reader;
+        }
+
+        private string html(string input, string title = null)
+        {
+            string header = !string.IsNullOrWhiteSpace(title) ? "<big>" + title.TrimEnd(':', '：', '.', '。', '…').Trim() + "</big><hr><br>" : "";
+            return "<div>" + header + input.Replace("\n", "<br>") + "</div>";
         }
 
         private void localize(Control item, string form, ScriptType script)

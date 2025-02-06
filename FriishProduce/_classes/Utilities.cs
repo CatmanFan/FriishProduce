@@ -39,43 +39,6 @@ namespace FriishProduce
         }
     }
 
-    /* class CustomToolTip : ToolTip
-    {
-        public CustomToolTip()
-        {
-            OwnerDraw = true;
-
-            AutoPopDelay = 5000;
-            InitialDelay = 500;
-            ReshowDelay = 100;
-            AutomaticDelay = 400;
-
-            Draw += new DrawToolTipEventHandler(OnDraw);
-        }
-
-        private void OnDraw(object sender, DrawToolTipEventArgs e) // use this event to customise the tool tip
-        {
-            e.Graphics.SmoothingMode = SmoothingMode.HighQuality;
-            e.Graphics.CompositingQuality = CompositingQuality.HighQuality;
-            e.Graphics.InterpolationMode = InterpolationMode.High;
-
-            using (SolidBrush b = new SolidBrush(Color.DarkGray))
-                e.Graphics.FillRectangle(b, e.Bounds);
-
-            using (SolidBrush b = new SolidBrush(Color.WhiteSmoke))
-                e.Graphics.FillRectangle(b, e.Bounds.X + 1, e.Bounds.Y + 1, e.Bounds.Width - 2, e.Bounds.Height - 2);
-
-            using (Font f = new Font(Program.MainForm.Font.FontFamily, 8.5f, FontStyle.Regular))
-                e.Graphics.DrawString
-                (
-                    e.ToolTipText,
-                    f,
-                    Brushes.Black,
-                    new RectangleF(new PointF(4, 4), new SizeF(e.Bounds.Width - 3, e.Bounds.Height - 3))
-                );
-        }
-    } */
-
     public static class Web
     {
         public static bool InternetTest(string URL = null)

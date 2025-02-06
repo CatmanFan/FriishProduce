@@ -479,7 +479,7 @@ namespace FriishProduce
             restore_banner_sound.Text = Program.Lang.String(restore_banner_sound.Name, Name);
 
             // Change title text to untitled string
-            Untitled = string.Format(Program.Lang.String("untitled_project", "mainform"), Program.Lang.String(Enum.GetName(typeof(Platform), targetPlatform).ToLower(), "platforms"));
+            Untitled = Program.Lang.Format(("untitled_project", "mainform"), Program.Lang.String(Enum.GetName(typeof(Platform), targetPlatform).ToLower(), "platforms"));
             Text = string.IsNullOrWhiteSpace(channel_name.Text) ? Untitled : channel_name.Text;
 
             checkImg1.Location = new Point(import_wad.Location.X + import_wad.Width + 4, checkImg1.Location.Y);
@@ -533,7 +533,9 @@ namespace FriishProduce
             #endregion
 
             #region ------------------------------------------ Localization: Tooltips ------------------------------------------
-            (ParentForm as MainForm).Tip.SetToolTip(channel_name, Program.Lang.HTML(0, true, channel_name_l.Text));
+            var tip = (ParentForm as MainForm).Tip;
+            Program.Lang.ToolTip(channel_name, tip, null, channel_name_l.Text);
+            Program.Lang.ToolTip(video_mode, tip, null, video_mode_l.Text, Program.Lang.Format(("t_unsure_s", "html"), video_mode.Items[0].ToString()));
             (ParentForm as MainForm).Tip.SetToolTip(injection_method_options, Program.Lang.HTML(3, true, injection_method_options.Text));
             (ParentForm as MainForm).Tip.SetToolTip(multifile_software, Program.Lang.HTML(4, true, multifile_software.Text));
             #endregion
@@ -762,7 +764,7 @@ namespace FriishProduce
                         for (int i = 0; i < extensions.Extensions.Length; i++)
                             if (!extensions.Extensions[i].StartsWith("*")) extensions.Extensions[i] = "*" + extensions.Extensions[i];
 
-                        browseROM.Filter = string.Format(Program.Lang.String($"filter.rom"), Program.Lang.Console(targetPlatform), string.Join(", ", extensions.Extensions), string.Join(";", extensions.Extensions));
+                        browseROM.Filter = Program.Lang.Format(("filter.rom", null), Program.Lang.Console(targetPlatform), string.Join(", ", extensions.Extensions), string.Join(";", extensions.Extensions));
                     }
                     catch
                     {
@@ -1015,8 +1017,8 @@ namespace FriishProduce
             bool hasRom = !string.IsNullOrWhiteSpace(rom?.FilePath);
             bool hasWad = !string.IsNullOrWhiteSpace(inWadFile);
 
-            groupBox1.Text = string.Format(Program.Lang.String("main", Name), FileTypeName);
-            rom_label.Text = string.Format(Program.Lang.String(rom_label.Name, Name), FileTypeName);
+            groupBox1.Text = Program.Lang.Format(("main", Name), FileTypeName);
+            rom_label.Text = Program.Lang.Format((rom_label.Name, Name), FileTypeName);
             rom_label_filename.Text = hasRom ? rom?.FilePath : Program.Lang.String("none");
             if (rom_label_filename.Text.Length > 80) rom_label_filename.Text = rom_label_filename.Text.Substring(0, 77) + "...";
 

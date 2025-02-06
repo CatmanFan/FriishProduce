@@ -40,7 +40,8 @@
 			"system":							"Système",
 			"display":							"Affichage",
 			"vc":								"Console virtuelle",
-			"vc_options":						"Options de Console virtuelle"
+			"vc_options":						"Options de Console virtuelle",
+			"additional":						"Ces options appliquent également aux jeux de {0}.",
 		},
 
 		"platforms": {
@@ -135,7 +136,7 @@
 												Vous pouvez également enregistrer une autre copie pour l'utiliser ultérieurement.\n\n
 												Tentatives restantes : <b>{0}</b>",
 
-			"t_000":							"Le nom de la chaîne tel qu'il apparaît sur le Menu Wii.\n
+			"t_channel_name":					"Le nom de la chaîne tel qu'il apparaît sur le Menu Wii.\n
 												Il est recommandé d'utiliser une version abrégée du titre (maximum de 20 caractères) s'il est trop long.<hr>
 												<b>Exemple :</b>\nZelda: Ocarina",
 
@@ -150,6 +151,11 @@
 
 			"t_004":							"Lorsque cette option est activée, l'application traitera tous les fichiers du même dossier que celui actuellement sélectionné comme faisant partie du logiciel à injecter.\n
 												Pour éviter d'éventuels problèmes, veuillez vous assurer que vos fichiers sont déjà dans un répertoire séparé.",
+
+			"t_unsure":							"Dans le doute, {0}.",
+			"t_unsure_s":						"sélectionnez",
+			"t_unsure_u":						"décochez cette case",
+			"t_unsure_c":						"cochez cette case",
 		}
 	},
 

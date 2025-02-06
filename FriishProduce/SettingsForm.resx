@@ -788,7 +788,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>7</value>
   </data>
   <data name="vc_n64_romc_type.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 150</value>
@@ -833,7 +833,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_n64.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>12</value>
   </data>
   <data name="forwarder_type.Items" xml:space="preserve">
     <value>SD</value>
@@ -980,7 +980,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;forwarder.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>9</value>
   </data>
   <data name="vc_nes_palette_banner_usage.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1076,7 +1076,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_nes.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>10</value>
   </data>
   <data name="vc_neo_bios_list.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 18</value>
@@ -1142,7 +1142,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_neo.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>3</value>
   </data>
   <data name="vc_sega_countries.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 18</value>
@@ -1403,7 +1403,46 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_sega.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>13</value>
+  </data>
+  <data name="vc_pce_note.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="vc_pce_note.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopLeft</value>
+  </data>
+  <data name="vc_pce_note.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="vc_pce_note.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 387</value>
+  </data>
+  <data name="vc_pce_note.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>536, 96</value>
+  </data>
+  <data name="vc_pce_note.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>22, 4, 4, 4</value>
+  </data>
+  <data name="vc_pce_note.Size" type="System.Drawing.Size, System.Drawing">
+    <value>97, 23</value>
+  </data>
+  <data name="vc_pce_note.TabIndex" type="System.Int32, mscorlib">
+    <value>57</value>
+  </data>
+  <data name="vc_pce_note.Text" xml:space="preserve">
+    <value>vc_pce_note</value>
+  </data>
+  <data name="&gt;&gt;vc_pce_note.Name" xml:space="preserve">
+    <value>vc_pce_note</value>
+  </data>
+  <data name="&gt;&gt;vc_pce_note.Type" xml:space="preserve">
+    <value>FriishProduce.ImageLabel, FriishProduce, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;vc_pce_note.Parent" xml:space="preserve">
+    <value>vc_pce</value>
+  </data>
+  <data name="&gt;&gt;vc_pce_note.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="vc_pce_region.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 18</value>
@@ -1448,7 +1487,7 @@
     <value>vc_pce</value>
   </data>
   <data name="&gt;&gt;vc_pce_region_l.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="vc_pce_sgenable.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1583,7 +1622,7 @@
     <value>vc_pce</value>
   </data>
   <data name="&gt;&gt;vc_pce_system.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="vc_pce_y_offset_l.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1748,7 +1787,7 @@
     <value>vc_pce</value>
   </data>
   <data name="&gt;&gt;vc_pce_display.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="vc_pce.Location" type="System.Drawing.Point, System.Drawing">
     <value>194, 0</value>
@@ -1769,7 +1808,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_pce.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>2</value>
   </data>
   <data name="auto_prefill.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2129,7 +2168,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>6</value>
   </data>
   <data name="injection_methods_sega.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 18</value>
@@ -2330,7 +2369,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;default_injection_methods.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>4</value>
   </data>
   <data name="browse_bios_neo.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2495,7 +2534,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;bios_files.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>5</value>
   </data>
   <data name="flash_fullscreen.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3140,7 +3179,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;adobe_flash.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>8</value>
   </data>
   <data name="vc_snes_patch_gcremap.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3491,7 +3530,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_snes.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>11</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

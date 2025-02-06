@@ -99,10 +99,8 @@ namespace FriishProduce
             // 
             this.Tip.AllowLinksHandling = true;
             this.Tip.AutoPopDelay = 10000;
-            this.Tip.BackColor = System.Drawing.Color.White;
             this.Tip.BaseStylesheet = "div { font-size: 11px !important; }";
-            this.Tip.ForeColor = System.Drawing.Color.Black;
-            this.Tip.InitialDelay = 500;
+            this.Tip.InitialDelay = 300;
             this.Tip.MaximumSize = new System.Drawing.Size(350, 0);
             this.Tip.OwnerDraw = true;
             this.Tip.ReshowDelay = 100;
@@ -143,6 +141,6 @@ namespace FriishProduce
         private System.Windows.Forms.Panel bottomPanel2;
         protected System.Windows.Forms.GroupBox controller_box;
         protected System.Windows.Forms.CheckBox controller_cb;
-        protected TheArtOfDev.HtmlRenderer.WinForms.HtmlToolTip Tip;
+        public TheArtOfDev.HtmlRenderer.WinForms.HtmlToolTip Tip;
     }
 }

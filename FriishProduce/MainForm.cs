@@ -68,7 +68,7 @@ namespace FriishProduce
                 if (!string.IsNullOrWhiteSpace(platform))
                 {
                     item.Name = platform;
-                    item.Text = string.Format(Program.Lang.String("project_type", Name), Program.Lang.Console((Platform)Enum.Parse(typeof(Platform), platform)));
+                    item.Text = Program.Lang.Format(("project_type", Name), Program.Lang.Console((Platform)Enum.Parse(typeof(Platform), platform)));
                 }
                 list.Add(item);
             }
@@ -87,7 +87,7 @@ namespace FriishProduce
 
                     list.Add(new ToolStripMenuItem
                     (
-                        string.Format(Program.Lang.String("project_type", Name), Program.Lang.Console(convertedPlatform)),
+                        Program.Lang.Format(("project_type", Name), Program.Lang.Console(convertedPlatform)),
                         Icons[convertedPlatform],
                         addProject,
                         platform + "0"
@@ -114,7 +114,7 @@ namespace FriishProduce
             #region Localization
             Program.Lang.Control(this);
             Text = Program.Lang.ApplicationTitle;
-            about.Text = string.Format(Program.Lang.String("about_app"), Program.Lang.ApplicationTitle);
+            about.Text = Program.Lang.Format(("about_app", null), Program.Lang.ApplicationTitle);
 
             foreach (MenuItem section in mainMenu.MenuItems)
                 foreach (MenuItem item in section.MenuItems)
@@ -129,7 +129,7 @@ namespace FriishProduce
             menuItem3.Text = Program.Lang.String(menuItem3.Tag.ToString(), Name);
             menuItem4.Text = Program.Lang.String(menuItem4.Tag.ToString(), Name);
             if (import_game_file.Tag == null) import_game_file.Tag = import_game_file.Text;
-            import_game_file.Text = string.Format(Program.Lang.String(import_game_file.Tag.ToString(), Name), Program.Lang.String("rom_label1", "projectform"));
+            import_game_file.Text = Program.Lang.Format((import_game_file.Tag.ToString(), Name), Program.Lang.String("rom_label1", "projectform"));
 
             toolbarNewProject.Text = new Regex(@"\(.*\)").Replace(new_project.Text, "");
             toolbarOpenProject.Text = open_project.Text;
@@ -143,6 +143,11 @@ namespace FriishProduce
             BrowseProject.Title = new Regex(@"\(.*\)").Replace(open_project.Text, "").Replace("&", "");
             SaveProject.Title = new Regex(@"\(.*\)").Replace(save_project_as.Text, "").Replace("&", "");
             SaveWAD.Title = new Regex(@"\(.*\)").Replace(export.Text, "").Replace("&", "");
+
+            Tip.BaseStylesheet = "div { font-family: \"" + /* Font.FontFamily.Name */ "Arial" + "\" !important; font-size: 11px !important; }" +
+                "div, p, body, hr { margin: 0px 0px 0px 0px !important; padding: 0px 0px 0px 0px !important; }" +
+                "hr { border-top: 1px solid black; }" +
+                "b { font-weight: 450 !important; }";
 
             try { BrowseProject.Filter = SaveProject.Filter = Program.Lang.String("filter.project"); }
             catch { MessageBox.Show("Warning!\nThe language strings have not been loaded correctly.\n\nSeveral items may show up as 'undefined'.\n\nOther exceptions related to strings or filters can also occur!", MessageBox.Buttons.Ok, MessageBox.Icons.Warning, false); }
@@ -332,7 +337,7 @@ namespace FriishProduce
                 save_project_as.Enabled = save_project.Enabled = false;
                 export.Enabled = false;
                 toolbarImportGameFile.Image = Properties.Resources.page_white_cd;
-                import_game_file.Text = string.Format(Program.Lang.String(import_game_file.Tag.ToString(), Name), Program.Lang.String("rom_label1", "projectform"));
+                import_game_file.Text = Program.Lang.Format((import_game_file.Tag.ToString(), Name), Program.Lang.String("rom_label1", "projectform"));
 
                 tabControl.Visible = false;
             }
@@ -343,7 +348,7 @@ namespace FriishProduce
                 save_project_as.Enabled = save_project.Enabled = (tabControl.SelectedForm as ProjectForm).IsModified;
                 export.Enabled = (tabControl.SelectedForm as ProjectForm).IsExportable;
                 toolbarImportGameFile.Image = (tabControl.SelectedForm as ProjectForm).FileTypeImage;
-                import_game_file.Text = string.Format(Program.Lang.String(import_game_file.Tag.ToString(), Name), (tabControl.SelectedForm as ProjectForm).FileTypeName);
+                import_game_file.Text = Program.Lang.Format((import_game_file.Tag.ToString(), Name), (tabControl.SelectedForm as ProjectForm).FileTypeName);
             }
 
             import_game_file.Enabled = close_all.Enabled = close_project.Enabled = hasTabs;

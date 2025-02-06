@@ -77,6 +77,7 @@ namespace FriishProduce
             this.label1 = new System.Windows.Forms.Label();
             this.SEGA_console_brightness = new System.Windows.Forms.TrackBar();
             this.vc_pce = new System.Windows.Forms.Panel();
+            this.vc_pce_note = new FriishProduce.ImageLabel();
             this.vc_pce_region_l = new System.Windows.Forms.GroupBox();
             this.vc_pce_region = new System.Windows.Forms.ComboBox();
             this.vc_pce_system = new System.Windows.Forms.GroupBox();
@@ -570,12 +571,22 @@ namespace FriishProduce
             // 
             // vc_pce
             // 
+            this.vc_pce.Controls.Add(this.vc_pce_note);
             this.vc_pce.Controls.Add(this.vc_pce_region_l);
             this.vc_pce.Controls.Add(this.vc_pce_system);
             this.vc_pce.Controls.Add(this.vc_pce_display);
             resources.ApplyResources(this.vc_pce, "vc_pce");
             this.vc_pce.Name = "vc_pce";
             this.vc_pce.Tag = "vc_pce";
+            // 
+            // vc_pce_note
+            // 
+            resources.ApplyResources(this.vc_pce_note, "vc_pce_note");
+            this.vc_pce_note.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.vc_pce_note.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.vc_pce_note.Image = global::FriishProduce.Properties.Resources.information;
+            this.vc_pce_note.Name = "vc_pce_note";
+            this.vc_pce_note.Tag = "";
             // 
             // vc_pce_region_l
             // 
@@ -1211,6 +1222,9 @@ namespace FriishProduce
             this.ControlBox = false;
             this.Controls.Add(this.bottomPanel2);
             this.Controls.Add(this.TreeView);
+            this.Controls.Add(this.vc_pce);
+            this.Controls.Add(this.vc_neo);
+            this.Controls.Add(this.default_injection_methods);
             this.Controls.Add(this.bios_files);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -1220,9 +1234,6 @@ namespace FriishProduce
             this.Controls.Add(this.vc_snes);
             this.Controls.Add(this.vc_n64);
             this.Controls.Add(this.vc_sega);
-            this.Controls.Add(this.vc_pce);
-            this.Controls.Add(this.vc_neo);
-            this.Controls.Add(this.default_injection_methods);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MaximizeBox = false;
@@ -1258,6 +1269,7 @@ namespace FriishProduce
             this.vc_sega_display.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SEGA_console_brightness)).EndInit();
             this.vc_pce.ResumeLayout(false);
+            this.vc_pce.PerformLayout();
             this.vc_pce_region_l.ResumeLayout(false);
             this.vc_pce_system.ResumeLayout(false);
             this.vc_pce_system.PerformLayout();
@@ -1418,5 +1430,6 @@ namespace FriishProduce
         private System.Windows.Forms.CheckBox vc_n64_patch_cleantextures;
         private System.Windows.Forms.CheckBox vc_snes_patch_wiimote;
         private System.Windows.Forms.CheckBox vc_snes_patch_gcremap;
+        private ImageLabel vc_pce_note;
     }
 }

@@ -40,7 +40,8 @@
 			"system":							"Sistema",
 			"display":							"Pantalla",
 			"vc":								"Consola Virtual",
-			"vc_options":						"Ajustes de la Consola Virtual"
+			"vc_options":						"Ajustes de la Consola Virtual",
+			"additional":						"Estas opciones también son válidas para {0}."
 		},
 
 		"platforms": {
@@ -84,7 +85,7 @@
 		},
 
 		"messages": {
-			"000":								"Algunos cambios necesitan reiniciar el programa para que tengan efecto.",
+			"000":								"Debes reiniciar FriishProduce para que todos los cambios tengan efecto.",
 		    "001":								"El proyecto \"{0}\" ha sido cambiado.\n¿Guardar ahora?",
 			"002":								"El archivo seleccionado no es válido.",
 			"003":								"Exportado con éxito.\n¿Quieres abrir la carpeta de salida?",
@@ -134,8 +135,8 @@
 												2) Una vez cargado el juego, ingresa el comando \"<b>RUN</b>\". En cuanto empiece el juego, haz clic en <i>Tools > Patch and Save Snapshot</i> y guarda el archivo como \"snap.fss\".\n
 												También puedes guardar otra copia para usarlo más tarde.\n\n
 												<i>Intentos restantes: <b>{0}</b></i>",
-			
-			"t_000":							"Nombre utilizado para el icono que aparece en el menu Wii.\n
+
+			"t_channel_name":					"Nombre utilizado para el icono que aparece en el menu Wii.\n
 												Para títulos más largos, se recomienda utilizar una versión abreviada de 20 caracteres o menos.<hr>
 												<b>Ejemplo:</b>\nZelda: Ocarina",
 
@@ -149,7 +150,12 @@
 			"t_003":							"Establecer los ajustes predeterminados del emulador.",
 
 			"t_004":							"Cuando esta opción está habilitada, el programa tratará todos los archivos dentro de la misma carpeta seleccionada actualmente como parte del juego que se va a inyectar.\n
-												Asegúrate de que estos archivos estén en una carpeta separada."
+												Asegúrate de que estos archivos estén en una carpeta separada.",
+
+			"t_unsure":							"Si tienes dudas, {0}.",
+			"t_unsure_s":						"selecciona {0}",
+			"t_unsure_u":						"deja esta opción desactivada.",
+			"t_unsure_c":						"deja esta opción activada."
 		}
 	},
 
