@@ -153,7 +153,7 @@
 												Pour éviter d'éventuels problèmes, veuillez vous assurer que vos fichiers sont déjà dans un répertoire séparé.",
 
 			"t_unsure":							"Dans le doute, {0}.",
-			"t_unsure_s":						"sélectionnez",
+			"t_unsure_s":						"sélectionnez {0}",
 			"t_unsure_u":						"décochez cette case",
 			"t_unsure_c":						"cochez cette case",
 		}
