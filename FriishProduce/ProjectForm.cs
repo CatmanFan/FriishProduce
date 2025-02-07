@@ -2362,7 +2362,7 @@ namespace FriishProduce
         private void play_banner_sound_Click(object sender, EventArgs e)
         {
             SoundPlayer snd = File.Exists(sound) && sound != null ? new(sound) : new(Properties.Resources.Sound_WiiVC);
-            snd.PlaySync();
+            snd.Play();
         }
 
         private void replace_banner_sound_Click(object sender, EventArgs e)

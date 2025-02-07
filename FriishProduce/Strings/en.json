@@ -266,10 +266,9 @@
 			"banner_tip":						"Click the above preview image to access banner customization options.",
 			"banner_details":					"Banner &details...",
 			"banner_sound":						"Banner &sound",
-			"play_banner_sound":				"&Play banner sound",
-			"replace_banner_sound":				"&Replace banner sound...",
-			"restore_banner_sound":				"Restore &default banner sound",
-
+			"play_banner_sound":				"&Play current sound",
+			"replace_banner_sound":				"&Replace sound...",
+			"restore_banner_sound":				"Restore &default sound",
 			"injection_method":					"Injection method",
 			"injection_method_options":			"Injection method options...",
 			"controller":						"Controllers",

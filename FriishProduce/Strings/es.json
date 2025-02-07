@@ -261,9 +261,9 @@
 			"banner_tip":						"Haz clic en la vista previa de arriba para acceder a las opciones de personalización del banner.",
 			"banner_details":					"&Detalles del banner...",
 			"banner_sound":						"&Sonido del banner",
-			"play_banner_sound":				"Reproducir sonido &actual del banner",
-			"replace_banner_sound":				"&Remplazar sonido del banner...",
-			"restore_banner_sound":				"Restaurar sonido &original del banner",
+			"play_banner_sound":				"Reproducir sonido &actual",
+			"replace_banner_sound":				"&Remplazar sonido...",
+			"restore_banner_sound":				"Restaurar sonido &original",
 
 			"injection_method":					"Método de inyección",
 			"injection_method_options":			"Ajustes del método de inyección...",

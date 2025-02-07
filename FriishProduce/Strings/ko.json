@@ -261,9 +261,9 @@
 			"banner_tip":						"Click the above preview image to access banner customization options.",
 			"banner_details":					"배너 상세정보...(&B)",
 			"banner_sound":						"배너 사운드(&S)",
-			"play_banner_sound":				"배너 사운드 재생(&P)",
-			"replace_banner_sound":				"배너 사운드 바꾸기...(&R)",
-			"restore_banner_sound":				"배너 사운드 복원(&X)",
+			"play_banner_sound":				"&Play current sound",
+			"replace_banner_sound":				"&Replace sound...",
+			"restore_banner_sound":				"Restore &default sound",
 			
 			"injection_method":					"주입 방법",
 			"injection_method_options":			"주입 방법 옵션...",
