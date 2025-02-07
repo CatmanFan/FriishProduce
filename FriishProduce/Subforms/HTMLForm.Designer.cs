@@ -73,9 +73,8 @@ namespace FriishProduce
             // htmlPanel1
             // 
             this.htmlPanel1.AutoScroll = true;
-            this.htmlPanel1.AutoScrollMinSize = new System.Drawing.Size(350, 15);
             this.htmlPanel1.BackColor = System.Drawing.SystemColors.Control;
-            this.htmlPanel1.BaseStylesheet = "div { font-size: 12px !important; }";
+            this.htmlPanel1.BaseStylesheet = "";
             this.htmlPanel1.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.htmlPanel1.IsContextMenuEnabled = false;
             this.htmlPanel1.IsSelectionEnabled = false;
@@ -83,7 +82,6 @@ namespace FriishProduce
             this.htmlPanel1.Name = "htmlPanel1";
             this.htmlPanel1.Size = new System.Drawing.Size(350, 250);
             this.htmlPanel1.TabIndex = 27;
-            this.htmlPanel1.Text = "<div>Not implemented</div>";
             this.htmlPanel1.UseSystemCursors = true;
             // 
             // HTMLForm

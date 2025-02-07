@@ -19,7 +19,7 @@ namespace FriishProduce
         private readonly BannerOptions banner_form;
         private readonly Savedata savedata;
         private HTMLForm htmlForm;
-        private TheArtOfDev.HtmlRenderer.WinForms.HtmlToolTip tip = Program.Lang.CreateTooltip();
+        private TheArtOfDev.HtmlRenderer.WinForms.HtmlToolTip tip = HTML.CreateToolTip();
 
         protected string TIDCode;
         protected string Untitled;

@@ -64,13 +64,18 @@ namespace FriishProduce
             var list = new List<MenuItem>();
             foreach (var platform in platformsList)
             {
-                var item = !string.IsNullOrWhiteSpace(platform) ? new MenuItem(platform, addProject) : new MenuItem("-");
                 if (!string.IsNullOrWhiteSpace(platform))
                 {
-                    item.Name = platform;
-                    item.Text = Program.Lang.Format(("project_type", Name), Program.Lang.Console((Platform)Enum.Parse(typeof(Platform), platform)));
+                    Platform converted = (Platform)Enum.Parse(typeof(Platform), platform);
+
+                    list.Add(new MenuItem(platform, addProject)
+                    {
+                        Text = Program.Lang.Format(("project_type", Name), Program.Lang.Console(converted)),
+                        Name = platform
+                    });
                 }
-                list.Add(item);
+
+                else list.Add(new MenuItem("-"));
             }
 
             return list.ToArray();
@@ -83,12 +88,12 @@ namespace FriishProduce
             {
                 if (!string.IsNullOrWhiteSpace(platform))
                 {
-                    Platform convertedPlatform = (Platform)Enum.Parse(typeof(Platform), platform);
+                    Platform converted = (Platform)Enum.Parse(typeof(Platform), platform);
 
                     list.Add(new ToolStripMenuItem
                     (
-                        Program.Lang.Format(("project_type", Name), Program.Lang.Console(convertedPlatform)),
-                        Icons[convertedPlatform],
+                        Program.Lang.Format(("project_type", Name), Program.Lang.Console(converted)),
+                        Icons[converted],
                         addProject,
                         platform + "0"
                     ));
@@ -139,6 +144,19 @@ namespace FriishProduce
             toolbarCloseProject.Text = close_project.Text;
             toolbarGameScan.Text = game_scan.Text;
             toolbarPreferences.Text = preferences.Text = Program.Lang.String("preferences");
+
+            vistaMenu.SetImage(new_project, toolbarNewProject.Image);
+            vistaMenu.SetImage(open_project, toolbarOpenProject.Image);
+            vistaMenu.SetImage(save_project, toolbarSave.Image);
+            vistaMenu.SetImage(save_project_as, toolbarSaveAs.Image);
+            vistaMenu.SetImage(export, toolbarExport.Image);
+            vistaMenu.SetImage(close_project, toolbarCloseProject.Image);
+            vistaMenu.SetImage(import_game_file, toolbarImportGameFile.Image);
+            vistaMenu.SetImage(game_scan, toolbarGameScan.Image);
+            vistaMenu.SetImage(preferences, toolbarPreferences.Image);
+            foreach (MenuItem item in new_project.MenuItems.OfType<MenuItem>())
+                if (Enum.TryParse(item.Name, out Platform converted))
+                    vistaMenu.SetImage(item, Icons[converted]);
 
             BrowseProject.Title = new Regex(@"\(.*\)").Replace(open_project.Text, "").Replace("&", "");
             SaveProject.Title = new Regex(@"\(.*\)").Replace(save_project_as.Text, "").Replace("&", "");
@@ -347,6 +365,7 @@ namespace FriishProduce
             }
 
             import_game_file.Enabled = close_all.Enabled = close_project.Enabled = hasTabs;
+            vistaMenu.SetImage(import_game_file, toolbarImportGameFile.Image);
 
             // Sync toolbar buttons
             // ********

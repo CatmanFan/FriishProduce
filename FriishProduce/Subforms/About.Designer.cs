@@ -54,23 +54,21 @@ namespace FriishProduce
             this.tableLayoutPanel.Controls.Add(this.labelProductName, 0, 0);
             this.tableLayoutPanel.Controls.Add(this.labelDescription, 0, 2);
             this.tableLayoutPanel.Controls.Add(this.labelVersion, 0, 1);
-            this.tableLayoutPanel.Controls.Add(this.htmlPanel1, 0, 4);
-            this.tableLayoutPanel.Location = new System.Drawing.Point(12, 12);
+            this.tableLayoutPanel.Location = new System.Drawing.Point(12, 10);
             this.tableLayoutPanel.Name = "tableLayoutPanel";
-            this.tableLayoutPanel.RowCount = 5;
+            this.tableLayoutPanel.RowCount = 4;
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.65174F));
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.018147F));
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.89084F));
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.16692F));
-            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55.27235F));
-            this.tableLayoutPanel.Size = new System.Drawing.Size(610, 244);
+            this.tableLayoutPanel.Size = new System.Drawing.Size(610, 105);
             this.tableLayoutPanel.TabIndex = 0;
             // 
             // labelCopyright
             // 
             this.labelCopyright.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelCopyright.Font = new System.Drawing.Font("Verdana", 6.5F);
-            this.labelCopyright.Location = new System.Drawing.Point(4, 83);
+            this.labelCopyright.Location = new System.Drawing.Point(4, 79);
             this.labelCopyright.Margin = new System.Windows.Forms.Padding(4, 0, 3, 0);
             this.labelCopyright.MaximumSize = new System.Drawing.Size(0, 17);
             this.labelCopyright.Name = "labelCopyright";
@@ -86,7 +84,7 @@ namespace FriishProduce
             this.logoPictureBox.Location = new System.Drawing.Point(501, 3);
             this.logoPictureBox.Name = "logoPictureBox";
             this.tableLayoutPanel.SetRowSpan(this.logoPictureBox, 4);
-            this.logoPictureBox.Size = new System.Drawing.Size(106, 101);
+            this.logoPictureBox.Size = new System.Drawing.Size(106, 99);
             this.logoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.logoPictureBox.TabIndex = 12;
             this.logoPictureBox.TabStop = false;
@@ -99,7 +97,7 @@ namespace FriishProduce
             this.labelProductName.Location = new System.Drawing.Point(0, 0);
             this.labelProductName.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.labelProductName.Name = "labelProductName";
-            this.labelProductName.Size = new System.Drawing.Size(495, 28);
+            this.labelProductName.Size = new System.Drawing.Size(495, 27);
             this.labelProductName.TabIndex = 19;
             this.labelProductName.Text = "Product Name";
             this.labelProductName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -109,9 +107,9 @@ namespace FriishProduce
             this.labelDescription.AutoSize = true;
             this.labelDescription.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelDescription.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.labelDescription.Location = new System.Drawing.Point(3, 47);
+            this.labelDescription.Location = new System.Drawing.Point(3, 45);
             this.labelDescription.Name = "labelDescription";
-            this.labelDescription.Size = new System.Drawing.Size(492, 36);
+            this.labelDescription.Size = new System.Drawing.Size(492, 34);
             this.labelDescription.TabIndex = 21;
             this.labelDescription.Text = "{0}\r\nCurrent language: {1} ({2})";
             this.labelDescription.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -120,7 +118,7 @@ namespace FriishProduce
             // 
             this.labelVersion.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelVersion.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.labelVersion.Location = new System.Drawing.Point(3, 28);
+            this.labelVersion.Location = new System.Drawing.Point(3, 27);
             this.labelVersion.MaximumSize = new System.Drawing.Size(0, 17);
             this.labelVersion.Name = "labelVersion";
             this.labelVersion.Size = new System.Drawing.Size(492, 17);
@@ -131,17 +129,13 @@ namespace FriishProduce
             // htmlPanel1
             // 
             this.htmlPanel1.AutoScroll = true;
-            this.htmlPanel1.AutoScrollMinSize = new System.Drawing.Size(600, 23);
             this.htmlPanel1.BackColor = System.Drawing.SystemColors.Control;
-            this.htmlPanel1.BaseStylesheet = "div { font-size: 12px !important; padding: 4px 6px !important; }";
+            this.htmlPanel1.BaseStylesheet = "";
             this.htmlPanel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.tableLayoutPanel.SetColumnSpan(this.htmlPanel1, 2);
-            this.htmlPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.htmlPanel1.Location = new System.Drawing.Point(3, 110);
+            this.htmlPanel1.Location = new System.Drawing.Point(17, 123);
             this.htmlPanel1.Name = "htmlPanel1";
-            this.htmlPanel1.Size = new System.Drawing.Size(604, 131);
-            this.htmlPanel1.TabIndex = 28;
-            this.htmlPanel1.Text = "<div>Page under construction... please be patient!</div>";
+            this.htmlPanel1.Size = new System.Drawing.Size(600, 190);
+            this.htmlPanel1.TabIndex = 29;
             // 
             // b_ok
             // 
@@ -161,7 +155,7 @@ namespace FriishProduce
             this.bottomPanel2.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.bottomPanel2.Controls.Add(this.bottomPanel1);
             this.bottomPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.bottomPanel2.Location = new System.Drawing.Point(0, 268);
+            this.bottomPanel2.Location = new System.Drawing.Point(0, 330);
             this.bottomPanel2.Name = "bottomPanel2";
             this.bottomPanel2.Size = new System.Drawing.Size(634, 42);
             this.bottomPanel2.TabIndex = 25;
@@ -180,7 +174,8 @@ namespace FriishProduce
             // 
             this.AcceptButton = this.b_ok;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
-            this.ClientSize = new System.Drawing.Size(634, 310);
+            this.ClientSize = new System.Drawing.Size(634, 372);
+            this.Controls.Add(this.htmlPanel1);
             this.Controls.Add(this.bottomPanel2);
             this.Controls.Add(this.tableLayoutPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;

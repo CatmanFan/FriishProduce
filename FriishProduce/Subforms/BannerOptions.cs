@@ -16,7 +16,7 @@ namespace FriishProduce
         internal int origYear;
         internal int origPlayers;
         internal int origRegion;
-        private TheArtOfDev.HtmlRenderer.WinForms.HtmlToolTip tip = Program.Lang.CreateTooltip();
+        private TheArtOfDev.HtmlRenderer.WinForms.HtmlToolTip tip = HTML.CreateToolTip();
 
         public BannerOptions(Platform platform)
         {

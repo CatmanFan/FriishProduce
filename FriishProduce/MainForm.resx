@@ -532,14 +532,23 @@
   <data name="preferences.Text" xml:space="preserve">
     <value>preferences</value>
   </data>
-  <data name="check_for_updates.Text" xml:space="preserve">
-    <value>check_for_updates</value>
+  <data name="language_file_editor.Text" xml:space="preserve">
+    <value>Language File Editor</value>
   </data>
-  <data name="auto_update.Text" xml:space="preserve">
-    <value>auto_update</value>
+  <data name="test_database.Text" xml:space="preserve">
+    <value>test_database</value>
   </data>
-  <data name="updater.Text" xml:space="preserve">
-    <value>updater</value>
+  <data name="test_database.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="clear_database.Text" xml:space="preserve">
+    <value>clear_database</value>
+  </data>
+  <data name="reset_preferences.Text" xml:space="preserve">
+    <value>reset_preferences</value>
+  </data>
+  <data name="advanced.Text" xml:space="preserve">
+    <value>advanced</value>
   </data>
   <data name="menuItem9.Text" xml:space="preserve">
     <value>-</value>
@@ -559,38 +568,41 @@
   <data name="extract_from_wad.Text" xml:space="preserve">
     <value>extract_from_wad</value>
   </data>
-  <data name="menuItem10.Text" xml:space="preserve">
-    <value>-</value>
-  </data>
-  <data name="language_file_editor.Text" xml:space="preserve">
-    <value>Language File Editor</value>
-  </data>
-  <data name="test_database.Text" xml:space="preserve">
-    <value>test_database</value>
-  </data>
-  <data name="test_database.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="clear_database.Text" xml:space="preserve">
-    <value>clear_database</value>
-  </data>
-  <data name="reset_preferences.Text" xml:space="preserve">
-    <value>reset_preferences</value>
-  </data>
-  <data name="advanced.Text" xml:space="preserve">
-    <value>advanced</value>
-  </data>
   <data name="menuItem3.Text" xml:space="preserve">
     <value>tools</value>
   </data>
+  <data name="check_for_updates.Text" xml:space="preserve">
+    <value>check_for_updates</value>
+  </data>
+  <data name="auto_update.Text" xml:space="preserve">
+    <value>auto_update</value>
+  </data>
+  <data name="updater.Text" xml:space="preserve">
+    <value>updater</value>
+  </data>
+  <data name="menuItem10.Text" xml:space="preserve">
+    <value>-</value>
+  </data>
   <data name="wiki.Text" xml:space="preserve">
-    <value>Wiki</value>
+    <value>Online Wiki</value>
   </data>
-  <data name="about.Text" xml:space="preserve">
-    <value>about</value>
+  <metadata name="vistaMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>558, 17</value>
+  </metadata>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>77</value>
+  </metadata>
+  <metadata name="$this.TrayLargeIcon" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
   </data>
-  <data name="menuItem4.Text" xml:space="preserve">
-    <value>help</value>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>1008, 504</value>
   </data>
   <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 25</value>
@@ -618,21 +630,6 @@
   </data>
   <data name="&gt;&gt;tabControl.ZOrder" xml:space="preserve">
     <value>2</value>
-  </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>77</value>
-  </metadata>
-  <metadata name="$this.TrayLargeIcon" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="$this.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1008, 504</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 11px</value>
@@ -3036,22 +3033,34 @@
   <data name="&gt;&gt;preferences.Type" xml:space="preserve">
     <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;updater.Name" xml:space="preserve">
-    <value>updater</value>
+  <data name="&gt;&gt;advanced.Name" xml:space="preserve">
+    <value>advanced</value>
   </data>
-  <data name="&gt;&gt;updater.Type" xml:space="preserve">
+  <data name="&gt;&gt;advanced.Type" xml:space="preserve">
     <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;check_for_updates.Name" xml:space="preserve">
-    <value>check_for_updates</value>
+  <data name="&gt;&gt;language_file_editor.Name" xml:space="preserve">
+    <value>language_file_editor</value>
   </data>
-  <data name="&gt;&gt;check_for_updates.Type" xml:space="preserve">
+  <data name="&gt;&gt;language_file_editor.Type" xml:space="preserve">
     <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;auto_update.Name" xml:space="preserve">
-    <value>auto_update</value>
+  <data name="&gt;&gt;test_database.Name" xml:space="preserve">
+    <value>test_database</value>
   </data>
-  <data name="&gt;&gt;auto_update.Type" xml:space="preserve">
+  <data name="&gt;&gt;test_database.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;clear_database.Name" xml:space="preserve">
+    <value>clear_database</value>
+  </data>
+  <data name="&gt;&gt;clear_database.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;reset_preferences.Name" xml:space="preserve">
+    <value>reset_preferences</value>
+  </data>
+  <data name="&gt;&gt;reset_preferences.Type" xml:space="preserve">
     <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;menuItem9.Name" xml:space="preserve">
@@ -3090,46 +3099,34 @@
   <data name="&gt;&gt;extract_wad_manual.Type" xml:space="preserve">
     <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;menuItem10.Name" xml:space="preserve">
-    <value>menuItem10</value>
-  </data>
-  <data name="&gt;&gt;menuItem10.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;advanced.Name" xml:space="preserve">
-    <value>advanced</value>
-  </data>
-  <data name="&gt;&gt;advanced.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;language_file_editor.Name" xml:space="preserve">
-    <value>language_file_editor</value>
-  </data>
-  <data name="&gt;&gt;language_file_editor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;test_database.Name" xml:space="preserve">
-    <value>test_database</value>
-  </data>
-  <data name="&gt;&gt;test_database.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;clear_database.Name" xml:space="preserve">
-    <value>clear_database</value>
-  </data>
-  <data name="&gt;&gt;clear_database.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;reset_preferences.Name" xml:space="preserve">
-    <value>reset_preferences</value>
-  </data>
-  <data name="&gt;&gt;reset_preferences.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;menuItem4.Name" xml:space="preserve">
     <value>menuItem4</value>
   </data>
   <data name="&gt;&gt;menuItem4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;updater.Name" xml:space="preserve">
+    <value>updater</value>
+  </data>
+  <data name="&gt;&gt;updater.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;check_for_updates.Name" xml:space="preserve">
+    <value>check_for_updates</value>
+  </data>
+  <data name="&gt;&gt;check_for_updates.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;auto_update.Name" xml:space="preserve">
+    <value>auto_update</value>
+  </data>
+  <data name="&gt;&gt;auto_update.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuItem10.Name" xml:space="preserve">
+    <value>menuItem10</value>
+  </data>
+  <data name="&gt;&gt;menuItem10.Type" xml:space="preserve">
     <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;wiki.Name" xml:space="preserve">
@@ -3144,10 +3141,22 @@
   <data name="&gt;&gt;about.Type" xml:space="preserve">
     <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;vistaMenu.Name" xml:space="preserve">
+    <value>vistaMenu</value>
+  </data>
+  <data name="&gt;&gt;vistaMenu.Type" xml:space="preserve">
+    <value>wyDay.Controls.VistaMenu, VistaMenu, Version=1.9.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="about.Text" xml:space="preserve">
+    <value>about</value>
+  </data>
+  <data name="menuItem4.Text" xml:space="preserve">
+    <value>help</value>
   </data>
 </root>

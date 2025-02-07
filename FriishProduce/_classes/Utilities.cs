@@ -9,6 +9,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -36,6 +37,92 @@ namespace FriishProduce
             Text += $"[{DateTime.Now.Year}-{DateTime.Now.Month:D2}-{DateTime.Now.Day:D2} {DateTime.Now.Hour:D2}:{DateTime.Now.Minute:D2}:{DateTime.Now.Second:D2}] {msg}";
 
             // File.WriteAllText(Paths.Log, Text);
+        }
+    }
+
+    public static class HTML
+    {
+        public static string BaseStylesheet
+        {
+            get => string.Join("\n",
+            "div { font-size: 12px !important; line-height: 0.2 !important; }",
+            "ul li, h1, h2, h3, h4, h5 { margin-top: 5px !important; margin-bottom: 5px !important; }",
+            "hr { border-top: 1px solid black; }");
+        }
+
+
+        public static TheArtOfDev.HtmlRenderer.WinForms.HtmlToolTip CreateToolTip() => new()
+        {
+            BaseStylesheet = BaseStylesheet + "\n" + 
+                "b { font-weight: 450 !important; }\n" +
+                "div { font-family: \"" + Program.MainForm.Font.FontFamily.Name /* "Verdana" */ + "\" !important; }",
+            StripAmpersands = false,
+            InitialDelay = 300,
+            AutoPopDelay = 12000,
+            TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit,
+            UseGdiPlusTextRendering = true,
+            UseFading = false,
+            UseAnimation = true,
+            MaximumSize = new System.Drawing.Size(375, 0),
+        };
+
+        public static string MarkdownToHTML(string input)
+        {
+            string[] output = input.Replace("\r\n", "\n").Replace("<br>", "\n").Replace("<br/>", "\n").Replace("<br />", "\n").Split('\n');
+            return MarkdownToHTML(input);
+        }
+
+        public static string[] MarkdownToHTML(string[] input)
+        {
+            for (int i = 0; i < input.Length; i++)
+            {
+                string line = input[i];
+                if (string.IsNullOrWhiteSpace(line)) line = "";
+
+                line = new Regex(@"\*\*(.*?)\*\*").Replace(line, "<b>$1</b>"); // Bold
+                line = new Regex(@"\*(.*?)\*").Replace(line, "<i>$1</i>"); // Italic
+                line = new Regex(@"\[(.*?)\]\((.*?)\)").Replace(line, "<a href=\"$2\">$1</a>"); // URL
+
+                if (line.StartsWith("#####")) line = "<h5>" + line.Remove(0, 5).TrimStart() + "</h5>";
+                if (line.StartsWith("####")) line = "<h4>" + line.Remove(0, 4).TrimStart() + "</h4>";
+                if (line.StartsWith("###")) line = "<h3>" + line.Remove(0, 3).TrimStart() + "</h3>";
+                if (line.StartsWith("##")) line = "<h2>" + line.Remove(0, 2).TrimStart() + "</h2>";
+                if (line.StartsWith("#")) line = "<h1>" + line.Remove(0, 1).TrimStart() + "</h1>";
+
+                if (line.StartsWith("* ")) line = "<li>" + line.Remove(0, 2) + "</li>";
+
+                input[i] = line;
+            }
+
+            var output = new List<string>();
+            bool list = false;
+
+            foreach (var line in input)
+            {
+                if (line?.StartsWith("<li>") == true)
+                {
+                    if (!list)
+                    {
+                        output.Add("<ul>");
+                        list = true;
+                    }
+                }
+                else
+                {
+                    if (list)
+                    {
+                        output.Add("</ul>");
+                        list = false;
+                    }
+                }
+
+                output.Add(line);
+            }
+
+            try { output[0] = "<div>" + output[0]; } catch { }
+            try { output[output.Count - 1] = output[output.Count - 1] + "</div>"; } catch { }
+
+            return output.ToArray();
         }
     }
 

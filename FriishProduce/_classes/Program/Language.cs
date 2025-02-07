@@ -252,22 +252,6 @@ namespace FriishProduce
 
         public string HTML(int number, bool isTooltip, string title = null) => html(String((isTooltip ? "t_" : "l_") + number.ToString("000"), "html"), title);
 
-        public HtmlToolTip CreateTooltip() => new()
-        {
-            BaseStylesheet = "div { font-family: \"" + Program.MainForm.Font.FontFamily.Name /* "Verdana" */ + "\" !important; font-size: 12px !important; }" +
-                "div, p, body, hr { margin: 0px 0px 0px 0px !important; padding: 0px 0px 0px 0px !important; }" +
-                "hr { border-top: 1px solid black; }" +
-                "b { font-weight: 450 !important; }",
-            StripAmpersands = false,
-            InitialDelay = 300,
-            AutoPopDelay = 12000,
-            TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit,
-            UseGdiPlusTextRendering = true,
-            UseFading = false,
-            UseAnimation = true,
-            MaximumSize = new System.Drawing.Size(375, 0),
-        };
-
         public void ToolTip(HtmlToolTip tip, Control control, string name = null, string title = null, string unsure = null)
         {
             if (control == null || tip == null) return;

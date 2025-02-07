@@ -20,7 +20,8 @@ namespace FriishProduce
             Font = Program.MainForm.Font;
             FormText = text;
             Text = title;
-            htmlPanel1.Text = string.IsNullOrWhiteSpace(text) ? "Not implemented" : text;
+            htmlPanel1.BaseStylesheet = HTML.BaseStylesheet;
+            htmlPanel1.Text = string.IsNullOrWhiteSpace(text) ? "<div>Not implemented</div>" : text;
             b_ok.Text = Program.Lang.String("b_close");
         }
     }
