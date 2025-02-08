@@ -199,7 +199,7 @@ namespace FriishProduce
         private static string Message(string msg, string url)
         {
             int colon = msg.IndexOf(':');
-            char dot = Program.Lang.GetScript(msg) == Language.ScriptType.CJK && !Program.Lang.Current.StartsWith("ko") ? '。' : '.';
+            char dot = Program.Lang.GetScript(msg) == Language.ScriptType.CJK && Program.Lang.GetRegion() is not Language.Region.Korea ? '。' : '.';
 
             if (!string.IsNullOrWhiteSpace(url) && msg.Contains(url) && colon > 0) msg = msg.Substring(0, colon);
             if (msg[msg.Length - 1] != dot) msg += dot;

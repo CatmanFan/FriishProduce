@@ -305,10 +305,10 @@ namespace FriishProduce
                 {
                     value = channels != null ? inWadRegion switch { Region.Japan => 0, Region.Europe => 2, Region.Korea => 3, _ => 1 } : 1;
 
-                    if (!isVirtualConsole && Program.Lang.Current.StartsWith("ja"))
+                    if (!isVirtualConsole && Program.Lang.GetRegion() is Language.Region.Japan)
                         value = 0;
 
-                    if (!isVirtualConsole && Program.Lang.Current.StartsWith("ko"))
+                    if (!isVirtualConsole && Program.Lang.GetRegion() is Language.Region.Korea)
                         value = 3;
                 }
 
@@ -760,11 +760,11 @@ namespace FriishProduce
                 default:
                     try
                     {
-                        var extensions = Filters.ROM.Where(x => x.Platform == (targetPlatform == Platform.S32X ? Platform.SMD : targetPlatform)).ToArray()[0];
-                        for (int i = 0; i < extensions.Extensions.Length; i++)
-                            if (!extensions.Extensions[i].StartsWith("*")) extensions.Extensions[i] = "*" + extensions.Extensions[i];
+                        var extensions = Platforms.Filters.Where(x => x.Key == (targetPlatform == Platform.S32X ? Platform.SMD : targetPlatform)).ToArray()[0];
+                        for (int i = 0; i < extensions.Value.Length; i++)
+                            if (!extensions.Value[i].StartsWith("*")) extensions.Value[i] = "*" + extensions.Value[i];
 
-                        browseROM.Filter = Program.Lang.Format(("filter.rom", null), Program.Lang.Console(targetPlatform), string.Join(", ", extensions.Extensions), string.Join(";", extensions.Extensions));
+                        browseROM.Filter = Program.Lang.Format(("filter.rom", null), Program.Lang.Console(targetPlatform), string.Join(", ", extensions.Value), string.Join(";", extensions.Value));
                     }
                     catch
                     {
@@ -803,11 +803,7 @@ namespace FriishProduce
             // Set icon
             // ********
             if (Program.MainForm != null)
-            {
-                using var icon = new Bitmap(Program.MainForm.Icons[targetPlatform]);
-                icon.MakeTransparent(Color.White);
-                Icon = Icon.FromHandle(icon.GetHicon());
-            }
+                Icon = Icon.FromHandle(Platforms.Icons[targetPlatform].GetHicon());
 
             // Cosmetic
             // ********
@@ -1868,8 +1864,8 @@ namespace FriishProduce
 
             foreach (var entry in channels.Entries)
             {
-                var title = entry.Regions.Contains(0) && Program.Lang.Current.StartsWith("ja") ? entry.Titles[0]
-                          : entry.Regions.Contains(0) && Program.Lang.Current.StartsWith("ko") ? entry.Titles[entry.Titles.Count - 1]
+                var title = entry.Regions.Contains(0) && Program.Lang.GetRegion() is Language.Region.Japan ? entry.Titles[0]
+                          : entry.Regions.Contains(0) && Program.Lang.GetRegion() is Language.Region.Korea ? entry.Titles[entry.Titles.Count - 1]
                           : entry.Regions.Contains(0) && entry.Regions.Count > 1 ? entry.Titles[1]
                           : entry.Titles[0];
 
@@ -1927,65 +1923,12 @@ namespace FriishProduce
             // If so, make Japan/Korea region item the first in the WAD region context list
             // ********
             var selected = regions.IndexOf(Program.Lang.String("region_u"));
+            Language.Region region = Program.Lang.GetRegion();
 
-            var altRegions = new Dictionary<string, int>()
-            {
-                { "-JP", 0 },
-                { "-KR", 1 },
-                { "-GB", 2 },
-                { "-IE", 2 },
-                { "-BE", 2 },
-                { "-FR", 2 },
-                { "-ES", 2 },
-                { "-PT", 2 },
-                { "-IN", 2 },
-                { "-ZA", 2 },
-                { "-AU", 2 },
-                { "-NZ", 2 },
-                { "-CA", 3 },
-                { "-US", 3 },
-                { "-419", 3 },
-                { "-MX", 3 },
-                { "-CO", 3 },
-                { "-EC", 3 },
-                { "-VN", 3 },
-                { "-CL", 3 },
-                { "-AR", 3 },
-                { "-BR", 3 },
-                { "ja", 0 },
-                { "ko", 1 },
-                { "fr", 2 },
-                { "es", 2 },
-                { "de", 2 },
-                { "nl", 2 },
-                { "it", 2 },
-                { "pl", 2 },
-                { "ru", 2 },
-                { "uk", 2 },
-                { "tr", 2 },
-                { "hu", 2 },
-                { "ro", 2 },
-                { "ca", 2 },
-                { "eu", 2 },
-                { "gl", 2 },
-                { "ast", 2 },
-                { "dk", 2 },
-                { "no", 2 },
-                { "sv", 2 },
-                { "fi", 2 },
-            };
-
-            foreach (var item in altRegions)
-                if (Program.Lang.Current.ToLower().StartsWith(item.Key) || Program.Lang.Current.ToUpper().EndsWith(item.Key))
-                {
-                    selected = regions.IndexOf(item.Value == 0 ? Program.Lang.String("region_j")
-                                : item.Value == 1 ? Program.Lang.String("region_k")
-                                : item.Value == 2 ? Program.Lang.String("region_e")
-                                : Program.Lang.String("region_u"));
-
-                    if (selected == -1 && item.Value == 1) selected = regions.IndexOf(Program.Lang.String("region_u"));
-                    break;
-                }
+            selected = regions.IndexOf(region is Language.Region.Japan ? Program.Lang.String("region_j")
+                                     : region is Language.Region.Korea ? Program.Lang.String("region_k")
+                                     : region is Language.Region.Europe ? Program.Lang.String("region_e")
+                                     : Program.Lang.String("region_u"));
 
             if (selected == -1) selected = 0;
 

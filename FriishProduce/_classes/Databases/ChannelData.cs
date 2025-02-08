@@ -296,7 +296,7 @@ namespace FriishProduce
                             catch { y.EmuRevs.Add(0); }
                         }
 
-                        if (!Program.Lang.Current.StartsWith("ja") && !Program.Lang.Current.StartsWith("ko") && !Program.Lang.Current.StartsWith("zh"))
+                        if (Program.Lang.GetRegion() is not Language.Region.Japan and not Language.Region.Korea && !Program.Lang.Current.StartsWith("zh"))
                         {
                             // Change Japanese title to English if language is not CJK
                             if (y.Regions.Count == 1 && y.Regions[0] == 0 && item.GetProperty("titles").GetArrayLength() > 1)
@@ -328,7 +328,7 @@ namespace FriishProduce
                         }
                     }
 
-                    if (!(Program.Lang.Current.StartsWith("ja") && !y.Regions.Contains(0)) || c == Platform.Flash || c == Platform.C64 || c == Platform.MSX)
+                    if (!(Program.Lang.GetRegion() is Language.Region.Japan && !y.Regions.Contains(0)) || c == Platform.Flash || c == Platform.C64 || c == Platform.MSX)
                         Entries.Add(y);
                 }
             }

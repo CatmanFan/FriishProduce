@@ -179,6 +179,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Apps.resx</DependentUpon>
     </Compile>
+    <Compile Include="FileDatas\Icons.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Icons.resx</DependentUpon>
+    </Compile>
     <Compile Include="FileDatas\SaveImages.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -349,6 +354,10 @@
     <EmbeddedResource Include="FileDatas\Apps.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Apps.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FileDatas\Icons.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Icons.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="FileDatas\SaveImages.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -536,6 +545,24 @@
     <None Include="Resources\forwarder_wii\base_waninkoko.wad" />
     <None Include="Resources\forwarder_wii\forwarder_v12.dol" />
     <None Include="Resources\forwarder_wii\forwarder_v14.dol" />
+    <None Include="Resources\icons\consoles\yspixel\Fc_Pad1.ico" />
+    <None Include="Resources\icons\consoles\yspixel\Gba02.ico" />
+    <None Include="Resources\icons\consoles\yspixel\GBC_Purple.ico" />
+    <None Include="Resources\icons\consoles\yspixel\GBPocket_Gray.ico" />
+    <None Include="Resources\icons\consoles\yspixel\Logo_NDS.ico" />
+    <None Include="Resources\icons\consoles\yspixel\Logo_NeoGeo.ico" />
+    <None Include="Resources\icons\consoles\yspixel\Logo_NeoGeoCD.ico" />
+    <None Include="Resources\icons\consoles\yspixel\MD_Pad.ico" />
+    <None Include="Resources\icons\consoles\yspixel\N64_Pad.ico" />
+    <None Include="Resources\icons\consoles\yspixel\Nes_pad.ico" />
+    <None Include="Resources\icons\consoles\yspixel\Pce_02_pad.ico" />
+    <None Include="Resources\icons\consoles\yspixel\Pce_Duo-RxPad.ico" />
+    <None Include="Resources\icons\consoles\yspixel\Ps_pad03.ico" />
+    <None Include="Resources\icons\consoles\yspixel\Sfc_pad02.ico" />
+    <None Include="Resources\icons\consoles\yspixel\Sms_pad.ico" />
+    <None Include="Resources\icons\consoles\yspixel\Snes_pad.ico" />
+    <None Include="Resources\icons\consoles\yspixel\TurboGrafx_pad.ico" />
+    <None Include="Resources\icons\consoles\yspixel\VirtualBoy_pad.ico" />
     <None Include="Resources\StaticBase.wad" />
     <None Include="Strings\en-GB.json" />
     <None Include="Strings\es-419.json" />

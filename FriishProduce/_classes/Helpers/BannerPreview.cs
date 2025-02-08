@@ -10,15 +10,6 @@ namespace FriishProduce
 {
     public class Preview
     {
-        public enum Language
-        {
-            America,
-            Japanese,
-            Korean,
-            Europe,
-            Auto
-        }
-
         private Bitmap RoundCorners(Bitmap x, int CornerRadius, bool Smooth = false)
         {
             CornerRadius *= 2;
@@ -301,12 +292,27 @@ namespace FriishProduce
         /// <param name="year">Year the game was released</param>
         /// <param name="players">No. of players supported</param>
         /// <param name="console">Platform/console</param>
-        /// <param name="lang">Banner region/language: Japanese, Korean, Europe or America</param>
+        /// <param name="region">Banner region</param>
+        /// <param name="lang">Language, automatically takes value from app language/WAD region if set to -1</param>
         /// <returns></returns>
-        public Bitmap Banner(Bitmap img, string text, int year, int players, Platform platform, libWiiSharp.Region region)
+        public Bitmap Banner(Bitmap img, string text, int year, int players, Platform platform, libWiiSharp.Region region, int lang = -1)
         {
             if (banner != null) banner.Dispose();
             banner = new Bitmap(width, height);
+
+            if (lang < 0 || lang > 7)
+                lang = Program.Lang.Current == "de" ? 1
+                     : Program.Lang.Current == "fr" ? 2
+                     : Program.Lang.Current == "es" ? 3
+                     : Program.Lang.Current == "it" ? 4
+                     : Program.Lang.Current == "nl" ? 5
+                     : Program.Lang.GetRegion() is Language.Region.Japan || region == libWiiSharp.Region.Japan ? 6
+                     : Program.Lang.GetRegion() is Language.Region.Korea || region == libWiiSharp.Region.Korea ? 7
+                     : 0;
+
+            if (lang is 1 or 4 or 5) region = libWiiSharp.Region.Europe;
+            if (lang is 6) region = libWiiSharp.Region.Japan;
+            if (lang is 7) region = libWiiSharp.Region.Korea;
 
             if (img == null)
             {
@@ -320,11 +326,11 @@ namespace FriishProduce
             switch (platform)
             {
                 case Platform.NES:
-                    target = region switch { libWiiSharp.Region.Japan or libWiiSharp.Region.Korea => 1, _ => 0 };
+                    target = lang switch { 6 or 7 => 1, _ => 0 };
                     break;
 
                 case Platform.SNES:
-                    target = region switch { libWiiSharp.Region.Japan or libWiiSharp.Region.Korea => 3, _ => 2 };
+                    target = lang switch { 6 or 7 => 3, _ => 2 };
                     break;
 
                 case Platform.N64:
@@ -341,7 +347,7 @@ namespace FriishProduce
 
                 case Platform.PCE:
                 case Platform.PCECD:
-                    target = region switch { libWiiSharp.Region.Japan or libWiiSharp.Region.Korea => 8, _ => 7 };
+                    target = lang switch { 6 or 7 => 8, _ => 7 };
                     break;
 
                 case Platform.NEO:
@@ -373,23 +379,31 @@ namespace FriishProduce
             #region -- Define left text color and contents --
             var leftTextColor = target == 2 ? Color.Black : target == 8 ? Color.FromArgb(90, 90, 90) : BannerSchemes.GetBrightness(target, 0) < 0.8 ? Color.White : Color.FromArgb(50, 50, 50);
 
-            string released = region == libWiiSharp.Region.Japan ? "{0}年発売"
-                             : region == libWiiSharp.Region.Korea ? "일본판 발매년도\r\n{0}년"
-                             : Program.Lang.Current == "nl" ? "Release: {0}"
-                             : Program.Lang.Current == "es" ? "Año: {0}"
-                             : Program.Lang.Current == "it" ? "Pubblicato: {0}"
-                             : Program.Lang.Current == "fr" ? "Publié en {0}"
-                             : Program.Lang.Current == "de" ? "Erschienen: {0}"
-                             : "Released: {0}";
+            string released = lang switch
+            {
+                0 => "Released: {0}",
+                1 => "Erschienen: {0}",
+                2 => "Publié en {0}",
+                3 => "Año: {0}",
+                4 => "Pubblicato: {0}",
+                5 => "Release: {0}",
+                6 => "{0}年発売",
+                7 => "일본판 발매년도\r\n{0}년",
+                _ => "{0}"
+            };
 
-            string numPlayers = region == libWiiSharp.Region.Japan ? "プレイ人数\r\n{0}人"
-                              : region == libWiiSharp.Region.Korea ? "플레이 인원수\r\n{0}명"
-                              : Program.Lang.Current == "nl" ? "{0} speler(s)"
-                              : Program.Lang.Current == "es" ? "Jugadores: {0}"
-                              : Program.Lang.Current == "it" ? "Giocatori: {0}"
-                              : Program.Lang.Current == "fr" ? "Joueurs: {0}"
-                              : Program.Lang.Current == "de" ? "{0} Spieler"
-                              : "Players: {0}";
+            string numPlayers = lang switch
+            {
+                0 => "Players: {0}",
+                1 => "{0} Spieler",
+                2 => "Joueurs: {0}",
+                3 => "Jugadores: {0}",
+                4 => "Giocatori: {0}",
+                5 => "{0} speler(s)",
+                6 => "プレイ人数\r\n{0}人",
+                7 => "플레이 인원수\r\n{0}명",
+                _ => "{0}"
+            };
             #endregion
 
             using (Graphics g = Graphics.FromImage(banner))

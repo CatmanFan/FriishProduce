@@ -205,6 +205,81 @@ namespace FriishProduce
                 : ScriptType.Normal;
         }
 
+        public enum Region
+        {
+            International = -1,
+            Japan = 0,
+            Korea = 1,
+            Europe = 2,
+            Americas = 3,
+            China = 4,
+            HKTW = 5,
+        }
+
+        public Region GetRegion()
+        {
+            int region = -1;
+
+            var altRegions = new Dictionary<string, int>()
+            {
+                { "-JP", 0 },
+                { "-KR", 1 },
+                { "-GB", 2 },
+                { "-IE", 2 },
+                { "-BE", 2 },
+                { "-FR", 2 },
+                { "-ES", 2 },
+                { "-PT", 2 },
+                { "-IN", 2 },
+                { "-ZA", 2 },
+                { "-AU", 2 },
+                { "-NZ", 2 },
+                { "-CA", 3 },
+                { "-US", 3 },
+                { "-419", 3 },
+                { "-MX", 3 },
+                { "-CO", 3 },
+                { "-EC", 3 },
+                { "-VN", 3 },
+                { "-CL", 3 },
+                { "-AR", 3 },
+                { "-BR", 3 },
+                { "-CN", 4 },
+                { "-HK", 5 },
+                { "-TW", 5 },
+                { "ja", 0 },
+                { "ko", 1 },
+                { "fr", 2 },
+                { "es", 2 },
+                { "de", 2 },
+                { "nl", 2 },
+                { "it", 2 },
+                { "pl", 2 },
+                { "ru", 2 },
+                { "uk", 2 },
+                { "tr", 2 },
+                { "hu", 2 },
+                { "ro", 2 },
+                { "ca", 2 },
+                { "eu", 2 },
+                { "gl", 2 },
+                { "ast", 2 },
+                { "dk", 2 },
+                { "no", 2 },
+                { "sv", 2 },
+                { "fi", 2 },
+            };
+
+            foreach (var item in altRegions)
+                if (Program.Lang.Current.ToLower().StartsWith(item.Key) || Program.Lang.Current.ToUpper().EndsWith(item.Key))
+                {
+                    region = item.Value;
+                    break;
+                }
+
+            return (Region)region;
+        }
+
         /// <summary>
         /// Localizes a control or form using an auto-determined or manually-inputted tag name.
         /// </summary>

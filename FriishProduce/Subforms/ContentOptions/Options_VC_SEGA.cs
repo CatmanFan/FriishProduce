@@ -40,7 +40,7 @@ namespace FriishProduce
             {
                 { "console.brightness", Program.Config.sega.console_brightness },
                 { "console.disable_resetbutton", Program.Config.sega.console_disableresetbutton },
-                { "country", Program.Lang.Current.StartsWith("ja") ? "jp" : Program.Config.sega.country },
+                { "country", Program.Lang.GetRegion() is Language.Region.Japan ? "jp" : Program.Config.sega.country },
                 { "dev.mdpad.enable_6b", Program.Config.sega.dev_mdpad_enable_6b },
                 { "save_sram", Program.Config.sega.save_sram },
                 { "machine_md.use_4ptap", null },

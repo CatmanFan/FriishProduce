@@ -8,7 +8,6 @@ nav:
   - Tutorial: tutorial.md
   - FAQ: faq.md
   - Translate: translate.md
-  - About: about.md
 
 theme:
 # Bootstrap theme settings
@@ -69,7 +68,6 @@ plugins:
             Home: Accueil
             Tutorial: Tutoriel
             Translate: Traduire
-            About: À propos
 
         - locale: es
           name: Español
@@ -79,7 +77,6 @@ plugins:
             Tutorial: Tutorial
             FAQ: Preguntas frecuentes
             Translate: Traducir
-            About: Acerca de
 
         - locale: ja
           name: 日本語
@@ -88,8 +85,7 @@ plugins:
             Home: ホームページ
             Tutorial: 使い方
             Translate: 翻訳
-            FAQ: よくあるご質問
-            About: ついて
+            FAQ: よくある質問
 
 extra:
   # The language switcher values are stored here.

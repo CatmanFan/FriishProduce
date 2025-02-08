@@ -17,23 +17,6 @@ namespace FriishProduce
         private Wait wait = new(false);
 
         #region //////////////////// Platforms ////////////////////
-        public readonly IDictionary<Platform, Bitmap> Icons = new Dictionary<Platform, Bitmap>
-        {
-            { Platform.NES, new Icon(Properties.Resources.nintendo_nes, 16, 16).ToBitmap() },
-            { Platform.SNES, new Icon(Properties.Resources.nintendo_super_nes, 16, 16).ToBitmap() },
-            { Platform.N64, new Icon(Properties.Resources.nintendo_nintendo64, 16, 16).ToBitmap() },
-            { Platform.SMS, new Icon(Properties.Resources.sega_master_system, 16, 16).ToBitmap() },
-            { Platform.SMD, new Icon(Properties.Resources.sega_genesis, 16, 16).ToBitmap() },
-            { Platform.PCE, new Icon(Properties.Resources.nec_turbografx_16, 16, 16).ToBitmap() },
-            { Platform.PCECD, new Icon(Properties.Resources.nec_turbografx_16, 16, 16).ToBitmap() },
-            { Platform.NEO, new Icon(Properties.Resources.snk_neo_geo_aes, 16, 16).ToBitmap() },
-            { Platform.C64, Properties.Resources.c64 },
-            { Platform.MSX, Properties.Resources.msx },
-            { Platform.PSX, new Icon(Properties.Resources.sony_playstation, 16, 16).ToBitmap() },
-            { Platform.Flash, Properties.Resources.flash },
-            { Platform.RPGM, new Icon(Properties.Resources.rpg2003, 16, 16).ToBitmap() }
-        };
-
         private static readonly string[] platformsList = new string[]
         {
             Platform.NES.ToString(),
@@ -93,7 +76,7 @@ namespace FriishProduce
                     list.Add(new ToolStripMenuItem
                     (
                         Program.Lang.Format(("project_type", Name), Program.Lang.Console(converted)),
-                        Icons[converted],
+                        Platforms.Icons[converted],
                         addProject,
                         platform + "0"
                     ));
@@ -156,7 +139,7 @@ namespace FriishProduce
             vistaMenu.SetImage(preferences, toolbarPreferences.Image);
             foreach (MenuItem item in new_project.MenuItems.OfType<MenuItem>())
                 if (Enum.TryParse(item.Name, out Platform converted))
-                    vistaMenu.SetImage(item, Icons[converted]);
+                    vistaMenu.SetImage(item, Platforms.Icons[converted]);
 
             BrowseProject.Title = new Regex(@"\(.*\)").Replace(open_project.Text, "").Replace("&", "");
             SaveProject.Title = new Regex(@"\(.*\)").Replace(save_project_as.Text, "").Replace("&", "");
@@ -647,13 +630,13 @@ namespace FriishProduce
                         switch (value)
                         {
                             default:
-                                foreach (var tuple in Filters.ROM)
+                                foreach (var tuple in Platforms.Filters)
                                 {
-                                    foreach (var extension in tuple.Extensions)
+                                    foreach (var extension in tuple.Value)
                                     {
                                         if (extension.ToLower().Contains(value))
                                         {
-                                            addTab(tuple.Platform, null, file);
+                                            addTab(tuple.Key ?? Platform.NES, null, file);
                                             return;
                                         }
                                     };
