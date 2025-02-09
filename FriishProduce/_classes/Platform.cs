@@ -32,72 +32,72 @@
                 System.Collections.Generic.Dictionary<Platform, System.Drawing.Icon> orig = new()
                 {
                     {
-                        Platform.NES,
-                        Program.Lang.GetRegion() is Language.Region.Japan
-                        ? FileDatas.Icons.FC : FileDatas.Icons.NES
+                        Platform.NES, FileDatas.Icons.nes
+                        // Program.Lang.GetRegion() is Language.Region.Japan
+                        // ? FileDatas.Icons.fc : FileDatas.Icons.nes
                     },
 
                     {
-                        Platform.SNES,
-                        Program.Lang.GetRegion() is Language.Region.Americas or Language.Region.International
-                        ? FileDatas.Icons.SNES : FileDatas.Icons.SFC
+                        Platform.SNES, FileDatas.Icons.snes
+                        // Program.Lang.GetRegion() is Language.Region.Americas or Language.Region.International
+                        // ? FileDatas.Icons.snes : FileDatas.Icons.sfc
                     },
 
                     {
                         Platform.N64,
-                        FileDatas.Icons.N64
+                        FileDatas.Icons.n64
                     },
 
                     {
                         Platform.SMS,
-                        FileDatas.Icons.SMS
+                        FileDatas.Icons.sms
                     },
 
                     {
                         Platform.SMD,
-                        FileDatas.Icons.SMD
+                        FileDatas.Icons.smd
                     },
 
                     {
-                        Platform.PCE,
-                        Program.Lang.GetRegion() is Language.Region.Japan
-                        ? FileDatas.Icons.PCE : FileDatas.Icons.TG16
+                        Platform.PCE, FileDatas.Icons.tg16
+                        // Program.Lang.GetRegion() is Language.Region.Japan
+                        // ? FileDatas.Icons.pce : FileDatas.Icons.tg16
                     },
 
                     {
-                        Platform.PCECD,
-                        Program.Lang.GetRegion() is Language.Region.Japan
-                        ? FileDatas.Icons.PCECD : FileDatas.Icons.TG16
+                        Platform.PCECD, FileDatas.Icons.tg16
+                        // Program.Lang.GetRegion() is Language.Region.Japan
+                        // ? FileDatas.Icons.pcecd : FileDatas.Icons.tg16
                     },
 
                     {
                         Platform.NEO,
-                        FileDatas.Icons.NEO
+                        FileDatas.Icons.neo
                     },
 
                     {
                         Platform.C64,
-                        System.Drawing.Icon.FromHandle(Properties.Resources.flash.GetHicon())
+                        System.Drawing.Icon.FromHandle(FileDatas.Icons.flash.GetHicon())
                     },
 
                     {
                         Platform.MSX,
-                        System.Drawing.Icon.FromHandle(Properties.Resources.c64.GetHicon())
+                        System.Drawing.Icon.FromHandle(FileDatas.Icons.c64.GetHicon())
                     },
 
                     {
                         Platform.Flash,
-                        System.Drawing.Icon.FromHandle(Properties.Resources.msx.GetHicon())
+                        System.Drawing.Icon.FromHandle(FileDatas.Icons.msx.GetHicon())
                     },
 
                     {
                         Platform.PSX,
-                        FileDatas.Icons.PSX
+                        FileDatas.Icons.psx
                     },
 
                     {
                         Platform.RPGM,
-                        Properties.Resources.rpg2003
+                        FileDatas.Icons.rpg2000
                     }
                 };
 

@@ -583,6 +583,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\icons\consoles\c64.png" />
+    <None Include="Resources\icons\consoles\flash.png" />
+    <None Include="Resources\icons\consoles\msx.png" />
+    <None Include="Resources\icons\consoles\n64.png" />
+    <None Include="Resources\icons\consoles\snes.png" />
+    <None Include="Resources\icons\consoles\RPG2000.ico" />
     <Content Include="version.xml" />
     <None Include="Resources\apps\lzh8_dec.exe" />
     <None Include="Resources\vc\saveicon_placeholder_c.png" />

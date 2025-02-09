@@ -118,14 +118,8 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="sega_genesis__model_2_" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons\consoles\sega genesis (model 2).ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="controller_wiirh" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\subforms\controller_wiirh.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="nintendo_nintendo64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons\consoles\nintendo nintendo64.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="brick" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons\brick.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -142,9 +136,6 @@
   <data name="controller_classic" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\subforms\controller_classic.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="sony_playstation" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons\consoles\sony playstation.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="page_white_zip" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\page_white_zip.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -153,9 +144,6 @@
   </data>
   <data name="tick_circle" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons\etc\tick_circle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="nintendo_nes" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons\consoles\nintendo nes.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="help" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons\etc\help.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -190,14 +178,8 @@
   <data name="flag_kr" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\flag_kr.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="snk_neo_geo_aes" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons\consoles\snk neo geo aes.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="flag_eu60" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\flag_eu60.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="rpg2003" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons\consoles\RPG2003.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="page_white_flash" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\page_white_flash.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -211,9 +193,6 @@
   <data name="tick" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons\etc\tick.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="nec_turbografx_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons\consoles\nec turbografx-16.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Sound_WiiVC" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\sound.wave.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -223,20 +202,8 @@
   <data name="flag_eu" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\flag_eu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="flash" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons\flash.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="sega_genesis" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons\consoles\sega genesis.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="msx" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons\msx.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="mapping_gc" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\subforms\mapping_gc.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="sega_master_system" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons\consoles\sega master system.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Database" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\database.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -265,13 +232,7 @@
   <data name="information" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons\etc\information.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="nintendo_super_nes" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons\consoles\nintendo super nes.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="loading" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\loading.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="c64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons\c64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

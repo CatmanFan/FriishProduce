@@ -61,11 +61,51 @@ namespace FriishProduce.FileDatas {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap c64 {
+            get {
+                object obj = ResourceManager.GetObject("c64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap flash {
+            get {
+                object obj = ResourceManager.GetObject("flash", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Icon FC {
+        internal static System.Drawing.Icon gen {
             get {
-                object obj = ResourceManager.GetObject("FC", resourceCulture);
+                object obj = ResourceManager.GetObject("gen", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap msx {
+            get {
+                object obj = ResourceManager.GetObject("msx", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon n64 {
+            get {
+                object obj = ResourceManager.GetObject("n64", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }
@@ -73,9 +113,9 @@ namespace FriishProduce.FileDatas {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Icon GB {
+        internal static System.Drawing.Icon neo {
             get {
-                object obj = ResourceManager.GetObject("GB", resourceCulture);
+                object obj = ResourceManager.GetObject("neo", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }
@@ -83,9 +123,9 @@ namespace FriishProduce.FileDatas {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Icon GBA {
+        internal static System.Drawing.Icon nes {
             get {
-                object obj = ResourceManager.GetObject("GBA", resourceCulture);
+                object obj = ResourceManager.GetObject("nes", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }
@@ -93,9 +133,9 @@ namespace FriishProduce.FileDatas {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Icon GBC {
+        internal static System.Drawing.Icon psx {
             get {
-                object obj = ResourceManager.GetObject("GBC", resourceCulture);
+                object obj = ResourceManager.GetObject("psx", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }
@@ -103,9 +143,9 @@ namespace FriishProduce.FileDatas {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Icon N64 {
+        internal static System.Drawing.Icon rpg2000 {
             get {
-                object obj = ResourceManager.GetObject("N64", resourceCulture);
+                object obj = ResourceManager.GetObject("rpg2000", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }
@@ -113,9 +153,9 @@ namespace FriishProduce.FileDatas {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Icon NDS {
+        internal static System.Drawing.Icon rpg2003 {
             get {
-                object obj = ResourceManager.GetObject("NDS", resourceCulture);
+                object obj = ResourceManager.GetObject("rpg2003", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }
@@ -123,9 +163,9 @@ namespace FriishProduce.FileDatas {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Icon NEO {
+        internal static System.Drawing.Icon smd {
             get {
-                object obj = ResourceManager.GetObject("NEO", resourceCulture);
+                object obj = ResourceManager.GetObject("smd", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }
@@ -133,9 +173,9 @@ namespace FriishProduce.FileDatas {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Icon NEOCD {
+        internal static System.Drawing.Icon sms {
             get {
-                object obj = ResourceManager.GetObject("NEOCD", resourceCulture);
+                object obj = ResourceManager.GetObject("sms", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }
@@ -143,9 +183,9 @@ namespace FriishProduce.FileDatas {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Icon NES {
+        internal static System.Drawing.Icon snes {
             get {
-                object obj = ResourceManager.GetObject("NES", resourceCulture);
+                object obj = ResourceManager.GetObject("snes", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }
@@ -153,89 +193,9 @@ namespace FriishProduce.FileDatas {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Icon PCE {
+        internal static System.Drawing.Icon tg16 {
             get {
-                object obj = ResourceManager.GetObject("PCE", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
-        /// </summary>
-        internal static System.Drawing.Icon PCECD {
-            get {
-                object obj = ResourceManager.GetObject("PCECD", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
-        /// </summary>
-        internal static System.Drawing.Icon PSX {
-            get {
-                object obj = ResourceManager.GetObject("PSX", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
-        /// </summary>
-        internal static System.Drawing.Icon SFC {
-            get {
-                object obj = ResourceManager.GetObject("SFC", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
-        /// </summary>
-        internal static System.Drawing.Icon SMD {
-            get {
-                object obj = ResourceManager.GetObject("SMD", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
-        /// </summary>
-        internal static System.Drawing.Icon SMS {
-            get {
-                object obj = ResourceManager.GetObject("SMS", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
-        /// </summary>
-        internal static System.Drawing.Icon SNES {
-            get {
-                object obj = ResourceManager.GetObject("SNES", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
-        /// </summary>
-        internal static System.Drawing.Icon TG16 {
-            get {
-                object obj = ResourceManager.GetObject("TG16", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
-        /// </summary>
-        internal static System.Drawing.Icon VB {
-            get {
-                object obj = ResourceManager.GetObject("VB", resourceCulture);
+                object obj = ResourceManager.GetObject("tg16", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }

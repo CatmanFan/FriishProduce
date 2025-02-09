@@ -73,16 +73,6 @@ namespace FriishProduce.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap c64 {
-            get {
-                object obj = ResourceManager.GetObject("c64", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         public static System.Drawing.Bitmap controller_classic {
             get {
                 object obj = ResourceManager.GetObject("controller_classic", resourceCulture);
@@ -211,16 +201,6 @@ namespace FriishProduce.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap flash {
-            get {
-                object obj = ResourceManager.GetObject("flash", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         public static byte[] Font {
@@ -321,26 +301,6 @@ namespace FriishProduce.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap msx {
-            get {
-                object obj = ResourceManager.GetObject("msx", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
-        /// </summary>
-        public static System.Drawing.Icon nec_turbografx_16 {
-            get {
-                object obj = ResourceManager.GetObject("nec_turbografx_16", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         public static byte[] NeoGeo_VC1 {
@@ -367,36 +327,6 @@ namespace FriishProduce.Properties {
             get {
                 object obj = ResourceManager.GetObject("NeoGeo_VC3", resourceCulture);
                 return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
-        /// </summary>
-        public static System.Drawing.Icon nintendo_nes {
-            get {
-                object obj = ResourceManager.GetObject("nintendo_nes", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
-        /// </summary>
-        public static System.Drawing.Icon nintendo_nintendo64 {
-            get {
-                object obj = ResourceManager.GetObject("nintendo_nintendo64", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
-        /// </summary>
-        public static System.Drawing.Icon nintendo_super_nes {
-            get {
-                object obj = ResourceManager.GetObject("nintendo_super_nes", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
             }
         }
         
@@ -441,16 +371,6 @@ namespace FriishProduce.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
-        /// </summary>
-        public static System.Drawing.Icon rpg2003 {
-            get {
-                object obj = ResourceManager.GetObject("rpg2003", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap screen_nes {
@@ -471,62 +391,12 @@ namespace FriishProduce.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
-        /// </summary>
-        public static System.Drawing.Icon sega_genesis {
-            get {
-                object obj = ResourceManager.GetObject("sega_genesis", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
-        /// </summary>
-        public static System.Drawing.Icon sega_genesis__model_2_ {
-            get {
-                object obj = ResourceManager.GetObject("sega_genesis__model_2_", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
-        /// </summary>
-        public static System.Drawing.Icon sega_master_system {
-            get {
-                object obj = ResourceManager.GetObject("sega_master_system", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap smw_note_block {
             get {
                 object obj = ResourceManager.GetObject("smw_note-block", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
-        /// </summary>
-        public static System.Drawing.Icon snk_neo_geo_aes {
-            get {
-                object obj = ResourceManager.GetObject("snk_neo_geo_aes", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
-        /// </summary>
-        public static System.Drawing.Icon sony_playstation {
-            get {
-                object obj = ResourceManager.GetObject("sony_playstation", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
             }
         }
         

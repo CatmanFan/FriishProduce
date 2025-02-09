@@ -118,58 +118,46 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="FC" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons\consoles\yspixel\Fc_Pad1.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="c64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons\consoles\c64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="GB" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons\consoles\yspixel\GBPocket_Gray.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="flash" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons\consoles\flash.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="GBA" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons\consoles\yspixel\Gba02.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="gen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons\consoles\sega genesis (model 2).ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="GBC" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons\consoles\yspixel\GBC_Purple.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="msx" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons\consoles\msx.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="N64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons\consoles\yspixel\N64_Pad.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="n64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons\consoles\nintendo nintendo64.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="NDS" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons\consoles\yspixel\Logo_NDS.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="neo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons\consoles\snk neo geo aes.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="NEO" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons\consoles\yspixel\Logo_NeoGeo.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="nes" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons\consoles\nintendo nes.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="NEOCD" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons\consoles\yspixel\Logo_NeoGeoCD.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="psx" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons\consoles\sony playstation.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="NES" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons\consoles\yspixel\Nes_pad.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="rpg2000" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons\consoles\RPG2000.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="PCE" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons\consoles\yspixel\Pce_02_pad.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="rpg2003" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons\consoles\RPG2003.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="PCECD" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons\consoles\yspixel\Pce_Duo-RxPad.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="smd" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons\consoles\sega genesis.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="PSX" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons\consoles\yspixel\Ps_pad03.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="sms" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons\consoles\sega master system.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="SFC" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons\consoles\yspixel\Sfc_pad02.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="snes" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons\consoles\nintendo super nes.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="SMD" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons\consoles\yspixel\MD_Pad.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SMS" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons\consoles\yspixel\Sms_pad.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SNES" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons\consoles\yspixel\Snes_pad.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="TG16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons\consoles\yspixel\TurboGrafx_pad.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="VB" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons\consoles\yspixel\VirtualBoy_pad.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="tg16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons\consoles\nec turbografx-16.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
