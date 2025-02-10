@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Security.Cryptography;
 
 namespace FriishProduce
@@ -66,22 +67,26 @@ namespace FriishProduce
             )
         };
 
+        /// <summary>
+        /// Checks MD5 of a BIOS file if it matches any of the ones supported in the list. If the file in question is a ZIP archive, it will check the compressed contents for any BIOS files.
+        /// </summary>
+        /// <param name="file">File path.</param>
+        /// <param name="index">Console type.</param>
         public static bool Verify(string file, Platform index)
         {
             if (Path.GetExtension(file).ToLower() == ".zip")
             {
-                using ICSharpCode.SharpZipLib.Zip.ZipFile zip = new(file);
                 bool verified = false;
 
-                for (int j = 0; j < zip.Count; j++)
+                using (var zip = SharpCompress.Archives.Zip.ZipArchive.Open(file))
                 {
-                    if (zip[j].IsFile)
+                    foreach (var entry in zip.Entries.Where(x => !x.IsDirectory))
                     {
                         for (int i = 0; i < List.Length; i++)
                         {
                             if (List[i].platform == index)
                             {
-                                verified = Verify(Zip.Extract(zip, zip[j]), i);
+                                verified = Verify(Zip.Extract(entry), i);
                                 if (verified) return verified;
                             }
                         }
@@ -91,7 +96,7 @@ namespace FriishProduce
 
             for (int i = 0; i < List.Length; i++)
             {
-                if (List[i].platform == index) return Verify(file, i);
+                if (List[i].platform == index) return File.Exists(file) && Verify(File.ReadAllBytes(file), i);
             }
 
             System.Media.SystemSounds.Beep.Play();
@@ -99,8 +104,11 @@ namespace FriishProduce
             return false;
         }
 
-        public static bool Verify(string file, int index = -1) => File.Exists(file) && Verify(File.ReadAllBytes(file), index);
-
+        /// <summary>
+        /// Checks MD5 of a BIOS file if it matches any of the ones supported in the list.
+        /// </summary>
+        /// <param name="file">Byte array.</param>
+        /// <param name="index">Index corresponding to the console.</param>
         public static bool Verify(byte[] file, int index = -1)
         {
             using (var md5 = MD5.Create())

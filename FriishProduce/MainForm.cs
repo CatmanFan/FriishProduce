@@ -521,16 +521,17 @@ namespace FriishProduce
         {
             open_recent.MenuItems.Clear();
 
-            if (File.Exists(Program.Config.paths.recent_00)) open_recent.MenuItems.Add(new MenuItem(Path.GetFileName(Program.Config.paths.recent_00).Replace("&", "&&"), OpenRecent));
-            if (File.Exists(Program.Config.paths.recent_01)) open_recent.MenuItems.Add(new MenuItem(Path.GetFileName(Program.Config.paths.recent_01).Replace("&", "&&"), OpenRecent));
-            if (File.Exists(Program.Config.paths.recent_02)) open_recent.MenuItems.Add(new MenuItem(Path.GetFileName(Program.Config.paths.recent_02).Replace("&", "&&"), OpenRecent));
-            if (File.Exists(Program.Config.paths.recent_03)) open_recent.MenuItems.Add(new MenuItem(Path.GetFileName(Program.Config.paths.recent_03).Replace("&", "&&"), OpenRecent));
-            if (File.Exists(Program.Config.paths.recent_04)) open_recent.MenuItems.Add(new MenuItem(Path.GetFileName(Program.Config.paths.recent_04).Replace("&", "&&"), OpenRecent));
-            if (File.Exists(Program.Config.paths.recent_05)) open_recent.MenuItems.Add(new MenuItem(Path.GetFileName(Program.Config.paths.recent_05).Replace("&", "&&"), OpenRecent));
-            if (File.Exists(Program.Config.paths.recent_06)) open_recent.MenuItems.Add(new MenuItem(Path.GetFileName(Program.Config.paths.recent_06).Replace("&", "&&"), OpenRecent));
-            if (File.Exists(Program.Config.paths.recent_07)) open_recent.MenuItems.Add(new MenuItem(Path.GetFileName(Program.Config.paths.recent_07).Replace("&", "&&"), OpenRecent));
-            if (File.Exists(Program.Config.paths.recent_08)) open_recent.MenuItems.Add(new MenuItem(Path.GetFileName(Program.Config.paths.recent_08).Replace("&", "&&"), OpenRecent));
-            if (File.Exists(Program.Config.paths.recent_09)) open_recent.MenuItems.Add(new MenuItem(Path.GetFileName(Program.Config.paths.recent_09).Replace("&", "&&"), OpenRecent));
+            for (int i = 0; i < 10; i++)
+            {
+                var setting = Program.Config.paths.GetType().GetProperty($"recent_{i:D2}");
+
+                if (setting != null)
+                {
+                    string file = setting.GetValue(Program.Config.paths) as string;
+                    if (File.Exists(file))
+                        open_recent.MenuItems.Add(new MenuItem(Path.GetFileName(file).Replace("&", "&&"), OpenRecent));
+                }
+            }
 
             if (open_recent.MenuItems?.Count > 0)
             {
@@ -543,17 +544,15 @@ namespace FriishProduce
 
         private void ClearRecent(object sender, EventArgs e)
         {
-            Program.Config.paths.recent_00 = null;
-            Program.Config.paths.recent_01 = null;
-            Program.Config.paths.recent_02 = null;
-            Program.Config.paths.recent_03 = null;
-            Program.Config.paths.recent_04 = null;
-            Program.Config.paths.recent_05 = null;
-            Program.Config.paths.recent_06 = null;
-            Program.Config.paths.recent_07 = null;
-            Program.Config.paths.recent_08 = null;
-            Program.Config.paths.recent_09 = null;
+            for (int i = 0; i < 10; i++)
+            {
+                var setting = Program.Config.paths.GetType().GetProperty($"recent_{i:D2}");
 
+                if (setting != null)
+                    setting.SetValue(Program.Config.paths, null);
+            }
+
+            Program.Config.Save();
             RefreshRecent();
         }
 
@@ -566,27 +565,19 @@ namespace FriishProduce
             {
                 for (int i = 0; i < 10; i++)
                 {
-                    string file = i switch
-                    {
-                        9 => Program.Config.paths.recent_09,
-                        8 => Program.Config.paths.recent_08,
-                        7 => Program.Config.paths.recent_07,
-                        6 => Program.Config.paths.recent_06,
-                        5 => Program.Config.paths.recent_05,
-                        4 => Program.Config.paths.recent_04,
-                        3 => Program.Config.paths.recent_03,
-                        2 => Program.Config.paths.recent_02,
-                        1 => Program.Config.paths.recent_01,
-                        0 or _ => Program.Config.paths.recent_00
-                    };
+                    var setting = Program.Config.paths.GetType().GetProperty($"recent_{i:D2}");
 
-                    string title1 = Path.GetFileName(file)?.Replace("&", "&&");
-                    string title2 = list[0].Text;
-
-                    if (title1 == title2)
+                    if (setting != null)
                     {
-                        OpenProject(new string[] { file });
-                        return;
+                        string file = setting.GetValue(Program.Config.paths) as string;
+                        string title1 = Path.GetFileName(file)?.Replace("&", "&&");
+                        string title2 = list[0].Text;
+
+                        if (title1 == title2)
+                        {
+                            OpenProject(new string[] { file });
+                            return;
+                        }
                     }
                 }
             }
@@ -685,7 +676,7 @@ namespace FriishProduce
         private async void updateCheck()
         {
             bool updated = await Updater.GetLatest();
-            if (updated) MessageBox.Show(Program.Lang.Msg(9), MessageBox.Buttons.Ok, MessageBox.Icons.Information);
+            if (updated) MessageBox.Show(Program.Lang.Msg(8), MessageBox.Buttons.Ok, MessageBox.Icons.Information);
             check_for_updates.Enabled = !auto_update.Checked || !updated;
         }
 
@@ -702,6 +693,7 @@ namespace FriishProduce
                 check_for_updates.Enabled = !Updater.IsLatest;
 
                 Program.Config.application.auto_update = auto_update.Checked;
+                Program.Config.Save();
             }
 
             /* 
@@ -723,7 +715,7 @@ namespace FriishProduce
 
         private void ResetConfig(object sender, EventArgs e)
         {
-            if (MessageBox.Show(Program.Lang.Msg(11), MessageBox.Buttons.YesNo, MessageBox.Icons.Warning) == MessageBox.Result.Yes)
+            if (MessageBox.Show(Program.Lang.Msg(10), MessageBox.Buttons.YesNo, MessageBox.Icons.Warning) == MessageBox.Result.Yes)
             {
                 if (Directory.Exists(Paths.Databases))
                     foreach (var item in Directory.EnumerateFiles(Paths.Databases))
@@ -772,7 +764,7 @@ namespace FriishProduce
                         SupportMultiDottedExtensions = true
                     };
 
-                    bool isIMET = sender == extract_wad_banner && MessageBox.Show(Program.Lang.Msg(10), MessageBox.Buttons.YesNo) == MessageBox.Result.Yes;
+                    bool isIMET = sender == extract_wad_banner && MessageBox.Show(Program.Lang.Msg(9), MessageBox.Buttons.YesNo) == MessageBox.Result.Yes;
                     if (isIMET)
                     {
                         saveDialog.FileName = "opening.bnr";
@@ -999,7 +991,7 @@ namespace FriishProduce
 
         private async void TestDatabase(object sender, EventArgs e)
         {
-            if (MessageBox.Show(Program.Lang.Msg(12), MessageBox.Buttons.YesNo) != MessageBox.Result.Yes) return;
+            if (MessageBox.Show(Program.Lang.Msg(11), MessageBox.Buttons.YesNo) != MessageBox.Result.Yes) return;
 
             Dictionary<string, bool> tested = new();
 
@@ -1068,10 +1060,10 @@ namespace FriishProduce
                 foreach (var item in failed)
                     failedNames.Add("- " + item.Key);
 
-                MessageBox.Show(string.Format(Program.Lang.Msg(14), string.Join(Environment.NewLine, failedNames)));
+                MessageBox.Show(string.Format(Program.Lang.Msg(13), string.Join(Environment.NewLine, failedNames)));
             }
             else
-                MessageBox.Show(Program.Lang.Msg(13));
+                MessageBox.Show(Program.Lang.Msg(12));
         }
     }
 }

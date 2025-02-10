@@ -129,13 +129,14 @@ namespace FriishProduce
             // htmlPanel1
             // 
             this.htmlPanel1.AutoScroll = true;
-            this.htmlPanel1.BackColor = System.Drawing.SystemColors.Control;
+            this.htmlPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
             this.htmlPanel1.BaseStylesheet = "";
-            this.htmlPanel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.htmlPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.htmlPanel1.Location = new System.Drawing.Point(17, 123);
             this.htmlPanel1.Name = "htmlPanel1";
             this.htmlPanel1.Size = new System.Drawing.Size(600, 190);
             this.htmlPanel1.TabIndex = 29;
+            this.htmlPanel1.Text = null;
             // 
             // b_ok
             // 
@@ -152,7 +153,7 @@ namespace FriishProduce
             // 
             // bottomPanel2
             // 
-            this.bottomPanel2.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.bottomPanel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(223)))), ((int)(((byte)(223)))));
             this.bottomPanel2.Controls.Add(this.bottomPanel1);
             this.bottomPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.bottomPanel2.Location = new System.Drawing.Point(0, 330);
@@ -162,7 +163,7 @@ namespace FriishProduce
             // 
             // bottomPanel1
             // 
-            this.bottomPanel1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.bottomPanel1.BackColor = System.Drawing.SystemColors.Control;
             this.bottomPanel1.Controls.Add(this.b_ok);
             this.bottomPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.bottomPanel1.Location = new System.Drawing.Point(0, 1);
@@ -174,6 +175,7 @@ namespace FriishProduce
             // 
             this.AcceptButton = this.b_ok;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.ClientSize = new System.Drawing.Size(634, 372);
             this.Controls.Add(this.htmlPanel1);
             this.Controls.Add(this.bottomPanel2);

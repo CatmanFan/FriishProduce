@@ -18,11 +18,12 @@ namespace FriishProduce
             b_ok.Text = Program.Lang.String("b_close");
 
             htmlPanel1.BaseStylesheet = HTML.BaseStylesheet + "\n" + "div { padding: 4px 6px !important; }";
-            htmlPanel1.Text = string.Join("<br />", HTML.MarkdownToHTML(new string[]
+            htmlPanel1.Text = HTML.MarkdownToHTML(new string[]
             {
+                "This application is **not** endorsed by Nintendo in any form.",
                 "### Credits",
                 null,
-                "This program uses the following third-party components and apps:",
+                "Third-party components and apps:",
                 null,
                 "* **libWiiSharp** (orig. author: Leathl), [forked](https://github.com/WiiDatabase/libWiiSharp/) by [WiiDatabase](https://github.com/WiiDatabase).",
                 "* [SD/USB forwarder components](https://github.com/modmii/modmii.github.io/tree/master/Support/DOLS) of **[ModMii](https://github.com/modmii/modmii.github.io)** by [XFlak](https://github.com/xflak).",
@@ -34,7 +35,7 @@ namespace FriishProduce
                 "* **[Custom Frodo](http://www.tepetaklak.com/wii/#Custom%20Frodo)** by [Nejat Dilek (WiiCrazy)](http://www.tepetaklak.com/).",
                 "* [Static WAD Base](https://github.com/Brawl345/customizemii/blob/master/Base_WADs/StaticBase.wad) from **CustomizeMii**.",
                 null,
-                "For icons and interface:",
+                "Icons and interface:",
                 null,
                 "* **[Farm-Fresh Web Icons](https://github.com/gammasoft/fatcow)** by FatCow.",
                 "* **[MdiTabCtrl](https://github.com/JacksiroKe/MdiTabCtrl)** by Jack Siro.",
@@ -67,7 +68,7 @@ namespace FriishProduce
                 "<!-- * **[Visual Boy Advance GX](https://github.com/dborth/vbagx)** (dborth et al.) -->",
                 "<!-- * **[mGBA Wii](https://github.com/mgba-emu/mgba)** (endrift et al.) -->",
                 "<!-- * **[WiiMednafen](https://github.com/raz0red/wii-mednafen)** (raz0red) -->",
-            }));
+            });
         }
 
         #region Assembly Attribute Accessors

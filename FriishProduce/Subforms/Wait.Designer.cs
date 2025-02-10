@@ -44,10 +44,10 @@ namespace FriishProduce
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Image = global::FriishProduce.Properties.Resources.loading;
-            this.pictureBox1.Location = new System.Drawing.Point(399, 2);
+            this.pictureBox1.Location = new System.Drawing.Point(401, 2);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(1);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(47, 46);
+            this.pictureBox1.Size = new System.Drawing.Size(44, 46);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
@@ -58,23 +58,23 @@ namespace FriishProduce
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Padding = new System.Windows.Forms.Padding(6, 0, 4, 1);
-            this.label1.Size = new System.Drawing.Size(385, 21);
+            this.label1.Padding = new System.Windows.Forms.Padding(6, 0, 4, 2);
+            this.label1.Size = new System.Drawing.Size(387, 21);
             this.label1.TabIndex = 3;
             this.label1.Text = "label1";
             this.label1.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.BackColor = System.Drawing.SystemColors.Control;
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 49F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 46F));
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.pictureBox1, 1, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(1, 1);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(1);
+            this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(1, 1, 2, 1);
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(448, 50);
@@ -93,7 +93,7 @@ namespace FriishProduce
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(391, 42);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(393, 42);
             this.tableLayoutPanel2.TabIndex = 2;
             // 
             // progress
@@ -103,13 +103,13 @@ namespace FriishProduce
             this.progress.Margin = new System.Windows.Forms.Padding(12, 2, 2, 3);
             this.progress.MaximumSize = new System.Drawing.Size(0, 12);
             this.progress.Name = "progress";
-            this.progress.Size = new System.Drawing.Size(377, 12);
+            this.progress.Size = new System.Drawing.Size(379, 12);
             this.progress.TabIndex = 2;
             // 
             // Wait
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(223)))), ((int)(((byte)(223)))));
             this.ClientSize = new System.Drawing.Size(450, 52);
             this.ControlBox = false;
             this.Controls.Add(this.tableLayoutPanel1);

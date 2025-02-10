@@ -1,9 +1,8 @@
 ﻿using ICSharpCode.SharpZipLib.Zip;
+using SharpCompress.Archives.Zip;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -11,7 +10,6 @@ using System.Net.Sockets;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace FriishProduce
 {
@@ -66,22 +64,51 @@ namespace FriishProduce
             MaximumSize = new System.Drawing.Size(375, 0),
         };
 
-        public static string MarkdownToHTML(string input)
-        {
-            string[] output = input.Replace("\r\n", "\n").Replace("<br>", "\n").Replace("<br/>", "\n").Replace("<br />", "\n").Split('\n');
-            return MarkdownToHTML(input);
-        }
-
-        public static string[] MarkdownToHTML(string[] input)
+        public static string MarkdownToHTML(string[] input)
         {
             for (int i = 0; i < input.Length; i++)
             {
                 string line = input[i];
+                string placeholder = "[`0/[REPLACEME!!!! NO.{0}]/0`]";
+
+                if (line == null) line = "<br />";
+
+                line = line.Replace("\r", "");
+                line = line.Replace("<br>", "\n");
+                line = line.Replace("<br/>", "\n");
+                line = line.Replace("\n", "<br />");
+
                 if (string.IsNullOrWhiteSpace(line)) line = "";
 
-                line = new Regex(@"\*\*(.*?)\*\*").Replace(line, "<b>$1</b>"); // Bold
-                line = new Regex(@"\*(.*?)\*").Replace(line, "<i>$1</i>"); // Italic
-                line = new Regex(@"\[(.*?)\]\((.*?)\)").Replace(line, "<a href=\"$2\">$1</a>"); // URL
+                // Get URLs
+                // ****************
+                var URL = new Regex(@"\[(.*?)\]\((.*?)\)");
+                List<string> urls = new();
+                if (URL.Match(line).Success)
+                {
+                    var matches = URL.Matches(line);
+                    for (int x = 0; x < matches.Count; x++)
+                    {
+                        urls.Add(matches[x].Value);
+                        line = line.Replace(urls[x], string.Format(placeholder, x));
+                    }
+                }
+
+                // Bold
+                // ****************
+                line = new Regex(@"\*\*(.*?)\*\*").Replace(line, "<b>$1</b>");
+
+                // Italic
+                // ****************
+                line = new Regex(@"\*(.*?)\*").Replace(line, "<i>$1</i>");
+                line = new Regex(@"_(.*?)_").Replace(line, "<i>$1</i>");
+
+                // Replace URLs
+                // ****************
+                for (int x = 0; x < urls.Count; x++)
+                {
+                    line = line.Replace(string.Format(placeholder, x), URL.Replace(urls[x], "<a href=\"$2\">$1</a>"));
+                }
 
                 if (line.StartsWith("#####")) line = "<h5>" + line.Remove(0, 5).TrimStart() + "</h5>";
                 if (line.StartsWith("####")) line = "<h4>" + line.Remove(0, 4).TrimStart() + "</h4>";
@@ -89,7 +116,7 @@ namespace FriishProduce
                 if (line.StartsWith("##")) line = "<h2>" + line.Remove(0, 2).TrimStart() + "</h2>";
                 if (line.StartsWith("#")) line = "<h1>" + line.Remove(0, 1).TrimStart() + "</h1>";
 
-                if (line.StartsWith("* ")) line = "<li>" + line.Remove(0, 2) + "</li>";
+                if (line.StartsWith("* ") || line.StartsWith("- ")) line = "<li>" + line.Remove(0, 2) + "</li>";
 
                 input[i] = line;
             }
@@ -122,7 +149,7 @@ namespace FriishProduce
             try { output[0] = "<div>" + output[0]; } catch { }
             try { output[output.Count - 1] = output[output.Count - 1] + "</div>"; } catch { }
 
-            return output.ToArray();
+            return string.Join("\n", output.ToArray());
         }
     }
 
@@ -192,11 +219,36 @@ namespace FriishProduce
                 if (ex.GetType() == typeof(WebException) && (ex as WebException).Status == WebExceptionStatus.ProtocolError)
                     return true;
 
-                throw new Exception(string.Format(Program.Lang.Msg(0, 1), Message(ex.Message, URL)));
+                throw new Exception(string.Format(Program.Lang.Msg(0, 1), Message(ex, URL)));
             }
         }
 
-        private static string Message(string msg, string url)
+        public static string Message(Exception ex, string url)
+        {
+            string msg = _message(ex.Message, url);
+
+            if (ex.InnerException != null)
+            {
+                Exception inner = ex.InnerException;
+                msg += "\n\n- " + _message(inner.Message, url);
+
+                if (inner.InnerException != null)
+                {
+                    Exception inner1 = ex.InnerException;
+                    msg += "\n  - " + _message(inner1.Message, url);
+
+                    if (inner1.InnerException != null)
+                    {
+                        Exception inner2 = inner1.InnerException;
+                        msg += "\n    - " + _message(inner2.Message, url);
+                    }
+                }
+            }
+
+            return msg;
+        }
+
+        private static string _message(string msg, string url)
         {
             int colon = msg.IndexOf(':');
             char dot = Program.Lang.GetScript(msg) == Language.ScriptType.CJK && Program.Lang.GetRegion() is not Language.Region.Korea ? '。' : '.';
@@ -250,7 +302,7 @@ namespace FriishProduce
                     if (ex.GetType() == typeof(FileNotFoundException))
                         throw ex;
                     else
-                        throw new Exception(string.Format(Program.Lang.Msg(0, 1), Message(ex.Message, URL)));
+                        throw new Exception(string.Format(Program.Lang.Msg(0, 1), Message(ex, URL)));
                 }
             }
         }
@@ -682,7 +734,60 @@ namespace FriishProduce
     public static class Zip
     {
         /// <summary>
-        /// Gets a specific file from the archive and extracts it to a byte array via a memory stream.
+        /// Used to convert any ZIP file entry stream to a usable byte array.
+        /// </summary>
+        private static byte[] toByteArray(Stream entry)
+        {
+            try
+            {
+                List<byte> bytes = new();
+
+                using (var s = entry)
+                {
+                    int curByte = s.ReadByte();
+                    while (curByte != -1)
+                    {
+                        bytes.Add(Convert.ToByte(curByte));
+                        curByte = s.ReadByte();
+                    }
+                }
+
+                try { entry.Close(); }
+                catch { }
+                try { entry.Dispose(); }
+                catch { }
+                return bytes.ToArray();
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        /// <summary>
+        /// Gets a specific file from the archive using its name. (SharpCompress)
+        /// </summary>
+        public static byte[] Extract(ZipArchive zip, string file)
+        {
+            foreach (var entry in zip.Entries.Where(entry => !entry.IsDirectory && entry.Key != null))
+            {
+                if (Path.GetFileName(entry.Key).ToLower() == file.ToLower())
+                {
+                    return Extract(entry);
+                }
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Gets a specific file from the archive. (SharpCompress)
+        /// </summary>
+        public static byte[] Extract(ZipArchiveEntry file) => toByteArray(file.OpenEntryStream());
+
+        /// <summary>
+        /// Gets a specific file from the archive using its name. (SharpZipLib)
         /// </summary>
         public static byte[] Extract(ZipFile zip, string file)
         {
@@ -696,29 +801,9 @@ namespace FriishProduce
             return null;
         }
 
-        public static byte[] Extract(ZipFile zip, ZipEntry entry)
-        {
-            try
-            {
-                List<byte> bytes = new();
-
-                using (var s = zip.GetInputStream(entry))
-                {
-                    int curByte = s.ReadByte();
-                    while (curByte != -1)
-                    {
-                        bytes.Add(Convert.ToByte(curByte));
-                        curByte = s.ReadByte();
-                    }
-                }
-
-                return bytes.ToArray();
-            }
-
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
+        /// <summary>
+        /// Gets a specific file from the archive. (SharpZipLib)
+        /// </summary>
+        public static byte[] Extract(ZipFile zip, ZipEntry entry) => toByteArray(zip.GetInputStream(entry));
     }
 }

@@ -80,10 +80,27 @@ namespace FriishProduce
             foreach (var item in Directory.GetDirectories(Paths.WorkingFolder))
                 try { Directory.Delete(item, true); } catch { }
 
-            try { File.Delete(@"C:\1541 ROM"); } catch { }
-            try { File.Delete(@"C:\Basic ROM"); } catch { }
-            try { File.Delete(@"C:\Char ROM"); } catch { }
-            try { File.Delete(@"C:\Kernal ROM"); } catch { }
+            try { File.Delete(Paths.Update); } catch { }
+
+            if (File.Exists(@"C:\1541 ROM") || File.Exists(@"C:\Basic ROM") || File.Exists(@"C:\Char ROM") || File.Exists(@"C:\Kernal ROM"))
+            {
+                ProcessStartInfo info = new ProcessStartInfo()
+                {
+                    FileName = Paths.Tools + "frodosrc\\delete.bat",
+                    Verb = "runas",
+                    WindowStyle = ProcessWindowStyle.Minimized,
+                    CreateNoWindow = true,
+                    UseShellExecute = true,
+                    RedirectStandardInput = false
+                };
+
+                using (Process p = new())
+                {
+                    p.StartInfo = info;
+                    p.Start();
+                    p.WaitForExit();
+                }
+            }
         }
     }
 

@@ -324,18 +324,18 @@
   <data name="toolbarImportGameFile.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJ2SURBVDhPlVPLblJRFOUL+gFOnTvxCxz5Fw4cOTDOjAM1
-        jY9US2MfcaAmjryFSsp9UEpjlFqiJfKINW1joSkt5XHhPigXCly4FFjucyDUJhrjSlbOPfucte7ZZ+/j
-        CgSDlqgo8EsSli9Q5KMoy5AUxXD9DWzDv6DrOvyi6B1JLoL9meEoe0zMIXucwxEjzRkEj4ePulaGJEtL
-        I9k52DEZ8oUCCsUiiuqIxQKP+3xeWBWdf1umhtCK3zeSDsFyZSiqZZTKGqemaTB1DarVwbyUhDuQwsLH
-        LGYCabwMbGFhNXVtJCcDcWigUZ66YcA0DVgnJsLfDzEb2oew18ZqCfhiAoc2YDYdCJEDMvn5+IKBYVZg
-        Vk5gVavYOVDxIpSCkgciBvCjCmSbgNMH7MYZ0ulTvKb1ueDu9bFB1bJgEVuNOt6sbWPlwMYWCdU2Xx6i
-        N0AqdYpEwsL2fg1ueas0NqjVT1EnduwWHnljOGrRzTt8CUpSxVNpD0vrebTtHvSTLo+7xSTGBo1mE61W
-        E71uG5OLUR7rD4BBd4An8h7NHDzw7Q7jI7qX4+cGtm2j06Zb6jl4KHylEchkmmjUz7AaLeM+ieWEyvfq
-        HSBHp5tZ/nZu0Ol04TgU7ffwKpjEp80CYrEqcnky/Q0FSm27BoT265he3DDGjdTv9znp0MioFTx/v4li
-        2WH3BpvIqrBjAdEK8IHKOq8kcPPu1C0Xe0h/QjxdwoISx7FeR4YqEaeKhKkXvLs1aq447s0Kb6kLJlzv
-        BCHCHhR/gZSOnzqTzQMrMrzyGuZ863jm2cC09zPcxClPWL9xZ/I2iS/xRiJcJl79D14hThAJLtcvMk73
-        uh2k9eIAAAAASUVORK5CYII=
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJ0SURBVDhPlVPLblJRFOUL+gFOnTvxCxz5Fw4cOTDOjAM1
+        jW9LYx9xoCaOvEIlcB+U0hil2mgbC8SatrHQlJbnhfugXJ4XLgWW+xwI2ERjXMnKuWefs9Y9++x9XMFQ
+        yBIVBQFJgv8MRT6KsgxJUQzX38A2/Au6riMgit6R5CzYnxmO0xliFulMFseMNGcQPB4+6loJkiwtjWQT
+        sGMy5PJ55AsFFNQRC3ke9/m8sMo6/7ZMDeHlgG8kHYLlylBQSyiWNE5N02DqGlSrgwUpDncwgcUPacwG
+        k3ge3MbiSuLSSE4G4tBAozx1w4BpGrBOTES+H2EufABhv42VIvDFBI5swGw6ENYPyeTn/TMGhlmGWT6B
+        Valg91DFs3ACSg5YN4AfFSDdBJw+YDdOkUzW8ZLW50N7l8cGFcuCRWw1ani1uoPlQxvbJFTbfHmI3gCJ
+        RB2xmIWdgypm5O3i2KBaq6NG7Ngt3PNu4bhFN+/wJShxFQ+lfSyt5dC2e9BPujzuFuMYGzSaTbRaTfS6
+        bUy/3eSx/gAYdAd4IO/TzMEd394wPqLbH50Y2LaNTptuqefgrvCVRiCVaqJRO8XKZgm3SSzHVL5X7wBZ
+        Ot2s/9vEoNPpwnEo2u/hRSiOjxt5bG1VkM2R6W/IU2o7VSB8UMOMEDHGjdTv9znp0EipZTx9t4FCyWH3
+        BpvIqrBrAZtl4D2VdUGJ4erNx9dc7CH9CdFkEYtKFBm9hhRVIkoViVAvePeq1FxR3JoTXlMXTLneCMI6
+        e1D8BVI6AepMNg8uy/DKq5j3reGJ5zNmvJ/gJj7yRPQrN6avk/gcbyTCeeLF/+AF4hSR4HL9AivY97Sd
+        LeQtAAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="toolbarImportGameFile.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">

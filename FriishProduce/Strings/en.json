@@ -95,18 +95,18 @@
 			"005":								"The WAD you have selected (title ID: {0}) is invalid.\nThis could be for any of the following reasons:\n  • The currently-selected console does not match that used by the WAD.\n  • The WAD is not yet available in the database.\n  • The WAD has already been modified (i.e. injected or converted to a forwarder).",
 			"006":								"You can replace the original Virtual Console game's Operations Guide manual.\nTo do this, you need a ZIP containing the extracted/modified contents of a manual .arc from a VC WAD.",
 			"007":								"The selected Virtual Console manual archive is invalid.",
-			"008":								"An update is available\nFriishProduce v{0} is now available for download.\nYou are currently running v{1}.\n\nWould you like to get the latest version from GitHub now?",
-			"009":								"You are currently already up to date.",
-			"010":								"Extract the opening.bnr (includes IMET header)?",
-			"011":								"This will restore all settings to factory defaults.\nAre you sure you want to continue?",
-			"012":								"Check all database entries to see if any are invalid?\nThis may take some time.",
-			"013":								"No invalid database entries were found.",
-			"014":								"Invalid database entries found:\n{0}\n\nPlease remove these entries from database.json.",
+			"008":								"You are currently already up to date.",
+			"009":								"Extract the opening.bnr (includes IMET header)?",
+			"010":								"This will restore all settings to factory defaults.\nAre you sure you want to continue?",
+			"011":								"Check all database entries to see if any are invalid?\nThis may take some time.",
+			"012":								"No invalid database entries were found.",
+			"013":								"Invalid database entries found:\n{0}\n\nPlease remove these entries from database.json.",
 
 			"b_000":							"Please wait...",
 			"b_001":							"Exportation in progress...",
 			"b_002":							"Testing Internet connection...",
 			"b_003":							"Verifying {0} database...",
+			"b_004":							"Updating...",
 
 			"error":							"An error has occurred",
 			"e_000":							"Unable to connect to the Internet.\n{0}",
@@ -127,7 +127,8 @@
 			"e_015":							"Failed to create savedata TPL.",
 			"e_016":							"No Virtual Console manual was found in the provided WAD.",
 			"e_017":							"\"{0}\" is not a valid project file.",
-			"e_018":							"Unable to save {0}."
+			"e_018":							"Unable to save {0}.",
+			"e_019":							"Could not download update."
 		},
 
 		"html": {
@@ -204,7 +205,11 @@
 			"exit":								"&Exit",
 
 			"project_type":						"{0} WAD",
-			"untitled_project":					"Untitled {0} WAD"
+			"untitled_project":					"Untitled {0} WAD",
+			
+			"update":							"An update is available",
+			"update1":							"FriishProduce v{0} is now available for download.\nYou are currently running v{1}.",
+			"update2":							"Update now?"
 		},
 
 		"settingsform": {

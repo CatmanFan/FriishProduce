@@ -1,0 +1,107 @@
+﻿using Octokit;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.IO;
+using SharpCompress.Archives;
+using SharpCompress.Archives.Rar;
+using SharpCompress.Archives.Zip;
+using SharpCompress.Common;
+using System.Linq;
+using System.Net;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace FriishProduce
+{
+    public partial class UpdaterForm : Form
+    {
+        public UpdaterForm(Release Latest, Version VerName)
+        {
+            this.Latest = Latest;
+            InitializeComponent();
+
+            Program.Lang.Control(this);
+            Text = Program.Lang.String("update", "mainform");
+            desc1.Text = string.Format(Program.Lang.String("update1", "mainform"), VerName, Updater.AppVersion);
+            desc2.Text = Program.Lang.String("update2", "mainform");
+
+            string[] body = Latest?.Body.Split('\n');
+
+            htmlPanel1.BaseStylesheet = HTML.BaseStylesheet + "\n" + "div { padding: 4px 6px !important; }";
+            htmlPanel1.Text = body?.Length > 0 ? HTML.MarkdownToHTML(body) : "<div>" + Program.Lang.String("none") + "</div>";
+        }
+
+        private bool busy = false;
+        private Release Latest { get; set; }
+
+        private void Progress_Update(object sender, DownloadProgressChangedEventArgs e)
+        {
+            Progress.Value = e.ProgressPercentage;
+        }
+
+        private async void Yes_Click(object sender, EventArgs e)
+        {
+            string url = Latest.Assets[0].BrowserDownloadUrl;
+
+            busy = true;
+            Program.MainForm.Enabled = false;
+
+            ControlBox = false;
+            Text = Program.Lang.Msg(4, 2);
+            b_no.Visible = b_yes.Visible = desc2.Visible = false;
+            Progress.Visible = true;
+
+            try
+            {
+                Program.CleanTemp();
+
+                // Open WebClient
+                // ****************
+                using var webClient = new WebClient();
+                webClient.Headers.Add(HttpRequestHeader.UserAgent, "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36");
+                webClient.Headers.Add(HttpRequestHeader.Authorization, "token " + Updater.Client.Credentials.GetToken());
+                webClient.Headers.Add(HttpRequestHeader.Accept, "application/octet-stream");
+                webClient.DownloadProgressChanged += Progress_Update;
+
+                // Download
+                // ****************
+                while (!File.Exists(Paths.Update) || File.ReadAllBytes(Paths.Update)?.Length == 0)
+                    await webClient.DownloadFileTaskAsync(new Uri(url), Paths.Update);
+
+                if (!File.Exists(Paths.Update) || (File.Exists(Paths.Update) && File.ReadAllBytes(Paths.Update)?.Length == 0))
+                    throw new Exception(Program.Lang.Msg(19, 1));
+
+                Progress.Value = 100;
+                Progress.Style = ProgressBarStyle.Marquee;
+                
+                // Extract files
+                // ****************
+                Updater.Extract();
+            }
+
+            catch (Exception ex)
+            {
+                try { File.Delete(Paths.Update); } catch { }
+
+                MessageBox.Error(ex.GetType() == typeof(WebException) ? Web.Message(ex, url) : ex.Message);
+
+                busy = false;
+                Program.MainForm.Enabled = true;
+                Close();
+            }
+        }
+
+        private void Updater_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (busy)
+            {
+                System.Media.SystemSounds.Beep.Play();
+                e.Cancel = true;
+            }
+        }
+    }
+}

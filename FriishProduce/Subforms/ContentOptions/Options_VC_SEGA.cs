@@ -59,9 +59,15 @@ namespace FriishProduce
             // Controller options availability
             // *******
             if (EmuType == 3 && controllerForm == null)
+            {
                 controllerForm = new Controller_SEGA(IsSMS);
+                vc_options.Size = vc_options.MinimumSize;
+            }
             else if (EmuType < 3 && controllerForm != null)
+            {
                 controllerForm = null;
+                vc_options.Size = vc_options.MaximumSize;
+            }
 
             // Form control
             // *******

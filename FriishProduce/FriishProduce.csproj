@@ -95,6 +95,9 @@
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="SharpCompress, Version=0.39.0.0, Culture=neutral, PublicKeyToken=afb0a02973931d96, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpCompress.0.39.0\lib\netstandard2.0\SharpCompress.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.4.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.6.0\lib\net462\System.Buffers.dll</HintPath>
@@ -108,7 +111,6 @@
     <Reference Include="System.Formats.Nrbf, Version=9.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Formats.Nrbf.9.0.1\lib\net462\System.Formats.Nrbf.dll</HintPath>
     </Reference>
-    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.IO.Hashing, Version=9.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.IO.Hashing.9.0.1\lib\net462\System.IO.Hashing.dll</HintPath>
     </Reference>
@@ -133,6 +135,9 @@
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Text.Encoding.CodePages, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encoding.CodePages.8.0.0\lib\net462\System.Text.Encoding.CodePages.dll</HintPath>
+    </Reference>
     <Reference Include="System.Text.Encodings.Web, Version=9.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Text.Encodings.Web.9.0.1\lib\net462\System.Text.Encodings.Web.dll</HintPath>
     </Reference>
@@ -162,6 +167,9 @@
       <HintPath>.\VistaMenu.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
+    <Reference Include="ZstdSharp, Version=0.8.4.0, Culture=neutral, PublicKeyToken=8d151af33a4ad5cf, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZstdSharp.Port.0.8.4\lib\net462\ZstdSharp.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FileDatas\Emulators.Designer.cs">
@@ -307,6 +315,12 @@
     </Compile>
     <Compile Include="Subforms\Savedata.Designer.cs">
       <DependentUpon>Savedata.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Subforms\UpdaterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Subforms\UpdaterForm.Designer.cs">
+      <DependentUpon>UpdaterForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Subforms\Wait.cs">
       <SubType>Form</SubType>
@@ -491,6 +505,9 @@
     <EmbeddedResource Include="Subforms\Savedata.resx">
       <DependentUpon>Savedata.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Subforms\UpdaterForm.resx">
+      <DependentUpon>UpdaterForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Subforms\Wait.resx">
       <DependentUpon>Wait.cs</DependentUpon>
     </EmbeddedResource>
@@ -546,24 +563,6 @@
     <None Include="Resources\forwarder_wii\base_waninkoko.wad" />
     <None Include="Resources\forwarder_wii\forwarder_v12.dol" />
     <None Include="Resources\forwarder_wii\forwarder_v14.dol" />
-    <None Include="Resources\icons\consoles\yspixel\Fc_Pad1.ico" />
-    <None Include="Resources\icons\consoles\yspixel\Gba02.ico" />
-    <None Include="Resources\icons\consoles\yspixel\GBC_Purple.ico" />
-    <None Include="Resources\icons\consoles\yspixel\GBPocket_Gray.ico" />
-    <None Include="Resources\icons\consoles\yspixel\Logo_NDS.ico" />
-    <None Include="Resources\icons\consoles\yspixel\Logo_NeoGeo.ico" />
-    <None Include="Resources\icons\consoles\yspixel\Logo_NeoGeoCD.ico" />
-    <None Include="Resources\icons\consoles\yspixel\MD_Pad.ico" />
-    <None Include="Resources\icons\consoles\yspixel\N64_Pad.ico" />
-    <None Include="Resources\icons\consoles\yspixel\Nes_pad.ico" />
-    <None Include="Resources\icons\consoles\yspixel\Pce_02_pad.ico" />
-    <None Include="Resources\icons\consoles\yspixel\Pce_Duo-RxPad.ico" />
-    <None Include="Resources\icons\consoles\yspixel\Ps_pad03.ico" />
-    <None Include="Resources\icons\consoles\yspixel\Sfc_pad02.ico" />
-    <None Include="Resources\icons\consoles\yspixel\Sms_pad.ico" />
-    <None Include="Resources\icons\consoles\yspixel\Snes_pad.ico" />
-    <None Include="Resources\icons\consoles\yspixel\TurboGrafx_pad.ico" />
-    <None Include="Resources\icons\consoles\yspixel\VirtualBoy_pad.ico" />
     <None Include="Resources\StaticBase.wad" />
     <None Include="Strings\en-GB.json" />
     <None Include="Strings\es-419.json" />
@@ -591,12 +590,13 @@
     <None Include="Resources\icons\consoles\snes.png" />
     <None Include="Resources\icons\consoles\RPG2000.ico" />
     <None Include="Resources\icons\about.png" />
-    <None Include="Resources\icons\wiki.png" />
-    <None Include="Resources\icons\consoles\sfc.ico" />
     <None Include="Resources\subforms\screen_sms.png" />
     <None Include="Resources\icons\etc\page_white_cd.png" />
     <None Include="Resources\icons\etc\page_white_flash.png" />
     <None Include="Resources\icons\etc\page_white_zip.png" />
+    <Content Include="Resources\icons\etc\global_telecom.png" />
+    <Content Include="Resources\icons\global_telecom.ico" />
+    <Content Include="Resources\icons\wiki.gif" />
     <Content Include="version.xml" />
     <None Include="Resources\apps\lzh8_dec.exe" />
     <None Include="Resources\vc\saveicon_placeholder_c.png" />

@@ -95,18 +95,18 @@
 			"005":								"El WAD que ha seleccionado (ID: {0}) no es válido.\nEsto puede deberse a que:\n  • la consola actual no coincide con la del WAD.\n  • el WAD aún no está disponible en la base de datos de esta aplicación.\n  • el WAD ya está modificado, ya sea inyectado o convertido en forwarder.",
 			"006":								"Puedes reemplazar el manual electrónico original del juego de la Consola Virtual con otro manual personalizado.\nPara hacer esto, necesitas un archivo comprimido ZIP conteniendo el contenido extraído/modificado del archivo *.arc del manual electrónico de Consola Virtual.",
 			"007":								"El archivo seleccionado no contiene ningún contenido válido de manual electrónico.",
-			"008":								"Actualización de FriishProduce\nYa está disponible para descargar la versión {0} de FriishProduce.\nActualmente estás utilizando la versión {1}.\n\n¿Quieres descargar la nueva versión desde GitHub ahora?",
-			"009":								"La aplicación ya está actualizada.",
-			"010":								"¿Extraer el archivo Opening.bnr (incluye la cabecera IMET)?",
-			"011":								"Se restablecerán la configuración predefinida y los archivos utilizados por FriishProduce.\n¿Seguro que quieres continuar?",
-			"012":								"¿Quieres verificar la base de datos?\nEsto puede tardar varios minutos.",
-			"013":								"No se ha encontrado ninguna entrada no válida en la base de datos.",
-			"014":								"Se han encontrado las siguientes entradas no válidas:\n{0}\n\nPor favor, elimínalas del archivo \"database.json\".",
+			"008":								"La aplicación ya está actualizada.",
+			"009":								"¿Extraer el archivo Opening.bnr (incluye la cabecera IMET)?",
+			"010":								"Se restablecerán la configuración predefinida y los archivos utilizados por FriishProduce.\n¿Seguro que quieres continuar?",
+			"011":								"¿Quieres verificar la base de datos?\nEsto puede tardar varios minutos.",
+			"012":								"No se ha encontrado ninguna entrada no válida en la base de datos.",
+			"013":								"Se han encontrado las siguientes entradas no válidas:\n{0}\n\nPor favor, elimínalas del archivo \"database.json\".",
 
 			"b_000":							"Cargando...",
 			"b_001":							"Exportación en curso...",
 			"b_002":							"Probando la conexión a Internet...",
 			"b_003":							"Verificando la base de datos de {0}...",
+			"b_004":							"Actualización en curso...",
 			
 			"error":							"Se ha producido un error",
 			"e_000":							"No se pudo conectar a Internet.\n{0}",
@@ -127,7 +127,8 @@
 			"e_015":							"No se pudo crear la imagen TPL para los datos guardados.",
 			"e_016":							"No se encontró ningún manual electrónico de Consola Virtual.",
 			"e_017":							"\"{0}\" no es un archivo de proyecto válido.",
-			"e_018":							"No se pudo guardar el proyecto \"{0}\"."
+			"e_018":							"No se pudo guardar el proyecto \"{0}\".",
+			"e_019":							"No se pudo descargar la versión actualizada."
 		},
 
 		"html": {
@@ -199,7 +200,11 @@
 			"exit":								"&Salir",
 
 			"project_type":						"Canal de {0}",
-			"untitled_project":					"Canal de {0} sin título"
+			"untitled_project":					"Canal de {0} sin título",
+			
+			"update":							"Actualización disponible",
+			"update1":							"Ya está disponible para descargar la versión {0} de FriishProduce.\nActualmente estás utilizando la versión {1}.",
+			"update2":							"¿Actualizar ahora?"
 		},
 
 		"settingsform": {

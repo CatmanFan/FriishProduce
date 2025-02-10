@@ -54,7 +54,7 @@ namespace FriishProduce
             // 
             // controller_box
             // 
-            this.controller_box.Location = new System.Drawing.Point(330, 240);
+            this.controller_box.Location = new System.Drawing.Point(330, 232);
             this.controller_box.Size = new System.Drawing.Size(312, 54);
             // 
             // display
@@ -64,7 +64,7 @@ namespace FriishProduce
             this.display.Controls.Add(this.pictureBox1);
             this.display.Location = new System.Drawing.Point(12, 10);
             this.display.Name = "display";
-            this.display.Size = new System.Drawing.Size(312, 284);
+            this.display.Size = new System.Drawing.Size(312, 276);
             this.display.TabIndex = 14;
             this.display.TabStop = false;
             this.display.Tag = "display";
@@ -73,7 +73,8 @@ namespace FriishProduce
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(278, 253);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.label1.Location = new System.Drawing.Point(278, 248);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(25, 13);
             this.label1.TabIndex = 16;
@@ -82,10 +83,10 @@ namespace FriishProduce
             // console_brightness
             // 
             this.console_brightness.AutoSize = false;
-            this.console_brightness.Location = new System.Drawing.Point(10, 251);
+            this.console_brightness.Location = new System.Drawing.Point(9, 244);
             this.console_brightness.Maximum = 100;
             this.console_brightness.Name = "console_brightness";
-            this.console_brightness.Size = new System.Drawing.Size(262, 20);
+            this.console_brightness.Size = new System.Drawing.Size(265, 20);
             this.console_brightness.TabIndex = 15;
             this.console_brightness.Value = 100;
             this.console_brightness.Scroll += new System.EventHandler(this.BrightnessValue_Set);
@@ -93,12 +94,11 @@ namespace FriishProduce
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Black;
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox1.Image = global::FriishProduce.Properties.Resources.screen_smd;
             this.pictureBox1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.pictureBox1.Location = new System.Drawing.Point(10, 19);
+            this.pictureBox1.Location = new System.Drawing.Point(10, 18);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(293, 225);
+            this.pictureBox1.Size = new System.Drawing.Size(293, 220);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 14;
             this.pictureBox1.TabStop = false;
@@ -118,8 +118,10 @@ namespace FriishProduce
             this.vc_options.Controls.Add(this.save_sram);
             this.vc_options.Controls.Add(this.console_disableresetbutton);
             this.vc_options.Location = new System.Drawing.Point(330, 66);
+            this.vc_options.MaximumSize = new System.Drawing.Size(312, 220);
+            this.vc_options.MinimumSize = new System.Drawing.Size(312, 160);
             this.vc_options.Name = "vc_options";
-            this.vc_options.Size = new System.Drawing.Size(312, 168);
+            this.vc_options.Size = new System.Drawing.Size(312, 160);
             this.vc_options.TabIndex = 20;
             this.vc_options.TabStop = false;
             this.vc_options.Tag = "vc_options";
@@ -174,7 +176,7 @@ namespace FriishProduce
             // 
             // Options_VC_SEGA
             // 
-            this.ClientSize = new System.Drawing.Size(654, 350);
+            this.ClientSize = new System.Drawing.Size(654, 344);
             this.Controls.Add(this.region);
             this.Controls.Add(this.vc_options);
             this.Controls.Add(this.display);

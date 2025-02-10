@@ -95,18 +95,18 @@
 			"005":								"Le fichier WAD que vous avez précisée ({0}) est invalide.\nCeci peut être provoqué par l'une des raisons suivantes :\n  • La plateforme/console cible ne correspond pas à celle de la chaîne sélectionnée.\n  • La chaîne n'est pas encore disponible dans la base des données de cette application.\n  • La chaîne était déjà modifiée (soit injectée, soit convertie en forme du forwarder).",
 			"006":								"Vous pouvez replacer les fichier du mode d'emploi inclus dans la chaîne de Console virtuelle par des autres externes, soit personnalisés.\nPour ce faire, vous aurez besoin d'une archive ZIP comprenant le contenu d'un fichier *.arc du mode d'emploi de Console virtuelle.",
 			"007":								"L'archive précisée est invalide.",
-			"008":								"Une mise à jour est disponible\nFriishProduce v{0} est désormais disponible à télécharger.\nL'actuelle version est v{1}.\n\nObtenir la dernière mise à jour dès GitHub maintenant ?",
-			"009":								"Vous êtes déjà à jour.",
-			"010":								"Extraire le fichier opening.bnr (comprenant le header IMET) ?",
-			"011":								"Vous allez restaurer les paramètres par défaut de l'application.\nVoulez-vous vraiment continuer ?",
-			"012":								"Vérifier la base de données des chaînes ?\nCela peut prendre quelques minutes.",
-			"013":								"Aucune chaîne invalide n'a été trouvée dans la base de données.",
-			"014":								"Chaînes invalides trouvées dans la base de données :\n{0}\n\nVeuillez ouvrir et modifier le fichier «database.json» afin de les supprimer.",
+			"008":								"Vous êtes déjà à jour.",
+			"009":								"Extraire le fichier opening.bnr (comprenant le header IMET) ?",
+			"010":								"Vous allez restaurer les paramètres par défaut de l'application.\nVoulez-vous vraiment continuer ?",
+			"011":								"Vérifier la base de données des chaînes ?\nCela peut prendre quelques minutes.",
+			"012":								"Aucune chaîne invalide n'a été trouvée dans la base de données.",
+			"013":								"Chaînes invalides trouvées dans la base de données :\n{0}\n\nVeuillez ouvrir et modifier le fichier «database.json» afin de les supprimer.",
 			
 			"b_000":							"Veuillez patienter ...",
 			"b_001":							"Exportation en cours ...",
 			"b_002":							"Test de connexion en cours ...",
 			"b_003":							"Vérification de la base de données {0} en cours ...",
+			"b_004":							"Mise à jour en cours ...",
 
 			"error":							"Oups, un problème est survenu !",
 			"e_000":							"Échec de connexion à Internet.\n{0}",
@@ -127,7 +127,8 @@
 			"e_015":							"Échec de création de l'image d'aperçu des données de sauvegarde.",
 			"e_016":							"Aucun mode d'emploi de Console virtuelle n'a été trouvé dans cette chaîne.",
 			"e_017":							"«{0}» n'est pas un fichier de projet valide.",
-			"e_018":							"«{0}» ne peut pas être enregistré."
+			"e_018":							"«{0}» ne peut pas être enregistré.",
+			"e_019":							"Échec du téléchargement de la mise à jour."
 		},
 
 		"html": {
@@ -199,7 +200,11 @@
 			"exit":								"&Quitter",
 
 			"project_type":						"Chaîne {0}",
-			"untitled_project":					"Chaîne {0} sans titre"
+			"untitled_project":					"Chaîne {0} sans titre",
+
+			"update":							"Une mise à jour est disponible",
+			"update1":							"FriishProduce v{0} est désormais disponible à télécharger.\nL'actuelle version est v{1}.",
+			"update2":							"Effectuer cette mise à jour maintenant ?"
 		},
 
 		"settingsform": {
