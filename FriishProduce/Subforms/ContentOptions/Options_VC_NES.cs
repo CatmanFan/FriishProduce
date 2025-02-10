@@ -19,6 +19,8 @@ namespace FriishProduce
             if (!DesignMode)
             {
                 Program.Lang.Control(this);
+                tip = HTML.CreateToolTip();
+
                 t.ToolTipTitle = Program.Lang.String("authors").Replace("{0}", "").Trim();
             }
         }

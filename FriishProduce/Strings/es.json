@@ -35,10 +35,12 @@
 			"region_e":							"Europa y Australia",
 			"region_k":							"República de Corea",
 			"region_rf":						"Region Free",
-
+			
 			"preferences":						"Configuración",
 			"system":							"Sistema",
 			"display":							"Pantalla",
+			"debug_mode":						"modo depuración",
+
 			"vc":								"Consola Virtual",
 			"vc_options":						"Ajustes de la Consola Virtual",
 			"additional":						"Estas opciones también son válidas para {0}."
@@ -184,6 +186,7 @@
 			"extract_wad_icon":					"&Ícono del canal",
 			"extract_wad_sound":				"&Sonido del canal",
 			"extract_wad_manual":				"&Manual de Consola Virtual",
+
 			"updater":							"&Actualización",
 			"check_for_updates":				"Buscar &ahora",
 			"auto_update":						"Buscar &cuando se abra la aplicación",
@@ -191,6 +194,8 @@
 			"test_database":					"&Verificar la base de datos",
 			"clear_database":					"Restablecer la &base de datos",
 			"reset_preferences":				"&Restablecer la configuración",
+
+			"wiki":								"&Wiki en línea",
 			"exit":								"&Salir",
 
 			"project_type":						"Canal de {0}",

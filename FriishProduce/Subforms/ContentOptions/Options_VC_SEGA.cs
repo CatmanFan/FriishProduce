@@ -16,6 +16,7 @@ namespace FriishProduce
             if (!DesignMode)
             {
                 Program.Lang.Control(this);
+                tip = HTML.CreateToolTip();
 
                 #region Localization
                 controller_box.Text = Program.Lang.String("controller", "projectform");
@@ -101,7 +102,7 @@ namespace FriishProduce
         private void changeBrightness()
         {
             double factor = console_brightness.Value * 0.01;
-            var orig = Properties.Resources.screen_smd;
+            var orig = IsSMS ? Properties.Resources.screen_sms : Properties.Resources.screen_smd;
             Bitmap changed = new(orig.Width, orig.Height);
 
             using (Graphics g = Graphics.FromImage(changed))

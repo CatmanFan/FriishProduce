@@ -33,7 +33,7 @@
                 {
                     {
                         Platform.NES, FileDatas.Icons.nes
-                        // Program.Lang.GetRegion() is Language.Region.Japan
+                        // Program.Lang.GetRegion() is Language.Region.Japan or Language.Region.Korea
                         // ? FileDatas.Icons.fc : FileDatas.Icons.nes
                     },
 
@@ -55,7 +55,8 @@
 
                     {
                         Platform.SMD,
-                        FileDatas.Icons.smd
+                        Program.Lang.GetRegion() is Language.Region.Americas or Language.Region.International
+                        ? FileDatas.Icons.gen : FileDatas.Icons.smd
                     },
 
                     {
@@ -76,21 +77,6 @@
                     },
 
                     {
-                        Platform.C64,
-                        System.Drawing.Icon.FromHandle(FileDatas.Icons.flash.GetHicon())
-                    },
-
-                    {
-                        Platform.MSX,
-                        System.Drawing.Icon.FromHandle(FileDatas.Icons.c64.GetHicon())
-                    },
-
-                    {
-                        Platform.Flash,
-                        System.Drawing.Icon.FromHandle(FileDatas.Icons.msx.GetHicon())
-                    },
-
-                    {
                         Platform.PSX,
                         FileDatas.Icons.psx
                     },
@@ -104,20 +90,11 @@
                 System.Collections.Generic.Dictionary<Platform, System.Drawing.Bitmap> resized = new();
 
                 foreach (var item in orig)
-                {
-                    if (item.Key is Platform.RPGM)
-                        resized.Add(item.Key, new System.Drawing.Icon(item.Value, 16, 16).ToBitmap());
-                    else
-                    {
-                        System.Drawing.Bitmap b = new(16, 16);
-                        using System.Drawing.Graphics g = System.Drawing.Graphics.FromImage(b);
-                        g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-                        g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-                        g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
-                        g.DrawImage(item.Value.ToBitmap(), 0, 0, 16, 16);
-                        resized.Add(item.Key, b);
-                    }
-                };
+                    resized.Add(item.Key, new System.Drawing.Icon(item.Value, 16, 16).ToBitmap());
+
+                resized.Add(Platform.C64, FileDatas.Icons.c64);
+                resized.Add(Platform.MSX, FileDatas.Icons.msx);
+                resized.Add(Platform.Flash, FileDatas.Icons.flash);
 
                 return resized;
             }

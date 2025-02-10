@@ -16,6 +16,7 @@ namespace FriishProduce
             if (!DesignMode)
             {
                 Program.Lang.Control(this);
+                tip = HTML.CreateToolTip();
 
                 controller_box.Text = Program.Lang.String("controller", "projectform");
                 b_controller.Text = Program.Lang.String("controller_mapping", "projectform");

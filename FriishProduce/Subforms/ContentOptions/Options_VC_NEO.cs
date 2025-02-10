@@ -16,6 +16,7 @@ namespace FriishProduce
             if (!DesignMode)
             {
                 Program.Lang.Control(this);
+                tip = HTML.CreateToolTip();
             }
         }
 

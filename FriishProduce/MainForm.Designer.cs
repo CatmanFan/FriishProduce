@@ -182,7 +182,6 @@ namespace FriishProduce
             // 
             this.toolbarImportGameFile.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             resources.ApplyResources(this.toolbarImportGameFile, "toolbarImportGameFile");
-            this.toolbarImportGameFile.Image = global::FriishProduce.Properties.Resources.page_white_cd;
             this.toolbarImportGameFile.Name = "toolbarImportGameFile";
             this.toolbarImportGameFile.Tag = "import_game_file";
             this.toolbarImportGameFile.Click += new System.EventHandler(this.OpenROM_Click);
@@ -393,6 +392,7 @@ namespace FriishProduce
             // 
             // language_file_editor
             // 
+            this.vistaMenu.SetImage(this.language_file_editor, ((System.Drawing.Image)(resources.GetObject("language_file_editor.Image"))));
             this.language_file_editor.Index = 0;
             resources.ApplyResources(this.language_file_editor, "language_file_editor");
             this.language_file_editor.Click += new System.EventHandler(this.LanguageFileEditor);
@@ -503,13 +503,15 @@ namespace FriishProduce
             // 
             // wiki
             // 
+            this.vistaMenu.SetImage(this.wiki, ((System.Drawing.Image)(resources.GetObject("wiki.Image"))));
             this.wiki.Index = 2;
+            this.wiki.Tag = "wiki";
             resources.ApplyResources(this.wiki, "wiki");
             this.wiki.Click += new System.EventHandler(this.Website_Click);
             // 
             // about
             // 
-            this.vistaMenu.SetImage(this.about, global::FriishProduce.Properties.Resources.smw_note_block);
+            this.vistaMenu.SetImage(this.about, ((System.Drawing.Image)(resources.GetObject("about.Image"))));
             this.about.Index = 3;
             this.about.Tag = "about_app";
             resources.ApplyResources(this.about, "about");

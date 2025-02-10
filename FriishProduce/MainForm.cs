@@ -151,7 +151,7 @@ namespace FriishProduce
 
             if (Program.DebugMode)
             {
-                Text += " [Running in debug mode]";
+                Text += $" [{Program.Lang.String("debug_mode")}]";
                 // Debug mode-only features are activated here. //
                 test_database.Visible = true;
             }

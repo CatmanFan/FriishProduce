@@ -39,6 +39,8 @@
 			"preferences":						"설정",
 			"system":							"시스템",
 			"display":							"화면",
+			"debug_mode":						"Running in debug mode",
+
 			"vc":								"가상 콘솔",
 			"vc_options":						"VC 옵션",
 			"additional":						"These settings also apply to {0}."
@@ -184,6 +186,7 @@
 			"extract_wad_icon":					"Channel &icon",
 			"extract_wad_sound":				"Channel &sound",
 			"extract_wad_manual":				"Virtual Console &manual",
+
 			"updater":							"업데이터(&U)",
 			"check_for_updates":				"업데이트 확인(&C)",
 			"auto_update":						"시작 시 자동으로 업데이트 확인(&A)",
@@ -191,6 +194,8 @@
 			"test_database":					"&Test all database entries",
 			"clear_database":					"모든 롬 데이터베이스 지우기(&E)",
 			"reset_preferences":				"&Reset all preferences",
+
+			"wiki":								"Online &Wiki",
 			"exit":								"나가기(&X)",
 
 			"project_type":						"{0} WAD",

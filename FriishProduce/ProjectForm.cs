@@ -1116,10 +1116,11 @@ namespace FriishProduce
         {
             if (IsModified)
             {
-                var result = MessageBox.Show(string.Format(Program.Lang.Msg(1), Text), null, new string[] { Program.Lang.String("b_save"), Program.Lang.String("b_dont_save"), Program.Lang.String("b_cancel") });
+                var result = MessageBox.Show(string.Format(Program.Lang.Msg(1), Text), null, new string[] { Program.Lang.String("b_yes"), Program.Lang.String("b_no"), Program.Lang.String("b_cancel") });
                 {
                     switch (result)
                     {
+                        case MessageBox.Result.Yes:
                         case MessageBox.Result.Button1:
                             if (File.Exists(ProjectPath))
                             {
@@ -1128,6 +1129,7 @@ namespace FriishProduce
                             }
                             else return Program.MainForm.SaveAs_Trigger(this);
 
+                        case MessageBox.Result.No:
                         case MessageBox.Result.Button2:
                             IsModified = false;
                             return true;

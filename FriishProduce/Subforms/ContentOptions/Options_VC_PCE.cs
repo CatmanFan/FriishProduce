@@ -17,6 +17,8 @@ namespace FriishProduce
             if (!DesignMode)
             {
                 Program.Lang.Control(this);
+                tip = HTML.CreateToolTip();
+
                 ToggleSwitchText();
                 backupram.Text = Program.Lang.String("save_data_enable", "projectform");
             }

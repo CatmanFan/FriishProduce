@@ -16,8 +16,8 @@
 			"b_close":							"&Fermer",
 			"b_yes":							"&Oui",
 			"b_no":								"&Non",
-			"b_save":							"&Enregistrer",
-			"b_dont_save":						"&Ne pas enregistrer",
+			"b_save":							"&Sauvegarder",
+			"b_dont_save":						"&Ne pas sauvegarder",
 			"do_not_show":						"Ne plus afficher ce message",
 			
 			"by_default":						"Par défaut",
@@ -35,10 +35,12 @@
 			"region_e":							"Europe",
 			"region_k":							"Corée du Sud",
 			"region_rf":						"Région déverrouillée",
-
+			
 			"preferences":						"Paramètres",
 			"system":							"Système",
 			"display":							"Affichage",
+			"debug_mode":						"en mode débogage",
+
 			"vc":								"Console virtuelle",
 			"vc_options":						"Options de Console virtuelle",
 			"additional":						"Ces options appliquent également aux jeux de {0}.",
@@ -184,6 +186,7 @@
 			"extract_wad_icon":					"&Icône d'aperçu",
 			"extract_wad_sound":				"&Son d'aperçu",
 			"extract_wad_manual":				"Mode d'&emploi de Console virtuelle",
+
 			"updater":							"&Mises à jour",
 			"check_for_updates":				"&Vérifier maintenant",
 			"auto_update":						"Vérifier &automatiquement au démarrage de l'application",
@@ -191,6 +194,8 @@
 			"test_database":					"&Verifier la base de données",
 			"clear_database":					"Réinitialiser la &base de données",
 			"reset_preferences":				"Réinitialiser la &configuration",
+
+			"wiki":								"&Wiki en ligne",
 			"exit":								"&Quitter",
 
 			"project_type":						"Chaîne {0}",

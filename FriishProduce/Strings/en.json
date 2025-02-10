@@ -35,10 +35,12 @@
 			"region_e":							"Europe/Australia",
 			"region_k":							"Republic of Korea",
 			"region_rf":						"Region Free",
-
+			
 			"preferences":						"Preferences",
 			"system":							"System",
 			"display":							"Display",
+			"debug_mode":						"Running in debug mode",
+
 			"vc":								"Virtual Console",
 			"vc_options":						"Virtual Console options",
 			"additional":						"These settings also apply to {0}."
@@ -189,6 +191,7 @@
 			"extract_wad_icon":					"Channel &icon",
 			"extract_wad_sound":				"Channel &sound",
 			"extract_wad_manual":				"Virtual Console &manual",
+
 			"updater":							"&Updates",
 			"check_for_updates":				"&Check now",
 			"auto_update":						"&Automatically check for updates on startup",
@@ -196,6 +199,8 @@
 			"test_database":					"&Test all database entries",
 			"clear_database":					"&Clear all databases",
 			"reset_preferences":				"&Reset all preferences",
+
+			"wiki":								"Online &Wiki",
 			"exit":								"&Exit",
 
 			"project_type":						"{0} WAD",

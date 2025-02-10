@@ -480,6 +480,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Subforms\ContentOptions\Options_VC_SEGA.resx">
       <DependentUpon>Options_VC_SEGA.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Subforms\HTMLForm.resx">
       <DependentUpon>HTMLForm.cs</DependentUpon>
@@ -589,17 +590,20 @@
     <None Include="Resources\icons\consoles\n64.png" />
     <None Include="Resources\icons\consoles\snes.png" />
     <None Include="Resources\icons\consoles\RPG2000.ico" />
+    <None Include="Resources\icons\about.png" />
+    <None Include="Resources\icons\wiki.png" />
+    <None Include="Resources\icons\consoles\sfc.ico" />
+    <None Include="Resources\subforms\screen_sms.png" />
+    <None Include="Resources\icons\etc\page_white_cd.png" />
+    <None Include="Resources\icons\etc\page_white_flash.png" />
+    <None Include="Resources\icons\etc\page_white_zip.png" />
     <Content Include="version.xml" />
     <None Include="Resources\apps\lzh8_dec.exe" />
     <None Include="Resources\vc\saveicon_placeholder_c.png" />
-    <None Include="Resources\icons\c64.png" />
     <None Include="Resources\apps\c1541.exe" />
     <None Include="Resources\apps\wwcxtool.exe" />
     <None Include="Resources\apps\sns_boost.exe" />
     <None Include="Resources\loading.gif" />
-    <None Include="Resources\page_white_zip.png" />
-    <None Include="Resources\page_white_flash.png" />
-    <None Include="Resources\page_white_cd.png" />
     <None Include="Resources\icons\etc\swf_add.png" />
     <None Include="Resources\vc\saveicon_placeholder_s.png" />
     <None Include="Resources\vc\saveicon_placeholder.png" />
@@ -672,10 +676,6 @@
     <None Include="Resources\icons\brick.ico" />
     <None Include="Resources\sound.wave.wav" />
     <None Include="Resources\icons\consoles\sony playstation.ico" />
-    <None Include="Resources\icons\msx.png" />
-    <None Include="Resources\icons\mr-saturn.png" />
-    <None Include="Resources\icons\smw_note-block.png" />
-    <None Include="Resources\icons\flash.png" />
     <None Include="Resources\icons\locale.png" />
     <None Include="Resources\subforms\screen_smd.png" />
     <None Include="Resources\vc\NeoGeo_VC1.bin" />

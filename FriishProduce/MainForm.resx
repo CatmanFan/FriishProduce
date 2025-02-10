@@ -321,6 +321,23 @@
   <data name="toolbarImportGameFile.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
+  <data name="toolbarImportGameFile.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJ2SURBVDhPlVPLblJRFOUL+gFOnTvxCxz5Fw4cOTDOjAM1
+        jY9US2MfcaAmjryFSsp9UEpjlFqiJfKINW1joSkt5XHhPigXCly4FFjucyDUJhrjSlbOPfucte7ZZ+/j
+        CgSDlqgo8EsSli9Q5KMoy5AUxXD9DWzDv6DrOvyi6B1JLoL9meEoe0zMIXucwxEjzRkEj4ePulaGJEtL
+        I9k52DEZ8oUCCsUiiuqIxQKP+3xeWBWdf1umhtCK3zeSDsFyZSiqZZTKGqemaTB1DarVwbyUhDuQwsLH
+        LGYCabwMbGFhNXVtJCcDcWigUZ66YcA0DVgnJsLfDzEb2oew18ZqCfhiAoc2YDYdCJEDMvn5+IKBYVZg
+        Vk5gVavYOVDxIpSCkgciBvCjCmSbgNMH7MYZ0ulTvKb1ueDu9bFB1bJgEVuNOt6sbWPlwMYWCdU2Xx6i
+        N0AqdYpEwsL2fg1ueas0NqjVT1EnduwWHnljOGrRzTt8CUpSxVNpD0vrebTtHvSTLo+7xSTGBo1mE61W
+        E71uG5OLUR7rD4BBd4An8h7NHDzw7Q7jI7qX4+cGtm2j06Zb6jl4KHylEchkmmjUz7AaLeM+ieWEyvfq
+        HSBHp5tZ/nZu0Ol04TgU7ffwKpjEp80CYrEqcnky/Q0FSm27BoT265he3DDGjdTv9znp0MioFTx/v4li
+        2WH3BpvIqrBjAdEK8IHKOq8kcPPu1C0Xe0h/QjxdwoISx7FeR4YqEaeKhKkXvLs1aq447s0Kb6kLJlzv
+        BCHCHhR/gZSOnzqTzQMrMrzyGuZ863jm2cC09zPcxClPWL9xZ/I2iS/xRiJcJl79D14hThAJLtcvMk73
+        uh2k9eIAAAAASUVORK5CYII=
+</value>
+  </data>
   <data name="toolbarImportGameFile.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
@@ -531,60 +548,6 @@
   </data>
   <data name="preferences.Text" xml:space="preserve">
     <value>preferences</value>
-  </data>
-  <data name="language_file_editor.Text" xml:space="preserve">
-    <value>Language File Editor</value>
-  </data>
-  <data name="test_database.Text" xml:space="preserve">
-    <value>test_database</value>
-  </data>
-  <data name="test_database.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="clear_database.Text" xml:space="preserve">
-    <value>clear_database</value>
-  </data>
-  <data name="reset_preferences.Text" xml:space="preserve">
-    <value>reset_preferences</value>
-  </data>
-  <data name="advanced.Text" xml:space="preserve">
-    <value>advanced</value>
-  </data>
-  <data name="menuItem9.Text" xml:space="preserve">
-    <value>-</value>
-  </data>
-  <data name="extract_wad_banner.Text" xml:space="preserve">
-    <value>extract_wad_banner</value>
-  </data>
-  <data name="extract_wad_icon.Text" xml:space="preserve">
-    <value>extract_wad_icon</value>
-  </data>
-  <data name="extract_wad_sound.Text" xml:space="preserve">
-    <value>extract_wad_sound</value>
-  </data>
-  <data name="extract_wad_manual.Text" xml:space="preserve">
-    <value>extract_wad_manual</value>
-  </data>
-  <data name="extract_from_wad.Text" xml:space="preserve">
-    <value>extract_from_wad</value>
-  </data>
-  <data name="menuItem3.Text" xml:space="preserve">
-    <value>tools</value>
-  </data>
-  <data name="check_for_updates.Text" xml:space="preserve">
-    <value>check_for_updates</value>
-  </data>
-  <data name="auto_update.Text" xml:space="preserve">
-    <value>auto_update</value>
-  </data>
-  <data name="updater.Text" xml:space="preserve">
-    <value>updater</value>
-  </data>
-  <data name="menuItem10.Text" xml:space="preserve">
-    <value>-</value>
-  </data>
-  <data name="wiki.Text" xml:space="preserve">
-    <value>Online Wiki</value>
   </data>
   <metadata name="vistaMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>558, 17</value>
@@ -3152,6 +3115,118 @@
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="language_file_editor.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAMVSURBVDhPZZJtTFNnGIbfnyZL1PmHMCNGY1Jl0UQ3
+        FqMx/jEmaMREo8KYTh1+VjFGRY0gfsUPsKUI1YGdAiqsskUN1g8oUiuIVTRQLWARQVArQrWWKi0aLt/T
+        lum2O7mT8z7nua/nyTmv+J82ntGL9YV9Yl0BQa8vRGwo6hPJZ/Xhjn8EhJ8UbSxMFGtOMa/gLto7XWhs
+        bto9Hymxd5NZ9ZQ5+dYQLLlodjjxFUB9OlGoC8ive8XxBh9/tbznpe8T2yueMyGrDtWRahYY7rKp9AFy
+        kNyoMAj5AkjKo7rDx74aNzElLmxdcnKzD6fbz9Q8O6rM24xML2fHRTuztOWINYZgMgRYe1I/KaOcmaea
+        Sbvpord/gIc9Ab43tPKToYnaDi/RmTUMSzGRd6uVrIomIrcVy+9j0IcASXr/L8V2orPvMy67gQFZrWrr
+        pbnbzxXnW3mCdx8+4uzy4vb10+nuRbXdKLf43R8CrMgl9doTUkwtdHj8ePyfWH6hlbGaOsZm1BK518Lf
+        DS/RmB+jMzczJqWUUclnEKtOKGwJWH6MHzOtfLenkkcuH7uutpBT3Uldp5fJutuM3lfJ0K2XuNfeQ3mj
+        C7E0n4i1pyXgeBiwQsfo1CtE7DRhcnQRucfMuAwr8cX1ePr6mZJlJSL1MgeuOmjr7kUk5CLidYik3DDg
+        V21gxGYj32wqpcD2TK58DZXGIn+flYQ/6zG3vCYivYyDFY2093gRi2R4sQaxMjsQAixMM47fWczR6w6F
+        iMPlpfJJN+rLDlQ5NzE+fEFMzg0aXng4YWmUG+RIayUo3RgCCBEl4o8w43AZOouTiVozsUU2qp69wSZD
+        cecfBMEpZfUsMlgYsiofseyokowaBAgxLUGtQH4rsRGtrSDGUEPM2Xuk1bYFw43u94w8ZGK+BIilMjz9
+        Z7US+wIQYqiYFq/+drWO4cl/MCm3kgXXnZjlhWr6MEDiJTvDt8grvOQQwWFKv9TXAEVK8QcRu+W8iNsd
+        mL3/HCJ2F2JuGiIuPRCsK+/DYUX/BQwqSnqytNI8aOWs1P8lQHwGr6owS+NIFwUAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="language_file_editor.Text" xml:space="preserve">
+    <value>Language File Editor</value>
+  </data>
+  <data name="test_database.Text" xml:space="preserve">
+    <value>test_database</value>
+  </data>
+  <data name="test_database.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="clear_database.Text" xml:space="preserve">
+    <value>clear_database</value>
+  </data>
+  <data name="reset_preferences.Text" xml:space="preserve">
+    <value>reset_preferences</value>
+  </data>
+  <data name="advanced.Text" xml:space="preserve">
+    <value>advanced</value>
+  </data>
+  <data name="menuItem9.Text" xml:space="preserve">
+    <value>-</value>
+  </data>
+  <data name="extract_wad_banner.Text" xml:space="preserve">
+    <value>extract_wad_banner</value>
+  </data>
+  <data name="extract_wad_icon.Text" xml:space="preserve">
+    <value>extract_wad_icon</value>
+  </data>
+  <data name="extract_wad_sound.Text" xml:space="preserve">
+    <value>extract_wad_sound</value>
+  </data>
+  <data name="extract_wad_manual.Text" xml:space="preserve">
+    <value>extract_wad_manual</value>
+  </data>
+  <data name="extract_from_wad.Text" xml:space="preserve">
+    <value>extract_from_wad</value>
+  </data>
+  <data name="menuItem3.Text" xml:space="preserve">
+    <value>tools</value>
+  </data>
+  <data name="check_for_updates.Text" xml:space="preserve">
+    <value>check_for_updates</value>
+  </data>
+  <data name="auto_update.Text" xml:space="preserve">
+    <value>auto_update</value>
+  </data>
+  <data name="updater.Text" xml:space="preserve">
+    <value>updater</value>
+  </data>
+  <data name="menuItem10.Text" xml:space="preserve">
+    <value>-</value>
+  </data>
+  <data name="wiki.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        R0lGODlhEAAQAPcAAPj4+NiwGNCoIGAoAIhIEMigGLCAGOCwGJhgGPjoiPjQKOjAMAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        ACH/C05FVFNDQVBFMi4wAwEAAAAh+QQJDgAMACwAAAAAEAAQAAAIlQAZBBhIsOBAAQIELgAAIIHDhw4V
+        KChAIECCAQcyZiwoYICBARYzMhw58oCAjwEUHCDJEgABlCpHEphJQOZHAQtWMjRAUCaCATgP0BTQksBP
+        nAVbCjA6oMABgkRlzizw08DTAAhJEijAlYDHgwgN0Nza9SvCrDK5UvRYwKMBA1rfDvBqFIFdBGPr4h3A
+        YIDfv4ABMwgIACH5BAkOAAwALAAAAAAQABAAAAiPABkEGEiw4EABAgQuAAAggcOHDhUoKEAgQIIBBzJm
+        LChggIEBFjVmFMCwJEOQAAhoDGDSJEqVBwaWJECTAIABJFUSLGkAIUmcKQvWJFkS54GKB322HECRoE+E
+        JhF4jBngqYACJgl4TOqzQAEDNbUaqPrUK9aZHgt4NMC2bdYBBBDInTs3rFYGA/Lq3buXQUAAIfkECQ4A
+        DAAsAAAAABAAEAAACIwAGQQYSLDgQAECBC4AACCBw4cOFSgoQCBAggEHMmYsKGCAgQEBGAIQsJGgAJEg
+        RQKoaFIlSAMiWQZAGHMAyZgHaTJEYFNlRYQIDRAgwPMkQwEEgCIswBTAgAIrhyoVwLSpx5UzlVa1akDo
+        1K1MCVxNChQsV6dd06r96HQoUQRw48rlyWCA3bt48TIICAAh+QQJDwAMACwAAAAAEAAQAAAIkAAZBBhI
+        sOBAAQIELgAAIIHDhw4VKChAIECCAQcyZiwoYICBAQEYimQo4CDCjyFHiiSAECEAkAAIyCSwsqWAlzcN
+        tKyJsABOlipj9qQ4QMBClQJYFliKYECBAyNnCljK1CNUnlSXEvAYwMBMpVmJGkjJkEBYrR59rjTAtu2A
+        rQQQfI2LoK7drQwG6N3Lly+DgAA7
+</value>
+  </data>
+  <data name="wiki.Text" xml:space="preserve">
+    <value>wiki</value>
+  </data>
+  <data name="about.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAAO1JREFUOE+VkLsRwkAMRBUSUgolEBI6pASXQEgJDl0CISFluASHhA4vM/c0WjgP
+        /oBmdqzTfqw7W6pnVY0lYrxdMgxtO8FPQaU5pTTBZsiaWVgMgehs70Tq+1mzI3No0OIJuxnEvwH0bvaV
+        I0DJs+YMbaoA30INw5vtPiF5XmJJ4xuwFoSAQOK5M8CD11+/JC5mqyh1eI3kU5B8QVMfx0dzHrt77aBn
+        Jl5avP6QIurq8DbSpyHfM4NeQfTSu1nFgL8M3dXFnBVAzwxOm4RtWpASAgXoDIcm5N/FegjK+wt6BzQh
+        ny8ECiqheciizF7lwQIDe+9BswAAAABJRU5ErkJggg==
+</value>
   </data>
   <data name="about.Text" xml:space="preserve">
     <value>about</value>

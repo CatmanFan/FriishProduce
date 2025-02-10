@@ -145,8 +145,8 @@ namespace FriishProduce
             // 
             // banner_details
             // 
-            this.banner_details.Name = "banner_details";
             resources.ApplyResources(this.banner_details, "banner_details");
+            this.banner_details.Name = "banner_details";
             this.banner_details.Tag = "banner_details";
             this.banner_details.Click += new System.EventHandler(this.banner_customize_Click);
             // 
@@ -156,8 +156,8 @@ namespace FriishProduce
             this.play_banner_sound,
             this.replace_banner_sound,
             this.restore_banner_sound});
-            this.banner_sound.Name = "banner_sound";
             resources.ApplyResources(this.banner_sound, "banner_sound");
+            this.banner_sound.Name = "banner_sound";
             this.banner_sound.Tag = "banner_sound";
             // 
             // play_banner_sound
@@ -383,7 +383,6 @@ namespace FriishProduce
             // injection_method_help
             // 
             this.injection_method_help.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.injection_method_help.Image = global::FriishProduce.Properties.Resources.help;
             resources.ApplyResources(this.injection_method_help, "injection_method_help");
             this.injection_method_help.Name = "injection_method_help";
             this.injection_method_help.TabStop = false;

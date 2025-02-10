@@ -21,6 +21,8 @@ namespace FriishProduce
             if (!DesignMode)
             {
                 Program.Lang.Control(this);
+                tip = HTML.CreateToolTip();
+
                 groupBox1.Text = Program.Lang.String("save_data", "projectform");
                 save_data_enable.Text = Program.Lang.String("save_data_enable", "projectform");
 
