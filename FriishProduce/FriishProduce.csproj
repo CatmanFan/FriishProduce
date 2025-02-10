@@ -310,6 +310,12 @@
     <Compile Include="Subforms\LanguageEditor.Designer.cs">
       <DependentUpon>LanguageEditor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Subforms\MessageBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Subforms\MessageBox.Designer.cs">
+      <DependentUpon>MessageBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Subforms\Savedata.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -501,6 +507,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Subforms\LanguageEditor.resx">
       <DependentUpon>LanguageEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Subforms\MessageBox.resx">
+      <DependentUpon>MessageBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Subforms\Savedata.resx">
       <DependentUpon>Savedata.cs</DependentUpon>

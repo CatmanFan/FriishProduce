@@ -101,11 +101,6 @@ namespace FriishProduce
                 {
                     File.WriteAllText(Path.Combine(temp, "_Copy and overwrite original files.txt"), "");
                     System.Diagnostics.Process.Start("explorer.exe", $"\"{temp}\"");
-
-                    // Close app
-                    // ****************
-                    Environment.Exit(0);
-                    return;
                 }
                 else
                     try { Directory.Delete(temp); } catch { }
@@ -120,9 +115,11 @@ namespace FriishProduce
             {
                 try { File.Delete(Paths.Update); } catch { }
 
-                if (ex != null) throw ex;
+                if (ex != null)
+                    throw ex;
+                else
+                    Environment.Exit(0);
             }
-            
         }
 
         public static async Task<bool> GetLatest()

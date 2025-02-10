@@ -1,6 +1,4 @@
-﻿using Ookii.Dialogs.WinForms;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace FriishProduce
 {
@@ -23,7 +21,8 @@ namespace FriishProduce
             Error = 1,
             Information = 2,
             Shield = 3,
-            Warning = 4
+            Warning = 4,
+            Custom = 5
         }
 
         public enum Result
@@ -52,23 +51,23 @@ namespace FriishProduce
             {
                 default:
                 case Buttons.Ok:
-                    b.Add(Program.Lang.String("b_ok"));
+                    b.Add("b_ok");
                     break;
 
                 case Buttons.OkCancel:
-                    b.Add(Program.Lang.String("b_ok"));
-                    b.Add(Program.Lang.String("b_cancel"));
+                    b.Add("b_ok");
+                    b.Add("b_cancel");
                     break;
 
                 case Buttons.YesNo:
-                    b.Add(Program.Lang.String("b_yes"));
-                    b.Add(Program.Lang.String("b_no"));
+                    b.Add("b_yes");
+                    b.Add("b_no");
                     break;
 
                 case Buttons.YesNoCancel:
-                    b.Add(Program.Lang.String("b_yes"));
-                    b.Add(Program.Lang.String("b_no"));
-                    b.Add(Program.Lang.String("b_cancel"));
+                    b.Add("b_yes");
+                    b.Add("b_no");
+                    b.Add("b_cancel");
                     break;
 
                 case Buttons.Custom:
@@ -87,7 +86,7 @@ namespace FriishProduce
                         if (b.Count > 0) break;
                     }
 
-                    if (b.Count == 0) b.Add(Program.Lang.String("b_ok"));
+                    if (b.Count == 0) b.Add("b_ok");
                     break;
 
             }
@@ -97,13 +96,14 @@ namespace FriishProduce
 
         public static Result Show(string mainText, string description, string[] buttons, Icons icon = 0, bool isLinkStyle = false, int dontShow = -1, System.Drawing.Icon ico = null)
         {
-            using (TaskDialog t = new()
+            using (Msg d = new()
             {
-                WindowTitle = Program.Lang.ApplicationTitle,
-                MainInstruction = mainText,
-                Content = description,
-                ButtonStyle = isLinkStyle ? TaskDialogButtonStyle.CommandLinks : TaskDialogButtonStyle.Standard,
-                AllowDialogCancellation = false
+                MsgText = mainText,
+                Description = description,
+                Buttons = buttons,
+                IconType = icon,
+                Icon = ico,
+                DoNotShow_Index = dontShow
             })
             {
                 if (string.IsNullOrWhiteSpace(description))
@@ -117,56 +117,25 @@ namespace FriishProduce
                         for (int i = 1; i < lines.Length; i++)
                             secondary.Add(lines[i]);
 
-                        t.MainInstruction = lines[0];
-                        t.Content = string.Join("\n", secondary.ToArray()).Trim();
+                        d.MsgText = lines[0];
+                        d.Description = string.Join("\n", secondary.ToArray()).Trim();
                     }
 
                     else
                     {
-                        t.MainInstruction = null;
-                        t.Content = lines[0].Trim();
+                        d.MsgText = null;
+                        d.Description = lines[0].Trim();
                     }
                 }
 
-                foreach (var item in buttons)
-                {
-                    t.Buttons.Add(new TaskDialogButton() { Text = item });
-                }
-
-                if (ico != null)
-                {
-                    t.MainIcon = TaskDialogIcon.Custom;
-                    t.CustomMainIcon = ico;
-                }
-
-                else
-                {
-                    t.MainIcon = icon switch
-                    {
-                        Icons.Error => TaskDialogIcon.Error,
-                        Icons.Information => TaskDialogIcon.Information,
-                        Icons.Shield => TaskDialogIcon.Shield,
-                        Icons.Warning => TaskDialogIcon.Warning,
-                        _ => TaskDialogIcon.Custom
-                    };
-                }
-
-                if (dontShow >= 0) { t.VerificationText = Program.Lang.String("do_not_show"); }
-
                 Language.ScriptType script = Program.Lang.GetScript(mainText);
-                t.RightToLeft = script == Language.ScriptType.RTL;
-                if (script == Language.ScriptType.CJK)
-                {
-                    bool hasTitle = !string.IsNullOrEmpty(t.MainInstruction);
-                    using System.Drawing.Font f = new(System.Drawing.FontFamily.GenericSansSerif, hasTitle ? 6.5f : 5.5f, System.Drawing.FontStyle.Regular);
-                    t.Width = 250; // Math.Min(450, System.Windows.Forms.TextRenderer.MeasureText(hasTitle ? t.MainInstruction : mainText, f).Width + (hasTitle ? 0 : 5));
-                }
+                d.RightToLeft = script == Language.ScriptType.RTL ? System.Windows.Forms.RightToLeft.Yes : System.Windows.Forms.RightToLeft.No;
 
-                var clicked = t.ShowDialog();
+                d.ShowDialog();
 
-                if (t.IsVerificationChecked && dontShow >= 0)
+                if (d.DoNotShow_Clicked)
                 {
-                    var setting = Program.Config.application.GetType().GetField($"donotshow_{dontShow:000}");
+                    var setting = Program.Config.application.GetType().GetField($"donotshow_{d.DoNotShow_Index:000}");
 
                     if (setting != null)
                         setting.SetValue(typeof(bool), true);
@@ -174,18 +143,7 @@ namespace FriishProduce
                     Program.Config.Save();
                 }
 
-                if (clicked?.Text == Program.Lang.String("b_yes")) return Result.Yes;
-                if (clicked?.Text == Program.Lang.String("b_no")) return Result.No;
-                if (clicked?.Text == Program.Lang.String("b_ok")) return Result.Ok;
-                if (clicked?.Text == Program.Lang.String("b_cancel")) return Result.Cancel;
-                if (clicked?.Text == Program.Lang.String("b_close")) return Result.Close;
-
-                for (int i = 0; i < Math.Max(t.Buttons.Count, 5); i++)
-                {
-                    if (clicked?.Text == t.Buttons[i].Text) return (Result)Enum.ToObject(typeof(Result), i);
-                }
-
-                return Result.Ok;
+                return d.Result;
             }
         }
 
