@@ -16,6 +16,8 @@ namespace FriishProduce
         private static bool _IsLatest = false;
         public static bool IsLatest { get => _IsLatest; private set { _IsLatest = value; } }
 
+        private static readonly string temp = Paths.EnvironmentFolder + "update\\";
+
 #nullable enable
         private static bool? NeedsUpdate(string? file, DateTime? date)
 #nullable disable
@@ -36,6 +38,15 @@ namespace FriishProduce
             return Old < New;
         }
 
+        public static void ClearFiles(bool keepFolder = false, bool keepArchive = false)
+        {
+            if (!keepFolder)
+                try { Directory.Delete(temp, true); } catch { }
+
+            if (!keepArchive)
+                try { File.Delete(Paths.Update); } catch { }
+        }
+
         /// <summary>
         /// Overwrites original files with updated ones. This is temporarily set to extract the updated files to a subdirectory for now.
         /// </summary>
@@ -45,8 +56,7 @@ namespace FriishProduce
 
             // Create temp directory
             // ****************
-            string temp = Paths.EnvironmentFolder + "update\\";
-            try { Directory.Delete(temp); } catch { }
+            ClearFiles(false, true);
             Directory.CreateDirectory(temp);
 
             try
@@ -103,7 +113,7 @@ namespace FriishProduce
                     System.Diagnostics.Process.Start("explorer.exe", $"\"{temp}\"");
                 }
                 else
-                    try { Directory.Delete(temp); } catch { }
+                    ClearFiles(false, true);
             }
 
             catch (Exception Ex)
@@ -113,7 +123,7 @@ namespace FriishProduce
 
             finally
             {
-                try { File.Delete(Paths.Update); } catch { }
+                ClearFiles(ex == null);
 
                 if (ex != null)
                     throw ex;

@@ -549,6 +549,21 @@
   <data name="preferences.Text" xml:space="preserve">
     <value>preferences</value>
   </data>
+  <data name="test_database.Text" xml:space="preserve">
+    <value>test_database</value>
+  </data>
+  <data name="test_database.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="clear_database.Text" xml:space="preserve">
+    <value>clear_database</value>
+  </data>
+  <data name="reset_preferences.Text" xml:space="preserve">
+    <value>reset_preferences</value>
+  </data>
+  <data name="menuItem11.Text" xml:space="preserve">
+    <value>-</value>
+  </data>
   <metadata name="vistaMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>558, 17</value>
   </metadata>
@@ -3002,12 +3017,6 @@
   <data name="&gt;&gt;advanced.Type" xml:space="preserve">
     <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;language_file_editor.Name" xml:space="preserve">
-    <value>language_file_editor</value>
-  </data>
-  <data name="&gt;&gt;language_file_editor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;test_database.Name" xml:space="preserve">
     <value>test_database</value>
   </data>
@@ -3024,6 +3033,18 @@
     <value>reset_preferences</value>
   </data>
   <data name="&gt;&gt;reset_preferences.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuItem11.Name" xml:space="preserve">
+    <value>menuItem11</value>
+  </data>
+  <data name="&gt;&gt;menuItem11.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;language_file_editor.Name" xml:space="preserve">
+    <value>language_file_editor</value>
+  </data>
+  <data name="&gt;&gt;language_file_editor.Type" xml:space="preserve">
     <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;menuItem9.Name" xml:space="preserve">
@@ -3086,6 +3107,18 @@
   <data name="&gt;&gt;auto_update.Type" xml:space="preserve">
     <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;menuItem12.Name" xml:space="preserve">
+    <value>menuItem12</value>
+  </data>
+  <data name="&gt;&gt;menuItem12.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;clear_update.Name" xml:space="preserve">
+    <value>clear_update</value>
+  </data>
+  <data name="&gt;&gt;clear_update.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;menuItem10.Name" xml:space="preserve">
     <value>menuItem10</value>
   </data>
@@ -3138,18 +3171,6 @@
   <data name="language_file_editor.Text" xml:space="preserve">
     <value>Language File Editor</value>
   </data>
-  <data name="test_database.Text" xml:space="preserve">
-    <value>test_database</value>
-  </data>
-  <data name="test_database.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="clear_database.Text" xml:space="preserve">
-    <value>clear_database</value>
-  </data>
-  <data name="reset_preferences.Text" xml:space="preserve">
-    <value>reset_preferences</value>
-  </data>
   <data name="advanced.Text" xml:space="preserve">
     <value>advanced</value>
   </data>
@@ -3179,6 +3200,12 @@
   </data>
   <data name="auto_update.Text" xml:space="preserve">
     <value>auto_update</value>
+  </data>
+  <data name="menuItem12.Text" xml:space="preserve">
+    <value>-</value>
+  </data>
+  <data name="clear_update.Text" xml:space="preserve">
+    <value>clear_update</value>
   </data>
   <data name="updater.Text" xml:space="preserve">
     <value>updater</value>

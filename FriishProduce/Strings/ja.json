@@ -139,6 +139,7 @@
 			"updater": "更新(&U)",
 			"check_for_updates": "今すぐ更新を確認(&C)",
 			"auto_update": "起動時に自動的に更新を確認(&A)",
+			"clear_update": "更新ファイルを削除(&E)",
 			"advanced": "詳細設定(&A)",
 			"test_database": "データベースを検証(&V)",
 			"clear_database": "データベースを削除(&E)",

@@ -155,9 +155,10 @@ namespace FriishProduce
 
     public static class Web
     {
-        public static bool InternetTest(string URL = null)
+        public static bool InternetTest(string URL = null, bool showDialog = true)
         {
-            Program.MainForm?.Wait(true, true, false, 0, 2);
+            if (showDialog)
+                Program.MainForm?.Wait(true, true, false, 0, 2);
 
             int timeout = 30;
             int region = System.Globalization.CultureInfo.InstalledUICulture.Name.StartsWith("fa") ? 2
@@ -207,13 +208,15 @@ namespace FriishProduce
                     result = true;
                 }
 
-                Program.MainForm?.Wait(false, false, false);
+                if (showDialog)
+                    Program.MainForm?.Wait(false, false, false);
                 return result;
             }
 
             catch (Exception ex)
             {
-                Program.MainForm?.Wait(false, false, false);
+                if (showDialog)
+                    Program.MainForm?.Wait(false, false, false);
 
                 // Automatically return true in event of 429: Too many requests
                 if (ex.GetType() == typeof(WebException) && (ex as WebException).Status == WebExceptionStatus.ProtocolError)

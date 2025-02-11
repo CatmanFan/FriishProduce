@@ -191,6 +191,7 @@
 			"updater":							"업데이터(&U)",
 			"check_for_updates":				"업데이트 확인(&C)",
 			"auto_update":						"시작 시 자동으로 업데이트 확인(&A)",
+			"clear_update":						"&Clear update files",
 			"advanced":							"&Advanced",
 			"test_database":					"&Test all database entries",
 			"clear_database":					"모든 롬 데이터베이스 지우기(&E)",

@@ -187,10 +187,11 @@
 			"extract_wad_icon":					"&Icône d'aperçu",
 			"extract_wad_sound":				"&Son d'aperçu",
 			"extract_wad_manual":				"Mode d'&emploi de Console virtuelle",
-
+			
 			"updater":							"&Mises à jour",
 			"check_for_updates":				"&Vérifier maintenant",
 			"auto_update":						"Vérifier &automatiquement au démarrage de l'application",
+			"clear_update":						"&Supprimer les fichiers de mise à jour",
 			"advanced":							"&Avancés",
 			"test_database":					"&Verifier la base de données",
 			"clear_database":					"Réinitialiser la &base de données",
@@ -201,7 +202,7 @@
 
 			"project_type":						"Chaîne {0}",
 			"untitled_project":					"Chaîne {0} sans titre",
-
+			
 			"update":							"Une mise à jour est disponible",
 			"update1":							"FriishProduce v{0} est désormais disponible à télécharger.\nL'actuelle version est v{1}.",
 			"update2":							"Effectuer cette mise à jour maintenant ?"

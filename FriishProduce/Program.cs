@@ -35,8 +35,8 @@ namespace FriishProduce
                 foreach (var Process in Process.GetProcessesByName(Process.GetCurrentProcess().ProcessName))
                     if (Process.Handle != Process.GetCurrentProcess().Handle && Process.MainWindowHandle != IntPtr.Zero)
                     {
-                        System.Windows.Forms.MessageBox.Show("FriishProduce is already running.");
-                        // SwitchToThisWindow(Process.MainWindowHandle, true);
+                        // System.Windows.Forms.MessageBox.Show("FriishProduce is already running.");
+                        SwitchToThisWindow(Process.MainWindowHandle, true);
                         Environment.Exit(0);
                         return;
                     }
@@ -79,8 +79,6 @@ namespace FriishProduce
 
             foreach (var item in Directory.GetDirectories(Paths.WorkingFolder))
                 try { Directory.Delete(item, true); } catch { }
-
-            try { File.Delete(Paths.Update); } catch { }
 
             if (File.Exists(@"C:\1541 ROM") || File.Exists(@"C:\Basic ROM") || File.Exists(@"C:\Char ROM") || File.Exists(@"C:\Kernal ROM"))
             {

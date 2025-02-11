@@ -52,11 +52,19 @@ namespace FriishProduce
 
             ControlBox = false;
             Text = Program.Lang.Msg(4, 2);
-            b_no.Visible = b_yes.Visible = desc2.Visible = false;
-            Progress.Visible = true;
+            b_no.Visible = b_yes.Visible = false;
 
             try
             {
+                desc2.Text = Program.Lang.Msg(2, 2);
+                wait.Visible = true;
+                await Task.Run(() => { Web.InternetTest(null, false); });
+                desc2.Visible = wait.Visible = false;
+                Progress.Visible = true;
+
+                // Delete pre-existing files
+                // ****************
+                Updater.ClearFiles();
                 Program.CleanTemp();
 
                 // Open WebClient
@@ -77,14 +85,15 @@ namespace FriishProduce
 
                 Progress.Value = 100;
                 Progress.Style = ProgressBarStyle.Marquee;
-                
+
                 // Extract files
                 // ****************
-                Updater.Extract();
+                await Task.Run(() => { Updater.Extract(); });
             }
 
             catch (Exception ex)
             {
+                Progress.Visible = desc2.Visible = wait.Visible = false;
                 try { File.Delete(Paths.Update); } catch { }
 
                 MessageBox.Error(ex.GetType() == typeof(WebException) ? Web.Message(ex, url) : ex.Message);

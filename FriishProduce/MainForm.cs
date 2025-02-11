@@ -705,12 +705,20 @@ namespace FriishProduce
             new LanguageEditor().ShowDialog();
         }
 
-        private void ClearAllDatabases(object sender, EventArgs e)
+        private void ClearFiles(object sender, EventArgs e)
         {
-            if (Directory.Exists(Paths.Databases))
-                foreach (var item in Directory.EnumerateFiles(Paths.Databases))
-                    if (Path.GetExtension(item).ToLower() == ".xml")
-                        File.Delete(item);
+            if (sender == clear_database)
+            {
+                if (Directory.Exists(Paths.Databases))
+                    foreach (var item in Directory.EnumerateFiles(Paths.Databases))
+                        if (Path.GetExtension(item).ToLower() == ".xml")
+                            File.Delete(item);
+            }
+
+            else if (sender == clear_update)
+            {
+                Updater.ClearFiles();
+            }
         }
 
         private void ResetConfig(object sender, EventArgs e)

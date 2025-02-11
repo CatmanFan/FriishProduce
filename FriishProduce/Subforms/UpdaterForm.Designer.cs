@@ -37,8 +37,10 @@ namespace FriishProduce
             this.Progress = new System.Windows.Forms.ProgressBar();
             this.htmlPanel1 = new TheArtOfDev.HtmlRenderer.WinForms.HtmlPanel();
             this.desc1 = new System.Windows.Forms.Label();
+            this.wait = new System.Windows.Forms.PictureBox();
             this.bottomPanel2.SuspendLayout();
             this.bottomPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.wait)).BeginInit();
             this.SuspendLayout();
             // 
             // bottomPanel2
@@ -58,6 +60,7 @@ namespace FriishProduce
             this.bottomPanel1.Controls.Add(this.b_no);
             this.bottomPanel1.Controls.Add(this.b_yes);
             this.bottomPanel1.Controls.Add(this.Progress);
+            this.bottomPanel1.Controls.Add(this.wait);
             this.bottomPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.bottomPanel1.Location = new System.Drawing.Point(0, 1);
             this.bottomPanel1.Name = "bottomPanel1";
@@ -130,6 +133,19 @@ namespace FriishProduce
             this.desc1.Tag = "desc1";
             this.desc1.Text = "{0}\r\n{1}";
             // 
+            // wait
+            // 
+            this.wait.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.wait.Image = global::FriishProduce.Properties.Resources.loading;
+            this.wait.Location = new System.Drawing.Point(424, -3);
+            this.wait.Margin = new System.Windows.Forms.Padding(1);
+            this.wait.Name = "wait";
+            this.wait.Size = new System.Drawing.Size(44, 46);
+            this.wait.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.wait.TabIndex = 41;
+            this.wait.TabStop = false;
+            this.wait.Visible = false;
+            // 
             // UpdaterForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -153,6 +169,7 @@ namespace FriishProduce
             this.bottomPanel2.ResumeLayout(false);
             this.bottomPanel1.ResumeLayout(false);
             this.bottomPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.wait)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -167,5 +184,6 @@ namespace FriishProduce
         private System.Windows.Forms.ProgressBar Progress;
         private System.Windows.Forms.Label desc2;
         private System.Windows.Forms.Label desc1;
+        private System.Windows.Forms.PictureBox wait;
     }
 }

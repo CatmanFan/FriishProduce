@@ -70,10 +70,11 @@ namespace FriishProduce
             this.menuItem3 = new System.Windows.Forms.MenuItem();
             this.preferences = new System.Windows.Forms.MenuItem();
             this.advanced = new System.Windows.Forms.MenuItem();
-            this.language_file_editor = new System.Windows.Forms.MenuItem();
             this.test_database = new System.Windows.Forms.MenuItem();
             this.clear_database = new System.Windows.Forms.MenuItem();
             this.reset_preferences = new System.Windows.Forms.MenuItem();
+            this.menuItem11 = new System.Windows.Forms.MenuItem();
+            this.language_file_editor = new System.Windows.Forms.MenuItem();
             this.menuItem9 = new System.Windows.Forms.MenuItem();
             this.extract_from_wad = new System.Windows.Forms.MenuItem();
             this.extract_wad_banner = new System.Windows.Forms.MenuItem();
@@ -84,6 +85,8 @@ namespace FriishProduce
             this.updater = new System.Windows.Forms.MenuItem();
             this.check_for_updates = new System.Windows.Forms.MenuItem();
             this.auto_update = new System.Windows.Forms.MenuItem();
+            this.menuItem12 = new System.Windows.Forms.MenuItem();
+            this.clear_update = new System.Windows.Forms.MenuItem();
             this.menuItem10 = new System.Windows.Forms.MenuItem();
             this.wiki = new System.Windows.Forms.MenuItem();
             this.about = new System.Windows.Forms.MenuItem();
@@ -383,40 +386,46 @@ namespace FriishProduce
             // 
             this.advanced.Index = 1;
             this.advanced.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.language_file_editor,
             this.test_database,
             this.clear_database,
-            this.reset_preferences});
+            this.reset_preferences,
+            this.menuItem11,
+            this.language_file_editor});
             this.advanced.Tag = "advanced";
             resources.ApplyResources(this.advanced, "advanced");
             // 
-            // language_file_editor
-            // 
-            this.vistaMenu.SetImage(this.language_file_editor, ((System.Drawing.Image)(resources.GetObject("language_file_editor.Image"))));
-            this.language_file_editor.Index = 0;
-            resources.ApplyResources(this.language_file_editor, "language_file_editor");
-            this.language_file_editor.Click += new System.EventHandler(this.LanguageFileEditor);
-            // 
             // test_database
             // 
-            this.test_database.Index = 1;
+            this.test_database.Index = 0;
             this.test_database.Tag = "test_database";
             resources.ApplyResources(this.test_database, "test_database");
             this.test_database.Click += new System.EventHandler(this.TestDatabase);
             // 
             // clear_database
             // 
-            this.clear_database.Index = 2;
+            this.clear_database.Index = 1;
             this.clear_database.Tag = "clear_database";
             resources.ApplyResources(this.clear_database, "clear_database");
-            this.clear_database.Click += new System.EventHandler(this.ClearAllDatabases);
+            this.clear_database.Click += new System.EventHandler(this.ClearFiles);
             // 
             // reset_preferences
             // 
-            this.reset_preferences.Index = 3;
+            this.reset_preferences.Index = 2;
             this.reset_preferences.Tag = "reset_preferences";
             resources.ApplyResources(this.reset_preferences, "reset_preferences");
             this.reset_preferences.Click += new System.EventHandler(this.ResetConfig);
+            // 
+            // menuItem11
+            // 
+            this.menuItem11.Index = 3;
+            resources.ApplyResources(this.menuItem11, "menuItem11");
+            // 
+            // language_file_editor
+            // 
+            this.vistaMenu.SetImage(this.language_file_editor, ((System.Drawing.Image)(resources.GetObject("language_file_editor.Image"))));
+            this.language_file_editor.Index = 4;
+            resources.ApplyResources(this.language_file_editor, "language_file_editor");
+            this.language_file_editor.Click += new System.EventHandler(this.LanguageFileEditor);
             // 
             // menuItem9
             // 
@@ -478,7 +487,9 @@ namespace FriishProduce
             this.updater.Index = 0;
             this.updater.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.check_for_updates,
-            this.auto_update});
+            this.auto_update,
+            this.menuItem12,
+            this.clear_update});
             this.updater.Tag = "updater";
             resources.ApplyResources(this.updater, "updater");
             // 
@@ -495,6 +506,18 @@ namespace FriishProduce
             this.auto_update.Tag = "auto_update";
             resources.ApplyResources(this.auto_update, "auto_update");
             this.auto_update.Click += new System.EventHandler(this.Update_Click);
+            // 
+            // menuItem12
+            // 
+            this.menuItem12.Index = 2;
+            resources.ApplyResources(this.menuItem12, "menuItem12");
+            // 
+            // clear_update
+            // 
+            this.clear_update.Index = 3;
+            this.clear_update.Tag = "clear_update";
+            resources.ApplyResources(this.clear_update, "clear_update");
+            this.clear_update.Click += new System.EventHandler(this.ClearFiles);
             // 
             // menuItem10
             // 
@@ -642,6 +665,9 @@ namespace FriishProduce
         private System.Windows.Forms.MenuItem extract_from_wad;
         private System.Windows.Forms.MenuItem menuItem10;
         private wyDay.Controls.VistaMenu vistaMenu;
+        private System.Windows.Forms.MenuItem menuItem12;
+        private System.Windows.Forms.MenuItem clear_update;
+        private System.Windows.Forms.MenuItem menuItem11;
     }
 }
 
