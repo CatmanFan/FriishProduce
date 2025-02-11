@@ -131,7 +131,7 @@ namespace FriishProduce
                 Language.ScriptType script = Program.Lang.GetScript(mainText);
                 d.RightToLeft = script == Language.ScriptType.RTL ? System.Windows.Forms.RightToLeft.Yes : System.Windows.Forms.RightToLeft.No;
 
-                d.ShowDialog();
+                d.ShowDialog(Program.MainForm);
 
                 if (d.DoNotShow_Clicked)
                 {
