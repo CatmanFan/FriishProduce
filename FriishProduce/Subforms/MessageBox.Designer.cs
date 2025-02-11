@@ -79,7 +79,8 @@ namespace FriishProduce
             this.button1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.button1.Location = new System.Drawing.Point(380, 8);
             this.button1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.button1.MaximumSize = new System.Drawing.Size(0, 31);
+            this.button1.MaximumSize = new System.Drawing.Size(0, 24);
+            this.button1.MinimumSize = new System.Drawing.Size(0, 24);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(27, 24);
             this.button1.TabIndex = 27;
@@ -97,7 +98,8 @@ namespace FriishProduce
             this.button2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.button2.Location = new System.Drawing.Point(413, 8);
             this.button2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.button2.MaximumSize = new System.Drawing.Size(0, 31);
+            this.button2.MaximumSize = new System.Drawing.Size(0, 24);
+            this.button2.MinimumSize = new System.Drawing.Size(0, 24);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(27, 24);
             this.button2.TabIndex = 26;
@@ -129,7 +131,8 @@ namespace FriishProduce
             this.button3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.button3.Location = new System.Drawing.Point(446, 8);
             this.button3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.button3.MaximumSize = new System.Drawing.Size(0, 31);
+            this.button3.MaximumSize = new System.Drawing.Size(0, 24);
+            this.button3.MinimumSize = new System.Drawing.Size(0, 24);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(27, 24);
             this.button3.TabIndex = 24;
@@ -152,6 +155,7 @@ namespace FriishProduce
             this.textLabel.Size = new System.Drawing.Size(423, 43);
             this.textLabel.TabIndex = 27;
             this.textLabel.Text = "Can\'t rename \"Pictures\" because a file or folder with that name already exists";
+            this.textLabel.UseMnemonic = false;
             // 
             // descriptionLabel
             // 
@@ -164,6 +168,7 @@ namespace FriishProduce
             this.descriptionLabel.Size = new System.Drawing.Size(138, 23);
             this.descriptionLabel.TabIndex = 28;
             this.descriptionLabel.Text = "Specify a different name.";
+            this.descriptionLabel.UseMnemonic = false;
             // 
             // image
             // 

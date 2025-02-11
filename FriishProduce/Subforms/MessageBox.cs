@@ -102,57 +102,6 @@ namespace FriishProduce
             Close();
         }
 
-        private void BtnLayout()
-        {
-            const int spacing = 8;
-
-            if (RightToLeft == RightToLeft.Yes)
-            {
-                button1.Location = new Point(spacing, button1.Location.Y);
-                button2.Location = new Point(spacing, button1.Location.Y);
-                button3.Location = new Point(spacing, button1.Location.Y);
-
-                if (button2.Visible && button3.Visible)
-                {
-                    button2.Location = new Point(button3.Location.X + button2.Width + spacing, button1.Location.Y);
-                    button1.Location = new Point(button2.Location.X + button1.Width + spacing, button1.Location.Y);
-                }
-
-                if (!button2.Visible && button3.Visible)
-                {
-                    button1.Location = new Point(button3.Location.X + button1.Width + spacing, button1.Location.Y);
-                }
-
-                if (button2.Visible && !button3.Visible)
-                {
-                    button1.Location = new Point(button2.Location.X + button1.Width + spacing, button1.Location.Y);
-                }
-            }
-
-            else
-            {
-                button1.Location = new Point(ClientSize.Width - spacing - button1.Width, button1.Location.Y);
-                button2.Location = new Point(ClientSize.Width - spacing - button2.Width, button1.Location.Y);
-                button3.Location = new Point(ClientSize.Width - spacing - button3.Width, button1.Location.Y);
-
-                if (button2.Visible && button3.Visible)
-                {
-                    button2.Location = new Point(button3.Location.X - spacing - button2.Width, button1.Location.Y);
-                    button1.Location = new Point(button2.Location.X - spacing - button1.Width, button1.Location.Y);
-                }
-
-                if (!button2.Visible && button3.Visible)
-                {
-                    button1.Location = new Point(button3.Location.X - spacing - button1.Width, button1.Location.Y);
-                }
-
-                if (button2.Visible && !button3.Visible)
-                {
-                    button1.Location = new Point(button2.Location.X - spacing - button1.Width, button1.Location.Y);
-                }
-            }
-        }
-
         private void Msg_Load(object sender, EventArgs e)
         {
             // Set initial values
@@ -161,6 +110,11 @@ namespace FriishProduce
             textLabel.Text = MsgText;
             descriptionLabel.Text = Description;
             RightToLeft = Program.Lang.GetScript(MsgText) == Language.ScriptType.RTL || Program.Lang.GetScript(Description) == Language.ScriptType.RTL ? RightToLeft.Yes : RightToLeft.No;
+
+            BackColor = Theme.Colors.BG;
+            ForeColor = Theme.Colors.Text;
+            bottomPanel2.BackColor = Theme.Colors.BottomBorder;
+            bottomPanel1.BackColor = Theme.Colors.Bottom;
 
             // Set message box icon and play sound (if available)
             // ****************
@@ -201,12 +155,7 @@ namespace FriishProduce
 
             // Set button sizes
             // ****************
-            const int extra = 8;
-            const int min = 66;
-            button3.AutoSizeMode = button2.AutoSizeMode = button1.AutoSizeMode = AutoSizeMode.GrowOnly;
-            button1.Size = button1.MinimumSize = new Size(Math.Max(min, button1.Width + extra), button1.Height);
-            button2.Size = button2.MinimumSize = new Size(Math.Max(min, button2.Width + extra), button2.Height);
-            button3.Size = button3.MinimumSize = new Size(Math.Max(min, button3.Width + extra), button3.Height);
+            Theme.BtnSizes(button1, button2, button3);
 
             // Change visibility/position of certain elements
             // ****************
@@ -250,7 +199,7 @@ namespace FriishProduce
 
             // Set button locations and "do not show" checkbox
             // ****************
-            BtnLayout();
+            Theme.BtnLayout(this, button1, button2, button3);
             const int dns_spacing = 14;
 
             if (RightToLeft == RightToLeft.Yes)
@@ -263,7 +212,7 @@ namespace FriishProduce
                     if (button3.Visible) Size = new Size(Width - button3.Width, Height);
                 }
 
-                BtnLayout();
+                Theme.BtnLayout(this, button1, button2, button3);
                 do_not_show.Location = new Point(ClientSize.Width - dns_spacing - do_not_show.Width, do_not_show.Location.Y);
                 do_not_show.MaximumSize = new Size(ClientSize.Width - dns_spacing - button1.Width - button1.Location.X, 0);
             }
@@ -279,7 +228,7 @@ namespace FriishProduce
                     if (button3.Visible) Size = new Size(Width - button3.Width, Height);
                 }
 
-                BtnLayout();
+                Theme.BtnLayout(this, button1, button2, button3);
                 do_not_show.MaximumSize = new Size(button1.Location.X - do_not_show.Location.X - dns_spacing, 0);
             }
 

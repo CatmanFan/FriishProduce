@@ -50,6 +50,7 @@ namespace FriishProduce
             Config = new(Paths.Config);
             Logger.Log("Opening FriishProduce.");
             Lang = new Language();
+            Theme.ChangeScheme(0);
 
             System.Threading.Thread.CurrentThread.CurrentUICulture = System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(Lang.Current);
 

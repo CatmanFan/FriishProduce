@@ -362,6 +362,7 @@
     <Compile Include="_classes\Files\ROM\PCE.cs" />
     <Compile Include="_classes\Files\ROM\SEGA.cs" />
     <Compile Include="_classes\Files\ROM\SNES.cs" />
+    <Compile Include="_classes\Program\Theme.cs" />
     <Compile Include="_classes\Program\Updater.cs" />
     <EmbeddedResource Include="FileDatas\Emulators.resx">
       <Generator>ResXFileCodeGenerator</Generator>

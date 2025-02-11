@@ -9,13 +9,15 @@ namespace FriishProduce
         public About()
         {
             InitializeComponent();
-            Font = Program.MainForm.Font;
             Text = Program.Lang.Format(("about_app", null), Program.Lang.ApplicationTitle);
             labelProductName.Text = AssemblyProduct;
             labelDescription.Text = string.Format("{0}" + Environment.NewLine + "Current language: {1} ({2})", AssemblyDescription, System.Globalization.CultureInfo.CurrentUICulture.EnglishName, Program.Lang.Author);
             labelVersion.Text = "v" + System.Diagnostics.FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion.ToString();
             labelCopyright.Text = AssemblyCopyright;
-            b_ok.Text = Program.Lang.String("b_close");
+
+            b_close.Text = Program.Lang.String("b_close");
+            Theme.BtnSizes(b_close);
+            Theme.BtnLayout(this, b_close);
 
             htmlPanel1.BaseStylesheet = HTML.BaseStylesheet + "\n" + "div { padding: 4px 6px !important; }";
             htmlPanel1.Text = HTML.MarkdownToHTML(new string[]
