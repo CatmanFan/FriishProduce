@@ -148,8 +148,8 @@ namespace FriishProduce
             this.textLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.textLabel.MaximumSize = new System.Drawing.Size(426, 0);
             this.textLabel.Name = "textLabel";
-            this.textLabel.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.textLabel.Size = new System.Drawing.Size(423, 45);
+            this.textLabel.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            this.textLabel.Size = new System.Drawing.Size(423, 43);
             this.textLabel.TabIndex = 27;
             this.textLabel.Text = "Can\'t rename \"Pictures\" because a file or folder with that name already exists";
             // 
@@ -157,7 +157,7 @@ namespace FriishProduce
             // 
             this.descriptionLabel.AutoSize = true;
             this.descriptionLabel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.descriptionLabel.Location = new System.Drawing.Point(51, 52);
+            this.descriptionLabel.Location = new System.Drawing.Point(51, 50);
             this.descriptionLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.descriptionLabel.Name = "descriptionLabel";
             this.descriptionLabel.Padding = new System.Windows.Forms.Padding(0, 8, 0, 0);
@@ -201,6 +201,7 @@ namespace FriishProduce
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(484, 162);
+            this.ControlBox = false;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.bottomPanel2);
             this.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -215,6 +216,7 @@ namespace FriishProduce
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "title";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Msg_Close);
             this.Load += new System.EventHandler(this.Msg_Load);
             this.bottomPanel2.ResumeLayout(false);
             this.bottomPanel1.ResumeLayout(false);

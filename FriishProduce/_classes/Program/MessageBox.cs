@@ -96,55 +96,62 @@ namespace FriishProduce
 
         public static Result Show(string mainText, string description, string[] buttons, Icons icon = 0, bool isLinkStyle = false, int dontShow = -1, System.Drawing.Icon ico = null)
         {
-            using (Msg d = new()
-            {
-                MsgText = mainText,
-                Description = description,
-                Buttons = buttons,
-                IconType = icon,
-                Icon = ico,
-                DoNotShow_Index = dontShow
-            })
-            {
-                if (string.IsNullOrWhiteSpace(description))
+            Result? result = null;
+            if (Program.MainForm != null)
+                Program.MainForm.Invoke(new System.Windows.Forms.MethodInvoker(() =>
                 {
-                    var lines = mainText.Replace("\r\n", "\n").Split('\n');
-
-                    if (lines.Length >= 2)
+                    using (Msg d = new()
                     {
-                        var secondary = new List<string>();
-
-                        for (int i = 1; i < lines.Length; i++)
-                            secondary.Add(lines[i]);
-
-                        d.MsgText = lines[0];
-                        d.Description = string.Join("\n", secondary.ToArray()).Trim();
-                    }
-
-                    else
+                        MsgText = mainText,
+                        Description = description,
+                        Buttons = buttons,
+                        IconType = icon,
+                        Icon = ico,
+                        DoNotShow_Index = dontShow
+                    })
                     {
-                        d.MsgText = null;
-                        d.Description = lines[0].Trim();
+                        if (string.IsNullOrWhiteSpace(description))
+                        {
+                            var lines = mainText.Replace("\r\n", "\n").Split('\n');
+
+                            if (lines.Length >= 2)
+                            {
+                                var secondary = new List<string>();
+
+                                for (int i = 1; i < lines.Length; i++)
+                                    secondary.Add(lines[i]);
+
+                                d.MsgText = lines[0];
+                                d.Description = string.Join("\n", secondary.ToArray()).Trim();
+                            }
+
+                            else
+                            {
+                                d.MsgText = null;
+                                d.Description = lines[0].Trim();
+                            }
+                        }
+
+                        Language.ScriptType script = Program.Lang.GetScript(mainText);
+                        d.RightToLeft = script == Language.ScriptType.RTL ? System.Windows.Forms.RightToLeft.Yes : System.Windows.Forms.RightToLeft.No;
+
+                        d.ShowDialog(Program.MainForm);
+
+                        if (d.DoNotShow_Clicked)
+                        {
+                            var setting = Program.Config.application.GetType().GetField($"donotshow_{d.DoNotShow_Index:000}");
+
+                            if (setting != null)
+                                setting.SetValue(typeof(bool), true);
+
+                            Program.Config.Save();
+                        }
+
+                        result = d.Result;
                     }
-                }
+                }));
 
-                Language.ScriptType script = Program.Lang.GetScript(mainText);
-                d.RightToLeft = script == Language.ScriptType.RTL ? System.Windows.Forms.RightToLeft.Yes : System.Windows.Forms.RightToLeft.No;
-
-                d.ShowDialog(Program.MainForm);
-
-                if (d.DoNotShow_Clicked)
-                {
-                    var setting = Program.Config.application.GetType().GetField($"donotshow_{d.DoNotShow_Index:000}");
-
-                    if (setting != null)
-                        setting.SetValue(typeof(bool), true);
-
-                    Program.Config.Save();
-                }
-
-                return d.Result;
-            }
+            return result ?? Result.Cancel;
         }
 
         public static Result Show(string mainText, string description, Buttons buttons, Icons icon, bool isLinkStyle) => Show(mainText, description, buttons, icon, -1, isLinkStyle);

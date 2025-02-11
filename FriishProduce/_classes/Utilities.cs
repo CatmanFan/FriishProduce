@@ -55,13 +55,13 @@ namespace FriishProduce
         {
             BaseStylesheet = BaseStylesheet + "\n" +
                 "b { font-weight: 450 !important; }\n" +
-                "div { font-family: \"" + Program.MainForm.Font.FontFamily.Name /* "Verdana" */ + "\" !important; }",
+                "div { font-family: \"Segoe UI\", sans-serif !important; }",
             StripAmpersands = false,
             InitialDelay = 300,
             AutoPopDelay = 12000,
             TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit,
             UseGdiPlusTextRendering = true,
-            UseFading = false,
+            UseFading = true,
             UseAnimation = true,
             MaximumSize = new System.Drawing.Size(375, 0),
         };
@@ -322,7 +322,7 @@ namespace FriishProduce
             }
         }
 
-        public static byte[] Get(string URL, int timeout = 180)
+        public static byte[] Get(string URL, int timeout = 200)
         {
             Start:
             Logger.Log("Downloading from URL: " + URL);
@@ -400,7 +400,7 @@ namespace FriishProduce
 
         public static int IndexOf(byte[] source, byte[] pattern, int start = 0, int end = -1)
         {
-            if (start < 0) start = 0;
+            if (start < 0 || start > end - pattern.Length) start = 0;
             if (end > source.Length || end < 0) end = source.Length - pattern.Length;
 
             for (int i = start; i < end; i++)
@@ -551,206 +551,294 @@ namespace FriishProduce
             PAL50_Prgsiv
         }
 
+        private static void copyVideoMode(byte[] dol, int index, string code)
+        {
+            string[] array = code.Split(' ');
+
+            byte?[] converted = new byte?[array.Length];
+
+            for (int i = 0; i < converted.Length; i++)
+                if (array[i].ToLower() != "xx")
+                    converted[i] = Convert.ToByte(array[i], 16);
+
+            byte[] target = dol.Skip(index).Take(converted.Length).ToArray();
+
+            for (int i = 0; i < converted.Length; i++)
+                if (converted[i].HasValue)
+                    target[i] = converted[i].Value;
+
+            target.CopyTo(dol, index);
+        }
+
+        private static SortedDictionary<int, VideoModes> parseVideoModes(byte[] dol, Dictionary<VideoModes, string> modes, int start = 0, int end = -1)
+        {
+            SortedDictionary<int, VideoModes> value = new();
+            foreach (var mode in modes)
+                for (int index = start; (index = Byte.IndexOf(dol, mode.Value.Substring(0, 23), index, end)) > 0;)
+                    if (!value.ContainsKey(index))
+                    {
+                        value.Add(index, mode.Key);
+                        index += 1;
+                    }
+
+            return value;
+        }
+
         public static void ChangeVideoMode(libWiiSharp.WAD wad, int mode = 0, int wiiu = 0)
         {
+            // Modes:
+            // 0 = None
+            // 1 = NTSC
+            // 2 = MPAL
+            // 3 = PAL60
+            // 4 = PAL50
+            // 5 = NTSC/MPAL
+            // 7 = PAL60/50
+            // 6 = NTSC/PAL60
+            // 8 = MPAL/PAL50
+
             wiiu = 0;
 
-            if (mode > 0 || wiiu > 0)
+            bool VideoModeChanger = mode > 0;
+            bool WiiUAspectRatio = wiiu > 0;
+
+            if (VideoModeChanger || WiiUAspectRatio)
             {
                 var content1 = ExtractContent1(wad.Contents[1]);
 
-                #region List of byte patterns and corresponding video modes
-                /// NTSC & PAL60: 60Hz ///
-                // NTSC (interlaced)   / 480i       00 02 80 01 E0 01 E0 00 28 00 00 02 80 01 E0
-                // NTSC (non interlaced)            01 02 80 01 E0 01 E0 00 28 00 0B 02 80 01 E0
-                // NTSC (progressive)  / 480p       02 02 80 01 E0 01 E0 00 28 00 00 02 80 01 E0
-                // PAL60 (interlaced)  / 480i       14 02 80 01 E0 01 E0 00 28 00 00 02 80 01 E0
-                // PAL60 (non interlaced)           15 02 80 01 E0 01 E0 00 28 00 00 02 80 01 E0
-                // PAL60 (progressive) / 480p       16 02 80 01 E0 01 E0 00 28 00 00 02 80 01 E0
-
-                /// MPAL: 50Hz for American region ///
-                // MPAL (interlaced)                08 02 80 01 E0 01 E0 00 28 00 00 02 80 01 E0
-                // MPAL (non interlaced)            09 02 80 01 E0 01 E0 00 28 00 00 02 80 01 E0
-                // MPAL (progressive)               0A 02 80 01 E0 01 E0 00 28 00 00 02 80 01 E0
-                /// PAL: replace 01 at end with 02 ///
-                // PAL (interlaced)    / 576i       04 02 80 02 10 02 10 00 28 00 17 02 80 02 10
-                // PAL (non interlaced)             05 02 80 01 08 01 08 00 28 00 0B 02 80 02 10
-                // PAL (progressive)                06 02 80 02 10 02 10 00 28 00 17 02 80 02 10
-                /// ONLY PAL50 is different in byte composition !                 ^^ This byte seems to vary ///
-                // PAL (progressive/alt)          = 06 02 80 01 08 02 0C 00 28 00 17 02 80 02 0C
-                #endregion
-
-                int start = 0x13F000;
-                int end = 0x1FFFFF;
-
-                // 0-2: NTSC/PAL
-                // 3-5: MPAL/PAL
-                // 6: Backup for PAL (progressive)
-                Dictionary<VideoModes, string> modesList = new()
+                if (VideoModeChanger)
                 {
-                    { VideoModes.NTSC_Interl, "00 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
-                    { VideoModes.NTSC_NonInt, "01 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
-                    { VideoModes.NTSC_Prgsiv, "02 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
+                    #region List of byte patterns and corresponding video modes
+                    /// NTSC & PAL60: 60Hz ///
+                    // NTSC (interlaced)   / 480i       00 02 80 01 E0 01 E0 00 28 00 00 02 80 01 E0
+                    // NTSC (non interlaced)            01 02 80 01 E0 01 E0 00 28 00 0B 02 80 01 E0
+                    // NTSC (progressive)  / 480p       02 02 80 01 E0 01 E0 00 28 00 00 02 80 01 E0
+                    // PAL60 (interlaced)  / 480i       14 02 80 01 E0 01 E0 00 28 00 00 02 80 01 E0
+                    // PAL60 (non interlaced)           15 02 80 01 E0 01 E0 00 28 00 00 02 80 01 E0
+                    // PAL60 (progressive) / 480p       16 02 80 01 E0 01 E0 00 28 00 00 02 80 01 E0
 
-                    { VideoModes.MPAL_Interl, "08 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
-                    { VideoModes.MPAL_NonInt, "09 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
-                    { VideoModes.MPAL_Prgsiv, "0A 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
+                    /// MPAL: 50Hz for American region ///
+                    // MPAL (interlaced)                08 02 80 01 E0 01 E0 00 28 00 00 02 80 01 E0
+                    // MPAL (non interlaced)            09 02 80 01 E0 01 E0 00 28 00 00 02 80 01 E0
+                    // MPAL (progressive)               0A 02 80 01 E0 01 E0 00 28 00 00 02 80 01 E0
+                    /// PAL: replace 01 at end with 02 ///
+                    // PAL (interlaced)    / 576i       04 02 80 02 10 02 10 00 28 00 17 02 80 02 10
+                    // PAL (non interlaced)             05 02 80 01 08 01 08 00 28 00 0B 02 80 02 10
+                    // PAL (progressive)                06 02 80 02 10 02 10 00 28 00 17 02 80 02 10
+                    /// ONLY PAL50 is different in byte composition !                 ^^ This byte seems to vary ///
+                    // PAL (progressive/alt)          = 06 02 80 01 08 02 0C 00 28 00 17 02 80 02 0C
+                    #endregion
 
-                    { VideoModes.PAL60_Interl, "14 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
-                    { VideoModes.PAL60_NonInt, "15 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
-                    { VideoModes.PAL60_Prgsiv, "16 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
+                    int start = 0x13F000;
+                    int end = 0x1FFFFF;
 
-                    { VideoModes.PAL50_Interl, "04 02 80 02 10 02 10 00 28 00 xx 02 80 02 10" },
-                    { VideoModes.PAL50_NonInt, "05 02 80 01 08 01 08 00 28 00 xx 02 80 02 10" },
-                    { VideoModes.PAL50_Prgsiv, "06 02 80 02 10 02 10 00 28 00 xx 02 80 02 10" },
-                };
+                    // 0-2: NTSC/PAL
+                    // 3-5: MPAL/PAL
+                    // 6: Backup for PAL (progressive)
+                    Dictionary<VideoModes, string> ModeCodes = new()
+                    {
+                        { VideoModes.NTSC_Interl, "00 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
+                        { VideoModes.NTSC_NonInt, "01 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
+                        { VideoModes.NTSC_Prgsiv, "02 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
+                        { VideoModes.MPAL_Interl, "08 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
+                        { VideoModes.MPAL_NonInt, "09 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
+                        { VideoModes.MPAL_Prgsiv, "0A 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
+                        { VideoModes.PAL60_Interl, "14 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
+                        { VideoModes.PAL60_NonInt, "15 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
+                        { VideoModes.PAL60_Prgsiv, "16 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
+                        { VideoModes.PAL50_Interl, "04 02 80 02 10 02 10 00 28 00 xx 02 80 02 10" },
+                        { VideoModes.PAL50_NonInt, "05 02 80 01 08 01 08 00 28 00 xx 02 80 02 10" },
+                        { VideoModes.PAL50_Prgsiv, "06 02 80 02 10 02 10 00 28 00 xx 02 80 02 10" },
+                    };
 
-                // 0 = None
-                // 1 = NTSC
-                // 2 = MPAL
-                // 3 = PAL60
-                // 4 = PAL50
-                // 5 = NTSC/MPAL
-                // 7 = PAL60/50
-                // 6 = NTSC/PAL60
-                // 8 = MPAL/PAL50
+                    int alt = 0;
 
-                switch (mode)
-                {
-                    default:
-                        int targetMode = mode switch
+                    Search:
+                    SortedDictionary<int, VideoModes> Indexes = parseVideoModes(content1.Data, ModeCodes, start, end);
+
+                    if (Indexes.Count == 0)
+                    {
+                        alt++;
+
+                        switch (alt)
                         {
-                            1 => 1,
-                            2 => 4,
-                            3 => 7,
-                            4 => 10,
-                            _ => 1
-                        };
+                            case 1:
+                                // Offsets found in Super Mario RPG
+                                start = 0x54A000;
+                                end = 0x561000;
+                                goto Search;
 
-                        for (int i = 1; i < modesList.Count; i++)
-                        {
-                            for (int index; (index = Byte.IndexOf(content1.Data, modesList.Values.ElementAt(i).Substring(0, 23), start, end)) > 0;)
-                            {
-                                string[] array = i is 1 or 4 or 7 or 10 ? modesList.Values.ElementAt(targetMode + 0).Split(' ')   // Interlaced
-                                               : i is 2 or 5 or 8 or 11 ? modesList.Values.ElementAt(targetMode + 1).Split(' ')   // Non-interlaced
-                                               : modesList.Values.ElementAt(targetMode + 2).Split(' ');                           // Progressive
-
-                                for (int x = 0; x < 15; x++)
-                                    if (array[x].ToLower() != "xx") content1.Data[index + x] = Convert.ToByte(array[x], 16);
-                                break;
-                            }
+                            default:
+                                // Some other offsets are still not known, should be added later when I do more research
+                                MessageBox.Show(Program.Lang.Msg(20, 1));
+                                goto Second;
                         }
-                        break;
+                    }
 
-                    case 5:
-                    case 6:
-                    case 7:
-                    case 8:
-                        (VideoModes[] outputs, VideoModes[] inputs) = mode switch
-                        {
-                            5 =>
-                            (
-                                new VideoModes[]
-                                {
+                    switch (mode)
+                    {
+                        default:
+                            int TargetMode_index = mode switch
+                            {
+                                1 => 0, // NTSC
+                                2 => 3, // MPAL
+                                3 => 6, // PAL60
+                                4 => 9, // PAL50
+                                _ => 0
+                            };
+
+                            foreach (var Index in Indexes)
+                            {
+                                int offset = Index.Value is VideoModes.NTSC_Interl
+                                                         or VideoModes.MPAL_Interl
+                                                         or VideoModes.PAL60_Interl
+                                                         or VideoModes.PAL50_Interl ? 0
+                                           : Index.Value is VideoModes.NTSC_NonInt
+                                                         or VideoModes.MPAL_NonInt
+                                                         or VideoModes.PAL60_NonInt
+                                                         or VideoModes.PAL50_NonInt ? 1
+                                           : 2;
+
+                                var TargetMode = ModeCodes.ElementAt(TargetMode_index + offset);
+
+                                if (Index.Value != TargetMode.Key)
+                                    copyVideoMode(content1.Data, Index.Key, TargetMode.Value);
+                            }
+                            break;
+
+                        case 5:
+                        case 6:
+                        case 7:
+                        case 8:
+                            (VideoModes[] outputs, VideoModes[] inputs) = mode switch
+                            {
+                                // **** NTSC/MPAL configuration **** //
+                                5 =>
+                                (
+                                    // Outputs
+                                    new VideoModes[]
+                                    {
                                     VideoModes.NTSC_Interl,     VideoModes.NTSC_NonInt,     VideoModes.NTSC_Prgsiv,
                                     VideoModes.MPAL_Interl,     VideoModes.MPAL_NonInt,     VideoModes.MPAL_Prgsiv
-                                },
-                                new VideoModes[]
-                                {
-                                    VideoModes.PAL60_Interl,    VideoModes.PAL60_NonInt,    VideoModes.PAL60_Prgsiv,
-                                    VideoModes.PAL50_Interl,    VideoModes.PAL50_NonInt,    VideoModes.PAL50_Prgsiv
-                                }
-                            ),
+                                    },
 
-                            6 =>
-                            (
-                                new VideoModes[]
-                                {
+                                    // To be converted
+                                    new VideoModes[]
+                                    {
                                     VideoModes.PAL60_Interl,    VideoModes.PAL60_NonInt,    VideoModes.PAL60_Prgsiv,
                                     VideoModes.PAL50_Interl,    VideoModes.PAL50_NonInt,    VideoModes.PAL50_Prgsiv
-                                },
-                                new VideoModes[]
-                                {
+                                    }
+                                ),
+
+                                // **** PAL60/50 configuration **** //
+                                6 =>
+                                (
+                                    // Outputs
+                                    new VideoModes[]
+                                    {
+                                    VideoModes.PAL60_Interl,    VideoModes.PAL60_NonInt,    VideoModes.PAL60_Prgsiv,
+                                    VideoModes.PAL50_Interl,    VideoModes.PAL50_NonInt,    VideoModes.PAL50_Prgsiv
+                                    },
+
+                                    // To be converted
+                                    new VideoModes[]
+                                    {
                                     VideoModes.NTSC_Interl,     VideoModes.NTSC_NonInt,     VideoModes.NTSC_Prgsiv,
                                     VideoModes.MPAL_Interl,     VideoModes.MPAL_NonInt,     VideoModes.MPAL_Prgsiv
-                                }
-                            ),
+                                    }
+                                ),
 
-                            7 =>
-                            (
-                                new VideoModes[]
-                                {
+                                // **** NTSC/PAL60 configuration **** //
+                                7 =>
+                                (
+                                    // Outputs
+                                    new VideoModes[]
+                                    {
                                     VideoModes.NTSC_Interl,     VideoModes.NTSC_NonInt,     VideoModes.NTSC_Prgsiv,
                                     VideoModes.PAL60_Interl,    VideoModes.PAL60_NonInt,    VideoModes.PAL60_Prgsiv
-                                },
-                                new VideoModes[]
-                                {
-                                    VideoModes.MPAL_Interl,     VideoModes.MPAL_NonInt,     VideoModes.MPAL_Prgsiv,
-                                    VideoModes.PAL50_Interl,    VideoModes.PAL50_NonInt,    VideoModes.PAL50_Prgsiv
-                                }
-                            ),
+                                    },
 
-                            _ =>
-                            (
-                                new VideoModes[]
-                                {
+                                    // To be converted
+                                    new VideoModes[]
+                                    {
                                     VideoModes.MPAL_Interl,     VideoModes.MPAL_NonInt,     VideoModes.MPAL_Prgsiv,
                                     VideoModes.PAL50_Interl,    VideoModes.PAL50_NonInt,    VideoModes.PAL50_Prgsiv
-                                },
-                                new VideoModes[]
-                                {
+                                    }
+                                ),
+
+                                // **** MPAL/PAL50 configuration **** //
+                                _ =>
+                                (
+                                    // Outputs
+                                    new VideoModes[]
+                                    {
+                                    VideoModes.MPAL_Interl,     VideoModes.MPAL_NonInt,     VideoModes.MPAL_Prgsiv,
+                                    VideoModes.PAL50_Interl,    VideoModes.PAL50_NonInt,    VideoModes.PAL50_Prgsiv
+                                    },
+
+                                    // To be converted
+                                    new VideoModes[]
+                                    {
                                     VideoModes.NTSC_Interl,     VideoModes.NTSC_NonInt,     VideoModes.NTSC_Prgsiv,
                                     VideoModes.PAL60_Interl,    VideoModes.PAL60_NonInt,    VideoModes.PAL60_Prgsiv
-                                }
-                            ),
-                        };
+                                    }
+                                ),
+                            };
 
-                        for (int i = 0; i < inputs.Length; i++)
-                        {
-                            if (inputs[i] != outputs[i])
+                            for (int i = 0; i < inputs.Length; i++)
                             {
-                                for (int index; (index = Byte.IndexOf(content1.Data, modesList[inputs[i]].Substring(0, 23), start, end)) > 0;)
+                                if (inputs[i] != outputs[i])
                                 {
-                                    string[] array = modesList[outputs[i]].Split(' ');
-
-                                    for (int x = 0; x < 15; x++)
-                                        if (array[x].ToLower() != "xx") content1.Data[index + x] = Convert.ToByte(array[x], 16);
-                                    break;
+                                    foreach (var Index in Indexes.Where(x => x.Value == inputs[i]))
+                                    {
+                                        copyVideoMode(content1.Data, Index.Key, ModeCodes[outputs[i]]);
+                                    }
                                 }
                             }
-                        }
-                        break;
+                            break;
+                    }
+
+                    // Reparse list so that we can see the changed values
+                    Indexes = parseVideoModes(content1.Data, ModeCodes, start, end);
                 }
 
+                Second:
                 /* Force 4:3 aspect ratio display on Wii U (NOT WORKING) */
                 // *************************
-                switch (wiiu)
+                if (WiiUAspectRatio)
                 {
-                    default:
-                    case 0:
-                        break;
+                    switch (wiiu)
+                    {
+                        default:
+                        case 0:
+                            break;
 
-                    case 1:
-                        File.WriteAllBytes(Paths.WorkingFolder + "main.dec.dol", content1.Data);
+                        case 1:
+                            File.WriteAllBytes(Paths.WorkingFolder + "main.dec.dol", content1.Data);
 
-                        string output = Run
-                        (
-                            "wstrt\\wstrt.exe",
-                            $"patch \"{Path.GetFullPath(Paths.WorkingFolder + "main.dec.dol")}\" --add-section \"{Path.GetFullPath(Paths.Tools + "wstrt\\Force43.gct")}\""
-                        );
+                            string output = Run
+                            (
+                                "wstrt\\wstrt.exe",
+                                $"patch \"{Path.GetFullPath(Paths.WorkingFolder + "main.dec.dol")}\" --add-section \"{Path.GetFullPath(Paths.Tools + "wstrt\\Force43.gct")}\""
+                            );
 
-                        bool isModified = !content1.Data.SequenceEqual(File.ReadAllBytes(Paths.WorkingFolder + "main.dec.dol"));
+                            bool isModified = !content1.Data.SequenceEqual(File.ReadAllBytes(Paths.WorkingFolder + "main.dec.dol"));
 
-                        if (isModified) content1.Data = File.ReadAllBytes(Paths.WorkingFolder + "main.dec.dol");
-                        break;
+                            if (isModified) content1.Data = File.ReadAllBytes(Paths.WorkingFolder + "main.dec.dol");
+                            break;
+                    }
                 }
 
-                PackContent1(content1.Data, content1.Compressed);
+                var newContent1 = PackContent1(content1.Data, content1.Compressed);
 
-                wad.Unpack(Paths.WAD);
-                File.WriteAllBytes(Paths.WAD + "00000001.app", content1.Data);
-                wad.CreateNew(Paths.WAD);
-                Directory.Delete(Paths.WAD, true);
+                wad.Contents[1] = newContent1;
+                if (!Byte.IsSame(wad.Contents[1], newContent1))
+                {
+                    wad.Unpack(Paths.WAD);
+                    File.WriteAllBytes(Paths.WAD + "00000001.app", newContent1);
+                    wad.CreateNew(Paths.WAD);
+                    Directory.Delete(Paths.WAD, true);
+                }
             }
         }
     }

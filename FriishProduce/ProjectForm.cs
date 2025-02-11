@@ -1116,28 +1116,28 @@ namespace FriishProduce
         {
             if (IsModified)
             {
-                var result = MessageBox.Show(string.Format(Program.Lang.Msg(1), Text), null, new string[] { Program.Lang.String("b_yes"), Program.Lang.String("b_no"), Program.Lang.String("b_cancel") });
+                var result = MessageBox.Show(string.Format(Program.Lang.Msg(1), Text), MessageBox.Buttons.YesNoCancel, MessageBox.Icons.Warning);
+
+                switch (result)
                 {
-                    switch (result)
-                    {
-                        case MessageBox.Result.Yes:
-                        case MessageBox.Result.Button1:
-                            if (File.Exists(ProjectPath))
-                            {
-                                SaveProject(ProjectPath);
-                                return true;
-                            }
-                            else return Program.MainForm.SaveAs_Trigger(this);
-
-                        case MessageBox.Result.No:
-                        case MessageBox.Result.Button2:
-                            IsModified = false;
+                    case MessageBox.Result.Yes:
+                    case MessageBox.Result.Button1:
+                        if (File.Exists(ProjectPath))
+                        {
+                            SaveProject(ProjectPath);
                             return true;
+                        }
+                        else return Program.MainForm.SaveAs_Trigger(this);
 
-                        case MessageBox.Result.Cancel:
-                        case MessageBox.Result.Button3:
-                            return false;
-                    }
+                    case MessageBox.Result.No:
+                    case MessageBox.Result.Button2:
+                        IsModified = false;
+                        return true;
+
+                    default:
+                    case MessageBox.Result.Cancel:
+                    case MessageBox.Result.Button3:
+                        return false;
                 }
             }
 
@@ -1716,14 +1716,15 @@ namespace FriishProduce
                 int wad_tries = 0;
 
                 Start:
+                bool localFile = inWadFile != null;
+
                 Program.MainForm.Wait(false, false, false);
-                if (inWadFile == null)
-                    Web.InternetTest();
+                if (!localFile) Web.InternetTest();
                 Program.MainForm.Wait(true, true, true, 0, 1);
 
                 // Get WAD data
                 // *******
-                if (inWadFile != null) m.GetWAD(inWadFile, baseID.Text);
+                if (localFile) m.GetWAD(inWadFile, baseID.Text);
                 else
                 {
                     var entry = channels.Entries.Where(x => x.GetUpperIDs().Contains(baseID.Text)).ToArray()[0];
@@ -1748,16 +1749,25 @@ namespace FriishProduce
                             try { m.Inject(); }
                             catch (Exception ex)
                             {
-                                if (ex.Message == "U8 Header: Invalid Magic!" && wad_tries == 0)
+                                if (!localFile)
                                 {
-                                    wad_tries++;
-                                    Logger.Log("Attempting to load/download WAD a second time.");
-                                    goto Start;
+                                    if (ex.Message == "U8 Header: Invalid Magic!" && wad_tries == 0)
+                                    {
+                                        wad_tries++;
+                                        Logger.Log("Received \"U8 Header: Invalid Magic!\" error, download may have failed. Attempting to download WAD a second time.");
+                                        goto Start;
+                                    }
+
+                                    else
+                                    {
+                                        Logger.Log("WAD is invalid or failed to load more than once. Process halted.");
+                                        throw;
+                                    }
                                 }
 
                                 else
                                 {
-                                    Logger.Log("WAD is invalid or failed to load more than once. Process halted.");
+                                    Logger.Log("WAD is invalid. Process halted.");
                                     throw;
                                 }
                             }

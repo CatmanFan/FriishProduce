@@ -109,7 +109,7 @@ namespace FriishProduce.Injectors
             // ****************
             Prompt:
             bool cancel = false;
-            var method = MessageBox.Show(Program.Lang.String("rom_notice", "vc_c64"), null, new string[] { Program.Lang.String("rom_notice1", "vc_c64"), Program.Lang.String("rom_notice2", "vc_c64"), Program.Lang.String("b_cancel") });
+            var method = MessageBox.Show(Program.Lang.String("rom_notice", "vc_c64"), null, new string[] { Program.Lang.String("rom_notice1", "vc_c64"), Program.Lang.String("rom_notice2", "vc_c64"), "b_cancel" });
 
             switch (method)
             {

@@ -43,7 +43,8 @@
 
 			"vc":								"Virtual Console",
 			"vc_options":						"Virtual Console options",
-			"additional":						"These settings also apply to {0}."
+			"additional":						"These settings also apply to {0}.",
+			"continue":							"Injection will continue as intended."
 		},
 
 		"platforms": {
@@ -88,7 +89,7 @@
 
 		"messages": {
 			"000":								"An application restart is needed in order for changes to fully take effect.",
-			"001":								"{0} has unsaved changes.\nWhat would you like to do?",
+			"001":								"{0} has unsaved changes.\nSave this project?",
 			"002":								"The file you have selected is of an invalid format.",
 			"003":								"Successfully completed.\nOpen the output folder?",
 			"004":								"Unable to retrieve all game data for the selected software.\nSome fields may need to be filled manually.",
@@ -103,7 +104,7 @@
 			"013":								"Invalid database entries found:\n{0}\n\nPlease remove these entries from database.json.",
 
 			"b_000":							"Please wait...",
-			"b_001":							"Exportation in progress...",
+			"b_001":							"Exporting...",
 			"b_002":							"Testing Internet connection...",
 			"b_003":							"Verifying {0} database...",
 			"b_004":							"Updating...",
@@ -113,13 +114,13 @@
 			"e_001":							"Unable to generate image.\nThis may be due to an issue with GDI+.",
 			"e_002":							"Failed to inject or replace content within the WAD.",
 			"e_003":							"The ROM provided is too large (size limit: {0} {1}).",
-			"e_004":							"Unable to modify the internal VC WAD's content options.\nInjection will continue as intended.",
-			"e_005":							"Unable to modify the following content options.\n{0}\nInjection will continue as intended.",
+			"e_004":							"Unable to modify the internal VC WAD's content options.\n{continue}",
+			"e_005":							"Unable to modify the following content options.\n{0}\n{continue}",
 			"e_006":							"The application needed ({0}) was not found in the resources\\tools subdirectory.",
 			"e_007":							"Failed to create WAD or ZIP.",
 			"e_008":							"Failed to apply patch. Either the patch file and target ROM do not match, or the ROM's checksum is invalid.",
 			"e_009":							"Failed to download source WAD.",
-			"e_010":							"Failed to replace internal Virtual Console manual.\nInjection will continue as intended.",
+			"e_010":							"Failed to replace internal Virtual Console manual.\n{continue}",
 			"e_011":							"The file \"{0}\" could not be found in its original path. It may have been deleted or moved.",
 			"e_012":							"The folder \"{0}\" could not be found in its original path. It may have been deleted or moved.",
 			"e_013":							"An injectable ROM entrypoint was not found. This may be because the injection method used for this WAD is yet not supported.",
@@ -128,7 +129,8 @@
 			"e_016":							"No Virtual Console manual was found in the provided WAD.",
 			"e_017":							"\"{0}\" is not a valid project file.",
 			"e_018":							"Unable to save {0}.",
-			"e_019":							"Could not download update."
+			"e_019":							"Could not download update.",
+			"e_020":							"Could not find any modifiable WAD video modes.\n{continue}"
 		},
 
 		"html": {

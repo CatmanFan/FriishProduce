@@ -43,7 +43,8 @@
 
 			"vc":								"Consola Virtual",
 			"vc_options":						"Ajustes de la Consola Virtual",
-			"additional":						"Estas opciones también son válidas para {0}."
+			"additional":						"Estas opciones también son válidas para {0}.",
+			"continue":							"La exportación continuará según lo previsto."
 		},
 
 		"platforms": {
@@ -88,7 +89,7 @@
 
 		"messages": {
 			"000":								"Debes reiniciar FriishProduce para que todos los cambios tengan efecto.",
-		    "001":								"El proyecto \"{0}\" ha sido cambiado.\n¿Guardar ahora?",
+		    "001":								"El proyecto \"{0}\" ha sido cambiado.\n¿Guardarlo ahora?",
 			"002":								"El archivo seleccionado no es válido.",
 			"003":								"Exportado con éxito.\n¿Quieres abrir la carpeta de salida?",
 			"004":								"No se pueden recuperar todos los datos del juego actual.\nPor esta razón debes completar manualmente ciertos formularios.",
@@ -113,13 +114,13 @@
 			"e_001":							"No se pudo generar la imagen.\nEsto puede deberse a un problema con GDI+.",
 			"e_002":							"No se pudo inyectar o reemplazar los datos internos del canal.",
 			"e_003":							"La ROM es demasiado grande (más de {0} {1} en tamaño).",
-			"e_004":							"No se pudo modificar los ajustes de la Consola Virtual.\nLa exportación continuará según lo previsto.",
-			"e_005":							"No se pudo modificar los ajustes siguientes:\n{0}\nLa exportación continuará según lo previsto.",
+			"e_004":							"No se pudo modificar los ajustes de la Consola Virtual.\n{continue}",
+			"e_005":							"No se pudo modificar los ajustes siguientes:\n{0}\n{continue}",
 			"e_006":							"La aplicación necesaria ({0}) no se encontró en el subdirectorio \"resources\\tools\".",
 			"e_007":							"No se pudo exportar en formato WAD o ZIP.",
 			"e_008":							"No se pudo aplicar el parche, ya sea porque la ROM de destino y el parche no coinciden o porque el checksum de la ROM no es válida.",
 			"e_009":							"No se pudo descargar el canal de origen.",
-			"e_010":							"No se pudo modificar el manual electrónico del canal.\nLa exportación continuará según lo previsto.",
+			"e_010":							"No se pudo modificar el manual electrónico del canal.\n{continue}",
 			"e_011":							"El archivo \"{0}\" no se encontró en su ruta original. Puede que haya sido eliminado o movido.",
 			"e_012":							"La carpeta \"{0}\" no se encontró en su ruta original. Puede que haya sido eliminada o movida.",
 			"e_013":							"No se encontró ningún punto de entrada de inyección. Puede deberse a que el método de inyección utilizado por este canal aún no está compatible.",
@@ -128,7 +129,8 @@
 			"e_016":							"No se encontró ningún manual electrónico de Consola Virtual.",
 			"e_017":							"\"{0}\" no es un archivo de proyecto válido.",
 			"e_018":							"No se pudo guardar el proyecto \"{0}\".",
-			"e_019":							"No se pudo descargar la versión actualizada."
+			"e_019":							"No se pudo descargar la versión actualizada.",
+			"e_020":							"No se ha encontrado ningún modo de vídeo modificable en este canal.\n{continue}"
 		},
 
 		"html": {
@@ -267,7 +269,7 @@
 			"channel_name":						"Nombre del canal:",
 			"title_id":							"Title ID:",
 			"region":							"Región del canal:",
-			"video_mode":						"Señal video:",
+			"video_mode":						"Modo de vídeo:",
 			"banner":							"Banner del canal",
 			"banner_tip":						"Haz clic en la vista previa de arriba para acceder a las opciones de personalización del banner.",
 			"banner_details":					"&Detalles del banner...",

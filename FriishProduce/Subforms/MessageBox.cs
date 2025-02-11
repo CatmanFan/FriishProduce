@@ -12,7 +12,7 @@ namespace FriishProduce
 {
     public partial class Msg : Form
     {
-        public MessageBox.Result Result { get; private set; }
+        public MessageBox.Result? Result { get; private set; }
         public bool DoNotShow_Clicked { get; private set; }
 
         public string MsgText { get; set; }
@@ -62,7 +62,7 @@ namespace FriishProduce
         public Msg()
         {
             InitializeComponent();
-            Program.Lang.Control(do_not_show);
+            do_not_show.Text = Program.Lang.String(do_not_show.Tag.ToString());
         }
 
         private void Button_Click(object sender, EventArgs e)
@@ -96,9 +96,61 @@ namespace FriishProduce
             else
                 Result = MessageBox.Result.Ok;
 
-            DoNotShow_Clicked = do_not_show.Visible && do_not_show.Checked;
+            DoNotShow_Clicked = do_not_show.Visible && do_not_show.Checked
+                             && Result is not MessageBox.Result.No and not MessageBox.Result.Cancel;
 
             Close();
+        }
+
+        private void BtnLayout()
+        {
+            const int spacing = 8;
+
+            if (RightToLeft == RightToLeft.Yes)
+            {
+                button1.Location = new Point(spacing, button1.Location.Y);
+                button2.Location = new Point(spacing, button1.Location.Y);
+                button3.Location = new Point(spacing, button1.Location.Y);
+
+                if (button2.Visible && button3.Visible)
+                {
+                    button2.Location = new Point(button3.Location.X + button2.Width + spacing, button1.Location.Y);
+                    button1.Location = new Point(button2.Location.X + button1.Width + spacing, button1.Location.Y);
+                }
+
+                if (!button2.Visible && button3.Visible)
+                {
+                    button1.Location = new Point(button3.Location.X + button1.Width + spacing, button1.Location.Y);
+                }
+
+                if (button2.Visible && !button3.Visible)
+                {
+                    button1.Location = new Point(button2.Location.X + button1.Width + spacing, button1.Location.Y);
+                }
+            }
+
+            else
+            {
+                button1.Location = new Point(ClientSize.Width - spacing - button1.Width, button1.Location.Y);
+                button2.Location = new Point(ClientSize.Width - spacing - button2.Width, button1.Location.Y);
+                button3.Location = new Point(ClientSize.Width - spacing - button3.Width, button1.Location.Y);
+
+                if (button2.Visible && button3.Visible)
+                {
+                    button2.Location = new Point(button3.Location.X - spacing - button2.Width, button1.Location.Y);
+                    button1.Location = new Point(button2.Location.X - spacing - button1.Width, button1.Location.Y);
+                }
+
+                if (!button2.Visible && button3.Visible)
+                {
+                    button1.Location = new Point(button3.Location.X - spacing - button1.Width, button1.Location.Y);
+                }
+
+                if (button2.Visible && !button3.Visible)
+                {
+                    button1.Location = new Point(button2.Location.X - spacing - button1.Width, button1.Location.Y);
+                }
+            }
         }
 
         private void Msg_Load(object sender, EventArgs e)
@@ -156,57 +208,6 @@ namespace FriishProduce
             button2.Size = button2.MinimumSize = new Size(Math.Max(min, button2.Width + extra), button2.Height);
             button3.Size = button3.MinimumSize = new Size(Math.Max(min, button3.Width + extra), button3.Height);
 
-            // Set button locations
-            // ****************
-            const int spacing = 8;
-            if (RightToLeft == RightToLeft.Yes)
-            {
-                do_not_show.Location = new Point(ClientSize.Width - spacing, do_not_show.Location.Y);
-                button1.Location = new Point(spacing, button1.Location.Y);
-                button2.Location = new Point(spacing, button1.Location.Y);
-                button3.Location = new Point(spacing, button1.Location.Y);
-
-                if (button2.Visible && button3.Visible)
-                {
-                    button2.Location = new Point(button3.Location.X + button2.Width + spacing, button1.Location.Y);
-                    button1.Location = new Point(button2.Location.X + button1.Width + spacing, button1.Location.Y);
-                }
-
-                if (!button2.Visible && button3.Visible)
-                {
-                    button1.Location = new Point(button3.Location.X + button1.Width + spacing, button1.Location.Y);
-                }
-
-                if (button2.Visible && !button3.Visible)
-                {
-                    button1.Location = new Point(button2.Location.X + button1.Width + spacing, button1.Location.Y);
-                }
-            }
-
-            else
-            {
-                do_not_show.Location = new Point(spacing, do_not_show.Location.Y);
-                button1.Location = new Point(ClientSize.Width - spacing - button1.Width, button1.Location.Y);
-                button2.Location = new Point(ClientSize.Width - spacing - button2.Width, button1.Location.Y);
-                button3.Location = new Point(ClientSize.Width - spacing - button3.Width, button1.Location.Y);
-
-                if (button2.Visible && button3.Visible)
-                {
-                    button2.Location = new Point(button3.Location.X - spacing - button2.Width, button1.Location.Y);
-                    button1.Location = new Point(button2.Location.X - spacing - button1.Width, button1.Location.Y);
-                }
-
-                if (!button2.Visible && button3.Visible)
-                {
-                    button1.Location = new Point(button3.Location.X - spacing - button1.Width, button1.Location.Y);
-                }
-
-                if (button2.Visible && !button3.Visible)
-                {
-                    button1.Location = new Point(button2.Location.X - spacing - button1.Width, button1.Location.Y);
-                }
-            }
-
             // Change visibility/position of certain elements
             // ****************
             (bool no_icon, bool no_text, bool no_desc) = (Icon == null, string.IsNullOrWhiteSpace(MsgText), string.IsNullOrWhiteSpace(Description));
@@ -226,13 +227,72 @@ namespace FriishProduce
             if (!no_text) tableLayoutPanel1.Controls.Add(textLabel, no_icon ? 0 : 1, 0);
             if (!no_desc) tableLayoutPanel1.Controls.Add(descriptionLabel, no_icon ? 0 : 1, no_text ? 0 : 1);
 
-            // Set size
+            // Set width
+            // ****************
+            var maxWidth = !no_desc && !no_text ? Math.Max(descriptionLabel.Width, textLabel.Width)
+                         : !no_desc ? descriptionLabel.Width
+                         : !no_text ? textLabel.Width
+                         : 0;
+            if (!no_icon) maxWidth += image.Width;
+
+            maxWidth += (tableLayoutPanel1.Padding.Left * 2) + 20;
+            ClientSize = new Size(Math.Min(ClientSize.Width, Math.Max(330, maxWidth)), ClientSize.Height);
+
+            // Set height
             // ****************
             var maxHeight = !no_desc ? descriptionLabel.Location.Y + descriptionLabel.Height
                                      : textLabel.Location.Y + textLabel.Height;
             if (!no_icon) maxHeight = Math.Max(maxHeight, image.Location.Y + image.Height);
-            ClientSize = new Size(ClientSize.Width, maxHeight + tableLayoutPanel1.Padding.Top * 2 + bottomPanel2.Height);
+            maxHeight += (tableLayoutPanel1.Padding.Top * 2) + bottomPanel2.Height;
+
+            ClientSize = new Size(ClientSize.Width, maxHeight);
             Size = SizeFromClientSize(ClientSize);
+
+            // Set button locations and "do not show" checkbox
+            // ****************
+            BtnLayout();
+            const int dns_spacing = 14;
+
+            if (RightToLeft == RightToLeft.Yes)
+            {
+                if (do_not_show.Visible && (button1.Location.X + button1.Width) > ClientSize.Width - dns_spacing - do_not_show.Width)
+                {
+                    Size = new Size(Width + do_not_show.Width + 30, Height);
+                    if (button1.Visible) Size = new Size(Width - button1.Width, Height);
+                    if (button2.Visible) Size = new Size(Width - button2.Width, Height);
+                    if (button3.Visible) Size = new Size(Width - button3.Width, Height);
+                }
+
+                BtnLayout();
+                do_not_show.Location = new Point(ClientSize.Width - dns_spacing - do_not_show.Width, do_not_show.Location.Y);
+                do_not_show.MaximumSize = new Size(ClientSize.Width - dns_spacing - button1.Width - button1.Location.X, 0);
+            }
+
+            else
+            {
+                do_not_show.Location = new Point(dns_spacing, do_not_show.Location.Y);
+                if (do_not_show.Visible && do_not_show.Width > button1.Location.X)
+                {
+                    Size = new Size(Width + do_not_show.Width + 30, Height);
+                    if (button1.Visible) Size = new Size(Width - button1.Width, Height);
+                    if (button2.Visible) Size = new Size(Width - button2.Width, Height);
+                    if (button3.Visible) Size = new Size(Width - button3.Width, Height);
+                }
+
+                BtnLayout();
+                do_not_show.MaximumSize = new Size(button1.Location.X - do_not_show.Location.X - dns_spacing, 0);
+            }
+
+            try { CenterToParent(); } catch { CenterToScreen(); }
+        }
+
+        private void Msg_Close(object sender, FormClosingEventArgs e)
+        {
+            if (!Result.HasValue)
+            {
+                DoNotShow_Clicked = false;
+                Result = MessageBox.Result.Cancel;
+            }
         }
     }
 }
