@@ -54,7 +54,7 @@ namespace FriishProduce
 
         public static TheArtOfDev.HtmlRenderer.WinForms.HtmlToolTip CreateToolTip() => new()
         {
-            BaseStylesheet = BaseStylesheet + "\n" + 
+            BaseStylesheet = BaseStylesheet + "\n" +
                 "b { font-weight: 450 !important; }\n" +
                 "div { font-family: \"" + Program.MainForm.Font.FontFamily.Name /* "Verdana" */ + "\" !important; }",
             StripAmpersands = false,
@@ -160,6 +160,8 @@ namespace FriishProduce
     {
         public static bool InternetTest(string URL = null, bool showDialog = true)
         {
+            bool compatibilityMode = false;
+
             if (showDialog)
                 Program.MainForm?.Wait(true, true, false, 0, 2);
 
@@ -170,12 +172,22 @@ namespace FriishProduce
             if (string.IsNullOrWhiteSpace(URL)) URL =
                 region == 2 ? "https://www.aparat.com/" :
                 region == 1 ? "http://www.baidu.com/" :
-                region == 0 ? "https://www.google.com" :
+                region == 0 ? "https://www.google.com/" :
                 "https://www.example.com/";
+            
+            Start:
+            if (compatibilityMode)
+            {
+                ServicePointManager.Expect100Continue = true;
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+            }
 
             try
             {
                 Request:
+                if (!URL.StartsWith("https://") && !URL.StartsWith("http://")) URL = "https://" + URL;
+                if (!URL.EndsWith("/")) URL += "/";
+
                 Logger.Log($"Sending initial Web request to URL: {URL}");
                 var request = (HttpWebRequest)WebRequest.Create(URL);
 
@@ -219,6 +231,17 @@ namespace FriishProduce
 
             catch (Exception ex)
             {
+                // Go back to beginning and set compatibility mode to true in event of (Windows 7)
+                if (ex.GetType() == typeof(WebException) && (ex as WebException).Status == WebExceptionStatus.SecureChannelFailure)
+                {
+                    if (!compatibilityMode)
+                    {
+                        Logger.Log("Failed to send initial Web request. Starting over in compatibility mode.");
+                        compatibilityMode = true;
+                        goto Start;
+                    }
+                }
+
                 if (showDialog)
                     Program.MainForm?.Wait(false, false, false);
 
@@ -297,7 +320,7 @@ namespace FriishProduce
                     if (Task.WaitAny
                     (new Task[]{Task.Run(() => { try { x.OpenRead(URL).CopyTo(ms); return ms; } catch { return null; } }
                     )}, timeout * 1000) == -1)
-                    throw new TimeoutException();
+                        throw new TimeoutException();
 
                     if (ms.ToArray().Length == 0) throw new FileNotFoundException();
                     else if (ms.ToArray().Length > 75) return ms.ToArray();
@@ -538,21 +561,21 @@ namespace FriishProduce
                 // 6: Backup for PAL (progressive)
                 Dictionary<VideoModes, string> modesList = new()
                 {
-                    { VideoModes.NTSC_Interl,   "00 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
-                    { VideoModes.NTSC_NonInt,   "01 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
-                    { VideoModes.NTSC_Prgsiv,   "02 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
+                    { VideoModes.NTSC_Interl, "00 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
+                    { VideoModes.NTSC_NonInt, "01 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
+                    { VideoModes.NTSC_Prgsiv, "02 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
 
-                    { VideoModes.MPAL_Interl,   "08 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
-                    { VideoModes.MPAL_NonInt,   "09 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
-                    { VideoModes.MPAL_Prgsiv,   "0A 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
+                    { VideoModes.MPAL_Interl, "08 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
+                    { VideoModes.MPAL_NonInt, "09 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
+                    { VideoModes.MPAL_Prgsiv, "0A 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
 
-                    { VideoModes.PAL60_Interl,  "14 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
-                    { VideoModes.PAL60_NonInt,  "15 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
-                    { VideoModes.PAL60_Prgsiv,  "16 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
+                    { VideoModes.PAL60_Interl, "14 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
+                    { VideoModes.PAL60_NonInt, "15 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
+                    { VideoModes.PAL60_Prgsiv, "16 02 80 01 E0 01 E0 00 28 00 xx 02 80 01 E0" },
 
-                    { VideoModes.PAL50_Interl,  "04 02 80 02 10 02 10 00 28 00 xx 02 80 02 10" },
-                    { VideoModes.PAL50_NonInt,  "05 02 80 01 08 01 08 00 28 00 xx 02 80 02 10" },
-                    { VideoModes.PAL50_Prgsiv,  "06 02 80 02 10 02 10 00 28 00 xx 02 80 02 10" },
+                    { VideoModes.PAL50_Interl, "04 02 80 02 10 02 10 00 28 00 xx 02 80 02 10" },
+                    { VideoModes.PAL50_NonInt, "05 02 80 01 08 01 08 00 28 00 xx 02 80 02 10" },
+                    { VideoModes.PAL50_Prgsiv, "06 02 80 02 10 02 10 00 28 00 xx 02 80 02 10" },
                 };
 
                 // 0 = None
