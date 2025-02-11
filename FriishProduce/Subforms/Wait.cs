@@ -12,7 +12,6 @@ namespace FriishProduce
 {
     public partial class Wait : Form
     {
-        private Timer fader;
         public string Msg
         {
             get => label1.Text;
@@ -23,36 +22,30 @@ namespace FriishProduce
         {
             InitializeComponent();
 
-            Opacity = 0;
-            fader = new() { Interval = 5, Enabled = true };
-            fader.Tick += Fade;
-            fader.Start();
-
-            if (Program.MainForm != null) label1.Font = Program.MainForm.Font;
+            Text = Program.Lang.ApplicationTitle;
+            // if (Program.MainForm != null) label1.Font = Program.MainForm.Font;
             label1.Text = msg ?? Program.Lang.String("busy0");
 
             progress.Visible = showProgress;
-            if (!showProgress)
-            {
-                tableLayoutPanel2.RowCount = 1;
-                label1.TextAlign = ContentAlignment.MiddleLeft;
-                label1.Padding = new(label1.Padding.Left, 0, 0, 0);
-            }
-            else
-            {
-                tableLayoutPanel1.Height += 2;
-                Height += 2;
-            }
+
+            // Set width
+            // ****************
+            var maxWidth = label1.Width + (label1.Padding.Left * 2) + 20;
+            ClientSize = new Size(Math.Min(ClientSize.Width, Math.Max(330, maxWidth)), ClientSize.Height);
+            Size = SizeFromClientSize(ClientSize);
+
+            // Set RTL if needed
+            // ****************
+            if (Program.Lang.GetScript(label1.Text) == Language.ScriptType.RTL)
+                RightToLeft = RightToLeft.Yes;
         }
 
-        private void Fade(object sender, EventArgs e)
+        private void IsClosing(object sender, FormClosingEventArgs e)
         {
-            Opacity += 2;
-            if (Opacity >= 100 && fader != null)
+            if (e.CloseReason is CloseReason.UserClosing)
             {
-                fader.Stop();
-                fader.Enabled = false;
-                fader.Dispose();
+                e.Cancel = true;
+                return;
             }
         }
     }
