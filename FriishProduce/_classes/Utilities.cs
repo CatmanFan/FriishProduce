@@ -168,7 +168,7 @@ namespace FriishProduce
                 region == 2 ? "https://www.aparat.com/" :
                 region == 1 ? "http://www.baidu.com/" :
                 region == 0 ? "https://www.google.com" :
-                "https://webhook.site/e0da7cdc-fbae-4e72-8c32-0a634232823b";
+                "https://www.example.com/";
 
             try
             {
