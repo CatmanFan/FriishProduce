@@ -66,6 +66,7 @@ namespace FriishProduce
                 // ****************
                 Updater.ClearFiles();
                 Program.CleanTemp();
+                Logger.Log($"Updating to FriishProduce {Latest.TagName}.");
 
                 // Open WebClient
                 // ****************
@@ -96,7 +97,10 @@ namespace FriishProduce
                 Progress.Visible = desc2.Visible = wait.Visible = false;
                 try { File.Delete(Paths.Update); } catch { }
 
-                MessageBox.Error(ex.GetType() == typeof(WebException) ? Web.Message(ex, url) : ex.Message);
+                if (Program.DebugMode)
+                    throw;
+                else
+                    MessageBox.Error(ex.GetType() == typeof(WebException) ? Web.Message(ex, url) : ex.Message);
 
                 busy = false;
                 Program.MainForm.Enabled = true;

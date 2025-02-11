@@ -352,7 +352,10 @@ namespace FriishProduce
             }
             catch (Exception ex)
             {
-                MessageBox.Error(ex.Message);
+                if (Program.DebugMode)
+                    throw;
+                else
+                    MessageBox.Error(ex.Message);
             }
         }
 
@@ -473,7 +476,10 @@ namespace FriishProduce
             }
             catch (Exception ex)
             {
-                MessageBox.Error(ex.Message);
+                if (Program.DebugMode)
+                    throw;
+                else
+                    MessageBox.Error(ex.Message);
             }
         }
 

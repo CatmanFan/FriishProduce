@@ -963,7 +963,12 @@ namespace FriishProduce
                 if (error == null)
                     MessageBox.Show(Program.Lang.Msg(16, 1));
                 else
-                    MessageBox.Error(error.Message);
+                {
+                    if (Program.DebugMode)
+                        throw (error);
+                    else
+                        MessageBox.Error(error.Message);
+                }
                 goto End;
 
                 Succeeded:

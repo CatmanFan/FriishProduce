@@ -149,15 +149,16 @@ namespace FriishProduce
 
             // Set button sizes
             // ****************
-            const int extra = 6;
+            const int extra = 8;
+            const int min = 66;
             button3.AutoSizeMode = button2.AutoSizeMode = button1.AutoSizeMode = AutoSizeMode.GrowOnly;
-            button1.Size = button1.MinimumSize = new Size(button1.Width + extra, button1.Height);
-            button2.Size = button2.MinimumSize = new Size(button2.Width + extra, button2.Height);
-            button3.Size = button3.MinimumSize = new Size(button3.Width + extra, button3.Height);
+            button1.Size = button1.MinimumSize = new Size(Math.Max(min, button1.Width + extra), button1.Height);
+            button2.Size = button2.MinimumSize = new Size(Math.Max(min, button2.Width + extra), button2.Height);
+            button3.Size = button3.MinimumSize = new Size(Math.Max(min, button3.Width + extra), button3.Height);
 
             // Set button locations
             // ****************
-            const int spacing = 11;
+            const int spacing = 8;
             if (RightToLeft == RightToLeft.Yes)
             {
                 do_not_show.Location = new Point(ClientSize.Width - spacing, do_not_show.Location.Y);

@@ -30,11 +30,14 @@ namespace FriishProduce
 
         public static void Log(string msg)
         {
+            try { Text = File.ReadAllText(Paths.Log); } catch { }
+
             if (!string.IsNullOrWhiteSpace(Text))
                 Text += Environment.NewLine;
             Text += $"[{DateTime.Now.Year}-{DateTime.Now.Month:D2}-{DateTime.Now.Day:D2} {DateTime.Now.Hour:D2}:{DateTime.Now.Minute:D2}:{DateTime.Now.Second:D2}] {msg}";
 
-            // File.WriteAllText(Paths.Log, Text);
+            if (Program.DebugMode)
+                File.WriteAllText(Paths.Log, Text);
         }
     }
 
@@ -173,6 +176,7 @@ namespace FriishProduce
             try
             {
                 Request:
+                Logger.Log($"Sending initial Web request to URL: {URL}");
                 var request = (HttpWebRequest)WebRequest.Create(URL);
 
                 URL = request.Address.Authority;
@@ -180,9 +184,9 @@ namespace FriishProduce
                 request.KeepAlive = false;
                 request.Timeout = timeout * 1000;
                 request.UserAgent = "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.0; WOW64; " +
-                                "Trident/4.0; SLCC1; .NET CLR 2.0.50727; Media Center PC 5.0; " +
-                                ".NET CLR 3.5.21022; .NET CLR 3.5.30729; .NET CLR 3.0.30618; " +
-                                "InfoPath.2; OfficeLiveConnector.1.3; OfficeLivePatch.0.0)";
+                                    "Trident/4.0; SLCC1; .NET CLR 2.0.50727; Media Center PC 5.0; " +
+                                    ".NET CLR 3.5.21022; .NET CLR 3.5.30729; .NET CLR 3.0.30618; " +
+                                    "InfoPath.2; OfficeLiveConnector.1.3; OfficeLivePatch.0.0)";
 
                 bool result = false;
 
@@ -222,6 +226,7 @@ namespace FriishProduce
                 if (ex.GetType() == typeof(WebException) && (ex as WebException).Status == WebExceptionStatus.ProtocolError)
                     return true;
 
+                Logger.Log("Failed to send initial Web request. Process halted.");
                 throw new Exception(string.Format(Program.Lang.Msg(0, 1), Message(ex, URL)));
             }
         }

@@ -1650,7 +1650,11 @@ namespace FriishProduce
             catch (Exception ex)
             {
                 Program.MainForm.Wait(false, false, false);
-                MessageBox.Error(ex.Message);
+
+                if (Program.DebugMode)
+                    throw;
+                else
+                    MessageBox.Error(ex.Message);
             }
         }
 
@@ -1824,10 +1828,15 @@ namespace FriishProduce
 
                     else
                     {
-                        string msg = error.Message;
-                        if (!string.IsNullOrWhiteSpace(error.InnerException?.Message)) msg += Environment.NewLine + error.InnerException?.Message;
+                        if (Program.DebugMode)
+                            throw(error);
+                        else
+                        {
+                            string msg = error.Message;
+                            if (!string.IsNullOrWhiteSpace(error.InnerException?.Message)) msg += Environment.NewLine + error.InnerException?.Message;
 
-                        MessageBox.Error(msg);
+                            MessageBox.Error(msg);
+                        }
                     }
                 }));
             }

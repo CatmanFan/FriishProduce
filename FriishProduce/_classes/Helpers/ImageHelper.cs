@@ -137,8 +137,14 @@ namespace FriishProduce
 
             catch (Exception ex)
             {
-                string message = ex.GetType() == typeof(WebException) ? ex.Message.TrimEnd('.') + "." : ex.Message;
-                MessageBox.Error(message);
+                if (Program.DebugMode)
+                    throw;
+                else
+                {
+                    string message = ex.GetType() == typeof(WebException) ? ex.Message.TrimEnd('.') + "." : ex.Message;
+                    MessageBox.Error(message);
+                }
+
                 return null;
             }
 
