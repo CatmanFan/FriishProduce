@@ -36,7 +36,7 @@ namespace FriishProduce
                 Text += Environment.NewLine;
             Text += $"[{DateTime.Now.Year}-{DateTime.Now.Month:D2}-{DateTime.Now.Day:D2} {DateTime.Now.Hour:D2}:{DateTime.Now.Minute:D2}:{DateTime.Now.Second:D2}] {msg}";
 
-            if (Program.DebugMode)
+            if (Program.Config.application.logger)
                 File.WriteAllText(Paths.Log, Text);
         }
     }
@@ -158,29 +158,16 @@ namespace FriishProduce
 
     public static class Web
     {
-        public static bool InternetTest(string URL = null, bool showDialog = true)
+        public static bool InternetTest(string url = null, bool showDialog = true)
         {
-            bool compatibilityMode = false;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.SystemDefault;
+            string URL = url ?? "https://www.example.com/";
+            bool regionalized = false;
 
             if (showDialog)
                 Program.MainForm?.Wait(true, true, false, 0, 2);
 
             int timeout = 30;
-            int region = System.Globalization.CultureInfo.InstalledUICulture.Name.StartsWith("fa") ? 2
-                       : System.Globalization.CultureInfo.InstalledUICulture.Name.Contains("zh-CN") ? 1
-                       : -1;
-            if (string.IsNullOrWhiteSpace(URL)) URL =
-                region == 2 ? "https://www.aparat.com/" :
-                region == 1 ? "http://www.baidu.com/" :
-                region == 0 ? "https://www.google.com/" :
-                "https://www.example.com/";
-            
-            Start:
-            if (compatibilityMode)
-            {
-                ServicePointManager.Expect100Continue = true;
-                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-            }
 
             try
             {
@@ -189,7 +176,26 @@ namespace FriishProduce
                 if (!URL.EndsWith("/")) URL += "/";
 
                 Logger.Log($"Sending initial Web request to URL: {URL}");
-                var request = (HttpWebRequest)WebRequest.Create(URL);
+                HttpWebRequest request = null;
+                try { request = (HttpWebRequest)WebRequest.Create(URL); }
+                catch
+                {
+                    Logger.Log("Failed to create request. Changing URL to local search engine.");
+
+                    if (!regionalized)
+                    {
+                        int region = System.Globalization.CultureInfo.InstalledUICulture.Name.StartsWith("fa") ? 2
+                                   : System.Globalization.CultureInfo.InstalledUICulture.Name.Contains("zh-CN") ? 1
+                                   : 0;
+                        URL = region == 2 ? "https://www.aparat.com/"
+                            : region == 1 ? "http://www.baidu.com/"
+                            : "https://www.google.com/";
+
+                        goto Request;
+                    }
+
+                    else throw;
+                }
 
                 URL = request.Address.Authority;
                 request.Method = "HEAD";
@@ -205,16 +211,7 @@ namespace FriishProduce
                 if (CheckDomain(URL, timeout))
                 {
                     WebResponse response = null;
-                    try { response = request.GetResponse(); }
-                    catch (Exception ex)
-                    {
-                        if (region < 0 && region > 2)
-                        {
-                            region = 0;
-                            goto Request;
-                        }
-                        else { throw ex; }
-                    }
+                    response = request.GetResponse();
 
                     for (int i = 0; i < 2; i++)
                     {
@@ -231,17 +228,6 @@ namespace FriishProduce
 
             catch (Exception ex)
             {
-                // Go back to beginning and set compatibility mode to true in event of (Windows 7)
-                if (ex.GetType() == typeof(WebException) && (ex as WebException).Status == WebExceptionStatus.SecureChannelFailure)
-                {
-                    if (!compatibilityMode)
-                    {
-                        Logger.Log("Failed to send initial Web request. Starting over in compatibility mode.");
-                        compatibilityMode = true;
-                        goto Start;
-                    }
-                }
-
                 if (showDialog)
                     Program.MainForm?.Wait(false, false, false);
 
@@ -249,7 +235,7 @@ namespace FriishProduce
                 if (ex.GetType() == typeof(WebException) && (ex as WebException).Status == WebExceptionStatus.ProtocolError)
                     return true;
 
-                Logger.Log("Failed to send initial Web request. Process halted.");
+                Logger.Log("Failed to send request. Process halted.");
                 throw new Exception(string.Format(Program.Lang.Msg(0, 1), Message(ex, URL)));
             }
         }
@@ -310,6 +296,8 @@ namespace FriishProduce
 
         public static byte[] Get(string URL, int timeout = 180)
         {
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.SystemDefault;
+
             // Actual web connection is done here
             // ****************
             using (MemoryStream ms = new())

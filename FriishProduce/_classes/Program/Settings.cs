@@ -132,9 +132,11 @@ namespace FriishProduce
             public string language { get; set; } = "sys";
 #if DEBUG
             public bool debug_mode { get; set; } = true;
+            public bool logger { get; set; } = true;
             public bool force_update { get; set; } = false;
 #else
             public bool debug_mode { get; set; } = false;
+            public bool logger { get; set; } = false;
             public bool force_update { get; set; } = false;
 #endif
             public bool auto_update { get; set; } = false;
