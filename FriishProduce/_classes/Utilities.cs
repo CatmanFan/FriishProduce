@@ -36,8 +36,7 @@ namespace FriishProduce
                 Text += Environment.NewLine;
             Text += $"[{DateTime.Now.Year}-{DateTime.Now.Month:D2}-{DateTime.Now.Day:D2} {DateTime.Now.Hour:D2}:{DateTime.Now.Minute:D2}:{DateTime.Now.Second:D2}] {msg}";
 
-            if (Program.Config.application.logger)
-                File.WriteAllText(Paths.Log, Text);
+            // File.WriteAllText(Paths.Log, Text);
         }
     }
 
@@ -158,16 +157,42 @@ namespace FriishProduce
 
     public static class Web
     {
-        public static bool InternetTest(string url = null, bool showDialog = true)
+        private static bool _compatibilityMode;
+        private static bool CompatibilityMode
         {
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.SystemDefault;
-            string URL = url ?? "https://www.example.com/";
-            bool regionalized = false;
+            get => _compatibilityMode;
+            set
+            {
+                _compatibilityMode = value;
 
+                if (value)
+                {
+                    ServicePointManager.Expect100Continue = true;
+                    ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+                }
+
+                else
+                {
+                    ServicePointManager.SecurityProtocol = SecurityProtocolType.SystemDefault;
+                }
+            }
+        }
+
+        public static bool InternetTest(string URL = null, bool showDialog = true)
+        {
             if (showDialog)
                 Program.MainForm?.Wait(true, true, false, 0, 2);
 
+            Start:
             int timeout = 30;
+            int region = System.Globalization.CultureInfo.InstalledUICulture.Name.StartsWith("fa") ? 2
+                       : System.Globalization.CultureInfo.InstalledUICulture.Name.Contains("zh-CN") ? 1
+                       : -1;
+            if (string.IsNullOrWhiteSpace(URL)) URL =
+                region == 2 ? "https://www.aparat.com/" :
+                region == 1 ? "http://www.baidu.com/" :
+                region == 0 ? "https://www.google.com/" :
+                "https://www.example.com/";
 
             try
             {
@@ -176,26 +201,7 @@ namespace FriishProduce
                 if (!URL.EndsWith("/")) URL += "/";
 
                 Logger.Log($"Sending initial Web request to URL: {URL}");
-                HttpWebRequest request = null;
-                try { request = (HttpWebRequest)WebRequest.Create(URL); }
-                catch
-                {
-                    Logger.Log("Failed to create request. Changing URL to local search engine.");
-
-                    if (!regionalized)
-                    {
-                        int region = System.Globalization.CultureInfo.InstalledUICulture.Name.StartsWith("fa") ? 2
-                                   : System.Globalization.CultureInfo.InstalledUICulture.Name.Contains("zh-CN") ? 1
-                                   : 0;
-                        URL = region == 2 ? "https://www.aparat.com/"
-                            : region == 1 ? "http://www.baidu.com/"
-                            : "https://www.google.com/";
-
-                        goto Request;
-                    }
-
-                    else throw;
-                }
+                var request = (HttpWebRequest)WebRequest.Create(URL);
 
                 URL = request.Address.Authority;
                 request.Method = "HEAD";
@@ -211,7 +217,16 @@ namespace FriishProduce
                 if (CheckDomain(URL, timeout))
                 {
                     WebResponse response = null;
-                    response = request.GetResponse();
+                    try { response = request.GetResponse(); }
+                    catch (Exception ex)
+                    {
+                        if (region < 0 && region > 2)
+                        {
+                            region = 0;
+                            goto Request;
+                        }
+                        else { throw ex; }
+                    }
 
                     for (int i = 0; i < 2; i++)
                     {
@@ -228,14 +243,27 @@ namespace FriishProduce
 
             catch (Exception ex)
             {
+                // Go back to beginning and set compatibility mode to true in event of SSL/TLS secure channel failure (Windows 7)
+                // ****************
+                if (ex.GetType() == typeof(WebException) && (ex as WebException).Status == WebExceptionStatus.SecureChannelFailure)
+                {
+                    if (!CompatibilityMode)
+                    {
+                        Logger.Log("Failed to send initial Web request. Starting over in compatibility mode.");
+                        CompatibilityMode = true;
+                        goto Start;
+                    }
+                }
+
                 if (showDialog)
                     Program.MainForm?.Wait(false, false, false);
 
                 // Automatically return true in event of 429: Too many requests
+                // ****************
                 if (ex.GetType() == typeof(WebException) && (ex as WebException).Status == WebExceptionStatus.ProtocolError)
                     return true;
 
-                Logger.Log("Failed to send request. Process halted.");
+                Logger.Log("Failed to send initial Web request. Process halted.");
                 throw new Exception(string.Format(Program.Lang.Msg(0, 1), Message(ex, URL)));
             }
         }
@@ -296,7 +324,8 @@ namespace FriishProduce
 
         public static byte[] Get(string URL, int timeout = 180)
         {
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.SystemDefault;
+            Start:
+            Logger.Log("Downloading from URL: " + URL);
 
             // Actual web connection is done here
             // ****************
@@ -318,8 +347,18 @@ namespace FriishProduce
 
                 catch (Exception ex)
                 {
-                    if (ex.GetType() == typeof(FileNotFoundException))
+                    // Go back to beginning and set compatibility mode to true in event of SSL/TLS secure channel failure (Windows 7)
+                    // ****************
+                    if (!CompatibilityMode && ex.GetType() == typeof(WebException) && (ex as WebException).Status == WebExceptionStatus.SecureChannelFailure)
+                    {
+                        Logger.Log("Failed to download from URL. Starting over in compatibility mode.");
+                        CompatibilityMode = true;
+                        goto Start;
+                    }
+
+                    else if (ex.GetType() == typeof(FileNotFoundException))
                         throw ex;
+
                     else
                         throw new Exception(string.Format(Program.Lang.Msg(0, 1), Message(ex, URL)));
                 }

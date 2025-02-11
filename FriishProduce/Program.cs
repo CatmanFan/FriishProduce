@@ -47,8 +47,8 @@ namespace FriishProduce
             }
             catch { }
 
-            Logger.Log("Opening FriishProduce.");
             Config = new(Paths.Config);
+            Logger.Log("Opening FriishProduce.");
             Lang = new Language();
 
             System.Threading.Thread.CurrentThread.CurrentUICulture = System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(Lang.Current);
