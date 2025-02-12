@@ -33,6 +33,15 @@ namespace FriishProduce
             Program.Lang.Control(vc_neo);
             Program.Lang.Control(adobe_flash);
 
+            Theme.BtnSizes(b_ok, b_cancel);
+            Theme.BtnLayout(this, b_ok, b_cancel);
+            if (Theme.ChangeColors(this, false))
+            {
+                border.BackColor = bottomPanel2.BackColor = Theme.Colors.Form.Border;
+                TreeView.ForeColor = ForeColor = Theme.Colors.Text;
+                TreeView.BackColor = Theme.Colors.Dialog.BG;
+            }
+
             TreeView.Nodes[0].Text = Program.Lang.String(TreeView.Nodes[0].Tag.ToString(), Tag.ToString());
             TreeView.Nodes[1].Text = Program.Lang.String(TreeView.Nodes[1].Tag.ToString(), Tag.ToString());
             TreeView.Nodes[2].Text = Program.Lang.String(TreeView.Nodes[2].Tag.ToString(), Tag.ToString());

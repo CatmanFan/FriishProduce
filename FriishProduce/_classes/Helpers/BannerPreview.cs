@@ -297,7 +297,6 @@ namespace FriishProduce
         /// <returns></returns>
         public Bitmap Banner(Bitmap img, string text, int year, int players, Platform platform, libWiiSharp.Region region, int lang = -1)
         {
-            if (banner != null) banner.Dispose();
             banner = new Bitmap(width, height);
 
             if (lang < 0 || lang > 7)
@@ -477,6 +476,8 @@ namespace FriishProduce
                 g.Dispose();
             }
 
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
             return banner;
         }
 

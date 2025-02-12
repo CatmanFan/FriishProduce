@@ -111,11 +111,12 @@ namespace FriishProduce
             // do_not_show
             // 
             this.do_not_show.AutoSize = true;
+            this.do_not_show.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.do_not_show.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.do_not_show.Location = new System.Drawing.Point(14, 11);
+            this.do_not_show.Location = new System.Drawing.Point(14, 10);
             this.do_not_show.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.do_not_show.Name = "do_not_show";
-            this.do_not_show.Size = new System.Drawing.Size(96, 19);
+            this.do_not_show.Size = new System.Drawing.Size(102, 20);
             this.do_not_show.TabIndex = 25;
             this.do_not_show.Tag = "do_not_show";
             this.do_not_show.Text = "do_not_show";

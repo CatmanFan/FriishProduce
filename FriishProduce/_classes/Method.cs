@@ -343,6 +343,9 @@ namespace FriishProduce
                 Logger.Log($"SUCCESS: Exported to {Out}.");
                 _updateProgress();
                 _progress.step = _progress.max;
+
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
             }
 
             catch (Exception ex)

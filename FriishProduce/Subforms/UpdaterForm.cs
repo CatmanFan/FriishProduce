@@ -24,17 +24,19 @@ namespace FriishProduce
             this.Latest = Latest;
             InitializeComponent();
 
-            Program.Lang.Control(this);
+            Program.Lang.Control(b_yes);
+            Program.Lang.Control(b_no);
             Text = Program.Lang.String("update", "mainform");
             desc1.Text = string.Format(Program.Lang.String("update1", "mainform"), VerName, Updater.AppVersion);
             desc2.Text = Program.Lang.String("update2", "mainform");
+
+            Theme.ChangeColors(this, true);
 
             b_yes.Visible = b_no.Visible = true;
             Theme.BtnSizes(b_yes, b_no);
             Theme.BtnLayout(this, b_yes, b_no);
 
             string[] body = Latest?.Body.Split('\n');
-
             htmlPanel1.BaseStylesheet = HTML.BaseStylesheet + "\n" + "div { padding: 4px 6px !important; }";
             htmlPanel1.Text = body?.Length > 0 ? HTML.MarkdownToHTML(body) : "<div>" + Program.Lang.String("none") + "</div>";
         }

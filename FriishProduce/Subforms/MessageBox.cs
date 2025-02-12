@@ -111,10 +111,8 @@ namespace FriishProduce
             descriptionLabel.Text = Description;
             RightToLeft = Program.Lang.GetScript(MsgText) == Language.ScriptType.RTL || Program.Lang.GetScript(Description) == Language.ScriptType.RTL ? RightToLeft.Yes : RightToLeft.No;
 
-            BackColor = Theme.Colors.BG;
-            ForeColor = Theme.Colors.Text;
-            bottomPanel2.BackColor = Theme.Colors.BottomBorder;
-            bottomPanel1.BackColor = Theme.Colors.Bottom;
+            Theme.ChangeColors(this, true);
+            textLabel.ForeColor = Theme.Colors.Headline;
 
             // Set message box icon and play sound (if available)
             // ****************

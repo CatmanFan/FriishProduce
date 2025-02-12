@@ -31,9 +31,9 @@ namespace FriishProduce
         {
             this.bottomPanel2 = new System.Windows.Forms.Panel();
             this.bottomPanel1 = new System.Windows.Forms.Panel();
-            this.desc2 = new System.Windows.Forms.Label();
             this.b_no = new System.Windows.Forms.Button();
             this.b_yes = new System.Windows.Forms.Button();
+            this.desc2 = new System.Windows.Forms.Label();
             this.Progress = new System.Windows.Forms.ProgressBar();
             this.wait = new System.Windows.Forms.PictureBox();
             this.htmlPanel1 = new TheArtOfDev.HtmlRenderer.WinForms.HtmlPanel();
@@ -45,7 +45,7 @@ namespace FriishProduce
             // 
             // bottomPanel2
             // 
-            this.bottomPanel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(223)))), ((int)(((byte)(223)))));
+            this.bottomPanel2.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.bottomPanel2.Controls.Add(this.bottomPanel1);
             this.bottomPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.bottomPanel2.Location = new System.Drawing.Point(0, 281);
@@ -55,7 +55,7 @@ namespace FriishProduce
             // 
             // bottomPanel1
             // 
-            this.bottomPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.bottomPanel1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.bottomPanel1.Controls.Add(this.b_no);
             this.bottomPanel1.Controls.Add(this.b_yes);
             this.bottomPanel1.Controls.Add(this.desc2);
@@ -66,16 +66,6 @@ namespace FriishProduce
             this.bottomPanel1.Name = "bottomPanel1";
             this.bottomPanel1.Size = new System.Drawing.Size(468, 40);
             this.bottomPanel1.TabIndex = 12;
-            // 
-            // desc2
-            // 
-            this.desc2.AutoSize = true;
-            this.desc2.Location = new System.Drawing.Point(9, 13);
-            this.desc2.Name = "desc2";
-            this.desc2.Size = new System.Drawing.Size(37, 15);
-            this.desc2.TabIndex = 40;
-            this.desc2.Tag = "desc2";
-            this.desc2.Text = "desc2";
             // 
             // b_no
             // 
@@ -109,6 +99,16 @@ namespace FriishProduce
             this.b_yes.UseVisualStyleBackColor = true;
             this.b_yes.Click += new System.EventHandler(this.Yes_Click);
             // 
+            // desc2
+            // 
+            this.desc2.AutoSize = true;
+            this.desc2.Location = new System.Drawing.Point(9, 13);
+            this.desc2.Name = "desc2";
+            this.desc2.Size = new System.Drawing.Size(37, 15);
+            this.desc2.TabIndex = 40;
+            this.desc2.Tag = "desc2";
+            this.desc2.Text = "desc2";
+            // 
             // Progress
             // 
             this.Progress.Location = new System.Drawing.Point(12, 13);
@@ -133,8 +133,8 @@ namespace FriishProduce
             // htmlPanel1
             // 
             this.htmlPanel1.AutoScroll = true;
-            this.htmlPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.htmlPanel1.BaseStylesheet = "";
+            this.htmlPanel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.htmlPanel1.Location = new System.Drawing.Point(14, 52);
             this.htmlPanel1.Name = "htmlPanel1";
             this.htmlPanel1.Size = new System.Drawing.Size(440, 214);
@@ -154,7 +154,6 @@ namespace FriishProduce
             // UpdaterForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.ClientSize = new System.Drawing.Size(468, 322);
             this.Controls.Add(this.desc1);
             this.Controls.Add(this.htmlPanel1);

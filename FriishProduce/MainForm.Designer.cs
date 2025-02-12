@@ -106,7 +106,7 @@ namespace FriishProduce
             // 
             // mainPanel
             // 
-            this.mainPanel.BackColor = System.Drawing.SystemColors.Control;
+            this.mainPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.mainPanel.Controls.Add(this.Logo);
             resources.ApplyResources(this.mainPanel, "mainPanel");
             this.mainPanel.Name = "mainPanel";
@@ -135,7 +135,6 @@ namespace FriishProduce
             this.toolbarExport,
             this.toolbarPreferences});
             this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Paint += new System.Windows.Forms.PaintEventHandler(this.ToolStrip_Paint);
             // 
             // toolbarNewProject
             // 

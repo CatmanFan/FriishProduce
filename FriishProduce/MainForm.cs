@@ -94,12 +94,29 @@ namespace FriishProduce
         /// </summary>
         private void RefreshForm()
         {
+            #region -- Appearance --
+
+            if (Theme.ChangeColors(this, false))
+            {
+                if (mainPanel.BackgroundImage == null)
+                    tabControl.BackgroundImage = mainPanel.BackgroundImage = Theme.GenerateBG(ClientRectangle);
+                tabControl.BackgroundImageLayout = mainPanel.BackgroundImageLayout = ImageLayout.Stretch;
+
+                toolStrip.Renderer = new Theme.CustomToolStrip();
+                tabControl.BackHighColor = tabControl.BackLowColor = Color.Transparent;
+                tabControl.TabBackHighColor = Theme.Colors.Form.BG;
+                tabControl.TabBackLowColor = Theme.Colors.Form.BG;
+            }
+
+            #endregion
+
             new_project.MenuItems.Clear();
             new_project.MenuItems.AddRange(platformsMenuItemList());
             toolbarNewProject.DropDownItems.Clear();
             toolbarNewProject.DropDownItems.AddRange(platformsStripItemList());
 
-            #region Localization
+            #region -- Localization --
+
             Program.Lang.Control(this);
             Text = Program.Lang.ApplicationTitle;
             about.Text = Program.Lang.Format(("about_app", null), Program.Lang.ApplicationTitle);
@@ -147,6 +164,7 @@ namespace FriishProduce
 
             try { BrowseProject.Filter = SaveProject.Filter = Program.Lang.String("filter.project"); }
             catch { MessageBox.Show("Warning!\nThe language strings have not been loaded correctly.\n\nSeveral items may show up as 'undefined'.\n\nOther exceptions related to strings or filters can also occur!", MessageBox.Buttons.Ok, MessageBox.Icons.Warning, false); }
+            
             #endregion
 
             if (Program.DebugMode)
@@ -193,7 +211,6 @@ namespace FriishProduce
             {
                 ClientSize = new Size(pF.Width, pF.Height + h);
                 MinimumSize = MaximumSize = Size;
-                tabControl.TabBackLowColor = pF.BackColor;
             }
 
             mainPanel.Size = tabControl.Size = new Size(Width - w, Height - h);
@@ -225,21 +242,8 @@ namespace FriishProduce
                 return;
             }
 
-            var collection = tabControl.TabPages;
-
-            for (int i = 0; i < collection.Count; i++)
-            {
-                var p = tabControl.TabPages[i];
-                var f = p.Form as ProjectForm;
-
-                if (f.IsModified)
-                {
-                    tabControl.TabPages[tabControl.TabPages.get_IndexOf(p)].Select();
-
-                    if (!f.CheckUnsaved())
-                        e.Cancel = true;
-                }
-            }
+            CloseAll_Click(sender, new EventArgs());
+            e.Cancel = tabControl.TabPages.Count > 0;
         }
 
         /// <summary>
@@ -427,10 +431,10 @@ namespace FriishProduce
 
         private void CloseAll_Click(object sender, EventArgs e)
         {
-            List<Form> list = new();
+            List<ProjectForm> list = new();
 
             for (int i = 0; i < tabControl.TabPages.Count; i++)
-                list.Add(tabControl.TabPages[i].Form as Form);
+                list.Add(tabControl.TabPages[i].Form as ProjectForm);
 
             foreach (var tab in list)
                 tab.Close();
@@ -438,7 +442,11 @@ namespace FriishProduce
 
         private void About_Click(object sender, EventArgs e) { using var about = new About(); about.ShowDialog(); }
 
-        private void MenuItem_Exit_Click(object sender, EventArgs e) => Application.Exit();
+        private void MenuItem_Exit_Click(object sender, EventArgs e)
+        {
+            Close();
+            Application.Exit();
+        }
 
         private void ExportWAD_Click(object sender, EventArgs e)
         {
@@ -978,13 +986,6 @@ namespace FriishProduce
                 End:
                 if (w != null) w.Dispose();
             }
-        }
-
-        private void ToolStrip_Paint(object sender, PaintEventArgs e)
-        {
-            Rectangle r = new(e.ClipRectangle.X, e.ClipRectangle.Y, e.ClipRectangle.Width, e.ClipRectangle.Height + 5);
-            using var b = new System.Drawing.Drawing2D.LinearGradientBrush(new Point(0, 0), new Point(0, r.Height), Color.White, Color.Gainsboro);
-            e.Graphics.FillRectangle(b, r);
         }
 
         private void TabControl_Paint(object sender, JacksiroKe.MdiTabCtrl.TabControl.TabPaintEventArgs e)

@@ -44,12 +44,19 @@ namespace FriishProduce
     {
         public static string BaseStylesheet
         {
-            get => string.Join("\n",
-            "div { font-size: 12px !important; line-height: 0.2 !important; }",
-            "ul li, h1, h2, h3, h4, h5 { margin-top: 5px !important; margin-bottom: 5px !important; }",
-            "hr { border-top: 1px solid black; }");
-        }
+            get
+            {
+                string value = string.Join("\n",
+                "div { font-size: 12px !important; line-height: 0.2 !important; }",
+                "ul li, h1, h2, h3, h4, h5 { margin-top: 5px !important; margin-bottom: 5px !important; }",
+                "hr { border-top: 1px solid black; }");
 
+                if (Theme.Active)
+                    value += "\ndiv { color: " + System.Drawing.ColorTranslator.ToHtml(Theme.Colors.Text).ToLower() + " !important }"
+                           + "\na { color: " + System.Drawing.ColorTranslator.ToHtml(Theme.Colors.Headline).ToLower() + " !important }";
+                return value;
+            }
+        }
 
         public static TheArtOfDev.HtmlRenderer.WinForms.HtmlToolTip CreateToolTip() => new()
         {

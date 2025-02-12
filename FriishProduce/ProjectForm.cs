@@ -464,6 +464,11 @@ namespace FriishProduce
 
             bool isMint = _isMint || !Program.MainForm.save_project_as.Enabled;
 
+            if (Theme.ChangeColors(this, false))
+            {
+                BaseRegion.BackColor = Theme.Colors.Form.Bottom;
+            }
+
             #region ------------------------------------------ Localization: Controls ------------------------------------------
             Program.Lang.Control(this, "projectform");
             Font = Program.MainForm.Font;
@@ -1109,6 +1114,11 @@ namespace FriishProduce
 
                 preview.Dispose();
                 preview = null;
+
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+
+                try { Dispose(); } catch { }
             }
         }
 
@@ -1131,7 +1141,6 @@ namespace FriishProduce
 
                     case MessageBox.Result.No:
                     case MessageBox.Result.Button2:
-                        IsModified = false;
                         return true;
 
                     default:

@@ -152,6 +152,7 @@ namespace FriishProduce
             this.vc_snes_patch_nodark = new System.Windows.Forms.CheckBox();
             this.vc_snes_patch_nosuspend = new System.Windows.Forms.CheckBox();
             this.vc_snes_patch_volume = new System.Windows.Forms.CheckBox();
+            this.border = new System.Windows.Forms.Panel();
             this.vc_n64_options.SuspendLayout();
             this.bottomPanel2.SuspendLayout();
             this.bottomPanel1.SuspendLayout();
@@ -296,6 +297,7 @@ namespace FriishProduce
             // 
             // TreeView
             // 
+            this.TreeView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TreeView.FullRowSelect = true;
             this.TreeView.HotTracking = true;
             resources.ApplyResources(this.TreeView, "TreeView");
@@ -1213,6 +1215,12 @@ namespace FriishProduce
             this.vc_snes_patch_volume.Tag = "patch_volume";
             this.vc_snes_patch_volume.UseVisualStyleBackColor = true;
             // 
+            // border
+            // 
+            this.border.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            resources.ApplyResources(this.border, "border");
+            this.border.Name = "border";
+            // 
             // SettingsForm
             // 
             this.AcceptButton = this.b_ok;
@@ -1221,7 +1229,6 @@ namespace FriishProduce
             resources.ApplyResources(this, "$this");
             this.ControlBox = false;
             this.Controls.Add(this.bottomPanel2);
-            this.Controls.Add(this.TreeView);
             this.Controls.Add(this.vc_pce);
             this.Controls.Add(this.vc_neo);
             this.Controls.Add(this.default_injection_methods);
@@ -1234,6 +1241,8 @@ namespace FriishProduce
             this.Controls.Add(this.vc_snes);
             this.Controls.Add(this.vc_n64);
             this.Controls.Add(this.vc_sega);
+            this.Controls.Add(this.border);
+            this.Controls.Add(this.TreeView);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MaximizeBox = false;
@@ -1431,5 +1440,6 @@ namespace FriishProduce
         private System.Windows.Forms.CheckBox vc_snes_patch_wiimote;
         private System.Windows.Forms.CheckBox vc_snes_patch_gcremap;
         private ImageLabel vc_pce_note;
+        private System.Windows.Forms.Panel border;
     }
 }
