@@ -64,6 +64,23 @@ namespace FriishProduce
         /// <summary>
         /// Changes the theme for the app. This is only used once, when the GUI starts.
         /// </summary>
+        public static void ChangeScheme(int index = -1)
+        {
+            Active = index >= 0;
+            Scheme theme = 0;
+
+            if (index >= 0)
+            {
+                try { theme = (Scheme)index; } catch { theme = 0; }
+                Logger.Log($"Current theme is set to {theme}.");
+            }
+
+            ChangeScheme(theme);
+        }
+
+        /// <summary>
+        /// Changes the theme for the app. This is only used once, when the GUI starts.
+        /// </summary>
         public static void ChangeScheme(Scheme target = 0)
         {
             switch (target)
@@ -140,6 +157,9 @@ namespace FriishProduce
                 g.FillRectangle(b2, 0, 0, b.Width, b.Height);
                 g.FillPolygon(b1, new Point[] { new Point(10, 0), new Point(20, 10), new Point(10, 20), new Point(0, 10) });
             } */
+
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
 
             return b;
         }

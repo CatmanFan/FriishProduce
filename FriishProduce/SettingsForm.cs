@@ -11,8 +11,10 @@ namespace FriishProduce
     {
         private bool isShown = false;
 
+        private TheArtOfDev.HtmlRenderer.WinForms.HtmlToolTip tip = HTML.CreateToolTip();
         private int dirtyOption1;
-        private bool dirtyOption2;
+        private int dirtyOption2;
+        private bool dirtyOption3;
 
         public SettingsForm()
         {
@@ -33,8 +35,8 @@ namespace FriishProduce
             Program.Lang.Control(vc_neo);
             Program.Lang.Control(adobe_flash);
 
-            Theme.BtnSizes(b_ok, b_cancel);
-            Theme.BtnLayout(this, b_ok, b_cancel);
+            Theme.BtnSizes(GetBanners, b_ok, b_cancel);
+            Theme.BtnLayout(this, GetBanners, b_ok, b_cancel);
             if (Theme.ChangeColors(this, false))
             {
                 border.BackColor = bottomPanel2.BackColor = Theme.Colors.Form.Border;
@@ -59,6 +61,9 @@ namespace FriishProduce
             default_node.Nodes[6].Text = Program.Lang.Console(Platform.Flash);
             default_node.Nodes[7].Text = Program.Lang.String("forwarders", "platforms");
 
+            Program.Lang.ToolTip(tip, use_online_wad_enabled, null, use_online_wad_enabled.Text);
+            Program.Lang.ToolTip(tip, bypass_rom_size, null, bypass_rom_size.Text);
+
             #endregion
 
             // -----------------------------
@@ -72,6 +77,10 @@ namespace FriishProduce
             languages.SelectedIndex = Program.Config.application.language == "sys" ? 0 : Program.Lang.List.Keys.ToList().IndexOf(Program.Config.application.language) + 1;
 
             #region --- Localization of All Controls ---
+
+            themes.Items.Clear();
+            themes.Items.Add("Default");
+            themes.Items.Add("Dark");
 
             image_interpolation_mode.Text = Program.Lang.String("image_interpolation_mode", "projectform");
             image_interpolation_modes.Items.Clear();
@@ -201,6 +210,7 @@ namespace FriishProduce
             #region --- Set All Settings to Defaults ---
 
             // Defaults & forwarders
+            themes.SelectedIndex = 0; // Program.Config.application.theme;
             reset_all_dialogs.Checked = false;
             toggleSwitch2.Checked = Program.Config.forwarder.show_bios_screen;
             forwarder_type.SelectedIndex = Program.Config.forwarder.root_storage_device;
@@ -229,7 +239,13 @@ namespace FriishProduce
                 Program.Config.Save();
             }
 
-            GetBanners.Visible = Program.DebugMode;
+            // Debug-only options
+#if DEBUG
+            GetBanners.Visible = true;
+#else
+            GetBanners.Visible = false;
+#endif
+            // theme.Visible = Program.DebugMode;
 
             // NES
             vc_nes_palettelist.SelectedIndex = Program.Config.nes.palette;
@@ -301,7 +317,8 @@ namespace FriishProduce
             // -----------------------------
 
             dirtyOption1 = languages.SelectedIndex;
-            dirtyOption2 = reset_all_dialogs.Checked;
+            dirtyOption2 = themes.SelectedIndex;
+            dirtyOption3 = reset_all_dialogs.Checked;
         }
 
         private void Loading(object sender, EventArgs e)
@@ -344,7 +361,7 @@ namespace FriishProduce
         private void OK_Click(object sender, EventArgs e)
         {
             // -------------------------------------------
-            // Language setting
+            // Language and theme settings
             // -------------------------------------------
             var lng = languages.SelectedIndex == 0 ? "sys" : "en";
             if (lng != "sys")
@@ -353,6 +370,7 @@ namespace FriishProduce
                         lng = item.Key;
 
             Program.Config.application.language = lng;
+            // Program.Config.application.theme = theme.SelectedIndex;
             // Program.Lang = new Language(lng);
 
             // -------------------------------------------
@@ -467,7 +485,8 @@ namespace FriishProduce
 
             bool isDirty = isShown
                 && (dirtyOption1 != languages.SelectedIndex
-                 || dirtyOption2 != reset_all_dialogs.Checked);
+                 || dirtyOption2 != themes.SelectedIndex
+                 || dirtyOption3 != reset_all_dialogs.Checked);
             if (isDirty) MessageBox.Show(Program.Lang.Msg(0), MessageBox.Buttons.Ok, MessageBox.Icons.Information);
 
             if (toggledOnline)
