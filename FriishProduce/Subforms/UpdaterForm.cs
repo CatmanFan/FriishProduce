@@ -19,7 +19,7 @@ namespace FriishProduce
 {
     public partial class UpdaterForm : Form
     {
-        public UpdaterForm(Release Latest, Version VerName)
+        public UpdaterForm(Release Latest, Version VerLatest)
         {
             this.Latest = Latest;
             InitializeComponent();
@@ -27,7 +27,7 @@ namespace FriishProduce
             Program.Lang.Control(b_yes);
             Program.Lang.Control(b_no);
             Text = Program.Lang.String("update", "mainform");
-            desc1.Text = string.Format(Program.Lang.String("update1", "mainform"), VerName, Updater.AppVersion);
+            desc1.Text = string.Format(Program.Lang.String("update1", "mainform"), VerLatest, Updater.VerName);
             desc2.Text = Program.Lang.String("update2", "mainform");
 
             Theme.ChangeColors(this, true);

@@ -2,15 +2,32 @@
 using SharpCompress.Archives;
 using SharpCompress.Common;
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace FriishProduce
 {
     public static class Updater
     {
-        public static Version AppVersion { get; } = new Version("1.6");
+        public static string VerName = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
+        private static Version current;
+        public static Version Current
+        {
+            get
+            {
+                if (current == null)
+                {
+                    string verName = VerName.IndexOf('-') > 0 ? VerName.Substring(0, VerName.IndexOf('-')) : VerName;
+                    current = new Version(verName);
+                }
+
+                return current;
+            }
+        }
+
         public static GitHubClient Client;
 
         private static bool _IsLatest = false;
@@ -141,7 +158,7 @@ namespace FriishProduce
                 Release Latest = await Client.Repository.Release.GetLatest("CatmanFan", "FriishProduce");
                 Version LatestVersion = Latest.TagName.ToLower() == "latest" && !Latest.Prerelease && !Latest.Draft ? new Version("9.99") : new Version(Latest.TagName.Substring(1).Replace("-beta", ""));
 
-                IsLatest = AppVersion.CompareTo(LatestVersion) >= 0 && !Latest.Prerelease && !Program.Config.application.force_update;
+                IsLatest = Current.CompareTo(LatestVersion) >= 0 && !Latest.Prerelease && !Program.Config.application.force_update;
 
                 if (!IsLatest)
                     new UpdaterForm(Latest, LatestVersion).ShowDialog();

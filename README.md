@@ -50,7 +50,6 @@ Please check the **[wiki](https://catmanfan.github.io/FriishProduce/)** for a tu
 - [ ] Merge separate components of ProjectForm into panels / Create UserControl for content options ?
 - [ ] Restructuring, trimming features and cleaning code
 - [ ] Add default WAD bases option
-- [X] Re-add themes option from original FriishProduce(?)
 
 ---
 

@@ -33,7 +33,11 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.6")]
-[assembly: AssemblyFileVersion("1.6")]
+//
+// To increment the version number, specify a number and tag for the
+// informational version, then enter the same number for the other two
+// assembly versions.
 [assembly: AssemblyInformationalVersion("1.6-prerelease")]
+[assembly: AssemblyFileVersion("1.6")]
+[assembly: AssemblyVersion("1.6")]
 [assembly: NeutralResourcesLanguage("en")]
