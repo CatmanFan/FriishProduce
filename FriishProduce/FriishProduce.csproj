@@ -298,11 +298,11 @@
     <Compile Include="Subforms\Controllers\Controller_SNES.Designer.cs">
       <DependentUpon>Controller_SNES.cs</DependentUpon>
     </Compile>
-    <Compile Include="Subforms\HTMLForm.cs">
+    <Compile Include="Subforms\MessageBoxHTML.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Subforms\HTMLForm.Designer.cs">
-      <DependentUpon>HTMLForm.cs</DependentUpon>
+    <Compile Include="Subforms\MessageBoxHTML.Designer.cs">
+      <DependentUpon>MessageBoxHTML.cs</DependentUpon>
     </Compile>
     <Compile Include="Subforms\LanguageEditor.cs">
       <SubType>Form</SubType>
@@ -503,8 +503,8 @@
       <DependentUpon>Options_VC_SEGA.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Subforms\HTMLForm.resx">
-      <DependentUpon>HTMLForm.cs</DependentUpon>
+    <EmbeddedResource Include="Subforms\MessageBoxHTML.resx">
+      <DependentUpon>MessageBoxHTML.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Subforms\LanguageEditor.resx">
       <DependentUpon>LanguageEditor.cs</DependentUpon>

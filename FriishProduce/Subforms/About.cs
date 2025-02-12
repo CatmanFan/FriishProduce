@@ -21,7 +21,7 @@ namespace FriishProduce
             Theme.BtnLayout(this, b_close);
 
             htmlPanel1.BackColor = BackColor;
-            htmlPanel1.BaseStylesheet = HTML.BaseStylesheet + "\n" + "div { padding: 4px 6px !important; }";
+            htmlPanel1.BaseStylesheet = HTML.BaseStylesheet + "\n" + "div { padding: 6px !important; }";
             htmlPanel1.Text = HTML.MarkdownToHTML(new string[]
             {
                 "This application is **not** endorsed by Nintendo in any form.",

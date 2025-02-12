@@ -26,7 +26,7 @@ namespace FriishProduce
             label1.ForeColor = Theme.Colors.Headline;
 
             Text = Program.Lang.ApplicationTitle;
-            // if (Program.MainForm != null) label1.Font = Program.MainForm.Font;
+            // if (Program.GUI) label1.Font = Program.MainForm.Font;
             label1.Text = msg ?? Program.Lang.String("busy0");
 
             progress.Visible = showProgress;

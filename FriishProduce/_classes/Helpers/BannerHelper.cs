@@ -350,12 +350,14 @@ namespace FriishProduce
                     }
                 }
             }
+
             catch (Exception ex)
             {
-                if (Program.DebugMode)
-                    throw;
+                if (Program.DebugMode || !Program.GUI)
+                    throw ex;
                 else
                     MessageBox.Error(ex.Message);
+                return;
             }
         }
 
@@ -474,12 +476,14 @@ namespace FriishProduce
                 if (!Directory.Exists(Paths.Banners)) Directory.CreateDirectory(Paths.Banners);
                 File.WriteAllBytes(Paths.Banners + outFile.Replace(".app", "") + ".app", BannerApp.ToByteArray());
             }
+
             catch (Exception ex)
             {
-                if (Program.DebugMode)
-                    throw;
+                if (Program.DebugMode || !Program.GUI)
+                    throw ex;
                 else
                     MessageBox.Error(ex.Message);
+                return;
             }
         }
 

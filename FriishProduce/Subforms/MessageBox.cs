@@ -210,7 +210,8 @@ namespace FriishProduce
                     if (button3.Visible) Size = new Size(Width - button3.Width, Height);
                 }
 
-                Theme.BtnLayout(this, button1, button2, button3);
+                if (Theme.BtnLayout(this, button1, button2, button3))
+                    Size = SizeFromClientSize(ClientSize);
                 do_not_show.Location = new Point(ClientSize.Width - dns_spacing - do_not_show.Width, do_not_show.Location.Y);
                 do_not_show.MaximumSize = new Size(ClientSize.Width - dns_spacing - button1.Width - button1.Location.X, 0);
             }
@@ -226,7 +227,8 @@ namespace FriishProduce
                     if (button3.Visible) Size = new Size(Width - button3.Width, Height);
                 }
 
-                Theme.BtnLayout(this, button1, button2, button3);
+                if (Theme.BtnLayout(this, button1, button2, button3))
+                    Size = SizeFromClientSize(ClientSize);
                 do_not_show.MaximumSize = new Size(button1.Location.X - do_not_show.Location.X - dns_spacing, 0);
             }
 

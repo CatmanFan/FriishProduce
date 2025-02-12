@@ -194,7 +194,6 @@ namespace FriishProduce
         public MainForm(string[] files = null)
         {
             InitializeComponent();
-            Program.Handle = Handle;
             this.files = files;
         }
 
@@ -973,7 +972,7 @@ namespace FriishProduce
                 else
                 {
                     if (Program.DebugMode)
-                        throw (error);
+                        throw error;
                     else
                         MessageBox.Error(error.Message);
                 }

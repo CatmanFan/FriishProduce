@@ -48,7 +48,7 @@ namespace FriishProduce
             {
                 string value = string.Join("\n",
                 "div { font-size: 12px !important; line-height: 0.2 !important; }",
-                "ul li, h1, h2, h3, h4, h5 { margin-top: 5px !important; margin-bottom: 5px !important; }",
+                "ul li, ol li, h1, h2, h3, h4, h5 { margin-top: 5px !important; margin-bottom: 5px !important; }",
                 "hr { border-top: 1px solid black; }");
 
                 if (Theme.Active)

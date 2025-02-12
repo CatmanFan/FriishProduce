@@ -134,16 +134,16 @@
 		},
 
 		"html": {
-			"l_000":							"The Frodo emulator will now open.\n\n
-												1) Enter the following command in the emulator: <b>LOAD\"*\",8</b>\n
-												If the C64 console freezes and there is no drive LED indicator, open Frodo.fpr from <i>File > Open</i>, then press F12 to restart the emulator and try again.\n\n
-												2) Once the software is loaded, enter <b>RUN</b>. As soon as the game loads, click <i>Tools > Patch and Save Snapshot</i>, and save the file to \"snap.fss\".\n
-												You can also save another copy to use it for later.\n\n
+			"000":								"The Frodo emulator will now open.<ol type=\"1\"><li>
+												Enter the following command in the emulator: <b>LOAD\"*\",8</b>\n
+												If the C64 console freezes and there is no drive LED indicator, open Frodo.fpr from <i>File > Open</i>, then press F12 to restart the emulator and try again.</li><li>
+												Once the software is loaded, enter <b>RUN</b>.</li><li>
+												As soon as the game loads, click <i>Tools > Patch and Save Snapshot</i>, and save the file to \"snap.fss\". You can also save another copy to use it for later.</li></ol>
 												Attempts remaining: <b>{0}</b>",
 
-			"l_001":							"About SNES VC (under construction)",
+			"001":								"About SNES VC (under construction)",
 
-			"l_002":							"About N64 VC (under construction)",
+			"002":								"About N64 VC (under construction)",
 
 			"t_use_online_wad_enabled":			"This can be used to retrieve any WAD that is available from the current database without already requiring to have a WAD file.\n
 												However, because libWiiSharp's NUS client does not allow for decrypting VC WADs in any form, it is only able to use Web download functionality.\n

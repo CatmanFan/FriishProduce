@@ -31,6 +31,12 @@ namespace FriishProduce
         public static readonly string DataCCF = WorkingFolder + "data_ccf\\";
         public static readonly string MiscCCF = DataCCF + "misc_ccf\\";
 
+        // C64 paths
+        public static readonly string Frodo = Tools + "frodosrc\\";
+        public static readonly string FrodoSnapshot = Frodo + "ik.fss";
+        public static readonly string FrodoRom = Frodo + "rom.d64";
+        public static readonly string FrodoOutput = Frodo + "snap.fss";
+
         // Flash paths
         public static readonly string FlashContents = WorkingFolder + "flash\\";
         public static readonly string FlashSWF = FlashContents + "content\\menu.swf";

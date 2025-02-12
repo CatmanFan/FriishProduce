@@ -141,14 +141,19 @@ namespace FriishProduce
                     filter_by_section.DropDownItems.Clear();
                     filter_by_section.DropDownItems.Add("All", null, FilterBySection);
 
+                    var brackets_filter = new System.Text.RegularExpressions.Regex(@"{(.*?)}");
+
                     foreach (var section in source.global)
                     {
                         filter_by_section.DropDownItems.Add(prefix_global + section.Key, null, FilterBySection);
 
                         // Dictionary<string, Dictionary<string, string>>
                         foreach (var item in section.Value)
-                            if (!(item.Value.StartsWith("{") && item.Value.EndsWith("}")))
+                        {
+                            var match = brackets_filter.Match(item.Value);
+                            if (match.Value?.ToLower() != item.Value.ToLower())
                                 strings.Rows.Add(prefix_global + section.Key, item.Key, item.Value.Replace("\n", "\r\n"), "");
+                        }
                     }
 
                     foreach (var section in source.strings)
@@ -156,8 +161,11 @@ namespace FriishProduce
                         filter_by_section.DropDownItems.Add(prefix_strings + section.Key, null, FilterBySection);
 
                         foreach (var item in section.Value)
-                            if (!(item.Value.StartsWith("{") && item.Value.EndsWith("}")))
+                        {
+                            var match = brackets_filter.Match(item.Value);
+                            if (match.Value?.ToLower() != item.Value.ToLower())
                                 strings.Rows.Add(prefix_strings + section.Key, item.Key, item.Value.Replace("\n", "\r\n"), "");
+                        }
                     }
 
                     foreach (DataGridViewRow row in strings.Rows)

@@ -134,12 +134,12 @@
 		},
 
 		"html": {
-			"l_000":							"Ahora se abrirá el emulador Frodo.\n\n
-												1) Ingresa el comando \"<b>LOAD\"*\",8</b>\" en el emulador.\n
-												Si la consola C64 no responde y todavía no hay ningún indicador LED de la unidad, abre Frodo.fpr desde <i>File > Open</i>, luego pulsa F12 para reiniciar el emulador y vuelve a intentar la prueba.\n\n
-												2) Una vez cargado el juego, ingresa el comando \"<b>RUN</b>\". En cuanto empiece el juego, haz clic en <i>Tools > Patch and Save Snapshot</i> y guarda el archivo como \"snap.fss\".\n
-												También puedes guardar otra copia para usarlo más tarde.\n\n
-												<i>Intentos restantes: <b>{0}</b></i>",
+			"000":								"Ahora se abrirá el emulador Frodo.<ol type=\"1\"><li>
+												Ingresa el comando <b>LOAD\"*\",8</b> en el emulador.\n
+												Si la consola C64 no responde y todavía no hay ningún indicador LED de la unidad, abre Frodo.fpr desde <i>File > Open</i>, luego pulsa F12 para reiniciar el emulador y vuelve a intentar la prueba.</li><li>
+												Una vez cargado el juego, ingresa <b>RUN</b>.</li><li>
+												En cuanto empiece el juego, haz clic en <i>Tools > Patch and Save Snapshot</i> y guarda el archivo como \"snap.fss\". También puedes guardar otra copia para usarlo más tarde.</li></ol>
+												Intentos restantes: <b>{0}</b>",
 
 			"t_use_online_wad_enabled":			"Esto se puede utilizar para descargar cualquier canal de origen que esté disponible en la base de datos actual sin necesidad de tener un archivo WAD existente.\n
 												Sin embargo, debido a que el cliente NUS de libWiiSharp no permite descifrar archivos WADs de la Consola Virtual de ninguna forma, solo es posible utilizar la función de descarga desde la Web.\n

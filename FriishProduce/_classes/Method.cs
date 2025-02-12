@@ -72,6 +72,7 @@ namespace FriishProduce
         public Method(Platform platform)
         {
             Platform = platform;
+            Program.CleanTemp();
         }
 
         public void GetWAD(string path, string tid)

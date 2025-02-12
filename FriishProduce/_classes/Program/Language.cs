@@ -325,7 +325,7 @@ namespace FriishProduce
 
         public string Format((string name, string sectionName) parent, params object[] args) => string.Format(String(parent.name, parent.sectionName), args);
 
-        public string HTML(int number, bool isTooltip, string title = null) => html(String((isTooltip ? "t_" : "l_") + number.ToString("000"), "html"), title);
+        public string HTML(int number, bool isTooltip, string title = null) => html(String((isTooltip ? "t_" : null) + number.ToString("000"), "html"), title);
 
         public void ToolTip(HtmlToolTip tip, Control control, string name = null, string title = null, string unsure = null)
         {

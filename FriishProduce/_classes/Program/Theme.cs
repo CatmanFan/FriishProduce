@@ -379,6 +379,7 @@ namespace FriishProduce
         /// Automatically sets the sizes of each dialog button, and forces the font to Segoe UI.
         /// </summary>
         /// <param name="btns">The buttons from the dialog form. May only support a maximum of three.</param>
+        /// <returns>True if the form needs to be resized to accommodate the buttons, otherwise False.</returns>
         public static void BtnSizes(params Button[] btns)
         {
             const int extra = 8;
@@ -422,7 +423,7 @@ namespace FriishProduce
         /// </summary>
         /// <param name="frm">The dialog form, to use as a reference for the client size.</param>
         /// <param name="btns">The buttons from the dialog form. May only support a maximum of three.</param>
-        public static void BtnLayout(Form frm, params Button[] btns)
+        public static bool BtnLayout(Form frm, params Button[] btns)
         {
             const int spacing = 8;
 
@@ -486,6 +487,19 @@ namespace FriishProduce
                     button1.Location = new Point(button2.Location.X - spacing - button1.Width, button1.Location.Y);
                 }
             }
+
+            int width = spacing;
+            if (button1 != null) width += button1.Width + spacing;
+            if (button2 != null) width += button2.Width + spacing;
+            if (button3 != null) width += button3.Width + spacing;
+
+            if (frm.ClientSize.Width < width)
+            {
+                frm.ClientSize = new(width, frm.ClientSize.Height);
+                return true;
+            }
+
+            return false;
         }
     }
 }

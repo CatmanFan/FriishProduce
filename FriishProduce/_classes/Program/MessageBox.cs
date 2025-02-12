@@ -97,7 +97,7 @@ namespace FriishProduce
         public static Result Show(string mainText, string description, string[] buttons, Icons icon = 0, bool isLinkStyle = false, int dontShow = -1, System.Drawing.Icon ico = null)
         {
             Result? result = null;
-            if (Program.MainForm != null)
+            if (Program.GUI)
                 Program.MainForm.Invoke(new System.Windows.Forms.MethodInvoker(() =>
                 {
                     using (Msg d = new()

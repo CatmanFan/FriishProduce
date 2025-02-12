@@ -18,7 +18,7 @@ namespace FriishProduce
         protected Platform targetPlatform { get; set; }
         private readonly BannerOptions banner_form;
         private readonly Savedata savedata;
-        private HTMLForm htmlForm;
+        private MessageBoxHTML htmlDialog;
         private TheArtOfDev.HtmlRenderer.WinForms.HtmlToolTip tip = HTML.CreateToolTip();
 
         protected string TIDCode;
@@ -102,7 +102,7 @@ namespace FriishProduce
 
                     checkImg1.Visible = !value && use_offline_wad.Checked;
                     include_patch.Enabled = !value && showPatch;
-                    injection_method_help.Visible = !value && htmlForm != null;
+                    injection_method_help.Visible = !value && htmlDialog != null;
                 }
             }
         }
@@ -121,7 +121,7 @@ namespace FriishProduce
                 if (!File.Exists(inWadFile) && !string.IsNullOrWhiteSpace(inWadFile))
                 {
                     inWadFile = null;
-                    refreshData();
+                    Invoke(new MethodInvoker(delegate { ValueChanged(null, new EventArgs()); }));
                 }
 
                 return showSaveData ? yes && !string.IsNullOrEmpty(savedata.Lines[0]) : yes;
@@ -807,7 +807,7 @@ namespace FriishProduce
 
             // Set icon
             // ********
-            if (Program.MainForm != null)
+            if (Program.GUI)
                 Icon = Icon.FromHandle(Platforms.Icons[targetPlatform].GetHicon());
 
             // Cosmetic
@@ -941,7 +941,7 @@ namespace FriishProduce
         private void import_image_Click(object sender, EventArgs e) => BrowseImageDialog();
         private void download_image_Click(object sender, EventArgs e) => GameScan(true);
 
-        private void refreshData()
+        private void ValueChanged(object sender, EventArgs e)
         {
             // ----------------------------
             if (DesignMode) return;
@@ -1043,7 +1043,7 @@ namespace FriishProduce
         private void randomTID()
         {
             title_id.Text = TIDCode != null ? TIDCode + GenerateTitleID().Substring(0, 3) : GenerateTitleID();
-            refreshData();
+            ValueChanged(null, new EventArgs());
         }
 
         public string GetName(bool full)
@@ -1155,8 +1155,6 @@ namespace FriishProduce
 
         private void Random_Click(object sender, EventArgs e) => randomTID();
 
-        private void Value_Changed(object sender, EventArgs e) => refreshData();
-
         private void linkSaveDataTitle()
         {
             savedata.SourcedLines = new string[] { channel_name.Text, banner_form.title.Lines.Length > 1 ? banner_form.title.Lines[1] : "" };
@@ -1164,7 +1162,7 @@ namespace FriishProduce
             if (savedata.Fill.Checked)
             {
                 savedata.SyncTitles();
-                refreshData();
+                ValueChanged(null, new EventArgs());
             }
         }
 
@@ -1179,7 +1177,7 @@ namespace FriishProduce
             var currentSender = sender as TextBox;
             if (currentSender.Multiline && currentSender.Lines.Length > 2) currentSender.Lines = new string[] { currentSender.Lines[0], currentSender.Lines[1] };
 
-            refreshData();
+            ValueChanged(sender, e);
         }
 
         private void TextBox_Handle(object sender, KeyPressEventArgs e)
@@ -1226,7 +1224,7 @@ namespace FriishProduce
             if (!BaseRegion.Enabled)
                 BaseRegion.Image = null;
 
-            refreshData();
+            ValueChanged(sender, e);
         }
 
         private void import_wad_Click(object sender, EventArgs e)
@@ -1236,10 +1234,7 @@ namespace FriishProduce
             var result = browseInputWad.ShowDialog();
 
             if (result == DialogResult.OK)
-            {
                 LoadWAD(browseInputWad.FileName);
-                refreshData();
-            }
         }
 
         private void InterpolationChanged(object sender, EventArgs e)
@@ -1248,7 +1243,8 @@ namespace FriishProduce
             if (DesignMode) return;
             // ----------------------------
 
-            if (image_interpolation_mode.SelectedIndex != Program.Config.application.image_interpolation) refreshData();
+            if (image_interpolation_mode.SelectedIndex != Program.Config.application.image_interpolation)
+                ValueChanged(sender, e);
             LoadImage();
         }
 
@@ -1265,7 +1261,7 @@ namespace FriishProduce
 
             if (sender == forwarder_root_device || sender == wiiu_display)
             {
-                refreshData();
+                ValueChanged(sender, e);
             }
         }
 
@@ -1297,6 +1293,7 @@ namespace FriishProduce
                     if (channels.Entries[h].GetUpperID(i) == Reader.UpperTitleID.ToUpper())
                     {
                         inWadFile = path;
+                        ValueChanged(null, new EventArgs());
 
                         // Fix Flash Placeholder (USA) bug
                         // ****************
@@ -1314,8 +1311,15 @@ namespace FriishProduce
             SystemSounds.Beep.Play();
             MessageBox.Show(string.Format(Program.Lang.Msg(5), Reader.UpperTitleID == "\0\0\0\0" || Reader.UpperTitleID.Length != 4 ? Program.Lang.String("none") : Reader.UpperTitleID));
 
-            try { Reader.Dispose(); } catch { Reader = null; }
-            inWadFile = null;
+            try { Reader.Dispose(); }
+            catch { Reader = null; }
+
+            if (inWadFile != null)
+            {
+                inWadFile = null;
+                ValueChanged(null, new EventArgs());
+            }
+
             return false;
         }
 
@@ -1405,7 +1409,7 @@ namespace FriishProduce
         protected void LoadImage()
         {
             if (img != null) LoadImage(img.Source);
-            else refreshData();
+            else ValueChanged(null, new EventArgs());
         }
 
         protected void LoadImage(string path)
@@ -1489,7 +1493,7 @@ namespace FriishProduce
                     if (img.Source != null)
                     {
                         resetImages();
-                        refreshData();
+                        ValueChanged(null, new EventArgs());
                     }
                 }));
 
@@ -1661,9 +1665,10 @@ namespace FriishProduce
                 Program.MainForm.Wait(false, false, false);
 
                 if (Program.DebugMode)
-                    throw;
+                    throw ex;
                 else
                     MessageBox.Error(ex.Message);
+                return;
             }
         }
 
@@ -1675,8 +1680,6 @@ namespace FriishProduce
 
             string targetFile = e.Argument.ToString();
             if (targetFile == null) targetFile = Paths.WorkingFolder + "out.wad";
-
-            Program.CleanTemp();
 
             try
             {
@@ -1848,7 +1851,7 @@ namespace FriishProduce
                     else
                     {
                         if (Program.DebugMode)
-                            throw(error);
+                            throw error;
                         else
                         {
                             string msg = error.Message;
@@ -1877,7 +1880,7 @@ namespace FriishProduce
             switch (targetPlatform)
             {
                 default:
-                    if (result) { refreshData(); }
+                    if (result) { ValueChanged(sender, e); }
                     break;
 
                 case Platform.NES:
@@ -2020,7 +2023,6 @@ namespace FriishProduce
                 if ((baseRegionList.Items[i] as ToolStripMenuItem).Text == targetRegion)
                 {
                     UpdateBaseForm(i);
-                    refreshData();
                     return;
                 }
             }
@@ -2066,7 +2068,7 @@ namespace FriishProduce
             resetImages();
             linkSaveDataTitle();
             resetContentOptions();
-            refreshData();
+            ValueChanged(null, new EventArgs());
         }
 
         private int emuVer
@@ -2091,7 +2093,7 @@ namespace FriishProduce
             if (targetPlatform == Platform.Flash && contentOptionsForm != null) return;
 
             contentOptionsForm = null;
-            htmlForm = null;
+            htmlDialog = null;
 
             bool hasWiiU = false;
             bool hasExtra = false;
@@ -2113,12 +2115,12 @@ namespace FriishProduce
 
                     case Platform.SNES:
                         contentOptionsForm = new Options_VC_SNES();
-                        htmlForm = new(Program.Lang.HTML(1, false), injection_methods.SelectedItem.ToString());
+                        htmlDialog = new(Program.Lang.HTML(1, false), injection_methods.SelectedItem.ToString());
                         break;
 
                     case Platform.N64:
                         contentOptionsForm = new Options_VC_N64() { EmuType = inWadRegion == Region.Korea ? 3 : emuVer };
-                        htmlForm = new(Program.Lang.HTML(2, false), injection_methods.SelectedItem.ToString());
+                        htmlDialog = new(Program.Lang.HTML(2, false), injection_methods.SelectedItem.ToString());
                         break;
 
                     case Platform.SMS:
@@ -2212,7 +2214,7 @@ namespace FriishProduce
             showSaveData = isVirtualConsole || targetPlatform == Platform.Flash;
             download_image.Enabled = Databases.LibRetro.Exists(targetPlatform);
 
-            bool hasHelp = !string.IsNullOrWhiteSpace(htmlForm?.FormText);
+            bool hasHelp = !string.IsNullOrWhiteSpace(htmlDialog?.FormText);
             injection_method_help.Visible = hasHelp && !IsEmpty;
             injection_methods.Size = hasHelp ? injection_methods.MinimumSize : injection_methods.MaximumSize;
 
@@ -2237,7 +2239,7 @@ namespace FriishProduce
 
             if (manual_type.Enabled && manual_type.SelectedIndex < 2) LoadManual(manual_type.SelectedIndex);
 
-            refreshData();
+            ValueChanged(sender, e);
         }
 
         private void include_patch_CheckedChanged(object sender, EventArgs e)
@@ -2257,7 +2259,7 @@ namespace FriishProduce
             else
                 patch = null;
 
-            if (oldPatch != patch) refreshData();
+            if (oldPatch != patch) ValueChanged(sender, e);
         }
 
         private void InjectorsList_SelectedIndexChanged(object sender, EventArgs e)
@@ -2265,7 +2267,7 @@ namespace FriishProduce
             resetImages();
             resetContentOptions();
             LoadImage();
-            refreshData();
+            ValueChanged(sender, e);
         }
 
         /* private void banner_preview_Click(object sender, EventArgs e)
@@ -2319,7 +2321,7 @@ namespace FriishProduce
                 if (hasBanner || hasYear || hasPlayers || hasRegion)
                 {
                     resetImages(true);
-                    refreshData();
+                    ValueChanged(sender, e);
                 }
             }
         }
@@ -2329,7 +2331,7 @@ namespace FriishProduce
             sound = file;
             restore_banner_sound.Enabled = File.Exists(file) && file != null;
             if (!restore_banner_sound.Enabled) sound = null;
-            refreshData();
+            ValueChanged(null, new EventArgs());
         }
 
         private void play_banner_sound_Click(object sender, EventArgs e)
@@ -2351,9 +2353,9 @@ namespace FriishProduce
         {
             // savedata.Text = Program.Lang.String(edit_save_data.Name, Name);
 
-            if (savedata.ShowDialog() == DialogResult.OK) refreshData();
+            if (savedata.ShowDialog() == DialogResult.OK) ValueChanged(sender, e);
         }
 
-        private void injection_method_help_Click(object sender, EventArgs e) => htmlForm.ShowDialog(this);
+        private void injection_method_help_Click(object sender, EventArgs e) => htmlDialog.ShowDialog(this);
     }
 }

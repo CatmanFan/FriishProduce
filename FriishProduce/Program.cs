@@ -14,8 +14,9 @@ namespace FriishProduce
         public static Settings Config { get; set; }
         public static MainForm MainForm { get; private set; }
         public static Language Lang { get; set; }
-        public static IntPtr Handle { get; set; }
+
         public static bool DebugMode { get => Config?.application?.debug_mode ?? false; }
+        public static bool GUI { get => MainForm != null; }
 
         /// <summary>
         /// The main entry point for the application.
@@ -42,14 +43,12 @@ namespace FriishProduce
                     }
             }
 
-            try
-            {
-            }
-            catch { }
+            // **********************************************************************************
 
             Config = new(Paths.Config);
             Logger.Log("Opening FriishProduce.");
             Lang = new Language();
+            CleanTemp();
 
             System.Threading.Thread.CurrentThread.CurrentUICulture = System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(Lang.Current);
 
@@ -74,33 +73,25 @@ namespace FriishProduce
         public static void CleanTemp()
         {
             if (!Directory.Exists(Paths.WorkingFolder)) Directory.CreateDirectory(Paths.WorkingFolder);
-
-            foreach (var item in Directory.GetFiles(Paths.WorkingFolder, "*.*", SearchOption.AllDirectories))
-                if (!Path.GetFileName(item).ToLower().Contains("readme.md"))
-                    try { File.Delete(item); } catch { }
-
-            foreach (var item in Directory.GetDirectories(Paths.WorkingFolder))
-                try { Directory.Delete(item, true); } catch { }
-
-            if (File.Exists(@"C:\1541 ROM") || File.Exists(@"C:\Basic ROM") || File.Exists(@"C:\Char ROM") || File.Exists(@"C:\Kernal ROM"))
+            else
             {
-                ProcessStartInfo info = new ProcessStartInfo()
+                string[] files = Directory.GetFiles(Paths.WorkingFolder, "*.*", SearchOption.AllDirectories);
+                string[] folders = Directory.GetDirectories(Paths.WorkingFolder);
+                
+                if (files?.Length > 0 || folders?.Length > 0)
                 {
-                    FileName = Paths.Tools + "frodosrc\\delete.bat",
-                    Verb = "runas",
-                    WindowStyle = ProcessWindowStyle.Minimized,
-                    CreateNoWindow = true,
-                    UseShellExecute = true,
-                    RedirectStandardInput = false
-                };
+                    Logger.Log("Cleaning temporary files.");
 
-                using (Process p = new())
-                {
-                    p.StartInfo = info;
-                    p.Start();
-                    p.WaitForExit();
+                    foreach (var item in files)
+                        if (!Path.GetFileName(item).ToLower().Contains("readme.md"))
+                            try { File.Delete(item); } catch { }
+
+                    foreach (var item in folders)
+                        try { Directory.Delete(item, true); } catch { }
                 }
             }
+
+            Injectors.C64.Clean();
         }
     }
 

@@ -128,6 +128,7 @@ namespace FriishProduce
             // htmlPanel1
             // 
             this.htmlPanel1.AutoScroll = true;
+            this.htmlPanel1.BackColor = System.Drawing.SystemColors.Control;
             this.htmlPanel1.BaseStylesheet = "";
             this.htmlPanel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.htmlPanel1.Location = new System.Drawing.Point(17, 123);

@@ -30,14 +30,15 @@ namespace FriishProduce
             desc1.Text = string.Format(Program.Lang.String("update1", "mainform"), VerLatest, Updater.VerName);
             desc2.Text = Program.Lang.String("update2", "mainform");
 
-            Theme.ChangeColors(this, true);
-
             b_yes.Visible = b_no.Visible = true;
+            Theme.ChangeColors(this, true);
             Theme.BtnSizes(b_yes, b_no);
             Theme.BtnLayout(this, b_yes, b_no);
 
             string[] body = Latest?.Body.Split('\n');
-            htmlPanel1.BaseStylesheet = HTML.BaseStylesheet + "\n" + "div { padding: 4px 6px !important; }";
+
+            htmlPanel1.BackColor = BackColor;
+            htmlPanel1.BaseStylesheet = HTML.BaseStylesheet + "\n" + "div { padding: 6px !important; }";
             htmlPanel1.Text = body?.Length > 0 ? HTML.MarkdownToHTML(body) : "<div>" + Program.Lang.String("none") + "</div>";
         }
 
@@ -104,7 +105,7 @@ namespace FriishProduce
                 try { File.Delete(Paths.Update); } catch { }
 
                 if (Program.DebugMode)
-                    throw;
+                    throw ex;
                 else
                     MessageBox.Error(ex.GetType() == typeof(WebException) ? Web.Message(ex, url) : ex.Message);
 

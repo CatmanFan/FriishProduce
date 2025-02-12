@@ -19,16 +19,11 @@ namespace FriishProduce.Injectors
             base.Load();
         }
 
-        private static readonly string frodo = Paths.Tools + "frodosrc\\";
-        private readonly string snapshot_orig = frodo + "ik.fss";
-        private readonly string target = frodo + "rom.d64";
-        private readonly string snapshot = frodo + "snap.fss";
-
-        private void Setup(bool clean = false)
+        public static bool Setup(bool clean = false)
         {
             ProcessStartInfo info = new ProcessStartInfo()
             {
-                FileName = frodo + (clean ? "delete.bat" : "copy.bat"),
+                FileName = Paths.Frodo + (clean ? "delete.bat" : "copy.bat"),
                 Verb = "runas",
                 WindowStyle = ProcessWindowStyle.Minimized,
                 CreateNoWindow = true,
@@ -36,24 +31,28 @@ namespace FriishProduce.Injectors
                 RedirectStandardInput = false
             };
 
-            using (Process p = new())
+            using (Process p = Process.Start(info))
             {
-                p.StartInfo = info;
-                p.Start();
-                p.WaitForExit();
+                if (p != null)
+                {
+                    p.WaitForExit();
+                    return true;
+                }
+
+                else return false;
             }
         }
 
         /// <summary>
         /// Cleans Frodo directory.
         /// </summary>
-        private void Clean()
+        public static void Clean()
         {
-            try { File.Delete(target); } catch { }
-            try { File.Delete(snapshot); } catch { }
-            try { File.Delete(snapshot_orig); } catch { }
-
-            if (File.Exists(@"C:\1541 ROM"))
+            try { File.Delete(Paths.FrodoRom); } catch { }
+            try { File.Delete(Paths.FrodoSnapshot); } catch { }
+            try { File.Delete(Paths.FrodoOutput); } catch { }
+            
+            if (File.Exists(@"C:\1541 ROM") || File.Exists(@"C:\Basic ROM") || File.Exists(@"C:\Char ROM") || File.Exists(@"C:\Kernal ROM"))
                 Setup(true);
         }
 
@@ -92,17 +91,17 @@ namespace FriishProduce.Injectors
                     );
                     try { File.Delete(Paths.WorkingFolder + "ik.fss.comp"); } catch { }
 
-                    if (!File.Exists(frodo + "Frodo.exe"))
-                        throw new Exception(string.Format(Program.Lang.Msg(6, 1), frodo.Replace(Paths.Tools, null) + "Frodo.exe"));
+                    if (!File.Exists(Paths.Frodo + "Frodo.exe"))
+                        throw new Exception(string.Format(Program.Lang.Msg(6, 1), Paths.Frodo.Replace(Paths.Tools, null) + "Frodo.exe"));
 
-                    File.Copy(Paths.WorkingFolder + "ik.fss", snapshot_orig, true);
+                    File.Copy(Paths.WorkingFolder + "ik.fss", Paths.FrodoSnapshot, true);
                     try { File.Delete(Paths.WorkingFolder + "ik.fss"); } catch { }
                 }
             }
 
             // Check if original snapshot was found
             // ****************
-            if (!File.Exists(snapshot_orig))
+            if (!File.Exists(Paths.FrodoSnapshot))
                 throw new Exception(Program.Lang.Msg(13, 1));
 
             // Prompt to use existing copy
@@ -140,7 +139,7 @@ namespace FriishProduce.Injectors
 
                     if (result == System.Windows.Forms.DialogResult.OK)
                     {
-                        File.WriteAllBytes(snapshot, File.ReadAllBytes(filename));
+                        File.WriteAllBytes(Paths.FrodoOutput, File.ReadAllBytes(filename));
                         goto End;
                     }
                     else
@@ -152,35 +151,37 @@ namespace FriishProduce.Injectors
             }
 
             Frodo:
-            // Copy ROM
-            // ****************
-            File.WriteAllBytes(target, data);
-
             // Copy Frodo files
             // ****************
-            Setup();
+            if (!Setup())
+            {
+                cancel = true;
+                goto End;
+            }
+
+            // Copy ROM
+            // ****************
+            File.WriteAllBytes(Paths.FrodoRom, data);
 
             int tries = 5;
 
             Frodo_Load:
             // Edit Frodo config to autoload said ROM
             // ****************
-            string[] config = File.ReadAllLines(frodo + "Frodo.fpr");
+            string[] config = File.ReadAllLines(Paths.Frodo + "Frodo.fpr");
             for (int i = 0; i < config.Length; i++)
                 if (config[i].StartsWith("DrivePath8")) config[i] = "DrivePath8 = rom.d64";
-            File.WriteAllLines(frodo + "Frodo.fpr", config);
+            File.WriteAllLines(Paths.Frodo + "Frodo.fpr", config);
 
             // Run Frodo
             // ****************
-            HTMLForm h = new(string.Format(Program.Lang.HTML(0, false), tries));
-            h.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            h.TopMost = true;
-            h.ShowDialog();
-            h.Dispose();
+            if (Program.GUI)
+                using (MessageBoxHTML h = new(string.Format(Program.Lang.HTML(0, false), tries)))
+                    h.ShowDialog();
 
-            Utils.Run(frodo + "Frodo.exe", frodo, null, true);
+            Utils.Run(Paths.Frodo + "Frodo.exe", Paths.Frodo, null, true);
 
-            if (!File.Exists(snapshot))
+            if (!File.Exists(Paths.FrodoOutput))
             {
                 tries -= 1;
 
@@ -198,7 +199,7 @@ namespace FriishProduce.Injectors
 
             if (!cancel)
             {
-                File.Copy(snapshot, Paths.WorkingFolder + "ik.fss", true);
+                File.Copy(Paths.FrodoOutput, Paths.WorkingFolder + "ik.fss", true);
 
                 Utils.Run
                 (
