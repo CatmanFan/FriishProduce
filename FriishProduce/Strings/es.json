@@ -145,7 +145,7 @@
 												Sin embargo, debido a que el cliente NUS de libWiiSharp no permite descifrar archivos WADs de la Consola Virtual de ninguna forma, solo es posible utilizar la función de descarga desde la Web.\n
 												La legalidad de esta función es dudosa, por lo que es mejor tener esta opción deshabilitada.",
 
-			"t_bypass_rom_size":				"Elimina todos los límites de tamaño existentes de los juegos de la Consola Virtual. Puede ser bueno para hacer pruebas.",
+			"t_bypass_rom_size":				"Elimina todos los límites de tamaño existentes de los juegos de la Consola Virtual. Puede ser útil para las pruebas.",
 
 			"t_channel_name":					"Nombre utilizado para el icono que aparece en el menu Wii.\n
 												Para títulos más largos, se recomienda utilizar una versión abreviada de 20 caracteres o menos.<hr>
@@ -221,6 +221,8 @@
 			"language":							"Idioma",
 			"system_default":					"Idioma del sistema",
 			"theme":							"Tema visual",
+			"theme0":							"Claro",
+			"theme1":							"Oscuro",
 			"use_custom_database":				"Utilizar una base de datos externa para los canales de origen",
 			"reset_all_dialogs":				"Restablecer la opción \"No volver a mostrar este mensaje\"",
 			"bypass_rom_size":					"Eliminar el límite de tamaño de archivos ROM",

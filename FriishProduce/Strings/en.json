@@ -148,8 +148,8 @@
 			"t_use_online_wad_enabled":			"This can be used to retrieve any WAD that is available from the current database without already requiring to have a WAD file.\n
 												However, because libWiiSharp's NUS client does not allow for decrypting VC WADs in any form, it is only able to use Web download functionality.\n
 												The legality of this is shady so it is best to have this option disabled.",
-
-			"t_bypass_rom_size":				"Removes all Virtual Console ROM filesize limits. Could be good for testing.",
+												
+			"t_bypass_rom_size":				"Removes all Virtual Console ROM filesize limits. This can be useful for testing.",
 
 			"t_channel_name":					"The name used for the channel's icon on the Wii Menu.\nA shortened version of 20 characters or less is recommended for longer titles.<hr>
 												<b>Example:</b>\nZelda: Ocarina",
@@ -226,6 +226,8 @@
 			"language":							"Language",
 			"system_default":					"System default",
 			"theme":							"Theme",
+			"theme0":							"Light",
+			"theme1":							"Dark",
 			"reset_all_dialogs":				"Reset all dialogs",
 			"use_custom_database":				"Use custom WAD database file",
 			"bypass_rom_size":					"Bypass ROM filesize limit",

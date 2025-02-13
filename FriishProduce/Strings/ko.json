@@ -145,7 +145,7 @@
 												그러나 libWiiSharp의 NUS 클라이언트는 어떤 형태로든 VC WAD를 암호화 해제하는 것을 허용하지 않기 때문에 대신 웹의 다른 곳에 연결하여 거기에서 다운로드합니다.\n
 												이것의 합법성은 모호하므로 옵션을 비활성화하는 것이 좋습니다.",
 												
-			"t_bypass_rom_size":				"Removes all Virtual Console ROM filesize limits. Could be good for testing.",
+			"t_bypass_rom_size":				"Removes all Virtual Console ROM filesize limits. This can be useful for testing.",
 
 			"t_channel_name":					"Wii 메뉴의 채널 아이콘에 사용되는 이름입니다.\n긴 제목에는 20자 이하의 축약된 이름을 사용하는 것이 좋습니다.<hr>
 												<b>예</b>\n젤다의 전설 신들의 트라이포스",
@@ -222,6 +222,8 @@
 			"language":							"언어",
 			"system_default":					"시스템 기본값",
 			"theme":							"Theme",
+			"theme0":							"Light",
+			"theme1":							"Dark",
 			"reset_all_dialogs":				"모든 대화상자 재설정",
 			"use_custom_database":				"커스텀 WAD 데이터베이스 파일 사용",
 			"bypass_rom_size":					"Bypass ROM filesize limit",
