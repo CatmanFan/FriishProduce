@@ -524,6 +524,66 @@ namespace FriishProduce
             }
         }
 
+        public bool CleanupRecent()
+        {
+            const int max = 10;
+            bool modified = false;
+
+            // Clean missing projects if there are any
+            // ********
+            for (int x = 0; x < max; x++)
+            {
+                var prop = Program.Config.paths.GetType().GetProperty($"recent_{x:D2}");
+                var path = prop.GetValue(Program.Config.paths, null)?.ToString();
+
+                if (path != null && !File.Exists(path))
+                {
+                    prop.SetValue(Program.Config.paths, null);
+                    modified = true;
+                }
+            }
+
+            // Clean duplicate projects if there are any
+            // ********
+            for (int x = 0; x < max; x++)
+            {
+                var prop1 = Program.Config.paths.GetType().GetProperty($"recent_{x:D2}");
+                var path1 = prop1.GetValue(Program.Config.paths, null)?.ToString();
+
+                for (int y = x; y < max; y++)
+                {
+                    var prop2 = Program.Config.paths.GetType().GetProperty($"recent_{y:D2}");
+                    var path2 = prop2.GetValue(Program.Config.paths, null)?.ToString();
+
+                    if (path1 == path2 && path2 != null && x != y)
+                    {
+                        prop2.SetValue(Program.Config.paths, null);
+                        modified = true;
+                    }
+                }
+            }
+
+            // Resort slots in case of empty ones
+            // ********
+            for (int i = 0; i < max - 1; i++)
+            {
+                var prop1 = Program.Config.paths.GetType().GetProperty($"recent_{i:D2}");
+
+                if (prop1.GetValue(Program.Config.paths, null)?.ToString() == null)
+                {
+                    var prop2 = Program.Config.paths.GetType().GetProperty($"recent_{i + 1:D2}");
+
+                    prop1.SetValue(Program.Config.paths, prop2.GetValue(Program.Config.paths, null));
+                    prop2.SetValue(Program.Config.paths, null);
+
+                    modified = true;
+                }
+            }
+
+            if (modified) Program.Config.Save();
+            return modified;
+        }
+
         public void RefreshRecent()
         {
             open_recent.MenuItems.Clear();
@@ -594,22 +654,32 @@ namespace FriishProduce
         {
             foreach (var file in files)
             {
-                var project = new Project();
-
-                try
+                if (!File.Exists(file))
                 {
-                    using Stream stream = File.Open(file, FileMode.Open);
-                    var binaryFormatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-                    project = (Project)binaryFormatter.Deserialize(stream);
-
-                    if (project.ProjectPath != file) project.ProjectPath = file;
-
-                    addTab(project.Platform, project);
+                    MessageBox.Show(string.Format(Program.Lang.Msg(11, 1), Path.GetFileName(file)));
+                    if (CleanupRecent())
+                        RefreshRecent();
                 }
 
-                catch
+                else
                 {
-                    MessageBox.Show(string.Format(Program.Lang.Msg(17, 1), Path.GetFileName(file)), MessageBox.Buttons.Ok, MessageBox.Icons.Error);
+                    var project = new Project();
+
+                    try
+                    {
+                        using Stream stream = File.Open(file, FileMode.Open);
+                        var binaryFormatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                        project = (Project)binaryFormatter.Deserialize(stream);
+
+                        if (project.ProjectPath != file) project.ProjectPath = file;
+
+                        addTab(project.Platform, project);
+                    }
+
+                    catch
+                    {
+                        MessageBox.Show(string.Format(Program.Lang.Msg(17, 1), Path.GetFileName(file)), MessageBox.Buttons.Ok, MessageBox.Icons.Error);
+                    }
                 }
             }
         }
