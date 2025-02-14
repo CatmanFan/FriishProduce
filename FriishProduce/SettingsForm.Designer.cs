@@ -1058,20 +1058,24 @@ namespace FriishProduce
             this.flash_vff_cache_size.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.flash_vff_cache_size.FormattingEnabled = true;
             this.flash_vff_cache_size.Items.AddRange(new object[] {
-            resources.GetString("flash_vff_cache_size.Items"),
-            resources.GetString("flash_vff_cache_size.Items1"),
-            resources.GetString("flash_vff_cache_size.Items2"),
-            resources.GetString("flash_vff_cache_size.Items3"),
-            resources.GetString("flash_vff_cache_size.Items4"),
-            resources.GetString("flash_vff_cache_size.Items5"),
-            resources.GetString("flash_vff_cache_size.Items6"),
-            resources.GetString("flash_vff_cache_size.Items7"),
-            resources.GetString("flash_vff_cache_size.Items8"),
-            resources.GetString("flash_vff_cache_size.Items9"),
-            resources.GetString("flash_vff_cache_size.Items10"),
-            resources.GetString("flash_vff_cache_size.Items11"),
-            resources.GetString("flash_vff_cache_size.Items12"),
-            resources.GetString("flash_vff_cache_size.Items13")});
+            "32",
+            "48",
+            "64",
+            "72",
+            "96",
+            "128",
+            "160",
+            "192",
+            "224",
+            "256",
+            "384",
+            "512",
+            "768",
+            "1024",
+            "1536",
+            "2048",
+            "3072",
+            "4096"});
             resources.ApplyResources(this.flash_vff_cache_size, "flash_vff_cache_size");
             this.flash_vff_cache_size.Name = "flash_vff_cache_size";
             // 
@@ -1086,20 +1090,24 @@ namespace FriishProduce
             this.flash_persistent_storage_per_movie.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.flash_persistent_storage_per_movie.FormattingEnabled = true;
             this.flash_persistent_storage_per_movie.Items.AddRange(new object[] {
-            resources.GetString("flash_persistent_storage_per_movie.Items"),
-            resources.GetString("flash_persistent_storage_per_movie.Items1"),
-            resources.GetString("flash_persistent_storage_per_movie.Items2"),
-            resources.GetString("flash_persistent_storage_per_movie.Items3"),
-            resources.GetString("flash_persistent_storage_per_movie.Items4"),
-            resources.GetString("flash_persistent_storage_per_movie.Items5"),
-            resources.GetString("flash_persistent_storage_per_movie.Items6"),
-            resources.GetString("flash_persistent_storage_per_movie.Items7"),
-            resources.GetString("flash_persistent_storage_per_movie.Items8"),
-            resources.GetString("flash_persistent_storage_per_movie.Items9"),
-            resources.GetString("flash_persistent_storage_per_movie.Items10"),
-            resources.GetString("flash_persistent_storage_per_movie.Items11"),
-            resources.GetString("flash_persistent_storage_per_movie.Items12"),
-            resources.GetString("flash_persistent_storage_per_movie.Items13")});
+            "32",
+            "48",
+            "64",
+            "72",
+            "96",
+            "128",
+            "160",
+            "192",
+            "224",
+            "256",
+            "384",
+            "512",
+            "768",
+            "1024",
+            "1536",
+            "2048",
+            "3072",
+            "4096"});
             resources.ApplyResources(this.flash_persistent_storage_per_movie, "flash_persistent_storage_per_movie");
             this.flash_persistent_storage_per_movie.Name = "flash_persistent_storage_per_movie";
             // 
@@ -1114,20 +1122,24 @@ namespace FriishProduce
             this.flash_persistent_storage_total.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.flash_persistent_storage_total.FormattingEnabled = true;
             this.flash_persistent_storage_total.Items.AddRange(new object[] {
-            resources.GetString("flash_persistent_storage_total.Items"),
-            resources.GetString("flash_persistent_storage_total.Items1"),
-            resources.GetString("flash_persistent_storage_total.Items2"),
-            resources.GetString("flash_persistent_storage_total.Items3"),
-            resources.GetString("flash_persistent_storage_total.Items4"),
-            resources.GetString("flash_persistent_storage_total.Items5"),
-            resources.GetString("flash_persistent_storage_total.Items6"),
-            resources.GetString("flash_persistent_storage_total.Items7"),
-            resources.GetString("flash_persistent_storage_total.Items8"),
-            resources.GetString("flash_persistent_storage_total.Items9"),
-            resources.GetString("flash_persistent_storage_total.Items10"),
-            resources.GetString("flash_persistent_storage_total.Items11"),
-            resources.GetString("flash_persistent_storage_total.Items12"),
-            resources.GetString("flash_persistent_storage_total.Items13")});
+            "32",
+            "48",
+            "64",
+            "72",
+            "96",
+            "128",
+            "160",
+            "192",
+            "224",
+            "256",
+            "384",
+            "512",
+            "768",
+            "1024",
+            "1536",
+            "2048",
+            "3072",
+            "4096"});
             resources.ApplyResources(this.flash_persistent_storage_total, "flash_persistent_storage_total");
             this.flash_persistent_storage_total.Name = "flash_persistent_storage_total";
             // 
@@ -1239,7 +1251,6 @@ namespace FriishProduce
             resources.ApplyResources(this, "$this");
             this.ControlBox = false;
             this.Controls.Add(this.bottomPanel2);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.adobe_flash);
             this.Controls.Add(this.forwarder);
             this.Controls.Add(this.vc_nes);
@@ -1253,6 +1264,7 @@ namespace FriishProduce
             this.Controls.Add(this.default_injection_methods);
             this.Controls.Add(this.bios_files);
             this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MaximizeBox = false;

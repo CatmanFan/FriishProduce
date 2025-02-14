@@ -584,7 +584,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;TreeView.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>8</value>
   </data>
   <data name="themes.Items" xml:space="preserve">
     <value>Default</value>
@@ -803,7 +803,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>14</value>
   </data>
   <data name="vc_n64_romc_type.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 150</value>
@@ -848,7 +848,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_n64.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>5</value>
   </data>
   <data name="forwarder_type.Items" xml:space="preserve">
     <value>SD</value>
@@ -995,7 +995,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;forwarder.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="vc_nes_palette_banner_usage.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1091,7 +1091,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_nes.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>3</value>
   </data>
   <data name="vc_neo_bios_list.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 18</value>
@@ -1157,7 +1157,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_neo.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>10</value>
   </data>
   <data name="vc_sega_countries.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 18</value>
@@ -1418,7 +1418,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_sega.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>6</value>
   </data>
   <data name="vc_pce_note.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1823,7 +1823,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_pce.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>9</value>
   </data>
   <data name="auto_prefill.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2183,7 +2183,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>13</value>
   </data>
   <data name="injection_methods_sega.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 18</value>
@@ -2384,7 +2384,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;default_injection_methods.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>11</value>
   </data>
   <data name="browse_bios_neo.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2549,7 +2549,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;bios_files.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>12</value>
   </data>
   <data name="flash_fullscreen.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2872,48 +2872,6 @@
   <data name="&gt;&gt;flash_vff_cache_size_l.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="flash_vff_cache_size.Items" xml:space="preserve">
-    <value>32</value>
-  </data>
-  <data name="flash_vff_cache_size.Items1" xml:space="preserve">
-    <value>48</value>
-  </data>
-  <data name="flash_vff_cache_size.Items2" xml:space="preserve">
-    <value>64</value>
-  </data>
-  <data name="flash_vff_cache_size.Items3" xml:space="preserve">
-    <value>72</value>
-  </data>
-  <data name="flash_vff_cache_size.Items4" xml:space="preserve">
-    <value>96</value>
-  </data>
-  <data name="flash_vff_cache_size.Items5" xml:space="preserve">
-    <value>128</value>
-  </data>
-  <data name="flash_vff_cache_size.Items6" xml:space="preserve">
-    <value>160</value>
-  </data>
-  <data name="flash_vff_cache_size.Items7" xml:space="preserve">
-    <value>192</value>
-  </data>
-  <data name="flash_vff_cache_size.Items8" xml:space="preserve">
-    <value>224</value>
-  </data>
-  <data name="flash_vff_cache_size.Items9" xml:space="preserve">
-    <value>256</value>
-  </data>
-  <data name="flash_vff_cache_size.Items10" xml:space="preserve">
-    <value>512</value>
-  </data>
-  <data name="flash_vff_cache_size.Items11" xml:space="preserve">
-    <value>1024</value>
-  </data>
-  <data name="flash_vff_cache_size.Items12" xml:space="preserve">
-    <value>2048</value>
-  </data>
-  <data name="flash_vff_cache_size.Items13" xml:space="preserve">
-    <value>4096</value>
-  </data>
   <data name="flash_vff_cache_size.Location" type="System.Drawing.Point, System.Drawing">
     <value>14, 62</value>
   </data>
@@ -2965,48 +2923,6 @@
   <data name="&gt;&gt;flash_persistent_storage_per_movie_l.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="flash_persistent_storage_per_movie.Items" xml:space="preserve">
-    <value>32</value>
-  </data>
-  <data name="flash_persistent_storage_per_movie.Items1" xml:space="preserve">
-    <value>48</value>
-  </data>
-  <data name="flash_persistent_storage_per_movie.Items2" xml:space="preserve">
-    <value>64</value>
-  </data>
-  <data name="flash_persistent_storage_per_movie.Items3" xml:space="preserve">
-    <value>72</value>
-  </data>
-  <data name="flash_persistent_storage_per_movie.Items4" xml:space="preserve">
-    <value>96</value>
-  </data>
-  <data name="flash_persistent_storage_per_movie.Items5" xml:space="preserve">
-    <value>128</value>
-  </data>
-  <data name="flash_persistent_storage_per_movie.Items6" xml:space="preserve">
-    <value>160</value>
-  </data>
-  <data name="flash_persistent_storage_per_movie.Items7" xml:space="preserve">
-    <value>192</value>
-  </data>
-  <data name="flash_persistent_storage_per_movie.Items8" xml:space="preserve">
-    <value>224</value>
-  </data>
-  <data name="flash_persistent_storage_per_movie.Items9" xml:space="preserve">
-    <value>256</value>
-  </data>
-  <data name="flash_persistent_storage_per_movie.Items10" xml:space="preserve">
-    <value>512</value>
-  </data>
-  <data name="flash_persistent_storage_per_movie.Items11" xml:space="preserve">
-    <value>1024</value>
-  </data>
-  <data name="flash_persistent_storage_per_movie.Items12" xml:space="preserve">
-    <value>2048</value>
-  </data>
-  <data name="flash_persistent_storage_per_movie.Items13" xml:space="preserve">
-    <value>4096</value>
-  </data>
   <data name="flash_persistent_storage_per_movie.Location" type="System.Drawing.Point, System.Drawing">
     <value>363, 62</value>
   </data>
@@ -3057,48 +2973,6 @@
   </data>
   <data name="&gt;&gt;flash_persistent_storage_total_l.ZOrder" xml:space="preserve">
     <value>4</value>
-  </data>
-  <data name="flash_persistent_storage_total.Items" xml:space="preserve">
-    <value>32</value>
-  </data>
-  <data name="flash_persistent_storage_total.Items1" xml:space="preserve">
-    <value>48</value>
-  </data>
-  <data name="flash_persistent_storage_total.Items2" xml:space="preserve">
-    <value>64</value>
-  </data>
-  <data name="flash_persistent_storage_total.Items3" xml:space="preserve">
-    <value>72</value>
-  </data>
-  <data name="flash_persistent_storage_total.Items4" xml:space="preserve">
-    <value>96</value>
-  </data>
-  <data name="flash_persistent_storage_total.Items5" xml:space="preserve">
-    <value>128</value>
-  </data>
-  <data name="flash_persistent_storage_total.Items6" xml:space="preserve">
-    <value>160</value>
-  </data>
-  <data name="flash_persistent_storage_total.Items7" xml:space="preserve">
-    <value>192</value>
-  </data>
-  <data name="flash_persistent_storage_total.Items8" xml:space="preserve">
-    <value>224</value>
-  </data>
-  <data name="flash_persistent_storage_total.Items9" xml:space="preserve">
-    <value>256</value>
-  </data>
-  <data name="flash_persistent_storage_total.Items10" xml:space="preserve">
-    <value>512</value>
-  </data>
-  <data name="flash_persistent_storage_total.Items11" xml:space="preserve">
-    <value>1024</value>
-  </data>
-  <data name="flash_persistent_storage_total.Items12" xml:space="preserve">
-    <value>2048</value>
-  </data>
-  <data name="flash_persistent_storage_total.Items13" xml:space="preserve">
-    <value>4096</value>
   </data>
   <data name="flash_persistent_storage_total.Location" type="System.Drawing.Point, System.Drawing">
     <value>191, 62</value>
@@ -3194,7 +3068,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;adobe_flash.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="vc_snes_patch_gcremap.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3545,7 +3419,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_snes.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>4</value>
   </data>
   <data name="border.Location" type="System.Drawing.Point, System.Drawing">
     <value>193, 0</value>
@@ -3566,7 +3440,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;border.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>7</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

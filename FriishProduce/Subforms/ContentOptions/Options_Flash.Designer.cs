@@ -131,9 +131,13 @@ namespace FriishProduce
             "192",
             "224",
             "256",
+            "384",
             "512",
+            "768",
             "1024",
+            "1536",
             "2048",
+            "3072",
             "4096"});
             this.vff_cache_size.Location = new System.Drawing.Point(15, 60);
             this.vff_cache_size.Name = "vff_cache_size";
@@ -165,9 +169,13 @@ namespace FriishProduce
             "192",
             "224",
             "256",
+            "384",
             "512",
+            "768",
             "1024",
+            "1536",
             "2048",
+            "3072",
             "4096"});
             this.persistent_storage_per_movie.Location = new System.Drawing.Point(193, 113);
             this.persistent_storage_per_movie.Name = "persistent_storage_per_movie";
@@ -199,9 +207,13 @@ namespace FriishProduce
             "192",
             "224",
             "256",
+            "384",
             "512",
+            "768",
             "1024",
+            "1536",
             "2048",
+            "3072",
             "4096"});
             this.persistent_storage_total.Location = new System.Drawing.Point(15, 113);
             this.persistent_storage_total.Name = "persistent_storage_total";
@@ -434,6 +446,7 @@ namespace FriishProduce
             this.Controls.SetChildIndex(this.swf_metadata, 0);
             this.Controls.SetChildIndex(this.controller_box, 0);
             this.bottomPanel1.ResumeLayout(false);
+            this.bottomPanel1.PerformLayout();
             this.controller_box.ResumeLayout(false);
             this.controller_box.PerformLayout();
             this.groupBox1.ResumeLayout(false);
