@@ -497,33 +497,51 @@ namespace FriishProduce
 
             foreach (var encoding in encodings)
             {
+                const string error = "Invalid encoding format!";
+
                 try
                 {
                     var txt = encoding.GetString(file.ToArray());
-                    var lines = txt.Replace('\r', '\n').Split('\n');
-                    var new_lines = new List<string>();
+                    if (!System.Text.RegularExpressions.Regex.IsMatch(txt, "[^a-z0-9]+"))
+                        throw new Exception(error);
 
-                    for (int i = 0; i < lines.Length; i++)
-                        if (!string.IsNullOrWhiteSpace(lines[i]))
-                            new_lines.Add(lines[i]);
+                    var orig = txt.Replace("\r", null).Split('\n');
+                    var lines = new List<string>();
+                    foreach (var line in orig.Where(x => !string.IsNullOrWhiteSpace(x)))
+                        lines.Add(line);
 
-                    for (int i = new_lines.Count - 1; i > 0; i--)
+                    for (int i = lines.Count - 2; i > 1; i--)
                     {
-                        var line = new_lines[i].TrimStart(' ', '\t').TrimEnd('\r', '\n');
+                        var line1 = lines[i - 1];
+                        var line2 = lines[i].TrimStart(' ', '\t');
 
-                        if (!(line.StartsWith("\"") || line.StartsWith("{") || line.StartsWith("}")) && !string.IsNullOrWhiteSpace(line))
+                        if (!string.IsNullOrWhiteSpace(line2))
                         {
-                            new_lines[i - 1] += line;
-                            new_lines.Remove(new_lines[i]);
+                            bool multiline = (line2 is not "}," and not "}" and not "{")
+                                          && (i != 0 && i != lines.Count - 1)
+                                          && line2[0] != '\"';
+
+                            if (multiline)
+                            {
+                                lines.RemoveAt(i);
+
+                                line1 += line2;
+                                lines[i - 1] = line1;
+                            }
                         }
                     }
 
-                    txt = string.Join("\n", new_lines.ToArray());
+                    txt = string.Join("\n", lines.ToArray());
 
                     using var fileReader = JsonDocument.Parse(txt, new JsonDocumentOptions() { AllowTrailingCommas = true, CommentHandling = JsonCommentHandling.Skip });
                     return txt;
                 }
-                catch { }
+
+                catch (Exception ex)
+                {
+                    if (ex.Message != error)
+                        throw ex;
+                }
             }
 
             return null;

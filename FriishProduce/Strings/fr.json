@@ -141,7 +141,7 @@
 												Au moment de démarrage du jeu, cliquez sur <i>Tools > Patch and Save Snapshot</i>, et enregister l'instantané à «snap.fss». Vous pouvez également enregistrer une autre copie pour l'utiliser ultérieurement.</li></ol>
 												Tentatives restantes : <b>{0}</b>",
 
-			"t_use_online_wad_enabled":			"Cette option peut être utilisée pour télécharger n'importe quelle chaîne disponible dans la base des données sans avoir le fichier WAD correspondant déjà sur le disque.\n
+			"t_use_online_wad_enabled":			"Cette option peut être utilisée pour télécharger n'importe quelle chaîne disponible dans la base des données sans avoir le fichier WAD correspondant déjà sur le disque.\n\n
 												Il est cependant recommandé de désactiver cette option car sa légalité est discutable et la fonctionnalité NusClient qui existe déjà dans libWiiSharp ne permet pas de décrypter facilement le contenu des chaînes de la Console virtuelle.",
 												
 			"t_bypass_rom_size":				"Élimine toutes les limites de taille de fichier existantes pour les jeux de la Console virtuelle. Cette option peut être utilisée à des fins de tests.",
@@ -153,13 +153,13 @@
 			"t_banner_title":					"Le nom complet du logiciel tel qu'il apparaît sur l'aperçu du banner.<hr>
 												<b>Exemple :</b>\nThe Legend of Zelda:\nOcarina of Time",
 
-			"t_banner_region":					"La variante régionale du banner et de l'icône.\n
+			"t_banner_region":					"La variante régionale du banner et de l'icône.\n\n
 												Cette option peut être utile dans le cas où le nom de la console serait différent pour votre région ou si vous préférez utiliser un banner japonais ou coréen, par exemple.\n
 												La région du banner correspondra à celle de la chaîne lorsqu'elle est réglée sur automatique.",
 
 			"t_injection_method_options":		"Modifier les paramètres avancés de l'émulateur.",
 
-			"t_multifile_software":				"Lorsque cette option est activée, l'application traitera tous les fichiers du même dossier que celui actuellement sélectionné comme faisant partie du logiciel à injecter.\n
+			"t_multifile_software":				"Lorsque cette option est activée, l'application traitera tous les fichiers du même dossier que celui actuellement sélectionné comme faisant partie du logiciel à injecter.\n\n
 												Pour éviter d'éventuels problèmes, veuillez vous assurer que vos fichiers sont déjà dans un répertoire séparé.",
 
 			"t_unsure":							"Dans le doute, {0}.",

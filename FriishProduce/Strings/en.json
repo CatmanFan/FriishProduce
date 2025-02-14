@@ -145,9 +145,8 @@
 
 			"002":								"About N64 VC (under construction)",
 
-			"t_use_online_wad_enabled":			"This can be used to retrieve any WAD that is available from the current database without already requiring to have a WAD file.\n
-												However, because libWiiSharp's NUS client does not allow for decrypting VC WADs in any form, it is only able to use Web download functionality.\n
-												The legality of this is shady so it is best to have this option disabled.",
+			"t_use_online_wad_enabled":			"This can be used to retrieve any WAD that is available from the current database without already requiring to have a WAD file. It only uses Web download functionality, as libWiiSharp's NUS client does not allow decrypting VC WADs.\n\n
+												The legality of this is shady so it is better to have this option disabled.",
 												
 			"t_bypass_rom_size":				"Removes all Virtual Console ROM filesize limits. This can be useful for testing.",
 
@@ -157,7 +156,7 @@
 			"t_banner_title":					"The full name of the software, as displayed on the banner preview.<hr>
 												<b>Example:</b>\nThe Legend of Zelda:\nOcarina of Time",
 
-			"t_banner_region":					"The region to use for the channel banner and icon.\n
+			"t_banner_region":					"The region to use for the channel banner and icon.\n\n
 												This can be useful if the console's name is different for your region or if you want to use a Japanese/Korean banner, for instance.\n
 												If the banner region is set to automatic, it will correspond with the WAD's region.",
 
@@ -165,8 +164,17 @@
 
 			"t_injection_method_options":		"Change advanced emulator settings.",
 
-			"t_multifile_software":				"When this option is enabled, the program will treat all files within the same folder as the currently selected one as forming part of the software to be injected.\n
+			"t_multifile_software":				"When this option is enabled, the program will treat all files within the same folder as the currently selected one as forming part of the software to be injected.\n\n
 												Please make sure that your software files are in a separate folder.",
+
+			"t_vff_cache_size":					"Size of the SWF cache storage.\n\n
+												If you are injecting into YouTube or BBC iPlayer and the channel freezes when trying to create save data, try setting it to 96 kB, which is the default value.",
+
+			"t_persistent_storage_total":		"Total storage size needed for saving game data.\n\n
+												If you are injecting into YouTube or BBC iPlayer and the channel freezes when trying to create save data, try setting it to 96 kB, which is the default value.",
+
+			"t_persistent_storage_per_movie":	"Storage size needed per SWF for saving game data.\n\n
+												If you are injecting into YouTube or BBC iPlayer and the channel freezes when trying to create save data, try setting it to 64 kB, which is the default value.",
 
 			"t_unsure":							"If unsure, {0}.",
 			"t_unsure_s":						"select {0}",

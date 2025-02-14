@@ -22,6 +22,9 @@ namespace FriishProduce
             {
                 Program.Lang.Control(this);
                 tip = HTML.CreateToolTip();
+                Program.Lang.ToolTip(tip, vff_cache_size, null, vff_cache_size_l.Text, Program.Lang.Format(("t_unsure_s", "html"), Program.Config.flash.vff_cache_size));
+                Program.Lang.ToolTip(tip, persistent_storage_total, null, persistent_storage_total_l.Text, Program.Lang.Format(("t_unsure_s", "html"), Program.Config.flash.persistent_storage_total));
+                Program.Lang.ToolTip(tip, persistent_storage_per_movie, null, persistent_storage_per_movie_l.Text, Program.Lang.Format(("t_unsure_s", "html"), Program.Config.flash.persistent_storage_per_movie));
 
                 groupBox1.Text = Program.Lang.String("save_data", "projectform");
                 save_data_enable.Text = Program.Lang.String("save_data_enable", "projectform");

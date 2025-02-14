@@ -122,6 +122,12 @@ namespace FriishProduce
             bool isEnglish = source == null;
             string txt = Language.Convert(file);
 
+            if (txt == null)
+            {
+                System.Media.SystemSounds.Beep.Play();
+                return;
+            }
+
             using (var fileReader = JsonDocument.Parse(txt, new JsonDocumentOptions() { AllowTrailingCommas = true, CommentHandling = JsonCommentHandling.Skip }))
             {
                 target = JsonSerializer.Deserialize<Language.LanguageData>(fileReader, new JsonSerializerOptions() { AllowTrailingCommas = true, ReadCommentHandling = JsonCommentHandling.Skip });

@@ -63,6 +63,9 @@ namespace FriishProduce
 
             Program.Lang.ToolTip(tip, use_online_wad_enabled, null, use_online_wad_enabled.Text);
             Program.Lang.ToolTip(tip, bypass_rom_size, null, bypass_rom_size.Text);
+            Program.Lang.ToolTip(tip, flash_vff_cache_size, "vff_cache_size", flash_vff_cache_size_l.Text);
+            Program.Lang.ToolTip(tip, flash_persistent_storage_total, "persistent_storage_total", flash_persistent_storage_total_l.Text);
+            Program.Lang.ToolTip(tip, flash_persistent_storage_per_movie, "persistent_storage_per_movie", flash_persistent_storage_per_movie_l.Text);
 
             #endregion
 
