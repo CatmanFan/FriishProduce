@@ -102,6 +102,7 @@
 			"011":								"Vérifier la base de données des chaînes ?\nCela peut prendre quelques minutes.",
 			"012":								"Aucune chaîne invalide n'a été trouvée dans la base de données.",
 			"013":								"Chaînes invalides trouvées dans la base de données :\n{0}\n\nVeuillez ouvrir et modifier le fichier «database.json» afin de les supprimer.",
+			"014":								"Les paramètres de la méthode d'injection actuelle ont été réinitialisés.\nVeuillez essayer de les configurer à nouveau.",
 			
 			"b_000":							"Veuillez patienter ...",
 			"b_001":							"Exportation en cours ...",
@@ -400,7 +401,6 @@
 			"vff_cache_size":					"Taille du cache VFF (en {kilobytes})",
 			"persistent_storage_total":			"Stockage total (en {kilobytes})",
 			"persistent_storage_per_movie":		"Storage par SWF (en {kilobytes})",
-			"update_frame_rate":				"FPS du SWF",
 			"controls":							"Contrôles",
 			"mouse":							"Souris",
 			"qwerty_keyboard":					"Clavier Qwerty",
@@ -415,7 +415,9 @@
 			"strap_reminder2":					"{enabled} (sans section consacrée aux extensions externes)",
 			"swf_metadata":						"Métadonnées du contenu SWF",
 			"content_domain":					"Domaine URL du contenu",
-			"background_color":					"Couleur d'arrière-plan"
+			"background_color":					"Couleur d'arrière-plan",
+			"anti_aliasing":					"Anti-aliasing",
+			"ortho_rect":						"Zoom"
 		},
 
 		"forwarder": {

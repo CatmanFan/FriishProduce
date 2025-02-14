@@ -190,10 +190,9 @@ namespace FriishProduce
 
             // -----------------------------
 
-            Program.Lang.String(flash_update_frame_rate_l, "adobe_flash");
             Program.Lang.String(flash_save_data, "projectform");
             Program.Lang.String(flash_save_data_enable, "projectform");
-            // Program.Lang.String(flash_vff_sync_on_write, "adobe_flash");
+            Program.Lang.String(flash_vff_sync_on_write, "adobe_flash");
             Program.Lang.String(flash_vff_cache_size_l, "adobe_flash");
             Program.Lang.String(flash_persistent_storage_total_l, "adobe_flash");
             Program.Lang.String(flash_persistent_storage_per_movie_l, "adobe_flash");
@@ -205,6 +204,16 @@ namespace FriishProduce
             Program.Lang.String(flash_strap_reminder, "adobe_flash");
             Program.Lang.String(flash_strap_reminder_list, "adobe_flash");
             Program.Lang.String(flash_fullscreen, "adobe_flash");
+            Program.Lang.String(flash_anti_aliasing, "adobe_flash");
+            Program.Lang.String(flash_ortho_rect, "adobe_flash");
+
+            flash_vff_cache_size.Items.Clear();
+            flash_persistent_storage_total.Items.Clear();
+            flash_persistent_storage_per_movie.Items.Clear();
+
+            flash_vff_cache_size.Items.AddRange(Injectors.Flash.SaveDataSizes);
+            flash_persistent_storage_total.Items.AddRange(Injectors.Flash.SaveDataSizes);
+            flash_persistent_storage_per_movie.Items.AddRange(Injectors.Flash.SaveDataSizes);
 
             #endregion
 
@@ -296,9 +305,8 @@ namespace FriishProduce
             vc_neo_bios_list.SelectedIndex = Program.Config.neo.bios switch { "VC2" => 1, "VC3" => 2, _ => 0 };
 
             // FLASH
-            flash_update_frame_rate.Value = int.Parse(Program.Config.flash.update_frame_rate);
             flash_save_data_enable.Checked = Program.Config.flash.shared_object_capability == "on";
-            // flash_vff_sync_on_write.Checked = Program.Config.flash.vff_sync_on_write == "on";
+            flash_vff_sync_on_write.Checked = Program.Config.flash.vff_sync_on_write == "on";
             flash_vff_cache_size.SelectedItem = flash_vff_cache_size.Items.Cast<string>().FirstOrDefault(n => n.ToString() == Program.Config.flash.vff_cache_size);
             flash_persistent_storage_total.SelectedItem = flash_persistent_storage_total.Items.Cast<string>().FirstOrDefault(n => n.ToString() == Program.Config.flash.persistent_storage_total);
             flash_persistent_storage_per_movie.SelectedItem = flash_persistent_storage_per_movie.Items.Cast<string>().FirstOrDefault(n => n.ToString() == Program.Config.flash.persistent_storage_per_movie);
@@ -307,8 +315,11 @@ namespace FriishProduce
             flash_qwerty_keyboard.Checked = Program.Config.flash.qwerty_keyboard == "on";
             flash_strap_reminder_list.SelectedIndex = Program.Config.flash.strap_reminder switch { "none" => 0, "normal" => 1, _ => 2 };
             flash_fullscreen.Checked = Program.Config.flash.fullscreen == "yes";
+            flash_anti_aliasing.Checked = Program.Config.flash.anti_aliasing == "on";
+            flash_ortho_rect_h.Value = decimal.Parse(Program.Config.flash.ortho_rect.Substring(0, Program.Config.flash.ortho_rect.IndexOf('_')));
+            flash_ortho_rect_v.Value = decimal.Parse(Program.Config.flash.ortho_rect.Substring(Program.Config.flash.ortho_rect.IndexOf('_') + 1));
 
-            // flash_vff_sync_on_write.Enabled = flash_save_data_enable.Checked;
+            flash_vff_sync_on_write.Enabled = flash_save_data_enable.Checked;
             flash_vff_cache_size_l.Enabled = flash_vff_cache_size.Enabled = flash_save_data_enable.Checked;
             flash_persistent_storage_total_l.Enabled = flash_persistent_storage_total.Enabled = flash_save_data_enable.Checked;
             flash_persistent_storage_per_movie_l.Enabled = flash_persistent_storage_per_movie.Enabled = flash_save_data_enable.Checked;
@@ -445,9 +456,8 @@ namespace FriishProduce
             Program.Config.pce.RASTER = vc_pce_raster.Checked ? "1" : "0";
             Program.Config.pce.SPRLINE = vc_pce_sprline.Checked ? "1" : "0";
 
-            Program.Config.flash.update_frame_rate = flash_update_frame_rate.Value.ToString();
             Program.Config.flash.shared_object_capability = flash_save_data_enable.Checked ? "on" : "off";
-            // Program.Config.flash.vff_sync_on_write = flash_vff_sync_on_write.Checked ? "on" : "off";
+            Program.Config.flash.vff_sync_on_write = flash_vff_sync_on_write.Checked ? "on" : "off";
             Program.Config.flash.vff_cache_size = flash_vff_cache_size.SelectedItem.ToString();
             Program.Config.flash.persistent_storage_total = flash_persistent_storage_total.SelectedItem.ToString();
             Program.Config.flash.persistent_storage_per_movie = flash_persistent_storage_per_movie.SelectedItem.ToString();
@@ -457,6 +467,8 @@ namespace FriishProduce
             Program.Config.flash.strap_reminder = flash_strap_reminder_list.SelectedIndex switch { 0 => "none", 1 => "normal", _ => "no_ex" };
             Program.Config.flash.hbm_no_save = Program.Config.flash.shared_object_capability == "on" ? "no" : "yes";
             Program.Config.flash.fullscreen = flash_fullscreen.Checked ? "yes" : "no";
+            Program.Config.flash.anti_aliasing = flash_anti_aliasing.Checked ? "on" : "off";
+            Program.Config.flash.ortho_rect = $"{flash_ortho_rect_h.Value}_{flash_ortho_rect_v.Value}";
 
             switch (vc_neo_bios_list.SelectedIndex)
             {
@@ -594,7 +606,7 @@ namespace FriishProduce
         {
             ToggleSwitchText();
 
-            // flash_vff_sync_on_write.Enabled = flash_save_data_enable.Checked;
+            flash_vff_sync_on_write.Enabled = flash_save_data_enable.Checked;
             flash_vff_cache_size_l.Enabled = flash_vff_cache_size.Enabled = flash_save_data_enable.Checked;
             flash_persistent_storage_total_l.Enabled = flash_persistent_storage_total.Enabled = flash_save_data_enable.Checked;
             flash_persistent_storage_per_movie_l.Enabled = flash_persistent_storage_per_movie.Enabled = flash_save_data_enable.Checked;

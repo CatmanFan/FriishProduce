@@ -2551,6 +2551,156 @@
   <data name="&gt;&gt;bios_files.ZOrder" xml:space="preserve">
     <value>12</value>
   </data>
+  <data name="flash_ortho_rect_v_l.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flash_ortho_rect_v_l.Location" type="System.Drawing.Point, System.Drawing">
+    <value>283, 377</value>
+  </data>
+  <data name="flash_ortho_rect_v_l.Size" type="System.Drawing.Size, System.Drawing">
+    <value>13, 13</value>
+  </data>
+  <data name="flash_ortho_rect_v_l.TabIndex" type="System.Int32, mscorlib">
+    <value>50</value>
+  </data>
+  <data name="flash_ortho_rect_v_l.Text" xml:space="preserve">
+    <value>V</value>
+  </data>
+  <data name="&gt;&gt;flash_ortho_rect_v_l.Name" xml:space="preserve">
+    <value>flash_ortho_rect_v_l</value>
+  </data>
+  <data name="&gt;&gt;flash_ortho_rect_v_l.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flash_ortho_rect_v_l.Parent" xml:space="preserve">
+    <value>adobe_flash</value>
+  </data>
+  <data name="&gt;&gt;flash_ortho_rect_v_l.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="flash_ortho_rect_h_l.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flash_ortho_rect_h_l.Location" type="System.Drawing.Point, System.Drawing">
+    <value>204, 377</value>
+  </data>
+  <data name="flash_ortho_rect_h_l.Size" type="System.Drawing.Size, System.Drawing">
+    <value>14, 13</value>
+  </data>
+  <data name="flash_ortho_rect_h_l.TabIndex" type="System.Int32, mscorlib">
+    <value>49</value>
+  </data>
+  <data name="flash_ortho_rect_h_l.Text" xml:space="preserve">
+    <value>H</value>
+  </data>
+  <data name="&gt;&gt;flash_ortho_rect_h_l.Name" xml:space="preserve">
+    <value>flash_ortho_rect_h_l</value>
+  </data>
+  <data name="&gt;&gt;flash_ortho_rect_h_l.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flash_ortho_rect_h_l.Parent" xml:space="preserve">
+    <value>adobe_flash</value>
+  </data>
+  <data name="&gt;&gt;flash_ortho_rect_h_l.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="flash_ortho_rect_v.Location" type="System.Drawing.Point, System.Drawing">
+    <value>303, 375</value>
+  </data>
+  <data name="flash_ortho_rect_v.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 21</value>
+  </data>
+  <data name="flash_ortho_rect_v.TabIndex" type="System.Int32, mscorlib">
+    <value>48</value>
+  </data>
+  <data name="&gt;&gt;flash_ortho_rect_v.Name" xml:space="preserve">
+    <value>flash_ortho_rect_v</value>
+  </data>
+  <data name="&gt;&gt;flash_ortho_rect_v.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flash_ortho_rect_v.Parent" xml:space="preserve">
+    <value>adobe_flash</value>
+  </data>
+  <data name="&gt;&gt;flash_ortho_rect_v.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="flash_ortho_rect.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flash_ortho_rect.Location" type="System.Drawing.Point, System.Drawing">
+    <value>219, 358</value>
+  </data>
+  <data name="flash_ortho_rect.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 13</value>
+  </data>
+  <data name="flash_ortho_rect.TabIndex" type="System.Int32, mscorlib">
+    <value>47</value>
+  </data>
+  <data name="flash_ortho_rect.Text" xml:space="preserve">
+    <value>ortho_rect</value>
+  </data>
+  <data name="&gt;&gt;flash_ortho_rect.Name" xml:space="preserve">
+    <value>flash_ortho_rect</value>
+  </data>
+  <data name="&gt;&gt;flash_ortho_rect.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flash_ortho_rect.Parent" xml:space="preserve">
+    <value>adobe_flash</value>
+  </data>
+  <data name="&gt;&gt;flash_ortho_rect.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="flash_ortho_rect_h.Location" type="System.Drawing.Point, System.Drawing">
+    <value>222, 375</value>
+  </data>
+  <data name="flash_ortho_rect_h.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 21</value>
+  </data>
+  <data name="flash_ortho_rect_h.TabIndex" type="System.Int32, mscorlib">
+    <value>46</value>
+  </data>
+  <data name="&gt;&gt;flash_ortho_rect_h.Name" xml:space="preserve">
+    <value>flash_ortho_rect_h</value>
+  </data>
+  <data name="&gt;&gt;flash_ortho_rect_h.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flash_ortho_rect_h.Parent" xml:space="preserve">
+    <value>adobe_flash</value>
+  </data>
+  <data name="&gt;&gt;flash_ortho_rect_h.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="flash_anti_aliasing.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flash_anti_aliasing.Location" type="System.Drawing.Point, System.Drawing">
+    <value>50, 379</value>
+  </data>
+  <data name="flash_anti_aliasing.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 17</value>
+  </data>
+  <data name="flash_anti_aliasing.TabIndex" type="System.Int32, mscorlib">
+    <value>45</value>
+  </data>
+  <data name="flash_anti_aliasing.Text" xml:space="preserve">
+    <value>anti_aliasing</value>
+  </data>
+  <data name="&gt;&gt;flash_anti_aliasing.Name" xml:space="preserve">
+    <value>flash_anti_aliasing</value>
+  </data>
+  <data name="&gt;&gt;flash_anti_aliasing.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flash_anti_aliasing.Parent" xml:space="preserve">
+    <value>adobe_flash</value>
+  </data>
+  <data name="&gt;&gt;flash_anti_aliasing.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
   <data name="flash_fullscreen.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -2581,57 +2731,6 @@
   <data name="&gt;&gt;flash_fullscreen.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="flash_update_frame_rate_l.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="flash_update_frame_rate_l.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="flash_update_frame_rate_l.Location" type="System.Drawing.Point, System.Drawing">
-    <value>268, 18</value>
-  </data>
-  <data name="flash_update_frame_rate_l.Size" type="System.Drawing.Size, System.Drawing">
-    <value>101, 13</value>
-  </data>
-  <data name="flash_update_frame_rate_l.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
-  </data>
-  <data name="flash_update_frame_rate_l.Text" xml:space="preserve">
-    <value>update_frame_rate</value>
-  </data>
-  <data name="&gt;&gt;flash_update_frame_rate_l.Name" xml:space="preserve">
-    <value>flash_update_frame_rate_l</value>
-  </data>
-  <data name="&gt;&gt;flash_update_frame_rate_l.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flash_update_frame_rate_l.Parent" xml:space="preserve">
-    <value>display</value>
-  </data>
-  <data name="&gt;&gt;flash_update_frame_rate_l.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="flash_update_frame_rate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>276, 36</value>
-  </data>
-  <data name="flash_update_frame_rate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>245, 21</value>
-  </data>
-  <data name="flash_update_frame_rate.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;flash_update_frame_rate.Name" xml:space="preserve">
-    <value>flash_update_frame_rate</value>
-  </data>
-  <data name="&gt;&gt;flash_update_frame_rate.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flash_update_frame_rate.Parent" xml:space="preserve">
-    <value>display</value>
-  </data>
-  <data name="&gt;&gt;flash_update_frame_rate.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="flash_quality_l.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -2660,7 +2759,7 @@
     <value>display</value>
   </data>
   <data name="&gt;&gt;flash_quality_l.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>1</value>
   </data>
   <data name="flash_quality_list.Items" xml:space="preserve">
     <value>auto</value>
@@ -2684,7 +2783,7 @@
     <value>display</value>
   </data>
   <data name="&gt;&gt;flash_quality_list.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>2</value>
   </data>
   <data name="display.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 66</value>
@@ -2708,7 +2807,7 @@
     <value>adobe_flash</value>
   </data>
   <data name="&gt;&gt;display.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>6</value>
   </data>
   <data name="flash_strap_reminder_list.Items" xml:space="preserve">
     <value>auto</value>
@@ -2756,7 +2855,7 @@
     <value>adobe_flash</value>
   </data>
   <data name="&gt;&gt;flash_strap_reminder.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>7</value>
   </data>
   <data name="flash_qwerty_keyboard.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2765,7 +2864,7 @@
     <value>NoControl</value>
   </data>
   <data name="flash_qwerty_keyboard.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 43</value>
+    <value>10, 41</value>
   </data>
   <data name="flash_qwerty_keyboard.Size" type="System.Drawing.Size, System.Drawing">
     <value>111, 17</value>
@@ -2819,10 +2918,10 @@
     <value>1</value>
   </data>
   <data name="flash_controls.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 263</value>
+    <value>12, 288</value>
   </data>
   <data name="flash_controls.Size" type="System.Drawing.Size, System.Drawing">
-    <value>536, 68</value>
+    <value>536, 66</value>
   </data>
   <data name="flash_controls.TabIndex" type="System.Int32, mscorlib">
     <value>21</value>
@@ -2840,7 +2939,37 @@
     <value>adobe_flash</value>
   </data>
   <data name="&gt;&gt;flash_controls.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>8</value>
+  </data>
+  <data name="flash_vff_sync_on_write.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flash_vff_sync_on_write.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="flash_vff_sync_on_write.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 41</value>
+  </data>
+  <data name="flash_vff_sync_on_write.Size" type="System.Drawing.Size, System.Drawing">
+    <value>116, 17</value>
+  </data>
+  <data name="flash_vff_sync_on_write.TabIndex" type="System.Int32, mscorlib">
+    <value>37</value>
+  </data>
+  <data name="flash_vff_sync_on_write.Text" xml:space="preserve">
+    <value>vff_sync_on_write</value>
+  </data>
+  <data name="&gt;&gt;flash_vff_sync_on_write.Name" xml:space="preserve">
+    <value>flash_vff_sync_on_write</value>
+  </data>
+  <data name="&gt;&gt;flash_vff_sync_on_write.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flash_vff_sync_on_write.Parent" xml:space="preserve">
+    <value>flash_save_data</value>
+  </data>
+  <data name="&gt;&gt;flash_vff_sync_on_write.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="flash_vff_cache_size_l.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2849,7 +2978,7 @@
     <value>NoControl</value>
   </data>
   <data name="flash_vff_cache_size_l.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 44</value>
+    <value>8, 66</value>
   </data>
   <data name="flash_vff_cache_size_l.Size" type="System.Drawing.Size, System.Drawing">
     <value>79, 13</value>
@@ -2870,10 +2999,10 @@
     <value>flash_save_data</value>
   </data>
   <data name="&gt;&gt;flash_vff_cache_size_l.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="flash_vff_cache_size.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 62</value>
+    <value>14, 84</value>
   </data>
   <data name="flash_vff_cache_size.Size" type="System.Drawing.Size, System.Drawing">
     <value>165, 21</value>
@@ -2891,7 +3020,7 @@
     <value>flash_save_data</value>
   </data>
   <data name="&gt;&gt;flash_vff_cache_size.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="flash_persistent_storage_per_movie_l.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2900,7 +3029,7 @@
     <value>NoControl</value>
   </data>
   <data name="flash_persistent_storage_per_movie_l.Location" type="System.Drawing.Point, System.Drawing">
-    <value>355, 44</value>
+    <value>355, 66</value>
   </data>
   <data name="flash_persistent_storage_per_movie_l.Size" type="System.Drawing.Size, System.Drawing">
     <value>154, 13</value>
@@ -2921,10 +3050,10 @@
     <value>flash_save_data</value>
   </data>
   <data name="&gt;&gt;flash_persistent_storage_per_movie_l.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="flash_persistent_storage_per_movie.Location" type="System.Drawing.Point, System.Drawing">
-    <value>363, 62</value>
+    <value>363, 84</value>
   </data>
   <data name="flash_persistent_storage_per_movie.Size" type="System.Drawing.Size, System.Drawing">
     <value>161, 21</value>
@@ -2942,7 +3071,7 @@
     <value>flash_save_data</value>
   </data>
   <data name="&gt;&gt;flash_persistent_storage_per_movie.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="flash_persistent_storage_total_l.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2951,7 +3080,7 @@
     <value>NoControl</value>
   </data>
   <data name="flash_persistent_storage_total_l.Location" type="System.Drawing.Point, System.Drawing">
-    <value>183, 44</value>
+    <value>183, 66</value>
   </data>
   <data name="flash_persistent_storage_total_l.Size" type="System.Drawing.Size, System.Drawing">
     <value>126, 13</value>
@@ -2972,10 +3101,10 @@
     <value>flash_save_data</value>
   </data>
   <data name="&gt;&gt;flash_persistent_storage_total_l.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="flash_persistent_storage_total.Location" type="System.Drawing.Point, System.Drawing">
-    <value>191, 62</value>
+    <value>191, 84</value>
   </data>
   <data name="flash_persistent_storage_total.Size" type="System.Drawing.Size, System.Drawing">
     <value>160, 21</value>
@@ -2993,7 +3122,7 @@
     <value>flash_save_data</value>
   </data>
   <data name="&gt;&gt;flash_persistent_storage_total.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="flash_save_data_enable.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3023,13 +3152,13 @@
     <value>flash_save_data</value>
   </data>
   <data name="&gt;&gt;flash_save_data_enable.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="flash_save_data.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 162</value>
   </data>
   <data name="flash_save_data.Size" type="System.Drawing.Size, System.Drawing">
-    <value>536, 95</value>
+    <value>536, 120</value>
   </data>
   <data name="flash_save_data.TabIndex" type="System.Int32, mscorlib">
     <value>19</value>
@@ -3047,7 +3176,7 @@
     <value>adobe_flash</value>
   </data>
   <data name="&gt;&gt;flash_save_data.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>9</value>
   </data>
   <data name="adobe_flash.Location" type="System.Drawing.Point, System.Drawing">
     <value>194, 0</value>

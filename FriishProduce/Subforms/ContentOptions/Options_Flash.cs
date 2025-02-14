@@ -40,7 +40,6 @@ namespace FriishProduce
         {
             Options = new Dictionary<string, string>
             {
-                { "update_frame_rate", Program.Config.flash.update_frame_rate },
                 { "mouse", Program.Config.flash.mouse },
                 { "qwerty_keyboard", Program.Config.flash.qwerty_keyboard },
                 { "quality", Program.Config.flash.quality },
@@ -55,6 +54,8 @@ namespace FriishProduce
                 { "fullscreen", Program.Config.flash.fullscreen },
                 { "content_domain", null },
                 { "background_color", "0 0 0 0" },
+                { "anti_aliasing", Program.Config.flash.anti_aliasing },
+                { "ortho_rect", Program.Config.flash.ortho_rect },
             };
         }
 
@@ -64,67 +65,57 @@ namespace FriishProduce
             // *******
             if (Options != null)
             {
-                Refill:
-                try
+                // Save data values list
+                // ****************
+                vff_cache_size.Items.Clear();
+                persistent_storage_total.Items.Clear();
+                persistent_storage_per_movie.Items.Clear();
+
+                vff_cache_size.Items.AddRange(Injectors.Flash.SaveDataSizes);
+                persistent_storage_total.Items.AddRange(Injectors.Flash.SaveDataSizes);
+                persistent_storage_per_movie.Items.AddRange(Injectors.Flash.SaveDataSizes);
+
+                // Main settings
+                // ****************
+                save_data_enable.Checked = Options["shared_object_capability"] == "on";
+                vff_sync_on_write.Checked = Options["vff_sync_on_write"] == "on";
+                vff_cache_size.SelectedItem = vff_cache_size.Items.Cast<string>().FirstOrDefault(n => n.ToString() == Options["vff_cache_size"]);
+                persistent_storage_total.SelectedItem = persistent_storage_total.Items.Cast<string>().FirstOrDefault(n => n.ToString() == Options["persistent_storage_total"]);
+                persistent_storage_per_movie.SelectedItem = persistent_storage_per_movie.Items.Cast<string>().FirstOrDefault(n => n.ToString() == Options["persistent_storage_per_movie"]);
+                mouse.Checked = Options["mouse"] == "on";
+                qwerty_keyboard.Checked = Options["qwerty_keyboard"] == "on";
+                quality.SelectedIndex = Options["quality"] switch { "high" => 0, "medium" => 1, _ => 2 };
+                strap_reminder_list.SelectedIndex = Options["strap_reminder"] switch { "none" => 0, "normal" => 1, _ => 2 };
+                // MIDI is counted separately
+                fullscreen.Checked = Options["fullscreen"] == "yes";
+                if (Options.ContainsKey("content_domain")) content_domain.Text = Options["content_domain"];
+                anti_aliasing.Checked = Options["anti_aliasing"] == "on";
+
+                // Ortho rect
+                // ****************
+                ortho_rect_h.Value = int.Parse(Options["ortho_rect"].Substring(0, Options["ortho_rect"].IndexOf('_')));
+                ortho_rect_v.Value = int.Parse(Options["ortho_rect"].Substring(Options["ortho_rect"].IndexOf('_') + 1));
+
+                // Background color
+                // ****************
+                background_color_img.BackColor = BGColor.Color = Color.FromArgb(255, 0, 0, 0);
+                int index = 0;
+                string R = "0", G = "0", B = "0";
+                for (int i = 0; i < 4; i++)
                 {
-                    // Code logic in derived Form
-                    update_frame_rate.Value = int.Parse(Options["update_frame_rate"]);
-                    save_data_enable.Checked = Options["shared_object_capability"] == "on";
-                    // vff_sync_on_write.Checked = Options["vff_sync_on_write"] == "on";
-                    vff_cache_size.SelectedItem = vff_cache_size.Items.Cast<string>().FirstOrDefault(n => n.ToString() == Options["vff_cache_size"]);
-                    persistent_storage_total.SelectedItem = persistent_storage_total.Items.Cast<string>().FirstOrDefault(n => n.ToString() == Options["persistent_storage_total"]);
-                    persistent_storage_per_movie.SelectedItem = persistent_storage_per_movie.Items.Cast<string>().FirstOrDefault(n => n.ToString() == Options["persistent_storage_per_movie"]);
-                    mouse.Checked = Options["mouse"] == "on";
-                    qwerty_keyboard.Checked = Options["qwerty_keyboard"] == "on";
-                    quality.SelectedIndex = Options["quality"] switch { "high" => 0, "medium" => 1, _ => 2 };
-                    strap_reminder_list.SelectedIndex = Options["strap_reminder"] switch { "none" => 0, "normal" => 1, _ => 2 };
-                    // MIDI is counted separately
-                    fullscreen.Checked = Options["fullscreen"] == "yes";
-                    if (Options.ContainsKey("content_domain")) content_domain.Text = Options["content_domain"];
+                    string color = Options["background_color"];
+                    int prevIndex = index;
+                    index = color.IndexOf(' ', prevIndex);
 
-                    // Background color
-                    // ****************
-                    background_color_img.BackColor = BGColor.Color = Color.FromArgb(255, 0, 0, 0);
-                    int index = 0;
-                    string R = "0", G = "0", B = "0";
-                    for (int i = 0; i < 4; i++)
-                    {
-                        string color = Options["background_color"];
-                        int prevIndex = index;
-                        index = color.IndexOf(' ', prevIndex);
+                    if (i == 0) R = color.Substring(prevIndex, index - prevIndex);
+                    if (i == 1) G = color.Substring(prevIndex, index - prevIndex);
+                    if (i == 2) B = color.Substring(prevIndex, index - prevIndex);
 
-                        if (i == 0) R = color.Substring(prevIndex, index - prevIndex);
-                        if (i == 1) G = color.Substring(prevIndex, index - prevIndex);
-                        if (i == 2) B = color.Substring(prevIndex, index - prevIndex);
-
-                        if (index < color.Length) index++;
-                    }
-                    background_color_img.BackColor = BGColor.Color = Color.FromArgb(255, int.Parse(R), int.Parse(G), int.Parse(B));
-                    background_color.Text = $"{BGColor.Color.R:x2}{BGColor.Color.G:x2}{BGColor.Color.B:x2}";
+                    if (index < color.Length) index++;
                 }
-                catch
-                {
-                    Options = new Dictionary<string, string>
-                    {
-                        { "update_frame_rate", Program.Config.flash.update_frame_rate },
-                        { "mouse", Program.Config.flash.mouse },
-                        { "qwerty_keyboard", Program.Config.flash.qwerty_keyboard },
-                        { "quality", Program.Config.flash.quality },
-                        { "shared_object_capability", Program.Config.flash.shared_object_capability },
-                        { "vff_sync_on_write", Program.Config.flash.vff_sync_on_write },
-                        { "vff_cache_size", Program.Config.flash.vff_cache_size },
-                        { "persistent_storage_total", Program.Config.flash.persistent_storage_total },
-                        { "persistent_storage_per_movie", Program.Config.flash.persistent_storage_per_movie },
-                        { "hbm_no_save", Program.Config.flash.hbm_no_save },
-                        { "strap_reminder", Program.Config.flash.strap_reminder },
-                        { "midi", null },
-                        { "fullscreen", Program.Config.flash.fullscreen },
-                        { "content_domain", null },
-                        { "background_color", "0 0 0 0" }
-                    };
+                background_color_img.BackColor = BGColor.Color = Color.FromArgb(255, int.Parse(R), int.Parse(G), int.Parse(B));
+                background_color.Text = $"{BGColor.Color.R:x2}{BGColor.Color.G:x2}{BGColor.Color.B:x2}";
 
-                    goto Refill;
-                }
             }
 
             toggleSave();
@@ -145,9 +136,8 @@ namespace FriishProduce
         protected override void SaveOptions()
         {
             // Code logic in derived Form
-            Options["update_frame_rate"] = update_frame_rate.Value.ToString();
             Options["shared_object_capability"] = save_data_enable.Checked ? "on" : "off";
-            Options["vff_sync_on_write"] = /* vff_sync_on_write.Checked */ Options["shared_object_capability"] == "on" ? "on" : "off";
+            Options["vff_sync_on_write"] = vff_sync_on_write.Checked ? "on" : "off";
             Options["vff_cache_size"] = vff_cache_size.SelectedItem.ToString();
             Options["persistent_storage_total"] = persistent_storage_total.SelectedItem.ToString();
             Options["persistent_storage_per_movie"] = persistent_storage_per_movie.SelectedItem.ToString();
@@ -160,6 +150,8 @@ namespace FriishProduce
             Options["fullscreen"] = fullscreen.Checked ? "yes" : "no";
             Options["content_domain"] = content_domain.Text;
             Options["background_color"] = BGColor.Color.R + BGColor.Color.G + BGColor.Color.B > 0 ? $"{BGColor.Color.R} {BGColor.Color.G} {BGColor.Color.B} 255" : "0 0 0 0";
+            Options["ortho_rect"] = $"{ortho_rect_h.Value}_{ortho_rect_v.Value}";
+            Options["anti_aliasing"] = anti_aliasing.Checked ? "on" : "off";
         }
 
         // ---------------------------------------------------------------------------------------------------------------
@@ -167,7 +159,7 @@ namespace FriishProduce
         #region Functions
         private void toggleSave()
         {
-            // vff_sync_on_write.Enabled = save_data_enable.Checked;
+            vff_sync_on_write.Enabled = save_data_enable.Checked;
             vff_cache_size_l.Enabled = vff_cache_size.Enabled = save_data_enable.Checked;
             persistent_storage_total_l.Enabled = persistent_storage_total.Enabled = save_data_enable.Checked;
             persistent_storage_per_movie_l.Enabled = persistent_storage_per_movie.Enabled = save_data_enable.Checked;
@@ -210,7 +202,33 @@ namespace FriishProduce
                     background_color_img.BackColor = BGColor.Color = Color.Black;
                 }
             }
+
+            else if ((sender == ortho_rect_h || sender == ortho_rect_v || sender == ortho_rect_lock) && ortho_rect_values != (0, 0))
+            {
+                bool h = sender == ortho_rect_h;
+                decimal scale = h ? ortho_rect_h.Value / ortho_rect_values.h : ortho_rect_v.Value / ortho_rect_values.v;
+                var other = h ? ortho_rect_v : ortho_rect_h;
+
+                (int h, int v) newValues = (Convert.ToInt32(Math.Round(ortho_rect_values.h * scale)),
+                                             Convert.ToInt32(Math.Round(ortho_rect_values.v * scale)));
+
+                int otherV = h ? newValues.v : newValues.h;
+
+                other.ValueChanged -= valueChanged;
+                other.Value = otherV;
+                other.ValueChanged += valueChanged;
+            }
         }
+
+        private void lockZoom(object sender, EventArgs e)
+        {
+            if (ortho_rect_lock.Checked)
+                ortho_rect_values = (ortho_rect_h.Value, ortho_rect_v.Value);
+            else
+                ortho_rect_values = (0, 0);
+        }
+
+        private (decimal h, decimal v) ortho_rect_values = (0, 0);
 
         private void changeBackgroundColor(object sender, EventArgs e)
         {

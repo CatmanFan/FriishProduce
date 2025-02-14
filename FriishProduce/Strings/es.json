@@ -102,6 +102,7 @@
 			"011":								"¿Quieres verificar la base de datos?\nEsto puede tardar varios minutos.",
 			"012":								"No se ha encontrado ninguna entrada no válida en la base de datos.",
 			"013":								"Se han encontrado las siguientes entradas no válidas:\n{0}\n\nPor favor, elimínalas del archivo \"database.json\".",
+			"014":								"Se han restablecido los ajustes del método de inyección.\nPor favor, vuelva a configurarlos.",
 
 			"b_000":							"Cargando...",
 			"b_001":							"Exportación en curso...",
@@ -416,7 +417,6 @@
 			"vff_cache_size":					"Tamaño de caché VFF (en {kilobytes})",
 			"persistent_storage_total":			"Almacenamiento total (en {kilobytes})",
 			"persistent_storage_per_movie":		"Almacenamiento por SWF (en {kilobytes})",
-			"update_frame_rate":				"Framerate del SWF",
 			"fullscreen":						"Pantalla completa",
 			"controls":							"Controles",
 			"mouse":							"Mouse",
@@ -432,7 +432,9 @@
 			"strap_reminder2":					"{enabled} (sin pantalla de mandos complementarios)",
 			"swf_metadata":						"Metadatos del SWF",
 			"content_domain":					"Dominio de contenido",
-			"background_color":					"Color de fondo"
+			"background_color":					"Color de fondo",
+			"anti_aliasing":					"Antialias",
+			"ortho_rect":						"Zoom"
 		},
 
 		"forwarder": {

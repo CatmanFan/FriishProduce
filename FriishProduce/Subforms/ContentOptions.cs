@@ -125,7 +125,7 @@ namespace FriishProduce
                 UsesKeymap = controller_cb.Checked;
             }
 
-            try { SaveOptions(); } catch { ClearOptions(); SaveOptions(); }
+            ClearOptions(); SaveOptions();
             DialogResult = DialogResult.OK;
         }
 
@@ -146,7 +146,8 @@ namespace FriishProduce
             if (_oldKeymap == null && _Keymap != null)
                 _oldKeymap = controllerForm.Keymap = new Dictionary<Buttons, string>(_Keymap);
 
-            try { ResetOptions(); } catch { ClearOptions(); ResetOptions(); }
+            try { ResetOptions(); }
+            catch { ClearOptions(); ResetOptions(); MessageBox.Show(Program.Lang.Msg(14), MessageBox.Buttons.Ok, MessageBox.Icons.Warning); }
             CenterToParent();
 
             controller_box.Visible = controllerForm != null;

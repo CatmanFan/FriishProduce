@@ -1477,8 +1477,6 @@ namespace FriishProduce
                 return;
             }
 
-            IsEmpty = false;
-
             switch (targetPlatform)
             {
                 // ROM file formats
@@ -1489,6 +1487,7 @@ namespace FriishProduce
                         MessageBox.Show(Program.Lang.Msg(2), 0, MessageBox.Icons.Warning);
                         return;
                     }
+                    else IsEmpty = false;
                     break;
 
                 // ZIP format
@@ -1499,16 +1498,19 @@ namespace FriishProduce
                         MessageBox.Show(Program.Lang.Msg(2), 0, MessageBox.Icons.Warning);
                         return;
                     }
+                    else IsEmpty = false;
                     break;
 
                 // Disc format
                 // ****************
                 case Platform.PSX:
+                    IsEmpty = false;
                     break;
 
                 // RPG Maker format
                 // ****************
                 case Platform.RPGM:
+                    IsEmpty = false;
                     if ((rom as RPGM).GetTitle(ROMpath) != null)
                     {
                         banner_form.title.Text = (rom as RPGM).GetTitle(ROMpath);
@@ -1517,9 +1519,17 @@ namespace FriishProduce
                     }
                     break;
 
-                // Other, no verification needed
+                // Flash SWF format
                 // ****************
                 case Platform.Flash:
+                    if (!rom.CheckValidity(ROMpath))
+                    {
+                        MessageBox.Show(Program.Lang.Msg(2), 0, MessageBox.Icons.Warning);
+                        return;
+                    }
+                    else IsEmpty = false;
+
+                    (rom as SWF).Parse(ROMpath);
                     break;
             }
 

@@ -252,10 +252,11 @@ namespace FriishProduce
             public string vff_cache_size { get; set; } = "2048";
             public string persistent_storage_total { get; set; } = "2048";
             public string persistent_storage_per_movie { get; set; } = "1024";
-            public string update_frame_rate { get; set; } = "0";
             public string fullscreen { get; set; } = "false";
             public string hbm_no_save { get; set; } = "true";
             public string strap_reminder { get; set; } = "none";
+            public string ortho_rect { get; set; } = "304_228"; // -416 +228 +416 -228 for wide
+            public string anti_aliasing { get; set; } = "on";
         }
     }
 }

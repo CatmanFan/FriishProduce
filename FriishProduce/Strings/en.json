@@ -102,6 +102,7 @@
 			"011":								"Check all database entries to see if any are invalid?\nThis may take some time.",
 			"012":								"No invalid database entries were found.",
 			"013":								"Invalid database entries found:\n{0}\n\nPlease remove these entries from database.json.",
+			"014":								"The injection method options have been reset.\nPlease try configuring them again.",
 
 			"b_000":							"Please wait...",
 			"b_001":							"Exporting...",
@@ -418,10 +419,10 @@
 		},
 
 		"adobe_flash": {
+			"vff_sync_on_write":				"Sync VFF on writing data",
 			"vff_cache_size":					"VFF cache size ({kilobytes})",
 			"persistent_storage_total":			"Total persistant storage ({kilobytes})",
 			"persistent_storage_per_movie":		"Persistant storage per SWF ({kilobytes})",
-			"update_frame_rate":				"SWF framerate",
 			"fullscreen":						"Fullscreen",
 			"controls":							"Controls",
 			"mouse":							"Mouse",
@@ -437,7 +438,9 @@
 			"strap_reminder2":					"{enabled} (w/o extension controller)",
 			"swf_metadata":						"SWF metadata",
 			"content_domain":					"Content domain",
-			"background_color":					"Background color"
+			"background_color":					"Background color",
+			"anti_aliasing":					"Anti-aliasing",
+			"ortho_rect":						"Zoom"
 		},
 
 		"forwarder": {

@@ -79,6 +79,9 @@
     <Reference Include="libWiiSharp">
       <HintPath>.\libWiiSharp.dll</HintPath>
     </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=9.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.9.0.1\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
@@ -97,6 +100,9 @@
     <Reference Include="PresentationFramework" />
     <Reference Include="SharpCompress, Version=0.39.0.0, Culture=neutral, PublicKeyToken=afb0a02973931d96, processorArchitecture=MSIL">
       <HintPath>..\packages\SharpCompress.0.39.0\lib\netstandard2.0\SharpCompress.dll</HintPath>
+    </Reference>
+    <Reference Include="SwfDotNet.IO, Version=0.9.0.27050, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SwfDotNet.IO.1.0.0.1\lib\net40-full\SwfDotNet.IO.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.4.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -339,6 +345,8 @@
     <Compile Include="_classes\Databases\LibRetro.cs" />
     <Compile Include="_classes\Files\ROM\C64.cs" />
     <Compile Include="_classes\Files\ROM\RPGM.cs" />
+    <Compile Include="_classes\Files\SWF-Old.cs" />
+    <Compile Include="_classes\Files\SWF.cs" />
     <Compile Include="_classes\Helpers\BannerSchemes.cs" />
     <Compile Include="_classes\Files\CCF.cs" />
     <Compile Include="_classes\Helpers\BannerPreview.cs" />
@@ -353,7 +361,6 @@
     <Compile Include="_classes\Creators\WiiVC\PCE.cs" />
     <Compile Include="_classes\Program\Project.cs" />
     <Compile Include="_classes\Files\ROM\Disc.cs" />
-    <Compile Include="_classes\Files\ROM\Flash.cs" />
     <Compile Include="_classes\Creators\WiiVC\MSX.cs" />
     <Compile Include="_classes\Files\ROM\MSX.cs" />
     <Compile Include="_classes\Files\ROM\N64.cs" />

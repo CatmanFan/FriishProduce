@@ -102,6 +102,7 @@
 			"011":								"Check all database entries to see if any are invalid?\nThis may take some time.",
 			"012":								"No invalid database entries were found.",
 			"013":								"Invalid database entries found:\n{0}\n\nPlease remove these entries from database.json.",
+			"014":								"The injection method options have been reset.\nPlease try configuring them again.",
 
 			"b_000":							"잠시만 기다리세요...",
 			"b_001":							"내보내기 진행 중...",
@@ -413,6 +414,7 @@
 		},
 
 		"adobe_flash": {
+			"vff_sync_on_write":				"Sync VFF on writing data",
 			"vff_cache_size":					"VFF 캐시 크기 ({kilobytes}):",
 			"persistent_storage_total":			"총 영구적 저장소 ({kilobytes}):",
 			"persistent_storage_per_movie":		"SWF당 영구적 저장소 ({kilobytes}):",
@@ -430,7 +432,9 @@
 			"strap_reminder2":					"확장 컨트롤러 업음",
 			"swf_metadata":						"SWF 메타데이터",
 			"content_domain":					"콘텐츠 도메인",
-			"background_color":					"배경색"
+			"background_color":					"배경색",
+			"anti_aliasing":					"Anti-aliasing",
+			"ortho_rect":						"Zoom"
 		},
 
 		"forwarder": {

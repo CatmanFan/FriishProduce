@@ -2,13 +2,37 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 
 namespace FriishProduce.Injectors
 {
     public class Flash
     {
-        public string SWF { get; set; }
+        private static string[] _saveDataSizes;
+        public static string[] SaveDataSizes
+        {
+            get
+            {
+                if (_saveDataSizes == null || _saveDataSizes?.Length == 0)
+                {
+                    List<string> value = new();
+                    value.AddRange(new string[] { "32", "48", "64", "72", "96", "128", "256" });
+
+                    for (int i = 256; i < 4096;)
+                    {
+                        i += 256;
+                        value.Add(i.ToString());
+                    }
+
+                    _saveDataSizes = value.ToArray();
+                }
+
+                return _saveDataSizes;
+            }
+        }
+
+        public SWF SWF { get; set; }
         public IDictionary<string, string> Settings { get; set; }
         public IDictionary<Buttons, string> Keymap { get; set; }
         public bool Multifile { get; set; }
@@ -441,19 +465,20 @@ namespace FriishProduce.Injectors
             Directory.Delete(Path.GetDirectoryName(target), true);
             Directory.CreateDirectory(Path.GetDirectoryName(target));
 
-            File.Copy(SWF, target, true);
+            File.Copy(SWF.FilePath, target, true);
 
             if (Multifile)
             {
-                foreach (string folder in Directory.EnumerateDirectories(Path.GetDirectoryName(SWF), "*.*", SearchOption.AllDirectories))
+                foreach (string folder in Directory.GetDirectories(Path.GetDirectoryName(SWF.FilePath), "*.*", SearchOption.AllDirectories))
                 {
-                    string newFolder = folder.Replace(Path.GetDirectoryName(SWF), Path.GetDirectoryName(target));
+                    string newFolder = folder.Replace(Path.GetDirectoryName(SWF.FilePath), Path.GetDirectoryName(target));
                     Directory.CreateDirectory(newFolder);
                 }
 
-                foreach (string etc in Directory.EnumerateFiles(Path.GetDirectoryName(SWF), "*.*", SearchOption.AllDirectories))
-                    if (etc != SWF)
-                        File.Copy(etc, etc.Replace(Path.GetDirectoryName(SWF), Path.GetDirectoryName(target)), true);
+                foreach (string file in Directory.GetFiles(Path.GetDirectoryName(SWF.FilePath), "*.*", SearchOption.AllDirectories).Where(x => x != SWF.FilePath))
+                {
+                    File.Copy(file, file.Replace(Path.GetDirectoryName(SWF.FilePath), Path.GetDirectoryName(target)), true);
+                }
             }
 
             #endregion
@@ -537,7 +562,7 @@ namespace FriishProduce.Injectors
                         "static_heap_size                8192                # 8192[KB] -> 8[MB]",
                         "dynamic_heap_size               16384               # 16384[KB] -> 16[MB]",
 
-                        $"update_frame_rate             {Settings["update_frame_rate"]}                  # not TV-framerate(NTSC/PAL)",
+                        "update_frame_rate               0                  # not TV-framerate(NTSC/PAL)",
 
                         $"mouse                           {Settings["mouse"]}",
                         $"qwerty_keyboard                 {Settings["qwerty_keyboard"]}",
@@ -637,19 +662,48 @@ namespace FriishProduce.Injectors
 
                 #region ---------------- Adding regional config ----------------
 
-                else if (type != Type.YouTube && item.EndsWith(".pcf") && item.StartsWith("config\\") && Path.GetFileNameWithoutExtension(file).Length == 11)
+                else if (item.EndsWith(".pcf") && item.StartsWith("config\\"))
                 {
+                    string[] pcf = File.ReadAllLines(file);
                     List<string> txt = new();
+                    bool modified = false;
+                    bool notYouTube = type != Type.YouTube && Path.GetFileNameWithoutExtension(file).Length == 11;
 
-                    foreach (string line in File.ReadAllLines(file))
+                    foreach (string line in pcf)
                     {
-                        if (line.Contains("background_"))
+                        if (line.Contains("ortho_rect"))
+                        {
+                            (int h, int v) = (int.Parse(Settings["ortho_rect"].Substring(0, Settings["ortho_rect"].IndexOf('_'))), int.Parse(Settings["ortho_rect"].Substring(Settings["ortho_rect"].IndexOf('_') + 1)));
+                            // (h, v) = (SWF.Header.Width, SWF.Header.Height);
+                            
+                            if (Path.GetFileNameWithoutExtension(file).Contains("wide"))
+                                h = Convert.ToInt32(Math.Round(h * (416.0 / 304.0)));
+
+                            txt.Add($"ortho_rect                      -{h} +{v} +{h} -{v} # left top right bottom (608 x 456)");
+                            modified = true;
+                        }
+
+                        else if (line.Contains("anti_aliasing"))
+                        {
+                            txt.Add($"anti_aliasing                   {Settings["anti_aliasing"]}");
+                            modified = true;
+                        }
+
+                        else if (line.Contains("background_") && notYouTube)
+                        {
                             txt.Add($"background_color                {Settings["background_color"]}             # RGBA");
-                        else if (!line.Contains("content_url"))
+                            modified = true;
+                        }
+
+                        else if (line.Contains("content_url") && notYouTube)
+                            modified = true;
+
+                        else
                             txt.Add(line);
                     }
 
-                    File.WriteAllBytes(file, Encoding.UTF8.GetBytes(string.Join("\r\n", txt) + "\r\n"));
+                    if (modified)
+                        File.WriteAllBytes(file, Encoding.UTF8.GetBytes(string.Join("\r\n", txt) + "\r\n"));
                 }
 
                 #endregion

@@ -126,7 +126,7 @@ namespace FriishProduce
                 {
                     Injectors.Flash Flash = new()
                     {
-                        SWF = ROM.FilePath,
+                        SWF = ROM as SWF,
                         Settings = Settings.List,
                         Keymap = Settings.Keymap,
                         Multifile = IsMultifile
