@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+    <url>
+        <loc>None./</loc>
+        <lastmod>2025-02-15</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="None"/>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/"/>
+        <xhtml:link rel="alternate" hreflang="fr" href="Nonefr/"/>
+    </url>
+    <url>
+        <loc>Noneabout/</loc>
+        <lastmod>2025-02-15</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneabout/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/about/"/>
+        <xhtml:link rel="alternate" hreflang="fr" href="Nonefr/about/"/>
+    </url>
+    <url>
+        <loc>Noneconfiguration/</loc>
+        <lastmod>2025-02-15</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneconfiguration/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/configuration/"/>
+        <xhtml:link rel="alternate" hreflang="fr" href="Nonefr/configuration/"/>
+    </url>
+    <url>
+        <loc>Nonefaq/</loc>
+        <lastmod>2025-02-15</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Nonefaq/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/faq/"/>
+        <xhtml:link rel="alternate" hreflang="fr" href="Nonefr/faq/"/>
+    </url>
+    <url>
+        <loc>Nonetranslate/</loc>
+        <lastmod>2025-02-15</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Nonetranslate/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/translate/"/>
+        <xhtml:link rel="alternate" hreflang="fr" href="Nonefr/translate/"/>
+    </url>
+    <url>
+        <loc>Nonetutorial/</loc>
+        <lastmod>2025-02-15</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Nonetutorial/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/tutorial/"/>
+        <xhtml:link rel="alternate" hreflang="fr" href="Nonefr/tutorial/"/>
+    </url>
+    <url>
+        <loc>Nonefr/</loc>
+        <lastmod>2025-02-15</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="fr" href="Nonefr/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="None"/>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/"/>
+    </url>
+    <url>
+        <loc>Nonefr/about/</loc>
+        <lastmod>2025-02-15</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="fr" href="Nonefr/about/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneabout/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/about/"/>
+    </url>
+    <url>
+        <loc>Nonefr/configuration/</loc>
+        <lastmod>2025-02-15</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="fr" href="Nonefr/configuration/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneconfiguration/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/configuration/"/>
+    </url>
+    <url>
+        <loc>Nonefr/faq/</loc>
+        <lastmod>2025-02-15</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="fr" href="Nonefr/faq/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Nonefaq/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/faq/"/>
+    </url>
+    <url>
+        <loc>Nonefr/translate/</loc>
+        <lastmod>2025-02-15</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="fr" href="Nonefr/translate/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Nonetranslate/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/translate/"/>
+    </url>
+    <url>
+        <loc>Nonefr/tutorial/</loc>
+        <lastmod>2025-02-15</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="fr" href="Nonefr/tutorial/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Nonetutorial/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/tutorial/"/>
+    </url>
+    <url>
+        <loc>Nonees/</loc>
+        <lastmod>2025-02-15</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="None"/>
+        <xhtml:link rel="alternate" hreflang="fr" href="Nonefr/"/>
+    </url>
+    <url>
+        <loc>Nonees/about/</loc>
+        <lastmod>2025-02-15</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/about/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneabout/"/>
+        <xhtml:link rel="alternate" hreflang="fr" href="Nonefr/about/"/>
+    </url>
+    <url>
+        <loc>Nonees/configuration/</loc>
+        <lastmod>2025-02-15</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/configuration/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneconfiguration/"/>
+        <xhtml:link rel="alternate" hreflang="fr" href="Nonefr/configuration/"/>
+    </url>
+    <url>
+        <loc>Nonees/faq/</loc>
+        <lastmod>2025-02-15</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/faq/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Nonefaq/"/>
+        <xhtml:link rel="alternate" hreflang="fr" href="Nonefr/faq/"/>
+    </url>
+    <url>
+        <loc>Nonees/translate/</loc>
+        <lastmod>2025-02-15</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/translate/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Nonetranslate/"/>
+        <xhtml:link rel="alternate" hreflang="fr" href="Nonefr/translate/"/>
+    </url>
+    <url>
+        <loc>Nonees/tutorial/</loc>
+        <lastmod>2025-02-15</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonees/tutorial/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Nonetutorial/"/>
+        <xhtml:link rel="alternate" hreflang="fr" href="Nonefr/tutorial/"/>
+    </url>
+</urlset>
