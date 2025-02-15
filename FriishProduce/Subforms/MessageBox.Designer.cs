@@ -145,15 +145,15 @@ namespace FriishProduce
             // textLabel
             // 
             this.textLabel.AutoSize = true;
-            this.textLabel.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.textLabel.Font = new System.Drawing.Font("Segoe UI", 15.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.textLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(153)))));
             this.textLabel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.textLabel.Location = new System.Drawing.Point(51, 7);
+            this.textLabel.Location = new System.Drawing.Point(48, 7);
             this.textLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.textLabel.MaximumSize = new System.Drawing.Size(426, 0);
             this.textLabel.Name = "textLabel";
             this.textLabel.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
-            this.textLabel.Size = new System.Drawing.Size(423, 43);
+            this.textLabel.Size = new System.Drawing.Size(404, 45);
             this.textLabel.TabIndex = 27;
             this.textLabel.Text = "Can\'t rename \"Pictures\" because a file or folder with that name already exists";
             this.textLabel.UseMnemonic = false;
@@ -162,11 +162,11 @@ namespace FriishProduce
             // 
             this.descriptionLabel.AutoSize = true;
             this.descriptionLabel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.descriptionLabel.Location = new System.Drawing.Point(51, 50);
-            this.descriptionLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.descriptionLabel.Location = new System.Drawing.Point(49, 52);
+            this.descriptionLabel.Margin = new System.Windows.Forms.Padding(3, 0, 2, 0);
             this.descriptionLabel.Name = "descriptionLabel";
-            this.descriptionLabel.Padding = new System.Windows.Forms.Padding(0, 8, 0, 0);
-            this.descriptionLabel.Size = new System.Drawing.Size(138, 23);
+            this.descriptionLabel.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.descriptionLabel.Size = new System.Drawing.Size(138, 25);
             this.descriptionLabel.TabIndex = 28;
             this.descriptionLabel.Text = "Specify a different name.";
             this.descriptionLabel.UseMnemonic = false;
@@ -185,7 +185,7 @@ namespace FriishProduce
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 42F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 39F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.textLabel, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.descriptionLabel, 1, 1);
@@ -198,7 +198,7 @@ namespace FriishProduce
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(484, 121);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(484, 162);
             this.tableLayoutPanel1.TabIndex = 30;
             // 
             // Msg
@@ -208,8 +208,8 @@ namespace FriishProduce
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(484, 162);
             this.ControlBox = false;
-            this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.bottomPanel2);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);

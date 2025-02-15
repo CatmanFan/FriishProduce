@@ -43,8 +43,8 @@ Please check the **[wiki](https://catmanfan.github.io/FriishProduce/)** for a tu
 
 ## To-Do
 - [ ] Design Japanese-only icons for FC, SFC, PCE and PCECD
-- [X] Add Flash video mode option
-- [ ] Fix Flash savedata issue(?)
+- [ ] Complete implementation of themes functionality and tidyup interface
+- [X] Fix Flash savedata issue(?)
 
 ### Potential
 - [ ] Merge separate components of ProjectForm into panels / Create UserControl for content options ?

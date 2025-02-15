@@ -166,7 +166,7 @@ namespace FriishProduce
 
             if (no_text || no_desc)
             {
-                textLabel.Padding = new Padding(0, 2, 0, 0);
+                descriptionLabel.Padding = new Padding(0, 8, 0, 0);
                 tableLayoutPanel1.RowCount = 1;
             }
 
