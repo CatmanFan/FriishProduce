@@ -673,8 +673,8 @@ namespace FriishProduce.Injectors
                     {
                         if (line.Contains("ortho_rect"))
                         {
-                            (int h, int v) = (int.Parse(Settings["ortho_rect"].Substring(0, Settings["ortho_rect"].IndexOf('_'))), int.Parse(Settings["ortho_rect"].Substring(Settings["ortho_rect"].IndexOf('_') + 1)));
-                            // (h, v) = (SWF.Header.Width, SWF.Header.Height);
+                            (int zoomH, int zoomV) = (int.Parse(Settings["zoom"].Substring(0, Settings["zoom"].IndexOf('_'))), int.Parse(Settings["zoom"].Substring(Settings["zoom"].IndexOf('_') + 1)));
+                            (int h, int v) = (SWF.Header.Width + zoomH, SWF.Header.Height + zoomV);
                             
                             if (Path.GetFileNameWithoutExtension(file).Contains("wide"))
                                 h = Convert.ToInt32(Math.Round(h * (416.0 / 304.0)));

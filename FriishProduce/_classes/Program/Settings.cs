@@ -255,7 +255,7 @@ namespace FriishProduce
             public string fullscreen { get; set; } = "false";
             public string hbm_no_save { get; set; } = "true";
             public string strap_reminder { get; set; } = "none";
-            public string ortho_rect { get; set; } = "304_228"; // -416 +228 +416 -228 for wide
+            public string zoom { get; set; } = "0_0"; // Original values: -304 +228 +304 -228 for SD, -416 +228 +416 -228 for wide
             public string anti_aliasing { get; set; } = "on";
         }
     }

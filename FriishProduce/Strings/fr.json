@@ -417,7 +417,7 @@
 			"content_domain":					"Domaine URL du contenu",
 			"background_color":					"Couleur d'arrière-plan",
 			"anti_aliasing":					"Anti-aliasing",
-			"ortho_rect":						"Zoom"
+			"zoom":								"Zoom"
 		},
 
 		"forwarder": {

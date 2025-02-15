@@ -41,14 +41,13 @@ namespace FriishProduce
             this.save_data_enable = new System.Windows.Forms.CheckBox();
             this.display = new System.Windows.Forms.GroupBox();
             this.anti_aliasing = new System.Windows.Forms.CheckBox();
-            this.ortho_rect_lock = new System.Windows.Forms.CheckBox();
             this.fullscreen = new System.Windows.Forms.CheckBox();
-            this.ortho_rect_v_l = new System.Windows.Forms.Label();
             this.quality_l = new System.Windows.Forms.Label();
-            this.ortho_rect_h_l = new System.Windows.Forms.Label();
-            this.ortho_rect_v = new System.Windows.Forms.NumericUpDown();
-            this.ortho_rect = new System.Windows.Forms.Label();
-            this.ortho_rect_h = new System.Windows.Forms.NumericUpDown();
+            this.zoom_vl = new System.Windows.Forms.Label();
+            this.zoom_hl = new System.Windows.Forms.Label();
+            this.zoom_v = new System.Windows.Forms.NumericUpDown();
+            this.zoom = new System.Windows.Forms.Label();
+            this.zoom_h = new System.Windows.Forms.NumericUpDown();
             this.controls = new System.Windows.Forms.GroupBox();
             this.midi = new System.Windows.Forms.CheckBox();
             this.qwerty_keyboard = new System.Windows.Forms.CheckBox();
@@ -67,8 +66,8 @@ namespace FriishProduce
             this.controller_box.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.display.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ortho_rect_v)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ortho_rect_h)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.zoom_v)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.zoom_h)).BeginInit();
             this.controls.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.background_color_img)).BeginInit();
             this.strap_reminder.SuspendLayout();
@@ -197,15 +196,14 @@ namespace FriishProduce
             // display
             // 
             this.display.Controls.Add(this.anti_aliasing);
-            this.display.Controls.Add(this.ortho_rect_lock);
             this.display.Controls.Add(this.fullscreen);
-            this.display.Controls.Add(this.ortho_rect_v_l);
+            this.display.Controls.Add(this.zoom_vl);
             this.display.Controls.Add(this.quality_l);
-            this.display.Controls.Add(this.ortho_rect_h_l);
+            this.display.Controls.Add(this.zoom_hl);
             this.display.Controls.Add(this.quality);
-            this.display.Controls.Add(this.ortho_rect_v);
-            this.display.Controls.Add(this.ortho_rect);
-            this.display.Controls.Add(this.ortho_rect_h);
+            this.display.Controls.Add(this.zoom_v);
+            this.display.Controls.Add(this.zoom);
+            this.display.Controls.Add(this.zoom_h);
             this.display.Location = new System.Drawing.Point(12, 12);
             this.display.Name = "display";
             this.display.Size = new System.Drawing.Size(360, 114);
@@ -225,18 +223,6 @@ namespace FriishProduce
             this.anti_aliasing.Text = "anti_aliasing";
             this.anti_aliasing.UseVisualStyleBackColor = true;
             // 
-            // ortho_rect_lock
-            // 
-            this.ortho_rect_lock.AutoSize = true;
-            this.ortho_rect_lock.Location = new System.Drawing.Point(283, 14);
-            this.ortho_rect_lock.Name = "ortho_rect_lock";
-            this.ortho_rect_lock.Size = new System.Drawing.Size(47, 17);
-            this.ortho_rect_lock.TabIndex = 45;
-            this.ortho_rect_lock.Tag = "ortho_rect_lock";
-            this.ortho_rect_lock.Text = "Lock";
-            this.ortho_rect_lock.UseVisualStyleBackColor = true;
-            this.ortho_rect_lock.CheckedChanged += new System.EventHandler(this.lockZoom);
-            // 
             // fullscreen
             // 
             this.fullscreen.AutoSize = true;
@@ -248,14 +234,14 @@ namespace FriishProduce
             this.fullscreen.Text = "fullscreen";
             this.fullscreen.UseVisualStyleBackColor = true;
             // 
-            // ortho_rect_v_l
+            // zoom_vl
             // 
-            this.ortho_rect_v_l.AutoSize = true;
-            this.ortho_rect_v_l.Location = new System.Drawing.Point(261, 37);
-            this.ortho_rect_v_l.Name = "ortho_rect_v_l";
-            this.ortho_rect_v_l.Size = new System.Drawing.Size(13, 13);
-            this.ortho_rect_v_l.TabIndex = 44;
-            this.ortho_rect_v_l.Text = "V";
+            this.zoom_vl.AutoSize = true;
+            this.zoom_vl.Location = new System.Drawing.Point(259, 39);
+            this.zoom_vl.Name = "zoom_vl";
+            this.zoom_vl.Size = new System.Drawing.Size(13, 13);
+            this.zoom_vl.TabIndex = 44;
+            this.zoom_vl.Text = "V";
             // 
             // quality_l
             // 
@@ -267,60 +253,60 @@ namespace FriishProduce
             this.quality_l.Tag = "quality";
             this.quality_l.Text = "quality";
             // 
-            // ortho_rect_h_l
+            // zoom_hl
             // 
-            this.ortho_rect_h_l.AutoSize = true;
-            this.ortho_rect_h_l.Location = new System.Drawing.Point(179, 37);
-            this.ortho_rect_h_l.Name = "ortho_rect_h_l";
-            this.ortho_rect_h_l.Size = new System.Drawing.Size(14, 13);
-            this.ortho_rect_h_l.TabIndex = 43;
-            this.ortho_rect_h_l.Text = "H";
+            this.zoom_hl.AutoSize = true;
+            this.zoom_hl.Location = new System.Drawing.Point(179, 39);
+            this.zoom_hl.Name = "zoom_hl";
+            this.zoom_hl.Size = new System.Drawing.Size(14, 13);
+            this.zoom_hl.TabIndex = 43;
+            this.zoom_hl.Text = "H";
             // 
-            // ortho_rect_v
+            // zoom_v
             // 
-            this.ortho_rect_v.Location = new System.Drawing.Point(275, 35);
-            this.ortho_rect_v.Maximum = new decimal(new int[] {
-            600,
+            this.zoom_v.Location = new System.Drawing.Point(274, 37);
+            this.zoom_v.Maximum = new decimal(new int[] {
+            750,
             0,
             0,
             0});
-            this.ortho_rect_v.Name = "ortho_rect_v";
-            this.ortho_rect_v.Size = new System.Drawing.Size(55, 21);
-            this.ortho_rect_v.TabIndex = 42;
-            this.ortho_rect_v.Value = new decimal(new int[] {
+            this.zoom_v.Minimum = new decimal(new int[] {
             100,
             0,
             0,
-            0});
-            this.ortho_rect_v.ValueChanged += new System.EventHandler(this.valueChanged);
+            -2147483648});
+            this.zoom_v.Name = "zoom_v";
+            this.zoom_v.Size = new System.Drawing.Size(55, 21);
+            this.zoom_v.TabIndex = 42;
+            this.zoom_v.ValueChanged += new System.EventHandler(this.valueChanged);
             // 
-            // ortho_rect
+            // zoom
             // 
-            this.ortho_rect.AutoSize = true;
-            this.ortho_rect.Location = new System.Drawing.Point(191, 18);
-            this.ortho_rect.Name = "ortho_rect";
-            this.ortho_rect.Size = new System.Drawing.Size(58, 13);
-            this.ortho_rect.TabIndex = 41;
-            this.ortho_rect.Tag = "ortho_rect";
-            this.ortho_rect.Text = "ortho_rect";
+            this.zoom.AutoSize = true;
+            this.zoom.Location = new System.Drawing.Point(191, 20);
+            this.zoom.Name = "zoom";
+            this.zoom.Size = new System.Drawing.Size(32, 13);
+            this.zoom.TabIndex = 41;
+            this.zoom.Tag = "zoom";
+            this.zoom.Text = "zoom";
             // 
-            // ortho_rect_h
+            // zoom_h
             // 
-            this.ortho_rect_h.Location = new System.Drawing.Point(194, 35);
-            this.ortho_rect_h.Maximum = new decimal(new int[] {
-            600,
+            this.zoom_h.Location = new System.Drawing.Point(194, 37);
+            this.zoom_h.Maximum = new decimal(new int[] {
+            750,
             0,
             0,
             0});
-            this.ortho_rect_h.Name = "ortho_rect_h";
-            this.ortho_rect_h.Size = new System.Drawing.Size(55, 21);
-            this.ortho_rect_h.TabIndex = 40;
-            this.ortho_rect_h.Value = new decimal(new int[] {
+            this.zoom_h.Minimum = new decimal(new int[] {
             100,
             0,
             0,
-            0});
-            this.ortho_rect_h.ValueChanged += new System.EventHandler(this.valueChanged);
+            -2147483648});
+            this.zoom_h.Name = "zoom_h";
+            this.zoom_h.Size = new System.Drawing.Size(55, 21);
+            this.zoom_h.TabIndex = 40;
+            this.zoom_h.ValueChanged += new System.EventHandler(this.valueChanged);
             // 
             // controls
             // 
@@ -485,8 +471,8 @@ namespace FriishProduce
             this.groupBox1.PerformLayout();
             this.display.ResumeLayout(false);
             this.display.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ortho_rect_v)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ortho_rect_h)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.zoom_v)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.zoom_h)).EndInit();
             this.controls.ResumeLayout(false);
             this.controls.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.background_color_img)).EndInit();
@@ -526,11 +512,10 @@ namespace FriishProduce
         private System.Windows.Forms.Label background_color_l;
         private System.Windows.Forms.CheckBox vff_sync_on_write;
         private System.Windows.Forms.CheckBox anti_aliasing;
-        private System.Windows.Forms.NumericUpDown ortho_rect_h;
-        private System.Windows.Forms.Label ortho_rect;
-        private System.Windows.Forms.NumericUpDown ortho_rect_v;
-        private System.Windows.Forms.Label ortho_rect_h_l;
-        private System.Windows.Forms.Label ortho_rect_v_l;
-        private System.Windows.Forms.CheckBox ortho_rect_lock;
+        private System.Windows.Forms.NumericUpDown zoom_h;
+        private System.Windows.Forms.NumericUpDown zoom_v;
+        private System.Windows.Forms.Label zoom;
+        private System.Windows.Forms.Label zoom_hl;
+        private System.Windows.Forms.Label zoom_vl;
     }
 }

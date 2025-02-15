@@ -434,7 +434,7 @@
 			"content_domain":					"콘텐츠 도메인",
 			"background_color":					"배경색",
 			"anti_aliasing":					"Anti-aliasing",
-			"ortho_rect":						"Zoom"
+			"zoom":								"Zoom"
 		},
 
 		"forwarder": {

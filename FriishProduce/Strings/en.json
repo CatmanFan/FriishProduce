@@ -440,7 +440,7 @@
 			"content_domain":					"Content domain",
 			"background_color":					"Background color",
 			"anti_aliasing":					"Anti-aliasing",
-			"ortho_rect":						"Zoom"
+			"zoom":								"Zoom"
 		},
 
 		"forwarder": {

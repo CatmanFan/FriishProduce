@@ -55,7 +55,7 @@ namespace FriishProduce
                 { "content_domain", null },
                 { "background_color", "0 0 0 0" },
                 { "anti_aliasing", Program.Config.flash.anti_aliasing },
-                { "ortho_rect", Program.Config.flash.ortho_rect },
+                { "ortho_rect", Program.Config.flash.zoom },
             };
         }
 
@@ -93,8 +93,9 @@ namespace FriishProduce
 
                 // Ortho rect
                 // ****************
-                ortho_rect_h.Value = int.Parse(Options["ortho_rect"].Substring(0, Options["ortho_rect"].IndexOf('_')));
-                ortho_rect_v.Value = int.Parse(Options["ortho_rect"].Substring(Options["ortho_rect"].IndexOf('_') + 1));
+                (zoom_h.Value, zoom_v.Value) =
+                    (int.Parse(Options["zoom"].Substring(0, Options["zoom"].IndexOf('_'))),
+                     int.Parse(Options["zoom"].Substring(Options["zoom"].IndexOf('_') + 1)));
 
                 // Background color
                 // ****************
@@ -150,7 +151,7 @@ namespace FriishProduce
             Options["fullscreen"] = fullscreen.Checked ? "yes" : "no";
             Options["content_domain"] = content_domain.Text;
             Options["background_color"] = BGColor.Color.R + BGColor.Color.G + BGColor.Color.B > 0 ? $"{BGColor.Color.R} {BGColor.Color.G} {BGColor.Color.B} 255" : "0 0 0 0";
-            Options["ortho_rect"] = $"{ortho_rect_h.Value}_{ortho_rect_v.Value}";
+            Options["zoom"] = $"{zoom_h.Value}_{zoom_v.Value}";
             Options["anti_aliasing"] = anti_aliasing.Checked ? "on" : "off";
         }
 
@@ -202,33 +203,7 @@ namespace FriishProduce
                     background_color_img.BackColor = BGColor.Color = Color.Black;
                 }
             }
-
-            else if ((sender == ortho_rect_h || sender == ortho_rect_v || sender == ortho_rect_lock) && ortho_rect_values != (0, 0))
-            {
-                bool h = sender == ortho_rect_h;
-                decimal scale = h ? ortho_rect_h.Value / ortho_rect_values.h : ortho_rect_v.Value / ortho_rect_values.v;
-                var other = h ? ortho_rect_v : ortho_rect_h;
-
-                (int h, int v) newValues = (Convert.ToInt32(Math.Round(ortho_rect_values.h * scale)),
-                                             Convert.ToInt32(Math.Round(ortho_rect_values.v * scale)));
-
-                int otherV = h ? newValues.v : newValues.h;
-
-                other.ValueChanged -= valueChanged;
-                other.Value = otherV;
-                other.ValueChanged += valueChanged;
-            }
         }
-
-        private void lockZoom(object sender, EventArgs e)
-        {
-            if (ortho_rect_lock.Checked)
-                ortho_rect_values = (ortho_rect_h.Value, ortho_rect_v.Value);
-            else
-                ortho_rect_values = (0, 0);
-        }
-
-        private (decimal h, decimal v) ortho_rect_values = (0, 0);
 
         private void changeBackgroundColor(object sender, EventArgs e)
         {

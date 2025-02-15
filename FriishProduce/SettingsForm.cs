@@ -205,7 +205,7 @@ namespace FriishProduce
             Program.Lang.String(flash_strap_reminder_list, "adobe_flash");
             Program.Lang.String(flash_fullscreen, "adobe_flash");
             Program.Lang.String(flash_anti_aliasing, "adobe_flash");
-            Program.Lang.String(flash_ortho_rect, "adobe_flash");
+            Program.Lang.String(flash_zoom, "adobe_flash");
 
             flash_vff_cache_size.Items.Clear();
             flash_persistent_storage_total.Items.Clear();
@@ -316,8 +316,9 @@ namespace FriishProduce
             flash_strap_reminder_list.SelectedIndex = Program.Config.flash.strap_reminder switch { "none" => 0, "normal" => 1, _ => 2 };
             flash_fullscreen.Checked = Program.Config.flash.fullscreen == "yes";
             flash_anti_aliasing.Checked = Program.Config.flash.anti_aliasing == "on";
-            flash_ortho_rect_h.Value = decimal.Parse(Program.Config.flash.ortho_rect.Substring(0, Program.Config.flash.ortho_rect.IndexOf('_')));
-            flash_ortho_rect_v.Value = decimal.Parse(Program.Config.flash.ortho_rect.Substring(Program.Config.flash.ortho_rect.IndexOf('_') + 1));
+            (flash_zoom_h.Value, flash_zoom_v.Value) =
+                (int.Parse(Program.Config.flash.zoom.Substring(0, Program.Config.flash.zoom.IndexOf('_'))),
+                 int.Parse(Program.Config.flash.zoom.Substring(Program.Config.flash.zoom.IndexOf('_') + 1)));
 
             flash_vff_sync_on_write.Enabled = flash_save_data_enable.Checked;
             flash_vff_cache_size_l.Enabled = flash_vff_cache_size.Enabled = flash_save_data_enable.Checked;
@@ -468,7 +469,7 @@ namespace FriishProduce
             Program.Config.flash.hbm_no_save = Program.Config.flash.shared_object_capability == "on" ? "no" : "yes";
             Program.Config.flash.fullscreen = flash_fullscreen.Checked ? "yes" : "no";
             Program.Config.flash.anti_aliasing = flash_anti_aliasing.Checked ? "on" : "off";
-            Program.Config.flash.ortho_rect = $"{flash_ortho_rect_h.Value}_{flash_ortho_rect_v.Value}";
+            Program.Config.flash.zoom = $"{flash_zoom_h.Value}_{flash_zoom_v.Value}";
 
             switch (vc_neo_bios_list.SelectedIndex)
             {

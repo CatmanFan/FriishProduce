@@ -43,7 +43,7 @@ Please check the **[wiki](https://catmanfan.github.io/FriishProduce/)** for a tu
 
 ## To-Do
 - [ ] Design Japanese-only icons for FC, SFC, PCE and PCECD
-- [ ] Add Flash video mode option
+- [X] Add Flash video mode option
 - [ ] Fix Flash savedata issue(?)
 
 ### Potential

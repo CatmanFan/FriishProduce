@@ -123,11 +123,11 @@ namespace FriishProduce
             this.browse_bios_psx = new System.Windows.Forms.Button();
             this.bios_filename_psx = new System.Windows.Forms.TextBox();
             this.adobe_flash = new System.Windows.Forms.Panel();
-            this.flash_ortho_rect_v_l = new System.Windows.Forms.Label();
-            this.flash_ortho_rect_h_l = new System.Windows.Forms.Label();
-            this.flash_ortho_rect_v = new System.Windows.Forms.NumericUpDown();
-            this.flash_ortho_rect = new System.Windows.Forms.Label();
-            this.flash_ortho_rect_h = new System.Windows.Forms.NumericUpDown();
+            this.flash_zoom_vl = new System.Windows.Forms.Label();
+            this.flash_zoom_hl = new System.Windows.Forms.Label();
+            this.flash_zoom_v = new System.Windows.Forms.NumericUpDown();
+            this.flash_zoom = new System.Windows.Forms.Label();
+            this.flash_zoom_h = new System.Windows.Forms.NumericUpDown();
             this.flash_anti_aliasing = new System.Windows.Forms.CheckBox();
             this.display = new System.Windows.Forms.GroupBox();
             this.flash_fullscreen = new System.Windows.Forms.CheckBox();
@@ -197,8 +197,8 @@ namespace FriishProduce
             this.bios_neo.SuspendLayout();
             this.bios_psx.SuspendLayout();
             this.adobe_flash.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.flash_ortho_rect_v)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.flash_ortho_rect_h)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.flash_zoom_v)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.flash_zoom_h)).BeginInit();
             this.display.SuspendLayout();
             this.flash_strap_reminder.SuspendLayout();
             this.flash_controls.SuspendLayout();
@@ -939,12 +939,6 @@ namespace FriishProduce
             // 
             // adobe_flash
             // 
-            this.adobe_flash.Controls.Add(this.flash_ortho_rect_v_l);
-            this.adobe_flash.Controls.Add(this.flash_ortho_rect_h_l);
-            this.adobe_flash.Controls.Add(this.flash_ortho_rect_v);
-            this.adobe_flash.Controls.Add(this.flash_ortho_rect);
-            this.adobe_flash.Controls.Add(this.flash_ortho_rect_h);
-            this.adobe_flash.Controls.Add(this.flash_anti_aliasing);
             this.adobe_flash.Controls.Add(this.display);
             this.adobe_flash.Controls.Add(this.flash_strap_reminder);
             this.adobe_flash.Controls.Add(this.flash_controls);
@@ -953,51 +947,51 @@ namespace FriishProduce
             this.adobe_flash.Name = "adobe_flash";
             this.adobe_flash.Tag = "adobe_flash";
             // 
-            // flash_ortho_rect_v_l
+            // flash_zoom_vl
             // 
-            resources.ApplyResources(this.flash_ortho_rect_v_l, "flash_ortho_rect_v_l");
-            this.flash_ortho_rect_v_l.Name = "flash_ortho_rect_v_l";
+            resources.ApplyResources(this.flash_zoom_vl, "flash_zoom_vl");
+            this.flash_zoom_vl.Name = "flash_zoom_vl";
             // 
-            // flash_ortho_rect_h_l
+            // flash_zoom_hl
             // 
-            resources.ApplyResources(this.flash_ortho_rect_h_l, "flash_ortho_rect_h_l");
-            this.flash_ortho_rect_h_l.Name = "flash_ortho_rect_h_l";
+            resources.ApplyResources(this.flash_zoom_hl, "flash_zoom_hl");
+            this.flash_zoom_hl.Name = "flash_zoom_hl";
             // 
-            // flash_ortho_rect_v
+            // flash_zoom_v
             // 
-            resources.ApplyResources(this.flash_ortho_rect_v, "flash_ortho_rect_v");
-            this.flash_ortho_rect_v.Maximum = new decimal(new int[] {
-            600,
+            resources.ApplyResources(this.flash_zoom_v, "flash_zoom_v");
+            this.flash_zoom_v.Maximum = new decimal(new int[] {
+            750,
             0,
             0,
             0});
-            this.flash_ortho_rect_v.Name = "flash_ortho_rect_v";
-            this.flash_ortho_rect_v.Value = new decimal(new int[] {
+            this.flash_zoom_v.Minimum = new decimal(new int[] {
             100,
             0,
             0,
-            0});
+            -2147483648});
+            this.flash_zoom_v.Name = "flash_zoom_v";
             // 
-            // flash_ortho_rect
+            // flash_zoom
             // 
-            resources.ApplyResources(this.flash_ortho_rect, "flash_ortho_rect");
-            this.flash_ortho_rect.Name = "flash_ortho_rect";
-            this.flash_ortho_rect.Tag = "ortho_rect";
+            resources.ApplyResources(this.flash_zoom, "flash_zoom");
+            this.flash_zoom.Name = "flash_zoom";
+            this.flash_zoom.Tag = "zoom";
             // 
-            // flash_ortho_rect_h
+            // flash_zoom_h
             // 
-            resources.ApplyResources(this.flash_ortho_rect_h, "flash_ortho_rect_h");
-            this.flash_ortho_rect_h.Maximum = new decimal(new int[] {
-            600,
+            resources.ApplyResources(this.flash_zoom_h, "flash_zoom_h");
+            this.flash_zoom_h.Maximum = new decimal(new int[] {
+            750,
             0,
             0,
             0});
-            this.flash_ortho_rect_h.Name = "flash_ortho_rect_h";
-            this.flash_ortho_rect_h.Value = new decimal(new int[] {
+            this.flash_zoom_h.Minimum = new decimal(new int[] {
             100,
             0,
             0,
-            0});
+            -2147483648});
+            this.flash_zoom_h.Name = "flash_zoom_h";
             // 
             // flash_anti_aliasing
             // 
@@ -1008,9 +1002,15 @@ namespace FriishProduce
             // 
             // display
             // 
+            this.display.Controls.Add(this.flash_anti_aliasing);
+            this.display.Controls.Add(this.flash_zoom_vl);
             this.display.Controls.Add(this.flash_fullscreen);
+            this.display.Controls.Add(this.flash_zoom_hl);
             this.display.Controls.Add(this.flash_quality_l);
+            this.display.Controls.Add(this.flash_zoom_v);
             this.display.Controls.Add(this.flash_quality_list);
+            this.display.Controls.Add(this.flash_zoom);
+            this.display.Controls.Add(this.flash_zoom_h);
             resources.ApplyResources(this.display, "display");
             this.display.Name = "display";
             this.display.TabStop = false;
@@ -1323,9 +1323,8 @@ namespace FriishProduce
             this.bios_psx.ResumeLayout(false);
             this.bios_psx.PerformLayout();
             this.adobe_flash.ResumeLayout(false);
-            this.adobe_flash.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.flash_ortho_rect_v)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.flash_ortho_rect_h)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.flash_zoom_v)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.flash_zoom_h)).EndInit();
             this.display.ResumeLayout(false);
             this.display.PerformLayout();
             this.flash_strap_reminder.ResumeLayout(false);
@@ -1464,11 +1463,11 @@ namespace FriishProduce
         private System.Windows.Forms.GroupBox theme;
         private System.Windows.Forms.ComboBox themes;
         private System.Windows.Forms.CheckBox flash_vff_sync_on_write;
-        private System.Windows.Forms.Label flash_ortho_rect_v_l;
-        private System.Windows.Forms.Label flash_ortho_rect_h_l;
-        private System.Windows.Forms.NumericUpDown flash_ortho_rect_v;
-        private System.Windows.Forms.Label flash_ortho_rect;
-        private System.Windows.Forms.NumericUpDown flash_ortho_rect_h;
+        private System.Windows.Forms.Label flash_zoom_vl;
+        private System.Windows.Forms.Label flash_zoom_hl;
+        private System.Windows.Forms.NumericUpDown flash_zoom_v;
+        private System.Windows.Forms.Label flash_zoom;
+        private System.Windows.Forms.NumericUpDown flash_zoom_h;
         private System.Windows.Forms.CheckBox flash_anti_aliasing;
     }
 }
