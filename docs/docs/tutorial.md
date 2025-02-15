@@ -5,10 +5,8 @@
 	**The following minimum requirements are needed:**
 	
 	* **OS:** Windows 7 or later
-	* **Redistributables:**
-		* .NET Framework 2.0 (needed for libWiiSharp)
-		* .NET Framework 4.7.2
-		* Microsoft Visual C++ Redistributable for Visual Studio 2019 (needed for ccf-tools)
+	* **.NET Framework:** 4.8
+	* Microsoft Visual C++ Redistributable for Visual Studio 2019 (needed for ccf-tools)
 
 !!! note ""
 	
