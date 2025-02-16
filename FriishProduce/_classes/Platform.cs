@@ -38,9 +38,9 @@
                     },
 
                     {
-                        Platform.SNES, FileDatas.Icons.snes
-                        // Program.Lang.GetRegion() is Language.Region.Americas or Language.Region.International
-                        // ? FileDatas.Icons.snes : FileDatas.Icons.sfc
+                        Platform.SNES,
+                        Program.Lang.GetRegion() is Language.Region.Americas or Language.Region.International
+                        ? FileDatas.Icons.snes : null
                     },
 
                     {
@@ -58,7 +58,7 @@
                         Program.Lang.GetRegion() is Language.Region.Americas or Language.Region.International
                         ? FileDatas.Icons.gen : FileDatas.Icons.smd
                     },
-
+                    
                     {
                         Platform.PCE, FileDatas.Icons.tg16
                         // Program.Lang.GetRegion() is Language.Region.Japan
@@ -90,11 +90,26 @@
                 System.Collections.Generic.Dictionary<Platform, System.Drawing.Bitmap> resized = new();
 
                 foreach (var item in orig)
-                    resized.Add(item.Key, new System.Drawing.Icon(item.Value, 16, 16).ToBitmap());
+                    if (item.Value != null)
+                        resized.Add(item.Key, new System.Drawing.Icon(item.Value, 16, 16).ToBitmap());
 
-                resized.Add(Platform.C64, FileDatas.Icons.c64);
-                resized.Add(Platform.MSX, FileDatas.Icons.msx);
-                resized.Add(Platform.Flash, FileDatas.Icons.flash);
+                foreach (var missing in new System.Collections.Generic.Dictionary<Platform, System.Drawing.Bitmap>()
+                {
+                    // Language-specific icons
+                    { Platform.NES, Properties.Resources.retroarch },
+                    { Platform.SNES, FileDatas.Icons.sfc },
+                    { Platform.PCE, Properties.Resources.retroarch },
+                    { Platform.PCECD, Properties.Resources.retroarch },
+
+                    // Other PNG-based icons
+                    { Platform.C64, FileDatas.Icons.c64 },
+                    { Platform.MSX, FileDatas.Icons.msx },
+                    { Platform.Flash, FileDatas.Icons.flash },
+                })
+                {
+                    if (!resized.ContainsKey(missing.Key))
+                        resized.Add(missing.Key, missing.Value);
+                }
 
                 return resized;
             }

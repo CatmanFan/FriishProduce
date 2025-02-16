@@ -191,6 +191,8 @@
 			"image_interpolation_mode5": "最近傍",
 			"image_interpolation_mode6": "バイリニア（高品質）",
 			"image_interpolation_mode7": "バイキュービック（高品質）",
+			"image_resize0": "画像を拡大",
+			"image_resize1": "縦横比を固定",
 			"channel_metadata": "チャンネルのメタデータ",
 			"channel_name": "チャンネルの名前:",
 			"title_id": "タイトルID:",

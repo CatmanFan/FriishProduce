@@ -612,6 +612,7 @@
     <None Include="Resources\icons\etc\page_white_cd.png" />
     <None Include="Resources\icons\etc\page_white_flash.png" />
     <None Include="Resources\icons\etc\page_white_zip.png" />
+    <None Include="Resources\icons\consoles\sfc.png" />
     <Content Include="Resources\icons\etc\global_telecom.png" />
     <Content Include="Resources\icons\global_telecom.ico" />
     <Content Include="Resources\icons\wiki.gif" />
