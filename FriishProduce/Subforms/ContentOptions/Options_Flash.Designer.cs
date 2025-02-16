@@ -45,9 +45,9 @@ namespace FriishProduce
             this.quality_l = new System.Windows.Forms.Label();
             this.zoom_vl = new System.Windows.Forms.Label();
             this.zoom_hl = new System.Windows.Forms.Label();
-            this.zoom_v = new System.Windows.Forms.NumericUpDown();
             this.zoom = new System.Windows.Forms.Label();
-            this.zoom_h = new System.Windows.Forms.NumericUpDown();
+            this.zoom_v = new FriishProduce.NumericUpDownEx();
+            this.zoom_h = new FriishProduce.NumericUpDownEx();
             this.controls = new System.Windows.Forms.GroupBox();
             this.midi = new System.Windows.Forms.CheckBox();
             this.qwerty_keyboard = new System.Windows.Forms.CheckBox();
@@ -512,8 +512,8 @@ namespace FriishProduce
         private System.Windows.Forms.Label background_color_l;
         private System.Windows.Forms.CheckBox vff_sync_on_write;
         private System.Windows.Forms.CheckBox anti_aliasing;
-        private System.Windows.Forms.NumericUpDown zoom_h;
-        private System.Windows.Forms.NumericUpDown zoom_v;
+        private NumericUpDownEx zoom_h;
+        private NumericUpDownEx zoom_v;
         private System.Windows.Forms.Label zoom;
         private System.Windows.Forms.Label zoom_hl;
         private System.Windows.Forms.Label zoom_vl;

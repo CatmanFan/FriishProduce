@@ -43,7 +43,10 @@ Please check the **[wiki](https://catmanfan.github.io/FriishProduce/)** for a tu
 
 ## To-Do
 - [ ] Tidyup Flash content options interface
-- [ ] Design Japanese-only icons for FC, SFC, PCE and PCECD
+* Design Japanese-only icons
+  - [ ] Famicom
+  - [ ] PCE
+  - [ ] PCE CD
 - [ ] Complete implementation of themes functionality
 
 ### Potential

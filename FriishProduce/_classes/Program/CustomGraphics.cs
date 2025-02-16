@@ -22,7 +22,7 @@ namespace FriishProduce
 
         [Localizable(true)]
         [DefaultValue("")]
-        [Description("")]
+        [Description("Placeholder text to display if there is no value.")]
         public virtual string PlaceholderText
         {
             get
@@ -103,6 +103,52 @@ namespace FriishProduce
             }
 
             base.OnPaint(e); // Paint text
+        }
+    }
+
+    class NumericUpDownEx : NumericUpDown
+    {
+        public NumericUpDownEx() : base()
+        {
+
+        }
+
+        private string prefix = string.Empty;
+        private string suffix = string.Empty;
+
+        [Localizable(true)]
+        [DefaultValue("")]
+        [Description("The string to be displayed before the value.")]
+        public virtual string Prefix
+        {
+            get => prefix;
+            set
+            {
+                prefix = value;
+                UpdateEditText();
+            }
+        }
+
+
+        [Localizable(true)]
+        [DefaultValue("")]
+        [Description("The string to be displayed after the value.")]
+        public string Suffix
+        {
+            get => suffix;
+            set
+            {
+                suffix = value;
+                UpdateEditText();
+            }
+        }
+
+        protected override void UpdateEditText()
+        {
+            base.UpdateEditText();
+
+            ChangingText = true;
+            Text = prefix + Text + suffix;
         }
     }
 }

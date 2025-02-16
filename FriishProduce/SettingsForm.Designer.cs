@@ -125,9 +125,9 @@ namespace FriishProduce
             this.adobe_flash = new System.Windows.Forms.Panel();
             this.flash_zoom_vl = new System.Windows.Forms.Label();
             this.flash_zoom_hl = new System.Windows.Forms.Label();
-            this.flash_zoom_v = new System.Windows.Forms.NumericUpDown();
             this.flash_zoom = new System.Windows.Forms.Label();
-            this.flash_zoom_h = new System.Windows.Forms.NumericUpDown();
+            this.flash_zoom_v = new NumericUpDownEx();
+            this.flash_zoom_h = new NumericUpDownEx();
             this.flash_anti_aliasing = new System.Windows.Forms.CheckBox();
             this.display = new System.Windows.Forms.GroupBox();
             this.flash_fullscreen = new System.Windows.Forms.CheckBox();
@@ -1465,9 +1465,9 @@ namespace FriishProduce
         private System.Windows.Forms.CheckBox flash_vff_sync_on_write;
         private System.Windows.Forms.Label flash_zoom_vl;
         private System.Windows.Forms.Label flash_zoom_hl;
-        private System.Windows.Forms.NumericUpDown flash_zoom_v;
         private System.Windows.Forms.Label flash_zoom;
-        private System.Windows.Forms.NumericUpDown flash_zoom_h;
+        private NumericUpDownEx flash_zoom_v;
+        private NumericUpDownEx flash_zoom_h;
         private System.Windows.Forms.CheckBox flash_anti_aliasing;
     }
 }

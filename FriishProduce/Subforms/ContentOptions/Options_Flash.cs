@@ -55,7 +55,7 @@ namespace FriishProduce
                 { "content_domain", null },
                 { "background_color", "0 0 0 0" },
                 { "anti_aliasing", Program.Config.flash.anti_aliasing },
-                { "ortho_rect", Program.Config.flash.zoom },
+                { "zoom", Program.Config.flash.zoom },
             };
         }
 
@@ -202,6 +202,11 @@ namespace FriishProduce
                 {
                     background_color_img.BackColor = BGColor.Color = Color.Black;
                 }
+            }
+
+            else if (sender == zoom_h || sender == zoom_v)
+            {
+                (sender as NumericUpDownEx).Prefix = (sender as NumericUpDownEx).Value > 0 ? "+" : null;
             }
         }
 
