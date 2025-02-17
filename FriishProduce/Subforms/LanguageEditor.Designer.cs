@@ -385,6 +385,7 @@ namespace FriishProduce
             // 
             this.find_original.AcceptsReturn = true;
             this.find_original.AutoSize = false;
+            this.find_original.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.find_original.Name = "find_original";
             this.find_original.Size = new System.Drawing.Size(200, 23);
             this.find_original.TextChanged += new System.EventHandler(this.Find);
@@ -401,6 +402,7 @@ namespace FriishProduce
             // 
             this.find_translated.AcceptsReturn = true;
             this.find_translated.AutoSize = false;
+            this.find_translated.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.find_translated.Name = "find_translated";
             this.find_translated.Size = new System.Drawing.Size(200, 23);
             this.find_translated.TextChanged += new System.EventHandler(this.Find);

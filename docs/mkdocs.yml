@@ -10,13 +10,6 @@ nav:
   - Translate: translate.md
 
 theme:
-# Bootstrap theme settings
-# ---------------------------------------------
-  # name: bootstrap
-  # logo: img/logo.png
-
-# Material theme settings
-# ---------------------------------------------
   name: material
   custom_dir: docs/
   logo: assets/images/logo.png
@@ -44,6 +37,14 @@ theme:
 extra_css:
   - assets/extra.css
 
+extra:
+  # The language switcher values are stored here.
+  # ---------------------------------------------
+  alternate:
+    - name: English
+      lang: en
+      link: ""
+
 plugins:
   - glightbox:
        touchNavigation: true
@@ -51,57 +52,41 @@ plugins:
        effect: zoom
        slide_effect: slide
 
-  - i18n:
-      docs_structure: folder
-      fallback_to_default: true
-      languages:
-        - locale: en
-          name: English
-          build: true
-          default: true
+  # - i18n:
+      # docs_structure: folder
+      # fallback_to_default: true
+      # languages:
+        # - locale: en
+          # name: English
+          # build: true
+          # default: true
 
-        - locale: fr
-          name: Français
-          build: true
-          site_description: "Premier injecteur GUI pour la Console virtuelle de Wii"
-          nav_translations:
-            Home: Accueil
-            Tutorial: Tutoriel
-            Translate: Traduire
+        # - locale: fr
+          # name: Français
+          # build: true
+          # site_description: "Premier injecteur GUI pour la Console virtuelle de Wii"
+          # nav_translations:
+            # Home: Accueil
+            # Tutorial: Tutoriel
+            # Translate: Traduire
 
-        - locale: es
-          name: Español
-          build: true
-          nav_translations:
-            Home: Pagina principal
-            Tutorial: Tutorial
-            FAQ: Preguntas frecuentes
-            Translate: Traducir
+        # - locale: es
+          # name: Español
+          # build: true
+          # nav_translations:
+            # Home: Pagina principal
+            # Tutorial: Tutorial
+            # FAQ: Preguntas frecuentes
+            # Translate: Traducir
 
-        - locale: ja
-          name: 日本語
-          build: false
-          nav_translations:
-            Home: ホームページ
-            Tutorial: 使い方
-            Translate: 翻訳
-            FAQ: よくある質問
-
-extra:
-  # The language switcher values are stored here.
-  # ---------------------------------------------
-  alternate:
-    - name: English
-      link: ""
-      lang: en
-
-    - name: Français
-      link: fr
-      lang: fr
-
-    - name: Español
-      link: es
-      lang: es
+        # - locale: ja
+          # name: 日本語
+          # build: false
+          # nav_translations:
+            # Home: ホーム
+            # Tutorial: 使い方
+            # Translate: 翻訳
+            # FAQ: よくある質問
 
 markdown_extensions:
   - admonition

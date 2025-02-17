@@ -173,25 +173,23 @@ namespace FriishProduce
         public static bool ChangeColors(Form frm, bool isDialog)
         {
             if (!Active && !isDialog) return false;
+            bool flat = Active && Colors.Controls.HasValue;
 
-            if (Active && Colors.Controls.HasValue)
+            foreach (Control item1 in frm.Controls)
             {
-                foreach (Control item1 in frm.Controls)
+                colorize(item1, flat);
+                foreach (Control item2 in item1.Controls)
                 {
-                    colorize(item1);
-                    foreach (Control item2 in item1.Controls)
+                    colorize(item2, flat);
+                    foreach (Control item3 in item2.Controls)
                     {
-                        colorize(item2);
-                        foreach (Control item3 in item2.Controls)
+                        colorize(item3, flat);
+                        foreach (Control item4 in item3.Controls)
                         {
-                            colorize(item3);
-                            foreach (Control item4 in item3.Controls)
+                            colorize(item4, flat);
+                            foreach (Control item5 in item4.Controls)
                             {
-                                colorize(item4);
-                                foreach (Control item5 in item4.Controls)
-                                {
-                                    colorize(item5);
-                                }
+                                colorize(item5, flat);
                             }
                         }
                     }
@@ -215,7 +213,7 @@ namespace FriishProduce
         /// <summary>
         /// Function for subcontrols
         /// </summary>
-        private static void colorize(Control c)
+        private static void colorize(Control c, bool flat)
         {
             bool isEligible = false;
             bool useFormBG = false;
@@ -223,58 +221,80 @@ namespace FriishProduce
 
             if (c.GetType() == typeof(Button))
             {
-                isEligible = true;
-                (c as Button).FlatStyle = FlatStyle.Flat;
-                (c as Button).FlatAppearance.BorderColor = Colors.Controls.Value.Border;
+                (c as Button).FlatStyle = flat ? FlatStyle.Flat : FlatStyle.System;
+                if (!flat)
+                    (c as Button).UseVisualStyleBackColor = true;
+
+                isEligible = flat;
+                if (isEligible)
+                    (c as Button).FlatAppearance.BorderColor = Colors.Controls.Value.Border;
             }
 
             if (c.GetType() == typeof(ComboBox))
             {
-                isEligible = true;
-                (c as ComboBox).FlatStyle = FlatStyle.Flat;
+                (c as ComboBox).FlatStyle = flat ? FlatStyle.Flat : FlatStyle.System;
+
+                isEligible = flat;
             }
 
             if (c.GetType() == typeof(RadioButton))
             {
+                (c as RadioButton).FlatStyle = flat ? FlatStyle.Flat : FlatStyle.System;
+
+                isEligible = flat;
                 useFormBG = true;
-                isEligible = true;
-                (c as RadioButton).FlatStyle = FlatStyle.Flat;
+                if (isEligible)
+                    (c as RadioButton).FlatAppearance.BorderColor = Colors.Controls.Value.Border;
             }
 
             if (c.GetType() == typeof(CheckBox))
             {
+                (c as CheckBox).FlatStyle = flat ? FlatStyle.Flat : FlatStyle.System;
+
+                isEligible = flat;
                 useFormBG = true;
-                isEligible = true;
-                (c as CheckBox).FlatStyle = FlatStyle.Flat;
+                if (isEligible)
+                    (c as CheckBox).FlatAppearance.BorderColor = Colors.Controls.Value.Border;
             }
 
             if (c.GetType() == typeof(GroupBox))
             {
+                (c as GroupBox).FlatStyle = flat ? FlatStyle.Flat : FlatStyle.System;
+
+                isEligible = flat;
                 useFormBG = true;
-                isEligible = true;
-                (c as GroupBox).FlatStyle = FlatStyle.Flat;
             }
 
             if (c.GetType() == typeof(TabPage))
             {
+                isEligible = flat;
                 useFormBG = true;
-                isEligible = true;
             }
 
-            if (c.GetType() == typeof(TextBox))
+            if (c.GetType() == typeof(TextBox) || c.GetType() == typeof(PlaceholderTextBox) || c.GetType() == typeof(NumericUpDown) || c.GetType() == typeof(NumericUpDownEx))
             {
+                isEligible = flat;
                 useTextBox = true;
-                isEligible = true;
+            }
+
+            if (c.GetType() == typeof(Label) || c.GetType() == typeof(ImageLabel))
+            {
+                bool hasBorder = (c as Label).BorderStyle != BorderStyle.None;
+                (c as Label).FlatStyle = flat && hasBorder ? FlatStyle.Flat : FlatStyle.System;
+
+                isEligible = flat && hasBorder;
+                useTextBox = true;
             }
 
             if (c.GetType() == typeof(TheArtOfDev.HtmlRenderer.WinForms.HtmlPanel))
             {
+                isEligible = flat;
                 useFormBG = true;
-                isEligible = true;
-                (c as TheArtOfDev.HtmlRenderer.WinForms.HtmlPanel).BorderStyle = BorderStyle.Fixed3D;
+                if (isEligible)
+                    (c as TheArtOfDev.HtmlRenderer.WinForms.HtmlPanel).BorderStyle = BorderStyle.Fixed3D;
             }
 
-            if (isEligible)
+            if (flat && isEligible)
             {
                 c.BackColor = useTextBox ? Colors.TextBox : useFormBG ? Colors.Form.BG : Colors.Controls.Value.BG;
                 c.ForeColor = Colors.Text;

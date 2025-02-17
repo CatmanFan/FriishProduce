@@ -584,7 +584,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;TreeView.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>2</value>
   </data>
   <data name="themes.Items" xml:space="preserve">
     <value>Default</value>
@@ -803,7 +803,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>4</value>
   </data>
   <data name="vc_n64_romc_type.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 150</value>
@@ -848,7 +848,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_n64.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>9</value>
   </data>
   <data name="forwarder_type.Items" xml:space="preserve">
     <value>SD</value>
@@ -995,7 +995,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;forwarder.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>6</value>
   </data>
   <data name="vc_nes_palette_banner_usage.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1091,7 +1091,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_nes.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>7</value>
   </data>
   <data name="vc_neo_bios_list.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 18</value>
@@ -1157,7 +1157,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_neo.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>12</value>
   </data>
   <data name="vc_sega_countries.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 18</value>
@@ -1418,7 +1418,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_sega.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>10</value>
   </data>
   <data name="vc_pce_note.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1823,7 +1823,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_pce.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>11</value>
   </data>
   <data name="auto_prefill.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2183,7 +2183,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>3</value>
   </data>
   <data name="injection_methods_sega.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 18</value>
@@ -2384,7 +2384,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;default_injection_methods.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>13</value>
   </data>
   <data name="browse_bios_neo.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2549,10 +2549,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;bios_files.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>14</value>
   </data>
   <data name="flash_anti_aliasing.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="flash_anti_aliasing.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="flash_anti_aliasing.Location" type="System.Drawing.Point, System.Drawing">
     <value>308, 64</value>
@@ -2580,6 +2583,9 @@
   </data>
   <data name="flash_zoom_vl.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="flash_zoom_vl.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="flash_zoom_vl.Location" type="System.Drawing.Point, System.Drawing">
     <value>373, 38</value>
@@ -2637,6 +2643,9 @@
   </data>
   <data name="flash_zoom_hl.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="flash_zoom_hl.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="flash_zoom_hl.Location" type="System.Drawing.Point, System.Drawing">
     <value>293, 38</value>
@@ -2705,7 +2714,7 @@
     <value>flash_zoom_v</value>
   </data>
   <data name="&gt;&gt;flash_zoom_v.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>FriishProduce.NumericUpDownEx, FriishProduce, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;flash_zoom_v.Parent" xml:space="preserve">
     <value>display</value>
@@ -2739,6 +2748,9 @@
   </data>
   <data name="flash_zoom.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="flash_zoom.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="flash_zoom.Location" type="System.Drawing.Point, System.Drawing">
     <value>305, 19</value>
@@ -2777,7 +2789,7 @@
     <value>flash_zoom_h</value>
   </data>
   <data name="&gt;&gt;flash_zoom_h.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>FriishProduce.NumericUpDownEx, FriishProduce, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;flash_zoom_h.Parent" xml:space="preserve">
     <value>display</value>
@@ -3197,7 +3209,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;adobe_flash.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>5</value>
   </data>
   <data name="vc_snes_patch_gcremap.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3548,7 +3560,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_snes.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>8</value>
   </data>
   <data name="border.Location" type="System.Drawing.Point, System.Drawing">
     <value>193, 0</value>
@@ -3569,7 +3581,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;border.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>1</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

@@ -112,8 +112,8 @@ namespace FriishProduce
 
             new_project.MenuItems.Clear();
             new_project.MenuItems.AddRange(platformsMenuItemList());
-            toolbarNewProject.DropDownItems.Clear();
-            toolbarNewProject.DropDownItems.AddRange(platformsStripItemList());
+            new_project_menu.MenuItems.Clear();
+            new_project_menu.MenuItems.AddRange(platformsMenuItemList());
 
             #region -- Localization --
 
@@ -154,9 +154,9 @@ namespace FriishProduce
             vistaMenu.SetImage(import_game_file, toolbarImportGameFile.Image);
             vistaMenu.SetImage(game_scan, toolbarGameScan.Image);
             vistaMenu.SetImage(preferences, toolbarPreferences.Image);
-            foreach (MenuItem item in new_project.MenuItems.OfType<MenuItem>())
-                if (Enum.TryParse(item.Name, out Platform converted))
-                    vistaMenu.SetImage(item, Platforms.Icons[converted]);
+            // foreach (MenuItem item in new_project.MenuItems.OfType<MenuItem>())
+            //     if (Enum.TryParse(item.Name, out Platform converted))
+            //         vistaMenu.SetImage(item, Platforms.Icons[converted]);
 
             BrowseProject.Title = new Regex(@"\(.*\)").Replace(open_project.Text, "").Replace("&", "");
             SaveProject.Title = new Regex(@"\(.*\)").Replace(save_project_as.Text, "").Replace("&", "");
@@ -243,6 +243,11 @@ namespace FriishProduce
 
             CloseAll_Click(sender, new EventArgs());
             e.Cancel = tabControl.TabPages.Count > 0;
+        }
+
+        private void OpenNewProjectTypes(object sender, EventArgs e)
+        {
+            new_project_menu.Show(toolStrip, new(Cursor.Position.X - Left - (Width - ClientSize.Width) + 8, Cursor.Position.Y - Top - (Height - ClientSize.Height) + 8), LeftRightAlignment.Right);
         }
 
         /// <summary>
@@ -1065,10 +1070,10 @@ namespace FriishProduce
 
         private void Website_Click(object sender, EventArgs e)
         {
-            string lang = Program.Lang.Current.StartsWith("fr") ? "fr/"
+            string lang = /* Program.Lang.Current.StartsWith("fr") ? "fr/"
                         : Program.Lang.Current.StartsWith("es") ? "es/"
                         : Program.Lang.Current.StartsWith("ja") ? "ja/"
-                        : null;
+                        : */ null;
             System.Diagnostics.Process.Start("https://catmanfan.github.io/FriishProduce/" + lang);
         }
 

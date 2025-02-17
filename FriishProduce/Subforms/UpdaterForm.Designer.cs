@@ -72,12 +72,13 @@ namespace FriishProduce
             this.b_no.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.b_no.AutoSize = true;
             this.b_no.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.b_no.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.b_no.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.b_no.Location = new System.Drawing.Point(423, 8);
+            this.b_no.Location = new System.Drawing.Point(419, 8);
             this.b_no.MaximumSize = new System.Drawing.Size(0, 24);
             this.b_no.MinimumSize = new System.Drawing.Size(0, 24);
             this.b_no.Name = "b_no";
-            this.b_no.Size = new System.Drawing.Size(33, 24);
+            this.b_no.Size = new System.Drawing.Size(37, 24);
             this.b_no.TabIndex = 4;
             this.b_no.Tag = "b_no";
             this.b_no.Text = "&No";
@@ -87,12 +88,13 @@ namespace FriishProduce
             // 
             this.b_yes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.b_yes.AutoSize = true;
+            this.b_yes.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.b_yes.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.b_yes.Location = new System.Drawing.Point(382, 8);
+            this.b_yes.Location = new System.Drawing.Point(378, 8);
             this.b_yes.MaximumSize = new System.Drawing.Size(0, 24);
             this.b_yes.MinimumSize = new System.Drawing.Size(0, 24);
             this.b_yes.Name = "b_yes";
-            this.b_yes.Size = new System.Drawing.Size(35, 24);
+            this.b_yes.Size = new System.Drawing.Size(39, 24);
             this.b_yes.TabIndex = 3;
             this.b_yes.Tag = "b_yes";
             this.b_yes.Text = "&Yes";

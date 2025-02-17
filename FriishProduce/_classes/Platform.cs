@@ -32,15 +32,15 @@
                 System.Collections.Generic.Dictionary<Platform, System.Drawing.Icon> orig = new()
                 {
                     {
-                        Platform.NES, FileDatas.Icons.nes
-                        // Program.Lang.GetRegion() is Language.Region.Japan or Language.Region.Korea
-                        // ? FileDatas.Icons.fc : FileDatas.Icons.nes
+                        Platform.NES,
+                        Program.Lang.GetRegion() is Language.Region.Japan or Language.Region.Korea
+                        ? FileDatas.Icons.fc : FileDatas.Icons.nes
                     },
 
                     {
                         Platform.SNES,
                         Program.Lang.GetRegion() is Language.Region.Americas or Language.Region.International
-                        ? FileDatas.Icons.snes : null
+                        ? FileDatas.Icons.snes : FileDatas.Icons.sfc
                     },
 
                     {
@@ -55,20 +55,18 @@
 
                     {
                         Platform.SMD,
-                        Program.Lang.GetRegion() is Language.Region.Americas or Language.Region.International
-                        ? FileDatas.Icons.gen : FileDatas.Icons.smd
+                        FileDatas.Icons.smd
                     },
                     
                     {
-                        Platform.PCE, FileDatas.Icons.tg16
-                        // Program.Lang.GetRegion() is Language.Region.Japan
-                        // ? FileDatas.Icons.pce : FileDatas.Icons.tg16
+                        Platform.PCE, 
+                        Program.Lang.GetRegion() is Language.Region.Japan
+                        ? FileDatas.Icons.pce : FileDatas.Icons.tg16
                     },
 
                     {
-                        Platform.PCECD, FileDatas.Icons.tg16
-                        // Program.Lang.GetRegion() is Language.Region.Japan
-                        // ? FileDatas.Icons.pcecd : FileDatas.Icons.tg16
+                        Platform.PCECD,
+                        FileDatas.Icons.pcecd
                     },
 
                     {
@@ -91,17 +89,21 @@
 
                 foreach (var item in orig)
                     if (item.Value != null)
-                        resized.Add(item.Key, new System.Drawing.Icon(item.Value, 16, 16).ToBitmap());
+                    {
+                        System.Drawing.Bitmap bmp = new(16, 16);
+                        using System.Drawing.Graphics g = System.Drawing.Graphics.FromImage(bmp);
+                        using System.Drawing.Bitmap origBmp = item.Value.ToBitmap();
+
+                        g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+                        g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+                        g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
+                        g.DrawImage(origBmp, 0, 0, bmp.Width, bmp.Height);
+
+                        resized.Add(item.Key, bmp);
+                    }
 
                 foreach (var missing in new System.Collections.Generic.Dictionary<Platform, System.Drawing.Bitmap>()
                 {
-                    // Language-specific icons
-                    { Platform.NES, Properties.Resources.retroarch },
-                    { Platform.SNES, FileDatas.Icons.sfc },
-                    { Platform.PCE, Properties.Resources.retroarch },
-                    { Platform.PCECD, Properties.Resources.retroarch },
-
-                    // Other PNG-based icons
                     { Platform.C64, FileDatas.Icons.c64 },
                     { Platform.MSX, FileDatas.Icons.msx },
                     { Platform.Flash, FileDatas.Icons.flash },

@@ -29,6 +29,7 @@ namespace FriishProduce
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Msg));
             this.bottomPanel2 = new System.Windows.Forms.Panel();
             this.bottomPanel1 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
@@ -49,12 +50,8 @@ namespace FriishProduce
             // 
             this.bottomPanel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(223)))), ((int)(((byte)(223)))));
             this.bottomPanel2.Controls.Add(this.bottomPanel1);
-            this.bottomPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.bottomPanel2.Location = new System.Drawing.Point(0, 121);
-            this.bottomPanel2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            resources.ApplyResources(this.bottomPanel2, "bottomPanel2");
             this.bottomPanel2.Name = "bottomPanel2";
-            this.bottomPanel2.Size = new System.Drawing.Size(484, 41);
-            this.bottomPanel2.TabIndex = 26;
             // 
             // bottomPanel1
             // 
@@ -63,165 +60,83 @@ namespace FriishProduce
             this.bottomPanel1.Controls.Add(this.button2);
             this.bottomPanel1.Controls.Add(this.do_not_show);
             this.bottomPanel1.Controls.Add(this.button3);
-            this.bottomPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.bottomPanel1.Location = new System.Drawing.Point(0, 1);
-            this.bottomPanel1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            resources.ApplyResources(this.bottomPanel1, "bottomPanel1");
             this.bottomPanel1.Name = "bottomPanel1";
-            this.bottomPanel1.Size = new System.Drawing.Size(484, 40);
-            this.bottomPanel1.TabIndex = 3;
             // 
             // button1
             // 
-            this.button1.AutoSize = true;
-            this.button1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            resources.ApplyResources(this.button1, "button1");
             this.button1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.button1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.button1.Location = new System.Drawing.Point(380, 8);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.button1.MaximumSize = new System.Drawing.Size(0, 24);
-            this.button1.MinimumSize = new System.Drawing.Size(0, 24);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(27, 24);
-            this.button1.TabIndex = 27;
             this.button1.Tag = "";
-            this.button1.Text = "1";
-            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.Button_Click);
             // 
             // button2
             // 
-            this.button2.AutoSize = true;
-            this.button2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            resources.ApplyResources(this.button2, "button2");
             this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.button2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.button2.Location = new System.Drawing.Point(413, 8);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.button2.MaximumSize = new System.Drawing.Size(0, 24);
-            this.button2.MinimumSize = new System.Drawing.Size(0, 24);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(27, 24);
-            this.button2.TabIndex = 26;
             this.button2.Tag = "";
-            this.button2.Text = "2";
-            this.button2.Visible = false;
             this.button2.Click += new System.EventHandler(this.Button_Click);
             // 
             // do_not_show
             // 
-            this.do_not_show.AutoSize = true;
-            this.do_not_show.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.do_not_show.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.do_not_show.Location = new System.Drawing.Point(14, 10);
-            this.do_not_show.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            resources.ApplyResources(this.do_not_show, "do_not_show");
             this.do_not_show.Name = "do_not_show";
-            this.do_not_show.Size = new System.Drawing.Size(102, 20);
-            this.do_not_show.TabIndex = 25;
             this.do_not_show.Tag = "do_not_show";
-            this.do_not_show.Text = "do_not_show";
             this.do_not_show.UseVisualStyleBackColor = true;
-            this.do_not_show.Visible = false;
             // 
             // button3
             // 
-            this.button3.AutoSize = true;
-            this.button3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            resources.ApplyResources(this.button3, "button3");
             this.button3.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.button3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.button3.Location = new System.Drawing.Point(446, 8);
-            this.button3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.button3.MaximumSize = new System.Drawing.Size(0, 24);
-            this.button3.MinimumSize = new System.Drawing.Size(0, 24);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(27, 24);
-            this.button3.TabIndex = 24;
             this.button3.Tag = "";
-            this.button3.Text = "3";
-            this.button3.Visible = false;
             this.button3.Click += new System.EventHandler(this.Button_Click);
             // 
             // textLabel
             // 
-            this.textLabel.AutoSize = true;
-            this.textLabel.Font = new System.Drawing.Font("Segoe UI", 15.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            resources.ApplyResources(this.textLabel, "textLabel");
             this.textLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(153)))));
-            this.textLabel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.textLabel.Location = new System.Drawing.Point(48, 7);
-            this.textLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.textLabel.MaximumSize = new System.Drawing.Size(426, 0);
             this.textLabel.Name = "textLabel";
-            this.textLabel.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
-            this.textLabel.Size = new System.Drawing.Size(404, 45);
-            this.textLabel.TabIndex = 27;
-            this.textLabel.Text = "Can\'t rename \"Pictures\" because a file or folder with that name already exists";
             this.textLabel.UseMnemonic = false;
             // 
             // descriptionLabel
             // 
-            this.descriptionLabel.AutoSize = true;
-            this.descriptionLabel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.descriptionLabel.Location = new System.Drawing.Point(49, 52);
-            this.descriptionLabel.Margin = new System.Windows.Forms.Padding(3, 0, 2, 0);
+            resources.ApplyResources(this.descriptionLabel, "descriptionLabel");
             this.descriptionLabel.Name = "descriptionLabel";
-            this.descriptionLabel.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            this.descriptionLabel.Size = new System.Drawing.Size(138, 25);
-            this.descriptionLabel.TabIndex = 28;
-            this.descriptionLabel.Text = "Specify a different name.";
             this.descriptionLabel.UseMnemonic = false;
             // 
             // image
             // 
-            this.image.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.image.Location = new System.Drawing.Point(10, 10);
+            resources.ApplyResources(this.image, "image");
             this.image.Name = "image";
             this.tableLayoutPanel1.SetRowSpan(this.image, 2);
-            this.image.Size = new System.Drawing.Size(32, 32);
-            this.image.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.image.TabIndex = 29;
             this.image.TabStop = false;
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 39F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
             this.tableLayoutPanel1.Controls.Add(this.textLabel, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.descriptionLabel, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.image, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(7);
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(484, 162);
-            this.tableLayoutPanel1.TabIndex = 30;
             // 
             // Msg
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(484, 162);
+            resources.ApplyResources(this, "$this");
             this.ControlBox = false;
             this.Controls.Add(this.bottomPanel2);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Msg";
-            this.RightToLeftLayout = true;
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "title";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Msg_Close);
             this.Load += new System.EventHandler(this.Msg_Load);
             this.bottomPanel2.ResumeLayout(false);

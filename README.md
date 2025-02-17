@@ -20,21 +20,22 @@ This injector bypasses other third-party assets (such as Common-Key.bin, HowardC
 * Replace WAD contents with forwarder to auto-load specific emulator core and ROM
 
 ### Platforms
-**Currently supported:**
-  * *Virtual Console*:
-    * Nintendo Entertainment System (NES) / Famicom
-    * Super Nintendo Entertainment System (SNES) / Super Famicom
-    * Nintendo 64
-    * SEGA Master System
-    * SEGA Mega Drive / Genesis
-    * NEC TurboGrafx-16 / PC Engine (HuCARD & CD-ROM)
-    * SNK NEO-GEO
-    * Commodore 64
-    * Microsoft MSX / MSX2
-  * Others:
-    * Adobe Flash
-    * Sony PlayStation
-    * RPG Maker 2000 / 2003
+The following platforms are currently supported:
+
+* *Virtual Console*:
+  * Nintendo Entertainment System (NES) / Famicom
+  * Super Nintendo Entertainment System (SNES) / Super Famicom
+  * Nintendo 64
+  * SEGA Master System
+  * SEGA Mega Drive / Genesis
+  * NEC TurboGrafx-16 / PC Engine (HuCARD & CD-ROM)
+  * SNK NEO-GEO
+  * Commodore 64
+  * Microsoft MSX / MSX2
+* Others:
+  * Adobe Flash
+  * Sony PlayStation
+  * RPG Maker 2000 / 2003
 
 ## Wiki
 Please check the **[wiki](https://catmanfan.github.io/FriishProduce/)** for a tutorial on how to use/translate the app, and other useful tips.

@@ -78,7 +78,6 @@ namespace FriishProduce
             this.label1 = new System.Windows.Forms.Label();
             this.SEGA_console_brightness = new System.Windows.Forms.TrackBar();
             this.vc_pce = new System.Windows.Forms.Panel();
-            this.vc_pce_note = new FriishProduce.ImageLabel();
             this.vc_pce_region_l = new System.Windows.Forms.GroupBox();
             this.vc_pce_region = new System.Windows.Forms.ComboBox();
             this.vc_pce_system = new System.Windows.Forms.GroupBox();
@@ -123,16 +122,14 @@ namespace FriishProduce
             this.browse_bios_psx = new System.Windows.Forms.Button();
             this.bios_filename_psx = new System.Windows.Forms.TextBox();
             this.adobe_flash = new System.Windows.Forms.Panel();
-            this.flash_zoom_vl = new System.Windows.Forms.Label();
-            this.flash_zoom_hl = new System.Windows.Forms.Label();
-            this.flash_zoom = new System.Windows.Forms.Label();
-            this.flash_zoom_v = new NumericUpDownEx();
-            this.flash_zoom_h = new NumericUpDownEx();
-            this.flash_anti_aliasing = new System.Windows.Forms.CheckBox();
             this.display = new System.Windows.Forms.GroupBox();
+            this.flash_anti_aliasing = new System.Windows.Forms.CheckBox();
+            this.flash_zoom_vl = new System.Windows.Forms.Label();
             this.flash_fullscreen = new System.Windows.Forms.CheckBox();
+            this.flash_zoom_hl = new System.Windows.Forms.Label();
             this.flash_quality_l = new System.Windows.Forms.Label();
             this.flash_quality_list = new System.Windows.Forms.ComboBox();
+            this.flash_zoom = new System.Windows.Forms.Label();
             this.flash_strap_reminder = new System.Windows.Forms.GroupBox();
             this.flash_strap_reminder_list = new System.Windows.Forms.ComboBox();
             this.flash_controls = new System.Windows.Forms.GroupBox();
@@ -159,6 +156,9 @@ namespace FriishProduce
             this.vc_snes_patch_nosuspend = new System.Windows.Forms.CheckBox();
             this.vc_snes_patch_volume = new System.Windows.Forms.CheckBox();
             this.border = new System.Windows.Forms.Panel();
+            this.flash_zoom_v = new FriishProduce.NumericUpDownEx();
+            this.vc_pce_note = new FriishProduce.ImageLabel();
+            this.flash_zoom_h = new FriishProduce.NumericUpDownEx();
             this.vc_n64_options.SuspendLayout();
             this.bottomPanel2.SuspendLayout();
             this.bottomPanel1.SuspendLayout();
@@ -197,14 +197,14 @@ namespace FriishProduce
             this.bios_neo.SuspendLayout();
             this.bios_psx.SuspendLayout();
             this.adobe_flash.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.flash_zoom_v)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.flash_zoom_h)).BeginInit();
             this.display.SuspendLayout();
             this.flash_strap_reminder.SuspendLayout();
             this.flash_controls.SuspendLayout();
             this.flash_save_data.SuspendLayout();
             this.vc_snes.SuspendLayout();
             this.vc_snes_options.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.flash_zoom_v)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.flash_zoom_h)).BeginInit();
             this.SuspendLayout();
             // 
             // languages
@@ -597,15 +597,6 @@ namespace FriishProduce
             this.vc_pce.Name = "vc_pce";
             this.vc_pce.Tag = "vc_pce";
             // 
-            // vc_pce_note
-            // 
-            resources.ApplyResources(this.vc_pce_note, "vc_pce_note");
-            this.vc_pce_note.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.vc_pce_note.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.vc_pce_note.Image = global::FriishProduce.Properties.Resources.information;
-            this.vc_pce_note.Name = "vc_pce_note";
-            this.vc_pce_note.Tag = "";
-            // 
             // vc_pce_region_l
             // 
             this.vc_pce_region_l.Controls.Add(this.vc_pce_region);
@@ -947,59 +938,6 @@ namespace FriishProduce
             this.adobe_flash.Name = "adobe_flash";
             this.adobe_flash.Tag = "adobe_flash";
             // 
-            // flash_zoom_vl
-            // 
-            resources.ApplyResources(this.flash_zoom_vl, "flash_zoom_vl");
-            this.flash_zoom_vl.Name = "flash_zoom_vl";
-            // 
-            // flash_zoom_hl
-            // 
-            resources.ApplyResources(this.flash_zoom_hl, "flash_zoom_hl");
-            this.flash_zoom_hl.Name = "flash_zoom_hl";
-            // 
-            // flash_zoom_v
-            // 
-            resources.ApplyResources(this.flash_zoom_v, "flash_zoom_v");
-            this.flash_zoom_v.Maximum = new decimal(new int[] {
-            750,
-            0,
-            0,
-            0});
-            this.flash_zoom_v.Minimum = new decimal(new int[] {
-            100,
-            0,
-            0,
-            -2147483648});
-            this.flash_zoom_v.Name = "flash_zoom_v";
-            // 
-            // flash_zoom
-            // 
-            resources.ApplyResources(this.flash_zoom, "flash_zoom");
-            this.flash_zoom.Name = "flash_zoom";
-            this.flash_zoom.Tag = "zoom";
-            // 
-            // flash_zoom_h
-            // 
-            resources.ApplyResources(this.flash_zoom_h, "flash_zoom_h");
-            this.flash_zoom_h.Maximum = new decimal(new int[] {
-            750,
-            0,
-            0,
-            0});
-            this.flash_zoom_h.Minimum = new decimal(new int[] {
-            100,
-            0,
-            0,
-            -2147483648});
-            this.flash_zoom_h.Name = "flash_zoom_h";
-            // 
-            // flash_anti_aliasing
-            // 
-            resources.ApplyResources(this.flash_anti_aliasing, "flash_anti_aliasing");
-            this.flash_anti_aliasing.Name = "flash_anti_aliasing";
-            this.flash_anti_aliasing.Tag = "anti_aliasing";
-            this.flash_anti_aliasing.UseVisualStyleBackColor = true;
-            // 
             // display
             // 
             this.display.Controls.Add(this.flash_anti_aliasing);
@@ -1016,12 +954,29 @@ namespace FriishProduce
             this.display.TabStop = false;
             this.display.Tag = "display";
             // 
+            // flash_anti_aliasing
+            // 
+            resources.ApplyResources(this.flash_anti_aliasing, "flash_anti_aliasing");
+            this.flash_anti_aliasing.Name = "flash_anti_aliasing";
+            this.flash_anti_aliasing.Tag = "anti_aliasing";
+            this.flash_anti_aliasing.UseVisualStyleBackColor = true;
+            // 
+            // flash_zoom_vl
+            // 
+            resources.ApplyResources(this.flash_zoom_vl, "flash_zoom_vl");
+            this.flash_zoom_vl.Name = "flash_zoom_vl";
+            // 
             // flash_fullscreen
             // 
             resources.ApplyResources(this.flash_fullscreen, "flash_fullscreen");
             this.flash_fullscreen.Name = "flash_fullscreen";
             this.flash_fullscreen.Tag = "fullscreen";
             this.flash_fullscreen.UseVisualStyleBackColor = true;
+            // 
+            // flash_zoom_hl
+            // 
+            resources.ApplyResources(this.flash_zoom_hl, "flash_zoom_hl");
+            this.flash_zoom_hl.Name = "flash_zoom_hl";
             // 
             // flash_quality_l
             // 
@@ -1038,6 +993,12 @@ namespace FriishProduce
             resources.ApplyResources(this.flash_quality_list, "flash_quality_list");
             this.flash_quality_list.Name = "flash_quality_list";
             this.flash_quality_list.Tag = "quality";
+            // 
+            // flash_zoom
+            // 
+            resources.ApplyResources(this.flash_zoom, "flash_zoom");
+            this.flash_zoom.Name = "flash_zoom";
+            this.flash_zoom.Tag = "zoom";
             // 
             // flash_strap_reminder
             // 
@@ -1241,6 +1202,45 @@ namespace FriishProduce
             resources.ApplyResources(this.border, "border");
             this.border.Name = "border";
             // 
+            // flash_zoom_v
+            // 
+            resources.ApplyResources(this.flash_zoom_v, "flash_zoom_v");
+            this.flash_zoom_v.Maximum = new decimal(new int[] {
+            750,
+            0,
+            0,
+            0});
+            this.flash_zoom_v.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.flash_zoom_v.Name = "flash_zoom_v";
+            // 
+            // vc_pce_note
+            // 
+            resources.ApplyResources(this.vc_pce_note, "vc_pce_note");
+            this.vc_pce_note.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.vc_pce_note.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.vc_pce_note.Image = global::FriishProduce.Properties.Resources.information;
+            this.vc_pce_note.Name = "vc_pce_note";
+            this.vc_pce_note.Tag = "";
+            // 
+            // flash_zoom_h
+            // 
+            resources.ApplyResources(this.flash_zoom_h, "flash_zoom_h");
+            this.flash_zoom_h.Maximum = new decimal(new int[] {
+            750,
+            0,
+            0,
+            0});
+            this.flash_zoom_h.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.flash_zoom_h.Name = "flash_zoom_h";
+            // 
             // SettingsForm
             // 
             this.AcceptButton = this.b_ok;
@@ -1249,20 +1249,20 @@ namespace FriishProduce
             resources.ApplyResources(this, "$this");
             this.ControlBox = false;
             this.Controls.Add(this.bottomPanel2);
+            this.Controls.Add(this.border);
+            this.Controls.Add(this.TreeView);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.adobe_flash);
             this.Controls.Add(this.forwarder);
             this.Controls.Add(this.vc_nes);
             this.Controls.Add(this.vc_snes);
             this.Controls.Add(this.vc_n64);
             this.Controls.Add(this.vc_sega);
-            this.Controls.Add(this.border);
-            this.Controls.Add(this.TreeView);
             this.Controls.Add(this.vc_pce);
             this.Controls.Add(this.vc_neo);
             this.Controls.Add(this.default_injection_methods);
             this.Controls.Add(this.bios_files);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MaximizeBox = false;
@@ -1323,8 +1323,6 @@ namespace FriishProduce
             this.bios_psx.ResumeLayout(false);
             this.bios_psx.PerformLayout();
             this.adobe_flash.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.flash_zoom_v)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.flash_zoom_h)).EndInit();
             this.display.ResumeLayout(false);
             this.display.PerformLayout();
             this.flash_strap_reminder.ResumeLayout(false);
@@ -1335,6 +1333,8 @@ namespace FriishProduce
             this.vc_snes.ResumeLayout(false);
             this.vc_snes_options.ResumeLayout(false);
             this.vc_snes_options.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.flash_zoom_v)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.flash_zoom_h)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -36,7 +36,7 @@ namespace FriishProduce
             this.mainPanel = new System.Windows.Forms.Panel();
             this.Logo = new System.Windows.Forms.PictureBox();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
-            this.toolbarNewProject = new System.Windows.Forms.ToolStripDropDownButton();
+            this.toolbarNewProject = new System.Windows.Forms.ToolStripButton();
             this.toolbarOpenProject = new System.Windows.Forms.ToolStripButton();
             this.toolbarSave = new System.Windows.Forms.ToolStripButton();
             this.toolbarSaveAs = new System.Windows.Forms.ToolStripButton();
@@ -92,6 +92,7 @@ namespace FriishProduce
             this.about = new System.Windows.Forms.MenuItem();
             this.tabControl = new JacksiroKe.MdiTabCtrl.TabControl();
             this.vistaMenu = new wyDay.Controls.VistaMenu(this.components);
+            this.new_project_menu = new System.Windows.Forms.ContextMenu();
             this.mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             this.toolStrip.SuspendLayout();
@@ -142,6 +143,7 @@ namespace FriishProduce
             resources.ApplyResources(this.toolbarNewProject, "toolbarNewProject");
             this.toolbarNewProject.Name = "toolbarNewProject";
             this.toolbarNewProject.Tag = "new_project";
+            this.toolbarNewProject.Click += new System.EventHandler(this.OpenNewProjectTypes);
             // 
             // toolbarOpenProject
             // 
@@ -635,7 +637,7 @@ namespace FriishProduce
         private System.Windows.Forms.MenuItem about;
         internal System.Windows.Forms.MenuItem game_scan;
         internal System.Windows.Forms.MenuItem export;
-        private System.Windows.Forms.ToolStripDropDownButton toolbarNewProject;
+        private System.Windows.Forms.ToolStripButton toolbarNewProject;
         internal System.Windows.Forms.ToolStripButton toolbarSave;
         internal System.Windows.Forms.MenuItem save_project_as;
         internal System.Windows.Forms.MenuItem save_project;
@@ -667,6 +669,7 @@ namespace FriishProduce
         private System.Windows.Forms.MenuItem menuItem12;
         private System.Windows.Forms.MenuItem clear_update;
         private System.Windows.Forms.MenuItem menuItem11;
+        private System.Windows.Forms.ContextMenu new_project_menu;
     }
 }
 
