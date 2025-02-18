@@ -8,6 +8,7 @@ namespace FriishProduce
         {
             AllowedKeymaps = Allowed.Wiimote | Allowed.Classic | Allowed.GC;
             InitializeComponent();
+            if (DesignMode) return;
 
             #region Modifiable values: Buttons
             available = new()
@@ -172,6 +173,10 @@ namespace FriishProduce
             // -----------------------------------------------------------------------------------------------------------
             Program.Lang.Control(this, "controller");
             Text = Program.Lang.String("controller", "controller").TrimEnd('.').Trim();
+
+            Theme.ChangeColors(this, false);
+            Theme.BtnSizes(b_save, b_close);
+            Theme.BtnLayout(this, b_save, b_close);
         }
     }
 }

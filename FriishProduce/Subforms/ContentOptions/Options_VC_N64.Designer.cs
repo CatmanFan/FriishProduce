@@ -43,6 +43,15 @@ namespace FriishProduce
             this.g2.SuspendLayout();
             this.SuspendLayout();
             // 
+            // b_controller
+            // 
+            this.b_controller.Size = new System.Drawing.Size(489, 24);
+            // 
+            // controller_box
+            // 
+            this.controller_box.Location = new System.Drawing.Point(12, 150);
+            this.controller_box.Size = new System.Drawing.Size(530, 54);
+            // 
             // g1
             // 
             this.g1.Controls.Add(this.patch_cleantextures);
@@ -130,7 +139,7 @@ namespace FriishProduce
             // g2
             // 
             this.g2.Controls.Add(this.romc_type_list);
-            this.g2.Location = new System.Drawing.Point(12, 151);
+            this.g2.Location = new System.Drawing.Point(12, 210);
             this.g2.Name = "g2";
             this.g2.Size = new System.Drawing.Size(530, 50);
             this.g2.TabIndex = 19;
@@ -154,16 +163,14 @@ namespace FriishProduce
             // 
             // Options_VC_N64
             // 
-            this.ClientSize = new System.Drawing.Size(554, 258);
+            this.ClientSize = new System.Drawing.Size(554, 312);
             this.Controls.Add(this.g1);
             this.Controls.Add(this.g2);
             this.Name = "Options_VC_N64";
             this.Tag = "vc_n64";
-            this.Load += new System.EventHandler(this.Form_IsShown);
             this.Controls.SetChildIndex(this.controller_box, 0);
             this.Controls.SetChildIndex(this.g2, 0);
             this.Controls.SetChildIndex(this.g1, 0);
-            this.bottomPanel1.ResumeLayout(false);
             this.controller_box.ResumeLayout(false);
             this.controller_box.PerformLayout();
             this.g1.ResumeLayout(false);

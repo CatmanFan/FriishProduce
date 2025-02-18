@@ -21,6 +21,7 @@ namespace FriishProduce
         public BannerOptions(Platform platform)
         {
             InitializeComponent();
+            if (DesignMode) return;
 
             region.Items.AddRange(new string[] { Program.Lang.String("automatic"), Program.Lang.String("region_j"), Program.Lang.String("region_u"), Program.Lang.String("region_e"), Program.Lang.String("region_k") });
             region.SelectedIndex = Program.Config.application.default_banner_region;
@@ -55,6 +56,10 @@ namespace FriishProduce
             Program.Lang.Control(this);
             Program.Lang.ToolTip(tip, title, "banner_title", label1.Text);
             Program.Lang.ToolTip(tip, region, "banner_region", label4.Text);
+
+            Theme.ChangeColors(this, false);
+            Theme.BtnSizes(b_ok, b_cancel);
+            Theme.BtnLayout(this, b_ok, b_cancel);
         }
 
         private void OK_Click(object sender, EventArgs e)

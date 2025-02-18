@@ -23,6 +23,7 @@ namespace FriishProduce
         public Savedata(Platform platform)
         {
             InitializeComponent();
+            if (DesignMode) return;
 
             #region Localization
             Program.Lang.Control(this);
@@ -32,6 +33,10 @@ namespace FriishProduce
             notice.BaseStylesheet = notice.BaseStylesheet.Replace("\"REPLACEME\"", $"\"{label1.Font.FontFamily.Name}\"");
             notice.BackColor = BackColor;
             #endregion
+
+            Theme.ChangeColors(this, false);
+            Theme.BtnSizes(b_ok, b_cancel);
+            Theme.BtnLayout(this, b_ok, b_cancel);
 
             Reset(platform, 0);
         }

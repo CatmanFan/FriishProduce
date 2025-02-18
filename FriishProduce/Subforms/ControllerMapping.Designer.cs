@@ -50,6 +50,10 @@ namespace FriishProduce
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.page2 = new System.Windows.Forms.TabPage();
+            this.Classic_Down_R = new System.Windows.Forms.ComboBox();
+            this.Classic_Right_R = new System.Windows.Forms.ComboBox();
+            this.Classic_Left_R = new System.Windows.Forms.ComboBox();
+            this.Classic_Up_R = new System.Windows.Forms.ComboBox();
             this.Classic_Plus = new System.Windows.Forms.ComboBox();
             this.Classic_Minus = new System.Windows.Forms.ComboBox();
             this.Classic_B = new System.Windows.Forms.ComboBox();
@@ -249,6 +253,10 @@ namespace FriishProduce
             // 
             // page2
             // 
+            this.page2.Controls.Add(this.Classic_Down_R);
+            this.page2.Controls.Add(this.Classic_Right_R);
+            this.page2.Controls.Add(this.Classic_Left_R);
+            this.page2.Controls.Add(this.Classic_Up_R);
             this.page2.Controls.Add(this.Classic_Plus);
             this.page2.Controls.Add(this.Classic_Minus);
             this.page2.Controls.Add(this.Classic_B);
@@ -268,6 +276,34 @@ namespace FriishProduce
             this.page2.Name = "page2";
             this.page2.Tag = "page2";
             this.page2.UseVisualStyleBackColor = true;
+            // 
+            // Classic_Down_R
+            // 
+            this.Classic_Down_R.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.Classic_Down_R, "Classic_Down_R");
+            this.Classic_Down_R.FormattingEnabled = true;
+            this.Classic_Down_R.Name = "Classic_Down_R";
+            // 
+            // Classic_Right_R
+            // 
+            this.Classic_Right_R.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.Classic_Right_R, "Classic_Right_R");
+            this.Classic_Right_R.FormattingEnabled = true;
+            this.Classic_Right_R.Name = "Classic_Right_R";
+            // 
+            // Classic_Left_R
+            // 
+            this.Classic_Left_R.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.Classic_Left_R, "Classic_Left_R");
+            this.Classic_Left_R.FormattingEnabled = true;
+            this.Classic_Left_R.Name = "Classic_Left_R";
+            // 
+            // Classic_Up_R
+            // 
+            this.Classic_Up_R.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.Classic_Up_R, "Classic_Up_R");
+            this.Classic_Up_R.FormattingEnabled = true;
+            this.Classic_Up_R.Name = "Classic_Up_R";
             // 
             // Classic_Plus
             // 
@@ -601,5 +637,9 @@ namespace FriishProduce
         private System.Windows.Forms.GroupBox presets_gb;
         private System.Windows.Forms.ComboBox presets_list;
         private System.Windows.Forms.Button preset_load;
+        private System.Windows.Forms.ComboBox Classic_Down_R;
+        private System.Windows.Forms.ComboBox Classic_Right_R;
+        private System.Windows.Forms.ComboBox Classic_Left_R;
+        private System.Windows.Forms.ComboBox Classic_Up_R;
     }
 }

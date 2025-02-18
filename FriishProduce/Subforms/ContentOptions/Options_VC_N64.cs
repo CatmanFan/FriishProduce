@@ -8,15 +8,22 @@ namespace FriishProduce
         public Options_VC_N64() : base()
         {
             InitializeComponent();
+            if (DesignMode) return;
+
+            controllerForm = new Controller_N64();
             ClearOptions();
 
             // Cosmetic
             // *******
-            if (!DesignMode)
-            {
-                Program.Lang.Control(this);
-                tip = HTML.CreateToolTip();
-            }
+            Program.Lang.Control(this);
+            controller_box.Text = Program.Lang.String("controller", "projectform");
+            b_controller.Text = Program.Lang.String("controller_mapping", "projectform");
+
+            tip = HTML.CreateToolTip();
+
+            Theme.ChangeColors(this, false);
+            Theme.BtnSizes(b_ok, b_cancel);
+            Theme.BtnLayout(this, b_ok, b_cancel);
         }
 
         // ---------------------------------------------------------------------------------------------------------------
@@ -51,7 +58,20 @@ namespace FriishProduce
                 // patch_widescreen.Checked            = bool.Parse(Options["widescreen"]);
                 romc_type_list.SelectedIndex        = int.Parse(Options["romc"]);
             }
+
+            if (!patch_autosizerom.Enabled) patch_autosizerom.Checked = false;
+            if (!patch_fixcrashes.Enabled) patch_fixcrashes.Checked = false;
+
+            // ROMC visibility control
             // *******
+            bool isRomc = EmuType == 3;
+            if (MinimumSize.IsEmpty) MinimumSize = new(Size.Width, Size.Height - g2.Height);
+
+            g2.Enabled = g2.Visible = isRomc;
+
+            Size = MinimumSize;
+            if (isRomc)
+                Size = new(MinimumSize.Width, MinimumSize.Height + g2.Height);
         }
 
         protected override void SaveOptions()
@@ -64,20 +84,5 @@ namespace FriishProduce
             // Options["widescreen"]                   = patch_widescreen.Checked.ToString();
             Options["romc"]                         = romc_type_list.SelectedIndex.ToString();
         }
-
-        // ---------------------------------------------------------------------------------------------------------------
-
-        #region Functions
-        private void Form_IsShown(object sender, EventArgs e)
-        {
-            bool isRomc = EmuType == 3;
-
-            if (!patch_autosizerom.Enabled) patch_autosizerom.Checked = false;
-            if (!patch_fixcrashes.Enabled) patch_fixcrashes.Checked = false;
-
-            // g1.Height = patch_autosizerom.Enabled && patch_fixcrashes.Enabled ? 160 : 110;
-            g2.Enabled = isRomc;
-        }
-        #endregion
     }
 }

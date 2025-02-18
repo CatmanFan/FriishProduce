@@ -55,7 +55,7 @@ namespace FriishProduce
             // Reset mapping layout and enable available buttons
             // ********
             Mapping = new Dictionary<Buttons, string>();
-            foreach (Buttons orig in available.Wii) Mapping.Add(orig, "");
+            foreach (Buttons orig in available.Wii) Mapping.Add(orig, string.Empty);
             OldMapping = new Dictionary<Buttons, string>(Mapping);
 
             foreach (Buttons orig in Mapping.Keys.ToList())
@@ -133,11 +133,11 @@ namespace FriishProduce
             {
                 ComboBox target = Controls.Find(orig.ToString(), true).OfType<ComboBox>().FirstOrDefault();
                 if (target != null)
-                    Mapping[orig] = target.SelectedIndex == 0 ? "" : available.Local_Formatted[target.SelectedIndex - 1];
+                    Mapping[orig] = target.SelectedIndex == 0 || !target.Enabled ? string.Empty : available.Local_Formatted[target.SelectedIndex - 1];
             }
 
             OldMapping = new Dictionary<Buttons, string>(Mapping);
-            // DialogResult = DialogResult.OK;
+            DialogResult = DialogResult.OK;
         }
 
         protected void Cancel_Click(object sender, EventArgs e)
@@ -170,6 +170,20 @@ namespace FriishProduce
             bool UsesClassic = AllowedKeymaps.HasFlag(Allowed.Classic);
             bool UsesGC      = AllowedKeymaps.HasFlag(Allowed.GC);
             bool UsesNunchuk = AllowedKeymaps.HasFlag(Allowed.Nunchuk);
+            bool UsesSticks  = AllowedKeymaps.HasFlag(Allowed.ContSticks);
+
+            // Classic_Up_L.Enabled    = Classic_Up_L.Visible    = UsesSticks;
+            // Classic_Left_L.Enabled  = Classic_Left_L.Visible  = UsesSticks;
+            // Classic_Right_L.Enabled = Classic_Right_L.Visible = UsesSticks;
+            // Classic_Down_L.Enabled  = Classic_Down_L.Visible  = UsesSticks;
+            Classic_Up_R.Enabled    = Classic_Up_R.Visible    = UsesSticks;
+            Classic_Left_R.Enabled  = Classic_Left_R.Visible  = UsesSticks;
+            Classic_Right_R.Enabled = Classic_Right_R.Visible = UsesSticks;
+            Classic_Down_R.Enabled  = Classic_Down_R.Visible  = UsesSticks;
+            // GC_Up_C.Enabled         = GC_Up_C.Visible         = UsesSticks;
+            // GC_Left_C.Enabled       = GC_Left_C.Visible       = UsesSticks;
+            // GC_Right_C.Enabled      = GC_Right_C.Visible      = UsesSticks;
+            // GC_Down_C.Enabled       = GC_Down_C.Visible       = UsesSticks;
 
             if (!UsesWiimote)
                 tabControl1.TabPages.Remove(page1);
@@ -202,13 +216,13 @@ namespace FriishProduce
                 try
                 {
                     Mapping = new Dictionary<Buttons, string>();
-                    foreach (Buttons orig in available.Wii) Mapping.Add(orig, "");
+                    foreach (Buttons orig in available.Wii) Mapping.Add(orig, string.Empty);
 
                     foreach (Buttons orig in Mapping.Keys.ToList())
                     {
                         ComboBox target = Controls.Find(orig.ToString(), true).OfType<ComboBox>().FirstOrDefault();
                         if (target != null)
-                            Mapping[orig] = target.SelectedIndex == 0 ? "" : available.Local_Formatted[target.SelectedIndex - 1];
+                            Mapping[orig] = target.SelectedIndex == 0 || !target.Enabled ? string.Empty : available.Local_Formatted[target.SelectedIndex - 1];
                     }
 
                     return Mapping;
@@ -245,7 +259,8 @@ namespace FriishProduce
             Wiimote = 1,
             Nunchuk = 2,
             Classic = 4,
-            GC = 8
+            GC = 8,
+            ContSticks = 16
         }
         protected Allowed AllowedKeymaps { get; set; }
 

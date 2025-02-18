@@ -10,18 +10,21 @@ namespace FriishProduce
         public Options_VC_PCE()
         {
             InitializeComponent();
+            if (DesignMode) return;
+
             ClearOptions();
 
             // Cosmetic
             // *******
-            if (!DesignMode)
-            {
-                Program.Lang.Control(this);
-                tip = HTML.CreateToolTip();
+            Program.Lang.Control(this);
+            ToggleSwitchText();
+            backupram.Text = Program.Lang.String("save_data_enable", "projectform");
 
-                ToggleSwitchText();
-                backupram.Text = Program.Lang.String("save_data_enable", "projectform");
-            }
+            tip = HTML.CreateToolTip();
+
+            Theme.ChangeColors(this, false);
+            Theme.BtnSizes(b_ok, b_cancel);
+            Theme.BtnLayout(this, b_ok, b_cancel);
         }
 
         // ---------------------------------------------------------------------------------------------------------------

@@ -9,28 +9,31 @@ namespace FriishProduce
         public Options_VC_SEGA() : base()
         {
             InitializeComponent();
+            if (DesignMode) return;
+
             ClearOptions();
 
             // Cosmetic
             // *******
-            if (!DesignMode)
-            {
-                Program.Lang.Control(this);
-                tip = HTML.CreateToolTip();
+            Program.Lang.Control(this);
+            tip = HTML.CreateToolTip();
 
-                #region Localization
-                controller_box.Text = Program.Lang.String("controller", "projectform");
-                b_controller.Text = Program.Lang.String("controller_mapping", "projectform");
+            Theme.ChangeColors(this, false);
+            Theme.BtnSizes(b_ok, b_cancel);
+            Theme.BtnLayout(this, b_ok, b_cancel);
 
-                region.Text = Program.Lang.String("region");
-                save_sram.Text = Program.Lang.String("save_data_enable", "projectform");
-                console_disableresetbutton.Text = Program.Lang.String("console_disableresetbutton", "vc_sega");
-                dev_mdpad_enable_6b.Text = Program.Lang.Format(("dev_mdpad_enable_6b", "vc_sega"), Program.Lang.Console(Platform.SMD));
+            #region Localization
+            controller_box.Text = Program.Lang.String("controller", "projectform");
+            b_controller.Text = Program.Lang.String("controller_mapping", "projectform");
 
-                country.Items.Clear();
-                country.Items.AddRange(new string[] { Program.Lang.String("region_j"), Program.Lang.String("region_u"), Program.Lang.String("region_e") });
-                #endregion
-            }
+            region.Text = Program.Lang.String("region");
+            save_sram.Text = Program.Lang.String("save_data_enable", "projectform");
+            console_disableresetbutton.Text = Program.Lang.String("console_disableresetbutton", "vc_sega");
+            dev_mdpad_enable_6b.Text = Program.Lang.Format(("dev_mdpad_enable_6b", "vc_sega"), Program.Lang.Console(Platform.SMD));
+
+            country.Items.Clear();
+            country.Items.AddRange(new string[] { Program.Lang.String("region_j"), Program.Lang.String("region_u"), Program.Lang.String("region_e") });
+            #endregion
         }
 
         // ---------------------------------------------------------------------------------------------------------------

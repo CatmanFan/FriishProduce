@@ -166,7 +166,7 @@ namespace FriishProduce
 
             if (no_text || no_desc)
             {
-                descriptionLabel.Margin = new(descriptionLabel.Margin.Left + 1, 8, descriptionLabel.Margin.Right, descriptionLabel.Margin.Bottom);
+                descriptionLabel.Margin = new(descriptionLabel.Margin.Left + 1, 7, descriptionLabel.Margin.Right, descriptionLabel.Margin.Bottom);
                 tableLayoutPanel1.RowCount = 1;
             }
 

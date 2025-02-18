@@ -239,6 +239,11 @@ namespace FriishProduce.Injectors
                     if (!AllocateROM()) { failed.Add(Program.Lang.String("patch_autosizerom", "vc_n64")); Allocate = false; }
                 }
 
+                if (Keymap?.Count > 0)
+                {
+                    if (!RemapControls()) failed.Add(Program.Lang.String("patch_remap", "vc_n64"));
+                }
+
                 if (Settings["clean_textures"].ToLower() == "true")
                 {
                     CleanTextures();
@@ -400,6 +405,54 @@ namespace FriishProduce.Injectors
 
                 return true;
             }
+        }
+
+        private bool RemapControls()
+        {
+            Dictionary<Buttons, int> offsets = new();
+
+            // Zelda: Ocarina and Majora have DPad-Left offset before Right, instead of the other way around
+            bool flippedOrder = WAD.UpperTitleID.Substring(0, 3).ToUpper() is "NAC" or "NAR";
+            
+            offsets.Add(Buttons.Classic_A, 0);
+            offsets.Add(Buttons.Classic_B, 0);
+            offsets.Add(Buttons.Classic_X, 0);
+            offsets.Add(Buttons.Classic_Y, 0);
+            offsets.Add(Buttons.Classic_L, 0);
+            offsets.Add(Buttons.Classic_R, 0);
+            offsets.Add(Buttons.Classic_ZR, 0);
+            offsets.Add(Buttons.Classic_Plus, 0);
+            offsets.Add(Buttons.Classic_Up, 0);
+            offsets.Add(Buttons.Classic_Down, 0);
+            offsets.Add(flippedOrder ? Buttons.Classic_Left : Buttons.Classic_Right, 0);
+            offsets.Add(flippedOrder ? Buttons.Classic_Right : Buttons.Classic_Left, 0);
+            offsets.Add(Buttons.Classic_Up_R, 0);
+            offsets.Add(Buttons.Classic_Down_R, 0);
+            offsets.Add(Buttons.Classic_Left_R, 0);
+            offsets.Add(Buttons.Classic_Right_R, 0);
+
+            offsets[offsets.ElementAt(0).Key] = Byte.IndexOf(Contents[1], "30 30 27 29 0A 0A") + 12 + 80;
+
+            File.WriteAllBytes(Paths.WorkingFolder + "content1.app", Contents[1]);
+            
+            if (offsets.ElementAt(0).Value > 0)
+                for (int i = 1; i < offsets.Count; i++)
+                    offsets[offsets.ElementAt(i).Key] = offsets.ElementAt(0).Value + (4 * i);
+
+            if (offsets == null || (offsets != null && offsets?.Count == 0))
+                return Keymap == null || Keymap?.Count == 0;
+
+            // Copy
+            // ****************
+            foreach (var key in offsets.Keys)
+            {
+                byte[] newValue = new byte[2];
+                try { newValue = Byte.FromHex(Keymap[key]); if (newValue.Length < 2) newValue = new byte[2]; } catch { }
+
+                newValue.CopyTo(Contents[1], offsets[key]);
+            }
+
+            return true;
         }
 
         /// NOT WORKING

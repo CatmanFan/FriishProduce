@@ -65,7 +65,7 @@ namespace FriishProduce
             this.b_close.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.b_close.Location = new System.Drawing.Point(350, 8);
             this.b_close.Name = "b_close";
-            this.b_close.Size = new System.Drawing.Size(122, 23);
+            this.b_close.Size = new System.Drawing.Size(122, 24);
             this.b_close.TabIndex = 24;
             this.b_close.Tag = "b_close";
             this.b_close.Text = "&Close";

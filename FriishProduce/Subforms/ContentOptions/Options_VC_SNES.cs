@@ -8,19 +8,22 @@ namespace FriishProduce
         public Options_VC_SNES() : base()
         {
             InitializeComponent();
-            ClearOptions();
+            if (DesignMode) return;
+
             controllerForm = new Controller_SNES();
+            ClearOptions();
 
             // Cosmetic
             // *******
-            if (!DesignMode)
-            {
-                Program.Lang.Control(this);
-                tip = HTML.CreateToolTip();
+            Program.Lang.Control(this);
+            controller_box.Text = Program.Lang.String("controller", "projectform");
+            b_controller.Text = Program.Lang.String("controller_mapping", "projectform");
 
-                controller_box.Text = Program.Lang.String("controller", "projectform");
-                b_controller.Text = Program.Lang.String("controller_mapping", "projectform");
-            }
+            tip = HTML.CreateToolTip();
+
+            Theme.ChangeColors(this, false);
+            Theme.BtnSizes(b_ok, b_cancel);
+            Theme.BtnLayout(this, b_ok, b_cancel);
         }
 
         // ---------------------------------------------------------------------------------------------------------------

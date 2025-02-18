@@ -13,25 +13,27 @@ namespace FriishProduce
         public Options_Flash() : base()
         {
             InitializeComponent();
-            ClearOptions();
+            if (DesignMode) return;
+
             controllerForm = new Controller_Flash();
+            ClearOptions();
 
             // Cosmetic
             // *******
-            if (!DesignMode)
-            {
-                Program.Lang.Control(this);
-                tip = HTML.CreateToolTip();
-                Program.Lang.ToolTip(tip, vff_cache_size, null, vff_cache_size_l.Text, Program.Lang.Format(("t_unsure_s", "html"), Program.Config.flash.vff_cache_size));
-                Program.Lang.ToolTip(tip, persistent_storage_total, null, persistent_storage_total_l.Text, Program.Lang.Format(("t_unsure_s", "html"), Program.Config.flash.persistent_storage_total));
-                Program.Lang.ToolTip(tip, persistent_storage_per_movie, null, persistent_storage_per_movie_l.Text, Program.Lang.Format(("t_unsure_s", "html"), Program.Config.flash.persistent_storage_per_movie));
+            Program.Lang.Control(this);
+            groupBox1.Text = Program.Lang.String("save_data", "projectform");
+            save_data_enable.Text = Program.Lang.String("save_data_enable", "projectform");
+            controller_box.Text = Program.Lang.String("controller", "projectform");
+            b_controller.Text = Program.Lang.String("controller_mapping", "projectform");
 
-                groupBox1.Text = Program.Lang.String("save_data", "projectform");
-                save_data_enable.Text = Program.Lang.String("save_data_enable", "projectform");
+            tip = HTML.CreateToolTip();
+            Program.Lang.ToolTip(tip, vff_cache_size, null, vff_cache_size_l.Text, Program.Lang.Format(("t_unsure_s", "html"), Program.Config.flash.vff_cache_size));
+            Program.Lang.ToolTip(tip, persistent_storage_total, null, persistent_storage_total_l.Text, Program.Lang.Format(("t_unsure_s", "html"), Program.Config.flash.persistent_storage_total));
+            Program.Lang.ToolTip(tip, persistent_storage_per_movie, null, persistent_storage_per_movie_l.Text, Program.Lang.Format(("t_unsure_s", "html"), Program.Config.flash.persistent_storage_per_movie));
 
-                controller_box.Text = Program.Lang.String("controller", "projectform");
-                b_controller.Text = Program.Lang.String("controller_mapping", "projectform");
-            }
+            Theme.ChangeColors(this, false);
+            Theme.BtnSizes(b_ok, b_cancel);
+            Theme.BtnLayout(this, b_ok, b_cancel);
         }
 
         // ---------------------------------------------------------------------------------------------------------------

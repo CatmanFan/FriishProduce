@@ -12,17 +12,20 @@ namespace FriishProduce
         public Options_VC_NES() : base()
         {
             InitializeComponent();
+            if (DesignMode) return;
+
             ClearOptions();
 
             // Cosmetic
             // *******
-            if (!DesignMode)
-            {
-                Program.Lang.Control(this);
-                tip = HTML.CreateToolTip();
+            Program.Lang.Control(this);
+            t.ToolTipTitle = Program.Lang.String("authors").Replace("{0}", "").Trim();
 
-                t.ToolTipTitle = Program.Lang.String("authors").Replace("{0}", "").Trim();
-            }
+            tip = HTML.CreateToolTip();
+
+            Theme.ChangeColors(this, false);
+            Theme.BtnSizes(b_ok, b_cancel);
+            Theme.BtnLayout(this, b_ok, b_cancel);
         }
 
         // ---------------------------------------------------------------------------------------------------------------

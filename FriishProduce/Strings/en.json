@@ -220,7 +220,7 @@
 			"reset_preferences":				"&Reset all preferences",
 
 			"wiki":								"Online &Wiki",
-			"exit":								"&Exit",
+			"exit":								"E&xit",
 
 			"project_type":						"{0} WAD",
 			"untitled_project":					"Untitled {0} WAD",
@@ -380,6 +380,7 @@
 			"patch_expandedram":				"Enable extended RAM",
 			"patch_autosizerom":				"Allocate ROM size",
 			"patch_cleantextures":				"Clean unused textures",
+			"patch_remap":						"Remap controls",
 			"patch_widescreen":					"Widescreen",
 			
 			"romc_type":						"ROM compression method",

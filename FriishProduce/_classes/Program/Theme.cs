@@ -280,7 +280,6 @@ namespace FriishProduce
             if (c.GetType() == typeof(Label) || c.GetType() == typeof(ImageLabel))
             {
                 bool hasBorder = (c as Label).BorderStyle != BorderStyle.None;
-                (c as Label).FlatStyle = flat && hasBorder ? FlatStyle.Flat : FlatStyle.System;
 
                 isEligible = flat && hasBorder;
                 useTextBox = true;

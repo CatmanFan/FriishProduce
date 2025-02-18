@@ -12,22 +12,25 @@ namespace FriishProduce
         public Options_Forwarder(Platform platform)
         {
             InitializeComponent();
+            if (DesignMode) return;
+
+            this.platform = platform;
             ClearOptions();
 
             // Cosmetic
             // *******
-            if (!DesignMode)
-            {
-                Program.Lang.Control(this);
-                tip = HTML.CreateToolTip();
-            }
+            Program.Lang.Control(this);
+            tip = HTML.CreateToolTip();
+
+            Theme.ChangeColors(this, false);
+            Theme.BtnSizes(b_ok, b_cancel);
+            Theme.BtnLayout(this, b_ok, b_cancel);
         }
 
         // ---------------------------------------------------------------------------------------------------------------
 
         protected override void ClearOptions()
         {
-            this.platform = platform;
             bios = platform switch
             {
                 Platform.PSX => Program.Config.paths.bios_psx,

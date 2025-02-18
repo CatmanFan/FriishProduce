@@ -1,6 +1,7 @@
 ﻿using FriishProduce.Properties;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace FriishProduce
@@ -12,25 +13,33 @@ namespace FriishProduce
         public ContentOptions()
         {
             InitializeComponent();
+            if (DesignMode) return;
+
+            // controllerForm = new Controller_...();
             ClearOptions();
 
             // Cosmetic
             // *******
-            if (!DesignMode)
-            {
-                // Remove this code when creating a new copy
-                // *****************************************
-                b_ok.Click += OK_Click;
-                b_cancel.Click += Cancel_Click;
-                controller_cb.Click += Controller_Toggle;
-                b_controller.Click += OpenControllerMapping;
-                Load += Form_Load;
-                Shown += SetupLayout;
-                // *****************************************
+            // Remove this code when creating a new copy
+            // *****************************************
+            b_ok.Click += OK_Click;
+            b_cancel.Click += Cancel_Click;
+            controller_cb.Click += Controller_Toggle;
+            b_controller.Click += OpenControllerMapping;
+            Load += Form_Load;
+            // *****************************************
 
-                // Program.Lang.Control(this);
-                // tip = HTML.CreateToolTip();
-            }
+            // Program.Lang.Control(this);
+            // [Any additional strings]
+            // controller_box.Text = Program.Lang.String("controller", "projectform");
+            // b_controller.Text = Program.Lang.String("controller_mapping", "projectform");
+
+            // tip = HTML.CreateToolTip();
+            // [Any additional tooltips]
+
+            // Theme.ChangeColors(this, false);
+            // Theme.BtnSizes(b_ok, b_cancel);
+            // Theme.BtnLayout(this, b_ok, b_cancel);
         }
 
         // ---------------------------------------------------------------------------------------------------------------
@@ -135,6 +144,15 @@ namespace FriishProduce
 
             if (_oldKeymap != null)
                 controllerForm.Keymap = _Keymap = new Dictionary<Buttons, string>(_oldKeymap);
+            else if (_oldKeymap == null && controllerForm?.Keymap?.Count > 0)
+            {
+                var blank = new Dictionary<Buttons, string>();
+
+                for (int i = 0; i < controllerForm.Keymap.Count; i++)
+                    blank.Add(controllerForm.Keymap.ElementAt(i).Key, string.Empty);
+
+                controllerForm.Keymap = _oldKeymap = _Keymap = new Dictionary<Buttons, string>(blank);
+            }
 
             DialogResult = DialogResult.Cancel;
         }
@@ -152,15 +170,6 @@ namespace FriishProduce
 
             controller_box.Visible = controllerForm != null;
             b_controller.Enabled = controller_cb.Checked = UsesKeymap && controllerForm != null;
-
-            SetupLayout(null, new EventArgs());
-        }
-
-        private void SetupLayout(object sender, EventArgs e)
-        {
-            Theme.ChangeColors(this, false);
-            Theme.BtnSizes(b_ok, b_cancel);
-            Theme.BtnLayout(this, b_ok, b_cancel);
         }
 
         protected void OpenControllerMapping(object sender, EventArgs e)

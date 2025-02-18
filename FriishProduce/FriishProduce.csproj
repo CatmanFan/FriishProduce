@@ -306,6 +306,12 @@
     <Compile Include="Subforms\Controllers\Controller_SNES.Designer.cs">
       <DependentUpon>Controller_SNES.cs</DependentUpon>
     </Compile>
+    <Compile Include="Subforms\Controllers\Controller_N64.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Subforms\Controllers\Controller_N64.Designer.cs">
+      <DependentUpon>Controller_N64.cs</DependentUpon>
+    </Compile>
     <Compile Include="Subforms\MessageBoxHTML.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -497,6 +503,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Subforms\ContentOptions\Options_VC_N64.resx">
       <DependentUpon>Options_VC_N64.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Subforms\ContentOptions\Options_VC_NEO.resx">
       <DependentUpon>Options_VC_NEO.cs</DependentUpon>
