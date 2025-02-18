@@ -390,10 +390,10 @@ namespace FriishProduce.Injectors
                 var size = NewSize.ToString("X2");
                 var size_array = new byte[]
                 {
-                        Convert.ToByte($"7{size[0]}", 16),
-                        Convert.ToByte($"{size[1]}0", 16),
-                        Convert.ToByte($"0{size[0]}", 16),
-                        Convert.ToByte($"{size[1]}0", 16),
+                    Convert.ToByte($"7{size[0]}", 16),
+                    Convert.ToByte($"{size[1]}0", 16),
+                    Convert.ToByte($"0{size[0]}", 16),
+                    Convert.ToByte($"{size[1]}0", 16),
                 };
 
                 // Copy
@@ -409,48 +409,132 @@ namespace FriishProduce.Injectors
 
         private bool RemapControls()
         {
+            // Search for controller button offsets
+            // ****************
             Dictionary<Buttons, int> offsets = new();
 
-            // Zelda: Ocarina and Majora have DPad-Left offset before Right, instead of the other way around
-            bool flippedOrder = WAD.UpperTitleID.Substring(0, 3).ToUpper() is "NAC" or "NAR";
-            
-            offsets.Add(Buttons.Classic_A, 0);
-            offsets.Add(Buttons.Classic_B, 0);
-            offsets.Add(Buttons.Classic_X, 0);
-            offsets.Add(Buttons.Classic_Y, 0);
-            offsets.Add(Buttons.Classic_L, 0);
-            offsets.Add(Buttons.Classic_R, 0);
-            offsets.Add(Buttons.Classic_ZR, 0);
-            offsets.Add(Buttons.Classic_Plus, 0);
-            offsets.Add(Buttons.Classic_Up, 0);
-            offsets.Add(Buttons.Classic_Down, 0);
-            offsets.Add(flippedOrder ? Buttons.Classic_Left : Buttons.Classic_Right, 0);
-            offsets.Add(flippedOrder ? Buttons.Classic_Right : Buttons.Classic_Left, 0);
-            offsets.Add(Buttons.Classic_Up_R, 0);
-            offsets.Add(Buttons.Classic_Down_R, 0);
-            offsets.Add(Buttons.Classic_Left_R, 0);
-            offsets.Add(Buttons.Classic_Right_R, 0);
+            // Some WADs have DPad-Left's offset coming before Right, instead of the other way around
+            bool flippedOrder = false;
+            int start = 0;
 
-            offsets[offsets.ElementAt(0).Key] = Byte.IndexOf(Contents[1], "30 30 27 29 0A 0A") + 12 + 80;
+            switch (WAD.UpperTitleID.Substring(0, 3).ToUpper())
+            {
+                default:
+                    // Do automatic search for first available controller button offset
+                    if (Byte.IndexOf(Contents[1], "30 30 27 29 0A 0A") != -1)
+                    {
+                        start = Byte.IndexOf(Contents[1], "30 30 27 29 0A 0A") + 6;
 
+                        while (Contents[1][start] == 0)
+                            start++;
+                    }
+                    else if (Byte.IndexOf(Contents[1], "42 52 45 41 4B 20 28 43 50 55 29 00") != 1)
+                        start = Byte.IndexOf(Contents[1], "42 52 45 41 4B 20 28 43 50 55 29 00") - 352;
+                    else
+                        // No controller button offsets were found (perhaps not supported or the algorithm is different).
+                        return false;
+                    break;
+
+                // Manual search for known controller button offsets:
+                // These offsets are for the first button found ("A"), as retrieved from Patcher64+ Tool source code.
+                // ****************
+                case "NAA": // Super Mario 64
+                    start = 0x168618;
+                    break;
+
+                case "NAB": // Mario Kart 64
+                    start = 0x169ED8;
+                    break;
+
+                case "NAE": // Paper Mario
+                    start = 0x175A20;
+                    break;
+
+                case "NAL": // Smash Bros.
+                    start = 0x150F00;
+                    break;
+
+                case "NAC": // Zelda: Ocarina
+                    start = 0x16BAC0;
+                    flippedOrder = true;
+                    break;
+
+                case "NAR": // Zelda: Majora
+                    start = 0x1484E0;
+                    flippedOrder = true;
+                    break;
+            }
+
+            // Note that all controllers (i.e. both Classic and GameCube mapping) appear to be affected by just modifying one group of buttons.
+            // Only the Classic Controller mappings will be used to account for this.
             File.WriteAllBytes(Paths.WorkingFolder + "content1.app", Contents[1]);
-            
-            if (offsets.ElementAt(0).Value > 0)
-                for (int i = 1; i < offsets.Count; i++)
-                    offsets[offsets.ElementAt(i).Key] = offsets.ElementAt(0).Value + (4 * i);
 
-            if (offsets == null || (offsets != null && offsets?.Count == 0))
-                return Keymap == null || Keymap?.Count == 0;
+            // Declare arrays to fill remapped buttons
+            // ****************
+            byte[] main = new byte[32];
+            byte[] directional = new byte[32];
+
+            // Both the main and directional groups are separated by an empty set of bytes
+            // ****************
+            int spacing = 20;
+
+            if (BitConverter.ToInt32(Contents[1], start + main.Length) != 0)
+                spacing = 8;
+            else
+                for (int i = 0; i < spacing; i++)
+                {
+                    if (BitConverter.ToInt32(Contents[1], start + main.Length) != 0)
+                    {
+                        spacing = 4 * Convert.ToInt32(Math.Round(i / 4.0));
+                        break;
+                    }
+                }
+
+            Buttons[] main_b = new[]
+            {
+                Buttons.Classic_A,
+                Buttons.Classic_B,
+                Buttons.Classic_X,
+                Buttons.Classic_Y,
+                Buttons.Classic_L,
+                Buttons.Classic_R,
+                Buttons.Classic_ZR,
+                Buttons.Classic_Plus
+            };
+
+            Buttons[] directional_b = new[]
+            {
+                Buttons.Classic_Up,
+                Buttons.Classic_Down,
+                flippedOrder ? Buttons.Classic_Left : Buttons.Classic_Right,
+                flippedOrder ? Buttons.Classic_Right : Buttons.Classic_Left,
+                Buttons.Classic_Up_R,
+                Buttons.Classic_Down_R,
+                Buttons.Classic_Left_R,
+                Buttons.Classic_Right_R
+            };
+            
+            if (start > 0)
+            {
+                for (int i = 0; i < main_b.Length; i++)
+                    offsets.Add(main_b[i], start + (4 * i));
+
+                for (int i = 0; i < directional_b.Length; i++)
+                    offsets.Add(directional_b[i], start + main.Length + spacing + (4 * i));
+            }
+
+            if (offsets?.Count == 0)
+                return false;
 
             // Copy
             // ****************
-            foreach (var key in offsets.Keys)
-            {
-                byte[] newValue = new byte[2];
-                try { newValue = Byte.FromHex(Keymap[key]); if (newValue.Length < 2) newValue = new byte[2]; } catch { }
+            for (int i = 0; i < main_b.Length; i++)
+                try { Byte.FromHex(Keymap[main_b[i]]).CopyTo(main, i * 4); } catch { }
 
-                newValue.CopyTo(Contents[1], offsets[key]);
-            }
+            for (int i = 0; i < directional_b.Length; i++)
+                try { Byte.FromHex(Keymap[directional_b[i]]).CopyTo(directional, i * 4); } catch { }
+
+            main.CopyTo(Contents[1], offsets[);
 
             return true;
         }

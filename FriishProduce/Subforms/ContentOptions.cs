@@ -128,10 +128,15 @@ namespace FriishProduce
 
             if (controllerForm?.Keymap != null)
             {
-                _Keymap = controllerForm.Keymap;
-                if (_oldKeymap != _Keymap)
-                    _oldKeymap = new Dictionary<Buttons, string>(_Keymap);
                 UsesKeymap = controller_cb.Checked;
+
+                if (UsesKeymap)
+                    _Keymap = controllerForm.Keymap;
+                else
+                    Keymap = null;
+
+                if (_oldKeymap != _Keymap)
+                    _oldKeymap = _Keymap == null ? null : new Dictionary<Buttons, string>(_Keymap);
             }
 
             ClearOptions(); SaveOptions();

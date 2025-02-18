@@ -202,7 +202,20 @@ namespace FriishProduce
 
         protected ContentOptions contentOptionsForm { get; set; }
         protected IDictionary<string, string> contentOptions { get => contentOptionsForm?.Options; }
-        protected (bool Enabled, IDictionary<Buttons, string> List) keymap { get => contentOptionsForm != null ? (contentOptionsForm.UsesKeymap, contentOptionsForm.Keymap) : (false, null); }
+        protected (bool Enabled, IDictionary<Buttons, string> List) keymap
+        {
+            get
+            {
+                (bool Enabled, IDictionary<Buttons, string> List) value = (false, null);
+
+                if (InvokeRequired)
+                    Invoke(new MethodInvoker(delegate { value = contentOptionsForm != null ? (contentOptionsForm.UsesKeymap, contentOptionsForm.Keymap) : (false, null); }));
+                else
+                { value = contentOptionsForm != null ? (contentOptionsForm.UsesKeymap, contentOptionsForm.Keymap) : (false, null); }
+
+                return value;
+            }
+        }
 
         #region Channel/banner parameters
         private string _tID
@@ -1670,7 +1683,7 @@ namespace FriishProduce
                     // IsMultifile = multifile_software.Checked,
                     BannerRegion = _bannerRegion,
                     SaveDataTitle = _saveDataTitle,
-                    Settings = (contentOptions, keymap.List),
+                    Settings = (contentOptions, keymap.Enabled ? keymap.List ?? null : null),
 
                     WAD = WAD.Load(Properties.Resources.StaticBase),
                     WadRegion = (int)outWadRegion,
@@ -1717,64 +1730,69 @@ namespace FriishProduce
                 }
                 backgroundWorker.ReportProgress(m.Progress);
 
-                switch (targetPlatform)
+                try
                 {
-                    case Platform.NES:
-                    case Platform.SNES:
-                    case Platform.N64:
-                    case Platform.SMS:
-                    case Platform.SMD:
-                    case Platform.PCE:
-                    case Platform.PCECD:
-                    case Platform.NEO:
-                    case Platform.C64:
-                    case Platform.MSX:
-                        if (isVirtualConsole)
-                            try { m.Inject(); }
-                            catch (Exception ex)
-                            {
-                                if (!localFile)
-                                {
-                                    if (ex.Message == "U8 Header: Invalid Magic!" && wad_tries == 0)
-                                    {
-                                        wad_tries++;
-                                        Logger.Log("Received \"U8 Header: Invalid Magic!\" error, download may have failed. Attempting to download WAD a second time.");
-                                        goto Start;
-                                    }
+                    switch (targetPlatform)
+                    {
+                        case Platform.NES:
+                        case Platform.SNES:
+                        case Platform.N64:
+                        case Platform.SMS:
+                        case Platform.SMD:
+                        case Platform.PCE:
+                        case Platform.PCECD:
+                        case Platform.NEO:
+                        case Platform.C64:
+                        case Platform.MSX:
+                            if (isVirtualConsole)
+                                m.Inject();
+                            else
+                                m.CreateForwarder(emulator, device);
+                            break;
 
-                                    else
-                                    {
-                                        Logger.Log("WAD is invalid or failed to load more than once. Process halted.");
-                                        throw;
-                                    }
-                                }
+                        case Platform.Flash:
+                            m.Inject();
+                            break;
 
-                                else
-                                {
-                                    Logger.Log("WAD is invalid. Process halted.");
-                                    throw;
-                                }
-                            }
-                        else
+                        case Platform.GB:
+                        case Platform.GBC:
+                        case Platform.GBA:
+                        case Platform.S32X:
+                        case Platform.SMCD:
+                        case Platform.PSX:
+                        case Platform.RPGM:
                             m.CreateForwarder(emulator, device);
-                        break;
+                            break;
 
-                    case Platform.Flash:
-                        m.Inject();
-                        break;
+                        default:
+                            throw new NotImplementedException();
+                    }
+                }
 
-                    case Platform.GB:
-                    case Platform.GBC:
-                    case Platform.GBA:
-                    case Platform.S32X:
-                    case Platform.SMCD:
-                    case Platform.PSX:
-                    case Platform.RPGM:
-                        m.CreateForwarder(emulator, device);
-                        break;
+                catch (Exception ex)
+                {
+                    if (!localFile && ex.Message == "U8 Header: Invalid Magic!")
+                    {
+                        if (wad_tries == 0)
+                        {
+                            wad_tries++;
+                            Logger.Log("Received \"U8 Header: Invalid Magic!\" error, download may have failed. Attempting to download WAD a second time.");
+                            goto Start;
+                        }
 
-                    default:
-                        throw new NotImplementedException();
+                        else
+                        {
+                            Logger.Log("WAD is invalid or failed to load more than once. Process halted.");
+                            throw ex;
+                        }
+                    }
+
+                    else
+                    {
+                        Logger.Log("Exportation failed. Process halted.");
+                        Logger.Log($"Message: {ex.Message}");
+                        throw ex;
+                    }
                 }
                 backgroundWorker.ReportProgress(m.Progress);
 

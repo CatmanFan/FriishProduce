@@ -210,15 +210,15 @@ namespace FriishProduce.Injectors
             // ****************
             Dictionary<string, string> argDict = new();
 
-            if (bool.Parse(Settings["patch_volume"])) argDict.Add("--volume", Program.Lang.String("patch_volume", "vc_snes"));
-            if (bool.Parse(Settings["patch_nodark"])) argDict.Add("--no-dark", Program.Lang.String("patch_nodark", "vc_snes"));
-            if (bool.Parse(Settings["patch_nocc"])) argDict.Add("--no-cc", Program.Lang.String("patch_nocc", "vc_snes"));
-            if (bool.Parse(Settings["patch_wiimote"])) argDict.Add("--wiimote-native", Program.Lang.String("patch_wiimote", "vc_snes"));
-            if (bool.Parse(Settings["patch_nosuspend"])) argDict.Add("--no-suspend", Program.Lang.String("patch_nosuspend", "vc_snes"));
-            if (bool.Parse(Settings["patch_nosave"])) argDict.Add("--no-save", Program.Lang.String("patch_nosave", "vc_snes"));
-            if (bool.Parse(Settings["patch_widescreen"])) argDict.Add("--wide", Program.Lang.String("patch_widescreen", "vc_snes"));
-            if (bool.Parse(Settings["patch_gcremap"])) argDict.Add("--gc-remap", Program.Lang.String("patch_gcremap", "vc_snes"));
-            if (nomanual) argDict.Add("--no-opera", Program.Lang.String("patch_noopera", "vc_snes"));
+            if (bool.Parse(Settings["patch_volume"]))       argDict.Add("--volume", Program.Lang.String("patch_volume", "vc_snes"));
+            if (bool.Parse(Settings["patch_nodark"]))       argDict.Add("--no-dark", Program.Lang.String("patch_nodark", "vc_snes"));
+            if (bool.Parse(Settings["patch_nocc"]))         argDict.Add("--no-cc", Program.Lang.String("patch_nocc", "vc_snes"));
+            if (bool.Parse(Settings["patch_wiimote"]))      argDict.Add("--wiimote-native", Program.Lang.String("patch_wiimote", "vc_snes"));
+            if (bool.Parse(Settings["patch_nosuspend"]))    argDict.Add("--no-suspend", Program.Lang.String("patch_nosuspend", "vc_snes"));
+            if (bool.Parse(Settings["patch_nosave"]))       argDict.Add("--no-save", Program.Lang.String("patch_nosave", "vc_snes"));
+            if (bool.Parse(Settings["patch_widescreen"]))   argDict.Add("--wide", Program.Lang.String("patch_widescreen", "vc_snes"));
+            if (bool.Parse(Settings["patch_gcremap"]))      argDict.Add("--gc-remap", Program.Lang.String("patch_gcremap", "vc_snes"));
+            if (nomanual)                                   argDict.Add("--no-opera", Program.Lang.String("patch_noopera", "vc_snes"));
 
             if (argDict?.Count == 0) return;
             if (bool.Parse(Settings["patch_nocheck"])) argDict.Add("--no-header-check-all", Program.Lang.String("patch_nocheck", "vc_snes"));
