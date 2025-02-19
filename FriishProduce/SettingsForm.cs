@@ -82,8 +82,8 @@ namespace FriishProduce
             #region --- Localization of All Controls ---
 
             themes.Items.Clear();
-            themes.Items.Add("Default");
-            themes.Items.Add("Dark");
+            themes.Items.AddRange(Program.Lang.StringArray("theme", Name));
+            themes.SelectedIndex = Program.Config.application.theme;
 
             image_interpolation_mode.Text = Program.Lang.String("image_interpolation_mode", "projectform");
             image_interpolation_modes.Items.Clear();
@@ -222,7 +222,6 @@ namespace FriishProduce
             #region --- Set All Settings to Defaults ---
 
             // Defaults & forwarders
-            themes.SelectedIndex = 0; // Program.Config.application.theme;
             reset_all_dialogs.Checked = false;
             toggleSwitch2.Checked = Program.Config.forwarder.show_bios_screen;
             forwarder_type.SelectedIndex = Program.Config.forwarder.root_storage_device;
@@ -257,7 +256,7 @@ namespace FriishProduce
 #else
             GetBanners.Visible = false;
 #endif
-            // theme.Visible = Program.DebugMode;
+            theme.Enabled = Program.DebugMode;
 
             // NES
             vc_nes_palettelist.SelectedIndex = Program.Config.nes.palette;
@@ -385,8 +384,8 @@ namespace FriishProduce
                         lng = item.Key;
 
             Program.Config.application.language = lng;
-            // Program.Config.application.theme = theme.SelectedIndex;
             // Program.Lang = new Language(lng);
+            Program.Config.application.theme = themes.SelectedIndex;
 
             // -------------------------------------------
             // Other settings

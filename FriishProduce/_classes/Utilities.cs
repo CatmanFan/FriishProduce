@@ -62,7 +62,8 @@ namespace FriishProduce
         {
             BaseStylesheet = BaseStylesheet + "\n" +
                 "b { font-weight: 450 !important; }\n" +
-                "div { font-family: \"Segoe UI\", sans-serif !important; }",
+                "div { font-family: \"Segoe UI\", sans-serif !important; }\n" +
+                "div { color: black !important; }",
             StripAmpersands = false,
             InitialDelay = 300,
             AutoPopDelay = 12000,

@@ -31,7 +31,7 @@ namespace FriishProduce
         {
             this.biosImport = new System.Windows.Forms.OpenFileDialog();
             this.bios_list = new System.Windows.Forms.ComboBox();
-            this.g1 = new System.Windows.Forms.GroupBox();
+            this.g1 = new GroupBoxEx();
             this.bottomPanel1.SuspendLayout();
             this.controller_box.SuspendLayout();
             this.g1.SuspendLayout();
@@ -86,6 +86,6 @@ namespace FriishProduce
         #endregion
         private System.Windows.Forms.OpenFileDialog biosImport;
         private System.Windows.Forms.ComboBox bios_list;
-        private System.Windows.Forms.GroupBox g1;
+        private GroupBoxEx g1;
     }
 }

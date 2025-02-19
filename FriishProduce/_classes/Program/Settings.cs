@@ -117,6 +117,10 @@ namespace FriishProduce
                     neo = reader.neo;
                     forwarder = reader.forwarder;
                     flash = reader.flash;
+
+                    var language = application.language;
+                    var theme = application.theme;
+                    var update = application.force_update;
                 }
 
                 catch
@@ -138,6 +142,7 @@ namespace FriishProduce
             public bool force_update { get; set; } = false;
 #endif
             public bool auto_update { get; set; } = false;
+            public int theme { get; set; } = 0;
             public bool donotshow_000 { get; set; } = false;
             public bool donotshow_001 { get; set; } = false;
             public bool auto_prefill { get; set; } = false;

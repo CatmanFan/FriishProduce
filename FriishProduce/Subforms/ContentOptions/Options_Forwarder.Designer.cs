@@ -33,7 +33,7 @@ namespace FriishProduce
             this.toggleSwitch1 = new JCS.ToggleSwitch();
             this.show_bios_screen = new System.Windows.Forms.Label();
             this.toggleSwitch2 = new JCS.ToggleSwitch();
-            this.bios_settings = new System.Windows.Forms.GroupBox();
+            this.bios_settings = new GroupBoxEx();
             this.bottomPanel1.SuspendLayout();
             this.controller_box.SuspendLayout();
             this.bios_settings.SuspendLayout();
@@ -116,6 +116,6 @@ namespace FriishProduce
         private JCS.ToggleSwitch toggleSwitch1;
         private System.Windows.Forms.Label show_bios_screen;
         private JCS.ToggleSwitch toggleSwitch2;
-        private System.Windows.Forms.GroupBox bios_settings;
+        private GroupBoxEx bios_settings;
     }
 }

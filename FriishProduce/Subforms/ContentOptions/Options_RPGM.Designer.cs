@@ -29,7 +29,7 @@ namespace FriishProduce
         /// </summary>
         private void InitializeComponent()
         {
-            this.rpgm_settings = new System.Windows.Forms.GroupBox();
+            this.rpgm_settings = new GroupBoxEx();
             this.rtp_folder = new System.Windows.Forms.Label();
             this.use_rtp = new System.Windows.Forms.Label();
             this.toggleSwitch1 = new JCS.ToggleSwitch();
@@ -103,7 +103,7 @@ namespace FriishProduce
 
         #endregion
 
-        private System.Windows.Forms.GroupBox rpgm_settings;
+        private GroupBoxEx rpgm_settings;
         private System.Windows.Forms.Label rtp_folder;
         private System.Windows.Forms.Label use_rtp;
         private JCS.ToggleSwitch toggleSwitch1;

@@ -29,13 +29,13 @@ namespace FriishProduce
         /// </summary>
         private void InitializeComponent()
         {
-            this.g1 = new System.Windows.Forms.GroupBox();
+            this.g1 = new GroupBoxEx();
             this.patch_autosizerom = new System.Windows.Forms.CheckBox();
             this.patch_expandedram = new System.Windows.Forms.CheckBox();
             this.patch_fixcrashes = new System.Windows.Forms.CheckBox();
             this.patch_fixbrightness = new System.Windows.Forms.CheckBox();
             this.romc_type_list = new System.Windows.Forms.ComboBox();
-            this.g2 = new System.Windows.Forms.GroupBox();
+            this.g2 = new GroupBoxEx();
             this.patch_cleantextures = new System.Windows.Forms.CheckBox();
             this.bottomPanel1.SuspendLayout();
             this.controller_box.SuspendLayout();
@@ -182,13 +182,13 @@ namespace FriishProduce
 
         #endregion
 
-        private System.Windows.Forms.GroupBox g1;
+        private GroupBoxEx g1;
         private System.Windows.Forms.CheckBox patch_autosizerom;
         private System.Windows.Forms.CheckBox patch_expandedram;
         private System.Windows.Forms.CheckBox patch_fixcrashes;
         private System.Windows.Forms.CheckBox patch_fixbrightness;
         private System.Windows.Forms.ComboBox romc_type_list;
-        private System.Windows.Forms.GroupBox g2;
+        private GroupBoxEx g2;
         private System.Windows.Forms.CheckBox patch_cleantextures;
     }
 }

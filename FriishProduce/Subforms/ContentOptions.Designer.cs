@@ -35,7 +35,7 @@ namespace FriishProduce
             this.b_cancel = new System.Windows.Forms.Button();
             this.b_controller = new System.Windows.Forms.Button();
             this.bottomPanel2 = new System.Windows.Forms.Panel();
-            this.controller_box = new System.Windows.Forms.GroupBox();
+            this.controller_box = new GroupBoxEx();
             this.controller_cb = new System.Windows.Forms.CheckBox();
             this.bottomPanel1.SuspendLayout();
             this.bottomPanel2.SuspendLayout();
@@ -125,7 +125,7 @@ namespace FriishProduce
         protected System.Windows.Forms.Panel bottomPanel1;
         protected System.Windows.Forms.Button b_controller;
         private System.Windows.Forms.Panel bottomPanel2;
-        protected System.Windows.Forms.GroupBox controller_box;
+        protected GroupBoxEx controller_box;
         protected System.Windows.Forms.CheckBox controller_cb;
     }
 }

@@ -61,7 +61,7 @@ namespace FriishProduce
             // else
             // {
                 Logger.Log("Running in GUI (graphical) mode.");
-                Theme.ChangeScheme(-1); // Program.Config.application.theme
+                Theme.ChangeScheme(DebugMode ? Config.application.theme : -1);
 
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);

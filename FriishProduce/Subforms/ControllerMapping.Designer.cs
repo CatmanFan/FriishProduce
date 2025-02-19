@@ -83,7 +83,7 @@ namespace FriishProduce
             this.GC_Up = new System.Windows.Forms.ComboBox();
             this.GC_L = new System.Windows.Forms.ComboBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.presets_gb = new System.Windows.Forms.GroupBox();
+            this.presets_gb = new GroupBoxEx();
             this.presets_list = new System.Windows.Forms.ComboBox();
             this.preset_load = new System.Windows.Forms.Button();
             this.Classic_Down_L = new System.Windows.Forms.ComboBox();
@@ -670,7 +670,7 @@ namespace FriishProduce
         private System.Windows.Forms.ComboBox GC_Up;
         private System.Windows.Forms.ComboBox GC_L;
         private System.Windows.Forms.CheckBox vertical_layout;
-        private System.Windows.Forms.GroupBox presets_gb;
+        private GroupBoxEx presets_gb;
         private System.Windows.Forms.ComboBox presets_list;
         private System.Windows.Forms.Button preset_load;
         private System.Windows.Forms.ComboBox Classic_Down_R;

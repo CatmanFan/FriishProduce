@@ -30,7 +30,7 @@ namespace FriishProduce
         private void InitializeComponent()
         {
             this.quality = new System.Windows.Forms.ComboBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox1 = new GroupBoxEx();
             this.vff_sync_on_write = new System.Windows.Forms.CheckBox();
             this.vff_cache_size_l = new System.Windows.Forms.Label();
             this.vff_cache_size = new System.Windows.Forms.ComboBox();
@@ -39,7 +39,7 @@ namespace FriishProduce
             this.persistent_storage_total_l = new System.Windows.Forms.Label();
             this.persistent_storage_total = new System.Windows.Forms.ComboBox();
             this.save_data_enable = new System.Windows.Forms.CheckBox();
-            this.display = new System.Windows.Forms.GroupBox();
+            this.display = new GroupBoxEx();
             this.anti_aliasing = new System.Windows.Forms.CheckBox();
             this.fullscreen = new System.Windows.Forms.CheckBox();
             this.quality_l = new System.Windows.Forms.Label();
@@ -48,16 +48,16 @@ namespace FriishProduce
             this.zoom = new System.Windows.Forms.Label();
             this.zoom_v = new FriishProduce.NumericUpDownEx();
             this.zoom_h = new FriishProduce.NumericUpDownEx();
-            this.controls = new System.Windows.Forms.GroupBox();
+            this.controls = new GroupBoxEx();
             this.midi = new System.Windows.Forms.CheckBox();
             this.qwerty_keyboard = new System.Windows.Forms.CheckBox();
             this.mouse = new System.Windows.Forms.CheckBox();
             this.background_color_img = new System.Windows.Forms.PictureBox();
-            this.strap_reminder = new System.Windows.Forms.GroupBox();
+            this.strap_reminder = new GroupBoxEx();
             this.strap_reminder_list = new System.Windows.Forms.ComboBox();
             this.ImportDLS = new System.Windows.Forms.OpenFileDialog();
             this.BGColor = new System.Windows.Forms.ColorDialog();
-            this.swf_metadata = new System.Windows.Forms.GroupBox();
+            this.swf_metadata = new GroupBoxEx();
             this.background_color = new System.Windows.Forms.TextBox();
             this.background_color_l = new System.Windows.Forms.Label();
             this.content_domain_l = new System.Windows.Forms.Label();
@@ -485,15 +485,15 @@ namespace FriishProduce
 
         #endregion
         private System.Windows.Forms.ComboBox quality;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private GroupBoxEx groupBox1;
         private System.Windows.Forms.ComboBox vff_cache_size;
         private System.Windows.Forms.Label vff_cache_size_l;
         private System.Windows.Forms.CheckBox save_data_enable;
-        private System.Windows.Forms.GroupBox display;
-        private System.Windows.Forms.GroupBox controls;
+        private GroupBoxEx display;
+        private GroupBoxEx controls;
         private System.Windows.Forms.CheckBox qwerty_keyboard;
         private System.Windows.Forms.CheckBox mouse;
-        private System.Windows.Forms.GroupBox strap_reminder;
+        private GroupBoxEx strap_reminder;
         private System.Windows.Forms.ComboBox strap_reminder_list;
         private System.Windows.Forms.CheckBox midi;
         private System.Windows.Forms.OpenFileDialog ImportDLS;
@@ -505,7 +505,7 @@ namespace FriishProduce
         private System.Windows.Forms.CheckBox fullscreen;
         private System.Windows.Forms.ColorDialog BGColor;
         private System.Windows.Forms.PictureBox background_color_img;
-        private System.Windows.Forms.GroupBox swf_metadata;
+        private GroupBoxEx swf_metadata;
         private PlaceholderTextBox content_domain;
         private System.Windows.Forms.Label content_domain_l;
         private System.Windows.Forms.TextBox background_color;

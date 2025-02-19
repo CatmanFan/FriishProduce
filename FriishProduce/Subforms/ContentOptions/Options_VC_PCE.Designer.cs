@@ -31,16 +31,16 @@ namespace FriishProduce
         {
             this.padbutton_switch = new JCS.ToggleSwitch();
             this.padbutton = new System.Windows.Forms.Label();
-            this.vc_options = new System.Windows.Forms.GroupBox();
+            this.vc_options = new GroupBoxEx();
             this.sgenable = new System.Windows.Forms.CheckBox();
             this.backupram = new System.Windows.Forms.CheckBox();
-            this.display = new System.Windows.Forms.GroupBox();
+            this.display = new GroupBoxEx();
             this.y_offset = new System.Windows.Forms.Label();
             this.y_offset_toggle = new System.Windows.Forms.NumericUpDown();
             this.sprline = new System.Windows.Forms.CheckBox();
             this.raster = new System.Windows.Forms.CheckBox();
             this.hide_overscan = new System.Windows.Forms.CheckBox();
-            this.region_l = new System.Windows.Forms.GroupBox();
+            this.region_l = new GroupBoxEx();
             this.region = new System.Windows.Forms.ComboBox();
             this.bottomPanel1.SuspendLayout();
             this.controller_box.SuspendLayout();
@@ -228,8 +228,8 @@ namespace FriishProduce
         #endregion
         private JCS.ToggleSwitch padbutton_switch;
         private System.Windows.Forms.Label padbutton;
-        private System.Windows.Forms.GroupBox vc_options;
-        private System.Windows.Forms.GroupBox display;
+        private GroupBoxEx vc_options;
+        private GroupBoxEx display;
         private System.Windows.Forms.CheckBox hide_overscan;
         private System.Windows.Forms.CheckBox raster;
         private System.Windows.Forms.CheckBox sprline;
@@ -237,7 +237,7 @@ namespace FriishProduce
         private System.Windows.Forms.NumericUpDown y_offset_toggle;
         private System.Windows.Forms.CheckBox backupram;
         private System.Windows.Forms.CheckBox sgenable;
-        private System.Windows.Forms.GroupBox region_l;
+        private GroupBoxEx region_l;
         private System.Windows.Forms.ComboBox region;
     }
 }

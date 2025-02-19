@@ -545,12 +545,11 @@ namespace FriishProduce
             // 
             this.tabControl.BackHighColor = System.Drawing.Color.WhiteSmoke;
             this.tabControl.BackLowColor = System.Drawing.SystemColors.Control;
-            this.tabControl.CloseButtonVisible = true;
+            resources.ApplyResources(this.tabControl, "tabControl");
             this.tabControl.FontBoldOnSelect = false;
             this.tabControl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.tabControl.ForeColorDisabled = System.Drawing.Color.Gray;
             this.tabControl.KeyCloseEnabled = false;
-            resources.ApplyResources(this.tabControl, "tabControl");
             this.tabControl.MenuRenderer = null;
             this.tabControl.Name = "tabControl";
             this.tabControl.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
@@ -560,10 +559,12 @@ namespace FriishProduce
             this.tabControl.TabBackLowColorDisabled = System.Drawing.Color.Gainsboro;
             this.tabControl.TabBorderEnhanced = true;
             this.tabControl.TabBorderEnhanceWeight = JacksiroKe.MdiTabCtrl.TabControl.Weight.Soft;
+            this.tabControl.TabCloseButtonBackHighColorDisabled = System.Drawing.Color.Silver;
+            this.tabControl.TabCloseButtonBackLowColorDisabled = System.Drawing.Color.Gray;
+            this.tabControl.TabCloseButtonBorderColorDisabled = System.Drawing.Color.DimGray;
             this.tabControl.TabCloseButtonImage = null;
             this.tabControl.TabCloseButtonImageDisabled = null;
             this.tabControl.TabCloseButtonImageHot = null;
-            this.tabControl.TabCloseButtonVisible = false;
             this.tabControl.TabGlassGradient = true;
             this.tabControl.TabHeight = 24;
             this.tabControl.TabMaximumWidth = 250;

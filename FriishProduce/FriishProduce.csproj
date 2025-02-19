@@ -642,6 +642,7 @@
     <None Include="Resources\icons\consoles\yspixel\Sms_pad.ico" />
     <Content Include="Resources\icons\etc\global_telecom.png" />
     <Content Include="Resources\icons\global_telecom.ico" />
+    <None Include="Resources\icons\retroarch_w.png" />
     <Content Include="Resources\icons\wiki.gif" />
     <Content Include="version.xml" />
     <None Include="Resources\apps\lzh8_dec.exe" />

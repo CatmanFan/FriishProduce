@@ -117,234 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="languages.Items" xml:space="preserve">
-    <value>System default</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="languages.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 18</value>
-  </data>
-  <data name="languages.Size" type="System.Drawing.Size, System.Drawing">
-    <value>516, 21</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="languages.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;languages.Name" xml:space="preserve">
-    <value>languages</value>
-  </data>
-  <data name="&gt;&gt;languages.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;languages.Parent" xml:space="preserve">
-    <value>language</value>
-  </data>
-  <data name="&gt;&gt;languages.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="vc_n64_patch_cleantextures.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="vc_n64_patch_cleantextures.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>TopLeft</value>
-  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="vc_n64_patch_cleantextures.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="vc_n64_patch_cleantextures.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 108</value>
-  </data>
-  <data name="vc_n64_patch_cleantextures.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 17</value>
-  </data>
-  <data name="vc_n64_patch_cleantextures.TabIndex" type="System.Int32, mscorlib">
-    <value>18</value>
-  </data>
-  <data name="vc_n64_patch_cleantextures.Text" xml:space="preserve">
-    <value>patch_cleantextures</value>
-  </data>
-  <data name="vc_n64_patch_cleantextures.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>TopLeft</value>
-  </data>
-  <data name="&gt;&gt;vc_n64_patch_cleantextures.Name" xml:space="preserve">
-    <value>vc_n64_patch_cleantextures</value>
-  </data>
-  <data name="&gt;&gt;vc_n64_patch_cleantextures.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;vc_n64_patch_cleantextures.Parent" xml:space="preserve">
-    <value>vc_n64_options</value>
-  </data>
-  <data name="&gt;&gt;vc_n64_patch_cleantextures.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="vc_n64_patch_autosizerom.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="vc_n64_patch_autosizerom.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="vc_n64_patch_autosizerom.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 64</value>
-  </data>
-  <data name="vc_n64_patch_autosizerom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>117, 17</value>
-  </data>
-  <data name="vc_n64_patch_autosizerom.TabIndex" type="System.Int32, mscorlib">
-    <value>16</value>
-  </data>
-  <data name="vc_n64_patch_autosizerom.Text" xml:space="preserve">
-    <value>patch_autosizerom</value>
-  </data>
-  <data name="&gt;&gt;vc_n64_patch_autosizerom.Name" xml:space="preserve">
-    <value>vc_n64_patch_autosizerom</value>
-  </data>
-  <data name="&gt;&gt;vc_n64_patch_autosizerom.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;vc_n64_patch_autosizerom.Parent" xml:space="preserve">
-    <value>vc_n64_options</value>
-  </data>
-  <data name="&gt;&gt;vc_n64_patch_autosizerom.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="vc_n64_patch_expandedram.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="vc_n64_patch_expandedram.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="vc_n64_patch_expandedram.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 42</value>
-  </data>
-  <data name="vc_n64_patch_expandedram.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 17</value>
-  </data>
-  <data name="vc_n64_patch_expandedram.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
-  </data>
-  <data name="vc_n64_patch_expandedram.Text" xml:space="preserve">
-    <value>patch_expandedram</value>
-  </data>
-  <data name="&gt;&gt;vc_n64_patch_expandedram.Name" xml:space="preserve">
-    <value>vc_n64_patch_expandedram</value>
-  </data>
-  <data name="&gt;&gt;vc_n64_patch_expandedram.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;vc_n64_patch_expandedram.Parent" xml:space="preserve">
-    <value>vc_n64_options</value>
-  </data>
-  <data name="&gt;&gt;vc_n64_patch_expandedram.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="vc_n64_patch_fixcrashes.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="vc_n64_patch_fixcrashes.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="vc_n64_patch_fixcrashes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 86</value>
-  </data>
-  <data name="vc_n64_patch_fixcrashes.Size" type="System.Drawing.Size, System.Drawing">
-    <value>108, 17</value>
-  </data>
-  <data name="vc_n64_patch_fixcrashes.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
-  </data>
-  <data name="vc_n64_patch_fixcrashes.Text" xml:space="preserve">
-    <value>patch_fixcrashes</value>
-  </data>
-  <data name="&gt;&gt;vc_n64_patch_fixcrashes.Name" xml:space="preserve">
-    <value>vc_n64_patch_fixcrashes</value>
-  </data>
-  <data name="&gt;&gt;vc_n64_patch_fixcrashes.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;vc_n64_patch_fixcrashes.Parent" xml:space="preserve">
-    <value>vc_n64_options</value>
-  </data>
-  <data name="&gt;&gt;vc_n64_patch_fixcrashes.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="vc_n64_patch_fixbrightness.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="vc_n64_patch_fixbrightness.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="vc_n64_patch_fixbrightness.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 20</value>
-  </data>
-  <data name="vc_n64_patch_fixbrightness.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 17</value>
-  </data>
-  <data name="vc_n64_patch_fixbrightness.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="vc_n64_patch_fixbrightness.Text" xml:space="preserve">
-    <value>patch_fixbrightness</value>
-  </data>
-  <data name="&gt;&gt;vc_n64_patch_fixbrightness.Name" xml:space="preserve">
-    <value>vc_n64_patch_fixbrightness</value>
-  </data>
-  <data name="&gt;&gt;vc_n64_patch_fixbrightness.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;vc_n64_patch_fixbrightness.Parent" xml:space="preserve">
-    <value>vc_n64_options</value>
-  </data>
-  <data name="&gt;&gt;vc_n64_patch_fixbrightness.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="vc_n64_options.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 10</value>
-  </data>
-  <data name="vc_n64_options.Size" type="System.Drawing.Size, System.Drawing">
-    <value>536, 134</value>
-  </data>
-  <data name="vc_n64_options.TabIndex" type="System.Int32, mscorlib">
-    <value>18</value>
-  </data>
-  <data name="vc_n64_options.Text" xml:space="preserve">
-    <value>vc_options</value>
-  </data>
-  <data name="&gt;&gt;vc_n64_options.Name" xml:space="preserve">
-    <value>vc_n64_options</value>
-  </data>
-  <data name="&gt;&gt;vc_n64_options.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;vc_n64_options.Parent" xml:space="preserve">
-    <value>vc_n64</value>
-  </data>
-  <data name="&gt;&gt;vc_n64_options.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="vc_n64_romc_type_list.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 18</value>
-  </data>
-  <data name="vc_n64_romc_type_list.Size" type="System.Drawing.Size, System.Drawing">
-    <value>516, 21</value>
-  </data>
-  <data name="vc_n64_romc_type_list.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;vc_n64_romc_type_list.Name" xml:space="preserve">
-    <value>vc_n64_romc_type_list</value>
-  </data>
-  <data name="&gt;&gt;vc_n64_romc_type_list.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;vc_n64_romc_type_list.Parent" xml:space="preserve">
-    <value>vc_n64_romc_type</value>
-  </data>
-  <data name="&gt;&gt;vc_n64_romc_type_list.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="b_cancel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
@@ -354,12 +127,14 @@
   <data name="b_cancel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="b_cancel.Location" type="System.Drawing.Point, System.Drawing">
     <value>642, 8</value>
   </data>
   <data name="b_cancel.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 23</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="b_cancel.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
@@ -619,11 +394,8 @@
   <data name="&gt;&gt;themes.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="theme.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="theme.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 357</value>
+    <value>12, 66</value>
   </data>
   <data name="theme.Size" type="System.Drawing.Size, System.Drawing">
     <value>536, 50</value>
@@ -634,14 +406,11 @@
   <data name="theme.Text" xml:space="preserve">
     <value>theme</value>
   </data>
-  <data name="theme.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="&gt;&gt;theme.Name" xml:space="preserve">
     <value>theme</value>
   </data>
   <data name="&gt;&gt;theme.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>FriishProduce.GroupBoxEx, FriishProduce, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;theme.Parent" xml:space="preserve">
     <value>panel1</value>
@@ -656,7 +425,7 @@
     <value>NoControl</value>
   </data>
   <data name="bypass_rom_size.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 112</value>
+    <value>12, 170</value>
   </data>
   <data name="bypass_rom_size.Size" type="System.Drawing.Size, System.Drawing">
     <value>108, 17</value>
@@ -686,7 +455,7 @@
     <value>NoControl</value>
   </data>
   <data name="use_online_wad_enabled.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 135</value>
+    <value>12, 193</value>
   </data>
   <data name="use_online_wad_enabled.Size" type="System.Drawing.Size, System.Drawing">
     <value>147, 17</value>
@@ -716,7 +485,7 @@
     <value>NoControl</value>
   </data>
   <data name="use_custom_database.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 89</value>
+    <value>12, 147</value>
   </data>
   <data name="use_custom_database.Size" type="System.Drawing.Size, System.Drawing">
     <value>134, 17</value>
@@ -746,7 +515,7 @@
     <value>NoControl</value>
   </data>
   <data name="reset_all_dialogs.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 66</value>
+    <value>12, 124</value>
   </data>
   <data name="reset_all_dialogs.Size" type="System.Drawing.Size, System.Drawing">
     <value>106, 17</value>
@@ -769,6 +538,30 @@
   <data name="&gt;&gt;reset_all_dialogs.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <data name="languages.Items" xml:space="preserve">
+    <value>System default</value>
+  </data>
+  <data name="languages.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 18</value>
+  </data>
+  <data name="languages.Size" type="System.Drawing.Size, System.Drawing">
+    <value>516, 21</value>
+  </data>
+  <data name="languages.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;languages.Name" xml:space="preserve">
+    <value>languages</value>
+  </data>
+  <data name="&gt;&gt;languages.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;languages.Parent" xml:space="preserve">
+    <value>language</value>
+  </data>
+  <data name="&gt;&gt;languages.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="language.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 10</value>
   </data>
@@ -785,7 +578,7 @@
     <value>language</value>
   </data>
   <data name="&gt;&gt;language.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>FriishProduce.GroupBoxEx, FriishProduce, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;language.Parent" xml:space="preserve">
     <value>panel1</value>
@@ -812,7 +605,28 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>3</value>
+  </data>
+  <data name="vc_n64_romc_type_list.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 18</value>
+  </data>
+  <data name="vc_n64_romc_type_list.Size" type="System.Drawing.Size, System.Drawing">
+    <value>516, 21</value>
+  </data>
+  <data name="vc_n64_romc_type_list.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;vc_n64_romc_type_list.Name" xml:space="preserve">
+    <value>vc_n64_romc_type_list</value>
+  </data>
+  <data name="&gt;&gt;vc_n64_romc_type_list.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;vc_n64_romc_type_list.Parent" xml:space="preserve">
+    <value>vc_n64_romc_type</value>
+  </data>
+  <data name="&gt;&gt;vc_n64_romc_type_list.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="vc_n64_romc_type.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 150</value>
@@ -830,13 +644,193 @@
     <value>vc_n64_romc_type</value>
   </data>
   <data name="&gt;&gt;vc_n64_romc_type.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>FriishProduce.GroupBoxEx, FriishProduce, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;vc_n64_romc_type.Parent" xml:space="preserve">
     <value>vc_n64</value>
   </data>
   <data name="&gt;&gt;vc_n64_romc_type.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="vc_n64_patch_cleantextures.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="vc_n64_patch_cleantextures.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopLeft</value>
+  </data>
+  <data name="vc_n64_patch_cleantextures.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="vc_n64_patch_cleantextures.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 108</value>
+  </data>
+  <data name="vc_n64_patch_cleantextures.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 17</value>
+  </data>
+  <data name="vc_n64_patch_cleantextures.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="vc_n64_patch_cleantextures.Text" xml:space="preserve">
+    <value>patch_cleantextures</value>
+  </data>
+  <data name="vc_n64_patch_cleantextures.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopLeft</value>
+  </data>
+  <data name="&gt;&gt;vc_n64_patch_cleantextures.Name" xml:space="preserve">
+    <value>vc_n64_patch_cleantextures</value>
+  </data>
+  <data name="&gt;&gt;vc_n64_patch_cleantextures.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;vc_n64_patch_cleantextures.Parent" xml:space="preserve">
+    <value>vc_n64_options</value>
+  </data>
+  <data name="&gt;&gt;vc_n64_patch_cleantextures.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="vc_n64_patch_autosizerom.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="vc_n64_patch_autosizerom.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="vc_n64_patch_autosizerom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 64</value>
+  </data>
+  <data name="vc_n64_patch_autosizerom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>117, 17</value>
+  </data>
+  <data name="vc_n64_patch_autosizerom.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="vc_n64_patch_autosizerom.Text" xml:space="preserve">
+    <value>patch_autosizerom</value>
+  </data>
+  <data name="&gt;&gt;vc_n64_patch_autosizerom.Name" xml:space="preserve">
+    <value>vc_n64_patch_autosizerom</value>
+  </data>
+  <data name="&gt;&gt;vc_n64_patch_autosizerom.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;vc_n64_patch_autosizerom.Parent" xml:space="preserve">
+    <value>vc_n64_options</value>
+  </data>
+  <data name="&gt;&gt;vc_n64_patch_autosizerom.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="vc_n64_patch_expandedram.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="vc_n64_patch_expandedram.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="vc_n64_patch_expandedram.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 42</value>
+  </data>
+  <data name="vc_n64_patch_expandedram.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 17</value>
+  </data>
+  <data name="vc_n64_patch_expandedram.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="vc_n64_patch_expandedram.Text" xml:space="preserve">
+    <value>patch_expandedram</value>
+  </data>
+  <data name="&gt;&gt;vc_n64_patch_expandedram.Name" xml:space="preserve">
+    <value>vc_n64_patch_expandedram</value>
+  </data>
+  <data name="&gt;&gt;vc_n64_patch_expandedram.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;vc_n64_patch_expandedram.Parent" xml:space="preserve">
+    <value>vc_n64_options</value>
+  </data>
+  <data name="&gt;&gt;vc_n64_patch_expandedram.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="vc_n64_patch_fixcrashes.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="vc_n64_patch_fixcrashes.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="vc_n64_patch_fixcrashes.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 86</value>
+  </data>
+  <data name="vc_n64_patch_fixcrashes.Size" type="System.Drawing.Size, System.Drawing">
+    <value>108, 17</value>
+  </data>
+  <data name="vc_n64_patch_fixcrashes.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="vc_n64_patch_fixcrashes.Text" xml:space="preserve">
+    <value>patch_fixcrashes</value>
+  </data>
+  <data name="&gt;&gt;vc_n64_patch_fixcrashes.Name" xml:space="preserve">
+    <value>vc_n64_patch_fixcrashes</value>
+  </data>
+  <data name="&gt;&gt;vc_n64_patch_fixcrashes.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;vc_n64_patch_fixcrashes.Parent" xml:space="preserve">
+    <value>vc_n64_options</value>
+  </data>
+  <data name="&gt;&gt;vc_n64_patch_fixcrashes.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="vc_n64_patch_fixbrightness.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="vc_n64_patch_fixbrightness.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="vc_n64_patch_fixbrightness.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 20</value>
+  </data>
+  <data name="vc_n64_patch_fixbrightness.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 17</value>
+  </data>
+  <data name="vc_n64_patch_fixbrightness.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="vc_n64_patch_fixbrightness.Text" xml:space="preserve">
+    <value>patch_fixbrightness</value>
+  </data>
+  <data name="&gt;&gt;vc_n64_patch_fixbrightness.Name" xml:space="preserve">
+    <value>vc_n64_patch_fixbrightness</value>
+  </data>
+  <data name="&gt;&gt;vc_n64_patch_fixbrightness.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;vc_n64_patch_fixbrightness.Parent" xml:space="preserve">
+    <value>vc_n64_options</value>
+  </data>
+  <data name="&gt;&gt;vc_n64_patch_fixbrightness.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="vc_n64_options.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 10</value>
+  </data>
+  <data name="vc_n64_options.Size" type="System.Drawing.Size, System.Drawing">
+    <value>536, 134</value>
+  </data>
+  <data name="vc_n64_options.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="vc_n64_options.Text" xml:space="preserve">
+    <value>vc_options</value>
+  </data>
+  <data name="&gt;&gt;vc_n64_options.Name" xml:space="preserve">
+    <value>vc_n64_options</value>
+  </data>
+  <data name="&gt;&gt;vc_n64_options.Type" xml:space="preserve">
+    <value>FriishProduce.GroupBoxEx, FriishProduce, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;vc_n64_options.Parent" xml:space="preserve">
+    <value>vc_n64</value>
+  </data>
+  <data name="&gt;&gt;vc_n64_options.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="vc_n64.Location" type="System.Drawing.Point, System.Drawing">
     <value>194, 0</value>
@@ -857,7 +851,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_n64.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>8</value>
   </data>
   <data name="forwarder_type.Items" xml:space="preserve">
     <value>SD</value>
@@ -902,7 +896,7 @@
     <value>forwarder_root_device</value>
   </data>
   <data name="&gt;&gt;forwarder_root_device.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>FriishProduce.GroupBoxEx, FriishProduce, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;forwarder_root_device.Parent" xml:space="preserve">
     <value>forwarder</value>
@@ -977,7 +971,7 @@
     <value>bios_settings</value>
   </data>
   <data name="&gt;&gt;bios_settings.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>FriishProduce.GroupBoxEx, FriishProduce, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bios_settings.Parent" xml:space="preserve">
     <value>forwarder</value>
@@ -1004,7 +998,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;forwarder.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>5</value>
   </data>
   <data name="vc_nes_palette_banner_usage.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1073,7 +1067,7 @@
     <value>vc_nes_palette</value>
   </data>
   <data name="&gt;&gt;vc_nes_palette.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>FriishProduce.GroupBoxEx, FriishProduce, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;vc_nes_palette.Parent" xml:space="preserve">
     <value>vc_nes</value>
@@ -1100,7 +1094,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_nes.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>6</value>
   </data>
   <data name="vc_neo_bios_list.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 18</value>
@@ -1139,7 +1133,7 @@
     <value>vc_neo_bios</value>
   </data>
   <data name="&gt;&gt;vc_neo_bios.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>FriishProduce.GroupBoxEx, FriishProduce, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;vc_neo_bios.Parent" xml:space="preserve">
     <value>vc_neo</value>
@@ -1166,7 +1160,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_neo.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>11</value>
   </data>
   <data name="vc_sega_countries.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 18</value>
@@ -1205,7 +1199,7 @@
     <value>vc_sega_country</value>
   </data>
   <data name="&gt;&gt;vc_sega_country.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>FriishProduce.GroupBoxEx, FriishProduce, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;vc_sega_country.Parent" xml:space="preserve">
     <value>vc_sega</value>
@@ -1319,7 +1313,7 @@
     <value>vc_sega_system</value>
   </data>
   <data name="&gt;&gt;vc_sega_system.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>FriishProduce.GroupBoxEx, FriishProduce, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;vc_sega_system.Parent" xml:space="preserve">
     <value>vc_sega</value>
@@ -1400,7 +1394,7 @@
     <value>vc_sega_display</value>
   </data>
   <data name="&gt;&gt;vc_sega_display.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>FriishProduce.GroupBoxEx, FriishProduce, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;vc_sega_display.Parent" xml:space="preserve">
     <value>vc_sega</value>
@@ -1427,7 +1421,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_sega.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>9</value>
   </data>
   <data name="vc_pce_note.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1505,7 +1499,7 @@
     <value>vc_pce_region_l</value>
   </data>
   <data name="&gt;&gt;vc_pce_region_l.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>FriishProduce.GroupBoxEx, FriishProduce, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;vc_pce_region_l.Parent" xml:space="preserve">
     <value>vc_pce</value>
@@ -1640,7 +1634,7 @@
     <value>vc_pce_system</value>
   </data>
   <data name="&gt;&gt;vc_pce_system.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>FriishProduce.GroupBoxEx, FriishProduce, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;vc_pce_system.Parent" xml:space="preserve">
     <value>vc_pce</value>
@@ -1805,7 +1799,7 @@
     <value>vc_pce_display</value>
   </data>
   <data name="&gt;&gt;vc_pce_display.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>FriishProduce.GroupBoxEx, FriishProduce, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;vc_pce_display.Parent" xml:space="preserve">
     <value>vc_pce</value>
@@ -1832,7 +1826,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_pce.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>10</value>
   </data>
   <data name="auto_prefill.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1931,7 +1925,7 @@
     <value>image_interpolation_mode</value>
   </data>
   <data name="&gt;&gt;image_interpolation_mode.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>FriishProduce.GroupBoxEx, FriishProduce, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;image_interpolation_mode.Parent" xml:space="preserve">
     <value>panel2</value>
@@ -1976,7 +1970,7 @@
     <value>banner_region</value>
   </data>
   <data name="&gt;&gt;banner_region.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>FriishProduce.GroupBoxEx, FriishProduce, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;banner_region.Parent" xml:space="preserve">
     <value>panel2</value>
@@ -2165,7 +2159,7 @@
     <value>default_target_filename</value>
   </data>
   <data name="&gt;&gt;default_target_filename.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>FriishProduce.GroupBoxEx, FriishProduce, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;default_target_filename.Parent" xml:space="preserve">
     <value>panel2</value>
@@ -2192,7 +2186,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>14</value>
   </data>
   <data name="injection_methods_sega.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 18</value>
@@ -2231,7 +2225,7 @@
     <value>sega_default</value>
   </data>
   <data name="&gt;&gt;sega_default.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>FriishProduce.GroupBoxEx, FriishProduce, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;sega_default.Parent" xml:space="preserve">
     <value>default_injection_methods</value>
@@ -2276,7 +2270,7 @@
     <value>snes_default</value>
   </data>
   <data name="&gt;&gt;snes_default.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>FriishProduce.GroupBoxEx, FriishProduce, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;snes_default.Parent" xml:space="preserve">
     <value>default_injection_methods</value>
@@ -2321,7 +2315,7 @@
     <value>nes_default</value>
   </data>
   <data name="&gt;&gt;nes_default.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>FriishProduce.GroupBoxEx, FriishProduce, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;nes_default.Parent" xml:space="preserve">
     <value>default_injection_methods</value>
@@ -2366,7 +2360,7 @@
     <value>n64_default</value>
   </data>
   <data name="&gt;&gt;n64_default.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>FriishProduce.GroupBoxEx, FriishProduce, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;n64_default.Parent" xml:space="preserve">
     <value>default_injection_methods</value>
@@ -2393,7 +2387,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;default_injection_methods.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>12</value>
   </data>
   <data name="browse_bios_neo.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2459,7 +2453,7 @@
     <value>bios_neo</value>
   </data>
   <data name="&gt;&gt;bios_neo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>FriishProduce.GroupBoxEx, FriishProduce, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bios_neo.Parent" xml:space="preserve">
     <value>bios_files</value>
@@ -2531,7 +2525,7 @@
     <value>bios_psx</value>
   </data>
   <data name="&gt;&gt;bios_psx.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>FriishProduce.GroupBoxEx, FriishProduce, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bios_psx.Parent" xml:space="preserve">
     <value>bios_files</value>
@@ -2558,7 +2552,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;bios_files.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>13</value>
   </data>
   <data name="flash_anti_aliasing.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2822,7 +2816,7 @@
     <value>display</value>
   </data>
   <data name="&gt;&gt;display.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>FriishProduce.GroupBoxEx, FriishProduce, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;display.Parent" xml:space="preserve">
     <value>adobe_flash</value>
@@ -2870,7 +2864,7 @@
     <value>flash_strap_reminder</value>
   </data>
   <data name="&gt;&gt;flash_strap_reminder.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>FriishProduce.GroupBoxEx, FriishProduce, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;flash_strap_reminder.Parent" xml:space="preserve">
     <value>adobe_flash</value>
@@ -2954,7 +2948,7 @@
     <value>flash_controls</value>
   </data>
   <data name="&gt;&gt;flash_controls.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>FriishProduce.GroupBoxEx, FriishProduce, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;flash_controls.Parent" xml:space="preserve">
     <value>adobe_flash</value>
@@ -3191,7 +3185,7 @@
     <value>flash_save_data</value>
   </data>
   <data name="&gt;&gt;flash_save_data.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>FriishProduce.GroupBoxEx, FriishProduce, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;flash_save_data.Parent" xml:space="preserve">
     <value>adobe_flash</value>
@@ -3218,7 +3212,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;adobe_flash.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>4</value>
   </data>
   <data name="vc_snes_patch_gcremap.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3542,7 +3536,7 @@
     <value>vc_snes_options</value>
   </data>
   <data name="&gt;&gt;vc_snes_options.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>FriishProduce.GroupBoxEx, FriishProduce, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;vc_snes_options.Parent" xml:space="preserve">
     <value>vc_snes</value>
@@ -3569,7 +3563,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_snes.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>7</value>
   </data>
   <data name="border.Location" type="System.Drawing.Point, System.Drawing">
     <value>193, 0</value>
@@ -3600,6 +3594,9 @@
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8.25pt</value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>

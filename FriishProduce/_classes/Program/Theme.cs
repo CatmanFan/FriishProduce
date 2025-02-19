@@ -29,7 +29,26 @@ namespace FriishProduce
                 public Color Bottom;
             }
 
-            public form? Controls { get; set; } = null;
+            public struct controls
+            {
+                public Color BG;
+                public Color Border;
+
+                public Color TextBox;
+                public Color Highlight;
+                public Color HighlightBorder;
+            }
+
+            public controls? Controls { get; set; } = /* new()
+            {
+                BG = Color.FromArgb(240, 240, 240),
+                Border = Color.FromArgb(200, 200, 200),
+                Bottom = Color.FromArgb(225, 225, 225),
+
+                TextBox = Color.FromArgb(237, 237, 237),
+                Highlight { get; set; } = Color.FromArgb(231, 238, 247); // Color.FromArgb(200, 225, 240);
+                HighlightBorder { get; set; } = Color.FromArgb(174, 207, 247); // Color.FromArgb(180, 214, 234);
+            } */ null;
 
             public form Form { get; set; } = new()
             {
@@ -47,10 +66,6 @@ namespace FriishProduce
 
             public Color Text { get; set; } = Color.Black;
             public Color Headline { get; set; } = Color.FromArgb(0, 51, 153);
-            public Color TextBox { get; set; } = Color.FromArgb(237, 237, 237);
-
-            public Color Highlight { get; set; } = Color.FromArgb(231, 238, 247); // Color.FromArgb(200, 225, 240);
-            public Color HighlightBorder { get; set; } = Color.FromArgb(174, 207, 247); // Color.FromArgb(180, 214, 234);
         }
 
         public static colors Colors { get; set; }
@@ -96,33 +111,33 @@ namespace FriishProduce
                         ToolStrip_Top = Color.FromArgb(50, 50, 50),
                         ToolStrip_Bottom = Color.FromArgb(28, 28, 28),
                         ToolStrip_Border = Color.FromArgb(70, 70, 70),
-                        LogoBG_Top = Color.FromArgb(26, 26, 26),
-                        LogoBG_Bottom = Color.FromArgb(60, 60, 60),
+                        LogoBG_Top = Color.FromArgb(46, 46, 46),
+                        LogoBG_Bottom = Color.FromArgb(70, 70, 70),
 
                         Controls = new()
                         {
-                            BG = Color.FromArgb(53, 53, 53),
+                            BG = Color.FromArgb(63, 63, 63),
                             Border = Color.FromArgb(112, 112, 112),
+
+                            TextBox = Color.FromArgb(57, 57, 57),
+                            Highlight = Color.FromArgb(67, 110, 140),
+                            HighlightBorder = Color.FromArgb(77, 139, 181),
                         },
                         Form = new()
                         {
-                            BG = Color.FromArgb(46, 46, 46),
-                            Border = Color.FromArgb(70, 70, 70),
-                            Bottom = Color.FromArgb(57, 57, 57)
+                            BG = Color.FromArgb(56, 56, 56),
+                            Border = Color.FromArgb(75, 75, 75),
+                            Bottom = Color.FromArgb(62, 62, 62)
                         },
                         Dialog = new()
                         {
                             BG = Color.FromArgb(47, 47, 47),
-                            Border = Color.FromArgb(70, 70, 70),
-                            Bottom = Color.FromArgb(57, 57, 57)
+                            Border = Color.FromArgb(75, 75, 75),
+                            Bottom = Color.FromArgb(62, 62, 62)
                         },
 
                         Text = Color.White,
                         Headline = Color.FromArgb(15, 220, 255),
-                        TextBox = Color.FromArgb(57, 57, 57),
-
-                        Highlight = Color.FromArgb(67, 110, 140),
-                        HighlightBorder = Color.FromArgb(77, 139, 181),
                     };
                     break;
             }
@@ -207,7 +222,7 @@ namespace FriishProduce
                     bottomPanel1.BackColor = isDialog ? Colors.Dialog.Bottom : Colors.Form.Bottom;
             }
 
-            return true;
+            return flat;
         }
 
         /// <summary>
@@ -221,7 +236,7 @@ namespace FriishProduce
 
             if (c.GetType() == typeof(Button))
             {
-                (c as Button).FlatStyle = flat ? FlatStyle.Flat : FlatStyle.System;
+                (c as Button).FlatStyle = flat ? FlatStyle.Flat : (c as Button).Image != null ? FlatStyle.Standard : FlatStyle.System;
                 if (!flat)
                     (c as Button).UseVisualStyleBackColor = true;
 
@@ -265,6 +280,15 @@ namespace FriishProduce
                 useFormBG = true;
             }
 
+            if (c.GetType() == typeof(GroupBoxEx))
+            {
+                (c as GroupBoxEx).Flat = flat;
+                c.Refresh();
+
+                isEligible = flat;
+                useFormBG = true;
+            }
+
             if (c.GetType() == typeof(TabPage))
             {
                 isEligible = flat;
@@ -295,7 +319,7 @@ namespace FriishProduce
 
             if (flat && isEligible)
             {
-                c.BackColor = useTextBox ? Colors.TextBox : useFormBG ? Colors.Form.BG : Colors.Controls.Value.BG;
+                c.BackColor = useTextBox ? Colors.Controls.Value.TextBox : useFormBG ? Colors.Form.BG : Colors.Controls.Value.BG;
                 c.ForeColor = Colors.Text;
             }
         }
@@ -336,6 +360,12 @@ namespace FriishProduce
 
             protected override void OnRenderMenuItemBackground(ToolStripItemRenderEventArgs e)
             {
+                if (!Colors.Controls.HasValue)
+                {
+                    base.OnRenderMenuItemBackground(e);
+                    return;
+                }
+
                 Rectangle rc = new Rectangle(Point.Empty, e.Item.Size);
 
                 if (e.Item.Selected)
@@ -343,14 +373,14 @@ namespace FriishProduce
                     rc.X += 1;
                     rc.Width -= 1;
 
-                    using (SolidBrush brush = new(Colors.Highlight))
+                    using (SolidBrush brush = new(Colors.Controls.Value.Highlight))
                         e.Graphics.FillRectangle(brush, rc);
 
                     Rectangle r = new(0, 6, rc.Width, rc.Height * 3);
-                    using (LinearGradientBrush brush = new(r, Colors.Highlight, Colors.HighlightBorder, LinearGradientMode.Vertical))
+                    using (LinearGradientBrush brush = new(r, Colors.Controls.Value.Highlight, Colors.Controls.Value.HighlightBorder, LinearGradientMode.Vertical))
                         e.Graphics.FillRectangle(brush, new(r.X, r.Y + 1, r.Width, r.Height));
 
-                    using (Pen pen = new(Colors.HighlightBorder, 2f))
+                    using (Pen pen = new(Colors.Controls.Value.HighlightBorder, 2f))
                         e.Graphics.DrawRectangle(pen, rc);
                 }
                 else

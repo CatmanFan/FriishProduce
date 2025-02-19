@@ -29,7 +29,7 @@ namespace FriishProduce
         /// </summary>
         private void InitializeComponent()
         {
-            this.g1 = new System.Windows.Forms.GroupBox();
+            this.g1 = new GroupBoxEx();
             this.patch_wiimote = new System.Windows.Forms.CheckBox();
             this.patch_nocheck = new System.Windows.Forms.CheckBox();
             this.patch_nosave = new System.Windows.Forms.CheckBox();
@@ -223,7 +223,7 @@ namespace FriishProduce
 
         #endregion
 
-        private System.Windows.Forms.GroupBox g1;
+        private GroupBoxEx g1;
         private System.Windows.Forms.CheckBox patch_nocc;
         private System.Windows.Forms.CheckBox patch_nodark;
         private System.Windows.Forms.CheckBox patch_nosuspend;

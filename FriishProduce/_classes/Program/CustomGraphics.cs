@@ -5,10 +5,9 @@ using System.Drawing.Drawing2D;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-
 namespace FriishProduce
 {
-    class PlaceholderTextBox : TextBox
+    public class PlaceholderTextBox : TextBox
     {
         private string placeholderText = string.Empty;
         private const int EM_SETCUEBANNER = 0x1501;
@@ -106,7 +105,46 @@ namespace FriishProduce
         }
     }
 
-    class NumericUpDownEx : NumericUpDown
+    public class GroupBoxEx : GroupBox
+    {
+        public GroupBoxEx() : base()
+        {
+
+        }
+
+        public bool Flat { get; set; } = false;
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
+
+            if (Flat)
+            {
+                BackColor = Theme.Colors.Form.BG;
+                ForeColor = Theme.Colors.Text;
+
+                (int x, int y) spacing = (2, 5);
+
+                var rect = new Rectangle(ClientRectangle.X, ClientRectangle.Y + 5, ClientRectangle.Width - 1, ClientRectangle.Height - 6);
+
+                GroupBoxRenderer.DrawParentBackground(e.Graphics, ClientRectangle, this);
+
+                e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+
+                using (var pen = new Pen(Theme.Colors.Form.Border, 1))
+                    e.Graphics.DrawRectangle(pen, rect);
+
+                using (var brush = new SolidBrush(BackColor))
+                    e.Graphics.FillRectangle(brush, spacing.x, 0, TextRenderer.MeasureText(Text, Program.MainForm.Font).Width, TextRenderer.MeasureText(Text, Font).Height + spacing.y);
+                TextRenderer.DrawText(e.Graphics, Text, Font, new Point(spacing.x * 2, 0), Enabled ? ForeColor : SystemColors.GrayText);
+
+                var clip = e.Graphics.ClipBounds;
+                e.Graphics.SetClip(clip);
+            }
+        }
+    }
+
+    public class NumericUpDownEx : NumericUpDown
     {
         public NumericUpDownEx() : base()
         {

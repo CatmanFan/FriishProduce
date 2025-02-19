@@ -106,7 +106,20 @@ namespace FriishProduce
                 tabControl.BackHighColor = tabControl.BackLowColor = Color.Transparent;
                 tabControl.TabBackHighColor = Theme.Colors.Form.BG;
                 tabControl.TabBackLowColor = Theme.Colors.Form.BG;
+                tabControl.TabBackHighColorDisabled = Theme.Colors.Form.Bottom;
+                tabControl.TabBackLowColorDisabled = Theme.Colors.Form.Bottom;
+                tabControl.ForeColor = Theme.Colors.Text;
+
+                tabControl.TabCloseButtonBackHighColor = tabControl.TabBackHighColor;
+                tabControl.TabCloseButtonBackLowColor = tabControl.TabBackLowColor;
+                tabControl.TabCloseButtonBackHighColorDisabled = tabControl.TabBackHighColorDisabled;
+                tabControl.TabCloseButtonBackLowColor = tabControl.TabBackLowColorDisabled;
+                tabControl.TabCloseButtonBorderColorDisabled = tabControl.TabCloseButtonBorderColor = Theme.Colors.Form.Border;
+                tabControl.TabCloseButtonForeColor = tabControl.ForeColor;
+                tabControl.TabCloseButtonForeColorDisabled = Theme.Colors.Form.Border;
             }
+
+            toolbarGameScan.Image = (Theme.Colors.ToolStrip_Top.GetBrightness() + Theme.Colors.ToolStrip_Bottom.GetBrightness()) / 2 > 0.66 ? Properties.Resources.retroarch : Properties.Resources.retroarch_w;
 
             #endregion
 
@@ -152,7 +165,7 @@ namespace FriishProduce
             vistaMenu.SetImage(export, toolbarExport.Image);
             vistaMenu.SetImage(close_project, toolbarCloseProject.Image);
             vistaMenu.SetImage(import_game_file, toolbarImportGameFile.Image);
-            vistaMenu.SetImage(game_scan, toolbarGameScan.Image);
+            vistaMenu.SetImage(game_scan, Properties.Resources.retroarch);
             vistaMenu.SetImage(preferences, toolbarPreferences.Image);
             // foreach (MenuItem item in new_project.MenuItems.OfType<MenuItem>())
             //     if (Enum.TryParse(item.Name, out Platform converted))

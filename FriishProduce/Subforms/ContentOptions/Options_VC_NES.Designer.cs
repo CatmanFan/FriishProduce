@@ -29,7 +29,7 @@ namespace FriishProduce
         /// </summary>
         private void InitializeComponent()
         {
-            this.palette = new System.Windows.Forms.GroupBox();
+            this.palette = new GroupBoxEx();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.palette_banner_usage = new System.Windows.Forms.CheckBox();
             this.PaletteList = new System.Windows.Forms.ComboBox();
@@ -114,7 +114,7 @@ namespace FriishProduce
 
         #endregion
 
-        private System.Windows.Forms.GroupBox palette;
+        private GroupBoxEx palette;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ComboBox PaletteList;
         private System.Windows.Forms.CheckBox palette_banner_usage;

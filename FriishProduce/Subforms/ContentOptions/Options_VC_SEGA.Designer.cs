@@ -29,16 +29,16 @@ namespace FriishProduce
         /// </summary>
         private void InitializeComponent()
         {
-            this.display = new System.Windows.Forms.GroupBox();
+            this.display = new GroupBoxEx();
             this.label1 = new System.Windows.Forms.Label();
             this.console_brightness = new System.Windows.Forms.TrackBar();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.country = new System.Windows.Forms.ComboBox();
-            this.vc_options = new System.Windows.Forms.GroupBox();
+            this.vc_options = new GroupBoxEx();
             this.dev_mdpad_enable_6b = new System.Windows.Forms.CheckBox();
             this.save_sram = new System.Windows.Forms.CheckBox();
             this.console_disableresetbutton = new System.Windows.Forms.CheckBox();
-            this.region = new System.Windows.Forms.GroupBox();
+            this.region = new GroupBoxEx();
             this.bottomPanel1.SuspendLayout();
             this.controller_box.SuspendLayout();
             this.display.SuspendLayout();
@@ -201,15 +201,15 @@ namespace FriishProduce
         }
 
         #endregion
-        private System.Windows.Forms.GroupBox display;
+        private GroupBoxEx display;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TrackBar console_brightness;
         private System.Windows.Forms.ComboBox country;
-        private System.Windows.Forms.GroupBox vc_options;
+        private GroupBoxEx vc_options;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox save_sram;
         private System.Windows.Forms.CheckBox console_disableresetbutton;
         private System.Windows.Forms.CheckBox dev_mdpad_enable_6b;
-        private System.Windows.Forms.GroupBox region;
+        private GroupBoxEx region;
     }
 }
