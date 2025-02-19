@@ -103,6 +103,7 @@
 			"012":								"No se ha encontrado ninguna entrada no válida en la base de datos.",
 			"013":								"Se han encontrado las siguientes entradas no válidas:\n{0}\n\nPor favor, elimínalas del archivo \"database.json\".",
 			"014":								"Se han restablecido los ajustes del método de inyección.\nPor favor, vuelva a configurarlos.",
+			"015":								"Se ha restablecida la configuración de FriishProduce.\nPor favor, vuelva a configurar tus ajustes.",
 
 			"b_000":							"Cargando...",
 			"b_001":							"Exportación en curso...",

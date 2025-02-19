@@ -102,7 +102,8 @@
 			"011":								"Check all database entries to see if any are invalid?\nThis may take some time.",
 			"012":								"No invalid database entries were found.",
 			"013":								"Invalid database entries found:\n{0}\n\nPlease remove these entries from database.json.",
-			"014":								"The injection method options have been reset.\nPlease try configuring them again.",
+			"014":								"The injection method options have been reset.\nPlease configure them again.",
+			"015":								"Configuration has been reset.\nPlease configure your settings again.",
 
 			"b_000":							"잠시만 기다리세요...",
 			"b_001":							"내보내기 진행 중...",

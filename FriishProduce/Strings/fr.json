@@ -103,6 +103,7 @@
 			"012":								"Aucune chaîne invalide n'a été trouvée dans la base de données.",
 			"013":								"Chaînes invalides trouvées dans la base de données :\n{0}\n\nVeuillez ouvrir et modifier le fichier «database.json» afin de les supprimer.",
 			"014":								"Les paramètres de la méthode d'injection actuelle ont été réinitialisés.\nEssayez de les configurer à nouveau.",
+			"015":								"Les paramètres de l'application ont été réinitialisés.\nEssayez de configurer vos paramètres à nouveau.",
 			
 			"b_000":							"Veuillez patienter ...",
 			"b_001":							"Exportation en cours ...",

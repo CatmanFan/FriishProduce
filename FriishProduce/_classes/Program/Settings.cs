@@ -117,15 +117,12 @@ namespace FriishProduce
                     neo = reader.neo;
                     forwarder = reader.forwarder;
                     flash = reader.flash;
-
-                    var language = application.language;
-                    var theme = application.theme;
-                    var update = application.force_update;
                 }
 
                 catch
                 {
                     file = null;
+                    MessageBox.Show(Program.Lang.Msg(15), MessageBox.Buttons.Ok, MessageBox.Icons.Warning);
                     goto Start;
                 }
             }
