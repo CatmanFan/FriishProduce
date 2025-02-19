@@ -23,6 +23,11 @@ namespace FriishProduce
                     Buttons.Classic_R,
                     Buttons.Classic_ZR,
                     Buttons.Classic_Plus,
+
+                    Buttons.Classic_Up_L,
+                    Buttons.Classic_Down_L,
+                    Buttons.Classic_Left_L,
+                    Buttons.Classic_Right_L,
                     Buttons.Classic_Up,
                     Buttons.Classic_Down,
                     Buttons.Classic_Right,
@@ -78,7 +83,7 @@ namespace FriishProduce
             #region Modifiable values: Available presets
             presets = new Dictionary<string, string[]>()
             {
-                { "Basic", new string[]
+                { Program.Lang.String("preset_basic", "controller"), new string[]
                     {
                         "80 00",
                         "40 00",
@@ -88,6 +93,11 @@ namespace FriishProduce
                         "00 10",
                         "20 00",
                         "10 00",
+
+                        "08 00",
+                        "04 00",
+                        "02 00",
+                        "01 00",
                         "08 00",
                         "04 00",
                         "02 00",

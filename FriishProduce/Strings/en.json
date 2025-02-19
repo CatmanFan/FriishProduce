@@ -102,7 +102,7 @@
 			"011":								"Check all database entries to see if any are invalid?\nThis may take some time.",
 			"012":								"No invalid database entries were found.",
 			"013":								"Invalid database entries found:\n{0}\n\nPlease remove these entries from database.json.",
-			"014":								"The injection method options have been reset.\nPlease try configuring them again.",
+			"014":								"The injection method options have been reset.\nPlease configure them again.",
 
 			"b_000":							"Please wait...",
 			"b_001":							"Exporting...",
@@ -333,11 +333,14 @@
 			"page1":							"Wii Remote",
 			"page2":							"Classic Controller",
 			"page3":							"GameCube Controller",
-
 			"vertical_layout":					"Vertical layout",
+
 			"presets":							"Presets",
-			"preset_blank":						"Blank",
 			"preset_load":						"Load",
+			"preset_blank":						"Blank",
+			"preset_basic":						"Basic",
+			"preset_basic_h":					"Basic (horizontal)",
+			"preset_basic_v":					"Basic (vertical)",
 
 			"up":								"Up",
 			"left":								"Left",

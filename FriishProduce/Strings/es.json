@@ -328,12 +328,14 @@
 			"page1":							"Mando de Wii",
 			"page2":							"Mando clásico",
 			"page3":							"Mando GameCube",
-			
 			"vertical_layout":					"Disposición vertical",
+
 			"presets":							"Ajustes preestablecidos",
-			"preset_blank":						"Vacío (en blanco)",
-			"preset_clear":						"No",
 			"preset_load":						"Aplicar",
+			"preset_blank":						"En blanco",
+			"preset_basic":						"Básico",
+			"preset_basic_h":					"Horizontal básico",
+			"preset_basic_v":					"Vertical básico",
 			
 			"up":								"Arriba",
 			"left":								"Izquierda",

@@ -102,7 +102,7 @@
 			"011":								"Vérifier la base de données des chaînes ?\nCela peut prendre quelques minutes.",
 			"012":								"Aucune chaîne invalide n'a été trouvée dans la base de données.",
 			"013":								"Chaînes invalides trouvées dans la base de données :\n{0}\n\nVeuillez ouvrir et modifier le fichier «database.json» afin de les supprimer.",
-			"014":								"Les paramètres de la méthode d'injection actuelle ont été réinitialisés.\nVeuillez essayer de les configurer à nouveau.",
+			"014":								"Les paramètres de la méthode d'injection actuelle ont été réinitialisés.\nEssayez de les configurer à nouveau.",
 			
 			"b_000":							"Veuillez patienter ...",
 			"b_001":							"Exportation en cours ...",
@@ -319,11 +319,14 @@
 			"page1":							"Télécommande Wii",
 			"page2":							"Manette classique",
 			"page3":							"Manette GameCube",
-			
 			"vertical_layout":					"Disposition verticale",
+
 			"presets":							"Configurations prédéfinies",
-			"preset_blank":						"Tout vide",
 			"preset_load":						"Appliquer",
+			"preset_blank":						"Tout vide",
+			"preset_basic":						"Basique",
+			"preset_basic_h":					"Basique (horizontale)",
+			"preset_basic_v":					"Basique (verticale)",
 			
 			"up":								"Haut",
 			"left":								"Gauche",

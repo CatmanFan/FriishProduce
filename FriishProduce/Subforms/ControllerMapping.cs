@@ -172,10 +172,10 @@ namespace FriishProduce
             bool UsesNunchuk = AllowedKeymaps.HasFlag(Allowed.Nunchuk);
             bool UsesSticks  = AllowedKeymaps.HasFlag(Allowed.ContSticks);
 
-            // Classic_Up_L.Enabled    = Classic_Up_L.Visible    = UsesSticks;
-            // Classic_Left_L.Enabled  = Classic_Left_L.Visible  = UsesSticks;
-            // Classic_Right_L.Enabled = Classic_Right_L.Visible = UsesSticks;
-            // Classic_Down_L.Enabled  = Classic_Down_L.Visible  = UsesSticks;
+            Classic_Up_L.Enabled    = Classic_Up_L.Visible    = UsesSticks;
+            Classic_Left_L.Enabled  = Classic_Left_L.Visible  = UsesSticks;
+            Classic_Right_L.Enabled = Classic_Right_L.Visible = UsesSticks;
+            Classic_Down_L.Enabled  = Classic_Down_L.Visible  = UsesSticks;
             Classic_Up_R.Enabled    = Classic_Up_R.Visible    = UsesSticks;
             Classic_Left_R.Enabled  = Classic_Left_R.Visible  = UsesSticks;
             Classic_Right_R.Enabled = Classic_Right_R.Visible = UsesSticks;

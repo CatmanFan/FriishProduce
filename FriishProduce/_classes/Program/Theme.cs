@@ -411,29 +411,14 @@ namespace FriishProduce
             foreach (var btn in btns)
             {
                 btn.Anchor = AnchorStyles.Top | AnchorStyles.Left;
-                btn.AutoSize = true;
-                btn.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+                btn.AutoSize = false;
+                btn.Size = btn.MinimumSize = new(0, 24);
+                btn.MaximumSize = Size.Empty;
                 btn.Font = new Font("Segoe UI", 9f);
-                btn.MaximumSize = btn.MinimumSize = new(0, 24);
-            }
 
-            if (button1 != null)
-            {
-                button1.Size = button1.MinimumSize = new Size(Math.Max(min, button1.Width + extra), button1.Height);
-            }
-
-            if (button2 != null)
-            {
-                button2.AutoSize = true;
-                button2.AutoSizeMode = AutoSizeMode.GrowOnly;
-                button2.Size = button2.MinimumSize = new Size(Math.Max(min, button2.Width + extra), button2.Height);
-            }
-
-            if (button3 != null)
-            {
-                button3.AutoSize = true;
-                button3.AutoSizeMode = AutoSizeMode.GrowOnly;
-                button3.Size = button3.MinimumSize = new Size(Math.Max(min, button3.Width + extra), button3.Height);
+                btn.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+                btn.AutoSize = true;
+                btn.MinimumSize = new(Math.Max(min, btn.Width + extra), btn.Height);
             }
         }
 

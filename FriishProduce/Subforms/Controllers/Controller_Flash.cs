@@ -205,7 +205,7 @@ namespace FriishProduce
             #region Modifiable values: Available presets
             presets = new Dictionary<string, string[]>()
             {
-                { "Basic (Horizontal)", new string[]
+                { Program.Lang.String("preset_basic_h", "controller"), new string[]
                     {
                         "KEY_DOWN",
                         "KEY_UP",
@@ -239,7 +239,7 @@ namespace FriishProduce
                     }
                 },
 
-                { "Basic (Vertical)", new string[]
+                { Program.Lang.String("preset_basic_v", "controller"), new string[]
                     {
                         "KEY_LEFT",
                         "KEY_RIGHT",

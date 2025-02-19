@@ -329,11 +329,14 @@
 			"page1":							"위모트",
 			"page2":							"클래식 컨트롤러",
 			"page3":							"게임큐브 컨트롤러",
-
 			"vertical_layout":					"수직 레이아웃",
+
 			"presets":							"사전 설정",
-			"preset_blank":						"공백",
 			"preset_load":						"로드",
+			"preset_blank":						"공백",
+			"preset_basic":						"Basic",
+			"preset_basic_h":					"Basic (horizontal)",
+			"preset_basic_v":					"Basic (vertical)",
 			
 			"up":								"위쪽",
 			"left":								"왼쪽",

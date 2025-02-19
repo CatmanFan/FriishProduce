@@ -118,31 +118,31 @@ namespace FriishProduce
             // ****************
             if (Icon != null) IconType = MessageBox.Icons.Custom;
             else switch (IconType)
-            {
-                default:
-                case MessageBox.Icons.None:
-                    Icon = null;
-                    break;
+                {
+                    default:
+                    case MessageBox.Icons.None:
+                        Icon = null;
+                        break;
 
-                case MessageBox.Icons.Error:
-                    System.Media.SystemSounds.Hand.Play();
-                    Icon = SystemIcons.Hand;
-                    break;
+                    case MessageBox.Icons.Error:
+                        System.Media.SystemSounds.Hand.Play();
+                        Icon = SystemIcons.Hand;
+                        break;
 
-                case MessageBox.Icons.Information:
-                    System.Media.SystemSounds.Asterisk.Play();
-                    Icon = SystemIcons.Asterisk;
-                    break;
+                    case MessageBox.Icons.Information:
+                        System.Media.SystemSounds.Asterisk.Play();
+                        Icon = SystemIcons.Asterisk;
+                        break;
 
-                case MessageBox.Icons.Shield:
-                    Icon = SystemIcons.Shield;
-                    break;
+                    case MessageBox.Icons.Shield:
+                        Icon = SystemIcons.Shield;
+                        break;
 
-                case MessageBox.Icons.Warning:
-                    System.Media.SystemSounds.Exclamation.Play();
-                    Icon = SystemIcons.Exclamation;
-                    break;
-            }
+                    case MessageBox.Icons.Warning:
+                        System.Media.SystemSounds.Exclamation.Play();
+                        Icon = SystemIcons.Exclamation;
+                        break;
+                }
             if (Icon != null) image.Image = new Icon(Icon, 32, 32).ToBitmap();
 
             // Set button text
@@ -166,7 +166,8 @@ namespace FriishProduce
 
             if (no_text || no_desc)
             {
-                descriptionLabel.Margin = new(descriptionLabel.Margin.Left + 1, 7, descriptionLabel.Margin.Right, descriptionLabel.Margin.Bottom);
+                textLabel.Padding = new(0, 2, 0, 0);
+                descriptionLabel.Padding = new(0, 7, 0, 0);
                 tableLayoutPanel1.RowCount = 1;
             }
 

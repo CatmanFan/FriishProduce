@@ -112,7 +112,7 @@ namespace FriishProduce
                         filled += 1.0;
                 }
 
-                return (filled / count) * 100.0;
+                return filled / count * 100.0;
             }
         }
 
@@ -201,7 +201,13 @@ namespace FriishProduce
                 {
                     // Search for ISO code
                     // ****************
-                    try { languages_list.SelectedIndex = iso_codes.IndexOf(iso_code.Text); } catch { languages_list.SelectedIndex = 0; }
+                    try
+                    {
+                        languages_list.SelectedIndex = iso_codes.IndexOf(iso_code.Text);
+                        if (languages_list.SelectedIndex < 0)
+                            languages_list.SelectedIndex = 0;
+                    }
+                    catch { languages_list.SelectedIndex = 0; }
 
                     // Go
                     // ****************
@@ -378,6 +384,28 @@ namespace FriishProduce
 
             foreach (DataGridViewRow row in strings.Rows)
                 row.Visible = index == 0 || row.Cells[0].Value?.ToString().ToLower().Contains(text) == true;
+        }
+
+        private void ClearIdentical(object sender, EventArgs e)
+        {
+            (double count, double filled) = (0.0, 0.0);
+
+            foreach (DataGridViewRow row in strings.Rows)
+            {
+                count += 1.0;
+
+                if (string.Compare(row.Cells[3].Value?.ToString(), row.Cells[2].Value?.ToString()) == 0)
+                {
+                    row.Cells[3].Value = null;
+                    UpdateCell(row.Cells[3], false);
+                    filled += 1.0;
+                }
+            }
+
+            if (filled > 0)
+                status_label.Text = $"Cleared identical strings ({filled / count * 100.0:F0}% of all strings).";
+            else
+                status_label.Text = "No identical strings were found.";
         }
 
         private void Text_Changed(object sender, EventArgs e) => Unsaved = true;

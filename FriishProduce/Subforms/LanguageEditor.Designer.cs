@@ -43,6 +43,8 @@ namespace FriishProduce
             this.menuItem3 = new System.Windows.Forms.MenuItem();
             this.menuItem4 = new System.Windows.Forms.MenuItem();
             this.menuItem5 = new System.Windows.Forms.MenuItem();
+            this.menuItem8 = new System.Windows.Forms.MenuItem();
+            this.menuItem9 = new System.Windows.Forms.MenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.languages_list = new System.Windows.Forms.ComboBox();
@@ -78,7 +80,8 @@ namespace FriishProduce
             // mainMenu
             // 
             this.mainMenu.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.menuItem1});
+            this.menuItem1,
+            this.menuItem8});
             // 
             // menuItem1
             // 
@@ -90,34 +93,34 @@ namespace FriishProduce
             this.menuItem3,
             this.menuItem4,
             this.menuItem5});
-            this.menuItem1.Text = "File";
+            this.menuItem1.Text = "&File";
             // 
             // menuItem7
             // 
             this.menuItem7.Index = 0;
             this.menuItem7.Shortcut = System.Windows.Forms.Shortcut.CtrlN;
-            this.menuItem7.Text = "New";
+            this.menuItem7.Text = "&New";
             this.menuItem7.Click += new System.EventHandler(this.ClearAll);
             // 
             // menuItem2
             // 
             this.menuItem2.Index = 1;
             this.menuItem2.Shortcut = System.Windows.Forms.Shortcut.CtrlO;
-            this.menuItem2.Text = "Open...";
+            this.menuItem2.Text = "&Open...";
             this.menuItem2.Click += new System.EventHandler(this.Open_Click);
             // 
             // menuItem6
             // 
             this.menuItem6.Index = 2;
             this.menuItem6.Shortcut = System.Windows.Forms.Shortcut.CtrlS;
-            this.menuItem6.Text = "Save";
+            this.menuItem6.Text = "&Save";
             this.menuItem6.Click += new System.EventHandler(this.Save_Click);
             // 
             // menuItem3
             // 
             this.menuItem3.Index = 3;
             this.menuItem3.Shortcut = System.Windows.Forms.Shortcut.CtrlShiftS;
-            this.menuItem3.Text = "Save as...";
+            this.menuItem3.Text = "Save &as...";
             this.menuItem3.Click += new System.EventHandler(this.Save_Click);
             // 
             // menuItem4
@@ -129,8 +132,21 @@ namespace FriishProduce
             // 
             this.menuItem5.Index = 5;
             this.menuItem5.Shortcut = System.Windows.Forms.Shortcut.AltF4;
-            this.menuItem5.Text = "Exit";
+            this.menuItem5.Text = "&Exit";
             this.menuItem5.Click += new System.EventHandler(this.Exit);
+            // 
+            // menuItem8
+            // 
+            this.menuItem8.Index = 1;
+            this.menuItem8.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.menuItem9});
+            this.menuItem8.Text = "&Edit";
+            // 
+            // menuItem9
+            // 
+            this.menuItem9.Index = 0;
+            this.menuItem9.Text = "&Clear all identical strings";
+            this.menuItem9.Click += new System.EventHandler(this.ClearIdentical);
             // 
             // groupBox1
             // 
@@ -177,6 +193,7 @@ namespace FriishProduce
             this.languages_list.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.languages_list.Dock = System.Windows.Forms.DockStyle.Fill;
             this.languages_list.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.languages_list.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.languages_list.FormattingEnabled = true;
             this.languages_list.Items.AddRange(new object[] {
             "[Custom]"});
@@ -477,5 +494,7 @@ namespace FriishProduce
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Original;
         private System.Windows.Forms.DataGridViewTextBoxColumn Translated;
+        private System.Windows.Forms.MenuItem menuItem8;
+        private System.Windows.Forms.MenuItem menuItem9;
     }
 }

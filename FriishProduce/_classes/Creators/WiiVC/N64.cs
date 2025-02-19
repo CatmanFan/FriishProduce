@@ -412,33 +412,15 @@ namespace FriishProduce.Injectors
             // Search for controller button offsets
             // ****************
             Dictionary<Buttons, int> offsets = new();
-
-            // Some WADs have DPad-Left's offset coming before Right, instead of the other way around
-            bool flippedOrder = false;
             int start = 0;
 
             switch (WAD.UpperTitleID.Substring(0, 3).ToUpper())
             {
-                default:
-                    // Do automatic search for first available controller button offset
-                    if (Byte.IndexOf(Contents[1], "30 30 27 29 0A 0A") != -1)
-                    {
-                        start = Byte.IndexOf(Contents[1], "30 30 27 29 0A 0A") + 6;
-
-                        while (Contents[1][start] == 0)
-                            start++;
-                    }
-                    else if (Byte.IndexOf(Contents[1], "42 52 45 41 4B 20 28 43 50 55 29 00") != 1)
-                        start = Byte.IndexOf(Contents[1], "42 52 45 41 4B 20 28 43 50 55 29 00") - 352;
-                    else
-                        // No controller button offsets were found (perhaps not supported or the algorithm is different).
-                        return false;
-                    break;
 
                 // Manual search for known controller button offsets:
                 // These offsets are for the first button found ("A"), as retrieved from Patcher64+ Tool source code.
                 // ****************
-                case "NAA": // Super Mario 64
+                /* case "NAA": // Super Mario 64
                     start = 0x168618;
                     break;
 
@@ -456,40 +438,34 @@ namespace FriishProduce.Injectors
 
                 case "NAC": // Zelda: Ocarina
                     start = 0x16BAC0;
-                    flippedOrder = true;
-                    break;
+                    break; */
 
                 case "NAR": // Zelda: Majora
-                    start = 0x1484E0;
-                    flippedOrder = true;
+                    start = 0x148430; // 0x1484E0; third set
+                    break;
+
+                // Do automatic search for first available controller button offset
+                // ****************
+                default:
+                    // 
+                    if (Byte.IndexOf(Contents[1], "30 30 27 29 0A 0A") != -1)
+                    {
+                        start = Byte.IndexOf(Contents[1], "30 30 27 29 0A 0A") + 6;
+
+                        while (Contents[1][start] == 0)
+                            start++;
+                    }
+                    else
+                        // No controller button offsets were found (perhaps not supported or the algorithm is different).
+                        return false;
                     break;
             }
 
-            // Note that all controllers (i.e. both Classic and GameCube mapping) appear to be affected by just modifying one group of buttons.
-            // Only the Classic Controller mappings will be used to account for this.
-            File.WriteAllBytes(Paths.WorkingFolder + "content1.app", Contents[1]);
+            // Some WADs have DPad-Left's offset coming before Right, instead of the other way around
+            bool flippedOrder = WAD.UpperTitleID.Substring(0, 3).ToUpper() is "NAC" or "NAR";
 
             // Declare arrays to fill remapped buttons
             // ****************
-            byte[] main = new byte[32];
-            byte[] directional = new byte[32];
-
-            // Both the main and directional groups are separated by an empty set of bytes
-            // ****************
-            int spacing = 20;
-
-            if (BitConverter.ToInt32(Contents[1], start + main.Length) != 0)
-                spacing = 8;
-            else
-                for (int i = 0; i < spacing; i++)
-                {
-                    if (BitConverter.ToInt32(Contents[1], start + main.Length) != 0)
-                    {
-                        spacing = 4 * Convert.ToInt32(Math.Round(i / 4.0));
-                        break;
-                    }
-                }
-
             Buttons[] main_b = new[]
             {
                 Buttons.Classic_A,
@@ -504,6 +480,10 @@ namespace FriishProduce.Injectors
 
             Buttons[] directional_b = new[]
             {
+                Buttons.Classic_Up_L,
+                Buttons.Classic_Down_L,
+                Buttons.Classic_Left_L,
+                Buttons.Classic_Right_L,
                 Buttons.Classic_Up,
                 Buttons.Classic_Down,
                 flippedOrder ? Buttons.Classic_Left : Buttons.Classic_Right,
@@ -513,18 +493,32 @@ namespace FriishProduce.Injectors
                 Buttons.Classic_Left_R,
                 Buttons.Classic_Right_R
             };
-            
+
+            // 
+
+            byte[] main = new byte[32];
+            byte[] directional = new byte[48];
+            int dSpacing = 4, eSpacing = 4;
+
+            // Both the main and directional groups may or may not be separated by four empty bytes
+            // ****************
+            if (BitConverter.ToInt32(Contents[1], start + main.Length) != 0)
+                dSpacing = 0;
+            if (BitConverter.ToInt32(Contents[1], start + main.Length + dSpacing + directional.Length) != 0)
+                eSpacing = 0;
+
+            // Add all offsets needed for each button relative to the starting path
+            // ****************
             if (start > 0)
             {
                 for (int i = 0; i < main_b.Length; i++)
                     offsets.Add(main_b[i], start + (4 * i));
 
                 for (int i = 0; i < directional_b.Length; i++)
-                    offsets.Add(directional_b[i], start + main.Length + spacing + (4 * i));
+                    offsets.Add(directional_b[i], start + main.Length + dSpacing + (4 * i));
             }
 
-            if (offsets?.Count == 0)
-                return false;
+            // File.WriteAllBytes(Paths.WorkingFolder + "content1.app", Contents[1]);
 
             // Copy
             // ****************
@@ -534,7 +528,20 @@ namespace FriishProduce.Injectors
             for (int i = 0; i < directional_b.Length; i++)
                 try { Byte.FromHex(Keymap[directional_b[i]]).CopyTo(directional, i * 4); } catch { }
 
-            main.CopyTo(Contents[1], offsets[);
+            List<byte> remapped = new();
+
+            for (int i = 0; i < 3; i++)
+            {
+                if (BitConverter.ToInt32(Contents[1], start + (remapped.Count * i)) == 128)
+                {
+                    remapped.AddRange(main);
+                    remapped.AddRange(new byte[dSpacing]);
+                    remapped.AddRange(directional);
+                    remapped.AddRange(new byte[eSpacing]);
+                }
+            }
+
+            remapped.CopyTo(Contents[1], start);
 
             return true;
         }
