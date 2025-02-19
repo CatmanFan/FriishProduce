@@ -44,7 +44,8 @@ Please check the **[wiki](https://catmanfan.github.io/FriishProduce/)** for a tu
 
 ## To-Do
 - [ ] Tidyup Flash content options interface
-- [ ] Check wiki to make sure it is still compiling
+- [X] Fix buttons bug in content options
+- [X] Check wiki to make sure it is still compiling
 - [ ] Determine whether to keep console icons removed(?) or not
 - [ ] Complete implementation of themes functionality(?)
 

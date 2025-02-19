@@ -416,7 +416,7 @@ namespace FriishProduce.Injectors
 
             switch (WAD.UpperTitleID.Substring(0, 3).ToUpper())
             {
-
+                #region Manual search offsets (unused)
                 // Manual search for known controller button offsets:
                 // These offsets are for the first button found ("A"), as retrieved from Patcher64+ Tool source code.
                 // ****************
@@ -439,6 +439,7 @@ namespace FriishProduce.Injectors
                 case "NAC": // Zelda: Ocarina
                     start = 0x16BAC0;
                     break; */
+                #endregion
 
                 case "NAR": // Zelda: Majora
                     start = 0x148430; // 0x1484E0; third set

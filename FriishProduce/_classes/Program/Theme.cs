@@ -401,24 +401,18 @@ namespace FriishProduce
         /// <returns>True if the form needs to be resized to accommodate the buttons, otherwise False.</returns>
         public static void BtnSizes(params Button[] btns)
         {
-            const int extra = 8;
+            const int extra = 12;
             const int min = 66;
-
-            var button1 = btns?.Length >= 1 ? btns[0] : null;
-            var button2 = btns?.Length >= 2 ? btns[1] : null;
-            var button3 = btns?.Length >= 3 ? btns[2] : null;
 
             foreach (var btn in btns)
             {
                 btn.Anchor = AnchorStyles.Top | AnchorStyles.Left;
                 btn.AutoSize = false;
-                btn.Size = btn.MinimumSize = new(0, 24);
-                btn.MaximumSize = Size.Empty;
-                btn.Font = new Font("Segoe UI", 9f);
-
                 btn.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-                btn.AutoSize = true;
-                btn.MinimumSize = new(Math.Max(min, btn.Width + extra), btn.Height);
+                btn.MaximumSize = new(0, 24);
+                btn.MinimumSize = new(min, btn.MaximumSize.Height);
+                btn.Font = new Font("Segoe UI", 9f);
+                btn.Size = new(Math.Max(btn.MaximumSize.Width, TextRenderer.MeasureText(btn.Text, btn.Font).Width + extra), btn.MinimumSize.Height);
             }
         }
 
