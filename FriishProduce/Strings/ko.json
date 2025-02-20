@@ -39,11 +39,11 @@
 			"preferences":						"설정",
 			"system":							"시스템",
 			"display":							"화면",
-			"debug_mode":						"Running in debug mode",
+			"debug_mode":						"디버그 모드에서 실행",
 
 			"vc":								"가상 콘솔",
 			"vc_options":						"VC 옵션",
-			"additional":						"These settings also apply to {0}.",
+			"additional":						"이러한 설정은 {0}에도 적용됩니다.",
 			"continue":							"내보내기는 의도한 대로 계속됩니다."
 		},
 
@@ -99,22 +99,22 @@
 			"008":								"현재 이미 최신 상태입니다.",
 			"009":								"opening.bnr을 추출합니까? (IMET 헤더 포함)",
 			"010":								"모든 설정이 공장 기본값으로 복원됩니다.\n계속하겠습니까?",
-			"011":								"Check all database entries to see if any are invalid?\nThis may take some time.",
-			"012":								"No invalid database entries were found.",
-			"013":								"Invalid database entries found:\n{0}\n\nPlease remove these entries from database.json.",
-			"014":								"The injection method options have been reset.\nPlease configure them again.",
-			"015":								"Configuration has been reset.\nPlease configure your settings again.",
+			"011":								"모든 데이터베이스 항목을 확인하여 잘못된 항목이 있는지 확인하세요.\n시간이 좀 걸릴 수 있습니다.",
+			"012":								"잘못된 데이터베이스 항목이 발견되지 않았습니다.",
+			"013":								"잘못된 데이터베이스 항목이 발견되었습니다:\n{0}\n\ndatabase.json에서 이 항목을 제거하세요.",
+			"014":								"주입 방법 옵션이 재설정되었습니다.\n 다시 구성해 주세요.",
+			"015":								"구성이 재설정되었습니다.\n설정을 다시 구성해 주세요.",
 
 			"b_000":							"잠시만 기다리세요...",
 			"b_001":							"내보내기 진행 중...",
-			"b_002":							"Testing Internet connection...",
-			"b_003":							"Testing {0} database...",
-			"b_004":							"Updating...",
+			"b_002":							"인터넷 연결 테스트 중...",
+			"b_003":							"{0} 데이터베이스 테스트 중...",
+			"b_004":							"업데이트 중...",
 			
 			"error":							"오류가 발생했습니다!",
 			"e_000":							"인터넷에 연결하지 못했습니다.\n메시지: {0}",
 			"e_001":							"이미지를 생성하지 못했습니다.\n이는 GDI+ 문제 때문일 수 있습니다.",
-			"e_002":							"Failed to inject or replace content within the WAD.",
+			"e_002":							"WAD 내에 콘텐츠를 삽입하거나 교체하는 데 실패했습니다.",
 			"e_003":							"제공된 롬이 너무 큽니다 (크기 제한: {0} {1}).",
 			"e_004":							"내부 VC WAD의 콘텐츠 옵션을 수정할 수 없습니다.\n{continue}",
 			"e_005":							"다음 콘텐츠 옵션을 수정하지 못했음:\n{0}\n{continue}",
@@ -128,25 +128,25 @@
 			"e_013":							"주입 가능한 롬 진입점을 찾을 수 없습니다. 이는 이 WAD에 사용된 주입 방법이 아직 지원되지 않기 때문일 수 있습니다.",
 			"e_014":							"이 콘솔에 필요한 바이오스 파일을 찾을 수 없습니다.\n응용 프로그램 환경 설정에서 이 파일을 설정하세요.",
 			"e_015":							"저장된 데이터 TPL을 만드는 데 실패했습니다.",
-			"e_016":							"제공된 WAD에서 버추얼 콘솔 설명서를 찾을 수 없습니다.",
+			"e_016":							"제공된 WAD에서 가상 콘솔 설명서를 찾을 수 없습니다.",
 			"e_017":							"\"{0}\" 유효한 프로젝트 파일이 아닙니다.",
-			"e_018":							"Unable to save {0}.",
-			"e_019":							"Could not download update.",
-			"e_020":							"Could not find any modifiable WAD video modes.\n{continue}"
+			"e_018":							"{0} 저장할 수 없습니다.",
+			"e_019":							"업데이트를 다운로드할 수 없습니다.",
+			"e_020":							"수정 가능한 WAD 비디오 모드를 찾을 수 없습니다.\n{continue}"
 		},
 
 		"html": {
-			"000":								"The Frodo emulator will now open.<ol type=\"1\"><li>
-												Enter the following command in the emulator: <b>LOAD\"*\",8</b>\n
-												If the C64 console freezes and there is no drive LED indicator, open Frodo.fpr from <i>File > Open</i>, then press F12 to restart the emulator and try again.</li><li>
-												Once the software is loaded, enter <b>RUN</b>.</li><li>
-												As soon as the game loads, click <i>Tools > Patch and Save Snapshot</i>, and save the file to \"snap.fss\". You can also save another copy to use it for later.</li></ol>
-												Attempts remaining: <b>{0}</b>",
+			"000":								"Frodo 에뮬레이터가 열립니다.<ol type=\"1\"><li>
+												에뮬레이터에 다음 명령을 입력하세요: <b>LOAD\"*\",8</b>\n
+												C64 콘솔이 정지되고 드라이브 LED 표시등이 켜지지 않으면, <i>파일 > 열기</i>에서 Frodo.fpr을 연 다음, F12를 눌러 에뮬레이터를 다시 시작하고 다시 시도하세요.</li><li>
+												소프트웨어가 로드되면, <b>RUN</b>을 입력하세요.</li><li>
+												게임이 로드되자마자, <i>도구 > 패치 및 스냅샷 저장</i>을 클릭하고 파일을 \"snap.fss\"에 저장하세요. 나중에 사용하기 위해 다른 사본을 저장할 수도 있습니다.</li></ol>
+												남은 시도 횟수: <b>{0}</b>",
 
-			"t_use_online_wad_enabled":			"This can be used to retrieve any WAD that is available from the current database without already requiring to have a WAD file. It only uses Web download functionality, as libWiiSharp's NUS client does not allow decrypting VC WADs.\n\n
-												The legality of this is shady so it is better to have this option disabled.",
+			"t_use_online_wad_enabled":			"이것은 이미 WAD 파일이 없어도 현재 데이터베이스에서 사용 가능한 모든 WAD를 검색하는 데 사용할 수 있습니다. libWiiSharp의 NUS 클라이언트는 VC WAD를 암호 해독하는 것을 허용하지 않으므로 웹 다운로드 기능만 사용합니다.\n\n
+												이것의 합법성은 모호하므로 이 옵션을 비활성화하는 것이 좋습니다.",
 												
-			"t_bypass_rom_size":				"Removes all Virtual Console ROM filesize limits. This can be useful for testing.",
+			"t_bypass_rom_size":				"모든 가상 콘솔 롬 파일 크기 제한을 제거합니다. 테스트에 유용할 수 있습니다.",
 
 			"t_channel_name":					"Wii 메뉴의 채널 아이콘에 사용되는 이름입니다.\n긴 제목에는 20자 이하의 축약된 이름을 사용하는 것이 좋습니다.<hr>
 												<b>예</b>\n젤다의 전설 신들의 트라이포스",
@@ -158,26 +158,26 @@
 												이것은 콘솔 이름이 해당 지역과 다르거나 일본어/한국어 배너를 사용하려는 경우에 유용할 수 있습니다.\n
 												배너 지역이 자동으로 설정되어 있으면 WAD 지역과 일치하게 됩니다.",
 
-			"t_video_mode":						"The video mode under which the Wii channel will run (NTSC, PAL or MPAL). Some video modes will not work for the correct region.",
+			"t_video_mode":						"Wii 채널이 (NTSC, PAL 또는 MPAL) 실행되는 비디오 모드입니다. 일부 비디오 모드는 올바른 지역에서 작동하지 않습니다.",
 
 			"t_injection_method_options":		"고급 에뮬레이터 설정을 변경합니다.",
 
 			"t_multifile_software":				"이 옵션을 활성화하면 프로그램은 현재 선택된 파일과 같은 폴더 내에 있는 모든 파일을 주입될 소프트웨어의 일부로 취급합니다.\n\n
 												계속하기 전에 소프트웨어 파일이 별도의 폴더에 있는지 확인하세요.",
 
-			"t_vff_cache_size":					"Size of the SWF cache storage.\n\n
-												If you are injecting into YouTube or BBC iPlayer and the channel freezes when trying to create save data, try setting it to 96 kB, which is the default value.",
+			"t_vff_cache_size":					"WF 캐시 저장소의 크기입니다.\n\n
+												유튜브나 BBC iPlayer에 삽입하는 경우 저장 데이터를 만들려고 하면 채널이 정지되므로 기본값인 96kB로 설정해보세요.",
 
-			"t_persistent_storage_total":		"Total storage size needed for saving game data.\n\n
-												If you are injecting into YouTube or BBC iPlayer and the channel freezes when trying to create save data, try setting it to 96 kB, which is the default value.",
+			"t_persistent_storage_total":		"게임 데이터 저장에 필요한 총 저장 공간 크기입니다\n\n
+												유튜브나 BBC iPlayer에 삽입하는 경우 저장 데이터를 만들려고 하면 채널이 정지되므로 기본값인 96kB로 설정해보세요.",
 
-			"t_persistent_storage_per_movie":	"Storage size needed per SWF for saving game data.\n\n
-												If you are injecting into YouTube or BBC iPlayer and the channel freezes when trying to create save data, try setting it to 64 kB, which is the default value.",
+			"t_persistent_storage_per_movie":	"게임 데이터를 저장하기 위해 SWF당 필요한 저장 공간 크기입니다.\n\n
+												유튜브나 BBC iPlayer에 주입하고 저장 데이터를 만들려고 할 때 채널이 정지되는 경우 기본값인 64kB로 설정해 보세요.",
 
-			"t_unsure":							"If unsure, {0}.",
-			"t_unsure_s":						"select {0}",
-			"t_unsure_u":						"leave this unchecked",
-			"t_unsure_c":						"leave this checked"
+			"t_unsure":							"확실하지 않으면, {0}입니다.",
+			"t_unsure_s":						"{0} 선택",
+			"t_unsure_u":						"이것을 체크하지 않은 상태로 둠",
+			"t_unsure_c":						"이것을 체크한 상태로 둠d"
 		}
 	},
 
@@ -185,38 +185,38 @@
 		"mainform": {
 			"file":								"파일(&F)",
 			"project":							"프로젝트(&P)",
-			"tools":							"Tools",
+			"tools":							"도구",
 			"help":								"도움말(&H)",
 
 			"new_project":						"새로운...(&N)",
 			"open_project":						"프로잭트 열기...(&O)",
-			"open_recent":						"Open &recent",
-			"clear_recent":						"&Clear this list",
+			"open_recent":						"최근 열기(&R)",
+			"clear_recent":						"이 목록 지우기(&C)",
 			"save_project":						"프로젝트 저장(&S)",
 			"save_project_as":					"다른 이름으로 저잔...(&A)",
 			"close_project":					"프로젝트 닫기(&C)",
-			"close_all":						"Close all",
+			"close_all":						"모두 닫기",
 			
 			"import_game_file":					"{0} 가져오기...(&G)",
 			"game_scan":						"온라인으로 게임 데이터 검색(&S)",
 			"export":							"내보내기...(&E)",
 			
-			"extract_from_wad":					"&Extract from WAD...",
-			"extract_wad_banner":				"Channel &banner",
-			"extract_wad_icon":					"Channel &icon",
-			"extract_wad_sound":				"Channel &sound",
-			"extract_wad_manual":				"Virtual Console &manual",
+			"extract_from_wad":					"WAD에서 압축해제...(&E)",
+			"extract_wad_banner":				"채널 배너(&B)",
+			"extract_wad_icon":					"채널 아이콘(&I)",
+			"extract_wad_sound":				"채널 사운드(&S)",
+			"extract_wad_manual":				"가상 콘솔 매뉴얼(&M)",
 
 			"updater":							"업데이터(&U)",
 			"check_for_updates":				"업데이트 확인(&C)",
 			"auto_update":						"시작 시 자동으로 업데이트 확인(&A)",
-			"clear_update":						"&Clear update files",
-			"advanced":							"&Advanced",
-			"test_database":					"&Test all database entries",
+			"clear_update":						"업데이트 파일 지우기(&C)",
+			"advanced":							"고급(&A)",
+			"test_database":					"모든 데이터베이스 항목 테스트(&T)",
 			"clear_database":					"모든 롬 데이터베이스 지우기(&E)",
-			"reset_preferences":				"&Reset all preferences",
+			"reset_preferences":				"모든 환경 설정 재설정(&R)",
 
-			"wiki":								"Online &Wiki",
+			"wiki":								"온라인 위키(&W)",
 			"exit":								"나가기(&X)",
 
 			"project_type":						"{0} WAD",
@@ -224,19 +224,19 @@
 
 			"update":							"업데이트가 있습니다.",
 			"update1":							"FriishProduce v{0}를 이제 다운로드할 수 있습니다.\n현재 v{1}을(를) 실행 중입니다.",
-			"update2":							"Update now?"
+			"update2":							"지금 업데이트할까요?"
 		},
 
 		"settingsform": {
 		    "general":							"일반",
 			"language":							"언어",
 			"system_default":					"시스템 기본값",
-			"theme":							"Theme",
-			"theme0":							"Light",
-			"theme1":							"Dark",
+			"theme":							"테마",
+			"theme0":							"밝음",
+			"theme1":							"어두움",
 			"reset_all_dialogs":				"모든 대화상자 재설정",
 			"use_custom_database":				"커스텀 WAD 데이터베이스 파일 사용",
-			"bypass_rom_size":					"Bypass ROM filesize limit",
+			"bypass_rom_size":					"롬 파일 크기 제한 우회",
 
 			"bios_files":						"바이오스 파일",
 			"browse_bios":						"바이오스 파일 선택...",
@@ -288,16 +288,16 @@
 			"region":							"채널 지역:",
 			"video_mode":						"비디오 모드:",
 			"banner":							"채널 배너",
-			"banner_tip":						"Click the above preview image to access banner customization options.",
+			"banner_tip":						"위의 미리보기 이미지를 클릭하여 배너 사용자 정의 옵션에 접속하세요.",
 			"banner_details":					"배너 상세정보...(&B)",
 			"banner_sound":						"배너 사운드(&S)",
-			"play_banner_sound":				"&Play current sound",
-			"replace_banner_sound":				"&Replace sound...",
-			"restore_banner_sound":				"Restore &default sound",
+			"play_banner_sound":				"현재 사운드 재생(&P)",
+			"replace_banner_sound":				"사운드 교체...(&R)",
+			"restore_banner_sound":				"기본 사운드 복원(&D)",
 			
 			"injection_method":					"주입 방법",
 			"injection_method_options":			"주입 방법 옵션...",
-			"controller":						"Controllers",
+			"controller":						"컨트롤러",
 			"controller_mapping":				"컨트롤러 버튼 매핑...",
 			
 			"save_data":						"저장 데이터",
@@ -313,9 +313,9 @@
 			"manual_type1":						"{original}",
 			"manual_type2":						"커스텀 매뉴얼 가져오기",
 			"forwarder_root_device":			"루트 저장 장치:",
-			"wiiu_display":						"Wii U display format:",
-			"wiiu_display1":					"4:3 letterboxed",
-			"wiiu_display2":					"Stretched",
+			"wiiu_display":						"Wii U 디스플레이 형식:",
+			"wiiu_display1":					"4:3 레터박스",
+			"wiiu_display2":					"늘리기",
 			"multifile_software":				"소프트웨어는 다중 파일입니다"
 		},
 
@@ -335,9 +335,9 @@
 			"presets":							"사전 설정",
 			"preset_load":						"로드",
 			"preset_blank":						"공백",
-			"preset_basic":						"Basic",
-			"preset_basic_h":					"Basic (horizontal)",
-			"preset_basic_v":					"Basic (vertical)",
+			"preset_basic":						"기본",
+			"preset_basic_h":					"기본 (수평)",
+			"preset_basic_v":					"기본 (수직)",
 			
 			"up":								"위쪽",
 			"left":								"왼쪽",
@@ -362,16 +362,16 @@
 		},
 
 		"vc_snes": {
-			"patch_volume":						"Boost volume",
-			"patch_noopera":					"Remove manual files",
-			"patch_wiimote":					"Enable native Wii Remote support",
-			"patch_gcremap":					"Rotate GC controller ABXY mapping",
-			"patch_nocheck":					"Disable all ROM checks",
-			"patch_nodark":						"Disable dark filter",
-			"patch_nocc":						"Disable Classic Controller screen",
-			"patch_nosave":						"Disable saving",
-			"patch_nosuspend":					"Disable Suspend Point",
-			"patch_widescreen":					"Widescreen HOME Menu",
+			"patch_volume":						"볼륨 높이기",
+			"patch_noopera":					"수동 파일 제거",
+			"patch_wiimote":					"실기 위모트 지원 활성화",
+			"patch_gcremap":					"게임큐브 컨트롤러 ABXY 매핑 회전",
+			"patch_nocheck":					"모든 롬 검사 비활성화",
+			"patch_nodark":						"어두운 필터 비활성화",
+			"patch_nocc":						"클래식 컨트롤러 화면 비활성화",
+			"patch_nosave":						"저장 비활성화",
+			"patch_nosuspend":					"중단 지점 비활성화",
+			"patch_widescreen":					"와이드스크린 홈 메뉴",
 		},
 
 		"vc_n64": {
@@ -379,7 +379,7 @@
 			"patch_fixcrashes":					"충돌 수정",
 			"patch_expandedram":				"확장 램 활성화",
 			"patch_autosizerom":				"롬 크기 할당",
-			"patch_cleantextures":				"Clean unused textures",
+			"patch_cleantextures":				"사용하지 않는 텍스처 지우기",
 			"patch_widescreen":					"와이드스크린 디스플레이",
 			
 			"romc_type":						"롬 압축 방법",
@@ -389,7 +389,7 @@
 
 		"vc_sega": {
 			"console_disableresetbutton":		"재설정 버튼 비활성화",
-			"dev_mdpad_enable_6b":				"{0} 6버튼 컨트롤 패드 활성화"
+			"dev_mdpad_enable_6b":				"{0} 6 버튼 컨트롤 패드 활성화"
 		},
 
 		"vc_pce": {
@@ -399,8 +399,8 @@
 			"y_offset":							"Y 옵셋",
 			"sgenable":							"SuperGrafx 기능 활성화",
 			"region1":							"미국/유럽으로",
-			"padbutton0":						"2버튼 패드 사용",
-			"padbutton1":						"6버튼 패드 사용"
+			"padbutton0":						"2 버튼 패드 사용",
+			"padbutton1":						"6 버튼 패드 사용"
 		},
 
 		"vc_neo": {
@@ -412,13 +412,13 @@
 		},
 
 		"vc_c64": {
-			"rom_notice":						"This injection method requires a snapshot taken at startup using the Frodo emulator.\nWhat would you like to do?",
-			"rom_notice1":						"&Create a new snapshot",
-			"rom_notice2":						"&Use an existing snapshot",
+			"rom_notice":						"이 주입 방법은 Frodo 에뮬레이터를 사용하여 시작 시 찍은 스냅샷이 필요합니다.\n무엇을 할까요?",
+			"rom_notice1":						"새 스냅샷 만들기(&C)",
+			"rom_notice2":						"기존 스냅샷 사용(&U)",
 		},
 
 		"adobe_flash": {
-			"vff_sync_on_write":				"Sync VFF on writing data",
+			"vff_sync_on_write":				"데이터 쓰기 시 VFF 동기화",
 			"vff_cache_size":					"VFF 캐시 크기 ({kilobytes}):",
 			"persistent_storage_total":			"총 영구적 저장소 ({kilobytes}):",
 			"persistent_storage_per_movie":		"SWF당 영구적 저장소 ({kilobytes}):",
@@ -437,8 +437,8 @@
 			"swf_metadata":						"SWF 메타데이터",
 			"content_domain":					"콘텐츠 도메인",
 			"background_color":					"배경색",
-			"anti_aliasing":					"Anti-aliasing",
-			"zoom":								"Zoom"
+			"anti_aliasing":					"안티에일리어싱",
+			"zoom":								"확대/축소"
 		},
 
 		"forwarder": {
