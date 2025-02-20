@@ -296,15 +296,27 @@ namespace FriishProduce
                             catch { y.EmuRevs.Add(0); }
                         }
 
-                        if (Program.Lang.GetRegion() is not Language.Region.Japan and not Language.Region.Korea && !Program.Lang.Current.StartsWith("zh"))
-                        {
-                            // Change Japanese title to English if language is not CJK
-                            if (y.Regions.Count == 1 && y.Regions[0] == 0 && item.GetProperty("titles").GetArrayLength() > 1)
-                                y.Titles[0] = item.GetProperty("titles")[1].GetString();
+                        // ************************************************************************************************************-
 
+                        if (Program.Lang.GetRegion() is not Language.Region.Korea and not Language.Region.Japan)
+                        {
                             // Change Korean title to English if language is not CJK
                             if (y.Regions.Count == 4 && (y.Regions[3] is 6 or 7) && item.GetProperty("titles").GetArrayLength() == 4)
                                 y.Titles[3] = item.GetProperty("titles")[1].GetString();
+                        }
+
+                        if (Program.Lang.GetRegion() is not Language.Region.Japan)
+                        {
+                            // Change Japanese title to English if language is not Japanese
+                            if (y.Regions.Count == 1 && y.Regions[0] == 0 && item.GetProperty("titles").GetArrayLength() > 1)
+                                y.Titles[0] = item.GetProperty("titles")[1].GetString();
+                        }
+
+                        else
+                        {
+                            // Change Korean title of Japanese-derived Korean WADs to original
+                            if (y.Regions.Contains(6) && y.Regions.Contains(0) && item.GetProperty("titles").GetArrayLength() > 1)
+                                y.Titles[y.Regions.IndexOf(6)] = item.GetProperty("titles")[0].GetString();
                         }
                     }
 

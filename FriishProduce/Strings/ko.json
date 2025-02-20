@@ -8,8 +8,8 @@
 			"about_app":						"{0} 정보",
 			"authors":							"제작자: {0}",
 
-			"kilobytes":						"킬로.",
-			"megabytes":						"메가.",
+			"kilobytes":						"킬로",
+			"megabytes":						"메가",
 			
 			"b_ok":								"확인(&O)",
 			"b_cancel":							"취소(&C)",
@@ -165,7 +165,7 @@
 			"t_multifile_software":				"이 옵션을 활성화하면 프로그램은 현재 선택된 파일과 같은 폴더 내에 있는 모든 파일을 주입될 소프트웨어의 일부로 취급합니다.\n\n
 												계속하기 전에 소프트웨어 파일이 별도의 폴더에 있는지 확인하세요.",
 
-			"t_vff_cache_size":					"WF 캐시 저장소의 크기입니다.\n\n
+			"t_vff_cache_size":					"SWF 캐시 저장소의 크기입니다.\n\n
 												유튜브나 BBC iPlayer에 삽입하는 경우 저장 데이터를 만들려고 하면 채널이 정지되므로 기본값인 96kB로 설정해보세요.",
 
 			"t_persistent_storage_total":		"게임 데이터 저장에 필요한 총 저장 공간 크기입니다\n\n
@@ -177,7 +177,7 @@
 			"t_unsure":							"확실하지 않으면, {0}입니다.",
 			"t_unsure_s":						"{0} 선택",
 			"t_unsure_u":						"이것을 체크하지 않은 상태로 둠",
-			"t_unsure_c":						"이것을 체크한 상태로 둠d"
+			"t_unsure_c":						"이것을 체크한 상태로 둠"
 		}
 	},
 
@@ -185,7 +185,7 @@
 		"mainform": {
 			"file":								"파일(&F)",
 			"project":							"프로젝트(&P)",
-			"tools":							"도구",
+			"tools":							"도구(&T)",
 			"help":								"도움말(&H)",
 
 			"new_project":						"새로운...(&N)",

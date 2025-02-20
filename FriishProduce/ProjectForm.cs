@@ -1945,14 +1945,15 @@ namespace FriishProduce
             // Check if language is set to Japanese or Korean
             // If so, make Japan/Korea region item the first in the WAD region context list
             // ********
-            var selected = regions.IndexOf(Program.Lang.String("region_u"));
+
+            var selected = -1;
+            
             Language.Region region = Program.Lang.GetRegion();
+            if      (region is Language.Region.Korea)   selected = regions.IndexOf(Program.Lang.String("region_k"));
+            else if (region is Language.Region.Japan)   selected = regions.IndexOf(Program.Lang.String("region_j"));
+            else if (region is Language.Region.Europe)  selected = regions.IndexOf(Program.Lang.String("region_e"));
 
-            selected = regions.IndexOf(region is Language.Region.Japan ? Program.Lang.String("region_j")
-                                     : region is Language.Region.Korea ? Program.Lang.String("region_k")
-                                     : region is Language.Region.Europe ? Program.Lang.String("region_e")
-                                     : Program.Lang.String("region_u"));
-
+            if (selected == -1) selected = regions.IndexOf(Program.Lang.String("region_u"));
             if (selected == -1) selected = 0;
 
             // Reset currently-selected base info

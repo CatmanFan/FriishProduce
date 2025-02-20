@@ -43,9 +43,8 @@ Please check the **[wiki](https://catmanfan.github.io/FriishProduce/)** for a tu
 ---
 
 ## To-Do
-- [ ] Tidyup Flash content options interface
+- [ ] Tidyup Flash content options interface, implement zoom/widescreen feature
 - [ ] Re-add console icons?
-- [X] Test N64 controller (confirmed, cannot remap different controllers)
 
 ### Potential
 - [ ] Merge separate components of ProjectForm into panels / Create UserControl for content options ?
