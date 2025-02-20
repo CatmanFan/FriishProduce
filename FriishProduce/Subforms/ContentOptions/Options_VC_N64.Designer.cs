@@ -29,14 +29,14 @@ namespace FriishProduce
         /// </summary>
         private void InitializeComponent()
         {
-            this.g1 = new GroupBoxEx();
+            this.g1 = new FriishProduce.GroupBoxEx();
+            this.patch_cleantextures = new System.Windows.Forms.CheckBox();
             this.patch_autosizerom = new System.Windows.Forms.CheckBox();
             this.patch_expandedram = new System.Windows.Forms.CheckBox();
             this.patch_fixcrashes = new System.Windows.Forms.CheckBox();
             this.patch_fixbrightness = new System.Windows.Forms.CheckBox();
             this.romc_type_list = new System.Windows.Forms.ComboBox();
-            this.g2 = new GroupBoxEx();
-            this.patch_cleantextures = new System.Windows.Forms.CheckBox();
+            this.g2 = new FriishProduce.GroupBoxEx();
             this.bottomPanel1.SuspendLayout();
             this.controller_box.SuspendLayout();
             this.g1.SuspendLayout();
@@ -59,6 +59,7 @@ namespace FriishProduce
             this.g1.Controls.Add(this.patch_expandedram);
             this.g1.Controls.Add(this.patch_fixcrashes);
             this.g1.Controls.Add(this.patch_fixbrightness);
+            this.g1.Flat = false;
             this.g1.Location = new System.Drawing.Point(12, 10);
             this.g1.Name = "g1";
             this.g1.Size = new System.Drawing.Size(530, 134);
@@ -66,6 +67,20 @@ namespace FriishProduce
             this.g1.TabStop = false;
             this.g1.Tag = "vc_options";
             this.g1.Text = "vc_options";
+            // 
+            // patch_cleantextures
+            // 
+            this.patch_cleantextures.AutoSize = true;
+            this.patch_cleantextures.CheckAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.patch_cleantextures.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.patch_cleantextures.Location = new System.Drawing.Point(10, 108);
+            this.patch_cleantextures.Name = "patch_cleantextures";
+            this.patch_cleantextures.Size = new System.Drawing.Size(125, 17);
+            this.patch_cleantextures.TabIndex = 17;
+            this.patch_cleantextures.Tag = "patch_cleantextures";
+            this.patch_cleantextures.Text = "patch_cleantextures";
+            this.patch_cleantextures.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.patch_cleantextures.UseVisualStyleBackColor = true;
             // 
             // patch_autosizerom
             // 
@@ -139,6 +154,7 @@ namespace FriishProduce
             // g2
             // 
             this.g2.Controls.Add(this.romc_type_list);
+            this.g2.Flat = false;
             this.g2.Location = new System.Drawing.Point(12, 210);
             this.g2.Name = "g2";
             this.g2.Size = new System.Drawing.Size(530, 50);
@@ -147,30 +163,19 @@ namespace FriishProduce
             this.g2.Tag = "romc_type";
             this.g2.Text = "romc_type";
             // 
-            // patch_cleantextures
-            // 
-            this.patch_cleantextures.AutoSize = true;
-            this.patch_cleantextures.CheckAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.patch_cleantextures.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.patch_cleantextures.Location = new System.Drawing.Point(10, 108);
-            this.patch_cleantextures.Name = "patch_cleantextures";
-            this.patch_cleantextures.Size = new System.Drawing.Size(125, 17);
-            this.patch_cleantextures.TabIndex = 17;
-            this.patch_cleantextures.Tag = "patch_cleantextures";
-            this.patch_cleantextures.Text = "patch_cleantextures";
-            this.patch_cleantextures.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.patch_cleantextures.UseVisualStyleBackColor = true;
-            // 
             // Options_VC_N64
             // 
-            this.ClientSize = new System.Drawing.Size(554, 312);
+            this.ClientSize = new System.Drawing.Size(554, 316);
             this.Controls.Add(this.g1);
             this.Controls.Add(this.g2);
+            this.MaximumSize = new System.Drawing.Size(570, 354);
+            this.MinimumSize = new System.Drawing.Size(570, 298);
             this.Name = "Options_VC_N64";
             this.Tag = "vc_n64";
-            this.Controls.SetChildIndex(this.controller_box, 0);
             this.Controls.SetChildIndex(this.g2, 0);
             this.Controls.SetChildIndex(this.g1, 0);
+            this.Controls.SetChildIndex(this.controller_box, 0);
+            this.bottomPanel1.ResumeLayout(false);
             this.controller_box.ResumeLayout(false);
             this.controller_box.PerformLayout();
             this.g1.ResumeLayout(false);

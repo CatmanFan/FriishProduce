@@ -65,13 +65,12 @@ namespace FriishProduce
             // ROMC visibility control
             // *******
             bool isRomc = EmuType == 3;
-            if (MinimumSize.IsEmpty) MinimumSize = new(Size.Width, Size.Height - g2.Height);
 
             g2.Enabled = g2.Visible = isRomc;
 
-            Size = MinimumSize;
-            if (isRomc)
-                Size = new(MinimumSize.Width, MinimumSize.Height + g2.Height);
+            if (MaximumSize.IsEmpty) MaximumSize = Size;
+            if (MinimumSize.IsEmpty) MinimumSize = new(Size.Width, Size.Height - g2.Height - 4);
+            Size = isRomc ? MaximumSize : MinimumSize;
         }
 
         protected override void SaveOptions()
