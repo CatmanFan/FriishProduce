@@ -794,13 +794,6 @@
             "titles": ["スペースマンボウ", "Space Manbow"],
             "wad_titles": ["Space Manbow"]
         },
-		
-        {
-            "id": "00010001-584146__",
-            "region": [0],
-            "titles": ["メタルギア", "Metal Gear"],
-            "wad_titles": ["Metal Gear"]
-        },
 
         {
             "id": "00010001-584150__",

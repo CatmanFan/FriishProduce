@@ -183,30 +183,6 @@
   <data name="toolStrip.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 11px</value>
   </data>
-  <data name="toolStrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="toolStrip.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="toolStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1008, 25</value>
-  </data>
-  <data name="toolStrip.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;toolStrip.Name" xml:space="preserve">
-    <value>toolStrip</value>
-  </data>
-  <data name="&gt;&gt;toolStrip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStrip.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;toolStrip.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="toolbarNewProject.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -432,6 +408,30 @@
   <data name="toolbarPreferences.Size" type="System.Drawing.Size, System.Drawing">
     <value>23, 22</value>
   </data>
+  <data name="toolStrip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="toolStrip.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="toolStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1008, 25</value>
+  </data>
+  <data name="toolStrip.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;toolStrip.Name" xml:space="preserve">
+    <value>toolStrip</value>
+  </data>
+  <data name="&gt;&gt;toolStrip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStrip.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;toolStrip.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <metadata name="SaveProject.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>354, 17</value>
   </metadata>
@@ -441,8 +441,104 @@
   <metadata name="mainMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>115, 17</value>
   </metadata>
+  <data name="new_project.Shortcut" type="System.Windows.Forms.Shortcut, System.Windows.Forms">
+    <value>CtrlN</value>
+  </data>
+  <data name="new_project.Text" xml:space="preserve">
+    <value>new_project</value>
+  </data>
+  <data name="menuItem5.Text" xml:space="preserve">
+    <value>-</value>
+  </data>
+  <data name="open_project.Shortcut" type="System.Windows.Forms.Shortcut, System.Windows.Forms">
+    <value>CtrlO</value>
+  </data>
+  <data name="open_project.Text" xml:space="preserve">
+    <value>open_project</value>
+  </data>
+  <data name="open_recent.Text" xml:space="preserve">
+    <value>open_recent</value>
+  </data>
+  <data name="save_project.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="save_project.Shortcut" type="System.Windows.Forms.Shortcut, System.Windows.Forms">
+    <value>CtrlS</value>
+  </data>
+  <data name="save_project.Text" xml:space="preserve">
+    <value>save_project</value>
+  </data>
+  <data name="save_project_as.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="save_project_as.Shortcut" type="System.Windows.Forms.Shortcut, System.Windows.Forms">
+    <value>CtrlShiftS</value>
+  </data>
+  <data name="save_project_as.Text" xml:space="preserve">
+    <value>save_project_as</value>
+  </data>
+  <data name="menuItem6.Text" xml:space="preserve">
+    <value>-</value>
+  </data>
+  <data name="close_project.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="close_project.Shortcut" type="System.Windows.Forms.Shortcut, System.Windows.Forms">
+    <value>CtrlF4</value>
+  </data>
+  <data name="close_project.Text" xml:space="preserve">
+    <value>close_project</value>
+  </data>
+  <data name="close_all.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="close_all.Shortcut" type="System.Windows.Forms.Shortcut, System.Windows.Forms">
+    <value>CtrlShiftF4</value>
+  </data>
+  <data name="close_all.Text" xml:space="preserve">
+    <value>close_all</value>
+  </data>
+  <data name="menuItem7.Text" xml:space="preserve">
+    <value>-</value>
+  </data>
+  <data name="exit.Shortcut" type="System.Windows.Forms.Shortcut, System.Windows.Forms">
+    <value>AltF4</value>
+  </data>
+  <data name="exit.Text" xml:space="preserve">
+    <value>exit</value>
+  </data>
   <data name="menuItem1.Text" xml:space="preserve">
     <value>file</value>
+  </data>
+  <data name="import_game_file.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="import_game_file.Shortcut" type="System.Windows.Forms.Shortcut, System.Windows.Forms">
+    <value>Ctrl0</value>
+  </data>
+  <data name="import_game_file.Text" xml:space="preserve">
+    <value>import_game_file</value>
+  </data>
+  <data name="menuItem8.Text" xml:space="preserve">
+    <value>-</value>
+  </data>
+  <data name="game_scan.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="game_scan.Shortcut" type="System.Windows.Forms.Shortcut, System.Windows.Forms">
+    <value>CtrlG</value>
+  </data>
+  <data name="game_scan.Text" xml:space="preserve">
+    <value>game_scan</value>
+  </data>
+  <data name="export.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="export.Shortcut" type="System.Windows.Forms.Shortcut, System.Windows.Forms">
+    <value>CtrlE</value>
+  </data>
+  <data name="export.Text" xml:space="preserve">
+    <value>export</value>
   </data>
   <data name="menuItem2.Text" xml:space="preserve">
     <value>project</value>
@@ -514,7 +610,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;tabControl.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 11px</value>
@@ -3090,11 +3186,35 @@
   <data name="menuItem9.Text" xml:space="preserve">
     <value>-</value>
   </data>
+  <data name="extract_wad_banner.Text" xml:space="preserve">
+    <value>extract_wad_banner</value>
+  </data>
+  <data name="extract_wad_icon.Text" xml:space="preserve">
+    <value>extract_wad_icon</value>
+  </data>
+  <data name="extract_wad_sound.Text" xml:space="preserve">
+    <value>extract_wad_sound</value>
+  </data>
+  <data name="extract_wad_manual.Text" xml:space="preserve">
+    <value>extract_wad_manual</value>
+  </data>
   <data name="extract_from_wad.Text" xml:space="preserve">
     <value>extract_from_wad</value>
   </data>
   <data name="menuItem3.Text" xml:space="preserve">
     <value>tools</value>
+  </data>
+  <data name="check_for_updates.Text" xml:space="preserve">
+    <value>check_for_updates</value>
+  </data>
+  <data name="auto_update.Text" xml:space="preserve">
+    <value>auto_update</value>
+  </data>
+  <data name="menuItem12.Text" xml:space="preserve">
+    <value>-</value>
+  </data>
+  <data name="clear_update.Text" xml:space="preserve">
+    <value>clear_update</value>
   </data>
   <data name="updater.Text" xml:space="preserve">
     <value>updater</value>
@@ -3149,126 +3269,6 @@
   </data>
   <data name="menuItem4.Text" xml:space="preserve">
     <value>help</value>
-  </data>
-  <data name="new_project.Shortcut" type="System.Windows.Forms.Shortcut, System.Windows.Forms">
-    <value>CtrlN</value>
-  </data>
-  <data name="new_project.Text" xml:space="preserve">
-    <value>new_project</value>
-  </data>
-  <data name="menuItem5.Text" xml:space="preserve">
-    <value>-</value>
-  </data>
-  <data name="open_project.Shortcut" type="System.Windows.Forms.Shortcut, System.Windows.Forms">
-    <value>CtrlO</value>
-  </data>
-  <data name="open_project.Text" xml:space="preserve">
-    <value>open_project</value>
-  </data>
-  <data name="open_recent.Text" xml:space="preserve">
-    <value>open_recent</value>
-  </data>
-  <data name="save_project.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="save_project.Shortcut" type="System.Windows.Forms.Shortcut, System.Windows.Forms">
-    <value>CtrlS</value>
-  </data>
-  <data name="save_project.Text" xml:space="preserve">
-    <value>save_project</value>
-  </data>
-  <data name="save_project_as.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="save_project_as.Shortcut" type="System.Windows.Forms.Shortcut, System.Windows.Forms">
-    <value>CtrlShiftS</value>
-  </data>
-  <data name="save_project_as.Text" xml:space="preserve">
-    <value>save_project_as</value>
-  </data>
-  <data name="menuItem6.Text" xml:space="preserve">
-    <value>-</value>
-  </data>
-  <data name="close_project.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="close_project.Shortcut" type="System.Windows.Forms.Shortcut, System.Windows.Forms">
-    <value>CtrlF4</value>
-  </data>
-  <data name="close_project.Text" xml:space="preserve">
-    <value>close_project</value>
-  </data>
-  <data name="close_all.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="close_all.Shortcut" type="System.Windows.Forms.Shortcut, System.Windows.Forms">
-    <value>CtrlShiftF4</value>
-  </data>
-  <data name="close_all.Text" xml:space="preserve">
-    <value>close_all</value>
-  </data>
-  <data name="menuItem7.Text" xml:space="preserve">
-    <value>-</value>
-  </data>
-  <data name="exit.Shortcut" type="System.Windows.Forms.Shortcut, System.Windows.Forms">
-    <value>AltF4</value>
-  </data>
-  <data name="exit.Text" xml:space="preserve">
-    <value>exit</value>
-  </data>
-  <data name="import_game_file.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="import_game_file.Shortcut" type="System.Windows.Forms.Shortcut, System.Windows.Forms">
-    <value>Ctrl0</value>
-  </data>
-  <data name="import_game_file.Text" xml:space="preserve">
-    <value>import_game_file</value>
-  </data>
-  <data name="menuItem8.Text" xml:space="preserve">
-    <value>-</value>
-  </data>
-  <data name="game_scan.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="game_scan.Shortcut" type="System.Windows.Forms.Shortcut, System.Windows.Forms">
-    <value>CtrlG</value>
-  </data>
-  <data name="game_scan.Text" xml:space="preserve">
-    <value>game_scan</value>
-  </data>
-  <data name="export.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="export.Shortcut" type="System.Windows.Forms.Shortcut, System.Windows.Forms">
-    <value>CtrlE</value>
-  </data>
-  <data name="export.Text" xml:space="preserve">
-    <value>export</value>
-  </data>
-  <data name="extract_wad_banner.Text" xml:space="preserve">
-    <value>extract_wad_banner</value>
-  </data>
-  <data name="extract_wad_icon.Text" xml:space="preserve">
-    <value>extract_wad_icon</value>
-  </data>
-  <data name="extract_wad_sound.Text" xml:space="preserve">
-    <value>extract_wad_sound</value>
-  </data>
-  <data name="extract_wad_manual.Text" xml:space="preserve">
-    <value>extract_wad_manual</value>
-  </data>
-  <data name="check_for_updates.Text" xml:space="preserve">
-    <value>check_for_updates</value>
-  </data>
-  <data name="auto_update.Text" xml:space="preserve">
-    <value>auto_update</value>
-  </data>
-  <data name="menuItem12.Text" xml:space="preserve">
-    <value>-</value>
-  </data>
-  <data name="clear_update.Text" xml:space="preserve">
-    <value>clear_update</value>
   </data>
   <metadata name="new_project_menu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>1373, 16</value>

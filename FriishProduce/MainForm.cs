@@ -1126,15 +1126,15 @@ namespace FriishProduce
                         (
                             "{0} ({1}) ({2})",
                             entry.Titles[y],
-                            Program.Lang.Console(p),
-                            regIndex == 0 ? "J" : regIndex is 1 or 2 ? "U" : regIndex is 3 or 4 or 5 ? "E" : regIndex is 6 or 7 ? "K" : Program.Lang.String("region_rf")
+                            regIndex == 0 ? "J" : regIndex is 1 or 2 ? "U" : regIndex is 3 or 4 or 5 ? "E" : regIndex is 6 or 7 ? "K" : Program.Lang.String("region_rf"),
+                            Program.Lang.Console(p)
                         );
 
                         await System.Threading.Tasks.Task.Run(() =>
                         {
                             WAD w = WAD.Load(Web.Get(entry.GetWAD(y)));
                             bool valid = true;
-                            try { if (w.Contents?.Length == 0) throw new NotSupportedException(); }
+                            try { valid = w.HasBanner; }
                             catch { valid = false; }
                             w.Dispose();
 

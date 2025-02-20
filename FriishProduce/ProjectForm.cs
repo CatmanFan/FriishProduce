@@ -21,8 +21,8 @@ namespace FriishProduce
         private MessageBoxHTML htmlDialog;
         private TheArtOfDev.HtmlRenderer.WinForms.HtmlToolTip tip = HTML.CreateToolTip();
 
-        protected string TIDCode;
         protected string Untitled;
+        protected string TIDCode;
 
         protected bool isVirtualConsole
         {

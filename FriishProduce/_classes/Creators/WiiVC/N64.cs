@@ -495,8 +495,6 @@ namespace FriishProduce.Injectors
                 Buttons.Classic_Right_R
             };
 
-            // 
-
             byte[] main = new byte[32];
             byte[] directional = new byte[48];
             int dSpacing = 4, eSpacing = 4;
