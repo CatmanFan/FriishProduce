@@ -254,7 +254,7 @@ namespace FriishProduce
 
             if (c.GetType() == typeof(RadioButton))
             {
-                (c as RadioButton).FlatStyle = flat ? FlatStyle.Flat : FlatStyle.System;
+                if (flat) (c as RadioButton).FlatStyle = FlatStyle.Flat;
 
                 isEligible = flat;
                 useFormBG = true;
@@ -264,7 +264,7 @@ namespace FriishProduce
 
             if (c.GetType() == typeof(CheckBox))
             {
-                (c as CheckBox).FlatStyle = flat ? FlatStyle.Flat : FlatStyle.System;
+                if (flat) (c as CheckBox).FlatStyle = FlatStyle.Flat;
 
                 isEligible = flat;
                 useFormBG = true;

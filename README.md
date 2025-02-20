@@ -45,7 +45,7 @@ Please check the **[wiki](https://catmanfan.github.io/FriishProduce/)** for a tu
 ## To-Do
 - [ ] Tidyup Flash content options interface
 - [ ] Re-add console icons?
-- [ ] Test N64 controller (check if it is possible to remap different controllers instead of all at once)
+- [X] Test N64 controller (confirmed, cannot remap different controllers)
 
 ### Potential
 - [ ] Merge separate components of ProjectForm into panels / Create UserControl for content options ?

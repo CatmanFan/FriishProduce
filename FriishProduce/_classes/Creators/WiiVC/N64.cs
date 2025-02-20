@@ -411,55 +411,81 @@ namespace FriishProduce.Injectors
         {
             // Search for controller button offsets
             // ****************
-            Dictionary<Buttons, int> offsets = new();
             int start = 0;
+            bool autoSearch = WAD.Region == Region.Korea;
 
-            switch (WAD.UpperTitleID.Substring(0, 3).ToUpper())
+            if (!autoSearch)
             {
-                #region Manual search offsets (unused)
-                // Manual search for known controller button offsets:
-                // These offsets are for the first button found ("A"), as retrieved from Patcher64+ Tool source code.
-                // ****************
-                /* case "NAA": // Super Mario 64
-                    start = 0x168618;
-                    break;
+                switch (WAD.UpperTitleID.Substring(0, 3).ToUpper())
+                {
+                    // Manual search for known controller button offsets:
+                    // These offsets are for the first button found ("A"), as retrieved from Patcher64+ Tool source code.
+                    //
+                    // Only one of the known mapping groups found actually refers to the default for all controllers, GC or CC, irregardless of player slot.
+                    // Korean versions of the WAD use a different emulator revision and so the offset is different for those editions.
+                    // ****************
+                    case "NAA": // Super Mario 64
+                        start = 0x168618; // confirmed working
+                        break;
 
-                case "NAB": // Mario Kart 64
-                    start = 0x169ED8;
-                    break;
+                    /* case "NAB": // Mario Kart 64
+                        start = 0x169ED8;
+                        // not working on this offset
+                        break;
 
-                case "NAE": // Paper Mario
-                    start = 0x175A20;
-                    break;
+                    case "NAE": // Paper Mario
+                        start = 0x175A20;
+                        // not working if copied only to this offset
+                        break;
 
-                case "NAL": // Smash Bros.
-                    start = 0x150F00;
-                    break;
+                    case "NAL": // Smash Bros.
+                        start = 0x150F00;
+                        // not working on this offset
+                        break;
 
-                case "NAC": // Zelda: Ocarina
-                    start = 0x16BAC0;
-                    break; */
-                #endregion
+                    case "NAC": // Zelda: Ocarina
+                        start = 0x16BAC0;
+                        // not working on this offset
+                        break;
 
-                case "NAR": // Zelda: Majora
-                    start = 0x148430; // 0x1484E0; third set
-                    break;
+                    case "NAR": // Zelda: Majora
+                        start = 0x1484E0; // third set
+                        // not working on this offset
+                        break; */
 
-                // Do automatic search for first available controller button offset
-                // ****************
-                default:
-                    // 
-                    if (Byte.IndexOf(Contents[1], "30 30 27 29 0A 0A") != -1)
-                    {
-                        start = Byte.IndexOf(Contents[1], "30 30 27 29 0A 0A") + 6;
+                    // Do automatic search for first available controller button offset
+                    // ****************
+                    default:
+                        autoSearch = true;
+                        break;
+                }
+            }
 
-                        while (Contents[1][start] == 0)
-                            start++;
-                    }
-                    else
-                        // No controller button offsets were found (perhaps not supported or the algorithm is different).
-                        return false;
-                    break;
+            if (autoSearch)
+            {
+                // Default format
+                if (Byte.IndexOf(Contents[1], "30 30 27 29 0A 0A") != -1)
+                {
+                    start = Byte.IndexOf(Contents[1], "30 30 27 29 0A 0A") + 6;
+
+                    while (Contents[1][start] == 0 || BitConverter.ToInt32(Contents[1], start) != 128)
+                        start++;
+                }
+
+                // Majora's Mask format
+                else if (Byte.IndexOf(Contents[1], "53 59 53 54 45 4D 20 28 4E 36 34 29") != -1)
+                {
+                    start = Byte.IndexOf(Contents[1], "53 59 53 54 45 4D 20 28 4E 36 34 29") + 32;
+
+                    while (Contents[1][start] == 0 || BitConverter.ToInt32(Contents[1], start) != 128)
+                        start++;
+                }
+            }
+
+            if (start <= 0)
+            {
+                // No controller button offsets were found (perhaps not supported or the algorithm is different).
+                return false;
             }
 
             // Some WADs have DPad-Left's offset coming before Right, instead of the other way around
@@ -467,7 +493,20 @@ namespace FriishProduce.Injectors
 
             // Declare arrays to fill remapped buttons
             // ****************
-            Buttons[] main_b = new[]
+            byte[] main = new byte[32];
+            byte[] directional = new byte[48];
+
+            // Both the main and directional groups may or may not be separated by four empty bytes
+            // ****************
+            int dSpacing = 4, eSpacing = 4;
+            if (BitConverter.ToInt32(Contents[1], start + main.Length) != 0)
+                dSpacing = 0;
+            if (BitConverter.ToInt32(Contents[1], start + main.Length + dSpacing + directional.Length) != 0)
+                eSpacing = 0;
+
+            // Copy to main and directional byte arrays
+            // ****************
+            Buttons[] mainList = new[]
             {
                 Buttons.Classic_A,
                 Buttons.Classic_B,
@@ -479,7 +518,7 @@ namespace FriishProduce.Injectors
                 Buttons.Classic_Plus
             };
 
-            Buttons[] directional_b = new[]
+            Buttons[] directionalList = new[]
             {
                 Buttons.Classic_Up_L,
                 Buttons.Classic_Down_L,
@@ -495,41 +534,14 @@ namespace FriishProduce.Injectors
                 Buttons.Classic_Right_R
             };
 
-            byte[] main = new byte[32];
-            byte[] directional = new byte[48];
-            int dSpacing = 4, eSpacing = 4;
+            for (int i = 0; i < mainList.Length; i++)
+                try { Byte.FromHex(Keymap[mainList[i]]).CopyTo(main, i * 4); } catch { }
 
-            // Both the main and directional groups may or may not be separated by four empty bytes
-            // ****************
-            if (BitConverter.ToInt32(Contents[1], start + main.Length) != 0)
-                dSpacing = 0;
-            if (BitConverter.ToInt32(Contents[1], start + main.Length + dSpacing + directional.Length) != 0)
-                eSpacing = 0;
-
-            // Add all offsets needed for each button relative to the starting path
-            // ****************
-            if (start > 0)
-            {
-                for (int i = 0; i < main_b.Length; i++)
-                    offsets.Add(main_b[i], start + (4 * i));
-
-                for (int i = 0; i < directional_b.Length; i++)
-                    offsets.Add(directional_b[i], start + main.Length + dSpacing + (4 * i));
-            }
-
-            // File.WriteAllBytes(Paths.WorkingFolder + "content1.app", Contents[1]);
-
-            // Copy
-            // ****************
-            for (int i = 0; i < main_b.Length; i++)
-                try { Byte.FromHex(Keymap[main_b[i]]).CopyTo(main, i * 4); } catch { }
-
-            for (int i = 0; i < directional_b.Length; i++)
-                try { Byte.FromHex(Keymap[directional_b[i]]).CopyTo(directional, i * 4); } catch { }
+            for (int i = 0; i < directionalList.Length; i++)
+                try { Byte.FromHex(Keymap[directionalList[i]]).CopyTo(directional, i * 4); } catch { }
 
             List<byte> remapped = new();
-
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < (autoSearch ? 3 : 1); i++)
             {
                 if (BitConverter.ToInt32(Contents[1], start + (remapped.Count * i)) == 128)
                 {
