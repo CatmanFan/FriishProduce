@@ -1067,13 +1067,25 @@ namespace FriishProduce
             return string.Join("_", target.Split(Path.GetInvalidFileNameChars(), StringSplitOptions.RemoveEmptyEntries));
         }
 
+        private bool _canClose = false;
+        public bool CanClose
+        {
+            get
+            {
+                if (!_canClose)
+                    _canClose = CheckUnsaved();
+                return _canClose;
+            }
+        }
+
         private void isClosing(object sender, FormClosingEventArgs e)
         {
             // ----------------------------
             if (DesignMode) return;
             // ----------------------------
 
-            e.Cancel = !CheckUnsaved();
+            if (!CanClose)
+                e.Cancel = !CanClose;
 
             if (!e.Cancel)
             {

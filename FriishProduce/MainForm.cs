@@ -454,7 +454,12 @@ namespace FriishProduce
                 list.Add(tabControl.TabPages[i].Form as ProjectForm);
 
             foreach (var tab in list)
-                tab.Close();
+            {
+                if (tab.CanClose)
+                    tab.Close();
+                else
+                    break;
+            }
         }
 
         private void About_Click(object sender, EventArgs e) { using var about = new About(); about.ShowDialog(); }
