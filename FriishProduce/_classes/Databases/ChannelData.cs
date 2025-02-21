@@ -308,7 +308,9 @@ namespace FriishProduce
                         if (Program.Lang.GetRegion() is not Language.Region.Japan)
                         {
                             // Change Japanese title to English if language is not Japanese
-                            if (y.Regions.Count == 1 && y.Regions[0] == 0 && item.GetProperty("titles").GetArrayLength() > 1)
+                            if (((y.Regions.Count == 1 && y.Regions[0] == 0)
+                                || (y.Regions.Count > 1 && !y.Regions.Contains(0)))
+                                && item.GetProperty("titles").GetArrayLength() > 1)
                                 y.Titles[0] = item.GetProperty("titles")[1].GetString();
                         }
 

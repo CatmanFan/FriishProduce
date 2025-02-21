@@ -15,7 +15,19 @@ namespace FriishProduce
         public string Msg
         {
             get => label1.Text;
-            set => label1.Text = value;
+            set
+            {
+                label1.Text = value;
+
+                // Set width if too short
+                // ****************
+                var maxWidth = label1.Width + (label1.Padding.Left * 2) + 20;
+                if (maxWidth > ClientSize.Width)
+                {
+                    ClientSize = new Size(maxWidth, ClientSize.Height);
+                    Size = SizeFromClientSize(ClientSize);
+                }
+            }
         }
 
         public Wait(bool showProgress, string msg = null)

@@ -110,6 +110,7 @@
 			"b_002":							"Testing Internet connection...",
 			"b_003":							"Verifying {0} database...",
 			"b_004":							"Updating...",
+			"b_x":								"Press Shift to cancel the current process.",
 
 			"error":							"An error has occurred",
 			"e_000":							"Unable to connect to the Internet.\n{0}",
@@ -216,7 +217,7 @@
 			"auto_update":						"&Automatically check for updates on startup",
 			"clear_update":						"&Clear update files",
 			"advanced":							"&Advanced",
-			"test_database":					"&Test all database entries",
+			"test_database":					"&Verify database entries",
 			"clear_database":					"&Clear all databases",
 			"reset_preferences":				"&Reset all preferences",
 

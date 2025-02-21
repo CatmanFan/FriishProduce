@@ -1096,75 +1096,89 @@ namespace FriishProduce
 
             Dictionary<string, bool> tested = new();
 
-            // Open each platform's database.
-            // ****************
-            foreach (Platform p in new Platform[] { Platform.NES, Platform.SNES, Platform.N64, Platform.SMS, Platform.SMD, Platform.PCE, Platform.PCECD, Platform.NEO, Platform.MSX, Platform.Flash })
+            try
             {
-                string msg = string.Format(Program.Lang.Msg(3, 2), Program.Lang.Console(p));
-
-                Wait(true, true, true, 0, msg);
-
-                ChannelDatabase c = new(p);
-                int index = 0;
-                double total = 0, verified = 0;
-
-                for (int x = index; x < c.Entries.Count; x++)
-                    total += c.Entries[x].Count;
-
-                // Download each entry's WAD files, then check to see if contents are valid.
+                // Open each platform's database.
                 // ****************
-                for (int x = index; x < c.Entries.Count; x++)
+                foreach (Platform p in new Platform[] { Platform.NES, Platform.SNES, Platform.N64, Platform.SMS, Platform.SMD, Platform.PCE, Platform.PCECD, Platform.NEO, Platform.MSX, Platform.Flash })
                 {
-                    var entry = c.Entries[x];
+                    string msg = string.Format(Program.Lang.Msg(3, 2), Program.Lang.Console(p));
 
-                    for (int y = 0; y < entry.Count; y++)
+                    Wait(true, true, true, 0, msg);
+
+                    ChannelDatabase c = new(p);
+                    int index = 0;
+                    double total = 0, verified = 0;
+
+                    for (int x = index; x < c.Entries.Count; x++)
+                        total += c.Entries[x].Count;
+
+                    // Download each entry's WAD files, then check to see if contents are valid.
+                    // ****************
+                    for (int x = index; x < c.Entries.Count; x++)
                     {
-                        wait.Msg = msg + $" ({verified + 1}/{total})";
+                        var entry = c.Entries[x];
 
-                        int regIndex = entry.Regions[y];
-                        string title = string.Format
-                        (
-                            "{0} ({1}) ({2})",
-                            entry.Titles[y],
-                            regIndex == 0 ? "J" : regIndex is 1 or 2 ? "U" : regIndex is 3 or 4 or 5 ? "E" : regIndex is 6 or 7 ? "K" : Program.Lang.String("region_rf"),
-                            Program.Lang.Console(p)
-                        );
-
-                        await System.Threading.Tasks.Task.Run(() =>
+                        for (int y = 0; y < entry.Count; y++)
                         {
-                            WAD w = WAD.Load(Web.Get(entry.GetWAD(y)));
-                            bool valid = true;
-                            try { valid = w.HasBanner; }
-                            catch { valid = false; }
-                            w.Dispose();
+                            wait.Msg = msg + $" ({verified + 1}/{total})";
 
-                            tested.Add(title, valid);
-                        });
+                            int regIndex = entry.Regions[y];
+                            string title = string.Format
+                            (
+                                "{0} ({1}) ({2})",
+                                entry.Titles[y],
+                                regIndex == 0 ? "J" : regIndex is 1 or 2 ? "U" : regIndex is 3 or 4 or 5 ? "E" : regIndex is 6 or 7 ? "K" : Program.Lang.String("region_rf"),
+                                Program.Lang.Console(p)
+                            );
 
-                        verified += 1;
-                        int value = (int)Math.Round(verified / total * 100.0);
+                            await System.Threading.Tasks.Task.Run(() =>
+                            {
+                                WAD w = WAD.Load(Web.Get(entry.GetWAD(y)));
+                                bool valid = true;
+                                try { valid = w.HasBanner; }
+                                catch { valid = false; }
+                                w.Dispose();
 
-                        Wait(true, false, true, value);
+                                tested.Add(title, valid);
+                            });
+
+                            verified += 1;
+                            int value = (int)Math.Round(verified / total * 100.0);
+
+                            Wait(true, false, true, value);
+                        }
                     }
+
+                    Wait(false, false, false);
                 }
-
-                Wait(false, false, false);
             }
 
-            // Final report
-            // ****************
-            var failed = tested.Where(x => !x.Value).ToArray();
-            if (failed?.Length > 0)
+            catch (Exception ex)
             {
-                List<string> failedNames = new();
-
-                foreach (var item in failed)
-                    failedNames.Add("- " + item.Key);
-
-                MessageBox.Show(string.Format(Program.Lang.Msg(13), string.Join(Environment.NewLine, failedNames)));
+                if (Program.DebugMode)
+                    throw ex;
+                else
+                    MessageBox.Error(ex.Message);
             }
-            else
-                MessageBox.Show(Program.Lang.Msg(12));
+
+            finally
+            {
+                // Final report
+                // ****************
+                var failed = tested.Where(x => !x.Value).ToArray();
+                if (failed?.Length > 0)
+                {
+                    List<string> failedNames = new();
+
+                    foreach (var item in failed)
+                        failedNames.Add("- " + item.Key);
+
+                    MessageBox.Show(string.Format(Program.Lang.Msg(13), string.Join(Environment.NewLine, failedNames)));
+                }
+                else
+                    MessageBox.Show(Program.Lang.Msg(12));
+            }
         }
     }
 }
