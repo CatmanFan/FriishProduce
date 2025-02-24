@@ -37,46 +37,37 @@ namespace FriishProduce
             this.b_ok = new System.Windows.Forms.Button();
             this.TreeView = new System.Windows.Forms.TreeView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.theme = new FriishProduce.GroupBoxEx();
+            this.themes = new System.Windows.Forms.ComboBox();
             this.bypass_rom_size = new System.Windows.Forms.CheckBox();
             this.use_online_wad_enabled = new System.Windows.Forms.CheckBox();
             this.use_custom_database = new System.Windows.Forms.CheckBox();
             this.reset_all_dialogs = new System.Windows.Forms.CheckBox();
-            this.vc_n64 = new System.Windows.Forms.Panel();
-            this.forwarder = new System.Windows.Forms.Panel();
-            this.vc_nes = new System.Windows.Forms.Panel();
-            this.vc_neo = new System.Windows.Forms.Panel();
-            this.vc_sega = new System.Windows.Forms.Panel();
-            this.vc_pce = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.auto_prefill = new System.Windows.Forms.CheckBox();
-            this.auto_fill_save_data = new System.Windows.Forms.CheckBox();
-            this.default_injection_methods = new System.Windows.Forms.Panel();
-            this.bios_files = new System.Windows.Forms.Panel();
-            this.adobe_flash = new System.Windows.Forms.Panel();
-            this.vc_snes = new System.Windows.Forms.Panel();
-            this.border = new System.Windows.Forms.Panel();
+            this.language = new FriishProduce.GroupBoxEx();
             this.languages = new System.Windows.Forms.ComboBox();
+            this.vc_n64 = new System.Windows.Forms.Panel();
+            this.vc_n64_romc_type = new FriishProduce.GroupBoxEx();
+            this.vc_n64_romc_type_list = new System.Windows.Forms.ComboBox();
             this.vc_n64_options = new FriishProduce.GroupBoxEx();
             this.vc_n64_patch_cleantextures = new System.Windows.Forms.CheckBox();
             this.vc_n64_patch_autosizerom = new System.Windows.Forms.CheckBox();
             this.vc_n64_patch_expandedram = new System.Windows.Forms.CheckBox();
             this.vc_n64_patch_fixcrashes = new System.Windows.Forms.CheckBox();
             this.vc_n64_patch_fixbrightness = new System.Windows.Forms.CheckBox();
-            this.vc_n64_romc_type_list = new System.Windows.Forms.ComboBox();
-            this.theme = new FriishProduce.GroupBoxEx();
-            this.themes = new System.Windows.Forms.ComboBox();
-            this.language = new FriishProduce.GroupBoxEx();
-            this.vc_n64_romc_type = new FriishProduce.GroupBoxEx();
+            this.forwarder = new System.Windows.Forms.Panel();
             this.forwarder_root_device = new FriishProduce.GroupBoxEx();
             this.forwarder_type = new System.Windows.Forms.ComboBox();
             this.bios_settings = new FriishProduce.GroupBoxEx();
             this.show_bios_screen = new System.Windows.Forms.Label();
             this.toggleSwitch2 = new JCS.ToggleSwitch();
+            this.vc_nes = new System.Windows.Forms.Panel();
             this.vc_nes_palette = new FriishProduce.GroupBoxEx();
             this.vc_nes_palette_banner_usage = new System.Windows.Forms.CheckBox();
             this.vc_nes_palettelist = new System.Windows.Forms.ComboBox();
+            this.vc_neo = new System.Windows.Forms.Panel();
             this.vc_neo_bios = new FriishProduce.GroupBoxEx();
             this.vc_neo_bios_list = new System.Windows.Forms.ComboBox();
+            this.vc_sega = new System.Windows.Forms.Panel();
             this.vc_sega_country = new FriishProduce.GroupBoxEx();
             this.vc_sega_countries = new System.Windows.Forms.ComboBox();
             this.vc_sega_system = new FriishProduce.GroupBoxEx();
@@ -86,6 +77,7 @@ namespace FriishProduce
             this.vc_sega_display = new FriishProduce.GroupBoxEx();
             this.label1 = new System.Windows.Forms.Label();
             this.SEGA_console_brightness = new System.Windows.Forms.TrackBar();
+            this.vc_pce = new System.Windows.Forms.Panel();
             this.vc_pce_note = new FriishProduce.ImageLabel();
             this.vc_pce_region_l = new FriishProduce.GroupBoxEx();
             this.vc_pce_region = new System.Windows.Forms.ComboBox();
@@ -100,6 +92,9 @@ namespace FriishProduce
             this.vc_pce_sprline = new System.Windows.Forms.CheckBox();
             this.vc_pce_raster = new System.Windows.Forms.CheckBox();
             this.vc_pce_hide_overscan = new System.Windows.Forms.CheckBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.auto_prefill = new System.Windows.Forms.CheckBox();
+            this.auto_fill_save_data = new System.Windows.Forms.CheckBox();
             this.image_interpolation_mode = new FriishProduce.GroupBoxEx();
             this.image_interpolation_modes = new System.Windows.Forms.ComboBox();
             this.banner_region = new FriishProduce.GroupBoxEx();
@@ -111,6 +106,7 @@ namespace FriishProduce
             this.default_target_wad = new System.Windows.Forms.Label();
             this.default_target_wad_tb = new System.Windows.Forms.TextBox();
             this.default_target_parameters = new System.Windows.Forms.Label();
+            this.default_injection_methods = new System.Windows.Forms.Panel();
             this.sega_default = new FriishProduce.GroupBoxEx();
             this.injection_methods_sega = new System.Windows.Forms.ComboBox();
             this.snes_default = new FriishProduce.GroupBoxEx();
@@ -119,12 +115,14 @@ namespace FriishProduce
             this.injection_methods_nes = new System.Windows.Forms.ComboBox();
             this.n64_default = new FriishProduce.GroupBoxEx();
             this.injection_methods_n64 = new System.Windows.Forms.ComboBox();
+            this.bios_files = new System.Windows.Forms.Panel();
             this.bios_neo = new FriishProduce.GroupBoxEx();
             this.browse_bios_neo = new System.Windows.Forms.Button();
             this.bios_filename_neo = new System.Windows.Forms.TextBox();
             this.bios_psx = new FriishProduce.GroupBoxEx();
             this.browse_bios_psx = new System.Windows.Forms.Button();
             this.bios_filename_psx = new System.Windows.Forms.TextBox();
+            this.adobe_flash = new System.Windows.Forms.Panel();
             this.display = new FriishProduce.GroupBoxEx();
             this.flash_anti_aliasing = new System.Windows.Forms.CheckBox();
             this.flash_zoom_vl = new System.Windows.Forms.Label();
@@ -149,6 +147,7 @@ namespace FriishProduce
             this.flash_persistent_storage_total_l = new System.Windows.Forms.Label();
             this.flash_persistent_storage_total = new System.Windows.Forms.ComboBox();
             this.flash_save_data_enable = new System.Windows.Forms.CheckBox();
+            this.vc_snes = new System.Windows.Forms.Panel();
             this.vc_snes_options = new FriishProduce.GroupBoxEx();
             this.vc_snes_patch_gcremap = new System.Windows.Forms.CheckBox();
             this.vc_snes_patch_wiimote = new System.Windows.Forms.CheckBox();
@@ -159,51 +158,52 @@ namespace FriishProduce
             this.vc_snes_patch_nodark = new System.Windows.Forms.CheckBox();
             this.vc_snes_patch_nosuspend = new System.Windows.Forms.CheckBox();
             this.vc_snes_patch_volume = new System.Windows.Forms.CheckBox();
+            this.border = new System.Windows.Forms.Panel();
             this.bottomPanel2.SuspendLayout();
             this.bottomPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.vc_n64.SuspendLayout();
-            this.forwarder.SuspendLayout();
-            this.vc_nes.SuspendLayout();
-            this.vc_neo.SuspendLayout();
-            this.vc_sega.SuspendLayout();
-            this.vc_pce.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.default_injection_methods.SuspendLayout();
-            this.bios_files.SuspendLayout();
-            this.adobe_flash.SuspendLayout();
-            this.vc_snes.SuspendLayout();
-            this.vc_n64_options.SuspendLayout();
             this.theme.SuspendLayout();
             this.language.SuspendLayout();
+            this.vc_n64.SuspendLayout();
             this.vc_n64_romc_type.SuspendLayout();
+            this.vc_n64_options.SuspendLayout();
+            this.forwarder.SuspendLayout();
             this.forwarder_root_device.SuspendLayout();
             this.bios_settings.SuspendLayout();
+            this.vc_nes.SuspendLayout();
             this.vc_nes_palette.SuspendLayout();
+            this.vc_neo.SuspendLayout();
             this.vc_neo_bios.SuspendLayout();
+            this.vc_sega.SuspendLayout();
             this.vc_sega_country.SuspendLayout();
             this.vc_sega_system.SuspendLayout();
             this.vc_sega_display.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SEGA_console_brightness)).BeginInit();
+            this.vc_pce.SuspendLayout();
             this.vc_pce_region_l.SuspendLayout();
             this.vc_pce_system.SuspendLayout();
             this.vc_pce_display.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vc_pce_y_offset)).BeginInit();
+            this.panel2.SuspendLayout();
             this.image_interpolation_mode.SuspendLayout();
             this.banner_region.SuspendLayout();
             this.default_target_filename.SuspendLayout();
+            this.default_injection_methods.SuspendLayout();
             this.sega_default.SuspendLayout();
             this.snes_default.SuspendLayout();
             this.nes_default.SuspendLayout();
             this.n64_default.SuspendLayout();
+            this.bios_files.SuspendLayout();
             this.bios_neo.SuspendLayout();
             this.bios_psx.SuspendLayout();
+            this.adobe_flash.SuspendLayout();
             this.display.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.flash_zoom_v)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.flash_zoom_h)).BeginInit();
             this.flash_strap_reminder.SuspendLayout();
             this.flash_controls.SuspendLayout();
             this.flash_save_data.SuspendLayout();
+            this.vc_snes.SuspendLayout();
             this.vc_snes_options.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -237,6 +237,7 @@ namespace FriishProduce
             resources.ApplyResources(this.GetBanners, "GetBanners");
             this.GetBanners.Name = "GetBanners";
             this.GetBanners.UseVisualStyleBackColor = true;
+            this.GetBanners.Click += new System.EventHandler(this.DownloadBanners_Click);
             // 
             // b_ok
             // 
@@ -274,6 +275,24 @@ namespace FriishProduce
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
             // 
+            // theme
+            // 
+            this.theme.Controls.Add(this.themes);
+            this.theme.Flat = false;
+            resources.ApplyResources(this.theme, "theme");
+            this.theme.Name = "theme";
+            this.theme.TabStop = false;
+            this.theme.Tag = "theme";
+            // 
+            // themes
+            // 
+            this.themes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.themes.FormattingEnabled = true;
+            this.themes.Items.AddRange(new object[] {
+            resources.GetString("themes.Items")});
+            resources.ApplyResources(this.themes, "themes");
+            this.themes.Name = "themes";
+            // 
             // bypass_rom_size
             // 
             resources.ApplyResources(this.bypass_rom_size, "bypass_rom_size");
@@ -303,116 +322,14 @@ namespace FriishProduce
             this.reset_all_dialogs.Tag = "reset_all_dialogs";
             this.reset_all_dialogs.UseVisualStyleBackColor = true;
             // 
-            // vc_n64
+            // language
             // 
-            this.vc_n64.Controls.Add(this.vc_n64_romc_type);
-            this.vc_n64.Controls.Add(this.vc_n64_options);
-            resources.ApplyResources(this.vc_n64, "vc_n64");
-            this.vc_n64.Name = "vc_n64";
-            this.vc_n64.Tag = "vc_n64";
-            // 
-            // forwarder
-            // 
-            this.forwarder.Controls.Add(this.forwarder_root_device);
-            this.forwarder.Controls.Add(this.bios_settings);
-            resources.ApplyResources(this.forwarder, "forwarder");
-            this.forwarder.Name = "forwarder";
-            // 
-            // vc_nes
-            // 
-            this.vc_nes.Controls.Add(this.vc_nes_palette);
-            resources.ApplyResources(this.vc_nes, "vc_nes");
-            this.vc_nes.Name = "vc_nes";
-            this.vc_nes.Tag = "vc_nes";
-            // 
-            // vc_neo
-            // 
-            this.vc_neo.Controls.Add(this.vc_neo_bios);
-            resources.ApplyResources(this.vc_neo, "vc_neo");
-            this.vc_neo.Name = "vc_neo";
-            this.vc_neo.Tag = "vc_neo";
-            // 
-            // vc_sega
-            // 
-            this.vc_sega.Controls.Add(this.vc_sega_country);
-            this.vc_sega.Controls.Add(this.vc_sega_system);
-            this.vc_sega.Controls.Add(this.vc_sega_display);
-            resources.ApplyResources(this.vc_sega, "vc_sega");
-            this.vc_sega.Name = "vc_sega";
-            this.vc_sega.Tag = "vc_sega";
-            // 
-            // vc_pce
-            // 
-            this.vc_pce.Controls.Add(this.vc_pce_note);
-            this.vc_pce.Controls.Add(this.vc_pce_region_l);
-            this.vc_pce.Controls.Add(this.vc_pce_system);
-            this.vc_pce.Controls.Add(this.vc_pce_display);
-            resources.ApplyResources(this.vc_pce, "vc_pce");
-            this.vc_pce.Name = "vc_pce";
-            this.vc_pce.Tag = "vc_pce";
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.auto_prefill);
-            this.panel2.Controls.Add(this.auto_fill_save_data);
-            this.panel2.Controls.Add(this.image_interpolation_mode);
-            this.panel2.Controls.Add(this.banner_region);
-            this.panel2.Controls.Add(this.default_target_filename);
-            resources.ApplyResources(this.panel2, "panel2");
-            this.panel2.Name = "panel2";
-            // 
-            // auto_prefill
-            // 
-            resources.ApplyResources(this.auto_prefill, "auto_prefill");
-            this.auto_prefill.Name = "auto_prefill";
-            this.auto_prefill.Tag = "auto_prefill";
-            this.auto_prefill.UseVisualStyleBackColor = true;
-            // 
-            // auto_fill_save_data
-            // 
-            resources.ApplyResources(this.auto_fill_save_data, "auto_fill_save_data");
-            this.auto_fill_save_data.Name = "auto_fill_save_data";
-            this.auto_fill_save_data.Tag = "auto_fill_save_data";
-            this.auto_fill_save_data.UseVisualStyleBackColor = true;
-            // 
-            // default_injection_methods
-            // 
-            this.default_injection_methods.Controls.Add(this.sega_default);
-            this.default_injection_methods.Controls.Add(this.snes_default);
-            this.default_injection_methods.Controls.Add(this.nes_default);
-            this.default_injection_methods.Controls.Add(this.n64_default);
-            resources.ApplyResources(this.default_injection_methods, "default_injection_methods");
-            this.default_injection_methods.Name = "default_injection_methods";
-            // 
-            // bios_files
-            // 
-            this.bios_files.Controls.Add(this.bios_neo);
-            this.bios_files.Controls.Add(this.bios_psx);
-            resources.ApplyResources(this.bios_files, "bios_files");
-            this.bios_files.Name = "bios_files";
-            // 
-            // adobe_flash
-            // 
-            this.adobe_flash.Controls.Add(this.display);
-            this.adobe_flash.Controls.Add(this.flash_strap_reminder);
-            this.adobe_flash.Controls.Add(this.flash_controls);
-            this.adobe_flash.Controls.Add(this.flash_save_data);
-            resources.ApplyResources(this.adobe_flash, "adobe_flash");
-            this.adobe_flash.Name = "adobe_flash";
-            this.adobe_flash.Tag = "adobe_flash";
-            // 
-            // vc_snes
-            // 
-            this.vc_snes.Controls.Add(this.vc_snes_options);
-            resources.ApplyResources(this.vc_snes, "vc_snes");
-            this.vc_snes.Name = "vc_snes";
-            this.vc_snes.Tag = "vc_snes";
-            // 
-            // border
-            // 
-            this.border.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            resources.ApplyResources(this.border, "border");
-            this.border.Name = "border";
+            this.language.Controls.Add(this.languages);
+            this.language.Flat = false;
+            resources.ApplyResources(this.language, "language");
+            this.language.Name = "language";
+            this.language.TabStop = false;
+            this.language.Tag = "language";
             // 
             // languages
             // 
@@ -422,6 +339,31 @@ namespace FriishProduce
             resources.GetString("languages.Items")});
             resources.ApplyResources(this.languages, "languages");
             this.languages.Name = "languages";
+            // 
+            // vc_n64
+            // 
+            this.vc_n64.Controls.Add(this.vc_n64_romc_type);
+            this.vc_n64.Controls.Add(this.vc_n64_options);
+            resources.ApplyResources(this.vc_n64, "vc_n64");
+            this.vc_n64.Name = "vc_n64";
+            this.vc_n64.Tag = "vc_n64";
+            // 
+            // vc_n64_romc_type
+            // 
+            this.vc_n64_romc_type.Controls.Add(this.vc_n64_romc_type_list);
+            this.vc_n64_romc_type.Flat = false;
+            resources.ApplyResources(this.vc_n64_romc_type, "vc_n64_romc_type");
+            this.vc_n64_romc_type.Name = "vc_n64_romc_type";
+            this.vc_n64_romc_type.TabStop = false;
+            this.vc_n64_romc_type.Tag = "romc_type";
+            // 
+            // vc_n64_romc_type_list
+            // 
+            this.vc_n64_romc_type_list.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.vc_n64_romc_type_list.FormattingEnabled = true;
+            resources.ApplyResources(this.vc_n64_romc_type_list, "vc_n64_romc_type_list");
+            this.vc_n64_romc_type_list.Name = "vc_n64_romc_type_list";
+            this.vc_n64_romc_type_list.Tag = "romc_type";
             // 
             // vc_n64_options
             // 
@@ -471,49 +413,12 @@ namespace FriishProduce
             this.vc_n64_patch_fixbrightness.Tag = "patch_fixbrightness";
             this.vc_n64_patch_fixbrightness.UseVisualStyleBackColor = true;
             // 
-            // vc_n64_romc_type_list
+            // forwarder
             // 
-            this.vc_n64_romc_type_list.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.vc_n64_romc_type_list.FormattingEnabled = true;
-            resources.ApplyResources(this.vc_n64_romc_type_list, "vc_n64_romc_type_list");
-            this.vc_n64_romc_type_list.Name = "vc_n64_romc_type_list";
-            this.vc_n64_romc_type_list.Tag = "romc_type";
-            // 
-            // theme
-            // 
-            this.theme.Controls.Add(this.themes);
-            this.theme.Flat = false;
-            resources.ApplyResources(this.theme, "theme");
-            this.theme.Name = "theme";
-            this.theme.TabStop = false;
-            this.theme.Tag = "theme";
-            // 
-            // themes
-            // 
-            this.themes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.themes.FormattingEnabled = true;
-            this.themes.Items.AddRange(new object[] {
-            resources.GetString("themes.Items")});
-            resources.ApplyResources(this.themes, "themes");
-            this.themes.Name = "themes";
-            // 
-            // language
-            // 
-            this.language.Controls.Add(this.languages);
-            this.language.Flat = false;
-            resources.ApplyResources(this.language, "language");
-            this.language.Name = "language";
-            this.language.TabStop = false;
-            this.language.Tag = "language";
-            // 
-            // vc_n64_romc_type
-            // 
-            this.vc_n64_romc_type.Controls.Add(this.vc_n64_romc_type_list);
-            this.vc_n64_romc_type.Flat = false;
-            resources.ApplyResources(this.vc_n64_romc_type, "vc_n64_romc_type");
-            this.vc_n64_romc_type.Name = "vc_n64_romc_type";
-            this.vc_n64_romc_type.TabStop = false;
-            this.vc_n64_romc_type.Tag = "romc_type";
+            this.forwarder.Controls.Add(this.forwarder_root_device);
+            this.forwarder.Controls.Add(this.bios_settings);
+            resources.ApplyResources(this.forwarder, "forwarder");
+            this.forwarder.Name = "forwarder";
             // 
             // forwarder_root_device
             // 
@@ -558,6 +463,13 @@ namespace FriishProduce
             this.toggleSwitch2.OffFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toggleSwitch2.OnFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
+            // vc_nes
+            // 
+            this.vc_nes.Controls.Add(this.vc_nes_palette);
+            resources.ApplyResources(this.vc_nes, "vc_nes");
+            this.vc_nes.Name = "vc_nes";
+            this.vc_nes.Tag = "vc_nes";
+            // 
             // vc_nes_palette
             // 
             this.vc_nes_palette.Controls.Add(this.vc_nes_palette_banner_usage);
@@ -583,6 +495,13 @@ namespace FriishProduce
             this.vc_nes_palettelist.Name = "vc_nes_palettelist";
             this.vc_nes_palettelist.Tag = "palette";
             // 
+            // vc_neo
+            // 
+            this.vc_neo.Controls.Add(this.vc_neo_bios);
+            resources.ApplyResources(this.vc_neo, "vc_neo");
+            this.vc_neo.Name = "vc_neo";
+            this.vc_neo.Tag = "vc_neo";
+            // 
             // vc_neo_bios
             // 
             this.vc_neo_bios.Controls.Add(this.vc_neo_bios_list);
@@ -599,6 +518,15 @@ namespace FriishProduce
             resources.ApplyResources(this.vc_neo_bios_list, "vc_neo_bios_list");
             this.vc_neo_bios_list.Name = "vc_neo_bios_list";
             this.vc_neo_bios_list.Tag = "bios";
+            // 
+            // vc_sega
+            // 
+            this.vc_sega.Controls.Add(this.vc_sega_country);
+            this.vc_sega.Controls.Add(this.vc_sega_system);
+            this.vc_sega.Controls.Add(this.vc_sega_display);
+            resources.ApplyResources(this.vc_sega, "vc_sega");
+            this.vc_sega.Name = "vc_sega";
+            this.vc_sega.Tag = "vc_sega";
             // 
             // vc_sega_country
             // 
@@ -670,6 +598,16 @@ namespace FriishProduce
             this.SEGA_console_brightness.Name = "SEGA_console_brightness";
             this.SEGA_console_brightness.Value = 100;
             this.SEGA_console_brightness.Scroll += new System.EventHandler(this.BrightnessValue_Scroll);
+            // 
+            // vc_pce
+            // 
+            this.vc_pce.Controls.Add(this.vc_pce_note);
+            this.vc_pce.Controls.Add(this.vc_pce_region_l);
+            this.vc_pce.Controls.Add(this.vc_pce_system);
+            this.vc_pce.Controls.Add(this.vc_pce_display);
+            resources.ApplyResources(this.vc_pce, "vc_pce");
+            this.vc_pce.Name = "vc_pce";
+            this.vc_pce.Tag = "vc_pce";
             // 
             // vc_pce_note
             // 
@@ -785,6 +723,30 @@ namespace FriishProduce
             this.vc_pce_hide_overscan.Tag = "hide_overscan";
             this.vc_pce_hide_overscan.UseVisualStyleBackColor = true;
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.auto_prefill);
+            this.panel2.Controls.Add(this.auto_fill_save_data);
+            this.panel2.Controls.Add(this.image_interpolation_mode);
+            this.panel2.Controls.Add(this.banner_region);
+            this.panel2.Controls.Add(this.default_target_filename);
+            resources.ApplyResources(this.panel2, "panel2");
+            this.panel2.Name = "panel2";
+            // 
+            // auto_prefill
+            // 
+            resources.ApplyResources(this.auto_prefill, "auto_prefill");
+            this.auto_prefill.Name = "auto_prefill";
+            this.auto_prefill.Tag = "auto_prefill";
+            this.auto_prefill.UseVisualStyleBackColor = true;
+            // 
+            // auto_fill_save_data
+            // 
+            resources.ApplyResources(this.auto_fill_save_data, "auto_fill_save_data");
+            this.auto_fill_save_data.Name = "auto_fill_save_data";
+            this.auto_fill_save_data.Tag = "auto_fill_save_data";
+            this.auto_fill_save_data.UseVisualStyleBackColor = true;
+            // 
             // image_interpolation_mode
             // 
             this.image_interpolation_mode.Controls.Add(this.image_interpolation_modes);
@@ -869,6 +831,15 @@ namespace FriishProduce
             this.default_target_parameters.Name = "default_target_parameters";
             this.default_target_parameters.Tag = "default_target_parameters";
             // 
+            // default_injection_methods
+            // 
+            this.default_injection_methods.Controls.Add(this.sega_default);
+            this.default_injection_methods.Controls.Add(this.snes_default);
+            this.default_injection_methods.Controls.Add(this.nes_default);
+            this.default_injection_methods.Controls.Add(this.n64_default);
+            resources.ApplyResources(this.default_injection_methods, "default_injection_methods");
+            this.default_injection_methods.Name = "default_injection_methods";
+            // 
             // sega_default
             // 
             this.sega_default.Controls.Add(this.injection_methods_sega);
@@ -937,6 +908,13 @@ namespace FriishProduce
             this.injection_methods_n64.Name = "injection_methods_n64";
             this.injection_methods_n64.Tag = "";
             // 
+            // bios_files
+            // 
+            this.bios_files.Controls.Add(this.bios_neo);
+            this.bios_files.Controls.Add(this.bios_psx);
+            resources.ApplyResources(this.bios_files, "bios_files");
+            this.bios_files.Name = "bios_files";
+            // 
             // bios_neo
             // 
             this.bios_neo.Controls.Add(this.browse_bios_neo);
@@ -982,6 +960,16 @@ namespace FriishProduce
             resources.ApplyResources(this.bios_filename_psx, "bios_filename_psx");
             this.bios_filename_psx.Name = "bios_filename_psx";
             this.bios_filename_psx.ReadOnly = true;
+            // 
+            // adobe_flash
+            // 
+            this.adobe_flash.Controls.Add(this.display);
+            this.adobe_flash.Controls.Add(this.flash_strap_reminder);
+            this.adobe_flash.Controls.Add(this.flash_controls);
+            this.adobe_flash.Controls.Add(this.flash_save_data);
+            resources.ApplyResources(this.adobe_flash, "adobe_flash");
+            this.adobe_flash.Name = "adobe_flash";
+            this.adobe_flash.Tag = "adobe_flash";
             // 
             // display
             // 
@@ -1189,6 +1177,13 @@ namespace FriishProduce
             this.flash_save_data_enable.UseVisualStyleBackColor = true;
             this.flash_save_data_enable.CheckedChanged += new System.EventHandler(this.ToggleSwitchChanged);
             // 
+            // vc_snes
+            // 
+            this.vc_snes.Controls.Add(this.vc_snes_options);
+            resources.ApplyResources(this.vc_snes, "vc_snes");
+            this.vc_snes.Name = "vc_snes";
+            this.vc_snes.Tag = "vc_snes";
+            // 
             // vc_snes_options
             // 
             this.vc_snes_options.Controls.Add(this.vc_snes_patch_gcremap);
@@ -1269,6 +1264,12 @@ namespace FriishProduce
             this.vc_snes_patch_volume.Tag = "patch_volume";
             this.vc_snes_patch_volume.UseVisualStyleBackColor = true;
             // 
+            // border
+            // 
+            this.border.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            resources.ApplyResources(this.border, "border");
+            this.border.Name = "border";
+            // 
             // SettingsForm
             // 
             this.AcceptButton = this.b_ok;
@@ -1304,54 +1305,53 @@ namespace FriishProduce
             this.bottomPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.vc_n64.ResumeLayout(false);
-            this.forwarder.ResumeLayout(false);
-            this.vc_nes.ResumeLayout(false);
-            this.vc_neo.ResumeLayout(false);
-            this.vc_sega.ResumeLayout(false);
-            this.vc_pce.ResumeLayout(false);
-            this.vc_pce.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.default_injection_methods.ResumeLayout(false);
-            this.bios_files.ResumeLayout(false);
-            this.adobe_flash.ResumeLayout(false);
-            this.vc_snes.ResumeLayout(false);
-            this.vc_n64_options.ResumeLayout(false);
-            this.vc_n64_options.PerformLayout();
             this.theme.ResumeLayout(false);
             this.language.ResumeLayout(false);
+            this.vc_n64.ResumeLayout(false);
             this.vc_n64_romc_type.ResumeLayout(false);
+            this.vc_n64_options.ResumeLayout(false);
+            this.vc_n64_options.PerformLayout();
+            this.forwarder.ResumeLayout(false);
             this.forwarder_root_device.ResumeLayout(false);
             this.bios_settings.ResumeLayout(false);
             this.bios_settings.PerformLayout();
+            this.vc_nes.ResumeLayout(false);
             this.vc_nes_palette.ResumeLayout(false);
             this.vc_nes_palette.PerformLayout();
+            this.vc_neo.ResumeLayout(false);
             this.vc_neo_bios.ResumeLayout(false);
+            this.vc_sega.ResumeLayout(false);
             this.vc_sega_country.ResumeLayout(false);
             this.vc_sega_system.ResumeLayout(false);
             this.vc_sega_system.PerformLayout();
             this.vc_sega_display.ResumeLayout(false);
             this.vc_sega_display.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SEGA_console_brightness)).EndInit();
+            this.vc_pce.ResumeLayout(false);
+            this.vc_pce.PerformLayout();
             this.vc_pce_region_l.ResumeLayout(false);
             this.vc_pce_system.ResumeLayout(false);
             this.vc_pce_system.PerformLayout();
             this.vc_pce_display.ResumeLayout(false);
             this.vc_pce_display.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vc_pce_y_offset)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.image_interpolation_mode.ResumeLayout(false);
             this.banner_region.ResumeLayout(false);
             this.default_target_filename.ResumeLayout(false);
             this.default_target_filename.PerformLayout();
+            this.default_injection_methods.ResumeLayout(false);
             this.sega_default.ResumeLayout(false);
             this.snes_default.ResumeLayout(false);
             this.nes_default.ResumeLayout(false);
             this.n64_default.ResumeLayout(false);
+            this.bios_files.ResumeLayout(false);
             this.bios_neo.ResumeLayout(false);
             this.bios_neo.PerformLayout();
             this.bios_psx.ResumeLayout(false);
             this.bios_psx.PerformLayout();
+            this.adobe_flash.ResumeLayout(false);
             this.display.ResumeLayout(false);
             this.display.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.flash_zoom_v)).EndInit();
@@ -1361,6 +1361,7 @@ namespace FriishProduce
             this.flash_controls.PerformLayout();
             this.flash_save_data.ResumeLayout(false);
             this.flash_save_data.PerformLayout();
+            this.vc_snes.ResumeLayout(false);
             this.vc_snes_options.ResumeLayout(false);
             this.vc_snes_options.PerformLayout();
             this.ResumeLayout(false);
