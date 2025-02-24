@@ -1,8 +1,6 @@
-﻿using libWiiSharp;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
 using System.Text.Json;
 
@@ -89,80 +87,6 @@ namespace FriishProduce
                 }
 
                 return ascii.ToUpper();
-            }
-
-            #region NUSD private methods
-
-            private byte[] PackHex(string hex)
-            {
-                return Enumerable.Range(0, hex.Length / 2)
-                                 .Select(x => Convert.ToByte(hex.Substring(x * 2, 2), 16))
-                                 .ToArray();
-            }
-
-            private string Secret(int start, int len)
-            {
-                StringBuilder ret = new StringBuilder();
-                int add = start + len;
-                for (int i = 0; i < len; i++)
-                {
-                    var x = PackHex(start.ToString("x2").Substring(start.ToString("x2").Length - 2));
-                    ret.Append(BitConverter.ToString(x).ToLower());
-                    int next = start + add;
-                    add = start;
-                    start = next;
-                }
-                return ret.ToString();
-            }
-
-            private byte[] Derive(string tid, string pass)
-            {
-                string mod = tid;
-                while (mod.StartsWith("00"))
-                    mod = mod.Substring(2);
-                if (string.IsNullOrEmpty(mod)) mod = "00";
-                byte[] tidBytes = PackHex(mod);
-
-                string secret = Secret(-3, 10);
-                byte[] input = Byte.FromHex(secret).Concat(tidBytes).ToArray();
-
-                byte[] hash = null;
-                using (var md5 = System.Security.Cryptography.MD5.Create())
-                    hash = md5.ComputeHash(input);
-
-                return new System.Security.Cryptography.Rfc2898DeriveBytes(pass, hash, 10000).GetBytes(32);
-                // new Rfc2898DeriveBytes(pass, MD5(SECRET.Concat(MungetId(tid)).ToArray()), 10000).GetBytes(32);
-            }
-
-            private byte[][] Derive(string tid) => new[] { Derive(tid, "nintendo"), Derive(tid, "mypass") };
-
-            #endregion
-
-            public WAD DownloadWAD(int index)
-            {
-                Program.CleanTemp();
-                string tid = GetID(index, true);
-
-                NusClient nusd = new() { ContinueWithoutTicket = true, UseLocalFiles = true };
-
-                var keys = Derive(tid);
-
-                for (int i = 0; i < keys.Length; i++)
-                {
-                    TMD tmd = nusd.DownloadTMD(tid, null);
-                    tmd.Save(Paths.WorkingFolder + "tmd");
-
-                    Ticket tik = Ticket.Load(Paths.Tools + "nusd\\temp.tik");
-                    tik.TitleKey = keys[i];
-                    tik.TitleID = tmd.TitleID;
-                    tik.CommonKeyIndex = tmd.Region == Region.Korea ? CommonKeyType.Korean : CommonKeyType.Standard;
-                    tik.Save(Paths.WorkingFolder + "cetk");
-
-                    try { nusd.DownloadTitle(tid, null, Paths.WorkingFolder + "out.wad", StoreType.WAD); }
-                    catch { Program.CleanTemp(); }
-                }
-
-                return null;
             }
 
             /// <summary>

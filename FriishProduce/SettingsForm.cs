@@ -521,10 +521,6 @@ namespace FriishProduce
         {
             System.Media.SystemSounds.Beep.Play();
 
-            ChannelDatabase c = new(Platform.NES);
-
-            c.Entries[0].DownloadWAD(1);
-
             /* var WADs = new List<(string ID, Platform c, string file)>()
             {
                 ("FCWP", Platform.NES, "nes"),
