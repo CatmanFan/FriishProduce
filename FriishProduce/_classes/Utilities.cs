@@ -507,6 +507,8 @@ namespace FriishProduce
 
         public static byte[] PackContent1(byte[] input, bool? compressed = null)
         {
+            var output = input;
+
             if (compressed == null)
                 compressed = File.Exists(Paths.WorkingFolder + "main.dec.dol");
 
@@ -528,16 +530,18 @@ namespace FriishProduce
                 if (!File.Exists(Paths.WorkingFolder + "main.new.dol"))
                     throw new Exception(Program.Lang.Msg(2, 1));
 
-                var output = File.ReadAllBytes(Paths.WorkingFolder + "main.new.dol");
-
-                try { File.Delete(Paths.WorkingFolder + "main.new.dol"); } catch { }
-                try { File.Delete(Paths.WorkingFolder + "main.dec.dol"); } catch { }
-                try { File.Delete(Paths.WorkingFolder + "main.dol"); } catch { }
-
-                return output;
+                output = File.ReadAllBytes(Paths.WorkingFolder + "main.new.dol");
             }
 
-            else return input;
+            CleanContent1();
+            return output;
+        }
+
+        public static void CleanContent1()
+        {
+            try { File.Delete(Paths.WorkingFolder + "main.new.dol"); } catch { }
+            try { File.Delete(Paths.WorkingFolder + "main.dec.dol"); } catch { }
+            try { File.Delete(Paths.WorkingFolder + "main.dol"); } catch { }
         }
 
         private enum VideoModes

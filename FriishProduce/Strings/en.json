@@ -170,7 +170,7 @@
 			"t_multifile_software":				"When this option is enabled, the program will treat all files within the same folder as the currently selected one as forming part of the software to be injected.\n\n
 												Please make sure that your software files are in a separate folder.",
 
-			"t_vff_cache_size":					"Size of the SWF cache storage.\n\n
+			"t_vff_cache_size":					"Size of the SWF storage cache.\n\n
 												If you are injecting into YouTube or BBC iPlayer and the channel freezes when trying to create save data, try setting it to 96 kB, which is the default value.",
 
 			"t_persistent_storage_total":		"Total storage size needed for saving game data.\n\n
@@ -429,7 +429,6 @@
 			"vff_cache_size":					"VFF cache size ({kilobytes})",
 			"persistent_storage_total":			"Total persistant storage ({kilobytes})",
 			"persistent_storage_per_movie":		"Persistant storage per SWF ({kilobytes})",
-			"fullscreen":						"Fullscreen",
 			"controls":							"Controls",
 			"mouse":							"Mouse",
 			"qwerty_keyboard":					"QWERTY keyboard",
@@ -446,7 +445,8 @@
 			"content_domain":					"Content domain",
 			"background_color":					"Background color",
 			"anti_aliasing":					"Anti-aliasing",
-			"zoom":								"Zoom"
+			"zoom":								"Zoom",
+			"fullscreen":						"Fullscreen"
 		},
 
 		"forwarder": {

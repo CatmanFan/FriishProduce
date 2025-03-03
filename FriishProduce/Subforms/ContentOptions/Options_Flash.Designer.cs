@@ -30,7 +30,7 @@ namespace FriishProduce
         private void InitializeComponent()
         {
             this.quality = new System.Windows.Forms.ComboBox();
-            this.groupBox1 = new GroupBoxEx();
+            this.groupBox1 = new FriishProduce.GroupBoxEx();
             this.vff_sync_on_write = new System.Windows.Forms.CheckBox();
             this.vff_cache_size_l = new System.Windows.Forms.Label();
             this.vff_cache_size = new System.Windows.Forms.ComboBox();
@@ -39,25 +39,25 @@ namespace FriishProduce
             this.persistent_storage_total_l = new System.Windows.Forms.Label();
             this.persistent_storage_total = new System.Windows.Forms.ComboBox();
             this.save_data_enable = new System.Windows.Forms.CheckBox();
-            this.display = new GroupBoxEx();
+            this.display = new FriishProduce.GroupBoxEx();
             this.anti_aliasing = new System.Windows.Forms.CheckBox();
             this.fullscreen = new System.Windows.Forms.CheckBox();
-            this.quality_l = new System.Windows.Forms.Label();
             this.zoom_vl = new System.Windows.Forms.Label();
+            this.quality_l = new System.Windows.Forms.Label();
             this.zoom_hl = new System.Windows.Forms.Label();
-            this.zoom = new System.Windows.Forms.Label();
             this.zoom_v = new FriishProduce.NumericUpDownEx();
+            this.zoom = new System.Windows.Forms.Label();
             this.zoom_h = new FriishProduce.NumericUpDownEx();
-            this.controls = new GroupBoxEx();
+            this.controls = new FriishProduce.GroupBoxEx();
             this.midi = new System.Windows.Forms.CheckBox();
             this.qwerty_keyboard = new System.Windows.Forms.CheckBox();
             this.mouse = new System.Windows.Forms.CheckBox();
             this.background_color_img = new System.Windows.Forms.PictureBox();
-            this.strap_reminder = new GroupBoxEx();
+            this.strap_reminder = new FriishProduce.GroupBoxEx();
             this.strap_reminder_list = new System.Windows.Forms.ComboBox();
             this.ImportDLS = new System.Windows.Forms.OpenFileDialog();
             this.BGColor = new System.Windows.Forms.ColorDialog();
-            this.swf_metadata = new GroupBoxEx();
+            this.swf_metadata = new FriishProduce.GroupBoxEx();
             this.background_color = new System.Windows.Forms.TextBox();
             this.background_color_l = new System.Windows.Forms.Label();
             this.content_domain_l = new System.Windows.Forms.Label();
@@ -105,6 +105,7 @@ namespace FriishProduce
             this.groupBox1.Controls.Add(this.persistent_storage_total_l);
             this.groupBox1.Controls.Add(this.persistent_storage_total);
             this.groupBox1.Controls.Add(this.save_data_enable);
+            this.groupBox1.Flat = false;
             this.groupBox1.Location = new System.Drawing.Point(378, 10);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(360, 170);
@@ -204,6 +205,7 @@ namespace FriishProduce
             this.display.Controls.Add(this.zoom_v);
             this.display.Controls.Add(this.zoom);
             this.display.Controls.Add(this.zoom_h);
+            this.display.Flat = false;
             this.display.Location = new System.Drawing.Point(12, 12);
             this.display.Name = "display";
             this.display.Size = new System.Drawing.Size(360, 114);
@@ -266,18 +268,19 @@ namespace FriishProduce
             // 
             this.zoom_v.Location = new System.Drawing.Point(274, 37);
             this.zoom_v.Maximum = new decimal(new int[] {
-            750,
+            600,
             0,
             0,
             0});
-            this.zoom_v.Minimum = new decimal(new int[] {
+            this.zoom_v.Name = "zoom_v";
+            this.zoom_v.Size = new System.Drawing.Size(55, 21);
+            this.zoom_v.Suffix = "%";
+            this.zoom_v.TabIndex = 42;
+            this.zoom_v.Value = new decimal(new int[] {
             100,
             0,
             0,
-            -2147483648});
-            this.zoom_v.Name = "zoom_v";
-            this.zoom_v.Size = new System.Drawing.Size(55, 21);
-            this.zoom_v.TabIndex = 42;
+            0});
             this.zoom_v.ValueChanged += new System.EventHandler(this.valueChanged);
             // 
             // zoom
@@ -294,18 +297,19 @@ namespace FriishProduce
             // 
             this.zoom_h.Location = new System.Drawing.Point(194, 37);
             this.zoom_h.Maximum = new decimal(new int[] {
-            750,
+            600,
             0,
             0,
             0});
-            this.zoom_h.Minimum = new decimal(new int[] {
+            this.zoom_h.Name = "zoom_h";
+            this.zoom_h.Size = new System.Drawing.Size(55, 21);
+            this.zoom_h.Suffix = "%";
+            this.zoom_h.TabIndex = 40;
+            this.zoom_h.Value = new decimal(new int[] {
             100,
             0,
             0,
-            -2147483648});
-            this.zoom_h.Name = "zoom_h";
-            this.zoom_h.Size = new System.Drawing.Size(55, 21);
-            this.zoom_h.TabIndex = 40;
+            0});
             this.zoom_h.ValueChanged += new System.EventHandler(this.valueChanged);
             // 
             // controls
@@ -313,6 +317,7 @@ namespace FriishProduce
             this.controls.Controls.Add(this.midi);
             this.controls.Controls.Add(this.qwerty_keyboard);
             this.controls.Controls.Add(this.mouse);
+            this.controls.Flat = false;
             this.controls.Location = new System.Drawing.Point(12, 132);
             this.controls.Name = "controls";
             this.controls.Size = new System.Drawing.Size(360, 89);
@@ -369,6 +374,7 @@ namespace FriishProduce
             // strap_reminder
             // 
             this.strap_reminder.Controls.Add(this.strap_reminder_list);
+            this.strap_reminder.Flat = false;
             this.strap_reminder.Location = new System.Drawing.Point(378, 302);
             this.strap_reminder.Name = "strap_reminder";
             this.strap_reminder.Size = new System.Drawing.Size(360, 50);
@@ -401,6 +407,7 @@ namespace FriishProduce
             this.swf_metadata.Controls.Add(this.content_domain_l);
             this.swf_metadata.Controls.Add(this.background_color_img);
             this.swf_metadata.Controls.Add(this.content_domain);
+            this.swf_metadata.Flat = false;
             this.swf_metadata.Location = new System.Drawing.Point(378, 186);
             this.swf_metadata.Name = "swf_metadata";
             this.swf_metadata.Size = new System.Drawing.Size(360, 110);
@@ -464,7 +471,6 @@ namespace FriishProduce
             this.Controls.SetChildIndex(this.swf_metadata, 0);
             this.Controls.SetChildIndex(this.controller_box, 0);
             this.bottomPanel1.ResumeLayout(false);
-            this.bottomPanel1.PerformLayout();
             this.controller_box.ResumeLayout(false);
             this.controller_box.PerformLayout();
             this.groupBox1.ResumeLayout(false);

@@ -859,7 +859,39 @@ namespace FriishProduce
                 try { w.LoadFile(wadDialog.FileName); }
                 catch (Exception ex) { error = ex; goto Failed; }
 
-                if (sender == extract_wad_banner || sender == extract_wad_icon)
+                if (sender == extract_wad_dol)
+                {
+                    try
+                    {
+                        var content1 = Utils.ExtractContent1(w.Contents[1]);
+                        Utils.CleanContent1();
+
+                        if (content1.Data.Length > 0)
+                        {
+                            using SaveFileDialog saveDialog = new()
+                            {
+                                FileName = "main.dol",
+                                Title = wadDialog.Title,
+                                Filter = "DOL (*.dol)|*.dol" + Program.Lang.String("filter"),
+
+                                AddExtension = true,
+                                DefaultExt = "dol",
+                                SupportMultiDottedExtensions = true
+                            };
+
+                            if (saveDialog.ShowDialog() == DialogResult.OK)
+                            {
+                                File.WriteAllBytes(saveDialog.FileName, content1.Data);
+
+                                goto Succeeded;
+                            }
+                        }
+                    }
+
+                    catch (Exception ex) { error = ex; goto Failed; }
+                }
+
+                else if (sender == extract_wad_banner || sender == extract_wad_icon)
                 {
                     using SaveFileDialog saveDialog = new()
                     {

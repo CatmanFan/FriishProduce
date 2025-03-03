@@ -276,7 +276,6 @@
 			"bios": "ゲーム機のBIOS"
 		},
 		"adobe_flash": {
-			"fullscreen": "フルスクリーン",
 			"mouse": "マウス",
 			"qwerty_keyboard": "QWERTYキーボード",
 			"quality": "画質",
@@ -284,7 +283,8 @@
 			"quality1": "中画質",
 			"quality2": "低画質",
 			"strap_reminder": "ストラップのお願い画面",
-			"background_color": "背景色"
+			"background_color": "背景色",
+			"fullscreen": "フルスクリーン"
 		},
 		"forwarder": {
 			"bios_settings": "BIOS設定",

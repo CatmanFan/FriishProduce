@@ -605,7 +605,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>14</value>
   </data>
   <data name="vc_n64_romc_type_list.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 18</value>
@@ -851,7 +851,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_n64.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>7</value>
   </data>
   <data name="forwarder_type.Items" xml:space="preserve">
     <value>SD</value>
@@ -998,7 +998,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;forwarder.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>4</value>
   </data>
   <data name="vc_nes_palette_banner_usage.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1094,7 +1094,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_nes.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>5</value>
   </data>
   <data name="vc_neo_bios_list.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 18</value>
@@ -1160,7 +1160,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_neo.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>10</value>
   </data>
   <data name="vc_sega_countries.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 18</value>
@@ -1421,7 +1421,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_sega.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>8</value>
   </data>
   <data name="vc_pce_note.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1826,7 +1826,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_pce.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>9</value>
   </data>
   <data name="auto_prefill.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2186,7 +2186,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>13</value>
   </data>
   <data name="injection_methods_sega.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 18</value>
@@ -2387,7 +2387,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;default_injection_methods.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>11</value>
   </data>
   <data name="browse_bios_neo.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2552,7 +2552,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;bios_files.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>12</value>
   </data>
   <data name="flash_anti_aliasing.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2710,6 +2710,9 @@
   <data name="flash_zoom_v.Size" type="System.Drawing.Size, System.Drawing">
     <value>55, 21</value>
   </data>
+  <data name="flash_zoom_v.Suffix" xml:space="preserve">
+    <value>%</value>
+  </data>
   <data name="flash_zoom_v.TabIndex" type="System.Int32, mscorlib">
     <value>48</value>
   </data>
@@ -2784,6 +2787,9 @@
   </data>
   <data name="flash_zoom_h.Size" type="System.Drawing.Size, System.Drawing">
     <value>55, 21</value>
+  </data>
+  <data name="flash_zoom_h.Suffix" xml:space="preserve">
+    <value>%</value>
   </data>
   <data name="flash_zoom_h.TabIndex" type="System.Int32, mscorlib">
     <value>46</value>
@@ -3212,7 +3218,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;adobe_flash.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>3</value>
   </data>
   <data name="vc_snes_patch_gcremap.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3563,7 +3569,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;vc_snes.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>6</value>
   </data>
   <data name="border.Location" type="System.Drawing.Point, System.Drawing">
     <value>193, 0</value>

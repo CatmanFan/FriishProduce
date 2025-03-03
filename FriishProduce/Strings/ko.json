@@ -438,7 +438,8 @@
 			"content_domain":					"콘텐츠 도메인",
 			"background_color":					"배경색",
 			"anti_aliasing":					"안티에일리어싱",
-			"zoom":								"확대/축소"
+			"zoom":								"확대/축소",
+			"fullscreen":						"Fullscreen"
 		},
 
 		"forwarder": {

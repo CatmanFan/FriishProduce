@@ -421,7 +421,8 @@
 			"content_domain":					"Domaine URL du contenu",
 			"background_color":					"Couleur d'arrière-plan",
 			"anti_aliasing":					"Anti-aliasing",
-			"zoom":								"Zoom"
+			"zoom":								"Zoom",
+			"fullscreen":						"Plein écran"
 		},
 
 		"forwarder": {

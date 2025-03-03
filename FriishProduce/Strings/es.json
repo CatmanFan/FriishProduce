@@ -420,7 +420,6 @@
 			"vff_cache_size":					"Tamaño de caché VFF (en {kilobytes})",
 			"persistent_storage_total":			"Almacenamiento total (en {kilobytes})",
 			"persistent_storage_per_movie":		"Almacenamiento por SWF (en {kilobytes})",
-			"fullscreen":						"Pantalla completa",
 			"controls":							"Controles",
 			"mouse":							"Mouse",
 			"qwerty_keyboard":					"Teclado QWERTY",
@@ -437,7 +436,8 @@
 			"content_domain":					"Dominio de contenido",
 			"background_color":					"Color de fondo",
 			"anti_aliasing":					"Antialias",
-			"zoom":								"Zoom"
+			"zoom":								"Zoom",
+			"fullscreen":						"Pantalla completa"
 		},
 
 		"forwarder": {

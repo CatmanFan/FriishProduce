@@ -655,6 +655,8 @@ namespace FriishProduce.Injectors
                         );
                     }
 
+                    // If an option is inserted in the config.pcf that is not found in memory (or vice versa), the emulator will crash
+
                     File.WriteAllBytes(file, Encoding.GetEncoding(932).GetBytes(string.Join("\r\n", txt) + "\r\n"));
                 }
 
@@ -673,11 +675,19 @@ namespace FriishProduce.Injectors
                     {
                         if (line.Contains("ortho_rect"))
                         {
-                            (int zoomH, int zoomV) = (int.Parse(Settings["zoom"].Substring(0, Settings["zoom"].IndexOf('_'))), int.Parse(Settings["zoom"].Substring(Settings["zoom"].IndexOf('_') + 1)));
-                            (int h, int v) = (SWF.Header.Width + zoomH, SWF.Header.Height + zoomV);
-                            
+                            (int h_setting, int v_setting) = (int.Parse(Settings["zoom"].Substring(0, Settings["zoom"].IndexOf('_'))), int.Parse(Settings["zoom"].Substring(Settings["zoom"].IndexOf('_') + 1)));
+
+                            // - The smaller the rectangle, the larger the SWF appears
+                            double h_value = SWF.Header.Width / (h_setting / 100.0);
+                            double v_value = SWF.Header.Height / (v_setting / 100.0);
+
+                            // - The value is automatically adjusted for widescreen presets to avoid being stretched out on 16:9 display
                             if (Path.GetFileNameWithoutExtension(file).Contains("wide"))
-                                h = Convert.ToInt32(Math.Round(h * (416.0 / 304.0)));
+                                h_value *= (416.0 / 304.0);
+
+                            // Original rectangle size values in Flash Placeholder: 304 (H) 228 (V) for SD resolution, 416 (H) for wide
+                            (int h, int v) = (Convert.ToInt32(Math.Round(h_value)), Convert.ToInt32(Math.Round(v_value)));
+                            (h, v) = (304, 228);
 
                             txt.Add($"ortho_rect                      -{h} +{v} +{h} -{v} # left top right bottom (608 x 456)");
                             modified = true;
@@ -695,15 +705,19 @@ namespace FriishProduce.Injectors
                             modified = true;
                         }
 
-                        else if (line.Contains("content_url") && notYouTube)
+                        else if (line.Contains("content_url") && notYouTube) // Does not add the line
                             modified = true;
 
                         else
                             txt.Add(line);
                     }
 
+                    bool stretch = File.Exists(file.Replace(".pcf", ".wide.pcf")) && !file.EndsWith(".wide.pcf") && File.ReadAllText(file.Replace(".pcf", ".wide.pcf")) != File.ReadAllText(file);
+
                     if (modified)
                         File.WriteAllBytes(file, Encoding.UTF8.GetBytes(string.Join("\r\n", txt) + "\r\n"));
+                    if (stretch && Settings["fullscreen"] == "yes")
+                        File.Copy(file, file.Replace(".pcf", ".wide.pcf"), true);
                 }
 
                 #endregion

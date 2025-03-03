@@ -53,11 +53,11 @@ namespace FriishProduce
                 { "hbm_no_save", Program.Config.flash.hbm_no_save },
                 { "strap_reminder", Program.Config.flash.strap_reminder },
                 { "midi", null },
-                { "fullscreen", Program.Config.flash.fullscreen },
                 { "content_domain", null },
                 { "background_color", "0 0 0 0" },
                 { "anti_aliasing", Program.Config.flash.anti_aliasing },
                 { "zoom", Program.Config.flash.zoom },
+                { "fullscreen", Program.Config.flash.fullscreen },
             };
         }
 
@@ -89,9 +89,9 @@ namespace FriishProduce
                 quality.SelectedIndex = Options["quality"] switch { "high" => 0, "medium" => 1, _ => 2 };
                 strap_reminder_list.SelectedIndex = Options["strap_reminder"] switch { "none" => 0, "normal" => 1, _ => 2 };
                 // MIDI is counted separately
-                fullscreen.Checked = Options["fullscreen"] == "yes";
                 if (Options.ContainsKey("content_domain")) content_domain.Text = Options["content_domain"];
                 anti_aliasing.Checked = Options["anti_aliasing"] == "on";
+                fullscreen.Checked = Options["fullscreen"] == "yes";
 
                 // Ortho rect
                 // ****************
@@ -150,11 +150,11 @@ namespace FriishProduce
             Options["quality"] = quality.SelectedIndex switch { 0 => "high", 1 => "medium", _ => "low" };
             Options["strap_reminder"] = strap_reminder_list.SelectedIndex switch { 0 => "none", 1 => "normal", _ => "no_ex" };
             Options["hbm_no_save"] = Options["shared_object_capability"] == "on" ? "no" : "yes";
-            Options["fullscreen"] = fullscreen.Checked ? "yes" : "no";
             Options["content_domain"] = content_domain.Text;
             Options["background_color"] = BGColor.Color.R + BGColor.Color.G + BGColor.Color.B > 0 ? $"{BGColor.Color.R} {BGColor.Color.G} {BGColor.Color.B} 255" : "0 0 0 0";
-            Options["zoom"] = $"{zoom_h.Value}_{zoom_v.Value}";
             Options["anti_aliasing"] = anti_aliasing.Checked ? "on" : "off";
+            Options["zoom"] = $"{zoom_h.Value}_{zoom_v.Value}";
+            Options["fullscreen"] = fullscreen.Checked ? "yes" : "no";
         }
 
         // ---------------------------------------------------------------------------------------------------------------
@@ -208,7 +208,7 @@ namespace FriishProduce
 
             else if (sender == zoom_h || sender == zoom_v)
             {
-                (sender as NumericUpDownEx).Prefix = (sender as NumericUpDownEx).Value > 0 ? "+" : null;
+                // (sender as NumericUpDownEx).Prefix = (sender as NumericUpDownEx).Value > 0 ? "+" : null;
             }
         }
 

@@ -3062,6 +3062,12 @@
   <data name="&gt;&gt;extract_from_wad.Type" xml:space="preserve">
     <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;extract_wad_dol.Name" xml:space="preserve">
+    <value>extract_wad_dol</value>
+  </data>
+  <data name="&gt;&gt;extract_wad_dol.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;extract_wad_banner.Name" xml:space="preserve">
     <value>extract_wad_banner</value>
   </data>
@@ -3185,6 +3191,9 @@
   </data>
   <data name="menuItem9.Text" xml:space="preserve">
     <value>-</value>
+  </data>
+  <data name="extract_wad_dol.Text" xml:space="preserve">
+    <value>&amp;main.dol</value>
   </data>
   <data name="extract_wad_banner.Text" xml:space="preserve">
     <value>extract_wad_banner</value>

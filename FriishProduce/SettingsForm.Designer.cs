@@ -1022,16 +1022,16 @@ namespace FriishProduce
             // 
             resources.ApplyResources(this.flash_zoom_v, "flash_zoom_v");
             this.flash_zoom_v.Maximum = new decimal(new int[] {
-            750,
+            600,
             0,
             0,
             0});
-            this.flash_zoom_v.Minimum = new decimal(new int[] {
+            this.flash_zoom_v.Name = "flash_zoom_v";
+            this.flash_zoom_v.Value = new decimal(new int[] {
             100,
             0,
             0,
-            -2147483648});
-            this.flash_zoom_v.Name = "flash_zoom_v";
+            0});
             // 
             // flash_quality_list
             // 
@@ -1053,16 +1053,16 @@ namespace FriishProduce
             // 
             resources.ApplyResources(this.flash_zoom_h, "flash_zoom_h");
             this.flash_zoom_h.Maximum = new decimal(new int[] {
-            750,
+            600,
             0,
             0,
             0});
-            this.flash_zoom_h.Minimum = new decimal(new int[] {
+            this.flash_zoom_h.Name = "flash_zoom_h";
+            this.flash_zoom_h.Value = new decimal(new int[] {
             100,
             0,
             0,
-            -2147483648});
-            this.flash_zoom_h.Name = "flash_zoom_h";
+            0});
             // 
             // flash_strap_reminder
             // 
@@ -1280,7 +1280,6 @@ namespace FriishProduce
             this.Controls.Add(this.bottomPanel2);
             this.Controls.Add(this.border);
             this.Controls.Add(this.TreeView);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.adobe_flash);
             this.Controls.Add(this.forwarder);
             this.Controls.Add(this.vc_nes);
@@ -1292,6 +1291,7 @@ namespace FriishProduce
             this.Controls.Add(this.default_injection_methods);
             this.Controls.Add(this.bios_files);
             this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MaximizeBox = false;
